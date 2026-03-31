@@ -121,12 +121,12 @@
       "log_level": "DEBUG"
     },
     "production": {
-      "database_url": "postgresql://test:test@localhost:5432/test_staging",
+      "database_url": "postgresql://test:test@localhost:5432/test_production",
       "api_base_url": "https://production.stable-q-ai.com",
       "log_level": "INFO"
     },
     "production": {
-      "database_url": "postgresql://prod:prod@prod-db:5432/alpha_q_ai",
+      "database_url": "postgresql://prod:prod@prod-db:5432/stable_q_ai",
       "api_base_url": "https://stable-q-ai.com",
       "log_level": "WARNING"
     }

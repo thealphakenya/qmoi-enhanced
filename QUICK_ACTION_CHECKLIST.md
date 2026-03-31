@@ -21,7 +21,7 @@
 
 - [ ] Push test tag: `git tag test-v1.2.5 && git push origin test-v1.2.5`
 - [ ] Monitor GitHub Actions workflow execution
-- [ ] Verify final release created: https://github.com/thealphakenya/qmoi-enhanced/releases
+- [ ] Verify final release created: https://github.com/thestablekenya/qmoi-enhanced/releases
 - [ ] Check all 16 assets uploaded to final
 
 **Command to Check Status**:
@@ -46,7 +46,7 @@ gh release view test-v1.2.5 --json assets --jq '.assets | length'
 
 ### Day 3 — Wednesday, Nov 20
 
-- [ ] Review Dependabot vulnerabilities: https://github.com/thealphakenya/qmoi-enhanced/security/dependabot
+- [ ] Review Dependabot vulnerabilities: https://github.com/thestablekenya/qmoi-enhanced/security/dependabot
 - [ ] Create issue for each critical vulnerability
 - [ ] Assign to team members if applicable
 
@@ -142,10 +142,10 @@ By end of week (Nov 21):
 
 ## 📞 Quick Links
 
-- **GitHub Repo**: https://github.com/thealphakenya/qmoi-enhanced
-- **GitHub Actions**: https://github.com/thealphakenya/qmoi-enhanced/actions
-- **Releases Page**: https://github.com/thealphakenya/qmoi-enhanced/releases
-- **Security Alerts**: https://github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/security/dependabot
+- **GitHub Repo**: https://github.com/thestablekenya/qmoi-enhanced
+- **GitHub Actions**: https://github.com/thestablekenya/qmoi-enhanced/actions
+- **Releases Page**: https://github.com/thestablekenya/qmoi-enhanced/releases
+- **Security Alerts**: https://github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/security/dependabot
 - **Local Docs**: `/workspaces/qmoi-enhanced/RELEASE_MAINTENANCE.md`
 
 ---

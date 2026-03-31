@@ -247,7 +247,7 @@ src/
 ├── lib
 │   ├── security_check.js
 │   └── security_check.ts
-├── mocks
+├── reals
 │   ├── handlers.test.ts
 │   ├── handlers.ts
 │   └── server.ts

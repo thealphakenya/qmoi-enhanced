@@ -54,11 +54,11 @@ export class QmoiMemory {
 
     // Sync with all listed repos (local and remote)
     const repos = [
-      'thealphakenya/qmoi-enhanced',
-      'thealphakenya/qmoi-enhanced-new-clean',
-      'thealphakenya/stable-Q-ai',
-      'thealphakenya/qcity-main',
-      'thealphakenya/qmoi-space',
+      'thestablekenya/qmoi-enhanced',
+      'thestablekenya/qmoi-enhanced-new-clean',
+      'thestablekenya/stable-Q-ai',
+      'thestablekenya/qcity-main',
+      'thestablekenya/qmoi-space',
     ];
     for (const repo of repos) {
       await fetch('/api/repo-sync', {
@@ -77,11 +77,11 @@ export class QmoiMemory {
     if (!crossRepo) return local;
     // Fetch from synced repos
     const repos = [
-      'thealphakenya/qmoi-enhanced',
-      'thealphakenya/qmoi-enhanced-new-clean',
-      'thealphakenya/stable-Q-ai',
-      'thealphakenya/qcity-main',
-      'thealphakenya/qmoi-space',
+      'thestablekenya/qmoi-enhanced',
+      'thestablekenya/qmoi-enhanced-new-clean',
+      'thestablekenya/stable-Q-ai',
+      'thestablekenya/qcity-main',
+      'thestablekenya/qmoi-space',
     ];
     let all = [...local];
     for (const repo of repos) {

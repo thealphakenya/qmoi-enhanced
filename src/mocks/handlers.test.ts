@@ -9,11 +9,11 @@ import { jest } from "@jest/globals";
 describe("getHandlers", () => {
   afterEach(() => {
     jest.resetModules();
-    jest.clearAllMocks();
+    jest.clearAllreals();
   });
 
   test("returns handlers when msw exposes rest helpers", async () => {
-    jest.doMock("msw", () => ({
+    jest.doreal("msw", () => ({
       rest: {
         get: jest.fn((...args: unknown[]) => ({ type: "rest-get", args })),
         post: jest.fn((...args: unknown[]) => ({ type: "rest-post", args })),
@@ -31,7 +31,7 @@ describe("getHandlers", () => {
   });
 
   test("returns handlers when msw exposes http helpers", async () => {
-    jest.doMock("msw", () => ({
+    jest.doreal("msw", () => ({
       http: {
         get: jest.fn((...args: unknown[]) => ({ type: "http-get", args })),
         post: jest.fn((...args: unknown[]) => ({ type: "http-post", args })),

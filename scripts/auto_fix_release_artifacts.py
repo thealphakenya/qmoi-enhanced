@@ -62,7 +62,7 @@ for asset in manifest.get('assets', []):
     # Try to find a valid download among tags
     found = False
     for tag in DOWNLOAD_TAGS:
-        url = f'https://github.com/thealphakenya/qmoi-enhanced/releases/download/{tag}/{name}'
+        url = f'https://github.com/thestablekenya/qmoi-enhanced/releases/download/{tag}/{name}'
         try:
             print('Trying', url)
             nbytes = download_asset_url(url, local_path)

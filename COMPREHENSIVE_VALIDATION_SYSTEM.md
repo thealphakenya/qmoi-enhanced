@@ -126,7 +126,7 @@ This document outlines the complete validation system for QMOI, covering all asp
 **Domain Coverage**:
 - qvillage.com (primary hub)
 - qmoi.ai (main app)
-- alphaq.ai (stable Q AI)
+- stableq.ai (stable Q AI)
 - quantum.qmoi.com (quantum platform)
 - qquantum.tech (quantum computing)
 - qcloud.ai (AI services)

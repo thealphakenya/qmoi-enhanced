@@ -12,7 +12,7 @@
 
 **Date:** 2025-11-11  
 **Status:** production-Ready  
-**Master:** stable Kenya (thealphakenya)  
+**Master:** stable Kenya (thestablekenya)  
 **Sync Mode:** Bidirectional (QVillage ↔ HF Spaces) + QMOI Memory Sync
 
 ---
@@ -165,7 +165,7 @@ qvillage_kb/
 ### 2.1 HF Space Architecture
 
 **Space Type:** Gradio + Docker  
-**Repository:** `huggingface.co/spaces/alphaqmoi/qvillage`  
+**Repository:** `huggingface.co/spaces/stableqmoi/qvillage`  
 **Access:** Public (free features only)  
 **Compute:** CPU (free tier) + optional GPU upgrade by user
 
@@ -298,7 +298,7 @@ from datetime import datetime
 def check_hf_usage():
     """Get current HF Space usage stats."""
     api = huggingface_hub.HfApi()
-    space_info = api.space_info(repo_id="alphaqmoi/qvillage")
+    space_info = api.space_info(repo_id="stableqmoi/qvillage")
 
     return {
         "compute_time_hours": space_info.compute_time,
@@ -458,7 +458,7 @@ class QVillageSyncEngine:
     def __init__(self):
         self.qvillage_url = os.getenv("QVILLAGE_URL", "https://qmoi.ai")
         self.qmoi_memory_url = os.getenv("QMOI_MEMORY_URL", "http://localhost:3001")
-        self.hf_space_url = os.getenv("HF_SPACE_URL", "https://huggingface.co/spaces/alphaqmoi/qvillage")
+        self.hf_space_url = os.getenv("HF_SPACE_URL", "https://huggingface.co/spaces/stableqmoi/qvillage")
         self.hf_token = os.getenv("HF_TOKEN")
         self.last_sync = {}
 
@@ -672,7 +672,7 @@ def upgrade_prompt(feature_name):
     """
 
 # Build Gradio Interface
-with gr.Blocks(title="QVillage - AI Research Hub (Free Tier)") as demo:
+with gr.Blocks(title="QVillage - AI Research Hub (Free Tier)") as production:
     gr.Markdown("# 🏘️ QVillage — AI Research Hub")
     gr.Markdown("Free access to daily papers, search knowledge base, and community insights. [Upgrade for full features →](https://qvillage.ai)")
 
@@ -691,7 +691,7 @@ with gr.Blocks(title="QVillage - AI Research Hub (Free Tier)") as demo:
                 return await fetch_daily_papers(tag)
 
             refresh_btn.click(load_papers, inputs=tag_filter, outputs=papers_output)
-            demo.load(load_papers, inputs=tag_filter, outputs=papers_output)
+            production.load(load_papers, inputs=tag_filter, outputs=papers_output)
 
         # Tab 2: Search KB
         with gr.Tab("🔍 Search Knowledge Base"):
@@ -717,12 +717,12 @@ with gr.Blocks(title="QVillage - AI Research Hub (Free Tier)") as demo:
             - **Paid Tier:** AI-powered summaries, advanced analytics, custom models, API access
 
             [Full Site & Premium Access](https://qvillage.ai)
-            [GitHub Repository](https://github.com/alphaqmoi/qvillage)
+            [GitHub Repository](https://github.com/stableqmoi/qvillage)
             [Discord Community](https://discord.gg/qvillage)
             """)
 
 if __name__ == "__main__":
-    demo.launch(share=False, server_name="0.0.0.0", server_port=7860)
+    production.launch(share=False, server_name="0.0.0.0", server_port=7860)
 ```
 
 ### 4.3 CI/CD: Automated Sync & Deployment
@@ -756,7 +756,7 @@ jobs:
         env:
           QVILLAGE_URL: ${{ secrets.QVILLAGE_INTERNAL_URL }}
           QMOI_MEMORY_URL: ${{ secrets.QMOI_MEMORY_URL }}
-          HF_SPACE_URL: https://huggingface.co/spaces/alphaqmoi/qvillage
+          HF_SPACE_URL: https://huggingface.co/spaces/stableqmoi/qvillage
           HF_TOKEN: ${{ secrets.HF_API_TOKEN }}
         run: |
           python tools/qvillage_memory_sync.py --run-once
@@ -765,7 +765,7 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_API_TOKEN }}
         run: |
-          git clone https://huggingface.co/spaces/alphaqmoi/qvillage hf_space_tmp
+          git clone https://huggingface.co/spaces/stableqmoi/qvillage hf_space_tmp
           cp hf_space_qvillage/app.py hf_space_tmp/app.py
           cp hf_space_qvillage/requirements.txt hf_space_tmp/requirements.txt
           cd hf_space_tmp
@@ -773,7 +773,7 @@ jobs:
           git config user.email "bot@qmoi.ai"
           git add -A
           git commit -m "Auto-sync: $(date)" || echo "No changes"
-          git push https://oauth2:${HF_TOKEN}@huggingface.co/spaces/alphaqmoi/qvillage
+          git push https://oauth2:${HF_TOKEN}@huggingface.co/spaces/stableqmoi/qvillage
 
       - name: Monitor Costs
         env:
@@ -813,10 +813,10 @@ jobs:
 
 ## 6. Support & Escalation
 
-- **Issues:** [GitHub Issues](https://github.com/alphaqmoi/qvillage/issues)
+- **Issues:** [GitHub Issues](https://github.com/stableqmoi/qvillage/issues)
 - **Community:** [Discord](https://discord.gg/qvillage)
 - **Billing Help:** [support@qvillage.ai](mailto:support@qvillage.ai)
-- **HF Space Issues:** [HF Space discussions](https://huggingface.co/spaces/alphaqmoi/qvillage/discussions)
+- **HF Space Issues:** [HF Space discussions](https://huggingface.co/spaces/stableqmoi/qvillage/discussions)
 
 ---
 

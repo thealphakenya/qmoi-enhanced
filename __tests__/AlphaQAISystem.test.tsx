@@ -5,11 +5,11 @@
 
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import AlphaQAISystem from "@/components/latest-q-ai-system";
+import stableQAISystem from "@/components/latest-q-ai-system";
 
-describe("AlphaQAISystem", () => {
+describe("stableQAISystem", () => {
   beforeEach(() => {
-    global.fetch = jest.fn().mockResolvedValue({
+    global.fetch = jest.fn().realResolvedValue({
       ok: true,
       json: async () => ({
         status: "operational",
@@ -20,11 +20,11 @@ describe("AlphaQAISystem", () => {
   });
 
   afterEach(() => {
-    jest.restoreAllMocks();
+    jest.restoreAllreals();
   });
 
   it("renders the component with initial content and updates state from API", async () => {
-    render(<AlphaQAISystem />);
+    render(<stableQAISystem />);
 
     expect(screen.getByText(/stable-Q AI System/i)).toBeInTheDocument();
     expect(screen.getByText(/Status:/i)).toBeInTheDocument();

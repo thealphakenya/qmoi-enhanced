@@ -48,7 +48,7 @@ Full platform copies created by the evolution system:
 ### Creating a Manual Clone
 ```bash
 # Clone repository
-git clone https://github.com/thealphakenya/qmoi-enhanced.git qmoi-clone-1
+git clone https://github.com/thestablekenya/qmoi-enhanced.git qmoi-clone-1
 
 # Initialize
 cd qmoi-clone-1
@@ -68,7 +68,7 @@ curl -X POST https://qmoi.com/api/evolution/autoclone-evolution \
     "action": "register-autoclone",
     "autocloneInfo": {
       "cloneId": "autoclone-prod-1",
-      "sourceRepository": "https://github.com/thealphakenya/qmoi-enhanced",
+      "sourceRepository": "https://github.com/thestablekenya/qmoi-enhanced",
       "clonePath": "/opt/qvillage-prod",
       "version": "1.2.5",
       "status": "active"

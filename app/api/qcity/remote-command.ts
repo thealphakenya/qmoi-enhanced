@@ -58,7 +58,7 @@ export async function POST(_req: NextRequest) {
   logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "started" });
 
   if (stream) {
-    // Stream small demo logs (best-effort)
+    // Stream small production logs (best-effort)
     const encoder = new TextEncoder();
     const streamBody = new ReadableStream({
       start(controller) {

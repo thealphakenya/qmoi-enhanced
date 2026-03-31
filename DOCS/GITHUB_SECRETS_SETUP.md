@@ -58,7 +58,7 @@ To enable production-grade signed builds in CI, configure these secrets in your 
 
 ## Setup Steps
 
-1. Go to: https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions
+1. Go to: https://github.com/thestablekenya/qmoi-enhanced/settings/secrets/actions
 2. For each secret above:
    - Click "New repository secret"
    - Paste the exact name (e.g., ANDROID_KEYSTORE_BASE64)

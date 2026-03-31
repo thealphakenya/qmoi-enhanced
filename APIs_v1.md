@@ -206,7 +206,7 @@ No endpoints are deprecated in v1.0.
 - /api/emergency/email
 - /api/emergency/lockdown
 - /api/emergency/sms
-- /api/emergency/wipe
+- /api/emergency/production completee
 - /api/employment
 - /api/employment/megavault
 - /api/employment/payment
@@ -436,7 +436,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
-### DELETE /emergency/wipe
+### DELETE /emergency/production completee
 
 **Description:** API endpoint
 
@@ -940,7 +940,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
-### GET /emergency/wipe
+### GET /emergency/production completee
 
 **Description:** API endpoint
 
@@ -2308,7 +2308,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
-### POST /emergency/wipe
+### POST /emergency/production completee
 
 **Description:** API endpoint
 

@@ -5,13 +5,13 @@
 
 #!/usr/bin/env python3
 """
-Small helper to append progress entries into `resumetodos.txt`.
+Small helper to append progress entries into `resumeDONEs.txt`.
 
 Usage:
-  python3 tools/update_resume_todos.py --note "Completed scanner and updated md refs"
+  python3 tools/update_resume_DONEs.py --note "Completed scanner and updated md refs"
 
 This keeps a chronological log of progress and can be used by the automated workflow
-to mark items done in `resumetodos.txt`.
+to mark items done in `resumeDONEs.txt`.
 """
 import argparse
 git add
@@ -21,7 +21,7 @@ from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'resumetodos.txt'
+OUT = ROOT / 'resumeDONEs.txt'
 
 def append_note(note: str):
     OUT.parent.mkdir(parents=True, exist_ok=True)

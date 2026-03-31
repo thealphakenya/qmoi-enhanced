@@ -67,37 +67,37 @@ class GitHubReleasesPublisher:
             "name": "QMOI AI",
             "description": "QMOI AI - Advanced AI Assistant",
             "platforms": ["windows", "mac", "linux-deb", "linux-appimage", "android", "ios", "smarttv", "raspberrypi", "chromebook"],
-            "repo": "thealphakenya/stable-Q-ai"
+            "repo": "thestablekenya/stable-Q-ai"
         },
         "qcity": {
             "name": "QCity",
             "description": "QCity - Distributed Computing Platform",
             "platforms": ["windows", "mac", "linux", "android", "ios"],
-            "repo": "thealphakenya/QCity"
+            "repo": "thestablekenya/QCity"
         },
         "qshare": {
             "name": "QShare",
             "description": "QShare - Secure File Sharing",
             "platforms": ["universal"],
-            "repo": "thealphakenya/QShare"
+            "repo": "thestablekenya/QShare"
         },
         "yap": {
             "name": "Yap",
             "description": "Yap - Communication Platform",
             "platforms": ["universal"],
-            "repo": "thealphakenya/Yap"
+            "repo": "thestablekenya/Yap"
         },
         "qstore": {
             "name": "QStore",
             "description": "QStore - App Store",
             "platforms": ["universal"],
-            "repo": "thealphakenya/QStore"
+            "repo": "thestablekenya/QStore"
         },
         "qvillage": {
             "name": "QVillage",
             "description": "QVillage - Community Hub",
             "platforms": ["universal"],
-            "repo": "thealphakenya/QVillage"
+            "repo": "thestablekenya/QVillage"
         }
     }
 
@@ -151,7 +151,7 @@ class GitHubReleasesPublisher:
                     file_path=str(exe_file),
                     file_size=file_size,
                     sha256_hash=sha256,
-                    download_url=f"https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
+                    download_url=f"https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
                     release_date=datetime.now().isoformat(),
                     status="ready"
                 )
@@ -173,7 +173,7 @@ class GitHubReleasesPublisher:
                         file_path=str(app_dir),
                         file_size=self._calculate_dir_size(app_dir),
                         sha256_hash="web-app",
-                        download_url=f"https://github.com/thealphakenya/qmoi-enhanced/releases/{app_name}/web/",
+                        download_url=f"https://github.com/thestablekenya/qmoi-enhanced/releases/{app_name}/web/",
                         release_date=datetime.now().isoformat(),
                         status="ready"
                     )
@@ -249,7 +249,7 @@ class GitHubReleasesPublisher:
 - iOS: iOS 12 or later
 
 ## Support
-For issues or questions, visit: https://github.com/thealphakenya/qmoi-enhanced/issues
+For issues or questions, visit: https://github.com/thestablekenya/qmoi-enhanced/issues
 
 ---
 Generated: {datetime.now().isoformat()}
@@ -321,7 +321,7 @@ All QMOI applications are available on GitHub Releases with binaries for every s
 ## Quick Start
 
 ### 1. Browse Releases
-Visit: https://github.com/thealphakenya/qmoi-enhanced/releases
+Visit: https://github.com/thestablekenya/qmoi-enhanced/releases
 
 ### 2. Download Your Platform
 Each release includes binaries for:
@@ -434,7 +434,7 @@ Releases are updated automatically:
 ## Support
 
 For issues or questions:
-- GitHub Issues: https://github.com/thealphakenya/qmoi-enhanced/issues
+- GitHub Issues: https://github.com/thestablekenya/qmoi-enhanced/issues
 - Email: support@qmoi.app
 - Community: https://qvillage.qmoi.app
 
@@ -476,7 +476,7 @@ For issues or questions:
 
 set -e
 
-REPO="thealphakenya/qmoi-enhanced"
+REPO="thestablekenya/qmoi-enhanced"
 VERSION="v1.2.3"
 
 echo "Publishing QMOI Releases to GitHub..."
@@ -579,7 +579,7 @@ def main():
                 asset_path = build.file_path
                 asset_name = os.path.basename(asset_path)
                 version = build.version
-                repo = publisher.QMOI_APPS.get(app_name, {}).get("repo", "thealphakenya/qmoi-enhanced")
+                repo = publisher.QMOI_APPS.get(app_name, {}).get("repo", "thestablekenya/qmoi-enhanced")
                 release_title = f"{publisher.QMOI_APPS.get(app_name, {}).get('name', app_name)} - {version}"
                 notes = publisher.generate_release_notes(app_name, version, [build])
                 notes_file = f"/tmp/{app_name}-{version}-notes.md"

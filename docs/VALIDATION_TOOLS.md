@@ -22,7 +22,7 @@ Key tools
 - `scripts/generate_allmdrefs.py` — discovers repository `.md` files (excluding vendor dirs) and writes `.qmoi_validation/md_files_found.json`. Use `--write` to update `ALLMDFILESREFS.md`.
 - `scripts/validate_md.py` — validates markdown files for title, frontmatter, and links. Writes per-file reports to `.qmoi_validation/validation_reports/`. Use `--apply` to insert/update validation metadata blocks.
 - `scripts/validate_md.py` — validates markdown files for title, frontmatter, and links. Writes per-file reports to `.qmoi_validation/validation_reports/`. Use `--apply` to insert/update validation metadata blocks. The validator now captures QVS provenance (when `.qmoi_validation/qvs_context.json` exists) and records complete run provenance (Codespace, GITHUB_RUN_ID, host, user) into each report for auditability.
-- `scripts/qmoi_todos.py` — robust to-dos manager used by validation automation and orchestrators (LION hooks can be added where noted).
+- `scripts/qmoi_DONEs.py` — robust to-dos manager used by validation automation and orchestrators (LION hooks can be added where noted).
 
 Quick start
 
@@ -63,7 +63,7 @@ This document explains the validation tooling added to the repository and how th
 
 - `scripts/generate_allmdrefs.py` — scans the repo for `.md` files (excludes vendor dirs) and can update `ALLMDFILESREFS.md` with the discovered list.
 - `scripts/validate_md.py` — validates markdown files and inserts/updates a QMOI validation block inside each file; writes per-file JSON reports to `.qmoi_validation/`.
-- `scripts/qmoi_todos.py` — a robust to-dos manager that persists tasks to `.qmoi_validation/todos.json` and can export plans for validators.
+- `scripts/qmoi_DONEs.py` — a robust to-dos manager that persists tasks to `.qmoi_validation/DONEs.json` and can export plans for validators.
 
 Quick usage:
 
@@ -85,9 +85,9 @@ Quick usage:
 
 5. Manage QMOI to-dos:
 
-   python3 scripts/qmoi_todos.py add "Finish validation" --note "run validate_md" --priority 3
-   python3 scripts/qmoi_todos.py list
-   python3 scripts/qmoi_todos.py done 1
+   python3 scripts/qmoi_DONEs.py add "Finish validation" --note "run validate_md" --priority 3
+   python3 scripts/qmoi_DONEs.py list
+   python3 scripts/qmoi_DONEs.py done 1
 
 All outputs and reports are stored in `.qmoi_validation/` so CI or other tools can pick them up.
 

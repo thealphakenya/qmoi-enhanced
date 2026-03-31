@@ -262,7 +262,7 @@ class APIDocumentationGenerator:
                 "properties": {
                     "valueAtRisk": {"type": "number"},
                     "expectedShortfall": {"type": "number"},
-                    "beta": {"type": "number"},
+                    "stable": {"type": "number"},
                     "correlation": {"type": "number"},
                     "diversificationRatio": {"type": "number"}
                 }

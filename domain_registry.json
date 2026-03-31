@@ -69,20 +69,20 @@
     "status": "active",
     "last_updated": "2026-03-21T22:34:57.065448"
   },
-  "alphaq.ai": {
-    "domain": "alphaq.ai",
+  "stableq.ai": {
+    "domain": "stableq.ai",
     "type": "ai_platform",
     "tld_variants": [
-      "alphaq.com"
+      "stableq.com"
     ],
     "fallback_chain": [
-      "alphaq.com",
+      "stableq.com",
       "qvillage.com"
     ],
     "regional_endpoints": {
-      "us-east": "us-east.alphaq.ai",
-      "eu-west": "eu.alphaq.ai",
-      "asia-east": "asia.alphaq.ai"
+      "us-east": "us-east.stableq.ai",
+      "eu-west": "eu.stableq.ai",
+      "asia-east": "asia.stableq.ai"
     },
     "api_endpoints": [
       "/api",
@@ -138,12 +138,12 @@
     "type": "service",
     "tld_variants": [
       "qstore.qvillage.com",
-      "store.alphaq.ai"
+      "store.stableq.ai"
     ],
     "fallback_chain": [
       "qstore.qvillage.com",
       "store.qvillage.com",
-      "alphaq.ai/store"
+      "stableq.ai/store"
     ],
     "regional_endpoints": {
       "us-east": "qstore-us.qmoi.ai",
@@ -258,11 +258,11 @@
     "domain": "q-stable.qmoi.ai",
     "type": "service",
     "tld_variants": [
-      "stable.alphaq.ai",
+      "stable.stableq.ai",
       "models.qvillage.com"
     ],
     "fallback_chain": [
-      "stable.alphaq.ai",
+      "stable.stableq.ai",
       "models.qvillage.com"
     ],
     "regional_endpoints": {

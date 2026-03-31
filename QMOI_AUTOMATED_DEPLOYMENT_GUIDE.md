@@ -283,7 +283,7 @@ Ready to discover:
 export GH_TOKEN="your_github_token"
 
 # Repository
-export REPO="thealphakenya/qmoi-enhanced"
+export REPO="thestablekenya/qmoi-enhanced"
 
 # Slack webhook for alerts
 export SLACK_WEBHOOK="https://hooks.slack.com/..."
@@ -316,10 +316,10 @@ git tag v1.3.0
 git push origin v1.3.0
 
 # Step 2: Watch GitHub Actions
-# Go to: https://github.com/thealphakenya/qmoi-enhanced/actions
+# Go to: https://github.com/thestablekenya/qmoi-enhanced/actions
 
 # Step 3: View release
-# https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.3.0
+# https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.3.0
 
 # Step 4: Deploy to other channels (optional)
 python deploy-to-all-channels.py --version v1.3.0 --web
@@ -458,7 +458,7 @@ gh auth login
 curl https://www.githubstatus.com/api/v2/status.json
 
 # Test manually
-curl -I https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe
+curl -I https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe
 ```
 
 ---
@@ -482,7 +482,7 @@ curl -I https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/
 
 ### General
 
-- **Issues:** https://github.com/thealphakenya/qmoi-enhanced/issues
+- **Issues:** https://github.com/thestablekenya/qmoi-enhanced/issues
 - **Community:** https://qvillage.qmoi.app
 - **Email:** support@qmoi.app
 

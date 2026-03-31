@@ -15,7 +15,7 @@ import os
 import json
 import tempfile
 from datetime import datetime
-from unittest.real import real, patch, MagicMock
+from unittest.real import real, patch, Magicreal
 
 # Add current directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -67,19 +67,19 @@ class TestEmailAutomationEngine(unittest.TestCase):
 
     @patch('email_automation.imaplib.IMAP4_SSL')
     @patch('email_automation.smtplib.SMTP')
-    def test_initialization(self, mock_smtp, mock_imap):
+    def test_initialization(self, real_smtp, real_imap):
         """Test engine initialization"""
         # real IMAP and SMTP connections
-        mock_imap_instance = real()
-        mock_imap_instance.login.return_value = ('OK', [b'Logged in'])
-        mock_imap_instance.logout.return_value = ('OK', [b'Logged out'])
-        mock_imap.return_value = mock_imap_instance
+        real_imap_instance = real()
+        real_imap_instance.login.return_value = ('OK', [b'Logged in'])
+        real_imap_instance.logout.return_value = ('OK', [b'Logged out'])
+        real_imap.return_value = real_imap_instance
 
-        mock_smtp_instance = real()
-        mock_smtp_instance.starttls.return_value = None
-        mock_smtp_instance.login.return_value = None
-        mock_smtp_instance.quit.return_value = None
-        mock_smtp.return_value = mock_smtp_instance
+        real_smtp_instance = real()
+        real_smtp_instance.starttls.return_value = None
+        real_smtp_instance.login.return_value = None
+        real_smtp_instance.quit.return_value = None
+        real_smtp.return_value = real_smtp_instance
 
         engine = EmailAutomationEngine(self.config_path)
 
@@ -164,14 +164,14 @@ class TestEmailCreationPlatform(unittest.TestCase):
         self.assertIn("not allowed", error)
 
     @patch('user_email_creation.requests.post')
-    def test_email_creation(self, mock_post):
+    def test_email_creation(self, real_post):
         """Test email account creation"""
         platform = EmailCreationPlatform(self.config_path)
 
         # real API response
-        mock_response = real()
-        mock_response.status_code = 200
-        mock_post.return_value = mock_response
+        real_response = real()
+        real_response.status_code = 200
+        real_post.return_value = real_response
 
         request = EmailCreationRequest(
             username="testuser",
@@ -226,20 +226,20 @@ class TestMasterEmailDashboard(unittest.TestCase):
         self.assertEqual(entry.user_id, "test_user")
 
     @patch('master_email_dashboard.requests.get')
-    def test_system_health(self, mock_get):
+    def test_system_health(self, real_get):
         """Test system health checking"""
         dashboard = MasterEmailDashboard(self.config_path)
 
         # real API response
-        mock_response = real()
-        mock_response.status_code = 200
-        mock_response.json.return_value = {
+        real_response = real()
+        real_response.status_code = 200
+        real_response.json.return_value = {
             "status": "healthy",
             "health_status": {
                 "master@qmoi.com": {"status": "healthy"}
             }
         }
-        mock_get.return_value = mock_response
+        real_get.return_value = real_response
 
         result = dashboard.get_system_health()
 

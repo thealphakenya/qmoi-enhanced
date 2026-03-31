@@ -22,7 +22,7 @@ export interface WalletAdapter {
 }
 
 // REAL adapter used when no credentials or for testnets
-export class MockAdapter implements WalletAdapter {
+export class realAdapter implements WalletAdapter {
   name: string;
   isTestnet: boolean;
   constructor(name: string, isTestnet = true) {

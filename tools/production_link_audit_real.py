@@ -31,7 +31,7 @@ QMOI_DOMAINS = {
     'server': 'qserver.io',
     'cloud': 'qcloud.ai',
     'quantum': 'qquantum.tech',
-    'ai': 'alphaq.ai'
+    'ai': 'stableq.ai'
 }
 
 def find_qmoi_links(text):

@@ -18,7 +18,7 @@ describe("MasterLinkValidator ownership and type classification", () => {
   test("classifies third-party links as thirdparty", () => {
     const fn = validator.classifyOwnership.bind(validator);
     expect(fn("https://huggingface.co/spaces/test")).toBe("thirdparty");
-    expect(fn("https://github.com/thealphakenya/qmoi-enhanced")).toBe("thirdparty");
+    expect(fn("https://github.com/thestablekenya/qmoi-enhanced")).toBe("thirdparty");
     expect(fn("https://vercel.app/project")).toBe("thirdparty");
   });
 

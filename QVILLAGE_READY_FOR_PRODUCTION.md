@@ -220,7 +220,7 @@ Before go-live, verify:
 
 - [ ] Code pushed to main branch
 - [ ] GitHub Secrets configured (HF_API_TOKEN, etc.)
-- [ ] HF Space created at alphaqmoi/qvillage
+- [ ] HF Space created at stableqmoi/qvillage
 - [ ] First sync workflow executed successfully
 - [ ] HF Space updated with Gradio app
 - [ ] Cost monitoring active

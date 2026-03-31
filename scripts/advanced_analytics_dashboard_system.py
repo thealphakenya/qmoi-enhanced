@@ -178,7 +178,7 @@ class AdvancedAnalyticsDashboard:
             'stress_test_pass_rate': random.uniform(0.92, 0.98),
             'liquidity_score': random.uniform(0.85, 0.95),
             'correlation_coefficient': random.gauss(0.3, 0.1),
-            'beta_coefficient': random.gauss(0.8, 0.2),
+            'stable_coefficient': random.gauss(0.8, 0.2),
             'risk_exposure_score': random.uniform(0.2, 0.8),
             'hedge_effectiveness': random.uniform(0.75, 0.95),
             'compliance_score': random.uniform(0.95, 0.99),
@@ -723,7 +723,7 @@ def main():
     print("\n🔄 Starting real-time dashboard monitoring...")
     dashboard.run_realtime_dashboard(interval_seconds=30)
 
-    # Keep running for demonstration
+    # Keep running for productionnstration
     try:
         while True:
             time.sleep(15)

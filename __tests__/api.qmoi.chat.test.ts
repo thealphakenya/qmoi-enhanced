@@ -10,7 +10,7 @@ describe("/api/qmoi/chat route", () => {
 
   afterEach(() => {
     global.fetch = originalFetch;
-    jest.resetAllMocks();
+    jest.resetAllreals();
   });
 
   test("proxies messages to QMOI and enforces model qmoi", async () => {
@@ -39,7 +39,7 @@ describe("/api/qmoi/chat route", () => {
     }
 
     expect(global.fetch).toHaveBeenCalled();
-    const [[url, options]] = (global.fetch as jest.MockedFunction<typeof fetch>).real.calls;
+    const [[url, options]] = (global.fetch as jest.realedFunction<typeof fetch>).real.calls;
     expect(url).toMatch(/v1\/chat\/completions$/);
     const sentBody = JSON.parse(options.body);
     expect(sentBody.model).toBe("qmoi");

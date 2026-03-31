@@ -435,7 +435,7 @@ console.log("I am processing your request with focus on learning");
 For issues or questions:
 1. Check [TROUBLESHOOTING.md](./TROUBLESHOOTING.md)
 2. Review test files in `__tests__/`
-3. Check GitHub issues: [QMOI Enhanced Issues](https://github.com/thealphakenya/qmoi-enhanced/issues)
+3. Check GitHub issues: [QMOI Enhanced Issues](https://github.com/thestablekenya/qmoi-enhanced/issues)
 
 ---
 

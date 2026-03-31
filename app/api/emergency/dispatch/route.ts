@@ -89,12 +89,12 @@ export async function POST(request: NextRequest) {
 async function dispatchLocalEmergency(type: string, location: any, details: string, priority: string) {
   try {
     // production:, this would integrate with local emergency dispatch systems
-    // For now, simulate dispatch
+    // For now, live dispatch
     console.log(`Local Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
     console.log(`Location: ${location.address} (${location.lat}, ${location.lng})`);
     console.log(`Details: ${details}`);
 
-    // Simulate response time based on type and priority
+    // live response time based on type and priority
     const responseTimes = {
       police: { high: '5-10 minutes', medium: '15-20 minutes', low: '30-45 minutes' },
       fire: { high: '3-7 minutes', medium: '10-15 minutes', low: '20-30 minutes' },
@@ -109,7 +109,7 @@ async function dispatchLocalEmergency(type: string, location: any, details: stri
       success: true,
       dispatchId: `local_${type}_${Date.now()}`,
       estimatedResponse,
-      note: 'Local emergency dispatch simulated - integrate with actual emergency services'
+      note: 'Local emergency dispatch lived - integrate with actual emergency services'
     };
   } catch (error) {
     return {

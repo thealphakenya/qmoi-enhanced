@@ -38,7 +38,7 @@ title: "🚀 QMOI AI - Build Apps for All Platforms"
 
 (Generated on: 2025-08-30)
 
-GitHub Release: https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177
+GitHub Release: https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
 
 ### Windows
 ✅ qmoi_ai.zip (34 B) - Universal Windows package
@@ -70,7 +70,7 @@ GitHub Release: https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.1
 
 ### 🔗 GitHub Release
 - **Release**: v1.0.177
-- **URL**: https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177
+- **URL**: https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
 - **Status**: All platforms successfully built and published
 - **Automation**: Fully automated build pipeline with no billing issues
 

@@ -26,7 +26,7 @@ Failed (DNS):       9 (69.2%) ❌
   
 Healthy Domains ✅:
   • qvillage.com (92ms)
-  • alphaq.ai (86ms)
+  • stableq.ai (86ms)
   • qvillage.net (671ms)
   • qglobal.org (125ms)
 

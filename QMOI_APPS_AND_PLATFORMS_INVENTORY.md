@@ -18,11 +18,11 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 | App Name | Version | Description                      | Platforms                          | GitHub Link                                                                   | Status   |
 | -------- | ------- | -------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------- | -------- |
-| QMOI AI  | v1.2.3  | Main AI engine and orchestrator  | Win, Mac, Linux, Android, iOS, Web | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
-| QCity    | v1.2.3  | Unified prodice and app manager   | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
-| QVillage | v1.0.0  | Community collaboration platform | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
-| QStore   | v1.0.0  | Universal app store              | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
-| QSpace   | v1.0.0  | Cloud sync and backup            | All                                | [Release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
+| QMOI AI  | v1.2.3  | Main AI engine and orchestrator  | Win, Mac, Linux, Android, iOS, Web | [Release](https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
+| QCity    | v1.2.3  | Unified prodice and app manager   | All                                | [Release](https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
+| QVillage | v1.0.0  | Community collaboration platform | All                                | [Release](https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
+| QStore   | v1.0.0  | Universal app store              | All                                | [Release](https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
+| QSpace   | v1.0.0  | Cloud sync and backup            | All                                | [Release](https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ Built |
 
 ## Platform-Specific Binaries
 
@@ -31,66 +31,66 @@ This is the master inventory of all QMOI applications, their versions, supported
 - **qmoi_ai.exe** — Main Windows executable
   - Path: `downloads/windows/latest/qmoi_ai.exe`
   - Status: ⚠️ **[production READY] [production READY]** (169 bytes) — See build instructions below
-  - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe
+  - Download: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe
 
 ### macOS
 
 - **qmoi_ai.dmg** — macOS installer
   - Path: `downloads/mac/latest/qmoi_ai.dmg`
   - Status: ✅ Documented (verify on GitHub releases)
-  - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg
+  - Download: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg
 
 ### Linux
 
 - **qmoi_ai.AppImage** — Universal Linux binary
   - Path: `downloads/linux/latest/qmoi_ai.AppImage`
   - Status: ✅ Documented
-  - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage
+  - Download: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage
 
 - **qmoi_ai.deb** — Debian/Ubuntu package
   - Path: `downloads/linux/latest/qmoi_ai.deb`
   - Status: ✅ Documented
-  - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb
+  - Download: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb
 
 ### Android
 
 - **qmoi_ai.apk** — Android application package
   - Path: `downloads/android/latest/qmoi_ai.apk`
   - Status: ✅ Documented
-  - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk
+  - Download: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk
 
 - **qmoi_ai_smarttv.apk** — Android TV version
   - Path: `downloads/android_smarttv/latest/qmoi_ai_smarttv.apk`
   - Status: ✅ Documented
-  - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk
+  - Download: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk
 
 ### iOS
 
 - **qmoi_ai.ipa** — iOS application package
   - Path: `downloads/ios/latest/qmoi_ai.ipa`
   - Status: ✅ Documented (may require TestFlight for distribution)
-  - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa
+  - Download: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa
 
 ### Chromebook
 
 - **qmoi_ai.deb** — Chromebook Linux container package
   - Path: `downloads/chromebook/latest/qmoi_ai.deb`
   - Status: ✅ Documented
-  - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb
+  - Download: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb
 
 ### Raspberry Pi
 
 - **qmoi_ai.img** — Raspberry Pi image
   - Path: `downloads/raspberrypi/latest/qmoi_ai.img`
   - Status: ✅ Documented
-  - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img
+  - Download: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img
 
 ### Web
 
 - **qmoi-ai-web.zip** — Web version (React/Vue)
   - Path: `downloads/web/latest/qmoi-ai-web.zip`
   - Status: ✅ Documented
-  - Download: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-web.zip
+  - Download: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-web.zip
 
 ## Important Notes
 
@@ -110,7 +110,7 @@ This is the master inventory of all QMOI applications, their versions, supported
    ```
 
 2. **Download official release:**
-   - Visit: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+   - Visit: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
    - Look for `qmoi_ai.exe` (verify file size > 45MB)
    - Scan with antivirus before installation
 
@@ -138,9 +138,9 @@ This is the master inventory of all QMOI applications, their versions, supported
 
 ## GitHub Release Links
 
-- **Main Release (v1.2.3):** https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
-- **All Releases:** https://github.com/thealphakenya/qmoi-enhanced/releases
-- **Latest:** https://github.com/thealphakenya/qmoi-enhanced/releases/latest
+- **Main Release (v1.2.3):** https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
+- **All Releases:** https://github.com/thestablekenya/qmoi-enhanced/releases
+- **Latest:** https://github.com/thestablekenya/qmoi-enhanced/releases/latest
 
 ## Troubleshooting Installation
 
@@ -176,7 +176,7 @@ See `BUILD_COMPLETION_SUMMARY.md` and `BUILDAPPSFORALLPLATFORMS.md` for comprehe
 
 ---
 
-**For updates and announcements:** Follow releases at https://github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases
+**For updates and announcements:** Follow releases at https://github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases
 
 ## 🔄 Evolution Status
 

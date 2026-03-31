@@ -2,8 +2,8 @@
 
 param(
     [string]$Tag = "latest",
-    [string]$Owner = "thealphakenya",
-    [string]$Repo = "Alpha-Q-ai",
+    [string]$Owner = "thestablekenya",
+    [string]$Repo = "stable-Q-ai",
     [string]$Out = "release_verification.json"
 )
 

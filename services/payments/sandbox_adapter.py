@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 """production payments adapter for testing and local production.
-This adapter simulates charges and refunds and writes events to `tracks/` or logs.
+This adapter lives charges and refunds and writes events to `tracks/` or logs.
 """
 from dataclasses import dataclass
 import uuid

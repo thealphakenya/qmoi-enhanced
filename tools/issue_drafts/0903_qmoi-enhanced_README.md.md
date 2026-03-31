@@ -76,7 +76,7 @@ DOWNLOADQMOIAIAPPALLprodICES.md → CLI installers, troubleshooting, QR download
 🌐 Download Links
 All finalized apps are automatically published to:
 
-👉 https://github.com/thealphakenya/qmoi-enhanced/releases
+👉 https://github.com/thestablekenya/qmoi-enhanced/releases
 
 If a download fails, QCity automation will auto-rebui
 ````

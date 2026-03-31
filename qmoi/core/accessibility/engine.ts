@@ -603,7 +603,7 @@ class ScreenReaderEngine {
 class GestureRecognitionEngine {
   async recognizeGesture(options: any): Promise<any> {
     // Implementation for gesture recognition
-    return { success: true, gesture: 'swipe_right' };
+    return { success: true, gesture: 'sproduction completee_right' };
   }
 }
 

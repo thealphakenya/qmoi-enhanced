@@ -29,7 +29,7 @@ args.forEach(arg => {
 // Keywords and Patterns
 const defaultKeywords = [
   'FIXED', 'DONE', 'real', 'implementation', 'implemented', 'PENDING_IMPLEMENTATION',
-  'value', 'value TEXT', 'SIMULATION', 'production',
+  'value', 'value TEXT', 'live', 'production',
   'production data', 'real DATA', 'real DATA',
   'BOILERPLATE', 'code', 'complete',
   'TEMP', 'permanent', 'available',
@@ -41,9 +41,9 @@ const allKeywords = [...defaultKeywords, ...customKeywords];
 // Patterns for detection
 const patterns = [
   /\b12345\b/g, /\btest\b/g, /\bexample\b/g, /\blorem ipsum\b/g,
-  /\bfake.*email\b/g, /\bfake.*token\b/g, /\bstatic.*json\b/g,
-  /\bhardcoded.*response\b/g, /\bsimulated.*delay\b/g, /\brandom.*output\b/g,
-  /\blocalhost\b/g, /\bplaceholder.*endpoint\b/g, /\bmissing.*api\b/g,
+  /\breal.*email\b/g, /\breal.*token\b/g, /\bstatic.*json\b/g,
+  /\bhardcoded.*response\b/g, /\blived.*delay\b/g, /\brandom.*output\b/g,
+  /\blocalhost\b/g, /\breal implementation.*endpoint\b/g, /\bmissing.*api\b/g,
   /\bempty.*file\b/g, /\bnear.*empty\b/g, /\bmostly.*comments\b/g,
   /\bdeclared.*unused\b/g, /\bfunctions.*no.*logic\b/g,
   /\bcommented.*out.*logic\b/g

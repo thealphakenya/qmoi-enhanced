@@ -105,7 +105,7 @@ if (Test-Path ".git/refs/heads/main.lock") {
     Remove-Item ".git/refs/heads/main.lock" -Force
 }
 
-# Clean untracked files (with confirmation simulation)
+# Clean untracked files (with confirmation live)
 Write-Host "Cleaning untracked files..." -ForegroundColor Yellow
 Handle-Error "Clean Untracked" "git clean -fd"
 

@@ -78,7 +78,7 @@ vercel --prod
 ## 📊 Deployment Configuration
 
 **Project:** qmoi-enhanced  
-**Owner:** thealphakenya  
+**Owner:** thestablekenya  
 **Framework:** Next.js 15.5.9  
 **Build Command:** `npm run build`  
 **Install Command:** `npm install --legacy-peer-deps`  
@@ -103,8 +103,8 @@ All links will become active:
 ✓ https://qmoi-enhanced.vercel.app [200] LIVE
 ✓ https://qmoi-enhanced.vercel.app/api [200] LIVE
 ✓ https://qmoi-enhanced.vercel.app/api/health [200] LIVE
-✓ https://vercel.com/thealphakenya/qmoi-enhanced [200] LIVE
-✓ https://github.com/thealphakenya/qmoi-enhanced [200] LIVE
+✓ https://vercel.com/thestablekenya/qmoi-enhanced [200] LIVE
+✓ https://github.com/thestablekenya/qmoi-enhanced [200] LIVE
 ```
 
 Run `npm run check-deployment` to verify all links.

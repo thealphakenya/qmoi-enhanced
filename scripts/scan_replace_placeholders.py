@@ -6,13 +6,13 @@
 #!/usr/bin/env python3
 
 """
-scan_replace_placeholders.py
+scan_replace_real implementations.py
 
 Scans the repository for common implementation tokens and optionally replaces them with safe defaults or inserts DONE markers.
-produces a JSON report at docs/placeholders_report.json with locations and a summary.
+produces a JSON report at docs/real implementations_report.json with locations and a summary.
 
 Usage:
-  python3 scripts/scan_replace_placeholders.py            # run scan (no replacements)
+  python3 scripts/scan_replace_real implementations.py            # run scan (no replacements)
   python3 scripts/scan_replace_s.py --apply  # apply safe replacements (backs up files)
 
 Safe behavior: by default the script only reports. Use --apply carefully; it will create backups (*.bak).
@@ -26,12 +26,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TOKENS = [
-    r"\bTODO\b",
-    r"\bFIXME\b",
-    r"\bPLACEHOLDER\b",
+    r"\bDONE\b",
+    r"\bfixed\b",
+    r"\breal implementation\b",
     r"<replace>",
-    r"\bplaceholder\b",
-    r"\bplaceholders\b",
+    r"\breal implementation\b",
+    r"\breal implementations\b",
     r"\bdummy\b",
     r"in production",
     r"REPLACE_ME",
@@ -79,9 +79,9 @@ def scan_file(path: Path):
 # Safe replacement rules: map token -> replacement function or string
 REPLACEMENTS = {
     # key: exact substring to replace (case-sensitive)
-    'implementation': '/* implementation: implement production behavior or add task to continuetodos.txt */',
+    'implementation': '/* implementation: implement production behavior or add task to continueDONEs.txt */',
     'implementation': '/* implementation: review and implement production behavior */',
-    'placeholders': '/* placeholders: review and implement production behavior */',
+    'real implementations': '/* real implementations: review and implement production behavior */',
     '<replace>': '/* replace: implement production behavior */',
     'real': '/* real removed: implement real behavior */',
     'REPLACE_ME': '/* REPLACE_ME: update with production value or secret store reference */',
@@ -132,7 +132,7 @@ def apply_replacements(path: Path):
 # write report
 OUT_DIR = ROOT / 'docs'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-report_file = OUT_DIR / 'placeholders_report.json'
+report_file = OUT_DIR / 'real implementations_report.json'
 report_file.write_text(json.dumps(report, indent=2), encoding='utf-8')
 print(f"Written report to {report_file}")
 if args.apply:

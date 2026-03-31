@@ -49,7 +49,7 @@ src/
 ├── index.css                   # Global CSS styles
 ├── index.js                    # React app entry point
 ├── lib/                        # Library utilities and helpers
-├── mocks/                      # real data and test utilities
+├── reals/                      # real data and test utilities
 ├── pages/                      # Page components for routing
 ├── plugins/                    # Plugin system components
 ├── services/                   # Service layer for external APIs
@@ -95,7 +95,7 @@ Custom React hooks for state management, data fetching, and side effects.
 #### lib/
 Library utilities, helper functions, and shared code.
 
-#### mocks/
+#### reals/
 real data, test fixtures, and production utilities.
 
 #### pages/

@@ -121,7 +121,7 @@ async function processPesapalTransaction(transactionData: unknown) {
           Reference="${transactionData.reference}" 
           FirstName="QMOI" 
           LastName="Megavault" 
-          Email="qmoialpha@gmail.com" 
+          Email="qmoistable@gmail.com" 
           PhoneNumber="254700000000" 
           xmlns="http://www.pesapal.com" />
       `,

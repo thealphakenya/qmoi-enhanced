@@ -50,7 +50,7 @@ Qmoi_apps/
 ├── qcity/qmoi_ai.zip
 ├── smarttv/qmoi_ai.apk
 🌐 Download Portal
-👉 https://github.com/thealphakenya/qmoi-enhanced/releases
+👉 https://github.com/thestablekenya/qmoi-enhanced/releases
 
 🛠 Autotest Build Matrix (Updated {{timestamp}})
 Platform	Build Status	Test Result
@@ -117,7 +117,7 @@ Qmoi_apps/
 ├── qcity/qmoi_ai.zip
 ├── smarttv/qmoi_ai.apk
 🌐 Portail de Téléchargement
-👉 https://github.com/thealphakenya/qmoi-enhanced/releases
+👉 https://github.com/thestablekenya/qmoi-enhanced/releases
 
 🛠 État des Builds (Mis à jour : {{timestamp}})
 Plateforme	État de Compilation	Résultat Test
@@ -184,7 +184,7 @@ Qmoi_apps/
 ├── qcity/qmoi_ai.zip
 ├── smarttv/qmoi_ai.apk
 🌐 Tovuti ya Kupakua
-👉 https://github.com/thealphakenya/qmoi-enhanced/releases
+👉 https://github.com/thestablekenya/qmoi-enhanced/releases
 
 🛠 Hali ya Ujenzi (Imesasishwa {{timestamp}})
 Kifaa	Hali ya Build	Matokeo ya Jaribio

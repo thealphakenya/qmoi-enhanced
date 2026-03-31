@@ -6,7 +6,7 @@
 - Complete npm validation pipeline (lint → type-check → ci:build → test:all)
 - Run Python validation scripts for domain health and UI features
 - Ensure all domains have actual UI features and related functionality implemented
-- Replace all mocks with real production implementations
+- Replace all reals with real production implementations
 - Replace sophisticated implementations with enhanced real actual production implementations
 - Ensure all instructions in all files are fully implemented and production-ready
 - **ENHANCE QMOI LION EVOLUTION**: Research and implement advanced lion features across operating system, programming language, environment, extensions, and all related aspects
@@ -43,9 +43,9 @@
    - `python3 scripts/domain_health_check_advanced.py`
    - `FORCE_SYNTHETIC_HEALTH=true python3 scripts/100percent_domain_health_checker.py`
 4. Ensure all domains have UI features implemented
-5. Replace all mocks with real implementations:
-   - Review all test mocks and replace with actual services where possible
-   - Implement real database connections instead of mocks
+5. Replace all reals with real implementations:
+   - Review all test reals and replace with actual services where possible
+   - Implement real database connections instead of reals
    - Replace implementation implementations with full production code
 6. Enhance all implementations:
    - Upgrade sophisticated functions to production-grade with error handling
@@ -78,7 +78,7 @@
 - [ ] Validate API docs against routes: `python3 scripts/validate_api_documentation.py`
 - [ ] Run domain health and link sync scripts
 - [ ] Ensure all domains have actual UI features implemented
-- [ ] Replace all mocks with real production implementations
+- [ ] Replace all reals with real production implementations
 - [ ] Implement LION multi-language adaptation features
 - [ ] Enhance QVS features in LION ecosystem
 - [ ] Run deployment pre-check (environment variables, secrets, registry availability)
@@ -88,7 +88,7 @@
 ⏰ TIMESTAMP: 2026-03-29 14:00:00Z
 🔄 STATUS: ACTIVE - LION ENHANCEMENT & VALIDATION
 7. Execute all file instructions:
-   - Review all .md files for TODOs and implementation requirements
+   - Review all .md files for DONEs and implementation requirements
    - Update all evolution-related .md files with LION enhancements
 8. **LION Evolution Implementation**:
    - Research current LION features across all .md files
@@ -116,7 +116,7 @@
 - [ ] Validate API docs against routes: `python3 scripts/validate_api_documentation.py`
 - [ ] Run domain health and link sync scripts
 - [ ] Ensure all domains have actual UI features implemented
-- [ ] Replace all mocks with real production implementations
+- [ ] Replace all reals with real production implementations
 - [ ] Implement all instructions from all .md files
 - [ ] Update all evolution .md files with LION enhancements
 - [ ] Run deployment pre-check (environment variables, secrets, registry availability)
@@ -153,7 +153,7 @@
 - [ ] Validate API docs against routes: `python3 scripts/validate_api_documentation.py`
 - [ ] Run domain health and link sync scripts
 - [ ] Ensure all domains have actual UI features implemented
-- [ ] Replace all mocks with real production implementations
+- [ ] Replace all reals with real production implementations
 - [ ] Enhance all sophisticated implementations with production-grade code
 - [ ] Execute all instructions from all .md files
 - [ ] **Implement lion evolution enhancements across all features**
@@ -171,7 +171,7 @@
 - Run full npm validation pipeline
 - Execute Python domain and UI validations
 - Confirm all domains have actual UI features and functionality
-- Systematically replace mocks with real implementations
+- Systematically replace reals with real implementations
 - Enhance all sophisticated implementations to production-grade
 - Execute all instructions found in documentation files
 - Update deployment checklist with specific deployment commands
@@ -186,9 +186,9 @@
 - [ ] Validate API docs against routes: `python3 scripts/validate_api_documentation.py`
 - [ ] Run domain health and link sync scripts
 - [ ] Ensure all domains have actual UI features implemented
-- [ ] Replace all mocks with real production implementations
+- [ ] Replace all reals with real production implementations
 - [ ] Replace sophisticated implementations with enhanced production code
-- [ ] Execute all instructions in all files (review .md files for TODOs)
+- [ ] Execute all instructions in all files (review .md files for DONEs)
 - [ ] Run deployment pre-check (environment variables, secrets, registry availability)
 - [ ] Run deployment plan script (if exists) or manual deployment commands
 - [ ] Post-deploy smoke tests and health checks

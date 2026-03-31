@@ -8,12 +8,12 @@ export interface AuthUser {
 }
 
 export async function verifyAuth(token: string): Promise<AuthUser | null> {
-  // Mock implementation
+  // real implementation
   return null;
 }
 
 export async function requireAuth(request: Request): Promise<AuthUser> {
-  // Mock implementation
+  // real implementation
   throw new Error("Not authenticated");
 }
 

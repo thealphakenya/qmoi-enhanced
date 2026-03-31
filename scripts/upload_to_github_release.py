@@ -11,7 +11,7 @@ from qmoi_activity_logger import log_activity
 from pathlib import Path
 import time
 
-GITHUB_REPO = 'thealphakenya/stable-Q-ai'
+GITHUB_REPO = 'thestablekenya/stable-Q-ai'
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 QMOI_APPS_DIR = 'Qmoi_apps'
 RETRY_COUNT = 3

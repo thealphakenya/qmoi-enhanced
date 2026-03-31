@@ -75,7 +75,7 @@
 #### Working Domains:
 ```
 ✅ qvillage.com - Primary hub (Response: 92ms)
-✅ alphaq.ai - AI platform (Response: 86ms)
+✅ stableq.ai - AI platform (Response: 86ms)
 ✅ qvillage.net - Fallback (Response: 671ms)
 ✅ qglobal.org - Fallback (Response: 125ms)
 ```
@@ -97,7 +97,7 @@ The .qmoi.ai subdomain zone appears to have DNS configuration issues. All .qmoi.
 - qstore.qvillage.com → qstore.qvillage.com (ACTIVE)
 - qcity.qmoi.ai → qcity.qvillage.com (ACTIVE)
 - qmoi-space.qmoi.ai → space.qmoi.ai → qspace.qvillage.com (CHAIN)
-- q-stable.qmoi.ai → stable.alphaq.ai (ACTIVE)
+- q-stable.qmoi.ai → stable.stableq.ai (ACTIVE)
 
 ---
 
@@ -140,7 +140,7 @@ The .qmoi.ai subdomain zone appears to have DNS configuration issues. All .qmoi.
 PRIMARY HUBS (3):
   qvillage.com (✅ Primary, Healthy)
   qmoi.ai (❌ Main app, DNS failed)
-  alphaq.ai (✅ AI platform, Healthy)
+  stableq.ai (✅ AI platform, Healthy)
 
 CRITICAL SERVICES (2):
   qshare.qvillage.com (❌ File sharing, DNS failed)

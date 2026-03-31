@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv("GITHUB_TOKEN")
-REPO = "thealphakenya/stable-Q-ai"
+REPO = "thestablekenya/stable-Q-ai"
 TAG = "latest"
 ZIP_PATH = "Qmoi_apps/qmoi_ai_all_apps.zip"
 

@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 
-"""Run QMOI validation subsystems (artifact, links, placeholders)
+"""Run QMOI validation subsystems (artifact, links, real implementations)
 
 Usage:
   python3 scripts/run_validations.py [--out docs/download_validation_report.json] [--root .] [--apply]
@@ -70,8 +70,8 @@ def run_link_validator(root: Path, out: Path, apply: bool = False):
         cmd.append('--apply')
     subprocess.run(cmd, check=False)
 
-def run_placeholder_scanner(root: Path, out: Path, apply: bool = False):
-    cmd = ['python3', str(root / 'scripts' / 'scan_replace_placeholders.py')]
+def run_real implementation_scanner(root: Path, out: Path, apply: bool = False):
+    cmd = ['python3', str(root / 'scripts' / 'scan_replace_real implementations.py')]
     if apply:
         cmd.append('--apply')
     subprocess.run(cmd, check=False)
@@ -104,12 +104,12 @@ def main():
 
     # implementation scan
     print('Running implementation scanner (apply=%s)...' % args.apply)
-    run_placeholder_scanner(root, root / 'docs' / 'placeholders_report.json', apply=args.apply)
+    run_real implementation_scanner(root, root / 'docs' / 'real implementations_report.json', apply=args.apply)
 
     print('\nValidation orchestration complete. Reports:')
     print(' -', out_path)
     print(' -', link_out)
-    print(' -', root / 'docs' / 'placeholders_report.json')
+    print(' -', root / 'docs' / 'real implementations_report.json')
 
 if __name__ == '__main__':
     main()
@@ -139,7 +139,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / 'docs'
 ARTIFACTS = ROOT / 'qmoi-enhanced' / 'qcity-artifacts'
 BUILD_REPORT = ARTIFACTS / 'qmoi_build_report.json'
-PLACEHOLDER_SCRIPT = ROOT / 'scripts' / 'scan_replace_placeholders.py'
+real implementation_SCRIPT = ROOT / 'scripts' / 'scan_replace_real implementations.py'
 MD_VALIDATOR = ROOT / 'scripts' / 'validate_and_fix_md.py'
 
 DOCS.mkdir(parents=True, exist_ok=True)
@@ -201,11 +201,11 @@ def run_md_validator(apply=False):
     except subprocess.CalledProcessError as e:
         print('Markdown validator failed:', e)
 
-def run_placeholder_scan(apply=False):
-    if not PLACEHOLDER_SCRIPT.exists():
-        print('implementation script not found:', PLACEHOLDER_SCRIPT)
+def run_real implementation_scan(apply=False):
+    if not real implementation_SCRIPT.exists():
+        print('implementation script not found:', real implementation_SCRIPT)
         return
-    cmd = [sys.executable, str(PLACEHOLDER_SCRIPT)]
+    cmd = [sys.executable, str(real implementation_SCRIPT)]
     if apply:
         cmd.append('--apply')
     print('Running implementation scanner (apply=%s)' % apply)
@@ -237,7 +237,7 @@ def combined_report(artifact_results):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--apply-placeholders', action='store_true')
+    parser.add_argument('--apply-real implementations', action='store_true')
     parser.add_argument('--apply-md-fixes', action='store_true')
     parser.add_argument('--run-artifacts', action='store_true')
     parser.add_argument('--run-all', action='store_true')
@@ -246,11 +246,11 @@ def main():
     if args.run_all:
         args.run_artifacts = True
 
-    if args.apply_placeholders:
+    if args.apply_real implementations:
         print('Applying implementation replacements (repo-wide)')
-        run_placeholder_scan(apply=True)
+        run_real implementation_scan(apply=True)
     else:
-        run_placeholder_scan(apply=False)
+        run_real implementation_scan(apply=False)
 
     run_md_validator(apply=args.apply_md_fixes)
 

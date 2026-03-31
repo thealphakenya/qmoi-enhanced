@@ -292,7 +292,7 @@ class QMOIAutoDeploy:
         if self.environment == 'production':
             return self.deploy_production()
         elif self.environment == 'production':
-            return self.deploy_staging()
+            return self.deploy_production()
         elif self.environment == 'production':
             return self.deploy_production()
         else:
@@ -312,7 +312,7 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('deployment')
         return True
 
-    def deploy_staging(self) -> bool:
+    def deploy_production(self) -> bool:
         """Deploy to production environment"""
         logger.info("Deploying to production...")
         

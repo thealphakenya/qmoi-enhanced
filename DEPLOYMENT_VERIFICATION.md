@@ -239,7 +239,7 @@ When Vercel deployment completes, verify:
 
 - **Vercel Project:** https://vercel.com/dashboard/projects/qmoi-enhanced
 - **Deployed URL:** https://qmoi-enhanced.vercel.app
-- **GitHub Repo:** https://github.com/thealphakenya/qmoi-enhanced
+- **GitHub Repo:** https://github.com/thestablekenya/qmoi-enhanced
 - **Branch:** autosync-backup-20250926-232440
 
 ---

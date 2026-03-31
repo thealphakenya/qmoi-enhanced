@@ -153,7 +153,7 @@
 
 3. **Domain Routing**
    ```
-   Primary:           qmoi.ai, qvillage.com, alphaq.ai
+   Primary:           qmoi.ai, qvillage.com, stableq.ai
           ↓
    Service Domains:   api.qmoi.com, auth.qmoi.com, cdn.qmoi.com
         ↓ ↓ ↓
@@ -278,7 +278,7 @@ python3 scripts/domain_health_check.py --comprehensive
 Primary Domains (3):
   - qmoi.ai → Main AI engine
   - qvillage.com → Community hub
-  - alphaq.ai → AlphaQ platform
+  - stableq.ai → stableQ platform
 
 Service Domains (6):
   - api.qmoi.com → API server
@@ -334,7 +334,7 @@ Infrastructure (4+):
          "type": "AI_ENGINE",
          "primary": true,
          "health_check_path": "/api/health",
-         "failover_chain": ["alphaq.ai", "qvillage.com"]
+         "failover_chain": ["stableq.ai", "qvillage.com"]
        }
      ],
      "services": [
@@ -391,7 +391,7 @@ Infrastructure (4+):
 
 1. **Add LION to Project**
    ```bash
-   git clone https://github.com/thealphakenya/qmoi-lion.git
+   git clone https://github.com/thestablekenya/qmoi-lion.git
    cp -r qmoi-lion/src src/lion
    cp -r qmoi-lion/scripts scripts/lion
    ```
@@ -524,7 +524,7 @@ python3 scripts/lion/failover.py --test
 
 ## Support & Documentation
 
-- **GitHub**: [github.com/thealphakenya/qmoi-enhanced](https://github.com/thealphakenya/qmoi-enhanced)
+- **GitHub**: [github.com/thestablekenya/qmoi-enhanced](https://github.com/thestablekenya/qmoi-enhanced)
 - **Documentation**: [docs.qmoi.ai/lion](https://docs.qmoi.ai/lion)
 - **Status Page**: [status.qmoi.ai](https://status.qmoi.ai)
 - **Support**: support@qmoi.ai

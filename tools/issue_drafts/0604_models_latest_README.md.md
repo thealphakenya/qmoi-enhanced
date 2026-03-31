@@ -47,7 +47,7 @@ QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-h
   - data (Python):
     ```python
     from huggingface_hub import InferenceApi
-    api = InferenceApi(repo_id="alphaqmoi/qmoi-ai-system")
+    api = InferenceApi(repo_id="stableqmoi/qmoi-ai-system")
     result = api(inputs={"text": "Hello QMOI!"})
     print(result)
     ```

@@ -55,7 +55,7 @@ class PredictiveAnalyticsEngine:
 
     def generate_market_prediction(self, asset: str, timeframe: str) -> Dict[str, Any]:
         """Generate market prediction for an asset"""
-        # Simulate ML model prediction
+        # live ML model prediction
         base_price = self._get_current_price(asset)
         prediction_confidence = random.uniform(0.7, 0.95)
 
@@ -225,7 +225,7 @@ class AutonomousOperationsController:
 
     def _analyze_context_and_decide(self, context: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze context and make decision"""
-        # Simulate AI decision making
+        # live AI decision making
         risk_level = context.get('risk_level', 'MEDIUM')
         opportunity_score = context.get('opportunity_score', random.uniform(0, 1))
         market_condition = context.get('market_condition', 'NORMAL')
@@ -286,7 +286,7 @@ class FraudDetectionEngine:
 
     def analyze_transaction(self, transaction: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze a transaction for fraud indicators"""
-        # Simulate fraud analysis
+        # live fraud analysis
         anomaly_score = random.uniform(0, 1)
         risk_score = random.uniform(0, 1)
 
@@ -394,8 +394,8 @@ class AIPoweredTradingSystem:
 
         trading_decision = self.autonomous_controller.make_autonomous_decision(context)
 
-        # Simulate trade execution
-        trade_result = self._execute_simulated_trade(trading_decision, predictions)
+        # live trade execution
+        trade_result = self._execute_lived_trade(trading_decision, predictions)
 
         # Update portfolio value
         self.portfolio_value *= (1 + trade_result['pnl_percent'] / 100)
@@ -414,10 +414,10 @@ class AIPoweredTradingSystem:
         self.trading_log.append(cycle_result)
         return cycle_result
 
-    def _execute_simulated_trade(self, decision: Dict[str, Any],
+    def _execute_lived_trade(self, decision: Dict[str, Any],
                                predictions: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Execute a simulated trade based on decision"""
-        # Simulate trade execution
+        """Execute a lived trade based on decision"""
+        # live trade execution
         success = random.random() > 0.05  # 95% success rate
 
         if success:
@@ -472,7 +472,7 @@ class AIPoweredTradingSystem:
         max_drawdown = min(trade['trade_result']['pnl_percent'] for trade in executed_trades)
         best_trade = max(trade['trade_result']['pnl_percent'] for trade in executed_trades)
 
-        # Sharpe ratio simulation
+        # Sharpe ratio live
         returns = [trade['trade_result']['pnl_percent'] for trade in executed_trades]
         sharpe_ratio = statistics.mean(returns) / (statistics.stprod(returns) + 0.0001)  # Avoid division by zero
 

@@ -29,7 +29,7 @@ import { ModelRegistry } from "../src/components/q-city/ModelRegistry";
 
 describe("ModelRegistry component", () => {
   beforeEach(() => {
-    jest.resetAllMocks();
+    jest.resetAllreals();
     global.fetch = jest.fn(async (url: string, opts?: any) => {
       if (url === "/api/models") {
         return {

@@ -26,12 +26,12 @@ WORKSPACE_ROOT="$SCRIPT_DIR"
 ENV_MODE="${ENV_MODE:-production}"
 OPEN_BROWSER=false
 VERIFY_HEALTH=true
-START_MOCK_SERVER=false
+START_real_SERVER=false
 DEBUG_MODE=false
 
 # Ports
 HTTP_PORT=8080
-MOCK_SERVER_PORT=5000
+real_SERVER_PORT=5000
 prod_SERVER_PORT=3000
 
 # Colors for output
@@ -105,7 +105,7 @@ parse_arguments() {
         shift
         ;;
       --real-server)
-        START_MOCK_SERVER=true
+        START_real_SERVER=true
         shift
         ;;
       --open-browser)
@@ -149,7 +149,7 @@ Examples:
 Environment Variables:
   ENV_MODE            Set mode (production/production) [default: production]
   HTTP_PORT           HTTP server port [default: 8080]
-  MOCK_SERVER_PORT    real server port [default: 5000]
+  real_SERVER_PORT    real server port [default: 5000]
   prod_SERVER_PORT     prod server port [default: 3000]
 
 EOF
@@ -179,10 +179,10 @@ check_prerequisites() {
   log_success "npm: $NPM_VERSION"
 
   # Check Python (for real server if needed)
-  if [ "$START_MOCK_SERVER" = true ]; then
+  if [ "$START_real_SERVER" = true ]; then
     if ! command -v python3 &> /prod/null; then
       log_warning "Python3 is not installed; real server will not start"
-      START_MOCK_SERVER=false
+      START_real_SERVER=false
     else
       PYTHON_VERSION=$(python3 --version)
       log_success "Python3: $PYTHON_VERSION"
@@ -246,7 +246,7 @@ EOF
   export NEXT_PUBLIC_ENV="$ENV_MODE"
   export NODE_ENV="$ENV_MODE"
   export HTTP_PORT
-  export MOCK_SERVER_PORT
+  export real_SERVER_PORT
 
   log_success "Environment set to: $ENV_MODE"
 }
@@ -296,27 +296,27 @@ start_http_server() {
   cd "$WORKSPACE_ROOT"
 }
 
-start_mock_server() {
-  if [ "$START_MOCK_SERVER" != true ]; then
+start_real_server() {
+  if [ "$START_real_SERVER" != true ]; then
     return
   fi
 
   print_section "Starting real Backend Server"
 
-  # Check if mock_server.py exists
-  if [ ! -f "$WORKSPACE_ROOT/mock_server.py" ]; then
-    log_warning "mock_server.py not found; skipping real server"
+  # Check if real_server.py exists
+  if [ ! -f "$WORKSPACE_ROOT/real_server.py" ]; then
+    log_warning "real_server.py not found; skipping real server"
     return
   fi
 
-  log_info "Starting real server on port $MOCK_SERVER_PORT..."
+  log_info "Starting real server on port $real_SERVER_PORT..."
 
-  python3 "$WORKSPACE_ROOT/mock_server.py" > /tmp/real-server.log 2>&1 &
-  MOCK_SERVER_PID=$!
+  python3 "$WORKSPACE_ROOT/real_server.py" > /tmp/real-server.log 2>&1 &
+  real_SERVER_PID=$!
   sleep 2
 
-  if kill -0 $MOCK_SERVER_PID 2>/prod/null; then
-    log_success "real server started (PID: $MOCK_SERVER_PID)"
+  if kill -0 $real_SERVER_PID 2>/prod/null; then
+    log_success "real server started (PID: $real_SERVER_PID)"
   else
     log_error "Failed to start real server"
     cat /tmp/real-server.log
@@ -406,9 +406,9 @@ display_status_dashboard() {
     echo -e "  ${YELLOW}~${NC} HTTP Server      (Not started)"
   fi
 
-  if [ -n "$MOCK_SERVER_PID" ]; then
-    if kill -0 $MOCK_SERVER_PID 2>/prod/null; then
-      echo -e "  ${GREEN}✓${NC} real Server      (PID: $MOCK_SERVER_PID, Port: $MOCK_SERVER_PORT)"
+  if [ -n "$real_SERVER_PID" ]; then
+    if kill -0 $real_SERVER_PID 2>/prod/null; then
+      echo -e "  ${GREEN}✓${NC} real Server      (PID: $real_SERVER_PID, Port: $real_SERVER_PORT)"
     else
       echo -e "  ${RED}✗${NC} real Server      (STOPPED)"
     fi
@@ -430,8 +430,8 @@ display_status_dashboard() {
   echo -e "${GREEN}═ ACCESS POINTS ═══════════════════════════════════════════${NC}"
   echo "  HTTP Server:      http://localhost:$HTTP_PORT"
   echo "  prod Server:       http://localhost:$prod_SERVER_PORT"
-  if [ "$START_MOCK_SERVER" = true ]; then
-    echo "  real API:         http://localhost:$MOCK_SERVER_PORT"
+  if [ "$START_real_SERVER" = true ]; then
+    echo "  real API:         http://localhost:$real_SERVER_PORT"
   fi
   echo ""
 
@@ -478,8 +478,8 @@ cleanup() {
     kill $HTTP_SERVER_PID 2>/prod/null || true
   fi
 
-  if [ -n "$MOCK_SERVER_PID" ]; then
-    kill $MOCK_SERVER_PID 2>/prod/null || true
+  if [ -n "$real_SERVER_PID" ]; then
+    kill $real_SERVER_PID 2>/prod/null || true
   fi
 
   if [ -n "$prod_SERVER_PID" ]; then
@@ -507,7 +507,7 @@ main() {
   setup_environment
   install_dependencies
   start_http_server
-  start_mock_server
+  start_real_server
   start_prod_server
   verify_services
   display_status_dashboard

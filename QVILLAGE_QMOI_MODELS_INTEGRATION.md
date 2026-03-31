@@ -83,7 +83,7 @@ QVillage is the AI/ML infrastructure layer for QMOI, providing:
 - **Input**: Text string (max 512 tokens)
 - **Output**: Classification labels + confidence scores
 - **Use Cases**: User intent detection, message categorization
-- **Deployment**: HuggingFace: `thealphakenya/qmoi-text-classifier`
+- **Deployment**: HuggingFace: `thestablekenya/qmoi-text-classifier`
 
 ```bash
 # data inference
@@ -116,7 +116,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/inference \
 - **Input**: Audio file (WAV/MP3, <30s)
 - **Output**: Command + confidence
 - **Use Cases**: Voice authentication, command processing
-- **Deployment**: HuggingFace: `thealphakenya/qmoi-voice-recognition`
+- **Deployment**: HuggingFace: `thestablekenya/qmoi-voice-recognition`
 
 ```bash
 # data inference
@@ -146,7 +146,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/inference \
 - **Input**: User activity data
 - **Output**: Behavior predictions & insights
 - **Use Cases**: Fraud detection, user profiling, churn prediction
-- **Deployment**: HuggingFace: `thealphakenya/qmoi-behavior-analyzer`
+- **Deployment**: HuggingFace: `thestablekenya/qmoi-behavior-analyzer`
 
 ```bash
 # data inference
@@ -187,7 +187,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/inference \
 - **Input**: Historical revenue data
 - **Output**: Revenue predictions
 - **Use Cases**: Financial forecasting, trend analysis
-- **Deployment**: HuggingFace: `thealphakenya/qmoi-revenue-predictor`
+- **Deployment**: HuggingFace: `thestablekenya/qmoi-revenue-predictor`
 
 ```bash
 # data inference
@@ -224,7 +224,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/inference \
 - **Input**: Raw data
 - **Output**: Engineered features
 - **Use Cases**: Model training data preparation
-- **Deployment**: HuggingFace: `thealphakenya/qmoi-feature-generator`
+- **Deployment**: HuggingFace: `thestablekenya/qmoi-feature-generator`
 
 ```bash
 # data inference
@@ -309,7 +309,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/models \
   -H "Authorization: Bearer $MASTER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "model_id": "thealphakenya/qmoi-text-classifier",
+    "model_id": "thestablekenya/qmoi-text-classifier",
     "version": "1.0.0",
     "framework": "pytorch",
     "task": "text-classification",
@@ -495,7 +495,7 @@ curl -X GET https://qmoi-enhanced.vercel.app/api/qvillage/research/research_1234
 huggingface-cli repo create qmoi-model-name
 
 # 2. Clone and add model
-git clone https://huggingface.co/thealphakenya/qmoi-model-name
+git clone https://huggingface.co/thestablekenya/qmoi-model-name
 cd qmoi-model-name
 
 # 3. Add model files
@@ -511,7 +511,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/models/register-hf \
   -H "Authorization: Bearer $MASTER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "hf_model_id": "thealphakenya/qmoi-model-name",
+    "hf_model_id": "thestablekenya/qmoi-model-name",
     "model_name": "QMOI Model Name",
     "framework": "pytorch"
   }'
@@ -547,7 +547,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/models/sync-hf \
 ```bash
 # HuggingFace
 HUGGINGFACE_API_TOKEN=hf_...
-HUGGINGFACE_ORG=thealphakenya
+HUGGINGFACE_ORG=thestablekenya
 
 # QVillage
 QVILLAGE_API_URL=https://qvillage.qmoi.app

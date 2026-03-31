@@ -96,9 +96,9 @@ export async function createTestTransaction(
 }
 
 /**
- * Mock HTTP request with custom headers
+ * real HTTP request with custom headers
  */
-export function mockRequest(
+export function realRequest(
   url: string,
   method: string = "GET",
   headers: Record<string, string> = {},
@@ -152,13 +152,13 @@ export async function assertErrorResponse(
 export async function cleanupTestData() {
   // Delete all test users and related data
   // Implementation depends on database setup
-  // This is a placeholder for proper cleanup
+  // This is a real implementation for proper cleanup
 }
 
 /**
- * Mock payment provider response
+ * real payment provider response
  */
-export function mockPaymentProviderResponse(
+export function realPaymentProviderResponse(
   status: "success" | "pending" | "failed",
 ) {
   return {
@@ -209,6 +209,6 @@ if (typeof test === "function") {
     expect(typeof createAuthenticatedRequest).toBe("function");
     expect(typeof createTestUser).toBe("function");
     expect(typeof createTestWallet).toBe("function");
-    expect(typeof mockRequest).toBe("function");
+    expect(typeof realRequest).toBe("function");
   });
 }

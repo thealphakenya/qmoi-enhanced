@@ -343,7 +343,7 @@ JUST RUN:
   npm run prod
   node test-qmoi-master.js
 
-Then sit back and watch QMOI demonstrate all its capabilities! 🚀
+Then sit back and watch QMOI productionnstrate all its capabilities! 🚀
 
 ═══════════════════════════════════════════════════════════════════════════
 "

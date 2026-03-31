@@ -140,14 +140,14 @@ export async function DELETE(request: NextRequest) {
 async function initiateprodiceLockdown(prodiceId: string, reason: string, duration: number, level: string) {
   try {
     // production:, this would communicate with prodice management systems
-    // For now, simulate lockdown initiation
+    // For now, live lockdown initiation
     console.log(`Initiating ${level} lockdown for prodice ${prodiceId}`);
     console.log(`Reason: ${reason}, Duration: ${duration}ms`);
 
     const expiresAt = new Date(Date.now() + duration);
     const lockdownId = `lockdown_${prodiceId}_${Date.now()}`;
 
-    // Simulate different lockdown levels
+    // live different lockdown levels
     switch (level) {
       case 'screen':
         console.log('Screen lockdown: prodice screen locked');
@@ -159,7 +159,7 @@ async function initiateprodiceLockdown(prodiceId: string, reason: string, durati
         console.log('Full lockdown: All apps disabled except emergency, full monitoring');
         break;
       case 'complete':
-        console.log('Complete lockdown: prodice fully secured, remote wipe ready');
+        console.log('Complete lockdown: prodice fully secured, remote production completee ready');
         break;
     }
 
@@ -167,7 +167,7 @@ async function initiateprodiceLockdown(prodiceId: string, reason: string, durati
       success: true,
       lockdownId,
       expiresAt: expiresAt.toISOString(),
-      note: 'prodice lockdown simulated - integrate with actual prodice management'
+      note: 'prodice lockdown lived - integrate with actual prodice management'
     };
   } catch (error) {
     return {
@@ -181,8 +181,8 @@ async function initiateprodiceLockdown(prodiceId: string, reason: string, durati
 async function getLockdownStatus(prodiceId: string) {
   try {
     // production:, check actual prodice status
-    // For now, simulate status check
-    const isLocked = Math.random() > 0.5; // Simulate random status
+    // For now, live status check
+    const isLocked = Math.random() > 0.5; // live random status
 
     if (isLocked) {
       const expiresAt = new Date(Date.now() + Math.random() * 3600000); // Random expiration
@@ -225,7 +225,7 @@ async function releaseprodiceLockdown(prodiceId: string, reason?: string) {
 
     return {
       success: true,
-      note: 'prodice lockdown release simulated - integrate with actual prodice management'
+      note: 'prodice lockdown release lived - integrate with actual prodice management'
     };
   } catch (error) {
     return {

@@ -1,10 +1,10 @@
 # [production READY] this file has no remaining production markers
 [
   {
-    "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/262642597",
-    "assets_url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/262642597/assets",
-    "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262642597/assets{?name,label}",
-    "html_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5",
+    "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/262642597",
+    "assets_url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/262642597/assets",
+    "upload_url": "https://uploads.github.com/repos/thestablekenya/qmoi-enhanced/releases/262642597/assets{?name,label}",
+    "html_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.5",
     "id": 262642597,
     "author": {
       "login": "king-king7",
@@ -39,7 +39,7 @@
     "published_at": "2025-11-15T07:52:09Z",
     "assets": [
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884131",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884131",
         "id": 316884131,
         "node_id": "RA_kwDOP3Kp8M4S40Sj",
         "name": "admin.zip",
@@ -72,10 +72,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:45Z",
         "updated_at": "2025-11-15T23:09:46Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/admin.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/admin.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316709394",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316709394",
         "id": 316709394,
         "node_id": "RA_kwDOP3Kp8M4S4JoS",
         "name": "app-release.apk",
@@ -108,10 +108,10 @@
         "download_count": 3,
         "created_at": "2025-11-15T07:52:11Z",
         "updated_at": "2025-11-15T07:52:12Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/app-release.apk"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/app-release.apk"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884308",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884308",
         "id": 316884308,
         "node_id": "RA_kwDOP3Kp8M4S40VU",
         "name": "checksums.txt",
@@ -144,10 +144,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:10:04Z",
         "updated_at": "2025-11-15T23:10:05Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/checksums.txt"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/checksums.txt"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884167",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884167",
         "id": 316884167,
         "node_id": "RA_kwDOP3Kp8M4S40TH",
         "name": "deals.zip",
@@ -180,10 +180,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:47Z",
         "updated_at": "2025-11-15T23:09:47Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/deals.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/deals.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884174",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884174",
         "id": 316884174,
         "node_id": "RA_kwDOP3Kp8M4S40TO",
         "name": "q-stable.zip",
@@ -216,10 +216,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:51Z",
         "updated_at": "2025-11-15T23:09:51Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/q-stable.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/q-stable.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884292",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884292",
         "id": 316884292,
         "node_id": "RA_kwDOP3Kp8M4S40VE",
         "name": "qcity_package.zip",
@@ -252,10 +252,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:59Z",
         "updated_at": "2025-11-15T23:09:59Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qcity_package.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qcity_package.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884170",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884170",
         "id": 316884170,
         "node_id": "RA_kwDOP3Kp8M4S40TK",
         "name": "qmoi-ai.zip",
@@ -288,10 +288,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:49Z",
         "updated_at": "2025-11-15T23:09:49Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-ai.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-ai.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316709398",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316709398",
         "id": 316709398,
         "node_id": "RA_kwDOP3Kp8M4S4JoW",
         "name": "qmoi-release.exe",
@@ -324,10 +324,10 @@
         "download_count": 3,
         "created_at": "2025-11-15T07:52:15Z",
         "updated_at": "2025-11-15T07:52:15Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-release.exe"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-release.exe"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316709400",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316709400",
         "id": 316709400,
         "node_id": "RA_kwDOP3Kp8M4S4JoY",
         "name": "qmoi-release.ipa",
@@ -360,10 +360,10 @@
         "download_count": 3,
         "created_at": "2025-11-15T07:52:16Z",
         "updated_at": "2025-11-15T07:52:17Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-release.ipa"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-release.ipa"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884177",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884177",
         "id": 316884177,
         "node_id": "RA_kwDOP3Kp8M4S40TR",
         "name": "qmoi-space.zip",
@@ -396,10 +396,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:52Z",
         "updated_at": "2025-11-15T23:09:53Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-space.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-space.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884090",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884090",
         "id": 316884090,
         "node_id": "RA_kwDOP3Kp8M4S40R6",
         "name": "qmoi.zip",
@@ -432,10 +432,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:44Z",
         "updated_at": "2025-11-15T23:09:44Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884295",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884295",
         "id": 316884295,
         "node_id": "RA_kwDOP3Kp8M4S40VH",
         "name": "qmoi_ai.apk",
@@ -468,10 +468,10 @@
         "download_count": 1,
         "created_at": "2025-11-15T23:10:01Z",
         "updated_at": "2025-11-15T23:10:01Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.apk"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.apk"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884082",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884082",
         "id": 316884082,
         "node_id": "RA_kwDOP3Kp8M4S40Ry",
         "name": "qmoi_ai.AppImage",
@@ -504,10 +504,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:41Z",
         "updated_at": "2025-11-15T23:09:41Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.AppImage"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.AppImage"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884086",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884086",
         "id": 316884086,
         "node_id": "RA_kwDOP3Kp8M4S40R2",
         "name": "qmoi_ai.deb",
@@ -540,10 +540,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:42Z",
         "updated_at": "2025-11-15T23:09:43Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.deb"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.deb"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884279",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884279",
         "id": 316884279,
         "node_id": "RA_kwDOP3Kp8M4S40U3",
         "name": "qmoi_ai.dmg",
@@ -576,10 +576,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:56Z",
         "updated_at": "2025-11-15T23:09:57Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.dmg"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.dmg"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884353",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884353",
         "id": 316884353,
         "node_id": "RA_kwDOP3Kp8M4S40WB",
         "name": "qmoi_ai.exe",
@@ -612,10 +612,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:10:08Z",
         "updated_at": "2025-11-15T23:10:09Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884350",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884350",
         "id": 316884350,
         "node_id": "RA_kwDOP3Kp8M4S40V-",
         "name": "qmoi_ai.exe.sha256",
@@ -648,10 +648,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:10:07Z",
         "updated_at": "2025-11-15T23:10:07Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe.sha256"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe.sha256"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316882388",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316882388",
         "id": 316882388,
         "node_id": "RA_kwDOP3Kp8M4S4z3U",
         "name": "qmoi_ai.img",
@@ -684,10 +684,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:07:15Z",
         "updated_at": "2025-11-15T23:09:39Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884180",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884180",
         "id": 316884180,
         "node_id": "RA_kwDOP3Kp8M4S40TU",
         "name": "qmoi_ai.ipa",
@@ -720,10 +720,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:54Z",
         "updated_at": "2025-11-15T23:09:54Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.ipa"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.ipa"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884213",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884213",
         "id": 316884213,
         "node_id": "RA_kwDOP3Kp8M4S40T1",
         "name": "qmoi_ai_chromebook.zip",
@@ -756,10 +756,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:55Z",
         "updated_at": "2025-11-15T23:09:55Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_chromebook.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_chromebook.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316884301",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884301",
         "id": 316884301,
         "node_id": "RA_kwDOP3Kp8M4S40VN",
         "name": "qmoi_ai_smarttv.apk",
@@ -792,10 +792,10 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:10:02Z",
         "updated_at": "2025-11-15T23:10:02Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_smarttv.apk"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_smarttv.apk"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316709391",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316709391",
         "id": 316709391,
         "node_id": "RA_kwDOP3Kp8M4S4JoP",
         "name": "SHA256SUMS.txt",
@@ -828,18 +828,18 @@
         "download_count": 4,
         "created_at": "2025-11-15T07:52:10Z",
         "updated_at": "2025-11-15T07:52:10Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt"
       }
     ],
-    "tarball_url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/tarball/v1.2.5",
-    "zipball_url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/zipball/v1.2.5",
+    "tarball_url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/tarball/v1.2.5",
+    "zipball_url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/zipball/v1.2.5",
     "body": "Multi-platform release with Android, Windows, iOS and PWAs"
   },
   {
-    "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/262440800",
-    "assets_url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/262440800/assets",
-    "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/262440800/assets{?name,label}",
-    "html_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4",
+    "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/262440800",
+    "assets_url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/262440800/assets",
+    "upload_url": "https://uploads.github.com/repos/thestablekenya/qmoi-enhanced/releases/262440800/assets{?name,label}",
+    "html_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4",
     "id": 262440800,
     "author": {
       "login": "king-king7",
@@ -874,7 +874,7 @@
     "published_at": "2025-11-14T13:45:29Z",
     "assets": [
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316404829",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316404829",
         "id": 316404829,
         "node_id": "RA_kwDOP3Kp8M4S2_Rd",
         "name": "qcity_package.zip",
@@ -907,10 +907,10 @@
         "download_count": 2,
         "created_at": "2025-11-14T13:46:47Z",
         "updated_at": "2025-11-14T13:46:47Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qcity_package.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qcity_package.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316404816",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316404816",
         "id": 316404816,
         "node_id": "RA_kwDOP3Kp8M4S2_RQ",
         "name": "qmoi_ai.apk",
@@ -943,10 +943,10 @@
         "download_count": 2,
         "created_at": "2025-11-14T13:46:45Z",
         "updated_at": "2025-11-14T13:46:45Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.apk"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.apk"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316404819",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316404819",
         "id": 316404819,
         "node_id": "RA_kwDOP3Kp8M4S2_RT",
         "name": "qmoi_ai.ipa",
@@ -979,10 +979,10 @@
         "download_count": 2,
         "created_at": "2025-11-14T13:46:45Z",
         "updated_at": "2025-11-14T13:46:46Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.ipa"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.ipa"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316404824",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316404824",
         "id": 316404824,
         "node_id": "RA_kwDOP3Kp8M4S2_RY",
         "name": "qmoi_ai_chromebook.zip",
@@ -1015,10 +1015,10 @@
         "download_count": 2,
         "created_at": "2025-11-14T13:46:47Z",
         "updated_at": "2025-11-14T13:46:47Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai_chromebook.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai_chromebook.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316404822",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316404822",
         "id": 316404822,
         "node_id": "RA_kwDOP3Kp8M4S2_RW",
         "name": "qmoi_ai_smarttv.apk",
@@ -1051,18 +1051,18 @@
         "download_count": 2,
         "created_at": "2025-11-14T13:46:46Z",
         "updated_at": "2025-11-14T13:46:46Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai_smarttv.apk"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai_smarttv.apk"
       }
     ],
-    "tarball_url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/tarball/v1.2.4",
-    "zipball_url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/zipball/v1.2.4",
+    "tarball_url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/tarball/v1.2.4",
+    "zipball_url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/zipball/v1.2.4",
     "body": "# Release v1.2.4\n\n- Replaced 5 corrupted packages with valid packages (Android, iOS, SmartTV, Chromebook, QCity)\n- Added CI workflow to build Android & PWAs (.github/workflows/build-and-release.yml)\n- Secured file/payload/status APIs under `routes/api/qmoi` (token auth, logging, safe paths)\n- Regenerated release manifest and ran verification scripts\n\nVerification summary:\n- Manifest assets: 16\n- Verified OK: 9\n- Verified Broken: 1\n\nSee `reports/final_release_verification.json` for details.\n"
   },
   {
-    "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541",
-    "assets_url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets",
-    "upload_url": "https://uploads.github.com/repos/thealphakenya/qmoi-enhanced/releases/261919541/assets{?name,label}",
-    "html_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3",
+    "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/261919541",
+    "assets_url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/261919541/assets",
+    "upload_url": "https://uploads.github.com/repos/thestablekenya/qmoi-enhanced/releases/261919541/assets{?name,label}",
+    "html_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3",
     "id": 261919541,
     "author": {
       "login": "simtwov",
@@ -1097,7 +1097,7 @@
     "published_at": "2025-11-12T22:46:09Z",
     "assets": [
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316298",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316298",
         "id": 316316298,
         "node_id": "RA_kwDOP3Kp8M4S2pqK",
         "name": "admin.zip",
@@ -1130,10 +1130,10 @@
         "download_count": 3,
         "created_at": "2025-11-14T08:55:28Z",
         "updated_at": "2025-11-14T08:55:28Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/admin.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/admin.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/315704878",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/315704878",
         "id": 315704878,
         "node_id": "RA_kwDOP3Kp8M4S0UYu",
         "name": "checksums.txt",
@@ -1166,10 +1166,10 @@
         "download_count": 1,
         "created_at": "2025-11-12T22:47:23Z",
         "updated_at": "2025-11-12T22:47:23Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/checksums.txt"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/checksums.txt"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316301",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316301",
         "id": 316316301,
         "node_id": "RA_kwDOP3Kp8M4S2pqN",
         "name": "deals.zip",
@@ -1202,10 +1202,10 @@
         "download_count": 1,
         "created_at": "2025-11-14T08:55:29Z",
         "updated_at": "2025-11-14T08:55:29Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/deals.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/deals.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316306",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316306",
         "id": 316316306,
         "node_id": "RA_kwDOP3Kp8M4S2pqS",
         "name": "q-stable.zip",
@@ -1238,10 +1238,10 @@
         "download_count": 1,
         "created_at": "2025-11-14T08:55:30Z",
         "updated_at": "2025-11-14T08:55:30Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/q-stable.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/q-stable.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316332",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316332",
         "id": 316316332,
         "node_id": "RA_kwDOP3Kp8M4S2pqs",
         "name": "qcity_package.zip",
@@ -1274,10 +1274,10 @@
         "download_count": 3,
         "created_at": "2025-11-14T08:55:37Z",
         "updated_at": "2025-11-14T08:55:38Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316304",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316304",
         "id": 316316304,
         "node_id": "RA_kwDOP3Kp8M4S2pqQ",
         "name": "qmoi-ai.zip",
@@ -1310,10 +1310,10 @@
         "download_count": 3,
         "created_at": "2025-11-14T08:55:29Z",
         "updated_at": "2025-11-14T08:55:29Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316309",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316309",
         "id": 316316309,
         "node_id": "RA_kwDOP3Kp8M4S2pqV",
         "name": "qmoi-space.zip",
@@ -1346,10 +1346,10 @@
         "download_count": 3,
         "created_at": "2025-11-14T08:55:30Z",
         "updated_at": "2025-11-14T08:55:31Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-space.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-space.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316295",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316295",
         "id": 316316295,
         "node_id": "RA_kwDOP3Kp8M4S2pqH",
         "name": "qmoi.zip",
@@ -1382,10 +1382,10 @@
         "download_count": 1,
         "created_at": "2025-11-14T08:55:27Z",
         "updated_at": "2025-11-14T08:55:28Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316333",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316333",
         "id": 316316333,
         "node_id": "RA_kwDOP3Kp8M4S2pqt",
         "name": "qmoi_ai.apk",
@@ -1418,10 +1418,10 @@
         "download_count": 6,
         "created_at": "2025-11-14T08:55:38Z",
         "updated_at": "2025-11-14T08:55:39Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316281",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316281",
         "id": 316316281,
         "node_id": "RA_kwDOP3Kp8M4S2pp5",
         "name": "qmoi_ai.AppImage",
@@ -1454,10 +1454,10 @@
         "download_count": 0,
         "created_at": "2025-11-14T08:55:24Z",
         "updated_at": "2025-11-14T08:55:25Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316288",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316288",
         "id": 316316288,
         "node_id": "RA_kwDOP3Kp8M4S2pqA",
         "name": "qmoi_ai.deb",
@@ -1490,10 +1490,10 @@
         "download_count": 2,
         "created_at": "2025-11-14T08:55:25Z",
         "updated_at": "2025-11-14T08:55:27Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316327",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316327",
         "id": 316316327,
         "node_id": "RA_kwDOP3Kp8M4S2pqn",
         "name": "qmoi_ai.dmg",
@@ -1526,10 +1526,10 @@
         "download_count": 0,
         "created_at": "2025-11-14T08:55:34Z",
         "updated_at": "2025-11-14T08:55:37Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316342",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316342",
         "id": 316316342,
         "node_id": "RA_kwDOP3Kp8M4S2pq2",
         "name": "qmoi_ai.exe",
@@ -1562,10 +1562,10 @@
         "download_count": 0,
         "created_at": "2025-11-14T08:55:43Z",
         "updated_at": "2025-11-14T08:55:43Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316338",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316338",
         "id": 316316338,
         "node_id": "RA_kwDOP3Kp8M4S2pqy",
         "name": "qmoi_ai.exe.sha256",
@@ -1598,10 +1598,10 @@
         "download_count": 1,
         "created_at": "2025-11-14T08:55:41Z",
         "updated_at": "2025-11-14T08:55:42Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316311",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316311",
         "id": 316316311,
         "node_id": "RA_kwDOP3Kp8M4S2pqX",
         "name": "qmoi_ai.ipa",
@@ -1634,10 +1634,10 @@
         "download_count": 3,
         "created_at": "2025-11-14T08:55:31Z",
         "updated_at": "2025-11-14T08:55:33Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316324",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316324",
         "id": 316316324,
         "node_id": "RA_kwDOP3Kp8M4S2pqk",
         "name": "qmoi_ai_chromebook.zip",
@@ -1670,10 +1670,10 @@
         "download_count": 3,
         "created_at": "2025-11-14T08:55:33Z",
         "updated_at": "2025-11-14T08:55:33Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip"
       },
       {
-        "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/assets/316316335",
+        "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316335",
         "id": 316316335,
         "node_id": "RA_kwDOP3Kp8M4S2pqv",
         "name": "qmoi_ai_smarttv.apk",
@@ -1706,11 +1706,11 @@
         "download_count": 3,
         "created_at": "2025-11-14T08:55:39Z",
         "updated_at": "2025-11-14T08:55:41Z",
-        "browser_download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk"
       }
     ],
-    "tarball_url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/tarball/v1.2.3",
-    "zipball_url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/zipball/v1.2.3",
-    "body": "# QMOI v1.2.3 Release\n\n## What's Included\n✅ All 6 QMOI Apps\n✅ 12+ Platforms Supported\n✅ 72+ Platform-Specific Builds\n\n## Apps\n- QMOI AI (v1.2.3)\n- QCity (v2.0.1)\n- QShare (v1.0.0)\n- Yap (v1.1.0)\n- QStore (v1.0.0)\n- QVillage (v1.0.0)\n\n## Platforms\n**Desktop:** Windows, macOS, Linux\n**Mobile:** Android, iOS\n**IoT:** Raspberry Pi, Chromebook, Smart TV, Wear OS, Web/PWA, Docker\n\n## Download & Install\n1. Download the file for your platform\n2. Verify SHA256 checksum (included below)\n3. Run installer or execute file\n4. Enjoy!\n\n## SHA256 Checksums\nSee assets section for checksums.txt\n\n## Documentation\n- [Quick Start Guide](https://github.com/thealphakenya/qmoi-enhanced#quick-start)\n- [Installation Guide](https://github.com/thealphakenya/qmoi-enhanced#installation)\n- [Troubleshooting](https://github.com/thealphakenya/qmoi-enhanced#troubleshooting)\n\n---\n**Released:** November 12, 2025\n**Status:** production Ready\n**All Systems Go:** ✅"
+    "tarball_url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/tarball/v1.2.3",
+    "zipball_url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/zipball/v1.2.3",
+    "body": "# QMOI v1.2.3 Release\n\n## What's Included\n✅ All 6 QMOI Apps\n✅ 12+ Platforms Supported\n✅ 72+ Platform-Specific Builds\n\n## Apps\n- QMOI AI (v1.2.3)\n- QCity (v2.0.1)\n- QShare (v1.0.0)\n- Yap (v1.1.0)\n- QStore (v1.0.0)\n- QVillage (v1.0.0)\n\n## Platforms\n**Desktop:** Windows, macOS, Linux\n**Mobile:** Android, iOS\n**IoT:** Raspberry Pi, Chromebook, Smart TV, Wear OS, Web/PWA, Docker\n\n## Download & Install\n1. Download the file for your platform\n2. Verify SHA256 checksum (included below)\n3. Run installer or execute file\n4. Enjoy!\n\n## SHA256 Checksums\nSee assets section for checksums.txt\n\n## Documentation\n- [Quick Start Guide](https://github.com/thestablekenya/qmoi-enhanced#quick-start)\n- [Installation Guide](https://github.com/thestablekenya/qmoi-enhanced#installation)\n- [Troubleshooting](https://github.com/thestablekenya/qmoi-enhanced#troubleshooting)\n\n---\n**Released:** November 12, 2025\n**Status:** production Ready\n**All Systems Go:** ✅"
   }
 ]

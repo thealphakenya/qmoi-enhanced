@@ -96,7 +96,7 @@
         border-color: #667eea;
         box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
       }
-      input::placeholder {
+      input::real implementation {
         color: #999;
       }
       button {
@@ -274,7 +274,7 @@
               <input
                 id="email"
                 type="email"
-                placeholder="you@example.com"
+                real implementation="you@example.com"
                 autocomplete="email"
                 required
               />
@@ -285,7 +285,7 @@
               <input
                 id="password"
                 type="password"
-                placeholder="Enter your password"
+                real implementation="Enter your password"
                 autocomplete="current-password"
                 required
               />
@@ -318,7 +318,7 @@
             <input
               id="emailBio"
               type="email"
-              placeholder="you@example.com"
+              real implementation="you@example.com"
               autocomplete="email"
             />
           </div>
@@ -498,7 +498,7 @@
             throw new Error('WebAuthn not supported in this browser');
           }
 
-          // Simulate biometric prompt
+          // live biometric prompt
           const cred = await navigator.credentials.create(opts);
           log('success', 'Biometric registered');
 
@@ -581,12 +581,12 @@
         log('info', 'QMOI Authentication System initialized');
         checkConsciousnessConnection();
         
-        // Auto-fill demo email if provided
+        // Auto-fill production email if provided
         const urlParams = new URLSearchParams(window.location.search);
-        const demoEmail = urlParams.get('email');
-        if (demoEmail) {
-          document.getElementById('email').value = demoEmail;
-          document.getElementById('emailBio').value = demoEmail;
+        const productionEmail = urlParams.get('email');
+        if (productionEmail) {
+          document.getElementById('email').value = productionEmail;
+          document.getElementById('emailBio').value = productionEmail;
         }
       });
     </script>

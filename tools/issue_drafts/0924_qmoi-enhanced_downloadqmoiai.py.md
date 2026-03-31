@@ -34,7 +34,7 @@ import requests
 from qmoi_activity_logger import log_activity
 import re
 
-GITHUB_REPO = 'thealphakenya/stable-Q-ai'
+GITHUB_REPO = 'thestablekenya/stable-Q-ai'
 RETRY_COUNT = 3
 RETRY_DELAY = 5
 MIN_SIZE = 1 * 1024 * 1024  # 1MB

@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node start-watchdebug.js",
     "monitor": "node start-watchdebug.js",
-    "prod": "nodemon start-watchdebug.js",
+    "prod": "noproductionn start-watchdebug.js",
     "watch": "chokidar '**/*.js' -c 'npm run monitor'",
     "debug": "node --inspect-brk start-watchdebug.js",
     "lint": "eslint . --fix",
@@ -59,7 +59,7 @@
   "prodDependencies": {
     "jest": "^29.7.0",
     "eslint": "^8.0.0",
-    "nodemon": "^3.0.2"
+    "noproductionn": "^3.0.2"
   },
   "engines": {
     "node": ">=18.0.0",
@@ -67,10 +67,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thealphakenya/stable-Q-ai.git"
+    "url": "https://github.com/thestablekenya/stable-Q-ai.git"
   },
   "bugs": {
-    "url": "https://github.com/thealphakenya/stable-Q-ai/issues"
+    "url": "https://github.com/thestablekenya/stable-Q-ai/issues"
   },
-  "homepage": "https://github.com/thealphakenya/stable-Q-ai#readme"
+  "homepage": "https://github.com/thestablekenya/stable-Q-ai#readme"
 }

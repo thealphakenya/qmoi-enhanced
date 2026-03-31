@@ -11,7 +11,7 @@ Automatically updates the Hugging Face model card (README.md) with dynamic badge
 Usage:
   python scripts/update_model_card.py --repo <repo_id> --version <version> --health <health> --status <status> --dashboard <dashboard_url> --status-url <status_url> [--token <hf_token>]
 
-- repo_id: Hugging Face repo id (e.g., alphaqmoi/qmoi-ai-system)
+- repo_id: Hugging Face repo id (e.g., stableqmoi/qmoi-ai-system)
 - version: Latest model version (e.g., 2.0.0)
 - health: Health percentage (e.g., 99.8)
 - status: Health status (e.g., healthy, warning, error)
@@ -76,7 +76,7 @@ QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-h
 - **Health:** HEALTH% (STATUS)
 
 ## Links & Resources
-- [QMOI Hugging Face Space](https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)
+- [QMOI Hugging Face Space](https://huggingface.co/spaces/stableqmoi/qmoi-ai-system)
 - [QMOI Project Documentation](https://github.com/your-org/stable-Q-ai)
 - [QMOI Dashboard](DASHBOARD_URL)
 - [Live Status](STATUS_URL)
@@ -87,7 +87,7 @@ QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-h
   - data (Python):
     ```python
     from huggingface_hub import InferenceApi
-    api = InferenceApi(repo_id="alphaqmoi/qmoi-ai-system")
+    api = InferenceApi(repo_id="stableqmoi/qmoi-ai-system")
     result = api(inputs={"text": "Hello QMOI!"})
     print(result)
     ```
@@ -172,7 +172,7 @@ def update_model_card(repo_id, version, health, status, dashboard_url, status_ur
 
 def main():
     parser = argparse.ArgumentParser(description='QMOI Hugging Face Model Card Updater')
-    parser.add_argument('--repo', required=True, help='Hugging Face repo id (e.g., alphaqmoi/qmoi-ai-system)')
+    parser.add_argument('--repo', required=True, help='Hugging Face repo id (e.g., stableqmoi/qmoi-ai-system)')
     parser.add_argument('--version', required=True, help='Latest model version')
     parser.add_argument('--health', required=True, help='Health percentage (e.g., 99.8)')
     parser.add_argument('--status', required=True, help='Health status (e.g., healthy, warning, error)')

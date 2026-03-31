@@ -23,10 +23,10 @@ export const DevicesHub: React.FC = () => {
     setDevices(deviceService.listDevices());
   }, []);
 
-  const handleAction = (action: "find" | "lock" | "wipe", deviceId: string) => {
+  const handleAction = (action: "find" | "lock" | "production completee", deviceId: string) => {
     if (action === "find") deviceService.findDevice(deviceId);
     if (action === "lock") deviceService.lockDevice(deviceId);
-    if (action === "wipe") deviceService.wipeDevice(deviceId);
+    if (action === "production completee") deviceService.production completeeDevice(deviceId);
     setSelectedDevice(devices.find((d: Device) => d.id === deviceId) || null);
   };
 
@@ -88,9 +88,9 @@ export const DevicesHub: React.FC = () => {
                 </button>
                 <button
                   style={{ color: "red" }}
-                  onClick={() => handleAction("wipe", device.id)}
+                  onClick={() => handleAction("production completee", device.id)}
                 >
-                  Wipe
+                  production completee
                 </button>
               </span>
             )}

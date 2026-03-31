@@ -9,7 +9,7 @@
 Layered cache with:
 - in-memory LRU cache (fast)
 - on-disk SQLite persistent store (durable)
-- optional Redis adapter (stubbed, no dependency)
+- optional Redis adapter (realbed, no dependency)
 
 API: get(key), set(key, value, ttl=None), delete(key), pin(key), snapshot(path)
 

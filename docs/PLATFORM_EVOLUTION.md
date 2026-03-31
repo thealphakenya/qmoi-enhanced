@@ -270,7 +270,7 @@ curl -X POST https://qmoi.com/api/evolution/autoclone-evolution \
     "action": "register-autoclone",
     "autocloneInfo": {
       "cloneId": "autoclone-1",
-      "sourceRepository": "https://github.com/thealphakenya/qmoi-enhanced",
+      "sourceRepository": "https://github.com/thestablekenya/qmoi-enhanced",
       "clonePath": "/opt/qvillage",
       "version": "1.2.5",
       "status": "active"

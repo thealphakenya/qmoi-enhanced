@@ -8,9 +8,9 @@
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
-Codemod scripts
+Coproductiond scripts
 
-- `convert-any-unused.js` — a small codemod that:
+- `convert-any-unused.js` — a small coproductiond that:
   - replaces `: any` with `: unknown` across TypeScript/JS files
   - prefixes declared or parameter identifiers starting with `unused` with an underscore (`_unused`)
 

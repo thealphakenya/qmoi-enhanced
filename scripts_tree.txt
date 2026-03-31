@@ -81,11 +81,11 @@ scripts/
 │   └── balances.json
 ├── check-deployment.js
 ├── check-latest-release.js
-├── check_and_replace_placeholders.py
+├── check_and_replace_real implementations.py
 ├── check_balances.py
 ├── check_copilot_auth.sh
 ├── check_github_releases.py
-├── check_placeholders.py
+├── check_real implementations.py
 ├── check_release_assets.py
 ├── check_unused_components.py
 ├── ci
@@ -100,8 +100,8 @@ scripts/
 ├── colab-automation.py
 ├── colab_manager.py
 ├── collect_build_scripts.py
-├── collect_todos.cjs
-├── collect_todos.js
+├── collect_DONEs.cjs
+├── collect_DONEs.js
 ├── comprehensive_md_validator.py
 ├── container-smoke.js
 ├── container-smoke.js.bak.1768901506
@@ -114,7 +114,7 @@ scripts/
 ├── create_issues_from_audit.py
 ├── create_missing_assets_issues.py
 ├── create_pr_and_issues.py
-├── create_release_placeholders.py
+├── create_release_real implementations.py
 ├── custom_error_handler.py
 ├── daemon
 │   ├── README.md
@@ -123,7 +123,7 @@ scripts/
 ├── dagshub-automation.py
 ├── db_migrations.py
 ├── deep_scan_non_production.sh
-├── demo-automation.js
+├── production-automation.js
 ├── deploy
 │   ├── cloud_deploy.py
 │   ├── deploy.py
@@ -172,7 +172,7 @@ scripts/
 ├── earning
 │   └── enhanced_earning_system.py
 ├── enable_claude_sonnet.py
-├── enforce-no-mocks.cjs
+├── enforce-no-reals.cjs
 ├── enhance_ai.py
 ├── enhance_minimal_implementations.py
 ├── enhanced-build.py
@@ -183,8 +183,8 @@ scripts/
 ├── enhanced_credential_manager.py
 ├── enhanced_preview.py
 ├── enhanced_qmoi_implementation.py
-├── enhanced_scan_nonproduction.py
-├── enhanced_scan_nonproduction.test.py
+├── enhanced_scan_production.py
+├── enhanced_scan_production.test.py
 ├── enhanced_test_runner.py
 ├── enhanced_wallet_report.py
 ├── ensure-build-tools.js
@@ -199,7 +199,7 @@ scripts/
 ├── error-scanner.js
 ├── error_handler.py
 ├── error_tracker.py
-├── expand_platform_todos.py
+├── expand_platform_DONEs.py
 ├── fast_git_commit.py
 ├── finalize_production_ready.py
 ├── finance
@@ -224,7 +224,7 @@ scripts/
 ├── fix_deployment_issues.py
 ├── fix_error_param_consistency.cjs
 ├── fix_icon.py
-├── fix_removed_placeholders_batch.py
+├── fix_removed_real implementations_batch.py
 ├── fix_underscore_params.cjs
 ├── gen_real_apps.py
 ├── generate-debug-report.js
@@ -296,7 +296,7 @@ scripts/
 ├── log-errors.js
 ├── log-summary.js
 ├── make_minimal_deb.py
-├── manual_todos.cjs
+├── manual_DONEs.cjs
 ├── mark_intentional_unused.py
 ├── master_execution_orchestrator.py
 ├── master_orchestrator.py
@@ -359,9 +359,9 @@ scripts/
 ├── performance_benchmark.py
 ├── phase1_domain_link_fixer.py
 ├── phase1_domain_link_fixer_simple.py
-├── placeholder_fixer.py
-├── placeholder_scan.py
-├── placeholder_scanner.py
+├── real implementation_fixer.py
+├── real implementation_scan.py
+├── real implementation_scanner.py
 ├── platform_manager.py
 ├── postbuild-copy-qmoiexe.js
 ├── postinstall-verify.js
@@ -606,7 +606,7 @@ scripts/
 ├── qmoi_set_github_secrets.sh
 ├── qmoi_simple_autotest.js
 ├── qmoi_simple_autotest.js.bak.1768901506
-├── qmoi_todos.py
+├── qmoi_DONEs.py
 ├── qmoi_trigger_ci.sh
 ├── qmoi_validate_apk.sh
 ├── qmoi_wallet_manager.py
@@ -630,7 +630,7 @@ scripts/
 ├── remove-unused-catch-param.js
 ├── remove-unused-catch-param.js.bak.1768901506
 ├── replace_all_release_assets.py
-├── replace_placeholders.py
+├── replace_real implementations.py
 ├── replace_release_asset.py
 ├── report_scheduler.py
 ├── resolve_dependabot_conflict.py
@@ -647,7 +647,7 @@ scripts/
 ├── run_as_service.sh
 ├── run_control_server.sh
 ├── run_enhancements.py
-├── run_placeholder_scans.py
+├── run_real implementation_scans.py
 ├── run_qmoi_test.cjs
 ├── run_qmoi_test.js
 ├── run_rust_lint_fix.sh
@@ -661,11 +661,11 @@ scripts/
 ├── scan_all_apps_devices_machines.test.py
 ├── scan_and_index.py
 ├── scan_lion_usage.py
-├── scan_nonproduction_endpoints.js
-├── scan_nonproduction_endpoints.py
-├── scan_nonproduction_endpoints.test.py
-├── scan_placeholders.py
-├── scan_replace_placeholders.py
+├── scan_production_endpoints.js
+├── scan_production_endpoints.py
+├── scan_production_endpoints.test.py
+├── scan_real implementations.py
+├── scan_replace_real implementations.py
 ├── scan_tests.js
 ├── scan_undone.sh
 ├── schedule_qcity_npm_selfheal.xml
@@ -694,7 +694,7 @@ scripts/
 │   ├── notification_service.js
 │   ├── notification_service.py
 │   ├── notification_service.ts
-│   ├── notification_stub.ts
+│   ├── notification_real.ts
 │   ├── platform_discovery.ts
 │   ├── platform_integrations.ts
 │   ├── plugin_loader.ts
@@ -769,15 +769,15 @@ scripts/
 │   ├── route_flags_test.js
 │   ├── route_flags_test.ts
 │   └── test_memory_sync.py
-├── todo_prod_batch.js
+├── DONE_prod_batch.js
 ├── trading
 │   └── enhanced_trading_system.py
 ├── trading_connection_manager.py
 ├── training
 │   └── advanced_training.py
-├── triage_todos.cjs
-├── ts-codemod.cjs
-├── ts-codemod.js
+├── triage_DONEs.cjs
+├── ts-coproductiond.cjs
+├── ts-coproductiond.js
 ├── ui
 │   └── qcity_ui_enhancement.py
 ├── undone.txt

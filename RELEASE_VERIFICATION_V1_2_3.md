@@ -149,7 +149,7 @@ Scan Results:
 
 ### Repository Status ✅
 
-- ✅ Repository: thealphakenya/qmoi-enhanced
+- ✅ Repository: thestablekenya/qmoi-enhanced
 - ✅ Branch: autosync-backup-20250926-232440
 - ✅ Remote: GitHub origin configured
 - ✅ SSH key: Functional
@@ -209,7 +209,7 @@ The workflow automatically:
 - **Start**: Triggered at tag push
 - **Duration**: 5-10 minutes
 - **Completion**: All assets uploaded and release published
-- **Status Check**: Monitor at https://github.com/thealphakenya/qmoi-enhanced/actions
+- **Status Check**: Monitor at https://github.com/thestablekenya/qmoi-enhanced/actions
 
 ---
 
@@ -249,7 +249,7 @@ The workflow automatically:
 
 ### Official Release
 
-📍 **GitHub Release**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+📍 **GitHub Release**: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 
 ### Download Locations
 
@@ -303,7 +303,7 @@ The workflow automatically:
 
 ### Resources
 
-- 🐛 **Issues**: https://github.com/thealphakenya/qmoi-enhanced/issues
+- 🐛 **Issues**: https://github.com/thestablekenya/qmoi-enhanced/issues
 - 💬 **Community**: https://qvillage.qmoi.app
 - 📧 **Email**: support@qmoi.app
 

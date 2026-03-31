@@ -100,7 +100,7 @@ title: "🎉 QMOI AI Build Completion Summary"
 ### GitHub Release
 
 - **Release**: v1.0.177
-- **URL**: https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177
+- **URL**: https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
 - **Status**: ✅ Successfully published
 - **Artifacts**: All platform packages uploaded
 

@@ -456,7 +456,7 @@ jobs:
 export GITHUB_TOKEN=$(gh auth token)
 
 # Run update
-python3 tools/update_md_refs.py --repo thealphakenya/qmoi-enhanced
+python3 tools/update_md_refs.py --repo thestablekenya/qmoi-enhanced
 
 # Auto-commit if changes detected
 git add *.md && git commit -m "docs: auto-update markdown references" || echo "No changes"
@@ -633,7 +633,7 @@ jobs:
 **End of Week 1**:
 
 - Status update: Security hardening completed
-- Demo offline access functionality
+- production offline access functionality
 
 **End of Week 2**:
 

@@ -157,7 +157,7 @@ Top recurring lint categories:
 
 Recent automated actions:
 - Ran `scripts/prefix-wide.cjs` to prefix unused params and convert safe `any` usages (many files patched).
-- Ran `node scripts/convert-any-unused.cjs --apply` (codemod) — scanned 1609 files, no files modified.
+- Ran `node scripts/convert-any-unused.cjs --apply` (coproductiond) — scanned 1609 files, no files modified.
 - Repeated `npm run lint:fix` runs; current counts above.
 
 Next required automated steps:
@@ -247,7 +247,7 @@ Top recurring issues (current):
 
 Recent automated actions:
 - Ran `npm run lint:fix` (autofix) — reduced counts slightly.
-- Ran `node scripts/convert-any-unused.cjs --apply` (codemod) — no files modified in last run.
+- Ran `node scripts/convert-any-unused.cjs --apply` (coproductiond) — no files modified in last run.
 - Ran `node scripts/prefix-wide.cjs` — patched many files across `src/`, `app/api/`, `scripts/`, `tests/`.
 - Updated `src/types/globals.d.ts` to declare common globals and added eslint-disable for the declaration file.
 - Added `/.eslintrc.local.cjs` with overrides to enable `jest`, `node`, and `browser` envs for tests and source files (permanent, for triage).
@@ -255,7 +255,7 @@ Recent automated actions:
 Next executed steps:
 1) Re-run `npm run lint:fix` to measure immediate improvement after these edits.
 2) Triage remaining `no-undef` and parser errors by fixing specific files (add `/* eslint-env */` where appropriate, correct JSX in .js tests, or convert to .tsx where necessary).
-3) Replace `any` usages in targeted high-risk files with `unknown` or explicit types using the codemod in targeted folders and review diffs.
+3) Replace `any` usages in targeted high-risk files with `unknown` or explicit types using the coproductiond in targeted folders and review diffs.
 4) Run selected test suites and fix blocking failures.
 
 Notes:
@@ -285,7 +285,7 @@ Snapshot: 2026-01-01T00:00:00Z
 - Errors: 10,342
 - Warnings: 4,392
 
-Notes: Ran codemod dry-run in `src/services` (no changes). Re-ran `npm run lint:fix` after pragmas; counts unchanged.
+Notes: Ran coproductiond dry-run in `src/services` (no changes). Re-ran `npm run lint:fix` after pragmas; counts unchanged.
 
 Recent quick actions:
 - Expanded `types/globals.d.ts` and `src/types/globals.d.ts` to add common runtime/test globals.
@@ -294,20 +294,20 @@ Recent quick actions:
 Next immediate action: re-run `npm run lint:fix` to measure change after these declarations.
 
 Snapshot: 2026-01-01T00:00:00Z
-- Codemod: applied `scripts/convert-any-unused.cjs --apply` in `src` (1 file modified: `src/types/globals.d.ts`).
-- Codemod dry-run across repo previously indicated 2 files would change (`src/types/globals.d.ts`, `types/globals.d.ts`).
-- Lint run after codemod/apply:
+- Coproductiond: applied `scripts/convert-any-unused.cjs --apply` in `src` (1 file modified: `src/types/globals.d.ts`).
+- Coproductiond dry-run across repo previously indicated 2 files would change (`src/types/globals.d.ts`, `types/globals.d.ts`).
+- Lint run after coproductiond/apply:
   - Problems: 14,734
   - Errors: 10,342
   - Warnings: 4,392
 
 Notes:
-- Applied codemod to `src` only to limit risk; repo-root `types/globals.d.ts` remains for manual review.
+- Applied coproductiond to `src` only to limit risk; repo-root `types/globals.d.ts` remains for manual review.
 - Remaining high-impact issues: `no-undef` (FileReader, EventSource, Buffer, Headers, Request, Response, require, jest hooks), parser errors in `src/index.js`, and many `@typescript-eslint/no-explicit-any` warnings across `src/services` and `src/[PRODUCTION READY]s`.
 
 Next steps:
-1. Open a PR with the codemod change for `src` and the updated `problemsanderrors.txt` snapshot.
-2. Run targeted codemod for the repo-root `types/globals.d.ts` after review, or adjust ambient declarations instead of automated replacement.
+1. Open a PR with the coproductiond change for `src` and the updated `problemsanderrors.txt` snapshot.
+2. Run targeted coproductiond for the repo-root `types/globals.d.ts` after review, or adjust ambient declarations instead of automated replacement.
 3. Continue triage per-folder: add `/* eslint-env */` pragmas for browser/test files and run `npm run lint:fix` iteratively.
 
 Update: 2026-01-01T00:00:00Z (after applying repo-root types and eslintignore)
@@ -335,18 +335,18 @@ Notes:
 Next steps:
 1. Fix `Buffer`/`NodeJS` declarations in `src/config/bitget.ts` and other config files (add `/* global Buffer, NodeJS */` or adjust types). Prefer adding `/// <reference types="node" />` in files that need Node types.
 2. Triage unreachable code markers (no-unreachable) in `src/config/*` and `src/wallet.ts` manually.
-3. Consider running the codemod to convert safe `any` → `unknown` in `src/services` in small batches, then run `npm run lint:fix` and tests.
+3. Consider running the coproductiond to convert safe `any` → `unknown` in `src/services` in small batches, then run `npm run lint:fix` and tests.
 
 Update: 2026-01-02T00:00:00Z
-- Codemod: ran `scripts/convert-any-unused.cjs --apply` on `src/services` (scanned 23 files, 0 files modified).
-- Lint: ran `npm run lint:fix` after codemod; new counts:
+- Coproductiond: ran `scripts/convert-any-unused.cjs --apply` on `src/services` (scanned 23 files, 0 files modified).
+- Lint: ran `npm run lint:fix` after coproductiond; new counts:
   - Problems: 14,712
   - Errors: 10,314
   - Warnings: 4,398
 
 Notes:
 - Small improvement after targeted pragmas and node-type adjustments. Major remaining categories: `no-undef` (EventSource, FileReader, URLSearchParams, Headers), many `@typescript-eslint/no-explicit-any` warnings across `src/services` and UI components, and `no-unreachable` in config/wallet.
-- Next: run codemod in controlled batches for `src/services` subfolders (e.g., `src/services/auth`, `src/services/*`), or proceed with manual typing for high-risk files.
+- Next: run coproductiond in controlled batches for `src/services` subfolders (e.g., `src/services/auth`, `src/services/*`), or proceed with manual typing for high-risk files.
 
 === LINT SNAPSHOT 2026-01-02T06:08:53Z ===
 Invalid option '--ext' - perhaps you meant '-c'?
@@ -374,7 +374,7 @@ Recent actions taken before this snapshot:
 Next steps (required):
 1) Triage `no-undef` per-folder and add targeted ambient declarations or `/* eslint-env */` pragmas for tests/browser files.
 2) Manually inspect and fix `no-unreachable` in `src/wallet.ts` and a few config files.
-3) Run the `convert-any-unused` codemod in small batches for high-impact folders and review changes.
+3) Run the `convert-any-unused` coproductiond in small batches for high-impact folders and review changes.
 4) Re-run `npx eslint` + `tsc --noEmit` and append updated snapshot to this file.
 
 ---
@@ -445,7 +445,7 @@ You're using eslint.config.js, some command line flags are no longer available. 
 
 === END SNAPSHOT ===
 
---- Snapshot: 2026-01-04T11:09:26+00:00 ---(codemod replacements: 687)
+--- Snapshot: 2026-01-04T11:09:26+00:00 ---(coproductiond replacements: 687)
 app/api/account-automation/route.ts(17,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/account-automation/route.ts(31,15): error TS2304: Cannot find name 'fals_e'.
 app/api/account-automation/route.ts(41,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
@@ -1951,7 +1951,7 @@ src/setupTests.ts(78,9): error TS2339: Property 'ReadableStream' does not exist 
 src/setupTests.ts(79,9): error TS2339: Property 'WritableStream' does not exist on type 'unknown'.
 \n-- end snapshot --\n
 
---- Snapshot: 2026-01-04T11:13:35+00:00 ---(codemod run: extra rules)
+--- Snapshot: 2026-01-04T11:13:35+00:00 ---(coproductiond run: extra rules)
 app/api/account-automation/route.ts(17,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/account-automation/route.ts(31,15): error TS2304: Cannot find name 'fals_e'.
 app/api/account-automation/route.ts(41,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
@@ -3457,7 +3457,7 @@ src/setupTests.ts(78,9): error TS2339: Property 'ReadableStream' does not exist 
 src/setupTests.ts(79,9): error TS2339: Property 'WritableStream' does not exist on type 'unknown'.
 \n-- end snapshot --\n
 
---- Snapshot: 2026-01-04T11:35:16+00:00 ---(codemod run: extra typo & casts)
+--- Snapshot: 2026-01-04T11:35:16+00:00 ---(coproductiond run: extra typo & casts)
 app/api/account-automation/route.ts(17,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
 app/api/account-automation/route.ts(31,15): error TS2304: Cannot find name 'fals_e'.
 app/api/account-automation/route.ts(41,20): error TS2551: Property '_response' does not exist on type '{ ok: false; response?: { status: number; body?: unknown; } | undefined; }'. Did you mean 'response'?
@@ -7905,7 +7905,7 @@ src/setupTests.ts(78,9): error TS2339: Property 'ReadableStream' does not exist 
 src/setupTests.ts(79,9): error TS2339: Property 'WritableStream' does not exist on type '{}'.
 \n-- end snapshot --\n
 
---- Snapshot: 2026-01-04T11:41:37+00:00 ---(codemod: _response fix)
+--- Snapshot: 2026-01-04T11:41:37+00:00 ---(coproductiond: _response fix)
 app/api/account-automation/route.ts(17,20): error TS2339: Property '_response' does not exist on type 'ApiCheckResult'.
   Property '_response' does not exist on type '{ ok: true; }'.
 app/api/account-automation/route.ts(31,15): error TS2304: Cannot find name 'fals_e'.

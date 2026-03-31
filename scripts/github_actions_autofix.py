@@ -37,7 +37,7 @@ class GitHubActionsAutoFix:
     
     def __init__(self):
         self.github_token = os.environ.get('GITHUB_TOKEN', '')
-        self.repo_owner = os.environ.get('GITHUB_REPOSITORY_OWNER', 'thealphakenya')
+        self.repo_owner = os.environ.get('GITHUB_REPOSITORY_OWNER', 'thestablekenya')
         self.repo_name = os.environ.get('GITHUB_REPOSITORY', 'stable-Q-ai').split('/')[-1]
         self.workflows_dir = Path(".github/workflows")
         self.fixes_applied = []

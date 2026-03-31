@@ -166,7 +166,7 @@
         "matches": [
           {
             "line": 1,
-            "snippet": "// NOTE: 2 value(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.",
+            "snippet": "// NOTE: 2 value(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.",
             "score": 1
           },
           {
@@ -194,7 +194,7 @@
         "matches": [
           {
             "line": 1,
-            "snippet": "// NOTE: 2 value(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.",
+            "snippet": "// NOTE: 2 value(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.",
             "score": 1
           },
           {
@@ -444,57 +444,57 @@
         "matches": [
           {
             "line": 355,
-            "snippet": "// Simulate page load",
+            "snippet": "// live page load",
             "score": 1
           },
           {
             "line": 424,
-            "snippet": "// Simulate smart search processing",
+            "snippet": "// live smart search processing",
             "score": 1
           },
           {
             "line": 433,
-            "snippet": "// Simulate content summary generation",
+            "snippet": "// live content summary generation",
             "score": 1
           },
           {
             "line": 442,
-            "snippet": "// Simulate translation processing",
+            "snippet": "// live translation processing",
             "score": 1
           },
           {
             "line": 448,
-            "snippet": "// Simulate security analysis",
+            "snippet": "// live security analysis",
             "score": 1
           },
           {
             "line": 468,
-            "snippet": "// Simulate AI-powered search suggestions",
+            "snippet": "// live AI-powered search suggestions",
             "score": 1
           },
           {
             "line": 478,
-            "snippet": "// Simulate AI content summarization",
+            "snippet": "// live AI content summarization",
             "score": 1
           },
           {
             "line": 485,
-            "snippet": "// Simulate translation",
+            "snippet": "// live translation",
             "score": 1
           },
           {
             "line": 496,
-            "snippet": "// Simulate security analysis",
+            "snippet": "// live security analysis",
             "score": 1
           },
           {
             "line": 517,
-            "snippet": "// Simulate live content detection",
+            "snippet": "// live live content detection",
             "score": 1
           },
           {
             "line": 650,
-            "snippet": "// Simulate download progress",
+            "snippet": "// live download progress",
             "score": 1
           }
         ]
@@ -629,47 +629,47 @@
         "matches": [
           {
             "line": 52,
-            "snippet": "// Simulate unread count",
+            "snippet": "// live unread count",
             "score": 1
           },
           {
             "line": 56,
-            "snippet": "// Simulate health status",
+            "snippet": "// live health status",
             "score": 1
           },
           {
             "line": 61,
-            "snippet": "// Simulate WiFi status",
+            "snippet": "// live WiFi status",
             "score": 1
           },
           {
             "line": 68,
-            "snippet": "// Simulate Bluetooth status",
+            "snippet": "// live Bluetooth status",
             "score": 1
           },
           {
             "line": 73,
-            "snippet": "// Simulate prodice health",
+            "snippet": "// live prodice health",
             "score": 1
           },
           {
             "line": 86,
-            "snippet": "// Simulate advanced notifications",
+            "snippet": "// live advanced notifications",
             "score": 1
           },
           {
             "line": 209,
-            "snippet": "// Simulate WiFi connect",
+            "snippet": "// live WiFi connect",
             "score": 1
           },
           {
             "line": 219,
-            "snippet": "// Simulate Bluetooth connect",
+            "snippet": "// live Bluetooth connect",
             "score": 1
           },
           {
             "line": 229,
-            "snippet": "// Simulate prodice optimization",
+            "snippet": "// live prodice optimization",
             "score": 1
           }
         ]
@@ -761,7 +761,7 @@
         "matches": [
           {
             "line": 48,
-            "snippet": "// Simulate real-time Qmoi state updates",
+            "snippet": "// live real-time Qmoi state updates",
             "score": 3
           },
           {
@@ -1158,17 +1158,17 @@
         "matches": [
           {
             "line": 79,
-            "snippet": "// Simulate file data",
+            "snippet": "// live file data",
             "score": 1
           },
           {
             "line": 205,
-            "snippet": "// Simulate deletion",
+            "snippet": "// live deletion",
             "score": 1
           },
           {
             "line": 219,
-            "snippet": "// Simulate AI organization",
+            "snippet": "// live AI organization",
             "score": 1
           },
           {
@@ -1317,7 +1317,7 @@
         "matches": [
           {
             "line": 44,
-            "snippet": "// Simulate real-time pulse and emotion updates",
+            "snippet": "// live real-time pulse and emotion updates",
             "score": 3
           }
         ]
@@ -1358,7 +1358,7 @@
           },
           {
             "line": 177,
-            "snippet": "// Replace handlers for this test to simulate a server error",
+            "snippet": "// Replace handlers for this test to live a server error",
             "score": 1
           },
           {
@@ -1376,7 +1376,7 @@
         "matches": [
           {
             "line": 8,
-            "snippet": "// Simulate master check (replace with real auth logic)",
+            "snippet": "// live master check (replace with real auth logic)",
             "score": 3
           }
         ]
@@ -1479,7 +1479,7 @@
           },
           {
             "line": 141,
-            "snippet": "// Replace handlers for this test to simulate a server _error",
+            "snippet": "// Replace handlers for this test to live a server _error",
             "score": 1
           }
         ]
@@ -1492,7 +1492,7 @@
         "matches": [
           {
             "line": 136,
-            "snippet": "// Simulate audio playback",
+            "snippet": "// live audio playback",
             "score": 1
           },
           {
@@ -1793,7 +1793,7 @@
         "matches": [
           {
             "line": 138,
-            "snippet": "// Simulate deal discovery",
+            "snippet": "// live deal discovery",
             "score": 1
           }
         ]
@@ -1806,7 +1806,7 @@
         "matches": [
           {
             "line": 138,
-            "snippet": "// Simulate deal discovery",
+            "snippet": "// live deal discovery",
             "score": 1
           }
         ]
@@ -1819,7 +1819,7 @@
         "matches": [
           {
             "line": 145,
-            "snippet": "// Simulate site deployment",
+            "snippet": "// live site deployment",
             "score": 1
           }
         ]
@@ -1832,7 +1832,7 @@
         "matches": [
           {
             "line": 145,
-            "snippet": "// Simulate site deployment",
+            "snippet": "// live site deployment",
             "score": 1
           }
         ]

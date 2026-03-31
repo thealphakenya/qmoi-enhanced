@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [PRODUCTION READY] this file has no remaining productionuction markers
 dad5624cc0856e4ca3972edce270285229e67cab54392085550b34745a614255  admin.zip
 9f4c7433f7de3791b1e2a420aa09d82dca147f0e0de61d68bb85ced7df95cfdf  app-release.apk
 9700e3b35af5c2beab3e91c9ba4b1de17d08f04b621202865773e5e12f6b059f  deals.zip

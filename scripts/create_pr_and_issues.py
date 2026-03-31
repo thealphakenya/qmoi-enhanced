@@ -11,7 +11,7 @@ from urllib import request
 token = os.environ.get('GITHUB_TOKEN')
 if not token:
     print('GITHUB_TOKEN not set', file=sys.stderr); sys.exit(2)
-owner = 'thealphakenya'
+owner = 'thestablekenya'
 repo = 'qmoi-enhanced'
 api_base = f'https://api.github.com/repos/{owner}/{repo}'
 

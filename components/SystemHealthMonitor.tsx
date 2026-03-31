@@ -199,8 +199,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
     };
   };
 
-  // Generate mock health checks for demo purposes
-  const generateMockHealthChecks = () => {
+  // Generate real health checks for production purposes
+  const generaterealHealthChecks = () => {
     const checks = [
       "Database Connection",
       "API Endpoints",

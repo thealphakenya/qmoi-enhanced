@@ -37,7 +37,7 @@ QMOI Enhanced v3.1.3 represents a comprehensive, enterprise-grade AI-powered aut
 
 #### 2. **Domain Ecosystem** (`domains/`)
 - **14 production Domains** - Complete domain infrastructure
-  - **Primary Domains**: qvillage.com, qmoi.ai, alphaq.ai
+  - **Primary Domains**: qvillage.com, qmoi.ai, stableq.ai
   - **Service Domains**: qshare.qvillage.com, qstore.qvillage.com, qcity.qmoi.ai, qmoi-space.qmoi.ai, yap.qmoi.ai, q-stable.qmoi.ai
   - **Fallback Domains**: Automatic redirect, failover, content sync
 - **UI Features**: Responsive design, interactive components, real-time updates

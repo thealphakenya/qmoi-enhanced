@@ -26,9 +26,9 @@ export async function GET(request: NextRequest) {
       qualityInfo: qualityLevels[avatar.qualityLevel],
       upgradeStatus: getUpgradeStatus(avatar.id),
       compatibility: getAvatarCompatibility(avatar.id),
-      // Ensure a preview/demo URL exists for realtime preview windows
+      // Ensure a preview/production URL exists for realtime preview windows
       previewUrl: avatar.previewUrl ?? `${avatar.assetPath}preview.mp4`,
-      demoUrl: avatar.demoUrl ?? `${avatar.assetPath}demo.html`,
+      productionUrl: avatar.productionUrl ?? `${avatar.assetPath}production.html`,
     }));
 
     if (masterParam === "true") {

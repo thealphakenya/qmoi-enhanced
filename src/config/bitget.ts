@@ -23,7 +23,7 @@ interface SecurityMetrics {
   }>;
   ipChanges: Array<{
     oldIp: string;
-    newIp: string;
+    neproduction complete: string;
     timestamp: Date;
   }>;
 }

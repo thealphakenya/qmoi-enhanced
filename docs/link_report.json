@@ -46,83 +46,83 @@
       "path": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-ai/pwa/latest/",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi-ai/pwa/latest/",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/pwa/latest/",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/pwa/latest/",
           "https_available": null
         }
       ],
@@ -139,7 +139,7 @@
       "fixes": []
     },
     {
-      "path": "ALPHAQMOIENGINE.md",
+      "path": "stableQMOIENGINE.md",
       "urls": [],
       "fixes": []
     },
@@ -190,7 +190,7 @@
       "fixes": []
     },
     {
-      "path": "AUTOOPTIMIZEALPHAQMOIENGINE.md",
+      "path": "AUTOOPTIMIZEstableQMOIENGINE.md",
       "urls": [],
       "fixes": []
     },
@@ -198,7 +198,7 @@
       "path": "BUILDAPPSFORALLPLATFORMS.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
           "https_available": null
         }
       ],
@@ -208,7 +208,7 @@
       "path": "BUILD_COMPLETION_SUMMARY.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
           "https_available": null
         }
       ],
@@ -317,7 +317,7 @@
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/alphaqmoi/qmoi",
+          "url": "https://huggingface.co/stableqmoi/qmoi",
           "https_available": null
         },
         {
@@ -358,211 +358,211 @@
       "path": "DOWNLOADQMOIAIAPPALLprodICES.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk",
           "https_available": null
         }
       ],
@@ -980,19 +980,19 @@
           "https_available": null
         },
         {
-          "url": "https://api-inference.huggingface.co/models/alphaqmoi/qmoi",
+          "url": "https://api-inference.huggingface.co/models/stableqmoi/qmoi",
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/alphaqmoi/qmoi-ai-system",
+          "url": "https://huggingface.co/stableqmoi/qmoi-ai-system",
           "https_available": null
         },
         {
-          "url": "https://github.com/alphaqmoi/qmoi-ai-system",
+          "url": "https://github.com/stableqmoi/qmoi-ai-system",
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+          "url": "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
           "https_available": null
         }
       ],
@@ -1141,143 +1141,143 @@
       "path": "QMOIAPPS.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
           "https_available": null
         }
       ],
@@ -1475,7 +1475,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
           "https_available": null
         },
         {
@@ -1493,123 +1493,123 @@
       "path": "QMOIDOWNLOADS.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
           "https_available": null
         }
       ],
@@ -1654,23 +1654,23 @@
       "path": "QMOIFORALL.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         }
       ],
@@ -1707,7 +1707,7 @@
           "https_available": null
         },
         {
-          "url": "https://qmoigateway.thealphakenya.com/api/github/webhook",
+          "url": "https://qmoigateway.thestablekenya.com/api/github/webhook",
           "https_available": null
         },
         {
@@ -1765,7 +1765,7 @@
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status`",
+          "url": "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system/status`",
           "https_available": null
         },
         {
@@ -1773,7 +1773,7 @@
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system`",
+          "url": "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system`",
           "https_available": null
         }
       ],
@@ -2051,143 +2051,143 @@
       "path": "Qstore.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
           "https_available": null
         }
       ],
@@ -2197,63 +2197,63 @@
       "path": "README (1).md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.zip",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.zip",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.dmg",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.exe",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.ipa",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.appimage",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage",
           "https_available": null
         },
         {
@@ -2261,51 +2261,51 @@
           "https_available": false
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.deb",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.deb",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.apk",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai\\_smarttv.apk",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai\\_smarttv.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.img",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.img",
           "https_available": null
         }
       ],
@@ -2315,139 +2315,139 @@
       "path": "README.md",
       "urls": [
         {
-          "url": "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
+          "url": "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/smarttv/qmoi_ai.pkg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/smarttv/qmoi_ai.pkg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/ios/qmoi_ai.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/ios/qmoi_ai.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/raspberrypi/qmoi_ai_arm.tar.gz",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/raspberrypi/qmoi_ai_arm.tar.gz",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
           "https_available": null
         },
         {
@@ -2455,63 +2455,63 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/windows/latest/qmoi_ai.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/windows/latest/qmoi_ai.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/qmoi_ai.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/qmoi_ai.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/error.log",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/error.log",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/linux/latest/qmoi_ai.AppImage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/linux/latest/qmoi_ai.AppImage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/chromebook/qmoi_ai.deb",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/chromebook/qmoi_ai.deb",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/android/qmoi_ai.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/android/qmoi_ai.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/mac/latest/qmoi_ai.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/mac/latest/qmoi_ai.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/qmoi",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/qmoi",
           "https_available": null
         }
       ],
@@ -2852,7 +2852,7 @@
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+          "url": "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
           "https_available": null
         }
       ],
@@ -2872,7 +2872,7 @@
       "path": "qmoi-enhanced/@ALLMDFILESREFS.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/**",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/**",
           "https_available": null
         }
       ],
@@ -2897,39 +2897,39 @@
       "path": "qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage",
           "https_available": null
         },
         {
@@ -2937,19 +2937,19 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
           "https_available": null
         },
         {
@@ -2957,19 +2957,19 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk",
           "https_available": null
         }
       ],
@@ -2981,7 +2981,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/ALPHAQMOIENGINE.md",
+      "path": "qmoi-enhanced/stableQMOIENGINE.md",
       "urls": [],
       "fixes": []
     },
@@ -3028,7 +3028,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md",
+      "path": "qmoi-enhanced/AUTOOPTIMIZEstableQMOIENGINE.md",
       "urls": [],
       "fixes": []
     },
@@ -3036,147 +3036,147 @@
       "path": "qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
           "https_available": null
         }
       ],
@@ -3186,7 +3186,7 @@
       "path": "qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
           "https_available": null
         }
       ],
@@ -3247,7 +3247,7 @@
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/alphaqmoi/qmoi",
+          "url": "https://huggingface.co/stableqmoi/qmoi",
           "https_available": null
         },
         {
@@ -3288,71 +3288,71 @@
       "path": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg",
           "https_available": null
         }
       ],
@@ -3690,19 +3690,19 @@
           "https_available": null
         },
         {
-          "url": "https://api-inference.huggingface.co/models/alphaqmoi/qmoi",
+          "url": "https://api-inference.huggingface.co/models/stableqmoi/qmoi",
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/alphaqmoi/qmoi-ai-system",
+          "url": "https://huggingface.co/stableqmoi/qmoi-ai-system",
           "https_available": null
         },
         {
-          "url": "https://github.com/alphaqmoi/qmoi-ai-system",
+          "url": "https://github.com/stableqmoi/qmoi-ai-system",
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+          "url": "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
           "https_available": null
         }
       ],
@@ -3836,143 +3836,143 @@
       "path": "qmoi-enhanced/QMOIAPPS.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
           "https_available": null
         }
       ],
@@ -3992,143 +3992,143 @@
       "path": "qmoi-enhanced/QMOIAUTOAPPSprod.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
           "https_available": null
         }
       ],
@@ -4288,123 +4288,123 @@
       "path": "qmoi-enhanced/QMOIDOWNLOADS.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
           "https_available": null
         }
       ],
@@ -4449,23 +4449,23 @@
       "path": "qmoi-enhanced/QMOIFORALL.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         }
       ],
@@ -4526,7 +4526,7 @@
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status`",
+          "url": "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system/status`",
           "https_available": null
         },
         {
@@ -4534,7 +4534,7 @@
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system`",
+          "url": "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system`",
           "https_available": null
         }
       ],
@@ -4821,143 +4821,143 @@
       "path": "qmoi-enhanced/Qstore.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
           "https_available": null
         }
       ],
@@ -4967,63 +4967,63 @@
       "path": "qmoi-enhanced/README (1).md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.zip",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.zip",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.dmg",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.exe",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.ipa",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.appimage",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage",
           "https_available": null
         },
         {
@@ -5031,51 +5031,51 @@
           "https_available": false
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.deb",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.deb",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.apk",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai\\_smarttv.apk",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai\\_smarttv.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.img",
+          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.img",
           "https_available": null
         }
       ],
@@ -5085,7 +5085,7 @@
       "path": "qmoi-enhanced/README.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
           "https_available": null
         },
         {
@@ -5335,7 +5335,7 @@
           "https_available": null
         },
         {
-          "url": "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+          "url": "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
           "https_available": null
         }
       ],
@@ -5350,7 +5350,7 @@
       "path": "qmoi-enhanced/scripts/templates/README_template.en.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
           "https_available": null
         },
         {
@@ -5364,7 +5364,7 @@
       "path": "qmoi-enhanced/scripts/templates/README_template.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
           "https_available": null
         },
         {
@@ -5378,7 +5378,7 @@
       "path": "qmoi-enhanced/scripts/templates/README_template.sw.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases](https://github.com/thealphakenya/qmoi-enhanced/releases",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases](https://github.com/thestablekenya/qmoi-enhanced/releases",
           "https_available": null
         },
         {
@@ -5397,7 +5397,7 @@
       "path": "scripts/templates/README_template.en.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
           "https_available": null
         },
         {
@@ -5411,7 +5411,7 @@
       "path": "scripts/templates/README_template.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
           "https_available": null
         },
         {
@@ -5425,7 +5425,7 @@
       "path": "scripts/templates/README_template.sw.md",
       "urls": [
         {
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases](https://github.com/thealphakenya/qmoi-enhanced/releases",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases](https://github.com/thestablekenya/qmoi-enhanced/releases",
           "https_available": null
         },
         {

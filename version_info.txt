@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [PRODUCTION READY] this file has no remaining productionuction markers
 # version_info.txt
 VSVersionInfo(
   ffi=FixedFileInfo(
@@ -16,7 +16,7 @@ VSVersionInfo(
       StringTable(
         '040904B0',
         [
-          StringStruct('CompanyName', 'AlphaQ'),
+          StringStruct('CompanyName', 'stableQ'),
           StringStruct('FileDescription', 'QMOI AI Launcher'),
           StringStruct('FileVersion', '1.0.0'),
           StringStruct('ProductVersion', '1.0.0'),

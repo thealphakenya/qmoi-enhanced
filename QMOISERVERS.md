@@ -35,7 +35,7 @@ This document lists the servers (HTTP services) present in the repository, their
   - Deploy with Uvicorn (ASGI) behind a reverse proxy (Nginx) or in containers.
 
 - Express/Node dashboards:
-  - `dashboard/server.js`, `huggingface_space/server.js`, and several `scripts/*.js` include Express servers used for dashboards and demos.
+  - `dashboard/server.js`, `huggingface_space/server.js`, and several `scripts/*.js` include Express servers used for dashboards and productions.
   - Deploy with Node process managers (pm2), Docker, or systemd services.
 
 ## Offline deployment & self-contained bundle

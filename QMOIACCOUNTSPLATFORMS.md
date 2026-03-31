@@ -55,7 +55,7 @@ This document lists all accounts QMOI manages, creates, and integrates with, inc
 
 ---
 
-_For integration details, see ALPHAQMOIENGINE.md. For registry and audit, see scripts/qmoi-registry-manager.js._
+_For integration details, see stableQMOIENGINE.md. For registry and audit, see scripts/qmoi-registry-manager.js._
 
 <!-- QMOI_VALIDATION_START -->
 

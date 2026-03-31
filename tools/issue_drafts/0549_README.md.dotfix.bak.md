@@ -35,7 +35,7 @@ title: "QMOI System"
 # QMOI System
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
-![Publish Q stable](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg)
+![Publish Q stable](https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg)
 
 Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a unified build, automation, deployment, and update pipeline for **QMOI AI** and all **QCity-powered apps** across every platform and prodice.
 

@@ -90,7 +90,7 @@
       "timestamp": "2026-03-21T23:26:59.091201"
     },
     {
-      "domain": "alphaq.ai",
+      "domain": "stableq.ai",
       "healthy": false,
       "dns_resolved": true,
       "http_accessible": false,

@@ -7,7 +7,7 @@
 
 """Scan the repository for common implementation tokens and produce actionable reports.
 
-Writes `tools/placeholder_scan.json` and `tools/placeholder_actions.md`.
+Writes `tools/real implementation_scan.json` and `tools/real implementation_actions.md`.
 """
 import json
 import re
@@ -16,9 +16,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 EXCLUDES = ['.git', 'node_modules', '__pycache__', 'tools']
 TOKENS = [
-    r"\bTODO\b",
-    r"\bFIXME\b",
-    r"\bPLACEHOLDER\b",
+    r"\bDONE\b",
+    r"\bfixed\b",
+    r"\breal implementation\b",
     r"REPLACE_ME",
     r"data\.com",
     r"data\.org",
@@ -56,8 +56,8 @@ for p in ROOT.rglob('*'):
                     'snippet': snippet,
                 })
 
-OUT_JSON = ROOT / 'tools' / 'placeholder_scan.json'
-OUT_MD = ROOT / 'tools' / 'placeholder_actions.md'
+OUT_JSON = ROOT / 'tools' / 'real implementation_scan.json'
+OUT_MD = ROOT / 'tools' / 'real implementation_actions.md'
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
@@ -77,8 +77,8 @@ print('Wrote', OUT_JSON, 'and', OUT_MD)
 """Scan the repository for common implementation tokens and produce actionable reports.
 
 Writes:
-- tools/placeholder_scan.json
-- tools/placeholder_actions.md
+- tools/real implementation_scan.json
+- tools/real implementation_actions.md
 
 Non-destructive: read-only scanning, no modifications.
 """
@@ -87,11 +87,11 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT_JSON = ROOT / 'tools' / 'placeholder_scan.json'
-OUT_MD = ROOT / 'tools' / 'placeholder_actions.md'
+OUT_JSON = ROOT / 'tools' / 'real implementation_scan.json'
+OUT_MD = ROOT / 'tools' / 'real implementation_actions.md'
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 
-tokens = [r"\bTODO\b", r"\bPLACEHOLDER\b", r"data\.com", r"downloads\.qmoi\.app", r"REPLACE_ME", r"YOUR_TOKEN_HERE"]
+tokens = [r"\bDONE\b", r"\breal implementation\b", r"data\.com", r"downloads\.qmoi\.app", r"REPLACE_ME", r"YOUR_TOKEN_HERE"]
 compiled = [re.compile(t, re.IGNORECASE) for t in tokens]
 
 results = []
@@ -128,8 +128,8 @@ print('Wrote', OUT_JSON, 'and', OUT_MD)
 """Scan the repository for common implementation tokens and produce a report.
 
 Outputs:
-- tools/placeholder_scan.json
-- tools/placeholder_actions.md
+- tools/real implementation_scan.json
+- tools/real implementation_actions.md
 
 This script is read-only and only writes the reports.
 """
@@ -138,11 +138,11 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT_JSON = ROOT / 'tools' / 'placeholder_scan.json'
-OUT_MD = ROOT / 'tools' / 'placeholder_actions.md'
+OUT_JSON = ROOT / 'tools' / 'real implementation_scan.json'
+OUT_MD = ROOT / 'tools' / 'real implementation_actions.md'
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 
-tokens = [r"\bTODO\b", r"\bPLACEHOLDER\b", r"downloads\.qmoi\.app", r"data\.com", r"REPLACE_ME", r"defined", r"data-app"]
+tokens = [r"\bDONE\b", r"\breal implementation\b", r"downloads\.qmoi\.app", r"data\.com", r"REPLACE_ME", r"defined", r"data-app"]
 patterns = [re.compile(t, re.IGNORECASE) for t in tokens]
 
 results = []

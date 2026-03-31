@@ -24,7 +24,7 @@
 | qserver.io | .io | Server Infrastructure | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
 | qcloud.ai | .ai | Cloud Services | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
 | qquantum.tech | .tech | Quantum Computing | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
-| alphaq.ai | .ai | stable Q AI Engine | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
+| stableq.ai | .ai | stable Q AI Engine | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
 | qglobal.org | .org | Global Operations | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
 | qparallel.prod | .prod | prodeloper Platform | ⏳ Pending | HTTP HEAD, DNS, WHOIS |
 

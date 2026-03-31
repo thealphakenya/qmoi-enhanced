@@ -132,7 +132,7 @@ find /workspaces -type d -name "android" -o -name "ios" -o -name "app-src" 2>/pr
 
 **If no builds or source code found:**
 
-Create complete working apps (scaffolds) that demonstrate installability:
+Create complete working apps (scaffolds) that productionnstrate installability:
 
 ```bash
 # Create complete Android project
@@ -333,7 +333,7 @@ git push origin v1.2.4
 # (Workflow auto-uploads all 16 assets to v1.2.4 release)
 
 # Step 4: Verify on GitHub
-# https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4
+# https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4
 # Confirm all 16 assets present
 
 # Step 5: Create release notes

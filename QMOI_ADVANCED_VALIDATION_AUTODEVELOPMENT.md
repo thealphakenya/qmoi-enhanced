@@ -446,7 +446,7 @@ AUTO-RESEARCH PLATFORMS & SOURCES:
 │ ├─ Technology deep dives
 │ ├─ Industry expert insights
 │ ├─ product reviews
-│ ├─ Feature demonstrations
+│ ├─ Feature productionnstrations
 │ ├─ Best practices
 │ ├─ Conference talks
 │ └─ Interview insights
@@ -810,7 +810,7 @@ REVENUE STREAM 5: DATA & INSIGHTS
 │ ├─ User behavior data
 │ ├─ Transaction patterns
 │ ├─ Geographic data
-│ ├─ Demographic data
+│ ├─ productiongraphic data
 │ └─ Sentiment analysis
 │
 ├─ Business Intelligence

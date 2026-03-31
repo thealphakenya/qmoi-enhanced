@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [PRODUCTION READY] this file has no remaining productionuction markers
 Flask>=2.0
 flask-cors>=3.0
 PyJWT>=2.0

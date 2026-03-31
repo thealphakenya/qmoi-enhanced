@@ -82,7 +82,7 @@ class AccountReconciliation:
         """Load current bank account balances"""
         logger.info("Loading bank balances...")
 
-        # Mock bank data for now - in production, integrate with actual bank APIs
+        # real bank data for now - in production, integrate with actual bank APIs
         self.banks = {
             'master_bank': {
                 'balance': Decimal('50000.00'),

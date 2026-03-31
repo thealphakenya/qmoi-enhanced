@@ -240,7 +240,7 @@ Bias mitigation via targeted datasets and adversarial fine-tuning.
 
 Metrics & tests
 
-XTREME, XGLUE-equivalents; in-domain task accuracy; fairness metrics across demographics.
+XTREME, XGLUE-equivalents; in-domain task accuracy; fairness metrics across productiongraphics.
 
 
 Priority & tradeoffs
@@ -355,7 +355,7 @@ How / Tech
 
 RAG with datastore ingestion pipelines; timestamped facts & TTL.
 
-Real-time web retrieval sandboxed with source credibility scoring.
+Real-time web retrieval productioned with source credibility scoring.
 
 Push updates via adapters rather than retraining core.
 
@@ -500,7 +500,7 @@ Secure plugin/tool framework: web search, calculator, code execution, DB access.
 
 How / Tech
 
-Capability discovery + capability constraints, sandboxed environments, permission checks.
+Capability discovery + capability constraints, productioned environments, permission checks.
 
 Logging & audit of all tool outputs.
 
@@ -608,7 +608,7 @@ Short term (6–16 weeks)
 4. Memory system: session memory + per-user opt-in store.
 
 
-5. Safety red-team and comprehensive tool sandbox.
+5. Safety red-team and comprehensive tool production.
 
 
 

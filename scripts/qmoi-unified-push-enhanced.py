@@ -53,7 +53,7 @@ TOOLS_DIR = PROJECT_ROOT / ".qmoi-tools"
 ENV_FILE = PROJECT_ROOT / ".env"
 
 # GitHub config
-GITHUB_OWNER = "thealphakenya"
+GITHUB_OWNER = "thestablekenya"
 GITHUB_REPO = "stable-Q-ai"
 
 # Global state to prevent recursion

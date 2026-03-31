@@ -8,7 +8,7 @@ import requests
 import json
 from qmoi_activity_logger import log_activity
 
-RELEASE_API = 'https://api.github.com/repos/thealphakenya/stable-Q-ai/releases/latest'
+RELEASE_API = 'https://api.github.com/repos/thestablekenya/stable-Q-ai/releases/latest'
 CURRENT_VERSION = os.getenv("QMOI_VERSION", "0.0.0")
 
 response = requests.get(RELEASE_API)

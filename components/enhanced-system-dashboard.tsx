@@ -238,7 +238,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
       }));
     }, 2000);
 
-    // Demo: 
+    // production: 
     setTimeout(() => {
       pluginManager.emit({ type: "deviceHealthChange", payload: { cpu: 92 } });
       notify("Device health event: CPU 92%", "info");

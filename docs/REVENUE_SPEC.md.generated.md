@@ -7646,7 +7646,7 @@ This document maps detected revenue-related claims and keywords to source files.
 
 ## File: PAYMENTS.md
 
-- Line 51 — Text: - `scripts/test_payments.py` demonstrates a [production READY]d charge using the
+- Line 51 — Text: - `scripts/test_payments.py` productionnstrates a [production READY]d charge using the
 
 ## File: QMOIQCITYAUTOMATIC.md
 

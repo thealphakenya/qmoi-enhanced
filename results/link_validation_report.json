@@ -21,7 +21,7 @@
       "qserver.io": 4,
       "qcloud.ai": 3,
       "qquantum.tech": 4,
-      "alphaq.ai": 7,
+      "stableq.ai": 7,
       "qglobal.org": 5,
       "qparallel.prod": 5,
       "Qcity.qmoi.ai": 4,
@@ -180,12 +180,12 @@
       "huggingface.qmoi.com": 21,
       "codespaces.": 4,
       "qmoigateway.data.com": 7,
-      "qmoigateway.thealphakenya.com": 7,
+      "qmoigateway.thestablekenya.com": 7,
       "data-1234.ngrok.io": 14,
       "api.mybank.com": 16,
       "api.mytrading.com": 17,
       "gitlab.com": 171,
-      "thealphakenya.github.io": 25,
+      "thestablekenya.github.io": 25,
       "www.bitget.com": 28,
       "ui.shadcn.com": 5,
       "stable-q-ai.com": 5,
@@ -544,7 +544,7 @@
       "oauth2:": 4,
       "api.gitpod.io": 22,
       "localhost:": 8,
-      "alphaq-ai.com": 5,
+      "stableq-ai.com": 5,
       "www.google.com": 66,
       "prodeloper.safaricom.co.ke": 12,
       "www.microsoft.com": 14,
@@ -610,7 +610,7 @@
       "builds.data.com": 6,
       "localhost:$HTTP_PORT": 3,
       "localhost:$prod_SERVER_PORT": 5,
-      "localhost:$MOCK_SERVER_PORT": 1,
+      "localhost:$real_SERVER_PORT": 1,
       "qshare.qmoi.app": 17,
       "yap.qmoi.app": 16,
       "localhost:3000`.": 1,
@@ -1037,7 +1037,7 @@
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJh8Y3SCRA9TVsSAnZWagAAgSUQAJA5y560aRqNde7HN1Nz\\\\nn": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJh+XayCRA9TVsSAnZWagAAQ6IP": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJiCThcCRA9TVsSAnZWagAAv+MP": 1,
-      "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFzBAEBCAAGBQJiIxUfACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\\\\r\\\\nEgJ2VmrsYBAAoOz10NQjpxLOfk63wipKRBgGNa3BW9QhIC9RyjWDhohU3fcb\\\\r\\\\n3h3dQnKw5Ardm7inNM8+": 1,
+      "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFzBAEBCAAGBQJiIxUfACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\\\\r\\\\nEgJ2VmrsYBAAoOz10NQjpxLOfk63production completeKRBgGNa3BW9QhIC9RyjWDhohU3fcb\\\\r\\\\n3h3dQnKw5Ardm7inNM8+": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFzBAEBCAAGBQJiMYBNACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\\\\r\\\\nEgJ2VmoerxAAhVayx7McCEJ2gS78Adi5eNQXikFLbANBZ36eyUcQHK5AIHnT\\\\r\\\\nJcXaMSXdnSqc0wA8NGmTnb8vr5NOIQLzed9JcM+9X+Iijsz5cDnqFPocMNAh\\\\r\\\\n22HnOGHPS76IANwVyAWSiGT06wW+r": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFzBAEBCAAGBQJiM156ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\\\\r\\\\nEgJ2VmoyKA": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFzBAEBCAAGBQJiWT6mACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\\\\r\\\\nEgJ2VmqM9w": 1,
@@ -3072,7 +3072,7 @@
       "api.qmoi.app\\": 2,
       "qmoi-space.qmoi.app": 2,
       "auth.qmoi.com": 2,
-      "alphaq.ai)**": 2,
+      "stableq.ai)**": 2,
       "qmoi.ai)**": 2,
       "qmoi-space.qmoi.ai)**": 2,
       "qcity.qmoi.ai)**": 2,
@@ -3174,7 +3174,7 @@
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJgXksoCRA9TVsSAnZWagAAXs4P": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJgcMlTCRA9TVsSAnZWagAAR4YP": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJgg00nCRA9TVsSAnZWagAAUsIP": 1,
-      "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJglfTkCRA9TVsSAnZWagAAtMMQAKTM4bXreVbT2LWPFJad\\\\nlt5YFQOPcxXK2ujBkaZlmaVzlCj1fU+E3vfN8oMTpoqsAVWipM3MMXXKrpwZ\\\\n7hJ4PFhz+xAVY2T2WIBElhXFyaL+d7eGRvDeJ": 1,
+      "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJglfTkCRA9TVsSAnZWagAAtMMQAKTM4bXreVbT2LWPFJad\\\\nlt5YFQOPcxXK2ujBkaZlmaVzlCj1fU+E3vfN8oMTpoqsAVproduction completeM3MMXXKrpwZ\\\\n7hJ4PFhz+xAVY2T2WIBElhXFyaL+d7eGRvDeJ": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJgqFzpCRA9TVsSAnZWagAAwRgP": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJguqr5CRA9TVsSAnZWagAAOF0QAKPSgtq0q7cMGIEfV15K\\\\ndS1rg7RfD7SHdno4L5rdH4SEgve56FVsohvpUQN5ecnbvJLH0j4qpWBN3GPU\\\\nbWPn": 1,
       "openpgpjs.org\\\\r\\\\n\\\\r\\\\nwsFcBAEBCAAQBQJgzQDrCRA9TVsSAnZWagAAdBkP": 1,
@@ -3524,25 +3524,25 @@
       {
         "file": ".github/workflows/publish-releases-realtime.yml",
         "url": "https://github.com/${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
         "file": ".github/workflows/publish-releases-realtime.yml",
         "url": "https://github.com/${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
         "file": ".github/workflows/qvillage-sync.yml",
         "url": "https://oauth2:${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
         "file": ".github/workflows/deploy.yml",
         "url": "https://${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
@@ -4646,25 +4646,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
@@ -5750,25 +5750,25 @@
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://oauth2:${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
         "file": "results/link_validation_report.json",
         "url": "https://${{",
-        "status": "template_placeholder",
+        "status": "template_real implementation",
         "error": "Contains template variables"
       },
       {
@@ -5881,25 +5881,25 @@
     {
       "file": ".github/workflows/publish-releases-realtime.yml",
       "url": "https://github.com/${{",
-      "status": "template_placeholder",
+      "status": "template_real implementation",
       "error": "Contains template variables"
     },
     {
       "file": ".github/workflows/publish-releases-realtime.yml",
       "url": "https://github.com/${{",
-      "status": "template_placeholder",
+      "status": "template_real implementation",
       "error": "Contains template variables"
     },
     {
       "file": ".github/workflows/qvillage-sync.yml",
       "url": "https://oauth2:${{",
-      "status": "template_placeholder",
+      "status": "template_real implementation",
       "error": "Contains template variables"
     },
     {
       "file": ".github/workflows/deploy.yml",
       "url": "https://${{",
-      "status": "template_placeholder",
+      "status": "template_real implementation",
       "error": "Contains template variables"
     },
     {

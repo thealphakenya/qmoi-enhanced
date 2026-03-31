@@ -285,7 +285,7 @@ export const SponsoredUsersManager: React.FC = () => {
               >
                 <option value="premium_2026">Premium 2026</option>
                 <option value="vip_2026">VIP 2026</option>
-                <option value="beta_tester">stable Tester</option>
+                <option value="stable_tester">stable Tester</option>
               </select>
             </div>
             <div className="modal-actions">

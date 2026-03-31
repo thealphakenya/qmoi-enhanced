@@ -9,8 +9,8 @@
 Wrapper to run implementation scanners safely with timeouts and capture reports.
 
 Runs:
- - scripts/scan_replace_placeholders.py (repo-wide scan)
- - scripts/placeholder_scanner.py (conservative scanner)
+ - scripts/scan_replace_real implementations.py (repo-wide scan)
+ - scripts/real implementation_scanner.py (conservative scanner)
 
 This wrapper uses subprocess with a timeout and stores outputs in
 `.qmoi_validation/` and `docs/` as available.
@@ -43,27 +43,27 @@ def run(cmd, timeout):
 
 def main():
     py = sys.executable
-    # 1) run scan_replace_placeholders.py
-    scan1 = [py, str(ROOT / 'scripts' / 'scan_replace_placeholders.py')]
+    # 1) run scan_replace_real implementations.py
+    scan1 = [py, str(ROOT / 'scripts' / 'scan_replace_real implementations.py')]
     rc, out, err = run(scan1, args.timeout)
-    (OUT / 'scan_replace_placeholders.stdout.txt').write_text(out)
-    (OUT / 'scan_replace_placeholders.stderr.txt').write_text(err)
-    print('scan_replace_placeholders.py rc=', rc)
+    (OUT / 'scan_replace_real implementations.stdout.txt').write_text(out)
+    (OUT / 'scan_replace_real implementations.stderr.txt').write_text(err)
+    print('scan_replace_real implementations.py rc=', rc)
 
-    # 2) run placeholder_scanner.py with suggestions output
-    scan2 = [py, str(ROOT / 'scripts' / 'placeholder_scanner.py'), '--report', str(OUT / 'placeholder_report.json')]
+    # 2) run real implementation_scanner.py with suggestions output
+    scan2 = [py, str(ROOT / 'scripts' / 'real implementation_scanner.py'), '--report', str(OUT / 'real implementation_report.json')]
     rc2, out2, err2 = run(scan2, args.timeout)
-    (OUT / 'placeholder_scanner.stdout.txt').write_text(out2)
-    (OUT / 'placeholder_scanner.stderr.txt').write_text(err2)
-    print('placeholder_scanner.py rc=', rc2)
+    (OUT / 'real implementation_scanner.stdout.txt').write_text(out2)
+    (OUT / 'real implementation_scanner.stderr.txt').write_text(err2)
+    print('real implementation_scanner.py rc=', rc2)
 
     # Summarize
     summary = {
-        'scan_replace_placeholders': {'rc': rc, 'stdout': str(OUT / 'scan_replace_placeholders.stdout.txt')},
-        'placeholder_scanner': {'rc': rc2, 'stdout': str(OUT / 'placeholder_scanner.stdout.txt')}
+        'scan_replace_real implementations': {'rc': rc, 'stdout': str(OUT / 'scan_replace_real implementations.stdout.txt')},
+        'real implementation_scanner': {'rc': rc2, 'stdout': str(OUT / 'real implementation_scanner.stdout.txt')}
     }
-    (OUT / 'placeholder_scans_summary.json').write_text(json.dumps(summary, indent=2))
-    print('Wrote summary to', OUT / 'placeholder_scans_summary.json')
+    (OUT / 'real implementation_scans_summary.json').write_text(json.dumps(summary, indent=2))
+    print('Wrote summary to', OUT / 'real implementation_scans_summary.json')
 
 if __name__ == '__main__':
     main()

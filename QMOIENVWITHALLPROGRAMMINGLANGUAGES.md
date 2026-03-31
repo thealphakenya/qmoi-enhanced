@@ -1340,7 +1340,7 @@ if __name__ == "__main__":
 
 For issues, questions, or enhancements:
 
-- **Email**: rovicviccy@gmail.com, thealphakenya@gmail.com
+- **Email**: rovicviccy@gmail.com, thestablekenya@gmail.com
 - **WhatsApp**: Automatic notifications enabled
 - **GitHub Issues**: Auto-created for critical issues
 - **QMOI Dashboard**: Real-time monitoring and control

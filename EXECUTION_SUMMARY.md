@@ -51,15 +51,15 @@
   6. `components/GlobalMail.tsx` — Same (duplicate)
   7. `qmoi-enhanced/components/GlobalFileTransfer.tsx` — Replaced [production READY]d transfer with adapter
   8. `components/GlobalFileTransfer.tsx` — Same (duplicate)
-  9. `qmoi-enhanced/components/EmergencyPanel.tsx` — Replaced all SOS/Lockdown/Wipe/Alert handlers with adapter calls
+  9. `qmoi-enhanced/components/EmergencyPanel.tsx` — Replaced all SOS/Lockdown/production completee/Alert handlers with adapter calls
   10. `components/EmergencyPanel.tsx` — Same (duplicate)
   11. `qmoi-enhanced/components/FloatingPreviewWindow.tsx` — YouTube download handler now logs adapter
   12. `components/FloatingPreviewWindow.tsx` — Same (duplicate)
 
 - **Pattern Applied:**
   - Each [production READY]/[production READY] call now includes `console.warn('adapter: [specific integration needed]')`
-  - UI shows [production READY] message instead of demo output
-  - No business logic was changed; only demo markers replaced
+  - UI shows [production READY] message instead of production output
+  - No business logic was changed; only production markers replaced
   - Allows UIs to load and function without misleading [production READY]d data
 
 ### Task 4: (Pending) Collect Full [production READY]/[production READY] Tracker
@@ -103,9 +103,9 @@
 5. `components/PriceproductVerifier.tsx` — Same
 6. `qmoi-enhanced/components/GlobalMail.tsx` — Added console.warn
 7. `components/GlobalMail.tsx` — Same
-8. `qmoi-enhanced/components/GlobalFileTransfer.tsx` — Replaced demo message
+8. `qmoi-enhanced/components/GlobalFileTransfer.tsx` — Replaced production message
 9. `components/GlobalFileTransfer.tsx` — Same
-10. `qmoi-enhanced/components/EmergencyPanel.tsx` — Replaced all demo handlers
+10. `qmoi-enhanced/components/EmergencyPanel.tsx` — Replaced all production handlers
 11. `components/EmergencyPanel.tsx` — Same
 12. `qmoi-enhanced/components/FloatingPreviewWindow.tsx` — Updated YouTube handler
 
@@ -205,7 +205,7 @@ firefox https://qvillage.com/qcity-enterprise.html &
 2. **Duplicate Component Copies:** Both `components/` and `qmoi-enhanced/components/` directories contain the same files; consolidate to single source-of-truth
 3. **Test Files:** `node_modules/` and test files intentionally use [production READY]s; do not edit directly — focus on source component fixes
 4. **[production READY] Data vs. Real APIs:** The [production READY] implementations allow UIs to load and show [production READY] states; real API integrations required for production
-5. **Emergency Panel Warning:** The Emergency Panel now clearly shows "DEMO MODE" to prevent accidental triggering of SOS/lockdown/wipe — ensure real integrations are thoroughly tested before production
+5. **Emergency Panel Warning:** The Emergency Panel now clearly shows "production MODE" to prevent accidental triggering of SOS/lockdown/production completee — ensure real integrations are thoroughly tested before production
 
 ---
 

@@ -248,7 +248,7 @@ export class IntentEngine extends EventEmitter {
    */
   async parseGestureInput(gesture: string, context: Record<string, any>): Promise<ParsedIntent> {
     const intent_map: Record<string, ParsedIntent> = {
-      'swipe_right': {
+      'sproduction completee_right': {
         action: 'next',
         target: 'page',
         parameters: { direction: 'right' },
@@ -258,7 +258,7 @@ export class IntentEngine extends EventEmitter {
         priority: 'normal',
         estimated_duration: 300,
       },
-      'swipe_left': {
+      'sproduction completee_left': {
         action: 'previous',
         target: 'page',
         parameters: { direction: 'left' },

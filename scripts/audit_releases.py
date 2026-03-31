@@ -27,7 +27,7 @@ OUT_JSON = ROOT / 'tools' / 'releases_audit.json'
 OUT_MD = ROOT / 'tools' / 'releases_audit.md'
 
 if not API_FILE.exists():
-    print(f"required {API_FILE}. Run: curl -H 'Authorization: token $GITHUB_TOKEN' https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases > {API_FILE}")
+    print(f"required {API_FILE}. Run: curl -H 'Authorization: token $GITHUB_TOKEN' https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases > {API_FILE}")
     sys.exit(2)
 
 with API_FILE.open() as f:
@@ -71,7 +71,7 @@ for r in releases:
         flags.append({'tag': tag, 'name': name, 'id': r.get('id'), 'html_url': r.get('html_url'), 'flags': release_flags})
 
 report = {
-    'repository': 'thealphakenya/qmoi-enhanced',
+    'repository': 'thestablekenya/qmoi-enhanced',
     'checked_at': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
     'total_releases': len(releases),
     'flagged_releases': flags,
@@ -104,7 +104,7 @@ TOKEN = os.environ.get('GITHUB_TOKEN')
 
 if CREATE and TOKEN and flags:
     import requests
-    repo = 'thealphakenya/qmoi-enhanced'
+    repo = 'thestablekenya/qmoi-enhanced'
     headers = {'Authorization': f'token {TOKEN}', 'Accept': 'application/vnd.github.v3+json'}
     for fr in flags:
         title = f"Release audit: {fr['name']} ({fr['tag']}) — assets appear implementation/corrupt"

@@ -230,7 +230,7 @@ Consent:
 1. **Download APK Link**
 
    ```
-   File share link: https://github.com/thealphakenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.apk
+   File share link: https://github.com/thestablekenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.apk
    ```
 
 2. **Installation**
@@ -354,7 +354,7 @@ Consent:
 1. **Host EXE on Download Server**
 
    ```
-   URL: https://github.com/thealphakenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.exe
+   URL: https://github.com/thestablekenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.exe
    Size: ~5 MB
    Format: Installer (MSI or standalone)
    ```
@@ -403,7 +403,7 @@ Consent:
 1. **Host DMG on Download Server**
 
    ```
-   URL: https://github.com/thealphakenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.dmg
+   URL: https://github.com/thestablekenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.dmg
    Size: ~8 MB
    Format: Disk image (notarized, ready to use)
    ```
@@ -449,8 +449,8 @@ Consent:
 1. **Host Binaries**
 
    ```
-   AppImage: https://github.com/thealphakenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.AppImage
-   DEB: https://github.com/thealphakenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.deb
+   AppImage: https://github.com/thestablekenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.AppImage
+   DEB: https://github.com/thestablekenya/qmoi-enhanced/releases/testing/qmoi_ai_v1.2.3.deb
    ```
 
 2. **Send to Testers**

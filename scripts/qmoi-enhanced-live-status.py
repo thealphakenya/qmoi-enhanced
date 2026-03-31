@@ -29,7 +29,7 @@ RUNNER_STATUS_FILE = Path(__file__).parent.parent / "logs" / "qcity-runners-stat
 AUTOMATION_STATUS_FILE = Path(__file__).parent.parent / "logs" / "automation-status.json"
 
 # Email configuration
-MASTER_EMAILS = ["rovicviccy@gmail.com", "thealphakenya@gmail.com"]
+MASTER_EMAILS = ["rovicviccy@gmail.com", "thestablekenya@gmail.com"]
 
 should_run = True
 

@@ -112,7 +112,7 @@ fi
 echo ""
 echo "🧪 Testing:"
 echo "  • bash verify_setup.sh  (verify everything is working)"
-echo "  • python3 mock_server.py (test with real backend)"
+echo "  • python3 real_server.py (test with real backend)"
 echo ""
 echo "📚 Documentation:"
 echo "  • INTEGRATION_GUIDE.md (step-by-step integration)"

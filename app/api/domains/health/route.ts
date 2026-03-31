@@ -18,13 +18,13 @@ const FORCE_SYNTHETIC_HEALTH = process.env.FORCE_SYNTHETIC_HEALTH?.toLowerCase()
 const DOMAIN_REGISTRY = {
   "qvillage.com": { critical: true, fallbacks: ["qvillage.net", "qvillage.org"], type: "primary_hub" },
   "qmoi.ai": { critical: true, fallbacks: ["qmoi.com"], type: "main_app" },
-  "alphaq.ai": { critical: true, fallbacks: ["alphaq.com"], type: "ai_platform" },
+  "stableq.ai": { critical: true, fallbacks: ["stableq.com"], type: "ai_platform" },
   "qshare.qvillage.com": { critical: true, fallbacks: ["qshare.qvillage.com"], type: "service" },
   "qstore.qvillage.com": { critical: true, fallbacks: ["qstore.qvillage.com"], type: "service" },
   "qcity.qmoi.ai": { critical: false, fallbacks: ["qcity.qvillage.com"], type: "service" },
   "qmoi-space.qmoi.ai": { critical: false, fallbacks: ["space.qmoi.ai"], type: "service" },
   "yap.qmoi.ai": { critical: false, fallbacks: ["yap.qvillage.com"], type: "service" },
-  "q-stable.qmoi.ai": { critical: false, fallbacks: ["stable.alphaq.ai"], type: "service" },
+  "q-stable.qmoi.ai": { critical: false, fallbacks: ["stable.stableq.ai"], type: "service" },
   "qvillage.net": { critical: false, fallbacks: ["qvillage.org"], type: "fallback" },
   "qvillage.org": { critical: false, fallbacks: [], type: "fallback" },
   "qglobal.org": { critical: false, fallbacks: [], type: "fallback" },
@@ -56,14 +56,14 @@ const DOMAIN_CONFIG: Record<string, {
     uiComponents: ["chat_window", "model_cards", "sidebar", "toolbar", "action_buttons", "footer"],
     fallbacks: ["qmoi.com"]
   },
-  "alphaq.ai": {
+  "stableq.ai": {
     uiEndpoints: ["/", "/chat", "/models", "/dashboard"],
     expectedFeatures: [
       "ai_dashboard", "model_gallery", "chat_interface", "api_documentation",
       "analytics_panel", "ssl_certificate", "responsive_design"
     ],
     uiComponents: ["model_selector", "chat_input", "results_panel", "analytics_charts", "navigation_menu"],
-    fallbacks: ["alphaq.com"]
+    fallbacks: ["stableq.com"]
   },
   "qshare.qvillage.com": {
     uiEndpoints: ["/", "/upload", "/share"],
@@ -117,7 +117,7 @@ const DOMAIN_CONFIG: Record<string, {
       "ssl_certificate", "responsive_design"
     ],
     uiComponents: ["model_tiles", "download_buttons", "version_selector", "search_bar", "footer"],
-    fallbacks: ["stable.alphaq.ai"]
+    fallbacks: ["stable.stableq.ai"]
   },
   "qvillage.net": {
     uiEndpoints: ["/", "/about"],

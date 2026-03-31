@@ -231,7 +231,7 @@ SECTION 1: FOUNDATIONAL UNDERSTANDING
 ${scenario.keywords.map((kw, i) => `  ${i + 1}. ${kw.charAt(0).toUpperCase() + kw.slice(1)}: Core concept explanation with context`).join("\n")}
 
 SECTION 2: DETAILED EXPLANATION
-The relationship between ${scenario.keywords[0]} and ${scenario.keywords[1]} demonstrates:
+The relationship between ${scenario.keywords[0]} and ${scenario.keywords[1]} productionnstrates:
 - How ${scenario.keywords[0]} directly influences outcomes
 - The cascading effects through ${scenario.keywords[2]}
 - Integration with broader ${scenario.category.toLowerCase()} principles
@@ -310,7 +310,7 @@ B. Qualitative Dimensions
 ═══════════════════════════════════════════════════════════════
 
 PART III: EVIDENCE-BASED CONCLUSIONS
-Research across 8-9 authoritative sources demonstrates:
+Research across 8-9 authoritative sources productionnstrates:
 - Consensus findings on core ${scenario.keywords[0]} principles
 - Divergent perspectives on ${scenario.keywords[1]} applications
 - Emerging insights in ${scenario.keywords[2]} domain
@@ -385,7 +385,7 @@ III. EVIDENCE SYNTHESIS (12+ AUTHORITATIVE SOURCES)
 Strong Consensus (92% agreement):
   • Core ${scenario.keywords[0]} dynamics are well-established
   • Fundamental mechanisms show consistent patterns across contexts
-  • Predictive models demonstrate reliable performance
+  • Predictive models productionnstrate reliable performance
 
 productive Disagreement (8%):
   • Interpretive frameworks for ${scenario.keywords[1]} vary meaningfully
@@ -481,7 +481,7 @@ The ${scenario.category} domain reveals itself through three interlocking perspe
    These formal structures constrain possible understanding and enable precise prediction.
 
 3. EMPIRICAL VALIDATION
-   Real-world evidence from 12-15 authoritative sources demonstrates:
+   Real-world evidence from 12-15 authoritative sources productionnstrates:
    • Consistency across diverse contexts and timescales
    • Predictive power validated through independent replication
    • Generalizability across cultures, disciplines, and domains

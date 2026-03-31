@@ -20,9 +20,9 @@ This file lists all QMOI apps and their current release artifacts (auto-updated 
 
 | App Name   | Platform  | Version | Download Link                                                                  | Status |
 | ---------- | --------- | ------- | ------------------------------------------------------------------------------ | ------ |
-| qmoi-ai    | Web (PWA) | v1.0.0  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-ai/pwa/latest/    | ✅     |
-| qmoi-space | Web (PWA) | v1.0.0  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/ | ✅     |
-| qcity      | Web (PWA) | v1.0.0  | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/pwa/latest/      | ✅     |
+| qmoi-ai    | Web (PWA) | v1.0.0  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi-ai/pwa/latest/    | ✅     |
+| qmoi-space | Web (PWA) | v1.0.0  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/ | ✅     |
+| qcity      | Web (PWA) | v1.0.0  | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/pwa/latest/      | ✅     |
 
 > Note: QMOI will attempt to validate every download link before publishing it here and replace broken links with a [production READY] and a task for manual review.
 
@@ -34,23 +34,23 @@ This file lists all QMOI AI apps, all platforms, all versions, and their downloa
 
 | App Name | Platform         | Version | Download Link                                                                       | Status |
 | -------- | ---------------- | ------- | ----------------------------------------------------------------------------------- | ------ |
-| QMOI AI  | Windows          | v1.2.3  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe            | ✅     |
-| QMOI AI  | Mac              | v1.2.3  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg                | ✅     |
-| QMOI AI  | Linux (DEB)      | v1.2.3  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb              | ✅     |
-| QMOI AI  | Linux (AppImage) | v1.2.3  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage         | ✅     |
-| QMOI AI  | Android          | v1.2.3  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk            | ✅     |
-| QMOI AI  | iOS              | v1.2.3  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa                | ✅     |
-| QMOI AI  | Smart TV         | v1.2.3  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk            | ✅     |
-| QMOI AI  | Raspberry Pi     | v1.2.3  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img        | ✅     |
-| QMOI AI  | Chromebook       | v1.2.3  | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip         | ✅     |
-| QCity    | Windows          | v2.0.1  | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe           | ✅     |
-| QCity    | Mac              | v2.0.1  | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg               | ✅     |
-| QCity    | Linux            | v2.0.1  | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage        | ✅     |
-| QCity    | Android          | v2.0.1  | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk           | ✅     |
-| QCity    | iOS              | v2.0.1  | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa               | ✅     |
-| Qshare   | All              | v1.0.0  | https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk | ✅     |
-| Yap      | All              | v1.1.0  | https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk       | ✅     |
-| Qstore   | All              | v1.0.0  | https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk | ✅     |
+| QMOI AI  | Windows          | v1.2.3  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe            | ✅     |
+| QMOI AI  | Mac              | v1.2.3  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg                | ✅     |
+| QMOI AI  | Linux (DEB)      | v1.2.3  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb              | ✅     |
+| QMOI AI  | Linux (AppImage) | v1.2.3  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage         | ✅     |
+| QMOI AI  | Android          | v1.2.3  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk            | ✅     |
+| QMOI AI  | iOS              | v1.2.3  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa                | ✅     |
+| QMOI AI  | Smart TV         | v1.2.3  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk            | ✅     |
+| QMOI AI  | Raspberry Pi     | v1.2.3  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img        | ✅     |
+| QMOI AI  | Chromebook       | v1.2.3  | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip         | ✅     |
+| QCity    | Windows          | v2.0.1  | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe           | ✅     |
+| QCity    | Mac              | v2.0.1  | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg               | ✅     |
+| QCity    | Linux            | v2.0.1  | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage        | ✅     |
+| QCity    | Android          | v2.0.1  | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk           | ✅     |
+| QCity    | iOS              | v2.0.1  | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa               | ✅     |
+| Qshare   | All              | v1.0.0  | https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk | ✅     |
+| Yap      | All              | v1.1.0  | https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk       | ✅     |
+| Qstore   | All              | v1.0.0  | https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk | ✅     |
 
 ## Troubleshooting & Help
 

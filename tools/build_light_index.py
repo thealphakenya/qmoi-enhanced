@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_JSON = ROOT / 'tools' / 'light_index.json'
 OUT_MD = ROOT / 'tools' / 'light_index.md'
 
-# default skip dirs (same as find_placeholders)
+# default skip dirs (same as find_real implementations)
 SKIP_DIRS = {'.git', 'node_modules', '__pycache__', '.venv', 'venv', '.qmoi_validation', 'dist', 'build'}
 
 def human_size(n):

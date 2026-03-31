@@ -8,7 +8,7 @@ from github import Github
 from github import InputGitAuthor
 from datetime import datetime
 
-REPO_NAME = "thealphakenya/stable-Q-ai"
+REPO_NAME = "thestablekenya/stable-Q-ai"
 ZIP_PATH = "QMOI_AI_All_Platforms.zip"
 TAG_NAME = f"release-{datetime.now().strftime('%Y%m%d%H%M%S')}"
 RELEASE_TITLE = "QMOI AI Auto Release"

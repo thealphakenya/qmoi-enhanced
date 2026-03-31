@@ -549,7 +549,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "http://localhost:3000/api/admin/users/demote",
+      "http://localhost:3000/api/admin/users/productionte",
       "http://localhost:3000/api/admin/users/promote",
       "http://localhost:3000/api/user/rate-limit-status"
     ],
@@ -963,7 +963,7 @@
     "broken_link_list": [
       "qcity",
       "qmoi-prod-actions.log",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi",
       "qmoi-prod-actions.py",
       "http://localhost:3001",
@@ -980,7 +980,7 @@
     "broken_links": 2,
     "broken_link_list": [
       "qmoi_validation_frontmatter",
-      "alphaq"
+      "stableq"
     ],
     "suggestions": {}
   },
@@ -1126,14 +1126,14 @@
       "https://qmoi-enhanced.vercel.app/api**",
       "https://nextjs.org/docs/deployment",
       "https://www.gnu.org/software/bash/manual/",
-      "https://vercel.com/thealphakenya/qmoi-enhanced**",
+      "https://vercel.com/thestablekenya/qmoi-enhanced**",
       "https://www.gnu.org/software/bash/manual/)",
-      "https://vercel.com/thealphakenya/qmoi-enhanced)",
+      "https://vercel.com/thestablekenya/qmoi-enhanced)",
       "https://qmoi-enhanced.vercel.app**",
       "https://vercel.com/docs)",
       "https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)",
       "https://nextjs.org/docs/deployment)",
-      "https://vercel.com/thealphakenya/qmoi-enhanced",
+      "https://vercel.com/thestablekenya/qmoi-enhanced",
       "qmoi-enhanced",
       "https://qmoi-enhanced.vercel.app",
       "https://qmoi-enhanced.vercel.app/api/health**",
@@ -1166,16 +1166,16 @@
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/auth/login",
       "https://vercel.com/simtwos-projects/qmoi-enhanced/H6DPEs2Rgc6h7BhgT3GMBtsgFLqB)",
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/status",
-      "https://vercel.com/thealphakenya/qmoi-enhanced/settings/domains",
+      "https://vercel.com/thestablekenya/qmoi-enhanced/settings/domains",
       "https://vercel.com/simtwos-projects/qmoi-enhanced/H6DPEs2Rgc6h7BhgT3GMBtsgFLqB",
       "https://vercel.com/simtwos-projects/qmoi-enhanced)",
-      "https://vercel.com/thealphakenya/qmoi-enhanced/settings/environment-variables",
+      "https://vercel.com/thestablekenya/qmoi-enhanced/settings/environment-variables",
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/auth/logout",
-      "https://vercel.com/thealphakenya/qmoi-enhanced/settings/git",
+      "https://vercel.com/thestablekenya/qmoi-enhanced/settings/git",
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/auth/refresh",
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/users/",
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/admin/metrics",
-      "https://vercel.com/thealphakenya/qmoi-enhanced",
+      "https://vercel.com/thestablekenya/qmoi-enhanced",
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/health",
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/admin/audit-logs",
       "https://vercel.com/docs",
@@ -1191,7 +1191,7 @@
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/admin/users",
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app)",
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/wallets/",
-      "https://vercel.com/thealphakenya/qmoi-enhanced/analytics",
+      "https://vercel.com/thestablekenya/qmoi-enhanced/analytics",
       "https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/wallets",
       "qmoi-enhanced",
       "https://nextjs.org/docs"
@@ -1206,7 +1206,7 @@
     "broken_link_list": [
       "https://q-city.ai",
       "https://api.q-city.ai",
-      "qmoi_staging",
+      "qmoi_production",
       "qmoi_prod",
       "https://api-production.q-city.ai",
       "qmoi",
@@ -1371,9 +1371,9 @@
     "broken_link_list": [
       "http://localhost:3000",
       "qmoi-master",
-      "https://huggingface.co/alphaqmoi/qmoi).",
-      "https://huggingface.co/alphaqmoi/qmoi",
-      "alphaqmoi",
+      "https://huggingface.co/stableqmoi/qmoi).",
+      "https://huggingface.co/stableqmoi/qmoi",
+      "stableqmoi",
       "http://localhost:5055",
       "qmoi",
       "qmoi-autoprod.yml",
@@ -1701,10 +1701,10 @@
     "broken_link_list": [
       "https://hooks.slack.com/services/...",
       "https://api.qvillage.ai",
-      "https://huggingface.co/spaces/alphaqmoi/qvillage",
+      "https://huggingface.co/spaces/stableqmoi/qvillage",
       "https://huggingface.co/new-space",
       "qvillage-sync",
-      "alphaqmoi",
+      "stableqmoi",
       "https://vercel.com/account/tokens",
       "qvillage",
       "qvillage.ai",
@@ -1730,8 +1730,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/AUTODOWNLOAD.md": {
-    "file_path": "AUTODOWNLOAD.md",
+  "/workspaces/qmoi-enhanced/AUDONEWNLOAD.md": {
+    "file_path": "AUDONEWNLOAD.md",
     "total_links": 4,
     "valid_links": 0,
     "broken_links": 4,
@@ -1977,8 +1977,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/TODOS_COMPLETION_INDEX.md": {
-    "file_path": "TODOS_COMPLETION_INDEX.md",
+  "/workspaces/qmoi-enhanced/DONES_COMPLETION_INDEX.md": {
+    "file_path": "DONES_COMPLETION_INDEX.md",
     "total_links": 5,
     "valid_links": 0,
     "broken_links": 5,
@@ -2659,7 +2659,7 @@
       "https://www.npmjs.com/package/method-override)",
       "https://nodei.co/npm/string_decoder.png?downloads=true&downloadRank=true",
       "http://hg.nginx.org/nginx/raw-file/default/conf/mime.types",
-      "https://huggingface.co/alphaqmoi/qmoi)",
+      "https://huggingface.co/stableqmoi/qmoi)",
       "https://img.shields.io/coveralls/stacktracejs/stackframe.svg?style=flat-square)",
       "https://cs.chromium.org/search/?q=kEnableAutomation&type=cs)",
       "https://img.shields.io/npm/v/sisteransi.svg",
@@ -4011,7 +4011,7 @@
       "https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85)",
       "https://img.shields.io/npm/v/chromium-edge-launcher.svg",
       "https://travis-ci.org/micromatch/anymatch.svg?branch=master)",
-      "https://huggingface.co/alphaqmoi/qmoi",
+      "https://huggingface.co/stableqmoi/qmoi",
       "https://prodeloper.mozilla.org/en-US/docs/Glossary/Primitive",
       "https://img.shields.io/npm/dt/braces.svg?style=flat)",
       "https://source.chromium.org/chromium/chromium/src/+/master:content/public/common/content_switches.cc;l=602-605;drc=2149a93144ce2030ab20863c2983b6c9d7bfd177)",
@@ -4137,7 +4137,7 @@
       "/docs/advanced.md#customizing",
       "https://babeljs.io/docs/en/next/babel-plugin-syntax-numeric-separator.html",
       "http://docs.python.org/prod/library/argparse.html#sub-commands",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "https://npmjs.com/package/@babel/types)",
       "http://tools.ietf.org/html/rfc6838#section-5",
       "https://img.shields.io/travis/jonschlinkert/fill-range.svg?style=flat&label=Travis",
@@ -4201,7 +4201,7 @@
       "http://www.caniuse.com/#feat=urlsearchparams)",
       "http://pyyaml.org/",
       "https://nodesecurity.io/",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system)",
       "https://cs.chromium.org/search/?q=kEnableAutomation&type=cs",
       "https://secure.travis-ci.org/nshah/nodejs-makeerror.png)",
       "https://img.shields.io/npm/dm/memoize-one.svg",
@@ -4382,7 +4382,7 @@
       "https://badgen.net/npm/dt/chalk)",
       "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)",
       "https://prodeloper.mozilla.org/en-US/docs/Web/API/URLSearchParams)",
-      "alphaqmoi",
+      "stableqmoi",
       "https://www.regular-expressions.info/catastrophic.html",
       "http://yargs.js.org/)",
       "https://travis-ci.com/sindresorhus/strip-final-newline.svg?branch=master)",
@@ -4653,8 +4653,8 @@
     "valid_links": 33,
     "broken_links": 40,
     "broken_link_list": [
-      "https://huggingface.co/thealphakenya",
-      "https://huggingface.co/thealphakenya?tab=models",
+      "https://huggingface.co/thestablekenya",
+      "https://huggingface.co/thestablekenya?tab=models",
       "qcity",
       "https://qdatabase.net",
       "qmoi-ai-v1.2.3-android.apk",
@@ -4669,7 +4669,7 @@
       "http://localhost:8080/qcity-dashboard.html",
       "https://qdatabase.net/api/health",
       "https://qserver.io/resources",
-      "https://vercel.com/thealphakenya/qmoi-enhanced",
+      "https://vercel.com/thestablekenya/qmoi-enhanced",
       "https://qquantum.tech/compute",
       "qshare",
       "https://qmoi-enhanced.vercel.app",
@@ -4740,7 +4740,7 @@
       "qmoi-tracks",
       "http://localhost:8080/sync/status",
       "qmoi-gitlab",
-      "qmoi-demo-app",
+      "qmoi-production-app",
       "https://data.com/webhook",
       "qmoi-transformer-v1",
       "qmoi",
@@ -5212,8 +5212,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/TODOS_COMPLETION_VERIFICATION.md": {
-    "file_path": "TODOS_COMPLETION_VERIFICATION.md",
+  "/workspaces/qmoi-enhanced/DONES_COMPLETION_VERIFICATION.md": {
+    "file_path": "DONES_COMPLETION_VERIFICATION.md",
     "total_links": 5,
     "valid_links": 0,
     "broken_links": 5,
@@ -5232,12 +5232,12 @@
     "valid_links": 3,
     "broken_links": 8,
     "broken_link_list": [
-      "https://api-inference.huggingface.co/models/alphaqmoi/qmoi",
-      "alphaqmoi",
+      "https://api-inference.huggingface.co/models/stableqmoi/qmoi",
+      "stableqmoi",
       "qmoi",
-      "https://huggingface.co/alphaqmoi/qmoi-ai-system",
+      "https://huggingface.co/stableqmoi/qmoi-ai-system",
       "qmoi-ai-system",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "qmoi_validation_frontmatter",
       "http://localhost:7860"
     ],
@@ -5580,24 +5580,24 @@
     "valid_links": 1,
     "broken_links": 13,
     "broken_link_list": [
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system/status",
       "https://huggingface.co/spaces/",
       "https://huggingface.co/join))",
       "https://huggingface.co/docs/hub/spaces",
       "https://huggingface.co/docs/hub/spaces)",
-      "alphaqmoi",
+      "stableqmoi",
       "https://huggingface.co/settings/tokens",
       "qmoi-ai-system",
       "https://huggingface.co/join",
       "qmoi_validation_frontmatter",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "qmoi-autoprod.yml",
       "https://huggingface.co/settings/tokens))"
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/prod_PLACEHOLDERS_INVENTORY.md": {
-    "file_path": "prod_PLACEHOLDERS_INVENTORY.md",
+  "/workspaces/qmoi-enhanced/prod_real implementationS_INVENTORY.md": {
+    "file_path": "prod_real implementationS_INVENTORY.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -5716,7 +5716,7 @@
     "broken_link_list": [
       "https://api.qvillage.ai",
       "https://huggingface.co/new-space",
-      "alphaqmoi",
+      "stableqmoi",
       "qvillage",
       "qvillage.ai",
       "http://localhost:7860"
@@ -6139,7 +6139,7 @@
       "https://visualstudio.microsoft.com/downloads/",
       "https://travis-ci.org/davidtheclark/cosmiconfig",
       "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray",
-      "https://alphaq-ai.com/updates/qvirus.json",
+      "https://stableq-ai.com/updates/qvirus.json",
       "https://nodejs.org/api/globals.html#globals_require_resolve",
       "https://travis-ci.org/sindresorhus/decamelize",
       "https://nodejs.org/api/url.html#url_class_urlsearchparams",
@@ -6200,7 +6200,7 @@
       "https://img.shields.io/github/workflow/status/stream-utils/destroy/ci/master?label=ci&style=flat-square",
       "https://david-dm.org/isaacs/rimraf",
       "https://travis-ci.org/sindresorhus/p-limit",
-      "https://api-inference.huggingface.co/models/alphaqmoi/qmoi",
+      "https://api-inference.huggingface.co/models/stableqmoi/qmoi",
       "https://www.npmjs.com/package/path-ends-with",
       "https://nodejs.org/api/globals.html#globals_queuemicrotask_callback",
       "https://www.npmjs.com/package/immediate",
@@ -6323,7 +6323,7 @@
       "https://coveralls.io/github/jprichardson/node-fs-extra",
       "https://coveralls.io/repos/yargs/cliui/badge.svg?branch=",
       "https://codecov.io",
-      "https://qmoigateway.thealphakenya.com/api/github/webhook",
+      "https://qmoigateway.thestablekenya.com/api/github/webhook",
       "https://c9.io",
       "https://coveralls.io/r/jshttp/proxy-addr?branch=master",
       "https://flow.org/en/docs/enums/",
@@ -6376,7 +6376,7 @@
       "https://reactnative.prod/docs/getting-started",
       "https://img.shields.io/coveralls/jshttp/fresh/master.svg",
       "https://travis-ci.org/sindresorhus/caller-callsite.svg?branch=master",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
       "https://img.shields.io/npm/dt/anser.svg",
       "https://user-images.githubusercontent.com/27283110/230441652-ac5cf6b0-5dc5-4ffc-9d8b-bd02875484f4.png",
       "https://www.npmjs.com/package/combined-stream2",
@@ -6912,7 +6912,7 @@
       "https://nodejs.org/api/child_process.html#child_process_child_process_spawnsync_command_args_options",
       "http://localhost:8080/api/status",
       "https://img.shields.io/npm/v/electron-to-chromium.svg",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-space",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-space",
       "https://mathiasbynens.be/notes/javascript-escapes#unicode-code-point",
       "http://localhost:4000/trigger-fix",
       "https://badgen.net/github/checks/jshttp/accepts/master?label=ci",
@@ -7211,7 +7211,7 @@
       "https://oauth2:",
       "https://travis-ci.org/sindresorhus/restore-cursor",
       "https://api.vercel.com/v1",
-      "alphaq-ai.com",
+      "stableq-ai.com",
       "http://kriskowal-asap.s3-website-us-west-2.amazonaws.com/train/integration-2/saucelabs-worker-results-matrix.svg",
       "https://www.npmjs.com/package/typedarray-to-buffer",
       "https://travis-ci.org/sindresorhus/is-fullwidth-code-point",
@@ -7344,13 +7344,13 @@
       "https://badgen.net/coveralls/c/github/jshttp/compressible/master",
       "https://babeljs.io/docs/babel-types",
       "https://travis-ci.org/sindresorhus/npm-run-path",
-      "qmoigateway.thealphakenya.com",
+      "qmoigateway.thestablekenya.com",
       "https://img.shields.io/travis/jonschlinkert/is-number.svg?style=flat&label=Travis",
       "https://crbug.com/571003",
       "https://fetch.spec.whatwg.org/#concept-request-redirect-mode",
       "https://img.shields.io/npm/v/chromium-edge-launcher.svg",
       "https://badgen.net/github/checks/expressjs/serve-static/master?label=linux",
-      "https://huggingface.co/alphaqmoi/qmoi",
+      "https://huggingface.co/stableqmoi/qmoi",
       "https://badgen.net/coveralls/c/github/expressjs/errorhandler/master",
       "https://prodeloper.mozilla.org/en-US/docs/Glossary/Primitive",
       "https://david-dm.org/mysticatea/event-target-shim.svg",
@@ -7421,7 +7421,7 @@
       "https://chromium.googlesource.com/chromium/src/+/HEAD/docs/media/media_router.md",
       "http://localhost:4000/api/logs",
       "https://babeljs.io/docs/en/next/babel-plugin-syntax-numeric-separator.html",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "https://qmoi.app/space",
       "https://coveralls.io/github/visionmedia/debug?branch=master",
       "https://img.shields.io/travis/jonschlinkert/fill-range.svg?style=flat&label=Travis",
@@ -7493,7 +7493,7 @@
       "https://babeljs.io/docs/en/babel-plugin-syntax-class-static-block",
       "https://prodeloper.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/JSON/stringify",
       "https://codecov.io/gh/mysticatea/event-target-shim/branch/master/graph/badge.svg",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system/status",
       "https://www.rfc-editor.org/rfc/rfc6901",
       "https://coveralls.io/r/expressjs/serve-static?branch=master",
       "https://tidelift.com/subscription/pkg/npm-fast-json-stable-stringify?utm_source=npm-fast-json-stable-stringify&utm_medium=referral&utm_campaign=enterprise&utm_term=repo",
@@ -7564,7 +7564,7 @@
       "https://travis-ci.org/Qix-/color-convert",
       "https://sourcehut.org/",
       "https://codecov.io/gh/Kilian/electron-to-chromium/branch/master/graph/badge.svg",
-      "https://huggingface.co/alphaqmoi/qmoi-ai-system",
+      "https://huggingface.co/stableqmoi/qmoi-ai-system",
       "https://travis-ci.org/sindresorhus/parent-module",
       "https://api.gitpod.io/v1",
       "https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#data.3A_Using_the_reviver_parameter",
@@ -7588,7 +7588,7 @@
       "https://cloud.google.com/build",
       "https://travis-ci.org/kevva/astral-regex",
       "https://coveralls.io/r/jshttp/range-parser?branch=master",
-      "alphaqmoi",
+      "stableqmoi",
       "https://www.regular-expressions.info/catastrophic.html",
       "https://img.shields.io/codecov/c/github/iamkun/dayjs/master.svg?style=flat-square",
       "https://travis-ci.org/sindresorhus/path-is-absolute",
@@ -7883,12 +7883,12 @@
     "valid_links": 9,
     "broken_links": 6,
     "broken_link_list": [
-      "https://img.shields.io/github/v/release/thealphakenya/qmoi-enhanced?style=for-the-badge",
-      "https://img.shields.io/github/downloads/thealphakenya/qmoi-enhanced/total?style=for-the-badge",
-      "https://img.shields.io/github/downloads/thealphakenya/qmoi-enhanced/total?style=for-the-badge)",
+      "https://img.shields.io/github/v/release/thestablekenya/qmoi-enhanced?style=for-the-badge",
+      "https://img.shields.io/github/downloads/thestablekenya/qmoi-enhanced/total?style=for-the-badge",
+      "https://img.shields.io/github/downloads/thestablekenya/qmoi-enhanced/total?style=for-the-badge)",
       "qmoi-enhanced",
       "qmoi_ai.AppImage",
-      "https://img.shields.io/github/v/release/thealphakenya/qmoi-enhanced?style=for-the-badge)"
+      "https://img.shields.io/github/v/release/thestablekenya/qmoi-enhanced?style=for-the-badge)"
     ],
     "suggestions": {}
   },
@@ -8010,15 +8010,15 @@
     "broken_link_list": [
       "{url}",
       "https://qvillage.ai",
-      "https://huggingface.co/spaces/alphaqmoi/qvillage/discussions)",
+      "https://huggingface.co/spaces/stableqmoi/qvillage/discussions)",
       "https://qvillage.ai/login?session=",
       "https://data.com/research.xml",
       "qvillage_kb",
-      "alphaqmoi",
+      "stableqmoi",
       "qvillage_url",
       "qmoi_memory_url",
       "https://arxiv.org/abs/",
-      "https://huggingface.co/spaces/alphaqmoi/qvillage",
+      "https://huggingface.co/spaces/stableqmoi/qvillage",
       "qvillage",
       "qvillage.ai",
       "qmoi",
@@ -8029,7 +8029,7 @@
       "https://api.qvillage.ai",
       "https://arxiv.org/abs/{p['arxiv_id']}",
       "https://discord.gg/qvillage)",
-      "https://huggingface.co/spaces/alphaqmoi/qvillage/discussions",
+      "https://huggingface.co/spaces/stableqmoi/qvillage/discussions",
       "qmoi-embed-v1",
       "https://discord.gg/qvillage"
     ],
@@ -8355,11 +8355,11 @@
     "valid_links": 2,
     "broken_links": 10,
     "broken_link_list": [
-      "https://huggingface.co/thealphakenya",
-      "https://huggingface.co/thealphakenya?tab=models",
+      "https://huggingface.co/thestablekenya",
+      "https://huggingface.co/thestablekenya?tab=models",
       "qcity",
       "qmoi",
-      "https://vercel.com/thealphakenya/qmoi-enhanced",
+      "https://vercel.com/thestablekenya/qmoi-enhanced",
       "qvillage",
       "qmoi-auto-clone-setup",
       "qmoi-enhanced",
@@ -8650,8 +8650,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md": {
-    "file_path": "AUTOOPTIMIZEALPHAQMOIENGINE.md",
+  "/workspaces/qmoi-enhanced/AUTOOPTIMIZEstableQMOIENGINE.md": {
+    "file_path": "AUTOOPTIMIZEstableQMOIENGINE.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -9158,16 +9158,16 @@
       "qmoi_ai.img",
       "qmoi-enhanced",
       "qmoi-space",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/)",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/)",
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
       "qmoi-ai-v1.2.3-macos.dmg",
       "qmoi-ai-v1.2.3-linux-appimage",
       "qmoi-ai-v1.2.3-ios.ipa",
       "qmoi-ai-v1.2.3-linux.deb",
       "qmoi-ai",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/",
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/",
       "qmoi-ai-v1.2.3-chromebook.zip",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/)"
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/)"
     ],
     "suggestions": {}
   },
@@ -9411,7 +9411,7 @@
       "qmoi",
       "qmoi_prod",
       "https://production-api.qmoi.app/health",
-      "qmoi_staging",
+      "qmoi_production",
       "https://api.qmoi.app",
       "https://xxx@sentry.io/xxx",
       "https://production-api.qmoi.app/api/webhooks/payments",
@@ -9585,7 +9585,7 @@
       "qmoi_ai_release",
       "qmoi_ai.exe",
       "qmoi_ai.dmg.sha256",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/...",
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/...",
       "https://firebase.google.com/docs/crashlytics",
       "qmoi_ai.AppImage",
       "https://prodeloper.android.com/distribute/console/setup",
@@ -9754,8 +9754,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/SESSION_COMPLETION_REPORT_TODOS_production_READY.md": {
-    "file_path": "SESSION_COMPLETION_REPORT_TODOS_production_READY.md",
+  "/workspaces/qmoi-enhanced/SESSION_COMPLETION_REPORT_DONES_production_READY.md": {
+    "file_path": "SESSION_COMPLETION_REPORT_DONES_production_READY.md",
     "total_links": 4,
     "valid_links": 0,
     "broken_links": 4,
@@ -10020,7 +10020,7 @@
       "https://qmoi-enhanced.vercel.app/api",
       "https://vercel.com/oauth/prodice?user_code=YOUR_CODE",
       "https://vercel.com/account/tokens",
-      "https://vercel.com/thealphakenya/qmoi-enhanced",
+      "https://vercel.com/thestablekenya/qmoi-enhanced",
       "https://qmoi-enhanced.vercel.app/api/health",
       "qmoi-enhanced",
       "https://qmoi-enhanced.vercel.app"
@@ -10038,8 +10038,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/FINAL_STATUS_TODOS_COMPLETE.md": {
-    "file_path": "FINAL_STATUS_TODOS_COMPLETE.md",
+  "/workspaces/qmoi-enhanced/FINAL_STATUS_DONES_COMPLETE.md": {
+    "file_path": "FINAL_STATUS_DONES_COMPLETE.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -10154,7 +10154,7 @@
     "broken_link_list": [
       "qmoi-ai-system",
       "qmoi-enhanced",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -10253,7 +10253,7 @@
       "qmoi_ai.exe",
       "https://qshare.qmoi.app",
       "qmoi_ai.AppImage",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
       "qcity_orchestrator",
       "qmoi_ai.dmg",
       "qmoi",
@@ -10264,7 +10264,7 @@
       "qmoi_validation_frontmatter",
       "qmoi-ai",
       "qcity_api",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/",
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -10306,12 +10306,12 @@
     "valid_links": 3,
     "broken_links": 10,
     "broken_link_list": [
-      "https://huggingface.co/spaces/alphaqmoi/qvillage/api/papers",
+      "https://huggingface.co/spaces/stableqmoi/qvillage/api/papers",
       "https://hooks.slack.com/services/...",
       "https://api.qvillage.ai",
       "https://huggingface.co/new-space",
-      "https://huggingface.co/spaces/alphaqmoi/qvillage",
-      "alphaqmoi",
+      "https://huggingface.co/spaces/stableqmoi/qvillage",
+      "stableqmoi",
       "qvillage",
       "qvillage.ai",
       "qvillage-sync",
@@ -10424,7 +10424,7 @@
     "broken_link_list": [
       "https://vercel.com/new",
       "https://qmoi-enhanced.vercel.app/api",
-      "https://vercel.com/thealphakenya/qmoi-enhanced",
+      "https://vercel.com/thestablekenya/qmoi-enhanced",
       "https://qmoi-enhanced.vercel.app/api/health",
       "qmoi-enhanced",
       "https://qmoi-enhanced.vercel.app"
@@ -10484,7 +10484,7 @@
       "qmoi_ai.pkg",
       "qmoi-ai-v1.2.3-macos.dmg",
       "https://img.shields.io/badge/Coverage-unknown-lightgrey?style=flat-square)",
-      "https://alphaq.ai)**",
+      "https://stableq.ai)**",
       "qmoi_ai.apk",
       "qmoi-ai-v1.2.3-linux.deb",
       "qmoi_ai_arm.tar.gz",
@@ -10509,11 +10509,11 @@
       "https://q-stable.qmoi.ai)**",
       "q-stable",
       "qmoi-space",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
       "qmoi_enhanced_ai.py",
       "qmoi-ai-pwa.zip",
       "http://localhost:3000",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/",
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/",
       "qmoi-ai.html",
       "qmoi-ai-v1.2.3-chromebook.zip",
       "http://localhost:8080/qmoi-space.html",
@@ -10522,7 +10522,7 @@
       "qmoi-ai-v1.2.3-smarttv.apk",
       "qmoi_ai.img",
       "qmoi_ai_smarttv.apk",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/)",
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/)",
       "qmoi_ai.bat",
       "http://localhost:8080/qcity-dashboard.html",
       "qmoi-ai-v1.2.3-linux-appimage",
@@ -10533,7 +10533,7 @@
       "https://img.shields.io/badge/Release-v1.2.3-blue?style=flat-square",
       "https://img.shields.io/badge/Platforms-12+-success?style=flat-square)",
       "https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square",
-      "https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/)",
+      "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/)",
       "https://qvillage.qmoi.ai)**"
     ],
     "suggestions": {}
@@ -10749,7 +10749,7 @@
     "valid_links": 0,
     "broken_links": 9,
     "broken_link_list": [
-      "qmoigateway.thealphakenya.com",
+      "qmoigateway.thestablekenya.com",
       "https://qmoigateway.data.com/api/github/webhook",
       "https://",
       "https://codespaces.",
@@ -10757,7 +10757,7 @@
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
       "qmoigateway.data.com",
-      "https://qmoigateway.thealphakenya.com/api/github/webhook"
+      "https://qmoigateway.thestablekenya.com/api/github/webhook"
     ],
     "suggestions": {}
   },
@@ -10813,10 +10813,10 @@
     "broken_link_list": [
       "https://hooks.slack.com/services/...",
       "https://api.qvillage.ai",
-      "https://huggingface.co/spaces/alphaqmoi/qvillage",
+      "https://huggingface.co/spaces/stableqmoi/qvillage",
       "https://huggingface.co/new-space",
       "qvillage-sync",
-      "alphaqmoi",
+      "stableqmoi",
       "qvillage",
       "qvillage.ai",
       "qmoi-enhanced",
@@ -10853,7 +10853,7 @@
       "https://api.qvillage.ai",
       "qvillage_memory_sync",
       "qvillage-sync",
-      "alphaqmoi",
+      "stableqmoi",
       "qvillage",
       "qvillage.ai",
       "qmoi-enhanced"
@@ -11036,7 +11036,7 @@
     "broken_links": 25,
     "broken_link_list": [
       "qmoi-behavior-analyzer",
-      "https://huggingface.co/thealphakenya/qmoi-model-name",
+      "https://huggingface.co/thestablekenya/qmoi-model-name",
       "https://qmoi-enhanced.vercel.app/api/qvillage/models/sync-hf",
       "https://qmoi-enhanced.vercel.app/api/qvillage/research",
       "https://qmoi-enhanced.vercel.app/api/qvillage/models",
@@ -11517,8 +11517,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/placeholder_scan_summary.md": {
-    "file_path": "placeholder_scan_summary.md",
+  "/workspaces/qmoi-enhanced/real implementation_scan_summary.md": {
+    "file_path": "real implementation_scan_summary.md",
     "total_links": 4,
     "valid_links": 0,
     "broken_links": 4,
@@ -11674,7 +11674,7 @@
       "qmoi-tracks",
       "qmoi-gitlab",
       "https://data.com/ai-trends",
-      "qmoi-demo-app",
+      "qmoi-production-app",
       "https://data.com/webhook",
       "qmoi-transformer-v1",
       "qmoi",
@@ -11694,7 +11694,7 @@
     "broken_links": 5,
     "broken_link_list": [
       "https://qmoi-enhanced.vercel.app/api",
-      "https://vercel.com/thealphakenya/qmoi-enhanced",
+      "https://vercel.com/thestablekenya/qmoi-enhanced",
       "https://qmoi-enhanced.vercel.app/api/health",
       "qmoi-enhanced",
       "https://qmoi-enhanced.vercel.app"
@@ -11710,7 +11710,7 @@
       "https://vercel.com/new",
       "https://vercel.com/support",
       "https://qmoi-enhanced.vercel.app/api",
-      "https://vercel.com/thealphakenya/qmoi-enhanced",
+      "https://vercel.com/thestablekenya/qmoi-enhanced",
       "https://vercel.com/account",
       "https://qmoi-enhanced.vercel.app/api/health",
       "https://qmoi-enhanced.vercel.app/api/version",
@@ -11720,8 +11720,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/ALPHAQMOIENGINE.md": {
-    "file_path": "ALPHAQMOIENGINE.md",
+  "/workspaces/qmoi-enhanced/stableQMOIENGINE.md": {
+    "file_path": "stableQMOIENGINE.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -11893,9 +11893,9 @@
       "https://api.qvillage.ai",
       "https://hooks.slack.com/services/xxx/yyy/zzz",
       "https://huggingface.co/new-space",
-      "https://huggingface.co/spaces/alphaqmoi/qvillage",
+      "https://huggingface.co/spaces/stableqmoi/qvillage",
       "qvillage",
-      "alphaqmoi",
+      "stableqmoi",
       "qvillage.ai",
       "qvillage-sync",
       "qmoiaiexe.py",
@@ -12137,8 +12137,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/docs/TODOS_ENHANCEMENTS.md": {
-    "file_path": "docs/TODOS_ENHANCEMENTS.md",
+  "/workspaces/qmoi-enhanced/docs/DONES_ENHANCEMENTS.md": {
+    "file_path": "docs/DONES_ENHANCEMENTS.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -12596,8 +12596,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/docs/validation/MANUAL_TODOS_ACTIONS.md": {
-    "file_path": "docs/validation/MANUAL_TODOS_ACTIONS.md",
+  "/workspaces/qmoi-enhanced/docs/validation/MANUAL_DONES_ACTIONS.md": {
+    "file_path": "docs/validation/MANUAL_DONES_ACTIONS.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -12606,8 +12606,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/docs/validation/PLACEHOLDER_FIX_ACTIONS.md": {
-    "file_path": "docs/validation/PLACEHOLDER_FIX_ACTIONS.md",
+  "/workspaces/qmoi-enhanced/docs/validation/real implementation_FIX_ACTIONS.md": {
+    "file_path": "docs/validation/real implementation_FIX_ACTIONS.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -12708,8 +12708,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/docs/validation/MANUAL_TODOS_TOP10.md": {
-    "file_path": "docs/validation/MANUAL_TODOS_TOP10.md",
+  "/workspaces/qmoi-enhanced/docs/validation/MANUAL_DONES_TOP10.md": {
+    "file_path": "docs/validation/MANUAL_DONES_TOP10.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -12775,11 +12775,11 @@
     "broken_link_list": [
       "https://gitlab.com/qmoi/QMOI)",
       "https://gitlab.com/qmoi/QMOI",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi",
       "qmoi-ai-system",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system)",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "qmoi_validation_frontmatter"
     ],
     "suggestions": {}
@@ -13882,7 +13882,7 @@
     "broken_link_list": [
       "qcity",
       "qmoi-prod-actions.log",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi",
       "qmoi-prod-actions.py",
       "http://localhost:3001",
@@ -13927,9 +13927,9 @@
     "broken_link_list": [
       "http://localhost:3000",
       "qmoi-master",
-      "https://huggingface.co/alphaqmoi/qmoi).",
-      "https://huggingface.co/alphaqmoi/qmoi",
-      "alphaqmoi",
+      "https://huggingface.co/stableqmoi/qmoi).",
+      "https://huggingface.co/stableqmoi/qmoi",
+      "stableqmoi",
       "http://localhost:5055",
       "qmoi",
       "qmoi-autoprod.yml",
@@ -13989,7 +13989,7 @@
       "https://api-production.q-city.ai",
       "qmoi_prod",
       "http://localhost:3001",
-      "qmoi_staging",
+      "qmoi_production",
       "qmoi-enhanced"
     ],
     "suggestions": {}
@@ -14058,8 +14058,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/AUTODOWNLOAD.md": {
-    "file_path": "_archive_qmoi-enhanced/AUTODOWNLOAD.md",
+  "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/AUDONEWNLOAD.md": {
+    "file_path": "_archive_qmoi-enhanced/AUDONEWNLOAD.md",
     "total_links": 5,
     "valid_links": 0,
     "broken_links": 5,
@@ -14211,7 +14211,7 @@
     "broken_link_list": [
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
-      "alphaq"
+      "stableq"
     ],
     "suggestions": {}
   },
@@ -14541,12 +14541,12 @@
     "valid_links": 3,
     "broken_links": 9,
     "broken_link_list": [
-      "https://api-inference.huggingface.co/models/alphaqmoi/qmoi",
-      "alphaqmoi",
+      "https://api-inference.huggingface.co/models/stableqmoi/qmoi",
+      "stableqmoi",
       "qmoi",
-      "https://huggingface.co/alphaqmoi/qmoi-ai-system",
+      "https://huggingface.co/stableqmoi/qmoi-ai-system",
       "qmoi-ai-system",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "qmoi_validation_frontmatter",
       "qmoi-enhanced",
       "http://localhost:7860"
@@ -14615,17 +14615,17 @@
     "valid_links": 1,
     "broken_links": 14,
     "broken_link_list": [
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system/status",
       "https://huggingface.co/spaces/",
       "https://huggingface.co/join))",
       "https://huggingface.co/docs/hub/spaces",
       "https://huggingface.co/docs/hub/spaces)",
-      "alphaqmoi",
+      "stableqmoi",
       "https://huggingface.co/settings/tokens",
       "qmoi-ai-system",
       "https://huggingface.co/join",
       "qmoi_validation_frontmatter",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "qmoi-autoprod.yml",
       "https://huggingface.co/settings/tokens))",
       "qmoi-enhanced"
@@ -14998,8 +14998,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md": {
-    "file_path": "_archive_qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md",
+  "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/AUTOOPTIMIZEstableQMOIENGINE.md": {
+    "file_path": "_archive_qmoi-enhanced/AUTOOPTIMIZEstableQMOIENGINE.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -15999,8 +15999,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/ALPHAQMOIENGINE.md": {
-    "file_path": "_archive_qmoi-enhanced/ALPHAQMOIENGINE.md",
+  "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/stableQMOIENGINE.md": {
+    "file_path": "_archive_qmoi-enhanced/stableQMOIENGINE.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -16536,11 +16536,11 @@
     "broken_link_list": [
       "https://gitlab.com/qmoi/QMOI)",
       "https://gitlab.com/qmoi/QMOI",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi",
       "qmoi-ai-system",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)",
-      "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system)",
+      "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
       "qmoi_validation_frontmatter",
       "qmoi-enhanced"
     ],
@@ -16749,7 +16749,7 @@
       "https://api.qmoi.app/api/health",
       "http://localhost:3000/api/health",
       "https://cdn.rawgit.com/feross/standard/master/badge.svg)",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi_ai.AppImage",
       "qmoi_ai.pkg",
       "https://gradio.app/docs/)",
@@ -16790,7 +16790,7 @@
       "https://david-dm.org/isaacs/rimraf/prod-status.svg)",
       "https://travis-ci.org/mozilla/source-map.png?branch=master)",
       "https://www.postgresql.org/docs/)",
-      "http://localhost:3000/api/admin/users/demote",
+      "http://localhost:3000/api/admin/users/productionte",
       "https://huggingface.co/docs/hub/spaces)",
       "http://localhost:3000/admin",
       "https://api.qmoi.app/api",
@@ -16819,7 +16819,7 @@
       "https://api.qmoi.app/api/admin/monitoring",
       "https://nginx.org/en/docs/)",
       "https://qstore.qmoi.app",
-      "https://huggingface.co/alphaqmoi/qmoi)",
+      "https://huggingface.co/stableqmoi/qmoi)",
       "https://letsencrypt.org/)",
       "http://localhost:8080/qcity-dashboard.html",
       "https://travis-ci.org/lydell/js-tokens.svg?branch=master)",
@@ -18092,8 +18092,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/tools/placeholder_actions.md": {
-    "file_path": "tools/placeholder_actions.md",
+  "/workspaces/qmoi-enhanced/tools/real implementation_actions.md": {
+    "file_path": "tools/real implementation_actions.md",
     "total_links": 287,
     "valid_links": 7,
     "broken_links": 280,
@@ -18244,7 +18244,7 @@
       "http://data.com/404",
       "http://data.com')",
       "http://localhost:7861",
-      "qmoigateway.thealphakenya.com",
+      "qmoigateway.thestablekenya.com",
       "qmoi_adv",
       "qmoiallprodic",
       "qmoiai.py.md",
@@ -18466,7 +18466,7 @@
     "broken_links": 5,
     "broken_link_list": [
       "https://img.shields.io/badge/'",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi_validation",
       "qmoi-ai-system",
       "qmoi-enhanced"
@@ -18924,7 +18924,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-ai-system",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -21032,7 +21032,7 @@
     "valid_links": 0,
     "broken_links": 3,
     "broken_link_list": [
-      "https://registry.npmjs.org/@types/sinonjs__fake-timers/-/sinonjs__fake-timers-8.1.1.tgz",
+      "https://registry.npmjs.org/@types/sinonjs__real-timers/-/sinonjs__real-timers-8.1.1.tgz",
       "qmoi-enhanced",
       "qmoi_validation"
     ],
@@ -21152,8 +21152,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/tools/issue_drafts/0483_AUTODOWNLOAD.md.md": {
-    "file_path": "tools/issue_drafts/0483_AUTODOWNLOAD.md.md",
+  "/workspaces/qmoi-enhanced/tools/issue_drafts/0483_AUDONEWNLOAD.md.md": {
+    "file_path": "tools/issue_drafts/0483_AUDONEWNLOAD.md.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -22380,7 +22380,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-ai-system",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -22757,8 +22757,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/tools/issue_drafts/0854_qmoi-enhanced_AUTODOWNLOAD.md.md": {
-    "file_path": "tools/issue_drafts/0854_qmoi-enhanced_AUTODOWNLOAD.md.md",
+  "/workspaces/qmoi-enhanced/tools/issue_drafts/0854_qmoi-enhanced_AUDONEWNLOAD.md.md": {
+    "file_path": "tools/issue_drafts/0854_qmoi-enhanced_AUDONEWNLOAD.md.md",
     "total_links": 3,
     "valid_links": 0,
     "broken_links": 3,
@@ -24108,8 +24108,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md": {
-    "file_path": "tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md",
+  "/workspaces/qmoi-enhanced/tools/issue_drafts/04_qmoi-enhanced_scripts_production-automation_js.md": {
+    "file_path": "tools/issue_drafts/04_qmoi-enhanced_scripts_production-automation_js.md",
     "total_links": 2,
     "valid_links": 0,
     "broken_links": 2,
@@ -24290,8 +24290,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/tools/issue_drafts/1077_tools_update_resume_todos.py.md": {
-    "file_path": "tools/issue_drafts/1077_tools_update_resume_todos.py.md",
+  "/workspaces/qmoi-enhanced/tools/issue_drafts/1077_tools_update_resume_DONEs.py.md": {
+    "file_path": "tools/issue_drafts/1077_tools_update_resume_DONEs.py.md",
     "total_links": 1,
     "valid_links": 0,
     "broken_links": 1,
@@ -25262,7 +25262,7 @@
     "broken_links": 3,
     "broken_link_list": [
       "qmoi-ai-system",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -27283,7 +27283,7 @@
     "broken_link_list": [
       "qmoi-ai-system",
       "qmoi-enhanced",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -28083,7 +28083,7 @@
     "broken_link_list": [
       "qmoi-ai-system",
       "https://img.shields.io/badge/'",
-      "alphaqmoi",
+      "stableqmoi",
       "qmoi_validation"
     ],
     "suggestions": {}
@@ -28366,8 +28366,8 @@
     ],
     "suggestions": {}
   },
-  "/workspaces/qmoi-enhanced/tools/issue_drafts/0607_pwa_apps_q-alpha_README.md.md": {
-    "file_path": "tools/issue_drafts/0607_pwa_apps_q-alpha_README.md.md",
+  "/workspaces/qmoi-enhanced/tools/issue_drafts/0607_pwa_apps_q-stable_README.md.md": {
+    "file_path": "tools/issue_drafts/0607_pwa_apps_q-stable_README.md.md",
     "total_links": 3,
     "valid_links": 0,
     "broken_links": 3,

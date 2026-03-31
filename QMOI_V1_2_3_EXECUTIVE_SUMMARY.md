@@ -22,7 +22,7 @@
 - **All 6 QMOI Apps**: ✅ Built and released
 - **Platform Support**: ✅ 12+ platforms (Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, PWA, Smart TV, Wear OS, Docker, and more)
 - **Total Builds**: ✅ 72+ platform-specific builds
-- **Release Link**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+- **Release Link**: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 - **Download**: All apps available in GitHub Release Assets
 - **Documentation**: 5+ comprehensive guides included
 - **Deployment Time**: 5-10 minutes (fully automated)
@@ -62,7 +62,7 @@
 
 ### Download & Install
 
-1. 📍 Go to: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+1. 📍 Go to: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 2. 📥 Download the file for your platform
 3. ✅ Verify SHA256 checksum (included in release)
 4. 🚀 Run installer or executable
@@ -204,7 +204,7 @@ python deploy-to-all-channels.py --version v1.2.3 --all
 ### Getting Help
 
 - 📖 **Guides**: See documentation section above
-- 🐛 **Issues**: https://github.com/thealphakenya/qmoi-enhanced/issues
+- 🐛 **Issues**: https://github.com/thestablekenya/qmoi-enhanced/issues
 - 💬 **Community**: https://qvillage.qmoi.app
 - 📧 **Email**: support@qmoi.app
 
@@ -240,7 +240,7 @@ A: New releases are pushed whenever apps are updated. Our automated system handl
 
 ### Step 2: Download
 
-👉 https://github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.3
+👉 https://github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.3
 
 ### Step 3: Install
 
@@ -269,7 +269,7 @@ November 12, 2025
 
 Status: 🟢 LIVE
 Ready: ✅ YES
-Download: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+Download: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 ```
 
 ---

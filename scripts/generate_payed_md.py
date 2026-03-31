@@ -78,7 +78,7 @@ if cur_title and cur_lines:
 
 created = []
 for title, lines in sections:
-    # make filename: uppercase letters, remove spaces and non-alphanum, append PAYED.md
+    # make filename: uppercase letters, remove spaces and non-stablenum, append PAYED.md
     key = re.sub(r"[^A-Za-z0-9]", '', title).upper()
     fname = f"{key}PAYED.md"
     outp = OUT_DIR / fname

@@ -21,26 +21,26 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## ALLQMOIAIAPPSREALEASESVERSIONS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/pwa/latest/
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-ai/pwa/latest/
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/pwa/latest/
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi-ai/pwa/latest/
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk
 
 ## API.md
 
@@ -52,11 +52,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## BUILDAPPSFORALLPLATFORMS.md
 
-- https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177
+- https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
 
 ## BUILD_COMPLETION_SUMMARY.md
 
-- https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177
+- https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
 
 ## CMDCOMMANDS.md
 
@@ -79,7 +79,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - http://localhost:5055
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule
-- https://huggingface.co/alphaqmoi/qmoi
+- https://huggingface.co/stableqmoi/qmoi
 - https://qmoi.ai
 - https://production.qmoi.ai
 
@@ -91,58 +91,58 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## DOWNLOADQMOIAIAPPALLprodICES.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk
 
 ## INDEPENDENTQMOI.md
 
@@ -162,41 +162,41 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## QI_download_component.html
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
 
 ## QMOI-AIRTEL-INTEGRATION.md
 
@@ -236,10 +236,10 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## QMOI-ENHANCED-FINAL.md
 
 - http://localhost:7860
-- https://api-inference.huggingface.co/models/alphaqmoi/qmoi
-- https://github.com/alphaqmoi/qmoi-ai-system
-- https://huggingface.co/alphaqmoi/qmoi-ai-system
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+- https://api-inference.huggingface.co/models/stableqmoi/qmoi
+- https://github.com/stableqmoi/qmoi-ai-system
+- https://huggingface.co/stableqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 - https://qmoi.ai/docs
 
 ## QMOI-ENHANCED-README.md
@@ -261,41 +261,41 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## QMOIAPPS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
 
 ## QMOICLONEGITHUB.md
 
@@ -308,57 +308,57 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## QMOIDOMAINSLINKS.md
 
 - https://api.qmoi.app
-- https://github.com/thealphakenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases
 - https://ngrok.io
 - https://qcity.qmoi.app
 - https://qmoisystem.com
 
 ## QMOIDOWNLOADS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
 
 ## QMOIFORALL.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
 
 ## QMOIGITHUBAPP.md
 
 - https://codespaces.
 - https://qmoigateway.data.com/api/github/webhook
-- https://qmoigateway.thealphakenya.com/api/github/webhook
+- https://qmoigateway.thestablekenya.com/api/github/webhook
 
 ## QMOIHUGGINGFACESPACESSETUPINST.md
 
@@ -367,8 +367,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://huggingface.co/join
 - https://huggingface.co/settings/tokens
 - https://huggingface.co/spaces/
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system/status
 
 ## QMOINGROK.md
 
@@ -402,117 +402,117 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## Qstore.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
 
 ## README (1).md
 
 - http://localhost:5055
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk
-- https://github.com/thealphakenya/stable-Q-ai/releases
-- https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk
+- https://github.com/thestablekenya/stable-Q-ai/releases
+- https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi
 
 ## README.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/android/qmoi_ai.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/chromebook/qmoi_ai.deb
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/error.log
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/ios/qmoi_ai.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/linux/latest/qmoi_ai.AppImage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/mac/latest/qmoi_ai.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/qmoi
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/qmoi_ai.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/raspberrypi/qmoi_ai_arm.tar.gz
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/smarttv/qmoi_ai.pkg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/windows/latest/qmoi_ai.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg
+- https://github.com/thestablekenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/android/qmoi_ai.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/chromebook/qmoi_ai.deb
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/error.log
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/ios/qmoi_ai.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/linux/latest/qmoi_ai.AppImage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/mac/latest/qmoi_ai.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/qmoi
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/qmoi_ai.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/raspberrypi/qmoi_ai_arm.tar.gz
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/smarttv/qmoi_ai.pkg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/windows/latest/qmoi_ai.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg
 - https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square
-- https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/
+- https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/
 
 ## RSAAPIREADME.md
 
@@ -791,11 +791,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://prod.azure.com/gulpjs/gulp/_apis/build/status/glob-parent?branchName=master
 - https://prod.azure.com/gulpjs/gulp/_build/latest?definitionId=2&branchName=master
 - https://docs.angularjs.org/api/ng/service/
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
 - https://github.com/ArnaudBarre/eslint-plugin-react-refresh
 - https://github.com/ChALkeR/safer-buffer/blob/master/Porting-Buffer.md
 - https://github.com/ChronosMasterOfAllTime
@@ -1725,42 +1725,42 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://dom.spec.whatwg.org/#interface-AbortSignal
 - https://dom.spec.whatwg.org/#interface-abortcontroller
 - https://dom.spec.whatwg.org/#interface-eventtarget
-- https://github.com/thealphakenya/qmoi-enhanced/releases
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
 - https://drone.io
 - https://eemeli.org/yaml/
 - https://eemeli.org/yaml/#collections
@@ -5320,7 +5320,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/jorangreef/sudo-prompt/pull/76
 - https://github.com/jordanbtucker
 - https://github.com/joyceerhl
-- https://github.com/joyeecheung/node-dep-codemod#dep005
+- https://github.com/joyeecheung/node-dep-coproductiond#dep005
 - https://github.com/joyent/node/issues/2318
 - https://github.com/jprichardson
 - https://github.com/jprichardson/node-fs-extra/commit/5597bd5b67f7d060f5f5bf26e9635be48330f5d7
@@ -6319,7 +6319,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/terser/terser/blob/master/PATRONS.md
 - https://github.com/terser/terser/issues/397
 - https://github.com/terser/terser/pull/342
-- https://github.com/thealphakenya/stable-Q-ai/releases
+- https://github.com/thestablekenya/stable-Q-ai/releases
 - https://github.com/thecodrr/fdir/raw/master/LICENSE
 - https://github.com/therealrinku
 - https://github.com/thetechie7
@@ -6834,12 +6834,12 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://hg.nginx.org/nginx/raw-file/default/conf/mime.types
 - https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#microtask-queuing
 - https://httpd.apache.org/
-- https://huggingface.co/alphaqmoi/qmoi
+- https://huggingface.co/stableqmoi/qmoi
 - https://huggingface.co/docs/hub/spaces
 - https://huggingface.co/docs/transformers
 - https://huggingface.co/join
 - https://huggingface.co/settings/tokens
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 - https://i.cloudup.com/zfY6lL7eFa-3000x3000.png
 - https://img.shields.io/appveyor/ci/alexindigo/asynckit/v0.4.0.svg?label=windows:0.12-6.x&style=flat
 - https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build
@@ -7959,7 +7959,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://qvillage.com
 - https://3cf7294944e8.ngrok-free.app
 - https://abc123.ngrok.io/qcity/app/latest
-- https://api-inference.huggingface.co/models/alphaqmoi/qmoi
+- https://api-inference.huggingface.co/models/stableqmoi/qmoi
 - https://api-production.q-city.ai
 - https://api.airtel.com/status
 - https://api.mybank.com/balance?account=12345
@@ -7969,81 +7969,81 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://codespaces.
 - https://discord.com/api/webhooks/...
 - https://docs.qcity.ai
-- https://github.com/thealphakenya/qmoi-enhanced/releases
-- https://github.com/thealphakenya/qmoi-enhanced/releases/
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/android/qmoi_ai.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/chromebook/qmoi_ai.deb
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/error.log
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/ios/qmoi_ai.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/linux/latest/qmoi_ai.AppImage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/mac/latest/qmoi_ai.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/qmoi
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/qmoi_ai.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/raspberrypi/qmoi_ai_arm.tar.gz
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/smarttv/qmoi_ai.pkg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/windows/latest/qmoi_ai.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/pwa/latest/
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-ai/pwa/latest/
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases/
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/android/qmoi_ai.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/chromebook/qmoi_ai.deb
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/error.log
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/ios/qmoi_ai.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/linux/latest/qmoi_ai.AppImage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/mac/latest/qmoi_ai.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/qmoi
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/qmoi_ai.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/raspberrypi/qmoi_ai_arm.tar.gz
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/smarttv/qmoi_ai.pkg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/windows/latest/qmoi_ai.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/pwa/latest/
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi-ai/pwa/latest/
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi-space/pwa/latest/
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk
 - https://data-1234.ngrok.io/downloads/qbrowser/windows.exe
 - https://data-1234.ngrok.io/qcity/app/latest
 - https://data.com/dog.jpg
 - https://data.com/group_photo.jpg
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule
-- https://github.com/alphaqmoi/qmoi-ai-system
+- https://github.com/stableqmoi/qmoi-ai-system
 - https://github.com/q-city/qmoi-enhanced.git
 - https://github.com/q-city/qmoi-enhanced/discussions
 - https://github.com/q-city/qmoi-enhanced/issues
@@ -8051,10 +8051,10 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/qcity/ai
 - https://github.com/qmoi-ai/qmoi-space.git
 - https://github.com/qmoi/independent-qmoi.git
-- https://github.com/thealphakenya/stable-Q-ai/releases
-- https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi
-- https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177
-- https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg
+- https://github.com/thestablekenya/stable-Q-ai/releases
+- https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi
+- https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
+- https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg
 - https://github.com/your-org/QMOI.git
 - https://github.com/your-org/q-city.git
 - https://github.com/your-repo/qmoi-system.git
@@ -8066,15 +8066,15 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://gradio.app/docs/
 - https://hooks.slack.com/services/...
 - https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
-- https://huggingface.co/alphaqmoi/qmoi
-- https://huggingface.co/alphaqmoi/qmoi-ai-system
+- https://huggingface.co/stableqmoi/qmoi
+- https://huggingface.co/stableqmoi/qmoi-ai-system
 - https://huggingface.co/docs/hub/spaces
 - https://huggingface.co/docs/transformers
 - https://huggingface.co/join
 - https://huggingface.co/settings/tokens
 - https://huggingface.co/spaces/
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system/status
 - https://huggingface.qmoi.com
 - https://img.shields.io/badge/QMOI%20Build-Imepita-brightgreen?style=flat-square
 - https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square
@@ -8085,7 +8085,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://qmoi.ai
 - https://qmoi.ai/docs
 - https://qmoigateway.data.com/api/github/webhook
-- https://qmoigateway.thealphakenya.com/api/github/webhook
+- https://qmoigateway.thestablekenya.com/api/github/webhook
 - https://qmoisystem.com
 - https://qmoitunnel.ngrok.io/downloads/qbrowser/windows.exe
 - https://quantum.qmoi.com
@@ -8093,7 +8093,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://space.qmoi.app/
 - https://production.q-city.ai
 - https://production.qmoi.ai
-- https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/
+- https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/
 - https://www.bitget.com/api-doc/common/rsa-authentication.html
 - https://your-app.vercel.app
 - https://your-domain.com/api/airtel/callback
@@ -8202,11 +8202,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## execute-final-deployment.js
 
-- https://github.com/thealphakenya/stable-Q-ai
+- https://github.com/thestablekenya/stable-Q-ai
 
 ## force-deploy.js
 
-- https://github.com/thealphakenya/stable-Q-ai
+- https://github.com/thestablekenya/stable-Q-ai
 
 ## huggingface_space/inferenceProviders.js
 
@@ -8261,7 +8261,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## models/latest/README.md
 
 - https://gitlab.com/qmoi/QMOI
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 
 ## models/latest/qmoi_enhanced_advanced_model.py
 
@@ -8286,9 +8286,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## package-watchdebug.json
 
-- https://github.com/thealphakenya/stable-Q-ai#readme
-- https://github.com/thealphakenya/stable-Q-ai.git
-- https://github.com/thealphakenya/stable-Q-ai/issues
+- https://github.com/thestablekenya/stable-Q-ai#readme
+- https://github.com/thestablekenya/stable-Q-ai.git
+- https://github.com/thestablekenya/stable-Q-ai/issues
 
 ## package.json
 
@@ -8306,37 +8306,37 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## pwa_apps/q-stable/index.html
 
-- https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/q-stable.zip
-- https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qfilemanager.apk
-- https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qmoi_ai.exe
+- https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/q-stable.zip
+- https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qfilemanager.apk
+- https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qmoi_ai.exe
 
 ## qmoi-apps-summary.json
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi_ai.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi_ai.exe
 
 ## qmoi-enhanced/@ALLMDFILESREFS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/
+- https://github.com/thestablekenya/qmoi-enhanced/releases/
 
 ## qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk
 - https://qcity.qmoi.app/
 - https://space.qmoi.app/
 
@@ -8349,46 +8349,46 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
-- https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
 
 ## qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md
 
-- https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177
+- https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
 
 ## qmoi-enhanced/CMDCOMMANDS.md
 
@@ -8400,7 +8400,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - http://localhost:5055
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule
-- https://huggingface.co/alphaqmoi/qmoi
+- https://huggingface.co/stableqmoi/qmoi
 - https://qmoi.ai
 - https://production.qmoi.ai
 
@@ -8412,23 +8412,23 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk
 
 ## qmoi-enhanced/INDEPENDENTQMOI.md
 
@@ -8448,41 +8448,41 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/QI_download_component.html
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
 
 ## qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md
 
@@ -8522,10 +8522,10 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/QMOI-ENHANCED-FINAL.md
 
 - http://localhost:7860
-- https://api-inference.huggingface.co/models/alphaqmoi/qmoi
-- https://github.com/alphaqmoi/qmoi-ai-system
-- https://huggingface.co/alphaqmoi/qmoi-ai-system
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+- https://api-inference.huggingface.co/models/stableqmoi/qmoi
+- https://github.com/stableqmoi/qmoi-ai-system
+- https://huggingface.co/stableqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 - https://qmoi.ai/docs
 
 ## qmoi-enhanced/QMOI-ENHANCED-README.md
@@ -8551,79 +8551,79 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/QMOIAPPS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
 
 ## qmoi-enhanced/QMOIAUTOAPPSprod.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
 
 ## qmoi-enhanced/QMOICLONEGITHUB.md
 
@@ -8635,44 +8635,44 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/QMOIDOWNLOADS.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
 
 ## qmoi-enhanced/QMOIFORALL.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
 
 ## qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md
 
@@ -8681,8 +8681,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://huggingface.co/join
 - https://huggingface.co/settings/tokens
 - https://huggingface.co/spaces/
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system/status
 
 ## qmoi-enhanced/QMOINGROK.md
 
@@ -8721,68 +8721,68 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/Qstore.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
 
 ## qmoi-enhanced/README (1).md
 
 - http://localhost:5055
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk
-- https://github.com/thealphakenya/stable-Q-ai/releases
-- https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk
+- https://github.com/thestablekenya/stable-Q-ai/releases
+- https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi
 
 ## qmoi-enhanced/README.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases
 - https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square
 
 ## qmoi-enhanced/RSAAPIREADME.md
@@ -8895,11 +8895,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/execute-final-deployment.js
 
-- https://github.com/thealphakenya/stable-Q-ai
+- https://github.com/thestablekenya/stable-Q-ai
 
 ## qmoi-enhanced/force-deploy.js
 
-- https://github.com/thealphakenya/stable-Q-ai
+- https://github.com/thestablekenya/stable-Q-ai
 
 ## qmoi-enhanced/huggingface_space/inferenceProviders.js
 
@@ -8946,7 +8946,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/models/latest/README.md
 
 - https://gitlab.com/qmoi/QMOI
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 
 ## qmoi-enhanced/models/latest/qmoi_enhanced_advanced_model.py
 
@@ -8971,19 +8971,19 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/package-watchdebug.json
 
-- https://github.com/thealphakenya/stable-Q-ai#readme
-- https://github.com/thealphakenya/stable-Q-ai.git
-- https://github.com/thealphakenya/stable-Q-ai/issues
+- https://github.com/thestablekenya/stable-Q-ai#readme
+- https://github.com/thestablekenya/stable-Q-ai.git
+- https://github.com/thestablekenya/stable-Q-ai/issues
 
 ## qmoi-enhanced/package.json
 
-- https://github.com/thealphakenya/stable-Q-ai#readme
-- https://github.com/thealphakenya/stable-Q-ai.git
-- https://github.com/thealphakenya/stable-Q-ai/issues
+- https://github.com/thestablekenya/stable-Q-ai#readme
+- https://github.com/thestablekenya/stable-Q-ai.git
+- https://github.com/thestablekenya/stable-Q-ai/issues
 
 ## qmoi-enhanced/qmoi-apps-summary.json
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi_ai.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi_ai.exe
 
 ## qmoi-enhanced/qmoi-friendship-integration.js
 
@@ -9063,18 +9063,18 @@ Generated: 2025-10-31T00:23:25.385420Z
 - http://localhost:3010
 - https://api.qmoi.app/health
 - https://api.qmoi.app/v1/status
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
 
 ## qmoi-enhanced/scripts/check-latest-release.js
 
@@ -9188,7 +9188,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/models/qmoi_kernel.py
 
-- https://alphaq-ai.com/updates/qvirus.json
+- https://stableq-ai.com/updates/qvirus.json
 
 ## qmoi-enhanced/scripts/monitoring/api_endpoints_monitor.py
 
@@ -9247,11 +9247,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/scripts/notify-telegram.js
 
 - https://api.telegram.org/bot
-- https://github.com/thealphakenya/stable-Q-ai/releases
+- https://github.com/thestablekenya/stable-Q-ai/releases
 
 ## qmoi-enhanced/scripts/ota_updater.py
 
-- https://api.github.com/repos/thealphakenya/stable-Q-ai/releases/latest
+- https://api.github.com/repos/thestablekenya/stable-Q-ai/releases/latest
 
 ## qmoi-enhanced/scripts/qcity_advanced_installer.py
 
@@ -9281,7 +9281,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi-auto-push.js
 
-- https://github.com/thealphakenya/stable-Q-ai.git
+- https://github.com/thestablekenya/stable-Q-ai.git
 - https://gitlab.com
 
 ## qmoi-enhanced/scripts/qmoi-cloud-automation.py
@@ -9294,7 +9294,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi-download-link-tester.py
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases
 
 ## qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js
 
@@ -9361,7 +9361,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi-hf-test.py
 
-- https://huggingface.co/spaces/alphaqmoi/qmoi-space
+- https://huggingface.co/spaces/stableqmoi/qmoi-space
 
 ## qmoi-enhanced/scripts/qmoi-master-automation.py
 
@@ -9527,12 +9527,12 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/scripts/qmoi_huggingface_setup.py
 
 - https://api-inference.huggingface.co/models/
-- https://api-inference.huggingface.co/models/alphaqmoi/qmoi
-- https://github.com/alphaqmoi/qmoi-ai-system
+- https://api-inference.huggingface.co/models/stableqmoi/qmoi
+- https://github.com/stableqmoi/qmoi-ai-system
 - https://huggingface.co/
-- https://huggingface.co/alphaqmoi/qmoi
+- https://huggingface.co/stableqmoi/qmoi
 - https://huggingface.co/spaces/
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 - https://qmoi.ai/docs
 
 ## qmoi-enhanced/scripts/qmoi_master_website_automation.js
@@ -9568,9 +9568,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/scripts/qmoi_simple_autotest.js
 
 - http://localhost:3010
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
 
 ## qmoi-enhanced/scripts/run_enhancements.py
 
@@ -9596,22 +9596,22 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/templates/README_template.en.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases
 - https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square
 
 ## qmoi-enhanced/scripts/templates/README_template.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases
 - https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square
 
 ## qmoi-enhanced/scripts/templates/README_template.sw.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases
 - https://img.shields.io/badge/QMOI%20Build-Imepita-brightgreen?style=flat-square
 
 ## qmoi-enhanced/scripts/test_hf_space_ui.py
 
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 
 ## qmoi-enhanced/scripts/trading/enhanced_trading_system.py
 
@@ -9621,7 +9621,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/scripts/update_model_card.py
 
 - https://github.com/your-org/stable-Q-ai
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 - https://img.shields.io/badge/
 
 ## qmoi-enhanced/scripts/update_readme_cli_usage.py
@@ -9733,7 +9733,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi_control_server.py
 
-- https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440
+- https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440
 
 ## qmoiaxe.py
 
@@ -9878,22 +9878,22 @@ Generated: 2025-10-31T00:23:25.385420Z
 - http://localhost:3010
 - https://api.qmoi.app/health
 - https://api.qmoi.app/v1/status
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
 
 ## scripts/autoupdate_releases.py
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/
+- https://github.com/thestablekenya/qmoi-enhanced/releases/
 
 ## scripts/check-latest-release.js
 
@@ -10015,7 +10015,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/models/qmoi_kernel.py
 
-- https://alphaq-ai.com/updates/qvirus.json
+- https://stableq-ai.com/updates/qvirus.json
 
 ## scripts/monitoring/api_endpoints_monitor.py
 
@@ -10074,11 +10074,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## scripts/notify-telegram.js
 
 - https://api.telegram.org/bot
-- https://github.com/thealphakenya/stable-Q-ai/releases
+- https://github.com/thestablekenya/stable-Q-ai/releases
 
 ## scripts/ota_updater.py
 
-- https://api.github.com/repos/thealphakenya/stable-Q-ai/releases/latest
+- https://api.github.com/repos/thestablekenya/stable-Q-ai/releases/latest
 
 ## scripts/qcity-ui-server.js
 
@@ -10116,7 +10116,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi-auto-push.js
 
-- https://github.com/thealphakenya/stable-Q-ai.git
+- https://github.com/thestablekenya/stable-Q-ai.git
 - https://gitlab.com
 
 ## scripts/qmoi-cloud-automation.py
@@ -10129,7 +10129,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi-download-link-tester.py
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases
 
 ## scripts/qmoi-enhanced-auto-projects.js
 
@@ -10196,7 +10196,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi-hf-test.py
 
-- https://huggingface.co/spaces/alphaqmoi/qmoi-space
+- https://huggingface.co/spaces/stableqmoi/qmoi-space
 
 ## scripts/qmoi-master-automation.py
 
@@ -10356,12 +10356,12 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## scripts/qmoi_huggingface_setup.py
 
 - https://api-inference.huggingface.co/models/
-- https://api-inference.huggingface.co/models/alphaqmoi/qmoi
-- https://github.com/alphaqmoi/qmoi-ai-system
+- https://api-inference.huggingface.co/models/stableqmoi/qmoi
+- https://github.com/stableqmoi/qmoi-ai-system
 - https://huggingface.co/
-- https://huggingface.co/alphaqmoi/qmoi
+- https://huggingface.co/stableqmoi/qmoi
 - https://huggingface.co/spaces/
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 - https://qmoi.ai/docs
 
 ## scripts/qmoi_master_website_automation.js
@@ -10399,9 +10399,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## scripts/qmoi_simple_autotest.js
 
 - http://localhost:3010
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
 
 ## scripts/release_automation.py
 
@@ -10431,22 +10431,22 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/templates/README_template.en.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases
 - https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square
 
 ## scripts/templates/README_template.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases
 - https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square
 
 ## scripts/templates/README_template.sw.md
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases
 - https://img.shields.io/badge/QMOI%20Build-Imepita-brightgreen?style=flat-square
 
 ## scripts/test_hf_space_ui.py
 
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 
 ## scripts/test_webhooks.py
 
@@ -10460,7 +10460,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## scripts/update_model_card.py
 
 - https://github.com/your-org/stable-Q-ai
-- https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
+- https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 - https://img.shields.io/badge/
 
 ## scripts/update_ngrok_links.py
@@ -10473,8 +10473,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/update_readmes.py
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases/
-- https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/
+- https://github.com/thestablekenya/qmoi-enhanced/releases/
+- https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/
 
 ## scripts/upload-release-assets.js
 

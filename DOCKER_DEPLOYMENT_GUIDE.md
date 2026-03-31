@@ -50,7 +50,7 @@ EOF
 docker build -f Dockerfile.qvillage -t qvillage-sync:latest .
 
 # Tag for Docker Hub (optional)
-docker tag qvillage-sync:latest thealphakenya/qvillage-sync:latest
+docker tag qvillage-sync:latest thestablekenya/qvillage-sync:latest
 ```
 
 ### Run Locally (Forever)
@@ -90,13 +90,13 @@ docker start qvillage-sync
 
 ```bash
 # 1. Push to Docker Hub
-docker push thealphakenya/qvillage-sync:latest
+docker push thestablekenya/qvillage-sync:latest
 
 # 2. Create railway.yaml
 cat > railway.yaml << 'EOF'
 services:
   qvillage-sync:
-    image: thealphakenya/qvillage-sync:latest
+    image: thestablekenya/qvillage-sync:latest
     environment:
       HF_API_TOKEN: ${HF_API_TOKEN}
       QVILLAGE_API_URL: https://api.qvillage.ai
@@ -135,7 +135,7 @@ spec:
     spec:
       containers:
         - name: qvillage-sync
-          image: thealphakenya/qvillage-sync:latest
+          image: thestablekenya/qvillage-sync:latest
           imagePullPolicy: Always
           env:
             - name: HF_API_TOKEN
@@ -175,7 +175,7 @@ spec:
         spec:
           containers:
             - name: qvillage-sync
-              image: thealphakenya/qvillage-sync:latest
+              image: thestablekenya/qvillage-sync:latest
               env:
                 - name: HF_API_TOKEN
                   valueFrom:
@@ -222,7 +222,7 @@ kubectl logs -f deployment/qvillage-sync
   "containerDefinitions": [
     {
       "name": "qvillage-sync",
-      "image": "thealphakenya/qvillage-sync:latest",
+      "image": "thestablekenya/qvillage-sync:latest",
       "essential": true,
       "environment": [
         {
@@ -288,7 +288,7 @@ ExecStart=/usr/bin/docker run \
   -e QVILLAGE_API_URL=https://api.qvillage.ai \
   -e QMOI_MEMORY_URL=https://memory.qmoi.ai \
   -e SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL} \
-  thealphakenya/qvillage-sync:latest
+  thestablekenya/qvillage-sync:latest
 
 Restart=always
 RestartSec=10
@@ -464,7 +464,7 @@ restart_policy:
 docker swarm init
 docker service create --replicas 3 \
   -e HF_API_TOKEN=$HF_API_TOKEN \
-  thealphakenya/qvillage-sync:latest
+  thestablekenya/qvillage-sync:latest
 
 # Kubernetes
 kubectl scale deployment qvillage-sync --replicas=3
@@ -534,7 +534,7 @@ docker build -f Dockerfile.qvillage -t qvillage-standalone:latest .
 
 # Run (autoclone into /opt/qvillage inside container)
 docker run -d --restart=always \
-  -e REPO_URL=https://github.com/thealphakenya/qmoi-enhanced.git \
+  -e REPO_URL=https://github.com/thestablekenya/qmoi-enhanced.git \
   -e REPO_DIR=/opt/qvillage \
   -e RUN_INTERVAL_SECONDS=3600 \
   -e HF_API_TOKEN=$HF_API_TOKEN \

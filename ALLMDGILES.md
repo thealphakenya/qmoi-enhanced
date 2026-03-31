@@ -31,7 +31,7 @@ Generated from current repository list on $(date)\n
 ./ALLUITESTS.md
 ./ALLVERSIONS.md
 ./ALLWALLETSQVS.md
-./ALPHAQMOIENGINE.md
+./stableQMOIENGINE.md
 ./API_AUTO_UPDATE_GUIDELINES.md
 ./API_ENDPOINTS_COMPLETE_AUDIT.md
 ./API_ENDPOINTS_REFERENCE.md
@@ -50,13 +50,13 @@ Generated from current repository list on $(date)\n
 ./_archive_qmoi-enhanced/ALLMDFILESREFS.md
 ./_archive_qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md
 ./_archive_qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md
-./_archive_qmoi-enhanced/ALPHAQMOIENGINE.md
+./_archive_qmoi-enhanced/stableQMOIENGINE.md
 ./_archive_qmoi-enhanced/API.md
 ./_archive_qmoi-enhanced/AU[production READY]WNLOAD.md
 ./_archive_qmoi-enhanced/AUTOGIT.md
 ./_archive_qmoi-enhanced/AUTOLINTREADME.md
 ./_archive_qmoi-enhanced/AUTOMATION-SUMMARY.md
-./_archive_qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md
+./_archive_qmoi-enhanced/AUTOOPTIMIZEstableQMOIENGINE.md
 ./_archive_qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md
 ./_archive_qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md
 ./_archive_qmoi-enhanced/CASHON.md
@@ -1005,7 +1005,7 @@ Generated from current repository list on $(date)\n
 ./AUTOGIT.md
 ./AUTOLINTREADME.md
 ./AUTOMATION-SUMMARY.md
-./AUTOOPTIMIZEALPHAQMOIENGINE.md
+./AUTOOPTIMIZEstableQMOIENGINE.md
 ./AUTO_RECOVERY_PROCEDURES.md
 ./AUTO_SETUP_COMPLETION_SUMMARY.md
 ./autotest_report.md
@@ -3620,7 +3620,7 @@ Generated from current repository list on $(date)\n
 ./node_modules/@types/prop-types/README.md
 ./node_modules/@types/react/README.md
 ./node_modules/@types/react-transition-group/README.md
-./node_modules/@types/sinonjs__fake-timers/README.md
+./node_modules/@types/sinonjs__real-timers/README.md
 ./node_modules/@types/sizzle/README.md
 ./node_modules/@types/stack-utils/README.md
 ./node_modules/@types/statuses/README.md
@@ -4084,7 +4084,7 @@ Generated from current repository list on $(date)\n
 ./TESTING.md
 ./TESTREADME.md
 ./TESTS.md
-./TODO_prod_BATCH_PENDING.md
+./DONE_prod_BATCH_PENDING.md
 ./[production READY]S_COMPLETION_INDEX.md
 ./[production READY]S_COMPLETION_VERIFICATION.md
 ./TO-DOs.md
@@ -4594,7 +4594,7 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0497_INSTALL.md.md
 ./tools/issue_drafts/0498_INSTALLATION.md.md
 ./tools/issue_drafts/0499_LANGUAGES.md.md
-./tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md
+./tools/issue_drafts/04_qmoi-enhanced_scripts_production-automation_js.md
 ./tools/issue_drafts/0500_LINKSTRACKS.md.md
 ./tools/issue_drafts/0501_PAGES.md.md
 ./tools/issue_drafts/0502_PUBLIC.md.md
@@ -4703,7 +4703,7 @@ Generated from current repository list on $(date)\n
 ./tools/issue_drafts/0604_models_latest_README.md.md
 ./tools/issue_drafts/0605_push.bat.md
 ./tools/issue_drafts/0606_pwa_apps_README.md.md
-./tools/issue_drafts/0607_pwa_apps_q-alpha_README.md.md
+./tools/issue_drafts/0607_pwa_apps_q-stable_README.md.md
 ./tools/issue_drafts/0608_qmoi-enhanced_.npm-cache__cacache_content-v2_sha512_02_d1_a8497e96eb39c7c4cebea38b288210ed76d0e62f7324915207a1dc0e8f59331e763661f76162b5546ca267cfc2e82f7f47666046b4ba41ffe8998b455e4d.md
 ./tools/issue_drafts/0609_qmoi-enhanced_.npm-cache__cacache_content-v2_sha512_05_12_a4cf29119d9bd5f491c4797687b1eb28e483bc0f6ec0306d1bc06915dfc5e8ed8239eecbb6eee440026388319ad245f9f597e784311aac2ba34d0856afb2.md
 ./tools/issue_drafts/0610_qmoi-enhanced_.npm-cache__cacache_content-v2_sha512_14_44_b2da51354ccd98e6fcd8250b982652bfe3126a7d85b1b85cb8e8b388fc2aa4b23fc7de9ad0684477c95ce93c22dabecf3032591914eb73647e42b6624673.md

@@ -331,7 +331,7 @@ const PERFORMANCE_PROFILES = {
 For technical support or feature requests:
 
 - **Documentation**: [QMOI Docs](./docs/)
-- **Issues**: [GitHub Issues](https://github.com/thealphakenya/qmoi-enhanced/issues)
+- **Issues**: [GitHub Issues](https://github.com/thestablekenya/qmoi-enhanced/issues)
 - **Discussions**: [QVillage Community](./qvillage)
 
 ---

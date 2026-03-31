@@ -66,7 +66,7 @@ function tryProcessFile(filePath) {
   }
 }
 
-console.log(`Starting codemod (dry run=${!APPLY}). Scanning from ${ROOT}`);
+console.log(`Starting coproductiond (dry run=${!APPLY}). Scanning from ${ROOT}`);
 walk(ROOT);
 console.log(
   `Scanned ${filesScanned} files. ${filesChanged} files ${

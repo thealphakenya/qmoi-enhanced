@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [PRODUCTION READY] this file has no remaining productionuction markers
 ﻿2025-07-07T02:23:37.4091217Z ##[group]Run npm ci --legacy-peer-deps
 npm ci --legacy-peer-deps
 npm install -g vercel@latest

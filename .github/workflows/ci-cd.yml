@@ -13,10 +13,10 @@ on:
       environment:
         description: 'Deployment environment'
         required: true
-        default: 'staging'
+        default: 'production'
         type: choice
         options:
-          - staging
+          - production
           - production
       run_tests:
         description: 'Run test suites'
@@ -237,22 +237,22 @@ jobs:
           path: performance_report.json
         if: always()
 
-  # Deploy to staging
-  deploy-staging:
-    name: Deploy to Staging
+  # Deploy to production
+  deploy-production:
+    name: Deploy to production
     runs-on: ubuntu-latest
     needs: [build, performance-test]
     if: github.ref == 'refs/heads/autosync-backup-20250926-232440' && github.event_name == 'push'
-    environment: staging
+    environment: production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to staging
+      - name: Deploy to production
         run: |
-          echo "Deploying to staging environment..."
+          echo "Deploying to production environment..."
           # Add actual deployment commands here
-          echo "Staging deployment completed"
+          echo "production deployment completed"
 
   # Deploy to production
   deploy-production:
@@ -275,7 +275,7 @@ jobs:
   post-deployment-validation:
     name: Post-Deployment Validation
     runs-on: ubuntu-latest
-    needs: [deploy-staging, deploy-production]
+    needs: [deploy-production, deploy-production]
     if: always()
     steps:
       - name: Checkout code

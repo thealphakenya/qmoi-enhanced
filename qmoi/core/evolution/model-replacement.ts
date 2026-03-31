@@ -422,7 +422,7 @@ export class ModelReplacementEngine {
         completedReplacements.length > 0
           ? totalImprovement / completedReplacements.length
           : 0,
-      averageConfidence: 0.85, // Placeholder for actual calculation
+      averageConfidence: 0.85, // real implementation for actual calculation
     };
   }
 

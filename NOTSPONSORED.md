@@ -461,11 +461,11 @@ When a regular user becomes sponsored:
 
 ### Rollback Process
 
-Sponsored users can be demoted back to regular status:
+Sponsored users can be productionted back to regular status:
 
 ```bash
-# Demote sponsored user to regular
-curl -X POST https://qmoi.ai/api/admin/users/demote \
+# productionte sponsored user to regular
+curl -X POST https://qmoi.ai/api/admin/users/productionte \
   -H "Authorization: Bearer <ADMIN_TOKEN>" \
   -d '{
     "userId": "sponsored_user_123",

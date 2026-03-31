@@ -206,7 +206,7 @@ jobs:
           - SHA256 checksums for verification
 
           ### Official Portal
-          - 📍 https://github.com/thealphakenya/qmoi-enhanced/releases
+          - 📍 https://github.com/thestablekenya/qmoi-enhanced/releases
           - 📍 https://qmoi.app/downloads
 
           ### App Stores
@@ -245,7 +245,7 @@ jobs:
 
           ## 🆘 Support & Issues
 
-          - 🐛 **Report Bugs:** https://github.com/thealphakenya/qmoi-enhanced/issues
+          - 🐛 **Report Bugs:** https://github.com/thestablekenya/qmoi-enhanced/issues
           - 💬 **Community:** https://qvillage.qmoi.app
           - 📧 **Email:** support@qmoi.app
           - 🌐 **Website:** https://qmoi.app
@@ -399,7 +399,7 @@ jobs:
           ## 🔗 Links
 
           - 📍 **GitHub Release:** https://github.com/${{ github.repository }}/releases/tag/$VERSION
-          - 📍 **Download Portal:** https://github.com/thealphakenya/qmoi-enhanced/releases
+          - 📍 **Download Portal:** https://github.com/thestablekenya/qmoi-enhanced/releases
           - 📍 **Documentation:** See GITHUB_RELEASES_COMPLETE_GUIDE.md
 
           ## ✨ Next Steps

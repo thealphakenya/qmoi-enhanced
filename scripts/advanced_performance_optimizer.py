@@ -79,7 +79,7 @@ class PerformanceOptimizer:
 
     def _collect_metrics(self) -> None:
         """Collect current system metrics"""
-        # Simulate real metric collection
+        # live real metric collection
         self.metrics = {
             'timestamp': datetime.now(timezone.utc),
             'response_time': random.uniform(35, 65),  # ms
@@ -426,7 +426,7 @@ def main():
         print('🔄 Real-time monitoring and optimization active')
         print()
 
-        # Run for demonstration
+        # Run for productionnstration
         time.sleep(15)  # Let it monitor for 15 seconds
 
         # Generate and display report

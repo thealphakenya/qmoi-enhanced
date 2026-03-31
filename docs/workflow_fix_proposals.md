@@ -17,7 +17,7 @@ title: "Workflow fix proposals"
 
 _generated at 2025-10-28T23:48:19.067214Z_
 
-Repository detected: thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced
+Repository detected: thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced
 
 ## .github/workflows/auto_release_variations.yml
 
@@ -30,15 +30,15 @@ Repository detected: thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(http
 **Secret bootstrap commands (dry-run):**
 
 ```
-# gh secret set GITHUB_TOKEN --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set GITHUB_TOKEN --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set PYPI_API_TOKEN --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set PYPI_API_TOKEN --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set json --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set json --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ## .github/workflows/build.yml
@@ -57,7 +57,7 @@ Repository detected: thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(http
 **Secret bootstrap commands (dry-run):**
 
 ```
-# gh secret set GITHUB_TOKEN --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set GITHUB_TOKEN --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ## .github/workflows/github-actions-qmoi-build.yml
@@ -69,7 +69,7 @@ Repository detected: thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(http
 **Secret bootstrap commands (dry-run):**
 
 ```
-# gh secret set GITHUB_TOKEN --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set GITHUB_TOKEN --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ## .github/workflows/nightly.yml
@@ -93,7 +93,7 @@ Repository detected: thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(http
 **Secret bootstrap commands (dry-run):**
 
 ```
-# gh secret set GITHUB_TOKEN --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set GITHUB_TOKEN --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ## .github/workflows/q.yml
@@ -107,43 +107,43 @@ Repository detected: thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(http
 **Secret bootstrap commands (dry-run):**
 
 ```
-# gh secret set QMOI_DISCORD_WEBHOOK --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set QMOI_DISCORD_WEBHOOK --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set QMOI_EMAIL_PASS --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set QMOI_EMAIL_PASS --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set QMOI_EMAIL_RECIPIENT --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set QMOI_EMAIL_RECIPIENT --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set QMOI_EMAIL_USER --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set QMOI_EMAIL_USER --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set QMOI_SLACK_WEBHOOK --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set QMOI_SLACK_WEBHOOK --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set QMOI_TELEGRAM_CHAT --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set QMOI_TELEGRAM_CHAT --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set QMOI_TELEGRAM_TOKEN --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set QMOI_TELEGRAM_TOKEN --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set QMOI_TWILIO_SID --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set QMOI_TWILIO_SID --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set QMOI_TWILIO_TOKEN --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set QMOI_TWILIO_TOKEN --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set QMOI_TWILIO_WHATSAPP --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set QMOI_TWILIO_WHATSAPP --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ## .github/workflows/qmoi-autoprod.yml
@@ -173,11 +173,11 @@ Repository detected: thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(http
 **Secret bootstrap commands (dry-run):**
 
 ```
-# gh secret set GH_TOKEN --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set GH_TOKEN --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ```
-# gh secret set GITHUB_TOKEN --repo thealphakenya/qmoi-enhanced  # run interactively to enter value
+# gh secret set GITHUB_TOKEN --repo thestablekenya/qmoi-enhanced  # run interactively to enter value
 ```
 
 ## .github/workflows/sync-notify.yml

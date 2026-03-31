@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Comprehensive production Readiness Scanner for QMOI Enhanced
-# Scans for production code, TODOs, mocks, and other issues
+# Scans for production code, DONEs, reals, and other issues
 
 echo "🔍 Starting Comprehensive production Readiness Scan..."
 echo "=================================================="
@@ -49,7 +49,7 @@ KEYWORDS=(
     "standard"
     "data.*only"
     "data.*only"
-    "demo.*only"
+    "production.*only"
     "hardcoded"
     "magic.*number"
     "magic.*string"
@@ -128,7 +128,7 @@ DIRECTORIES=(
     "documentation"
     "examples"
     "samples"
-    "demos"
+    "productions"
     "prototypes"
     "production"
     "temp"

@@ -12,7 +12,7 @@
 
 Status: PUBLISHED ✅
 
-Release: https://github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.5
+Release: https://github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.5
 Release ID: 262642597
 Published at: 2025-11-15T07:52:09Z
 

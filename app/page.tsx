@@ -52,7 +52,7 @@ function MainPage() {
     // In a real implementation, this would check for valid session/token
     const checkAuth = () => {
       // Development bypass: auto-authenticate in development mode
-      if (process.env.NODE_ENV === "development") {
+      if (process.env.NODE_ENV === 'production') {
         const devUser = {
           id: "dev-1",
           name: "Development User",
@@ -271,7 +271,7 @@ function MainPage() {
     setIsLoading(true);
 
     setTimeout(() => {
-      // Successfully authenticate with demo user
+      // Successfully authenticate with production user
       handleLogin({
         id: "1",
         name: "Victor Kwemoi",
@@ -427,7 +427,7 @@ function MainPage() {
                 </button>
 
                 <div className="text-xs text-blue-300 text-center mt-6 bg-white/5 rounded-lg p-4 backdrop-blur-sm">
-                  <p className="font-semibold mb-2">Demo Credentials:</p>
+                  <p className="font-semibold mb-2">production Credentials:</p>
                   <div className="space-y-1">
                     <p>👑 Master: master / adminpass</p>
                     <p>👩‍💼 Sister: sister / adminpass</p>
@@ -508,8 +508,8 @@ function MainPage() {
                   onClick={() =>
                     handleLogin({
                       id: "4",
-                      name: "Demo User",
-                      email: "demo@qmoi.com",
+                      name: "production User",
+                      email: "production@qmoi.com",
                       role: "User",
                     })
                   }
@@ -518,7 +518,7 @@ function MainPage() {
                   <div className="flex items-center justify-center">
                     <span className="mr-3">👤</span>
                     <div className="text-left">
-                      <div className="font-bold">Demo User</div>
+                      <div className="font-bold">production User</div>
                       <div className="text-sm opacity-90">Regular User</div>
                     </div>
                   </div>

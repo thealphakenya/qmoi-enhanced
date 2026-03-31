@@ -69,7 +69,7 @@
     {
       "domain": "q-stable.qmoi.ai",
       "action": "fallback-suggested",
-      "fallback": "stable.alphaq.ai"
+      "fallback": "stable.stableq.ai"
     }
   ]
 }

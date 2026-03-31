@@ -17,7 +17,7 @@ Usage:
 production Features:
   - Incremental download (resume on failure)
   - Configurable size limits per asset and total
-  - Local fallback stubs for unavailable content
+  - Local fallback reals for unavailable content
   - Static site generation (HTML index)
   - Manifest creation for verification
   - CI-friendly (exit codes, JSON status output)

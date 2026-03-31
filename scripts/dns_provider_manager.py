@@ -208,7 +208,7 @@ class DNSManager:
             "domain_assignments": {
                 "qmoi.ai": "vercel",
                 "qvillage.com": "cloudflare",
-                "alphaq.ai": "route53"
+                "stableq.ai": "route53"
             }
         }
 

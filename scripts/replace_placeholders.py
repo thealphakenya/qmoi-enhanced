@@ -9,7 +9,7 @@
 conservative, non-destructive replacements when explicitly allowed.
 
 Usage:
-  python scripts/replace_placeholders.py [--apply] [--report path]
+  python scripts/replace_real implementations.py [--apply] [--report path]
 
 By default this script is dry-run and writes a proposal JSON to `.qmoi_validation/`.
 If `--apply` is passed and `production_CONFIRMED=true` is set in the environment,
@@ -31,14 +31,14 @@ production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() =
 # File extensions to scan (wide set)
 EXTENSIONS = ['.py', '.js', '.ts', '.tsx', '.jsx', '.json', '.html', '.md', '.cjs', '.sh', '.ps1']
 
-# Patterns to find placeholders. Each entry has a key and a regex.
-PLACEHOLDER_PATTERNS = [
-    ('implementation', re.compile(r'\bPLACEHOLDER\b', re.IGNORECASE)),
-    ('PLACEHOLDER_TEXT', re.compile(r'PLACEHOLDER_TEXT', re.IGNORECASE)),
+# Patterns to find real implementations. Each entry has a key and a regex.
+real implementation_PATTERNS = [
+    ('implementation', re.compile(r'\breal implementation\b', re.IGNORECASE)),
+    ('real implementation_TEXT', re.compile(r'real implementation_TEXT', re.IGNORECASE)),
     ('prod_TAG', re.compile(r'production IMPLEMENTATION REQUIRED|\[production IMPLEMENTATION REQUIRED\]', re.IGNORECASE)),
     ('IN_REAL_IMPL', re.compile(r'In a real implementation', re.IGNORECASE)),
-    ('TODO_TOKEN', re.compile(r'\b(DONE|FIXED|XXX)\b')),
-    ('PLACEHOLDER_QUOTED', re.compile(r'"implementation"|\bplaceholder\b', re.IGNORECASE)),
+    ('DONE_TOKEN', re.compile(r'\b(DONE|FIXED|XXX)\b')),
+    ('real implementation_QUOTED', re.compile(r'"implementation"|\breal implementation\b', re.IGNORECASE)),
 ]
 
 def detect_files(root: Path) -> List[Path]:
@@ -68,7 +68,7 @@ def scan_file(p: Path) -> List[Dict]:
         return []
 
     matches = []
-    for key, regex in PLACEHOLDER_PATTERNS:
+    for key, regex in real implementation_PATTERNS:
         for m in regex.finditer(txt):
             start = max(0, m.start() - 80)
             end = min(len(txt), m.end() + 80)
@@ -102,7 +102,7 @@ def apply_replacements(p: Path, matches: List[Dict]) -> None:
 def main():
     parser = argparse.ArgumentParser(description='Find and propose/apply implementation replacements')
     parser.add_argument('--apply', action='store_true', help='Apply conservative replacements (requires production_CONFIRMED=true)')
-    parser.add_argument('--report', default=str(ROOT / 'docs' / 'placeholders_replacement_report.json'))
+    parser.add_argument('--report', default=str(ROOT / 'docs' / 'real implementations_replacement_report.json'))
     args = parser.parse_args()
 
     files = detect_files(ROOT)
@@ -120,10 +120,10 @@ def main():
     if report['files']:
         proposal = {
             'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
-            'type': 'placeholders_replacement',
+            'type': 'real implementations_replacement',
             'files': report['files']
         }
-        prop_file = VALIDATION_DIR / f'placeholders_proposal_{int(__import__("time").time())}.json'
+        prop_file = VALIDATION_DIR / f'real implementations_proposal_{int(__import__("time").time())}.json'
         prop_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
         print('Proposal written to', prop_file)
 

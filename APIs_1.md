@@ -401,7 +401,7 @@ Content-Type: application/json
 - /api/emergency/email
 - /api/emergency/lockdown
 - /api/emergency/sms
-- /api/emergency/wipe
+- /api/emergency/production completee
 - /api/employment
 - /api/employment/megavault
 - /api/employment/payment

@@ -27,7 +27,7 @@ This document catalogues all test files in the `__tests__` directory, including 
 
 ### __tests__/root (33 files)
 
-- [`AlphaQAISystem.test.tsx`](__tests__/AlphaQAISystem.test.tsx) - `.tsx`
+- [`stableQAISystem.test.tsx`](__tests__/stableQAISystem.test.tsx) - `.tsx`
 - [`AutoHealingPlatform.test.tsx`](__tests__/AutoHealingPlatform.test.tsx) - `.tsx`
 - [`KnowledgeEngine.test.tsx`](__tests__/KnowledgeEngine.test.tsx) - `.tsx`
 - [`MasterLinkValidator.test.ts`](__tests__/MasterLinkValidator.test.ts) - `.ts`

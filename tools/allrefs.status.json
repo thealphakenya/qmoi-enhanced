@@ -27,7 +27,7 @@
   "ALLWALLETSQVS.md": {
     "category": "skip"
   },
-  "ALPHAQMOIENGINE.md": {
+  "stableQMOIENGINE.md": {
     "category": "skip"
   },
   "API.md": {
@@ -36,7 +36,7 @@
   "AUTOMATION-SUMMARY.md": {
     "category": "skip"
   },
-  "AUTOOPTIMIZEALPHAQMOIENGINE.md": {
+  "AUTOOPTIMIZEstableQMOIENGINE.md": {
     "category": "skip"
   },
   "BUILD_COMPLETION_SUMMARY.md": {
@@ -1137,7 +1137,7 @@
   "next.config.mjs": {
     "category": "skip"
   },
-  "notebooks/enhanced-trading-engine-demo.ipynb": {
+  "notebooks/enhanced-trading-engine-production.ipynb": {
     "category": "skip"
   },
   "notify_on_whatsapp.py": {
@@ -1179,7 +1179,7 @@
   "qmoi-enhanced/@ALLMDFILESREFS.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/ALPHAQMOIENGINE.md": {
+  "qmoi-enhanced/stableQMOIENGINE.md": {
     "category": "skip"
   },
   "qmoi-enhanced/API.md": {
@@ -1188,7 +1188,7 @@
   "qmoi-enhanced/AUTOMATION-SUMMARY.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md": {
+  "qmoi-enhanced/AUTOOPTIMIZEstableQMOIENGINE.md": {
     "category": "skip"
   },
   "qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md": {
@@ -1944,7 +1944,7 @@
   "qmoi-enhanced/next.config.mjs": {
     "category": "skip"
   },
-  "qmoi-enhanced/notebooks/enhanced-trading-engine-demo.ipynb": {
+  "qmoi-enhanced/notebooks/enhanced-trading-engine-production.ipynb": {
     "category": "skip"
   },
   "qmoi-enhanced/notify_on_whatsapp.py": {
@@ -2052,7 +2052,7 @@
   "qmoi-enhanced/scripts/db_migrations.py": {
     "category": "skip"
   },
-  "qmoi-enhanced/scripts/demo-automation.js": {
+  "qmoi-enhanced/scripts/production-automation.js": {
     "category": "skip"
   },
   "qmoi-enhanced/scripts/deploy/vercel_auto_deploy.js": {
@@ -2871,7 +2871,7 @@
   "scripts/db_migrations.py": {
     "category": "skip"
   },
-  "scripts/demo-automation.js": {
+  "scripts/production-automation.js": {
     "category": "skip"
   },
   "scripts/deploy/vercel_auto_deploy.js": {

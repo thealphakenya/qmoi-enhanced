@@ -35,7 +35,7 @@ Automatically updates the Hugging Face model card (README.md) with dynamic badge
 Usage:
   python scripts/update_model_card.py --repo <repo_id> --version <version> --health <health> --status <status> --dashboard <dashboard_url> --status-url <status_url> [--token <hf_token>]
 
-- repo_id: Hugging Face repo id (e.g., alphaqmoi/qmoi-ai-system)
+- repo_id: Hugging Face repo id (e.g., stableqmoi/qmoi-ai-system)
 - version: Latest model version (e.g., 2.0.0)
 - health: Health percentage (e.g., 99.8)
 - status: Health status (e.g., healthy, warning, error)

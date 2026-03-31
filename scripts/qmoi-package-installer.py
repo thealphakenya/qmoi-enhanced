@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # production READY: Multi-platform packaging with third-party tool integration
-# NOTE: 6 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# NOTE: 6 implementation(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.
 import os
 import shutil
 import platform
@@ -79,7 +79,7 @@ def make_mac_dmg():
         os.makedirs(os.path.join(contents_dir, 'MacOS'), exist_ok=True)
         os.makedirs(os.path.join(contents_dir, 'Resources'), exist_ok=True)
 
-        # Copy executable (placeholder - would copy actual binary)
+        # Copy executable (real implementation - would copy actual binary)
         shutil.copy('main.py', os.path.join(contents_dir, 'MacOS', 'QMOI-App'))
 
         # Create DMG

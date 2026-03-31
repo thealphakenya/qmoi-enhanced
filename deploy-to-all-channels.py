@@ -198,7 +198,7 @@ class QMOIDeploymentOrchestrator:
 - Status: {self.stats['github']['status'].upper()}
 - Assets: {self.stats['github']['deployed']}
 - Failed: {self.stats['github']['failed']}
-- URL: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/{self.version}
+- URL: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/{self.version}
 
 ### Google Play Store
 - Status: {self.stats['playstore']['status'].upper()}
@@ -214,7 +214,7 @@ class QMOIDeploymentOrchestrator:
 - Status: {self.stats['downloads_portal']['status'].upper()}
 - Deployed: {self.stats['downloads_portal']['deployed']}
 - Failed: {self.stats['downloads_portal']['failed']}
-- URL: https://github.com/thealphakenya/qmoi-enhanced/releases
+- URL: https://github.com/thestablekenya/qmoi-enhanced/releases
 
 ### Web/PWA
 - Status: {self.stats['web']['status'].upper()}
@@ -237,7 +237,7 @@ All 6 QMOI apps deployed to multiple channels:
 ## 🔗 Download Links
 
 ### GitHub (All Platforms)
-https://github.com/thealphakenya/qmoi-enhanced/releases/tag/{self.version}
+https://github.com/thestablekenya/qmoi-enhanced/releases/tag/{self.version}
 
 ### Web/PWA
 - QMOI AI: https://qmoi.qmoi.app

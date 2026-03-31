@@ -128,7 +128,7 @@ POST   /api/wallets/multi-sig         - Create multi-sig wallet
 
 #### Encryption Standards
 - **Algorithm**: AES-256-GCM with PBKDF2 key derivation
-- **Key Management**: HSM simulation with secure key rotation
+- **Key Management**: HSM live with secure key rotation
 - **Data Protection**: End-to-end encryption for all sensitive data
 
 #### Access Control

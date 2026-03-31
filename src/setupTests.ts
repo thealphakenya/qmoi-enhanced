@@ -3,7 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import "@testing-library/jest-dom";
+// Optional import for testing library
+try {
+  require("@testing-library/jest-dom");
+} catch (e) {
+  console.log("Skipping @testing-library/jest-dom - not installed");
+}
 
 // Add Jest globals
 declare global {

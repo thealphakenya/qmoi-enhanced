@@ -5830,21 +5830,21 @@
         "q/AI_ENHANCED_INTELLIGENT_VALIDATION_ARCHITECTURE.md",
         "q/BALANCES.md",
         "q/BALANCES.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
         "reports/ai-understanding-report-20260324_041407.md",
         "reports/ai-understanding-report-20260324_041407.md",
         "reports/ai-understanding-report-20260324_041407.md",
@@ -8817,7 +8817,7 @@
         "tools/issue_drafts/0569_components_prodiceSettingsPanel.tsx.md",
         "tools/issue_drafts/0949_qmoi-enhanced_scripts_monitoring_error_tracking.py.md",
         "tools/issue_drafts/0518_QMOIAUTOprod.md.md",
-        "tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_placeholder.py.md",
+        "tools/issue_drafts/0976_qmoi-enhanced_tests_security_test_security_real implementation.py.md",
         "tools/issue_drafts/0874_qmoi-enhanced_QMOIALLprodICESINSTALL.md.md",
         "tools/issue_drafts/0851_qmoi-enhanced_ALLprodICESSETTINGS.md.md",
         "tools/issue_drafts/1068_test_config.json.md",
@@ -8830,7 +8830,7 @@
         "tools/issue_drafts/0480_ALLprodICESSETTINGS.md.md",
         "tools/issue_drafts/0887_qmoi-enhanced_QMOIGITLABprod.md.linkfix.bak.md",
         "tools/issue_drafts/0975_qmoi-enhanced_test_config.json.md",
-        "tools/issue_drafts/1070_tests_security_test_security_placeholder.py.md",
+        "tools/issue_drafts/1070_tests_security_test_security_real implementation.py.md",
         "tools/issue_drafts/0530_QMOIGITLABprod.md.md",
         "tools/issue_drafts/06_qmoi-enhanced_src_setupTests_ts.md",
         "tools/issue_drafts/05_qmoi-enhanced_QMOISPACEprod_md.md",
@@ -8853,7 +8853,7 @@
         "tools/issue_drafts/0911_qmoi-enhanced_components_prodiceSettingsPanel.tsx.md",
         "tools/issue_drafts/1056_scripts_utils_error_fixer.py.md",
         "tools/issue_drafts/1029_scripts_monitoring_error_tracking.py.md",
-        "tools/issue_drafts/13_qmoi-enhanced_components_prodice_prodiceIntegrationStubs_ts.md",
+        "tools/issue_drafts/13_qmoi-enhanced_components_prodice_prodiceIntegrationreals_ts.md",
         "tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTOprod.md.md",
         "tools/issue_drafts/1025_scripts_generate_test_index.py.md",
         "tools/issue_drafts/0861_qmoi-enhanced_prodICERESOURCEOPTIMIZATION.md.md"
@@ -13320,7 +13320,7 @@
       "value": 58.36,
       "source_files": [
         "production_READINESS_ENHANCED_REPORT.md",
-        "FINAL_STATUS_TODOS_COMPLETE.md"
+        "FINAL_STATUS_DONES_COMPLETE.md"
       ],
       "last_updated": "2026-03-24T19:33:57.816791",
       "category": "operational"
@@ -14810,7 +14810,7 @@
     "of_all": {
       "value": 100.0,
       "source_files": [
-        "FINAL_STATUS_TODOS_COMPLETE.md"
+        "FINAL_STATUS_DONES_COMPLETE.md"
       ],
       "last_updated": "2026-03-24T19:33:57.956851",
       "category": "other"
@@ -14818,7 +14818,7 @@
     "compliant": {
       "value": 100.0,
       "source_files": [
-        "FINAL_STATUS_TODOS_COMPLETE.md"
+        "FINAL_STATUS_DONES_COMPLETE.md"
       ],
       "last_updated": "2026-03-24T19:33:57.956923",
       "category": "other"
@@ -14983,7 +14983,7 @@
     "hard_limits": {
       "value": 90.0,
       "source_files": [
-        "MANUAL_TODOS_COMPLETION_REPORT.md"
+        "MANUAL_DONES_COMPLETION_REPORT.md"
       ],
       "last_updated": "2026-03-24T19:33:58.003200",
       "category": "other"
@@ -14991,7 +14991,7 @@
     "probability": {
       "value": 5.0,
       "source_files": [
-        "MANUAL_TODOS_COMPLETION_REPORT.md"
+        "MANUAL_DONES_COMPLETION_REPORT.md"
       ],
       "last_updated": "2026-03-24T19:33:58.003270",
       "category": "other"
@@ -15734,9 +15734,9 @@
         "docs/REVENUE_SPEC.md",
         "docs/REVENUE_SPEC.md",
         "docs/REVENUE_SPEC.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:33:59.336194",
       "category": "other"
@@ -16580,10 +16580,10 @@
     "y": {
       "value": 1.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.735639",
       "category": "other"
@@ -16591,7 +16591,7 @@
     "v": {
       "value": 6.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.735789",
       "category": "other"
@@ -16599,9 +16599,9 @@
     "z": {
       "value": 7.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.735883",
       "category": "other"
@@ -16609,8 +16609,8 @@
     "ldy": {
       "value": 0.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.735934",
       "category": "other"
@@ -16618,7 +16618,7 @@
     "wh\u000bxs": {
       "value": 0.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736021",
       "category": "other"
@@ -16626,8 +16626,8 @@
     "tbdd": {
       "value": 5.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736071",
       "category": "other"
@@ -16635,7 +16635,7 @@
     "lak": {
       "value": 6.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736120",
       "category": "other"
@@ -16643,8 +16643,8 @@
     "u": {
       "value": 0.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736168",
       "category": "other"
@@ -16652,8 +16652,8 @@
     "knr": {
       "value": 8.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736215",
       "category": "other"
@@ -16661,8 +16661,8 @@
     "drv": {
       "value": 7.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736362",
       "category": "other"
@@ -16670,8 +16670,8 @@
     "n": {
       "value": 3.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736462",
       "category": "other"
@@ -16679,8 +16679,8 @@
     "tbd": {
       "value": 3.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736511",
       "category": "other"
@@ -16688,7 +16688,7 @@
     "s": {
       "value": 2.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736558",
       "category": "other"
@@ -16696,7 +16696,7 @@
     "kfne": {
       "value": 7.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736643",
       "category": "other"
@@ -16704,8 +16704,8 @@
     "h": {
       "value": 8.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736690",
       "category": "other"
@@ -16713,7 +16713,7 @@
     "iif": {
       "value": 9.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736737",
       "category": "other"
@@ -16721,7 +16721,7 @@
     "deb": {
       "value": 0.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736784",
       "category": "other"
@@ -16729,7 +16729,7 @@
     "ehwp": {
       "value": 7.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736872",
       "category": "other"
@@ -16737,7 +16737,7 @@
     "l": {
       "value": 9.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736920",
       "category": "other"
@@ -16745,7 +16745,7 @@
     "t": {
       "value": 5.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.736968",
       "category": "other"
@@ -16753,7 +16753,7 @@
     "py": {
       "value": 0.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737015",
       "category": "other"
@@ -16761,7 +16761,7 @@
     "ue": {
       "value": 9.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737061",
       "category": "other"
@@ -16769,7 +16769,7 @@
     "cl": {
       "value": 7.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737107",
       "category": "other"
@@ -16777,7 +16777,7 @@
     "gbnz_w": {
       "value": 9.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737154",
       "category": "other"
@@ -16785,7 +16785,7 @@
     "j": {
       "value": 20.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737238",
       "category": "other"
@@ -16793,7 +16793,7 @@
     "puiiee": {
       "value": 9.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737390",
       "category": "other"
@@ -16801,7 +16801,7 @@
     "rag": {
       "value": 1.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737443",
       "category": "other"
@@ -16809,7 +16809,7 @@
     "tes": {
       "value": 9.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737491",
       "category": "other"
@@ -16817,8 +16817,8 @@
     "b": {
       "value": 3.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md",
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md",
         "mobile/node_modules/decode-uri-component/readme.md",
         "mobile/node_modules/qs/README.md",
         "mobile/node_modules/qs/README.md",
@@ -16837,7 +16837,7 @@
     "g": {
       "value": 1.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737586",
       "category": "other"
@@ -16845,7 +16845,7 @@
     "w": {
       "value": 8.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737633",
       "category": "other"
@@ -16853,7 +16853,7 @@
     "ey": {
       "value": 1.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737681",
       "category": "other"
@@ -16861,7 +16861,7 @@
     "uk": {
       "value": 5.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737810",
       "category": "other"
@@ -16869,7 +16869,7 @@
     "bl": {
       "value": 0.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.737937",
       "category": "other"
@@ -16877,7 +16877,7 @@
     "se": {
       "value": 9.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.738023",
       "category": "other"
@@ -16885,7 +16885,7 @@
     "fz": {
       "value": 2.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.738113",
       "category": "other"
@@ -16893,7 +16893,7 @@
     "f": {
       "value": 3.0,
       "source_files": [
-        "tools/placeholder_actions.md",
+        "tools/real implementation_actions.md",
         "mobile/node_modules/qs/README.md",
         "mobile/node_modules/qs/README.md",
         "_archive_qmoi-enhanced/mobile/node_modules/qs/README.md",
@@ -16907,7 +16907,7 @@
     "tbdc": {
       "value": 1.0,
       "source_files": [
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.738251",
       "category": "other"
@@ -16915,8 +16915,8 @@
     "mki": {
       "value": 8.0,
       "source_files": [
-        "tools/placeholder_actions.md",
-        "tools/placeholder_actions.md"
+        "tools/real implementation_actions.md",
+        "tools/real implementation_actions.md"
       ],
       "last_updated": "2026-03-24T19:34:02.738299",
       "category": "other"

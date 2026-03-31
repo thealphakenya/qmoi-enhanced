@@ -27,7 +27,7 @@ try:
     )
 except Exception:
     stripe = None
-    # Provide fallback placeholders so module-level annotations still resolve
+    # Provide fallback real implementations so module-level annotations still resolve
 
     class StripeError(Exception):
         pass
@@ -44,7 +44,7 @@ except Exception:
     class APIConnectionError(StripeError):
         pass
 
-from . import provider_stub
+from . import provider_real
 from utils.env_manager import setup_environment, get_stripe_config
 
 # Set up environment
@@ -102,7 +102,7 @@ def create_charge(username: str, amount_cents: int, currency: str = 'usd',
                   email: Optional[str] = None, metadata: Optional[Dict] = None) -> dict:
     """Create a Stripe PaymentIntent with proper idempotency and error handling."""
     if not (stripe and STRIPE_API_KEY):
-        return provider_stub.create_charge(username, amount_cents, currency.upper())
+        return provider_real.create_charge(username, amount_cents, currency.upper())
 
     stripe.api_key = STRIPE_API_KEY
     idempotency_key = f'charge-{username}-{amount_cents}-{uuid.uuid4()}'

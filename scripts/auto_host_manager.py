@@ -17,7 +17,7 @@ Supports:
 - API endpoints for status/control
 - Dynamic config reload on file changes
 - Notification channels (email/slack) and audit events
-- Canary / blue-green deployment management stubs
+- Canary / blue-green deployment management reals
 """
 
 import json
@@ -610,7 +610,7 @@ def main():
         print(json.dumps(telemetry[-20:], indent=2))
     elif args.deploy:
         svc, version = args.deploy
-        manager.send_alert('Deploy', f'{svc} deploy to {version} (stubbed)')
+        manager.send_alert('Deploy', f'{svc} deploy to {version} (realbed)')
         print('Deployment invocation recorded')
     else:
         parser.print_help()

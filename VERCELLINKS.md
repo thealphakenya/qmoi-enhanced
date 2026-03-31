@@ -73,7 +73,7 @@ Your application is now **LIVE IN production** with full QMOI auto-configuration
 | Health Check | /api/health                                                 | ✅ OPERATIONAL | 2026-01-18 19:35 |
 | API Base     | /api                                                        | ✅ OPERATIONAL | 2026-01-18 19:35 |
 | Dashboard    | vercel.com/simtwos-projects/qmoi-enhanced                   | ✅ ACCESSIBLE  | 2026-01-18 19:35 |
-| GitHub Repo  | github.com/thealphakenya/qmoi-enhanced                      | ✅ LINKED      | 2026-01-18 19:35 |
+| GitHub Repo  | github.com/thestablekenya/qmoi-enhanced                      | ✅ LINKED      | 2026-01-18 19:35 |
 
 ---
 
@@ -90,16 +90,16 @@ Your application is now **LIVE IN production** with full QMOI auto-configuration
 
 ### Vercel Console
 
-- **Project Dashboard**: https://vercel.com/thealphakenya/qmoi-enhanced
+- **Project Dashboard**: https://vercel.com/thestablekenya/qmoi-enhanced
   - Status: 200 OK ✓
   - Check: Deployment status, logs, and metrics
 
 ### Settings & Configuration
 
-- **Domains**: https://vercel.com/thealphakenya/qmoi-enhanced/settings/domains
-- **Environment**: https://vercel.com/thealphakenya/qmoi-enhanced/settings/environment-variables
-- **Git Integration**: https://vercel.com/thealphakenya/qmoi-enhanced/settings/git
-- **Analytics**: https://vercel.com/thealphakenya/qmoi-enhanced/analytics
+- **Domains**: https://vercel.com/thestablekenya/qmoi-enhanced/settings/domains
+- **Environment**: https://vercel.com/thestablekenya/qmoi-enhanced/settings/environment-variables
+- **Git Integration**: https://vercel.com/thestablekenya/qmoi-enhanced/settings/git
+- **Analytics**: https://vercel.com/thestablekenya/qmoi-enhanced/analytics
 
 ---
 
@@ -107,17 +107,17 @@ Your application is now **LIVE IN production** with full QMOI auto-configuration
 
 ### GitHub Repository
 
-- **Repository**: https://github.com/thealphakenya/qmoi-enhanced
+- **Repository**: https://github.com/thestablekenya/qmoi-enhanced
   - Status: 200 OK ✓
-  - Commits: https://github.com/thealphakenya/qmoi-enhanced/commits/autosync-backup-20250926-232440
+  - Commits: https://github.com/thestablekenya/qmoi-enhanced/commits/autosync-backup-20250926-232440
   - Latest Commit: 5fb6ac085
 
 ### Code Views
 
-- **Main Branch**: https://github.com/thealphakenya/qmoi-enhanced/tree/autosync-backup-20250926-232440
-- **Commit History**: https://github.com/thealphakenya/qmoi-enhanced/commits
-- **Pull Requests**: https://github.com/thealphakenya/qmoi-enhanced/pulls
-- **Issues**: https://github.com/thealphakenya/qmoi-enhanced/issues
+- **Main Branch**: https://github.com/thestablekenya/qmoi-enhanced/tree/autosync-backup-20250926-232440
+- **Commit History**: https://github.com/thestablekenya/qmoi-enhanced/commits
+- **Pull Requests**: https://github.com/thestablekenya/qmoi-enhanced/pulls
+- **Issues**: https://github.com/thestablekenya/qmoi-enhanced/issues
 
 ---
 
@@ -177,7 +177,7 @@ GET  https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/admin/metri
 | https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api        | API       | ✅ 401 LIVE | Jan 18, 2026  | API endpoints operational  |
 | https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/health | Health    | ✅ 401 LIVE | Jan 18, 2026  | Health check active        |
 | https://vercel.com/simtwos-projects/qmoi-enhanced                      | Dashboard | ✅ 200 OK   | Jan 18, 2026  | Vercel dashboard           |
-| https://github.com/thealphakenya/qmoi-enhanced                         | GitHub    | ✅ 200 OK   | Jan 18, 2026  | Repository linked          |
+| https://github.com/thestablekenya/qmoi-enhanced                         | GitHub    | ✅ 200 OK   | Jan 18, 2026  | Repository linked          |
 
 ---
 
@@ -283,7 +283,7 @@ curl -v https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app/api/health
 
 ## 📝 Repository Information
 
-- **Owner**: thealphakenya
+- **Owner**: thestablekenya
 - **Repository**: qmoi-enhanced
 - **Branch**: autosync-backup-20250926-232440
 - **production URL**: https://qmoi-enhanced-j1i8nj0kb-simtwos-projects.vercel.app

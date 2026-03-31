@@ -10,8 +10,8 @@ const LINKS = {
   "Primary App": "https://qmoi-enhanced.vercel.app",
   "API Base": "https://qmoi-enhanced.vercel.app/api",
   "Health Check": "https://qmoi-enhanced.vercel.app/api/health",
-  "Vercel Dashboard": "https://vercel.com/thealphakenya/qmoi-enhanced",
-  "GitHub Repository": "https://github.com/thealphakenya/qmoi-enhanced",
+  "Vercel Dashboard": "https://vercel.com/thestablekenya/qmoi-enhanced",
+  "GitHub Repository": "https://github.com/thestablekenya/qmoi-enhanced",
 };
 
 const COLORS = {
@@ -92,7 +92,7 @@ async function checkDeployment() {
   } else if (appStatus === 404) {
     log("yellow", "⏳", "Status", "DEPLOYMENT IN PROGRESS (3-6 minutes)");
     console.log(
-      "\n   Check progress: https://vercel.com/thealphakenya/qmoi-enhanced",
+      "\n   Check progress: https://vercel.com/thestablekenya/qmoi-enhanced",
     );
   } else {
     log("red", "✗", "Status", "ERROR - Check dashboard");
@@ -102,8 +102,8 @@ async function checkDeployment() {
     `\n${COLORS.blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${COLORS.reset}\n`,
   );
   console.log("📋 QUICK LINKS\n");
-  console.log("   Dashboard: https://vercel.com/thealphakenya/qmoi-enhanced");
-  console.log("   GitHub: https://github.com/thealphakenya/qmoi-enhanced");
+  console.log("   Dashboard: https://vercel.com/thestablekenya/qmoi-enhanced");
+  console.log("   GitHub: https://github.com/thestablekenya/qmoi-enhanced");
   console.log(`   Docs: ./VERCELLINKS.md\n`);
   console.log(
     `${COLORS.blue}═══════════════════════════════════════════════════════════${COLORS.reset}\n`,

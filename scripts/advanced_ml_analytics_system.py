@@ -89,7 +89,7 @@ class AdvancedMLPredictor:
     def predict_balance_trend(self, user_id: str, current_balance: float,
                             transaction_history: List[Dict]) -> Dict[str, Any]:
         """Predict balance trend for the next 30 days"""
-        # Simulate advanced ML prediction
+        # live advanced ML prediction
         features = self._extract_balance_features(user_id, current_balance, transaction_history)
 
         # Generate prediction
@@ -288,7 +288,7 @@ class AdvancedMLPredictor:
 
     def _calculate_market_risk(self) -> float:
         """Calculate current market risk"""
-        # Simulate market risk based on volatility
+        # live market risk based on volatility
         market_volatility = random.uniform(0.1, 0.8)
         return market_volatility
 
@@ -469,7 +469,7 @@ class AdvancedMLPredictor:
 
         for asset in assets:
             base_return = base_returns.get(asset, 0.10)
-            # Add some randomness to simulate market conditions
+            # Add some randomness to live market conditions
             returns[asset] = base_return * multiplier * random.uniform(0.8, 1.2)
 
         return returns
@@ -491,7 +491,7 @@ class AdvancedMLPredictor:
 
         # Calculate portfolio variance
         portfolio_variance = 0
-        asset_volatilities = {asset: random.uniform(0.3, 0.8) for asset in assets}  # Simulated volatilities
+        asset_volatilities = {asset: random.uniform(0.3, 0.8) for asset in assets}  # lived volatilities
 
         for asset1 in assets:
             for asset2 in assets:
@@ -543,7 +543,7 @@ class AdvancedRiskManagementSystem:
         """Initialize advanced risk management models"""
         self.risk_models = {
             'value_at_risk': {
-                'model_type': 'Historical Simulation + Monte Carlo',
+                'model_type': 'Historical live + Monte Carlo',
                 'confidence_level': 0.95,
                 'time_horizon': '1 day',
                 'method': 'parametric'
@@ -572,8 +572,8 @@ class AdvancedRiskManagementSystem:
         """Calculate Value at Risk for the portfolio"""
         total_value = sum(portfolio.values())
 
-        # Simulate VaR calculation
-        portfolio_returns = [random.gauss(0, 0.02) for _ in range(1000)]  # Simulated returns
+        # live VaR calculation
+        portfolio_returns = [random.gauss(0, 0.02) for _ in range(1000)]  # lived returns
         portfolio_returns.sort()
 
         # Calculate VaR at specified confidence level
@@ -591,7 +591,7 @@ class AdvancedRiskManagementSystem:
             'value_at_risk_percent': (var_amount / total_value) * 100,
             'expected_shortfall_amount': expected_shortfall,
             'expected_shortfall_percent': (expected_shortfall / total_value) * 100,
-            'calculation_method': 'Historical Simulation',
+            'calculation_method': 'Historical live',
             'time_horizon': '1 day',
             'calculation_timestamp': datetime.now(timezone.utc),
             'risk_assessment': 'HIGH' if var_amount / total_value > 0.05 else 'MEDIUM' if var_amount / total_value > 0.02 else 'LOW'
@@ -613,7 +613,7 @@ class AdvancedRiskManagementSystem:
         scenario_params = scenarios[scenario]
         total_value = sum(portfolio.values())
 
-        # Simulate stress test impact
+        # live stress test impact
         if scenario == 'market_crash':
             crypto_loss = sum(v for k, v in portfolio.items() if k in ['BTC', 'ETH', 'ADA', 'SOL', 'DOT', 'AVAX', 'MATIC']) * scenario_params['crypto_drop']
             equity_loss = sum(v for k, v in portfolio.items() if k not in ['BTC', 'ETH', 'ADA', 'SOL', 'DOT', 'AVAX', 'MATIC', 'USDC', 'USDT']) * scenario_params['equity_drop']

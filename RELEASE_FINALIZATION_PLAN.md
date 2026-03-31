@@ -26,7 +26,7 @@
 
 - Created GitHub Release v1.2.4 via REST API
 - **Successfully uploaded all 5 replacement assets to the release** (HTTP 201)
-  - Download URLs: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/{filename}
+  - Download URLs: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/{filename}
 
 ### 3. CI Workflow Enhancements
 
@@ -68,7 +68,7 @@ If you want to produce **production-signed APKs and IPAs**, follow `DOCS/GITHUB_
 - `IOS_CERT_PASSWORD` - Certificate password
 - `IOS_PROVISIONING_PROFILE_BASE64` - Base64-encoded provisioning profile
 
-**Configure via**: https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions
+**Configure via**: https://github.com/thestablekenya/qmoi-enhanced/settings/secrets/actions
 
 ### Step 2: Dispatch the Workflow (Option A or B)
 
@@ -84,7 +84,7 @@ bash scripts/dispatch_workflow_with_pat_clean.sh \
 
 **Option B - Manual via GitHub UI:**
 
-1. Go to: https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/build-and-release.yml
+1. Go to: https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/build-and-release.yml
 2. Click "Run workflow" → select branch/tag → "Run workflow"
 
 ### Step 3: Monitor & Verify the Build
@@ -144,9 +144,9 @@ python3 scripts/verify_apps.py --upload-to-release v1.2.4
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
 | Workflow dispatch (dry-run) | `bash scripts/dispatch_workflow_with_pat_clean.sh --workflow .github/workflows/build-and-release.yml --ref v1.2.4`                      | Ready        |
 | Workflow dispatch (execute) | `GITHUB_PAT=xxx bash scripts/dispatch_workflow_with_pat_clean.sh --workflow .github/workflows/build-and-release.yml --ref v1.2.4 --run` | Awaiting PAT |
-| View release                | https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4                                                                      | Live         |
-| Configure secrets           | https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions                                                                 | Optional     |
-| Monitor builds              | https://github.com/thealphakenya/qmoi-enhanced/actions                                                                                  | Ready        |
+| View release                | https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4                                                                      | Live         |
+| Configure secrets           | https://github.com/thestablekenya/qmoi-enhanced/settings/secrets/actions                                                                 | Optional     |
+| Monitor builds              | https://github.com/thestablekenya/qmoi-enhanced/actions                                                                                  | Ready        |
 | Verify apps locally         | `python3 scripts/verify_apps.py`                                                                                                        | Ready        |
 
 ---

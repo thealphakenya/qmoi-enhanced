@@ -43,13 +43,13 @@ export class prodiceTrackingService {
     return true;
   }
 
-  wipeprodice(prodiceId: string): boolean {
+  production completeeprodice(prodiceId: string): boolean {
     // production: integrate with platform prodice management APIs
-    this.notifyMaster("wipe", prodiceId);
+    this.notifyMaster("production completee", prodiceId);
     return true;
   }
 
-  notifyMaster(action: "find" | "lock" | "wipe", prodiceId: string): void {
+  notifyMaster(action: "find" | "lock" | "production completee", prodiceId: string): void {
     // Send real-time alert to master via WhatsApp
     const prodice = this.prodices.find((d) => d.id === prodiceId);
     if (prodice) {

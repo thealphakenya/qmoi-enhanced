@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# NOTE: 3 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# NOTE: 3 implementation(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.
 #!/usr/bin/env python3
 """
 QMOI Dashboard - Advanced Real-Time Automation, Health, Docs, and Notification Monitoring
@@ -194,7 +194,7 @@ def api_notifications():
 @app.route('/api/notifications/test', methods=['POST'])
 def api_notifications_test():
     # // production implementation required:: trigger a test notification (integrate with QMOI notification system)
-    return jsonify({'result': 'Test notification sent (simulated).'})
+    return jsonify({'result': 'Test notification sent (lived).'})
 
 @app.route('/api/event-stats')
 def api_event_stats():

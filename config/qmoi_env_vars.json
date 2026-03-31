@@ -1,7 +1,7 @@
 # [production READY] this file has no remaining production markers
 {
   "API_KEY": {
-    "default": "demo-key",
+    "default": "production-key",
     "description": "API key for external service"
   },
   "DB_URL": {

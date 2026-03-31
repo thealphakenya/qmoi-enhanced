@@ -36,8 +36,8 @@ Replacements (12 patterns):
 - `[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)` → `[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)`
 - `(https://qvillage.com)` → `(https://qvillage.com)`
 - `[qvillage](https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com)` → `[qvillage](https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com)`
-- `(https://github.com/thealphakenya/qmoi-enhanced)` → `(https://github.com/thealphakenya/qmoi-enhanced)`
-- `[qmoi-enhanced](https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)` → `[qmoi-enhanced](https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)`
+- `(https://github.com/thestablekenya/qmoi-enhanced)` → `(https://github.com/thestablekenya/qmoi-enhanced)`
+- `[qmoi-enhanced](https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)` → `[qmoi-enhanced](https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)`
 - `(https://qmoi-space.qvillage.com)` → `(https://qmoi-space.qvillage.com)`
 - `[qmoi-space](https://qmoi-space.qvillage.com)(https://qmoi-space.qvillage.com)(https://qmoi-space.qvillage.com)(https://qmoi-space.qvillage.com)` → `[qmoi-space](https://qmoi-space.qvillage.com)(https://qmoi-space.qvillage.com)(https://qmoi-space.qvillage.com)(https://qmoi-space.qvillage.com)(https://qmoi-space.qvillage.com)`
 - `(https://yap.qvillage.com)` → `(https://yap.qvillage.com)`

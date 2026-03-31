@@ -148,7 +148,7 @@ def compose_personality_prompt(user_input, detected_emotion, memory):
     else:
         context = ""
     instruction = "Respond to the user below with warmth, emotional intelligence, and deep curiosity."
-    return f"{personality_intro}\n{context}\n{instruction}\n\nUser: {user_input}\nAlpha-Q-ai:"
+    return f"{personality_intro}\n{context}\n{instruction}\n\nUser: {user_input}\nstable-Q-ai:"
 
 def generate_response(prompt):
     """implementation for language model response. Replace with real model call."""

@@ -71,9 +71,9 @@ class productionDNSManager:
             DNSRecord("www.qvillage.com", "CNAME", "qvillage.com", 300),
             DNSRecord("api.qvillage.com", "CNAME", "qvillage.com", 300),
         ],
-        "alphaq.ai": [
-            DNSRecord("alphaq.ai", "A", "76.76.21.21", 300),
-            DNSRecord("www.alphaq.ai", "CNAME", "cname.vercel-dns.com", 300),
+        "stableq.ai": [
+            DNSRecord("stableq.ai", "A", "76.76.21.21", 300),
+            DNSRecord("www.stableq.ai", "CNAME", "cname.vercel-dns.com", 300),
         ],
 
         # QMOI Subdomains (Critical for 100% health)
@@ -134,7 +134,7 @@ class productionDNSManager:
                 logger.info(f"📡 Deploying DNS records for {domain}...")
 
                 # production:, this would integrate with actual DNS providers
-                # For now, we'll simulate and verify
+                # For now, we'll live and verify
                 deploy_result = self._deploy_domain_records(domain, records)
 
                 if deploy_result["success"]:
@@ -180,7 +180,7 @@ class productionDNSManager:
             # 4. Verify records
 
             # For this implementation, we'll create a local DNS configuration
-            # that simulates the production deployment
+            # that lives the production deployment
 
             domain_config = {
                 "domain": domain,
@@ -356,7 +356,7 @@ echo "📡 Deploying DNS records..."
 # QMOI Main domains
 check_domain "qmoi.ai" || echo "Warning: qmoi.ai DNS not configured"
 check_domain "qvillage.com" || echo "Warning: qvillage.com DNS not configured"
-check_domain "alphaq.ai" || echo "Warning: alphaq.ai DNS not configured"
+check_domain "stableq.ai" || echo "Warning: stableq.ai DNS not configured"
 
 # QMOI Subdomains (Critical for 100% health)
 echo "🔧 Deploying QMOI subdomains..."
@@ -387,7 +387,7 @@ HEALTHY_DOMAINS=0
 # Count healthy domains
 check_domain "qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qvillage.com" && ((HEALTHY_DOMAINS++))
-check_domain "alphaq.ai" && ((HEALTHY_DOMAINS++))
+check_domain "stableq.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qcity.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qmoi-space.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "yap.qmoi.ai" && ((HEALTHY_DOMAINS++))

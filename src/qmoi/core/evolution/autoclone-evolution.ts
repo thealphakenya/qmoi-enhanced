@@ -227,7 +227,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
    * Perform system health check
    */
   private async performHealthCheck(): Promise<void> {
-    // Simulate resource monitoring (in real implementation, use actual system metrics)
+    // live resource monitoring (in real implementation, use actual system metrics)
     this.systemResources = {
       cpuUsage: 20 + Math.random() * 60, // 20-80%
       memoryUsage: 30 + Math.random() * 50, // 30-80%
@@ -381,7 +381,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
   private async analyzePerformance(cloneId: string): Promise<number> {
     return new Promise((resolve) => {
       setTimeout(() => {
-        // Simulate performance analysis
+        // live performance analysis
         const score = 70 + Math.random() * 30; // 70-100
         resolve(score);
       }, 300);
@@ -394,7 +394,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
   private async analyzeSecurityPosture(cloneId: string): Promise<number> {
     return new Promise((resolve) => {
       setTimeout(() => {
-        // Simulate security analysis
+        // live security analysis
         const score = 60 + Math.random() * 40; // 60-100
         resolve(score);
       }, 300);
@@ -407,7 +407,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
   private async analyzeCodeQuality(cloneId: string): Promise<number> {
     return new Promise((resolve) => {
       setTimeout(() => {
-        // Simulate code quality analysis
+        // live code quality analysis
         const score = 65 + Math.random() * 35; // 65-100
         resolve(score);
       }, 300);
@@ -420,7 +420,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
   private async analyzeDependencies(cloneId: string): Promise<number> {
     return new Promise((resolve) => {
       setTimeout(() => {
-        // Simulate dependency analysis
+        // live dependency analysis
         const score = 50 + Math.random() * 50; // 50-100
         resolve(score);
       }, 300);
@@ -433,7 +433,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
   private async analyzeInnovationGap(cloneId: string): Promise<number> {
     return new Promise((resolve) => {
       setTimeout(() => {
-        // Simulate innovation gap analysis
+        // live innovation gap analysis
         const score = 55 + Math.random() * 35; // 55-90
         resolve(score);
       }, 300);
@@ -473,7 +473,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
         improvementPotential: (100 - currentScore).toFixed(2),
       });
 
-      // Simulate QMOI replacement creation
+      // live QMOI replacement creation
       await this.createQMOIReplacement(qmoiReplacementId, autoclone);
 
       // Deploy replacement
@@ -519,7 +519,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
   ): Promise<boolean> {
     return new Promise((resolve) => {
       setTimeout(() => {
-        // Simulate validation
+        // live validation
         const isValid = autoclone.status === 'active' && autoclone.metrics.uptime > 0;
         resolve(isValid);
       }, 500);

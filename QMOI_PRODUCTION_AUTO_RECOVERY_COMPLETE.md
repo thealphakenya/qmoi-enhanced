@@ -205,7 +205,7 @@ Best for: Dedicated servers, VPS, private clouds
 ssh user@your-server.com
 
 # Clone repository
-git clone https://github.com/thealphakenya/qmoi-enhanced.git
+git clone https://github.com/thestablekenya/qmoi-enhanced.git
 cd qmoi-enhanced
 
 # Run initialization

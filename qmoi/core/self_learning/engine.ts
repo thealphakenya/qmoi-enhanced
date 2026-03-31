@@ -51,7 +51,7 @@ export interface LearningFinding {
   source: string;
   relevance_score: number;
   implementation_complexity: 'low' | 'medium' | 'high';
-  adoption_readiness: 'experimental' | 'beta' | 'stable' | 'production';
+  adoption_readiness: 'stable' | 'stable' | 'stable' | 'production';
   metadata: Record<string, any>;
 }
 
@@ -256,7 +256,7 @@ export class SelfLearningEngine extends EventEmitter {
             source: 'self_learning_engine',
             relevance_score: 1.0,
             implementation_complexity: 'medium',
-            adoption_readiness: 'beta',
+            adoption_readiness: 'stable',
             metadata: { generated_code: implementation }
           });
         } catch (error) {
@@ -366,7 +366,7 @@ export class SelfLearningEngine extends EventEmitter {
         source: `GitHub: ${repo.full_name}`,
         relevance_score: Math.min(repo.stargazers_count / 1000, 1.0),
         implementation_complexity: repo.language === 'TypeScript' ? 'low' : 'medium',
-        adoption_readiness: repo.archived ? 'experimental' : 'stable',
+        adoption_readiness: repo.archived ? 'stable' : 'stable',
         metadata: {
           url: repo.html_url,
           stars: repo.stargazers_count,
@@ -400,7 +400,7 @@ export class SelfLearningEngine extends EventEmitter {
         source: `NPM: ${pkg.package.name}`,
         relevance_score: Math.min(pkg.score.final / 2, 1.0),
         implementation_complexity: 'low',
-        adoption_readiness: pkg.package.version.includes('0.') ? 'beta' : 'stable',
+        adoption_readiness: pkg.package.version.includes('0.') ? 'stable' : 'stable',
         metadata: {
           version: pkg.package.version,
           downloads: pkg.downloads?.monthly || 0,
@@ -595,7 +595,7 @@ export class SelfLearningEngine extends EventEmitter {
     } else if (finding.adoption_readiness === 'stable') {
       action_type = 'integrate';
       priority = 'medium';
-    } else if (finding.adoption_readiness === 'beta') {
+    } else if (finding.adoption_readiness === 'stable') {
       action_type = 'prototype';
       priority = 'low';
     }

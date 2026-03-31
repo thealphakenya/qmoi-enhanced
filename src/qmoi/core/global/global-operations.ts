@@ -160,7 +160,7 @@ export class GlobalOperationsSystem {
       // This is a representative sample - in production, this would include all 195 countries
     ];
 
-    // For demonstration, we'll add a few more to show the concept
+    // For productionnstration, we'll add a few more to show the concept
     for (let i = 0; i < 150; i++) {
       allCountries.push({
         name: `Country_${i + 10}`,

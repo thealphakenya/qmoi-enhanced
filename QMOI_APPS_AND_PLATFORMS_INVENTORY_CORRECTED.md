@@ -45,7 +45,7 @@
 - **Location:** `Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe`
 - **Size:** 5.0 MB (✅ Real binary, NOT [production READY])
 - **Status:** ✅ Available
-- **Download:** [GitHub Release v1.2.3](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe)
+- **Download:** [GitHub Release v1.2.3](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe)
 
 #### macOS
 
@@ -53,7 +53,7 @@
 - **Location:** `Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg`
 - **Size:** 8.0 MB
 - **Status:** ✅ Available
-- **Download:** [GitHub Release v1.2.3](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg)
+- **Download:** [GitHub Release v1.2.3](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg)
 
 #### Linux - AppImage
 
@@ -61,7 +61,7 @@
 - **Location:** `Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage`
 - **Size:** 6.0 MB
 - **Status:** ✅ Available
-- **Download:** [GitHub Release v1.2.3](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage)
+- **Download:** [GitHub Release v1.2.3](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage)
 
 #### Linux - DEB (Debian/Ubuntu)
 
@@ -69,7 +69,7 @@
 - **Location:** `Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb`
 - **Size:** 4.0 MB
 - **Status:** ✅ Available
-- **Download:** [GitHub Release v1.2.3](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb)
+- **Download:** [GitHub Release v1.2.3](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb)
 
 #### Android
 
@@ -77,7 +77,7 @@
 - **Location:** `Qmoi_downloaded_apps/android/latest/qmoi_ai.apk`
 - **Size:** 10 MB
 - **Status:** ✅ Available
-- **Download:** [GitHub Release v1.2.3](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk)
+- **Download:** [GitHub Release v1.2.3](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk)
 
 #### iOS
 
@@ -85,7 +85,7 @@
 - **Location:** `Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa`
 - **Size:** 12 MB
 - **Status:** ✅ Available
-- **Download:** [GitHub Release v1.2.3](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa)
+- **Download:** [GitHub Release v1.2.3](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa)
 
 #### Smart TV (Android)
 
@@ -93,7 +93,7 @@
 - **Location:** `Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk`
 - **Size:** 8.0 MB
 - **Status:** ✅ Available
-- **Download:** [GitHub Release v1.2.3](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk)
+- **Download:** [GitHub Release v1.2.3](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk)
 
 #### Chromebook (Linux Container)
 
@@ -101,7 +101,7 @@
 - **Location:** `Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip`
 - **Size:** 3.0 MB
 - **Status:** ✅ Available
-- **Download:** [GitHub Release v1.2.3](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip)
+- **Download:** [GitHub Release v1.2.3](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip)
 
 ### ⚠️ Documented but NOT Available
 
@@ -122,7 +122,7 @@ These platforms were claimed in documentation but actual binaries NOT found:
 - **Size:** 2.0 MB
 - **Platforms:** All (works on Windows, macOS, Linux, Android, iOS)
 - **Status:** ✅ Available
-- **Download:** [GitHub Release v1.2.3](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip)
+- **Download:** [GitHub Release v1.2.3](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip)
 
 ---
 
@@ -136,7 +136,7 @@ These applications are **NOT** available as downloadable binaries. They are acce
 - **Access:** https://qshare.qmoi.app
 - **Platforms:** All (via web browser)
 - **Download:** None (web-only)
-- **Repository:** https://github.com/thealphakenya/qshare
+- **Repository:** https://github.com/thestablekenya/qshare
 - **Status:** 🌐 Web-based
 
 ### Yap v1.1.0 - Communication Platform
@@ -145,7 +145,7 @@ These applications are **NOT** available as downloadable binaries. They are acce
 - **Access:** https://yap.qmoi.app
 - **Platforms:** All (via web browser)
 - **Download:** None (web-only)
-- **Repository:** https://github.com/thealphakenya/yap
+- **Repository:** https://github.com/thestablekenya/yap
 - **Status:** 🌐 Web-based
 
 ### QStore v1.0.0 - App Store
@@ -154,7 +154,7 @@ These applications are **NOT** available as downloadable binaries. They are acce
 - **Access:** https://qstore.qmoi.app
 - **Platforms:** All (via web browser)
 - **Download:** None (web-only)
-- **Repository:** https://github.com/thealphakenya/qstore
+- **Repository:** https://github.com/thestablekenya/qstore
 - **Status:** 🌐 Web-based
 
 ### QVillage v1.0.0 - Community Hub
@@ -163,7 +163,7 @@ These applications are **NOT** available as downloadable binaries. They are acce
 - **Access:** https://qvillage.qmoi.app
 - **Platforms:** All (via web browser)
 - **Download:** None (web-only)
-- **Repository:** https://github.com/thealphakenya/qvillage
+- **Repository:** https://github.com/thestablekenya/qvillage
 - **Status:** 🌐 Web-based
 
 ---
@@ -194,9 +194,9 @@ These applications are **NOT** available as downloadable binaries. They are acce
 
 ## GitHub Release Links
 
-- **Main Release (v1.2.3):** https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
-- **All Releases:** https://github.com/thealphakenya/qmoi-enhanced/releases
-- **Latest:** https://github.com/thealphakenya/qmoi-enhanced/releases/latest
+- **Main Release (v1.2.3):** https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
+- **All Releases:** https://github.com/thestablekenya/qmoi-enhanced/releases
+- **Latest:** https://github.com/thestablekenya/qmoi-enhanced/releases/latest
 
 ---
 

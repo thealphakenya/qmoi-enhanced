@@ -45,7 +45,7 @@ logger = logging.getLogger(__name__)
 
 # QMOI Configuration
 QMOI_CONFIG = {
-    'repository': 'thealphakenya/qmoi-enhanced',
+    'repository': 'thestablekenya/qmoi-enhanced',
     'apps': {
         'qmoi-ai': {'version': 'v1.2.3', 'name': 'QMOI AI', 'description': 'Advanced AI Assistant'},
         'qcity': {'version': 'v2.0.1', 'name': 'QCity', 'description': 'Distributed Computing'},

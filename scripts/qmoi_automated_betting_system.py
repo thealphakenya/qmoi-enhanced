@@ -176,7 +176,7 @@ class QMOIAutomatedBettingSystem:
             platform = self.platforms[platform_name]
             
             # execute balance check
-            balance = random.uniform(100, 5000)  # Simulated balance
+            balance = random.uniform(100, 5000)  # lived balance
             platform['balance'] = balance
             
             logging.info(f"💰 {platform['name']} balance: KSH {balance:.2f}")

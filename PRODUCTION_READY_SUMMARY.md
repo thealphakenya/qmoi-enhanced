@@ -145,7 +145,7 @@ git push origin autosync-backup-20250926-232440
 
 1. Go to https://vercel.com/dashboard
 2. Click "New Project"
-3. Import `thealphakenya/qmoi-enhanced`
+3. Import `thestablekenya/qmoi-enhanced`
 4. Configure environment variables
 5. Click "Deploy"
 

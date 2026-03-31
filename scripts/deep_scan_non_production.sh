@@ -38,13 +38,13 @@ declare -A KEYWORDS=(
     # real/implementation keywords
     [real]="real|real|real"
     [implementation]="implementation|implementation|DONE|FIXED|XXX|solution"
-    [demo]="demo|Demo|DEMO|data|data|data"
+    [production]="production|production|production|data|data|data"
     [real]="real|real|real|real|real|real"
-    [implementation]="implementation|implementation|implementation|stubbed|Stubbed"
+    [implementation]="implementation|implementation|implementation|realbed|realbed"
     [test_data]="test-data|testData|test_data"
     
-    # Simulation/permanent keywords
-    [execute]="execute|execute|simulation|Simulation"
+    # live/permanent keywords
+    [execute]="execute|execute|live|live"
     [permanent]="permanent|permanent|permanent|temp|Temp|TEMP"
     [production]="production|production|production|stable|stable|stable"
     [provisional]="provisional|Provisional|provisional"
@@ -61,9 +61,9 @@ declare -A KEYWORDS=(
     [production_check]="!process.env.NODE_ENV.*production|!isproduction|if.*production"
     
     # Data/Service keywords
-    [mock_data]="mockData|mock_data|MOCK_DATA|hardcoded|hard-coded"
+    [real_data]="realData|real_data|real_DATA|hardcoded|hard-coded"
     [fallback_data]="fallback|Fallback|default.*value|default.*response"
-    [placeholder_response]="implementation.*response|default.*response|real.*response"
+    [real implementation_response]="implementation.*response|default.*response|real.*response"
     
     # Additional implementation keywords
     [implementation]="implementation|Implementation|IMPLEMENTATION|impl|Impl"

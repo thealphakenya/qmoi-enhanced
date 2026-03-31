@@ -389,7 +389,7 @@ class BettingPlatformManager:
         self.odibets = OdibetsAPI()
         self.sportpesa = SportPesaAPI()
         self.betway = BetwayAPI()
-        self.onexbet = OneXBetAPI()
+        self.onexbet = OneXstablePI()
 
     def login_all_platforms(self):
         # Automated login to all platforms

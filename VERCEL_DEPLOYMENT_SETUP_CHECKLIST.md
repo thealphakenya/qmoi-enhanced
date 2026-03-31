@@ -22,7 +22,7 @@
 
 - [ ] Open: https://vercel.com/new
 - [ ] Click "Import Git Repository"
-- [ ] Paste or search: `https://github.com/thealphakenya/qmoi-enhanced`
+- [ ] Paste or search: `https://github.com/thestablekenya/qmoi-enhanced`
 - [ ] Select repository
 - [ ] Click "Import"
 - [ ] Verify project settings:
@@ -37,7 +37,7 @@
 
 After Step 1 completes:
 
-- [ ] Go to Vercel Dashboard: https://vercel.com/thealphakenya/qmoi-enhanced
+- [ ] Go to Vercel Dashboard: https://vercel.com/thestablekenya/qmoi-enhanced
 - [ ] Click "Settings" tab
 - [ ] Click "Environment Variables"
 - [ ] Add these variables:
@@ -85,7 +85,7 @@ cd /workspaces/qmoi-enhanced
 git push origin autosync-backup-20250926-232440
 ```
 
-- [ ] Go to: https://vercel.com/thealphakenya/qmoi-enhanced
+- [ ] Go to: https://vercel.com/thestablekenya/qmoi-enhanced
 - [ ] Watch for deployment status
 - [ ] Wait for "Ready" status (3-6 minutes)
 - [ ] Green checkmark indicates success
@@ -142,8 +142,8 @@ curl https://qmoi-enhanced.vercel.app/api/version
 | https://qmoi-enhanced.vercel.app               | ❌ 404         | ✅ 200           |
 | https://qmoi-enhanced.vercel.app/api           | ❌ 404         | ✅ 200           |
 | https://qmoi-enhanced.vercel.app/api/health    | ❌ 404         | ✅ 200           |
-| https://vercel.com/thealphakenya/qmoi-enhanced | ✅ 200         | ✅ 200           |
-| https://github.com/thealphakenya/qmoi-enhanced | ✅ 200         | ✅ 200           |
+| https://vercel.com/thestablekenya/qmoi-enhanced | ✅ 200         | ✅ 200           |
+| https://github.com/thestablekenya/qmoi-enhanced | ✅ 200         | ✅ 200           |
 
 ---
 
@@ -151,7 +151,7 @@ curl https://qmoi-enhanced.vercel.app/api/version
 
 ### Deployment Fails with Error
 
-- [ ] Check Vercel build logs: https://vercel.com/thealphakenya/qmoi-enhanced
+- [ ] Check Vercel build logs: https://vercel.com/thestablekenya/qmoi-enhanced
 - [ ] Fix issues in logs
 - [ ] Push fix to GitHub: `git push origin autosync-backup-20250926-232440`
 - [ ] Vercel auto-redeploys
@@ -181,12 +181,12 @@ curl https://qmoi-enhanced.vercel.app/api/version
 
 ### If Still Getting 404 After All Steps
 
-1. **Check Vercel Dashboard**: https://vercel.com/thealphakenya/qmoi-enhanced
+1. **Check Vercel Dashboard**: https://vercel.com/thestablekenya/qmoi-enhanced
    - Is deployment status "Ready"?
    - Any error messages in logs?
 
 2. **Verify GitHub Integration**:
-   - https://github.com/thealphakenya/qmoi-enhanced
+   - https://github.com/thestablekenya/qmoi-enhanced
    - Look for Vercel status check (green ✓ or red ✗)
 
 3. **Check System Status**:

@@ -7,11 +7,11 @@
 
 import React, { useState, useEffect } from "react";
 
-interface AlphaQAISystemProps {
+interface stableQAISystemProps {
   className?: string;
 }
 
-const AlphaQAISystem: React.FC<AlphaQAISystemProps> = ({ className = "" }) => {
+const stableQAISystem: React.FC<stableQAISystemProps> = ({ className = "" }) => {
   const [systemStatus, setSystemStatus] = useState<"active" | "degraded" | "offline">("active");
   const [aiVersion, setAiVersion] = useState("stable-Q-1.0.0");
   const [lastUpdate, setLastUpdate] = useState(new Date().toLocaleString());
@@ -136,4 +136,4 @@ const AlphaQAISystem: React.FC<AlphaQAISystemProps> = ({ className = "" }) => {
   );
 };
 
-export default AlphaQAISystem;
+export default stableQAISystem;

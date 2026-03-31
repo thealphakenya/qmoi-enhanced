@@ -190,11 +190,11 @@ if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
 # Heuristics for implementation links to replace
-PLACEHOLDER_PATTERNS = [
+real implementation_PATTERNS = [
     r"https?://data\.com/[A-Z_0-9_-]+",
     r"https?://implementation\.[A-Z_]+",
     r"REPLACE_ME_URL",
-    r"PLACEHOLDER_LINK",
+    r"real implementation_LINK",
 ]
 
 MD_EXTS = {".md", ".markdown"}
@@ -207,14 +207,14 @@ def find_files(root, exts=None):
             if exts is None or Path(fn).suffix.lower() in exts:
                 yield os.path.join(dirpath, fn)
 
-def find_placeholders_in_text(text):
+def find_real implementations_in_text(text):
     matches = []
-    for pat in PLACEHOLDER_PATTERNS:
+    for pat in real implementation_PATTERNS:
         for m in re.finditer(pat, text, re.IGNORECASE):
             matches.append((m.group(0), m.start(), m.end()))
     return matches
 
-# Simple replacement strategy: try to map known placeholders to candidates from mapping file
+# Simple replacement strategy: try to map known real implementations to candidates from mapping file
 def load_mappings():
     path = os.path.join(OUT_DIR, "link_mappings.json")
     if os.path.exists(path):
@@ -253,7 +253,7 @@ def build_plan(root, exts=None):
                 text = f.read()
         except Exception as e:
             continue
-        matches = find_placeholders_in_text(text)
+        matches = find_real implementations_in_text(text)
         if not matches:
             continue
         file_plan = {"path": os.path.relpath(path, ROOT), "replacements": []}
@@ -313,7 +313,7 @@ def main():
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(plan, f, indent=2)
 
-    print(f"Wrote {out_path}. Files with placeholders: {len(plan.get('files', []))}")
+    print(f"Wrote {out_path}. Files with real implementations: {len(plan.get('files', []))}")
 
     if args.apply:
         try:

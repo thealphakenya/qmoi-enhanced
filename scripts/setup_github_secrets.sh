@@ -11,7 +11,7 @@ REPO=""
 
 usage(){
   echo "Usage: $0 --repo owner/repo [--apply] [--env-file path]"
-  echo "  --repo    : GitHub repo to set secrets in (e.g. thealphakenya/qmoi-enhanced)"
+  echo "  --repo    : GitHub repo to set secrets in (e.g. thestablekenya/qmoi-enhanced)"
   echo "  --apply   : actually run gh secret set (requires gh CLI and authentication)"
   echo "  --env-file: path to env file (default: .env)"
   exit 1

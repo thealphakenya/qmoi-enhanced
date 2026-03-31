@@ -561,7 +561,7 @@ For more information, see:
 
 - [QCITYprodICEAUTOUPGRADE.md](QCITYprodICEAUTOUPGRADE.md) - Auto-upgrade system details
 - [QMOIAVATAR.md](QMOIAVATAR.md) - QCity prodice integration details
-- [AUTOOPTIMIZEALPHAQMOIENGINE.md](AUTOOPTIMIZEALPHAQMOIENGINE.md) - Optimization strategies
+- [AUTOOPTIMIZEstableQMOIENGINE.md](AUTOOPTIMIZEstableQMOIENGINE.md) - Optimization strategies
 - [GitHub Workflows](.github/workflows/) - CI/CD integration with unlimited resources
 
 ## QCity prodice Dashboard (NEW)
@@ -722,7 +722,7 @@ QCity is the primary cloud prodice for QMOI, handling all heavy computation, sto
 
 ---
 
-_For error fixing, see scripts/qmoi-universal-error-handler.js. For registry, see scripts/qmoi-registry-manager.js. For optimization, see AUTOOPTIMIZEALPHAQMOIENGINE.md._
+_For error fixing, see scripts/qmoi-universal-error-handler.js. For registry, see scripts/qmoi-registry-manager.js. For optimization, see AUTOOPTIMIZEstableQMOIENGINE.md._
 
 ## New Integrations & Enhancements
 
@@ -760,8 +760,8 @@ _For error fixing, see scripts/qmoi-universal-error-handler.js. For registry, se
 "ok": true
 },
 {
-"label": "AUTOOPTIMIZEALPHAQMOIENGINE.md",
-"target": "./AUTOOPTIMIZEALPHAQMOIENGINE.md",
+"label": "AUTOOPTIMIZEstableQMOIENGINE.md",
+"target": "./AUTOOPTIMIZEstableQMOIENGINE.md",
 "ok": true
 },
 {

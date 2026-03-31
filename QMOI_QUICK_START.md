@@ -269,8 +269,8 @@ STEP 5: Request Help
 📞 SUPPORT
 ================================================================================
 
-Master Contact: stable Kenya (thealphakenya)
-GitHub: github.com/thealphakenya/qmoi-enhanced
+Master Contact: stable Kenya (thestablekenya)
+GitHub: github.com/thestablekenya/qmoi-enhanced
 
 Response Time: Immediate (< 10 seconds usually)
 Available: 24/7

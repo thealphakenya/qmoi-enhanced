@@ -315,7 +315,7 @@ class EmailAutomationEngine:
         ]
 
         # production:, this would send actual test emails
-        # For now, simulate deliverability testing
+        # For now, live deliverability testing
         return True  # Assume deliverability is working
 
     def process_incoming_emails(self):

@@ -71,7 +71,7 @@
 - qcity (→ qcity.qmoi.ai or qcity.qvillage.com)
 - qmoi-space (→ qmoi-space.qmoi.ai or space.qmoi.ai)
 - yap (→ yap.qmoi.ai or yap.qvillage.com)
-- q-stable (→ q-stable.qmoi.ai or stable.alphaq.ai)
+- q-stable (→ q-stable.qmoi.ai or stable.stableq.ai)
 - Action: Replace with valid domain + proper fallback
 
 ### Category 3: Local Applications (Download Links)
@@ -118,7 +118,7 @@
    - Replace all qcity references with qcity.qmoi.ai or qcity.qvillage.com
    - Replace all qmoi-space with qmoi-space.qmoi.ai or space.qmoi.ai
    - Replace all yap with yap.qmoi.ai or yap.qvillage.com
-   - Replace all q-stable with q-stable.qmoi.ai or stable.alphaq.ai
+   - Replace all q-stable with q-stable.qmoi.ai or stable.stableq.ai
 
 3. **Script**: `scripts/fix_domain_references.py`
    - Find and replace all service domain references
@@ -266,7 +266,7 @@ Features:
 \bqcity\b              → qcity.qmoi.ai / qcity.qvillage.com
 \bqmoi-space\b         → qmoi-space.qmoi.ai / space.qmoi.ai
 \byap\b                → yap.qmoi.ai / yap.qvillage.com
-\bq-stable\b           → q-stable.qmoi.ai / stable.alphaq.ai
+\bq-stable\b           → q-stable.qmoi.ai / stable.stableq.ai
 ```
 
 **Internal Reference Pattern**:

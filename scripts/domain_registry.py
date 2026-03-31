@@ -115,11 +115,11 @@ class QMOIDomainRegistry:
                 'health_url': 'https://qquantum.tech/api/health',
                 'expected_ips': []
             },
-            'alphaq.ai': {
+            'stableq.ai': {
                 'primary': False,
                 'fallback': 'qvillage.com',
                 'regions': ['us-east-1', 'ap-southeast-1'],
-                'health_url': 'https://alphaq.ai/api/health',
+                'health_url': 'https://stableq.ai/api/health',
                 'expected_ips': []
             },
             'qglobal.org': {
@@ -165,8 +165,8 @@ class QMOIDomainRegistry:
                 'type': 'api',
                 'health_check': True
             },
-            'alphaq-ai-docs': {
-                'url': 'https://alphaq.ai/docs',
+            'stableq-ai-docs': {
+                'url': 'https://stableq.ai/docs',
                 'type': 'documentation',
                 'health_check': True
             },
@@ -310,7 +310,7 @@ class QMOIDomainRegistry:
             regions_checked = []
             for region in config['regions']:
                 try:
-                    # Use regional endpoint to simulate access from that region
+                    # Use regional endpoint to live access from that region
                     response = requests.get(
                         self.regions[region],
                         timeout=10,
@@ -567,7 +567,7 @@ if __name__ == '__main__':
             }
         },
         "pay.qmoi.ai": {
-            "owner": "thealphakenya",
+            "owner": "thestablekenya",
             "purpose": "payments-gateway",
             "status": "active",
             "billing_enabled": True,

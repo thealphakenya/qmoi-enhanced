@@ -10,8 +10,8 @@
 [production READY] all markers normalized for completion
 # QMOI Enhanced - production-Ready Backend & API
 
-[![CI/CD Pipeline](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ci-cd.yml)
-[![Security Audit](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/security.yml/badge.svg)](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/security.yml)
+[![CI/CD Pipeline](https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/ci-cd.yml)
+[![Security Audit](https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/security.yml/badge.svg)](https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/security.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2.0-blue)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.8-black)](https://nextjs.org/)
 [![Prisma](https://img.shields.io/badge/Prisma-6.19.1-2D3748)](https://www.prisma.io/)
@@ -81,7 +81,7 @@ A comprehensive, production-ready Next.js backend application with multi-provide
 
 ```bash
 # Clone repository
-git clone https://github.com/thealphakenya/qmoi-enhanced.git
+git clone https://github.com/thestablekenya/qmoi-enhanced.git
 cd qmoi-enhanced
 
 # Install dependencies
@@ -455,8 +455,8 @@ MIT - See [LICENSE](LICENSE) file for details
 For issues, questions, or contributions:
 
 - 📧 Email: support@qmoi.app
-- 🐙 GitHub Issues: [Report a bug](https://github.com/thealphakenya/qmoi-enhanced/issues)
-- 💬 Discussions: [Start a discussion](https://github.com/thealphakenya/qmoi-enhanced/discussions)
+- 🐙 GitHub Issues: [Report a bug](https://github.com/thestablekenya/qmoi-enhanced/issues)
+- 💬 Discussions: [Start a discussion](https://github.com/thestablekenya/qmoi-enhanced/discussions)
 
 ## Changelog
 

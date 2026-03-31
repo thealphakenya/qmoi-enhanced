@@ -106,7 +106,7 @@ export class ApprovalFlow {
     return request?.status === "approved";
   }
 
-  // For testing/demo only - in production this would be a proper admin UI
+  // For testing/production only - in production this would be a proper admin UI
   static async 
     requestId: string,
     approved = true,

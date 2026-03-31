@@ -118,7 +118,7 @@ sudo mkdir -p /var/www/qmoi-enhanced
 sudo chown $USER:$USER /var/www/qmoi-enhanced
 
 # Clone repository
-git clone https://github.com/thealphakenya/qmoi-enhanced.git /var/www/qmoi-enhanced
+git clone https://github.com/thestablekenya/qmoi-enhanced.git /var/www/qmoi-enhanced
 cd /var/www/qmoi-enhanced
 ```
 

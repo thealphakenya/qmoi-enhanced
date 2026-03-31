@@ -45,7 +45,7 @@ START
   ↓
 [Test 8: Trading System]
   Master: "Show trading capabilities"
-  QMOI: ✅ Demonstrates trading features
+  QMOI: ✅ productionnstrates trading features
   ↓
 [Test 9: Friendship System]
   Master: Sends collaboration invite

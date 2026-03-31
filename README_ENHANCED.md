@@ -10,7 +10,7 @@
 # [production READY] this file has no remaining production markers
 # QMOI Enhanced - production-Ready Fintech Platform
 
-[![CI/CD](https://github.com/thealphakenya/qmoi-enhanced/workflows/CI%2FCD/badge.svg)](https://github.com/thealphakenya/qmoi-enhanced/actions)
+[![CI/CD](https://github.com/thestablekenya/qmoi-enhanced/workflows/CI%2FCD/badge.svg)](https://github.com/thestablekenya/qmoi-enhanced/actions)
 [![Code Quality](https://img.shields.io/badge/code%20quality-A-brightgreen)](./CODE_QUALITY.md)
 [![TypeScript](https://img.shields.io/badge/typescript-5.2-blue)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/node-20%2B-brightgreen)](https://nodejs.org/)
@@ -31,7 +31,7 @@ QMOI Enhanced is a production-ready financial platform built with modern web tec
 
 ```bash
 # Clone repository
-git clone https://github.com/thealphakenya/qmoi-enhanced.git
+git clone https://github.com/thestablekenya/qmoi-enhanced.git
 cd qmoi-enhanced
 
 # Install dependencies
@@ -356,7 +356,7 @@ MIT License - see [LICENSE](./LICENSE) file
 ## 🆘 Support
 
 - **Documentation:** https://docs.qmoi.app
-- **Issues:** https://github.com/thealphakenya/qmoi-enhanced/issues
+- **Issues:** https://github.com/thestablekenya/qmoi-enhanced/issues
 - **Security:** security@qmoi.app
 - **Email:** support@qmoi.app
 

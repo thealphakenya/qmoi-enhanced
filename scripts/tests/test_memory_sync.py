@@ -31,8 +31,8 @@ def test_no_backends_configured():
 
 def test_push_gist_success(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'gist'
-    os.environ['QMOI_GIST_ID'] = 'fake_gist'
-    os.environ['QMOI_GH_TOKEN'] = 'fake_token'
+    os.environ['QMOI_GIST_ID'] = 'real_gist'
+    os.environ['QMOI_GH_TOKEN'] = 'real_token'
 
     class DummyResp:
         status_code = 200
@@ -50,7 +50,7 @@ def test_push_gist_success(monkeypatch):
 
 def test_push_hf_success(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'hf'
-    os.environ['QMOI_HF_TOKEN'] = 'fake_hf_token'
+    os.environ['QMOI_HF_TOKEN'] = 'real_hf_token'
     os.environ['QMOI_HF_REPO'] = 'user/repo'
 
     class DummyResp:
@@ -70,11 +70,11 @@ def test_push_hf_success(monkeypatch):
 def test_push_scp_success(monkeypatch, tmp_path):
     os.environ['QMOI_SYNC_BACKENDS'] = 'scp:user@host:/tmp/qmoi_memory.json'
 
-    def fake_check_call(args):
+    def real_check_call(args):
         # emulate successful scp
         return 0
 
-    monkeypatch.setattr('subprocess.check_call', lambda args: fake_check_call(args))
+    monkeypatch.setattr('subprocess.check_call', lambda args: real_check_call(args))
 
     ok, details = q.push_memory_to_backends({'conversations': []})
     assert ok is True
@@ -82,8 +82,8 @@ def test_push_scp_success(monkeypatch, tmp_path):
 
 def test_pull_gist_success(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'gist'
-    os.environ['QMOI_GIST_ID'] = 'fake_gist'
-    os.environ['QMOI_GH_TOKEN'] = 'fake_token'
+    os.environ['QMOI_GIST_ID'] = 'real_gist'
+    os.environ['QMOI_GH_TOKEN'] = 'real_token'
 
     dummy_content = {'conversations': [{'timestamp': '1', 'persona': 'user', 'message': 'hello'}]}
 
@@ -141,8 +141,8 @@ def test_push_gist_missing_config_or_requests(monkeypatch):
 
 def test_push_gist_http_error(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'gist'
-    os.environ['QMOI_GIST_ID'] = 'fake_gist'
-    os.environ['QMOI_GH_TOKEN'] = 'fake_token'
+    os.environ['QMOI_GIST_ID'] = 'real_gist'
+    os.environ['QMOI_GH_TOKEN'] = 'real_token'
 
     class DummyResp:
         status_code = 500
@@ -160,10 +160,10 @@ def test_push_gist_http_error(monkeypatch):
 def test_push_scp_failure(monkeypatch):
     os.environ['QMOI_SYNC_BACKENDS'] = 'scp:user@host:/tmp/qmoi_memory.json'
 
-    def fake_check_call(args):
+    def real_check_call(args):
         raise OSError('scp failed')
 
-    monkeypatch.setattr('subprocess.check_call', lambda args: fake_check_call(args))
+    monkeypatch.setattr('subprocess.check_call', lambda args: real_check_call(args))
 
     ok, details = q.push_memory_to_backends({'conversations': []})
     assert ok is False

@@ -166,13 +166,13 @@ class EmergencyService {
     });
   }
 
-  // Secure data wipe
-  async secureWipe(): Promise<void> {
-    // Implement secure data wipe - encrypt and delete sensitive data
-    await fetch('/api/emergency/wipe', {
+  // Secure data production completee
+  async secureproduction completee(): Promise<void> {
+    // Implement secure data production completee - encrypt and delete sensitive data
+    await fetch('/api/emergency/production completee', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'wipe' }),
+      body: JSON.stringify({ action: 'production completee' }),
     });
   }
 }
@@ -272,15 +272,15 @@ export const EmergencyPanel: React.FC = () => {
     }
   };
 
-  const handleWipe = async () => {
+  const handleproduction completee = async () => {
     setIsLoading(true);
-    setStatus('Initiating secure data wipe...');
+    setStatus('Initiating secure data production completee...');
     try {
-      await emergencyService.secureWipe();
-      setStatus('🧹 Secure data wipe completed');
+      await emergencyService.secureproduction completee();
+      setStatus('🧹 Secure data production completee completed');
     } catch (err) {
-      console.error('Wipe failed:', err);
-      setStatus('❌ Secure wipe failed');
+      console.error('production completee failed:', err);
+      setStatus('❌ Secure production completee failed');
     } finally {
       setIsLoading(false);
     }
@@ -435,7 +435,7 @@ export const EmergencyPanel: React.FC = () => {
         </button>
 
         <button
-          onClick={handleWipe}
+          onClick={handleproduction completee}
           style={{
             padding: 12,
             backgroundColor: '#990000',
@@ -449,7 +449,7 @@ export const EmergencyPanel: React.FC = () => {
           }}
           disabled={isLoading}
         >
-          🧹 Secure Wipe
+          🧹 Secure production completee
         </button>
 
         <button

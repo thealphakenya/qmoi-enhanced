@@ -24,7 +24,7 @@ title: "QMOI Enhanced Auto-Deploy System"
 - 🎯 **Status**: ✅ DEPLOYED
 - 📦 **Apps**: All 6 QMOI apps published
 - 🌍 **Platforms**: 12+ supported platforms
-- 🔗 **Download**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+- 🔗 **Download**: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 - 📋 **Details**: [DEPLOYMENT_STATUS_V1_2_3.md](./DEPLOYMENT_STATUS_V1_2_3.md)
 
 ---
@@ -429,7 +429,7 @@ To enhance the deployment system:
 
 ### How it works
 
-- After every successful deployment, the latest QMOI model/data/code is automatically pushed to [huggingface.co/alphaqmoi/qmoi](https://huggingface.co/alphaqmoi/qmoi).
+- After every successful deployment, the latest QMOI model/data/code is automatically pushed to [huggingface.co/stableqmoi/qmoi](https://huggingface.co/stableqmoi/qmoi).
 - Large files are tracked with Git LFS for efficient storage and transfer.
 
 ### Manual Backup
@@ -454,7 +454,7 @@ python scripts/hf_sync.py
 ### Restoring from Backup
 
 ```bash
-git clone https://huggingface.co/alphaqmoi/qmoi
+git clone https://huggingface.co/stableqmoi/qmoi
 # or use the HuggingFace Hub API for programmatic access
 ```
 
@@ -475,7 +475,7 @@ git clone https://huggingface.co/alphaqmoi/qmoi
 ### HuggingFace
 
 ```bash
-git clone https://huggingface.co/alphaqmoi/qmoi
+git clone https://huggingface.co/stableqmoi/qmoi
 ```
 
 ### S3

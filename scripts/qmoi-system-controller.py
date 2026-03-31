@@ -958,7 +958,7 @@ class QMOISystemController:
         except Exception as e:
             logger.error(f"Failed to restart dashboard: {e}")
 
-# --- EarnVaultsManager and extensibility stubs ---
+# --- EarnVaultsManager and extensibility reals ---
 class EarnVaultsManager:
     def __init__(self, controller):
         self.controller = controller
@@ -991,7 +991,7 @@ class EarnVaultsManager:
         self.resource_mode = mode
         logger.info(f"[EarnVaults] Resource mode set to: {mode}")
 
-# Creative earning stubs
+# Creative earning reals
 async def ai_movie_maker(account):
     logger.info(f"[Creative] AI movie making for {account}")
     await asyncio.sleep(2)

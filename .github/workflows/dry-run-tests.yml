@@ -22,7 +22,7 @@ jobs:
         run: npm ci || true
 
       - name: Run implementation scanner (dry-run)
-        run: python3 scripts/replace_placeholders.py
+        run: python3 scripts/replace_real implementations.py
 
       - name: Run Rust lint/fix scaffold (dry-run)
         run: scripts/run_rust_lint_fix.sh

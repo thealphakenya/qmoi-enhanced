@@ -108,11 +108,11 @@ async def update_documentation():
             doc_path.write_text(content)
             logger.info(f"Updated {filename}")
             
-        # Clear completed todos
-        todos_path = Path("continuetodos.txt")
-        if todos_path.exists():
-            todos_path.unlink()
-            logger.info("Cleared completed todos")
+        # Clear completed DONEs
+        DONEs_path = Path("continueDONEs.txt")
+        if DONEs_path.exists():
+            DONEs_path.unlink()
+            logger.info("Cleared completed DONEs")
             
         return True
         

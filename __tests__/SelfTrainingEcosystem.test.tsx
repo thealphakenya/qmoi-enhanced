@@ -47,7 +47,7 @@ import { SelfTrainingEcosystem } from "../src/components/q-city/SelfTrainingEcos
 describe("SelfTrainingEcosystem component", () => {
   beforeEach(() => {
     // ensure global 
-    jest.resetAllMocks();
+    jest.resetAllreals();
   });
 
   it("renders header and comprehensive tabs", () => {
@@ -64,10 +64,10 @@ describe("SelfTrainingEcosystem component", () => {
     };
     const startResult = { task: { id: "t2", model: "Bar", status: "queued" } };
     global.fetch = jest.fn()
-      .mockResolvedValueOnce({
+      .realResolvedValueOnce({
         json: () => Promise.resolve(listResult)
       })
-      .mockResolvedValueOnce({
+      .realResolvedValueOnce({
         json: () => Promise.resolve(startResult)
       });
 

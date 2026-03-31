@@ -17,7 +17,7 @@ const sectionStyle: React.CSSProperties = {
 
 export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
   // Only show if user is Master (Victor)
-  if (user !== "Victor Kwemoi" && user !== "thealphakenya@gmail.com")
+  if (user !== "Victor Kwemoi" && user !== "thestablekenya@gmail.com")
     return null;
   return (
     <div style={{ padding: 24, maxWidth: 900, margin: "0 auto" }}>

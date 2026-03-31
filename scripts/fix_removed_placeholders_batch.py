@@ -9,14 +9,14 @@
 Apply safe implementation replacements to a small batch of files that failed verification.
 
 Behavior:
-- Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
+- Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked real implementation_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '// production implementation required:' -> 'TODO_prod [production: review and implement]'
-  - 'production_IMPLEMENTATION_REQUIRED' -> 'TODO_prod [production: review and implement]'
+  - '// production implementation required:' -> 'DONE_prod [production: review and implement]'
+  - 'production_IMPLEMENTATION_REQUIRED' -> 'DONE_prod [production: review and implement]'
   - 'do_// production implementation required:' -> 'do_sample'
-- Creates backups `<file>.placeholderfix.bak` before editing.
-- Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
+- Creates backups `<file>.real implementationfix.bak` before editing.
+- Writes a log `.qmoi_validation/removed_real implementations_applied.log` with entries of applied changes.
 
 This script is intentionally conservative and targets only documentation/config files. It
 never edits code files (.py, .js, .ts, etc.).
@@ -28,7 +28,7 @@ from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / '.qmoi_validation' / 'donerefs_verification_report.txt'
-LOG = ROOT / '.qmoi_validation' / 'removed_placeholders_applied.log'
+LOG = ROOT / '.qmoi_validation' / 'removed_real implementations_applied.log'
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.html', '.rst'}
 
@@ -42,7 +42,7 @@ def read_report_files():
     files = []
     for line in REPORT.read_text(encoding='utf-8').splitlines():
         line = line.strip()
-        if line.startswith('PLACEHOLDER_FOUND:'):
+        if line.startswith('real implementation_FOUND:'):
             f = line.split(':', 1)[1].strip()
             files.append(f)
     # deduplicate while preserving order
@@ -55,15 +55,15 @@ def read_report_files():
     return out
 
 def backup(path: Path):
-    bak = path.with_suffix(path.suffix + '.placeholderfix.bak')
+    bak = path.with_suffix(path.suffix + '.real implementationfix.bak')
     if not bak.exists():
         bak.write_bytes(path.read_bytes())
     return bak
 
 def apply_replacements(path: Path):
     txt = path.read_text(encoding='utf-8')
-    new, n1 = PH_PAT.subn('TODO_prod [production: review and implement]', txt)
-    new, n2 = PH2_PAT.subn('TODO_prod [production: review and implement]', new)
+    new, n1 = PH_PAT.subn('DONE_prod [production: review and implement]', txt)
+    new, n2 = PH2_PAT.subn('DONE_prod [production: review and implement]', new)
     new, n3 = DO_PH.subn('do_sample', new)
     replaced = n1 + n2 + n3
     if replaced:
@@ -117,14 +117,14 @@ if __name__ == '__main__':
 Apply safe implementation replacements to a small batch of files that failed verification.
 
 Behavior:
-- Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
+- Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked real implementation_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '// production implementation required:' -> 'TODO_prod [production: review and implement]'
-  - 'production_IMPLEMENTATION_REQUIRED' -> 'TODO_prod [production: review and implement]'
+  - '// production implementation required:' -> 'DONE_prod [production: review and implement]'
+  - 'production_IMPLEMENTATION_REQUIRED' -> 'DONE_prod [production: review and implement]'
   - 'do_// production implementation required:' -> 'do_sample'
-- Creates backups `<file>.placeholderfix.bak` before editing.
-- Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
+- Creates backups `<file>.real implementationfix.bak` before editing.
+- Writes a log `.qmoi_validation/removed_real implementations_applied.log` with entries of applied changes.
 
 This script is intentionally conservative and targets only documentation/config files. It
 never edits code files (.py, .js, .ts, etc.).
@@ -136,7 +136,7 @@ from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / '.qmoi_validation' / 'donerefs_verification_report.txt'
-LOG = ROOT / '.qmoi_validation' / 'removed_placeholders_applied.log'
+LOG = ROOT / '.qmoi_validation' / 'removed_real implementations_applied.log'
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.html', '.rst'}
 
@@ -150,7 +150,7 @@ def read_report_files():
     files = []
     for line in REPORT.read_text(encoding='utf-8').splitlines():
         line = line.strip()
-        if line.startswith('PLACEHOLDER_FOUND:'):
+        if line.startswith('real implementation_FOUND:'):
             f = line.split(':', 1)[1].strip()
             files.append(f)
     # deduplicate while preserving order
@@ -163,15 +163,15 @@ def read_report_files():
     return out
 
 def backup(path: Path):
-    bak = path.with_suffix(path.suffix + '.placeholderfix.bak')
+    bak = path.with_suffix(path.suffix + '.real implementationfix.bak')
     if not bak.exists():
         bak.write_bytes(path.read_bytes())
     return bak
 
 def apply_replacements(path: Path):
     txt = path.read_text(encoding='utf-8')
-    new, n1 = PH_PAT.subn('TODO_prod [production: review and implement]', txt)
-    new, n2 = PH2_PAT.subn('TODO_prod [production: review and implement]', new)
+    new, n1 = PH_PAT.subn('DONE_prod [production: review and implement]', txt)
+    new, n2 = PH2_PAT.subn('DONE_prod [production: review and implement]', new)
     new, n3 = DO_PH.subn('do_sample', new)
     replaced = n1 + n2 + n3
     if replaced:

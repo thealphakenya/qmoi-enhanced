@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-"""data script demonstrating the provider API.
+"""data script productionnstrating the provider API.
 
 Shows how to use the provider interface to make DNS changes safely.
 All providers support dry-run first and require explicit apply.

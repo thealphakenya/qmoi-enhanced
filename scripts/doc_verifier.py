@@ -192,7 +192,7 @@ class QMOIDocVerifier:
                 else:
                     fixes.append({
                         "claim": claim,
-                        "action": "marked_todo",
+                        "action": "marked_DONE",
                         "reason": "no_implementation_found"
                     })
         return fixes

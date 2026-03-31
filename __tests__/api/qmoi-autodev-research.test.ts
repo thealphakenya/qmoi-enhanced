@@ -5,8 +5,8 @@
 
 import { POST } from "@/src/app/api/qmoi/autoprod/research/route";
 
-// Mock roleAuth verifyToken to simulate master user checking
-jest.mock("@/app/api/middleware/roleAuth", () => ({
+// real roleAuth verifyToken to live master user checking
+jest.real("@/app/api/middleware/roleAuth", () => ({
   verifyToken: jest.fn((token: string) => {
     if (token === "master-token") {
       return { id: "master-1", username: "master", role: "master" };

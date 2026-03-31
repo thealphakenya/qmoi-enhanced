@@ -96,15 +96,15 @@ class DomainRegistry:
                 status="active"
             ),
             
-            "alphaq.ai": DomainEntry(
-                domain="alphaq.ai",
+            "stableq.ai": DomainEntry(
+                domain="stableq.ai",
                 type="ai_platform",
-                tld_variants=["alphaq.com"],
-                fallback_chain=["alphaq.com", "qvillage.com"],
+                tld_variants=["stableq.com"],
+                fallback_chain=["stableq.com", "qvillage.com"],
                 regional_endpoints={
-                    "us-east": "us-east.alphaq.ai",
-                    "eu-west": "eu.alphaq.ai",
-                    "asia-east": "asia.alphaq.ai"
+                    "us-east": "us-east.stableq.ai",
+                    "eu-west": "eu.stableq.ai",
+                    "asia-east": "asia.stableq.ai"
                 },
                 api_endpoints=["/api", "/models", "/chat", "/api/health"],
                 health_check_endpoints=["/health", "/status"],
@@ -136,8 +136,8 @@ class DomainRegistry:
             "qstore.qvillage.com": DomainEntry(
                 domain="qstore.qvillage.com",
                 type="service",
-                tld_variants=["qstore.qvillage.com", "store.alphaq.ai"],
-                fallback_chain=["qstore.qvillage.com", "store.qvillage.com", "alphaq.ai/store"],
+                tld_variants=["qstore.qvillage.com", "store.stableq.ai"],
+                fallback_chain=["qstore.qvillage.com", "store.qvillage.com", "stableq.ai/store"],
                 regional_endpoints={
                     "us-east": "qstore-us.qmoi.ai",
                     "eu-west": "qstore-eu.qmoi.ai",
@@ -206,8 +206,8 @@ class DomainRegistry:
             "q-stable.qmoi.ai": DomainEntry(
                 domain="q-stable.qmoi.ai",
                 type="service",
-                tld_variants=["stable.alphaq.ai", "models.qvillage.com"],
-                fallback_chain=["stable.alphaq.ai", "models.qvillage.com"],
+                tld_variants=["stable.stableq.ai", "models.qvillage.com"],
+                fallback_chain=["stable.stableq.ai", "models.qvillage.com"],
                 regional_endpoints={
                     "us-east": "models-us.qmoi.ai",
                     "eu-west": "models-eu.qmoi.ai"

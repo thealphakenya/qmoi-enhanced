@@ -266,7 +266,7 @@ describe('AutocloneEvolutionSystem', () => {
     it('should register autoclone', () => {
       system.registerAutoclone({
         cloneId: 'autoclone-1',
-        sourceRepository: 'https://github.com/thealphakenya/qmoi-enhanced',
+        sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
         clonePath: '/opt/qvillage',
         lastChecked: new Date(),
         version: '1.2.5',
@@ -288,7 +288,7 @@ describe('AutocloneEvolutionSystem', () => {
       for (let i = 1; i <= 3; i++) {
         system.registerAutoclone({
           cloneId: `autoclone-${i}`,
-          sourceRepository: 'https://github.com/thealphakenya/qmoi-enhanced',
+          sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
           clonePath: `/opt/qvillage-${i}`,
           lastChecked: new Date(),
           version: '1.2.5',
@@ -312,7 +312,7 @@ describe('AutocloneEvolutionSystem', () => {
     it('should return correct evolution stats', () => {
       system.registerAutoclone({
         cloneId: 'autoclone-1',
-        sourceRepository: 'https://github.com/thealphakenya/qmoi-enhanced',
+        sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
         clonePath: '/opt/qvillage',
         lastChecked: new Date(),
         version: '1.2.5',
@@ -338,7 +338,7 @@ describe('AutocloneEvolutionSystem', () => {
     it('should track replacement history', async () => {
       system.registerAutoclone({
         cloneId: 'autoclone-low-score',
-        sourceRepository: 'https://github.com/thealphakenya/qmoi-enhanced',
+        sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
         clonePath: '/opt/qvillage-low',
         lastChecked: new Date(),
         version: '1.0.0',
@@ -373,7 +373,7 @@ describe('AutocloneEvolutionSystem', () => {
 
       system.registerAutoclone({
         cloneId: 'autoclone-1',
-        sourceRepository: 'https://github.com/thealphakenya/qmoi-enhanced',
+        sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
         clonePath: '/opt/qvillage',
         lastChecked: new Date(),
         version: '1.2.5',
@@ -435,7 +435,7 @@ describe('Integration Tests', () => {
     // Register autoclone
     autocloneSystem.registerAutoclone({
       cloneId: 'autoclone-1',
-      sourceRepository: 'https://github.com/thealphakenya/qmoi-enhanced',
+      sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
       clonePath: '/opt/qvillage',
       lastChecked: new Date(),
       version: '1.2.5',

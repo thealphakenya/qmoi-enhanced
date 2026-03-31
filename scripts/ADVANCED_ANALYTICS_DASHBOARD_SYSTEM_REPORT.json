@@ -46,7 +46,7 @@
       "stress_test_pass_rate": 0.9372510747683546,
       "liquidity_score": 0.8531077715223896,
       "correlation_coefficient": 0.31808986751413865,
-      "beta_coefficient": 0.5625206101797477,
+      "stable_coefficient": 0.5625206101797477,
       "risk_exposure_score": 0.24057739679019335,
       "hedge_effectiveness": 0.8180190150335573,
       "compliance_score": 0.9544554480320813,

@@ -144,7 +144,7 @@ create_fallback() {
         <div class="links">
             <a href="https://qvillage.com">qvillage.com</a>
             <a href="https://qvillage.net">qvillage.net</a>
-            <a href="https://alphaq.ai">alphaq.ai</a>
+            <a href="https://stableq.ai">stableq.ai</a>
         </div>
     </div>
 </body>
@@ -208,7 +208,7 @@ echo "  qvillage.com     A      $FALLBACK_IP"
 echo "  qvillage.net     A      $FALLBACK_IP"
 echo "  qvillage.org     A      $FALLBACK_IP"
 echo "  qglobal.org      A      $FALLBACK_IP"
-echo "  alphaq.ai        A      $FALLBACK_IP"
+echo "  stableq.ai        A      $FALLBACK_IP"
 echo "  qparallel.prod    A      $FALLBACK_IP"
 echo ""
 
@@ -238,7 +238,7 @@ create_fallback "q-stable.qmoi.ai"
 create_fallback "qvillage.com"
 create_fallback "qvillage.org"
 create_fallback "qglobal.org"
-create_fallback "alphaq.ai"
+create_fallback "stableq.ai"
 create_fallback "qparallel.prod"
 
 print_success "Fallback systems created"

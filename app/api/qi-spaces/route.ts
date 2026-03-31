@@ -1,7 +1,7 @@
 // QMOI EVOLUTION ENHANCED: QI Spaces global dashboard API
 // Last evolution cycle: 2026-03-28T12:00:00Z
 
-// Type stubs for environments without `next` type declarations
+// Type reals for environments without `next` type declarations
 type NextRequest = Request;
 
 const NextResponse = {

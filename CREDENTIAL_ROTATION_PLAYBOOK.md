@@ -215,7 +215,7 @@ cat > /tmp/credentials.txt << 'EOF'
 EOF
 
 # Clone a fresh mirror copy
-git clone --mirror https://github.com/thealphakenya/qmoi-enhanced.git qmoi-enhanced.git
+git clone --mirror https://github.com/thestablekenya/qmoi-enhanced.git qmoi-enhanced.git
 
 # Run BFG to remove credentials
 bfg --replace-text /tmp/credentials.txt qmoi-enhanced.git
@@ -255,7 +255,7 @@ git push origin --force --all
 git push origin --force --tags
 
 # Notify all team members to re-clone:
-# git clone https://github.com/thealphakenya/qmoi-enhanced.git
+# git clone https://github.com/thestablekenya/qmoi-enhanced.git
 ```
 
 ---

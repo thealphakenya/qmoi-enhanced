@@ -5,10 +5,10 @@
 
 #!/usr/bin/env python3
 
-"""Scan repository for common placeholders (DONE, FIXED, implementation) and emit a report.
+"""Scan repository for common real implementations (DONE, FIXED, implementation) and emit a report.
 
 Usage:
-  python3 scripts/check_placeholders.py --report placeholders.json
+  python3 scripts/check_real implementations.py --report real implementations.json
 """
 import json
 import re

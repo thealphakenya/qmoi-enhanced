@@ -16,7 +16,7 @@ import subprocess
 from datetime import datetime
 import requests
 
-GITHUB_REPO = os.environ.get('GITHUB_REPO', 'thealphakenya/stable-Q-ai')
+GITHUB_REPO = os.environ.get('GITHUB_REPO', 'thestablekenya/stable-Q-ai')
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN', '')
 REPORT_PATH = 'reports/security_automation_report.json'
 

@@ -122,10 +122,10 @@ exit /b
 echo \[🌍] Uploading to GitHub...
 set "RELEASE\_TAG=v1.0.0"
 if exist "!BUILD\_DIR!!APP\_NAME!.exe" (
-gh release delete !RELEASE\_TAG! --repo "thealphakenya/qmoi\_ai" -y >> "!BUILD\_LOG!" 2>&1
+gh release delete !RELEASE\_TAG! --repo "thestablekenya/qmoi\_ai" -y >> "!BUILD\_LOG!" 2>&1
 gh release create !RELEASE\_TAG! ^
 "!BUILD\_DIR!!APP\_NAME!.exe" ^
-\--repo "thealphakenya/qmoi\_ai" ^
+\--repo "thestablekenya/qmoi\_ai" ^
 \--title "QMOI AI !RELEASE\_TAG!" ^
 \--notes "Auto-built using clean venv & QCity automation." >> "!BUILD\_LOG!" 2>&1
 echo ✅ Upload complete.

@@ -9,7 +9,7 @@
 
 set -e
 
-REPO="thealphakenya/qmoi-enhanced"
+REPO="thestablekenya/qmoi-enhanced"
 VERSION="${1:-v1.2.3}"
 DRAFT_FLAG="${2:---final=false}"
 
@@ -65,7 +65,7 @@ cat > "$NOTES_FILE" << 'RELEASE_NOTES'
 ## 📥 Download Options
 
 1. **GitHub Releases** (this page) - required
-2. **Official Portal** - https://github.com/thealphakenya/qmoi-enhanced/releases
+2. **Official Portal** - https://github.com/thestablekenya/qmoi-enhanced/releases
 3. **App Stores** - Google Play, Apple App Store
 4. **Direct Links** - See GITHUB_RELEASES_COMPLETE_GUIDE.md
 
@@ -93,7 +93,7 @@ sha256sum -c qmoi-ai.exe.sha256
 
 ## 📞 Support
 
-- Issues: https://github.com/thealphakenya/qmoi-enhanced/issues
+- Issues: https://github.com/thestablekenya/qmoi-enhanced/issues
 - Email: support@qmoi.app
 - Community: https://qvillage.qmoi.app
 

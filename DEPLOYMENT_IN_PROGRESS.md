@@ -80,8 +80,8 @@ This will:
 **Project Details:**
 
 - Name: qmoi-enhanced
-- Owner: thealphakenya
-- Repository: https://github.com/thealphakenya/qmoi-enhanced
+- Owner: thestablekenya
+- Repository: https://github.com/thestablekenya/qmoi-enhanced
 - Branch: autosync-backup-20250926-232440
 
 **Build Configuration:**
@@ -110,8 +110,8 @@ Once deployed, all links will be live:
 ✓ https://qmoi-enhanced.vercel.app
 ✓ https://qmoi-enhanced.vercel.app/api
 ✓ https://qmoi-enhanced.vercel.app/api/health
-✓ https://vercel.com/thealphakenya/qmoi-enhanced
-✓ https://github.com/thealphakenya/qmoi-enhanced
+✓ https://vercel.com/thestablekenya/qmoi-enhanced
+✓ https://github.com/thestablekenya/qmoi-enhanced
 ```
 
 **Verify deployment:**

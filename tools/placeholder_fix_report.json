@@ -37,7 +37,7 @@
     "QMOIALLPROJECTSADDSTRAILERSDOCS.md",
     "QMOIARTISTS.md",
     "QMOITESTENVIRONMENT.md",
-    "ALPHAQMOIENGINE.md",
+    "stableQMOIENGINE.md",
     "qmoi-space-pwa/index.html",
     "scripts/workspace_audit.py",
     "scripts/verify_and_finalize_done.py",
@@ -353131,10 +353131,10 @@
       ]
     },
     {
-      "file": "ALPHAQMOIENGINE.md",
+      "file": "stableQMOIENGINE.md",
       "matches": [
         [
-          "ALPHAQMOIENGINE.md",
+          "stableQMOIENGINE.md",
           "[production READY]_prod",
           "[production READY]_prod"
         ]

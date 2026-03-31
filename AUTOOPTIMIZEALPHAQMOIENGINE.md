@@ -86,7 +86,7 @@ _For implementation details, see scripts/qmoi-auto-enhancement-system.js and QCI
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "AUTOOPTIMIZEALPHAQMOIENGINE.md",
+"file": "AUTOOPTIMIZEstableQMOIENGINE.md",
 "validated_at": "2025-10-26T20:51:22.285201Z",
 "validator": "QMOI Lion (automated)",
 "checks": [

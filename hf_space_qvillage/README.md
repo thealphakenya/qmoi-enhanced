@@ -16,7 +16,7 @@ A production-ready, high-performance AI research platform providing real-time ac
 ### ✨ Key Enhancements (2026-03-23)
 
 - **⚡ 3x Performance Boost**: Parallel API fetching, intelligent caching, optimized search
-- **🔬 Real Data Integration**: Live arXiv API integration (no mocks)
+- **🔬 Real Data Integration**: Live arXiv API integration (no reals)
 - **🧠 Enhanced Intelligence**: Advanced search algorithms, tag-based filtering, relevance scoring
 - **📊 production Metrics**: Real-time community stats, paper analytics, user engagement
 - **🔄 Parallel Processing**: Concurrent data fetching across multiple categories
@@ -38,7 +38,7 @@ A production-ready, high-performance AI research platform providing real-time ac
 - **Smart Suggestions**: Related topic recommendations when no results found
 
 ### 📈 Community Analytics
-- **Dynamic Statistics**: Time-based user activity simulation
+- **Dynamic Statistics**: Time-based user activity live
 - **Growth Metrics**: Weekly paper additions, daily discussion activity
 - **Real-time Updates**: Live community engagement metrics
 

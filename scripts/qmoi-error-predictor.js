@@ -3,8 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-#!/usr/bin/env node
-
 /**
  * QMOI Error Predictor
  * Analyzes error/fix logs and predicts likely error types/files for the next run.

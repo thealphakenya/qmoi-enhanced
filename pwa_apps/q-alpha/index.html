@@ -110,7 +110,7 @@
           <li>
             <a href="/downloads/q-stable.zip" download>Q stable (zip)</a> —
             <a
-              href="https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/q-stable.zip"
+              href="https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/q-stable.zip"
               >GitHub Raw</a
             >
           </li>
@@ -120,14 +120,14 @@
             >
             —
             <a
-              href="https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qfilemanager.apk"
+              href="https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qfilemanager.apk"
               >GitHub Raw</a
             >
           </li>
           <li>
             <a href="/downloads/qmoi_ai.exe" download>QMOI (Windows .exe)</a> —
             <a
-              href="https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qmoi_ai.exe"
+              href="https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qmoi_ai.exe"
               >GitHub Raw</a
             >
           </li>
@@ -353,20 +353,20 @@
       // --- Auth handlers ---
       function _setToken(t) {
         localStorage.setItem("qmoi_token", t);
-        localStorage.setItem("qalpha_token", t);
+        localStorage.setItem("qstable_token", t);
         document.getElementById("user-info").style.display = "block";
         document.getElementById("auth-forms").style.display = "none";
         document.getElementById("who").innerText = "Logged in";
       }
       function _clearToken() {
         localStorage.removeItem("qmoi_token");
-        localStorage.removeItem("qalpha_token");
+        localStorage.removeItem("qstable_token");
         document.getElementById("user-info").style.display = "none";
         document.getElementById("auth-forms").style.display = "block";
         document.getElementById("who").innerText = "Not logged in";
       }
       const token =
-        localStorage.getItem("qalpha_token") ||
+        localStorage.getItem("qstable_token") ||
         localStorage.getItem("qmoi_token");
       if (token) {
         _setToken(token);
@@ -419,7 +419,7 @@
 
       document.getElementById("logout").addEventListener("click", async () => {
         const t =
-          localStorage.getItem("qalpha_token") ||
+          localStorage.getItem("qstable_token") ||
           localStorage.getItem("qmoi_token");
         if (t) {
           await fetch(window.location.origin + "/logout", {
@@ -501,7 +501,7 @@
 
       async function autosyncOnce() {
         const t =
-          localStorage.getItem("qalpha_token") ||
+          localStorage.getItem("qstable_token") ||
           localStorage.getItem("qmoi_token");
         if (!t) return;
         const local = _getLocalMemories();

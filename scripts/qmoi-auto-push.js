@@ -174,22 +174,22 @@ class QMOIAutoPush {
     }
   }
 
-  async syncWithAlphaQAI() {
-    this.log("🔄 Syncing with Alpha-Q-ai repository...");
+  async syncWithstableQAI() {
+    this.log("🔄 Syncing with stable-Q-ai repository...");
 
     try {
-      // Add Alpha-Q-ai remote if not exists
+      // Add stable-Q-ai remote if not exists
       try {
-        await this.runCommand("git remote get-url alpha-q-ai");
+        await this.runCommand("git remote get-url stable-q-ai");
       } catch (e) {
-        await this.runCommand("git remote add alpha-q-ai https://github.com/thealphakenya/Alpha-Q-ai.git");
+        await this.runCommand("git remote add stable-q-ai https://github.com/thestablekenya/stable-Q-ai.git");
       }
 
-      // Fetch from Alpha-Q-ai
-      await this.runCommand("git fetch alpha-q-ai");
-      this.log("✅ Synced with Alpha-Q-ai repository");
+      // Fetch from stable-Q-ai
+      await this.runCommand("git fetch stable-q-ai");
+      this.log("✅ Synced with stable-Q-ai repository");
     } catch (error) {
-      this.log(`Alpha-Q-ai sync failed: ${error.message}`, "ERROR");
+      this.log(`stable-Q-ai sync failed: ${error.message}`, "ERROR");
     }
   }
 
@@ -201,7 +201,7 @@ class QMOIAutoPush {
       try {
         await this.runCommand("git remote get-url stable-q-ai");
       } catch (e) {
-        await this.runCommand("git remote add stable-q-ai https://github.com/thealphakenya/stable-Q-ai.git");
+        await this.runCommand("git remote add stable-q-ai https://github.com/thestablekenya/stable-Q-ai.git");
       }
 
       // Fetch from stable-Q-ai
@@ -261,9 +261,9 @@ class QMOIAutoPush {
     this.log("🚀 Pushing to GitHub repositories...");
 
     const repos = [
-      { name: 'stable-Q-ai', url: 'https://github.com/thealphakenya/stable-Q-ai.git' },
-      { name: 'Alpha-Q-ai', url: 'https://github.com/thealphakenya/Alpha-Q-ai.git' },
-      { name: 'qmoi-enhanced', url: 'https://github.com/thealphakenya/qmoi-enhanced.git' }
+      { name: 'stable-Q-ai', url: 'https://github.com/thestablekenya/stable-Q-ai.git' },
+      { name: 'stable-Q-ai', url: 'https://github.com/thestablekenya/stable-Q-ai.git' },
+      { name: 'qmoi-enhanced', url: 'https://github.com/thestablekenya/qmoi-enhanced.git' }
     ];
 
     let successCount = 0;
@@ -287,7 +287,7 @@ class QMOIAutoPush {
         this.log(`GitHub push to ${repo.name} failed: ${error.message}`, "ERROR");
 
         // Try force push for critical repos
-        if (repo.name === 'Alpha-Q-ai' || repo.name === 'qmoi-enhanced') {
+        if (repo.name === 'stable-Q-ai' || repo.name === 'qmoi-enhanced') {
           try {
             this.log(`Attempting force push to ${repo.name}...`);
             await this.runCommand(`git push ${repo.name.toLowerCase()} ${this.branch} --force`);

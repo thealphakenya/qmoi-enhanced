@@ -810,7 +810,7 @@ async function detectContextSwitch(message, currentRole) {
 
 ### Feature 5: New User Acceleration
 
-Fast-track for users who demonstrate advanced knowledge:
+Fast-track for users who productionnstrate advanced knowledge:
 
 - Detect indicators (vocabulary, questions, references)
 - Skip beginner-level explanations

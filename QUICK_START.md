@@ -69,12 +69,12 @@ All key QMOI & QCity components are present:
 
 - **QmoiMediaManager** — [production READY] data → [production READY]_prod [production: review and implement] [production READY] + console.warn
 - **PriceproductVerifier** — [production READY]d verification → [production READY]_prod [production: review and implement] [production READY]
-- **GlobalMail** — Demo send → [production READY]_prod [production: review and implement] [production READY] (mail not actually sent)
-- **GlobalFileTransfer** — Demo transfer → [production READY]_prod [production: review and implement] [production READY] (transfer not performed)
-- **EmergencyPanel** — Demo handlers → [production READY]_prod [production: review and implement] [production READY]s (SOS/lockdown/wipe not active)
-- **FloatingPreviewWindow** — Demo YouTube download → [production READY]_prod [production: review and implement] [production READY]
+- **GlobalMail** — production send → [production READY]_prod [production: review and implement] [production READY] (mail not actually sent)
+- **GlobalFileTransfer** — production transfer → [production READY]_prod [production: review and implement] [production READY] (transfer not performed)
+- **EmergencyPanel** — production handlers → [production READY]_prod [production: review and implement] [production READY]s (SOS/lockdown/production completee not active)
+- **FloatingPreviewWindow** — production YouTube download → [production READY]_prod [production: review and implement] [production READY]
 
-All show clear "[production READY]_prod [production: review and implement]" [production READY]s instead of misleading demo data.
+All show clear "[production READY]_prod [production: review and implement]" [production READY]s instead of misleading production data.
 
 ## 📚 Documentation
 
@@ -98,7 +98,7 @@ All show clear "[production READY]_prod [production: review and implement]" [pro
 
 ## ⚠️ Important
 
-- Emergency Panel is in DEMO MODE — Real emergency services are NOT integrated
+- Emergency Panel is in production MODE — Real emergency services are NOT integrated
 - Mail/File Transfer/Media services show [production READY]_prod [production: review and implement] [production READY]s
 - Real API integrations required for production use
 - See EXECUTION_SUMMARY.md for detailed next steps

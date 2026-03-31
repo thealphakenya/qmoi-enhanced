@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Chatbot } from "./Chatbot";
-import "./AlphaQAiSystem.css";
+import "./stableQAiSystem.css";
 
 interface SystemMetrics {
   cpuUsage: number;
@@ -14,7 +14,7 @@ interface SystemMetrics {
   uptime: string;
 }
 
-const AlphaQAiSystem = () => {
+const stableQAiSystem = () => {
   const [metrics, setMetrics] = useState<SystemMetrics>({
     cpuUsage: 35,
     memoryUsage: 62,
@@ -170,4 +170,4 @@ const AlphaQAiSystem = () => {
   );
 };
 
-export default AlphaQAiSystem;
+export default stableQAiSystem;

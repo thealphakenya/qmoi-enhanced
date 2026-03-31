@@ -38,7 +38,7 @@ class Handler(BaseHTTPRequestHandler):
         message = data.get('message', '')
         model = data.get('model', 'Auto')
         time.sleep(0.5)
-        reply = f"QMOI AI ({model}): Received '{message}'. [simulated local API reply]"
+        reply = f"QMOI AI ({model}): Received '{message}'. [lived local API reply]"
         self._set_json(200)
         self.wfile.write(json.dumps({'ok': True, 'reply': reply}).encode('utf-8'))
 

@@ -7,7 +7,7 @@
 
 set -euo pipefail
 
-REPO_URL="${REPO_URL:-https://github.com/thealphakenya/qmoi-enhanced.git}"
+REPO_URL="${REPO_URL:-https://github.com/thestablekenya/qmoi-enhanced.git}"
 REPO_DIR="${REPO_DIR:-/opt/qvillage}"
 BRANCH="${REPO_BRANCH:-$(git ls-remote --heads "$REPO_URL" 2>/prod/null | awk '{print $2}' | head -n1 || echo main)}"
 

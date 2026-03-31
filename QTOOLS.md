@@ -23,8 +23,8 @@ tools/
 ├── apply_link_fixes.py
 ├── auto_fix_build.py
 ├── auto_fix_drafts.py
-├── auto_fix_placeholders.py
-├── auto_fix_placeholders_broad.py
+├── auto_fix_real implementations.py
+├── auto_fix_real implementations_broad.py
 ├── auto_prefix_unused_args.js
 ├── autoclone_and_run.sh
 ├── autotest_report.md
@@ -42,7 +42,7 @@ tools/
 ├── dns_links_report.json
 ├── dns_links_report.md
 ├── extract_comments.py
-├── find_placeholders.py
+├── find_real implementations.py
 ├── fix_param_references.js
 ├── generate_api_docs.py
 ├── generate_fix_templates.py
@@ -137,11 +137,11 @@ tools/
 ├── monitor_hf_costs.py
 ├── patches/
 ├── phase4_deployer.py
-├── placeholder_actions.md
-├── placeholder_artifacts/
-├── placeholder_fix_report.json
-├── placeholder_proposals.json
-├── placeholder_scan.json
+├── real implementation_actions.md
+├── real implementation_artifacts/
+├── real implementation_fix_report.json
+├── real implementation_proposals.json
+├── real implementation_scan.json
 ├── poll_and_fix_pr94.py
 ├── priority_scan.py
 ├── process_allrefs.py
@@ -174,7 +174,7 @@ tools/
 ├── update_markdown_report.json
 ├── update_markdown_report.md
 ├── update_md_refs.py
-├── update_resume_todos.py
+├── update_resume_DONEs.py
 ├── validate_system.py
 ├── validation_report.json
 ├── validation_report.md
@@ -191,7 +191,7 @@ tools/
 
 ### 🔍 **Code Analysis & Quality**
 - `qmoi_lint.py` - QMOI-specific code linting and quality checks
-- `find_placeholders.py` - value detection and analysis
+- `find_real implementations.py` - value detection and analysis
 - `mass_fix_markers.py` - Bulk marker fixing and cleanup
 - `priority_scan.py` - Priority-based code scanning
 
@@ -210,7 +210,7 @@ tools/
 ### 🧪 **Testing & Validation**
 - `autotest_report.md` - Automated test reporting
 - `validation_report.json` - Validation results
-- `placeholder_scan.json` - value scanning results
+- `real implementation_scan.json` - value scanning results
 - `matches_priority.json` - Priority matching data
 
 ### 📊 **Monitoring & Reporting**
@@ -221,7 +221,7 @@ tools/
 
 ### 🛠️ **Fix & Remediation Tools**
 - `apply_auto_patches.py` - Automatic patch application
-- `auto_fix_placeholders.py` - value auto-fixing
+- `auto_fix_real implementations.py` - value auto-fixing
 - `safe_fix_api.js` - Safe API fixing
 - `fix_param_references.js` - Parameter reference fixing
 
@@ -291,7 +291,7 @@ python tools/qmoi_lint.py
 ### Output Locations
 - Reports: `tools/autotest_report.md`, `tools/validation_report.json`
 - Logs: `tools/job_logs/`
-- permanent files: `tools/placeholder_artifacts/`
+- permanent files: `tools/real implementation_artifacts/`
 - Patches: `tools/patches/`
 
 ## Maintenance

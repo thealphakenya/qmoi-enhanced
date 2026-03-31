@@ -96,14 +96,14 @@ Click the **"Email Login"** tab to switch from Quick Access to email/password fo
 
 ### Step 3: Enter Credentials
 
-**Demo Account (Option A):**
+**production Account (Option A):**
 
 ```
 Email/Username: admin
 Password: (as configured in your users.json)
 ```
 
-**Alternative Demo Credentials:**
+**Alternative production Credentials:**
 
 - Username: `victor`
 - Username: `leah`

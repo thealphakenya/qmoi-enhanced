@@ -28,7 +28,7 @@ This guide provides comprehensive instructions for deploying QMOI Enhanced to va
 
 ```bash
 # Clone repository
-git clone https://github.com/thealphakenya/qmoi-enhanced.git
+git clone https://github.com/thestablekenya/qmoi-enhanced.git
 cd qmoi-enhanced
 
 # Run setup script
@@ -87,10 +87,10 @@ docker-compose down
 docker build --target production -t qmoi-enhanced:prod .
 
 # Tag for registry
-docker tag qmoi-enhanced:prod ghcr.io/thealphakenya/qmoi-enhanced:latest
+docker tag qmoi-enhanced:prod ghcr.io/thestablekenya/qmoi-enhanced:latest
 
 # Push to registry
-docker push ghcr.io/thealphakenya/qmoi-enhanced:latest
+docker push ghcr.io/thestablekenya/qmoi-enhanced:latest
 ```
 
 ## production Deployment
@@ -340,7 +340,7 @@ git revert <commit-hash>
 git push origin main
 
 # Docker rollback
-docker run -d ghcr.io/thealphakenya/qmoi-enhanced:previous-tag
+docker run -d ghcr.io/thestablekenya/qmoi-enhanced:previous-tag
 ```
 
 ### Database Rollback

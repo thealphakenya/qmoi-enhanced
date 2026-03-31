@@ -12,7 +12,7 @@
 
 **Last Updated:** 2025-11-11T00:00:00Z  
 **Status:** ✅ All Systems Verified & Operational  
-**Master:** stable Kenya (thealphakenya)
+**Master:** stable Kenya (thestablekenya)
 
 ---
 
@@ -162,8 +162,8 @@ Click command buttons
 
 ## 📞 Support & Contact
 
-**Master:** stable Kenya (thealphakenya)  
-**Repository:** github.com/thealphakenya/qmoi-enhanced  
+**Master:** stable Kenya (thestablekenya)  
+**Repository:** github.com/thestablekenya/qmoi-enhanced  
 **GitHub Token:** Active & verified  
 **Response Time:** < 10 seconds (24/7)
 

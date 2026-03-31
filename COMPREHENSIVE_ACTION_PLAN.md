@@ -47,7 +47,7 @@
 ✅ qserver.io (infrastructure)
 ✅ qcloud.ai (cloud services)
 ✅ qquantum.tech (quantum computing)
-✅ alphaq.ai (stable Q AI)
+✅ stableq.ai (stable Q AI)
 ✅ qglobal.org (global operations) → Fallback: qparallel.prod
 ✅ qparallel.prod (prodeloper platform)
 ```
@@ -84,8 +84,8 @@
 - DONE, FIXED
 - DONE, FIXED
 - [TEMP], [ready]
-- simulation, test-only, real
-- code placeholders ({{...}})
+- live, test-only, real
+- code real implementations ({{...}})
 - Undefined references
 ```
 

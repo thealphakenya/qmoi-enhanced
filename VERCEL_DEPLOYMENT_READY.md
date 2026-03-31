@@ -12,7 +12,7 @@
 
 **Status:** ✅ READY FOR VERCEL AUTO-DEPLOYMENT  
 **Date:** January 17, 2026  
-**GitHub Repo:** thealphakenya/qmoi-enhanced  
+**GitHub Repo:** thestablekenya/qmoi-enhanced  
 **Branch:** autosync-backup-20250926-232440  
 
 ---
@@ -48,7 +48,7 @@
 ## Vercel Auto-Clone Configuration
 
 ### How It Works
-1. Vercel monitors GitHub repository `thealphakenya/qmoi-enhanced`
+1. Vercel monitors GitHub repository `thestablekenya/qmoi-enhanced`
 2. When changes are pushed to the connected branch, Vercel auto-clones
 3. Vercel runs build command: `npm run build`
 4. Vercel automatically deploys successful builds

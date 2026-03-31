@@ -26,7 +26,7 @@
       "value_at_risk_percent": 3.170292404875653,
       "expected_shortfall_amount": 4993.883839621549,
       "expected_shortfall_percent": 4.060051658018909,
-      "calculation_method": "Historical Simulation",
+      "calculation_method": "Historical live",
       "time_horizon": "1 day",
       "calculation_timestamp": "2026-03-29 19:52:56.742653+00:00",
       "risk_assessment": "MEDIUM"

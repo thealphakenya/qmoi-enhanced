@@ -91,10 +91,10 @@ class DomainRegistry:
                 "fallbacks": ["qmoi.com", "qmoi.io"],
                 "endpoints": ["/api", "/auth", "/apps"]
             },
-            "alphaq.ai": {
+            "stableq.ai": {
                 "type": "ai_platform",
                 "status": "active",
-                "fallbacks": ["alphaq.com"],
+                "fallbacks": ["stableq.com"],
                 "endpoints": ["/api", "/models", "/chat"]
             },
             
@@ -110,7 +110,7 @@ class DomainRegistry:
                 "type": "service",
                 "service": "app_store",
                 "status": "critical",
-                "fallbacks": ["qstore.qvillage.com", "store.alphaq.ai"],
+                "fallbacks": ["qstore.qvillage.com", "store.stableq.ai"],
                 "endpoints": ["/apps", "/download", "/details"]
             },
             "qcity.qmoi.ai": {
@@ -138,7 +138,7 @@ class DomainRegistry:
                 "type": "service",
                 "service": "models",
                 "status": "active",
-                "fallbacks": ["stable.alphaq.ai", "models.qvillage.com"],
+                "fallbacks": ["stable.stableq.ai", "models.qvillage.com"],
                 "endpoints": ["/models", "/download"]
             },
             
@@ -160,7 +160,7 @@ class DomainRegistry:
             },
             "qparallel.prod": {
                 "type": "fallback",
-                "primary": "alphaq.ai",
+                "primary": "stableq.ai",
                 "status": "active"
             },
         }
@@ -178,7 +178,7 @@ class CentralLinkValidator:
     URL_PATTERN = re.compile(
         r'https?://[^\s<>"{}|\\^`\[\]]*|'
         r'www\.[^\s<>"{}|\\^`\[\]]*|'
-        r'(?:(?:https?://)?(?:qmoi|qvillage|alphaq|qstore|qshare|qcity|yap|q-stable)(?:[./][\w-]*)*)'
+        r'(?:(?:https?://)?(?:qmoi|qvillage|stableq|qstore|qshare|qcity|yap|q-stable)(?:[./][\w-]*)*)'
     )
 
     # Short token-to-domain hint mapping
@@ -191,7 +191,7 @@ class CentralLinkValidator:
         'qmoi-space': 'https://qmoi-space.qmoi.ai',
         'yap': 'https://yap.qmoi.ai',
         'q-stable': 'https://q-stable.qmoi.ai',
-        'alphaq': 'https://alphaq.ai'
+        'stableq': 'https://stableq.ai'
     }
     
     # Directories to exclude
@@ -433,7 +433,7 @@ class CentralLinkValidator:
                 return True
 
             # Check if it looks like a valid URL format
-            if any(domain in link for domain in ['qmoi', 'qvillage', 'alphaq', 'qstore', 'qshare', 'qcity', 'yap', 'q-stable']):
+            if any(domain in link for domain in ['qmoi', 'qvillage', 'stableq', 'qstore', 'qshare', 'qcity', 'yap', 'q-stable']):
                 return True
 
             # Try to resolve as hostname

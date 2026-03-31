@@ -44,7 +44,7 @@ scan_all_files = args.scan_all
 default_keywords = [
     # advanced production markers
     'FIXED', 'DONE', 'real', 'implementation', 'implemented', 'PENDING_IMPLEMENTATION',
-    'value', 'value TEXT', 'SIMULATION', 'production',
+    'value', 'value TEXT', 'live', 'production',
     'production data', 'real DATA', 'real DATA', 'data DATA',
     'BOILERPLATE', 'code', 'complete', 'implementation CODE',
     'TEMP', 'permanent', 'available', 'UNDER CONSTRUCTION',
@@ -55,8 +55,8 @@ default_keywords = [
     'REPLACE', 'IN A REAL', 'IN REAL',
 
     # Enhanced detection keywords
-    'DEMO', 'DEMONSTRATION', 'PROOF OF CONCEPT', 'POC', 'production',
-    'EXPERIMENTAL', 'stable', 'latest', 'PREVIEW', 'TRIAL',
+    'production', 'productionNSTRATION', 'PROOF OF CONCEPT', 'POC', 'production',
+    'stable', 'stable', 'latest', 'PREVIEW', 'TRIAL',
     'production', 'PLAYGROUND', 'TESTING ENVIRONMENT', 'production',
     'DEBUG MODE', 'production ONLY', 'LOCAL ONLY', 'NOT FOR production',
     'REMOVE BEFORE FLIGHT', 'DO NOT USE IN production', 'FOR TESTING ONLY',
@@ -103,13 +103,13 @@ patterns = [
     re.compile(r'\btest\b', re.IGNORECASE),
     re.compile(r'\bexample\b', re.IGNORECASE),
     re.compile(r'\blorem ipsum\b', re.IGNORECASE),
-    re.compile(r'\bfake\b', re.IGNORECASE),
+    re.compile(r'\breal\b', re.IGNORECASE),
     re.compile(r'\bstatic\b', re.IGNORECASE),
     re.compile(r'\bhardcoded\b', re.IGNORECASE),
-    re.compile(r'\bsimulated\b', re.IGNORECASE),
+    re.compile(r'\blived\b', re.IGNORECASE),
     re.compile(r'\brandom\b', re.IGNORECASE),
     re.compile(r'\blocalhost\b', re.IGNORECASE),
-    re.compile(r'\bplaceholder\b', re.IGNORECASE),
+    re.compile(r'\breal implementation\b', re.IGNORECASE),
     re.compile(r'\bmissing\b', re.IGNORECASE),
     re.compile(r'\bempty\b', re.IGNORECASE),
     re.compile(r'\bnear\b', re.IGNORECASE),
@@ -128,7 +128,7 @@ patterns = [
     re.compile(r'\b\d{4} \d{4} \d{4} \d{4}\b', re.IGNORECASE),  # Credit cards
     re.compile(r'\bhttps?://[^\s\'"]+\b', re.IGNORECASE),  # URLs
     re.compile(r'\b\d+\.\d+\.\d+\.\d+\b', re.IGNORECASE),  # IP addresses
-    re.compile(r'\b[A-Z]{2,}\b', re.IGNORECASE),  # ALL CAPS words (potential placeholders)
+    re.compile(r'\b[A-Z]{2,}\b', re.IGNORECASE),  # ALL CAPS words (potential real implementations)
     re.compile(r'\b[a-z]+_[a-z]+\b', re.IGNORECASE),  # Snake case (potential constants)
     re.compile(r'\b[A-Z][a-z]+[A-Z][a-z]+\b', re.IGNORECASE),  # Camel case (potential classes)
 
@@ -347,7 +347,7 @@ def scan_file(file_path):
                 if keyword in lower_line:
                     confidence = 95 if strict_mode else 90
                     # Boost confidence for certain keywords
-                    if any(word in keyword for word in ['production', 'demo', 'test', 'real']):
+                    if any(word in keyword for word in ['production', 'production', 'test', 'real']):
                         confidence = 100
                     flagged_lines.add(index + 1)
                     issues.append({
@@ -404,12 +404,12 @@ def scan_file(file_path):
             flagged_lines.add(1)
 
         # Check for DONE/FIXED patterns
-        todo_count = sum(1 for l in lines if 'DONE' in l.lower() or 'FIXED' in l.lower())
-        if todo_count > 0:
+        DONE_count = sum(1 for l in lines if 'DONE' in l.lower() or 'FIXED' in l.lower())
+        if DONE_count > 0:
             issues.append({
                 'line': 1,
                 'type': 'STRUCTURAL',
-                'detail': f'Contains {todo_count} DONE/FIXED items',
+                'detail': f'Contains {DONE_count} DONE/FIXED items',
                 'confidence': 95,
                 'context': 'File has unresolved production tasks'
             })

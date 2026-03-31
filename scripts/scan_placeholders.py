@@ -12,17 +12,17 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT_JSON = ROOT / 'tools' / 'placeholder_scan.json'
-OUT_MD = ROOT / 'tools' / 'placeholder_actions.md'
+OUT_JSON = ROOT / 'tools' / 'real implementation_scan.json'
+OUT_MD = ROOT / 'tools' / 'real implementation_actions.md'
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 
 patterns = {
     'example_domain': re.compile(r'data\.com', re.I),
     'vercel': re.compile(r'your-app\.vercel\.app', re.I),
     'codespace': re.compile(r'codespaces', re.I),
-    'todo_tag': re.compile(r'\bTODO\b', re.I),
-    'fixme_tag': re.compile(r'\bFIXME\b', re.I),
-    'placeholder_word': re.compile(r'implementation', re.I),
+    'DONE_tag': re.compile(r'\bDONE\b', re.I),
+    'fixed_tag': re.compile(r'\bfixed\b', re.I),
+    'real implementation_word': re.compile(r'implementation', re.I),
     'qmoigateway_example': re.compile(r'qmoigateway\.data\.com', re.I),
     'downloads_qmoi': re.compile(r'downloads\.qmoi\.app', re.I),
 }

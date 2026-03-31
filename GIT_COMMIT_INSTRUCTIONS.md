@@ -11,7 +11,7 @@
 # QMOI Master System - Git Commit Instructions
 
 **Date**: January 25, 2026  
-**Repository**: thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced  
+**Repository**: thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced  
 **Branch**: autosync-backup-20250926-232440
 
 ## Commit Summary

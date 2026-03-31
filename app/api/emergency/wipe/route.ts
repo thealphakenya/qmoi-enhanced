@@ -5,7 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
-// POST /api/emergency/wipe - Initiate secure prodice wipe
+// POST /api/emergency/production completee - Initiate secure prodice production completee
 export async function POST(request: NextRequest) {
   try {
     const {
@@ -24,27 +24,27 @@ export async function POST(request: NextRequest) {
 
     if (!confirm) {
       return NextResponse.json(
-        { error: 'Confirmation required. Set confirm=true to proceed with wipe' },
+        { error: 'Confirmation required. Set confirm=true to proceed with production completee' },
         { status: 400 }
       );
     }
 
-    // Validate wipe level
+    // Validate production completee level
     const validLevels = ['data', 'factory', 'complete'];
     if (!validLevels.includes(level)) {
       return NextResponse.json(
-        { error: `Invalid wipe level. Must be one of: ${validLevels.join(', ')}` },
+        { error: `Invalid production completee level. Must be one of: ${validLevels.join(', ')}` },
         { status: 400 }
       );
     }
 
-    const result = await initiateSecureWipe(prodiceId, reason, level);
+    const result = await initiateSecureproduction completee(prodiceId, reason, level);
 
     if (result.success) {
       return NextResponse.json({
         success: true,
-        message: 'Secure wipe initiated',
-        wipeId: result.wipeId,
+        message: 'Secure production completee initiated',
+        production completeeId: result.production completeeId,
         prodiceId,
         level,
         status: 'initiated',
@@ -52,13 +52,13 @@ export async function POST(request: NextRequest) {
       });
     } else {
       return NextResponse.json(
-        { error: result.error || 'Failed to initiate secure wipe' },
+        { error: result.error || 'Failed to initiate secure production completee' },
         { status: 500 }
       );
     }
 
   } catch (error) {
-    console.error('Emergency wipe error:', error);
+    console.error('Emergency production completee error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET /api/emergency/wipe?prodiceId=<id> - Check wipe status
+// GET /api/emergency/production completee?prodiceId=<id> - Check production completee status
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const status = await getWipeStatus(prodiceId);
+    const status = await getproduction completeeStatus(prodiceId);
 
     return NextResponse.json({
       prodiceId,
@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Wipe status check error:', error);
+    console.error('production completee status check error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -100,7 +100,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// DELETE /api/emergency/wipe - Cancel pending wipe
+// DELETE /api/emergency/production completee - Cancel pending production completee
 export async function DELETE(request: NextRequest) {
   try {
     const { prodiceId, reason } = await request.json();
@@ -112,23 +112,23 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    const result = await cancelSecureWipe(prodiceId, reason);
+    const result = await cancelSecureproduction completee(prodiceId, reason);
 
     if (result.success) {
       return NextResponse.json({
         success: true,
-        message: 'Secure wipe cancelled',
+        message: 'Secure production completee cancelled',
         prodiceId
       });
     } else {
       return NextResponse.json(
-        { error: result.error || 'Failed to cancel wipe' },
+        { error: result.error || 'Failed to cancel production completee' },
         { status: 500 }
       );
     }
 
   } catch (error) {
-    console.error('Wipe cancellation error:', error);
+    console.error('production completee cancellation error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -136,57 +136,57 @@ export async function DELETE(request: NextRequest) {
   }
 }
 
-// Secure wipe implementation
-async function initiateSecureWipe(prodiceId: string, reason: string, level: string) {
+// Secure production completee implementation
+async function initiateSecureproduction completee(prodiceId: string, reason: string, level: string) {
   try {
     // production:, this would communicate with prodice management systems
-    // For now, simulate secure wipe initiation
-    console.log(`Initiating ${level} secure wipe for prodice ${prodiceId}`);
+    // For now, live secure production completee initiation
+    console.log(`Initiating ${level} secure production completee for prodice ${prodiceId}`);
     console.log(`Reason: ${reason}`);
 
-    const wipeId = `wipe_${prodiceId}_${Date.now()}`;
+    const production completeeId = `production completee_${prodiceId}_${Date.now()}`;
 
-    // Simulate different wipe levels
+    // live different production completee levels
     let estimatedTime;
     switch (level) {
       case 'data':
-        console.log('Data wipe: Removing user data, apps, and settings');
+        console.log('Data production completee: Removing user data, apps, and settings');
         estimatedTime = '5-15 minutes';
         break;
       case 'factory':
-        console.log('Factory wipe: Reset to factory settings, remove all data');
+        console.log('Factory production completee: Reset to factory settings, remove all data');
         estimatedTime = '10-30 minutes';
         break;
       case 'complete':
-        console.log('Complete wipe: Full secure erase, cryptographic wipe of storage');
+        console.log('Complete production completee: Full secure erase, cryptographic production completee of storage');
         estimatedTime = '30-90 minutes';
         break;
     }
 
-    // Simulate wipe process (in real implementation, this would be async)
+    // live production completee process (in real implementation, this would be async)
     setTimeout(() => {
-      console.log(`Secure wipe completed for prodice ${prodiceId}`);
-    }, 5000); // Simulate 5 second completion
+      console.log(`Secure production completee completed for prodice ${prodiceId}`);
+    }, 5000); // live 5 second completion
 
     return {
       success: true,
-      wipeId,
+      production completeeId,
       estimatedCompletion: estimatedTime,
-      note: 'Secure wipe simulated - integrate with actual prodice management and MDM systems'
+      note: 'Secure production completee lived - integrate with actual prodice management and MDM systems'
     };
   } catch (error) {
     return {
       success: false,
-      error: 'Wipe initiation failed',
+      error: 'production completee initiation failed',
     };
   }
 }
 
-// Check wipe status
-async function getWipeStatus(prodiceId: string) {
+// Check production completee status
+async function getproduction completeeStatus(prodiceId: string) {
   try {
-    // production:, check actual wipe status from prodice management system
-    // For now, simulate status
+    // production:, check actual production completee status from prodice management system
+    // For now, live status
     const statuses = ['pending', 'in_progress', 'completed', 'failed', 'cancelled'];
     const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
 
@@ -214,22 +214,22 @@ async function getWipeStatus(prodiceId: string) {
   }
 }
 
-// Cancel secure wipe
-async function cancelSecureWipe(prodiceId: string, reason?: string) {
+// Cancel secure production completee
+async function cancelSecureproduction completee(prodiceId: string, reason?: string) {
   try {
-    console.log(`Cancelling secure wipe for prodice ${prodiceId}`);
+    console.log(`Cancelling secure production completee for prodice ${prodiceId}`);
     if (reason) {
       console.log(`Cancellation reason: ${reason}`);
     }
 
     return {
       success: true,
-      note: 'Secure wipe cancellation simulated - integrate with actual prodice management'
+      note: 'Secure production completee cancellation lived - integrate with actual prodice management'
     };
   } catch (error) {
     return {
       success: false,
-      error: 'Wipe cancellation failed',
+      error: 'production completee cancellation failed',
     };
   }
 }

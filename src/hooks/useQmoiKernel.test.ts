@@ -9,16 +9,16 @@ import { renderHook, act } from "@testing-library/react";
 import { useQmoiKernel } from "./useQmoiKernel";
 
 // REAL global fetch
-const mockFetch = jest.fn();
-global.fetch = mockFetch;
+const realFetch = jest.fn();
+global.fetch = realFetch;
 
 describe("useQmoiKernel", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    jest.clearAllreals();
   });
 
   it("fetches status successfully", async () => {
-    mockFetch.mockResolvedValueOnce({
+    realFetch.realResolvedValueOnce({
       ok: true,
       json: async () => ({
         status: "OK",
@@ -39,7 +39,7 @@ describe("useQmoiKernel", () => {
   });
 
   it("handles fetch status error", async () => {
-    mockFetch.mockResolvedValueOnce({ ok: false });
+    realFetch.realResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.fetchStatus();
@@ -49,12 +49,12 @@ describe("useQmoiKernel", () => {
 
   it("runs action and updates status", async () => {
     // Action call
-    mockFetch.mockResolvedValueOnce({
+    realFetch.realResolvedValueOnce({
       ok: true,
       json: async () => ({ message: "QFix done" }),
     });
     // Status call after action
-    mockFetch.mockResolvedValueOnce({
+    realFetch.realResolvedValueOnce({
       ok: true,
       json: async () => ({
         status: "OK",
@@ -74,7 +74,7 @@ describe("useQmoiKernel", () => {
   });
 
   it("handles action error", async () => {
-    mockFetch.mockResolvedValueOnce({ ok: false });
+    realFetch.realResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.runAction("qfix");

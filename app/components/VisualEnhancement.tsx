@@ -271,7 +271,7 @@ export const VisualEnhancement: React.FC<VisualEnhancementProps> = ({
               </p>
             </div>
 
-            {/* Animation Demo */}
+            {/* Animation production */}
             {visuals.find((v) => v.type === "animation")?.enabled && (
               <div className="mt-8">
                 <Zap

@@ -32,16 +32,16 @@
     ],
     "critical": true
   },
-  "alphaq.ai": {
-    "primary": "alphaq.ai",
+  "stableq.ai": {
+    "primary": "stableq.ai",
     "fallbacks": [
-      "alphaq.com",
+      "stableq.com",
       "qvillage.com"
     ],
     "all_variants": [
-      "alphaq.ai",
-      "alphaq.com",
-      "alphaq.com",
+      "stableq.ai",
+      "stableq.com",
+      "stableq.com",
       "qvillage.com"
     ],
     "critical": true
@@ -68,15 +68,15 @@
     "fallbacks": [
       "qstore.qvillage.com",
       "store.qvillage.com",
-      "alphaq.ai/store"
+      "stableq.ai/store"
     ],
     "all_variants": [
       "qstore.qvillage.com",
       "qstore.qvillage.com",
-      "store.alphaq.ai",
+      "store.stableq.ai",
       "qstore.qvillage.com",
       "store.qvillage.com",
-      "alphaq.ai/store"
+      "stableq.ai/store"
     ],
     "critical": true
   },
@@ -126,14 +126,14 @@
   "q-stable.qmoi.ai": {
     "primary": "q-stable.qmoi.ai",
     "fallbacks": [
-      "stable.alphaq.ai",
+      "stable.stableq.ai",
       "models.qvillage.com"
     ],
     "all_variants": [
       "q-stable.qmoi.ai",
-      "stable.alphaq.ai",
+      "stable.stableq.ai",
       "models.qvillage.com",
-      "stable.alphaq.ai",
+      "stable.stableq.ai",
       "models.qvillage.com"
     ],
     "critical": false

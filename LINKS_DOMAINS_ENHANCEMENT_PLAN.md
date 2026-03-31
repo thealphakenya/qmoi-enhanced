@@ -77,7 +77,7 @@ Domains to Manage:
 Primary Domains:
 - qvillage.com (primary hub)
 - qmoi.ai (main app)
-- alphaq.ai (stable Q AI)
+- stableq.ai (stable Q AI)
 - quantum.qmoi.com (quantum cloud system)
 
 Service Domains:

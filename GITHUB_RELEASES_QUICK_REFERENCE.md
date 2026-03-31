@@ -12,7 +12,7 @@
 
 ## 🚀 Quick Start
 
-**📥 Download All Apps:** https://github.com/thealphakenya/qmoi-enhanced/releases
+**📥 Download All Apps:** https://github.com/thestablekenya/qmoi-enhanced/releases
 
 ---
 
@@ -33,13 +33,13 @@
 
 ### QMOI AI
 
-- **Downloads & Releases:** https://github.com/thealphakenya/qmoi-enhanced/releases
+- **Downloads & Releases:** https://github.com/thestablekenya/qmoi-enhanced/releases
 - **iOS:** App Store
 - **Web:** https://qmoi.qmoi.app
 
 ### QCity
 
-- **Downloads & Releases:** https://github.com/thealphakenya/qmoi-enhanced/releases
+- **Downloads & Releases:** https://github.com/thestablekenya/qmoi-enhanced/releases
 - **iOS:** App Store
 - **Web:** https://[qcity](https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai).qmoi.app
 
@@ -111,10 +111,10 @@ Get-FileHash file.exe          # Windows PowerShell
 
 | Resource            | Link                                                    |
 | ------------------- | ------------------------------------------------------- |
-| **GitHub Releases** | https://github.com/thealphakenya/qmoi-enhanced/releases |
+| **GitHub Releases** | https://github.com/thestablekenya/qmoi-enhanced/releases |
 | **Full Guide**      | GITHUB_RELEASES_COMPLETE_GUIDE.md                       |
 | **Release Config**  | GITHUB_RELEASES_CONFIG.json                             |
-| **Issues**          | https://github.com/thealphakenya/qmoi-enhanced/issues   |
+| **Issues**          | https://github.com/thestablekenya/qmoi-enhanced/issues   |
 | **Support Email**   | support@qmoi.app                                        |
 | **Community**       | https://qvillage.[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai).app                               |
 

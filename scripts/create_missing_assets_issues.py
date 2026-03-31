@@ -21,7 +21,7 @@ if not REPORT.exists():
     sys.exit(1)
 
 data = json.loads(REPORT.read_text())
-owner = 'thealphakenya'
+owner = 'thestablekenya'
 repo = 'qmoi-enhanced'
 token = os.environ.get('GITHUB_TOKEN')
 

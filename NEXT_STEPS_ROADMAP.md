@@ -75,10 +75,10 @@ git push origin test-v1.2.5
 
 **Verification**:
 
-1. Go to [GitHub Actions](https://github.com/thealphakenya/qmoi-enhanced/actions)
+1. Go to [GitHub Actions](https://github.com/thestablekenya/qmoi-enhanced/actions)
 2. Find the workflow run for tag push (should be under "sync-releases-from-manifest")
 3. Click to view job logs and confirm all assets uploaded
-4. Check [GitHub Releases](https://github.com/thealphakenya/qmoi-enhanced/releases) for final release
+4. Check [GitHub Releases](https://github.com/thestablekenya/qmoi-enhanced/releases) for final release
 
 #### 1.2 Publish final Release
 
@@ -97,7 +97,7 @@ python3 scripts/sync_to_draft_release.py --tag test-v1.2.5 --publish
 ```bash
 # Download an asset and verify
 curl -L -o /tmp/qmoi_ai.AppImage \
-  https://github.com/thealphakenya/qmoi-enhanced/releases/download/test-v1.2.5/qmoi_ai.AppImage
+  https://github.com/thestablekenya/qmoi-enhanced/releases/download/test-v1.2.5/qmoi_ai.AppImage
 
 # Check manifest for expected hash
 jq '.assets[] | select(.name == "qmoi_ai.AppImage") | .sha256' \
@@ -124,7 +124,7 @@ sha256sum /tmp/qmoi_ai.AppImage
 
 **Steps** (via GitHub UI):
 
-1. Go to [Actions → release-compliance-check](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/release-compliance-check.yml)
+1. Go to [Actions → release-compliance-check](https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/release-compliance-check.yml)
 2. Click **Run workflow** → **Run workflow**
 3. Monitor logs for compliance check execution
 
@@ -194,7 +194,7 @@ New file: `RELEASES_USER_GUIDE.md`
 
 #### 4.1 Review Vulnerabilities
 
-Go to: [GitHub Security → Dependabot](https://github.com/thealphakenya/qmoi-enhanced/security/dependabot)
+Go to: [GitHub Security → Dependabot](https://github.com/thestablekenya/qmoi-enhanced/security/dependabot)
 
 **Expected vulnerabilities** (typical for multi-platform projects):
 
@@ -272,8 +272,8 @@ Go to: [GitHub Security → Dependabot](https://github.com/thealphakenya/qmoi-en
 Add to documentation:
 
 ```markdown
-- [![Latest Release](https://img.shields.io/github/v/release/thealphakenya/qmoi-enhanced?style=for-the-badge)](https://github.com/thealphakenya/qmoi-enhanced/releases)
-- [![Download Count](https://img.shields.io/github/downloads/thealphakenya/qmoi-enhanced/total?style=for-the-badge)](https://github.com/thealphakenya/qmoi-enhanced/releases)
+- [![Latest Release](https://img.shields.io/github/v/release/thestablekenya/qmoi-enhanced?style=for-the-badge)](https://github.com/thestablekenya/qmoi-enhanced/releases)
+- [![Download Count](https://img.shields.io/github/downloads/thestablekenya/qmoi-enhanced/total?style=for-the-badge)](https://github.com/thestablekenya/qmoi-enhanced/releases)
 ```
 
 #### 7.2 Build Interactive Release Browser

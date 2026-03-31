@@ -95,7 +95,7 @@ const DownloadQApp: React.FC = () => {
       name: "Android Mobile",
       icon: <Smartphone className="w-6 h-6" />,
       downloadUrl:
-        "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.apk",
+        "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi_ai.apk",
       sizeMB: 50,
       requirements: ["Android 8.0+", "2GB RAM", "500MB Storage"],
       features: [
@@ -111,7 +111,7 @@ const DownloadQApp: React.FC = () => {
       name: "iPhone/iPad",
       icon: <Smartphone className="w-6 h-6" />,
       downloadUrl:
-        "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.ipa",
+        "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi_ai.ipa",
       sizeMB: 60,
       requirements: ["iOS 14.0+", "2GB RAM", "500MB Storage"],
       features: [
@@ -127,7 +127,7 @@ const DownloadQApp: React.FC = () => {
       name: "Windows Desktop",
       icon: <Monitor className="w-6 h-6" />,
       downloadUrl:
-        "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.exe",
+        "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi_ai.exe",
       sizeMB: 120,
       requirements: ["Windows 10+", "4GB RAM", "1GB Storage"],
       features: [
@@ -143,7 +143,7 @@ const DownloadQApp: React.FC = () => {
       name: "Mac Desktop",
       icon: <Monitor className="w-6 h-6" />,
       downloadUrl:
-        "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.dmg",
+        "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi_ai.dmg",
       sizeMB: 110,
       requirements: ["macOS 11.0+", "4GB RAM", "1GB Storage"],
       features: [
@@ -159,7 +159,7 @@ const DownloadQApp: React.FC = () => {
       name: "Windows Laptop",
       icon: <Laptop className="w-6 h-6" />,
       downloadUrl:
-        "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.exe",
+        "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi_ai.exe",
       sizeMB: 120,
       requirements: ["Windows 10+", "4GB RAM", "1GB Storage"],
       features: [
@@ -175,7 +175,7 @@ const DownloadQApp: React.FC = () => {
       name: "MacBook",
       icon: <Laptop className="w-6 h-6" />,
       downloadUrl:
-        "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.dmg",
+        "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi_ai.dmg",
       sizeMB: 110,
       requirements: ["macOS 11.0+", "4GB RAM", "1GB Storage"],
       features: [
@@ -191,7 +191,7 @@ const DownloadQApp: React.FC = () => {
       name: "Android Tablet",
       icon: <Tablet className="w-6 h-6" />,
       downloadUrl:
-        "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.apk",
+        "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi_ai.apk",
       sizeMB: 50,
       requirements: ["Android 8.0+", "3GB RAM", "1GB Storage"],
       features: [
@@ -207,7 +207,7 @@ const DownloadQApp: React.FC = () => {
       name: "iPad",
       icon: <Tablet className="w-6 h-6" />,
       downloadUrl:
-        "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.ipa",
+        "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi_ai.ipa",
       sizeMB: 60,
       requirements: ["iPadOS 14.0+", "3GB RAM", "1GB Storage"],
       features: ["Apple Pencil", "Split View", "Slide Over", "Magic Keyboard"],
@@ -218,7 +218,7 @@ const DownloadQApp: React.FC = () => {
       name: "Linux Server",
       icon: <Server className="w-6 h-6" />,
       downloadUrl:
-        "https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.appimage",
+        "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi_ai.appimage",
       sizeMB: 100,
       requirements: ["Ubuntu 20.04+", "8GB RAM", "10GB Storage"],
       features: [

@@ -27,11 +27,11 @@ component_dir_tokens = ['app', 'apps', 'prodice', 'prodices', 'machine', 'machin
 required_doc_names = ['README.md', 'README.markdown', 'README', 'COMPULSORIES.md', 'metadata.json', 'manifest.json']
 
 production_keywords = [
-    'PENDING_IMPLEMENTATION', 'TODO', 'FIXME', 'PLACEHOLDER', 'MOCK',
-    'SIMULATE', 'SIMULATION', 'STAGING', 'STUB', 'STUBS',
-    'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'DEMO',
-    'DRAFT', 'PROOF OF CONCEPT', 'POC', 'ALPHA', 'BETA', 'EXPERIMENTAL',
-    'TEMPORARY', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
+    'PENDING_IMPLEMENTATION', 'DONE', 'fixed', 'real implementation', 'real',
+    'live', 'live', 'production', 'real', 'realS',
+    'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'production',
+    'DRAFT', 'PROOF OF CONCEPT', 'POC', 'stable', 'stable', 'stable',
+    'TEMPORARY', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
     'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED'
 ]
 

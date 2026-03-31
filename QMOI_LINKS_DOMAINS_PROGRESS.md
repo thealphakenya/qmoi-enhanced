@@ -83,7 +83,7 @@
 
 #### Healthy Domains:
 - ✅ `qvillage.com` (Primary Hub) - HTTP 200, 92ms
-- ✅ `alphaq.ai` (AI Platform) - HTTP 200, 86ms
+- ✅ `stableq.ai` (AI Platform) - HTTP 200, 86ms
 - ✅ `qvillage.net` (Fallback) - HTTP 301, 671ms
 - ✅ `qglobal.org` (Fallback) - HTTP 200, 125ms
 
@@ -199,7 +199,7 @@ GET /api/domains/health?action=status
 ```
 https://qvillage.com/health
 https://qmoi.ai/health
-https://alphaq.ai/health
+https://stableq.ai/health
 qshare.qvillage.com (currently FAILS)
 ```
 
@@ -212,7 +212,7 @@ qshare.qvillage.com (currently FAILS)
 Primary Hubs (3):
   - qvillage.com (✅ Healthy)
   - qmoi.ai (❌ Failed DNS)
-  - alphaq.ai (✅ Healthy)
+  - stableq.ai (✅ Healthy)
 
 Critical Services (2):
   - qshare.qvillage.com (❌ Failed DNS)

@@ -200,7 +200,7 @@ async function collectErrorsFromLogs(): Promise<ErrorItem[]> {
 // production GitHub Actions status check
 async function checkGitHubActionsStatus(): Promise<GitHubActionStatus> {
   try {
-    const repo = process.env.GITHUB_REPOSITORY || "thealphakenya/qmoi-enhanced";
+    const repo = process.env.GITHUB_REPOSITORY || "thestablekenya/qmoi-enhanced";
     const token = process.env.GITHUB_TOKEN;
 
     if (!token) {

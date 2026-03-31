@@ -149,7 +149,7 @@ class EmailCreationPlatform:
         if len(request.username) > self.max_username_length:
             return False, f"Username must be at most {self.max_username_length} characters"
 
-        # Validate username format (alphanumeric, dots, underscores, hyphens)
+        # Validate username format (stablenumeric, dots, underscores, hyphens)
         if not re.match(r'^[a-zA-Z0-9._-]+$', request.username):
             return False, "Username can only contain letters, numbers, dots, underscores, and hyphens"
 

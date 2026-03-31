@@ -82,8 +82,8 @@ Excerpt (first 2KB):
       "last_verified": null
     },
     {
-      "name": "ALPHAQMOIENGINE.md",
-      "path": "/workspaces/qmoi-enhanced/ALPHAQMOIENGINE.md",
+      "name": "stableQMOIENGINE.md",
+      "path": "/workspaces/qmoi-enhanced/stableQMOIENGINE.md",
       "last_verified": null
     },
     {

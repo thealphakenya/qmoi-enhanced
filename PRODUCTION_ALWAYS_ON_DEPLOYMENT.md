@@ -295,7 +295,7 @@ GitHub Actions Tab → qvillage-sync workflow
 ### Step 1: Configure GitHub Secrets (3 minutes)
 
 ```
-Visit: https://github.com/alphaqmoi/qmoi-enhanced/settings/secrets/actions
+Visit: https://github.com/stableqmoi/qmoi-enhanced/settings/secrets/actions
 
 Add:
 - HF_API_TOKEN = <your hugging face token>
@@ -322,7 +322,7 @@ git push origin main
 ### Step 4: Verify It's Running (4 minutes)
 
 ```
-Visit: https://github.com/alphaqmoi/qmoi-enhanced/actions
+Visit: https://github.com/stableqmoi/qmoi-enhanced/actions
 Click: qvillage-sync workflow
 See: "scheduled" trigger appears every 6 hours
 ```
@@ -336,7 +336,7 @@ See: "scheduled" trigger appears every 6 hours
 ### GitHub Actions Dashboard
 
 ```
-https://github.com/alphaqmoi/qmoi-enhanced/actions
+https://github.com/stableqmoi/qmoi-enhanced/actions
 → qvillage-sync workflow shows:
   ✅ Status: Success/Failed
   ⏱️ Duration: How long it took

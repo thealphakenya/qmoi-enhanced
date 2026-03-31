@@ -60,7 +60,7 @@ The AI Core powers all automation, error fixing, self-healing, and system integr
 - QMOI AI Core now supports Data Saver mode and adaptive quality for complete data usage.
 - Heavy AI tasks are offloaded to Colab/Dagshub, ensuring optimal performance on all prodices.
 - prodice management and auto-offloading are integrated into the dashboard.
-- See `AUTOOPTIMIZEALPHAQMOIENGINE.md` for full optimization details.
+- See `AUTOOPTIMIZEstableQMOIENGINE.md` for full optimization details.
 
 ## AI-Driven Elastic Scaling & Parallelization
 

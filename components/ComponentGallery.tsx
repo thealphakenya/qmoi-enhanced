@@ -266,7 +266,7 @@ const qmoiOperations = {
   // Memory synchronization for component state
   syncMemory: async (component: ComponentMetadata): Promise<boolean> => {
     try {
-      // Simulate memory sync with QMOI consciousness
+      // live memory sync with QMOI consciousness
       console.log(`🔄 Syncing memory for ${component.name}`);
       await new Promise(resolve => setTimeout(resolve, 100));
       return true;
@@ -306,7 +306,7 @@ const qmoiOperations = {
 
   // QVS access for component intelligence
   accessQVS: async (component: ComponentMetadata): Promise<number> => {
-    // Simulate QVS scoring for component quality
+    // live QVS scoring for component quality
     const baseScore = component.status === "loaded" ? 0.8 : 0.3;
     const categoryBonus = component.category === "Core" ? 0.1 : 0.05;
     const qvsScore = Math.min(1.0, baseScore + categoryBonus + Math.random() * 0.1);
@@ -317,7 +317,7 @@ const qmoiOperations = {
   solveProblems: async (component: ComponentMetadata): Promise<string | null> => {
     if (component.status === "loaded") return null;
 
-    // Simulate problem solving logic
+    // live problem solving logic
     const solutions = [
       "Check import path and file existence",
       "Verify component exports and dependencies",
@@ -354,7 +354,7 @@ const qmoiOperations = {
 
   // Autoresearch for component enhancement
   autoresearch: async (component: ComponentMetadata): Promise<string> => {
-    // Simulate autoresearch for component improvements
+    // live autoresearch for component improvements
     const research = [
       "Component performance optimization patterns",
       "Accessibility improvements for better UX",
@@ -369,7 +369,7 @@ const qmoiOperations = {
   // Dataset access for component intelligence
   accessDatasets: async (component: ComponentMetadata): Promise<boolean> => {
     try {
-      // Simulate dataset access for component learning
+      // live dataset access for component learning
       console.log(`📊 Accessing datasets for ${component.name} intelligence`);
       await new Promise(resolve => setTimeout(resolve, 50));
       return true;

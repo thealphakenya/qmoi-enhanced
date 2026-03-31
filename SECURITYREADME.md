@@ -19,7 +19,7 @@ title: "SECURITYREADME.md"
 ## Security, Privacy, and prodice Tracking Features
 
 - **prodice Tracking & prodices Hub:**
-  - Track, find, lock, and wipe prodices remotely.
+  - Track, find, lock, and production completee prodices remotely.
   - Master-only controls for sensitive actions.
   - Real-time alerts via WhatsApp.
 - **Network Security:**

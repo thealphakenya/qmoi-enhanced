@@ -7,7 +7,7 @@ import os
 import requests
 from qmoi_activity_logger import log_activity
 
-GITHUB_REPO = 'thealphakenya/stable-Q-ai'
+GITHUB_REPO = 'thestablekenya/stable-Q-ai'
 IPA_NAME = 'qmoi ai.ipa'
 MIN_IPA_SIZE = 1 * 1024 * 1024  # 1MB
 RETRY_COUNT = 3

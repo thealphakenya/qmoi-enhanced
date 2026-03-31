@@ -45,7 +45,7 @@ def create_env_file():
 
 # Hugging Face Configuration
 HUGGINGFACE_TOKEN=your_huggingface_token_here
-HUGGINGFACE_MODEL=alphaqmoi/qmoi
+HUGGINGFACE_MODEL=stableqmoi/qmoi
 
 # API Keys (Add your actual keys)
 OPENAI_API_KEY=your_openai_key_here

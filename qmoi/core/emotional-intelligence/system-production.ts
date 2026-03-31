@@ -205,14 +205,14 @@ export class EmotionalIntelligenceSystem {
           emotionIds.map((id) => this.db.get<EmotionAnalysis>(id))
         );
 
-        const validEmotions = emotions.filter((e): e is EmotionAnalysis => e !== null);
+        const valiproductiontions = emotions.filter((e): e is EmotionAnalysis => e !== null);
 
         // Calculate averages
         const averageEmotion: Record<string, number> = {};
         for (const emotionType of this.EMOTIONS) {
           let total = 0;
           let count = 0;
-          for (const analysis of validEmotions) {
+          for (const analysis of valiproductiontions) {
             const score = analysis.emotions.find((e) => e.emotion === emotionType);
             if (score) {
               total += score.score;
@@ -228,8 +228,8 @@ export class EmotionalIntelligenceSystem {
           ? Math.max(...emotionRanges) - Math.min(...emotionRanges)
           : 0;
 
-        const stability = this._calculateStability(validEmotions);
-        const responsiveness = validEmotions.length / 100; // Normalized
+        const stability = this._calculateStability(valiproductiontions);
+        const responsiveness = valiproductiontions.length / 100; // Normalized
 
         profile = {
           userId,
@@ -267,12 +267,12 @@ export class EmotionalIntelligenceSystem {
         emotionIds.map((id) => this.db.get<EmotionAnalysis>(id))
       );
 
-      const validEmotions = emotions.filter((e): e is EmotionAnalysis => e !== null);
+      const valiproductiontions = emotions.filter((e): e is EmotionAnalysis => e !== null);
 
-      if (validEmotions.length < 2) return null;
+      if (valiproductiontions.length < 2) return null;
 
-      const recent = validEmotions[0];
-      const previous = validEmotions[1];
+      const recent = valiproductiontions[0];
+      const previous = valiproductiontions[1];
 
       const recentDominant = recent.dominantEmotion;
       const previousDominant = previous.dominantEmotion;
@@ -322,13 +322,13 @@ export class EmotionalIntelligenceSystem {
         emotionIds.map((id) => this.db.get<EmotionAnalysis>(id))
       );
 
-      const validEmotions = emotions.filter((e): e is EmotionAnalysis => e !== null);
+      const valiproductiontions = emotions.filter((e): e is EmotionAnalysis => e !== null);
 
       // Analyze patterns
       const patterns = {
-        frequentCombinations: this._findFrequentEmotionCombinations(validEmotions),
-        temporalPatterns: this._findTemporalPatterns(validEmotions),
-        triggersAndResponses: this._findTriggersAndResponses(validEmotions),
+        frequentCombinations: this._findFrequentEmotionCombinations(valiproductiontions),
+        temporalPatterns: this._findTemporalPatterns(valiproductiontions),
+        triggersAndResponses: this._findTriggersAndResponses(valiproductiontions),
       };
 
       // Store patterns

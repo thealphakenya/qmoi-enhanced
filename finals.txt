@@ -42,7 +42,7 @@ These notes capture the tasks, decisions, and next steps for making this reposit
 
 7) Notes from prior runs
 - See `problemsanderrors.txt` for a running audit and snapshots; update it after each triage batch.
-- Be cautious applying large codemods repository-wide; prefer small batches with code review.
+- Be cautious applying large coproductionds repository-wide; prefer small batches with code review.
 
 ---
 Author: GitHub Copilot (Raptor mini Preview)

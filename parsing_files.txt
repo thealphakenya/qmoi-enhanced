@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [PRODUCTION READY] this file has no remaining productionuction markers
 _archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts
 _archive_qmoi-enhanced/_app_archived/layout.js
 _archive_qmoi-enhanced/components/DownloadQApp.tsx
@@ -17,7 +17,7 @@ _archive_qmoi-enhanced/mobile/components/AlertSettingsScreen.js
 _archive_qmoi-enhanced/mobile/components/AnalyticsScreen.js
 _archive_qmoi-enhanced/mobile/components/DeviceManagementScreen.js
 _archive_qmoi-enhanced/mobile/components/NotificationScreen.js
-_archive_qmoi-enhanced/scripts/demo-automation.js
+_archive_qmoi-enhanced/scripts/production-automation.js
 _archive_qmoi-enhanced/scripts/deploy_huggingface.js
 _archive_qmoi-enhanced/scripts/gitlab-automation.js
 _archive_qmoi-enhanced/scripts/gitlab-notification-service.js
@@ -132,7 +132,7 @@ mobile/components/AnalyticsScreen.js
 mobile/components/DeviceManagementScreen.js
 mobile/components/NotificationScreen.js
 pwa_apps/qmoi-ai/sw.js
-scripts/demo-automation.js
+scripts/production-automation.js
 scripts/deploy_huggingface.js
 scripts/gitlab-automation.js
 scripts/gitlab-notification-service.js

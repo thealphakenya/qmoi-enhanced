@@ -40,7 +40,7 @@ The project is **NOT YET DEPLOYED to Vercel**. It's only configured but needs to
 ```
 1. Go to: https://vercel.com/new
 2. Click: "Import Git Repository"
-3. Enter: https://github.com/thealphakenya/qmoi-enhanced
+3. Enter: https://github.com/thestablekenya/qmoi-enhanced
 4. Click: "Import"
 5. Verify settings are auto-detected
 6. Click: "Deploy"
@@ -75,7 +75,7 @@ vercel
 Once deployment is "Ready":
 
 ```
-1. Go to: https://vercel.com/thealphakenya/qmoi-enhanced
+1. Go to: https://vercel.com/thestablekenya/qmoi-enhanced
 2. Click: "Settings" tab
 3. Click: "Environment Variables"
 4. Add these:
@@ -117,7 +117,7 @@ Vercel webhook auto-deploys (3-6 minutes)
 | ---------------------------------------------- | ----- | ------------ |
 | https://qmoi-enhanced.vercel.app               | 404 ✗ | 200 ✓        |
 | https://qmoi-enhanced.vercel.app/api           | 404 ✗ | 200 ✓        |
-| https://vercel.com/thealphakenya/qmoi-enhanced | 200 ✓ | 200 ✓        |
+| https://vercel.com/thestablekenya/qmoi-enhanced | 200 ✓ | 200 ✓        |
 
 ---
 
@@ -139,7 +139,7 @@ Once activated, ALL links will work perfectly!
 
 ## 📞 NEED HELP?
 
-- **Check deployment logs**: https://vercel.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced
+- **Check deployment logs**: https://vercel.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced
 - **Verify links work**: `npm run verify-vercel`
 - **Complete guide**: See `VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md`
 

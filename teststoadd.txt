@@ -172,7 +172,7 @@ Ensures your AI is equitable and non-discriminatory.
 
 Equal opportunity
 
-Demographic parity
+productiongraphic parity
 
 Predictive equality
 

@@ -540,8 +540,8 @@ const TouchComponent = () => {
     const diff = touchStart - touchEnd;
 
     if (Math.abs(diff) > 50) {
-      // Swipe detected
-      diff > 0 ? handleSwipeUp() : handleSwipeDown();
+      // Sproduction completee detected
+      diff > 0 ? handleSproduction completeeUp() : handleSproduction completeeDown();
     }
   };
 
@@ -550,7 +550,7 @@ const TouchComponent = () => {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      Swipeable Content
+      Sproduction completeeable Content
     </div>
   );
 };

@@ -18,8 +18,8 @@
         "chromebook"
       ],
       "version": "v1.2.3",
-      "repository": "https://github.com/thealphakenya/qmoi-ai",
-      "download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+      "repository": "https://github.com/thestablekenya/qmoi-ai",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "status": "available"
     },
     "qcity": {
@@ -27,8 +27,8 @@
       "description": "Distributed Computing Platform",
       "platforms": ["windows", "mac", "linux", "android", "ios"],
       "version": "v1.2.3",
-      "repository": "https://github.com/thealphakenya/qcity",
-      "download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+      "repository": "https://github.com/thestablekenya/qcity",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "status": "available"
     },
     "qshare": {
@@ -36,8 +36,8 @@
       "description": "Secure File Sharing",
       "platforms": ["universal"],
       "version": "v1.2.3",
-      "repository": "https://github.com/thealphakenya/qshare",
-      "download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+      "repository": "https://github.com/thestablekenya/qshare",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "status": "available"
     },
     "yap": {
@@ -45,8 +45,8 @@
       "description": "Communication Platform",
       "platforms": ["universal"],
       "version": "v1.2.3",
-      "repository": "https://github.com/thealphakenya/yap",
-      "download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+      "repository": "https://github.com/thestablekenya/yap",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "status": "available"
     },
     "qstore": {
@@ -54,8 +54,8 @@
       "description": "App Store",
       "platforms": ["universal"],
       "version": "v1.2.3",
-      "repository": "https://github.com/thealphakenya/qstore",
-      "download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+      "repository": "https://github.com/thestablekenya/qstore",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "status": "available"
     },
     "qvillage": {
@@ -63,8 +63,8 @@
       "description": "Community Hub",
       "platforms": ["universal"],
       "version": "v1.2.3",
-      "repository": "https://github.com/thealphakenya/qvillage",
-      "download_url": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+      "repository": "https://github.com/thestablekenya/qvillage",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "status": "available"
     }
   },

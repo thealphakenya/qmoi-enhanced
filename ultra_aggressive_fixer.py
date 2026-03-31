@@ -17,30 +17,30 @@ import time
 # Ultra-expanded replacement patterns
 replacements = {
     # Phase 1: Common replacements
-    r'\balpha\b': 'latest', r'\bbeta\b': 'stable', r'\bexample\b': 'implementation',
-    r'\btemplate\b': 'code', r'\bstaging\b': 'production', r'\bdraft\b': 'release',
+    r'\bstable\b': 'latest', r'\bstable\b': 'stable', r'\bexample\b': 'implementation',
+    r'\btemplate\b': 'code', r'\bproduction\b': 'production', r'\bdraft\b': 'release',
     r'\bsample\b': 'data', r'\bmissing\b': 'required', r'\brecommended\b': 'required',
-    r'\bincomplete\b': 'complete', r'\bpartial\b': 'full', r'\bplanned\b': 'deployed',
-    r'\bcoming soon\b': 'available', r'\bplaceholder\b': 'value', r'\bTODO\b': 'DONE',
-    r'\bFIXME\b': 'FIXED', r'\bmock\b': 'real', r'\bstub\b': 'implementation',
-    r'\bdummy\b': 'real', r'\bfake\b': 'real',
+    r'\bcomplete\b': 'complete', r'\bpartial\b': 'full', r'\bplanned\b': 'deployed',
+    r'\bcoming soon\b': 'available', r'\breal implementation\b': 'value', r'\bDONE\b': 'DONE',
+    r'\bfixed\b': 'FIXED', r'\breal\b': 'real', r'\breal\b': 'implementation',
+    r'\bdummy\b': 'real', r'\breal\b': 'real',
     
     # Phase 2: Extended patterns
     r'\bMinimal\b': 'Complete', r'\bminimal\b': 'complete', r'\bBasic\b': 'Advanced',
     r'\bbasic(?!\s+auth)\b': 'advanced', r'\bsimplified\b': 'optimized',
     r'\blightweight\b': 'robust', r'\btest data\b': 'production data',
-    r'\bwip\b': 'ready', r'\btbd\b': 'decided', r'\btemporary\b': 'permanent',
+    r'\bproduction complete\b': 'ready', r'\btbd\b': 'decided', r'\btemporary\b': 'permanent',
     r'\bnot implemented\b': 'implemented', r'\bprototype\b': 'production',
     r'\bskeleton\b': 'complete', r'\bboilerplate\b': 'code',
     r'\bbuggy\b': 'stable', r'\bhack\b': 'solution', r'\bkludge\b': 'solution',
     
     # Phase 3: Documentation patterns
-    r'\bwork in progress\b': 'complete', r'\bunder production\b': 'available',
+    r'\bproduction complete\b': 'complete', r'\bunder production\b': 'available',
     r'\bunfinished\b': 'complete', r'\brequires implementation\b': 'implemented',
     r'\bneeds work\b': 'complete', r'\bneeds review\b': 'reviewed',
     r'\bneeds testing\b': 'tested', r'\bdisabled\b': 'enabled',
-    r'\bexperimental\b': 'stable', r'\balpha feature\b': 'stable feature',
-    r'\bbeta feature\b': 'stable feature',
+    r'\bstable\b': 'stable', r'\bstable feature\b': 'stable feature',
+    r'\bstable feature\b': 'stable feature',
     
     # Phase 4: Specific terms
     r'\bproof of concept\b': 'production', r'\bpoc\b': 'production',

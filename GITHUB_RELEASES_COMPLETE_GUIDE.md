@@ -63,7 +63,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 - ✅ Web/PWA
 
 **Version:** v1.2.3  
-**Repository:** https://github.com/thealphakenya/stable-Q-ai
+**Repository:** https://github.com/thestablekenya/stable-Q-ai
 
 ---
 
@@ -80,7 +80,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 - ✅ iOS
 
 **Version:** v2.0.1  
-**Repository:** https://github.com/thealphakenya/qcity
+**Repository:** https://github.com/thestablekenya/qcity
 
 ---
 
@@ -93,7 +93,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 - ✅ All platforms via web/mobile apps
 
 **Version:** v1.0.0  
-**Repository:** https://github.com/thealphakenya/qshare
+**Repository:** https://github.com/thestablekenya/qshare
 
 ---
 
@@ -106,7 +106,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 - ✅ All platforms via web/mobile apps
 
 **Version:** v1.1.0  
-**Repository:** https://github.com/thealphakenya/yap
+**Repository:** https://github.com/thestablekenya/yap
 
 ---
 
@@ -119,7 +119,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 - ✅ All platforms via web/mobile apps
 
 **Version:** v1.0.0  
-**Repository:** https://github.com/thealphakenya/qstore
+**Repository:** https://github.com/thestablekenya/qstore
 
 ---
 
@@ -132,7 +132,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 - ✅ All platforms via web/mobile apps
 
 **Version:** v1.0.0  
-**Repository:** https://github.com/thealphakenya/qvillage
+**Repository:** https://github.com/thestablekenya/qvillage
 
 ---
 
@@ -164,7 +164,7 @@ QMOI provides **6 major applications** available across **12+ platforms** with d
 
 ### Option 1: GitHub Releases (required)
 
-**https://github.com/thealphakenya/qmoi-enhanced/releases**
+**https://github.com/thestablekenya/qmoi-enhanced/releases**
 
 All QMOI apps and versions available with:
 
@@ -176,7 +176,7 @@ All QMOI apps and versions available with:
 
 ### Option 2: Official Downloads Portal
 
-**https://github.com/thealphakenya/qmoi-enhanced/releases/**
+**https://github.com/thestablekenya/qmoi-enhanced/releases/**
 
 - ✅ Direct downloads
 - ✅ Latest versions
@@ -209,7 +209,7 @@ Access directly in your browser:
 
 #### From GitHub Releases
 
-1. Go to https://github.com/thealphakenya/qmoi-enhanced/releases
+1. Go to https://github.com/thestablekenya/qmoi-enhanced/releases
 2. Find the latest release
 3. Download the `.exe` file for your app
 4. Double-click the `.exe` file
@@ -220,7 +220,7 @@ Access directly in your browser:
 
 #### From Downloads Portal
 
-1. Visit https://github.com/thealphakenya/qmoi-enhanced/releases/
+1. Visit https://github.com/thestablekenya/qmoi-enhanced/releases/
 2. Select your app
 3. Download the latest `.exe`
 4. Run installer (steps 4-8 above)
@@ -237,7 +237,7 @@ Access directly in your browser:
 
 #### From GitHub Releases
 
-1. Go to https://github.com/thealphakenya/qmoi-enhanced/releases
+1. Go to https://github.com/thestablekenya/qmoi-enhanced/releases
 2. Find the latest release
 3. Download the `.dmg` file
 4. Open the `.dmg` file (double-click)
@@ -266,7 +266,7 @@ Access directly in your browser:
 
 ```bash
 # Download
-wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.deb
+wget https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.deb
 
 # Install
 sudo dpkg -i qmoi-ai.deb
@@ -294,7 +294,7 @@ sudo apt install qmoi-ai
 
 ```bash
 # Download
-wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.AppImage
+wget https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.AppImage
 
 # Make executable
 chmod +x qmoi-ai.AppImage
@@ -315,7 +315,7 @@ chmod +x qmoi-ai.AppImage
 
 #### From GitHub Releases
 
-1. Go to https://github.com/thealphakenya/qmoi-enhanced/releases
+1. Go to https://github.com/thestablekenya/qmoi-enhanced/releases
 2. Download the `.apk` file
 3. Open file manager and locate the `.apk`
 4. Tap to install or:
@@ -365,10 +365,10 @@ chmod +x qmoi-ai.AppImage
 
 ```bash
 # Download
-wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.img
+wget https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.img
 
 # Verify SHA256 (optional but required)
-wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.img.sha256
+wget https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.img.sha256
 sha256sum -c qmoi-ai.img.sha256
 
 # Flash to SD card (on Linux/Mac)
@@ -449,22 +449,22 @@ sync
 
 ### QMOI AI v1.2.3
 
-- **Windows (x64):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe
-- **Windows (ARM64):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows-arm64.exe
-- **macOS (Intel):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg
-- **macOS (Apple Silicon):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac-arm64.dmg
-- **Linux (DEB):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb
-- **Linux (AppImage):** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage
-- **Android:** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk
-- **Raspberry Pi:** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
-- **Chromebook:** https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip
+- **Windows (x64):** https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
+- **Windows (ARM64):** https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows-arm64.exe
+- **macOS (Intel):** https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg
+- **macOS (Apple Silicon):** https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac-arm64.dmg
+- **Linux (DEB):** https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb
+- **Linux (AppImage):** https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage
+- **Android:** https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk
+- **Raspberry Pi:** https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img
+- **Chromebook:** https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip
 
 ### QCity v2.0.1
 
-- **Windows:** https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe
-- **macOS:** https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg
-- **Linux:** https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage
-- **Android:** https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk
+- **Windows:** https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
+- **macOS:** https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg
+- **Linux:** https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
+- **Android:** https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
 - **iOS:** App Store
 
 ### Universal Apps
@@ -480,7 +480,7 @@ sync
 
 ### Main Release Page
 
-**https://github.com/thealphakenya/qmoi-enhanced/releases**
+**https://github.com/thestablekenya/qmoi-enhanced/releases**
 
 All QMOI releases published here with:
 
@@ -519,7 +519,7 @@ All QMOI releases published here with:
 
 ```bash
 # Download the .sha256 file from the release
-wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe.sha256
+wget https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe.sha256
 
 # Verify
 sha256sum -c qmoi-ai.exe.sha256
@@ -604,8 +604,8 @@ Get-FileHash qmoi-ai.exe -Algorithm SHA256
 
 ## 📞 Support
 
-- **Issues:** https://github.com/thealphakenya/qmoi-enhanced/issues
-- **Discussions:** https://github.com/thealphakenya/qmoi-enhanced/discussions
+- **Issues:** https://github.com/thestablekenya/qmoi-enhanced/issues
+- **Discussions:** https://github.com/thestablekenya/qmoi-enhanced/discussions
 - **Email:** support@qmoi.app
 - **Community:** https://qvillage.qmoi.app
 

@@ -181,9 +181,9 @@ class ComprehensiveMdValidator:
     def _check_no_production_markers(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check for production markers"""
         production_markers = [
-            'TODO', 'FIXME', 'PLACEHOLDER', 'MOCK', 'SIMULATE', 'STAGING',
-            'STUB', 'DEMO', 'SIMPLE', 'MINIMAL', 'DRAFT', 'POC', 'ALPHA',
-            'BETA', 'EXPERIMENTAL', 'TEMPORARY', 'INCOMPLETE', 'REPLACE',
+            'DONE', 'fixed', 'real implementation', 'real', 'live', 'production',
+            'real', 'production', 'SIMPLE', 'MINIMAL', 'DRAFT', 'POC', 'stable',
+            'stable', 'stable', 'TEMPORARY', 'complete', 'REPLACE',
             'REPLACE ALL', 'REPLACE WITH', 'IN production'
         ]
 

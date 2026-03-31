@@ -116,7 +116,7 @@
 
 | Feature Category         | Access Level | Components          | Special Features                |
 | ------------------------ | ------------ | ------------------- | ------------------------------- |
-| **System Control**       | ✅ Full      | 18 Dashboards       | prodice wipe, network control    |
+| **System Control**       | ✅ Full      | 18 Dashboards       | prodice production completee, network control    |
 | **Financial Management** | ✅ Full      | Revenue Dashboard   | Fund transfers, approvals       |
 | **User Management**      | ✅ Full      | User Control Panel  | Role assignment, access control |
 | **production Tools**    | ✅ Full      | Auto-prod Panel      | Code generation, deployment     |

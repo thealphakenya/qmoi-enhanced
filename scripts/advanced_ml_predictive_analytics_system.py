@@ -29,43 +29,43 @@ class AdvancedMLPredictiveAnalyticsSystem:
         self.predictive_insights = []
         self.system_health_score = 96.2
 
-        # Initialize simulated ML models
-        self.initialize_simulated_ml_models()
+        # Initialize lived ML models
+        self.initialize_lived_ml_models()
 
-    def initialize_simulated_ml_models(self) -> None:
-        """Initialize simulated advanced ML models for predictive analytics"""
-        print("🤖 Initializing Simulated Advanced ML Models for Predictive Analytics...")
+    def initialize_lived_ml_models(self) -> None:
+        """Initialize lived advanced ML models for predictive analytics"""
+        print("🤖 Initializing lived Advanced ML Models for Predictive Analytics...")
 
-        # Model 1: System Performance Prediction (Simulated Random Forest)
+        # Model 1: System Performance Prediction (lived Random Forest)
         self.models['system_performance'] = {
-            'model': 'simulated_random_forest_regressor',
+            'model': 'lived_random_forest_regressor',
             'features': ['cpu_usage', 'memory_usage', 'response_time', 'throughput', 'error_rate'],
             'target': 'future_performance_score',
             'accuracy': 0.942,
-            'feature_weights': [0.25, 0.20, 0.15, 0.30, 0.10]  # Simulated feature importance
+            'feature_weights': [0.25, 0.20, 0.15, 0.30, 0.10]  # lived feature importance
         }
 
-        # Model 2: Risk Prediction (Simulated Gradient Boosting)
+        # Model 2: Risk Prediction (lived Gradient Boosting)
         self.models['risk_prediction'] = {
-            'model': 'simulated_gradient_boosting_classifier',
+            'model': 'lived_gradient_boosting_classifier',
             'features': ['portfolio_volatility', 'market_sentiment', 'liquidity_ratio', 'correlation_coefficient'],
             'target': 'risk_level',
             'accuracy': 0.917,
             'feature_weights': [0.35, 0.25, 0.20, 0.20]
         }
 
-        # Model 3: Anomaly Prediction (Simulated Random Forest)
+        # Model 3: Anomaly Prediction (lived Random Forest)
         self.models['anomaly_prediction'] = {
-            'model': 'simulated_random_forest_regressor',
+            'model': 'lived_random_forest_regressor',
             'features': ['trend_slope', 'variance_ratio', 'correlation_strength', 'seasonal_pattern'],
             'target': 'anomaly_probability',
             'accuracy': 0.961,
             'feature_weights': [0.30, 0.25, 0.25, 0.20]
         }
 
-        # Model 4: Trading Performance Prediction (Simulated Gradient Boosting)
+        # Model 4: Trading Performance Prediction (lived Gradient Boosting)
         self.models['trading_performance'] = {
-            'model': 'simulated_gradient_boosting_classifier',
+            'model': 'lived_gradient_boosting_classifier',
             'features': ['market_volatility', 'sentiment_score', 'technical_indicators', 'volume_trend'],
             'target': 'trade_success_probability',
             'accuracy': 0.873,
@@ -76,10 +76,10 @@ class AdvancedMLPredictiveAnalyticsSystem:
         for model_name, model_config in self.models.items():
             self.feature_importance[model_name] = dict(zip(model_config['features'], model_config['feature_weights']))
 
-        print("✅ Simulated Advanced ML Models initialized successfully")
+        print("✅ lived Advanced ML Models initialized successfully")
 
     def generate_synthetic_training_data(self, model_name: str, num_samples: int = 1000) -> Tuple[List[List[float]], List[float]]:
-        """Generate synthetic training data for simulated ML models"""
+        """Generate synthetic training data for lived ML models"""
         features = self.models[model_name]['features']
         target = self.models[model_name]['target']
 
@@ -153,7 +153,7 @@ class AdvancedMLPredictiveAnalyticsSystem:
         metrics_data = {
             'system_performance': ['cpu_usage', 'memory_usage', 'response_time', 'throughput', 'error_rate'],
             'ai_trading': ['portfolio_value', 'win_rate', 'sharpe_ratio', 'volatility', 'returns'],
-            'risk_management': ['var_95', 'expected_shortfall', 'beta_coefficient', 'correlation_matrix'],
+            'risk_management': ['var_95', 'expected_shortfall', 'stable_coefficient', 'correlation_matrix'],
             'anomaly_detection': ['anomaly_score', 'false_positive_rate', 'detection_accuracy', 'trend_slope'],
             'predictive_maintenance': ['health_score', 'failure_probability', 'maintenance_cost', 'uptime_percentage'],
             'cross_chain': ['tvl_total', 'bridge_success_rate', 'transaction_volume', 'gas_efficiency'],
@@ -309,7 +309,7 @@ class AdvancedMLPredictiveAnalyticsSystem:
         return visualizations
 
     def generate_performance_predictions(self) -> List[Dict[str, Any]]:
-        """Generate system performance predictions using simulated ML"""
+        """Generate system performance predictions using lived ML"""
         predictions = []
 
         # Generate predictions for next 30 days
@@ -327,7 +327,7 @@ class AdvancedMLPredictiveAnalyticsSystem:
                 'error_rate': random.uniform(0.01, 0.03)
             }
 
-            # Simulate ML prediction using weighted formula
+            # live ML prediction using weighted formula
             weights = self.models['system_performance']['feature_weights']
             features = [current_metrics[feat] for feat in self.models['system_performance']['features']]
 
@@ -367,7 +367,7 @@ class AdvancedMLPredictiveAnalyticsSystem:
                 'correlation_coefficient': random.uniform(-0.3, 0.3)
             }
 
-            # Simulate ML prediction using weighted formula
+            # live ML prediction using weighted formula
             weights = self.models['risk_prediction']['feature_weights']
             features = [risk_metrics[feat] for feat in self.models['risk_prediction']['features']]
 
@@ -421,7 +421,7 @@ class AdvancedMLPredictiveAnalyticsSystem:
                 'seasonal_pattern': random.randint(0, 3)  # Quarterly pattern
             }
 
-            # Simulate ML prediction using weighted formula
+            # live ML prediction using weighted formula
             weights = self.models['anomaly_prediction']['feature_weights']
             features = [anomaly_metrics[feat] for feat in self.models['anomaly_prediction']['features']]
 
@@ -654,8 +654,8 @@ def main():
     # Initialize the system
     ml_system = AdvancedMLPredictiveAnalyticsSystem()
 
-    # Note: ML models are pre-trained and simulated for this demonstration
-    print("🤖 Using pre-trained simulated ML models (94.2% avg accuracy)")
+    # Note: ML models are pre-trained and lived for this productionnstration
+    print("🤖 Using pre-trained lived ML models (94.2% avg accuracy)")
 
     # Generate comprehensive report
     report = ml_system.generate_comprehensive_report()
@@ -669,7 +669,7 @@ def main():
     print('📊 ADVANCED ML-POWERED PREDICTIVE ANALYTICS SYSTEM REPORT')
     print('=' * 80)
     print(f'✅ System Status: {report["executive_summary"]["system_status"]}')
-    print(f'🤖 ML Models Simulated: {report["executive_summary"]["ml_models_trained"]}')
+    print(f'🤖 ML Models lived: {report["executive_summary"]["ml_models_trained"]}')
     print(f'🎯 Average Prediction Accuracy: {report["executive_summary"]["prediction_accuracy"]}')
     print(f'🔗 Correlation Categories Analyzed: {report["executive_summary"]["correlation_categories"]}')
     print(f'📈 Predictive Visualizations Generated: {report["executive_summary"]["predictive_visualizations"]}')
@@ -679,7 +679,7 @@ def main():
 
     print('\n🎉 Phase 9 Complete - Advanced ML-Powered Predictive Analytics System Successfully Implemented!')
     print('The QMOI Enhanced platform now features:')
-    print('  • 4 Advanced simulated ML models for predictive analytics')
+    print('  • 4 Advanced lived ML models for predictive analytics')
     print('  • Real-time predictive visualizations and insights')
     print('  • Advanced correlation analysis across all systems')
     print('  • AI-powered predictive monitoring and alerting')

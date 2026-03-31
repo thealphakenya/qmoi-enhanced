@@ -250,7 +250,7 @@ python app.py  # Opens at http://localhost:7860
 
 ```bash
 # Manual step: Create space at https://huggingface.co/new-space
-# Repository: alphaqmoi/qvillage
+# Repository: stableqmoi/qvillage
 # Type: Docker
 # License: MIT
 ```
@@ -278,7 +278,7 @@ python app.py  # Opens at http://localhost:7860
 docker run -d --name qvillage-sync \
   -e HF_API_TOKEN=$HF_API_TOKEN \
   -e QVILLAGE_API_URL=https://api.qvillage.ai \
-  alphaqmoi/qvillage-sync:latest
+  stableqmoi/qvillage-sync:latest
 ```
 
 ### 4. Monitor & Alert
@@ -429,7 +429,7 @@ tail -f sync_*.log
 
 # Test API connectivity
 curl -H "Authorization: Bearer $HF_API_TOKEN" \
-  https://huggingface.co/spaces/alphaqmoi/qvillage/api/papers
+  https://huggingface.co/spaces/stableqmoi/qvillage/api/papers
 
 # Monitor cost in real-time
 watch -n 60 'python tools/monitor_hf_costs.py'
@@ -454,8 +454,8 @@ watch -n 60 'python tools/monitor_hf_costs.py'
 
 ## References
 
-- **GitHub Repo:** https://github.com/alphaqmoi/qvillage
-- **HF Space:** https://huggingface.co/spaces/alphaqmoi/qvillage
+- **GitHub Repo:** https://github.com/stableqmoi/qvillage
+- **HF Space:** https://huggingface.co/spaces/stableqmoi/qvillage
 - **Documentation:** See QVILLAGE_HUGGINGFACE_INTEGRATION.md
 - **Sync Engine Docs:** See tools/qvillage_memory_sync.py docstrings
 - **Cost Calculator:** See tools/monitor_hf_costs.py

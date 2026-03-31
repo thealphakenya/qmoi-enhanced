@@ -97,22 +97,22 @@ Each application is built for:
 
 ### Option 1: Direct Download from GitHub Release
 
-Visit: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+Visit: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 
 All assets available for immediate download:
 
 ```bash
 # Windows
-wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe
+wget https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe
 
 # macOS
-wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg
+wget https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg
 
 # Linux (AppImage)
-wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage
+wget https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage
 
 # Android
-wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk
+wget https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk
 
 # And more...
 ```
@@ -308,7 +308,7 @@ Full detailed report: `app_validation_report_v1.2.3.json`
 
 ### Bug Reports?
 
-- Report on GitHub: https://github.com/thealphakenya/qmoi-enhanced/issues
+- Report on GitHub: https://github.com/thestablekenya/qmoi-enhanced/issues
 - Include platform, version, and validation report
 - Attach relevant error logs
 

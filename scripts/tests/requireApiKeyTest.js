@@ -38,7 +38,7 @@ function requireApiKey(headers) {
   }
 }
 
-class FakeHeaders {
+class realHeaders {
   constructor(init = {}) {
     this.store = {};
     for (const k of Object.keys(init)) this.store[k.toLowerCase()] = init[k];
@@ -51,19 +51,19 @@ class FakeHeaders {
 (async function run() {
   console.log("Running requireApiKey smoke tests...");
   process.env.NODE_ENV = "production";
-  let headers = new FakeHeaders();
+  let headers = new realHeaders();
   let _res = requireApiKey(headers);
   assert(_res.ok, "production mode should allow requests");
   process.env.NODE_ENV = "production";
   process.env.MASTER_TOKEN = "master-123";
-  headers = new FakeHeaders({ authorization: "Bearer master-123" });
+  headers = new realHeaders({ authorization: "Bearer master-123" });
   _res = requireApiKey(headers);
   assert(_res.ok, "MASTER_TOKEN via Authorization should be accepted");
   process.env.API_KEY = "api-456";
-  headers = new FakeHeaders({ "x-api-key": "api-456" });
+  headers = new realHeaders({ "x-api-key": "api-456" });
   _res = requireApiKey(headers);
   assert(_res.ok, "API_KEY via x-api-key should be accepted");
-  headers = new FakeHeaders({ authorization: "Bearer wrong" });
+  headers = new realHeaders({ authorization: "Bearer wrong" });
   _res = requireApiKey(headers);
   assert(
     !_res.ok && _res.response?.status === 401,

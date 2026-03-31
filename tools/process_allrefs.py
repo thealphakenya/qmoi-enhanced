@@ -26,7 +26,7 @@ ALLREFS = ROOT / 'allrefs.txt'
 OUT_STATUS = ROOT / 'tools' / 'allrefs.status.json'
 PATCH_DIR = ROOT / 'tools' / 'patches'
 
-PLACEHOLDER_PATTERNS = [
+real implementation_PATTERNS = [
     re.compile(r'REPLACE_ME', re.I),
     re.compile(r'NOT FOR production', re.I),
     re.compile(r'//\s*DONE', re.I),
@@ -47,7 +47,7 @@ def classify_file(p: Path):
     if p.suffix.lower() in ('.md', '.txt'):
         # md/text files are safe to auto-final small implementation replacements
         text = p.read_text(encoding='utf-8', errors='ignore')
-        for pat in PLACEHOLDER_PATTERNS:
+        for pat in real implementation_PATTERNS:
             if pat.search(text):
                 return 'auto'
         return 'skip'
@@ -56,15 +56,15 @@ def classify_file(p: Path):
         # safe auto-case: 'pass' with an adjacent DONE comment
         if re.search(r"pass\s*#.*DONE|#.*DONE.*pass", text, re.I):
             return 'auto'
-        # other placeholders
-        for pat in PLACEHOLDER_PATTERNS:
+        # other real implementations
+        for pat in real implementation_PATTERNS:
             if pat.search(text):
                 return 'manual'
         return 'skip'
-    # for other file types, flag manual if placeholders present
+    # for other file types, flag manual if real implementations present
     if is_text_file(p):
         text = p.read_text(encoding='utf-8', errors='ignore')
-        for pat in PLACEHOLDER_PATTERNS:
+        for pat in real implementation_PATTERNS:
             if pat.search(text):
                 return 'manual'
     return 'skip'

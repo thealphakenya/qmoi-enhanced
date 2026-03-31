@@ -78,7 +78,7 @@ vercel -prod
 
 1. Go to [https://vercel.com/dashboard](https://vercel.com/dashboard)
 2. Create new project or import existing
-3. Select repository: `thealphakenya/qmoi-enhanced`
+3. Select repository: `thestablekenya/qmoi-enhanced`
 4. Configure build settings:
    - Build Command: `npm run build`
    - Output Directory: `.next`

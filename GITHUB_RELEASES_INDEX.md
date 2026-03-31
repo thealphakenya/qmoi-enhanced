@@ -17,7 +17,7 @@
 ## 🎯 Latest Release: v1.2.3 (November 12, 2025)
 
 ✅ **Status**: DEPLOYED  
-📍 **Link**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3  
+📍 **Link**: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3  
 📋 **Details**: [DEPLOYMENT_STATUS_V1_2_3.md](./DEPLOYMENT_STATUS_V1_2_3.md)
 
 ### What's Included
@@ -240,10 +240,10 @@ See detailed guide: `GITHUB_RELEASES_REALTIME_GUIDE.md`
 ## 📥 Download Methods
 
 1. **GitHub Releases** (required)
-   https://github.com/thealphakenya/qmoi-enhanced/releases
+   https://github.com/thestablekenya/qmoi-enhanced/releases
 
 2. **Official Portal**
-   https://github.com/thealphakenya/qmoi-enhanced/releases
+   https://github.com/thestablekenya/qmoi-enhanced/releases
 
 3. **App Stores**
    - Google Play Store
@@ -263,7 +263,7 @@ See detailed guide: `GITHUB_RELEASES_REALTIME_GUIDE.md`
 
 **Download QMOI AI for Windows:**
 
-1. Visit: https://github.com/thealphakenya/qmoi-enhanced/releases
+1. Visit: https://github.com/thestablekenya/qmoi-enhanced/releases
 2. Download: qmoi-ai.exe
 3. Run installer
 4. Follow prompts
@@ -274,8 +274,8 @@ See detailed guide: `GITHUB_RELEASES_REALTIME_GUIDE.md`
 
 ## 📞 Support
 
-- **Releases:** https://github.com/thealphakenya/qmoi-enhanced/releases
-- **Issues:** https://github.com/thealphakenya/qmoi-enhanced/issues
+- **Releases:** https://github.com/thestablekenya/qmoi-enhanced/releases
+- **Issues:** https://github.com/thestablekenya/qmoi-enhanced/issues
 - **Email:** support@qmoi.app
 - **Community:** https://qvillage.[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai).app
 

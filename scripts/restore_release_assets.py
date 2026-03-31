@@ -114,7 +114,7 @@ for c in candidates:
     chosen_tag = None
     out_path = Path(asset.get('abs_path') or (ROOT / asset['path']))
     for tag in DOWNLOAD_TAGS:
-        trial_url = f'https://github.com/thealphakenya/qmoi-enhanced/releases/download/{tag}/{name}'
+        trial_url = f'https://github.com/thestablekenya/qmoi-enhanced/releases/download/{tag}/{name}'
         print('  trying', trial_url)
         try:
             # Attempt a quick HEAD to check availability

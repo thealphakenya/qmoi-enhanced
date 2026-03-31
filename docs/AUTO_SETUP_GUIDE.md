@@ -263,7 +263,7 @@ Recovery: User clicks retry button
 - Uses `crypto.randomBytes()` for entropy
 - 16-character tokens for MASTER_PASSWORD
 - 32-character tokens for ADMIN_TOKEN
-- Hex-encoded (alphanumeric)
+- Hex-encoded (stablenumeric)
 - Unique on every first run
 
 ### File Security

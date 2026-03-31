@@ -153,7 +153,7 @@ This document provides a comprehensive matrix showing which QMOI applications ha
 | Platform          | Type       | Access Method      | Build Status | Notes                                                              |
 | ----------------- | ---------- | ------------------ | ------------ | ------------------------------------------------------------------ |
 | **All Platforms** | 🌐 Web App | Browser (HTTPS)    | ✅ Available | https://qmoi-space.qmoi.app                                        |
-| **PWA Manifest**  | 📱 PWA     | Add to Home Screen | ✅ Available | https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/ |
+| **PWA Manifest**  | 📱 PWA     | Add to Home Screen | ✅ Available | https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/ |
 | **Offline Mode**  | 📦 Cache   | Service Worker     | ✅ Available | Core features work offline                                         |
 
 **QMOI Space Coverage:** 🌐 All platforms (web) ✅  
@@ -165,7 +165,7 @@ This document provides a comprehensive matrix showing which QMOI applications ha
 
 | Platform            | Type        | Access Method              | Build Status | Notes                                                           |
 | ------------------- | ----------- | -------------------------- | ------------ | --------------------------------------------------------------- |
-| **All Platforms**   | 🌐 PWA      | Browser/Install            | ✅ Available | https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/ |
+| **All Platforms**   | 🌐 PWA      | Browser/Install            | ✅ Available | https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/ |
 | **Auto-Deploy**     | 🚀 CI/CD    | GitHub Pages               | ✅ Available | Auto-published on each commit                                   |
 | **Offline Mode**    | 📦 Cache    | Service Worker + IndexedDB | ✅ Available | Full offline capabilities                                       |
 | **iOS Home Screen** | 📱 Web Clip | Safari "Add to Home"       | ✅ Available | Standalone web app on iOS                                       |
@@ -438,7 +438,7 @@ None identified. All primary apps have full platform coverage.
 
 ### v1.2.3 Release Assets
 
-**Location:** https://github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.3
+**Location:** https://github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.3
 
 **Manifest File:** `release_assets_manifest.json`
 

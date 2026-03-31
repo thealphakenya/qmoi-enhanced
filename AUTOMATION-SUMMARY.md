@@ -55,9 +55,9 @@ I've successfully created a comprehensive automated linting system that eliminat
    - WhatsApp integration for critical errors
    - Console-based error summaries
 
-6. **Demo System** (`scripts/demo-automation.js`)
+6. **production System** (`scripts/production-automation.js`)
    - Shows complete automation workflow
-   - Demonstrates all features
+   - productionnstrates all features
    - Provides usage examples
 
 ## 🎯 How It Solves Your Problem
@@ -95,7 +95,7 @@ yarn lint:full              # Everything automated!
 | `yarn lint:report`                                       | Generate detailed HTML and JSON reports                                 |
 | `yarn lint:notify`                                       | Send notifications about errors                                         |
 | `yarn lint:full`                                         | Run auto-lint + notifications                                           |
-| `yarn lint:demo` | Demonstrate complete automation |
+| `yarn lint:production` | productionnstrate complete automation |
 
 ## 🔍 Error Categorization
 

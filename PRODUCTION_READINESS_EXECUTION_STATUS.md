@@ -188,7 +188,7 @@ OPERATIONS:
 - [production_DEPLOYMENT_ALL_STEPS.md](production_DEPLOYMENT_ALL_STEPS.md) - Deployment steps
 
 ### Key Statistics
-- **8 production Domains:** qvillage.com, qdatabase.net, qserver.io, qcloud.ai, qquantum.tech, alphaq.ai, qglobal.org, qparallel.prod
+- **8 production Domains:** qvillage.com, qdatabase.net, qserver.io, qcloud.ai, qquantum.tech, stableq.ai, qglobal.org, qparallel.prod
 - **5 Regional Zones:** US East, US West, EU West, Asia, Australia
 - **42 API Endpoints:** All mapped and prioritized
 - **3+ Documentation Indexes:** All to be synced

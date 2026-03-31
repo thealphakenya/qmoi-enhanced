@@ -80,7 +80,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/demo-automation.js",
+      "file": "/workspaces/qmoi-enhanced/_archive_qmoi-enhanced/scripts/production-automation.js",
       "reason": "no-change"
     },
     {
@@ -528,7 +528,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/scripts/demo-automation.js",
+      "file": "/workspaces/qmoi-enhanced/scripts/production-automation.js",
       "reason": "no-change"
     },
     {

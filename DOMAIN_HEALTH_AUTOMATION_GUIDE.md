@@ -82,7 +82,7 @@ Domain Check Cycle
 
 | Domain | Type | Status | Fallback | Region Coverage |
 |--------|------|--------|----------|-----------------|
-| **alphaq.ai** | AI Platform | ✅ Operational | — | 5/5 regions |
+| **stableq.ai** | AI Platform | ✅ Operational | — | 5/5 regions |
 | **qmoi.ai** | Main Application | ✅ Operational | qmoi.com | 5/5 regions |
 | **qvillage.com** | Primary Hub | ✅ Operational | — | 5/5 regions |
 | **qshare.qvillage.com** | File Sharing | ✅ Operational | — | 5/5 regions |
@@ -94,8 +94,8 @@ Domain Check Cycle
 |--------|------|--------|----------|-----------------|
 | **qcity.qmoi.ai** | City Service | ✅ Operational | qcity.qvillage.com | 5/5 regions |
 | **yap.qmoi.ai** | Messaging | ✅ Operational | yap.qvillage.com | 5/5 regions |
-| **qmoi-space.qmoi.ai** | Space Platform | ✅ Operational | space.alphaq.ai | 5/5 regions |
-| **q-stable.qmoi.ai** | Models | ✅ Operational | stable.alphaq.ai | 5/5 regions |
+| **qmoi-space.qmoi.ai** | Space Platform | ✅ Operational | space.stableq.ai | 5/5 regions |
+| **q-stable.qmoi.ai** | Models | ✅ Operational | stable.stableq.ai | 5/5 regions |
 | **qglobal.org** | Global Fallback | ✅ Operational | — | 5/5 regions |
 | **qvillage.net** | Backup Hub | ✅ Operational | — | 5/5 regions |
 | **qvillage.org** | Community | ✅ Operational | — | 5/5 regions |
@@ -215,7 +215,7 @@ Primary domain health report with 100% status
     "au": { "success": 13, "total": 13 }
   },
   "domains": {
-    "alphaq.ai": {
+    "stableq.ai": {
       "is_accessible": true,
       "http_status": 200,
       "response_time_ms": 122.56,
@@ -238,7 +238,7 @@ Synthetic health report with 100% availability guarantee
   "critical_domains_healthy": 5,
   "critical_domains_total": 5,
   "domain_details": {
-    "alphaq.ai": {
+    "stableq.ai": {
       "type": "ai_platform",
       "critical": true,
       "is_healthy": true,
@@ -314,8 +314,8 @@ Primary → Fallback Chain
 qmoi.ai → qmoi.com
 qcity.qmoi.ai → qcity.qvillage.com
 yap.qmoi.ai → yap.qvillage.com
-qmoi-space.qmoi.ai → space.alphaq.ai
-q-stable.qmoi.ai → stable.alphaq.ai
+qmoi-space.qmoi.ai → space.stableq.ai
+q-stable.qmoi.ai → stable.stableq.ai
 ```
 
 When a primary domain is unreachable, the system automatically:

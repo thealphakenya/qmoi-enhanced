@@ -787,7 +787,7 @@ npm install axios ws express
 
 ### QMOI Hugging Face Sync (`scripts/qmoi-hf-sync.py`)
 
-- **Purpose:** Syncs latest QMOI model and code to Hugging Face (`alphaqmoi/qmoi`), verifies deployment, manages permissions.
+- **Purpose:** Syncs latest QMOI model and code to Hugging Face (`stableqmoi/qmoi`), verifies deployment, manages permissions.
 - **Usage:**
   ```bash
   python scripts/qmoi-hf-sync.py

@@ -19,7 +19,7 @@ This file summarizes the automated production-ready fixes and enhancements appli
   - `components/Chatbot.tsx` and `src/components/Chatbot.tsx` now best-effort POST to `/api/qmoi/memory` when conversations change to keep server memory synchronized.
 
 - Enhanced avatar preview UI:
-  - `src/components/q-city/AvatarSelector.tsx` now shows a live `iframe` preview when `previewUrl` or `demoUrl` is provided by the avatar configuration, with a clear fallback UI.
+  - `src/components/q-city/AvatarSelector.tsx` now shows a live `iframe` preview when `previewUrl` or `productionUrl` is provided by the avatar configuration, with a clear fallback UI.
 
 - Removed duplicate Next.js page file `app/qcity/page.js` to resolve duplicate-route warnings.
 

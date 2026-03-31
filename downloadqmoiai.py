@@ -10,7 +10,7 @@ import requests
 from qmoi_activity_logger import log_activity
 import re
 
-GITHUB_REPO = 'thealphakenya/stable-Q-ai'
+GITHUB_REPO = 'thestablekenya/stable-Q-ai'
 RETRY_COUNT = 3
 RETRY_DELAY = 5
 MIN_SIZE = 1 * 1024 * 1024  # 1MB
@@ -113,7 +113,7 @@ def print_broken_links_report(broken):
     print(f"Total broken links: {len(broken)}")
 
 # --- Main logic: Download all apps for all platforms ---
-def autodownload_all_apps():
+def auDONEwnload_all_apps():
     apps = extract_app_downloads()
     for app in apps:
         platform = app['platform']
@@ -149,5 +149,5 @@ if __name__ == "__main__":
     # old_domain = "downloads-qmoi.tk"
     # updated_apps = update_links_to_fallback(apps, old_domain, fallback_domain)
     # print("Updated links to fallback domain.")
-    autodownload_all_apps()
-    print("All autodownloads complete.") 
+    auDONEwnload_all_apps()
+    print("All auDONEwnloads complete.") 

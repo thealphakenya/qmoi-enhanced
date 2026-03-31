@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 QMOI FINAL production FIXER v8.0
-Completely removes all production implementations and placeholders
+Completely removes all production implementations and real implementations
 """
 
 import os
@@ -51,7 +51,7 @@ class FinalproductionFixer:
                 # Remove all problematic patterns entirely
                 if any(pattern in description for pattern in [
                     '', '',
-                    'production comment placeholder', '"production"', '"production"'
+                    'production comment real implementation', '"production"', '"production"'
                 ]):
                     content = self.remove_all_problematic_patterns(content, code)
                     fixes.append(f"Removed {description}")
@@ -83,7 +83,7 @@ class FinalproductionFixer:
         # Clean up "production" - usually already correct
         content = re.sub(r'production', 'production', content)
 
-        # Remove production comment placeholders - more aggressive patterns
+        # Remove production comment real implementations - more aggressive patterns
         content = re.sub(r'
         content = re.sub(r'
         content = re.sub(r'// 

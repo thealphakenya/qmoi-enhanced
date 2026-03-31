@@ -23,7 +23,7 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 # Configuration
-REPO="${REPO:-thealphakenya/qmoi-enhanced}"
+REPO="${REPO:-thestablekenya/qmoi-enhanced}"
 REPORT_FILE="/tmp/qmoi-release-report-$(date +%Y%m%d-%H%M%S).md"
 BUILD_DIRS=(
     "Qmoi_downloaded_apps"
@@ -412,7 +412,7 @@ while true; do
     echo "$(date): Checking QMOI releases..."
     
     # Check GitHub
-    gh release list --repo thealphakenya/qmoi-enhanced --limit 5 2>/prod/null || echo "GitHub check failed"
+    gh release list --repo thestablekenya/qmoi-enhanced --limit 5 2>/prod/null || echo "GitHub check failed"
     
     # Check local builds
     builds=$(find Qmoi_downloaded_apps -type f 2>/prod/null | wc -l)

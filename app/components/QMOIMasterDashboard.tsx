@@ -33,7 +33,7 @@ import { VoiceSelector } from "../../src/components/q-city/VoiceSelector";
 import { Camera, Eye, EyeOff } from "lucide-react";
 
 const PWA_PLATFORMS = [
-  { id: "alphaq", name: "stable Q AI", url: "https://alphaq.ai", logo: "🔷" },
+  { id: "stableq", name: "stable Q AI", url: "https://stableq.ai", logo: "🔷" },
   { id: "qmoi", name: "QMOI AI", url: "https://qmoi.ai", logo: "🤖" },
   { id: "qmoi-space", name: "QMOI Space", url: "https://qmoi-space.qmoi.ai", logo: "🌌" },
   { id: "qcity", name: "QCity", url: "https://qcity.qmoi.ai", logo: "🏙️" },
@@ -1674,8 +1674,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="text"
-                          placeholder="Enter domain (e.g., qvillage.com)"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                          real implementation="Enter domain (e.g., qvillage.com)"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white real implementation-slate-400 focus:outline-none focus:border-blue-500"
                           id="domain-refresh"
                         />
                         <button
@@ -1721,8 +1721,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="text"
-                          placeholder="Enter new domain to approve"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-green-500"
+                          real implementation="Enter new domain to approve"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white real implementation-slate-400 focus:outline-none focus:border-green-500"
                           id="domain-approve"
                         />
                         <button
@@ -1778,8 +1778,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="url"
-                          placeholder="Enter link URL to monitor"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500"
+                          real implementation="Enter link URL to monitor"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white real implementation-slate-400 focus:outline-none focus:border-purple-500"
                           id="link-add"
                         />
                         <button
@@ -1825,8 +1825,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="url"
-                          placeholder="Enter link URL to remove"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-red-500"
+                          real implementation="Enter link URL to remove"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white real implementation-slate-400 focus:outline-none focus:border-red-500"
                           id="link-remove"
                         />
                         <button

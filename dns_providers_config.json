@@ -30,7 +30,7 @@
     "qvillage.net": "cloudflare",
     "qvillage.org": "cloudflare",
     "qglobal.org": "cloudflare",
-    "alphaq.ai": "route53",
+    "stableq.ai": "route53",
     "qparallel.prod": "route53"
   },
   "fallback_ips": {

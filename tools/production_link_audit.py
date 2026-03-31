@@ -17,51 +17,51 @@ from collections import defaultdict
 # Pre-scanned links from repository (from grep_search results)
 KNOWN_LINKS = [
     # production downloads
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa',
-    'https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa',
+    'https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage',
     # GitHub URLs
-    'https://github.com/thealphakenya/qmoi-enhanced',
-    'https://github.com/thealphakenya/stable-Q-ai',
-    'https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177',
+    'https://github.com/thestablekenya/qmoi-enhanced',
+    'https://github.com/thestablekenya/stable-Q-ai',
+    'https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177',
     'https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml',
     'https://github.com/qmoi/independent-qmoi.git',
     'https://github.com/q-city/qmoi-enhanced.git',
@@ -69,10 +69,10 @@ KNOWN_LINKS = [
     'https://github.com/q-city/qmoi-enhanced/issues',
     'https://github.com/q-city/qmoi-enhanced/discussions',
     # Docs and Services
-    'https://huggingface.co/alphaqmoi/qmoi',
-    'https://huggingface.co/alphaqmoi/qmoi-ai-system',
-    'https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system',
-    'https://api-inference.huggingface.co/models/alphaqmoi/qmoi',
+    'https://huggingface.co/stableqmoi/qmoi',
+    'https://huggingface.co/stableqmoi/qmoi-ai-system',
+    'https://huggingface.co/spaces/stableqmoi/qmoi-ai-system',
+    'https://api-inference.huggingface.co/models/stableqmoi/qmoi',
     'https://docs.qcity.ai',
     'https://q-city.ai',
     'https://production.q-city.ai',
@@ -110,7 +110,7 @@ def categorize_link(url):
     elif '.ngrok' in url:
         return 'ephemeral_tunnel'
     elif 'data.com' in url:
-        return 'placeholder_example'
+        return 'real implementation_example'
     else:
         return 'external_production'
 
@@ -125,7 +125,7 @@ def estimate_priority(url):
     elif 'github.com' in url:
         return 3  # Reference
     elif 'localhost' in url:
-        return 4  # Can be mocked
+        return 4  # Can be realed
     else:
         return 5  # Lower priority
 
@@ -186,10 +186,10 @@ def generate_production_report():
                 'location': 'docs_site/ml_models.md'
             },
             'local_service': {
-                'action': 'STUB_LOCALLY',
+                'action': 'real_LOCALLY',
                 'rationale': 'Requires running local services for testing',
                 'method': 'Add real endpoints in production environment',
-                'location': 'tools/mock_servers/'
+                'location': 'tools/real_servers/'
             },
             'ephemeral_tunnel': {
                 'action': 'REPLACE_WITH_LOCAL',

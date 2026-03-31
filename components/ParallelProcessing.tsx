@@ -100,7 +100,7 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
     setWorkers(newWorkers);
   }, [maxWorkers]);
 
-  // Add data tasks for demonstration
+  // Add data tasks for productionnstration
   const addSampleTasks = () => {
     const sampleTasks: Task[] = [
       {

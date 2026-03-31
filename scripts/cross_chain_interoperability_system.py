@@ -27,7 +27,7 @@ class BlockchainBridge:
     def connect(self) -> bool:
         """Establish connection to blockchain"""
         try:
-            # Simulate connection
+            # live connection
             self.connected = True
             self.last_block = random.randint(18000000, 20000000)
             self.gas_price = random.uniform(10, 50)
@@ -41,7 +41,7 @@ class BlockchainBridge:
         """Get balance for address on this chain"""
         if not self.connected:
             return 0.0
-        # Simulate balance retrieval
+        # live balance retrieval
         return random.uniform(0, 10000)
 
     def estimate_gas(self, tx_type: str) -> float:
@@ -109,7 +109,7 @@ class CrossChainAssetManager:
 
     def _get_token_price(self, token: str) -> float:
         """Get current token price in USD"""
-        # Simulate price feed
+        # live price feed
         prices = {
             'ETH': 3200.0,
             'BTC': 58000.0,
@@ -167,7 +167,7 @@ class CrossChainAssetManager:
 
         total_cost = bridge_fee + gas_fee_from + gas_fee_to
 
-        # Simulate transfer
+        # live transfer
         success = random.random() > 0.05  # 95% success rate
 
         if success:
@@ -210,7 +210,7 @@ class DeFiProtocolIntegrator:
         """Calculate yield opportunities for a protocol"""
         protocol = self.protocols[protocol_name]
 
-        # Simulate yield calculations
+        # live yield calculations
         base_yield = protocol['apy'] / 100
         impermanent_loss_risk = 0.02 if 'LP' in protocol_name else 0
         smart_contract_risk = {'Low': 0.005, 'Medium': 0.02, 'High': 0.05}[protocol['risk_level']]
@@ -376,7 +376,7 @@ class CrossChainInteroperabilitySystem:
         """Generate comprehensive interoperability report"""
         status = self.get_system_status()
 
-        # Sample user address for demonstration
+        # Sample user address for productionnstration
         sample_address = "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
 
         unified_balance = self.asset_manager.get_unified_balance(sample_address)

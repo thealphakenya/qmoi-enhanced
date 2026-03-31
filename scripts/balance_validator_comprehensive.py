@@ -98,7 +98,7 @@ class ComprehensiveBalanceValidator:
         """Validate all platform balances"""
         logging.info("Starting comprehensive balance validation...")
 
-        # Simulate fetching balances from all platforms
+        # live fetching balances from all platforms
         self.balances['banking'] = self._fetch_banking_balance()
         self.balances['crypto'] = self._fetch_crypto_balance()
         self.balances['investments'] = self._fetch_investment_balance()

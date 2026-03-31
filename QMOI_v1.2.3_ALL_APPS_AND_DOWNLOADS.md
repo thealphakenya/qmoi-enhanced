@@ -18,15 +18,15 @@
 
 **Download All Platforms:**
 
-- 🪟 **Windows x64**: [qmoi-ai-v1.2.3-windows.exe](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe) (5.1 MB)
-- 🍎 **macOS**: [qmoi-ai-v1.2.3-macos.dmg](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg) (8.2 MB)
-- 🐧 **Linux (AppImage)**: [qmoi-ai-v1.2.3-linux-appimage](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage) (6.1 MB)
-- 📦 **Linux (DEB)**: [qmoi-ai-v1.2.3-linux.deb](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux.deb) (4.1 MB)
-- 🤖 **Android**: [qmoi-ai-v1.2.3-android.apk](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk) (10.2 MB)
-- 📱 **iOS**: [qmoi-ai-v1.2.3-ios.ipa](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa) (12.3 MB)
-- 📺 **Smart TV**: [qmoi-ai-v1.2.3-smarttv.apk](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk) (8.2 MB)
-- 💻 **Chromebook**: [qmoi-ai-v1.2.3-chromebook.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-chromebook.zip) (3.1 MB)
-- 🥧 **Raspberry Pi**: [qmoi_ai.img](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img) (2.0 GB)
+- 🪟 **Windows x64**: [qmoi-ai-v1.2.3-windows.exe](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe) (5.1 MB)
+- 🍎 **macOS**: [qmoi-ai-v1.2.3-macos.dmg](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg) (8.2 MB)
+- 🐧 **Linux (AppImage)**: [qmoi-ai-v1.2.3-linux-appimage](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage) (6.1 MB)
+- 📦 **Linux (DEB)**: [qmoi-ai-v1.2.3-linux.deb](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux.deb) (4.1 MB)
+- 🤖 **Android**: [qmoi-ai-v1.2.3-android.apk](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk) (10.2 MB)
+- 📱 **iOS**: [qmoi-ai-v1.2.3-ios.ipa](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa) (12.3 MB)
+- 📺 **Smart TV**: [qmoi-ai-v1.2.3-smarttv.apk](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk) (8.2 MB)
+- 💻 **Chromebook**: [qmoi-ai-v1.2.3-chromebook.zip](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-chromebook.zip) (3.1 MB)
+- 🥧 **Raspberry Pi**: [qmoi_ai.img](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img) (2.0 GB)
 
 **Features:**
 
@@ -45,12 +45,12 @@
 
 **Download Options:**
 
-- 🌍 **Web (PWA)**: [Access online](https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/) (Works on all browsers)
-- 🪟 **Windows**: [QMOI Space for Windows](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe)
-- 🍎 **macOS**: [QMOI Space for macOS](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg)
-- 🐧 **Linux**: [QMOI Space for Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage)
-- 🤖 **Android**: [QMOI Space for Android](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk)
-- 📱 **iOS**: [QMOI Space for iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa)
+- 🌍 **Web (PWA)**: [Access online](https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/) (Works on all browsers)
+- 🪟 **Windows**: [QMOI Space for Windows](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe)
+- 🍎 **macOS**: [QMOI Space for macOS](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg)
+- 🐧 **Linux**: [QMOI Space for Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage)
+- 🤖 **Android**: [QMOI Space for Android](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk)
+- 📱 **iOS**: [QMOI Space for iOS](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa)
 
 **Features:**
 
@@ -69,12 +69,12 @@
 
 **Download Options:**
 
-- 🌍 **Web (PWA)**: [Access Q stable](https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/) (Primary)
-- 🪟 **Windows**: [Q stable Windows](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe)
-- 🍎 **macOS**: [Q stable macOS](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg)
-- 🐧 **Linux**: [Q stable Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage)
-- 🤖 **Android**: [Q stable Android](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk)
-- 📱 **iOS**: [Q stable iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa)
+- 🌍 **Web (PWA)**: [Access Q stable](https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/) (Primary)
+- 🪟 **Windows**: [Q stable Windows](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe)
+- 🍎 **macOS**: [Q stable macOS](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg)
+- 🐧 **Linux**: [Q stable Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage)
+- 🤖 **Android**: [Q stable Android](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk)
+- 📱 **iOS**: [Q stable iOS](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa)
 
 **Features:**
 
@@ -93,7 +93,7 @@
 
 **Download:**
 
-- 📦 **QCity Package**: [qcity-v2.0.1.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity-v2.0.1.zip) (2.0 MB)
+- 📦 **QCity Package**: [qcity-v2.0.1.zip](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity-v2.0.1.zip) (2.0 MB)
 
 **Includes:**
 
@@ -132,7 +132,7 @@ All applications have been:
 - ✅ Documented with installation guides
 - ✅ Confirmed production-ready
 
-**See:** [app_validation_report_v1.2.3.json](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/app_validation_report_v1.2.3.json)
+**See:** [app_validation_report_v1.2.3.json](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/app_validation_report_v1.2.3.json)
 
 ---
 
@@ -233,7 +233,7 @@ adb install qmoi-ai-v1.2.3-android.apk
 ## 🔗 GitHub Release
 
 **Full Release Page:**  
-https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 
 All assets available for download:
 

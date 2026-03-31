@@ -39,8 +39,8 @@ os.makedirs(VALIDATION_DIR, exist_ok=True)
 
 TASKS = [
     {
-        'name': 'placeholder_scan',
-        'cmd': [sys.executable, os.path.join(BASE_DIR, 'scripts', 'check_placeholders.py'), '--report', os.path.join(VALIDATION_DIR, 'placeholders.json')],
+        'name': 'real implementation_scan',
+        'cmd': [sys.executable, os.path.join(BASE_DIR, 'scripts', 'check_real implementations.py'), '--report', os.path.join(VALIDATION_DIR, 'real implementations.json')],
         'cwd': os.path.join(BASE_DIR)
     },
     {

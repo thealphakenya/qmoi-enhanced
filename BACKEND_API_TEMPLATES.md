@@ -32,7 +32,7 @@ This document provides complete, production-ready code examples for implementing
 
 1. `POST /api/mail` — Send email with delivery tracking
 2. `POST /api/files` — Upload/transfer files with integrity checks
-3. `POST /api/emergency` — SOS, lockdown, wipe, alert with escalation
+3. `POST /api/emergency` — SOS, lockdown, production completee, alert with escalation
 4. `POST /api/verify` — product verification with blockchain integration
 5. `POST /api/youtube/download` — YouTube downloader with queue management
 6. `GET /api/media` — List media items with CDN optimization
@@ -393,15 +393,15 @@ app.post("/api/files", upload.single("file"), async (req, res) => {
 });
 
 // ============================================================================
-// POST /api/emergency - SOS, Lockdown, Wipe, Alert
+// POST /api/emergency - SOS, Lockdown, production completee, Alert
 // ============================================================================
 app.post("/api/emergency", async (req, res) => {
   try {
     const { action, prodiceId, reason, metadata } = req.body;
 
-    if (!action || !["sos", "lockdown", "wipe", "alert"].includes(action)) {
+    if (!action || !["sos", "lockdown", "production completee", "alert"].includes(action)) {
       return res.status(400).json({
-        error: "Invalid action. Must be: sos, lockdown, wipe, or alert",
+        error: "Invalid action. Must be: sos, lockdown, production completee, or alert",
       });
     }
 
@@ -420,7 +420,7 @@ app.post("/api/emergency", async (req, res) => {
     });
 
     // prodice management integration (see production implementation)
-    // Actions: SOS (alert), Lockdown (remote lock), Wipe (data erase), Alert (notify)
+    // Actions: SOS (alert), Lockdown (remote lock), production completee (data erase), Alert (notify)
 
     res.json({
       success: true,
@@ -675,7 +675,7 @@ class FileMetadata(BaseModel):
     metadata: Optional[dict] = None
 
 class EmergencyRequest(BaseModel):
-    action: str  # 'sos', 'lockdown', 'wipe', 'alert'
+    action: str  # 'sos', 'lockdown', 'production completee', 'alert'
     prodiceId: Optional[str] = None
     reason: Optional[str] = None
     metadata: Optional[dict] = None
@@ -744,15 +744,15 @@ async def upload_file(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail=str(e))
 
 # ============================================================================
-# POST /api/emergency - SOS, Lockdown, Wipe, Alert
+# POST /api/emergency - SOS, Lockdown, production completee, Alert
 # ============================================================================
 @app.post("/api/emergency")
 async def emergency_action(request: EmergencyRequest):
     try:
-        if request.action not in ["sos", "lockdown", "wipe", "alert"]:
+        if request.action not in ["sos", "lockdown", "production completee", "alert"]:
             raise HTTPException(
                 status_code=400,
-                detail="Invalid action. Must be: sos, lockdown, wipe, or alert",
+                detail="Invalid action. Must be: sos, lockdown, production completee, or alert",
             )
 
         action_id = f"action_{datetime.now().timestamp()}_{uuid.uuid4().hex[:8]}"
@@ -1012,7 +1012,7 @@ def emergency_action():
         data = request.get_json()
         action = data.get('action')
 
-        if action not in ['sos', 'lockdown', 'wipe', 'alert']:
+        if action not in ['sos', 'lockdown', 'production completee', 'alert']:
             return jsonify({'error': 'Invalid action'}), 400
 
         action_id = f"action_{datetime.now().timestamp()}_{uuid.uuid4().hex[:8]}"

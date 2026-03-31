@@ -108,10 +108,10 @@ class DomainHealthChecker:
             ],
             "ui_components": ["chat_window", "model_cards", "sidebar", "toolbar", "action_buttons", "footer"]
         },
-        "alphaq.ai": {
+        "stableq.ai": {
             "type": "ai_platform",
             "critical": True,
-            "fallbacks": ["alphaq.com"],
+            "fallbacks": ["stableq.com"],
             "check_endpoints": ["/", "/api/health"],
             "ui_endpoints": ["/", "/chat", "/models", "/dashboard"],
             "expected_features": [
@@ -183,7 +183,7 @@ class DomainHealthChecker:
         "q-stable.qmoi.ai": {
             "type": "models",
             "critical": False,
-            "fallbacks": ["stable.alphaq.ai"],
+            "fallbacks": ["stable.stableq.ai"],
             "check_endpoints": ["/", "/api/health"],
             "ui_endpoints": ["/", "/models", "/downloads"],
             "expected_features": [

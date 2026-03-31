@@ -58,7 +58,7 @@ def remove_and_flag(artifact_path, reason):
 
 def trigger_rebuild(artifact_path):
     log(f"Triggering rebuild for app artifact path: {artifact_path}")
-    # Generic rebuild hint into QMOI CI pipeline (placeholder)
+    # Generic rebuild hint into QMOI CI pipeline (real implementation)
     # e.g., create a file for dispatcher or call API action
     trigger_file = VALIDATION_DIR / 'rebuild_queue.json'
     queue = []

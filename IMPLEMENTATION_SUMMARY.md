@@ -692,7 +692,7 @@ vercel --prod
 
 ```bash
 # 1. Clone and install
-git clone https://github.com/thealphakenya/qmoi-enhanced.git
+git clone https://github.com/thestablekenya/qmoi-enhanced.git
 cd qmoi-enhanced
 npm install
 

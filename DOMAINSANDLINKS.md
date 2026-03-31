@@ -57,8 +57,8 @@ This file is automatically maintained by QMOI's intelligent domain management sy
   - **Master Access**: Required for all quantum operations
   - **Fallback**: qvillage.com
 
-- **AlphaQ AI**: `alphaq.ai` → https://alphaq.ai
-  - **Status**: ✅ Active | **Health**: https://alphaq.ai/api/health
+- **stableQ AI**: `stableq.ai` → https://stableq.ai
+  - **Status**: ✅ Active | **Health**: https://stableq.ai/api/health
   - **Purpose**: Advanced AI research and production
   - **Fallback**: qvillage.com
 
@@ -94,7 +94,7 @@ This file is automatically maintained by QMOI's intelligent domain management sy
 - **Server Resources**: `https://qserver.io/resources`
 - **AI Models API**: `https://qcloud.ai/models`
 - **Quantum Compute**: `https://qquantum.tech/compute`
-- **Documentation**: `https://alphaq.ai/docs`
+- **Documentation**: `https://stableq.ai/docs`
 
 ---
 
@@ -108,16 +108,16 @@ qvillage.com (Primary - No Fallback)
 ├── qserver.io → qvillage.com
 ├── qcloud.ai → qvillage.com
 ├── qquantum.tech → qvillage.com
-├── alphaq.ai → qvillage.com
+├── stableq.ai → qvillage.com
 ├── qglobal.org → qvillage.com
 └── qparallel.prod → qglobal.org
 ```
 
 ### Regional Distribution
 
-- **US East/West**: qvillage.com, qdatabase.net, qserver.io, qcloud.ai, qquantum.tech, alphaq.ai, qparallel.prod
+- **US East/West**: qvillage.com, qdatabase.net, qserver.io, qcloud.ai, qquantum.tech, stableq.ai, qparallel.prod
 - **EU West**: qvillage.com, qdatabase.net, qcloud.ai, qquantum.tech, qglobal.org
-- **Asia East**: qvillage.com, qserver.io, qcloud.ai, alphaq.ai, qglobal.org
+- **Asia East**: qvillage.com, qserver.io, qcloud.ai, stableq.ai, qglobal.org
 - **Australia**: qvillage.com, qglobal.org
 
 ### Health Monitoring
@@ -140,7 +140,7 @@ qvillage.com (Primary - No Fallback)
 | qserver.io | ✅ Active | https://qserver.io/api/health | Auto | qvillage.com |
 | qcloud.ai | ✅ Active | https://qcloud.ai/api/health | Auto | qvillage.com |
 | qquantum.tech | ✅ Active | https://qquantum.tech/api/health | Auto | qvillage.com |
-| alphaq.ai | ✅ Active | https://alphaq.ai/api/health | Auto | qvillage.com |
+| stableq.ai | ✅ Active | https://stableq.ai/api/health | Auto | qvillage.com |
 | qglobal.org | ✅ Active | https://qglobal.org/api/health | Auto | qvillage.com |
 | qparallel.prod | ✅ Active | https://qparallel.prod/api/health | Auto | qglobal.org |
 
@@ -185,18 +185,18 @@ qvillage.com (Primary - No Fallback)
 ### GitHub Repositories
 
 - **Main Repository**: `github.com/qmoi-enhanced` → https://github.com/qmoi-enhanced
-- **QMOI AI**: `github.com/thealphakenya/stable-Q-ai` → https://github.com/thealphakenya/stable-Q-ai
-- **QCity**: `github.com/thealphakenya/qcity` → https://github.com/thealphakenya/qcity
-- **QShare**: `github.com/thealphakenya/qshare` → https://github.com/thealphakenya/qshare
-- **Yap**: `github.com/thealphakenya/yap` → https://github.com/thealphakenya/yap
-- **QStore**: `github.com/thealphakenya/qstore` → https://github.com/thealphakenya/qstore
-- **QVillage**: `github.com/thealphakenya/qvillage` → https://github.com/thealphakenya/qvillage
+- **QMOI AI**: `github.com/thestablekenya/stable-Q-ai` → https://github.com/thestablekenya/stable-Q-ai
+- **QCity**: `github.com/thestablekenya/qcity` → https://github.com/thestablekenya/qcity
+- **QShare**: `github.com/thestablekenya/qshare` → https://github.com/thestablekenya/qshare
+- **Yap**: `github.com/thestablekenya/yap` → https://github.com/thestablekenya/yap
+- **QStore**: `github.com/thestablekenya/qstore` → https://github.com/thestablekenya/qstore
+- **QVillage**: `github.com/thestablekenya/qvillage` → https://github.com/thestablekenya/qvillage
 
 ### GitHub Resources
 
-- **Actions**: `github.com/thealphakenya/qmoi-enhanced/actions` → https://github.com/thealphakenya/qmoi-enhanced/actions
-- **Releases**: `github.com/thealphakenya/qmoi-enhanced/releases` → https://github.com/thealphakenya/qmoi-enhanced/releases
-- **Issues**: `github.com/thealphakenya/qmoi-enhanced/issues` → https://github.com/thealphakenya/qmoi-enhanced/issues
+- **Actions**: `github.com/thestablekenya/qmoi-enhanced/actions` → https://github.com/thestablekenya/qmoi-enhanced/actions
+- **Releases**: `github.com/thestablekenya/qmoi-enhanced/releases` → https://github.com/thestablekenya/qmoi-enhanced/releases
+- **Issues**: `github.com/thestablekenya/qmoi-enhanced/issues` → https://github.com/thestablekenya/qmoi-enhanced/issues
 
 ---
 
@@ -206,12 +206,12 @@ qvillage.com (Primary - No Fallback)
 
 - **Project Dashboard**: `qmoi-enhanced.vercel.app` → https://qmoi-enhanced.vercel.app
 - **Vercel Dashboard**: `vercel.com/dashboard/projects/qmoi-enhanced` → https://vercel.com/dashboard/projects/qmoi-enhanced
-- **Deployments**: `vercel.com/thealphakenya/qmoi-enhanced` → https://vercel.com/thealphakenya/qmoi-enhanced
+- **Deployments**: `vercel.com/thestablekenya/qmoi-enhanced` → https://vercel.com/thestablekenya/qmoi-enhanced
 
 ### HuggingFace
 
-- **Organization**: `huggingface.co/thealphakenya` → https://huggingface.co/thealphakenya
-- **Models**: `huggingface.co/thealphakenya?tab=models` → https://huggingface.co/thealphakenya?tab=models
+- **Organization**: `huggingface.co/thestablekenya` → https://huggingface.co/thestablekenya
+- **Models**: `huggingface.co/thestablekenya?tab=models` → https://huggingface.co/thestablekenya?tab=models
 
 ---
 
@@ -245,15 +245,15 @@ QVillage provides master-only command endpoints for domain and link management:
 
 ### GitHub Releases (v1.2.3)
 
-- **Windows x64**: `github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe`
-- **macOS**: `github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg`
-- **Linux (AppImage)**: `github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage`
-- **Linux (DEB)**: `github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux.deb`
-- **Android**: `github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk`
-- **iOS**: `github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa`
-- **Smart TV**: `github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk`
-- **Chromebook**: `github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-chromebook.zip`
-- **Raspberry Pi**: `github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img`
+- **Windows x64**: `github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe`
+- **macOS**: `github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg`
+- **Linux (AppImage)**: `github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage`
+- **Linux (DEB)**: `github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux.deb`
+- **Android**: `github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk`
+- **iOS**: `github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa`
+- **Smart TV**: `github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk`
+- **Chromebook**: `github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-chromebook.zip`
+- **Raspberry Pi**: `github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img`
 
 ---
 

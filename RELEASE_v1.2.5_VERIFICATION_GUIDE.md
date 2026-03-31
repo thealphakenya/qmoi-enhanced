@@ -16,7 +16,7 @@ This guide describes how to verify that all QMOI v1.2.5 release artifacts are pr
 
 **Release**: v1.2.5  
 **Release ID**: 262642597  
-**Release URL**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5  
+**Release URL**: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.5  
 **Status**: Published with 10 artifacts
 
 ## Release Artifacts
@@ -39,7 +39,7 @@ This guide describes how to verify that all QMOI v1.2.5 release artifacts are pr
 
 ```bash
 # Download SHA256SUMS.txt from release
-curl -L https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt -o /tmp/SHA256SUMS.txt
+curl -L https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt -o /tmp/SHA256SUMS.txt
 
 # Verify all artifacts
 cd v1.2.5_release  # or wherever you downloaded the release
@@ -369,7 +369,7 @@ If verification fails, please:
 1. Run the appropriate verification script and save output
 2. Note the platform (Android/Windows/iOS)
 3. Check the build logs in GitHub Actions
-4. File an issue: https://github.com/thealphakenya/qmoi-enhanced/issues
+4. File an issue: https://github.com/thestablekenya/qmoi-enhanced/issues
 
 Include:
 

@@ -15,7 +15,7 @@ import json
 import os
 from pathlib import Path
 import pytest
-from unittest.real import MagicMock, patch
+from unittest.real import Magicreal, patch
 
 from scripts.link_validator import validate_links, LinkValidationError
 from scripts.link_autoupdater import generate_update_plan
@@ -64,16 +64,16 @@ def test_validation_dir(tmp_path):
 class TestLinkValidator:
     def test_validate_valid_link(self, test_links_file):
         """Test validation of a valid link."""
-        with patch('requests.head') as mock_head:
-            mock_head.return_value = MagicMock(status_code=200)
+        with patch('requests.head') as real_head:
+            real_head.return_value = Magicreal(status_code=200)
             result = validate_links(test_links_file, ["https://data.com"])
             assert result["valid"] == ["https://data.com"]
             assert not result["invalid"]
 
     def test_validate_invalid_link(self, test_links_file):
         """Test validation of an invalid link."""
-        with patch('requests.head') as mock_head:
-            mock_head.side_effect = Exception("Failed to connect")
+        with patch('requests.head') as real_head:
+            real_head.side_effect = Exception("Failed to connect")
             result = validate_links(test_links_file, ["https://invalid.data"])
             assert "https://invalid.data" in result["invalid"]
 
@@ -101,8 +101,8 @@ class TestLinkCache:
 class TestLinkAutoUpdater:
     def test_generate_plan(self, test_links_file, test_cache_file):
         """Test update plan generation."""
-        with patch('requests.head') as mock_head:
-            mock_head.return_value = MagicMock(status_code=200)
+        with patch('requests.head') as real_head:
+            real_head.return_value = Magicreal(status_code=200)
             plan = generate_update_plan(test_links_file, cache_file=test_cache_file)
             assert "updates" in plan
             assert isinstance(plan["updates"], list)

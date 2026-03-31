@@ -277,7 +277,7 @@ verify_service_files() {
     "startup.sh"
     "setup.sh"
     "verify_setup.sh"
-    "mock_server.py"
+    "real_server.py"
   )
 
   for file in "${files[@]}"; do

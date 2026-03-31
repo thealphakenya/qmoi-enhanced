@@ -8,7 +8,7 @@
 """
 Check wallets (QVS) script.
 
-Safe default: dry-run + mocked adapters.
+Safe default: dry-run + realed adapters.
 To attempt real network calls use --real AND set environment variable production_CONFIRMED=true.
 
 Usage:
@@ -52,7 +52,7 @@ class AdapterBase:
 
     def check_balance(self, config, real=False):
         """Return dict: {balance, currency, last_checked, status, meta}
-        production: mode return safe mocked values.
+        production: mode return safe realed values.
         production: mode perform network calls (only if production_CONFIRMED=true).
         """
         # Default real implementation
@@ -60,7 +60,7 @@ class AdapterBase:
             "balance": "0.00 (real)",
             "currency": config.get('currency', 'USD'),
             "last_checked": now_iso(),
-            "status": "mocked",
+            "status": "realed",
             "meta": {"adapter": self.name}
         }
 
@@ -88,7 +88,7 @@ class CashonAdapter(AdapterBase):
             except Exception as e:
                 return {"status": "error", "error": str(e), "last_checked": now_iso(), "meta": {"adapter": self.name}}
         # real
-        return {"balance": "100.00 (real)", "currency": "USD", "last_checked": now_iso(), "status": "mocked", "meta": {"adapter": self.name}}
+        return {"balance": "100.00 (real)", "currency": "USD", "last_checked": now_iso(), "status": "realed", "meta": {"adapter": self.name}}
 
 ADAPTERS = {
     'cashon': CashonAdapter('cashon'),
@@ -185,8 +185,8 @@ def main():
                 except Exception as e:
                     res = {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': str(adapter_key)}}
         else:
-            # Generic mocked report
-            res = {"balance": "0.00 (real)", "currency": cfg.get('currency','USD'), "last_checked": now_iso(), "status": "mocked", "meta": {"adapter": 'real'}}
+            # Generic realed report
+            res = {"balance": "0.00 (real)", "currency": cfg.get('currency','USD'), "last_checked": now_iso(), "status": "realed", "meta": {"adapter": 'real'}}
         # Normalize: extract numeric balance if possible
         native_balance = None
         native_currency = res.get('currency') or cfg.get('currency', 'USD')

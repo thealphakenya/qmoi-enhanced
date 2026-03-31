@@ -190,13 +190,13 @@ qmoi-enhanced/
 │
 ├── components/                       # React components
 │   ├── prodice/
-│   │   ├── prodiceIntegrationStubs.ts
+│   │   ├── prodiceIntegrationreals.ts
 │   │   └── (prodice components)
 │   ├── q-city/
 │   │   ├── QCityDashboard.tsx
 │   │   ├── QMoiAutoprodPanel.tsx
 │   │   └── (Q City components)
-│   ├── alpha-q-ai-system.tsx         # AI system component
+│   ├── stable-q-ai-system.tsx         # AI system component
 │   ├── (other UI components)
 │
 ├── hooks/                            # Custom React hooks (33 total)

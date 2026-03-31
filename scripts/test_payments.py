@@ -3,14 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:58:55Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-"""Simple test to execute payments flow using provider_stub and control server DB.
+"""Simple test to execute payments flow using provider_real and control server DB.
 
 Run: PYTHONPATH=/workspaces/qmoi-enhanced python3 scripts/test_payments.py
 """
 import os
 import sqlite3
 import datetime
-from payments import provider_stub
+from payments import provider_real
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 DB = os.path.join(ROOT, 'qmoi.db')
@@ -22,7 +22,7 @@ cur.execute('CREATE TABLE IF NOT EXISTS transactions (id TEXT PRIMARY KEY, usern
 conn.commit()
 
 # execute creating a provider charge
-res = provider_stub.create_charge('alice', 500)
+res = provider_real.create_charge('alice', 500)
 print('Provider created charge:', res)
 
 # Insert transaction as pending
@@ -33,7 +33,7 @@ conn.commit()
 
 # execute webhook: provider reports settled
 evt = {'id': res.get('provider_ref'), 'type': 'charge.settled', 'data': {'id': res.get('provider_ref'), 'status': 'settled'}}
-handled = provider_stub.handle_webhook(evt)
+handled = provider_real.handle_webhook(evt)
 print('Webhook handled:', handled)
 
 # Mark transaction as settled locally

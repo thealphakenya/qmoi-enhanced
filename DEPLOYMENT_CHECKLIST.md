@@ -14,7 +14,7 @@
 
 ### Environment Preparation
 
-- [ ] Clone repository: `git clone https://github.com/thealphakenya/qmoi-enhanced.git`
+- [ ] Clone repository: `git clone https://github.com/thestablekenya/qmoi-enhanced.git`
 - [ ] Copy environment standard: `cp .env.production.updated .env.production`
 - [ ] Create strong JWT_SECRET (32+ chars): `openssl rand -hex 16`
 - [ ] Update DATABASE_URL with PostgreSQL credentials

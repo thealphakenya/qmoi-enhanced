@@ -116,7 +116,7 @@ components/
 ├── device
 │   ├── AWSCredentialsModal.tsx
 │   ├── AzureCredentialsModal.tsx
-│   ├── DeviceIntegrationStubs.ts
+│   ├── DeviceIntegrationreals.ts
 │   └── GCPCredentialsModal.tsx
 ├── enhanced-system-dashboard.tsx
 ├── enhanced_build_tools.tsx

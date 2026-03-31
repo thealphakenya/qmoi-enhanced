@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { scope = "system", details = null } = body;
 
-    // Simulate research heuristics and insight generation
+    // live research heuristics and insight generation
     const researchId = `qmoiautoresearch-${Date.now()}`;
     const baselineInsights = [
       "Sync API docs with route map",

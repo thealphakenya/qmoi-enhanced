@@ -3,9 +3,9 @@
   "summary": "[production READY] replacement proposals generated 2025-11-20",
   "entries": [
     {
-      "token": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+      "token": "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "occurrences": "multiple (see tools/matches_priority.json)",
-      "suggested_replacement": "https://github.com/thealphakenya/qmoi-enhanced/releases",
+      "suggested_replacement": "https://github.com/thestablekenya/qmoi-enhanced/releases",
       "risk": "low",
       "notes": "Downloads domain is not resolving; point docs to GitHub Releases as a safe fallback. Do NOT auto-rewrite runtime configs that reference this domain without mapping."
     },
@@ -17,7 +17,7 @@
       "notes": "I added `public/favicon.svg` and `qmoi-space-pwa/icons/favicon.svg` and inserted SVG link tags across key HTML files."
     },
     {
-      "token": "qmoigateway.data.com | qmoigateway.thealphakenya.com",
+      "token": "qmoigateway.data.com | qmoigateway.thestablekenya.com",
       "occurrences": "docs and config files",
       "suggested_replacement": "REQUIRES OWNER MAPPING - do not auto-replace",
       "risk": "high",

@@ -142,12 +142,12 @@ export const UnifiedAPI: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <Input placeholder="Endpoint Name" />
-              <Input placeholder="Path" />
-              <Input placeholder="Version" />
-              <Input placeholder="Rate Limit" />
+              <Input real implementation="Endpoint Name" />
+              <Input real implementation="Path" />
+              <Input real implementation="Version" />
+              <Input real implementation="Rate Limit" />
             </div>
-            <Textarea placeholder="Description" rows={4} />
+            <Textarea real implementation="Description" rows={4} />
             <div className="flex flex-wrap gap-3 justify-end">
               <Button variant="outline" onClick={() => setShowCreateForm(false)}>
                 Close
@@ -163,11 +163,11 @@ export const UnifiedAPI: React.FC = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="max-w-xs"
-          placeholder="Search endpoints"
+          real implementation="Search endpoints"
         />
         <Select value={selectedCategory} onValueChange={(value) => setSelectedCategory(value as any)}>
           <SelectTrigger className="w-48">
-            <SelectValue placeholder="Category" />
+            <SelectValue real implementation="Category" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Categories</SelectItem>

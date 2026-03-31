@@ -7,7 +7,7 @@
 
 import React, { useState } from "react";
 
-export default function AlphaQAI() {
+export default function stableQAI() {
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);

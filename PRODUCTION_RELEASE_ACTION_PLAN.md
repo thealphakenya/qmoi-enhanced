@@ -52,7 +52,7 @@ bash scripts/add-github-secrets.sh
 
 ### Option B: Manual Setup via GitHub UI
 
-1. Go to: https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions
+1. Go to: https://github.com/thestablekenya/qmoi-enhanced/settings/secrets/actions
 2. Add these 4 secrets:
 
 | Secret Name                 | Value                                                    |
@@ -77,7 +77,7 @@ bash scripts/setup-production-secrets.sh
 
 After adding secrets, verify in GitHub:
 
-- Go to: https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions
+- Go to: https://github.com/thestablekenya/qmoi-enhanced/settings/secrets/actions
 - All 4 secrets should appear (masked as \*\*\*)
 
 ### Step 2: Dispatch the Build
@@ -91,13 +91,13 @@ bash scripts/dispatch_workflow_with_pat_clean.sh \
   --run
 
 # Method 2: Manual via GitHub UI
-# Go to: https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/build-and-release.yml
+# Go to: https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/build-and-release.yml
 # Click "Run workflow" → select v1.2.4 → "Run workflow"
 ```
 
 ### Step 3: Monitor Build
 
-- Watch: https://github.com/thealphakenya/qmoi-enhanced/actions
+- Watch: https://github.com/thestablekenya/qmoi-enhanced/actions
 - Check logs for:
   - ✓ Keystore restored successfully
   - ✓ APK signed with production credentials
@@ -106,7 +106,7 @@ bash scripts/dispatch_workflow_with_pat_clean.sh \
 
 ### Step 4: Verify Release
 
-- Visit: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4
+- Visit: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4
 - Download and test:
   - `app-release.apk` (production signed)
   - PWA zips (all 7 apps)
@@ -209,8 +209,8 @@ After successful production build:
 
 ### URLs
 
-- Release Page: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4
-- Direct APK: https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/app-release.apk
+- Release Page: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4
+- Direct APK: https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/app-release.apk
 
 ---
 

@@ -67,7 +67,7 @@ qvillage.com         A      13.248.169.48
 qvillage.net         A      13.248.169.48
 qvillage.org         A      13.248.169.48
 qglobal.org          A      13.248.169.48
-alphaq.ai            A      13.248.169.48
+stableq.ai            A      13.248.169.48
 qparallel.prod        A      13.248.169.48
 ```
 

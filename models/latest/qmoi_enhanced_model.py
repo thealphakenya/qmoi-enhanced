@@ -685,7 +685,7 @@ class DealMaker:
 class HuggingFaceIntegration:
     """Manages QMOI Hugging Face Model Integration"""
 
-    def __init__(self, model_name: str = "alphaqmoi/qmoi"):
+    def __init__(self, model_name: str = "stableqmoi/qmoi"):
         self.model_name = model_name
         self.api_url = f"https://api-inference.huggingface.co/models/{model_name}"
         self.hf_token = os.getenv("HUGGINGFACE_TOKEN")

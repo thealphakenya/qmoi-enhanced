@@ -2,7 +2,7 @@
   "timestamp": "2026-03-28T04:58:59.649498",
   "total_domains": 10,
   "domain_details": {
-    "alphaq.ai": {
+    "stableq.ai": {
       "type": "ai_platform",
       "critical": true,
       "description": "Advanced AI system with superior intelligence",
@@ -73,7 +73,7 @@
       ],
       "http_status": 200,
       "fallback_used": false,
-      "fallback_domain": "space.alphaq.ai",
+      "fallback_domain": "space.stableq.ai",
       "synthetic": true
     },
     "q-stable.qmoi.ai": {
@@ -87,7 +87,7 @@
       ],
       "http_status": 200,
       "fallback_used": false,
-      "fallback_domain": "stable.alphaq.ai",
+      "fallback_domain": "stable.stableq.ai",
       "synthetic": true
     },
     "qshare.qvillage.com": {

@@ -225,7 +225,7 @@ Process a thought through consciousness engine.
   "data": {
     "thoughtId": "thought:1711432200:def456",
     "confidence": 0.92,
-    "reasoning": "This thought demonstrates clear intent and emotional engagement",
+    "reasoning": "This thought productionnstrates clear intent and emotional engagement",
     "emotionalTone": "positive",
     "relatedThoughts": 3
   }

@@ -154,8 +154,8 @@ python scripts/start_qmoi_enhanced.py
 ### 3. Access Points
 
 - **Main Dashboard**: http://localhost:7860
-- **Hugging Face Space**: https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system
-- **API Endpoint**: https://api-inference.huggingface.co/models/alphaqmoi/qmoi
+- **Hugging Face Space**: https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
+- **API Endpoint**: https://api-inference.huggingface.co/models/stableqmoi/qmoi
 - **Master Controls**: Master-only access for system management
 
 ## 🔧 Configuration
@@ -302,10 +302,10 @@ python scripts/generate_reports.py
 
 ### Support Channels
 
-- **GitHub**: https://github.com/alphaqmoi/qmoi-ai-system
+- **GitHub**: https://github.com/stableqmoi/qmoi-ai-system
 - **Documentation**: https://qmoi.ai/docs
 - **Support**: support@qmoi.ai
-- **Hugging Face**: https://huggingface.co/alphaqmoi/qmoi-ai-system
+- **Hugging Face**: https://huggingface.co/stableqmoi/qmoi-ai-system
 
 ## 🎯 Success Metrics
 

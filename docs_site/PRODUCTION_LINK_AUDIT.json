@@ -109,246 +109,246 @@
     ],
     "ml_service": [
       {
-        "url": "https://huggingface.co/alphaqmoi/qmoi",
+        "url": "https://huggingface.co/stableqmoi/qmoi",
         "priority": 5,
         "status": "pending_verification"
       },
       {
-        "url": "https://huggingface.co/alphaqmoi/qmoi-ai-system",
+        "url": "https://huggingface.co/stableqmoi/qmoi-ai-system",
         "priority": 5,
         "status": "pending_verification"
       },
       {
-        "url": "https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system",
+        "url": "https://huggingface.co/spaces/stableqmoi/qmoi-ai-system",
         "priority": 5,
         "status": "pending_verification"
       },
       {
-        "url": "https://api-inference.huggingface.co/models/alphaqmoi/qmoi",
+        "url": "https://api-inference.huggingface.co/models/stableqmoi/qmoi",
         "priority": 5,
         "status": "pending_verification"
       }
     ],
     "production_download": [
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
         "priority": 1,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
         "priority": 1,
         "status": "pending_verification"
       }
     ],
     "version_control": [
       {
-        "url": "https://github.com/thealphakenya/qmoi-enhanced",
+        "url": "https://github.com/thestablekenya/qmoi-enhanced",
         "priority": 3,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/stable-Q-ai",
+        "url": "https://github.com/thestablekenya/stable-Q-ai",
         "priority": 3,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thealphakenya/stable-Q-ai/releases/tag/v1.0.177",
+        "url": "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
         "priority": 3,
         "status": "pending_verification"
       },

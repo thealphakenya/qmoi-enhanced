@@ -28,7 +28,7 @@ When you connect the GitHub repository to Vercel:
 
 ```bash
 1. Vercel detects the repository has vercel.json
-2. Automatic clone from: github.com/thealphakenya/qmoi-enhanced
+2. Automatic clone from: github.com/thestablekenya/qmoi-enhanced
 3. Branch: autosync-backup-20250926-232440
 4. Build command: npm run build
 5. Install command: npm install --legacy-peer-deps
@@ -106,7 +106,7 @@ Features:
 1. Go to [https://vercel.com/dashboard](https://vercel.com/dashboard)
 2. Click "Add New..." → "Project"
 3. Click "Import Git Repository"
-4. Enter: `https://github.com/thealphakenya/qmoi-enhanced`
+4. Enter: `https://github.com/thestablekenya/qmoi-enhanced`
 5. Select branch: `autosync-backup-20250926-232440`
 6. Click "Import"
 
@@ -359,7 +359,7 @@ Expected performance after deployment:
 1. **Connect to Vercel**
    ```bash
    # Go to vercel.com/new and import repository
-   # Select: thealphakenya/qmoi-enhanced
+   # Select: thestablekenya/qmoi-enhanced
    # Branch: autosync-backup-20250926-232440
    ```
 

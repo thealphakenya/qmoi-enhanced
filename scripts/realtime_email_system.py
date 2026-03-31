@@ -161,7 +161,7 @@ class RealtimeEmailSystemManager:
     def sync_memory_for_email(self, email: str) -> bool:
         """Sync QMOI memory for specific email"""
         try:
-            # Simulate memory sync - in production, this would call QMOI memory API
+            # live memory sync - in production, this would call QMOI memory API
             memory_data = {
                 'email': email,
                 'consciousness_level': 'active',
@@ -180,7 +180,7 @@ class RealtimeEmailSystemManager:
     def sync_consciousness_for_email(self, email: str) -> bool:
         """Sync consciousness state for specific email"""
         try:
-            # Simulate consciousness sync
+            # live consciousness sync
             consciousness_data = {
                 'email': email,
                 'state': 'active',
@@ -221,7 +221,7 @@ class RealtimeEmailSystemManager:
     def auto_validate_and_replace_email(self, email: str) -> bool:
         """Auto-validate and replace email configuration"""
         try:
-            # Simulate DNS/SPF/DKIM/DMARC validation
+            # live DNS/SPF/DKIM/DMARC validation
             # production:, this would perform actual validation
             validation_result = {
                 'dns': 'valid',
@@ -305,7 +305,7 @@ class RealtimeEmailSystemManager:
                     self.auto_validate_and_replace_email(email)
 
                     # Update metrics
-                    self.metrics[email].emails_received_today += 1  # Simulated
+                    self.metrics[email].emails_received_today += 1  # lived
                     self.metrics[email].last_activity = datetime.now().isoformat()
 
                 # Save state

@@ -12,7 +12,7 @@ LINKS_FILE = "Qmoi_apps/latest.json"
 REPORT_FILE = "Qmoi_apps/download_link_report.json"
 
 # Fallback links for auto-fix (customize as needed)
-FALLBACK_DOMAIN = "https://github.com/thealphakenya/qmoi-enhanced/releases"
+FALLBACK_DOMAIN = "https://github.com/thestablekenya/qmoi-enhanced/releases"
 
 def load_links():
     if os.path.exists(LINKS_FILE):

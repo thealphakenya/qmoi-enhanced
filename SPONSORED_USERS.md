@@ -502,16 +502,16 @@ curl -X POST https://qmoi.ai/api/admin/sponsored/create \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <ADMIN_JWT_TOKEN>" \
   -d '{
-    "username": "sponsored_beta_tester",
-    "email": "betaTester@data.com",
+    "username": "sponsored_stable_tester",
+    "email": "stableTester@data.com",
     "sponsorId": "1",
-    "programId": "prog_beta_2024",
+    "programId": "prog_stable_2024",
     "features": ["chat", "trading"],
     "expiresAt": "2024-12-31T23:59:59Z",
     "maxTokens": 10000,
     "metadata": {
       "country": "Kenya",
-      "referralCode": "BETA2024"
+      "referralCode": "stable2024"
     }
   }'
 ```
@@ -523,7 +523,7 @@ curl -X POST https://qmoi.ai/api/admin/sponsored/create \
   "success": true,
   "message": "Sponsored user created successfully",
   "userId": "5",
-  "username": "sponsored_beta_tester",
+  "username": "sponsored_stable_tester",
   "sponsoredUntil": "2024-12-31T23:59:59Z",
   "accessToken": "tok_sponsored_5..."
 }
@@ -581,7 +581,7 @@ curl -X POST https://qmoi.ai/api/admin/sponsored/bulk-create \
 
 ```json
 {
-  "programId": "prog_beta_2024",
+  "programId": "prog_stable_2024",
   "name": "release Testing Program 2024",
   "description": "Limited access to new features",
   "sponsor": {
@@ -698,10 +698,10 @@ Dashboard Tabs (Sponsored User View):
   "sponsoredUsers": [
     {
       "id": "5",
-      "username": "sponsored_beta_tester",
+      "username": "sponsored_stable_tester",
       "email": "user@data.com",
       "role": "Sponsored User",
-      "programId": "prog_beta_2024",
+      "programId": "prog_stable_2024",
       "sponsorId": "1",
       "createdAt": "2024-01-15T10:30:00Z",
       "expiresAt": "2024-12-31T23:59:59Z",
@@ -768,7 +768,7 @@ curl -X DELETE https://qmoi.ai/api/admin/sponsored/delete \
 {
   "success": true,
   "program": {
-    "programId": "prog_beta_2024",
+    "programId": "prog_stable_2024",
     "name": "release Testing Program 2024",
     "status": "active",
     "userCount": 25,

@@ -43,6 +43,6 @@ git pull origin main --rebase
 git push origin main
 
 Write-Host "✅ Git push completed successfully!" -ForegroundColor Green
-Write-Host "Repository: https://github.com/thealphakenya/Alpha-Q-ai" -ForegroundColor Cyan
+Write-Host "Repository: https://github.com/thestablekenya/stable-Q-ai" -ForegroundColor Cyan
 
 

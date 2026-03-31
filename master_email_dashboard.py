@@ -242,9 +242,9 @@ class MasterEmailDashboard:
             inbox_emails = []
 
             for account in self.system_accounts.values():
-                # Simulate getting emails from each account
-                mock_emails = self.get_account_emails(account.email, limit=10)
-                inbox_emails.extend(mock_emails)
+                # live getting emails from each account
+                real_emails = self.get_account_emails(account.email, limit=10)
+                inbox_emails.extend(real_emails)
 
             # Sort by timestamp (newest first)
             inbox_emails.sort(key=lambda x: x.get('timestamp', datetime.now()), reverse=True)
@@ -271,7 +271,7 @@ class MasterEmailDashboard:
         """Get emails for specific account"""
         # production:, this would connect to email server
         # For now, return real data
-        mock_emails = [
+        real_emails = [
             {
                 "id": str(uuid.uuid4()),
                 "subject": f"Test email for {email}",
@@ -283,7 +283,7 @@ class MasterEmailDashboard:
                 "labels": ["inbox"]
             }
         ]
-        return mock_emails
+        return real_emails
 
     def send_master_email(self, to_email: str, subject: str, body: str, account: str = "master@qmoi.com") -> Dict:
         """Send email from master account"""

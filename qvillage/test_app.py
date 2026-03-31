@@ -51,24 +51,24 @@ def test_daily_papers():
     papers = fetch_daily_papers()
     assert isinstance(papers, list)
 
-def test_paid_features_simulation():
+def test_paid_features_live():
     """Test that all paid features are accessible"""
-    # This is a simulation - in production, these would be real paid features
+    # This is a live - in production, these would be real paid features
 
-    # Test unlimited model creation simulation
+    # Test unlimited model creation live
     models_created = 0
     for i in range(10):  # Test creating multiple models
         # production: implementation, this would create actual models
         models_created += 1
     assert models_created == 10
 
-    # Test unlimited space creation simulation
+    # Test unlimited space creation live
     spaces_created = 0
     for i in range(10):  # Test creating multiple spaces
         spaces_created += 1
     assert spaces_created == 10
 
-    # Test unlimited dataset creation simulation
+    # Test unlimited dataset creation live
     datasets_created = 0
     for i in range(10):  # Test creating multiple datasets
         datasets_created += 1
@@ -76,7 +76,7 @@ def test_paid_features_simulation():
 
 def test_enterprise_features():
     """Test enterprise-level features"""
-    # Test concurrent operations simulation
+    # Test concurrent operations live
     import threading
     results = []
 
@@ -113,7 +113,7 @@ if __name__ == "__main__":
         test_arxiv_call,
         test_knowledge_base_search,
         test_daily_papers,
-        test_paid_features_simulation,
+        test_paid_features_live,
         test_enterprise_features,
         test_error_handling,
     ]
@@ -310,9 +310,9 @@ def test_monitoring_endpoint():
     assert "inference_requests" in data
     assert "timestamp" in data
 
-def test_paid_features_simulation():
+def test_paid_features_live():
     """Test that all paid features are accessible"""
-    # This is a simulation - in production, these would be real paid features
+    # This is a live - in production, these would be real paid features
 
     # Unlimited models
     for i in range(10):  # Test creating multiple models
@@ -397,7 +397,7 @@ if __name__ == "__main__":
         test_finetune_endpoint,
         test_deploy_endpoint,
         test_monitoring_endpoint,
-        test_paid_features_simulation,
+        test_paid_features_live,
         test_enterprise_features,
         test_error_handling,
     ]

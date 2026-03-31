@@ -41,7 +41,7 @@ This session completed the **diagnostic and infrastructure phase** of the Links 
 
 **Healthy Domains** (✅ Working):
 - ✅ qvillage.com (92ms response time)
-- ✅ alphaq.ai (86ms response time)
+- ✅ stableq.ai (86ms response time)
 - ✅ qvillage.net (671ms response time)
 - ✅ qglobal.org (125ms response time)
 
@@ -147,7 +147,7 @@ Fallback chains: ALL WORKING ✅
 - `lib/qmoi/domain_registry.ts` - TypeScript export
 
 **Registry Content** (13 domains total):
-- 5 Critical domains: qvillage.com, qmoi.ai, alphaq.ai, qvillage.net, qglobal.org
+- 5 Critical domains: qvillage.com, qmoi.ai, stableq.ai, qvillage.net, qglobal.org
 - 4 Fallback domains: qvillage.org, qparallel.prod, and 2 regional alternates
 - 4 Service domains: qcity.qmoi.ai, qmoi-space.qmoi.ai, yap.qmoi.ai, q-stable.qmoi.ai
 

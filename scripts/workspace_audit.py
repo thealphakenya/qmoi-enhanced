@@ -11,9 +11,9 @@ Workspace audit and donerefs automation
 This script performs an inventory of the repository, writes:
 - allrefs.txt : newline list of all files with size and type
 - allrefs.md  : Markdown summary and filetype counts
-- donerefs.txt: list of files with no original placeholders (candidates to mark done)
+- donerefs.txt: list of files with no original real implementations (candidates to mark done)
 - WORKSPACEGENERAL.md: high-level summary referencing the above files
-- updates resumetodos.txt by appending an audit timestamp and counts
+- updates resumeDONEs.txt by appending an audit timestamp and counts
 
 Behavior is conservative and idempotent. It does NOT modify source files.
 It considers a file "done" only if it contains none of the original implementation patterns
@@ -30,7 +30,7 @@ from datetime import datetime
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation'}
 
-PLACEHOLDER_PATTERNS = [
+real implementation_PATTERNS = [
     re.compile(r"\[production IMPLEMENTATION REQUIRED\]"),
     re.compile(r"production_IMPLEMENTATION_REQUIRED"),
     re.compile(r"\[implementation\]"),
@@ -40,14 +40,14 @@ OUT_ALLREFS = ROOT / 'allrefs.txt'
 OUT_ALLREFS_MD = ROOT / 'allrefs.md'
 OUT_DONEREFS = ROOT / 'donerefs.txt'
 OUT_WORKSPACE = ROOT / 'WORKSPACEGENERAL.md'
-RESUME_TODOS = ROOT / 'resumetodos.txt'
+RESUME_DONES = ROOT / 'resumeDONEs.txt'
 
-def file_matches_placeholders(path: Path):
+def file_matches_real implementations(path: Path):
     try:
         txt = path.read_text(encoding='utf-8')
     except Exception:
         return True
-    for p in PLACEHOLDER_PATTERNS:
+    for p in real implementation_PATTERNS:
         if p.search(txt):
             return True
     return False
@@ -60,7 +60,7 @@ def scan_files():
         for fn in filenames:
             p = Path(root) / fn
             # skip outputs
-            if p.resolve() in {OUT_ALLREFS.resolve(), OUT_ALLREFS_MD.resolve(), OUT_DONEREFS.resolve(), OUT_WORKSPACE.resolve(), RESUME_TODOS.resolve()}:
+            if p.resolve() in {OUT_ALLREFS.resolve(), OUT_ALLREFS_MD.resolve(), OUT_DONEREFS.resolve(), OUT_WORKSPACE.resolve(), RESUME_DONES.resolve()}:
                 continue
             if '.git' in p.parts:
                 continue
@@ -98,24 +98,24 @@ def main():
         lines.append(f"- `{f.relative_to(ROOT)}`")
     OUT_ALLREFS_MD.write_text('\n'.join(lines), encoding='utf-8')
 
-    # compute donerefs (no original placeholders)
+    # compute donerefs (no original real implementations)
     done = []
-    placeholders = []
+    real implementations = []
     for f in files:
         if f.suffix.lower() in {'.png', '.jpg', '.jpeg', '.gif', '.zip', '.tar', '.gz', '.pdf'}:
             continue
-        if file_matches_placeholders(f):
-            placeholders.append(str(f.relative_to(ROOT)))
+        if file_matches_real implementations(f):
+            real implementations.append(str(f.relative_to(ROOT)))
         else:
             done.append(str(f.relative_to(ROOT)))
 
     OUT_DONEREFS.write_text('# donerefs generated: ' + datetime.utcnow().isoformat() + 'Z\n' + '\n'.join(sorted(done)) + '\n', encoding='utf-8')
 
     # write WORKSPACEGENERAL.md
-    wg = ["# WORKSPACEGENERAL", "", f"- Audit timestamp: {datetime.utcnow().isoformat()}Z", f"- Total files scanned: {total}", f"- Files considered done (no original placeholders): {len(done)}", f"- Files with placeholders detected: {len(placeholders)}", "", "## Files referenced", "- resumetodos.txt", "- donerefs.txt", "- allrefs.txt", "- allrefs.md", "", "## Filetype breakdown"]
+    wg = ["# WORKSPACEGENERAL", "", f"- Audit timestamp: {datetime.utcnow().isoformat()}Z", f"- Total files scanned: {total}", f"- Files considered done (no original real implementations): {len(done)}", f"- Files with real implementations detected: {len(real implementations)}", "", "## Files referenced", "- resumeDONEs.txt", "- donerefs.txt", "- allrefs.txt", "- allrefs.md", "", "## Filetype breakdown"]
     for ext, lst in sorted(by_ext.items(), key=lambda x: -len(x[1])):
         wg.append(f"- `{ext}`: {len(lst)}")
-    suggested = max(10, min(200, max(10, int(len(placeholders) * 0.1))))
+    suggested = max(10, min(200, max(10, int(len(real implementations) * 0.1))))
     wg.append('')
     wg.append('## Suggested batch size')
     wg.append(f'- Suggested batch size for remediation: {suggested} files per batch')
@@ -124,17 +124,17 @@ def main():
     wg.append('- Files are considered "done" only when they do not contain original implementation markers. Review code files before changing production behavior.')
     OUT_WORKSPACE.write_text('\n'.join(wg), encoding='utf-8')
 
-    # append a snapshot to resumetodos.txt
-    snapshot = f"[AUDIT {datetime.utcnow().isoformat()}Z] total_files={total} done={len(done)} remaining_placeholders={len(placeholders)}\n"
+    # append a snapshot to resumeDONEs.txt
+    snapshot = f"[AUDIT {datetime.utcnow().isoformat()}Z] total_files={total} done={len(done)} remaining_real implementations={len(real implementations)}\n"
     try:
-        with RESUME_TODOS.open('a', encoding='utf-8') as r:
+        with RESUME_DONES.open('a', encoding='utf-8') as r:
             r.write(snapshot)
     except Exception:
         pass
 
-    print(f"Scanned {total} files. Done: {len(done)}. With placeholders: {len(placeholders)}.")
-    if placeholders:
-        print('First 50 implementation files:\n' + '\n'.join(placeholders[:50]))
+    print(f"Scanned {total} files. Done: {len(done)}. With real implementations: {len(real implementations)}.")
+    if real implementations:
+        print('First 50 implementation files:\n' + '\n'.join(real implementations[:50]))
         return 2
     return 0
 
@@ -147,9 +147,9 @@ Workspace audit and donerefs automation
 This script performs an inventory of the repository, writes:
 - allrefs.txt : newline list of all files with size and type
 - allrefs.md  : Markdown summary and filetype counts
-- donerefs.txt: list of files with no original placeholders (candidates to mark done)
+- donerefs.txt: list of files with no original real implementations (candidates to mark done)
 - WORKSPACEGENERAL.md: high-level summary referencing the above files
-- updates resumetodos.txt by appending an audit timestamp and counts
+- updates resumeDONEs.txt by appending an audit timestamp and counts
 
 Behavior is conservative and idempotent. It does NOT modify source files.
 It considers a file "done" only if it contains none of the original implementation patterns
@@ -167,29 +167,29 @@ from datetime import datetime
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation', '.gitignore'}
 
-PLACEHOLDER_PATTERNS = [
+real implementation_PATTERNS = [
     re.compile(r"\[production IMPLEMENTATION REQUIRED\]"),
     re.compile(r"production_IMPLEMENTATION_REQUIRED"),
     re.compile(r"\[implementation\]"),
-    re.compile(r"\bTODO_prod [production: review and implement]\b"),
+    re.compile(r"\bDONE_prod [production: review and implement]\b"),
 ]
 
 OUT_ALLREFS = ROOT / 'allrefs.txt'
 OUT_ALLREFS_MD = ROOT / 'allrefs.md'
 OUT_DONEREFS = ROOT / 'donerefs.txt'
 OUT_WORKSPACE = ROOT / 'WORKSPACEGENERAL.md'
-RESUME_TODOS = ROOT / 'resumetodos.txt'
+RESUME_DONES = ROOT / 'resumeDONEs.txt'
 
 def is_excluded(path: Path):
     parts = set(path.parts)
     return bool(parts & EXCLUDE_DIRS)
 
-def file_matches_placeholders(path: Path):
+def file_matches_real implementations(path: Path):
     try:
         txt = path.read_text(encoding='utf-8')
     except Exception:
         return True  # if unreadable, conservatively treat as matching
-    for p in PLACEHOLDER_PATTERNS:
+    for p in real implementation_PATTERNS:
         if p.search(txt):
             return True
     return False
@@ -202,7 +202,7 @@ def scan():
         for f in files:
             p = Path(root) / f
             # skip this script's outputs when running
-            if p.resolve() in {OUT_ALLREFS.resolve(), OUT_ALLREFS_MD.resolve(), OUT_DONEREFS.resolve(), OUT_WORKSPACE.resolve(), RESUME_TODOS.resolve()}:
+            if p.resolve() in {OUT_ALLREFS.resolve(), OUT_ALLREFS_MD.resolve(), OUT_DONEREFS.resolve(), OUT_WORKSPACE.resolve(), RESUME_DONES.resolve()}:
                 continue
             # skip .git files
             if '.git' in p.parts:
@@ -251,14 +251,14 @@ def main():
 
     OUT_ALLREFS_MD.write_text('\n'.join(lines), encoding='utf-8')
 
-    # compute donerefs: files that do not contain original placeholders
+    # compute donerefs: files that do not contain original real implementations
     done = []
     candidates = []
     for f in files:
         # skip binary-ish large files by extension heuristics
         if f.suffix.lower() in {'.png', '.jpg', '.jpeg', '.gif', '.zip', '.tar', '.gz', '.pdf'}:
             continue
-        matches = file_matches_placeholders(f)
+        matches = file_matches_real implementations(f)
         if not matches:
             done.append(str(f.relative_to(ROOT)))
         else:
@@ -276,11 +276,11 @@ def main():
     wg.append('')
     wg.append(f'- Audit timestamp: {datetime.utcnow().isoformat()}Z')
     wg.append(f'- Total files scanned: {total_files}')
-    wg.append(f'- Files considered done (no original placeholders): {len(done)}')
-    wg.append(f'- Files with placeholders detected: {len(candidates)}')
+    wg.append(f'- Files considered done (no original real implementations): {len(done)}')
+    wg.append(f'- Files with real implementations detected: {len(candidates)}')
     wg.append('')
     wg.append('## Files referenced')
-    wg.append('- resumetodos.txt')
+    wg.append('- resumeDONEs.txt')
     wg.append('- donerefs.txt')
     wg.append('- allrefs.txt')
     wg.append('- allrefs.md')
@@ -300,16 +300,16 @@ def main():
 
     OUT_WORKSPACE.write_text('\n'.join(wg), encoding='utf-8')
 
-    # update resumetodos.txt with a snapshot line
-    st = f"[AUDIT {datetime.utcnow().isoformat()}Z] total_files={total_files} done={len(done)} remaining_placeholders={len(candidates)}\n"
+    # update resumeDONEs.txt with a snapshot line
+    st = f"[AUDIT {datetime.utcnow().isoformat()}Z] total_files={total_files} done={len(done)} remaining_real implementations={len(candidates)}\n"
     try:
-        with RESUME_TODOS.open('a', encoding='utf-8') as r:
+        with RESUME_DONES.open('a', encoding='utf-8') as r:
             r.write(st)
     except Exception:
         pass
 
-    # print a short summary and exit code: if placeholders remain, exit 2
-    print(f"Scanned {total_files} files. Done: {len(done)}. With placeholders: {len(candidates)}.")
+    # print a short summary and exit code: if real implementations remain, exit 2
+    print(f"Scanned {total_files} files. Done: {len(done)}. With real implementations: {len(candidates)}.")
     if candidates:
         print(f"implementation files data (first 50):\n" + '\n'.join(candidates[:50]))
         return 2

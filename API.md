@@ -221,7 +221,7 @@ Content-Type: application/json
 - `POST` `/api/emergency/email`
 - `GET` `/api/emergency/lockdown`
 - `POST` `/api/emergency/sms`
-- `GET` `/api/emergency/wipe`
+- `GET` `/api/emergency/production completee`
 - `GET` `/api/employment`
 - `GET` `/api/employment/megavault`
 - `GET` `/api/employment/payment`

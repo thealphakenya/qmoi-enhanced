@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 Backup remote release assets and replace with local files listed in release_assets_manifest.json
-Usage: GITHUB_TOKEN=<token> python3 scripts/replace_all_release_assets.py --owner thealphakenya --repo qmoi-enhanced --tag v1.2.5
+Usage: GITHUB_TOKEN=<token> python3 scripts/replace_all_release_assets.py --owner thestablekenya --repo qmoi-enhanced --tag v1.2.5
 """
 import argparse, json, os, sys, subprocess, time, requests
 

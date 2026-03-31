@@ -15,7 +15,7 @@ to replace mismatched assets and upload required assets to the repository's
 latest release (dry-run is default).
 
 NOTE: This script targets the same repository the workspace represents by
-default (`thealphakenya/qmoi-enhanced`). You can change `OWNER` and `REPO`
+default (`thestablekenya/qmoi-enhanced`). You can change `OWNER` and `REPO`
 variables below if needed.
 """
 import os
@@ -31,7 +31,7 @@ MANIFEST_PATH = os.path.join(ROOT, 'release_assets_manifest.json')
 REPORT_PATH = os.path.join(ROOT, 'reports', 'github_releases_check.json')
 
 # Default repo values (update if checking a different repo)
-OWNER = os.environ.get('GITHUB_OWNER', 'thealphakenya')
+OWNER = os.environ.get('GITHUB_OWNER', 'thestablekenya')
 REPO = os.environ.get('GITHUB_REPO', 'qmoi-enhanced')
 
 GITHUB_API = 'https://api.github.com'
@@ -229,7 +229,7 @@ artifact declared in `qcity-artifacts/qmoi_build_report.json` is present as a
 release asset for a matching tag/version.
 
 Usage:
-  GITHUB_TOKEN=<token> python3 scripts/check_github_releases.py --repo thealphakenya/qmoi-enhanced --out docs/github_release_report.json
+  GITHUB_TOKEN=<token> python3 scripts/check_github_releases.py --repo thestablekenya/qmoi-enhanced --out docs/github_release_report.json
 
 Notes:
 - This script requires a GitHub token with `repo` scope to access release assets for private repos.

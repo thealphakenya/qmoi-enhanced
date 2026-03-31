@@ -476,7 +476,7 @@ All systems tested, documented, and ready for deployment.
 
 **Last Updated**: January 25, 2026  
 **Maintained By**: QMOI Team  
-**Repository**: github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced
+**Repository**: github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced
 
 ## 🔄 Evolution Status
 

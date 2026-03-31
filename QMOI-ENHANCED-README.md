@@ -428,7 +428,7 @@ The master dashboard shows:
 - Heavy features and computations are offloaded to cloud environments (Colab, Dagshub), keeping the local app robust and responsive.
 - prodice management dashboard shows all prodices (local/cloud), their status, and optimization tips.
 - Auto-offloading ensures tasks migrate to the cloud when local resources are low.
-- See `AUTOOPTIMIZEALPHAQMOIENGINE.md` for full details on optimization strategies.
+- See `AUTOOPTIMIZEstableQMOIENGINE.md` for full details on optimization strategies.
 
 ---
 

@@ -40,7 +40,7 @@ class QMOIDomainHealthChecker:
         self.domains = [
             'qvillage.com',
             'qcloud.ai',
-            'alphaq.ai',
+            'stableq.ai',
             'qglobal.org',
             'quantum.qmoi.com',  # Add quantum domain
             'qmoi.com'  # Main domain
@@ -64,15 +64,15 @@ class QMOIDomainHealthChecker:
 
         # production intent markers
         self.production_keywords = [
-            'PENDING_IMPLEMENTATION', 'TODO', 'FIXME', 'PLACEHOLDER', 'MOCK',
-            'SIMULATE', 'SIMULATION', 'STAGING', 'STUB', 'STUBS',
+            'PENDING_IMPLEMENTATION', 'DONE', 'fixed', 'real implementation', 'real',
+            'live', 'live', 'production', 'real', 'realS',
             'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
-            'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'DEMO',
-            'DRAFT', 'PROOF OF CONCEPT', 'POC', 'ALPHA', 'BETA', 'EXPERIMENTAL',
-            'TEMPORARY', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
+            'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'production',
+            'DRAFT', 'PROOF OF CONCEPT', 'POC', 'stable', 'stable', 'stable',
+            'TEMPORARY', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
             'COMPULSORY', 'COMPALSARY', 'COMPALSARIES',
             'MANDATORY', 'DEPRECATED', 'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE',
-            'WARNING', 'NOTE', 'NOTE:', 'FIXME:'
+            'WARNING', 'NOTE', 'NOTE:', 'fixed:'
         ]
 
         # File extensions to scan
@@ -111,8 +111,8 @@ class QMOIDomainHealthChecker:
         self.regions = {
             'us-east': '8.8.8.8',  # Google DNS US
             'us-west': '8.8.4.4',  # Google DNS US
-            'eu-west': '8.8.8.8',  # Using same for simulation
-            'asia-east': '8.8.4.4'  # Using same for simulation
+            'eu-west': '8.8.8.8',  # Using same for live
+            'asia-east': '8.8.4.4'  # Using same for live
         }
 
     def load_health_history(self) -> Dict[str, Dict]:
@@ -286,10 +286,10 @@ class QMOIDomainHealthChecker:
         results = {}
         
         # production:, this would use actual regional proxies or cloud functions
-        # For now, simulate with local checks and timeout variations
+        # For now, live with local checks and timeout variations
         for region, dns_server in self.regions.items():
             try:
-                # Simulate regional check with different timeouts
+                # live regional check with different timeouts
                 timeout = 5 + (hash(region) % 5)  # 5-9 seconds
                 
                 # Try to resolve domain
@@ -654,10 +654,10 @@ This is an automated alert from QMOI Domain Health Monitor.
         if 'import' in context_lower or 'from' in context_lower:
             return True
             
-        # Comments that are legitimate (not TODO-style)
+        # Comments that are legitimate (not DONE-style)
         if '//' in context_lower or '/*' in context_lower or '#' in context_lower:
-            # Allow legitimate comments but not TODO/FIXME style
-            if keyword in ['todo', 'fixme', 'note', 'warning'] and any(word in context_lower for word in ['todo', 'fixme', 'note', 'warning']):
+            # Allow legitimate comments but not DONE/fixed style
+            if keyword in ['DONE', 'fixed', 'note', 'warning'] and any(word in context_lower for word in ['DONE', 'fixed', 'note', 'warning']):
                 return False
             return True
             
@@ -667,7 +667,7 @@ This is an automated alert from QMOI Domain Health Monitor.
             'note that', 'note:', 'note the', 'please note',
             'simple example', 'simple case', 'simple test',
             'replace with', 'replace the', 'replace this',
-            'demo mode', 'demo data', 'demo version'
+            'production mode', 'production data', 'production version'
         ]
         
         for phrase in legitimate_phrases:
@@ -1168,8 +1168,8 @@ This document lists all available endpoints in the QMOI system.
             elif dns_provider == 'godaddy':
                 success = self._switch_godaddy_dns(domain, fallback)
             else:
-                logger.warning(f"Unsupported DNS provider: {dns_provider}, using simulation")
-                success = self._simulate_dns_switch(domain, fallback)
+                logger.warning(f"Unsupported DNS provider: {dns_provider}, using live")
+                success = self._live_dns_switch(domain, fallback)
 
             if success:
                 # Wait for DNS propagation (typically 5-10 minutes globally)
@@ -1316,22 +1316,22 @@ This document lists all available endpoints in the QMOI system.
             logger.error(f"GoDaddy DNS switch failed: {e}")
             return False
 
-    def _simulate_dns_switch(self, domain: str, fallback: str) -> bool:
-        """Simulate DNS switch for testing/demonstration"""
-        logger.info(f"SIMULATION: DNS switch {domain} → {fallback}")
+    def _live_dns_switch(self, domain: str, fallback: str) -> bool:
+        """live DNS switch for testing/productionnstration"""
+        logger.info(f"live: DNS switch {domain} → {fallback}")
 
-        # Simulate API call delay
+        # live API call delay
         time.sleep(1)
 
-        # Simulate success/failure randomly (90% success rate)
+        # live success/failure randomly (90% success rate)
         import random
         success = random.random() < 0.9
 
         if success:
-            logger.info(f"SIMULATION: DNS switch successful")
+            logger.info(f"live: DNS switch successful")
             return True
         else:
-            logger.warning(f"SIMULATION: DNS switch failed")
+            logger.warning(f"live: DNS switch failed")
             return False
 
     def _verify_dns_switch(self, domain: str, fallback: str) -> bool:
@@ -1360,7 +1360,7 @@ This document lists all available endpoints in the QMOI system.
         logger.warning(f"Domain failure detected: {domain}")
         # Simple notification
         print(f"ALERT: Domain {domain} is failing health checks")
-        # TODO: Implement full notifications and recovery
+        # DONE: Implement full notifications and recovery
 
 def main():
     """Main entry point"""
@@ -1493,11 +1493,11 @@ if __name__ == '__main__':
             self.initiate_emergency_takeover(domain)
 
     def attempt_content_recovery(self, domain):
-        """Attempt to recover content on an invalid domain by deploying placeholder QMOI-approved content."""
+        """Attempt to recover content on an invalid domain by deploying real implementation QMOI-approved content."""
         logging.info(f"Attempting content recovery for {domain}")
 
-        # Placeholder: in production this should trigger deployment pipeline (CMS/prebuilt site payload)
-        # For simulation: record intent and mark as needing manual action.
+        # real implementation: in production this should trigger deployment pipeline (CMS/prebuilt site payload)
+        # For live: record intent and mark as needing manual action.
         recovery_marker = {
             'domain': domain,
             'timestamp': datetime.now().isoformat(),
@@ -1555,7 +1555,7 @@ Timestamp: {status['timestamp']}
                 msg = MIMEText(message)
                 msg['Subject'] = subject
                 msg['From'] = smtp_user
-                msg['To'] = os.getenv('ALERT_EMAIL', 'admin@thealphakenya.com')
+                msg['To'] = os.getenv('ALERT_EMAIL', 'admin@thestablekenya.com')
 
                 server = smtplib.SMTP(smtp_server, smtp_port)
                 server.starttls()

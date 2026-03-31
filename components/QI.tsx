@@ -20,7 +20,7 @@ import {
   FaDatabase,
   FaDownload,
   FaHeart,
-  FaKey,
+  realy,
   FaLock,
   FaMapMarkerAlt,
   FaMemory,
@@ -226,7 +226,7 @@ class QIErrorBoundary extends React.Component<
 // Constants
 const MASTER_EMAILS = [
   "victor@kwemoi@gmail.com",
-  "thealphakenya@gmail.com",
+  "thestablekenya@gmail.com",
   "leah@chebet.com",
 ];
 const MASTER_EMAILS_SET = new Set(MASTER_EMAILS);
@@ -620,7 +620,7 @@ function QIComponent() {
   return (
     <QIErrorBoundary>
       <Card>
-        <QIStateWindow userEmail={"demo@demo.com"} userPhone={"0000000000"} />
+        <QIStateWindow userEmail={"production@production.com"} userPhone={"0000000000"} />
         <CardHeader>
           <CardTitle>
             Q-I{" "}
@@ -698,7 +698,7 @@ function QIComponent() {
               variant="outline"
               onClick={() => setShowNetworkSettings(true)}
             >
-              {React.createElement(FaKey as React.ElementType, {
+              {React.createElement(realy as React.ElementType, {
                 className: "mr-2",
               })}{" "}
               Network

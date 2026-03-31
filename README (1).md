@@ -224,39 +224,39 @@ title: "\# QMOI - Quantum Master Orchestrator Intelligence"
 
 # |-----------|---------------|----------------------------------------------------------|---------------|----------|
 
-# | QMOI AI | Windows | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe | v1.2.3 | ✅ |
+# | QMOI AI | Windows | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe | v1.2.3 | ✅ |
 
-# | QMOI AI | Mac | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg | v1.2.3 | ✅ |
+# | QMOI AI | Mac | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg | v1.2.3 | ✅ |
 
-# | QMOI AI | Linux (DEB) | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb | v1.2.3 | ✅ |
+# | QMOI AI | Linux (DEB) | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb | v1.2.3 | ✅ |
 
-# | QMOI AI | Linux (AppImage) | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage | v1.2.3 | ✅ |
+# | QMOI AI | Linux (AppImage) | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage | v1.2.3 | ✅ |
 
-# | QMOI AI | Android | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk | v1.2.3 | ✅ |
+# | QMOI AI | Android | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk | v1.2.3 | ✅ |
 
-# | QMOI AI | iOS | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa | v1.2.3 | ✅ |
+# | QMOI AI | iOS | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa | v1.2.3 | ✅ |
 
-# | QMOI AI | Smart TV | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/smarttv.apk | v1.2.3 | ✅ |
+# | QMOI AI | Smart TV | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/smarttv.apk | v1.2.3 | ✅ |
 
-# | QMOI AI | Raspberry Pi | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/raspberrypi.img | v1.2.3 | ✅ |
+# | QMOI AI | Raspberry Pi | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/raspberrypi.img | v1.2.3 | ✅ |
 
-# | QMOI AI | Chromebook | https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/chromebook.zip | v1.2.3 | ✅ |
+# | QMOI AI | Chromebook | https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/chromebook.zip | v1.2.3 | ✅ |
 
-# | QCity | Windows | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe | v2.0.1 | ✅ |
+# | QCity | Windows | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe | v2.0.1 | ✅ |
 
-# | QCity | Mac | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg | v2.0.1 | ✅ |
+# | QCity | Mac | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg | v2.0.1 | ✅ |
 
-# | QCity | Linux | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage | v2.0.1 | ✅ |
+# | QCity | Linux | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage | v2.0.1 | ✅ |
 
-# | QCity | Android | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk | v2.0.1 | ✅ |
+# | QCity | Android | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk | v2.0.1 | ✅ |
 
-# | QCity | iOS | https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa | v2.0.1 | ✅ |
+# | QCity | iOS | https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa | v2.0.1 | ✅ |
 
-# | Qshare | All | https://github.com/thealphakenya/qmoi-enhanced/releases/qshare/qshare-universal.apk | v1.0.0 | ✅ |
+# | Qshare | All | https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk | v1.0.0 | ✅ |
 
-# | Yap | All | https://github.com/thealphakenya/qmoi-enhanced/releases/yap/yap-universal.apk | v1.1.0 | ✅ |
+# | Yap | All | https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk | v1.1.0 | ✅ |
 
-# | Qstore | All | https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk | v1.0.0 | ✅ |
+# | Qstore | All | https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk | v1.0.0 | ✅ |
 
 #
 
@@ -452,27 +452,27 @@ title: "\# QMOI - Quantum Master Orchestrator Intelligence"
 
 # |--------------|---------------------|
 
-# | Android | https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\_ai.apk |
+# | Android | https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\_ai.apk |
 
-# | Windows | https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\_ai.exe |
+# | Windows | https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\_ai.exe |
 
-# | Mac | https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\_ai.dmg |
+# | Mac | https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\_ai.dmg |
 
-# | Linux (DEB) | https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\_ai.deb |
+# | Linux (DEB) | https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\_ai.deb |
 
-# | Linux (AppImage) | https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\_ai.appimage |
+# | Linux (AppImage) | https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\_ai.appimage |
 
-# | iOS | https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\_ai.ipa |
+# | iOS | https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\_ai.ipa |
 
-# | Smart TV | https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\_ai\_smarttv.apk |
+# | Smart TV | https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\_ai\_smarttv.apk |
 
-# | Raspberry Pi | https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\_ai.img |
+# | Raspberry Pi | https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\_ai.img |
 
-# | Chromebook | https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi\_ai.zip |
+# | Chromebook | https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\_ai.zip |
 
 #
 
-# > \*\*Note:\*\* These links always point to the latest release. For older versions, browse the \[Releases page](https://github.com/thealphakenya/stable-Q-ai/releases).
+# > \*\*Note:\*\* These links always point to the latest release. For older versions, browse the \[Releases page](https://github.com/thestablekenya/stable-Q-ai/releases).
 
 #
 

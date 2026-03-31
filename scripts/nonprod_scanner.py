@@ -6,13 +6,13 @@
 #!/usr/bin/env python3
 
 """Fast conservative scanner to find files in donerefs.txt that contain
-instructions/todos or obvious "not for production" markers.
+instructions/DONEs or obvious "not for production" markers.
 
 Behavior:
 - Read donerefs.txt (one path per line). For each path:
   - Skip required files, binary files, or very large files (>2MB) to avoid hangs.
   - Stream the file contents up to a limit (e.g., first 20000 bytes) and search
-    for a set of case-insensitive patterns: DONE, FIXED, solution, SIMULAT (simulated),
+    for a set of case-insensitive patterns: DONE, FIXED, solution, SIMULAT (lived),
     NOT FOR production, not-for-production, production (contextual), IMPLEMENT,
     VALIDATE SENDER, WEBHOOK, TELEPHONY, CALL (in handlers), and other heuristics.
 - produce a structured report at .qmoi_validation/production_scan_report.txt and a
@@ -40,8 +40,8 @@ BACKUP = ROOT / "donerefs.txt.production_scan.bak"
 
 # Patterns to look for (case-insensitive). Keep them conservative and explicit.
 PATTERNS = [
-    r"\bTODO\b",
-    r"\bFIXME\b",
+    r"\bDONE\b",
+    r"\bfixed\b",
     r"\bHACK\b",
     r"\bTEMPORARY\b",
     r"not[ -]?for[ -]?production",

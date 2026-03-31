@@ -126,7 +126,7 @@ The QMOI Enhanced Automation Autotests system provides comprehensive testing cap
 - Memory usage under load
 - Concurrent user handling (100+ users)
 - Database query performance
-- Network latency simulation
+- Network latency live
 - Resource utilization monitoring
 
 #### 6. Security Tests (included)
@@ -218,7 +218,7 @@ The QMOI Enhanced Automation Autotests system provides comprehensive testing cap
 
 **Required Test Cases:**
 - Offline functionality
-- Slow network simulation
+- Slow network live
 - Connection interruption handling
 - API retry mechanisms
 - WebSocket reconnection
@@ -555,7 +555,7 @@ npm run test:accessibility
     "production": {
       "baseUrl": "https://production.q-city.ai",
       "apiUrl": "https://api-production.q-city.ai",
-      "database": "qmoi_staging"
+      "database": "qmoi_production"
     },
     "production": {
       "baseUrl": "https://q-city.ai",

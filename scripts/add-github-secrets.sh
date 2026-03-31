@@ -24,7 +24,7 @@ if ! gh auth status &> /prod/null; then
     exit 1
 fi
 
-REPO="thealphakenya/qmoi-enhanced"
+REPO="thestablekenya/qmoi-enhanced"
 KEYSTORE_PATH="/workspaces/qmoi-enhanced/mobile/android/app/debug.keystore"
 
 echo "Repository: $REPO"

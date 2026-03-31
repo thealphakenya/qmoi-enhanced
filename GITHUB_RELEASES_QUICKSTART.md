@@ -194,7 +194,7 @@ git push origin v1.2.3
 # ✅ Publishes notes
 
 # View release
-# https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+# https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 ```
 
 ### Option 2: Bash Script
@@ -207,7 +207,7 @@ gh auth login
 ./publish-releases-realtime.sh --version v1.2.3
 
 # View release
-# https://github.com/thealphakenya/qmoi-enhanced/releases
+# https://github.com/thestablekenya/qmoi-enhanced/releases
 ```
 
 ### Option 3: Python Script
@@ -217,7 +217,7 @@ gh auth login
 python publish-releases-realtime.py --version v1.2.3
 
 # View release
-# https://github.com/thealphakenya/qmoi-enhanced/releases
+# https://github.com/thestablekenya/qmoi-enhanced/releases
 ```
 
 ---
@@ -238,22 +238,22 @@ python publish-releases-realtime.py --version v1.2.3
 ✅ **GitHub Releases** (Primary)
 
 ```
-https://github.com/thealphakenya/qmoi-enhanced/releases
+https://github.com/thestablekenya/qmoi-enhanced/releases
 ```
 
 ✅ **Direct Downloads**
 
 ```
-https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe
-https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.dmg
-https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.apk
+https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe
+https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.dmg
+https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.apk
 ... etc
 ```
 
 ✅ **Official Portal**
 
 ```
-https://github.com/thealphakenya/qmoi-enhanced/releases
+https://github.com/thestablekenya/qmoi-enhanced/releases
 ```
 
 ✅ **App Stores** (Coming)
@@ -312,9 +312,9 @@ git push origin v1.2.3
 
 ### 2. Monitor Progress
 
-- Go to: https://github.com/thealphakenya/qmoi-enhanced/actions
+- Go to: https://github.com/thestablekenya/qmoi-enhanced/actions
 - Watch workflow run
-- Check release at: https://github.com/thealphakenya/qmoi-enhanced/releases
+- Check release at: https://github.com/thestablekenya/qmoi-enhanced/releases
 
 ### 3. Test Downloads
 
@@ -330,7 +330,7 @@ git push origin v1.2.3
 
 ### 5. Update Download Portal
 
-- https://github.com/thealphakenya/qmoi-enhanced/releases
+- https://github.com/thestablekenya/qmoi-enhanced/releases
 - Update links to latest release
 
 ---
@@ -344,7 +344,7 @@ git push origin v1.2.3
 
 🐛 **Issues**
 
-- https://github.com/thealphakenya/qmoi-enhanced/issues
+- https://github.com/thestablekenya/qmoi-enhanced/issues
 
 💬 **Community**
 

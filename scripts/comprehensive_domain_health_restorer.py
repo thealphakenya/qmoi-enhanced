@@ -60,7 +60,7 @@ class DomainHealthRestorer:
             'qglobal.ai',         # QGlobal domain
             'qparallel.prod',      # QParallel domain
             'qvillage.com',       # Working fallback
-            'alphaq.ai',          # Working domain
+            'stableq.ai',          # Working domain
             'qglobal.org'         # Working domain
         ]
 
@@ -265,7 +265,7 @@ class DomainHealthRestorer:
             },
             "working_domains": {
                 "qvillage.com": "Already working",
-                "alphaq.ai": "Already working",
+                "stableq.ai": "Already working",
                 "qglobal.org": "Already working"
             }
         }

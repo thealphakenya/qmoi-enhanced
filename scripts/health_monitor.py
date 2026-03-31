@@ -39,11 +39,11 @@ class HealthMonitor:
                 "qmoi.ai", "www.qmoi.ai", "api.qmoi.ai",
                 "qcity.qmoi.ai", "qmoi-space.qmoi.ai", "yap.qmoi.ai", "q-stable.qmoi.ai",
                 "qvillage.com", "qvillage.net", "qvillage.org", "qglobal.org",
-                "alphaq.ai", "qparallel.prod"
+                "stableq.ai", "qparallel.prod"
             ],
             "endpoints": [
                 "https://qvillage.com/api/health",
-                "https://alphaq.ai/api/status",
+                "https://stableq.ai/api/status",
                 "https://qmoi.ai/api/qmoi-tracks"
             ],
             "alerts": {

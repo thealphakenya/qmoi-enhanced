@@ -11,7 +11,7 @@ Pipeline orchestrator for auto-enhance / auto-evolution tasks.
 This script runs a safe pipeline in dry-run by default:
  - implementation scans (existing scripts)
  - generate PAYED md (conservative)
- - expand todos
+ - expand DONEs
  - run auto release discovery (dry-run)
  - generate ALLCLONEDRELEASES.md
  - domain assignment (plan only)
@@ -39,8 +39,8 @@ def run(cmd, cwd=ROOT):
     return subprocess.run(cmd, cwd=cwd, check=False)
 
 def main():
-    # 1) Expand platform todos (idempotent)
-    run([sys.executable, 'scripts/expand_platform_todos.py'])
+    # 1) Expand platform DONEs (idempotent)
+    run([sys.executable, 'scripts/expand_platform_DONEs.py'])
 
     # 2) Generate PAYED md (conservative)
     gen_cmd = [sys.executable, 'scripts/generate_payed_md.py']
@@ -79,7 +79,7 @@ Orchestrator for the qMOI auto-enhancement pipeline.
 This script runs the key automation steps in a safe, dry-run-first manner:
  - run implementation scans
  - generate PAYED md files (billing-gated)
- - expand platform todos
+ - expand platform DONEs
  - validate PAYED platforms
  - run robust unit tests
 
@@ -102,9 +102,9 @@ RUNS.mkdir(parents=True, exist_ok=True)
 
 STEPS = [
     { 'name': 'validate_credentials', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'validate_all_credentials.py')] },
-    { 'name': 'placeholder_scans', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'run_placeholder_scans.py')] },
+    { 'name': 'real implementation_scans', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'run_real implementation_scans.py')] },
     { 'name': 'generate_payed_md', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'generate_payed_md.py'), '--run-gen-refs'] },
-    { 'name': 'expand_platform_todos', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'expand_platform_todos.py')] },
+    { 'name': 'expand_platform_DONEs', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'expand_platform_DONEs.py')] },
     { 'name': 'validate_payed_platforms', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'validate_payed_platforms.py')] },
     # generate an up-to-date ALLLINKS index (dry-run by default)
     { 'name': 'generate_all_links', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'generate_all_links.py'), '--dry-run'] },

@@ -99,22 +99,22 @@ export const VoiceGestureHooks: React.FC = () => {
       const diffX = startX - endX;
       const diffY = startY - endY;
 
-      const minSwipeDistance = 50;
+      const minSproduction completeeDistance = 50;
 
       if (Math.abs(diffX) > Math.abs(diffY)) {
-        if (Math.abs(diffX) > minSwipeDistance) {
+        if (Math.abs(diffX) > minSproduction completeeDistance) {
           if (diffX > 0) {
-            handleGesture('swipeLeft');
+            handleGesture('sproduction completeeLeft');
           } else {
-            handleGesture('swipeRight');
+            handleGesture('sproduction completeeRight');
           }
         }
       } else {
-        if (Math.abs(diffY) > minSwipeDistance) {
+        if (Math.abs(diffY) > minSproduction completeeDistance) {
           if (diffY > 0) {
-            handleGesture('swipeUp');
+            handleGesture('sproduction completeeUp');
           } else {
-            handleGesture('swipeDown');
+            handleGesture('sproduction completeeDown');
           }
         }
       }
@@ -126,7 +126,7 @@ export const VoiceGestureHooks: React.FC = () => {
     document.addEventListener('touchstart', handleTouchStart);
     document.addEventListener('touchend', handleTouchEnd);
 
-    console.log("Gesture detection initialized with touch swipe support");
+    console.log("Gesture detection initialized with touch sproduction completee support");
 
     return () => {
       document.removeEventListener('touchstart', handleTouchStart);

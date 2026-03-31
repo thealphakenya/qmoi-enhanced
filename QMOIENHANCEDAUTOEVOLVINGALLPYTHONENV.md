@@ -652,7 +652,7 @@ print(f"Enhancement result: {enhance_result}")
 QMOI_AUTO_EVOLUTION_ENABLED=true
 QMOI_EVOLUTION_CHECK_INTERVAL=300
 QMOI_EVOLUTION_NOTIFICATIONS=true
-QMOI_EVOLUTION_EMAIL=rovicviccy@gmail.com,thealphakenya@gmail.com
+QMOI_EVOLUTION_EMAIL=rovicviccy@gmail.com,thestablekenya@gmail.com
 QMOI_EVOLUTION_WHATSAPP=true
 ```
 
@@ -664,7 +664,7 @@ QMOI_EVOLUTION_WHATSAPP=true
     "enabled": true,
     "check_interval": 300,
     "notifications": true,
-    "email_recipients": ["rovicviccy@gmail.com", "thealphakenya@gmail.com"],
+    "email_recipients": ["rovicviccy@gmail.com", "thestablekenya@gmail.com"],
     "whatsapp_enabled": true
   },
   "environment_settings": {
@@ -726,7 +726,7 @@ QMOI_EVOLUTION_WHATSAPP=true
 
 For issues, questions, or enhancements:
 
-- **Email**: rovicviccy@gmail.com, thealphakenya@gmail.com
+- **Email**: rovicviccy@gmail.com, thestablekenya@gmail.com
 - **WhatsApp**: Automatic notifications enabled
 - **GitHub Issues**: Auto-created for critical issues
 - **QMOI Dashboard**: Real-time monitoring and control

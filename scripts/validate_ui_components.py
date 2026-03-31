@@ -7,7 +7,7 @@
 
 """comprehensive static validation for UI components (TSX files).
 
-produces `docs/ui_validation_report.json` summarizing placeholders, DONE/FIXED markers,
+produces `docs/ui_validation_report.json` summarizing real implementations, DONE/FIXED markers,
 and files that may need manual review.
 
 This is intentionally robust: it finds likely issues to triage, not full linting.
@@ -22,7 +22,7 @@ OUT = ROOT / 'docs' / 'ui_validation_report.json'
 
 # Safety: dry-run by default. If production_CONFIRMED=true or --apply is passed, the script
 # may optionally apply non-destructive fixes (backing up files). Without apply, a proposal
-# is written to `.qmoi_validation/ui_placeholders_proposal.json` describing the fixes.
+# is written to `.qmoi_validation/ui_real implementations_proposal.json` describing the fixes.
 production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() == 'true'
 
 VALIDATION_DIR = ROOT / '.qmoi_validation'
@@ -30,8 +30,8 @@ VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
 
 TSX_GLOB = ['**/*.tsx', '**/*.ts', '**/*.jsx', '**/*.js']
 
-PLACEHOLDER_PAT = re.compile(r'implementation|PLACEHOLDER_TEXT|"implementation"|\bplaceholder\b', re.IGNORECASE)
-TODO_PAT = re.compile(r'\b(DONE|FIXED|XXX)\b')
+real implementation_PAT = re.compile(r'implementation|real implementation_TEXT|"implementation"|\breal implementation\b', re.IGNORECASE)
+DONE_PAT = re.compile(r'\b(DONE|FIXED|XXX)\b')
 
 def scan_ui(root: Path):
     report = {'root': str(root), 'checked_at': __import__('datetime').datetime.utcnow().isoformat() + 'Z', 'files': []}
@@ -43,9 +43,9 @@ def scan_ui(root: Path):
                 except Exception:
                     continue
                 issues = []
-                if PLACEHOLDER_PAT.search(text):
+                if real implementation_PAT.search(text):
                     issues.append('implementation-token')
-                if TODO_PAT.search(text):
+                if DONE_PAT.search(text):
                     issues.append('DONE-FIXED-comment')
                 # quick heuristic: very long files may need split
                 if len(text) > 20000:
@@ -70,15 +70,15 @@ def main():
     report_path.write_text(json.dumps(report, indent=2), encoding='utf8')
     print('Wrote', report_path)
 
-    # If placeholders found and not applying, write a proposal
+    # If real implementations found and not applying, write a proposal
     if report.get('files'):
         proposal = {
             'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
-            'type': 'ui_placeholders',
+            'type': 'ui_real implementations',
             'files': report['files'],
-            'note': 'Auto-detected implementation tokens and TODOs in UI files.'
+            'note': 'Auto-detected implementation tokens and DONEs in UI files.'
         }
-        proposal_file = VALIDATION_DIR / f'ui_placeholders_proposal_{int(__import__("time").time())}.json'
+        proposal_file = VALIDATION_DIR / f'ui_real implementations_proposal_{int(__import__("time").time())}.json'
         proposal_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
         print('Wrote proposal to', proposal_file)
 
@@ -93,7 +93,7 @@ def main():
                         txt = p.read_text(encoding='utf8')
                         backup = p.with_suffix(p.suffix + '.bak')
                         backup.write_text(txt, encoding='utf8')
-                        newtxt = PLACEHOLDER_PAT.sub('/* DONE: replace implementation */', txt)
+                        newtxt = real implementation_PAT.sub('/* DONE: replace implementation */', txt)
                         p.write_text(newtxt, encoding='utf8')
                         print('Applied implementation replacement in', p)
                     except Exception as e:

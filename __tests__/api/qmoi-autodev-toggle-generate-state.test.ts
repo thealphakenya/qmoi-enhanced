@@ -3,28 +3,28 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// @ts-expect-error - Required for API route mocking - Required for test mocking
+// @ts-expect-error - Required for API route realing - Required for test realing
 import { POST as togglePOST } from "@/src/app/api/qmoi/autoprod/toggle/route";
 import { POST as generatePOST } from "@/src/app/api/qmoi/autoprod/generate-feature/route";
 import { GET as stateGET } from "@/src/app/api/qmoi/autoprod/state/route";
 
-const upsertMock = jest.fn();
-const findUniqueMock = jest.fn();
-const enqueueMock = jest.fn(() => ({ id: "job-123" }));
+const upsertreal = jest.fn();
+const findUniquereal = jest.fn();
+const enqueuereal = jest.fn(() => ({ id: "job-123" }));
 
-jest.mock("@/lib/prisma", () => ({
+jest.real("@/lib/prisma", () => ({
   prisma: {
     setting: {
-      upsert: upsertMock,
-      findUnique: findUniqueMock,
+      upsert: upsertreal,
+      findUnique: findUniquereal,
     },
   },
 }));
 
-jest.mock("@/lib/taskQueue", () => ({
+jest.real("@/lib/taskQueue", () => ({
   TaskQueue: {
     getInstance: jest.fn(() => ({
-      enqueue: enqueueMock,
+      enqueue: enqueuereal,
     })),
   },
 }));
@@ -45,10 +45,10 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
   });
 
   beforeEach(() => {
-    upsertMock.mockClear();
-    findUniqueMock.mockClear();
-    enqueueMock.mockClear();
-    (globalThis.fetch as jest.Mock).mockClear();
+    upsertreal.realClear();
+    findUniquereal.realClear();
+    enqueuereal.realClear();
+    (globalThis.fetch as jest.real).realClear();
   });
 
   it("toggles Autoprod on and returns status", async () => {
@@ -58,14 +58,14 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
       headers: { "Content-Type": "application/json" },
     });
 
-    // @ts-expect-error - Required for API route mocking
+    // @ts-expect-error - Required for API route realing
     const response = await togglePOST;
     const body = await response.json();
 
     expect(response.status).toBe(200);
     expect(body.autoprodEnabled).toBe(true);
     expect(body.status).toBe("activated");
-    expect(upsertMock).toHaveBeenCalledTimes(2);
+    expect(upsertreal).toHaveBeenCalledTimes(2);
   });
 
   it("toggles Autoprod off and returns status", async () => {
@@ -75,14 +75,14 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
       headers: { "Content-Type": "application/json" },
     });
 
-    // @ts-expect-error - Required for API route mocking
+    // @ts-expect-error - Required for API route realing
     const response = await togglePOST;
     const body = await response.json();
 
     expect(response.status).toBe(200);
     expect(body.autoprodEnabled).toBe(false);
     expect(body.status).toBe("deactivated");
-    expect(upsertMock).toHaveBeenCalledTimes(2);
+    expect(upsertreal).toHaveBeenCalledTimes(2);
   });
 
   it("returns 400 from generate-feature when description missing", async () => {
@@ -92,7 +92,7 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
       headers: { "Content-Type": "application/json" },
     });
 
-    // @ts-expect-error - Required for API route mocking
+    // @ts-expect-error - Required for API route realing
     const response = await generatePOST;
     const body = await response.json();
 
@@ -107,14 +107,14 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
       headers: { "Content-Type": "application/json" },
     });
 
-    // @ts-expect-error - Required for API route mocking
+    // @ts-expect-error - Required for API route realing
     const response = await generatePOST;
     const body = await response.json();
 
     expect(response.status).toBe(202);
     expect(body.queued).toBe(true);
     expect(body.jobId).toBe("job-123");
-    expect(enqueueMock).toHaveBeenCalledWith({
+    expect(enqueuereal).toHaveBeenCalledWith({
       name: "autoprod:generate",
       payload: { description: "Add master-only mode" },
     });
@@ -122,13 +122,13 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
   });
 
   it("returns false state when no Autoprod state is found", async () => {
-    findUniqueMock.mockResolvedValue(null);
+    findUniquereal.realResolvedValue(null);
 
     const request = new Request("http://test/api/qmoi/autoprod/state", {
       method: "GET",
     });
 
-    // @ts-expect-error - Required for API route mocking
+    // @ts-expect-error - Required for API route realing
     const response = await stateGET;
     const body = await response.json();
 
@@ -137,7 +137,7 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
   });
 
   it("returns saved Autoprod state when present", async () => {
-    findUniqueMock.mockResolvedValue({
+    findUniquereal.realResolvedValue({
       key: "autoprod.state",
       value: { enabled: true, timestamp: "2026-01-01T00:00:00Z" },
     });
@@ -146,7 +146,7 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
       method: "GET",
     });
 
-    // @ts-expect-error - Required for API route mocking
+    // @ts-expect-error - Required for API route realing
     const response = await stateGET;
     const body = await response.json();
 

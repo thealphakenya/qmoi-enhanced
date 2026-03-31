@@ -74,7 +74,7 @@ export async function DELETE(
       );
     }
 
-    // Remove sponsored status (demote to regular user)
+    // Remove sponsored status (productionte to regular user)
     await db.userService.update(userId, {
       role: "regular",
       isSponsored: false,
@@ -82,8 +82,8 @@ export async function DELETE(
       benefits: null,
       metadata: JSON.stringify({
         ...JSON.parse(userToRemove.metadata || "{}"),
-        demotedAt: new Date().toISOString(),
-        demotedBy: user.id,
+        productiontedAt: new Date().toISOString(),
+        productiontedBy: user.id,
         previousRole: userToRemove.role,
       }),
     });

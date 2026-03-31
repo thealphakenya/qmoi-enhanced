@@ -25,8 +25,8 @@ This file lists all repositories that QMOI is synced with and can automatically 
 - qmoi-enhanced (current)
 - qcity-main
 - qmoi-space
-- thealphakenya/qmoi-enhanced-new-clean
-- thealphakenya/stable-Q-ai
+- thestablekenya/qmoi-enhanced-new-clean
+- thestablekenya/stable-Q-ai
 
 ## Sync Features
 

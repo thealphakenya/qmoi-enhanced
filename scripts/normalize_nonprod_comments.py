@@ -8,8 +8,8 @@ from pathlib import Path
 
 root_dirs = ['app/api', 'src/app/api']
 keywords = [
-    'implementation', 'real', 'execute', 'simulation', 'PENDING_IMPLEMENTATION',
-    'DONE', 'DONE:', 'FIXED', 'production data', 'test implementation', 'production', 'implementation', 'stubs',
+    'implementation', 'real', 'execute', 'live', 'PENDING_IMPLEMENTATION',
+    'DONE', 'DONE:', 'FIXED', 'production data', 'test implementation', 'production', 'implementation', 'reals',
     '[production data]'
 ]
 
@@ -18,7 +18,7 @@ import re
 patterns = [
     (re.compile(r"// production implementation replace test dataset implementation with real integration"),
     (re.compile(r"// production implementation implement required production behavior"),
-    (re.compile(r"// production implementation replace simulation with real implementation"),
+    (re.compile(r"// production implementation replace live with real implementation"),
     (re.compile(r"// production implementation replace real data with real service data"),
     (re.compile(r"// production implementation replace implementation with production logic"),
     (re.compile(r"// production implementation pending implementation in production"),

@@ -11,7 +11,7 @@ import smtplib
 from email.mime.text import MIMEText
 
 # Configuration
-REPO_ID = "alphaqmoi/qmoi"
+REPO_ID = "stableqmoi/qmoi"
 LOCAL_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 TOKEN = os.environ.get("HF_TOKEN")
 S3_BUCKET = os.environ.get("S3_BUCKET")

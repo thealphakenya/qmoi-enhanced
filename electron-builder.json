@@ -36,7 +36,7 @@
   },
   "publish": {
     "provider": "github",
-    "owner": "thealphakenya",
+    "owner": "thestablekenya",
     "repo": "stable-Q-ai"
   }
 }

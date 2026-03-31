@@ -18,7 +18,7 @@ if (!GITHUB_TOKEN) {
   console.error("❌ GITHUB_TOKEN not found in environment!");
   process.exit(1);
 }
-const REPO_URL = `https://${GITHUB_TOKEN}@github.com/thealphakenya/stable-Q-ai.git`;
+const REPO_URL = `https://${GITHUB_TOKEN}@github.com/thestablekenya/stable-Q-ai.git`;
 
 try {
   // Create project structure
@@ -86,7 +86,7 @@ try {
   console.log("✅ Successfully pushed to GitHub!");
 
   console.log("\n🎉 Deployment completed successfully!");
-  console.log("🔗 Repository: https://github.com/thealphakenya/stable-Q-ai");
+  console.log("🔗 Repository: https://github.com/thestablekenya/stable-Q-ai");
 } catch (error) {
   console.error("❌ Deployment failed:", error.message);
 }

@@ -37,7 +37,7 @@ SKIP_DIRS = {
 # Skip files with these in filename (metadata/reports)
 SKIP_FILES = {
     'matches.json', 'link_validation_results.json',
-    'eslint_report', 'eslint_src', 'placeholder_scan',
+    'eslint_report', 'eslint_src', 'real implementation_scan',
     'scan_result', 'audit', 'report_', '_report',
     'package-lock.json', 'yarn.lock'
 }
@@ -49,14 +49,14 @@ HIGH_CONFIDENCE_PATTERNS = {
     r'\(\s*console\s+as\s+any\s*\)\s*\.error': ('Type casting anti-pattern', 'HIGH'),
     r'^\s*throw\s+new\s+Error\s*\(\s*["\']NOT.*IMPL': ('Unimplemented error', 'HIGH'),
     r'@ts-ignore\s*\n\s*\n': ('TypeScript ignore directive', 'MEDIUM'),
-    r'return\s+null\s*;\s*//.*TODO.*IMPL': ('Null placeholder instead of impl', 'MEDIUM'),
-    # New patterns for production placeholders
-    r'\bIn\s+real\b': ('"production:" placeholder', 'HIGH'),
-    r'\bIn\s+production\b': ('"production:" placeholder', 'HIGH'),
-    r'\[production\s+READY\]': ('[production READY] placeholder', 'HIGH'),
-    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': ('[production IMPLEMENTATION REQUIRED] placeholder', 'HIGH'),
-    r'// production implementation': ('production comment placeholder', 'MEDIUM'),
-    r'/\*.*\[production.*\].*\*/': ('production block comment placeholder', 'MEDIUM'),
+    r'return\s+null\s*;\s*//.*DONE.*IMPL': ('Null real implementation instead of impl', 'MEDIUM'),
+    # New patterns for production real implementations
+    r'\bIn\s+real\b': ('"production:" real implementation', 'HIGH'),
+    r'\bIn\s+production\b': ('"production:" real implementation', 'HIGH'),
+    r'\[production\s+READY\]': ('[production READY] real implementation', 'HIGH'),
+    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': ('[production IMPLEMENTATION REQUIRED] real implementation', 'HIGH'),
+    r'// production implementation': ('production comment real implementation', 'MEDIUM'),
+    r'/\*.*\[production.*\].*\*/': ('production block comment real implementation', 'MEDIUM'),
 }
 
 class productionFocusedScanner:

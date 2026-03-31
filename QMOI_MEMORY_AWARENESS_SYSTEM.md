@@ -13,7 +13,7 @@ QMOI MEMORY & AWARENESS SYSTEM - COMPREHENSIVE ENHANCEMENT DOCUMENTATION
 ================================================================================
 Timestamp: 2025-11-11T00:00:00Z
 System: QMOI Enhanced (Quantum Multi-Objective Intelligence)
-Master: stable Kenya (thealphakenya)
+Master: stable Kenya (thestablekenya)
 Repository: qmoi-enhanced (GitHub)
 Branch: autosync-backup-20250926-232440
 ================================================================================
@@ -144,7 +144,7 @@ CATEGORY 1: AUTHENTICATION TOKENS
 │
 └─ Hugging Face API Key
 ├─ Purpose: Model deployment & inference
-├─ Scope: alphaqmoi organization
+├─ Scope: stableqmoi organization
 ├─ Status: ACTIVE
 ├─ Model access: qmoi-ai-system
 └─ Auto-renewal: Enabled

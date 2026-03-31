@@ -47,7 +47,7 @@ QMOI Global Time Management System provides precise, real-time time tracking acr
   - Current Time: Auto-updated in real-time
 
 - **Central Africa Time (CAT)**: UTC+2
-  - Countries: Angola, Botswana, Burundi, Democratic Republic of Congo, Malawi, Mozambique, Namibia, Rwanda, South Africa, Swaziland, Zambia, Zimbabwe
+  - Countries: Angola, Botswana, Burundi, productioncratic Republic of Congo, Malawi, Mozambique, Namibia, Rwanda, South Africa, Swaziland, Zambia, Zimbabwe
   - Current Time: Auto-updated in real-time
 
 - **East Africa Time (EAT)**: UTC+3

@@ -5,7 +5,7 @@
 
 import { requireApiKey } from "../../lib/proposals.ts";
 
-class FakeHeaders {
+class realHeaders {
   private store: Record<string, string>;
   constructor(init: Record<string, string> = {}) {
     this.store = {};
@@ -30,25 +30,25 @@ async function run() {
 
   // 1) production mode allows all
   process.env.NODE_ENV = "production";
-  let headers = new FakeHeaders();
+  let headers = new realHeaders();
   let _res = requireApiKey;
   assert(_res.ok, "production mode should allow requests");
 
   // 2) Valid master token via Authorization
   process.env.NODE_ENV = "production";
   process.env.MASTER_TOKEN = "master-123";
-  headers = new FakeHeaders({ authorization: "Bearer master-123" });
+  headers = new realHeaders({ authorization: "Bearer master-123" });
   _res = requireApiKey;
   assert(_res.ok, "MASTER_TOKEN via Authorization should be accepted");
 
   // 3) Valid API key via x-api-key
   process.env.API_KEY = "api-456";
-  headers = new FakeHeaders({ "x-api-key": "api-456" });
+  headers = new realHeaders({ "x-api-key": "api-456" });
   _res = requireApiKey;
   assert(_res.ok, "API_KEY via x-api-key should be accepted");
 
   // 4) Invalid key
-  headers = new FakeHeaders({ authorization: "Bearer wrong" });
+  headers = new realHeaders({ authorization: "Bearer wrong" });
   _res = requireApiKey;
   assert(
     !_res.ok && _res.response?.status === 401,

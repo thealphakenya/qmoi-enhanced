@@ -189,7 +189,7 @@ Slack:
 → Receive: Sync status notifications
 
 HF Space:
-→ Visit: https://huggingface.co/spaces/alphaqmoi/qvillage
+→ Visit: https://huggingface.co/spaces/stableqmoi/qvillage
 ```
 
 ---
@@ -258,7 +258,7 @@ Before going live, verify:
 - [ ] All files reviewed and tested locally
 - [ ] GitHub Secrets configured (HF_API_TOKEN, URLs, Slack webhook)
 - [ ] Old tokens rotated in GitHub/Vercel
-- [ ] HF Space created (alphaqmoi/qvillage)
+- [ ] HF Space created (stableqmoi/qvillage)
 - [ ] First sync test run successful
 - [ ] HF Space app updated via CI/CD
 - [ ] Cost monitoring active and alerting

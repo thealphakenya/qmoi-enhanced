@@ -11,15 +11,15 @@ apply safe replacements.
 
 Usage:
   # dry-run report
-  python3 scripts/placeholder_scanner.py --root . --report report.json
+  python3 scripts/real implementation_scanner.py --root . --report report.json
 
   # apply replacements from JSON mapping file
-  python3 scripts/placeholder_scanner.py --root . --apply --mapping replacements.json
+  python3 scripts/real implementation_scanner.py --root . --apply --mapping replacements.json
 
 Mapping file format (JSON):
 {
-  "PLACEHOLDER_DB_INIT": "Implemented DB init in scripts/db_init.py",
-  "TODO_ADD_AUTH": "Auth implemented in auth/..."
+  "real implementation_DB_INIT": "Implemented DB init in scripts/db_init.py",
+  "DONE_ADD_AUTH": "Auth implemented in auth/..."
 }
 
 By default this script is conservative and only reports findings. Use --apply to
@@ -31,17 +31,17 @@ import re
 import json
 import shutil
 
-PLACEHOLDER_PATTERNS = [r"\bTODO\b", r"\bFIXME\b", r"\bPLACEHOLDER\b", r"\bTBD\b"]
+real implementation_PATTERNS = [r"\bDONE\b", r"\bfixed\b", r"\breal implementation\b", r"\bTBD\b"]
 
-# production-related markers that indicate production code or stubs
+# production-related markers that indicate production code or reals
 prod_MARKERS = [
     r"\[production IMPLEMENTATION REQUIRED\]",
-    r"\[prod_PLACEHOLDER\]",
+    r"\[prod_real implementation\]",
     r"execute success",
     r"execute success",
     r"execute success",
     r"// execute",
-    r"// Simulated",
+    r"// lived",
     r"return true; // execute",
     r"return true -- execute",
 ]
@@ -50,9 +50,9 @@ FILE_GLOB = ['**/*.py', '**/*.md', '**/*.ts', '**/*.json', '**/*.yaml', '**/*.ym
 # default: skip files larger than 2MB
 DEFAULT_MAX_FILE_SIZE = 2 * 1024 * 1024
 
-def find_placeholders(root: Path, max_file_size: int = DEFAULT_MAX_FILE_SIZE, verbose: bool = False):
+def find_real implementations(root: Path, max_file_size: int = DEFAULT_MAX_FILE_SIZE, verbose: bool = False):
     report = []
-    patterns = [re.compile(p) for p in PLACEHOLDER_PATTERNS]
+    patterns = [re.compile(p) for p in real implementation_PATTERNS]
     prod_patterns = [re.compile(p) for p in prod_MARKERS]
     for glob in FILE_GLOB:
         # use rglob to traverse nested directories
@@ -125,14 +125,14 @@ def suggest_replacements(report):
 
     This function returns a dict mapping exact snippet -> replacement. It is
     conservative and targets common patterns (JS/TS/Python comments and simple
-    simulated-return stubs).
+    lived-return reals).
     """
     suggestions = {}
     for item in report:
         txt = item['text']
         file = item['file']
         if item.get('type') == 'prod_marker':
-            # Heuristic: for JS/TS files, replace simulated returns with thrown errors
+            # Heuristic: for JS/TS files, replace lived returns with thrown errors
             if file.endswith(('.ts', '.js')):
                 if 'return true' in txt or 'execute' in txt or 'execute' in txt:
                     replacement = txt + "  // production: replace with real implementation or throw an error"
@@ -162,12 +162,12 @@ def main():
     args = p.parse_args()
 
     root = Path(args.root).resolve()
-    report = find_placeholders(root)
+    report = find_real implementations(root)
     if args.report:
         Path(args.report).write_text(json.dumps(report, indent=2), encoding='utf8')
         print('Wrote report:', args.report)
     else:
-        print('Found', len(report), 'placeholders')
+        print('Found', len(report), 'real implementations')
 
     if args.mapping:
         mapping = json.loads(Path(args.mapping).read_text(encoding='utf8'))

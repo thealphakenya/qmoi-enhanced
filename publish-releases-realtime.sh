@@ -26,7 +26,7 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
 # Configuration
-REPO="${REPO:-thealphakenya/qmoi-enhanced}"
+REPO="${REPO:-thestablekenya/qmoi-enhanced}"
 VERSION="${1:-}"
 DRAFT_FLAG="false"
 VERBOSE="${VERBOSE:-false}"
@@ -90,7 +90,7 @@ Options:
   --version VERSION      Release version (e.g., v1.2.3) [required]
   --final               Create as final release
   --verbose             Enable verbose logging
-  --repo REPO           GitHub repository (default: thealphakenya/qmoi-enhanced)
+  --repo REPO           GitHub repository (default: thestablekenya/qmoi-enhanced)
   --help               Show this help message
 
 Examples:
@@ -388,7 +388,7 @@ generate_release_notes() {
 ## 📥 Download Options
 
 **This Release:** All files below
-**Official Portal:** https://github.com/thealphakenya/qmoi-enhanced/releases
+**Official Portal:** https://github.com/thestablekenya/qmoi-enhanced/releases
 **App Stores:** Google Play, Apple App Store (coming)
 **Web:** https://qmoi.qmoi.app
 

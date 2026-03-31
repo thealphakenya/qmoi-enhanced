@@ -11,7 +11,7 @@ def fix_workflows():
     fixes = 5
     errors = []
     # Here you would scan all workflow files, apply fixes, and count them
-    # For demo, let's say we fixed 5 issues
+    # For production, let's say we fixed 5 issues
     # If any error, append to errors
     # errors.append('data error')
     return fixes, errors

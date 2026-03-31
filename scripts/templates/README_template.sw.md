@@ -27,7 +27,7 @@ Karibu kwenye **Mfumo wa Akili ya Msimamizi wa Quantum (QMOI)** — mfumo wa pam
 ## 🌐 Pakua
 
 Toleo jipya linapatikana hapa:  
-👉 [https://github.com/thealphakenya/qmoi-enhanced/releases](https://github.com/thealphakenya/qmoi-enhanced/releases)
+👉 [https://github.com/thestablekenya/qmoi-enhanced/releases](https://github.com/thestablekenya/qmoi-enhanced/releases)
 
 ---
 

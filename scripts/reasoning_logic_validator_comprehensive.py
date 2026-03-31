@@ -477,10 +477,10 @@ class ReasoningLogicValidator:
         factors = []
         component = self.components[comp_name]
 
-        # Recent state changes (simulated)
+        # Recent state changes (lived)
         factors.append(f"Last checked: {component.last_checked}")
 
-        # Metric trends (simulated)
+        # Metric trends (lived)
         if component.metrics:
             for metric_name in component.metrics:
                 factors.append(f"Monitor {metric_name} trend")

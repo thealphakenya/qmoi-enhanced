@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# NOTE: 4 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# NOTE: 4 implementation(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.
 """
 QMOI Kernel Module for stable-Q
 
@@ -24,7 +24,7 @@ from .qmoi_personality import qmoi_personality_respond, evolve_personality_from_
 # === CONFIG ===
 CONFIG = {
     'check_interval': 10,  # seconds
-    'remote_repo': 'https://alphaq-ai.com/updates/qvirus.json',
+    'remote_repo': 'https://stableq-ai.com/updates/qvirus.json',
     'payload_modules': ['qfix', 'qoptimize', 'qsecure'],
     'integrated_model': 'QMOI',
     'state_file': '/tmp/qmoi_kernel_state.json',
@@ -33,7 +33,7 @@ CONFIG = {
         'cpu_usage': 85,  # % threshold
         'error_log_detected': True
     },
-    'signed_key': 'ALPHAQ_TRUSTED_KEY'
+    'signed_key': 'stableQ_TRUSTED_KEY'
 }
 
 # === STATE ===

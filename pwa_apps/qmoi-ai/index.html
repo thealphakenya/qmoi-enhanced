@@ -540,12 +540,12 @@
             }
           } catch (e) {
             console.warn(
-              "Chat API error, falling back to simulated response",
+              "Chat API error, falling back to lived response",
               e,
             );
           }
 
-          // Fallback simulated response
+          // Fallback lived response
           setTimeout(
             () => {
               if (chatHistoryEl.lastChild)

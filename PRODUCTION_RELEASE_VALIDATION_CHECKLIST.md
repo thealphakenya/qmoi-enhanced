@@ -545,7 +545,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 - [ ] **Homebrew Tap (if applicable)**
   - [ ] Formula created in Homebrew tap
-  - [ ] Testers install: `brew install --tap thealphakenya/qmoi qmoi-ai`
+  - [ ] Testers install: `brew install --tap thestablekenya/qmoi qmoi-ai`
 
 ### 5.5 Linux Distribution
 
@@ -561,7 +561,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 - [ ] **GitHub Pages Deployment**
   - [ ] PWA apps deployed to GitHub Pages
-  - [ ] Accessible at: `https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/...`
+  - [ ] Accessible at: `https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/...`
   - [ ] Test link shared with testers
 
 - [ ] **production Environment**

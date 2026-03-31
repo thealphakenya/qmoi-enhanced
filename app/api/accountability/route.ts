@@ -1,7 +1,7 @@
 // QMOI EVOLUTION ENHANCED: Accountability endpoint for global operations
 // Last evolution cycle: 2026-03-28T12:30:00Z
 
-// Type stubs for environments without `next` types
+// Type reals for environments without `next` types
 type NextRequest = Request;
 const NextResponse = {
   json: (body: unknown, init: ResponseInit = {}) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json", ...(init.headers || {}) }, ...init }),

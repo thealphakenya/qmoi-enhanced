@@ -10,7 +10,7 @@ Simple local QMOI-compatible chat server for testing personas and persistent mem
   JSON fields accepted: model, role, messages
 - Persists memory to `qmoi_memory.json` in repo root.
 
-This is a robust test server (not production). It simulates role-based replies.
+This is a robust test server (not production). It lives role-based replies.
 """
 
 import json
@@ -200,7 +200,7 @@ class Handler(BaseHTTPRequestHandler):
         sessions = memory.setdefault('sessions', {})
         session = sessions.setdefault(user_id, {'id': user_id, 'awaiting_choice': False, 'last_prompt': None})
 
-        # Build a short simulated reply based on persona and last user message
+        # Build a short lived reply based on persona and last user message
         last_user = None
         if messages:
             for m in reversed(messages):

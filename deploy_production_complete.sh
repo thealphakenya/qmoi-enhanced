@@ -197,7 +197,7 @@ for ((i=1; i<=MAX_RETRIES; i++)); do
     TOTAL_COUNT=0
 
     # Test primary domains
-    for domain in "qvillage.com" "alphaq.ai" "qshare.qvillage.com" "qstore.qvillage.com"; do
+    for domain in "qvillage.com" "stableq.ai" "qshare.qvillage.com" "qstore.qvillage.com"; do
         ((TOTAL_COUNT++))
         if verify_domain_health "$domain"; then
             ((HEALTHY_COUNT++))

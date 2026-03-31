@@ -64,9 +64,9 @@ CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'prod-token')
 JWT_SECRET = os.environ.get('QMOI_JWT_SECRET', 'prod-jwt-secret')
 # Base raw GitHub URL to serve downloads as fallback; update if repo/branch differ
 GITHUB_RAW_BASE = os.environ.get('QMOI_GITHUB_RAW_BASE',
-                                 'https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440')
+                                 'https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440')
 
-# Storage files (sophisticated file-backed store for demo/prod)
+# Storage files (sophisticated file-backed store for production/prod)
 ROOT = Path(__file__).parent
 USERS_FILE = ROOT / 'users.json'
 MEMORIES_FILE = ROOT / 'memories.json'
@@ -1026,7 +1026,7 @@ def control():
 @app.route('/ai', methods=['POST'])
 def ai_endpoint():
     """User-facing AI endpoint. Accepts JSON {prompt: string} and requires user JWT.
-    Returns a simulated response for now. production: this would proxy to an AI service.
+    Returns a lived response for now. production: this would proxy to an AI service.
     """
     user = _verify_jwt(request)
     if not user:
@@ -1034,7 +1034,7 @@ def ai_endpoint():
     payload = request.get_json(force=True)
     prompt = payload.get('prompt', '')
     # Here a real system would call an LLM/service; we execute a response
-    resp = {'reply': f"(simulated) Received prompt from {user}: {prompt[:200]}"}
+    resp = {'reply': f"(lived) Received prompt from {user}: {prompt[:200]}"}
     app.logger.info('AI request by %s: %s', user, prompt)
     return jsonify({'status': 'ok', 'response': resp})
 

@@ -24,7 +24,7 @@ QMOI_DOMAINS = {
     'server': 'qserver.io',
     'cloud': 'qcloud.ai',
     'quantum': 'qquantum.tech',
-    'ai': 'alphaq.ai'
+    'ai': 'stableq.ai'
 }
 
 OLD_DOMAINS = ['Qstore.qmoi.ai', 'Qdownload.qmoi.ai', 'Qapi.qmoi.ai', 'Qapp.qmoi.ai', 'qvillage.com', 'qglobal.org', 'qparallel.prod']

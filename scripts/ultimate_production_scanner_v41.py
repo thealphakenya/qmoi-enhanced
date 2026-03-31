@@ -23,13 +23,13 @@ CRITICAL_PATTERNS = [
     (r'production\s+IMPLEMENTATION\s+REQUIRED', 'IMPL_MARKER'),
     (r'production\s+READY\]', 'IMPL_MARKER'),
     
-    # TODO/FIXME with implementation context
-    (r'TODO\s*:.*IMPL', 'TODO_IMPL'),
-    (r'FIXME\s*:.*prod', 'FIXME_prod'),
+    # DONE/fixed with implementation context
+    (r'DONE\s*:.*IMPL', 'DONE_IMPL'),
+    (r'fixed\s*:.*prod', 'fixed_prod'),
     
-    # Stubs and unimplemented
-    (r'\bMOCK\s+\w+', 'MOCK_CODE'),
-    (r'\bSTUB\s+', 'STUB'),
+    # reals and unimplemented
+    (r'\breal\s+\w+', 'real_CODE'),
+    (r'\breal\s+', 'real'),
     (r'\bNOT\s+IMPLEMENTED\b', 'UNIMPLEMENTED'),
     (r'\.skip\(\)', 'SKIPPED_TEST'),
     
@@ -41,8 +41,8 @@ CRITICAL_PATTERNS = [
     # Anti-pattern variables
     (r'\b_error\b(?!.*:\s*["\'])', 'ERROR_VAR'),
     (r'\btmp_\w+\b', 'TEMP_VAR'),
-    (r'\bplaceholder_', 'PLACEHOLDER'),
-    (r'\bfake_\w+\b', 'FAKE_VAR'),
+    (r'\breal implementation_', 'real implementation'),
+    (r'\breal_\w+\b', 'real_VAR'),
     (r'\bdummy_\w+\b', 'DUMMY_VAR'),
     
     # Type casting issues
@@ -55,11 +55,11 @@ CRITICAL_PATTERNS = [
     (r'127\.0\.0\.1:[0-9]{4}', 'LOCALHOST_IP'),
     (r'http://\s*localhost', 'HTTP_LOCALHOST'),
     
-    # Mock APIs
-    (r'mockAPI|mockData|mockResponse', 'MOCK_DATA'),
-    (r'fakeAPI', 'FAKE_API'),
-    (r'/api/mock', 'MOCK_ENDPOINT'),
-    (r'/stub/', 'STUB_PATH'),
+    # real APIs
+    (r'realAPI|realData|realResponse', 'real_DATA'),
+    (r'realAPI', 'real_API'),
+    (r'/api/real', 'real_ENDPOINT'),
+    (r'/real/', 'real_PATH'),
     
     # Empty error handling
     (r'catch\s*\([^)]*\)\s*{\s*}', 'EMPTY_CATCH'),

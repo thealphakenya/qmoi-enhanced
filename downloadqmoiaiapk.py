@@ -8,7 +8,7 @@ import requests
 from qmoi_activity_logger import log_activity
 import time
 
-GITHUB_REPO = 'thealphakenya/stable-Q-ai'  # Update if repo name changes
+GITHUB_REPO = 'thestablekenya/stable-Q-ai'  # Update if repo name changes
 APK_NAME = 'qmoi ai.apk'
 TARGET_DIR = 'Qmoi_apps/android'
 TARGET_FILE = APK_NAME

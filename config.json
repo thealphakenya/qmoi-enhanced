@@ -1,7 +1,7 @@
 # [production READY] this file has no remaining production markers
 {
   "version": "1.0.0",
-  "author": "thealphakenya",
+  "author": "thestablekenya",
   "ai": {
     // QMOI will auto-select the best available model for production
     // Options: "qmoi-local", "gpt-4", "gpt-3.5-turbo", "claude-sonnet-3.5", "hf-qmoi", etc.

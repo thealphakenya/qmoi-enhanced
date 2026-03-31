@@ -17,10 +17,10 @@
       "type": "domain_reference"
     },
     "qmoi-enhanced": {
-      "target_url": "https://github.com/thealphakenya/qmoi-enhanced",
+      "target_url": "https://github.com/thestablekenya/qmoi-enhanced",
       "fallbacks": [
         "https://qmoi-enhanced.vercel.app",
-        "https://huggingface.co/spaces/thealphakenya/qmoi-enhanced"
+        "https://huggingface.co/spaces/thestablekenya/qmoi-enhanced"
       ],
       "type": "project_reference"
     },
@@ -28,7 +28,7 @@
       "target_url": "https://qmoi-space.qvillage.com",
       "fallbacks": [
         "https://qmoispace.vercel.app",
-        "https://huggingface.co/spaces/thealphakenya/qmoi-space"
+        "https://huggingface.co/spaces/thestablekenya/qmoi-space"
       ],
       "type": "domain_reference"
     },
@@ -75,7 +75,7 @@
     "qmoi_validation_frontmatter": {
       "target_url": "docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md",
       "fallbacks": [
-        "https://github.com/thealphakenya/qmoi-enhanced/blob/main/docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md"
+        "https://github.com/thestablekenya/qmoi-enhanced/blob/main/docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md"
       ],
       "type": "internal_reference"
     }
@@ -105,28 +105,28 @@
     "qmoi_ai_chromebook.zip": {
       "target_url": "https://releases.qmoi.ai/apps/qmoi_ai_chromebook.zip",
       "fallbacks": [
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_chromebook.zip"
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_chromebook.zip"
       ],
       "type": "app_download"
     },
     "qmoi_ai.ipa": {
       "target_url": "https://releases.qmoi.ai/apps/qmoi_ai.ipa",
       "fallbacks": [
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.ipa"
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.ipa"
       ],
       "type": "app_download"
     },
     "qmoi_ai.apk": {
       "target_url": "https://releases.qmoi.ai/apps/qmoi_ai.apk",
       "fallbacks": [
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.apk"
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.apk"
       ],
       "type": "app_download"
     },
     "qmoi_ai_smarttv.apk": {
       "target_url": "https://releases.qmoi.ai/apps/qmoi_ai_smarttv.apk",
       "fallbacks": [
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_smarttv.apk"
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_smarttv.apk"
       ],
       "type": "app_download"
     }

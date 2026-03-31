@@ -5,7 +5,7 @@
 
 import requests, os, subprocess, sys
 
-REPO = "thealphakenya/qmoi_ai"
+REPO = "thestablekenya/qmoi_ai"
 LOCAL_VERSION = "1.0.0"
 BINARY_PATH = os.path.abspath(sys.executable)
 

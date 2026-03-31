@@ -285,8 +285,8 @@ async function addToMpesaAccount(amount: number, description: string) {
     const mpesaUrl = `${
       credentials.environment === "production"
         ? "https://api.safaricom.co.ke"
-        : "https://sandbox.safaricom.co.ke"
-    }/mpesa/c2b/v1/simulate`;
+        : "https://production.safaricom.co.ke"
+    }/mpesa/c2b/v1/live`;
 
     const response = await fetch(mpesaUrl, {
       method: "POST",

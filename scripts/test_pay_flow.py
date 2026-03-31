@@ -11,7 +11,7 @@ import os
 import sqlite3
 import json
 import datetime
-from payments import provider_stub, stripe_adapter
+from payments import provider_real, stripe_adapter
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 DB = os.path.join(ROOT, 'qmoi.db')
@@ -22,8 +22,8 @@ cur.execute('CREATE TABLE IF NOT EXISTS transactions (id TEXT PRIMARY KEY, usern
 conn.commit()
 
 # execute a provider charge
-res = provider_stub.create_charge('bob', 1200)
-print('Simulated provider charge:', res)
+res = provider_real.create_charge('bob', 1200)
+print('lived provider charge:', res)
 
 # Build a real webhook payload (as Stripe would send) and pass to adapter verifier
 evt = {'id': res.get('provider_ref'), 'type': 'charge.settled', 'data': {'object': {'id': res.get('provider_ref'), 'amount': 1200, 'metadata': {'username': 'bob'}}}}

@@ -20,7 +20,7 @@ fallback_map = {
     'qcity.qmoi.ai': 'qcity.qvillage.com',
     'yap.qmoi.ai': 'yap.qvillage.com',
     'qmoi-space.qmoi.ai': 'qvillage.com',
-    'q-stable.qmoi.ai': 'alphaq.ai',
+    'q-stable.qmoi.ai': 'stableq.ai',
     'qparallel.prod': 'qglobal.org',
     'qvillage.org': 'qvillage.com'
 }

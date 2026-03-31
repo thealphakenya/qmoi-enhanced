@@ -63,8 +63,8 @@
     "content_hits": 0,
     "overall_healthy": false
   },
-  "alphaq.ai": {
-    "domain": "alphaq.ai",
+  "stableq.ai": {
+    "domain": "stableq.ai",
     "timestamp": "2026-03-31 22:14:18.455815",
     "dns_resolved": true,
     "dns_ips": [

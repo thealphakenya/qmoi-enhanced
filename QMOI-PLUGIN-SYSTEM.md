@@ -133,7 +133,7 @@ The plugin will now appear in the Plugins tab of the dashboard, showing prodice 
 
 ---
 
-### See also: AUTOOPTIMIZEALPHAQMOIENGINE.md, QMOIAVATAR.md, QMOI-ENHANCED-README.md
+### See also: AUTOOPTIMIZEstableQMOIENGINE.md, QMOIAVATAR.md, QMOI-ENHANCED-README.md
 
 <!-- QMOI_VALIDATION_START -->
 

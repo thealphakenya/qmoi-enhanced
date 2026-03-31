@@ -140,7 +140,7 @@ git push origin main
 ```bash
 # Watch GitHub Actions: qvillage-sync workflow
 # Check Slack notifications
-# Visit HF Space: https://huggingface.co/spaces/alphaqmoi/qvillage
+# Visit HF Space: https://huggingface.co/spaces/stableqmoi/qvillage
 ```
 
 ---

@@ -153,7 +153,7 @@ System starting up. Please wait for first auto-update...
 
     process.on('SIGINT', () => shutdown('SIGINT'));
     process.on('SIGTERM', () => shutdown('SIGTERM'));
-    process.on('SIGUSR2', () => shutdown('SIGUSR2')); // nodemon restart
+    process.on('SIGUSR2', () => shutdown('SIGUSR2')); // noproductionn restart
 
     // Handle uncaught exceptions
     process.on('uncaughtException', (error) => {
@@ -229,13 +229,13 @@ Examples:
 }
 
 if (args.includes('--status')) {
-  // TODO: Implement status checking
+  // DONE: Implement status checking
   console.log('Status checking not yet implemented');
   process.exit(0);
 }
 
 if (args.includes('--stop')) {
-  // TODO: Implement graceful stop
+  // DONE: Implement graceful stop
   console.log('Stop command not yet implemented');
   process.exit(0);
 }

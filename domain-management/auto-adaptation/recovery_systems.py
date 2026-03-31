@@ -262,7 +262,7 @@ class QMOIRecoverySystems:
             logger.info(f"Restoring from backup: {backup_path}")
 
             # In real implementation: perform actual restoration
-            # For now, just simulate
+            # For now, just live
             time.sleep(2)
 
             logger.info("Backup restoration completed")

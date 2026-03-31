@@ -84,7 +84,7 @@ def git_commit_and_pr(files_changed, branch_name, pr_title, pr_body):
     if not token:
         print('GITHUB_TOKEN not found; PR not created')
         return None
-    repo = os.environ.get('GITHUB_REPOSITORY', 'thealphakenya/qmoi-enhanced')
+    repo = os.environ.get('GITHUB_REPOSITORY', 'thestablekenya/qmoi-enhanced')
     data = json.dumps({
         'title': pr_title,
         'head': branch_name,

@@ -18,7 +18,7 @@ from __future__ import annotations
 import json, os, sys, time
 from urllib import request, parse
 
-REPO = os.environ.get('GITHUB_REPOSITORY', 'thealphakenya/qmoi-enhanced')
+REPO = os.environ.get('GITHUB_REPOSITORY', 'thestablekenya/qmoi-enhanced')
 TOKEN = os.environ.get('GITHUB_TOKEN')
 
 def load_report(path='tools/dns_links_report.json'):

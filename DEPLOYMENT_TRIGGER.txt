@@ -1,2 +1,2 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [PRODUCTION READY] this file has no remaining productionuction markers
 # Redeploy trigger - Sun 18 Jan 2026 08:51:11 PM UTC

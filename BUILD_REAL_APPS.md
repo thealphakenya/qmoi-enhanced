@@ -215,7 +215,7 @@ zip -r -q ../../Qmoi_downloaded_apps/qcity/latest/qcity_package.zip .
 
 ### Debian Package (Linux)
 
-Requires fakeroot and dpkg:
+Requires realroot and dpkg:
 
 ```bash
 cd qmoi-enhanced/mobile/linux

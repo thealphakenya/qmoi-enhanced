@@ -135,9 +135,9 @@
       "error": "Unauthorized"
     },
     {
-      "url": "https://alphaq.ai/api/health)",
+      "url": "https://stableq.ai/api/health)",
       "file": "QVILLAGE.md",
-      "host": "alphaq.ai",
+      "host": "stableq.ai",
       "resolved_ips": [
         "13.248.213.45",
         "76.223.67.189"
@@ -238,9 +238,9 @@
       "error": "Method Not Allowed"
     },
     {
-      "url": "https://alphaq.ai/)",
+      "url": "https://stableq.ai/)",
       "file": "QVILLAGE.md",
-      "host": "alphaq.ai",
+      "host": "stableq.ai",
       "resolved_ips": [
         "13.248.213.45",
         "76.223.67.189"
@@ -450,7 +450,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/",
       "file": "RELEASE_FINALIZATION_PLAN.md",
       "host": "github.com",
       "resolved_ips": [
@@ -460,7 +460,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/settings/secrets/actions",
       "file": "RELEASE_FINALIZATION_PLAN.md",
       "host": "github.com",
       "resolved_ips": [
@@ -503,7 +503,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4",
       "file": "RELEASE_FINALIZATION_PLAN.md",
       "host": "github.com",
       "resolved_ips": [
@@ -566,7 +566,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/19868173025)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/actions/runs/19868173025)",
       "file": "SESSION_4_SUMMARY.md",
       "host": "github.com",
       "resolved_ips": [
@@ -760,7 +760,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/build-and-release.yml",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/build-and-release.yml",
       "file": "RELEASE_FINALIZATION_PLAN.md",
       "host": "github.com",
       "resolved_ips": [
@@ -804,7 +804,7 @@
       "error": "<urlopen error [SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1010)>"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/actions",
       "file": "RELEASE_FINALIZATION_PLAN.md",
       "host": "github.com",
       "resolved_ips": [
@@ -933,7 +933,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.3",
+      "url": "https://github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.3",
       "file": "V1_2_3_QUICK_REFERENCE.md",
       "host": "github.com",
       "resolved_ips": [
@@ -954,7 +954,7 @@
       "error": "Method Not Allowed"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3",
       "file": "V1_2_3_QUICK_REFERENCE.md",
       "host": "github.com",
       "resolved_ips": [
@@ -986,7 +986,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)",
       "file": "SESSION_3_COMPLETION_SUMMARY.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1012,7 +1012,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://qmoi.ai/api/admin/users/demote",
+      "url": "https://qmoi.ai/api/admin/users/productionte",
       "file": "NOTSPONSORED.md",
       "host": "qmoi.ai",
       "resolved_ips": [],
@@ -1020,7 +1020,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)(https://github.com/thealphakenya/qmoi-enhanced)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)(https://github.com/thestablekenya/qmoi-enhanced)",
       "file": "SESSION_3_COMPLETION_SUMMARY.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1109,7 +1109,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/issues",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/issues",
       "file": "V1_2_3_QUICK_REFERENCE.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1140,7 +1140,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt",
       "file": "RELEASE_v1.2.5_VERIFICATION_GUIDE.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1150,7 +1150,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1160,7 +1160,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1170,7 +1170,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1192,7 +1192,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1202,7 +1202,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.5",
       "file": "RELEASE_v1.2.5_VERIFICATION_GUIDE.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1212,7 +1212,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1232,7 +1232,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1253,7 +1253,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1263,7 +1263,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1273,7 +1273,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1283,7 +1283,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1293,7 +1293,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1303,7 +1303,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1313,7 +1313,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1323,7 +1323,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1333,7 +1333,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1343,7 +1343,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1353,7 +1353,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1375,7 +1375,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1385,7 +1385,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1395,7 +1395,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1405,7 +1405,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1415,7 +1415,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1425,7 +1425,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced.git",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced.git",
       "file": "QMOI_production_AUTO_RECOVERY_COMPLETE.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1435,7 +1435,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1445,7 +1445,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1455,7 +1455,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1465,7 +1465,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1475,7 +1475,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1485,7 +1485,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1495,7 +1495,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1505,7 +1505,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1515,7 +1515,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1525,7 +1525,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1548,7 +1548,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1558,7 +1558,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1568,7 +1568,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
       "file": "QI_download_component.html",
       "host": "github.com",
       "resolved_ips": [
@@ -1601,7 +1601,7 @@
       "error": "Forbidden"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1611,7 +1611,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1641,7 +1641,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1651,7 +1651,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1661,7 +1661,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/stable-Q-ai/releases)",
+      "url": "https://github.com/thestablekenya/stable-Q-ai/releases)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1671,7 +1671,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1681,7 +1681,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1691,7 +1691,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1701,7 +1701,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1711,7 +1711,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1721,7 +1721,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1731,7 +1731,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1741,7 +1741,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1751,7 +1751,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1761,7 +1761,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1771,7 +1771,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1781,7 +1781,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1791,7 +1791,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1816,7 +1816,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1826,7 +1826,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1836,7 +1836,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1846,7 +1846,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1856,7 +1856,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1866,7 +1866,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1876,7 +1876,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1886,7 +1886,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1896,7 +1896,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1906,7 +1906,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1916,7 +1916,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1926,7 +1926,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1936,7 +1936,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1946,7 +1946,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1956,7 +1956,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1966,7 +1966,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1976,7 +1976,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1986,7 +1986,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1996,7 +1996,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/error.log)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/error.log)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2006,7 +2006,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2016,7 +2016,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/qmoi_ai.exe)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/qmoi_ai.exe)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2026,7 +2026,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/linux/latest/qmoi_ai.AppImage)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/linux/latest/qmoi_ai.AppImage)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2036,7 +2036,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/raspberrypi/qmoi_ai_arm.tar.gz)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/raspberrypi/qmoi_ai_arm.tar.gz)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2064,7 +2064,7 @@
       "error": "Invalid IPv6 URL"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/qmoi",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/qmoi",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2074,7 +2074,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/smarttv/qmoi_ai.pkg)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/smarttv/qmoi_ai.pkg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2084,7 +2084,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/ios/qmoi_ai.ipa)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/ios/qmoi_ai.ipa)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2110,7 +2110,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/android/qmoi_ai.apk)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/android/qmoi_ai.apk)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2120,7 +2120,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/mac/latest/qmoi_ai.dmg)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/mac/latest/qmoi_ai.dmg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2130,7 +2130,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/chromebook/qmoi_ai.deb)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/chromebook/qmoi_ai.deb)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2140,7 +2140,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/downloads/windows/latest/qmoi_ai.exe)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/downloads/windows/latest/qmoi_ai.exe)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2160,7 +2160,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://huggingface.co/alphaqmoi/qmoi)",
+      "url": "https://huggingface.co/stableqmoi/qmoi)",
       "file": "link_report.md",
       "host": "huggingface.co",
       "resolved_ips": [

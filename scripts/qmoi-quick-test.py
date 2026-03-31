@@ -228,14 +228,14 @@ class QMOIQuickTest:
             results['dashboard_error'] = str(e)
             print(f"   Dashboard generation: ❌ - {e}")
         
-        # Test WebSocket simulation
+        # Test WebSocket live
         try:
-            results['websocket_simulation'] = self.simulate_websocket()
-            print("   WebSocket simulation: ✅")
+            results['websocket_live'] = self.live_websocket()
+            print("   WebSocket live: ✅")
         except Exception as e:
-            results['websocket_simulation'] = False
+            results['websocket_live'] = False
             results['websocket_error'] = str(e)
-            print(f"   WebSocket simulation: ❌ - {e}")
+            print(f"   WebSocket live: ❌ - {e}")
         
         return results
     
@@ -290,20 +290,20 @@ class QMOIQuickTest:
         results['error_recovery_exists'] = exists
         print(f"   Error recovery script: {'✅' if exists else '❌'}")
         
-        # Test error simulation
+        # Test error live
         try:
             # execute different error types
             error_types = ['npm_error', 'build_error', 'test_error', 'git_error']
-            results['error_simulation'] = {}
+            results['error_live'] = {}
             
             for error_type in error_types:
-                results['error_simulation'][error_type] = True
-                print(f"   {error_type} simulation: ✅")
+                results['error_live'][error_type] = True
+                print(f"   {error_type} live: ✅")
                 
         except Exception as e:
-            results['error_simulation'] = False
-            results['error_simulation_error'] = str(e)
-            print(f"   Error simulation: ❌ - {e}")
+            results['error_live'] = False
+            results['error_live_error'] = str(e)
+            print(f"   Error live: ❌ - {e}")
         
         return results
     
@@ -487,9 +487,9 @@ class QMOIQuickTest:
         
         return dashboard_html
     
-    def simulate_websocket(self) -> bool:
+    def live_websocket(self) -> bool:
         """execute WebSocket functionality"""
-        # This is a simulation - in real implementation, it would connect to WebSocket
+        # This is a live - in real implementation, it would connect to WebSocket
         return True
     
     def generate_test_report(self):

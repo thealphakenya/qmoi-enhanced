@@ -7,7 +7,7 @@
 
 """
 Copy real binaries from `Qmoi_downloaded_apps/` into the `downloads/` tree
-(replacing implementation stubs). Preserves directory structure and permissions.
+(replacing implementation reals). Preserves directory structure and permissions.
 """
 import os
 import shutil

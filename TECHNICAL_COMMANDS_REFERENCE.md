@@ -28,23 +28,23 @@ git tag test-v1.2.5 -m "Test release for workflow validation"
 git push origin test-v1.2.5
 
 # Monitor workflow in real-time
-# Visit: https://github.com/thealphakenya/qmoi-enhanced/actions
+# Visit: https://github.com/thestablekenya/qmoi-enhanced/actions
 ```
 
 ### Check final Release Status
 
 ```bash
 # List release assets (requires gh CLI installed)
-gh release view test-v1.2.5 --repo thealphakenya/qmoi-enhanced \
+gh release view test-v1.2.5 --repo thestablekenya/qmoi-enhanced \
   --json assets --jq '.assets | length'
 # Expected: 16
 
 # Get detailed asset info
-gh release view test-v1.2.5 --repo thealphakenya/qmoi-enhanced \
+gh release view test-v1.2.5 --repo thestablekenya/qmoi-enhanced \
   --json assets --jq '.assets[] | {name, size}'
 
 # Check if release is final (not published)
-gh release view test-v1.2.5 --repo thealphakenya/qmoi-enhanced \
+gh release view test-v1.2.5 --repo thestablekenya/qmoi-enhanced \
   --json isDraft --jq '.isDraft'
 # Expected: true
 ```
@@ -54,7 +54,7 @@ gh release view test-v1.2.5 --repo thealphakenya/qmoi-enhanced \
 ```bash
 # Download AppImage
 curl -L -o /tmp/qmoi_ai.AppImage \
-  https://github.com/thealphakenya/qmoi-enhanced/releases/download/test-v1.2.5/qmoi_ai.AppImage
+  https://github.com/thestablekenya/qmoi-enhanced/releases/download/test-v1.2.5/qmoi_ai.AppImage
 
 # Get expected SHA256 from manifest
 EXPECTED_SHA=$(jq -r '.assets[] | select(.name == "qmoi_ai.AppImage") | .sha256' \
@@ -79,11 +79,11 @@ python3 /workspaces/qmoi-enhanced/scripts/sync_to_draft_release.py \
 
 # Option B: Using gh CLI
 gh release edit test-v1.2.5 \
-  --repo thealphakenya/qmoi-enhanced \
+  --repo thestablekenya/qmoi-enhanced \
   --final=false
 
 # Verify it's now published
-gh release view test-v1.2.5 --repo thealphakenya/qmoi-enhanced --json isDraft
+gh release view test-v1.2.5 --repo thestablekenya/qmoi-enhanced --json isDraft
 ```
 
 ### Full Asset Verification Batch
@@ -98,7 +98,7 @@ jq -r '.assets[].name' /workspaces/qmoi-enhanced/release_assets_manifest.json | 
 while read -r asset; do
   echo "Downloading: $asset"
   curl -L -o "$asset" \
-    "https://github.com/thealphakenya/qmoi-enhanced/releases/download/test-v1.2.5/$asset"
+    "https://github.com/thestablekenya/qmoi-enhanced/releases/download/test-v1.2.5/$asset"
 done
 
 # Verify all checksums
@@ -162,17 +162,17 @@ cat reports/release_compliance_report.json | jq '.status'
 ```bash
 # Dispatch workflow manually
 gh workflow run release-compliance-check.yml \
-  --repo thealphakenya/qmoi-enhanced \
+  --repo thestablekenya/qmoi-enhanced \
   --ref autosync-backup-20250926-232440
 
 # Check recent runs
 gh run list --workflow=release-compliance-check.yml \
-  --repo thealphakenya/qmoi-enhanced \
+  --repo thestablekenya/qmoi-enhanced \
   --limit 3 \
   --json name,status,conclusion
 
 # View latest run logs (replace with actual run ID)
-gh run view <RUN_ID> --log --repo thealphakenya/qmoi-enhanced
+gh run view <RUN_ID> --log --repo thestablekenya/qmoi-enhanced
 ```
 
 ---
@@ -183,11 +183,11 @@ gh run view <RUN_ID> --log --repo thealphakenya/qmoi-enhanced
 
 ```bash
 # Get v1.2.3 release info (JSON)
-gh release view v1.2.3 --repo thealphakenya/qmoi-enhanced --json \
+gh release view v1.2.3 --repo thestablekenya/qmoi-enhanced --json \
   name,body,createdAt,publishedAt,assets | jq '.'
 
 # Extract asset names & sizes
-gh release view v1.2.3 --repo thealphakenya/qmoi-enhanced --json assets \
+gh release view v1.2.3 --repo thestablekenya/qmoi-enhanced --json assets \
   --jq '.assets[] | "\(.name) (\(.size | tonumber / 1048576 | round / 1) MB)"'
 ```
 
@@ -196,21 +196,21 @@ gh release view v1.2.3 --repo thealphakenya/qmoi-enhanced --json assets \
 ```bash
 # For GITHUB_RELEASES_RECENT.md:
 # 1. Get release info:
-gh release view v1.2.3 --repo thealphakenya/qmoi-enhanced --json \
+gh release view v1.2.3 --repo thestablekenya/qmoi-enhanced --json \
   name,body,publishedAt | jq -r '.publishedAt, .body'
 
 # 2. Manually edit GITHUB_RELEASES_RECENT.md with real dates & content
 
 # For README.md:
 # 1. Verify all download links work
-curl -I https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe \
+curl -I https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe \
   | grep -E "HTTP|Location"
 # Expected: 200 OK or 302 redirect
 
 # 2. Test all platform links in quick batch
 for platform in "exe" "dmg" "AppImage" "deb" "apk" "ipa"; do
   echo -n "Testing .$platform: "
-  curl -s -I "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/*.$platform" \
+  curl -s -I "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/*.$platform" \
     2>/prod/null | head -1 | grep -q "200\|302" && echo "✓" || echo "✗"
 done
 ```
@@ -238,12 +238,12 @@ done | sort
 
 ```bash
 # List all security alerts
-gh secret list --repo thealphakenya/qmoi-enhanced 2>/prod/null || \
+gh secret list --repo thestablekenya/qmoi-enhanced 2>/prod/null || \
   echo "Note: Run from repo directory with 'gh auth login' first"
 
 # Get Dependabot status (via API)
 curl -s -H "Authorization: token $(gh auth token)" \
-  https://api.github.com/repos/thealphakenya/qmoi-enhanced/vulnerability-alerts \
+  https://api.github.com/repos/thestablekenya/qmoi-enhanced/vulnerability-alerts \
   | jq '.[] | {repository, vulnerability}'
 ```
 
@@ -303,7 +303,7 @@ git push origin autosync-backup-20250926-232440
 ```bash
 # Keep checking workflow status (updates every 5 sec)
 watch -n 5 'gh run list --workflow=sync-releases-from-manifest.yml \
-  --repo thealphakenya/qmoi-enhanced \
+  --repo thestablekenya/qmoi-enhanced \
   --limit 1 \
   --json status,conclusion'
 ```
@@ -352,7 +352,7 @@ curl -s -H "Authorization: token $(gh auth token)" \
 
 # Check repo access
 curl -s -H "Authorization: token $(gh auth token)" \
-  https://api.github.com/repos/thealphakenya/qmoi-enhanced | \
+  https://api.github.com/repos/thestablekenya/qmoi-enhanced | \
   jq '.name, .private, .permissions'
 ```
 
@@ -365,14 +365,14 @@ curl -s -H "Authorization: token $(gh auth token)" \
 ```bash
 # Get latest workflow run
 RUN_ID=$(gh run list --workflow=sync-releases-from-manifest.yml \
-  --repo thealphakenya/qmoi-enhanced --limit 1 --json databaseId \
+  --repo thestablekenya/qmoi-enhanced --limit 1 --json databaseId \
   --jq '.[0].databaseId')
 
 # View full logs
-gh run view $RUN_ID --log --repo thealphakenya/qmoi-enhanced
+gh run view $RUN_ID --log --repo thestablekenya/qmoi-enhanced
 
 # Re-run failed workflow
-gh run rerun $RUN_ID --repo thealphakenya/qmoi-enhanced
+gh run rerun $RUN_ID --repo thestablekenya/qmoi-enhanced
 ```
 
 ### If Assets Are included
@@ -381,7 +381,7 @@ gh run rerun $RUN_ID --repo thealphakenya/qmoi-enhanced
 cd /workspaces/qmoi-enhanced
 
 # Check what's in the release
-gh release view v1.2.3 --repo thealphakenya/qmoi-enhanced \
+gh release view v1.2.3 --repo thestablekenya/qmoi-enhanced \
   --json assets --jq '.assets | length'
 
 # Compare with manifest

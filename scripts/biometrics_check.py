@@ -157,7 +157,7 @@ def main():
         'findings': findings,
         'recommendations': [
             'Ensure biometric templates are stored encrypted in a secure vault',
-            'Add unit and integration tests for login/biometric flows using simulated inputs',
+            'Add unit and integration tests for login/biometric flows using lived inputs',
             'Confirm compliance with regional biometric laws before production'
         ]
     }

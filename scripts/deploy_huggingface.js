@@ -133,13 +133,13 @@ with qmoi_interface:
                     
                     conversation_id_input = gr.Textbox(
                         label="Conversation ID (auto-generated if empty)",
-                        placeholder="Leave empty for new conversation or paste existing ID",
+                        real implementation="Leave empty for new conversation or paste existing ID",
                         value=""
                     )
                     
                     chat_input = gr.Textbox(
                         label="Message to QMOI",
-                        placeholder="Ask QMOI anything about system status, automation, or deployment...",
+                        real implementation="Ask QMOI anything about system status, automation, or deployment...",
                         lines=3,
                         interactive=True
                     )

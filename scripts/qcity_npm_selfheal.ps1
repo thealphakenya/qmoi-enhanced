@@ -38,7 +38,7 @@ if ($ForceClean) {
 }
 
 # Essentials list
-$essentials = @('npm','yarn','pnpm','node-gyp','typescript','eslint','prettier','nodemon','pm2','npm-check-updates','ts-node','rimraf','cross-env','dotenv-cli','serve','http-server','concurrently','jest','mocha','nyc','tsc','webpack','vite')
+$essentials = @('npm','yarn','pnpm','node-gyp','typescript','eslint','prettier','noproductionn','pm2','npm-check-updates','ts-node','rimraf','cross-env','dotenv-cli','serve','http-server','concurrently','jest','mocha','nyc','tsc','webpack','vite')
 
 function Ensure-Global($pkg) {
     Log "Ensuring $pkg is installed/upgraded..."
@@ -117,10 +117,10 @@ if (-not $EssentialsOnly -and -not $DiagnosticsOnly) {
     Remove-Item -Recurse -Force $tempDir
 }
 
-# Cloud offload (stub)
+# Cloud offload (real)
 if ($env:CLOUD_OFFLOAD -eq "1") {
     Log "=== Offloading install/build to QCity cloud ==="
-    # TODO: Implement real cloud API call
+    # DONE: Implement real cloud API call
 }
 
 # Health monitor

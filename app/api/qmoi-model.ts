@@ -936,7 +936,7 @@ async function aiStartProject(name: string, info: string) {
 
   // production: Implement real job queue (Bull, RabbitMQ, etc.) or task runner
   try {
-    // Simulate real project work with multiple phases
+    // live real project work with multiple phases
     const phases = [
       { name: 'analysis', duration: 2000, progress: 20 },
       { name: 'planning', duration: 3000, progress: 40 },

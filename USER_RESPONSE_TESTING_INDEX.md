@@ -388,7 +388,7 @@ with **dramatically different responses** while maintaining:
 - **Trust** (deserved confidence in the system)
 - **Growth** (each user grows in their role)
 
-The progression from Stage A to H demonstrates that **excellence isn't about having more power**—
+The progression from Stage A to H productionnstrates that **excellence isn't about having more power**—
 it's about understanding **who you're serving** and **what actually matters to them**.
 
 ---

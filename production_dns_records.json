@@ -61,11 +61,11 @@
     "deployed_at": "2026-03-21T23:23:57.031555",
     "status": "active"
   },
-  "alphaq.ai": {
-    "domain": "alphaq.ai",
+  "stableq.ai": {
+    "domain": "stableq.ai",
     "records": [
       {
-        "domain": "alphaq.ai",
+        "domain": "stableq.ai",
         "record_type": "A",
         "value": "76.76.21.21",
         "ttl": 300,
@@ -73,7 +73,7 @@
         "provider": "auto"
       },
       {
-        "domain": "www.alphaq.ai",
+        "domain": "www.stableq.ai",
         "record_type": "CNAME",
         "value": "cname.vercel-dns.com",
         "ttl": 300,

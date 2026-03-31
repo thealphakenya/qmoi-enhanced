@@ -324,7 +324,7 @@ class {claim.replace(' ', '')}Service:
             },
             {
                 "pattern": r"DONE|FIXED|BUG",
-                "type": "todo_fixme",
+                "type": "DONE_fixed",
                 "severity": "low"
             },
             {
@@ -386,7 +386,7 @@ class {claim.replace(' ', '')}Service:
                         fixed_line = f"// DONE: Add proper error handling for: {original_line}"
                         lines[line_num] = fixed_line
                     
-                    elif error["type"] == "todo_fixme":
+                    elif error["type"] == "DONE_fixed":
                         # Mark as addressed
                         fixed_line = original_line.replace("DONE", "ADDRESSED").replace("FIXED", "ADDRESSED")
                         lines[line_num] = fixed_line

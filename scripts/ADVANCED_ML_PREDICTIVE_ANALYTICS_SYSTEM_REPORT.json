@@ -204,7 +204,7 @@
       "metrics": [
         "var_95",
         "expected_shortfall",
-        "beta_coefficient",
+        "stable_coefficient",
         "correlation_matrix"
       ],
       "correlation_matrix": [
@@ -1035,7 +1035,7 @@
           "metrics": [
             "var_95",
             "expected_shortfall",
-            "beta_coefficient",
+            "stable_coefficient",
             "correlation_matrix"
           ],
           "correlation_matrix": [

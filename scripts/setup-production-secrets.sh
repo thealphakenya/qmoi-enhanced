@@ -46,7 +46,7 @@ echo
 echo "================================================"
 echo "Setup Instructions:"
 echo "================================================"
-echo "1. Go to: https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions"
+echo "1. Go to: https://github.com/thestablekenya/qmoi-enhanced/settings/secrets/actions"
 echo "2. Click 'New repository secret' for each secret above"
 echo "3. Paste the exact name and value"
 echo "4. Repeat for all 4 Android secrets"

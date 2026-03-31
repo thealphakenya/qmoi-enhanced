@@ -250,7 +250,7 @@ export function AvatarSelector({
                 onValueChange={setSelectedCategory}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Category" />
+                  <SelectValue real implementation="Category" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -266,7 +266,7 @@ export function AvatarSelector({
                 onValueChange={setSelectedQuality}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Quality" />
+                  <SelectValue real implementation="Quality" />
                 </SelectTrigger>
                 <SelectContent>
                   {qualities.map((quality) => (
@@ -282,7 +282,7 @@ export function AvatarSelector({
 
               <Select value={selectedEngine} onValueChange={setSelectedEngine}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Engine" />
+                  <SelectValue real implementation="Engine" />
                 </SelectTrigger>
                 <SelectContent>
                   {engines.map((engine) => (
@@ -408,14 +408,14 @@ export function AvatarSelector({
                     (a) => a.id === selectedAvatar,
                   );
                   const previewUrl =
-                    avatar?.previewUrl || avatar?.demoUrl || null;
+                    avatar?.previewUrl || avatar?.productionUrl || null;
                   if (previewUrl) {
                     return (
                       <iframe
                         title={`avatar-preview-${selectedAvatar}`}
                         src={`${previewUrl}`}
                         className="w-full h-full border-0"
-                        sandbox="allow-scripts allow-same-origin allow-forms"
+                        production="allow-scripts allow-same-origin allow-forms"
                       />
                     );
                   }
@@ -459,7 +459,7 @@ export function AvatarSelector({
 
               <Button variant="outline" className="flex items-center gap-2">
                 <Play className="h-4 w-4" />
-                Demo Animation
+                production Animation
               </Button>
             </div>
 

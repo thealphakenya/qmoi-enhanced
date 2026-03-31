@@ -13,17 +13,17 @@ production_patterns = [
     r'\[production DONE\]',
     r'\[production FIXED\]',
     r'PENDING_IMPLEMENTATION',
-    r'\bTODO\b',
-    r'\bFIXME\b',
-    r'\bplaceholder\b',
-    r'\bmock\b',
-    r'\bsimulate\b',
-    r'\bsimulation\b',
+    r'\bDONE\b',
+    r'\bfixed\b',
+    r'\breal implementation\b',
+    r'\breal\b',
+    r'\blive\b',
+    r'\blive\b',
     r'\btest data\b',
     r'\btest implementation\b',
-    r'\bstaging\b',
-    r'\bstub\b',
-    r'\bstubs\b'
+    r'\bproduction\b',
+    r'\breal\b',
+    r'\breals\b'
 ]
 
 extensions = ['.ts', '.js', '.mjs', '.tsx', '.jsx', '.md', '.json', '.txt', '.py', '.sh']

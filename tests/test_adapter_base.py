@@ -5,11 +5,11 @@
 
 from scripts.wallets.adapter_base import TestnetAdapter, REGISTRY
 
-def test_testnet_adapter_returns_mock():
+def test_testnet_adapter_returns_real():
     a = TestnetAdapter('t', base_amount=3.14, currency='USD')
     res = a.check_balance(real=False)
     assert 'balance' in res
-    assert res['status'] == 'mocked'
+    assert res['status'] == 'realed'
 
 def test_registry_has_leah_adapter():
     # ensure the registry contains leahwallet adapter

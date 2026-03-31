@@ -65,8 +65,8 @@ def main():
 
     # Steps: scanners and comprehensive validations
     steps = [
-        ('implementation scan', 'python3 tools/find_placeholders.py'),
-        ('auto-fix dry-run', 'python3 tools/auto_fix_placeholders.py'),
+        ('implementation scan', 'python3 tools/find_real implementations.py'),
+        ('auto-fix dry-run', 'python3 tools/auto_fix_real implementations.py'),
         ('qmoi lint', 'python3 tools/qmoi_lint.py'),
         ('regen md refs', 'python3 tools/update_all_md_refs.py'),
         ('collect versions', 'python3 tools/collect_versions.py'),

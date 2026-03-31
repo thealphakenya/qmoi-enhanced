@@ -50,13 +50,13 @@ class DocumentationAuditSystem:
     VALID_DOMAINS = {
         "qvillage.com", "qvillage.net", "qvillage.org",
         "qmoi.ai", "qmoi.com", "qmoi.io",
-        "alphaq.ai", "alphaq.com",
+        "stableq.ai", "stableq.com",
         "qshare.qvillage.com", "qshare.qvillage.com", "qshare.qglobal.org",
         "qstore.qvillage.com", "qstore.qvillage.com",
         "qcity.qmoi.ai", "qcity.qvillage.com",
         "qmoi-space.qmoi.ai", "space.qmoi.ai", "qspace.qvillage.com",
         "yap.qmoi.ai", "yap.qvillage.com",
-        "q-stable.qmoi.ai", "stable.alphaq.ai", "models.qvillage.com",
+        "q-stable.qmoi.ai", "stable.stableq.ai", "models.qvillage.com",
         "qglobal.org", "qglobal.net",
         "qparallel.prod",
         # GitHub and other external
@@ -71,9 +71,9 @@ class DocumentationAuditSystem:
         "qcity.qmoi.ai": "qcity.qvillage.com",
         "qmoi-space.qmoi.ai": "qspace.qvillage.com",
         "yap.qmoi.ai": "yap.qvillage.com",
-        "q-stable.qmoi.ai": "stable.alphaq.ai",
+        "q-stable.qmoi.ai": "stable.stableq.ai",
         "qmoi.ai": "qmoi.com",
-        "alphaq.ai": "alphaq.com",
+        "stableq.ai": "stableq.com",
         "qvillage.org": "qvillage.net"
     }
     
@@ -184,7 +184,7 @@ class DocumentationAuditSystem:
         links.update(raw_urls)
         
         # Extract QMOI domain mentions
-        qmoi_pattern = r'(?:qmoi|qvillage|alphaq|qstore|qshare|qcity|yap|q-stable)[.\w-]*'
+        qmoi_pattern = r'(?:qmoi|qvillage|stableq|qstore|qshare|qcity|yap|q-stable)[.\w-]*'
         qmoi_domains = re.findall(qmoi_pattern, content)
         for domain in qmoi_domains:
             if '.' in domain and not any(x in domain for x in ['com', 'ai', 'net', 'org', 'prod']):

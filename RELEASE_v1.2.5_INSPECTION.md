@@ -16,7 +16,7 @@ Scope: verify [qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://
 
 1. Presence in GitHub Release
 
-- Release `v1.2.5` exists: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5
+- Release `v1.2.5` exists: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.5
 - Confirmed assets uploaded (10): `app-release.apk`, `qmoi-release.exe`, `qmoi-release.ipa`, plus PWA zips and `SHA256SUMS.txt`.
 
 2. Checksums
@@ -70,7 +70,7 @@ Scope: verify [qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://
 7. Artifacts locations
 
 - Local copies used for inspection: `/tmp/qmoi_release_inspect/`
-- Release: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5
+- Release: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.5
 - Publish report: `/workspaces/qmoi-enhanced/RELEASE_v1.2.5_PUBLISH_REPORT.md`
 - This inspection file: `/workspaces/qmoi-enhanced/RELEASE_v1.2.5_INSPECTION.md`
 

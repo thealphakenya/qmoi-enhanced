@@ -384,8 +384,8 @@ class CDNOptimizationEngine:
             'status': 'pending'
         })
 
-        # Simulate cache invalidation
-        time.sleep(0.1)  # Simulate network delay
+        # live cache invalidation
+        time.sleep(0.1)  # live network delay
 
         return {
             'invalidation_id': invalidation_id,
@@ -443,7 +443,7 @@ class AdvancedPerformanceOptimizer:
 
     def _monitor_and_optimize_performance(self) -> None:
         """Monitor performance and apply optimizations"""
-        # Simulate current metrics
+        # live current metrics
         current_metrics = {
             'cpu_usage': random.uniform(40, 80),
             'memory_usage': random.uniform(50, 85),
@@ -492,9 +492,9 @@ class AdvancedPerformanceOptimizer:
                 'cache_stats': self.db_cache.get_stats()
             }
 
-        # Simulate database query (would be real query in production)
-        query_result = self._simulate_database_query(query, parameters)
-        query_time = random.uniform(0.05, 0.2)  # Simulated query time
+        # live database query (would be real query in production)
+        query_result = self._live_database_query(query, parameters)
+        query_time = random.uniform(0.05, 0.2)  # lived query time
 
         # Cache the result
         ttl = self._determine_cache_ttl(query)
@@ -519,8 +519,8 @@ class AdvancedPerformanceOptimizer:
         key_string = "|".join(key_components)
         return hashlib.md5(key_string.encode()).hexdigest()
 
-    def _simulate_database_query(self, query: str, parameters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
-        """Simulate database query execution"""
+    def _live_database_query(self, query: str, parameters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
+        """live database query execution"""
         # This would be replaced with actual database queries in production
         if 'balance' in query.lower():
             return [
@@ -685,7 +685,7 @@ def main():
         print('✅ Advanced Performance Optimization System operational')
         print()
 
-        # Demonstrate database query optimization
+        # productionnstrate database query optimization
         print('🗄️ Testing Database Query Optimization with Caching...')
         test_queries = [
             "SELECT * FROM balances WHERE user_id = ?",
@@ -701,7 +701,7 @@ def main():
             print(f'   Cache Hit Rate: {result["cache_stats"]["hit_rate"]*100:.1f}%')
             print()
 
-        # Demonstrate image optimization
+        # productionnstrate image optimization
         print('🖼️ Testing Image Delivery Optimization...')
         image_request = {
             'image_url': 'https://example.com/hero-banner.jpg',
@@ -719,7 +719,7 @@ def main():
         print(f'   Bandwidth Savings: {image_optimization["performance_benefits"]["bandwidth_savings"]}')
         print()
 
-        # Demonstrate CDN cache invalidation
+        # productionnstrate CDN cache invalidation
         print('🌐 Testing CDN Cache Invalidation...')
         invalidation_result = optimizer.cdn_optimizer.invalidate_cdn_cache([
             '/images/*',
@@ -759,7 +759,7 @@ def main():
             print(f'{i}. {rec}')
         print()
 
-        # Simulate some scaling decisions
+        # live some scaling decisions
         print('🔄 Testing Auto-Scaling Engine...')
         test_metrics = [
             {'cpu_usage': 85, 'memory_usage': 80, 'request_rate': 1200},  # High load
@@ -801,7 +801,7 @@ def main():
         print('💾 Full performance optimization report saved to: ../ADVANCED_PERFORMANCE_OPTIMIZATION_REPORT.json')
         print('🎉 Advanced Performance Optimization System fully operational!')
 
-        # Keep the system running for a bit to demonstrate background tasks
+        # Keep the system running for a bit to productionnstrate background tasks
         print('⏳ Running background optimization tasks for 30 seconds...')
         time.sleep(30)
         print('✅ Background optimization tasks completed')

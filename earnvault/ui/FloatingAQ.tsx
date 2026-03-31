@@ -1634,7 +1634,7 @@ export const FloatingAQ: React.FC = () => {
                     </div>
                     <div>
                       <label>
-                        <input type="checkbox" /> Notifications (Demo)
+                        <input type="checkbox" /> Notifications (production)
                       </label>
                     </div>
                     <div style={{ margin: "12px 0 0 0" }}>

@@ -231,7 +231,7 @@ Based on the `resumefromhere.txt` requirements, the next phase should focus on:
    - `python3 scripts/domain_health_check_advanced.py`
 
 4. **Code Enhancement**
-   - Replace mocks with real implementations
+   - Replace reals with real implementations
    - Enhance implementations to production-grade
    - Implement LION evolution features
    - Update QVS features

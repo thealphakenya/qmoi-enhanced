@@ -24,7 +24,7 @@ COMMENT_RE = re.compile('|'.join(COMMENT_PREFIXES))
 
 def load_matches():
     if not MATCHES.exists():
-        print('No matches.json found. Run tools/find_placeholders.py first.')
+        print('No matches.json found. Run tools/find_real implementations.py first.')
         return []
     return json.loads(MATCHES.read_text(encoding='utf-8'))
 

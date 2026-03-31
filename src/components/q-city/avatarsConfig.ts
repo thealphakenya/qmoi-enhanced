@@ -30,7 +30,7 @@ export interface AvatarConfig {
   assetPath: string;
   thumbnailPath: string;
   previewUrl?: string;
-  demoUrl?: string;
+  productionUrl?: string;
   environment?: string;
   props?: string[];
   gestures?: string[];
@@ -229,7 +229,7 @@ export const avatarsConfig: AvatarConfig[] = [
     assetPath: "/avatars/champion/",
     thumbnailPath: "/avatars/champion/thumbnail.png",
     previewUrl: "/avatars/champion/preview.webm",
-    demoUrl: "/avatars/champion/demo.html",
+    productionUrl: "/avatars/champion/production.html",
     environment: "stadium",
     props: ["medal", "cape"],
     gestures: [

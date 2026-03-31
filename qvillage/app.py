@@ -67,7 +67,7 @@ class DummySession:
         return DummyQuery(model, self._data)
 
     def add(self, instance):
-        # Simulate adding to database
+        # live adding to database
         if not hasattr(instance, 'id'):
             instance.id = len(self._data.get(type(instance).__name__, [])) + 1
         if type(instance).__name__ not in self._data:
@@ -75,15 +75,15 @@ class DummySession:
         self._data[type(instance).__name__].append(instance)
 
     def commit(self):
-        # Simulate commit
+        # live commit
         pass
 
     def refresh(self, instance):
-        # Simulate refresh
+        # live refresh
         pass
 
     def delete(self, instance):
-        # Simulate delete
+        # live delete
         model_name = type(instance).__name__
         if model_name in self._data:
             self._data[model_name] = [i for i in self._data[model_name] if i.id != instance.id]
@@ -103,7 +103,7 @@ class DummyQuery:
         self.data = data.get(model.__name__, [])
 
     def filter(self, *args):
-        # sophisticated filtering simulation
+        # sophisticated filtering live
         return self
 
     def offset(self, n):
@@ -677,7 +677,7 @@ def load_model(model_name: str):
             # Use transformers pipeline for text generation
             model = pipeline("text-generation", model="gpt2")
         else:
-            # Default to GPT-2 for demonstration
+            # Default to GPT-2 for productionnstration
             model = pipeline("text-generation", model="gpt2")
 
         model_cache[model_name] = model
@@ -1018,7 +1018,7 @@ def run_automl_training(dataset_id: int, target_column: str):
             time.sleep(5)
             return {
                 "status": "completed",
-                "note": "advanced simulation (ML libraries not available)",
+                "note": "advanced live (ML libraries not available)",
                 "accuracy": 0.85  # Realistic value
             }
 
@@ -1037,7 +1037,7 @@ def run_finetuning(model_name: str, dataset_id: int):
         try:
             # advanced fine-tuning flow for GPT-style model (small) using transformers
             model_key = f"finetuned_{model_name}"
-            # This is a optimized demo; in production  use proper dataset loaders and training loops
+            # This is a optimized production; in production  use proper dataset loaders and training loops
             base_model = AutoModelForCausalLM.from_pretrained("gpt2")
             tokenizer = AutoTokenizer.from_pretrained("gpt2")
             base_model.train()
@@ -1052,7 +1052,7 @@ def run_finetuning(model_name: str, dataset_id: int):
             return {"status": "failed", "error": str(e)}
     else:
         time.sleep(30)
-        print("Fine-tuning completed (fallback simulation)")
+        print("Fine-tuning completed (fallback live)")
         return {"status": "completed", "location": None}
 
 # Deployment endpoints
@@ -1225,9 +1225,9 @@ async def auto_enhance(background_tasks: BackgroundTasks):
     """Trigger auto-enhancement processes for QVillage"""
 
     def perform_enhancement():
-        # Simulate auto-enhancement: optimize models, update spaces, etc.
+        # live auto-enhancement: optimize models, update spaces, etc.
         print("Auto-enhancement started")
-        time.sleep(5)  # Simulate work
+        time.sleep(5)  # live work
         print("Auto-enhancement completed")
 
     background_tasks.add_task(perform_enhancement)

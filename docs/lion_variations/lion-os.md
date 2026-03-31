@@ -49,7 +49,7 @@ Monetization
 
 Integration with QMOI
 
-- Used for on-prem demonstrations, partner deployments and paid managed installs.
+- Used for on-prem productionnstrations, partner deployments and paid managed installs.
 
 ## 🔄 Evolution Status
 

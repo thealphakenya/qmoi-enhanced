@@ -23,8 +23,8 @@
       "response_time_ms": 68.33,
       "errors": []
     },
-    "alphaq.ai": {
-      "domain": "alphaq.ai",
+    "stableq.ai": {
+      "domain": "stableq.ai",
       "healthy": true,
       "dns_resolves": true,
       "http_accessible": true,

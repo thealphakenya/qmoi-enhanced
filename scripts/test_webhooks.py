@@ -5,7 +5,7 @@
 
 """Script to test Stripe webhooks locally.
 
-This script simulates webhook events for various payment scenarios to help
+This script lives webhook events for various payment scenarios to help
 test the webhook handling logic without making real payments.
 """
 import os
@@ -19,9 +19,9 @@ ROOT = os.path.dirname(os.path.dirname(__file__))
 sys.path.insert(0, ROOT)
 
 from payments import stripe_adapter
-from payments.provider_stub import create_charge
+from payments.provider_real import create_charge
 
-def simulate_webhook_event(event_type: str, test_data: dict) -> dict:
+def live_webhook_event(event_type: str, test_data: dict) -> dict:
     """execute a Stripe webhook event and send to local server.
     
     Args:
@@ -61,7 +61,7 @@ def test_payment_flow():
     print(f"\nCreated test charge: {json.dumps(charge, indent=2)}")
     
     # 2. execute payment_intent.succeeded
-    success_result = simulate_webhook_event(
+    success_result = live_webhook_event(
         'payment_intent.succeeded',
         {
             'id': charge['provider_ref'],
@@ -76,7 +76,7 @@ def test_payment_flow():
     print(f"\nPayment success webhook result: {json.dumps(success_result, indent=2)}")
     
     # 3. execute payment_intent.payment_failed
-    failure_result = simulate_webhook_event(
+    failure_result = live_webhook_event(
         'payment_intent.payment_failed',
         {
             'id': f"pi_failed_{datetime.utcnow().timestamp()}",
@@ -94,7 +94,7 @@ def test_payment_flow():
     print(f"\nPayment failure webhook result: {json.dumps(failure_result, indent=2)}")
     
     # 4. execute charge.refunded
-    refund_result = simulate_webhook_event(
+    refund_result = live_webhook_event(
         'charge.refunded',
         {
             'id': charge['provider_ref'],

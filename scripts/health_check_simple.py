@@ -82,7 +82,7 @@ def main():
         "qmoi.ai", "www.qmoi.ai", "api.qmoi.ai",
         "qcity.qmoi.ai", "qmoi-space.qmoi.ai", "yap.qmoi.ai", "q-stable.qmoi.ai",
         "qvillage.com", "qvillage.net", "qvillage.org", "qglobal.org",
-        "alphaq.ai", "qparallel.prod"
+        "stableq.ai", "qparallel.prod"
     ]
 
     results = {

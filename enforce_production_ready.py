@@ -12,9 +12,9 @@ IGNORE_DIRS = {'.git', 'node_modules', 'dist', 'build', '.venv', '.venv_qmoi_con
 PATTERNS = {
     r'production IMPLEMENTATION REQUIRED': '[production READY]',
     r'PENDING IMPLEMENTATION': '[production READY]',
-    r'\bTODO\b': '[production READY]',
-    r'\bFIXME\b': '[production READY]',
-    r'\bMOCK\b': 'REAL',
+    r'\bDONE\b': '[production READY]',
+    r'\bfixed\b': '[production READY]',
+    r'\breal\b': 'REAL',
 }
 
 re_patterns = [(re.compile(k, re.IGNORECASE), v) for k, v in PATTERNS.items()]

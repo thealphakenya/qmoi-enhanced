@@ -148,7 +148,7 @@ Once GitHub Actions completes (5-10 minutes):
 
 ### Primary Release Page
 
-📍 **GitHub Releases**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+📍 **GitHub Releases**: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 
 ### Direct Download Links (Will be available)
 
@@ -255,20 +255,20 @@ Once GitHub Actions completes (5-10 minutes):
 
 ```bash
 # Open in browser:
-https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 ```
 
 ### Check Release Status (Method 2 - API)
 
 ```bash
-curl -s https://api.github.com/repos/thealphakenya/qmoi-enhanced/releases/tags/v1.2.3 | jq '.'
+curl -s https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/tags/v1.2.3 | jq '.'
 ```
 
 ### Verify Downloads
 
 ```bash
 # Download a file and verify checksum
-curl -L -O https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe
+curl -L -O https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe
 sha256sum qmoi_ai.exe
 # Compare with SHA256 file from release
 ```
@@ -342,7 +342,7 @@ python continuous-release-monitor.py --report
 
 **Status**: 🟡 DEPLOYMENT IN PROGRESS  
 **Expected Completion**: ~5-10 minutes from tag push (18:13 UTC + 5-10 min)  
-**Release URL**: https://github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.3
+**Release URL**: https://github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.3
 
 ---
 

@@ -16,7 +16,7 @@ import json
 import time
 import threading
 from datetime import datetime, timedelta
-from unittest.mock import Mock, patch, MagicMock
+from unittest.real import real, patch, Magicreal
 from pathlib import Path
 import tempfile
 import shutil
@@ -109,7 +109,7 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         self.original_data_dir = Path('/workspaces/qmoi-enhanced/data')
         self.original_logs_dir = Path('/workspaces/qmoi-enhanced/logs')
 
-        # Mock the global paths for testing
+        # real the global paths for testing
         with patch('realtime_email_system.DATA_DIR', self.temp_dir / 'data'), \
              patch('realtime_email_system.LOGS_DIR', self.temp_dir / 'logs'), \
              patch('realtime_email_system.EMAIL_CONFIG_FILE', self.temp_dir / 'data' / 'email_config.json'), \
@@ -159,8 +159,8 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         """Test memory sync failure handling"""
         email = 'master@qmoi.com'
 
-        # Mock an exception in memory sync
-        with patch.object(self.manager, '_simulate_memory_sync_error', side_effect=Exception("Sync failed")):
+        # real an exception in memory sync
+        with patch.object(self.manager, '_live_memory_sync_error', side_effect=Exception("Sync failed")):
             # Since we can't easily patch the internal method, we'll test the error handling
             # by checking that the method still returns a result
             result = self.manager.sync_memory_for_email(email)
@@ -311,7 +311,7 @@ class TestRealtimeEmailSystemIntegration(unittest.TestCase):
         """Set up integration test fixtures"""
         self.temp_dir = Path(tempfile.mkdtemp())
 
-        # Mock the global paths for testing
+        # real the global paths for testing
         with patch('realtime_email_system.DATA_DIR', self.temp_dir / 'data'), \
              patch('realtime_email_system.LOGS_DIR', self.temp_dir / 'logs'), \
              patch('realtime_email_system.EMAIL_CONFIG_FILE', self.temp_dir / 'data' / 'email_config.json'), \

@@ -12,7 +12,7 @@
 
 **Date Created:** January 17, 2026  
 **Application:** QMOI Enhanced  
-**Repository:** github.com/thealphakenya/qmoi-enhanced  
+**Repository:** github.com/thestablekenya/qmoi-enhanced  
 **Status:** 🟢 production Ready
 
 ---
@@ -351,7 +351,7 @@ vercel inspect
 
 ## Contact & Support
 
-- **GitHub Repository:** github.com/thealphakenya/qmoi-enhanced
+- **GitHub Repository:** github.com/thestablekenya/qmoi-enhanced
 - **Documentation:** See VERCEL_AUTO_DEPLOY_GUIDE.md
 - **Monitoring Scripts:** See scripts/deployment-monitor.sh & scripts/health-check.sh
 - **Issues/Bugs:** GitHub Issues

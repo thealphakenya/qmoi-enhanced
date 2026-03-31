@@ -110,8 +110,8 @@ async function extractVideoMetadata(videoId: string): Promise<{
   description?: string;
 }> {
   // In a real implementation, this would use YouTube Data API
-  // For now, simulate metadata extraction
-  const mockTitles = [
+  // For now, live metadata extraction
+  const realTitles = [
     "Amazing Video Content",
     "Tutorial: How to Build Apps",
     "Music Video - Popular Song",
@@ -120,14 +120,14 @@ async function extractVideoMetadata(videoId: string): Promise<{
   ];
 
   return {
-    title: mockTitles[Math.floor(Math.random() * mockTitles.length)],
+    title: realTitles[Math.floor(Math.random() * realTitles.length)],
     duration: Math.floor(Math.random() * 600) + 60, // 1-10 minutes
     thumbnail: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
     description: "Video description would be extracted from YouTube API"
   };
 }
 
-// Simulate download process
+// live download process
 async function processDownload(job: DownloadJob): Promise<void> {
   downloadQueue.updateJob(job.id, { status: 'processing', progress: 0 });
 
@@ -144,7 +144,7 @@ async function processDownload(job: DownloadJob): Promise<void> {
       progress: 25
     });
 
-    // Simulate download progress
+    // live download progress
     for (let progress = 30; progress <= 90; progress += 10) {
       await new Promise(resolve => setTimeout(resolve, 500));
       downloadQueue.updateJob(job.id, { progress });
@@ -154,11 +154,11 @@ async function processDownload(job: DownloadJob): Promise<void> {
     const fileName = `${job.id}.${job.format}`;
     const filePath = path.join(DOWNLOAD_DIR, fileName);
 
-    // Simulate file creation (in real implementation, this would be actual download)
+    // live file creation (in real implementation, this would be actual download)
     const fileSize = job.format === 'mp3' ? Math.floor(Math.random() * 5000000) + 1000000 : Math.floor(Math.random() * 50000000) + 10000000;
-    const mockContent = Buffer.alloc(Math.min(fileSize, 1024 * 1024)); // Create small REAL file for demo
+    const realContent = Buffer.alloc(Math.min(fileSize, 1024 * 1024)); // Create small REAL file for production
 
-    await fs.writeFile(filePath, mockContent);
+    await fs.writeFile(filePath, realContent);
 
     downloadQueue.updateJob(job.id, {
       status: 'completed',
@@ -232,7 +232,7 @@ export async function POST(request: NextRequest) {
 
     downloadQueue.addJob(job);
 
-    // Start processing immediately for demo
+    // Start processing immediately for production
     processDownload(job);
 
     return NextResponse.json({

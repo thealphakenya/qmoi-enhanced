@@ -29,7 +29,7 @@ QMOI Enhanced is a Next.js-based full-stack application with:
 
 ```bash
 # Clone the repository
-git clone https://github.com/thealphakenya/qmoi-enhanced.git
+git clone https://github.com/thestablekenya/qmoi-enhanced.git
 cd qmoi-enhanced
 
 # Setup production environment

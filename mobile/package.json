@@ -1,4 +1,3 @@
-# [production READY] this file has no remaining production markers
 {
   "name": "qmoiMobile",
   "version": "0.1.0",
@@ -9,12 +8,13 @@
     "ios": "react-native run-ios"
   },
   "dependencies": {
-    "react": "18.2.0",
-    "react-native": "0.80.1",
+    "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
-    "@react-native-async-storage/async-storage": "^1.21.0",
-    "react-native-biometrics": "^3.0.1",
-    "axios": "^1.6.0"
+    "axios": "^1.6.0",
+    "express-session": "^1.19.0",
+    "react": "19.1.0",
+    "react-native": "0.80.1",
+    "react-native-biometrics": "^3.0.1"
   }
 }

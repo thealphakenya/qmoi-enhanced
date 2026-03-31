@@ -168,7 +168,7 @@ This document provides a comprehensive inventory of all React components in the 
 
 - [`AWSCredentialsModal.tsx`](components/prodice/AWSCredentialsModal.tsx) - `.tsx`
 - [`AzureCredentialsModal.tsx`](components/prodice/AzureCredentialsModal.tsx) - `.tsx`
-- [`prodiceIntegrationStubs.ts`](components/prodice/prodiceIntegrationStubs.ts) - `.ts`
+- [`prodiceIntegrationreals.ts`](components/prodice/prodiceIntegrationreals.ts) - `.ts`
 - [`GCPCredentialsModal.tsx`](components/prodice/GCPCredentialsModal.tsx) - `.tsx`
 
 ### global (1 files)

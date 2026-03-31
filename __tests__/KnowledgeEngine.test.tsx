@@ -46,7 +46,7 @@ import { KnowledgeEngine } from "../src/components/q-city/KnowledgeEngine";
 
 describe("KnowledgeEngine component", () => {
   beforeEach(() => {
-    jest.resetAllMocks();
+    jest.resetAllreals();
     global.fetch = jest.fn(async (url: string, opts?: any) => {
       // simplistic router
       if (url.includes("action=sources")) {

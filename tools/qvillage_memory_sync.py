@@ -62,7 +62,7 @@ class QVillageSyncEngine:
     ):
         self.qvillage_url = qvillage_url or os.getenv("QVILLAGE_API_URL", "http://localhost:3000")
         self.qmoi_memory_url = qmoi_memory_url or os.getenv("QMOI_MEMORY_URL", "http://localhost:3001")
-        self.hf_space_url = hf_space_url or os.getenv("HF_SPACE_URL", "https://huggingface.co/spaces/alphaqmoi/qvillage")
+        self.hf_space_url = hf_space_url or os.getenv("HF_SPACE_URL", "https://huggingface.co/spaces/stableqmoi/qvillage")
         self.hf_token = hf_token or os.getenv("HF_API_TOKEN")
         self.dry_run = dry_run
         self.sync_log = []

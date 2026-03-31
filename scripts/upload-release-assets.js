@@ -10,7 +10,7 @@ const axios = require("axios");
 const { execSync } = require("child_process");
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const OWNER = "thealphakenya";
+const OWNER = "thestablekenya";
 const REPO = "stable-Q-ai";
 
 if (!GITHUB_TOKEN) {

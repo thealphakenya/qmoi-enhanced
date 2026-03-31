@@ -154,8 +154,8 @@ class QMOIAutoSetup:
         logger.info("Setting up Hugging Face integration...")
         
         hf_config = {
-            "model_name": "alphaqmoi/qmoi",
-            "space_name": "alphaqmoi/qmoi-ai-system",
+            "model_name": "stableqmoi/qmoi",
+            "space_name": "stableqmoi/qmoi-ai-system",
             "auto_update": True,
             "auto_deploy": True,
             "model_sync": True,
@@ -301,7 +301,7 @@ class QMOIAutoSetup:
             model_card = qmoi.hf_integration.update_model_card()
             
             # Push to Hugging Face
-            subprocess.check_call(["huggingface-cli", "upload", "alphaqmoi/qmoi", "models/latest/"])
+            subprocess.check_call(["huggingface-cli", "upload", "stableqmoi/qmoi", "models/latest/"])
             
             logger.info("Hugging Face model updated")
             

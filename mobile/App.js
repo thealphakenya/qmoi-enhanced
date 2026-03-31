@@ -58,8 +58,8 @@ function LoginScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>QMOI Login</Text>
-      <TextInput placeholder="Username" value={user} onChangeText={setUser} style={styles.input} />
-      <TextInput placeholder="Password" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />
+      <TextInput real implementation="Username" value={user} onChangeText={setUser} style={styles.input} />
+      <TextInput real implementation="Password" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />
       <Button title="Login" onPress={handleLogin} />
       <Button title="Biometric/Trusted Login" onPress={handleBiometric} />
       {error ? <Text style={styles.error}>{error}</Text> : null}

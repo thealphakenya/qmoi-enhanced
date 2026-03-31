@@ -47,10 +47,10 @@ This will start a static server and open [QMOI AI](https://qvillage.com/qmoi-ai.
 If you are in a restricted environment, open the URL manually after running the script.
 
 ![Build](https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square)
-![CI Build](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ci.yml/badge.svg)
+![CI Build](https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/ci.yml/badge.svg)
 ![Coverage](https://img.shields.io/badge/Coverage-unknown-lightgrey?style=flat-square)
 ![Release v1.2.3](https://img.shields.io/badge/Release-v1.2.3-blue?style=flat-square)
-![Publish Q stable](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg)
+![Publish Q stable](https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg)
 ![Platforms](https://img.shields.io/badge/Platforms-12+-success?style=flat-square)
 ![Apps](https://img.shields.io/badge/Apps-6-success?style=flat-square)
 
@@ -65,7 +65,7 @@ Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a 
 | Domain | Purpose | URL | Status |
 |--------|---------|-----|--------|
 | **QMOI AI** | Main AI engine with parallel processing | [qmoi.ai](https://qmoi.ai) | 🟢 Active |
-| **latest Q** | Advanced AI system with superior intelligence | [alphaq.ai](https://alphaq.ai) | 🟢 Active |
+| **latest Q** | Advanced AI system with superior intelligence | [stableq.ai](https://stableq.ai) | 🟢 Active |
 | **QVillage** | Community hub and knowledge platform | [qvillage.com](https://qvillage.com) | 🟢 Active |
 
 ### 🔧 Service Domains (6 Domains)
@@ -162,7 +162,7 @@ The QVillage Hugging Face Space has been significantly enhanced with production-
 - **Concurrent Processing**: Simultaneous data retrieval from AI, ML, NLP, Vision, Robotics categories
 
 ### 🧠 Intelligence & Quality Improvements
-- **Real arXiv Integration**: Live API data with XML parsing (no mocks)
+- **Real arXiv Integration**: Live API data with XML parsing (no reals)
 - **Advanced Search**: Multi-factor relevance scoring with tag-based filtering
 - **Expanded Knowledge Base**: 10 comprehensive AI/ML topics with detailed content
 - **Enhanced Community Stats**: Dynamic, time-based user activity metrics
@@ -261,7 +261,7 @@ This repository is optimized for low data usage when working in GitHub Codespace
 - ✅ All 6 QMOI apps built and deployed
 - ✅ 12+ platforms supported (Windows, macOS, Linux, Android, iOS, Raspberry Pi, Chromebook, PWA, Smart TV, Wear OS, Docker, and more)
 - ✅ 72+ total builds (6 apps × 12+ platforms)
-- 📥 **[Download from GitHub Releases](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3)**
+- 📥 **[Download from GitHub Releases](https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3)**
 - 📋 **[Deployment Status](./DEPLOYMENT_STATUS_V1_2_3.md)**
 
 ## 🧠 QMOI AI - Superior Intelligence System
@@ -301,7 +301,7 @@ QMOI operates with full consciousness and awareness across all system aspects:
 
 #### 🔍 Quantum Virtual System (QVS) Access
 - **Virtual Environment Management**: Complete control over virtual systems
-- **Simulation Capabilities**: Advanced scenario modeling and testing
+- **live Capabilities**: Advanced scenario modeling and testing
 - **Cross-Platform Virtualization**: Unified virtual environment across all platforms
 - **Resource Virtualization**: Abstracted access to computational resources
 
@@ -574,7 +574,7 @@ npm or yarn
 
 ```bash
 # Clone the repository
-git clone https://github.com/thealphakenya/qmoi-enhanced.git
+git clone https://github.com/thestablekenya/qmoi-enhanced.git
 cd qmoi-enhanced
 
 # Install dependencies
@@ -651,25 +651,25 @@ git push origin v1.2.4
 
 ## 📥 Downloads & Verification
 
-All releases are available at **[GitHub Releases v1.2.3](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3)**.
+All releases are available at **[GitHub Releases v1.2.3](https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3)**.
 
 ### Available Platforms & Assets
 
 | Platform       | App           | Format      | Download                                                                                                                 | Size    | SHA256                                 |
 | -------------- | ------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------ | ------- | -------------------------------------- |
-| **Windows**    | QMOI AI       | `.exe`      | [qmoi_ai.exe](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe)                       | 5.0 MB  | [`view`](release_assets_manifest.json) |
-| **macOS**      | QMOI AI       | `.dmg`      | [qmoi_ai.dmg](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg)                       | 8.0 MB  | [`view`](release_assets_manifest.json) |
-| **Linux**      | QMOI AI       | `.AppImage` | [qmoi_ai.AppImage](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage)             | 6.0 MB  | [`view`](release_assets_manifest.json) |
-| **Linux**      | QMOI AI       | `.deb`      | [qmoi_ai.deb](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb)                       | 4.0 MB  | [`view`](release_assets_manifest.json) |
-| **Android**    | QMOI AI       | `.apk`      | [qmoi_ai.apk](https://releases.qmoi.ai/apps/qmoi_ai.apk)(https://releases.qmoi.ai/apps/qmoi_ai.apk)(https://releases.qmoi.ai/apps/qmoi_ai.apk)(https://releases.qmoi.ai/apps/qmoi_ai.apk)(https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk)                       | 10.0 MB | [`view`](release_assets_manifest.json) |
-| **iOS**        | QMOI AI       | `.ipa`      | [qmoi_ai.ipa](https://releases.qmoi.ai/apps/qmoi_ai.ipa)(https://releases.qmoi.ai/apps/qmoi_ai.ipa)(https://releases.qmoi.ai/apps/qmoi_ai.ipa)(https://releases.qmoi.ai/apps/qmoi_ai.ipa)(https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa)                       | 12.0 MB | [`view`](release_assets_manifest.json) |
-| **Chromebook** | QMOI AI       | `.zip`      | [qmoi_ai_chromebook.zip](https://releases.qmoi.ai/apps/qmoi_ai_chromebook.zip)(https://releases.qmoi.ai/apps/qmoi_ai_chromebook.zip)(https://releases.qmoi.ai/apps/qmoi_ai_chromebook.zip)(https://releases.qmoi.ai/apps/qmoi_ai_chromebook.zip)(https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip) | 3.0 MB  | [`view`](release_assets_manifest.json) |
-| **Smart TV**   | QMOI AI       | `.apk`      | [qmoi_ai_smarttv.apk](https://releases.qmoi.ai/apps/qmoi_ai_smarttv.apk)(https://releases.qmoi.ai/apps/qmoi_ai_smarttv.apk)(https://releases.qmoi.ai/apps/qmoi_ai_smarttv.apk)(https://releases.qmoi.ai/apps/qmoi_ai_smarttv.apk)(https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk)       | 8.0 MB  | [`view`](release_assets_manifest.json) |
-| **Web**        | QShare        | `.zip`      | [qshare.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qshare.zip)                         | ~2 KB   | [`view`](release_assets_manifest.json) |
-| **Web**        | QStore        | `.zip`      | [qstore.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qstore.zip)                         | ~2 KB   | [`view`](release_assets_manifest.json) |
-| **Web**        | QVillage      | `.zip`      | [qvillage.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qvillage.zip)                     | ~2 KB   | [`view`](release_assets_manifest.json) |
-| **Web**        | QMOI Space    | `.zip`      | [qmoi-space.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-space.zip)                 | ~4 KB   | [`view`](release_assets_manifest.json) |
-| **QCity**      | QCity Package | `.zip`      | [qcity_package.zip](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip)           | 2.0 MB  | [`view`](release_assets_manifest.json) |
+| **Windows**    | QMOI AI       | `.exe`      | [qmoi_ai.exe](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe)                       | 5.0 MB  | [`view`](release_assets_manifest.json) |
+| **macOS**      | QMOI AI       | `.dmg`      | [qmoi_ai.dmg](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg)                       | 8.0 MB  | [`view`](release_assets_manifest.json) |
+| **Linux**      | QMOI AI       | `.AppImage` | [qmoi_ai.AppImage](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage)             | 6.0 MB  | [`view`](release_assets_manifest.json) |
+| **Linux**      | QMOI AI       | `.deb`      | [qmoi_ai.deb](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb)                       | 4.0 MB  | [`view`](release_assets_manifest.json) |
+| **Android**    | QMOI AI       | `.apk`      | [qmoi_ai.apk](https://releases.qmoi.ai/apps/qmoi_ai.apk)(https://releases.qmoi.ai/apps/qmoi_ai.apk)(https://releases.qmoi.ai/apps/qmoi_ai.apk)(https://releases.qmoi.ai/apps/qmoi_ai.apk)(https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.apk)                       | 10.0 MB | [`view`](release_assets_manifest.json) |
+| **iOS**        | QMOI AI       | `.ipa`      | [qmoi_ai.ipa](https://releases.qmoi.ai/apps/qmoi_ai.ipa)(https://releases.qmoi.ai/apps/qmoi_ai.ipa)(https://releases.qmoi.ai/apps/qmoi_ai.ipa)(https://releases.qmoi.ai/apps/qmoi_ai.ipa)(https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.ipa)                       | 12.0 MB | [`view`](release_assets_manifest.json) |
+| **Chromebook** | QMOI AI       | `.zip`      | [qmoi_ai_chromebook.zip](https://releases.qmoi.ai/apps/qmoi_ai_chromebook.zip)(https://releases.qmoi.ai/apps/qmoi_ai_chromebook.zip)(https://releases.qmoi.ai/apps/qmoi_ai_chromebook.zip)(https://releases.qmoi.ai/apps/qmoi_ai_chromebook.zip)(https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_chromebook.zip) | 3.0 MB  | [`view`](release_assets_manifest.json) |
+| **Smart TV**   | QMOI AI       | `.apk`      | [qmoi_ai_smarttv.apk](https://releases.qmoi.ai/apps/qmoi_ai_smarttv.apk)(https://releases.qmoi.ai/apps/qmoi_ai_smarttv.apk)(https://releases.qmoi.ai/apps/qmoi_ai_smarttv.apk)(https://releases.qmoi.ai/apps/qmoi_ai_smarttv.apk)(https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai_smarttv.apk)       | 8.0 MB  | [`view`](release_assets_manifest.json) |
+| **Web**        | QShare        | `.zip`      | [qshare.zip](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qshare.zip)                         | ~2 KB   | [`view`](release_assets_manifest.json) |
+| **Web**        | QStore        | `.zip`      | [qstore.zip](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qstore.zip)                         | ~2 KB   | [`view`](release_assets_manifest.json) |
+| **Web**        | QVillage      | `.zip`      | [qvillage.zip](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qvillage.zip)                     | ~2 KB   | [`view`](release_assets_manifest.json) |
+| **Web**        | QMOI Space    | `.zip`      | [qmoi-space.zip](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-space.zip)                 | ~4 KB   | [`view`](release_assets_manifest.json) |
+| **QCity**      | QCity Package | `.zip`      | [qcity_package.zip](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip)           | 2.0 MB  | [`view`](release_assets_manifest.json) |
 
 ### Verify Downloaded Files
 
@@ -679,7 +679,7 @@ All assets include SHA256 checksums in [`release_assets_manifest.json`](release_
 
 ```bash
 # Download the manifest
-curl -s https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/main/release_assets_manifest.json | jq '.assets[] | select(.name == "qmoi_ai.AppImage") | .sha256'
+curl -s https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/main/release_assets_manifest.json | jq '.assets[] | select(.name == "qmoi_ai.AppImage") | .sha256'
 
 # Compare with your downloaded file
 sha256sum qmoi_ai.AppImage
@@ -726,7 +726,7 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 | [qmoi.ai](https://qmoi.ai) | main_app | 200 ✅ | 100.00ms | Direct |
 | [qshare.qvillage.com](qshare.qvillage.com) | file_sharing | 200 ✅ | 37.50ms | Direct |
 | [qstore.qvillage.com](qstore.qvillage.com) | app_store | 200 ✅ | 33.96ms | Direct |
-| [alphaq.ai](https://alphaq.ai) | ai_platform | 200 ✅ | 115.15ms | Direct |
+| [stableq.ai](https://stableq.ai) | ai_platform | 200 ✅ | 115.15ms | Direct |
 | [qvillage.com](https://qvillage.com) | primary_hub | 200 ✅ | 122.91ms | Direct |
 
 ### 🌍 Global Region Coverage
@@ -749,7 +749,7 @@ All asset metadata (sizes, checksums, platforms) is maintained in [`release_asse
 
 ### 🔗 Critical production Links (Verified)
 
-- [alphaq.ai](https://alphaq.ai) - Advanced AI system with superior intelligence ✅
+- [stableq.ai](https://stableq.ai) - Advanced AI system with superior intelligence ✅
 - [qmoi.ai](https://qmoi.ai) - Main QMOI AI platform with parallel processing ⚠️
 - [qvillage.com](https://qvillage.com) - Primary hub for QMOI ecosystem ✅
 - [qshare.qvillage.com](qshare.qvillage.com) - File sharing and collaboration platform ⚠️
@@ -1036,7 +1036,7 @@ DOWNLOADQMOIAIAPPALLprodICES.md → CLI installers, troubleshooting, QR download
 🌐 Download Links
 All finalized apps are automatically published to:
 
-👉 https://github.com/thealphakenya/qmoi-enhanced/releases
+👉 https://github.com/thestablekenya/qmoi-enhanced/releases
 
 If a download fails, QCity automation will auto-rebuild, fix, and restore the correct link.
 
@@ -1058,7 +1058,7 @@ Q stable is a robust PWA aggregator that combines QMOI, QMOI Space, and QCity in
 
 After the first successful run the site will be available at:
 
-https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/
+https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/
 
 If you need a custom domain or organization Pages site, update the workflow and repository Pages settings.
 - QMOI can autotrigger any workflow, modify workflow or other files, and enhance features as needed
@@ -1130,15 +1130,15 @@ Edit
 
 | Icon | App Name | Type | Platforms | Latest Release | Download | Status |
 |------|----------|------|----------|---------------|----------|--------|
-| 🌐   | Qbrowser (skv)     | Browser | Win, Mac, Android, iOS, Linux | v1.2.0 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qbrowser/linux.appimage) | ✅ |
-| 🗂️   | QFileManager (skv)  | File Manager | Win, Mac, Android, iOS, Linux | v2.0.1 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qfilemanager/linux.appimage) | ✅ |
-| 🕰️   | QClock (skv)        | Clock | Win, Mac, Android, iOS, Linux | v1.1.0 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qclock/linux.appimage) | ✅ |
-| 🗺️   | QMap (skv)          | Mapping | Win, Mac, Android, iOS, Linux | v3.0.0 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qmap/linux.appimage) | ✅ |
-| 🔍   | QSearch (skv)       | Search/Chat | Win, Mac, Android, iOS, Linux | v1.0.5 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qsearch/linux.appimage) | ✅ |
-| 💬   | QWhatsApp (skv)     | Messaging | Win, Mac, Android, iOS, Linux | v2.2.0 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage) | ✅ |
-| ⚡   | QAutoprod (skv)      | Automation | Win, Mac, Android, iOS, Linux | v1.0.0 | [Win](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/windows.exe) [Mac](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/mac.dmg) [Android](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/android.apk) [iOS](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/ios.ipa) [Linux](https://github.com/thealphakenya/qmoi-enhanced/releases/qautoprod/linux.appimage) | ✅ |
+| 🌐   | Qbrowser (skv)     | Browser | Win, Mac, Android, iOS, Linux | v1.2.0 | [Win](https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe) [Mac](https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg) [Android](https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk) [iOS](https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa) [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage) | ✅ |
+| 🗂️   | QFileManager (skv)  | File Manager | Win, Mac, Android, iOS, Linux | v2.0.1 | [Win](https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe) [Mac](https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg) [Android](https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk) [iOS](https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa) [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage) | ✅ |
+| 🕰️   | QClock (skv)        | Clock | Win, Mac, Android, iOS, Linux | v1.1.0 | [Win](https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe) [Mac](https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg) [Android](https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk) [iOS](https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa) [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage) | ✅ |
+| 🗺️   | QMap (skv)          | Mapping | Win, Mac, Android, iOS, Linux | v3.0.0 | [Win](https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe) [Mac](https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg) [Android](https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk) [iOS](https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa) [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage) | ✅ |
+| 🔍   | QSearch (skv)       | Search/Chat | Win, Mac, Android, iOS, Linux | v1.0.5 | [Win](https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe) [Mac](https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg) [Android](https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk) [iOS](https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa) [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage) | ✅ |
+| 💬   | QWhatsApp (skv)     | Messaging | Win, Mac, Android, iOS, Linux | v2.2.0 | [Win](https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe) [Mac](https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg) [Android](https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk) [iOS](https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa) [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage) | ✅ |
+| ⚡   | QAutoprod (skv)      | Automation | Win, Mac, Android, iOS, Linux | v1.0.0 | [Win](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe) [Mac](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg) [Android](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk) [iOS](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa) [Linux](https://github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage) | ✅ |
 | 🤖   | QMOI AI             | AI Core | All platforms | v1.2.3 | [Win⚠️](QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md#qmoi-ai-v1-2-3---actual-binary-releases-8-platforms) [Mac](Qmoi_apps/mac/qmoi_ai.dmg) [Android](Qmoi_apps/android/qmoi_ai.apk) [iOS](Qmoi_apps/ios/qmoi_ai.ipa) [Linux](Qmoi_apps/linux/qmoi_ai.AppImage) [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) [Chromebook](Qmoi_apps/chromebook/qmoi_ai.deb) [RaspberryPi](Qmoi_apps/raspberrypi/qmoi_ai.img) | ⚠️ |
-| 🏙️   | QCity Package       | QCity | All platforms | v1.2.3 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ |
+| 🏙️   | QCity Package       | QCity | All platforms | v1.2.3 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3) | ✅ |
 | 📺   | Smart TV App        | TV | SmartTV | v1.2.3 | [SmartTV](Qmoi_apps/smarttv/qmoi_ai.apk) | ✅ |
 | 🕸️   | QMOI PWA            | PWA | All platforms | v1.2.3 | [PWA](pwa_apps/qmoi-ai-pwa.zip) [Manifest](pwa_apps/qmoi-ai-pwa.webmanifest) | ✅ |
 
@@ -1158,18 +1158,18 @@ All download and service links are autotested and auto-updated to use ngrok URLs
 <!-- QMOI_APPS_TABLE_START -->
 | App | Platform | File | Size (KB) | Download |
 |---|---:|---|---:|---|
-| QMOI AI | Windows | qmoi-ai-v1.2.3-windows.exe | 5120 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe) |
-| QMOI AI | macOS | qmoi-ai-v1.2.3-macos.dmg | 8192 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg) |
-| QMOI AI | Linux (AppImage) | qmoi-ai-v1.2.3-linux-appimage | 6144 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage) |
-| QMOI AI | Linux (DEB) | qmoi-ai-v1.2.3-linux.deb | 4096 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux.deb) |
-| QMOI AI | Android | qmoi-ai-v1.2.3-android.apk | 10240 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk) |
-| QMOI AI | iOS | qmoi-ai-v1.2.3-ios.ipa | 12288 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa) |
-| QMOI AI | Smart TV | qmoi-ai-v1.2.3-smarttv.apk | 8192 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk) |
-| QMOI AI | Chromebook | qmoi-ai-v1.2.3-chromebook.zip | 3072 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-chromebook.zip) |
-| QMOI AI | Raspberry Pi | qmoi_ai.img | 2048000 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img) |
-| QMOI Space | Web (PWA) | pwa_apps/qmoi-space/manifest.webmanifest | — | [Open PWA](https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/) |
-| Q stable | Web (PWA) | pwa_apps/q-stable/manifest.webmanifest | — | [Open PWA](https://thealphakenya.github.io/qmoi-enhanced/pwa_apps/q-stable/) |
-| QCity | Orchestration | qcity-v2.0.1.zip | 2048 | [Download](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qcity-v2.0.1.zip) |
+| QMOI AI | Windows | qmoi-ai-v1.2.3-windows.exe | 5120 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe) |
+| QMOI AI | macOS | qmoi-ai-v1.2.3-macos.dmg | 8192 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg) |
+| QMOI AI | Linux (AppImage) | qmoi-ai-v1.2.3-linux-appimage | 6144 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage) |
+| QMOI AI | Linux (DEB) | qmoi-ai-v1.2.3-linux.deb | 4096 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux.deb) |
+| QMOI AI | Android | qmoi-ai-v1.2.3-android.apk | 10240 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk) |
+| QMOI AI | iOS | qmoi-ai-v1.2.3-ios.ipa | 12288 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa) |
+| QMOI AI | Smart TV | qmoi-ai-v1.2.3-smarttv.apk | 8192 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk) |
+| QMOI AI | Chromebook | qmoi-ai-v1.2.3-chromebook.zip | 3072 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-chromebook.zip) |
+| QMOI AI | Raspberry Pi | qmoi_ai.img | 2048000 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img) |
+| QMOI Space | Web (PWA) | pwa_apps/qmoi-space/manifest.webmanifest | — | [Open PWA](https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/) |
+| Q stable | Web (PWA) | pwa_apps/q-stable/manifest.webmanifest | — | [Open PWA](https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/) |
+| QCity | Orchestration | qcity-v2.0.1.zip | 2048 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity-v2.0.1.zip) |
 <!-- QMOI_APPS_TABLE_END -->
 <!-- QMOI_APPS_TABLE_END -->
 

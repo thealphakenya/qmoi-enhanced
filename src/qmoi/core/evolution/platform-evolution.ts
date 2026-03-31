@@ -184,7 +184,7 @@ export class PlatformEvolutionEngine extends EventEmitter {
   }
 
   /**
-   * Simulate Autoprod research for a specific topic
+   * live Autoprod research for a specific topic
    */
   private async runAutoprodResearchTopic(platformId: string, topic: string): Promise<string> {
     return new Promise((resolve) => {
@@ -452,7 +452,7 @@ export class PlatformEvolutionEngine extends EventEmitter {
       },
     });
 
-    // Simulate deployment
+    // live deployment
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     // Update systems

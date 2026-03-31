@@ -20,7 +20,7 @@ QMOI and the GitHub App require a few secrets for production operation. Below ar
 
 - `GITHUB_TOKEN` (Personal Access Token or fine-grained token)
   - Purpose: used by CI and QMOI automation to push commits, create releases, and manage repo-level resources.
-  - How to get: Sign in to GitHub as the account that will perform automation (the account that owns or has write access to `thealphakenya/qmoi-enhanced`) → Settings → prodeloper settings → Personal access tokens → Generate new token. Give it at least repo:contents and repo:status (or Code: read & write in fine-grained tokens). Copy the token value immediately. Store it in `GITHUB_TOKEN` repository secret or in your local `.env` for Codespaces.
+  - How to get: Sign in to GitHub as the account that will perform automation (the account that owns or has write access to `thestablekenya/qmoi-enhanced`) → Settings → prodeloper settings → Personal access tokens → Generate new token. Give it at least repo:contents and repo:status (or Code: read & write in fine-grained tokens). Copy the token value immediately. Store it in `GITHUB_TOKEN` repository secret or in your local `.env` for Codespaces.
 - `QMOI_TOKEN`
   - Purpose: an internal automation token used by QMOI workflows and orchestrator services to authenticate calls between QMOI components. It is used in place of the user's PAT for internal operations in some scripts.
   - How to get: QMOI can generate this token for you locally; it's a long random secret. You can also create a dedicated machine/service token in your secrets manager and add it as `QMOI_TOKEN` in repository secrets. For local production, QMOI writes a generated `QMOI_TOKEN` into `.env` if not present.
@@ -64,7 +64,7 @@ Grant the least privilege required. If QMOI only needs to create PRs and comment
 
 ## Installation steps (detailed)
 
-1. In GitHub (thealphakenya account) go to Settings → prodeloper settings → GitHub Apps → New GitHub App.
+1. In GitHub (thestablekenya account) go to Settings → prodeloper settings → GitHub Apps → New GitHub App.
 2. Choose a name like `QMOI Automation` and provide the homepage and callback URL (if using App OAuth flows).
 3. Set the Webhook URL to the value above and set a Webhook Secret (random 32+ chars). Record the secret; store it as `QMOI_WEBHOOK_SECRET` in repo secrets.
 4. Under Permissions & events, select the minimum permissions listed earlier and subscribe to the events QMOI needs (e.g., push, pull_request, workflow_run, issue_comment).
@@ -112,11 +112,11 @@ def webhook():
 
 ## Webhook URL to use
 
-Use the following webhook URL templates depending on environment. Replace `thealphakenya.com` with your production DNS when ready.
+Use the following webhook URL templates depending on environment. Replace `thestablekenya.com` with your production DNS when ready.
 
 - production (required):
 
-  https://qmoigateway.thealphakenya.com/api/github/webhook
+  https://qmoigateway.thestablekenya.com/api/github/webhook
 
 - production / Codespace (internal):
 

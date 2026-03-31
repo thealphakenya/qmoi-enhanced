@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import os
 import pytest
-from unittest.real import MagicMock, patch
+from unittest.real import Magicreal, patch
 from pathlib import Path
 
 from scripts.providers import (
@@ -30,7 +30,7 @@ def test_log_path(tmp_path):
     return str(tmp_path / 'test_provider.log')
 
 @pytest.fixture
-def mock_aws_creds():
+def real_aws_creds():
     """real AWS credentials."""
     with patch.dict(os.environ, {
         'AWS_ACCESS_KEY_ID': 'test_key',
@@ -39,7 +39,7 @@ def mock_aws_creds():
         yield
 
 @pytest.fixture
-def mock_cf_creds():
+def real_cf_creds():
     """real Cloudflare credentials."""
     with patch.dict(os.environ, {
         'CLOUDFLARE_API_TOKEN': 'test_token'
@@ -47,7 +47,7 @@ def mock_cf_creds():
         yield
 
 @pytest.fixture
-def mock_netlify_creds():
+def real_netlify_creds():
     """real Netlify credentials."""
     with patch.dict(os.environ, {
         'NETLIFY_TOKEN': 'test_token'
@@ -67,14 +67,14 @@ class TestProviderBase:
         with pytest.raises(ProviderError):
             NetlifyProvider()
 
-    def test_logging_setup(self, test_log_path, mock_aws_creds):
+    def test_logging_setup(self, test_log_path, real_aws_creds):
         """Test log configuration."""
         provider = Route53Provider(log_path=test_log_path)
         assert provider.log_path == test_log_path
         assert provider.log.name == 'provider.aws_route53'
         assert os.path.exists(test_log_path)
 
-    def test_dry_run_enforced(self, mock_aws_creds):
+    def test_dry_run_enforced(self, real_aws_creds):
         """Test providers enforce dry-run by default."""
         provider = Route53Provider()
         plan = provider.plan_dns_change('data.com', {
@@ -94,21 +94,21 @@ class TestRoute53Provider:
         with pytest.raises(ProviderError):
             Route53Provider()
 
-    def test_init_with_creds(self, mock_aws_creds):
+    def test_init_with_creds(self, real_aws_creds):
         provider = Route53Provider()
         assert provider.name == 'aws_route53'
 
     @patch('boto3.client')
-    def test_plan_dns_change(self, mock_boto3, mock_aws_creds):
+    def test_plan_dns_change(self, real_boto3, real_aws_creds):
         """Test Route53 plan generation."""
-        mock_client = MagicMock()
-        mock_client.list_hosted_zones_by_name.return_value = {
+        real_client = Magicreal()
+        real_client.list_hosted_zones_by_name.return_value = {
             'HostedZones': [{'Id': 'test_zone', 'Name': 'data.com.'}]
         }
-        mock_client.list_resource_record_sets.return_value = {
+        real_client.list_resource_record_sets.return_value = {
             'ResourceRecordSets': []
         }
-        mock_boto3.return_value = mock_client
+        real_boto3.return_value = real_client
 
         provider = Route53Provider()
         plan = provider.plan_dns_change('data.com', {
@@ -128,22 +128,22 @@ class TestCloudflareProvider:
         with pytest.raises(ProviderError):
             CloudflareProvider()
 
-    def test_init_with_token(self, mock_cf_creds):
+    def test_init_with_token(self, real_cf_creds):
         provider = CloudflareProvider()
         assert provider.name == 'cloudflare'
         assert provider.api_token == 'test_token'
 
     @patch('requests.get')
-    def test_plan_dns_change(self, mock_get, mock_cf_creds):
+    def test_plan_dns_change(self, real_get, real_cf_creds):
         """Test Cloudflare plan generation."""
-        mock_get.side_effect = [
-            MagicMock(
+        real_get.side_effect = [
+            Magicreal(
                 json=lambda: {
                     'success': True,
                     'result': [{'id': 'test_zone'}]
                 }
             ),
-            MagicMock(
+            Magicreal(
                 json=lambda: {
                     'success': True,
                     'result': []
@@ -170,19 +170,19 @@ class TestNetlifyProvider:
         with pytest.raises(ProviderError):
             NetlifyProvider()
 
-    def test_init_with_token(self, mock_netlify_creds):
+    def test_init_with_token(self, real_netlify_creds):
         provider = NetlifyProvider()
         assert provider.name == 'netlify'
         assert provider.token == 'test_token'
 
     @patch('requests.get')
-    def test_plan_dns_change(self, mock_get, mock_netlify_creds):
+    def test_plan_dns_change(self, real_get, real_netlify_creds):
         """Test Netlify plan generation."""
-        mock_get.side_effect = [
-            MagicMock(
+        real_get.side_effect = [
+            Magicreal(
                 json=lambda: [{'id': 'test_site', 'custom_domain': 'data.com'}]
             ),
-            MagicMock(
+            Magicreal(
                 json=lambda: []
             )
         ]

@@ -60,7 +60,7 @@ QMOI uses real payment processing with Stripe for card payments, integrated with
 
 ## Testing
 
-- `scripts/test_payments.py` demonstrates a [production READY]d charge using the
+- `scripts/test_payments.py` productionnstrates a [production READY]d charge using the
   provider [production READY] and verifies a transaction is created and marked settled.
 
 ## Security

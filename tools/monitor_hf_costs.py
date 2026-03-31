@@ -39,7 +39,7 @@ class HFSpaceCostMonitor:
     # Monthly limits to prevent surprises
     MONTHLY_BUDGET = 50.0  # USD
     
-    def __init__(self, hf_token: str = None, repo_id: str = "alphaqmoi/qvillage"):
+    def __init__(self, hf_token: str = None, repo_id: str = "stableqmoi/qvillage"):
         self.hf_token = hf_token or os.getenv("HF_API_TOKEN")
         self.repo_id = repo_id
         self.api = HfApi(token=self.hf_token)
@@ -227,7 +227,7 @@ def main():
     parser = argparse.ArgumentParser(description="Monitor HF Space compute costs")
     parser.add_argument(
         "--repo-id",
-        default="alphaqmoi/qvillage",
+        default="stableqmoi/qvillage",
         help="HF Space repository ID"
     )
     parser.add_argument(

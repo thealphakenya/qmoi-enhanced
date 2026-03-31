@@ -173,7 +173,7 @@ Automatically classifies assets by platform:
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                     GitHub Repository                        │
-│  (thealphakenya/qmoi-enhanced)                              │
+│  (thestablekenya/qmoi-enhanced)                              │
 └────────┬────────────────────────────────────────────────────┘
          │
          ├─ Trigger: git tag v1.2.3
@@ -254,7 +254,7 @@ git push origin v1.2.3
 
 #### Monitor Release Progress
 
-1. Go to: `https://github.com/thealphakenya/qmoi-enhanced/actions`
+1. Go to: `https://github.com/thestablekenya/qmoi-enhanced/actions`
 2. Look for workflow: `🚀 QMOI Real-time Multi-Platform Release Publisher`
 3. Watch the progress:
    - 🔍 Discovering assets
@@ -268,7 +268,7 @@ git push origin v1.2.3
 Once complete, view at:
 
 ```
-https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 ```
 
 All assets will be available for download with:
@@ -319,7 +319,7 @@ gh auth login
 # ... etc
 
 # 5. View release
-open https://github.com/thealphakenya/qmoi-enhanced/releases
+open https://github.com/thestablekenya/qmoi-enhanced/releases
 ```
 
 ### Manual Publishing (Python)
@@ -461,7 +461,7 @@ on:
    ... etc
 
 ✅ Release published successfully!
-🔗 https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+🔗 https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 ```
 
 ---
@@ -473,8 +473,8 @@ on:
 Set these in your GitHub Actions environment or shell:
 
 ```bash
-# Repository (defaults to thealphakenya/qmoi-enhanced)
-export REPO="thealphakenya/qmoi-enhanced"
+# Repository (defaults to thestablekenya/qmoi-enhanced)
+export REPO="thestablekenya/qmoi-enhanced"
 
 # GitHub token (auto-set in GitHub Actions)
 export GH_TOKEN="your_github_token"
@@ -669,15 +669,15 @@ cat /tmp/qmoi-release-20251112-*.log
 After publishing version `v1.2.3`:
 
 ```
-https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 ```
 
 Direct download URLs:
 
 ```
-https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe
-https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.dmg
-https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.apk
+https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe
+https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.dmg
+https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.apk
 ... etc
 ```
 

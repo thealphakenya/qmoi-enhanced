@@ -138,7 +138,7 @@ npm run prod
 ### 1. Create `.env.production`
 
 ```bash
-DATABASE_URL="postgresql://user:password@production-db.data.com:5432/qmoi_staging"
+DATABASE_URL="postgresql://user:password@production-db.data.com:5432/qmoi_production"
 
 JWT_SECRET="production-secret-key-min-32-characters"
 JWT_REFRESH_SECRET="production-refresh-secret-min-32-chars"

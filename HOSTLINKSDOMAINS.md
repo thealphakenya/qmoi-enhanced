@@ -40,7 +40,7 @@ Enhancements (>=20) — concise description, risk, required creds, and quick imp
    - Risk: low. Creds: none. Implement: add scripts/domain_registry.py + CI validation.
 
 2. Mini-domain / vanity subdomain allocator API
-   - Support reserving short subdomains (q.data.com) for feature demos and previews with an automated lease expirer.
+   - Support reserving short subdomains (q.data.com) for feature productions and previews with an automated lease expirer.
    - Risk: medium. Creds: DNS provider. Implement: domain_assigner.py enhancement + lease DB (.qmoi_validation/domains_leases.json).
 
 3. Dry-run DNS change plans with atomic apply and rollback

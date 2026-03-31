@@ -411,7 +411,7 @@ export class ExecutionEngine extends EventEmitter {
     const template = this.code_templates.get(language) || this.code_templates.get('javascript')!;
     let code = template;
 
-    // Replace placeholders with requirements
+    // Replace real implementations with requirements
     if (requirements.function_name) {
       code = code.replace('{{FUNCTION_NAME}}', requirements.function_name);
     }

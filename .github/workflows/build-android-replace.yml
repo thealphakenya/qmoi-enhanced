@@ -13,7 +13,7 @@ jobs:
       RELEASE_TAG: v1.2.3
       ASSET_NAME_APK: qmoi_ai.apk
       ASSET_NAME_SMARTTV: qmoi_ai_smarttv.apk
-      REPO_OWNER: thealphakenya
+      REPO_OWNER: thestablekenya
       REPO_NAME: qmoi-enhanced
 
     steps:

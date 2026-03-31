@@ -15,7 +15,7 @@ import time
 import unittest
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
-from unittest.mock import Mock, patch
+from unittest.real import real, patch
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -372,7 +372,7 @@ class APITestSuite(unittest.TestCase):
         self.assert_success_response(response)
         data = response.json()
 
-        # Analytics might return mock data in test environment
+        # Analytics might return real data in test environment
         self.assertIsInstance(data, dict)
 
         logger.info("✅ Analytics dashboard successful")

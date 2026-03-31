@@ -401,7 +401,7 @@ python app.py  # Opens at http://localhost:7860
 
 ```bash
 # 1. Clone and setup
-git clone https://github.com/alphaqmoi/qmoi-enhanced.git
+git clone https://github.com/stableqmoi/qmoi-enhanced.git
 cd qmoi-enhanced
 
 # 2. Install dependencies
@@ -445,7 +445,7 @@ git commit -m "QVillage + HF Integration: Complete"
 git push origin main
 
 # 2. Verify GitHub Actions triggered
-# Watch: https://github.com/alphaqmoi/qmoi-enhanced/actions
+# Watch: https://github.com/stableqmoi/qmoi-enhanced/actions
 
 # 3. Monitor first sync cycle
 # Check logs, artifacts, HF Space update
@@ -568,7 +568,7 @@ python tools/monitor_hf_costs.py
 
 - [ ] All code reviewed and tested locally
 - [ ] GitHub Secrets configured with real credentials
-- [ ] HF Space created at alphaqmoi/qvillage
+- [ ] HF Space created at stableqmoi/qvillage
 - [ ] Team notified of launch plan
 - [ ] Slack webhook configured for alerts
 - [ ] Monitoring dashboard ready
@@ -582,7 +582,7 @@ git push origin main
 # Monitor:
 # 1. GitHub Actions tab → qvillage-sync workflow
 # 2. Slack notifications (hourly sync status)
-# 3. HF Space: https://huggingface.co/spaces/alphaqmoi/qvillage
+# 3. HF Space: https://huggingface.co/spaces/stableqmoi/qvillage
 # 4. Cost report: tools/monitor_hf_costs.py
 ```
 

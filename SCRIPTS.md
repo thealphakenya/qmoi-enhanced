@@ -220,7 +220,7 @@ This document catalogs all Python, shell, and JavaScript scripts in the `scripts
 - [`notification_service.js`](scripts/services/notification_service.js)
 - [`notification_service.py`](scripts/services/notification_service.py)
 - [`notification_service.ts`](scripts/services/notification_service.ts)
-- [`notification_stub.ts`](scripts/services/notification_stub.ts)
+- [`notification_real.ts`](scripts/services/notification_real.ts)
 - [`platform_discovery.ts`](scripts/services/platform_discovery.ts)
 - [`platform_integrations.ts`](scripts/services/platform_integrations.ts)
 - [`plugin_loader.ts`](scripts/services/plugin_loader.ts)

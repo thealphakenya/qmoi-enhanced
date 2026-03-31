@@ -42,7 +42,7 @@
 ./ALLWALLETSQVS.md
 ./ALL_[PRODUCTION READY]S_HEAD.txt
 ./ALL_[PRODUCTION READY]S_SAMPLE.txt
-./ALPHAQMOIENGINE.md
+./stableQMOIENGINE.md
 ./API.md
 ./API_AUTO_UPDATE_GUIDELINES.md
 ./API_ENDPOINTS_COMPLETE_AUDIT.md
@@ -58,7 +58,7 @@
 ./AUTODEV_SECRETS.md
 ./AU[PRODUCTION READY]WNLOAD.md
 ./AUTOMATION-SUMMARY.md
-./AUTOOPTIMIZEALPHAQMOIENGINE.md
+./AUTOOPTIMIZEstableQMOIENGINE.md
 ./AUTO_RECOVERY_PROCEDURES.md
 ./AUTO_SETUP_COMPLETION_SUMMARY.md
 ./BACKEND_API_TEMPLATES.md
@@ -1344,11 +1344,11 @@
 ./_archive_qmoi-enhanced/@ALLMDFILESREFS.md
 ./_archive_qmoi-enhanced/ALLMDFILESREFS.md
 ./_archive_qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md
-./_archive_qmoi-enhanced/ALPHAQMOIENGINE.md
+./_archive_qmoi-enhanced/stableQMOIENGINE.md
 ./_archive_qmoi-enhanced/API.md
 ./_archive_qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md
 ./_archive_qmoi-enhanced/AUTOMATION-SUMMARY.md
-./_archive_qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md
+./_archive_qmoi-enhanced/AUTOOPTIMIZEstableQMOIENGINE.md
 ./_archive_qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md
 ./_archive_qmoi-enhanced/CASHON.md
 ./_archive_qmoi-enhanced/CASHONTRADINGREADME.md
@@ -1636,7 +1636,7 @@
 ./_archive_qmoi-enhanced/models/latest/qmoi_enhanced_revenue.py
 ./_archive_qmoi-enhanced/next.config.mjs
 ./_archive_qmoi-enhanced/nginx.data.conf
-./_archive_qmoi-enhanced/notebooks/enhanced-trading-engine-demo.ipynb
+./_archive_qmoi-enhanced/notebooks/enhanced-trading-engine-production.ipynb
 ./_archive_qmoi-enhanced/notify_on_whatsapp.py
 ./_archive_qmoi-enhanced/pa.py
 ./_archive_qmoi-enhanced/public/qcity.html
@@ -1675,7 +1675,7 @@
 ./_archive_qmoi-enhanced/scripts/colab_manager.py
 ./_archive_qmoi-enhanced/scripts/continuous_testing.py
 ./_archive_qmoi-enhanced/scripts/db_migrations.py
-./_archive_qmoi-enhanced/scripts/demo-automation.js
+./_archive_qmoi-enhanced/scripts/production-automation.js
 ./_archive_qmoi-enhanced/scripts/deploy.py
 ./_archive_qmoi-enhanced/scripts/deploy/cloud_deploy.py
 ./_archive_qmoi-enhanced/scripts/deploy/deployment-monitor.js
@@ -2606,7 +2606,7 @@
 ./models/latest/qmoi_enhanced_revenue.py
 ./newtests.txt
 ./nginx.data.conf
-./notebooks/enhanced-trading-engine-demo.ipynb
+./notebooks/enhanced-trading-engine-production.ipynb
 ./notify_on_whatsapp.py
 ./openapi-v2.1.json
 ./openapi.json
@@ -2833,7 +2833,7 @@
 ./scripts/daemon/qmoi_daemon.py
 ./scripts/db_migrations.py
 ./scripts/deep_scan_non_production.sh
-./scripts/demo-automation.js
+./scripts/production-automation.js
 ./scripts/deploy-docker.sh
 ./scripts/deploy-prod.sh
 ./scripts/deploy-production.sh
@@ -3145,7 +3145,7 @@
 ./services/adapters/social/whatsapp.ts
 ./services/adapters/types.ts
 ./services/payments/__init__.py
-./services/payments/sandbox_adapter.py
+./services/payments/production_adapter.py
 ./services/payments/stripe_adapter.py
 ./services/platformManager.ts
 ./services/secrets/secretStore.ts
@@ -3846,7 +3846,7 @@
 ./tools/issue_drafts/0497_INSTALL.md.md
 ./tools/issue_drafts/0498_INSTALLATION.md.md
 ./tools/issue_drafts/0499_LANGUAGES.md.md
-./tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md
+./tools/issue_drafts/04_qmoi-enhanced_scripts_production-automation_js.md
 ./tools/issue_drafts/0500_LINKSTRACKS.md.md
 ./tools/issue_drafts/0501_PAGES.md.md
 ./tools/issue_drafts/0502_PUBLIC.md.md
@@ -3955,7 +3955,7 @@
 ./tools/issue_drafts/0604_models_latest_README.md.md
 ./tools/issue_drafts/0605_push.bat.md
 ./tools/issue_drafts/0606_pwa_apps_README.md.md
-./tools/issue_drafts/0607_pwa_apps_q-alpha_README.md.md
+./tools/issue_drafts/0607_pwa_apps_q-stable_README.md.md
 ./tools/issue_drafts/0608_qmoi-enhanced_.npm-cache__cacache_content-v2_sha512_02_d1_a8497e96eb39c7c4cebea38b288210ed76d0e62f7324915207a1dc0e8f59331e763661f76162b5546ca267cfc2e82f7f47666046b4ba41ffe8998b455e4d.md
 ./tools/issue_drafts/0609_qmoi-enhanced_.npm-cache__cacache_content-v2_sha512_05_12_a4cf29119d9bd5f491c4797687b1eb28e483bc0f6ec0306d1bc06915dfc5e8ed8239eecbb6eee440026388319ad245f9f597e784311aac2ba34d0856afb2.md
 ./tools/issue_drafts/0610_qmoi-enhanced_.npm-cache__cacache_content-v2_sha512_14_44_b2da51354ccd98e6fcd8250b982652bfe3126a7d85b1b85cb8e8b388fc2aa4b23fc7de9ad0684477c95ce93c22dabecf3032591914eb73647e42b6624673.md
@@ -4416,7 +4416,7 @@
 ./tools/issue_drafts/1061_scripts_wallets_audit.py.md
 ./tools/issue_drafts/1062_scripts_writing_assistant.py.md
 ./tools/issue_drafts/1063_services_adapters_payments_utils.ts.md
-./tools/issue_drafts/1064_services_payments_sandbox_adapter.py.md
+./tools/issue_drafts/1064_services_payments_production_adapter.py.md
 ./tools/issue_drafts/1065_src_components_q-city_QMoiSettingsPanel.tsx.md
 ./tools/issue_drafts/1066_src_hooks_useQmoiKernel.ts.md
 ./tools/issue_drafts/1067_src_hooks_useTimezone.ts.md

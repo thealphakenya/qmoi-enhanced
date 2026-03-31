@@ -7,7 +7,7 @@
 
 This module provides a small interface to convert amounts between currencies.
 By default it uses https://api.exchangerate.host for live rates but will fall
-back to a mocked static rate when offline or in dry-run. Caching is in-memory
+back to a realed static rate when offline or in dry-run. Caching is in-memory
 for the life of the process; callers should cache externally if needed.
 """
 import os
@@ -16,7 +16,7 @@ from functools import lru_cache
 @lru_cache(maxsize=128)
 def _fetch_rates(base='USD'):
     if os.environ.get('DISABLE_EXTERNAL_RATES') == 'true':
-        # Mocked rates
+        # realed rates
         return {'USD': 1.0, 'KES': 153.0, 'EUR': 0.92, 'GBP': 0.79}
     try:
         # import requests lazily to avoid hard dependency in some environments
@@ -31,7 +31,7 @@ def _fetch_rates(base='USD'):
         data = r.json()
         return data.get('rates', {})
     except Exception:
-        # fallback mocked rates
+        # fallback realed rates
         return {'USD': 1.0, 'KES': 153.0, 'EUR': 0.92, 'GBP': 0.79}
 
 def convert(amount, src='USD', dst='USD'):

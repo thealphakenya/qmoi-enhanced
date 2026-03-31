@@ -17,7 +17,7 @@ Wrote /workspaces/qmoi-enhanced/matches.json and /workspaces/qmoi-enhanced/allre
 ```
 ## auto-fix dry-run (rc=0)
 ```
-Wrote patch to /workspaces/qmoi-enhanced/placeholder_fixes.patch
+Wrote patch to /workspaces/qmoi-enhanced/real implementation_fixes.patch
 ```
 ## qmoi lint (rc=0)
 ```

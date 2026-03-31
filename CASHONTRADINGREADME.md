@@ -138,7 +138,7 @@ Your proprietary model handles:
 ### data:
 
 ```bash
-> alphaq status
+> stableq status
 🧠 QMOI: Strategy = Trend Follow
 📈 Last ROI: +4.8%
 💰 Wallet: KES 1,780.00

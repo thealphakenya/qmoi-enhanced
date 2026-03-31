@@ -228,7 +228,7 @@ class TestAppSigningAutomationSigningOperations(unittest.TestCase):
             "platform": "android",
             "tracking_id": "QMOI-SIGN-20260324-00001",
             "status": "pending",
-            "output": "Mock signing operation"
+            "output": "real signing operation"
         }
         
         # Verify structure of expected result

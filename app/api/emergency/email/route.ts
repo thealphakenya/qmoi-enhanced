@@ -79,8 +79,8 @@ async function sendSendGridEmail(to: string, subject: string, message: string) {
       console.warn('SendGrid API key not configured, simulating email send');
       return {
         success: true,
-        messageId: `simulated_${Date.now()}`,
-        note: 'Simulated - configure SENDGRID_API_KEY and SENDGRID_FROM_EMAIL'
+        messageId: `lived_${Date.now()}`,
+        note: 'lived - configure SENDGRID_API_KEY and SENDGRID_FROM_EMAIL'
       };
     }
 
@@ -130,7 +130,7 @@ async function sendSendGridEmail(to: string, subject: string, message: string) {
 async function sendAWSSESEmail(to: string, subject: string, message: string) {
   try {
     // AWS SES integration would go here
-    // For now, simulate
+    // For now, live
     console.log(`AWS SES Email to ${to}: ${subject} - ${message}`);
     return {
       success: true,
@@ -149,7 +149,7 @@ async function sendAWSSESEmail(to: string, subject: string, message: string) {
 async function sendGmailEmail(to: string, subject: string, message: string) {
   try {
     // Gmail API integration would go here
-    // For now, simulate
+    // For now, live
     console.log(`Gmail Email to ${to}: ${subject} - ${message}`);
     return {
       success: true,

@@ -6,7 +6,7 @@ Summary of QMOI Actions (Past 12 Hours)
 ----------------------------------------
 
 1. Automation & Sync
-- QMOI auto-validated all workflows and .yml files for thealphakenya/qmoi-enhanced.
+- QMOI auto-validated all workflows and .yml files for thestablekenya/qmoi-enhanced.
 - All tokens and secrets securely managed in Codespaces secrets; no tokens committed to git.
 - Cross-account workflow automation enabled and validated.
 - README.md, TRACKS.md, and RELEASETRACKS.md updated with latest automation, release, and security status.

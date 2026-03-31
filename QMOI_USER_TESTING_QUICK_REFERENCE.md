@@ -236,7 +236,7 @@ Each response is perfectly appropriate for **who they are and what they need**.
 - [x] Guest responses documented (577 lines)
 - [x] All 8 stages shown
 - [x] Quality scores calculated
-- [x] Progression demonstrated
+- [x] Progression productionnstrated
 - [x] Examples provided
 - [x] Implementation guidance included
 - [x] Index created

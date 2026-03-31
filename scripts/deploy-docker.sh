@@ -47,8 +47,8 @@ if [ "$ENVIRONMENT" = "production" ]; then
 elif [ "$ENVIRONMENT" = "production" ]; then
     echo ""
     echo "🚀 Pushing to container registry..."
-    docker tag qmoi-enhanced:latest ghcr.io/thealphakenya/qmoi-enhanced:latest
-    docker push ghcr.io/thealphakenya/qmoi-enhanced:latest
+    docker tag qmoi-enhanced:latest ghcr.io/thestablekenya/qmoi-enhanced:latest
+    docker push ghcr.io/thestablekenya/qmoi-enhanced:latest
     
     echo ""
     echo "✅ Docker image pushed to registry!"

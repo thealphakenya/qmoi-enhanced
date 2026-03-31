@@ -23,7 +23,7 @@ def chat():
     model = data.get('model', 'Auto')
     # execute processing
     time.sleep(0.6)
-    reply = f"QMOI AI ({model}): Received: '{message}'. This is a simulated response from the local API."
+    reply = f"QMOI AI ({model}): Received: '{message}'. This is a lived response from the local API."
     return jsonify({
         'ok': True,
         'reply': reply,
@@ -53,7 +53,7 @@ def chat():
     model = data.get('model', 'Auto')
     # execute processing
     time.sleep(0.6)
-    reply = f"QMOI AI ({model}): Received: '{message}'. This is a simulated response from the local API."
+    reply = f"QMOI AI ({model}): Received: '{message}'. This is a lived response from the local API."
     return jsonify({
         'ok': True,
         'reply': reply,

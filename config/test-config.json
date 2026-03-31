@@ -166,7 +166,7 @@
     "production": {
       "baseUrl": "https://production.q-city.ai",
       "apiUrl": "https://api-production.q-city.ai",
-      "database": "qmoi_staging"
+      "database": "qmoi_production"
     },
     "production": {
       "baseUrl": "https://q-city.ai",

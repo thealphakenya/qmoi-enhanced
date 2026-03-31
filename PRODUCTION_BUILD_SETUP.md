@@ -33,7 +33,7 @@ All signing credentials have been located and extracted from your workspace:
 
 ## Step 1: Add GitHub Secrets ⚙️
 
-Navigate to: https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions
+Navigate to: https://github.com/thestablekenya/qmoi-enhanced/settings/secrets/actions
 
 Create these 4 repository secrets:
 
@@ -97,8 +97,8 @@ The workflow will:
 
 **View progress:**
 
-- GitHub Actions: https://github.com/thealphakenya/qmoi-enhanced/actions
-- Release: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4
+- GitHub Actions: https://github.com/thestablekenya/qmoi-enhanced/actions
+- Release: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4
 
 ---
 

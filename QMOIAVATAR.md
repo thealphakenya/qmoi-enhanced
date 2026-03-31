@@ -140,7 +140,7 @@ Q-Avatar is a high-quality, real-time animated figure representing QMOI in all c
 - **Optimization & Data Efficiency:**
   - Continue to enhance Data Saver and adaptive quality features
   - Expand cloud offloading and prodice management
-  - See `AUTOOPTIMIZEALPHAQMOIENGINE.md` for full optimization strategies
+  - See `AUTOOPTIMIZEstableQMOIENGINE.md` for full optimization strategies
 - **Enhanced Integration:** Connect with actual email/Slack/WhatsApp notification systems
 - **Voice Synthesis:** Integrate with TTS services for real speech
 - **Gesture Recognition:** Add camera-based gesture controls
@@ -269,7 +269,7 @@ QCity is enhanced to serve as a primary prodice for running QMOI operations, sto
 
 ---
 
-### See also: QCITYprodICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
+### See also: QCITYprodICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEstableQMOIENGINE.md, UI/UX documentation
 
 ## QCity prodice Dashboard & Offloading (NEW)
 
@@ -306,7 +306,7 @@ QCity is enhanced to serve as a primary prodice for running QMOI operations, sto
 
 ---
 
-### See also: QCITYprodICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
+### See also: QCITYprodICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEstableQMOIENGINE.md, UI/UX documentation
 
 ## API Key Authentication (NEW)
 
@@ -317,7 +317,7 @@ QCity is enhanced to serve as a primary prodice for running QMOI operations, sto
 
 ---
 
-### See also: QCITYprodICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, UI/UX documentation
+### See also: QCITYprodICEAUTOUPGRADE.md, QCITYREADME.md, AUTOOPTIMIZEstableQMOIENGINE.md, UI/UX documentation
 
 ## QCity Dashboard UI Log Streaming Protocol (NEW)
 

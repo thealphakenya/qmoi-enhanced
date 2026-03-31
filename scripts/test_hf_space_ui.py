@@ -11,7 +11,7 @@ Checks that all Gradio tabs/features are accessible and working in the deployed 
 Usage:
   python scripts/test_hf_space_ui.py --space-url <url>
 
-- space-url: The public URL of the deployed Hugging Face Space (e.g., https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)
+- space-url: The public URL of the deployed Hugging Face Space (e.g., https://huggingface.co/spaces/stableqmoi/qmoi-ai-system)
 
 Logs results to logs/test_hf_space_ui.log. Exits 0 even on failure (non-fatal for CI/CD).
 """
@@ -43,7 +43,7 @@ def check_tab(url, tab_name):
 
 def main():
     parser = argparse.ArgumentParser(description='QMOI Hugging Face Space UI Test Script')
-    parser.add_argument('--space-url', required=False, default='https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system', help='Hugging Face Space URL')
+    parser.add_argument('--space-url', required=False, default='https://huggingface.co/spaces/stableqmoi/qmoi-ai-system', help='Hugging Face Space URL')
     args = parser.parse_args()
     url = args.space_url.rstrip('/')
 

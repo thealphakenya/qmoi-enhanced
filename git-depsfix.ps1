@@ -60,7 +60,7 @@ if ($changes) {
     git push origin $branchName
 
     Write-Host "[SUCCESS] Fixes pushed." -ForegroundColor Green
-    Write-Host "[ACTION] Open PR: https://github.com/thealphakenya/qmoi-enhanced/pull/new/$branchName" -ForegroundColor Green
+    Write-Host "[ACTION] Open PR: https://github.com/thestablekenya/qmoi-enhanced/pull/new/$branchName" -ForegroundColor Green
 } else {
     Write-Host "[OK] No dependency updates required." -ForegroundColor Green
 }

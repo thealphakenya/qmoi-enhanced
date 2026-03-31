@@ -18,7 +18,7 @@ def run(cmd):
     return result.returncode == 0
 
 def push_to_github():
-    repo_url = f"https://{os.getenv('GITHUB_TOKEN')}@github.com/thealphakenya/stable-Q-ai.git"
+    repo_url = f"https://{os.getenv('GITHUB_TOKEN')}@github.com/thestablekenya/stable-Q-ai.git"
     
     run("git add .")
     run('git commit -m "🔄 Auto-sync QMOI updates"')

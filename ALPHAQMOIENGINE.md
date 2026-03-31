@@ -88,12 +88,12 @@ The stable QMOI Engine is the core integration and automation system for QMOI, e
 
 ---
 
-_For full details on optimization, see AUTOOPTIMIZEALPHAQMOIENGINE.md. For account/platform management, see QMOIACCOUNTSPLATFORMS.md. For prodice details, see QCITYREADME.md._
+_For full details on optimization, see AUTOOPTIMIZEstableQMOIENGINE.md. For account/platform management, see QMOIACCOUNTSPLATFORMS.md. For prodice details, see QCITYREADME.md._
 
 <!-- QMOI_VALIDATION_START -->
 
 {
-"file": "ALPHAQMOIENGINE.md",
+"file": "stableQMOIENGINE.md",
 "validated_at": "2025-10-26T20:51:22.280985Z",
 "validator": "QMOI Lion (automated)",
 "checks": [

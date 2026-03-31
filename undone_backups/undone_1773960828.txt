@@ -6,8 +6,8 @@ Finding files with keywords: [PRODUCTION READY] [PRODUCTION READY] [PRODUCTION R
 ----
 undone_backups/undone_1773960757.txt [[PRODUCTION READY], [PRODUCTION READY], [PRODUCTION READY], [PRODUCTION READY]:, [PRODUCTION READY], [PRODUCTION READY], [PRODUCTION READY], [PRODUCTION READY], [PRODUCTION READY], [PRODUCTION READY], [PRODUCTION READY]s, [PRODUCTION READY], [PRODUCTION READY]]
 
-Total files with non-production markers: 1
+Total files with productionuction markers: 1
 Total scanned files: 17816
 Total skipped (read errors or non-text): 0
-Remaining non-production percent: 0.01%
+Remaining productionuction percent: 0.01%
 Normalized percent complete: 99.99%

@@ -5,7 +5,7 @@
 
 """Wallet adapter base and data testnet adapters.
 
-This module provides a small adapter interface and a few mocked/testnet adapters
+This module provides a small adapter interface and a few realed/testnet adapters
 you can extend. All adapters are real-first and must be explicitly enabled for
 real calls using production_CONFIRMED and --real flags in the caller.
 """
@@ -56,7 +56,7 @@ class AdapterBase:
             'balance': '0.00 (real)',
             'currency': cfg.get('currency', 'USD'),
             'last_checked': now_iso(),
-            'status': 'mocked',
+            'status': 'realed',
             'meta': {'adapter': self.name}
         }
 
@@ -86,7 +86,7 @@ class TestnetAdapter(AdapterBase):
             'balance': f"{self.base_amount:.2f} (testnet)",
             'currency': cfg.get('currency', self.currency),
             'last_checked': now_iso(),
-            'status': 'mocked',
+            'status': 'realed',
             'meta': {'adapter': self.name}
         }
 
@@ -159,7 +159,7 @@ class CashonAdapter(AdapterBase):
                 return {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': 'cashon'}}
 
         # dry-run/real response
-        return {'balance': '0.00 (cashon-real)', 'currency': cfg.get('currency','KES'), 'last_checked': now_iso(), 'status': 'mocked', 'meta': {'adapter': 'cashon'}}
+        return {'balance': '0.00 (cashon-real)', 'currency': cfg.get('currency','KES'), 'last_checked': now_iso(), 'status': 'realed', 'meta': {'adapter': 'cashon'}}
 
 class MegavaultAdapter(AdapterBase):
     """Adapter for Megavault custody system. Same proposal-first semantics as Cashon."""
@@ -202,7 +202,7 @@ class MegavaultAdapter(AdapterBase):
             except Exception as e:
                 return {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': 'megavault'}}
 
-        return {'balance': '0.00 (megavault-real)', 'currency': cfg.get('currency','USD'), 'last_checked': now_iso(), 'status': 'mocked', 'meta': {'adapter': 'megavault'}}
+        return {'balance': '0.00 (megavault-real)', 'currency': cfg.get('currency','USD'), 'last_checked': now_iso(), 'status': 'realed', 'meta': {'adapter': 'megavault'}}
 
 # Register new adapters
 REGISTRY.setdefault('leahwallet', LeahAdapter())

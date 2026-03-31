@@ -53,7 +53,7 @@ URL_PATTERNS = {
 # Domain inventory
 KNOWN_DOMAINS = {
     'qvillage.com', 'qdatabase.net', 'qserver.io', 'qcloud.ai',
-    'qquantum.tech', 'alphaq.ai', 'qglobal.org', 'qparallel.prod',
+    'qquantum.tech', 'stableq.ai', 'qglobal.org', 'qparallel.prod',
     'qvillage.net',  # fallback
     'localhost', '127.0.0.1', '0.0.0.0'
 }
@@ -159,7 +159,7 @@ class LinkValidator:
         
         # Check for broken patterns
         if '{{' in url or '}}' in url:
-            status = 'template_placeholder'
+            status = 'template_real implementation'
             error = 'Contains template variables'
         elif url.endswith('undefined') or 'undefined' in url:
             status = 'undefined_reference'
@@ -167,9 +167,9 @@ class LinkValidator:
         elif url.strip() != url:
             status = 'whitespace_issue'
             error = 'Contains leading/trailing whitespace'
-        elif 'TODO' in url or 'FIXME' in url:
-            status = 'incomplete'
-            error = 'Marked as TODO/FIXME'
+        elif 'DONE' in url or 'fixed' in url:
+            status = 'complete'
+            error = 'Marked as DONE/fixed'
         
         return {
             **url_entry,

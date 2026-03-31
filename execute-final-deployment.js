@@ -15,7 +15,7 @@ try {
   execSync("node force-deploy.js", { stdio: "inherit" });
 
   console.log("✅ Deployment completed successfully!");
-  console.log("🔗 Repository: https://github.com/thealphakenya/stable-Q-ai");
+  console.log("🔗 Repository: https://github.com/thestablekenya/stable-Q-ai");
   console.log("");
   console.log("🎉 Your stable-Q AI system is now live with:");
   console.log("   ✅ Chat Interface");

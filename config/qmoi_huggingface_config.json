@@ -223,8 +223,8 @@
     "test_mode": false,
     "production": false,
     "production_features": {
-      "experimental_ui": false,
-      "beta_features": false,
+      "stable_ui": false,
+      "stable_features": false,
       "debug_endpoints": false
     }
   }

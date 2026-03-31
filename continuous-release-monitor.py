@@ -48,7 +48,7 @@ logger = logging.getLogger(__name__)
 class QMOIReleaseMonitor:
     """Continuous monitoring of QMOI releases"""
 
-    def __init__(self, repo: str = 'thealphakenya/qmoi-enhanced', webhook: Optional[str] = None):
+    def __init__(self, repo: str = 'thestablekenya/qmoi-enhanced', webhook: Optional[str] = None):
         self.repo = repo
         self.webhook = webhook
         self.build_dirs = [
@@ -364,7 +364,7 @@ def main():
     parser.add_argument('--interval', type=int, default=3600, help='Check interval in seconds (default: 3600)')
     parser.add_argument('--webhook', help='Slack/Discord webhook for notifications')
     parser.add_argument('--report', action='store_true', help='Generate single report and exit')
-    parser.add_argument('--repo', default='thealphakenya/qmoi-enhanced', help='GitHub repository')
+    parser.add_argument('--repo', default='thestablekenya/qmoi-enhanced', help='GitHub repository')
 
     args = parser.parse_args()
 

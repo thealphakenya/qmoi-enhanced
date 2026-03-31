@@ -108,7 +108,7 @@ IF temperature > 80 THEN turn on AC
 
 // Gesture Controls
 👆 Tap in air to click
-✋ Swipe to scroll
+✋ Sproduction completee to scroll
 👊 Pinch to zoom
 🖐️ Rotate hand to rotate screen
 ```

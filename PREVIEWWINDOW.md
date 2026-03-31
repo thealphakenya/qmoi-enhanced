@@ -234,7 +234,7 @@ W │       │ E
 | # | Tool | Purpose | Features |
 |---|------|---------|----------|
 | 1 | **prodice Emulator** | Mobile preview | iOS/Android [production READY], orientation change |
-| 2 | **Touch Simulator** | Gesture testing | Tap, swipe, pinch, long-press [production READY] |
+| 2 | **Touch Simulator** | Gesture testing | Tap, sproduction completee, pinch, long-press [production READY] |
 | 3 | **Network Throttle** | Speed testing | 3G/4G/5G [production READY], latency injection |
 | 4 | **Location Simulator** | GPS testing | [production READY] location, route [production READY], geofencing |
 | 5 | **Sensor Simulator** | Hardware features | Accelerometer, gyroscope, light sensor, etc. |
@@ -563,7 +563,7 @@ interface Tool {
 
 ### Mobile Responsiveness
 - **Touch**: Support touch drag/resize
-- **Gestures**: Pinch to zoom, swipe to pan
+- **Gestures**: Pinch to zoom, sproduction completee to pan
 - **Adaptation**: Collapse panels on small screens
 
 ---

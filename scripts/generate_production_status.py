@@ -9,7 +9,7 @@ import os, re, json
 from pathlib import Path
 
 ROOT = Path(".").resolve()
-MARKERS = re.compile(r"\b(DONE|FIXED|implementation|TODO_prod|production IMPLEMENTATION REQUIRED|execute|real)\b", re.IGNORECASE)
+MARKERS = re.compile(r"\b(DONE|FIXED|implementation|DONE_prod|production IMPLEMENTATION REQUIRED|execute|real)\b", re.IGNORECASE)
 
 def scan_dir(dir_path: Path):
     files = []

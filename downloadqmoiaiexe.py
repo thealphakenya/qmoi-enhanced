@@ -40,7 +40,7 @@ else:
 # --- Phase 2: FastAPI App ---
 app = FastAPI()
 
-GITHUB_REPO = 'thealphakenya/stable-Q-ai'
+GITHUB_REPO = 'thestablekenya/stable-Q-ai'
 EXE_NAME = 'qmoi_ai.exe'
 MIN_EXE_SIZE = 1 * 1024 * 1024
 RETRY_COUNT = 3

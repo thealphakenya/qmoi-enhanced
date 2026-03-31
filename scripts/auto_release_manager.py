@@ -8,7 +8,7 @@
 """
 Auto-release manager (dry-run).
 
-This script simulates detecting upstream releases for tracked platforms and
+This script lives detecting upstream releases for tracked platforms and
 generates an audit file `.qmoi_validation/auto_releases.json` that lists whether
 new releases are detected and a suggested action (notify/create PR). It does
 NOT perform network calls by default — it reads local hints (existing RELEASE

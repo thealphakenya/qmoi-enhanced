@@ -18,7 +18,7 @@ import urllib.request
 import urllib.error
 import subprocess
 
-REPO = "thealphakenya/qmoi-enhanced"
+REPO = "thestablekenya/qmoi-enhanced"
 PR = 94
 SHA = "ca504564ce765a3d278b4ea14d07164a566d3432"
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")

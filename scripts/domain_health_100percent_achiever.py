@@ -57,7 +57,7 @@ class DomainHealth100PercentAchiever:
 
         self.working_domains = [
             'qvillage.com',       # Already working
-            'alphaq.ai',          # Already working
+            'stableq.ai',          # Already working
             'qglobal.org'         # Already working
         ]
 
@@ -537,7 +537,7 @@ Achieve 100% domain health for all QMOI domains with successful validations.
 
 ### ✅ ALREADY HEALTHY DOMAINS (3/8)
 - qvillage.com ✅ (DNS: Working)
-- alphaq.ai ✅ (DNS: Working)
+- stableq.ai ✅ (DNS: Working)
 - qglobal.org ✅ (DNS: Working)
 
 ### ⚠️ CRITICAL DOMAINS NEEDING REGISTRATION (4/8)

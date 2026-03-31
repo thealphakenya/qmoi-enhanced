@@ -160,13 +160,13 @@
 git tag test-v1.2.5 && git push origin test-v1.2.5
 
 # Check final release (after 2-5 min)
-gh release view test-v1.2.5 --repo thealphakenya/qmoi-enhanced \
+gh release view test-v1.2.5 --repo thestablekenya/qmoi-enhanced \
   --json assets --jq '.assets | length'
 # Expected: 16
 
 # Verify SHA256 of one asset
 curl -L -o /tmp/qmoi_ai.AppImage \
-  https://github.com/thealphakenya/qmoi-enhanced/releases/download/test-v1.2.5/qmoi_ai.AppImage
+  https://github.com/thestablekenya/qmoi-enhanced/releases/download/test-v1.2.5/qmoi_ai.AppImage
 sha256sum /tmp/qmoi_ai.AppImage
 
 # Publish final
@@ -188,7 +188,7 @@ cat reports/release_compliance_report.json | jq '.status'
 
 ```bash
 # Review vulnerabilities
-# → https://github.com/thealphakenya/qmoi-enhanced/security/dependabot
+# → https://github.com/thestablekenya/qmoi-enhanced/security/dependabot
 
 # Install updates (data for Python)
 pip install --upgrade requests flask
@@ -202,7 +202,7 @@ git add -A && git commit -m "fix: resolve dependabot vulnerabilities"
 ```bash
 # Edit GITHUB_RELEASES_RECENT.md with real v1.2.3 & v1.2.4 data
 # Test all download links work
-curl -I https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe
+curl -I https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe
 
 # Commit changes
 git add -A && git commit -m "docs: update with real release data"

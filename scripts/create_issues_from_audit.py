@@ -35,7 +35,7 @@ if not TOKEN:
     print('GITHUB_TOKEN not set; cannot create issues.')
     sys.exit(2)
 
-repo = 'thealphakenya/qmoi-enhanced'
+repo = 'thestablekenya/qmoi-enhanced'
 url = f'https://api.github.com/repos/{repo}/issues'
 headers = {
     'Authorization': f'token {TOKEN}',

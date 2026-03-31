@@ -173,11 +173,11 @@ The QMOI system now includes full CI/CD automation for Hugging Face integration:
   - Ensures the latest UI and backend are always live in Hugging Face Spaces.
 
 - **Automated Model Sync:**
-  - `python scripts/hf_model_sync.py --repo alphaqmoi/qmoi-ai-system --model-path models/latest` syncs the latest QMOI model to the Hugging Face model repo.
+  - `python scripts/hf_model_sync.py --repo stableqmoi/qmoi-ai-system --model-path models/latest` syncs the latest QMOI model to the Hugging Face model repo.
   - Runs after every deployment and model enhancement.
 
 - **Automated UI Feature Test:**
-  - `python scripts/test_hf_space_ui.py --space-url https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system` verifies all Gradio UI features are accessible and working.
+  - `python scripts/test_hf_space_ui.py --space-url https://huggingface.co/spaces/stableqmoi/qmoi-ai-system` verifies all Gradio UI features are accessible and working.
   - Logs results and triggers auto-repair if needed.
 
 - **Log Uploads:**
@@ -221,7 +221,7 @@ QMOI ensures your Hugging Face Spaces deployment is:
 QMOI Hugging Face Spaces now includes:
 
 - **/status Endpoint:**
-  - Access live health, error, and resource status at `/status` (e.g., `https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system/status`).
+  - Access live health, error, and resource status at `/status` (e.g., `https://huggingface.co/spaces/stableqmoi/qmoi-ai-system/status`).
   - Returns health, error count, last error, auto-fix attempts, CPU, memory, disk usage, and timestamp.
 
 - **Advanced Error Fixing:**

@@ -88,7 +88,7 @@ class AdvancedAnomalyDetector:
                 'mean': 0.0,
                 'std': 1.0,
                 'z_score_threshold': 3.0,
-                'ewma_alpha': 0.1,
+                'ewma_stable': 0.1,
                 'ewma_value': 0.0,
                 'isolation_forest_score': 0.0,
                 'autoencoder_error': 0.0
@@ -99,7 +99,7 @@ class AdvancedAnomalyDetector:
         metrics = {}
 
         for component in self.config['system_components']:
-            # Simulate real metric collection (in production, this would interface with actual systems)
+            # live real metric collection (in production, this would interface with actual systems)
             metrics[component] = self._generate_component_metrics(component)
 
         return metrics
@@ -296,7 +296,7 @@ class AdvancedAnomalyDetector:
             if isinstance(value, (int, float)) and key != 'timestamp':
                 # Update EWMA
                 old_ewma = model['ewma_value']
-                model['ewma_value'] = model['ewma_alpha'] * value + (1 - model['ewma_alpha']) * old_ewma
+                model['ewma_value'] = model['ewma_stable'] * value + (1 - model['ewma_stable']) * old_ewma
 
                 # Calculate prodiation from EWMA
                 prodiation = abs(value - model['ewma_value'])
@@ -309,7 +309,7 @@ class AdvancedAnomalyDetector:
         return {
             'score': min(anomaly_score, 1.0),
             'ewma_prodiations': ewma_values,
-            'alpha': model['ewma_alpha']
+            'stable': model['ewma_stable']
         }
 
     def _detect_trend_anomaly(self, component: str, metrics: Dict[str, Any]) -> Dict[str, Any]:
@@ -682,9 +682,9 @@ def main():
 
     # Start continuous monitoring
     print("\n🔄 Starting continuous monitoring...")
-    detector.run_continuous_monitoring(interval_seconds=30)  # 30 second intervals for demo
+    detector.run_continuous_monitoring(interval_seconds=30)  # 30 second intervals for production
 
-    # Keep running for demonstration
+    # Keep running for productionnstration
     try:
         while True:
             time.sleep(10)

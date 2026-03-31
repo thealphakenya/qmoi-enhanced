@@ -239,7 +239,7 @@ __tests__/
 **Primary Domains** (3):
 - qmoi.ai (Main AI engine)
 - qvillage.com (Community hub)
-- alphaq.ai (AlphaQ platform)
+- stableq.ai (stableQ platform)
 
 **Service Domains** (6):
 - api.qmoi.com (API server)
@@ -325,7 +325,7 @@ interface LinkManagement {
 1. **Initial Setup**:
    ```bash
    # Clone repo
-   git clone https://github.com/thealphakenya/qmoi-enhanced.git
+   git clone https://github.com/thestablekenya/qmoi-enhanced.git
    cd qmoi-enhanced
    
    # Open in VS Code with prod Container
@@ -398,7 +398,7 @@ npm run deploy:prod     # Deploy to production
 
 **Per-Domain Validation**:
 ```bash
-for domain in qmoi.ai qvillage.com alphaq.ai \
+for domain in qmoi.ai qvillage.com stableq.ai \
               api.qmoi.com auth.qmoi.com cdn.qmoi.com \
               qcity.io qvillage.org qglobal.ai \
               qparallel.prod web.qmoi.prod test.qmoi.prod; do

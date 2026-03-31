@@ -50,8 +50,8 @@ declare -a LINK_URLS=(
   "https://qmoi-enhanced.vercel.app"
   "https://qmoi-enhanced.vercel.app/api"
   "https://qmoi-enhanced.vercel.app/api/health"
-  "https://vercel.com/thealphakenya/qmoi-enhanced"
-  "https://github.com/thealphakenya/qmoi-enhanced"
+  "https://vercel.com/thestablekenya/qmoi-enhanced"
+  "https://github.com/thestablekenya/qmoi-enhanced"
 )
 
 declare -a RESULTS=()

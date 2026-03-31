@@ -16,7 +16,7 @@ set -euo pipefail
 
 : "${QCITY_HOST:?Please set QCITY_HOST}")
 : "${QCITY_USER:=root}"
-: "${REPO_URL:=https://github.com/thealphakenya/qmoi-enhanced.git}"
+: "${REPO_URL:=https://github.com/thestablekenya/qmoi-enhanced.git}"
 : "${REPO_DIR:=/opt/qvillage}"
 : "${IMAGE_NAME:=qvillage-standalone:latest}"
 : "${RUN_INTERVAL_SECONDS:=3600}"

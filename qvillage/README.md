@@ -159,7 +159,7 @@ Tests include:
 ### For prodelopers
 - Build AI applications with pre-trained models
 - Fine-tune models on custom datasets
-- Create interactive demos with spaces
+- Create interactive productions with spaces
 - Integrate AI capabilities via REST APIs
 
 ### For Enterprises

@@ -572,7 +572,7 @@ BASE_URL = "https://qmoi.com"
 # Discover all platforms
 platforms = [
   "qcity", "qstore", "qvillage", 
-  "qshare", "qcloud", "alphaq"
+  "qshare", "qcloud", "stableq"
 ]
 
 response = requests.post(
@@ -618,7 +618,7 @@ async function registerAutoclone() {
     action: 'register-autoclone',
     autocloneInfo: {
       cloneId: 'autoclone-prod-1',
-      sourceRepository: 'https://github.com/thealphakenya/qmoi-enhanced',
+      sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
       clonePath: '/opt/qvillage-prod',
       version: '1.2.5',
       status: 'active'

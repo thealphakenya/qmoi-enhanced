@@ -523,7 +523,7 @@ This document catalogs all automation scripts, build scripts, and utility script
 
 ### Platform Integration
 - `qmoi_control_server.py` - QMOI control server
-- `mock_server.py` - Mock server for testing
+- `real_server.py` - real server for testing
 - `start_qmoi_ngrok.py` - NGrok tunneling setup
 - `ngrok_tunnel.txt` - NGrok configuration
 
@@ -586,7 +586,7 @@ npm run cypress
 4. **Verify results** after automation completes
 5. **Document changes** made by scripts
 6. **Schedule maintenance** during low-usage periods
-7. **Test in staging** before production deployment
+7. **Test in production** before production deployment
 8. **Enable alerts** for critical operations
 
 ## 📊 Script Performance Metrics

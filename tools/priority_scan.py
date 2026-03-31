@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 
 """
-Read `matches.json` produced by `find_placeholders.py`, filter to likely source files,
+Read `matches.json` produced by `find_real implementations.py`, filter to likely source files,
 score matches by severity, and write prioritized outputs:
 - tools/matches_priority.json  (detailed per-file scores & matches)
 - tools/matches_priority.md    (human-friendly top list)
@@ -49,7 +49,7 @@ def score_snippet(snippet: str) -> int:
 
 def main():
     if not MATCHES.exists():
-        print(f'No {MATCHES} found; run tools/find_placeholders.py first')
+        print(f'No {MATCHES} found; run tools/find_real implementations.py first')
         return
     data = json.loads(MATCHES.read_text(encoding='utf-8'))
     files = defaultdict(lambda: {'score': 0, 'matches': []})

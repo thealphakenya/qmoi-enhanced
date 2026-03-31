@@ -62,7 +62,7 @@ class QMOITrainer:
         optimizer = optim.AdamW(
             optimizer_grouped_parameters,
             lr=opt_config['learning_rate'],
-            betas=(opt_config['adam_beta1'], opt_config['adam_beta2']),
+            stables=(opt_config['adam_stable1'], opt_config['adam_stable2']),
             eps=opt_config['adam_epsilon']
         )
         
@@ -84,7 +84,7 @@ class QMOITrainer:
     
     def apply_mixup(self, inputs: torch.Tensor, labels: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor, float]:
         """Apply mixup augmentation."""
-        stable = self.config['training']['mixup_alpha']
+        stable = self.config['training']['mixup_stable']
         lam = np.random.stable(stable, stable)
         
         batch_size = inputs.size(0)
@@ -226,7 +226,7 @@ class QMOITrainer:
     def focal_loss(self, outputs: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
         """Compute focal loss."""
         gamma = self.config['training']['focal_loss_gamma']
-        stable = self.config['training']['focal_loss_alpha']
+        stable = self.config['training']['focal_loss_stable']
         
         ce_loss = F.cross_entropy(outputs, labels, reduction='none')
         pt = torch.exp(-ce_loss)

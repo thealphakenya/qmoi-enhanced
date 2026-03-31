@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
       },
       domains: [
         'qmoi.ai',
-        'alphaq.ai',
+        'stableq.ai',
         'qvillage.com',
         'api.qmoi.com',
         'auth.qmoi.com',
@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
         'qparallel.prod',
         'web.qmoi.prod',
         'test.qmoi.prod',
-        'staging.qmoi.prod'
+        'production.qmoi.prod'
       ]
     }, { status: 200 });
   } catch (error) {

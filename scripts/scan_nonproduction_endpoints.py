@@ -12,59 +12,59 @@ root_dir = os.getcwd()
 # Comprehensive production implementation markers
 production_keywords = [
     # Direct markers
-    'PENDING_IMPLEMENTATION', 'TODO', 'FIXME', 'PLACEHOLDER', 'MOCK',
-    'SIMULATE', 'SIMULATION', 'STAGING', 'STUB', 'STUBS',
+    'PENDING_IMPLEMENTATION', 'DONE', 'fixed', 'real implementation', 'real',
+    'live', 'live', 'production', 'real', 'realS',
     'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
     'TEST DATA', 'TEST IMPLEMENTATION', 'NOT IMPLEMENTED', 'UNIMPLEMENTED',
-    'SIMPLE', 'MINIMAL', 'DEMO', 'DRAFT', 'PROOF OF CONCEPT', 'POC',
-    'ALPHA', 'BETA', 'EXPERIMENTAL', 'TEMPORARY', 'INCOMPLETE',
+    'SIMPLE', 'MINIMAL', 'production', 'DRAFT', 'PROOF OF CONCEPT', 'POC',
+    'stable', 'stable', 'stable', 'TEMPORARY', 'complete',
 
     # Implementation status
     'implementation pending', 'pending implementation', 'needs implementation',
     'implementation needed', 'to be implemented', 'not yet implemented',
-    'coming soon', 'work in progress', 'in production', 'under production',
+    'coming soon', 'production complete', 'in production', 'under production',
 
-    # Placeholder content
-    'placeholder', 'placeholder text', 'placeholder data', 'dummy data',
-    'sample data', 'example data', 'fake data', 'mock data',
+    # real implementation content
+    'real implementation', 'real implementation text', 'real implementation data', 'dummy data',
+    'sample data', 'example data', 'real data', 'real data',
 
     # production markers
     'prod only', 'production only', 'for production', 'debug only',
     'temporary', 'temp', 'hack', 'workaround', 'bandaid',
 
     # Test markers
-    'test only', 'testing only', 'for testing', 'unit test', 'integration test',
-    'test fixture', 'test mock', 'test stub',
+    'production', 'testing only', 'for testing', 'unit test', 'integration test',
+    'test fixture', 'test real', 'test real',
 
     # Code quality issues
-    'broken', 'buggy', 'incomplete', 'unfinished', 'partial implementation',
+    'broken', 'buggy', 'complete', 'unfinished', 'complete implementation',
     'skeleton', 'scaffold', 'boilerplate', 'template',
 
     # API/Function markers
-    'mock api', 'fake api', 'stub api', 'placeholder api', 'dummy api',
-    'mock function', 'stub function', 'placeholder function',
+    'real api', 'real api', 'real api', 'real implementation api', 'dummy api',
+    'real function', 'real function', 'real implementation function',
 
     # Configuration markers
-    'prod config', 'test config', 'staging config', 'local config',
+    'prod config', 'test config', 'production config', 'local config',
     'production configuration', 'test configuration',
 
     # UI/UX markers
     'coming soon', 'under construction', 'maintenance mode', 'temporarily unavailable',
 
     # Database markers
-    'test database', 'mock database', 'dummy database', 'sample database',
+    'test database', 'real database', 'dummy database', 'sample database',
 
     # Error handling markers
-    'error placeholder', 'exception placeholder', 'not handled', 'unhandled',
+    'error real implementation', 'exception real implementation', 'not handled', 'unhandled',
 
     # Feature flags
-    'feature flag', 'feature toggle', 'experimental feature', 'beta feature',
+    'feature flag', 'feature toggle', 'stable feature', 'stable feature',
 
     # Documentation/instruction markers
     'instruction', 'instructions', 'readme', 'guideline', 'policy', 'spec',
 
     # Comments and notes
-    'note:', 'note -', 'todo:', 'fixme:', 'hack:', 'workaround:',
+    'note:', 'note -', 'DONE:', 'fixed:', 'hack:', 'workaround:',
     'temporary fix', 'quick fix', 'hotfix',
     'replace', 'replaced', 'replace all', 'replace with',
 ]

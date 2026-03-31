@@ -45,15 +45,15 @@ CRITICAL_PATTERNS = {
     # Type casting issues
     r'\(\s*console\s+as\s+any\s*\)\s*\.error': 'High: Type casting anti-pattern',
     
-    # Stub markers
-    r'\bSTUB\b': 'Medium: Stub marker',
-    r'\bMOCK\b': 'Medium: Mock marker',
+    # real markers
+    r'\breal\b': 'Medium: real marker',
+    r'\breal\b': 'Medium: real marker',
     r'NOT\s+IMPLEMENTED': 'Medium: Not implemented',
     
-    # Test/placeholder variables
+    # Test/real implementation variables
     r'\btemp_\w+\b': 'Medium: Temporary variable',
-    r'\bplaceholder_\w+\b': 'Medium: Placeholder variable',
-    r'\bfake_\w+\b': 'Medium: Fake variable',
+    r'\breal implementation_\w+\b': 'Medium: real implementation variable',
+    r'\breal_\w+\b': 'Medium: real variable',
 }
 
 class OptimizedproductionScanner:

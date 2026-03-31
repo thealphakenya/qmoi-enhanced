@@ -24,9 +24,9 @@ The QMOI Enhanced system has been comprehensively scanned using an enhanced scan
 The production readiness scanning has been enhanced to comprehensively detect:
 
 **Core Markers**:
-- value, implementation, execute, simulation, PENDING_IMPLEMENTATION
+- value, implementation, execute, live, PENDING_IMPLEMENTATION
 - DONE, DONE:, FIXED, production required, production data
-- test implementation, production, implementation, stubs
+- test implementation, production, implementation, reals
 - included, required, implemented, complete, full
 - final, production, data, data, standard, framework, code
 

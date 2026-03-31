@@ -34,7 +34,7 @@ if (fs.existsSync(RELEASE_JSON_PATH)) {
 }
 
 const timestamp = new Date().toLocaleString();
-const releaseURL = `https://github.com/thealphakenya/stable-Q-ai/releases`;
+const releaseURL = `https://github.com/thestablekenya/stable-Q-ai/releases`;
 
 const message = `
 🚀 *QMOI AI Release*

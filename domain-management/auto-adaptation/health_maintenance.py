@@ -123,7 +123,7 @@ class QMOIHealthMaintenance:
         """Clean up caches across domains"""
         logger.info("Performing cache cleanup")
         try:
-            # Simulate cache cleanup operations
+            # live cache cleanup operations
             for domain in self.domains:
                 logger.info(f"Cleaning cache for {domain}")
                 # In real implementation: clear CDN caches, app caches, etc.

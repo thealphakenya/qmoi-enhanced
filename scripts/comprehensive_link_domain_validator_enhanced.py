@@ -34,13 +34,13 @@ FALLBACK_DOMAINS = {
     'qmoi.ai': 'qmoi.com',
     'qcity.qmoi.ai': 'qcity.qvillage.com',
     'yap.qmoi.ai': 'yap.qvillage.com',
-    'qmoi-space.qmoi.ai': 'space.alphaq.ai',
-    'q-stable.qmoi.ai': 'stable.alphaq.ai',
+    'qmoi-space.qmoi.ai': 'space.stableq.ai',
+    'q-stable.qmoi.ai': 'stable.stableq.ai',
 }
 
 # Domain registry with expected endpoints
 DOMAIN_REGISTRY = {
-    'alphaq.ai': {
+    'stableq.ai': {
         'type': 'ai_platform',
         'critical': True,
         'endpoints': ['/api/health', '/chat', '/dashboard', '/'],
@@ -71,14 +71,14 @@ DOMAIN_REGISTRY = {
         'critical': False,
         'endpoints': ['/api/health', '/'],
         'description': 'QMOI Space application',
-        'fallback': 'space.alphaq.ai'
+        'fallback': 'space.stableq.ai'
     },
     'q-stable.qmoi.ai': {
         'type': 'models',
         'critical': False,
         'endpoints': ['/api/health', '/'],
         'description': 'Q-stable progressive web app',
-        'fallback': 'stable.alphaq.ai'
+        'fallback': 'stable.stableq.ai'
     },
     'qshare.qvillage.com': {
         'type': 'file_sharing',

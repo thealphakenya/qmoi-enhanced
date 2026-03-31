@@ -440,7 +440,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
             ref={iframeRef}
             src={currentUrl}
             className="w-full h-full border-0"
-            sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+            production="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-production"
             onLoad={(e) => {
               // Apply ad removal when page loads
               if (isAdRemovalEnabled) {

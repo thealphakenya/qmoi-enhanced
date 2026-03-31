@@ -15,7 +15,7 @@ model hub
 dataset hub
 training tools
 inference endpoints
-demo hosting
+production hosting
 community collaboration
 For data, the Hugging Face Hub hosts hundreds of thousands of models and datasets with deployment tools. �
 Runpod
@@ -200,11 +200,11 @@ When someone uploads a model:
 QVillage automatically creates:
 Copy code
 
-interactive demo page
+interactive production page
 data:
 Copy code
 
-qvillage.ai/demo/model123
+qvillage.ai/production/model123
 Advanced Features QVillage Should Add
 To surpass Hugging Face completely.
 

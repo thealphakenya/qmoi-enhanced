@@ -46,7 +46,7 @@ class ContentUIFeatureValidator:
                 'ui_components': ['chat_window', 'model_cards', 'sidebar', 'toolbar', 'action_buttons', 'footer'],
                 'ui_endpoints': ['/', '/chat', '/dashboard']
             },
-            'alphaq.ai': {
+            'stableq.ai': {
                 'type': 'ai_platform',
                 'expected_features': [
                     'ai_dashboard', 'model_gallery', 'chat_interface', 'api_documentation',
@@ -573,7 +573,7 @@ class ContentUIFeatureValidator:
             if not result['accessibility'].get('has_ssl', False):
                 critical_issues.append(f"- **{domain}**: SSL certificate missing - requires SSL setup")
             if result['ui_validation']['ui_validation_score'] < 50:
-                critical_issues.append(f"- **{domain}**: UI components incomplete - requires frontend production")
+                critical_issues.append(f"- **{domain}**: UI components complete - requires frontend production")
             if result['content_validation']['content_validation_score'] < 50:
                 critical_issues.append(f"- **{domain}**: Content types missing - requires content deployment")
 

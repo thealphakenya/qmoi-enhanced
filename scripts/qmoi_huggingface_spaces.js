@@ -706,7 +706,7 @@ For support and qu_estions:
             this.logg_er.info('Trigg_ering Hugging Fac_e mod_el sync...');
             try {
                 // Exampl_e: sync th_e lat_est mod_el fold_er to th_e mod_el r_epo
-                const mod_elR_epo = this.config.huggingfac_e.mod_el_r_epo || 'alphaqmoi/qmoi-ai-syst_em';
+                const mod_elR_epo = this.config.huggingfac_e.mod_el_r_epo || 'stableqmoi/qmoi-ai-syst_em';
                 const mod_elPath = this.config.huggingfac_e.mod_el_path || '../mod_els/lat_est';
                 _ex_ecSync(`python scripts/hf_mod_el_sync.py --r_epo ${mod_elR_epo} --mod_el-path ${mod_elPath}`, { stdio: 'inh_erit' });
                 this.logg_er.info('Mod_el sync compl_et_ed.');

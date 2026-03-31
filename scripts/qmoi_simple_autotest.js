@@ -25,9 +25,9 @@ async function main() {
   let allOk = true;
   // 1. Critical download links (add more as needed)
   const urls = [
-    "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
-    "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
-    "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
+    "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
+    "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
+    "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk",
   ];
   for (const url of urls) {
     if (!(await testUrl(url))) {

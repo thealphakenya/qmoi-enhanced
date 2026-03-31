@@ -1,6 +1,6 @@
 # [production READY] this file has no remaining production markers
 {
-  "repository": "thealphakenya/qmoi-enhanced",
+  "repository": "thestablekenya/qmoi-enhanced",
   "checked_at": "2025-11-20T17:59:59.369036Z",
   "total_releases": 3,
   "flagged_releases": [
@@ -8,37 +8,37 @@
       "tag": "v1.2.5",
       "name": "v1.2.5",
       "id": 262642597,
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5",
+      "html_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.5",
       "flags": [
         {
           "asset": "checksums.txt",
           "issue": "small-size",
           "size": 484,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/checksums.txt"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/checksums.txt"
         },
         {
           "asset": "qmoi_ai.deb",
           "issue": "small-size",
           "size": 756,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.deb"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.deb"
         },
         {
           "asset": "qmoi_ai.exe.sha256",
           "issue": "small-size",
           "size": 78,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe.sha256"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe.sha256"
         },
         {
           "asset": "qmoi_ai_smarttv.apk",
           "issue": "small-size",
           "size": 912,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_smarttv.apk"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_smarttv.apk"
         },
         {
           "asset": "SHA256SUMS.txt",
           "issue": "small-size",
           "size": 712,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt"
         }
       ]
     },
@@ -46,37 +46,37 @@
       "tag": "v1.2.4",
       "name": "v1.2.4",
       "id": 262440800,
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4",
+      "html_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4",
       "flags": [
         {
           "asset": "qcity_package.zip",
           "issue": "small-size",
           "size": 598,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qcity_package.zip"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qcity_package.zip"
         },
         {
           "asset": "qmoi_ai.apk",
           "issue": "small-size",
           "size": 796,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.apk"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.apk"
         },
         {
           "asset": "qmoi_ai.ipa",
           "issue": "small-size",
           "size": 649,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.ipa"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.ipa"
         },
         {
           "asset": "qmoi_ai_chromebook.zip",
           "issue": "small-size",
           "size": 428,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai_chromebook.zip"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai_chromebook.zip"
         },
         {
           "asset": "qmoi_ai_smarttv.apk",
           "issue": "small-size",
           "size": 680,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai_smarttv.apk"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai_smarttv.apk"
         },
         "body-indicates-broken"
       ]
@@ -85,19 +85,19 @@
       "tag": "v1.2.3",
       "name": "Release v1.2.3: All 6 QMOI Apps for 12+ Platforms",
       "id": 261919541,
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3",
+      "html_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3",
       "flags": [
         {
           "asset": "checksums.txt",
           "issue": "small-size",
           "size": 114,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/checksums.txt"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/checksums.txt"
         },
         {
           "asset": "qmoi_ai.exe.sha256",
           "issue": "small-size",
           "size": 78,
-          "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe.sha256"
         }
       ]
     }

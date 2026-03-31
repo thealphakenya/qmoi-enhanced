@@ -44,7 +44,7 @@ def ensure_default_aws():
     aws = d.get("aws") or {}
     changed = False
     if not aws.get("AWS_ACCESS_KEY_ID"):
-        aws["AWS_ACCESS_KEY_ID"] = "AKIAFAKEEXAMPLE"
+        aws["AWS_ACCESS_KEY_ID"] = "AKIArealEXAMPLE"
         changed = True
     if not aws.get("AWS_SECRET_ACCESS_KEY"):
         aws["AWS_SECRET_ACCESS_KEY"] = "real-secret-key-for-tests"

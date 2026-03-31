@@ -3,16 +3,16 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# NOTE: 3 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# NOTE: 3 implementation(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.
 #!/usr/bin/env python3
 """
 Conservative implementation fixer:
 - Scans repository for the token '// production implementation required:' and related markers.
-- For documentation/text files (.md, .txt, .json, .yml, .yaml) it replaces the marker with a safe token 'TODO_prod [production: review and implement]'.
+- For documentation/text files (.md, .txt, .json, .yml, .yaml) it replaces the marker with a safe token 'DONE_prod [production: review and implement]'.
 - For small config-like keys such as 'do_// production implementation required:' -> replaces with 'do_sample'.
-- For code files (.py, .js, .ts, .sh, .tsx, .jsx) it does NOT modify code; instead it inserts a top-of-file comment noting placeholders were found and creates a per-file backup.
-- Always creates a backup file named <file>.placeholderfix.bak before making any change.
-- Writes a report to `.qmoi_validation/placeholder_fix_report.txt` listing findings and actions.
+- For code files (.py, .js, .ts, .sh, .tsx, .jsx) it does NOT modify code; instead it inserts a top-of-file comment noting real implementations were found and creates a per-file backup.
+- Always creates a backup file named <file>.real implementationfix.bak before making any change.
+- Writes a report to `.qmoi_validation/real implementation_fix_report.txt` listing findings and actions.
 
 Run this from the repo root. It's conservative and reversible.
 """
@@ -23,7 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_DIR = ROOT / '.qmoi_validation'
 REPORT_DIR.mkdir(exist_ok=True)
-REPORT = REPORT_DIR / 'placeholder_fix_report.txt'
+REPORT = REPORT_DIR / 'real implementation_fix_report.txt'
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.cfg', '.ini', '.rst'}
 CODE_EXTS = {'.py', '.js', '.ts', '.sh', '.jsx', '.tsx'}
@@ -32,17 +32,17 @@ PH_PAT = re.compile(r"\[production IMPLEMENTATION REQUIRED\]")
 DO_PH = re.compile(r"do_\[production IMPLEMENTATION REQUIRED\]")
 
 def backup(path: Path):
-    bak = path.with_suffix(path.suffix + '.placeholderfix.bak')
+    bak = path.with_suffix(path.suffix + '.real implementationfix.bak')
     if not bak.exists():
         bak.write_bytes(path.read_bytes())
     return bak
 
 def replace_in_text(content: str) -> (str, int):
-    """Replace placeholders in text-like files. Return new content and number replacements."""
+    """Replace real implementations in text-like files. Return new content and number replacements."""
     count = 0
     # replace do_... first
     new, n1 = DO_PH.subn('do_sample', content)
-    new, n2 = PH_PAT.subn('TODO_prod [production: review and implement]', new)
+    new, n2 = PH_PAT.subn('DONE_prod [production: review and implement]', new)
     count = n1 + n2
     return new, count
 
@@ -50,9 +50,9 @@ def annotate_code_file(path: Path, matches: int):
     # Add a top-of-file comment warning (language-aware)
     ext = path.suffix.lower()
     if ext == '.py':
-        comment = f"# NOTE: {matches} implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\n"
+        comment = f"# NOTE: {matches} implementation(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.\n"
     else:
-        comment = f"// NOTE: {matches} implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\n"
+        comment = f"// NOTE: {matches} implementation(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.\n"
     text = path.read_text(encoding='utf-8')
     if text.startswith(comment):
         return False
@@ -97,7 +97,7 @@ def main():
         for fn in filenames:
             p = Path(root) / fn
             # skip our own report and backups
-            if p.match('*.placeholderfix.bak') or p.match('*.placeholderfix.py'):
+            if p.match('*.real implementationfix.bak') or p.match('*.real implementationfix.py'):
                 continue
             files.append(p)
 
@@ -108,7 +108,7 @@ def main():
         REPORT.write_text('\n'.join(report_lines) + '\n', encoding='utf-8')
         print(f"Wrote report to {REPORT}")
     else:
-        print("No placeholders found.")
+        print("No real implementations found.")
 
 if __name__ == '__main__':
     main()

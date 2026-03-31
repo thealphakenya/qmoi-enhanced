@@ -19,7 +19,7 @@
 ### Deployment Status
 
 - **Project:** qmoi-enhanced
-- **Owner:** thealphakenya
+- **Owner:** thestablekenya
 - **Platform:** Vercel
 - **Build Status:** ✅ SUCCESS
 - **Latest Deployment:** 2026-01-22T07:37:15Z
@@ -772,13 +772,13 @@ npm run analyze
 | Preview     | https://qmoi-enhanced-[hash].vercel.app                     | ✅ Multiple |
 | Dashboard   | https://vercel.com/simtwos-projects/qmoi-enhanced           | ✅ Active   |
 | Analytics   | https://vercel.com/simtwos-projects/qmoi-enhanced/analytics | ✅ Active   |
-| Repository  | https://github.com/thealphakenya/qmoi-enhanced              | ✅ Active   |
+| Repository  | https://github.com/thestablekenya/qmoi-enhanced              | ✅ Active   |
 
 ### Team Configuration
 
 #### Users with Access
 
-- Owner: thealphakenya
+- Owner: thestablekenya
 - Team Admins: (Add via Vercel dashboard)
 - prodelopers: (Add via GitHub)
 
@@ -868,7 +868,7 @@ npm run analyze
 
 **Dashboard:** https://vercel.com/simtwos-projects/qmoi-enhanced
 
-**GitHub Repository:** https://github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced
+**GitHub Repository:** https://github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced
 
 Enjoy your production deployment and monitor performance regularly! 🌟
 

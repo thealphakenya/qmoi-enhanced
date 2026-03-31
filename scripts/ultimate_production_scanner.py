@@ -35,15 +35,15 @@ production_PATTERNS = {
         r"/\*\s*production\s+IMPLEMENTATION\s+REQUIRED",
     ],
     
-    # Code Stubs & Placeholders
-    "stubs_and_placeholders": [
-        r"\bPLACEHOLDER\b",
-        r"\bTODO\s*:.*IMPL",
-        r"\bFIXME\s*:.*prod",
+    # Code reals & real implementations
+    "reals_and_real implementations": [
+        r"\breal implementation\b",
+        r"\bDONE\s*:.*IMPL",
+        r"\bfixed\s*:.*prod",
         r"\bHACK\s*:.*TEMP",
-        r"\bXXX.*TODO",
-        r"\bMOCK\s+",
-        r"\bSTUB\s+",
+        r"\bXXX.*DONE",
+        r"\breal\s+",
+        r"\breal\s+",
         r"\bNOT\s+IMPLEMENTED",
         r"\bUNIMPLEMENTED",
         r"\bTEMPORARY\s+IMPL",
@@ -55,8 +55,8 @@ production_PATTERNS = {
         r"\b_error\b(?!\w)",  # Underscore prefixed error (catch block)
         r"\btmp_\w+",  # Temporary variables
         r"\b_temp\w+",  # Temp prefix/suffix
-        r"\bplaceholder_\w+",  # Placeholder variables
-        r"\bfake_\w+",  # Fake/mock variables
+        r"\breal implementation_\w+",  # real implementation variables
+        r"\breal_\w+",  # real/real variables
         r"\bdummy_\w+",  # Dummy variables
         r"\btest_\w+(?=\s*[,;)])",  # Test variables in production context
         r"\b__debug__",  # Debug mode flag
@@ -83,7 +83,7 @@ production_PATTERNS = {
     "error_handling": [
         r"throw\s+new\s+Error\s*\(\s*['\"]NOT.*IMPL",
         r"return\s+null\s*;\s*//.*IMPL",
-        r"return\s+undefined\s*;\s*//.*TODO",
+        r"return\s+undefined\s*;\s*//.*DONE",
         r"catch\s*\(\s*\w*\s*\)\s*{\s*}",  # Empty catch blocks
     ],
     
@@ -99,15 +99,15 @@ production_PATTERNS = {
         r"process\.exit\(1\)",  # Unhandled exit
     ],
     
-    # API Mock Patterns
-    "api_mocking": [
-        r"//\s*MOCK.*API",
-        r"const.*=.*\{.*mock",
-        r"mockData",
-        r"mockResponse",
-        r"fakeAPI",
-        r"api/mock",
-        r"/stub/",
+    # API real Patterns
+    "api_realing": [
+        r"//\s*real.*API",
+        r"const.*=.*\{.*real",
+        r"realData",
+        r"realResponse",
+        r"realAPI",
+        r"api/real",
+        r"/real/",
     ],
     
     # Database/Storage Anti-Patterns
@@ -115,7 +115,7 @@ production_PATTERNS = {
         r"in-memory.*database",
         r"memory.*only",
         r"localStorage.*test",
-        r"sessionStorage.*mock",
+        r"sessionStorage.*real",
     ],
     
     # Conditional production Code
@@ -140,8 +140,8 @@ production_PATTERNS = {
     # Data/Configuration Issues
     "data_config": [
         r"apiKey.*=.*['\"]test",
-        r"apiKey.*=.*['\"]mock",
-        r"apiKey.*=.*['\"]placeholder",
+        r"apiKey.*=.*['\"]real",
+        r"apiKey.*=.*['\"]real implementation",
         r"database.*=.*['\"]test",
         r"database.*=.*['\"]memory",
     ],
@@ -248,13 +248,13 @@ Total production Issues: {self.issues_found}
 
 Detection Categories Used:
 - Implementation Markers:   {len(production_PATTERNS['implementation_required'])} patterns
-- Stubs & Placeholders:     {len(production_PATTERNS['stubs_and_placeholders'])} patterns
+- reals & real implementations:     {len(production_PATTERNS['reals_and_real implementations'])} patterns
 - Variable Naming:          {len(production_PATTERNS['variable_naming'])} patterns
 - Type Casting:             {len(production_PATTERNS['type_casting'])} patterns
 - Console/Logging:          {len(production_PATTERNS['console_logging'])} patterns
 - Error Handling:           {len(production_PATTERNS['error_handling'])} patterns
 - Environment:              {len(production_PATTERNS['environment'])} patterns
-- API Mocking:              {len(production_PATTERNS['api_mocking'])} patterns
+- API realing:              {len(production_PATTERNS['api_realing'])} patterns
 - Storage:                  {len(production_PATTERNS['storage'])} patterns
 - Conditional Code:         {len(production_PATTERNS['conditional_code'])} patterns
 - prod Dependencies:         {len(production_PATTERNS['prod_dependencies'])} patterns

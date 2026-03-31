@@ -173,12 +173,12 @@ class SystemIntegrationTestSuite:
         print('🔗 Testing Multi-Platform Synchronization...')
 
         try:
-            # Simulate platform synchronization
+            # live platform synchronization
             platforms = ['web', 'mobile', 'desktop', 'api']
             sync_status = {}
 
             for platform in platforms:
-                # Simulate sync check
+                # live sync check
                 sync_status[platform] = {
                     'status': 'synced',
                     'last_sync': datetime.now(timezone.utc),
@@ -214,7 +214,7 @@ class SystemIntegrationTestSuite:
         print('⚡ Testing Performance and Load...')
 
         try:
-            # Simulate load testing
+            # live load testing
             load_metrics = {
                 'response_time': 45,  # ms
                 'throughput': 1250,   # TPS
@@ -362,12 +362,12 @@ class SystemIntegrationTestSuite:
         print('👥 Testing Concurrent Access Validation...')
 
         try:
-            # Simulate concurrent users
+            # live concurrent users
             concurrent_users = 100
             access_results = []
 
             for i in range(concurrent_users):
-                # Simulate user access
+                # live user access
                 access_result = {
                     'user_id': f'user_{i+1}',
                     'access_granted': True,

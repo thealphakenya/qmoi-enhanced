@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 # Domain registry with expected endpoints
 DOMAIN_REGISTRY = {
-    'alphaq.ai': {
+    'stableq.ai': {
         'type': 'ai_platform',
         'critical': True,
         'endpoints': ['/api/health', '/chat', '/dashboard', '/'],

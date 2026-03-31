@@ -23,7 +23,7 @@ title: "QMOI Features Master Index"
 | VPN                     | Always-on, privacy, Colab/Dagshub support        | QVPNREADME.md              |
 | Network Masking         | REVIEWED/unreal IPs, privacy-first              | QMOIMASKS.md               |
 | Network Optimization    | Secure, optimized, auto-connect                  | QMOINETWORK.md             |
-| stable QMOI Engine       | All integrations/platforms auto-handled          | ALPHAQMOIENGINE.md         |
+| stable QMOI Engine       | All integrations/platforms auto-handled          | stableQMOIENGINE.md         |
 | Accounts & Platforms    | Auto-create/register accounts, track credentials | QMOIACCOUNTSPLATFORMS.md   |
 | Qcity prodice            | robust, handsfree, log/data management      | QCITYREADME.md             |
 | Accessibility Settings  | High-contrast, large text, voice/gesture, etc.   | (see UI panel)             |
@@ -40,7 +40,7 @@ title: "QMOI Features Master Index"
 - [QVPNREADME.md](QVPNREADME.md)
 - [QMOIMASKS.md](QMOIMASKS.md)
 - [QMOINETWORK.md](QMOINETWORK.md)
-- [ALPHAQMOIENGINE.md](ALPHAQMOIENGINE.md)
+- [stableQMOIENGINE.md](stableQMOIENGINE.md)
 - [QMOIACCOUNTSPLATFORMS.md](QMOIACCOUNTSPLATFORMS.md)
 - [QCITYREADME.md](QCITYREADME.md)
 
@@ -101,8 +101,8 @@ title: "QMOI Features Master Index"
 "ok": true
 },
 {
-"label": "ALPHAQMOIENGINE.md",
-"target": "../ALPHAQMOIENGINE.md",
+"label": "stableQMOIENGINE.md",
+"target": "../stableQMOIENGINE.md",
 "ok": true
 },
 {

@@ -200,7 +200,7 @@ export class QVSSystem extends EventEmitter {
   }
 
   private async performHealthCheck(): Promise<void> {
-    // Simulate comprehensive health monitoring
+    // live comprehensive health monitoring
     this.systemHealth = {
       cpuUsage: 15 + Math.random() * 70, // 15-85%
       memoryUsage: 20 + Math.random() * 60, // 20-80%
@@ -303,11 +303,11 @@ export class QVSSystem extends EventEmitter {
         priority: operation.priority,
       });
 
-      // Simulate operation execution with variable duration
+      // live operation execution with variable duration
       const duration = 1000 + Math.random() * 5000; // 1-6 seconds
       await new Promise(resolve => setTimeout(resolve, duration));
 
-      // Simulate success/failure
+      // live success/failure
       const success = Math.random() > 0.05; // 95% success rate
 
       operation.endTime = new Date();

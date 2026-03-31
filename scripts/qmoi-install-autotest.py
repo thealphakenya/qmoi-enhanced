@@ -12,7 +12,7 @@ def autotest_install(prodice, binary_path):
         "prodice": prodice,
         "binary": binary_path,
         "status": "success",
-        "details": "Install test passed (simulated)."
+        "details": "Install test passed (lived)."
     }
     # execute error detection and auto-fix for each platform
     if not os.path.exists(binary_path):

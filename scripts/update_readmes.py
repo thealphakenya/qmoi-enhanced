@@ -33,9 +33,9 @@ def render_table(apps):
         file_path = a.get('file')
         size_kb = a.get('size_bytes', 0) // 1024
     # primary download host (external)
-    host_url = f"https://github.com/thealphakenya/qmoi-enhanced/releases/{file_path}"
+    host_url = f"https://github.com/thestablekenya/qmoi-enhanced/releases/{file_path}"
     # preferred fallback: downloads directory in this repo (raw GitHub)
-    raw_url = f"https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/{'autosync-backup-20250926-232440'}/downloads/{Path(file_path).name}"
+    raw_url = f"https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/{'autosync-backup-20250926-232440'}/downloads/{Path(file_path).name}"
     # If there's a downloads/ copy, link to that as the reliable fallback
     download_link = host_url
         # Use markdown link with fallback note

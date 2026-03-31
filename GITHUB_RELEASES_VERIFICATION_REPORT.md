@@ -171,14 +171,14 @@ Documentation states **6 QMOI apps** available for **12+ platforms**:
 
 **These docs reference separate GitHub repositories:**
 
-- QMOI AI: `github.com/thealphakenya/stable-Q-ai`
-- QCity: `github.com/thealphakenya/qcity`
-- QShare: `github.com/thealphakenya/qshare`
-- Yap: `github.com/thealphakenya/yap`
-- QStore: `github.com/thealphakenya/qstore`
-- QVillage: `github.com/thealphakenya/qvillage`
+- QMOI AI: `github.com/thestablekenya/stable-Q-ai`
+- QCity: `github.com/thestablekenya/qcity`
+- QShare: `github.com/thestablekenya/qshare`
+- Yap: `github.com/thestablekenya/yap`
+- QStore: `github.com/thestablekenya/qstore`
+- QVillage: `github.com/thestablekenya/qvillage`
 
-**But GitHub releases are in:** `github.com/thealphakenya/qmoi-enhanced`
+**But GitHub releases are in:** `github.com/thestablekenya/qmoi-enhanced`
 
 ### Issue
 

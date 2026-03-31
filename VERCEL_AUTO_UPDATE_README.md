@@ -42,13 +42,13 @@ The Auto-Update System automatically:
 
 ### Vercel Dashboard
 
-- **URL**: https://vercel.com/thealphakenya/qmoi-enhanced
+- **URL**: https://vercel.com/thestablekenya/qmoi-enhanced
 - **Status**: ✓ Live and accessible
 - **View**: Deployment logs, environment variables, settings
 
 ### GitHub Repository
 
-- **URL**: https://github.com/thealphakenya/qmoi-enhanced
+- **URL**: https://github.com/thestablekenya/qmoi-enhanced
 - **Status**: ✓ Live and accessible
 - **View**: Source code, commits, pull requests
 
@@ -167,8 +167,8 @@ The auto-update system:
 
 ### Management Links
 
-- **https://vercel.com/thealphakenya/qmoi-enhanced** - Vercel dashboard
-- **https://github.com/thealphakenya/qmoi-enhanced** - GitHub repository
+- **https://vercel.com/thestablekenya/qmoi-enhanced** - Vercel dashboard
+- **https://github.com/thestablekenya/qmoi-enhanced** - GitHub repository
 
 ## 📝 VERCELLINKS.md Structure
 
@@ -230,7 +230,7 @@ The main documentation file includes:
 
 **Cause**: Deployment still in progress  
 **Solution**: Wait 5-6 minutes after push, then refresh  
-**Check**: https://vercel.com/thealphakenya/qmoi-enhanced for status
+**Check**: https://vercel.com/thestablekenya/qmoi-enhanced for status
 
 ### Script Permission Denied
 
@@ -255,7 +255,7 @@ The main documentation file includes:
 For deployment issues:
 
 1. Check [VERCELLINKS.md](./VERCELLINKS.md) for current status
-2. Visit [Vercel Dashboard](https://vercel.com/thealphakenya/qmoi-enhanced)
+2. Visit [Vercel Dashboard](https://vercel.com/thestablekenya/qmoi-enhanced)
 3. Review logs in `/tmp/qmoi-links.log`
 4. Check GitHub integration status
 

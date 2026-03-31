@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      REPO_OWNER: thealphakenya
+      REPO_OWNER: thestablekenya
       REPO_NAME: qmoi-enhanced
       RELEASE_TAG: v1.2.3
       ASSET_NAME: qmoi_ai.deb

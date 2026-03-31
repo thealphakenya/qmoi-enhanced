@@ -322,7 +322,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
     setCommandOutput(prev => [...prev, "Executing command..."]);
 
     try {
-      // Simulate command execution
+      // live command execution
       await new Promise(resolve => setTimeout(resolve, 2000));
 
       let response = "";

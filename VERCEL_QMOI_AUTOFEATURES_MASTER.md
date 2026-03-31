@@ -165,7 +165,7 @@ Auto-Clone automatically syncs the latest code from GitHub to your Vercel deploy
 ### Setup Instructions
 
 1. **GitHub Integration** ✅ Already configured
-   - Repository: `github.com/thealphakenya/qmoi-enhanced`
+   - Repository: `github.com/thestablekenya/qmoi-enhanced`
    - Branch: `autosync-backup-20250926-232440`
    - Webhook: Automatically configured
 
@@ -311,7 +311,7 @@ curl -X POST https://qmoi-enhanced.vercel.app/api/qvillage/models \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "model_id": "thealphakenya/qmoi-enhanced-model",
+    "model_id": "thestablekenya/qmoi-enhanced-model",
     "version": "1.0.0",
     "framework": "pytorch",
     "task": "text-classification"
@@ -346,7 +346,7 @@ QVillage can automatically:
 ```
 ┌─────────────────────────────────────────────────────┐
 │         GitHub (autosync-backup-...)               │
-│  thealphakenya/qmoi-enhanced                        │
+│  thestablekenya/qmoi-enhanced                        │
 └────────────────────┬────────────────────────────────┘
                      │ (Webhook on push)
                      ▼

@@ -1,6 +1,6 @@
 
 #!/usr/bin/env bash
-# Simple helper to run qmoi_control_server.py as a long-running service (prod/demo)
+# Simple helper to run qmoi_control_server.py as a long-running service (prod/production)
 PYTHONBIN=${PYTHONBIN:-python3}
 WORKDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$WORKDIR"

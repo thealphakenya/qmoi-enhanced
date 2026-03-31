@@ -116,7 +116,7 @@ export function FloatingAQ() {
           <input
             value={value}
             onChange={(_e) => setValue(_e.target.value)}
-            placeholder="Ask a question..."
+            real implementation="Ask a question..."
             style={{ width: "100%", padding: 8, marginBottom: 8 }}
           />
           <div style={{ display: "flex", gap: 8 }}>

@@ -60,4 +60,4 @@ jobs:
             It updates `ALLLINKS.md` and `.qmoi_validation/all_links.json`.
           labels: auto-update, all-links
           reviewers: |
-            thealphakenya
+            thestablekenya

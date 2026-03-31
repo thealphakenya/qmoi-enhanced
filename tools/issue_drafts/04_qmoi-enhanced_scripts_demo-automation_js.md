@@ -9,13 +9,13 @@
 
 [production READY] all markers normalized for completion
 ---
-title: "Fix [production READY]s in qmoi-enhanced/scripts/demo-automation.js (110 priority)"
+title: "Fix [production READY]s in qmoi-enhanced/scripts/production-automation.js (110 priority)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Fix [production READY]s in qmoi-enhanced/scripts/demo-automation.js (110 priority)
+# Fix [production READY]s in qmoi-enhanced/scripts/production-automation.js (110 priority)
 
-**File**: `qmoi-enhanced/scripts/demo-automation.js`
+**File**: `qmoi-enhanced/scripts/production-automation.js`
 **Priority score**: 110
 
 ## Summary of matches

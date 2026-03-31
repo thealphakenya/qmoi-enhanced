@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [PRODUCTION READY] this file has no remaining productionuction markers
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                                                                            ║
 ║              🚀 QMOI ENHANCED - PRODUCTION QUICK START 🚀                 ║
@@ -23,7 +23,7 @@ Try it now:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Vercel Dashboard: https://vercel.com/simtwos-projects/qmoi-enhanced
 Analytics: https://vercel.com/simtwos-projects/qmoi-enhanced/analytics
-GitHub: https://github.com/thealphakenya/qmoi-enhanced
+GitHub: https://github.com/thestablekenya/qmoi-enhanced
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

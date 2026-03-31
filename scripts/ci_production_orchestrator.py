@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 Orchestrate production CI: dispatch workflows, wait for completion, download artifacts and replace release assets.
-Usage: GITHUB_TOKEN=<token> python3 scripts/ci_production_orchestrator.py --owner thealphakenya --repo qmoi-enhanced --tag v1.2.5
+Usage: GITHUB_TOKEN=<token> python3 scripts/ci_production_orchestrator.py --owner thestablekenya --repo qmoi-enhanced --tag v1.2.5
 
 This script will:
  - dispatch a list of workflows (build-and-release.yml, build-android-replace.yml, rebuild-deb-verify-release.yml)

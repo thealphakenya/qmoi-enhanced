@@ -213,13 +213,13 @@ python3 scripts/master_automation_executor.py --dry-run
 
 | Domain | Type | Status | Region Coverage | Endpoints | Fallback |
 |--------|------|--------|-----------------|-----------|----------|
-| alphaq.ai | AI Platform | ✅ 100% | 5/5 | 4 | None |
+| stableq.ai | AI Platform | ✅ 100% | 5/5 | 4 | None |
 | qmoi.ai | Main App | ✅ 100% | 5/5 | 2 | qmoi.com |
 | qvillage.com | Primary Hub | ✅ 100% | 5/5 | 4 | None |
-| q-stable.qmoi.ai | Models | ✅ 100% | 5/5 | 2 | stable.alphaq.ai |
+| q-stable.qmoi.ai | Models | ✅ 100% | 5/5 | 2 | stable.stableq.ai |
 | qcity.qmoi.ai | City Service | ✅ 100% | 5/5 | 2 | qcity.qvillage.com |
 | yap.qmoi.ai | Messaging | ✅ 100% | 5/5 | 2 | yap.qvillage.com |
-| qmoi-space.qmoi.ai | Space Platform | ✅ 100% | 5/5 | 2 | space.alphaq.ai |
+| qmoi-space.qmoi.ai | Space Platform | ✅ 100% | 5/5 | 2 | space.stableq.ai |
 | qshare.qvillage.com | File Sharing | ✅ 100% | 5/5 | 2 | None |
 | qstore.qvillage.com | App Store | ✅ 100% | 5/5 | 2 | None |
 | qglobal.org | Global Fallback | ✅ 100% | 5/5 | 2 | None |
@@ -319,7 +319,7 @@ watch -n 1800 'cd /workspaces/qmoi-enhanced && python3 scripts/auto_readme_sync.
 
 3. **Comprehensive UI Endpoint Validation**
    - Per-domain endpoint verification
-   - Critical platform health checks: alphaq.ai, qvillage.com
+   - Critical platform health checks: stableq.ai, qvillage.com
    - Fallback domain validation support
 
 4. **Automated README Synchronization**

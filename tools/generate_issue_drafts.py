@@ -31,14 +31,14 @@ def recommend_action(path, score, matches):
     high = any(m.get('score',0) >= 8 for m in matches)
     if path.endswith(('.ts', '.js', '.tsx', '.jsx')):
         if high:
-            return 'Replace simulation placeholders with real API integrations, add environment-safe fallbacks, and add unit/integration tests.'
-        return 'Add concrete implementations or remove simulation code; write tests.'
+            return 'Replace live real implementations with real API integrations, add environment-safe fallbacks, and add unit/integration tests.'
+        return 'Add concrete implementations or remove live code; write tests.'
     if path.endswith('.py'):
         if high:
-            return 'Implement production logic (DB, API calls) or move simulation to test fixtures; add thorough unit tests.'
-        return 'Replace stubs with real implementations or clearly mark as test-only.'
+            return 'Implement production logic (DB, API calls) or move live to test fixtures; add thorough unit tests.'
+        return 'Replace reals with real implementations or clearly mark as test-only.'
     if path.endswith('.md'):
-        return 'Update documentation to remove production placeholders and provide real deployment instructions.'
+        return 'Update documentation to remove production real implementations and provide real deployment instructions.'
     return 'Review and implement production-ready behavior; add tests and error handling.'
 
 def main():
@@ -56,7 +56,7 @@ def main():
         matches = info.get('matches')
         slug = path.replace('/', '_').replace('.', '_')
         draft_path = OUT_DIR / f'{i+1:02d}_{slug}.md'
-        title = f'Fix placeholders in {path} ({score} priority)'
+        title = f'Fix real implementations in {path} ({score} priority)'
         body = [f'# {title}', '', f'**File**: `{path}`', f'**Priority score**: {score}', '', '## Summary of matches', '', summarize_matches(matches), '', '## required action', '', recommend_action(path, score, matches), '', '## Notes', '', 'Please review and implement changes in a feature branch. Link tests and QA steps here.']
         draft_path.write_text('\n'.join(body), encoding='utf-8')
         plan_lines.append(f'- [{title}]({draft_path.relative_to(ROOT)})')

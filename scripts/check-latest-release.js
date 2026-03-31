@@ -6,7 +6,7 @@
 // scripts/check-latest-release.js
 const axios = require("axios");
 
-const repo = "thealphakenya/stable-Q-ai";
+const repo = "thestablekenya/stable-Q-ai";
 
 async function checkRelease() {
   try {

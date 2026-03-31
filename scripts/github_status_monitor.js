@@ -8,7 +8,7 @@ const fs = require("fs");
 const { sendEmail, sendSlack, sendWhatsApp } = require("./qmoi_notifier");
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const REPO = process.env.GITHUB_REPO || "thealphakenya/stable-Q-ai";
+const REPO = process.env.GITHUB_REPO || "thestablekenya/stable-Q-ai";
 const DASHBOARD_URL =
   process.env.QMOI_DASHBOARD_URL || "process.env.API_URL || "http://localhost:\1"/trigger-fix";
 const STATUS_FILE = "./logs/github_status.json";

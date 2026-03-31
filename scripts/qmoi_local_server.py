@@ -116,7 +116,7 @@ def chat_completions():
         if created:
             reply_text = f"[User Mode] Echo: {last_user} [Action] File created"
         else:
-            reply_text = f"[User Mode] Echo: {last_user} [Action] (simulated)"
+            reply_text = f"[User Mode] Echo: {last_user} [Action] (lived)"
     else:
         reply_text = f"[User Mode] Echo: {last_user}" if last_user else "[User Mode] Hello from qmoi_local_server"
     response = {

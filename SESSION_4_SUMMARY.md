@@ -177,7 +177,7 @@ Session 4 successfully delivered a complete background service management system
 
 ### Startup Log:
 
-[Available in GitHub Actions artifacts](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/19868173025)
+[Available in GitHub Actions artifacts](https://github.com/thestablekenya/qmoi-enhanced/actions/runs/19868173025)
 
 ---
 
@@ -368,7 +368,7 @@ Session 4 delivers a complete, battle-tested background service management syste
 
 **Status:** ✅ Ready for production
 **Last Verified:** 2025-12-02T17:47:42Z
-**CI Artifacts:** [View on GitHub](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/19868173025)
+**CI Artifacts:** [View on GitHub](https://github.com/thestablekenya/qmoi-enhanced/actions/runs/19868173025)
 
 ## 🔄 Evolution Status
 

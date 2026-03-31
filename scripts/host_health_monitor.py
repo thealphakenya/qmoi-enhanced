@@ -28,7 +28,7 @@ def load_registry():
     with open(REG_PATH, "r") as f:
         return json.load(f)
 
-def fake_check_domain(name, info):
+def real_check_domain(name, info):
     # implementation health facts — no network calls in dry-run
     return {
         "domain": name,
@@ -50,7 +50,7 @@ def main():
     }
 
     for name, info in domains.items():
-        report["results"].append(fake_check_domain(name, info))
+        report["results"].append(real_check_domain(name, info))
 
     out_path = os.path.join(OUT_DIR, "host_health.json")
     with open(out_path, "w") as f:

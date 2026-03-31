@@ -16,7 +16,7 @@ class GitHubFallback {
       process.env.GITHUB_TOKEN || process.env.GITHUB_ACCESS_TOKEN;
     this.githubUrl = process.env.GITHUB_URL || "https://api.github.com";
     this.githubRepo =
-      process.env.GITHUB_REPOSITORY || "alphaqmoi/qmoi-ai-system";
+      process.env.GITHUB_REPOSITORY || "stableqmoi/qmoi-ai-system";
     this.gitlabToken =
       process.env.GITLAB_TOKEN || process.env.GITLAB_ACCESS_TOKEN;
     this.gitlabUrl = process.env.GITLAB_URL || "https://gitlab.com";

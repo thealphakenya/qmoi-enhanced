@@ -16,7 +16,7 @@ FINAL unified script:
 #>
 
 param (
-    [string]$RepoPath = "D:\applications\Alpha-Q-ai",
+    [string]$RepoPath = "D:\applications\stable-Q-ai",
     [string]$Branch = "main",
     [int]$MaxFullPushRetries = 20,
     [int]$InitialDelaySeconds = 15,
@@ -349,7 +349,7 @@ if (Try-FullPush $MaxFullPushRetries $InitialDelaySeconds) {
                 git push origin $branchName
 
                 Log "✅ Fixes pushed successfully on branch $branchName" Green
-                Log "➡️ Create PR: https://github.com/thealphakenya/qmoi-enhanced/pull/new/$branchName" Green
+                Log "➡️ Create PR: https://github.com/thestablekenya/qmoi-enhanced/pull/new/$branchName" Green
             } else {
                 Log "✅ No dependency lockfile changes detected after audit fix." Green
             }

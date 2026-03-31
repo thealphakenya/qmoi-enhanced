@@ -487,7 +487,7 @@ bash scripts/add-github-secrets.sh
 **Option 2: Manual UI**
 
 ```
-https://github.com/thealphakenya/qmoi-enhanced/settings/secrets/actions
+https://github.com/thestablekenya/qmoi-enhanced/settings/secrets/actions
 Click "New repository secret" for each:
   Name: ANDROID_KEYSTORE_BASE64
   Value: (output from: bash scripts/setup-production-secrets.sh)
@@ -520,7 +520,7 @@ python -m http.server 8000
 # Open http://localhost:8000, install app
 
 # 6. Verify GitHub Release
-# Visit: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4
+# Visit: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4
 # Check all assets are present with correct sizes
 ```
 

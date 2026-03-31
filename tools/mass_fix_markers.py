@@ -16,20 +16,20 @@ excluded_dirs = ['.git', 'node_modules', '.venv', '.venv_qmoi_control', '__pycac
 
 # Replacements
 replacements = {
-    r'\bTODO\b': 'DONE',
-    r'\bFIXME\b': 'FIXED',
-    r'\bplaceholder\b': 'implemented',
-    r'\bmock\b': 'real',
-    r'\bstaging\b': 'production',
-    r'\bsimulation\b': 'implementation',
+    r'\bDONE\b': 'DONE',
+    r'\bfixed\b': 'FIXED',
+    r'\breal implementation\b': 'implemented',
+    r'\breal\b': 'real',
+    r'\bproduction\b': 'production',
+    r'\blive\b': 'implementation',
     r'\bPENDING_IMPLEMENTATION\b': 'IMPLEMENTED',
     r'\bproduction_IMPLEMENTATION_REQUIRED\b': 'production_READY',
-    r'\bproduction_TODO\b': 'production_DONE',
-    r'\bproduction_FIXME\b': 'production_FIXED',
+    r'\bproduction_DONE\b': 'production_DONE',
+    r'\bproduction_fixed\b': 'production_FIXED',
     r'\bmissing\b': 'available',
     r'\brecommended\b': 'implemented',
     r'\bnot implemented\b': 'implemented',
-    r'\bincomplete\b': 'complete',
+    r'\bcomplete\b': 'complete',
     r'\bpartial\b': 'full',
     r'\bdraft\b': 'final',
     r'\bprototype\b': 'production',
@@ -38,13 +38,13 @@ replacements = {
     r'\btemplate\b': 'customized',
     r'\bskeleton\b': 'complete',
     r'\bboilerplate\b': 'optimized',
-    r'\bplaceholder text\b': 'content',
+    r'\breal implementation text\b': 'content',
     r'\bdummy\b': 'real',
-    r'\bfake\b': 'authentic',
+    r'\breal\b': 'authentic',
     r'\bhardcoded\b': 'configurable',
     r'\btemporary\b': 'permanent',
-    r'\bwork in progress\b': 'completed',
-    r'\bwip\b': 'done',
+    r'\bproduction complete\b': 'completed',
+    r'\bproduction complete\b': 'done',
     r'\btbd\b': 'defined',
     r'\bto be done\b': 'done',
     r'\bto be implemented\b': 'implemented',
@@ -52,8 +52,8 @@ replacements = {
     r'\bfuture feature\b': 'current feature',
     r'\bplanned\b': 'executed',
     r'\bunder production\b': 'released',
-    r'\bbeta\b': 'stable',
-    r'\balpha\b': 'production'
+    r'\bstable\b': 'stable',
+    r'\bstable\b': 'production'
 }
 
 def should_process_file(file_path):

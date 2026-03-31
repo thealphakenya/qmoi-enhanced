@@ -65,7 +65,7 @@ This document outlines best practices and actionable steps for preparing QMOI fo
 
 ---
 
-### See also: QMOI-PLUGIN-SYSTEM.md, AUTOOPTIMIZEALPHAQMOIENGINE.md, QMOIAVATAR.md, QMOI-ENHANCED-README.md
+### See also: QMOI-PLUGIN-SYSTEM.md, AUTOOPTIMIZEstableQMOIENGINE.md, QMOIAVATAR.md, QMOI-ENHANCED-README.md
 
 <!-- QMOI_VALIDATION_START -->
 

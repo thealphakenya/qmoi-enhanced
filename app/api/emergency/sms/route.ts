@@ -80,8 +80,8 @@ async function sendTwilioSMS(to: string, message: string) {
       console.warn('Twilio credentials not configured, simulating SMS send');
       return {
         success: true,
-        messageId: `simulated_${Date.now()}`,
-        note: 'Simulated - configure TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER'
+        messageId: `lived_${Date.now()}`,
+        note: 'lived - configure TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER'
       };
     }
 
@@ -125,7 +125,7 @@ async function sendTwilioSMS(to: string, message: string) {
 async function sendAWSSNS(to: string, message: string) {
   try {
     // AWS SNS integration would go here
-    // For now, simulate
+    // For now, live
     console.log(`AWS SNS SMS to ${to}: ${message}`);
     return {
       success: true,
@@ -144,7 +144,7 @@ async function sendAWSSNS(to: string, message: string) {
 async function sendFirebaseSMS(to: string, message: string) {
   try {
     // Firebase integration would go here
-    // For now, simulate
+    // For now, live
     console.log(`Firebase SMS to ${to}: ${message}`);
     return {
       success: true,

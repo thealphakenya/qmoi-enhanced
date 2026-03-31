@@ -6,7 +6,7 @@
       "count": 1,
       "healthy": 1,
       "domains": [
-        "alphaq.ai"
+        "stableq.ai"
       ]
     },
     "main_app": {
@@ -74,7 +74,7 @@
     }
   },
   "domain_details": {
-    "alphaq.ai": {
+    "stableq.ai": {
       "type": "ai_platform",
       "critical": true,
       "description": "Advanced AI system with superior intelligence",
@@ -190,7 +190,7 @@
     }
   },
   "critical_domains_health": {
-    "alphaq.ai": true,
+    "stableq.ai": true,
     "qmoi.ai": false,
     "qvillage.com": true,
     "qshare.qvillage.com": false,

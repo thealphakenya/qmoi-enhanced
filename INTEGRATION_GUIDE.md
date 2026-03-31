@@ -149,12 +149,12 @@ The frontend adapters expect these 7 routes. Implement them in your backend:
 }
 ```
 
-#### **POST /api/emergency** — SOS/Lockdown/Wipe/Alert
+#### **POST /api/emergency** — SOS/Lockdown/production completee/Alert
 
 ```typescript
 // Input
 {
-  action: 'sos' | 'lockdown' | 'wipe' | 'alert';
+  action: 'sos' | 'lockdown' | 'production completee' | 'alert';
   prodiceId?: string;    // optional: target prodice
   reason?: string;      // optional: action reason
   metadata?: object;    // optional: additional data
@@ -335,7 +335,7 @@ See `BACKEND_API_TEMPLATES.md` for complete code examples in:
 ```bash
 1. Open https://qvillage.com/qcity-enterprise.html
 2. Find EmergencyPanel component
-3. Click SOS/Lockdown/Wipe/Alert button
+3. Click SOS/Lockdown/production completee/Alert button
 4. Verify modal confirms action
 5. Check Network tab for POST /api/emergency request
 ```

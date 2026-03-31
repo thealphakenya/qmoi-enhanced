@@ -20,7 +20,7 @@ export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
   if (
     user !== "Leah Chebet" &&
     user !== "Victor Kwemoi" &&
-    user !== "thealphakenya@gmail.com"
+    user !== "thestablekenya@gmail.com"
   )
     return null;
   return (

@@ -321,7 +321,7 @@ def get_about_html() -> str:
         <h3>Get Started</h3>
         <p>
             👉 <a href="https://qvillage.ai" target="_blank">Full QVillage Site</a> — All features  
-            🔗 <a href="https://github.com/alphaqmoi/qvillage" target="_blank">GitHub Repo</a> — Source code  
+            🔗 <a href="https://github.com/stableqmoi/qvillage" target="_blank">GitHub Repo</a> — Source code  
             💬 <a href="https://discord.gg/qvillage" target="_blank">Discord Community</a> — Chat with us
         </p>
         
@@ -353,7 +353,7 @@ async def create_interface():
             text-align: center;
         }
         """
-    ) as demo:
+    ) as production:
         gr.Markdown("# 🏘️ QVillage — AI Research Hub", elem_classes="header")
         gr.Markdown(
             "**Free access to daily papers, search knowledge base, and community insights.**  "
@@ -385,7 +385,7 @@ async def create_interface():
                     inputs=tag_filter,
                     outputs=papers_output
                 )
-                demo.load(
+                production.load(
                     load_papers_sync,
                     inputs=tag_filter,
                     outputs=papers_output
@@ -439,8 +439,8 @@ async def create_interface():
                 gr.Markdown("---")
                 stats_output.value = asyncio.run(get_community_stats())
                 
-                demo.load(load_trending_sync, outputs=trending_output)
-                demo.load(load_stats_sync, outputs=stats_output)
+                production.load(load_trending_sync, outputs=trending_output)
+                production.load(load_stats_sync, outputs=stats_output)
             
             # ==================== Tab 4: Premium Features ====================
             with gr.Tab("✨ Premium Features"):
@@ -476,15 +476,15 @@ async def create_interface():
             with gr.Tab("ℹ️ About"):
                 gr.HTML(get_about_html())
     
-    return demo
+    return production
 
 # ============================================================================
 # Main
 # ============================================================================
 
 if __name__ == "__main__":
-    demo = asyncio.run(create_interface())
-    demo.launch(
+    production = asyncio.run(create_interface())
+    production.launch(
         share=False,
         server_name="0.0.0.0",
         server_port=7860,

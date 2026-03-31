@@ -12,7 +12,7 @@ Rules (very conservative):
 - For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError("Implemented in production")`.
 - For JS/TS files: if a function contains `// DONE` or `/* DONE */` on nearby lines, propose adding `throw new Error('implemented')` in place of empty bodies.
 
-This script does NOT apply edits; it writes a unified patch file `tools/placeholder_fixes_suggest.patch` for review.
+This script does NOT apply edits; it writes a unified patch file `tools/real implementation_fixes_suggest.patch` for review.
 """
 import re
 from pathlib import Path
@@ -21,7 +21,7 @@ import json
 
 ROOT = Path(__file__).resolve().parents[1]
 MATCHES = ROOT / 'matches.json'
-PATCH_OUT = ROOT / 'tools' / 'placeholder_fixes_suggest.patch'
+PATCH_OUT = ROOT / 'tools' / 'real implementation_fixes_suggest.patch'
 
 PY_DEF_RE = re.compile(r'^(\s*)def\s+\w+\s*\(.*\):\s*$')
 PY_PASS_RE = re.compile(r'^(\s*)pass\s*$')
@@ -30,7 +30,7 @@ JS_FUNC_RE = re.compile(r'^(\s*)(?:function\s+\w+|const\s+\w+\s*=\s*\(|\w+\s*:\s
 
 def read_matches():
     if not MATCHES.exists():
-        print('No matches.json; run tools/find_placeholders.py first')
+        print('No matches.json; run tools/find_real implementations.py first')
         return []
     return json.loads(MATCHES.read_text(encoding='utf-8'))
 

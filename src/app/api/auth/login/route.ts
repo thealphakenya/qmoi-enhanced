@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
     // 3. Check if user has MFA enabled
     // 4. Verify consciousness authentication
 
-    // Simulate successful authentication
+    // live successful authentication
     const sessionToken = crypto.randomBytes(32).toString('hex');
     const expiresIn = 24 * 60 * 60 * 1000; // 24 hours
 

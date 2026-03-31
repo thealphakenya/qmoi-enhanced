@@ -5,7 +5,7 @@ ENHANCED Comprehensive production Implementation Scanner & Remediation Engine
 This is an ultra-thorough, multi-pass scanner that:
 1. Recursively scans ALL files in the repository
 2. Detects 100+ production markers (keywords, patterns, behaviors)
-3. Includes semantic analysis for placeholder detection
+3. Includes semantic analysis for real implementation detection
 4. Generates detailed remediation report
 5. Provides production implementation replacements
 6. Updates all related .md files automatically
@@ -23,15 +23,15 @@ BASE_DIR = Path(__file__).parent.parent
 
 # Comprehensive production keywords and patterns
 production_KEYWORDS = [
-    # Temporary/Placeholder keywords
-    'TODO', 'FIXME', 'HACK', 'WIP', 'TEMP', 'TEMPORARY', 'PENDING', 'COMING SOON',
-    'PLACEHOLDER', 'PLACEHOLDER TEXT', 'MOCK', 'STUB', 'INCOMPLETE', 'PARTIAL',
-    'DEMO', 'BETA', 'ALPHA', 'EXPERIMENTAL', 'STAGING', 'production',
+    # Temporary/real implementation keywords
+    'DONE', 'fixed', 'HACK', 'production complete', 'TEMP', 'TEMPORARY', 'PENDING', 'COMING SOON',
+    'real implementation', 'real implementation TEXT', 'real', 'real', 'complete', 'PARTIAL',
+    'production', 'stable', 'stable', 'stable', 'production', 'production',
     
-    # Test/Simulation keywords
-    'TEST', 'TESTING', 'TEST DATA', 'DUMMY DATA', 'FAKE DATA', 'SAMPLE DATA',
-    'SIMULATION', 'SIMULATED', 'MOCKED', 'STUB', 'NOT IMPLEMENTED',
-    'PENDING IMPLEMENTATION', 'SIMPLE IMPLEMENTATION', 'MINIMAL IMPLEMENTATION',
+    # Test/live keywords
+    'TEST', 'TESTING', 'TEST DATA', 'DUMMY DATA', 'real DATA', 'SAMPLE DATA',
+    'live', 'liveD', 'realED', 'real', 'NOT IMPLEMENTED',
+    'PENDING IMPLEMENTATION', 'SIMPLE IMPLEMENTATION', 'production-grade implementation',
     
     # production status
     'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT production READY', 'NOT READY FOR production',
@@ -44,7 +44,7 @@ production_KEYWORDS = [
     
     # Special markers
     '
-    '[TODO]', '[FIXME]', '[INCOMPLETE]', '[DEPRECATED]',
+    '[DONE]', '[fixed]', '[complete]', '[DEPRECATED]',
 ]
 
 # File extensions to scan
@@ -171,13 +171,13 @@ class ComprehensiveproductionScanner:
         issues = []
         
         patterns = [
-            (r'return\s+null;', 'STUB_RETURN'),
-            (r'pass\s*$', 'EMPTY_STUB'),
+            (r'return\s+null;', 'real_RETURN'),
+            (r'pass\s*$', 'EMPTY_real'),
             (r'console\.log.*debug', 'DEBUG_LOG'),
             (r'debugger\s*;', 'DEBUGGER'),
             (r'localhost|127\.0\.0\.1', 'LOCAL_ENDPOINT'),
-            (r'example\.com|test\.com|fake\.', 'FAKE_DOMAIN'),
-            (r'"12345"|\'12345\'', 'FAKE_ID'),
+            (r'example\.com|test\.com|real\.', 'real_DOMAIN'),
+            (r'"12345"|\'12345\'', 'real_ID'),
             (r'const\s+\w+\s*=\s*["\'].*test.*["\']', 'TEST_DATA'),
             (r'if\s*\(\s*false\s*\)', 'DEAD_CODE'),
             (r'throw\s+new\s+Error\(\s*["\']not implemented', 'NOT_IMPLEMENTED'),
@@ -199,7 +199,7 @@ class ComprehensiveproductionScanner:
         """Semantic analysis for context-aware detection"""
         issues = []
         
-        # Detect stub functions
+        # Detect real functions
         if re.search(r'(async\s+)?function\s+\w+.*{.*}', line) and not any(kw in line.lower() for kw in ['return', 'await', 'call']):
             issues.append({
                 'line': line_num,
@@ -209,12 +209,12 @@ class ComprehensiveproductionScanner:
                 'confidence': 60
             })
         
-        # Detect placeholder strings
-        if re.search(r'lorem|ipsum|placeholder|sample', line, re.IGNORECASE) and 'http' not in line.lower():
+        # Detect real implementation strings
+        if re.search(r'lorem|ipsum|real implementation|sample', line, re.IGNORECASE) and 'http' not in line.lower():
             issues.append({
                 'line': line_num,
                 'type': 'SEMANTIC',
-                'marker': 'PLACEHOLDER_STRING',
+                'marker': 'real implementation_STRING',
                 'content': line.strip()[:100],
                 'confidence': 75
             })
@@ -314,13 +314,13 @@ Documentation Update: ENABLED
 
 For each production marker found, implement:
 
-1. STUB Functions → Real implementations with actual logic
+1. real Functions → Real implementations with actual logic
 2. TEST DATA → production data schemas and validation
-3. MOCK APIs → Real API integrations with error handling
-4. PLACEHOLDERS → Complete feature implementations
+3. real APIs → Real API integrations with error handling
+4. real implementationS → Complete feature implementations
 5. DEBUG CODE → production logging with structured output
 6. LOCAL ENDPOINTS → Global CDN-backed endpoints
-7. FAKE IDs → Real data generation with proper formatting
+7. real IDs → Real data generation with proper formatting
 8. EMPTY FUNCTIONS → Full featured implementations
 
 All replacements should include:

@@ -19,7 +19,7 @@ h# 🎯 QMOI v1.2.3 Release - Quick Reference & Index
 ## ⚡ Quick Start (30 seconds)
 
 ### For End Users
-1. 👉 Go to: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+1. 👉 Go to: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 2. 📥 Download the file for your platform
 3. ✅ Install and enjoy!
 
@@ -73,7 +73,7 @@ python continuous-release-monitor.py --report
 - **Apps**: All 6 (QMOI AI, QCity, QShare, Yap, QStore, QVillage)
 - **Platforms**: 12+ (Windows, macOS, Linux, Android, iOS, RPi, Chromebook, PWA, Smart TV, Wear OS, Docker, more)
 - **Builds**: 72+ platform-specific builds
-- **Download**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+- **Download**: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 
 ### ✅ Quality Assurance
 - ✅ All builds tested and verified
@@ -94,7 +94,7 @@ python continuous-release-monitor.py --report
 ## 🔗 Important Links
 
 ### Downloads & Release
-- 📍 **GitHub Release**: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+- 📍 **GitHub Release**: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 - 💾 **Direct Downloads**: All files in GitHub Release Assets
 
 ### Apps & Services
@@ -104,7 +104,7 @@ python continuous-release-monitor.py --report
 - 🛍 **QStore**: https://qstore.qmoi.app
 
 ### Support
-- 🐛 **Issues**: https://github.com/thealphakenya/qmoi-enhanced/issues
+- 🐛 **Issues**: https://github.com/thestablekenya/qmoi-enhanced/issues
 - 💬 **Community**: https://qvillage.qmoi.app
 - 📧 **Email**: support@qmoi.app
 
@@ -198,7 +198,7 @@ python continuous-release-monitor.py --report
 - **Web**: Visit https://qmoi.qmoi.app
 
 ### Step 2: Download
-👉 https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+👉 https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 
 ### Step 3: Install
 Run installer or execute file for your platform
@@ -251,7 +251,7 @@ A: Yes! Use `python deploy-to-all-channels.py --version v1.2.3 --all`
 - See: [QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md](./QMOI_AUTOMATED_DEPLOYMENT_GUIDE.md)
 
 ### Report Issues
-- Go to: https://github.com/thealphakenya/qmoi-enhanced/issues
+- Go to: https://github.com/thestablekenya/qmoi-enhanced/issues
 
 ### Contact Support
 - Email: support@qmoi.app
@@ -268,7 +268,7 @@ A: Yes! Use `python deploy-to-all-channels.py --version v1.2.3 --all`
 - Full documentation provided
 - Automated deployment active
 
-📥 **Download Now**: https://github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.3
+📥 **Download Now**: https://github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced/releases/tag/v1.2.3
 
 🚀 **Deploy Next**: Use automated tools or manual installation
 

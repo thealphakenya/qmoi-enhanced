@@ -3928,7 +3928,7 @@
     {
       "type": "syntax",
       "category": "typescript",
-      "message": "src/components/q-city/AvatarSelector.tsx(406,51): error TS2339: Property 'demoUrl' does not exist on type 'AvatarConfig'.",
+      "message": "src/components/q-city/AvatarSelector.tsx(406,51): error TS2339: Property 'productionUrl' does not exist on type 'AvatarConfig'.",
       "severity": "CRITICAL",
       "timestamp": "2026-03-12T23:15:31.214Z"
     },
@@ -6567,7 +6567,7 @@
     {
       "type": "type",
       "category": "typescript-ts2339",
-      "message": "src/components/q-city/AvatarSelector.tsx(406,51): error TS2339: Property 'demoUrl' does not exist on type 'AvatarConfig'.",
+      "message": "src/components/q-city/AvatarSelector.tsx(406,51): error TS2339: Property 'productionUrl' does not exist on type 'AvatarConfig'.",
       "severity": "CRITICAL",
       "timestamp": "2026-03-12T23:15:38.076Z"
     },
@@ -13399,7 +13399,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in ALLVERSIONS.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+      "message": "Broken link in ALLVERSIONS.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.429Z"
     },
@@ -17991,7 +17991,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in _archive_qmoi-enhanced/docs/FEATURESINDEX.md: qmoi-enhanced/ALPHAQMOIENGINE.md",
+      "message": "Broken link in _archive_qmoi-enhanced/docs/FEATURESINDEX.md: qmoi-enhanced/stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.480Z"
     },
@@ -18229,7 +18229,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in docs/FEATURESINDEX.md: ALPHAQMOIENGINE.md",
+      "message": "Broken link in docs/FEATURESINDEX.md: stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.481Z"
     },
@@ -20154,7 +20154,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.631Z"
     },
@@ -20651,7 +20651,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+      "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.632Z"
     },
@@ -29821,7 +29821,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+      "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.658Z"
     },
@@ -39040,7 +39040,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #demo",
+      "message": "Broken link in link_report.md: #production",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.667Z"
     },
@@ -39845,7 +39845,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.669Z"
     },
@@ -40342,7 +40342,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+      "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.669Z"
     },
@@ -49512,7 +49512,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+      "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.679Z"
     },
@@ -58731,7 +58731,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #demo",
+      "message": "Broken link in link_report.md: #production",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.690Z"
     },
@@ -59536,7 +59536,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.691Z"
     },
@@ -60033,7 +60033,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+      "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.692Z"
     },
@@ -69203,7 +69203,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+      "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.702Z"
     },
@@ -78422,7 +78422,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #demo",
+      "message": "Broken link in link_report.md: #production",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.710Z"
     },
@@ -79227,7 +79227,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.712Z"
     },
@@ -79724,7 +79724,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+      "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.712Z"
     },
@@ -88894,7 +88894,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+      "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.725Z"
     },
@@ -98113,7 +98113,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #demo",
+      "message": "Broken link in link_report.md: #production",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.733Z"
     },
@@ -98918,7 +98918,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.735Z"
     },
@@ -99415,7 +99415,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+      "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.735Z"
     },
@@ -108585,7 +108585,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+      "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.745Z"
     },
@@ -117804,7 +117804,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #demo",
+      "message": "Broken link in link_report.md: #production",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.757Z"
     },
@@ -118686,7 +118686,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in tools/remediation_plan.md: tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md",
+      "message": "Broken link in tools/remediation_plan.md: tools/issue_drafts/04_qmoi-enhanced_scripts_production-automation_js.md",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:17:02.562Z"
     },
@@ -128867,7 +128867,7 @@
       {
         "type": "syntax",
         "category": "typescript",
-        "message": "src/components/q-city/AvatarSelector.tsx(406,51): error TS2339: Property 'demoUrl' does not exist on type 'AvatarConfig'.",
+        "message": "src/components/q-city/AvatarSelector.tsx(406,51): error TS2339: Property 'productionUrl' does not exist on type 'AvatarConfig'.",
         "severity": "CRITICAL",
         "timestamp": "2026-03-12T23:15:31.214Z"
       },
@@ -131508,7 +131508,7 @@
       {
         "type": "type",
         "category": "typescript-ts2339",
-        "message": "src/components/q-city/AvatarSelector.tsx(406,51): error TS2339: Property 'demoUrl' does not exist on type 'AvatarConfig'.",
+        "message": "src/components/q-city/AvatarSelector.tsx(406,51): error TS2339: Property 'productionUrl' does not exist on type 'AvatarConfig'.",
         "severity": "CRITICAL",
         "timestamp": "2026-03-12T23:15:38.076Z"
       },
@@ -138352,7 +138352,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in ALLVERSIONS.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+        "message": "Broken link in ALLVERSIONS.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.429Z"
       },
@@ -142944,7 +142944,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in _archive_qmoi-enhanced/docs/FEATURESINDEX.md: qmoi-enhanced/ALPHAQMOIENGINE.md",
+        "message": "Broken link in _archive_qmoi-enhanced/docs/FEATURESINDEX.md: qmoi-enhanced/stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.480Z"
       },
@@ -143182,7 +143182,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in docs/FEATURESINDEX.md: ALPHAQMOIENGINE.md",
+        "message": "Broken link in docs/FEATURESINDEX.md: stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.481Z"
       },
@@ -145107,7 +145107,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.631Z"
       },
@@ -145604,7 +145604,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+        "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.632Z"
       },
@@ -154774,7 +154774,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+        "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.658Z"
       },
@@ -163993,7 +163993,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #demo",
+        "message": "Broken link in link_report.md: #production",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.667Z"
       },
@@ -164798,7 +164798,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.669Z"
       },
@@ -165295,7 +165295,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+        "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.669Z"
       },
@@ -174465,7 +174465,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+        "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.679Z"
       },
@@ -183684,7 +183684,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #demo",
+        "message": "Broken link in link_report.md: #production",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.690Z"
       },
@@ -184489,7 +184489,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.691Z"
       },
@@ -184986,7 +184986,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+        "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.692Z"
       },
@@ -194156,7 +194156,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+        "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.702Z"
       },
@@ -203375,7 +203375,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #demo",
+        "message": "Broken link in link_report.md: #production",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.710Z"
       },
@@ -204180,7 +204180,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.712Z"
       },
@@ -204677,7 +204677,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+        "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.712Z"
       },
@@ -213847,7 +213847,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+        "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.725Z"
       },
@@ -223066,7 +223066,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #demo",
+        "message": "Broken link in link_report.md: #production",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.733Z"
       },
@@ -223871,7 +223871,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-alpha__README.md.json",
+        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/pwa_apps__q-stable__README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.735Z"
       },
@@ -224368,7 +224368,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+        "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.735Z"
       },
@@ -233538,7 +233538,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: ../ALPHAQMOIENGINE.md",
+        "message": "Broken link in link_report.md: ../stableQMOIENGINE.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.745Z"
       },
@@ -242757,7 +242757,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #demo",
+        "message": "Broken link in link_report.md: #production",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.757Z"
       },
@@ -243639,7 +243639,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in tools/remediation_plan.md: tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md",
+        "message": "Broken link in tools/remediation_plan.md: tools/issue_drafts/04_qmoi-enhanced_scripts_production-automation_js.md",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:17:02.562Z"
       },

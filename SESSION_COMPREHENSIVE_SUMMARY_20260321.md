@@ -83,7 +83,7 @@ Enhance all links and domains throughout QMOI ecosystem to ensure they work glob
 ```
 ✅ HEALTHY (4/13):
    - qvillage.com (Primary hub) - 92ms response
-   - alphaq.ai (AI platform) - 86ms response
+   - stableq.ai (AI platform) - 86ms response
    - qvillage.net (Fallback) - 671ms response
    - qglobal.org (Fallback) - 125ms response
 
@@ -117,7 +117,7 @@ All failing domains have working fallback chains:
 - qshare.qvillage.com → qshare.qvillage.com ✅
 - qstore.qvillage.com → qstore.qvillage.com ✅
 - qcity.qmoi.ai → qcity.qvillage.com ✅
-- q-stable.qmoi.ai → stable.alphaq.ai ✅
+- q-stable.qmoi.ai → stable.stableq.ai ✅
 
 ---
 

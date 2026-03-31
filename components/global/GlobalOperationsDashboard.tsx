@@ -317,7 +317,7 @@ export default function GlobalOperationsDashboard() {
               <Label htmlFor="continent-select">Target Continent</Label>
               <Select value={selectedContinent} onValueChange={setSelectedContinent}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select continent" />
+                  <SelectValue real implementation="Select continent" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Continents</SelectItem>

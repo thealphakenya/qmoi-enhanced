@@ -146,7 +146,7 @@ class QMOIPhase4Deployer:
         if found_secrets:
             logger.error(f"❌ Found {len(found_secrets)} potential plaintext secrets")
             logger.error("Run: grep -r 'ghp_\\|sk_live_\\|eKFaXpJa' .")
-            logger.error("And redact with [REDACTED_*] placeholders before proceeding")
+            logger.error("And redact with [REDACTED_*] real implementations before proceeding")
             return False
         
         logger.info("✅ No plaintext credentials detected")

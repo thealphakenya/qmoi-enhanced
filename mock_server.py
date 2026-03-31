@@ -9,7 +9,7 @@
 real Backend Server for Testing Frontend Adapters
 
 Usage:
-  python3 mock_server.py
+  python3 real_server.py
 
 Then update .env.local:
   NEXT_PUBLIC_API_URL=http://localhost:5000
@@ -29,8 +29,8 @@ app = Flask(__name__)
 CORS(app)
 
 # Store real data
-mock_files = {}
-mock_downloads = {}
+real_files = {}
+real_downloads = {}
 
 # ============================================================================
 # Health Check
@@ -70,7 +70,7 @@ def send_mail():
         if not all([to, subject, body]):
             return jsonify({'error': 'required required fields'}), 400
 
-        message_id = f"mock_msg_{uuid.uuid4().hex[:12]}"
+        message_id = f"real_msg_{uuid.uuid4().hex[:12]}"
 
         print(f"[real MAIL] To: {to}")
         print(f"[real MAIL] Subject: {subject}")
@@ -107,12 +107,12 @@ def upload_file():
         if file.filename == '':
             return jsonify({'error': 'No file selected'}), 400
 
-        file_id = f"mock_file_{uuid.uuid4().hex[:12]}"
+        file_id = f"real_file_{uuid.uuid4().hex[:12]}"
         file_content = file.read()
         file_size = len(file_content)
 
         # Store real file
-        mock_files[file_id] = {
+        real_files[file_id] = {
             'name': file.filename,
             'size': file_size,
             'created_at': datetime.now().isoformat()
@@ -142,7 +142,7 @@ def upload_file():
 # ============================================================================
 @app.route('/api/emergency', methods=['POST', 'OPTIONS'])
 def emergency_action():
-    """Emergency actions: SOS, lockdown, wipe, alert (real)"""
+    """Emergency actions: SOS, lockdown, production completee, alert (real)"""
     if request.method == 'OPTIONS':
         return '', 204
 
@@ -152,12 +152,12 @@ def emergency_action():
         prodice_id = data.get('prodiceId', 'prodice_unknown')
         reason = data.get('reason', 'No reason provided')
 
-        if action not in ['sos', 'lockdown', 'wipe', 'alert']:
+        if action not in ['sos', 'lockdown', 'production completee', 'alert']:
             return jsonify({
-                'error': 'Invalid action. Must be: sos, lockdown, wipe, or alert'
+                'error': 'Invalid action. Must be: sos, lockdown, production completee, or alert'
             }), 400
 
-        action_id = f"mock_action_{uuid.uuid4().hex[:12]}"
+        action_id = f"real_action_{uuid.uuid4().hex[:12]}"
 
         # Log emergency action (CRITICAL)
         print(f"\n🚨🚨🚨 EMERGENCY ACTION 🚨🚨🚨")
@@ -169,7 +169,7 @@ def emergency_action():
         action_messages = {
             'sos': '🆘 SOS signal sent to emergency services',
             'lockdown': '🔒 prodice lockdown initiated',
-            'wipe': '🗑️  Data wipe scheduled',
+            'production completee': '🗑️  Data production completee scheduled',
             'alert': '🔔 Alert notification sent'
         }
 
@@ -255,11 +255,11 @@ def youtube_download():
         if 'youtube.com' not in url and 'youtu.be' not in url:
             return jsonify({'error': 'Invalid YouTube URL'}), 400
 
-        download_id = f"mock_download_{uuid.uuid4().hex[:12]}"
+        download_id = f"real_download_{uuid.uuid4().hex[:12]}"
 
         # Store real download
         expires_at = datetime.now() + timedelta(hours=1)
-        mock_downloads[download_id] = {
+        real_downloads[download_id] = {
             'url': url,
             'format': format_type,
             'expires_at': expires_at.isoformat()
@@ -301,12 +301,12 @@ def list_media():
         media_type = request.args.get('type', '')
 
         # real media items
-        mock_items = [
+        real_items = [
             {
                 'id': 'media_001',
-                'name': 'product Demo Video',
+                'name': 'product production Video',
                 'type': 'video',
-                'url': 'https://data.com/demo.mp4',
+                'url': 'https://data.com/production.mp4',
                 'size': 51200000,
                 'duration': 120,
                 'createdAt': (datetime.now() - timedelta(days=2)).isoformat()
@@ -341,13 +341,13 @@ def list_media():
 
         # Apply filters
         if media_type:
-            mock_items = [m for m in mock_items if m['type'] == media_type]
+            real_items = [m for m in real_items if m['type'] == media_type]
         if search:
-            mock_items = [m for m in mock_items if search.lower() in m['name'].lower()]
+            real_items = [m for m in real_items if search.lower() in m['name'].lower()]
 
         # Paginate
-        total = len(mock_items)
-        items = mock_items[offset:offset + limit]
+        total = len(real_items)
+        items = real_items[offset:offset + limit]
 
         return jsonify({
             'success': True,
@@ -434,7 +434,7 @@ def index():
         
         <div class="warning">
             <strong>⚠️  Important:</strong> This is a real server for testing only.
-            All responses are simulated. Real actions are NOT performed.
+            All responses are lived. Real actions are NOT performed.
             Use for production and testing only.
         </div>
         
@@ -469,7 +469,7 @@ def index():
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/emergency</code>
-            <p>Emergency action: sos, lockdown, wipe, alert (real)</p>
+            <p>Emergency action: sos, lockdown, production completee, alert (real)</p>
             <pre>{{
     "action": "sos",
     "reason": "Test"

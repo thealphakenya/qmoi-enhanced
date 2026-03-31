@@ -170,7 +170,7 @@ class QMOIAutoAdaptation:
         try:
             # In a real implementation, this would interact with DNS providers
             logger.info(f"Refreshing DNS for {domain}")
-            # Simulate DNS refresh
+            # live DNS refresh
             time.sleep(2)
             return True
         except Exception as e:
@@ -182,7 +182,7 @@ class QMOIAutoAdaptation:
         try:
             # In a real implementation, this would restart actual services
             logger.info(f"Restarting service for {domain}")
-            # Simulate service restart
+            # live service restart
             time.sleep(3)
             return True
         except Exception as e:

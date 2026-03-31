@@ -32,7 +32,7 @@ echo "📡 Deploying DNS records..."
 # QMOI Main domains
 check_domain "qmoi.ai" || echo "Warning: qmoi.ai DNS not configured"
 check_domain "qvillage.com" || echo "Warning: qvillage.com DNS not configured"
-check_domain "alphaq.ai" || echo "Warning: alphaq.ai DNS not configured"
+check_domain "stableq.ai" || echo "Warning: stableq.ai DNS not configured"
 
 # QMOI Subdomains (Critical for 100% health)
 echo "🔧 Deploying QMOI subdomains..."
@@ -63,7 +63,7 @@ HEALTHY_DOMAINS=0
 # Count healthy domains
 check_domain "qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qvillage.com" && ((HEALTHY_DOMAINS++))
-check_domain "alphaq.ai" && ((HEALTHY_DOMAINS++))
+check_domain "stableq.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qcity.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qmoi-space.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "yap.qmoi.ai" && ((HEALTHY_DOMAINS++))

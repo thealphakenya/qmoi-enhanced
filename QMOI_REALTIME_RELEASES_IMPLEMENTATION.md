@@ -259,10 +259,10 @@ git push origin v1.2.3
 #    ✅ Publishes notes
 
 # 4. Check progress at:
-# https://github.com/thealphakenya/qmoi-enhanced/actions
+# https://github.com/thestablekenya/qmoi-enhanced/actions
 
 # 5. View live release at:
-# https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.3
+# https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3
 ```
 
 **Time:** ~5-10 minutes
@@ -287,7 +287,7 @@ gh auth login  # Authenticate with GitHub
 # Release published successfully!
 
 # 4. View at:
-# https://github.com/thealphakenya/qmoi-enhanced/releases
+# https://github.com/thestablekenya/qmoi-enhanced/releases
 ```
 
 ---
@@ -333,22 +333,22 @@ All releases available at:
 1. **GitHub Releases** (Primary)
 
    ```
-   https://github.com/thealphakenya/qmoi-enhanced/releases
+   https://github.com/thestablekenya/qmoi-enhanced/releases
    ```
 
 2. **Direct Downloads**
 
    ```
-   https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe
-   https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.dmg
-   https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.apk
+   https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe
+   https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.dmg
+   https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.apk
    ... etc
    ```
 
 3. **Official Portal**
 
    ```
-   https://github.com/thealphakenya/qmoi-enhanced/releases
+   https://github.com/thestablekenya/qmoi-enhanced/releases
    ```
 
 4. **App Stores**
@@ -372,7 +372,7 @@ Every download includes SHA256 checksum for verification:
 
 ```bash
 # Download checksum file
-wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe.sha256
+wget https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai.exe.sha256
 
 # Verify download
 sha256sum -c qmoi-ai.exe.sha256
@@ -432,8 +432,8 @@ Master index with:
 ### Environment Variables
 
 ```bash
-# Repository (defaults to thealphakenya/qmoi-enhanced)
-export REPO="thealphakenya/qmoi-enhanced"
+# Repository (defaults to thestablekenya/qmoi-enhanced)
+export REPO="thestablekenya/qmoi-enhanced"
 
 # Enable verbose logging
 export VERBOSE="true"
@@ -627,7 +627,7 @@ See `GITHUB_RELEASES_REALTIME_GUIDE.md` for more troubleshooting.
 **Questions about the release system?**
 
 - 📚 **Documentation:** See `GITHUB_RELEASES_REALTIME_GUIDE.md`
-- 🐛 **Issues:** https://github.com/thealphakenya/qmoi-enhanced/issues
+- 🐛 **Issues:** https://github.com/thestablekenya/qmoi-enhanced/issues
 - 💬 **Community:** https://qvillage.qmoi.app
 - 📧 **Email:** support@qmoi.app
 

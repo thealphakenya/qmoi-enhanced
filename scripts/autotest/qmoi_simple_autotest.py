@@ -103,18 +103,18 @@ def main():
 
     # 2. Critical download links (add more as needed)
     urls = [
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk"
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg",
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb",
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage",
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk",
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa",
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg",
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
+        "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk"
     ]
     for url in urls:
         if not test_url(url):

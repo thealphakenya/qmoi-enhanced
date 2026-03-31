@@ -306,13 +306,13 @@ GIT: M ALLMDFILESREFS.md
 GIT: M ALLQMOIAIAPPSREALEASESVERSIONS.md
 GIT: M ALLQMOIAUTOEVOLVINGENVS.md
 GIT: M ALLSYSTEMSSTRUCTURESREFERENCES.md
-GIT: M ALPHAQMOIENGINE.md
+GIT: M stableQMOIENGINE.md
 GIT: M API.md
 GIT: M AU[PRODUCTION READY]WNLOAD.md
 GIT: M AUTOGIT.md
 GIT: M AUTOLINTREADME.md
 GIT: M AUTOMATION-SUMMARY.md
-GIT: M AUTOOPTIMIZEALPHAQMOIENGINE.md
+GIT: M AUTOOPTIMIZEstableQMOIENGINE.md
 GIT: M BUILDAPPSFORALLPLATFORMS.md
 GIT: M BUILD_COMPLETION_SUMMARY.md
 GIT: M CASHON.md
@@ -583,13 +583,13 @@ GIT: M qmoi-enhanced/ALLERRORSSTATSQMOI.md
 GIT: M qmoi-enhanced/ALLMDFILESREFS.md
 GIT: M qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md
 GIT: M qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md
-GIT: M qmoi-enhanced/ALPHAQMOIENGINE.md
+GIT: M qmoi-enhanced/stableQMOIENGINE.md
 GIT: M qmoi-enhanced/API.md
 GIT: M qmoi-enhanced/AU[PRODUCTION READY]WNLOAD.md
 GIT: M qmoi-enhanced/AUTOGIT.md
 GIT: M qmoi-enhanced/AUTOLINTREADME.md
 GIT: M qmoi-enhanced/AUTOMATION-SUMMARY.md
-GIT: M qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md
+GIT: M qmoi-enhanced/AUTOOPTIMIZEstableQMOIENGINE.md
 GIT: M qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md
 GIT: M qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md
 GIT: M qmoi-enhanced/CASHON.md
@@ -811,7 +811,7 @@ GIT: M qmoi-space/public/js/camera-integration.js
 GIT: M qmoi-space/public/js/file-handler.js
 GIT: M qmoi-space/public/js/voice-control.js
 GIT: M qmoiexe.py
-GIT: M scripts/demo-automation.js
+GIT: M scripts/production-automation.js
 GIT: M scripts/qmoi-cloud-env-manager.js
 GIT: M scripts/qmoi-cloud-registry.js
 GIT: M scripts/qmoi-environment-setup.js

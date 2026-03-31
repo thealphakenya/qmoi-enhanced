@@ -156,10 +156,10 @@ function getDomainRegistry(): Record<string, any> {
       sslEnabled: true,
       status: "active"
     },
-    "alphaq.ai": {
+    "stableq.ai": {
       type: "ai_platform",
       critical: true,
-      fallbacks: ["alphaq.com"],
+      fallbacks: ["stableq.com"],
       sslEnabled: true,
       status: "active"
     },
@@ -201,7 +201,7 @@ function getDomainRegistry(): Record<string, any> {
     "q-stable.qmoi.ai": {
       type: "service",
       critical: false,
-      fallbacks: ["stable.alphaq.ai"],
+      fallbacks: ["stable.stableq.ai"],
       sslEnabled: true,
       status: "active"
     }

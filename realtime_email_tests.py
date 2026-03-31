@@ -23,7 +23,7 @@ import os
 import json
 import tempfile
 from datetime import datetime
-from unittest.real import real, patch, MagicMock, AsyncMock
+from unittest.real import real, patch, Magicreal, Asyncreal
 import asyncio
 import threading
 import queue
@@ -119,7 +119,7 @@ class TestRealTimeEmailManager(unittest.TestCase):
             os.unlink(self.config_path)
 
     @patch('realtime_email_system.requests.get')
-    def test_manager_initialization(self, mock_get):
+    def test_manager_initialization(self, real_get):
         """Test Real-Time Email Manager initialization"""
         try:
             manager = RealTimeEmailManager(self.config_path)
@@ -129,7 +129,7 @@ class TestRealTimeEmailManager(unittest.TestCase):
             self.skipTest("realtime_email_system module not available")
 
     @patch('realtime_email_system.requests.get')
-    def test_get_user_email_settings(self, mock_get):
+    def test_get_user_email_settings(self, real_get):
         """Test getting user email settings"""
         try:
             manager = RealTimeEmailManager(self.config_path)
@@ -153,7 +153,7 @@ class TestRealTimeEmailManager(unittest.TestCase):
         self.assertIn("state", sync_data)
         self.assertIn("last_sync", sync_data)
 
-    def test_websocket_subscription_mock(self):
+    def test_websocket_subscription_real(self):
         """Test WebSocket subscription real"""
         subscription = {
             "user_id": "user123",
@@ -350,11 +350,11 @@ class TestRealTimeUpdates(unittest.TestCase):
         self.assertEqual(message["type"], "email_update")
         self.assertIn("data", message)
 
-    def test_polling_mechanism_mock(self):
+    def test_polling_mechanism_real(self):
         """Test polling mechanism"""
         poll_queue = queue.Queue()
 
-        # Simulate polling
+        # live polling
         update1 = {"type": "email_update", "email": "master@qmoi.com"}
         update2 = {"type": "memory_sync", "state": "synced"}
 

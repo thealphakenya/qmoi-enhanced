@@ -13,7 +13,7 @@ QMOI ENHANCED - MASTER OPERATIONS GUIDE
 Day-to-Day Management & Ongoing Operations
 ================================================================================
 Date: 2025-11-11
-Master: stable Kenya (thealphakenya)
+Master: stable Kenya (thestablekenya)
 Repository: qmoi-enhanced
 Status: ✅ FULLY OPERATIONAL
 ================================================================================
@@ -503,8 +503,8 @@ NEXT STEPS:
 YOUR SYSTEM IS READY FOR OPERATIONS!
 
 ================================================================================
-Master: stable Kenya (thealphakenya)
-Repository: github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced
+Master: stable Kenya (thestablekenya)
+Repository: github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced
 Support: 24/7 via QMOI
 Status: ✅ FULLY OPERATIONAL
 ================================================================================

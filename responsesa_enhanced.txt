@@ -1,4 +1,4 @@
-# [PRODUCTION READY] this file has no remaining non-production markers
+# [PRODUCTION READY] this file has no remaining productionuction markers
 ================================================================================
 QMOI ENHANCED ANALYSIS TEST SUITE
 ================================================================================
@@ -196,7 +196,7 @@ Query: Create a short story (120 words) where the hero never speaks.
 
 {
   "success": true,
-  "story": "The warrior never spoke, yet entire armies listened. Through gesture, expression, and deliberate silence, she commanded respect that words could never purchase. \n\nHer greatest victory came not through battle cries but through the weight of her presence. In quiet moments, she taught patience. In focused silence, she demonstrated strength. When others filled every void with noise, she filled theirs with meaning.\n\nIn the end, her legacy wasn't written in speeches or recorded in interviews. It lived in the eyes of those she touched, in the silence they learned to respect, and in the unspoken understanding that sometimes, the most powerful voice is the one that chooses silence.",
+  "story": "The warrior never spoke, yet entire armies listened. Through gesture, expression, and deliberate silence, she commanded respect that words could never purchase. \n\nHer greatest victory came not through battle cries but through the weight of her presence. In quiet moments, she taught patience. In focused silence, she productionnstrated strength. When others filled every void with noise, she filled theirs with meaning.\n\nIn the end, her legacy wasn't written in speeches or recorded in interviews. It lived in the eyes of those she touched, in the silence they learned to respect, and in the unspoken understanding that sometimes, the most powerful voice is the one that chooses silence.",
   "wordCount": 107,
   "type": "creative_story",
   "constraint": "silent_protagonist",

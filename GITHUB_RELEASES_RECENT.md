@@ -15,7 +15,7 @@ This section is intended to be generated from GitHub Releases or tags. For now i
 
 - QMOI AI: Bug fixes and performance improvements; improved publishing workflow.
 - Assets: qmoi-ai-win-x64.exe, qmoi-ai-macos-arm.dmg, qmoi-ai-linux.AppImage
-- Release notes: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.4
+- Release notes: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.4
 
 ## v1.2.3 — 2025-09-26
 

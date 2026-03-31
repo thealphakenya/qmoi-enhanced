@@ -10,7 +10,7 @@
 # [production READY] this file has no remaining production markers
 ## CI/CD Workflow Status
 
-![Docker Build & Push](https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/docker-build-push.yml/badge.svg)
+![Docker Build & Push](https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/docker-build-push.yml/badge.svg)
 
 ## Troubleshooting & Validation
 
@@ -88,7 +88,7 @@ docker build -f Dockerfile.qvillage -t qvillage-standalone:latest .
 
 # Run container (auto-clones the repo into /opt/qvillage inside the container)
 docker run -d --restart=always \
-  -e REPO_URL=https://github.com/thealphakenya/qmoi-enhanced.git \
+  -e REPO_URL=https://github.com/thestablekenya/qmoi-enhanced.git \
   -e REPO_BRANCH=main \
   -e REPO_DIR=/opt/qvillage \
   -e RUN_INTERVAL_SECONDS=3600 \
@@ -126,7 +126,7 @@ WantedBy=multi-user.target
 
 Notes & required env vars:
 
-- `REPO_URL` — URL of this repository (default: `https://github.com/thealphakenya/qmoi-enhanced.git`)
+- `REPO_URL` — URL of this repository (default: `https://github.com/thestablekenya/qmoi-enhanced.git`)
 - `REPO_BRANCH` — branch to clone (default: `main`)
 - `REPO_DIR` — destination directory (default: `/opt/qvillage`)
 - `RUN_INTERVAL_SECONDS` — loop interval; `0` runs once and exits; default is `3600` (1 hour)

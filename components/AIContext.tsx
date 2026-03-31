@@ -124,7 +124,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>(() => {
     try {
       if (typeof window !== "undefined") {
-        const saved = localStorage.getItem("alphaq-chat-history");
+        const saved = localStorage.getItem("stableq-chat-history");
         return saved ? JSON.parse(saved) : [];
       }
       return [];
@@ -141,7 +141,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
     try {
       if (typeof window !== "undefined") {
         localStorage.setItem(
-          "alphaq-chat-history",
+          "stableq-chat-history",
           JSON.stringify(chatHistory),
         );
       }
@@ -163,7 +163,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
     () => {
       try {
         if (typeof window !== "undefined") {
-          const saved = localStorage.getItem("alphaq-persistent-memory");
+          const saved = localStorage.getItem("stableq-persistent-memory");
           return saved ? JSON.parse(saved) : {};
         }
         return {};
@@ -181,7 +181,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
     try {
       if (typeof window !== "undefined") {
         localStorage.setItem(
-          "alphaq-persistent-memory",
+          "stableq-persistent-memory",
           JSON.stringify(persistentMemory),
         );
       }
@@ -202,7 +202,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
   const [emotionalState, setEmotionalState] = useState<EmotionalState>(() => {
     try {
       if (typeof window !== "undefined") {
-        const saved = localStorage.getItem("alphaq-emotional-state");
+        const saved = localStorage.getItem("stableq-emotional-state");
         if (saved) return JSON.parse(saved);
       }
       return {
@@ -231,7 +231,7 @@ export function AIProvider({ children }: { children: ReactNode }) {
     try {
       if (typeof window !== "undefined") {
         localStorage.setItem(
-          "alphaq-emotional-state",
+          "stableq-emotional-state",
           JSON.stringify(emotionalState),
         );
       }

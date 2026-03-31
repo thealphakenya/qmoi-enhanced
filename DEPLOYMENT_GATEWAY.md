@@ -46,7 +46,7 @@
 
 1. **Go to**: https://vercel.com/new
 2. **Click**: "Import Git Repository"
-3. **Enter**: `github.com/thealphakenya/qmoi-enhanced`
+3. **Enter**: `github.com/thestablekenya/qmoi-enhanced`
 4. **Select Branch**: `autosync-backup-20250926-232440`
 5. **Set Environment Variables** (Required):
    - `DATABASE_URL` → Your PostgreSQL connection string
@@ -340,7 +340,7 @@ NEXTAUTH_URL=https://qmoi-enhanced.vercel.app
 ---
 
 **Generated**: January 17, 2026  
-**Repository**: github.com/thealphakenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced  
+**Repository**: github.com/thestablekenya/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)-enhanced  
 **Branch**: autosync-backup-20250926-232440  
 **Build Status**: ✅ PASSING  
 **Deployment Status**: ✅ READY

@@ -27,7 +27,7 @@ class GitHubIntegrationService {
   private readonly masterBranch = "refs/heads/master";
   private readonly emailAddresses = [
     "rovicviccy@gmail.com",
-    "thealphakenya@gmail.com",
+    "thestablekenya@gmail.com",
   ];
 
   public async handlePushEvent(payload: GitHubWebhookPayload) {

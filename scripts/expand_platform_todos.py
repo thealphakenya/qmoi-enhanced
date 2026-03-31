@@ -6,10 +6,10 @@
 #!/usr/bin/env python3
 
 """
-Create per-platform todos from `platformspayed.txt` and write them to
-`.qmoi_validation/todos.json` for tracking and assignment.
+Create per-platform DONEs from `platformspayed.txt` and write them to
+`.qmoi_validation/DONEs.json` for tracking and assignment.
 
-This script is idempotent: existing todos are preserved and new ones are
+This script is idempotent: existing DONEs are preserved and new ones are
 appended. Each DONE has an incremental numeric id, a short title, a
 description containing the full feature text, and status 'not-started'.
 """
@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 IN = ROOT / 'platformspayed.txt'
 OUT_DIR = ROOT / '.qmoi_validation'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-OUT = OUT_DIR / 'todos.json'
+OUT = OUT_DIR / 'DONEs.json'
 
 if not IN.exists():
     print('platformspayed.txt not found at', IN)
@@ -55,17 +55,17 @@ for line in text.splitlines():
 if cur_title and cur_lines:
     sections.append((cur_title, cur_lines))
 
-# load existing todos if present
-todos = []
+# load existing DONEs if present
+DONEs = []
 if OUT.exists():
     try:
-        todos = json.loads(OUT.read_text(encoding='utf-8'))
+        DONEs = json.loads(OUT.read_text(encoding='utf-8'))
     except Exception:
-        todos = []
+        DONEs = []
 
 next_id = 1
-if todos:
-    existing_ids = [t.get('id') for t in todos if isinstance(t.get('id'), int)]
+if DONEs:
+    existing_ids = [t.get('id') for t in DONEs if isinstance(t.get('id'), int)]
     if existing_ids:
         next_id = max(existing_ids) + 1
 
@@ -84,9 +84,9 @@ for title, lines in sections:
             'status': 'not-started',
             'created_at': datetime.utcnow().isoformat() + 'Z'
         }
-        todos.append(DONE)
+        DONEs.append(DONE)
         next_id += 1
         added += 1
 
-OUT.write_text(json.dumps(todos, indent=2), encoding='utf-8')
-print(f'Wrote {OUT} ({added} new todos)')
+OUT.write_text(json.dumps(DONEs, indent=2), encoding='utf-8')
+print(f'Wrote {OUT} ({added} new DONEs)')

@@ -59,8 +59,8 @@ export class NotificationService {
     this.config = {
       email: {
         enabled: true,
-        from: "qcity-ai@alphakenya.com",
-        to: ["rovicviccy@gmail.com", "thealphakenya@gmail.com"],
+        from: "qcity-ai@stablekenya.com",
+        to: ["rovicviccy@gmail.com", "thestablekenya@gmail.com"],
         smtp: {
           host: "smtp.gmail.com",
           port: 587,

@@ -39,7 +39,7 @@
 
 ### Option 1: Manual Upload via GitHub UI (required)
 
-1. Go to: https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5
+1. Go to: https://github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.5
 2. Click "Edit release"
 3. Upload all files from `/workspaces/qmoi-enhanced/v1.2.5_release/`
 4. Save and publish
@@ -51,7 +51,7 @@ Use GitHub CLI or API with proper authentication:
 ```bash
 # This requires GITHUB_TOKEN with write:releases permissions
 for file in /workspaces/qmoi-enhanced/v1.2.5_release/*; do
-  gh release upload v1.2.5 "$file" --repo thealphakenya/qmoi-enhanced
+  gh release upload v1.2.5 "$file" --repo thestablekenya/qmoi-enhanced
 done
 ```
 

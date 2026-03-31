@@ -212,7 +212,7 @@
 - **Platform**: Vercel
 - **Framework**: Next.js 15.5.9 (App Router)
 - **Runtime**: Node.js 24.x
-- **Repository**: github.com/thealphakenya/qmoi-enhanced
+- **Repository**: github.com/thestablekenya/qmoi-enhanced
 - **Branch**: autosync-backup-20250926-232440
 - **Build Status**: ✅ Passing
 
@@ -341,20 +341,20 @@ node scripts/auto-fix-deployment.js
 
 ### GitHub
 
-- Repository: https://github.com/thealphakenya/qmoi-enhanced
+- Repository: https://github.com/thestablekenya/qmoi-enhanced
 - Branch: autosync-backup-20250926-232440
-- Issues: https://github.com/thealphakenya/qmoi-enhanced/issues
+- Issues: https://github.com/thestablekenya/qmoi-enhanced/issues
 
 ### Vercel
 
 - Project: https://qmoi-enhanced.vercel.app
 - Dashboard: https://vercel.com/dashboard/projects/qmoi-enhanced
-- Deployments: https://vercel.com/thealphakenya/qmoi-enhanced
+- Deployments: https://vercel.com/thestablekenya/qmoi-enhanced
 
 ### External Services
 
-- HuggingFace Org: https://huggingface.co/thealphakenya
-- Models: https://huggingface.co/thealphakenya?tab=models
+- HuggingFace Org: https://huggingface.co/thestablekenya
+- Models: https://huggingface.co/thestablekenya?tab=models
 
 ---
 

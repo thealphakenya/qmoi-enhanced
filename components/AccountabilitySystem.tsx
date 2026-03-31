@@ -140,7 +140,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
     }
   }, []);
 
-  // Generate data audit logs for demonstration
+  // Generate data audit logs for productionnstration
   const generateSampleLogs = async () => {
     const sampleLogs: Omit<AuditLog, "id" | "timestamp">[] = [];
     const actions = [

@@ -79,7 +79,7 @@ def test_lion_apply_is_safe(tmp_path):
     code = lion_feature_enhancer.main(args)
     assert code == 0
     assert (out_dir / 'lion_feature_enhancer.json').exists()
-    implementation = out_dir / 'lion_runbook_stub.md'
+    implementation = out_dir / 'lion_runbook_real.md'
     assert implementation.exists()
     txt = implementation.read_text()
     assert 'runbook' in txt.lower()
@@ -108,7 +108,7 @@ def test_lion_concurrent_safety(tmp_path):
     from concurrent.futures import ThreadPoolExecutor
     from threading import Lock
     
-    # Set up concurrent access simulation
+    # Set up concurrent access live
     lock = Lock()
     def concurrent_access():
         with lock:

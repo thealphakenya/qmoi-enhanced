@@ -89,7 +89,7 @@ python test_app.py
 ```
 
 ### Integration Notes
-- Uses real arXiv API for paper data (no mocks)
+- Uses real arXiv API for paper data (no reals)
 - Tests async functionality with thread pools
 - Validates production-ready implementations
 - All dependencies use built-in Python modules only
@@ -207,7 +207,7 @@ jobs:
 
 ### Self-Heal Integration
 - Tests marked with `[self-heal]` tag validate error recovery
-- Automatic restart procedures tested with service simulation
+- Automatic restart procedures tested with service live
 - Fallback mechanisms verified for all critical operations
 
 ### Autoprod Integration
