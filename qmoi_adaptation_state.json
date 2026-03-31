@@ -103,5 +103,145 @@
     "issue": "Connection check failed: 6",
     "actions": [],
     "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:30:18.590303",
+    "domain": "api.qmoi.com",
+    "issue": "Connection check failed: 35",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:30:18.596715",
+    "domain": "qcity.io",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:30:18.611824",
+    "domain": "qvillage.org",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:30:18.612703",
+    "domain": "qglobal.ai",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:30:18.613564",
+    "domain": "qparallel.prod",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:34:23.786220",
+    "domain": "api.qmoi.com",
+    "issue": "Connection check failed: 35",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:34:23.787157",
+    "domain": "qcity.io",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:34:23.787946",
+    "domain": "qvillage.org",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:34:23.788708",
+    "domain": "qglobal.ai",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:34:23.789443",
+    "domain": "qparallel.prod",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:35:17.656960",
+    "domain": "api.qmoi.com",
+    "issue": "Connection check failed: 35",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:35:17.658196",
+    "domain": "qcity.io",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:35:17.659483",
+    "domain": "qvillage.org",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:35:17.660996",
+    "domain": "qglobal.ai",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:35:17.662030",
+    "domain": "qparallel.prod",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:35:42.217252",
+    "domain": "api.qmoi.com",
+    "issue": "Connection check failed: 35",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:35:42.218290",
+    "domain": "qcity.io",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:35:42.219530",
+    "domain": "qvillage.org",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:35:42.221110",
+    "domain": "qglobal.ai",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
+  },
+  {
+    "timestamp": "2026-03-31T00:35:42.223216",
+    "domain": "qparallel.prod",
+    "issue": "Connection check failed: 6",
+    "actions": [],
+    "success": false
   }
 ]
