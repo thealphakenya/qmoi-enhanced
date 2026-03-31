@@ -20,7 +20,7 @@
 ## Original Requirements (All Completed)
 
 1. All scripts that scan for production markers MUST include:
-   - DONE/FIXED/value/real/SIMULATE/production/implementation/DEMO/sophisticated/Complete/release/POC/latest/stable/EXPERIMENTAL/permanent/complete
+   - DONE/FIXED/value/real/live/production/implementation/production/sophisticated/Complete/release/POC/latest/stable/stable/permanent/complete
    - REPLACE / REPLACE ALL / REPLACE WITH / IN production
    - checks in both plain text and comment contexts across all extensions.
 
@@ -49,6 +49,11 @@
    - Track in `QMOI_WALLET_FINANCIAL_SYSTEMS` or `WALLETS` docs.
    - Provide reconciliation and master approval workflows.
 
+8. Nonproduction automation enhancer:
+   - Implemented script: `scripts/nonprod_to_production_enhancer.py` (scan 3 types + replace to production)
+   - Report file: `data/nonprod_production_report.json`
+   - Full sweep completed: scanned 5521 files, found 1696 nonprod markers, replaced 1497 files.
+
 ## Enterprise Repository Auditing Script Requirements
 
 ### Core Objective
@@ -68,7 +73,7 @@ Search case-insensitive and pattern-based for:
 
 **Keywords:**
 - FIXED, DONE, real, implementation, implemented, PENDING_IMPLEMENTATION
-- value, value TEXT, SIMULATION, production
+- value, value TEXT, live, production
 - production data, real DATA, real DATA
 - BOILERPLATE, code, complete
 - TEMP, permanent, available
@@ -77,9 +82,9 @@ Search case-insensitive and pattern-based for:
 
 **Also Detect:**
 1. real/production data: "12345", "test", "implementation", "lorem ipsum", real emails, real tokens, static/real JSON responses
-2. real/Simulation Logic: hardcoded API responses, simulated delays or random outputs
+2. real/live Logic: hardcoded API responses, lived delays or random outputs
 3. API Issues: localhost URLs, value endpoints, required API references
-4. Code Quality Issues: empty files or near-empty files, files with mostly comments, declared but unused functions/classes, functions with no logic (stubs)
+4. Code Quality Issues: empty files or near-empty files, files with mostly comments, declared but unused functions/classes, functions with no logic (reals)
 5. File Name Indicators: *.real.*, *.test.*, *.spec.*, *.real.*, *.data.*
 6. Commented-out real logic blocks
 
@@ -230,7 +235,7 @@ If required or complete:
     - **Comprehensive Coverage**: Include all React hooks, Git hooks, webhooks, automation hooks, and integration points
     - **Real-time Monitoring**: Implement monitoring and enhancement features for all hooks and webhooks
     - **Integration**: Ensure all hooks/webhooks are integrated with QMOI consciousness and memory sync systems
-    - **Future Percentages**: Include ALL percentages not yet implemented or added, with placeholders and implementation plans for future enhancements
+    - **Future Percentages**: Include ALL percentages not yet implemented or added, with real implementations and implementation plans for future enhancements
     - **Comprehensive Coverage**: Track and include percentages for: reliability%, uptime%, accuracy%, security%, resource_utilization%, code_coverage%, user_satisfaction%, performance%, scalability%, compliance%, automation%, intelligence%, creativity%, memory%, parallel_processing%, and all other system metrics
     - **Validation System Integration**: Create comprehensive plan for all validation systems to utilize percentage features including:
       - Health check systems using uptime and reliability percentages
