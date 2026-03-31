@@ -1,7 +1,7 @@
 {
   "qvillage.com": {
     "domain": "qvillage.com",
-    "timestamp": "2026-03-31 22:14:15.941645",
+    "timestamp": "2026-03-31 23:48:43.691501",
     "dns_resolved": true,
     "dns_ips": [
       "76.223.54.146",
@@ -10,7 +10,7 @@
     "whois_valid": true,
     "http_reachable": true,
     "http_status": 200,
-    "response_time": 0.006943941116333008,
+    "response_time": 0.004608631134033203,
     "ssl_valid": true,
     "ssl_expiry": "2026-07-15 23:24:36",
     "content_legitimate": false,
@@ -33,7 +33,7 @@
   },
   "qcloud.ai": {
     "domain": "qcloud.ai",
-    "timestamp": "2026-03-31 22:14:17.215913",
+    "timestamp": "2026-03-31 23:48:44.935303",
     "dns_resolved": true,
     "dns_ips": [
       "76.223.54.146",
@@ -42,7 +42,7 @@
     "whois_valid": true,
     "http_reachable": true,
     "http_status": 200,
-    "response_time": 0.007429599761962891,
+    "response_time": 0.00637507438659668,
     "ssl_valid": true,
     "ssl_expiry": "2026-05-16 10:44:25",
     "content_legitimate": false,
@@ -65,39 +65,36 @@
   },
   "stableq.ai": {
     "domain": "stableq.ai",
-    "timestamp": "2026-03-31 22:14:18.455815",
-    "dns_resolved": true,
-    "dns_ips": [
-      "13.248.213.45",
-      "76.223.67.189"
-    ],
+    "timestamp": "2026-03-31 23:48:46.367927",
+    "dns_resolved": false,
+    "dns_ips": [],
     "whois_valid": true,
-    "http_reachable": true,
-    "http_status": 200,
-    "response_time": 0.0034554004669189453,
-    "ssl_valid": true,
-    "ssl_expiry": "2026-07-23 11:33:49",
+    "http_reachable": false,
+    "http_status": 0,
+    "response_time": 0.0,
+    "ssl_valid": false,
+    "ssl_expiry": null,
     "content_legitimate": false,
-    "content_check_message": "No QMOI content found",
+    "content_check_message": "HTTP not reachable",
     "content_term_hits": [],
-    "raw_content": "<!DOCTYPE html><html><head><script>window.onload=function(){window.location.href=\"/lander\"}</script></head></html>",
-    "overall_status": "parking",
+    "raw_content": "",
+    "overall_status": "critical",
     "issues": [
-      "No QMOI content found"
+      "DNS resolution failed"
     ],
     "regional_access": {
-      "us-east": true,
-      "us-west": true,
-      "eu-west": true,
-      "asia-east": true
+      "us-east": false,
+      "us-west": false,
+      "eu-west": false,
+      "asia-east": false
     },
-    "content_status": "No QMOI content found",
+    "content_status": "HTTP not reachable",
     "content_hits": 0,
     "overall_healthy": false
   },
   "qglobal.org": {
     "domain": "qglobal.org",
-    "timestamp": "2026-03-31 22:14:19.704326",
+    "timestamp": "2026-03-31 23:48:48.033170",
     "dns_resolved": true,
     "dns_ips": [
       "76.223.54.146",
@@ -106,7 +103,7 @@
     "whois_valid": true,
     "http_reachable": true,
     "http_status": 200,
-    "response_time": 0.005045890808105469,
+    "response_time": 0.006405830383300781,
     "ssl_valid": true,
     "ssl_expiry": "2026-06-03 22:14:38",
     "content_legitimate": false,
@@ -129,7 +126,7 @@
   },
   "quantum.qmoi.com": {
     "domain": "quantum.qmoi.com",
-    "timestamp": "2026-03-31 22:14:20.994111",
+    "timestamp": "2026-03-31 23:48:49.297145",
     "dns_resolved": true,
     "dns_ips": [
       "64.190.63.222"
@@ -137,7 +134,7 @@
     "whois_valid": false,
     "http_reachable": true,
     "http_status": 200,
-    "response_time": 0.12919902801513672,
+    "response_time": 0.1279590129852295,
     "ssl_valid": true,
     "ssl_expiry": "2026-05-24 23:59:59",
     "content_legitimate": false,
@@ -160,7 +157,7 @@
   },
   "qmoi.com": {
     "domain": "qmoi.com",
-    "timestamp": "2026-03-31 22:14:24.082455",
+    "timestamp": "2026-03-31 23:48:52.371673",
     "dns_resolved": true,
     "dns_ips": [
       "64.190.63.222"
@@ -168,7 +165,7 @@
     "whois_valid": true,
     "http_reachable": true,
     "http_status": 200,
-    "response_time": 0.12894344329833984,
+    "response_time": 0.13095593452453613,
     "ssl_valid": true,
     "ssl_expiry": "2026-06-23 23:59:59",
     "content_legitimate": false,
