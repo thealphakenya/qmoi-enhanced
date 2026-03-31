@@ -61,7 +61,7 @@ export async function POST(request: Request) {
       });
     }
 
-    .log(`[QMOI AutoFix] Starting autofix for ${errors.length} errors...`);
+    console.log(`[QMOI AutoFix] Starting autofix for ${errors.length} errors...`);
     autoFixState.fixing = true;
 
     let fixedCount = 0;
@@ -111,7 +111,7 @@ export async function POST(request: Request) {
       (autoFixState.fixedErrors / autoFixState.totalErrors) * 100;
     autoFixState.fixing = false;
 
-    .log(
+console.log(
       `[QMOI AutoFix] AutoFix complete. Fixed: ${fixedCount}, Failed: ${failedCount}`
     );
 

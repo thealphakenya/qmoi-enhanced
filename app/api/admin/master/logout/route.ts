@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     }
 
     // Log logout event
-    .log("[MASTER] Logout successful", new Date().toISOString());
+    console.log("[MASTER] Logout successful", new Date().toISOString());
 
     // Return success response
     return NextResponse.json(

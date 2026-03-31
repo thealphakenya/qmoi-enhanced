@@ -40,7 +40,7 @@ export async function GET(_req: NextRequest) {
       },
       hasChanges,
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
-        .length,
+        service.length,
     });
   } catch (_error: unknown) {
     return NextResponse.json(

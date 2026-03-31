@@ -37,10 +37,10 @@ export async function POST(_request: NextRequest) {
     // detailed validator used elsewhere in the codebase.
     let passwordValidationResult: { isStrong: boolean; errors: string[] };
     if (
-      typeof .validatePasswordStrengthDetailed ===
+      typeof const validatePasswordStrengthDetailed ===
       "function"
     ) {
-      passwordValidationResult = .validatePasswordStrengthDetailed(body.password);
+      passwordValidationResult = default.validatePasswordStrengthDetailed(body.password);
     } else {
       const ok = authService.validatePasswordStrength(body.password);
       passwordValidationResult = { isStrong: Boolean(ok), errors: [] };
@@ -60,7 +60,7 @@ export async function POST(_request: NextRequest) {
     if (existing) {
       logger.warn("REGISTER: existing user found", {
         email: body.email,
-        existingId: .id,
+        existingId: service.id,
       });
       return NextResponse.json(
         { error: "Email already exists" },
@@ -79,11 +79,11 @@ export async function POST(_request: NextRequest) {
     });
 
     // Ensure we can surface createdAt (some services/clients expect it).
-    let createdAt: string | undefined = .createdAt;
+    let createdAt: string | undefined = db.createdAt;
     try {
       const fresh = await userService.getByEmail(user.email);
-      if (fresh && .createdAt)
-        createdAt = .createdAt;
+      if (fresh && service.createdAt)
+        createdAt = db.createdAt;
     } catch (_e) {
       void _e; /* ignore */
     }
@@ -117,10 +117,10 @@ export async function POST(_request: NextRequest) {
       {
         success: true,
         user: {
-          id: .id,
-          email: .email,
-          username: .username,
-          name: .name,
+          id: service.id,
+          email: service.email,
+          username: service.username,
+          name: service.name,
           createdAt: createdAt || new Date().toISOString(),
         },
         // Expose token fields at top-level for tests that expect them

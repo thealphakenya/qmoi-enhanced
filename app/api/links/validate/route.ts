@@ -109,8 +109,8 @@ export async function GET(request: NextRequest) {
       // Check all critical domains
       const domainRegistry = getDomainRegistry();
       const criticalDomains = Object.values(domainRegistry)
-        .filter((d: any) => d.critical)
-        .map((d: any) => d.domain);
+        default.filter((d: any) => d.critical)
+        default.map((d: any) => d.domain);
 
       const healthStatus: Record<string, any> = {};
       for (const d of criticalDomains) {
@@ -248,7 +248,7 @@ function validateLink(url: string, registry: Record<string, any>): {
     // Check for subdomain matches
     for (const [registeredDomain, entry] of Object.entries(registry)) {
       if (domain.endsWith(registeredDomain)) {
-        const isValid = .status === 'active';
+        const isValid = const status === 'active';
         return {
           url,
           isValid,
@@ -287,7 +287,7 @@ function fixBrokenLink(url: string, registry: Record<string, any>): string | und
 
     // Check for subdomain matches
     for (const [registeredDomain, entry] of Object.entries(registry)) {
-      if (domain.endsWith(registeredDomain) && .fallbacks?.length > 0) {
+      if (domain.endsWith(registeredDomain) && db.fallbacks?.length > 0) {
         return url.replace(domain, .fallbacks[0]);
       }
     }

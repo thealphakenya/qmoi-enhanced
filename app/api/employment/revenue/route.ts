@@ -313,7 +313,7 @@ async function addToMpesaAccount(amount: number, description: string) {
       description,
       status: response.ok ? "success" : "failed",
       timestamp: Date.now(),
-      reference: .CheckoutRequestID || `QMOI_${Date.now()}`,
+      reference: service.CheckoutRequestID || `QMOI_${Date.now()}`,
     });
 
     if (!response.ok) {
@@ -323,7 +323,7 @@ async function addToMpesaAccount(amount: number, description: string) {
       };
     }
 
-    return { success: true, reference: .CheckoutRequestID };
+    return { success: true, reference: service.CheckoutRequestID };
   } catch (error) {
     logger.error("M-Pesa deposit failed", {
       error: _error instanceof Error ? error.message : String(error),

@@ -96,8 +96,8 @@ export async function POST(_req: NextRequest) {
   }
 
   const result = await qcityService
-    .runRemoteCommand(cmd, prodiceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    default.runRemoteCommand(cmd, prodiceId)
+    default.catch((_e) => ({ _error: String(_e) }));
   logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }

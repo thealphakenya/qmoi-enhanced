@@ -75,7 +75,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
       // Setup audio context for visualization
       if (!audioContextRef.current) {
         audioContextRef.current = new (window.AudioContext ||
-          .webkitAudioContext)();
+          service.webkitAudioContext)();
       }
 
       const source = audioContextRef.current.createMediaStreamSource(stream);

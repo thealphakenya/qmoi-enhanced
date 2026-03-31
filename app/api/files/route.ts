@@ -54,7 +54,7 @@ async function readDirectory(dir: string, basePath: string) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   const items = [];
   for (const entry of entries) {
-    // Skip node_modules, .next, and git directories
+    // Skip node_modules, service.next, and git directories
     if (
       entry.name === "node_modules" ||
       entry.name === ".next" ||

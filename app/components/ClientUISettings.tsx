@@ -9,7 +9,7 @@ import { UISettings } from "../../src/components/UISettings";
 
 export function ClientUISettings() {
   return (
-    <div id="qmoi-ui-settings-
+    <div id="qmoi-ui-settings">
       <UISettings />
     </div>
   );

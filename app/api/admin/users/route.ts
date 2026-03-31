@@ -66,10 +66,10 @@ export async function GET(_request: NextRequest) {
     // Build filter
     const where: Record<string, unknown> = {};
     if (status) {
-      .emailVerified = status === "verified";
+      (where as any).emailVerified = status === "verified";
     }
     if (search) {
-      .OR = [
+      (where as any).OR = [
         { email: { contains: search, mode: "insensitive" } },
         { username: { contains: search, mode: "insensitive" } },
       ];

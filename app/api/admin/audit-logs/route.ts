@@ -232,8 +232,8 @@ export async function POST(_request: NextRequest) {
     }
 
     const body = (await _request.json()) as Record<string, unknown>;
-    const format = .format as string;
-    const filters = .filters as
+    const format = (body.format as string) || "json";
+    const filters = body.filters as
       | Record<string, unknown>
       | undefined;
 
@@ -277,10 +277,9 @@ export async function POST(_request: NextRequest) {
       filename = `audit-logs-${new Date().toISOString()}.csv`;
       contentType = "text/csv";
     } else {
-      // PDF format - optimized version
+      // PDF format currently unsupported, fallback as JSON
       content = JSON.stringify({
-        message:
-          "
+        message: "PDF export currently not supported, returning logs metadata",
         logs: logs.length,
       });
       filename = `audit-logs-${new Date().toISOString()}.json`;
@@ -316,13 +315,13 @@ function convertLogsToCSV(logs: Record<string, unknown>[]): string {
     "Timestamp",
   ];
   const rows = logs.map((log) => [
-    .id,
-    .userId,
-    .action,
-    .resource,
-    .resourceId || "",
-    .ipAddress || "",
-    .timestamp,
+    (log as any).id,
+    (log as any).userId,
+    (log as any).action,
+    (log as any).resource,
+    (log as any).resourceId || "",
+    (log as any).ipAddress || "",
+    (log as any).timestamp,
   ]);
 
   const csv = [

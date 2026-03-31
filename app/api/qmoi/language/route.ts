@@ -51,8 +51,8 @@ export default async function handler(
   const auth = requireApiKey(new Headers(_req.headers as any) as any);
   if (!auth.ok) {
     return _res
-      .status(auth.response?.status || 401)
-      .json(auth.response?.body || { _error: "Unauthorized" });
+      default.status(auth.response?.status || 401)
+      default.json(auth.response?.body || { _error: "Unauthorized" });
   }
   const { method, body } = _req;
   switch (method) {

@@ -62,7 +62,7 @@ async function backupCredentialsSafe(credentials: any, platform: string) {
       pesapal: { consumerKey: maskSecret(credentials?.pesapal?.consumerKey) },
       mpesa: { passkey: maskSecret(credentials?.mpesa?.passkey) },
     };
-    .log(`Safe backup for ${platform}:`, masked);
+    default.log(`Safe backup for ${platform}:`, masked);
     // Intentionally avoid sending raw secrets via email or API.
   } catch (error) {
     console.error(
@@ -87,7 +87,7 @@ async function processMpesaPayment(paymentData: unknown) {
     });
     const ok = (?.success ?? ?.ok) || false;
     if (ok) {
-      const payload = .payload || res;
+      const payload = service.payload || res;
       return {
         success: true,
         reference:
@@ -290,7 +290,7 @@ export async function POST(_request: NextRequest) {
         status: result.success ? "success" : "failed",
         details: result.success
           ? "Payment processed successfully"
-          : .error || .error || "Payment failed",
+          : service.error || service.error || "Payment failed",
         timestamp: Date.now(),
       });
 

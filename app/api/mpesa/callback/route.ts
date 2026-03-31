@@ -17,8 +17,8 @@ async function updateMpesaTransaction(details: any) {
   // production: update the transaction record in the database
   try {
     const prisma = await getPrismaClient();
-    if (prisma && .transaction) {
-      await .transaction.update({
+    if (prisma && service.transaction) {
+      await db.transaction.update({
         where: { transactionId: details.checkoutRequestId },
         data: {
           status: "completed",
@@ -97,7 +97,7 @@ export async function POST(_req: NextRequest) {
 
     const body: any = raw ? JSON.parse(raw) : await _req.json();
 
-    .log("M-Pesa Callback received:", body);
+    default.log("M-Pesa Callback received:", body);
 
     // Extract transaction details safely
     const CheckoutRequestID = body?.Body?.stkCallback?.CheckoutRequestID;

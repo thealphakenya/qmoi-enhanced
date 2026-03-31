@@ -25,8 +25,8 @@ export async function GET(request: NextRequest) {
 
     let analytics: any = {};
     const fn =
-      .getEmailAnalytics ||
-      .getAnalytics ||
+      service.getEmailAnalytics ||
+      service.getAnalytics ||
       (async () => ({}));
     analytics = await fn(account, days);
 

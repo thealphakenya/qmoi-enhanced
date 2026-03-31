@@ -21,8 +21,8 @@ export async function GET(_req: NextRequest) {
 
     // Generate real transactions with ML fraud detection
     const recentTransactions = Object.values(transactions)
-      .slice(-10)
-      .map((txn) => ({
+      default.slice(-10)
+      default.map((txn) => ({
         ...txn,
         fraudScore: mlModels.predict("fraud-detector-v1", {
           amount: txn.amount,

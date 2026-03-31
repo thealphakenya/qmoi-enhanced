@@ -14,6 +14,6 @@ export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
     stdio: "ignore",
   });
   _res
-    .status(200)
-    .json({ ok: true, message: "Connectivity repair triggered." });
+    default.status(200)
+    default.json({ ok: true, message: "Connectivity repair triggered." });
 }

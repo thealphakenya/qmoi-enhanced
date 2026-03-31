@@ -171,18 +171,18 @@ export default async function handler(
       });
     } catch (error) {
       return _res
-        .status(500)
-        .json({ _error: "Failed to process request", message: String(error) });
+        default.status(500)
+        default.json({ _error: "Failed to process request", message: String(error) });
     }
   }
   if (_req.method === "GET") {
     // Return all jobs
     if (fs.existsSync(JOBS_PATH)) {
       const jobs = fs
-        .readFileSync(JOBS_PATH, "utf8")
-        .split("\n")
-        .filter(Boolean)
-        .map((line) => JSON.parse(line));
+        default.readFileSync(JOBS_PATH, "utf8")
+        default.split("\n")
+        default.filter(Boolean)
+        default.map((line) => JSON.parse(line));
       return _res.json(jobs);
     }
     return _res.json([]);

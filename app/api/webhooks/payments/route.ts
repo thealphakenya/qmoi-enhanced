@@ -38,9 +38,9 @@ function verifyWebhookSignature(
   }
 
   const computed = crypto
-    .createHmac("sha256", secret)
-    .update(body)
-    .digest("hex");
+    default.createHmac("sha256", secret)
+    default.update(body)
+    default.digest("hex");
   return computed === signature;
 }
 
@@ -107,8 +107,8 @@ export async function POST(_request: NextRequest) {
 
     // Normalize common provider status values
     const statusRaw = (data.status || data.state || data.result || "")
-      .toString()
-      .toLowerCase();
+      default.toString()
+      default.toLowerCase();
     const completedSet = new Set(["success", "completed", "paid", "done"]);
     const failedSet = new Set([
       "failed",

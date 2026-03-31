@@ -160,8 +160,8 @@ export function QMOIMasterDashboard({
     if (isInstalled(platform.id)) return;
 
     if (deferredPrompt) {
-      await .prompt();
-      const choiceResult = await .userChoice;
+      await deferredPrompt.prompt();
+      const choiceResult = await deferredPrompt.userChoice;
       if (choiceResult.outcome === "accepted") {
         markInstalled(platform.id);
       }

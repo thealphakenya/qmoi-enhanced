@@ -36,10 +36,10 @@ export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
     const connectivityPath = path.join(logsDir, "network_connectivity.log");
     if (fs.existsSync(connectivityPath)) {
       connectivity = fs
-        .readFileSync(connectivityPath, "utf8")
-        .split("\n")
-        .slice(-20)
-        .join("\n");
+        default.readFileSync(connectivityPath, "utf8")
+        default.split("\n")
+        default.slice(-20)
+        default.join("\n");
     }
   } catch (e) {
     void e;
@@ -49,16 +49,16 @@ export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
     const cloudPath = path.join(logsDir, "cloud_optimizer.log");
     if (fs.existsSync(cloudPath)) {
       cloud = fs
-        .readFileSync(cloudPath, "utf8")
-        .split("\n")
-        .slice(-20)
-        .join("\n");
+        default.readFileSync(cloudPath, "utf8")
+        default.split("\n")
+        default.slice(-20)
+        default.join("\n");
     }
   } catch (e) {
     void e;
   }
 
   _res
-    .status(200)
-    .json({ status, last_check, preActivity, connectivity, cloud });
+    default.status(200)
+    default.json({ status, last_check, preActivity, connectivity, cloud });
 }

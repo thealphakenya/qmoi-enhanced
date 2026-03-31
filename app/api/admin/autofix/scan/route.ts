@@ -179,7 +179,7 @@ async function applyAutofixes(errors: any[]) {
       switch (error.type) {
         case "required Dependency":
           // Would run: npm install <package>
-          .log(
+console.log(
             `[AUTOFIX] Installing required dependency: ${error.id}`,
           );
           fixed = true;
@@ -187,32 +187,32 @@ async function applyAutofixes(errors: any[]) {
 
         case "TypeScript/Syntax Error":
           // Would run eslint --fix
-          .log(
+console.log(
             `[AUTOFIX] Running ESLint fix on: ${error.file}`,
           );
           fixed = true;
           break;
 
         case "Configuration Error":
-          .log(
+console.log(
             `[AUTOFIX] Attempting to fix configuration: ${error.id}`,
           );
           fixed = true;
           break;
 
         case "Resource Warning":
-          .log(`[AUTOFIX] Optimizing system resources`);
+console.log(`[AUTOFIX] Optimizing system resources`);
           fixed = true;
           break;
 
         case "Security Issue":
-          .log(`[AUTOFIX] Securing environment variables`);
+console.log(`[AUTOFIX] Securing environment variables`);
           // Would update env configuration
           fixed = true;
           break;
 
         case "Code Quality":
-          .log(
+console.log(
             `[AUTOFIX] Updating deprecated patterns: ${error.id}`,
           );
           fixed = true;
@@ -220,7 +220,7 @@ async function applyAutofixes(errors: any[]) {
 
         default:
           // Try generic fix
-          .log(
+console.log(
             `[AUTOFIX] Attempting generic fix for: ${error.type}`,
           );
           fixed = Math.random() > 0.3; // 70% success rate
@@ -272,7 +272,7 @@ export async function POST(request: Request) {
 
   try {
     // Start error detection scan
-    .log("[QMOI AutoFix] Starting comprehensive error scan...");
+console.log("[QMOI AutoFix] Starting comprehensive error scan...");
     scanState.scanning = true;
 
     const detectedErrors = await detectAllErrors();
@@ -281,7 +281,7 @@ export async function POST(request: Request) {
     scanState.lastScanTime = new Date().toISOString();
     scanState.scanning = false;
 
-    .log(
+console.log(
       `[QMOI AutoFix] Scan complete. Found ${detectedErrors.length} issues.`,
     );
 

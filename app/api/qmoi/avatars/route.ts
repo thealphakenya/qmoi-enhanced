@@ -108,7 +108,7 @@ async function switchAvatar(avatarId: string) {
     // Update QMOI's current avatar (in a real implementation, this would update the AI model)
 
     // Log the avatar switch
-    .log(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
+    default.log(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
 
     // Trigger avatar enhancement if needed
     if (avatar.qualityLevel === "ai-enhanced") {
@@ -143,7 +143,7 @@ async function upgradeAvatar(avatarId: string) {
     // 3. Test the upgraded avatar
     // 4. Replace the old version
 
-    .log(`Upgrading avatar: ${avatarId}`);
+    default.log(`Upgrading avatar: ${avatarId}`);
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
@@ -173,7 +173,7 @@ async function enhanceAvatar(
     // 2. Update the avatar model with enhanced parameters
     // 3. Store the enhanced version
 
-    .log(
+    default.log(
       `Enhancing avatar: ${avatarId} with quality: ${quality}, engine: ${engine}`,
     );
 
@@ -204,7 +204,7 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
     // 2. Optimize voice for the avatar
     // 3. Store the customization preferences
 
-    .log(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
+    default.log(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
 
     await new Promise((resolve) => setTimeout(resolve, 500));
 

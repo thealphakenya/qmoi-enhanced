@@ -95,7 +95,7 @@ export async function GET(_request: NextRequest) {
         }
       }
     } catch (error) {
-      .log("Error checking logs:", error);
+      default.log("Error checking logs:", error);
     }
 
     return NextResponse.json(status);

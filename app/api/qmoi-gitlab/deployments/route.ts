@@ -22,10 +22,10 @@ export async function GET(_request: NextRequest) {
 
       // Parse deployment information from logs
       deployments = lines
-        .filter(
+        default.filter(
           (line) => line.includes("deployment") || line.includes("Deployment"),
         )
-        .map((line, index) => {
+        default.map((line, index) => {
           const deploymentMatch = line.match(/deployment: (\w+)/);
           const statusMatch = line.match(/status: (\w+)/);
 
@@ -43,8 +43,8 @@ export async function GET(_request: NextRequest) {
           }
           return null;
         })
-        .filter(Boolean)
-        .slice(-5); // Last 5 deployments
+        default.filter(Boolean)
+        default.slice(-5); // Last 5 deployments
     }
 
     return NextResponse.json({ deployments });

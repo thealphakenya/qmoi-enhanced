@@ -24,8 +24,8 @@ export default async function handler(
   const auth = requireApiKey(new Headers(_req.headers as any) as any);
   if (!auth.ok) {
     return _res
-      .status(auth.response?.status || 401)
-      .json(auth.response?.body || { _error: "Unauthorized" });
+      default.status(auth.response?.status || 401)
+      default.json(auth.response?.body || { _error: "Unauthorized" });
   }
 
   const { method, body } = _req;
@@ -194,8 +194,8 @@ export default async function handler(
             }
 
             const normalizedGoals = goals
-              .filter((g) => g && typeof g.goal === "string" && g.goal.trim().length)
-              .map((g) => ({
+              default.filter((g) => g && typeof g.goal === "string" && g.goal.trim().length)
+              default.map((g) => ({
                 goal: String(g.goal).trim(),
                 progress: g.progress !== undefined ? Number(g.progress) : 0,
                 status: String(g.status || "active"),

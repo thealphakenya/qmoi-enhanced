@@ -73,7 +73,7 @@ export async function GET(_request: NextRequest) {
         }
       }
     } catch (error) {
-      .log("Error checking running process_es:", error);
+      default.log("Error checking running process_es:", error);
     }
 
     // Check deployment status

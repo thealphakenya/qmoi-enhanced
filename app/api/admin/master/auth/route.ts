@@ -62,7 +62,7 @@ export async function POST(request: Request) {
     }
 
     // Log successful authentication
-    .log("[MASTER] Authentication successful", new Date().toISOString());
+    console.log("[MASTER] Authentication successful", new Date().toISOString());
 
     return NextResponse.json(
       {

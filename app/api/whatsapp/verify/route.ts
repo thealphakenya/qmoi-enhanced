@@ -23,8 +23,8 @@ export default async function handler(
     (error, stdout, stderr) => {
       if (error) {
         _res
-          .status(500)
-          .json({ success: false, _error: stderr || error.message });
+          default.status(500)
+          default.json({ success: false, _error: stderr || error.message });
       } else {
         _res.status(200).json({ success: true, result: stdout });
       }

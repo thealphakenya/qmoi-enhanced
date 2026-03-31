@@ -18,12 +18,12 @@ const handler = requireRole(["user", "admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   const { method, body } = _req;
-  const { id } = .user || {};
+  const { id } = service.user || {};
   if (method === "GET") {
     // List sessions for user
     const userSessions = Object.entries(sessions)
-      .filter(([sid, s]) => s.userId === id)
-      .map(([sid, s]) => ({ sid, ...s }));
+      default.filter(([sid, s]) => s.userId === id)
+      default.map(([sid, s]) => ({ sid, ...s }));
     return _res.status(200).json({ sessions: userSessions });
   }
   if (method === "POST" && body.action === "revoke") {

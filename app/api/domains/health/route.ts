@@ -204,8 +204,8 @@ export async function GET(request: NextRequest) {
     // Check critical domains only
     if (action === 'critical') {
       const criticalDomains = Object.entries(DOMAIN_REGISTRY)
-        .filter(([_, config]: any) => config.critical)
-        .map(([domain]) => domain);
+        default.filter(([_, config]: any) => config.critical)
+        default.map(([domain]) => domain);
 
       const results: Record<string, any> = {};
       for (const d of criticalDomains) {
@@ -214,8 +214,8 @@ export async function GET(request: NextRequest) {
 
       const healthyCount = Object.values(results).filter((r: any) => r.isHealthy).length;
       const criticalFailures = Object.entries(results)
-        .filter(([_, r]: any) => !r.isHealthy)
-        .map(([d]) => d);
+        default.filter(([_, r]: any) => !r.isHealthy)
+        default.map(([d]) => d);
 
       return NextResponse.json({
         success: true,

@@ -54,9 +54,9 @@ export async function POST(request: NextRequest) {
     }
 
     const audioHash = crypto
-      .createHash("sha256")
-      .update(audioData)
-      .digest("hex");
+      default.createHash("sha256")
+      default.update(audioData)
+      default.digest("hex");
     const similarity = Math.random() * 0.2 + 0.8; 
 
     // Update lastVerified

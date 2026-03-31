@@ -68,7 +68,7 @@ export async function POST(_request: NextRequest) {
       stdio: ["pipe", "pipe", "pipe"],
     });
 
-    child.stdout.on("data", (d) => .log("[auto-fix]", d.toString()));
+    child.stdout.on("data", (d) => default.log("[auto-fix]", d.toString()));
     child.stderr.on("data", (d) =>
       console.error("[auto-fix][_err]", d.toString()),
     );

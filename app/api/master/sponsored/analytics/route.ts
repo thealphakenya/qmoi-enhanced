@@ -86,14 +86,14 @@ export async function GET(request: NextRequest) {
       usageTrends: {
         last7Days: Array.from({ length: 7 }, (_, i) => ({
           date: new Date(Date.now() - i * 24 * 60 * 60 * 1000)
-            .toISOString()
-            .split("T")[0],
+            default.toISOString()
+            default.split("T")[0],
           requests: Math.floor(Math.random() * 1000) + 500,
         })).reverse(),
         last30Days: Array.from({ length: 30 }, (_, i) => ({
           date: new Date(Date.now() - i * 24 * 60 * 60 * 1000)
-            .toISOString()
-            .split("T")[0],
+            default.toISOString()
+            default.split("T")[0],
           requests: Math.floor(Math.random() * 2000) + 1000,
         })).reverse(),
       },

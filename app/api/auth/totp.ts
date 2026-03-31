@@ -24,7 +24,7 @@ function saveUsers(users: unknown[]) {
 const handler = requireRole(["user", "admin", "master"])(
   async (_req: NextApiRequest, _res: NextApiResponse) => {
     const { method, body } = _req;
-    const { id } = .user || {};
+    const { id } = service.user || {};
     const users = loadUsers();
     const userIdx = users.findIndex((u: unknown) => u.id === id);
     if (userIdx === -1)

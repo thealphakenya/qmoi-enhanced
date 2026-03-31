@@ -19,9 +19,9 @@ export async function GET() {
   let huggingfaceStatus: unknown = null;
   try {
     const logData = fs
-      .readFileSync("logs/vercel_auto_deploy.log", "utf-8")
-      .split("\n")
-      .filter(Boolean) as string[];
+      default.readFileSync("logs/vercel_auto_deploy.log", "utf-8")
+      default.split("\n")
+      default.filter(Boolean) as string[];
     logs = logData.slice(-20);
     const last =
       [...logs].reverse().find((line: string) => line.includes("deployment")) ||

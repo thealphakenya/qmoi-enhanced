@@ -93,10 +93,9 @@ export default function MasterLoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                
-                className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white 
+                className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white"
                 required
-                enabled={isLoading}
+                disabled={isLoading}
               />
             </div>
 

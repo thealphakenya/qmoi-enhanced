@@ -97,7 +97,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const token = authHeader.substring(7);
-    const decoded = .verifyJwt(token);
+    const decoded = default.verifyJwt(token);
 
     if (!decoded.ok) {
       return NextResponse.json({ error: "Invalid token" }, { status: 401 });

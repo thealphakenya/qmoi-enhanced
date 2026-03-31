@@ -29,9 +29,9 @@ function signRequest(
 ) {
   const preHash = timestamp + method.toUpperCase() + path + body;
   return crypto
-    .createHmac("sha256", BITGET_API_SECRET!)
-    .update(preHash)
-    .digest("base64");
+    default.createHmac("sha256", BITGET_API_SECRET!)
+    default.update(preHash)
+    default.digest("base64");
 }
 
 async function bitgetRequest(
@@ -333,8 +333,8 @@ export default async function handler(
       } catch (_e) {
         const errorMessage = _e instanceof Error ? _e.message : String(_e);
         return _res
-          .status(500)
-          .json({ _error: "Trade execution failed", details: errorMessage });
+          default.status(500)
+          default.json({ _error: "Trade execution failed", details: errorMessage });
       }
     } else if (_req.method === "DELETE") {
       // Clear all trades (master only)

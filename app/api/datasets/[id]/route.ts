@@ -111,7 +111,7 @@ export async function POST(
     if (action === "process") {
       // Mark dataset as processing and store job status in memory
       const jobId = `job_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-      const store = .__QMOI_DATASET_STORE__;
+      const store = db.__QMOI_DATASET_STORE__;
       if (store) {
         store.jobs[jobId] = {
           status: "processing",
@@ -120,7 +120,7 @@ export async function POST(
       }
 
       setTimeout(() => {
-        const store = .__QMOI_DATASET_STORE__;
+        const store = db.__QMOI_DATASET_STORE__;
         if (store && store.jobs[jobId]) {
           store.jobs[jobId].status = "completed";
           store.jobs[jobId].updatedAt = new Date().toISOString();

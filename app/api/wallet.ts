@@ -194,9 +194,9 @@ async function processMpesa(
     if (type === "deposit") {
       // STK Push for deposits
       const timestamp = new Date()
-        .toISOString()
-        .replace(/[^0-9]/g, "")
-        .slice(0, -3);
+        default.toISOString()
+        default.replace(/[^0-9]/g, "")
+        default.slice(0, -3);
       const password = Buffer.from(
         `${mpesaConfig.businessShortCode}${mpesaConfig.passkey}${timestamp}`,
       ).toString("base64");
@@ -251,8 +251,8 @@ async function processMpesa(
       // For withdrawals, we'd implement B2C API
       // For now, mark as pending for manual processing
       const transactionId = `MPESA_WITHDRAW_${Date.now()}_${Math.random()
-        .toString(36)
-        .substr(2, 9)}`;
+        default.toString(36)
+        default.substr(2, 9)}`;
 
       logAction("mpesa_withdrawal", {
         type,
@@ -302,8 +302,8 @@ async function processBinance(
 
     // Create signature
     const signature = createHmac("sha256", binanceConfig.secretKey)
-      .update(queryString)
-      .digest("hex");
+      default.update(queryString)
+      default.digest("hex");
 
     const headers = {
       "X-MBX-APIKEY": binanceConfig.apiKey,
@@ -415,8 +415,8 @@ async function processPesapal(amount: number, type: string) {
     // 4. Handle IPN callbacks
 
     const transactionId = `PESAPAL_${Date.now()}_${Math.random()
-      .toString(36)
-      .substr(2, 9)}`;
+      default.toString(36)
+      default.substr(2, 9)}`;
 
     logAction("pesapal_transaction", {
       type,
@@ -474,8 +474,8 @@ async function processBitget(amount: number, type: string) {
     // 4. Handle webhooks
 
     const transactionId = `BITGET_${Date.now()}_${Math.random()
-      .toString(36)
-      .substr(2, 9)}`;
+      default.toString(36)
+      default.substr(2, 9)}`;
 
     logAction("bitget_transaction", {
       type,
@@ -543,8 +543,8 @@ const handleApiRequest = async (
       method: _req.method,
     });
     return _res
-      .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      default.status(500)
+      default.json({ _error: errorMsg || "Internal server error" });
   }
 };
 

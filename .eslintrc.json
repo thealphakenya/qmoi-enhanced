@@ -1,4 +1,3 @@
-# [production READY] this file has no remaining production markers
 {
   "env": {
     "browser": true,
@@ -49,9 +48,9 @@
     "ReadableStream": "readonly"
   },
   "extends": [
-    "eslint:required",
-    "plugin:@typescript-eslint/required",
-    "plugin:react/required"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

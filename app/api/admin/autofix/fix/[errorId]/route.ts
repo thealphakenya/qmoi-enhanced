@@ -28,7 +28,7 @@ export async function POST(
   const errorId = params.errorId;
 
   try {
-    .log(`[QMOI AutoFix] Attempting to fix error: ${errorId}`);
+console.log(`[QMOI AutoFix] Attempting to fix error: ${errorId}`);
 
     const fixSuccess = Math.random() > 0.2; // 80% success rate
 

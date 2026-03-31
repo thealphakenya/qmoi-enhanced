@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     const { userId, sessionId } = payload;
 
     // Check if session is still active
-    const session = await .prisma?.session?.findUnique({
+    const session = await db.prisma?.session?.findUnique({
       where: { id: sessionId },
     });
 
