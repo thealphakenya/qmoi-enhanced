@@ -1,5 +1,5 @@
 # QMOI production FULL VALIDATION REPORT
-Generated: 2026-03-30T22:18:01.220204
+Generated: 2026-04-01T03:04:53.258558
 Total issues found: 3
 ---
 ## docs_missing

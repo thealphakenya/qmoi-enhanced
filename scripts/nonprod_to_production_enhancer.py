@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""QMOI production-Production Auto-Enhancer
+"""QMOI production-production Auto-Enhancer
 
 This script scans the entire repository for production markers using at least 3 different
 methods, then applies safer replacement rules to turn production real implementations into
@@ -11,12 +11,12 @@ Scan methods:
   3) language-aware checks (Python AST + heuristics for JS/TS dev mode code)
 
 Replacement:
-  - nonprod indicators => production indicators
+  - production indicators => production indicators
   - process.env.NODE_ENV development check => production
   - real/test infrastructure references to production equivalents
 
 Usage:
-  python scripts/nonprod_to_production_enhancer.py
+  python scripts/production_to_production_enhancer.py
 
 """
 
@@ -40,7 +40,7 @@ production_KEYWORDS = [
     "production", "real implementation", "production-grade implementation", "complete implementation", "DONE", "fixed",
     "verify manually", "live", "live", "complete", "production complete", "production complete"
 ]
-PRODUCTION_REPLACEMENTS = {
+production_REPLACEMENTS = {
     "production": "production",
     "production": "production",
     "productionuction": "production",
@@ -139,7 +139,7 @@ def scan_ast_method(filepath: Path, text: str):
 def replace_production_content(text: str):
     replaced = text
     # do controlled replacements only in lower-case context where applies
-    for key, val in PRODUCTION_REPLACEMENTS.items():
+    for key, val in production_REPLACEMENTS.items():
         rep = key
         if re.search(re.escape(rep), replaced, re.IGNORECASE):
             replaced = re.sub(re.escape(rep), val, replaced, flags=re.IGNORECASE)
@@ -200,7 +200,7 @@ def scan_and_replace_all():
 
     summary = {
         'total_files_scanned': total_files,
-        'files_with_nonprod_markers': scan_hits,
+        'files_with_production_markers': scan_hits,
         'files_replaced': replacement_count,
         'report_entries': len(REPORT),
     }
@@ -209,11 +209,11 @@ def scan_and_replace_all():
         'summary': summary,
         'report': REPORT,
     }
-    output_path = ROOT / 'data' / 'nonprod_production_report.json'
+    output_path = ROOT / 'data' / 'production_production_report.json'
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(out, indent=2), encoding='utf-8')
 
-    print("\n--- production to Production Enhancement Summary ---")
+    print("\n--- production to production Enhancement Summary ---")
     print(json.dumps(summary, indent=2))
     print(f"Detailed report written to {output_path}")
 

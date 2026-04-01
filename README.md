@@ -27,7 +27,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-04-01T00:00:00Z
-- note: Auto-inserted by `scripts/autotag_md_with_lion.py` - Production operations verified
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` - production operations verified
 <!-- LION_VALIDATION_END -->
 
 # QMOI System

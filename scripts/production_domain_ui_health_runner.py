@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Production Domain/UI/Auto-Adaptation Verification Runner
+production Domain/UI/Auto-Adaptation Verification Runner
 
 This script runs a full production readiness sequence:
 1. Ensure log folder exists
@@ -71,7 +71,7 @@ def main():
     with open(REPORT_PATH, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2)
 
-    print('Production domain/UI/auto-adaptation run complete; report:', REPORT_PATH)
+    print('production domain/UI/auto-adaptation run complete; report:', REPORT_PATH)
     retorno = report['summary']['checks_passed'] == report['summary']['total_checks'] and report['summary']['ui_test_passed']
     return 0 if retorno else 1
 

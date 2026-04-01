@@ -1595,7 +1595,7 @@
       "WARNING (9)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_non_production.sh": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_production.sh": [
       "DONE (3)",
       "fixed (1)",
       "real (7)",
@@ -2033,7 +2033,7 @@
       "production (2)",
       "WARNING (10)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/nonprod_scanner.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/production_scanner.py": [
       "DONE (1)",
       "fixed (1)",
       "production (5)",
@@ -4821,7 +4821,7 @@
       "WARNING (9)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_non_production.sh": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_production.sh": [
       "DONE (3)",
       "fixed (1)",
       "real (7)",
@@ -5826,7 +5826,7 @@
       "production (2)",
       "WARNING (10)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/nonprod_scanner.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/production_scanner.py": [
       "DONE (1)",
       "fixed (1)",
       "production (5)",
@@ -8176,7 +8176,7 @@
       "WARNING (9)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_non_production.sh": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_production.sh": [
       "DONE (3)",
       "fixed (1)",
       "real (7)",
@@ -8598,7 +8598,7 @@
       "production (2)",
       "WARNING (10)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/nonprod_scanner.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/production_scanner.py": [
       "DONE (1)",
       "fixed (1)",
       "production (5)",
@@ -12476,7 +12476,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/ensure-files.js": [
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/scan_nonproduction_endpoints.js": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/scan_production_endpoints.js": [
       "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/gitlab-automation.js": [
@@ -13001,7 +13001,7 @@
       "WARNING (9)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/deep_scan_non_production.sh": [
+    "/workspaces/qmoi-enhanced/scripts/deep_scan_production.sh": [
       "DONE (3)",
       "fixed (1)",
       "real (7)",
@@ -13609,7 +13609,7 @@
       "real (3)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/enhanced_scan_nonproduction.test.py": [
+    "/workspaces/qmoi-enhanced/scripts/enhanced_scan_production.test.py": [
       "production (1)",
       "production (1)"
     ],
@@ -14139,7 +14139,7 @@
     "/workspaces/qmoi-enhanced/scripts/qmoi-gitlab-sync.js": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/scan_nonproduction_endpoints.js": [
+    "/workspaces/qmoi-enhanced/scripts/scan_production_endpoints.js": [
       "real (1)",
       "production (2)",
       "real (1)",
@@ -14291,7 +14291,7 @@
       "production (2)",
       "WARNING (10)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/nonprod_scanner.py": [
+    "/workspaces/qmoi-enhanced/scripts/production_scanner.py": [
       "DONE (1)",
       "fixed (1)",
       "production (5)",
@@ -14380,7 +14380,7 @@
       "stable (8)",
       "stable (8)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/scan_nonproduction_endpoints.test.py": [
+    "/workspaces/qmoi-enhanced/scripts/scan_production_endpoints.test.py": [
       "production (3)",
       "production (3)"
     ],

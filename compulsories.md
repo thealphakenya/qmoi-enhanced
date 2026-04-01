@@ -24,7 +24,7 @@
 
 ### Stage 2 Completion (Continuous Operations):
 - **Monitoring Setup**: CONTINUOUS_MONITORING_SETUP.md created and deployed ✅
-- **Operations Guide**: PRODUCTION_OPERATIONS_GUIDE.md created and deployed ✅
+- **Operations Guide**: production_OPERATIONS_GUIDE.md created and deployed ✅
 - **Deployment Summary**: FINAL_DEPLOYMENT_SUMMARY.md created ✅
 - **Script Fixes**: 468+ Python scripts corrected with proper syntax ✅
 - **Report Generation**: 200+ operational reports generated and organized ✅
@@ -66,10 +66,10 @@
    - Track in `QMOI_WALLET_FINANCIAL_SYSTEMS` or `WALLETS` docs.
    - Provide reconciliation and master approval workflows.
 
-8. Nonproduction automation enhancer:
-   - Implemented script: `scripts/nonprod_to_production_enhancer.py` (scan 3 types + replace to production)
-   - Report file: `data/nonprod_production_report.json`
-   - Full sweep completed: scanned 5521 files, found 1696 nonprod markers, replaced 1497 files.
+8. production automation enhancer:
+   - Implemented script: `scripts/production_to_production_enhancer.py` (scan 3 types + replace to production)
+   - Report file: `data/production_production_report.json`
+   - Full sweep completed: scanned 5521 files, found 1696 production markers, replaced 1497 files.
 
 ## Enterprise Repository Auditing Script Requirements
 

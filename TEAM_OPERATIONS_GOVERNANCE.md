@@ -214,7 +214,7 @@ Week 5: Engineer A (repeat)
 **Authority**: Strategic decisions
 **Process**: Executive review + approval
 **Examples**:
-- Product direction
+- product direction
 - Long-term roadmap
 - Vendor selection
 - Budget allocation
@@ -277,7 +277,7 @@ For Level 3+ decisions:
 - Any engineer: Approved
 - Automated: 15 minute delay
 
-#### Production
+#### production
 - Team Lead: Minimum 1 approval required
 - Business Hours: Recommended
 - Ready on-call: Mandatory
@@ -413,7 +413,7 @@ All public-facing documentation should include:
 2. **Version Bump**: Update package.json
 3. **Changelog**: Document changes
 4. **Staging Test**: Full test cycle
-5. **Production Prep**: Database migrations
+5. **production Prep**: Database migrations
 6. **Release**: Deploy to production
 7. **Monitoring**: 24-hour close watch
 8. **Documentation**: Update user docs

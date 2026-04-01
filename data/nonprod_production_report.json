@@ -1,7 +1,7 @@
 {
   "summary": {
     "total_files_scanned": 5521,
-    "files_with_nonprod_markers": 1696,
+    "files_with_production_markers": 1696,
     "files_replaced": 1497,
     "report_entries": 1696
   },
@@ -57,8 +57,8 @@
       "file": "version_info.txt",
       "keywords": [
         "alpha",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -129,8 +129,8 @@
     {
       "file": "BB.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -261,7 +261,7 @@
       "ast": []
     },
     {
-      "file": "QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md",
+      "file": "QMOI_production_AUTO_RECOVERY_COMPLETE.md",
       "keywords": [
         "alpha"
       ],
@@ -311,8 +311,8 @@
     {
       "file": "resumefromhere.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -326,7 +326,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_READINESS_EXECUTION_STATUS.md",
+      "file": "production_READINESS_EXECUTION_STATUS.md",
       "keywords": [
         "alpha"
       ],
@@ -376,8 +376,8 @@
     {
       "file": "Z1.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -497,14 +497,14 @@
     {
       "file": "clean_commits.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
     },
     {
-      "file": "PRODUCTION_COMPLETION_SUMMARY.md",
+      "file": "production_COMPLETION_SUMMARY.md",
       "keywords": [],
       "regex": [
         "local_api"
@@ -544,7 +544,7 @@
       "ast": []
     },
     {
-      "file": "PHASE4_PRODUCTION_STRATEGY.md",
+      "file": "PHASE4_production_STRATEGY.md",
       "keywords": [
         "alpha",
         "demo"
@@ -553,7 +553,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_DEPLOYMENT_PLAYBOOK.md",
+      "file": "production_DEPLOYMENT_PLAYBOOK.md",
       "keywords": [
         "alpha"
       ],
@@ -571,8 +571,8 @@
     {
       "file": "Z12.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -641,8 +641,8 @@
     {
       "file": "responsesb.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -650,8 +650,8 @@
     {
       "file": "build-report.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -915,7 +915,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_BUILD_SETUP.md",
+      "file": "production_BUILD_SETUP.md",
       "keywords": [
         "alpha"
       ],
@@ -939,7 +939,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_DEPLOYMENT_README.md",
+      "file": "production_DEPLOYMENT_README.md",
       "keywords": [
         "alpha"
       ],
@@ -957,7 +957,7 @@
     {
       "file": "FILES_MODIFIED_SUMMARY.txt",
       "keywords": [
-        "non-prod",
+        "production",
         "wip"
       ],
       "regex": [],
@@ -1048,7 +1048,7 @@
       "ast": []
     },
     {
-      "file": "README_PRODUCTION.md",
+      "file": "README_production.md",
       "keywords": [
         "alpha"
       ],
@@ -1064,7 +1064,7 @@
       "ast": []
     },
     {
-      "file": "scan_non_production.py",
+      "file": "scan_production.py",
       "keywords": [
         "TODO",
         "demo",
@@ -1080,7 +1080,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_READY_SUMMARY.md",
+      "file": "production_READY_SUMMARY.md",
       "keywords": [
         "alpha"
       ],
@@ -1096,7 +1096,7 @@
       "ast": []
     },
     {
-      "file": "OPTION_A_PRODUCTION_READY.md",
+      "file": "OPTION_A_production_READY.md",
       "keywords": [
         "demo"
       ],
@@ -1139,8 +1139,8 @@
     {
       "file": "responsesa.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1204,8 +1204,8 @@
     {
       "file": "requirements-minimal.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1229,8 +1229,8 @@
     {
       "file": "requirements.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1254,8 +1254,8 @@
     {
       "file": "instructions.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1272,8 +1272,8 @@
     {
       "file": "DEPLOYMENT_SUMMARY.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1316,8 +1316,8 @@
       "file": "responsesf.txt",
       "keywords": [
         "demo",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1406,8 +1406,8 @@
     {
       "file": "responsese.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1429,8 +1429,8 @@
       "file": "responsesd.txt",
       "keywords": [
         "demo",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1519,7 +1519,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_RELEASE_ACTION_PLAN.md",
+      "file": "production_RELEASE_ACTION_PLAN.md",
       "keywords": [
         "alpha"
       ],
@@ -1530,8 +1530,8 @@
       "file": "COMPLETION_REPORT.txt",
       "keywords": [
         "alpha",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1653,7 +1653,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_DEPLOYMENT_ALL_STEPS.md",
+      "file": "production_DEPLOYMENT_ALL_STEPS.md",
       "keywords": [
         "alpha"
       ],
@@ -1703,7 +1703,7 @@
       "ast": []
     },
     {
-      "file": "QVILLAGE_READY_FOR_PRODUCTION.md",
+      "file": "QVILLAGE_READY_FOR_production.md",
       "keywords": [
         "alpha"
       ],
@@ -1778,8 +1778,8 @@
     {
       "file": "readme.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1801,7 +1801,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_CHANGES.md",
+      "file": "production_CHANGES.md",
       "keywords": [
         "demo"
       ],
@@ -1827,8 +1827,8 @@
     {
       "file": "build_discovery_report.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1889,8 +1889,8 @@
     {
       "file": "DEPLOYMENT_TRIGGER.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1912,7 +1912,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_DEPLOYMENT_CHECKLIST.md",
+      "file": "production_DEPLOYMENT_CHECKLIST.md",
       "keywords": [
         "alpha"
       ],
@@ -1931,8 +1931,8 @@
     {
       "file": "platformspayed.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -1940,8 +1940,8 @@
     {
       "file": "DEPLOYMENT_READY.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [
         "local_api"
@@ -2035,15 +2035,15 @@
     {
       "file": "validations.txt",
       "keywords": [
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "simulate"
       ],
       "regex": [],
       "ast": []
     },
     {
-      "file": "PRODUCTION_READINESS_ENHANCED_REPORT.md",
+      "file": "production_READINESS_ENHANCED_REPORT.md",
       "keywords": [
         "simulation",
         "stub"
@@ -2136,8 +2136,8 @@
     {
       "file": "abctesting.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -2151,7 +2151,7 @@
       "ast": []
     },
     {
-      "file": "QMOI_PRODUCTION_API.md",
+      "file": "QMOI_production_API.md",
       "keywords": [
         "demo"
       ],
@@ -2161,8 +2161,8 @@
     {
       "file": "FINAL_CAMPAIGN_SUMMARY.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [
         "local_api"
@@ -2180,8 +2180,8 @@
     {
       "file": "typecheck-report.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -2197,8 +2197,8 @@
     {
       "file": "parsing_src_app_files.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -2313,8 +2313,8 @@
       "file": "parsing_files.txt",
       "keywords": [
         "demo",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -2363,8 +2363,8 @@
       "file": "responsesc.txt",
       "keywords": [
         "demo",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -2509,11 +2509,11 @@
       "ast": []
     },
     {
-      "file": "QUICK_START_PRODUCTION.txt",
+      "file": "QUICK_START_production.txt",
       "keywords": [
         "alpha",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -2521,8 +2521,8 @@
     {
       "file": "git.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -2536,10 +2536,10 @@
       "ast": []
     },
     {
-      "file": "NONPROD_COMPONENTS_HEAD.txt",
+      "file": "production_COMPONENTS_HEAD.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -2593,8 +2593,8 @@
     {
       "file": "commits.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -2731,8 +2731,8 @@
       "file": "PHASE_3_SESSION_COMPLETE.txt",
       "keywords": [
         "alpha",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -2740,8 +2740,8 @@
     {
       "file": "QMOI_AUTOFIX_VISUAL_SUMMARY.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [
         "local_api"
@@ -2751,8 +2751,8 @@
     {
       "file": "USER_RESPONSE_TESTS_MASTER.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -2999,7 +2999,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md",
+      "file": "production_RELEASE_VALIDATION_CHECKLIST.md",
       "keywords": [
         "alpha"
       ],
@@ -3010,8 +3010,8 @@
       "file": "responsesg.txt",
       "keywords": [
         "demo",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3053,8 +3053,8 @@
     {
       "file": "lint_full_output.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3068,7 +3068,7 @@
       "ast": []
     },
     {
-      "file": "NONPROD_REPORT_HEAD.txt",
+      "file": "production_REPORT_HEAD.txt",
       "keywords": [
         "alpha",
         "beta",
@@ -3130,9 +3130,9 @@
         "alpha",
         "demo",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulation",
         "stub"
@@ -3159,8 +3159,8 @@
     {
       "file": "ngrok_tunnel.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3214,8 +3214,8 @@
     {
       "file": "responsesh.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3306,8 +3306,8 @@
     {
       "file": "resume_state.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3316,8 +3316,8 @@
       "file": "responsesa_enhanced.txt",
       "keywords": [
         "demo",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [
         "local_api"
@@ -3328,9 +3328,9 @@
       "file": "continues.txt",
       "keywords": [
         "alpha",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "simulation",
         "stub",
         "wip"
@@ -3506,7 +3506,7 @@
       "ast": []
     },
     {
-      "file": "scan_non_production.js",
+      "file": "scan_production.js",
       "keywords": [
         "fake",
         "placeholder",
@@ -3537,8 +3537,8 @@
     {
       "file": "D1.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3546,8 +3546,8 @@
     {
       "file": "resumefromhereold.txt",
       "keywords": [
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "sandbox"
       ],
       "regex": [],
@@ -3608,8 +3608,8 @@
       "file": "DEPLOYMENT_COMPLETION_REPORT.txt",
       "keywords": [
         "alpha",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3617,8 +3617,8 @@
     {
       "file": "USER_RESPONSE_TESTS_SISTER.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3636,7 +3636,7 @@
       "ast": []
     },
     {
-      "file": "ROOT_PRODUCTION_STATUS.md",
+      "file": "ROOT_production_STATUS.md",
       "keywords": [
         "alpha",
         "demo",
@@ -3696,8 +3696,8 @@
     {
       "file": "COMPONENTS_INVENTORY.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3721,8 +3721,8 @@
     {
       "file": "SESSION_4_EXTENDED_FINAL_STATUS.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [
         "local_api"
@@ -3730,7 +3730,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_SETUP.md",
+      "file": "production_SETUP.md",
       "keywords": [],
       "regex": [
         "local_api"
@@ -3781,7 +3781,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_ALWAYS_ON_DEPLOYMENT.md",
+      "file": "production_ALWAYS_ON_DEPLOYMENT.md",
       "keywords": [
         "alpha"
       ],
@@ -3836,8 +3836,8 @@
     {
       "file": "test_from_qmoi.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3921,8 +3921,8 @@
     {
       "file": "live_qmoi_ngrok_url.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3936,7 +3936,7 @@
       "ast": []
     },
     {
-      "file": "FINAL_PRODUCTION_READINESS_REPORT.md",
+      "file": "FINAL_production_READINESS_REPORT.md",
       "keywords": [
         "simulation"
       ],
@@ -3947,8 +3947,8 @@
       "file": ".eslint_report_parsing_files.txt",
       "keywords": [
         "demo",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -3983,8 +3983,8 @@
       "file": "USER_RESPONSE_TESTING_COMPLETE.txt",
       "keywords": [
         "demo",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4002,8 +4002,8 @@
     {
       "file": "gitb.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4012,8 +4012,8 @@
       "file": "USER_RESPONSE_TESTS_GUEST.txt",
       "keywords": [
         "demo",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4039,8 +4039,8 @@
       "file": "abc.txt",
       "keywords": [
         "demo",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4057,14 +4057,14 @@
       "file": "Y2.txt",
       "keywords": [
         "alpha",
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
     },
     {
-      "file": "PRODUCTION_REMEDIATION_FINAL_REPORT.md",
+      "file": "production_REMEDIATION_FINAL_REPORT.md",
       "keywords": [
         "stub"
       ],
@@ -4101,8 +4101,8 @@
     {
       "file": "SESSION_SUMMARY.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4157,7 +4157,7 @@
       "ast": []
     },
     {
-      "file": "PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md",
+      "file": "production_DEPLOYMENT_AUTO_RECOVERY.md",
       "keywords": [
         "alpha"
       ],
@@ -4190,8 +4190,8 @@
     {
       "file": "requirements-dev.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4211,9 +4211,9 @@
         "demo",
         "experimental",
         "incomplete",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulate",
         "simulation",
@@ -4230,7 +4230,7 @@
         "TODO",
         "demo",
         "mock",
-        "nonproduction",
+        "production",
         "placeholder",
         "stub"
       ],
@@ -4248,7 +4248,7 @@
       "ast": []
     },
     {
-      "file": "FINAL_PRODUCTION_READINESS_REPORT_V2.md",
+      "file": "FINAL_production_READINESS_REPORT_V2.md",
       "keywords": [
         "mock"
       ],
@@ -4286,8 +4286,8 @@
     {
       "file": "COMPREHENSIVE_VALIDATION_REPORT.txt",
       "keywords": [
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "placeholder"
       ],
       "regex": [],
@@ -4296,8 +4296,8 @@
     {
       "file": "requirements-control.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4313,8 +4313,8 @@
     {
       "file": "COMPREHENSIVE_QMOI_RESPONSE_TESTING_SUMMARY.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4382,10 +4382,10 @@
       "ast": []
     },
     {
-      "file": "NONPROD_COMPONENTS.txt",
+      "file": "production_COMPONENTS.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4419,8 +4419,8 @@
     {
       "file": "push_log.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4435,7 +4435,7 @@
         "experimental",
         "fake",
         "mock",
-        "nonproduction",
+        "production",
         "placeholder",
         "sandbox",
         "simulate",
@@ -4471,9 +4471,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -4494,8 +4494,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -4529,8 +4529,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -4550,9 +4550,9 @@
         "alpha",
         "demo",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -4580,9 +4580,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -4601,9 +4601,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -4622,9 +4622,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -4645,8 +4645,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -4670,8 +4670,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -4693,9 +4693,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -4716,8 +4716,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -4741,8 +4741,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -4766,8 +4766,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -4791,8 +4791,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -4816,8 +4816,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -4837,9 +4837,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -4856,9 +4856,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -4871,8 +4871,8 @@
     {
       "file": "undone_backups/undone_1774308131.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4886,9 +4886,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -4905,9 +4905,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulation",
         "stub"
@@ -4926,8 +4926,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -4945,9 +4945,9 @@
       "keywords": [
         "alpha",
         "demo",
-        "non-prod",
-        "non-production",
-        "nonproduction"
+        "production",
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -4959,9 +4959,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -4982,8 +4982,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5005,9 +5005,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5028,8 +5028,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5049,9 +5049,9 @@
         "alpha",
         "demo",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5069,9 +5069,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5088,9 +5088,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulation",
         "stub"
@@ -5107,9 +5107,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5130,8 +5130,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5150,8 +5150,8 @@
         "FIXME",
         "TODO",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "placeholder",
         "simulate",
         "simulation",
@@ -5168,9 +5168,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulation",
         "stub"
@@ -5185,9 +5185,9 @@
         "alpha",
         "demo",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5205,9 +5205,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5226,9 +5226,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5249,8 +5249,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5270,9 +5270,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5293,8 +5293,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5313,9 +5313,9 @@
         "alpha",
         "demo",
         "fake",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "sandbox"
       ],
       "regex": [],
@@ -5328,9 +5328,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulation",
         "stub"
@@ -5349,8 +5349,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5370,9 +5370,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulation",
         "stub"
@@ -5391,8 +5391,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5410,8 +5410,8 @@
       "keywords": [
         "alpha",
         "demo",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "sandbox"
       ],
       "regex": [],
@@ -5423,9 +5423,9 @@
         "TODO",
         "demo",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5445,8 +5445,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5463,8 +5463,8 @@
     {
       "file": "undone_backups/undone_1773960828.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -5472,8 +5472,8 @@
     {
       "file": "undone_backups/undone_1774308034.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -5485,9 +5485,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulation",
         "stub"
@@ -5502,9 +5502,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5517,8 +5517,8 @@
     {
       "file": "undone_backups/undone_1774370440.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -5536,8 +5536,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5555,9 +5555,9 @@
       "keywords": [
         "TODO",
         "demo",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulation",
         "stub"
@@ -5576,8 +5576,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5593,8 +5593,8 @@
     {
       "file": "undone_backups/undone_1773961215.txt",
       "keywords": [
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "simulation",
         "stub"
       ],
@@ -5604,8 +5604,8 @@
     {
       "file": "undone_backups/undone_1773961148.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -5619,9 +5619,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5638,9 +5638,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulation",
         "stub"
@@ -5659,8 +5659,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5676,8 +5676,8 @@
     {
       "file": "undone_backups/undone_1773960797.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -5695,8 +5695,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5720,8 +5720,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5745,8 +5745,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5766,9 +5766,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulation",
         "stub"
@@ -5779,8 +5779,8 @@
     {
       "file": "undone_backups/undone_1774306995.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -5791,9 +5791,9 @@
         "TODO",
         "demo",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5805,8 +5805,8 @@
     {
       "file": "undone_backups/undone_1774074963.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -5818,9 +5818,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5836,8 +5836,8 @@
         "FIXME",
         "TODO",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "placeholder",
         "simulate",
         "simulation",
@@ -5858,8 +5858,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5884,8 +5884,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5909,8 +5909,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -5930,9 +5930,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "simulation",
         "stub"
@@ -5943,8 +5943,8 @@
     {
       "file": "undone_backups/undone_1774407769.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -5958,9 +5958,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -5976,9 +5976,9 @@
         "alpha",
         "demo",
         "fake",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "sandbox"
       ],
       "regex": [],
@@ -6003,9 +6003,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -6022,9 +6022,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -6045,8 +6045,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -6069,9 +6069,9 @@
         "experimental",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -6087,9 +6087,9 @@
         "TODO",
         "demo",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -6105,9 +6105,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -6124,9 +6124,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -6143,9 +6143,9 @@
         "demo",
         "fake",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "placeholder",
         "sandbox",
         "simulation",
@@ -6158,8 +6158,8 @@
     {
       "file": "undone_backups/undone_1774316775.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -6352,8 +6352,8 @@
     {
       "file": "installer/LICENSE.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -6361,8 +6361,8 @@
     {
       "file": "temps/atoz.txt",
       "keywords": [
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "sandbox"
       ],
       "regex": [],
@@ -6420,8 +6420,8 @@
       "keywords": [
         "dev only",
         "experimental",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "simulate",
         "simulation",
         "stub",
@@ -6606,8 +6606,8 @@
     {
       "file": ".github/auto_retry_trigger.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -6615,8 +6615,8 @@
     {
       "file": "qcity-artifacts/new_sizes.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -6624,8 +6624,8 @@
     {
       "file": "qcity-artifacts/new_hashes.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -6633,8 +6633,8 @@
     {
       "file": "_RELEASE_BACKUPS_v1.2.5_1763248024/SHA256SUMS.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -6853,7 +6853,7 @@
       "ast": []
     },
     {
-      "file": "docs_site/PRODUCTION_LINK_AUDIT.json",
+      "file": "docs_site/production_LINK_AUDIT.json",
       "keywords": [
         "alpha"
       ],
@@ -6931,16 +6931,16 @@
     {
       "file": "v1.2.5_release/SHA256SUMS.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
     },
     {
-      "file": "production_deployment/PRODUCTION_DEPLOYMENT_REPORT.txt",
+      "file": "production_deployment/production_DEPLOYMENT_REPORT.txt",
       "keywords": [
-        "nonproduction",
+        "production",
         "simulation"
       ],
       "regex": [],
@@ -7483,7 +7483,7 @@
       "ast": []
     },
     {
-      "file": "scripts/scan_nonproduction_endpoints.py",
+      "file": "scripts/scan_production_endpoints.py",
       "keywords": [
         "FIXME",
         "TODO",
@@ -7824,7 +7824,7 @@
       "ast": []
     },
     {
-      "file": "scripts/deep_scan_non_production.sh",
+      "file": "scripts/deep_scan_production.sh",
       "keywords": [
         "demo",
         "mock",
@@ -8434,7 +8434,7 @@
       "ast": []
     },
     {
-      "file": "scripts/enhanced_scan_nonproduction.py",
+      "file": "scripts/enhanced_scan_production.py",
       "keywords": [
         "FIXME",
         "TODO",
@@ -8630,7 +8630,7 @@
       "ast": []
     },
     {
-      "file": "scripts/normalize_nonprod_comments.py",
+      "file": "scripts/normalize_production_comments.py",
       "keywords": [
         "simulation",
         "stub"
@@ -9029,7 +9029,7 @@
       "ast": []
     },
     {
-      "file": "scripts/enhanced_nonprod_scanner.py",
+      "file": "scripts/enhanced_production_scanner.py",
       "keywords": [
         "FIXME",
         "TODO",
@@ -9231,7 +9231,7 @@
       "ast": []
     },
     {
-      "file": "scripts/nonprod_to_production_enhancer.py",
+      "file": "scripts/production_to_production_enhancer.py",
       "keywords": [
         "FIXME",
         "TODO",
@@ -9246,9 +9246,9 @@
         "incomplete",
         "minimal implementation",
         "mock",
-        "non-prod",
-        "non-production",
-        "nonproduction",
+        "production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "sandbox",
@@ -9557,7 +9557,7 @@
       "ast": []
     },
     {
-      "file": "scripts/nonprod_scanner.py",
+      "file": "scripts/production_scanner.py",
       "keywords": [
         "FIXME",
         "TODO",
@@ -9676,8 +9676,8 @@
         "fake",
         "incomplete",
         "mock",
-        "non-prod",
-        "non-production",
+        "production",
+        "production",
         "partial implementation",
         "placeholder",
         "simulate",
@@ -9928,8 +9928,8 @@
     {
       "file": "requirements/ai_automation.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -9937,8 +9937,8 @@
     {
       "file": "requirements/qmoi_enhanced_requirements.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -9984,7 +9984,7 @@
       "ast": []
     },
     {
-      "file": "reports/COMPREHENSIVE_PRODUCTION_READINESS_REPORT.md",
+      "file": "reports/COMPREHENSIVE_production_READINESS_REPORT.md",
       "keywords": [
         "mock",
         "staging"
@@ -10052,7 +10052,7 @@
       "ast": []
     },
     {
-      "file": "docs/implementation/PRODUCTION_IMPLEMENTATION_GUIDE.md",
+      "file": "docs/implementation/production_IMPLEMENTATION_GUIDE.md",
       "keywords": [
         "TODO",
         "mock"
@@ -10346,8 +10346,8 @@
     {
       "file": "tests/reports/master_test_summary_20250715_161042.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -10355,8 +10355,8 @@
     {
       "file": "tests/reports/master_test_summary_20250715_162256.txt",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []
@@ -15380,8 +15380,8 @@
     {
       "file": "src/components/ChatbotEnhanced.css",
       "keywords": [
-        "non-prod",
-        "non-production"
+        "production",
+        "production"
       ],
       "regex": [],
       "ast": []

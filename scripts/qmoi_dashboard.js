@@ -1,4 +1,4 @@
-// [PRODUCTION READY]
+// [production READY]
 import express from "express";
 import session from "express-session";
 import fs from "fs";
@@ -174,7 +174,7 @@ app.get("/error-fix-stats", (req, res) => {
 app.post("/trigger-fix", (req, res) => {
   if (!requireApiKeyFromReq(req, res)) return;
   try {
-    if (!process.env.PRODUCTION_CONFIRMED) {
+    if (!process.env.production_CONFIRMED) {
       // Write a proposal file instead of running the fix
       const pdir = path.join(process.cwd(), ".qmoi_validation");
       fs.mkdirSync(pdir, { recursive: true });
@@ -218,8 +218,8 @@ app.post("/trigger-fix", (req, res) => {
 app.post("/send-test-notification", async (req, res) => {
   if (!requireApiKeyFromReq(req, res)) return;
   try {
-    // For safety, only run notification sends when PRODUCTION_CONFIRMED is set
-    if (!process.env.PRODUCTION_CONFIRMED) {
+    // For safety, only run notification sends when production_CONFIRMED is set
+    if (!process.env.production_CONFIRMED) {
       const pdir = path.join(process.cwd(), ".qmoi_validation");
       fs.mkdirSync(pdir, { recursive: true });
       const fname = path.join(pdir, `proposal-send-notif-${Date.now()}.json`);

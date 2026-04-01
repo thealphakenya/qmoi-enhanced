@@ -11,8 +11,8 @@ This document tracks utility scripts used for system health, diagnosis, and main
 
 - `scripts/host_reachability_check.py` - Host-level reachability checker for Node/npm/pm2, local endpoints, and remote domains
 - `scripts/domain_health_check.py` - Domain/URL content health scanner and production marker detection
-- `scripts/generate_production_status.py` - Production readiness marker extractor
-- `scripts/prod-healthcheck.sh` - Production health check orchestration script
+- `scripts/generate_production_status.py` - production readiness marker extractor
+- `scripts/prod-healthcheck.sh` - production health check orchestration script
 
 ## Integration
 
