@@ -1,4 +1,3 @@
-import { NextRequest, NextResponse } from 'next/server';
 import {
   exchangeOAuthCode,
   getOAuthRedirectUrl,
@@ -6,38 +5,48 @@ import {
   type SocialProvider,
 } from '@/lib/auth/social';
 
+function jsonResponse(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}
+
 export async function GET(
-  request: NextRequest,
+  request: Request,
   { params }: { params: { provider: string } },
 ) {
   const provider = params.provider as string;
   if (!isSocialProvider(provider)) {
-    return NextResponse.json({ error: 'Unsupported social provider' }, { status: 400 });
+    return jsonResponse({ error: 'Unsupported social provider' }, 400);
   }
 
-  const state = request.nextUrl.searchParams.get('state') || '';
+  const url = new URL(request.url);
+  const state = url.searchParams.get('state') || '';
   const redirectUrl = getOAuthRedirectUrl(provider as SocialProvider, state);
 
-  return NextResponse.redirect(redirectUrl);
+  return Response.redirect(redirectUrl);
 }
 
 export async function POST(
-  request: NextRequest,
+  request: Request,
   { params }: { params: { provider: string } },
 ) {
   const provider = params.provider as string;
   if (!isSocialProvider(provider)) {
-    return NextResponse.json({ error: 'Unsupported social provider' }, { status: 400 });
+    return jsonResponse({ error: 'Unsupported social provider' }, 400);
   }
 
   const body = await request.json();
-  const code = body.code;
+  const code = (body as any).code;
   if (!code) {
-    return NextResponse.json({ error: 'OAuth code is required' }, { status: 400 });
+    return jsonResponse({ error: 'OAuth code is required' }, 400);
   }
 
   const tokenResponse = await exchangeOAuthCode(provider as SocialProvider, code);
-  return NextResponse.json({
+  return jsonResponse({
     success: true,
     provider,
     token: tokenResponse.accessToken,

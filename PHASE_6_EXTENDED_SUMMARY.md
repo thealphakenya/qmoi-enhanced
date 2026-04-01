@@ -296,7 +296,7 @@ Tests:
 ## Deployment Checklist
 
 - [ ] Create AuditLog database table
-- [ ] Configure Redis for rate limiting (optional but required)
+- [x] Configure Redis for rate limiting (optional but required)
 - [ ] Set up log file rotation (Winston config)
 - [ ] Configure alert thresholds
 - [ ] Set up monitoring dashboard access

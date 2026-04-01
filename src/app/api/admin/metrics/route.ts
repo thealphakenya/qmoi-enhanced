@@ -1,4 +1,3 @@
-import { NextResponse } from 'next/server';
 import { exportPrometheusMetrics, getDashboardMetrics } from '@/lib/telemetry/observability';
 
 export async function GET(request: Request) {
@@ -11,9 +10,16 @@ export async function GET(request: Request) {
     });
   }
 
-  return NextResponse.json({
-    success: true,
-    metrics: getDashboardMetrics(),
-    timestamp: new Date().toISOString(),
-  });
+  return new Response(
+    JSON.stringify({
+      success: true,
+      metrics: getDashboardMetrics(),
+      timestamp: new Date().toISOString(),
+    }),
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  );
 }

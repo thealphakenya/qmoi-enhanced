@@ -11,7 +11,7 @@
 
 **Generated**: 2026-04-01 CONTINUOUS OPERATIONS
 **Last Updated**: 2026-04-01T00:00:00Z
-**Total Endpoints**: 251
+**Total Endpoints**: 259
 
 ## Overview
 
@@ -19,7 +19,7 @@ This document provides comprehensive documentation for all QMOI system APIs. All
 
 ## Quick Access
 
-- **Total Endpoints**: 251
+- **Total Endpoints**: 259
 - **API Base URL**: `/api`
 - **Authentication**: JWT tokens required for most endpoints
 - **Rate Limiting**: Applied to all endpoints
@@ -76,6 +76,11 @@ Content-Type: application/json
 - `GET /api/qmoi/health` - Health check
 - `GET /api/qmoi/health/stream` - Health stream
 
+### Observability & Notifications
+- `GET /api/admin/metrics` - Prometheus-compatible metrics export
+- `GET /api/admin/tracing` - Diagnostic tracing status
+- `POST /api/alerts/webhook` - Send alert payload to webhook adapter
+
 ### Consciousness & Awareness
 - `GET /api/consciousness` - Get consciousness state
 - `POST /api/consciousness` - Update consciousness
@@ -111,6 +116,11 @@ Content-Type: application/json
 - `POST /api/datasets` - Create dataset
 - `GET /api/datasets/[id]` - Get specific dataset
 - `GET /api/datasets/settings` - Dataset settings
+
+### Subscription Management
+- `GET /api/subscriptions` - Get user subscription and available plans
+- `POST /api/subscriptions` - Update user subscription tier
+- `DELETE /api/subscriptions` - Cancel user subscription
 
 ### Media
 - `POST /api/media/generate` - Generate media
@@ -164,6 +174,14 @@ Content-Type: application/json
 - `GET` `/api/admin/monitoring`
 - `GET` `/api/admin/rate-limits`
 - `GET` `/api/admin/users`
+- `GET` `/api/admin/metrics`
+- `GET` `/api/admin/tracing`
+- `POST` `/api/alerts/webhook`
+- `GET` `/api/auth/oauth/[provider]`
+- `POST` `/api/auth/oauth/[provider]`
+- `GET` `/api/subscriptions`
+- `POST` `/api/subscriptions`
+- `DELETE` `/api/subscriptions`
 - `GET` `/api/ai`
 - `GET` `/api/ai-anomaly-service`
 - `GET` `/api/ai-health`

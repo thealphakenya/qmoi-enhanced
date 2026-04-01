@@ -1,7 +1,7 @@
 # ROUTES.md - Complete API Routes Reference
 
 **Last Updated**: 2026-03-29T03:15:22.891234
-**Total Routes**: 28
+**Total Routes**: 36
 **Status**: ✅ production Ready
 **Framework**: Next.js 20+ (App Router)
 
@@ -13,18 +13,20 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
 
 | Category | Count | Status |
 |----------|-------|--------|
-| **Total Routes** | 28 | ✅ Active |
-| **Authentication Routes** | 5 | ✅ Secured |
+| **Total Routes** | 36 | ✅ Active |
+| **Authentication Routes** | 7 | ✅ Secured |
 | **QMOI Core Routes** | 13 | ✅ Active |
 | **QCity Routes** | 0 | ⏳ Deprecated |
-| **System Routes** | 6 | ✅ Active |
+| **System Routes** | 8 | ✅ Active |
+| **Alerts Routes** | 1 | ✅ Active |
+| **Billing & Subscription Routes** | 3 | ✅ Active |
 | **Preview/Tools Routes** | 2 | ✅ Active |
 | **Consciousness Routes** | 1 | ✅ Active |
 | **Automation Routes** | 1 | ✅ Active |
 
 ---
 
-## 🔐 Authentication Routes (5 routes)
+## 🔐 Authentication Routes (7 routes)
 
 ### 1. POST /api/auth/login
 - **File**: [src/app/api/auth/login/route.ts](src/app/api/auth/login/route.ts)
@@ -232,7 +234,7 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
 
 ---
 
-## 🌐 System Routes (6 routes)
+## 🌐 System Routes (8 routes)
 
 ### 23. GET /api/consciousness/health
 - **File**: [src/app/api/consciousness/health/route.ts](src/app/api/consciousness/health/route.ts)
@@ -289,21 +291,91 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
 - **Response**: Tool output, results
 - **Status**: ✅ Active
 
+### 29. GET /api/admin/metrics
+- **File**: [src/app/api/admin/metrics/route.ts](src/app/api/admin/metrics/route.ts)
+- **Method**: `GET`
+- **Description**: Expose Prometheus-compatible observability metrics
+- **Authentication**: Bearer token required
+- **Response**: Plain-text metrics output
+- **Status**: ✅ Active
+
+### 30. GET /api/admin/tracing
+- **File**: [src/app/api/admin/tracing/route.ts](src/app/api/admin/tracing/route.ts)
+- **Method**: `GET`
+- **Description**: Return current trace status and active spans
+- **Authentication**: Bearer token required
+- **Response**: JSON tracing diagnostic status
+- **Status**: ✅ Active
+
+### 31. POST /api/alerts/webhook
+- **File**: [src/app/api/alerts/webhook/route.ts](src/app/api/alerts/webhook/route.ts)
+- **Method**: `POST`
+- **Description**: Send an alert payload to the configured webhook adapter
+- **Authentication**: Bearer token required
+- **Request Body**: Alert level, message, metadata
+- **Response**: Delivery result
+- **Status**: ✅ Active
+
+### 32. GET /api/auth/oauth/[provider]
+- **File**: [src/app/api/auth/oauth/[provider]/route.ts](src/app/api/auth/oauth/[provider]/route.ts)
+- **Method**: `GET`
+- **Description**: Initiate OAuth redirect for a supported social login provider
+- **Authentication**: Public
+- **Response**: Redirect to provider authorization
+- **Status**: ✅ Active
+
+### 33. POST /api/auth/oauth/[provider]
+- **File**: [src/app/api/auth/oauth/[provider]/route.ts](src/app/api/auth/oauth/[provider]/route.ts)
+- **Method**: `POST`
+- **Description**: Exchange provider OAuth code for access tokens and profile data
+- **Authentication**: Public
+- **Request Body**: OAuth authorization code
+- **Response**: Token response and profile data
+- **Status**: ✅ Active
+
+### 34. GET /api/subscriptions
+- **File**: [src/app/api/subscriptions/route.ts](src/app/api/subscriptions/route.ts)
+- **Method**: `GET`
+- **Description**: Retrieve current subscription details and available plans
+- **Authentication**: Bearer token required
+- **Response**: Subscription status and plan list
+- **Status**: ✅ Active
+
+### 35. POST /api/subscriptions
+- **File**: [src/app/api/subscriptions/route.ts](src/app/api/subscriptions/route.ts)
+- **Method**: `POST`
+- **Description**: Create or update a user subscription tier
+- **Authentication**: Bearer token required
+- **Request Body**: User ID and tier selection
+- **Response**: Updated subscription details
+- **Status**: ✅ Active
+
+### 36. DELETE /api/subscriptions
+- **File**: [src/app/api/subscriptions/route.ts](src/app/api/subscriptions/route.ts)
+- **Method**: `DELETE`
+- **Description**: Cancel an existing user subscription
+- **Authentication**: Bearer token required
+- **Response**: Cancellation status
+- **Status**: ✅ Active
+
 ---
 
 ## 📋 Route Organization Reference
 
 ### By HTTP Method
-- **GET**: 8 routes (health, stream, state, suggestions, evolution tracking)
-- **POST**: 20 routes (auth, autoprod, evolution, self-work, automation, tools)
+- **GET**: 12 routes (health, metrics, tracing, OAuth, subscriptions)
+- **POST**: 23 routes (auth, autoprod, evolution, self-work, automation, tools, webhook, subscriptions)
+- **DELETE**: 1 route (subscriptions)
 
 ### By Feature Category
-- **Authentication**: 5 routes (login, WebAuthn)
-- **Health & Monitoring**: 3 routes (QMOI health, stream, consciousness)
+- **Authentication**: 7 routes (login, OAuth, WebAuthn)
+- **Health & Monitoring**: 5 routes (QMOI health, stream, consciousness, metrics, tracing)
 - **Autoprod & Improvements**: 7 routes (state, toggle, research, suggestions, generate)
 - **Evolution**: 3 routes (track, replace, compare models)
 - **Self-Work**: 3 routes (code-review, debug, tests)
-- **System**: 4 routes (global, consciousness, automation, QVS)
+- **System**: 6 routes (global, consciousness, automation, QVS, metrics, tracing)
+- **Alerts**: 1 route (webhook)
+- **Billing & Subscription**: 3 routes (subscriptions)
 - **Tools & Preview**: 2 routes (analyze, execute-tool)
 
 ### By Authentication Level

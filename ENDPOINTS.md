@@ -10,7 +10,7 @@
 # QMOI System Endpoints
 
 **Last Updated**: 2026-03-31 (AUTO-GENERATED)
-**Total Endpoints**: 251
+**Total Endpoints**: 259
 **Last Scan**: 2026-03-31T00:38:50.730527Z
 
 ## Overview
@@ -71,6 +71,14 @@ This document catalogs all available endpoints in the QMOI system.
 | 48 | POST | `/api/auth/webauthn/register/options` | ['register', 'options', 'route.ts'] | ✅ |
 | 49 | GET | `/api/automation/status` | ['automation', 'status', 'route.ts'] | ✅ |
 | 50 | POST | `/api/automation/trigger` | ['automation', 'trigger', 'route.ts'] | ✅ |
+| 51 | GET | `/api/admin/metrics` | ['admin', 'metrics', 'route.ts'] | ✅ |
+| 52 | GET | `/api/admin/tracing` | ['admin', 'tracing', 'route.ts'] | ✅ |
+| 53 | POST | `/api/alerts/webhook` | ['alerts', 'webhook', 'route.ts'] | ✅ |
+| 54 | GET | `/api/auth/oauth/[provider]` | ['auth', 'oauth', '[provider]', 'route.ts'] | ✅ |
+| 55 | POST | `/api/auth/oauth/[provider]` | ['auth', 'oauth', '[provider]', 'route.ts'] | ✅ |
+| 56 | GET | `/api/subscriptions` | ['subscriptions', 'route.ts'] | ✅ |
+| 57 | POST | `/api/subscriptions` | ['subscriptions', 'route.ts'] | ✅ |
+| 58 | DELETE | `/api/subscriptions` | ['subscriptions', 'route.ts'] | ✅ |
 
 ## Endpoint Details
 
@@ -91,13 +99,15 @@ This document catalogs all available endpoints in the QMOI system.
 #### Autoprod System (0)
 
 
-#### Health & Monitoring (9)
+#### Health & Monitoring (11)
 - `GET` `/api/admin/autofix/health`
 - `GET` `/api/admin/autofix/healthmonitor`
 - `GET` `/api/ai-health`
 - `POST` `/api/ai-health`
 - `GET` `/api/consciousness/health`
 - `GET` `/api/domains/health`
+- `GET` `/api/admin/metrics`
+- `GET` `/api/admin/tracing`
 - `GET` `/api/health`
 - `POST` `/api/health`
 - `GET` `/api/health/data`
@@ -141,7 +151,7 @@ This document catalogs all available endpoints in the QMOI system.
 - `GET` `/api/qvs`
 - `POST` `/api/qvs`
 
-#### Integration APIs (22)
+#### Integration APIs (23)
 - `POST` `/api/cashon/start-trading`
 - `POST` `/api/cashon/stop-trading`
 - `GET` `/api/cashon/trading-status`
@@ -176,23 +186,56 @@ This document catalogs all available endpoints in the QMOI system.
 - `GET` `/api/trading/status`
 - `POST` `/api/trading/status`
 - `POST` `/api/webhooks/qvillage`
+- `POST` `/api/alerts/webhook`
 
+- `PUT` `/api/datasets/[id]`
+- `DELETE` `/api/datasets/[id]`
+- `POST` `/api/datasets/settings`
+- `GET` `/api/global-links`
+- `POST` `/api/global-links`
+- `GET` `/api/links`
+- `POST` `/api/links`
+- `PATCH` `/api/links/[id]/zero-rated`
+- `GET` `/api/links/validate`
+- `POST` `/api/links/validate`
+- `GET` `/api/master/links`
+- `GET` `/api/media/generate`
+- `POST` `/api/media/generate`
+- `GET` `/api/media/status`
+- `GET` `/api/qi-trading`
+- `POST` `/api/qi-trading`
+- `GET` `/api/qstore`
+- `GET` `/api/qvillage`
+- `POST` `/api/qvillage`
+- `GET` `/api/qvillage/inference`
+- `GET` `/api/qvillage/model-card`
+- `POST` `/api/qvillage/model-card`
+- `GET` `/api/qvillage/models`
+- `GET` `/api/qvillage/spaces`
+- `GET` `/api/trading/status`
+- `POST` `/api/trading/status`
+- `POST` `/api/webhooks/qvillage`
+#### Subscription APIs (3)
+- `GET` `/api/subscriptions`
+- `POST` `/api/subscriptions`
+- `DELETE` `/api/subscriptions`
 ## Statistics
 
-- **Total Endpoints**: 251
+- **Total Endpoints**: 259
 - **Evolution Endpoints**: 5
 - **Autoprod Endpoints**: 0
-- **Health Endpoints**: 9
+- **Health Endpoints**: 11
 - **Master Endpoints**: 16
 - **Global Endpoints**: 5
-- **Integration Endpoints**: 22
+- **Integration Endpoints**: 23
+- **Subscription Endpoints**: 3
 
 ## HTTP Methods
 
-- **GET**: 170 endpoints
-- **POST**: 185 endpoints
+- **GET**: 174 endpoints
+- **POST**: 188 endpoints
 - **PUT**: 16 endpoints
-- **DELETE**: 15 endpoints
+- **DELETE**: 16 endpoints
 - **PATCH**: 3 endpoints
 
 ## Rate Limiting

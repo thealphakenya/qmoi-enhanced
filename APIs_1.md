@@ -18,18 +18,18 @@
 
 | Domain | Endpoints | Status | Auth Type |
 |--------|-----------|--------|-----------|
-| Authentication | 5 | ✅ Active | Mixed |
+| Authentication | 7 | ✅ Active | Mixed |
 | QMOI Core | 13 | ✅ Active | Bearer Token |
 | Self-Work | 3 | ✅ Active | Bearer Token |
-| System | 6 | ✅ Active | Optional |
+| System | 9 | ✅ Active | Optional |
 | Preview/Tools | 2 | ✅ Active | Optional |
 | Avatar System | 6 | ✅ Active | Optional/Token |
-| Financial System | 32 | ✅ Active | Bearer Token |
-| **TOTAL** | **66** | **✅ Ready** | **Varies** |
+| Financial System | 35 | ✅ Active | Bearer Token |
+| **TOTAL** | **75** | **✅ Ready** | **Varies** |
 
 ---
 
-## 🔐 Authentication Endpoints (5)
+## 🔐 Authentication Endpoints (7)
 
 | # | Endpoint | Method | Auth | Description |
 |---|----------|--------|------|-------------|
@@ -72,16 +72,19 @@
 
 ---
 
-## 🌐 System Endpoints (6)
+## 🌐 System Endpoints (9)
 
 | # | Endpoint | Method | Auth | Description |
 |---|----------|--------|------|-------------|
 | 23 | `/api/consciousness/health` | GET | Token | Get consciousness health metrics |
 | 24 | `/api/global` | GET | Optional | Get global system status |
-| 25 | `/api/automation/trigger` | POST | Token | Trigger automated workflows |
-| 26 | `/api/qvs` | GET | Optional | Get QVS information |
-| 27 | `/api/preview/analyze` | POST | Optional | Analyze code/content |
-| 28 | `/api/preview/execute-tool` | POST | Optional | Execute prod tools |
+| 25 | `/api/admin/metrics` | GET | Token | Get Prometheus-compatible dashboard metrics |
+| 26 | `/api/admin/tracing` | GET | Token | Get tracing and diagnostics status |
+| 27 | `/api/alerts/webhook` | POST | Token | Send alert payload to webhook adapter |
+| 28 | `/api/automation/trigger` | POST | Token | Trigger automated workflows |
+| 29 | `/api/qvs` | GET | Optional | Get QVS information |
+| 30 | `/api/preview/analyze` | POST | Optional | Analyze code/content |
+| 31 | `/api/preview/execute-tool` | POST | Optional | Execute prod tools |
 
 ---
 
@@ -100,8 +103,10 @@
 
 ## 📋 All Available Endpoints (Quick Reference)
 
-### Authentication (5)
+### Authentication (7)
 - `/api/auth/login`
+- `/api/auth/oauth/[provider]`
+- `/api/auth/oauth/[provider]`
 - `/api/auth/webauthn/register/options`
 - `/api/auth/webauthn/register/finish`
 - `/api/auth/webauthn/auth/options`
@@ -128,20 +133,23 @@
 - `/api/qmoi/self-work/debug`
 - `/api/qmoi/self-work/run-tests`
 
-### System (6)
+### System (9)
 - `/api/consciousness/health`
 - `/api/global`
+- `/api/admin/metrics`
+- `/api/admin/tracing`
 - `/api/automation/trigger`
 - `/api/qvs`
 - `/api/preview/analyze`
 - `/api/preview/execute-tool`
+- `/api/alerts/webhook`
 
 ### Avatar System (6) - NEW
 - `/api/avatars/:userId` (GET, POST, PUT, DELETE, HEAD, OPTIONS)
 - `/api/avatars/generate`
 - `/api/avatars/:userId/customize`
 
-### Financial System (32) - production READY
+### Financial System (35) - production READY
 - `/api/wallets` (GET, POST)
 - `/api/wallets/:id` (GET, PUT, DELETE)
 - `/api/wallets/:id/backup` (POST)
@@ -169,6 +177,9 @@
 - `/api/metrics/volume` (GET)
 - `/api/metrics/tvl` (GET)
 - `/api/metrics/export` (GET)
+- `/api/subscriptions` (GET)
+- `/api/subscriptions` (POST)
+- `/api/subscriptions` (DELETE)
 
 ---
 
