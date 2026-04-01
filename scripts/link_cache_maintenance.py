@@ -96,7 +96,7 @@ def main() -> int:
         print("Cache file not a dict, aborting")
         return 2
 
-    new = prune_cache(data, ttl_seconds)
+    new = _prune_cache_impl(data, ttl_seconds)
 
     if args.dry_run:
         print("Dry-run: not writing cache. Exiting.")

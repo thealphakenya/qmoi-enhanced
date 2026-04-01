@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-31T23:20:00.374298",
+  "timestamp": "2026-04-01T00:41:10.181023",
   "total_domains": 10,
   "domains_by_type": {
     "ai_platform": {
@@ -85,7 +85,7 @@
         "/dashboard",
         "/"
       ],
-      "health_check_timestamp": "2026-03-31T23:20:00.439535"
+      "health_check_timestamp": "2026-04-01T00:41:10.299654"
     },
     "qmoi.ai": {
       "type": "main_app",
@@ -96,7 +96,7 @@
         "/api/health",
         "/"
       ],
-      "health_check_timestamp": "2026-03-31T23:20:00.503450"
+      "health_check_timestamp": "2026-04-01T00:41:10.414523"
     },
     "qvillage.com": {
       "type": "primary_hub",
@@ -109,7 +109,7 @@
         "/dashboard",
         "/"
       ],
-      "health_check_timestamp": "2026-03-31T23:20:00.545162"
+      "health_check_timestamp": "2026-04-01T00:41:10.506810"
     },
     "qcity.qmoi.ai": {
       "type": "city_service",
@@ -120,7 +120,7 @@
         "/api/health",
         "/"
       ],
-      "health_check_timestamp": "2026-03-31T23:20:00.616456"
+      "health_check_timestamp": "2026-04-01T00:41:10.624660"
     },
     "qmoi-space.qmoi.ai": {
       "type": "space_platform",
@@ -131,7 +131,7 @@
         "/api/health",
         "/"
       ],
-      "health_check_timestamp": "2026-03-31T23:20:00.680215"
+      "health_check_timestamp": "2026-04-01T00:41:10.740600"
     },
     "q-stable.qmoi.ai": {
       "type": "models",
@@ -142,7 +142,7 @@
         "/api/health",
         "/"
       ],
-      "health_check_timestamp": "2026-03-31T23:20:00.749159"
+      "health_check_timestamp": "2026-04-01T00:41:10.860841"
     },
     "qshare.qvillage.com": {
       "type": "file_sharing",
@@ -153,7 +153,7 @@
         "/api/health",
         "/"
       ],
-      "health_check_timestamp": "2026-03-31T23:20:00.779115"
+      "health_check_timestamp": "2026-04-01T00:41:11.066801"
     },
     "yap.qmoi.ai": {
       "type": "messaging",
@@ -164,7 +164,7 @@
         "/api/health",
         "/"
       ],
-      "health_check_timestamp": "2026-03-31T23:20:00.857905"
+      "health_check_timestamp": "2026-04-01T00:41:11.163595"
     },
     "qstore.qvillage.com": {
       "type": "app_store",
@@ -175,7 +175,7 @@
         "/api/health",
         "/"
       ],
-      "health_check_timestamp": "2026-03-31T23:20:00.889706"
+      "health_check_timestamp": "2026-04-01T00:41:11.244561"
     },
     "qglobal.org": {
       "type": "fallback",
@@ -186,7 +186,7 @@
         "/api/health",
         "/"
       ],
-      "health_check_timestamp": "2026-03-31T23:20:00.976541"
+      "health_check_timestamp": "2026-04-01T00:41:11.330123"
     }
   },
   "critical_domains_health": {
