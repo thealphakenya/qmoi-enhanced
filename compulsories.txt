@@ -103,5 +103,8 @@ Status: ✅ STAGE 3 COMPLETE - COMPREHENSIVE OPERATIONAL GOVERNANCE DEPLOYED
 - `scripts/prod-healthcheck.sh` run; indicated service restart attempt and `npx: command not found`.
 - Ports 3000/4000 were not reachable locally (curl connection refused).
 - Domain health script logs captured, and production marker count 17797 in 3616 files documented.
-- Recommendations logged and command files updated; final commit `619a0acb44` pushed.
+- `scripts/host_reachability_check.py` executed; qvillage/qcloud/qglobal/qmoi endpoints reachable, stableq DNS failure, quantum.qmoi HTTPS reset.
+- `API.md`, `APIs_1.md`, and `ENDPOINTS.md` verified and declared complete with API coverage (251 endpoints).
+- `UI.md`, `COMPONENTS.md`, `HOOKS.md`, `SERVICES.md`, `TOOLS.md`, and `UTILS.md` updates completed.
+- Recommendations logged and command files updated; final commit `8013bc6602` pushed.
 - External-target deployment steps: provision Node environment, run `npm run prod`, check `/api/health`, re-run domain_health_check, then close the loop.

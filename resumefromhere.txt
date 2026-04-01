@@ -100,7 +100,10 @@
 - Execution in container completed with constraints: Node/NPM not installed by default, package install failed (permissions), no web services on 3000/4000 available.
 - `scripts/prod-healthcheck.sh` verified and shows service down as expected (needs Node and npx in environment).
 - `logs/domain_health_check.log` confirms domain health warnings and production marker counts; this is captured in command docs.
-- Overall system state is functionally tested with script-level checks and docs updated; final production push committed (619a0acb44).
+- `scripts/host_reachability_check.py` executed at 2026-04-01 currently; it confirmed backend tools missing and domain reachability except stableq DNS and quantum.qmoi HTTPS reset.
+- `API.md`, `APIs_1.md`, and `ENDPOINTS.md` verified to include all API routes and 251 endpoints.
+- `UI.md`, `COMPONENTS.md`, `HOOKS.md`, `SERVICES.md`, `TOOLS.md`, and `UTILS.md` now updated with the latest host reachability information.
+- Overall system state is functionally tested with script-level checks and docs updated; final production push committed (8013bc6602).
 - Next external / non-container run: ensure Node environment (npm, pm2), run `npm run prod`, then `curl http://localhost:4000/api/health` and `python3 scripts/domain_health_check.py` again.
 
 

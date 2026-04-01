@@ -80,6 +80,13 @@
 - `.env.example` - Environment variables template
 - `README.md` - Main project documentation
 - `LICENSE` - Project license
+- `scripts/host_reachability_check.py` - Host-level reachability validator (local endpoints, DNS, remote domain health)
+
+## 🔧 New Host Reachability & System Validation Entry
+- Host script created and executed (2026-04-01) to validate Node/npm/pm2 presence, local endpoint readiness, and domain accessibility
+- Result summary: Node/npm/npx/pm2 missing; local endpoints 127.0.0.1:3000/4000/4100 connection refused; qvillage/qcloud/qglobal/qmoi reachable; stableq DNS failure; quantum.qmoi HTTPS reset
+- Required host-level follow-up: install Node/pm2, start services, rerun script, achieve full health
+
 
 ### Core Application Directories
 

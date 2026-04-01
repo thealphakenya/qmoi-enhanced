@@ -144,6 +144,30 @@ QMOI Enhanced features a comprehensive, fully automated prodeloper tools ecosyst
 **QMOI Integration**: ✅ Full Autonomous Control
 **Validation Level**: ✅ AI Model & Code Validation
 
+### 7. **Host Reachability Checker** - Production Health Validation
+**Status**: ✅ production Ready
+**Category**: Diagnostic Tool
+**QMOI Integration**: ✅ Full Autonomous Control
+**Validation Level**: ✅ Host-Level Reachability Validation
+
+**Capabilities**:
+- Checks essential runtime tools: node, npm, npx, pm2, curl, ping
+- Verifies local API health endpoints: 3000/4000/4100
+- Validates DNS and remote health endpoints for key domains: qvillage.com, qcloud.ai, stableq.ai, qglobal.org, quantum.qmoi.com, qmoi.com
+- Logs results to `logs/host_reachability_report.txt`
+
+**QMOI Features**:
+- ✅ Autonomous execution and reporting
+- ✅ Run fallback validation where Node/pm2 not present
+- ✅ Detects and reports DNS/HTTP issues in domains and services
+- ✅ Provides remediation guidance in output
+
+**Command**:
+```bash
+python3 scripts/host_reachability_check.py
+```
+
+
 **Capabilities**:
 - AI, automation, scientific computing
 - Rich ecosystem: TensorFlow, PyTorch, NumPy, Pandas
