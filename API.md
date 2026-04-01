@@ -3,15 +3,15 @@
 
 - validated: yes
 - validator: QMOI Lion
-- timestamp: 2026-04-01T00:00:00.000000Z
-- note: Auto-updated by `scripts/comprehensive_docs_update.py` - Continuous operations verified
+- timestamp: 2026-04-01T02:55:18.592698Z
+- note: Auto-updated by `scripts/comprehensive_docs_update.py`
 <!-- LION_VALIDATION_END -->
 
 # QMOI API Documentation
 
-**Generated**: 2026-04-01 CONTINUOUS OPERATIONS
-**Last Updated**: 2026-04-01T00:00:00Z
-**Total Endpoints**: 259
+**Generated**: 2026-04-01 SESSION CONTINUOUS
+**Last Updated**: 2026-04-01T02:55:18.592698Z
+**Total Endpoints**: 260
 
 ## Overview
 
@@ -19,7 +19,7 @@ This document provides comprehensive documentation for all QMOI system APIs. All
 
 ## Quick Access
 
-- **Total Endpoints**: 259
+- **Total Endpoints**: 260
 - **API Base URL**: `/api`
 - **Authentication**: JWT tokens required for most endpoints
 - **Rate Limiting**: Applied to all endpoints
@@ -76,11 +76,6 @@ Content-Type: application/json
 - `GET /api/qmoi/health` - Health check
 - `GET /api/qmoi/health/stream` - Health stream
 
-### Observability & Notifications
-- `GET /api/admin/metrics` - Prometheus-compatible metrics export
-- `GET /api/admin/tracing` - Diagnostic tracing status
-- `POST /api/alerts/webhook` - Send alert payload to webhook adapter
-
 ### Consciousness & Awareness
 - `GET /api/consciousness` - Get consciousness state
 - `POST /api/consciousness` - Update consciousness
@@ -117,11 +112,6 @@ Content-Type: application/json
 - `GET /api/datasets/[id]` - Get specific dataset
 - `GET /api/datasets/settings` - Dataset settings
 
-### Subscription Management
-- `GET /api/subscriptions` - Get user subscription and available plans
-- `POST /api/subscriptions` - Update user subscription tier
-- `DELETE /api/subscriptions` - Cancel user subscription
-
 ### Media
 - `POST /api/media/generate` - Generate media
 - `GET /api/media/status` - Media generation status
@@ -152,6 +142,7 @@ Content-Type: application/json
 
 - `GET` `/api/account-automation`
 - `GET` `/api/accountability`
+- `GET` `/api/accountability`
 - `GET` `/api/admin/alerts`
 - `GET` `/api/admin/audit-logs`
 - `GET` `/api/admin/autofix/automation`
@@ -171,27 +162,23 @@ Content-Type: application/json
 - `GET` `/api/admin/financial/summary`
 - `POST` `/api/admin/master/auth`
 - `POST` `/api/admin/master/logout`
+- `GET` `/api/admin/metrics`
 - `GET` `/api/admin/monitoring`
 - `GET` `/api/admin/rate-limits`
-- `GET` `/api/admin/users`
-- `GET` `/api/admin/metrics`
 - `GET` `/api/admin/tracing`
-- `POST` `/api/alerts/webhook`
-- `GET` `/api/auth/oauth/[provider]`
-- `POST` `/api/auth/oauth/[provider]`
-- `GET` `/api/subscriptions`
-- `POST` `/api/subscriptions`
-- `DELETE` `/api/subscriptions`
+- `GET` `/api/admin/users`
 - `GET` `/api/ai`
 - `GET` `/api/ai-anomaly-service`
 - `GET` `/api/ai-health`
 - `GET` `/api/ai-self-diagnostics`
 - `GET` `/api/ai/scan`
+- `POST` `/api/alerts/webhook`
 - `GET` `/api/analytics/transactions`
 - `GET` `/api/analytics/wallets`
 - `GET` `/api/auth/biometric/capture`
 - `POST` `/api/auth/login`
 - `POST` `/api/auth/login`
+- `GET` `/api/auth/oauth/[provider]`
 - `POST` `/api/auth/profile`
 - `POST` `/api/auth/refresh`
 - `POST` `/api/auth/register`
@@ -239,7 +226,7 @@ Content-Type: application/json
 - `POST` `/api/emergency/email`
 - `GET` `/api/emergency/lockdown`
 - `POST` `/api/emergency/sms`
-- `GET` `/api/emergency/production completee`
+- `GET` `/api/emergency/wipe`
 - `GET` `/api/employment`
 - `GET` `/api/employment/megavault`
 - `GET` `/api/employment/payment`
@@ -379,10 +366,12 @@ Content-Type: application/json
 - `GET` `/api/qvillage/models`
 - `GET` `/api/qvillage/spaces`
 - `GET` `/api/qvs`
+- `GET` `/api/realtime/stream`
 - `GET` `/api/social-automation`
 - `POST` `/api/ssh/list`
 - `POST` `/api/ssh/read`
 - `POST` `/api/ssh/write`
+- `GET` `/api/subscriptions`
 - `GET` `/api/tracks`
 - `DELETE` `/api/tracks/[id]`
 - `GET` `/api/tracks/settings`
@@ -392,6 +381,8 @@ Content-Type: application/json
 - `GET` `/api/tts/generate`
 - `GET` `/api/tts/stream`
 - `GET` `/api/users/profile`
+- `GET` `/api/v1/health`
+- `GET` `/api/v2/health`
 - `GET` `/api/version`
 - `POST` `/api/voice/enroll`
 - `POST` `/api/voice/verify`
@@ -435,7 +426,7 @@ All endpoints are rate-limited to prevent abuse:
 
 ## Last Update
 
-- **Date**: 2026-03-31
+- **Date**: 2026-04-01
 - **By**: `scripts/comprehensive_docs_update.py`
 - **Analysis**: Auto-generated from routing structure
 

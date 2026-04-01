@@ -329,9 +329,11 @@ Content-Type: application/json
 
 
 
+
 ## AUTO-GENERATED ENDPOINTS
 
 - /api/account-automation
+- /api/accountability
 - /api/accountability
 - /api/admin/alerts
 - /api/admin/audit-logs
@@ -352,19 +354,23 @@ Content-Type: application/json
 - /api/admin/financial/summary
 - /api/admin/master/auth
 - /api/admin/master/logout
+- /api/admin/metrics
 - /api/admin/monitoring
 - /api/admin/rate-limits
+- /api/admin/tracing
 - /api/admin/users
 - /api/ai
 - /api/ai-anomaly-service
 - /api/ai-health
 - /api/ai-self-diagnostics
 - /api/ai/scan
+- /api/alerts/webhook
 - /api/analytics/transactions
 - /api/analytics/wallets
 - /api/auth/biometric/capture
 - /api/auth/login
 - /api/auth/login
+- /api/auth/oauth/{provider}
 - /api/auth/profile
 - /api/auth/refresh
 - /api/auth/register
@@ -412,7 +418,7 @@ Content-Type: application/json
 - /api/emergency/email
 - /api/emergency/lockdown
 - /api/emergency/sms
-- /api/emergency/production completee
+- /api/emergency/wipe
 - /api/employment
 - /api/employment/megavault
 - /api/employment/payment
@@ -552,10 +558,12 @@ Content-Type: application/json
 - /api/qvillage/models
 - /api/qvillage/spaces
 - /api/qvs
+- /api/realtime/stream
 - /api/social-automation
 - /api/ssh/list
 - /api/ssh/read
 - /api/ssh/write
+- /api/subscriptions
 - /api/tracks
 - /api/tracks/settings
 - /api/tracks/stream
@@ -565,6 +573,8 @@ Content-Type: application/json
 - /api/tts/generate
 - /api/tts/stream
 - /api/users/profile
+- /api/v1/health
+- /api/v2/health
 - /api/version
 - /api/voice/enroll
 - /api/voice/verify

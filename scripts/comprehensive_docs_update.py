@@ -98,61 +98,48 @@ def parse_route_file(route_file, base):
 def scan_test_files():
     """Scan all test files"""
     tests = []
-    
-    # Scan __tests__ directory
-    tests_dir = BASE_DIR / "__tests__"
-    if tests_dir.exists():
-        for test_file in tests_dir.rglob("*.test.ts"):
+    patterns = ['*.test.ts', '*.test.tsx', '*.test.js', '*.spec.ts', '*.spec.tsx', '*.spec.js', '*.cy.ts', '*.cy.tsx']
+
+    for pattern in patterns:
+        for test_file in BASE_DIR.rglob(pattern):
+            if any(part in {'node_modules', '.git', '.next', 'dist', 'build', 'coverage', 'backups'} for part in test_file.relative_to(BASE_DIR).parts):
+                continue
             relative_path = str(test_file.relative_to(BASE_DIR))
-            tests.append({'file': relative_path, 'type': 'Jest'})
-        for test_file in tests_dir.rglob("*.test.js"):
-            relative_path = str(test_file.relative_to(BASE_DIR))
-            tests.append({'file': relative_path, 'type': 'Jest'})
-    
-    # Scan tests directory
-    test_dir = BASE_DIR / "tests"
-    if test_dir.exists():
-        for test_file in test_dir.rglob("*.test.ts"):
-            relative_path = str(test_file.relative_to(BASE_DIR))
-            tests.append({'file': relative_path, 'type': 'Jest'})
-    
-    # Scan cypress directory
-    cypress_dir = BASE_DIR / "cypress"
-    if cypress_dir.exists():
-        for test_file in cypress_dir.rglob("*.cy.ts"):
-            relative_path = str(test_file.relative_to(BASE_DIR))
-            tests.append({'file': relative_path, 'type': 'Cypress'})
-    
-    return sorted(tests, key=lambda x: x['file'])
+            kind = 'Cypress' if test_file.suffix == '.ts' and test_file.name.endswith('.cy.ts') else 'Jest'
+            if test_file.suffix == '.tsx' and test_file.name.endswith('.cy.tsx'):
+                kind = 'Cypress'
+            tests.append({'file': relative_path, 'type': kind})
+
+    return sorted({(t['file'], t['type']): t for t in tests}.values(), key=lambda x: x['file'])
 
 def scan_hooks():
     """Scan all hooks"""
     hooks = []
-    
-    hooks_dir = BASE_DIR / "hooks"
-    if hooks_dir.exists():
-        for hook_file in hooks_dir.glob("use*.ts*"):
-            relative_path = str(hook_file.relative_to(BASE_DIR))
-            hook_name = hook_file.stem
-            hooks.append({'name': hook_name, 'file': relative_path})
-    
-    return sorted(hooks, key=lambda x: x['name'])
+    hook_dirs = [BASE_DIR / "hooks", BASE_DIR / "src" / "hooks"]
+
+    for hooks_dir in hook_dirs:
+        if hooks_dir.exists():
+            for hook_file in hooks_dir.rglob("use*.ts*"):
+                if any(part in {'node_modules', '.git', '.next', 'dist', 'build', 'coverage', 'backups'} for part in hook_file.relative_to(BASE_DIR).parts):
+                    continue
+                if hook_file.name.endswith(('.test.ts', '.test.tsx', '.spec.ts', '.spec.tsx', '.test.js', '.spec.js')):
+                    continue
+                relative_path = str(hook_file.relative_to(BASE_DIR))
+                hook_name = hook_file.stem
+                hooks.append({'name': hook_name, 'file': relative_path})
+
+    return sorted({(h['name'], h['file']): h for h in hooks}.values(), key=lambda x: x['name'])
 
 def scan_md_files():
-    """Scan all .md files in the root directory"""
+    """Scan all .md files in the repository"""
     md_files = []
-    
-    # Scan root directory for .md files
-    for md_file in BASE_DIR.glob("*.md"):
-        md_files.append(str(md_file.name))
-    
-    # Scan docs directory if it exists
-    docs_dir = BASE_DIR / "docs"
-    if docs_dir.exists():
-        for md_file in docs_dir.rglob("*.md"):
-            relative_path = str(md_file.relative_to(BASE_DIR))
-            md_files.append(relative_path.replace("\\", "/"))
-    
+    exclude_dirs = {'node_modules', '.git', '.next', 'dist', 'build', 'coverage', 'backups', '.qmoi_validation'}
+
+    for md_file in BASE_DIR.rglob("*.md"):
+        if any(part in exclude_dirs for part in md_file.relative_to(BASE_DIR).parts):
+            continue
+        md_files.append(str(md_file.relative_to(BASE_DIR)).replace("\\", "/"))
+
     return sorted(md_files)
 
 def generate_api_md(endpoints):
@@ -823,6 +810,165 @@ All hooks have corresponding test files:
     
     return content
 
+
+def scan_webhooks(endpoints):
+    """Scan webhook-related endpoints from the API endpoint list"""
+    return [ep for ep in endpoints if 'webhook' in ep['path'].lower()]
+
+
+def generate_webhooks_md(webhooks):
+    """Generate WEBHOOKS.md content"""
+    timestamp = datetime.utcnow().isoformat()
+    date_formatted = datetime.now().strftime("%Y-%m-%d")
+    webhook_count = len(webhooks)
+    webhook_lines = "\n".join([f"- `{ep['path']}` ({', '.join(ep['methods'])})" for ep in webhooks])
+
+    return f"""<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: {timestamp}Z
+- note: Auto-updated by `scripts/comprehensive_docs_update.py`
+<!-- LION_VALIDATION_END -->
+
+# WEBHOOKS.md - Webhook Integration Guide
+
+**Last Updated**: {date_formatted}
+**Total Webhook Endpoints**: {webhook_count}
+**Last Scan**: {timestamp}Z
+
+## Overview
+
+This document lists all webhook endpoints supported by QMOI Enhanced.
+
+## Webhook Endpoints
+
+{webhook_lines}
+
+---
+
+**Auto-generated by**: `scripts/comprehensive_docs_update.py`
+**Last Updated**: {timestamp}Z
+"""
+
+
+def generate_allhooks_webhooks_md(hooks, webhooks):
+    """Generate ALLHOOKSWEBHOOKS.md content"""
+    timestamp = datetime.utcnow().isoformat()
+    date_formatted = datetime.now().strftime("%Y-%m-%d")
+    hooks_list = "\n".join([f"- {h['file']}" for h in hooks])
+    webhooks_list = "\n".join([f"- {ep['path']}" for ep in webhooks])
+
+    return f"""<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: {timestamp}Z
+- note: Auto-updated by `scripts/comprehensive_docs_update.py`
+<!-- LION_VALIDATION_END -->
+
+# ALLHOOKSWEBHOOKS.md - Complete Hooks & Webhooks Reference
+
+**Last Updated**: {date_formatted}
+
+## Hooks
+
+{hooks_list}
+
+## Webhooks
+
+{webhooks_list}
+
+---
+
+**Auto-generated by**: `scripts/comprehensive_docs_update.py`
+**Last Updated**: {timestamp}Z
+"""
+
+
+def generate_tree_md(endpoints, hooks, tests, md_files):
+    """Generate TREE.md with developer structures and counts"""
+    timestamp = datetime.utcnow().isoformat()
+    date_formatted = datetime.now().strftime("%Y-%m-%d")
+    endpoint_count = len(endpoints)
+    hook_count = len(hooks)
+    test_count = len(tests)
+    md_count = len(md_files)
+    api_dir = BASE_DIR / 'app' / 'api'
+    src_api_dir = BASE_DIR / 'src' / 'app' / 'api'
+    hooks_dirs = [BASE_DIR / 'hooks', BASE_DIR / 'src' / 'hooks']
+    libs = BASE_DIR / 'lib'
+
+    return f"""<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: {timestamp}Z
+- note: Auto-updated by `scripts/comprehensive_docs_update.py`
+<!-- LION_VALIDATION_END -->
+
+# QMOI-Enhanced Developer Tree Structure
+
+**Last Updated**: {date_formatted}
+**Scan Date**: {timestamp}Z
+
+## Summary
+
+- **API Endpoints**: {endpoint_count}
+- **Custom Hooks**: {hook_count}
+- **Test Files**: {test_count}
+- **Markdown Files**: {md_count}
+- **Lib Files**: {len(list(libs.rglob('*'))) if libs.exists() else 0}
+
+## Key Developer Structures
+
+- `app/api/` - All server-side API routes and endpoint handlers
+- `hooks/` - Custom React hooks for UI and automation
+- `src/hooks/` - Additional hooks for application state and kernel integration
+- `docs/` - Documentation, specifications, and how-to guides
+- `scripts/` - Automation, validation, and documentation generation scripts
+- `lib/` - Core libraries, services, and platform integration modules
+- `__tests__/` - Jest test suites
+- `tests/` - Additional test suites and validation scripts
+- `cypress/` - End-to-end test suites
+
+## Developer Structure Details
+
+### API Structure
+- `app/api/` - Primary Next.js API route directory
+- `src/app/api/` - Secondary API route location, if used for alternative app structure
+- Total scanned API directories: {1 if api_dir.exists() else 0} + {1 if src_api_dir.exists() else 0}
+
+### Hooks Structure
+- `hooks/` - {hooks_dirs[0].exists() and len(list(hooks_dirs[0].rglob('use*.ts*'))) or 0} hook files
+- `src/hooks/` - {hooks_dirs[1].exists() and len(list(hooks_dirs[1].rglob('use*.ts*'))) or 0} hook files
+
+### Test Structure
+- `__tests__/` - Jest test files
+- `tests/` - Additional test files
+- `cypress/` - Cypress E2E files
+
+### Documentation Structure
+- `API.md`, `APIs_1.md`, `ENDPOINTS.md` - API reference and endpoint catalogs
+- `ALLMDFILESREFS.md` - Master markdown index
+- `ALLTESTSAUTOTESTS.md` - Test catalog
+- `HOOKS.md`, `WEBHOOKS.md`, `ALLHOOKSWEBHOOKS.md` - Hook and webhook references
+- `TREE.md` - Developer tree structure
+
+## Notes
+
+This file is generated from the current repository state and tracks all major developer-facing structures, ensuring the documentation and code structure remain aligned.
+
+---
+
+**Auto-generated by**: `scripts/comprehensive_docs_update.py`
+**Last Updated**: {timestamp}Z
+"""
+
+
 def scan_lib_directory():
     """Scan the lib/ directory for all files and subdirectories"""
     lib_dir = BASE_DIR / "lib"
@@ -950,6 +1096,11 @@ def main():
     hooks = scan_hooks()
     print(f"   ✅ Found {len(hooks)} custom hooks")
     
+    # Scan webhooks
+    print("\n🌐 Scanning webhooks...")
+    webhooks = scan_webhooks(endpoints)
+    print(f"   ✅ Found {len(webhooks)} webhook endpoints")
+    
     # Scan lib directory
     print("\n📚 Scanning lib directory...")
     lib_files = scan_lib_directory()
@@ -992,7 +1143,25 @@ def main():
     hooks_file = BASE_DIR / "HOOKS.md"
     hooks_file.write_text(hooks_content, encoding='utf-8')
     print(f"   ✅ Updated HOOKS.md")
-    
+
+    # WEBHOOKS.md
+    webhooks_content = generate_webhooks_md(webhooks)
+    webhooks_file = BASE_DIR / "WEBHOOKS.md"
+    webhooks_file.write_text(webhooks_content, encoding='utf-8')
+    print(f"   ✅ Updated WEBHOOKS.md")
+
+    # ALLHOOKSWEBHOOKS.md
+    allhooks_webhooks_content = generate_allhooks_webhooks_md(hooks, webhooks)
+    allhooks_webhooks_file = BASE_DIR / "ALLHOOKSWEBHOOKS.md"
+    allhooks_webhooks_file.write_text(allhooks_webhooks_content, encoding='utf-8')
+    print(f"   ✅ Updated ALLHOOKSWEBHOOKS.md")
+
+    # TREE.md
+    tree_content = generate_tree_md(endpoints, hooks, tests, md_files)
+    tree_file = BASE_DIR / "TREE.md"
+    tree_file.write_text(tree_content, encoding='utf-8')
+    print(f"   ✅ Updated TREE.md")
+
     # LIB.md
     lib_content = generate_lib_md(lib_files)
     lib_file = BASE_DIR / "LIB.md"
@@ -1008,7 +1177,7 @@ def main():
     print(f"  • Custom Hooks: {len(hooks)}")
     print(f"  • Lib Files: {len(lib_files)}")
     print(f"  • Documentation Files: {len(md_files)}")
-    print(f"  • Files Updated: 6 (API.md, ENDPOINTS.md, ALLMDFILESREFS.md, ALLTESTSAUTOTESTS.md, HOOKS.md, LIB.md)")
+    print(f"  • Files Updated: 10 (API.md, ENDPOINTS.md, ALLMDFILESREFS.md, ALLTESTSAUTOTESTS.md, HOOKS.md, WEBHOOKS.md, ALLHOOKSWEBHOOKS.md, TREE.md, LIB.md)")
     print("\n🎯 All documentation is now synchronized and up-to-date!\n")
 
 if __name__ == "__main__":
