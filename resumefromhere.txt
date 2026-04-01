@@ -41,6 +41,10 @@
 - ✅ Created analytics dashboard reports
 - ✅ Organized 200+ reports in reports/ directory
 - ✅ Updated markdown references (2544 files)
+- ✅ Added wallet credential rotation helper (`scripts/wallet_credential_manager.py`) and created `docs/CREDENTIAL_ROTATION_PLAYBOOK.md`
+- ✅ Added `.github/workflows/verify-secrets.yml` for manual secret verification
+- ✅ Regenerated `ALLMDFILESREFS.md` to include new documentation paths
+- ✅ Updated `TREE.md` to include the new wallet credential rotation helper path
 
 ### Git Operations:
 - ✅ 6 production commits with progressive updates

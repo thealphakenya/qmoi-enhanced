@@ -22,6 +22,10 @@ Status: ✅ STAGE 4 ENHANCED COMPLETE - MASTER ACCOUNTABILITY WITH CONSCIOUSNESS
 - Generated analytics dashboard reports with system metrics
 - Auto-synced README with health data (committed to Git)
 - Updated markdown file references (2544 files tracked)
+- Added wallet credential rotation helper (`scripts/wallet_credential_manager.py`) and created `docs/CREDENTIAL_ROTATION_PLAYBOOK.md`
+- Added `.github/workflows/verify-secrets.yml` for manual secret verification
+- Regenerated `ALLMDFILESREFS.md` to include new documentation paths
+- Updated `TREE.md` with the new wallet credential rotation helper entry
 - Generated comprehensive app metadata (6 apps with icons, metadata, changelogs)
 - Organized 200+ operational reports in reports/ directory
 

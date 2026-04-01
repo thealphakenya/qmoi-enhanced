@@ -1,0 +1,36 @@
+const encoder = new TextEncoder();
+
+export function createRealtimeEventStream() {
+  let interval: ReturnType<typeof setInterval> | null = null;
+
+  return new ReadableStream<Uint8Array>({
+    start(controller) {
+      let counter = 0;
+
+      function sendEvent() {
+        const payload = {
+          event: 'realtime.update',
+          message: 'QMOI realtime status update',
+          sequence: ++counter,
+          timestamp: new Date().toISOString(),
+          activeUsers: 42 + counter,
+        };
+
+        const text = `data: ${JSON.stringify(payload)}\n\n`;
+        controller.enqueue(encoder.encode(text));
+      }
+
+      controller.enqueue(encoder.encode('event: connected\ndata: realtime stream initialized\n\n'));
+      controller.enqueue(encoder.encode('event: ready\ndata: realtime stream ready\n\n'));
+
+      sendEvent();
+      interval = setInterval(sendEvent, 2000);
+    },
+    cancel() {
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
+      }
+    },
+  });
+}

@@ -9,6 +9,7 @@ Enhanced credentials management system for QMOI trading wallets.
 Implements secure credential storage, rotation, and monitoring.
 """
 from pathlib import Path
+import argparse
 import json
 import os
 import time
@@ -114,16 +115,77 @@ class CredentialManager:
         return {k: v for k, v in creds.items() 
                 if k not in ["last_rotation", "status"]}
     
-    def rotate_credentials(self, wallet: str):
-        """Rotate credentials for a wallet."""
+    def rotate_credentials(self, wallet: str, force: bool = False) -> Dict[str, Any]:
+        """Rotate credentials for a wallet using environment values."""
         if wallet not in self.credentials:
             raise ValueError(f"Unknown wallet: {wallet}")
-        
-        # Implement actual credential rotation here
-        # This would involve API calls to the respective platforms
+
+        env_map = self._wallet_rotation_env_map(wallet)
+        if not env_map:
+            raise ValueError(f"No rotation mapping defined for wallet {wallet}")
+
+        updated_fields = []
+        for field, env_key in env_map.items():
+            env_value = os.environ.get(env_key, "").strip()
+            current_value = self.credentials[wallet].get(field, "")
+
+            if env_value:
+                if env_value != current_value or force:
+                    self.credentials[wallet][field] = env_value
+                    updated_fields.append(field)
+            elif force and current_value:
+                # Force rotation can refresh the current stored value
+                updated_fields.append(field)
+
+        if not updated_fields and not force:
+            logger.info(
+                "No new environment credentials detected for %s; rotation not performed.",
+                wallet,
+            )
+            return {
+                "wallet": wallet,
+                "rotated": False,
+                "updated_fields": [],
+                "reason": "no_environment_updates"
+            }
+
         self.credentials[wallet]["last_rotation"] = datetime.utcnow().isoformat()
+        self.credentials[wallet]["status"] = "active"
         self._save_credentials(self.credentials)
-    
+
+        logger.info(
+            "Credentials rotated for %s. Updated fields: %s",
+            wallet,
+            updated_fields,
+        )
+        return {
+            "wallet": wallet,
+            "rotated": bool(updated_fields),
+            "updated_fields": updated_fields,
+            "last_rotation": self.credentials[wallet]["last_rotation"]
+        }
+
+    def _wallet_rotation_env_map(self, wallet: str) -> Dict[str, str]:
+        """Return environment variable mappings for wallet rotation."""
+        mapping = {
+            "bitget": {
+                "api_key": "BITGET_API_KEY",
+                "api_secret": "BITGET_API_SECRET",
+                "passphrase": "BITGET_API_PASSPHRASE",
+            },
+            "cashon": {
+                "consumer_key": "PESAPAL_CONSUMER_KEY",
+                "consumer_secret": "PESAPAL_CONSUMER_SECRET",
+                "callback_url": "PESAPAL_CALLBACK_URL",
+                "ipn_url": "PESAPAL_IPN_URL",
+            },
+            "megavault": {
+                "api_key": "MEGAVAULT_API_KEY",
+                "api_url": "MEGAVAULT_API_URL",
+            },
+        }
+        return mapping.get(wallet, {})
+
     def validate_credentials(self, wallet: str) -> Dict[str, Any]:
         """Validate credentials for a wallet."""
         if wallet not in self.credentials:
@@ -214,16 +276,89 @@ class WalletCredentialMonitor:
                 
             if validation["age_days"] >= self.config["max_credential_age"]:
                 try:
-                    self.credential_manager.rotate_credentials(wallet)
-                    logger.info(f"Rotated credentials for {wallet}")
+                    result = self.credential_manager.rotate_credentials(wallet)
+                    if result.get("rotated"):
+                        logger.info(f"Rotated credentials for {wallet}")
+                    else:
+                        logger.info(
+                            f"No new environment credentials found for {wallet}; rotation skipped."
+                        )
                 except Exception as e:
                     logger.error(f"Failed to rotate {wallet} credentials: {e}")
 
+def _parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="QMOI Wallet Credential Rotation and Monitoring"
+    )
+    parser.add_argument(
+        "--status",
+        action="store_true",
+        help="Show credential validation state for all wallets",
+    )
+    parser.add_argument(
+        "--wallet",
+        choices=["bitget", "cashon", "megavault"],
+        help="Target wallet for rotation or status checks",
+    )
+    parser.add_argument(
+        "--rotate",
+        action="store_true",
+        help="Rotate credentials for the selected wallet or all wallets",
+    )
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Apply credential rotation to all supported wallets",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Force rotation even if environment values have not changed",
+    )
+    parser.add_argument(
+        "--monitor",
+        action="store_true",
+        help="Start continuous credential monitoring",
+    )
+    return parser.parse_args()
+
+
 def main():
     """Main entry point."""
-    monitor = WalletCredentialMonitor()
-    logger.info("Starting credential monitoring")
-    monitor.start_monitoring()
+    manager = CredentialManager()
+    args = _parse_args()
+
+    if args.status:
+        wallets = [args.wallet] if args.wallet else list(manager.credentials.keys())
+        for wallet in wallets:
+            validation = manager.validate_credentials(wallet)
+            print(f"{wallet}: {validation}")
+        return
+
+    if args.rotate:
+        if args.all:
+            results = []
+            for wallet in manager.credentials.keys():
+                result = manager.rotate_credentials(wallet, force=args.force)
+                results.append(result)
+            print(json.dumps(results, indent=2))
+            return
+
+        if not args.wallet:
+            print("Error: specify --wallet or --all when using --rotate")
+            return
+
+        result = manager.rotate_credentials(args.wallet, force=args.force)
+        print(json.dumps(result, indent=2))
+        return
+
+    if args.monitor:
+        monitor = WalletCredentialMonitor()
+        logger.info("Starting credential monitoring")
+        monitor.start_monitoring()
+        return
+
+    print("No action specified. Use --status, --rotate, or --monitor.")
 
 if __name__ == "__main__":
     main()

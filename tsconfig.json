@@ -31,7 +31,7 @@
       "@/services/*": ["./src/services/*"],
       "@/adapters/*": ["./src/adapters/*"],
       "@/hooks/*": ["./hooks/*", "./src/hooks/*"],
-      "@/lib/*": ["./lib/*"]
+      "@/lib/*": ["./src/lib/*", "./lib/*"]
     },
     "allowJs": true,
     "incremental": true,
