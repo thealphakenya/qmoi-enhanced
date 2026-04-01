@@ -297,6 +297,55 @@
 - Result summary: Node/npm/npx/pm2 missing; local endpoints 127.0.0.1:3000/4000/4100 connection refused; qvillage/qcloud/qglobal/qmoi reachable; stableq DNS failure; quantum.qmoi HTTPS reset
 - Required host-level follow-up: install Node/pm2, start services, rerun script, achieve full health
 
+## 🏛️ Developer Structures
+
+### Accountability System
+**Location**: `ACCOUNTABILITY.md` | `src/lib/accountability-service.ts` | `src/app/api/accountability/route.ts`
+**Purpose**: Comprehensive master accountability framework for all QMOI operations
+**Key Features**:
+- **Master Control Interface**: Direct master command execution and override capabilities
+- **Audit Trail System**: Complete logging of all actions, decisions, and modifications
+- **Real-time Monitoring**: Continuous monitoring of system operations with risk assessment
+- **Compliance Validation**: Automated compliance checking against GDPR, SOX, ISO27001, and QMOI standards
+- **Ethical Oversight**: Built-in ethical constraints and safety validators
+- **Emergency Controls**: Master emergency stop and force synchronization capabilities
+- **Accountability Reports**: Automated generation of comprehensive accountability reports
+- **Access Control**: Granular access logging and pattern analysis
+- **Decision Tracking**: Complete tracking of all QMOI autonomous decisions
+- **Master Approval Workflow**: Required master approval for critical operations
+- **Risk Assessment**: Automated risk level assessment for all operations
+- **Alert System**: Real-time alerts for compliance violations and high-risk activities
+- **Audit Maintenance**: Automated audit log maintenance with configurable retention
+- **Master Notification Channels**: Multi-channel notifications (email, SMS, dashboard, webhook)
+- **Override Mechanisms**: Master override capabilities for QMOI decisions
+- **Compliance Reporting**: Detailed compliance status reporting and recommendations
+
+**Integration Points**:
+- Consciousness Engine: Ethical decision validation
+- Evolution System: Master-approved evolution tracking
+- QVS Operations: Unlimited resource accountability
+- Autodev Processes: Code generation accountability
+- Global Operations: Cross-platform accountability
+- Error Fixing: Fix validation and approval workflows
+
+**API Endpoints**:
+- `GET /api/accountability` - Retrieve accountability events
+- `POST /api/accountability/log` - Log new accountability events
+- `GET /api/accountability/report` - Generate accountability reports
+- `POST /api/accountability/approve` - Master approval of operations
+- `POST /api/accountability/override` - Master override of decisions
+
+**Service Methods**:
+- `logAction()` - Log all QMOI actions
+- `logDecision()` - Log autonomous decisions
+- `logModification()` - Log system modifications
+- `logAccess()` - Log system access
+- `executeMasterCommand()` - Execute master commands
+- `approveByMaster()` - Master approval workflow
+- `overrideQMOIDecision()` - Master override capabilities
+- `getAuditTrail()` - Retrieve audit trails
+- `generateAccountabilityReport()` - Generate reports
+- `verifyCompliance()` - Compliance validation
 
 ### Core Application Directories
 
