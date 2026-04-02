@@ -98,6 +98,13 @@ POST /api/consciousness/optimize-api    # Autonomous API optimization
 4. Add intelligent caching layer in `lib/qmoi-smart-cache.ts`
 5. Enhance conflict resolution algorithms
 
+### 8. LION Runtime and Node Resilience
+- Add runtime health checks for Node.js (`node`, `npm`, `tsc`) + Python (`python3`) in Lion orchestrator.
+- Add self-heal path when Node missing: in `scripts/lion_orchestrator.py`, call `host_reachability_check.py` and `lionctl selfheal`.
+- Ensure cluster mode can run with Codespaces off-host resources via `LION_USE_CODESPACE_RESOURCES=0`.
+- Global lion env variable catalog: `LION_APPLY`, `LION_ENV`, `LION_RUNNERS`, `LION_TIMEOUT`, `LION_MAX_MEMORY`, `LION_MAX_CPUS`.
+
+
 ### 3. Parallel Processing Intelligence
 **Current Status**: advanced parallel execution
 **Target Status**: Advanced concurrent intelligence

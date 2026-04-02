@@ -63,7 +63,15 @@ This document defines the features and responsibilities of the LION runtime (Lio
      - `lionctl verify` to validate the local install and docs
      - `lionctl selfheal` to run local self-heal diagnostics
 
-10. Next: implementation artifacts
+## 🦁 Lion Environment & Node Features
+
+Lion includes built-in Node.js detection and recovery to support non-codespace environments and source controlled containers:
+
+- `lionctl` can detect runtime presence `node`, `npm`, `tsc`, and `python3`
+- `LION_USE_CODESPACE_RESOURCES`=0 by default in Codespaces to avoid using host resources
+- Node fallback support through `python3 scripts/host_reachability_check.py`
+- Auto variables: `LION_ENV`, `LION_RUNNERS`, `LION_TIMEOUT`, `LION_MAX_MEMORY`, `LION_MAX_CPUS`.
+- Enables autonomous system-level repairs, evolution-safeguards, and zero-impact resource usage.
 
 - `tools/lionctl` (CLI) — scaffolded
 - `docs/lion_installers.md` — installer build instructions

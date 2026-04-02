@@ -58,3 +58,4 @@ Integration with QMOI
 
 ---
 *This document is maintained by QMOI's autonomous evolution system*
+\n## Lion Node + Codespace Assistance\n- Environment variables: LION_APPLY, LION_ENV, LION_RUNNERS, LION_TIMEOUT, LION_MAX_MEMORY, LION_MAX_CPUS\n- Supports Node runtime auto-detection and fallback paths via lionctl and host_reachability_check\n- Works with or without GitHub Codespaces through LION_USE_CODESPACE_RESOURCES guard\n

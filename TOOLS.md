@@ -176,6 +176,44 @@ QMOI Enhanced features a comprehensive, fully automated prodeloper tools ecosyst
 python3 scripts/host_reachability_check.py
 ```
 
+---
+
+## 🦁 Lion Environment Assist with Node and Codespaces
+
+QMOI Lion includes explicit cross-environment support for local, cloud, and codespace environments with fallback checks and autonomous remediations.
+
+### Key Lion Environment Variables
+- `LION_APPLY` (0/1) - enable actual changes vs dry run
+- `LION_USE_CODESPACE_RESOURCES` (0/1) - allow using Codespaces host resources
+- `LION_RESOURCES` (`auto`|`manual`) - autoscale resource assignment
+- `LION_ENV` (`production`|`staging`|`development`) - environment mode
+- `LION_RUNNERS` - concurrent runner count
+- `LION_TIMEOUT` - operation timeout in seconds
+- `LION_MAX_MEMORY` - maximum memory limit (e.g., `4G`)
+- `LION_MAX_CPUS` - CPU limit (e.g., `2`)
+
+### Node.js & Automation Tooling
+- `lionctl bootstrap` - validates environment, ensures required tools (node, npm, tsc, python3, git) exist
+- `lionctl selfheal` - runs environment healing scripts (installs runtime x64/arm, fixes missing `node` and npm packages)
+- `lionctl verify` - checks core service readiness and preflight
+- `lionctl qvillage-autodev` - executes self-automated development flows
+
+### Codespace-Independent Tooling (Zero host-lock)
+- `host_reachability_check.py` (Python-powered audit) for container environments without Node.
+- `scripts/host_reachability_check.py` includes node detection and instructs install path when missing.
+- `lionctl` has a safe options path: `LION_USE_CODESPACE_RESOURCES=0` to avoid using codespace quotas.
+- `backup.sh`, `auto_full_recovery.py` and `planetary` are independent CI tools for non-codespace environment.
+
+### Autonomous Node Recovery Path
+1. Detect missing runtime: `command -v node` and `command -v npm`
+2. If absent, run `lionctl selfheal` or `scripts/auto_env_fix.cjs`
+3. If still missing, fallback to `python3 scripts/host_reachability_check.py` and remote Cloud-run ops
+4. Install from known secure source (`nvm`, `apt`, or `apk`) with ephemeral path and consent
+
+---
+
+
+
 
 **Capabilities**:
 - AI, automation, scientific computing

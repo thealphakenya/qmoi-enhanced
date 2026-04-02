@@ -1,6 +1,6 @@
 # Resume From Here - Pending Actions
 
-**Date**: 2026-04-02T08:15:00Z
+**Date**: 2026-04-02T15:10:00Z
 **Status**: IN_PROGRESS
 
 ## Completed Work
@@ -37,8 +37,9 @@
 ## Notes
 - colab-job.ts now passes local distill checks (TS core file-scope, remediated).
 - emergency/wipe/route.ts now passes local distill checks (invalid identifiers fixed).
-- Attempted full workspace type-check; `npx` is currently not available in some shell sessions.
-- Next: confirm with toolchain availability then run `npx tsc --noEmit` again and close remaining lint issues.
+- Attempted full workspace type-check; `npx` and `node` are not available (per environment command output), blocking final run.
+- `node_modules/.bin/tsc` is present but fails due missing `node` executable: "env: 'node': No such file or directory".
+- Next: restore node executable or install toolchain to complete full type-check and close remaining lint issues.
 
 - QMOI consciousness system fully operational with memory preservation
 - Evolution system ready for autonomous operation
