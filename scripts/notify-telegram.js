@@ -1,8 +1,9 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:06Z
+// Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 // scripts/notify-telegram.js
 require("dotenv").config();
 const axios = require("axios");
@@ -34,7 +35,7 @@ if (fs.existsSync(RELEASE_JSON_PATH)) {
 }
 
 const timestamp = new Date().toLocaleString();
-const releaseURL = `https://github.com/thestablekenya/stable-Q-ai/releases`;
+const releaseURL = `https://github.com/thealphakenya/stable-Q-ai/releases`;
 
 const message = `
 🚀 *QMOI AI Release*
@@ -61,10 +62,10 @@ async function sendMessageToAll() {
         },
       );
       console.log(`✅ Message sent to chat ${chat_id}`);
-    } catch (_err) {
+    } catch (err) {
       console.warn(
         `❌ Failed to send message to ${chat_id}:`,
-        _err?.response?.data || _err.message,
+        err?.response?.data || err.message,
       );
     }
   }
@@ -95,10 +96,10 @@ async function sendFilesToAll() {
           },
         );
         console.log(`📦 Sent: ${file}`);
-      } catch (_err) {
+      } catch (err) {
         console.warn(
           `❌ Error uploading ${file}:`,
-          _err?.response?.data || _err.message,
+          err?.response?.data || err.message,
         );
       }
     }
@@ -124,10 +125,10 @@ async function sendImagePreview() {
       },
     );
     console.log(`🖼️ Preview image sent.`);
-  } catch (_err) {
+  } catch (err) {
     console.warn(
       `⚠️ Failed to send preview image:`,
-      _err?.response?.data || _err.message,
+      err?.response?.data || err.message,
     );
   }
 }

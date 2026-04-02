@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:06Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:21Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Universal Terms Enforcer
@@ -20,8 +21,10 @@ from typing import Optional
 # Local imports (relative path safe)
 from universal_memory import get_prefs, set_pref
 
+
 ROOT = Path(__file__).resolve().parent.parent
 TERMS_FILE = ROOT / "QTEAMTERMS.md"
+
 
 def read_terms() -> str:
     try:
@@ -29,13 +32,16 @@ def read_terms() -> str:
     except Exception:
         return "QTEAM TERMS AND REGULATIONS\n(terms file not found)"
 
+
 def is_accepted() -> bool:
     prefs = get_prefs()
     return bool(prefs.get("terms_accepted", False))
 
+
 def accept_terms(source: Optional[str] = None) -> None:
     meta = True if source is None else {"source": source}
     set_pref("terms_accepted", meta)
+
 
 def ensure_terms(autoprint: bool = True) -> bool:
     if is_accepted():
@@ -46,6 +52,7 @@ def ensure_terms(autoprint: bool = True) -> bool:
         print("\nBy continuing you confirm acceptance of these terms.\n")
     accept_terms("auto")
     return True
+
 
 def main():
     p = argparse.ArgumentParser(description="QMOI Terms Enforcer")
@@ -70,6 +77,8 @@ def main():
     # Default behavior: ensure accepted (prints once if needed)
     ensure_terms(autoprint=True)
 
+
 if __name__ == "__main__":
     main()
+
 

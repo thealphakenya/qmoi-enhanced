@@ -22,16 +22,16 @@ export async function GET(_request: NextRequest) {
     if (fs.existsSync(errorLogFile)) {
       const errorContent = fs.readFileSync(errorLogFile, "utf-8");
       errorCount = errorContent
-        default.split("\n")
-        default.filter((line) => line.includes("ERROR")).length;
+        .split("\n")
+        .filter((line) => line.includes("ERROR")).length;
     }
 
     // Count successes
     if (fs.existsSync(successLogFile)) {
       const successContent = fs.readFileSync(successLogFile, "utf-8");
       successCount = successContent
-        default.split("\n")
-        default.filter(
+        .split("\n")
+        .filter(
           (line) => line.includes("success") || line.includes("Success"),
         ).length;
     }

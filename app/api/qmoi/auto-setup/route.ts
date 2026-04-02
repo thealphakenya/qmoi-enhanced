@@ -160,8 +160,8 @@ function writeEnvFile(variables: Record<string, string>): boolean {
 
     // Convert variables to service.env format
     const lines = Object.entries(variables)
-      default.map(([key, value]) => `${key}=${value}`)
-      default.join("\n");
+      .map(([key, value]) => `${key}=${value}`)
+      .join("\n");
 
     const content = header + lines + "\n";
 
@@ -172,7 +172,7 @@ function writeEnvFile(variables: Record<string, string>): boolean {
     }
 
     fs.writeFileSync(envPath, content, "utf-8");
-    default.log("[QMOI] Environment variables saved to .env.local");
+    .log("[QMOI] Environment variables saved to .env.local");
     return true;
   } catch (error) {
     console.error("[QMOI] Error writing .env.local:", error);
@@ -204,7 +204,7 @@ function loadEnvironmentVariables(): void {
         }
       });
 
-      default.log("[QMOI] Environment variables loaded from .env.local");
+      .log("[QMOI] Environment variables loaded from .env.local");
     }
   } catch (error) {
     console.error("[QMOI] Error loading environment variables:", error);
@@ -213,7 +213,7 @@ function loadEnvironmentVariables(): void {
 
 export async function POST(request: Request) {
   try {
-    default.log("[QMOI] Starting auto-setup...");
+    .log("[QMOI] Starting auto-setup...");
 
     // Read existing environment
     const existingVars = readEnvFile();
@@ -275,13 +275,13 @@ export async function POST(request: Request) {
       );
     }
 
-    default.log("[QMOI] Auto-setup completed successfully");
-    default.log("[QMOI] Environment variables configured:");
-    default.log(
+    .log("[QMOI] Auto-setup completed successfully");
+    .log("[QMOI] Environment variables configured:");
+    .log(
       `  - MASTER_PASSWORD: ${process.env.MASTER_PASSWORD ? "✓" : "✗"}`,
     );
-    default.log(`  - ADMIN_TOKEN: ${process.env.ADMIN_TOKEN ? "✓" : "✗"}`);
-    default.log(
+    .log(`  - ADMIN_TOKEN: ${process.env.ADMIN_TOKEN ? "✓" : "✗"}`);
+    .log(
       `  - NEXT_PUBLIC_API_URL: ${process.env.NEXT_PUBLIC_API_URL || "✗"}`,
     );
 

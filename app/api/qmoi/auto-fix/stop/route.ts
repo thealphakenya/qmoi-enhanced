@@ -65,7 +65,7 @@ export async function POST(_request: NextRequest) {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
             } catch (error) {
-              default.log(`Failed to kill process ${pid}:`, error);
+              .log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -82,7 +82,7 @@ export async function POST(_request: NextRequest) {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
             } catch (error) {
-              default.log(`Failed to kill process ${pid}:`, error);
+              .log(`Failed to kill process ${pid}:`, error);
             }
           }
         }

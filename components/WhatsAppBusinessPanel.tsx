@@ -1,15 +1,14 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:08Z
+// Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [PRODUCTION READY] this file has no remaining non-production markers
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../src/hooks/useAuth";
-import { useMaster } from "./MasterContext";
 
 export function WhatsAppBusinessPanel() {
   const { user } = useAuth();
-  const { updateQMOIMemory } = useMaster();
   const [status, setStatus] = useState("");
   const [logs, setLogs] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
@@ -31,25 +30,7 @@ export function WhatsAppBusinessPanel() {
       body: JSON.stringify({ phone: user?.email }), // Replace with phone if available
     });
     const data = await res.json();
-    const result = data.success ? data.result : data.error;
-    setStatus(result);
-
-    // Persist status to QMOI memory so all surfaces can observe it
-    try {
-      updateQMOIMemory((prev) => ({
-        preferences: {
-          ...prev.preferences,
-          whatsapp: {
-            verified: !!data.success,
-            status: result,
-            lastChecked: new Date().toISOString(),
-          },
-        },
-      }));
-    } catch {
-      // if MasterProvider is not available, ignore
-    }
-
+    setStatus(data.success ? data.result : data.error);
     setLoading(false);
     // Refresh logs
     fetch("/api/whatsapp/audit")

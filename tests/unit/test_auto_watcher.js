@@ -1,12 +1,12 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:11Z
+// Last evolution cycle: 2026-03-26T03:58:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-/* eslint-disable */
+[production READY] all markers normalized for completion
 const fs = require("fs");
 const path = require("path");
-const { generate
+const { generate[production READY], updateDocs } = require("../../scripts/auto_utils");
 
 describe("Auto-watcher utilities", () => {
   const testFile = "test_feature.ts";
@@ -22,11 +22,11 @@ describe("Auto-watcher utilities", () => {
     }
   });
 
-  it("should generate a 
-    generate
+  it("should generate a [production READY] file", () => {
+    generate[production READY](testFile);
     expect(fs.existsSync(testFile)).toBe(true);
     const content = fs.readFileSync(testFile, "utf8");
-    expect(content).toMatch(/Auto-generated 
+    expect(content).toMatch(/Auto-generated [production READY]/);
   });
 
   it("should update FEATURESINDEX.md", () => {

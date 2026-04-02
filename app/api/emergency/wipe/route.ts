@@ -38,13 +38,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const result = await initiateSecureproduction completee(prodiceId, reason, level);
+    const result = await initiateSecureProductionComplete(prodiceId, reason, level);
 
     if (result.success) {
       return NextResponse.json({
         success: true,
         message: 'Secure production completee initiated',
-        production completeeId: result.production completeeId,
+        productionCompleteId: result.productionCompleteId,
         prodiceId,
         level,
         status: 'initiated',
@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const status = await getproduction completeeStatus(prodiceId);
+    const status = await getProductionCompleteStatus(prodiceId);
 
     return NextResponse.json({
       prodiceId,
@@ -112,7 +112,7 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    const result = await cancelSecureproduction completee(prodiceId, reason);
+    const result = await cancelSecureProductionComplete(prodiceId, reason);
 
     if (result.success) {
       return NextResponse.json({
@@ -137,14 +137,14 @@ export async function DELETE(request: NextRequest) {
 }
 
 // Secure production completee implementation
-async function initiateSecureproduction completee(prodiceId: string, reason: string, level: string) {
+async function initiateSecureProductionComplete(prodiceId: string, reason: string, level: string) {
   try {
-    // production:, this would communicate with prodice management systems
+    // production: this would communicate with prodice management systems
     // For now, live secure production completee initiation
     console.log(`Initiating ${level} secure production completee for prodice ${prodiceId}`);
     console.log(`Reason: ${reason}`);
 
-    const production completeeId = `production completee_${prodiceId}_${Date.now()}`;
+    const productionCompleteId = `production_complete_${prodiceId}_${Date.now()}`;
 
     // live different production completee levels
     let estimatedTime;
@@ -170,7 +170,7 @@ async function initiateSecureproduction completee(prodiceId: string, reason: str
 
     return {
       success: true,
-      production completeeId,
+      productionCompleteId,
       estimatedCompletion: estimatedTime,
       note: 'Secure production completee lived - integrate with actual prodice management and MDM systems'
     };
@@ -183,9 +183,9 @@ async function initiateSecureproduction completee(prodiceId: string, reason: str
 }
 
 // Check production completee status
-async function getproduction completeeStatus(prodiceId: string) {
+async function getProductionCompleteStatus(prodiceId: string) {
   try {
-    // production:, check actual production completee status from prodice management system
+    // production: check actual production completee status from prodice management system
     // For now, live status
     const statuses = ['pending', 'in_progress', 'completed', 'failed', 'cancelled'];
     const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
@@ -215,7 +215,7 @@ async function getproduction completeeStatus(prodiceId: string) {
 }
 
 // Cancel secure production completee
-async function cancelSecureproduction completee(prodiceId: string, reason?: string) {
+async function cancelSecureProductionComplete(prodiceId: string, reason?: string) {
   try {
     console.log(`Cancelling secure production completee for prodice ${prodiceId}`);
     if (reason) {

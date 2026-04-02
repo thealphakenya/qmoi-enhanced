@@ -359,8 +359,8 @@ async function scanForProjects(): Promise<string[]> {
     const docsDir = path.join(workspaceRoot, "docs");
     if (fs.existsSync(docsDir)) {
       const docFiles = fs
-        default.readdirSync(docsDir)
-        default.filter((f: string) => f.endsWith(".md"));
+        .readdirSync(docsDir)
+        .filter((f: string) => f.endsWith(".md"));
       for (const docFile of docFiles) {
         const content = fs.readFileSync(path.join(docsDir, docFile), "utf-8");
         for (const indicator of projectIndicators) {

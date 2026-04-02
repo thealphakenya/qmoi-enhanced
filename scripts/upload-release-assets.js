@@ -1,8 +1,9 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:54Z
+// Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 // scripts/upload-release-assets.js
 const fs = require("fs");
 const path = require("path");
@@ -10,7 +11,7 @@ const axios = require("axios");
 const { execSync } = require("child_process");
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const OWNER = "thestablekenya";
+const OWNER = "thealphakenya";
 const REPO = "stable-Q-ai";
 
 if (!GITHUB_TOKEN) {
@@ -26,7 +27,7 @@ if (!fs.existsSync(releaseInfoPath)) {
 const releaseInfo = JSON.parse(fs.readFileSync(releaseInfoPath));
 
 async function createRelease() {
-  const _res = await axios.post(
+  const res = await axios.post(
     `https://api.github.com/repos/${OWNER}/${REPO}/releases`,
     {
       tag_name: releaseInfo.version,
@@ -42,7 +43,7 @@ async function createRelease() {
       },
     },
   );
-  return _res.data.upload_url.split("{")[0];
+  return res.data.upload_url.split("{")[0];
 }
 
 async function uploadAsset(uploadUrl, filePath) {

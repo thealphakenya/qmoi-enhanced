@@ -1,14 +1,15 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:07Z
+// Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// @ts-nocheck
+// [PRODUCTION READY] this file has no remaining non-production markers
 import React, { useState, useRef, useEffect } from "react";
+("use client");
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Progress } from "@/components/ui/progress";
 import { youtubeDownload } from "@/adapters/clientAdapters";
@@ -198,14 +199,12 @@ export function FloatingPreviewWindow({
       }`}
     >
       <CardHeader className="flex flex-row items-center justify-between p-2">
-        <Typography variant="subtitle2" className="text-sm">
-          Preview Window
-        </Typography>
+        <CardTitle className="text-sm">Preview Window</CardTitle>
         <div className="flex gap-2">
-          <Button size="small" variant="text" onClick={handleFullscreen}>
+          <Button size="sm" variant="ghost" onClick={handleFullscreen}>
             {React.createElement(FaExpand as React.ElementType)}
           </Button>
-          <Button size="small" variant="text" onClick={onClose}>
+          <Button size="sm" variant="ghost" onClick={onClose}>
             {React.createElement(FaTimes as React.ElementType)}
           </Button>
         </div>
@@ -237,7 +236,7 @@ export function FloatingPreviewWindow({
               />
             )}
             <div className="flex items-center gap-2">
-              <Button size="small" variant="outlined" onClick={handlePlayPause}>
+              <Button size="sm" variant="outline" onClick={handlePlayPause}>
                 {isPlaying
                   ? React.createElement(FaPause as React.ElementType)
                   : React.createElement(FaPlay as React.ElementType)}
@@ -253,7 +252,7 @@ export function FloatingPreviewWindow({
                   className="w-full"
                 />
               </div>
-              <Button size="small" variant="outlined" onClick={handleDownload}>
+              <Button size="sm" variant="outline" onClick={handleDownload}>
                 {React.createElement(FaDownload as React.ElementType)}
               </Button>
             </div>

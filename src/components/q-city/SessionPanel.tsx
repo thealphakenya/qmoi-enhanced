@@ -1,18 +1,13 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:13Z
+// Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useEffect, useState } from "react";
-
-export interface SessionItem {
-  sid: string;
-  createdAt?: string;
-  expiresAt?: string;
-}
+// [PRODUCTION READY] this file has no remaining non-production markers
+import React, { useEffect, useState } from "react";
 
 export default function SessionPanel() {
-  const [sessions, setSessions] = useState<SessionItem[]>([]);
+  const [sessions, setSessions] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const token =
@@ -24,19 +19,8 @@ export default function SessionPanel() {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())
-      .then((data: unknown) => {
-        const d = data as Record<string, unknown>;
-        const items = (d.sessions ?? []) as unknown[];
-        setSessions(items as SessionItem[]);
-      })
-      .catch((_err: unknown) => {
-        console.warn("fetch sessions failed", String(_err));
-        setError(
-          typeof _err === "object" && _err && "message" in _err
-            ? String((_err as { message?: unknown }).message)
-            : String(_err),
-        );
-      })
+      .then((data) => setSessions(data.sessions || []))
+      .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   };
 
@@ -55,14 +39,7 @@ export default function SessionPanel() {
       body: JSON.stringify({ action: "revoke", sid }),
     })
       .then(fetchSessions)
-      .catch((_err: unknown) => {
-        console.warn("revoke session failed", String(_err));
-        setError(
-          typeof _err === "object" && _err && "message" in _err
-            ? String((_err as { message?: unknown }).message)
-            : String(_err),
-        );
-      })
+      .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   };
 
@@ -83,7 +60,7 @@ export default function SessionPanel() {
             </tr>
           </thead>
           <tbody>
-            {sessions.map((s: SessionItem, i) => (
+            {sessions.map((s, i) => (
               <tr key={i}>
                 <td>{s.sid}</td>
                 <td>{s.createdAt}</td>

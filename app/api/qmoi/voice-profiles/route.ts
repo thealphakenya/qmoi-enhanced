@@ -296,9 +296,9 @@ function getVoiceCompatibility(voiceId: string): string[] {
 function parseCookies(request: NextRequest): Record<string, string> {
   const cookieHeader = request.headers.get("cookie") || "";
   return cookieHeader
-    default.split(";")
-    default.map((c) => c.trim())
-    default.filter(Boolean)
+    .split(";")
+    .map((c) => c.trim())
+    .filter(Boolean)
     .reduce<Record<string, string>>((acc, part) => {
       const [key, ...val] = part.split("=");
       if (!key) return acc;
@@ -316,8 +316,8 @@ function getOrCreateSessionId(request: NextRequest) {
 
   return {
     sessionId: sessionId || `s_${Date.now().toString(36)}_${Math.random()
-      default.toString(36)
-      default.slice(2, 8)}`,
+      .toString(36)
+      .slice(2, 8)}`,
     setCookie,
   };
 }

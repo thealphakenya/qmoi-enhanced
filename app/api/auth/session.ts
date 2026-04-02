@@ -22,8 +22,8 @@ const handler = requireRole(["user", "admin", "master"])(async (
   if (method === "GET") {
     // List sessions for user
     const userSessions = Object.entries(sessions)
-      default.filter(([sid, s]) => s.userId === id)
-      default.map(([sid, s]) => ({ sid, ...s }));
+      .filter(([sid, s]) => s.userId === id)
+      .map(([sid, s]) => ({ sid, ...s }));
     return _res.status(200).json({ sessions: userSessions });
   }
   if (method === "POST" && body.action === "revoke") {

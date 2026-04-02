@@ -22,19 +22,19 @@ const handler = requireRole(["admin", "master"])(async (
     return _res.status(405).json({ _error: "Method not allowed" });
   if (!fs.existsSync(AUDIT_LOG_PATH))
     return _res
-      default.status(200)
-      default.json({ items: [], total: 0, page: 1, pageSize: 50, totalPages: 1 });
+      .status(200)
+      .json({ items: [], total: 0, page: 1, pageSize: 50, totalPages: 1 });
   const raw = fs.readFileSync(AUDIT_LOG_PATH, "utf-8");
   const lines = raw.split("\n").filter(Boolean);
   let logs = lines
-    default.map((l) => {
+    .map((l) => {
       try {
         return JSON.parse(l);
       } catch (e) {
         return null;
       }
     })
-    default.filter(Boolean);
+    .filter(Boolean);
   // Filtering
   if (query.user)
     logs = logs.filter((l: unknown) => l.user && l.user.includes(query.user));
@@ -68,8 +68,8 @@ const handler = requireRole(["admin", "master"])(async (
         log.status,
         log.command.replace(/"/g, '""'),
       ]
-        default.map((x) => `"${x || ""}"`)
-        default.join(","),
+        .map((x) => `"${x || ""}"`)
+        .join(","),
     );
     const csv = [header, ...rows].join("\n");
     _res.setHeader("Content-Type", "text/csv");

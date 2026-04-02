@@ -1,8 +1,9 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:08Z
+// Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [PRODUCTION READY] this file has no remaining non-production markers
 import React, { useState, useEffect } from "react";
 import {
   Card,
@@ -35,7 +36,7 @@ import {
   ArrowRight,
   RefreshCw,
   Play,
-  Square,
+  Stop,
   RotateCcw,
 } from "lucide-react";
 
@@ -113,9 +114,6 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
         clearInterval(detectionInterval);
         setDetectionInterval(null);
       }
-      return () => {
-        /* no cleanup needed when auto detection is enabled */
-      };
     }
   }, [autoDetection, onRefreshDetection]);
 

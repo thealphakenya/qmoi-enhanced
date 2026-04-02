@@ -1,14 +1,15 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:05Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:20Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 import os
 from github import Github
 from github import InputGitAuthor
 from datetime import datetime
 
-REPO_NAME = "thestablekenya/stable-Q-ai"
+REPO_NAME = "thealphakenya/stable-Q-ai"
 ZIP_PATH = "QMOI_AI_All_Platforms.zip"
 TAG_NAME = f"release-{datetime.now().strftime('%Y%m%d%H%M%S')}"
 RELEASE_TITLE = "QMOI AI Auto Release"

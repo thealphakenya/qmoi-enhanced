@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:55Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:19Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Hugging Face Space UI Test Script
@@ -11,7 +12,7 @@ Checks that all Gradio tabs/features are accessible and working in the deployed 
 Usage:
   python scripts/test_hf_space_ui.py --space-url <url>
 
-- space-url: The public URL of the deployed Hugging Face Space (e.g., https://huggingface.co/spaces/stableqmoi/qmoi-ai-system)
+- space-url: The public URL of the deployed Hugging Face Space (e.g., https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)
 
 Logs results to logs/test_hf_space_ui.log. Exits 0 even on failure (non-fatal for CI/CD).
 """
@@ -43,7 +44,7 @@ def check_tab(url, tab_name):
 
 def main():
     parser = argparse.ArgumentParser(description='QMOI Hugging Face Space UI Test Script')
-    parser.add_argument('--space-url', required=False, default='https://huggingface.co/spaces/stableqmoi/qmoi-ai-system', help='Hugging Face Space URL')
+    parser.add_argument('--space-url', required=False, default='https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system', help='Hugging Face Space URL')
     args = parser.parse_args()
     url = args.space_url.rstrip('/')
 

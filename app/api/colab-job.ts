@@ -8,6 +8,7 @@
 
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
+import { logEvent } from "../../../lib/security_check";
 
 const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
 
@@ -54,7 +55,7 @@ async function uploadDataset(dataset: Dataset) {
     success: true,
     status: "uploaded",
     dataset: dataset.name,
-    url: `s3:
+    url: "s3://local/uploads/" + encodeURIComponent(dataset.name),
     timestamp: new Date().toISOString(),
     note: "Local metadata created; replace with cloud storage upload service for real production",
   };
@@ -64,7 +65,7 @@ async function uploadDataset(dataset: Dataset) {
 // production: Integrate with Google Colab API or AWS SageMaker
 async function executeColabJob(jobSpec: JobSpec) {
   // Local orchestrator implementation: creates a job ID and queues job metadata for retrieval
-  const jobId = `job-${Date.now()}`;
+  const jobId = "job-" + Date.now();
   logEvent("colab_execute", {
     jobId,
     jobSpec,
@@ -171,18 +172,18 @@ export default async function handler(
       });
     } catch (error) {
       return _res
-        default.status(500)
-        default.json({ _error: "Failed to process request", message: String(error) });
+        .status(500)
+        .json({ _error: "Failed to process request", message: String(error) });
     }
   }
   if (_req.method === "GET") {
     // Return all jobs
     if (fs.existsSync(JOBS_PATH)) {
       const jobs = fs
-        default.readFileSync(JOBS_PATH, "utf8")
-        default.split("\n")
-        default.filter(Boolean)
-        default.map((line) => JSON.parse(line));
+        .readFileSync(JOBS_PATH, "utf8")
+        .split("\n")
+        .filter(Boolean)
+        .map((line) => JSON.parse(line));
       return _res.json(jobs);
     }
     return _res.json([]);

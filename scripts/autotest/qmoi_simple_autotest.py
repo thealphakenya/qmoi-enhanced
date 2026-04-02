@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:53Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:18Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 import os
 import sys
 import requests
@@ -19,6 +20,7 @@ SMTP_PASS = os.environ.get('QMOI_SMTP_PASS')
 NOTIFY_EMAIL = os.environ.get('QMOI_NOTIFY_EMAIL')
 SLACK_WEBHOOK = os.environ.get('QMOI_SLACK_WEBHOOK')
 DISCORD_WEBHOOK = os.environ.get('QMOI_DISCORD_WEBHOOK')
+
 
 def log_result(msg):
     print(msg)
@@ -103,18 +105,18 @@ def main():
 
     # 2. Critical download links (add more as needed)
     urls = [
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe",
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/mac.dmg",
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.deb",
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/linux.appimage",
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/android.apk",
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/ios.ipa",
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe",
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/mac.dmg",
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage",
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk",
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa",
-        "https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk"
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
+        "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk"
     ]
     for url in urls:
         if not test_url(url):

@@ -43,8 +43,8 @@ export async function GET(_request: NextRequest) {
           }
           return null;
         })
-        default.filter(Boolean)
-        default.slice(-5); // Last 5 deployments
+        .filter(Boolean)
+        .slice(-5); // Last 5 deployments
     }
 
     return NextResponse.json({ deployments });

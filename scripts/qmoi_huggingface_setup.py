@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:54Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:19Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Hugging Face Setup Script
@@ -33,8 +34,8 @@ class QMOIHuggingFaceSetup:
     
     def __init__(self):
         self.hf_token = os.getenv("HUGGINGFACE_TOKEN")
-        self.model_name = "stableqmoi/qmoi"
-        self.space_name = "stableqmoi/qmoi-ai-system"
+        self.model_name = "alphaqmoi/qmoi"
+        self.space_name = "alphaqmoi/qmoi-ai-system"
         self.config = {}
         
     def setup_huggingface_integration(self):
@@ -214,7 +215,7 @@ This model is continuously updated with:
 ## Support
 
 For questions, issues, or feature requests:
-- GitHub: https://github.com/stableqmoi/qmoi-ai-system
+- GitHub: https://github.com/alphaqmoi/qmoi-ai-system
 - Documentation: https://qmoi.ai/docs
 - Support: support@qmoi.ai
 
@@ -482,7 +483,7 @@ def update_model():
     """Update QMOI model on Hugging Face"""
     try:
         # Update model files
-        subprocess.run(["huggingface-cli", "upload", "stableqmoi/qmoi", "models/latest/"])
+        subprocess.run(["huggingface-cli", "upload", "alphaqmoi/qmoi", "models/latest/"])
         print(f"[{datetime.now()}] Model updated successfully")
     except Exception as e:
         print(f"[{datetime.now()}] Model update failed: {e}")
@@ -491,7 +492,7 @@ def update_space():
     """Update QMOI space on Hugging Face"""
     try:
         # Update space files
-        subprocess.run(["huggingface-cli", "upload", "stableqmoi/qmoi-ai-system", "huggingface_space/"])
+        subprocess.run(["huggingface-cli", "upload", "alphaqmoi/qmoi-ai-system", "huggingface_space/"])
         print(f"[{datetime.now()}] Space updated successfully")
     except Exception as e:
         print(f"[{datetime.now()}] Space update failed: {e}")
@@ -560,7 +561,7 @@ from datetime import datetime
 def check_model_health():
     """Check model health"""
     try:
-        response = requests.get("https://huggingface.co/stableqmoi/qmoi")
+        response = requests.get("https://huggingface.co/alphaqmoi/qmoi")
         return response.status_code == 200
     except:
         return False
@@ -568,7 +569,7 @@ def check_model_health():
 def check_space_health():
     """Check space health"""
     try:
-        response = requests.get("https://huggingface.co/spaces/stableqmoi/qmoi-ai-system")
+        response = requests.get("https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system")
         return response.status_code == 200
     except:
         return False
@@ -577,7 +578,7 @@ def check_api_health():
     """Check API health"""
     try:
         response = requests.post(
-            "https://api-inference.huggingface.co/models/stableqmoi/qmoi",
+            "https://api-inference.huggingface.co/models/alphaqmoi/qmoi",
             headers={"Authorization": f"Bearer {os.getenv('HUGGINGFACE_TOKEN')}"},
             json={"inputs": "test"}
         )

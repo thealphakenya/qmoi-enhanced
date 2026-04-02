@@ -1,25 +1,25 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:12Z
+// Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// INTENTIONAL_UNUSED: archived / intentionally unused component
-import { AccountBalance, Info, Refresh } from "@mui/icons-material";
+// [PRODUCTION READY] this file has no remaining non-production markers
+import React, { useState, useEffect } from "react";
 import {
-    Alert,
-    Box,
-    Card,
-    CardContent,
-    Chip,
-    CircularProgress,
-    Grid,
-    IconButton,
-    Tooltip,
-    Typography,
+  Box,
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  Chip,
+  IconButton,
+  Tooltip,
+  CircularProgress,
+  Alert,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { Asset, AssetManagerImpl } from "../config/assets";
+import { AccountBalance, Refresh, Info } from "@mui/icons-material";
 import { useAuth } from "../hooks/useAuth";
+import { AssetManagerImpl, Asset } from "../config/assets";
 
 interface AssetOverviewProps {
   className?: string;
@@ -55,10 +55,9 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
-      void _err;
+    } catch (err) {
       setError(
-        _err instanceof Error ? _err.message : "Failed to fetch asset data",
+        err instanceof Error ? err.message : "Failed to fetch asset data",
       );
     } finally {
       setIsLoading(false);

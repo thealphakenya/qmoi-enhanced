@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:54Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:19Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Enhanced Notification System
@@ -34,7 +35,7 @@ logging.basicConfig(
 
 class QMOIEnhancedNotifications:
     def __init__(self):
-        self.master_emails = os.getenv('MASTER_EMAILS', 'rovicviccy@gmail.com,thestablekenya@gmail.com').split(',')
+        self.master_emails = os.getenv('MASTER_EMAILS', 'rovicviccy@gmail.com,thealphakenya@gmail.com').split(',')
         self.notification_history = []
         self.active_channels = {
             'email': True,
@@ -75,7 +76,7 @@ class QMOIEnhancedNotifications:
             # Email configuration
             smtp_server = os.getenv('SMTP_SERVER', 'smtp.gmail.com')
             smtp_port = int(os.getenv('SMTP_PORT', '587'))
-            email_user = os.getenv('EMAIL_USER', 'qmoi@stablekenya.com')
+            email_user = os.getenv('EMAIL_USER', 'qmoi@alphakenya.com')
             email_password = os.getenv('EMAIL_PASSWORD', '')
             
             # Create message

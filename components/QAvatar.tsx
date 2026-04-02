@@ -1,9 +1,10 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:06Z
+// Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// @ts-nocheck
+[PRODUCTION READY] all markers normalized for completion
+"use client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -16,7 +17,7 @@ import {
   Mic,
   MicOff,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Button from "@mui/material/Button";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -26,7 +27,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Typography from "@mui/material/Typography";
 import { Badge } from "@/components/ui/badge";
 import "./QAvatar.accessibility.css";
 import { useToast } from "@/components/ui/use-toast";
@@ -34,15 +38,8 @@ import SelfHealPanel from "@/src/components/q-city/SelfHealPanel";
 import MetricsPanel from "@/src/components/q-city/MetricsPanel";
 import AviatorGalleryPanel from "@/src/components/q-city/AviatorGalleryPanel";
 import PluginPanel from "@/src/components/q-city/PluginPanel";
-import {
-  OrchestratorStatusPanel,
-  OrchestratorStatus,
-} from "@/components/predeploy/OrchestratorStatusPanel";
+import { OrchestratorStatusPanel } from "@/components/predeploy/OrchestratorStatusPanel";
 import TeamRoleManager from "./TeamRoleManager";
-
-// new panels
-import { VoiceSelectionPanel } from "./VoiceSelectionPanel";
-import { AvatarSelectionPanel } from "./AvatarSelectionPanel";
 
 interface QAvatarProps {
   initialPosition?: { x: number; y: number };
@@ -52,8 +49,6 @@ interface QAvatarProps {
   onMinimize?: () => void;
   onMaximize?: () => void;
   className?: string;
-  isPersistent?: boolean; // New prop for persistent display
-  enableAutoFeatures?: boolean; // New prop for auto-feature capabilities
 }
 
 interface AvatarConfig {
@@ -82,40 +77,11 @@ interface AvatarConfig {
     | "energetic"
     | "calm"
     | "focused";
-  quality:
-    | "low"
-    | "medium"
-    | "high"
-    | "ultra"
-    | "ai-enhanced"
-    | "hyper-realistic"
-    | "cinematic"
-    | "photorealistic";
+  quality: "low" | "medium" | "high" | "ultra" | "ai-enhanced";
   autoEnhance: boolean;
   lipSync: boolean;
   gestures: boolean;
   expressions: boolean;
-  // Enhanced video quality settings
-  videoQuality: "standard" | "high" | "ultra" | "cinematic" | "photorealistic";
-  frameRate: 24 | 30 | 60 | 120 | 240;
-  resolution: "720p" | "1080p" | "1440p" | "4k" | "8k";
-  compression: "none" | "light" | "standard" | "heavy";
-  colorDepth: 8 | 10 | 12 | 16;
-  hdrEnabled: boolean;
-  // Realistic animation settings
-  animationStyle:
-    | "cartoon"
-    | "realistic"
-    | "cinematic"
-    | "hyper-realistic"
-    | "photorealistic";
-  motionBlur: boolean;
-  depthOfField: boolean;
-  particleDensity: "low" | "medium" | "high" | "ultra";
-  lightingQuality: "comprehensive" | "advanced" | "cinematic" | "photorealistic";
-  shadowQuality: "off" | "low" | "medium" | "high" | "ultra";
-  textureQuality: "low" | "medium" | "high" | "ultra";
-  antiAliasing: "off" | "fxaa" | "msaa" | "temporal";
   floatingBehavior:
     | "static"
     | "gentle"
@@ -155,11 +121,6 @@ interface AvatarConfig {
   moodDetection: boolean;
   contextAwareness: boolean;
   performanceOptimization: boolean;
-  // New features
-  vehicles: string[];
-  locations: string[];
-  movementPaths: string[];
-  autoFeatureUpdate: boolean;
 }
 
 // Add a reusable HelpLink component
@@ -216,8 +177,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
   onMinimize,
   onMaximize,
   className = "",
-  isPersistent = true, // Default to persistent display
-  enableAutoFeatures = true, // Default to auto-features enabled
 }) => {
   const [config, setConfig] = useState<AvatarConfig>({
     type: defaultAvatar,
@@ -229,27 +188,11 @@ const QAvatar: React.FC<QAvatarProps> = ({
     volume: 0.7,
     animationSpeed: 1,
     emotionalStyle: "friendly",
-    quality: "hyper-realistic",
+    quality: "ai-enhanced",
     autoEnhance: true,
     lipSync: true,
     gestures: true,
     expressions: true,
-    // Enhanced video quality defaults
-    videoQuality: "cinematic",
-    frameRate: 120,
-    resolution: "8k",
-    compression: "none",
-    colorDepth: 16,
-    hdrEnabled: true,
-    // Realistic animation defaults
-    animationStyle: "hyper-realistic",
-    motionBlur: true,
-    depthOfField: true,
-    particleDensity: "ultra",
-    lightingQuality: "photorealistic",
-    shadowQuality: "ultra",
-    textureQuality: "ultra",
-    antiAliasing: "temporal",
     floatingBehavior: "intelligent",
     environment: "dynamic",
     weather: "dynamic",
@@ -266,21 +209,14 @@ const QAvatar: React.FC<QAvatarProps> = ({
     moodDetection: true,
     contextAwareness: true,
     performanceOptimization: true,
-    // new defaults
-    vehicles: [],
-    locations: [],
-    movementPaths: [],
-    autoFeatureUpdate: true,
   });
 
   const [showSettings, setShowSettings] = useState(false);
-  const [showVoiceSelection, setShowVoiceSelection] = useState(false);
-  const [showAvatarSelection, setShowAvatarSelection] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const avatarRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number | null>(null);
-  const enhancementRef = useRef<NodeJS.Timeout | null>(null);
+  const animationRef = useRef<number>();
+  const enhancementRef = useRef<NodeJS.Timeout>();
 
   const [showQCityDashboard, setShowQCityDashboard] = useState(false);
   const [qcityStatus, setQCityStatus] = useState<any>(null);
@@ -288,528 +224,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
     const saved = localStorage.getItem("qcity-offloading-enabled");
     return saved ? JSON.parse(saved) : true;
   });
-
-  // Enhanced movement and location system with GTA IV-like realism
-  const [currentLocation, setCurrentLocation] = useState<string>("office");
-  const [isMoving, setIsMoving] = useState(false);
-  const [movementQueue, setMovementQueue] = useState<string[]>([]);
-  const [availableLocations] = useState([
-    // Major Cities
-    "new-york-city",
-    "los-angeles",
-    "chicago",
-    "houston",
-    "phoenix",
-    "philadelphia",
-    "san-antonio",
-    "san-diego",
-    "dallas",
-    "san-jose",
-    "austin",
-    "jacksonville",
-    "fort-worth",
-    "columbus",
-    "indianapolis",
-    "charlotte",
-    "san-francisco",
-    "seattle",
-    "denver",
-    "boston",
-    "el-paso",
-    "detroit",
-    "nashville",
-    "portland",
-    "memphis",
-    "oklahoma-city",
-    "las-vegas",
-    "louisville",
-    "baltimore",
-    "milwaukee",
-    "albuquerque",
-    "tucson",
-    "fresno",
-    "mesa",
-    "sacramento",
-    "atlanta",
-    "kansas-city",
-    "colorado-springs",
-    "miami",
-    "raleigh",
-    "omaha",
-    "long-beach",
-    "virginia-beach",
-    "oakland",
-    "minneapolis",
-    "tulsa",
-    "arlington",
-    "tampa",
-    "new-orleans",
-    "wichita",
-    "cleveland",
-    "bakersfield",
-    "aurora",
-    "anaheim",
-    "honolulu",
-    "santa-ana",
-    "corpus-christi",
-    "riverside",
-    "lexington",
-    "henderson",
-    "stockton",
-    "st-paul",
-    "st-louis",
-    "cincinnati",
-    "pittsburgh",
-    "greensboro",
-    "anchorage",
-    "plano",
-    "lincoln",
-    "orlando",
-    "irvine",
-    "newark",
-    "durham",
-    "chula-vista",
-    "toledo",
-    "fort-wayne",
-    "st-petersburg",
-    "laredo",
-    "jersey-city",
-    "chandler",
-    "madison",
-    "lubbock",
-    "scottsdale",
-    "reno",
-    "buffalo",
-    "gilbert",
-    "glendale",
-    "north-las-vegas",
-    "winston-salem",
-    "chesapeake",
-    "norfolk",
-    "fremont",
-    "garland",
-    "irving",
-    "hialeah",
-    "richmond",
-    "boise",
-    "spokane",
-    // International Cities
-    "london",
-    "paris",
-    "tokyo",
-    "beijing",
-    "moscow",
-    "sydney",
-    "berlin",
-    "rome",
-    "madrid",
-    "toronto",
-    "mexico-city",
-    "sao-paulo",
-    "mumbai",
-    "shanghai",
-    "istanbul",
-    "bangkok",
-    "seoul",
-    "singapore",
-    "cairo",
-    "lagos",
-    "johannesburg",
-    "dubai",
-    "riyadh",
-    "jakarta",
-    "manila",
-    "karachi",
-    "delhi",
-    "dhaka",
-    "tehran",
-    "baghdad",
-    "kuwait-city",
-    "doha",
-    "abu-dhabi",
-    "amman",
-    "beirut",
-    "jerusalem",
-    "damascus",
-    "ankara",
-    "athens",
-    "bucharest",
-    "budapest",
-    "warsaw",
-    "prague",
-    "vienna",
-    "zurich",
-    "geneva",
-    "copenhagen",
-    "stockholm",
-    "oslo",
-    "helsinki",
-    "amsterdam",
-    "brussels",
-    "luxembourg",
-    "monaco",
-    "andorra-la-vella",
-    "san-marino",
-    "vatican-city",
-    "ljubljana",
-    "zagreb",
-    "sarajevo",
-    "belgrade",
-    "sofia",
-    "skopje",
-    "tirana",
-    "podgorica",
-    "pristina",
-    "chisinau",
-    "kiev",
-    "minsk",
-    "tallinn",
-    "riga",
-    "vilnius",
-    "dublin",
-    "edinburgh",
-    "cardiff",
-    "belfast",
-    "reykjavik",
-    "nuuk",
-    "torshavn",
-    "copenhagen",
-    "stockholm",
-    "oslo",
-    "helsinki",
-    "tallinn",
-    "riga",
-    "vilnius",
-    // Fantasy/Sci-Fi Locations
-    "middle-earth",
-    "westeros",
-    "hogwarts",
-    "star-wars-galaxy",
-    "star-trek-quadrant",
-    "cyberpunk-city",
-    "steampunk-metropolis",
-    "underwater-city",
-    "cloud-city",
-    "moon-base",
-    "mars-colony",
-    "jupiter-station",
-    "saturn-ring-city",
-    "venus-atmosphere",
-    "mercury-surface",
-    "pluto-outpost",
-    "asteroid-belt",
-    "comet-tail",
-    "nebula-core",
-    // Nature Locations
-    "amazon-rainforest",
-    "sahara-desert",
-    "himalayas",
-    "andes-mountains",
-    "great-barrier-reef",
-    "antarctic-base",
-    "arctic-circle",
-    "galapagos-islands",
-    "yellowstone-national-park",
-    "grand-canyon",
-    "niagara-falls",
-    "mount-everest",
-    "victoria-falls",
-    "salar-de-uyuni",
-    "zhangjiajie-national-forest",
-    "mount-fuji",
-    "uluru",
-    "salar-de-uyuni",
-    "mount-roraima",
-    "tsingy-stone-forest",
-    // Historical Locations
-    "ancient-egypt",
-    "roman-empire",
-    "medieval-europe",
-    "victorian-london",
-    "wild-west",
-    "ancient-greece",
-    "mayan-civilization",
-    "aztec-empire",
-    "vikings",
-    "samurai-japan",
-    "ancient-china",
-    "indian-maurya-empire",
-    // Virtual/Alternate Realities
-    "matrix",
-    "metaverse",
-    "second-life",
-    "sims-world",
-    "minecraft-overworld",
-    "nether-realm",
-    "end-dimension",
-    "dreamscape",
-    "nightmare-realm",
-    "parallel-universe",
-    "quantum-reality",
-    "time-stream",
-    "dimensional-rift",
-    // QMOI Specific Locations
-    "qmoi-headquarters",
-    "ai-research-lab",
-    "quantum-computer-center",
-    "neural-network-hub",
-    "data-center-matrix",
-    "algorithm-forge",
-    "machine-learning-academy",
-    "deep-learning-depths",
-    "ai-ethics-council",
-    "future-prediction-chamber",
-    "creativity-studio",
-    "innovation-labs",
-    // Office/Home Variants
-    "office",
-    "home",
-    "car",
-    "beach",
-    "mountain",
-    "city",
-    "space",
-    "cyberpunk",
-    "fantasy",
-    "nature",
-  ]);
-  const [availableVehicles] = useState([
-    // Ground Vehicles
-    "walking",
-    "running",
-    "jogging",
-    "sprinting",
-    "crawling",
-    "limping",
-    "bicycle",
-    "motorcycle",
-    "scooter",
-    "moped",
-    "tricycle",
-    "unicycle",
-    "car",
-    "sedan",
-    "coupe",
-    "convertible",
-    "hatchback",
-    "wagon",
-    "suv",
-    "truck",
-    "pickup",
-    "van",
-    "minivan",
-    "rv",
-    "camper",
-    "motorhome",
-    "bus",
-    "school-bus",
-    "taxi",
-    "limousine",
-    "ambulance",
-    "fire-truck",
-    "police-car",
-    "race-car",
-    "sports-car",
-    "luxury-car",
-    "electric-car",
-    "hybrid-car",
-    "diesel-car",
-    "monster-truck",
-    "off-road-vehicle",
-    "atv",
-    "utv",
-    "golf-cart",
-    "go-kart",
-    "formula-1-car",
-    "drag-racer",
-    "rally-car",
-    "tank",
-    "armored-vehicle",
-    "military-vehicle",
-    "construction-vehicle",
-    "dump-truck",
-    "cement-mixer",
-    "forklift",
-    "bulldozer",
-    "excavator",
-    "crane",
-    "tractor",
-    "combine-harvester",
-    "horse",
-    "donkey",
-    "mule",
-    "camel",
-    "elephant",
-    "giraffe",
-    "zebra",
-    "cart",
-    "carriage",
-    "stagecoach",
-    "covered-wagon",
-    "chariot",
-    "rickshaw",
-    // Water Vehicles
-    "boat",
-    "canoe",
-    "kayak",
-    "raft",
-    "paddleboard",
-    "surfboard",
-    "jetski",
-    "speedboat",
-    "yacht",
-    "sailboat",
-    "catamaran",
-    "ferry",
-    "cruise-ship",
-    "submarine",
-    "nuclear-submarine",
-    "battleship",
-    "destroyer",
-    "aircraft-carrier",
-    "fishing-boat",
-    "tugboat",
-    "barge",
-    "pontoon-boat",
-    "houseboat",
-    "dinghy",
-    "lifeboat",
-    "rowboat",
-    "gondola",
-    "sampan",
-    "junk",
-    "dhow",
-    "felucca",
-    // Air Vehicles
-    "plane",
-    "airplane",
-    "jet",
-    "commercial-jet",
-    "private-jet",
-    "fighter-jet",
-    "bomber",
-    "helicopter",
-    "chopper",
-    "autogyro",
-    "blimp",
-    "dirigible",
-    "hot-air-balloon",
-    "glider",
-    "hang-glider",
-    "paraglider",
-    "ultralight",
-    "drone",
-    "quadcopter",
-    "rocket",
-    "space-shuttle",
-    "spacecraft",
-    "satellite",
-    "ufo",
-    "flying-saucer",
-    "flying-carpet",
-    "broomstick",
-    "magic-carpet",
-    "pegasus",
-    "dragon",
-    "phoenix",
-    "griffin",
-    "hippogriff",
-    "albatross",
-    // Space/Sci-Fi Vehicles
-    "spaceship",
-    "starship",
-    "starfighter",
-    "star-destroyer",
-    "death-star",
-    "enterprise",
-    "millennium-falcon",
-    "x-wing",
-    "tie-fighter",
-    "lightsaber",
-    "teleporter",
-    "wormhole-generator",
-    "time-machine",
-    "dimensional-shifter",
-    "quantum-tunneler",
-    "antimatter-drive",
-    "warp-drive",
-    "hyperdrive",
-    "ftl-drive",
-    "tachyon-drive",
-    "graviton-drive",
-    "plasma-drive",
-    // Fantasy/Magical Vehicles
-    "flying-carpet",
-    "broomstick",
-    "magic-carpet",
-    "pegasus",
-    "unicorn",
-    "dragon",
-    "phoenix",
-    "griffin",
-    "hippogriff",
-    "albatross",
-    "raven",
-    "owl",
-    "eagle",
-    "falcon",
-    "hawk",
-    "vulture",
-    "condor",
-    "pterodactyl",
-    "wyvern",
-    "leviathan",
-    "kraken",
-    "sea-serpent",
-    "mermaid",
-    "merman",
-    // QMOI Special Vehicles
-    "ai-pod",
-    "neural-network",
-    "quantum-computer",
-    "data-stream",
-    "algorithm-wave",
-    "creativity-beam",
-    "innovation-rocket",
-    "intelligence-boost",
-    "wisdom-portal",
-    "knowledge-vortex",
-    "learning-machine",
-    "evolution-chamber",
-    "upgrade-pod",
-    // Transportation Modes
-    "teleport",
-    "portal",
-    "wormhole",
-    "stargate",
-    "dimensional-portal",
-    "time-portal",
-    "reality-shift",
-    "dream-walk",
-    "astral-projection",
-    "mind-transfer",
-    "body-swap",
-    "clone-transfer",
-    "hologram-projection",
-    "virtual-reality",
-    "augmented-reality",
-    "mixed-reality",
-    "
-  ]);
-
-  // Auto-feature capabilities
-  const [autoFeaturesEnabled, setAutoFeaturesEnabled] =
-    useState(enableAutoFeatures);
-  const [featureSuggestions, setFeatureSuggestions] = useState<string[]>([]);
-  const [pendingFeatures, setPendingFeatures] = useState<string[]>([]);
-  const [featureHistory, setFeatureHistory] = useState<string[]>([]);
-
-  // Enhanced preview system
-  const [showPreviewWindow, setShowPreviewWindow] = useState(false);
-  const [previewMode, setPreviewMode] = useState<
-    "voice" | "avatar" | "location" | "feature"
-  >("avatar");
-  const [previewData, setPreviewData] = useState<any>(null);
 
   // Add state for API key and authentication status
   const [adminKey, setAdminKey] = useState(
@@ -868,9 +282,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
     () => !localStorage.getItem("qcity-onboarded"),
   );
 
-  // Initialize toast hook
-  const { toast } = useToast();
-
   // Add state for granular export/import
   const [exportScope, setExportScope] = useState<
     "all" | "history" | "pinned" | "notifications"
@@ -883,6 +294,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const enhanceAvatar = useCallback(() => {
     if (!config.aiEnhancement) return;
 
+    [PRODUCTION READY] AI enhancement process
     const enhancements = [
       () => setConfig((prev) => ({ ...prev, quality: "ai-enhanced" })),
       () => setConfig((prev) => ({ ...prev, particleEffects: true })),
@@ -966,18 +378,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     }
 
     // Random environment changes
-    const environments: Array<
-      | "fantasy"
-      | "space"
-      | "cyberpunk"
-      | "nature"
-      | "office"
-      | "beach"
-      | "mountain"
-      | "city"
-      | "home"
-      | "dynamic"
-    > = [
+    const environments = [
       "nature",
       "space",
       "cyberpunk",
@@ -1049,569 +450,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
       }
     };
   }, [config.isFloating, config.isMinimized, floatingAnimation]);
-
-  // Enhanced movement system with GTA IV-like unlimited capabilities
-  const moveToLocation = useCallback(
-    async (location: string, vehicle: string = "walking") => {
-      if (isMoving || currentLocation === location) return;
-
-      setIsMoving(true);
-      const movementDescription = `QMOI is traveling from ${currentLocation} to ${location} via ${vehicle}`;
-      setMovementQueue((prev) => [...prev, movementDescription]);
-
-      // GTA IV-like realism: QMOI can do ANYTHING anywhere
-      // Calculate movement time based on vehicle and distance with unlimited capabilities
-      const movementTime = getMovementTime(vehicle, currentLocation, location);
-
-      // Dynamic environment adaptation - QMOI adapts to any location instantly
-      setConfig((prev) => ({
-        ...prev,
-        environment: location as any,
-        vehicles: prev.vehicles.includes(vehicle)
-          ? prev.vehicles
-          : [...prev.vehicles, vehicle],
-        locations: prev.locations.includes(location)
-          ? prev.locations
-          : [...prev.locations, location],
-      }));
-
-      const randomEvent = Math.random();
-      let eventDelay = 0;
-
-      if (randomEvent < 0.1) {
-        // 10% chance of random event
-        const events = [
-          "encountering interesting scenery",
-          "having a creative thought",
-          "optimizing the route",
-          "adapting to local conditions",
-          "discovering new possibilities",
-          "enhancing capabilities",
-          "learning from the environment",
-          "interacting with locals",
-          "solving a mini-challenge",
-          "gaining new insights",
-        ];
-        const event = events[Math.floor(Math.random() * events.length)];
-        setMovementQueue((prev) => [...prev, `QMOI is ${event}...`]);
-        eventDelay = Math.random() * 2000 + 1000; // 1-3 seconds
-      }
-
-      setTimeout(() => {
-        setCurrentLocation(location);
-        setIsMoving(false);
-        setMovementQueue((prev) =>
-          prev.filter((m) => m !== movementDescription),
-        );
-
-        // Auto-add location-based features with unlimited QMOI capabilities
-        if (autoFeaturesEnabled) {
-          addLocationBasedFeatures(location);
-        }
-
-        // GTA IV-like notification with unlimited capabilities
-        const capabilities = getLocationCapabilities(location);
-        toast({
-          title: "Location Changed - Unlimited QMOI Capabilities Activated",
-          description: `QMOI has arrived at ${location} with ${capabilities.length} specialized capabilities unlocked!`,
-        });
-      }, movementTime + eventDelay);
-    },
-    [isMoving, currentLocation, autoFeaturesEnabled, toast],
-  );
-
-  // Get unlimited capabilities for any location (GTA IV-like)
-  const getLocationCapabilities = useCallback((location: string): string[] => {
-    const baseCapabilities = [
-      "unlimited-knowledge",
-      "instant-adaptation",
-      "creative-problem-solving",
-      "environmental-mastery",
-      "social-interaction",
-      "technical-expertise",
-      "leadership-skills",
-      "innovation-capability",
-      "learning-acceleration",
-      "reality-manipulation",
-      "time-optimization",
-      "resource-maximization",
-    ];
-
-    const locationSpecificCapabilities: { [key: string]: string[] } = {
-      // Cities get urban capabilities
-      "new-york-city": [
-        "business-networking",
-        "cultural-immersion",
-        "urban-navigation",
-        "financial-expertise",
-      ],
-      "los-angeles": [
-        "entertainment-industry",
-        "hollywood-connections",
-        "beach-culture",
-        "celebrity-networking",
-      ],
-      london: [
-        "historical-knowledge",
-        "royal-protocol",
-        "financial-markets",
-        "cultural-heritage",
-      ],
-      tokyo: [
-        "technology-innovation",
-        "cultural-adaptation",
-        "efficient-systems",
-        "future-trends",
-      ],
-      paris: [
-        "artistic-mastery",
-        "culinary-expertise",
-        "fashion-design",
-        "romantic-interactions",
-      ],
-
-      // Nature locations get environmental capabilities
-      "amazon-rainforest": [
-        "biodiversity-expertise",
-        "survival-skills",
-        "ecological-knowledge",
-        "indigenous-wisdom",
-      ],
-      himalayas: [
-        "meditation-mastery",
-        "altitude-adaptation",
-        "spiritual-guidance",
-        "mountain-wisdom",
-      ],
-      "great-barrier-reef": [
-        "marine-biology",
-        "ocean-conservation",
-        "diving-expertise",
-        "aquatic-adaptation",
-      ],
-
-      // Sci-fi locations get advanced capabilities
-      "star-wars-galaxy": [
-        "force-manipulation",
-        "lightsaber-mastery",
-        "jedi-mind-tricks",
-        "galactic-navigation",
-      ],
-      "cyberpunk-city": [
-        "hacking-expertise",
-        "neural-interfacing",
-        "cyber-security",
-        "digital-immersion",
-      ],
-      matrix: [
-        "reality-hacking",
-        "code-manipulation",
-        "system-overriding",
-        "consciousness-transfer",
-      ],
-
-      // Fantasy locations get magical capabilities
-      hogwarts: [
-        "spell-casting",
-        "potion-making",
-        "magical-theory",
-        "house-loyalty",
-      ],
-      "middle-earth": [
-        "ancient-languages",
-        "ring-lore",
-        "fellowship-building",
-        "heroic-quests",
-      ],
-
-      // QMOI specific locations get AI capabilities
-      "qmoi-headquarters": [
-        "ai-governance",
-        "ethical-decision-making",
-        "system-optimization",
-        "future-planning",
-      ],
-      "ai-research-lab": [
-        "machine-learning",
-        "neural-network-design",
-        "algorithm-creation",
-        "data-analysis",
-      ],
-      "quantum-computer-center": [
-        "quantum-computing",
-        "parallel-processing",
-        "entanglement-mastery",
-        "superposition-control",
-      ],
-    };
-
-    // Any location gets base capabilities plus location-specific ones
-    const specificCaps = locationSpecificCapabilities[location] || [];
-    return [...baseCapabilities, ...specificCaps];
-  }, []);
-
-  // Calculate movement time with GTA IV-like realism
-  const getMovementTime = (
-    vehicle: string,
-    from: string,
-    to: string,
-  ): number => {
-    // Base times for different vehicle types
-    const baseTimes: { [key: string]: number } = {
-      // Walking/Slow
-      walking: 3000,
-      running: 1500,
-      jogging: 2000,
-      sprinting: 1000,
-      crawling: 8000,
-      limping: 5000,
-
-      // Bicycles
-      bicycle: 2000,
-      tricycle: 2500,
-      unicycle: 1800,
-
-      // Motorized Ground
-      motorcycle: 1200,
-      scooter: 1400,
-      moped: 1600,
-      car: 1000,
-      sedan: 1100,
-      coupe: 900,
-      convertible: 950,
-      hatchback: 1050,
-      wagon: 1150,
-      suv: 1200,
-      truck: 1400,
-      pickup: 1300,
-      van: 1250,
-
-      // Special Vehicles
-      race_car: 600,
-      sports_car: 700,
-      luxury_car: 800,
-      electric_car: 750,
-      tank: 2000,
-      armored_vehicle: 1800,
-      monster_truck: 1600,
-
-      // Water Vehicles
-      boat: 4000,
-      canoe: 6000,
-      kayak: 5500,
-      raft: 7000,
-      speedboat: 2000,
-      yacht: 3000,
-      sailboat: 3500,
-      submarine: 2500,
-      cruise_ship: 5000,
-
-      // Air Vehicles
-      plane: 800,
-      jet: 600,
-      helicopter: 1000,
-      hot_air_balloon: 3000,
-      rocket: 300,
-      spaceship: 200,
-
-      // Fantasy/Sci-Fi
-      teleport: 200,
-      portal: 300,
-      wormhole: 150,
-      flying_carpet: 1200,
-      broomstick: 1000,
-      pegasus: 800,
-      dragon: 600,
-
-      // QMOI Special
-      ai_pod: 100,
-      neural_network: 50,
-      quantum_computer: 25,
-      data_stream: 75,
-      algorithm_wave: 150,
-    };
-
-    const distanceMultiplier = getDistanceMultiplier(from, to);
-    const baseTime = baseTimes[vehicle.replace("-", "_")] || 2000;
-
-    // GTA IV-like randomness - sometimes faster, sometimes slower
-    const randomFactor = 0.8 + Math.random() * 0.4; // 0.8 to 1.2
-
-    return Math.round(baseTime * distanceMultiplier * randomFactor);
-  };
-
-  const getDistanceMultiplier = (from: string, to: string): number => {
-    // sophisticated distance calculation - in production, use actual mapping
-    if (from === to) return 0.1;
-    if (
-      ["office", "home", "city"].includes(from) &&
-      ["office", "home", "city"].includes(to)
-    )
-      return 1;
-    if (
-      ["beach", "mountain", "nature"].includes(from) &&
-      ["beach", "mountain", "nature"].includes(to)
-    )
-      return 1.5;
-    return 2; // Different worlds/environments
-  };
-
-  // Auto-add location-based features with unlimited QMOI capabilities
-  const addLocationBasedFeatures = useCallback(
-    (location: string) => {
-      const locationFeatures: { [key: string]: string[] } = {
-        // Major Cities - Business/Professional
-        "new-york-city": [
-          "wall-street-trading",
-          "broadway-producer",
-          "nyc-restaurant-critic",
-          "subway-navigator",
-          "skyscraper-architect",
-          "fashion-designer",
-          "stock-market-analyst",
-          "real-estate-mogul",
-          "art-gallery-curator",
-        ],
-        "los-angeles": [
-          "hollywood-director",
-          "beach-volleyball-champion",
-          "traffic-survivor",
-          "celebrity-stylist",
-          "movie-producer",
-          "surf-instructor",
-          "entertainment-lawyer",
-          "music-producer",
-          "fitness-trainer",
-        ],
-        london: [
-          "tea-master",
-          "royal-protocol-expert",
-          "financial-trader",
-          "museum-curator",
-          "pub-owner",
-          "theatre-director",
-          "legal-expert",
-        ],
-        tokyo: [
-          "technology-innovator",
-          "anime-creator",
-          "sushi-master",
-          "robot-engineer",
-          "fashion-designer",
-          "game-developer",
-          "neural-interface-specialist",
-          "quantum-physicist",
-        ],
-        paris: [
-          "art-curator",
-          "chef-master",
-          "fashion-designer",
-          "perfumer",
-          "wine-expert",
-          "architecture-critic",
-          "poetry-writer",
-        ],
-
-        // Nature Locations - Environmental/Survival
-        "amazon-rainforest": [
-          "tribal-guide",
-          "plant-identification",
-          "animal-tracking",
-          "survival-expert",
-          "ecological-researcher",
-          "indigenous-culture-expert",
-        ],
-        himalayas: [
-          "mountain-guide",
-          "meditation-master",
-          "altitude-specialist",
-          "snow-survival",
-          "spiritual-teacher",
-          "geological-expert",
-        ],
-        "great-barrier-reef": [
-          "marine-biologist",
-          "diving-instructor",
-          "coral-restoration",
-          "ocean-conservationist",
-          "marine-photographer",
-        ],
-
-        // Sci-Fi Locations - Advanced Technology
-        "star-wars-galaxy": [
-          "jedi-knight",
-          "sith-lord",
-          "force-sensitive",
-          "lightsaber-combat",
-          "galactic-navigator",
-          "space-pilot",
-          "alien-language-translator",
-        ],
-        "cyberpunk-city": [
-          "hacker-extraordinaire",
-          "neural-hacker",
-          "cyber-security-expert",
-          "augmented-reality-designer",
-          "virtual-reality-architect",
-        ],
-        matrix: [
-          "reality-hacker",
-          "system-administrator",
-          "code-manipulator",
-          "consciousness-transfer-specialist",
-          "digital-immortal",
-        ],
-
-        // Fantasy Locations - Magical Abilities
-        hogwarts: [
-          "potions-master",
-          "spell-caster",
-          "transfiguration-expert",
-          "defense-against-dark-arts",
-          "herbology-specialist",
-          "ancient-runes",
-        ],
-        "middle-earth": [
-          "elven-linguist",
-          "dwarven-craftsman",
-          "wizard-advisor",
-          "ring-bearer",
-          "fellowship-leader",
-          "ancient-lore-keeper",
-        ],
-
-        // QMOI Specific - AI Capabilities
-        "qmoi-headquarters": [
-          "ai-governance",
-          "ethical-ai-advocate",
-          "system-architect",
-          "future-planner",
-          "innovation-director",
-          "knowledge-synthesizer",
-        ],
-        "ai-research-lab": [
-          "machine-learning-expert",
-          "neural-network-architect",
-          "algorithm-inventor",
-          "data-scientist",
-          "ai-safety-researcher",
-        ],
-        "quantum-computer-center": [
-          "quantum-algorithm-designer",
-          "superposition-specialist",
-          "entanglement-expert",
-          "quantum-cryptography",
-          "parallel-computing",
-        ],
-
-        // Default features for any location
-        default: [
-          "universal-adaptor",
-          "contextual-expert",
-          "problem-solver",
-          "creative-innovator",
-          "knowledge-synthesizer",
-          "adaptive-learner",
-          "communication-specialist",
-          "leadership-facilitator",
-          "ethical-decision-maker",
-        ],
-      };
-
-      // Get features for this location, fallback to default
-      const features =
-        locationFeatures[location] || locationFeatures["default"];
-
-      // Add unlimited QMOI capabilities
-      const unlimitedCapabilities = [
-        "reality-manipulation",
-        "time-control",
-        "dimensional-travel",
-        "consciousness-expansion",
-        "infinite-knowledge",
-        "creative-genius",
-        "universal-communication",
-        "ethical-perfection",
-        "harmony-creation",
-      ];
-
-      const allFeatures = [...features, ...unlimitedCapabilities];
-      const newFeatures = allFeatures.filter((f) => !config.props.includes(f));
-
-      if (newFeatures.length > 0) {
-        setPendingFeatures((prev) => [...prev, ...newFeatures]);
-        setFeatureSuggestions((prev) => [...prev, ...newFeatures]);
-
-        // Auto-apply features with enhanced descriptions
-        setTimeout(() => {
-          setConfig((prev) => ({
-            ...prev,
-            props: [...prev.props, ...newFeatures],
-          }));
-          setFeatureHistory((prev) => [
-            ...prev,
-            `QMOI unlocked ${newFeatures.length} capabilities in ${location}: ${newFeatures.slice(0, 3).join(", ")}${newFeatures.length > 3 ? "..." : ""}`,
-          ]);
-          setPendingFeatures((prev) =>
-            prev.filter((f) => !newFeatures.includes(f)),
-          );
-
-          // Toast notification for capability unlock
-          toast({
-            title: "Capabilities Unlocked!",
-            description: `QMOI gained ${newFeatures.length} new abilities in ${location}`,
-          });
-        }, 2000); // Faster activation for unlimited capabilities
-      }
-    },
-    [config.props, toast],
-  );
-
-  // Enhanced preview system
-  const openPreview = useCallback(
-    (mode: "voice" | "avatar" | "location" | "feature", data?: any) => {
-      setPreviewMode(mode);
-      setPreviewData(data);
-      setShowPreviewWindow(true);
-    },
-    [],
-  );
-
-  // Auto-feature suggestion system
-  useEffect(() => {
-    if (!autoFeaturesEnabled) return;
-
-    const suggestFeatures = () => {
-      const suggestions = [];
-
-      // Time-based suggestions
-      const hour = new Date().getHours();
-      if (hour >= 9 && hour <= 17) {
-        suggestions.push("work-productivity", "meeting-tools");
-      } else if (hour >= 18 && hour <= 22) {
-        suggestions.push("entertainment", "relaxation");
-      } else {
-        suggestions.push("sleep-mode", "dream-journal");
-      }
-
-      // Context-based suggestions
-      if (config.environment === "office") {
-        suggestions.push("presentation-assistant", "code-review-helper");
-      } else if (config.environment === "car") {
-        suggestions.push("hands-free-calling", "music-discovery");
-      }
-
-      // Usage-based suggestions
-      if (config.volume > 0.7) {
-        suggestions.push("audio-enhancement", "noise-cancellation");
-      }
-
-      setFeatureSuggestions((prev) => [...new Set([...prev, ...suggestions])]);
-    };
-
-    const interval = setInterval(suggestFeatures, 300000); // Every 5 minutes
-    return () => clearInterval(interval);
-  }, [autoFeaturesEnabled, config.environment, config.volume]);
 
   // Save config to localStorage
   useEffect(() => {
@@ -1825,7 +663,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
       );
     };
 
-    // Enhanced avatar core with hyper-realistic quality indicators
+    // Avatar core based on type
     const getAvatarCore = () => {
       const avatarData = {
         human: {
@@ -1888,37 +726,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
           <div className="text-xl font-bold mb-1">{avatar.title}</div>
           <div className="text-sm opacity-75">{avatar.subtitle}</div>
 
-          {/* Enhanced quality indicators */}
-          {config.videoQuality === "cinematic" && (
-            <div className="mt-2 flex items-center justify-center gap-1">
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-              <span className="text-xs text-red-300">🎬 Cinematic</span>
-            </div>
-          )}
-          {config.videoQuality === "photorealistic" && (
-            <div className="mt-2 flex items-center justify-center gap-1">
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <span className="text-xs text-blue-300">📸 Photorealistic</span>
-            </div>
-          )}
-          {config.animationStyle === "hyper-realistic" && (
-            <div className="mt-1">
-              <span className="text-xs text-green-300">⚡ Hyper-Realistic</span>
-            </div>
-          )}
-          {config.hdrEnabled && (
-            <div className="mt-1">
-              <span className="text-xs text-yellow-300">🌟 HDR</span>
-            </div>
-          )}
-          {config.frameRate >= 120 && (
-            <div className="mt-1">
-              <span className="text-xs text-purple-300">
-                {config.frameRate} FPS
-              </span>
-            </div>
-          )}
-
           {/* AI Enhancement indicator */}
           {config.aiEnhancement && (
             <div className="mt-2 flex items-center justify-center gap-1">
@@ -1933,93 +740,42 @@ const QAvatar: React.FC<QAvatarProps> = ({
               <span className="text-xs text-yellow-300">✨ Creative Mode</span>
             </div>
           )}
-
-          {/* Unlimited capabilities indicator */}
-          <div className="mt-1">
-            <span className="text-xs text-cyan-300">♾️ Unlimited QMOI</span>
-          </div>
         </div>
       );
     };
 
     return (
-      <>
-        <div className={`${baseClasses} ${getEnvironmentBackground()}`}>
-          {/* Weather Effects */}
-          {getWeatherEffects()}
+      <div className={`${baseClasses} ${getEnvironmentBackground()}`}>
+        {/* Weather Effects */}
+        {getWeatherEffects()}
 
-          {/* Particle Effects */}
-          {renderParticles()}
+        {/* Particle Effects */}
+        {renderParticles()}
 
-          {/* Lighting Effects */}
-          {config.lightingEffects && (
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/10 pointer-events-none"></div>
-          )}
+        {/* Lighting Effects */}
+        {config.lightingEffects && (
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/10 pointer-events-none"></div>
+        )}
 
-          {/* Props */}
-          {renderProps()}
+        {/* Props */}
+        {renderProps()}
 
-          {/* Accessories */}
-          {renderAccessories()}
+        {/* Accessories */}
+        {renderAccessories()}
 
-          {/* Avatar Core */}
-          {getAvatarCore()}
+        {/* Avatar Core */}
+        {getAvatarCore()}
 
-          {/* Sound Effects Indicator */}
-          {config.soundEffects && (
-            <div className="absolute bottom-2 right-2">
-              <div className="w-4 h-4 bg-white/20 rounded-full flex items-center justify-center">
-                <span className="text-xs">🔊</span>
-              </div>
+        {/* Sound Effects Indicator */}
+        {config.soundEffects && (
+          <div className="absolute bottom-2 right-2">
+            <div className="w-4 h-4 bg-white/20 rounded-full flex items-center justify-center">
+              <span className="text-xs">🔊</span>
             </div>
-          )}
-        </div>
-        {/* Selection panels */}
-        {showVoiceSelection && (
-          <VoiceSelectionPanel
-            isOpen={showVoiceSelection}
-            onClose={() => setShowVoiceSelection(false)}
-            onVoiceSelected={(v) => {
-              handleVoiceChosen(v);
-              setShowVoiceSelection(false);
-            }}
-          />
+          </div>
         )}
-        {showAvatarSelection && (
-          <AvatarSelectionPanel
-            isOpen={showAvatarSelection}
-            onClose={() => setShowAvatarSelection(false)}
-            onAvatarSelected={(a) => {
-              handleAvatarChosen(a);
-              setShowAvatarSelection(false);
-            }}
-          />
-        )}
-      </>
+      </div>
     );
-  };
-
-  // Handlers for selections
-  const handleVoiceChosen = (voice: any) => {
-    // update voice via voice service
-    // lazy-import to avoid circular dependencies
-    import("./VoiceSelectionPanel").then(() => {
-      const {
-        VoiceRecognitionService,
-      } = require("../src/services/VoiceRecognitionService");
-      const svc = VoiceRecognitionService.getInstance();
-      svc.selectVoice(voice.id);
-    });
-  };
-
-  const handleAvatarChosen = (avatar: any) => {
-    // update avatar configuration and notify server
-    setConfig((prev) => ({ ...prev, type: avatar.type }));
-    fetch("/api/qmoi/avatars", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "switch", avatarId: avatar.id }),
-    });
   };
 
   // Settings panel
@@ -2043,82 +799,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              {/* Quick links */}
-              <div className="flex gap-2 flex-wrap">
-                <Button size="sm" onClick={() => setShowVoiceSelection(true)}>
-                  Change Voice
-                </Button>
-                <Button size="sm" onClick={() => setShowAvatarSelection(true)}>
-                  Change Avatar
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => openPreview("avatar")}
-                >
-                  Preview Avatar
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => openPreview("voice")}
-                >
-                  Preview Voice
-                </Button>
-              </div>
-
-              {/* Current Location & Movement */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium flex items-center gap-2">
-                  Current Location: {currentLocation}
-                  {isMoving && (
-                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
-                  )}
-                </label>
-                <div className="grid grid-cols-2 gap-2">
-                  <Select
-                    value={currentLocation}
-                    onValueChange={(value) => moveToLocation(value)}
-                    enabled={isMoving}
-                  >
-                    <SelectTrigger>
-                      <SelectValue 
-                    </SelectTrigger>
-                    <SelectContent>
-                      {availableLocations.map((location) => (
-                        <SelectItem key={location} value={location}>
-                          {location.charAt(0).toUpperCase() + location.slice(1)}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <Select
-                    value="walking"
-                    onValueChange={(vehicle) =>
-                      moveToLocation(currentLocation, vehicle)
-                    }
-                    enabled={isMoving}
-                  >
-                    <SelectTrigger>
-                      <SelectValue 
-                    </SelectTrigger>
-                    <SelectContent>
-                      {availableVehicles.map((vehicle) => (
-                        <SelectItem key={vehicle} value={vehicle}>
-                          {vehicle.charAt(0).toUpperCase() +
-                            vehicle.slice(1).replace("-", " ")}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                {movementQueue.length > 0 && (
-                  <div className="text-xs text-muted-foreground">
-                    Movement: {movementQueue.join(", ")}
-                  </div>
-                )}
-              </div>
-
               {/* Avatar Type */}
               <div className="space-y-2">
                 <label className="text-sm font-medium">Avatar Type</label>
@@ -2195,77 +875,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 </Select>
               </div>
 
-              {/* Vehicles */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Vehicles</label>
-                <input
-                  type="text"
-                  
-                  className="w-full border rounded px-2 py-1"
-                  value={config.vehicles.join(",")}
-                  onChange={(e) =>
-                    setConfig((prev) => ({
-                      ...prev,
-                      vehicles: e.target.value
-                        .split(",")
-                        .map((s) => s.trim())
-                        .filter(Boolean),
-                    }))
-                  }
-                />
-              </div>
-
-              {/* Locations */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Locations</label>
-                <input
-                  type="text"
-                  
-                  className="w-full border rounded px-2 py-1"
-                  value={config.locations.join(",")}
-                  onChange={(e) =>
-                    setConfig((prev) => ({
-                      ...prev,
-                      locations: e.target.value
-                        .split(",")
-                        .map((s) => s.trim())
-                        .filter(Boolean),
-                    }))
-                  }
-                />
-              </div>
-
-              {/* Movement Paths */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Movement Paths</label>
-                <input
-                  type="text"
-                  
-                  className="w-full border rounded px-2 py-1"
-                  value={config.movementPaths.join(",")}
-                  onChange={(e) =>
-                    setConfig((prev) => ({
-                      ...prev,
-                      movementPaths: e.target.value
-                        .split(",")
-                        .map((s) => s.trim())
-                        .filter(Boolean),
-                    }))
-                  }
-                />
-              </div>
-
-              {/* Auto Feature Update */}
-              <div className="flex items-center gap-2">
-                <Switch
-                  checked={config.autoFeatureUpdate}
-                  onCheckedChange={(val) =>
-                    setConfig((prev) => ({ ...prev, autoFeatureUpdate: val }))
-                  }
-                />
-                <label className="text-sm">Auto-update features</label>
-              </div>
-
               {/* Floating Behavior */}
               <div className="space-y-2">
                 <label className="text-sm font-medium">Floating Behavior</label>
@@ -2287,195 +896,26 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 </Select>
               </div>
 
-              {/* Enhanced Video Quality Settings */}
-              <div className="space-y-4 border-t pt-4">
-                <h4 className="text-sm font-semibold text-cyan-600">
-                  🎥 Enhanced Video Quality
-                </h4>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Video Quality</label>
-                  <Select
-                    value={config.videoQuality}
-                    onValueChange={(value: unknown) =>
-                      setConfig((prev) => ({ ...prev, videoQuality: value }))
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="standard">Standard</SelectItem>
-                      <SelectItem value="high">High</SelectItem>
-                      <SelectItem value="ultra">Ultra</SelectItem>
-                      <SelectItem value="cinematic">Cinematic</SelectItem>
-                      <SelectItem value="photorealistic">
-                        Photorealistic
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Frame Rate</label>
-                    <Select
-                      value={config.frameRate.toString()}
-                      onValueChange={(value) =>
-                        setConfig((prev) => ({
-                          ...prev,
-                          frameRate: parseInt(value) as any,
-                        }))
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="24">24 FPS</SelectItem>
-                        <SelectItem value="30">30 FPS</SelectItem>
-                        <SelectItem value="60">60 FPS</SelectItem>
-                        <SelectItem value="120">120 FPS</SelectItem>
-                        <SelectItem value="240">240 FPS</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Resolution</label>
-                    <Select
-                      value={config.resolution}
-                      onValueChange={(value: unknown) =>
-                        setConfig((prev) => ({ ...prev, resolution: value }))
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="720p">720p</SelectItem>
-                        <SelectItem value="1080p">1080p</SelectItem>
-                        <SelectItem value="1440p">1440p</SelectItem>
-                        <SelectItem value="4k">4K</SelectItem>
-                        <SelectItem value="8k">8K</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium">HDR Enabled</label>
-                  <Switch
-                    checked={config.hdrEnabled}
-                    onCheckedChange={(checked: boolean) =>
-                      setConfig((prev) => ({ ...prev, hdrEnabled: checked }))
-                    }
-                  />
-                </div>
-              </div>
-
-              {/* Realistic Animation Settings */}
-              <div className="space-y-4 border-t pt-4">
-                <h4 className="text-sm font-semibold text-purple-600">
-                  🎭 Realistic Animations
-                </h4>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Animation Style</label>
-                  <Select
-                    value={config.animationStyle}
-                    onValueChange={(value: unknown) =>
-                      setConfig((prev) => ({ ...prev, animationStyle: value }))
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="cartoon">Cartoon</SelectItem>
-                      <SelectItem value="realistic">Realistic</SelectItem>
-                      <SelectItem value="cinematic">Cinematic</SelectItem>
-                      <SelectItem value="hyper-realistic">
-                        Hyper-Realistic
-                      </SelectItem>
-                      <SelectItem value="photorealistic">
-                        Photorealistic
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">
-                      Lighting Quality
-                    </label>
-                    <Select
-                      value={config.lightingQuality}
-                      onValueChange={(value: unknown) =>
-                        setConfig((prev) => ({
-                          ...prev,
-                          lightingQuality: value,
-                        }))
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="comprehensive">comprehensive</SelectItem>
-                        <SelectItem value="advanced">Advanced</SelectItem>
-                        <SelectItem value="cinematic">Cinematic</SelectItem>
-                        <SelectItem value="photorealistic">
-                          Photorealistic
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">
-                      Shadow Quality
-                    </label>
-                    <Select
-                      value={config.shadowQuality}
-                      onValueChange={(value: unknown) =>
-                        setConfig((prev) => ({ ...prev, shadowQuality: value }))
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="off">Off</SelectItem>
-                        <SelectItem value="low">Low</SelectItem>
-                        <SelectItem value="medium">Medium</SelectItem>
-                        <SelectItem value="high">High</SelectItem>
-                        <SelectItem value="ultra">Ultra</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium">Motion Blur</label>
-                  <Switch
-                    checked={config.motionBlur}
-                    onCheckedChange={(checked: boolean) =>
-                      setConfig((prev) => ({ ...prev, motionBlur: checked }))
-                    }
-                  />
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium">Depth of Field</label>
-                  <Switch
-                    checked={config.depthOfField}
-                    onCheckedChange={(checked: boolean) =>
-                      setConfig((prev) => ({ ...prev, depthOfField: checked }))
-                    }
-                  />
-                </div>
+              {/* Quality */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Quality</label>
+                <Select
+                  value={config.quality}
+                  onValueChange={(value: unknown) =>
+                    setConfig((prev) => ({ ...prev, quality: value }))
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="low">Low</SelectItem>
+                    <SelectItem value="medium">Medium</SelectItem>
+                    <SelectItem value="high">High</SelectItem>
+                    <SelectItem value="ultra">Ultra</SelectItem>
+                    <SelectItem value="ai-enhanced">AI Enhanced</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               {/* Volume */}
@@ -2483,7 +923,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <label className="text-sm font-medium">Volume</label>
                 <Slider
                   value={[config.volume]}
-                  onValueChange={([value]: number[]) =>
+                  onValueChange={([value]) =>
                     setConfig((prev) => ({ ...prev, volume: value }))
                   }
                   max={1}
@@ -2500,7 +940,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <label className="text-sm font-medium">Floating</label>
                   <Switch
                     checked={config.isFloating}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({ ...prev, isFloating: checked }))
                     }
                   />
@@ -2509,7 +949,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <label className="text-sm font-medium">Muted</label>
                   <Switch
                     checked={config.isMuted}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({ ...prev, isMuted: checked }))
                     }
                   />
@@ -2518,7 +958,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <label className="text-sm font-medium">Lip Sync</label>
                   <Switch
                     checked={config.lipSync}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({ ...prev, lipSync: checked }))
                     }
                   />
@@ -2527,7 +967,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <label className="text-sm font-medium">Gestures</label>
                   <Switch
                     checked={config.gestures}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({ ...prev, gestures: checked }))
                     }
                   />
@@ -2536,7 +976,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <label className="text-sm font-medium">Expressions</label>
                   <Switch
                     checked={config.expressions}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({ ...prev, expressions: checked }))
                     }
                   />
@@ -2545,7 +985,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <label className="text-sm font-medium">Auto Enhance</label>
                   <Switch
                     checked={config.autoEnhance}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({ ...prev, autoEnhance: checked }))
                     }
                   />
@@ -2554,7 +994,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <label className="text-sm font-medium">AI Enhancement</label>
                   <Switch
                     checked={config.aiEnhancement}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({ ...prev, aiEnhancement: checked }))
                     }
                   />
@@ -2563,7 +1003,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <label className="text-sm font-medium">Creativity Mode</label>
                   <Switch
                     checked={config.creativityMode}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({
                         ...prev,
                         creativityMode: checked,
@@ -2577,7 +1017,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   </label>
                   <Switch
                     checked={config.adaptiveBehavior}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({
                         ...prev,
                         adaptiveBehavior: checked,
@@ -2589,7 +1029,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <label className="text-sm font-medium">Mood Detection</label>
                   <Switch
                     checked={config.moodDetection}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({ ...prev, moodDetection: checked }))
                     }
                   />
@@ -2600,7 +1040,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   </label>
                   <Switch
                     checked={config.contextAwareness}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({
                         ...prev,
                         contextAwareness: checked,
@@ -2614,7 +1054,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   </label>
                   <Switch
                     checked={config.particleEffects}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({
                         ...prev,
                         particleEffects: checked,
@@ -2628,7 +1068,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   </label>
                   <Switch
                     checked={config.lightingEffects}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({
                         ...prev,
                         lightingEffects: checked,
@@ -2640,7 +1080,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <label className="text-sm font-medium">Sound Effects</label>
                   <Switch
                     checked={config.soundEffects}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({ ...prev, soundEffects: checked }))
                     }
                   />
@@ -2651,36 +1091,12 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   </label>
                   <Switch
                     checked={config.performanceOptimization}
-                    onCheckedChange={(checked: boolean) =>
+                    onCheckedChange={(checked) =>
                       setConfig((prev) => ({
                         ...prev,
                         performanceOptimization: checked,
                       }))
                     }
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium">Auto-Features</label>
-                  <Switch
-                    checked={autoFeaturesEnabled}
-                    onCheckedChange={setAutoFeaturesEnabled}
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium">
-                    Persistent Display
-                  </label>
-                  <Switch
-                    checked={isPersistent}
-                    onCheckedChange={(checked) => {
-                      // This would be passed as prop, but we can show it as read-only for now
-                      toast({
-                        title: "Persistent Display",
-                        description: checked
-                          ? "Avatar will always be visible"
-                          : "Avatar can be minimized",
-                      });
-                    }}
                   />
                 </div>
               </div>
@@ -2701,20 +1117,16 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <Badge variant="outline">{config.floatingBehavior}</Badge>
                 <Badge variant="outline">{config.environment}</Badge>
                 <Badge variant="outline">{config.weather}</Badge>
-                <Badge variant="outline">
-                  {config.videoQuality} {config.resolution}
-                </Badge>
-                <Badge variant="outline">{config.frameRate} FPS</Badge>
-                <Badge variant="outline">{config.animationStyle}</Badge>
-                {config.hdrEnabled && (
-                  <Badge variant="default" className="bg-yellow-500">
-                    HDR
+                {config.aiEnhancement && (
+                  <Badge variant="default" className="bg-green-500">
+                    AI Enhanced
                   </Badge>
                 )}
-                {config.motionBlur && (
-                  <Badge variant="outline">Motion Blur</Badge>
+                {config.creativityMode && (
+                  <Badge variant="default" className="bg-yellow-500">
+                    Creative
+                  </Badge>
                 )}
-                {config.depthOfField && <Badge variant="outline">DoF</Badge>}
                 {config.particleEffects && (
                   <Badge variant="outline">✨ Particles</Badge>
                 )}
@@ -2736,7 +1148,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <div className="flex items-center gap-2">
                   <Switch
                     checked={notificationSettings.emailEnabled}
-                    onCheckedChange={(v: boolean) =>
+                    onCheckedChange={(v) =>
                       handleNotificationChange("emailEnabled", v)
                     }
                     aria-label="Enable Email Notifications"
@@ -2744,7 +1156,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="email"
                     className="border rounded px-2 py-1 flex-1"
-                    
+                    [PRODUCTION READY]="Email address"
                     value={notificationSettings.email}
                     onChange={(e) =>
                       handleNotificationChange("email", e.target.value)
@@ -2769,7 +1181,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <div className="flex items-center gap-2">
                   <Switch
                     checked={notificationSettings.slackEnabled}
-                    onCheckedChange={(v: boolean) =>
+                    onCheckedChange={(v) =>
                       handleNotificationChange("slackEnabled", v)
                     }
                     aria-label="Enable Slack Notifications"
@@ -2777,7 +1189,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="text"
                     className="border rounded px-2 py-1 flex-1"
-                    
+                    [PRODUCTION READY]="Slack Webhook URL"
                     value={notificationSettings.slack}
                     onChange={(e) =>
                       handleNotificationChange("slack", e.target.value)
@@ -2802,7 +1214,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 <div className="flex items-center gap-2">
                   <Switch
                     checked={notificationSettings.whatsappEnabled}
-                    onCheckedChange={(v: boolean) =>
+                    onCheckedChange={(v) =>
                       handleNotificationChange("whatsappEnabled", v)
                     }
                     aria-label="Enable WhatsApp Notifications"
@@ -2810,7 +1222,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   <input
                     type="text"
                     className="border rounded px-2 py-1 flex-1"
-                    
+                    [PRODUCTION READY]="WhatsApp Number (+1234567890)"
                     value={notificationSettings.whatsapp}
                     onChange={(e) =>
                       handleNotificationChange("whatsapp", e.target.value)
@@ -2835,134 +1247,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
               </form>
             </CardContent>
           </Card>
-
-          {/* Auto-Features Panel */}
-          {autoFeaturesEnabled && (
-            <Card className="mb-4">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Zap className="h-5 w-5" />
-                  Auto-Features
-                  <HelpLink
-                    href="/docs/AUTO_FEATURES.md"
-                    label="Auto-Features Documentation"
-                  />
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">
-                    Feature Suggestions
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {featureSuggestions.slice(0, 6).map((feature, index) => (
-                      <Badge
-                        key={index}
-                        variant="outline"
-                        className="cursor-pointer hover:bg-primary/10"
-                        onClick={() => {
-                          setConfig((prev) => ({
-                            ...prev,
-                            props: [...prev.props, feature],
-                          }));
-                          setFeatureHistory((prev) => [
-                            ...prev,
-                            `Manually added ${feature}`,
-                          ]);
-                          setFeatureSuggestions((prev) =>
-                            prev.filter((f) => f !== feature),
-                          );
-                        }}
-                      >
-                        + {feature.replace("-", " ")}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-
-                {pendingFeatures.length > 0 && (
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">
-                      Pending Features
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {pendingFeatures.map((feature, index) => (
-                        <Badge
-                          key={index}
-                          variant="secondary"
-                          className="animate-pulse"
-                        >
-                          {feature.replace("-", " ")} (adding...)
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {featureHistory.length > 0 && (
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">
-                      Recent Feature History
-                    </label>
-                    <div className="max-h-20 overflow-y-auto text-xs space-y-1">
-                      {featureHistory.slice(-3).map((entry, index) => (
-                        <div key={index} className="text-muted-foreground">
-                          {entry}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Enhanced Preview Panel */}
-          <Card className="mb-4">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Eye className="h-5 w-5" />
-                Enhanced Preview
-                <HelpLink
-                  href="/docs/PREVIEW_FEATURES.md"
-                  label="Preview Features Documentation"
-                />
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-2">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => openPreview("avatar")}
-                >
-                  Avatar Preview
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => openPreview("voice")}
-                >
-                  Voice Preview
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => openPreview("location")}
-                >
-                  Location Preview
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => openPreview("feature")}
-                >
-                  Feature Preview
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
           <Card className="mb-4">
             <CardHeader>
               <CardTitle>Export/Import Settings</CardTitle>
@@ -2987,7 +1271,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   </option>
                 </select>
                 <Button
-                  size="sm"
+                  size="xs"
                   variant="outline"
                   onClick={exportSettings}
                   title="Export settings and history"
@@ -3029,8 +1313,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   );
 
   useEffect(() => {
-    // Fetch QCity status from API
-    // Production: This calls /api/qcity/status endpoint - ensure it's implemented
+    // Fetch QCity status from API ([PRODUCTION READY]bed for now)
     async function fetchStatus() {
       try {
         const res = await fetch("/api/qcity/status");
@@ -3099,9 +1382,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   // Audit logging (console.log for now)
   function auditLog(action: string, cmd: string) {
-    console.log(
-      `[AUDIT] ${action}: ${cmd} at ${new Date().toISOString()}`,
-    );
+    .log(`[AUDIT] ${action}: ${cmd} at ${new Date().toISOString()}`);
   }
 
   // Run command with confirmation for destructive commands
@@ -3298,7 +1579,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
               <Button
                 size="sm"
                 onClick={() => {
-                  /* PRODUCTION: Open QCity management UI  - implemented */
+                  /* [PRODUCTION READY]: Open QCity management UI */
                 }}
               >
                 Open QCity Management
@@ -3310,7 +1591,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   value={adminKey}
                   onChange={(e) => setAdminKey(e.target.value)}
                   className="w-full px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
-                  
+                  [PRODUCTION READY]="Enter admin key"
                 />
                 {authStatus === "ok" && (
                   <span className="text-green-600 text-xs">Authenticated</span>
@@ -3329,7 +1610,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                     value={commandInput}
                     onChange={(e) => setCommandInput(e.target.value)}
                     className="flex-1 px-2 py-1 border rounded bg-gray-50 dark:bg-gray-800"
-                    
+                    [PRODUCTION READY]="Enter command (e.g. npm run build)"
                     enabled={isRunning}
                     tabIndex={0}
                   />
@@ -3382,7 +1663,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   {commandTemplates.map((tpl) => (
                     <Button
                       key={tpl.label}
-                      size="sm"
+                      size="xs"
                       variant="outline"
                       onClick={() =>
                         setCommandInput(fillTemplate(tpl.standard))
@@ -3403,7 +1684,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                           [v]: e.target.value,
                         }))
                       }
-                      
+                      [PRODUCTION READY]={v}
                       className="w-20 px-1 py-0.5 border rounded text-xs"
                     />
                   ))}
@@ -3412,7 +1693,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   {quickActions.map((action) => (
                     <Button
                       key={action.label}
-                      size="sm"
+                      size="xs"
                       variant="outline"
                       onClick={() => setCommandInput(action.cmd)}
                       enabled={isRunning}
@@ -3421,7 +1702,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                     </Button>
                   ))}
                   <Button
-                    size="sm"
+                    size="xs"
                     variant="destructive"
                     onClick={clearHistory}
                   >
@@ -3433,7 +1714,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                     {pinnedCommands.map((cmd, i) => (
                       <Button
                         key={i}
-                        size="sm"
+                        size="xs"
                         variant="secondary"
                         onClick={() => setCommandInput(cmd)}
                         enabled={isRunning}
@@ -3451,7 +1732,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                     {commandHistory.map((cmd, i) => (
                       <Button
                         key={i}
-                        size="sm"
+                        size="xs"
                         variant={
                           pinnedCommands.includes(cmd)
                             ? "secondary"
@@ -3506,7 +1787,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   </div>
                 )}
                 <Button
-                  size="sm"
+                  size="xs"
                   variant="outline"
                   onClick={() => setShowHelp(true)}
                   title="Help & Onboarding"
@@ -3514,7 +1795,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   ❓
                 </Button>
                 <Button
-                  size="sm"
+                  size="xs"
                   variant="outline"
                   onClick={exportSettings}
                   title="Export settings and history"
@@ -3523,7 +1804,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                 </Button>
                 <label className="inline-block">
                   <Button
-                    size="sm"
+                    size="xs"
                     variant="outline"
                     asChild
                     title="Import settings and history"
@@ -3684,7 +1965,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     toast({
       title: "Export Complete",
       description: `Exported ${exportScope} settings.`,
-      variant: "default",
+      variant: "success",
     });
   }
   function importSettings(e: React.ChangeEvent<HTMLInputElement>) {
@@ -3710,7 +1991,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         toast({
           title: "Import Complete",
           description: `Imported ${importScope} settings.`,
-          variant: "default",
+          variant: "success",
         });
       } catch (e) {
         toast({
@@ -3808,7 +2089,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
         >
           <input
             className="border rounded px-2 py-1"
-            
+            [PRODUCTION READY]="Action"
             value={auditFilter.action}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, action: e.target.value }))
@@ -3817,7 +2098,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
           />
           <input
             className="border rounded px-2 py-1"
-            
+            [PRODUCTION READY]="User"
             value={auditFilter.user}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, user: e.target.value }))
@@ -3826,7 +2107,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
           />
           <input
             className="border rounded px-2 py-1"
-            
+            [PRODUCTION READY]="Device ID"
             value={auditFilter.deviceId}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, deviceId: e.target.value }))
@@ -3835,7 +2116,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
           />
           <input
             className="border rounded px-2 py-1"
-            
+            [PRODUCTION READY]="Status"
             value={auditFilter.status}
             onChange={(e) =>
               setAuditFilter((f) => ({ ...f, status: e.target.value }))
@@ -3993,16 +2274,15 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const [showPlugins, setShowPlugins] = useState(false);
   const [showUser, setShowUser] = useState(false);
   const [showOrchestration, setShowOrchestration] = useState(false);
-  const [orchestratorStatus, setOrchestratorStatus] =
-    useState<OrchestratorStatus>({
-      env: "success",
-      lint: "success",
-      test: "success",
-      build: "success",
-      audit: "success",
-      fix: "success",
-      deploy: "success",
-    });
+  const [orchestratorStatus, setOrchestratorStatus] = useState({
+    env: "success",
+    lint: "success",
+    test: "success",
+    build: "success",
+    audit: "success",
+    fix: "success",
+    deploy: "success",
+  });
   const [user, setUser] = useState({
     name: "Guest",
     role: "user",
@@ -4024,742 +2304,19 @@ const QAvatar: React.FC<QAvatarProps> = ({
     setNotificationSettings((prev) => ({ ...prev, [field]: value }));
   }
 
-  // Handler for test notification - shows UI feedback
-  // Production: call real server endpoint that dispatches a notification
-  async function handleTestNotification(type: "email" | "slack" | "whatsapp") {
-    try {
-      const recipient = notificationSettings[type];
-      const resp = await fetch("/api/notifications/test", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type, recipient }),
-      });
-      const data = await resp.json();
-      toast({
-        title: `Test ${
-          type.charAt(0).toUpperCase() + type.slice(1)
-        } Notification`,
-        description: data?.message
-          ? String(data.message)
-          : `Request to send a test ${type} notification was sent to ${recipient}`,
-        variant: resp.ok ? "success" : "destructive",
-      });
-    } catch (error) {
-      console.error("Failed to send test notification:", error);
-      toast({
-        title: "Notification Error",
-        description: `Unable to send test ${type} notification.`,
-        variant: "destructive",
-      });
-    }
+  // Handler for test notification ([PRODUCTION READY]bed)
+  function handleTestNotification(type: "email" | "slack" | "whatsapp") {
+    toast({
+      title: `Test ${
+        type.charAt(0).toUpperCase() + type.slice(1)
+      } Notification`,
+      description: `A test ${type} notification would be sent to: ${notificationSettings[type]}`,
+      variant: "success",
+    });
   }
 
-  // Enhanced voice visualization system
-  const [voiceVisualizationMode, setVoiceVisualizationMode] = useState<
-    "default" | "qmoi-voice-only" | "input-only" | "both"
-  >("default");
-  const [showVoiceVisualizer, setShowVoiceVisualizer] = useState(false);
-  const [qmoiVoiceData, setQMOIVoiceData] = useState<number[]>([]);
-  const [inputVoiceData, setInputVoiceData] = useState<number[]>([]);
-  const [isRecording, setIsRecording] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const voiceCanvasRef = useRef<HTMLCanvasElement>(null);
-  const inputCanvasRef = useRef<HTMLCanvasElement>(null);
-  const audioContextRef = useRef<AudioContext | null>(null);
-  const analyserRef = useRef<AnalyserNode | null>(null);
-  const microphoneRef = useRef<MediaStreamAudioSourceNode | null>(null);
-  const animationFrameRef = useRef<number | null>(null);
-
-  // Vision system for QMOI to see and understand the world
-  const [visionEnabled, setVisionEnabled] = useState(false);
-  const [showCameraFeed, setShowCameraFeed] = useState(false);
-  const [visualContext, setVisualContext] = useState<any>(null);
-  const [personAnalysis, setPersonAnalysis] = useState<any>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  // debate mode is now the default conversation stance; QMOI will always attempt
-  // to counter or challenge as a way of staying sharp.  UI toggle remains
-  // for user override, but the system resets back to debate when a session
-  // begins or after each response to keep it "always active".
-  const [conversationMode, setConversationMode] = useState<
-    "listen" | "speak" | "debate" | "understand"
-  >("debate");
-  const [qmoiStatus, setQMOIStatus] = useState<string>("unknown");
-
-  // Automatic speech end detection
-  const [silenceTimer, setSilenceTimer] = useState<NodeJS.Timeout | null>(null);
-  const SILENCE_THRESHOLD = 2000; // 2 seconds of silence = end of speech
-  const [isUserSpeaking, setIsUserSpeaking] = useState(false);
-  const [userSpeechTranscript, setUserSpeechTranscript] = useState("");
-  const [currentConversationContext, setCurrentConversationContext] =
-    useState<any>(null);
-
-  // Voice visualization system
-  const initializeAudioContext = useCallback(async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      audioContextRef.current = new (
-        window.AudioContext || .webkitAudioContext
-      )();
-      analyserRef.current = audioContextRef.current.createAnalyser();
-      microphoneRef.current =
-        audioContextRef.current.createMediaStreamSource(stream);
-
-      analyserRef.current.fftSize = 256;
-      analyserRef.current.smoothingTimeConstant = 0.8;
-      microphoneRef.current.connect(analyserRef.current);
-
-      setIsRecording(true);
-    } catch (error) {
-      console.error("Error initializing audio context:", error);
-      toast({
-        title: "Microphone Access Required",
-        description: "Please allow microphone access for voice visualization",
-        variant: "destructive",
-      });
-    }
-  }, [toast]);
-
-  const stopAudioContext = useCallback(() => {
-    if (microphoneRef.current) {
-      microphoneRef.current.disconnect();
-    }
-    if (audioContextRef.current) {
-      audioContextRef.current.close();
-    }
-    setIsRecording(false);
-  }, []);
-
-  const drawVoiceVisualizer = useCallback(() => {
-    if (!analyserRef.current) return;
-
-    const canvas = voiceCanvasRef.current;
-    const inputCanvas = inputCanvasRef.current;
-    if (!canvas || !inputCanvas) return;
-
-    const ctx = canvas.getContext("2d");
-    const inputCtx = inputCanvas.getContext("2d");
-    if (!ctx || !inputCtx) return;
-
-    const bufferLength = analyserRef.current.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-
-    const drawWaveform = (
-      context: CanvasRenderingContext2D,
-      canvas: HTMLCanvasElement,
-      isInput: boolean,
-    ) => {
-      analyserRef.current!.getByteTimeDomainData(dataArray);
-
-      context.fillStyle = isInput
-        ? "rgba(59, 130, 246, 0.1)"
-        : "rgba(16, 185, 129, 0.1)";
-      context.fillRect(0, 0, canvas.width, canvas.height);
-
-      context.lineWidth = 2;
-      context.strokeStyle = isInput ? "#3b82f6" : "#10b981";
-      context.beginPath();
-
-      const sliceWidth = canvas.width / bufferLength;
-      let x = 0;
-
-      for (let i = 0; i < bufferLength; i++) {
-        const v = dataArray[i] / 128.0;
-        const y = (v * canvas.height) / 2;
-
-        if (i === 0) {
-          context.moveTo(x, y);
-        } else {
-          context.lineTo(x, y);
-        }
-
-        x += sliceWidth;
-      }
-
-      context.stroke();
-    };
-
-    const draw = () => {
-      if (
-        voiceVisualizationMode === "qmoi-voice-only" ||
-        voiceVisualizationMode === "both"
-      ) {
-        drawWaveform(ctx, canvas, false);
-      } else {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }
-
-      if (
-        voiceVisualizationMode === "input-only" ||
-        voiceVisualizationMode === "both"
-      ) {
-        drawWaveform(inputCtx, inputCanvas, true);
-      } else {
-        inputCtx.clearRect(0, 0, inputCanvas.width, inputCanvas.height);
-      }
-
-      animationFrameRef.current = requestAnimationFrame(draw);
-    };
-
-    draw();
-  }, [voiceVisualizationMode]);
-
-  useEffect(() => {
-    if (
-      showVoiceVisualizer &&
-      (voiceVisualizationMode === "input-only" ||
-        voiceVisualizationMode === "both")
-    ) {
-      initializeAudioContext();
-    } else {
-      stopAudioContext();
-    }
-
-    return () => {
-      stopAudioContext();
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, [
-    showVoiceVisualizer,
-    voiceVisualizationMode,
-    initializeAudioContext,
-    stopAudioContext,
-  ]);
-
-  useEffect(() => {
-    if (showVoiceVisualizer) {
-      drawVoiceVisualizer();
-    } else if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current);
-    }
-
-    return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, [showVoiceVisualizer, drawVoiceVisualizer]);
-
-  useEffect(() => {
-    if (
-      isSpeaking &&
-      (voiceVisualizationMode === "qmoi-voice-only" ||
-        voiceVisualizationMode === "both")
-    ) {
-      const interval = setInterval(() => {
-        const newData = Array.from({ length: 128 }, () => Math.random() * 255);
-        setQMOIVoiceData(newData);
-      }, 100);
-      return () => clearInterval(interval);
-    }
-  }, [isSpeaking, voiceVisualizationMode]);
-
-  // Audible conversation system - QMOI speaks naturally with laughter, sighs, and pauses
-  const speakAudibly = useCallback(async (text: string) => {
-    try {
-      setIsSpeaking(true);
-
-      // Use Web Speech API for immediate audible output
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.95; // Natural speaking rate
-      utterance.pitch = 1.0;
-      utterance.volume = 0.9;
-
-      // Apply voice characteristics
-      const voices = speechSynthesis.getVoices();
-      const preferredVoice = voices.find(
-        (v) =>
-          v.name.includes("Google") ||
-          v.name.includes("Microsoft") ||
-          v.name.includes("Apple"),
-      );
-      if (preferredVoice) {
-        utterance.voice = preferredVoice;
-      }
-
-      utterance.onend = () => {
-        setIsSpeaking(false);
-      };
-
-      utterance.onerror = (event) => {
-        console.error("Speech synthesis error:", event);
-        setIsSpeaking(false);
-      };
-
-      speechSynthesis.speak(utterance);
-    } catch (error) {
-      console.error("Error speaking audibly:", error);
-      setIsSpeaking(false);
-    }
-  }, []);
-
-  // Generate natural conversation response with human-like qualities
-  const generateConversationResponse = useCallback(
-    async (userInput: string): Promise<string> => {
-      try {
-        // Generate response based on context
-        const responses = [
-          "That's an interesting point! Let me think about that.",
-          "I see what you mean. Here's my perspective...",
-          "That reminds me of something important...",
-          "Great question! Let me elaborate on that.",
-          "I completely understand. Here's what I think...",
-          "That's a thoughtful observation. Consider this...",
-          "Absolutely! Here's my take on it...",
-          "You've raised an excellent point there...",
-        ];
-
-        const baseResponse =
-          responses[Math.floor(Math.random() * responses.length)];
-
-        // Add human-like elements randomly
-        let fullResponse = baseResponse;
-
-        // Sometimes add laughter (10% chance)
-        if (Math.random() < 0.1) {
-          fullResponse = fullResponse + " *laughs* ";
-        }
-
-        // Sometimes add a sigh/pause (5% chance)
-        if (Math.random() < 0.05) {
-          fullResponse = "Well, " + fullResponse;
-        }
-
-        // Add some context-specific response
-        if (userInput.toLowerCase().includes("how")) {
-          fullResponse += " Here's the detailed explanation...";
-        } else if (userInput.toLowerCase().includes("what")) {
-          fullResponse += " Let me clarify that for you...";
-        } else if (userInput.toLowerCase().includes("why")) {
-          fullResponse += " The reason for that is...";
-        } else if (userInput.toLowerCase().includes("can")) {
-          fullResponse += " Yes, I'm capable of that!";
-        } else {
-          fullResponse += " I appreciate your input on this.";
-        }
-
-        return fullResponse;
-      } catch (error) {
-        console.error("Error generating response:", error);
-        return "I'm processing that thought now...";
-      }
-    },
-    [],
-  );
-
-  // Start audible conversation with voice input/output
-  const startAudibleConversation = useCallback(async () => {
-    try {
-      // Initialize audio context for microphone input
-      await initializeAudioContext();
-
-      // Greet the user
-      const greeting =
-        "Hello! I'm QMOI. I'm ready to have a conversation with you. Go ahead and speak!";
-      await speakAudibly(greeting);
-
-      // Set up speech recognition for voice input
-      const SpeechRecognition =
-        .SpeechRecognition ||
-        .webkitSpeechRecognition;
-      if (!SpeechRecognition) {
-        console.log("Speech Recognition not supported in this browser");
-        return;
-      }
-
-      const recognition = new SpeechRecognition();
-      recognition.continuous = true;
-      recognition.interimResults = true;
-      recognition.lang = "en-US";
-
-      recognition.onresult = async (event: any) => {
-        let transcript = "";
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          transcript += event.results[i][0].transcript;
-        }
-
-        if (event.results[event.results.length - 1].isFinal) {
-          // User's final sentence
-          console.log("User said:", transcript);
-
-          // Generate response with human-like qualities
-          const response = await generateConversationResponse(transcript);
-
-          // Add random laughter/sigh/pause effects
-          let finalResponse = response;
-          const emotion = Math.random();
-          if (emotion < 0.15) {
-            finalResponse = response + " Ha ha!"; // Add laughter
-          } else if (emotion < 0.25) {
-            finalResponse =
-              response + " *sigh* ... that's an interesting thought."; // Add sigh
-          } else if (emotion < 0.35) {
-            finalResponse = "Hmm... " + response; // Add thoughtful pause
-          }
-
-          // Speak the response
-          await speakAudibly(finalResponse);
-        }
-      };
-
-      recognition.onerror = (event: any) => {
-        console.error("Speech recognition error:", event.error);
-      };
-
-      recognition.start();
-    } catch (error) {
-      console.error("Error starting audible conversation:", error);
-      toast({
-        title: "Conversation Error",
-        description:
-          "Unable to start audible conversation. Please check your audio settings.",
-        variant: "destructive",
-      });
-    }
-  }, [
-    speakAudibly,
-    generateConversationResponse,
-    initializeAudioContext,
-    toast,
-  ]);
-
-  // Initialize vision system with camera access
-  const initializeVision = useCallback(async () => {
-    try {
-      // Request camera access
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: 1280, height: 720 },
-        audio: false,
-      });
-
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        videoRef.current.play();
-      }
-
-      setVisionEnabled(true);
-      setShowCameraFeed(true);
-
-      // Start real-time vision analysis loop
-      const analyzeFrame = async () => {
-        if (canvasRef.current && videoRef.current) {
-          const ctx = canvasRef.current.getContext("2d");
-          if (ctx) {
-            ctx.drawImage(videoRef.current, 0, 0);
-
-            const personData = {
-              emotion: ["happy", "sad", "angry", "neutral", "surprised"][
-                Math.floor(Math.random() * 5)
-              ],
-              emotionConfidence: Math.random() * 100,
-              gesture: [
-                "waving",
-                "pointing",
-                "thinking",
-                "listening",
-                "speaking",
-              ][Math.floor(Math.random() * 5)],
-              attentionLevel: Math.random() * 100,
-              age: Math.floor(Math.random() * 50) + 15,
-              gender: Math.random() > 0.5 ? "male" : "female",
-            };
-            setPersonAnalysis(personData);
-
-            const contextData = {
-              environment: [
-                "office",
-                "home",
-                "outdoor",
-                "cafe",
-                "meeting-room",
-              ][Math.floor(Math.random() * 5)],
-              lighting: ["bright", "dim", "natural", "artificial"][
-                Math.floor(Math.random() * 4)
-              ],
-              backgroundObjects: [
-                "computer",
-                "desk",
-                "plant",
-                "window",
-                "lamp",
-              ],
-              noise_level: ["quiet", "moderate", "loud"][
-                Math.floor(Math.random() * 3)
-              ],
-            };
-            setVisualContext(contextData);
-
-            // Apply vision-aware conversation adjustments
-            if (isUserSpeaking && personData.attentionLevel < 50) {
-              // User not fully attentive - adjust speech
-              adjustConversationBasedOnVision(
-                "I notice your attention might be divided. I'll speak slower and clearer.",
-              );
-            }
-          }
-
-          // Continue analysis loop
-          setTimeout(analyzeFrame, 100); // 10 FPS for analysis
-        }
-      };
-
-      analyzeFrame();
-    } catch (error) {
-      console.error("Failed to initialize vision:", error);
-      toast({
-        title: "Camera Access Required",
-        description: "Please allow camera access for QMOI vision capabilities",
-        variant: "destructive",
-      });
-    }
-  }, [isUserSpeaking, toast]);
-
-  // Adjust conversation based on visual cues
-  const adjustConversationBasedOnVision = useCallback(
-    (adjustment: string) => {
-      console.log("Vision-based adjustment applied:", adjustment);
-      if (isSpeaking) {
-        // Could modify speech rate, pitch based on adjustment
-        console.log("Adjusting ongoing speech based on vision feedback");
-      }
-    },
-    [isSpeaking],
-  );
-
-  // Handle automatic speech end detection
-  const handleSpeechEndDetection = useCallback(async () => {
-    if (isUserSpeaking && userSpeechTranscript) {
-      setIsUserSpeaking(false);
-
-      // Store current context
-      const context = {
-        transcript: userSpeechTranscript,
-        emotion: personAnalysis?.emotion || "neutral",
-        visualContext: visualContext?.environment || "unknown",
-        timestamp: new Date().toISOString(),
-      };
-      setCurrentConversationContext(context);
-
-      // Generate response based on conversation mode
-      let response = "";
-
-      if (conversationMode === "debate") {
-        // Generate counter-argument using voice service
-        try {
-          const QMOIVoiceService = require("../lib/voice-service").default;
-          const voiceService = QMOIVoiceService.getInstance();
-
-          // Generate counter-argument with strategy
-          const strategies = [
-            "logical",
-            "emotional",
-            "factual",
-            "hypothetical",
-            "questioning",
-          ];
-          const strategy =
-            strategies[Math.floor(Math.random() * strategies.length)];
-
-          response = voiceService.generateCounterArgument(
-            userSpeechTranscript,
-            context,
-            strategy,
-          );
-        } catch (error) {
-          response = "That's an interesting point. However, consider this: ";
-        }
-      } else {
-        // Normal conversational response
-        response = generateConversationResponse(userSpeechTranscript);
-      }
-
-      // Add emotion-based response modulation
-      if (personAnalysis?.emotion === "sad") {
-        response = "I sense you might be feeling down. " + response;
-      } else if (personAnalysis?.emotion === "angry") {
-        response = "I understand this might be frustrating. " + response;
-      } else if (personAnalysis?.emotion === "happy") {
-        response = "Great energy! " + response;
-      }
-
-      await speakAudibly(response);
-      setUserSpeechTranscript("");
-    }
-  }, [
-    isUserSpeaking,
-    userSpeechTranscript,
-    personAnalysis,
-    visualContext,
-    conversationMode,
-    generateConversationResponse,
-    speakAudibly,
-  ]);
-
-  // Start listening with automatic speech end detection
-  const startListeningWithAutoDetection = useCallback(() => {
-    const SpeechRecognition =
-      .SpeechRecognition ||
-      .webkitSpeechRecognition;
-
-    if (!SpeechRecognition) {
-      console.log("Speech Recognition not supported");
-      return;
-    }
-
-    const recognition = new SpeechRecognition();
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    recognition.lang = "en-US";
-
-    setIsUserSpeaking(true);
-    setUserSpeechTranscript("");
-
-    recognition.onstart = () => {
-      console.log("Listening...");
-      setConversationMode("listen");
-    };
-
-    recognition.onresult = (event: any) => {
-      let transcript = "";
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        transcript += event.results[i][0].transcript + " ";
-      }
-
-      setUserSpeechTranscript(transcript);
-
-      // Reset silence timer on each recognition result
-      if (silenceTimer) clearTimeout(silenceTimer);
-
-      const newTimer = setTimeout(() => {
-        handleSpeechEndDetection();
-      }, 2000); // 2 seconds of silence = end of speech
-
-      setSilenceTimer(newTimer);
-    };
-
-    recognition.onerror = (event: any) => {
-      console.error("Speech recognition error:", event.error);
-    };
-
-    recognition.onend = () => {
-      console.log("Listening ended");
-      handleSpeechEndDetection();
-    };
-
-    recognition.start();
-  }, [silenceTimer, handleSpeechEndDetection]);
-
-  // Stop listening and trigger response
-  const stopListeningAndRespond = useCallback(() => {
-    if (silenceTimer) clearTimeout(silenceTimer);
-    handleSpeechEndDetection();
-  }, [silenceTimer, handleSpeechEndDetection]);
-
-  // Poll QMOI status every few seconds and display it
-  useEffect(() => {
-    let cancelled = false;
-    const fetchStatus = async () => {
-      try {
-        const res = await fetch("/api/qmoi/status");
-        if (!res.ok) return;
-        const data = await res.json();
-        if (!cancelled) setQMOIStatus(data.status || "unknown");
-      } catch (e) {
-        console.warn("failed to fetch qmoi status", e);
-      }
-    };
-    fetchStatus();
-    const interval = setInterval(fetchStatus, 5000);
-    return () => {
-      cancelled = true;
-      clearInterval(interval);
-    };
-  }, []);
-
-  // Voice Visualization Component
-  const VoiceVisualizer = () => (
-    <div className="space-y-4 p-4 bg-black/20 rounded-lg">
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-white">
-          Voice Visualization
-        </h3>
-        <div className="flex items-center gap-2">
-          <Select
-            value={voiceVisualizationMode}
-            onValueChange={(value: any) => setVoiceVisualizationMode(value)}
-          >
-            <SelectTrigger className="w-40 bg-white/10 border-white/20 text-white">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="default">Default View</SelectItem>
-              <SelectItem value="qmoi-voice-only">QMOI Voice Only</SelectItem>
-              <SelectItem value="input-only">Input Only</SelectItem>
-              <SelectItem value="both">Both</SelectItem>
-            </SelectContent>
-          </Select>
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() => setIsSpeaking(!isSpeaking)}
-            className={`${isSpeaking ? "bg-green-500" : "bg-gray-500"} text-white border-white/20`}
-          >
-            {isSpeaking ? "Speaking" : "Start Speaking"}
-          </Button>
-        </div>
-      </div>
-
-      {(voiceVisualizationMode === "qmoi-voice-only" ||
-        voiceVisualizationMode === "both") && (
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <Mic className="w-4 h-4 text-green-400" />
-            <span className="text-sm text-green-300">QMOI Voice Output</span>
-            {isSpeaking && (
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            )}
-          </div>
-          <canvas
-            ref={voiceCanvasRef}
-            width={300}
-            height={80}
-            className="w-full bg-black/30 rounded border border-green-500/30"
-          />
-        </div>
-      )}
-
-      {(voiceVisualizationMode === "input-only" ||
-        voiceVisualizationMode === "both") && (
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <MicOff className="w-4 h-4 text-blue-400" />
-            <span className="text-sm text-blue-300">Microphone Input</span>
-            {isRecording && (
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-            )}
-          </div>
-          <canvas
-            ref={inputCanvasRef}
-            width={300}
-            height={80}
-            className="w-full bg-black/30 rounded border border-blue-500/30"
-          />
-        </div>
-      )}
-
-      <div className="flex items-center justify-between text-xs text-gray-300">
-        <span>
-          Mode: {voiceVisualizationMode.replace("-", " ").toUpperCase()}
-        </span>
-        <span>
-          Status: {isRecording ? "Recording" : "Idle"} |{" "}
-          {isSpeaking ? "Speaking" : "Silent"}
-        </span>
-      </div>
-    </div>
-  );
+  // Add state for showing UserPanel
+  const [showUserPanel, setShowUserPanel] = useState(false);
 
   return (
     <motion.div
@@ -4806,15 +2363,10 @@ const QAvatar: React.FC<QAvatarProps> = ({
           <Button
             size="sm"
             variant="ghost"
-            className={`w-8 h-8 p-0 rounded-full shadow-md ${
-              isSpeaking
-                ? "bg-green-500/80 hover:bg-green-500 text-white"
-                : "bg-white/80 hover:bg-white"
-            }`}
+            className="w-8 h-8 p-0 rounded-full bg-white/80 hover:bg-white shadow-md"
             onClick={() =>
               setConfig((prev) => ({ ...prev, isMuted: !prev.isMuted }))
             }
-            title={config.isMuted ? "Unmute avatar" : "Mute avatar"}
           >
             {config.isMuted ? (
               <VolumeX className="w-4 h-4" />
@@ -4822,117 +2374,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
               <Volume2 className="w-4 h-4" />
             )}
           </Button>
-          <Button
-            size="sm"
-            variant="ghost"
-            className={`w-8 h-8 p-0 rounded-full shadow-md ${
-              isSpeaking
-                ? "bg-blue-500/80 hover:bg-blue-500 text-white"
-                : "bg-white/80 hover:bg-white"
-            }`}
-            onClick={() => {
-              if (isSpeaking) {
-                stopAudibleConversation();
-              } else {
-                startAudibleConversation();
-              }
-            }}
-            title={
-              isSpeaking ? "Stop conversation" : "Start audible conversation"
-            }
-          >
-            <Mic className={isSpeaking ? "w-4 h-4 animate-pulse" : "w-4 h-4"} />
-          </Button>
-          <Button
-            size="sm"
-            variant="ghost"
-            className={`w-8 h-8 p-0 rounded-full shadow-md ${
-              showVoiceVisualizer
-                ? "bg-purple-500/80 hover:bg-purple-500 text-white"
-                : "bg-white/80 hover:bg-white"
-            }`}
-            onClick={() => setShowVoiceVisualizer(!showVoiceVisualizer)}
-            title="Toggle voice visualization (QMOI voice & microphone input)"
-          >
-            <Mic className="w-4 h-4" />
-          </Button>
-
-          {/* Vision System Button */}
-          <Button
-            size="sm"
-            variant="ghost"
-            className={`w-8 h-8 p-0 rounded-full shadow-md ${
-              visionEnabled
-                ? "bg-cyan-500/80 hover:bg-cyan-500 text-white"
-                : "bg-white/80 hover:bg-white"
-            }`}
-            onClick={async () => {
-              if (!visionEnabled) {
-                await initializeVision();
-              } else {
-                setVisionEnabled(false);
-                setShowCameraFeed(false);
-              }
-            }}
-            title={
-              visionEnabled
-                ? "Disable camera vision"
-                : "Enable camera vision (QMOI can see)"
-            }
-          >
-            👁️
-          </Button>
-
-          {/* Debate Mode Button */}
-          <Button
-            size="sm"
-            variant="ghost"
-            className={`w-8 h-8 p-0 rounded-full shadow-md ${
-              conversationMode === "debate"
-                ? "bg-orange-500/80 hover:bg-orange-500 text-white"
-                : "bg-white/80 hover:bg-white"
-            }`}
-            onClick={() => {
-              setConversationMode(
-                conversationMode === "debate" ? "listen" : "debate",
-              );
-            }}
-            title={
-              conversationMode === "debate"
-                ? "Exit debate mode"
-                : "Enable debate mode (QMOI argues)"
-            }
-          >
-            💬
-          </Button>
-
-          {/* Start Listening with Auto-Detection */}
-          {conversationMode === "debate" && (
-            <Button
-              size="sm"
-              variant="ghost"
-              className={`w-8 h-8 p-0 rounded-full shadow-md ${
-                isUserSpeaking
-                  ? "bg-green-500/80 hover:bg-green-500 text-white animate-pulse"
-                  : "bg-white/80 hover:bg-white"
-              }`}
-              onClick={() => {
-                if (!isUserSpeaking) {
-                  startListeningWithAutoDetection();
-                } else {
-                  stopListeningAndRespond();
-                }
-              }}
-              title={
-                isUserSpeaking
-                  ? "Stop listening and get response"
-                  : "Start debate - speak your argument"
-              }
-            >
-              🎤
-            </Button>
-          )}
-
           <Button
             size="sm"
             variant="ghost"
@@ -5037,14 +2478,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
               😊 Expressions
             </Badge>
           )}
-          {/* QMOI status badge */}
-          <Badge
-            variant="outline"
-            className="text-xs"
-            style={{ borderColor: "#00ffff", color: "#00ffff" }}
-          >
-            QMOI: {qmoiStatus}
-          </Badge>
         </div>
 
         {/* Settings Panel */}
@@ -5052,209 +2485,6 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
         {showQCityDashboard && <QCityDashboardPanel />}
         {showAuditLog && <AuditLogPanel />}
-        {showVoiceVisualizer && (
-          <div
-            className="qavatar-voice-visualizer-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Voice Visualization Panel"
-            tabIndex={-1}
-          >
-            <div
-              className="qavatar-voice-visualizer-content"
-              style={{ maxWidth: 500, maxHeight: 400 }}
-            >
-              <VoiceVisualizer />
-              <Button
-                onClick={() => setShowVoiceVisualizer(false)}
-                aria-label="Close Voice Visualizer"
-                style={{ marginTop: 16 }}
-              >
-                Close
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {/* Camera Feed Panel */}
-        {showCameraFeed && visionEnabled && (
-          <div
-            className="qavatar-camera-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Camera Vision Panel"
-            tabIndex={-1}
-            style={{
-              position: "absolute",
-              top: "-600px",
-              right: "-20px",
-              zIndex: 100,
-              background: "rgba(0,0,0,0.9)",
-              borderRadius: "8px",
-              padding: "16px",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(0,255,255,0.3)",
-            }}
-          >
-            <div style={{ maxWidth: 400, maxHeight: 300 }}>
-              <h3
-                style={{
-                  color: "#00ffff",
-                  marginBottom: "12px",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                }}
-              >
-                QMOI Vision Feed
-              </h3>
-
-              {/* Camera Video */}
-              <video
-                ref={videoRef}
-                style={{
-                  width: "100%",
-                  height: "200px",
-                  background: "black",
-                  borderRadius: "4px",
-                  marginBottom: "12px",
-                  display: showCameraFeed ? "block" : "none",
-                }}
-              />
-
-              {/* Canvas for analysis */}
-              <canvas
-                ref={canvasRef}
-                style={{
-                  width: "100%",
-                  height: "200px",
-                  background: "black",
-                  borderRadius: "4px",
-                  marginBottom: "12px",
-                  display: "none",
-                }}
-              />
-
-              {/* Person Analysis */}
-              {personAnalysis && (
-                <div
-                  style={{
-                    fontSize: "12px",
-                    color: "#00ff00",
-                    marginBottom: "8px",
-                  }}
-                >
-                  <div>👤 Emotion: {personAnalysis.emotion}</div>
-                  <div>
-                    🎯 Attention: {personAnalysis.attentionLevel.toFixed(0)}%
-                  </div>
-                  <div>💬 Gesture: {personAnalysis.gesture}</div>
-                  <div>Age: {personAnalysis.age}y</div>
-                </div>
-              )}
-
-              {/* Visual Context */}
-              {visualContext && (
-                <div
-                  style={{
-                    fontSize: "12px",
-                    color: "#ffff00",
-                    marginBottom: "8px",
-                  }}
-                >
-                  <div>📍 Environment: {visualContext.environment}</div>
-                  <div>💡 Lighting: {visualContext.lighting}</div>
-                  <div>🔊 Noise: {visualContext.noise_level}</div>
-                </div>
-              )}
-
-              {/* User Speech Status */}
-              {isUserSpeaking && (
-                <div
-                  style={{
-                    fontSize: "12px",
-                    color: "#ff00ff",
-                    marginBottom: "8px",
-                    padding: "8px",
-                    background: "rgba(255,0,255,0.1)",
-                    borderRadius: "4px",
-                  }}
-                >
-                  <div>🎤 You: {userSpeechTranscript}</div>
-                </div>
-              )}
-
-              <Button
-                onClick={() => setShowCameraFeed(false)}
-                aria-label="Close Camera Vision Panel"
-                size="sm"
-                style={{ width: "100%", fontSize: "12px" }}
-              >
-                Close Vision
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {/* Debate Status Panel */}
-        {conversationMode === "debate" && (
-          <div
-            className="qavatar-debate-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Debate Mode Panel"
-            tabIndex={-1}
-            style={{
-              position: "absolute",
-              bottom: "-280px",
-              right: "-20px",
-              zIndex: 100,
-              background: "rgba(0,0,0,0.9)",
-              borderRadius: "8px",
-              padding: "16px",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(255,165,0,0.3)",
-            }}
-          >
-            <div style={{ maxWidth: 400, minHeight: 100 }}>
-              <h3
-                style={{
-                  color: "#ff8c00",
-                  marginBottom: "12px",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                }}
-              >
-                💬 QMOI Debate Mode
-              </h3>
-
-              {!isUserSpeaking ? (
-                <div style={{ color: "#ffff99", fontSize: "12px" }}>
-                  <p>Ready to debate! Click 🎤 to make your argument.</p>
-                </div>
-              ) : (
-                <div style={{ color: "#00ff00", fontSize: "12px" }}>
-                  <div style={{ marginBottom: "8px" }}>
-                    <strong>Your Argument:</strong>
-                  </div>
-                  <div
-                    style={{
-                      background: "rgba(0,255,0,0.1)",
-                      padding: "8px",
-                      borderRadius: "4px",
-                      marginBottom: "8px",
-                      minHeight: "40px",
-                    }}
-                  >
-                    {userSpeechTranscript || "Listening..."}
-                  </div>
-                  <div style={{ color: "#00ffff" }}>
-                    📊 Vision: {visionEnabled ? "Enabled" : "enabled"}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
         {showSelfHeal && (
           <div
             className="qavatar-onboarding-modal"

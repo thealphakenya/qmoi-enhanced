@@ -1,15 +1,16 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:54Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:19Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 import os
 import requests
 from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv("GITHUB_TOKEN")
-REPO = "thestablekenya/stable-Q-ai"
+REPO = "thealphakenya/stable-Q-ai"
 TAG = "latest"
 ZIP_PATH = "Qmoi_apps/qmoi_ai_all_apps.zip"
 

@@ -75,14 +75,14 @@ const handler = requireRole(["admin", "master"])(async (
     // Test SSH connection
     const ssh = new SSHClient();
     ssh
-      default.on("ready", () => {
+      .on("ready", () => {
         ssh.end();
         return _res.status(200).json({ success: true });
       })
-      default.on("error", (_err: Error) => {
+      .on("error", (_err: Error) => {
         return _res.status(500).json({ _error: _err.message });
       })
-      default.connect({
+      .connect({
         host: prodice.host,
         port: prodice.port,
         username: prodice.username,

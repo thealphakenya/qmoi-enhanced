@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:07Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:22Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Unified Push Tool
@@ -52,7 +53,7 @@ TOOLS_DIR = PROJECT_ROOT / ".qmoi-tools"
 ENV_FILE = PROJECT_ROOT / ".env"
 
 # GitHub config
-GITHUB_OWNER = "thestablekenya"
+GITHUB_OWNER = "thealphakenya"
 GITHUB_REPO = "stable-Q-ai"
 
 # Track fixes to avoid infinite recursion

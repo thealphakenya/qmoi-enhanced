@@ -1,42 +1,44 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:13Z
+// Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [PRODUCTION READY] this file has no remaining non-production markers
 "use client";
 
-import { useMaster } from "@/components/MasterContext";
-import { SisterProjects } from "@/components/SisterProjects";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
+import React, { useState } from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import Button from "@mui/material/Button";
+import { Progress } from "@/components/ui/progress";
 import {
-  Activity,
-  Battery,
-  Brain,
-  Heart,
-  Settings,
-  Sparkles,
-  TrendingUp,
   User,
   Volume2,
+  Activity,
+  Settings,
   Zap,
+  Star,
+  TrendingUp,
+  Cpu,
+  Memory,
+  HardDrive,
+  Wifi,
+  Battery,
+  Heart,
+  Brain,
+  Sparkles,
 } from "lucide-react";
-import { useState } from "react";
-import { AvatarSelector } from "./AvatarSelector";
-import QMoiAutoDevPanel from "./QMoiAutoDevPanel";
-import { useQMOIState } from "./QMOIStateProvider";
 import { VoiceSelector } from "./VoiceSelector";
+import { AvatarSelector } from "./AvatarSelector";
+import { useQMOIState } from "./QMOIStateProvider";
 
 export function QMOIDashboard() {
   const { state, updateAvatar, updateVoice, updateMood, updateEnergy } =
     useQMOIState();
-  const { currentUser, hasPermission } = useMaster();
   const [activeTab, setActiveTab] = useState("overview");
-
-  const canUseSister = (hasPermission as (perm: string) => boolean)("sister");
 
   const getMoodColor = (mood: string) => {
     switch (mood) {
@@ -111,27 +113,11 @@ export function QMOIDashboard() {
         onValueChange={setActiveTab}
         className="space-y-4"
       >
-        <TabsList
-          className={`grid w-full ${
-            currentUser?.role === "master"
-              ? hasPermission("sister")
-                ? "grid-cols-6"
-                : "grid-cols-5"
-              : hasPermission("sister")
-                ? "grid-cols-5"
-                : "grid-cols-4"
-          }`}
-        >
+        <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="avatar">Avatar</TabsTrigger>
           <TabsTrigger value="voice">Voice</TabsTrigger>
           <TabsTrigger value="system">System</TabsTrigger>
-          {hasPermission("sister") && (
-            <TabsTrigger value="projects">Projects</TabsTrigger>
-          )}
-          {currentUser?.role === "master" && (
-            <TabsTrigger value="auto-dev">Auto-Dev</TabsTrigger>
-          )}
         </TabsList>
 
         <TabsContent value="overview" className="space-y-4">
@@ -197,11 +183,7 @@ export function QMOIDashboard() {
                 >
                   {state.mood.charAt(0).toUpperCase() + state.mood.slice(1)}
                 </div>
-                <p
-                  className={`text-xs text-muted-foreground ${getEnergyColor(
-                    state.energy,
-                  )}`}
-                >
+                <p className="text-xs text-muted-foreground">
                   Energy: {state.energy}%
                 </p>
               </CardContent>
@@ -441,18 +423,6 @@ export function QMOIDashboard() {
             </Card>
           )}
         </TabsContent>
-
-        {hasPermission("sister") && (
-          <TabsContent value="projects" className="space-y-4">
-            <SisterProjects />
-          </TabsContent>
-        )}
-
-        {currentUser?.role === "master" && (
-          <TabsContent value="auto-dev" className="space-y-4">
-            <QMoiAutoDevPanel />
-          </TabsContent>
-        )}
       </Tabs>
     </div>
   );

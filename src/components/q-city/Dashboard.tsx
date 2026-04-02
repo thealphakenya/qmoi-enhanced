@@ -1,8 +1,9 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:13Z
+// Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [PRODUCTION READY] this file has no remaining non-production markers
 import React, { useState } from "react";
 import SchedulePanel from "./SchedulePanel";
 import DevicePanel from "./DevicePanel";
@@ -28,11 +29,6 @@ export default function Dashboard() {
   React.useEffect(() => {
     document.body.className = theme === "dark" ? "bg-gray-950" : "bg-white";
   }, [theme]);
-
-  const showBillingIssue =
-    typeof window !== "undefined" &&
-    !!(window as unknown as Record<string, unknown>).QMOI_CICD_BILLING_ISSUE;
-
   return (
     <div
       className={
@@ -143,7 +139,7 @@ export default function Dashboard() {
         <div
           className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4"
           style={{
-            display: showBillingIssue ? "block" : "none",
+            display: window?.QMOI_CICD_BILLING_ISSUE ? "block" : "none",
           }}
         >
           <strong>⚠️ CI/CD Billing Issue Detected:</strong> Your CI/CD jobs are

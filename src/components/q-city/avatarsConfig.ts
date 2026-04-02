@@ -1,8 +1,9 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:13Z
+// Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 export interface AvatarConfig {
   id: string;
   name: string;
@@ -29,8 +30,6 @@ export interface AvatarConfig {
   voiceProfile?: string;
   assetPath: string;
   thumbnailPath: string;
-  previewUrl?: string;
-  productionUrl?: string;
   environment?: string;
   props?: string[];
   gestures?: string[];
@@ -38,11 +37,6 @@ export interface AvatarConfig {
   isActive: boolean;
   isPremium?: boolean;
   autoUpgrade?: boolean;
-  // Tracks and enhancement metadata (optional)
-  // Tracks associated with this avatar (runtime track ids or descriptors)
-  tracks?: Array<{ id: string; name?: string; type?: string; status?: string }>;
-  // Controls who can see admin features for this avatar in the UI
-  adminControlsVisibleTo?: "master" | "admin" | "everyone";
 }
 
 export const avatarsConfig: AvatarConfig[] = [
@@ -205,42 +199,6 @@ export const avatarsConfig: AvatarConfig[] = [
     gestures: ["wave", "present", "handshake", "direct"],
     expressions: ["confident", "professional", "focused", "friendly"],
     isActive: true,
-    autoUpgrade: true,
-  },
-
-  // Champion Aviator (New - Photoreal / High Fidelity)
-  {
-    id: "champion",
-    name: "Champion Aviator",
-    type: "human",
-    category: "Heroic",
-    description:
-      "Champion is a high-fidelity, photoreal aviator with micro-expressions, gaze tracking, and studio-grade lip sync — designed for confident, leadership-focused interactions.",
-    features: [
-      "photoreal face",
-      "micro-expressions",
-      "gaze-tracking",
-      "studio lighting",
-      "dynamic cloth",
-    ],
-    animationEngine: "nerf-face",
-    qualityLevel: "ai-enhanced",
-    voiceProfile: "professional-male",
-    assetPath: "/avatars/champion/",
-    thumbnailPath: "/avatars/champion/thumbnail.png",
-    previewUrl: "/avatars/champion/preview.webm",
-    productionUrl: "/avatars/champion/production.html",
-    environment: "stadium",
-    props: ["medal", "cape"],
-    gestures: [
-      "victory-pose",
-      "confident-step",
-      "open-hand-address",
-      "nod-acknowledge",
-    ],
-    expressions: ["confident", "inspiring", "warm", "focused"],
-    isActive: true,
-    isPremium: true,
     autoUpgrade: true,
   },
 

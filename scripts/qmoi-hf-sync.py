@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:53Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:18Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Hugging Face Sync Script
@@ -33,8 +34,8 @@ logger = logging.getLogger(__name__)
 class QMOIHFSync:
     def __init__(self):
         self.hf_token = os.getenv('HF_TOKEN')
-        self.model_repo = os.getenv('QMOI_HF_MODEL_REPO', 'stableqmoi/qmoi')
-        self.space_repo = os.getenv('QMOI_HF_SPACE_REPO', 'stableqmoi/qmoi-space')
+        self.model_repo = os.getenv('QMOI_HF_MODEL_REPO', 'alphaqmoi/qmoi')
+        self.space_repo = os.getenv('QMOI_HF_SPACE_REPO', 'alphaqmoi/qmoi-space')
         self.model_dir = os.getenv('QMOI_MODEL_DIR', 'models/latest')
         self.space_dir = os.getenv('QMOI_SPACE_DIR', 'huggingface_space')
         self.log_file = 'logs/qmoi-hf-sync.log'

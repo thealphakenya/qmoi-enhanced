@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:53Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:18Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 import os
 import subprocess
 from dotenv import load_dotenv
@@ -18,7 +19,7 @@ def run(cmd):
     return result.returncode == 0
 
 def push_to_github():
-    repo_url = f"https://{os.getenv('GITHUB_TOKEN')}@github.com/thestablekenya/stable-Q-ai.git"
+    repo_url = f"https://{os.getenv('GITHUB_TOKEN')}@github.com/thealphakenya/stable-Q-ai.git"
     
     run("git add .")
     run('git commit -m "🔄 Auto-sync QMOI updates"')

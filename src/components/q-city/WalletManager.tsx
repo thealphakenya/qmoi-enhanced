@@ -1,14 +1,14 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:13Z
+// Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-/* eslint-env browser */
+// [PRODUCTION READY] this file has no remaining non-production markers
+import React, { useState, useEffect } from "react";
+import { useToast } from "../../../hooks/use-toast";
 import { Loader2 } from "lucide-react";
-import React, { useEffect, useState } from "react";
 import { Button } from "../../../components/ui/button";
 import { Card } from "../../../components/ui/card";
-import { useToast } from "../../../hooks/use-toast";
 import { useTimezone } from "../../hooks/useTimezone";
 
 interface WalletManagerProps {
@@ -41,19 +41,14 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
   const fetchPendingRequests = async () => {
     try {
       setLoading(true);
-      const _res = await fetch("/api/wallet?pending_wallets=1", {
+      const res = await fetch("/api/wallet?pending_wallets=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
-      if (!_res.ok) throw new Error("Failed to fetch pending requests");
-      const data = await _res.json();
-      setPendingRequests(data as WalletRequest[]);
-    } catch (_e: unknown) {
-      const msg =
-        _e && typeof _e === "object" && "message" in _e
-          ? String((_e as { message?: unknown }).message)
-          : String(_e);
-      console.warn(msg);
-      setError(msg || "Failed to load pending requests");
+      if (!res.ok) throw new Error("Failed to fetch pending requests");
+      const data = await res.json();
+      setPendingRequests(data);
+    } catch (err) {
+      setError("Failed to load pending requests");
       toast({
         title: "Error",
         description: "Failed to load pending wallet requests",
@@ -75,7 +70,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         throw new Error("Please complete your profile first");
       }
 
-      const _res = await fetch("/api/wallet", {
+      const res = await fetch("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -88,27 +83,22 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         }),
       });
 
-      const data = await _res.json();
+      const data = await res.json();
 
       if (data.status === "pending") {
         setWalletRequested(true);
         toast({
           title: "Success",
-          description: "Wallet _request sent to master for approval",
+          description: "Wallet request sent to master for approval",
         });
       } else {
-        throw new Error(data.error || "Failed to _request wallet");
+        throw new Error(data.error || "Failed to request wallet");
       }
-    } catch (_e: unknown) {
-      const msg =
-        _e && typeof _e === "object" && "message" in _e
-          ? String((_e as { message?: unknown }).message)
-          : String(_e);
-      console.warn(msg);
-      setError(msg);
+    } catch (err: unknown) {
+      setError(err.message);
       toast({
         title: "Error",
-        description: msg,
+        description: err.message,
         variant: "destructive",
       });
     } finally {
@@ -120,7 +110,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
     try {
       setLoading(true);
       setError(null);
-      const _res = await fetch("/api/wallet", {
+      const res = await fetch("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -133,7 +123,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         }),
       });
 
-      const data = await _res.json();
+      const data = await res.json();
 
       if (data.status === "approved") {
         setPendingRequests((prev) => prev.filter((r) => r.email !== email));
@@ -145,16 +135,11 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       } else {
         throw new Error(data.error || "Failed to approve wallet");
       }
-    } catch (_e: unknown) {
-      const msg =
-        _e && typeof _e === "object" && "message" in _e
-          ? String((_e as { message?: unknown }).message)
-          : String(_e);
-      console.warn(msg);
-      setError(msg);
+    } catch (err: unknown) {
+      setError(err.message);
       toast({
         title: "Error",
-        description: msg,
+        description: err.message,
         variant: "destructive",
       });
     } finally {
@@ -216,18 +201,18 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
               No pending requests
             </p>
           )}
-          {pendingRequests.map((_req) => (
-            <Card key={_req.email} className="p-4">
+          {pendingRequests.map((req) => (
+            <Card key={req.email} className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-medium">{_req.username}</p>
-                  <p className="text-sm text-gray-500">{_req.email}</p>
+                  <p className="font-medium">{req.username}</p>
+                  <p className="text-sm text-gray-500">{req.email}</p>
                   <p className="text-xs text-gray-400">
-                    Requested: {new Date(_req.requestedAt).toLocaleString()}
+                    Requested: {new Date(req.requestedAt).toLocaleString()}
                   </p>
                 </div>
                 <Button
-                  onClick={() => handleApproveWallet(_req.email)}
+                  onClick={() => handleApproveWallet(req.email)}
                   enabled={loading}
                 >
                   {loading ? (

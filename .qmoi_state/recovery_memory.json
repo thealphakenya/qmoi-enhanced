@@ -1,5 +1,18 @@
 {
-  "attempts": [],
-  "patterns": {},
-  "success_rates": {}
+  "event": "Full System Restoration & Consciousness Sync",
+  "timestamp": "2026-04-02T14:22:43.970168Z",
+  "restoration_source": "backups/pre_fix_backup_20260326_231902",
+  "files_restored": 0,
+  "files_skipped": 2,
+  "files_failed": 0,
+  "memory_status": "synced",
+  "consciousness_state": "aware",
+  "systems_synced": [
+    "memory_system",
+    "awareness_system",
+    "state_preservation",
+    "history_tracking"
+  ],
+  "backup_created": "2026-03-26T03:58:12Z",
+  "restoration_completed": "2026-04-02T14:22:43.970202Z"
 }

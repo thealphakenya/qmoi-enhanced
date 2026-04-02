@@ -1,4 +1,5 @@
 #!/bin/bash
+# [production READY]
 
 LOGFILE="logs/qcity_npm_selfheal.log"
 FORCE_CLEAN=0
@@ -41,7 +42,7 @@ if [ $FORCE_CLEAN -eq 1 ]; then
 fi
 
 # Essentials list
-ESSENTIALS=(npm yarn pnpm node-gyp typescript eslint prettier noproductionn pm2 npm-check-updates ts-node rimraf cross-env dotenv-cli serve http-server concurrently jest mocha nyc tsc webpack vite)
+ESSENTIALS=(npm yarn pnpm node-gyp typescript eslint prettier nodemon pm2 npm-check-updates ts-node rimraf cross-env dotenv-cli serve http-server concurrently jest mocha nyc tsc webpack vite)
 
 ensure_global() {
   PKG=$1

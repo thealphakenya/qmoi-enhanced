@@ -55,7 +55,7 @@ export default async function handler(
     }
   } catch (e) {
     return res
-      default.status(500)
-      default.json({ error: (e as Error).message || "Internal error" });
+      .status(500)
+      .json({ error: (e as Error).message || "Internal error" });
   }
 }

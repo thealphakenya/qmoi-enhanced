@@ -1,4 +1,4 @@
-
+// [production READY] this file has no remaining production markers
 #!/bin/bash
 adb prodices
 adb uninstall com.qmoi.ai

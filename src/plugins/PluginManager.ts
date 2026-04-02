@@ -1,10 +1,10 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:12Z
+// Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// QMOI Plugin Manager 
-import React from "react";
+// QMOI Plugin Manager [production READY]
+
 import { prodiceHealthReviewerPlugin } from "./prodiceHealthReviewerPlugin";
 import { OptimizationSuggestionPlugin } from "./OptimizationSuggestionPlugin";
 import { AIReviewPlugin } from "./AIReviewPlugin";
@@ -26,7 +26,7 @@ export type PluginEvent = { type: string; payload?: unknown };
 export type AutomationRule = {
   id: string;
   description: string;
-  trigger: (_event: PluginEvent) => boolean;
+  trigger: (event: PluginEvent) => boolean;
   action: () => void;
 };
 
@@ -39,7 +39,7 @@ export class PluginManager {
   private scheduledPlugins: {
     plugin: QmoiPlugin;
     interval: number;
-    timer?: number | NodeJS.Timeout;
+    timer?: unknown;
   }[] = [];
   private automationRules: AutomationRule[] = [];
 
@@ -80,12 +80,10 @@ export class PluginManager {
     this.eventListeners[eventType].push(listener);
   }
 
-  emit(_event: PluginEvent) {
-    (this.eventListeners[_event.type] || []).forEach((fn) =>
-      fn(_event.payload),
-    );
+  emit(event: PluginEvent) {
+    (this.eventListeners[event.type] || []).forEach((fn) => fn(event.payload));
     this.automationRules.forEach((rule) => {
-      if (rule.trigger(_event)) rule.action();
+      if (rule.trigger(event)) rule.action();
     });
   }
 
@@ -95,18 +93,7 @@ export class PluginManager {
   }
 
   clearSchedules() {
-    this.scheduledPlugins.forEach((s) => {
-      try {
-        const t = s.timer;
-        if (typeof t === "number") {
-          clearInterval(t);
-        } else if (t) {
-          clearInterval(t as unknown as NodeJS.Timeout);
-        }
-      } catch (e) {
-        // ignore errors clearing timers
-      }
-    });
+    this.scheduledPlugins.forEach((s) => clearInterval(s.timer));
     this.scheduledPlugins = [];
   }
 
@@ -143,7 +130,7 @@ export class PluginManager {
   // pluginManager.addAutomationRule({
   //   id: 'cpu-offload',
   //   description: 'Offload to cloud if CPU > 80%',
-  //   trigger: (_event) => _event.type === 'prodiceHealthChange' && _event.payload.cpu > 80,
+  //   trigger: (event) => event.type === 'prodiceHealthChange' && event.payload.cpu > 80,
   //   action: () => { /* offload logic */ },
   // });
 }

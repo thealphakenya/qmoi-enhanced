@@ -1,14 +1,15 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:28Z
+// Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 import os
 import requests
 from qmoi_activity_logger import log_activity
 import time
 
-GITHUB_REPO = 'thestablekenya/stable-Q-ai'  # Update if repo name changes
+GITHUB_REPO = 'thealphakenya/stable-Q-ai'  # Update if repo name changes
 APK_NAME = 'qmoi ai.apk'
 TARGET_DIR = 'Qmoi_apps/android'
 TARGET_FILE = APK_NAME

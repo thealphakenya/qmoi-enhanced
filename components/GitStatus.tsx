@@ -1,12 +1,13 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:06Z
+// Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [PRODUCTION READY] this file has no remaining non-production markers
 import React, { useEffect, useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
-function GitStatus() {
+export function GitStatus() {
   const [branch, setBranch] = useState<string>("");
   const [status, setStatus] = useState<string>("");
   const [remote, setRemote] = useState<string>("");
@@ -52,5 +53,3 @@ function GitStatus() {
     </Card>
   );
 }
-
-export default GitStatus;

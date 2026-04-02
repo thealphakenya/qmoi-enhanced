@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:05Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:21Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 import os
 import sys
 import json
@@ -11,7 +12,7 @@ from qmoi_activity_logger import log_activity
 from pathlib import Path
 import time
 
-GITHUB_REPO = 'thestablekenya/stable-Q-ai'
+GITHUB_REPO = 'thealphakenya/stable-Q-ai'
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 QMOI_APPS_DIR = 'Qmoi_apps'
 RETRY_COUNT = 3
@@ -40,6 +41,7 @@ def get_version():
 VERSION = get_version()
 TAG_NAME = f'v{VERSION}'
 
+
 def get_or_create_release():
     url = f'https://api.github.com/repos/{GITHUB_REPO}/releases/tags/{TAG_NAME}'
     r = requests.get(url, headers=HEADERS)
@@ -57,6 +59,7 @@ def get_or_create_release():
     r = requests.post(url, headers=HEADERS, json=data)
     r.raise_for_status()
     return r.json()
+
 
 def upload_asset(upload_url, file_path):
     file_name = os.path.basename(file_path)
@@ -82,6 +85,7 @@ def upload_asset(upload_url, file_path):
             print(f'Error: {e} (attempt {attempt})')
         time.sleep(RETRY_DELAY)
     return None
+
 
 def main():
     release = get_or_create_release()

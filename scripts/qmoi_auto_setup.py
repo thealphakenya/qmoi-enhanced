@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:07Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:22Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Auto Setup & Continuous Running System
@@ -154,8 +155,8 @@ class QMOIAutoSetup:
         logger.info("Setting up Hugging Face integration...")
         
         hf_config = {
-            "model_name": "stableqmoi/qmoi",
-            "space_name": "stableqmoi/qmoi-ai-system",
+            "model_name": "alphaqmoi/qmoi",
+            "space_name": "alphaqmoi/qmoi-ai-system",
             "auto_update": True,
             "auto_deploy": True,
             "model_sync": True,
@@ -301,7 +302,7 @@ class QMOIAutoSetup:
             model_card = qmoi.hf_integration.update_model_card()
             
             # Push to Hugging Face
-            subprocess.check_call(["huggingface-cli", "upload", "stableqmoi/qmoi", "models/latest/"])
+            subprocess.check_call(["huggingface-cli", "upload", "alphaqmoi/qmoi", "models/latest/"])
             
             logger.info("Hugging Face model updated")
             

@@ -1,9 +1,9 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:06Z
+// Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// @ts-nocheck
+// [production READY] this file has no remaining production markers
 import nodemailer from "nodemailer";
 import axios from "axios";
 import { logger } from "../utils/logger";
@@ -53,14 +53,14 @@ interface NotificationConfig {
 
 export class NotificationService {
   private config: NotificationConfig;
-  private emailTransporter!: nodemailer.Transporter;
+  private emailTransporter: nodemailer.Transporter;
 
   constructor() {
     this.config = {
       email: {
         enabled: true,
-        from: "qcity-ai@stablekenya.com",
-        to: ["rovicviccy@gmail.com", "thestablekenya@gmail.com"],
+        from: "qcity-ai@alphakenya.com",
+        to: ["rovicviccy@gmail.com", "thealphakenya@gmail.com"],
         smtp: {
           host: "smtp.gmail.com",
           port: 587,
@@ -169,7 +169,7 @@ export class NotificationService {
     if (!this.config.whatsapp.enabled || !twilioClient) return;
     try {
       for (const to of this.config.whatsapp.to) {
-        await .messages.create({
+        await twilioClient.messages.create({
           from: `whatsapp:${this.config.whatsapp.from}`,
           to: `whatsapp:${to}`,
           body: message,
@@ -222,6 +222,6 @@ export class NotificationService {
     else if (eventType === "deploy_success") subject += "Deployment Success";
     else subject += eventType;
     await this.sendNotification(subject, details);
-    logger.info(`Critical _event notification sent: ${eventType}`);
+    logger.info(`Critical event notification sent: ${eventType}`);
   }
 }

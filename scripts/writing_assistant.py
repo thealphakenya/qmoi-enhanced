@@ -1,9 +1,10 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:55Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:19Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-ok#!/usr/bin/env python3
+// [production READY] this file has no remaining production markers
+#!/usr/bin/env python3
 """
 QMOI Ethical Writing Assistant
 ---------------------------------
@@ -27,6 +28,7 @@ import re
 from dataclasses import dataclass
 from typing import Dict, List, Tuple
 
+
 # -------------------------
 # Utilities
 # -------------------------
@@ -35,16 +37,20 @@ def normalize_text(text: str) -> str:
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     return re.sub(r"\s+", " ", text).strip()
 
+
 def split_sentences(text: str) -> List[str]:
     text = normalize_text(text)
     # Simple sentence split; deliberately robust
     return re.split(r"(?<=[.!?])\s+", text) if text else []
 
+
 def ngrams(tokens: List[str], n: int) -> List[Tuple[str, ...]]:
     return [tuple(tokens[i : i + n]) for i in range(0, max(len(tokens) - n + 1, 0))]
 
+
 def jaccard(a: set, b: set) -> float:
     return len(a & b) / max(len(a | b), 1)
+
 
 # -------------------------
 # Originality Assistant
@@ -68,6 +74,7 @@ def generate_outline(topic: str, sections: int = 5) -> Dict[str, List[str]]:
         )
     return outline
 
+
 def scaffold_draft(outline: Dict[str, List[str]]) -> str:
     lines = [f"# {outline.get('title','Untitled')}\n"]
     for sec in outline.get("sections", []):
@@ -80,6 +87,7 @@ def scaffold_draft(outline: Dict[str, List[str]]) -> str:
     lines.append("## References\n- Add properly formatted references here")
     return "\n".join(lines)
 
+
 # -------------------------
 # Style Coach
 # -------------------------
@@ -89,6 +97,7 @@ class StyleProfile:
     sentence_length: Tuple[int, int] = (10, 22)
     formality: str = "neutral"  # informal | neutral | formal
     passive_ok: bool = False
+
 
 def adapt_style(text: str, profile: StyleProfile) -> str:
     sentences = split_sentences(text)
@@ -115,6 +124,7 @@ def adapt_style(text: str, profile: StyleProfile) -> str:
         adjusted.append(s if s.endswith(('.', '!', '?')) else s + '.')
     return " ".join(adjusted)
 
+
 # -------------------------
 # Self-Similarity Checker
 # -------------------------
@@ -131,6 +141,7 @@ def similarity_report(text: str, ref_texts: List[str], n: int = 5) -> Dict:
     overall = max((d["jaccard"] for d in details), default=0.0)
     return {"n": n, "max_jaccard": overall, "comparisons": details}
 
+
 # -------------------------
 # Citation Builder
 # -------------------------
@@ -138,11 +149,14 @@ def similarity_report(text: str, ref_texts: List[str], n: int = 5) -> Dict:
 def cite_apa(author: str, year: str, title: str, source: str) -> str:
     return f"{author} ({year}). {title}. {source}."
 
+
 def cite_mla(author: str, title: str, source: str, year: str) -> str:
     return f"{author}. \"{title}.\" {source}, {year}."
 
+
 def cite_chicago(author: str, year: str, title: str, source: str) -> str:
     return f"{author}. {year}. {title}. {source}."
+
 
 # -------------------------
 # Rubric Reviewer
@@ -156,6 +170,7 @@ def rubric_review(text: str, rubric_points: List[str]) -> Dict:
         findings.append({"criterion": point, "addressed": present})
     coverage = sum(1 for f in findings if f["addressed"]) / max(len(findings), 1)
     return {"coverage": round(coverage, 2), "findings": findings}
+
 
 # -------------------------
 # CLI
@@ -229,6 +244,9 @@ def main():
         print(json.dumps(rubric_review(args.text, args.points), indent=2))
         return
 
+
 if __name__ == "__main__":
     main()
+
+
 

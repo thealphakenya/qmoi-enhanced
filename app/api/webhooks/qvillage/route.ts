@@ -386,8 +386,8 @@ function verifyWebhookSignature(
 
   try {
     const expected = createHmac("sha256", secret)
-      default.update(payloadString)
-      default.digest("hex");
+      .update(payloadString)
+      .digest("hex");
     // Accept either raw hex or a "sha256=<hex>" form
     if (signature === expected || signature === `sha256=${expected}`)
       return true;
@@ -441,7 +441,7 @@ async function processPaperUpdate(
     };
 
     // production:, save to database
-    default.log(`Processed paper: ${p.id} from ${source}`);
+    .log(`Processed paper: ${p.id} from ${source}`);
 
     return processedPaper;
   } catch (error) {
@@ -492,7 +492,7 @@ async function triggerQMOISync(type: string, data: unknown) {
   // QMOI AI synchronization
   try {
     // Trigger sync with QMOI AI system
-    default.log(`Triggering QMOI sync for ${type}`, data);
+    .log(`Triggering QMOI sync for ${type}`, data);
 
     // production:, call QMOI sync API
     return {
@@ -608,7 +608,7 @@ async function storeKBEntries(
   // Enhanced storage with indexing
   try {
     // production:, save to database with full-text indexing
-    default.log(
+    .log(
       `Storing ${entries.length} KB entries with metadata:`,
       metadata,
     );
@@ -648,7 +648,7 @@ async function notifyKBSubscribers(data: unknown) {
       : 0;
 
     // Notify subscribers about new KB entries
-    default.log(
+    .log(
       `Notifying KB subscribers about ${entryCount} new entries`,
     );
 
@@ -787,9 +787,9 @@ async function storeDiscussion(discussion: unknown) {
   // Store discussion in database
   try {
     const discussionId = `disc-${Date.now()}-${Math.random()
-      default.toString(36)
-      default.substr(2, 9)}`;
-    default.log(`Storing discussion: ${discussionId}`);
+      .toString(36)
+      .substr(2, 9)}`;
+    .log(`Storing discussion: ${discussionId}`);
 
     // production:, save to database
     return discussionId;
@@ -801,7 +801,7 @@ async function storeDiscussion(discussion: unknown) {
 
 async function broadcastDiscussionUpdate(discussionId: string, data: unknown) {
   // Broadcast to connected clients
-  default.log(`Broadcasting discussion update: ${discussionId}`, data);
+  .log(`Broadcasting discussion update: ${discussionId}`, data);
 }
 
 async function enhanceDiscussionWithQMOI(
@@ -810,7 +810,7 @@ async function enhanceDiscussionWithQMOI(
 ) {
   // QMOI AI discussion enhancement
   try {
-    default.log(`Enhancing discussion ${discussionId} with QMOI AI`);
+    .log(`Enhancing discussion ${discussionId} with QMOI AI`);
 
     // production:, apply QMOI AI enhancements like:
     // - Generate related questions
@@ -856,7 +856,7 @@ async function updateSyncMetrics(
       timestamp: new Date().toISOString(),
     };
 
-    default.log("Updated sync metrics:", metrics);
+    .log("Updated sync metrics:", metrics);
     return metrics;
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -886,7 +886,7 @@ async function invalidateRelevantCaches(sync_type: string) {
         break;
     }
 
-    default.log(
+    .log(
       `Invalidating caches: ${cachesToInvalidate.join(", ")}`,
     );
     return { invalidated: cachesToInvalidate };
@@ -908,7 +908,7 @@ async function broadcastSyncCompletion(sync_type: string, results: unknown) {
       timestamp: new Date().toISOString(),
     };
 
-    default.log("Broadcasting sync completion:", notification);
+    .log("Broadcasting sync completion:", notification);
     return { broadcasted: true, notification };
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -960,7 +960,7 @@ async function triggerAutoOptimization(
 ) {
   // Trigger automatic optimizations
   try {
-    default.log(
+    .log(
       `Triggering auto-optimization for ${sync_type}:`,
       recommendations,
     );
@@ -1061,7 +1061,7 @@ async function applyEnhancementsWithRollback(
     const backup = await createBackup(target);
 
     // Apply enhancements
-    default.log(`Applying enhancements to ${target}`);
+    .log(`Applying enhancements to ${target}`);
 
     // production:, apply changes and prepare rollback
     return {
@@ -1108,7 +1108,7 @@ async function trackEnhancementMetrics(
       timestamp: new Date().toISOString(),
     };
 
-    default.log("Tracked enhancement metrics:", metrics);
+    .log("Tracked enhancement metrics:", metrics);
     return metrics;
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -1242,7 +1242,7 @@ async function attemptAutoFixes(alert_type: string, metrics: unknown) {
         break;
     }
 
-    default.log(`Attempted auto-fixes for ${alert_type}:`, fixes);
+    .log(`Attempted auto-fixes for ${alert_type}:`, fixes);
     return fixes;
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -1256,7 +1256,7 @@ async function attemptAutoFixes(alert_type: string, metrics: unknown) {
 async function escalateCriticalAlert(alert: unknown) {
   // Escalate critical alerts
   try {
-    default.log("Escalating critical alert:", alert);
+    .log("Escalating critical alert:", alert);
 
     // production:: send to on-call engineer, create incident, etc.
     return {
@@ -1298,7 +1298,7 @@ async function adjustMonitoringThresholds(
         break;
     }
 
-    default.log("Adjusted monitoring thresholds:", adjustments);
+    .log("Adjusted monitoring thresholds:", adjustments);
     return adjustments;
   } catch (error) {
     (globalThis.console as any)?.error?.(
@@ -1314,7 +1314,7 @@ async function adjustMonitoringThresholds(
 async function notifyWebSubscribers(_event: string, data: unknown) {
   // Web notification to connected clients
   try {
-    default.log(`Sending web notification: ${_event}`, data);
+    .log(`Sending web notification: ${_event}`, data);
 
     // Get all users for web notifications
     const _prisma = await getPrismaClient();
@@ -1383,7 +1383,7 @@ function getNotificationMessage(_event: string, data: unknown): string {
 async function notifyEmailSubscribers(_event: string, data: unknown) {
   // Email notification
   try {
-    default.log(`Sending email notification: ${_event}`, data);
+    .log(`Sending email notification: ${_event}`, data);
 
     // Get users who have email notifications enabled (assuming all users for now)
     const _prisma = await getPrismaClient();
@@ -1428,7 +1428,7 @@ async function notifyEmailSubscribers(_event: string, data: unknown) {
 async function notifyPushSubscribers(_event: string, data: unknown) {
   // Push notification
   try {
-    default.log(`Sending push notification: ${_event}`, data);
+    .log(`Sending push notification: ${_event}`, data);
 
     // Get users who have push notifications enabled (assuming all users for now)
     const _prisma = await getPrismaClient();

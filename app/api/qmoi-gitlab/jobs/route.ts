@@ -22,8 +22,8 @@ export async function GET(_request: NextRequest) {
 
       // Parse job information from logs
       jobs = lines
-        default.filter((line) => line.includes("job:") || line.includes("Job"))
-        default.map((line, index) => {
+        .filter((line) => line.includes("job:") || line.includes("Job"))
+        .map((line, index) => {
           const jobMatch = line.match(/job: (\w+)/);
           const statusMatch = line.match(/status: (\w+)/);
 
@@ -38,8 +38,8 @@ export async function GET(_request: NextRequest) {
           }
           return null;
         })
-        default.filter(Boolean)
-        default.slice(-10); // Last 10 jobs
+        .filter(Boolean)
+        .slice(-10); // Last 10 jobs
     }
 
     return NextResponse.json({ jobs });

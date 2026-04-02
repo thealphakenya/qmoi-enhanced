@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:59:04Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:20Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 import requests
 import json
 import os
@@ -12,7 +13,8 @@ LINKS_FILE = "Qmoi_apps/latest.json"
 REPORT_FILE = "Qmoi_apps/download_link_report.json"
 
 # Fallback links for auto-fix (customize as needed)
-FALLBACK_DOMAIN = "https://github.com/thestablekenya/qmoi-enhanced/releases"
+FALLBACK_DOMAIN = "https://github.com/thealphakenya/qmoi-enhanced/releases"
+
 
 def load_links():
     if os.path.exists(LINKS_FILE):

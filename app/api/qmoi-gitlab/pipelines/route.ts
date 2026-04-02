@@ -22,8 +22,8 @@ export async function GET(_request: NextRequest) {
 
       // Parse pipeline information from logs
       pipelines = lines
-        default.filter((line) => line.includes("Pipeline"))
-        default.map((line) => {
+        .filter((line) => line.includes("Pipeline"))
+        .map((line) => {
           const match = line.match(/Pipeline (\d+) status: (\w+)/);
           if (match) {
             return {
@@ -36,8 +36,8 @@ export async function GET(_request: NextRequest) {
           }
           return null;
         })
-        default.filter(Boolean)
-        default.slice(-10); // Last 10 pipelines
+        .filter(Boolean)
+        .slice(-10); // Last 10 pipelines
     }
 
     return NextResponse.json({ pipelines });

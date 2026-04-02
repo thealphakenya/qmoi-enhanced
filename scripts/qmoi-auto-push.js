@@ -1,8 +1,9 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:56Z
+// Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env node
 
 const { execSync, spawn } = require("child_process");
@@ -44,8 +45,8 @@ class QMOIAutoPush {
           this.log("Scheduled git pull/merge...");
           await this.runCommand("git pull --rebase");
           this.log("Git pull/merge completed.");
-        } catch (_err) {
-          this.log("Git pull/merge failed: " + _err.message, "ERROR");
+        } catch (err) {
+          this.log("Git pull/merge failed: " + err.message, "ERROR");
         }
       },
       10 * 60 * 1000,
@@ -114,7 +115,7 @@ class QMOIAutoPush {
       });
 
       child.on("error", (error) => {
-        this.log(`Command _error: ${error.message}`, "ERROR");
+        this.log(`Command error: ${error.message}`, "ERROR");
         if (retries < this.maxRetries) {
           this.log(`Retrying command in ${this.retryDelay}ms...`);
           setTimeout(() => {
@@ -123,92 +124,65 @@ class QMOIAutoPush {
               .catch(reject);
           }, this.retryDelay);
         } else {
-          reject({ _error: error.message, code: -1 });
+          reject({ error: error.message, code: -1 });
         }
       });
     });
   }
 
-  async preventLargeFilePush() {
-    this.log("🛡️ Preventing large file push issues...");
+  async fixCriticalErrors() {
+    this.log("🔧 Fixing critical errors before push...");
 
-    const largeFiles = [
-      'reports/ultimate_scan_results.json',
-      'reports/scan_detail.json',
-      'reports/ai-understanding-detailed-20260324_041407.json'
+    const criticalFixes = [
+      {
+        name: "Fix package.json syntax",
+        command: "node scripts/json-config-fixer.js --fix-package",
+        continueOnError: true,
+      },
+      {
+        name: "Fix TypeScript config",
+        command: "node scripts/json-config-fixer.js --fix-tsconfig",
+        continueOnError: true,
+      },
+      {
+        name: "Fix ESLint config",
+        command: "node scripts/json-config-fixer.js --fix-eslint",
+        continueOnError: true,
+      },
+      {
+        name: "Fix Jest config",
+        command: "node scripts/json-config-fixer.js --fix-jest",
+        continueOnError: true,
+      },
+      {
+        name: "Clean npm cache",
+        command: "npm cache clean --force",
+        continueOnError: true,
+      },
+      {
+        name: "Reinstall dependencies",
+        command: "npx rimraf node_modules package-lock.json && npm install",
+        continueOnError: true,
+      },
+      {
+        name: "Fix git status",
+        command:
+          'git config --global user.email "qmoi@automation.com" && git config --global user.name "QMOI Automation"',
+        continueOnError: true,
+      },
     ];
 
-    for (const file of largeFiles) {
-      if (fs.existsSync(file)) {
-        try {
-          await this.runCommand(`git rm --cached ${file}`);
-          this.log(`Removed large file from git: ${file}`);
-        } catch (error) {
-          this.log(`Could not remove ${file}: ${error.message}`, "WARN");
+    for (const fix of criticalFixes) {
+      try {
+        this.log(`Applying critical fix: ${fix.name}`);
+        await this.runCommand(fix.command);
+        this.log(`Critical fix applied: ${fix.name}`);
+      } catch (error) {
+        this.log(`Critical fix failed: ${fix.name} - ${error.message}`, "WARN");
+        if (!fix.continueOnError) {
+          throw error;
         }
       }
-    }
-
-    // Clean git history of large files
-    try {
-      await this.runCommand('git gc --aggressive --prune=now');
-      this.log("Git garbage collection completed");
-    } catch (error) {
-      this.log(`Git GC failed: ${error.message}`, "WARN");
-    }
-  }
-
-  async optimizeRepositorySize() {
-    this.log("📦 Optimizing repository size...");
-
-    try {
-      // Remove untracked files
-      await this.runCommand('git clean -fd');
-      // Optimize pack files
-      await this.runCommand('git repack -a -d --depth=250 --window=250');
-      // Clean reflog
-      await this.runCommand('git reflog expire --expire=30.days.ago');
-      this.log("Repository optimization completed");
-    } catch (error) {
-      this.log(`Repository optimization failed: ${error.message}`, "WARN");
-    }
-  }
-
-  async syncWithstableQAI() {
-    this.log("🔄 Syncing with stable-Q-ai repository...");
-
-    try {
-      // Add stable-Q-ai remote if not exists
-      try {
-        await this.runCommand("git remote get-url stable-q-ai");
-      } catch (e) {
-        await this.runCommand("git remote add stable-q-ai https://github.com/thestablekenya/stable-Q-ai.git");
-      }
-
-      // Fetch from stable-Q-ai
-      await this.runCommand("git fetch stable-q-ai");
-      this.log("✅ Synced with stable-Q-ai repository");
-    } catch (error) {
-      this.log(`stable-Q-ai sync failed: ${error.message}`, "ERROR");
-    }
-  }
-
-  async syncWithStableQAI() {
-    this.log("🔄 Syncing with stable-Q-ai repository...");
-
-    try {
-      // Add stable-Q-ai remote if not exists
-      try {
-        await this.runCommand("git remote get-url stable-q-ai");
-      } catch (e) {
-        await this.runCommand("git remote add stable-q-ai https://github.com/thestablekenya/stable-Q-ai.git");
-      }
-
-      // Fetch from stable-Q-ai
-      await this.runCommand("git fetch stable-q-ai");
-      this.log("✅ Synced with stable-Q-ai repository");
-    } catch (error) {
-      this.log(`stable-Q-ai sync failed: ${error.message}`, "ERROR");
     }
   }
 
@@ -258,49 +232,26 @@ class QMOIAutoPush {
       return false;
     }
 
-    this.log("🚀 Pushing to GitHub repositories...");
+    this.log("🚀 Pushing to GitHub...");
 
-    const repos = [
-      { name: 'stable-Q-ai', url: 'https://github.com/thestablekenya/stable-Q-ai.git' },
-      { name: 'stable-Q-ai', url: 'https://github.com/thestablekenya/stable-Q-ai.git' },
-      { name: 'qmoi-enhanced', url: 'https://github.com/thestablekenya/qmoi-enhanced.git' }
-    ];
-
-    let successCount = 0;
-
-    for (const repo of repos) {
+    try {
+      // Add GitHub remote if not exists
       try {
-        this.log(`Pushing to ${repo.name}...`);
-
-        // Add remote if not exists
-        try {
-          await this.runCommand(`git remote get-url ${repo.name.toLowerCase()}`);
-        } catch (e) {
-          await this.runCommand(`git remote add ${repo.name.toLowerCase()} ${repo.url}`);
-        }
-
-        // Push to repository
-        await this.runCommand(`git push ${repo.name.toLowerCase()} ${this.branch}`);
-        this.log(`✅ Successfully pushed to ${repo.name}`);
-        successCount++;
-      } catch (error) {
-        this.log(`GitHub push to ${repo.name} failed: ${error.message}`, "ERROR");
-
-        // Try force push for critical repos
-        if (repo.name === 'stable-Q-ai' || repo.name === 'qmoi-enhanced') {
-          try {
-            this.log(`Attempting force push to ${repo.name}...`);
-            await this.runCommand(`git push ${repo.name.toLowerCase()} ${this.branch} --force`);
-            this.log(`✅ Force push successful to ${repo.name}`);
-            successCount++;
-          } catch (forceError) {
-            this.log(`Force push to ${repo.name} also failed: ${forceError.message}`, "ERROR");
-          }
-        }
+        await this.runCommand("git remote get-url github");
+      } catch (e) {
+        await this.runCommand(
+          "git remote add github https://github.com/thealphakenya/stable-Q-ai.git",
+        );
       }
-    }
 
-    return successCount > 0;
+      // Push to GitHub
+      await this.runCommand(`git push github ${this.branch}`);
+      this.log("✅ Successfully pushed to GitHub");
+      return true;
+    } catch (error) {
+      this.log(`GitHub push failed: ${error.message}`, "ERROR");
+      return false;
+    }
   }
 
   async createBackupBranch() {
@@ -407,7 +358,7 @@ class QMOIAutoPush {
       try {
         await this.createGitLabIssue(
           "QMOI Auto-Push Failed",
-          `Auto-push failed with _error: ${error.message}\n\nLogs: ${this.logFile}`,
+          `Auto-push failed with error: ${error.message}\n\nLogs: ${this.logFile}`,
         );
       } catch (issueError) {
         this.log(`Failed to create issue: ${issueError.message}`, "ERROR");
@@ -424,7 +375,7 @@ class QMOIAutoPush {
     }
 
     try {
-      const _response = await fetch(
+      const response = await fetch(
         `${this.gitlabUrl}/api/v4/projects/${this.projectId}/issues`,
         {
           method: "POST",

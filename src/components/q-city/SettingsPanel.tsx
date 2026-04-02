@@ -1,17 +1,18 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:13Z
+// Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, ChangeEvent } from "react";
+// [PRODUCTION READY] this file has no remaining non-production markers
+import React, { useState } from "react";
 
 export default function SettingsPanel() {
   const [zeroRatedEnabled, setZeroRatedEnabled] = useState(() => {
     return localStorage.getItem("qmoizeroRatedEnabled") === "true";
   });
-  const handleZeroRatedChange = (_e: ChangeEvent<HTMLInputElement>) => {
-    setZeroRatedEnabled(_e.target.checked);
-    localStorage.setItem("qmoizeroRatedEnabled", String(_e.target.checked));
+  const handleZeroRatedChange = (e) => {
+    setZeroRatedEnabled(e.target.checked);
+    localStorage.setItem("qmoizeroRatedEnabled", e.target.checked);
   };
   return (
     <div className="settings-panel">

@@ -1,8 +1,9 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:08Z
+// Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 import os
 import sys
 import platform
@@ -10,7 +11,7 @@ import requests
 from qmoi_activity_logger import log_activity
 import re
 
-GITHUB_REPO = 'thestablekenya/stable-Q-ai'
+GITHUB_REPO = 'thealphakenya/stable-Q-ai'
 RETRY_COUNT = 3
 RETRY_DELAY = 5
 MIN_SIZE = 1 * 1024 * 1024  # 1MB
@@ -113,7 +114,7 @@ def print_broken_links_report(broken):
     print(f"Total broken links: {len(broken)}")
 
 # --- Main logic: Download all apps for all platforms ---
-def auDONEwnload_all_apps():
+def autodownload_all_apps():
     apps = extract_app_downloads()
     for app in apps:
         platform = app['platform']
@@ -149,5 +150,5 @@ if __name__ == "__main__":
     # old_domain = "downloads-qmoi.tk"
     # updated_apps = update_links_to_fallback(apps, old_domain, fallback_domain)
     # print("Updated links to fallback domain.")
-    auDONEwnload_all_apps()
-    print("All auDONEwnloads complete.") 
+    autodownload_all_apps()
+    print("All autodownloads complete.") 

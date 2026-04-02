@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:54Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:19Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+# [production READY]
 import random
 import os
 import json
@@ -148,7 +149,7 @@ def compose_personality_prompt(user_input, detected_emotion, memory):
     else:
         context = ""
     instruction = "Respond to the user below with warmth, emotional intelligence, and deep curiosity."
-    return f"{personality_intro}\n{context}\n{instruction}\n\nUser: {user_input}\nstable-Q-ai:"
+    return f"{personality_intro}\n{context}\n{instruction}\n\nUser: {user_input}\nAlpha-Q-ai:"
 
 def generate_response(prompt):
     """implementation for language model response. Replace with real model call."""

@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:53Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:18Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Enhanced System Environment Setup
@@ -45,7 +46,7 @@ def create_env_file():
 
 # Hugging Face Configuration
 HUGGINGFACE_TOKEN=your_huggingface_token_here
-HUGGINGFACE_MODEL=stableqmoi/qmoi
+HUGGINGFACE_MODEL=alphaqmoi/qmoi
 
 # API Keys (Add your actual keys)
 OPENAI_API_KEY=your_openai_key_here

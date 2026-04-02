@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:56Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:20Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 import os
 from huggingface_hub import HfApi, HfFolder
 import subprocess
@@ -11,7 +12,7 @@ import smtplib
 from email.mime.text import MIMEText
 
 # Configuration
-REPO_ID = "stableqmoi/qmoi"
+REPO_ID = "alphaqmoi/qmoi"
 LOCAL_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 TOKEN = os.environ.get("HF_TOKEN")
 S3_BUCKET = os.environ.get("S3_BUCKET")

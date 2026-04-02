@@ -76,7 +76,7 @@ const handler = requireRole(["admin", "master"])(async (
     );
     if (!job) return _res.status(404).json({ _error: "Not found" });
     // For now, just log the command to be run
-    default.log(`[SCHEDULED RUN]`, job);
+    .log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
   _res.status(405).json({ _error: "Method not allowed" });

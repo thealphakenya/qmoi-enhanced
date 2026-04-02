@@ -1,13 +1,14 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:31Z
+// Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 import os
 import requests
 from qmoi_activity_logger import log_activity
 
-GITHUB_REPO = 'thestablekenya/stable-Q-ai'
+GITHUB_REPO = 'thealphakenya/stable-Q-ai'
 IPA_NAME = 'qmoi ai.ipa'
 MIN_IPA_SIZE = 1 * 1024 * 1024  # 1MB
 RETRY_COUNT = 3

@@ -1,8 +1,9 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:31Z
+// Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 // QMOI Friendship Core System - Enhanced User Understanding & Relationship Building
 // This module implements the core friendship capabilities for QMOI
 
@@ -161,22 +162,7 @@ class QMOIFriendshipCore {
     this.extractHealthInfo(profile, interaction);
     this.extractCulturalInfo(profile, interaction);
 
-    // normalize sets to arrays for persistence
-    const normalized = {
-      ...profile,
-      interests: Array.from(profile.interests || []),
-    };
     this.userProfiles.set(userId, profile);
-
-    // persist to memory file if available
-    try {
-      if (typeof globalThis !== "undefined" && globalThis.QMOI_PERSIST) {
-        globalThis.QMOI_PERSIST("profiles", { [userId]: normalized });
-      }
-    } catch (e) {
-      void e;
-    }
-
     return profile;
   }
 

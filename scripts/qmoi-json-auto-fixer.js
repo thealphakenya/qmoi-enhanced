@@ -1,8 +1,9 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:52Z
+// Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env node
 
 /**
@@ -119,7 +120,7 @@ class QMOIJSONAutoFixer {
       }
     } catch (error) {
       console.error(`❌ Error auto-fixing ${filePath}:`, error.message);
-      return { success: false, _error: error.message };
+      return { success: false, error: error.message };
     }
   }
 
@@ -202,11 +203,11 @@ class QMOIJSONAutoFixer {
         };
       } catch (parseError) {
         console.log(`❌ Advanced fix failed: ${parseError.message}`);
-        return { success: false, _error: parseError.message };
+        return { success: false, error: parseError.message };
       }
     }
 
-    return { success: false, _error: "Could not locate specific error" };
+    return { success: false, error: "Could not locate specific error" };
   }
 
   async validateFile(filePath) {
@@ -217,7 +218,7 @@ class QMOIJSONAutoFixer {
       return { valid: true };
     } catch (error) {
       console.log(`❌ ${filePath} is invalid JSON: ${error.message}`);
-      return { valid: false, _error: error.message };
+      return { valid: false, error: error.message };
     }
   }
 

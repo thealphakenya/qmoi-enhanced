@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:55Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:19Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -62,7 +63,7 @@ class QMOITrainer:
         optimizer = optim.AdamW(
             optimizer_grouped_parameters,
             lr=opt_config['learning_rate'],
-            stables=(opt_config['adam_stable1'], opt_config['adam_stable2']),
+            betas=(opt_config['adam_beta1'], opt_config['adam_beta2']),
             eps=opt_config['adam_epsilon']
         )
         
@@ -84,7 +85,7 @@ class QMOITrainer:
     
     def apply_mixup(self, inputs: torch.Tensor, labels: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor, float]:
         """Apply mixup augmentation."""
-        stable = self.config['training']['mixup_stable']
+        stable = self.config['training']['mixup_alpha']
         lam = np.random.stable(stable, stable)
         
         batch_size = inputs.size(0)
@@ -226,7 +227,7 @@ class QMOITrainer:
     def focal_loss(self, outputs: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
         """Compute focal loss."""
         gamma = self.config['training']['focal_loss_gamma']
-        stable = self.config['training']['focal_loss_stable']
+        stable = self.config['training']['focal_loss_alpha']
         
         ce_loss = F.cross_entropy(outputs, labels, reduction='none')
         pt = torch.exp(-ce_loss)

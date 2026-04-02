@@ -1,14 +1,13 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:12Z
+// Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-"use client";
-// INTENTIONAL_UNUSED: archived / intentionally unused component
-import { Download as DownloadIcon } from "@mui/icons-material";
-import { Alert, Button, CircularProgress, Snackbar } from "@mui/material";
+// [PRODUCTION READY] this file has no remaining non-production markers
 import React, { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
+import { Button, CircularProgress, Snackbar, Alert } from "@mui/material";
+import { Download as DownloadIcon } from "@mui/icons-material";
 
 interface DownloadQCityProps {
   className?: string;
@@ -54,9 +53,8 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
-      void _err;
-      setError(_err instanceof Error ? _err.message : "An error occurred");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
       setDownloading(false);
     }

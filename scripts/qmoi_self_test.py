@@ -1,13 +1,13 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:55Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:19Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-
+# [production READY]
 """
 QMOI Self-Test Runner
-lives manual errors, runs auto-fix, and verifies recovery with detailed reporting.
+Simulates manual errors, runs auto-fix, and verifies recovery with detailed reporting.
 """
 
 import os
@@ -44,7 +44,7 @@ class QMOISelfTest:
             "tests_run": 0,
             "tests_passed": 0,
             "tests_failed": 0,
-            "error_live": {},
+            "error_simulation": {},
             "recovery_verification": {},
             "performance_metrics": {},
             "details": []
@@ -89,7 +89,7 @@ class QMOISelfTest:
             logging.error(f"Error restoring backup: {e}")
             return False
     
-    def live_manual_errors(self) -> Dict[str, Any]:
+    def simulate_manual_errors(self) -> Dict[str, Any]:
         """execute various types of manual errors"""
         errors_created = {}
         
@@ -100,8 +100,8 @@ import React from 'react';
 
 const BrokenComponent: React.FC = () => {
   const undefinedVar = undefined;
-  console.error('This is a lived error');
-  throw new Error('lived error for testing');
+  console.error('This is a simulated error');
+  throw new Error('Simulated error for testing');
   
   return (
     <div>
@@ -125,7 +125,7 @@ export default BrokenComponent;
 def broken_function():
     undefined_variable = None
     print(undefined_variable.attribute)  # This will cause an error
-    raise Exception("lived Python error")
+    raise Exception("Simulated Python error")
 
 if __name__ == "__main__":
     broken_function()
@@ -167,7 +167,7 @@ This document contains false claims that should be detected and fixed.
                     json.dump(package_data, f, indent=2)
                 errors_created["broken_package"] = str(original_package)
             
-            logging.info(f"Created {len(errors_created)} lived errors")
+            logging.info(f"Created {len(errors_created)} simulated errors")
             return errors_created
             
         except Exception as e:
@@ -237,7 +237,7 @@ This document contains false claims that should be detected and fixed.
                 "tests_failed": self.test_results["tests_failed"],
                 "success_rate": (self.test_results["tests_passed"] / max(self.test_results["tests_run"], 1)) * 100
             },
-            "error_live": self.test_results["error_live"],
+            "error_simulation": self.test_results["error_simulation"],
             "recovery_verification": self.test_results["recovery_verification"],
             "performance_metrics": self.test_results["performance_metrics"],
             "details": self.test_results["details"]
@@ -263,8 +263,8 @@ This document contains false claims that should be detected and fixed.
         try:
             if not self.create_test_backup():
                 raise Exception("Failed to create test backup")
-            errors_created = self.live_manual_errors()
-            self.test_results["error_live"] = errors_created
+            errors_created = self.simulate_manual_errors()
+            self.test_results["error_simulation"] = errors_created
             self.test_results["tests_run"] += 1
             
             auto_fix_result = self.run_auto_fix()

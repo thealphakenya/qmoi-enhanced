@@ -20,8 +20,8 @@ const handler = requireRole(["admin", "master"])(async (
     return _res.status(405).json({ _error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
-    default.readdirSync(PLUGIN_DIR)
-    default.filter((f) => f.endsWith(".js") || f.endsWith(".ts"));
+    .readdirSync(PLUGIN_DIR)
+    .filter((f) => f.endsWith(".js") || f.endsWith(".ts"));
   _res.status(200).json({ plugins: files });
 });
 

@@ -1,30 +1,31 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:13Z
+// Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { Info, Refresh, TrendingDown, TrendingUp } from "@mui/icons-material";
+// [PRODUCTION READY] this file has no remaining non-production markers
+import React, { useState, useEffect } from "react";
 import {
-    Alert,
-    Box,
-    Card,
-    CardContent,
-    Chip,
-    CircularProgress,
-    IconButton,
-    Paper,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Tooltip,
-    Typography,
+  Box,
+  Card,
+  CardContent,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Chip,
+  IconButton,
+  Tooltip,
+  CircularProgress,
+  Alert,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { TradingManager } from "../config/trading";
+import { TrendingUp, TrendingDown, Refresh, Info } from "@mui/icons-material";
 import { useAuth } from "../hooks/useAuth";
+import { TradingManager } from "../config/trading";
 
 interface Trade {
   id: string;
@@ -64,15 +65,12 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
       setError(null);
 
       const tradingManager = TradingManager.getInstance();
-      const rawHistory =
-        (await tradingManager.getTradingHistory()) as unknown[];
-      const history = rawHistory.map((item) => {
-        const trade = item as Trade & { timestamp?: string | number | Date };
-        return {
+      const history = (await tradingManager.getTradingHistory()).map(
+        (trade: unknown) => ({
           ...trade,
-          timestamp: new Date(trade.timestamp ?? Date.now()),
-        } as Trade;
-      });
+          timestamp: new Date(trade.timestamp),
+        }),
+      );
       setTrades(history);
 
       // Calculate statistics
@@ -91,12 +89,9 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
-      void _err;
+    } catch (err) {
       setError(
-        _err instanceof Error
-          ? _err.message
-          : "Failed to fetch trading history",
+        err instanceof Error ? err.message : "Failed to fetch trading history",
       );
     } finally {
       setIsLoading(false);

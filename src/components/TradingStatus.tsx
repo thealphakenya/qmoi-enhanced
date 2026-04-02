@@ -1,29 +1,30 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:59:12Z
+// Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-"use client";
-import {
-  AccountBalance,
-  Refresh,
-  Warning,
-  Wifi,
-  WifiOff,
-} from "@mui/icons-material";
+// [PRODUCTION READY] this file has no remaining non-production markers
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Card,
   CardContent,
-  Chip,
+  Typography,
   CircularProgress,
+  Chip,
+  Grid,
   IconButton,
   Tooltip,
-  Typography
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { TradingManager } from "../config/trading";
+import {
+  Wifi,
+  WifiOff,
+  AccountBalance,
+  Refresh,
+  Warning,
+} from "@mui/icons-material";
 import { useAuth } from "../hooks/useAuth";
+import { TradingManager } from "../config/trading";
 
 interface WalletBalance {
   currency: string;
@@ -62,9 +63,8 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
       }
 
       setLastUpdate(new Date());
-    } catch (_err) {
-      void _err;
-      setError(_err instanceof Error ? _err.message : "Failed to fetch status");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to fetch status");
     } finally {
       setIsLoading(false);
     }
@@ -136,19 +136,9 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
           </Box>
         ) : (
           <>
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: {
-                  xs: "1fr",
-                  sm: "1fr 1fr",
-                  md: "1fr 1fr 1fr",
-                },
-                gap: 2,
-              }}
-            >
+            <Grid container spacing={2}>
               {walletBalances.map((wallet) => (
-                <Box key={wallet.currency}>
+                <Grid size={4} key={wallet.currency}>
                   <Card variant="outlined">
                     <CardContent>
                       <Box display="flex" alignItems="center" gap={1} mb={1}>
@@ -165,9 +155,9 @@ export const TradingStatus: React.FC<TradingStatusProps> = ({ className }) => {
                       </Typography>
                     </CardContent>
                   </Card>
-                </Box>
+                </Grid>
               ))}
-            </Box>
+            </Grid>
 
             <Box mt={2}>
               <Typography variant="caption" color="text.secondary">

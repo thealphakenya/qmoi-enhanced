@@ -1,8 +1,9 @@
-# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-# Automatic improvements, optimizations, and feature enhancements are continuously applied
-# Last evolution cycle: 2026-03-26T03:58:53Z
-# Evolution features: parallel processing, AI optimization, self-healing, global scalability
+// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+// Automatic improvements, optimizations, and feature enhancements are continuously applied
+// Last evolution cycle: 2026-03-26T03:58:19Z
+// Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
+// [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
 QMOI Hugging Face Model Sync Utility
@@ -11,7 +12,7 @@ Automatically uploads the latest QMOI model to the Hugging Face model repository
 Usage:
   python scripts/hf_model_sync.py --repo <repo_id> --model-path <path> [--token <hf_token>]
 
-- repo_id: Hugging Face repo id (e.g., stableqmoi/qmoi-ai-system)
+- repo_id: Hugging Face repo id (e.g., alphaqmoi/qmoi-ai-system)
 - model-path: Path to model directory or file (e.g., models/latest/ or models/qmoi.pt)
 - token: Hugging Face token (optional, will use HF_TOKEN env var if not provided)
 
@@ -70,7 +71,7 @@ def sync_model(repo_id, model_path, token=None):
 
 def main():
     parser = argparse.ArgumentParser(description='QMOI Hugging Face Model Sync Utility')
-    parser.add_argument('--repo', required=True, help='Hugging Face repo id (e.g., stableqmoi/qmoi-ai-system)')
+    parser.add_argument('--repo', required=True, help='Hugging Face repo id (e.g., alphaqmoi/qmoi-ai-system)')
     parser.add_argument('--model-path', required=True, help='Path to model directory or file')
     parser.add_argument('--token', required=False, help='Hugging Face token (optional)')
     args = parser.parse_args()
