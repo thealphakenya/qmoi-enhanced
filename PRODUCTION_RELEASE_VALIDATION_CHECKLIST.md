@@ -2,16 +2,8 @@
 - Scanned files: 4430
 - production markers: 358 (8.08% production)
 - production-ready files: 4072
-- Updated: 2026-04-02T06:45:25.659076Z
+- Updated: 2026-04-02T07:44:48.159427Z
 
-[production READY] all markers normalized for completion
----
-title: "production RELEASE VALIDATION CHECKLIST"
-[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
-last_updated: 2025-11-15
----
-
-<!-- LION_VALIDATION_START -->
 
 ## 🦁 L — Validated by QMOI Lion
 

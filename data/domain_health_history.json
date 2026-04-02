@@ -1,7 +1,7 @@
 {
   "qvillage.com": {
     "domain": "qvillage.com",
-    "timestamp": "2026-04-02 06:56:38.153778",
+    "timestamp": "2026-04-02 07:47:31.529621",
     "dns_resolved": true,
     "dns_ips": [
       "76.223.54.146",
@@ -10,7 +10,7 @@
     "whois_valid": true,
     "http_reachable": true,
     "http_status": 200,
-    "response_time": 0.005252838134765625,
+    "response_time": 0.005221128463745117,
     "ssl_valid": true,
     "ssl_expiry": "2026-07-15 23:24:36",
     "content_legitimate": false,
@@ -33,7 +33,7 @@
   },
   "qcloud.ai": {
     "domain": "qcloud.ai",
-    "timestamp": "2026-04-02 06:56:39.902387",
+    "timestamp": "2026-04-02 07:47:32.786326",
     "dns_resolved": true,
     "dns_ips": [
       "76.223.54.146",
@@ -42,7 +42,7 @@
     "whois_valid": true,
     "http_reachable": true,
     "http_status": 200,
-    "response_time": 0.006859779357910156,
+    "response_time": 0.006058931350708008,
     "ssl_valid": true,
     "ssl_expiry": "2026-05-16 10:44:25",
     "content_legitimate": false,
@@ -65,7 +65,7 @@
   },
   "stableq.ai": {
     "domain": "stableq.ai",
-    "timestamp": "2026-04-02 06:56:41.292167",
+    "timestamp": "2026-04-02 07:47:34.070860",
     "dns_resolved": false,
     "dns_ips": [],
     "whois_valid": true,
@@ -94,7 +94,7 @@
   },
   "qglobal.org": {
     "domain": "qglobal.org",
-    "timestamp": "2026-04-02 06:56:42.993253",
+    "timestamp": "2026-04-02 07:47:35.672775",
     "dns_resolved": true,
     "dns_ips": [
       "76.223.54.146",
@@ -103,7 +103,7 @@
     "whois_valid": true,
     "http_reachable": true,
     "http_status": 200,
-    "response_time": 0.006136178970336914,
+    "response_time": 0.0051844120025634766,
     "ssl_valid": true,
     "ssl_expiry": "2026-06-03 22:14:38",
     "content_legitimate": false,
@@ -126,7 +126,7 @@
   },
   "quantum.qmoi.com": {
     "domain": "quantum.qmoi.com",
-    "timestamp": "2026-04-02 06:56:44.269078",
+    "timestamp": "2026-04-02 07:47:36.903206",
     "dns_resolved": true,
     "dns_ips": [
       "64.190.63.222"
@@ -134,7 +134,7 @@
     "whois_valid": false,
     "http_reachable": true,
     "http_status": 200,
-    "response_time": 0.13686704635620117,
+    "response_time": 0.1366724967956543,
     "ssl_valid": true,
     "ssl_expiry": "2026-05-24 23:59:59",
     "content_legitimate": false,
@@ -157,7 +157,7 @@
   },
   "qmoi.com": {
     "domain": "qmoi.com",
-    "timestamp": "2026-04-02 06:56:47.232272",
+    "timestamp": "2026-04-02 07:47:39.894410",
     "dns_resolved": true,
     "dns_ips": [
       "64.190.63.222"
@@ -165,7 +165,7 @@
     "whois_valid": true,
     "http_reachable": true,
     "http_status": 200,
-    "response_time": 0.1362297534942627,
+    "response_time": 0.13596010208129883,
     "ssl_valid": true,
     "ssl_expiry": "2026-06-23 23:59:59",
     "content_legitimate": false,

@@ -138,7 +138,7 @@ class MasterExecutionOrchestrator:
             command=['python3', 'scripts/domain_health_check.py'],
             description="Verify all primary domains and regional access",
             critical=False,
-            timeout=60
+            timeout=900
         )
         
         # Phase 7: Build Verification
@@ -156,7 +156,7 @@ class MasterExecutionOrchestrator:
             command=['python3', 'scripts/ensure_production_readiness.py', '--final'],
             description="Compile all findings into final production report",
             critical=True,
-            timeout=120
+            timeout=900
         )
 
     def run_orchestra(self):

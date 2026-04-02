@@ -1,262 +1,209 @@
-# API Endpoints
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
 
-- /api/account-automation -> app/api/account-automation/route.ts
-- /api/accountability -> app/api/accountability/route.ts
-- /api/accountability -> src/app/api/accountability/route.ts
-- /api/admin/alerts -> app/api/admin/alerts/route.ts
-- /api/admin/audit-logs -> app/api/admin/audit-logs/route.ts
-- /api/admin/autofix/automation -> app/api/admin/autofix/automation/route.ts
-- /api/admin/autofix/autoscan -> app/api/admin/autofix/autoscan/route.ts
-- /api/admin/autofix/background-automation -> app/api/admin/autofix/background-automation/route.ts
-- /api/admin/autofix/bootstrap -> app/api/admin/autofix/bootstrap/route.ts
-- /api/admin/autofix/config -> app/api/admin/autofix/config/route.ts
-- /api/admin/autofix/errors -> app/api/admin/autofix/errors/route.ts
-- /api/admin/autofix/fix-all -> app/api/admin/autofix/fix-all/route.ts
-- /api/admin/autofix/fix/{errorId} -> app/api/admin/autofix/fix/[errorId]/route.ts
-- /api/admin/autofix/health -> app/api/admin/autofix/health/route.ts
-- /api/admin/autofix/healthmonitor -> app/api/admin/autofix/healthmonitor/route.ts
-- /api/admin/autofix/scan -> app/api/admin/autofix/scan/route.ts
-- /api/admin/autofix/stream -> app/api/admin/autofix/stream/route.ts
-- /api/admin/dashboard -> app/api/admin/dashboard/route.ts
-- /api/admin/financial/global -> app/api/admin/financial/global/route.ts
-- /api/admin/financial/summary -> app/api/admin/financial/summary/route.ts
-- /api/admin/master/auth -> app/api/admin/master/auth/route.ts
-- /api/admin/master/logout -> app/api/admin/master/logout/route.ts
-- /api/admin/metrics -> src/app/api/admin/metrics/route.ts
-- /api/admin/monitoring -> app/api/admin/monitoring/route.ts
-- /api/admin/rate-limits -> app/api/admin/rate-limits/route.ts
-- /api/admin/tracing -> src/app/api/admin/tracing/route.ts
-- /api/admin/users -> app/api/admin/users/route.ts
-- /api/ai -> app/api/ai/route.ts
-- /api/ai-anomaly-service -> app/api/ai-anomaly-service/route.ts
-- /api/ai-health -> app/api/ai-health/route.ts
-- /api/ai-self-diagnostics -> app/api/ai-self-diagnostics/route.ts
-- /api/ai/scan -> app/api/ai/scan/route.ts
-- /api/alerts/webhook -> src/app/api/alerts/webhook/route.ts
-- /api/analytics/transactions -> app/api/analytics/transactions/route.ts
-- /api/analytics/wallets -> app/api/analytics/wallets/route.ts
-- /api/auth/biometric/capture -> app/api/auth/biometric/capture/route.ts
-- /api/auth/login -> src/app/api/auth/login/route.ts
-- /api/auth/login -> app/api/auth/login/route.ts
-- /api/auth/oauth/{provider} -> src/app/api/auth/oauth/[provider]/route.ts
-- /api/auth/profile -> app/api/auth/profile/route.ts
-- /api/auth/refresh -> app/api/auth/refresh/route.ts
-- /api/auth/register -> app/api/auth/register/route.ts
-- /api/auth/settings -> app/api/auth/settings/route.ts
-- /api/auth/signin -> app/api/auth/signin/route.ts
-- /api/auth/signup -> app/api/auth/signup/route.ts
-- /api/auth/verify -> app/api/auth/verify/route.ts
-- /api/auth/verify-email -> app/api/auth/verify-email/route.ts
-- /api/auth/webauthn/auth/finish -> src/app/api/auth/webauthn/auth/finish/route.ts
-- /api/auth/webauthn/auth/options -> src/app/api/auth/webauthn/auth/options/route.ts
-- /api/auth/webauthn/authenticate -> app/api/auth/webauthn/authenticate/route.ts
-- /api/auth/webauthn/register -> app/api/auth/webauthn/register/route.ts
-- /api/auth/webauthn/register/finish -> src/app/api/auth/webauthn/register/finish/route.ts
-- /api/auth/webauthn/register/options -> src/app/api/auth/webauthn/register/options/route.ts
-- /api/automation/status -> app/api/automation/status/route.ts
-- /api/automation/trigger -> src/app/api/automation/trigger/route.ts
-- /api/avatars/{userId} -> src/app/api/avatars/[userId]/route.ts
-- /api/biometric/templates -> app/api/biometric/templates/route.ts
-- /api/biometric/verify -> app/api/biometric/verify/route.ts
-- /api/cashon -> app/api/cashon/route.ts
-- /api/cashon/balance -> app/api/cashon/balance/route.ts
-- /api/cashon/deposit -> app/api/cashon/deposit/route.ts
-- /api/cashon/signals -> app/api/cashon/signals/route.ts
-- /api/cashon/start-trading -> app/api/cashon/start-trading/route.ts
-- /api/cashon/stop-trading -> app/api/cashon/stop-trading/route.ts
-- /api/cashon/trading-status -> app/api/cashon/trading-status/route.ts
-- /api/chat/enhanced -> app/api/chat/enhanced/route.ts
-- /api/consciousness -> app/api/consciousness/route.ts
-- /api/consciousness/health -> src/app/api/consciousness/health/route.ts
-- /api/datasets -> app/api/datasets/route.ts
-- /api/datasets/settings -> app/api/datasets/settings/route.ts
-- /api/datasets/{id} -> app/api/datasets/[id]/route.ts
-- /api/debug/users -> app/api/debug/users/route.ts
-- /api/deploy -> app/api/deploy/route.ts
-- /api/deploy/auto-redeploy -> app/api/deploy/auto-redeploy/route.ts
-- /api/deployment-status -> app/api/deployment-status/route.ts
-- /api/device-fingerprint -> app/api/device-fingerprint/route.ts
-- /api/document-backup -> app/api/document-backup/route.ts
-- /api/domains -> app/api/domains/route.ts
-- /api/domains/health -> app/api/domains/health/route.ts
-- /api/earning -> app/api/earning/route.ts
-- /api/emails -> app/api/emails/route.ts
-- /api/emergency/config -> app/api/emergency/config/route.ts
-- /api/emergency/dispatch -> app/api/emergency/dispatch/route.ts
-- /api/emergency/email -> app/api/emergency/email/route.ts
-- /api/emergency/lockdown -> app/api/emergency/lockdown/route.ts
-- /api/emergency/sms -> app/api/emergency/sms/route.ts
-- /api/emergency/wipe -> app/api/emergency/wipe/route.ts
-- /api/employment -> app/api/employment/route.ts
-- /api/employment/megavault -> app/api/employment/megavault/route.ts
-- /api/employment/payment -> app/api/employment/payment/route.ts
-- /api/employment/revenue -> app/api/employment/revenue/route.ts
-- /api/enhanced-email/analytics -> app/api/enhanced-email/analytics/route.ts
-- /api/enhanced-email/realtime -> app/api/enhanced-email/realtime/route.ts
-- /api/enhanced-email/rules -> app/api/enhanced-email/rules/route.ts
-- /api/enhanced-email/send -> app/api/enhanced-email/send/route.ts
-- /api/enhanced-email/templates -> app/api/enhanced-email/templates/route.ts
-- /api/enhanced-link-domain -> app/api/enhanced-link-domain/route.ts
-- /api/evolution/autoclone-evolution -> app/api/evolution/autoclone-evolution/route.ts
-- /api/evolution/platform-evolution -> app/api/evolution/platform-evolution/route.ts
-- /api/files -> app/api/files/route.ts
-- /api/financial/audit -> app/api/financial/audit/route.ts
-- /api/financial/balances -> app/api/financial/balances/route.ts
-- /api/financial/transactions -> app/api/financial/transactions/route.ts
-- /api/financial/verify -> app/api/financial/verify/route.ts
-- /api/git/branch -> app/api/git/branch/route.ts
-- /api/git/commit -> app/api/git/commit/route.ts
-- /api/git/pr -> app/api/git/pr/route.ts
-- /api/git/push -> app/api/git/push/route.ts
-- /api/git/remote -> app/api/git/remote/route.ts
-- /api/git/status -> app/api/git/status/route.ts
-- /api/global -> src/app/api/global/route.ts
-- /api/global-links -> app/api/global-links/route.ts
-- /api/global-news -> app/api/global-news/route.ts
-- /api/health -> app/api/health/route.ts
-- /api/health/data -> app/api/health/data/route.ts
-- /api/links -> app/api/links/route.ts
-- /api/links/validate -> app/api/links/validate/route.ts
-- /api/links/{id}/zero-rated -> app/api/links/[id]/zero-rated/route.ts
-- /api/master/domains -> app/api/master/domains/route.ts
-- /api/master/domains/approve/{domain} -> app/api/master/domains/approve/[domain]/route.ts
-- /api/master/domains/emergency-takeover -> app/api/master/domains/emergency-takeover/route.ts
-- /api/master/domains/force-refresh -> app/api/master/domains/force-refresh/route.ts
-- /api/master/domains/remove/{domain} -> app/api/master/domains/remove/[domain]/route.ts
-- /api/master/domains/status -> app/api/master/domains/status/route.ts
-- /api/master/links -> app/api/master/links/route.ts
-- /api/master/sponsored/add -> app/api/master/sponsored/add/route.ts
-- /api/master/sponsored/analytics -> app/api/master/sponsored/analytics/route.ts
-- /api/master/sponsored/list -> app/api/master/sponsored/list/route.ts
-- /api/master/sponsored/remove/{userId} -> app/api/master/sponsored/remove/[userId]/route.ts
-- /api/master/sponsored/sync -> app/api/master/sponsored/sync/route.ts
-- /api/master/tracks -> app/api/master/tracks/route.ts
-- /api/media/generate -> app/api/media/generate/route.ts
-- /api/media/status -> app/api/media/status/route.ts
-- /api/metrics -> app/api/metrics/route.ts
-- /api/monitor/status -> app/api/monitor/status/route.ts
-- /api/mpesa/callback -> app/api/mpesa/callback/route.ts
-- /api/notifications/test -> app/api/notifications/test/route.ts
-- /api/payments/initiate -> app/api/payments/initiate/route.ts
-- /api/platforms -> app/api/platforms/route.ts
-- /api/preview/analyze -> src/app/api/preview/analyze/route.ts
-- /api/preview/execute-tool -> src/app/api/preview/execute-tool/route.ts
-- /api/qapikey -> app/api/qapikey/route.ts
-- /api/qcity/audit-log -> app/api/qcity/audit-log/route.ts
-- /api/qcity/remote-command -> app/api/qcity/remote-command/route.ts
-- /api/qcity/selfheal-npm -> app/api/qcity/selfheal-npm/route.ts
-- /api/qcity/status -> app/api/qcity/status/route.ts
-- /api/qi-spaces -> app/api/qi-spaces/route.ts
-- /api/qi-trading -> app/api/qi-trading/route.ts
-- /api/qmoi-database -> app/api/qmoi-database/route.ts
-- /api/qmoi-earning-enhanced -> app/api/qmoi-earning-enhanced/route.ts
-- /api/qmoi-gitlab/deployments -> app/api/qmoi-gitlab/deployments/route.ts
-- /api/qmoi-gitlab/errors -> app/api/qmoi-gitlab/errors/route.ts
-- /api/qmoi-gitlab/jobs -> app/api/qmoi-gitlab/jobs/route.ts
-- /api/qmoi-gitlab/pipelines -> app/api/qmoi-gitlab/pipelines/route.ts
-- /api/qmoi-gitlab/trigger -> app/api/qmoi-gitlab/trigger/route.ts
-- /api/qmoi-model -> app/api/qmoi-model/route.ts
-- /api/qmoi-tracks -> app/api/qmoi-tracks/route.ts
-- /api/qmoi/advanced-analysis -> app/api/qmoi/advanced-analysis/route.ts
-- /api/qmoi/audio -> app/api/qmoi/audio/route.ts
-- /api/qmoi/auto-fix/download-report -> app/api/qmoi/auto-fix/download-report/route.ts
-- /api/qmoi/auto-fix/github-status -> app/api/qmoi/auto-fix/github-status/route.ts
-- /api/qmoi/auto-fix/start -> app/api/qmoi/auto-fix/start/route.ts
-- /api/qmoi/auto-fix/status -> app/api/qmoi/auto-fix/status/route.ts
-- /api/qmoi/auto-fix/stop -> app/api/qmoi/auto-fix/stop/route.ts
-- /api/qmoi/auto-setup -> app/api/qmoi/auto-setup/route.ts
-- /api/qmoi/autodev/generate-feature -> app/api/qmoi/autodev/generate-feature/route.ts
-- /api/qmoi/autodev/generate-feature -> src/app/api/qmoi/autodev/generate-feature/route.ts
-- /api/qmoi/autodev/research -> app/api/qmoi/autodev/research/route.ts
-- /api/qmoi/autodev/research -> src/app/api/qmoi/autodev/research/route.ts
-- /api/qmoi/autodev/state -> src/app/api/qmoi/autodev/state/route.ts
-- /api/qmoi/autodev/suggestions/features -> src/app/api/qmoi/autodev/suggestions/features/route.ts
-- /api/qmoi/autodev/suggestions/improvements -> src/app/api/qmoi/autodev/suggestions/improvements/route.ts
-- /api/qmoi/autodev/suggestions/optimizations -> src/app/api/qmoi/autodev/suggestions/optimizations/route.ts
-- /api/qmoi/autodev/toggle -> src/app/api/qmoi/autodev/toggle/route.ts
-- /api/qmoi/autodev/toggle -> app/api/qmoi/autodev/toggle/route.ts
-- /api/qmoi/avatars -> app/api/qmoi/avatars/route.ts
-- /api/qmoi/backup -> app/api/qmoi/backup/route.ts
-- /api/qmoi/chat -> app/api/qmoi/chat/route.ts
-- /api/qmoi/chat-enhanced -> app/api/qmoi/chat-enhanced/route.ts
-- /api/qmoi/evolution/compare-models -> src/app/api/qmoi/evolution/compare-models/route.ts
-- /api/qmoi/evolution/replace-model -> src/app/api/qmoi/evolution/replace-model/route.ts
-- /api/qmoi/evolution/track-evolution -> src/app/api/qmoi/evolution/track-evolution/route.ts
-- /api/qmoi/execute -> src/app/api/qmoi/execute/route.ts
-- /api/qmoi/files/{id} -> app/api/qmoi/files/[id]/route.ts
-- /api/qmoi/friendship -> app/api/qmoi/friendship/route.ts
-- /api/qmoi/health -> src/app/api/qmoi/health/route.ts
-- /api/qmoi/health/stream -> src/app/api/qmoi/health/stream/route.ts
-- /api/qmoi/language -> app/api/qmoi/language/route.ts
-- /api/qmoi/master-mode -> app/api/qmoi/master-mode/route.ts
-- /api/qmoi/memory -> app/api/qmoi/memory/route.ts
-- /api/qmoi/own-device-logs -> app/api/qmoi/own-device-logs/route.ts
-- /api/qmoi/own-device-logs/export -> app/api/qmoi/own-device-logs/export/route.ts
-- /api/qmoi/profile-questions -> app/api/qmoi/profile-questions/route.ts
-- /api/qmoi/projects -> app/api/qmoi/projects/route.ts
-- /api/qmoi/research -> app/api/qmoi/research/route.ts
-- /api/qmoi/revenue -> app/api/qmoi/revenue/route.ts
-- /api/qmoi/revenue-dashboard -> app/api/qmoi/revenue-dashboard/route.ts
-- /api/qmoi/revenue/reset -> app/api/qmoi/revenue/reset/route.ts
-- /api/qmoi/revenue/start -> app/api/qmoi/revenue/start/route.ts
-- /api/qmoi/revenue/status -> app/api/qmoi/revenue/status/route.ts
-- /api/qmoi/revenue/stop -> app/api/qmoi/revenue/stop/route.ts
-- /api/qmoi/revenue/target -> app/api/qmoi/revenue/target/route.ts
-- /api/qmoi/revenue/transactions -> app/api/qmoi/revenue/transactions/route.ts
-- /api/qmoi/revenue/transfer -> app/api/qmoi/revenue/transfer/route.ts
-- /api/qmoi/self-work/code-review -> src/app/api/qmoi/self-work/code-review/route.ts
-- /api/qmoi/self-work/debug -> src/app/api/qmoi/self-work/debug/route.ts
-- /api/qmoi/self-work/run-tests -> src/app/api/qmoi/self-work/run-tests/route.ts
-- /api/qmoi/session -> app/api/qmoi/session/route.ts
-- /api/qmoi/suggestions -> src/app/api/qmoi/suggestions/route.ts
-- /api/qmoi/transcribe -> app/api/qmoi/transcribe/route.ts
-- /api/qmoi/upload -> app/api/qmoi/upload/route.ts
-- /api/qmoi/user -> app/api/qmoi/user/route.ts
-- /api/qmoi/visuals -> app/api/qmoi/visuals/route.ts
-- /api/qmoi/voice -> app/api/qmoi/voice/route.ts
-- /api/qmoi/voice-enroll -> app/api/qmoi/voice-enroll/route.ts
-- /api/qmoi/voice-preview -> app/api/qmoi/voice-preview/route.ts
-- /api/qmoi/voice-profiles -> app/api/qmoi/voice-profiles/route.ts
-- /api/qnews -> app/api/qnews/route.ts
-- /api/qradio -> app/api/qradio/route.ts
-- /api/qstore -> app/api/qstore/route.ts
-- /api/qvillage -> app/api/qvillage/route.ts
-- /api/qvillage/inference -> app/api/qvillage/inference/route.ts
-- /api/qvillage/model-card -> app/api/qvillage/model-card/route.ts
-- /api/qvillage/models -> app/api/qvillage/models/route.ts
-- /api/qvillage/spaces -> app/api/qvillage/spaces/route.ts
-- /api/qvs -> src/app/api/qvs/route.ts
-- /api/realtime/stream -> src/app/api/realtime/stream/route.ts
-- /api/social-automation -> app/api/social-automation/route.ts
-- /api/ssh/list -> app/api/ssh/list/route.ts
-- /api/ssh/read -> app/api/ssh/read/route.ts
-- /api/ssh/write -> app/api/ssh/write/route.ts
-- /api/subscriptions -> src/app/api/subscriptions/route.ts
-- /api/tracks -> app/api/tracks/route.ts
-- /api/tracks/settings -> app/api/tracks/settings/route.ts
-- /api/tracks/stream -> app/api/tracks/stream/route.ts
-- /api/tracks/{id} -> app/api/tracks/[id]/route.ts
-- /api/trading/status -> app/api/trading/status/route.ts
-- /api/transactions -> app/api/transactions/route.ts
-- /api/tts/generate -> app/api/tts/generate/route.ts
-- /api/tts/stream -> app/api/tts/stream/route.ts
-- /api/users/profile -> app/api/users/profile/route.ts
-- /api/v1/health -> src/app/api/v1/health/route.ts
-- /api/v2/health -> src/app/api/v2/health/route.ts
-- /api/version -> app/api/version/route.ts
-- /api/voice/enroll -> app/api/voice/enroll/route.ts
-- /api/voice/verify -> app/api/voice/verify/route.ts
-- /api/wallets -> app/api/wallets/route.ts
-- /api/wallets/{walletId} -> app/api/wallets/[walletId]/route.ts
-- /api/webauthn/authenticate -> app/api/webauthn/authenticate/route.ts
-- /api/webauthn/register -> app/api/webauthn/register/route.ts
-- /api/webhooks/payments -> app/api/webhooks/payments/route.ts
-- /api/webhooks/qvillage -> app/api/webhooks/qvillage/route.ts
-- /api/whatsapp-bot -> app/api/whatsapp-bot/route.ts
-- /api/whatsapp-business -> app/api/whatsapp-business/route.ts
-- /api/whatsapp/audit -> app/api/whatsapp/audit/route.ts
-- /api/whatsapp/verify -> app/api/whatsapp/verify/route.ts
-- /api/wifi -> app/api/wifi/route.ts
-- /api/wifi-security -> app/api/wifi-security/route.ts
-- /api/wifi/scan -> app/api/wifi/scan/route.ts
-- /api/youtube/download -> app/api/youtube/download/route.ts
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2026-04-02T08:07:14.590610Z
+- note: Auto-updated by `scripts/comprehensive_docs_update.py`
+<!-- LION_VALIDATION_END -->
+
+# QMOI System Endpoints
+
+**Last Updated**: 2026-04-02 (AUTO-GENERATED)
+**Total Endpoints**: 260
+**Last Scan**: 2026-04-02T08:07:14.590610Z
+
+## Overview
+
+This document catalogs all available endpoints in the QMOI system.
+
+## Endpoint Table
+
+| # | Method | Endpoint | File | Status |
+|---|--------|----------|------|--------|
+| 1 | GET | `/api/account-automation` | ['api', 'account-automation', 'route.ts'] | ✅ |
+| 2 | GET | `/api/accountability` | ['api', 'accountability', 'route.ts'] | ✅ |
+| 3 | GET | `/api/accountability` | ['api', 'accountability', 'route.ts'] | ✅ |
+| 4 | GET | `/api/admin/alerts` | ['admin', 'alerts', 'route.ts'] | ✅ |
+| 5 | GET | `/api/admin/audit-logs` | ['admin', 'audit-logs', 'route.ts'] | ✅ |
+| 6 | GET | `/api/admin/autofix/automation` | ['autofix', 'automation', 'route.ts'] | ✅ |
+| 7 | GET | `/api/admin/autofix/autoscan` | ['autofix', 'autoscan', 'route.ts'] | ✅ |
+| 8 | GET | `/api/admin/autofix/background-automation` | ['autofix', 'background-automation', 'route.ts'] | ✅ |
+| 9 | GET | `/api/admin/autofix/bootstrap` | ['autofix', 'bootstrap', 'route.ts'] | ✅ |
+| 10 | GET | `/api/admin/autofix/config` | ['autofix', 'config', 'route.ts'] | ✅ |
+| 11 | GET | `/api/admin/autofix/errors` | ['autofix', 'errors', 'route.ts'] | ✅ |
+| 12 | GET | `/api/admin/autofix/fix-all` | ['autofix', 'fix-all', 'route.ts'] | ✅ |
+| 13 | POST | `/api/admin/autofix/fix/[errorId]` | ['fix', '[errorId]', 'route.ts'] | ✅ |
+| 14 | GET | `/api/admin/autofix/health` | ['autofix', 'health', 'route.ts'] | ✅ |
+| 15 | GET | `/api/admin/autofix/healthmonitor` | ['autofix', 'healthmonitor', 'route.ts'] | ✅ |
+| 16 | GET | `/api/admin/autofix/scan` | ['autofix', 'scan', 'route.ts'] | ✅ |
+| 17 | GET | `/api/admin/autofix/stream` | ['autofix', 'stream', 'route.ts'] | ✅ |
+| 18 | GET | `/api/admin/dashboard` | ['admin', 'dashboard', 'route.ts'] | ✅ |
+| 19 | GET | `/api/admin/financial/global` | ['financial', 'global', 'route.ts'] | ✅ |
+| 20 | GET | `/api/admin/financial/summary` | ['financial', 'summary', 'route.ts'] | ✅ |
+| 21 | POST | `/api/admin/master/auth` | ['master', 'auth', 'route.ts'] | ✅ |
+| 22 | POST | `/api/admin/master/logout` | ['master', 'logout', 'route.ts'] | ✅ |
+| 23 | GET | `/api/admin/metrics` | ['admin', 'metrics', 'route.ts'] | ✅ |
+| 24 | GET | `/api/admin/monitoring` | ['admin', 'monitoring', 'route.ts'] | ✅ |
+| 25 | GET | `/api/admin/rate-limits` | ['admin', 'rate-limits', 'route.ts'] | ✅ |
+| 26 | GET | `/api/admin/tracing` | ['admin', 'tracing', 'route.ts'] | ✅ |
+| 27 | GET | `/api/admin/users` | ['admin', 'users', 'route.ts'] | ✅ |
+| 28 | GET | `/api/ai` | ['api', 'ai', 'route.ts'] | ✅ |
+| 29 | GET | `/api/ai-anomaly-service` | ['api', 'ai-anomaly-service', 'route.ts'] | ✅ |
+| 30 | GET | `/api/ai-health` | ['api', 'ai-health', 'route.ts'] | ✅ |
+| 31 | GET | `/api/ai-self-diagnostics` | ['api', 'ai-self-diagnostics', 'route.ts'] | ✅ |
+| 32 | GET | `/api/ai/scan` | ['ai', 'scan', 'route.ts'] | ✅ |
+| 33 | POST | `/api/alerts/webhook` | ['alerts', 'webhook', 'route.ts'] | ✅ |
+| 34 | GET | `/api/analytics/transactions` | ['analytics', 'transactions', 'route.ts'] | ✅ |
+| 35 | GET | `/api/analytics/wallets` | ['analytics', 'wallets', 'route.ts'] | ✅ |
+| 36 | GET | `/api/auth/biometric/capture` | ['biometric', 'capture', 'route.ts'] | ✅ |
+| 37 | POST | `/api/auth/login` | ['auth', 'login', 'route.ts'] | ✅ |
+| 38 | POST | `/api/auth/login` | ['auth', 'login', 'route.ts'] | ✅ |
+| 39 | GET | `/api/auth/oauth/[provider]` | ['oauth', '[provider]', 'route.ts'] | ✅ |
+| 40 | POST | `/api/auth/profile` | ['auth', 'profile', 'route.ts'] | ✅ |
+| 41 | POST | `/api/auth/refresh` | ['auth', 'refresh', 'route.ts'] | ✅ |
+| 42 | POST | `/api/auth/register` | ['auth', 'register', 'route.ts'] | ✅ |
+| 43 | GET | `/api/auth/settings` | ['auth', 'settings', 'route.ts'] | ✅ |
+| 44 | GET | `/api/auth/signin` | ['auth', 'signin', 'route.ts'] | ✅ |
+| 45 | GET | `/api/auth/signup` | ['auth', 'signup', 'route.ts'] | ✅ |
+| 46 | POST | `/api/auth/verify` | ['auth', 'verify', 'route.ts'] | ✅ |
+| 47 | POST | `/api/auth/verify-email` | ['auth', 'verify-email', 'route.ts'] | ✅ |
+| 48 | POST | `/api/auth/webauthn/auth/finish` | ['auth', 'finish', 'route.ts'] | ✅ |
+| 49 | POST | `/api/auth/webauthn/auth/options` | ['auth', 'options', 'route.ts'] | ✅ |
+| 50 | POST | `/api/auth/webauthn/authenticate` | ['webauthn', 'authenticate', 'route.ts'] | ✅ |
+
+## Endpoint Details
+
+### By Category
+
+#### Evolution System (5)
+- `GET` `/api/evolution/autoclone-evolution`
+- `POST` `/api/evolution/autoclone-evolution`
+- `GET` `/api/evolution/platform-evolution`
+- `POST` `/api/evolution/platform-evolution`
+- `GET` `/api/qmoi/evolution/compare-models`
+- `POST` `/api/qmoi/evolution/compare-models`
+- `GET` `/api/qmoi/evolution/replace-model`
+- `POST` `/api/qmoi/evolution/replace-model`
+- `GET` `/api/qmoi/evolution/track-evolution`
+- `POST` `/api/qmoi/evolution/track-evolution`
+
+#### Autoprod System (0)
+
+
+#### Health & Monitoring (11)
+- `GET` `/api/admin/autofix/health`
+- `GET` `/api/admin/autofix/healthmonitor`
+- `GET` `/api/ai-health`
+- `POST` `/api/ai-health`
+- `GET` `/api/consciousness/health`
+- `GET` `/api/domains/health`
+- `GET` `/api/health`
+- `POST` `/api/health`
+- `GET` `/api/health/data`
+- `POST` `/api/health/data`
+- `GET` `/api/qmoi/health`
+- `POST` `/api/qmoi/health`
+- `GET` `/api/qmoi/health/stream`
+- `GET` `/api/v1/health`
+- `GET` `/api/v2/health`
+
+#### Master Operations (16)
+- `POST` `/api/admin/master/auth`
+- `POST` `/api/admin/master/logout`
+- `GET` `/api/master/domains`
+- `POST` `/api/master/domains`
+- `POST` `/api/master/domains/approve/[domain]`
+- `POST` `/api/master/domains/emergency-takeover`
+- `POST` `/api/master/domains/force-refresh`
+- `DELETE` `/api/master/domains/remove/[domain]`
+- `GET` `/api/master/domains/status`
+- `GET` `/api/master/links`
+- `POST` `/api/master/sponsored/add`
+- `GET` `/api/master/sponsored/analytics`
+- `GET` `/api/master/sponsored/list`
+- `DELETE` `/api/master/sponsored/remove/[userId]`
+- `GET` `/api/master/sponsored/sync`
+- `GET` `/api/master/tracks`
+- `POST` `/api/master/tracks`
+- `GET` `/api/qmoi/master-mode`
+- `POST` `/api/qmoi/master-mode`
+
+#### Global APIs (5)
+- `GET` `/api/admin/financial/global`
+- `POST` `/api/admin/financial/global`
+- `GET` `/api/global`
+- `POST` `/api/global`
+- `PUT` `/api/global`
+- `DELETE` `/api/global`
+- `GET` `/api/global-links`
+- `POST` `/api/global-links`
+- `GET` `/api/global-news`
+- `POST` `/api/global-news`
+- `GET` `/api/qvs`
+- `POST` `/api/qvs`
+
+#### Integration APIs (22)
+- `POST` `/api/cashon/start-trading`
+- `POST` `/api/cashon/stop-trading`
+- `GET` `/api/cashon/trading-status`
+- `GET` `/api/datasets`
+- `POST` `/api/datasets`
+- `GET` `/api/datasets/[id]`
+- `POST` `/api/datasets/[id]`
+- `PUT` `/api/datasets/[id]`
+- `DELETE` `/api/datasets/[id]`
+- `POST` `/api/datasets/settings`
+- `GET` `/api/global-links`
+- `POST` `/api/global-links`
+- `GET` `/api/links`
+- `POST` `/api/links`
+- `PATCH` `/api/links/[id]/zero-rated`
+- `GET` `/api/links/validate`
+- `POST` `/api/links/validate`
+- `GET` `/api/master/links`
+- `GET` `/api/media/generate`
+- `POST` `/api/media/generate`
+- `GET` `/api/media/status`
+- `GET` `/api/qi-trading`
+- `POST` `/api/qi-trading`
+- `GET` `/api/qstore`
+- `GET` `/api/qvillage`
+- `POST` `/api/qvillage`
+- `GET` `/api/qvillage/inference`
+- `GET` `/api/qvillage/model-card`
+- `POST` `/api/qvillage/model-card`
+- `GET` `/api/qvillage/models`
+- `GET` `/api/qvillage/spaces`
+- `GET` `/api/trading/status`
+- `POST` `/api/trading/status`
+- `POST` `/api/webhooks/qvillage`
+
+## Statistics
+
+- **Total Endpoints**: 260
+- **Evolution Endpoints**: 5
+- **Autoprod Endpoints**: 0
+- **Health Endpoints**: 11
+- **Master Endpoints**: 16
+- **Global Endpoints**: 5
+- **Integration Endpoints**: 22
+
+## HTTP Methods
+
+- **GET**: 178 endpoints
+- **POST**: 189 endpoints
+- **PUT**: 17 endpoints
+- **DELETE**: 17 endpoints
+- **PATCH**: 3 endpoints
+
+## Rate Limiting
+
+- Public: 100 req/min
+- Auth: 1000 req/min
+- Master: 10000 req/min
+
+---
+
+Generated by QMOI Continuous Documentation System
+Auto-updated at 2026-04-02T08:07:14.590610Z

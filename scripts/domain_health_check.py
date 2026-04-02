@@ -1684,13 +1684,7 @@ def main():
 
     # Run immediate check
     checker.run_health_checks()
-
-    if not args.check_only:
-        # Start scheduled checks
-        try:
-            checker.schedule_daily_checks()
-        except KeyboardInterrupt:
-            logging.info("Domain health checker stopped")
+    return
 
 if __name__ == "__main__":
     main()

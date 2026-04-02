@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-04-02T06:43:52.156941",
+  "timestamp": "2026-04-02T07:43:19.881071",
   "statistics": {
-    "total_files": 7572,
-    "scanned_files": 4837,
-    "total_urls": 184270,
+    "total_files": 7589,
+    "scanned_files": 4853,
+    "total_urls": 184692,
     "by_type": {
-      "external_http": 179402,
-      "internal_reference": 3104,
+      "external_http": 179825,
+      "internal_reference": 3103,
       "absolute_path": 53,
       "relative_path": 402,
       "file_reference": 1309
@@ -59,7 +59,7 @@
       "localhost:9200": 1,
       "localhost": 43,
       "qmoi-enhanced.vercel.app": 374,
-      "github.com": 94570,
+      "github.com": 94578,
       "localhost:3005": 8,
       "localhost:8000": 193,
       "broken-link.com": 8,
@@ -80,7 +80,6 @@
       "your-domain.com": 123,
       "hooks.slack.com": 106,
       "your-sentry-dsn": 12,
-      "localhost:4000": 134,
       "qmoi.app": 87,
       "qmoi.app`)": 1,
       "nextjs.org": 58,
@@ -157,6 +156,7 @@
       "localhost:7860": 84,
       "api.qvillage.ai": 68,
       "memory.qmoi.ai": 38,
+      "localhost:4000": 133,
       "prodeloper.apple.com": 39,
       "localhost:8000,": 3,
       "qvillage.com`.": 1,
@@ -3314,7 +3314,7 @@
       "www.ogcio.gov.hk": 16,
       "duckduckgo.com": 8,
       "icu-project.org": 8,
-      "modernizr.com": 28,
+      "modernizr.com": 48,
       "git.savannah.gnu.org": 16,
       "w3.org": 8,
       "jongleberry.com": 8,
@@ -3618,9 +3618,9 @@
       "download.pytorch.org": 2,
       "preprod.qmoi.app": 2,
       "dl.google.com": 4,
-      "oauth2:${{": 9,
-      "${{": 9,
-      "pris.ly": 964,
+      "oauth2:${{": 13,
+      "${{": 13,
+      "pris.ly": 1352,
       "invalid.data)": 1,
       "invalid.data": 3,
       "127.0.0.1:3000": 11,
@@ -3768,7 +3768,7 @@
       "${domain}${endpointPath}`];": 1,
       "accounts.google.com": 1
     },
-    "broken_links": 1027,
+    "broken_links": 1451,
     "warnings": [
       {
         "file": "documentation_audit_details.json",
@@ -7210,6 +7210,2286 @@
       },
       {
         "file": "results/link_validation_report.json",
+        "url": "http://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://github.com/${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://github.com/${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://oauth2:${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "http://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "http://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "http://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://github.com/${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://github.com/${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://oauth2:${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "http://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "http://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
         "url": "https://github.com/${{",
         "status": "template_real implementation",
         "error": "Contains template variables"
@@ -9571,6 +11851,270 @@
         "url": "https://pris.ly/d/null-undefined",
         "status": "undefined_reference",
         "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "http://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "http://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://github.com/${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://github.com/${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://oauth2:${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://pris.ly/d/null-undefined",
+        "status": "undefined_reference",
+        "error": "References undefined variable"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "http://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "http://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://modernizr.com/docs/#prefixed),",
+        "status": "complete",
+        "error": "Marked as DONE/fixed"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://github.com/${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://github.com/${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://oauth2:${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
+      },
+      {
+        "file": "results/link_validation_report.json",
+        "url": "https://${{",
+        "status": "template_real implementation",
+        "error": "Contains template variables"
       },
       {
         "file": "results/link_validation_report.json",
@@ -9935,13 +12479,13 @@
     ]
   },
   "urls_by_category": {
-    "external_http": 179402,
-    "internal_reference": 3104,
+    "external_http": 179825,
+    "internal_reference": 3103,
     "absolute_path": 53,
     "relative_path": 402,
     "file_reference": 1309
   },
-  "warnings_count": 1027,
+  "warnings_count": 1451,
   "warnings_sample": [
     {
       "file": "documentation_audit_details.json",
@@ -10147,8 +12691,8 @@
     },
     {
       "file": "results/link_validation_report.json",
-      "url_count": 835,
-      "issue_count": 832
+      "url_count": 1259,
+      "issue_count": 1256
     },
     {
       "file": "scripts/models/qmoi_manager.py",

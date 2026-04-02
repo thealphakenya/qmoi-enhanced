@@ -1,15 +1,15 @@
 {
   "total_files_scanned": 13692,
-  "files_with_markers": 3631,
-  "total_markers_found": 17903,
+  "files_with_markers": 3630,
+  "total_markers_found": 17893,
   "markers_by_type": {
-    "complete": 1181,
+    "complete": 1179,
     "stable": 1731,
     "real": 3190,
     "NOTE": 729,
     "WARNING": 4187,
     "fixed": 2088,
-    "production": 2546,
+    "production": 2538,
     "REPLACE": 1162,
     "INSTRUCTIONS": 34,
     "realS": 6,
@@ -13647,11 +13647,6 @@
       "WARNING (1)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/ensure_production_readiness.py": [
-      "production (4)",
-      "production (4)",
-      "complete (2)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/qmoi-mobile-auto-selfheal.js": [
       "NOTE (1)"
     ],
@@ -15135,5 +15130,5 @@
     ]
   },
   "production_ready": false,
-  "scan_timestamp": "2026-04-02T06:55:20.064318"
+  "scan_timestamp": "2026-04-02T07:46:16.585910"
 }
