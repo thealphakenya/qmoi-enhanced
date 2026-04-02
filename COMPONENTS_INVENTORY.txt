@@ -1,4 +1,3 @@
-# [PRODUCTION READY] this file has no remaining productionuction markers
 qmoi-enhanced/components/EnhancedRevenuePanel.tsx
 qmoi-enhanced/components/FinancialManager.tsx
 qmoi-enhanced/components/GlobalCall.tsx

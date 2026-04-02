@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] QMOI LION EVOLUTION - Comprehensive System
 
 # EVOLUTION.md - QMOI Lion AutoEvolve System with production APIs
 

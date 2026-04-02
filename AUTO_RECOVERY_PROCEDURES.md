@@ -482,7 +482,6 @@ All recovery events are automatically logged with:
 
 ```bash
 # 1. [production READY]base failover
-# [production READY] connection loss for 30 seconds
 # Verify automatic recovery
 
 # 2. Test function restart

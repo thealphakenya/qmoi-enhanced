@@ -1,4 +1,3 @@
-# [PRODUCTION READY] this file has no remaining productionuction markers
 # QMOI Enhanced System Requirements
 
 # Core Python packages

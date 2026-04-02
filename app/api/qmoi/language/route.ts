@@ -23,7 +23,6 @@ export const runtime = "nodejs";
  * - Quiz: Language proficiency quizzes
  * - Pronunciation-Check: Verify pronunciation
  *
- * production Implementation Checklist:
  * 1. Translation: Integrate Google Translate API or similar
  * 2. Speech Services: Use Google Cloud Speech-to-Text and Text-to-Speech
  * 3. Language Detection: Use textcat or similar library

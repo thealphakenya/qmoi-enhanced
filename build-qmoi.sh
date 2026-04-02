@@ -1,5 +1,4 @@
 #!/bin/bash
-# production implementation: Enhanced Multi-Platform QMOI Build Script
 
 set -e  # Exit on any error
 

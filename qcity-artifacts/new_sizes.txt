@@ -1,4 +1,3 @@
-# [PRODUCTION READY] this file has no remaining productionuction markers
 169 /workspaces/qmoi-enhanced/downloads/windows/latest/qmoi_ai.exe
 142 /workspaces/qmoi-enhanced/downloads/mac/latest/qmoi_ai.dmg
 136 /workspaces/qmoi-enhanced/downloads/linux/latest/qmoi_ai.AppImage

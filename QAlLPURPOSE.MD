@@ -1,4 +1,3 @@
-# [production READY] this file has no remaining production markers
 <!-- LION_VALIDATION_START -->
 
 ## 🦁 L — Validated by QMOI Lion

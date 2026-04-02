@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] QTOOLS.md - Tools Directory Documentation
 
 ## Overview
 The `tools/` directory contains comprehensive automation, testing, and utility scripts that support the QMOI Enhanced system's production readiness, continuous integration, and maintenance operations.

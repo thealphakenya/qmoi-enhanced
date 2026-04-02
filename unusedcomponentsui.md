@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # Unused UI Components
 
 This document tracks UI components (and related files) that are currently _not referenced_ by the active React/Next.js UI build. The goal is to ensure there are no orphaned components in the repo, and to either remove them or explicitly integrate them into a surface.

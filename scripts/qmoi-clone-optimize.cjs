@@ -1,4 +1,3 @@
-// [PRODUCTION READY]
 // QMOI Automated Cloning & Cloud Optimization (CommonJS)
 const { execSync } = require("child_process");
 const fs = require("fs");

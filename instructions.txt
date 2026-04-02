@@ -1,4 +1,3 @@
-# [PRODUCTION READY] this file has no remaining productionuction markers
 full enhancement plan:
 1. Qnews Backend & UI
 Backend:

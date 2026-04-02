@@ -1,4 +1,3 @@
-// [PRODUCTION READY]
 /**
  * Root Jest configuration for QMOI monorepo / multi-package repository.
  * - Conservative defaults for TypeScript + React testing (ts-jest)

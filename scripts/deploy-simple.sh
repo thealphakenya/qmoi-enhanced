@@ -1,4 +1,3 @@
-# production implementation: this file has no remaining production markers
 #!/bin/bash
 
 # QMOI Enhanced - Simplified production Deployment

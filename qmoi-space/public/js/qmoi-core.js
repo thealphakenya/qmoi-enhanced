@@ -52,13 +52,11 @@ async function updateAnalyticsSection() {
   // User Engagement
   const engagementChart = document.getElementById("engagement-chart");
   if (engagementChart && window.Chart) {
-    // production implementation or status.analytics.engagement data
     // (
   }
   // Revenue Sources
   const revenueSourcesChart = document.getElementById("revenue-sources-chart");
   if (revenueSourcesChart && window.Chart) {
-    // production implementation or status.analytics.revenue_sources data
     // (
   }
 }

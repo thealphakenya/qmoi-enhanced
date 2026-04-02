@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # QMOI CI Secrets and Keystore Setup
 
 This document explains which GitHub Actions secrets are required for the Android CI workflow and how to add them in your repository settings.

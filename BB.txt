@@ -1,4 +1,3 @@
-# [PRODUCTION READY] this file has no remaining productionuction markers
 KWEMOI Simwoto Victor
 stable-Q-ai
 Commits

@@ -319,7 +319,6 @@ Optional enhancements for future production:
 ## Testing Recommendations
 
 ```bash
-# [production READY]set selection
 curl -X POST https://qmoi.ai/api/datasets \
   -H "Content-Type: application/json" \
   -d '{"action":"select","context":{"useCase":"trading"}}'

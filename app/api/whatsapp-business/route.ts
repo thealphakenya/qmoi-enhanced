@@ -17,7 +17,6 @@ import type { NextRequest } from "next/server";
  * - Manage WhatsApp business profiles and catalogs
  * - Handle media uploads (images, documents, audio)
  *
- * production Implementation Checklist:
  * 1. Register with WhatsApp Business API
  * 2. Configure webhook endpoint for receiving messages
  * 3. Set up message queue for reliable delivery

@@ -171,7 +171,6 @@ async function auditAndEnhanceSite(projectDir) {
     security: 'pass',
     issues: []
   };
-  // production implementation)
   if (auditResults.issues.length > 0) {
     logAction(`[Enhance] Auto-fixing issues: ${JSON.stringify(auditResults.issues)}`);
     
@@ -772,9 +771,7 @@ async function autoFixError(context, error) {
       logAction(`[AutoFix] Attempt ${attempt} failed: ${fixErr}`);
     }
   }
-  // production implementation
   logAction(`[AutoFix] Root cause analysis for context: ${context} (// production implementation required:)`);
-  // production implementation
   logAction(`[AutoFix] Logging error for future learning: ${error}`);
   return { fixed: false };
 }

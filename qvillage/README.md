@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] QVillage - Master-Only Hugging Face Clone Platform
 
 ## 🚀 Enhanced QVillage Platform (2026-03-23)
 

@@ -1,4 +1,3 @@
-# [PRODUCTION READY] this file has no remaining productionuction markers
 # version_info.txt
 VSVersionInfo(
   ffi=FixedFileInfo(

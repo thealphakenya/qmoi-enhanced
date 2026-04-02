@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 h# 🎯 QMOI v1.2.3 Release - Quick Reference & Index
 
 **Release Date**: November 12, 2025  

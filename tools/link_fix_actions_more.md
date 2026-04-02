@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # Additional link fix proposals
 
 - http://blog.izs.me/) -> https://blog.izs.me/) (status 200)

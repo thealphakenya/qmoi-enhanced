@@ -1,4 +1,3 @@
-# [PRODUCTION READY] this file has no remaining productionuction markers
 _archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts
 _archive_qmoi-enhanced/_app_archived/layout.js
 _archive_qmoi-enhanced/components/DownloadQApp.tsx

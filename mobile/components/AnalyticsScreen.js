@@ -56,7 +56,6 @@ const AnalyticsScreen = ({ userRole }) => {
       setprodiceStats(prodiceStatsRes.data);
     } catch (error) {
       console.error("Error loading analytics:", error);
-      // production implementation
       setAnalytics([
         {
           date: "2024-01-15",

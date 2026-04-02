@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] QVillage AI Research Hub - Hugging Face Space
 
 ## 🚀 Enhanced QVillage HF Space App
 

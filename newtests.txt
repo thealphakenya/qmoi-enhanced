@@ -576,7 +576,6 @@ For QMOI, focus on:
 
 ---
 
-# [PRODUCTION READY] Notes
 - Run these tests after each major update
 - Document results and improvements
 - Use automated scripts where possible

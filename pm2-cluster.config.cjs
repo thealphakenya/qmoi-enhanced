@@ -1,4 +1,3 @@
-// [PRODUCTION READY]
 /**
  * PM2 Cluster Configuration for Load Balancing
  * Usage: pm2 start pm2-cluster.config.cjs

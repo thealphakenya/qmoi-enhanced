@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # QMOI Enhanced: Comprehensive Link & Domain Validation Plan
 **Status:** 🔄 In Progress | **Last Updated:** 2026-03-21  
 **Objective:** Ensure 100% of links and domains are accessible, working, and production-ready

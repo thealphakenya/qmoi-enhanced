@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] QMOI Domains and Links Directory
 
 **Last Updated:** March 21, 2026
 **Auto-Update Status:** ✅ Enabled

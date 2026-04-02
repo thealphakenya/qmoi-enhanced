@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # 🚀 QMOI Automated Build, Release & Deployment System
 
 **Complete automation for building, testing, and deploying all 6 QMOI apps to 12+ platforms**

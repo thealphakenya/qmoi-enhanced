@@ -1,24 +1,24 @@
 {
-  "total_files_scanned": 13674,
-  "files_with_markers": 3616,
-  "total_markers_found": 17797,
+  "total_files_scanned": 13692,
+  "files_with_markers": 3631,
+  "total_markers_found": 17903,
   "markers_by_type": {
-    "complete": 1178,
-    "stable": 1716,
-    "NOTE": 726,
-    "WARNING": 4178,
-    "fixed": 2069,
-    "real": 3174,
-    "production": 2510,
-    "REPLACE": 1161,
+    "complete": 1181,
+    "stable": 1731,
+    "real": 3190,
+    "NOTE": 729,
+    "WARNING": 4187,
+    "fixed": 2088,
+    "production": 2546,
+    "REPLACE": 1162,
     "INSTRUCTIONS": 34,
     "realS": 6,
     "real implementation": 12,
-    "DONE": 451,
-    "live": 354,
+    "DONE": 450,
+    "live": 358,
     "INSTRUCTION": 29,
+    "SIMPLE": 70,
     "TEMPORARY": 1,
-    "SIMPLE": 69,
     "DEPRECATED": 70,
     "TEST IMPLEMENTATION": 4,
     "production IMPLEMENTATION REQUIRED": 46,
@@ -37,6 +37,10 @@
     ],
     "/workspaces/qmoi-enhanced/components/SisterProjects.tsx": [
       "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/components/qmedia-player.md": [
+      "real (2)",
+      "real (2)"
     ],
     "/workspaces/qmoi-enhanced/components/LeahWallet.tsx": [
       "NOTE (1)"
@@ -195,11 +199,6 @@
       "production (1)",
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/lib/production_STATUS.md": [
-      "fixed (2)",
-      "real (4)",
-      "real (4)"
-    ],
     "/workspaces/qmoi-enhanced/lib/all_download_links_and_app_info_(size,_last_checked,_status)_are_autotested_and_auto_fixed_by_qserver..ts": [
       "fixed (3)"
     ],
@@ -236,6 +235,10 @@
     "/workspaces/qmoi-enhanced/routes/api/qmoi/file.ts": [
       "REPLACE (4)"
     ],
+    "/workspaces/qmoi-enhanced/pwa_apps/README.md": [
+      "real (1)",
+      "real (1)"
+    ],
     "/workspaces/qmoi-enhanced/pwa_apps/q-alpha/sw.js": [
       "stable (2)",
       "stable (2)",
@@ -250,6 +253,13 @@
       "stable (3)",
       "stable (3)",
       "stable (3)"
+    ],
+    "/workspaces/qmoi-enhanced/pwa_apps/q-alpha/README.md": [
+      "SIMPLE (1)",
+      "stable (3)",
+      "stable (3)",
+      "stable (3)",
+      "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/pwa_apps/qmoi-ai/index.html": [
       "fixed (1)",
@@ -1595,7 +1605,7 @@
       "WARNING (9)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_production.sh": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_non_production.sh": [
       "DONE (3)",
       "fixed (1)",
       "real (7)",
@@ -2033,7 +2043,7 @@
       "production (2)",
       "WARNING (10)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/production_scanner.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/nonprod_scanner.py": [
       "DONE (1)",
       "fixed (1)",
       "production (5)",
@@ -4821,7 +4831,7 @@
       "WARNING (9)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_production.sh": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_non_production.sh": [
       "DONE (3)",
       "fixed (1)",
       "real (7)",
@@ -5826,7 +5836,7 @@
       "production (2)",
       "WARNING (10)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/production_scanner.py": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/nonprod_scanner.py": [
       "DONE (1)",
       "fixed (1)",
       "production (5)",
@@ -8176,7 +8186,7 @@
       "WARNING (9)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_production.sh": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/deep_scan_non_production.sh": [
       "DONE (3)",
       "fixed (1)",
       "real (7)",
@@ -8598,7 +8608,7 @@
       "production (2)",
       "WARNING (10)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/production_scanner.py": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/nonprod_scanner.py": [
       "DONE (1)",
       "fixed (1)",
       "production (5)",
@@ -12476,7 +12486,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/ensure-files.js": [
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/scan_production_endpoints.js": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/scan_nonproduction_endpoints.js": [
       "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/gitlab-automation.js": [
@@ -13001,7 +13011,7 @@
       "WARNING (9)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/deep_scan_production.sh": [
+    "/workspaces/qmoi-enhanced/scripts/deep_scan_non_production.sh": [
       "DONE (3)",
       "fixed (1)",
       "real (7)",
@@ -13439,6 +13449,9 @@
       "real (1)",
       "REPLACE (3)"
     ],
+    "/workspaces/qmoi-enhanced/scripts/.cspell.json": [
+      "REPLACE (1)"
+    ],
     "/workspaces/qmoi-enhanced/scripts/monitor_performance.py": [
       "WARNING (1)"
     ],
@@ -13561,7 +13574,7 @@
     "/workspaces/qmoi-enhanced/scripts/comprehensive_docs_update.py": [
       "complete (1)",
       "REPLACE (5)",
-      "NOTE (5)"
+      "NOTE (8)"
     ],
     "/workspaces/qmoi-enhanced/scripts/qmoi-auto-push.js": [
       "stable (4)",
@@ -13609,7 +13622,7 @@
       "real (3)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/enhanced_scan_production.test.py": [
+    "/workspaces/qmoi-enhanced/scripts/enhanced_scan_nonproduction.test.py": [
       "production (1)",
       "production (1)"
     ],
@@ -13977,6 +13990,10 @@
     "/workspaces/qmoi-enhanced/scripts/upload_to_github_release.py": [
       "REPLACE (1)"
     ],
+    "/workspaces/qmoi-enhanced/scripts/qmoi_dashboard.js": [
+      "fixed (2)",
+      "WARNING (5)"
+    ],
     "/workspaces/qmoi-enhanced/scripts/dns_plan_signer.py": [
       "production (1)",
       "production (1)"
@@ -14132,6 +14149,10 @@
       "DONE (1)",
       "fixed (2)"
     ],
+    "/workspaces/qmoi-enhanced/scripts/host_reachability_check.py": [
+      "production (1)",
+      "production (1)"
+    ],
     "/workspaces/qmoi-enhanced/scripts/deploy-docker.sh": [
       "production (6)",
       "production (6)"
@@ -14139,7 +14160,7 @@
     "/workspaces/qmoi-enhanced/scripts/qmoi-gitlab-sync.js": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/scan_production_endpoints.js": [
+    "/workspaces/qmoi-enhanced/scripts/scan_nonproduction_endpoints.js": [
       "real (1)",
       "production (2)",
       "real (1)",
@@ -14291,7 +14312,7 @@
       "production (2)",
       "WARNING (10)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/production_scanner.py": [
+    "/workspaces/qmoi-enhanced/scripts/nonprod_scanner.py": [
       "DONE (1)",
       "fixed (1)",
       "production (5)",
@@ -14380,7 +14401,7 @@
       "stable (8)",
       "stable (8)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/scan_production_endpoints.test.py": [
+    "/workspaces/qmoi-enhanced/scripts/scan_nonproduction_endpoints.test.py": [
       "production (3)",
       "production (3)"
     ],
@@ -14547,6 +14568,14 @@
       "production (1)",
       "REPLACE (1)"
     ],
+    "/workspaces/qmoi-enhanced/scripts/wallets/PRODUCTION_RUNBOOK.md": [
+      "real (5)",
+      "live (1)",
+      "live (1)",
+      "production (9)",
+      "real (5)",
+      "production (9)"
+    ],
     "/workspaces/qmoi-enhanced/scripts/wallets/adapters/mpesa_adapter.py": [
       "real (3)",
       "production (2)",
@@ -14681,6 +14710,12 @@
       "real (10)",
       "NOTE (3)"
     ],
+    "/workspaces/qmoi-enhanced/scripts/finance/README.md": [
+      "real (2)",
+      "live (1)",
+      "live (1)",
+      "real (2)"
+    ],
     "/workspaces/qmoi-enhanced/dashboard/src/App.jsx": [
       "real (1)",
       "real (1)"
@@ -14706,6 +14741,37 @@
       "production (1)",
       "production (1)"
     ],
+    "/workspaces/qmoi-enhanced/config/qmoi_huggingface_config.json": [
+      "production (3)",
+      "production (3)"
+    ],
+    "/workspaces/qmoi-enhanced/config/test_config.json": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/config/qmoi_master_config.json": [
+      "production (1)",
+      "production (1)"
+    ],
+    "/workspaces/qmoi-enhanced/config/qmoi_env_vars.json": [
+      "production (1)",
+      "production (1)"
+    ],
+    "/workspaces/qmoi-enhanced/config/master_assets.json": [
+      "production (3)",
+      "production (3)"
+    ],
+    "/workspaces/qmoi-enhanced/config/qmoi-config.json": [
+      "production (1)",
+      "production (1)",
+      "stable (1)",
+      "stable (1)",
+      "stable (1)"
+    ],
+    "/workspaces/qmoi-enhanced/config/music-config.json": [
+      "stable (1)",
+      "stable (1)",
+      "stable (1)"
+    ],
     "/workspaces/qmoi-enhanced/app/page.tsx": [
       "production (1)",
       "production (1)"
@@ -14725,7 +14791,7 @@
       "WARNING (3)"
     ],
     "/workspaces/qmoi-enhanced/app/api/production_STATUS.md": [
-      "DONE (8)",
+      "DONE (7)",
       "fixed (11)",
       "real (46)",
       "production (1)",
@@ -14751,22 +14817,10 @@
     "/workspaces/qmoi-enhanced/app/api/consciousness/route.ts": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/app/api/whatsapp-business/route.ts": [
-      "production (1)",
-      "production (1)"
-    ],
     "/workspaces/qmoi-enhanced/app/api/links/validate/route.ts": [
       "REPLACE (1)"
     ],
     "/workspaces/qmoi-enhanced/app/api/deployment-status/route.ts": [
-      "production (1)",
-      "production (1)"
-    ],
-    "/workspaces/qmoi-enhanced/app/api/qmoi/language/route.ts": [
-      "production (1)",
-      "production (1)"
-    ],
-    "/workspaces/qmoi-enhanced/app/api/qmoi/research/route.ts": [
       "production (1)",
       "production (1)"
     ],
@@ -14890,6 +14944,9 @@
       "complete (1)",
       "REPLACE (1)"
     ],
+    "/workspaces/qmoi-enhanced/src/components/ChatbotEnhanced.css": [
+      "WARNING (2)"
+    ],
     "/workspaces/qmoi-enhanced/src/components/QI_Enhanced.tsx": [
       "fixed (1)",
       "REPLACE (1)"
@@ -14947,8 +15004,8 @@
     "/workspaces/qmoi-enhanced/src/components/q-city/production_STATUS.md": [
       "DONE (3)",
       "fixed (11)",
-      "real (16)",
-      "real (16)"
+      "real (17)",
+      "real (17)"
     ],
     "/workspaces/qmoi-enhanced/src/components/q-city/AvatarSelector.tsx": [
       "real implementation (3)",
@@ -14979,8 +15036,18 @@
       "REPLACE (1)",
       "WARNING (1)"
     ],
+    "/workspaces/qmoi-enhanced/src/lib/subscription.ts": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/src/lib/avatar-system.ts": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/src/lib/alerts/webhook.ts": [
+      "WARNING (1)"
+    ],
     "/workspaces/qmoi-enhanced/src/qmoi/core/validation/validation-engine.ts": [
-      "fixed (1)",
+      "fixed (20)",
       "REPLACE (1)",
       "WARNING (3)"
     ],
@@ -14993,9 +15060,10 @@
     ],
     "/workspaces/qmoi-enhanced/src/qmoi/core/evolution/platform-evolution.ts": [
       "real (2)",
-      "production (2)",
+      "production (4)",
       "real (2)",
-      "production (2)",
+      "production (4)",
+      "complete (1)",
       "REPLACE (1)"
     ],
     "/workspaces/qmoi-enhanced/src/qmoi/core/hosting/types.ts": [
@@ -15067,5 +15135,5 @@
     ]
   },
   "production_ready": false,
-  "scan_timestamp": "2026-03-31T23:47:29.520790"
+  "scan_timestamp": "2026-04-02T06:55:20.064318"
 }

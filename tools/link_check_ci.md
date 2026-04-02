@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # Link check CI
 
 This repo includes a robust link/DNS checker that runs in CI and writes reports to `tools/`.

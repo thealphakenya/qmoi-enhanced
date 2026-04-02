@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 ---
 title: "PREVIEW_ENHANCEMENTS.md - Roadmap for Window & Automation Enhancements"
 description: "Detailed plan of 25 enhancements to the Preview Window system and overall UI automation for QMOI"

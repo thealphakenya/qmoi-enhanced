@@ -1,4 +1,3 @@
-// [PRODUCTION READY]
 #!/usr/bin/env node
 
 /**

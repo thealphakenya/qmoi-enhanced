@@ -1,4 +1,3 @@
-# [PRODUCTION READY] this file has no remaining productionuction markers
 /workspaces/qmoi-enhanced/app/api/ai-health/route.ts
 /workspaces/qmoi-enhanced/app/api/auth/login/route.ts
 /workspaces/qmoi-enhanced/app/api/auth/register.ts

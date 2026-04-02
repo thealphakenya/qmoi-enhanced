@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 # QMOI Enhanced Balance Auto-Update System for q/BALANCES.md
-# production Implementation: Automatically updates q/BALANCES.md with real-time balance data
 # INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS
 
 import json

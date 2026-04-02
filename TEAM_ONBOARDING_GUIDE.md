@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # QMOI Enhanced - Team Onboarding Guide
 
 Welcome to the QMOI Enhanced production team! This guide will help you get up to speed with our deployment and operations practices.

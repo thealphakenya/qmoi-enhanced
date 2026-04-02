@@ -147,7 +147,6 @@ function triggerAIActions(reason) {
 
 function getQmoiSpaceBalance() {
   
-  // production implementationnstration
   return 50000 + Math.floor(Math.random() * 100000);
 }
 

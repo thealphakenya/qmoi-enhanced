@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # 🎨 ALLUI.md - Complete UI Features Inventory & Usage Guide
 
 **Version:** 3.1.3 - production Ready with Enhanced Domain UI & Comprehensive Testing

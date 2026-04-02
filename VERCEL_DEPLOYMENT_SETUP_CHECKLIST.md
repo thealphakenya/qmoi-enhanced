@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # VERCEL DEPLOYMENT SETUP CHECKLIST
 
 **Issue**: Getting `404: DEPLOYMENT_NOT_FOUND` when clicking links  

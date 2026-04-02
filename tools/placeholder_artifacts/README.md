@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] artifacts
 
 This folder contains small [production READY] artifacts created to satisfy local CI and validation scripts.
 

@@ -1,8 +1,15 @@
-# [production READY] this file has no remaining production markers
 ---
 title: "Post-production Checklist"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
+
+## production Readiness Snapshot
+- Scanned files: 4430
+- production markers: 358 (8.08% production)
+- production-ready files: 4072
+- Updated: 2026-04-02T06:45:25.659076Z
+
+
 
 <!-- LION_VALIDATION_START -->
 

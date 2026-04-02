@@ -333,7 +333,6 @@ time curl -s https://qvillage.com/ > /prod/null
 # HTTP Server
 tail -f /tmp/http-server.log
 
-# [production READY] Server
 tail -f /tmp/[production READY]-server.log
 
 # prod Server

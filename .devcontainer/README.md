@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 Low-data Codespaces prodcontainer
 
 This prodcontainer is configured to minimize network and disk usage for long Codespaces sessions on limited data.

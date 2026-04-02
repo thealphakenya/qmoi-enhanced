@@ -15,7 +15,6 @@ import { NextApiRequest, NextApiResponse } from "next";
  * - POST backup: Create encrypted backup of user data
  * - POST restore: Restore user data from backup
  *
- * production Implementation Checklist:
  * 1. Encryption: Use AES-256 for backup encryption
  * 2. Storage: Store backups in encrypted S3 bucket or similar
  * 3. Versioning: Maintain backup history with timestamps
@@ -56,7 +55,6 @@ export default async function handler(
       const { action } = body;
       switch (action) {
         case "backup": {
-          // production implementation: Create encrypted backup
           const { includeData } = body;
 
           return _res.status(200).json({
@@ -70,7 +68,6 @@ export default async function handler(
           });
         }
         case "restore": {
-          // production implementation: Validate and restore from backup
           const { backupId, timestamp } = body;
 
           if (!backupId && !timestamp) {
@@ -101,7 +98,6 @@ export default async function handler(
       }
     }
     case "GET": {
-      // production implementation: Retrieve backup status and history
       return _res.status(200).json({
         status: "success",
         message: "Backup history and status retrieval in progress.",

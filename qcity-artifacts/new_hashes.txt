@@ -1,4 +1,3 @@
-# [PRODUCTION READY] this file has no remaining productionuction markers
 6252612188674ccb184551334d029c7437be1908326bec10705c1020a410fa5d  /workspaces/qmoi-enhanced/downloads/windows/latest/qmoi_ai.exe
 b560e42d907446eee9d7921dc3457c5b968e288a2deb126af634e73d879b21fd  /workspaces/qmoi-enhanced/downloads/mac/latest/qmoi_ai.dmg
 8f8c3befa3370823f3920f8fa9b64d59a058c50c5e526473cc2028c6538d5452  /workspaces/qmoi-enhanced/downloads/linux/latest/qmoi_ai.AppImage

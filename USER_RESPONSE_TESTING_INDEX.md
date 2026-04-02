@@ -7,12 +7,11 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 ## production Readiness Snapshot
 - Scanned files: 4430
 - production markers: 358 (8.08% production)
 - production-ready files: 4072
-- Updated: 2026-03-21T21:10:05.790463Z
+- Updated: 2026-04-02T06:45:25.659076Z
 
 
 ## Overview

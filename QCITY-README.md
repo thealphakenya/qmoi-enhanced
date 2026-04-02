@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # QCity Enterprise Management System
 
 A comprehensive, full-featured enterprise management dashboard with real-time monitoring, background services, and complete operational automation.

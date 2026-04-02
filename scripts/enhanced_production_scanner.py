@@ -25,7 +25,6 @@ BASE_DIR = Path(__file__).parent.parent
 REPORT_DIR = BASE_DIR / "reports"
 REPORT_DIR.mkdir(exist_ok=True)
 
-# production markers to search for
 production_KEYWORDS = [
     r'\[production\s+READY\]',
     r'\[production\s+IMPLEMENTATION\s+REQUIRED\]',

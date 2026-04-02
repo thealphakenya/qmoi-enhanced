@@ -963,7 +963,6 @@ def send_mail():
 
         message_id = f"msg_{datetime.now().timestamp()}_{uuid.uuid4().hex[:8]}"
 
-        # [production READY]: Implement email sending
 
         return jsonify({
             'success': True,

@@ -119,7 +119,6 @@ class QMOIMasterSystem {
     return { success: false, _error: error.message };
   }
 
-  // production IMPLEMENTATION: Enhanced auto-fix logic with safety checks
   async autoFix(error, context = {}) {
     try {
       // Implement safe auto-fix logic based on error type
@@ -141,7 +140,6 @@ class QMOIMasterSystem {
     }
   }
 
-  // production IMPLEMENTATION: Enhanced manual fix logic with admin approval
   async manualFix(error, context = {}) {
     try {
       // Check if admin approval is required
@@ -512,7 +510,6 @@ class QMOIMasterSystem {
     }, 30000); // Check health every 30 seconds
   }
 
-  // production IMPLEMENTATION: Safe resource management with configuration toggle
   updatePerformanceMetrics() {
     // Check if aggressive resource management is enabled
     const aggressiveMode = process.env.AGGRESSIVE_RESOURCE_MANAGEMENT !== 'false';
@@ -567,7 +564,6 @@ class QMOIMasterSystem {
     };
   }
 
-  // production IMPLEMENTATION: Advanced CPU optimization with safety checks
   optimizeCPU() {
     try {
       // Check if CPU optimization is enabled
@@ -598,7 +594,6 @@ class QMOIMasterSystem {
     }
   }
 
-  // production IMPLEMENTATION: Advanced memory optimization with safety checks
   optimizeMemory() {
     try {
       // Check if memory optimization is enabled
@@ -629,7 +624,6 @@ class QMOIMasterSystem {
     }
   }
 
-  // production IMPLEMENTATION: Safe cache clearing
   clearCache() {
     try {
       // Clear various cache types safely
@@ -657,7 +651,6 @@ class QMOIMasterSystem {
     }
   }
 
-  // production IMPLEMENTATION: Helper functions for resource management
 
   reprioritizeTasks() {
     // Adjust task priorities to favor critical operations
@@ -816,7 +809,6 @@ class QMOIMasterSystem {
     }
   }
 
-  // production IMPLEMENTATION: Real CPU usage monitoring
   getCPUUsage() {
     try {
       // Use Node.js process CPU usage
@@ -834,7 +826,6 @@ class QMOIMasterSystem {
     }
   }
 
-  // production IMPLEMENTATION: Real memory usage monitoring
   getMemoryUsage() {
     try {
       const memUsage = process.memoryUsage();
@@ -849,7 +840,6 @@ class QMOIMasterSystem {
     }
   }
 
-  // production IMPLEMENTATION: GPU usage monitoring (real implementation for real implementation)
   getGPUUsage() {
     try {
       // production:, integrate with system GPU monitoring libraries
@@ -860,7 +850,6 @@ class QMOIMasterSystem {
     }
   }
 
-  // production IMPLEMENTATION: Network usage monitoring
   getNetworkUsage() {
     try {
       // production:, integrate with system network monitoring
@@ -873,7 +862,6 @@ class QMOIMasterSystem {
     }
   }
 
-  // production IMPLEMENTATION: Response time monitoring
   getResponseTime() {
     try {
       // Initialize response times array if not exists

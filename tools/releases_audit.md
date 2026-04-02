@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # Releases Audit — thestablekenya/qmoi-enhanced
 
 Checked at: 2025-11-20T17:59:59.369036Z

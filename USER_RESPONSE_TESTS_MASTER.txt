@@ -1,4 +1,3 @@
-# [PRODUCTION READY] this file has no remaining productionuction markers
 ========================================================================================
 QMOI USER-SPECIFIC RESPONSE TESTING - MASTER (VICTOR)
 ========================================================================================

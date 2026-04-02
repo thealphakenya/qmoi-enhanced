@@ -49,7 +49,6 @@ production_keywords = [
     'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE', 'WARNING', 'NOTE', 'NOTE:',
     'fixed:', 'DONE:', 'HACK', 'XXX', 'BROKEN', 'real', 'DUMMY',
 
-    # production markers
     'NOT IMPLEMENTED', 'UNIMPLEMENTED', 'MISSING', 'TBD', 'TBA',
     'COMING SOON', 'UNDER CONSTRUCTION', 'production complete', 'production complete',
     'NEEDS IMPLEMENTATION', 'REQUIRES IMPLEMENTATION', 'MUST IMPLEMENT',

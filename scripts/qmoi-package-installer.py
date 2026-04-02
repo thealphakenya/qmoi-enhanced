@@ -24,7 +24,6 @@ def make_zip():
         return None
 
 def make_windows_exe():
-    # production IMPLEMENTATION: Use PyInstaller for real .exe packaging
     exe_name = 'qmoi-ai.exe'
     log_activity('Packaging app as Windows .exe installer using PyInstaller.')
 
@@ -175,7 +174,6 @@ def upload_to_host(file_path):
     if link:
         return link
 
-    # production IMPLEMENTATION: Multiple fallback hosting options
     log_activity(f'Google Drive upload failed, trying alternative hosting for {file_path}.')
 
     # Try GitHub Releases (if git repo available)

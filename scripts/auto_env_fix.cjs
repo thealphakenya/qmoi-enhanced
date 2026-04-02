@@ -1,4 +1,3 @@
-// [PRODUCTION READY]
 console.log("--- SCRIPT EXECUTION STARTED ---");
 // Auto environment fixer and deployer for stable-Q-ai
 // Save this file as auto_env_fix.cjs and run with: node scripts/auto_env_fix.cjs

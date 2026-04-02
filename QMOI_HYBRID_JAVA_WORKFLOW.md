@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # QMOI Hybrid Java/Android Build & Validation Workflow
 
 This guide explains how to prodelop in your codespace while offloading all Java/Android build and validation tasks to QMOI/QCity servers, CI/CD, or Docker. This is a robust, production-ready approach when local Java is unavailable.

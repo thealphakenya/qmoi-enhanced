@@ -1,4 +1,3 @@
-# [PRODUCTION READY] Enhanced QVillage HF Space Requirements
 gradio>=4.11.0
 # httpx>=0.25.0  # Not used, using built-in urllib
 # huggingface-hub>=0.19.0  # Not used in current implementation

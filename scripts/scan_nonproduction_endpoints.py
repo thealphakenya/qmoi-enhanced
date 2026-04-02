@@ -28,7 +28,6 @@ production_keywords = [
     'real implementation', 'real implementation text', 'real implementation data', 'dummy data',
     'sample data', 'example data', 'real data', 'real data',
 
-    # production markers
     'prod only', 'production only', 'for production', 'debug only',
     'temporary', 'temp', 'hack', 'workaround', 'bandaid',
 

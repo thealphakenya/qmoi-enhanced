@@ -1,4 +1,3 @@
-# [production READY] QMOI GLOBAL TRACKS SYSTEM - Enhanced Worldwide Tracking
 
 ## Overview
 

@@ -1,4 +1,3 @@
-// [PRODUCTION READY]
 // Environment polyfills that must run before any modules are loaded
 /* istanbul ignore next: ensure polyfills run before other modules */
 const { TextEncoder, TextDecoder } = require("util");

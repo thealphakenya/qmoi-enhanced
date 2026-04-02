@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 ## 2025-12-21 — QA & helper server improvements
 
 - Improved `scripts/qmoi_local_server.py` to produce natural, heuristic replies for greetings, 'how are you', and 'create file' intents.

@@ -253,7 +253,6 @@ title: "stable-Q AI Features"
 import pandas as pd
 # Load dataset from /datasets/trading/BTC_USD_2020.csv
 prices = pd.read_csv('BTC_USD_2020.csv')
-# [production READY] a sophisticated moving average strategy
 prices['SMA'] = prices['Close'].rolling(window=20).mean()
 trades = []: Colab Integration (Python Snippet)
 for i in range(20, len(prices)):

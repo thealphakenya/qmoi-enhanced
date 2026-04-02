@@ -12,7 +12,6 @@ function startServer() {
     app.use(express.json());
 
     app.post("/api/qmoi/chat", (req, res) => {
-      // [PRODUCTION READY] Complete response handler for the test
       res.json({
         choices: [
           { message: { content: "I'm doing well, thanks! How can I help?" } },

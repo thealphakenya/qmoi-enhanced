@@ -1,4 +1,3 @@
-# [production READY] Enhanced prod container with recovery mode fixes
 {
   "name": "QMOI Enhanced - production prod Container",
   "image": "mcr.microsoft.com/prodcontainers/base:bullseye",

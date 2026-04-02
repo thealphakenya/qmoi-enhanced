@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # 📚 QMOI Enhanced - Complete Master Documentation Index
 
 **Central reference for all QMOI Enhanced documentation, APIs, and deployment guides**

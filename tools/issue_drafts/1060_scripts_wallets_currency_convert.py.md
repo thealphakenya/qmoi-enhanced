@@ -41,7 +41,6 @@ from functools import lru_cache
 @lru_cache(maxsize=128)
 def _fetch_rates(base='USD'):
     if os.environ.get('DISABLE_EXTERNAL_RATES') == 'true':
-        # [production READY]ed rates
         return {'USD': 1.0, 'KES': 153.0, 'EUR': 0.92, 'GBP': 0.79}
     try:
         # import requests lazily to avoid hard dependency in some environments

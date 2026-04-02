@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 # Component Usage Plan
 
 This document outlines where each UI component is intended to be used, along with role-based access levels and integration status. It serves as the canonical mapping between components and application surfaces, ensuring that no component remains orphaned.

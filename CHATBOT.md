@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 ---
 title: "CHATBOT.md - Enhanced QMOI ChatBot v2.0"
 description: "Comprehensive documentation for enhanced chatbot features"

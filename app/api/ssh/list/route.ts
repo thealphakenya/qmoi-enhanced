@@ -13,7 +13,6 @@ import { NextRequest, NextResponse } from "next/server";
  * NOTE: SSH functionality design note:
  * SSH client library (node-ssh) is not compatible with Next.js server components.
  *
- * production Implementation Options:
  * 1. Deploy SSH service as separate microservice
  * 2. Use SSH gateway with REST proxy
  * 3. Implement SFTP client instead

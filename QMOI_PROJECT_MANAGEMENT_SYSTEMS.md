@@ -7,7 +7,6 @@
 - note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# [production READY] this file has no remaining production markers
 ================================================================================
 QMOI ENHANCED - COMPREHENSIVE PROJECT MANAGEMENT SYSTEMS
 End-to-End Project Lifecycle, Workflow Automation, and Multi-Team Collaboration
