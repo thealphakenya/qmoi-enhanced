@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2026-04-01T03:11:31.359086Z
+- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 # QMOI Enhanced Balance Management System - Final Validation Report
 
 **Date**: March 29, 2026

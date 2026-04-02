@@ -1,3 +1,12 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2026-04-01T03:11:31.315762Z
+- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 # TOOLS.md - QMOI Comprehensive prodeloper Tools Ecosystem
 
 **Last Updated**: 2026-03-30 15:45:00Z

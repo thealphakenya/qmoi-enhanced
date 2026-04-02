@@ -3338,3 +3338,105 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```
 
+
+## Additional API Endpoints
+
+### DELETE /emergency/wipe
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### GET /device-fingerprint
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### GET /emergency/wipe
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### GET /qmoi/own-device-logs
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### POST /device-fingerprint
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### POST /emergency/wipe
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### POST /qmoi/autodev/generate-feature
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### POST /qmoi/autodev/research
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### POST /qmoi/autodev/toggle
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### POST /qmoi/own-device-logs
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+
+### POST /qmoi/own-device-logs/export
+
+**Description:** API endpoint
+
+**Response:**
+```json
+{ "success": true }
+```
+

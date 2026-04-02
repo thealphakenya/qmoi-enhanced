@@ -1,5 +1,14 @@
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2026-04-01T03:11:32.040629Z
+- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
 # QMOI production FULL VALIDATION REPORT
-Generated: 2026-04-01T03:04:53.258558
+Generated: 2026-04-01T03:05:44.385520
 Total issues found: 3
 ---
 ## docs_missing
