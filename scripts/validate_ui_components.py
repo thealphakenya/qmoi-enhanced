@@ -22,7 +22,7 @@ OUT = ROOT / 'docs' / 'ui_validation_report.json'
 
 # Safety: dry-run by default. If production_CONFIRMED=true or --apply is passed, the script
 # may optionally apply non-destructive fixes (backing up files). Without apply, a proposal
-# is written to `.qmoi_validation/ui_real implementations_proposal.json` describing the fixes.
+# is written to `.qmoi_validation/ui_placeholders_proposal.json` describing the fixes.
 production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() == 'true'
 
 VALIDATION_DIR = ROOT / '.qmoi_validation'
@@ -30,8 +30,8 @@ VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
 
 TSX_GLOB = ['**/*.tsx', '**/*.ts', '**/*.jsx', '**/*.js']
 
-real implementation_PAT = re.compile(r'implementation|real implementation_TEXT|"implementation"|\breal implementation\b', re.IGNORECASE)
-DONE_PAT = re.compile(r'\b(DONE|FIXED|XXX)\b')
+PLACEHOLDER_PAT = re.compile(r'implementation|PLACEHOLDER_TEXT|"implementation"|\bplaceholder\b', re.IGNORECASE)
+TODO_PAT = re.compile(r'\b(DONE|FIXED|TODO|XXX)\b', re.IGNORECASE)
 
 def scan_ui(root: Path):
     report = {'root': str(root), 'checked_at': __import__('datetime').datetime.utcnow().isoformat() + 'Z', 'files': []}
@@ -43,10 +43,10 @@ def scan_ui(root: Path):
                 except Exception:
                     continue
                 issues = []
-                if real implementation_PAT.search(text):
+                if PLACEHOLDER_PAT.search(text):
                     issues.append('implementation-token')
-                if DONE_PAT.search(text):
-                    issues.append('DONE-FIXED-comment')
+                if TODO_PAT.search(text):
+                    issues.append('DONE-FIXED-TODO-comment')
                 # quick heuristic: very long files may need split
                 if len(text) > 20000:
                     issues.append('large-file')
@@ -93,7 +93,7 @@ def main():
                         txt = p.read_text(encoding='utf8')
                         backup = p.with_suffix(p.suffix + '.bak')
                         backup.write_text(txt, encoding='utf8')
-                        newtxt = real implementation_PAT.sub('/* DONE: replace implementation */', txt)
+                        newtxt = PLACEHOLDER_PAT.sub('/* DONE: replace implementation */', txt)
                         p.write_text(newtxt, encoding='utf8')
                         print('Applied implementation replacement in', p)
                     except Exception as e:
