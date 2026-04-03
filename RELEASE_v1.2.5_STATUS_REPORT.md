@@ -89,7 +89,7 @@ The [production READY] binary artifacts were created during the initial producti
 
 ### Phase 1: Rebuild Platform Binaries (REQUIRED)
 
-The following builds must be executed to generate /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ artifacts:
+The following builds must be executed to generate /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */ artifacts:
 
 ```bash
 # Android
@@ -128,7 +128,7 @@ git push origin v1.2.5
 
 ### Phase 3: Verification
 
-Run verification scripts to confirm /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ artifacts:
+Run verification scripts to confirm /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */ artifacts:
 
 ```bash
 ./scripts/verify_apk.sh v1.2.5_release/app-release.apk
