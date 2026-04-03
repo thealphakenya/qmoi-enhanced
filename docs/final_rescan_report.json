@@ -1,0 +1,21 @@
+{
+  "scan_timestamp": "2026-04-03T02:16:59.568901",
+  "files_scanned": 4230,
+  "total_patterns_found": 1514,
+  "patterns_by_type": {
+    "real-implementation": 351,
+    "placeholder-word": 159,
+    "non-production": 158,
+    "not-implemented": 30,
+    "XXX-marker": 669,
+    "HACK-marker": 13,
+    "mock-pattern": 43,
+    "fake-pattern": 7,
+    "in-a-real": 16,
+    "TODO-marker": 22,
+    "FIXME-marker": 4,
+    "stub-pattern": 19,
+    "dummy-pattern": 23
+  },
+  "status": "ISSUES_FOUND"
+}

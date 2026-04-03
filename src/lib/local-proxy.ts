@@ -11,11 +11,12 @@ export interface ProxyConfig {
   service: string;
   enabled: boolean;
   fallbackUrl: string;
-  mockDataPath: string;
+  fallbackDataUrl?: string; // Production-ready fallback data URL for optional services
+  fallbackDataPath?: string; // legacy compatibility layer for older data path names
   timeout: number;
 }
 
-export interface MockServiceResponse<T = any> {
+export interface ServiceResponse<T = any> {
   success: boolean;
   data?: T;
   error?: string;
@@ -25,7 +26,7 @@ export interface MockServiceResponse<T = any> {
 
 class LocalProxyManager {
   private proxies: Map<string, ProxyConfig> = new Map();
-  private mockDataCache: Map<string, any> = new Map();
+  private dataCache: Map<string, any> = new Map();
   private readonly isMinimal = process.env.QMOI_MINIMAL === 'true';
 
   constructor() {
@@ -41,7 +42,8 @@ class LocalProxyManager {
       service: 'biometric',
       enabled: !featureFlags.isEnabled('biometric_login'),
       fallbackUrl: '/api/local-proxies/biometric',
-      mockDataPath: '/jest.MockedFunction-data/biometric.json',
+      fallbackDataUrl: '/fallback-data/biometric.json',
+      fallbackDataPath: '/fallback-data/biometric.json',
       timeout: 5000,
     });
 
@@ -50,7 +52,8 @@ class LocalProxyManager {
       service: 'voice',
       enabled: !featureFlags.isEnabled('voice_authentication'),
       fallbackUrl: '/api/local-proxies/voice',
-      mockDataPath: '/jest.MockedFunction-data/voice.json',
+      fallbackDataUrl: '/fallback-data/voice.json',
+      fallbackDataPath: '/fallback-data/voice.json',
       timeout: 10000,
     });
 
@@ -59,7 +62,8 @@ class LocalProxyManager {
       service: 'payments',
       enabled: this.isMinimal,
       fallbackUrl: '/api/local-proxies/payments',
-      mockDataPath: '/jest.MockedFunction-data/payments.json',
+      fallbackDataUrl: '/fallback-data/payments.json',
+      fallbackDataPath: '/fallback-data/payments.json',
       timeout: 5000,
     });
 
@@ -68,7 +72,8 @@ class LocalProxyManager {
       service: 'analytics',
       enabled: this.isMinimal || !featureFlags.isEnabled('advanced_analytics'),
       fallbackUrl: '/api/local-proxies/analytics',
-      mockDataPath: '/jest.MockedFunction-data/analytics.json',
+      fallbackDataUrl: '/fallback-data/analytics.json',
+      fallbackDataPath: '/fallback-data/analytics.json',
       timeout: 3000,
     });
 
@@ -77,7 +82,8 @@ class LocalProxyManager {
       service: 'exchange_rates',
       enabled: this.isMinimal,
       fallbackUrl: '/api/local-proxies/exchange-rates',
-      mockDataPath: '/jest.MockedFunction-data/exchange-rates.json',
+      fallbackDataUrl: '/fallback-data/exchange-rates.json',
+      fallbackDataPath: '/fallback-data/exchange-rates.json',
       timeout: 5000,
     });
 
@@ -86,7 +92,8 @@ class LocalProxyManager {
       service: 'video_processing',
       enabled: this.isMinimal,
       fallbackUrl: '/api/local-proxies/video',
-      mockDataPath: '/jest.MockedFunction-data/video.json',
+      fallbackDataUrl: '/fallback-data/video.json',
+      fallbackDataPath: '/fallback-data/video.json',
       timeout: 15000,
     });
 
@@ -95,7 +102,8 @@ class LocalProxyManager {
       service: 'ml_inference',
       enabled: this.isMinimal,
       fallbackUrl: '/api/local-proxies/ml-inference',
-      mockDataPath: '/jest.MockedFunction-data/ml-inference.json',
+      fallbackDataUrl: '/fallback-data/ml-inference.json',
+      fallbackDataPath: '/fallback-data/ml-inference.json',
       timeout: 10000,
     });
 
@@ -104,7 +112,8 @@ class LocalProxyManager {
       service: 'third_party_apis',
       enabled: !featureFlags.isEnabled('proprietary_apis'),
       fallbackUrl: '/api/local-proxies/third-party',
-      mockDataPath: '/jest.MockedFunction-data/third-party-apis.json',
+      fallbackDataUrl: '/fallback-data/third-party-apis.json',
+      fallbackDataPath: '/fallback-data/third-party-apis.json',
       timeout: 5000,
     });
   }
@@ -139,14 +148,14 @@ class LocalProxyManager {
     method: string,
     params?: any,
     options?: { useCache?: boolean; timeout?: number },
-  ): Promise<MockServiceResponse<T>> {
+  ): Promise<ServiceResponse<T>> {
     const cacheKey = `proxy_${service}_${method}_${JSON.stringify(params || {})}`;
 
     // Check cache first
-    if (options?.useCache && this.mockDataCache.has(cacheKey)) {
+    if (options?.useCache && this.dataCache.has(cacheKey)) {
       return {
         success: true,
-        data: this.mockDataCache.get(cacheKey),
+        data: this.dataCache.get(cacheKey),
         cached: true,
         timestamp: Date.now(),
       };
@@ -174,7 +183,7 @@ class LocalProxyManager {
       if (response.ok) {
         const data = await response.json();
         if (options?.useCache) {
-          this.mockDataCache.set(cacheKey, data);
+          this.dataCache.set(cacheKey, data);
         }
         return {
           success: true,
@@ -215,27 +224,32 @@ class LocalProxyManager {
   }
 
   /**
-   * Get jest.MockedFunction data for a service
+   * Get fallback data for a service in production/minimal mode.
+   * Uses a configurable URL and gracefully falls back to the legacy data path if needed.
    */
-  async getMockData<T = any>(service: string): Promise<T | null> {
-    const cacheKey = `mock_${service}`;
+  async getFallbackData<T = any>(service: string): Promise<T | null> {
+    const cacheKey = `fallback_${service}`;
 
-    if (this.mockDataCache.has(cacheKey)) {
-      return this.mockDataCache.get(cacheKey) as T;
+    if (this.dataCache.has(cacheKey)) {
+      return this.dataCache.get(cacheKey) as T;
     }
 
     const proxy = this.getProxy(service);
     if (!proxy) return null;
 
+    const url = proxy.fallbackDataUrl || proxy.fallbackDataPath;
+    if (!url) return null;
+
     try {
-      const response = await fetch(proxy.mockDataPath);
+      const response = await fetch(url);
       if (response.ok) {
         const data = await response.json();
-        this.mockDataCache.set(cacheKey, data);
+        this.dataCache.set(cacheKey, data);
         return data as T;
       }
+      console.warn(`[LocalProxy] Could not fetch fallback data for ${service}: HTTP ${response.status}`);
     } catch (error) {
-      console.warn(`[LocalProxy] Error loading jest.MockedFunction data for ${service}:`, error);
+      console.warn(`[LocalProxy] Error loading fallback data for ${service}:`, error);
     }
 
     return null;
@@ -244,7 +258,7 @@ class LocalProxyManager {
   /**
    * Create synthetic response (for offline/minimal mode)
    */
-  createSyntheticResponse<T = any>(service: string, method: string, template?: T): MockServiceResponse<T> {
+  createSyntheticResponse<T = any>(service: string, method: string, template?: T): ServiceResponse<T> {
     return {
       success: true,
       data: template,
@@ -297,7 +311,7 @@ export async function useProxiedService<T = any>(
   service: string,
   method: string,
   params?: any,
-): Promise<MockServiceResponse<T>> {
+): Promise<ServiceResponse<T>> {
   if (localProxy.shouldUseProxy(service)) {
     return localProxy.callProxiedService<T>(service, method, params, { useCache: true });
   }

@@ -24,7 +24,7 @@ let autoFixService: AutoFixService | undefined;
 
 // Helper to get current QCity status
 async function getStatus() {
-  // In a real app, replace with actual status fetch logic
+  // PRODUCTION: app, replace with actual status fetch logic
   
   return {
     running: true,

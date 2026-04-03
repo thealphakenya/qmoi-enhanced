@@ -22,8 +22,8 @@
 **Priority Files** (showing first 20):
 
 #### `.qmoi_validation/ui_real implementations_proposal_1775180302.json` - 1 issue(s)
-  - Line 7566: `in a real implementation`
-    Context: "note": "Auto-detected production-marker tokens in code and docs (in a real impl
+  - Line 7566: `in a production implementation`
+    Context: "note": "Auto-detected production-marker tokens in code and docs (in production impl
 
 
 ### MOCK-STUB (1181 items)

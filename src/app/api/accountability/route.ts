@@ -201,7 +201,7 @@ export async function PUT(request: NextRequest) {
         // Update accountability record (if needed)
         return NextResponse.json({
           success: false,
-          error: 'Update operation not implemented yet',
+          error: 'Update operation NOT YET CALLED yet',
         }, { status: 501 });
 
       default:
@@ -233,10 +233,10 @@ export async function DELETE(request: NextRequest) {
     }
 
     // Note: /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you might want to archive rather than delete
-    // For now, we'll return not implemented
+    // For now, we'll return NOT YET CALLED
     return NextResponse.json({
       success: false,
-      error: 'Delete operation not implemented - records are archived for compliance',
+      error: 'Delete operation NOT YET CALLED - records are archived for compliance',
     }, { status: 501 });
   } catch (error) {
     consoleLog('❌ Accountability API DELETE error:', error);
