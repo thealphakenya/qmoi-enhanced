@@ -464,7 +464,7 @@ export class TradingManager {
   }
 
   public async getTradingHistory(): Promise<Trade[]> {
-    // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would fetch from a database
+    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would fetch from a database
     return this.tradingHistory;
   }
 
@@ -493,7 +493,7 @@ export class TradingManager {
       if (profit !== undefined) {
         trade.profit = profit;
       }
-      // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would update the database
+      // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would update the database
     }
   }
 

@@ -64,11 +64,11 @@ class QMOIDomainHealthChecker:
 
         # production intent markers
         self.production_keywords = [
-            'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */', 'real',
+            'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'real',
             'live', 'live', 'production', 'real', 'realS',
             'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
             'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'production',
-            '/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'stable', 'stable', 'stable',
+            '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'stable', 'stable', 'stable',
             'TEMPORARY', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
             'COMPULSORY', 'COMPALSARY', 'COMPALSARIES',
             'MANDATORY', 'DEPRECATED', 'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE',
@@ -1493,10 +1493,10 @@ if __name__ == '__main__':
             self.initiate_emergency_takeover(domain)
 
     def attempt_content_recovery(self, domain):
-        """Attempt to recover content on an invalid domain by deploying /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ QMOI-approved content."""
+        """Attempt to recover content on an invalid domain by deploying /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ QMOI-approved content."""
         logging.info(f"Attempting content recovery for {domain}")
 
-        # /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */: in production this should trigger deployment pipeline (CMS/prebuilt site payload)
+        # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */: in production this should trigger deployment pipeline (CMS/prebuilt site payload)
         # For live: record intent and mark as needing manual action.
         recovery_marker = {
             'domain': domain,

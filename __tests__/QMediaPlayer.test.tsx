@@ -8,16 +8,16 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import QMediaPlayer from '../components/QMediaPlayer';
 
-// Mock framer-motion
-jest.mock('framer-motion', () => ({
+// PRODUCTION IMPLEMENTATION: framer-motion
+jest.jest.MockedFunction('framer-motion', () => ({
   motion: {
     div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
   },
   AnimatePresence: ({ children }: any) => <>{children}</>,
 }));
 
-// Mock lucide-react icons
-jest.mock('lucide-react', () => ({
+// PRODUCTION IMPLEMENTATION: lucide-react icons
+jest.jest.MockedFunction('lucide-react', () => ({
   Play: () => <div data-testid="play-icon">Play</div>,
   Pause: () => <div data-testid="pause-icon">Pause</div>,
   SkipBack: () => <div data-testid="skip-back-icon">SkipBack</div>,
@@ -63,8 +63,8 @@ jest.mock('lucide-react', () => ({
   Share2: () => <div data-testid="share-icon">Share2</div>,
 }));
 
-// Mock UI components
-jest.mock('@/components/ui/slider', () => ({
+// PRODUCTION IMPLEMENTATION: UI components
+jest.jest.MockedFunction('@/components/ui/slider', () => ({
   Slider: ({ value, onValueChange, ...props }: any) => (
     <input
       type="range"
@@ -75,7 +75,7 @@ jest.mock('@/components/ui/slider', () => ({
   ),
 }));
 
-jest.mock('@/components/ui/switch', () => ({
+jest.jest.MockedFunction('@/components/ui/switch', () => ({
   Switch: ({ checked, onCheckedChange, ...props }: any) => (
     <input
       type="checkbox"
@@ -86,26 +86,26 @@ jest.mock('@/components/ui/switch', () => ({
   ),
 }));
 
-jest.mock('@/components/ui/tabs', () => ({
+jest.jest.MockedFunction('@/components/ui/tabs', () => ({
   Tabs: ({ children, ...props }: any) => <div {...props}>{children}</div>,
   TabsList: ({ children, ...props }: any) => <div {...props}>{children}</div>,
   TabsTrigger: ({ children, ...props }: any) => <button {...props}>{children}</button>,
   TabsContent: ({ children, ...props }: any) => <div {...props}>{children}</div>,
 }));
 
-jest.mock('@/components/ui/badge', () => ({
+jest.jest.MockedFunction('@/components/ui/badge', () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-jest.mock('@/components/ui/progress', () => ({
+jest.jest.MockedFunction('@/components/ui/progress', () => ({
   Progress: (props: any) => <div {...props} />,
 }));
 
-jest.mock('@/components/ui/scroll-area', () => ({
+jest.jest.MockedFunction('@/components/ui/scroll-area', () => ({
   ScrollArea: ({ children, ...props }: any) => <div {...props}>{children}</div>,
 }));
 
-jest.mock('@/components/ui/select', () => ({
+jest.jest.MockedFunction('@/components/ui/select', () => ({
   Select: ({ children, ...props }: any) => <div {...props}>{children}</div>,
   SelectContent: ({ children, ...props }: any) => <div {...props}>{children}</div>,
   SelectItem: ({ children, ...props }: any) => <option {...props}>{children}</option>,
@@ -113,21 +113,21 @@ jest.mock('@/components/ui/select', () => ({
   SelectValue: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-jest.mock('@/components/ui/input', () => ({
+jest.jest.MockedFunction('@/components/ui/input', () => ({
   Input: (props: any) => <input {...props} />,
 }));
 
-jest.mock('@/components/ui/textarea', () => ({
+jest.jest.MockedFunction('@/components/ui/textarea', () => ({
   Textarea: (props: any) => <textarea {...props} />,
 }));
 
-jest.mock('@/components/ui/card', () => ({
+jest.jest.MockedFunction('@/components/ui/card', () => ({
   Card: ({ children, ...props }: any) => <div {...props}>{children}</div>,
   CardContent: ({ children, ...props }: any) => <div {...props}>{children}</div>,
   CardHeader: ({ children, ...props }: any) => <div {...props}>{children}</div>,
 }));
 
-jest.mock('@/hooks/use-toast', () => ({
+jest.jest.MockedFunction('@/hooks/use-toast', () => ({
   useToast: () => ({
     toast: jest.fn(),
   }),
@@ -148,11 +148,11 @@ describe('QMediaPlayer Component', () => {
   const mockPlaylist = [mockMedia];
 
   beforeEach(() => {
-    // Mock URL.createObjectURL and revokeObjectURL
-    global.URL.createObjectURL = jest.fn(() => 'mock-object-url');
+    // PRODUCTION IMPLEMENTATION: URL.createObjectURL and revokeObjectURL
+    global.URL.createObjectURL = jest.fn(() => 'jest.MockedFunction-object-url');
     global.URL.revokeObjectURL = jest.fn();
 
-    // Mock HTMLMediaElement
+    // PRODUCTION IMPLEMENTATION: HTMLMediaElement
     Object.defineProperty(HTMLMediaElement.prototype, 'currentTime', {
       writable: true,
       value: 0,

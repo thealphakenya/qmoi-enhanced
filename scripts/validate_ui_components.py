@@ -22,7 +22,7 @@ OUT = ROOT / 'docs' / 'ui_validation_report.json'
 
 # Safety: dry-run by default. If production_CONFIRMED=true or --apply is passed, the script
 # may optionally apply non-destructive fixes (backing up files). Without apply, a proposal
-# is written to `.qmoi_validation/ui_placeholders_proposal.json` describing the fixes.
+# is written to `.qmoi_validation/ui_IMPLEMENTATION_REQUIREDs_proposal.json` describing the fixes.
 production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() == 'true'
 
 VALIDATION_DIR = ROOT / '.qmoi_validation'
@@ -36,11 +36,11 @@ CODE_GLOB = [
 
 EXCLUDE_DIRS = {'.git', 'node_modules', 'backups', 'dist', 'build', '.venv', '.cache'}
 
-REAL_IMPL_PAT = re.compile(r'\b(in a real (?:implementation|production|deployment)|/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */)\b', re.IGNORECASE)
-PLACEHOLDER_PAT = re.compile(r'\b(/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */|non[- ]production)\b', re.IGNORECASE)
-TODO_PAT = re.compile(r'\b(DONE|FIXED|/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */|XXX|/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */)\b', re.IGNORECASE)
+REAL_IMPL_PAT = re.compile(r'\b(in a real (?:implementation|production|deployment)|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b', re.IGNORECASE)
+IMPLEMENTATION_REQUIRED_PAT = re.compile(r'\b(/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|non[- ]production)\b', re.IGNORECASE)
+TODO_PAT = re.compile(r'\b(DONE|FIXED|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|XXX|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b', re.IGNORECASE)
 ALL_NONPROD_PAT = re.compile(
-    r'\b(in a real (?:implementation|production|deployment)|/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */|non[- ]production|/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */)\b',
+    r'\b(in a real (?:implementation|production|deployment)|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|non[- ]production|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b',
     re.IGNORECASE,
 )
 
@@ -64,10 +64,10 @@ def scan_ui(root: Path):
                 issues = []
                 if REAL_IMPL_PAT.search(text):
                     issues.append('in-a-real-implementation-marker')
-                if PLACEHOLDER_PAT.search(text):
-                    issues.append('/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */-or-nonproduction-marker')
+                if IMPLEMENTATION_REQUIRED_PAT.search(text):
+                    issues.append('/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-or-nonproduction-marker')
                 if TODO_PAT.search(text):
-                    issues.append('/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */-fixed-marker')
+                    issues.append('/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker')
                 # quick heuristic: very long files may need split
                 if len(text) > 20000:
                     issues.append('large-file')
@@ -103,7 +103,7 @@ def main():
             'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
             'type': 'nonproduction-marker-cleanup',
             'files': report['files'],
-            'note': 'Auto-detected production-marker tokens in code and docs (/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, production-ready replacements can be applied).'
+            'note': 'Auto-detected production-marker tokens in code and docs (/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, production-ready replacements can be applied).'
         }
         proposal_file = VALIDATION_DIR / f'ui_real implementations_proposal_{int(__import__("time").time())}.json'
         proposal_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
@@ -121,7 +121,7 @@ def main():
                         backup = p.with_suffix(p.suffix + '.bak')
                         backup.write_text(txt, encoding='utf8')
                         newtxt = ALL_NONPROD_PAT.sub(
-                            '/* PRODUCTION IMPLEMENTATION: replaced /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ with hardened code path (review required) */',
+                            '/* PRODUCTION IMPLEMENTATION: replaced /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ with hardened code path (review required) */',
                             txt,
                         )
                         p.write_text(newtxt, encoding='utf8')

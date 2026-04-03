@@ -181,7 +181,7 @@ export async function POST(request: NextRequest) {
         }
 
         // This would extend the workflow engine to support dynamic workflow creation
-        // For now, return success with a /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */
+        // For now, return success with a /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */
         const customWorkflowId = `custom-${Date.now()}`;
 
         await qmoiTracksService.createTrack({

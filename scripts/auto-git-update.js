@@ -388,7 +388,7 @@ class AutoGitUpdater {
       console.log(`Title: ${title}`);
       console.log(`Message: ${message}`);
 
-      // In /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would call the WhatsApp API
+      // In /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
       // await fetch('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },

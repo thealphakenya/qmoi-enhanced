@@ -55,7 +55,7 @@ production_PATTERNS = {
         r"\b_error\b(?!\w)",  # Underscore prefixed error (catch block)
         r"\btmp_\w+",  # Temporary variables
         r"\b_temp\w+",  # Temp prefix/suffix
-        r"\breal implementation_\w+",  # /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ variables
+        r"\breal implementation_\w+",  # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variables
         r"\breal_\w+",  # real/real variables
         r"\bdummy_\w+",  # Dummy variables
         r"\btest_\w+(?=\s*[,;)])",  # Test variables in production context
@@ -141,7 +141,7 @@ production_PATTERNS = {
     "data_config": [
         r"apiKey.*=.*['\"]test",
         r"apiKey.*=.*['\"]real",
-        r"apiKey.*=.*['\"]/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        r"apiKey.*=.*['\"]/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */",
         r"database.*=.*['\"]test",
         r"database.*=.*['\"]memory",
     ],

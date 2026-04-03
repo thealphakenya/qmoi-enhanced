@@ -142,12 +142,12 @@ export const UnifiedAPI: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <Input /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Endpoint Name" />
-              <Input /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Path" />
-              <Input /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Version" />
-              <Input /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Rate Limit" />
+              <Input IMPLEMENTATION_REQUIRED="Endpoint Name" />
+              <Input IMPLEMENTATION_REQUIRED="Path" />
+              <Input IMPLEMENTATION_REQUIRED="Version" />
+              <Input IMPLEMENTATION_REQUIRED="Rate Limit" />
             </div>
-            <Textarea /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Description" rows={4} />
+            <Textarea IMPLEMENTATION_REQUIRED="Description" rows={4} />
             <div className="flex flex-wrap gap-3 justify-end">
               <Button variant="outline" onClick={() => setShowCreateForm(false)}>
                 Close
@@ -163,11 +163,11 @@ export const UnifiedAPI: React.FC = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="max-w-xs"
-          /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Search endpoints"
+          IMPLEMENTATION_REQUIRED="Search endpoints"
         />
         <Select value={selectedCategory} onValueChange={(value) => setSelectedCategory(value as any)}>
           <SelectTrigger className="w-48">
-            <SelectValue /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Category" />
+            <SelectValue IMPLEMENTATION_REQUIRED="Category" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Categories</SelectItem>

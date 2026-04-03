@@ -28,7 +28,7 @@ REPORT_DIR.mkdir(exist_ok=True)
 production_KEYWORDS = [
     r'\[production\s+READY\]',
     r'\[production\s+IMPLEMENTATION\s+REQUIRED\]',
-    r'/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */',
+    r'/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
     r'DONE\s*:?\s*IMPL',
     r'fixed\s*:?\s*prod',
     r'TEMPORARY\s+IMPL',

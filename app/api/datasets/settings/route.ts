@@ -52,7 +52,7 @@ export async function POST(_request: Request) {
       storageLocation: storageLocation || "local",
     };
 
-    // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, you would:
+    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you would:
     // 1. Validate the settings
     // 2. Update the settings in the database
     // 3. Apply the settings to the system

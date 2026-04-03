@@ -135,13 +135,13 @@ def suggest_replacements(report):
             # Heuristic: for JS/TS files, replace lived returns with thrown errors
             if file.endswith(('.ts', '.js')):
                 if 'return true' in txt or 'execute' in txt or 'execute' in txt:
-                    replacement = txt + "  // production: replace with /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ or throw an error"
+                    replacement = txt + "  // production: replace with /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or throw an error"
                     suggestions[txt] = replacement
                 else:
                     suggestions[txt] = txt + "  // production: review and implement"
             elif file.endswith(('.py',)):
                 if 'return True' in txt or 'execute' in txt:
-                    replacement = txt + "  # production: replace with /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ or raise NotImplementedError"
+                    replacement = txt + "  # production: replace with /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError"
                     suggestions[txt] = replacement
                 else:
                     suggestions[txt] = txt + "  # production: review and implement"

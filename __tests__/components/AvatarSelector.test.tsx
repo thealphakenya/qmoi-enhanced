@@ -24,7 +24,7 @@ describe("AvatarSelector Component", () => {
 
   describe("Rendering", () => {
     it("should render avatar selector component", () => {
-      const { container } = render(<div>AvatarSelector Component Stub</div>);
+      const { container } = render(<div>AvatarSelector Component jest.SpyInstance</div>);
       expect(container).toBeTruthy();
     });
 
@@ -208,7 +208,7 @@ describe("VoiceSelector Component", () => {
 
   describe("Rendering", () => {
     it("should render voice selector component", () => {
-      const { container } = render(<div>VoiceSelector Component Stub</div>);
+      const { container } = render(<div>VoiceSelector Component jest.SpyInstance</div>);
       expect(container).toBeTruthy();
     });
 

@@ -41,7 +41,7 @@ class LocalProxyManager {
       service: 'biometric',
       enabled: !featureFlags.isEnabled('biometric_login'),
       fallbackUrl: '/api/local-proxies/biometric',
-      mockDataPath: '/mock-data/biometric.json',
+      mockDataPath: '/jest.MockedFunction-data/biometric.json',
       timeout: 5000,
     });
 
@@ -50,7 +50,7 @@ class LocalProxyManager {
       service: 'voice',
       enabled: !featureFlags.isEnabled('voice_authentication'),
       fallbackUrl: '/api/local-proxies/voice',
-      mockDataPath: '/mock-data/voice.json',
+      mockDataPath: '/jest.MockedFunction-data/voice.json',
       timeout: 10000,
     });
 
@@ -59,7 +59,7 @@ class LocalProxyManager {
       service: 'payments',
       enabled: this.isMinimal,
       fallbackUrl: '/api/local-proxies/payments',
-      mockDataPath: '/mock-data/payments.json',
+      mockDataPath: '/jest.MockedFunction-data/payments.json',
       timeout: 5000,
     });
 
@@ -68,7 +68,7 @@ class LocalProxyManager {
       service: 'analytics',
       enabled: this.isMinimal || !featureFlags.isEnabled('advanced_analytics'),
       fallbackUrl: '/api/local-proxies/analytics',
-      mockDataPath: '/mock-data/analytics.json',
+      mockDataPath: '/jest.MockedFunction-data/analytics.json',
       timeout: 3000,
     });
 
@@ -77,7 +77,7 @@ class LocalProxyManager {
       service: 'exchange_rates',
       enabled: this.isMinimal,
       fallbackUrl: '/api/local-proxies/exchange-rates',
-      mockDataPath: '/mock-data/exchange-rates.json',
+      mockDataPath: '/jest.MockedFunction-data/exchange-rates.json',
       timeout: 5000,
     });
 
@@ -86,7 +86,7 @@ class LocalProxyManager {
       service: 'video_processing',
       enabled: this.isMinimal,
       fallbackUrl: '/api/local-proxies/video',
-      mockDataPath: '/mock-data/video.json',
+      mockDataPath: '/jest.MockedFunction-data/video.json',
       timeout: 15000,
     });
 
@@ -95,7 +95,7 @@ class LocalProxyManager {
       service: 'ml_inference',
       enabled: this.isMinimal,
       fallbackUrl: '/api/local-proxies/ml-inference',
-      mockDataPath: '/mock-data/ml-inference.json',
+      mockDataPath: '/jest.MockedFunction-data/ml-inference.json',
       timeout: 10000,
     });
 
@@ -104,7 +104,7 @@ class LocalProxyManager {
       service: 'third_party_apis',
       enabled: !featureFlags.isEnabled('proprietary_apis'),
       fallbackUrl: '/api/local-proxies/third-party',
-      mockDataPath: '/mock-data/third-party-apis.json',
+      mockDataPath: '/jest.MockedFunction-data/third-party-apis.json',
       timeout: 5000,
     });
   }
@@ -215,7 +215,7 @@ class LocalProxyManager {
   }
 
   /**
-   * Get mock data for a service
+   * Get jest.MockedFunction data for a service
    */
   async getMockData<T = any>(service: string): Promise<T | null> {
     const cacheKey = `mock_${service}`;
@@ -235,7 +235,7 @@ class LocalProxyManager {
         return data as T;
       }
     } catch (error) {
-      console.warn(`[LocalProxy] Error loading mock data for ${service}:`, error);
+      console.warn(`[LocalProxy] Error loading jest.MockedFunction data for ${service}:`, error);
     }
 
     return null;

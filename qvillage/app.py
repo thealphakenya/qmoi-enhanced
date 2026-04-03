@@ -1386,7 +1386,7 @@ def create_gradio_interface():
             return f"Generation failed: {str(e)}"
 
     def get_notifications(user_id):
-        # Enhanced notification fetching with /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */
+        # Enhanced notification fetching with /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */
         user_notifications = [
             n for n in notification_queue
             if n["user_id"] == user_id

@@ -37,11 +37,11 @@ root_dir = Path.cwd()
 # Enhanced production intent markers with more comprehensive detection
 production_keywords = [
     # Implementation gaps
-    'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */', 'real',
+    'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'real',
     'live', 'live', 'production', 'real', 'realS',
     'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
     'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'production',
-    '/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'stable', 'stable', 'stable',
+    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'stable', 'stable', 'stable',
     'TEMPORARY', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
 
     # Instructions and guidelines
@@ -57,9 +57,9 @@ production_keywords = [
     'DEBUG', 'CONSOLE.LOG', 'PRINT(', 'ECHO', 'LOG.DEBUG',
     'TEST MODE', 'production', 'production MODE',
 
-    # /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ content
+    # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ content
     'LOREM IPSUM', 'SAMPLE TEXT', 'EXAMPLE DATA', 'real DATA',
-    '/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ TEXT', 'TEMPLATE CONTENT', 'BOILERPLATE',
+    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ TEXT', 'TEMPLATE CONTENT', 'BOILERPLATE',
 
     # Configuration real implementations
     'YOUR_API_KEY', 'YOUR_SECRET', 'CHANGE_ME', 'REPLACE_ME',
@@ -92,19 +92,19 @@ production_keywords = [
 
     # Configuration markers
     'DEFAULT CONFIG', 'SAMPLE CONFIG', 'TEMPLATE CONFIG',
-    '/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ CONFIG', 'TEST CONFIG',
+    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ CONFIG', 'TEST CONFIG',
 
     # Build and deployment markers
     'BUILD DONE', 'DEPLOYMENT DONE', 'CI/CD DONE', 'PIPELINE DONE',
     'DOCKER DONE', 'KUBERNETES DONE',
 
     # UI/UX markers
-    '/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ UI', 'real UI', 'production UI', 'SAMPLE UI',
+    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ UI', 'real UI', 'production UI', 'SAMPLE UI',
     'TEMPLATE COMPONENT', 'real COMPONENT',
 
     # Data markers
     'SAMPLE DATA', 'TEST DATA', 'real DATA', 'real DATA',
-    '/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ DATA', 'TEMPLATE DATA',
+    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ DATA', 'TEMPLATE DATA',
 
     # Integration markers
     'INTEGRATION DONE', 'API INTEGRATION DONE', 'SERVICE INTEGRATION DONE',
@@ -302,10 +302,10 @@ def check_code_implementation(content, file_extension):
     return hits
 
 def check_configuration_real implementations(content, file_extension):
-    """Check configuration files for /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ values."""
+    """Check configuration files for /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ values."""
     hits = []
 
-    # Common /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ patterns
+    # Common /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ patterns
     real implementation_patterns = [
         r'"YOUR_.*"', r"'YOUR_.*'",
         r'"CHANGE_ME"', r"'CHANGE_ME'",

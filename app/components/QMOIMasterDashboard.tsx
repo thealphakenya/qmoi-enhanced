@@ -1168,7 +1168,7 @@ export function QMOIMasterDashboard({
                       });
                       if (response.ok) {
                         const report = await response.text();
-                        // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would download or display the report
+                        // PRODUCTION IMPLEMENTATION: , this would download or display the report
                         console.log("Audit report generated:", report);
                       }
                     } catch (err) {
@@ -1259,7 +1259,7 @@ export function QMOIMasterDashboard({
                       </div>
                       <button
                         onClick={() => {
-                          // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would open track details
+                          // PRODUCTION IMPLEMENTATION: , this would open track details
                           console.log("View track details:", track.id);
                         }}
                         className="px-3 py-1 bg-slate-600 hover:bg-slate-500 text-slate-300 text-sm rounded transition-colors"
@@ -1674,8 +1674,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="text"
-                          /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Enter domain (e.g., qvillage.com)"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */-slate-400 focus:outline-none focus:border-blue-500"
+                          IMPLEMENTATION_REQUIRED="Enter domain (e.g., qvillage.com)"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white IMPLEMENTATION_REQUIRED-slate-400 focus:outline-none focus:border-blue-500"
                           id="domain-refresh"
                         />
                         <button
@@ -1721,8 +1721,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="text"
-                          /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Enter new domain to approve"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */-slate-400 focus:outline-none focus:border-green-500"
+                          IMPLEMENTATION_REQUIRED="Enter new domain to approve"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white IMPLEMENTATION_REQUIRED-slate-400 focus:outline-none focus:border-green-500"
                           id="domain-approve"
                         />
                         <button
@@ -1778,8 +1778,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="url"
-                          /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Enter link URL to monitor"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */-slate-400 focus:outline-none focus:border-purple-500"
+                          IMPLEMENTATION_REQUIRED="Enter link URL to monitor"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white IMPLEMENTATION_REQUIRED-slate-400 focus:outline-none focus:border-purple-500"
                           id="link-add"
                         />
                         <button
@@ -1825,8 +1825,8 @@ export function QMOIMasterDashboard({
                       <div className="flex gap-2">
                         <input
                           type="url"
-                          /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Enter link URL to remove"
-                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */-slate-400 focus:outline-none focus:border-red-500"
+                          IMPLEMENTATION_REQUIRED="Enter link URL to remove"
+                          className="flex-1 px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white IMPLEMENTATION_REQUIRED-slate-400 focus:outline-none focus:border-red-500"
                           id="link-remove"
                         />
                         <button

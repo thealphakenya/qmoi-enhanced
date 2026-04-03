@@ -422,7 +422,7 @@ export class ModelReplacementEngine {
         completedReplacements.length > 0
           ? totalImprovement / completedReplacements.length
           : 0,
-      averageConfidence: 0.85, // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ for actual calculation
+      averageConfidence: 0.85, // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ for actual calculation
     };
   }
 

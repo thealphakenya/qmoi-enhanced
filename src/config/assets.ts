@@ -103,7 +103,7 @@ export class AssetManagerImpl implements AssetManager {
   }
 
   public async convertToUSD(amount: number, currency: string): Promise<number> {
-    // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would fetch current exchange rates
+    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would fetch current exchange rates
     const rates: Record<string, number> = {
       USDT: 1,
       BTC: 50000, // data BTC price

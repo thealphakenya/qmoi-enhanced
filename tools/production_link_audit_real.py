@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI production Link Audit & Offline Access Report
-/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */: Audits all QMOI links for production readiness and generates comprehensive reports.
+/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */: Audits all QMOI links for production readiness and generates comprehensive reports.
 """
 
 import re

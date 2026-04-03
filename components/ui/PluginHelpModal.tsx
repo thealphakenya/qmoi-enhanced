@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-//  this file has no remaining /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ markers
+//  this file has no remaining IMPLEMENTATION_REQUIRED markers
 import React, { useState } from "react";
 
 export const PluginHelpModal: React.FC = () => {

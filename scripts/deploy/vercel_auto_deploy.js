@@ -114,7 +114,7 @@ function injectDockerFallback() {
 async function autoFixErrors(errorMsg) {
   log("Attempting AI-driven error fix...");
   try {
-    // optimized error fixing - /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would call the ErrorFixingService
+    // optimized error fixing - /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the ErrorFixingService
     log("Auto-fix completed.");
   } catch (e) {
     log("Auto-fix failed: " + e.message);
@@ -230,7 +230,7 @@ function deployToGCP() {
 }
 
 async function notifyMaster(msg) {
-  // optimized notification - /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would call the WhatsAppService
+  // optimized notification - /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsAppService
   log(`Notification to master: ${msg}`);
 }
 

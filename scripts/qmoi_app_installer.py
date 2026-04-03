@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [production READY]
-# NOTE: 2 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# NOTE: 2 implementation(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
 #!/usr/bin/env python3
 """
 QMOI App Installer

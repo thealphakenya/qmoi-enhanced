@@ -408,7 +408,7 @@ export class FaceRecognitionService {
 
   private async identifyFace(face: FaceData): Promise<UserProfile | null> {
     // Simple face matching based on landmarks similarity
-    // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would use more sophisticated algorithms
+    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would use more sophisticated algorithms
 
     for (const [, user] of this.knownFaces) {
       const similarity = this.calculateFaceSimilarity(face, user.faceData[0]);
@@ -423,7 +423,7 @@ export class FaceRecognitionService {
 
   private calculateFaceSimilarity(face1: FaceData, face2: FaceData): number {
     // Simple similarity calculation based on landmarks
-    // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would use more sophisticated algorithms
+    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would use more sophisticated algorithms
 
     if (!face1.landmarks || !face2.landmarks) return 0;
 

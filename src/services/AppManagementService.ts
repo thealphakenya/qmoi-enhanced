@@ -425,7 +425,7 @@ export class AppManagementService {
       description: app.description,
     };
 
-    // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would create actual shortcuts
+    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would create actual shortcuts
     .log("Creating shortcut:", shortcutData);
   }
 
@@ -637,7 +637,7 @@ export class AppManagementService {
       .log(`Git: Committing with message: ${message}`);
       .log(`Git: Pushing to remote repository`);
 
-      // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would use Git commands
+      // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would use Git commands
       // await exec('git add .');
       // await exec(`git commit -m "${message}"`);
       // await exec('git push');

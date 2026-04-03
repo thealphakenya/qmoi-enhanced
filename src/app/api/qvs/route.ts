@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
       case 'configure':
         // Apply new configuration for unlimited operations
         if (config) {
-          // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would update the QVS system configuration
+          // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would update the QVS system configuration
           console.log('QVS configuration update requested:', config);
         }
         return NextResponse.json({

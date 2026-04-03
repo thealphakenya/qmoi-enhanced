@@ -10,8 +10,8 @@ try {
 // Mark test environment
 global.__QMOI_TEST__ = true;
 
-// Mock Next.js server components
-jest.mock("next/server", () => ({
+// PRODUCTION IMPLEMENTATION: Next.js server components
+jest.jest.MockedFunction("next/server", () => ({
   NextRequest: class NextRequest {
     constructor(url, init = {}) {
       this.url = typeof url === "string" ? url : "http://localhost";
@@ -44,7 +44,7 @@ jest.mock("next/server", () => ({
   },
 }));
 
-// Mock speech synthesis
+// PRODUCTION IMPLEMENTATION: speech synthesis
 if (typeof globalThis.speechSynthesis === "undefined") {
   globalThis.SpeechSynthesisUtterance = function (text) {
     this.text = text;

@@ -24,6 +24,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       res.status(400).json({ success: false, message: "Unknown payload." });
       return;
   }
-  // Log the action (in /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, trigger backend)
+  // Log the action (in /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, trigger backend)
   res.status(200).json({ success: true, message: msg });
 }

@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
       variables: body.variables || [],
     };
 
-    // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would be persisted
+    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would be persisted
     const createdTemplate = {
       id: `standard-${Date.now()}`,
       ...standard,

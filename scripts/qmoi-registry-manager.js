@@ -496,7 +496,7 @@ class QMOIRegistryManager {
   }
 
   async getSystemMetrics() {
-    [production READY] system metrics (in /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, these would be actual metrics)
+    [production READY] system metrics (in /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, these would be actual metrics)
     return {
       memoryUsage: Math.random() * 100,
       cpuUsage: Math.random() * 100,

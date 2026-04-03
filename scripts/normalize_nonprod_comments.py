@@ -18,7 +18,7 @@ import re
 patterns = [
     (re.compile(r"// production implementation replace test dataset implementation with real integration"),
     (re.compile(r"// production implementation implement required production behavior"),
-    (re.compile(r"// production implementation replace live with /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"),
+    (re.compile(r"// production implementation replace live with /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */"),
     (re.compile(r"// production implementation replace real data with real service data"),
     (re.compile(r"// production implementation replace implementation with production logic"),
     (re.compile(r"// production implementation pending implementation in production"),

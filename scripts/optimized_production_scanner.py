@@ -50,9 +50,9 @@ CRITICAL_PATTERNS = {
     r'\breal\b': 'Medium: real marker',
     r'NOT\s+IMPLEMENTED': 'Medium: Not implemented',
     
-    # Test//* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ variables
+    # Test//* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variables
     r'\btemp_\w+\b': 'Medium: Temporary variable',
-    r'\breal implementation_\w+\b': 'Medium: /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ variable',
+    r'\breal implementation_\w+\b': 'Medium: /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variable',
     r'\breal_\w+\b': 'Medium: real variable',
 }
 

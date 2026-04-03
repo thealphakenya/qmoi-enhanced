@@ -52,7 +52,7 @@ export async function POST(_request: NextRequest) {
       );
     }
 
-    // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, you would:
+    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you would:
     // 1. Update the master mode status in the database
     // 2. Log the action for audit purposes
     // 3. Notify relevant systems of the change

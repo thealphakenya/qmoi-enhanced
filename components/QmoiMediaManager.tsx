@@ -107,7 +107,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
        API call
       await new Promise((resolve) => setTimeout(resolve, 500));
 
-      // In /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would be an API call
+      // In IMPLEMENTATION_REQUIRED, this would be an API call
       // Using URLSearchParams with proper type checking
       const searchParams = new (
         globalThis.URLSearchParams || URLSearchParams

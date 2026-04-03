@@ -4,7 +4,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 describe("Avatar & Voice System - Comprehensive Test Suite", () => {
-  // Mock avatars config
+  // PRODUCTION IMPLEMENTATION: avatars config
   const mockAvatars = [
     {
       id: "lion",

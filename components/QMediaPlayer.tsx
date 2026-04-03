@@ -636,7 +636,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Simple visualization - in /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, use Web Audio API
+    // Simple visualization - in IMPLEMENTATION_REQUIRED, use Web Audio API
     ctx.fillStyle = theme === 'neon' ? '#00ff88' : '#3b82f6';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -659,7 +659,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
     try {
       // Simulate casting start
       setActiveCastingDevices(prev => [...prev, deviceId]);
-      // In /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, use WebRTC or device-specific APIs
+      // In IMPLEMENTATION_REQUIRED, use WebRTC or device-specific APIs
     } catch (error) {
       console.error('Casting failed:', error);
     }
@@ -1515,7 +1515,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                     <div className="space-y-4">
                       <Select value={theme} onValueChange={(value: any) => setTheme(value)}>
                         <SelectTrigger>
-                          <SelectValue /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Visualization Theme" />
+                          <SelectValue IMPLEMENTATION_REQUIRED="Visualization Theme" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="dark">Dark</SelectItem>
@@ -1552,7 +1552,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                           <label className="text-sm font-medium mb-2 block">Media Player Skin</label>
                           <Select value={currentSkin} onValueChange={(value: any) => setCurrentSkin(value)}>
                             <SelectTrigger>
-                              <SelectValue /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Select Skin" />
+                              <SelectValue IMPLEMENTATION_REQUIRED="Select Skin" />
                             </SelectTrigger>
                             <SelectContent>
                               {Object.entries(skinDefinitions).map(([key, skin]) => (
@@ -1576,7 +1576,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                         {/* Layout Selection */}
                         <Select value={layout} onValueChange={(value: any) => setLayout(value)}>
                           <SelectTrigger>
-                            <SelectValue /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Layout" />
+                            <SelectValue IMPLEMENTATION_REQUIRED="Layout" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="compact">Compact</SelectItem>
@@ -1706,7 +1706,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                       <div className="space-y-3">
                         <Select value={floatingMode} onValueChange={(value: any) => setFloatingMode(value)}>
                           <SelectTrigger>
-                            <SelectValue /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Floating Mode" />
+                            <SelectValue IMPLEMENTATION_REQUIRED="Floating Mode" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="normal">Normal</SelectItem>

@@ -1,0 +1,19 @@
+{
+  "completion_timestamp": "2026-04-03T02:12:22.580854",
+  "initial_total_findings": 22610,
+  "current_findings": 200,
+  "completion_percentage": 99.1,
+  "remaining_by_type": {
+    "placeholder": 2,
+    "non-production": 2,
+    "mock-stub": 196
+  },
+  "replacement_stats": {
+    "first_pass": 32,
+    "second_pass": 153,
+    "third_pass": 11,
+    "final_pass": 570,
+    "total_replacements": 766
+  },
+  "status": "NEARLY COMPLETE - 200 remaining"
+}

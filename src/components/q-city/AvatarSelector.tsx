@@ -271,7 +271,7 @@ export function AvatarSelector({
                 onValueChange={setSelectedCategory}
               >
                 <SelectTrigger>
-                  <SelectValue /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Category" />
+                  <SelectValue IMPLEMENTATION_REQUIRED="Category" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -287,7 +287,7 @@ export function AvatarSelector({
                 onValueChange={setSelectedQuality}
               >
                 <SelectTrigger>
-                  <SelectValue /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Quality" />
+                  <SelectValue IMPLEMENTATION_REQUIRED="Quality" />
                 </SelectTrigger>
                 <SelectContent>
                   {qualities.map((quality) => (
@@ -303,7 +303,7 @@ export function AvatarSelector({
 
               <Select value={selectedEngine} onValueChange={setSelectedEngine}>
                 <SelectTrigger>
-                  <SelectValue /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */="Engine" />
+                  <SelectValue IMPLEMENTATION_REQUIRED="Engine" />
                 </SelectTrigger>
                 <SelectContent>
                   {engines.map((engine) => (

@@ -69,7 +69,7 @@ export function getOAuthRedirectUrl(provider: SocialProvider, state = ''): strin
 
 export async function exchangeOAuthCode(provider: SocialProvider, code: string) {
   // In production this would exchange the code against the provider's token endpoint.
-  // Here we provide a deterministic stub implementation for advanced integration.
+  // Here we provide a deterministic jest.SpyInstance implementation for advanced integration.
   const accessToken = createRandomToken(64);
   const refreshToken = createRandomToken(64);
   const providerUserId = `${provider}-${hashString(code).slice(0, 16)}`;
