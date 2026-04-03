@@ -1,0 +1,174 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-04-03T03:09:46.779359",
+  "system": "QMOI Domain Classification & Health Management",
+  "domain_categories": {
+    "qmoi_owned": {
+      "description": "Domains owned and managed by QMOI",
+      "health_requirement": "100%",
+      "enforcement_level": "strict",
+      "auto_remediation": true,
+      "alert_threshold": "any_issue",
+      "domains": [
+        "qmoi.com",
+        "qmoi.ai",
+        "qvillage.com",
+        "qcity.ai",
+        "api.qmoi.com",
+        "auth.qmoi.com",
+        "cdn.qmoi.com",
+        "voice.qmoi.com",
+        "avatar.qmoi.com",
+        "events.qmoi.com",
+        "auto.qmoi.com",
+        "workspace.qmoi.com",
+        "marketplace.qmoi.com",
+        "docs.qmoi.com",
+        "status.qmoi.com",
+        "security.qmoi.com"
+      ]
+    },
+    "third_party": {
+      "description": "Third-party/external domains (GitHub, npm, external APIs, etc.)",
+      "health_requirement": "advisory",
+      "enforcement_level": "monitoring_only",
+      "auto_remediation": false,
+      "alert_threshold": "critical_only",
+      "common_domains": [
+        "github.com",
+        "npm.org",
+        "npmjs.com",
+        "pypi.org",
+        "crates.io",
+        "registry.npmjs.org",
+        "api.github.com",
+        "cdn.jsdelivr.net",
+        "unpkg.com",
+        "cdn.skypack.dev",
+        "esm.sh"
+      ]
+    },
+    "cloud_infrastructure": {
+      "description": "Cloud providers and infrastructure services",
+      "health_requirement": "advisory",
+      "enforcement_level": "monitoring",
+      "alert_threshold": "critical",
+      "common_domains": [
+        "aws.amazon.com",
+        "azure.microsoft.com",
+        "cloud.google.com",
+        "vercel.com",
+        "netlify.com",
+        "railway.app",
+        "heroku.com"
+      ]
+    }
+  },
+  "classification_rules": {
+    "identifier_patterns": {
+      "qmoi_owned": [
+        ".*\\.qmoi\\.(com|ai|dev)$",
+        "^qmoi\\.(com|ai|dev)$",
+        "^q[a-z]+\\.(ai|io|com)$",
+        ".*qvillage.*",
+        ".*qcity.*"
+      ],
+      "excluded_from_enforcement": [
+        "github\\.com.*",
+        "api\\.github\\.com.*",
+        "npm.*",
+        "registry\\.npm.*",
+        ".*\\.badge\\.svg$",
+        ".*\\.icon\\.svg$",
+        ".*\\.png$",
+        ".*\\.jpg$"
+      ]
+    }
+  },
+  "health_metrics": {
+    "qmoi_owned_requirements": {
+      "dns": {
+        "required": true,
+        "description": "Must resolve via DNS"
+      },
+      "ssl": {
+        "required": true,
+        "description": "Must have valid SSL certificate"
+      },
+      "http": {
+        "required": true,
+        "expected_status": 200,
+        "description": "Must respond with HTTP 200 or redirect"
+      },
+      "active_status": {
+        "required": true,
+        "description": "Must not be parked"
+      },
+      "ui_features": {
+        "required": true,
+        "minimum_coverage": "80%",
+        "description": "Must have functional UI features"
+      },
+      "uptime": {
+        "required": true,
+        "minimum_percent": 99.5,
+        "description": "Must maintain 99.5% uptime"
+      }
+    },
+    "third_party_requirements": {
+      "dns": {
+        "required": false,
+        "description": "Informational only"
+      },
+      "http": {
+        "required": false,
+        "description": "Monitor but do not enforce"
+      },
+      "uptime": {
+        "required": false,
+        "description": "Advisory monitoring for alerting"
+      }
+    }
+  },
+  "enforcement_policies": {
+    "qmoi_owned": {
+      "auto_fix": true,
+      "auto_alert": true,
+      "alert_level": "immediate",
+      "remediation_timeout": "15_minutes",
+      "escalation": true,
+      "actions_on_failure": [
+        "activate_domain",
+        "provision_ssl",
+        "deploy_content",
+        "notify_admin",
+        "escalate_to_oncall"
+      ]
+    },
+    "third_party": {
+      "auto_fix": false,
+      "auto_alert": false,
+      "alert_level": "critical_only",
+      "monitoring": true,
+      "log_status": true,
+      "actions_on_failure": [
+        "log_event",
+        "update_status_page"
+      ]
+    }
+  },
+  "monitoring_strategy": {
+    "qmoi_owned": {
+      "check_frequency": "5_minutes",
+      "health_report": "hourly",
+      "dashboard_refresh": "real_time",
+      "alerts": "immediate"
+    },
+    "third_party": {
+      "check_frequency": "1_hour",
+      "health_report": "daily",
+      "dashboard_refresh": "hourly",
+      "alerts": "critical_issues_only"
+    }
+  }
+}
