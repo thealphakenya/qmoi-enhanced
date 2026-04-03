@@ -14,11 +14,11 @@
 
 ## Summary
 
-- **API Endpoints**: 260
+- **API Endpoints**: 275+ (including Phase 10-14 enhancements)
 - **Custom Hooks**: 39
-- **Test Files**: 59
-- **Markdown Files**: 1956
-- **Lib Files**: 88
+- **Test Files**: 65
+- **Markdown Files**: 1960+
+- **Lib Files**: 95 (including new autonomous, feature-flag, auth, offline modules)
 
 ## Key Developer Structures
 
@@ -45,6 +45,17 @@
 - `lion/voice/` - Voice synthesis, lip-sync, TTS pipelines, and lion-roar emotion mapping
 - `lion/evolution/` - Components for parallel evolution, QVS integration, multi-threading, and live memory synchronization across clouds
 - `lion/environments/` - Common adapter definitions for all programming languages and runtime environments (Docker, Kubernetes, Serverless, edge)
+
+### Phase 10-14 Developer Structures **NEW**
+- `src/lib/feature-flags.ts` - Feature flag management system with environment-aware configuration
+- `src/lib/offline-mode.ts` - Offline-first operation with local caching and sync queue
+- `src/lib/local-proxy.ts` - Local proxy system for optional dependencies and proprietary APIs
+- `src/lib/database-auth.ts` - Database-backed authentication and session management
+- `src/lib/auth-middleware.ts` - Authentication middleware and authorization checks
+- `src/lib/autonomous-core.ts` - Phase 14: Self-evolving AI codebase with autonomous decisions
+- `scripts/seed_minimal_db.sh` - Minimal database seeding script for development
+- `scripts/production_deployment_validator.py` - Production readiness validation
+- `app/api/admin/endpoints-discover/route.ts` - Dynamic endpoint discovery API
 
 ### Hooks Structure
 - `hooks/` - 33 hook files

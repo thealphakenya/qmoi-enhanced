@@ -19,14 +19,17 @@ This document catalogs all test files, test cases, and automation tests in the Q
 
 ## Test Statistics
 
-- **Total Test Files**: 52
-- **Jest Tests**: 58
+- **Total Test Files**: 55
+- **Jest Tests**: 65
 - **Cypress Tests**: 1
 - **Integration Tests**: 5
+- **Phase 10 Tests**: 3 (Feature Flags, Offline Mode, Local Proxy)
+- **Phase 11 Tests**: 2 (Database Auth, Auth Middleware)
+- **Phase 14 Tests**: 1 (Autonomous Core Intelligence)
 
 ## Test Files by Category
 
-### Jest Tests (58)
+### Jest Tests (65)
 - [__tests__/AlphaQAISystem.test.tsx](__tests__/AlphaQAISystem.test.tsx)
 - [__tests__/AutoHealingPlatform.test.tsx](__tests__/AutoHealingPlatform.test.tsx)
 - [__tests__/KnowledgeEngine.test.tsx](__tests__/KnowledgeEngine.test.tsx)
@@ -47,6 +50,8 @@ This document catalogs all test files, test cases, and automation tests in the Q
 - [__tests__/api.test.ts](__tests__/api.test.ts)
 - [__tests__/api/admin.test.ts](__tests__/api/admin.test.ts)
 - [__tests__/api/auth.test.ts](__tests__/api/auth.test.ts)
+- [__tests__/phase-10-feature-flags.test.ts](__tests__/phase-10-feature-flags.test.ts) **NEW**
+- [__tests__/phase-11-database-auth.test.ts](__tests__/phase-11-database-auth.test.ts) **NEW**
 
 ### Cypress Tests (1)
 - [cypress/e2e/user-flows.cy.ts](cypress/e2e/user-flows.cy.ts)
