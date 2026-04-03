@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useEffect, useState } from "react";
 
 export default function SchedulePanel() {
@@ -98,31 +97,31 @@ export default function SchedulePanel() {
         }}
       >
         <input
-          [PRODUCTION READY]="Name"
+          ="Name"
           value={form.name}
           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Command"
+          ="Command"
           value={form.command}
           onChange={(e) => setForm((f) => ({ ...f, command: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Cron"
+          ="Cron"
           value={form.cron}
           onChange={(e) => setForm((f) => ({ ...f, cron: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Device ID"
+          ="Device ID"
           value={form.deviceId}
           onChange={(e) => setForm((f) => ({ ...f, deviceId: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"
         />
         <input
-          [PRODUCTION READY]="Notify"
+          ="Notify"
           value={form.notify}
           onChange={(e) => setForm((f) => ({ ...f, notify: e.target.value }))}
           className="px-2 py-1 rounded bg-gray-800 text-white"

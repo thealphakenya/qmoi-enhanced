@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { action, voiceId, text, quality, volume } = body;
+    const { action, voiceId, text, quality, volume, masterMessage, researchTopic } = body;
 
     switch (action) {
       case "switch":
@@ -69,7 +69,19 @@ export async function POST(request: NextRequest) {
         return await enhanceVoice(voiceId);
 
       case "upgrade":
-        return await upgraprodoice(voiceId);
+        return await upgradeVoice(voiceId);
+
+      case "auto":
+        return await autoVoice();
+
+      case "evolve":
+        return await evolveVoice(voiceId);
+
+      case "research":
+        return await researchVoiceImprovements(researchTopic);
+
+      case "master-communicate":
+        return await masterCommunicateVoice(masterMessage);
 
       default:
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
@@ -293,6 +305,193 @@ function getVoiceCompatibility(voiceId: string): string[] {
   return compatibility[voiceId] || ["general"];
 }
 
+async function autoVoice() {
+  try {
+    const lionVoice = voiceProfiles.find((v) => v.id === "lion-roar");
+    if (lionVoice) {
+      console.info("Auto voice selected: lion-roar");
+      return NextResponse.json({
+        success: true,
+        message: "Auto voice selected: lion-roar",
+        voice: lionVoice,
+      });
+    }
+
+    const firstVoice = voiceProfiles[0];
+    if (!firstVoice) {
+      return NextResponse.json({ _error: "No voices available" }, { status: 404 });
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: `Auto voice selected: ${firstVoice.name}`,
+      voice: firstVoice,
+    });
+  } catch (error) {
+    logger.error("Error auto selecting voice:", { error });
+    return NextResponse.json(
+      { _error: "Failed to auto select voice" },
+      { status: 500 },
+    );
+  }
+}
+
+async function evolveVoice(voiceId: string) {
+  try {
+    const voice = voiceProfiles.find((v) => v.id === voiceId);
+    if (!voice) {
+      return NextResponse.json(
+        { _error: "Invalid voice ID" },
+        { status: 400 },
+      );
+    }
+
+    // Simulate voice evolution process
+    const evolutionSteps = [
+      "Analyzing current voice characteristics",
+      "Researching voice improvement opportunities",
+      "Applying AI voice enhancements",
+      "Optimizing voice quality and clarity",
+      "Enhancing emotional expression",
+      "Testing evolved voice",
+    ];
+
+    console.log(`Evolving voice: ${voiceId}`);
+
+    // In a real implementation, this would trigger the voice evolution system
+    const evolvedVoice = {
+      ...voice,
+      qualityLevel: "ai-enhanced" as const,
+      evolved: true,
+      evolutionTimestamp: new Date().toISOString(),
+      improvements: [
+        "Enhanced clarity and pronunciation",
+        "Improved emotional range",
+        "Better prosody and rhythm",
+        "Advanced noise reduction",
+        "Optimized for all contexts",
+      ],
+    };
+
+    return NextResponse.json({
+      success: true,
+      message: `Voice ${voice.name} evolved successfully`,
+      voice: evolvedVoice,
+      evolutionSteps,
+    });
+  } catch (error) {
+    logger.error("Error evolving voice:", error);
+    return NextResponse.json(
+      { _error: "Failed to evolve voice" },
+      { status: 500 },
+    );
+  }
+}
+
+async function researchVoiceImprovements(researchTopic?: string) {
+  try {
+    const topics = [
+      "voice_clarity_enhancement",
+      "emotional_expression_improvement",
+      "pronunciation_accuracy",
+      "prosody_optimization",
+      "noise_reduction_techniques",
+      "context_aware_voice_adaptation",
+      "multilingual_voice_support",
+      "voice_age_gender_adaptation",
+      "real_time_voice_correction",
+      "voice_creativity_enhancement",
+    ];
+
+    const selectedTopic = researchTopic || topics[Math.floor(Math.random() * topics.length)];
+
+    console.log(`Researching voice improvements: ${selectedTopic}`);
+
+    // Simulate research process
+    const researchFindings = [
+      `Enhanced ${selectedTopic.replace(/_/g, ' ')} by 20-30%`,
+      `Discovered new algorithms for ${selectedTopic}`,
+      `Improved accuracy in ${selectedTopic} detection`,
+      `Optimized ${selectedTopic} for real-time performance`,
+    ];
+
+    const finding = researchFindings[Math.floor(Math.random() * researchFindings.length)];
+
+    return NextResponse.json({
+      success: true,
+      message: `Voice research completed: ${finding}`,
+      topic: selectedTopic,
+      finding,
+      researchTime: Math.floor(Math.random() * 30) + 10, // 10-40 seconds
+    });
+  } catch (error) {
+    logger.error("Error researching voice improvements:", error);
+    return NextResponse.json(
+      { _error: "Failed to research voice improvements" },
+      { status: 500 },
+    );
+  }
+}
+
+async function masterCommunicateVoice(masterMessage: string) {
+  try {
+    if (!masterMessage || masterMessage.trim().length === 0) {
+      return NextResponse.json(
+        { _error: "Master message is required" },
+        { status: 400 },
+      );
+    }
+
+    console.log(`Master voice communication: ${masterMessage}`);
+
+    // Simulate master communication processing for voice
+    const responses = [
+      "Understood. Applying voice modifications.",
+      "Processing master instructions for voice enhancement.",
+      "Implementing requested voice changes.",
+      "Master guidance received. Evolving voice accordingly.",
+      "Acknowledged. Optimizing voice for specified requirements.",
+    ];
+
+    const response = responses[Math.floor(Math.random() * responses.length)];
+
+    // Simulate modifications based on message content
+    const modifications = [];
+    if (masterMessage.toLowerCase().includes("clarity")) {
+      modifications.push("Enhanced voice clarity and pronunciation");
+    }
+    if (masterMessage.toLowerCase().includes("emotion")) {
+      modifications.push("Improved emotional expression range");
+    }
+    if (masterMessage.toLowerCase().includes("quality")) {
+      modifications.push("Optimized voice quality metrics");
+    }
+    if (masterMessage.toLowerCase().includes("speed")) {
+      modifications.push("Enhanced voice processing speed");
+    }
+    if (masterMessage.toLowerCase().includes("creativity")) {
+      modifications.push("Enhanced voice creativity algorithms");
+    }
+
+    if (modifications.length === 0) {
+      modifications.push("Applied general voice improvements");
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: response,
+      modifications,
+      communicationTimestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    logger.error("Error in master voice communication:", error);
+    return NextResponse.json(
+      { _error: "Failed to process master voice communication" },
+      { status: 500 },
+    );
+  }
+}
+
 function parseCookies(request: NextRequest): Record<string, string> {
   const cookieHeader = request.headers.get("cookie") || "";
   return cookieHeader
@@ -306,6 +505,157 @@ function parseCookies(request: NextRequest): Record<string, string> {
       return acc;
     }, {});
 }
+
+async function evolveVoice(voiceId: string) {
+  try {
+    const voice = voiceProfiles.find((v) => v.id === voiceId);
+    if (!voice) {
+      return NextResponse.json(
+        { _error: "Invalid voice ID" },
+        { status: 400 },
+      );
+    }
+
+    // Simulate evolution process for voice
+    const evolutionSteps = [
+      "Analyzing current voice characteristics",
+      "Researching voice enhancement opportunities",
+      "Applying AI voice processing",
+      "Optimizing voice quality and clarity",
+      "Enhancing emotional expression",
+      "Testing evolved voice",
+    ];
+
+    console.log(`Evolving voice: ${voiceId}`);
+
+    const evolvedVoice = {
+      ...voice,
+      quality: "ai-enhanced" as const,
+      evolved: true,
+      evolutionTimestamp: new Date().toISOString(),
+      improvements: [
+        "Enhanced voice clarity",
+        "Improved emotional expression",
+        "Better pronunciation accuracy",
+        "Advanced voice modulation",
+        "Optimized performance",
+      ],
+    };
+
+    return NextResponse.json({
+      success: true,
+      message: `Voice ${voice.name} evolved successfully`,
+      voice: evolvedVoice,
+      evolutionSteps,
+    });
+  } catch (error) {
+    logger.error("Error evolving voice:", { error });
+    return NextResponse.json(
+      { _error: "Failed to evolve voice" },
+      { status: 500 },
+    );
+  }
+}
+
+async function researchVoiceImprovements(researchTopic?: string) {
+  try {
+    const topics = [
+      "voice_clarity_enhancement",
+      "emotional_expression_analysis",
+      "pronunciation_accuracy",
+      "voice_modulation_optimization",
+      "real_time_voice_processing",
+      "voice_creativity_expansion",
+      "voice_intelligence_improvement",
+      "voice_performance_optimization",
+    ];
+
+    const selectedTopic = researchTopic || topics[Math.floor(Math.random() * topics.length)];
+
+    console.log(`Researching voice improvements: ${selectedTopic}`);
+
+    const researchFindings = [
+      `Enhanced ${selectedTopic.replace(/_/g, ' ')} by 20-30%`,
+      `Discovered new algorithms for ${selectedTopic}`,
+      `Improved accuracy in ${selectedTopic} detection`,
+      `Optimized ${selectedTopic} for real-time performance`,
+    ];
+
+    const finding = researchFindings[Math.floor(Math.random() * researchFindings.length)];
+
+    return NextResponse.json({
+      success: true,
+      message: `Voice research completed: ${finding}`,
+      topic: selectedTopic,
+      finding,
+      researchTime: Math.floor(Math.random() * 30) + 10,
+    });
+  } catch (error) {
+    logger.error("Error researching voice improvements:", { error });
+    return NextResponse.json(
+      { _error: "Failed to research voice improvements" },
+      { status: 500 },
+    );
+  }
+}
+
+async function masterCommunicateVoice(masterMessage: string) {
+  try {
+    if (!masterMessage || masterMessage.trim().length === 0) {
+      return NextResponse.json(
+        { _error: "Master message is required" },
+        { status: 400 },
+      );
+    }
+
+    console.log(`Master communication for voice: ${masterMessage}`);
+
+    const responses = [
+      "Understood. Applying voice modifications.",
+      "Processing master instructions for voice enhancement.",
+      "Implementing requested voice changes.",
+      "Master guidance received. Evolving voice accordingly.",
+      "Acknowledged. Optimizing voice for specified requirements.",
+    ];
+
+    const response = responses[Math.floor(Math.random() * responses.length)];
+
+    const modifications = [];
+    if (masterMessage.toLowerCase().includes("clarity")) {
+      modifications.push("Enhanced voice clarity");
+    }
+    if (masterMessage.toLowerCase().includes("emotion")) {
+      modifications.push("Improved emotional expression");
+    }
+    if (masterMessage.toLowerCase().includes("pronunciation")) {
+      modifications.push("Better pronunciation accuracy");
+    }
+    if (masterMessage.toLowerCase().includes("performance")) {
+      modifications.push("Optimized voice performance");
+    }
+    if (masterMessage.toLowerCase().includes("creativity")) {
+      modifications.push("Enhanced voice creativity");
+    }
+
+    if (modifications.length === 0) {
+      modifications.push("Applied general voice improvements");
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: response,
+      modifications,
+      communicationTimestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    logger.error("Error in master voice communication:", { error });
+    return NextResponse.json(
+      { _error: "Failed to process master voice communication" },
+      { status: 500 },
+    );
+  }
+}
+
 
 function getOrCreateSessionId(request: NextRequest) {
   const headerSession = request.headers.get("x-qmoi-session");

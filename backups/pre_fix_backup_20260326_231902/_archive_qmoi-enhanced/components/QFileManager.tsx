@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React from "react";
 import { AIRequestRouter } from "../src/services/AIRequestRouter";
 import { MultiUserSessionManager } from "../src/services/MultiUserSessionManager";
@@ -32,7 +32,7 @@ const masterUserId = "master"; // fallback for master actions
       <div className="flex flex-col gap-2">
         <input
           type="text"
-          [PRODUCTION READY]="Edit file (path or name)"
+          ="Edit file (path or name)"
           className="p-1 border rounded"
           onKeyDown={async (e) => {
             if (e.key === "Enter" && e.currentTarget.value) {
@@ -51,7 +51,7 @@ const masterUserId = "master"; // fallback for master actions
         />
         <input
           type="text"
-          [PRODUCTION READY]="Show version/changelog (file or module)"
+          ="Show version/changelog (file or module)"
           className="p-1 border rounded"
           onKeyDown={async (e) => {
             if (e.key === "Enter" && e.currentTarget.value) {

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 import React, { useState, useEffect } from "react";
 import "./GitStatus.css";
@@ -31,7 +31,7 @@ export function GitStatus() {
   useEffect(() => {
     // Production:, fetch from backend git API endpoint
     const timer = setTimeout(() => {
-      [PRODUCTION READY] fetch or real API call
+       fetch or real API call
       setLoading(false);
     }, 500);
     return () => clearTimeout(timer);

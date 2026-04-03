@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
@@ -102,7 +101,7 @@ export default function QCityDevicePanel() {
   const isMaster = role === "admin";
 
   useEffect(() => {
-    [PRODUCTION READY] QCity status updates with unlimited resources
+     QCity status updates with unlimited resources
     const interval = setInterval(() => {
       setQcityStatus((prev) => ({
         ...prev,
@@ -138,7 +137,7 @@ export default function QCityDevicePanel() {
   const loadBuildFiles = async () => {
     if (!isMaster) return;
 
-    [PRODUCTION READY] loading build files from unlimited QCity storage
+     loading build files from unlimited QCity storage
     const files = [
       { name: "node_modules", size: "Unlimited", type: "directory" },
       { name: "build", size: "Unlimited", type: "directory" },
@@ -154,7 +153,7 @@ export default function QCityDevicePanel() {
 
   const executeInQCity = async (command: string) => {
     .log(`Executing in QCity with unlimited resources: ${command}`);
-    [PRODUCTION READY] QCity command execution with unlimited resources
+     QCity command execution with unlimited resources
     return {
       success: true,
       output: `QCity executed with unlimited resources: ${command}`,
@@ -164,7 +163,7 @@ export default function QCityDevicePanel() {
   // Handler for self-check & auto-fix
   const handleSelfCheck = async () => {
     setSelfCheckStatus("checking");
-    [PRODUCTION READY] self-check and auto-fix
+     self-check and auto-fix
     setTimeout(() => {
       setSelfCheckStatus("fixed");
       setErrorFixHistory((h) => [
@@ -768,7 +767,7 @@ export default function QCityDevicePanel() {
               >
                 <input
                   type="text"
-                  [PRODUCTION READY]="Enter command or file to process"
+                  ="Enter command or file to process"
                   className="border p-2 rounded w-2/3"
                 />
                 <Button type="submit" variant="default">
@@ -780,7 +779,7 @@ export default function QCityDevicePanel() {
                 are low. Progress and logs will appear below.
               </div>
               <div className="bg-muted p-2 rounded text-xs mt-2">
-                [[PRODUCTION READY]d] Progress: 100%
+                [d] Progress: 100%
                 <br />
                 Logs: Task completed successfully.
               </div>
@@ -798,7 +797,7 @@ export default function QCityDevicePanel() {
                 Only free/local/cloud runners are used by default.
               </div>
               <div className="bg-muted p-2 rounded text-xs mt-2">
-                [[PRODUCTION READY]d] Job 1: Running (cloud)
+                [d] Job 1: Running (cloud)
                 <br />
                 Job 2: Completed (local)
                 <br />

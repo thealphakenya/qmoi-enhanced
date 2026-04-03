@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -62,7 +62,7 @@ export default function QVillageDatasetsPanel() {
         <div className="mt-4 flex flex-col sm:flex-row gap-2">
           <input
             className="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            [PRODUCTION READY]="Search datasets..."
+            ="Search datasets..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />

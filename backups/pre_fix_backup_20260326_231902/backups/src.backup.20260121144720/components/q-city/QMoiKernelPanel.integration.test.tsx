@@ -1,8 +1,8 @@
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import QMoiKernelPanel from "./QMoiKernelPanel";
-import { server } from "../../[PRODUCTION READY]s/server";
+import { server } from "../../s/server";
 
 // MSW setup is handled in src/setupTests.ts, but tests create a local server
 // when possible to avoid relying on global ordering.
@@ -12,7 +12,7 @@ describe("QMoiKernelPanel Integration", () => {
     await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
       .__MSW_READY__;
     let mswInstalled = false;
-    const handlersMod = await import("../../[PRODUCTION READY]s/handlers");
+    const handlersMod = await import("../../s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const handlers = await handlersMod.getHandlers();
       server.use(...handlers);
@@ -22,7 +22,7 @@ describe("QMoiKernelPanel Integration", () => {
     if (!mswInstalled) {
       jest
         .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
-        .[PRODUCTION READY]Implementation(async (input: unknown, _init: unknown) => {
+        .Implementation(async (input: unknown, _init: unknown) => {
           const url =
             typeof input === "string"
               ? input
@@ -62,7 +62,7 @@ describe("QMoiKernelPanel Integration", () => {
     await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
       .__MSW_READY__;
     try {
-      const handlersMod = await import("../../[PRODUCTION READY]s/handlers");
+      const handlersMod = await import("../../s/handlers");
       if (typeof handlersMod.getHandlers === "function") {
         const handlers = await handlersMod.getHandlers();
         server.use(...handlers);
@@ -75,7 +75,7 @@ describe("QMoiKernelPanel Integration", () => {
   it("debug: raw fetch", async () => {
     await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
       .__MSW_READY__;
-    const handlersMod = await import("../../[PRODUCTION READY]s/handlers");
+    const handlersMod = await import("../../s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
       server.use(...hs);
@@ -87,14 +87,14 @@ describe("QMoiKernelPanel Integration", () => {
   });
 
   afterEach(() => {
-    // Reset unknown runtime handler overrides and clear [PRODUCTION READY] call history between
+    // Reset unknown runtime handler overrides and clear  call history between
     // tests so each test runs in a clean environment.
     try {
       server.resetHandlers();
     } catch (e) {
       // ignore
     }
-    jest.clearAll[PRODUCTION READY]s();
+    jest.clearAlls();
   });
 
   afterAll(() => {
@@ -113,13 +113,13 @@ describe("QMoiKernelPanel Integration", () => {
     } catch (e) {
       // ignore
     }
-    // Restore unknown [PRODUCTION READY]ed globals now that the suite has finished
-    jest.restoreAll[PRODUCTION READY]s();
+    // Restore unknown ed globals now that the suite has finished
+    jest.restoreAlls();
   });
 
   it("fetches and displays status from API", async () => {
     // Ensure canonical OK handlers are active for this test
-    const handlersMod = await import("../../[PRODUCTION READY]s/handlers");
+    const handlersMod = await import("../../s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
       server.use(...hs);
@@ -132,7 +132,7 @@ describe("QMoiKernelPanel Integration", () => {
 
   it("runs QFix and updates last action", async () => {
     // Ensure canonical OK handlers are active for this test
-    const handlersMod = await import("../../[PRODUCTION READY]s/handlers");
+    const handlersMod = await import("../../s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const hs = await handlersMod.getHandlers();
       server.use(...hs);
@@ -175,7 +175,7 @@ describe("QMoiKernelPanel Integration", () => {
   });
 
   it("handles API error gracefully", async () => {
-    // Replace handlers for this test to [PRODUCTION READY] a server error
+    // Replace handlers for this test to  a server error
     try {
       server.resetHandlers();
       const msw = await import("msw");
@@ -201,13 +201,13 @@ describe("QMoiKernelPanel Integration", () => {
     }
 
     // Ensure the override actually returns 500; if it doesn't (e.g., MSW
-    // isn't active), [PRODUCTION READY] fetch as a deterministic fallback for this test.
+    // isn't active),  fetch as a deterministic fallback for this test.
     try {
       const check = await fetch("/api/qmoi/status");
       if (check.status !== 500) {
         jest
           .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
-          .[PRODUCTION READY]Implementation(async (arg: unknown) => {
+          .Implementation(async (arg: unknown) => {
             const url =
               typeof arg === "string" ? arg : (arg as { url?: string })?.url;
             if (url && url.toString().endsWith("/api/qmoi/status")) {
@@ -219,7 +219,7 @@ describe("QMoiKernelPanel Integration", () => {
     } catch (e) {
       jest
         .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
-        .[PRODUCTION READY]Implementation(async (arg: unknown) => {
+        .Implementation(async (arg: unknown) => {
           const url =
             typeof arg === "string" ? arg : (arg as { url?: string })?.url;
           if (url && url.toString().endsWith("/api/qmoi/status")) {

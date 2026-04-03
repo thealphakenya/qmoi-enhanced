@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-[PRODUCTION READY] UI primitives that the component imports
-jest.[PRODUCTION READY]("@/components/ui/card", () => ({
+ UI primitives that the component imports
+jest.("@/components/ui/card", () => ({
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
@@ -17,28 +17,28 @@ jest.[PRODUCTION READY]("@/components/ui/card", () => ({
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.[PRODUCTION READY]("@/components/ui/button", () => ({
+jest.("@/components/ui/button", () => ({
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
 
-jest.[PRODUCTION READY]("@/components/ui/badge", () => ({
+jest.("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-jest.[PRODUCTION READY]("@/components/ui/progress", () => ({
+jest.("@/components/ui/progress", () => ({
   Progress: ({ value }: any) => <div data-value={value}></div>,
 }));
 
-jest.[PRODUCTION READY]("@/components/ui/tabs", () => ({
+jest.("@/components/ui/tabs", () => ({
   Tabs: ({ children }: any) => <div>{children}</div>,
   TabsContent: ({ children }: any) => <div>{children}</div>,
   TabsList: ({ children }: any) => <div>{children}</div>,
   TabsTrigger: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.[PRODUCTION READY]("lucide-react", () => ({
+jest.("lucide-react", () => ({
   TrendingUp: () => <span />,
   Zap: () => <span />,
   BarChart3: () => <span />,
@@ -48,8 +48,8 @@ import { SelfTrainingEcosystem } from "../src/components/q-city/SelfTrainingEcos
 
 describe("SelfTrainingEcosystem component", () => {
   beforeEach(() => {
-    // ensure global [PRODUCTION READY]s are reset
-    jest.resetAll[PRODUCTION READY]s();
+    // ensure global s are reset
+    jest.resetAlls();
   });
 
   it("renders header and comprehensive tabs", () => {
@@ -60,18 +60,18 @@ describe("SelfTrainingEcosystem component", () => {
   });
 
   it("fetches task list on mount and starts new training", async () => {
-    [PRODUCTION READY] initial list call
+     initial list call
     const listResult = {
       tasks: [{ id: "t1", model: "Foo", status: "completed" }],
     };
     const startResult = { task: { id: "t2", model: "Bar", status: "queued" } };
     global.fetch = jest
       .fn()
-      .[PRODUCTION READY]ResolvedValueOnce({ json: async () => listResult } as any)
-      .[PRODUCTION READY]ResolvedValueOnce({ json: async () => startResult } as any);
+      .ResolvedValueOnce({ json: async () => listResult } as any)
+      .ResolvedValueOnce({ json: async () => startResult } as any);
 
-    [PRODUCTION READY] prompt to return model name
-    .prompt = jest.fn().[PRODUCTION READY]ReturnValue("Bar");
+     prompt to return model name
+    .prompt = jest.fn().ReturnValue("Bar");
 
     render(<SelfTrainingEcosystem />);
 

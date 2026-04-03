@@ -10,7 +10,7 @@
 # QMOI System Endpoints
 
 **Last Updated**: 2026-04-02 (AUTO-GENERATED)
-**Total Endpoints**: 260
+**Total Endpoints**: 101
 **Last Scan**: 2026-04-02T08:07:14.590610Z
 
 ## Overview
@@ -143,6 +143,20 @@ This document catalogs all available endpoints in the QMOI system.
 - `GET` `/api/qvs`
 - `POST` `/api/qvs`
 
+#### QMOI Voice/Avatar APIs (12)
+- `GET` `/api/qmoi/avatars`
+- `POST` `/api/qmoi/avatars` (actions: evolve|research|master-communicate)
+- `GET` `/api/qmoi/avatars/[id]`
+- `POST` `/api/qmoi/avatars/[id]/evolve`
+- `POST` `/api/qmoi/avatars/[id]/research`
+- `POST` `/api/qmoi/avatars/[id]/master-communicate`
+- `GET` `/api/qmoi/voice-profiles`
+- `POST` `/api/qmoi/voice-profiles` (actions: evolve|research|master-communicate)
+- `GET` `/api/qmoi/voice-profiles/[id]`
+- `POST` `/api/qmoi/voice-profiles/[id]/evolve`
+- `POST` `/api/qmoi/voice-profiles/[id]/research`
+- `POST` `/api/qmoi/voice-profiles/[id]/master-communicate`
+
 #### Integration APIs (22)
 - `POST` `/api/cashon/start-trading`
 - `POST` `/api/cashon/stop-trading`
@@ -181,7 +195,7 @@ This document catalogs all available endpoints in the QMOI system.
 
 ## Statistics
 
-- **Total Endpoints**: 260
+- **Total Endpoints**: 101
 - **Evolution Endpoints**: 5
 - **Autoprod Endpoints**: 0
 - **Health Endpoints**: 11

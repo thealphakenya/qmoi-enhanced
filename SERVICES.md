@@ -78,11 +78,35 @@ This document catalogs all service implementations, adapters, and business logic
 
 - [`secretStore.ts`](services/secrets/secretStore.ts) - `.ts`
 
-### services/root (2 files)
+### services/root (4 files)
 
-- [`platformManager.ts`](services/platformManager.ts) - `.ts`
-- [`walletManager.ts`](services/walletManager.ts) - `.ts`
+- [`platformManager.ts`](services/platformManager.ts) - Platform management service
+- [`walletManager.ts`](services/walletManager.ts) - Wallet management service
+- [`avatarService.ts`](services/avatarService.ts) - Avatar selection & configuration service
+- [`voiceService.ts`](services/voiceService.ts) - Voice generation & synthesis service
 
+
+## 🎨 Avatar & Voice Services (NEW - Lion Mode)
+
+### Avatar Service
+- **File**: `services/avatarService.ts`
+- **Purpose**: Avatar selection, configuration, and switching
+- **Features**:
+  - Auto-selection logic (lion prioritization)
+  - Avatar upgrade & enhancement
+  - Real-time rendering config
+  - localStorage persistence
+  - API integration
+
+### Voice Service
+- **File**: `services/voiceService.ts`
+- **Purpose**: Voice profile management and TTS generation
+- **Features**:
+  - Auto-voice selection (lion-roar preference)
+  - Voice preview generation
+  - Lip-sync configuration
+  - Quality level adjustments
+  - Multi-engine support (Bark, XTTS, ElevenLabs)
 
 ## 🔄 Integration Points
 
@@ -91,6 +115,7 @@ This directory is integrated with:
 - Build and deployment pipelines
 - Testing and validation frameworks
 - Documentation system
+- Avatar & Voice System (auto mode)
 
 ## 📝 Guidelines
 
@@ -98,6 +123,7 @@ This directory is integrated with:
 - Code is production-ready
 - Documentation is comprehensive
 - Testing is implemented where applicable
+- Avatar/Voice services fully tested and production-ready
 
 ## 🛡️ Host Reachability Impact for Services
 - Added `scripts/host_reachability_check.py` to service health validation workflows

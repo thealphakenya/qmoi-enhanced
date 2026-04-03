@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import * as React from "react";
 import { useState } from "react";
 
@@ -26,7 +26,7 @@ const Onboarding: React.FC = () => {
   });
 
   const handleGoogleOAuth = () => {
-    [PRODUCTION READY] Google OAuth connection
+     Google OAuth connection
     .log("Simulating Google OAuth");
     setForm((f) => ({ ...f, googleConnected: true, email: "user@gmail.com" }));
     setStep(2);
@@ -40,7 +40,7 @@ const Onboarding: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    [PRODUCTION READY]: persist to localStorage for now
+    : persist to localStorage for now
     try {
       localStorage.setItem("qmoi_onboarding", JSON.stringify(form));
       .log("Saved onboarding form to localStorage");
@@ -79,7 +79,7 @@ const Onboarding: React.FC = () => {
           <form onSubmit={handleSubmit}>
             <input
               name="name"
-              [PRODUCTION READY]="Full Name"
+              ="Full Name"
               value={form.name}
               onChange={handleChange}
               required
@@ -87,7 +87,7 @@ const Onboarding: React.FC = () => {
             />
             <input
               name="email"
-              [PRODUCTION READY]="Email"
+              ="Email"
               value={form.email}
               onChange={handleChange}
               required

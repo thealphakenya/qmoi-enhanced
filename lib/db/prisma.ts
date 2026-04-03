@@ -100,6 +100,10 @@ export const db = {
     const prisma = getPrisma();
     return prisma.transaction || {};
   },
+  get track() {
+    const prisma = getPrisma();
+    return prisma.track || {};
+  },
 
   // Service-based access for compatibility
   userService: {
@@ -325,6 +329,63 @@ export const dbTransactions = {
       console.error("Failed to get connection stats:", error);
       return {};
     }
+  },
+
+  trackService: {
+    findMany: async (options?: any) => {
+      const prisma = getPrisma();
+      if (!prisma || !prisma.track) return [];
+      try {
+        return await prisma.track.findMany(options);
+      } catch (e) {
+        return [];
+      }
+    },
+    findUnique: async (where: any) => {
+      const prisma = getPrisma();
+      if (!prisma || !prisma.track) return null;
+      try {
+        return await prisma.track.findUnique({ where });
+      } catch (e) {
+        return null;
+      }
+    },
+    create: async (data: any) => {
+      const prisma = getPrisma();
+      if (!prisma || !prisma.track) return null;
+      try {
+        return await prisma.track.create({ data });
+      } catch (e) {
+        return null;
+      }
+    },
+    update: async (where: any, data: any) => {
+      const prisma = getPrisma();
+      if (!prisma || !prisma.track) return null;
+      try {
+        return await prisma.track.update({ where, data });
+      } catch (e) {
+        return null;
+      }
+    },
+    delete: async (where: any) => {
+      const prisma = getPrisma();
+      if (!prisma || !prisma.track) return null;
+      try {
+        return await prisma.track.delete({ where });
+      } catch (e) {
+        return null;
+      }
+    },
+    deleteMany: async (where?: any) => {
+      const prisma = getPrisma();
+      if (!prisma || !prisma.track) return { count: 0 };
+      try {
+        return await prisma.track.deleteMany({ where });
+      } catch (e) {
+        return { count: 0 };
+      }
+    },
   },
 };
 

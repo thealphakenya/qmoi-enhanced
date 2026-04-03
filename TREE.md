@@ -39,6 +39,13 @@
 - `src/app/api/` - Secondary API route location, if used for alternative app structure
 - Total scanned API directories: 1 + 1
 
+### Lion Developer Structure
+- `lion/` (conceptual) - Core intelligent evolution, multi-language compatibility, and environment-awareness modules across Node.js, Python, Go, Rust, Java, C#, TS, and JS
+- `lion/avatars/` - Avatar/voice profile logic for Lion mode (automatic selection, AI enhancement, real-time rendering, adaptive animation)
+- `lion/voice/` - Voice synthesis, lip-sync, TTS pipelines, and lion-roar emotion mapping
+- `lion/evolution/` - Components for parallel evolution, QVS integration, multi-threading, and live memory synchronization across clouds
+- `lion/environments/` - Common adapter definitions for all programming languages and runtime environments (Docker, Kubernetes, Serverless, edge)
+
 ### Hooks Structure
 - `hooks/` - 33 hook files
 - `src/hooks/` - 7 hook files

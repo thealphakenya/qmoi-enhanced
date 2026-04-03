@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useEffect, useRef, useState } from "react";
 
 interface SpeechRecognitionEventResult {
@@ -22,7 +22,7 @@ interface WindowWithSpeech extends Window {
 const win = window as WindowWithSpeech;
 
 // Voice and gesture control integration. Uses Web Speech API for voice commands
-// and comprehensive camera access for gesture detection ([PRODUCTION READY]).
+// and comprehensive camera access for gesture detection ().
 
 export const VoiceGestureHooks: React.FC = () => {
   const recognitionRef = useRef<any>(null);
@@ -61,7 +61,7 @@ export const VoiceGestureHooks: React.FC = () => {
         })
       );
     } else if (command.includes("close window")) {
-      // Close top window ([PRODUCTION READY])
+      // Close top window ()
       console.log("Voice: close window");
     } else if (command.includes("run test")) {
       // Run tests

@@ -4,6 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import { NextRequest, NextResponse } from "next/server";
+import { getStorageAdapter } from "@/lib/storage-adapter";
 
 /**
  * File Upload Handler
@@ -45,23 +46,26 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Store file (in production, use cloud storage like S3)
-    const fileId = `file-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-    const fileName = `${fileId}-${file.name}`;
-
-    const fileData = {
-      id: fileId,
-      name: file.name,
-      size: file.size,
-      type: file.type,
+    // Use storage adapter to upload file
+    const storage = getStorageAdapter();
+    const result = await storage.upload(file, {
       userId,
-      uploadedAt: new Date(),
-      url: `/api/qmoi/files/${fileId}`,
-    };
+      metadata: {
+        uploadedVia: 'api',
+        originalName: file.name
+      }
+    });
+
+    if (!result.success) {
+      return NextResponse.json(
+        { error: result.error || "Failed to upload file" },
+        { status: 500 },
+      );
+    }
 
     return NextResponse.json({
       success: true,
-      file: fileData,
+      file: result.metadata,
       message: `File ${file.name} uploaded successfully`,
     });
   } catch (error) {

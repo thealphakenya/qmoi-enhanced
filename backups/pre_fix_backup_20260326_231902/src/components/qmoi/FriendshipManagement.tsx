@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -311,7 +311,7 @@ export function FriendshipManagement({
         >
           <input
             type="text"
-            [PRODUCTION READY]="Friend's User ID or Username"
+            ="Friend's User ID or Username"
             value={friendInput}
             onChange={(e) => setFriendInput(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600"
@@ -319,7 +319,7 @@ export function FriendshipManagement({
           />
 
           <textarea
-            [PRODUCTION READY]="Add a personal message (optional)"
+            ="Add a personal message (optional)"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 h-20"
@@ -371,7 +371,7 @@ export function FriendshipManagement({
       {/* Search */}
       <input
         type="text"
-        [PRODUCTION READY]="Search friends..."
+        ="Search friends..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         className="w-full px-3 py-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600"

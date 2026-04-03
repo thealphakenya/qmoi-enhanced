@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import QMoiKernelPanel from "./QMoiKernelPanel";
 
-[PRODUCTION READY] the custom hook
-jest.[PRODUCTION READY]("../../hooks/useQmoiKernel", () => ({
+ the custom hook
+jest.("../../hooks/useQmoiKernel", () => ({
   useQmoiKernel: () => ({
     status: {
       status: "OK",
@@ -68,7 +68,7 @@ describe("QMoiKernelPanel", () => {
 
   it("disables buttons when loading", () => {
     jest.resetModules();
-    jest.do[PRODUCTION READY]("../../hooks/useQmoiKernel", () => ({
+    jest.do("../../hooks/useQmoiKernel", () => ({
       useQmoiKernel: () => ({
         status: {
           status: "OK",
@@ -95,7 +95,7 @@ describe("QMoiKernelPanel", () => {
 
   it("shows error message if error exists", () => {
     jest.resetModules();
-    jest.do[PRODUCTION READY]("../../hooks/useQmoiKernel", () => ({
+    jest.do("../../hooks/useQmoiKernel", () => ({
       useQmoiKernel: () => ({
         status: {
           status: "OK",

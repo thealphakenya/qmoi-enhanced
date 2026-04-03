@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useEffect, useState } from "react";
 import type { AvatarConfig } from "./avatarsConfig";
 import { useToast } from "@/components/ui/use-toast";
@@ -84,7 +84,7 @@ export default function AviatorGalleryPanel() {
     _e.preventDefault();
     if (!avatarFile && !voiceFile) return;
     setUploading(true);
-    [PRODUCTION READY]bed upload
+    bed upload
     setTimeout(() => {
       toast({
         title: "Upload Submitted",

@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useEffect } from "react";
 
 export function Analytics() {
   useEffect(() => {
-    // complete analytics [PRODUCTION READY]: log pageview for local dev/tests
+    // complete analytics : log pageview for local dev/tests
     try {
       console.info("Analytics: pageview");
     } catch (e) {

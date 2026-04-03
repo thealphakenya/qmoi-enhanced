@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 import React, { useState, useEffect } from "react";
 import "./GitStatus.css";
@@ -26,7 +26,7 @@ export function GitStatus() {
   useEffect(() => {
     // Production:, fetch from backend git API endpoint
     const timer = setTimeout(() => {
-      [PRODUCTION READY] fetch or real API call
+       fetch or real API call
       setLoading(false);
     }, 500);
     return () => clearTimeout(timer);

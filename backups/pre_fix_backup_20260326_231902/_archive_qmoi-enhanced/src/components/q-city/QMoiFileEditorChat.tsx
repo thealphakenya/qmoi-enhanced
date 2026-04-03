@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useState, ReactNode } from "react";
 
 function highlightCode(code: string) {
@@ -311,7 +311,7 @@ export default function QMoiFileEditorChat({
           <input
             value={batchFiles}
             onChange={(e) => setBatchFiles(e.target.value)}
-            [PRODUCTION READY]="file1.py,file2.ts,..."
+            ="file1.py,file2.ts,..."
             style={{
               width: "60%",
               marginRight: 8,
@@ -325,7 +325,7 @@ export default function QMoiFileEditorChat({
           <input
             value={batchOp}
             onChange={(e) => setBatchOp(e.target.value)}
-            [PRODUCTION READY]="operation (e.g. lint, format)"
+            ="operation (e.g. lint, format)"
             style={{
               width: "30%",
               background: "#111",
@@ -389,7 +389,7 @@ export default function QMoiFileEditorChat({
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          [PRODUCTION READY]="/view /edit /append /replace ..."
+          ="/view /edit /append /replace ..."
           style={{
             flex: 1,
             background: "#111",

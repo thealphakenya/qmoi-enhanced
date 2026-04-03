@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
@@ -276,7 +275,7 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
                 type="text"
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
-                [PRODUCTION READY]="Enter a name..."
+                ="Enter a name..."
                 className="flex-1 px-3 py-2 border rounded-md"
                 onKeyPress={(e) => e.key === "Enter" && handleAddName()}
               />

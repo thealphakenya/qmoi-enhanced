@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -70,13 +70,13 @@ const SocialAutomationPanel: React.FC = () => {
       <CardContent>
         <div className="mb-4">
           <Input
-            [PRODUCTION READY]="Status/News Content"
+            ="Status/News Content"
             value={content}
             onChange={(_e) => setContent(_e.target.value)}
             className="mb-2"
           />
           <Input
-            [PRODUCTION READY]="Platform (WhatsApp, Telegram, etc.)"
+            ="Platform (WhatsApp, Telegram, etc.)"
             value={platform}
             onChange={(_e) => setPlatform(_e.target.value)}
             className="mb-2"
@@ -102,7 +102,7 @@ const SocialAutomationPanel: React.FC = () => {
                   <td>{c.tags.join(", ")}</td>
                   <td>
                     <Input
-                      [PRODUCTION READY]="Tag"
+                      ="Tag"
                       value={tag}
                       onChange={(_e) => setTag(_e.target.value)}
                       className="inline-block w-24 mr-2"

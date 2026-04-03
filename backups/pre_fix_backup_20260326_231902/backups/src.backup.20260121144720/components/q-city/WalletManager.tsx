@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+//  this file has no remaining non-production markers
 /* eslint-env browser */
 import React, { useState, useEffect } from "react";
 import { useToast } from "../../../hooks/use-toast";

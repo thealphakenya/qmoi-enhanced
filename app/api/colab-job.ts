@@ -3,12 +3,30 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// @ts-nocheck
-/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import { logEvent } from "../../../lib/security_check";
+
+// Type definitions
+interface JobSpec {
+  projectId?: string;
+  projectType?: string;
+  projectName?: string;
+  source?: string;
+}
+
+interface Dataset {
+  name: string;
+  [key: string]: any;
+}
+
+interface ColabJobResponse {
+  success: boolean;
+  status: string;
+  timestamp: string;
+  note: string;
+  [key: string]: any;
+}
 
 const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
 
@@ -25,7 +43,7 @@ const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
 
 // production: Integrate with Google Colab Notebooks API or AWS SageMaker
 // Use authenticated requests to cloud job service
-async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
+async function installPackage(pkg: string, manager: "npm" | "pip" = "npm"): Promise<ColabJobResponse> {
   // Local orchestrator: logs the request and returns success 
   // production: Call Google Colab API or AWS SageMaker API to actually install
   logEvent("colab_install", {
@@ -45,7 +63,7 @@ async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
 
 // Upload dataset to Colab/cloud (local metadata path)
 // production: Integrate with HuggingFace Datasets Hub or AWS S3
-async function uploadDataset(dataset: Dataset) {
+async function uploadDataset(dataset: Dataset): Promise<ColabJobResponse> {
   // Local handler: logs the dataset and returns success; production needs cloud object storage integration
   logEvent("colab_upload", {
     dataset: dataset.name,
@@ -63,7 +81,7 @@ async function uploadDataset(dataset: Dataset) {
 
 // Execute job in Colab/cloud (adapted for local workflow or external provider)
 // production: Integrate with Google Colab API or AWS SageMaker
-async function executeColabJob(jobSpec: JobSpec) {
+async function executeColabJob(jobSpec: JobSpec): Promise<ColabJobResponse> {
   // Local orchestrator implementation: creates a job ID and queues job metadata for retrieval
   const jobId = "job-" + Date.now();
   logEvent("colab_execute", {
@@ -83,7 +101,7 @@ async function executeColabJob(jobSpec: JobSpec) {
 }
 
 // production: Query cloud job service for real status
-async function getColabJobStatus(jobId: number) {
+async function getColabJobStatus(jobId: number): Promise<ColabJobResponse> {
   // complete production: return current persisted payload where possible
   logEvent("colab_status", {
     jobId,
@@ -105,22 +123,10 @@ function logEvent(event: string, details: unknown) {
   );
 }
 
-const persistedJobs: any[] = [];
-function persistJob(job: any) {
+const persistedJobs: ColabJobResponse[] = [];
+function persistJob(job: ColabJobResponse) {
   persistedJobs.push(job);
   logEvent("job_persisted", job);
-}
-
-interface JobSpec {
-  projectId?: string;
-  projectType?: string;
-  projectName?: string;
-  source?: string;
-}
-
-interface Dataset {
-  name: string;
-  [key: string]: any;
 }
 
 // Extend API handler to support new endpoints

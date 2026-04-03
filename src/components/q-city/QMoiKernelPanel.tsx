@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useEffect, useCallback } from 'react';
 import EnhancedQMOIDashboard from './EnhancedQMOIDashboard';
 import { useQmoiKernel } from '../../hooks/useQmoiKernel';
@@ -31,7 +30,7 @@ function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
 
   if (!isMaster) return null;
 
-  // QMOI: [PRODUCTION READY]d error for auto-fix and notification test
+  // QMOI: d error for auto-fix and notification test
   const = ;
 
   return (

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -342,7 +342,7 @@ export function QMOIOwnDeviceLogs({
               <div>
                 <label className="text-sm font-medium">Device ID</label>
                 <Input
-                  [PRODUCTION READY]="Filter by device ID"
+                  ="Filter by device ID"
                   value={deviceFilter}
                   onChange={(e) => setDeviceFilter(e.target.value)}
                 />

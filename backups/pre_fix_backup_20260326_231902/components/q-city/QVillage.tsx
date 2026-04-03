@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -500,7 +500,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
-                  [PRODUCTION READY]="Search models, spaces, datasets..."
+                  ="Search models, spaces, datasets..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10"
@@ -510,7 +510,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
             <Select value={selectedFilter} onValueChange={setSelectedFilter}>
               <SelectTrigger className="w-full lg:w-48">
                 <Filter className="h-4 w-4 mr-2" />
-                <SelectValue [PRODUCTION READY]="Filter by status" />
+                <SelectValue ="Filter by status" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Status</SelectItem>
@@ -1531,7 +1531,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
                           </div>
                         </div>
 
-                        {/* Performance Chart [PRODUCTION READY] */}
+                        {/* Performance Chart  */}
                         <div className="h-16 bg-gray-50 rounded flex items-center justify-center">
                           <span className="text-sm text-gray-500">
                             Performance Chart
@@ -2163,12 +2163,12 @@ export default function QVillage({ isMaster }: QVillageProps) {
 
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" [PRODUCTION READY]="Enter name..." />
+              <Input id="name" ="Enter name..." />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="description">Description</Label>
-              <Textarea id="description" [PRODUCTION READY]="Enter description..." />
+              <Textarea id="description" ="Enter description..." />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -2176,7 +2176,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
                 <Label htmlFor="type">Type</Label>
                 <Select>
                   <SelectTrigger>
-                    <SelectValue [PRODUCTION READY]="Select type" />
+                    <SelectValue ="Select type" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="text">Text</SelectItem>
@@ -2191,7 +2191,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
                 <Label htmlFor="framework">Framework</Label>
                 <Select>
                   <SelectTrigger>
-                    <SelectValue [PRODUCTION READY]="Select framework" />
+                    <SelectValue ="Select framework" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="pytorch">PyTorch</SelectItem>
@@ -2208,7 +2208,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
               <Label htmlFor="tags">Tags</Label>
               <Input
                 id="tags"
-                [PRODUCTION READY]="Enter tags separated by commas..."
+                ="Enter tags separated by commas..."
               />
             </div>
 
@@ -2249,7 +2249,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
                 <Label htmlFor="project-name">Project Name</Label>
                 <Input
                   id="project-name"
-                  [PRODUCTION READY]="Enter project name"
+                  ="Enter project name"
                   value={newProject.name}
                   onChange={(e) =>
                     setNewProject({ ...newProject, name: e.target.value })
@@ -2265,7 +2265,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
                   }
                 >
                   <SelectTrigger>
-                    <SelectValue [PRODUCTION READY]="Select type" />
+                    <SelectValue ="Select type" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="mobile">Mobile App</SelectItem>
@@ -2283,7 +2283,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
               <Label htmlFor="project-description">Description</Label>
               <Textarea
                 id="project-description"
-                [PRODUCTION READY]="Describe your project idea..."
+                ="Describe your project idea..."
                 value={newProject.description}
                 onChange={(e) =>
                   setNewProject({ ...newProject, description: e.target.value })

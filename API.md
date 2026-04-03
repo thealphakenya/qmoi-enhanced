@@ -11,7 +11,7 @@
 
 **Generated**: 2026-04-02 SESSION CONTINUOUS
 **Last Updated**: 2026-04-02T08:07:14.589843Z
-**Total Endpoints**: 260
+**Total Endpoints**: 268
 
 ## Overview
 
@@ -99,6 +99,22 @@ Content-Type: application/json
 - `GET /api/domains/health` - Domain health
 - `POST /api/domains/check` - Check domain
 - `GET /api/domains/report` - Domain report
+
+### Avatar System
+- `GET /api/qmoi/avatars` - Get all available avatars with metadata
+- `POST /api/qmoi/avatars` - Execute avatar actions (evolve, research, master-communicate)
+- `GET /api/qmoi/avatars/[id]` - Get specific avatar details
+- `POST /api/qmoi/avatars/[id]/evolve` - Evolve specific avatar
+- `POST /api/qmoi/avatars/[id]/research` - Research avatar improvements
+- `POST /api/qmoi/avatars/[id]/master-communicate` - Master communication for avatar editing
+
+### Voice System
+- `GET /api/qmoi/voice-profiles` - Get all available voice profiles
+- `POST /api/qmoi/voice-profiles` - Execute voice actions (evolve, research, master-communicate)
+- `GET /api/qmoi/voice-profiles/[id]` - Get specific voice profile details
+- `POST /api/qmoi/voice-profiles/[id]/evolve` - Evolve specific voice profile
+- `POST /api/qmoi/voice-profiles/[id]/research` - Research voice improvements
+- `POST /api/qmoi/voice-profiles/[id]/master-communicate` - Master communication for voice editing
 
 ### QVillage
 - `GET /api/qvillage` - QVillage info

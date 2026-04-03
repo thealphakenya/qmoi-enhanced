@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 /* eslint-env browser */
 import React, { useEffect, useState } from "react";
 import {
@@ -110,13 +110,13 @@ export default function QMoiMemoryPanel({
         <input
           value={feedback}
           onChange={(_e) => setFeedback(_e.target.value)}
-          [PRODUCTION READY]="Feedback (praise/correction)"
+          ="Feedback (praise/correction)"
           style={{ marginRight: 8 }}
         />
         <input
           value={correction}
           onChange={(_e) => setCorrection(_e.target.value)}
-          [PRODUCTION READY]="Correction (optional)"
+          ="Correction (optional)"
           style={{ marginRight: 8 }}
         />
         <button onClick={submitFeedback}>Submit Feedback</button>

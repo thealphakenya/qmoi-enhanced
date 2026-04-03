@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+//  this file has no remaining non-production markers
 import React, { useState } from "react";
 
 export const QMoiProjectDashboard: React.FC = () => {

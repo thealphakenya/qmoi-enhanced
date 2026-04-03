@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useEffect, useState } from "react";
 import { useWindowManager } from "./UniversalWindowManager";
 
@@ -20,14 +20,14 @@ export const WindowTelemetryPanel: React.FC = () => {
   });
 
   useEffect(() => {
-    [PRODUCTION READY] collecting metrics
+     collecting metrics
     const interval = setInterval(() => {
       setMetrics({
         totalWindows: windows.length,
         avgZIndex:
           windows.length > 0 ? windows.reduce((sum, w) => sum + w.zIndex, 0) / windows.length : 0,
-        memoryUsage: Math.random() * 100, [PRODUCTION READY]
-        renderTime: Math.random() * 50, [PRODUCTION READY]
+        memoryUsage: Math.random() * 100, 
+        renderTime: Math.random() * 50, 
         eventsProcessed: Math.floor(Math.random() * 1000),
       });
     }, 2000);

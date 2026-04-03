@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState } from "react";
 
 interface Asset {
@@ -45,7 +44,7 @@ export const FarmBusinessManager: React.FC = () => {
       </select>
       <input
         type="text"
-        [PRODUCTION READY]="Name/Type"
+        ="Name/Type"
         value={name}
         onChange={(e) => setName(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}

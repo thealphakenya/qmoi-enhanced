@@ -3,14 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useEffect } from "react";
 
 // Automatically adjusts UI based on user preferences or detected needs.
 
 export const AccessibilityAdjuster: React.FC = () => {
   useEffect(() => {
-    // Detect user preferences ([PRODUCTION READY])
+    // Detect user preferences ()
     const prefersHighContrast = window.matchMedia("(prefers-contrast: high)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

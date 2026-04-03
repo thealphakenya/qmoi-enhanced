@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -111,13 +111,13 @@ const QApiKeyManager: React.FC = () => {
           <p style={{ margin: 0, color: "#334155" }}>
             Advanced logging, persistent storage and detailed usage analytics
             are available in the full deployment. Use the button below to open a
-            usage [PRODUCTION READY].
+            usage .
           </p>
           <Button
             size="small"
             variant="contained"
             color="secondary"
-            onClick={() => alert("Open API key usage logs ([PRODUCTION READY])")}
+            onClick={() => alert("Open API key usage logs ()")}
             style={{ marginTop: 8 }}
           >
             View Usage Logs

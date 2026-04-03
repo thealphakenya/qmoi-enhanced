@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import QMoiKernelPanel from "./QMoiKernelPanel";
@@ -28,8 +27,8 @@ describe("QMoiKernelPanel Integration", () => {
   });
 
   it("handles API error gracefully", async () => {
-    // Override handler to [PRODUCTION READY] error
-    const { server } = require("../../[PRODUCTION READY]s/server");
+    // Override handler to  error
+    const { server } = require("../../s/server");
     server.use(
       require("msw").rest.get("/api/qmoi/status", (req, res, ctx) => {
         return res(ctx.status(500));

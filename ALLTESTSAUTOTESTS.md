@@ -10,7 +10,7 @@
 # ALLTESTSAUTOTESTS.md - Comprehensive Test Documentation
 
 **Last Updated**: 2026-04-02
-**Total Test Files**: 59
+**Total Test Files**: 52
 **Last Scan**: 2026-04-02T08:07:14.596469Z
 
 ## Overview
@@ -19,7 +19,7 @@ This document catalogs all test files, test cases, and automation tests in the Q
 
 ## Test Statistics
 
-- **Total Test Files**: 59
+- **Total Test Files**: 52
 - **Jest Tests**: 58
 - **Cypress Tests**: 1
 - **Integration Tests**: 5
@@ -61,7 +61,15 @@ This document catalogs all test files, test cases, and automation tests in the Q
 - [__tests__/api.models.test.ts](__tests__/api.models.test.ts)
 - [__tests__/api.qi-spaces.test.ts](__tests__/api.qi-spaces.test.ts)
 - [__tests__/api.qmoi.chat.test.ts](__tests__/api.qmoi.chat.test.ts)
+- [__tests__/api.qmoi-avatar-voice.test.ts](__tests__/api.qmoi-avatar-voice.test.ts)
 - [__tests__/api.selfTraining.test.ts](__tests__/api.selfTraining.test.ts)
+
+### Component Tests
+- [__tests__/components/AvatarSelector.test.tsx](__tests__/components/AvatarSelector.test.tsx)
+- [__tests__/components/QAvatar.test.tsx](__tests__/components/QAvatar.test.tsx)
+
+### Comprehensive Feature Tests
+- [__tests__/avatar-voice-comprehensive.test.ts](__tests__/avatar-voice-comprehensive.test.ts)
 
 ### Unit Tests
 - [__tests__/AlphaQAISystem.test.tsx](__tests__/AlphaQAISystem.test.tsx)
@@ -69,6 +77,7 @@ This document catalogs all test files, test cases, and automation tests in the Q
 - [__tests__/KnowledgeEngine.test.tsx](__tests__/KnowledgeEngine.test.tsx)
 - [__tests__/MasterLinkValidator.test.ts](__tests__/MasterLinkValidator.test.ts)
 - [__tests__/ModelRegistry.test.tsx](__tests__/ModelRegistry.test.tsx)
+- [__tests__/QMediaPlayer.test.tsx](__tests__/QMediaPlayer.test.tsx)
 - [__tests__/SelfTrainingEcosystem.test.tsx](__tests__/SelfTrainingEcosystem.test.tsx)
 - [__tests__/agentService.test.ts](__tests__/agentService.test.ts)
 - [__tests__/api.accountability.test.ts](__tests__/api.accountability.test.ts)

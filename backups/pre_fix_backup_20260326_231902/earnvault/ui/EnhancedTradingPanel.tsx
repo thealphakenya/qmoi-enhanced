@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 import React, { useState, useEffect } from "react";
 import {
@@ -727,7 +727,7 @@ export default function EnhancedTradingPanel() {
                   <div>
                     <Label>Symbol</Label>
                     <Input
-                      [PRODUCTION READY]="e.g., BTCUSDT"
+                      ="e.g., BTCUSDT"
                       value={orderForm.symbol}
                       onChange={(e) =>
                         setOrderForm((prev) => ({
@@ -762,7 +762,7 @@ export default function EnhancedTradingPanel() {
                       type="number"
                       step="0.001"
                       min="0.001"
-                      [PRODUCTION READY]="0.001"
+                      ="0.001"
                       value={orderForm.size}
                       onChange={(e) =>
                         setOrderForm((prev) => ({
@@ -780,7 +780,7 @@ export default function EnhancedTradingPanel() {
                     <Input
                       type="number"
                       step="0.01"
-                      [PRODUCTION READY]="0.00"
+                      ="0.00"
                       value={orderForm.price}
                       onChange={(e) =>
                         setOrderForm((prev) => ({
@@ -795,7 +795,7 @@ export default function EnhancedTradingPanel() {
                     <Input
                       type="number"
                       step="0.01"
-                      [PRODUCTION READY]="0.00"
+                      ="0.00"
                       value={orderForm.stopLoss}
                       onChange={(e) =>
                         setOrderForm((prev) => ({
@@ -810,7 +810,7 @@ export default function EnhancedTradingPanel() {
                     <Input
                       type="number"
                       step="0.01"
-                      [PRODUCTION READY]="0.00"
+                      ="0.00"
                       value={orderForm.takeProfit}
                       onChange={(e) =>
                         setOrderForm((prev) => ({

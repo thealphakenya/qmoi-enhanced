@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 import React, { useState } from "react";
 
@@ -19,7 +19,7 @@ export function LcSpaces() {
         <input
           value={input}
           onChange={(_e) => setInput(_e.target.value)}
-          [PRODUCTION READY]="Add new LC space..."
+          ="Add new LC space..."
         />
         <button onClick={add} style={{ marginLeft: 8 }}>
           Add

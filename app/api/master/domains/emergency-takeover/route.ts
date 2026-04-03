@@ -106,7 +106,18 @@ export async function POST() {
   }
 }
 
-async function saveTrackEntry(entry: any): Promise<void> {
+interface TrackEntry {
+  id: string;
+  type: string;
+  action: string;
+  details: string;
+  timestamp: string;
+  owner: string;
+  status: string;
+  metadata: Record<string, any>;
+}
+
+async function saveTrackEntry(entry: TrackEntry): Promise<void> {
   try {
     const tracksDir = path.join(process.cwd(), 'TRACKS');
     const tracksFile = path.join(tracksDir, 'master_tracks.json');

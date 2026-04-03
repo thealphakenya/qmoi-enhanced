@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -133,14 +133,14 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
         </h4>
         <div className="flex gap-2 mb-2">
           <Input
-            [PRODUCTION READY]="Time (_e.g. 10:00)"
+            ="Time (_e.g. 10:00)"
             value={newProgram.time}
             onChange={(_e) =>
               setNewProgram((np) => ({ ...np, time: _e.target.value }))
             }
           />
           <Input
-            [PRODUCTION READY]="Title"
+            ="Title"
             value={newProgram.title}
             onChange={(_e) =>
               setNewProgram((np) => ({ ...np, title: _e.target.value }))

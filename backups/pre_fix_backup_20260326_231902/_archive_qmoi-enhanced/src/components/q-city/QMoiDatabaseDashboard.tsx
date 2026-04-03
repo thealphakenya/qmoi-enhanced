@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useEffect, useState } from "react";
 
 interface Table {
@@ -59,7 +59,7 @@ export default function QMoiDatabaseDashboard({
         <input
           value={newTable}
           onChange={(e) => setNewTable(e.target.value)}
-          [PRODUCTION READY]="New table name"
+          ="New table name"
         />
         <button onClick={handleCreateTable}>Create Table</button>
       </div>

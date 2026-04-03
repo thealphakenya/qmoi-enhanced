@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useState } from "react";
 
 // Define a complete BluetoothDevice type for type safety
@@ -44,7 +44,7 @@ export const BluetoothManager: React.FC = () => {
     setError(null);
     setConnecting(true);
     try {
-      [PRODUCTION READY] connection (replace with real connection logic)
+       connection (replace with real connection logic)
       setConnectedDevice(device);
       // Optionally get location
       if (navigator.geolocation) {
@@ -52,7 +52,7 @@ export const BluetoothManager: React.FC = () => {
           setLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
         });
       }
-      [PRODUCTION READY] AI giving directions
+       AI giving directions
       setDirections("Head north for 2km, then turn right.");
     } catch (e: unknown) {
       setError(e.message || "Connection failed.");

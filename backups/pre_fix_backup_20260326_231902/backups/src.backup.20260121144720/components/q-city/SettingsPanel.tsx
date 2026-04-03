@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+//  this file has no remaining non-production markers
 import React, { useState, ChangeEvent } from "react";
 
 export default function SettingsPanel() {

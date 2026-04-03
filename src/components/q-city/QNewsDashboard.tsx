@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -141,11 +140,11 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
     fetchNews();
   };
 
-  // Small [PRODUCTION READY]s for advanced features
+  // Small s for advanced features
   const exportEngagement = () =>
-    alert("Export engagement analytics ([PRODUCTION READY])");
+    alert("Export engagement analytics ()");
   const shareToChannels = () =>
-    alert("Share to WhatsApp/Telegram ([PRODUCTION READY])");
+    alert("Share to WhatsApp/Telegram ()");
 
   return (
     <Card className="space-y-4">

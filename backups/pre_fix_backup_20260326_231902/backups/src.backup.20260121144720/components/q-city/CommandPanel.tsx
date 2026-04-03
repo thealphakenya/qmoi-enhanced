@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useState, useRef } from "react";
 
 const COMMON_COMMANDS = [
@@ -105,7 +105,7 @@ export default function CommandPanel() {
           value={cmd}
           onChange={(_e) => setCmd(_e.target.value)}
           className="flex-1 bg-gray-800 p-2 rounded"
-          [PRODUCTION READY]="Enter command..."
+          ="Enter command..."
         />
         <select
           value={deviceId}

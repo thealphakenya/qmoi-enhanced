@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+//  this file has no remaining non-production markers
 "use client";
 
 import { useEffect, useState } from "react";

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import React, { useState } from "react";
 
@@ -46,7 +46,7 @@ export const FarmBusinessManager: React.FC = () => {
       </select>
       <input
         type="text"
-        [PRODUCTION READY]="Name/Type"
+        ="Name/Type"
         value={name}
         onChange={(e) => setName(e.target.value)}
         style={{ marginBottom: 8, width: "100%" }}

@@ -121,7 +121,8 @@ This document provides a comprehensive inventory of all React components in the 
 - [`PreviewWindow.tsx`](components/PreviewWindow.tsx) - `.tsx`
 - [`PriceproductVerifier.tsx`](components/PriceproductVerifier.tsx) - `.tsx`
 - [`QAvatar.accessibility.css`](components/QAvatar.accessibility.css) - `.css`
-- [`QAvatar.tsx`](components/QAvatar.tsx) - `.tsx`
+- [`QAvatar.tsx`](components/QAvatar.tsx) - Real-time animated avatar with AI enhancement & auto mode
+- [`QAvatar.accessibility.css`](components/QAvatar.accessibility.css) - Accessibility styles for QAvatar
 - [`QAvatar.tsx.bak.1768901506`](components/QAvatar.tsx.bak.1768901506) - `.1768901506`
 - [`QCityErrorManager.tsx`](components/QCityErrorManager.tsx) - `.tsx`
 - [`QCityThemeProvider.tsx`](components/QCityThemeProvider.tsx) - `.tsx`
@@ -197,8 +198,10 @@ This document provides a comprehensive inventory of all React components in the 
 - [`TaskForm.tsx`](components/projects/TaskForm.tsx) - `.tsx`
 - [`TaskList.tsx`](components/projects/TaskList.tsx) - `.tsx`
 
-### q-city (12 files)
+### q-city (17 files)
 
+- [`AvatarSelector.tsx`](components/q-city/AvatarSelector.tsx) - Avatar selection with auto mode
+- [`VoiceSelector.tsx`](components/q-city/VoiceSelector.tsx) - Voice selection with auto mode
 - [`EmploymentDashboard.tsx`](components/q-city/EmploymentDashboard.tsx) - `.tsx`
 - [`GlobalLinksManager.tsx`](components/q-city/GlobalLinksManager.tsx) - `.tsx`
 - [`Onboarding.tsx`](components/q-city/Onboarding.tsx) - `.tsx`
@@ -211,6 +214,9 @@ This document provides a comprehensive inventory of all React components in the 
 - [`QVillage.tsx`](components/q-city/QVillage.tsx) - `.tsx`
 - [`TracksPanel.tsx`](components/q-city/TracksPanel.tsx) - `.tsx`
 - [`ZeroRatedSitesManager.tsx`](components/q-city/ZeroRatedSitesManager.tsx) - `.tsx`
+- [`SelfHealPanel.tsx`](components/q-city/SelfHealPanel.tsx) - Self-healing control panel
+- [`MetricsPanel.tsx`](components/q-city/MetricsPanel.tsx) - System metrics display
+- [`AviatorGalleryPanel.tsx`](components/q-city/AviatorGalleryPanel.tsx) - Avatar gallery
 
 ### qmoi-gitlab-clone (1 files)
 

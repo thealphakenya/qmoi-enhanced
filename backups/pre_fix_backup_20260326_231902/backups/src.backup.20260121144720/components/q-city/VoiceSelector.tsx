@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 /* eslint-env browser */
 
@@ -119,7 +119,7 @@ export function VoiceSelector({
 
       if (!response.ok) throw new Error("Failed to play preview");
 
-      [PRODUCTION READY] audio playback
+       audio playback
       setTimeout(() => setIsPlaying(false), 3000);
     } catch (_e: unknown) {
       console.warn(String(_e));
@@ -242,7 +242,7 @@ export function VoiceSelector({
                 onChange={(_e) => setPreviewText(_e.target.value)}
                 className="w-full p-3 border rounded-md resize-none"
                 rows={3}
-                [PRODUCTION READY]="Enter text to preview the voice..."
+                ="Enter text to preview the voice..."
               />
             </div>
 

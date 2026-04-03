@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 // @ts-nocheck
 "use client";
@@ -52,7 +52,7 @@ import {
   GCPIntegration,
   IoTIntegration,
   MobileIntegration,
-} from "./device/DeviceIntegration[PRODUCTION READY]s";
+} from "./device/DeviceIntegrations";
 import { AWSCredentialsModal } from "./device/AWSCredentialsModal";
 import { AzureCredentialsModal } from "./device/AzureCredentialsModal";
 import { GCPCredentialsModal } from "./device/GCPCredentialsModal";
@@ -239,7 +239,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
       }));
     }, 2000);
 
-    // Demo: [PRODUCTION READY] device health event after 3s
+    // Demo:  device health event after 3s
     setTimeout(() => {
       pluginManager.emit({ type: "deviceHealthChange", payload: { cpu: 92 } });
       notify("Device health event: CPU 92%", "info");
@@ -612,7 +612,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                       </CardDescription>
                       <input
                         type="text"
-                        [PRODUCTION READY]="Search devices..."
+                        ="Search devices..."
                         value={deviceSearch}
                         onChange={(e) => setDeviceSearch(e.target.value)}
                         style={{ marginTop: 8, marginBottom: 8, width: 200 }}
@@ -850,7 +850,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                       <PluginHelpModal />
                       <input
                         type="text"
-                        [PRODUCTION READY]="Search plugins..."
+                        ="Search plugins..."
                         value={pluginSearch}
                         onChange={(e) => setPluginSearch(e.target.value)}
                         style={{ marginTop: 8, marginBottom: 8, width: 200 }}

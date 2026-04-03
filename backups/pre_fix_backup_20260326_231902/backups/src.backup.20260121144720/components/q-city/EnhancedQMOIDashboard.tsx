@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+//  this file has no remaining non-production markers
 import React, { useEffect, useState } from "react";
 import { enhancedErrorFixingService } from "../../services/EnhancedErrorFixingService";
 import { enhancedSiteGenerationService } from "../../services/EnhancedSiteGenerationService";

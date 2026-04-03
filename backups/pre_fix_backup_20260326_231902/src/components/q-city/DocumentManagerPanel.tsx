@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -71,19 +71,19 @@ const DocumentManagerPanel: React.FC = () => {
       <CardContent>
         <div className="mb-4">
           <Input
-            [PRODUCTION READY]="Document Name"
+            ="Document Name"
             value={form.name}
             onChange={(_e) => setForm((f) => ({ ...f, name: _e.target.value }))}
             className="mb-2"
           />
           <Input
-            [PRODUCTION READY]="Type (pdf, docx, etc.)"
+            ="Type (pdf, docx, etc.)"
             value={form.type}
             onChange={(_e) => setForm((f) => ({ ...f, type: _e.target.value }))}
             className="mb-2"
           />
           <Input
-            [PRODUCTION READY]="Content (or file data)"
+            ="Content (or file data)"
             value={form.content}
             onChange={(_e) =>
               setForm((f) => ({ ...f, content: _e.target.value }))
@@ -94,7 +94,7 @@ const DocumentManagerPanel: React.FC = () => {
         </div>
         <div className="mb-4">
           <Input
-            [PRODUCTION READY]="Search documents..."
+            ="Search documents..."
             value={search}
             onChange={(_e) => setSearch(_e.target.value)}
             className="mb-2"

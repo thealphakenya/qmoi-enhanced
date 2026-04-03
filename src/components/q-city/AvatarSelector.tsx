@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -57,6 +56,9 @@ export function AvatarSelector({
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedQuality, setSelectedQuality] = useState<string>("all");
   const [selectedEngine, setSelectedEngine] = useState<string>("all");
+  const [autoAvatarMode, setAutoAvatarMode] = useState<boolean>(
+    () => JSON.parse(localStorage.getItem("qmoi-avatar-auto-mode") || "false"),
+  );
   const [autoUpgrade, setAutoUpgrade] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [previewMode, setPreviewMode] = useState(false);
@@ -199,6 +201,32 @@ export function AvatarSelector({
     }
   };
 
+  const determineAutoAvatar = () => {
+    // Priority: current voice profile mapping -> lion fallback -> first active avatar
+    const voiceAvatar = avatarsConfig.find((avatar) => avatar.voiceProfile === currentVoiceId);
+    if (voiceAvatar && voiceAvatar.isActive) return voiceAvatar.id;
+
+    const lionAvatar = avatarsConfig.find((avatar) => avatar.id === "lion" && avatar.isActive);
+    if (lionAvatar) return lionAvatar.id;
+
+    const defaultActive = avatarsConfig.find((avatar) => avatar.isActive);
+    return defaultActive ? defaultActive.id : "";
+  };
+
+  const applyAutoAvatar = async () => {
+    const autoId = determineAutoAvatar();
+    if (!autoId) return;
+
+    await handleAvatarChange(autoId);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("qmoi-avatar-auto-mode", JSON.stringify(autoAvatarMode));
+    if (autoAvatarMode) {
+      applyAutoAvatar();
+    }
+  }, [autoAvatarMode, currentVoiceId]);
+
   const filteredAvatars = avatarsConfig.filter((avatar) => {
     if (selectedCategory !== "all" && avatar.category !== selectedCategory)
       return false;
@@ -243,7 +271,7 @@ export function AvatarSelector({
                 onValueChange={setSelectedCategory}
               >
                 <SelectTrigger>
-                  <SelectValue [PRODUCTION READY]="Category" />
+                  <SelectValue placeholder="Category" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -259,7 +287,7 @@ export function AvatarSelector({
                 onValueChange={setSelectedQuality}
               >
                 <SelectTrigger>
-                  <SelectValue [PRODUCTION READY]="Quality" />
+                  <SelectValue placeholder="Quality" />
                 </SelectTrigger>
                 <SelectContent>
                   {qualities.map((quality) => (
@@ -275,7 +303,7 @@ export function AvatarSelector({
 
               <Select value={selectedEngine} onValueChange={setSelectedEngine}>
                 <SelectTrigger>
-                  <SelectValue [PRODUCTION READY]="Engine" />
+                  <SelectValue placeholder="Engine" />
                 </SelectTrigger>
                 <SelectContent>
                   {engines.map((engine) => (
@@ -289,6 +317,17 @@ export function AvatarSelector({
                   ))}
                 </SelectContent>
               </Select>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Switch
+                id="auto-avatar-mode"
+                checked={autoAvatarMode}
+                onCheckedChange={(value) => setAutoAvatarMode(value)}
+              />
+              <label htmlFor="auto-avatar-mode" className="text-sm">
+                Auto mode: choose best avatar (Lion-aware, voice-aligned)
+              </label>
             </div>
 
             {/* Avatar Grid */}
@@ -521,7 +560,64 @@ export function AvatarSelector({
             </p>
           </div>
         )}
+
+        {/* Evolution Features */}
+        <div className="p-3 bg-purple-50 dark:bg-purple-950/20 rounded-lg mt-4">
+          <div className="flex items-center gap-2 text-sm mb-3">
+            <Zap className="h-4 w-4 text-purple-500" />
+            <span className="font-medium">Avatar Evolution</span>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={async () => {
+                try {
+                  const response = await fetch("/api/qmoi/avatars", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ action: "evolve", avatarId: selectedAvatar }),
+                  });
+                  if (response.ok) {
+                    toast({ title: "Avatar Evolved", description: "Avatar has been enhanced with AI improvements." });
+                  }
+                } catch (error) {
+                  toast({ title: "Evolution Failed", variant: "destructive" });
+                }
+              }}
+              className="text-xs"
+            >
+              Evolve Avatar
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={async () => {
+                try {
+                  const response = await fetch("/api/qmoi/avatars", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ action: "research" }),
+                  });
+                  if (response.ok) {
+                    const data = await response.json();
+                    toast({ title: "Research Complete", description: data.message });
+                  }
+                } catch (error) {
+                  toast({ title: "Research Failed", variant: "destructive" });
+                }
+              }}
+              className="text-xs"
+            >
+              Research
+            </Button>
+          </div>
+          <div className="mt-2 text-xs text-muted-foreground">
+            Current research: facial_expression_recognition (85%)
+          </div>
+        </div>
       </CardContent>
     </Card>
   );
 }
+

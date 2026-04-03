@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -83,7 +82,7 @@ export default function PluginPanel() {
     e.preventDefault();
     if (!pluginFile) return;
     setUploading(true);
-    [PRODUCTION READY]bed upload
+    bed upload
     setTimeout(() => {
       toast({
         title: "Plugin Uploaded",
@@ -98,7 +97,7 @@ export default function PluginPanel() {
 
   async function handleRemove(plugin: string) {
     setRemoving(plugin);
-    [PRODUCTION READY]bed remove
+    bed remove
     setTimeout(() => {
       toast({
         title: "Plugin Removed",
@@ -112,7 +111,7 @@ export default function PluginPanel() {
 
   async function handleConfig(plugin: string) {
     setConfiguring(plugin);
-    [PRODUCTION READY]bed config save
+    bed config save
     setTimeout(() => {
       toast({
         title: "Plugin Configured",

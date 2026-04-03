@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -96,7 +96,7 @@ export function EnhancedPreviewWindow() {
         <div className="my-2">
           <input
             type="text"
-            [PRODUCTION READY]="Paste YouTube/video URL here"
+            ="Paste YouTube/video URL here"
             value={youtubeUrl}
             onChange={handleYoutubeChange}
             className="w-full p-1 rounded bg-gray-900 text-green-200"

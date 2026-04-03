@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import * as React from "react";
 import { useState } from "react";
 import Box from "@mui/material/Box";
@@ -40,7 +40,7 @@ export function QiSpaces() {
         size="small"
         value={newSpace}
         onChange={(e) => setNewSpace(e.target.value)}
-        [PRODUCTION READY]="Add new space..."
+        ="Add new space..."
         sx={{ mb: 1 }}
         onKeyDown={(e) => {
           if (e.key === "Enter") addSpace();

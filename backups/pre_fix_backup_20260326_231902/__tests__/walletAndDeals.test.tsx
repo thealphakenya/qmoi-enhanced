@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import WalletPanel from "../components/WalletPanel";
@@ -11,7 +11,7 @@ import TransactionHistory from "../components/TransactionHistory";
 import DealsPopup from "../components/DealsPopup";
 import DealsList from "../components/DealsList";
 
-[PRODUCTION READY] fetch for API tests
+ fetch for API tests
 global.fetch = jest.fn();
 
 describe("Wallet and Deals components", () => {
@@ -27,7 +27,7 @@ describe("Wallet and Deals components", () => {
     expect(screen.getByText(/No transactions yet/)).toBeInTheDocument();
   });
 
-  test("DealsPopup shows [PRODUCTION READY] when no deals", () => {
+  test("DealsPopup shows  when no deals", () => {
     render(<DealsPopup deals={[]} onClose={() => {}} />);
     expect(
       screen.getByText(/No deals available right now/),
@@ -44,14 +44,14 @@ describe("API routes", () => {
   describe("/api/deals", () => {
     it("returns list of data deals when GET", async () => {
       const { default: handler } = await import("../app/api/deals");
-      const [PRODUCTION READY]Req: any = { method: "GET", query: {} };
-      const [PRODUCTION READY]Res: any = {
-        status: jest.fn().[PRODUCTION READY]ReturnThis(),
-        json: jest.fn().[PRODUCTION READY]ReturnThis(),
+      const Req: any = { method: "GET", query: {} };
+      const Res: any = {
+        status: jest.fn().ReturnThis(),
+        json: jest.fn().ReturnThis(),
       };
-      await handler([PRODUCTION READY]Req, [PRODUCTION READY]Res);
-      expect([PRODUCTION READY]Res.status).toHaveBeenCalledWith(200);
-      expect([PRODUCTION READY]Res.json).toHaveBeenCalledWith(
+      await handler(Req, Res);
+      expect(Res.status).toHaveBeenCalledWith(200);
+      expect(Res.json).toHaveBeenCalledWith(
         expect.objectContaining({ deals: expect.any(Array) }),
       );
     });

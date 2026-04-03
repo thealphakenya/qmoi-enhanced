@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import * as React from "react";
 
 // complete shim for recharts components used by the app.
-// These are [PRODUCTION READY] components that provide just enough type coverage
+// These are  components that provide just enough type coverage
 // without requiring the full recharts library during build/type-check.
 
 type ComponentProps = React.ComponentPropsWithoutRef<"div">;

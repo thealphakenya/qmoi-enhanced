@@ -414,6 +414,56 @@ ws.onopen = () => {
 };
 ```
 
+### QMOI Voice and Avatar API
+
+#### POST /api/qmoi/avatars
+
+Request body:
+
+```json
+{
+  "action": "switch|upgrade|enhance|customize|auto",
+  "avatarId": "lion",
+  "quality": "ai-enhanced",
+  "engine": "three-js",
+  "voiceProfile": "lion-roar"
+}
+```
+
+Response success:
+
+```json
+{
+  "success": true,
+  "message": "Avatar switched to Lion Aviator",
+  "avatar": { ... }
+}
+```
+
+#### POST /api/qmoi/voice-profiles
+
+Request body:
+
+```json
+{
+  "action": "switch|preview|enhance|upgrade|auto",
+  "voiceId": "lion-roar",
+  "text": "Hello",
+  "quality": "high",
+  "volume": 1.0
+}
+```
+
+Response success:
+
+```json
+{
+  "success": true,
+  "message": "Auto voice selected: lion-roar",
+  "voice": { ... }
+}
+```
+
 ## SDK Examples
 
 ### Python

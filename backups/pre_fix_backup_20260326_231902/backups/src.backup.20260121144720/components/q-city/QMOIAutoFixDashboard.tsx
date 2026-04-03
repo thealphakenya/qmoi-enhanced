@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -44,7 +44,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
 
   const fetchErrorLog = async () => {
     try {
-      const [PRODUCTION READY]Errors: ErrorItem[] = [
+      const Errors: ErrorItem[] = [
         {
           id: 1,
           type: "build",
@@ -70,7 +70,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
           status: "pending",
         },
       ];
-      setErrors([PRODUCTION READY]Errors);
+      setErrors(Errors);
     } catch (_error) {
       (globalThis.console as unknown)?.error?.(
         "Failed to fetch error log:",
@@ -81,7 +81,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
 
   const fetchFixHistory = async () => {
     try {
-      const [PRODUCTION READY]Fixes: FixItem[] = [
+      const Fixes: FixItem[] = [
         {
           errorId: 1,
           type: "typescript-fix",
@@ -107,7 +107,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
           duration: 5000,
         },
       ];
-      setFixes([PRODUCTION READY]Fixes);
+      setFixes(Fixes);
     } catch (_error) {
       (globalThis.console as unknown)?.error?.(
         "Failed to fetch fix history:",
@@ -118,7 +118,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
 
   const fetchGitHubStatus = async () => {
     try {
-      const [PRODUCTION READY]Status: GitHubActionStatus = {
+      const Status: GitHubActionStatus = {
         preCheck: "success",
         autoFix: "success",
         build: "success",
@@ -126,7 +126,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         deploy: "success",
         lastRun: new Date().toISOString(),
       };
-      setGitHubStatus([PRODUCTION READY]Status);
+      setGitHubStatus(Status);
     } catch (_error) {
       (globalThis.console as unknown)?.error?.(
         "Failed to fetch GitHub status:",

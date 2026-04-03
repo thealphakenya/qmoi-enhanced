@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 "use client";
 
 import * as React from "react";
@@ -11,7 +10,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { DayPicker } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
-[PRODUCTION READY]: Refactor nav_button to use MUI Button or a simple class
+: Refactor nav_button to use MUI Button or a simple class
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 

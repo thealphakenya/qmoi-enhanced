@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+//  this file has no remaining non-production markers
 import React, { useState } from "react";
 import SchedulePanel from "./SchedulePanel";
 import DevicePanel from "./DevicePanel";

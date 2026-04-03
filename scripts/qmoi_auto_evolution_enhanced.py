@@ -153,6 +153,10 @@ class QMOIAutoEvolution:
                 actions.extend(self.generate_efficiency_actions(priority))
             elif category == 'user_experience':
                 actions.extend(self.generate_ux_actions(priority))
+            elif category == 'avatar':
+                actions.extend(self.generate_avatar_actions(priority))
+            elif category == 'voice':
+                actions.extend(self.generate_voice_actions(priority))
         
         # Sort by impact score
         actions.sort(key=lambda x: x.impact_score, reverse=True)
@@ -263,6 +267,117 @@ class QMOIAutoEvolution:
                 risk_level="low",
                 dependencies=[],
                 category="user_experience"
+            ))
+        
+        return actions
+    
+    def generate_avatar_actions(self, priority: str) -> List[EvolutionAction]:
+        """Generate avatar improvement actions"""
+        actions = []
+        
+        if priority == 'high':
+            actions.append(EvolutionAction(
+                name="avatar_realism_enhancement",
+                description="Enhance avatar realism and visual quality",
+                impact_score=0.9,
+                implementation_time=50.0,
+                risk_level="medium",
+                dependencies=[],
+                category="avatar"
+            ))
+            
+            actions.append(EvolutionAction(
+                name="avatar_expression_expansion",
+                description="Add more expressive facial animations and gestures",
+                impact_score=0.8,
+                implementation_time=40.0,
+                risk_level="low",
+                dependencies=[],
+                category="avatar"
+            ))
+            
+            actions.append(EvolutionAction(
+                name="avatar_adaptive_behavior",
+                description="Implement adaptive avatar behavior based on user interaction",
+                impact_score=0.7,
+                implementation_time=35.0,
+                risk_level="medium",
+                dependencies=[],
+                category="avatar"
+            ))
+        
+        return actions
+    
+    def generate_animation_actions(self, priority: str) -> List[EvolutionAction]:
+        """Generate animation improvement actions"""
+        actions = []
+        
+        if priority == 'high':
+            actions.append(EvolutionAction(
+                name="animation_smoothness_optimization",
+                description="Optimize animation smoothness and frame rates",
+                impact_score=0.8,
+                implementation_time=30.0,
+                risk_level="low",
+                dependencies=[],
+                category="animation"
+            ))
+            
+            actions.append(EvolutionAction(
+                name="lip_sync_enhancement",
+                description="Improve lip synchronization with voice",
+                impact_score=0.7,
+                implementation_time=25.0,
+                risk_level="low",
+                dependencies=[],
+                category="animation"
+            ))
+            
+            actions.append(EvolutionAction(
+                name="gesture_library_expansion",
+                description="Expand gesture library for more natural interactions",
+                impact_score=0.6,
+                implementation_time=45.0,
+                risk_level="medium",
+                dependencies=[],
+                category="animation"
+            ))
+        
+        return actions
+    
+    def generate_voice_actions(self, priority: str) -> List[EvolutionAction]:
+        """Generate voice improvement actions"""
+        actions = []
+        
+        if priority == 'high':
+            actions.append(EvolutionAction(
+                name="voice_clarity_enhancement",
+                description="Enhance voice clarity and pronunciation accuracy",
+                impact_score=0.8,
+                implementation_time=35.0,
+                risk_level="low",
+                dependencies=[],
+                category="voice"
+            ))
+            
+            actions.append(EvolutionAction(
+                name="voice_emotional_range_expansion",
+                description="Expand emotional expression range in voice",
+                impact_score=0.7,
+                implementation_time=30.0,
+                risk_level="low",
+                dependencies=[],
+                category="voice"
+            ))
+            
+            actions.append(EvolutionAction(
+                name="voice_adaptive_modulation",
+                description="Implement adaptive voice modulation based on context",
+                impact_score=0.6,
+                implementation_time=40.0,
+                risk_level="medium",
+                dependencies=[],
+                category="voice"
             ))
         
         return actions

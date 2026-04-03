@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { playSSML, supportsSpeechSynthesis } from "../services/tts";
@@ -149,7 +149,7 @@ export function Chatbot() {
       <div className="chatbot-input">
         <input
           type="text"
-          [PRODUCTION READY]="Type your message..."
+          ="Type your message..."
           value={input}
           onChange={(_e) => setInput(_e.target.value)}
           onKeyPress={(_e) => _e.key === "Enter" && handleSendMessage()}

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useState, useRef } from "react";
 
 const COMMON_COMMANDS = [
@@ -110,7 +110,7 @@ export default function CommandPanel() {
           value={cmd}
           onChange={(_e) => setCmd(_e.target.value)}
           className="flex-1 bg-gray-800 p-2 rounded"
-          [PRODUCTION READY]="Enter command..."
+          ="Enter command..."
         />
         <select
           value={deviceId}

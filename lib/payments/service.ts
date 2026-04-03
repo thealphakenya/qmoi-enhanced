@@ -15,6 +15,36 @@ import Stripe from "stripe";
 
 const logger = getLogger("payments");
 
+// Standardized Payment Response Interface
+export interface NormalizedPaymentResponse {
+  success: boolean;
+  transactionId: string;
+  status: 'pending' | 'processing' | 'completed' | 'failed' | 'cancelled' | 'refunded';
+  amount: number;
+  currency: string;
+  provider: string;
+  method: string;
+  reference: string;
+  message: string;
+  data?: {
+    // Provider-specific data
+    clientSecret?: string; // Stripe
+    checkoutUrl?: string; // PayPal
+    qrCode?: string; // Crypto
+    paymentUrl?: string; // Bank transfer
+    instructions?: string; // Manual payment instructions
+    [key: string]: any;
+  };
+  metadata?: Record<string, any>;
+  createdAt: string;
+  expiresAt?: string;
+  error?: {
+    code: string;
+    message: string;
+    details?: any;
+  };
+}
+
 interface PaymentOptions {
   userId: string;
   amount: number;
@@ -85,35 +115,97 @@ class PaymentsService {
   };
 
   /**
-   * Initiate a payment
+   * Initiate a payment - Returns normalized response
    */
-  initiatePayment = async (options: PaymentOptions, provider?: string) => {
+  initiatePayment = async (options: PaymentOptions, provider?: string): Promise<NormalizedPaymentResponse> => {
     try {
       const transactionId = this.generateTransactionReference();
+      const now = new Date().toISOString();
 
-      // Route to appropriate provider
+      // Route to appropriate provider and get normalized response
+      let result: NormalizedPaymentResponse;
+
       switch (options.method) {
         case "card":
-          return await this.processCardPayment(transactionId, options);
+          result = await this.processCardPayment(transactionId, options);
+          break;
         case "bank_transfer":
-          return await this.processBankTransfer(transactionId, options);
+          result = await this.processBankTransfer(transactionId, options);
+          break;
         case "crypto":
-          return await this.processCryptoPayment(transactionId, options);
+          result = await this.processCryptoPayment(transactionId, options);
+          break;
         case "paypal":
-          return await this.processPayPalPayment(transactionId, options);
+          result = await this.processPayPalPayment(transactionId, options);
+          break;
         default:
-          throw new Error(`Unsupported payment method: ${options.method}`);
+          result = {
+            success: false,
+            transactionId,
+            status: 'failed',
+            amount: options.amount,
+            currency: options.currency,
+            provider: provider || 'unknown',
+            method: options.method,
+            reference: options.reference || transactionId,
+            message: `Unsupported payment method: ${options.method}`,
+            createdAt: now,
+            error: {
+              code: 'UNSUPPORTED_METHOD',
+              message: `Payment method ${options.method} is not supported`
+            }
+          };
       }
+
+      // Store transaction in database for tracking
+      try {
+        await db.paymentTransaction.create({
+          data: {
+            id: result.transactionId,
+            userId: options.userId,
+            amount: result.amount,
+            currency: result.currency,
+            status: result.status,
+            provider: result.provider,
+            method: result.method,
+            reference: result.reference,
+            description: options.description,
+            metadata: {
+              ...options.metadata,
+              normalizedResponse: result
+            }
+          }
+        });
+      } catch (dbError) {
+        logger.error("Failed to store payment transaction", { error: dbError, transactionId });
+        // Don't fail the payment if DB storage fails
+      }
+
+      return result;
+
     } catch (error) {
+      const transactionId = this.generateTransactionReference();
       await errorTracker.track(error as Error, {
         userId: options.userId,
         endpoint: "initiatePayment",
         metadata: { amount: options.amount, method: options.method },
       });
+
       return {
         success: false,
+        transactionId,
+        status: 'failed',
+        amount: options.amount,
+        currency: options.currency,
+        provider: provider || 'unknown',
+        method: options.method,
+        reference: options.reference || transactionId,
         message: "Payment initiation failed",
-        error: (error as Error).message,
+        createdAt: new Date().toISOString(),
+        error: {
+          code: 'INITIATION_FAILED',
+          message: (error as Error).message
+        }
       };
     }
   };
@@ -239,7 +331,7 @@ class PaymentsService {
   private processCardPayment = async (
     transactionId: string,
     options: PaymentOptions,
-  ) => {
+  ): Promise<NormalizedPaymentResponse> => {
     try {
       if (!this.stripe) {
         throw new Error("Stripe not configured - required STRIPE_SECRET_KEY");
@@ -264,33 +356,23 @@ class PaymentsService {
         },
       });
 
-      // Store transaction in database
-      await db.paymentTransaction.create({
-        data: {
-          id: transactionId,
-          userId: options.userId,
-          amount: options.amount,
-          currency: options.currency,
-          method: "card",
-          status: "pending",
-          provider: "stripe",
-          providerTransactionId: paymentIntent.id,
-          description: options.description,
-          reference: options.reference,
-          metadata: options.metadata || {},
-        },
-      });
-
       return {
+        success: true,
         transactionId,
-        status: "pending",
+        status: 'pending',
         amount: options.amount,
         currency: options.currency,
-        method: "card",
-        timestamp: new Date().toISOString(),
-        clientSecret: paymentIntent.client_secret,
-        paymentIntentId: paymentIntent.id,
-        success: true,
+        provider: 'stripe',
+        method: 'card',
+        reference: options.reference || transactionId,
+        message: 'Card payment initiated successfully',
+        data: {
+          clientSecret: paymentIntent.client_secret,
+          paymentIntentId: paymentIntent.id
+        },
+        metadata: options.metadata,
+        createdAt: new Date().toISOString(),
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString() // 24 hours
       };
     } catch (error) {
       await errorTracker.track(error as Error, {
@@ -308,20 +390,32 @@ class PaymentsService {
   private processBankTransfer = async (
     transactionId: string,
     options: PaymentOptions,
-  ) => {
+  ): Promise<NormalizedPaymentResponse> => {
     try {
       // Generate bank transfer details
       return {
+        success: true,
         transactionId,
-        status: "pending",
-        method: "bank_transfer",
+        status: 'pending',
         amount: options.amount,
         currency: options.currency,
-        bankDetails: {
-          accountNumber: "****-****-****",
-          routingNumber: "****",
-          beneficiary: "QMOI Inc.",
+        provider: 'bank_transfer',
+        method: 'bank_transfer',
+        reference: options.reference || transactionId,
+        message: 'Bank transfer initiated. Please complete the transfer using the provided details.',
+        data: {
+          bankDetails: {
+            accountNumber: "****-****-****",
+            routingNumber: "****",
+            beneficiary: "QMOI Inc.",
+            swiftCode: "QMOIXXXX",
+            bankName: "QMOI Bank"
+          },
+          instructions: 'Please transfer the exact amount to the account provided. Include the reference number in your transfer description.'
         },
+        metadata: options.metadata,
+        createdAt: new Date().toISOString(),
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString() // 7 days
       };
     } catch (error) {
       throw error;
@@ -334,16 +428,30 @@ class PaymentsService {
   private processCryptoPayment = async (
     transactionId: string,
     options: PaymentOptions,
-  ) => {
+  ): Promise<NormalizedPaymentResponse> => {
     try {
       // Generate crypto payment address
+      const cryptoAddress = "0x" + Math.random().toString(16).substr(2, 40);
+
       return {
+        success: true,
         transactionId,
-        status: "pending",
-        method: "crypto",
+        status: 'pending',
         amount: options.amount,
         currency: options.currency,
-        cryptoAddress: "0x" + Math.random().toString(16).substr(2),
+        provider: 'crypto',
+        method: 'crypto',
+        reference: options.reference || transactionId,
+        message: 'Crypto payment initiated. Send the exact amount to the provided address.',
+        data: {
+          cryptoAddress,
+          network: 'ethereum',
+          qrCode: `ethereum:${cryptoAddress}?amount=${options.amount}`,
+          expectedConfirmations: 12
+        },
+        metadata: options.metadata,
+        createdAt: new Date().toISOString(),
+        expiresAt: new Date(Date.now() + 60 * 60 * 1000).toISOString() // 1 hour
       };
     } catch (error) {
       throw error;
@@ -356,20 +464,32 @@ class PaymentsService {
   private processPayPalPayment = async (
     transactionId: string,
     options: PaymentOptions,
-  ) => {
+  ): Promise<NormalizedPaymentResponse> => {
     try {
       if (!process.env.PAYPAL_CLIENT_ID) {
         throw new Error("PayPal not configured");
       }
 
-      // Create PayPal order
+      // Create PayPal order (simplified - would integrate with actual PayPal SDK)
+      const checkoutUrl = `https://paypal.com/checkout?token=${transactionId}`;
+
       return {
+        success: true,
         transactionId,
-        status: "pending",
-        method: "paypal",
+        status: 'pending',
         amount: options.amount,
         currency: options.currency,
-        redirectUrl: `https://paypal.com/...`,
+        provider: 'paypal',
+        method: 'paypal',
+        reference: options.reference || transactionId,
+        message: 'PayPal payment initiated. Redirect user to complete payment.',
+        data: {
+          checkoutUrl,
+          paypalOrderId: `PAY-${transactionId}`
+        },
+        metadata: options.metadata,
+        createdAt: new Date().toISOString(),
+        expiresAt: new Date(Date.now() + 3 * 60 * 60 * 1000).toISOString() // 3 hours
       };
     } catch (error) {
       throw error;

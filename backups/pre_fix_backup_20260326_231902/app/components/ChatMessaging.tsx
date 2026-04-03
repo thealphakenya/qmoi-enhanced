@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -388,7 +388,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
                 handleSendMessage();
               }
             }}
-            [PRODUCTION READY]="Type a message... (Enter to send, Shift+Enter for new line)"
+            ="Type a message... (Enter to send, Shift+Enter for new line)"
             className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
             enabled={isSending || isRecording}
           />

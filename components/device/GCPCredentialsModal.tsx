@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState } from "react";
 
 export const GCPCredentialsModal: React.FC<{
@@ -39,13 +38,13 @@ export const GCPCredentialsModal: React.FC<{
       >
         <h2>GCP Credentials</h2>
         <input
-          [PRODUCTION READY]="Project ID"
+          ="Project ID"
           value={projectId}
           onChange={(e) => setProjectId(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}
         />
         <input
-          [PRODUCTION READY]="Key Filename"
+          ="Key Filename"
           value={keyFilename}
           onChange={(e) => setKeyFilename(e.target.value)}
           style={{ width: "100%", marginBottom: 8 }}

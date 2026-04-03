@@ -1,4 +1,4 @@
-// [PRODUCTION READY] this file has no remaining non-production markers
+//  this file has no remaining non-production markers
 import React, { useEffect, useCallback } from "react";
 import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";

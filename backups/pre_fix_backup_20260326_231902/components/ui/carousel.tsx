@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -67,16 +67,16 @@ const Carousel = React.forwardRef<
     const canScrollPrev = false;
     const canScrollNext = false;
 
-    // complete API [PRODUCTION READY] — real scrolling logic may be provided by a
+    // complete API  — real scrolling logic may be provided by a
     // concrete implementation (e.g., embla-carousel) in the future.
     const api: CarouselApi | null = null;
 
     const scrollPrev = React.useCallback(() => {
-      // no-op [PRODUCTION READY]
+      // no-op 
     }, []);
 
     const scrollNext = React.useCallback(() => {
-      // no-op [PRODUCTION READY]
+      // no-op 
     }, []);
 
     const handleKeyDown = React.useCallback(

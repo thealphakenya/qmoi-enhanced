@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useState, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
@@ -171,7 +170,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
   };
 
   const updateQmoiApp = async () => {
-    [PRODUCTION READY] update process
+     update process
     for (let i = 0; i <= 100; i += 10) {
       await new Promise((resolve) => setTimeout(resolve, 100));
     }
@@ -737,7 +736,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({
                             : "Shutdown System"}
                         </Button>
                       </div>
-                      {/* [PRODUCTION READY]: Advanced automation controls, logs, scheduling */}
+                      {/* : Advanced automation controls, logs, scheduling */}
                     </CardContent>
                   </Card>
                 </TabsContent>

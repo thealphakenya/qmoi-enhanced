@@ -88,16 +88,24 @@
 
 ---
 
-## 🎨 Avatar System Endpoints (6) - NEW
+### 🎨 Avatar & Voice System Endpoints (12) - ENHANCED
 
 | # | Endpoint | Method | Auth | Description |
 |---|----------|--------|------|-------------|
-| 29 | `/api/avatars/:userId` | GET | Optional | Retrieve user avatar |
-| 30 | `/api/avatars/generate` | POST | Optional | Generate new avatar |
-| 31 | `/api/avatars/:userId/customize` | PUT | Token | Customize avatar settings |
-| 32 | `/api/avatars/:userId` | DELETE | Token | Delete/invalidate avatar |
-| 33 | `/api/avatars/:userId` | HEAD | Optional | Check cache status |
-| 34 | `/api/avatars/:userId` | OPTIONS | Public | Get CORS & method info |
+| 29 | `/api/qmoi/avatars` | GET | Optional | Get all avatars with metadata and evolution status |
+| 30 | `/api/qmoi/avatars` | POST | Optional | Execute avatar actions (evolve, research, master-communicate) |
+| 31 | `/api/qmoi/avatars/[id]` | GET | Optional | Get specific avatar details and capabilities |
+| 32 | `/api/qmoi/avatars/[id]/evolve` | POST | Optional | Evolve specific avatar with enhancements |
+| 33 | `/api/qmoi/avatars/[id]/research` | POST | Optional | Research avatar improvements and optimizations |
+| 34 | `/api/qmoi/avatars/[id]/master-communicate` | POST | Optional | Master communication for avatar editing and customization |
+| 35 | `/api/qmoi/voice-profiles` | GET | Optional | Get all voice profiles with metadata and evolution status |
+| 36 | `/api/qmoi/voice-profiles` | POST | Optional | Execute voice actions (evolve, research, master-communicate) |
+| 37 | `/api/qmoi/voice-profiles/[id]` | GET | Optional | Get specific voice profile details and capabilities |
+| 38 | `/api/qmoi/voice-profiles/[id]/evolve` | POST | Optional | Evolve specific voice profile with enhancements |
+| 39 | `/api/qmoi/voice-profiles/[id]/research` | POST | Optional | Research voice improvements and optimizations |
+| 40 | `/api/qmoi/voice-profiles/[id]/master-communicate` | POST | Optional | Master communication for voice editing and customization |
+| 35 | `/api/avatars/:userId/customize` | PUT | Token | Customize avatar settings |
+| 36 | `/api/avatars/:userId` | DELETE | Token | Delete/invalidate avatar |
 
 ---
 

@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import * as React from "react";
 import { useEffect, useState } from "react";
 import {
@@ -11,10 +10,10 @@ import {
   Device,
 } from "../../services/DeviceTrackingService";
 
-[PRODUCTION READY] master check (replace with real auth logic)
+ master check (replace with real auth logic)
 const isMaster = true;
 
-const [PRODUCTION READY]WhatsAppService = {
+const WhatsAppService = {
   client: {},
   config: {},
   isConnected: true,
@@ -44,7 +43,7 @@ const [PRODUCTION READY]WhatsAppService = {
   requestApproval: async () => true,
 };
 
-const deviceService = new DeviceTrackingService([PRODUCTION READY]WhatsAppService as any);
+const deviceService = new DeviceTrackingService(WhatsAppService as any);
 
 export const DevicesHub: React.FC = () => {
   const [devices, setDevices] = useState<Device[]>([]);

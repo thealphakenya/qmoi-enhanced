@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -112,7 +112,7 @@ export function FloatingAQ() {
           <input
             value={value}
             onChange={(_e) => setValue(_e.target.value)}
-            [PRODUCTION READY]="Ask a question..."
+            ="Ask a question..."
             style={{ width: "100%", padding: 8, marginBottom: 8 }}
           />
           <div style={{ display: "flex", gap: 8 }}>

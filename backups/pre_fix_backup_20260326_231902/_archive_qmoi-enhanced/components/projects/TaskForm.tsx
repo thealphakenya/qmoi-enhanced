@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useState } from "react";
 import { useProjects } from "../../hooks/useProjects";
 import { Task } from "../../types/projects";
@@ -21,7 +21,7 @@ export function TaskForm({ projectId, task, onSuccess }: TaskFormProps) {
     task || {
       title: "",
       description: "",
-      status: "[PRODUCTION READY]",
+      status: "",
       priority: "medium",
       assignee: "",
       dueDate: Date.now() + 7 * 24 * 60 * 60 * 1000, // 7 days from now
@@ -117,7 +117,7 @@ export function TaskForm({ projectId, task, onSuccess }: TaskFormProps) {
             onChange={handleChange}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           >
-            <option value="[PRODUCTION READY]">To Do</option>
+            <option value="">To Do</option>
             <option value="in-progress">In Progress</option>
             <option value="review">Review</option>
             <option value="completed">Completed</option>

@@ -107,6 +107,15 @@ This file documents all custom React hooks in the `hooks/` directory, their usag
 ### Voice & Audio
 - useTTCVoice.ts - Text-to-speech voice
 
+### Avatar & Voice System (NEW - Lion Mode)
+- useAvatarSelector.ts - Avatar selection & auto mode (localStorage persistence)
+- useVoiceSelector.ts - Voice selection & auto mode (localStorage persistence)
+- useQAvatarConfig.ts - QAvatar configuration & state management
+- useAvatarAnimation.ts - Avatar animation controls & floating behavior
+- useAvatarAutoMode.ts - Auto avatar selection logic (lion preference)
+- useVoiceAutoMode.ts - Auto voice selection logic (lion-roar preference)
+- useAvatarVoiceSync.ts - Sync avatar with voice profile & lip-sync control
+
 ## Usage Examples
 
 All hooks are documented and tested for production use.

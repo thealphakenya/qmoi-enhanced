@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 
 import { useState, useEffect } from "react";
@@ -219,7 +219,7 @@ function MainPage() {
                     type="text"
                     value={email}
                     onChange={(_e) => setEmail(e.target.value)}
-                    [PRODUCTION READY]="admin"
+                    ="admin"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
@@ -233,7 +233,7 @@ function MainPage() {
                     type="password"
                     value={password}
                     onChange={(_e) => setPassword(e.target.value)}
-                    [PRODUCTION READY]="••••••••"
+                    ="••••••••"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />

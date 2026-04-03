@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import * as React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -12,7 +12,7 @@ import ListItemText from "@mui/material/ListItemText";
 import FolderIcon from "@mui/icons-material/Folder";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 
-const [PRODUCTION READY]Files = [
+const Files = [
   { name: "src", type: "folder" },
   { name: "README.md", type: "file" },
   { name: "package.json", type: "file" },
@@ -30,7 +30,7 @@ export function FileExplorer() {
         borderRadius: 2,
       }}
     >
-      {[PRODUCTION READY]Files.map((item, idx) => (
+      {Files.map((item, idx) => (
         <ListItem key={idx}>
           <ListItemIcon>
             {item.type === "folder" ? <FolderIcon /> : <InsertDriveFileIcon />}

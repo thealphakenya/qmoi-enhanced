@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 // @ts-nocheck
 "use client";
@@ -847,7 +847,7 @@ const EmploymentDashboard: React.FC = () => {
       </Tabs>
 
       {/* Forms would be implemented as modals or separate components */}
-      {/* For brevity, showing [PRODUCTION READY] buttons */}
+      {/* For brevity, showing  buttons */}
       {showEmployeeForm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
           <Card className="w-96">

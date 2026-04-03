@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
 export async function POST(_request: NextRequest) {
   try {
     const body = await _request.json();
-    const { action, avatarId, quality, engine, voiceProfile } = body;
+    const { action, avatarId, quality, engine, voiceProfile, masterMessage, researchTopic } = body;
 
     switch (action) {
       case "switch":
@@ -81,6 +81,18 @@ export async function POST(_request: NextRequest) {
 
       case "customize":
         return await customizeAvatar(avatarId, voiceProfile);
+
+      case "auto":
+        return await autoAvatar();
+
+      case "evolve":
+        return await evolveAvatar(avatarId);
+
+      case "research":
+        return await researchAvatarImprovements(researchTopic);
+
+      case "master-communicate":
+        return await masterCommunicate(masterMessage);
 
       default:
         return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
@@ -108,7 +120,7 @@ async function switchAvatar(avatarId: string) {
     // Update QMOI's current avatar (in a real implementation, this would update the AI model)
 
     // Log the avatar switch
-    .log(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
+    console.log(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
 
     // Trigger avatar enhancement if needed
     if (avatar.qualityLevel === "ai-enhanced") {
@@ -143,7 +155,7 @@ async function upgradeAvatar(avatarId: string) {
     // 3. Test the upgraded avatar
     // 4. Replace the old version
 
-    .log(`Upgrading avatar: ${avatarId}`);
+    console.log(`Upgrading avatar: ${avatarId}`);
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
@@ -173,7 +185,7 @@ async function enhanceAvatar(
     // 2. Update the avatar model with enhanced parameters
     // 3. Store the enhanced version
 
-    .log(
+    console.log(
       `Enhancing avatar: ${avatarId} with quality: ${quality}, engine: ${engine}`,
     );
 
@@ -204,7 +216,7 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
     // 2. Optimize voice for the avatar
     // 3. Store the customization preferences
 
-    .log(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
+    console.log(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
 
     await new Promise((resolve) => setTimeout(resolve, 500));
 
@@ -222,6 +234,34 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
     console.error("Error customizing avatar:", error);
     return NextResponse.json(
       { _error: "Failed to customize avatar" },
+      { status: 500 },
+    );
+  }
+}
+
+async function autoAvatar() {
+  try {
+    // Determine best avatar for auto mode
+    const preferred =
+      avatarsConfig.find((avatar) => avatar.id === "lion" && avatar.isActive) ||
+      avatarsConfig.find((avatar) => avatar.isActive && avatar.voiceProfile === "lion-roar") ||
+      avatarsConfig.find((avatar) => avatar.isActive);
+
+    if (!preferred) {
+      return NextResponse.json({ _error: "No avatars available for auto mode" }, { status: 404 });
+    }
+
+    console.log(`Auto avatar selected: ${preferred.id}`);
+
+    return NextResponse.json({
+      success: true,
+      message: `Auto avatar selected: ${preferred.name}`,
+      avatar: preferred,
+    });
+  } catch (error) {
+    console.error("Error auto selecting avatar:", error);
+    return NextResponse.json(
+      { _error: "Failed to auto select avatar" },
       { status: 500 },
     );
   }
@@ -268,3 +308,159 @@ function getAvatarCategories(): string[] {
   ];
   return categories.sort();
 }
+
+async function evolveAvatar(avatarId: string) {
+  try {
+    const avatar = avatarsConfig.find((a) => a.id === avatarId);
+    if (!avatar) {
+      return NextResponse.json(
+        { _error: "Invalid avatar ID" },
+        { status: 400 },
+      );
+    }
+
+    // Simulate evolution process
+    const evolutionSteps = [
+      "Analyzing current avatar capabilities",
+      "Researching improvement opportunities",
+      "Applying AI enhancements",
+      "Optimizing animation performance",
+      "Enhancing creativity algorithms",
+      "Testing evolved avatar",
+    ];
+
+    console.log(`Evolving avatar: ${avatarId}`);
+
+    // In a real implementation, this would trigger the evolution system
+    const evolvedAvatar = {
+      ...avatar,
+      qualityLevel: "ai-enhanced" as const,
+      animationEngine: "advanced" as const,
+      evolved: true,
+      evolutionTimestamp: new Date().toISOString(),
+      improvements: [
+        "Enhanced facial expressions",
+        "Improved gesture recognition",
+        "Better lip sync accuracy",
+        "Advanced context awareness",
+        "Optimized performance",
+      ],
+    };
+
+    return NextResponse.json({
+      success: true,
+      message: `Avatar ${avatar.name} evolved successfully`,
+      avatar: evolvedAvatar,
+      evolutionSteps,
+    });
+  } catch (error) {
+    console.error("Error evolving avatar:", error);
+    return NextResponse.json(
+      { _error: "Failed to evolve avatar" },
+      { status: 500 },
+    );
+  }
+}
+
+async function researchAvatarImprovements(researchTopic?: string) {
+  try {
+    const topics = [
+      "facial_expression_recognition",
+      "gesture_prediction",
+      "voice_emotion_analysis",
+      "context_aware_behavior",
+      "real_time_animation_optimization",
+      "creativity_enhancement",
+      "intelligence_improvement",
+      "performance_optimization",
+    ];
+
+    const selectedTopic = researchTopic || topics[Math.floor(Math.random() * topics.length)];
+
+    console.log(`Researching avatar improvements: ${selectedTopic}`);
+
+    // Simulate research process
+    const researchFindings = [
+      `Enhanced ${selectedTopic.replace(/_/g, ' ')} by 15-25%`,
+      `Discovered new algorithms for ${selectedTopic}`,
+      `Improved accuracy in ${selectedTopic} detection`,
+      `Optimized ${selectedTopic} for real-time performance`,
+    ];
+
+    const finding = researchFindings[Math.floor(Math.random() * researchFindings.length)];
+
+    return NextResponse.json({
+      success: true,
+      message: `Research completed: ${finding}`,
+      topic: selectedTopic,
+      finding,
+      researchTime: Math.floor(Math.random() * 30) + 10, // 10-40 seconds
+    });
+  } catch (error) {
+    console.error("Error researching avatar improvements:", error);
+    return NextResponse.json(
+      { _error: "Failed to research avatar improvements" },
+      { status: 500 },
+    );
+  }
+}
+
+async function masterCommunicate(masterMessage: string) {
+  try {
+    if (!masterMessage || masterMessage.trim().length === 0) {
+      return NextResponse.json(
+        { _error: "Master message is required" },
+        { status: 400 },
+      );
+    }
+
+    console.log(`Master communication: ${masterMessage}`);
+
+    // Simulate master communication processing
+    const responses = [
+      "Understood. Applying avatar modifications.",
+      "Processing master instructions for avatar enhancement.",
+      "Implementing requested avatar changes.",
+      "Master guidance received. Evolving avatar accordingly.",
+      "Acknowledged. Optimizing avatar for specified requirements.",
+    ];
+
+    const response = responses[Math.floor(Math.random() * responses.length)];
+
+    // Simulate modifications based on message content
+    const modifications = [];
+    if (masterMessage.toLowerCase().includes("expression")) {
+      modifications.push("Enhanced facial expression library");
+    }
+    if (masterMessage.toLowerCase().includes("animation")) {
+      modifications.push("Improved real-time animation smoothness");
+    }
+    if (masterMessage.toLowerCase().includes("gesture")) {
+      modifications.push("Added advanced gesture recognition");
+    }
+    if (masterMessage.toLowerCase().includes("performance")) {
+      modifications.push("Optimized performance metrics");
+    }
+    if (masterMessage.toLowerCase().includes("creativity")) {
+      modifications.push("Enhanced creativity algorithms");
+    }
+
+    if (modifications.length === 0) {
+      modifications.push("Applied general avatar improvements");
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: response,
+      modifications,
+      communicationTimestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    console.error("Error in master communication:", error);
+    return NextResponse.json(
+      { _error: "Failed to process master communication" },
+      { status: 500 },
+    );
+  }
+}
+

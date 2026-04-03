@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 
 import React, { useState } from "react";
@@ -141,7 +141,7 @@ export const KnowledgeEngine: React.FC = () => {
                   <label className="text-sm text-gray-400">Search Query</label>
                   <div className="flex gap-2 mt-2">
                     <Input
-                      [PRODUCTION READY]="Enter semantic search query..."
+                      ="Enter semantic search query..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="flex-1"
@@ -208,7 +208,7 @@ export const KnowledgeEngine: React.FC = () => {
                     Ask a Question
                   </label>
                   <Textarea
-                    [PRODUCTION READY]="e.g., How do I implement a transformer model?"
+                    ="e.g., How do I implement a transformer model?"
                     value={questionQuery}
                     onChange={(e) => setQuestionQuery(e.target.value)}
                     className="mt-2 min-h-20"

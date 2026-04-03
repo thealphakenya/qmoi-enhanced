@@ -1,4 +1,4 @@
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../hooks/useAuth";
 
@@ -9,7 +9,7 @@ interface ZeroRatedStatus {
 }
 
 const fetchZeroRatedStatus = async (): Promise<ZeroRatedStatus> => {
-  [PRODUCTION READY]: fetch status from backend or local state
+  : fetch status from backend or local state
   return {
     active: true,
     lastUsed: new Date().toLocaleString(),

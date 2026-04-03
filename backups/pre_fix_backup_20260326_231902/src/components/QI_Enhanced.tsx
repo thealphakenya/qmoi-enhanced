@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -586,7 +586,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
       <div className="qi-input-area">
         <input
           type="text"
-          [PRODUCTION READY]="Ask QMOI to review code, run tests, debug, or chat..."
+          ="Ask QMOI to review code, run tests, debug, or chat..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 import React, { useState } from "react";
@@ -25,7 +25,7 @@ export function QiSpaces() {
         <input
           value={name}
           onChange={(_e) => setName(_e.target.value)}
-          [PRODUCTION READY]="Add new space..."
+          ="Add new space..."
         />
         <button onClick={add} style={{ marginLeft: 8 }}>
           Add

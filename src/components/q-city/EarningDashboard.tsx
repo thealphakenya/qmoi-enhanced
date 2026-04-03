@@ -3,7 +3,6 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -120,7 +119,7 @@ const EarningDashboard: React.FC = () => {
             size="small"
             variant="contained"
             color="primary"
-            onClick={() => alert("Open advanced analytics ([PRODUCTION READY])")}
+            onClick={() => alert("Open advanced analytics ()")}
             style={{ marginTop: 8 }}
           >
             Open Advanced Analytics

@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 import React, { useRef } from "react";
 
 export const QMoiSettingsPanel: React.FC = () => {
-  // Settings state ([PRODUCTION READY]bed for now)
+  // Settings state (bed for now)
   const [settings, setSettings] = React.useState(() => {
     try {
       return JSON.parse(localStorage.getItem("qmoi-settings") || "{}");
@@ -94,7 +94,7 @@ export const QMoiSettingsPanel: React.FC = () => {
               saveSettings({ ...settings, allowedActions: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            [PRODUCTION READY]="e.g. build,deploy,test"
+            ="e.g. build,deploy,test"
           />
         </label>
         <label className="block mb-2">
@@ -106,7 +106,7 @@ export const QMoiSettingsPanel: React.FC = () => {
               saveSettings({ ...settings, mediaPerms: e.target.value })
             }
             className="ml-2 bg-gray-800 text-white"
-            [PRODUCTION READY]="e.g. images,docs,code"
+            ="e.g. images,docs,code"
           />
         </label>
       </div>

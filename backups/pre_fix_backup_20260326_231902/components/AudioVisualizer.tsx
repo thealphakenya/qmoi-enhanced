@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[PRODUCTION READY] all markers normalized for completion
+ all markers normalized for completion
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
@@ -29,7 +29,7 @@ export const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
 }) => {
   const [frequencies, setFrequencies] = useState<number[]>(Array(32).fill(0));
 
-  [PRODUCTION READY] frequency data
+   frequency data
   useEffect(() => {
     if (!isActive) {
       setFrequencies(Array(32).fill(0));
