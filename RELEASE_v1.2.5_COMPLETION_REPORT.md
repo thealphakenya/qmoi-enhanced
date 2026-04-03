@@ -147,7 +147,7 @@ All remaining verification and release preparation steps have been **successfull
 
 ### Phase 1: Rebuild Binaries (Required)
 
-Execute platform builds on appropriate environments to generate real production binaries.
+Execute platform builds on appropriate environments to generate /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ binaries.
 
 ### Phase 2: Replace [production READY]s
 

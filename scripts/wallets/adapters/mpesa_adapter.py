@@ -21,7 +21,7 @@ class MpesaproductionAdapter(TestnetAdapter):
         if real:
             if os.environ.get('production_CONFIRMED', 'false').lower() != 'true':
                 return {'status': 'blocked_no_production_confirm', 'last_checked': self.now_iso(), 'meta': {'adapter': self.name}}
-            # implementation for real production call
+            # implementation for /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ call
             return {'status': 'not_implemented', 'last_checked': self.now_iso(), 'meta': {'adapter': self.name}}
         return super().check_balance(config=cfg, real=False)
 

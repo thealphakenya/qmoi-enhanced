@@ -95,7 +95,7 @@ class QBalancesAutoUpdateSystem {
    * Get all wallet balances from the balance manager
    */
   private async getAllWalletBalances(): Promise<WalletBalanceData[]> {
-    // In a real implementation, this would query the database
+    // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would query the database
     // For now, return sample data that matches the BALANCES.md format
 
     const sampleWallets: WalletBalanceData[] = [

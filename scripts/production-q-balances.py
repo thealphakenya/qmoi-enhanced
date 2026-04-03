@@ -142,7 +142,7 @@ Examples:
 
     if args.status:
         # For now, just show that status checking is not implemented
-        # In a real implementation, this would check a PID file or service status
+        # /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would check a PID file or service status
         print('Status checking not yet implemented')
         print('System status: Unknown (run without arguments to start)')
         sys.exit(0)

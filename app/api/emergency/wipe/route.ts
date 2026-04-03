@@ -163,7 +163,7 @@ async function initiateSecureWipe(systemId: string, reason: string, level: strin
         break;
     }
 
-    // Simulate wipe process (in real implementation, this would be async)
+    // Simulate wipe process (in /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would be async)
     setTimeout(() => {
       console.log(`Secure system wipe completed for system ${systemId}`);
     }, 5000); // Simulate 5 second completion

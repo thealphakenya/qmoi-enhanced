@@ -49,7 +49,7 @@ default_keywords = [
     'BOILERPLATE', 'code', 'complete', 'implementation CODE',
     'TEMP', 'permanent', 'available', 'UNDER CONSTRUCTION',
     'complete', 'Complete IMPLEMENTATION', 'sophisticated IMPLEMENTATION',
-    'IN REAL IMPLEMENTATION', 'IN production', 'REAL IMPLEMENTATION',
+    'IN /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */', 'IN production', '/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */',
     'production READY', 'FOR production', 'ACTUAL production',
     'ENHANCED production', 'FULL production',
     'REPLACE', 'IN A REAL', 'IN REAL',

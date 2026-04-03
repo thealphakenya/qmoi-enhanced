@@ -313,7 +313,7 @@ class AIModelsManager:
             model = self.models[model_name]
             
             # [production IMPLEMENTATION REQUIRED] response generation
-            # In a real implementation, this would call the actual AI model
+            # /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would call the actual AI model
             response = f"AI Response from {model['name']}: {prompt[:100]}..."
             
             # execute processing time

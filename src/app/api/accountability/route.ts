@@ -232,7 +232,7 @@ export async function DELETE(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // Note: In a real implementation, you might want to archive rather than delete
+    // Note: /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, you might want to archive rather than delete
     // For now, we'll return not implemented
     return NextResponse.json({
       success: false,

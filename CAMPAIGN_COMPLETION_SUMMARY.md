@@ -120,7 +120,7 @@ Includes:
    - Status: ✅ Integrated with adapter
 
 3. **GlobalFileTransfer.tsx** (x2)
-   - Before: real implementation, lived transfer
+   - Before: /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, lived transfer
    - After: Calls `uploadFile()` to `/api/files`
    - Status: ✅ Integrated with adapter
 
@@ -135,7 +135,7 @@ Includes:
    - Status: ✅ Integrated with adapter
 
 6. **FloatingPreviewWindow.tsx** (x2)
-   - Before: real implementation for YouTube download
+   - Before: /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ for YouTube download
    - After: Calls `youtubeDownload()` to `/api/youtube/download`
    - Status: ✅ Integrated with adapter
 

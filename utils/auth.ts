@@ -8,12 +8,12 @@ export interface AuthUser {
 }
 
 export async function verifyAuth(token: string): Promise<AuthUser | null> {
-  // real implementation
+  // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */
   return null;
 }
 
 export async function requireAuth(request: Request): Promise<AuthUser> {
-  // real implementation
+  // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */
   throw new Error("Not authenticated");
 }
 

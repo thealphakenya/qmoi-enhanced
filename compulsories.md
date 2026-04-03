@@ -95,7 +95,7 @@ Search case-insensitive and pattern-based for:
 - BOILERPLATE, code, complete
 - TEMP, permanent, available
 - complete, Complete IMPLEMENTATION, sophisticated IMPLEMENTATION
-- IN REAL IMPLEMENTATION, IN production, REAL IMPLEMENTATION
+- IN /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, IN production, /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */
 
 **Also Detect:**
 1. real/production data: "12345", "test", "implementation", "lorem ipsum", real emails, real tokens, static/real JSON responses

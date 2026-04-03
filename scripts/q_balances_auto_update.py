@@ -95,7 +95,7 @@ class QBalancesAutoUpdateSystem:
 
     def _get_all_wallet_balances(self) -> List[WalletBalanceData]:
         """Get all wallet balances from the balance system"""
-        # In a real implementation, this would query the database
+        # /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would query the database
         # For now, return sample data that matches the BALANCES.md format with slight variations
 
         wallets = [

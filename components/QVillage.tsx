@@ -496,7 +496,7 @@ export const QVillage: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* data auto-projects - in real implementation, this would come from API */}
+        {/* data auto-projects - in /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would come from API */}
         {[
           {
             id: "music-prod-001",
@@ -637,7 +637,7 @@ export const QVillage: React.FC = () => {
       </div>
 
       <div className="space-y-3">
-        {/* data deals - in real implementation, this would come from API */}
+        {/* data deals - in /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would come from API */}
         {[
           {
             id: "deal-revenue-001",

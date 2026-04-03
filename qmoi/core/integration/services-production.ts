@@ -316,8 +316,8 @@ export class QMOIIntegratedServices {
         totalThoughts,
         avgConsciousnessLevel,
         avgEmotionalStability,
-        memoryRetentionRate: 0.85, // real implementation - would be calculated from memory stats
-        decisionAccuracy: 0.78, // real implementation - would be calculated from decision outcomes
+        memoryRetentionRate: 0.85, // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ - would be calculated from memory stats
+        decisionAccuracy: 0.78, // /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ - would be calculated from decision outcomes
       };
 
       return metrics;

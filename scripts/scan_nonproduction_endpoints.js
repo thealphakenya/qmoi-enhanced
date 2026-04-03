@@ -79,7 +79,7 @@ summary.push('## Keywords scanned: ' + keywords.join(', '));
 summary.push('');
 summary.push('## Findings: ' + results.length + ' files');
 summary.push('');
-summary.push('### Files needing review for real production implementation');
+summary.push('### Files needing review for /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ implementation');
 results.sort((a,b)=>a.filePath.localeCompare(b.filePath));
 for (const entry of results) {
   summary.push(`- ${entry.filePath} [${entry.hits.join(', ')}]`);
