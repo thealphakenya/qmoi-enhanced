@@ -1,99 +1,99 @@
 {
-  "timestamp": "2026-03-21T23:16:04.831484",
-  "total_files_audited": 1950,
-  "files_with_issues": 1948,
-  "total_links_found": 31185,
-  "broken_links": 12859,
-  "broken_link_percentage": "41.23%",
+  "timestamp": "2026-04-03T02:43:51.742227",
+  "total_files_audited": 1783,
+  "files_with_issues": 1753,
+  "total_links_found": 31019,
+  "broken_links": 12174,
+  "broken_link_percentage": "39.25%",
   "severity_summary": {
-    "critical": 98,
-    "high": 231,
-    "medium": 1619
+    "critical": 83,
+    "high": 192,
+    "medium": 1478
   },
   "critical_files": [
     "/workspaces/qmoi-enhanced/QVILLAGE.md",
+    "/workspaces/qmoi-enhanced/EMAILSSYSTEM.md",
     "/workspaces/qmoi-enhanced/ALLMDGILES.md",
-    "/workspaces/qmoi-enhanced/production_NEXT_STEPS_COMPLETE.md",
+    "/workspaces/qmoi-enhanced/PRODUCTION_NEXT_STEPS_COMPLETE.md",
     "/workspaces/qmoi-enhanced/COMPREHENSIVE_LINK_FIX_STRATEGY.md",
     "/workspaces/qmoi-enhanced/IMPLEMENTATION_ACTION_PLAN.md",
-    "/workspaces/qmoi-enhanced/VERCEL_AUTO_UPDATE_README.md",
     "/workspaces/qmoi-enhanced/VERCELLINKS.md",
-    "/workspaces/qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md",
+    "/workspaces/qmoi-enhanced/ALLMDFILESREFS.md",
+    "/workspaces/qmoi-enhanced/VERCEL_AUTO_UPDATE_README.md",
     "/workspaces/qmoi-enhanced/README_ENHANCED.md",
-    "/workspaces/qmoi-enhanced/DEPLOYMENT-README.md",
+    "/workspaces/qmoi-enhanced/START_PRODUCTION_DEPLOYMENT.md",
     "/workspaces/qmoi-enhanced/GITHUB_RELEASES_REALTIME_GUIDE.md",
-    "/workspaces/qmoi-enhanced/START_production_DEPLOYMENT.md",
     "/workspaces/qmoi-enhanced/SESSION_COMPLETION_SUMMARY.md",
-    "/workspaces/qmoi-enhanced/README_production.md",
     "/workspaces/qmoi-enhanced/MULTI_PLATFORM_BUILD_GUIDE.md",
-    "/workspaces/qmoi-enhanced/link_report.md",
+    "/workspaces/qmoi-enhanced/DOCKER_DEPLOYMENT_GUIDE.md",
     "/workspaces/qmoi-enhanced/DOMAINSANDLINKS.md",
+    "/workspaces/qmoi-enhanced/link_report.md",
+    "/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
     "/workspaces/qmoi-enhanced/SECURITY_AUDIT_CHECKLIST.md",
-    "/workspaces/qmoi-enhanced/API.md",
-    "/workspaces/qmoi-enhanced/DOCKER_DEPLOYMENT_GUIDE.md"
+    "/workspaces/qmoi-enhanced/DEPLOYMENT_QUICK_START.md"
   ],
   "high_priority_files": [
     "/workspaces/qmoi-enhanced/RELEASE_FINALIZATION_PLAN.md",
-    "/workspaces/qmoi-enhanced/SESSION_4_SUMMARY.md",
-    "/workspaces/qmoi-enhanced/BUILD_INSTRUCTIONS.md",
-    "/workspaces/qmoi-enhanced/QMOISPACEprod.md",
+    "/workspaces/qmoi-enhanced/QMOISPACEDEV.md",
     "/workspaces/qmoi-enhanced/V1_2_3_QUICK_REFERENCE.md",
-    "/workspaces/qmoi-enhanced/PROJECT_COMPLETE.md",
     "/workspaces/qmoi-enhanced/MONITORING_API_DOCS.md",
-    "/workspaces/qmoi-enhanced/MASTER_PROJECT_COMPLETION_INDEX.md",
-    "/workspaces/qmoi-enhanced/ALLVERSIONS.md",
     "/workspaces/qmoi-enhanced/SERVEQCITYQMOIAIQMOISPACE.md",
-    "/workspaces/qmoi-enhanced/QMOI_production_AUTO_RECOVERY_COMPLETE.md",
+    "/workspaces/qmoi-enhanced/ALLVERSIONS.md",
     "/workspaces/qmoi-enhanced/RELEASE_v1.2.5_VERIFICATION_GUIDE.md",
+    "/workspaces/qmoi-enhanced/QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md",
     "/workspaces/qmoi-enhanced/AUTO_RECOVERY_PROCEDURES.md",
-    "/workspaces/qmoi-enhanced/EXECUTION_SUMMARY.md",
-    "/workspaces/qmoi-enhanced/production_DEPLOYMENT_PLAYBOOK.md",
-    "/workspaces/qmoi-enhanced/README_MONITORING.md",
+    "/workspaces/qmoi-enhanced/PRODUCTION_DEPLOYMENT_PLAYBOOK.md",
     "/workspaces/qmoi-enhanced/SCRIPTSREADME.md",
     "/workspaces/qmoi-enhanced/RELEASE_VERIFICATION_V1_2_3.md",
-    "/workspaces/qmoi-enhanced/production_API_REFERENCE.md",
-    "/workspaces/qmoi-enhanced/QMOI_MASTER_TESTING_GUIDE.md"
+    "/workspaces/qmoi-enhanced/PRODUCTION_API_REFERENCE.md",
+    "/workspaces/qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md",
+    "/workspaces/qmoi-enhanced/PRODUCTION_READINESS_CHECKLIST_FINAL.md",
+    "/workspaces/qmoi-enhanced/CACHING_GUIDE.md",
+    "/workspaces/qmoi-enhanced/DEPLOYMENT_STATUS_V1_2_3.md",
+    "/workspaces/qmoi-enhanced/QMOI_TESTING_INDEX.md",
+    "/workspaces/qmoi-enhanced/REAL_IMPLEMENTATIONS_VERIFICATION.md",
+    "/workspaces/qmoi-enhanced/COMPREHENSIVE_TESTING_QA_STRATEGY.md"
   ],
   "top_broken_links": [
     [
       "qmoi_validation",
-      1083
+      1054
     ],
     [
       "qmoi-enhanced",
-      801
+      594
     ],
     [
       "qmoi_validation_frontmatter",
-      685
+      461
     ],
     [
       "qmoi",
-      256
+      271
     ],
     [
       "qcity",
-      124
-    ],
-    [
-      "qmoi-space",
-      66
-    ],
-    [
-      "http://localhost:3000",
-      63
+      115
     ],
     [
       "qvillage",
-      58
+      77
+    ],
+    [
+      "qmoi-space",
+      64
     ],
     [
       "qmoi_ai.exe",
-      47
+      38
     ],
     [
       "qmoi_ai.apk",
-      43
+      35
+    ],
+    [
+      "qmoi_ai.ipa",
+      29
     ]
   ],
   "fixable_links": 0

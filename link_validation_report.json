@@ -1,521 +1,505 @@
 {
-  "timestamp": "2026-04-01T14:13:12.911163",
-  "total_links_checked": 184889,
-  "valid_links": 184457,
-  "broken_links": 432,
+  "timestamp": "2026-04-03T02:44:54.535924",
+  "total_links_checked": 205907,
+  "valid_links": 205471,
+  "broken_links": 436,
   "by_type": {
     "standard": {
-      "total": 159474,
-      "valid": 159048
+      "total": 180885,
+      "valid": 180455
     },
     "city": {
-      "total": 5156,
-      "valid": 5156
+      "total": 4912,
+      "valid": 4912
     },
     "api": {
-      "total": 8508,
-      "valid": 8508
+      "total": 8499,
+      "valid": 8499
     },
     "messaging": {
-      "total": 367,
-      "valid": 367
+      "total": 378,
+      "valid": 378
     },
     "models": {
-      "total": 7109,
-      "valid": 7109
-    },
-    "store": {
-      "total": 991,
-      "valid": 988
+      "total": 6946,
+      "valid": 6946
     },
     "download": {
-      "total": 2855,
-      "valid": 2855
+      "total": 2846,
+      "valid": 2846
+    },
+    "store": {
+      "total": 1004,
+      "valid": 1001
     },
     "sharing": {
-      "total": 310,
-      "valid": 307
+      "total": 315,
+      "valid": 312
     },
     "space": {
-      "total": 119,
-      "valid": 119
+      "total": 122,
+      "valid": 122
     }
   },
   "broken_links_by_type": {
-    "store": [
-      "qstore.qvillage.com",
-      "qstore.qvillage.com",
-      "qstore.qvillage.com"
-    ],
     "standard": [
-      "www.npmj",
       "www.shippable.com",
-      "www.skypack.prod",
-      "http://",
-      "www.npmjs",
-      "www.$DOMAIN",
-      "https://",
-      "https://",
-      "http://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
+      "www.godaddy.pro",
       "https://",
       "www.$DOMAIN",
       "www.npmjs",
-      "www.shippable.com",
-      "https://",
-      "www.skypack.prod",
-      "http://",
-      "www.npmj",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "www.skypack.prod",
-      "https://",
-      "http://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "http://",
-      "http://",
-      "http://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "www",
-      "www",
-      "https://",
-      "http://",
-      "www.$DOMAIN",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "www",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "www.$DOMAIN",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "www",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "http://",
-      "www",
-      "http://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "www.$DOMAIN",
-      "https://",
-      "https://",
-      "www",
-      "http://",
-      "https://",
-      "www.$DOMAIN",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "www.$DOMAIN",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "www",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "www.$DOMAIN",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "www",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "http://",
-      "www",
-      "http://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "www.$DOMAIN",
-      "https://",
-      "https://",
-      "www",
-      "http://",
-      "https://",
-      "www.$DOMAIN",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "www.$DOMAIN",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "www",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "www.$DOMAIN",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "www",
-      "https://",
-      "https://",
-      "www",
-      "www",
-      "www.shippable.com",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "www.$DOMAIN",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "www",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "www.$DOMAIN",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "https://",
-      "www",
-      "www.npmj",
-      "www.skypack.prod",
-      "www.skypack.prod",
-      "www.npmjs",
-      "www.shippable.com",
-      "www.npmjs",
-      "www.skypack.prod",
-      "www.npmj",
-      "www.shippable.com",
-      "www.skypack.prod",
-      "http://",
-      "www.npmjs",
-      "www.$DOMAIN",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "http://",
-      "https://",
-      "https://",
-      "http://",
-      "https://",
-      "www.$DOMAIN",
-      "www.npmjs",
-      "www.shippable.com",
-      "https://",
-      "http://",
       "www.npmj",
       "http://",
+      "www.godaddytraininghub.com",
+      "www.skypack.prod",
+      "https://",
+      "http://",
+      "http://",
       "https://",
       "https://",
       "http://",
       "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "www.godaddy.pro",
+      "www.npmj",
+      "www.npmjs",
+      "https://",
+      "http://",
+      "www.godaddytraininghub.com",
+      "www.shippable.com",
+      "www.$DOMAIN",
+      "www.skypack.prod",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "www.skypack.prod",
+      "http://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "http://",
+      "http://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "www",
+      "www",
+      "https://",
+      "http://",
+      "www.$DOMAIN",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "www",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "www.$DOMAIN",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "www",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "www",
+      "http://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "www.$DOMAIN",
+      "https://",
+      "https://",
+      "www",
+      "http://",
+      "https://",
+      "https://",
+      "www.$DOMAIN",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "www.$DOMAIN",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "www",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "www.$DOMAIN",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "www",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "www",
+      "http://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "www.$DOMAIN",
+      "https://",
+      "https://",
+      "www",
+      "http://",
+      "https://",
+      "https://",
+      "www.$DOMAIN",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "www.$DOMAIN",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "www",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "www.$DOMAIN",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "www",
+      "https://",
+      "https://",
+      "www",
+      "www",
+      "www.shippable.com",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "www.$DOMAIN",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "www",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "www.$DOMAIN",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "www",
+      "www.npmj",
+      "www.godaddy.pro",
+      "www.npmjs",
+      "www.godaddytraininghub.com",
+      "www.skypack.prod",
+      "www.skypack.prod",
+      "www.npmjs",
+      "www.shippable.com",
+      "www.shippable.com",
+      "https://",
+      "www.$DOMAIN",
+      "www.npmjs",
+      "www.npmj",
+      "http://",
+      "www.skypack.prod",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "http://",
+      "https://",
+      "https://",
+      "http://",
+      "https://",
+      "www.npmj",
+      "www.npmjs",
+      "https://",
+      "http://",
+      "www.shippable.com",
+      "www.$DOMAIN",
+      "http://",
+      "https://",
+      "https://",
+      "https://",
+      "http://",
       "https://",
       "https://",
       "https://",
       "http://",
       "https://"
     ],
+    "store": [
+      "http://qstore.qvillage.com/lander",
+      "http://qstore.qvillage.com/lander",
+      "http://qstore.qvillage.com/lander"
+    ],
     "sharing": [
-      "qshare.qvillage.com",
-      "qshare.qvillage.com",
-      "qshare.qvillage.com"
+      "http://qshare.qvillage.com/lander",
+      "http://qshare.qvillage.com/lander",
+      "http://qshare.qvillage.com/lander"
     ]
   },
   "files_with_broken_links": {
     "/workspaces/qmoi-enhanced/link_validation_results.json": [
-      {
-        "url": "qstore.qvillage.com",
-        "suggestion": "qstore.qvillage.com",
-        "error": "Domain status: critical"
-      },
-      {
-        "url": "www.npmj",
-        "suggestion": "www.npmj",
-        "error": "Link validation failed"
-      },
       {
         "url": "www.shippable.com",
         "suggestion": "www.shippable.com",
         "error": "Link validation failed"
       },
       {
-        "url": "www.skypack.prod",
-        "suggestion": "www.skypack.prod",
-        "error": "Link validation failed"
+        "url": "http://qstore.qvillage.com/lander",
+        "suggestion": "qstore.qvillage.com",
+        "error": "Domain status: critical"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "www.npmjs",
-        "suggestion": "www.npmjs",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "www.$DOMAIN",
-        "suggestion": "www.$DOMAIN",
+        "url": "www.godaddy.pro",
+        "suggestion": "www.godaddy.pro",
         "error": "Link validation failed"
       },
       {
@@ -524,9 +508,39 @@
         "error": "Link validation failed"
       },
       {
-        "url": "qshare.qvillage.com",
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.npmjs",
+        "suggestion": "www.npmjs",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://qshare.qvillage.com/lander",
         "suggestion": "qshare.qvillage.com",
         "error": "Domain status: critical"
+      },
+      {
+        "url": "www.npmj",
+        "suggestion": "www.npmj",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.godaddytraininghub.com",
+        "suggestion": "www.godaddytraininghub.com",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.skypack.prod",
+        "suggestion": "www.skypack.prod",
+        "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/DOMAIN_HEALTH_AUTOMATION_GUIDE.md": [
@@ -621,38 +635,8 @@
     ],
     "/workspaces/qmoi-enhanced/link_validation_report.json": [
       {
-        "url": "www.$DOMAIN",
-        "suggestion": "www.$DOMAIN",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "www.npmjs",
-        "suggestion": "www.npmjs",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "www.shippable.com",
-        "suggestion": "www.shippable.com",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "qshare.qvillage.com",
-        "suggestion": "qshare.qvillage.com",
-        "error": "Domain status: critical"
-      },
-      {
-        "url": "https://",
-        "suggestion": "https://",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "www.skypack.prod",
-        "suggestion": "www.skypack.prod",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "www.godaddy.pro",
+        "suggestion": "www.godaddy.pro",
         "error": "Link validation failed"
       },
       {
@@ -661,8 +645,48 @@
         "error": "Link validation failed"
       },
       {
-        "url": "qstore.qvillage.com",
+        "url": "www.npmjs",
+        "suggestion": "www.npmjs",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "https://",
+        "suggestion": "https://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://qstore.qvillage.com/lander",
         "suggestion": "qstore.qvillage.com",
+        "error": "Domain status: critical"
+      },
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.godaddytraininghub.com",
+        "suggestion": "www.godaddytraininghub.com",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.shippable.com",
+        "suggestion": "www.shippable.com",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.skypack.prod",
+        "suggestion": "www.skypack.prod",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://qshare.qvillage.com/lander",
+        "suggestion": "qshare.qvillage.com",
         "error": "Domain status: critical"
       }
     ],
@@ -696,12 +720,12 @@
     ],
     "/workspaces/qmoi-enhanced/domain_health_report.json": [
       {
-        "url": "qstore.qvillage.com",
+        "url": "http://qstore.qvillage.com/lander",
         "suggestion": "qstore.qvillage.com",
         "error": "Domain status: critical"
       },
       {
-        "url": "qshare.qvillage.com",
+        "url": "http://qshare.qvillage.com/lander",
         "suggestion": "qshare.qvillage.com",
         "error": "Domain status: critical"
       }
@@ -769,13 +793,13 @@
     ],
     "/workspaces/qmoi-enhanced/documentation_audit_details.json": [
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
@@ -832,25 +856,25 @@
     ],
     "/workspaces/qmoi-enhanced/instructionmanifest.txt": [
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/docs/link_report.json": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -863,13 +887,13 @@
     ],
     "/workspaces/qmoi-enhanced/docs/merged_remediation_plan.md": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -882,13 +906,13 @@
     ],
     "/workspaces/qmoi-enhanced/docs/LINKVALIDATION.md": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -1155,13 +1179,13 @@
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/scripts/setup-nginx-automated.sh": [
       {
-        "url": "www.$DOMAIN",
-        "suggestion": "www.$DOMAIN",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
         "error": "Link validation failed"
       }
     ],
@@ -1179,25 +1203,25 @@
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/scripts/link_validator.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/scripts/link_normalization_dryrun.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -1441,25 +1465,25 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/link_validator.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/link_normalization_dryrun.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -1540,37 +1564,37 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/setup-nginx-automated.sh": [
       {
-        "url": "www.$DOMAIN",
-        "suggestion": "www.$DOMAIN",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/link_validator.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/link_normalization_dryrun.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -1797,13 +1821,13 @@
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/setup-nginx-automated.sh": [
       {
-        "url": "www.$DOMAIN",
-        "suggestion": "www.$DOMAIN",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
         "error": "Link validation failed"
       }
     ],
@@ -1821,25 +1845,25 @@
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/link_validator.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/link_normalization_dryrun.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -2126,25 +2150,25 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/link_validator.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/link_normalization_dryrun.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -2225,37 +2249,37 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/setup-nginx-automated.sh": [
       {
-        "url": "www.$DOMAIN",
-        "suggestion": "www.$DOMAIN",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/link_validator.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/link_normalization_dryrun.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -2430,13 +2454,13 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/setup-nginx-automated.sh": [
       {
-        "url": "www.$DOMAIN",
-        "suggestion": "www.$DOMAIN",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
         "error": "Link validation failed"
       }
     ],
@@ -2454,25 +2478,25 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/link_validator.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/scripts/link_normalization_dryrun.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -2567,13 +2591,13 @@
     ],
     "/workspaces/qmoi-enhanced/tools/dns_fix_summary.md": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -2596,13 +2620,13 @@
     ],
     "/workspaces/qmoi-enhanced/tools/apply_link_fixes.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -2622,25 +2646,25 @@
     ],
     "/workspaces/qmoi-enhanced/tools/link_fix_propose_only.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/tools/propose_apply_trivial_fixes.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -2752,13 +2776,6 @@
         "error": "Link validation failed"
       }
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_master_website_automation.js": [
-      {
-        "url": "https://",
-        "suggestion": "https://",
-        "error": "Link validation failed"
-      }
-    ],
     "/workspaces/qmoi-enhanced/scripts/auto_readme_sync.py": [
       {
         "url": "https://",
@@ -2789,13 +2806,13 @@
     ],
     "/workspaces/qmoi-enhanced/scripts/setup-nginx-automated.sh": [
       {
-        "url": "www.$DOMAIN",
-        "suggestion": "www.$DOMAIN",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
         "error": "Link validation failed"
       }
     ],
@@ -2806,13 +2823,13 @@
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -2837,25 +2854,25 @@
     ],
     "/workspaces/qmoi-enhanced/scripts/link_validator.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/scripts/link_normalization_dryrun.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -2920,13 +2937,13 @@
     ],
     "/workspaces/qmoi-enhanced/scripts/comprehensive_md_validator.py": [
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       }
     ],
@@ -2944,13 +2961,13 @@
     ],
     "/workspaces/qmoi-enhanced/scripts/api_testing_suite.py": [
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       }
     ],
@@ -3020,6 +3037,21 @@
         "error": "Link validation failed"
       },
       {
+        "url": "www.godaddy.pro",
+        "suggestion": "www.godaddy.pro",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.npmjs",
+        "suggestion": "www.npmjs",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.godaddytraininghub.com",
+        "suggestion": "www.godaddytraininghub.com",
+        "error": "Link validation failed"
+      },
+      {
         "url": "www.skypack.prod",
         "suggestion": "www.skypack.prod",
         "error": "Link validation failed"
@@ -3037,43 +3069,18 @@
       {
         "url": "www.shippable.com",
         "suggestion": "www.shippable.com",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "www.npmjs",
-        "suggestion": "www.npmjs",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "www.skypack.prod",
-        "suggestion": "www.skypack.prod",
         "error": "Link validation failed"
       }
     ],
     "/workspaces/qmoi-enhanced/reports/link_validation_results.json": [
       {
-        "url": "www.npmj",
-        "suggestion": "www.npmj",
-        "error": "Link validation failed"
-      },
-      {
         "url": "www.shippable.com",
         "suggestion": "www.shippable.com",
         "error": "Link validation failed"
       },
       {
-        "url": "www.skypack.prod",
-        "suggestion": "www.skypack.prod",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "http://",
-        "suggestion": "http://",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "www.npmjs",
-        "suggestion": "www.npmjs",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       },
       {
@@ -3082,8 +3089,23 @@
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "www.npmjs",
+        "suggestion": "www.npmjs",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.npmj",
+        "suggestion": "www.npmj",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "http://",
+        "suggestion": "http://",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.skypack.prod",
+        "suggestion": "www.skypack.prod",
         "error": "Link validation failed"
       }
     ],
@@ -3144,18 +3166,13 @@
     ],
     "/workspaces/qmoi-enhanced/reports/link_validation_report.json": [
       {
-        "url": "www.$DOMAIN",
-        "suggestion": "www.$DOMAIN",
+        "url": "www.npmj",
+        "suggestion": "www.npmj",
         "error": "Link validation failed"
       },
       {
         "url": "www.npmjs",
         "suggestion": "www.npmjs",
-        "error": "Link validation failed"
-      },
-      {
-        "url": "www.shippable.com",
-        "suggestion": "www.shippable.com",
         "error": "Link validation failed"
       },
       {
@@ -3169,8 +3186,13 @@
         "error": "Link validation failed"
       },
       {
-        "url": "www.npmj",
-        "suggestion": "www.npmj",
+        "url": "www.shippable.com",
+        "suggestion": "www.shippable.com",
+        "error": "Link validation failed"
+      },
+      {
+        "url": "www.$DOMAIN",
+        "suggestion": "www.$DOMAIN",
         "error": "Link validation failed"
       }
     ],
@@ -3195,13 +3217,13 @@
     ],
     "/workspaces/qmoi-enhanced/reports/documentation_audit_details.json": [
       {
-        "url": "http://",
-        "suggestion": "http://",
+        "url": "https://",
+        "suggestion": "https://",
         "error": "Link validation failed"
       },
       {
-        "url": "https://",
-        "suggestion": "https://",
+        "url": "http://",
+        "suggestion": "http://",
         "error": "Link validation failed"
       },
       {
@@ -3234,15 +3256,17 @@
     ]
   },
   "suggestions": {
-    "qstore.qvillage.com": "qstore.qvillage.com",
-    "www.npmj": "www.npmj",
     "www.shippable.com": "www.shippable.com",
-    "www.skypack.prod": "www.skypack.prod",
-    "http://": "http://",
-    "www.npmjs": "www.npmjs",
-    "www.$DOMAIN": "www.$DOMAIN",
+    "http://qstore.qvillage.com/lander": "qstore.qvillage.com",
+    "www.godaddy.pro": "www.godaddy.pro",
     "https://": "https://",
-    "qshare.qvillage.com": "qshare.qvillage.com",
+    "www.$DOMAIN": "www.$DOMAIN",
+    "www.npmjs": "www.npmjs",
+    "http://qshare.qvillage.com/lander": "qshare.qvillage.com",
+    "www.npmj": "www.npmj",
+    "http://": "http://",
+    "www.godaddytraininghub.com": "www.godaddytraininghub.com",
+    "www.skypack.prod": "www.skypack.prod",
     "www": "www"
   }
 }

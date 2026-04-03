@@ -1,0 +1,326 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-04-03T03:20:07.794555",
+  "title": "QMOI Domain Deployment Execution Guide",
+  "description": "Step-by-step guide to deploy all 22 QMOI-owned domains from 0% health to 100% health",
+  "quick_start": {
+    "estimated_total_time_sequential": "49 hours",
+    "estimated_total_time_parallel": "28 hours",
+    "start_date": "2026-04-02",
+    "expected_completion": "2026-04-04 18:00 UTC",
+    "command_to_start": "python3 scripts/domain_activation_orchestrator.py --start-phase-1 --all-domains"
+  },
+  "pre_deployment_checklist": [
+    "\u2705 All 22 QMOI domains identified and classified",
+    "\u2705 DNS records prepared in CloudFlare",
+    "\u2705 SSL certificate provider configured (LetsEncrypt)",
+    "\u2705 Content repository ready for deployment",
+    "\u2705 UI components built and tested",
+    "\u2705 Monitoring infrastructure configured",
+    "\u2705 Backup and rollback procedures documented",
+    "\u2139\ufe0f Estimated resources: 4 CPU cores, 16GB RAM, 100GB storage"
+  ],
+  "phase_execution_guide": {
+    "phase_1_dns_activation": {
+      "phase_number": 1,
+      "name": "DNS Activation",
+      "duration": "24 hours",
+      "can_parallelize": false,
+      "depends_on": "None (START HERE)",
+      "domains_affected": 22,
+      "step_by_step": [
+        {
+          "step": 1,
+          "action": "Initialize DNS activation",
+          "command": "python3 scripts/deploy_dns_activation.py --all-domains --provider=cloudflare --dry-run",
+          "expected_output": "\u2705 22 domains ready for DNS activation",
+          "verification": "Check CloudFlare dashboard for DNS records"
+        },
+        {
+          "step": 2,
+          "action": "Deploy DNS records",
+          "command": "python3 scripts/deploy_dns_activation.py --all-domains --provider=cloudflare --execute",
+          "expected_output": "\u2705 DNS deployed for 22 domains",
+          "verification": "nslookup api.qmoi.com && nslookup qmoi.ai"
+        },
+        {
+          "step": 3,
+          "action": "Validate DNS propagation",
+          "command": "python3 scripts/validate_dns.py --check-resolution --continents=5",
+          "expected_output": "\u2705 22/22 domains resolving across all continents",
+          "verification": "All regions return valid A records"
+        },
+        {
+          "step": 4,
+          "action": "Log DNS activation completion",
+          "command": "echo 'Phase 1 complete' >> .deployment_log",
+          "expected_output": "\u2705 DNS activation phase logged",
+          "verification": "Proceed to Phase 2"
+        }
+      ],
+      "success_criteria": [
+        "All 22 domains have valid DNS A records",
+        "DNS resolves from 5+ geographic locations",
+        "No DNS timeouts (< 100ms response)",
+        "Health score +20 points (20/100 total)"
+      ],
+      "failure_recovery": {
+        "if_dns_not_resolving": "Check CloudFlare nameserver configuration and domain registrar settings",
+        "if_partial_domains": "Retry individual domains with --domain=api.qmoi.com flag",
+        "if_propagation_slow": "Wait 15 minutes and retry --check-resolution"
+      }
+    },
+    "phase_2_ssl_provisioning": {
+      "phase_number": 2,
+      "name": "SSL Provisioning",
+      "duration": "2 hours",
+      "can_parallelize": true,
+      "depends_on": "Phase 1 (DNS must be live)",
+      "domains_affected": 22,
+      "parallelizable_with": [
+        "Phase 3",
+        "Phase 4"
+      ],
+      "step_by_step": [
+        {
+          "step": 1,
+          "action": "Request SSL certificates",
+          "command": "python3 scripts/provision_ssl_certificates.py --provider=letsencrypt --all-domains --verbose",
+          "expected_output": "\u2705 Requested 22 SSL certificates",
+          "verification": "Check certificate provisioning status"
+        },
+        {
+          "step": 2,
+          "action": "Configure auto-renewal",
+          "command": "python3 scripts/configure_ssl_renewal.py --provider=letsencrypt --auto-renew=true",
+          "expected_output": "\u2705 Auto-renewal configured for all domains",
+          "verification": "Certificates renew automatically every 60 days"
+        },
+        {
+          "step": 3,
+          "action": "Verify SSL certificates",
+          "command": "python3 scripts/verify_ssl.py --all-domains --check-tls-version=1.3",
+          "expected_output": "\u2705 22/22 domains have valid TLS 1.3+ certificates",
+          "verification": "openssl s_client -connect api.qmoi.com:443"
+        }
+      ],
+      "success_criteria": [
+        "All 22 domains have valid SSL certificates",
+        "TLS version 1.3 or higher on all domains",
+        "Certificate expiry > 30 days",
+        "Auto-renewal enabled and tested",
+        "Health score +15 points (35/100 total)"
+      ]
+    },
+    "phase_3_content_deployment": {
+      "phase_number": 3,
+      "name": "Content Deployment",
+      "duration": "8 hours",
+      "can_parallelize": true,
+      "depends_on": "Phase 1 (DNS must be live)",
+      "domains_affected": 22,
+      "parallelizable_with": [
+        "Phase 2",
+        "Phase 4"
+      ],
+      "step_by_step": [
+        {
+          "step": 1,
+          "action": "Prepare content bundles",
+          "command": "python3 scripts/prepare_content.py --all-domains --static-assets --verify",
+          "expected_output": "\u2705 Content bundles prepared for 22 domains",
+          "verification": "Check content/bundles/ directory"
+        },
+        {
+          "step": 2,
+          "action": "Deploy to CDN",
+          "command": "python3 scripts/deploy_content.py --all-domains --cdn=cloudflare --purge-cache",
+          "expected_output": "\u2705 Content deployed to CDN for 22 domains",
+          "verification": "curl -I https://api.qmoi.com returns HTTP 200"
+        },
+        {
+          "step": 3,
+          "action": "Verify content delivery",
+          "command": "python3 scripts/verify_content.py --all-domains --http-status=200 --content-size-min=1000",
+          "expected_output": "\u2705 22/22 domains return HTTP 200 with substantial content",
+          "verification": "Content size > 1KB on all domains"
+        }
+      ],
+      "success_criteria": [
+        "All 22 domains return HTTP 200",
+        "Content size >= 1KB on all domains",
+        "CDN caching configured (cache-control headers)",
+        "Static assets optimized (gzip compression)",
+        "Health score +20 points (55/100 total)"
+      ]
+    },
+    "phase_4_ui_feature_deployment": {
+      "phase_number": 4,
+      "name": "UI Feature Deployment",
+      "duration": "6 hours",
+      "can_parallelize": true,
+      "depends_on": "Phase 1 (DNS must be live)",
+      "domains_affected": 22,
+      "parallelizable_with": [
+        "Phase 2",
+        "Phase 3"
+      ],
+      "step_by_step": [
+        {
+          "step": 1,
+          "action": "Build UI components",
+          "command": "python3 scripts/build_ui_features.py --all-domains --responsive=true --a11y=true",
+          "expected_output": "\u2705 UI components built for 22 domains",
+          "verification": "dist/ directory contains all UI bundles"
+        },
+        {
+          "step": 2,
+          "action": "Deploy UI features",
+          "command": "python3 scripts/deploy_ui_features.py --all-domains --responsive=true --theme=qmoi-standard",
+          "expected_output": "\u2705 UI features deployed to 22 domains",
+          "verification": "Check website loaded in browser"
+        },
+        {
+          "step": 3,
+          "action": "Validate UI coverage",
+          "command": "python3 scripts/validate_ui_coverage.py --all-domains --min-coverage=80 --headless",
+          "expected_output": "\u2705 22/22 domains have \u226580% UI feature coverage",
+          "verification": "Navigation, forms, documentation all present"
+        }
+      ],
+      "success_criteria": [
+        "All 22 domains have \u226580% UI feature coverage",
+        "Navigation working on all domains",
+        "Forms and inputs functional",
+        "Responsive design (mobile, tablet, desktop)",
+        "Health score +20 points (75/100 total)"
+      ]
+    },
+    "phase_5_mark_active": {
+      "phase_number": 5,
+      "name": "Mark Domains as ACTIVE",
+      "duration": "4 hours",
+      "can_parallelize": false,
+      "depends_on": "Phase 4 (UI must be deployed)",
+      "step_by_step": [
+        {
+          "step": 1,
+          "action": "Remove parked status",
+          "command": "python3 scripts/activate_domains.py --mark-active --remove-parked-status --all-domains",
+          "expected_output": "\u2705 Removed parked status from 22 domains",
+          "verification": "Domains no longer show parking page"
+        },
+        {
+          "step": 2,
+          "action": "Add QMOI branding",
+          "command": "python3 scripts/update_branding.py --all-domains --add-qmoi-logo --add-footer",
+          "expected_output": "\u2705 QMOI branding added to 22 domains",
+          "verification": "QMOI logo visible on all domain homepages"
+        },
+        {
+          "step": 3,
+          "action": "Activate analytics tracking",
+          "command": "python3 scripts/enable_analytics.py --all-domains --tracking-provider=google-analytics",
+          "expected_output": "\u2705 Analytics enabled for 22 domains",
+          "verification": "GA tracking code present in HTML head"
+        }
+      ],
+      "success_criteria": [
+        "All 22 domains marked as ACTIVE",
+        "No parking pages displayed",
+        "QMOI branding visible",
+        "Analytics tracking active",
+        "Health score +15 points (90/100 total)"
+      ]
+    },
+    "phase_6_uptime_monitoring": {
+      "phase_number": 6,
+      "name": "Setup Uptime Monitoring",
+      "duration": "Continuous",
+      "can_parallelize": true,
+      "depends_on": "Phase 5 (domains must be active)",
+      "step_by_step": [
+        {
+          "step": 1,
+          "action": "Configure monitoring",
+          "command": "python3 scripts/setup_monitoring.py --all-domains --uptime-target=99.5 --check-interval=5m",
+          "expected_output": "\u2705 Monitoring configured for 22 domains",
+          "verification": "Monitoring dashboard shows all domains"
+        },
+        {
+          "step": 2,
+          "action": "Setup auto-failover",
+          "command": "python3 scripts/setup_failover.py --all-domains --auto-failover=true --failover-regions=3",
+          "expected_output": "\u2705 Auto-failover enabled for 22 domains",
+          "verification": "Failover triggered when primary region fails"
+        },
+        {
+          "step": 3,
+          "action": "Enable alerts",
+          "command": "python3 scripts/enable_alerts.py --all-domains --alert-channel=slack,email --alert-threshold=99.5",
+          "expected_output": "\u2705 Alerts enabled for 22 domains",
+          "verification": "Test alert notification received"
+        }
+      ],
+      "success_criteria": [
+        "All 22 domains monitored continuously",
+        "Uptime >= 99.5% maintained",
+        "Auto-failover working across regions",
+        "Alerts configured and tested",
+        "Health score +10 points (100/100 total)"
+      ]
+    }
+  },
+  "parallel_execution_strategy": {
+    "description": "Phases 2, 3, 4 can run simultaneously after Phase 1 completes",
+    "timeline": {
+      "phase_1": "Hours 0-24: DNS Activation (MUST COMPLETE FIRST)",
+      "phases_2_3_4": "Hours 24-32: SSL + Content + UI in parallel (max 8 hours)",
+      "phase_5": "Hours 32-36: Mark Active (4 hours)",
+      "phase_6": "Hours 36+: Continuous Monitoring"
+    },
+    "total_parallel_time": "~28 hours instead of 49 hours sequential"
+  },
+  "monitoring_and_verification": {
+    "real_time_dashboard": "python3 scripts/monitoring_dashboard.py --realtime",
+    "health_check": "python3 scripts/health_check.py --all-domains --detailed",
+    "performance_metrics": "python3 scripts/performance_report.py --all-domains --output=json",
+    "uptime_summary": "python3 scripts/uptime_report.py --all-domains --period=24h"
+  },
+  "troubleshooting": {
+    "phase_1_dns_issues": {
+      "problem": "DNS not resolving",
+      "solution": [
+        "1. Check CloudFlare nameserver configuration",
+        "2. Verify domain registrar points to CloudFlare nameservers",
+        "3. Wait 15 minutes for propagation",
+        "4. Test: nslookup api.qmoi.com"
+      ]
+    },
+    "phase_2_ssl_issues": {
+      "problem": "SSL certificate provisioning fails",
+      "solution": [
+        "1. Ensure DNS is live (Phase 1 complete)",
+        "2. Check LetsEncrypt account email",
+        "3. Verify port 80/443 are accessible",
+        "4. Retry with: python3 scripts/provision_ssl_certificates.py --retry=3"
+      ]
+    },
+    "phase_3_content_issues": {
+      "problem": "Content deployment fails",
+      "solution": [
+        "1. Check CDN access credentials",
+        "2. Verify content bundles exist in content/ directory",
+        "3. Check available disk space",
+        "4. Retry with: python3 scripts/deploy_content.py --all-domains --retry=5"
+      ]
+    }
+  },
+  "rollback_procedures": {
+    "phase_1_rollback": "Remove DNS records from CloudFlare",
+    "phase_2_rollback": "Revoke SSL certificates and restore old ones",
+    "phase_3_rollback": "Purge CDN cache and restore previous content",
+    "phase_4_rollback": "Restore previous UI version from backup",
+    "phase_5_rollback": "Restore parked status if needed"
+  }
+}

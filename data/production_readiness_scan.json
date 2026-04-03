@@ -1,32 +1,38 @@
 {
-  "total_files_scanned": 13692,
-  "files_with_markers": 3630,
-  "total_markers_found": 17893,
+  "total_files_scanned": 13845,
+  "files_with_markers": 3528,
+  "total_markers_found": 16809,
   "markers_by_type": {
-    "complete": 1179,
-    "stable": 1731,
-    "real": 3190,
-    "NOTE": 729,
-    "WARNING": 4187,
-    "fixed": 2088,
-    "production": 2538,
-    "REPLACE": 1162,
-    "INSTRUCTIONS": 34,
-    "realS": 6,
-    "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */": 12,
-    "DONE": 450,
-    "live": 358,
-    "INSTRUCTION": 29,
-    "SIMPLE": 70,
-    "TEMPORARY": 1,
-    "DEPRECATED": 70,
-    "TEST IMPLEMENTATION": 4,
-    "production IMPLEMENTATION REQUIRED": 46,
+    "real": 2970,
+    "live": 334,
+    "complete": 1124,
+    "stable": 1641,
+    "NOTE": 696,
+    "WARNING": 3885,
+    "fixed": 1950,
+    "REPLACE": 1097,
+    "production": 2410,
+    "MINIMAL": 6,
+    "INSTRUCTIONS": 39,
+    "SIMPLE": 66,
+    "TEMPORARY": 2,
+    "DONE": 446,
+    "DEPRECATED": 63,
+    "INSTRUCTION": 24,
+    "TEST IMPLEMENTATION": 3,
+    "production IMPLEMENTATION REQUIRED": 44,
     "PENDING_IMPLEMENTATION": 4,
     "TEST DATA": 2,
-    "MINIMAL": 3
+    "realS": 3
   },
   "files_by_marker": {
+    "/workspaces/qmoi-enhanced/components/QAvatar.tsx": [
+      "real (2)",
+      "live (1)",
+      "live (1)",
+      "real (2)",
+      "complete (1)"
+    ],
     "/workspaces/qmoi-enhanced/components/QmoiRevenueDashboard.tsx": [
       "complete (1)"
     ],
@@ -35,15 +41,12 @@
       "stable (1)",
       "stable (1)"
     ],
-    "/workspaces/qmoi-enhanced/components/SisterProjects.tsx": [
-      "complete (1)"
-    ],
     "/workspaces/qmoi-enhanced/components/qmedia-player.md": [
       "real (2)",
       "real (2)"
     ],
     "/workspaces/qmoi-enhanced/components/LeahWallet.tsx": [
-      "NOTE (1)"
+      "NOTE (2)"
     ],
     "/workspaces/qmoi-enhanced/components/AvatarGalleryPanel.tsx": [
       "WARNING (1)"
@@ -65,12 +68,7 @@
     "/workspaces/qmoi-enhanced/components/BrowserInterface.tsx": [
       "stable (1)",
       "stable (1)",
-      "stable (1)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/components/QI.tsx": [
-      "production (2)",
-      "production (2)"
+      "stable (1)"
     ],
     "/workspaces/qmoi-enhanced/components/FloatingPreviewWindow.tsx": [
       "stable (1)",
@@ -101,6 +99,9 @@
       "real (1)",
       "real (1)"
     ],
+    "/workspaces/qmoi-enhanced/components/LcSpaces.tsx": [
+      "complete (1)"
+    ],
     "/workspaces/qmoi-enhanced/components/QmoiBrowser.tsx": [
       "REPLACE (1)"
     ],
@@ -108,8 +109,6 @@
       "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/components/enhanced-system-dashboard.tsx": [
-      "production (1)",
-      "production (1)",
       "stable (1)",
       "stable (1)",
       "stable (1)",
@@ -118,6 +117,12 @@
     "/workspaces/qmoi-enhanced/components/BluetoothManager.tsx": [
       "NOTE (1)"
     ],
+    "/workspaces/qmoi-enhanced/components/EmergencyPanel.tsx": [
+      "real (1)",
+      "production (1)",
+      "real (1)",
+      "production (1)"
+    ],
     "/workspaces/qmoi-enhanced/components/QMOIAutoFixDashboard.tsx": [
       "fixed (3)",
       "real (1)",
@@ -125,6 +130,21 @@
     ],
     "/workspaces/qmoi-enhanced/components/GlobalFileTransfer.tsx": [
       "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/components/QMediaPlayer.tsx": [
+      "fixed (2)",
+      "real (1)",
+      "live (1)",
+      "live (1)",
+      "production (1)",
+      "real (1)",
+      "MINIMAL (2)",
+      "production (1)"
+    ],
+    "/workspaces/qmoi-enhanced/components/QiSpaces.tsx": [
+      "stable (1)",
+      "stable (1)",
+      "stable (1)"
     ],
     "/workspaces/qmoi-enhanced/components/HelpGuide.tsx": [
       "INSTRUCTIONS (2)"
@@ -140,18 +160,6 @@
     ],
     "/workspaces/qmoi-enhanced/components/device/GCPCredentialsModal.tsx": [
       "fixed (1)"
-    ],
-    "/workspaces/qmoi-enhanced/components/device/DeviceIntegrationStubs.ts": [
-      "real (27)",
-      "production (3)",
-      "real (27)",
-      "realS (3)",
-      "production (3)"
-    ],
-    "/workspaces/qmoi-enhanced/components/global/GlobalOperationsDashboard.tsx": [
-      "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ (1)",
-      "real (1)",
-      "real (1)"
     ],
     "/workspaces/qmoi-enhanced/components/ui/skeleton.tsx": [
       "complete (1)"
@@ -171,18 +179,12 @@
     "/workspaces/qmoi-enhanced/components/q-city/QCityDevicePanel.tsx": [
       "fixed (3)"
     ],
-    "/workspaces/qmoi-enhanced/components/q-city/QVillage.tsx": [
-      "REPLACE (1)"
-    ],
     "/workspaces/qmoi-enhanced/mobile/components/AnalyticsScreen.js": [
       "fixed (3)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/mobile/components/DeviceManagementScreen.js": [
       "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/api/qcity.ts": [
-      "DONE (1)"
     ],
     "/workspaces/qmoi-enhanced/lib/qmoi-auto-config.ts": [
       "production (1)",
@@ -211,7 +213,9 @@
       "real (1)"
     ],
     "/workspaces/qmoi-enhanced/lib/payments/service.ts": [
-      "REPLACE (1)"
+      "complete (2)",
+      "REPLACE (1)",
+      "INSTRUCTIONS (1)"
     ],
     "/workspaces/qmoi-enhanced/__tests__/api/qmoi-autodev-toggle-generate-state.test.ts": [
       "real (1)",
@@ -225,15 +229,6 @@
     ],
     "/workspaces/qmoi-enhanced/domain-management/auto-adaptation/recovery_systems.py": [
       "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/routes/api/qmoi/autodev.ts": [
-      "production (2)",
-      "production (2)",
-      "complete (4)",
-      "INSTRUCTION (3)"
-    ],
-    "/workspaces/qmoi-enhanced/routes/api/qmoi/file.ts": [
-      "REPLACE (4)"
     ],
     "/workspaces/qmoi-enhanced/pwa_apps/README.md": [
       "real (1)",
@@ -305,6 +300,419 @@
     "/workspaces/qmoi-enhanced/qmoi/core/awareness/system.ts": [
       "real (1)",
       "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/QmoiRevenueDashboard.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/alpha-q-ai-system.tsx": [
+      "stable (1)",
+      "stable (1)",
+      "stable (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/SisterProjects.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/LeahWallet.tsx": [
+      "NOTE (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/AvatarGalleryPanel.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/WifiAutoConnectPanel.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/QMOIDashboard.tsx": [
+      "WARNING (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/SystemHealthMonitor.tsx": [
+      "real (1)",
+      "real (1)",
+      "WARNING (10)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/BrowserInterface.tsx": [
+      "stable (1)",
+      "stable (1)",
+      "stable (1)",
+      "NOTE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/FloatingPreviewWindow.tsx": [
+      "stable (1)",
+      "stable (1)",
+      "stable (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/AccountabilitySystem.tsx": [
+      "WARNING (3)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/MasterTracksDashboard.tsx": [
+      "WARNING (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/ComponentGallery.tsx": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/DownloadManager.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/NotificationPanel.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/EnhancedLinkDomainManager.tsx": [
+      "REPLACE (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/QVillage.tsx": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/QmoiBrowser.tsx": [
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/QMOIOwnDevice.tsx": [
+      "WARNING (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/enhanced-system-dashboard.tsx": [
+      "production (1)",
+      "production (1)",
+      "stable (1)",
+      "stable (1)",
+      "stable (1)",
+      "WARNING (4)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/BluetoothManager.tsx": [
+      "NOTE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/QMOIAutoFixDashboard.tsx": [
+      "fixed (3)",
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/GlobalFileTransfer.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/HelpGuide.tsx": [
+      "INSTRUCTIONS (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/predeploy/OrchestratorStatusPanel.tsx": [
+      "WARNING (4)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/device/AWSCredentialsModal.tsx": [
+      "fixed (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/device/AzureCredentialsModal.tsx": [
+      "fixed (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/device/GCPCredentialsModal.tsx": [
+      "fixed (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/ui/skeleton.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/ui/PluginHelpModal.tsx": [
+      "fixed (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/ui/sidebar.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/security/RoleContext.tsx": [
+      "fixed (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/q-city/QMOIBiometricManager.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/q-city/QCityDevicePanel.tsx": [
+      "fixed (3)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/components/q-city/QVillage.tsx": [
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/QAvatar.tsx": [
+      "live (1)",
+      "live (1)",
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/QmoiRevenueDashboard.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/alpha-q-ai-system.tsx": [
+      "stable (1)",
+      "stable (1)",
+      "stable (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/LeahWallet.tsx": [
+      "NOTE (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/WifiAutoConnectPanel.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/BrowserInterface.tsx": [
+      "stable (1)",
+      "stable (1)",
+      "stable (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/FloatingPreviewWindow.tsx": [
+      "stable (1)",
+      "stable (1)",
+      "stable (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/DownloadManager.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/NotificationPanel.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/LcSpaces.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/QmoiBrowser.tsx": [
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/QMOIOwnDevice.tsx": [
+      "WARNING (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/enhanced-system-dashboard.tsx": [
+      "stable (1)",
+      "stable (1)",
+      "stable (1)",
+      "WARNING (4)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/BluetoothManager.tsx": [
+      "NOTE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/EmergencyPanel.tsx": [
+      "real (1)",
+      "production (1)",
+      "real (1)",
+      "production (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/QMOIAutoFixDashboard.tsx": [
+      "fixed (3)",
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/GlobalFileTransfer.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/QiSpaces.tsx": [
+      "stable (1)",
+      "stable (1)",
+      "stable (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/HelpGuide.tsx": [
+      "INSTRUCTIONS (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/predeploy/OrchestratorStatusPanel.tsx": [
+      "WARNING (4)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/device/AWSCredentialsModal.tsx": [
+      "fixed (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/device/AzureCredentialsModal.tsx": [
+      "fixed (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/device/GCPCredentialsModal.tsx": [
+      "fixed (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/ui/skeleton.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/ui/PluginHelpModal.tsx": [
+      "fixed (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/ui/sidebar.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/security/RoleContext.tsx": [
+      "fixed (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/q-city/QMOIBiometricManager.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/components/q-city/QCityDevicePanel.tsx": [
+      "fixed (3)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/dashboard/src/App.jsx": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/AssetOverview.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/release-notes.tsx": [
+      "NOTE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/FloatingAQ.tsx": [
+      "stable (1)",
+      "stable (1)",
+      "stable (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/TradingStatus.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/TradingHistory.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/QiSpaces.tsx": [
+      "stable (2)",
+      "stable (2)",
+      "stable (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/QMoiDatabaseDashboard.tsx": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx": [
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/QMoiState.tsx": [
+      "real (1)",
+      "real (1)",
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/SelfHealPanel.tsx": [
+      "DONE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/QMoiFileEditorChat.tsx": [
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/CommandPanel.tsx": [
+      "DONE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/QMoiToolbar.tsx": [
+      "fixed (3)",
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/Onboarding.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/EnhancedQMOIDashboard.tsx": [
+      "fixed (1)",
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/_archive_qmoi-enhanced/src/components/q-city/QOxygen.tsx": [
+      "WARNING (3)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/AssetOverview.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/FloatingAQ.tsx": [
+      "fixed (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/TradingStatus.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/TradingHistory.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/QMoiDatabaseDashboard.tsx": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/QMoiAutoDevPanel.tsx": [
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/QMoiState.tsx": [
+      "real (1)",
+      "real (1)",
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/SystemHealthPanel.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/QApiKeyManager.tsx": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/QMoiToolbar.tsx": [
+      "fixed (3)",
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/EnhancedQMOIDashboard.tsx": [
+      "fixed (1)",
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/q-city/QOxygen.tsx": [
+      "WARNING (3)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/dashboard/src/App.jsx": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/app/master/email/page.tsx": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/app/components/SponsoredUsersManager.tsx": [
+      "fixed (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/app/components/QMOIMasterDashboard.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/app/components/QMOIAutoFixDashboard.tsx": [
+      "fixed (7)",
+      "WARNING (3)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/app/admin/master/activity/page.tsx": [
+      "WARNING (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/PreviewWindow.tsx": [
+      "complete (1)",
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/QI_Enhanced.tsx": [
+      "fixed (1)",
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/AssetOverview.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/ChatbotEnhanced.tsx": [
+      "real (1)",
+      "real (1)",
+      "REPLACE (2)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/TradingStatus.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/AutomationEngine.tsx": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/TradingHistory.tsx": [
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/q-city/QMoiDatabaseDashboard.tsx": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/q-city/QMoiAutoDevPanel.tsx": [
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/q-city/QMoiState.tsx": [
+      "real (1)",
+      "real (1)",
+      "REPLACE (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/q-city/SystemHealthPanel.tsx": [
+      "complete (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/q-city/QApiKeyManager.tsx": [
+      "real (1)",
+      "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/q-city/QMoiToolbar.tsx": [
+      "fixed (3)",
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/q-city/EnhancedQMOIDashboard.tsx": [
+      "fixed (1)",
+      "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/src/components/q-city/QOxygen.tsx": [
+      "real (1)",
+      "real (1)",
+      "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/components/QmoiRevenueDashboard.tsx": [
       "complete (1)"
@@ -1801,7 +2209,6 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/replace_placeholders.py": [
       "DONE (2)",
       "fixed (1)",
-      "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ (1)",
       "real (1)",
       "production (3)",
       "real (1)",
@@ -5274,7 +5681,6 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/replace_placeholders.py": [
       "DONE (2)",
       "fixed (1)",
-      "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ (1)",
       "real (1)",
       "production (3)",
       "real (1)",
@@ -5343,7 +5749,7 @@
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/validate_ui_components.py": [
-      "DONE (1)",
+      "DONE (2)",
       "fixed (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/qmoi_permission_fix.py": [
@@ -8375,7 +8781,6 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/replace_placeholders.py": [
       "DONE (2)",
       "fixed (1)",
-      "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ (1)",
       "real (1)",
       "production (3)",
       "real (1)",
@@ -12428,7 +12833,7 @@
       "production (3)",
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/dev-/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */.js": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/scripts/dev-placeholder.js": [
       "production (1)",
       "production (1)",
       "complete (1)"
@@ -12732,9 +13137,6 @@
       "real (1)",
       "production (2)"
     ],
-    "/workspaces/qmoi-enhanced/backend/trading-engine.ts": [
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/validate_and_sync_links.py": [
       "stable (3)",
       "stable (3)",
@@ -12742,20 +13144,6 @@
       "complete (2)",
       "REPLACE (1)",
       "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-qcity-enhanced-automatic.py": [
-      "REPLACE (5)",
-      "WARNING (1)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_data_optimization_system.py": [
-      "real (3)",
-      "real (3)",
-      "REPLACE (1)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_security_automation.py": [
-      "fixed (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/all_percentages_automation.test.py": [
       "complete (1)"
@@ -12765,20 +13153,8 @@
       "live (1)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/continuous_testing.py": [
-      "complete (1)",
-      "WARNING (10)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-json-auto-fixer.js": [
-      "fixed (4)",
-      "complete (1)",
-      "REPLACE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/test_control_server_endpoints.py": [
       "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_master_automation_enhanced.py": [
-      "WARNING (5)"
     ],
     "/workspaces/qmoi-enhanced/scripts/qmoi_health_integration.py": [
       "fixed (16)",
@@ -12811,10 +13187,6 @@
       "REPLACE (1)",
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_complete_system.py": [
-      "complete (6)",
-      "WARNING (7)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/biometrics_check.py": [
       "production (1)",
       "production (1)",
@@ -12822,17 +13194,6 @@
     ],
     "/workspaces/qmoi-enhanced/scripts/generate_release_manifest.py": [
       "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_windows_service.py": [
-      "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qcity_advanced_installer.py": [
-      "complete (1)",
-      "WARNING (5)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_error_monitor.py": [
-      "complete (1)",
-      "WARNING (4)"
     ],
     "/workspaces/qmoi-enhanced/scripts/scan_and_index.py": [
       "DONE (1)",
@@ -12851,9 +13212,6 @@
       "complete (1)",
       "REPLACE (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/media_sync.js": [
-      "complete (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/advanced_analytics_dashboard_system.py": [
       "real (6)",
       "real (6)",
@@ -12866,16 +13224,6 @@
     ],
     "/workspaces/qmoi-enhanced/scripts/fix-catches.js": [
       "DONE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-universal-error-fixer.py": [
-      "WARNING (12)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-universal-error-handler.js": [
-      "fixed (13)",
-      "production (1)",
-      "production (1)",
-      "DEPRECATED (1)",
-      "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/check-deployment.js": [
       "live (1)",
@@ -12896,40 +13244,11 @@
       "REPLACE (1)",
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/gitpod-notification-service.js": [
-      "production (1)",
-      "production (1)",
-      "complete (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/verify-installable.js": [
-      "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_media_orchestrator.js": [
-      "production (1)",
-      "production (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/colab-automation.py": [
-      "production (1)",
-      "production (1)",
-      "complete (1)",
-      "WARNING (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/qmoi-background-setup.sh": [
       "WARNING (3)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_cloud_setup.py": [
-      "complete (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_doc_verifier.js": [
-      "fixed (3)",
-      "complete (3)",
-      "REPLACE (18)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/qmoi-env-setup.js": [
       "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/monitor.py": [
-      "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/scripts/queue_worker.py": [
       "WARNING (2)"
@@ -12946,27 +13265,9 @@
       "SIMPLE (1)",
       "production (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-hands-free.py": [
-      "real (8)",
-      "real (8)",
-      "stable (2)",
-      "stable (2)",
-      "stable (2)",
-      "complete (1)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_self_test_runner.js": [
-      "production (2)",
-      "production (2)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/validate-production-env.js": [
       "production (8)",
       "production (8)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_gitlab_automation.py": [
-      "fixed (4)",
-      "real (3)",
-      "real (3)"
     ],
     "/workspaces/qmoi-enhanced/scripts/production_full_validation.py": [
       "fixed (1)"
@@ -12992,23 +13293,7 @@
       "REPLACE (2)",
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-qcity-automatic.py": [
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_health_monitor.py": [
-      "complete (1)",
-      "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_advanced_automation.py": [
-      "WARNING (2)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/update_readmes.py": [
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-unified-push-ultimate.py": [
-      "fixed (6)",
-      "REPLACE (4)",
-      "WARNING (9)",
       "NOTE (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/deep_scan_non_production.sh": [
@@ -13020,21 +13305,11 @@
       "production (8)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/quick_git_push.py": [
-      "real (1)",
-      "real (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/ai_markdown_understanding_validator.py": [
       "SIMPLE (1)",
       "complete (4)"
     ],
     "/workspaces/qmoi-enhanced/scripts/setup-dev.sh": [
-      "complete (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-clone-optimize.js": [
-      "stable (1)",
-      "stable (1)",
-      "stable (1)",
       "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/dispatch_workflow_with_pat_clean.sh": [
@@ -13048,35 +13323,13 @@
       "WARNING (7)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-real-time-monitor.py": [
-      "real (7)",
-      "real (7)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-git-automation.py": [
-      "real (2)",
-      "real (2)",
-      "SIMPLE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-error-recovery.js": [
-      "fixed (18)",
-      "REPLACE (3)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/migrate-db.sh": [
       "complete (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/hf_model_sync.py": [
-      "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/scripts/validate_api_documentation.py": [
       "complete (1)",
       "REPLACE (1)",
       "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_huggingface_setup.py": [
-      "production (2)",
-      "production (2)",
-      "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/enhanced-build.py": [
       "fixed (2)",
@@ -13084,9 +13337,6 @@
     ],
     "/workspaces/qmoi-enhanced/scripts/performance_benchmark.py": [
       "complete (1)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_automated_betting_system.py": [
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/wallet_credential_manager.py": [
@@ -13109,18 +13359,6 @@
     ],
     "/workspaces/qmoi-enhanced/scripts/audit_releases.py": [
       "DEPRECATED (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/optimizer.py": [
-      "WARNING (5)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-autofixer.js": [
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/auto-git-update.js": [
-      "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/update-artifact-action.js": [
-      "REPLACE (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/deploy-simple.sh": [
       "production (4)",
@@ -13147,14 +13385,6 @@
       "production (5)",
       "production (5)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-cloud-automation.py": [
-      "production (1)",
-      "production (1)",
-      "WARNING (9)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-start.py": [
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/auto_fix_release_artifacts.py": [
       "DONE (1)",
       "production (3)",
@@ -13178,11 +13408,6 @@
     "/workspaces/qmoi-enhanced/scripts/backup.sh": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/upload-release-assets.js": [
-      "stable (1)",
-      "stable (1)",
-      "stable (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/run_validations.py": [
       "real (6)",
       "real (6)",
@@ -13190,9 +13415,6 @@
     ],
     "/workspaces/qmoi-enhanced/scripts/error-scanner-v2.js": [
       "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-enhanced-notifications.py": [
-      "WARNING (3)"
     ],
     "/workspaces/qmoi-enhanced/scripts/auto_enhance_pipeline.py": [
       "real (1)",
@@ -13202,24 +13424,6 @@
       "complete (2)",
       "WARNING (6)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-gitlab-ci-automation.py": [
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_auto_docs.py": [
-      "real (1)",
-      "real (1)",
-      "complete (3)",
-      "REPLACE (1)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/deploy.py": [
-      "production (6)",
-      "production (6)",
-      "stable (5)",
-      "stable (5)",
-      "stable (5)",
-      "WARNING (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/q-balances-auto-update.ts": [
       "real (3)",
       "production (1)",
@@ -13228,26 +13432,9 @@
       "complete (1)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-enhanced-master-automation.py": [
-      "real (4)",
-      "production (2)",
-      "real (4)",
-      "production (2)",
-      "complete (1)",
-      "WARNING (2)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/monitoring-dashboard.js": [
       "real (1)",
       "real (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-hf-test.py": [
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qcity_device_manager.py": [
-      "WARNING (10)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/postinstall-verify.js": [
-      "NOTE (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/test_pay_flow.py": [
       "REPLACE (1)"
@@ -13273,9 +13460,6 @@
     "/workspaces/qmoi-enhanced/scripts/patch_api_headers.js": [
       "DONE (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/error_tracker.py": [
-      "WARNING (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/test_api_ai_integration.sh": [
       "complete (1)"
     ],
@@ -13283,15 +13467,8 @@
       "production (2)",
       "production (2)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_own_device_logger.py": [
-      "real (2)",
-      "real (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_device_integration.py": [
-      "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-unified-push-enhanced.py": [
-      "WARNING (8)"
+    "/workspaces/qmoi-enhanced/scripts/seed_minimal_db.sh": [
+      "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/update_ngrok_links.py": [
       "complete (1)",
@@ -13309,23 +13486,10 @@
     "/workspaces/qmoi-enhanced/scripts/system_integration_test_suite.py": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-parallel-processor.py": [
-      "WARNING (1)",
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/force_full_domain_health.py": [
       "stable (1)",
       "stable (1)",
       "stable (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-github-actions-fixer.js": [
-      "fixed (6)",
-      "complete (1)",
-      "REPLACE (1)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/whatsapp_verification.py": [
-      "NOTE (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/todo_prod_batch.js": [
       "complete (1)"
@@ -13349,29 +13513,13 @@
       "complete (6)",
       "WARNING (12)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_self_evolve.py": [
-      "complete (1)",
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/app_signing_automation.py": [
       "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/lint-reporter.js": [
-      "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/error-scanner.js": [
       "production (1)",
       "production (1)",
       "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/writing_assistant.py": [
-      "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-self-updating-agent.js": [
-      "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_self_test.py": [
-      "fixed (2)"
     ],
     "/workspaces/qmoi-enhanced/scripts/comprehensive_link_domain_validator_enhanced.py": [
       "real (1)",
@@ -13410,10 +13558,6 @@
     "/workspaces/qmoi-enhanced/scripts/generate_anomaly_detection_report.py": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/dagshub-automation.py": [
-      "complete (1)",
-      "WARNING (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/qmoi-production-autohealth.js": [
       "production (1)",
       "production (1)",
@@ -13423,10 +13567,6 @@
       "complete (2)",
       "REPLACE (6)",
       "WARNING (5)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-real-time-logger.py": [
-      "real (1)",
-      "real (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/q.py": [
       "real (1)",
@@ -13442,25 +13582,8 @@
       "real (3)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-live-status.py": [
-      "real (1)",
-      "live (4)",
-      "live (4)",
-      "real (1)",
-      "REPLACE (3)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/.cspell.json": [
       "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/monitor_performance.py": [
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/test_error_fixing_suite.py": [
-      "TEST IMPLEMENTATION (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_revenue_monitor.py": [
-      "complete (1)",
-      "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/verify_and_finalize_done.py": [
       "DONE (2)",
@@ -13479,34 +13602,6 @@
     "/workspaces/qmoi-enhanced/scripts/setup_github_secrets.sh": [
       "DONE (3)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-error-handler.py": [
-      "WARNING (6)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-enhanced-health-checker.py": [
-      "fixed (1)",
-      "REPLACE (4)",
-      "WARNING (1)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_huggingface_spaces.js": [
-      "production (2)",
-      "production (2)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-environment-setup.js": [
-      "real (1)",
-      "production (4)",
-      "real (1)",
-      "production (4)",
-      "stable (1)",
-      "stable (1)",
-      "stable (1)",
-      "complete (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/enhance_ai.py": [
-      "fixed (2)",
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/generate_production_status.py": [
       "DONE (1)",
       "fixed (1)",
@@ -13517,24 +13612,9 @@
       "production (4)",
       "REPLACE (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_cloud_integration_enhanced.py": [
-      "complete (1)",
-      "WARNING (1)",
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/gen_real_apps.py": [
       "real (1)",
       "real (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/test_runner.py": [
-      "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-ultimate-automation.py": [
-      "fixed (8)",
-      "real (4)",
-      "real (4)",
-      "WARNING (19)",
-      "NOTE (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/link_validator.py": [
       "live (1)",
@@ -13548,48 +13628,18 @@
       "production IMPLEMENTATION REQUIRED (4)",
       "production (8)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/update_model_card.py": [
-      "fixed (2)",
-      "real (1)",
-      "live (2)",
-      "live (2)",
-      "real (1)",
-      "REPLACE (8)",
-      "WARNING (4)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_auto_startup.py": [
-      "WARNING (3)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-parallel-platform-enhancer.py": [
-      "fixed (3)",
-      "complete (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qcity_npm_selfheal.sh": [
-      "DONE (5)",
-      "complete (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/backup_restore.py": [
-      "WARNING (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/comprehensive_docs_update.py": [
       "complete (1)",
       "REPLACE (5)",
       "NOTE (8)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-auto-push.js": [
-      "stable (4)",
-      "stable (4)",
-      "stable (4)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/replace_placeholders.py": [
       "DONE (2)",
       "fixed (1)",
-      "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ (1)",
-      "real (6)",
-      "production (3)",
-      "real (6)",
-      "production IMPLEMENTATION REQUIRED (2)",
-      "production (3)",
+      "real (5)",
+      "production (2)",
+      "real (5)",
+      "production (2)",
       "REPLACE (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/expand_platform_todos.py": [
@@ -13599,28 +13649,12 @@
       "REPLACE (1)",
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-quick-test.py": [
-      "real (4)",
-      "live (3)",
-      "live (3)",
-      "real (4)",
-      "WARNING (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/run_placeholder_scans.py": [
       "real (9)",
       "real (9)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-registry-manager.js": [
-      "fixed (2)",
-      "REPLACE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/start_qmoi_server.sh": [
       "DONE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/fast_git_commit.py": [
-      "real (3)",
-      "real (3)",
-      "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/enhanced_scan_nonproduction.test.py": [
       "production (1)",
@@ -13632,20 +13666,6 @@
     ],
     "/workspaces/qmoi-enhanced/scripts/verify_apk.sh": [
       "complete (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-auto-config.js": [
-      "complete (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_master_orchestrator.js": [
-      "stable (1)",
-      "stable (1)",
-      "stable (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-space-backend.py": [
-      "real (3)",
-      "real (3)",
-      "WARNING (1)",
-      "NOTE (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/qmoi-mobile-auto-selfheal.js": [
       "NOTE (1)"
@@ -13663,31 +13683,15 @@
       "WARNING (1)",
       "NOTE (3)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_auto_evolution.py": [
-      "complete (2)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/test-qmoi-system.js": [
-      "real (1)",
-      "production (3)",
-      "real (1)",
-      "production (3)",
-      "WARNING (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/validate_ui_components.py": [
       "DONE (1)",
-      "fixed (2)",
+      "fixed (3)",
       "real (2)",
-      "real (2)"
+      "production (2)",
+      "real (2)",
+      "production (2)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_permission_fix.py": [
-      "fixed (1)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-master-autostart.js": [
-      "complete (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/dev-/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */.js": [
+    "/workspaces/qmoi-enhanced/scripts/dev-placeholder.js": [
       "real (1)",
       "production (1)",
       "real (1)",
@@ -13706,55 +13710,19 @@
     "/workspaces/qmoi-enhanced/scripts/verify_exe.sh": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/gitlab-error-recovery.js": [
-      "fixed (14)",
-      "production (1)",
-      "SIMPLE (1)",
-      "production (1)",
-      "complete (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/auto-lint.js": [
-      "WARNING (4)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/gitlab-notification-service.js": [
-      "fixed (1)",
-      "production (1)",
-      "production (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-auto-enhancement-system.js": [
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/gitlab-push-automation.js": [
-      "production (1)",
-      "production (1)",
-      "complete (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/sync_qmoi_downloads.py": [
       "DONE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-app-releaser.py": [
-      "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/qmoi_enhanced_auto_config.py": [
       "production (2)",
       "production (2)",
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_automated_device_controller.py": [
-      "WARNING (2)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/create_issues_from_audit.py": [
       "DEPRECATED (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_device_agent.py": [
-      "WARNING (2)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/fix_common_ts_issues.js": [
       "REPLACE (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_intelligent_scheduler.py": [
-      "WARNING (1)",
-      "NOTE (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/check_github_releases.py": [
       "REPLACE (1)",
@@ -13764,9 +13732,6 @@
       "production (1)",
       "production (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/start_monitoring_system.py": [
-      "WARNING (3)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/auto_release_manager.py": [
       "live (1)",
       "live (1)"
@@ -13774,44 +13739,15 @@
     "/workspaces/qmoi-enhanced/scripts/check_release_assets.py": [
       "REPLACE (3)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_employment_monitor.py": [
-      "complete (1)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/start-revenue-engine.js": [
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-enhanced-platform-automation.py": [
-      "fixed (8)",
-      "complete (1)",
-      "REPLACE (1)"
+    "/workspaces/qmoi-enhanced/scripts/production_deployment_validator.py": [
+      "production (1)",
+      "production (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/vercel-autoclone-autodev.js": [
       "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/ci_production_orchestrator.py": [
       "REPLACE (3)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-revenue-enforcer.js": [
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_enhanced_startup.py": [
-      "real (8)",
-      "real (8)",
-      "complete (1)",
-      "WARNING (7)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/doc_verifier.py": [
-      "REPLACE (5)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/enhanced-error-fix.js": [
-      "fixed (6)",
-      "production (2)",
-      "production (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-download-link-tester.py": [
-      "fixed (3)",
-      "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/phase1_domain_link_fixer_simple.py": [
       "SIMPLE (1)",
@@ -13827,12 +13763,6 @@
       "production (4)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/device_ownership_detector.py": [
-      "complete (1)",
-      "REPLACE (1)",
-      "WARNING (2)",
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/make_minimal_deb.py": [
       "complete (1)"
     ],
@@ -13844,100 +13774,17 @@
     "/workspaces/qmoi-enhanced/scripts/update_all_percentages.py": [
       "WARNING (6)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-dashboard.py": [
-      "REPLACE (2)",
-      "WARNING (3)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/ci-self-heal.js": [
-      "fixed (7)",
-      "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/fix_deployment_issues.py": [
-      "fixed (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/update_readme.py": [
-      "REPLACE (1)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/smart-lint.js": [
-      "fixed (2)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_advanced_analytics.py": [
-      "real (9)",
-      "real (9)",
-      "stable (2)",
-      "stable (2)",
-      "stable (2)",
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/master_orchestrator.py": [
       "production (2)",
       "production (2)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/json-config-fixer.js": [
-      "fixed (11)",
-      "production (4)",
-      "production (4)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-enhanced-automation.py": [
-      "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_contact_verifier.py": [
-      "complete (1)",
-      "REPLACE (3)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-enhanced-avatar-system.js": [
-      "real (1)",
-      "real (1)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_security_monitor.py": [
-      "fixed (2)",
-      "real (3)",
-      "real (3)",
-      "WARNING (5)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_integration_master.py": [
-      "complete (1)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_enhanced_automation.py": [
-      "real (2)",
-      "real (2)",
-      "WARNING (2)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_performance_monitor.py": [
-      "complete (1)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-research-engine.py": [
-      "production (2)",
-      "production (2)",
-      "WARNING (11)",
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/task_queue.py": [
       "DONE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-auto-evolution.py": [
-      "real (1)",
-      "real (1)",
-      "stable (2)",
-      "stable (2)",
-      "stable (2)",
-      "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/link_autoupdater.py": [
       "real (2)",
       "real (2)",
       "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-master-notifications.py": [
-      "WARNING (10)"
     ],
     "/workspaces/qmoi-enhanced/scripts/qmoi_wallet_manager.py": [
       "production (1)",
@@ -13951,18 +13798,6 @@
       "production (1)",
       "production (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-platform-manager.py": [
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-info.py": [
-      "fixed (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/installer.js": [
-      "stable (1)",
-      "stable (1)",
-      "stable (1)",
-      "complete (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/health-check.sh": [
       "DONE (1)"
     ],
@@ -13971,23 +13806,10 @@
       "real (3)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/generate-release-json.js": [
-      "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-platform-optimizer.py": [
-      "WARNING (5)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/verify-deployment.sh": [
       "production (1)",
       "production (1)",
       "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/upload_to_github_release.py": [
-      "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_dashboard.js": [
-      "fixed (2)",
-      "WARNING (5)"
     ],
     "/workspaces/qmoi-enhanced/scripts/dns_plan_signer.py": [
       "production (1)",
@@ -13996,20 +13818,12 @@
     "/workspaces/qmoi-enhanced/scripts/trading_connection_manager.py": [
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_auto_evolution_system.py": [
-      "real (14)",
-      "real (14)",
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/reasoning_logic_validator_comprehensive.py": [
       "complete (3)",
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/setup-backup-system.sh": [
       "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/demo-automation.js": [
-      "WARNING (3)"
     ],
     "/workspaces/qmoi-enhanced/scripts/scan_placeholders.py": [
       "real (2)",
@@ -14025,42 +13839,20 @@
       "complete (3)",
       "REPLACE (6)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_hf_auto_manager.py": [
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/app_validator.py": [
       "stable (2)",
       "stable (2)",
       "stable (2)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/run_all_tests.py": [
-      "stable (1)",
-      "stable (1)",
-      "stable (1)",
-      "WARNING (5)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/ultimate_production_scanner_v41.py": [
       "fixed (2)",
-      "real (1)",
       "production (9)",
-      "real (1)",
       "production (9)",
       "complete (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qcity_unlimited_installer.py": [
-      "production (1)",
-      "production (1)",
-      "stable (1)",
-      "stable (1)",
-      "stable (1)",
-      "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/comprehensive_domain_health_restorer.py": [
       "complete (3)",
       "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/platform_manager.py": [
-      "WARNING (6)"
     ],
     "/workspaces/qmoi-enhanced/scripts/auto-fix-deployment.js": [
       "fixed (7)",
@@ -14071,13 +13863,6 @@
     "/workspaces/qmoi-enhanced/scripts/apply_all_enhancements.py": [
       "complete (2)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/preinstall-check.js": [
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_model_enhancer.py": [
-      "WARNING (1)",
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/verify_artifacts.sh": [
       "DONE (2)",
       "WARNING (1)"
@@ -14085,15 +13870,6 @@
     "/workspaces/qmoi-enhanced/scripts/qmoi_todos.py": [
       "DONE (24)",
       "NOTE (5)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-vulnerability-scanner.js": [
-      "fixed (2)",
-      "complete (1)",
-      "REPLACE (2)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/fix_icon.py": [
-      "fixed (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/register_app_build.py": [
       "REPLACE (1)"
@@ -14104,29 +13880,11 @@
       "production (1)",
       "REPLACE (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/db_migrations.py": [
-      "production (2)",
-      "production (2)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/qmoi_provision_java.sh": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_payment_fix.js": [
-      "fixed (1)",
-      "REPLACE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/revenue_enhancement_config.py": [
       "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_enhanced_ai.py": [
-      "WARNING (2)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/validate_yml.py": [
-      "fixed (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qcity_manager.py": [
-      "WARNING (2)"
     ],
     "/workspaces/qmoi-enhanced/scripts/qcity_enhancer.py": [
       "SIMPLE (1)",
@@ -14136,9 +13894,6 @@
     ],
     "/workspaces/qmoi-enhanced/scripts/scan_lion_usage.py": [
       "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/downloadqmoiai.py": [
-      "NOTE (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/check_placeholders.py": [
       "DONE (1)",
@@ -14152,9 +13907,6 @@
       "production (6)",
       "production (6)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-gitlab-sync.js": [
-      "complete (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/scan_nonproduction_endpoints.js": [
       "real (1)",
       "production (2)",
@@ -14165,19 +13917,6 @@
     "/workspaces/qmoi-enhanced/scripts/prod-start.sh": [
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qserver-download-tester.py": [
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-dev-actions.py": [
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-master-automation.py": [
-      "production (1)",
-      "production (1)",
-      "complete (1)",
-      "REPLACE (1)",
-      "WARNING (9)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/placeholder_scan.py": [
       "real (6)",
       "real (6)",
@@ -14186,47 +13925,12 @@
     "/workspaces/qmoi-enhanced/scripts/qmoi-workflow-fix.py": [
       "fixed (2)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/ai_automation.py": [
-      "WARNING (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/qmoi_local_server.py": [
       "complete (1)",
       "REPLACE (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/qmoi_set_github_secrets.sh": [
       "DONE (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/resolve_deployment_conflicts.py": [
-      "fixed (2)",
-      "complete (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/github_actions_autofix.py": [
-      "fixed (5)",
-      "stable (1)",
-      "stable (1)",
-      "stable (1)",
-      "DEPRECATED (4)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_auto_setup.py": [
-      "WARNING (3)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/gitlab-automation.js": [
-      "production (1)",
-      "production (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js": [
-      "real (1)",
-      "production (3)",
-      "real (1)",
-      "production (3)",
-      "complete (1)",
-      "REPLACE (1)",
-      "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-parallel-setup.js": [
-      "complete (1)",
-      "DEPRECATED (2)"
     ],
     "/workspaces/qmoi-enhanced/scripts/advanced_performance_optimizer.py": [
       "real (1)",
@@ -14244,16 +13948,13 @@
       "production (5)",
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/financial_verification.py": [
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/smart_enhanced_fixer.py": [
       "fixed (1)",
-      "real (11)",
-      "production (4)",
-      "real (11)",
+      "real (10)",
+      "production (3)",
+      "real (10)",
       "TEST DATA (1)",
-      "production (4)",
+      "production (3)",
       "complete (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/test_env_setup.py": [
@@ -14271,21 +13972,15 @@
       "complete (2)",
       "WARNING (3)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-comprehensive-parallel-automation.py": [
-      "fixed (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-install-autotest.py": [
-      "fixed (4)",
-      "complete (1)"
+    "/workspaces/qmoi-enhanced/scripts/evolution_reliability_engine.py": [
+      "real (4)",
+      "real (4)",
+      "TEMPORARY (1)",
+      "REPLACE (2)",
+      "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/fix-catch-error.js": [
       "REPLACE (3)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/github-fallback.js": [
-      "complete (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/auto-setup.js": [
-      "fixed (2)"
     ],
     "/workspaces/qmoi-enhanced/scripts/health_monitor.py": [
       "production (1)",
@@ -14324,11 +14019,6 @@
       "DONE (3)",
       "fixed (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/ai-lint-engine.js": [
-      "fixed (1)",
-      "REPLACE (1)",
-      "WARNING (2)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/balance-auto-update.ts": [
       "real (3)",
       "production (1)",
@@ -14344,13 +14034,6 @@
       "realS (2)",
       "REPLACE (7)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-performance-optimizer.py": [
-      "WARNING (7)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_app_installer.py": [
-      "SIMPLE (1)",
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/production-balance-system.ts": [
       "production (4)",
       "production (4)"
@@ -14359,22 +14042,6 @@
       "production (2)",
       "production (2)",
       "INSTRUCTIONS (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-enhanced-live-status.py": [
-      "real (1)",
-      "live (2)",
-      "live (2)",
-      "real (1)",
-      "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/start_qmoi_enhanced.py": [
-      "real (2)",
-      "real (2)",
-      "complete (1)",
-      "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_auto_fix_enhanced.py": [
-      "fixed (3)"
     ],
     "/workspaces/qmoi-enhanced/scripts/create_dns_issues_using_pr.py": [
       "DONE (1)",
@@ -14385,11 +14052,6 @@
     "/workspaces/qmoi-enhanced/scripts/auto_fix_workflows.py": [
       "fixed (2)",
       "REPLACE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-enhanced-auto-fix.js": [
-      "fixed (1)",
-      "complete (1)",
-      "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/advanced_anomaly_detection_report_20260329_200314.json": [
       "stable (8)",
@@ -14439,29 +14101,12 @@
       "production (11)",
       "production (11)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/auto-vercel-fix.js": [
-      "fixed (2)",
-      "stable (3)",
-      "stable (3)",
-      "stable (3)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-unified-push.py": [
-      "complete (1)",
-      "WARNING (28)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi-secret-generator.js": [
-      "complete (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/domain_registry.py": [
       "live (1)",
       "live (1)",
       "production (1)",
       "production (1)",
       "WARNING (5)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_error_auto_fix.py": [
-      "real (1)",
-      "real (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/update_tree_and_percentages.py": [
       "production (1)",
@@ -14472,16 +14117,8 @@
     "/workspaces/qmoi-enhanced/scripts/generate_endpoint_docs.py": [
       "REPLACE (2)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/optimize_performance.py": [
-      "WARNING (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/package_pwas.py": [
       "DONE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/qmoi_parallel_error_fixer.py": [
-      "fixed (7)",
-      "real (6)",
-      "real (6)"
     ],
     "/workspaces/qmoi-enhanced/scripts/generate_issue_drafts_for_removed.py": [
       "real (1)",
@@ -14493,44 +14130,6 @@
       "real (1)",
       "complete (1)",
       "INSTRUCTIONS (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/deploy/health-check.js": [
-      "production (2)",
-      "production (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/deploy/deploy.py": [
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/deploy/cloud_deploy.py": [
-      "production (1)",
-      "production (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/deploy/vercel_auto_deploy.js": [
-      "production (1)",
-      "production (1)",
-      "stable (3)",
-      "stable (3)",
-      "stable (3)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/deploy/deployment-monitor.js": [
-      "production (2)",
-      "production (2)",
-      "WARNING (3)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/models/qmoi_kernel.py": [
-      "stable (1)",
-      "stable (1)",
-      "stable (1)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/models/qmoi_manager.py": [
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/models/qmoi_personality.py": [
-      "stable (1)",
-      "stable (1)",
-      "stable (1)",
-      "INSTRUCTION (2)"
     ],
     "/workspaces/qmoi-enhanced/scripts/tests/requireApiKeyTest.js": [
       "production (1)",
@@ -14557,9 +14156,9 @@
       "REPLACE (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/wallets/check_wallets.py": [
-      "real (7)",
+      "real (8)",
       "production (1)",
-      "real (7)",
+      "real (8)",
       "production (1)",
       "REPLACE (1)"
     ],
@@ -14581,42 +14180,6 @@
       "real (4)",
       "real (4)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/training/advanced_training.py": [
-      "stable (6)",
-      "stable (6)",
-      "stable (6)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/monitoring/master_monitor.py": [
-      "WARNING (7)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/monitoring/start_all_monitors.py": [
-      "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/monitoring/system_status_monitor.py": [
-      "WARNING (4)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/monitoring/notification_monitor.py": [
-      "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/monitoring/api_endpoints_monitor.py": [
-      "WARNING (3)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/monitoring/cloud_resources_monitor.py": [
-      "WARNING (5)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/monitoring/performance_monitoring.py": [
-      "stable (2)",
-      "stable (2)",
-      "stable (2)",
-      "complete (1)",
-      "WARNING (1)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py": [
-      "REPLACE (1)",
-      "WARNING (8)",
-      "NOTE (1)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/ci_checks/check_no_model_selector.js": [
       "production (1)",
       "production (1)"
@@ -14628,74 +14191,7 @@
       "production (1)",
       "NOTE (1)"
     ],
-    "/workspaces/qmoi-enhanced/scripts/ui/qcity_ui_enhancement.py": [
-      "fixed (1)",
-      "stable (6)",
-      "stable (6)",
-      "stable (6)",
-      "WARNING (3)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/deployment/auto_deploy.py": [
-      "production (10)",
-      "production (10)",
-      "complete (1)",
-      "WARNING (6)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/deployment/deploy.py": [
-      "production (1)",
-      "production (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/security/security_manager.py": [
-      "WARNING (6)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/error/error_fixer.py": [
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/optimization/advanced_optimization.py": [
-      "complete (6)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/automation/github_actions_auto_fix.py": [
-      "fixed (6)",
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/automation/qmoi_master_automation.py": [
-      "production (1)",
-      "production (1)",
-      "complete (3)"
-    ],
     "/workspaces/qmoi-enhanced/scripts/services/notification_service.py": [
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/services/comprehensive_test_runner.ts": [
-      "complete (1)",
-      "WARNING (2)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/services/unified_ci_cd_service.ts": [
-      "production (1)",
-      "production (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/services/github_integration.ts": [
-      "fixed (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/services/auto_fix_service.ts": [
-      "fixed (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/services/qmoi_autodev_daemon.ts": [
-      "fixed (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/utils/notify_enhancement.py": [
-      "WARNING (1)",
-      "NOTE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/utils/error_fixer.py": [
-      "fixed (5)",
-      "WARNING (5)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/network/wifi_manager.py": [
-      "WARNING (3)"
-    ],
-    "/workspaces/qmoi-enhanced/scripts/network/network_connectivity_manager.py": [
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/finance/settle_to_cashon.py": [
@@ -14785,6 +14281,9 @@
       "fixed (7)",
       "WARNING (3)"
     ],
+    "/workspaces/qmoi-enhanced/app/api/colab-job.ts": [
+      "NOTE (1)"
+    ],
     "/workspaces/qmoi-enhanced/app/api/production_STATUS.md": [
       "DONE (7)",
       "fixed (11)",
@@ -14829,10 +14328,6 @@
       "real (1)",
       "real (1)"
     ],
-    "/workspaces/qmoi-enhanced/app/api/qmoi/avatars/route.ts": [
-      "production (1)",
-      "production (1)"
-    ],
     "/workspaces/qmoi-enhanced/app/api/qmoi/auto-setup/route.ts": [
       "production (2)",
       "production (2)"
@@ -14862,6 +14357,9 @@
       "stable (2)",
       "stable (2)",
       "REPLACE (3)"
+    ],
+    "/workspaces/qmoi-enhanced/app/api/emergency/wipe/route.ts": [
+      "complete (2)"
     ],
     "/workspaces/qmoi-enhanced/app/api/document-backup/route.ts": [
       "production (1)",
@@ -14931,14 +14429,6 @@
     "/workspaces/qmoi-enhanced/app/admin/master/activity/page.tsx": [
       "WARNING (2)"
     ],
-    "/workspaces/qmoi-enhanced/src/plugins/QuickAIWidgetPlugin.ts": [
-      "real (1)",
-      "real (1)"
-    ],
-    "/workspaces/qmoi-enhanced/src/components/PreviewWindow.tsx": [
-      "complete (1)",
-      "REPLACE (1)"
-    ],
     "/workspaces/qmoi-enhanced/src/components/ChatbotEnhanced.css": [
       "WARNING (2)"
     ],
@@ -14952,24 +14442,29 @@
     "/workspaces/qmoi-enhanced/src/components/AssetOverview.tsx": [
       "WARNING (1)"
     ],
+    "/workspaces/qmoi-enhanced/src/components/release-notes.tsx": [
+      "NOTE (1)"
+    ],
     "/workspaces/qmoi-enhanced/src/components/ChatbotEnhanced.tsx": [
       "real (1)",
       "real (1)",
       "REPLACE (2)"
     ],
     "/workspaces/qmoi-enhanced/src/components/FloatingAQ.tsx": [
-      "fixed (2)"
+      "stable (1)",
+      "stable (1)",
+      "stable (1)"
     ],
     "/workspaces/qmoi-enhanced/src/components/TradingStatus.tsx": [
       "WARNING (1)"
     ],
-    "/workspaces/qmoi-enhanced/src/components/ComponentGallery.tsx": [
-      "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ (1)",
-      "real (1)",
-      "real (1)"
-    ],
     "/workspaces/qmoi-enhanced/src/components/TradingHistory.tsx": [
       "WARNING (1)"
+    ],
+    "/workspaces/qmoi-enhanced/src/components/QiSpaces.tsx": [
+      "stable (2)",
+      "stable (2)",
+      "stable (2)"
     ],
     "/workspaces/qmoi-enhanced/src/components/q-city/QMoiDatabaseDashboard.tsx": [
       "real (1)",
@@ -14978,23 +14473,22 @@
     "/workspaces/qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx": [
       "REPLACE (1)"
     ],
+    "/workspaces/qmoi-enhanced/src/components/q-city/VoiceSelector.tsx": [
+      "REPLACE (1)"
+    ],
     "/workspaces/qmoi-enhanced/src/components/q-city/QMoiState.tsx": [
+      "real (1)",
+      "real (1)",
       "REPLACE (1)"
     ],
     "/workspaces/qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/src/components/q-city/avatarsConfig.ts": [
-      "real (2)",
-      "production (1)",
-      "real (2)",
-      "SIMPLE (1)",
-      "production (1)"
+    "/workspaces/qmoi-enhanced/src/components/q-city/SelfHealPanel.tsx": [
+      "DONE (1)"
     ],
-    "/workspaces/qmoi-enhanced/src/components/q-city/UnifiedAPI.tsx": [
-      "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ (3)",
-      "real (3)",
-      "real (3)"
+    "/workspaces/qmoi-enhanced/src/components/q-city/QMoiFileEditorChat.tsx": [
+      "REPLACE (1)"
     ],
     "/workspaces/qmoi-enhanced/src/components/q-city/production_STATUS.md": [
       "DONE (3)",
@@ -15002,14 +14496,8 @@
       "real (17)",
       "real (17)"
     ],
-    "/workspaces/qmoi-enhanced/src/components/q-city/AvatarSelector.tsx": [
-      "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */ (3)",
-      "real (3)",
-      "real (3)"
-    ],
-    "/workspaces/qmoi-enhanced/src/components/q-city/QApiKeyManager.tsx": [
-      "real (1)",
-      "real (1)"
+    "/workspaces/qmoi-enhanced/src/components/q-city/CommandPanel.tsx": [
+      "DONE (1)"
     ],
     "/workspaces/qmoi-enhanced/src/components/q-city/QMoiToolbar.tsx": [
       "fixed (3)",
@@ -15023,17 +14511,23 @@
       "WARNING (1)"
     ],
     "/workspaces/qmoi-enhanced/src/components/q-city/QOxygen.tsx": [
-      "real (1)",
-      "real (1)",
-      "WARNING (2)"
+      "WARNING (3)"
     ],
     "/workspaces/qmoi-enhanced/src/api/routes/links-validation.ts": [
       "REPLACE (1)",
       "WARNING (1)"
     ],
+    "/workspaces/qmoi-enhanced/src/lib/autonomous-core.ts": [
+      "WARNING (2)"
+    ],
     "/workspaces/qmoi-enhanced/src/lib/subscription.ts": [
       "real (1)",
       "real (1)"
+    ],
+    "/workspaces/qmoi-enhanced/src/lib/feature-flags.ts": [
+      "production (7)",
+      "MINIMAL (1)",
+      "production (7)"
     ],
     "/workspaces/qmoi-enhanced/src/lib/avatar-system.ts": [
       "complete (1)"
@@ -15067,38 +14561,19 @@
     "/workspaces/qmoi-enhanced/src/adapters/appServiceInit.ts": [
       "complete (1)"
     ],
-    "/workspaces/qmoi-enhanced/src/hooks/useQmoiKernel.test.ts": [
-      "DONE (1)"
-    ],
-    "/workspaces/qmoi-enhanced/src/hooks/useQmoiState.ts": [
-      "WARNING (1)"
-    ],
     "/workspaces/qmoi-enhanced/src/hooks/useQMOIChat.ts": [
       "real (2)",
       "production (2)",
       "real (2)",
       "production (2)"
     ],
-    "/workspaces/qmoi-enhanced/src/hooks/useQmoiKernel.ts": [
-      "DONE (2)"
+    "/workspaces/qmoi-enhanced/src/services/MemorySynchronizationEngine.ts": [
+      "real (2)",
+      "real (2)"
     ],
-    "/workspaces/qmoi-enhanced/src/services/EnhancedParallelizationService.ts": [
-      "WARNING (1)"
-    ],
-    "/workspaces/qmoi-enhanced/src/services/BrowserService.ts": [
-      "real (1)",
-      "live (4)",
-      "live (4)",
-      "real (1)",
-      "stable (1)",
-      "stable (1)",
-      "stable (1)"
-    ],
-    "/workspaces/qmoi-enhanced/src/services/WhatsAppService.ts": [
-      "real (1)",
-      "production (2)",
-      "real (1)",
-      "production (2)"
+    "/workspaces/qmoi-enhanced/src/services/ConsciousnessIntegrationEngine.ts": [
+      "real (2)",
+      "real (2)"
     ],
     "/workspaces/qmoi-enhanced/src/app/api/qmoi/autodev/suggestions/improvements/route.ts": [
       "complete (1)"
@@ -15130,5 +14605,5 @@
     ]
   },
   "production_ready": false,
-  "scan_timestamp": "2026-04-02T07:46:16.585910"
+  "scan_timestamp": "2026-04-03T02:40:37.153361"
 }
