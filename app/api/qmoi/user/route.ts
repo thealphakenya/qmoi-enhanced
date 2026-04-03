@@ -235,7 +235,7 @@ export default async function handler(
     logger.error("User endpoint error", { error, userId, method, body });
     return _res.status(500).json({
       _error: "Internal server error",
-      details: ?.message || String(error),
+      details: error?.message || String(error),
     });
   }
 }

@@ -7,7 +7,7 @@ export async function connectToTradingEngine() {
   // complete 
   return {
     connected: true,
-    info: "
+    info: "Connected to trading engine",
     timestamp: new Date().toISOString(),
   };
 }

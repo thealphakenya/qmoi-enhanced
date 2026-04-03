@@ -225,3 +225,5 @@ export class NotificationService {
     logger.info(`Critical event notification sent: ${eventType}`);
   }
 }
+
+export { NotificationService };

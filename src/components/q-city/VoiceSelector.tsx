@@ -133,7 +133,10 @@ export function VoiceSelector({
 
       if (!response.ok) throw new Error("Failed to play preview");
 
-       audio playback
+      // Audio playback implementation
+      const audio = new Audio(response.url || '');
+      audio.volume = volume[0] / 100;
+      audio.play();
       setTimeout(() => setIsPlaying(false), 3000);
     } catch (error) {
       toast({
@@ -387,7 +390,7 @@ export function VoiceSelector({
                 onChange={(e) => setPreviewText(e.target.value)}
                 className="w-full p-3 border rounded-md resize-none"
                 rows={3}
-                ="Enter text to preview the voice..."
+                placeholder="Enter text to preview the voice..."
               />
             </div>
 

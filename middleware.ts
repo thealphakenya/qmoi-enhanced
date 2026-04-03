@@ -32,11 +32,11 @@ async function ensureSetup() {
     const status = setupManager.getStatus();
 
     if (!status.configured) {
-      .log("[QMOI] Auto-setup required, initializing environment...");
+      console.log("[QMOI] Auto-setup required, initializing environment...");
       setupManager.initialize();
-      .log("[QMOI] Environment auto-setup complete");
+      console.log("[QMOI] Environment auto-setup complete");
     } else {
-      .log("[QMOI] Environment already configured");
+      console.log("[QMOI] Environment already configured");
     }
 
     setupDone = true;

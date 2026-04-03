@@ -88,9 +88,10 @@ export const withRoleAuth = (requiredRoles: Role[] = ["user"]) => {
         }
 
         // Attach user info to request for handler
-        .user = decoded;
+        const requestWithUser = req as any;
+        requestWithUser.user = decoded;
 
-        return handler(req);
+        return handler(requestWithUser);
       } catch (error) {
         console.error("Auth error:", error);
         return NextResponse.json(

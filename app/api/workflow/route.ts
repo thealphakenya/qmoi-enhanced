@@ -4,10 +4,10 @@
 // Evolution features: autonomous workflow orchestration, real-time updates, AI-powered sync
 
 import { NextRequest, NextResponse } from 'next/server';
-import { workflowEngine } from '../../../lib/workflow-engine';
-import { autosyncService } from '../../../lib/autosync-service';
-import { qmoiTracksService } from '../../../lib/tracks-service';
-import { realtimeSystem } from '../../../lib/realtime-system';
+import { workflowEngine } from '@/lib/workflow-engine';
+import { autosyncService } from '@/lib/autosync-service';
+import { qmoiTracksService } from '@/lib/tracks-service';
+import { realtimeSystem } from '@/lib/realtime-system';
 
 export async function GET(request: NextRequest) {
   try {

@@ -196,7 +196,7 @@ export class QmoiTrader {
         }
       }
 
-      .log(
+      console.log(
         `[QMOI Trader] Generated ${signals.length} trading signals`,
       );
       return signals;
@@ -312,7 +312,7 @@ export class QmoiTrader {
         timestamp: Date.now(),
       };
 
-      .log(`[QMOI Trader] Trade ${tradeId}: ${result.status}`);
+      console.log(`[QMOI Trader] Trade ${tradeId}: ${result.status}`);
       return result;
     } catch (error) {
       console.error(`[QMOI Trader] Error executing trade:`, error);
@@ -342,7 +342,7 @@ export class QmoiTrader {
 
       const rebalanceThreshold = 0.1;
       if (Math.abs(activeTraprodalue / balance - 0.5) > rebalanceThreshold) {
-        .log("[QMOI Trader] Rebalancing portfolio...");
+        console.log("[QMOI Trader] Rebalancing portfolio...");
       }
     } catch (error) {
       console.error("[QMOI Trader] Rebalancing error:", error);
@@ -388,7 +388,7 @@ export class QmoiTrader {
     if (this.isRunning) return;
 
     this.isRunning = true;
-    .log("[QMOI Trader] Trading loop started");
+    console.log("[QMOI Trader] Trading loop started");
 
     this.tradingLoop = setInterval(async () => {
       try {
@@ -409,7 +409,7 @@ export class QmoiTrader {
       this.tradingLoop = null;
     }
     this.isRunning = false;
-    .log("[QMOI Trader] Trading loop stopped");
+    console.log("[QMOI Trader] Trading loop stopped");
   }
 
   getActiveTrades(): TradeResult[] {
@@ -462,7 +462,7 @@ export class QmoiTrader {
     if (!strategy) return false;
 
     Object.assign(strategy, updates);
-    .log(`[QMOI Trader] Updated strategy ${strategyId}`);
+    console.log(`[QMOI Trader] Updated strategy ${strategyId}`);
     return true;
   }
 }

@@ -104,7 +104,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const searchMedia = async (query: string) => {
     setIsLoading(true);
     try {
-       API call
       await new Promise((resolve) => setTimeout(resolve, 500));
 
       // In IMPLEMENTATION_REQUIRED, this would be an API call
@@ -115,7 +114,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       searchParams.append("q", query);
       searchParams.append("type", selectedType);
 
-       response filtering
       const filtered = mediaItems.filter(
         (item) =>
           item.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -136,7 +134,6 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
     setDownloadProgress((prev) => ({ ...prev, [item.id]: 0 }));
 
     try {
-       download progress
       for (let i = 0; i <= 100; i += 10) {
         await new Promise((resolve) => setTimeout(resolve, 100));
         setDownloadProgress((prev) => ({ ...prev, [item.id]: i }));
@@ -150,7 +147,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
 
-      .log(`Downloaded: ${item.name}`);
+      console.log(`Downloaded: ${item.name}`);
     } catch (error) {
       (globalThis.console as any)?.error?.("Download failed:", error);
     } finally {
@@ -286,7 +283,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
           {/* Search and Filter */}
           <div className="flex gap-2">
             <Input
-              ="Search media files..."
+              placeholder="Search media files..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="flex-1"

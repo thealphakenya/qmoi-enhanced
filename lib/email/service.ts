@@ -10,8 +10,15 @@
 
 import nodemailer from "nodemailer";
 // Support environments where 'imapflow' may be a CommonJS module or a default export shim
-import * as ImapFlowPkg from "imapflow";
-const ImapFlow: any = ?.ImapFlow || ImapFlowPkg;
+// Optional dependency handling to prevent build failures when not installed
+let ImapFlow: any = null;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const ImapFlowPkg = require("imapflow");
+  ImapFlow = (ImapFlowPkg as any)?.ImapFlow || ImapFlowPkg;
+} catch {
+  ImapFlow = null;
+}
 
 interface EmailOptions {
   to: string | string[];
@@ -411,7 +418,7 @@ class EmailService {
         attachments: options.attachments,
       });
 
-      .log(`Email sent to ${options.to}:`, result.messageId);
+      console.log(`Email sent to ${options.to}:`, result.messageId);
       return true;
     } catch (error) {
       console.error("Failed to send email:", error);

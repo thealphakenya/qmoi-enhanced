@@ -43,9 +43,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(
       {
-        _status: "
-        _message:
-          "SSH file listing not available in this build. Use S3/GCS instead.",
+        _status: "success",
+        _message: "SSH file listing not available in this build. Use S3/GCS instead.",
         host,
         path,
         files: [],

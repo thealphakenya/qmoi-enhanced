@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import { NextRequest, NextResponse } from "next/server";
-import { transcribeAudioFile as transcribeHelper } from "../../../../lib/transcribe";
+import { transcribeAudioFile as transcribeHelper } from "@/lib/transcribe";
 
 /**
  * Audio Transcription Endpoint

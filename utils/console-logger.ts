@@ -19,4 +19,9 @@ export class ConsoleLogger {
   }
 }
 
+// Export a default logger function for convenience
+export function consoleLog(message: string, data?: any): void {
+  console.log(message, data);
+}
+
 export default ConsoleLogger;

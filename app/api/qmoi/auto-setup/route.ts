@@ -37,7 +37,7 @@ function generateEnvironmentVariables(): EnvVariable[] {
     },
     {
       key: "NEXT_PUBLIC_API_URL",
-      value: "http:process.env.API_HOST || "localhost:3000"",
+      value: `http://${process.env.API_HOST || "localhost:3000"}`,
       description: "API base URL",
     },
     {
@@ -172,7 +172,7 @@ function writeEnvFile(variables: Record<string, string>): boolean {
     }
 
     fs.writeFileSync(envPath, content, "utf-8");
-    .log("[QMOI] Environment variables saved to .env.local");
+    console.log("[QMOI] Environment variables saved to .env.local");
     return true;
   } catch (error) {
     console.error("[QMOI] Error writing .env.local:", error);
@@ -204,7 +204,7 @@ function loadEnvironmentVariables(): void {
         }
       });
 
-      .log("[QMOI] Environment variables loaded from .env.local");
+      console.log("[QMOI] Environment variables loaded from .env.local");
     }
   } catch (error) {
     console.error("[QMOI] Error loading environment variables:", error);
@@ -213,7 +213,7 @@ function loadEnvironmentVariables(): void {
 
 export async function POST(request: Request) {
   try {
-    .log("[QMOI] Starting auto-setup...");
+    console.log("[QMOI] Starting auto-setup...");
 
     // Read existing environment
     const existingVars = readEnvFile();
@@ -275,13 +275,13 @@ export async function POST(request: Request) {
       );
     }
 
-    .log("[QMOI] Auto-setup completed successfully");
-    .log("[QMOI] Environment variables configured:");
-    .log(
+    console.log("[QMOI] Auto-setup completed successfully");
+    console.log("[QMOI] Environment variables configured:");
+    console.log(
       `  - MASTER_PASSWORD: ${process.env.MASTER_PASSWORD ? "✓" : "✗"}`,
     );
-    .log(`  - ADMIN_TOKEN: ${process.env.ADMIN_TOKEN ? "✓" : "✗"}`);
-    .log(
+    console.log(`  - ADMIN_TOKEN: ${process.env.ADMIN_TOKEN ? "✓" : "✗"}`);
+    console.log(
       `  - NEXT_PUBLIC_API_URL: ${process.env.NEXT_PUBLIC_API_URL || "✗"}`,
     );
 

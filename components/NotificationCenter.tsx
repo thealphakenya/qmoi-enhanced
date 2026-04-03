@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
+"use client";
 import React, { useEffect, useState } from "react";
-("use client");
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Badge } from "@/components/ui/badge";

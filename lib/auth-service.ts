@@ -225,7 +225,7 @@ export class AuthService {
       sessions.set(sessionId, sessionData);
 
       // Log signup in QMOI memory
-      .log(`[QMOI AUTH] New user signup: ${userId}`, {
+      console.log(`[QMOI AUTH] New user signup: ${userId}`, {
         email: signupData.email,
         username: signupData.username,
         biometricEnrolled,
@@ -372,7 +372,7 @@ export class AuthService {
       authProfiles.set(authProfile.userId, authProfile);
 
       // Log signin in QMOI memory
-      .log(`[QMOI AUTH] User signin: ${authProfile.userId}`, {
+      console.log(`[QMOI AUTH] User signin: ${authProfile.userId}`, {
         email: authProfile.email,
         authMethod,
         biometricMethod,
@@ -470,7 +470,7 @@ export class AuthService {
       biometricProfiles.set(userId, biometricProfile);
 
       // Log biometric capture
-      .log(
+      console.log(
         `[QMOI BIOMETRIC] Captured ${biometricMethod} for ${userId}`,
         {
           quality: bioMethod.quality,
@@ -555,7 +555,7 @@ export class AuthService {
         biometricProfiles.set(userId, biometric);
       }
 
-      .log(`[QMOI AUTH] Updated settings for ${userId}`, updates);
+      console.log(`[QMOI AUTH] Updated settings for ${userId}`, updates);
 
       return { success: true, message: "Settings updated successfully" };
     } catch (error) {

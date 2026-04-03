@@ -70,5 +70,5 @@ export function logEvent(event: string, details: Record<string, any>) {
   if (safeDetails.mpesaNumber) safeDetails.mpesaNumber = "***";
   if (safeDetails.credential) safeDetails.credential = "***";
   // Log to file, DB, or monitoring system
-  .log(`[SECURITY][${event}]`, safeDetails);
+  console.log(`[SECURITY][${event}]`, safeDetails);
 }

@@ -108,7 +108,7 @@ export async function POST(req: Request) {
 
     if (action === "analyze-command" && text) {
       
-      const 
+      const voiceCommand = {
         id: "temp",
         userId,
         content: text,
@@ -118,7 +118,7 @@ export async function POST(req: Request) {
         sentiment: "neutral" as const,
         isProcessed: true,
       };
-      const analysis = await voiceService.analyzeVoiceCommand(
+      const analysis = await voiceService.analyzeVoiceCommand(voiceCommand);
       return NextResponse.json({
         success: true,
         analysis,

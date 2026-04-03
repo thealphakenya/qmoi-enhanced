@@ -8,22 +8,26 @@ import * as jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 
-export type UserRole = "master" | "admin" | "user" | "sponsored" | "guest";
+/**
+ * @typedef {"master" | "admin" | "user" | "sponsored" | "guest"} UserRole
+ */
 
-interface DecodedToken {
-  id: string;
-  username: string;
-  role: UserRole;
-  iat?: number;
-  exp?: number;
-}
+/**
+ * @typedef {{
+ *   id: string;
+ *   username: string;
+ *   role: UserRole;
+ *   iat?: number;
+ *   exp?: number;
+ * }} DecodedToken
+ */
 
 /**
  * Extract JWT token from request headers
  */
-export function getTokenFromRequest(_request: NextRequest): string | null {
-  const authHeader = request.headers.get("authorization");
-  if (!authHeader?.startsWith("Bearer ")) {
+export function getTokenFromRequest(_request) {
+  const authHeader = _request.headers.get("authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
   }
   return authHeader.substring(7);
@@ -32,16 +36,19 @@ export function getTokenFromRequest(_request: NextRequest): string | null {
 /**
  * Decode and verify JWT token
  */
-export function verifyToken(token: string): DecodedToken | null {
+export function verifyToken(token) {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as DecodedToken;
+    const decoded = jwt.verify(token, JWT_SECRET);
     return decoded;
-  } catch (error) { /* Handle error */ }
+  } catch (error) {
+    return null;
+  }
+}
 
 /**
  * Get user role from request
  */
-export function getRoleFromRequest(_request: NextRequest): UserRole | null {
+export function getRoleFromRequest(_request) {
   const token = getTokenFromRequest(_request);
   if (!token) {
     return null;
@@ -53,10 +60,7 @@ export function getRoleFromRequest(_request: NextRequest): UserRole | null {
 /**
  * Check if a role has permission for a specific action
  */
-export function hasPermission(
-  role: UserRole | null,
-  requiredRole: UserRole | UserRole[]
-): boolean {
+export function hasPermission(role, requiredRole) {
   if (!role) {
     return false;
   }
@@ -66,29 +70,18 @@ export function hasPermission(
     return true;
   }
 
-  // Convert single role to array for comparison
   const requiredRoles = Array.isArray(requiredRole)
     ? requiredRole
     : [requiredRole];
 
-  // Check if role matches any of the required roles
   return requiredRoles.includes(role);
 }
 
 /**
  * Middleware to protect API routes based on role
  */
-export function withRoleProtection(
-  handler: (
-    _request: NextRequest,
-    context: { _params: Record<string, string> }
-  ) => Promise<Response>,
-  requiredRoles: UserRole | UserRole[]
-) {
-  return async (
-    _request: NextRequest,
-    context: { _params: Record<string, string> }
-  ) => {
+export function withRoleProtection(handler, requiredRoles) {
+  return async (_request, context) => {
     const userRole = getRoleFromRequest(_request);
 
     if (!hasPermission(userRole, requiredRoles)) {
@@ -105,7 +98,7 @@ export function withRoleProtection(
 /**
  * Role hierarchy (higher number = more permissions)
  */
-export const roleHierarchy: Record<UserRole, number> = {
+export const roleHierarchy = {
   master: 5,
   admin: 4,
   user: 2,
@@ -116,17 +109,14 @@ export const roleHierarchy: Record<UserRole, number> = {
 /**
  * Check if a role has at least the specified hierarchy level
  */
-export function hasRoleLevel(role: UserRole, minLevel: number): boolean {
+export function hasRoleLevel(role, minLevel) {
   return roleHierarchy[role] >= minLevel;
 }
 
 /**
  * Check if request user role is at or above a hierarchy level
  */
-export function checkRoleLevel(
-  _request: NextRequest,
-  minLevel: number
-): boolean {
+export function checkRoleLevel(_request, minLevel) {
   const role = getRoleFromRequest(_request);
   if (!role) {
     return false;

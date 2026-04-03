@@ -63,7 +63,7 @@ export const authService = {
   },
 
   verifyToken: (token: string) => {
-    const r = .verifyJwt(token);
+    const r = authService.verifyJwt(token);
     if (!r.ok) throw new Error(r.error || "Invalid token");
     return r.payload;
   },

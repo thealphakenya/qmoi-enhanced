@@ -107,6 +107,7 @@
     "crypto-js": "^4.2.0",
     "date-fns": "^4.1.0",
     "dotenv": "^16.6.1",
+    "eventemitter3": "^5.0.4",
     "express": "^4.18.2",
     "express-session": "^1.17.0",
     "framer-motion": "^12.23.25",

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import { NextRequest, NextResponse } from 'next/server';
-import { globalNewsService } from '../../../lib/global-news-service';
+import { globalNewsService } from '@/lib/global-news-service';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);

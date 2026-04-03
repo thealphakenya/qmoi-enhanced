@@ -39,7 +39,7 @@ export async function POST(_request: NextRequest) {
       userId,
       username,
       credentialId: credential.id || crypto.randomUUID(),
-      publicKey: credential.publicKey || "
+      publicKey: credential.publicKey || "default_key",
       counter: credential.counter || 0,
       transports: credential.transports || ["platform"],
       type: "webauthn",

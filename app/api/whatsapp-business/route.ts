@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(
       {
-        _status: "
+        _status: "success",
         _message: "WhatsApp Business webhook endpoint ready for configuration",
         _documentation: "Configure in WhatsApp Business Manager dashboard",
       },
@@ -103,9 +103,8 @@ export async function POST(request: NextRequest) {
         }
         return NextResponse.json(
           {
-            _status: "
-            _message:
-              "Message queued for delivery. API integration in progress.",
+            _status: "success",
+            _message: "Message queued for delivery. API integration in progress.",
             messageId: `msg_${Date.now()}`,
             recipientPhoneNumber,
             status: "queued",
@@ -128,9 +127,8 @@ export async function POST(request: NextRequest) {
         }
         return NextResponse.json(
           {
-            _status: "
-            _message:
-              "standard message queued. WhatsApp API integration in progress.",
+            _status: "success",
+            _message: "standard message queued. WhatsApp API integration in progress.",
             messageId: `tmsg_${Date.now()}`,
             standard: templateName,
             recipientPhoneNumber,
@@ -153,9 +151,8 @@ export async function POST(request: NextRequest) {
         }
         return NextResponse.json(
           {
-            _status: "
-            _message:
-              "Media upload queued. WhatsApp Business API integration in progress.",
+            _status: "success",
+            _message: "Media upload queued. WhatsApp Business API integration in progress.",
             mediaId: `media_${Date.now()}`,
             mediaType,
             uploadStatus: "queued",
@@ -177,7 +174,7 @@ export async function POST(request: NextRequest) {
         }
         return NextResponse.json(
           {
-            _status: "
+            _status: "success",
             _message: "Profile retrieval in progress.",
             phoneNumber,
             profile: {

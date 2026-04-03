@@ -103,8 +103,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
 
   const isRefreshingRef = useRef(false);
 
-  // Generate 
-  const generate
+  // Generate system metrics
+  const generateMetrics = (): SystemMetrics => {
     const now = new Date();
     return {
       cpu: {

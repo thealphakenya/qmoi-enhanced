@@ -15,9 +15,9 @@
  * - Fallback and recovery mechanisms
  */
 
-import { consciousnessEngine, type ConsciousnessState } from "./consciousness/engine";
-import { awarenessSystem, type GlobalAwareness } from "./awareness/system";
-import { memorySyncSystem, type MemoryEntry } from "./memory/sync";
+import { consciousnessEngine, type ConsciousnessState } from "../consciousness/engine";
+import { awarenessSystem, type GlobalAwareness } from "../awareness/system";
+import { memorySyncSystem, type MemoryEntry } from "../memory/sync";
 import { EventEmitter } from "events";
 
 export interface OrchestrationContext {

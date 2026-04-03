@@ -7,7 +7,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
-import { getValidatedBalances, isSnapshotRealFunds } from "../../../../lib/balance-validator";
+import { getValidatedBalances, isSnapshotRealFunds } from "@/lib/balance-validator";
 import fs from "fs";
 import { resolve } from "path";
 

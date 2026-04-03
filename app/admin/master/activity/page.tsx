@@ -50,7 +50,7 @@ export default function MasterActivityPage() {
         setLogs(parsedLogs.slice(-20)); // Last 20 logs
       }
     } catch (error) {
-      console.error("Failed to fetch activity logs:", error);
+      console?.error?.("Failed to fetch activity logs:", error);
       setLogs([
         {
           timestamp: new Date().toLocaleString(),

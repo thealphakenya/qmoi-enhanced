@@ -11,7 +11,7 @@ import {
   animationEngines,
   qualityLevels,
 } from "../../../../src/components/q-city/avatarsConfig";
-import { qmoiTracksService } from "../../../../lib/tracks-service";
+import { qmoiTracksService } from "@/lib/tracks-service";
 export async function GET(request: NextRequest) {
   try {
     // Return all available avatars with metadata

@@ -7,7 +7,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { requireApiKey } from "../../../../lib/proposals";
-import { getValidatedBalances } from "../../../../lib/balance-validator";
+import { getValidatedBalances } from "@/lib/balance-validator";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";

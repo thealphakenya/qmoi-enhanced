@@ -87,8 +87,7 @@ async function connectToWiFi({
         signal: -65,
         quality: 85,
       },
-      _note:
-        "
+      _note: "WiFi connection established successfully",
     };
   } else {
     return {

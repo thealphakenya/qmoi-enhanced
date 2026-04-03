@@ -5,7 +5,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { QMOIService } from "@/lib/qmoi-service";
-import { transcribeAudioFile as transcribeHelper } from "../../../../lib/transcribe";
+import { transcribeAudioFile as transcribeHelper } from "@/lib/transcribe";
 
 /**
  * Audio/Voice Message Processing

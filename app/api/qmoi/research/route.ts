@@ -49,9 +49,8 @@ export default async function handler(
             });
           }
           return _res.status(200).json({
-            _status: "
-            _message:
-              "Research analysis initiated. Data aggregation in progress.",
+            _status: "success",
+            _message: "Research analysis initiated. Data aggregation in progress.",
             query,
             type: type || "general",
             researchId: `research_${Date.now()}`,
@@ -69,7 +68,7 @@ export default async function handler(
             });
           }
           return _res.status(200).json({
-            _status: "
+            _status: "success",
             _message: "Blockchain verification in progress.",
             address,
             type,
@@ -82,7 +81,7 @@ export default async function handler(
         case "earning-opportunities": {
           const { filter } = body;
           return _res.status(200).json({
-            _status: "
+            _status: "success",
             _message: "Scanning for earning opportunities. Results loading.",
             userId,
             filter: filter || {},

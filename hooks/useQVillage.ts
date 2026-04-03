@@ -315,7 +315,7 @@ export function useQVillageStatus() {
   useEffect(() => {
     // Enhanced WebSocket connection with auto-reconnect
     const connectWebSocket = () => {
-      wsRef.current = new WebSocket("ws:process.env.API_HOST || "localhost:3000"/qvillage/status");
+      wsRef.current = new WebSocket(`ws://${process.env.API_HOST || "localhost:3000"}/qvillage/status`);
 
       wsRef.current.onmessage = (event: MessageEvent) => {
         const data = JSON.parse(event.data);

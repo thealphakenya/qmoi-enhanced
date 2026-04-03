@@ -56,7 +56,7 @@ class PerformanceMonitor {
         body: JSON.stringify(metric),
       });
     } catch (error) {
-      .warn("Failed to send metric", error);
+      console.warn("Failed to send metric", error);
     }
   };
 
@@ -84,7 +84,7 @@ class PerformanceMonitor {
 
     // Log in production
     if (process.env.NODE_ENV !== "production") {
-      .log(`[Metric] ${name}: ${value}${unit}`, tags);
+      console.log(`[Metric] ${name}: ${value}${unit}`, tags);
     }
 
     // Send to monitoring service in production
