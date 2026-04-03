@@ -1494,7 +1494,7 @@ cat docs/domain_deployment_status.json | jq '.global_status, .deployment_phases_
 | **Current Health** | 0% (pending activation) | 100% |
 | **Current UI Features** | 0% (pending deployment) | ≥80% |
 | **Current Status** | Parked | ACTIVE (in use) |
-| **DNS Resolution** | 🔄 15% activated | 100% (Phase 1) |
+| **DNS Resolution** | 🔄 86.4% activated (19/22) | 100% (Phase 1) |
 | **SSL Certificates** | ⏳ Pending | Valid + Auto-renew (Phase 2) |
 | **Content** | ⏳ Pending | Deployed (Phase 3) |
 | **UI Features** | ⏳ Pending | ≥80% coverage (Phase 4) |
@@ -1503,7 +1503,7 @@ cat docs/domain_deployment_status.json | jq '.global_status, .deployment_phases_
 
 ### 🔄 6-Phase Activation Workflow
 
-**Phase 1: DNS Activation** (15% complete)
+**Phase 1: DNS Activation** (86.4% complete)
 - Status: 🔄 IN PROGRESS
 - Action: `python3 scripts/deploy_dns_activation.py --all-domains --provider=cloudflare`
 - Timeline: 24 hours

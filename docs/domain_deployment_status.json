@@ -8,12 +8,13 @@
     "target_health": "100%",
     "target_ui_features": "\u226580%",
     "target_status": "ACTIVE (not parked)",
-    "deployment_phase": "Phase 1 - DNS Activation (In Progress)"
+    "deployment_phase": "Phase 1 - DNS Activation (In Progress)",
+    "dns_activation_progress": "19/22"
   },
   "deployment_status_by_domain": {
     "api.qmoi.com": {
       "purpose": "API Gateway",
-      "dns_status": "\ud83d\udd04 Activating",
+      "dns_status": "\u2705 Deployed",
       "ssl_status": "\u23f3 Pending",
       "content_status": "\u23f3 Pending",
       "ui_features": [
@@ -25,11 +26,12 @@
       "active_status": "\u23f3 Not yet activated",
       "health_score": 0,
       "target_health": 100,
-      "estimated_completion": "Phase 6: April 4, 2026"
+      "estimated_completion": "Phase 6: April 4, 2026",
+      "last_updated": "2026-04-03T03:27:11.360507"
     },
     "auth.qmoi.com": {
       "purpose": "Authentication Service",
-      "dns_status": "\ud83d\udd04 Activating",
+      "dns_status": "\u2705 Deployed",
       "ssl_status": "\u23f3 Pending",
       "content_status": "\u23f3 Pending",
       "ui_features": [
@@ -41,11 +43,12 @@
       "ui_feature_coverage": "0% (pending deployment)",
       "active_status": "\u23f3 Not yet activated",
       "health_score": 0,
-      "target_health": 100
+      "target_health": 100,
+      "last_updated": "2026-04-03T03:27:17.062112"
     },
     "cdn.qmoi.com": {
       "purpose": "Content Delivery Network",
-      "dns_status": "\ud83d\udd04 Activating",
+      "dns_status": "\u2705 Deployed",
       "ssl_status": "\u23f3 Pending",
       "content_status": "\u23f3 Pending",
       "ui_features": [
@@ -56,11 +59,12 @@
       "ui_feature_coverage": "0% (pending deployment)",
       "active_status": "\u23f3 Not yet activated",
       "health_score": 0,
-      "target_health": 100
+      "target_health": 100,
+      "last_updated": "2026-04-03T03:27:22.763551"
     },
     "qmoi.ai": {
       "purpose": "Primary QMOI AI Engine",
-      "dns_status": "\ud83d\udd04 Activating",
+      "dns_status": "\u2705 Deployed",
       "ssl_status": "\u23f3 Pending",
       "content_status": "\u23f3 Pending",
       "ui_features": [
@@ -72,11 +76,12 @@
       "ui_feature_coverage": "0% (pending deployment)",
       "active_status": "\u23f3 Not yet activated",
       "health_score": 0,
-      "target_health": 100
+      "target_health": 100,
+      "last_updated": "2026-04-03T03:27:51.771943"
     },
     "qvillage.com": {
       "purpose": "Community Hub",
-      "dns_status": "\ud83d\udd04 Activating",
+      "dns_status": "\u274c Deployment failed",
       "ssl_status": "\u23f3 Pending",
       "content_status": "\u23f3 Pending",
       "ui_features": [
@@ -88,7 +93,76 @@
       "ui_feature_coverage": "0% (pending deployment)",
       "active_status": "\u23f3 Not yet activated",
       "health_score": 0,
-      "target_health": 100
+      "target_health": 100,
+      "last_updated": "2026-04-03T03:28:03.676317"
+    },
+    "q-stable.qmoi.ai": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:27:28.464947"
+    },
+    "qcity.io": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:27:34.166461"
+    },
+    "qcity.qmoi.ai": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:27:39.867836"
+    },
+    "qglobal.ai": {
+      "dns_status": "\u274c Deployment failed",
+      "last_updated": "2026-04-03T03:27:40.369003"
+    },
+    "qmoi-space.qmoi.ai": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:27:46.070413"
+    },
+    "qshare.qmoi.ai": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:27:57.473622"
+    },
+    "qstore.qmoi.ai": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:28:03.175102"
+    },
+    "qvillage.com/qmoi-ai.html": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:28:09.378561"
+    },
+    "qvillage.org": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:28:15.080101"
+    },
+    "qvillage.qmoi.ai": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:28:20.781797"
+    },
+    "releases.qmoi.ai": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:28:26.483338"
+    },
+    "releases.qmoi.ai/apps/qmoi_ai.apk": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:28:32.184796"
+    },
+    "releases.qmoi.ai/apps/qmoi_ai.ipa": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:28:37.886271"
+    },
+    "releases.qmoi.ai/apps/qmoi_ai_chromebook.zip": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:28:43.587912"
+    },
+    "releases.qmoi.ai/apps/qmoi_ai_smarttv.apk": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:28:49.289397"
+    },
+    "status.qmoi.ai": {
+      "dns_status": "\u2705 Deployed",
+      "last_updated": "2026-04-03T03:28:54.990913"
+    },
+    "yap.qmoi.ai": {
+      "dns_status": "\u274c Deployment failed",
+      "last_updated": "2026-04-03T03:28:55.493719"
     }
   },
   "remaining_domains_summary": {
