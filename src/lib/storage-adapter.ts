@@ -59,3 +59,7 @@ export class StorageAdapter {
 }
 
 export const storageAdapter = new StorageAdapter();
+
+export function getStorageAdapter(): StorageAdapter {
+  return storageAdapter;
+}

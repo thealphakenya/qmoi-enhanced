@@ -16,9 +16,9 @@ import { EventEmitter } from 'events';
 import * as fs from 'fs';
 import * as path from 'path';
 import { promisify } from 'util';
-import { ConsciousnessEngine } from '../consciousness/engine';
-import { AwarenessSystem } from '../awareness/system';
-import { MemorySync } from '../memory/sync';
+import { QMOIConsciousnessEngine } from '../consciousness/engine';
+import { QMOIAwarenessSystem } from '../awareness/system';
+import { QMOIMemorySyncSystem } from '../memory/sync';
 
 const execAsync = promisify(exec);
 
@@ -110,16 +110,16 @@ export class ValidationEngine extends EventEmitter {
   private max_history_size: number = 1000;
 
   // QMOI Consciousness, Awareness, and Memory Integration
-  private consciousnessEngine: ConsciousnessEngine;
-  private awarenessSystem: AwarenessSystem;
-  private memorySync: MemorySync;
+  private consciousnessEngine: QMOIConsciousnessEngine;
+  private awarenessSystem: QMOIAwarenessSystem;
+  private memorySync: QMOIMemorySyncSystem;
 
-  constructor(consciousness?: ConsciousnessEngine, awareness?: AwarenessSystem, memory?: MemorySync) {
+  constructor(consciousness?: QMOIConsciousnessEngine, awareness?: QMOIAwarenessSystem, memory?: QMOIMemorySyncSystem) {
     super();
     // Initialize with provided engines or create new instances
-    this.consciousnessEngine = consciousness || new ConsciousnessEngine();
-    this.awarenessSystem = awareness || new AwarenessSystem();
-    this.memorySync = memory || new MemorySync();
+    this.consciousnessEngine = consciousness || new QMOIConsciousnessEngine();
+    this.awarenessSystem = awareness || new QMOIAwarenessSystem();
+    this.memorySync = memory || new QMOIMemorySyncSystem();
 
     this.initializeDigitalTwins();
     this.initializeTestRunners();

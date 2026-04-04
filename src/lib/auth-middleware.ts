@@ -76,8 +76,11 @@ export async function validateAuthToken(request: NextRequest): Promise<AuthConte
 }
 
 /**
- * Require authentication middleware
+ * Verify user session (alias for validateAuthToken)
  */
+export async function verifyUserSession(request: NextRequest): Promise<AuthContext> {
+  return validateAuthToken(request);
+}
 export async function requireAuth(request: NextRequest): Promise<{ auth: AuthContext; error?: NextResponse }> {
   const auth = await validateAuthToken(request);
 

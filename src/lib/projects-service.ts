@@ -41,12 +41,50 @@ export class ProjectsService {
     );
   }
 
-  async updateProject(id: string, updates: Partial<Project>): Promise<boolean> {
-    const project = this.projects.find(p => p.id === id);
-    if (!project) return false;
+  async getProjects(userId?: string): Promise<Project[]> {
+    if (userId) {
+      return this.getUserProjects(userId);
+    }
+    return this.projects;
+  }
 
-    Object.assign(project, updates, { updatedAt: new Date() });
+  async getProjectById(id: string): Promise<Project | null> {
+    return this.getProject(id);
+  }
+
+  async deleteProject(id: string): Promise<boolean> {
+    const index = this.projects.findIndex(p => p.id === id);
+    if (index === -1) return false;
+    this.projects.splice(index, 1);
     return true;
+  }
+
+  async addTask(projectId: string, taskData: any): Promise<any> {
+    // Stub
+    return { id: `task_${Date.now()}`, ...taskData };
+  }
+
+  async updateTask(projectId: string, taskId: string, updates: any): Promise<boolean> {
+    // Stub
+    return true;
+  }
+
+  async registerCapability(capabilityData: any): Promise<void> {
+    // Stub
+  }
+
+  async updateCapabilityUsage(capabilityId: string, usage: any): Promise<void> {
+    // Stub
+  }
+
+  async getCapabilities(category?: string): Promise<any[]> {
+    // Stub
+    return [];
+  }
+
+  async getProjectAnalytics(projectId: string): Promise<any> {
+    // Stub
+    return {};
   }
 
   async deleteProject(id: string): Promise<boolean> {

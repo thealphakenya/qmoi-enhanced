@@ -358,6 +358,28 @@ export class QMOIMemorySyncSystem extends EventEmitter {
     };
   }
 
+  /**
+   * Get status (alias for getMemoryStats)
+   */
+  public getStatus(): Record<string, any> {
+    return this.getMemoryStats();
+  }
+
+  /**
+   * Store data (alias for addMemory)
+   */
+  public async store(key: string, data: any): Promise<void> {
+    await this.addMemory({
+      type: 'long_term',
+      content: JSON.stringify(data),
+      prodice_id: 'system',
+      user_id: 'validation',
+      relevance_score: 1,
+      tags: [key],
+      encrypted: false,
+    });
+  }
+
   // Private helper methods
 
   private getMemoryLayer(type: MemoryEntry["type"]): Map<string, MemoryEntry> {

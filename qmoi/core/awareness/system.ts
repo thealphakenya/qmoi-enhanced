@@ -196,8 +196,11 @@ export class QMOIAwarenessSystem extends EventEmitter {
   }
 
   /**
-   * Sync awareness to all connected prodices
+   * Get current global awareness context
    */
+  public getContext(): GlobalAwareness {
+    return this.global_awareness;
+  }
   private async syncAwarenessToAllprodices(userId: string): Promise<void> {
     const prodices = this.global_awareness.cross_prodice_context.active_prodices;
     const user = this.global_awareness.users.get(userId);

@@ -12,7 +12,7 @@ export interface Friendship {
   updatedAt: Date;
 }
 
-export class FriendshipService {
+export class QMOIFriendshipService {
   private friendships: Friendship[] = [];
 
   async createFriendship(userId1: string, userId2: string): Promise<string> {
@@ -82,4 +82,4 @@ export class FriendshipService {
   }
 }
 
-export const friendshipService = new FriendshipService();
+export const friendshipService = new QMOIFriendshipService();

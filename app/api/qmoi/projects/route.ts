@@ -5,7 +5,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from "next/server";
-import { QMOIProjectsService } from "@/lib/projects-service";
+import { ProjectsService } from "@/lib/projects-service";
 
 export async function GET(req: Request) {
   try {
@@ -16,7 +16,7 @@ export async function GET(req: Request) {
     const category = searchParams.get("category");
 
     if (action === "list") {
-      const projects = await QMOIProjectsService.getProjects(
+      const projects = await ProjectsService.getProjects(
         userId || undefined,
       );
       return NextResponse.json({
@@ -27,7 +27,7 @@ export async function GET(req: Request) {
     }
 
     if (action === "get" && projectId) {
-      const project = await QMOIProjectsService.getProjectById(projectId);
+      const project = await ProjectsService.getProjectById(projectId);
       if (!project) {
         return NextResponse.json(
           { error: "Project not found" },
@@ -38,7 +38,7 @@ export async function GET(req: Request) {
     }
 
     if (action === "capabilities") {
-      const capabilities = await QMOIProjectsService.getCapabilities(
+      const capabilities = await ProjectsService.getCapabilities(
         category || undefined,
       );
       return NextResponse.json({
@@ -49,7 +49,7 @@ export async function GET(req: Request) {
     }
 
     if (action === "analytics") {
-      const analytics = await QMOIProjectsService.getProjectAnalytics(
+      const analytics = await ProjectsService.getProjectAnalytics(
         userId || undefined,
       );
       return NextResponse.json({ success: true, analytics });
@@ -87,7 +87,7 @@ export async function POST(req: Request) {
     }
 
     if (action === "create") {
-      const project = await QMOIProjectsService.createProject({
+      const project = await ProjectsService.createProject({
         name,
         description,
         ownerId: userId,
@@ -103,7 +103,7 @@ export async function POST(req: Request) {
     }
 
     if (action === "update" && projectId && updates) {
-      const project = await QMOIProjectsService.updateProject(
+      const project = await ProjectsService.updateProject(
         projectId,
         updates,
       );
@@ -121,12 +121,12 @@ export async function POST(req: Request) {
     }
 
     if (action === "delete" && projectId) {
-      const result = await QMOIProjectsService.deleteProject(projectId);
+      const result = await ProjectsService.deleteProject(projectId);
       return NextResponse.json(result);
     }
 
     if (action === "add-task" && projectId && taskData) {
-      const task = await QMOIProjectsService.addTask(projectId, taskData);
+      const task = await ProjectsService.addTask(projectId, taskData);
       if (!task) {
         return NextResponse.json(
           { error: "Failed to add task" },
@@ -141,7 +141,7 @@ export async function POST(req: Request) {
     }
 
     if (action === "update-task" && projectId && taskData?.id) {
-      const task = await QMOIProjectsService.updateTask(
+      const task = await ProjectsService.updateTask(
         projectId,
         taskData.id,
         taskData,
@@ -158,7 +158,7 @@ export async function POST(req: Request) {
 
     if (action === "register-capability" && capabilityData) {
       const capability =
-        await QMOIProjectsService.registerCapability(capabilityData);
+        await ProjectsService.registerCapability(capabilityData);
       return NextResponse.json({
         success: true,
         capability,
@@ -167,7 +167,7 @@ export async function POST(req: Request) {
     }
 
     if (action === "update-capability-usage" && capabilityData?.id) {
-      await QMOIProjectsService.updateCapabilityUsage(
+      await ProjectsService.updateCapabilityUsage(
         capabilityData.id,
         capabilityData.metrics || {},
       );

@@ -5,7 +5,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { getLogger } from "@/lib/logger";
-import { NotificationService } from "../../../../scripts/services/notification_service";
+import { NotificationService } from "@/lib/notification_service";
 
 const logger = getLogger("/api/notifications/test");
 const notificationService = new NotificationService();

@@ -450,7 +450,7 @@ async function getFinancialOverview(): Promise<any> {
     const revenueEngine = mod.qmoiRevenueEngine || mod.default || mod;
 
     // Augment with validated balances snapshot
-    const snapshotModule = await import("../../../../lib/balance-validator");
+    const snapshotModule = await import("../../../../src/lib/balance-validator");
     const snapshot = snapshotModule.getValidatedBalances?.() || null;
 
     return {

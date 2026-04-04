@@ -78,3 +78,4 @@ export class TracksService {
 
 export const tracksService = new TracksService();
 export const qmoiTracksService = tracksService;
+export default tracksService;
