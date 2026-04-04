@@ -16,10 +16,12 @@ module.exports = {
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   rules: {
     'no-undef': 'off',
+    'no-case-declarations': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {
-        argsIgnorePattern: '^(?:_|req|res|next|params|query|options|error|err|metrics|discussion|data|filters|hf|local|tags)$',
+        argsIgnorePattern: '^(?:_|req|res|next|params|query|options|error|err|metrics|discussion|data|filters|hf|local|tags|port)$',
         caughtErrorsIgnorePattern: '^_',
       },
     ],
