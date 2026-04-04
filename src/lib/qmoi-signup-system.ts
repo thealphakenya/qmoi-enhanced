@@ -51,3 +51,5 @@ export class QMOISignupSystem {
 }
 
 export const qmoiSignupSystem = new QMOISignupSystem();
+
+export default QMOISignupSystem;

@@ -65,3 +65,6 @@ export class EmailService {
 }
 
 export const emailService = new EmailService();
+
+// Export as alias for imports that expect qmoiEmailService
+export const qmoiEmailService = emailService;

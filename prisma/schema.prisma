@@ -6,12 +6,11 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../node_modules/@prisma/client/.prisma/client"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./dev.db"
 }
 
 model User {
@@ -33,14 +32,13 @@ model User {
   discussions      Discussion[]
   knowledgeEntries KnowledgeBaseEntry[]
   notifications    Notification[]
-  news            News[]
-  wallets         Wallet[]
-  auditLogs       AuditLog[]
-  sessions        Session[]
+  news             News[]
+  wallets          Wallet[]
+  auditLogs        AuditLog[]
+  sessions         Session[]
   paymentTransactions PaymentTransaction[]
-  balanceTransfers BalanceTransfer[]
-  riskAssessments RiskAssessment[]
-  complianceChecks ComplianceCheck[]
+  preferences      UserPreference[]
+  learningGoals    LearningGoal[]
 
   @@map("users")
 }
@@ -219,7 +217,7 @@ model Wallet {
   // Settings & Preferences
   settings              Json                   @default("{}") // Wallet-specific settings
   alerts                Json                   @default("[]") // Alert configurations
-  webhooks              Json                   @default("[]") // Webhook configurations
+  webhookConfigs        Json                   @default("[]") // Webhook configurations
 
   // Audit & Compliance
   createdBy             String
@@ -235,8 +233,11 @@ model Wallet {
   closedAt              DateTime?
 
   // Relations
-  transactions          Transaction[]
-  balanceTransfers      BalanceTransfer[]
+  balances              Balance[]              @relation("WalletBalances")
+  sentTransactions      Transaction[]          @relation("TransactionFromWallet")
+  transactions          Transaction[]          @relation("TransactionToWallet")
+  sentTransfers         BalanceTransfer[]      @relation("BalanceTransferFromWallet")
+  balanceTransfers      BalanceTransfer[]      @relation("BalanceTransferToWallet")
   balanceInterests      BalanceInterest[]
   balanceAudits         BalanceAudit[]
   webhooks              BalanceWebhook[]
@@ -510,7 +511,7 @@ model Setting {
 model Balance {
   id                    String                 @id @default(cuid())
   walletId              String
-  wallet                Wallet                 @relation(fields: [walletId], references: [id], onDelete: Cascade)
+  wallet                Wallet                 @relation("WalletBalances", fields: [walletId], references: [id], onDelete: Cascade)
 
   // Balance Types
   available             Float                  @default(0.0)
@@ -544,9 +545,9 @@ model BalanceTransfer {
 
   // Transfer Details
   fromWalletId          String
-  fromWallet            Wallet                 @relation(fields: [fromWalletId], references: [id])
+  fromWallet            Wallet                 @relation("BalanceTransferFromWallet", fields: [fromWalletId], references: [id])
   toWalletId            String
-  toWallet              Wallet                 @relation(fields: [toWalletId], references: [id])
+  toWallet              Wallet                 @relation("BalanceTransferToWallet", fields: [toWalletId], references: [id])
   amount                Float
   currency              String                 @default("USD")
   status                String                 @default("pending") // 'pending', 'processing', 'completed', 'failed', 'cancelled'

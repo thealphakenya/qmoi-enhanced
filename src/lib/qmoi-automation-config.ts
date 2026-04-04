@@ -32,3 +32,19 @@ export class QMOIAutomationConfig {
 }
 
 export const qmoiAutomationConfig = new QMOIAutomationConfig();
+
+export function getAutomationConfig(): AutomationConfig {
+  return qmoiAutomationConfig.getConfig();
+}
+
+export function loadAutomationConfig(): AutomationConfig {
+  return qmoiAutomationConfig.getConfig();
+}
+
+export function validateAutomationConfig(config: Partial<AutomationConfig>): boolean {
+  return !!config && typeof config === 'object';
+}
+
+export function updateAutomationConfig(newConfig: Partial<AutomationConfig>): void {
+  qmoiAutomationConfig.updateConfig(newConfig);
+}

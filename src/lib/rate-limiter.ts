@@ -54,9 +54,34 @@ export class RateLimiter {
       limit.requests = [];
     }
   }
+
+  getStats() {
+    return Array.from(this.limits.values()).map(limit => ({
+      identifier: limit.identifier,
+      limit: limit.limit,
+      window: limit.window,
+      requests: limit.requests.length,
+    }));
+  }
+
+  clearAll(): void {
+    this.limits.clear();
+  }
 }
 
 export const rateLimiter = new RateLimiter();
+
+export function getRateLimitStats() {
+  return rateLimiter.getStats();
+}
+
+export function isQmoiEndpoint(path: string): boolean {
+  return typeof path === 'string' && path.includes('/qmoi');
+}
+
+export function cleanupRateLimits(): void {
+  rateLimiter.clearAll();
+}
 
 // Legacy function for backward compatibility
 export async function enforceRateLimitForLegacy(request: Request, limit: number = 100): Promise<boolean> {

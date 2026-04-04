@@ -198,6 +198,7 @@
     "eslint-plugin-react": "^7.37.5",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
+    "prisma": "^6.19.3",
     "ts-jest": "^29.4.6",
     "typescript": "^5.9.3"
   }

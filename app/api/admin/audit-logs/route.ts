@@ -5,10 +5,11 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { authService } from "@/lib/auth";
-import { db } from "@/lib/db/prisma";
+import { Database } from "@/lib/database";
 import { getLogger } from "@/lib/logger";
 
 const logger = getLogger("api/admin/audit-logs");
+const db = new Database({ type: 'sqlite', url: 'file:./data.db', maxConnections: 10 });
 
 // In-memory audit log cache for fallback/test scenarios
 const inMemoryAuditLogs: any[] = [];

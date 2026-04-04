@@ -65,3 +65,5 @@ export class QMOIUserSystem {
 }
 
 export const qmoiUserSystem = new QMOIUserSystem();
+
+export default QMOIUserSystem;

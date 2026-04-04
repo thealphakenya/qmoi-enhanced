@@ -59,3 +59,21 @@ export class Notifier {
 }
 
 export const notifier = new Notifier();
+
+export async function notifyPaymentSuccess(recipient: string, amount: number): Promise<string> {
+  return notifier.sendNotification({
+    type: 'success',
+    title: 'Payment Successful',
+    message: `Payment of ${amount} has been processed successfully`,
+    recipient,
+  });
+}
+
+export async function notifyPaymentFailure(recipient: string, amount: number, reason: string): Promise<string> {
+  return notifier.sendNotification({
+    type: 'error',
+    title: 'Payment Failed',
+    message: `Payment of ${amount} failed: ${reason}`,
+    recipient,
+  });
+}

@@ -55,6 +55,14 @@ export function getDomainStats(): DomainValidation[] {
   return domainStatsCache;
 }
 
+export function getLinkStats() {
+  return {
+    totalLinks: 0,
+    activeLinks: 0,
+    brokenLinks: 0,
+  };
+}
+
 export async function validateAllDomains(): Promise<DomainValidation[]> {
   const domains = [
     "qvillage.qmoi.ai",

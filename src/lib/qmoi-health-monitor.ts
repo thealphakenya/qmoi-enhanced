@@ -61,3 +61,7 @@ export class QMOIHealthMonitor {
 }
 
 export const qmoiHealthMonitor = new QMOIHealthMonitor();
+
+export function getHealthMonitor(): QMOIHealthMonitor {
+  return qmoiHealthMonitor;
+}

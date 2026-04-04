@@ -54,3 +54,7 @@ export const database = new Database({
   url: 'file:./qmoi.db',
   maxConnections: 10,
 });
+
+export function getDatabase(): Database {
+  return database;
+}

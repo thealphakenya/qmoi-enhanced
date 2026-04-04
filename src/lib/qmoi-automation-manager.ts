@@ -63,3 +63,33 @@ export class QMOIAutomationManager {
 }
 
 export const qmoiAutomationManager = new QMOIAutomationManager();
+
+export function getAutomationManager(): QMOIAutomationManager {
+  return qmoiAutomationManager;
+}
+
+export async function initializeQMOIAutomation(): Promise<boolean> {
+  await qmoiAutomationManager.createTask('initialize automation', 'high');
+  return true;
+}
+
+export async function shutdownQMOIAutomation(): Promise<boolean> {
+  const tasks = await qmoiAutomationManager.getTasks('running');
+  await Promise.all(tasks.map(async task => qmoiAutomationManager.updateTaskStatus(task.id, 'failed')));
+  return true;
+}
+
+export async function getAutomationStatus(): Promise<AutomationTask[]> {
+  return qmoiAutomationManager.getTasks();
+}
+
+export async function getAutomationReport() {
+  const tasks = await qmoiAutomationManager.getTasks();
+  return {
+    totalTasks: tasks.length,
+    pending: tasks.filter(task => task.status === 'pending').length,
+    running: tasks.filter(task => task.status === 'running').length,
+    completed: tasks.filter(task => task.status === 'completed').length,
+    failed: tasks.filter(task => task.status === 'failed').length,
+  };
+}
