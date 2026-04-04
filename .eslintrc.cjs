@@ -1,38 +1,52 @@
 module.exports = {
-  // Global environment settings: TypeScript handles type checking for globals.
+  root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    project: ['./tsconfig.json'],
+    tsconfigRootDir: __dirname,
+  },
   env: {
     node: true,
     browser: true,
     jest: true,
   },
+  plugins: ['@typescript-eslint'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   rules: {
-    // enabled: TypeScript's type checking is sufficient for global validation.
-    "no-undef": "off",
+    'no-undef': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '^(?:_|req|res|next|params|query|options|error|err|metrics|discussion|data|filters|hf|local|tags)$',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
   },
   overrides: [
     {
-      files: [
-        "app/api/**/*.ts",
-        "app/api/**/*.tsx",
-        "app/api/**/*.js",
-        "app/api/**/*.jsx",
-      ],
+      files: ['app/api/**/*.{ts,tsx,js,jsx}'],
       rules: {
-        "@typescript-eslint/ban-ts-comment": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "no-redeclare": "off",
-        "@typescript-eslint/no-empty-function": "off",
+        '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        'no-redeclare': 'off',
+        '@typescript-eslint/no-empty-function': 'off',
       },
     },
     {
-      files: ["**/*.test.ts", "**/*.test.tsx", "tests/**/*.{js,ts,tsx}"],
+      files: ['**/*.test.ts', '**/*.test.tsx', 'tests/**/*.{js,ts,tsx}'],
       env: {
         jest: true,
         node: true,
         browser: true,
       },
-      rules: {
-        // Configured for test environment — globals are acceptable in test files.
+      rules: {},
+    },
+    {
+      files: ['*.cjs', '*.js'],
+      parserOptions: {
+        sourceType: 'script',
       },
     },
   ],
