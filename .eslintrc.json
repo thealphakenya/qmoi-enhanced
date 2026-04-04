@@ -24,7 +24,8 @@
     "test-*.js",
     "*.test.js",
     "*.test.ts",
-    "*.test.tsx"
+    "*.test.tsx",
+    "whatsapp-qmoi-bot"
   ],
   "globals": {
     "Request": "readonly",

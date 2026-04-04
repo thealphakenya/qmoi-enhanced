@@ -23,7 +23,16 @@ scripts/**
 pwa_apps/**
 earnvault/**
 hooks/**
+whatsapp-qmoi-bot/**
+qmoi-space/**
+__mocks__/**
+__tests__/**
+backups/**
+_archive/**
 test*.js
 test-*.js
 **/test*.js
 **/test-*.js
+*.test.js
+*.test.ts
+*.test.tsx
