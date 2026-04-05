@@ -1,5 +1,5 @@
 name: Sync Notify
-"on":
+on:
   push:
     branches:
       - sync-notify
