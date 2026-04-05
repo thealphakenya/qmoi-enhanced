@@ -2,64 +2,8 @@ name: Scheduled Link Check
 
 on:
   schedule:
-    - cron: '0 6 * * *' # daily at 06:00 UTC
-  workflow_dispatch: {}
-
-jobs:
-  link-check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Run link checker
-        run: |
-          python -m pip install --upgrade pip || true
-          python tools/check_links.py --max-workers 6 --timeout 3
-
-      - name: Upload reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: link-check-reports
-          path: |
-            tools/dns_docs_inventory.json
-            tools/dns_links_report.json
-            tools/dns_links_report.md
-            tools/link_fix_proposals.json
-            tools/link_fix_actions.md
-
-      - name: Commit proposals
-        run: |
-          git config user.name "qmoiauto-bot"
-          git config user.email "automation@local"
-          git add tools/link_fix_proposals.json tools/link_fix_actions.md || true
-          if git diff --staged --quiet; then
-            echo "No proposal changes to commit"
-          else
-            git commit -m "chore: link-check proposals (automated)"
-          fi
-
-      - name: Create or update PR for proposals
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: add link-check proposals"
-          title: "Automated link-check proposals"
-          body: |
-            This PR was created automatically by the scheduled link checker. It contains proposed http->https replacements verified by the checker. Backups (.bak) are created for any modified files.
-          base: autosync-backup-20250926-232440
-          branch: automated/link-check-proposals
-name: Scheduled Link Check
-
-on:
-  schedule:
-    # run daily at 04:30 UTC
-    - cron: '30 4 * * *'
+    - cron: '0 6 * * *'  # daily at 06:00 UTC
+    - cron: '30 4 * * *'  # daily at 04:30 UTC
   workflow_dispatch: {}
 
 jobs:
@@ -74,18 +18,48 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Run link checker (produce proposals)
-        env:
-          PYTHONUNBUFFERED: 1
-        run: |
-          python -m pip install --upgrade pip || true
-          python tools/check_links.py --max-workers 8 --timeout 4
-          python tools/apply_link_fixes.py --dry-run
+      - name: Install pip dependencies
+        run: python -m pip install --upgrade pip || true
 
-      - name: Upload proposals artifacts
+      - name: Run link checker
+        env:
+          PYTHONUNBUFFERED: '1'
+        run: python tools/check_links.py --max-workers 6 --timeout 3 || true
+
+      - name: Generate fix proposals
+        run: python tools/apply_link_fixes.py --dry-run || true
+
+      - name: Upload reports
         uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: link-check-proposals
+          name: link-check-reports
           path: |
+            tools/dns_docs_inventory.json
+            tools/dns_links_report.json
+            tools/dns_links_report.md
             tools/link_fix_proposals.json
             tools/link_fix_actions.md
+
+      - name: Configure git
+        run: |
+          git config user.name "qmoiauto-bot"
+          git config user.email "automation@local"
+
+      - name: Commit proposals
+        run: |
+          git add tools/link_fix_proposals.json tools/link_fix_actions.md || true
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: link-check proposals (automated)" || true
+          fi
+
+      - name: Create or update PR for proposals
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: add link-check proposals"
+          title: "Automated link-check proposals"
+          body: "This PR was created automatically by the scheduled link checker. It contains proposed http->https replacements verified by the checker. Backups (.bak) are created for any modified files."
+          base: autosync-backup-20250926-232440
+          branch: automated/link-check-proposals
+        continue-on-error: true
