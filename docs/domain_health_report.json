@@ -1,60 +1,9 @@
 {
-  "github.com/thestablekenya/qmoi-enhanced/actions/workflows/ci.yml/badge.svg": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/actions/workflows/ci.yml/badge.svg",
-    "name": "CI Build",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:12.224510",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
   "qvillage.com/qmoi-ai.html": {
     "domain": "qvillage.com/qmoi-ai.html",
     "name": "QMOI AI",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:12.215845",
+    "timestamp": "2026-04-05T19:03:06.929266",
     "checks": {
       "dns": {
         "success": false,
@@ -107,11 +56,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square": {
-    "domain": "img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square",
-    "name": "Build",
+  "github.com/thestablekenya/qmoi-enhanced/actions/workflows/ci.yml/badge.svg": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/actions/workflows/ci.yml/badge.svg",
+    "name": "CI Build",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:12.219746",
+    "timestamp": "2026-04-05T19:03:06.930154",
     "checks": {
       "dns": {
         "success": false,
@@ -124,18 +73,14 @@
         "message": "SSL check failed: [Errno -2] Name does not resolve"
       },
       "http": {
-        "success": true,
-        "status_code": 200,
-        "content_type": "image/svg+xml;charset=utf-8",
-        "content_length": "unknown",
-        "server": "cloudflare",
-        "has_content": true,
-        "message": "HTTP 200 OK"
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
       },
       "active_status": {
         "is_active": false,
         "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 403: Forbidden"
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
       },
       "ui_features": {
         "features": {
@@ -148,15 +93,16 @@
           "has_real_time_updates": false
         },
         "active_features_count": 0,
-        "error": "HTTP Error 403: Forbidden"
+        "error": "HTTP Error 404: Not Found"
       }
     },
-    "health_score": 20,
-    "health_percentage": 20,
+    "health_score": 0,
+    "health_percentage": 0,
     "overall_healthy": false,
     "issues": [
       "DNS resolution failed",
       "SSL certificate invalid",
+      "HTTP endpoint not responding",
       "Domain may be parked or lacks content",
       "Low UI feature coverage (0%)"
     ]
@@ -165,7 +111,7 @@
     "domain": "img.shields.io/badge/Release-v1.2.3-blue?style=flat-square",
     "name": "Release v1.2.3",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:12.220034",
+    "timestamp": "2026-04-05T19:03:06.931849",
     "checks": {
       "dns": {
         "success": false,
@@ -215,11 +161,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "img.shields.io/badge/Platforms-12+-success?style=flat-square": {
-    "domain": "img.shields.io/badge/Platforms-12+-success?style=flat-square",
-    "name": "Platforms",
+  "img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square": {
+    "domain": "img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square",
+    "name": "Build",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:12.780033",
+    "timestamp": "2026-04-05T19:03:06.930044",
     "checks": {
       "dns": {
         "success": false,
@@ -273,7 +219,7 @@
     "domain": "img.shields.io/badge/Coverage-unknown-lightgrey?style=flat-square",
     "name": "Coverage",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:12.220624",
+    "timestamp": "2026-04-05T19:03:06.930480",
     "checks": {
       "dns": {
         "success": false,
@@ -327,7 +273,7 @@
     "domain": "qvillage.com",
     "name": "qvillage.com",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:13.177543",
+    "timestamp": "2026-04-05T19:03:07.783156",
     "checks": {
       "dns": {
         "success": true,
@@ -386,11 +332,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "img.shields.io/badge/Apps-6-success?style=flat-square": {
-    "domain": "img.shields.io/badge/Apps-6-success?style=flat-square",
-    "name": "Apps",
+  "img.shields.io/badge/Platforms-12+-success?style=flat-square": {
+    "domain": "img.shields.io/badge/Platforms-12+-success?style=flat-square",
+    "name": "Platforms",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:12.803321",
+    "timestamp": "2026-04-05T19:03:07.605240",
     "checks": {
       "dns": {
         "success": false,
@@ -440,11 +386,65 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "stableq.ai": {
-    "domain": "stableq.ai",
-    "name": "stableq.ai",
+  "img.shields.io/badge/Apps-6-success?style=flat-square": {
+    "domain": "img.shields.io/badge/Apps-6-success?style=flat-square",
+    "name": "Apps",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:12.962864",
+    "timestamp": "2026-04-05T19:03:07.678403",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": true,
+        "status_code": 200,
+        "content_type": "image/svg+xml;charset=utf-8",
+        "content_length": "unknown",
+        "server": "cloudflare",
+        "has_content": true,
+        "message": "HTTP 200 OK"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 403: Forbidden"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 403: Forbidden"
+      }
+    },
+    "health_score": 20,
+    "health_percentage": 20,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "qmoi.ai": {
+    "domain": "qmoi.ai",
+    "name": "qmoi.ai",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:07.706735",
     "checks": {
       "dns": {
         "success": false,
@@ -491,11 +491,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "qmoi.ai": {
-    "domain": "qmoi.ai",
-    "name": "qmoi.ai",
+  "stableq.ai": {
+    "domain": "stableq.ai",
+    "name": "stableq.ai",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:12.952402",
+    "timestamp": "2026-04-05T19:03:07.739907",
     "checks": {
       "dns": {
         "success": false,
@@ -546,7 +546,7 @@
     "domain": "qcity.io",
     "name": "qcity.io",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:13.350391",
+    "timestamp": "2026-04-05T19:03:08.217689",
     "checks": {
       "dns": {
         "success": false,
@@ -597,7 +597,7 @@
     "domain": "qvillage.org",
     "name": "qvillage.org",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:13.468980",
+    "timestamp": "2026-04-05T19:03:08.437239",
     "checks": {
       "dns": {
         "success": false,
@@ -648,109 +648,7 @@
     "domain": "qparallel.prod",
     "name": "qparallel.prod",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:13.612808",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "<urlopen error [Errno -2] Name does not resolve>"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "qglobal.ai": {
-    "domain": "qglobal.ai",
-    "name": "qglobal.ai",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:13.578923",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "<urlopen error [Errno -2] Name does not resolve>"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "test.qmoi.prod": {
-    "domain": "test.qmoi.prod",
-    "name": "test.qmoi.prod",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:13.935329",
+    "timestamp": "2026-04-05T19:03:08.806777",
     "checks": {
       "dns": {
         "success": false,
@@ -801,7 +699,58 @@
     "domain": "web.qmoi.prod",
     "name": "web.qmoi.prod",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:13.920499",
+    "timestamp": "2026-04-05T19:03:08.878041",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "<urlopen error [Errno -2] Name does not resolve>"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "test.qmoi.prod": {
+    "domain": "test.qmoi.prod",
+    "name": "test.qmoi.prod",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:08.970060",
     "checks": {
       "dns": {
         "success": false,
@@ -852,7 +801,7 @@
     "domain": "production.qmoi.prod",
     "name": "production.qmoi.prod",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:14.162090",
+    "timestamp": "2026-04-05T19:03:09.022221",
     "checks": {
       "dns": {
         "success": false,
@@ -899,62 +848,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "qmoi-space.qmoi.ai": {
-    "domain": "qmoi-space.qmoi.ai",
-    "name": "qmoi-space.qmoi.ai",
+  "qglobal.ai": {
+    "domain": "qglobal.ai",
+    "name": "qglobal.ai",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:14.219599",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "<urlopen error [Errno -2] Name does not resolve>"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "q-stable.qmoi.ai": {
-    "domain": "q-stable.qmoi.ai",
-    "name": "q-stable.qmoi.ai",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:14.467351",
+    "timestamp": "2026-04-05T19:03:08.603946",
     "checks": {
       "dns": {
         "success": false,
@@ -1005,7 +903,7 @@
     "domain": "api.qmoi.com",
     "name": "api.qmoi.com",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:13.297746",
+    "timestamp": "2026-04-05T19:03:07.988792",
     "checks": {
       "dns": {
         "success": true,
@@ -1051,11 +949,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "qshare.qmoi.ai": {
-    "domain": "qshare.qmoi.ai",
-    "name": "qshare.qmoi.ai",
+  "qmoi-space.qmoi.ai": {
+    "domain": "qmoi-space.qmoi.ai",
+    "name": "qmoi-space.qmoi.ai",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:14.583666",
+    "timestamp": "2026-04-05T19:03:09.077942",
     "checks": {
       "dns": {
         "success": false,
@@ -1102,164 +1000,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "yap.qmoi.ai": {
-    "domain": "yap.qmoi.ai",
-    "name": "yap.qmoi.ai",
+  "q-stable.qmoi.ai": {
+    "domain": "q-stable.qmoi.ai",
+    "name": "q-stable.qmoi.ai",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:14.644573",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "<urlopen error [Errno -2] Name does not resolve>"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "qvillage.qmoi.ai": {
-    "domain": "qvillage.qmoi.ai",
-    "name": "qvillage.qmoi.ai",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:14.973849",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "<urlopen error [Errno -2] Name does not resolve>"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "qstore.qmoi.ai": {
-    "domain": "qstore.qmoi.ai",
-    "name": "qstore.qmoi.ai",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:14.922258",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "<urlopen error [Errno -2] Name does not resolve>"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "status.qmoi.ai": {
-    "domain": "status.qmoi.ai",
-    "name": "status.qmoi.ai",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:15.203945",
+    "timestamp": "2026-04-05T19:03:09.102507",
     "checks": {
       "dns": {
         "success": false,
@@ -1310,7 +1055,7 @@
     "domain": "cdn.qmoi.com",
     "name": "cdn.qmoi.com",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:13.346183",
+    "timestamp": "2026-04-05T19:03:08.107516",
     "checks": {
       "dns": {
         "success": true,
@@ -1366,11 +1111,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3",
-    "name": "Download",
+  "qstore.qmoi.ai": {
+    "domain": "qstore.qmoi.ai",
+    "name": "qstore.qmoi.ai",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:15.267718",
+    "timestamp": "2026-04-05T19:03:09.720152",
     "checks": {
       "dns": {
         "success": false,
@@ -1385,12 +1130,12 @@
       "http": {
         "success": false,
         "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
+        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
       },
       "active_status": {
         "is_active": false,
         "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
+        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
       },
       "ui_features": {
         "features": {
@@ -1403,7 +1148,7 @@
           "has_real_time_updates": false
         },
         "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
+        "error": "<urlopen error [Errno -2] Name does not resolve>"
       }
     },
     "health_score": 0,
@@ -1421,7 +1166,7 @@
     "domain": "auth.qmoi.com",
     "name": "auth.qmoi.com",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:13.325259",
+    "timestamp": "2026-04-05T19:03:08.054788",
     "checks": {
       "dns": {
         "success": true,
@@ -1477,11 +1222,317 @@
       "Low UI feature coverage (0%)"
     ]
   },
+  "qshare.qmoi.ai": {
+    "domain": "qshare.qmoi.ai",
+    "name": "qshare.qmoi.ai",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:09.632185",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "<urlopen error [Errno -2] Name does not resolve>"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "qvillage.qmoi.ai": {
+    "domain": "qvillage.qmoi.ai",
+    "name": "qvillage.qmoi.ai",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:10.071009",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "<urlopen error [Errno -2] Name does not resolve>"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/tag/v1.2.3",
+    "name": "Download",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:10.441458",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "yap.qmoi.ai": {
+    "domain": "yap.qmoi.ai",
+    "name": "yap.qmoi.ai",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:09.718457",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "<urlopen error [Errno -2] Name does not resolve>"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "status.qmoi.ai": {
+    "domain": "status.qmoi.ai",
+    "name": "status.qmoi.ai",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:10.261439",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "<urlopen error [Errno -2] Name does not resolve>"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
   "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe": {
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.exe",
     "name": "qmoi_ai.exe",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:15.383312",
+    "timestamp": "2026-04-05T19:03:10.789579",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage",
+    "name": "qmoi_ai.AppImage",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:10.863421",
     "checks": {
       "dns": {
         "success": false,
@@ -1532,7 +1583,58 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.dmg",
     "name": "qmoi_ai.dmg",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:15.437955",
+    "timestamp": "2026-04-05T19:03:10.851632",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb",
+    "name": "qmoi_ai.deb",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:10.993395",
     "checks": {
       "dns": {
         "success": false,
@@ -1583,7 +1685,7 @@
     "domain": "releases.qmoi.ai/apps/qmoi_ai.ipa",
     "name": "qmoi_ai.ipa",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:15.856018",
+    "timestamp": "2026-04-05T19:03:11.314529",
     "checks": {
       "dns": {
         "success": false,
@@ -1630,62 +1732,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.AppImage",
-    "name": "qmoi_ai.AppImage",
+  "releases.qmoi.ai/apps/qmoi_ai_smarttv.apk": {
+    "domain": "releases.qmoi.ai/apps/qmoi_ai_smarttv.apk",
+    "name": "qmoi_ai_smarttv.apk",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:15.630326",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "releases.qmoi.ai/apps/qmoi_ai.apk": {
-    "domain": "releases.qmoi.ai/apps/qmoi_ai.apk",
-    "name": "qmoi_ai.apk",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:15.810410",
+    "timestamp": "2026-04-05T19:03:11.403563",
     "checks": {
       "dns": {
         "success": false,
@@ -1736,7 +1787,7 @@
     "domain": "releases.qmoi.ai/apps/qmoi_ai_chromebook.zip",
     "name": "qmoi_ai_chromebook.zip",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:15.991458",
+    "timestamp": "2026-04-05T19:03:11.345713",
     "checks": {
       "dns": {
         "success": false,
@@ -1783,62 +1834,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.deb",
-    "name": "qmoi_ai.deb",
+  "releases.qmoi.ai/apps/qmoi_ai.apk": {
+    "domain": "releases.qmoi.ai/apps/qmoi_ai.apk",
+    "name": "qmoi_ai.apk",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:15.633356",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "releases.qmoi.ai/apps/qmoi_ai_smarttv.apk": {
-    "domain": "releases.qmoi.ai/apps/qmoi_ai_smarttv.apk",
-    "name": "qmoi_ai_smarttv.apk",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:15.999756",
+    "timestamp": "2026-04-05T19:03:11.183789",
     "checks": {
       "dns": {
         "success": false,
@@ -1889,7 +1889,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qshare.zip",
     "name": "qshare.zip",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.015941",
+    "timestamp": "2026-04-05T19:03:11.561925",
     "checks": {
       "dns": {
         "success": false,
@@ -1940,7 +1940,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qstore.zip",
     "name": "qstore.zip",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.050071",
+    "timestamp": "2026-04-05T19:03:11.605542",
     "checks": {
       "dns": {
         "success": false,
@@ -1991,7 +1991,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qvillage.zip",
     "name": "qvillage.zip",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.057579",
+    "timestamp": "2026-04-05T19:03:11.802344",
     "checks": {
       "dns": {
         "success": false,
@@ -2042,7 +2042,160 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-space.zip",
     "name": "qmoi-space.zip",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.080216",
+    "timestamp": "2026-04-05T19:03:11.804150",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip",
+    "name": "qcity_package.zip",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:11.892615",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
+    "name": "Win",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:12.171204",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
+    "name": "Mac",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:12.238798",
     "checks": {
       "dns": {
         "success": false,
@@ -2093,7 +2246,7 @@
     "domain": "qglobal.org",
     "name": "qglobal.org",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.345946",
+    "timestamp": "2026-04-05T19:03:12.149391",
     "checks": {
       "dns": {
         "success": true,
@@ -2152,113 +2305,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity_package.zip",
-    "name": "qcity_package.zip",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.328411",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "huggingface.co/spaces/qvillage/qvillage": {
-    "domain": "huggingface.co/spaces/qvillage/qvillage",
-    "name": "QVillage HF Space",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:14.980176",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 401: Unauthorized"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 401: Unauthorized"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 401: Unauthorized"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
   "qcity.qmoi.ai": {
     "domain": "qcity.qmoi.ai",
     "name": "qcity.qmoi.ai",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.344118",
+    "timestamp": "2026-04-05T19:03:11.961796",
     "checks": {
       "dns": {
         "success": false,
@@ -2305,113 +2356,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
-    "name": "Win",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.462204",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/mac.dmg",
-    "name": "Mac",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.562734",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
   "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk": {
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/android.apk",
     "name": "Android",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.638280",
+    "timestamp": "2026-04-05T19:03:12.625588",
     "checks": {
       "dns": {
         "success": false,
@@ -2462,7 +2411,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/ios.ipa",
     "name": "iOS",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.685955",
+    "timestamp": "2026-04-05T19:03:12.672477",
     "checks": {
       "dns": {
         "success": false,
@@ -2513,7 +2462,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/linux.appimage",
     "name": "Linux",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.736808",
+    "timestamp": "2026-04-05T19:03:12.707284",
     "checks": {
       "dns": {
         "success": false,
@@ -2564,7 +2513,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/windows.exe",
     "name": "Win",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.846079",
+    "timestamp": "2026-04-05T19:03:12.873807",
     "checks": {
       "dns": {
         "success": false,
@@ -2611,11 +2560,62 @@
       "Low UI feature coverage (0%)"
     ]
   },
+  "huggingface.co/spaces/qvillage/qvillage": {
+    "domain": "huggingface.co/spaces/qvillage/qvillage",
+    "name": "QVillage HF Space",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:10.236969",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 401: Unauthorized"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 401: Unauthorized"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 401: Unauthorized"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
   "github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg": {
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/mac.dmg",
     "name": "Mac",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.927484",
+    "timestamp": "2026-04-05T19:03:13.065982",
     "checks": {
       "dns": {
         "success": false,
@@ -2666,7 +2666,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/android.apk",
     "name": "Android",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.963759",
+    "timestamp": "2026-04-05T19:03:13.078221",
     "checks": {
       "dns": {
         "success": false,
@@ -2717,7 +2717,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/ios.ipa",
     "name": "iOS",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:16.989105",
+    "timestamp": "2026-04-05T19:03:13.091887",
     "checks": {
       "dns": {
         "success": false,
@@ -2768,7 +2768,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qfilemanager/linux.appimage",
     "name": "Linux",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.055443",
+    "timestamp": "2026-04-05T19:03:13.210886",
     "checks": {
       "dns": {
         "success": false,
@@ -2819,58 +2819,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qclock/windows.exe",
     "name": "Win",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.161796",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
-    "name": "Mac",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.211446",
+    "timestamp": "2026-04-05T19:03:13.401302",
     "checks": {
       "dns": {
         "success": false,
@@ -2921,7 +2870,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qclock/android.apk",
     "name": "Android",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.264068",
+    "timestamp": "2026-04-05T19:03:13.441121",
     "checks": {
       "dns": {
         "success": false,
@@ -2972,7 +2921,58 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qclock/ios.ipa",
     "name": "iOS",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.345053",
+    "timestamp": "2026-04-05T19:03:13.472978",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qclock/mac.dmg",
+    "name": "Mac",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:13.417011",
     "checks": {
       "dns": {
         "success": false,
@@ -3023,58 +3023,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qclock/linux.appimage",
     "name": "Linux",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.381663",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
-    "name": "Mac",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.500208",
+    "timestamp": "2026-04-05T19:03:13.580171",
     "checks": {
       "dns": {
         "success": false,
@@ -3125,7 +3074,58 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qmap/windows.exe",
     "name": "Win",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.488052",
+    "timestamp": "2026-04-05T19:03:13.755548",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qmap/mac.dmg",
+    "name": "Mac",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:13.883268",
     "checks": {
       "dns": {
         "success": false,
@@ -3176,7 +3176,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qmap/android.apk",
     "name": "Android",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.536810",
+    "timestamp": "2026-04-05T19:03:13.889236",
     "checks": {
       "dns": {
         "success": false,
@@ -3227,7 +3227,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qmap/ios.ipa",
     "name": "iOS",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.626027",
+    "timestamp": "2026-04-05T19:03:13.904637",
     "checks": {
       "dns": {
         "success": false,
@@ -3278,58 +3278,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qmap/linux.appimage",
     "name": "Linux",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.680245",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
-    "name": "Mac",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.791125",
+    "timestamp": "2026-04-05T19:03:13.975005",
     "checks": {
       "dns": {
         "success": false,
@@ -3380,7 +3329,58 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qsearch/windows.exe",
     "name": "Win",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.776280",
+    "timestamp": "2026-04-05T19:03:14.160433",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qsearch/mac.dmg",
+    "name": "Mac",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:14.244197",
     "checks": {
       "dns": {
         "success": false,
@@ -3431,58 +3431,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qsearch/android.apk",
     "name": "Android",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.847455",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
-    "name": "iOS",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:17.958794",
+    "timestamp": "2026-04-05T19:03:14.256980",
     "checks": {
       "dns": {
         "success": false,
@@ -3533,7 +3482,58 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qsearch/linux.appimage",
     "name": "Linux",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.000037",
+    "timestamp": "2026-04-05T19:03:14.332075",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qsearch/ios.ipa",
+    "name": "iOS",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:14.300048",
     "checks": {
       "dns": {
         "success": false,
@@ -3584,7 +3584,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe",
     "name": "Win",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.081733",
+    "timestamp": "2026-04-05T19:03:14.535847",
     "checks": {
       "dns": {
         "success": false,
@@ -3635,7 +3635,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/android.apk",
     "name": "Android",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.150347",
+    "timestamp": "2026-04-05T19:03:14.656934",
     "checks": {
       "dns": {
         "success": false,
@@ -3686,7 +3686,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg",
     "name": "Mac",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.143403",
+    "timestamp": "2026-04-05T19:03:14.645981",
     "checks": {
       "dns": {
         "success": false,
@@ -3737,7 +3737,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/ios.ipa",
     "name": "iOS",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.298797",
+    "timestamp": "2026-04-05T19:03:14.696825",
     "checks": {
       "dns": {
         "success": false,
@@ -3788,7 +3788,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage",
     "name": "Linux",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.351311",
+    "timestamp": "2026-04-05T19:03:14.726879",
     "checks": {
       "dns": {
         "success": false,
@@ -3839,7 +3839,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/windows.exe",
     "name": "Win",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.371193",
+    "timestamp": "2026-04-05T19:03:14.886632",
     "checks": {
       "dns": {
         "success": false,
@@ -3890,7 +3890,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/mac.dmg",
     "name": "Mac",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.427673",
+    "timestamp": "2026-04-05T19:03:15.109264",
     "checks": {
       "dns": {
         "success": false,
@@ -3941,7 +3941,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/android.apk",
     "name": "Android",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.555031",
+    "timestamp": "2026-04-05T19:03:15.143069",
     "checks": {
       "dns": {
         "success": false,
@@ -3992,7 +3992,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/ios.ipa",
     "name": "iOS",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.635853",
+    "timestamp": "2026-04-05T19:03:15.154463",
     "checks": {
       "dns": {
         "success": false,
@@ -4043,58 +4043,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/qautoprod/linux.appimage",
     "name": "Linux",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.654890",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg",
-    "name": "Download",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.765900",
+    "timestamp": "2026-04-05T19:03:15.165787",
     "checks": {
       "dns": {
         "success": false,
@@ -4145,7 +4094,58 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe",
     "name": "Download",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.743953",
+    "timestamp": "2026-04-05T19:03:15.275648",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg",
+    "name": "Download",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:15.515711",
     "checks": {
       "dns": {
         "success": false,
@@ -4196,7 +4196,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage",
     "name": "Download",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.930320",
+    "timestamp": "2026-04-05T19:03:15.559939",
     "checks": {
       "dns": {
         "success": false,
@@ -4247,7 +4247,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux.deb",
     "name": "Download",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:18.985326",
+    "timestamp": "2026-04-05T19:03:15.612714",
     "checks": {
       "dns": {
         "success": false,
@@ -4298,58 +4298,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk",
     "name": "Download",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:19.042845",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk",
-    "name": "Download",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:19.261881",
+    "timestamp": "2026-04-05T19:03:15.613755",
     "checks": {
       "dns": {
         "success": false,
@@ -4400,7 +4349,7 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa",
     "name": "Download",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:19.261274",
+    "timestamp": "2026-04-05T19:03:15.711703",
     "checks": {
       "dns": {
         "success": false,
@@ -4447,11 +4396,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img",
+  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk",
     "name": "Download",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:19.421060",
+    "timestamp": "2026-04-05T19:03:15.950882",
     "checks": {
       "dns": {
         "success": false,
@@ -4502,7 +4451,109 @@
     "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-chromebook.zip",
     "name": "Download",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:19.351078",
+    "timestamp": "2026-04-05T19:03:16.022913",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img",
+    "name": "Download",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:16.094941",
+    "checks": {
+      "dns": {
+        "success": false,
+        "ip": null,
+        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
+      },
+      "ssl": {
+        "success": false,
+        "valid": false,
+        "message": "SSL check failed: [Errno -2] Name does not resolve"
+      },
+      "http": {
+        "success": false,
+        "status_code": 0,
+        "message": "HTTP check failed: HTTP Error 404: Not Found"
+      },
+      "active_status": {
+        "is_active": false,
+        "is_parked": false,
+        "message": "Could not verify active status: HTTP Error 404: Not Found"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": false,
+          "has_navigation": false,
+          "has_forms": false,
+          "has_api_endpoints": false,
+          "has_authentication": false,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 0,
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "health_score": 0,
+    "health_percentage": 0,
+    "overall_healthy": false,
+    "issues": [
+      "DNS resolution failed",
+      "SSL certificate invalid",
+      "HTTP endpoint not responding",
+      "Domain may be parked or lacks content",
+      "Low UI feature coverage (0%)"
+    ]
+  },
+  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity-v2.0.1.zip": {
+    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity-v2.0.1.zip",
+    "name": "Download",
+    "type": "primary",
+    "timestamp": "2026-04-05T19:03:16.440461",
     "checks": {
       "dns": {
         "success": false,
@@ -4553,7 +4604,7 @@
     "domain": "github.com",
     "name": "github.com",
     "type": "service",
-    "timestamp": "2026-04-03T03:00:19.814239",
+    "timestamp": "2026-04-05T19:03:16.590409",
     "checks": {
       "dns": {
         "success": true,
@@ -4585,7 +4636,7 @@
       "active_status": {
         "is_active": true,
         "is_parked": false,
-        "content_size": 564089,
+        "content_size": 564037,
         "has_html": true,
         "message": "Domain is active with real content"
       },
@@ -4609,11 +4660,11 @@
     "overall_healthy": true,
     "issues": []
   },
-  "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity-v2.0.1.zip": {
-    "domain": "github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity-v2.0.1.zip",
-    "name": "Download",
+  "thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/": {
+    "domain": "thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
+    "name": "Open PWA",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:19.696246",
+    "timestamp": "2026-04-05T19:03:16.149491",
     "checks": {
       "dns": {
         "success": false,
@@ -4660,124 +4711,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "releases.qmoi.ai": {
-    "domain": "releases.qmoi.ai",
-    "name": "releases.qmoi.ai",
-    "type": "service",
-    "timestamp": "2026-04-03T03:00:20.082245",
-    "checks": {
-      "dns": {
-        "success": false,
-        "ip": null,
-        "message": "DNS resolution failed: [Errno -2] Name does not resolve"
-      },
-      "ssl": {
-        "success": false,
-        "valid": false,
-        "message": "SSL check failed: [Errno -2] Name does not resolve"
-      },
-      "http": {
-        "success": false,
-        "status_code": 0,
-        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "active_status": {
-        "is_active": false,
-        "is_parked": false,
-        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": false,
-          "has_navigation": false,
-          "has_forms": false,
-          "has_api_endpoints": false,
-          "has_authentication": false,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 0,
-        "error": "<urlopen error [Errno -2] Name does not resolve>"
-      }
-    },
-    "health_score": 0,
-    "health_percentage": 0,
-    "overall_healthy": false,
-    "issues": [
-      "DNS resolution failed",
-      "SSL certificate invalid",
-      "HTTP endpoint not responding",
-      "Domain may be parked or lacks content",
-      "Low UI feature coverage (0%)"
-    ]
-  },
-  "huggingface.co": {
-    "domain": "huggingface.co",
-    "name": "huggingface.co",
-    "type": "service",
-    "timestamp": "2026-04-03T03:00:20.080709",
-    "checks": {
-      "dns": {
-        "success": true,
-        "ip": "13.225.5.100",
-        "message": "DNS resolved to 13.225.5.100"
-      },
-      "ssl": {
-        "success": true,
-        "valid": true,
-        "subject": [
-          [
-            [
-              "commonName",
-              "huggingface.co"
-            ]
-          ]
-        ],
-        "message": "SSL certificate valid"
-      },
-      "http": {
-        "success": true,
-        "status_code": 200,
-        "content_type": "text/html; charset=utf-8",
-        "content_length": "152479",
-        "server": "unknown",
-        "has_content": true,
-        "message": "HTTP 200 OK"
-      },
-      "active_status": {
-        "is_active": true,
-        "is_parked": false,
-        "content_size": 152369,
-        "has_html": true,
-        "message": "Domain is active with real content"
-      },
-      "ui_features": {
-        "features": {
-          "has_responsive_design": true,
-          "has_navigation": true,
-          "has_forms": true,
-          "has_api_endpoints": true,
-          "has_authentication": true,
-          "has_dashboard": false,
-          "has_real_time_updates": false
-        },
-        "active_features_count": 5,
-        "total_features": 7,
-        "feature_coverage": 71.42857142857143
-      }
-    },
-    "health_score": 90,
-    "health_percentage": 90,
-    "overall_healthy": false,
-    "issues": [
-      "Medium UI feature coverage (71%)"
-    ]
-  },
   "img.shields.io": {
     "domain": "img.shields.io",
     "name": "img.shields.io",
     "type": "service",
-    "timestamp": "2026-04-03T03:00:19.802226",
+    "timestamp": "2026-04-05T19:03:16.474662",
     "checks": {
       "dns": {
         "success": true,
@@ -4837,7 +4775,7 @@
     "domain": "thestablekenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/",
     "name": "Open PWA",
     "type": "primary",
-    "timestamp": "2026-04-03T03:00:19.498121",
+    "timestamp": "2026-04-05T19:03:16.107801",
     "checks": {
       "dns": {
         "success": false,
@@ -4884,11 +4822,11 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/": {
-    "domain": "thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
-    "name": "Open PWA",
-    "type": "primary",
-    "timestamp": "2026-04-03T03:00:19.658661",
+  "releases.qmoi.ai": {
+    "domain": "releases.qmoi.ai",
+    "name": "releases.qmoi.ai",
+    "type": "service",
+    "timestamp": "2026-04-05T19:03:16.994752",
     "checks": {
       "dns": {
         "success": false,
@@ -4903,12 +4841,12 @@
       "http": {
         "success": false,
         "status_code": 0,
-        "message": "HTTP check failed: HTTP Error 404: Not Found"
+        "message": "HTTP check failed: <urlopen error [Errno -2] Name does not resolve>"
       },
       "active_status": {
         "is_active": false,
         "is_parked": false,
-        "message": "Could not verify active status: HTTP Error 404: Not Found"
+        "message": "Could not verify active status: <urlopen error [Errno -2] Name does not resolve>"
       },
       "ui_features": {
         "features": {
@@ -4921,7 +4859,7 @@
           "has_real_time_updates": false
         },
         "active_features_count": 0,
-        "error": "HTTP Error 404: Not Found"
+        "error": "<urlopen error [Errno -2] Name does not resolve>"
       }
     },
     "health_score": 0,
@@ -4933,18 +4871,80 @@
       "HTTP endpoint not responding",
       "Domain may be parked or lacks content",
       "Low UI feature coverage (0%)"
+    ]
+  },
+  "huggingface.co": {
+    "domain": "huggingface.co",
+    "name": "huggingface.co",
+    "type": "service",
+    "timestamp": "2026-04-05T19:03:16.953863",
+    "checks": {
+      "dns": {
+        "success": true,
+        "ip": "13.225.5.95",
+        "message": "DNS resolved to 13.225.5.95"
+      },
+      "ssl": {
+        "success": true,
+        "valid": true,
+        "subject": [
+          [
+            [
+              "commonName",
+              "huggingface.co"
+            ]
+          ]
+        ],
+        "message": "SSL certificate valid"
+      },
+      "http": {
+        "success": true,
+        "status_code": 200,
+        "content_type": "text/html; charset=utf-8",
+        "content_length": "149185",
+        "server": "unknown",
+        "has_content": true,
+        "message": "HTTP 200 OK"
+      },
+      "active_status": {
+        "is_active": true,
+        "is_parked": false,
+        "content_size": 149074,
+        "has_html": true,
+        "message": "Domain is active with real content"
+      },
+      "ui_features": {
+        "features": {
+          "has_responsive_design": true,
+          "has_navigation": true,
+          "has_forms": true,
+          "has_api_endpoints": true,
+          "has_authentication": true,
+          "has_dashboard": false,
+          "has_real_time_updates": false
+        },
+        "active_features_count": 5,
+        "total_features": 7,
+        "feature_coverage": 71.42857142857143
+      }
+    },
+    "health_score": 90,
+    "health_percentage": 90,
+    "overall_healthy": false,
+    "issues": [
+      "Medium UI feature coverage (71%)"
     ]
   },
   "raw.githubusercontent.com": {
     "domain": "raw.githubusercontent.com",
     "name": "raw.githubusercontent.com",
     "type": "service",
-    "timestamp": "2026-04-03T03:00:20.141900",
+    "timestamp": "2026-04-05T19:03:17.001860",
     "checks": {
       "dns": {
         "success": true,
-        "ip": "185.199.111.133",
-        "message": "DNS resolved to 185.199.111.133"
+        "ip": "185.199.110.133",
+        "message": "DNS resolved to 185.199.110.133"
       },
       "ssl": {
         "success": true,
@@ -4971,7 +4971,7 @@
       "active_status": {
         "is_active": true,
         "is_parked": false,
-        "content_size": 564094,
+        "content_size": 564036,
         "has_html": true,
         "message": "Domain is active with real content"
       },
@@ -4999,7 +4999,7 @@
     "domain": "thestablekenya.github.io",
     "name": "thestablekenya.github.io",
     "type": "service",
-    "timestamp": "2026-04-03T03:00:20.277408",
+    "timestamp": "2026-04-05T19:03:17.004188",
     "checks": {
       "dns": {
         "success": true,
