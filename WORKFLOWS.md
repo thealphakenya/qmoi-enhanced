@@ -429,7 +429,94 @@ This document catalogs all GitHub Actions workflows in `.github/workflows`, incl
 - [`wallet-tests.yml`](.github/workflows/wallet-tests.yml) - `.yml`
 
 
-## 🔄 Integration Points
+## � Production Deployment Workflows
+
+### Deployment Automation
+- **Automated Setup**: Complete infrastructure provisioning with Docker Compose
+- **Configuration Management**: Secure credential management and environment setup
+- **Health Verification**: Comprehensive post-deployment health checks and validation
+- **Rollback Capabilities**: Automatic rollback mechanisms for failed deployments
+
+### Production Scripts
+- **deploy-production.sh**: Main deployment orchestration script
+- **verify-production-deployment.sh**: Production readiness verification
+- **production-config.sh**: Secure configuration setup
+- **ecosystem.config.production.js**: PM2 production process management
+
+### Infrastructure Components
+- **Next.js Application**: Production-optimized web application
+- **PostgreSQL Database**: Production database with connection pooling
+- **Redis Cache**: High-performance caching layer
+- **Nginx Reverse Proxy**: Load balancing and SSL termination
+- **PM2 Process Manager**: Application process management and monitoring
+
+### Deployment Intelligence
+- **Risk Assessment**: Pre-deployment risk analysis and validation
+- **Gradual Rollout**: Intelligent gradual deployment with monitoring
+- **Performance Monitoring**: Real-time deployment performance tracking
+- **Automated Testing**: Integration and end-to-end testing in production
+
+### Success Validation
+- **Service Health Checks**: Automated verification of all service endpoints
+- **Database Connectivity**: Validation of database connections and migrations
+- **Cache Operations**: Redis connectivity and performance validation
+- **SSL Certificate Validation**: Certificate validity and security checks
+## 🔧 GitHub Actions Workflows
+
+### Active Workflows
+- **Regenerate ALLLINKS**: Automated link regeneration and validation
+- **ALLLINKS Autoupdate**: Continuous updates to link collections
+- **Android Build**: Mobile application build pipeline
+- **Apply ALLLINKS on label**: Label-triggered link processing
+- **Auto-merge automated proposals**: Automated PR merging
+- **Auto Release Publisher**: Automated release publishing
+- **QVillage Sync**: Memory synchronization with Hugging Face Spaces
+- **Domain Health & UI Validation**: Health checks and UI testing
+- **QM OI Memory Sync**: Memory synchronization operations
+- **Build and Release**: CI/CD build and release pipeline
+- **CI/CD Pipeline**: Continuous integration and deployment
+- **Code Quality**: Automated code quality checks
+- **Docker Build Push**: Container image building and publishing
+- **Domain Health Check**: Domain availability monitoring
+- **Dry Run Tests**: Test execution in dry-run mode
+- **Enhancer Report**: System enhancement reporting
+- **Jest CI**: JavaScript testing with Jest
+- **Link Cache Maintenance**: Link caching system maintenance
+- **Link Check Schedule**: Scheduled link validation
+- **Link Validation**: Comprehensive link checking
+- **Nightly Builds**: Daily automated builds
+- **NPM Package Management**: Node.js package handling
+- **Payed Validation**: Paid feature validation
+- **Publish Q Alpha**: Alpha release publishing
+- **Publish Releases Realtime**: Real-time release publishing
+- **Python Automation Tests**: Python test automation
+- **QMOI App Build**: Application build pipeline
+- **QMOI Autodev**: Autonomous development workflows
+- **QMOI CI**: Continuous integration for QMOI
+- **QMOI Sync Memory**: Memory synchronization
+- **QMOI Tests**: Comprehensive testing suite
+- **QVillage Sync**: QVillage integration sync
+- **Rebuild Deb Verify Release**: Debian package rebuilding
+- **Release Compliance Check**: Release compliance validation
+- **Security Checks**: Automated security scanning
+- **Security Validation**: Security assessment
+- **Sync Memory**: Memory synchronization workflows
+- **Sync Notify**: Synchronization notifications
+- **Sync Releases from Manifest**: Release synchronization
+- **Update Readme CLI**: README update automation
+- **Validate and Tag MD**: Markdown validation and tagging
+- **Vercel Autofix**: Vercel deployment fixes
+- **Verify Release Assets**: Release asset verification
+- **Verify Secrets**: Secret validation
+- **Wallet Tests**: Wallet functionality testing
+
+### Workflow Intelligence
+- **Automated Triggers**: Event-driven workflow execution
+- **Parallel Execution**: Concurrent workflow processing
+- **Error Handling**: Robust error detection and recovery
+- **Status Monitoring**: Real-time workflow status tracking
+- **Integration Testing**: Cross-system integration validation
+## �🔄 Integration Points
 
 This directory is integrated with:
 - Main application architecture
