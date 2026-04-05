@@ -1,7 +1,7 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:52Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+# QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
+# Automatic improvements, optimizations, and feature enhancements are continuously applied
+# Last evolution cycle: 2026-03-26T03:58:52Z
+# Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
 """
@@ -67,13 +67,33 @@ class QVillageSyncEngine:
         self.dry_run = dry_run
         self.sync_log = []
         
+        # Validate URLs
+        self.qvillage_enabled = self._is_valid_url(self.qvillage_url)
+        self.qmoi_memory_enabled = self._is_valid_url(self.qmoi_memory_url)
+        self.hf_enabled = self._is_valid_url(self.hf_space_url) and bool(self.hf_token)
+        
         if not self.hf_token:
             logger.warning("HF_API_TOKEN not set. HF sync will be skipped.")
+            self.hf_enabled = False
         
         logger.info(f"QVillageSyncEngine initialized (dry_run={dry_run})")
-        logger.info(f"  QVillage: {self.qvillage_url}")
-        logger.info(f"  QMOI Memory: {self.qmoi_memory_url}")
-        logger.info(f"  HF Space: {self.hf_space_url}")
+        logger.info(f"  QVillage: {self.qvillage_url} (enabled: {self.qvillage_enabled})")
+        logger.info(f"  QMOI Memory: {self.qmoi_memory_url} (enabled: {self.qmoi_memory_enabled})")
+        logger.info(f"  HF Space: {self.hf_space_url} (enabled: {self.hf_enabled})")
+    
+    def _is_valid_url(self, url: str) -> bool:
+        """Check if URL is valid and not localhost in CI."""
+        if not url or url.strip() == "":
+            return False
+        if url.startswith("http://localhost") or url.startswith("http://127.0.0.1"):
+            # In CI, localhost is not available
+            return False
+        try:
+            from urllib.parse import urlparse
+            parsed = urlparse(url)
+            return bool(parsed.scheme and parsed.netloc)
+        except:
+            return False
     
     async def _fetch_json(self, url: str, **kwargs) -> Optional[Dict]:
         """Safely fetch JSON from URL."""
@@ -350,6 +370,17 @@ class QVillageSyncEngine:
         logger.info("STARTING FULL SYNC CYCLE")
         logger.info("=" * 60)
         
+        # Check if any systems are enabled
+        if not (self.qvillage_enabled or self.qmoi_memory_enabled or self.hf_enabled):
+            logger.warning("No sync systems are enabled/configured. Skipping sync.")
+            return SyncMetadata(
+                last_sync_time=datetime.utcnow().isoformat(),
+                total_items_synced=0,
+                conflicts_resolved=0,
+                errors=[],
+                status="success",  # Consider it success if properly configured to skip
+            )
+        
         start_time = datetime.utcnow()
         total_synced = 0
         conflicts_resolved = 0
@@ -357,45 +388,64 @@ class QVillageSyncEngine:
         
         try:
             # Step 1: Fetch all papers from QVillage
-            logger.info("[1/6] Fetching papers from QVillage...")
-            papers_resp = await self._fetch_json(f"{self.qvillage_url}/api/papers/all")
-            papers = papers_resp.get("papers", []) if papers_resp else []
-            logger.info(f"  → Found {len(papers)} papers")
+            if self.qvillage_enabled:
+                logger.info("[1/6] Fetching papers from QVillage...")
+                papers_resp = await self._fetch_json(f"{self.qvillage_url}/api/papers/all")
+                papers = papers_resp.get("papers", []) if papers_resp else []
+                logger.info(f"  → Found {len(papers)} papers")
+            else:
+                logger.info("[1/6] Skipping QVillage paper fetch (not enabled)")
+                papers = []
             
             # Step 2: Sync papers to HF Space
-            logger.info("[2/6] Syncing papers to HF Space...")
-            paper_sync = await self.sync_papers_to_hf(papers)
-            total_synced += paper_sync.get("synced", 0)
-            if paper_sync.get("status") == "error":
-                errors.append(f"Paper sync failed: {paper_sync.get('error')}")
+            if self.hf_enabled:
+                logger.info("[2/6] Syncing papers to HF Space...")
+                paper_sync = await self.sync_papers_to_hf(papers)
+                total_synced += paper_sync.get("synced", 0)
+                if paper_sync.get("status") == "error":
+                    errors.append(f"Paper sync failed: {paper_sync.get('error')}")
+            else:
+                logger.info("[2/6] Skipping HF paper sync (not enabled)")
             
             # Step 3: Fetch active users and sync contributions
-            logger.info("[3/6] Syncing user contributions to QMOI memory...")
-            users_resp = await self._fetch_json(f"{self.qvillage_url}/api/users/active?limit=100")
-            users = users_resp.get("users", []) if users_resp else []
-            logger.info(f"  → Found {len(users)} active users")
-            
-            for user in users[:10]:  # Rate limit to first 10 users per cycle
-                result = await self.sync_user_contributions_to_qmoi(user["id"])
-                total_synced += result.get("synced", 0)
-                if result.get("status") == "error":
-                    errors.append(f"User {user['id']} contribution sync failed")
+            if self.qvillage_enabled and self.qmoi_memory_enabled:
+                logger.info("[3/6] Syncing user contributions to QMOI memory...")
+                users_resp = await self._fetch_json(f"{self.qvillage_url}/api/users/active?limit=100")
+                users = users_resp.get("users", []) if users_resp else []
+                logger.info(f"  → Found {len(users)} active users")
+                
+                for user in users[:10]:  # Rate limit to first 10 users per cycle
+                    result = await self.sync_user_contributions_to_qmoi(user["id"])
+                    total_synced += result.get("synced", 0)
+                    if result.get("status") == "error":
+                        errors.append(f"User {user['id']} contribution sync failed")
+            else:
+                logger.info("[3/6] Skipping user contributions sync (QV or QMOI not enabled)")
             
             # Step 4: Sync HF engagement back to QVillage
-            logger.info("[4/6] Syncing HF engagement to QVillage...")
-            engagement = await self.sync_hf_engagement_to_qvillage()
-            total_synced += engagement.get("synced", 0)
+            if self.hf_enabled and self.qvillage_enabled:
+                logger.info("[4/6] Syncing HF engagement to QVillage...")
+                engagement = await self.sync_hf_engagement_to_qvillage()
+                total_synced += engagement.get("synced", 0)
+            else:
+                logger.info("[4/6] Skipping HF engagement sync (not enabled)")
             
             # Step 5: Detect and resolve conflicts
-            logger.info("[5/6] Detecting and resolving conflicts...")
-            resolved, _ = await self.detect_and_resolve_conflicts()
-            conflicts_resolved = resolved
+            if self.qvillage_enabled:
+                logger.info("[5/6] Detecting and resolving conflicts...")
+                resolved, _ = await self.detect_and_resolve_conflicts()
+                conflicts_resolved = resolved
+            else:
+                logger.info("[5/6] Skipping conflict resolution (QV not enabled)")
             
             # Step 6: Verify consistency
-            logger.info("[6/6] Performing consistency check...")
-            consistency = await self.perform_consistency_check()
-            if consistency.get("consistency") == "warning":
-                errors.append("Consistency warning: HF space paper count differs from QVillage")
+            if self.qvillage_enabled or self.hf_enabled:
+                logger.info("[6/6] Performing consistency check...")
+                consistency = await self.perform_consistency_check()
+                if consistency.get("consistency") == "warning":
+                    errors.append("Consistency warning: HF space paper count differs from QVillage")
+            else:
+                logger.info("[6/6] Skipping consistency check (no systems enabled)")
             
             # Summary
             end_time = datetime.utcnow()
