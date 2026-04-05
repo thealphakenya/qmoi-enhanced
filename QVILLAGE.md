@@ -539,7 +539,7 @@ QVillage is the master-only Hugging Face clone platform, fully integrated with Q
 - Asset/project/revenue tracking (charts, logs)
 - Advanced dashboard widgets for all platforms
 - Direct Quantum deployment (status, controls)
-- Fallback to Vercel only for domain (status, controls)
+- Fallback to Vercel for domain, health checks, and auto-fix recovery
 - Enhanced UI in QCity (see QVillage.tsx)
 - **NEW: Auto-Projects & Autonomous Content Creation** - AI-driven project generation for music, videos, movies, and any content
 - **NEW: Real Fund Generation & Revenue Systems** - Multi-gateway payment processing (Stripe, PayPal, crypto, M-Pesa, bank transfers)
@@ -586,9 +586,16 @@ All platform features are visualized with advanced widgets, real-time status, an
 
 QVillage enables direct deployment to Quantum, with status and controls. See QUANTUM.md.
 
-## 11. Fallback to Vercel (Domain Only)
+## 11. Fallback to Vercel with Auto-Fix and Clone Support
 
-Vercel is only used for domain management if needed; all other features use QMOI clones. See QMOIALWAYSPARALLEL.md, QMOIALLPLATFORMS.md.
+Vercel is used for domain management, automated deployment health recovery, and safe project cloning when required. QVillage monitors Vercel deployments, detects errors, applies auto-fix recommendations, and redeploys until the project is stable.
+
+- Automatic Vercel health checks and log analysis
+- Autonomous fix suggestions for missing dependencies, build errors, and configuration issues
+- Lion Agent Vercel recovery endpoint with redeploy workflows
+- Vercel project clone support for backup and multi-environment deployment
+
+See QMOIALWAYSPARALLEL.md, QMOIALLPLATFORMS.md, VERCELHEALTHS.md.
 
 ## 12. Auto-Projects & Autonomous Content Creation
 

@@ -31,12 +31,49 @@ interface CategoryHealth {
   status: 'healthy' | 'caution' | 'warning' | 'critical';
 }
 
-interface SystemHealth {
-  masterHealthPercentage: number;
-  categoryHealth: CategoryHealth[];
-  failedWorkflows: string[];
-  criticalIssues: string[];
-  lastUpdated: string;
+interface APIValidation {
+  endpoint: string;
+  method: string;
+  expectedStatus: number;
+  responseTime: number;
+  dataValidation: boolean;
+  lastValidated: string;
+  health: number;
+}
+
+interface DomainValidation {
+  domain: string;
+  dnsResolution: boolean;
+  sslCertificate: boolean;
+  accessibility: boolean;
+  responseTime: number;
+  lastValidated: string;
+  health: number;
+}
+
+interface FileValidation {
+  filePath: string;
+  integrity: boolean;
+  metadata: boolean;
+  tracks: boolean;
+  lastValidated: string;
+  health: number;
+}
+
+interface QMOIConsciousness {
+  awareness: number;
+  memorySync: boolean;
+  lastSync: string;
+  consciousnessLevel: number;
+  autodevIntegration: boolean;
+  autoresearchIntegration: boolean;
+}
+
+interface ValidationSystems {
+  apis: Record<string, APIValidation>;
+  domains: Record<string, DomainValidation>;
+  files: Record<string, FileValidation>;
+  qmoiConsciousness: QMOIConsciousness | null;
 }
 
 export default function WorkflowsHealthDashboard() {
@@ -44,11 +81,13 @@ export default function WorkflowsHealthDashboard() {
   const [masterHealthPercentage, setMasterHealthPercentage] = useState<number>(0);
   const [systemHealth, setSystemHealth] = useState<SystemHealth | null>(null);
   const [workflows, setWorkflows] = useState<WorkflowHealth[]>([]);
+  const [validations, setValidations] = useState<ValidationSystems | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedWorkflow, setSelectedWorkflow] = useState<string | null>(null);
   const [refreshInterval, setRefreshInterval] = useState(5000);
   const [isMasterAuthed, setIsMasterAuthed] = useState(false);
+  const [showValidations, setShowValidations] = useState(false);
 
   /**
    * Verify master authentication on mount
@@ -71,8 +110,8 @@ export default function WorkflowsHealthDashboard() {
     try {
       setError(null);
       const masterToken = localStorage.getItem('master_token');
-      
-      const response = await fetch('/api/lion/workflows/health', {
+
+      const response = await fetch('/api/lion/workflows/health?validations=true', {
         headers: {
           'Authorization': `Bearer ${masterToken}`
         }
@@ -83,14 +122,18 @@ export default function WorkflowsHealthDashboard() {
       }
 
       const data = await response.json();
-      
+
       if (data.systemHealth) {
         setSystemHealth(data.systemHealth);
         setMasterHealthPercentage(data.systemHealth.masterHealthPercentage);
       }
-      
+
       if (data.workflows) {
         setWorkflows(data.workflows);
+      }
+
+      if (data.validations) {
+        setValidations(data.validations);
       }
 
       setLoading(false);
@@ -114,28 +157,27 @@ export default function WorkflowsHealthDashboard() {
   }, [isMasterAuthed, refreshInterval, fetchWorkflowHealth]);
 
   /**
-   * Retry a failed workflow
+   * Force validation refresh
    */
-  const retryWorkflow = async (workflowName: string) => {
+  const forceValidationRefresh = async () => {
     try {
       const masterToken = localStorage.getItem('master_token');
-      
+
       const response = await fetch('/api/lion/workflows/health', {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Authorization': `Bearer ${masterToken}`,
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ workflow: workflowName })
+        }
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to retry: ${response.statusText}`);
+        throw new Error(`Failed to refresh validations: ${response.statusText}`);
       }
 
       const result = await response.json();
-      alert(`✅ Retry initiated for: ${workflowName}`);
-      
+      alert(`✅ Validation refresh completed`);
+
       // Refresh health data
       setTimeout(fetchWorkflowHealth, 1000);
     } catch (error) {
@@ -255,6 +297,159 @@ export default function WorkflowsHealthDashboard() {
         </div>
       )}
 
+      {/* Validation Systems */}
+      <div style={styles.validationSection}>
+        <div style={styles.validationHeader}>
+          <h3>🔍 Validation Systems</h3>
+          <div style={styles.validationControls}>
+            <button
+              onClick={() => setShowValidations(!showValidations)}
+              style={styles.toggleButton}
+            >
+              {showValidations ? 'Hide Details' : 'Show Details'}
+            </button>
+            <button
+              onClick={forceValidationRefresh}
+              style={styles.refreshButton}
+            >
+              🔄 Force Refresh
+            </button>
+          </div>
+        </div>
+
+        {validations && (
+          <div style={styles.validationSummary}>
+            <div style={styles.validationMetric}>
+              <span style={styles.validationLabel}>APIs:</span>
+              <span style={styles.validationValue}>
+                {Object.keys(validations.apis).length} endpoints
+              </span>
+            </div>
+            <div style={styles.validationMetric}>
+              <span style={styles.validationLabel}>Domains:</span>
+              <span style={styles.validationValue}>
+                {Object.keys(validations.domains).length} domains
+              </span>
+            </div>
+            <div style={styles.validationMetric}>
+              <span style={styles.validationLabel}>Files:</span>
+              <span style={styles.validationValue}>
+                {Object.keys(validations.files).length} files
+              </span>
+            </div>
+            <div style={styles.validationMetric}>
+              <span style={styles.validationLabel}>QMOI Awareness:</span>
+              <span style={styles.validationValue}>
+                {validations.qmoiConsciousness?.awareness || 0}%
+              </span>
+            </div>
+          </div>
+        )}
+
+        {showValidations && validations && (
+          <div style={styles.validationDetails}>
+            {/* API Validations */}
+            <div style={styles.validationGroup}>
+              <h4>API Endpoints</h4>
+              <div style={styles.validationGrid}>
+                {Object.entries(validations.apis).map(([endpoint, validation]) => (
+                  <div key={endpoint} style={styles.validationItem}>
+                    <div style={styles.validationEndpoint}>{endpoint}</div>
+                    <div style={styles.validationStatus}>
+                      <span style={{
+                        color: validation.health === 100 ? '#10b981' : validation.health >= 50 ? '#f59e0b' : '#ef4444'
+                      }}>
+                        {validation.health}%
+                      </span>
+                      <span style={styles.validationTime}>
+                        {new Date(validation.lastValidated).toLocaleTimeString()}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Domain Validations */}
+            <div style={styles.validationGroup}>
+              <h4>Domain Validation</h4>
+              <div style={styles.validationGrid}>
+                {Object.entries(validations.domains).map(([domain, validation]) => (
+                  <div key={domain} style={styles.validationItem}>
+                    <div style={styles.validationEndpoint}>{domain}</div>
+                    <div style={styles.validationStatus}>
+                      <span style={{
+                        color: validation.health === 100 ? '#10b981' : validation.health >= 50 ? '#f59e0b' : '#ef4444'
+                      }}>
+                        {validation.health}%
+                      </span>
+                      <span style={styles.validationChecks}>
+                        DNS: {validation.dnsResolution ? '✅' : '❌'} |
+                        SSL: {validation.sslCertificate ? '✅' : '❌'} |
+                        Access: {validation.accessibility ? '✅' : '❌'}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* File Validations */}
+            <div style={styles.validationGroup}>
+              <h4>File Integrity</h4>
+              <div style={styles.validationGrid}>
+                {Object.entries(validations.files).map(([filePath, validation]) => (
+                  <div key={filePath} style={styles.validationItem}>
+                    <div style={styles.validationEndpoint}>{filePath}</div>
+                    <div style={styles.validationStatus}>
+                      <span style={{
+                        color: validation.health === 100 ? '#10b981' : validation.health >= 50 ? '#f59e0b' : '#ef4444'
+                      }}>
+                        {validation.health}%
+                      </span>
+                      <span style={styles.validationChecks}>
+                        Integrity: {validation.integrity ? '✅' : '❌'} |
+                        Metadata: {validation.metadata ? '✅' : '❌'} |
+                        Tracks: {validation.tracks ? '✅' : '❌'}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* QMOI Consciousness */}
+            {validations.qmoiConsciousness && (
+              <div style={styles.validationGroup}>
+                <h4>QMOI Consciousness</h4>
+                <div style={styles.qmoiStatus}>
+                  <div style={styles.qmoiMetric}>
+                    <span>Awareness:</span>
+                    <span>{validations.qmoiConsciousness.awareness}%</span>
+                  </div>
+                  <div style={styles.qmoiMetric}>
+                    <span>Memory Sync:</span>
+                    <span>{validations.qmoiConsciousness.memorySync ? '✅' : '❌'}</span>
+                  </div>
+                  <div style={styles.qmoiMetric}>
+                    <span>AutoDev Integration:</span>
+                    <span>{validations.qmoiConsciousness.autodevIntegration ? '✅' : '❌'}</span>
+                  </div>
+                  <div style={styles.qmoiMetric}>
+                    <span>AutoResearch Integration:</span>
+                    <span>{validations.qmoiConsciousness.autoresearchIntegration ? '✅' : '❌'}</span>
+                  </div>
+                  <div style={styles.qmoiMetric}>
+                    <span>Last Sync:</span>
+                    <span>{new Date(validations.qmoiConsciousness.lastSync).toLocaleString()}</span>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
       {/* Workflow Health Details */}
       <div style={styles.workflowSection}>
         <h3>Workflow Health Details</h3>
@@ -332,8 +527,8 @@ export default function WorkflowsHealthDashboard() {
       </div>
 
       <div style={styles.footer}>
-        <p>🦁 Lion Agent v1.0.0 | Real-time GitHub Actions Monitoring</p>
-        <p>Auto-refreshing every {refreshInterval / 1000} seconds</p>
+        <p>🦁 Lion Agent v2.0.0 | Enhanced System Health Monitoring</p>
+        <p>Auto-refreshing every {refreshInterval / 1000} seconds | Validation Systems Active</p>
       </div>
     </div>
   );
@@ -541,6 +736,119 @@ const styles: Record<string, React.CSSProperties> = {
     cursor: 'pointer',
     fontSize: '12px',
     fontWeight: 'bold'
+  },
+  validationSection: {
+    background: '#fff',
+    padding: '20px',
+    borderRadius: '8px',
+    marginBottom: '20px',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+  },
+  validationHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '15px'
+  },
+  validationControls: {
+    display: 'flex',
+    gap: '10px'
+  },
+  toggleButton: {
+    padding: '8px 12px',
+    background: '#007bff',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontSize: '12px'
+  },
+  refreshButton: {
+    padding: '8px 12px',
+    background: '#28a745',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontSize: '12px'
+  },
+  validationSummary: {
+    display: 'flex',
+    gap: '20px',
+    marginBottom: '20px',
+    flexWrap: 'wrap'
+  },
+  validationMetric: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '10px',
+    background: '#f8f9fa',
+    borderRadius: '5px',
+    minWidth: '120px'
+  },
+  validationLabel: {
+    fontSize: '12px',
+    color: '#666',
+    marginBottom: '5px'
+  },
+  validationValue: {
+    fontSize: '16px',
+    fontWeight: 'bold',
+    color: '#333'
+  },
+  validationDetails: {
+    borderTop: '1px solid #eee',
+    paddingTop: '20px'
+  },
+  validationGroup: {
+    marginBottom: '25px'
+  },
+  validationGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+    gap: '10px'
+  },
+  validationItem: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '10px',
+    background: '#f8f9fa',
+    borderRadius: '5px',
+    border: '1px solid #e9ecef'
+  },
+  validationEndpoint: {
+    fontSize: '12px',
+    fontFamily: 'monospace',
+    flex: 1
+  },
+  validationStatus: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    gap: '2px'
+  },
+  validationTime: {
+    fontSize: '10px',
+    color: '#666'
+  },
+  validationChecks: {
+    fontSize: '10px',
+    color: '#666'
+  },
+  qmoiStatus: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+    gap: '10px'
+  },
+  qmoiMetric: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: '8px',
+    background: '#f8f9fa',
+    borderRadius: '5px',
+    fontSize: '12px'
   },
   footer: {
     textAlign: 'center',

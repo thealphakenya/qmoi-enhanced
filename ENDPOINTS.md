@@ -106,6 +106,9 @@ This document catalogs all available endpoints in the QMOI system.
 - `POST` `/api/qmoi/health`
 - `GET` `/api/qmoi/health/stream`
 - `GET` `/api/v1/health`
+- `GET` `/api/lion/workflows/health`
+- `PUT` `/api/lion/workflows/health`
+- `POST` `/api/lion/workflows/retry`
 - `GET` `/api/v2/health`
 
 #### Master Operations (16)

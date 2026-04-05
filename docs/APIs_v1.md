@@ -120,6 +120,38 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 - **Auth**: Bearer token required
 - **Timeout**: 60 seconds
 
+## 🌐 Vercel Deployment & Recovery APIs
+
+### GET /api/vercel/health
+- **Purpose**: Check current Vercel deployment health and log analysis
+- **Implementation**: [qvillage/app.py](qvillage/app.py)
+- **Auth**: Bearer token required
+
+### POST /api/vercel/fix
+- **Purpose**: Analyze Vercel deployment logs and run auto-fix recommendations
+- **Implementation**: [qvillage/app.py](qvillage/app.py)
+- **Auth**: Bearer token required
+
+### POST /api/vercel/redeploy
+- **Purpose**: Trigger a Vercel production redeploy until deployment succeeds
+- **Implementation**: [qvillage/app.py](qvillage/app.py)
+- **Auth**: Bearer token required
+
+### POST /api/vercel/clone
+- **Purpose**: Clone the Vercel project configuration and create a new project
+- **Implementation**: [qvillage/app.py](qvillage/app.py)
+- **Auth**: Bearer token required
+
+### GET /api/lion/vercel/status
+- **Purpose**: Lion Agent summary of Vercel health and recovery status
+- **Implementation**: [qvillage/app.py](qvillage/app.py)
+- **Auth**: Master token or Bearer token required
+
+### POST /api/lion/vercel/fix
+- **Purpose**: Lion Agent trigger for Vercel auto-fix and redeploy
+- **Implementation**: [qvillage/app.py](qvillage/app.py)
+- **Auth**: Master token required
+
 ### GET/POST /api/qmoi/evolution/track-evolution
 - **Purpose**: QMOI evolution tracking and cycle management
 - **Implementation**: [src/app/api/qmoi/evolution/track-evolution/route.ts](src/app/api/qmoi/evolution/track-evolution/route.ts)

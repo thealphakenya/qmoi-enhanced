@@ -75,6 +75,12 @@ Content-Type: application/json
 ### Health & Monitoring
 - `GET /api/qmoi/health` - Health check
 - `GET /api/qmoi/health/stream` - Health stream
+- `GET /api/lion/workflows/health` - Get comprehensive workflow health (Lion Agent v2.0.0)
+- `GET /api/lion/workflows/health?workflow=<name>` - Get specific workflow health
+- `GET /api/lion/workflows/health?validations=true` - Include validation systems
+- `PUT /api/lion/workflows/health` - Force validation refresh (master only)
+- `POST /api/lion/workflows/retry` - Retry failed workflow (master only)
+- `GET /api/lion/status` - Get Lion Agent status
 
 ### Consciousness & Awareness
 - `GET /api/consciousness` - Get consciousness state
