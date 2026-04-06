@@ -212,12 +212,28 @@ python test_app.py
 - Temporal Context Test: Check time-sensitive query understanding
 - Freshness Tracking Test: Validate information recency monitoring
 
-#### Ethical Tests
+#### QVillage QMOI Integration Tests
 
-- Constitutional AI Test: Test adherence to ethical guidelines
-- Bias Mitigation Test: Verify bias detection and correction
-- Safety Alignment Test: Check harmful content prevention
-- Alignment Validation Test: Validate ethical response generation
+- QMOI Always Running Test: Verify QMOI model is continuously active in QVillage
+- QVillage Capabilities Test: Test all QMOI capabilities are available in QVillage
+- Spaces Integration Test: Verify QMOI model integration with QVillage Spaces
+- Cross-Platform Sync Test: Test QMOI memory synchronization across platforms
+- Evolution Integration Test: Verify QMOI evolution features in QVillage
+- Paid Features Test: Test QMOI model access to unlimited paid features
+- HuggingFace Integration Test: Verify QMOI model with Spaces features
+- Community Tools Test: Test QMOI model interaction with community tools
+- Orchestration Test: Verify QMOI model in multi-tool orchestrations
+- Deal Making Test: Test QMOI automated deal creation in QVillage
+- Project Execution Test: Verify autonomous project execution with QMOI
+- Revenue Generation Test: Test QMOI monetization capabilities in QVillagess platforms
+- Evolution Integration Test: Verify QMOI evolution features in QVillage
+- Paid Features Test: Test QMOI model access to unlimited paid features
+- HuggingFace Integration Test: Verify QMOI model with Spaces features
+- Community Tools Test: Test QMOI model interaction with community tools
+- Orchestration Test: Verify QMOI model in multi-tool orchestrations
+- Deal Making Test: Test QMOI automated deal creation in QVillage
+- Project Execution Test: Verify autonomous project execution with QMOI
+- Revenue Generation Test: Test QMOI monetization capabilities in QVillage
 
 ## Test Automation Features
 
