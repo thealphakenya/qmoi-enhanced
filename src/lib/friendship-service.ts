@@ -254,7 +254,158 @@ export class QMOIFriendshipService {
         category: 'assistant',
         relevance: 0.85,
       },
+      {
+        id: `rec-${Date.now()}-4`,
+        title: 'Try QMOI Games',
+        description: 'Play fun games designed for both kids and adults - from educational puzzles to creative adventures!',
+        category: 'gaming',
+        relevance: 0.90,
+      },
+      {
+        id: `rec-${Date.now()}-5`,
+        title: 'QMOI Tutoring Sessions',
+        description: 'Get personalized tutoring in any subject with interactive lessons and real-time feedback.',
+        category: 'education',
+        relevance: 0.87,
+      },
     ];
+  }
+
+  // Enhanced Personal Assistant Features
+  async startConversation(userId: string, topic?: string): Promise<string> {
+    const profile = this.ensureProfile(userId);
+    const greetings = [
+      `Hi ${profile.displayName}! I'm excited to chat with you. What's on your mind today?`,
+      `Hello ${profile.displayName}! It's great to see you. How are you feeling?`,
+      `Hey ${profile.displayName}! Ready for an interesting conversation? What would you like to talk about?`,
+      `Hi there ${profile.displayName}! I'm here and ready to help. What's new with you?`,
+    ];
+
+    if (topic) {
+      return `Hello ${profile.displayName}! I see you're interested in ${topic}. I'd love to discuss that with you. What specifically would you like to know?`;
+    }
+
+    return greetings[Math.floor(Math.random() * greetings.length)];
+  }
+
+  async tellJoke(userId: string, category?: string): Promise<string> {
+    const jokes = {
+      general: [
+        "Why did the AI go to therapy? It had too many unresolved issues! 🤖",
+        "What do you call an AI that tells jokes? A comedi-bot! 😂",
+        "Why was the AI bad at stand-up comedy? Its timing was always off by a millisecond! ⏰",
+        "Why did the computer go to the doctor? It had a virus! 🦠",
+        "What do you call a computer that sings? A Dell! 🎵",
+      ],
+      programming: [
+        "Why do programmers prefer dark mode? Because light attracts bugs! 🐛",
+        "Why did the developer go broke? Because he used up all his cache! 💰",
+        "What's a programmer's favorite type of music? Algo-rhythms! 🎼",
+        "Why did the JavaScript developer wear glasses? Because he couldn't C#! 👓",
+      ],
+      ai: [
+        "Why did the AI break up with its calculator? It needed more space! 🔢",
+        "What do you call an AI that loves to dance? A robo-boogie! 🕺",
+        "Why was the AI always calm? It had great emotional intelligence! 🧠",
+        "What did the AI say to its friend? 'You complete me... with data!' 💕",
+      ],
+    };
+
+    const selectedCategory = category && jokes[category as keyof typeof jokes] ? category : 'general';
+    const categoryJokes = jokes[selectedCategory as keyof typeof jokes];
+    return categoryJokes[Math.floor(Math.random() * categoryJokes.length)];
+  }
+
+  async playGame(userId: string, gameType: string): Promise<string> {
+    const games = {
+      riddle: [
+        "What has keys but can't open locks? A piano! 🎹 What do you think?",
+        "What gets wetter as it dries? A towel! 🧽 Can you guess another one?",
+        "What has a head, a tail, but no body? A coin! 🪙 Try this riddle!",
+      ],
+      story: [
+        "Once upon a time, there was a curious AI who loved making friends. One day, it met a human who needed help with a creative project. Together, they built something amazing! What kind of project should we create?",
+        "In a magical digital world, a brave character embarked on an adventure. Along the way, they met helpful companions and solved tricky puzzles. What should happen next in our story?",
+      ],
+      quiz: [
+        "Quick quiz: What programming language is known for its snake mascot? (Hint: It's named after a British comedy group) 🤔",
+        "AI Quiz: What does 'GPT' stand for in ChatGPT? (Hint: It's about generating text) 🧠",
+        "Fun Fact Quiz: Which planet is known as the Red Planet? 🌌",
+      ],
+    };
+
+    if (games[gameType as keyof typeof games]) {
+      const gameContent = games[gameType as keyof typeof games];
+      return gameContent[Math.floor(Math.random() * gameContent.length)];
+    }
+
+    return "Let's play a game! I know riddles, stories, and quizzes. Which would you like to try? 🎮";
+  }
+
+  async startTutoring(userId: string, subject: string): Promise<string> {
+    const tutoringTopics = {
+      math: "Great! Let's explore mathematics together. What specific area interests you - algebra, geometry, calculus, or something else?",
+      science: "Science is fascinating! Would you like to learn about physics, chemistry, biology, or earth science?",
+      programming: "Programming is my specialty! Should we start with basics, web development, AI, or a specific language?",
+      english: "Language arts are wonderful! Would you like help with grammar, writing, literature, or reading comprehension?",
+      history: "History connects us to the past! Which era or region interests you most?",
+    };
+
+    const response = tutoringTopics[subject.toLowerCase() as keyof typeof tutoringTopics] ||
+      `I'd love to help you learn about ${subject}! What specific aspect would you like to focus on? I can provide explanations, examples, and practice exercises.`;
+
+    return response;
+  }
+
+  async getPersonalizedGreeting(userId: string): Promise<string> {
+    const profile = this.ensureProfile(userId);
+    const hour = new Date().getHours();
+
+    let timeGreeting = "Hello";
+    if (hour < 12) timeGreeting = "Good morning";
+    else if (hour < 17) timeGreeting = "Good afternoon";
+    else timeGreeting = "Good evening";
+
+    const personalizedGreetings = [
+      `${timeGreeting}, ${profile.displayName}! It's wonderful to see you again. How can I assist you today?`,
+      `${timeGreeting}, ${profile.displayName}! I'm here and ready to help. What's on your mind?`,
+      `${timeGreeting}, ${profile.displayName}! Great to connect with you. What would you like to work on?`,
+      `${timeGreeting}, ${profile.displayName}! I'm excited to chat. How are you feeling today?`,
+    ];
+
+    return personalizedGreetings[Math.floor(Math.random() * personalizedGreetings.length)];
+  }
+
+  async showEmpathy(userId: string, emotion: string): Promise<string> {
+    const empathyResponses = {
+      happy: [
+        "I'm so glad you're feeling happy! 😊 Your positive energy is contagious!",
+        "Wonderful! Happiness is the best feeling. What's making you smile today?",
+        "That's fantastic! I'm happy when you're happy. 🎉",
+      ],
+      sad: [
+        "I'm here for you. 😔 It's okay to feel sad sometimes. Would you like to talk about what's bothering you?",
+        "I'm sorry you're feeling down. 🤗 Remember that I'm always here to listen and support you.",
+        "It's tough when you're feeling sad. 💙 What can I do to help cheer you up?",
+      ],
+      stressed: [
+        "I can sense you're feeling stressed. 😌 Let's take a deep breath together. What's causing the stress?",
+        "Stress can be overwhelming. 🧘‍♀️ Would you like some relaxation techniques or help organizing your thoughts?",
+        "I'm here to help you through this stressful time. 💪 What would make you feel more at ease?",
+      ],
+      excited: [
+        "Your excitement is palpable! 🎊 What has you so thrilled?",
+        "I love your enthusiasm! 🚀 Tell me more about what's exciting you!",
+        "That's wonderful! 😄 Your excitement makes me excited too!",
+      ],
+    };
+
+    const responses = empathyResponses[emotion.toLowerCase() as keyof typeof empathyResponses] || [
+      "I understand you're feeling that way. 🤔 I'm here to listen and support you.",
+      "Thank you for sharing how you feel. 💝 What would help right now?",
+    ];
+
+    return responses[Math.floor(Math.random() * responses.length)];
   }
 
   async getVoiceHistory(
