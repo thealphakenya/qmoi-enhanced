@@ -58,6 +58,21 @@ This document explains the enhanced deals system implemented in QMOI Enhanced Sy
    - Marketing and promotion services
    - Data analysis and insights
 
+6. **LION Validation Deals**
+   - L — Validation certification services
+   - I — Integrity monitoring subscriptions
+   - O — Orchestration and load balancing
+   - N — Network synchronization services
+   - Multi-platform Lion deployment packages
+
+7. **Lion Platform Deals**
+   - Windows/macOS/Linux desktop deployments
+   - Android/iOS mobile applications
+   - Web and PWA implementations
+   - Docker container orchestration
+   - Raspberry Pi and IoT deployments
+   - Smart TV and gaming console integrations
+
 ## Real Fund Generation
 
 QMOI deals integrate with actual payment systems to generate real funds:
