@@ -32,8 +32,9 @@ QVillage is the prodeloper- and community-focused platform within QMOI for publi
 2. Model Cards & Metadata
 
 - What: Auto-generated model cards with datasets, evaluation, and license.
-- Implementation: Generate from CI artifacts and include human-editable fields.
+- Implementation: Generate from CI artifacts, include dataset provenance, and expose them in the QVillage UI.
 - Monetization: Premium display slots and priority search indexing for paid models.
+- QVillage UI: Display model cards alongside dataset references, consciousness status, and Lion Agent parallel validation insights.
 
 3. One-click Deploy
 

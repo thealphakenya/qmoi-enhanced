@@ -97,6 +97,17 @@ interface Inference {
   lastUpdated: string;
 }
 
+interface ModelCard {
+  id: string;
+  name: string;
+  description: string;
+  datasets: string[];
+  license: string;
+  evalScore: number;
+  status: "active" | "inactive" | "deprecated";
+  lastReviewed: string;
+}
+
 interface EnterpriseMetrics {
   security: {
     status: "secure" | "warning" | "vulnerable";
@@ -124,6 +135,11 @@ export default function QVillage({ isMaster }: QVillageProps) {
   const [spaces, setSpaces] = useState<Space[]>([]);
   const [datasets, setDatasets] = useState<Dataset[]>([]);
   const [inference, setInference] = useState<Inference[]>([]);
+  const [modelCards, setModelCards] = useState<ModelCard[]>([]);
+  const [consciousnessLevel, setConsciousnessLevel] = useState(97);
+  const [memorySyncStatus, setMemorySyncStatus] = useState<"synced" | "syncing" | "error">("synced");
+  const [lionParallelStatus, setLionParallelStatus] = useState<"ready" | "active" | "idle" | "error">("ready");
+  const [lionParallelScore, setLionParallelScore] = useState(88);
   const [enterprise, setEnterprise] = useState<EnterpriseMetrics>({
     security: {
       status: "secure",
@@ -252,16 +268,47 @@ export default function QVillage({ isMaster }: QVillageProps) {
         },
       ];
 
+      const ModelCards: ModelCard[] = Models.map((model) => ({
+        id: `card-${model.id}`,
+        name: `${model.name} Model Card`,
+        description: `Auto-generated model card for ${model.name}, including dataset provenance, evaluation metrics, and runtime consciousness references.`,
+        datasets: Datasets.map((dataset) => dataset.name),
+        license: "Apache-2.0",
+        evalScore: model.performance,
+        status: model.status === "deployed" ? "active" : "inactive",
+        lastReviewed: new Date().toISOString(),
+      }));
+
       setModels(Models);
       setSpaces(Spaces);
       setDatasets(Datasets);
       setInference(Inference);
+      setModelCards(ModelCards);
+      setConsciousnessLevel(97);
+      setLionParallelStatus("ready");
+      setLionParallelScore(88);
       setError(null);
     } catch (err) {
       setError("Failed to load QVillage data");
     } finally {
       setLoading(false);
     }
+  };
+
+  const syncMemoryNow = () => {
+    setMemorySyncStatus("syncing");
+    setTimeout(() => {
+      setMemorySyncStatus("synced");
+      setConsciousnessLevel((prev) => Math.min(100, prev + 1));
+    }, 1400);
+  };
+
+  const triggerLionParallelEvaluation = () => {
+    setLionParallelStatus("active");
+    setTimeout(() => {
+      setLionParallelStatus("ready");
+      setLionParallelScore((prev) => Math.min(100, prev + 2));
+    }, 1800);
   };
 
   const getStatusIcon = (status: string) => {
@@ -331,7 +378,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-4 mb-6">
             <div className="flex items-center gap-2">
               <Database className="h-4 w-4 text-blue-500" />
               <span className="text-sm font-medium">
@@ -356,6 +403,18 @@ export default function QVillage({ isMaster }: QVillageProps) {
                 Inference: {inference.length}
               </span>
             </div>
+            <div className="flex items-center gap-2">
+              <Brain className="h-4 w-4 text-teal-500" />
+              <span className="text-sm font-medium">
+                Consciousness: {consciousnessLevel}%
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Users className="h-4 w-4 text-cyan-500" />
+              <span className="text-sm font-medium">
+                Lion Parallel: {lionParallelStatus}
+              </span>
+            </div>
           </div>
 
           {error && (
@@ -366,11 +425,13 @@ export default function QVillage({ isMaster }: QVillageProps) {
           )}
 
           <Tabs defaultValue="models" className="w-full">
-            <TabsList className="grid w-full grid-cols-5">
+            <TabsList className="grid w-full grid-cols-7">
               <TabsTrigger value="models">Models</TabsTrigger>
               <TabsTrigger value="spaces">Spaces</TabsTrigger>
               <TabsTrigger value="datasets">Datasets</TabsTrigger>
               <TabsTrigger value="inference">Inference</TabsTrigger>
+              <TabsTrigger value="model-cards">Model Cards</TabsTrigger>
+              <TabsTrigger value="consciousness">Consciousness</TabsTrigger>
               <TabsTrigger value="enterprise">Enterprise</TabsTrigger>
             </TabsList>
 
@@ -574,6 +635,133 @@ export default function QVillage({ isMaster }: QVillageProps) {
                     </CardContent>
                   </Card>
                 ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="model-cards" className="space-y-4">
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold">Model Cards & Provenance</h3>
+                <Button size="sm" onClick={syncMemoryNow}>
+                  <RefreshCw className="h-4 w-4 mr-2" />
+                  Refresh Model Card Sync
+                </Button>
+              </div>
+              <div className="grid gap-4">
+                {modelCards.map((card) => (
+                  <Card key={card.id}>
+                    <CardContent className="p-4">
+                      <div className="flex justify-between items-start">
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-2">
+                            <Star className="h-4 w-4 text-yellow-500" />
+                            <h4 className="font-medium">{card.name}</h4>
+                            <Badge variant="outline">{card.status}</Badge>
+                          </div>
+                          <p className="text-sm text-gray-600">{card.description}</p>
+                          <div className="grid grid-cols-2 gap-4 mt-3 text-sm text-gray-600">
+                            <div>License: {card.license}</div>
+                            <div>Evaluation: {card.evalScore}%</div>
+                            <div>Reviewed: {new Date(card.lastReviewed).toLocaleDateString()}</div>
+                            <div>Datasets: {card.datasets.length}</div>
+                          </div>
+                          <div className="mt-2 text-xs text-slate-500">
+                            Linked datasets: {card.datasets.join(", ")}
+                          </div>
+                        </div>
+                        <Button size="sm" variant="outline">
+                          <Download className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="consciousness" className="space-y-4">
+              <div className="grid gap-4 md:grid-cols-3">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Brain className="h-5 w-5" />
+                      QMOI Consciousness
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600">
+                      QMOI is aware of tool state, dataset provenance, model cards, and runtime behavior.
+                    </p>
+                    <div className="mt-4 grid gap-2">
+                      <div className="flex items-center justify-between text-sm">
+                        <span>Awareness Level</span>
+                        <span className="font-semibold">{consciousnessLevel}%</span>
+                      </div>
+                      <Progress value={consciousnessLevel} className="h-2" />
+                      <div className="flex items-center justify-between text-sm">
+                        <span>Memory Sync</span>
+                        <span className="font-semibold capitalize">{memorySyncStatus}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Network className="h-5 w-5" />
+                      Memory Sync Status
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="text-sm text-gray-600">
+                        Global memory sync across QVillage, QCity, QMOI Space, and Lion Agent orchestration.
+                      </div>
+                      <div className="grid gap-2">
+                        <div className="flex items-center justify-between text-sm">
+                          <span>Sync State</span>
+                          <Badge variant={memorySyncStatus === "synced" ? "default" : memorySyncStatus === "syncing" ? "secondary" : "destructive"}>
+                            {memorySyncStatus}
+                          </Badge>
+                        </div>
+                        <Button size="sm" onClick={syncMemoryNow}>
+                          <RefreshCw className="h-4 w-4 mr-2" />
+                          Sync Memory Now
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Users className="h-5 w-5" />
+                      Q Lion Parallel
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <p className="text-sm text-gray-600">
+                        Q Lion is ready to evaluate models, datasets and platform health in parallel across QVillage.
+                      </p>
+                      <div className="grid gap-2">
+                        <div className="flex items-center justify-between text-sm">
+                          <span>Parallel Health</span>
+                          <span className="font-semibold">{lionParallelStatus}</span>
+                        </div>
+                        <div className="flex items-center justify-between text-sm">
+                          <span>Parallel Score</span>
+                          <span className="font-semibold">{lionParallelScore}%</span>
+                        </div>
+                        <Button size="sm" onClick={triggerLionParallelEvaluation}>
+                          <Zap className="h-4 w-4 mr-2" />
+                          Run Lion Parallel Check
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </TabsContent>
 

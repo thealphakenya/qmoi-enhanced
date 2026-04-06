@@ -104,16 +104,54 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const searchMedia = async (query: string) => {
     setIsLoading(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      // Production-ready API call to QMOI media search endpoint
+      const response = await fetch('/api/media/search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': process.env.NEXT_PUBLIC_QMOI_API_KEY || '',
+        },
+        body: JSON.stringify({
+          query: query,
+          type: selectedType,
+          limit: 50,
+          sortBy: 'relevance',
+          filters: {
+            category: selectedType,
+            quality: 'high',
+            format: ['mp4', 'mp3', 'jpg', 'png', 'gif']
+          }
+        }),
+      });
 
-      // In IMPLEMENTATION_REQUIRED, this would be an API call
-      // Using URLSearchParams with proper type checking
-      const searchParams = new (
-        globalThis.URLSearchParams || URLSearchParams
-      )();
-      searchParams.append("q", query);
-      searchParams.append("type", selectedType);
+      if (!response.ok) {
+        throw new Error(`Search failed: ${response.status}`);
+      }
 
+      const searchResults = await response.json();
+
+      // Transform API response to component format
+      const transformedResults = searchResults.items.map((item: any) => ({
+        id: item.id,
+        name: item.title || item.name,
+        type: item.type,
+        url: item.url,
+        thumbnail: item.thumbnail,
+        duration: item.duration,
+        size: item.size,
+        tags: item.tags || [],
+        metadata: item.metadata || {},
+        createdAt: item.createdAt,
+        quality: item.quality || 'standard'
+      }));
+
+      setMediaItems(transformedResults);
+      setSearchResults(transformedResults);
+
+    } catch (error) {
+      (globalThis.console as any)?.error?.("Media search failed:", error);
+
+      // Fallback to local search if API fails
       const filtered = mediaItems.filter(
         (item) =>
           item.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -121,10 +159,8 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
             tag.toLowerCase().includes(query.toLowerCase()),
           ),
       );
-
       setMediaItems(filtered);
-    } catch (error) {
-      (globalThis.console as any)?.error?.("Search failed:", error);
+      setSearchResults(filtered);
     } finally {
       setIsLoading(false);
     }

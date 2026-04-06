@@ -66,9 +66,9 @@ export default function QVillageDatasetsPanel() {
             onChange={(e) => setQuery(e.target.value)}
           />
           <button
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-70"
             onClick={loadDatasets}
-            enabled={loading}
+            disabled={loading}
           >
             Refresh
           </button>

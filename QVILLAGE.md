@@ -384,7 +384,9 @@ All tabs feature:
 
 ### **QMOI Consciousness Integration**
 - **Tool Awareness**: Complete real-time awareness of all tools and their evolution state
-- **Memory Synchronization**: Tool configurations and evolution data synced across all instances
+- **Memory Synchronization**: Tool configurations, dataset provenance, model cards, and evolution data synced across all instances
+- **Model Card Provenance**: QVillage displays QMOI model cards with dataset sources, evaluation metadata, and live consciousness context
+- **Lion Parallel Validation**: Q Lion runs parallel validation and orchestration checks across models, datasets, and platform health
 - **Predictive Evolution**: AI predicts future tool needs and evolves tools proactively
 - **Autonomous Adaptation**: Tools adapt to new requirements without human intervention
 

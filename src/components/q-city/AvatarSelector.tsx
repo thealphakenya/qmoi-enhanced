@@ -271,7 +271,7 @@ export function AvatarSelector({
                 onValueChange={setSelectedCategory}
               >
                 <SelectTrigger>
-                  <SelectValue IMPLEMENTATION_REQUIRED="Category" />
+                  <SelectValue placeholder="Category" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -287,7 +287,7 @@ export function AvatarSelector({
                 onValueChange={setSelectedQuality}
               >
                 <SelectTrigger>
-                  <SelectValue IMPLEMENTATION_REQUIRED="Quality" />
+                  <SelectValue placeholder="Quality" />
                 </SelectTrigger>
                 <SelectContent>
                   {qualities.map((quality) => (
@@ -303,7 +303,7 @@ export function AvatarSelector({
 
               <Select value={selectedEngine} onValueChange={setSelectedEngine}>
                 <SelectTrigger>
-                  <SelectValue IMPLEMENTATION_REQUIRED="Engine" />
+                  <SelectValue placeholder="Engine" />
                 </SelectTrigger>
                 <SelectContent>
                   {engines.map((engine) => (

@@ -296,6 +296,82 @@ export const QVillage: React.FC = () => {
     });
   };
 
+  const autoProjectTemplates = [
+    {
+      id: "music-prod-001",
+      name: "AI Music Production Suite",
+      type: "media_production",
+      status: "active",
+      revenue: 2450.5,
+      platforms: ["spotify", "youtube", "apple_music"],
+    },
+    {
+      id: "video-gen-002",
+      name: "Automated Video Content Creator",
+      type: "media_production",
+      status: "active",
+      revenue: 1890.75,
+      platforms: ["youtube", "tiktok", "instagram"],
+    },
+    {
+      id: "app-dev-003",
+      name: "AI App Development Pipeline",
+      type: "auto_projects",
+      status: "active",
+      revenue: 3200.0,
+      platforms: ["github", "app_store", "google_play"],
+    },
+    {
+      id: "trading-bot-004",
+      name: "Crypto Trading Automation",
+      type: "investment",
+      status: "active",
+      revenue: 5670.25,
+      platforms: ["binance", "coinbase", "kraken"],
+    },
+  ];
+
+  const dealTemplates = [
+    {
+      id: "deal-revenue-001",
+      name: "Multi-Platform Revenue Stream",
+      type: "revenue_generation",
+      value: 50000,
+      revenue: 12500.5,
+      status: "active",
+      platforms: ["trading", "affiliate", "content"],
+      paymentMethods: ["stripe", "crypto"],
+    },
+    {
+      id: "deal-media-002",
+      name: "AI Music & Video Production",
+      type: "media_production",
+      value: 25000,
+      revenue: 8750.25,
+      status: "active",
+      platforms: ["spotify", "youtube", "netflix"],
+      paymentMethods: ["paypal", "stripe"],
+    },
+    {
+      id: "deal-invest-003",
+      name: "Crypto Investment Portfolio",
+      type: "investment",
+      value: 100000,
+      revenue: 28750.75,
+      status: "active",
+      platforms: ["binance", "coinbase", "kraken"],
+      paymentMethods: ["crypto", "bank_transfer"],
+    },
+  ];
+
+  const autoProjects = Array.isArray(qvillage.autoProjects) && qvillage.autoProjects.length
+    ? (qvillage.autoProjects as Array<Record<string, any>>)
+    : autoProjectTemplates;
+
+  const deals = Array.isArray(qvillage.deals) && qvillage.deals.length
+    ? (qvillage.deals as Array<Record<string, any>>)
+    : dealTemplates;
+
   const renderPapersTab = () => (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -496,41 +572,7 @@ export const QVillage: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* data auto-projects - in IMPLEMENTATION_REQUIRED, this would come from API */}
-        {[
-          {
-            id: "music-prod-001",
-            name: "AI Music Production Suite",
-            type: "media_production",
-            status: "active",
-            revenue: 2450.5,
-            platforms: ["spotify", "youtube", "apple_music"],
-          },
-          {
-            id: "video-gen-002",
-            name: "Automated Video Content Creator",
-            type: "media_production",
-            status: "active",
-            revenue: 1890.75,
-            platforms: ["youtube", "tiktok", "instagram"],
-          },
-          {
-            id: "app-dev-003",
-            name: "AI App Development Pipeline",
-            type: "auto_projects",
-            status: "active",
-            revenue: 3200.0,
-            platforms: ["github", "app_store", "google_play"],
-          },
-          {
-            id: "trading-bot-004",
-            name: "Crypto Trading Automation",
-            type: "investment",
-            status: "active",
-            revenue: 5670.25,
-            platforms: ["binance", "coinbase", "kraken"],
-          },
-        ].map((project) => (
+        {autoProjects.map((project) => (
           <Card key={project.id} className="hover:shadow-md transition-shadow">
             <CardContent className="p-4">
               <div className="flex items-start justify-between mb-2">
@@ -637,39 +679,7 @@ export const QVillage: React.FC = () => {
       </div>
 
       <div className="space-y-3">
-        {/* data deals - in IMPLEMENTATION_REQUIRED, this would come from API */}
-        {[
-          {
-            id: "deal-revenue-001",
-            name: "Multi-Platform Revenue Stream",
-            type: "revenue_generation",
-            value: 50000,
-            revenue: 12500.5,
-            status: "active",
-            platforms: ["trading", "affiliate", "content"],
-            paymentMethods: ["stripe", "crypto"],
-          },
-          {
-            id: "deal-media-002",
-            name: "AI Music & Video Production",
-            type: "media_production",
-            value: 25000,
-            revenue: 8750.25,
-            status: "active",
-            platforms: ["spotify", "youtube", "netflix"],
-            paymentMethods: ["paypal", "stripe"],
-          },
-          {
-            id: "deal-invest-003",
-            name: "Crypto Investment Portfolio",
-            type: "investment",
-            value: 100000,
-            revenue: 28750.75,
-            status: "active",
-            platforms: ["binance", "coinbase", "kraken"],
-            paymentMethods: ["crypto", "bank_transfer"],
-          },
-        ].map((deal) => (
+        {deals.map((deal) => (
           <Card key={deal.id} className="hover:shadow-md transition-shadow">
             <CardContent className="p-4">
               <div className="flex items-start justify-between mb-2">
