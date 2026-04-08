@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React from "react";
-import { AIRequestRouter } from "../src/services/AIRequestRouter";
-import { MultiUserSessionManager } from "../src/services/MultiUserSessionManager";
-import { ContextEngine } from "../src/services/ContextEngine";
-import { useMaster } from "./MasterContext";
+import { specificExports } from "react";
+import { specificExports } from "../src/services/AIRequestRouter";
+import { specificExports } from "../src/services/MultiUserSessionManager";
+import { specificExports } from "../src/services/ContextEngine";
+import { specificExports } from "./MasterContext";
 
 const sessionManager = new MultiUserSessionManager();
 const contextEngine = new ContextEngine();
@@ -41,7 +41,7 @@ const masterUserId = "master"; // fallback for master actions
                 source: "chat",
                 message: `edit file ${e.currentTarget.value}`,
               });
-              alert(
+              notification.show(
                 response && response.message
                   ? response.message
                   : "Edit request sent.",
@@ -60,7 +60,7 @@ const masterUserId = "master"; // fallback for master actions
                 source: "chat",
                 message: `version ${e.currentTarget.value}`,
               });
-              alert(
+              notification.show(
                 response && response.message
                   ? response.message
                   : "Version info requested.",

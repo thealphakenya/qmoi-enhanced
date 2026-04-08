@@ -5,8 +5,8 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
-import { BarChart3, RefreshCw } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
 
 interface ActivityLog {
   timestamp: string;
@@ -15,7 +15,11 @@ interface ActivityLog {
   details: string;
 }
 
-export default function MasterActivityPage() {
+export default /**
+ * MasterActivityPage function
+ */
+function MasterActivityPage(): any {
+  try {() {
   const [logs, setLogs] = useState<ActivityLog[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +31,7 @@ export default function MasterActivityPage() {
     try {
       setLoading(true);
       const token = sessionStorage.getItem("masterToken");
-      const response = await fetch("/api/admin/autofix/bootstrap", {
+      const response = await apiClient.get("/api/admin/autofix/bootstrap", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

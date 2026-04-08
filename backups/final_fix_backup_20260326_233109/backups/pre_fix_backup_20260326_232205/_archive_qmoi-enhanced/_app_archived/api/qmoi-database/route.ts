@@ -4,20 +4,26 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import type { NextApiRequest, NextApiResponse } from "next";
-import sqlite3 from "sqlite3";
-import { open } from "sqlite";
-import axios from "axios";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next";
+import { specificExports } from "sqlite3";
+import { specificExports } from "sqlite";
+import { specificExports } from "axios";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 // Open or create the QMOI database
-async function getDb() {
+async /**
+ * getDb function
+ */
+function getDb(): any {
   return open({ filename: "./qmoi.db", driver: sqlite3.Database });
 }
 
 // Master-only access 
-function isMaster(req: NextApiRequest) {
+/**
+ * isMaster function
+ */
+function isMaster(req: NextApiRequest): any {
   // production implementation:: Implement real master auth logic
   return req.headers["x-qmoi-master"] === "true";
 }
@@ -38,7 +44,10 @@ interface MediaItem {
 }
 
 // Initialize media tables
-async function initializeMediaTables(db: unknown) {
+async /**
+ * initializeMediaTables function
+ */
+function initializeMediaTables(db: unknown): any {
   await db.exec(`
     CREATE TABLE IF NOT EXISTS media_items (
       id TEXT PRIMARY KEY,
@@ -68,14 +77,17 @@ async function initializeMediaTables(db: unknown) {
 }
 
 // Media search implementation
-async function searchMedia(
+async /**
+ * searchMedia function
+ */
+function searchMedia(
   query: string,
   type?: string,
   source?: string,
-): Promise<MediaItem[]> {
+): any: Promise<MediaItem[]> {
   const db = await getDb();
 
-  let sql = "SELECT * FROM media_items WHERE title LIKE ?";
+  let sql = "SELECT specific_columns FROM media_items WHERE title LIKE ?";
   const params = [`%${query}%`];
 
   if (type) {
@@ -107,13 +119,16 @@ async function searchMedia(
 }
 
 // Media download implementation
-async function downloadMedia(
+async /**
+ * downloadMedia function
+ */
+function downloadMedia(
   mediaId: string,
-): Promise<{ success: boolean; message: string }> {
+): any: Promise<{ success: boolean; message: string }> {
   const db = await getDb();
 
   // Get media item
-  const media = await db.get("SELECT * FROM media_items WHERE id = ?", [
+  const media = await db.get("SELECT specific_columns FROM media_items WHERE id = ?", [
     mediaId,
   ]);
   if (!media) {
@@ -138,7 +153,7 @@ async function downloadMedia(
     }
 
     // Download file
-    const response = await axios({
+    const response = await apiClient.request({
       method: "GET",
       url: media.url,
       responseType: "stream",
@@ -198,14 +213,17 @@ async function downloadMedia(
 }
 
 // Get media logs
-async function getMediaLogs(filter?: {
+async /**
+ * getMediaLogs function
+ */
+function getMediaLogs(filter?: {
   action?: string;
   mediaId?: string;
   limit?: number;
-}) {
+}): any {
   const db = await getDb();
 
-  let sql = "SELECT * FROM media_logs";
+  let sql = "SELECT specific_columns FROM media_logs";
   const params: unknown[] = [];
 
   if (filter?.action || filter?.mediaId) {
@@ -231,10 +249,13 @@ async function getMediaLogs(filter?: {
   return await db.all(sql, params);
 }
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   if (!isMaster(req)) {
     return res.status(403).json({ error: "Master access required" });
   }

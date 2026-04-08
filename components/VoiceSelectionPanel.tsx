@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
-import { Slider } from "./ui/slider";
-import { Label } from "./ui/label";
-import { VoiceRecognitionService } from "../src/services/VoiceRecognitionService";
+import { specificExports } from "react";
+import { specificExports } from "./ui/card";
+import { specificExports } from "./ui/button";
+import { specificExports } from "./ui/badge";
+import { specificExports } from "./ui/slider";
+import { specificExports } from "./ui/label";
+import { specificExports } from "../src/services/VoiceRecognitionService";
 
 interface HumanVoice {
   id: string;
@@ -97,7 +97,7 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
       voiceService.updateVoiceSettings(voiceSettings);
 
       // Add preferred names
-      preferredNames.forEach((name) => {
+      preferredNames.for (const item of((name) => {
         voiceService.addPreferredName(name);
       });
 

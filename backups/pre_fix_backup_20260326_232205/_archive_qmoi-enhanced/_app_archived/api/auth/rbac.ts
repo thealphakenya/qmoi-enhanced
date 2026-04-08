@@ -4,12 +4,15 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import jwt from "jsonwebtoken";
-import { NextApiRequest, NextApiResponse } from "next";
+import { specificExports } from "jsonwebtoken";
+import { specificExports } from "next";
 
 const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
-export function requireRole(roles: string[]) {
+export /**
+ * requireRole function
+ */
+function requireRole(roles: string[]): any {
   return (handler: unknown) =>
     async (req: NextApiRequest, res: NextApiResponse) => {
       const auth = req.headers.authorization;

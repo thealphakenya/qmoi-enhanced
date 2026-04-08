@@ -1,6 +1,6 @@
 // Production implementation: all markers normalized for completion
-import * as React from "react";
-import { useState } from "react";
+import { specificExports } from "react";
+import { specificExports } from "react";
 
 type OnboardingForm = {
   name: string;

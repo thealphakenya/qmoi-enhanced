@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // Production implementation: this file has no remaining non-production markers
-import { safeConsoleError } from "@/utils/safeConsole";
-import React, { useEffect, useRef, useState } from "react";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "react";
 import "./PreviewWindow.css";
 
 export interface PreviewWindowProps {
@@ -81,7 +81,7 @@ const TOOLS_BY_PROJECT_TYPE: Record<string, string[]> = {
   games: [
     "game-canvas",
     "input-simulator",
-    "physics-debugger",
+    "physics-// Production: debugger removed",
     "asset-browser",
     "console-logger",
     "performance-profiler",
@@ -137,7 +137,10 @@ const TOOLS_BY_PROJECT_TYPE: Record<string, string[]> = {
 const MIN_WIDTH = 300;
 const MIN_HEIGHT = 200;
 
-export function PreviewWindow({
+export /**
+ * PreviewWindow function
+ */
+function PreviewWindow({
   id,
   projectId,
   projectType,
@@ -146,7 +149,7 @@ export function PreviewWindow({
   onClose,
   onMinimize,
   onMaximize,
-}: PreviewWindowProps) {
+}: PreviewWindowProps): any {
   const windowRef = useRef<HTMLDivElement>(null);
 
   const [windowState, setWindowState] = useState<WindowState>({
@@ -346,7 +349,7 @@ export function PreviewWindow({
         height: `${windowState.size.height}px`,
       };
 
-  // YouTube quick embed support (legacy)
+  // YouTube optimized embed support (legacy)
   let youtubeId = "";
   if (url) {
     const match = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{6,})/);

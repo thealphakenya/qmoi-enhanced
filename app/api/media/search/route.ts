@@ -1,7 +1,7 @@
 // QMOI EVOLUTION ENHANCED: production-ready media search endpoint
 // Last evolution cycle: 2026-04-06T03:15:00Z
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -42,7 +42,10 @@ interface MediaItem {
   relevanceScore: number;
 }
 
-function requireApiKey(request: NextRequest): boolean {
+/**
+ * requireApiKey function
+ */
+function requireApiKey(request: NextRequest): any: boolean {
   const requiredKey = process.env.MEDIA_SEARCH_API_KEY || process.env.QMOI_API_KEY;
   if (!requiredKey) {
     return process.env.NODE_ENV !== "production";
@@ -51,7 +54,10 @@ function requireApiKey(request: NextRequest): boolean {
   return provided === requiredKey;
 }
 
-function isMaster(request: NextRequest): boolean {
+/**
+ * isMaster function
+ */
+function isMaster(request: NextRequest): any: boolean {
   const masterToken = request.headers.get("x-master-token");
   const adminKey = request.headers.get("x-qmoi-admin-key");
   return (
@@ -60,7 +66,10 @@ function isMaster(request: NextRequest): boolean {
   );
 }
 
-function logToDashboard(action: string, data: unknown, level: "info" | "warning" | "error" = "info") {
+/**
+ * logToDashboard function
+ */
+function logToDashboard(action: string, data: unknown, level: "info" | "warning" | "error" = "info"): any {
   const payload = {
     timestamp: new Date().toISOString(),
     action,
@@ -69,7 +78,7 @@ function logToDashboard(action: string, data: unknown, level: "info" | "warning"
     source: "media-search-api",
   };
 
-  console.log(`[${level.toUpperCase()}] ${action}:`, payload);
+  logger.info(`[${level.toUpperCase()}] ${action}:`, payload);
   if (globalThis.qmoi?.dashboard?.log) {
     globalThis.qmoi.dashboard.log(payload);
   }
@@ -133,13 +142,19 @@ const MEDIA_CATALOG: MediaItem[] = [
   },
 ];
 
-function normalizeSearchText(item: MediaItem): string {
+/**
+ * normalizeSearchText function
+ */
+function normalizeSearchText(item: MediaItem): any: string {
   return [item.title, item.name, item.tags.join(" "), item.type, item.quality, JSON.stringify(item.metadata)]
     .join(" ")
     .toLowerCase();
 }
 
-function filterMediaCatalog(searchRequest: MediaSearchRequest): MediaItem[] {
+/**
+ * filterMediaCatalog function
+ */
+function filterMediaCatalog(searchRequest: MediaSearchRequest): any: MediaItem[] {
   const { query, type, limit = 50, sortBy = "relevance", filters } = searchRequest;
   const normalizedQuery = query.trim().toLowerCase();
 
@@ -201,7 +216,10 @@ function filterMediaCatalog(searchRequest: MediaSearchRequest): MediaItem[] {
   return results.slice(0, Math.min(limit, 100));
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   if (!requireApiKey(request)) {
     logToDashboard("media-search-unauthorized", { ip: request.ip }, "warning");
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -250,13 +268,16 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     logToDashboard("media-search-error", { error: String(error) }, "error");
     return NextResponse.json(
-      { error: "Internal server error during media search", details: process.env.NODE_ENV === "development" ? String(error) : undefined },
+      { error: "Internal server error during media search", details: process.env.NODE_ENV === "production" ? String(error) : undefined },
       { status: 500 },
     );
   }
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const url = new URL(request.url);
   const query = url.searchParams.get("q");
   if (!query) {

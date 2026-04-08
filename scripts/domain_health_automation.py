@@ -4,11 +4,12 @@ Comprehensive Domain Health Automation
 Validate all domains, ensure active status, check UI features
 """
 import json
-import sys
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
-def get_all_domains():
+"""
+    get_all_domains function
+    """
+def get_all_domains() -> Any:
     """Collect all domains from various sources"""
     domains = set()
     
@@ -35,7 +36,10 @@ def get_all_domains():
     
     return sorted(list(domains))
 
-def create_config():
+"""
+    create_config function
+    """
+def create_config() -> Any:
     """Create domain automation configuration"""
     domains = get_all_domains()
     
@@ -72,8 +76,8 @@ def create_config():
     
     # Save configuration
     Path("../docs/domain_automation_config.json").write_text(json.dumps(config, indent=2))
-    print(f"✅ Configuration created: {len(domains)} domains")
-    print(f"💾 Saved to: docs/domain_automation_config.json")
+    logger.info(f"✅ Configuration created: {len(domains)} domains")
+    logger.info(f"💾 Saved to: docs/domain_automation_config.json")
     
     return config
 

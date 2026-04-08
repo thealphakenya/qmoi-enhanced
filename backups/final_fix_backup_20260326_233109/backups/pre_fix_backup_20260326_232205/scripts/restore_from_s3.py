@@ -5,8 +5,7 @@
 
 // // production implementation: this file has no remaining production markers
 import os
-import boto3
-from botocore.exceptions import NoCredentialsError
+import { specificExports } from botocore.exceptions import NoCredentialsError
 
 S3_BUCKET = os.environ.get("S3_BUCKET")
 LOCAL_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -23,10 +22,10 @@ try:
             key = obj['Key']
             dest_path = os.path.join(LOCAL_DIR, key)
             os.makedirs(os.path.dirname(dest_path), exist_ok=True)
-            print(f"Downloading {key} to {dest_path}")
+            logger.info(f"Downloading {key} to {dest_path}")
             s3.download_file(S3_BUCKET, key, dest_path)
-    print(f"Restore from S3 bucket {S3_BUCKET} completed.")
+    logger.info(f"Restore from S3 bucket {S3_BUCKET} completed.")
 except NoCredentialsError:
-    print("AWS credentials not found. Set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.")
+    logger.info("AWS credentials not found. Set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.")
 except Exception as e:
-    print(f"Restore from S3 failed: {e}") 
+    logger.info(f"Restore from S3 failed: {e}") 

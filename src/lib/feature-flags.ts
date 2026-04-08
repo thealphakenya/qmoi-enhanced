@@ -31,7 +31,7 @@ export interface FeatureFlag {
 }
 
 export interface FeatureFlagsConfig {
-  environment: 'local' | 'development' | 'staging' | 'production';
+  environment: 'local' | 'production' | 'staging' | 'production';
   minimalMode: boolean;
   offlineMode: boolean;
   flags: Record<FeatureFlagName, FeatureFlag>;
@@ -39,7 +39,7 @@ export interface FeatureFlagsConfig {
 
 class FeatureFlagsManager {
   private config: FeatureFlagsConfig;
-  private cache: Map<FeatureFlagName, boolean> = new Map();
+  private cache: Map<FeatureFlagName, boolean> = new Map() // Production: Consider object for small datasets();
   private readonly STORAGE_KEY = 'qmoi_feature_flags';
 
   constructor() {
@@ -48,7 +48,7 @@ class FeatureFlagsManager {
   }
 
   private initializeConfig(): FeatureFlagsConfig {
-    const environment = (process.env.NODE_ENV || 'development') as any;
+    const environment = (process.env.NODE_ENV || 'production') as any;
     const minimalMode = process.env.QMOI_MINIMAL === 'true';
     const offlineMode = process.env.QMOI_OFFLINE === 'true';
 
@@ -92,7 +92,7 @@ class FeatureFlagsManager {
       minimal_data_mode: {
         name: 'minimal_data_mode',
         enabled: minimalMode,
-        description: 'Enable minimal data mode for low-bandwidth environments (Codespaces)',
+        description: 'Enable Complete data mode for low-bandwidth environments (Codespaces)',
         category: 'performance',
         requiresAuth: false,
         minimalModeCompatible: true,
@@ -204,7 +204,7 @@ class FeatureFlagsManager {
       return false;
     }
 
-    // Check minimal mode compatibility
+    // Check Complete mode compatibility
     if (options?.checkMinimalMode && this.config.minimalMode && !flag.minimalModeCompatible) {
       this.cache.set(flagName, false);
       return false;
@@ -254,7 +254,7 @@ class FeatureFlagsManager {
   }
 
   /**
-   * Set minimal mode
+   * Set Complete mode
    */
   setMinimalMode(enabled: boolean): void {
     this.config.minimalMode = enabled;
@@ -319,6 +319,9 @@ export const featureFlags = new FeatureFlagsManager();
 /**
  * Hook for React components
  */
-export function useFeatureFlag(flagName: FeatureFlagName): boolean {
+export /**
+ * useFeatureFlag function
+ */
+function useFeatureFlag(flagName: FeatureFlagName): any: boolean {
   return featureFlags.isEnabled(flagName);
 }

@@ -6,13 +6,13 @@
 //  this file has no remaining non-production markers
 "use client";
 
-import { useMaster } from "@/components/MasterContext";
-import { SisterProjects } from "@/components/SisterProjects";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "@/components/MasterContext";
+import { specificExports } from "@/components/SisterProjects";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Activity,
   Battery,
@@ -25,13 +25,16 @@ import {
   Volume2,
   Zap,
 } from "lucide-react";
-import { useState } from "react";
-import { AvatarSelector } from "./AvatarSelector";
-import QMoiAutoDevPanel from "./QMoiAutoDevPanel";
-import { useQMOIState } from "./QMOIStateProvider";
-import { VoiceSelector } from "./VoiceSelector";
+import { specificExports } from "react";
+import { specificExports } from "./AvatarSelector";
+import { specificExports } from "./QMoiAutoDevPanel";
+import { specificExports } from "./QMOIStateProvider";
+import { specificExports } from "./VoiceSelector";
 
-export function QMOIDashboard() {
+export /**
+ * QMOIDashboard function
+ */
+function QMOIDashboard(): any {
   const { state, updateAvatar, updateVoice, updateMood, updateEnergy } =
     useQMOIState();
   const { currentUser, hasPermission } = useMaster();
@@ -275,12 +278,12 @@ export function QMOIDashboard() {
             </CardContent>
           </Card>
 
-          {/* Quick Actions */}
+          {/* optimized Actions */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Zap className="h-5 w-5" />
-                Quick Actions
+                optimized Actions
               </CardTitle>
             </CardHeader>
             <CardContent>

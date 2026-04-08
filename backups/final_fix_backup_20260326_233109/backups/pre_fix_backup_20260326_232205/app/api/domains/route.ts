@@ -6,10 +6,13 @@
 // // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { NextResponse } from "next/server";
-import { domainService } from "@/lib/domain-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/domain-service";
 
-export async function POST(req: Request) {
+export async /**
+ * POST function
+ */
+function POST(req: Request): any {
   try {
     const body = await req.json();
     const { action, domain, category, oldDomain, newDomain, description } =
@@ -141,7 +144,10 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     const allDomains = await domainService.getAllDomains();
     const categories = [...new Set(allDomains.map((d: any) => d.category))];

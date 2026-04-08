@@ -23,8 +23,7 @@ Safety:
 import argparse
 import json
 import os
-import time
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 SKIP_DIRS = {'.git', 'node_modules', '.venv', 'venv', '.idea', '.pytest_cache'}
 LION_START = '<!-- LION_VALIDATION_START -->'
@@ -35,13 +34,16 @@ LION_BLOCK_TEMPLATE = """<!-- LION_VALIDATION_START -->
 - validated: yes
 - validator: QMOI Lion
 - timestamp: {ts}
-- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 """
 
 
-def is_binary(path):
+"""
+    is_binary function
+    """
+def is_binary(path) -> Any:
     # Very small heuristic: check for null bytes
     try:
         with open(path, 'rb') as f:
@@ -51,7 +53,10 @@ def is_binary(path):
         return True
 
 
-def should_skip(path, root):
+"""
+    should_skip function
+    """
+def should_skip(path, root) -> Any:
     rel = os.path.relpath(path, root)
     parts = rel.split(os.sep)
     for p in parts:
@@ -60,7 +65,10 @@ def should_skip(path, root):
     return False
 
 
-def find_md_files(root):
+"""
+    find_md_files function
+    """
+def find_md_files(root) -> Any:
     matches = []
     for dirpath, dirnames, filenames in os.walk(root):
         # prune skip dirs
@@ -74,7 +82,10 @@ def find_md_files(root):
     return sorted(matches)
 
 
-def read_file(path):
+"""
+    read_file function
+    """
+def read_file(path) -> Any:
     try:
         with open(path, 'r', encoding='utf-8') as f:
             return f.read()
@@ -82,14 +93,20 @@ def read_file(path):
         return None
 
 
-def write_backup(path):
+"""
+    write_backup function
+    """
+def write_backup(path) -> Any:
     bak = path + '.bak'
     if not os.path.exists(bak):
         with open(path, 'rb') as src, open(bak, 'wb') as dst:
             dst.write(src.read())
 
 
-def insert_block(content, ts):
+"""
+    insert_block function
+    """
+def insert_block(content, ts) -> Any:
     # If YAML frontmatter exists, insert after it, else at top
     lines = content.splitlines(True)
     if lines and lines[0].strip() == '---':
@@ -106,7 +123,10 @@ def insert_block(content, ts):
     return new
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--out', default='docs/md_index.json')
     p.add_argument('--root', default='.')
@@ -147,7 +167,7 @@ def main():
                     f.write(new_content)
                 modified.append(rel)
             except Exception as e:
-                print(f'ERROR writing {path}: {e}')
+                logger.info(f'ERROR writing {path}: {e}')
 
     # write index
     out = {
@@ -160,7 +180,7 @@ def main():
     }
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(out, f, indent=2)
-    print(f'Wrote index {out_path} ({len(index)} files). Modified: {len(modified)}')
+    logger.info(f'Wrote index {out_path} ({len(index)} files). Modified: {len(modified)}')
 
 
 if __name__ == '__main__':

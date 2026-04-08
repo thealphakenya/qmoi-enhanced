@@ -3,10 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextApiRequest, NextApiResponse } from "next";
-import { spawn } from "child_process";
+import { specificExports } from "next";
+import { specificExports } from "child_process";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(req: NextApiRequest, res: NextApiResponse) {
   spawn("node", ["scripts/fix-connectivity.js"], {
     detached: true,
     stdio: "ignore",

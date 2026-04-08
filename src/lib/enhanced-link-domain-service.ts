@@ -38,7 +38,7 @@ export class EnhancedLinkDomainService {
 
     try {
       const startTime = Date.now();
-      const response = await fetch(link.url, { method: 'HEAD' });
+      const response = await apiClient.get(link.url, { method: 'HEAD' });
       const responseTime = Date.now() - startTime;
 
       link.status = response.ok ? 'active' : 'broken';

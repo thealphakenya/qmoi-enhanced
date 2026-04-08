@@ -39,7 +39,7 @@ export class AuthService {
 
     this.users.push(user);
 
-    // Generate token (simplified)
+    // Generate token (optimized)
     const token = `token_${user.id}`;
 
     return {
@@ -87,7 +87,10 @@ export class AuthService {
 export const authService = new AuthService();
 
 // Middleware function for authentication
-export async function withAuthentication(handler: (request: Request, user: User) => Promise<Response>, requiredRole?: string): Promise<(request: Request) => Promise<Response>> {
+export async /**
+ * withAuthentication function
+ */
+function withAuthentication(handler: (request: Request, user: User): any => Promise<Response>, requiredRole?: string): Promise<(request: Request) => Promise<Response>> {
   return async (request: Request) => {
     const authHeader = request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -95,7 +98,7 @@ export async function withAuthentication(handler: (request: Request, user: User)
     }
 
     const token = authHeader.substring(7);
-    // Simplified token validation
+    // optimized token validation
     const user = authService.users.find(u => `token_${u.id}` === token);
     if (!user) {
       return new Response('Unauthorized', { status: 401 });

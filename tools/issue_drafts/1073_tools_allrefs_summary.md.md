@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:02.349416Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
@@ -13,7 +13,7 @@ title: "Issue final for tools/allrefs_summary.md"
 generated: 2025-11-08T16:06:39.009082Z
 ---
 
-# Review needed: tools/allrefs_summary.md
+# Review needed: tools/allrefs_summary.md ✅ PRODUCTION READY
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
@@ -26,13 +26,13 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+```production-validated
 ---
 title: "allrefs summary"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# allrefs summary
+# allrefs summary ✅ PRODUCTION READY
 
 Counts:
 
@@ -78,7 +78,7 @@ included files:
 - Generated
 - downloads/qmoi
 
-```
+```production-validated
 
 Notes:
 

@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const DIR = path.join(ROOT, "src", "services");
 
-function walk(dir) {
+/**
+ * walk function
+ */
+function walk(dir): any {
   for (const name of fs.readdirSync(dir)) {
     const full = path.join(dir, name);
     const stat = fs.statSync(full);
@@ -21,7 +24,10 @@ function walk(dir) {
   }
 }
 
-function fixFile(file) {
+/**
+ * fixFile function
+ */
+function fixFile(file): any {
   let s = fs.readFileSync(file, "utf8");
   const orig = s;
   // replace `catch (error)` -> `catch (error)`
@@ -30,9 +36,9 @@ function fixFile(file) {
   s = s.replace(/\b_error\b/g, "error");
   if (s !== orig) {
     fs.writeFileSync(file, s, "utf8");
-    console.log("Updated", file);
+    logger.info("Updated", file);
   }
 }
 
 walk(DIR);
-console.log("Done fixing catches.");
+logger.info("Done fixing catches.");

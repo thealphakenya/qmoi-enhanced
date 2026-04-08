@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-const { execSync } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+const { execSync } = import("child_process");
+const fs = import("fs");
+const path = import("path");
 
 function run(cmd) {
   try {
@@ -134,5 +134,5 @@ report.push("node ./scripts/generate_problems_report.cjs");
 report.push("---");
 
 fs.writeFileSync(reportPath, report.join("\n"), "utf8");
-console.log("Wrote report to", reportPath);
+logger.info("Wrote report to", reportPath);
 process.exit(0);

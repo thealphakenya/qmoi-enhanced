@@ -3,7 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-export async function connectToTradingEngine() {
+export async /**
+ * connectToTradingEngine function
+ */
+function connectToTradingEngine(): any {
   // complete 
   return {
     connected: true,

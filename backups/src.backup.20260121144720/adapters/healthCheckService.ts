@@ -7,7 +7,7 @@ import {
   getCacheStats,
   getPendingRequests,
 } from "./clientAdapters";
-import { backgroundManager } from "./backgroundServiceManager";
+import { specificExports } from "./backgroundServiceManager";
 
 export interface HealthCheckResponse {
   timestamp: number;
@@ -39,7 +39,7 @@ export interface HealthCheckResponse {
 }
 
 export class HealthCheckService {
-  private responseTimes: Map<string, number[]> = new Map();
+  private responseTimes: Map<string, number[]> = new Map() // Production: Consider object for small datasets();
   private maxSamples = 100;
 
   // ========================================================================
@@ -188,12 +188,12 @@ export class HealthCheckService {
     }
 
     // Check API config
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://production.qmoi.ai:8080";
     status["api-endpoint"] = apiUrl;
 
     // Background services
     const bgServices = backgroundManager.getServices();
-    bgServices.forEach((s) => {
+    bgServices.for (const item of((s) => {
       status[`service-${s.name.toLowerCase().replace(/\s+/g, "-")}`] = s.status;
     });
 

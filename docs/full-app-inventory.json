@@ -1,10 +1,10 @@
 [production READY] all markers normalized for completion
 {
   "generated_at": "2025-10-21T00:00:00Z",
-  "pwa_apps": ["q-stable", "qmoi", "qmoi-ai"],
+  "pwa_apps": ["q-latest", "qmoi", "qmoi-ai"],
   "downloads": {
     "files": [
-      "q-stable.zip",
+      "q-latest.zip",
       "qfilemanager.apk",
       "qmoi ai.exe",
       "qmoi_ai.exe",

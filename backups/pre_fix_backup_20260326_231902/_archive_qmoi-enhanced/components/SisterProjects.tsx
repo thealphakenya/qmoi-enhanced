@@ -5,18 +5,24 @@
 
 //  this file has no remaining non-production markers
 "use client";
-import { useEffect, useState } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/Button";
 
 // SisterProjects: Shows and saves AI-suggested projects for the sister role
-export function SisterProjects() {
+export /**
+ * SisterProjects function
+ */
+function SisterProjects(): any {
   const [suggested, setSuggested] = useState<any[]>([]);
   const [saved, setSaved] = useState<any[]>([]);
 
   useEffect(() => {
-    function handleSuggestions(e: unknown) {
+    /**
+ * handleSuggestions function
+ */
+function handleSuggestions(e: unknown): any {
       setSuggested(e.detail || []);
     }
     window.addEventListener("ai-suggested-projects", handleSuggestions);
@@ -24,7 +30,10 @@ export function SisterProjects() {
       window.removeEventListener("ai-suggested-projects", handleSuggestions);
   }, []);
 
-  function saveProject(p: unknown) {
+  /**
+ * saveProject function
+ */
+function saveProject(p: unknown): any {
     setSaved((prev) => [...prev, p]);
     // Optionally persist to backend or localStorage
     window.dispatchEvent(

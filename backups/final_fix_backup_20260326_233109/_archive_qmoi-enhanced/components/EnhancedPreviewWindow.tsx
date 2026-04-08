@@ -4,18 +4,24 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import { useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import Image from "next/image";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "next/image";
 
-export function EnhancedPreviewWindow() {
+export /**
+ * EnhancedPreviewWindow function
+ */
+function EnhancedPreviewWindow(): any {
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);
   const [mediaType, setMediaType] = useState<
     "image" | "video" | "audio" | "youtube" | null
   >(null);
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
 
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+  /**
+ * handleFileChange function
+ */
+function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;
     const url = URL.createObjectURL(file);
@@ -26,7 +32,10 @@ export function EnhancedPreviewWindow() {
     setMediaUrl(url);
   }
 
-  function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>) {
+  /**
+ * handleYoutubeChange function
+ */
+function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
     setYoutubeUrl(e.target.value);
     setMediaType("youtube");
   }

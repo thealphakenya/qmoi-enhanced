@@ -6,13 +6,16 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextApiRequest, NextApiResponse } from "next";
-import { exec } from "child_process";
+import { specificExports } from "next";
+import { specificExports } from "child_process";
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
-) {
+): any {
   if (_req.method !== "POST") {
     _res.status(405).json({ _error: "Method not allowed" });
     return;

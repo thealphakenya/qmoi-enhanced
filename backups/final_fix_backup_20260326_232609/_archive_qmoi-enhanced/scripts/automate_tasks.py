@@ -11,30 +11,41 @@ This script uses Windows Task Scheduler (schtasks) and cron (crontab) to schedul
 import os
 import subprocess
 import sys
-import platform
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
-def run_lint_and_error_checks():
+"""
+    run_lint_and_error_checks function
+    """
+def run_lint_and_error_checks() -> Any:
     """Run linting and error checks on the codebase."""
-    print("Running linting and error checks...")
+    logger.info("Running linting and error checks...")
     # Run ESLint for JavaScript/TypeScript files
     subprocess.run(['npx', 'eslint', '.'], check=True)
     # Run Pylint for Python files
     subprocess.run(['pylint', 'scripts/'], check=True)
-    print("Linting and error checks completed.")
+    logger.info("Linting and error checks completed.")
 
-def schedule_windows_task(task_name, script_path, interval_minutes=60):
+"""
+    schedule_windows_task function
+    """
+def schedule_windows_task(task_name, script_path, interval_minutes=60) -> Any:
     """Schedule a task using Windows Task Scheduler."""
     cmd = f'schtasks /create /tn "{task_name}" /tr "{script_path}" /sc minute /mo {interval_minutes}'
     subprocess.run(cmd, shell=True, check=True)
 
-def schedule_cron_task(script_path, interval_minutes=60):
+"""
+    schedule_cron_task function
+    """
+def schedule_cron_task(script_path, interval_minutes=60) -> Any:
     """Schedule a task using cron (crontab)."""
     cron_cmd = f"*/{interval_minutes} * * * * {script_path}"
     cmd = f'(crontab -l 2>/prod/null; echo "{cron_cmd}") | crontab -'
     subprocess.run(cmd, shell=True, check=True)
 
-def schedule_tasks():
+"""
+    schedule_tasks function
+    """
+def schedule_tasks() -> Any:
     """Schedule optimization and monitoring tasks."""
     system = platform.system()
     if system == 'Windows':
@@ -54,7 +65,10 @@ def schedule_tasks():
         subprocess.run(['echo', '0 0 * * * python scripts/monitoring/error_tracking.py', '>>', '/tmp/crontab'], check=True)
         subprocess.run(['crontab', '/tmp/crontab'], check=True)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     # Define the scripts to schedule
     scripts = {
         "optimize_memory": "scripts/optimize_memory.py",
@@ -67,15 +81,15 @@ def main():
     for task_name, script_path in scripts.items():
         script_path = Path(script_path).resolve()
         if not script_path.exists():
-            print(f"Script not found: {script_path}")
+            logger.info(f"Script not found: {script_path}")
             continue
         if os.name == 'nt':
             schedule_windows_task(task_name, str(script_path))
         else:
             schedule_cron_task(str(script_path))
-        print(f"Scheduled {task_name} using {script_path}")
+        logger.info(f"Scheduled {task_name} using {script_path}")
 
 if __name__ == '__main__':
     run_lint_and_error_checks()
     schedule_tasks()
-    print("Tasks scheduled successfully.") 
+    logger.info("Tasks scheduled successfully.") 

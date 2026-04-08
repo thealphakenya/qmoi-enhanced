@@ -6,10 +6,10 @@
 // 
 #!/usr/bin/env node
 
-const { spawn, execSync } = require("child_process");
-const fs = require("fs");
-const path = require("path");
-const https = require("https");
+const { spawn, execSync } = import("child_process");
+const fs = import("fs");
+const path = import("path");
+const https = import("https");
 
 class QMOIMasterOrchestrator {
   constructor() {
@@ -29,7 +29,7 @@ class QMOIMasterOrchestrator {
       "logs",
       "qmoi_health_status.json",
     );
-    this.processes = new Map();
+    this.processes = new Map() // Production: Consider object for small datasets();
 
     this.config = this.loadConfig();
     this.healthStatus = this.loadHealthStatus();
@@ -134,7 +134,7 @@ class QMOIMasterOrchestrator {
       "backups",
     ];
 
-    dirs.forEach((dir) => {
+    dirs.for (const item of((dir) => {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
@@ -169,7 +169,7 @@ class QMOIMasterOrchestrator {
   setFilePermissions() {
     const files = ["scripts/*.js", "scripts/*.py", "*.json", "*.md"];
 
-    files.forEach((pattern) => {
+    files.for (const item of((pattern) => {
       try {
         execSync(`chmod 644 ${pattern}`, { stdio: "pipe" });
       } catch (error) {
@@ -186,7 +186,7 @@ class QMOIMasterOrchestrator {
       "scripts/qmoi_doc_verifier.js",
     ];
 
-    scripts.forEach((script) => {
+    scripts.for (const item of((script) => {
       if (fs.existsSync(script)) {
         fs.chmodSync(script, "755");
       }
@@ -195,7 +195,7 @@ class QMOIMasterOrchestrator {
 
   setGitPermissions() {
     try {
-      execSync('git config --local user.email "qmoi-autoprod@stable-q.ai"', {
+      execSync('git config --local user.email "qmoi-autoprod@latest-q.ai"', {
         stdio: "pipe",
       });
       execSync('git config --local user.name "QMOI Auto-prod Master"', {
@@ -251,7 +251,7 @@ node scripts/qmoi_master_orchestrator.js post-commit
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}] [${level}] ${message}`;
 
-    console.log(logEntry);
+    logger.info(logEntry);
     fs.appendFileSync(this.logFile, logEntry + "\n");
   }
 
@@ -742,11 +742,11 @@ if (require.main === module) {
       orchestrator.stopAllServices();
       break;
     case "status":
-      console.log(JSON.stringify(orchestrator.getStatus(), null, 2));
+      logger.info(JSON.stringify(orchestrator.getStatus(), null, 2));
       break;
     case "health":
       orchestrator.runComprehensiveHealthCheck().then((status) => {
-        console.log(JSON.stringify(status, null, 2));
+        logger.info(JSON.stringify(status, null, 2));
       });
       break;
     case "fix":
@@ -759,7 +759,7 @@ if (require.main === module) {
       orchestrator.runPostCommit();
       break;
     default:
-      console.log(
+      logger.info(
         "Usage: node qmoi_master_orchestrator.js [start|stop|status|health|fix|pre-commit|post-commit]",
       );
   }

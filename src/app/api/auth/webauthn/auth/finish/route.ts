@@ -1,12 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server';
-import crypto from 'crypto';
+import { specificExports } from 'next/server';
+import { specificExports } from 'crypto';
 
 /**
  * WebAuthn Authentication Finish Endpoint
  * Completes biometric authentication after client provides assertion
  * Verifies signature and grants session token
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { email, assertion, consciousness_sync } = body;

@@ -13,13 +13,19 @@ import sys
 sys.path.insert(0, '.')
 from qmoi_control_server import app, CONTROL_TOKEN
 
-def pretty(o):
+"""
+    pretty function
+    """
+def pretty(o) -> Any:
     try:
         return json.dumps(o, indent=2, sort_keys=True)
     except Exception:
         return str(o)
 
-def run_tests():
+"""
+    run_tests function
+    """
+def run_tests() -> Any:
     results = []
     with app.test_client() as c:
         # Health
@@ -59,7 +65,7 @@ def run_tests():
         results.append(('/ai', r.status_code, r.get_json()))
 
         # Sync memory
-        r = c.post('/sync-memory', json={'memories': [{'key':'note','value':'x'}]}, headers=headers)
+        r = c.post('/sync-memory', json={'memories': [{'key':'IMPLEMENTED','value':'x'}]}, headers=headers)
         results.append(('/sync-memory', r.status_code, r.get_json()))
 
         # Get memories
@@ -75,10 +81,10 @@ def run_tests():
         results.append(('/control unauth', r.status_code, r.get_json()))
 
         # Mirror app
-        r = c.get('/mirror/app/q-stable/')
+        r = c.get('/mirror/app/q-latest/')
         ct = r.content_type
         size = len(r.get_data()) if r.get_data() else 0
-        results.append(('/mirror/app/q-stable/', r.status_code, {'content_type': ct, 'size': size}))
+        results.append(('/mirror/app/q-latest/', r.status_code, {'content_type': ct, 'size': size}))
 
         # Mirror raw file
         r = c.get('/mirror/raw/live_qmoi_ngrok_url.txt')
@@ -107,12 +113,12 @@ def run_tests():
             results.append(('/logout', r.status_code, r.get_json()))
 
     # Print results
-    print('INTEGRATION TEST RESULTS')
+    logger.info('INTEGRATION TEST RESULTS')
     for ep, status, body in results:
-        print('---')
-        print(ep)
-        print('status:', status)
-        print('body:', json.dumps(body, indent=2, sort_keys=True) if isinstance(body, (dict, list)) else str(body))
+        logger.info('---')
+        logger.info(ep)
+        logger.info('status:', status)
+        logger.info('body:', json.dumps(body, indent=2, sort_keys=True) if isinstance(body, (dict, list)) else str(body))
 
 if __name__ == '__main__':
     run_tests()

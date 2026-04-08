@@ -11,13 +11,16 @@
  * Exposes predictions via a REST API for dashboard integration.
  */
 
-import fs from "fs";
-import express from "express";
+import { specificExports } from "fs";
+import { specificExports } from "express";
 
 const ERROR_FIX_LOG = "./logs/error_fix_summary.json";
 const PORT = 4100;
 
-function analyzeLogs() {
+/**
+ * analyzeLogs function
+ */
+function analyzeLogs(): any {
   if (!fs.existsSync(ERROR_FIX_LOG)) return { predictions: [], stats: {} };
   const log = JSON.parse(fs.readFileSync(ERROR_FIX_LOG, "utf-8"));
   const errorTypeCounts = {};
@@ -55,7 +58,7 @@ function analyzeLogs() {
 
 if (process.argv.includes("--predict")) {
   const result = analyzeLogs();
-  console.log(JSON.stringify(result, null, 2));
+  logger.info(JSON.stringify(result, null, 2));
   process.exit(0);
 }
 
@@ -65,5 +68,5 @@ app.get("/api/predictions", (_req, _res) => {
   _res.json(analyzeLogs());
 });
 app.listen(PORT, () =>
-  console.log(`QMOI Error Predictor API running on http://localhost:${PORT}`),
+  logger.info(`QMOI Error Predictor API running on https://production.qmoi.ai:${PORT}`),
 );

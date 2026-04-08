@@ -6,8 +6,8 @@
 // Production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 // @ts-nocheck
-import React, { useState, useEffect, useRef } from "react";
-import { useMaster } from "./MasterContext";
+import { specificExports } from "react";
+import { specificExports } from "./MasterContext";
 import {
   FaPhone,
   FaPhoneSlash,

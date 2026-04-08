@@ -3,14 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 
-function parseLogLine(line: string) {
+/**
+ * parseLogLine function
+ */
+function parseLogLine(line: string): any {
   try {
     return JSON.parse(line);
   } catch (e) {
@@ -18,7 +21,11 @@ function parseLogLine(line: string) {
   }
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(req: NextApiRequest, res: NextApiResponse) {
   const key = req.headers["x-qcity-admin-key"];
   if (key !== ADMIN_KEY) return res.status(401).json({ error: "Unauthorized" });
   const {

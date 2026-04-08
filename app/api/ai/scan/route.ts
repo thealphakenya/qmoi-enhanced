@@ -5,7 +5,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 interface ScanResult {
   threats: {
@@ -23,10 +23,13 @@ interface ScanResult {
   };
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
-    const healthUrl = `${process.env.NEXT_PUBLIC_API_URL || `http://localhost:${process.env.PORT || "3000"}`}/api/health?type=full`;
-    const response = await fetch(healthUrl, { method: "GET" });
+    const healthUrl = `${process.env.NEXT_PUBLIC_API_URL || `https://production.qmoi.ai:${process.env.PORT || "3000"}`}/api/health?type=full`;
+    const response = await apiClient.get(healthUrl, { method: "GET" });
     const healthData = response.ok ? await response.json() : null;
 
     const threats: ScanResult["threats"] = [];
@@ -72,7 +75,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { action, component } = body;
@@ -85,8 +91,8 @@ export async function POST(_request: NextRequest) {
         );
       }
 
-      const healthUrl = `${process.env.NEXT_PUBLIC_API_URL || `http://localhost:${process.env.PORT || "3000"}`}/api/health`;
-      const healResponse = await fetch(healthUrl, {
+      const healthUrl = `${process.env.NEXT_PUBLIC_API_URL || `https://production.qmoi.ai:${process.env.PORT || "3000"}`}/api/health`;
+      const healResponse = await apiClient.get(healthUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "heal", component }),

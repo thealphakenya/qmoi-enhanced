@@ -6,7 +6,7 @@
  all markers normalized for completion
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -14,10 +14,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Cpu,
   Zap,
@@ -32,7 +32,7 @@ import {
   Activity,
   Layers,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { specificExports } from "@/hooks/use-toast";
 
 interface Task {
   id: string;
@@ -157,7 +157,7 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
       const availableWorkers = workers.filter((w) => w.status === "idle");
 
       // Assign tasks to available workers
-      availableWorkers.forEach((worker) => {
+      availableWorkers.for (const item of((worker) => {
         const pendingTask = updatedTasks.find(
           (task) =>
             task.status === "pending" &&
@@ -187,13 +187,13 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
       });
 
       // Process running tasks
-      updatedTasks.forEach((task) => {
+      updatedTasks.for (const item of((task) => {
         if (task.status === "running") {
            progress
           task.progress = Math.min(100, task.progress + Math.random() * 15);
 
           if (task.progress >= 100) {
-            // Complete task
+            // complete task
             task.status = "completed";
             task.endTime = new Date();
             task.duration =

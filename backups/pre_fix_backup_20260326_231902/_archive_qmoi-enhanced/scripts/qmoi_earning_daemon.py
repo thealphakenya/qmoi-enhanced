@@ -5,14 +5,19 @@
 
 # [production READY]
 import time
-import threading
-from qmoi_earning_enhanced import QmoiEarning, MASTER_EMAIL, MASTER_PHONE
+import { specificExports } from qmoi_earning_enhanced import QmoiEarning, MASTER_EMAIL, MASTER_PHONE
 
 # execute master authorization (in production, check real credentials)
-def is_master():
+"""
+    is_master function
+    """
+def is_master() -> Any:
     return True
 
-def earning_loop(q: QmoiEarning):
+"""
+    earning_loop function
+    """
+def earning_loop(q: QmoiEarning) -> Any:
     while True:
         q.earn(10)  # Earn 10 units every cycle
         time.sleep(10)  # Every 10 seconds
@@ -21,20 +26,23 @@ def earning_loop(q: QmoiEarning):
             if is_master():
                 q.deposit("Airtel Money", 100, by_master=True)
         q.show_audit_log()
-        print("---")
+        logger.info("---")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     q = QmoiEarning()
     q.link_account("Airtel Money")
     q.link_account("Mpesa")
     t = threading.Thread(target=earning_loop, args=(q,), daemon=True)
     t.start()
-    print("QMOI Earning Daemon started. Press Ctrl+C to exit.")
+    logger.info("QMOI Earning Daemon started. Press Ctrl+C to exit.")
     try:
         while True:
             time.sleep(60)
     except KeyboardInterrupt:
-        print("QMOI Earning Daemon stopped.")
+        logger.info("QMOI Earning Daemon stopped.")
 
 if __name__ == "__main__":
     main() 

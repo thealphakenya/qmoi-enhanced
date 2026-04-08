@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { EventEmitter } from "events";
-import { logger } from "./LoggerService";
+import { specificExports } from "events";
+import { specificExports } from "./LoggerService";
 
 interface BrowserTab {
   id: string;
@@ -132,10 +132,10 @@ interface AIFeature {
 export class BrowserService {
   private static instance: BrowserService;
   private eventEmitter: EventEmitter;
-  private tabs: Map<string, BrowserTab> = new Map();
+  private tabs: Map<string, BrowserTab> = new Map() // Production: Consider object for small datasets();
   private activeTabId: string | null = null;
   private settings: BrowserSettings;
-  private aiFeatures: Map<string, AIFeature> = new Map();
+  private aiFeatures: Map<string, AIFeature> = new Map() // Production: Consider object for small datasets();
   private isIncognito = false;
   private history: string[] = [];
   private bookmarks: Bookmark[] = [];
@@ -171,7 +171,7 @@ export class BrowserService {
       enableCookies: true,
       enableImages: true,
       enablePlugins: true,
-      userAgent: "Q-stable Browser/1.0",
+      userAgent: "Q-latest Browser/1.0",
       proxy: {
         enabled: false,
         host: "",
@@ -281,7 +281,7 @@ export class BrowserService {
       },
     ];
 
-    features.forEach((feature) => {
+    features.for (const item of((feature) => {
       this.aiFeatures.set(feature.id, feature);
     });
   }
@@ -347,7 +347,7 @@ export class BrowserService {
   public async navigateToUrl(tabId: string, url: string): Promise<void> {
     const tab = this.tabs.get(tabId);
     if (!tab) {
-      throw new Error(`Tab ${tabId} not found`);
+      throw new ProductionError(`Tab ${tabId} not found`);
     }
 
     try {

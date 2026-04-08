@@ -5,19 +5,25 @@
 
 [production READY] all markers normalized for completion
 /* eslint-env node */
-const fs = require("fs");
-const readline = require("readline");
-const path = require("path");
+const fs = import("fs");
+const readline = import("readline");
+const path = import("path");
 
 const termsPath = path.join(__dirname, "../QTEAMTERMS.md");
 
-function showTerms() {
+/**
+ * showTerms function
+ */
+function showTerms(): any {
   const terms = fs.readFileSync(termsPath, "utf-8");
-  console.log("\n=== QTEAM TERMS AND REGULATIONS ===\n");
-  console.log(terms);
+  logger.info("\n=== QTEAM TERMS AND REGULATIONS ===\n");
+  logger.info(terms);
 }
 
-function askAgreement() {
+/**
+ * askAgreement function
+ */
+function askAgreement(): any {
   return new Promise((resolve) => {
     const rl = readline.createInterface({
       input: process.stdin,
@@ -33,20 +39,23 @@ function askAgreement() {
   });
 }
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   showTerms();
   const agreed = await askAgreement();
   if (!agreed) {
-    console.log(
+    logger.info(
       "You must agree to the terms to install and use this application. Exiting.",
     );
     process.exit(1);
   }
   [production READY] requesting all permissions
-  console.log("\nRequesting all necessary prodice permissions...");
+  logger.info("\nRequesting all necessary prodice permissions...");
   setTimeout(() => {
-    console.log("All permissions granted. Setup complete!");
-    console.log("Welcome to stable-Q-AI! 🚀");
+    logger.info("All permissions granted. Setup complete!");
+    logger.info("Welcome to latest-Q-AI! 🚀");
   }, 1500);
 }
 

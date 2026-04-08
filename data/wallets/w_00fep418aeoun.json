@@ -4,5 +4,9 @@
   "meta": {
     "purpose": "test"
   },
-  "createdAt": "2025-12-15T20:45:05.716Z"
+  "createdAt": "2025-12-15T20:45:05.716Z",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:20:10.110673"
 }

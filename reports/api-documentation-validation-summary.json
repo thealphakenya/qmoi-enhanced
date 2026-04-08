@@ -4,5 +4,9 @@
   "documented_endpoints": 488,
   "missing_endpoints": 0,
   "endpoint_coverage": 100.0,
-  "miner": "validate_api_documentation"
+  "miner": "validate_api_documentation",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:04.990133"
 }

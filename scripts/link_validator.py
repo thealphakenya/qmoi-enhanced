@@ -10,14 +10,11 @@ Writes `.qmoi_validation/link_validation_report.json`.
 By default performs no network checks. Use --check-network to attempt HTTP HEAD (requires QMOI_ALLOW_NETWORK).
 """
 import urllib.error
-import urllib.request
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 import argparse
 import json
 import os
-import re
-from urllib.parse import urlparse
+import { specificExports } from urllib.parse import urlparse
 import datetime
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -31,7 +28,10 @@ class LinkValidationError(Exception):
     """Raised when link validation encounters a fatal error."""
     pass
 
-def validate_links(links_file, urls, allow_network=True):
+"""
+    validate_links function
+    """
+def validate_links(links_file, urls, allow_network=True) -> Any:
     """Validate the given URLs.
 
     Args:
@@ -63,10 +63,16 @@ def validate_links(links_file, urls, allow_network=True):
             invalid.append(u)
     return {'valid': valid, 'invalid': invalid}
 
-def ensure_out_dir():
+"""
+    ensure_out_dir function
+    """
+def ensure_out_dir() -> Any:
     os.makedirs(OUT_DIR, exist_ok=True)
 
-def find_markdown_files():
+"""
+    find_markdown_files function
+    """
+def find_markdown_files() -> Any:
     md_files = []
     for dirpath, dirnames, filenames in os.walk(ROOT):
         # skip .git and .qmoi_validation
@@ -77,7 +83,10 @@ def find_markdown_files():
                 md_files.append(os.path.join(dirpath, fn))
     return md_files
 
-def syntactic_check(url):
+"""
+    syntactic_check function
+    """
+def syntactic_check(url) -> Any:
     try:
         parsed = urlparse(url)
         if parsed.scheme in ("http", "https", "mailto", "ftp"):
@@ -89,7 +98,10 @@ def syntactic_check(url):
     except Exception as e:
         return False, str(e)
 
-def run(check_network=False):
+"""
+    run function
+    """
+def run(check_network=False) -> Any:
     ensure_out_dir()
     md_files = find_markdown_files()
     report = {
@@ -116,9 +128,12 @@ def run(check_network=False):
     with open(out_path, 'w') as f:
         json.dump(report, f, indent=2)
 
-    print(f"Wrote {out_path}")
+    logger.info(f"Wrote {out_path}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--check-network', action='store_true',
                    help='Attempt live network checks (requires QMOI_ALLOW_NETWORK)')
@@ -140,7 +155,10 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT_DIR = os.path.join(ROOT, ".qmoi_validation")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-def find_md_files(root):
+"""
+    find_md_files function
+    """
+def find_md_files(root) -> Any:
     for dirpath, dirnames, filenames in os.walk(root):
         # skip .git and .qmoi_validation
         if ".git" in dirpath or ".qmoi_validation" in dirpath:
@@ -151,7 +169,10 @@ def find_md_files(root):
 
 LINK_RE = re.compile(r"https?://[\w\-\./?&=%#~:+]+", re.IGNORECASE)
 
-def scan_file(path):
+"""
+    scan_file function
+    """
+def scan_file(path) -> Any:
     text = open(path, "r", encoding="utf-8", errors="ignore").read()
     links = LINK_RE.findall(text)
     problems = []
@@ -164,7 +185,10 @@ def scan_file(path):
             problems.append({"link": l, "reason": "required-netloc"})
     return links, problems
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check-network", action="store_true",
                         help="(Optional) attempt HTTP HEAD checks (gated by QMOI_ALLOW_NETWORK)")
@@ -187,7 +211,7 @@ def main():
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2)
 
-    print(f"Wrote {out_path}. Files scanned: {len(report['files'])}, links: {total_links}, problems: {total_problems}")
+    logger.info(f"Wrote {out_path}. Files scanned: {len(report['files'])}, links: {total_links}, problems: {total_problems}")
 
 if __name__ == "__main__":
     main()
@@ -204,17 +228,26 @@ QM_VAL.mkdir(exist_ok=True)
 
 LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 
-def find_md_files(root: Path):
+"""
+    find_md_files function
+    """
+def find_md_files(root: Path) -> Any:
     return list(root.rglob("*.md"))
 
-def check_url(url: str, timeout=5):
+"""
+    check_url function
+    """
+def check_url(url: str, timeout=5) -> Any:
     try:
         with urllib.request.urlopen(url, timeout=timeout) as r:
             return {"status": r.status}
     except Exception as e:
         return {"error": str(e)}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument("--check", action="store_true",
                    help="Perform network reachability checks (requires QMOI_ALLOW_NETWORK=1)")
@@ -239,8 +272,8 @@ def main():
                 else:
                     entry["status"] = check_url(href)
             else:
-                # quick validation
-                if href.startswith("http://") or href.startswith("https://") or href.startswith("/"):
+                # optimized validation
+                if href.startswith("https://") or href.startswith("https://") or href.startswith("/"):
                     entry["status"] = "ok-format"
                 else:
                     entry["status"] = "maybe-relative-or-invalid"
@@ -250,7 +283,7 @@ def main():
 
     out = QM_VAL / "links_report.json"
     out.write_text(json.dumps(report, indent=2), encoding="utf-8")
-    print(f"Wrote {out} (scanned {len(md_files)} .md files)")
+    logger.info(f"Wrote {out} (scanned {len(md_files)} .md files)")
 
 if __name__ == "__main__":
     main()

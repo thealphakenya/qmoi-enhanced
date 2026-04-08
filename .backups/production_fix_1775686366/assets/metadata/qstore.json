@@ -1,0 +1,122 @@
+{
+  "id": "qstore",
+  "name": "QStore",
+  "display_name": "QStore App Marketplace",
+  "version": "v1.0.0",
+  "build_number": "2026.0325.005",
+  "type": "web",
+  "category": "marketplace",
+  "platforms": [
+    "Web"
+  ],
+  "description": "Comprehensive app marketplace and distribution platform for QMOI ecosystem applications.",
+  "features": [
+    "App Discovery",
+    "One-click Install",
+    "Review System",
+    "prodeloper Portal",
+    "Revenue Sharing",
+    "Analytics Dashboard",
+    "Automated Updates",
+    "Security Scanning",
+    "Multi-platform Support",
+    "API Marketplace"
+  ],
+  "requirements": {
+    "browsers": [
+      "Chrome 90+",
+      "Firefox 88+",
+      "Safari 14+",
+      "Edge 90+"
+    ],
+    "min_ram": "2GB",
+    "min_storage": "1GB",
+    "network": "Stable internet connection"
+  },
+  "dependencies": [
+    "Modern web browser",
+    "JavaScript enabled",
+    "Service Worker support",
+    "Web App Manifest support"
+  ],
+  "permissions": [
+    "File system access",
+    "App installation",
+    "Notifications (optional)",
+    "Payment processing"
+  ],
+  "supported_languages": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "zh",
+    "ja",
+    "ko",
+    "ru"
+  ],
+  "target_audience": "prodelopers, Users, Enterprises",
+  "icon": "assets/icons/qstore.svg",
+  "icon_sizes": [
+    16,
+    32,
+    48,
+    64,
+    128,
+    256,
+    512
+  ],
+  "license": "QMOI Marketplace License",
+  "support_email": "support@qstore.qmoi.com",
+  "website": "https://qstore.qmoi.com",
+  "changelog_url": "https://qstore.qmoi.com/changelog",
+  "privacy_policy": "https://qstore.qmoi.com/privacy",
+  "terms_of_service": "https://qstore.qmoi.com/terms",
+  "build_info": {
+    "build_date": "2026-03-31T23:19:21.399852+00:00",
+    "build_timestamp": 1774999161,
+    "build_machine": "production-build-server",
+    "build_environment": "production",
+    "compiler_version": "latest",
+    "target_architectures": [
+      "x64",
+      "arm64"
+    ]
+  },
+  "quality_metrics": {
+    "code_coverage": 95.0,
+    "test_pass_rate": 99.5,
+    "performance_score": 95.0,
+    "security_score": 98.0,
+    "accessibility_score": 92.0
+  },
+  "distribution": {
+    "auto_update": true,
+    "update_channel": "stable",
+    "download_mirrors": [
+      "us-east",
+      "us-west",
+      "eu-central",
+      "asia-pacific"
+    ],
+    "cdn_distribution": true
+  },
+  "analytics": {
+    "enabled": true,
+    "anonymized": true,
+    "crash_reporting": true,
+    "usage_metrics": true,
+    "performance_monitoring": true
+  },
+  "security": {
+    "code_signing": true,
+    "certificate_authority": "QMOI Root CA",
+    "encryption": "AES-256",
+    "secure_boot": true,
+    "productioning": true
+  },
+  "generated_at": "2026-03-31T23:19:21.399852+00:00",
+  "generator_version": "2.0.0",
+  "schema_version": "1.0",
+  "checksum": "8b1caeac404af3bf1f7818c20653687696083d7e52a53c64928e5b22f69e1aad"
+}

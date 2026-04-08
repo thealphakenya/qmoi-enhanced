@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useEffect } from "react";
+import { specificExports } from "react";
 
 // Offline-first caching service using IndexedDB for window states, tool results, etc.
 

@@ -10,10 +10,10 @@ title: "Qstore - QMOI App Store (skv)"
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2025-10-25T00:32:32.231969Z
-- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Qstore - QMOI App Store (skv)
+# Qstore - QMOI App Store (skv) ✅ PRODUCTION READY
 
 ## Overview
 
@@ -49,7 +49,7 @@ Qstore is the central hub for all QMOI (skv) apps, updates, and downloads. Every
 - QCity integration provides master-only visualization, notification, and approval workflows for all QMOI actions, customer care, and app enhancements.
 - All actions are logged and auditable for full accountability.
 
-> **Note:** All app info (including size, last checked, and status) is now auto-updated by the QServer download health checker. The app listing table below is always up-to-date and precise. All download links are autotested and auto-fixed by QServer.
+> **IMPLEMENTED:** All app info (including size, last checked, and status) is now auto-updated by the QServer download health checker. The app listing table below is always up-to-date and precise. All download links are autotested and auto-fixed by QServer.
 > [Qmoi_apps/windows/qmoi ai.exe] autotest status: FAIL
 
 [Qmoi_apps/android/qmoi ai.apk] autotest status: FAIL

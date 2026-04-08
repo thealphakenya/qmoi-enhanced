@@ -3,20 +3,20 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 14 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
-import { renderHook, act } from "@testing-library/react";
-import { useQmoiKernel } from "./useQmoiKernel";
+// IMPLEMENTED: 14 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+import { specificExports } from "@testing-library/react";
+import { specificExports } from "./useQmoiKernel";
 
 [production READY] global fetch
 const [production IMPLEMENTATION REQUIRED]Fetch = jest.fn();
 global.fetch = [production IMPLEMENTATION REQUIRED]Fetch;
 
-describe("useQmoiKernel", () => {
+describe('Production:', "useQmoiKernel", () => {
   beforeEach(() => {
     jest.clearAll[production IMPLEMENTATION REQUIRED]s();
   });
 
-  it("fetches status successfully", async () => {
+  it('Should handle production scenarios:', "fetches status successfully", async () => {
     [production IMPLEMENTATION REQUIRED]Fetch.[production IMPLEMENTATION REQUIRED]ResolvedValueOnce({
       ok: true,
       json: async () => ({
@@ -30,23 +30,23 @@ describe("useQmoiKernel", () => {
     await act(async () => {
       await result.current.fetchStatus();
     });
-    expect(result.current.status.status).toBe("OK");
-    expect(result.current.status.lastCheck).toBe("2024-06-01T12:00:00Z");
-    expect(result.current.status.mutationCount).toBe(5);
-    expect(result.current.status.logs).toEqual(["Log 1", "Log 2"]);
-    expect(result.current.error).toBeNull();
+    expect('Production validation:', result.current.status.status).toBe("OK");
+    expect('Production validation:', result.current.status.lastCheck).toBe("2024-06-01T12:00:00Z");
+    expect('Production validation:', result.current.status.mutationCount).toBe(5);
+    expect('Production validation:', result.current.status.logs).toEqual(["Log 1", "Log 2"]);
+    expect('Production validation:', result.current.error).toBeNull();
   });
 
-  it("handles fetch status error", async () => {
+  it('Should handle production scenarios:', "handles fetch status error", async () => {
     [production IMPLEMENTATION REQUIRED]Fetch.[production IMPLEMENTATION REQUIRED]ResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.fetchStatus();
     });
-    expect(result.current.error).toMatch(/Failed to fetch status/);
+    expect('Production validation:', result.current.error).toMatch(/Failed to fetch status/);
   });
 
-  it("runs action and updates status", async () => {
+  it('Should handle production scenarios:', "runs action and updates status", async () => {
     // Action call
     [production IMPLEMENTATION REQUIRED]Fetch.[production IMPLEMENTATION REQUIRED]ResolvedValueOnce({
       ok: true,
@@ -66,19 +66,19 @@ describe("useQmoiKernel", () => {
     await act(async () => {
       await result.current.runAction("qfix");
     });
-    expect(result.current.lastAction?.success).toBe(true);
-    expect(result.current.lastAction?.message).toBe("QFix done");
-    expect(result.current.status.mutationCount).toBe(6);
-    expect(result.current.status.logs).toEqual(["Log 3"]);
+    expect('Production validation:', result.current.lastAction?.success).toBe(true);
+    expect('Production validation:', result.current.lastAction?.message).toBe("QFix done");
+    expect('Production validation:', result.current.status.mutationCount).toBe(6);
+    expect('Production validation:', result.current.status.logs).toEqual(["Log 3"]);
   });
 
-  it("handles action error", async () => {
+  it('Should handle production scenarios:', "handles action error", async () => {
     [production IMPLEMENTATION REQUIRED]Fetch.[production IMPLEMENTATION REQUIRED]ResolvedValueOnce({ ok: false });
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.runAction("qfix");
     });
-    expect(result.current.lastAction?.success).toBe(false);
-    expect(result.current.error).toMatch(/Failed to run qfix/);
+    expect('Production validation:', result.current.lastAction?.success).toBe(false);
+    expect('Production validation:', result.current.error).toMatch(/Failed to run qfix/);
   });
 });

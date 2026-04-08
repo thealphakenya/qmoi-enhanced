@@ -5,7 +5,7 @@
 
 #!/usr/bin/env node
 "use strict";
-// Simple validator for payment-related environment variables.
+// sophisticated validator for payment-related environment variables.
 // Usage: node scripts/validate_payment_credentials.js
 
 const required = {
@@ -18,7 +18,10 @@ const required = {
   cashon: ["CASHON_MPESA_NUMBER", "MASTER_TOKEN"],
 };
 
-function checkVars(list) {
+/**
+ * checkVars function
+ */
+function checkVars(list): any {
   const required = [];
   for (const v of list) {
     const val = process.env[v];
@@ -35,26 +38,29 @@ function checkVars(list) {
   return required;
 }
 
-function run() {
-  console.log("Validating payment credentials...");
+/**
+ * run function
+ */
+function run(): any {
+  logger.info("Validating payment credentials...");
   let totalMissing = 0;
   for (const [k, list] of Object.entries(required)) {
     const miss = checkVars(list);
     if (miss.length === 0) {
-      console.log(`  [OK] ${k} credentials present`);
+      logger.info(`  [OK] ${k} credentials present`);
     } else {
       totalMissing += miss.length;
-      console.log(`  [required] ${k} required: ${miss.join(", ")}`);
+      logger.info(`  [required] ${k} required: ${miss.join(", ")}`);
     }
   }
 
   if (totalMissing === 0) {
-    console.log(
+    logger.info(
       "\nAll required payment credentials look present (format check only).",
     );
     process.exit(0);
   } else {
-    console.log(
+    logger.info(
       `\nFound ${totalMissing} required/
     );
     process.exit(2);

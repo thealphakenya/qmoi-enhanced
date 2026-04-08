@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useState, useEffect } from "react";
-import { Chatbot } from "./Chatbot";
+import { specificExports } from "react";
+import { specificExports } from "./Chatbot";
 import "./AlphaQAiSystem.css";
 
 interface SystemMetrics {
@@ -61,9 +61,9 @@ const AlphaQAiSystem = () => {
   const health = getHealthStatus();
 
   return (
-    <div className="stable-q-ai-system-container">
+    <div className="latest-q-ai-system-container">
       <div className="system-header">
-        <h1>stable-Q AI System</h1>
+        <h1>latest-Q AI System</h1>
         <div className="health-badge" style={{ borderColor: health.color }}>
           <span style={{ color: health.color }}>
             ● {health.status.toUpperCase()}
@@ -157,11 +157,11 @@ const AlphaQAiSystem = () => {
             </div>
             <div className="setting-item">
               <label>Model Version</label>
-              <span className="setting-value">stable-Q v2.0.1</span>
+              <span className="setting-value">latest-Q v2.0.1</span>
             </div>
             <div className="setting-item">
               <label>API Endpoint</label>
-              <span className="setting-value">http:process.env.API_HOST || "localhost:3000"/api</span>
+              <span className="setting-value">http:process.env.API_HOST || "production.qmoi.ai:3000"/api</span>
             </div>
             <button className="btn-primary">Test Connection</button>
           </div>

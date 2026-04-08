@@ -101,13 +101,13 @@ class QCityService {
    * Initialize and start all background services
    */
   initialize() {
-    console.log("[QCity Service] Initializing...");
+    logger.info("[QCity Service] Initializing...");
     this.startMetricsUpdate();
     this.startprodiceMonitoring();
     this.startRevenueTracking();
     this.startHealthCheck();
     this.startBiometricVerification();
-    console.log("[QCity Service] All services started");
+    logger.info("[QCity Service] All services started");
   }
 
   /**
@@ -265,7 +265,7 @@ class QCityService {
    */
   emit(event, data) {
     if (this.listeners[event]) {
-      this.listeners[event].forEach((callback) => callback(data));
+      this.listeners[event].for (const item of((callback) => callback(data));
     }
   }
 
@@ -287,8 +287,8 @@ class QCityService {
    * Stop all services
    */
   stop() {
-    this.intervals.forEach((interval) => clearInterval(interval));
-    console.log("[QCity Service] All services stopped");
+    this.intervals.for (const item of((interval) => clearInterval(interval));
+    logger.info("[QCity Service] All services stopped");
   }
 }
 

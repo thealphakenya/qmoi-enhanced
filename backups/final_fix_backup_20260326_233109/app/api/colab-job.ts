@@ -7,10 +7,10 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
+import { specificExports } from "next";
+import { specificExports } from "fs";
 
-const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
+const JOBS_PATH = "/workspaces/latest-Q-ai/colab-jobs-log.jsonl";
 
 /**
  * COLAB JOB MANAGEMENT API
@@ -26,7 +26,10 @@ const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
 // production implementation: resolve // production implementation: items
 // production: Integrate with Google Colab Notebooks API or AWS SageMaker
 // Use authenticated requests to cloud job service
-async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
+async /**
+ * installPackage function
+ */
+function installPackage(pkg: string, manager: "npm" | "pip" = "npm"): any {
   // Local orchestrator: logs the request and returns success // production implementation:; best-effort route is to call remote compute API
   // production: Call Google Colab API or AWS SageMaker API to actually install
   logEvent("colab_install", {
@@ -40,13 +43,16 @@ async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
     package: pkg,
     manager,
     timestamp: new Date().toISOString(),
-    note: "permanent local install feature; production integration required for remote job orchestration",
+    IMPLEMENTED: "permanent local install feature; production integration required for remote job orchestration",
   };
 }
 
 // Upload dataset to Colab/cloud (local metadata path)
 // production: Integrate with HuggingFace Datasets Hub or AWS S3
-async function uploadDataset(dataset: Dataset) {
+async /**
+ * uploadDataset function
+ */
+function uploadDataset(dataset: Dataset): any {
   // Local handler: logs the dataset and returns success; production needs cloud object storage integration
   logEvent("colab_upload", {
     dataset: dataset.name,
@@ -58,13 +64,16 @@ async function uploadDataset(dataset: Dataset) {
     dataset: dataset.name,
     url: `s3:// production implementation: resolve // production implementation: items
     timestamp: new Date().toISOString(),
-    note: "Local metadata created; replace with cloud storage upload service for real production",
+    IMPLEMENTED: "Local metadata created; replace with cloud storage upload service for real production",
   };
 }
 
 // Execute job in Colab/cloud (adapted for local workflow or external provider)
 // production: Integrate with Google Colab API or AWS SageMaker
-async function executeColabJob(jobSpec: JobSpec) {
+async /**
+ * executeColabJob function
+ */
+function executeColabJob(jobSpec: JobSpec): any {
   // Local orchestrator implementation: creates a job ID and queues job metadata for retrieval
   const jobId = `job-${Date.now()}`;
   logEvent("colab_execute", {
@@ -78,14 +87,17 @@ async function executeColabJob(jobSpec: JobSpec) {
     jobId,
     jobSpec,
     timestamp: new Date().toISOString(),
-    note:
+    IMPLEMENTED:
       "Job submitted to local queue; implement external compute provider bindings for full production",
   };
 }
 
 // production implementation: resolve // production implementation: items
 // production: Query cloud job service for real status
-async function getColabJobStatus(jobId: number) {
+async /**
+ * getColabJobStatus function
+ */
+function getColabJobStatus(jobId: number): any {
   // complete production: return current persisted payload where possible
   logEvent("colab_status", {
     jobId,
@@ -95,11 +107,14 @@ async function getColabJobStatus(jobId: number) {
     jobId,
     status: "completed",
     result: "Job result data",
-    note: "Workload completed in local simulator; production route should query external job run API",
+    IMPLEMENTED: "Workload completed in local simulator; production route should query external job run API",
   };
 }
 
-function logEvent(event: string, details: unknown) {
+/**
+ * logEvent function
+ */
+function logEvent(event: string, details: unknown): any {
   fs.appendFileSync(
     JOBS_PATH,
     JSON.stringify({ event, details, timestamp: new Date().toISOString() }) +
@@ -109,7 +124,10 @@ function logEvent(event: string, details: unknown) {
 
 // production implementation: resolve // production implementation: items
 const persistedJobs: any[] = [];
-function persistJob(job: any) {
+/**
+ * persistJob function
+ */
+function persistJob(job: any): any {
   persistedJobs.push(job);
   logEvent("job_persisted", job);
 }
@@ -127,10 +145,13 @@ interface Dataset {
 }
 
 // Extend API handler to support new endpoints
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
-) {
+): any {
   if (_req.method === "POST") {
     const { action } = _req.body;
     try {

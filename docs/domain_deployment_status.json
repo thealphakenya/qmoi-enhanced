@@ -179,7 +179,7 @@
       "target_health": 100,
       "last_updated": "2026-04-03T03:28:03.676317"
     },
-    "q-stable.qmoi.ai": {
+    "q-latest.qmoi.ai": {
       "dns_status": "\u2705 Deployed",
       "last_updated": "2026-04-03T03:42:12.751801",
       "ssl_status": "\u2705 Provisioned",
@@ -518,7 +518,7 @@
   "remaining_domains_summary": {
     "count": 17,
     "domains": [
-      "q-stable.qmoi.ai",
+      "q-latest.qmoi.ai",
       "qcity.io",
       "qcity.qmoi.ai",
       "qglobal.ai",
@@ -606,6 +606,10 @@
     "all_domains_ssl": "Valid (auto-renewing)",
     "all_domains_active": "Not parked",
     "all_domains_uptime": "\u226599.5%",
-    "deployment_status": "\u2705 COMPLETE"
-  }
+    "deployment_status": "\u2705 complete"
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:06.930483"
 }

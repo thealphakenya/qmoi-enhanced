@@ -20,10 +20,7 @@ import base64
 import hashlib
 import logging
 import secrets
-import datetime
-from pathlib import Path
-from typing import Dict, Any, Optional
-from cryptography.fernet import Fernet
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from cryptography.fernet import Fernet
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -31,7 +28,10 @@ logger = logging.getLogger(__name__)
 class QMOIEnhancedAutoConfig:
     """Enhanced automatic configuration system for QMOI."""
     
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.workspace_root = Path('/workspaces/qmoi-enhanced')
         self.config_dir = self.workspace_root / 'config'
         self.env_file = self.workspace_root / '.env.production'
@@ -39,7 +39,10 @@ class QMOIEnhancedAutoConfig:
         self.encryption_key = self._generate_encryption_key()
         self.master_token = secrets.token_hex(32)
 
-    def _generate_encryption_key(self) -> bytes:
+    """
+    _generate_encryption_key function
+    """
+def _generate_encryption_key(self) -> bytes:
         """Generate or retrieve encryption key."""
         key_file = self.workspace_root / '.qmoi_state' / 'master.key'
         if key_file.exists():
@@ -50,7 +53,10 @@ class QMOIEnhancedAutoConfig:
         key_file.write_bytes(key)
         return key
 
-    def generate_bitget_credentials(self) -> Dict[str, str]:
+    """
+    generate_bitget_credentials function
+    """
+def generate_bitget_credentials(self) -> Dict[str, str]:
         """Generate secure Bitget API credentials."""
         return {
             'BITGET_API_KEY': secrets.token_hex(32),
@@ -58,7 +64,10 @@ class QMOIEnhancedAutoConfig:
             'BITGET_API_PASSPHRASE': secrets.token_urlsafe(16)
         }
 
-    def generate_mpesa_credentials(self) -> Dict[str, str]:
+    """
+    generate_mpesa_credentials function
+    """
+def generate_mpesa_credentials(self) -> Dict[str, str]:
         """Generate M-Pesa credentials."""
         initiator_password = "Victor9798!"
         timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
@@ -77,14 +86,20 @@ class QMOIEnhancedAutoConfig:
             'MPESA_SECURITY_CREDENTIAL': security_credential,
         }
 
-    def generate_megavault_credentials(self) -> Dict[str, str]:
+    """
+    generate_megavault_credentials function
+    """
+def generate_megavault_credentials(self) -> Dict[str, str]:
         """Generate Megavault API credentials."""
         return {
             'MEGAVAULT_API_KEY': secrets.token_hex(32),
             'MEGAVAULT_API_SECRET': secrets.token_hex(64)
         }
 
-    def generate_qmoi_credentials(self) -> Dict[str, str]:
+    """
+    generate_qmoi_credentials function
+    """
+def generate_qmoi_credentials(self) -> Dict[str, str]:
         """Generate QMOI system credentials."""
         return {
             'QMOI_MASTER_TOKEN': self.master_token,
@@ -93,7 +108,10 @@ class QMOIEnhancedAutoConfig:
             'QMOI_JWT_SECRET': secrets.token_hex(64)
         }
 
-    def generate_revenue_targets(self) -> Dict[str, str]:
+    """
+    generate_revenue_targets function
+    """
+def generate_revenue_targets(self) -> Dict[str, str]:
         """Generate revenue targets configuration."""
         return {
             'QMOI_DAILY_TARGET': '10000',
@@ -103,41 +121,59 @@ class QMOIEnhancedAutoConfig:
             'QMOI_GROWTH_TARGET': '20'
         }
 
-    def generate_system_config(self) -> Dict[str, str]:
+    """
+    generate_system_config function
+    """
+def generate_system_config(self) -> Dict[str, str]:
         """Generate system configuration."""
         return {
             'QMOI_VERSION': '2.0.0',
             'QMOI_ENVIRONMENT': 'production',
-            'NEXT_PUBLIC_APP_URL': 'https://stable-q-ai.vercel.app',
+            'NEXT_PUBLIC_APP_URL': 'https://latest-q-ai.vercel.app',
             'QMOI_AUTO_EVOLVE': 'true',
             'QMOI_REVENUE_TRACKING': 'true',
             'QMOI_AUTO_FIX': 'true'
         }
 
-    def encrypt_credentials(self, credentials: Dict[str, str]) -> bytes:
+    """
+    encrypt_credentials function
+    """
+def encrypt_credentials(self, credentials: Dict[str, str]) -> bytes:
         """Encrypt sensitive credentials."""
         fernet = Fernet(self.encryption_key)
         return fernet.encrypt(json.dumps(credentials).encode())
 
-    def decrypt_credentials(self, encrypted_data: bytes) -> Dict[str, str]:
+    """
+    decrypt_credentials function
+    """
+def decrypt_credentials(self, encrypted_data: bytes) -> Dict[str, str]:
         """Decrypt sensitive credentials."""
         fernet = Fernet(self.encryption_key)
         return json.loads(fernet.decrypt(encrypted_data).decode())
 
-    def save_encrypted_credentials(self, credentials: Dict[str, str]):
+    """
+    save_encrypted_credentials function
+    """
+def save_encrypted_credentials(self, credentials: Dict[str, str]) -> Any:
         """Save encrypted credentials to secure storage."""
         encrypted = self.encrypt_credentials(credentials)
         self.secure_store.parent.mkdir(exist_ok=True)
         self.secure_store.write_bytes(encrypted)
 
-    def load_encrypted_credentials(self) -> Optional[Dict[str, str]]:
+    """
+    load_encrypted_credentials function
+    """
+def load_encrypted_credentials(self) -> Optional[Dict[str, str]]:
         """Load encrypted credentials from secure storage."""
         if not self.secure_store.exists():
             return None
         encrypted = self.secure_store.read_bytes()
         return self.decrypt_credentials(encrypted)
 
-    def generate_env_file(self, credentials: Dict[str, str]):
+    """
+    generate_env_file function
+    """
+def generate_env_file(self, credentials: Dict[str, str]) -> Any:
         """Generate .env.production file with credentials."""
         env_content = [
             "# QMOI Enhanced production Environment",
@@ -169,7 +205,10 @@ class QMOIEnhancedAutoConfig:
             all_credentials.update(creds)
         self.save_encrypted_credentials(all_credentials)
 
-    def verify_credentials(self) -> bool:
+    """
+    verify_credentials function
+    """
+def verify_credentials(self) -> bool:
         """Verify all credentials are properly configured."""
         try:
             if not self.env_file.exists():
@@ -181,8 +220,8 @@ class QMOIEnhancedAutoConfig:
             ]
 
             env_content = self.env_file.read_text()
-            for var in required_vars:
-                if var not in env_content:
+            for const in required_vars:
+                if const not in env_content:
                     return False
 
             # Verify encrypted backup
@@ -196,7 +235,10 @@ class QMOIEnhancedAutoConfig:
             logger.error(f"Credential verification failed: {e}")
             return False
 
-    def auto_configure(self):
+    """
+    auto_configure function
+    """
+def auto_configure(self) -> Any:
         """Run full auto-configuration process."""
         try:
             logger.info("Starting QMOI Enhanced Auto-Configuration...")
@@ -220,7 +262,10 @@ class QMOIEnhancedAutoConfig:
             logger.error(f"❌ Auto-configuration failed: {e}")
             sys.exit(1)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point."""
     config = QMOIEnhancedAutoConfig()
     config.auto_configure()

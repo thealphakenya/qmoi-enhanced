@@ -16,10 +16,7 @@ import json
 import time
 import subprocess
 import tempfile
-import shutil
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, Any
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, Any
 import logging
 
 # Configure logging
@@ -33,7 +30,10 @@ logging.basicConfig(
 )
 
 class QMOISelfTest:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.root_dir = Path.cwd()
         self.logs_dir = self.root_dir / "logs"
         self.logs_dir.mkdir(exist_ok=True)
@@ -52,7 +52,10 @@ class QMOISelfTest:
         
         self.backup_files = {}
     
-    def create_test_backup(self) -> bool:
+    """
+    create_test_backup function
+    """
+def create_test_backup(self) -> bool:
         """Create backup of critical files before testing"""
         try:
             critical_files = [
@@ -75,7 +78,10 @@ class QMOISelfTest:
             logging.error(f"Error creating backup: {e}")
             return False
     
-    def restore_test_backup(self) -> bool:
+    """
+    restore_test_backup function
+    """
+def restore_test_backup(self) -> bool:
         """Restore backup files after testing"""
         try:
             for file_name, backup_path in self.backup_files.items():
@@ -89,19 +95,22 @@ class QMOISelfTest:
             logging.error(f"Error restoring backup: {e}")
             return False
     
-    def simulate_manual_errors(self) -> Dict[str, Any]:
+    """
+    simulate_manual_errors function
+    """
+def simulate_manual_errors(self) -> Dict[str, Any]:
         """execute various types of manual errors"""
         errors_created = {}
         
         try:
             # 1. Create broken TypeScript file
             broken_ts_content = """
-import React from 'react';
+import { specificExports } from 'react';
 
 const BrokenComponent: React.FC = () => {
   const undefinedVar = undefined;
   console.error('This is a simulated error');
-  throw new Error('Simulated error for testing');
+  throw new ProductionError('Simulated error for testing');
   
   return (
     <div>
@@ -122,9 +131,12 @@ export default BrokenComponent;
             broken_py_content = """
 #!/usr/bin/env python3
 
-def broken_function():
+"""
+    broken_function function
+    """
+def broken_function() -> Any:
     undefined_variable = None
-    print(undefined_variable.attribute)  # This will cause an error
+    logger.info(undefined_variable.attribute)  # This will cause an error
     raise Exception("Simulated Python error")
 
 if __name__ == "__main__":
@@ -174,7 +186,10 @@ This document contains false claims that should be detected and fixed.
             logging.error(f"Error simulating manual errors: {e}")
             return errors_created
     
-    def run_auto_fix(self) -> Dict[str, Any]:
+    """
+    run_auto_fix function
+    """
+def run_auto_fix(self) -> Dict[str, Any]:
         """Run the auto-fix system"""
         try:
             start_time = time.time()
@@ -202,7 +217,10 @@ This document contains false claims that should be detected and fixed.
         except Exception as e:
             return {"success": False, "error": str(e), "duration": 0}
     
-    def verify_recovery(self, errors_created: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    verify_recovery function
+    """
+def verify_recovery(self, errors_created: Dict[str, Any]) -> Dict[str, Any]:
         """Verify that errors were properly fixed"""
         verification_results = {}
         
@@ -216,7 +234,10 @@ This document contains false claims that should be detected and fixed.
             logging.error(f"Error during recovery verification: {e}")
             return {"error": str(e)}
     
-    def run_performance_tests(self) -> Dict[str, Any]:
+    """
+    run_performance_tests function
+    """
+def run_performance_tests(self) -> Dict[str, Any]:
         """Run performance tests to measure system health"""
         performance_metrics = {}
         try:
@@ -226,7 +247,10 @@ This document contains false claims that should be detected and fixed.
             logging.error(f"Error during performance tests: {e}")
             return {"error": str(e)}
     
-    def generate_test_report(self) -> Dict[str, Any]:
+    """
+    generate_test_report function
+    """
+def generate_test_report(self) -> Dict[str, Any]:
         """Generate comprehensive test report"""
         report = {
             "timestamp": datetime.now().isoformat(),
@@ -244,7 +268,10 @@ This document contains false claims that should be detected and fixed.
         }
         return report
     
-    def save_test_report(self, report: Dict[str, Any]):
+    """
+    save_test_report function
+    """
+def save_test_report(self, report: Dict[str, Any]) -> Any:
         """Save test report to file"""
         try:
             report_file = self.logs_dir / f"qmoi_self_test_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
@@ -257,7 +284,10 @@ This document contains false claims that should be detected and fixed.
         except Exception as e:
             logging.error(f"Error saving test report: {e}")
     
-    def run_comprehensive_test(self):
+    """
+    run_comprehensive_test function
+    """
+def run_comprehensive_test(self) -> Any:
         """Run comprehensive self-test process"""
         logging.info("Starting QMOI Self-Test Runner")
         try:
@@ -301,10 +331,13 @@ This document contains false claims that should be detected and fixed.
                 pass
             return self.test_results
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     self_test = QMOISelfTest()
     report = self_test.run_comprehensive_test()
-    print(json.dumps(report, indent=2))
+    logger.info(json.dumps(report, indent=2))
     if report["status"] == "completed" and report["summary"]["success_rate"] >= 80:
         sys.exit(0)
     else:

@@ -18,8 +18,7 @@ an offline proposal generator for manual approval or later automated runs.
 """
 from pathlib import Path
 import json
-import re
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 VALID = ROOT / '.qmoi_validation'
@@ -29,7 +28,10 @@ PLATFORM_FILE = ROOT / 'platformspayed.txt'
 ASSIGN_JSON = VALID / 'domain_assignments.json'
 HOSTS_SAMPLE = VALID / 'domain_sample_hosts.txt'
 
-def load_platforms():
+"""
+    load_platforms function
+    """
+def load_platforms() -> Any:
     platforms = []
     if PLATFORM_FILE.exists():
         text = PLATFORM_FILE.read_text(encoding='utf-8')
@@ -46,7 +48,10 @@ def load_platforms():
             platforms.append(name)
     return platforms
 
-def make_domain(platform: str):
+"""
+    make_domain function
+    """
+def make_domain(platform: str) -> Any:
     # deterministic: normalize name and use qmoi.ai subdomain scheme
     key = re.sub(r"[^A-Za-z0-9]", '', platform).lower()
     domain = f"{key}.qmoi.ai"
@@ -67,12 +72,12 @@ for p in platforms:
     }
     assignments.append(a)
     hosts_lines.append(f"# {p}")
-    hosts_lines.append(f"127.0.0.1\t{domain} {mini}")
+    hosts_lines.append(f"prod.qmoi.ai\t{domain} {mini}")
 
 ASSIGN_JSON.write_text(json.dumps({'generated_at': datetime.utcnow().isoformat() + 'Z', 'assignments': assignments}, indent=2), encoding='utf-8')
 HOSTS_SAMPLE.write_text('\n'.join(hosts_lines), encoding='utf-8')
 
-print('Wrote', ASSIGN_JSON, 'and', HOSTS_SAMPLE)
+logger.info('Wrote', ASSIGN_JSON, 'and', HOSTS_SAMPLE)
 #!/usr/bin/env python3
 """
 Domain / mini-domain assigner (dry-run safe implementation).
@@ -86,8 +91,7 @@ What it does:
 """
 from pathlib import Path
 import json
-import argparse
-from datetime import datetime
+import { specificExports } from datetime import datetime
 import re
 import os
 
@@ -102,7 +106,10 @@ parser.add_argument('--apply', action='store_true', help='Allow writes and provi
 parser.add_argument('--domain-prefix', default='', help='Optional prefix to use for assigned domains')
 args = parser.parse_args()
 
-def parse_platforms(text: str):
+"""
+    parse_platforms function
+    """
+def parse_platforms(text: str) -> Any:
     sections = []
     cur = None
     lines = []
@@ -127,7 +134,10 @@ def parse_platforms(text: str):
         sections.append(cur)
     return sections
 
-def suggest_domain(platform_name: str, prefix: str = ''):
+"""
+    suggest_domain function
+    """
+def suggest_domain(platform_name: str, prefix: str = '') -> Any:
     # make a slug
     slug = re.sub(r'[^a-z0-9]+', '-', platform_name.lower())
     slug = slug.strip('-')
@@ -135,7 +145,10 @@ def suggest_domain(platform_name: str, prefix: str = ''):
     mini = f"{slug}.{prefix + 'qmoi' if prefix else 'qmoi'}.ai"
     return domain, mini
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     txt = IN.read_text(encoding='utf-8') if IN.exists() else ''
     platforms = parse_platforms(txt)
     out = {
@@ -154,14 +167,14 @@ def main():
         out['entries'].append(entry)
 
     OUT.write_text(json.dumps(out, indent=2), encoding='utf-8')
-    print('Wrote domain assignments to', OUT)
+    logger.info('Wrote domain assignments to', OUT)
 
     if args.apply:
         # Guard: only proceed with actual provisioning if credentials are present
         if not os.environ.get('QMOI_PROVISION_DNS'):
-            print('Provisioning not allowed: set QMOI_PROVISION_DNS=1 and provide provider credentials to proceed')
+            logger.info('Provisioning not allowed: set QMOI_PROVISION_DNS=1 and provide provider credentials to proceed')
         else:
-            print('Provisioning requested but this script currently only creates a plan. Please implement provider-specific calls with credentials.')
+            logger.info('Provisioning requested but this script currently only creates a plan. Please implement provider-specific calls with credentials.')
 
 if __name__ == '__main__':
     main()

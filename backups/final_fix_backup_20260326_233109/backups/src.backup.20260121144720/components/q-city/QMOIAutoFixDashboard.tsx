@@ -1,8 +1,8 @@
 // Production implementation: all markers normalized for completion
-import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/badge";
 
 interface ErrorItem {
   id: number;

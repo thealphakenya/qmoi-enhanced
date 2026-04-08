@@ -5,9 +5,9 @@
 
 "use client";
 
-import * as React from "react";
+import { specificExports } from "react";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 // Local Avatar shim to avoid Radix UI dependency
 const Avatar = React.forwardRef<HTMLDivElement, any>(

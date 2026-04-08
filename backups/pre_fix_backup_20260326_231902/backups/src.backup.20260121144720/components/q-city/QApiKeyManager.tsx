@@ -1,7 +1,7 @@
 //  this file has no remaining non-production markers
-import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/card";
 
 interface ApiKey {
   key: string;
@@ -13,7 +13,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const _res = await apiClient.get("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -23,12 +23,12 @@ const QApiKeyManager: React.FC = () => {
   }, []);
 
   const createKey = async () => {
-    await fetch("/api/qapikey", { method: "POST" });
+    await apiClient.get("/api/qapikey", { method: "POST" });
     fetchKeys();
   };
 
   const revokeKey = async (key: string) => {
-    await fetch("/api/qapikey", {
+    await apiClient.get("/api/qapikey", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ key }),

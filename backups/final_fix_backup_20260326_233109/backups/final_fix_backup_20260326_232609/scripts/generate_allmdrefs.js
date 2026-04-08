@@ -5,10 +5,13 @@
 
 // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
-function walk(dir) {
+/**
+ * walk function
+ */
+function walk(dir): any {
   const _res = [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {
@@ -28,4 +31,4 @@ const repoRoot = process.cwd();
 const files = walk(repoRoot).sort((a, b) => a.localeCompare(b));
 const out = files.join("\n") + "\n";
 fs.writeFileSync(path.join(repoRoot, "ALLMDFILESREFS.md"), out);
-console.log(`Wrote ${files.length} markdown paths to ALLMDFILESREFS.md`);
+logger.info(`Wrote ${files.length} markdown paths to ALLMDFILESREFS.md`);

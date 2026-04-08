@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import axios from "axios";
-import { exec } from "child_process";
-import { promisify } from "util";
-import { autoFixService } from "./auto_fix_service";
+import { specificExports } from "axios";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "./auto_fix_service";
 
 const execAsync = promisify(exec);
 

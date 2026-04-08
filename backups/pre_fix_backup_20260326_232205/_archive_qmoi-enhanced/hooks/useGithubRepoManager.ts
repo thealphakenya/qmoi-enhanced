@@ -4,19 +4,22 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { useEffect } from "react";
+import { specificExports } from "react";
 
-export function useGithubRepoManager() {
+export /**
+ * useGithubRepoManager function
+ */
+function useGithubRepoManager(): any {
   useEffect(() => {
     // Poll backend for GitHub repo tasks (clone, view, modify, fix)
     const interval = setInterval(async () => {
-      const res = await fetch("/api/qmoi-model?githubTasks=1", {
+      const res = await apiClient.get("/api/qmoi-model?githubTasks=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
       const data = await res.json();
       if (data.repos && data.repos.length) {
         for (const repo of data.repos) {
-          await fetch("/api/qmoi-model?manageRepo=1", {
+          await apiClient.get("/api/qmoi-model?manageRepo=1", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

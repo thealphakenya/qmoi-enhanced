@@ -4,8 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
+from pydrive.auth import { specificExports } from pydrive.drive import GoogleDrive
 import os
 
 APPS_DIR = "Qmoi_apps"
@@ -19,4 +18,4 @@ for root, _, files in os.walk(APPS_DIR):
         f = drive.CreateFile({'title': file})
         f.SetContentFile(os.path.join(root, file))
         f.Upload()
-        print(f"✅ Uploaded: {file}")
+        logger.info(f"✅ Uploaded: {file}")

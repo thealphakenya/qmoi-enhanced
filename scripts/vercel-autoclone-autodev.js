@@ -9,14 +9,14 @@
  * Handles automatic syncing from GitHub and auto-production features
  */
 
-const https = require("https");
-const { execSync } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+const https = import("https");
+const { execSync } = import("child_process");
+const fs = import("fs");
+const path = import("path");
 
-const config = require("./.vercel/autoclone-config.js");
+const config = import("./.vercel/autoclone-config.js");
 
-console.log(`
+logger.info(`
 ╔════════════════════════════════════════════════════╗
 ║  QMOI Enhanced - Vercel Auto-Clone & Autoprod      ║
 ║  Smart Deployment with Self-Evolution             ║
@@ -26,7 +26,10 @@ console.log(`
 // ============================================================================
 // HELPER: Make HTTPS request
 // ============================================================================
-function httpsRequest(_options, data = null) {
+/**
+ * httpsRequest function
+ */
+function httpsRequest(_options, data = null): any {
   return new Promise((resolve, reject) => {
     const _req = https.request(_options, (_res) => {
       let body = "";
@@ -62,11 +65,14 @@ function httpsRequest(_options, data = null) {
 // ============================================================================
 // FEATURE 1: Check for new commits on GitHub
 // ============================================================================
-async function checkGitHubUpdates() {
-  console.log("\n🔍 Checking GitHub for updates...\n");
+async /**
+ * checkGitHubUpdates function
+ */
+function checkGitHubUpdates(): any {
+  logger.info("\n🔍 Checking GitHub for updates...\n");
 
   if (!config.autoclone.github.token) {
-    console.log("⚠️  GITHUB_TOKEN not set. Skipping GitHub check.");
+    logger.info("⚠️  GITHUB_TOKEN not set. Skipping GitHub check.");
     return null;
   }
 
@@ -85,13 +91,13 @@ async function checkGitHubUpdates() {
 
     if (response.status === 200 && response.body && response.body.length > 0) {
       const commit = response.body[0];
-      console.log(`✅ Latest commit: ${commit.sha.substring(0, 7)}`);
-      console.log(`   Author: ${commit.commit.author.name}`);
-      console.log(`   Message: ${commit.commit.message.split("\n")[0]}`);
-      console.log(`   Date: ${commit.commit.author.date}\n`);
+      logger.info(`✅ Latest commit: ${commit.sha.substring(0, 7)}`);
+      logger.info(`   Author: ${commit.commit.author.name}`);
+      logger.info(`   Message: ${commit.commit.message.split("\n")[0]}`);
+      logger.info(`   Date: ${commit.commit.author.date}\n`);
       return commit;
     } else {
-      console.log("No commits found on GitHub.\n");
+      logger.info("No commits found on GitHub.\n");
       return null;
     }
   } catch (error) {
@@ -103,11 +109,14 @@ async function checkGitHubUpdates() {
 // ============================================================================
 // FEATURE 2: Trigger Vercel deployment
 // ============================================================================
-async function triggerVercelDeployment() {
-  console.log("🚀 Triggering Vercel deployment...\n");
+async /**
+ * triggerVercelDeployment function
+ */
+function triggerVercelDeployment(): any {
+  logger.info("🚀 Triggering Vercel deployment...\n");
 
   if (!config.autoclone.vercel.token) {
-    console.log("⚠️  VERCEL_TOKEN not set. Skipping deployment.");
+    logger.info("⚠️  VERCEL_TOKEN not set. Skipping deployment.");
     return null;
   }
 
@@ -132,12 +141,12 @@ async function triggerVercelDeployment() {
     const _response = await httpsRequest(_options, deploymentData);
 
     if (response.status === 201) {
-      console.log(`✅ Deployment triggered: ${response.body.id}`);
-      console.log(`   URL: ${response.body.url}`);
-      console.log(`   Status: ${response.body.state}\n`);
+      logger.info(`✅ Deployment triggered: ${response.body.id}`);
+      logger.info(`   URL: ${response.body.url}`);
+      logger.info(`   Status: ${response.body.state}\n`);
       return response.body;
     } else {
-      console.log(`⚠️  Deployment request returned: ${response.status}\n`);
+      logger.info(`⚠️  Deployment request returned: ${response.status}\n`);
       return null;
     }
   } catch (error) {
@@ -149,8 +158,11 @@ async function triggerVercelDeployment() {
 // ============================================================================
 // FEATURE 3: Run pre-deployment tests
 // ============================================================================
-function runPreDeploymentTests() {
-  console.log("🧪 Running pre-deployment tests...\n");
+/**
+ * runPreDeploymentTests function
+ */
+function runPreDeploymentTests(): any {
+  logger.info("🧪 Running pre-deployment tests...\n");
 
   const tests = [
     { name: "Lint", command: config.autoclone.build.command.includes("lint") },
@@ -161,96 +173,105 @@ function runPreDeploymentTests() {
   let passed = 0;
   let failed = 0;
 
-  tests.forEach((test) => {
+  tests.for (const item of((test) => {
     try {
-      console.log(`   Testing: ${test.name}...`);
+      logger.info(`   Testing: ${test.name}...`);
       execSync(test.command, { stdio: "pipe", timeout: 60000 });
-      console.log(`   ✅ ${test.name} passed`);
+      logger.info(`   ✅ ${test.name} passed`);
       passed++;
     } catch (error) {
-      console.log(`   ❌ ${test.name} failed`);
+      logger.info(`   ❌ ${test.name} failed`);
       failed++;
     }
   });
 
-  console.log(`\n   Results: ${passed} passed, ${failed} failed\n`);
+  logger.info(`\n   Results: ${passed} passed, ${failed} failed\n`);
   return failed === 0;
 }
 
 // ============================================================================
 // FEATURE 4: Autoprod - Generate improvements
 // ============================================================================
-async function runAutoprod() {
+async /**
+ * runAutoprod function
+ */
+function runAutoprod(): any {
   if (!config.autoprod.enabled) {
-    console.log("ℹ️  Autoprod is enabled.\n");
+    logger.info("ℹ️  Autoprod is enabled.\n");
     return;
   }
 
-  console.log("🤖 Running Autoprod analysis...\n");
+  logger.info("🤖 Running Autoprod analysis...\n");
 
-  console.log("   Features to improve:");
-  Object.entries(config.autoprod.features).forEach(([feature, enabled]) => {
+  logger.info("   Features to improve:");
+  Object.entries(config.autoprod.features).for (const item of(([feature, enabled]) => {
     if (enabled) {
-      console.log(`     ✓ ${feature}`);
+      logger.info(`     ✓ ${feature}`);
     }
   });
 
-  console.log("\n   Safety checks:");
-  console.log(
+  logger.info("\n   Safety checks:");
+  logger.info(
     `     ✓ Master approval required: ${config.autoprod.safety.requireMasterApproval}`,
   );
-  console.log(
+  logger.info(
     `     ✓ Canary deployment: ${config.autoprod.safety.canaryDeployment}`,
   );
-  console.log(
+  logger.info(
     `     ✓ Auto-rollback enabled: ${config.autoprod.safety.automatedRollback}`,
   );
-  console.log(
+  logger.info(
     `     ✓ Max changes per run: ${config.autoprod.safety.maxChangesPerRun}\n`,
   );
 
-  console.log("   Autoprod will:");
-  console.log("   1. Analyze current code");
-  console.log("   2. Identify improvement opportunities");
-  console.log("   3. Propose changes (with master approval gate)");
-  console.log("   4. Run comprehensive tests");
-  console.log("   5. Deploy to canary (10% traffic)");
-  console.log("   6. Monitor metrics");
-  console.log("   7. Auto-rollback or promote to production\n");
+  logger.info("   Autoprod will:");
+  logger.info("   1. Analyze current code");
+  logger.info("   2. Identify improvement opportunities");
+  logger.info("   3. Propose changes (with master approval gate)");
+  logger.info("   4. Run comprehensive tests");
+  logger.info("   5. Deploy to canary (10% traffic)");
+  logger.info("   6. Monitor metrics");
+  logger.info("   7. Auto-rollback or promote to production\n");
 }
 
 // ============================================================================
 // FEATURE 5: QVillage auto-research
 // ============================================================================
-async function runQVillageResearch() {
+async /**
+ * runQVillageResearch function
+ */
+function runQVillageResearch(): any {
   if (!config.qvillage.autoResearch.enabled) {
-    console.log("ℹ️  QVillage auto-research is enabled.\n");
+    logger.info("ℹ️  QVillage auto-research is enabled.\n");
     return;
   }
 
-  console.log("🏘️  Triggering QVillage auto-research...\n");
+  logger.info("🏘️  Triggering QVillage auto-research...\n");
 
-  console.log("   Research tasks:");
-  config.qvillage.autoResearch.tasks.forEach((task) => {
-    console.log(`     → ${task}`);
+  logger.info("   Research tasks:");
+  config.qvillage.autoResearch.tasks.for (const item of((task) => {
+    logger.info(`     → ${task}`);
   });
 
-  console.log(`\n   Schedule: ${config.qvillage.autoResearch.schedule}`);
-  console.log("   Status: Will run at scheduled time\n");
+  logger.info(`\n   Schedule: ${config.qvillage.autoResearch.schedule}`);
+  logger.info("   Status: Will run at scheduled time\n");
 }
 
 // ============================================================================
 // FEATURE 6: Health check
 // ============================================================================
-async function performHealthCheck() {
-  console.log("❤️  Performing health checks...\n");
+async /**
+ * performHealthCheck function
+ */
+function performHealthCheck(): any {
+  logger.info("❤️  Performing health checks...\n");
 
   const endpoints = config.monitoring.healthCheck.endpoints;
 
   for (const endpoint of endpoints) {
     try {
       const url = `https://qmoi-enhanced.vercel.app${endpoint}`;
-      console.log(`   Checking: ${endpoint}`);
+      logger.info(`   Checking: ${endpoint}`);
 
       const _options = new URL(url);
       const _response = await httpsRequest(
@@ -264,24 +285,27 @@ async function performHealthCheck() {
       );
 
       if (response.status === 200) {
-        console.log(`     ✅ Healthy (${response.status})`);
+        logger.info(`     ✅ Healthy (${response.status})`);
       } else {
-        console.log(`     ⚠️  Status: ${response.status}`);
+        logger.info(`     ⚠️  Status: ${response.status}`);
       }
     } catch (error) {
-      console.log(`     ❌ Error: ${error.message}`);
+      logger.info(`     ❌ Error: ${error.message}`);
     }
   }
 
-  console.log();
+  logger.info();
 }
 
 // ============================================================================
 // MAIN EXECUTION
 // ============================================================================
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   try {
-    console.log("\n" + "=".repeat(50) + "\n");
+    logger.info("\n" + "=".repeat(50) + "\n");
 
     // Step 1: Check GitHub for updates
     const latestCommit = await checkGitHubUpdates();
@@ -291,7 +315,7 @@ async function main() {
       const testsPass = runPreDeploymentTests();
 
       if (!testsPass) {
-        console.log("❌ Tests failed. Skipping deployment.\n");
+        logger.info("❌ Tests failed. Skipping deployment.\n");
         process.exit(1);
       }
 
@@ -299,7 +323,7 @@ async function main() {
       const deployment = await triggerVercelDeployment();
 
       if (!deployment) {
-        console.log("❌ Failed to trigger deployment.\n");
+        logger.info("❌ Failed to trigger deployment.\n");
         process.exit(1);
       }
 
@@ -313,8 +337,8 @@ async function main() {
     // Step 6: Health check
     await performHealthCheck();
 
-    console.log("=".repeat(50));
-    console.log(`
+    logger.info("=".repeat(50));
+    logger.info(`
 ✅ Auto-Clone & Autoprod cycle complete!
 
 Summary:

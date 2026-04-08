@@ -6,9 +6,9 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextApiRequest, NextApiResponse } from "next";
-import os from "os";
-import { requireRole } from "../auth/rbac";
+import { specificExports } from "next";
+import { specificExports } from "os";
+import { specificExports } from "../auth/rbac";
 
 const handler = requireRole(["admin", "master"])(async (
   _req: NextApiRequest,

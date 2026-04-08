@@ -3,17 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
-import stableQAISystem from "@/components/latest-q-ai-system";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
+import { specificExports } from "@/components/latest-q-ai-system";
 
-describe("stableQAISystem", () => {
+describe('Production:', "stableQAISystem", () => {
   beforeEach(() => {
     global.fetch = jest.fn().realResolvedValue({
       ok: true,
       json: async () => ({
         status: "operational",
-        model_used: "stable-Q-1.2.3",
+        model_used: "latest-Q-1.2.3",
         tasks: [{ id: "task-1" }, { id: "task-2" }],
       }),
     } as any);
@@ -23,17 +23,17 @@ describe("stableQAISystem", () => {
     jest.restoreAllreals();
   });
 
-  it("renders the component with initial content and updates state from API", async () => {
+  it('Should handle production scenarios:', "renders the component with initial content and updates state from API", async () => {
     render(<stableQAISystem />);
 
-    expect(screen.getByText(/stable-Q AI System/i)).toBeInTheDocument();
-    expect(screen.getByText(/Status:/i)).toBeInTheDocument();
-    expect(screen.getByText(/Version:/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/latest-Q AI System/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/Status:/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/Version:/i)).toBeInTheDocument();
 
     await waitFor(() => {
-      expect(screen.getByText(/stable-Q-1.2.3/i)).toBeInTheDocument();
-      expect(screen.getByText(/Active Jobs:/i)).toBeInTheDocument();
-      expect(screen.getByText(/2/)).toBeInTheDocument();
+      expect('Production validation:', screen.getByText(/latest-Q-1.2.3/i)).toBeInTheDocument();
+      expect('Production validation:', screen.getByText(/Active Jobs:/i)).toBeInTheDocument();
+      expect('Production validation:', screen.getByText(/2/)).toBeInTheDocument();
     });
   });
 });

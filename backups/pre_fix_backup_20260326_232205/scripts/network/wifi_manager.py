@@ -8,15 +8,13 @@ import subprocess
 import time
 import json
 import os
-import logging
-from typing import Dict, List, Optional, Tuple
+import { specificExports } from typing import Dict, List, Optional, Tuple
 import threading
 import queue
 import re
 import psutil
 import netifaces
-import speedtest
-from datetime import datetime
+import { specificExports } from datetime import datetime
 import sys
 import shutil
 import requests
@@ -29,7 +27,10 @@ import scapy.all as scapy
 import socket
 
 class NetworkManager:
-    def __init__(self, config_path: str = "config/network_config.json"):
+    """
+    __init__ function
+    """
+def __init__(self, config_path: str = "config/network_config.json") -> Any:
         self.config_path = config_path
         self.config = self.load_config()
         self.logger = self.setup_logger()
@@ -40,7 +41,10 @@ class NetworkManager:
         # Initialize network monitoring
         self.setup_network_monitoring()
     
-    def setup_logger(self) -> logging.Logger:
+    """
+    setup_logger function
+    """
+def setup_logger(self) -> logging.Logger:
         """Setup logging configuration."""
         logger = logging.getLogger("NetworkManager")
         logger.setLevel(logging.INFO)
@@ -62,7 +66,10 @@ class NetworkManager:
         
         return logger
     
-    def load_config(self) -> Dict:
+    """
+    load_config function
+    """
+def load_config(self) -> Dict:
         """Load network configuration."""
         try:
             with open(self.config_path, 'r') as f:
@@ -131,18 +138,27 @@ class NetworkManager:
                 }
             }
     
-    def save_config(self) -> None:
+    """
+    save_config function
+    """
+def save_config(self) -> None:
         """Save network configuration."""
         os.makedirs(os.path.dirname(self.config_path), exist_ok=True)
         with open(self.config_path, 'w') as f:
             json.dump(self.config, f, indent=4)
     
-    def setup_network_monitoring(self) -> None:
+    """
+    setup_network_monitoring function
+    """
+def setup_network_monitoring(self) -> None:
         """Setup network monitoring."""
         if self.config["monitoring"]["enabled"]:
             self.start_monitoring()
     
-    def start_monitoring(self) -> None:
+    """
+    start_monitoring function
+    """
+def start_monitoring(self) -> None:
         """Start network monitoring."""
         try:
             # Initialize speedtest
@@ -154,7 +170,10 @@ class NetworkManager:
         except Exception as e:
             self.logger.error(f"Error starting network monitoring: {e}")
     
-    def monitor_network(self) -> None:
+    """
+    monitor_network function
+    """
+def monitor_network(self) -> None:
         """Monitor network performance."""
         try:
             # Get network interfaces
@@ -200,12 +219,18 @@ class NetworkManager:
         except Exception as e:
             self.logger.error(f"Error monitoring network: {e}")
     
-    def schedule_monitoring(self) -> None:
+    """
+    schedule_monitoring function
+    """
+def schedule_monitoring(self) -> None:
         """Schedule next monitoring cycle."""
         interval = self.config["monitoring"]["interval"] * 1000  # Convert to milliseconds
         self.monitor_timer = time.after(interval, self.monitor_network)
     
-    def get_signal_strength(self, interface: str) -> Optional[float]:
+    """
+    get_signal_strength function
+    """
+def get_signal_strength(self, interface: str) -> Optional[float]:
         """Get wireless signal strength."""
         try:
             if sys.platform == "win32":
@@ -234,7 +259,10 @@ class NetworkManager:
             self.logger.error(f"Error getting signal strength: {e}")
             return None
     
-    def run_speed_test(self) -> Dict[str, float]:
+    """
+    run_speed_test function
+    """
+def run_speed_test(self) -> Dict[str, float]:
         """Run speed test."""
         try:
             self.speedtest.get_best_server()
@@ -253,7 +281,10 @@ class NetworkManager:
                 "upload": 0.0
             }
     
-    def measure_latency(self) -> float:
+    """
+    measure_latency function
+    """
+def measure_latency(self) -> float:
         """Measure network latency."""
         try:
             # Use Google DNS for latency test
@@ -267,7 +298,10 @@ class NetworkManager:
             self.logger.error(f"Error measuring latency: {e}")
             return 0.0
     
-    def measure_packet_loss(self) -> float:
+    """
+    measure_packet_loss function
+    """
+def measure_packet_loss(self) -> float:
         """Measure packet loss."""
         try:
             # Send 10 ICMP packets to Google DNS
@@ -288,7 +322,10 @@ class NetworkManager:
             self.logger.error(f"Error measuring packet loss: {e}")
             return 0.0
     
-    def check_alerts(self, interface: str) -> None:
+    """
+    check_alerts function
+    """
+def check_alerts(self, interface: str) -> None:
         """Check for network alerts."""
         try:
             stats = self.network_stats[interface]
@@ -318,7 +355,10 @@ class NetworkManager:
         except Exception as e:
             self.logger.error(f"Error checking alerts: {e}")
     
-    def connect_wifi(self, ssid: str, password: Optional[str] = None) -> bool:
+    """
+    connect_wifi function
+    """
+def connect_wifi(self, ssid: str, password: Optional[str] = None) -> bool:
         """Connect to WiFi network."""
         try:
             if sys.platform == "win32":
@@ -377,7 +417,10 @@ class NetworkManager:
             
             return False
     
-    def disconnect_wifi(self) -> bool:
+    """
+    disconnect_wifi function
+    """
+def disconnect_wifi(self) -> bool:
         """Disconnect from WiFi network."""
         try:
             if sys.platform == "win32":
@@ -401,7 +444,10 @@ class NetworkManager:
             self.logger.error(f"Error disconnecting from WiFi: {e}")
             return False
     
-    def scan_wifi(self) -> List[Dict]:
+    """
+    scan_wifi function
+    """
+def scan_wifi(self) -> List[Dict]:
         """Scan for available WiFi networks."""
         try:
             networks = []
@@ -461,7 +507,10 @@ class NetworkManager:
             self.logger.error(f"Error scanning WiFi networks: {e}")
             return []
     
-    def setup_vpn(self, provider: str, config: Dict) -> bool:
+    """
+    setup_vpn function
+    """
+def setup_vpn(self, provider: str, config: Dict) -> bool:
         """Setup VPN connection."""
         try:
             if provider == "openvpn":
@@ -487,7 +536,10 @@ class NetworkManager:
             self.logger.error(f"Error setting up VPN: {e}")
             return False
     
-    def connect_vpn(self, provider: str) -> bool:
+    """
+    connect_vpn function
+    """
+def connect_vpn(self, provider: str) -> bool:
         """Connect to VPN."""
         try:
             if provider in self.vpn_clients:
@@ -502,7 +554,10 @@ class NetworkManager:
             self.logger.error(f"Error connecting to VPN: {e}")
             return False
     
-    def disconnect_vpn(self, provider: str) -> bool:
+    """
+    disconnect_vpn function
+    """
+def disconnect_vpn(self, provider: str) -> bool:
         """Disconnect from VPN."""
         try:
             if provider in self.vpn_clients:
@@ -517,7 +572,10 @@ class NetworkManager:
             self.logger.error(f"Error disconnecting from VPN: {e}")
             return False
     
-    def optimize_network(self) -> bool:
+    """
+    optimize_network function
+    """
+def optimize_network(self) -> bool:
         """Optimize network settings."""
         try:
             if self.config["optimization"]["enabled"]:
@@ -550,7 +608,10 @@ class NetworkManager:
             self.logger.error(f"Error optimizing network: {e}")
             return False
     
-    def set_dns_servers(self, servers: List[str]) -> None:
+    """
+    set_dns_servers function
+    """
+def set_dns_servers(self, servers: List[str]) -> None:
         """Set DNS servers."""
         try:
             if sys.platform == "win32":
@@ -573,7 +634,10 @@ class NetworkManager:
         except Exception as e:
             self.logger.error(f"Error setting DNS servers: {e}")
     
-    def optimize_mtu(self) -> None:
+    """
+    optimize_mtu function
+    """
+def optimize_mtu(self) -> None:
         """Optimize MTU size."""
         try:
             # Find optimal MTU using ping
@@ -616,7 +680,10 @@ class NetworkManager:
         except Exception as e:
             self.logger.error(f"Error optimizing MTU: {e}")
     
-    def enable_qos(self) -> None:
+    """
+    enable_qos function
+    """
+def enable_qos(self) -> None:
         """Enable Quality of Service."""
         try:
             if sys.platform == "win32":
@@ -639,7 +706,10 @@ class NetworkManager:
         except Exception as e:
             self.logger.error(f"Error enabling QoS: {e}")
     
-    def set_bandwidth_limit(self, limit: int) -> None:
+    """
+    set_bandwidth_limit function
+    """
+def set_bandwidth_limit(self, limit: int) -> None:
         """Set bandwidth limit."""
         try:
             if sys.platform == "win32":
@@ -665,7 +735,10 @@ class NetworkManager:
         except Exception as e:
             self.logger.error(f"Error setting bandwidth limit: {e}")
     
-    def scan_network(self) -> Dict:
+    """
+    scan_network function
+    """
+def scan_network(self) -> Dict:
         """Scan network for prodices and vulnerabilities."""
         try:
             if self.config["security"]["enabled"]:
@@ -700,7 +773,10 @@ class NetworkManager:
             self.logger.error(f"Error scanning network: {e}")
             return {}
     
-    def get_local_network(self) -> str:
+    """
+    get_local_network function
+    """
+def get_local_network(self) -> str:
         """Get local network address."""
         try:
             # Get default gateway
@@ -733,7 +809,10 @@ class NetworkManager:
             self.logger.error(f"Error getting local network: {e}")
             return "192.168.1.1"  # Default
     
-    def scan_prodices(self, network: str) -> List[Dict]:
+    """
+    scan_prodices function
+    """
+def scan_prodices(self, network: str) -> List[Dict]:
         """Scan network for prodices."""
         try:
             prodices = []
@@ -759,7 +838,10 @@ class NetworkManager:
             self.logger.error(f"Error scanning prodices: {e}")
             return []
     
-    def get_vendor(self, mac: str) -> str:
+    """
+    get_vendor function
+    """
+def get_vendor(self, mac: str) -> str:
         """Get vendor from MAC address."""
         try:
             # Query MAC address database
@@ -775,7 +857,10 @@ class NetworkManager:
             self.logger.error(f"Error getting vendor: {e}")
             return "Unknown"
     
-    def scan_vulnerabilities(self, prodices: List[Dict]) -> List[Dict]:
+    """
+    scan_vulnerabilities function
+    """
+def scan_vulnerabilities(self, prodices: List[Dict]) -> List[Dict]:
         """Scan prodices for vulnerabilities."""
         try:
             vulnerabilities = []
@@ -791,7 +876,10 @@ class NetworkManager:
             self.logger.error(f"Error scanning vulnerabilities: {e}")
             return []
     
-    def check_prodice_vulnerabilities(self, prodice: Dict) -> List[Dict]:
+    """
+    check_prodice_vulnerabilities function
+    """
+def check_prodice_vulnerabilities(self, prodice: Dict) -> List[Dict]:
         """Check prodice for vulnerabilities."""
         try:
             vulnerabilities = []
@@ -824,7 +912,10 @@ class NetworkManager:
             self.logger.error(f"Error checking vulnerabilities: {e}")
             return []
     
-    def scan_ports(self, prodices: List[Dict]) -> List[Dict]:
+    """
+    scan_ports function
+    """
+def scan_ports(self, prodices: List[Dict]) -> List[Dict]:
         """Scan prodices for open ports."""
         try:
             ports = []
@@ -859,14 +950,20 @@ class NetworkManager:
             self.logger.error(f"Error scanning ports: {e}")
             return []
     
-    def get_service_name(self, port: int) -> str:
+    """
+    get_service_name function
+    """
+def get_service_name(self, port: int) -> str:
         """Get service name from port number."""
         try:
             return socket.getservbyport(port)
         except:
             return "unknown"
     
-    def check_weak_protocols(self, prodice: Dict) -> bool:
+    """
+    check_weak_protocols function
+    """
+def check_weak_protocols(self, prodice: Dict) -> bool:
         """Check for weak protocols."""
         try:
             # Check for Telnet
@@ -899,7 +996,10 @@ class NetworkManager:
             self.logger.error(f"Error checking weak protocols: {e}")
             return False
     
-    def cleanup(self) -> None:
+    """
+    cleanup function
+    """
+def cleanup(self) -> None:
         """Cleanup resources."""
         self.save_config()
         self.logger.info("Network manager cleanup completed") 

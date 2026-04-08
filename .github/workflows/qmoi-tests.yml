@@ -19,7 +19,7 @@ jobs:
         continue-on-error: true
       - run: npm run ci:build --if-present
         continue-on-error: true
-      - run: npm run test:quick-qmoi
+      - run: npm run test:optimized-qmoi
         continue-on-error: true
       - run: npx jest --config=jest.config.cjs --runInBand --colors --verbose --detectOpenHandles || true
         continue-on-error: true

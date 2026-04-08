@@ -6,8 +6,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { specificExports } from "react";
+import { specificExports } from "next/navigation";
 
 interface Wallet {
   id: string;
@@ -16,7 +16,10 @@ interface Wallet {
   publicKey?: string;
 }
 
-export function WalletList() {
+export /**
+ * WalletList function
+ */
+function WalletList(): any {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
@@ -37,7 +40,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const _response = await apiClient.get("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -72,7 +75,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const _response = await apiClient.get("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

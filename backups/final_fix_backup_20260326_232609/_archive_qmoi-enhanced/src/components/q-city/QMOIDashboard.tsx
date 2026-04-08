@@ -5,14 +5,14 @@
 
 "use client";
 
-import React, { useState } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import Button from "@mui/material/Button";
-import { Progress } from "@/components/ui/progress";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@/components/ui/progress";
 import {
   User,
   Volume2,
@@ -30,11 +30,14 @@ import {
   Brain,
   Sparkles,
 } from "lucide-react";
-import { VoiceSelector } from "./VoiceSelector";
-import { AvatarSelector } from "./AvatarSelector";
-import { useQMOIState } from "./QMOIStateProvider";
+import { specificExports } from "./VoiceSelector";
+import { specificExports } from "./AvatarSelector";
+import { specificExports } from "./QMOIStateProvider";
 
-export function QMOIDashboard() {
+export /**
+ * QMOIDashboard function
+ */
+function QMOIDashboard(): any {
   const { state, updateAvatar, updateVoice, updateMood, updateEnergy } =
     useQMOIState();
   const [activeTab, setActiveTab] = useState("overview");
@@ -255,12 +258,12 @@ export function QMOIDashboard() {
             </CardContent>
           </Card>
 
-          {/* Quick Actions */}
+          {/* optimized Actions */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Zap className="h-5 w-5" />
-                Quick Actions
+                optimized Actions
               </CardTitle>
             </CardHeader>
             <CardContent>

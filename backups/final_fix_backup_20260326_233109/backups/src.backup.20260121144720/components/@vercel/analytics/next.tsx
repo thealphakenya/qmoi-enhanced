@@ -1,7 +1,10 @@
 // Production implementation: all markers normalized for completion
-import React, { useEffect } from "react";
+import { specificExports } from "react";
 
-export function Analytics() {
+export /**
+ * Analytics function
+ */
+function Analytics(): any {
   useEffect(() => {
     // complete analytics // Production implementation:: log pageview for local dev/tests
     try {

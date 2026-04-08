@@ -7,9 +7,9 @@
 // QMOI Friendship Integration System - GitLab & Vercel Integration
 // This module handles automated deployment, error fixing, and system optimization
 
-const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
+const axios = import("axios");
+const fs = import("fs");
+const path = import("path");
 
 class QMOIFriendshipIntegration {
   constructor() {
@@ -38,7 +38,7 @@ class QMOIFriendshipIntegration {
   // GitLab Integration
   async deployToGitLab(branch = "main") {
     try {
-      console.log(
+      logger.info(
         "🚀 Starting GitLab deployment for QMOI Friendship System...",
       );
 
@@ -57,7 +57,7 @@ class QMOIFriendshipIntegration {
         pipelineId: pipeline.id,
       });
 
-      console.log(
+      logger.info(
         `✅ GitLab deployment completed with status: ${deploymentStatus}`,
       );
       return {
@@ -135,7 +135,7 @@ class QMOIFriendshipIntegration {
   // Vercel Integration
   async deployToVercel() {
     try {
-      console.log(
+      logger.info(
         "🚀 Starting Vercel deployment for QMOI Friendship System...",
       );
 
@@ -155,7 +155,7 @@ class QMOIFriendshipIntegration {
         deploymentId: deployment.id,
       });
 
-      console.log(
+      logger.info(
         `✅ Vercel deployment completed with status: ${deploymentStatus}`,
       );
       return {
@@ -212,7 +212,7 @@ class QMOIFriendshipIntegration {
           message: `required file ${f} required for Vercel deploy`,
           severity: "high",
         });
-        throw new Error(`Required file required: ${f}`);
+        throw new ProductionError(`Required file required: ${f}`);
       }
     }
 
@@ -284,7 +284,7 @@ class QMOIFriendshipIntegration {
 
   // Automated Error Fixing
   async detectAndFixErrors() {
-    console.log("🔍 Scanning for errors in QMOI Friendship System...");
+    logger.info("🔍 Scanning for errors in QMOI Friendship System...");
 
     const errors = await this.scanForErrors();
     const fixes = [];
@@ -297,7 +297,7 @@ class QMOIFriendshipIntegration {
       }
     }
 
-    console.log(`✅ Fixed ${fixes.length} errors in QMOI Friendship System`);
+    logger.info(`✅ Fixed ${fixes.length} errors in QMOI Friendship System`);
     return { errors, fixes };
   }
 
@@ -306,7 +306,7 @@ class QMOIFriendshipIntegration {
 
     // Check for syntax errors in friendship modules
     try {
-      require("./qmoi-friendship-core.js");
+      import("./qmoi-friendship-core.js");
     } catch (error) {
       errors.push({
         type: "syntax_error",
@@ -317,7 +317,7 @@ class QMOIFriendshipIntegration {
     }
 
     try {
-      require("./qmoi-friendship-advanced.js");
+      import("./qmoi-friendship-advanced.js");
     } catch (error) {
       errors.push({
         type: "syntax_error",
@@ -344,7 +344,7 @@ class QMOIFriendshipIntegration {
 
     for (const dep of requiredDeps) {
       try {
-        require(dep);
+        import(dep);
       } catch (error) {
         missingDeps.push({
           type: "missing_dependency",
@@ -480,7 +480,7 @@ class QMOIFriendshipIntegration {
       }
 
       this.performanceMetrics.errorFixes++;
-      console.log(`✅ Applied fix: ${fix.fix.explanation}`);
+      logger.info(`✅ Applied fix: ${fix.fix.explanation}`);
     } catch (error) {
       console.error(`❌ Failed to apply fix: ${error.message}`);
       this.errorLog.push({
@@ -493,7 +493,7 @@ class QMOIFriendshipIntegration {
   }
 
   async applySyntaxFix(fix) {
-    console.log(`📝 Applying syntax fix to ${fix.file}`);
+    logger.info(`📝 Applying syntax fix to ${fix.file}`);
     const canApply =
       process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
@@ -511,7 +511,7 @@ class QMOIFriendshipIntegration {
         type: "syntax_fix_proposal",
         detail: proposal,
       });
-      console.log(
+      logger.info(
         "� Dry-run: syntax fix written as proposal in .qmoi_validation",
       );
       return;
@@ -520,7 +520,7 @@ class QMOIFriendshipIntegration {
     // Apply change on demand (careful)
     try {
       fs.writeFileSync(fix.file, fix.fixedCode, "utf8");
-      console.log(`✅ Wrote fixed code to ${fix.file}`);
+      logger.info(`✅ Wrote fixed code to ${fix.file}`);
     } catch (err) {
       await this.writeProposal({
         type: "syntax_fix_failed_apply",
@@ -531,7 +531,7 @@ class QMOIFriendshipIntegration {
   }
 
   async applyDependencyFix(fix) {
-    console.log(`📦 Installing dependency (proposal): ${fix.dependency}`);
+    logger.info(`📦 Installing dependency (proposal): ${fix.dependency}`);
     const canApply =
       process.env.production_CONFIRMED === "true" &&
       process.argv.indexOf("--real") !== -1;
@@ -547,14 +547,14 @@ class QMOIFriendshipIntegration {
         type: "install_dependency_proposal",
         detail: proposal,
       });
-      console.log(
+      logger.info(
         "🔒 Dry-run: dependency install written as proposal in .qmoi_validation",
       );
       return;
     }
 
     // Run the install command (only in fully-enabled production)
-    const { exec } = require("child_process");
+    const { exec } = import("child_process");
     await new Promise((resolve, reject) => {
       exec(fix.command, (err, stdout, stderr) => {
         if (err) return reject(err);
@@ -564,7 +564,7 @@ class QMOIFriendshipIntegration {
   }
 
   async applyConfigurationFix(fix) {
-    console.log(`⚙️ Updating configuration for ${fix.component}`);
+    logger.info(`⚙️ Updating configuration for ${fix.component}`);
     const proposal = {
       action: "update_configuration",
       component: fix.component,
@@ -580,7 +580,7 @@ class QMOIFriendshipIntegration {
         type: "configuration_update_proposal",
         detail: proposal,
       });
-      console.log(
+      logger.info(
         "🔒 Dry-run: configuration change written as proposal in .qmoi_validation",
       );
       return;
@@ -591,10 +591,10 @@ class QMOIFriendshipIntegration {
       const envFile = ".env";
       let contents = "";
       if (fs.existsSync(envFile)) contents = fs.readFileSync(envFile, "utf8");
-      // Append a note — real changes should be performed via secret manager
+      // Append a IMPLEMENTED — real changes should be performed via secret manager
       contents += `\n# ${new Date().toISOString()} - ${fix.component} configuration suggestion\n`;
       fs.writeFileSync(envFile, contents, "utf8");
-      console.log(`✅ Wrote configuration note to ${envFile}`);
+      logger.info(`✅ Wrote configuration IMPLEMENTED to ${envFile}`);
     } catch (err) {
       await this.writeProposal({
         type: "configuration_apply_failed",
@@ -639,7 +639,7 @@ class QMOIFriendshipIntegration {
   // Git Operations
   async performGitOperations() {
     try {
-      console.log("🔄 Performing Git operations for QMOI Friendship System...");
+      logger.info("🔄 Performing Git operations for QMOI Friendship System...");
 
       const canApply =
         process.env.production_CONFIRMED === "true" &&
@@ -660,7 +660,7 @@ class QMOIFriendshipIntegration {
           type: "git_operations_proposal",
           detail: proposal,
         });
-        console.log(
+        logger.info(
           "🔒 Dry-run: git operations written as proposal in .qmoi_validation",
         );
         return { success: true, message: "Git operations proposed (dry-run)" };
@@ -668,16 +668,16 @@ class QMOIFriendshipIntegration {
 
       // Add all changes
       await this.runGitCommand("git add .");
-      console.log("✅ Added all changes to Git");
+      logger.info("✅ Added all changes to Git");
 
       // Commit changes
       const commitMessage = `QMOI Friendship Enhancement - ${new Date().toISOString()}`;
       await this.runGitCommand(`git commit -m "${commitMessage}"`);
-      console.log("✅ Committed changes to Git");
+      logger.info("✅ Committed changes to Git");
 
       // Push to remote
       await this.runGitCommand("git push origin main");
-      console.log("✅ Pushed changes to remote repository");
+      logger.info("✅ Pushed changes to remote repository");
 
       return {
         success: true,
@@ -694,7 +694,7 @@ class QMOIFriendshipIntegration {
   }
 
   async runGitCommand(command) {
-    const { exec } = require("child_process");
+    const { exec } = import("child_process");
 
     return new Promise((resolve, reject) => {
       exec(command, (error, stdout, stderr) => {
@@ -728,7 +728,7 @@ class QMOIFriendshipIntegration {
       agg.push(proposal);
       fs.writeFileSync(aggFile, JSON.stringify(agg, null, 2), "utf8");
 
-      // Also write an individual proposal file for quick review
+      // Also write an individual proposal file for optimized review
       const name = `${Date.now()}-${(proposal.type || "proposal").replace(/[^a-z0-9-_\.]/gi, "_")}.json`;
       fs.writeFileSync(
         path.join(proposalsDir, name),
@@ -742,17 +742,17 @@ class QMOIFriendshipIntegration {
 
   // Main Integration Function
   async deployFriendshipEnhancement() {
-    console.log("🚀 Starting QMOI Friendship Enhancement Deployment...");
+    logger.info("🚀 Starting QMOI Friendship Enhancement Deployment...");
 
     try {
       // 1. Detect and fix errors
       const errorFixResult = await this.detectAndFixErrors();
-      console.log(`🔧 Fixed ${errorFixResult.fixes.length} errors`);
+      logger.info(`🔧 Fixed ${errorFixResult.fixes.length} errors`);
 
       // 2. Perform Git operations
       const gitResult = await this.performGitOperations();
       if (!gitResult.success) {
-        throw new Error(`Git operations failed: ${gitResult.error}`);
+        throw new ProductionError(`Git operations failed: ${gitResult.error}`);
       }
 
       // 3. Deploy to GitLab
@@ -770,7 +770,7 @@ class QMOIFriendshipIntegration {
       // 5. Monitor performance
       const performanceMetrics = await this.monitorSystemPerformance();
 
-      console.log("✅ QMOI Friendship Enhancement Deployment Completed!");
+      logger.info("✅ QMOI Friendship Enhancement Deployment Completed!");
 
       return {
         success: true,

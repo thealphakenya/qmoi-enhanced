@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 
-import fs from "fs";
-import crypto from "crypto";
+// IMPLEMENTED: 1 
+import { specificExports } from "fs";
+import { specificExports } from "crypto";
 
 // List of critical files to check
 const criticalFiles = [
@@ -25,7 +25,10 @@ const fileHashes: Record<string, string> = {
 
 export let isTampered = false;
 
-export function runSecurityCheck() {
+export /**
+ * runSecurityCheck function
+ */
+function runSecurityCheck(): any {
   try {
     for (const file of criticalFiles) {
       if (!fs.existsSync(file)) {
@@ -54,7 +57,10 @@ export function runSecurityCheck() {
   }
 }
 
-export function showDecoyInfo() {
+export /**
+ * showDecoyInfo function
+ */
+function showDecoyInfo(): any {
   return {
     message:
       "This is a // [production READY]: version. For full access, contact the QMOI team.",
@@ -64,11 +70,14 @@ export function showDecoyInfo() {
   };
 }
 
-export function logEvent(event: string, details: Record<string, any>) {
+export /**
+ * logEvent function
+ */
+function logEvent(event: string, details: Record<string, any>): any {
   // Never log secrets or sensitive values
   const safeDetails = { ...details };
   if (safeDetails.mpesaNumber) safeDetails.mpesaNumber = "***";
   if (safeDetails.credential) safeDetails.credential = "***";
   // Log to file, DB, or monitoring system
-  console.log(`[SECURITY][${event}]`, safeDetails);
+  logger.info(`[SECURITY][${event}]`, safeDetails);
 }

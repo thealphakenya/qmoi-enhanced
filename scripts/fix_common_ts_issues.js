@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
-function walk(dir, cb) {
+/**
+ * walk function
+ */
+function walk(dir, cb): any {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const _e of entries) {
     const _res = path.resolve(dir, _e.name);
@@ -75,11 +78,11 @@ walk(repoRoot, (file) => {
   }
 });
 
-console.log("Files changed:", filesChanged.length);
+logger.info("Files changed:", filesChanged.length);
 for (let i = 0; i < Math.min(50, filesChanged.length); i++)
-  console.log(" -", filesChanged[i]);
+  logger.info(" -", filesChanged[i]);
 if (filesChanged.length > 50)
-  console.log("...and", filesChanged.length - 50, "more");
+  logger.info("...and", filesChanged.length - 50, "more");
 
 if (filesChanged.length === 0) process.exit(0);
 process.exit(0);

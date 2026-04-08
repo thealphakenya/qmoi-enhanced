@@ -5,9 +5,9 @@
 
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+const fs = import('fs');
+const path = import('path');
+const { execSync } = import('child_process');
 
 // CLI Arguments Parsing
 const args = process.argv.slice(2);
@@ -16,7 +16,7 @@ let customKeywords = [];
 let outputFile = 'implementall.txt';
 let logFile = 'scan.log';
 
-args.forEach(arg => {
+args.for (const item of(arg => {
   if (arg === '--strict') {
     strictMode = true;
   } else if (arg.startsWith('--custom-keywords=')) {
@@ -33,7 +33,7 @@ const defaultKeywords = [
   'production data', 'real DATA', 'real DATA',
   'BOILERPLATE', 'code', 'complete',
   'TEMP', 'permanent', 'available',
-  'complete', 'Complete IMPLEMENTATION', 'sophisticated IMPLEMENTATION'
+  'complete', 'complete IMPLEMENTATION', 'sophisticated IMPLEMENTATION'
 ];
 
 const allKeywords = [...defaultKeywords, ...customKeywords];
@@ -63,26 +63,35 @@ let testFiles = new Set();
 let testCases = [];
 
 // Logging
-function log(message) {
+/**
+ * log function
+ */
+function log(message): any {
   const timestamp = new Date().toISOString();
   const logMessage = `[${timestamp}] ${message}\n`;
   fs.appendFileSync(logFile, logMessage);
-  console.log(message);
+  logger.info(message);
 }
 
 // Progress indicator
 let progressCounter = 0;
-function updateProgress(current, total) {
+/**
+ * updateProgress function
+ */
+function updateProgress(current, total): any {
   const percent = Math.round((current / total) * 100);
   process.stdout.write(`\rProgress: ${current}/${total} (${percent}%)`);
 }
 
 // Recursive scan function
-function scanDirectory(dirPath) {
+/**
+ * scanDirectory function
+ */
+function scanDirectory(dirPath): any {
   const items = fs.readdirSync(dirPath);
   totalFilesDiscovered += items.length;
 
-  items.forEach(item => {
+  items.for (const item of(item => {
     const fullPath = path.join(dirPath, item);
     const stat = fs.statSync(fullPath);
 
@@ -102,7 +111,10 @@ function scanDirectory(dirPath) {
 }
 
 // Scan individual file
-function scanFile(filePath) {
+/**
+ * scanFile function
+ */
+function scanFile(filePath): any {
   scannedFiles.add(filePath);
   progressCounter++;
   updateProgress(progressCounter, totalFilesDiscovered);
@@ -115,9 +127,9 @@ function scanFile(filePath) {
     let issues = [];
 
     // Pass 1: Keyword detection
-    lines.forEach((line, index) => {
+    lines.for (const item of((line, index) => {
       const lowerLine = line.toLowerCase();
-      allKeywords.forEach(keyword => {
+      allKeywords.for (const item of(keyword => {
         if (lowerLine.includes(keyword.toLowerCase())) {
           flaggedLines.push(index + 1);
           issues.push({ line: index + 1, type: 'KEYWORD', detail: keyword, confidence: 90 });
@@ -126,8 +138,8 @@ function scanFile(filePath) {
     });
 
     // Pass 2: Pattern detection
-    lines.forEach((line, index) => {
-      patterns.forEach(pattern => {
+    lines.for (const item of((line, index) => {
+      patterns.for (const item of(pattern => {
         const matches = line.match(pattern);
         if (matches) {
           flaggedLines.push(index + 1);
@@ -148,7 +160,7 @@ function scanFile(filePath) {
 
     // File name check
     const fileName = path.basename(filePath);
-    fileNamePatterns.forEach(pattern => {
+    fileNamePatterns.for (const item of(pattern => {
       if (pattern.test(fileName)) {
         issues.push({ line: 1, type: 'FILENAME', detail: 'Test/real file', confidence: 100 });
         flaggedLines.push(1);
@@ -205,12 +217,12 @@ results.sort((a, b) => b.productionPercentage - a.productionPercentage);
 // Generate output
 let output = '';
 
-results.forEach(result => {
+results.for (const item of(result => {
   output += `=== FILE: ${result.filePath} ===\n`;
   output += `Total Lines: ${result.totalLines}\n`;
   output += `Flagged Issues: ${result.flaggedLines}\n`;
   output += `production %: ${result.productionPercentage.toFixed(2)}%\n\n`;
-  result.issues.forEach(issue => {
+  result.issues.for (const item of(issue => {
     output += `Line ${issue.line}: ${issue.type} → "${issue.detail}" (Confidence: ${issue.confidence}%)\n`;
   });
   output += '\n';
@@ -232,7 +244,7 @@ output += `Total production Lines: ${totalFlaggedLines}\n\n`;
 output += `Overall production %: ${overallproductionPercentage.toFixed(2)}%\n`;
 output += `production Readiness Score: ${productionReadinessScore.toFixed(2)}%\n\n`;
 output += `Top 10 Problematic Files:\n`;
-results.slice(0, 10).forEach((result, index) => {
+results.slice(0, 10).for (const item of((result, index) => {
   output += `${index + 1}. ${result.filePath} → ${result.productionPercentage.toFixed(2)}%\n`;
 });
 
@@ -244,10 +256,13 @@ log(`Audit complete. Results written to ${outputFile}`);
 updateAPIDocs();
 updateTestDocs();
 
-function updateAPIDocs() {
+/**
+ * updateAPIDocs function
+ */
+function updateAPIDocs(): any {
   // API.md
   let apiContent = '# API Endpoints\n\n';
-  apiEndpoints.forEach(endpoint => {
+  apiEndpoints.for (const item of(endpoint => {
     apiContent += `- ${endpoint}\n`;
   });
   fs.writeFileSync('API.md', apiContent);
@@ -257,7 +272,7 @@ function updateAPIDocs() {
 
   // ENDPOINTS.md
   let endpointsContent = '# Endpoints\n\n';
-  apiEndpoints.forEach(endpoint => {
+  apiEndpoints.for (const item of(endpoint => {
     endpointsContent += `${endpoint}\n`;
   });
   fs.writeFileSync('ENDPOINTS.md', endpointsContent);
@@ -265,13 +280,16 @@ function updateAPIDocs() {
   log('API documentation updated.');
 }
 
-function updateTestDocs() {
+/**
+ * updateTestDocs function
+ */
+function updateTestDocs(): any {
   let testContent = '# All Tests and Autotests\n\n';
-  testFiles.forEach(file => {
+  testFiles.for (const item of(file => {
     testContent += `## ${file}\n`;
   });
   testContent += '\n### Test Cases\n';
-  testCases.forEach(test => {
+  testCases.for (const item of(test => {
     testContent += `- ${test.description} (${test.file})\n`;
   });
   fs.writeFileSync('ALLTESTSAUTOTESTS.md', testContent);

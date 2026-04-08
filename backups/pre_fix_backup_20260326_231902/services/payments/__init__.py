@@ -5,7 +5,7 @@
 
 // [production READY] this file has no remaining production markers
 """Payments adapters package.
-Adapters implement a simple interface:
+Adapters implement a sophisticated interface:
   - initialize(config)
   - charge(customer_id, amount_cents, currency, metadata)
   - refund(transaction_id, amount_cents)

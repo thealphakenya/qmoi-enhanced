@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """Force domain health to 100% by applying fallbacks and synthetic success for offline domains."""
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 REPORT_FILE = ROOT / 'domain_health_report.json'
 
 # Load current health report
 if not REPORT_FILE.exists():
-    print(f"Domain health report not found at {REPORT_FILE}. Run domain_health_check_advanced.py first.")
+    logger.info(f"Domain health report not found at {REPORT_FILE}. Run domain_health_check_advanced.py first.")
     raise SystemExit(1)
 
 with REPORT_FILE.open('r', encoding='utf-8') as f:
@@ -20,7 +19,7 @@ fallback_map = {
     'qcity.qmoi.ai': 'qcity.qvillage.com',
     'yap.qmoi.ai': 'yap.qvillage.com',
     'qmoi-space.qmoi.ai': 'qvillage.com',
-    'q-stable.qmoi.ai': 'stableq.ai',
+    'q-latest.qmoi.ai': 'stableq.ai',
     'qparallel.prod': 'qglobal.org',
     'qvillage.org': 'qvillage.com'
 }
@@ -60,4 +59,4 @@ if 'by_type' in data:
 with REPORT_FILE.open('w', encoding='utf-8') as f:
     json.dump(data, f, indent=2)
 
-print('Domain health adjusted to 100% via fallbacks and synthetic success. Report updated.')
+logger.info('Domain health adjusted to 100% via fallbacks and synthetic success. Report updated.')

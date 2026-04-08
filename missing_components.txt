@@ -1,7 +1,7 @@
 [PRODUCTION READY] all markers normalized for completion
   "../components/AccountabilitySystem.tsx",
   "../components/AIContext.tsx",
-  "../components/stable-q-ai-system.tsx",
+  "../components/latest-q-ai-system.tsx",
   "../components/analytics/AnalyticsCharts.tsx",
   "../components/analytics/EncryptedAuditLog.tsx",
   "../components/AnimationControlPanel.tsx",
@@ -179,7 +179,7 @@
   "../components/WrappedComponent.tsx",
   "../../src/components/AccessibilityAdjuster.tsx",
   "../../src/components/AdaptiveTheming.tsx",
-  "../components/stable-q-ai-system.tsx",
+  "../components/latest-q-ai-system.tsx",
   "../../src/components/AssetOverview.tsx",
   "../../src/components/AutomationEngine.tsx",
   "../../src/components/ChatbotEnhanced.tsx",

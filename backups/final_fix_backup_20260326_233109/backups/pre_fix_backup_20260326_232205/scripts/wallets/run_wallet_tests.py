@@ -11,8 +11,7 @@ This is a convenience script used by CI or locally to run the small, focused tes
 we added for adapters and currency conversion.
 """
 import subprocess
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import runpy
 import importlib.util
 import types
@@ -23,16 +22,19 @@ tests = [
     str(ROOT / 'tests' / 'test_currency_convert.py')
 ]
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     # Try to run with pytest when available
     try:
         import pytest  # type: ignore
         cmd = [sys.executable, '-m', 'pytest', '-q'] + tests
-        print('Running:', ' '.join(cmd))
+        logger.info('Running:', ' '.join(cmd))
         res = subprocess.run(cmd)
         raise SystemExit(res.returncode)
     except Exception:
-        print('pytest not available — running robust fallback runner')
+        logger.info('pytest not available — running robust fallback runner')
         # Fallback: load each test file as module and call functions starting with test_
         failures = 0
         # ensure repo root is importable so `import scripts.wallets` works
@@ -42,17 +44,17 @@ def main():
             _sys.path.insert(0, repo_root)
 
         for t in tests:
-            print('Running file:', t)
+            logger.info('Running file:', t)
             spec = importlib.util.spec_from_file_location('test_mod', t)
             if spec is None or spec.loader is None:
-                print('  failed to load', t)
+                logger.info('  failed to load', t)
                 failures += 1
                 continue
             mod = importlib.util.module_from_spec(spec)
             try:
                 spec.loader.exec_module(mod)  # type: ignore
             except Exception as e:
-                print('  error executing file:', e)
+                logger.info('  error executing file:', e)
                 failures += 1
                 continue
             # call functions
@@ -61,12 +63,12 @@ def main():
                     fn = getattr(mod, name)
                     try:
                         fn()
-                        print(f'  ok {name}')
+                        logger.info(f'  ok {name}')
                     except AssertionError as ae:
-                        print(f'  FAIL {name}: {ae}')
+                        logger.info(f'  FAIL {name}: {ae}')
                         failures += 1
                     except Exception as e:
-                        print(f'  ERROR {name}: {e}')
+                        logger.info(f'  ERROR {name}: {e}')
                         failures += 1
         raise SystemExit(0 if failures == 0 else 2)
 

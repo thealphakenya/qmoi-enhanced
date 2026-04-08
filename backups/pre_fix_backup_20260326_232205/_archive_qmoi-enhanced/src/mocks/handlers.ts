@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { rest } from "msw";
+import { specificExports } from "msw";
 
 export const handlers = [
   rest.get("/api/qmoi/status", (req, res, ctx) => {

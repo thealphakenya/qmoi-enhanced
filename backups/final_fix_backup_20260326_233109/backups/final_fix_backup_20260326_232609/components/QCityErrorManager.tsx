@@ -5,9 +5,9 @@
 
 // Production implementation: this file has no remaining non-production markers
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useEffect, useState } from "react";
-import { useQCity } from "../hooks/useQCity";
-import fs from "fs";
+import { specificExports } from "react";
+import { specificExports } from "../hooks/useQCity";
+import { specificExports } from "fs";
 
 const ERRORS_FILE = "ERRORSREADME.md";
 

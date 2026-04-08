@@ -6,8 +6,8 @@
 //  this file has no remaining non-production markers
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/use-toast";
 
 interface VoiceProfile {
   id: string;
@@ -26,11 +26,14 @@ interface VoiceSelectorProps {
   onVoiceChange?: (voiceId: string, profile: VoiceProfile) => void;
 }
 
-export function VoiceSelector({
+export /**
+ * VoiceSelector function
+ */
+function VoiceSelector({
   userId,
   currentVoiceId,
   onVoiceChange,
-}: VoiceSelectorProps) {
+}: VoiceSelectorProps): any {
   const { toast } = useToast();
   const [voices, setVoices] = useState<VoiceProfile[]>([]);
   const [selectedVoice, setSelectedVoice] = useState<VoiceProfile | null>(null);
@@ -45,7 +48,7 @@ export function VoiceSelector({
     const fetchVoices = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("/api/qmoi/voice");
+        const response = await apiClient.get("/api/qmoi/voice");
         const data = await response.json();
 
         if (data.success && data.voices) {
@@ -83,7 +86,7 @@ export function VoiceSelector({
       setRate(voice.rate || 1);
       setVolume(voice.volume || 1);
 
-      const response = await fetch("/api/qmoi/voice", {
+      const response = await apiClient.get("/api/qmoi/voice", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -113,7 +116,7 @@ export function VoiceSelector({
   const handlePitchChange = async (newPitch: number) => {
     setPitch(newPitch);
     try {
-      await fetch("/api/qmoi/voice", {
+      await apiClient.get("/api/qmoi/voice", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -130,7 +133,7 @@ export function VoiceSelector({
   const handleRateChange = async (newRate: number) => {
     setRate(newRate);
     try {
-      await fetch("/api/qmoi/voice", {
+      await apiClient.get("/api/qmoi/voice", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -147,7 +150,7 @@ export function VoiceSelector({
   const handleVolumeChange = async (newVolume: number) => {
     setVolume(newVolume);
     try {
-      await fetch("/api/qmoi/voice", {
+      await apiClient.get("/api/qmoi/voice", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -166,7 +169,7 @@ export function VoiceSelector({
 
     try {
       setIsSpeaking(true);
-      const response = await fetch("/api/qmoi/voice", {
+      const response = await apiClient.get("/api/qmoi/voice", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

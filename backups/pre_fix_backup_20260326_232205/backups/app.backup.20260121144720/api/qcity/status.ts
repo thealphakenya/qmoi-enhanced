@@ -1,10 +1,13 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest } from "next/server";
-import { QCityService } from "@/scripts/services/qcity_service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/scripts/services/qcity_service";
 
-export async function GET(_req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_req: NextRequest): any {
   const qcityService = new QCityService();
   await qcityService.initialize();
   const status = qcityService.getStatus();

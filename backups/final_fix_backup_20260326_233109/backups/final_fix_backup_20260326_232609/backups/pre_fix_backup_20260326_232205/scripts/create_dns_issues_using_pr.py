@@ -5,12 +5,11 @@
 
 #!/usr/bin/env python3
 # // production implementation:
-import os, json, sys
-from urllib import request, parse
+import { specificExports } from urllib import request, parse
 
 token = os.environ.get('GITHUB_TOKEN')
 if not token:
-    print('GITHUB_TOKEN not set', file=sys.stderr); sys.exit(2)
+    logger.info('GITHUB_TOKEN not set', file=sys.stderr); sys.exit(2)
 owner = 'thealphakenya'
 repo = 'qmoi-enhanced'
 branch = 'auto/dns-fixes-proposals-20251120122343'
@@ -21,7 +20,10 @@ headers = {
     'Accept': 'application/vnd.github+json'
 }
 
-def gh_get(path):
+"""
+    gh_get function
+    """
+def gh_get(path) -> Any:
     url = api_base + path
     req = request.Request(url, method='GET')
     for k,v in headers.items(): req.add_header(k,v)
@@ -29,10 +31,13 @@ def gh_get(path):
         with request.urlopen(req, timeout=30) as r:
             return json.load(r)
     except Exception as e:
-        print('GET error', e, file=sys.stderr)
+        logger.info('GET error', e, file=sys.stderr)
         return None
 
-def gh_post(path, payload):
+"""
+    gh_post function
+    """
+def gh_post(path, payload) -> Any:
     url = api_base + path
     data = json.dumps(payload).encode('utf-8')
     req = request.Request(url, data=data, method='POST')
@@ -44,27 +49,27 @@ def gh_post(path, payload):
     except Exception as e:
         try:
             if hasattr(e, 'read'):
-                print('HTTP error body:', e.read().decode(), file=sys.stderr)
+                logger.info('HTTP error body:', e.read().decode(), file=sys.stderr)
         except Exception:
             pass
-        print('POST error', e, file=sys.stderr)
+        logger.info('POST error', e, file=sys.stderr)
         return None
 
 # Find existing PR for this head
 qs = f'?head={owner}:{branch}'
 prs = gh_get('/pulls' + qs)
 if not prs:
-    print('No PRs found for head', owner+':'+branch, file=sys.stderr)
+    logger.info('No PRs found for head', owner+':'+branch, file=sys.stderr)
     sys.exit(1)
 pr = prs[0]
 pr_url = pr.get('html_url')
 pr_num = pr.get('number')
-print('Found PR:', pr_url, 'number=', pr_num)
+logger.info('Found PR:', pr_url, 'number=', pr_num)
 
 # Prepare issues
 rpt_path = 'tools/dns_links_report.json'
 if not os.path.exists(rpt_path):
-    print('dns_links_report.json required', file=sys.stderr); sys.exit(1)
+    logger.info('dns_links_report.json required', file=sys.stderr); sys.exit(1)
 r = json.load(open(rpt_path))
 entries = r.get('results', [])
 from collections import defaultdict
@@ -85,9 +90,9 @@ for host, items in host_counts:
     payload = {'title': title, 'body': '\n'.join(body_lines)}
     resp = gh_post('/issues', payload)
     if resp and resp.get('html_url'):
-        print('Created issue:', resp.get('html_url'))
+        logger.info('Created issue:', resp.get('html_url'))
         created += 1
     else:
-        print('Failed to create issue for host', host, file=sys.stderr)
+        logger.info('Failed to create issue for host', host, file=sys.stderr)
 
-print('Done. Created', created, 'issues.')
+logger.info('Done. Created', created, 'issues.')

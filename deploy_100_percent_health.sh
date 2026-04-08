@@ -1,6 +1,6 @@
 #!/bin/bash
 # QMOI 100% production Health Guarantee System
-# Complete deployment and verification for guaranteed domain health
+# complete deployment and verification for guaranteed domain health
 
 set -e
 
@@ -199,7 +199,7 @@ echo "  api.qmoi.ai      CNAME  cname.vercel-dns.com"
 echo "  qcity.qmoi.ai    CNAME  cname.vercel-dns.com"
 echo "  qmoi-space.qmoi.ai CNAME cname.vercel-dns.com"
 echo "  yap.qmoi.ai      CNAME  cname.vercel-dns.com"
-echo "  q-stable.qmoi.ai CNAME  cname.vercel-dns.com"
+echo "  q-latest.qmoi.ai CNAME  cname.vercel-dns.com"
 echo ""
 
 # Fallback domains
@@ -234,7 +234,7 @@ create_fallback "qmoi.ai"
 create_fallback "qcity.qmoi.ai"
 create_fallback "qmoi-space.qmoi.ai"
 create_fallback "yap.qmoi.ai"
-create_fallback "q-stable.qmoi.ai"
+create_fallback "q-latest.qmoi.ai"
 create_fallback "qvillage.com"
 create_fallback "qvillage.org"
 create_fallback "qglobal.org"
@@ -288,7 +288,7 @@ echo "  All fallback pages are available in the fallbacks/ directory"
 echo "  These provide immediate access even during DNS issues"
 echo ""
 
-echo -e "${GREEN}🎉 QMOI production DEPLOYMENT COMPLETE${NC}"
+echo -e "${GREEN}🎉 QMOI production DEPLOYMENT complete${NC}"
 echo -e "${GREEN}💯 100% Health Guarantee Systems Active${NC}"
 echo ""
 

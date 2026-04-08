@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node */
-import { execSync } from "child_process";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,8 +15,11 @@ const __dirname = path.dirname(__filename);
 const MAX_RETRIES = 5;
 let retries = 0;
 
-function log(msg) {
-  console.log(`[AutoDeploy] ${msg}`);
+/**
+ * log function
+ */
+function log(msg): any {
+  logger.info(`[AutoDeploy] ${msg}`);
   // Ensure logs directory exists
   if (!fs.existsSync("logs")) {
     fs.mkdirSync("logs", { recursive: true });
@@ -27,23 +30,38 @@ function log(msg) {
   );
 }
 
-function hasVercelEnv() {
+/**
+ * hasVercelEnv function
+ */
+function hasVercelEnv(): any {
   return process.env.VERCEL_TOKEN || fs.existsSync(".vercel/project.json");
 }
 
-function hasHerokuEnv() {
+/**
+ * hasHerokuEnv function
+ */
+function hasHerokuEnv(): any {
   return process.env.HEROKU_API_KEY;
 }
 
-function hasAWSEnv() {
+/**
+ * hasAWSEnv function
+ */
+function hasAWSEnv(): any {
   return process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY;
 }
 
-function hasGitHubEnv() {
+/**
+ * hasGitHubEnv function
+ */
+function hasGitHubEnv(): any {
   return process.env.GITHUB_TOKEN || fs.existsSync(".git");
 }
 
-function hasAzureEnv() {
+/**
+ * hasAzureEnv function
+ */
+function hasAzureEnv(): any {
   return (
     process.env.AZURE_CLIENT_ID &&
     process.env.AZURE_TENANT_ID &&
@@ -51,11 +69,17 @@ function hasAzureEnv() {
   );
 }
 
-function hasGCPEnv() {
+/**
+ * hasGCPEnv function
+ */
+function hasGCPEnv(): any {
   return process.env.GCP_PROJECT_ID && process.env.GCP_KEYFILE;
 }
 
-function ensureEnvGitIgnored() {
+/**
+ * ensureEnvGitIgnored function
+ */
+function ensureEnvGitIgnored(): any {
   const gitignorePath = ".gitignore";
   let content = "";
   if (fs.existsSync(gitignorePath)) {
@@ -67,13 +91,16 @@ function ensureEnvGitIgnored() {
   }
 }
 
-function injectSafeFallbackEnv() {
+/**
+ * injectSafeFallbackEnv function
+ */
+function injectSafeFallbackEnv(): any {
   log("Injecting safe fallback env for Vercel...");
   ensureEnvGitIgnored();
   const envPath = ".env";
   if (!fs.existsSync(envPath)) {
     // Generate safe random values for required envs
-    const crypto = require("crypto");
+    const crypto = import("crypto");
     const fallback = [
       "NODE_ENV=production",
       "FALLBACK_MODE=true",
@@ -87,7 +114,10 @@ function injectSafeFallbackEnv() {
   }
 }
 
-function injectStaticExportFallback() {
+/**
+ * injectStaticExportFallback function
+ */
+function injectStaticExportFallback(): any {
   log("Attempting static export fallback...");
   try {
     execSync("npx next export", { stdio: "inherit" });
@@ -97,11 +127,14 @@ function injectStaticExportFallback() {
   }
 }
 
-function injectDockerFallback() {
+/**
+ * injectDockerFallback function
+ */
+function injectDockerFallback(): any {
   log("Attempting Docker fallback...");
   try {
-    execSync("docker build -t stable-q-ai .", { stdio: "inherit" });
-    execSync("docker run -d --name stable-q-ai -p 3000:3000 stable-q-ai", {
+    execSync("docker build -t latest-q-ai .", { stdio: "inherit" });
+    execSync("docker run -d --name latest-q-ai -p 3000:3000 latest-q-ai", {
       stdio: "inherit",
     });
     log("Docker deployment completed.");
@@ -110,7 +143,10 @@ function injectDockerFallback() {
   }
 }
 
-async function autoFixErrors(errorMsg) {
+async /**
+ * autoFixErrors function
+ */
+function autoFixErrors(errorMsg): any {
   log("Attempting AI-driven error fix...");
   try {
     // optimized error fixing - in a real implementation, this would call the ErrorFixingService
@@ -120,7 +156,10 @@ async function autoFixErrors(errorMsg) {
   }
 }
 
-function autoCommitAndPush() {
+/**
+ * autoCommitAndPush function
+ */
+function autoCommitAndPush(): any {
   try {
     // Unstage .env if staged
     try {
@@ -153,7 +192,10 @@ function autoCommitAndPush() {
   }
 }
 
-async function deployToVercel() {
+async /**
+ * deployToVercel function
+ */
+function deployToVercel(): any {
   try {
     log("Starting Vercel deployment...");
 
@@ -186,7 +228,10 @@ async function deployToVercel() {
   }
 }
 
-async function deployToHeroku() {
+async /**
+ * deployToHeroku function
+ */
+function deployToHeroku(): any {
   try {
     log("Starting Heroku deployment...");
     execSync(
@@ -201,7 +246,10 @@ async function deployToHeroku() {
   }
 }
 
-function deployToAzure() {
+/**
+ * deployToAzure function
+ */
+function deployToAzure(): any {
   try {
     log("Starting Azure deployment...");
     execSync(
@@ -216,7 +264,10 @@ function deployToAzure() {
   }
 }
 
-function deployToGCP() {
+/**
+ * deployToGCP function
+ */
+function deployToGCP(): any {
   try {
     log("Starting GCP deployment...");
     execSync("gcloud app deploy --quiet", { stdio: "inherit" });
@@ -228,17 +279,26 @@ function deployToGCP() {
   }
 }
 
-async function notifyMaster(msg) {
+async /**
+ * notifyMaster function
+ */
+function notifyMaster(msg): any {
   // optimized notification - in a real implementation, this would call the WhatsAppService
   log(`Notification to master: ${msg}`);
 }
 
-async function notifyByEmail(msg) {
+async /**
+ * notifyByEmail function
+ */
+function notifyByEmail(msg): any {
   // optimized email notification
   log(`Email notification: ${msg}`);
 }
 
-async function monitorHealth(url) {
+async /**
+ * monitorHealth function
+ */
+function monitorHealth(url): any {
   try {
     const { default: axios } = await import("axios");
     const _res = await axios.get(url, { timeout: 10000 });
@@ -257,7 +317,10 @@ async function monitorHealth(url) {
   }
 }
 
-async function pingUptimeMonitor() {
+async /**
+ * pingUptimeMonitor function
+ */
+function pingUptimeMonitor(): any {
   const url = process.env.UPTIME_MONITOR_URL;
   if (!url) return;
   try {
@@ -275,7 +338,10 @@ async function pingUptimeMonitor() {
   }
 }
 
-async function notifySlack(message) {
+async /**
+ * notifySlack function
+ */
+function notifySlack(message): any {
   const url = process.env.SLACK_WEBHOOK_URL;
   if (!url) return;
   try {
@@ -287,7 +353,10 @@ async function notifySlack(message) {
   }
 }
 
-async function notifyDiscord(message) {
+async /**
+ * notifyDiscord function
+ */
+function notifyDiscord(message): any {
   const url = process.env.DISCORD_WEBHOOK_URL;
   if (!url) return;
   try {
@@ -299,7 +368,10 @@ async function notifyDiscord(message) {
   }
 }
 
-async function notifySMS(message) {
+async /**
+ * notifySMS function
+ */
+function notifySMS(message): any {
   const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM, TWILIO_TO } =
     process.env;
   if (!TWILIO_ACCOUNT_SID || !TWILIO_AUTH_TOKEN || !TWILIO_FROM || !TWILIO_TO)
@@ -318,7 +390,10 @@ async function notifySMS(message) {
   }
 }
 
-async function autoRollback() {
+async /**
+ * autoRollback function
+ */
+function autoRollback(): any {
   log("Attempting auto-rollback to previous commit...");
   try {
     execSync("git reset --hard HEAD~1");
@@ -343,13 +418,16 @@ async function autoRollback() {
   }
 }
 
-async function selfHealingDeploy(deployFn) {
+async /**
+ * selfHealingDeploy function
+ */
+function selfHealingDeploy(deployFn): any {
   let attempts = 0;
   let healthy = false;
   while (attempts < 3 && !healthy) {
     await deployFn();
     const healthUrl =
-      process.env.HEALTH_URL || "http:process.env.API_HOST || "localhost:3000"/api/health";
+      process.env.HEALTH_URL || "http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health";
     healthy = await monitorHealth(healthUrl);
     if (healthy) break;
     log(
@@ -387,7 +465,10 @@ async function selfHealingDeploy(deployFn) {
   }
 }
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   log("Starting QMOI Enhanced Auto-Deploy...");
 
   let deployed = false;
@@ -448,7 +529,7 @@ async function main() {
 
   // Health monitoring
   const healthUrl =
-    process.env.HEALTH_URL || "http:process.env.API_HOST || "localhost:3000"/api/health";
+    process.env.HEALTH_URL || "http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health";
   await selfHealingDeploy(deployToVercel);
   await pingUptimeMonitor();
 

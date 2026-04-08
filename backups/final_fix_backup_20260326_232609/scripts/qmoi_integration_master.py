@@ -15,10 +15,7 @@ import sys
 import json
 import time
 import subprocess
-import threading
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Tuple, Optional, Any
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Tuple, Optional, Any
 import logging
 
 # Configure logging
@@ -32,7 +29,10 @@ logging.basicConfig(
 )
 
 class QMOIIntegrationMaster:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.root_dir = Path.cwd()
         self.logs_dir = self.root_dir / "logs"
         self.logs_dir.mkdir(exist_ok=True)
@@ -62,7 +62,10 @@ class QMOIIntegrationMaster:
             "deployment_monitor": "scripts/qmoi_deployment_monitor.py"
         }
     
-    def run_component(self, component_name: str, script_path: str) -> Dict[str, Any]:
+    """
+    run_component function
+    """
+def run_component(self, component_name: str, script_path: str) -> Dict[str, Any]:
         """Run a specific QMOI component"""
         try:
             logging.info(f"Starting {component_name}")
@@ -137,7 +140,10 @@ class QMOIIntegrationMaster:
             })
             return {"success": False, "error": str(e)}
     
-    def run_sequential_integration(self) -> Dict[str, Any]:
+    """
+    run_sequential_integration function
+    """
+def run_sequential_integration(self) -> Dict[str, Any]:
         """Run all components sequentially in dependency order"""
         try:
             logging.info("Starting sequential QMOI integration")
@@ -199,7 +205,10 @@ class QMOIIntegrationMaster:
             })
             return {"error": str(e)}
     
-    def run_parallel_integration(self) -> Dict[str, Any]:
+    """
+    run_parallel_integration function
+    """
+def run_parallel_integration(self) -> Dict[str, Any]:
         """Run independent components in parallel for faster execution"""
         try:
             logging.info("Starting parallel QMOI integration")
@@ -223,7 +232,10 @@ class QMOIIntegrationMaster:
             threads = {}
             results = {"auto_fix": auto_fix_result}
             
-            def run_component_thread(component_name, script_path):
+            """
+    run_component_thread function
+    """
+def run_component_thread(component_name, script_path) -> Any:
                 results[component_name] = self.run_component(component_name, script_path)
             
             for component_name, script_path in parallel_components.items():
@@ -272,7 +284,10 @@ class QMOIIntegrationMaster:
             })
             return {"error": str(e)}
     
-    def check_component_health(self) -> Dict[str, Any]:
+    """
+    check_component_health function
+    """
+def check_component_health(self) -> Dict[str, Any]:
         """Check the health of all QMOI components"""
         health_report = {
             "timestamp": datetime.now().isoformat(),
@@ -319,7 +334,10 @@ class QMOIIntegrationMaster:
             logging.error(f"Error checking component health: {e}")
             return {"error": str(e)}
     
-    def generate_master_report(self) -> Dict[str, Any]:
+    """
+    generate_master_report function
+    """
+def generate_master_report(self) -> Dict[str, Any]:
         """Generate comprehensive master report"""
         try:
             # Check component health
@@ -348,7 +366,10 @@ class QMOIIntegrationMaster:
             logging.error(f"Error generating master report: {e}")
             return {"error": str(e)}
     
-    def generate_next_actions(self) -> List[str]:
+    """
+    generate_next_actions function
+    """
+def generate_next_actions(self) -> List[str]:
         """Generate required next actions based on current status"""
         actions = []
         
@@ -392,7 +413,10 @@ class QMOIIntegrationMaster:
             logging.error(f"Error generating next actions: {e}")
             return ["Error generating actions"]
     
-    def save_integration_report(self, report: Dict[str, Any]):
+    """
+    save_integration_report function
+    """
+def save_integration_report(self, report: Dict[str, Any]) -> Any:
         """Save the integration report"""
         try:
             report_file = self.root_dir / "logs" / "qmoi_integration_report.json"
@@ -430,7 +454,10 @@ class QMOIIntegrationMaster:
         except Exception as e:
             logging.error(f"Error saving integration report: {e}")
     
-    def run_full_integration(self, parallel: bool = False) -> Dict[str, Any]:
+    """
+    run_full_integration function
+    """
+def run_full_integration(self, parallel: bool = False) -> Dict[str, Any]:
         """Run the complete QMOI integration process"""
         try:
             logging.info("Starting QMOI Integration Master")
@@ -451,20 +478,23 @@ class QMOIIntegrationMaster:
             
             # Print summary
             summary = master_report.get("summary", {})
-            print(f"\nQMOI Integration Summary:")
-            print(f"Overall Health: {summary.get('overall_health', 'unknown')}")
-            print(f"Components: {summary.get('successful_components', 0)}/{summary.get('total_components', 0)} successful")
-            print(f"Errors: {summary.get('total_errors', 0)}")
-            print(f"Warnings: {summary.get('total_warnings', 0)}")
+            logger.info(f"\nQMOI Integration Summary:")
+            logger.info(f"Overall Health: {summary.get('overall_health', 'unknown')}")
+            logger.info(f"Components: {summary.get('successful_components', 0)}/{summary.get('total_components', 0)} successful")
+            logger.info(f"Errors: {summary.get('total_errors', 0)}")
+            logger.info(f"Warnings: {summary.get('total_warnings', 0)}")
             
             return master_report
             
         except Exception as e:
             logging.error(f"Error in full integration: {e}")
-            print(f"Error: {e}")
+            logger.info(f"Error: {e}")
             return {"error": str(e)}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     import argparse
     
     parser = argparse.ArgumentParser(description="QMOI Integration Master")
@@ -478,7 +508,7 @@ def main():
     
     if args.health_check:
         health_report = master.check_component_health()
-        print(json.dumps(health_report, indent=2))
+        logger.info(json.dumps(health_report, indent=2))
     else:
         parallel = args.parallel or not args.sequential
         master.run_full_integration(parallel=parallel)

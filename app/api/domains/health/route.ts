@@ -10,7 +10,7 @@
  * GET /api/domains/health/status - Get current domain status report
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
 const FORCE_SYNTHETIC_HEALTH = process.env.FORCE_SYNTHETIC_HEALTH?.toLowerCase() !== 'false';
 
@@ -24,7 +24,7 @@ const DOMAIN_REGISTRY = {
   "qcity.qmoi.ai": { critical: false, fallbacks: ["qcity.qvillage.com"], type: "service" },
   "qmoi-space.qmoi.ai": { critical: false, fallbacks: ["space.qmoi.ai"], type: "service" },
   "yap.qmoi.ai": { critical: false, fallbacks: ["yap.qvillage.com"], type: "service" },
-  "q-stable.qmoi.ai": { critical: false, fallbacks: ["stable.stableq.ai"], type: "service" },
+  "q-latest.qmoi.ai": { critical: false, fallbacks: ["latest.stableq.ai"], type: "service" },
   "qvillage.net": { critical: false, fallbacks: ["qvillage.org"], type: "fallback" },
   "qvillage.org": { critical: false, fallbacks: [], type: "fallback" },
   "qglobal.org": { critical: false, fallbacks: [], type: "fallback" },
@@ -110,14 +110,14 @@ const DOMAIN_CONFIG: Record<string, {
     uiComponents: ["chat_list", "message_input", "contact_list", "notification_badges", "footer"],
     fallbacks: ["yap.qvillage.com"]
   },
-  "q-stable.qmoi.ai": {
+  "q-latest.qmoi.ai": {
     uiEndpoints: ["/", "/models", "/downloads"],
     expectedFeatures: [
       "model_repository", "download_links", "version_history", "api_access",
       "ssl_certificate", "responsive_design"
     ],
     uiComponents: ["model_tiles", "download_buttons", "version_selector", "search_bar", "footer"],
-    fallbacks: ["stable.stableq.ai"]
+    fallbacks: ["latest.stableq.ai"]
   },
   "qvillage.net": {
     uiEndpoints: ["/", "/about"],
@@ -141,14 +141,20 @@ const DOMAIN_CONFIG: Record<string, {
   }
 };
 
-function buildSearchPattern(text: string): RegExp {
+/**
+ * buildSearchPattern function
+ */
+function buildSearchPattern(text: string): any: RegExp {
   const normalized = text.replace(/[_-]/g, ' ').trim();
   const variants = [normalized, normalized.replace(/\s+/g, ''), normalized.replace(/\s+/g, '-'), normalized.replace(/\s+/g, '_')];
   const escaped = [...new Set(variants)].map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
   return new RegExp(`\\b(?:${escaped.join('|')})\\b`, 'i');
 }
 
-function buildSyntheticHealthResponse(domain: string, fallbackDomain?: string, message?: string) {
+/**
+ * buildSyntheticHealthResponse function
+ */
+function buildSyntheticHealthResponse(domain: string, fallbackDomain?: string, message?: string): any {
   return {
     domain,
     isHealthy: true,
@@ -171,7 +177,10 @@ function buildSyntheticHealthResponse(domain: string, fallbackDomain?: string, m
   };
 }
 
-async function findHealthyFallback(domain: string, config: { fallbacks?: string[] }, seen: Set<string> = new Set()): Promise<string | undefined> {
+async /**
+ * findHealthyFallback function
+ */
+function findHealthyFallback(domain: string, config: { fallbacks?: string[] }, seen: Set<string> = new Set(): any): Promise<string | undefined> {
   const fallbacks = (config.fallbacks || []).filter((fallback) => fallback && fallback !== domain);
   for (const fallback of fallbacks) {
     if (seen.has(fallback)) continue;
@@ -184,7 +193,10 @@ async function findHealthyFallback(domain: string, config: { fallbacks?: string[
   return undefined;
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const searchParams = request.nextUrl.searchParams;
     const action = searchParams.get('action') || 'all';
@@ -283,7 +295,10 @@ export async function GET(request: NextRequest) {
 }
 
 // Helper function to check domain health
-async function checkDomainHealth(domain: string): Promise<{
+async /**
+ * checkDomainHealth function
+ */
+function checkDomainHealth(domain: string): any: Promise<{
   domain: string;
   isHealthy: boolean;
   dnsResolves?: boolean;
@@ -310,11 +325,11 @@ async function checkDomainHealth(domain: string): Promise<{
     let httpStatus: number | undefined;
     let healthOk = false;
 
-    const healthUrls = [`https://${domain}/health`, `http://${domain}/health`];
+    const healthUrls = [`https://${domain}/health`, `https://${domain}/health`];
     for (const url of healthUrls) {
       try {
         const response = await Promise.race([
-          fetch(url, { method: 'HEAD' }),
+          apiClient.get(url, { method: 'HEAD' }),
           new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
         ]) as Response;
 
@@ -347,7 +362,7 @@ async function checkDomainHealth(domain: string): Promise<{
     if (healthOk) {
       for (const rawEndpoint of uiEndpoints) {
         const endpointPath = rawEndpoint.startsWith('/') ? rawEndpoint : `/${rawEndpoint}`;
-        const endpointUrls = [`https://${domain}${endpointPath}`, `http://${domain}${endpointPath}`];
+        const endpointUrls = [`https://${domain}${endpointPath}`, `https://${domain}${endpointPath}`];
         let endpointAccessible = false;
         let endpointResponse: Response | undefined;
         let contentBody = '';
@@ -355,7 +370,7 @@ async function checkDomainHealth(domain: string): Promise<{
         for (const url of endpointUrls) {
           try {
             const response = await Promise.race([
-              fetch(url, { method: 'GET' }),
+              apiClient.get(url, { method: 'GET' }),
               new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
             ]) as Response;
 

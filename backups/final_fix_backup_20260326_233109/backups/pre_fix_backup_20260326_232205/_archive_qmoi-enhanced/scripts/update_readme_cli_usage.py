@@ -19,10 +19,8 @@ Failsafe features:
 """
 
 import subprocess
-import re
-from datetime import datetime
-import sys
-from pathlib import Path
+import { specificExports } from datetime import datetime
+import { specificExports } from pathlib import Path
 
 README_FILE = Path(__file__).resolve().parents[1] / "README.md"
 SCRIPT_FILE = Path(__file__).resolve().parents[0] / "qmoi-unified-push.py"
@@ -30,7 +28,10 @@ SCRIPT_FILE = Path(__file__).resolve().parents[0] / "qmoi-unified-push.py"
 START_MARKER = "<!-- AUTO-CLI-USAGE:START -->"
 END_MARKER = "<!-- AUTO-CLI-USAGE:END -->"
 
-def get_cli_help():
+"""
+    get_cli_help function
+    """
+def get_cli_help() -> Any:
     """Run the CLI script and capture --help output"""
     try:
         result = subprocess.run(
@@ -42,27 +43,30 @@ def get_cli_help():
         )
         output = result.stdout.strip()
         if not output:
-            print("❌ ERROR: CLI output is empty, aborting update.")
+            logger.info("❌ ERROR: CLI output is empty, aborting update.")
             sys.exit(1)
         return output
     except subprocess.CalledProcessError as e:
-        print(f"❌ Failed to run CLI help: {e.stdout}")
+        logger.info(f"❌ Failed to run CLI help: {e.stdout}")
         sys.exit(1)
     except FileNotFoundError:
-        print(f"❌ Script not found: {SCRIPT_FILE}")
+        logger.info(f"❌ Script not found: {SCRIPT_FILE}")
         sys.exit(1)
 
-def update_readme(cli_output):
+"""
+    update_readme function
+    """
+def update_readme(cli_output) -> Any:
     """Inject CLI usage block into README.md with validation"""
     if not README_FILE.exists():
-        print(f"❌ README file not found: {README_FILE}")
+        logger.info(f"❌ README file not found: {README_FILE}")
         sys.exit(1)
 
     content = README_FILE.read_text(encoding="utf-8")
 
     if START_MARKER not in content or END_MARKER not in content:
-        print("❌ README markers not found, aborting. Ensure README contains:")
-        print(f"   {START_MARKER}\n   {END_MARKER}")
+        logger.info("❌ README markers not found, aborting. Ensure README contains:")
+        logger.info(f"   {START_MARKER}\n   {END_MARKER}")
         sys.exit(1)
 
     usage_block = (
@@ -80,7 +84,7 @@ def update_readme(cli_output):
 
     # Validation: ensure new block exists & not empty
     if cli_output not in new_content:
-        print("❌ Validation failed: Injected usage block required.")
+        logger.info("❌ Validation failed: Injected usage block required.")
         sys.exit(1)
 
     # Add a "last updated" badge
@@ -90,9 +94,12 @@ def update_readme(cli_output):
         new_content = badge + "\n\n" + new_content
 
     README_FILE.write_text(new_content, encoding="utf-8")
-    print(f"✅ README.md updated successfully at {timestamp}")
+    logger.info(f"✅ README.md updated successfully at {timestamp}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     cli_output = get_cli_help()
     update_readme(cli_output)
 

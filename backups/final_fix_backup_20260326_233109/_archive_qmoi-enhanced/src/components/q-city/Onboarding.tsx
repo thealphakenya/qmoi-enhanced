@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import * as React from "react";
-import { useState } from "react";
+import { specificExports } from "react";
+import { specificExports } from "react";
 
 type OnboardingForm = {
   name: string;

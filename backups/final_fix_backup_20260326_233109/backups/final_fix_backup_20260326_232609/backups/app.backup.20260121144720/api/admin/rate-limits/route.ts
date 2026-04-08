@@ -1,7 +1,7 @@
 // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import authService from "@/lib/auth/service";
-import { db } from "@/lib/db/prisma";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/db/prisma";
 
 interface RateLimit {
   userId: string;
@@ -12,7 +12,7 @@ interface RateLimit {
 }
 
 // In-memory store for rate limits (in production, use Redis)
-const rateLimits = new Map<string, RateLimit>();
+const rateLimits = new Map() // Production: Consider object for small datasets<string, RateLimit>();
 const WINDOW_SIZE = 60 * 1000; // 1 minute
 const DEFAULT_LIMIT = 100; // requests per minute
 
@@ -21,7 +21,10 @@ const DEFAULT_LIMIT = 100; // requests per minute
  * View rate limit configuration and current usage
  * Admin only
  */
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -100,7 +103,10 @@ export async function GET(_request: NextRequest) {
  * Update rate limit for specific user or endpoint
  * Admin only
  */
-export async function PUT(_request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -198,7 +204,10 @@ export async function PUT(_request: NextRequest) {
  * Middleware function to check rate limits
  * Usage: Use in API routes to enforce rate limits
  */
-export function createRateLimitMiddleware(endpoint: string, limit?: number) {
+export /**
+ * createRateLimitMiddleware function
+ */
+function createRateLimitMiddleware(endpoint: string, limit?: number): any {
   return (userId: string): boolean => {
     const key = `${userId}:${endpoint}`;
     const now = Date.now();
@@ -233,7 +242,10 @@ export function createRateLimitMiddleware(endpoint: string, limit?: number) {
  * Cleanup old rate limit entries periodically
  * Call this in a cron job or at server startup
  */
-export function cleanupRateLimits() {
+export /**
+ * cleanupRateLimits function
+ */
+function cleanupRateLimits(): any {
   const now = Date.now();
   let cleaned = 0;
 

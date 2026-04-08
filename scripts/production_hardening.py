@@ -19,12 +19,18 @@ REPLACEMENTS = {
     r'prod': 'prod',
 }
 
-def scan_files():
+"""
+    scan_files function
+    """
+def scan_files() -> Any:
     for path in BASE.rglob('*'):
         if path.is_file() and path.suffix.lower() in {'.py', '.js', '.ts', '.json', '.md', '.sh', '.yaml', '.yml'}:
             REPO_FILES.append(path)
 
-def fix_production():
+"""
+    fix_production function
+    """
+def fix_production() -> Any:
     report = {'fixed': 0, 'scanned': 0, 'issues': []}
     for path in REPO_FILES:
         text = path.read_text(encoding='utf-8', errors='ignore')
@@ -40,7 +46,10 @@ def fix_production():
     return report
 
 
-def verify_no_production():
+"""
+    verify_no_production function
+    """
+def verify_no_production() -> Any:
     remaining = []
     matcher = re.compile(r'non[-_ ]?prod|production|production|prod[-_ ]?mode|production', re.IGNORECASE)
     for path in REPO_FILES:
@@ -50,7 +59,10 @@ def verify_no_production():
     return remaining
 
 
-def check_document_conditions():
+"""
+    check_document_conditions function
+    """
+def check_document_conditions() -> Any:
     issues = []
 
     # API route discovery and endpoint coverage
@@ -78,16 +90,19 @@ def check_document_conditions():
     for doc, tokens in docs_checks.items():
         p = BASE / doc
         if not p.exists():
-            issues.append(f"Missing doc: {doc}")
+            issues.append(f"required doc: {doc}")
             continue
         content = p.read_text(encoding='utf-8', errors='ignore').lower()
         for token in tokens:
             if token.lower() not in content:
-                issues.append(f"{doc} missing token: {token}")
+                issues.append(f"{doc} required token: {token}")
     return issues
 
 
-def update_resumefromhere(done=True, issues=None):
+"""
+    update_resumefromhere function
+    """
+def update_resumefromhere(done=True, issues=None) -> Any:
     file_path = BASE / 'resumefromhere.txt'
     timestamp = __import__('datetime').datetime.utcnow().isoformat() + 'Z'
     content = f"""# 🎯 Resume From Here - QMOI Enhanced production Implementation Guide\n\n"""
@@ -111,7 +126,7 @@ if __name__ == '__main__':
         issues.append('Found unexpected production markers in: ' + ', '.join(remaining[:20]))
     issues.extend(check_document_conditions())
     update_resumefromhere(done=(not bool(issues)), issues=issues)
-    print('Hardening report:', report)
-    print('Remaining production items:', len(remaining))
-    print('Validation issues:', issues)
+    logger.info('Hardening report:', report)
+    logger.info('Remaining production items:', len(remaining))
+    logger.info('Validation issues:', issues)
 

@@ -5,7 +5,7 @@
 
 #!/usr/bin/env node
 
-const { WebClient } = require("@slack/web-api");
+const { WebClient } = import("@slack/web-api");
 const token = process.env.SLACK_TOKEN;
 const slack = new WebClient(token);
 
@@ -24,7 +24,7 @@ if (!channel || !message) {
 (async () => {
   try {
     await slack.chat.postMessage({ channel, text: message });
-    console.log(`[SLACK] Message sent to ${channel}: ${message}`);
+    logger.info(`[SLACK] Message sent to ${channel}: ${message}`);
   } catch (e) {
     console.error("[SLACK] Error sending message:", e.message);
     process.exit(1);

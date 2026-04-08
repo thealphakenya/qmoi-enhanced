@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import crypto from "crypto";
-import { EventEmitter } from "events";
+import { specificExports } from "crypto";
+import { specificExports } from "events";
 
 interface SecurityMetrics {
   requestCount: number;
@@ -864,7 +864,7 @@ export class BitgetManager extends EventEmitter {
       this.emit("ipCheck", { timestamp: new Date(), status: "success" });
     } catch (error) {
       this.emit("ipCheck", { timestamp: new Date(), status: "failed", error });
-      throw new Error("IP whitelist validation failed");
+      throw new ProductionError("IP whitelist validation failed");
     }
   }
 
@@ -1025,7 +1025,7 @@ export class BitgetManager extends EventEmitter {
         timestamp: new Date(),
         error,
       });
-      throw new Error("Failed to backup encryption keys");
+      throw new ProductionError("Failed to backup encryption keys");
     }
   }
 
@@ -1039,7 +1039,7 @@ export class BitgetManager extends EventEmitter {
         this.securityStatus.isLocked = false;
         this.securityStatus.failedAttempts = 0;
       } else {
-        throw new Error(
+        throw new ProductionError(
           "Account is temporarily locked due to multiple failed attempts",
         );
       }
@@ -1050,7 +1050,7 @@ export class BitgetManager extends EventEmitter {
       this.securityStatus.currentRequestCount >=
       this.config.security.rateLimits.requestsPerSecond
     ) {
-      throw new Error("Rate limit exceeded");
+      throw new ProductionError("Rate limit exceeded");
     }
 
     // Increment request counter
@@ -1060,7 +1060,7 @@ export class BitgetManager extends EventEmitter {
     const isValid = await this.validateRequestSignature(request);
     if (!isValid) {
       this.securityStatus.failedAttempts++;
-      throw new Error("Invalid request signature");
+      throw new ProductionError("Invalid request signature");
     }
 
     // Add anomaly detection

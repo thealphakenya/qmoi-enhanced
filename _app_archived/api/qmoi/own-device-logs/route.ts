@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import { exec } from "child_process";
-import { promisify } from "util";
-import path from "path";
-import fs from "fs";
+import { specificExports } from "next/server";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "path";
+import { specificExports } from "fs";
 
 const execAsync = promisify(exec);
 
@@ -27,7 +27,10 @@ interface ExportRequest {
   date_to?: string;
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body: LogRequest = await request.json();
     const {
@@ -116,7 +119,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Check if user is master
     const isMaster = await checkMasterAccess(request);
@@ -174,7 +180,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-async function checkMasterAccess(request: NextRequest): Promise<boolean> {
+async /**
+ * checkMasterAccess function
+ */
+function checkMasterAccess(request: NextRequest): any: Promise<boolean> {
   try {
     // Get authorization header
     const authHeader = request.headers.get("authorization");

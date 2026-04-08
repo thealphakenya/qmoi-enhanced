@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { zeroRatedSitesService } from "@/lib/zero-rated-sites-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/zero-rated-sites-service";
 
 interface RouteParams {
   params: {
@@ -12,7 +12,10 @@ interface RouteParams {
   };
 }
 
-export async function GET(request: NextRequest, { params }: RouteParams) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest, { params }: RouteParams): any {
   try {
     const siteId = params.id;
 
@@ -43,7 +46,10 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
   }
 }
 
-export async function PUT(request: NextRequest, { params }: RouteParams) {
+export async /**
+ * PUT function
+ */
+function PUT(request: NextRequest, { params }: RouteParams): any {
   try {
     const siteId = params.id;
     const body = await request.json();
@@ -74,7 +80,10 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: RouteParams) {
+export async /**
+ * DELETE function
+ */
+function DELETE(request: NextRequest, { params }: RouteParams): any {
   try {
     const siteId = params.id;
 

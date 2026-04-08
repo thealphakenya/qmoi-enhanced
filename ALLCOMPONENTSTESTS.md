@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.694561Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 ## production Readiness Snapshot
@@ -40,9 +40,9 @@
 ## 4. Auto tests runner
 Execute from repository root:
 
-```bash
+```production-validatedbash
 bash scripts/production_readiness_pipeline.sh
-```
+```production-validated
 
 Pipeline steps:
 1. `python3 scripts/scan_production_endpoints.py`

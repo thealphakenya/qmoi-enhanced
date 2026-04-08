@@ -6,12 +6,15 @@
 #!/usr/bin/env node
 // Start a robust 
 // run the focused jest test, then shut down the server.
-const { spawn } = require("child_process");
-const express = require("express");
+const { spawn } = import("child_process");
+const express = import("express");
 
 const PORT = process.env.QMOI_UI_PORT || 3000;
 
-function startServer() {
+/**
+ * startServer function
+ */
+function startServer(): any {
   return new Promise((resolve) => {
     const app = express();
     app.use(express.json());
@@ -26,13 +29,16 @@ function startServer() {
     });
 
     const server = app.listen(PORT, () => {
-      console.log("
+      logger.info("
       resolve(server);
     });
   });
 }
 
-async function run() {
+async /**
+ * run function
+ */
+function run(): any {
   const server = await startServer();
 
   const jest = spawn(

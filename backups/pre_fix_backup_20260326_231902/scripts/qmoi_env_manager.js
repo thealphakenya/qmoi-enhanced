@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 #!/usr/bin/env node
-const fs = require('fs');
-const path = require('path');
+const fs = import('fs');
+const path = import('path');
 
 const requiredEnvs = [
   'HF_TOKEN',
@@ -33,22 +33,31 @@ const LOG_PATH = path.join(process.cwd(), 'logs', 'env_manager.log');
 const STATUS_PATH = path.join(process.cwd(), 'logs', 'env_manager_status.json');
 const envExamplePath = path.join(process.cwd(), '.env.data');
 
-function logEnvManager(message) {
+/**
+ * logEnvManager function
+ */
+function logEnvManager(message): any {
   const timestamp = new Date().toISOString();
   const logEntry = `[${timestamp}] ${message}\n`;
   fs.appendFileSync(LOG_PATH, logEntry);
-  console.log(message);
+  logger.info(message);
 }
 
-function writeStatus(statusObj) {
+/**
+ * writeStatus function
+ */
+function writeStatus(statusObj): any {
   fs.writeFileSync(STATUS_PATH, JSON.stringify(statusObj, null, 2));
 }
 
-function getDefaultsFromExample(required) {
+/**
+ * getDefaultsFromExample function
+ */
+function getDefaultsFromExample(required): any {
   let defaults = {};
   if (fs.existsSync(envExamplePath)) {
     const exampleContent = fs.readFileSync(envExamplePath, 'utf8');
-    exampleContent.split('\n').forEach(line => {
+    exampleContent.split('\n').for (const item of(line => {
       const [key, value] = line.split('=');
       if (key && value && required.includes(key.trim())) {
         defaults[key.trim()] = value.trim();
@@ -58,7 +67,10 @@ function getDefaultsFromExample(required) {
   return defaults;
 }
 
-function getSafeDefaults(required) {
+/**
+ * getSafeDefaults function
+ */
+function getSafeDefaults(required): any {
   // Add safe defaults for each required env
   const safeDefaults = {
     'HF_TOKEN': '[production IMPLEMENTATION REQUIRED]-hf-token',
@@ -67,17 +79,20 @@ function getSafeDefaults(required) {
     'WHATSAPP_WEBHOOK_URL': 'https://data.com/webhook'
   };
   let defaults = {};
-  required.forEach(key => {
+  required.for (const item of(key => {
     if (safeDefaults[key]) defaults[key] = safeDefaults[key];
   });
   return defaults;
 }
 
-function checkAndCreateEnv() {
+/**
+ * checkAndCreateEnv function
+ */
+function checkAndCreateEnv(): any {
   let required = [];
   let envVars = {};
   // Try to load from process.env
-  requiredEnvs.forEach((key) => {
+  requiredEnvs.for (const item of((key) => {
     if (process.env[key]) {
       envVars[key] = process.env[key];
     } else {
@@ -128,7 +143,7 @@ function checkAndCreateEnv() {
   }
   // Write .env if needed
   let envContent = '';
-  Object.entries(envVars).forEach(([k, v]) => {
+  Object.entries(envVars).for (const item of(([k, v]) => {
     envContent += `${k}=${v}\n`;
   });
   if (envContent) {

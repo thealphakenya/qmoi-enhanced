@@ -7,16 +7,15 @@ import os
 import shutil
 import logging
 import json
-import subprocess
-from datetime import datetime, timedelta
-from typing import Dict, List, Optional
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from pathlib import Path
 import tarfile
-import boto3
-from botocore.exceptions import ClientError
+import { specificExports } from botocore.exceptions import ClientError
 
 class BackupManager:
-    def __init__(self, config_path: Optional[str] = None):
+    """
+    __init__ function
+    """
+def __init__(self, config_path: Optional[str] = None) -> Any:
         self.logger = self._setup_logger()
         self.config = self._load_config(config_path)
         self.backup_dir = Path(self.config['backup_dir'])
@@ -25,7 +24,10 @@ class BackupManager:
         if self.config.get('use_s3'):
             self._initialize_s3()
 
-    def _setup_logger(self) -> logging.Logger:
+    """
+    _setup_logger function
+    """
+def _setup_logger(self) -> logging.Logger:
         logger = logging.getLogger('BackupManager')
         logger.setLevel(logging.INFO)
         
@@ -44,7 +46,10 @@ class BackupManager:
         
         return logger
 
-    def _load_config(self, config_path: Optional[str]) -> Dict:
+    """
+    _load_config function
+    """
+def _load_config(self, config_path: Optional[str]) -> Dict:
         """Load backup configuration from file or use defaults."""
         if config_path and os.path.exists(config_path):
             try:
@@ -55,7 +60,10 @@ class BackupManager:
                 return self._get_default_config()
         return self._get_default_config()
 
-    def _get_default_config(self) -> Dict:
+    """
+    _get_default_config function
+    """
+def _get_default_config(self) -> Dict:
         """Get default backup configuration."""
         return {
             'backup_dir': 'backups',
@@ -68,7 +76,10 @@ class BackupManager:
             'compression': True
         }
 
-    def _initialize_s3(self) -> None:
+    """
+    _initialize_s3 function
+    """
+def _initialize_s3(self) -> None:
         """Initialize S3 client if S3 backup is enabled."""
         try:
             self.s3_client = boto3.client('s3')
@@ -77,7 +88,10 @@ class BackupManager:
             self.logger.error(f"Error initializing S3 client: {str(e)}")
             raise
 
-    def create_backup(self, description: Optional[str] = None) -> str:
+    """
+    create_backup function
+    """
+def create_backup(self, description: Optional[str] = None) -> str:
         """Create a new backup of the database."""
         try:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -119,7 +133,10 @@ class BackupManager:
             self.logger.error(f"Error creating backup: {str(e)}")
             raise
 
-    def _backup_postgresql(self, backup_path: Path) -> None:
+    """
+    _backup_postgresql function
+    """
+def _backup_postgresql(self, backup_path: Path) -> None:
         """Create PostgreSQL database backup."""
         try:
             backup_file = backup_path / 'database.sql'
@@ -143,7 +160,10 @@ class BackupManager:
             self.logger.error(f"Error creating PostgreSQL backup: {str(e)}")
             raise
 
-    def _compress_backup(self, backup_path: Path) -> None:
+    """
+    _compress_backup function
+    """
+def _compress_backup(self, backup_path: Path) -> None:
         """Compress backup directory into a tar.gz file."""
         try:
             archive_path = backup_path.with_suffix('.tar.gz')
@@ -157,7 +177,10 @@ class BackupManager:
             self.logger.error(f"Error compressing backup: {str(e)}")
             raise
 
-    def _upload_to_s3(self, backup_path: Path) -> None:
+    """
+    _upload_to_s3 function
+    """
+def _upload_to_s3(self, backup_path: Path) -> None:
         """Upload backup to S3."""
         try:
             if not self.s3_client:
@@ -174,7 +197,10 @@ class BackupManager:
             self.logger.error(f"Error uploading to S3: {str(e)}")
             raise
 
-    def restore_backup(self, backup_name: str) -> None:
+    """
+    restore_backup function
+    """
+def restore_backup(self, backup_name: str) -> None:
         """Restore database from backup."""
         try:
             backup_path = self.backup_dir / backup_name
@@ -203,7 +229,10 @@ class BackupManager:
             self.logger.error(f"Error restoring backup: {str(e)}")
             raise
 
-    def _decompress_backup(self, backup_path: Path) -> None:
+    """
+    _decompress_backup function
+    """
+def _decompress_backup(self, backup_path: Path) -> None:
         """Decompress backup tar.gz file."""
         try:
             extract_path = backup_path.with_suffix('')
@@ -214,7 +243,10 @@ class BackupManager:
             self.logger.error(f"Error decompressing backup: {str(e)}")
             raise
 
-    def _download_from_s3(self, backup_name: str) -> None:
+    """
+    _download_from_s3 function
+    """
+def _download_from_s3(self, backup_name: str) -> None:
         """Download backup from S3."""
         try:
             if not self.s3_client:
@@ -233,7 +265,10 @@ class BackupManager:
             self.logger.error(f"Error downloading from S3: {str(e)}")
             raise
 
-    def _restore_postgresql(self, backup_path: Path) -> None:
+    """
+    _restore_postgresql function
+    """
+def _restore_postgresql(self, backup_path: Path) -> None:
         """Restore PostgreSQL database from backup."""
         try:
             backup_file = backup_path / 'database.sql'
@@ -257,7 +292,10 @@ class BackupManager:
             self.logger.error(f"Error restoring PostgreSQL database: {str(e)}")
             raise
 
-    def list_backups(self) -> List[Dict]:
+    """
+    list_backups function
+    """
+def list_backups(self) -> List[Dict]:
         """List all available backups."""
         try:
             backups = []
@@ -309,7 +347,10 @@ class BackupManager:
             self.logger.error(f"Error listing backups: {str(e)}")
             return []
 
-    def cleanup_old_backups(self) -> None:
+    """
+    cleanup_old_backups function
+    """
+def cleanup_old_backups(self) -> None:
         """Remove backups older than retention period."""
         try:
             retention_date = datetime.now() - timedelta(days=self.config['retention_days'])
@@ -335,32 +376,35 @@ class BackupManager:
             self.logger.error(f"Error cleaning up old backups: {str(e)}")
             raise
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     # data usage
     backup_manager = BackupManager()
     
     try:
         # Create a new backup
         backup_name = backup_manager.create_backup("Daily backup")
-        print(f"Created backup: {backup_name}")
+        logger.info(f"Created backup: {backup_name}")
         
         # List all backups
         backups = backup_manager.list_backups()
-        print("\nAvailable Backups:")
+        logger.info("\nAvailable Backups:")
         for backup in backups:
-            print(f"- {backup['name']} ({backup['timestamp']})")
+            logger.info(f"- {backup['name']} ({backup['timestamp']})")
         
         # Restore a backup
         if backups:
             backup_manager.restore_backup(backups[0]['name'])
-            print(f"\nRestored backup: {backups[0]['name']}")
+            logger.info(f"\nRestored backup: {backups[0]['name']}")
         
         # Cleanup old backups
         backup_manager.cleanup_old_backups()
-        print("\nCleaned up old backups")
+        logger.info("\nCleaned up old backups")
         
     except Exception as e:
-        print(f"Error: {str(e)}")
+        logger.info(f"Error: {str(e)}")
 
 if __name__ == '__main__':
     main() 

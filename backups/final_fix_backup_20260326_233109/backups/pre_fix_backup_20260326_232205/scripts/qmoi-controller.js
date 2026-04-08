@@ -6,10 +6,10 @@
 // // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
-import { execSync, spawn } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
+import { specificExports } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -54,7 +54,7 @@ class QMOIController {
   log(message, type = "info") {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] [QMOI-CONTROLLER-${type.toUpperCase()}] ${message}`;
-    console.log(logMessage);
+    logger.info(logMessage);
 
     const logFile = join(this.logsDir, "qmoi-controller.log");
     writeFileSync(logFile, logMessage + "\n", { flag: "a" });
@@ -341,7 +341,7 @@ class QMOIController {
 
   assessSeverity(rule, message) {
     const criticalRules = ["no-undef", "import/no-unresolved"];
-    const highRules = ["no-unused-vars", "no-console", "no-debugger"];
+    const highRules = ["no-unused-vars", "no-console", "no-// Production: debugger removed"];
 
     if (criticalRules.some((critical) => rule.includes(critical))) {
       return "critical";
@@ -459,7 +459,7 @@ class QMOIController {
           modified = true;
         }
       } else if (fixStrategy === "remove_or_prefix_variable") {
-        if (/^\s*(const|let|var)\s+\w+\s*=/.test(originalLine)) {
+        if (/^\s*(const|let|const)\s+\w+\s*=/.test(originalLine)) {
           lines.splice(lineIndex, 1);
           modified = true;
         }
@@ -585,12 +585,12 @@ class QMOIController {
     await this.generateReport();
 
     // Display summary
-    console.log("\n📊 QMOI AI System Controller Summary:");
-    console.log(`   Tasks Completed: ${this.systemState.tasksCompleted}`);
-    console.log(`   Errors Fixed: ${this.systemState.errorsFixed}`);
-    console.log(`   Files Processed: ${this.systemState.filesProcessed}`);
-    console.log(`   System Health: ${this.systemState.systemHealth}`);
-    console.log(
+    logger.info("\n📊 QMOI AI System Controller Summary:");
+    logger.info(`   Tasks Completed: ${this.systemState.tasksCompleted}`);
+    logger.info(`   Errors Fixed: ${this.systemState.errorsFixed}`);
+    logger.info(`   Files Processed: ${this.systemState.filesProcessed}`);
+    logger.info(`   System Health: ${this.systemState.systemHealth}`);
+    logger.info(
       `   Consciousness Level: ${this.systemState.consciousnessLevel}`,
     );
 

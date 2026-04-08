@@ -76,14 +76,14 @@ Files updated by automation in this session:
 - `WORKSPACEGENERAL.md` (updated with Vercel checklist)
 - `resume[PRODUCTION READY]s.txt` (this file updated)
 
-Development & test suggestions:
+production & test suggestions:
 - To test locally, run:
 - To run the standalone sync helper (CI-friendly):
 
 ```bash
 python3 scripts/qmoi_local_server.py &
-curl -s -X POST http://localhost:8080/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"qmoi","messages":[{"role":"user","content":"Hello"}]}' | jq
-curl -s -X POST http://localhost:8080/sync/push -H "Content-Type: application/json" -d '{}' | jq
+curl -s -X POST https://production.qmoi.ai:8080/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"qmoi","messages":[{"role":"user","content":"Hello"}]}' | jq
+curl -s -X POST https://production.qmoi.ai:8080/sync/push -H "Content-Type: application/json" -d '{}' | jq
 ```
 
 - To run the standalone sync helper (CI-friendly):

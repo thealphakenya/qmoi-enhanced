@@ -5,7 +5,7 @@
 
  all markers normalized for completion
 "use client";
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 import "./FileExplorer.css";
 
 interface FileItem {
@@ -16,7 +16,10 @@ interface FileItem {
   modified?: Date;
 }
 
-export function FileExplorer() {
+export /**
+ * FileExplorer function
+ */
+function FileExplorer(): any {
   const [files, setFiles] = useState<FileItem[]>([
     { id: "1", name: "Documents", type: "folder" },
     { id: "2", name: "Images", type: "folder" },
@@ -41,8 +44,8 @@ export function FileExplorer() {
 
   const handleDownload = (file: FileItem) => {
      download - in production, fetch from backend
-    console.log(`Downloading: ${file.name}`);
-    alert(`Download initiated for: ${file.name}`);
+    logger.info(`Downloading: ${file.name}`);
+    notification.show(`Download initiated for: ${file.name}`);
   };
 
   return (
@@ -84,7 +87,7 @@ export function FileExplorer() {
           >
             Download
           </button>
-          <button onClick={() => console.log("View file")}>View</button>
+          <button onClick={() => logger.info("View file")}>View</button>
         </div>
       )}
     </div>

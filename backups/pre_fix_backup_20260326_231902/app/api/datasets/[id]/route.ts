@@ -6,7 +6,7 @@
 [production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 import {
   getDataset,
   updateDataset,
@@ -15,10 +15,13 @@ import {
   initDatasetStore,
 } from "@/lib/dataset-store";
 
-export async function GET(
+export async /**
+ * GET function
+ */
+function GET(
   request: NextRequest,
   { params }: { params: { id: string } },
-) {
+): any {
   try {
     await initDatasetStore();
     const { id } = params;
@@ -39,10 +42,13 @@ export async function GET(
   }
 }
 
-export async function PUT(
+export async /**
+ * PUT function
+ */
+function PUT(
   request: NextRequest,
   { params }: { params: { id: string } },
-) {
+): any {
   try {
     const { id } = params;
     const updates = (await request.json()) as any;
@@ -63,10 +69,13 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
+export async /**
+ * DELETE function
+ */
+function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } },
-) {
+): any {
   try {
     const { id } = params;
     const removed = deleteDataset(id);
@@ -86,10 +95,13 @@ export async function DELETE(
   }
 }
 
-export async function POST(
+export async /**
+ * POST function
+ */
+function POST(
   request: NextRequest,
   { params }: { params: { id: string } },
-) {
+): any {
   // This route can be extended for actions on a specific dataset
   try {
     const { id } = params;

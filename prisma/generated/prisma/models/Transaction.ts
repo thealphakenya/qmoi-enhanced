@@ -12,9 +12,9 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
-import type * as $Enums from "../enums.ts"
-import type * as Prisma from "../internal/prismaNamespace.ts"
+import { specificExports } from "@prisma/client/runtime/library"
+import { specificExports } from "../enums.ts"
+import { specificExports } from "../internal/prismaNamespace.ts"
 
 /**
  * Model Transaction
@@ -810,7 +810,7 @@ export interface TransactionDelegate<ExtArgs extends runtime.Types.Extensions.In
 
   /**
    * Find the first Transaction that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {TransactionFindFirstArgs} args - Arguments to find a Transaction
    * @data
@@ -826,7 +826,7 @@ export interface TransactionDelegate<ExtArgs extends runtime.Types.Extensions.In
   /**
    * Find the first Transaction that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {TransactionFindFirstOrThrowArgs} args - Arguments to find a Transaction
    * @data
@@ -841,7 +841,7 @@ export interface TransactionDelegate<ExtArgs extends runtime.Types.Extensions.In
 
   /**
    * Find zero or more Transactions that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {TransactionFindManyArgs} args - Arguments to filter and select certain fields only.
    * @data
@@ -903,7 +903,7 @@ export interface TransactionDelegate<ExtArgs extends runtime.Types.Extensions.In
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -956,7 +956,7 @@ export interface TransactionDelegate<ExtArgs extends runtime.Types.Extensions.In
 
   /**
    * Update zero or more Transactions.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {TransactionUpdateManyArgs} args - Arguments to update one or more rows.
    * @data
@@ -997,7 +997,7 @@ export interface TransactionDelegate<ExtArgs extends runtime.Types.Extensions.In
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -1024,7 +1024,7 @@ export interface TransactionDelegate<ExtArgs extends runtime.Types.Extensions.In
 
   /**
    * Count the number of Transactions.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {TransactionCountArgs} args - Arguments to filter Transactions to count.
    * @data
@@ -1047,7 +1047,7 @@ export interface TransactionDelegate<ExtArgs extends runtime.Types.Extensions.In
 
   /**
    * Allows you to perform aggregations operations on a Transaction.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {TransactionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @data
@@ -1073,7 +1073,7 @@ export interface TransactionDelegate<ExtArgs extends runtime.Types.Extensions.In
 
   /**
    * Group by Transaction.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {TransactionGroupByArgs} args - Group by arguments.
    * @data

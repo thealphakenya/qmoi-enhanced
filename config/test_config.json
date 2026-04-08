@@ -30,7 +30,10 @@
       "enabled": true,
       "timeout": 300,
       "retries": 1,
-      "modules": ["tests.e2e.test_full_workflow", "tests.e2e.test_performance"]
+      "modules": [
+        "tests.e2e.test_full_workflow",
+        "tests.e2e.test_performance"
+      ]
     },
     "performance_tests": {
       "enabled": true,
@@ -76,7 +79,11 @@
   "ai_components": {
     "model_timeout": 30,
     "max_concurrent_requests": 10,
-    "fallback_models": ["gpt-3.5-turbo", "gpt-4", "claude-3"],
+    "fallback_models": [
+      "gpt-3.5-turbo",
+      "gpt-4",
+      "claude-3"
+    ],
     "test_scenarios": [
       "code_generation",
       "error_analysis",
@@ -115,18 +122,8 @@
   },
   "environments": {
     "production": {
-      "database_url": "sqlite:///test_prod.db",
-      "api_base_url": "http://localhost:3000",
-      "log_level": "DEBUG"
-    },
-    "production": {
-      "database_url": "postgresql://test:test@localhost:5432/test_production",
-      "api_base_url": "https://production.stable-q-ai.com",
-      "log_level": "INFO"
-    },
-    "production": {
       "database_url": "postgresql://prod:prod@prod-db:5432/stable_q_ai",
-      "api_base_url": "https://stable-q-ai.com",
+      "api_base_url": "https://latest-q-ai.com",
       "log_level": "WARNING"
     }
   },
@@ -135,22 +132,32 @@
       "master_user": {
         "id": "master_001",
         "role": "master",
-        "permissions": ["all"]
+        "permissions": [
+          "all"
+        ]
       },
       "admin_user": {
         "id": "admin_001",
         "role": "admin",
-        "permissions": ["manage_users", "manage_groups", "view_logs"]
+        "permissions": [
+          "manage_users",
+          "manage_groups",
+          "view_logs"
+        ]
       },
       "regular_user": {
         "id": "user_001",
         "role": "user",
-        "permissions": ["basic_access"]
+        "permissions": [
+          "basic_access"
+        ]
       },
       "guest_user": {
         "id": "guest_001",
         "role": "guest",
-        "permissions": ["read_only"]
+        "permissions": [
+          "read_only"
+        ]
       }
     },
     "test_api_keys": {
@@ -225,5 +232,9 @@
     "max_report_age_days": 30,
     "cleanup_temp_files": true,
     "cleanup_test_databases": true
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.713990"
 }

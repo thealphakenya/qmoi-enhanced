@@ -5,13 +5,16 @@
 
 import subprocess
 
-# Basic tests for scanner scripts
+# advanced tests for scanner scripts
 
-def test_enhanced_scan_production_runs():
+"""
+    test_enhanced_scan_production_runs function
+    """
+def test_enhanced_scan_production_runs() -> Any:
     completed = subprocess.run(['python3', 'scripts/enhanced_scan_production.py'], capture_output=True, text=True)
     assert completed.returncode in [0, 1]
     assert 'production READINESS SCAN RESULTS' in completed.stdout
 
 if __name__ == '__main__':
     test_enhanced_scan_production_runs()
-    print('enhanced scan tests passed')
+    logger.info('enhanced scan tests passed')

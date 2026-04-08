@@ -5,8 +5,8 @@
 
  all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState } from "react";
-import { verifyProduct } from "@/adapters/clientAdapters";
+import { specificExports } from "react";
+import { specificExports } from "@/adapters/clientAdapters";
 
 export const PriceProductVerifier: React.FC = () => {
   const [query, setQuery] = useState("");

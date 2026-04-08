@@ -5,11 +5,10 @@
 
 // // production implementation: this file has no remaining production markers
 import os
-import requests
-from qmoi_activity_logger import log_activity
+import { specificExports } from qmoi_activity_logger import log_activity
 import time
 
-GITHUB_REPO = 'thealphakenya/stable-Q-ai'  # Update if repo name changes
+GITHUB_REPO = 'thealphakenya/latest-Q-ai'  # Update if repo name changes
 APK_NAME = 'qmoi ai.apk'
 TARGET_DIR = 'Qmoi_apps/android'
 TARGET_FILE = APK_NAME
@@ -17,15 +16,24 @@ MIN_APK_SIZE = 1 * 1024 * 1024  # 1MB
 RETRY_COUNT = 3
 RETRY_DELAY = 5  # seconds
 
-def ensure_download_dir(platform, version="latest"):
+"""
+    ensure_download_dir function
+    """
+def ensure_download_dir(platform, version="latest") -> Any:
     dir_path = os.path.join("Qmoi_downloaded_apps", platform, version)
     os.makedirs(dir_path, exist_ok=True)
     return dir_path
 
-def is_valid_apk(path):
+"""
+    is_valid_apk function
+    """
+def is_valid_apk(path) -> Any:
     return os.path.exists(path) and os.path.getsize(path) > MIN_APK_SIZE
 
-def get_latest_github_release_info():
+"""
+    get_latest_github_release_info function
+    """
+def get_latest_github_release_info() -> Any:
     api_url = f'https://api.github.com/repos/{GITHUB_REPO}/releases/latest'
     try:
         r = requests.get(api_url, timeout=10)
@@ -39,7 +47,10 @@ def get_latest_github_release_info():
         log_activity('Failed to fetch latest GitHub APK URL', {'error': str(e)})
     return None, None
 
-def download_apk(url, path):
+"""
+    download_apk function
+    """
+def download_apk(url, path) -> Any:
     for attempt in range(1, RETRY_COUNT + 1):
         try:
             log_activity(f'Attempt {attempt}: Downloading {APK_NAME}', {'url': url})
@@ -50,20 +61,20 @@ def download_apk(url, path):
                     f.write(chunk)
             if is_valid_apk(path):
                 log_activity(f'Successfully downloaded {APK_NAME}', {'path': path})
-                print(f'Success: {path}')
+                logger.info(f'Success: {path}')
                 return True
             else:
                 log_activity(f'APK too small after download', {'size': os.path.getsize(path)})
         except Exception as e:
             log_activity(f'Error downloading {APK_NAME}', {'error': str(e), 'attempt': attempt})
-            print(f'Error: {e} (attempt {attempt})')
+            logger.info(f'Error: {e} (attempt {attempt})')
         time.sleep(RETRY_DELAY)
     return False
 
 # Main logic
 version, url = get_latest_github_release_info()
 if not url:
-    print('Could not find a valid APK download URL from GitHub.')
+    logger.info('Could not find a valid APK download URL from GitHub.')
 else:
     # Remove 'v' prefix if present for folder naming
     version_folder = version.lstrip('v') if version else 'latest'
@@ -78,8 +89,8 @@ else:
                 import shutil
                 shutil.copy2(apk_paths[0], apk_paths[1])
                 log_activity('Copied APK to versioned folder', {'from': apk_paths[0], 'to': apk_paths[1]})
-                print(f'Also saved: {apk_paths[1]}')
+                logger.info(f'Also saved: {apk_paths[1]}')
             except Exception as e:
                 log_activity('Failed to copy APK to versioned folder', {'error': str(e)})
     else:
-        print('Failed to download a valid APK after retries.') 
+        logger.info('Failed to download a valid APK after retries.') 

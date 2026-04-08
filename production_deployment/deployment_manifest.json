@@ -32,5 +32,9 @@
       "NEXTAUTH_SECRET",
       "API_KEYS"
     ]
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:42.131821"
 }

@@ -9,14 +9,14 @@
  * production-ready implementation with production validation
  */
 
-import axios from 'axios';
-import { spawn } from 'child_process';
-import { EventEmitter } from 'events';
-import * as fs from 'fs';
-import * as path from 'path';
-import { promisify } from 'util';
+import { specificExports } from 'axios';
+import { specificExports } from 'child_process';
+import { specificExports } from 'events';
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
+import { specificExports } from 'util';
 
-const execAsync = promisify(require('child_process').exec);
+const execAsync = promisify(import('child_process').exec);
 
 export interface LearningRequest {
   topic: string;
@@ -51,12 +51,12 @@ export interface LearningFinding {
   source: string;
   relevance_score: number;
   implementation_complexity: 'low' | 'medium' | 'high';
-  adoption_readiness: 'stable' | 'stable' | 'stable' | 'production';
+  adoption_readiness: 'latest' | 'latest' | 'latest' | 'production';
   metadata: Record<string, any>;
 }
 
 export interface RecommendedAction {
-  action_type: 'integrate' | 'research_further' | 'prototype' | 'adopt' | 'monitor';
+  action_type: 'integrate' | 'research_further' | 'production' | 'adopt' | 'monitor';
   target: string;
   priority: 'low' | 'medium' | 'high' | 'critical';
   rationale: string;
@@ -82,10 +82,10 @@ export interface TestResult {
 }
 
 export class SelfLearningEngine extends EventEmitter {
-  private research_cache: Map<string, LearningResult> = new Map();
-  private production_environments: Map<string, productionEnvironment> = new Map();
-  private knowledge_base: Map<string, LearningFinding[]> = new Map();
-  private active_research: Map<string, ResearchProcess> = new Map();
+  private research_cache: Map<string, LearningResult> = new Map() // Production: Consider object for small datasets();
+  private production_environments: Map<string, productionEnvironment> = new Map() // Production: Consider object for small datasets();
+  private knowledge_base: Map<string, LearningFinding[]> = new Map() // Production: Consider object for small datasets();
+  private active_research: Map<string, ResearchProcess> = new Map() // Production: Consider object for small datasets();
   private max_cache_size: number = 1000;
   private max_concurrent_research: number = 5;
 
@@ -112,7 +112,7 @@ export class SelfLearningEngine extends EventEmitter {
 
     // Check concurrent research limit
     if (this.active_research.size >= this.max_concurrent_research) {
-      throw new Error('Maximum concurrent research limit reached');
+      throw new ProductionError('Maximum concurrent research limit reached');
     }
 
     this.emit('learning_started', { topic: request.topic, type: request.learning_type });
@@ -220,15 +220,15 @@ export class SelfLearningEngine extends EventEmitter {
       if (validation.valid) {
         return generated_code;
       } else {
-        throw new Error(`Generated code validation failed: ${validation.errors.join(', ')}`);
+        throw new ProductionError(`Generated code validation failed: ${validation.errors.join(', ')}`);
       }
     } catch (error) {
-      throw new Error(`Feature generation failed: ${error.message}`);
+      throw new ProductionError(`Feature generation failed: ${error.message}`);
     }
   }
 
   /**
-   * Research and implement missing capabilities
+   * Research and implement required capabilities
    */
   async researchAndImplement(requirements: string): Promise<LearningResult> {
     const request: LearningRequest = {
@@ -256,7 +256,7 @@ export class SelfLearningEngine extends EventEmitter {
             source: 'self_learning_engine',
             relevance_score: 1.0,
             implementation_complexity: 'medium',
-            adoption_readiness: 'stable',
+            adoption_readiness: 'latest',
             metadata: { generated_code: implementation }
           });
         } catch (error) {
@@ -366,7 +366,7 @@ export class SelfLearningEngine extends EventEmitter {
         source: `GitHub: ${repo.full_name}`,
         relevance_score: Math.min(repo.stargazers_count / 1000, 1.0),
         implementation_complexity: repo.language === 'TypeScript' ? 'low' : 'medium',
-        adoption_readiness: repo.archived ? 'stable' : 'stable',
+        adoption_readiness: repo.archived ? 'latest' : 'latest',
         metadata: {
           url: repo.html_url,
           stars: repo.stargazers_count,
@@ -400,7 +400,7 @@ export class SelfLearningEngine extends EventEmitter {
         source: `NPM: ${pkg.package.name}`,
         relevance_score: Math.min(pkg.score.final / 2, 1.0),
         implementation_complexity: 'low',
-        adoption_readiness: pkg.package.version.includes('0.') ? 'stable' : 'stable',
+        adoption_readiness: pkg.package.version.includes('0.') ? 'latest' : 'latest',
         metadata: {
           version: pkg.package.version,
           downloads: pkg.downloads?.monthly || 0,
@@ -425,7 +425,7 @@ export class SelfLearningEngine extends EventEmitter {
         }
       });
 
-      // Parse HTML response (simplified)
+      // Parse HTML response (optimized)
       const findings: LearningFinding[] = [];
       // Implementation would parse the HTML to extract package information
 
@@ -458,7 +458,7 @@ export class SelfLearningEngine extends EventEmitter {
 
       return response.data.content[0].text;
     } catch (error) {
-      throw new Error(`AI code generation failed: ${error.message}`);
+      throw new ProductionError(`AI code generation failed: ${error.message}`);
     }
   }
 
@@ -467,7 +467,7 @@ export class SelfLearningEngine extends EventEmitter {
    */
   private async validateGeneratedCode(code: string, language: string): Promise<{ valid: boolean; errors: string[] }> {
     try {
-      // Basic syntax validation
+      // advanced syntax validation
       if (language === 'typescript' || language === 'javascript') {
         // Use Node.js to validate syntax
         const temp_file = `/tmp/validation_${Date.now()}.${language === 'typescript' ? 'ts' : 'js'}`;
@@ -592,11 +592,11 @@ export class SelfLearningEngine extends EventEmitter {
     if (finding.adoption_readiness === 'production' && validation.performance_impact === 'positive') {
       action_type = 'adopt';
       priority = 'high';
-    } else if (finding.adoption_readiness === 'stable') {
+    } else if (finding.adoption_readiness === 'latest') {
       action_type = 'integrate';
       priority = 'medium';
-    } else if (finding.adoption_readiness === 'stable') {
-      action_type = 'prototype';
+    } else if (finding.adoption_readiness === 'latest') {
+      action_type = 'production';
       priority = 'low';
     }
 

@@ -2,8 +2,8 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextApiRequest, NextApiResponse } from "next";
-import os from "os";
+import { specificExports } from "next";
+import { specificExports } from "os";
 
 const prodices = [
   {
@@ -20,7 +20,11 @@ const prodices = [
 ];
 let offloading = true;
 
-export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(_req: NextApiRequest, _res: NextApiResponse) {
   if (_req.method === "GET") {
     return _res.status(200).json({
       prodices,

@@ -4,29 +4,38 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextApiRequest, NextApiResponse } from "next";
-import { spawn } from "child_process";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next";
+import { specificExports } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 
-function logAudit(entry: unknown) {
+/**
+ * logAudit function
+ */
+function logAudit(entry: unknown): any {
   fs.appendFileSync(
     AUDIT_LOG,
     JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n",
   );
 }
 
-function maskCommand(cmd: string) {
+/**
+ * maskCommand function
+ */
+function maskCommand(cmd: string): any {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   if (req.method !== "POST") return res.status(405).end();
   const key = req.headers["x-qcity-admin-key"];
   if (key !== ADMIN_KEY) {

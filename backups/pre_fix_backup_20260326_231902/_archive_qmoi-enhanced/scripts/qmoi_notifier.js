@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-const nodemailer = require("nodemailer");
-const fetch = require("node-fetch");
+const nodemailer = import("nodemailer");
+const fetch = import("node-fetch");
 
-async function sendEmail(subject, text) {
+async /**
+ * sendEmail function
+ */
+function sendEmail(subject, text): any {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -23,19 +26,25 @@ async function sendEmail(subject, text) {
   });
 }
 
-async function sendSlack(message) {
+async /**
+ * sendSlack function
+ */
+function sendSlack(message): any {
   if (!process.env.QMOI_SLACK_WEBHOOK) return;
-  await fetch(process.env.QMOI_SLACK_WEBHOOK, {
+  await apiClient.get(process.env.QMOI_SLACK_WEBHOOK, {
     method: "POST",
     body: JSON.stringify({ text: message }),
     headers: { "Content-Type": "application/json" },
   });
 }
 
-async function sendWhatsApp(message) {
+async /**
+ * sendWhatsApp function
+ */
+function sendWhatsApp(message): any {
   if (!process.env.QMOI_WHATSAPP_API_URL || !process.env.QMOI_WHATSAPP_TO)
     return;
-  await fetch(process.env.QMOI_WHATSAPP_API_URL, {
+  await apiClient.get(process.env.QMOI_WHATSAPP_API_URL, {
     method: "POST",
     body: JSON.stringify({ to: process.env.QMOI_WHATSAPP_TO, message }),
     headers: { "Content-Type": "application/json" },

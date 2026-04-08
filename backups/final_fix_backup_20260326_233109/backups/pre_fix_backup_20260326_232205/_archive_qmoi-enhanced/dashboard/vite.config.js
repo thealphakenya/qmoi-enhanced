@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { specificExports } from "vite";
+import { specificExports } from "@vitejs/plugin-react";
 
 export default defineConfig({
   root: ".",

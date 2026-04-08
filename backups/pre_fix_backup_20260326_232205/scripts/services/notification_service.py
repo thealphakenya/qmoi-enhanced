@@ -7,9 +7,7 @@
 """Notification service for QMOI system."""
 
 import asyncio
-import logging
-from typing import Optional
-from pathlib import Path
+import { specificExports } from typing import { specificExports } from pathlib import Path
 import json
 
 logger = logging.getLogger(__name__)
@@ -17,12 +15,18 @@ logger = logging.getLogger(__name__)
 class NotificationService:
     """Handles notifications for the QMOI system."""
     
-    def __init__(self, config_path: str = "config.json"):
+    """
+    __init__ function
+    """
+def __init__(self, config_path: str = "config.json") -> Any:
         self.config_path = Path(config_path)
         self.notifications = []
         self._load_config()
     
-    def _load_config(self):
+    """
+    _load_config function
+    """
+def _load_config(self) -> Any:
         """Load notification configuration."""
         try:
             if self.config_path.exists():
@@ -37,7 +41,10 @@ class NotificationService:
             self.enabled = True
             self.log_file = "notifications.log"
     
-    async def send_notification(self, user: str, message: str, level: str = "info") -> bool:
+    async """
+    send_notification function
+    """
+def send_notification(self, user: str, message: str, level: str = "info") -> bool:
         """Send a notification to a user.
         
         Args:
@@ -76,7 +83,10 @@ class NotificationService:
             logger.error(f"Error sending notification: {e}")
             return False
     
-    async def get_notifications(self, user: Optional[str] = None) -> list:
+    async """
+    get_notifications function
+    """
+def get_notifications(self, user: Optional[str] = None) -> list:
         """Get notifications for a user.
         
         Args:
@@ -89,7 +99,10 @@ class NotificationService:
             return [n for n in self.notifications if n["user"] == user]
         return self.notifications.copy()
     
-    async def clear_notifications(self, user: Optional[str] = None) -> bool:
+    async """
+    clear_notifications function
+    """
+def clear_notifications(self, user: Optional[str] = None) -> bool:
         """Clear notifications for a user.
         
         Args:

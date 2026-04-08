@@ -1,12 +1,15 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import jwt from "jsonwebtoken";
-import { NextApiRequest, NextApiResponse } from "next";
+import { specificExports } from "jsonwebtoken";
+import { specificExports } from "next";
 
 const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
-export function requireRole(roles: string[]) {
+export /**
+ * requireRole function
+ */
+function requireRole(roles: string[]): any {
   return (handler: (_req: NextApiRequest, _res: NextApiResponse) => unknown) =>
     async (_req: NextApiRequest, _res: NextApiResponse) => {
       const auth = _req.headers.authorization;

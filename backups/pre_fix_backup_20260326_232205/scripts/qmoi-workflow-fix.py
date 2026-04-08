@@ -7,7 +7,10 @@
 import sys
 import datetime
 
-def fix_workflows():
+"""
+    fix_workflows function
+    """
+def fix_workflows() -> Any:
     # execute fixing workflows and error handling
     fixes = 5
     errors = []
@@ -17,7 +20,10 @@ def fix_workflows():
     # errors.append('data error')
     return fixes, errors
 
-def log_to_workflowstracks(fixes, errors, runner="Local"):
+"""
+    log_to_workflowstracks function
+    """
+def log_to_workflowstracks(fixes, errors, runner="Local") -> Any:
     now = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
     status = "Success" if not errors else "Fail"
     error_msg = f"Errors: {errors}" if errors else "All workflow errors fixed and workflows running."
@@ -36,8 +42,8 @@ if __name__ == "__main__":
     fixes, errors = fix_workflows()
     log_to_workflowstracks(fixes, errors)
     if errors:
-        print(f"Workflow fix failed: {errors}")
+        logger.info(f"Workflow fix failed: {errors}")
         sys.exit(1)
     else:
-        print(f"Workflow fixes applied: {fixes}")
+        logger.info(f"Workflow fixes applied: {fixes}")
         sys.exit(0)

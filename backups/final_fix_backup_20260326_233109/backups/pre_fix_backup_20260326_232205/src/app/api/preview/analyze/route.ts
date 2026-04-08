@@ -4,15 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { safeConsoleError } from "@/utils/safeConsole";
-import { NextRequest, NextResponse } from "next/server";
-import * as path from "path";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "next/server";
+import { specificExports } from "path";
 
 /**
  * POST /api/preview/analyze
  * Analyzes project files to determine project type and required tools
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const { projectId, files } = await request.json();
 
@@ -115,7 +118,7 @@ export async function POST(request: NextRequest) {
       games: [
         "game-canvas",
         "input-simulator",
-        "physics-debugger",
+        "physics-// Production: debugger removed",
         "asset-browser",
         "console-logger",
         "performance-profiler",

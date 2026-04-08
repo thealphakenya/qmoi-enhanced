@@ -18,10 +18,7 @@ import asyncio
 import logging
 import aiohttp
 import datetime
-import threading
-from pathlib import Path
-from typing import Dict, Any, Optional, List
-from cryptography.fernet import Fernet
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from cryptography.fernet import Fernet
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -35,13 +32,19 @@ class EnhancedCredentialManager:
     _test_counter_lock = threading.Lock()
     
     @classmethod
-    def _get_next_test_counter(cls):
+    """
+    _get_next_test_counter function
+    """
+def _get_next_test_counter(cls) -> Any:
         """Get next test counter value thread-safely."""
         with cls._test_counter_lock:
             cls._test_counter += 1
             return cls._test_counter
 
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         """Initialize credential manager."""
         self.root = Path(__file__).resolve().parents[1]
         self.credential_dir = self.root / '.qmoi_validation' / 'credentials'
@@ -66,12 +69,18 @@ class EnhancedCredentialManager:
             'voice_command': self._from_voice_command
         }
     
-    def _generate_key(self):
+    """
+    _generate_key function
+    """
+def _generate_key(self) -> Any:
         """Generate new encryption key."""
         key = Fernet.generate_key()
         self.key_file.write_bytes(key)
     
-    def _load_cached_credentials(self) -> Dict[str, Any]:
+    """
+    _load_cached_credentials function
+    """
+def _load_cached_credentials(self) -> Dict[str, Any]:
         """Load cached credentials from encrypted file."""
         if not self.cache_file.exists():
             return {}
@@ -84,7 +93,10 @@ class EnhancedCredentialManager:
             logger.error(f"Error loading cached credentials: {e}")
             return {}
     
-    def _save_cached_credentials(self):
+    """
+    _save_cached_credentials function
+    """
+def _save_cached_credentials(self) -> Any:
         """Save credentials to encrypted cache file."""
         try:
             data = json.dumps(self.cached_credentials)
@@ -93,7 +105,10 @@ class EnhancedCredentialManager:
         except Exception as e:
             logger.error(f"Error saving cached credentials: {e}")
     
-    async def _from_environment(self) -> Dict[str, str]:
+    async """
+    _from_environment function
+    """
+def _from_environment(self) -> Dict[str, str]:
         """Get credentials from environment variables."""
         env_credentials = {
             'bitget': {
@@ -124,7 +139,10 @@ class EnhancedCredentialManager:
         }
         return env_credentials
     
-    async def _from_master_command(self) -> Dict[str, str]:
+    async """
+    _from_master_command function
+    """
+def _from_master_command(self) -> Dict[str, str]:
         """Process master commands for credential updates."""
         try:
             command_file = self.credential_dir / 'pending_commands.json'
@@ -147,7 +165,10 @@ class EnhancedCredentialManager:
             logger.error(f"Error processing master commands: {e}")
             return {}
     
-    async def _auto_rotate_credentials(self, force: bool = False) -> Dict[str, str]:
+    async """
+    _auto_rotate_credentials function
+    """
+def _auto_rotate_credentials(self, force: bool = False) -> Dict[str, str]:
         """Automatically rotate credentials when needed."""
         try:
             # Ensure the credential directory exists
@@ -211,7 +232,10 @@ class EnhancedCredentialManager:
             logger.error(f"Error in credential rotation: {e}")
             return {}
     
-    async def _from_chat_instruction(self) -> Dict[str, str]:
+    async """
+    _from_chat_instruction function
+    """
+def _from_chat_instruction(self) -> Dict[str, str]:
         """Process chat instructions for credential updates."""
         try:
             instruction_file = self.credential_dir / 'chat_instructions.json'
@@ -234,7 +258,10 @@ class EnhancedCredentialManager:
             logger.error(f"Error processing chat instructions: {e}")
             return {}
     
-    async def _from_voice_command(self) -> Dict[str, str]:
+    async """
+    _from_voice_command function
+    """
+def _from_voice_command(self) -> Dict[str, str]:
         """Process voice commands for credential updates."""
         try:
             voice_command_file = self.credential_dir / 'voice_commands.json'
@@ -257,7 +284,10 @@ class EnhancedCredentialManager:
             logger.error(f"Error processing voice commands: {e}")
             return {}
     
-    async def _generate_new_credentials(self) -> Dict[str, Any]:
+    async """
+    _generate_new_credentials function
+    """
+def _generate_new_credentials(self) -> Dict[str, Any]:
         """Generate new credentials during rotation."""
         return {
             'bitget': {
@@ -274,7 +304,10 @@ class EnhancedCredentialManager:
             }
         }
 
-    def _generate_api_key(self, service: str) -> str:
+    """
+    _generate_api_key function
+    """
+def _generate_api_key(self, service: str) -> str:
         """Generate new API key."""
         # In test mode, generate deterministic but unique values
         if os.environ.get('TESTING_FORCE_ROTATE'):
@@ -286,7 +319,10 @@ class EnhancedCredentialManager:
             f"{service}_{timestamp}_{os.urandom(16)}".encode()
         ).decode()
     
-    def _generate_secret(self, service: str) -> str:
+    """
+    _generate_secret function
+    """
+def _generate_secret(self, service: str) -> str:
         """Generate new secret."""
         # In test mode, generate deterministic but unique values
         if os.environ.get('TESTING_FORCE_ROTATE'):
@@ -295,7 +331,10 @@ class EnhancedCredentialManager:
         
         return base64.b64encode(os.urandom(32)).decode()
     
-    def _generate_passphrase(self, service: str) -> str:
+    """
+    _generate_passphrase function
+    """
+def _generate_passphrase(self, service: str) -> str:
         """Generate new passphrase."""
         # In test mode, generate deterministic but unique values
         if os.environ.get('TESTING_FORCE_ROTATE'):
@@ -304,7 +343,10 @@ class EnhancedCredentialManager:
         
         return base64.b64encode(os.urandom(16)).decode()
     
-    async def update_credentials(self):
+    async """
+    update_credentials function
+    """
+def update_credentials(self) -> Any:
         """Update credentials from all sources."""
         updates = {}
         
@@ -319,18 +361,27 @@ class EnhancedCredentialManager:
             self._merge_updates(self.cached_credentials, updates)
             self._save_cached_credentials()
     
-    def _merge_updates(self, target: Dict, updates: Dict):
+    """
+    _merge_updates function
+    """
+def _merge_updates(self, target: Dict, updates: Dict) -> Any:
         """Merge credential updates."""
         for service, creds in updates.items():
             if service not in target:
                 target[service] = {}
             target[service].update(creds)
     
-    def get_credentials(self, service: str) -> Dict[str, str]:
+    """
+    get_credentials function
+    """
+def get_credentials(self, service: str) -> Dict[str, str]:
         """Get credentials for a service."""
         return self.cached_credentials.get(service, {})
     
-    async def validate_credentials(self) -> Dict[str, bool]:
+    async """
+    validate_credentials function
+    """
+def validate_credentials(self) -> Dict[str, bool]:
         """Validate all credentials."""
         validation = {}
         
@@ -409,7 +460,10 @@ class EnhancedCredentialManager:
         
         return validation
     
-    def _sign_request(
+    """
+    _sign_request function
+    """
+def _sign_request(
         self, timestamp: str, method: str, 
         request_path: str, secret: str
     ) -> str:
@@ -423,7 +477,10 @@ class EnhancedCredentialManager:
             ).digest()
         ).decode()
 
-async def main():
+async """
+    main function
+    """
+def main() -> Any:
     """Main entry point."""
     manager = EnhancedCredentialManager()
     

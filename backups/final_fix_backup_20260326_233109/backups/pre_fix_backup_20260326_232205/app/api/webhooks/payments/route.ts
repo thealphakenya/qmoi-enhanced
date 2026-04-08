@@ -4,19 +4,22 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import crypto from "crypto";
-import { transactionService, walletService } from "@/lib/db/services";
-import { notificationService } from "@/lib/notifications/service";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "crypto";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/notifications/service";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/webhooks/payments");
 
 // Verify webhook signature
+/**
+ * verifyWebhookSignature function
+ */
 function verifyWebhookSignature(
   body: string,
   signature: string | null,
-): boolean {
+): any: boolean {
   const secret = process.env.WEBHOOK_SIGNING_SECRET;
 
   // If no secret is configured, allow unsigned webhooks only when not in
@@ -45,7 +48,10 @@ function verifyWebhookSignature(
   return computed === signature;
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.text();
     const signature = _request.headers.get("x-webhook-signature");
@@ -214,7 +220,10 @@ export async function POST(_request: NextRequest) {
 }
 
 // Health check endpoint
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   return NextResponse.json({
     status: "ok",
     service: "payment-webhook",

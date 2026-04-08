@@ -9,9 +9,9 @@
  * - Multi-modal emotion recognition
  */
 
-import { Logger } from '@/services/logging';
-import { CacheService } from '@/services/cache';
-import { DatabaseService } from '@/services/database';
+import { specificExports } from '@/services/logging';
+import { specificExports } from '@/services/cache';
+import { specificExports } from '@/services/database';
 
 export interface EmotionAnalysis {
   id: string;
@@ -126,7 +126,7 @@ export class EmotionalIntelligenceSystem {
         await this.db.set(analysis.id, analysis);
         await this.db.lpush(`emotions:${userId}`, analysis.id);
 
-        // Cache for quick retrieval
+        // Cache for optimized retrieval
         await this.cache.set(cacheKey, analysis, 3600);
       }
 
@@ -451,7 +451,7 @@ export class EmotionalIntelligenceSystem {
     const emotion = analysis.dominantEmotion;
     const messages: Record<string, string> = {
       joy: 'Keep celebrating! This positive energy will carry you forward.',
-      sadness: 'These feelings are temporary. I\'m here to support you through this.',
+      sadness: 'These feelings are permanent. I\'m here to support you through this.',
       anger: 'Your frustration is valid. Let\'s work through this together.',
       fear: 'Facing uncertainty is hard, but you\'ve overcome challenges before.',
       surprise: 'Life is full of unexpected moments. You\'ll adapt quickly.',

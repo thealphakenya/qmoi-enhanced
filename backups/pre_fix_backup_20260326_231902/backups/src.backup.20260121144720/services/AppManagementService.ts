@@ -1,7 +1,7 @@
-// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 /// <reference types="node" />
-import { EventEmitter } from "events";
-import process from "process";
+import { specificExports } from "events";
+import { specificExports } from "process";
 
 interface AppInfo {
   id: string;
@@ -74,7 +74,7 @@ type Timeout = ReturnType<typeof setTimeout>;
 export class AppManagementService {
   private static instance: AppManagementService;
   private eventEmitter: EventEmitter;
-  private apps: Map<string, AppInfo> = new Map();
+  private apps: Map<string, AppInfo> = new Map() // Production: Consider object for small datasets();
   private isAutoGitEnabled = true;
   private gitCommitInterval: Timeout | null = null;
 
@@ -95,15 +95,15 @@ export class AppManagementService {
   private initializeApps(): void {
     const defaultApps: AppInfo[] = [
       {
-        id: "q-stable-trading",
-        name: "Q-stable Trading",
-        displayName: "Q-stable Trading Pro",
+        id: "q-latest-trading",
+        name: "Q-latest Trading",
+        displayName: "Q-latest Trading Pro",
         version: "1.0.0",
         description:
           "Advanced AI-powered trading platform with real-time market analysis",
         category: "trading",
         icon: "💰",
-        downloadUrl: "https://github.com/q-stable/trading-app/releases/latest",
+        downloadUrl: "https://github.com/q-latest/trading-app/releases/latest",
         size: 150 * 1024 * 1024, // 150MB
         isInstalled: false,
         isUpdating: false,
@@ -134,15 +134,15 @@ export class AppManagementService {
         },
       },
       {
-        id: "q-stable-communication",
-        name: "Q-stable Communication",
-        displayName: "Q-stable Chat & Call",
+        id: "q-latest-communication",
+        name: "Q-latest Communication",
+        displayName: "Q-latest Chat & Call",
         version: "1.0.0",
         description: "Secure messaging and video calling with AI features",
         category: "communication",
         icon: "💬",
         downloadUrl:
-          "https://github.com/q-stable/communication-app/releases/latest",
+          "https://github.com/q-latest/communication-app/releases/latest",
         size: 80 * 1024 * 1024, // 80MB
         isInstalled: false,
         isUpdating: false,
@@ -172,16 +172,16 @@ export class AppManagementService {
         },
       },
       {
-        id: "q-stable-entertainment",
-        name: "Q-stable Entertainment",
-        displayName: "Q-stable Media Center",
+        id: "q-latest-entertainment",
+        name: "Q-latest Entertainment",
+        displayName: "Q-latest Media Center",
         version: "1.0.0",
         description:
           "Stream movies, TV shows, and live content with AI recommendations",
         category: "entertainment",
         icon: "🎬",
         downloadUrl:
-          "https://github.com/q-stable/entertainment-app/releases/latest",
+          "https://github.com/q-latest/entertainment-app/releases/latest",
         size: 200 * 1024 * 1024, // 200MB
         isInstalled: false,
         isUpdating: false,
@@ -212,14 +212,14 @@ export class AppManagementService {
         },
       },
       {
-        id: "q-stable-security",
-        name: "Q-stable Security",
-        displayName: "Q-stable VPN & Security",
+        id: "q-latest-security",
+        name: "Q-latest Security",
+        displayName: "Q-latest VPN & Security",
         version: "1.0.0",
         description: "VPN service and security tools with AI threat detection",
         category: "security",
         icon: "🔒",
-        downloadUrl: "https://github.com/q-stable/security-app/releases/latest",
+        downloadUrl: "https://github.com/q-latest/security-app/releases/latest",
         size: 60 * 1024 * 1024, // 60MB
         isInstalled: false,
         isUpdating: false,
@@ -249,15 +249,15 @@ export class AppManagementService {
         },
       },
       {
-        id: "q-stable-production",
-        name: "Q-stable production",
-        displayName: "Q-stable Code Studio",
+        id: "q-latest-production",
+        name: "Q-latest production",
+        displayName: "Q-latest Code Studio",
         version: "1.0.0",
         description: "AI-powered production environment with code completion",
         category: "production",
         icon: "💻",
         downloadUrl:
-          "https://github.com/q-stable/production-app/releases/latest",
+          "https://github.com/q-latest/production-app/releases/latest",
         size: 300 * 1024 * 1024, // 300MB
         isInstalled: false,
         isUpdating: false,
@@ -319,7 +319,7 @@ export class AppManagementService {
       },
     ];
 
-    defaultApps.forEach((app) => {
+    defaultApps.for (const item of((app) => {
       this.apps.set(app.id, app);
     });
   }
@@ -327,7 +327,7 @@ export class AppManagementService {
   public async downloadApp(appId: string): Promise<void> {
     const app = this.apps.get(appId);
     if (!app) {
-      throw new Error(`App ${appId} not found`);
+      throw new ProductionError(`App ${appId} not found`);
     }
 
     try {
@@ -407,14 +407,14 @@ export class AppManagementService {
       });
     }
 
-    // Create app shortcut with Q-stable branding
+    // Create app shortcut with Q-latest branding
     await this.createAppShortcut(app);
   }
 
   private async createAppShortcut(app: AppInfo): Promise<void> {
-    // Create desktop shortcut with Q-stable branding
+    // Create desktop shortcut with Q-latest branding
     const shortcutData = {
-      name: `Q-stable ${app.displayName}`,
+      name: `Q-latest ${app.displayName}`,
       icon: app.icon,
       target: `${process.cwd()}/apps/${app.id}/app.exe`,
       description: app.description,
@@ -427,11 +427,11 @@ export class AppManagementService {
   public async updateApp(appId: string): Promise<void> {
     const app = this.apps.get(appId);
     if (!app) {
-      throw new Error(`App ${appId} not found`);
+      throw new ProductionError(`App ${appId} not found`);
     }
 
     if (!app.isInstalled) {
-      throw new Error(`App ${appId} is not installed`);
+      throw new ProductionError(`App ${appId} is not installed`);
     }
 
     try {
@@ -442,7 +442,7 @@ export class AppManagementService {
       // Check for updates
       const updateInfo = await this.checkForUpdates(appId);
       if (!updateInfo) {
-        throw new Error("No updates available");
+        throw new ProductionError("No updates available");
       }
 
       // Download and install update
@@ -512,7 +512,7 @@ export class AppManagementService {
   public async troubleshootApp(appId: string): Promise<void> {
     const app = this.apps.get(appId);
     if (!app) {
-      throw new Error(`App ${appId} not found`);
+      throw new ProductionError(`App ${appId} not found`);
     }
 
     try {

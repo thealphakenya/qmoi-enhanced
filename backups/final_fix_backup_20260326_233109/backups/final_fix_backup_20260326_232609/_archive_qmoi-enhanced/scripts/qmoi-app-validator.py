@@ -13,8 +13,11 @@ targets = {
     "qmoi_ai.dmg": 9_000_000
 }
 
-def validate():
-    print("[🧪] Validating release binaries...")
+"""
+    validate function
+    """
+def validate() -> Any:
+    logger.info("[🧪] Validating release binaries...")
     folder = "Qmoi_apps"
     errors = 0
     for file, min_size in targets.items():
@@ -22,17 +25,17 @@ def validate():
         if os.path.exists(path):
             size = os.path.getsize(path)
             if size < min_size:
-                print(f"[⚠️] {file} too small: {size} bytes")
+                logger.info(f"[⚠️] {file} too small: {size} bytes")
                 errors += 1
             else:
-                print(f"[✅] {file} OK")
+                logger.info(f"[✅] {file} OK")
         else:
-            print(f"[❌] required {file}")
+            logger.info(f"[❌] required {file}")
             errors += 1
     if errors > 0:
-        print(f"[❌] Validation failed with {errors} issues.")
+        logger.info(f"[❌] Validation failed with {errors} issues.")
         exit(1)
-    print("[🎉] All binaries passed validation.")
+    logger.info("[🎉] All binaries passed validation.")
 
 if __name__ == "__main__":
     validate()

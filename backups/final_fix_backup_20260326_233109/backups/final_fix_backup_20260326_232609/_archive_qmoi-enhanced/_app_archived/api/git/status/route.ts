@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import { exec } from "child_process";
-import { promisify } from "util";
+import { specificExports } from "next/server";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
 
 const execAsync = promisify(exec);
 
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   try {
     // Get current branch
     const { stdout: branchOutput } = await execAsync(

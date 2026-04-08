@@ -4,15 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import * as React from "react";
-import { useState } from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { specificExports } from "react";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Box";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/TextField";
+import { specificExports } from "@mui/material/Button";
 
-export function QiSpaces() {
-  const [spaces, setSpaces] = useState<string[]>(["stable", "stable"]);
+export /**
+ * QiSpaces function
+ */
+function QiSpaces(): any {
+  const [spaces, setSpaces] = useState<string[]>(["latest", "latest"]);
   const [newSpace, setNewSpace] = useState("");
 
   const addSpace = () => {

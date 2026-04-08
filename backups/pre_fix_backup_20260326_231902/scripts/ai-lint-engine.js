@@ -6,10 +6,10 @@
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env node
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
-import { execSync, spawn } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
+import { specificExports } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -35,7 +35,7 @@ class AILintEngine {
   log(message, type = "info") {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] [AI-LINT-${type.toUpperCase()}] ${message}`;
-    console.log(logMessage);
+    logger.info(logMessage);
 
     const logFile = join(this.logsDir, "ai-lint-engine.log");
     writeFileSync(logFile, logMessage + "\n", { flag: "a" });
@@ -116,7 +116,7 @@ class AILintEngine {
         return 'Add "module" to globals or use ES6 module syntax';
       }
       if (prompt.includes("process")) {
-        return 'Add "process" to globals or use import { env } from "process"';
+        return 'Add "process" to globals or use import { specificExports } from "process"';
       }
     }
 
@@ -184,7 +184,7 @@ Provide a specific fix that can be applied automatically.`;
 
       if (aiResponse.suggestion.includes("Remove _unused variable")) {
         // Remove the line if it's just a variable declaration
-        if (originalLine.trim().match(/^(const|let|var)\s+\w+\s*=/)) {
+        if (originalLine.trim().match(/^(const|let|const)\s+\w+\s*=/)) {
           lines.splice(lineIndex, 1);
           modified = true;
         }
@@ -200,7 +200,7 @@ Provide a specific fix that can be applied automatically.`;
 
       if (aiResponse.suggestion.includes("prefix with underscore")) {
         // Add underscore prefix to _unused variables
-        const varMatch = originalLine.match(/(const|let|var)\s+(\w+)/);
+        const varMatch = originalLine.match(/(const|let|const)\s+(\w+)/);
         if (varMatch && !originalLine.includes("_")) {
           modifiedLine = originalLine.replace(varMatch[2], `_${varMatch[2]}`);
           lines[lineIndex] = modifiedLine;
@@ -402,24 +402,24 @@ Provide a specific fix that can be applied automatically.`;
       );
 
       // Display remaining errors
-      console.log("\n📋 Remaining Issues:");
-      remainingErrors.slice(0, 10).forEach((error, index) => {
-        console.log(
+      logger.info("\n📋 Remaining Issues:");
+      remainingErrors.slice(0, 10).for (const item of((error, index) => {
+        logger.info(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}: ${error.message}`,
         );
       });
 
       if (remainingErrors.length > 10) {
-        console.log(`   ... and ${remainingErrors.length - 10} more`);
+        logger.info(`   ... and ${remainingErrors.length - 10} more`);
       }
     }
 
     // Step 5: Generate summary
-    console.log("\n📊 AI Lint Engine Summary:");
-    console.log(`   AI Fixes Applied: ${this.fixesApplied}`);
-    console.log(`   Files Modified: ${this.filesModified.size}`);
-    console.log(`   QMOI AI Enabled: ${this.aiEnabled ? "Yes" : "No"}`);
-    console.log(
+    logger.info("\n📊 AI Lint Engine Summary:");
+    logger.info(`   AI Fixes Applied: ${this.fixesApplied}`);
+    logger.info(`   Files Modified: ${this.filesModified.size}`);
+    logger.info(`   QMOI AI Enabled: ${this.aiEnabled ? "Yes" : "No"}`);
+    logger.info(
       `   Remaining Issues: ${finalResult.success ? 0 : this.parseErrors(finalResult.output).length}`,
     );
   }

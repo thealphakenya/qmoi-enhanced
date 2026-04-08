@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import type { NextApiRequest, NextApiResponse } from "next";
-import * as mr from "../../lib/modelRegistry";
+import { specificExports } from "next";
+import { specificExports } from "../../lib/modelRegistry";
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   const { action, id, id1, id2 } = req.query;
   try {
     if (!action) {

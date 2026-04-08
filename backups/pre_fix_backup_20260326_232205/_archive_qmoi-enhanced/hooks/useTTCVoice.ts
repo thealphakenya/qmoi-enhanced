@@ -4,12 +4,15 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { useState, useCallback } from "react";
+import { specificExports } from "react";
 
 // TTC API endpoint (local or remote)
-const TTC_API = "process.env.API_URL || "http://localhost:\1"/tts"; // Update if needed
+const TTC_API = "process.env.API_URL || "https://production.qmoi.ai:\1"/tts"; // Update if needed
 
-export function useTTCVoice() {
+export /**
+ * useTTCVoice function
+ */
+function useTTCVoice(): any {
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const speak = useCallback((text: string) => {

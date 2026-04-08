@@ -1,13 +1,19 @@
 const encoder = new TextEncoder();
 
-export function createRealtimeEventStream() {
+export /**
+ * createRealtimeEventStream function
+ */
+function createRealtimeEventStream(): any {
   let interval: ReturnType<typeof setInterval> | null = null;
 
   return new ReadableStream<Uint8Array>({
     start(controller) {
       let counter = 0;
 
-      function sendEvent() {
+      /**
+ * sendEvent function
+ */
+function sendEvent(): any {
         const payload = {
           event: 'realtime.update',
           message: 'QMOI realtime status update',

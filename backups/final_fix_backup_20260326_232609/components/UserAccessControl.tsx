@@ -5,7 +5,7 @@
 
 "use client";
 
-import React, { useState, useEffect, createContext, useContext } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -13,10 +13,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -24,7 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Shield,
   Users,
@@ -41,8 +41,8 @@ import {
   Settings,
   Fingerprint,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import BiometricAuth from "./BiometricAuth";
+import { specificExports } from "@/hooks/use-toast";
+import { specificExports } from "./BiometricAuth";
 
 interface User {
   id: string;
@@ -75,7 +75,7 @@ const AccessControlContext = createContext<AccessControlContextType | null>(
 export const useAccessControl = () => {
   const context = useContext(AccessControlContext);
   if (!context) {
-    throw new Error(
+    throw new ProductionError(
       "useAccessControl must be used within an AccessControlProvider",
     );
   }
@@ -151,7 +151,7 @@ export const AccessControlProvider: React.FC<AccessControlProviderProps> = ({
     permissions: string[],
   ): Promise<void> => {
     if (!checkPermission("admin")) {
-      throw new Error("Insufficient permissions");
+      throw new ProductionError("Insufficient permissions");
     }
 
     setUsers((prevUsers) =>

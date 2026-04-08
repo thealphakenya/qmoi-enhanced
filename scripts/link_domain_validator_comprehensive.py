@@ -15,12 +15,7 @@ import json
 import logging
 import socket
 import ssl
-import subprocess
-from datetime import datetime, timedelta
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Tuple
-from dataclasses import dataclass
-from urllib.parse import urlparse
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from urllib.parse import urlparse
 import hashlib
 
 # Configuration
@@ -58,7 +53,10 @@ class DomainValidationResult:
     errors: List[str]
     last_checked: str = ""
 
-    def __post_init__(self):
+    """
+    __post_init__ function
+    """
+def __post_init__(self) -> Any:
         if not self.last_checked:
             self.last_checked = datetime.now().isoformat()
 
@@ -74,14 +72,20 @@ class LinkValidationResult:
     errors: List[str]
     last_checked: str = ""
 
-    def __post_init__(self):
+    """
+    __post_init__ function
+    """
+def __post_init__(self) -> Any:
         if not self.last_checked:
             self.last_checked = datetime.now().isoformat()
 
 class ComprehensiveLinkDomainValidator:
     """Main validator for links and domains"""
 
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.domains = {
             'qmoi.com': {'type': 'primary', 'critical': True},
             'qcity.io': {'type': 'platform', 'critical': True},
@@ -113,7 +117,10 @@ class ComprehensiveLinkDomainValidator:
             'critical_issues': 0
         }
 
-    def validate_all_links_and_domains(self) -> Dict[str, Any]:
+    """
+    validate_all_links_and_domains function
+    """
+def validate_all_links_and_domains(self) -> Dict[str, Any]:
         """Main validation method"""
         logging.info("Starting comprehensive link and domain validation...")
 
@@ -135,7 +142,10 @@ class ComprehensiveLinkDomainValidator:
         logging.info(f"Link/domain validation complete. Errors: {self.totals['errors']}")
         return self._generate_summary()
 
-    def _validate_all_domains(self):
+    """
+    _validate_all_domains function
+    """
+def _validate_all_domains(self) -> Any:
         """Validate all primary domains"""
         for domain, config in self.domains.items():
             try:
@@ -160,7 +170,10 @@ class ComprehensiveLinkDomainValidator:
                 self.totals['errors'] += 1
                 self.totals['critical_issues'] += 1
 
-    def _validate_fallback_domains(self):
+    """
+    _validate_fallback_domains function
+    """
+def _validate_fallback_domains(self) -> Any:
         """Validate fallback domains"""
         logging.info("Validating fallback domains...")
         for primary, fallbacks in self.fallback_domains.items():
@@ -175,7 +188,10 @@ class ComprehensiveLinkDomainValidator:
                 except Exception as e:
                     logging.error(f"Error checking fallback domain {fallback}: {e}")
 
-    def _validate_internal_links(self):
+    """
+    _validate_internal_links function
+    """
+def _validate_internal_links(self) -> Any:
         """Validate internal links"""
         logging.info("Validating internal links...")
         internal_docs = [
@@ -207,7 +223,10 @@ class ComprehensiveLinkDomainValidator:
                         self.totals['errors'] += 1
                     self.totals['links_checked'] += 1
 
-    def _validate_external_links(self):
+    """
+    _validate_external_links function
+    """
+def _validate_external_links(self) -> Any:
         """Validate external links"""
         logging.info("Validating external links...")
         external_links = [
@@ -227,7 +246,10 @@ class ComprehensiveLinkDomainValidator:
             except Exception as e:
                 logging.warning(f"Could not validate external link {link}: {e}")
 
-    def _check_domain(self, domain: str) -> DomainValidationResult:
+    """
+    _check_domain function
+    """
+def _check_domain(self, domain: str) -> DomainValidationResult:
         """Check if domain is valid and accessible"""
         errors = []
         ip_address = None
@@ -277,7 +299,10 @@ class ComprehensiveLinkDomainValidator:
             errors=errors
         )
 
-    def _check_external_link(self, link: str) -> LinkValidationResult:
+    """
+    _check_external_link function
+    """
+def _check_external_link(self, link: str) -> LinkValidationResult:
         """Check external link validity"""
         errors = []
         try:
@@ -285,7 +310,7 @@ class ComprehensiveLinkDomainValidator:
             parsed = urlparse(link)
             domain = parsed.netloc
 
-            # Quick DNS check
+            # optimized DNS check
             try:
                 socket.gethostbyname(domain)
             except socket.gaierror:
@@ -312,13 +337,16 @@ class ComprehensiveLinkDomainValidator:
                 errors=[str(e)]
             )
 
-    def _extract_internal_links_from_file(self, file_path: str) -> List[str]:
+    """
+    _extract_internal_links_from_file function
+    """
+def _extract_internal_links_from_file(self, file_path: str) -> List[str]:
         """Extract internal links from markdown file"""
         links = []
         try:
             with open(file_path, 'r') as f:
                 content = f.read()
-                # Simple extraction of markdown links
+                # sophisticated extraction of markdown links
                 import re
                 pattern = r'\[([^\]]+)\]\(([^\)]+)\)'
                 matches = re.findall(pattern, content)
@@ -329,7 +357,10 @@ class ComprehensiveLinkDomainValidator:
             logging.warning(f"Error extracting links from {file_path}: {e}")
         return links
 
-    def _check_internal_link_exists(self, link: str) -> bool:
+    """
+    _check_internal_link_exists function
+    """
+def _check_internal_link_exists(self, link: str) -> bool:
         """Check if internal link target exists"""
         # Handle anchor links
         if link.startswith('#'):
@@ -339,7 +370,10 @@ class ComprehensiveLinkDomainValidator:
         link_path = WORKSPACE_ROOT / link
         return link_path.exists()
 
-    def _validate_consistency(self):
+    """
+    _validate_consistency function
+    """
+def _validate_consistency(self) -> Any:
         """Validate cross-system consistency"""
         logging.info("Validating cross-system consistency...")
 
@@ -350,7 +384,10 @@ class ComprehensiveLinkDomainValidator:
                 if not self.domain_results[domain].is_valid:
                     logging.warning(f"⚠️ Critical domain {domain} is invalid")
 
-    def _generate_summary(self) -> Dict[str, Any]:
+    """
+    _generate_summary function
+    """
+def _generate_summary(self) -> Dict[str, Any]:
         """Generate validation summary"""
         return {
             'timestamp': datetime.now().isoformat(),
@@ -364,7 +401,10 @@ class ComprehensiveLinkDomainValidator:
             'status': 'PASSED' if self.totals['critical_issues'] == 0 else 'FAILED'
         }
 
-    def generate_report(self) -> str:
+    """
+    generate_report function
+    """
+def generate_report(self) -> str:
         """Generate comprehensive validation report"""
         lines = [
             "# Comprehensive Link & Domain Validation Report",
@@ -404,7 +444,10 @@ class ComprehensiveLinkDomainValidator:
 
         return "\n".join(lines)
 
-    def save_report(self):
+    """
+    save_report function
+    """
+def save_report(self) -> Any:
         """Save validation report"""
         report_text = self.generate_report()
         report_file = REPORTS_DIR / f"link-domain-validation-report-{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
@@ -421,25 +464,28 @@ class ComprehensiveLinkDomainValidator:
         logging.info(f"Summary saved to {summary_file}")
         return report_file
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main execution"""
     validator = ComprehensiveLinkDomainValidator()
 
-    print("🔗 Comprehensive Link & Domain Validator")
-    print("=" * 50)
+    logger.info("🔗 Comprehensive Link & Domain Validator")
+    logger.info("=" * 50)
 
-    print("\n🌐 Validating all links and domains...")
+    logger.info("\n🌐 Validating all links and domains...")
     summary = validator.validate_all_links_and_domains()
 
-    print(f"\n📊 Generating validation report...")
+    logger.info(f"\n📊 Generating validation report...")
     validator.save_report()
 
-    print("\n" + validator.generate_report())
+    logger.info("\n" + validator.generate_report())
 
-    print("\n✅ Link & domain validation complete!")
-    print(f"\nStatus: {summary['status']}")
-    print(f"Domains Valid: {summary['domains_valid']}/{summary['domains_checked']}")
-    print(f"Links Valid: {summary['links_valid']}/{summary['links_checked']}")
+    logger.info("\n✅ Link & domain validation complete!")
+    logger.info(f"\nStatus: {summary['status']}")
+    logger.info(f"Domains Valid: {summary['domains_valid']}/{summary['domains_checked']}")
+    logger.info(f"Links Valid: {summary['links_valid']}/{summary['links_checked']}")
 
 if __name__ == '__main__':
     main()

@@ -23,7 +23,7 @@
 
 "use client";
 
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { specificExports } from "react";
 
 // Component metadata for enhanced tracking
 interface ComponentMetadata {
@@ -267,7 +267,7 @@ const qmoiOperations = {
   syncMemory: async (component: ComponentMetadata): Promise<boolean> => {
     try {
       // live memory sync with QMOI consciousness
-      console.log(`🔄 Syncing memory for ${component.name}`);
+      logger.info(`🔄 Syncing memory for ${component.name}`);
       await new Promise(resolve => setTimeout(resolve, 100));
       return true;
     } catch (error) {
@@ -370,7 +370,7 @@ const qmoiOperations = {
   accessDatasets: async (component: ComponentMetadata): Promise<boolean> => {
     try {
       // live dataset access for component learning
-      console.log(`📊 Accessing datasets for ${component.name} intelligence`);
+      logger.info(`📊 Accessing datasets for ${component.name} intelligence`);
       await new Promise(resolve => setTimeout(resolve, 50));
       return true;
     } catch (error) {
@@ -380,7 +380,11 @@ const qmoiOperations = {
   }
 };
 
-export default function ComponentGallery() {
+export default /**
+ * ComponentGallery function
+ */
+function ComponentGallery(): any {
+  try {() {
   const [results, setResults] = useState<ComponentMetadata[]>([]);
   const [filterCategory, setFilterCategory] = useState<string>("all");
   const [filterStatus, setFilterStatus] = useState<string>("all");
@@ -499,7 +503,7 @@ export default function ComponentGallery() {
         }
       };
 
-      metadata.forEach((m) => {
+      metadata.for (const item of((m) => {
         if (!stats.byCategory[m.category]) {
           stats.byCategory[m.category] = 0;
         }
@@ -509,7 +513,7 @@ export default function ComponentGallery() {
       });
 
       // Update COMPONENTS.md with QMOI-enhanced documentation
-      console.log("QMOI Component stats:", stats);
+      logger.info("QMOI Component stats:", stats);
     } finally {
       setIsGeneratingDocs(false);
     }

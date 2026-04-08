@@ -1,5 +1,5 @@
-import { NextRequest } from 'next/server';
-import { cacheManager } from './redis';
+import { specificExports } from 'next/server';
+import { specificExports } from './redis';
 
 export interface CacheMiddlewareOptions {
   ttl?: number;
@@ -15,7 +15,10 @@ interface SerializedResponse {
   headers: [string, string][];
 }
 
-function serializeResponse(response: Response): Promise<string> {
+/**
+ * serializeResponse function
+ */
+function serializeResponse(response: Response): any: Promise<string> {
   return response.text().then((body) =>
     JSON.stringify({
       body,
@@ -26,7 +29,10 @@ function serializeResponse(response: Response): Promise<string> {
   );
 }
 
-function deserializeResponse(value: string): Response {
+/**
+ * deserializeResponse function
+ */
+function deserializeResponse(value: string): any: Response {
   const serialized = JSON.parse(value) as SerializedResponse;
   const headers = new Headers(serialized.headers);
   headers.set('X-Cache', 'HIT');
@@ -38,11 +44,17 @@ function deserializeResponse(value: string): Response {
   });
 }
 
-function buildCacheKey(req: NextRequest): string {
+/**
+ * buildCacheKey function
+ */
+function buildCacheKey(req: NextRequest): any: string {
   return `${req.nextUrl.pathname}${req.nextUrl.search}`;
 }
 
-function applyCacheControl(response: Response, ttlSeconds: number): Response {
+/**
+ * applyCacheControl function
+ */
+function applyCacheControl(response: Response, ttlSeconds: number): any: Response {
   const headers = new Headers(response.headers);
 
   if (!headers.has('Cache-Control')) {
@@ -56,7 +68,10 @@ function applyCacheControl(response: Response, ttlSeconds: number): Response {
   });
 }
 
-export function setCacheControl(
+export /**
+ * setCacheControl function
+ */
+function setCacheControl(
   response: Response,
   options: {
     maxAge?: number;
@@ -65,7 +80,7 @@ export function setCacheControl(
     immutable?: boolean;
     staleWhileRevalidate?: number;
   } = {},
-): Response {
+): any: Response {
   const directives: string[] = [];
 
   if (options.public ?? true) {
@@ -94,11 +109,17 @@ export function setCacheControl(
   });
 }
 
-export function cacheRoute(
-  handler: (req: NextRequest) => Promise<Response>,
+export /**
+ * cacheRoute function
+ */
+function cacheRoute(
+  handler: (req: NextRequest): any => Promise<Response>,
   options: CacheMiddlewareOptions = {},
 ) {
-  return async function cachedHandler(request: NextRequest): Promise<Response> {
+  return async /**
+ * cachedHandler function
+ */
+function cachedHandler(request: NextRequest): any: Promise<Response> {
     try {
       if (request.method !== 'GET') {
         return await handler(request);
@@ -132,28 +153,43 @@ export function cacheRoute(
   };
 }
 
-export function withCache(options: CacheMiddlewareOptions = {}) {
+export /**
+ * withCache function
+ */
+function withCache(options: CacheMiddlewareOptions = {}): any {
   return (handler: (req: NextRequest) => Promise<Response>) => cacheRoute(handler, options);
 }
 
-export async function cacheResponse(
+export async /**
+ * cacheResponse function
+ */
+function cacheResponse(
   key: string,
   response: Response,
   ttlSeconds: number = 300,
-): Promise<void> {
+): any: Promise<void> {
   const serialized = await serializeResponse(response);
   await cacheManager.set(key, serialized, ttlSeconds);
 }
 
-export async function getCachedResponse(key: string): Promise<Response | null> {
+export async /**
+ * getCachedResponse function
+ */
+function getCachedResponse(key: string): any: Promise<Response | null> {
   const cached = await cacheManager.get<string>(key);
   return cached ? deserializeResponse(cached) : null;
 }
 
-export async function invalidateCache(key: string): Promise<void> {
+export async /**
+ * invalidateCache function
+ */
+function invalidateCache(key: string): any: Promise<void> {
   await cacheManager.delete(key);
 }
 
-export function createCacheKey(prefix: string, id: string): string {
+export /**
+ * createCacheKey function
+ */
+function createCacheKey(prefix: string, id: string): any: string {
   return `${prefix}:${id}`;
 }

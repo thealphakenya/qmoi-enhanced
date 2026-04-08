@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import crypto from "crypto";
-import { extractRoleFromHeader } from "@/lib/roleAuth";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
+import { specificExports } from "@/lib/roleAuth";
 
 const VOICE_PROFILES_FILE = path.resolve(
   process.cwd(),
@@ -16,7 +16,10 @@ const VOICE_PROFILES_FILE = path.resolve(
   "voice-profiles.json",
 );
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     // Extract and verify role from Authorization header
     const authHeader = request.headers.get("authorization") || undefined;

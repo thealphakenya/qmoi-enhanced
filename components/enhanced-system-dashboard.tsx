@@ -5,16 +5,16 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/alert";
 import {
   Activity,
   AlertTriangle,
@@ -30,16 +30,16 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
-import QI from "@/components/QI";
-import { NotificationCenter } from "@/components/NotificationCenter";
-import { DeviceSettingsPanel } from "@/components/DeviceSettingsPanel";
-import { FloatingPreviewWindow } from "@/components/FloatingPreviewWindow";
-import { PluginManager } from "../src/plugins/PluginManager";
+import { specificExports } from "@/components/QI";
+import { specificExports } from "@/components/NotificationCenter";
+import { specificExports } from "@/components/DeviceSettingsPanel";
+import { specificExports } from "@/components/FloatingPreviewWindow";
+import { specificExports } from "../src/plugins/PluginManager";
 import {
   PluginNotificationsProvider,
   usePluginNotifications,
 } from "./ui/PluginNotifications";
-import { PluginHelpModal } from "./ui/PluginHelpModal";
+import { specificExports } from "./ui/PluginHelpModal";
 import {
   AWSIntegration,
   AzureIntegration,
@@ -47,17 +47,17 @@ import {
   IoTIntegration,
   MobileIntegration,
 } from "./device/DeviceIntegrations";
-import { AWSCredentialsModal } from "./device/AWSCredentialsModal";
-import { AzureCredentialsModal } from "./device/AzureCredentialsModal";
-import { GCPCredentialsModal } from "./device/GCPCredentialsModal";
-import { AnalyticsCharts } from "./analytics/AnalyticsCharts";
-import { RoleProvider, useRole } from "./security/RoleContext";
+import { specificExports } from "./device/AWSCredentialsModal";
+import { specificExports } from "./device/AzureCredentialsModal";
+import { specificExports } from "./device/GCPCredentialsModal";
+import { specificExports } from "./analytics/AnalyticsCharts";
+import { specificExports } from "./security/RoleContext";
 import {
   OrchestratorStatusPanel,
   OrchestratorStatus,
 } from "./predeploy/OrchestratorStatusPanel";
-import { AutomationRulesPanel } from "./automation/AutomationRulesPanel";
-import { EncryptedAuditLog } from "./analytics/EncryptedAuditLog";
+import { specificExports } from "./automation/AutomationRulesPanel";
+import { specificExports } from "./analytics/EncryptedAuditLog";
 
 interface SystemMetrics {
   cpu: number;
@@ -84,7 +84,10 @@ const deviceIntegrations = [
   { name: "Mobile", integration: MobileIntegration },
 ];
 
-export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
+export /**
+ * EnhancedSystemDashboard function
+ */
+function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
   const [metrics, setMetrics] = useState<SystemMetrics>({
     cpu: 45,
     memory: 62,
@@ -95,7 +98,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
   const [projects] = useState<ProjectStatus[]>([
     {
       id: "1",
-      name: "stable-Q AI",
+      name: "latest-Q AI",
       status: "active",
       lastUpdate: "2 minutes ago",
     },
@@ -305,10 +308,10 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
               <div className="flex items-center justify-between">
                 <div>
                   <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
-                    stable-Q AI Dashboard
+                    latest-Q AI Dashboard
                   </h1>
                   <p className="text-slate-600 dark:text-slate-400">
-                    Enhanced AI-powered development platform
+                    Enhanced AI-powered production platform
                   </p>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -421,7 +424,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                     <CardHeader>
                       <CardTitle>Active Projects</CardTitle>
                       <CardDescription>
-                        Manage and monitor your development projects
+                        Manage and monitor your production projects
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -490,7 +493,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                           <span>Voice Interface</span>
                         </CardTitle>
                         <CardDescription>
-                          Voice-controlled development environment
+                          Voice-controlled production environment
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
@@ -569,7 +572,7 @@ export function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }) {
                     <CardHeader>
                       <CardTitle>System Configuration</CardTitle>
                       <CardDescription>
-                        Configure your stable-Q AI system settings
+                        Configure your latest-Q AI system settings
                       </CardDescription>
                     </CardHeader>
                     <CardContent>

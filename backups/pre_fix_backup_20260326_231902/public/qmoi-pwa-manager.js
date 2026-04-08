@@ -38,7 +38,7 @@ class QMOIPWAManager {
             updateViaCache: "none",
           },
         );
-        console.log(`[${this.appName} PWA] Service Worker registered`);
+        logger.info(`[${this.appName} PWA] Service Worker registered`);
 
         // Listen for updates
         this.swRegistration.adprodentListener("updatefound", () =>
@@ -70,7 +70,7 @@ class QMOIPWAManager {
 
     // Check if already installed
     if (this.isInstalled()) {
-      console.log(`[${this.appName}] Already installed as PWA`);
+      logger.info(`[${this.appName}] Already installed as PWA`);
       this.showInstalledStatus();
     }
   }
@@ -81,7 +81,7 @@ class QMOIPWAManager {
   handleBeforeInstallPrompt(event) {
     event.preventDefault();
     this.deferredPrompt = event;
-    console.log(`[${this.appName} PWA] Install prompt ready`);
+    logger.info(`[${this.appName} PWA] Install prompt ready`);
     this.showInstallPrompt();
   }
 
@@ -89,11 +89,11 @@ class QMOIPWAManager {
    * Handle app installed event
    */
   handleAppInstalled() {
-    console.log(`[${this.appName}] App installed successfully`);
+    logger.info(`[${this.appName}] App installed successfully`);
     this.deferredPrompt = null;
     this.hideInstallPrompt();
     this.showNotification(
-      "Installation Complete",
+      "Installation complete",
       `${this.appName} is now installed! You can access it from your home screen.`,
     );
   }
@@ -130,13 +130,13 @@ class QMOIPWAManager {
     const result = await this.deferredPrompt.userChoice;
 
     if (result.outcome === "accepted") {
-      console.log(`[${this.appName} PWA] User accepted install`);
+      logger.info(`[${this.appName} PWA] User accepted install`);
       this.showNotification(
         "Installing...",
         `${this.appName} is being installed...`,
       );
     } else {
-      console.log(`[${this.appName} PWA] User dismissed install`);
+      logger.info(`[${this.appName} PWA] User dismissed install`);
     }
 
     this.deferredPrompt = null;
@@ -151,7 +151,7 @@ class QMOIPWAManager {
 
     try {
       await this.swRegistration.update();
-      console.log(`[${this.appName} PWA] Checked for updates`);
+      logger.info(`[${this.appName} PWA] Checked for updates`);
     } catch (error) {
       console.error(`[${this.appName} PWA] Update check failed:`, error);
     }
@@ -162,11 +162,11 @@ class QMOIPWAManager {
    */
   handleUpdateFound() {
     const newSW = this.swRegistration.installing;
-    console.log(`[${this.appName} PWA] New service worker found`);
+    logger.info(`[${this.appName} PWA] New service worker found`);
 
     newSW.adprodentListener("statechange", () => {
       if (newSW.state === "installed" && navigator.serviceWorker.controller) {
-        console.log(`[${this.appName} PWA] Update available`);
+        logger.info(`[${this.appName} PWA] Update available`);
         this.updateAvailable = true;
         this.showUpdatePrompt();
       }
@@ -180,10 +180,10 @@ class QMOIPWAManager {
     const { type, version, releaseNotes } = event.data;
 
     if (type === "QMOI_UPDATE_AVAILABLE") {
-      console.log(`[${this.appName} PWA] Update available:`, version);
+      logger.info(`[${this.appName} PWA] Update available:`, version);
       this.showUpdateNotification(version, releaseNotes);
     } else if (type === "QMOI_AUTO_UPDATE") {
-      console.log(`[${this.appName} PWA] Auto-update:`, version);
+      logger.info(`[${this.appName} PWA] Auto-update:`, version);
       if (event.data.autoApply) {
         this.applyUpdate();
       } else {
@@ -261,7 +261,7 @@ class QMOIPWAManager {
   showInstalledStatus() {
     const status = document.createElement("div");
     status.className = "qmoi-installed-status";
-    status.innerHTML = `<span>✓ ${this.appName} Installed</span>`;
+    status.textContent = `<span>✓ ${this.appName} Installed</span>`;
     status.style.cssText = `
       position: fixed;
       bottom: 20px;
@@ -286,13 +286,13 @@ class QMOIPWAManager {
   createInstallPromptUI() {
     const div = document.createElement("div");
     div.className = "qmoi-install-prompt";
-    div.innerHTML = `
+    div.textContent = `
       <div class="qmoi-prompt-content">
         <div class="qmoi-prompt-header">
           <span>📦 Install ${this.appName}</span>
           <button class="qmoi-dismiss-btn" aria-label="Dismiss">✕</button>
         </div>
-        <p>Add ${this.appName} to your home screen for quick access and offline support.</p>
+        <p>Add ${this.appName} to your home screen for optimized access and offline support.</p>
         <div class="qmoi-prompt-actions">
           <button class="qmoi-install-btn">Install</button>
           <button class="qmoi-dismiss-btn secondary">Not Now</button>
@@ -321,7 +321,7 @@ class QMOIPWAManager {
   createUpdatePromptUI() {
     const div = document.createElement("div");
     div.className = "qmoi-update-prompt";
-    div.innerHTML = `
+    div.textContent = `
       <div class="qmoi-prompt-content">
         <div class="qmoi-prompt-header">
           <span>🔄 Update Available</span>
@@ -356,7 +356,7 @@ class QMOIPWAManager {
   createUpdateNotificationUI(version, releaseNotes) {
     const div = document.createElement("div");
     div.className = "qmoi-update-notification";
-    div.innerHTML = `
+    div.textContent = `
       <div class="qmoi-notification-content">
         <div class="qmoi-notification-header">
           <span>✨ Version ${version} Available</span>
@@ -417,7 +417,7 @@ class QMOIPWAManager {
       URL.revokeObjectURL(url);
 
       this.showNotification(
-        "Download Complete",
+        "Download complete",
         `${this.appName} data exported successfully.`,
       );
     } catch (error) {

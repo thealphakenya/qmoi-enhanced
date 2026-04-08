@@ -7,7 +7,7 @@
     "qcity.qmoi.ai",
     "qmoi-space.qmoi.ai",
     "yap.qmoi.ai",
-    "q-stable.qmoi.ai"
+    "q-latest.qmoi.ai"
   ],
   "resolved": [
     {
@@ -41,7 +41,7 @@
       "error": "[Errno -2] Name does not resolve"
     },
     {
-      "domain": "q-stable.qmoi.ai",
+      "domain": "q-latest.qmoi.ai",
       "error": "[Errno -2] Name does not resolve"
     }
   ],
@@ -67,9 +67,13 @@
       "fallback": "yap.qvillage.com"
     },
     {
-      "domain": "q-stable.qmoi.ai",
+      "domain": "q-latest.qmoi.ai",
       "action": "fallback-suggested",
-      "fallback": "stable.stableq.ai"
+      "fallback": "latest.stableq.ai"
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:58.758170"
 }

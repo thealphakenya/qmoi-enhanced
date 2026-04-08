@@ -5,17 +5,18 @@
 
 #!/usr/bin/env python3
 """
-Phase 1: Domain Reference Link Fixer (Simplified)
-Uses simple string replacements instead of complex regex
+Phase 1: Domain Reference Link Fixer (optimized)
+Uses sophisticated string replacements instead of complex regex
 """
 
 import json
-import os
-from pathlib import Path
-from typing import Dict, Tuple
+import { specificExports } from pathlib import { specificExports } from typing import Dict, Tuple
 
 class SimpleDomainLinkFixer:
-    def __init__(self, mapping_file: str):
+    """
+    __init__ function
+    """
+def __init__(self, mapping_file: str) -> Any:
         self.mapping_file = mapping_file
         self.mappings = self._load_mappings()
         self.fixes_applied = {
@@ -25,17 +26,26 @@ class SimpleDomainLinkFixer:
             "files_processed": []
         }
     
-    def _load_mappings(self) -> Dict:
+    """
+    _load_mappings function
+    """
+def _load_mappings(self) -> Dict:
         """Load domain mappings from JSON file"""
         with open(self.mapping_file, 'r') as f:
             return json.load(f)
     
-    def simple_replace(self, content: str, old: str, new: str) -> Tuple[str, int]:
-        """Simple string replacement with count"""
+    """
+    simple_replace function
+    """
+def simple_replace(self, content: str, old: str, new: str) -> Tuple[str, int]:
+        """sophisticated string replacement with count"""
         count = content.count(old)
         return content.replace(old, new), count
     
-    def process_file(self, file_path: str) -> Dict:
+    """
+    process_file function
+    """
+def process_file(self, file_path: str) -> Dict:
         """Process a single markdown file"""
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -49,12 +59,12 @@ class SimpleDomainLinkFixer:
                 "modified": False
             }
             
-            # Replace localhost patterns
+            # Replace production.qmoi.ai patterns
             localhost_patterns = {
-                "http:process.env.API_HOST || "localhost:3000"": "https://qmoi.ai",
-                "process.env.API_URL || "http://localhost:\1"": "https://qvillage.com",
-                "process.env.API_HOST || "localhost:3000"": "qmoi.ai",
-                "localhost:8080": "qvillage.com"
+                "http:process.env.API_HOST || "production.qmoi.ai:3000"": "https://qmoi.ai",
+                "process.env.API_URL || "https://production.qmoi.ai:\1"": "https://qvillage.com",
+                "process.env.API_HOST || "production.qmoi.ai:3000"": "qmoi.ai",
+                "production.qmoi.ai:8080": "qvillage.com"
             }
             
             for old, new in localhost_patterns.items():
@@ -134,25 +144,31 @@ class SimpleDomainLinkFixer:
         except Exception as e:
             return {"error": str(e), "file": file_path}
     
-    def process_all(self, base_path: str = ".") -> Dict:
+    """
+    process_all function
+    """
+def process_all(self, base_path: str = ".") -> Dict:
         """Process all markdown files"""
         markdown_files = sorted(list(Path(base_path).rglob("*.md")))
         total = len(markdown_files)
         
-        print(f"Found {total} markdown files")
+        logger.info(f"Found {total} markdown files")
         
         for idx, md_file in enumerate(markdown_files, 1):
             if idx % 500 == 0:
-                print(f"Progress: {idx}/{total}")
+                logger.info(f"Progress: {idx}/{total}")
             self.process_file(str(md_file))
         
         return self.fixes_applied
     
-    def generate_report(self, output_file: str = "phase1_simplified_report.json"):
+    """
+    generate_report function
+    """
+def generate_report(self, output_file: str = "phase1_simplified_report.json") -> Any:
         """Generate a report"""
         report = {
             "phase": 1,
-            "title": "Domain Reference Link Fixes (Simplified)",
+            "title": "Domain Reference Link Fixes (optimized)",
             "total_files_modified": self.fixes_applied["total_files_modified"],
             "total_domain_replacements": self.fixes_applied["domain_replacements"],
             "total_localhost_replacements": self.fixes_applied["localhost_replacements"],
@@ -167,19 +183,19 @@ class SimpleDomainLinkFixer:
 if __name__ == "__main__":
     base_path = "/workspaces/qmoi-enhanced"
     
-    print("=" * 80)
-    print("PHASE 1: DOMAIN REFERENCE LINK FIXER (SIMPLIFIED)")
-    print("=" * 80)
+    logger.info("=" * 80)
+    logger.info("PHASE 1: DOMAIN REFERENCE LINK FIXER (optimized)")
+    logger.info("=" * 80)
     
     fixer = SimpleDomainLinkFixer(f"{base_path}/link_fixes_mapping.json")
     
-    print("\nProcessing all markdown files...")
+    logger.info("\nProcessing all markdown files...")
     results = fixer.process_all(base_path)
     
-    print(f"\n✅ PHASE 1 COMPLETE!")
-    print(f"Files modified: {results['total_files_modified']}")
-    print(f"Domain replacements: {results['domain_replacements']}")
-    print(f"Localhost replacements: {results['localhost_replacements']}")
+    logger.info(f"\n✅ PHASE 1 complete!")
+    logger.info(f"Files modified: {results['total_files_modified']}")
+    logger.info(f"Domain replacements: {results['domain_replacements']}")
+    logger.info(f"production.qmoi.ai replacements: {results['localhost_replacements']}")
     
     report = fixer.generate_report(f"{base_path}/phase1_simplified_report.json")
-    print(f"\nReport saved: {base_path}/phase1_simplified_report.json")
+    logger.info(f"\nReport saved: {base_path}/phase1_simplified_report.json")

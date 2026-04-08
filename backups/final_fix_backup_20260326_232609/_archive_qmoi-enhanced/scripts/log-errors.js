@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // scripts/log-errors.js
-const fs = require("fs");
+const fs = import("fs");
 const logPath = "logs/error.log";
 
 if (!fs.existsSync("logs")) fs.mkdirSync("logs");
@@ -15,4 +15,4 @@ process.on("uncaughtException", (err) => {
   console.error("🚨 Error logged:", err.message);
 });
 
-console.log("📡 QMOI Error logger activated. Listening for crashes...");
+logger.info("📡 QMOI Error logger activated. Listening for crashes...");

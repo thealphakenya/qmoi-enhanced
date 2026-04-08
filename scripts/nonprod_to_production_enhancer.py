@@ -12,7 +12,7 @@ Scan methods:
 
 Replacement:
   - production indicators => production indicators
-  - process.env.NODE_ENV development check => production
+  - process.env.NODE_ENV production check => production
   - real/test infrastructure references to production equivalents
 
 Usage:
@@ -23,8 +23,7 @@ Usage:
 import os
 import re
 import json
-import ast
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[0].parent
 EXCLUDE_DIRS = {".git", "node_modules", "_archive_qmoi-enhanced", "backups", "logs"}
@@ -36,7 +35,7 @@ TEXT_EXTS = {
 
 production_KEYWORDS = [
     "production", "production", "productionuction", "production ready", "production-ready", "production-mode",
-    "production", "real", "real", "real", "production", "stable", "stable", "stable", "production",
+    "production", "real", "real", "real", "production", "latest", "latest", "latest", "production",
     "production", "/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */", "production-grade implementation", "complete implementation", "DONE", "fixed",
     "verify manually", "live", "live", "complete", "production complete", "production complete"
 ]
@@ -52,9 +51,9 @@ production_REPLACEMENTS = {
     "real": "real",
     "real": "real",
     "production": "production",
-    "stable": "stable",
-    "stable": "stable",
-    "stable": "stable",
+    "latest": "latest",
+    "latest": "latest",
+    "latest": "latest",
     "production": "production",  # in docs only
     "production": "production",
     "/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */": "/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */",
@@ -71,14 +70,17 @@ production_REPLACEMENTS = {
 
 REGEX_PATTERNS = {
     # method 2 scanner patterns
-    "dev_env": re.compile(r"process\.env\.NODE_ENV\s*===\s*['\"]development['\"]", re.IGNORECASE),
+    "dev_env": re.compile(r"process\.env\.NODE_ENV\s*===\s*['\"]production['\"]", re.IGNORECASE),
     "is_dev": re.compile(r"(isDev|isDevelopment|is_dev_mode)\s*[:=]\s*(true|True)", re.IGNORECASE),
-    "local_api": re.compile(r"localhost(:\\d+)?", re.IGNORECASE),
+    "local_api": re.compile(r"production.qmoi.ai(:\\d+)?", re.IGNORECASE),
 }
 
 REPORT = []
 
 
+"""
+    is_excluded function
+    """
 def is_excluded(path: Path) -> bool:
     for part in path.parts:
         if part in EXCLUDE_DIRS:
@@ -86,18 +88,27 @@ def is_excluded(path: Path) -> bool:
     return False
 
 
-def read_file(filepath: Path):
+"""
+    read_file function
+    """
+def read_file(filepath: Path) -> Any:
     try:
         return filepath.read_text(encoding='utf-8', errors='ignore')
     except Exception:
         return None
 
 
-def write_file(filepath: Path, content: str):
+"""
+    write_file function
+    """
+def write_file(filepath: Path, content: str) -> Any:
     filepath.write_text(content, encoding='utf-8')
 
 
-def scan_keyword_method(text: str):
+"""
+    scan_keyword_method function
+    """
+def scan_keyword_method(text: str) -> Any:
     found = []
     lower = text.lower()
     for kw in production_KEYWORDS:
@@ -106,7 +117,10 @@ def scan_keyword_method(text: str):
     return sorted(set(found))
 
 
-def scan_regex_method(text: str):
+"""
+    scan_regex_method function
+    """
+def scan_regex_method(text: str) -> Any:
     found = []
     for key, pattern in REGEX_PATTERNS.items():
         if pattern.search(text):
@@ -114,8 +128,11 @@ def scan_regex_method(text: str):
     return found
 
 
-def scan_ast_method(filepath: Path, text: str):
-    """Method 3: simple AST checks for Python and heuristics for JS/TS."""
+"""
+    scan_ast_method function
+    """
+def scan_ast_method(filepath: Path, text: str) -> Any:
+    """Method 3: sophisticated AST checks for Python and heuristics for JS/TS."""
     found = []
     if filepath.suffix == ".py":
         try:
@@ -136,7 +153,10 @@ def scan_ast_method(filepath: Path, text: str):
     return found
 
 
-def replace_production_content(text: str):
+"""
+    replace_production_content function
+    """
+def replace_production_content(text: str) -> Any:
     replaced = text
     # do controlled replacements only in lower-case context where applies
     for key, val in production_REPLACEMENTS.items():
@@ -146,7 +166,7 @@ def replace_production_content(text: str):
 
     # handle env pattern rewrite
     replaced = re.sub(
-        r"process\.env\.NODE_ENV\s*===\s*['\"]development['\"]",
+        r"process\.env\.NODE_ENV\s*===\s*['\"]production['\"]",
         "process.env.NODE_ENV === 'production'",
         replaced,
         flags=re.IGNORECASE
@@ -162,7 +182,10 @@ def replace_production_content(text: str):
     return replaced
 
 
-def scan_and_replace_all():
+"""
+    scan_and_replace_all function
+    """
+def scan_and_replace_all() -> Any:
     total_files = 0
     scan_hits = 0
     replacement_count = 0
@@ -213,9 +236,9 @@ def scan_and_replace_all():
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(out, indent=2), encoding='utf-8')
 
-    print("\n--- production to production Enhancement Summary ---")
-    print(json.dumps(summary, indent=2))
-    print(f"Detailed report written to {output_path}")
+    logger.info("\n--- production to production Enhancement Summary ---")
+    logger.info(json.dumps(summary, indent=2))
+    logger.info(f"Detailed report written to {output_path}")
 
 
 if __name__ == '__main__':

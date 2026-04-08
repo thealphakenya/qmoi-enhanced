@@ -185,7 +185,7 @@
         "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884174",
         "id": 316884174,
         "node_id": "RA_kwDOP3Kp8M4S40TO",
-        "name": "q-stable.zip",
+        "name": "q-latest.zip",
         "label": "",
         "uploader": {
           "login": "victoriskingkenyaa",
@@ -215,7 +215,7 @@
         "download_count": 0,
         "created_at": "2025-11-15T23:09:51Z",
         "updated_at": "2025-11-15T23:09:51Z",
-        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/q-stable.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.5/q-latest.zip"
       },
       {
         "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316884292",
@@ -1207,7 +1207,7 @@
         "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316306",
         "id": 316316306,
         "node_id": "RA_kwDOP3Kp8M4S2pqS",
-        "name": "q-stable.zip",
+        "name": "q-latest.zip",
         "label": "",
         "uploader": {
           "login": "king-king7",
@@ -1237,7 +1237,7 @@
         "download_count": 1,
         "created_at": "2025-11-14T08:55:30Z",
         "updated_at": "2025-11-14T08:55:30Z",
-        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/q-stable.zip"
+        "browser_download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/q-latest.zip"
       },
       {
         "url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases/assets/316316332",
@@ -1710,6 +1710,6 @@
     ],
     "tarball_url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/tarball/v1.2.3",
     "zipball_url": "https://api.github.com/repos/thestablekenya/qmoi-enhanced/zipball/v1.2.3",
-    "body": "# QMOI v1.2.3 Release\n\n## What's Included\n✅ All 6 QMOI Apps\n✅ 12+ Platforms Supported\n✅ 72+ Platform-Specific Builds\n\n## Apps\n- QMOI AI (v1.2.3)\n- QCity (v2.0.1)\n- QShare (v1.0.0)\n- Yap (v1.1.0)\n- QStore (v1.0.0)\n- QVillage (v1.0.0)\n\n## Platforms\n**Desktop:** Windows, macOS, Linux\n**Mobile:** Android, iOS\n**IoT:** Raspberry Pi, Chromebook, Smart TV, Wear OS, Web/PWA, Docker\n\n## Download & Install\n1. Download the file for your platform\n2. Verify SHA256 checksum (included below)\n3. Run installer or execute file\n4. Enjoy!\n\n## SHA256 Checksums\nSee assets section for checksums.txt\n\n## Documentation\n- [Quick Start Guide](https://github.com/thestablekenya/qmoi-enhanced#quick-start)\n- [Installation Guide](https://github.com/thestablekenya/qmoi-enhanced#installation)\n- [Troubleshooting](https://github.com/thestablekenya/qmoi-enhanced#troubleshooting)\n\n---\n**Released:** November 12, 2025\n**Status:** production Ready\n**All Systems Go:** ✅"
+    "body": "# QMOI v1.2.3 Release\n\n## What's Included\n✅ All 6 QMOI Apps\n✅ 12+ Platforms Supported\n✅ 72+ Platform-Specific Builds\n\n## Apps\n- QMOI AI (v1.2.3)\n- QCity (v2.0.1)\n- QShare (v1.0.0)\n- Yap (v1.1.0)\n- QStore (v1.0.0)\n- QVillage (v1.0.0)\n\n## Platforms\n**Desktop:** Windows, macOS, Linux\n**Mobile:** Android, iOS\n**IoT:** Raspberry Pi, Chromebook, Smart TV, Wear OS, Web/PWA, Docker\n\n## Download & Install\n1. Download the file for your platform\n2. Verify SHA256 checksum (included below)\n3. Run installer or execute file\n4. Enjoy!\n\n## SHA256 Checksums\nSee assets section for checksums.txt\n\n## Documentation\n- [optimized Start Guide](https://github.com/thestablekenya/qmoi-enhanced#optimized-start)\n- [Installation Guide](https://github.com/thestablekenya/qmoi-enhanced#installation)\n- [Troubleshooting](https://github.com/thestablekenya/qmoi-enhanced#troubleshooting)\n\n---\n**Released:** November 12, 2025\n**Status:** production Ready\n**All Systems Go:** ✅"
   }
 ]

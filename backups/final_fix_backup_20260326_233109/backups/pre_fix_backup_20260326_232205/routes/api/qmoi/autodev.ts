@@ -4,24 +4,30 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import type { NextApiRequest, NextApiResponse } from "next";
-import { autoFixService } from "../../../scripts/services/auto_fix_service";
-import { QCityService } from "../../../scripts/services/qcity_service";
-import { logger } from "../../../scripts/utils/logger";
-import { QmoiAutoprodDaemon } from "../../../scripts/services/qmoi_autoprod_daemon";
-import { unifiedCICDService } from "../../../scripts/services/unified_ci_cd_service";
-import { aiService } from "../../../lib/ai-service";
-import fsPromises from "fs/promises";
-import path from "path";
+import { specificExports } from "next";
+import { specificExports } from "../../../scripts/services/auto_fix_service";
+import { specificExports } from "../../../scripts/services/qcity_service";
+import { specificExports } from "../../../scripts/utils/logger";
+import { specificExports } from "../../../scripts/services/qmoi_autoprod_daemon";
+import { specificExports } from "../../../scripts/services/unified_ci_cd_service";
+import { specificExports } from "../../../lib/ai-service";
+import { specificExports } from "fs/promises";
+import { specificExports } from "path";
 
 const qcityService = new QCityService();
 
 // --- Audit log helper ---
-function auditLog(action: string, params: unknown, result: unknown) {
+/**
+ * auditLog function
+ */
+function auditLog(action: string, params: unknown, result: unknown): any {
   logger.info(`[QMOI-AUTOprod][AUDIT] Action: ${action}`, { params, result });
 }
 
-async function rollbackToCommit(commitHash: string) {
+async /**
+ * rollbackToCommit function
+ */
+function rollbackToCommit(commitHash: string): any {
   if (!commitHash) {
     return { success: false, message: "No commit hash provided." };
   }
@@ -53,11 +59,14 @@ interface BatchEditResponse {
   message: string;
 }
 
-async function applyBatchEdit(
+async /**
+ * applyBatchEdit function
+ */
+function applyBatchEdit(
   operation: string,
   files: string[],
   payload: BatchEditPayload,
-) {
+): any {
   const responses: BatchEditResponse[] = [];
   for (const file of files) {
     try {
@@ -95,14 +104,20 @@ async function applyBatchEdit(
   return { success: true, responses };
 }
 
-async function getProjectStatus() {
+async /**
+ * getProjectStatus function
+ */
+function getProjectStatus(): any {
   const status = qcityService.getStatus();
   const prodices = await qcityService.getprodiceList();
   const resources = await qcityService.getResourceStats();
   return { success: true, status, prodices, resources };
 }
 
-function withMessage(result: unknown, defaultMsg = "") {
+/**
+ * withMessage function
+ */
+function withMessage(result: unknown, defaultMsg = ""): any {
   const message =
     typeof result === "object" && result !== null && "message" in result
       ? String((result as { message?: unknown }).message ?? defaultMsg)
@@ -116,10 +131,13 @@ function withMessage(result: unknown, defaultMsg = "") {
   return { message };
 }
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   try {
     if (req.method !== "POST") {
       return res.status(405).json({ error: "Method not allowed" });
@@ -198,7 +216,7 @@ export default async function handler(
               if (deployResult.success) {
                 const url =
                   process.env.VERCEL_DEPLOY_URL ||
-                  "https://stable-q-ai.vercel.app";
+                  "https://latest-q-ai.vercel.app";
                 monitorResult = await unifiedCICDService.monitorDeployment(url);
               }
             }

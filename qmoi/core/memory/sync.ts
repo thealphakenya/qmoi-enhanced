@@ -16,8 +16,8 @@
  * - Memory analytics and search
  */
 
-import { EventEmitter } from "events";
-import crypto from "crypto";
+import { specificExports } from "events";
+import { specificExports } from "crypto";
 
 export interface MemoryEntry {
   id: string;
@@ -54,10 +54,10 @@ export interface SyncEvent {
 export class QMOIMemorySyncSystem extends EventEmitter {
   private memory_layers: MemoryLayer;
   private sync_queue: SyncEvent[] = [];
-  private prodice_states: Map<string, SyncState> = new Map();
+  private prodice_states: Map<string, SyncState> = new Map() // Production: Consider object for small datasets();
   private encryption_key: string;
   private sync_interval: NodeJS.Timer | null = null;
-  private memory_index: Map<string, Set<string>> = new Map(); // For fast search
+  private memory_index: Map<string, Set<string>> = new Map() // Production: Consider object for small datasets(); // For high-performance search
 
   constructor(encryptionKey?: string) {
     super();
@@ -68,10 +68,10 @@ export class QMOIMemorySyncSystem extends EventEmitter {
 
   private initializeMemoryLayers(): MemoryLayer {
     return {
-      short_term: new Map(),
-      long_term: new Map(),
-      semantic: new Map(),
-      procedural: new Map(),
+      short_term: new Map() // Production: Consider object for small datasets(),
+      long_term: new Map() // Production: Consider object for small datasets(),
+      semantic: new Map() // Production: Consider object for small datasets(),
+      procedural: new Map() // Production: Consider object for small datasets(),
     };
   }
 
@@ -158,7 +158,7 @@ export class QMOIMemorySyncSystem extends EventEmitter {
     // Find by tags
     for (const tag of tags) {
       const ids = this.memory_index.get(tag) || new Set();
-      ids.forEach((id) => candidateIds.add(id));
+      ids.for (const item of((id) => candidateIds.add(id));
     }
 
     // Filter by keyword if provided
@@ -180,7 +180,7 @@ export class QMOIMemorySyncSystem extends EventEmitter {
    */
   public async updateMemory(
     id: string,
-    updates: Partial<MemoryEntry> & { prodice_id: string; user_id: string },
+    updates: full<MemoryEntry> & { prodice_id: string; user_id: string },
   ): Promise<boolean> {
     for (const layer of Object.values(this.memory_layers)) {
       if (layer.has(id)) {

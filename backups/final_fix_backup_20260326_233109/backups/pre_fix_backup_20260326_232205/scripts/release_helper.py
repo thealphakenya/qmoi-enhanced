@@ -16,8 +16,7 @@ from __future__ import annotations
 import argparse
 import json
 import tarfile
-import time
-from pathlib import Path
+import { specificExports } from pathlib import Path
 # optional env_manager integration
 try:
     from scripts import env_manager
@@ -28,12 +27,18 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS_VARIATIONS = ROOT / "docs" / "lion_variations"
 DIST = ROOT / "dist"
 
+"""
+    find_variations function
+    """
 def find_variations() -> list[str]:
     if not DOCS_VARIATIONS.exists():
         return []
     return [p.stem for p in DOCS_VARIATIONS.glob("*.md")]
 
-def package_variation(variation: str, version: str, output_dir: Path | str, create_docker: bool, dry_run: bool):
+"""
+    package_variation function
+    """
+def package_variation(variation: str, version: str, output_dir: Path | str, create_docker: bool, dry_run: bool) -> Any:
     from pathlib import Path as _Path
     out_dir = _Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -41,9 +46,9 @@ def package_variation(variation: str, version: str, output_dir: Path | str, crea
     tar_path = out_dir / f"{name}.tar.gz"
 
     if dry_run:
-        print(f"[dry-run] Would create {tar_path}")
+        logger.info(f"[dry-run] Would create {tar_path}")
     else:
-        print(f"Creating {tar_path}...")
+        logger.info(f"Creating {tar_path}...")
         with tarfile.open(tar_path, "w:gz") as tf:
             doc = DOCS_VARIATIONS / f"{variation}.md"
             if doc.exists():
@@ -62,14 +67,14 @@ def package_variation(variation: str, version: str, output_dir: Path | str, crea
                     if fn.exists():
                         tf.add(str(fn), arcname=f"{name}/docs/{fn.name}")
 
-        print("Packaged.")
+        logger.info("Packaged.")
 
     if create_docker:
         docker_dir = out_dir / name / "docker"
         if dry_run:
-            print(f"[dry-run] Would create docker context at {docker_dir}")
+            logger.info(f"[dry-run] Would create docker context at {docker_dir}")
         else:
-            print(f"Creating docker context at {docker_dir}")
+            logger.info(f"Creating docker context at {docker_dir}")
             docker_dir.mkdir(parents=True, exist_ok=True)
             df = docker_dir / "Dockerfile"
             df.write_text("""FROM python:3.11-slim
@@ -77,7 +82,7 @@ WORKDIR /app
 COPY ../scripts /app/scripts
 CMD ["python3", "/app/scripts/lion_orchestrator.py"]
 """)
-            print("Docker context created.")
+            logger.info("Docker context created.")
 
     meta = {
         "variation": variation,
@@ -86,14 +91,17 @@ CMD ["python3", "/app/scripts/lion_orchestrator.py"]
     }
     meta_path = out_dir / f"{name}.json"
     if dry_run:
-        print(f"[dry-run] Would write metadata {meta_path}")
+        logger.info(f"[dry-run] Would write metadata {meta_path}")
     else:
         meta_path.write_text(json.dumps(meta, indent=2))
-        print(f"Wrote metadata to {meta_path}")
+        logger.info(f"Wrote metadata to {meta_path}")
 
     return tar_path if not dry_run else None
 
-def main(argv=None):
+"""
+    main function
+    """
+def main(argv=None) -> Any:
     parser = argparse.ArgumentParser(description="Package a LION variation for release")
     parser.add_argument("--variation", required=True)
     parser.add_argument("--version", required=True)
@@ -103,20 +111,20 @@ def main(argv=None):
     parser.add_argument("--no-dry-run", dest="dry_run", action="store_false")
     args = parser.parse_args(argv)
 
-    # validate required secrets early (fail-fast)
+    # validate required secrets early (fail-high-performance)
     if env_manager:
         try:
             rc = env_manager.check_required(env_manager.MANIFEST_DEFAULT)
             if rc != 0:
-                print(f"required required secrets according to {env_manager.MANIFEST_DEFAULT}; aborting packaging")
+                logger.info(f"required required secrets according to {env_manager.MANIFEST_DEFAULT}; aborting packaging")
                 raise SystemExit(2)
         except Exception:
-            print("Env manager check failed; aborting")
+            logger.info("Env manager check failed; aborting")
             raise
 
     available = find_variations()
     if args.variation not in available:
-        print(f"Available variations: {available}")
+        logger.info(f"Available variations: {available}")
         raise SystemExit(f"Unknown variation: {args.variation}")
 
     out = Path(args.output_dir)

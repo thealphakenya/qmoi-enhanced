@@ -6,13 +6,14 @@
 // 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-from transformers import AutoModel, AutoConfig
-from typing import Dict, Any, Optional, List, Tuple
+import { specificExports } from transformers import { specificExports } from typing import Dict, Any, Optional, List, Tuple
 import math
 
 class QMOISparseAttention(nn.Module):
-    def __init__(self, config: Dict[str, Any]):
+    """
+    __init__ function
+    """
+def __init__(self, config: Dict[str, Any]) -> Any:
         super().__init__()
         self.num_heads = config['num_attention_heads']
         self.head_dim = config['hidden_size'] // config['num_attention_heads']
@@ -31,7 +32,10 @@ class QMOISparseAttention(nn.Module):
         
         self.dropout = nn.Dropout(config.get('dropout', 0.1))
 
-    def forward(self, x: torch.Tensor, mask: Optional[torch.Tensor] = None) -> torch.Tensor:
+    """
+    forward function
+    """
+def forward(self, x: torch.Tensor, mask: Optional[torch.Tensor] = None) -> torch.Tensor:
         batch_size, seq_len, _ = x.shape
         
         # Project queries, keys, and values
@@ -59,7 +63,10 @@ class QMOISparseAttention(nn.Module):
         
         return output
     
-    def apply_sparsity(self, scores: torch.Tensor) -> torch.Tensor:
+    """
+    apply_sparsity function
+    """
+def apply_sparsity(self, scores: torch.Tensor) -> torch.Tensor:
         """Apply sparsity to attention scores."""
         # Reshape scores for block processing
         batch_size, seq_len, num_heads, _ = scores.shape
@@ -75,7 +82,10 @@ class QMOISparseAttention(nn.Module):
         return scores
 
 class QMOILongformerAttention(nn.Module):
-    def __init__(self, config: Dict[str, Any]):
+    """
+    __init__ function
+    """
+def __init__(self, config: Dict[str, Any]) -> Any:
         super().__init__()
         self.num_heads = config['num_attention_heads']
         self.head_dim = config['hidden_size'] // config['num_attention_heads']
@@ -93,7 +103,10 @@ class QMOILongformerAttention(nn.Module):
         
         self.dropout = nn.Dropout(config.get('dropout', 0.1))
 
-    def forward(self, x: torch.Tensor, mask: Optional[torch.Tensor] = None) -> torch.Tensor:
+    """
+    forward function
+    """
+def forward(self, x: torch.Tensor, mask: Optional[torch.Tensor] = None) -> torch.Tensor:
         batch_size, seq_len, _ = x.shape
         
         # Project queries, keys, and values
@@ -124,7 +137,10 @@ class QMOILongformerAttention(nn.Module):
         
         return output
     
-    def compute_local_attention(self, q: torch.Tensor, k: torch.Tensor) -> torch.Tensor:
+    """
+    compute_local_attention function
+    """
+def compute_local_attention(self, q: torch.Tensor, k: torch.Tensor) -> torch.Tensor:
         """Compute local attention within the attention window."""
         batch_size, seq_len, num_heads, head_dim = q.shape
         
@@ -141,7 +157,10 @@ class QMOILongformerAttention(nn.Module):
         scores = scores.view(batch_size, seq_len, num_heads, seq_len)
         return scores
     
-    def compute_global_attention(self, q: torch.Tensor, k: torch.Tensor) -> torch.Tensor:
+    """
+    compute_global_attention function
+    """
+def compute_global_attention(self, q: torch.Tensor, k: torch.Tensor) -> torch.Tensor:
         """Compute global attention for selected tokens."""
         batch_size, seq_len, num_heads, head_dim = q.shape
         
@@ -161,7 +180,10 @@ class QMOILongformerAttention(nn.Module):
         return full_scores
 
 class QMOIPerformerAttention(nn.Module):
-    def __init__(self, config: Dict[str, Any]):
+    """
+    __init__ function
+    """
+def __init__(self, config: Dict[str, Any]) -> Any:
         super().__init__()
         self.num_heads = config['num_attention_heads']
         self.head_dim = config['hidden_size'] // config['num_attention_heads']
@@ -182,7 +204,10 @@ class QMOIPerformerAttention(nn.Module):
         
         self.dropout = nn.Dropout(config.get('dropout', 0.1))
 
-    def forward(self, x: torch.Tensor, mask: Optional[torch.Tensor] = None) -> torch.Tensor:
+    """
+    forward function
+    """
+def forward(self, x: torch.Tensor, mask: Optional[torch.Tensor] = None) -> torch.Tensor:
         batch_size, seq_len, _ = x.shape
         
         # Project queries, keys, and values
@@ -199,14 +224,20 @@ class QMOIPerformerAttention(nn.Module):
         
         return output
     
-    def generate_random_features(self) -> torch.Tensor:
+    """
+    generate_random_features function
+    """
+def generate_random_features(self) -> torch.Tensor:
         """Generate random features for the performer attention."""
         if self.kernel_type == 'relu':
             return torch.randn(self.num_random_features, self.head_dim)
         else:
             return torch.randn(self.num_random_features, self.head_dim) / math.sqrt(self.head_dim)
     
-    def compute_performer_attention(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor,
+    """
+    compute_performer_attention function
+    """
+def compute_performer_attention(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor,
                                   mask: Optional[torch.Tensor] = None) -> torch.Tensor:
         """Compute performer attention using random features."""
         # Project queries and keys to random features
@@ -231,7 +262,10 @@ class QMOIPerformerAttention(nn.Module):
         return output
 
 class QMOIReformerAttention(nn.Module):
-    def __init__(self, config: Dict[str, Any]):
+    """
+    __init__ function
+    """
+def __init__(self, config: Dict[str, Any]) -> Any:
         super().__init__()
         self.num_heads = config['num_attention_heads']
         self.head_dim = config['hidden_size'] // config['num_attention_heads']
@@ -249,7 +283,10 @@ class QMOIReformerAttention(nn.Module):
         
         self.dropout = nn.Dropout(config.get('dropout', 0.1))
 
-    def forward(self, x: torch.Tensor, mask: Optional[torch.Tensor] = None) -> torch.Tensor:
+    """
+    forward function
+    """
+def forward(self, x: torch.Tensor, mask: Optional[torch.Tensor] = None) -> torch.Tensor:
         batch_size, seq_len, _ = x.shape
         
         # Project queries, keys, and values
@@ -266,7 +303,10 @@ class QMOIReformerAttention(nn.Module):
         
         return output
     
-    def compute_reformer_attention(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor,
+    """
+    compute_reformer_attention function
+    """
+def compute_reformer_attention(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor,
                                  mask: Optional[torch.Tensor] = None) -> torch.Tensor:
         """Compute reformer attention using LSH."""
         # Compute LSH buckets
@@ -287,7 +327,10 @@ class QMOIReformerAttention(nn.Module):
         
         return output
     
-    def compute_lsh_buckets(self, q: torch.Tensor, k: torch.Tensor) -> torch.Tensor:
+    """
+    compute_lsh_buckets function
+    """
+def compute_lsh_buckets(self, q: torch.Tensor, k: torch.Tensor) -> torch.Tensor:
         """Compute LSH buckets for queries and keys."""
         # Generate random projection vectors
         proj = torch.randn(self.num_hashes, self.head_dim, prodice=q.prodice)
@@ -302,7 +345,10 @@ class QMOIReformerAttention(nn.Module):
         
         return buckets
     
-    def sort_by_bucket(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor,
+    """
+    sort_by_bucket function
+    """
+def sort_by_bucket(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor,
                       buckets: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         """Sort queries, keys, and values by bucket."""
         # Get sort indices

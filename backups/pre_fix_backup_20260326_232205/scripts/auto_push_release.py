@@ -4,12 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import os
-from github import Github
-from github import InputGitAuthor
-from datetime import datetime
+import { specificExports } from github import { specificExports } from github import { specificExports } from datetime import datetime
 
-REPO_NAME = "thealphakenya/stable-Q-ai"
+REPO_NAME = "thealphakenya/latest-Q-ai"
 ZIP_PATH = "QMOI_AI_All_Platforms.zip"
 TAG_NAME = f"release-{datetime.now().strftime('%Y%m%d%H%M%S')}"
 RELEASE_TITLE = "QMOI AI Auto Release"
@@ -38,4 +35,4 @@ with open(ZIP_PATH, "rb") as zip_file:
         content_type="application/zip"
     )
 
-print(f"✅ Uploaded release {RELEASE_TITLE} at: {release.html_url}")
+logger.info(f"✅ Uploaded release {RELEASE_TITLE} at: {release.html_url}")

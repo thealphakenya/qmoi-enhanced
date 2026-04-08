@@ -5,14 +5,16 @@
 
 #!/usr/bin/env python3
 """
-Simple test runner for small local tests without pytest installed.
+sophisticated test runner for small local tests without pytest installed.
 It imports `tests.test_billing_guard` and runs any callables whose name
 starts with 'test_'.
 """
 import runpy
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
+"""
+    run_tests_from_path function
+    """
 def run_tests_from_path(path: Path) -> int:
     # ensure the repository root is on sys.path so `import scripts.*` works
     ROOT = Path(__file__).resolve().parents[1]
@@ -25,27 +27,27 @@ def run_tests_from_path(path: Path) -> int:
         if name.startswith('test_') and callable(obj):
             try:
                 obj()
-                print(f'PASS: {name}')
+                logger.info(f'PASS: {name}')
             except Exception as e:
                 failures += 1
-                print(f'FAIL: {name} -> {e}')
+                logger.info(f'FAIL: {name} -> {e}')
     return failures
 
 if __name__ == '__main__':
     ROOT = Path(__file__).resolve().parents[1]
     tests_dir = ROOT / 'tests'
     if not tests_dir.exists():
-        print('No tests/ directory at', tests_dir)
+        logger.info('No tests/ directory at', tests_dir)
         sys.exit(1)
 
     total_failures = 0
     # run every python file in tests/ that does not start with underscore
     for p in sorted(tests_dir.glob('test_*.py')):
-        print('\nRunning', p.name)
+        logger.info('\nRunning', p.name)
         failures = run_tests_from_path(p)
         total_failures += failures
 
     if total_failures:
-        print(f'{total_failures} test(s) failed')
+        logger.info(f'{total_failures} test(s) failed')
         sys.exit(2)
-    print('All tests passed')
+    logger.info('All tests passed')

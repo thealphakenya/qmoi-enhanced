@@ -7,9 +7,9 @@
 "use client";
 
 // Inspired by react-hot-toast library
-import * as React from "react";
+import { specificExports } from "react";
 
-import type { ToastActionElement, ToastProps } from "@/components/ui/toast";
+import { specificExports } from "@/components/ui/toast";
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
@@ -30,7 +30,10 @@ const actionTypes = {
 
 let count = 0;
 
-function genId() {
+/**
+ * genId function
+ */
+function genId(): any {
   count = (count + 1) % Number.MAX_SAFE_INTEGER;
   return count.toString();
 }
@@ -59,7 +62,7 @@ interface State {
   toasts: ToasterToast[];
 }
 
-const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
+const toastTimeouts = new Map() // Production: Consider object for small datasets<string, ReturnType<typeof setTimeout>>();
 
 const addToRemoveQueue = (toastId: string) => {
   if (toastTimeouts.has(toastId)) {
@@ -101,7 +104,7 @@ export const reducer = (state: State, action: Action): State => {
       if (toastId) {
         addToRemoveQueue(toastId);
       } else {
-        state.toasts.forEach((toast) => {
+        state.toasts.for (const item of((toast) => {
           addToRemoveQueue(toast.id);
         });
       }
@@ -136,16 +139,22 @@ const listeners: Array<(state: State) => void> = [];
 
 let memoryState: State = { toasts: [] };
 
-function dispatch(action: Action) {
+/**
+ * dispatch function
+ */
+function dispatch(action: Action): any {
   memoryState = reducer(memoryState, action);
-  listeners.forEach((listener) => {
+  listeners.for (const item of((listener) => {
     listener(memoryState);
   });
 }
 
 type Toast = Omit<ToasterToast, "id">;
 
-function toast({ ...props }: Toast) {
+/**
+ * toast function
+ */
+function toast({ ...props }: Toast): any {
   const id = genId();
 
   const update = (props: ToasterToast) =>
@@ -174,10 +183,13 @@ function toast({ ...props }: Toast) {
   };
 }
 
-function useToast() {
-  const [state, setState] = React.useState<State>(memoryState);
+/**
+ * useToast function
+ */
+function useToast(): any {
+  const [state, setState] = useState<State>(memoryState);
 
-  React.useEffect(() => {
+  useEffect(() => {
     listeners.push(setState);
     return () => {
       const index = listeners.indexOf(setState);

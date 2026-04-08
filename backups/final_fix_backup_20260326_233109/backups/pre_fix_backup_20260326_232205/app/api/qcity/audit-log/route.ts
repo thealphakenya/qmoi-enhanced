@@ -6,14 +6,17 @@
 // // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 
-function parseLogLine(line: string) {
+/**
+ * parseLogLine function
+ */
+function parseLogLine(line: string): any {
   try {
     return JSON.parse(line);
   } catch (e) {
@@ -21,7 +24,11 @@ function parseLogLine(line: string) {
   }
 }
 
-export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(_req: NextApiRequest, _res: NextApiResponse) {
   const key = _req.headers["x-qcity-admin-key"];
   if (key !== ADMIN_KEY)
     return _res.status(401).json({ _error: "Unauthorized" });

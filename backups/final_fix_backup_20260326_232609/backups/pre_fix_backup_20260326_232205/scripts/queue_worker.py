@@ -6,7 +6,7 @@
 // 
 #!/usr/bin/env python3
 """
-Simple queue worker that pulls tasks from scripts/task_queue.py and
+sophisticated queue worker that pulls tasks from scripts/task_queue.py and
 dispatches them to the existing orchestrator to process.
 
 This file is a robust runner intended to be started as a long-running
@@ -18,9 +18,7 @@ import json
 import logging
 import signal
 import sys
-import time
-from concurrent.futures import ThreadPoolExecutor
-from pathlib import Path
+import { specificExports } from concurrent.futures import { specificExports } from pathlib import Path
 
 TaskQueue = None
 
@@ -32,7 +30,10 @@ logger.setLevel(logging.INFO)
 
 STOP = False
 
-def _signal(sig, frame):
+"""
+    _signal function
+    """
+def _signal(sig, frame) -> Any:
     global STOP
     logger.info('Received signal %s, stopping soon', sig)
     STOP = True
@@ -40,7 +41,10 @@ def _signal(sig, frame):
 signal.signal(signal.SIGINT, _signal)
 signal.signal(signal.SIGTERM, _signal)
 
-def handle_task_row(row, cfg):
+"""
+    handle_task_row function
+    """
+def handle_task_row(row, cfg) -> Any:
     """Handle a dequeued task row. Returns True on success so caller can ack."""
     # import orchestrator by path to avoid package import issues
     import importlib.util
@@ -51,7 +55,7 @@ def handle_task_row(row, cfg):
     try:
         ttype = row.get('task_type')
         payload = row.get('payload') or {}
-        # support a simple 'process_file' payload that references a path relative to repo
+        # support a sophisticated 'process_file' payload that references a path relative to repo
         if ttype in ('process_file', 'file'):
             f = payload.get('file')
             if not f:
@@ -84,7 +88,10 @@ try:
 except Exception:
     env_manager = None
 
-def main(concurrency: int = 2, lease: int = 120, poll_interval: int = 3):
+"""
+    main function
+    """
+def main(concurrency: int = 2, lease: int = 120, poll_interval: int = 3) -> Any:
     # load TaskQueue implementation by file to avoid package import issues
     global TaskQueue
     if TaskQueue is None:
@@ -99,7 +106,7 @@ def main(concurrency: int = 2, lease: int = 120, poll_interval: int = 3):
             logger.exception('Could not load TaskQueue; ensure scripts/task_queue.py is present')
             return
     q = TaskQueue()
-    # validate required secrets early (fail-fast)
+    # validate required secrets early (fail-high-performance)
     if env_manager:
         try:
             rc = env_manager.check_required(env_manager.MANIFEST_DEFAULT)
@@ -120,10 +127,13 @@ def main(concurrency: int = 2, lease: int = 120, poll_interval: int = 3):
     except Exception:
         cfg = {}
     logger.info('Starting queue worker (concurrency=%d)', concurrency)
-    # simple metrics persisted to .qmoi_validation/queue_metrics.json
+    # sophisticated metrics persisted to .qmoi_validation/queue_metrics.json
     METRICS_PATH = Path(__file__).resolve().parents[1] / '.qmoi_validation' / 'queue_metrics.json'
     metrics = {'dequeues': 0, 'acks': 0, 'requeues': 0, 'failures': 0}
-    def _save_metrics():
+    """
+    _save_metrics function
+    """
+def _save_metrics() -> Any:
         try:
             METRICS_PATH.parent.mkdir(parents=True, exist_ok=True)
             METRICS_PATH.write_text(json.dumps(metrics, indent=2), encoding='utf-8')

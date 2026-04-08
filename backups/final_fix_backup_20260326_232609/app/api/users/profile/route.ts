@@ -3,13 +3,16 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import db from "@/lib/db/services";
-import authService from "@/lib/auth/service";
-import { emailService } from "@/lib/email/service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/email/service";
 
 // GET /api/users/profile - Get current user profile
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
@@ -49,7 +52,10 @@ export async function GET(_request: NextRequest) {
 }
 
 // PUT /api/users/profile - Update user profile
-export async function PUT(_request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(_request: NextRequest): any {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {

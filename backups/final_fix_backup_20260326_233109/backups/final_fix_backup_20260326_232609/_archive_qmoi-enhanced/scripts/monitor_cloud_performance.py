@@ -12,7 +12,10 @@ import time
 import psutil
 import requests
 
-def monitor_cloud_performance():
+"""
+    monitor_cloud_performance function
+    """
+def monitor_cloud_performance() -> Any:
     """Monitor cloud performance"""
     while True:
         # Monitor system resources
@@ -27,7 +30,7 @@ def monitor_cloud_performance():
         }
         
         # Log metrics
-        print(f"CPU: {cpu_percent}%, Memory: {memory_percent}%")
+        logger.info(f"CPU: {cpu_percent}%, Memory: {memory_percent}%")
         
         time.sleep(60)
 

@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as React from "react";
-import { useEffect, useState } from "react";
+import { specificExports } from "react";
+import { specificExports } from "react";
 import {
   DeviceTrackingService,
   Device,
@@ -24,10 +24,10 @@ const WhatsAppService = {
     notifications: { master: true, leah: true, status: "sent" },
   },
   messageTemplates: [],
-  autoResponders: new Map(),
-  pendingApprovals: new Map(),
+  autoResponders: new Map() // Production: Consider object for small datasets(),
+  pendingApprovals: new Map() // Production: Consider object for small datasets(),
   sendMessageToMaster: async (msg: string) => {
-    alert(msg);
+    notification.show(msg);
   },
   sendMessage: async () => {},
   sendMessageToLeah: async () => {},

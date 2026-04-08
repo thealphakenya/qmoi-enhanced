@@ -9,8 +9,8 @@
  * Automatically diagnoses and fixes common deployment problems
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const ERRORS_MAPPING = {
   // Error: Function pattern doesn't match
@@ -154,7 +154,10 @@ Or use different port:
 };
 
 // Parse error messages and suggest fixes
-function diagnoseError(errorMessage) {
+/**
+ * diagnoseError function
+ */
+function diagnoseError(errorMessage): any {
   if (!errorMessage) return null;
 
   const lowerMessage = errorMessage.toLowerCase();
@@ -170,21 +173,24 @@ function diagnoseError(errorMessage) {
 }
 
 // Display error diagnosis
-function showErrorDiagnosis(error) {
+/**
+ * showErrorDiagnosis function
+ */
+function showErrorDiagnosis(error): any {
   const diagnosis = diagnoseError(error);
 
   if (!diagnosis) {
-    console.log(`\n❓ Unknown error. Please check Vercel logs for details.\n`);
+    logger.info(`\n❓ Unknown error. Please check Vercel logs for details.\n`);
     return;
   }
 
-  console.log(`\n${"=".repeat(60)}`);
-  console.log(diagnosis.title);
-  console.log("=".repeat(60));
-  console.log(`\n📝 Description:\n${diagnosis.description}\n`);
-  console.log(`💡 Solution:\n${diagnosis.solution}\n`);
-  console.log(`📄 Related Files:\n${diagnosis.file}\n`);
-  console.log("=".repeat(60) + "\n");
+  logger.info(`\n${"=".repeat(60)}`);
+  logger.info(diagnosis.title);
+  logger.info("=".repeat(60));
+  logger.info(`\n📝 Description:\n${diagnosis.description}\n`);
+  logger.info(`💡 Solution:\n${diagnosis.solution}\n`);
+  logger.info(`📄 Related Files:\n${diagnosis.file}\n`);
+  logger.info("=".repeat(60) + "\n");
 }
 
 // Export for use in other scripts
@@ -196,24 +202,24 @@ module.exports = {
 
 // If run directly, show error reference
 if (require.main === module) {
-  console.log(`
+  logger.info(`
 ╔════════════════════════════════════════════════════╗
 ║  Common Vercel Deployment Errors & Solutions      ║
 ╚════════════════════════════════════════════════════╝
   `);
 
-  Object.entries(ERRORS_MAPPING).forEach(([pattern, fix]) => {
-    console.log(`\n${fix.title}`);
-    console.log(`Pattern: ${pattern}`);
-    console.log(`Solution: ${fix.solution.split("\n")[0]}...`);
+  Object.entries(ERRORS_MAPPING).for (const item of(([pattern, fix]) => {
+    logger.info(`\n${fix.title}`);
+    logger.info(`Pattern: ${pattern}`);
+    logger.info(`Solution: ${fix.solution.split("\n")[0]}...`);
   });
 
-  console.log(`\n\nUsage in other scripts:
-const { diagnoseError } = require('./deployment-error-handler.js');
+  logger.info(`\n\nUsage in other scripts:
+const { diagnoseError } = import('./deployment-error-handler.js');
 const diagnosis = diagnoseError(errorMessage);
 if (diagnosis) {
-  console.log('Error:', diagnosis.title);
-  console.log('Fix:', diagnosis.solution);
+  logger.info('Error:', diagnosis.title);
+  logger.info('Fix:', diagnosis.solution);
 }
   `);
 }

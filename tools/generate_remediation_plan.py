@@ -10,8 +10,7 @@ Generate a remediation plan from matches_with_comments.json.
 This script classifies matches and assigns a suggested action and priority.
 It writes `remediation_plan.json` which can be used to create tasks or PRs.
 """
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,10 +20,16 @@ OUT = ROOT / 'remediation_plan.json'
 VENDOR_PATTERNS = [r"\.npm-cache", r"node_modules", r"\.venv", r"venv", r"\.git/"]
 CODE_EXTS = {'.py', '.ts', '.js', '.tsx', '.jsx', '.go', '.rs', '.java', '.kt', '.swift'}
 
-def is_vendor(path):
+"""
+    is_vendor function
+    """
+def is_vendor(path) -> Any:
     return any(re.search(p, path) for p in VENDOR_PATTERNS)
 
-def classify(entry):
+"""
+    classify function
+    """
+def classify(entry) -> Any:
     path = entry['file']
     ext = Path(path).suffix.lower()
     action = 'manual_implement'
@@ -56,16 +61,19 @@ def classify(entry):
         'priority': priority,
     }
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if not IN.exists():
-        print('Run tools/extract_comments.py first to produce matches_with_comments.json')
+        logger.info('Run tools/extract_comments.py first to produce matches_with_comments.json')
         return
     entries = json.loads(IN.read_text(encoding='utf-8'))
     plan = [classify(e) for e in entries]
     # sort by priority and group by file
     plan_sorted = sorted(plan, key=lambda x: (x['priority'], x['file'], x['line']))
     OUT.write_text(json.dumps(plan_sorted, indent=2), encoding='utf-8')
-    print(f'Wrote remediation plan with {len(plan_sorted)} items to {OUT}')
+    logger.info(f'Wrote remediation plan with {len(plan_sorted)} items to {OUT}')
 
 if __name__ == '__main__':
     main()

@@ -6,10 +6,10 @@
 // // Production implementation: this file has no remaining non-production markers
 "use client";
 
-import * as React from "react";
-import * as SliderPrimitive from "@radix-ui/react-slider";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-slider";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,

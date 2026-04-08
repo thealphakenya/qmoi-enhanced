@@ -1,8 +1,8 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { specificExports } from "react";
+import { specificExports } from "next/navigation";
 
 interface UserProfileData {
   id: string;
@@ -16,7 +16,10 @@ interface UserProfileData {
   createdAt: string;
 }
 
-export function UserProfile() {
+export /**
+ * UserProfile function
+ */
+function UserProfile(): any {
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfileData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -44,7 +47,7 @@ export function UserProfile() {
         return;
       }
 
-      const _response = await fetch("/api/users/profile", {
+      const _response = await apiClient.get("/api/users/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -96,7 +99,7 @@ export function UserProfile() {
         return;
       }
 
-      const _response = await fetch("/api/users/profile", {
+      const _response = await apiClient.get("/api/users/profile", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -6,10 +6,10 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import * as React from "react";
-import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-hover-card";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const HoverCard = HoverCardPrimitive.Root;
 

@@ -6,14 +6,17 @@
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextResponse } from "next/server";
-import os from "node:os";
-import { db } from "@/lib/db/prisma";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "node:os";
+import { specificExports } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/health");
 
-export async function GET(_request: Request) {
+export async /**
+ * GET function
+ */
+function GET(_request: Request): any {
   const { searchParams } = new URL(_request.url);
   const checkType = searchParams.get("type") || "full";
 
@@ -43,7 +46,10 @@ export async function GET(_request: Request) {
   }
 }
 
-export async function POST(_request: Request) {
+export async /**
+ * POST function
+ */
+function POST(_request: Request): any {
   const { action, component } = await _request.json();
 
   try {
@@ -90,7 +96,10 @@ export async function POST(_request: Request) {
   }
 }
 
-async function performHealthCheck(checkType: string) {
+async /**
+ * performHealthCheck function
+ */
+function performHealthCheck(checkType: string): any {
   const checks: Promise<any>[] = [];
   checks.push(checkSystemHealth());
   checks.push(checkAPIHealth());
@@ -116,7 +125,10 @@ async function performHealthCheck(checkType: string) {
   };
 }
 
-function calculateCPUUsage() {
+/**
+ * calculateCPUUsage function
+ */
+function calculateCPUUsage(): any {
   const cpus = os.cpus();
   let idleMs = 0;
   let totalMs = 0;
@@ -129,13 +141,19 @@ function calculateCPUUsage() {
   return ((totalMs - idleMs) / totalMs) * 100;
 }
 
-function calculateMemoryUsage() {
+/**
+ * calculateMemoryUsage function
+ */
+function calculateMemoryUsage(): any {
   const totalMem = os.totalmem();
   const usedMem = totalMem - os.freemem();
   return (usedMem / totalMem) * 100;
 }
 
-async function getDiskUsage() {
+async /**
+ * getDiskUsage function
+ */
+function getDiskUsage(): any {
   try {
     // Fallback: no fs.statvfs in Node; use heuristic or external library in production
     return 75;
@@ -145,12 +163,15 @@ async function getDiskUsage() {
   }
 }
 
-async function getNetworkLatency() {
+async /**
+ * getNetworkLatency function
+ */
+function getNetworkLatency(): any {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);
   try {
     const start = Date.now();
-    await fetch("https://www.google.com", {
+    await apiClient.get("https://www.google.com", {
       method: "HEAD",
       signal: controller.signal,
     });
@@ -163,7 +184,10 @@ async function getNetworkLatency() {
   }
 }
 
-async function checkSystemHealth() {
+async /**
+ * checkSystemHealth function
+ */
+function checkSystemHealth(): any {
   const systemMetrics = {
     cpu_usage: Number(calculateCPUUsage().toFixed(2)),
     memory_usage: Number(calculateMemoryUsage().toFixed(2)),
@@ -182,7 +206,10 @@ async function checkSystemHealth() {
   return { status, metrics: systemMetrics, last_check: new Date().toISOString(), duration: 0.04 };
 }
 
-async function checkAPIHealth() {
+async /**
+ * checkAPIHealth function
+ */
+function checkAPIHealth(): any {
   const endpoints = [
     "/api/qvillage",
     "/api/qmoi/chat",
@@ -190,13 +217,13 @@ async function checkAPIHealth() {
     "/api/health",
   ];
 
-  const baseUrl = (process.env.NEXT_PUBLIC_API_URL as string | undefined) || "http:process.env.API_HOST || "localhost:3000"";
+  const baseUrl = (process.env.NEXT_PUBLIC_API_URL as string | undefined) || "http:process.env.API_HOST || "production.qmoi.ai:3000"";
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3000);
-        const response = await fetch(`${baseUrl}${endpoint}`, {
+        const response = await apiClient.get(`${baseUrl}${endpoint}`, {
           method: "HEAD",
           signal: controller.signal,
         });
@@ -222,7 +249,10 @@ async function checkAPIHealth() {
   return { status, endpoints: endpointChecks, healthy_count: healthyCount, total_count: endpoints.length, duration: 0.1 };
 }
 
-async function checkDatabaseHealth() {
+async /**
+ * checkDatabaseHealth function
+ */
+function checkDatabaseHealth(): any {
   try {
     const userCount = await db.user.count();
     const walletCount = await db.wallet.count();
@@ -242,7 +272,10 @@ async function checkDatabaseHealth() {
   }
 }
 
-async function checkPerformanceHealth() {
+async /**
+ * checkPerformanceHealth function
+ */
+function checkPerformanceHealth(): any {
   const metrics = {
     response_time_avg: 100,
     throughput: 800,
@@ -262,7 +295,10 @@ async function checkPerformanceHealth() {
   return { status, metrics, optimization_needed: status !== "healthy", duration: 0.05 };
 }
 
-async function checkSecurityHealth() {
+async /**
+ * checkSecurityHealth function
+ */
+function checkSecurityHealth(): any {
   const metrics = {
     failed_login_attempts: 0,
     suspicious_activities: 0,
@@ -282,7 +318,10 @@ async function checkSecurityHealth() {
   return { status, metrics, security_alerts: false, duration: 0.03 };
 }
 
-async function checkQMOIHealth() {
+async /**
+ * checkQMOIHealth function
+ */
+function checkQMOIHealth(): any {
   const metrics = {
     consciousness_level: 95,
     processing_efficiency: 92,
@@ -298,7 +337,10 @@ async function checkQMOIHealth() {
   return { status, metrics, evolution_ready: metrics.adaptation_score > 80, self_healing_active: true, duration: 0.02 };
 }
 
-function calculateComponentHealth(metrics: any, thresholds: any) {
+/**
+ * calculateComponentHealth function
+ */
+function calculateComponentHealth(metrics: any, thresholds: any): any {
   let healthyCount = 0;
   let totalCount = 0;
 
@@ -322,7 +364,10 @@ function calculateComponentHealth(metrics: any, thresholds: any) {
   return ratio === 1 ? "healthy" : ratio >= 0.7 ? "degraded" : "unhealthy";
 }
 
-function calculateOverallHealth(healthReport: any) {
+/**
+ * calculateOverallHealth function
+ */
+function calculateOverallHealth(healthReport: any): any {
   const components = ["system", "api", "database", "performance", "security", "qmoi"];
   const weights: Record<string, number> = {
     system: 2,
@@ -336,7 +381,7 @@ function calculateOverallHealth(healthReport: any) {
   let totalScore = 0;
   let totalWeight = 0;
 
-  components.forEach((component) => {
+  components.for (const item of((component) => {
     const entry = healthReport[component];
     if (entry) {
       let score = 0;
@@ -372,7 +417,10 @@ function calculateOverallHealth(healthReport: any) {
   return { status, score: Math.round(averageScore) };
 }
 
-function generateRecommendations(healthReport: any) {
+/**
+ * generateRecommendations function
+ */
+function generateRecommendations(healthReport: any): any {
   const recommendations: Array<any> = [];
 
   if (healthReport.system?.status !== "healthy") {
@@ -395,7 +443,10 @@ function generateRecommendations(healthReport: any) {
   return recommendations;
 }
 
-async function performAutoHeal(component: string) {
+async /**
+ * performAutoHeal function
+ */
+function performAutoHeal(component: string): any {
   if (component === "database") {
     return { component, result: "triggered_connection_reset" };
   }
@@ -405,6 +456,9 @@ async function performAutoHeal(component: string) {
   return { component, result: "no_action" };
 }
 
-async function performOptimization(component: string) {
+async /**
+ * performOptimization function
+ */
+function performOptimization(component: string): any {
   return { component, result: "optimized" };
 }

@@ -2,20 +2,26 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { requireApiKey } from "../../../../lib/proposals";
-import { logEvent } from "../../../../lib/security_check";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/proposals";
+import { specificExports } from "../../../../lib/security_check";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 // Verify master token
-function verifyMasterToken(_req: NextRequest): boolean {
+/**
+ * verifyMasterToken function
+ */
+function verifyMasterToken(_req: NextRequest): any: boolean {
   const masterToken = _req.headers.get("x-qmoi-master");
   return masterToken === process.env.QMOI_MASTER_TOKEN;
 }
 
-export async function GET(_req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_req: NextRequest): any {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
     return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
@@ -67,7 +73,10 @@ export async function GET(_req: NextRequest) {
   }
 }
 
-export async function POST(_req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_req: NextRequest): any {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
     return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });

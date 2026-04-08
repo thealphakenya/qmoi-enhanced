@@ -14,12 +14,7 @@ Date: 2026-03-21
 
 import os
 import re
-import json
-from pathlib import Path
-from typing import Dict, List, Set, Tuple
-from dataclasses import dataclass, asdict
-from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from datetime import { specificExports } from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging
 
 logging.basicConfig(
@@ -56,7 +51,7 @@ class DocumentationAuditSystem:
         "qcity.qmoi.ai", "qcity.qvillage.com",
         "qmoi-space.qmoi.ai", "space.qmoi.ai", "qspace.qvillage.com",
         "yap.qmoi.ai", "yap.qvillage.com",
-        "q-stable.qmoi.ai", "stable.stableq.ai", "models.qvillage.com",
+        "q-latest.qmoi.ai", "latest.stableq.ai", "models.qvillage.com",
         "qglobal.org", "qglobal.net",
         "qparallel.prod",
         # GitHub and other external
@@ -71,19 +66,25 @@ class DocumentationAuditSystem:
         "qcity.qmoi.ai": "qcity.qvillage.com",
         "qmoi-space.qmoi.ai": "qspace.qvillage.com",
         "yap.qmoi.ai": "yap.qvillage.com",
-        "q-stable.qmoi.ai": "stable.stableq.ai",
+        "q-latest.qmoi.ai": "latest.stableq.ai",
         "qmoi.ai": "qmoi.com",
         "stableq.ai": "stableq.com",
         "qvillage.org": "qvillage.net"
     }
     
-    def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced'):
+    """
+    __init__ function
+    """
+def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced') -> Any:
         self.workspace_root = Path(workspace_root)
         self.md_files = self._find_md_files()
         self.audit_results: Dict[str, LinkAudit] = {}
         self.executor = ThreadPoolExecutor(max_workers=8)
     
-    def _find_md_files(self) -> List[Path]:
+    """
+    _find_md_files function
+    """
+def _find_md_files(self) -> List[Path]:
         """Find all .md files in workspace"""
         md_files = []
         
@@ -100,7 +101,10 @@ class DocumentationAuditSystem:
         logger.info(f"Found {len(md_files)} .md files")
         return md_files
     
-    def audit_all_files(self) -> Dict[str, LinkAudit]:
+    """
+    audit_all_files function
+    """
+def audit_all_files(self) -> Dict[str, LinkAudit]:
         """Audit all .md files for broken links"""
         logger.info(f"Starting audit of {len(self.md_files)} files...")
         
@@ -123,7 +127,10 @@ class DocumentationAuditSystem:
         logger.info("Audit complete")
         return self.audit_results
     
-    def audit_file(self, file_path: Path) -> LinkAudit | None:
+    """
+    audit_file function
+    """
+def audit_file(self, file_path: Path) -> LinkAudit | None:
         """Audit a single .md file for broken links"""
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -166,7 +173,10 @@ class DocumentationAuditSystem:
             logger.error(f"Error reading {file_path}: {e}")
             return None
     
-    def _extract_links(self, content: str, file_path: Path) -> List[str]:
+    """
+    _extract_links function
+    """
+def _extract_links(self, content: str, file_path: Path) -> List[str]:
         """Extract all links from markdown content"""
         links = set()
         
@@ -184,7 +194,7 @@ class DocumentationAuditSystem:
         links.update(raw_urls)
         
         # Extract QMOI domain mentions
-        qmoi_pattern = r'(?:qmoi|qvillage|stableq|qstore|qshare|qcity|yap|q-stable)[.\w-]*'
+        qmoi_pattern = r'(?:qmoi|qvillage|stableq|qstore|qshare|qcity|yap|q-latest)[.\w-]*'
         qmoi_domains = re.findall(qmoi_pattern, content)
         for domain in qmoi_domains:
             if '.' in domain and not any(x in domain for x in ['com', 'ai', 'net', 'org', 'prod']):
@@ -203,7 +213,10 @@ class DocumentationAuditSystem:
         
         return list(links)
     
-    def _is_valid_link(self, link: str) -> bool:
+    """
+    _is_valid_link function
+    """
+def _is_valid_link(self, link: str) -> bool:
         """Check if a link is valid"""
         if not link:
             return False
@@ -232,7 +245,10 @@ class DocumentationAuditSystem:
         except Exception:
             return False
     
-    def _suggest_fix(self, link: str) -> str | None:
+    """
+    _suggest_fix function
+    """
+def _suggest_fix(self, link: str) -> str | None:
         """Suggest a fix for a broken link"""
         # Extract potential domain
         try:
@@ -258,7 +274,10 @@ class DocumentationAuditSystem:
         except Exception:
             return None
     
-    def generate_audit_report(self) -> Dict:
+    """
+    generate_audit_report function
+    """
+def generate_audit_report(self) -> Dict:
         """Generate comprehensive audit report"""
         total_files = len(self.audit_results)
         files_with_issues = sum(1 for r in self.audit_results.values() if r.broken_links > 0)
@@ -290,7 +309,10 @@ class DocumentationAuditSystem:
         
         return report
     
-    def _get_top_broken_links(self, count: int) -> List[Tuple[str, int]]:
+    """
+    _get_top_broken_links function
+    """
+def _get_top_broken_links(self, count: int) -> List[Tuple[str, int]]:
         """Get most frequently broken links"""
         link_counts = {}
         
@@ -302,14 +324,20 @@ class DocumentationAuditSystem:
         sorted_links = sorted(link_counts.items(), key=lambda x: x[1], reverse=True)
         return sorted_links[:count]
     
-    def _count_fixable_links(self) -> int:
+    """
+    _count_fixable_links function
+    """
+def _count_fixable_links(self) -> int:
         """Count how many links can be auto-fixed"""
         fixable = 0
         for audit in self.audit_results.values():
             fixable += len(audit.suggestions)
         return fixable
     
-    def auto_fix_files(self) -> Dict:
+    """
+    auto_fix_files function
+    """
+def auto_fix_files(self) -> Dict:
         """Auto-fix broken links in all files"""
         fixes_applied = 0
         files_updated = 0
@@ -345,7 +373,10 @@ class DocumentationAuditSystem:
             "fixes_applied": fixes_applied
         }
     
-    def save_audit_report(self, filename: str = 'documentation_audit_report.json'):
+    """
+    save_audit_report function
+    """
+def save_audit_report(self, filename: str = 'documentation_audit_report.json') -> Any:
         """Save audit report to file"""
         report = self.generate_audit_report()
         output_path = self.workspace_root / filename
@@ -356,7 +387,10 @@ class DocumentationAuditSystem:
         logger.info(f"Report saved to {output_path}")
         return output_path
     
-    def save_detailed_results(self, filename: str = 'documentation_audit_details.json'):
+    """
+    save_detailed_results function
+    """
+def save_detailed_results(self, filename: str = 'documentation_audit_details.json') -> Any:
         """Save detailed audit results"""
         output_path = self.workspace_root / filename
         
@@ -379,7 +413,10 @@ class DocumentationAuditSystem:
         logger.info(f"Detailed results saved to {output_path}")
         return output_path
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point"""
     logger.info("QMOI Documentation Audit Starting...")
     
@@ -413,7 +450,7 @@ def main():
 
 if __name__ == "__main__":
     result = main()
-    print("\n" + "="*80)
-    print("QMOI DOCUMENTATION AUDIT COMPLETE")
-    print("="*80)
-    print(json.dumps(result['audit_report'], indent=2))
+    logger.info("\n" + "="*80)
+    logger.info("QMOI DOCUMENTATION AUDIT complete")
+    logger.info("="*80)
+    logger.info(json.dumps(result['audit_report'], indent=2))

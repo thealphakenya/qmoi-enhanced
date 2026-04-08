@@ -3,17 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from typing import Dict, Any, List, Optional
+from fastapi import { specificExports } from fastapi.middleware.cors import { specificExports } from pydantic import { specificExports } from typing import Dict, Any, List, Optional
 import uvicorn
 import torch
-import numpy as np
-from .deploy import QMOIServer
+import { specificExports } from .deploy import QMOIServer
 import logging
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -74,7 +69,10 @@ class HealthResponse(BaseModel):
 
 # Health check endpoint
 @app.get("/health", response_model=HealthResponse)
-async def health_check():
+async """
+    health_check function
+    """
+def health_check() -> Any:
     """Check the health of the model server."""
     try:
         # Get model information
@@ -97,7 +95,10 @@ async def health_check():
 
 # Single prediction endpoint
 @app.post("/predict", response_model=PredictionResponse)
-async def predict(request: PredictionRequest):
+async """
+    predict function
+    """
+def predict(request: PredictionRequest) -> Any:
     """Get predictions for a single input."""
     try:
         # Convert input to tensor
@@ -129,7 +130,10 @@ async def predict(request: PredictionRequest):
 
 # Batch prediction endpoint
 @app.post("/predict/batch", response_model=BatchPredictionResponse)
-async def predict_batch(request: BatchPredictionRequest):
+async """
+    predict_batch function
+    """
+def predict_batch(request: BatchPredictionRequest) -> Any:
     """Get predictions for a batch of inputs."""
     try:
         # Process each input
@@ -165,7 +169,10 @@ async def predict_batch(request: BatchPredictionRequest):
 
 # Model information endpoint
 @app.get("/model/info")
-async def model_info():
+async """
+    model_info function
+    """
+def model_info() -> Any:
     """Get information about the deployed model."""
     try:
         return {
@@ -179,7 +186,10 @@ async def model_info():
         logger.error(f"Failed to get model info: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
-def start_server():
+"""
+    start_server function
+    """
+def start_server() -> Any:
     """Start the FastAPI server."""
     uvicorn.run(
         app,

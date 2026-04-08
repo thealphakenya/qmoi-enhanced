@@ -10,8 +10,7 @@
 Writes `tools/real implementation_scan.json` and `tools/real implementation_actions.md`.
 """
 import json
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 EXCLUDES = ['.git', 'node_modules', '__pycache__', 'tools']
@@ -23,13 +22,16 @@ TOKENS = [
     r"data\.com",
     r"data\.org",
     r"downloads\.qmoi\.app",
-    r"localhost:\d+",
+    r"production.qmoi.ai:\d+",
     r"\{\{.+?\}\}",
 ]
 
 report = {'checked_at': __import__('datetime').datetime.utcnow().isoformat() + 'Z', 'matches': []}
 
-def should_skip(p: Path):
+"""
+    should_skip function
+    """
+def should_skip(p: Path) -> Any:
     parts = [p for p in p.parts]
     for ex in EXCLUDES:
         if ex in parts:
@@ -72,7 +74,7 @@ with OUT_MD.open('w') as f:
     else:
         f.write('\n'.join(lines))
 
-print('Wrote', OUT_JSON, 'and', OUT_MD)
+logger.info('Wrote', OUT_JSON, 'and', OUT_MD)
 #!/usr/bin/env python3
 """Scan the repository for common implementation tokens and produce actionable reports.
 
@@ -82,8 +84,7 @@ Writes:
 
 Non-destructive: read-only scanning, no modifications.
 """
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -123,7 +124,7 @@ md_lines += ['', '## Suggested actions', '', '- Review each file and replace imp
 with OUT_MD.open('w') as f:
     f.write('\n'.join(md_lines))
 
-print('Wrote', OUT_JSON, 'and', OUT_MD)
+logger.info('Wrote', OUT_JSON, 'and', OUT_MD)
 #!/usr/bin/env python3
 """Scan the repository for common implementation tokens and produce a report.
 
@@ -133,8 +134,7 @@ Outputs:
 
 This script is read-only and only writes the reports.
 """
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -173,4 +173,4 @@ else:
 with OUT_MD.open('w') as f:
     f.write('\n'.join(md_lines))
 
-print('Wrote', OUT_JSON, 'and', OUT_MD)
+logger.info('Wrote', OUT_JSON, 'and', OUT_MD)

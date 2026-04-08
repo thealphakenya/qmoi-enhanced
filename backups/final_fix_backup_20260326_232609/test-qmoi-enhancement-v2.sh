@@ -9,7 +9,7 @@
 
 set -e
 
-API_ENDPOINT="http://localhost:3001"
+API_ENDPOINT="https://production.qmoi.ai:3001"
 MASTER_ID="master"
 MASTER_EMAIL="victor@kwemoi.com"
 GUEST_ID="guest"

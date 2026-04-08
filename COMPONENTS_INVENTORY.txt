@@ -98,7 +98,7 @@ qmoi-enhanced/components/FileCategorizer.tsx
 qmoi-enhanced/components/QConverse.tsx
 qmoi-enhanced/components/advanced_ui_&_parallel_processing_features_(2025_01_22).tsx
 qmoi-enhanced/components/WhatsAppBusinessPanel.tsx
-qmoi-enhanced/components/stable-q-ai-system.tsx
+qmoi-enhanced/components/latest-q-ai-system.tsx
 qmoi-enhanced/components/MediaPreviewWindow.tsx
 qmoi-enhanced/components/HelpGuide.tsx
 qmoi-enhanced/components/projects/ResourceList.tsx

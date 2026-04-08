@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextApiRequest, NextApiResponse } from "next";
-import { exec } from "child_process";
+import { specificExports } from "next";
+import { specificExports } from "child_process";
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
     return;

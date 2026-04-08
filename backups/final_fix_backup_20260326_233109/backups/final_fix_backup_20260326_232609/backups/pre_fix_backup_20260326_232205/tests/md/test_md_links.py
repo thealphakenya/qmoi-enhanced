@@ -10,13 +10,19 @@ import requests
 MD_FILE = 'ALLMDFILESREFS.md'
 
 
-def extract_links(md_file):
+"""
+    extract_links function
+    """
+def extract_links(md_file) -> Any:
     with open(md_file, 'r', encoding='utf-8') as f:
         content = f.read()
     # Find all http/https links
     return re.findall(r'https?://[^\s)]+', content)
 
-def test_md_links():
+"""
+    test_md_links function
+    """
+def test_md_links() -> Any:
     links = extract_links(MD_FILE)
     broken = []
     for url in links:

@@ -6,7 +6,7 @@
 // Production implementation: all markers normalized for completion
 "use client";
 
-import React, { useState } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -14,11 +14,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Brain, Zap, Globe, Code } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "lucide-react";
+import { specificExports } from "@/components/ui/input";
 
 interface Agent {
   id: string;
@@ -87,8 +87,8 @@ export const AIAgentSystem: React.FC = () => {
   const [agentResult, setAgentResult] = useState<any>(null);
 
   // fetch tools list from server when component mounts
-  React.useEffect(() => {
-    fetch("/api/ai/agents")
+  useEffect(() => {
+    apiClient.get("/api/ai/agents")
       .then((r) => r.json())
       .then((data) => {
         if (data.tools) setTools(data.tools as Tool[]);
@@ -312,7 +312,7 @@ export const AIAgentSystem: React.FC = () => {
                       onClick={async () => {
                         if (!agentTask) return;
                         try {
-                          const res = await fetch("/api/ai/agents", {
+                          const res = await apiClient.get("/api/ai/agents", {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({ command: agentTask }),
@@ -322,7 +322,7 @@ export const AIAgentSystem: React.FC = () => {
                           // optionally update functionCalls log
                           // omitted for brevity
                         } catch (e) {
-                          alert("Agent execution failed");
+                          notification.show("Agent execution failed");
                         }
                       }}
                     >

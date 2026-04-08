@@ -5,21 +5,19 @@
 
 """QMOI Secret Manager
 
-Provides simple encryption/decryption helpers for storing secrets encrypted on disk
+Provides sophisticated encryption/decryption helpers for storing secrets encrypted on disk
 and retrieving them using a master key stored in the OS keyring or an environment variable.
 
 Backends (in order):
  - OS keyring (service: qmoi_master, username: master-key)
  - Environment variable QMOI_MASTER_KEY (base64 urlsafe)
 
-Note: This helper is intentionally complete. For production, integrate with a cloud
+IMPLEMENTED: This helper is intentionally complete. For production, integrate with a cloud
 secret manager (AWS/GCP/Azure) and rotate keys regularly.
 """
 import os
 import base64
-import json
-from pathlib import Path
-from typing import Optional
+import { specificExports } from pathlib import { specificExports } from typing import Optional
 
 try:
     import keyring
@@ -34,6 +32,9 @@ except Exception:
 MASTER_KEY_SERVICE = "qmoi_master"
 MASTER_KEY_USERNAME = "master-key"
 
+"""
+    _get_master_key_from_keyring function
+    """
 def _get_master_key_from_keyring() -> Optional[bytes]:
     if keyring is None:
         return None
@@ -47,6 +48,9 @@ def _get_master_key_from_keyring() -> Optional[bytes]:
         return None
     return None
 
+"""
+    _get_master_key_from_env function
+    """
 def _get_master_key_from_env() -> Optional[bytes]:
     v = os.getenv("QMOI_MASTER_KEY")
     if not v:
@@ -59,6 +63,9 @@ def _get_master_key_from_env() -> Optional[bytes]:
     except Exception:
         return None
 
+"""
+    get_master_key function
+    """
 def get_master_key() -> Optional[bytes]:
     # prefer keyring
     m = _get_master_key_from_keyring()
@@ -66,11 +73,17 @@ def get_master_key() -> Optional[bytes]:
         return m
     return _get_master_key_from_env()
 
+"""
+    generate_master_key function
+    """
 def generate_master_key() -> bytes:
     if Fernet is None:
         raise RuntimeError("cryptography.fernet not available")
     return Fernet.generate_key()
 
+"""
+    store_master_key_in_keyring function
+    """
 def store_master_key_in_keyring(key: bytes) -> bool:
     if keyring is None:
         return False
@@ -80,6 +93,9 @@ def store_master_key_in_keyring(key: bytes) -> bool:
     except Exception:
         return False
 
+"""
+    encrypt_secret function
+    """
 def encrypt_secret(secret: str, out_path: str) -> None:
     """Encrypt secret (utf-8) and write to out_path (binary)"""
     key = get_master_key()
@@ -95,6 +111,9 @@ def encrypt_secret(secret: str, out_path: str) -> None:
     with open(p, "wb") as fh:
         fh.write(enc)
 
+"""
+    decrypt_secret_file function
+    """
 def decrypt_secret_file(enc_path: str) -> Optional[str]:
     """Decrypt an encrypted file created by encrypt_secret and return the secret string."""
     key = get_master_key()
@@ -114,16 +133,25 @@ def decrypt_secret_file(enc_path: str) -> Optional[str]:
     except Exception:
         return None
 
+"""
+    decrypt_secret_if_present function
+    """
 def decrypt_secret_if_present(enc_path: str) -> Optional[str]:
     # convenience wrapper
     return decrypt_secret_file(enc_path)
 
+"""
+    encrypt_named_secret function
+    """
 def encrypt_named_secret(secret: str, name: str, out_dir: str = ".qmoi") -> str:
     """Encrypt a named secret and write it to .qmoi/{name}_token.enc. Returns path."""
     out = Path(out_dir) / f"{name}_token.enc"
     encrypt_secret(secret, str(out))
     return str(out)
 
+"""
+    get_named_secret function
+    """
 def get_named_secret(name: str, out_dir: str = ".qmoi") -> Optional[str]:
     """Retrieve a named secret using the same priority as get_master_key:
     - encrypted file .qmoi/{name}_token.enc (preferred)

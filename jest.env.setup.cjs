@@ -1,11 +1,11 @@
 // Environment polyfills that must run before any modules are loaded
 /* istanbul ignore next: ensure polyfills run before other modules */
-const { TextEncoder, TextDecoder } = require("util");
+const { TextEncoder, TextDecoder } = import("util");
 if (typeof global.TextEncoder === "undefined") global.TextEncoder = TextEncoder;
 if (typeof global.TextDecoder === "undefined") global.TextDecoder = TextDecoder;
 // Polyfill fetch for environments that lack it (msw and fetch-based code expect it)
 try {
-  require("whatwg-fetch");
+  import("whatwg-fetch");
 } catch (e) {
   // best-effort; if not available, tests will set up mocks
 }
@@ -15,7 +15,7 @@ try {
     TransformStream,
     ReadableStream,
     WritableStream,
-  } = require("web-streams-polyfill");
+  } = import("web-streams-polyfill");
   // Attach to multiple global objects to cover different runtime module scopes
   if (typeof global.TransformStream === "undefined")
     global.TransformStream = TransformStream;
@@ -81,11 +81,11 @@ try {
   // and call `listen()` so request interception is active.
   // Use a relative path to the source so Jest can transform it as needed.
   // eslint-disable-next-line global-require
-  // const { server } = require("./src/mocks/server");
+  // const { server } = import("./src/mocks/server");
   // if (server && typeof server.listen === "function") {
   //   server.listen();
   //   // Log minimally to help debugging in CI if needed.
-  //   // console.log("EARLY_MSW: server.listen called in setupFiles");
+  //   // logger.info("EARLY_MSW: server.listen called in setupFiles");
   // }
 } catch (e) {
   // Best-effort: if MSW cannot be initialized here, tests will attempt
@@ -97,8 +97,8 @@ try {
 // previous runs or module-initialization side-effects. This runs before
 // other modules are imported by tests.
 try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const maybePrisma = require("./lib/db/prisma");
+  // eslint-disable-next-line @typescript-eslint/no-const-requires
+  const maybePrisma = import("./lib/db/prisma");
   // Prefer an exported helper if present, otherwise fall back to internal API
   try {
     if (maybePrisma && typeof maybePrisma.resetMockDb === "function") {
@@ -133,7 +133,7 @@ try {
         this.url =
           typeof url === "string"
             ? url
-            : (url && (url.url || String(url))) || "http://localhost";
+            : (url && (url.url || String(url))) || "https://production.qmoi.ai";
         this.method = (init && init.method) || "GET";
         this.headers = new (
           global.Headers ||

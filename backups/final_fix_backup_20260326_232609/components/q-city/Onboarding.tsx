@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import QmoiAutoDistribution from "@/components/QmoiAutoDistribution";
-import React from "react";
+import { specificExports } from "@/components/QmoiAutoDistribution";
+import { specificExports } from "react";
 
 const Onboarding: React.FC = () => {
   const isMaster = true; // Replace with actual master check logic

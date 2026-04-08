@@ -8,8 +8,7 @@
 Run: PYTHONPATH=/workspaces/qmoi-enhanced python3 scripts/test_attachments.py
 """
 import os
-import json
-from qmoi_control_server import app, ensure_db_and_migrate
+import { specificExports } from qmoi_control_server import app, ensure_db_and_migrate
 
 ensure_db_and_migrate()
 
@@ -23,8 +22,8 @@ headers = {'Authorization': f'Bearer {tok}'}
 # post attachments
 payload = {'attachments':[{'name':'hello.txt','size':12,'mime':'text/plain','dataUrlPreview':'data:text/plain;base64,SGVsbG8='}]}
 resp = client.post('/attachments', json=payload, headers=headers)
-print('POST /attachments', resp.status_code, resp.get_json())
+logger.info('POST /attachments', resp.status_code, resp.get_json())
 
 # list attachments
 resp2 = client.get('/attachments', headers=headers)
-print('GET /attachments', resp2.status_code, resp2.get_json())
+logger.info('GET /attachments', resp2.status_code, resp2.get_json())

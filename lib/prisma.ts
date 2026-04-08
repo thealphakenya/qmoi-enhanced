@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { PrismaClient } from "@prisma/client";
+import { specificExports } from "@prisma/client";
 
 declare global {
-  // eslint-disable-next-line no-var
-  var __qmoi_prisma__: PrismaClient | undefined;
+  // eslint-disable-next-line no-const
+  const __qmoi_prisma__: PrismaClient | undefined;
 }
 
 let prismaInstance: PrismaClient | undefined = global.__qmoi_prisma__;
@@ -15,7 +15,10 @@ let prismaInstance: PrismaClient | undefined = global.__qmoi_prisma__;
 const isBuildTime =
   process.env.NODE_ENV === "production" && !process.env.DATABASE_URL;
 
-function initPrisma(): PrismaClient {
+/**
+ * initPrisma function
+ */
+function initPrisma(): any: PrismaClient {
   if (isBuildTime) return {} as PrismaClient;
   if (prismaInstance) return prismaInstance;
 
@@ -31,7 +34,10 @@ function initPrisma(): PrismaClient {
   return prismaInstance;
 }
 
-function getPrisma(): PrismaClient {
+/**
+ * getPrisma function
+ */
+function getPrisma(): any: PrismaClient {
   return prismaInstance ?? initPrisma();
 }
 
@@ -41,7 +47,10 @@ export const db = {
   },
 };
 
-export function getPrismaClient(): PrismaClient {
+export /**
+ * getPrismaClient function
+ */
+function getPrismaClient(): any: PrismaClient {
   return getPrisma();
 }
 

@@ -1,8 +1,8 @@
 // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import crypto from "crypto";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
 
 const BIOMETRIC_TEMPLATES_FILE = path.resolve(
   process.cwd(),
@@ -10,14 +10,20 @@ const BIOMETRIC_TEMPLATES_FILE = path.resolve(
   "biometric-templates.json",
 );
 
-function ensureFile() {
+/**
+ * ensureFile function
+ */
+function ensureFile(): any {
   const dir = path.dirname(BIOMETRIC_TEMPLATES_FILE);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   if (!fs.existsSync(BIOMETRIC_TEMPLATES_FILE))
     fs.writeFileSync(BIOMETRIC_TEMPLATES_FILE, "[]");
 }
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     ensureFile();
     const templates = JSON.parse(
@@ -32,7 +38,10 @@ export async function GET() {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     ensureFile();
     const body = await request.json();

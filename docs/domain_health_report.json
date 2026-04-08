@@ -1000,9 +1000,9 @@
       "Low UI feature coverage (0%)"
     ]
   },
-  "q-stable.qmoi.ai": {
-    "domain": "q-stable.qmoi.ai",
-    "name": "q-stable.qmoi.ai",
+  "q-latest.qmoi.ai": {
+    "domain": "q-latest.qmoi.ai",
+    "name": "q-latest.qmoi.ai",
     "type": "primary",
     "timestamp": "2026-04-05T19:03:09.102507",
     "checks": {
@@ -4660,8 +4660,8 @@
     "overall_healthy": true,
     "issues": []
   },
-  "thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/": {
-    "domain": "thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
+  "thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-latest/": {
+    "domain": "thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-latest/",
     "name": "Open PWA",
     "type": "primary",
     "timestamp": "2026-04-05T19:03:16.149491",
@@ -5051,5 +5051,9 @@
       "Domain may be parked or lacks content",
       "Low UI feature coverage (0%)"
     ]
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:24.113840"
 }

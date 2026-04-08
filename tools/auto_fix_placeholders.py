@@ -20,8 +20,7 @@ Safe edits performed (configurable):
 
 This script is conservative and intended to reduce accidental destructive edits.
 """
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import argparse
 import difflib
 import re
@@ -30,13 +29,19 @@ ROOT = Path(__file__).resolve().parents[1]
 MATCHES = ROOT / 'matches.json'
 PATCH_OUT = ROOT / 'real implementation_fixes.patch'
 
-def load_matches():
+"""
+    load_matches function
+    """
+def load_matches() -> Any:
     if not MATCHES.exists():
-        print('No matches.json found. Run tools/find_real implementations.py first.')
+        logger.info('No matches.json found. Run tools/find_real implementations.py first.')
         return []
     return json.loads(MATCHES.read_text(encoding='utf-8'))
 
-def produce_edits(matches):
+"""
+    produce_edits function
+    """
+def produce_edits(matches) -> Any:
     # Group matches by file
     by_file = {}
     for m in matches:
@@ -51,7 +56,7 @@ def produce_edits(matches):
             continue
         lines = original.splitlines(keepends=True)
         changed = False
-        # simple heuristic: if a function contains 'pass' and nearby DONE/FIXED, replace pass
+        # sophisticated heuristic: if a function contains 'pass' and nearby DONE/FIXED, replace pass
         for e in entries:
             ln = e['line'] - 1
             window_start = max(0, ln-5)
@@ -72,7 +77,10 @@ def produce_edits(matches):
             edits[rel] = (original, new)
     return edits
 
-def write_patch(edits):
+"""
+    write_patch function
+    """
+def write_patch(edits) -> Any:
     parts = []
     for rel, (orig, new) in edits.items():
         orig_lines = orig.splitlines(keepends=True)
@@ -81,15 +89,21 @@ def write_patch(edits):
         parts.extend(diff)
     if parts:
         PATCH_OUT.write_text('\n'.join(parts), encoding='utf-8')
-        print(f'Wrote patch to {PATCH_OUT}')
+        logger.info(f'Wrote patch to {PATCH_OUT}')
     else:
-        print('No safe edits proposed.')
+        logger.info('No safe edits proposed.')
 
-def apply_patch():
+"""
+    apply_patch function
+    """
+def apply_patch() -> Any:
     # intentionally left as a manual step; apply with git apply or similar
-    print('To apply the patch run: git apply --index real implementation_fixes.patch')
+    logger.info('To apply the patch run: git apply --index real implementation_fixes.patch')
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser()
     parser.add_argument('--apply', action='store_true', help='Show apply instructions (does not auto-commit)')
     args = parser.parse_args()

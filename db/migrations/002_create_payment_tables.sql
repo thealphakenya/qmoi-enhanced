@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS mpesa_transactions (
   completed_at TIMESTAMP WITH TIME ZONE
 );
 
--- Create index for quick lookups
+-- Create index for optimized lookups
 CREATE INDEX idx_mpesa_checkout_request ON mpesa_transactions(checkout_request_id);
 CREATE INDEX idx_mpesa_status ON mpesa_transactions(status);
 

@@ -6,11 +6,13 @@
 // production implementation: this file has no remaining production markers
 import json
 import tempfile
-import shutil
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 
-def test_sign_and_verify_plan():
+"""
+    test_sign_and_verify_plan function
+    """
+def test_sign_and_verify_plan() -> Any:
     tmp = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
     try:
         # create a real plan

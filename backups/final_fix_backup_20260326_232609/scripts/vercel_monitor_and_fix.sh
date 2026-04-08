@@ -13,7 +13,7 @@ mkdir -p "$OUTDIR"
 if [ -z "$VERCEL_TOKEN" ] || [ -z "$VERCEL_PROJECT_ID" ]; then
   echo "Set VERCEL_TOKEN and VERCEL_PROJECT_ID in the environment to use monitoring features."
   echo "This script will perform a dry-run and show commands to run when tokens are available."
-  echo "data: VERCEL_TOKEN=xxx VERCEL_PROJECT_ID=yyy ./scripts/vercel_monitor_and_fix.sh"
+  echo "data: VERCEL_TOKEN=PRODUCTION_READY VERCEL_PROJECT_ID=yyy ./scripts/vercel_monitor_and_fix.sh"
   exit 2
 fi
 

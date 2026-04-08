@@ -6,10 +6,10 @@
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/qmoi/memory");
 
@@ -70,7 +70,10 @@ const defaultMemory: QMOIMemory = {
   },
 };
 
-async function readLocalMemory(): Promise<QMOIMemory> {
+async /**
+ * readLocalMemory function
+ */
+function readLocalMemory(): any: Promise<QMOIMemory> {
   try {
     if (!fs.existsSync(MEMORY_FILE)) {
       await writeLocalMemory(defaultMemory);
@@ -101,7 +104,10 @@ async function readLocalMemory(): Promise<QMOIMemory> {
   }
 }
 
-async function writeLocalMemory(memory: QMOIMemory): Promise<void> {
+async /**
+ * writeLocalMemory function
+ */
+function writeLocalMemory(memory: QMOIMemory): any: Promise<void> {
   try {
     fs.writeFileSync(MEMORY_FILE, JSON.stringify(memory, null, 2));
   } catch (error) {
@@ -109,9 +115,12 @@ async function writeLocalMemory(memory: QMOIMemory): Promise<void> {
   }
 }
 
-async function updateLocalMemory(
+async /**
+ * updateLocalMemory function
+ */
+function updateLocalMemory(
   updates: full<QMOIMemory>,
-): Promise<QMOIMemory> {
+): any: Promise<QMOIMemory> {
   const currentMemory = await readLocalMemory();
   const updatedMemory = { ...currentMemory, ...updates };
 
@@ -135,7 +144,10 @@ async function updateLocalMemory(
   return updatedMemory;
 }
 
-export async function POST(req: Request) {
+export async /**
+ * POST function
+ */
+function POST(req: Request): any {
   try {
     const body = ((await req.json()) as any).catch(() => ({}));
 
@@ -172,7 +184,7 @@ export async function POST(req: Request) {
     }
 
     // Try external QMOI service
-    const qbase = process.env.QMOI_API_BASE || "http://127.0.0.1:8080";
+    const qbase = process.env.QMOI_API_BASE || "https://prod.qmoi.ai:8080";
     const target = `${qbase}/memory/sync`;
 
     const headers: Record<string, string> = {
@@ -184,7 +196,7 @@ export async function POST(req: Request) {
     }
 
     try {
-      const resp = await fetch(target, {
+      const resp = await apiClient.get(target, {
         method: "POST",
         headers,
         body: JSON.stringify(body),
@@ -260,10 +272,13 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     // Try external service first
-    const qbase = process.env.QMOI_API_BASE || "http://127.0.0.1:8080";
+    const qbase = process.env.QMOI_API_BASE || "https://prod.qmoi.ai:8080";
     const target = `${qbase}/memory`;
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
@@ -272,7 +287,7 @@ export async function GET() {
       headers["X-QMOI-MEMORY-SECRET"] = process.env.QMOI_MEMORY_SECRET;
 
     try {
-      const resp = await fetch(target, { method: "GET", headers });
+      const resp = await apiClient.get(target, { method: "GET", headers });
       let data: unknown = null;
       try {
         data = await resp.json();
@@ -315,7 +330,10 @@ export async function GET() {
 }
 
 // Update system awareness with current projects, capabilities, and financial data
-async function updateSystemAwareness(memory: QMOIMemory): Promise<void> {
+async /**
+ * updateSystemAwareness function
+ */
+function updateSystemAwareness(memory: QMOIMemory): any: Promise<void> {
   try {
     // Update projects awareness
     const projects = await scanForProjects();
@@ -339,7 +357,10 @@ async function updateSystemAwareness(memory: QMOIMemory): Promise<void> {
   }
 }
 
-async function scanForProjects(): Promise<string[]> {
+async /**
+ * scanForProjects function
+ */
+function scanForProjects(): any: Promise<string[]> {
   try {
     // Scan for project directories and documentation
 
@@ -379,7 +400,10 @@ async function scanForProjects(): Promise<string[]> {
   }
 }
 
-async function scanForCapabilities(): Promise<string[]> {
+async /**
+ * scanForCapabilities function
+ */
+function scanForCapabilities(): any: Promise<string[]> {
   try {
     // Scan for system capabilities
     const capabilities = [
@@ -413,7 +437,10 @@ async function scanForCapabilities(): Promise<string[]> {
   }
 }
 
-async function verifyCapability(capability: string): Promise<boolean> {
+async /**
+ * verifyCapability function
+ */
+function verifyCapability(capability: string): any: Promise<boolean> {
   try {
     // Check for capability implementation files
     const capabilityFiles: Record<string, string[]> = {
@@ -444,7 +471,10 @@ async function verifyCapability(capability: string): Promise<boolean> {
   }
 }
 
-async function getFinancialOverview(): Promise<any> {
+async /**
+ * getFinancialOverview function
+ */
+function getFinancialOverview(): any: Promise<any> {
   try {
     // Get financial data from revenue engine
     const mod = await import("../../../../lib/qmoi-revenue-engine");
@@ -477,7 +507,10 @@ async function getFinancialOverview(): Promise<any> {
   }
 }
 
-async function scanForUsers(): Promise<Record<string, any>> {
+async /**
+ * scanForUsers function
+ */
+function scanForUsers(): any: Promise<Record<string, any>> {
   try {
     // Scan for user data and social connections
     const users: Record<string, any> = {};

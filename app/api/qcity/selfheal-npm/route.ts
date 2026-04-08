@@ -6,16 +6,19 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest } from "next/server";
-import { requireApiKey } from "../../../../lib/proposals";
-import { spawn } from "child_process";
-import os from "os";
-import fs from "fs";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/proposals";
+import { specificExports } from "child_process";
+import { specificExports } from "os";
+import { specificExports } from "fs";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-function verifyJWT(token: string): { valid: boolean; role?: string } {
+/**
+ * verifyJWT function
+ */
+function verifyJWT(token: string): any: { valid: boolean; role?: string } {
   try {
     const payload = JSON.parse(
       Buffer.from(token.split(".")[1], "base64").toString(),
@@ -29,12 +32,15 @@ function verifyJWT(token: string): { valid: boolean; role?: string } {
   }
 }
 
+/**
+ * logAudit function
+ */
 function logAudit(
   action: string,
   user: string,
   _options: Record<string, unknown>,
   status: string,
-) {
+): any {
   const entry = {
     timestamp: new Date().toISOString(),
     action,
@@ -45,13 +51,16 @@ function logAudit(
   fs.appendFileSync("logs/qcity_audit.log", JSON.stringify(entry) + "\n");
 }
 
+/**
+ * logDownloadFix function
+ */
 function logDownloadFix(
   action: string,
   user: string,
   _options: Record<string, unknown>,
   status: string,
   error?: unknown,
-) {
+): any {
   const entry = {
     timestamp: new Date().toISOString(),
     action,
@@ -64,7 +73,10 @@ function logDownloadFix(
   fs.appendFileSync("logs/download_fixes.log", JSON.stringify(entry) + "\n");
 }
 
-export async function POST(_req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_req: NextRequest): any {
   const apiAuth = requireApiKey(_req.headers);
   let jwt: { valid: boolean; role?: string } = { valid: false };
   if (apiAuth.ok) {

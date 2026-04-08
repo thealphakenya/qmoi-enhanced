@@ -19,8 +19,7 @@ to extract a token from `CREDENTIAL_ROTATION_PLAYBOOK.md` in the repo root.
 """
 import os
 import json
-import re
-from urllib import request, parse, error
+import { specificExports } from urllib import request, parse, error
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 MANIFEST = os.path.join(ROOT, 'release_assets_manifest.json')
@@ -31,7 +30,10 @@ REPO = os.environ.get('GITHUB_REPO', 'qmoi-enhanced')
 GITHUB_API = 'https://api.github.com'
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 
-def find_token_in_playbook():
+"""
+    find_token_in_playbook function
+    """
+def find_token_in_playbook() -> Any:
     if not os.path.exists(PLAYBOOK):
         return None
     text = open(PLAYBOOK, 'r', encoding='utf8').read()
@@ -41,7 +43,10 @@ def find_token_in_playbook():
 if not GITHUB_TOKEN:
     GITHUB_TOKEN = find_token_in_playbook()
 
-def gh_get(path):
+"""
+    gh_get function
+    """
+def gh_get(path) -> Any:
     url = GITHUB_API + path
     req = request.Request(url)
     if GITHUB_TOKEN:
@@ -50,13 +55,19 @@ def gh_get(path):
     with request.urlopen(req) as r:
         return json.load(r)
 
-def gh_delete(url):
+"""
+    gh_delete function
+    """
+def gh_delete(url) -> Any:
     req = request.Request(url, method='DELETE')
     req.add_header('Authorization', f'token {GITHUB_TOKEN}')
     with request.urlopen(req) as r:
         return r.status
 
-def download_asset(asset_id, out_path):
+"""
+    download_asset function
+    """
+def download_asset(asset_id, out_path) -> Any:
     """Download a release asset by id (writes bytes to out_path)."""
     url = f'{GITHUB_API}/repos/{OWNER}/{REPO}/releases/assets/{asset_id}'
     req = request.Request(url)
@@ -71,10 +82,13 @@ def download_asset(asset_id, out_path):
                     f.write(data)
                 return True
     except error.HTTPError as e:
-        print('    failed to download asset', asset_id, e)
+        logger.info('    failed to download asset', asset_id, e)
         return False
 
-def upload_asset_to_release(upload_url_tpl, local_path, name):
+"""
+    upload_asset_to_release function
+    """
+def upload_asset_to_release(upload_url_tpl, local_path, name) -> Any:
     upload_url = upload_url_tpl.split('{')[0] + f'?name={parse.quote(name)}'
     data = open(local_path, 'rb').read()
     req = request.Request(upload_url, data=data, method='POST')
@@ -86,12 +100,15 @@ def upload_asset_to_release(upload_url_tpl, local_path, name):
     except error.HTTPError as e:
         raise
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if not os.path.exists(MANIFEST):
-        print('Manifest not found:', MANIFEST)
+        logger.info('Manifest not found:', MANIFEST)
         return 1
     if not GITHUB_TOKEN:
-        print('No GITHUB_TOKEN available; cannot modify releases.')
+        logger.info('No GITHUB_TOKEN available; cannot modify releases.')
         return 2
     manifest = json.load(open(MANIFEST))
     releases = gh_get(f'/repos/{OWNER}/{REPO}/releases')
@@ -101,56 +118,56 @@ def main():
         tag = rel.get('tag_name')
         upload_tpl = rel.get('upload_url')
         existing = {a['name']: a for a in rel.get('assets', [])}
-        print('Processing release', tag, '- existing assets', len(existing))
+        logger.info('Processing release', tag, '- existing assets', len(existing))
         for a in assets:
             name = os.path.basename(a.get('path'))
             local = a.get('abs_path') if a.get('abs_path') and os.path.exists(a.get('abs_path')) else os.path.join(ROOT, a.get('path'))
             if not os.path.exists(local):
-                print('  local file required for', name, '- skipping for', tag)
+                logger.info('  local file required for', name, '- skipping for', tag)
                 continue
             expected_size = a.get('size')
             if name in existing:
                 size = existing[name].get('size')
                 asset_id = existing[name].get('id')
                 if size != expected_size:
-                    print('  replacing', name, 'in', tag)
+                    logger.info('  replacing', name, 'in', tag)
                     # backup existing asset before deletion
                     backup_dir = os.path.join(ROOT, 'reports', 'releases_backup', tag)
                     os.makedirs(backup_dir, exist_ok=True)
                     backup_path = os.path.join(backup_dir, name)
-                    print('    backing up existing asset to', backup_path)
+                    logger.info('    backing up existing asset to', backup_path)
                     try:
                         downloaded = download_asset(asset_id, backup_path)
                         if not downloaded:
-                            print('    warning: backup failed for', name)
+                            logger.info('    warning: backup failed for', name)
                     except Exception as e:
-                        print('    backup failed', e)
+                        logger.info('    backup failed', e)
                     del_url = f'{GITHUB_API}/repos/{OWNER}/{REPO}/releases/assets/{asset_id}'
                     try:
                         gh_delete(del_url)
                     except Exception as e:
-                        print('    failed delete', e)
+                        logger.info('    failed delete', e)
                         continue
                     try:
                         upload_asset_to_release(upload_tpl, local, name)
-                        print('    uploaded replacement', name)
+                        logger.info('    uploaded replacement', name)
                     except Exception as e:
-                        print('    upload failed', e)
+                        logger.info('    upload failed', e)
                 else:
                     # present and correct
                     pass
             else:
-                print('  uploading required', name, 'to', tag)
+                logger.info('  uploading required', name, 'to', tag)
                 try:
                     # upload required asset to this release (create backup dir for symmetry)
                     backup_dir = os.path.join(ROOT, 'reports', 'releases_backup', tag)
                     os.makedirs(backup_dir, exist_ok=True)
                     upload_asset_to_release(upload_tpl, local, name)
-                    print('    uploaded', name)
+                    logger.info('    uploaded', name)
                 except Exception as e:
-                    print('    upload failed', e)
+                    logger.info('    upload failed', e)
 
-    print('Done')
+    logger.info('Done')
     return 0
 
 if __name__ == '__main__':

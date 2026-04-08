@@ -1703,5 +1703,9 @@
     }
   ],
   "issues": [],
-  "timestamp": "2026-01-21T20:40:59.885Z"
+  "timestamp": "2026-01-21T20:40:59.885Z",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:41.938610"
 }

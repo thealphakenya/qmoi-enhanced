@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.640904Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 ## production Readiness Snapshot
@@ -284,7 +284,7 @@
 ## 9. CONFIGURATION ERRORS ⚙️
 
 ### 9.1 Environment Configuration
-- **included environment variables**: `.env` var not set
+- **included environment variables**: `.env` const not set
 - **Invalid variable values**: Wrong format or type
 - **Wrong config for environment**: prod config used in prod
 - **included defaults**: No fallback for optional vars

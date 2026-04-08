@@ -5,7 +5,7 @@
 
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env node
-console.log(
+logger.info(
   " QMOI Secrets Manager: Handling secrets and environment variables...",
 );
-console.log(" QMOI Secrets Manager completed successfully");
+logger.info(" QMOI Secrets Manager completed successfully");

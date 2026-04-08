@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { safeConsoleError } from "@/utils/safeConsole";
-import React, { useEffect, useState } from "react";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "react";
 
 interface ModelRegistryEntry {
   id: string;
@@ -38,7 +38,7 @@ export const ModelRegistry: React.FC = () => {
 
   const fetchModels = async () => {
     try {
-      const res = await fetch("/api/models");
+      const res = await apiClient.get("/api/models");
       const data = await res.json();
       setModels(data.models || []);
     } catch (error) {
@@ -50,7 +50,7 @@ export const ModelRegistry: React.FC = () => {
 
   const doCompare = async () => {
     if (!compare1 || !compare2) return;
-    const res = await fetch(
+    const res = await apiClient.get(
       `/api/models?action=compare&id1=${compare1}&id2=${compare2}`,
     );
     const data = await res.json();
@@ -174,7 +174,7 @@ export const ModelRegistry: React.FC = () => {
                   variant="outline"
                   className="border-yellow-600 text-yellow-400"
                   onClick={async () => {
-                    const res = await fetch(
+                    const res = await apiClient.get(
                       `/api/models?action=benchmark&id=${model.id}`,
                       { method: "POST" },
                     );

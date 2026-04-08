@@ -29,12 +29,18 @@ import time
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
+"""
+    read_log function
+    """
 def read_log(path: str) -> str:
     with open(path, "r", encoding="utf-8", errors="ignore") as f:
         return f.read()
 
+"""
+    find_missing_node_modules function
+    """
 def find_missing_node_modules(log: str) -> list[str]:
-    # matches: Error: Cannot find module 'xxx' or Module not found: Error: Can't resolve 'xxx'
+    # matches: Error: Cannot find module 'PRODUCTION_READY' or Module not found: Error: Can't resolve 'PRODUCTION_READY'
     mods = set()
     for m in re.findall(r"Cannot find module ['\"]([^'\"]+)['\"]", log):
         mods.add(m.split('/')[0])
@@ -42,6 +48,9 @@ def find_missing_node_modules(log: str) -> list[str]:
         mods.add(m.split('/')[0])
     return sorted(mods)
 
+"""
+    find_missing_python_modules function
+    """
 def find_missing_python_modules(log: str) -> list[str]:
     mods = set()
     for m in re.findall(r"ModuleNotFoundError: No module named ['\"]?([^'\"]+)['\"]?", log):
@@ -50,17 +59,29 @@ def find_missing_python_modules(log: str) -> list[str]:
         mods.add(m)
     return sorted(mods)
 
-def git_run(args, **kwargs):
+"""
+    git_run function
+    """
+def git_run(args, **kwargs) -> Any:
     return subprocess.check_call(["git"] + args, **kwargs)
 
-def make_branch(branch: str):
+"""
+    make_branch function
+    """
+def make_branch(branch: str) -> Any:
     subprocess.check_call(["git", "checkout", "-b", branch])
 
-def commit_changes(message: str):
+"""
+    commit_changes function
+    """
+def commit_changes(message: str) -> Any:
     subprocess.check_call(["git", "add", "--all"])
     subprocess.check_call(["git", "-c", "commit.gpgsign=false", "commit", "-m", message])
 
-def npm_install(mods: list[str]):
+"""
+    npm_install function
+    """
+def npm_install(mods: list[str]) -> Any:
     if not os.path.exists(os.path.join(ROOT, "package.json")):
         return False
     for m in mods:
@@ -68,7 +89,10 @@ def npm_install(mods: list[str]):
         subprocess.check_call(["npm", "install", m, "--save"], cwd=ROOT)
     return True
 
-def pip_requirements_add(mods: list[str]):
+"""
+    pip_requirements_add function
+    """
+def pip_requirements_add(mods: list[str]) -> Any:
     req = os.path.join(ROOT, "requirements.txt")
     if not os.path.exists(req):
         # create requirements.txt
@@ -80,7 +104,10 @@ def pip_requirements_add(mods: list[str]):
     subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", req])
     return True
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument("--log", required=True)
     p.add_argument("--apply", action="store_true")
@@ -90,11 +117,11 @@ def main():
     node_mods = find_missing_node_modules(log)
     py_mods = find_missing_python_modules(log)
 
-    print("Detected required node modules:", node_mods)
-    print("Detected required python modules:", py_mods)
+    logger.info("Detected required node modules:", node_mods)
+    logger.info("Detected required python modules:", py_mods)
 
     if not args.apply:
-        print("Dry-run: no changes will be made. Use --apply to perform changes.")
+        logger.info("Dry-run: no changes will be made. Use --apply to perform changes.")
         return
 
     timestamp = int(time.time())
@@ -108,7 +135,7 @@ def main():
             if ok:
                 changed = True
         except Exception as e:
-            print("npm install failed:", e)
+            logger.info("npm install failed:", e)
 
     if py_mods:
         try:
@@ -116,14 +143,14 @@ def main():
             if ok:
                 changed = True
         except Exception as e:
-            print("pip install failed:", e)
+            logger.info("pip install failed:", e)
 
     if changed:
         commit_changes(f"chore: attempt build fixes (deps) {timestamp}")
-        print("Created branch and committed attempted fixes:", branch)
-        print("Push branch and create a PR for review.")
+        logger.info("Created branch and committed attempted fixes:", branch)
+        logger.info("Push branch and create a PR for review.")
     else:
-        print("No changes applied; nothing to commit.")
+        logger.info("No changes applied; nothing to commit.")
 
 if __name__ == "__main__":
     main()

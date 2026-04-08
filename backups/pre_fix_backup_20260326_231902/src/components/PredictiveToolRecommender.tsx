@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 // ML-driven tool recommendation engine that learns from usage patterns.
 

@@ -8,7 +8,10 @@ import customtkinter as ctk
 import platform
 import sys
 
-def main_gui():
+"""
+    main_gui function
+    """
+def main_gui() -> Any:
     ctk.set_appearance_mode("dark")
     app = ctk.CTk()
     app.geometry("500x300")

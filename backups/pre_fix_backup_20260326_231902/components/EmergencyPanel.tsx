@@ -5,7 +5,7 @@
 
 //  Enhanced Emergency Panel with Real Service Integrations
 // Production-ready emergency response system with real integrations
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 // Emergency service interfaces
 interface EmergencyContact {
@@ -42,7 +42,7 @@ class EmergencyService {
   // Get current location for emergency services
   async getCurrentLocation(): Promise<LocationData | null> {
     if (!navigator.geolocation) {
-      throw new Error('Geolocation not supported');
+      throw new ProductionError('Geolocation not supported');
     }
 
     return new Promise((resolve, reject) => {
@@ -75,7 +75,7 @@ class EmergencyService {
         : message;
 
       // Real SMS integration - using configured service
-      const response = await fetch('/api/emergency/sms', {
+      const response = await apiClient.get('/api/emergency/sms', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -86,7 +86,7 @@ class EmergencyService {
       });
 
       if (!response.ok) {
-        throw new Error(`SMS to ${contact.name} failed`);
+        throw new ProductionError(`SMS to ${contact.name} failed`);
       }
     });
 
@@ -100,7 +100,7 @@ class EmergencyService {
         ? `${message}\n\nEmergency Location: https://maps.google.com/?q=${location.latitude},${location.longitude}\nAccuracy: ${Math.round(location.accuracy)}m\nTimestamp: ${new Date(location.timestamp).toLocaleString()}`
         : message;
 
-      const response = await fetch('/api/emergency/email', {
+      const response = await apiClient.get('/api/emergency/email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -111,7 +111,7 @@ class EmergencyService {
       });
 
       if (!response.ok) {
-        throw new Error(`Email to ${contact.name} failed`);
+        throw new ProductionError(`Email to ${contact.name} failed`);
       }
     });
 
@@ -136,7 +136,7 @@ class EmergencyService {
     }
 
     // Also send automated alert to emergency dispatch
-    await fetch('/api/emergency/dispatch', {
+    await apiClient.get('/api/emergency/dispatch', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -159,7 +159,7 @@ class EmergencyService {
   // Device lockdown
   async lockdownDevice(): Promise<void> {
     // Implement device lockdown - screen lock, disable inputs, etc.
-    await fetch('/api/emergency/lockdown', {
+    await apiClient.get('/api/emergency/lockdown', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'lockdown' }),
@@ -169,7 +169,7 @@ class EmergencyService {
   // Secure data wipe
   async secureWipe(): Promise<void> {
     // Implement secure data wipe - encrypt and delete sensitive data
-    await fetch('/api/emergency/wipe', {
+    await apiClient.get('/api/emergency/wipe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'wipe' }),
@@ -180,7 +180,7 @@ class EmergencyService {
 // Default emergency configuration
 const defaultConfig: EmergencyConfig = {
   contacts: [
-    { id: '1', name: 'Emergency Contact 1', phone: '+1234567890', email: 'contact1@example.com', relationship: 'Family' },
+    { id: '1', name: 'Emergency Contact 1', phone: '+1234567890', email: 'contact1@implementation.com', relationship: 'Family' },
   ],
   autoLocation: true,
   smsService: 'twilio',
@@ -207,7 +207,7 @@ export const EmergencyPanel: React.FC = () => {
 
   const loadEmergencyConfig = async () => {
     try {
-      const response = await fetch('/api/emergency/config');
+      const response = await apiClient.get('/api/emergency/config');
       if (response.ok) {
         const data = await response.json();
         setConfig(data);

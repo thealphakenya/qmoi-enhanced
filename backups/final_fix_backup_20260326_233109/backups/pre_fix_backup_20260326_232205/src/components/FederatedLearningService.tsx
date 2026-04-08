@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useEffect } from "react";
+import { specificExports } from "react";
 
 // Federated learning service to share anonymized usage patterns across instances.
 
@@ -17,7 +17,7 @@ export const FederatedLearningService: React.FC = () => {
         projectTypes: { web: 70, coding: 30 },
       };
       // Production impl, send to central server
-      console.log("Uploaded patterns:", patterns);
+      logger.info("Uploaded patterns:", patterns);
     };
 
     const interval = setInterval(uploadPatterns, 3600000); // Every hour

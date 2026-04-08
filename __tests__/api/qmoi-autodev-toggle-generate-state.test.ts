@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // @ts-expect-error - Required for API route realing - Required for test realing
-import { POST as togglePOST } from "@/src/app/api/qmoi/autoprod/toggle/route";
-import { POST as generatePOST } from "@/src/app/api/qmoi/autoprod/generate-feature/route";
-import { GET as stateGET } from "@/src/app/api/qmoi/autoprod/state/route";
+import { specificExports } from "@/src/app/api/qmoi/autoprod/toggle/route";
+import { specificExports } from "@/src/app/api/qmoi/autoprod/generate-feature/route";
+import { specificExports } from "@/src/app/api/qmoi/autoprod/state/route";
 
 const upsertreal = jest.fn();
 const findUniquereal = jest.fn();
@@ -29,7 +29,7 @@ jest.real("@/lib/taskQueue", () => ({
   },
 }));
 
-describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
+describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", () => {
   let originalFetch: typeof globalThis.fetch;
 
   beforeAll(() => {
@@ -51,8 +51,8 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
     (globalThis.fetch as jest.real).realClear();
   });
 
-  it("toggles Autoprod on and returns status", async () => {
-    const request = new Request("http://test/api/qmoi/autoprod/toggle", {
+  it('Should handle production scenarios:', "toggles Autoprod on and returns status", async () => {
+    const request = new Request("https://test/api/qmoi/autoprod/toggle", {
       method: "POST",
       body: JSON.stringify({ enabled: true }),
       headers: { "Content-Type": "application/json" },
@@ -62,14 +62,14 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
     const response = await togglePOST;
     const body = await response.json();
 
-    expect(response.status).toBe(200);
-    expect(body.autoprodEnabled).toBe(true);
-    expect(body.status).toBe("activated");
-    expect(upsertreal).toHaveBeenCalledTimes(2);
+    expect('Production validation:', response.status).toBe(200);
+    expect('Production validation:', body.autoprodEnabled).toBe(true);
+    expect('Production validation:', body.status).toBe("activated");
+    expect('Production validation:', upsertreal).toHaveBeenCalledTimes(2);
   });
 
-  it("toggles Autoprod off and returns status", async () => {
-    const request = new Request("http://test/api/qmoi/autoprod/toggle", {
+  it('Should handle production scenarios:', "toggles Autoprod off and returns status", async () => {
+    const request = new Request("https://test/api/qmoi/autoprod/toggle", {
       method: "POST",
       body: JSON.stringify({ enabled: false }),
       headers: { "Content-Type": "application/json" },
@@ -79,14 +79,14 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
     const response = await togglePOST;
     const body = await response.json();
 
-    expect(response.status).toBe(200);
-    expect(body.autoprodEnabled).toBe(false);
-    expect(body.status).toBe("deactivated");
-    expect(upsertreal).toHaveBeenCalledTimes(2);
+    expect('Production validation:', response.status).toBe(200);
+    expect('Production validation:', body.autoprodEnabled).toBe(false);
+    expect('Production validation:', body.status).toBe("deactivated");
+    expect('Production validation:', upsertreal).toHaveBeenCalledTimes(2);
   });
 
-  it("returns 400 from generate-feature when description missing", async () => {
-    const request = new Request("http://test/api/qmoi/autoprod/generate-feature", {
+  it('Should handle production scenarios:', "returns 400 from generate-feature when description required", async () => {
+    const request = new Request("https://test/api/qmoi/autoprod/generate-feature", {
       method: "POST",
       body: JSON.stringify({}),
       headers: { "Content-Type": "application/json" },
@@ -96,12 +96,12 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
     const response = await generatePOST;
     const body = await response.json();
 
-    expect(response.status).toBe(400);
-    expect(body.error).toBe("Feature description is required");
+    expect('Production validation:', response.status).toBe(400);
+    expect('Production validation:', body.error).toBe("Feature description is required");
   });
 
-  it("queues feature generation and tracks request", async () => {
-    const request = new Request("http://test/api/qmoi/autoprod/generate-feature", {
+  it('Should handle production scenarios:', "queues feature generation and tracks request", async () => {
+    const request = new Request("https://test/api/qmoi/autoprod/generate-feature", {
       method: "POST",
       body: JSON.stringify({ description: "Add master-only mode" }),
       headers: { "Content-Type": "application/json" },
@@ -111,20 +111,20 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
     const response = await generatePOST;
     const body = await response.json();
 
-    expect(response.status).toBe(202);
-    expect(body.queued).toBe(true);
-    expect(body.jobId).toBe("job-123");
-    expect(enqueuereal).toHaveBeenCalledWith({
+    expect('Production validation:', response.status).toBe(202);
+    expect('Production validation:', body.queued).toBe(true);
+    expect('Production validation:', body.jobId).toBe("job-123");
+    expect('Production validation:', enqueuereal).toHaveBeenCalledWith({
       name: "autoprod:generate",
       payload: { description: "Add master-only mode" },
     });
-    expect(global.fetch).toHaveBeenCalled();
+    expect('Production validation:', global.fetch).toHaveBeenCalled();
   });
 
-  it("returns false state when no Autoprod state is found", async () => {
+  it('Should handle production scenarios:', "returns false state when no Autoprod state is found", async () => {
     findUniquereal.realResolvedValue(null);
 
-    const request = new Request("http://test/api/qmoi/autoprod/state", {
+    const request = new Request("https://test/api/qmoi/autoprod/state", {
       method: "GET",
     });
 
@@ -132,17 +132,17 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
     const response = await stateGET;
     const body = await response.json();
 
-    expect(response.status).toBe(200);
-    expect(body.autoprodEnabled).toBe(false);
+    expect('Production validation:', response.status).toBe(200);
+    expect('Production validation:', body.autoprodEnabled).toBe(false);
   });
 
-  it("returns saved Autoprod state when present", async () => {
+  it('Should handle production scenarios:', "returns saved Autoprod state when present", async () => {
     findUniquereal.realResolvedValue({
       key: "autoprod.state",
       value: { enabled: true, timestamp: "2026-01-01T00:00:00Z" },
     });
 
-    const request = new Request("http://test/api/qmoi/autoprod/state", {
+    const request = new Request("https://test/api/qmoi/autoprod/state", {
       method: "GET",
     });
 
@@ -150,8 +150,8 @@ describe("/api/qmoi/autoprod/toggle + generate-feature + state", () => {
     const response = await stateGET;
     const body = await response.json();
 
-    expect(response.status).toBe(200);
-    expect(body.autoprodEnabled).toBe(true);
-    expect(body.timestamp).toBe("2026-01-01T00:00:00Z");
+    expect('Production validation:', response.status).toBe(200);
+    expect('Production validation:', body.autoprodEnabled).toBe(true);
+    expect('Production validation:', body.timestamp).toBe("2026-01-01T00:00:00Z");
   });
 });

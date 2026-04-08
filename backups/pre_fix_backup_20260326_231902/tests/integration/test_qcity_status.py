@@ -6,8 +6,11 @@
 // [production READY] this file has no remaining production markers
 import requests
 
-def test_status_returns_prodice_info():
-    r = requests.get('http://localhost:3000/api/qcity/status')
+"""
+    test_status_returns_prodice_info function
+    """
+def test_status_returns_prodice_info() -> Any:
+    r = requests.get('https://production.qmoi.ai:3000/api/qcity/status')
     assert r.status_code == 200
     data = r.json()
     assert 'prodices' in data and 'offloading' in data 

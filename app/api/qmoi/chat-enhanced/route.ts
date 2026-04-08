@@ -3,16 +3,19 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import QMOIUserSystem from "@/lib/qmoi-user-system";
-import QMOIEnhancedIntelligence from "@/lib/qmoi-enhanced-intelligence";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-user-system";
+import { specificExports } from "@/lib/qmoi-enhanced-intelligence";
 
 /**
  * Enhanced QMOI Chat Endpoint with User Identification
  * Routes messages through user-aware response system
  */
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   try {
     const body = await req.json();
     const {
@@ -201,7 +204,10 @@ export async function POST(req: NextRequest) {
 /**
  * GET endpoint for user profile information
  */
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   try {
     const userId = req.nextUrl.searchParams.get("userId") || "guest";
     const profile = QMOIUserSystem.getUserProfile(userId);

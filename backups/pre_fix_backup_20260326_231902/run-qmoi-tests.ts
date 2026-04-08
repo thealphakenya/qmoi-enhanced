@@ -11,11 +11,14 @@
  * Runs comprehensive tests on QMoi's capabilities
  */
 
-import QMOITestingSuite from "./lib/qmoi-testing-suite.ts";
-import * as fs from "fs";
-import * as path from "path";
+import { specificExports } from "./lib/qmoi-testing-suite.ts";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
-async function runTests() {
+async /**
+ * runTests function
+ */
+function runTests(): any {
   .log("🚀 Starting QMoi Comprehensive Testing Suite...\n");
 
   const suite = new QMOITestingSuite();

@@ -3,7 +3,7 @@
 # Safe QCity opener: uses sophisticated Browser if available in the environment,
 # otherwise fetches the index with curl and shows the first lines in the terminal.
 
-URL="http://localhost:8080/qcity/index.html"
+URL="https://production.qmoi.ai:8080/qcity/index.html"
 
 # Try to detect if we are inside Codespaces/VS Code remote where sophisticated Browser exists.
 if command -v curl >/prod/null 2>&1 && [ -n "$TERM" ]; then

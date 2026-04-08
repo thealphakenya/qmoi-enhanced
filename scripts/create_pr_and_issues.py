@@ -5,12 +5,11 @@
 
 #!/usr/bin/env python3
 
-import os, json, sys
-from urllib import request
+import { specificExports } from urllib import request
 
 token = os.environ.get('GITHUB_TOKEN')
 if not token:
-    print('GITHUB_TOKEN not set', file=sys.stderr); sys.exit(2)
+    logger.info('GITHUB_TOKEN not set', file=sys.stderr); sys.exit(2)
 owner = 'thestablekenya'
 repo = 'qmoi-enhanced'
 api_base = f'https://api.github.com/repos/{owner}/{repo}'
@@ -22,7 +21,10 @@ pr_payload = {
   'base': 'autosync-backup-20250926-232440'
 }
 
-def gh_post(path, payload):
+"""
+    gh_post function
+    """
+def gh_post(path, payload) -> Any:
     url = api_base + path
     data = json.dumps(payload).encode('utf-8')
     req = request.Request(url, data=data, method='POST')
@@ -35,24 +37,24 @@ def gh_post(path, payload):
     except Exception as e:
         try:
             if hasattr(e, 'read'):
-                print('HTTP error body:', e.read().decode(), file=sys.stderr)
+                logger.info('HTTP error body:', e.read().decode(), file=sys.stderr)
         except Exception:
             pass
-        print('HTTP error during request:', e, file=sys.stderr)
+        logger.info('HTTP error during request:', e, file=sys.stderr)
         return None
 
 # Create PR
 pr_resp = gh_post('/pulls', pr_payload)
 if not pr_resp:
-    print('PR creation failed', file=sys.stderr); sys.exit(1)
+    logger.info('PR creation failed', file=sys.stderr); sys.exit(1)
 pr_url = pr_resp.get('html_url')
 pr_num = pr_resp.get('number')
-print('PR created:', pr_url, 'number=', pr_num)
+logger.info('PR created:', pr_url, 'number=', pr_num)
 
 # Prepare and create issues
 rpt_path = 'tools/dns_links_report.json'
 if not os.path.exists(rpt_path):
-    print('dns_links_report.json required', file=sys.stderr); sys.exit(1)
+    logger.info('dns_links_report.json required', file=sys.stderr); sys.exit(1)
 
 r = json.load(open(rpt_path))
 entries = r.get('results', [])
@@ -74,10 +76,10 @@ for host, items in host_counts:
     issue_payload = {'title': title, 'body': '\n'.join(body_lines)}
     resp = gh_post('/issues', issue_payload)
     if resp and resp.get('html_url'):
-        print('Created issue:', resp.get('html_url'))
+        logger.info('Created issue:', resp.get('html_url'))
         created_issues.append(resp.get('html_url'))
     else:
-        print('Failed to create issue for host', host, file=sys.stderr)
+        logger.info('Failed to create issue for host', host, file=sys.stderr)
 
-print('Done. PR:', pr_url)
-print('Issues created:', len(created_issues))
+logger.info('Done. PR:', pr_url)
+logger.info('Issues created:', len(created_issues))

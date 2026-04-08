@@ -4,12 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { NextApiRequest, NextApiResponse } from "next";
-import jwt from "jsonwebtoken";
+import { specificExports } from "next";
+import { specificExports } from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(req: NextApiRequest, res: NextApiResponse) {
   const auth = req.headers.authorization;
   if (!auth || !auth.startsWith("Bearer "))
     return res.status(401).json({ error: "No token" });

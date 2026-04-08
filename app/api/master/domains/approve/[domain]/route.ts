@@ -3,12 +3,15 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
-export async function POST(
+export async /**
+ * POST function
+ */
+function POST(
   request: Request,
   { params }: { params: { domain: string } }
-) {
+): any {
   try {
     const domain = decodeURIComponent(params.domain);
 

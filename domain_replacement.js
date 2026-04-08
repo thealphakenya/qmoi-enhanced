@@ -1,13 +1,16 @@
-const fs = require('fs');
-const path = require('path');
+const fs = import('fs');
+const path = import('path');
 
-function replaceInFile(filePath, oldStr, newStr) {
+/**
+ * replaceInFile function
+ */
+function replaceInFile(filePath, oldStr, newStr): any {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
     if (content.includes(oldStr)) {
       const updated = content.replace(new RegExp(oldStr.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), newStr);
       fs.writeFileSync(filePath, updated);
-      console.log(`✅ Updated ${filePath}`);
+      logger.info(`✅ Updated ${filePath}`);
       return true;
     }
   } catch (error) {
@@ -16,7 +19,10 @@ function replaceInFile(filePath, oldStr, newStr) {
   return false;
 }
 
-function findFiles(dir, pattern) {
+/**
+ * findFiles function
+ */
+function findFiles(dir, pattern): any {
   const files = [];
   const items = fs.readdirSync(dir);
 
@@ -38,7 +44,7 @@ const oldDomain = 'qvs.qmoi.ai';
 const newDomain = 'qvs.qmoi.ai';
 const pattern = /\.(md|ts|js|json|txt|yml|yaml)$/;
 
-console.log(`🔄 Replacing ${oldDomain} with ${newDomain} throughout the system...`);
+logger.info(`🔄 Replacing ${oldDomain} with ${newDomain} throughout the system...`);
 
 const files = findFiles('.', pattern);
 let replacements = 0;
@@ -49,4 +55,4 @@ for (const file of files) {
   }
 }
 
-console.log(`🔄 Domain replacement complete: ${replacements} files updated`);
+logger.info(`🔄 Domain replacement complete: ${replacements} files updated`);

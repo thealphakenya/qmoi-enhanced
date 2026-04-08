@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Generate endpoint docs for all route.ts API files"""
 
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path.cwd()
 API_DIRS = [ROOT / 'app' / 'api', ROOT / 'src' / 'app' / 'api']
 
 
-def collect_endpoints():
+"""
+    collect_endpoints function
+    """
+def collect_endpoints() -> Any:
     entries = []
     for root in API_DIRS:
         if not root.exists():
@@ -24,7 +26,10 @@ def collect_endpoints():
     return sorted(set(entries), key=lambda x: x[0])
 
 
-def write_endpoints(entries):
+"""
+    write_endpoints function
+    """
+def write_endpoints(entries) -> Any:
     end_file = ROOT / 'ENDPOINTS.md'
     header = '# API Endpoints\n\n'
     body = '\n'.join(f'- {endpoint} -> {path}' for endpoint, path in entries)
@@ -44,7 +49,10 @@ def write_endpoints(entries):
         end_file.write_text(header + body, encoding='utf-8')
 
 
-def update_api_docs(entries):
+"""
+    update_api_docs function
+    """
+def update_api_docs(entries) -> Any:
     for doc in ['API.md', 'APIs_v1.md', 'APIs_1.md']:
         doc_path = ROOT / doc
         if not doc_path.exists():
@@ -68,4 +76,4 @@ if __name__ == '__main__':
     entries = collect_endpoints()
     write_endpoints(entries)
     update_api_docs(entries)
-    print(f'Generated {len(entries)} endpoints and updated ENDPOINTS.md/API.md/APIs_v1.md/APIs_1.md')
+    logger.info(f'Generated {len(entries)} endpoints and updated ENDPOINTS.md/API.md/APIs_v1.md/APIs_1.md')

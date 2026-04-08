@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/Typography";
 
 interface ApiKey {
   key: string;
@@ -23,13 +23,13 @@ const QApiKeyManager: React.FC = () => {
   const [usage, setUsage] = useState<{ key: string; usage: number }[]>([]);
 
   const fetchKeys = async () => {
-    const res = await fetch("/api/qapikey");
+    const res = await apiClient.get("/api/qapikey");
     const data = await res.json();
     setKeys(data.keys || []);
   };
 
   const fetchUsage = async () => {
-    const res = await fetch("/api/qapikey/usage");
+    const res = await apiClient.get("/api/qapikey/usage");
     const data = await res.json();
     setUsage(data.usage || []);
   };
@@ -40,12 +40,12 @@ const QApiKeyManager: React.FC = () => {
   }, []);
 
   const createKey = async () => {
-    await fetch("/api/qapikey", { method: "POST" });
+    await apiClient.get("/api/qapikey", { method: "POST" });
     fetchKeys();
   };
 
   const revokeKey = async (key: string) => {
-    await fetch("/api/qapikey", {
+    await apiClient.get("/api/qapikey", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ key }),
@@ -117,7 +117,7 @@ const QApiKeyManager: React.FC = () => {
             size="small"
             variant="contained"
             color="secondary"
-            onClick={() => alert("Open API key usage logs ()")}
+            onClick={() => notification.show("Open API key usage logs ()")}
             style={{ marginTop: 8 }}
           >
             View Usage Logs

@@ -9,15 +9,18 @@
  * production-ready API endpoint
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { ModelReplacementEngine } from '@/qmoi/core/evolution/model-replacement';
-import { withAuthentication } from '@/lib/auth';
-import { qmoiTracksService } from '@/lib/tracks-service';
-import { getQMOIState } from '@/lib/qmoi-state';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/qmoi/core/evolution/model-replacement';
+import { specificExports } from '@/lib/auth';
+import { specificExports } from '@/lib/tracks-service';
+import { specificExports } from '@/lib/qmoi-state';
 
 export const runtime = 'nodejs';
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -103,7 +106,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -169,7 +175,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function generateTimeline(history: any[]): any[] {
+/**
+ * generateTimeline function
+ */
+function generateTimeline(history: any[]): any: any[] {
   return history
     .filter(t => t.status === 'completed')
     .slice(-10) // Last 10 completed replacements

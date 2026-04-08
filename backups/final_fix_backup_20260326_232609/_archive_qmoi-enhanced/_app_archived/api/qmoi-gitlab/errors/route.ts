@@ -3,11 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const logsDir = path.join(process.cwd(), "logs");
     const errorLogFile = path.join(logsDir, "qmoi_gitlab_error.log");

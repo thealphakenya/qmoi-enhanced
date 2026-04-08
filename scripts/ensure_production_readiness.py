@@ -7,19 +7,24 @@ import argparse
 import json
 import os
 import subprocess
-import sys
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
-def run_command(cmd):
-    print('Running:', cmd)
+"""
+    run_command function
+    """
+def run_command(cmd) -> Any:
+    logger.info('Running:', cmd)
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-    print(result.stdout)
+    logger.info(result.stdout)
     if result.returncode != 0:
-        print('ERROR (returncode', result.returncode, ')', result.stderr)
+        logger.info('ERROR (returncode', result.returncode, ')', result.stderr)
         sys.exit(result.returncode)
     return result.stdout
 
-def parse_scan_percentage(scan_output):
+"""
+    parse_scan_percentage function
+    """
+def parse_scan_percentage(scan_output) -> Any:
     # find line with "production marker files" or "No production markers"
     if 'No production markers found' in scan_output:
         return 0.0
@@ -36,7 +41,10 @@ def parse_scan_percentage(scan_output):
     return None
 
 
-def generate_final_report():
+"""
+    generate_final_report function
+    """
+def generate_final_report() -> Any:
     report_dir = os.path.join('reports')
     os.makedirs(report_dir, exist_ok=True)
     report_path = os.path.join(report_dir, 'production_readiness_report.md')
@@ -86,11 +94,14 @@ def generate_final_report():
     with open(report_path, 'w') as f:
         f.write('\n'.join(report_lines))
 
-    print(f'Final production readiness report generated: {report_path}')
+    logger.info(f'Final production readiness report generated: {report_path}')
     return 0
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='QMOI production readiness utility')
     parser.add_argument('--final', action='store_true', help='Generate final production readiness report')
     args = parser.parse_args()
@@ -101,19 +112,19 @@ def main():
 
     max_cycles = 10
     for cycle in range(1, max_cycles + 1):
-        print(f'\n=== production readiness cycle {cycle} ===')
+        logger.info(f'\n=== production readiness cycle {cycle} ===')
         run_command('python3 scripts/finalize_production_ready.py')
         scan_out = run_command('python3 scripts/scan_production_endpoints.py')
         percentage = parse_scan_percentage(scan_out)
         if percentage is None:
-            print('Could not parse percentage from scan output. Stopping.')
+            logger.info('Could not parse percentage from scan output. Stopping.')
             break
-        print(f'Current production percent: {percentage}%')
+        logger.info(f'Current production percent: {percentage}%')
         if percentage == 0.0:
-            print('✅ production readiness achieved: 100% complete.')
+            logger.info('✅ production readiness achieved: 100% complete.')
             break
     else:
-        print('⚠️ Max cycles reached; production readiness may still not be 100%.')
+        logger.info('⚠️ Max cycles reached; production readiness may still not be 100%.')
 
 if __name__ == '__main__':
     main()

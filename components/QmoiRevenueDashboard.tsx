@@ -6,15 +6,15 @@
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
 import {
   TrendingUp,
   DollarSign,
@@ -35,7 +35,7 @@ import {
   FileText,
   Settings,
 } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { specificExports } from "@/components/ui/scroll-area";
 
 interface RevenueStream {
   id: string;
@@ -84,7 +84,7 @@ const QmoiRevenueDashboard: React.FC = () => {
 
   const fetchRevenueStatus = async () => {
     try {
-      const response = await fetch("/api/qmoi/revenue?action=status", {
+      const response = await apiClient.get("/api/qmoi/revenue?action=status", {
         headers: {
           "x-qmoi-master": "true",
         },
@@ -104,7 +104,7 @@ const QmoiRevenueDashboard: React.FC = () => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await fetch(
+      const response = await apiClient.get(
         "/api/qmoi/revenue?action=transactions&limit=100",
         {
           headers: {
@@ -128,7 +128,7 @@ const QmoiRevenueDashboard: React.FC = () => {
   const handleRevenueAction = async (action: string) => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/qmoi/revenue", {
+      const response = await apiClient.get("/api/qmoi/revenue", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

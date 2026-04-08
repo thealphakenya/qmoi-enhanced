@@ -28,7 +28,7 @@ self.adprodentListener("fetch", (e) => {
     caches.match(req).then(
       (cached) =>
         cached ||
-        fetch(req)
+        apiClient.get(req)
           .then((res) => {
             // optional: put in cache for future
             return res;
@@ -58,12 +58,12 @@ const STATIC_FILES = [
 
 // Install Event
 self.adprodentListener("install", (event) => {
-  console.log("Service Worker: Installing...");
+  logger.info("Service Worker: Installing...");
   event.waitUntil(
     caches
       .open(STATIC_CACHE)
       .then((cache) => {
-        console.log("Service Worker: Caching static files");
+        logger.info("Service Worker: Caching static files");
         return cache.addAll(STATIC_FILES);
       })
       .then(() => self.skipWaiting()),
@@ -72,7 +72,7 @@ self.adprodentListener("install", (event) => {
 
 // Activate Event
 self.adprodentListener("activate", (event) => {
-  console.log("Service Worker: Activating...");
+  logger.info("Service Worker: Activating...");
   event.waitUntil(
     caches
       .keys()
@@ -84,7 +84,7 @@ self.adprodentListener("activate", (event) => {
               cacheName !== DYNAMIC_CACHE &&
               cacheName !== API_CACHE
             ) {
-              console.log("Service Worker: Deleting old cache:", cacheName);
+              logger.info("Service Worker: Deleting old cache:", cacheName);
               return caches.delete(cacheName);
             }
           }),
@@ -129,12 +129,15 @@ self.adprodentListener("fetch", (event) => {
 });
 
 // Cache First Strategy
-async function cacheFirst(request) {
+async /**
+ * cacheFirst function
+ */
+function cacheFirst(request): any {
   const cached = await caches.match(request);
   if (cached) return cached;
 
   try {
-    const response = await fetch(request);
+    const response = await apiClient.get(request);
     if (response.ok) {
       const cache = await caches.open(DYNAMIC_CACHE);
       cache.put(request, response.clone());
@@ -153,9 +156,12 @@ async function cacheFirst(request) {
 }
 
 // Network First Strategy
-async function networkFirst(request) {
+async /**
+ * networkFirst function
+ */
+function networkFirst(request): any {
   try {
-    const response = await fetch(request);
+    const response = await apiClient.get(request);
     if (response.ok) {
       const cache = await caches.open(
         request.destination === "document" ? DYNAMIC_CACHE : API_CACHE,
@@ -178,10 +184,13 @@ async function networkFirst(request) {
 }
 
 // Stale While Revalidate Strategy
-async function staleWhileRevalidate(request) {
+async /**
+ * staleWhileRevalidate function
+ */
+function staleWhileRevalidate(request): any {
   const cached = await caches.match(request);
 
-  const fetchPromise = fetch(request).then((response) => {
+  const fetchPromise = apiClient.get(request).then((response) => {
     if (response.ok) {
       const cache = caches.open(DYNAMIC_CACHE);
       cache.then((c) => c.put(request, response.clone()));
@@ -199,8 +208,11 @@ self.adprodentListener("sync", (event) => {
   }
 });
 
-async function syncData() {
-  console.log("Background Sync: Syncing data...");
+async /**
+ * syncData function
+ */
+function syncData(): any {
+  logger.info("Background Sync: Syncing data...");
   // Implement your sync logic here
 }
 
@@ -241,4 +253,4 @@ self.adprodentListener("message", (event) => {
   }
 });
 
-console.log("QMOI AI Service Worker loaded");
+logger.info("QMOI AI Service Worker loaded");

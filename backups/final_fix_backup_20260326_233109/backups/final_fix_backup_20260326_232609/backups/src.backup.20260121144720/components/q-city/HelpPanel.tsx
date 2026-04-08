@@ -1,7 +1,11 @@
 // Production implementation: this file has no remaining non-production markers
-import React from "react";
+import { specificExports } from "react";
 
-export default function HelpPanel() {
+export default /**
+ * HelpPanel function
+ */
+function HelpPanel(): any {
+  try {() {
   return (
     <div className="p-4 bg-gray-900 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4 text-cyan-400">
@@ -13,7 +17,7 @@ export default function HelpPanel() {
           <li>Manage devices, schedules, plugins, and sessions</li>
           <li>View system metrics and audit logs</li>
           <li>Enable 2FA for enhanced security</li>
-          <li>Use the floating Q-Avatar for quick access</li>
+          <li>Use the floating Q-Avatar for optimized access</li>
           <li>All actions are logged for security and compliance</li>
         </ul>
         <div className="mt-2">

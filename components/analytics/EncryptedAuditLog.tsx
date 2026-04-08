@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState } from "react";
-import CryptoJS from "crypto-js";
+import { specificExports } from "react";
+import { specificExports } from "crypto-js";
 
 export const EncryptedAuditLog: React.FC<{ logs: string[] }> = ({ logs }) => {
   const [key, setKey] = useState("");

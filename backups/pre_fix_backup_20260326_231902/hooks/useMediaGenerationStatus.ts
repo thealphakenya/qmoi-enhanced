@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 export interface MediaStatus {
   status: "idle" | "generating" | "completed" | "error";
@@ -25,7 +25,10 @@ export interface MediaStatus {
   };
 }
 
-export function useMediaGenerationStatus() {
+export /**
+ * useMediaGenerationStatus function
+ */
+function useMediaGenerationStatus(): any {
   const [status, setStatus] = useState<MediaStatus>({
     status: "idle",
     settings: {
@@ -42,7 +45,7 @@ export function useMediaGenerationStatus() {
   ) => {
     try {
       const adminToken = localStorage.getItem("adminToken") || "";
-      const response = await fetch("/api/media/generate", {
+      const response = await apiClient.get("/api/media/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +55,7 @@ export function useMediaGenerationStatus() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to generate media");
+        throw new ProductionError("Failed to generate media");
       }
 
       const data = await response.json();
@@ -83,7 +86,7 @@ export function useMediaGenerationStatus() {
   ) => {
     try {
       const adminToken = localStorage.getItem("adminToken") || "";
-      const response = await fetch("/api/media/settings", {
+      const response = await apiClient.get("/api/media/settings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +96,7 @@ export function useMediaGenerationStatus() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to update settings");
+        throw new ProductionError("Failed to update settings");
       }
 
       const data = await response.json();
@@ -114,7 +117,7 @@ export function useMediaGenerationStatus() {
   const cancelTask = async (taskId: string) => {
     try {
       const adminToken = localStorage.getItem("adminToken") || "";
-      const response = await fetch(`/api/media/cancel/${taskId}`, {
+      const response = await apiClient.get(`/api/media/cancel/${taskId}`, {
         method: "POST",
         headers: {
           "x-admin-token": adminToken,
@@ -122,7 +125,7 @@ export function useMediaGenerationStatus() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to cancel task");
+        throw new ProductionError("Failed to cancel task");
       }
 
       setStatus((prev) => ({
@@ -138,15 +141,18 @@ export function useMediaGenerationStatus() {
   };
 
   useEffect(() => {
-    async function fetchStatus() {
+    async /**
+ * fetchStatus function
+ */
+function fetchStatus(): any {
       try {
         const adminToken = localStorage.getItem("adminToken") || "";
-        const response = await fetch("/api/media/status", {
+        const response = await apiClient.get("/api/media/status", {
           headers: { "x-admin-token": adminToken },
         });
 
         if (!response.ok) {
-          throw new Error("Failed to fetch media status");
+          throw new ProductionError("Failed to fetch media status");
         }
 
         const data = await response.json();

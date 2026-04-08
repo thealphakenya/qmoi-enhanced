@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, useEffect, useRef } from "react";
-import { useMaster } from "./MasterContext";
+import { specificExports } from "react";
+import { specificExports } from "./MasterContext";
 import {
   FaPhone,
   FaPhoneSlash,

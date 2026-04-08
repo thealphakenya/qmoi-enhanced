@@ -5,11 +5,14 @@
 
 // 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React from "react";
-import { useProjects } from "../../hooks/useProjects";
-import { Project } from "../../types/projects";
+import { specificExports } from "react";
+import { specificExports } from "../../hooks/useProjects";
+import { specificExports } from "../../types/projects";
 
-export function ProjectList() {
+export /**
+ * ProjectList function
+ */
+function ProjectList(): any {
   const { projects, error } = useProjects();
 
   if (error) {
@@ -36,7 +39,10 @@ interface ProjectCardProps {
   project: Project;
 }
 
-function ProjectCard({ project }: ProjectCardProps) {
+/**
+ * ProjectCard function
+ */
+function ProjectCard({ project }: ProjectCardProps): any {
   const statusColors = {
     planning: "bg-blue-100 text-blue-800",
     "in-progress": "bg-yellow-100 text-yellow-800",

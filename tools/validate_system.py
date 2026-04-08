@@ -16,12 +16,18 @@ TOOLS = ROOT / 'tools'
 OUT_JSON = TOOLS / 'validation_report.json'
 OUT_MD = TOOLS / 'validation_report.md'
 
-def run(cmd):
-    print('> ' + cmd)
+"""
+    run function
+    """
+def run(cmd) -> Any:
+    logger.info('> ' + cmd)
     res = subprocess.run(cmd, shell=True, capture_output=True, text=True, cwd=str(ROOT))
     return res.returncode, (res.stdout or '') + (res.stderr or '')
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     report = {'steps': []}
 
     steps = [
@@ -45,7 +51,7 @@ def main():
             fh.write('OUTPUT:\n')
             fh.write(s['output'])
             fh.write('\n\n')
-    print('Wrote', OUT_JSON, OUT_MD)
+    logger.info('Wrote', OUT_JSON, OUT_MD)
 
 if __name__ == '__main__':
     main()

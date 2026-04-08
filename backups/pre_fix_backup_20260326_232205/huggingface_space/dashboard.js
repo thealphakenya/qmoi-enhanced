@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 import {
   ChakraProvider,
   Box,
@@ -15,7 +15,10 @@ import {
   Code,
 } from "@chakra-ui/react";
 
-function Dashboard() {
+/**
+ * Dashboard function
+ */
+function Dashboard(): any {
   const [health, setHealth] = useState("unknown");
   const [logs, setLogs] = useState("");
   const [provider, setProvider] = useState("");
@@ -23,20 +26,20 @@ function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/health");
+        const res = await apiClient.get("/health");
         const data = await res.json();
         setHealth(data.status);
       } catch (e) {
         setHealth("offline");
       }
       try {
-        const logRes = await fetch("/logs/qmoispace_health.log");
+        const logRes = await apiClient.get("/logs/qmoispace_health.log");
         setLogs(await logRes.text());
       } catch (e) {
         setLogs("No logs");
       }
       try {
-        const provRes = await fetch("/api/provider");
+        const provRes = await apiClient.get("/api/provider");
         const provData = await provRes.json();
         setProvider(provData.name);
       } catch (e) {

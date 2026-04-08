@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { exec } from "child_process";
-import { promisify } from "util";
-import { logger } from "../utils/logger";
-import { NotificationService } from "./notification_service";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "../utils/logger";
+import { specificExports } from "./notification_service";
 
 const execAsync = promisify(exec);
 const notificationService = new NotificationService();
@@ -187,7 +187,7 @@ class UnifiedCICDService {
   async monitorDeployment(url: string) {
     try {
       logger.info(`[CI/CD] Monitoring deployment at ${url}...`);
-      const res = await fetch(url);
+      const res = await apiClient.get(url);
       if (res.ok) {
         logger.info("[CI/CD] Deployment healthy.");
         return { success: true, message: "Deployment healthy." };

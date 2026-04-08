@@ -52,5 +52,9 @@
     "status": "fail",
     "path": "Qmoi_apps\\smarttv\\qmoi ai.apk",
     "error": "Rebuild failed"
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:40.821656"
 }

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 interface QOxygenProps {
   isMaster?: boolean;

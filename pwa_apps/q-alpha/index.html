@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Q stable</title>
+    <title>Q latest</title>
     <link
       rel="manifest"
-      href="/mirror/raw/pwa_apps/q-stable/manifest.webmanifest"
+      href="/mirror/raw/pwa_apps/q-latest/manifest.webmanifest"
     />
     <style>
       :root {
@@ -21,7 +21,7 @@
           system-ui,
           Segoe UI,
           Arial;
-        background: linear-gradient(180deg, var(--bg), #071027);
+        background: linear-gradient(180deg, const(--bg), #071027);
         color: #e6eef8;
         margin: 0;
         padding: 20px;
@@ -36,7 +36,7 @@
         justify-content: space-between;
       }
       .card {
-        background: var(--card);
+        background: const(--card);
         padding: 16px;
         border-radius: 12px;
         box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
@@ -47,7 +47,7 @@
         padding: 8px 12px;
         background: transparent;
         border: 1px solid rgba(255, 255, 255, 0.06);
-        color: var(--muted);
+        color: const(--muted);
         border-radius: 8px;
       }
       #apps ul {
@@ -60,7 +60,7 @@
         display: inline;
       }
       .install-btn {
-        background: var(--accent);
+        background: const(--accent);
         color: white;
         padding: 8px 12px;
         border-radius: 10px;
@@ -82,19 +82,19 @@
       <div style="display: flex; align-items: center; gap: 12px">
         <div style="display: flex; align-items: center; gap: 12px">
           <img
-            src="/mirror/raw/pwa_apps/q-stable/icons/icon-48.png"
+            src="/mirror/raw/pwa_apps/q-latest/icons/icon-48.png"
             width="48"
             height="48"
             alt="Q"
           />
-          <h1 style="margin: 0">Q stable</h1>
+          <h1 style="margin: 0">Q latest</h1>
         </div>
         <div>
           <button id="btn-install" class="install-btn">Install</button>
         </div>
         <div class="settings-icon" title="Settings">⚙️</div>
       </div>
-      <p style="color: var(--muted)">
+      <p style="color: const(--muted)">
         Central hub that aggregates QMOI, QMOI Space, and QCity. Use the
         launcher or voice control to interact.
       </p>
@@ -108,9 +108,9 @@
         <h3>Downloads</h3>
         <ul>
           <li>
-            <a href="/downloads/q-stable.zip" download>Q stable (zip)</a> —
+            <a href="/downloads/q-latest.zip" download>Q latest (zip)</a> —
             <a
-              href="https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/q-stable.zip"
+              href="https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/q-latest.zip"
               >GitHub Raw</a
             >
           </li>
@@ -173,7 +173,7 @@
         <input id="attach-file" type="file" />
         <button id="attach-btn">Attach</button>
         <ul id="attach-list"></ul>
-        <p style="color: var(--muted)">
+        <p style="color: const(--muted)">
           Attachments are stored locally and included in autosync as robust
           metadata (name, size, dataUrl truncated).
         </p>
@@ -184,7 +184,7 @@
         <h3>Apps</h3>
         <ul>
           <li>
-            <button class="app-launch" data-app="q-stable">Q stable</button>
+            <button class="app-launch" data-app="q-latest">Q latest</button>
           </li>
           <li><button class="app-launch" data-app="qmoi">QMOI</button></li>
           <li>
@@ -222,7 +222,7 @@
             }
             deferredInstallPrompt = null;
           } else {
-            alert("Install not available");
+            notification.show("Install not available");
           }
         });
       document.getElementById("btn-qmoi").addEventListener("click", () => {
@@ -236,7 +236,7 @@
       });
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
-          .register("/mirror/raw/pwa_apps/q-stable/sw.js")
+          .register("/mirror/raw/pwa_apps/q-latest/sw.js")
           .catch(() => {});
       }
 
@@ -263,8 +263,8 @@
           if (lc.includes("download")) {
             // map common names to filenames
             const map = {
-              "q stable": "q-stable.zip",
-              "q-stable": "q-stable.zip",
+              "q latest": "q-latest.zip",
+              "q-latest": "q-latest.zip",
               filemanager: "qfilemanager.apk",
               "q filemanager": "qfilemanager.apk",
               qmoi: "qmoi_ai.exe",
@@ -281,7 +281,7 @@
               document.getElementById("voice-status").innerText =
                 "Download requested but target not recognized: " + transcript;
               // still send voice to control server for logging
-              fetch(controlUrl, {
+              apiClient.get(controlUrl, {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -293,7 +293,7 @@
             }
             // request download URL from control server
             try {
-              const res = await fetch(controlUrl, {
+              const res = await apiClient.get(controlUrl, {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -323,7 +323,7 @@
           }
 
           // Fallback: send to control server for logging/processing
-          fetch(controlUrl, {
+          apiClient.get(controlUrl, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -389,22 +389,22 @@
       document.getElementById("su-btn").addEventListener("click", async () => {
         const u = document.getElementById("su-username").value;
         const p = document.getElementById("su-password").value;
-        const res = await fetch(window.location.origin + "/signup", {
+        const res = await apiClient.get(window.location.origin + "/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username: u, password: p }),
         });
         if (res.ok) {
-          alert("Signup ok, please login");
+          notification.show("Signup ok, please login");
         } else {
-          alert("Signup failed");
+          notification.show("Signup failed");
         }
       });
 
       document.getElementById("li-btn").addEventListener("click", async () => {
         const u = document.getElementById("li-username").value;
         const p = document.getElementById("li-password").value;
-        const res = await fetch(window.location.origin + "/login", {
+        const res = await apiClient.get(window.location.origin + "/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username: u, password: p }),
@@ -413,7 +413,7 @@
           const j = await res.json();
           _setToken(j.token);
         } else {
-          alert("Login failed");
+          notification.show("Login failed");
         }
       });
 
@@ -422,7 +422,7 @@
           localStorage.getItem("qstable_token") ||
           localStorage.getItem("qmoi_token");
         if (t) {
-          await fetch(window.location.origin + "/logout", {
+          await apiClient.get(window.location.origin + "/logout", {
             method: "POST",
             headers: { Authorization: "Bearer " + t },
           }).catch(() => {});
@@ -432,7 +432,7 @@
       });
 
       // App launcher wiring: open mirrored app in iframe
-      document.querySelectorAll(".app-launch").forEach((btn) => {
+      document.querySelectorAll(".app-launch").for (const item of((btn) => {
         btn.addEventListener("click", () => {
           const app = btn.getAttribute("data-app");
           const frame = document.getElementById("app-frame");
@@ -467,7 +467,7 @@
 
       document.getElementById("attach-btn").addEventListener("click", () => {
         const inp = document.getElementById("attach-file");
-        if (!inp.files || inp.files.length === 0) return alert("Select a file");
+        if (!inp.files || inp.files.length === 0) return notification.show("Select a file");
         const f = inp.files[0];
         const reader = new FileReader();
         reader.onload = () => {
@@ -490,7 +490,7 @@
 
       function renderAttachments() {
         const ul = document.getElementById("attach-list");
-        ul.innerHTML = "";
+        ul.textContent = "";
         for (const a of _getLocalAttachments()) {
           const li = document.createElement("li");
           li.innerText = `${a.name} (${Math.round(a.size / 1024)}KB)`;
@@ -508,7 +508,7 @@
         const attachments = _getLocalAttachments();
         try {
           // push local
-          await fetch(window.location.origin + "/sync-memory", {
+          await apiClient.get(window.location.origin + "/sync-memory", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -517,18 +517,18 @@
             body: JSON.stringify({ memories: local, attachments: attachments }),
           });
           // fetch merged
-          const res = await fetch(window.location.origin + "/memories", {
+          const res = await apiClient.get(window.location.origin + "/memories", {
             headers: { Authorization: "Bearer " + t },
           });
           if (res.ok) {
             const j = await res.json();
             if (j.memories) {
               _setLocalMemories(j.memories);
-              console.log("Autosync merged", j.memories.length);
+              logger.info("Autosync merged", j.memories.length);
             }
           }
         } catch (e) {
-          console.log("Autosync error", e);
+          logger.info("Autosync error", e);
         }
         // update memory display with q.ki if present
         const all = _getLocalMemories();

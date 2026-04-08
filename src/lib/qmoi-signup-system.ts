@@ -17,7 +17,7 @@ export interface VerificationResult {
 }
 
 export class QMOISignupSystem {
-  private pendingVerifications: Map<string, SignupData> = new Map();
+  private pendingVerifications: Map<string, SignupData> = new Map() // Production: Consider object for small datasets();
 
   async initiateSignup(data: SignupData): Promise<string> {
     const verificationToken = `verify_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -45,7 +45,7 @@ export class QMOISignupSystem {
 
   async resendVerification(email: string): Promise<boolean> {
     // Simulate email sending
-    console.log(`Resending verification email to ${email}`);
+    logger.info(`Resending verification email to ${email}`);
     return true;
   }
 }

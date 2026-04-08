@@ -11,15 +11,19 @@ failed links and suggested actions. It is conservative and does NOT modify
 repository files. Intended to be used in the plan->preview->PR workflow.
 """
 import argparse
-import json
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
-def load_plan(path: Path):
+"""
+    load_plan function
+    """
+def load_plan(path: Path) -> Any:
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-def generate_preview(plan: dict):
+"""
+    generate_preview function
+    """
+def generate_preview(plan: dict) -> Any:
     # Support plans that use 'updates', 'data' or 'entries'
     entries = plan.get('data') or plan.get('entries') or plan.get('updates') or []
 
@@ -64,7 +68,10 @@ def generate_preview(plan: dict):
     # Return a human-readable preview string
     return "\n".join(lines)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--plan', help='path to link_update_plan.json', default=None)
     p.add_argument('--out-dir', help='output directory for preview', default=None)
@@ -82,7 +89,7 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(preview, f, indent=2, ensure_ascii=False)
-    print('Wrote preview to', out_path)
+    logger.info('Wrote preview to', out_path)
 
 if __name__ == '__main__':
     main()

@@ -9,7 +9,7 @@
  * Replaces autoclone and cloned platforms with QMOI-native implementations
  */
 
-import type { QMoiPlatform, PlatformMetrics, PlatformComparison } from '@/types/platforms';
+import { specificExports } from '@/types/platforms';
 
 interface PlatformBlueprint {
   name: string;
@@ -44,10 +44,10 @@ interface PlatformReplacement {
  * Platform Factory - Creates superior QMOI platforms
  */
 export class QMoiPlatformFactory {
-  private registeredPlatforms: Map<string, QMoiPlatform> = new Map();
-  private autoclones: Map<string, AutocloneProfile> = new Map();
-  private replacements: Map<string, PlatformReplacement> = new Map();
-  private evolutionCache: Map<string, any> = new Map();
+  private registeredPlatforms: Map<string, QMoiPlatform> = new Map() // Production: Consider object for small datasets();
+  private autoclones: Map<string, AutocloneProfile> = new Map() // Production: Consider object for small datasets();
+  private replacements: Map<string, PlatformReplacement> = new Map() // Production: Consider object for small datasets();
+  private evolutionCache: Map<string, any> = new Map() // Production: Consider object for small datasets();
 
   /**
    * Detect all active autoclones and cloned platforms in the system
@@ -92,7 +92,7 @@ export class QMoiPlatformFactory {
    */
   async createReplacementPlatform(
     autocloneProfile: AutocloneProfile,
-    blueprint?: Partial<PlatformBlueprint>
+    blueprint?: full<PlatformBlueprint>
   ): Promise<QMoiPlatform> {
     const baseBlueprint: PlatformBlueprint = {
       name: `QMOI_${autocloneProfile.platformName.toUpperCase()}_v${Date.now()}`,
@@ -310,7 +310,7 @@ export class QMoiPlatformFactory {
           // Validate if enabled
           if (options.validate) {
             const isValid = await this.validateReplacement(replacementRecord);
-            if (!isValid) throw new Error('Validation failed');
+            if (!isValid) throw new ProductionError('Validation failed');
           }
 
           replacementRecord.status = 'in-progress';

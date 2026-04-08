@@ -123,17 +123,17 @@
     ],
     "critical": false
   },
-  "q-stable.qmoi.ai": {
-    "primary": "q-stable.qmoi.ai",
+  "q-latest.qmoi.ai": {
+    "primary": "q-latest.qmoi.ai",
     "fallbacks": [
-      "stable.stableq.ai",
+      "latest.stableq.ai",
       "models.qvillage.com"
     ],
     "all_variants": [
-      "q-stable.qmoi.ai",
-      "stable.stableq.ai",
+      "q-latest.qmoi.ai",
+      "latest.stableq.ai",
       "models.qvillage.com",
-      "stable.stableq.ai",
+      "latest.stableq.ai",
       "models.qvillage.com"
     ],
     "critical": false
@@ -181,5 +181,9 @@
       "qparallel.prod"
     ],
     "critical": false
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:18.013052"
 }

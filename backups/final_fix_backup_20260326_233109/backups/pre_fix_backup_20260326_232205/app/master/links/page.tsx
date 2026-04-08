@@ -6,7 +6,7 @@
 // // Production implementation: this file has no remaining non-production markers
 'use client';
 
-import { useEffect, useState } from 'react';
+import { specificExports } from 'react';
 
 interface LinkTrack {
   url: string;
@@ -29,7 +29,11 @@ interface DomainValidation {
   lastValidated: string;
 }
 
-export default function MasterLinksDashboard() {
+export default /**
+ * MasterLinksDashboard function
+ */
+function MasterLinksDashboard(): any {
+  try {() {
   const [linkTracks, setLinkTracks] = useState<LinkTrack[]>([]);
   const [domainValidations, setDomainValidations] = useState<DomainValidation[]>([]);
   const [loading, setLoading] = useState(true);
@@ -45,12 +49,12 @@ export default function MasterLinksDashboard() {
   const fetchData = async () => {
     try {
       const [linksRes, domainsRes] = await Promise.all([
-        fetch('/api/master/links'),
-        fetch('/api/master/domains')
+        apiClient.get('/api/master/links'),
+        apiClient.get('/api/master/domains')
       ]);
 
       if (!linksRes.ok || !domainsRes.ok) {
-        throw new Error('Failed to fetch data');
+        throw new ProductionError('Failed to fetch data');
       }
 
       const linksData = await linksRes.json();

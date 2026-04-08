@@ -170,5 +170,9 @@
       "dashboard_refresh": "hourly",
       "alerts": "critical_issues_only"
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:34.581091"
 }

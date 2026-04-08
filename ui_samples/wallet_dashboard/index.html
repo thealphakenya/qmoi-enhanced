@@ -13,17 +13,17 @@
   <script>
     async function loadWallets(){
       try{
-        const r = await fetch('/api/wallets');
+        const r = await apiClient.get('/api/wallets');
         if(!r.ok){ document.getElementById('status').textContent = 'Failed to fetch: '+r.status; return }
         const data = await r.json();
         const tbody = document.getElementById('wallets');
-        tbody.innerHTML = '';
+        tbody.textContent = '';
         for(const [k,v] of Object.entries(data.results || {})){
           const tr = document.createElement('tr');
           const native = v.balance_native ?? 'N/A';
           const native_cur = v.currency_native || v.currency || 'USD';
           const canon = v.balance_canonical ?? 'N/A';
-          tr.innerHTML = `<td>${k}</td><td>${native} ${native_cur}</td><td>${canon} ${v.canonical_currency || ''}</td><td>${v.status||''}</td>`;
+          tr.textContent = `<td>${k}</td><td>${native} ${native_cur}</td><td>${canon} ${v.canonical_currency || ''}</td><td>${v.status||''}</td>`;
           tbody.appendChild(tr);
         }
         document.getElementById('status').textContent = 'Loaded at '+new Date().toLocaleString();

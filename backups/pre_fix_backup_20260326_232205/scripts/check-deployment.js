@@ -5,7 +5,7 @@
 
 // 
 #!/usr/bin/env node
-import https from "https";
+import { specificExports } from "https";
 
 const LINKS = {
   "Primary App": "https://qmoi-enhanced.vercel.app",
@@ -24,14 +24,20 @@ const COLORS = {
   cyan: "\x1b[36m",
 };
 
-function log(color, symbol, label, message = "") {
+/**
+ * log function
+ */
+function log(color, symbol, label, message = ""): any {
   const colorCode = COLORS[color] || "";
-  console.log(
+  logger.info(
     `${colorCode}${symbol} ${label}${COLORS.reset}${message ? ": " + message : ""}`,
   );
 }
 
-function testUrl(url, timeout = 5000) {
+/**
+ * testUrl function
+ */
+function testUrl(url, timeout = 5000): any {
   return new Promise((resolve) => {
     const urlObj = new URL(url);
     const _options = {
@@ -52,18 +58,21 @@ function testUrl(url, timeout = 5000) {
   });
 }
 
-async function checkDeployment() {
-  console.log(
+async /**
+ * checkDeployment function
+ */
+function checkDeployment(): any {
+  logger.info(
     `\n${COLORS.blue}═══════════════════════════════════════════════════════════${COLORS.reset}`,
   );
-  console.log(
+  logger.info(
     `${COLORS.blue}        QMOI ENHANCED - DEPLOYMENT VERIFICATION${COLORS.reset}`,
   );
-  console.log(
+  logger.info(
     `${COLORS.blue}═══════════════════════════════════════════════════════════${COLORS.reset}\n`,
   );
 
-  console.log("🔍 Checking deployment links...\n");
+  logger.info("🔍 Checking deployment links...\n");
   const results = {};
 
   for (const [name, url] of Object.entries(LINKS)) {
@@ -78,35 +87,35 @@ async function checkDeployment() {
     }
   }
 
-  console.log(
+  logger.info(
     `\n${COLORS.blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${COLORS.reset}`,
   );
-  console.log("\n📊 DEPLOYMENT STATUS\n");
+  logger.info("\n📊 DEPLOYMENT STATUS\n");
 
   const appStatus = results["Primary App"];
   if (appStatus === 200) {
     log("green", "✓", "Status", "LIVE AND READY");
-    console.log("\n   Application: https://qmoi-enhanced.vercel.app");
-    console.log(
+    logger.info("\n   Application: https://qmoi-enhanced.vercel.app");
+    logger.info(
       "\n   Test health: curl https://qmoi-enhanced.vercel.app/api/health",
     );
   } else if (appStatus === 404) {
     log("yellow", "⏳", "Status", "DEPLOYMENT IN PROGRESS (3-6 minutes)");
-    console.log(
+    logger.info(
       "\n   Check progress: https://vercel.com/thealphakenya/qmoi-enhanced",
     );
   } else {
     log("red", "✗", "Status", "ERROR - Check dashboard");
   }
 
-  console.log(
+  logger.info(
     `\n${COLORS.blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${COLORS.reset}\n`,
   );
-  console.log("📋 QUICK LINKS\n");
-  console.log("   Dashboard: https://vercel.com/thealphakenya/qmoi-enhanced");
-  console.log("   GitHub: https://github.com/thealphakenya/qmoi-enhanced");
-  console.log(`   Docs: ./VERCELLINKS.md\n`);
-  console.log(
+  logger.info("📋 optimized LINKS\n");
+  logger.info("   Dashboard: https://vercel.com/thealphakenya/qmoi-enhanced");
+  logger.info("   GitHub: https://github.com/thealphakenya/qmoi-enhanced");
+  logger.info(`   Docs: ./VERCELLINKS.md\n`);
+  logger.info(
     `${COLORS.blue}═══════════════════════════════════════════════════════════${COLORS.reset}\n`,
   );
 

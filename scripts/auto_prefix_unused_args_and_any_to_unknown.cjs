@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const API_DIR = path.join(ROOT, "app", "api");
@@ -71,7 +71,7 @@ function main() {
       console.error("error processing", f, err && err.message);
     }
   }
-  console.log(
+  logger.info(
     "Processed " + files.length + " files, modified " + changed + " files.",
   );
 }

@@ -18,15 +18,15 @@
  *
  * Usage: node scripts/error-scanner.js [options]
  *   --full      Run full scan (slow)
- *   --quick     Run quick scan only
+ *   --optimized     Run optimized scan only
  *   --update    Update .md files
  *   --stats     Generate statistics
  */
 
-import { execSync } from "child_process";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -50,7 +50,7 @@ class ErrorScanner {
    * Run ESLint scan
    */
   scanESLint() {
-    console.log("🔍 Scanning with ESLint...");
+    logger.info("🔍 Scanning with ESLint...");
     try {
       const result = execSync("npm run lint 2>&1 || true", {
         cwd: ROOT,
@@ -69,7 +69,7 @@ class ErrorScanner {
    * Run TypeScript type check
    */
   scanTypeScript() {
-    console.log("🔍 Running TypeScript type check...");
+    logger.info("🔍 Running TypeScript type check...");
     try {
       const result = execSync("npx tsc --noEmit 2>&1 || true", {
         cwd: ROOT,
@@ -91,7 +91,7 @@ class ErrorScanner {
     const lines = output.split("\n");
     const errorPattern = /(.+?):(\d+):(\d+):\s+(error|warning)\s+(.+?)\s+\((.+?)\)/;
 
-    lines.forEach((line) => {
+    lines.for (const item of((line) => {
       const match = line.match(errorPattern);
       if (match) {
         const [, file, lnum, col, type, message, rule] = match;
@@ -123,7 +123,7 @@ class ErrorScanner {
     const lines = output.split("\n");
     const errorPattern = /(.+?)\((\d+),(\d+)\):\s+error\s+TS(\d+):\s+(.+)/;
 
-    lines.forEach((line) => {
+    lines.for (const item of((line) => {
       const match = line.match(errorPattern);
       if (match) {
         const [, file, lnum, col, code, message] = match;
@@ -196,7 +196,7 @@ class ErrorScanner {
    */
   groupByFile() {
     const byFile = {};
-    this.errors.forEach((error) => {
+    this.errors.for (const item of((error) => {
       if (!byFile[error.file]) {
         byFile[error.file] = [];
       }
@@ -224,7 +224,7 @@ class ErrorScanner {
 
     const errorReportPath = path.join(REPORTS_DIR, `error-report-${timestamp}.json`);
     fs.writeFileSync(errorReportPath, JSON.stringify(errorReport, null, 2));
-    console.log(`✅ Error report saved to ${path.relative(ROOT, errorReportPath)}`);
+    logger.info(`✅ Error report saved to ${path.relative(ROOT, errorReportPath)}`);
 
     return errorReportPath;
   }
@@ -233,13 +233,13 @@ class ErrorScanner {
    * Update ALLERRORS.md
    */
   updateALLERRORSMD() {
-    console.log("📝 Updating ALLERRORS.md...");
+    logger.info("📝 Updating ALLERRORS.md...");
 
     const content = this.generateALLERRORSContent();
     const filePath = path.join(ROOT, "ALLERRORS.md");
 
     fs.writeFileSync(filePath, content);
-    console.log(`✅ Updated ${path.relative(ROOT, filePath)}`);
+    logger.info(`✅ Updated ${path.relative(ROOT, filePath)}`);
   }
 
   /**
@@ -277,7 +277,7 @@ generation_timestamp: "${new Date().toISOString()}"
 
     Object.entries(stats.by_category)
       .sort((a, b) => b[1] - a[1])
-      .forEach(([category, count]) => {
+      .for (const item of(([category, count]) => {
         content += `${category}: ${count}\n`;
       });
 
@@ -289,7 +289,7 @@ generation_timestamp: "${new Date().toISOString()}"
 |------|-------------|
 `;
 
-    topFiles.forEach(({ file, count }) => {
+    topFiles.for (const item of(({ file, count }) => {
       content += `| ${file} | ${count} |\n`;
     });
 
@@ -343,13 +343,13 @@ npm run lint:fix && npm run fix:types
    * Update ALLERRORSSTATSQMOI.md
    */
   updateALLERRORSSTATSMD() {
-    console.log("📝 Updating ALLERRORSSTATSQMOI.md...");
+    logger.info("📝 Updating ALLERRORSSTATSQMOI.md...");
 
     const content = this.generateALLERRORSSTATSContent();
     const filePath = path.join(ROOT, "ALLERRORSSTATSQMOI.md");
 
     fs.writeFileSync(filePath, content);
-    console.log(`✅ Updated ${path.relative(ROOT, filePath)}`);
+    logger.info(`✅ Updated ${path.relative(ROOT, filePath)}`);
   }
 
   /**
@@ -371,7 +371,7 @@ generation_timestamp: "${new Date().toISOString()}"
 > **For**: QMOI Enhanced System v2.0
 > **Scanner**: QMOI Enhanced Error Scanner v1.0
 
-## Quick Overview
+## optimized Overview
 
 - **Critical Errors**: ${stats.total_errors}
 - **Warnings**: ${stats.total_warnings}
@@ -394,7 +394,7 @@ TypeScript: ${stats.by_source.tsc} issues
     Object.entries(stats.by_category)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 15)
-      .forEach(([category, count]) => {
+      .for (const item of(([category, count]) => {
         content += `${category.padEnd(20)}: ${String(count).padStart(4)}\n`;
       });
 
@@ -405,7 +405,7 @@ TypeScript: ${stats.by_source.tsc} issues
 \`\`\`
 `;
 
-    topFiles.forEach(({ file, count }) => {
+    topFiles.for (const item of(({ file, count }) => {
       content += `${file.padEnd(50)}: ${String(count).padStart(4)} errors\n`;
     });
 
@@ -428,7 +428,7 @@ TypeScript: ${stats.by_source.tsc} issues
 
 ## Next Scheduled Scans
 
-- Quick scan: Every 6 hours
+- optimized scan: Every 6 hours
 - Full scan: Daily at 00:00 UTC
 - Weekly report: Every Monday
 - Monthly review: 1st of month
@@ -447,18 +447,18 @@ TypeScript: ${stats.by_source.tsc} issues
    * Run the scanner
    */
   async run(options = {}) {
-    console.log("🚀 Starting QMOI Error Scanner...\n");
+    logger.info("🚀 Starting QMOI Error Scanner...\n");
 
     // Run scans
-    if (options.full || !options.quick) {
+    if (options.full || !options.optimized) {
       this.scanESLint();
       this.scanTypeScript();
     }
 
     // Generate statistics
-    console.log("📊 Generating statistics...");
+    logger.info("📊 Generating statistics...");
     this.generateStats();
-    console.log(
+    logger.info(
       `✅ Found ${this.stats.total_errors} errors, ${this.stats.total_warnings} warnings\n`
     );
 
@@ -478,17 +478,17 @@ TypeScript: ${stats.by_source.tsc} issues
    */
   displaySummary() {
     const stats = this.stats;
-    console.log("\n📋 Error Scanner Summary");
-    console.log("=".repeat(50));
-    console.log(`Total Issues: ${stats.total_errors + stats.total_warnings}`);
-    console.log(`  - Errors: ${stats.total_errors}`);
-    console.log(`  - Warnings: ${stats.total_warnings}`);
-    console.log("\nTop Categories:");
+    logger.info("\n📋 Error Scanner Summary");
+    logger.info("=".repeat(50));
+    logger.info(`Total Issues: ${stats.total_errors + stats.total_warnings}`);
+    logger.info(`  - Errors: ${stats.total_errors}`);
+    logger.info(`  - Warnings: ${stats.total_warnings}`);
+    logger.info("\nTop Categories:");
     Object.entries(stats.by_category)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 5)
-      .forEach(([cat, count]) => {
-        console.log(`  - ${cat}: ${count}`);
+      .for (const item of(([cat, count]) => {
+        logger.info(`  - ${cat}: ${count}`);
       });
   }
 }
@@ -497,7 +497,7 @@ TypeScript: ${stats.by_source.tsc} issues
 const args = process.argv.slice(2);
 const options = {
   full: args.includes("--full"),
-  quick: args.includes("--quick"),
+  optimized: args.includes("--optimized"),
   update: args.includes("--update"),
 };
 

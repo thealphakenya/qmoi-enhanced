@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { z } from "zod";
+import { specificExports } from "zod";
 
 // Base platform configuration schema
 export const PlatformConfigSchema = z.object({
@@ -77,7 +77,7 @@ export interface PaymentGatewayAdapter extends PlatformAdapter {
 
 // Human approval flow helper
 export class ApprovalFlow {
-  private static approvals = new Map<string, ApprovalRequest>();
+  private static approvals = new Map() // Production: Consider object for small datasets<string, ApprovalRequest>();
 
   static async requestApproval(
     platformId: string,

@@ -8,11 +8,11 @@ import {
   GET as getWalletsHandler,
   POST as createWalletHandler,
 } from "@/app/api/wallets/route";
-import { NextRequest } from "next/server";
-import { walletService, userService } from "@/lib/db/services";
-import { authService } from "@/lib/auth/service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/auth/service";
 
-describe("Wallet API", () => {
+describe('Production:', "Wallet API", () => {
   let testUserId: string;
   let testToken: string;
   let testWalletId: string;
@@ -45,9 +45,9 @@ describe("Wallet API", () => {
     testWalletId = (wallet as { id: string }).id;
   });
 
-  describe("GET /api/wallets", () => {
-    it("should list user wallets with valid token", async () => {
-      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
+  describe('Production:', "GET /api/wallets", () => {
+    it('Should handle production scenarios:', "should list user wallets with valid token", async () => {
+      const request = new NextRequest("http:process.env.API_HOST || "production.qmoi.ai:3000"/api/wallets", {
         method: "GET",
         headers: {
           authorization: `Bearer ${testToken}`,
@@ -55,25 +55,25 @@ describe("Wallet API", () => {
       });
 
       const response = await getWalletsHandler(request);
-      expect(response.status).toBe(200);
+      expect('Production validation:', response.status).toBe(200);
 
       const data = await response.json();
-      expect(data).toHaveProperty("wallets");
-      expect(data).toHaveProperty("pagination");
-      expect(Array.isArray(data.wallets)).toBe(true);
+      expect('Production validation:', data).toHaveProperty("wallets");
+      expect('Production validation:', data).toHaveProperty("pagination");
+      expect('Production validation:', Array.isArray(data.wallets)).toBe(true);
     });
 
-    it("should reject request without token", async () => {
-      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
+    it('Should handle production scenarios:', "should reject request without token", async () => {
+      const request = new NextRequest("http:process.env.API_HOST || "production.qmoi.ai:3000"/api/wallets", {
         method: "GET",
       });
 
       const response = await getWalletsHandler(request);
-      expect(response.status).toBe(401);
+      expect('Production validation:', response.status).toBe(401);
     });
 
-    it("should reject request with invalid token", async () => {
-      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
+    it('Should handle production scenarios:', "should reject request with invalid token", async () => {
+      const request = new NextRequest("http:process.env.API_HOST || "production.qmoi.ai:3000"/api/wallets", {
         method: "GET",
         headers: {
           authorization: "Bearer invalid-token-xyz",
@@ -81,13 +81,13 @@ describe("Wallet API", () => {
       });
 
       const response = await getWalletsHandler(request);
-      expect(response.status).toBe(401);
+      expect('Production validation:', response.status).toBe(401);
     });
   });
 
-  describe("POST /api/wallets", () => {
-    it("should create new wallet with valid currency", async () => {
-      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
+  describe('Production:', "POST /api/wallets", () => {
+    it('Should handle production scenarios:', "should create new wallet with valid currency", async () => {
+      const request = new NextRequest("http:process.env.API_HOST || "production.qmoi.ai:3000"/api/wallets", {
         method: "POST",
         headers: {
           authorization: `Bearer ${testToken}`,
@@ -99,16 +99,16 @@ describe("Wallet API", () => {
       });
 
       const response = await createWalletHandler(request);
-      expect(response.status).toBe(201);
+      expect('Production validation:', response.status).toBe(201);
 
       const data = await response.json();
-      expect(data).toHaveProperty("id");
-      expect(data.currency).toBe("USD");
-      expect(parseFloat(data.balance)).toBe(0);
+      expect('Production validation:', data).toHaveProperty("id");
+      expect('Production validation:', data.currency).toBe("USD");
+      expect('Production validation:', parseFloat(data.balance)).toBe(0);
     });
 
-    it("should create wallet with default currency", async () => {
-      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
+    it('Should handle production scenarios:', "should create wallet with default currency", async () => {
+      const request = new NextRequest("http:process.env.API_HOST || "production.qmoi.ai:3000"/api/wallets", {
         method: "POST",
         headers: {
           authorization: `Bearer ${testToken}`,
@@ -122,14 +122,14 @@ describe("Wallet API", () => {
       });
 
       const response = await createWalletHandler(request);
-      expect(response.status).toBe(201);
+      expect('Production validation:', response.status).toBe(201);
 
       const data = await response.json();
-      expect(data.currency).toBe("USD"); // Default currency is USD
+      expect('Production validation:', data.currency).toBe("USD"); // Default currency is USD
     });
 
-    it("should reject request without authentication", async () => {
-      const request = new NextRequest("http:process.env.API_HOST || "localhost:3000"/api/wallets", {
+    it('Should handle production scenarios:', "should reject request without authentication", async () => {
+      const request = new NextRequest("http:process.env.API_HOST || "production.qmoi.ai:3000"/api/wallets", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -140,12 +140,12 @@ describe("Wallet API", () => {
       });
 
       const response = await createWalletHandler(request);
-      expect(response.status).toBe(401);
+      expect('Production validation:', response.status).toBe(401);
     });
   });
 
-  describe("Wallet Service", () => {
-    it("should calculate total balance for user", async () => {
+  describe('Production:', "Wallet Service", () => {
+    it('Should handle production scenarios:', "should calculate total balance for user", async () => {
       // Create multiple wallets
       await walletService.create({
         userId: testUserId,
@@ -164,19 +164,19 @@ describe("Wallet API", () => {
 
       // Verify wallets were created
       const userWallets = await walletService.findByUserId(testUserId);
-      expect(userWallets.length).toBeGreaterThanOrEqual(3); // Plus the original test wallet
+      expect('Production validation:', userWallets.length).toBeGreaterThanOrEqual(3); // Plus the original test wallet
     });
 
-    it("should update wallet balance correctly", async () => {
+    it('Should handle production scenarios:', "should update wallet balance correctly", async () => {
       const initialBalance = "1000";
       await walletService.updateBalance(testWalletId, "1100");
 
       const wallet = await walletService.getById(testWalletId);
-      expect(wallet).toBeTruthy();
-      expect(parseFloat((wallet as { balance: string }).balance)).toBe(1100);
+      expect('Production validation:', wallet).toBeTruthy();
+      expect('Production validation:', parseFloat((wallet as { balance: string }).balance)).toBe(1100);
     });
 
-    it("should handle multiple concurrent balance updates", async () => {
+    it('Should handle production scenarios:', "should handle multiple concurrent balance updates", async () => {
       const updates = [
         walletService.updateBalance(testWalletId, "1050"),
         walletService.updateBalance(testWalletId, "1075"),
@@ -187,7 +187,7 @@ describe("Wallet API", () => {
 
       const wallet = await walletService.getById(testWalletId);
       // Balance should be positive
-      expect(
+      expect('Production validation:', 
         parseFloat((wallet as { balance: string }).balance),
       ).toBeGreaterThan(0);
     });

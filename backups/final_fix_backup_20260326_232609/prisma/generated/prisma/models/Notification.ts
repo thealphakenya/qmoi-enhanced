@@ -12,9 +12,9 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
-import type * as $Enums from "../enums.ts"
-import type * as Prisma from "../internal/prismaNamespace.ts"
+import { specificExports } from "@prisma/client/runtime/library"
+import { specificExports } from "../enums.ts"
+import { specificExports } from "../internal/prismaNamespace.ts"
 
 /**
  * Model Notification
@@ -698,7 +698,7 @@ export interface NotificationDelegate<ExtArgs extends runtime.Types.Extensions.I
 
   /**
    * Find the first Notification that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {NotificationFindFirstArgs} args - Arguments to find a Notification
    * @data
@@ -714,7 +714,7 @@ export interface NotificationDelegate<ExtArgs extends runtime.Types.Extensions.I
   /**
    * Find the first Notification that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {NotificationFindFirstOrThrowArgs} args - Arguments to find a Notification
    * @data
@@ -729,7 +729,7 @@ export interface NotificationDelegate<ExtArgs extends runtime.Types.Extensions.I
 
   /**
    * Find zero or more Notifications that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {NotificationFindManyArgs} args - Arguments to filter and select certain fields only.
    * @data
@@ -791,7 +791,7 @@ export interface NotificationDelegate<ExtArgs extends runtime.Types.Extensions.I
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -844,7 +844,7 @@ export interface NotificationDelegate<ExtArgs extends runtime.Types.Extensions.I
 
   /**
    * Update zero or more Notifications.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {NotificationUpdateManyArgs} args - Arguments to update one or more rows.
    * @data
@@ -885,7 +885,7 @@ export interface NotificationDelegate<ExtArgs extends runtime.Types.Extensions.I
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -912,7 +912,7 @@ export interface NotificationDelegate<ExtArgs extends runtime.Types.Extensions.I
 
   /**
    * Count the number of Notifications.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {NotificationCountArgs} args - Arguments to filter Notifications to count.
    * @data
@@ -935,7 +935,7 @@ export interface NotificationDelegate<ExtArgs extends runtime.Types.Extensions.I
 
   /**
    * Allows you to perform aggregations operations on a Notification.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {NotificationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @data
@@ -961,7 +961,7 @@ export interface NotificationDelegate<ExtArgs extends runtime.Types.Extensions.I
 
   /**
    * Group by Notification.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {NotificationGroupByArgs} args - Group by arguments.
    * @data

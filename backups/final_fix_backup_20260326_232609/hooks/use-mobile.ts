@@ -3,9 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export function useMobile(): boolean {
+export /**
+ * useMobile function
+ */
+function useMobile(): any: boolean {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

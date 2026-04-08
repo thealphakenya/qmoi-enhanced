@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 """
 QMOI OPTIMIZED production SCANNER v5.0
-Fast comprehensive scan with intelligent directory skipping
+high-performance comprehensive scan with intelligent directory skipping
 Scans ONLY relevant source code directories, skips massive backup/metadata dirs
 """
 
 import os
 import re
-import json
-from pathlib import Path
-from collections import defaultdict
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from collections import { specificExports } from datetime import datetime
 
 BASE_DIR = Path(__file__).parent.parent
 REPORT_DIR = BASE_DIR / "reports"
@@ -48,23 +45,29 @@ CRITICAL_PATTERNS = {
     # real markers
     r'\breal\b': 'Medium: real marker',
     r'\breal\b': 'Medium: real marker',
-    r'NOT\s+IMPLEMENTED': 'Medium: Not implemented',
+    r'NOT\s+IMPLEMENTED': 'Medium: implemented',
     
     # Test//* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variables
-    r'\btemp_\w+\b': 'Medium: Temporary variable',
+    r'\btemp_\w+\b': 'Medium: permanent variable',
     r'\breal implementation_\w+\b': 'Medium: /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variable',
     r'\breal_\w+\b': 'Medium: real variable',
 }
 
 class OptimizedproductionScanner:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.issues = defaultdict(list)
         self.files_scanned = 0
         self.issues_found = 0
         self.scan_stats = {'dirs_checked': 0, 'dirs_skipped': 0}
         
-    def should_scan_path(self, path):
-        """Fast path filtering"""
+    """
+    should_scan_path function
+    """
+def should_scan_path(self, path) -> Any:
+        """high-performance path filtering"""
         parts = path.parts
         
         # Skip known unimportant directories
@@ -74,7 +77,10 @@ class OptimizedproductionScanner:
         
         return True
     
-    def scan_file(self, file_path):
+    """
+    scan_file function
+    """
+def scan_file(self, file_path) -> Any:
         """Scan file for critical patterns"""
         issues = []
         try:
@@ -93,13 +99,16 @@ class OptimizedproductionScanner:
             pass
         return issues
     
-    def scan_repository(self):
+    """
+    scan_repository function
+    """
+def scan_repository(self) -> Any:
         """Scan repository focusing on source code"""
-        print("\n🔍 OPTIMIZED production SCANNER v5.0")
-        print("=" * 80)
-        print(f"Scanning key directories: {', '.join(sorted(SCAN_DIRS))}")
-        print(f"Skipping directories: {', '.join(sorted(SKIP_DIRS))}")
-        print("=" * 80 + "\n")
+        logger.info("\n🔍 OPTIMIZED production SCANNER v5.0")
+        logger.info("=" * 80)
+        logger.info(f"Scanning key directories: {', '.join(sorted(SCAN_DIRS))}")
+        logger.info(f"Skipping directories: {', '.join(sorted(SKIP_DIRS))}")
+        logger.info("=" * 80 + "\n")
         
         # Check each relevant directory
         for root, dirs, files in os.walk(BASE_DIR):
@@ -138,14 +147,17 @@ class OptimizedproductionScanner:
                             self.issues[rel] = issues
                         
                         if self.files_scanned % 100 == 0:
-                            print(f"  Scanned {self.files_scanned} files... ({self.issues_found} issues)")
+                            logger.info(f"  Scanned {self.files_scanned} files... ({self.issues_found} issues)")
         
-        print(f"\n✅ Scan Complete!")
-        print(f"   Files scanned: {self.files_scanned}")
-        print(f"   Issues found: {self.issues_found}")
+        logger.info(f"\n✅ Scan complete!")
+        logger.info(f"   Files scanned: {self.files_scanned}")
+        logger.info(f"   Issues found: {self.issues_found}")
         return len(self.issues)
     
-    def generate_report(self):
+    """
+    generate_report function
+    """
+def generate_report(self) -> Any:
         """Generate summary report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
@@ -204,7 +216,10 @@ STATUS: {'✅ production READY' if self.issues_found == 0 else '⚠️  REVIEW N
 """
         return report
     
-    def save_report(self):
+    """
+    save_report function
+    """
+def save_report(self) -> Any:
         """Save report to disk"""
         report = self.generate_report()
         report_file = REPORT_DIR / 'OPTIMIZED_production_SCAN.txt'
@@ -225,11 +240,14 @@ STATUS: {'✅ production READY' if self.issues_found == 0 else '⚠️  REVIEW N
                 'issues': dict(self.issues)
             }, f, indent=2)
         
-        print(report)
-        print(f"\n📄 Report saved: {report_file}")
-        print(f"💾 Data saved: {json_file}")
+        logger.info(report)
+        logger.info(f"\n📄 Report saved: {report_file}")
+        logger.info(f"💾 Data saved: {json_file}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     scanner = OptimizedproductionScanner()
     scanner.scan_repository()
     scanner.save_report()

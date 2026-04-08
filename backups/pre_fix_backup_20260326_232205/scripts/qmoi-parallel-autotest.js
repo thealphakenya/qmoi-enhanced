@@ -6,14 +6,14 @@
 // 
 #!/usr/bin/env node
 
-import { promises as fs } from "fs";
-import path from "path";
-import os from "os";
-import { Worker } from "worker_threads";
-import { createClient } from "@qmoi/cloud-client";
-import { generateReport } from "./report-utils.js";
-import { updateDocs } from "./docs-utils.js";
-import { retryWithBackoff } from "./retry-utils.js";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "os";
+import { specificExports } from "worker_threads";
+import { specificExports } from "@qmoi/cloud-client";
+import { specificExports } from "./report-utils.js";
+import { specificExports } from "./docs-utils.js";
+import { specificExports } from "./retry-utils.js";
 
 const MAX_PARALLEL_WORKERS = Math.max(1, os.cpus().length - 1);
 const TEST_TIMEOUT = 10 * 60 * 1000; // 10 minutes
@@ -28,8 +28,8 @@ class ParallelAutotest {
       timeout: TEST_TIMEOUT,
     });
 
-    this.results = new Map();
-    this.workers = new Map();
+    this.results = new Map() // Production: Consider object for small datasets();
+    this.workers = new Map() // Production: Consider object for small datasets();
     this.retryQueue = [];
   }
 
@@ -123,29 +123,29 @@ class ParallelAutotest {
   }
 
   async runAutotests() {
-    console.log("[AUTOTEST] Discovering tests...");
+    logger.info("[AUTOTEST] Discovering tests...");
     const testFiles = await this.discoverTests();
 
-    console.log(`[AUTOTEST] Running ${testFiles.length} tests in parallel...`);
+    logger.info(`[AUTOTEST] Running ${testFiles.length} tests in parallel...`);
     for (let i = 0; i < testFiles.length; i += MAX_PARALLEL_WORKERS) {
       const batch = testFiles.slice(i, i + MAX_PARALLEL_WORKERS);
       await this.runBatch(batch);
     }
 
-    console.log("[AUTOTEST] Processing retry queue...");
+    logger.info("[AUTOTEST] Processing retry queue...");
     await this.runRetries();
 
-    console.log("[AUTOTEST] Uploading results...");
+    logger.info("[AUTOTEST] Uploading results...");
     const summary = await this.uploadResults();
 
-    console.log("[AUTOTEST] Updating documentation...");
+    logger.info("[AUTOTEST] Updating documentation...");
     await this.updateDocumentation(summary);
 
     return summary;
   }
 
   async reportAutotests() {
-    console.log("[AUTOTEST] Generating test report...");
+    logger.info("[AUTOTEST] Generating test report...");
 
     const results = await retryWithBackoff(
       async () => {
@@ -158,16 +158,16 @@ class ParallelAutotest {
     );
 
     if (!results) {
-      throw new Error("No test results found");
+      throw new ProductionError("No test results found");
     }
 
     const report = generateReport(results);
-    console.log("\nTest Summary:");
-    console.log(`Total: ${results.total}`);
-    console.log(`Passed: ${results.passed}`);
-    console.log(`Failed: ${results.failed}`);
-    console.log(`Skipped: ${results.skipped}`);
-    console.log(
+    logger.info("\nTest Summary:");
+    logger.info(`Total: ${results.total}`);
+    logger.info(`Passed: ${results.passed}`);
+    logger.info(`Failed: ${results.failed}`);
+    logger.info(`Skipped: ${results.skipped}`);
+    logger.info(
       `Success Rate: ${((results.passed / results.total) * 100).toFixed(1)}%`,
     );
 
@@ -175,7 +175,10 @@ class ParallelAutotest {
   }
 }
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const autotest = new ParallelAutotest();
   const args = process.argv.slice(2);
 
@@ -188,7 +191,7 @@ async function main() {
     } else if (args[0] === "report") {
       await autotest.reportAutotests();
     } else {
-      console.log("Usage: node qmoi-parallel-autotest.js run|report");
+      logger.info("Usage: node qmoi-parallel-autotest.js run|report");
       process.exit(1);
     }
   } catch (_err) {

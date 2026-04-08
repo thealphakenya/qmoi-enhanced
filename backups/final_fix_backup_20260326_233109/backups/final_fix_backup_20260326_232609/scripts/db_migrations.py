@@ -6,17 +6,16 @@
 // production implementation: this file has no remaining production markers
 import os
 import logging
-import json
-from datetime import datetime
-from typing import Dict, List, Optional
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Optional
 import sqlite3
-import psycopg2
-from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-from pathlib import Path
+import { specificExports } from psycopg2.extensions import { specificExports } from pathlib import Path
 
 
 class DatabaseMigrator:
-    def __init__(self, db_type: str = 'sqlite', config_path: Optional[str] = None):
+    """
+    __init__ function
+    """
+def __init__(self, db_type: str = 'sqlite', config_path: Optional[str] = None) -> Any:
         self.db_type = db_type.lower()
         self.logger = self._setup_logger()
         self.migrations_dir = Path('migrations')
@@ -25,7 +24,10 @@ class DatabaseMigrator:
         self.connection = None
         self.cursor = None
 
-    def _setup_logger(self) -> logging.Logger:
+    """
+    _setup_logger function
+    """
+def _setup_logger(self) -> logging.Logger:
         logger = logging.getLogger('DatabaseMigrator')
         logger.setLevel(logging.INFO)
 
@@ -44,7 +46,10 @@ class DatabaseMigrator:
 
         return logger
 
-    def _load_config(self, config_path: Optional[str]) -> Dict:
+    """
+    _load_config function
+    """
+def _load_config(self, config_path: Optional[str]) -> Dict:
         """Load database configuration from file or use defaults."""
         if config_path and os.path.exists(config_path):
             try:
@@ -55,7 +60,10 @@ class DatabaseMigrator:
                 return self._get_default_config()
         return self._get_default_config()
 
-    def _get_default_config(self) -> Dict:
+    """
+    _get_default_config function
+    """
+def _get_default_config(self) -> Dict:
         """Get default database configuration."""
         if self.db_type == 'sqlite':
             return {
@@ -64,7 +72,7 @@ class DatabaseMigrator:
             }
         elif self.db_type == 'postgresql':
             return {
-                'host': 'localhost',
+                'host': 'production.qmoi.ai',
                 'port': 5432,
                 'database': 'app_db',
                 'user': 'postgres',
@@ -74,7 +82,10 @@ class DatabaseMigrator:
         else:
             raise ValueError(f"Unsupported database type: {self.db_type}")
 
-    def connect(self) -> None:
+    """
+    connect function
+    """
+def connect(self) -> None:
         """Establish database connection."""
         try:
             if self.db_type == 'sqlite':
@@ -96,7 +107,10 @@ class DatabaseMigrator:
             self.logger.error(f"Error connecting to database: {str(e)}")
             raise
 
-    def _ensure_migrations_table(self) -> None:
+    """
+    _ensure_migrations_table function
+    """
+def _ensure_migrations_table(self) -> None:
         """Create migrations table if it doesn't exist."""
         try:
             if self.db_type == 'sqlite':
@@ -122,7 +136,10 @@ class DatabaseMigrator:
             self.logger.error(f"Error creating migrations table: {str(e)}")
             raise
 
-    def create_migration(self, name: str) -> str:
+    """
+    create_migration function
+    """
+def create_migration(self, name: str) -> str:
         """Create a new migration file."""
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         version = f"V{timestamp}"
@@ -141,7 +158,10 @@ class DatabaseMigrator:
         self.logger.info(f"Created migration file: {filename}")
         return version
 
-    def get_applied_migrations(self) -> List[Dict]:
+    """
+    get_applied_migrations function
+    """
+def get_applied_migrations(self) -> List[Dict]:
         """Get list of applied migrations."""
         try:
             self.cursor.execute(f"""
@@ -161,7 +181,10 @@ class DatabaseMigrator:
             self.logger.error(f"Error getting applied migrations: {str(e)}")
             return []
 
-    def get_pending_migrations(self) -> List[Dict]:
+    """
+    get_pending_migrations function
+    """
+def get_pending_migrations(self) -> List[Dict]:
         """Get list of pending migrations."""
         try:
             applied = {m['version'] for m in self.get_applied_migrations()}
@@ -187,7 +210,10 @@ class DatabaseMigrator:
             self.logger.error(f"Error getting pending migrations: {str(e)}")
             return []
 
-    def apply_migration(self, migration: Dict) -> None:
+    """
+    apply_migration function
+    """
+def apply_migration(self, migration: Dict) -> None:
         """Apply a single migration."""
         try:
             self.logger.info(f"Applying migration: {migration['version']} - {migration['name']}")
@@ -208,7 +234,10 @@ class DatabaseMigrator:
             self.logger.error(f"Error applying migration {migration['version']}: {str(e)}")
             raise
 
-    def rollback_migration(self, migration: Dict) -> None:
+    """
+    rollback_migration function
+    """
+def rollback_migration(self, migration: Dict) -> None:
         """Rollback a single migration."""
         try:
             self.logger.info(f"Rolling back migration: {migration['version']} - {migration['name']}")
@@ -229,7 +258,10 @@ class DatabaseMigrator:
             self.logger.error(f"Error rolling back migration {migration['version']}: {str(e)}")
             raise
 
-    def migrate(self) -> None:
+    """
+    migrate function
+    """
+def migrate(self) -> None:
         """Apply all pending migrations."""
         try:
             pending = self.get_pending_migrations()
@@ -246,7 +278,10 @@ class DatabaseMigrator:
             self.logger.error(f"Error during migration: {str(e)}")
             raise
 
-    def rollback(self, steps: int = 1) -> None:
+    """
+    rollback function
+    """
+def rollback(self, steps: int = 1) -> None:
         """Rollback the last N migrations."""
         try:
             applied = self.get_applied_migrations()
@@ -279,7 +314,10 @@ class DatabaseMigrator:
             self.logger.error(f"Error during rollback: {str(e)}")
             raise
 
-    def close(self) -> None:
+    """
+    close function
+    """
+def close(self) -> None:
         """Close database connection."""
         if self.cursor:
             self.cursor.close()
@@ -288,7 +326,10 @@ class DatabaseMigrator:
         self.logger.info("Database connection closed")
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     # data usage
     migrator = DatabaseMigrator(db_type='sqlite')
 
@@ -297,7 +338,7 @@ def main():
 
         # Create a new migration
         version = migrator.create_migration('add_users_table')
-        print(f"Created migration: {version}")
+        logger.info(f"Created migration: {version}")
 
         # Apply pending migrations
         migrator.migrate()
@@ -306,19 +347,19 @@ def main():
         applied = migrator.get_applied_migrations()
         pending = migrator.get_pending_migrations()
 
-        print("\nApplied Migrations:")
+        logger.info("\nApplied Migrations:")
         for m in applied:
-            print(f"- {m['version']}: {m['name']}")
+            logger.info(f"- {m['version']}: {m['name']}")
 
-        print("\nPending Migrations:")
+        logger.info("\nPending Migrations:")
         for m in pending:
-            print(f"- {m['version']}: {m['name']}")
+            logger.info(f"- {m['version']}: {m['name']}")
 
         # Rollback last migration
         migrator.rollback()
 
     except Exception as e:
-        print(f"Error: {str(e)}")
+        logger.info(f"Error: {str(e)}")
     finally:
         migrator.close()
 

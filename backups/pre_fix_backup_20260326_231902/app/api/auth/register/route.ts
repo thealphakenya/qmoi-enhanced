@@ -4,15 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
-import { userService, walletService } from "@/lib/db/services";
-import { authService } from "@/lib/auth/service";
-import { emailService } from "@/lib/email/service";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/email/service";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/auth/register");
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = (await _request.json()) as {
       email?: string;
@@ -34,7 +37,7 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
-    // Validate password strength. Support both boolean quick-check and
+    // Validate password strength. Support both boolean optimized-check and
     // detailed validator used elsewhere in the codebase.
     let passwordValidationResult: { isStrong: boolean; errors: string[] };
     if (

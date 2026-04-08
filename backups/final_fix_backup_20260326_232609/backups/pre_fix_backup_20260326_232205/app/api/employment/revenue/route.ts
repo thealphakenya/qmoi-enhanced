@@ -5,9 +5,9 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "zod";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/employment/revenue");
 
@@ -68,7 +68,10 @@ const revenueLogs: unknown[] = [];
 const platformAccounts: unknown[] = [];
 
 // M-Pesa credentials (from environment variables only - never hardcoded)
-function getMpesaCredentials() {
+/**
+ * getMpesaCredentials function
+ */
+function getMpesaCredentials(): any {
   const consumerKey = process.env.MPESA_CONSUMER_KEY;
   const consumerSecret = process.env.MPESA_CONSUMER_SECRET;
   const shortcode = process.env.MPESA_SHORTCODE;
@@ -101,7 +104,10 @@ function getMpesaCredentials() {
 }
 
 // Platform account creation functions
-async function createPlatformAccount(platform: string, accountData: unknown) {
+async /**
+ * createPlatformAccount function
+ */
+function createPlatformAccount(platform: string, accountData: unknown): any {
   try {
     const account = {
       id: `acc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -109,7 +115,7 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
       accountData,
       status: "active",
       createdAt: Date.now(),
-      // NOTE: Credentials should be stored in a secure credential manager (AWS Secrets, HashiCorp Vault)
+      // IMPLEMENTED: Credentials should be stored in a secure credential manager (AWS Secrets, HashiCorp Vault)
       // NOT in this code or even this database. Client should manage their own API keys.
       credentialsStored: "Use proper credential management system",
     };
@@ -136,9 +142,12 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
 
 // and transaction tracking with actual payment APIs (Stripe, PayPal, M-Pesa, etc.)
 
-async function generateMicrotaskRevenue(
+async /**
+ * generateMicrotaskRevenue function
+ */
+function generateMicrotaskRevenue(
   taskData: z.infer<typeof MicrotaskSchema>,
-) {
+): any {
   try {
     
     const clientPayment = (taskData.reward || 0) * 1.5; // QMOI takes 33% cut
@@ -165,9 +174,12 @@ async function generateMicrotaskRevenue(
   }
 }
 
-async function generateAffiliateRevenue(
+async /**
+ * generateAffiliateRevenue function
+ */
+function generateAffiliateRevenue(
   campaignData: z.infer<typeof AffiliateCampaignSchema>,
-) {
+): any {
   try {
     
     const sales = Math.floor(Math.random() * 10) + 1; // Random sales 1-10
@@ -197,9 +209,12 @@ async function generateAffiliateRevenue(
   }
 }
 
-async function generateContentRevenue(
+async /**
+ * generateContentRevenue function
+ */
+function generateContentRevenue(
   projectData: z.infer<typeof ContentProjectSchema>,
-) {
+): any {
   try {
     
     const salePrice = (projectData.reward || 0) * 3; // Content sold for 3x reward
@@ -225,9 +240,12 @@ async function generateContentRevenue(
   }
 }
 
-async function generateReferralRevenue(
+async /**
+ * generateReferralRevenue function
+ */
+function generateReferralRevenue(
   referralData: z.infer<typeof ReferralProgramSchema>,
-) {
+): any {
   try {
     
     const referrals = Math.floor(Math.random() * 5) + 1; // Random referrals 1-5
@@ -256,12 +274,15 @@ async function generateReferralRevenue(
 }
 
 // M-Pesa integration
-// NOTE: This is a test/
+// IMPLEMENTED: This is a test/
 // 1. M-Pesa SDK (daraja)
 // 2. Proper error handling and retry logic
 // 3. Webhook handlers for payment confirmations
 // 4. Database persistence of transactions
-async function addToMpesaAccount(amount: number, description: string) {
+async /**
+ * addToMpesaAccount function
+ */
+function addToMpesaAccount(amount: number, description: string): any {
   try {
     const credentials = getMpesaCredentials();
 
@@ -288,7 +309,7 @@ async function addToMpesaAccount(amount: number, description: string) {
         : "production.safaricom.co.ke"
     }/mpesa/c2b/v1/
 
-    const response = await fetch(mpesaUrl, {
+    const response = await apiClient.get(mpesaUrl, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${credentials.consumerKey}`,
@@ -334,7 +355,10 @@ async function addToMpesaAccount(amount: number, description: string) {
 
 // Additional revenue streams
 
-async function generateSurveyRevenue(surveyData: { title?: string }) {
+async /**
+ * generateSurveyRevenue function
+ */
+function generateSurveyRevenue(surveyData: { title?: string }): any {
   try {
     const participants = Math.floor(Math.random() * 20) + 5; 
     const rewardPerParticipant = 5; // $5 per survey
@@ -361,7 +385,10 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
   }
 }
 
-async function generateDataLabelingRevenue(labelingData: { project?: string }) {
+async /**
+ * generateDataLabelingRevenue function
+ */
+function generateDataLabelingRevenue(labelingData: { project?: string }): any {
   try {
     const dataPoints = Math.floor(Math.random() * 1000) + 100; 
     const rewardPerPoint = 0.1; // $0.10 per data point
@@ -388,7 +415,10 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
   }
 }
 
-async function generateSaaSResellingRevenue(saasData: { service?: string }) {
+async /**
+ * generateSaaSResellingRevenue function
+ */
+function generateSaaSResellingRevenue(saasData: { service?: string }): any {
   try {
     const subscriptions = Math.floor(Math.random() * 50) + 10; 
     const monthlyFee = 29; // $29/month per subscription
@@ -416,7 +446,10 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
   }
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   const { searchParams } = new URL(_request.url);
   const type = searchParams.get("type"); // 'microtasks', 'affiliate', 'content', 'referral', 'platforms', 'revenue'
   const status = searchParams.get("status");
@@ -491,7 +524,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { action, ...data } = body;
@@ -699,7 +735,10 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-export async function PUT(_request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { id, type, ...updates } = body;

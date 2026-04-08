@@ -25,7 +25,7 @@
     "qcity.qmoi.ai": "vercel",
     "qmoi-space.qmoi.ai": "vercel",
     "yap.qmoi.ai": "vercel",
-    "q-stable.qmoi.ai": "vercel",
+    "q-latest.qmoi.ai": "vercel",
     "qvillage.com": "cloudflare",
     "qvillage.net": "cloudflare",
     "qvillage.org": "cloudflare",
@@ -43,5 +43,9 @@
     "interval_minutes": 5,
     "timeout_seconds": 10,
     "retries": 3
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:02.729028"
 }

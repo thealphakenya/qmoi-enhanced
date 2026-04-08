@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
-import { linksService } from "@/lib/links-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/links-service";
 
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   try {
     const url = new URL(req.url);
     const category = url.searchParams.get("category") || undefined;
@@ -35,7 +38,10 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   try {
     const body = await req.json();
     const platform = await linksService.addPlatform(body);

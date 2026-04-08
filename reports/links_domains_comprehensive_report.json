@@ -41,7 +41,7 @@
       "count": 1,
       "healthy": 0,
       "domains": [
-        "q-stable.qmoi.ai"
+        "q-latest.qmoi.ai"
       ]
     },
     "file_sharing": {
@@ -133,10 +133,10 @@
       ],
       "health_check_timestamp": "2026-03-31T23:20:00.680215"
     },
-    "q-stable.qmoi.ai": {
+    "q-latest.qmoi.ai": {
       "type": "models",
       "critical": false,
-      "description": "Q-stable progressive web app",
+      "description": "Q-latest progressive web app",
       "is_healthy": false,
       "endpoints": [
         "/api/health",
@@ -197,5 +197,9 @@
     "qstore.qvillage.com": false
   },
   "endpoint_coverage": {},
-  "health_percentage": 20.0
+  "health_percentage": 20.0,
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:04.793445"
 }

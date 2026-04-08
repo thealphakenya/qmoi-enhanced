@@ -3,17 +3,23 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { DownloadAppButton } from "@/components/DownloadAppButton";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/DownloadAppButton";
 
-export function PreviewWindow() {
+export /**
+ * PreviewWindow function
+ */
+function PreviewWindow(): any {
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);
   const [mediaType, setMediaType] = useState<
     "image" | "video" | "audio" | null
   >(null);
 
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+  /**
+ * handleFileChange function
+ */
+function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;
     const url = URL.createObjectURL(file);

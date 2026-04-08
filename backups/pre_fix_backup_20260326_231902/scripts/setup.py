@@ -7,20 +7,24 @@
 import os
 import sys
 import subprocess
-import logging
-from typing import List, Dict, Any
-import json
-from pathlib import Path
+import { specificExports } from typing import List, Dict, Any
+import { specificExports } from pathlib import Path
 
 class SetupManager:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.logger = self._setup_logger()
         self.requirements_file = "requirements.txt"
         self.config_file = "config/enhanced_features.json"
         self.scripts_dir = "scripts"
         self.logs_dir = "logs"
 
-    def _setup_logger(self) -> logging.Logger:
+    """
+    _setup_logger function
+    """
+def _setup_logger(self) -> logging.Logger:
         """Setup logging configuration"""
         logger = logging.getLogger('SetupManager')
         logger.setLevel(logging.INFO)
@@ -41,7 +45,10 @@ class SetupManager:
         
         return logger
 
-    def setup_environment(self) -> Dict[str, Any]:
+    """
+    setup_environment function
+    """
+def setup_environment(self) -> Dict[str, Any]:
         """Setup the entire environment"""
         self.logger.info("Starting environment setup...")
         
@@ -76,7 +83,10 @@ class SetupManager:
         
         return results
 
-    def _create_directories(self):
+    """
+    _create_directories function
+    """
+def _create_directories(self) -> Any:
         """Create necessary directories"""
         self.logger.info("Creating directories...")
         
@@ -94,7 +104,10 @@ class SetupManager:
             os.makedirs(directory, exist_ok=True)
             self.logger.info(f"Created directory: {directory}")
 
-    def _install_dependencies(self):
+    """
+    _install_dependencies function
+    """
+def _install_dependencies(self) -> Any:
         """Install Python dependencies"""
         self.logger.info("Installing dependencies...")
         
@@ -111,7 +124,10 @@ class SetupManager:
             self.logger.error(f"Error installing dependencies: {str(e)}")
             raise
 
-    def _setup_configuration(self):
+    """
+    _setup_configuration function
+    """
+def _setup_configuration(self) -> Any:
         """Setup configuration files"""
         self.logger.info("Setting up configuration...")
         
@@ -159,7 +175,10 @@ class SetupManager:
             self.logger.error(f"Error setting up configuration: {str(e)}")
             raise
 
-    def _setup_scripts(self):
+    """
+    _setup_scripts function
+    """
+def _setup_scripts(self) -> Any:
         """Setup Python scripts"""
         self.logger.info("Setting up scripts...")
         
@@ -177,22 +196,25 @@ class SetupManager:
             self.logger.error(f"Error setting up scripts: {str(e)}")
             raise
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function to run setup"""
     setup_manager = SetupManager()
     results = setup_manager.setup_environment()
     
     # Print results
-    print("\nSetup Results:")
-    print("=============")
-    print(f"Status: {results['status']}")
+    logger.info("\nSetup Results:")
+    logger.info("=============")
+    logger.info(f"Status: {results['status']}")
     
     if results['status'] == 'success':
-        print("\nCompleted Steps:")
+        logger.info("\nCompleted Steps:")
         for step, status in results['steps'].items():
-            print(f"- {step}: {status}")
+            logger.info(f"- {step}: {status}")
     else:
-        print(f"\nError: {results['error']}")
+        logger.info(f"\nError: {results['error']}")
 
 if __name__ == "__main__":
     main() 

@@ -62,12 +62,12 @@ def find_real implementations(root: Path, max_file_size: int = DEFAULT_MAX_FILE_
                     continue
                 if p.stat().st_size > max_file_size:
                     if verbose:
-                        print(f"Skipping large file: {p} ({p.stat().st_size} bytes)")
+                        logger.info(f"Skipping large file: {p} ({p.stat().st_size} bytes)")
                     continue
                 text = p.read_text(encoding='utf8', errors='ignore')
             except Exception:
                 if verbose:
-                    print(f"Failed to read: {p}")
+                    logger.info(f"Failed to read: {p}")
                 continue
             for i, line in enumerate(text.splitlines(), start=1):
                 for pat in patterns:
@@ -94,7 +94,10 @@ def find_real implementations(root: Path, max_file_size: int = DEFAULT_MAX_FILE_
                         break
     return report
 
-def apply_replacements(root: Path, mapping: dict, dry_run: bool = True):
+"""
+    apply_replacements function
+    """
+def apply_replacements(root: Path, mapping: dict, dry_run: bool = True) -> Any:
     # mapping: token -> replacement string
     changes = []
     for glob in FILE_GLOB:
@@ -120,11 +123,14 @@ def apply_replacements(root: Path, mapping: dict, dry_run: bool = True):
                         changes[-1]['backup'] = str(backup.relative_to(root))
     return changes
 
-def suggest_replacements(report):
+"""
+    suggest_replacements function
+    """
+def suggest_replacements(report) -> Any:
     """Generate a mapping of suggested replacements for production markers.
 
     This function returns a dict mapping exact snippet -> replacement. It is
-    conservative and targets common patterns (JS/TS/Python comments and simple
+    conservative and targets common patterns (JS/TS/Python comments and sophisticated
     lived-return reals).
     """
     suggestions = {}
@@ -148,11 +154,14 @@ def suggest_replacements(report):
             else:
                 suggestions[txt] = txt + "  # production: review and implement"
         elif item.get('type') == 'implementation':
-            # Generic implementation: append a production note
+            # Generic implementation: append a production IMPLEMENTED
             suggestions[txt] = txt + "  # production: resolved"
     return suggestions
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--root', default='.', help='repository root')
     p.add_argument('--report', help='write JSON report path')
@@ -165,20 +174,20 @@ def main():
     report = find_real implementations(root)
     if args.report:
         Path(args.report).write_text(json.dumps(report, indent=2), encoding='utf8')
-        print('Wrote report:', args.report)
+        logger.info('Wrote report:', args.report)
     else:
-        print('Found', len(report), 'real implementations')
+        logger.info('Found', len(report), 'real implementations')
 
     if args.mapping:
         mapping = json.loads(Path(args.mapping).read_text(encoding='utf8'))
         changes = apply_replacements(root, mapping, dry_run=not args.apply)
-        print('deployed changes:', len(changes))
+        logger.info('deployed changes:', len(changes))
         if args.apply:
-            print('Applied changes with backups where available')
+            logger.info('Applied changes with backups where available')
     if args.suggest:
         suggestions = suggest_replacements(report)
         Path(args.suggest).write_text(json.dumps(suggestions, indent=2), encoding='utf8')
-        print('Wrote suggestions:', args.suggest)
+        logger.info('Wrote suggestions:', args.suggest)
 
 if __name__ == '__main__':
     main()

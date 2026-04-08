@@ -23,9 +23,7 @@ Runnable without pytest: python3 scripts/app_signing_automation.test.py
 import unittest
 import tempfile
 import shutil
-import json
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 import sys
 import os
 
@@ -35,60 +33,90 @@ sys.path.insert(0, str(Path(__file__).parent))
 try:
     from app_signing_automation import AppSigningAutomation
 except ImportError as e:
-    print(f"Warning: Could not import AppSigningAutomation: {e}")
-    print("Running skeleton tests only")
+    logger.info(f"Warning: Could not import AppSigningAutomation: {e}")
+    logger.info("Running complete tests only")
     AppSigningAutomation = None
 
 class TestAppSigningAutomationPlatformDetection(unittest.TestCase):
     """Test platform detection from file extensions and manifests"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if AppSigningAutomation is None:
             self.skipTest("AppSigningAutomation not available")
         self.automation = AppSigningAutomation()
         
-    def test_detect_android_from_apk(self):
+    """
+    test_detect_android_from_apk function
+    """
+def test_detect_android_from_apk(self) -> Any:
         """Test detection of Android platform from .apk file"""
         platform = self.automation.detect_platform_from_file("app-release.apk")
         self.assertEqual(platform, "android")
         
-    def test_detect_android_from_aab(self):
+    """
+    test_detect_android_from_aab function
+    """
+def test_detect_android_from_aab(self) -> Any:
         """Test detection of Android platform from .aab file"""
         platform = self.automation.detect_platform_from_file("app-release.aab")
         self.assertEqual(platform, "android")
         
-    def test_detect_ios_from_ipa(self):
+    """
+    test_detect_ios_from_ipa function
+    """
+def test_detect_ios_from_ipa(self) -> Any:
         """Test detection of iOS platform from .ipa file"""
         platform = self.automation.detect_platform_from_file("app-release.ipa")
         self.assertEqual(platform, "ios")
         
-    def test_detect_windows_from_exe(self):
+    """
+    test_detect_windows_from_exe function
+    """
+def test_detect_windows_from_exe(self) -> Any:
         """Test detection of Windows platform from .exe file"""
         platform = self.automation.detect_platform_from_file("app-release.exe")
         self.assertEqual(platform, "windows")
         
-    def test_detect_windows_from_msix(self):
+    """
+    test_detect_windows_from_msix function
+    """
+def test_detect_windows_from_msix(self) -> Any:
         """Test detection of Windows platform from .msix file"""
         platform = self.automation.detect_platform_from_file("app-release.msix")
         self.assertEqual(platform, "windows")
         
-    def test_detect_macos_from_dmg(self):
+    """
+    test_detect_macos_from_dmg function
+    """
+def test_detect_macos_from_dmg(self) -> Any:
         """Test detection of macOS platform from .dmg file"""
         platform = self.automation.detect_platform_from_file("app-release.dmg")
         self.assertEqual(platform, "macos")
         
-    def test_detect_linux_from_deb(self):
+    """
+    test_detect_linux_from_deb function
+    """
+def test_detect_linux_from_deb(self) -> Any:
         """Test detection of Linux platform from .deb file"""
         platform = self.automation.detect_platform_from_file("app-release.deb")
         self.assertEqual(platform, "linux")
         
-    def test_detect_linux_from_rpm(self):
+    """
+    test_detect_linux_from_rpm function
+    """
+def test_detect_linux_from_rpm(self) -> Any:
         """Test detection of Linux platform from .rpm file"""
         platform = self.automation.detect_platform_from_file("app-release.rpm")
         self.assertEqual(platform, "linux")
         
-    def test_detect_from_manifest_android(self):
+    """
+    test_detect_from_manifest_android function
+    """
+def test_detect_from_manifest_android(self) -> Any:
         """Test platform detection from AndroidManifest.xml"""
         test_dir = tempfile.mkdtemp()
         try:
@@ -98,7 +126,10 @@ class TestAppSigningAutomationPlatformDetection(unittest.TestCase):
         finally:
             shutil.rmtree(test_dir)
             
-    def test_detect_from_manifest_ios(self):
+    """
+    test_detect_from_manifest_ios function
+    """
+def test_detect_from_manifest_ios(self) -> Any:
         """Test platform detection from Info.plist"""
         test_dir = tempfile.mkdtemp()
         try:
@@ -108,7 +139,10 @@ class TestAppSigningAutomationPlatformDetection(unittest.TestCase):
         finally:
             shutil.rmtree(test_dir)
             
-    def test_detect_from_manifest_windows(self):
+    """
+    test_detect_from_manifest_windows function
+    """
+def test_detect_from_manifest_windows(self) -> Any:
         """Test platform detection from .csproj"""
         test_dir = tempfile.mkdtemp()
         try:
@@ -118,7 +152,10 @@ class TestAppSigningAutomationPlatformDetection(unittest.TestCase):
         finally:
             shutil.rmtree(test_dir)
             
-    def test_unknown_platform_returns_generic(self):
+    """
+    test_unknown_platform_returns_generic function
+    """
+def test_unknown_platform_returns_generic(self) -> Any:
         """Test that unknown file types return None or generic platform"""
         platform = self.automation.detect_platform_from_file("app.unknown")
         self.assertIsNone(platform)
@@ -126,7 +163,10 @@ class TestAppSigningAutomationPlatformDetection(unittest.TestCase):
 class TestAppSigningAutomationKeyValidation(unittest.TestCase):
     """Test signing key validation"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment with signing keys"""
         if AppSigningAutomation is None:
             self.skipTest("AppSigningAutomation not available")
@@ -143,7 +183,7 @@ class TestAppSigningAutomationKeyValidation(unittest.TestCase):
             platform_dir = keys_dir / platform
             platform_dir.mkdir(exist_ok=True)
             
-            # Create dummy key file
+            # Create production key file
             if platform == "android":
                 key_file = platform_dir / "release.keystore"
             elif platform == "ios":
@@ -162,34 +202,52 @@ class TestAppSigningAutomationKeyValidation(unittest.TestCase):
         if hasattr(self.automation, 'DATA_DIR'):
             self.automation.DATA_DIR = self.test_dir / "data"
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         shutil.rmtree(self.test_dir)
         if self.original_data_dir:
             self.automation.DATA_DIR = self.original_data_dir
             
-    def test_validate_android_keys_exist(self):
+    """
+    test_validate_android_keys_exist function
+    """
+def test_validate_android_keys_exist(self) -> Any:
         """Test validation of Android signing keys"""
         result = self.automation.validate_signing_keys("android")
         # Result could be True or False depending on environment
         self.assertIsinstance(result, bool)
         
-    def test_validate_ios_keys_exist(self):
+    """
+    test_validate_ios_keys_exist function
+    """
+def test_validate_ios_keys_exist(self) -> Any:
         """Test validation of iOS signing keys"""
         result = self.automation.validate_signing_keys("ios")
         self.assertIsInstance(result, bool)
         
-    def test_validate_windows_keys_exist(self):
+    """
+    test_validate_windows_keys_exist function
+    """
+def test_validate_windows_keys_exist(self) -> Any:
         """Test validation of Windows signing keys"""
         result = self.automation.validate_signing_keys("windows")
         self.assertIsInstance(result, bool)
         
-    def test_validate_macos_keys_exist(self):
+    """
+    test_validate_macos_keys_exist function
+    """
+def test_validate_macos_keys_exist(self) -> Any:
         """Test validation of macOS signing keys"""
         result = self.automation.validate_signing_keys("macos")
         self.assertIsInstance(result, bool)
         
-    def test_validate_linux_keys_exist(self):
+    """
+    test_validate_linux_keys_exist function
+    """
+def test_validate_linux_keys_exist(self) -> Any:
         """Test validation of Linux signing keys"""
         result = self.automation.validate_signing_keys("linux")
         self.assertIsInstance(result, bool)
@@ -197,7 +255,10 @@ class TestAppSigningAutomationKeyValidation(unittest.TestCase):
 class TestAppSigningAutomationSigningOperations(unittest.TestCase):
     """Test signing operations for each platform"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if AppSigningAutomation is None:
             self.skipTest("AppSigningAutomation not available")
@@ -212,15 +273,21 @@ class TestAppSigningAutomationSigningOperations(unittest.TestCase):
         self.test_dmg = Path(self.test_dir, "test.dmg")
         self.test_deb = Path(self.test_dir, "test.deb")
         
-        # Write dummy content
+        # Write production content
         for app_file in [self.test_apk, self.test_ipa, self.test_exe, self.test_dmg, self.test_deb]:
             app_file.write_text("dummy_app_content")
             
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         shutil.rmtree(self.test_dir)
         
-    def test_sign_app_returns_dict_with_tracking_id(self):
+    """
+    test_sign_app_returns_dict_with_tracking_id function
+    """
+def test_sign_app_returns_dict_with_tracking_id(self) -> Any:
         """Test that sign_app returns result dict with QMOI tracking ID"""
         # This test checks the return structure without requiring actual signing tools
         result_template = {
@@ -240,7 +307,10 @@ class TestAppSigningAutomationSigningOperations(unittest.TestCase):
 class TestAppSigningAutomationBatchOperations(unittest.TestCase):
     """Test batch signing operations"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if AppSigningAutomation is None:
             self.skipTest("AppSigningAutomation not available")
@@ -255,11 +325,17 @@ class TestAppSigningAutomationBatchOperations(unittest.TestCase):
             app_file.write_text(f"dummy_app_content_{i}")
             self.app_files.append(str(app_file))
             
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         shutil.rmtree(self.test_dir)
         
-    def test_batch_sign_apps_returns_results(self):
+    """
+    test_batch_sign_apps_returns_results function
+    """
+def test_batch_sign_apps_returns_results(self) -> Any:
         """Test batch signing returns aggregated results"""
         # Test the expected structure
         expected_results = {
@@ -273,7 +349,10 @@ class TestAppSigningAutomationBatchOperations(unittest.TestCase):
         self.assertIn("operations", expected_results)
         self.assertEqual(expected_results["success"] + expected_results["failed"], 0)
         
-    def test_batch_operation_accumulates_count(self):
+    """
+    test_batch_operation_accumulates_count function
+    """
+def test_batch_operation_accumulates_count(self) -> Any:
         """Test that batch operations track success/failure correctly"""
         results = {"success": 2, "failed": 1, "operations": []}
         
@@ -283,7 +362,10 @@ class TestAppSigningAutomationBatchOperations(unittest.TestCase):
 class TestAppSigningAutomationAuditLogging(unittest.TestCase):
     """Test audit logging with QMOI tracking IDs"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if AppSigningAutomation is None:
             self.skipTest("AppSigningAutomation not available")
@@ -300,15 +382,21 @@ class TestAppSigningAutomationAuditLogging(unittest.TestCase):
             self.original_logs_dir = self.automation.LOGS_DIR
             self.automation.LOGS_DIR = self.test_dir / "logs"
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         if hasattr(self, 'original_logs_dir'):
             self.automation.LOGS_DIR = self.original_logs_dir
         shutil.rmtree(self.test_dir)
         
-    def test_tracking_id_format(self):
+    """
+    test_tracking_id_format function
+    """
+def test_tracking_id_format(self) -> Any:
         """Test that tracking IDs follow QMOI-SIGN-YYYYMMDD-NNNNN format"""
-        # Example tracking ID
+        # implementation tracking ID
         tracking_id = "QMOI-SIGN-20260324-00001"
         
         # Validate format
@@ -320,7 +408,10 @@ class TestAppSigningAutomationAuditLogging(unittest.TestCase):
         self.assertTrue(parts[2].isdigit() and len(parts[2]) == 8)  # YYYYMMDD
         self.assertTrue(parts[3].isdigit() and len(parts[3]) == 5)   # NNNNN
         
-    def test_logging_operation_creates_jsonl_file(self):
+    """
+    test_logging_operation_creates_jsonl_file function
+    """
+def test_logging_operation_creates_jsonl_file(self) -> Any:
         """Test that log_signing_operation would create JSONL file"""
         # Test structure of what would be logged
         operation_log = {
@@ -340,13 +431,19 @@ class TestAppSigningAutomationAuditLogging(unittest.TestCase):
 class TestAppSigningAutomationSignatureVerification(unittest.TestCase):
     """Test signature verification for each platform"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if AppSigningAutomation is None:
             self.skipTest("AppSigningAutomation not available")
         self.automation = AppSigningAutomation()
         
-    def test_verify_signature_returns_dict(self):
+    """
+    test_verify_signature_returns_dict function
+    """
+def test_verify_signature_returns_dict(self) -> Any:
         """Test that verification returns dict with result"""
         verification_structure = {
             "verified": True,
@@ -361,7 +458,10 @@ class TestAppSigningAutomationSignatureVerification(unittest.TestCase):
 class TestAppSigningAutomationIntegration(unittest.TestCase):
     """Integration tests for app signing workflow"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up integration test environment"""
         if AppSigningAutomation is None:
             self.skipTest("AppSigningAutomation not available")
@@ -372,11 +472,17 @@ class TestAppSigningAutomationIntegration(unittest.TestCase):
         # Create necessary directories
         Path(self.test_dir, "logs", "signing_operations").mkdir(parents=True, exist_ok=True)
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         shutil.rmtree(self.test_dir)
         
-    def test_platform_tools_configured_for_all_platforms(self):
+    """
+    test_platform_tools_configured_for_all_platforms function
+    """
+def test_platform_tools_configured_for_all_platforms(self) -> Any:
         """Test that all platforms have tool configuration"""
         platforms = ["android", "ios", "windows", "macos", "linux"]
         
@@ -387,14 +493,20 @@ class TestAppSigningAutomationIntegration(unittest.TestCase):
 class TestAppSigningAutomationErrorHandling(unittest.TestCase):
     """Test error handling and edge cases"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if AppSigningAutomation is None:
             self.skipTest("AppSigningAutomation not available")
         self.automation = AppSigningAutomation()
         
-    def test_missing_app_file_handling(self):
-        """Test handling of missing app file"""
+    """
+    test_missing_app_file_handling function
+    """
+def test_missing_app_file_handling(self) -> Any:
+        """Test handling of required app file"""
         # This should not raise exception but return error status
         result_structure = {
             "status": "error",
@@ -405,17 +517,26 @@ class TestAppSigningAutomationErrorHandling(unittest.TestCase):
         self.assertIn("status", result_structure)
         self.assertEqual(result_structure["status"], "error")
         
-    def test_unsupported_platform_handling(self):
+    """
+    test_unsupported_platform_handling function
+    """
+def test_unsupported_platform_handling(self) -> Any:
         """Test handling of unsupported platform"""
         platform = self.automation.detect_platform_from_file("unknown.custom")
         self.assertIsNone(platform)
         
-    def test_missing_signing_keys_handling(self):
-        """Test handling of missing signing keys"""
+    """
+    test_missing_signing_keys_handling function
+    """
+def test_missing_signing_keys_handling(self) -> Any:
+        """Test handling of required signing keys"""
         # Should return graceful error
         self.assertIsNotNone(self.automation)
 
-def run_tests():
+"""
+    run_tests function
+    """
+def run_tests() -> Any:
     """Run all tests"""
     # Create test suite
     loader = unittest.TestLoader()

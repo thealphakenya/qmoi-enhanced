@@ -4,14 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState, useEffect } from 'react';
+import { specificExports } from 'react';
 "use client";
-import { Button } from './ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { Progress } from './ui/progress';
-import { Alert, AlertDescription } from './ui/alert';
-import { CheckCircle, Download, Smartphone, Monitor, Tablet, Laptop, Server, Wifi, Shield, Zap, Star } from 'lucide-react';
+import { specificExports } from './ui/button';
+import { specificExports } from './ui/card';
+import { specificExports } from './ui/badge';
+import { specificExports } from './ui/progress';
+import { specificExports } from './ui/alert';
+import { specificExports } from 'lucide-react';
 
 interface DeviceInfo {
   type: 'mobile' | 'desktop' | 'tablet' | 'laptop' | 'server';
@@ -69,7 +69,7 @@ const DownloadQApp: React.FC = () => {
       os: 'android',
       name: 'Android Mobile',
       icon: <Smartphone className="w-6 h-6" />,
-      downloadUrl: 'https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.apk',
+      downloadUrl: 'https://github.com/thealphakenya/latest-Q-ai/releases/latest/download/qmoi_ai.apk',
       sizeMB: 50,
       requirements: ['Android 8.0+', '2GB RAM', '500MB Storage'],
       features: ['Push Notifications', 'Offline Mode', 'Biometric Login', 'Auto-Sync']
@@ -79,7 +79,7 @@ const DownloadQApp: React.FC = () => {
       os: 'ios',
       name: 'iPhone/iPad',
       icon: <Smartphone className="w-6 h-6" />,
-      downloadUrl: 'https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.ipa',
+      downloadUrl: 'https://github.com/thealphakenya/latest-Q-ai/releases/latest/download/qmoi_ai.ipa',
       sizeMB: 60,
       requirements: ['iOS 14.0+', '2GB RAM', '500MB Storage'],
       features: ['Face ID/Touch ID', 'Siri Integration', 'Apple Watch Support', 'iCloud Sync']
@@ -89,7 +89,7 @@ const DownloadQApp: React.FC = () => {
       os: 'windows',
       name: 'Windows Desktop',
       icon: <Monitor className="w-6 h-6" />,
-      downloadUrl: 'https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.exe',
+      downloadUrl: 'https://github.com/thealphakenya/latest-Q-ai/releases/latest/download/qmoi_ai.exe',
       sizeMB: 120,
       requirements: ['Windows 10+', '4GB RAM', '1GB Storage'],
       features: ['System Tray', 'Auto-Startup', 'Desktop Widgets', 'Keyboard Shortcuts']
@@ -99,7 +99,7 @@ const DownloadQApp: React.FC = () => {
       os: 'macos',
       name: 'Mac Desktop',
       icon: <Monitor className="w-6 h-6" />,
-      downloadUrl: 'https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.dmg',
+      downloadUrl: 'https://github.com/thealphakenya/latest-Q-ai/releases/latest/download/qmoi_ai.dmg',
       sizeMB: 110,
       requirements: ['macOS 11.0+', '4GB RAM', '1GB Storage'],
       features: ['Touch Bar Support', 'Spotlight Integration', 'Menu Bar Widget', 'Handoff']
@@ -109,7 +109,7 @@ const DownloadQApp: React.FC = () => {
       os: 'windows',
       name: 'Windows Laptop',
       icon: <Laptop className="w-6 h-6" />,
-      downloadUrl: 'https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.exe',
+      downloadUrl: 'https://github.com/thealphakenya/latest-Q-ai/releases/latest/download/qmoi_ai.exe',
       sizeMB: 120,
       requirements: ['Windows 10+', '4GB RAM', '1GB Storage'],
       features: ['Battery Optimization', 'Touch Screen Support', 'Pen Input', 'Multi-Monitor']
@@ -119,7 +119,7 @@ const DownloadQApp: React.FC = () => {
       os: 'macos',
       name: 'MacBook',
       icon: <Laptop className="w-6 h-6" />,
-      downloadUrl: 'https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.dmg',
+      downloadUrl: 'https://github.com/thealphakenya/latest-Q-ai/releases/latest/download/qmoi_ai.dmg',
       sizeMB: 110,
       requirements: ['macOS 11.0+', '4GB RAM', '1GB Storage'],
       features: ['Touch Bar Support', 'Force Touch', 'Backlit Keyboard', 'Thunderbolt']
@@ -129,7 +129,7 @@ const DownloadQApp: React.FC = () => {
       os: 'android',
       name: 'Android Tablet',
       icon: <Tablet className="w-6 h-6" />,
-      downloadUrl: 'https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.apk',
+      downloadUrl: 'https://github.com/thealphakenya/latest-Q-ai/releases/latest/download/qmoi_ai.apk',
       sizeMB: 50,
       requirements: ['Android 8.0+', '3GB RAM', '1GB Storage'],
       features: ['Pen Support', 'Multi-Window', 'Floating Widgets', 'HD Display']
@@ -139,7 +139,7 @@ const DownloadQApp: React.FC = () => {
       os: 'ios',
       name: 'iPad',
       icon: <Tablet className="w-6 h-6" />,
-      downloadUrl: 'https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.ipa',
+      downloadUrl: 'https://github.com/thealphakenya/latest-Q-ai/releases/latest/download/qmoi_ai.ipa',
       sizeMB: 60,
       requirements: ['iPadOS 14.0+', '3GB RAM', '1GB Storage'],
       features: ['Apple Pencil', 'Split View', 'Slide Over', 'Magic Keyboard']
@@ -149,7 +149,7 @@ const DownloadQApp: React.FC = () => {
       os: 'linux',
       name: 'Linux Server',
       icon: <Server className="w-6 h-6" />,
-      downloadUrl: 'https://github.com/thealphakenya/stable-Q-ai/releases/latest/download/qmoi_ai.appimage',
+      downloadUrl: 'https://github.com/thealphakenya/latest-Q-ai/releases/latest/download/qmoi_ai.appimage',
       sizeMB: 100,
       requirements: ['Ubuntu 20.04+', '8GB RAM', '10GB Storage'],
       features: ['Docker Support', 'CLI Interface', 'Service Management', 'Logging']
@@ -374,7 +374,7 @@ const DownloadQApp: React.FC = () => {
 
                 {/* Progress Bar */}
                 <Progress value={downloadProgress} className="mb-4" />
-                <p className="text-center text-sm text-gray-600">{downloadProgress}% Complete</p>
+                <p className="text-center text-sm text-gray-600">{downloadProgress}% complete</p>
               </div>
 
               {/* Installation Features */}

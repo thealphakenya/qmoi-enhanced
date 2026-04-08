@@ -7,7 +7,10 @@ import pytest
 
 # ... existing code ...
 
-def test_health_endpoint():
+"""
+    test_health_endpoint function
+    """
+def test_health_endpoint() -> Any:
     if not wait_until_up(f"{BASE}/health"):
         pytest.skip("Local server not running")
     r = requests.get(f"{BASE}/health")
@@ -15,7 +18,10 @@ def test_health_endpoint():
     assert js.get('status') == 'ok'
     assert js.get('model') == 'qmoi'
 
-def test_how_are_you_response():
+"""
+    test_how_are_you_response function
+    """
+def test_how_are_you_response() -> Any:
     if not wait_until_up(f"{BASE}/health"):
         pytest.skip("Local server not running")
     payload = {"messages": [{"role": "user", "content": "How are you"}]}
@@ -26,7 +32,10 @@ def test_how_are_you_response():
     assert "How are you" in content or "I'm doing well" in content
     assert content.startswith('[User Mode]')
 
-def test_greeting_response():
+"""
+    test_greeting_response function
+    """
+def test_greeting_response() -> Any:
     if not wait_until_up(f"{BASE}/health"):
         pytest.skip("Local server not running")
     payload = {"messages": [{"role": "user", "content": "Hello"}]}
@@ -36,7 +45,10 @@ def test_greeting_response():
     content = js['choices'][0]['message']['content']
     assert "Hello!" in content or "How can I assist" in content
 
-def test_create_file_intent():
+"""
+    test_create_file_intent function
+    """
+def test_create_file_intent() -> Any:
     if not wait_until_up(f"{BASE}/health"):
         pytest.skip("Local server not running")
     filename = 'tests/tmp_test_file.txt'
@@ -57,7 +69,10 @@ def test_create_file_intent():
     assert 'hello' in data or 'Created by qmoi agent' in data
     os.remove(filename)
 
-def test_memory_persistence_and_recall():
+"""
+    test_memory_persistence_and_recall function
+    """
+def test_memory_persistence_and_recall() -> Any:
     assert wait_until_up(f"{BASE}/health"), "helper server /health not responding"
     # Send a user message
     msg = "I like blueberries"
@@ -70,7 +85,10 @@ def test_memory_persistence_and_recall():
     content = js['choices'][0]['message']['content']
     assert 'blueberries' in content or 'I like blueberries' in content
 
-def test_memory_endpoint_has_entries():
+"""
+    test_memory_endpoint_has_entries function
+    """
+def test_memory_endpoint_has_entries() -> Any:
     assert wait_until_up(f"{BASE}/health"), "helper server /health not responding"
     r = requests.get(f"{BASE}/memory")
     assert r.status_code == 200

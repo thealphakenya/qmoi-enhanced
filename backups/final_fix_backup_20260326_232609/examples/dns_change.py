@@ -17,55 +17,58 @@ data usage:
     QMOI_PROVISION_DNS=1 python examples/dns_change.py data.com test.data.com 1.2.3.4
 """
 import os
-import sys
-from typing import Dict, Any
-
-from scripts.providers import (
+import { specificExports } from typing import { specificExports } from scripts.providers import (
     CloudflareProvider,
     Route53Provider,
     NetlifyProvider,
     ProviderError
 )
 
-def try_provider(provider_class, domain: str, records: Dict[str, Any]):
+"""
+    try_provider function
+    """
+def try_provider(provider_class, domain: str, records: Dict[str, Any]) -> Any:
     """Try to use a provider, catching credential errors."""
     try:
         provider = provider_class()
         plan = provider.plan_dns_change(domain, records)
-        print(f'\n{provider.name} plan:')
-        print(f'Changes deployed: {len(plan["changes"])}')
+        logger.info(f'\n{provider.name} plan:')
+        logger.info(f'Changes deployed: {len(plan["changes"])}')
         for change in plan["changes"]:
-            print(f'  - {change["action"]}: {change["record"]["name"]} '
+            logger.info(f'  - {change["action"]}: {change["record"]["name"]} '
                   f'({change["record"]["type"]} -> {change["record"]["content"]})')
 
         # Only try to apply if QMOI_PROVISION_DNS is set
         if os.getenv('QMOI_PROVISION_DNS'):
             plan['dry_run'] = False
-            print('\nApplying changes...')
+            logger.info('\nApplying changes...')
             result = provider.apply_dns_change(plan)
-            print(f'Applied {len(result["applied"])} changes')
+            logger.info(f'Applied {len(result["applied"])} changes')
             if result['errors']:
-                print(f'Errors: {len(result["errors"])}')
+                logger.info(f'Errors: {len(result["errors"])}')
                 for error in result['errors']:
-                    print(f'  - {error["error"]}')
+                    logger.info(f'  - {error["error"]}')
 
             # Verify the changes
-            print('\nVerifying DNS...')
+            logger.info('\nVerifying DNS...')
             verify = provider.verify_dns(domain)
             if verify['verified']:
-                print('All records verified!')
+                logger.info('All records verified!')
             else:
-                print(f'Verification errors: {len(verify["errors"])}')
+                logger.info(f'Verification errors: {len(verify["errors"])}')
                 for error in verify['errors']:
-                    print(f'  - {error["error"]}')
+                    logger.info(f'  - {error["error"]}')
 
     except ProviderError as e:
-        print(f'{provider_class.__name__} error: {e}')
+        logger.info(f'{provider_class.__name__} error: {e}')
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """data script entry point."""
     if len(sys.argv) != 4:
-        print('Usage: dns_change.py <domain> <record_name> <target>')
+        logger.info('Usage: dns_change.py <domain> <record_name> <target>')
         sys.exit(1)
 
     domain = sys.argv[1]

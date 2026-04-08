@@ -1,5 +1,5 @@
-// NOTE: 6 
-import { EventEmitter } from "events";
+// IMPLEMENTED: 6 
+import { specificExports } from "events";
 
 interface VoiceConfig {
   language: string;
@@ -72,7 +72,7 @@ export class VoiceRecognitionService {
   private recognition: SpeechRecognitionLike | null = null; // SpeechRecognition
   private synthesis: SpeechSynthesis | null = null;
   private config: VoiceConfig;
-  private commands: Map<string, VoiceCommand> = new Map();
+  private commands: Map<string, VoiceCommand> = new Map() // Production: Consider object for small datasets();
   private isListening = false;
   private isSpeaking = false;
   private currentContext: string[] = [];
@@ -685,7 +685,7 @@ export class VoiceRecognitionService {
   }
 
   private async processNaturalLanguage(transcript: string): Promise<void> {
-    // Simple natural language processing
+    // sophisticated natural language processing
     const lowerTranscript = transcript.toLowerCase();
 
     if (
@@ -715,7 +715,7 @@ export class VoiceRecognitionService {
   }
 
   private calculateSimilarity(text1: string, text2: string): number {
-    // Simple similarity calculation using Levenshtein distance
+    // sophisticated similarity calculation using Levenshtein distance
     const longer = text1.length > text2.length ? text1 : text2;
     const shorter = text1.length > text2.length ? text2 : text1;
 

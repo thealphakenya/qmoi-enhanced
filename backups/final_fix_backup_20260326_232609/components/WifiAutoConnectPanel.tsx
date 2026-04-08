@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState, useEffect } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/use-toast";
 
 interface Network {
   ssid: string;
@@ -30,13 +30,13 @@ export const WifiAutoConnectPanel: React.FC = () => {
     setConnecting(true);
     setError(null);
     try {
-      const res = await fetch("/api/wifi/connect", {
+      const res = await apiClient.get("/api/wifi/connect", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ssid, isZeroRated }),
       });
 
-      if (!res.ok) throw new Error("Failed to connect");
+      if (!res.ok) throw new ProductionError("Failed to connect");
 
       setConnected(ssid);
       toast({
@@ -60,8 +60,8 @@ export const WifiAutoConnectPanel: React.FC = () => {
     setConnecting(true);
     setError(null);
     try {
-      const res = await fetch("/api/wifi/scan");
-      if (!res.ok) throw new Error("Failed to scan networks");
+      const res = await apiClient.get("/api/wifi/scan");
+      if (!res.ok) throw new ProductionError("Failed to scan networks");
       const data = await res.json();
       setNetworks(
         (data.networks || []).map((n: unknown) => {

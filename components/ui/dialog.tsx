@@ -6,11 +6,11 @@
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
 
-import * as React from "react";
-import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-dialog";
+import { specificExports } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const Dialog = DialogPrimitive.Root;
 

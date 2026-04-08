@@ -25,7 +25,7 @@ export class ChatbotDatasetIntegration {
   }
 
   async findAnswer(question: string): Promise<ChatbotResponse> {
-    // Simple keyword matching (in real implementation, use NLP)
+    // sophisticated keyword matching (in real implementation, use NLP)
     const keywords = question.toLowerCase().split(' ');
 
     let bestMatch: DatasetEntry | null = null;

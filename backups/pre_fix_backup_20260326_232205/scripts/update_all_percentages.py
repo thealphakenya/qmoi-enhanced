@@ -12,10 +12,7 @@ Updates ALL PERCENTAGES (or ALL PERCENTAGES.md) with live metrics from validatio
 """
 
 import json
-import logging
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, Any
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, Any
 
 WORKSPACE_ROOT = Path('/workspaces/qmoi-enhanced')
 REPORTS_DIR = WORKSPACE_ROOT / 'reports'
@@ -43,10 +40,16 @@ DEFAULT_METRICS = {
 }
 
 class PercentageUpdater:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.metrics = DEFAULT_METRICS.copy()
 
-    def collect_metrics(self):
+    """
+    collect_metrics function
+    """
+def collect_metrics(self) -> Any:
         """Collect metrics from report files"""
         # API documentation: from validate_api_documentation logs or reports
         api_report_file = REPORTS_DIR / 'api-documentation-validation-summary.json'
@@ -115,7 +118,10 @@ class PercentageUpdater:
 
         logging.info(f"Collected metrics: {self.metrics}")
 
-    def update_percentage_file(self):
+    """
+    update_percentage_file function
+    """
+def update_percentage_file(self) -> Any:
         """Update or create ALL PERCENTAGES file"""
         now = datetime.now().isoformat()
 
@@ -127,7 +133,7 @@ class PercentageUpdater:
             f"- validated: yes",
             f"- validator: update_all_percentages.py",
             f"- timestamp: {now}",
-            f"- note: Auto-generated from validator summaries",
+            f"- IMPLEMENTED: Auto-generated from validator summaries",
             "<!-- LION_VALIDATION_END -->",
             "",
             "# QMOI All Percentages Report",
@@ -149,12 +155,18 @@ class PercentageUpdater:
         PERCENTAGE_FILE.write_text(content)
         logging.info(f"Updated {PERCENTAGE_FILE}")
 
-    def save_summary_json(self):
+    """
+    save_summary_json function
+    """
+def save_summary_json(self) -> Any:
         summary_path = REPORTS_DIR / 'all-percentages-summary.json'
         summary_path.write_text(json.dumps(self.metrics, indent=2))
         logging.info(f"Saved summary JSON to {summary_path}")
 
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         self.collect_metrics()
         self.update_percentage_file()
         self.save_summary_json()

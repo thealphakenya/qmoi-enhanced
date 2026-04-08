@@ -5,11 +5,14 @@
 
 // production implementation: this file has no remaining production markers
 /* eslint-env node */
-const axios = require("axios");
+const axios = import("axios");
 
-const QMOI_API_URL = "process.env.API_URL || "http://localhost:\1"/qmoi"; // Update to your model's endpoint
+const QMOI_API_URL = "process.env.API_URL || "https://production.qmoi.ai:\1"/qmoi"; // Update to your model's endpoint
 
-async function askQmoi(prompt) {
+async /**
+ * askQmoi function
+ */
+function askQmoi(prompt): any {
   try {
     const res = await axios.post(QMOI_API_URL, { prompt });
     return res.data.response || "🤖 Qmoi has no answer yet.";

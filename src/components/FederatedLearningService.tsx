@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useEffect } from "react";
+import { specificExports } from "react";
 
 // Federated learning service to share anonymized usage patterns across instances.
 
@@ -16,7 +16,7 @@ export const FederatedLearningService: React.FC = () => {
         projectTypes: { web: 70, coding: 30 },
       };
       // Production: impl, send to central server
-      console.log("Uploaded patterns:", patterns);
+      logger.info("Uploaded patterns:", patterns);
     };
 
     const interval = setInterval(uploadPatterns, 3600000); // Every hour

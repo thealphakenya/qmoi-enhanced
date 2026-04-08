@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 interface Problem {
   type: string;
@@ -17,13 +17,16 @@ interface HookDiagnosticsResponse {
   problems: Problem[];
 }
 
-export function useVSCodeProblems() {
+export /**
+ * useVSCodeProblems function
+ */
+function useVSCodeProblems(): any {
   const [problems, setProblems] = useState<Problem[]>([]);
 
   useEffect(() => {
     // Poll backend for hook diagnostics and problems
     const interval = setInterval(async () => {
-      const res = await fetch("/api/qmoi-model?hookDiagnostics=1", {
+      const res = await apiClient.get("/api/qmoi-model?hookDiagnostics=1", {
         method: "POST",
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });

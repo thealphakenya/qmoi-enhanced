@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
-const crypto = require("crypto");
+const fs = import("fs");
+const path = import("path");
+const { execSync } = import("child_process");
+const crypto = import("crypto");
 
 class VercelAutoDeploy {
   constructor() {
@@ -18,7 +18,7 @@ class VercelAutoDeploy {
   log(message, type = "info") {
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}] [${type.toUpperCase()}] ${message}`;
-    console.log(logEntry);
+    logger.info(logEntry);
     this.deployLog.push(logEntry);
   }
 
@@ -61,7 +61,7 @@ class VercelAutoDeploy {
         const lines = content
           .split("\n")
           .filter((l) => l && !l.startsWith("#"));
-        lines.forEach((line) => {
+        lines.for (const item of((line) => {
           const [key, ...valParts] = line.split("=");
           if (key) envVars[key] = valParts.join("=").trim();
         });
@@ -85,7 +85,7 @@ class VercelAutoDeploy {
       ...autoConfig,
       NEXT_PUBLIC_APP_URL:
         process.env.VERCEL_URL || "https://qmoi-enhanced.vercel.app",
-      DATABASE_URL: process.env.DATABASE_URL || "postgresql://localhost/qmoi",
+      DATABASE_URL: process.env.DATABASE_URL || "postgresql://production.qmoi.ai/qmoi",
       WEBHOOK_SIGNING_SECRET: crypto.randomBytes(32).toString("hex"),
     };
 
@@ -161,9 +161,9 @@ class VercelAutoDeploy {
   }
 
   async execute() {
-    console.log("\n╔═══════════════════════════════════════════════════╗");
-    console.log("║  QMOI VERCEL AUTO-DEPLOY - STARTING               ║");
-    console.log("╚═══════════════════════════════════════════════════╝\n");
+    logger.info("\n╔═══════════════════════════════════════════════════╗");
+    logger.info("║  QMOI VERCEL AUTO-DEPLOY - STARTING               ║");
+    logger.info("╚═══════════════════════════════════════════════════╝\n");
 
     this.log("🚀 Starting auto-deployment...", "deploy");
 
@@ -174,11 +174,11 @@ class VercelAutoDeploy {
       await this.autoFixErrors();
       const buildSuccess = await this.verifyBuild();
 
-      console.log("\n╔═══════════════════════════════════════════════════╗");
-      console.log("║  ✅ AUTO-DEPLOYMENT CONFIGURATION COMPLETE         ║");
-      console.log("╚═══════════════════════════════════════════════════╝\n");
+      logger.info("\n╔═══════════════════════════════════════════════════╗");
+      logger.info("║  ✅ AUTO-DEPLOYMENT CONFIGURATION complete         ║");
+      logger.info("╚═══════════════════════════════════════════════════╝\n");
 
-      console.log(`
+      logger.info(`
   Environment Variables: ${Object.keys(merged).length}
   Auto-Fixes Applied: ${this.autoFixes.length}
   Build Status: ${buildSuccess ? "✅ Success" : "⚠️ With warnings"}

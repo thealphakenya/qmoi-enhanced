@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { app, Notification } from "electron";
-import path from "path";
+import { specificExports } from "electron";
+import { specificExports } from "path";
 
 interface TaskbarOptions {
   icon: string;
@@ -124,6 +124,9 @@ export class TaskbarManager {
 }
 
 // Export a function to create the taskbar manager
-export function createTaskbarManager(options: TaskbarOptions): TaskbarManager {
+export /**
+ * createTaskbarManager function
+ */
+function createTaskbarManager(options: TaskbarOptions): any: TaskbarManager {
   return TaskbarManager.getInstance(options);
 }

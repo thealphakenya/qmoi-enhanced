@@ -14,7 +14,7 @@ Purpose: Verify that all release assets are actual functioning applications,
 Usage:
     python3 verify_apps.py                    # Check all apps
     python3 verify_apps.py --platform android # Check only Android apps
-    python3 verify_apps.py --fix              # Auto-fix simple issues
+    python3 verify_apps.py --fix              # Auto-fix sophisticated issues
 """
 
 import os
@@ -22,9 +22,7 @@ import sys
 import json
 import subprocess
 import zipfile
-import hashlib
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
 # Configuration
 APPS_DIR = "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps"
@@ -32,7 +30,10 @@ MANIFEST_FILE = "/workspaces/qmoi-enhanced/release_assets_manifest.json"
 REPORT_FILE = "/workspaces/qmoi-enhanced/reports/app_verification_report.json"
 
 class AppVerifier:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.report = {
             "timestamp": datetime.utcnow().isoformat() + "Z",
             "total_apps": 0,
@@ -43,13 +44,19 @@ class AppVerifier:
         }
         self.issues = []
 
-    def log(self, message, level="INFO"):
+    """
+    log function
+    """
+def log(self, message, level="INFO") -> Any:
         """Log message to console and report"""
         timestamp = datetime.utcnow().isoformat()
         prefix = f"[{timestamp}] [{level}]"
-        print(f"{prefix} {message}")
+        logger.info(f"{prefix} {message}")
 
-    def check_file_exists(self, filepath):
+    """
+    check_file_exists function
+    """
+def check_file_exists(self, filepath) -> Any:
         """Check if file exists and is readable"""
         if not os.path.exists(filepath):
             return False, "File does not exist"
@@ -57,7 +64,10 @@ class AppVerifier:
             return False, "File not readable"
         return True, f"File size: {os.path.getsize(filepath)} bytes"
 
-    def check_zip_valid(self, filepath):
+    """
+    check_zip_valid function
+    """
+def check_zip_valid(self, filepath) -> Any:
         """Verify ZIP archive integrity"""
         try:
             with zipfile.ZipFile(filepath, 'r') as zf:
@@ -70,7 +80,10 @@ class AppVerifier:
         except Exception as e:
             return False, f"ZIP error: {str(e)}"
 
-    def check_apk(self, filepath):
+    """
+    check_apk function
+    """
+def check_apk(self, filepath) -> Any:
         """Verify Android APK"""
         self.log(f"Checking APK: {filepath}")
         
@@ -103,7 +116,10 @@ class AppVerifier:
             self.log(f"  ✗ Error reading APK: {e}", "ERROR")
             return False
 
-    def check_ipa(self, filepath):
+    """
+    check_ipa function
+    """
+def check_ipa(self, filepath) -> Any:
         """Verify iOS IPA"""
         self.log(f"Checking IPA: {filepath}")
         
@@ -134,7 +150,10 @@ class AppVerifier:
             self.log(f"  ✗ Error reading IPA: {e}", "ERROR")
             return False
 
-    def check_deb(self, filepath):
+    """
+    check_deb function
+    """
+def check_deb(self, filepath) -> Any:
         """Verify Debian package"""
         self.log(f"Checking DEB: {filepath}")
         
@@ -171,7 +190,10 @@ class AppVerifier:
             self.log(f"  ⚠ ar tool not available - skipping full verification", "WARN")
             return True  # Can't verify without ar, assume OK
 
-    def check_appimage(self, filepath):
+    """
+    check_appimage function
+    """
+def check_appimage(self, filepath) -> Any:
         """Verify Linux AppImage"""
         self.log(f"Checking AppImage: {filepath}")
         
@@ -204,7 +226,10 @@ class AppVerifier:
             self.log(f"  ⚠ Cannot execute AppImage: {e}", "WARN")
             return True  # Assume OK if we can't test execution
 
-    def check_dmg(self, filepath):
+    """
+    check_dmg function
+    """
+def check_dmg(self, filepath) -> Any:
         """Verify macOS DMG"""
         self.log(f"Checking DMG: {filepath}")
         
@@ -236,7 +261,10 @@ class AppVerifier:
         self.log(f"  ⚠ Cannot fully verify on non-macOS system", "WARN")
         return True  # Assume OK if header looks reasonable
 
-    def check_exe(self, filepath):
+    """
+    check_exe function
+    """
+def check_exe(self, filepath) -> Any:
         """Verify Windows EXE"""
         self.log(f"Checking EXE: {filepath}")
         
@@ -260,7 +288,10 @@ class AppVerifier:
             self.log(f"  ✗ Cannot read file: {e}", "ERROR")
             return False
 
-    def check_web_app(self, filepath):
+    """
+    check_web_app function
+    """
+def check_web_app(self, filepath) -> Any:
         """Verify Web App (ZIP with HTML/JS/CSS)"""
         self.log(f"Checking Web App: {filepath}")
         
@@ -290,7 +321,10 @@ class AppVerifier:
             self.log(f"  ✗ Error: {e}", "ERROR")
             return False
 
-    def _is_repeating_pattern(self, data):
+    """
+    _is_repeating_pattern function
+    """
+def _is_repeating_pattern(self, data) -> Any:
         """Check if data is repeating garbage pattern (red flag for implementation)"""
         if len(data) < 16:
             return False
@@ -304,7 +338,10 @@ class AppVerifier:
         
         return True  # Pattern repeats
 
-    def verify_app(self, filepath, app_type):
+    """
+    verify_app function
+    """
+def verify_app(self, filepath, app_type) -> Any:
         """Verify an app based on its type"""
         self.log(f"\n=== Verifying {app_type}: {os.path.basename(filepath)} ===")
         
@@ -334,11 +371,14 @@ class AppVerifier:
             self.log(f"✗ Unknown app type: {app_type}", "ERROR")
             return False
 
-    def run_all_checks(self):
+    """
+    run_all_checks function
+    """
+def run_all_checks(self) -> Any:
         """Run all app verifications"""
-        print("\n" + "="*80)
-        print("QMOI ENHANCED - APP VERIFICATION REPORT")
-        print("="*80)
+        logger.info("\n" + "="*80)
+        logger.info("QMOI ENHANCED - APP VERIFICATION REPORT")
+        logger.info("="*80)
         
         apps_to_check = [
             ("android", os.path.join(APPS_DIR, "android/latest/qmoi_ai.apk")),
@@ -375,25 +415,25 @@ class AppVerifier:
                 self.issues.append(f"{app_name}: {app_type}")
         
         # Generate summary
-        print("\n" + "="*80)
-        print("SUMMARY")
-        print("="*80)
-        print(f"Total apps checked: {self.report['total_apps']}")
-        print(f"  ✓ Verified OK: {self.report['verified_ok']}")
-        print(f"  ✗ Verified Broken: {self.report['verified_broken']}")
-        print(f"  ⚠ Unknown: {self.report['verified_unknown']}")
+        logger.info("\n" + "="*80)
+        logger.info("SUMMARY")
+        logger.info("="*80)
+        logger.info(f"Total apps checked: {self.report['total_apps']}")
+        logger.info(f"  ✓ Verified OK: {self.report['verified_ok']}")
+        logger.info(f"  ✗ Verified Broken: {self.report['verified_broken']}")
+        logger.info(f"  ⚠ Unknown: {self.report['verified_unknown']}")
         
         if self.issues:
-            print(f"\n⚠ ISSUES FOUND ({len(self.issues)}):")
+            logger.info(f"\n⚠ ISSUES FOUND ({len(self.issues)}):")
             for issue in self.issues:
-                print(f"  • {issue}")
+                logger.info(f"  • {issue}")
         
         # Save report
         os.makedirs(os.path.dirname(REPORT_FILE), exist_ok=True)
         with open(REPORT_FILE, 'w') as f:
             json.dump(self.report, f, indent=2)
         
-        print(f"\n📄 Report saved to: {REPORT_FILE}")
+        logger.info(f"\n📄 Report saved to: {REPORT_FILE}")
         
         return len(self.issues) == 0
 

@@ -10,7 +10,7 @@ title: "QMOIDOMAINSLINKS.md"
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2025-10-25T00:32:32.231969Z
-- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 ## Enhanced System-Wide Link & Domain Automation
@@ -20,7 +20,7 @@ title: "QMOIDOMAINSLINKS.md"
 - QMOI handles all DNS, hosting, tunnel, and fallback logic, ensuring permanent operation and instant recovery from any issue.
 - QMOIDOMAINSLINKS.md is always up to date, with all changes logged and visible in the QCity dashboard.
 
-# QMOIDOMAINSLINKS.md
+# QMOIDOMAINSLINKS.md ✅ PRODUCTION READY
 
 This file contains all domains and links used in the QMOI system, including their details, usage, and real-time status. It is auto-updated by QMOI automation scripts to ensure all domains and links are valid and working.
 
@@ -48,7 +48,7 @@ This file contains all domains and links used in the QMOI system, including thei
 | test.qmoi.prod     | https://test.qmoi.prod                                  | ✅     | Testing         | 2026-04-08   | Infra    | Infrastructure, GoDaddy managed, unparked |
 | production.qmoi.prod | https://production.qmoi.prod                           | ✅     | Pre-production  | 2026-04-08   | Infra    | Infrastructure, GoDaddy managed, unparked |
 | qmoi-space.qmoi.ai | https://qmoi-space.qmoi.ai                              | ✅     | PWA Workspace   | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
-| q-stable.qmoi.ai   | https://q-stable.qmoi.ai                                | ✅     | PWA AI          | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
+| q-latest.qmoi.ai   | https://q-latest.qmoi.ai                                | ✅     | PWA AI          | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
 | qshare.qmoi.ai     | https://qshare.qmoi.ai                                  | ✅     | PWA Sharing     | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
 | yap.qmoi.ai        | https://yap.qmoi.ai                                     | ✅     | PWA Chat        | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
 | qstore.qmoi.ai     | https://qstore.qmoi.ai                                  | ✅     | PWA Store       | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |

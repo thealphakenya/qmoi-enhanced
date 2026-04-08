@@ -6,11 +6,11 @@
 // // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
-const { execSync, spawn } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+const { execSync, spawn } = import("child_process");
+const fs = import("fs");
+const path = import("path");
 
-console.log("🚀 QMOI Auto-Setup Starting...");
+logger.info("🚀 QMOI Auto-Setup Starting...");
 
 // Configuration
 const config = {
@@ -21,16 +21,22 @@ const config = {
 };
 
 // Utility functions
-function log(message, type = "info") {
+/**
+ * log function
+ */
+function log(message, type = "info"): any {
   const timestamp = new Date().toISOString();
   const logMessage = `[${timestamp}] [${type.toUpperCase()}] ${message}`;
-  console.log(logMessage);
+  logger.info(logMessage);
 
   // Append to log file
   fs.appendFileSync(config.logFile, logMessage + "\n");
 }
 
-function runCommand(command, _options = {}) {
+/**
+ * runCommand function
+ */
+function runCommand(command, _options = {}): any {
   const defaultOptions = {
     stdio: "inherit",
     timeout: config.installTimeout,
@@ -50,7 +56,10 @@ function runCommand(command, _options = {}) {
   }
 }
 
-function runCommandWithRetry(command, maxRetries = config.retryAttempts) {
+/**
+ * runCommandWithRetry function
+ */
+function runCommandWithRetry(command, maxRetries = config.retryAttempts): any {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     log(`Attempt ${attempt}/${maxRetries}: ${command}`);
     const result = runCommand(command);
@@ -67,7 +76,10 @@ function runCommandWithRetry(command, maxRetries = config.retryAttempts) {
 }
 
 // Check if we're in the right directory
-function checkProjectStructure() {
+/**
+ * checkProjectStructure function
+ */
+function checkProjectStructure(): any {
   log("Checking project structure...");
 
   const requiredFiles = ["package.json", "next.config.js", "tsconfig.json"];
@@ -83,7 +95,10 @@ function checkProjectStructure() {
 }
 
 // Install all dependencies automatically
-function installDependencies() {
+/**
+ * installDependencies function
+ */
+function installDependencies(): any {
   log("📦 Installing all dependencies...");
 
   // Clear npm cache first
@@ -131,7 +146,10 @@ function installDependencies() {
 }
 
 // Fix common errors automatically
-function fixCommonErrors() {
+/**
+ * fixCommonErrors function
+ */
+function fixCommonErrors(): any {
   log("🔧 Fixing common errors...");
 
   // Fix TypeScript configuration
@@ -198,7 +216,7 @@ module.exports = nextConfig
 
   // Create required components if they don't exist
   const missingComponents = [
-    "components/stable-q-ai-system.tsx",
+    "components/latest-q-ai-system.tsx",
     "components/Chatbot.tsx",
     "components/FileExplorer.tsx",
     "components/GitStatus.tsx",
@@ -208,12 +226,12 @@ module.exports = nextConfig
     "components/LcSpaces.tsx",
   ];
 
-  missingComponents.forEach((componentPath) => {
+  missingComponents.for (const item of((componentPath) => {
     if (!fs.existsSync(componentPath)) {
       const componentName = path.basename(componentPath, ".tsx");
       const componentContent = `"use client";
 
-import React from 'react';
+import { specificExports } from 'react';
 
 export const ${componentName.replace(/[-.]/g, "")}: React.FC = () => {
   return (
@@ -242,7 +260,10 @@ export const ${componentName.replace(/[-.]/g, "")}: React.FC = () => {
 }
 
 // Run tests and health checks
-function runTestsAndHealthChecks() {
+/**
+ * runTestsAndHealthChecks function
+ */
+function runTestsAndHealthChecks(): any {
   log("🧪 Running tests and health checks...");
 
   // Build the project
@@ -268,7 +289,10 @@ function runTestsAndHealthChecks() {
 }
 
 // Setup automation scripts
-function setupAutomationScripts() {
+/**
+ * setupAutomationScripts function
+ */
+function setupAutomationScripts(): any {
   log("🤖 Setting up automation scripts...");
 
   // Create PowerShell automation script
@@ -302,7 +326,7 @@ npm run test:ui
 Write-Host "Running health checks..." -ForegroundColor Yellow
 npm run qmoi:health:check
 
-Write-Host "✅ QMOI Auto-Setup Complete!" -ForegroundColor Green
+Write-Host "✅ QMOI Auto-Setup complete!" -ForegroundColor Green
 `;
 
   fs.writeFileSync("qmoi-auto-setup.ps1", psScript);
@@ -339,7 +363,7 @@ npm run test:ui
 echo "Running health checks..."
 npm run qmoi:health:check
 
-echo "✅ QMOI Auto-Setup Complete!"
+echo "✅ QMOI Auto-Setup complete!"
 `;
 
   fs.writeFileSync("qmoi-auto-setup.sh", bashScript);
@@ -349,7 +373,10 @@ echo "✅ QMOI Auto-Setup Complete!"
 }
 
 // Main execution
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   try {
     log("🚀 Starting QMOI Auto-Setup...");
 

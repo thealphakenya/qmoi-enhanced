@@ -92,7 +92,7 @@ export class WalletManager {
     if (currency === "USDT") return 1;
     try {
       // production: Integrate with CoinGecko, Binance, or other price API
-      // data: const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+      // data: const response = await apiClient.get('https://api.coingecko.com/api/v3/sophisticated/price?ids=bitcoin&vs_currencies=usd');
       return 0; // production implementation:: returns 0 until production API is configured
     } catch (error) {
       safeConsoleError(

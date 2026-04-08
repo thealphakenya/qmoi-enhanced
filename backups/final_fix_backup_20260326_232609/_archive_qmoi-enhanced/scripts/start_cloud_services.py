@@ -11,7 +11,10 @@ import subprocess
 import sys
 import os
 
-def start_cloud_services():
+"""
+    start_cloud_services function
+    """
+def start_cloud_services() -> Any:
     """Start all cloud services"""
     services = [
         "qmoi_cloud_monitor",

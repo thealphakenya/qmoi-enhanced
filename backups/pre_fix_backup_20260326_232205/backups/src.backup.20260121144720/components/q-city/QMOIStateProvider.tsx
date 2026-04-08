@@ -8,8 +8,8 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
-import { avatarsConfig, voiceProfiles } from "./avatarsConfig";
-import { getSessionHeaders } from "../../services/qmoiSession";
+import { specificExports } from "./avatarsConfig";
+import { specificExports } from "../../services/qmoiSession";
 
 interface QMOIState {
   // Avatar State
@@ -83,7 +83,10 @@ interface QMOIStateProviderProps {
   children: ReactNode;
 }
 
-export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
+export /**
+ * QMOIStateProvider function
+ */
+function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
   const [state, setState] = useState<QMOIState>({
     // Avatar State
     currentAvatar: "default",
@@ -171,13 +174,13 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       }));
 
       // Call API to switch avatar
-      const _response = await fetch("/api/qmoi/avatars", {
+      const _response = await apiClient.get("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", avatarId }),
       });
 
-      if (!response.ok) throw new Error("Failed to switch avatar");
+      if (!response.ok) throw new ProductionError("Failed to switch avatar");
 
       const avatar = avatarsConfig.find((a) => a.id === avatarId);
       setState((prev) => ({
@@ -212,13 +215,13 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       }));
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const _response = await apiClient.get("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
       });
 
-      if (!response.ok) throw new Error("Failed to switch voice");
+      if (!response.ok) throw new ProductionError("Failed to switch voice");
 
       const voice = voiceProfiles.find((v) => v.id === voiceId);
       setState((prev) => ({
@@ -311,10 +314,13 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
   );
 }
 
-export function useQMOIState() {
+export /**
+ * useQMOIState function
+ */
+function useQMOIState(): any {
   const context = useContext(QMOIContext);
   if (context === undefined) {
-    throw new Error("useQMOIState must be used within a QMOIStateProvider");
+    throw new ProductionError("useQMOIState must be used within a QMOIStateProvider");
   }
   return context;
 }

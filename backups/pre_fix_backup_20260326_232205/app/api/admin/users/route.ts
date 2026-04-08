@@ -4,16 +4,19 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db/prisma";
-import authService from "@/lib/auth/service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/auth/service";
 
 /**
  * GET /api/admin/users
  * List all users with filtering and pagination
  * Admin only
  */
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -128,7 +131,10 @@ export async function GET(_request: NextRequest) {
  * PUT /api/admin/users/:userId
  * Update user information (admin only)
  */
-export async function PUT(_request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -233,7 +239,10 @@ export async function PUT(_request: NextRequest) {
  * DELETE /api/admin/users/:userId
  * Delete a user account (admin only)
  */
-export async function DELETE(_request: NextRequest) {
+export async /**
+ * DELETE function
+ */
+function DELETE(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 

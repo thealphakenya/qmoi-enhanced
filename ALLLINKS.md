@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.701318Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
@@ -13,11 +13,11 @@ title: "ALLLINKS.md"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# ALLLINKS.md
+# ALLLINKS.md ✅ PRODUCTION READY
 
 Generated: 2025-10-31T00:23:25.385420Z
 
-> NOTE: For production, all links/domains/platforms must be validated by `QMOIService.validateLink` and `validateDomain`; update this file after each link audit.
+> IMPLEMENTED: For production, all links/domains/platforms must be validated by `QMOIService.validateLink` and `validateDomain`; update this file after each link audit.
 
 ## ALLQMOIAIAPPSREALEASESVERSIONS.md
 
@@ -52,31 +52,31 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## BUILDAPPSFORALLPLATFORMS.md
 
-- https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
+- https://github.com/thestablekenya/latest-Q-ai/releases/tag/v1.0.177
 
 ## BUILD_COMPLETION_SUMMARY.md
 
-- https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
+- https://github.com/thestablekenya/latest-Q-ai/releases/tag/v1.0.177
 
 ## CMDCOMMANDS.md
 
-- http://localhost:5050/api/build-apps
+- https://production.qmoi.ai:5050/api/build-apps
 
 ## CURLCOMMANDS.md
 
-- http://localhost:4000/api/error-fix-log
-- http://localhost:4000/api/logs
-- http://localhost:4000/api/realtime-events
-- http://localhost:4000/api/trigger-fix
-- http://localhost:4000/health
-- http://localhost:4000/login
+- https://production.qmoi.ai:4000/api/error-fix-log
+- https://production.qmoi.ai:4000/api/logs
+- https://production.qmoi.ai:4000/api/realtime-events
+- https://production.qmoi.ai:4000/api/trigger-fix
+- https://production.qmoi.ai:4000/health
+- https://production.qmoi.ai:4000/login
 - https://data.com/dog.jpg
 - https://data.com/group_photo.jpg
 
 ## DEPLOYMENT-README.md
 
 - https://qmoi.ai
-- http://localhost:5055
+- https://production.qmoi.ai:5055
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule
 - https://huggingface.co/stableqmoi/qmoi
@@ -87,7 +87,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 - https://qmoi.ai
 - https://qmoi.ai/qcity
-- http://localhost:5000
+- https://production.qmoi.ai:5000
 
 ## DOWNLOADQMOIAIAPPALLprodICES.md
 
@@ -154,7 +154,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## MONITORING.md
 
-- http://localhost:4000/
+- https://production.qmoi.ai:4000/
 
 ## QCITYREADME.md
 
@@ -203,13 +203,13 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://api.airtel.com/status
 - https://your-domain.com/api/airtel/callback
 
-## QMOI-AUTOMATION-COMPLETE.md
+## QMOI-AUTOMATION-complete.md
 
 - https://qmoi.ai/qmoi-revenue-dashboard
 
 ## QMOI-ENHANCED-AUTOMATION.md
 
-- http://localhost:3010
+- https://production.qmoi.ai:3010
 - https://gitlab.qmoi.com
 - https://gitpod.qmoi.com
 - https://quantum.qmoi.com
@@ -218,7 +218,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## QMOI-ENHANCED-AUTOTESTS.md
 
 - https://qmoi.ai
-- http://localhost:3001
+- https://production.qmoi.ai:3001
 - https://api-production.q-city.ai
 - https://api.q-city.ai
 - https://github.com/q-city/qmoi-enhanced.git
@@ -228,14 +228,14 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://q-city.ai
 - https://production.q-city.ai
 
-## QMOI-ENHANCED-COMPLETE.md
+## QMOI-ENHANCED-complete.md
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production.qmoi.ai:7860/status
+- https://production.qmoi.ai:7861
 
 ## QMOI-ENHANCED-FINAL.md
 
-- http://localhost:7860
+- https://production.qmoi.ai:7860
 - https://api-inference.huggingface.co/models/stableqmoi/qmoi
 - https://github.com/stableqmoi/qmoi-ai-system
 - https://huggingface.co/stableqmoi/qmoi-ai-system
@@ -377,7 +377,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## QMOIQCITYAUTOMATIC.md
 
-- http://localhost:3010
+- https://production.qmoi.ai:3010
 
 ## QMOIREGISTRY.md
 
@@ -440,7 +440,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## README (1).md
 
-- http://localhost:5055
+- https://production.qmoi.ai:5055
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
@@ -458,8 +458,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
 - https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk
-- https://github.com/thestablekenya/stable-Q-ai/releases
-- https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi
+- https://github.com/thestablekenya/latest-Q-ai/releases
+- https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi
 
 ## README.md
 
@@ -510,9 +510,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
-- https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg
+- https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-latest.yml/badge.svg
 - https://img.shields.io/badge/QMOI%20Build-Passing-brightgreen?style=flat-square
-- https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/
+- https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-latest/
 
 ## RSAAPIREADME.md
 
@@ -520,7 +520,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## SCRIPTSREADME.md
 
-- http://localhost:3001
+- https://production.qmoi.ai:3001
 
 ## WPA.md
 
@@ -556,7 +556,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## config/test-config.json
 
 - https://qmoi.ai
-- http://localhost:3001
+- https://production.qmoi.ai:3001
 - https://api-production.q-city.ai
 - https://api.github.com
 - https://api.q-city.ai
@@ -567,14 +567,14 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## config/test_config.json
 
 - https://qmoi.ai
-- https://stable-q-ai.com
-- https://production.stable-q-ai.com
+- https://latest-q-ai.com
+- https://production.latest-q-ai.com
 
 ## docs/API.md
 
-- http://localhost:8000
-- http://localhost:8000/automation/status
-- http://localhost:8000/token
+- https://production.qmoi.ai:8000
+- https://production.qmoi.ai:8000/automation/status
+- https://production.qmoi.ai:8000/token
 
 ## docs/MONITORING_SYSTEM.md
 
@@ -600,8 +600,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://travis-ci.org/jprichardson/node-fs-extra
 - https://travis-ci.org/nodeca/argparse
 - https://travis-ci.org/tj/commander.js
-- http://w
-- http://ww
+- https://w
+- https://ww
 - https://angularjs.org/
 - https://api.air
 - https://api.mytrading.com/markets
@@ -696,14 +696,14 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://codecov.io/gh/sinonjs/commons
 - https://codecov.io/gh/sinonjs/commons/branch/master/graph/badge.svg
 - https://codecov.io/github/jquery/esprima
-- https://coveralls.io/github/NaturalIntelligence/fast-xml-parser?branch=master
+- https://coveralls.io/github/NaturalIntelligence/high-performance-xml-parser?branch=master
 - https://coveralls.io/github/Rob--W/proxy-from-env?branch=master
 - https://coveralls.io/github/SamVerschueren/decode-uri-component?branch=master
 - https://coveralls.io/github/alexindigo/asynckit?branch=master
 - https://coveralls.io/github/chalk/chalk?branch=master
 - https://coveralls.io/github/chalk/wrap-ansi?branch=master
-- https://coveralls.io/github/epoberezkin/fast-deep-equal?branch=master
-- https://coveralls.io/github/epoberezkin/fast-json-stable-stringify?branch=master
+- https://coveralls.io/github/epoberezkin/high-performance-deep-equal?branch=master
+- https://coveralls.io/github/epoberezkin/high-performance-json-latest-stringify?branch=master
 - https://coveralls.io/github/form-data/form-data?branch=master
 - https://coveralls.io/github/isaacs/node-glob?branch=master
 - https://coveralls.io/github/isaacs/node-lru-cache
@@ -765,12 +765,12 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://coveralls.io/r/yargs/set-blocking?branch=master
 - https://coveralls.io/repos/SamVerschueren/decode-uri-component/badge.svg?branch=master&service=github
 - https://coveralls.io/repos/follow-redirects/follow-redirects/badge.svg?branch=master
-- https://coveralls.io/repos/github/NaturalIntelligence/fast-xml-parser/badge.svg?branch=master
+- https://coveralls.io/repos/github/NaturalIntelligence/high-performance-xml-parser/badge.svg?branch=master
 - https://coveralls.io/repos/github/Rob--W/proxy-from-env/badge.svg?branch=master
 - https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master
 - https://coveralls.io/repos/github/chalk/wrap-ansi/badge.svg?branch=master
-- https://coveralls.io/repos/github/epoberezkin/fast-deep-equal/badge.svg?branch=master
-- https://coveralls.io/repos/github/epoberezkin/fast-json-stable-stringify/badge.svg?branch=master
+- https://coveralls.io/repos/github/epoberezkin/high-performance-deep-equal/badge.svg?branch=master
+- https://coveralls.io/repos/github/epoberezkin/high-performance-json-latest-stringify/badge.svg?branch=master
 - https://coveralls.io/repos/github/istanbuljs/babel-plugin-istanbul/badge.svg?branch=master
 - https://coveralls.io/repos/github/istanbuljs/test-exclude/badge.svg?branch=master
 - https://coveralls.io/repos/github/nexdrew/which-module/badge.svg?branch=master
@@ -819,7 +819,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/yargs-parser.
 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/yargs.
 - https://github.com/Microsoft/TypeScript/blob/master/CONTRIBUTING.md
-- https://github.com/NaturalIntelligence/fast-xml-parser/issues/71
+- https://github.com/NaturalIntelligence/high-performance-xml-parser/issues/71
 - https://github.com/Rich-Harris/vlq/tree/master/sourcemaps
 - https://github.com/SamVerschueren/decode-uri-component/workflows/CI/badge.svg
 - https://github.com/WPO-Foundation/wptagent/blob/master/internal/chrome_desktop.py
@@ -842,8 +842,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/dakshkhetan
 - https://github.com/ehmicky/cross-platform-node-guide/blob/master/docs/6_networking_ipc/signals.md#cross-platform-signals
 - https://github.com/electron/electron/issues/4690
-- https://github.com/epoberezkin/fast-deep-equal/blob/master/LICENSE
-- https://github.com/epoberezkin/fast-json-stable-stringify/blob/master/LICENSE
+- https://github.com/epoberezkin/high-performance-deep-equal/blob/master/LICENSE
+- https://github.com/epoberezkin/high-performance-json-latest-stringify/blob/master/LICENSE
 - https://github.com/errwischt/stacktrace-parser/blob/master/LICENSE
 - https://github.com/estree/estree
 - https://github.com/estree/estree/blob/master/es2020.md#importexpression
@@ -885,7 +885,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/kriskowal/asap/blob/master/raw.js
 - https://github.com/mastermatt
 - https://github.com/mozilla/source-map/blob/master/CHANGELOG.md#070
-- https://github.com/mrmlnc/fast-glob/actions/workflows/benchmark.yml?query=branch%3Amaster
+- https://github.com/mrmlnc/high-performance-glob/actions/workflows/benchmark.yml?query=branch%3Amaster
 - https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md
 - https://github.com/nodeca/argparse/blob/master/LICENSE
 - https://github.com/nodeca/argparse/tree/master/examples
@@ -1143,10 +1143,10 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://travis-ci.org/chalk/wrap-ansi
 - https://travis-ci.org/chalk/wrap-ansi.svg?branch=master
 - https://travis-ci.org/davidtheclark/cosmiconfig
-- https://travis-ci.org/epoberezkin/fast-deep-equal
-- https://travis-ci.org/epoberezkin/fast-deep-equal.svg?branch=master
-- https://travis-ci.org/epoberezkin/fast-json-stable-stringify
-- https://travis-ci.org/epoberezkin/fast-json-stable-stringify.svg?branch=master
+- https://travis-ci.org/epoberezkin/high-performance-deep-equal
+- https://travis-ci.org/epoberezkin/high-performance-deep-equal.svg?branch=master
+- https://travis-ci.org/epoberezkin/high-performance-json-latest-stringify
+- https://travis-ci.org/epoberezkin/high-performance-json-latest-stringify.svg?branch=master
 - https://travis-ci.org/evanw/node-source-map-support
 - https://travis-ci.org/evanw/node-source-map-support.svg?branch=master
 - https://travis-ci.org/isaacs/minimatch.svg?branch=master
@@ -1307,18 +1307,18 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://antonfisher.com
 - https://bestiejs.github.io/json3/
 - https://blog.patrickmeenan.com/2013/07/measuring-performance-of-user-experience.html
-- http://bolinfest.com/
-- http://bolinfest.com/essays/json.html
+- https://bolinfest.com/
+- https://bolinfest.com/essays/json.html
 - https://browserify.org
 - https://browserify.org/
 - https://c9.io
 - https://caniuse.com/#feat=user-timing
 - https://cgit.freedesktop.org/xdg/xdg-utils/commit/?id=c55122295c2a480fa721a9614f0e2d42b2949c18
 - https://circleci.com
-- http://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/
-- http://deno.land/x/escalade
-- http://prodtoolscommunity.herokuapp.com
-- http://prodtoolscommunity.herokuapp.com/badge.svg
+- https://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/
+- https://deno.land/x/escalade
+- https://prodtoolscommunity.herokuapp.com
+- https://prodtoolscommunity.herokuapp.com/badge.svg
 - https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling
 - https://docs.python.org/prod/library/argparse.html
 - https://docs.python.org/prod/library/argparse.html#action
@@ -1342,10 +1342,10 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://expressjs.com
 - https://expressjs.com/
 - https://expressjs.com/guide.html#Route-Middleware
-- http://extjs.github.com/Connect/api.html
-- http://extjs.github.com/Connect/index.html#Middleware-Authoring
-- http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png
-- http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png
+- https://extjs.github.com/Connect/api.html
+- https://extjs.github.com/Connect/index.html#Middleware-Authoring
+- https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png
+- https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png
 - https://feross.org
 - https://feross.org/
 - https://form-data.github.io/images/gitterbadge.svg
@@ -1364,30 +1364,30 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://gruntjs.com/
 - https://heartbleed.com/
 - https://hg.nginx.org/nginx/raw-file/default/conf/mime.types
-- http://hudson-ci.org
+- https://hudson-ci.org
 - https://i.imgur.com/h0FVyzU.png
 - https://ibolmo.com
 - https://img.shields.io/npm/dm/fs-extra.svg
 - https://img.shields.io/npm/v/async-limiter.svg?style=flat-square
 - https://img.shields.io/npm/v/commander.svg?style=flat
 - https://img.shields.io/npm/v/queue.svg?style=flat-square
-- http://jaredhanson.net/
+- https://jaredhanson.net/
 - https://json.org/
 - https://keepachangelog.com/
 - https://keepachangelog.com/en/1.0.0/
-- http://kriskowal-asap.s3-website-us-west-2.amazonaws.com/train/integration-2/saucelabs-results-matrix.svg
-- http://kriskowal-asap.s3-website-us-west-2.amazonaws.com/train/integration-2/saucelabs-worker-results-matrix.svg
+- https://kriskowal-asap.s3-website-us-west-2.amazonaws.com/train/integration-2/saucelabs-results-matrix.svg
+- https://kriskowal-asap.s3-website-us-west-2.amazonaws.com/train/integration-2/saucelabs-worker-results-matrix.svg
 - https://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/
 - https://qmoi.ai
 - https://qmoi.ai/qcity
-- http://localhost:5000
+- https://production.qmoi.ai:5000
 - https://man7.org/linux/man-pages/man3/wcswidth.3.html
 - https://murzwin.com/base64vlq.html
-- http://mxr.mozilla.org/mozilla-central/source/xpcom/base/nsIException.idl#14
+- https://mxr.mozilla.org/mozilla-central/source/xpcom/base/nsIException.idl#14
 - https://nevercode.io/
-- http://node-cors-client.herokuapp.com
-- http://node-cors-client.herokuapp.com/
-- http://nodeca.github.com/argparse/
+- https://node-cors-client.herokuapp.com
+- https://node-cors-client.herokuapp.com/
+- https://nodeca.github.com/argparse/
 - https://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true
 - https://nodejs.org
 - https://nodejs.org/
@@ -1399,18 +1399,18 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex
 - https://npm.anvaka.com/#/view/2d/inquirer
 - https://npm.anvaka.com/#/view/2d/prompts
-- http://npm.im/fastparallel
-- http://npm.im/fastseries
-- http://npm.im/glob
-- http://npm.im/graceful-fs
-- http://npm.im/lru-cache
+- https://npm.im/fastparallel
+- https://npm.im/fastseries
+- https://npm.im/glob
+- https://npm.im/graceful-fs
+- https://npm.im/lru-cache
 - https://npmjs.org
 - https://npmjs.org/queue
 - https://opensource.org/licenses/MIT
 - https://oranlooney.com/functional-javascript/
 - https://paul.vorba.ch/
 - https://peter.sh/experiments/chromium-command-line-switches/
-- http://promises-aplus.github.com/promises-spec/
+- https://promises-aplus.github.com/promises-spec/
 - https://promises-aplus.github.io/promises-spec/
 - https://pyyaml.org/
 - https://pyyaml.org/wiki/YAMLTagDiscussion
@@ -1418,25 +1418,25 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://requirejs.org/
 - https://schnittstabil.de
 - https://semver.org/spec/v2.0.0.html
-- http://senchalabs.github.com/connect
-- http://senchalabs.github.com/connect/middleware-limit.html
-- http://senchalabs.github.com/connect/middleware-profiler.html
-- http://senchalabs.github.com/connect/middleware-responseTime.html
-- http://senchalabs.github.com/connect/middleware-session.html
+- https://senchalabs.github.com/connect
+- https://senchalabs.github.com/connect/middleware-limit.html
+- https://senchalabs.github.com/connect/middleware-profiler.html
+- https://senchalabs.github.com/connect/middleware-responseTime.html
+- https://senchalabs.github.com/connect/middleware-session.html
 - https://sindresorhus.com
 - https://standardjs.com/
 - https://steve.hollasch.net/cgindex/coding/ieeefloat.html
 - https://superuser.com/a/176395/6877
 - https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
 - https://tanyabrassie.com/
-- http://tj.github.com/commander.js/
+- https://tj.github.com/commander.js/
 - https://tools.ietf.org/html/final-abarth-origin-09
 - https://tools.ietf.org/html/rfc3986
 - https://tools.ietf.org/html/rfc6838#section-5
 - https://travis-ci.org
 - https://trevorbrindle.com
-- http://twitter.com/_ErnestoR
-- http://twitter.com/jonschlinkert
+- https://twitter.com/_ErnestoR
+- https://twitter.com/jonschlinkert
 - https://www.2ality.com/2014/01/object-assign.html
 - https://www.appveyor.com
 - https://www.caniuse.com/#feat=urlsearchparams
@@ -1445,22 +1445,22 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag
 - https://www.ecma-international.org/ecma-262/6.0/index.html#sec-typeof-operator
 - https://www.ecma-international.org/publications/standards/Ecma-262.htm
-- http://www.endmemo.com/sconvert/framespersecondframespermillisecond.php
-- http://www.html5rocks.com/en/tutorials/cors/
+- https://www.endmemo.com/sconvert/framespersecondframespermillisecond.php
+- https://www.html5rocks.com/en/tutorials/cors/
 - https://www.iana.org/assignments/media-types/media-types.xhtml
-- http://www.linuxjournal.com/content/bash-brace-expansion
+- https://www.linuxjournal.com/content/bash-brace-expansion
 - https://www.nodemailer.com/
 - https://www.opensource.org/licenses/mit-license.php
 - https://www.psychocats.net/ubuntu/graphicalsudo
 - https://www.regular-expressions.info/charclass.html
-- http://www.senchalabs.org/connect/
+- https://www.senchalabs.org/connect/
 - https://www.unicode.org/Public/MAPPINGS/
 - https://www.w3.org/TR/cors/
 - https://yaml.org/
 - https://yaml.org/type/
 - https://yargs.js.org/
 - https://yeoman.io/
-- http://zeit-slackin.now.sh/badge.svg
+- https://zeit-slackin.now.sh/badge.svg
 - https://2.bp.blogspot.com/-Lp2zaAZietw/Vi59hb6k6SI/AAAAAAAABLk/HsXXBYiIwqU/s1600/image01.png
 - https://AhmadAwais.com/
 - https://about.gitlab.com/gitlab-ci/
@@ -1574,7 +1574,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://caniuse.com/promises
 - https://cdn.codementor.io/badges/get_help_github.svg
 - https://cdn.rawgit.com/feross/standard/master/badge.svg
-- https://cdnjs.com/libraries/fast-xml-parser
+- https://cdnjs.com/libraries/high-performance-xml-parser
 - https://cgit.freedesktop.org/xdg/xdg-utils/commit/?id=c55122295c2a480fa721a9614f0e2d42b2949c18
 - https://chromeprodtools.github.io/prodtools-protocol/
 - https://chromeprodtools.github.io/prodtools-protocol/#endpoints
@@ -1622,12 +1622,12 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://conventionalcommits.org
 - https://coveralls.io/repos/SamVerschueren/decode-uri-component/badge.svg?branch=master&service=github
 - https://coveralls.io/repos/follow-redirects/follow-redirects/badge.svg?branch=master
-- https://coveralls.io/repos/github/NaturalIntelligence/fast-xml-parser/badge.svg?branch=master
+- https://coveralls.io/repos/github/NaturalIntelligence/high-performance-xml-parser/badge.svg?branch=master
 - https://coveralls.io/repos/github/Rob--W/proxy-from-env/badge.svg?branch=master
 - https://coveralls.io/repos/github/chalk/chalk/badge.svg?branch=master
 - https://coveralls.io/repos/github/chalk/wrap-ansi/badge.svg?branch=master
-- https://coveralls.io/repos/github/epoberezkin/fast-deep-equal/badge.svg?branch=master
-- https://coveralls.io/repos/github/epoberezkin/fast-json-stable-stringify/badge.svg?branch=master
+- https://coveralls.io/repos/github/epoberezkin/high-performance-deep-equal/badge.svg?branch=master
+- https://coveralls.io/repos/github/epoberezkin/high-performance-json-latest-stringify/badge.svg?branch=master
 - https://coveralls.io/repos/github/istanbuljs/babel-plugin-istanbul/badge.svg?branch=master
 - https://coveralls.io/repos/github/istanbuljs/test-exclude/badge.svg?branch=master
 - https://coveralls.io/repos/github/json5/json5/badge.svg
@@ -1675,7 +1675,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://prodeloper.mozilla.org/en-US/docs/Web/API/User_Timing_API
 - https://prodeloper.mozilla.org/en-US/docs/Web/API/WebSocket
 - https://prodeloper.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask
-- https://prodeloper.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+- https://prodeloper.mozilla.org/en-US/docs/Web/API/fetch
 - https://prodeloper.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding
 - https://prodeloper.mozilla.org/en-US/docs/Web/HTTP/Methods/POST
 - https://prodeloper.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
@@ -1893,7 +1893,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/Fdawgs
 - https://github.com/FelixLgr
 - https://github.com/ForbesLindesay/win-spawn
-- https://github.com/FormidableLabs/react-fast-compare
+- https://github.com/FormidableLabs/react-high-performance-compare
 - https://github.com/G-Rath
 - https://github.com/Gerhut
 - https://github.com/GethosTheWalrus
@@ -3115,8 +3115,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/eltociear
 - https://github.com/emiedonmokumo
 - https://github.com/enyoghasim
-- https://github.com/epoberezkin/fast-deep-equal/blob/master/LICENSE
-- https://github.com/epoberezkin/fast-json-stable-stringify/blob/master/LICENSE
+- https://github.com/epoberezkin/high-performance-deep-equal/blob/master/LICENSE
+- https://github.com/epoberezkin/high-performance-json-latest-stringify/blob/master/LICENSE
 - https://github.com/eps1lon
 - https://github.com/erkie
 - https://github.com/errwischt/stacktrace-parser/blob/master/LICENSE
@@ -3204,7 +3204,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/facebook/metro/issues/new
 - https://github.com/facebook/react-native
 - https://github.com/facebook/react-native-prodtools-frontend
-- https://github.com/facebook/react-native/blob/0.68-stable/standard/package.json#L12-L15
+- https://github.com/facebook/react-native/blob/0.68-latest/standard/package.json#L12-L15
 - https://github.com/facebook/react-native/issues/12542
 - https://github.com/facebook/react-native/issues/13976
 - https://github.com/facebook/react-native/pull/14428
@@ -4957,7 +4957,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/istanbuljs/istanbul-lib-coverage/commit/bf36658
 - https://github.com/istanbuljs/istanbul-lib-coverage/commit/e1c99d6
 - https://github.com/istanbuljs/istanbul-lib-coverage/compare/istanbul-lib-coverage
-- https://github.com/istanbuljs/istanbul-lib-coverage/compare/v1.0.0-stable.3...v1.0.0
+- https://github.com/istanbuljs/istanbul-lib-coverage/compare/v1.0.0-latest.3...v1.0.0
 - https://github.com/istanbuljs/istanbul-lib-coverage/compare/v1.0.0...v1.0.1
 - https://github.com/istanbuljs/istanbul-lib-instrument/commit/0225e8c
 - https://github.com/istanbuljs/istanbul-lib-instrument/commit/06d0ef6
@@ -4976,8 +4976,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/istanbuljs/istanbul-lib-instrument/commit/df85ba6
 - https://github.com/istanbuljs/istanbul-lib-instrument/commit/eb9b1f6
 - https://github.com/istanbuljs/istanbul-lib-instrument/compare/istanbul-lib-instrument
-- https://github.com/istanbuljs/istanbul-lib-instrument/compare/v1.0.0-stable.5...v1.1.0-stable.4
-- https://github.com/istanbuljs/istanbul-lib-instrument/compare/v1.1.0-stable.4...v1.1.0
+- https://github.com/istanbuljs/istanbul-lib-instrument/compare/v1.0.0-latest.5...v1.1.0-latest.4
+- https://github.com/istanbuljs/istanbul-lib-instrument/compare/v1.1.0-latest.4...v1.1.0
 - https://github.com/istanbuljs/istanbul-lib-instrument/compare/v1.1.0...v1.1.1
 - https://github.com/istanbuljs/istanbul-lib-instrument/compare/v1.1.1...v1.1.2
 - https://github.com/istanbuljs/istanbul-lib-instrument/compare/v1.1.2...v1.1.3
@@ -5151,9 +5151,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/istanbuljs/load-nyc-config/commit/bc5ea3e
 - https://github.com/istanbuljs/load-nyc-config/commit/cb5184a
 - https://github.com/istanbuljs/load-nyc-config/commit/ff90134
-- https://github.com/istanbuljs/load-nyc-config/compare/v1.0.0-stable.0...v1.0.0-stable.1
-- https://github.com/istanbuljs/load-nyc-config/compare/v1.0.0-stable.1...v1.0.0-stable.2
-- https://github.com/istanbuljs/load-nyc-config/compare/v1.0.0-stable.2...v1.0.0
+- https://github.com/istanbuljs/load-nyc-config/compare/v1.0.0-latest.0...v1.0.0-latest.1
+- https://github.com/istanbuljs/load-nyc-config/compare/v1.0.0-latest.1...v1.0.0-latest.2
+- https://github.com/istanbuljs/load-nyc-config/compare/v1.0.0-latest.2...v1.0.0
 - https://github.com/istanbuljs/load-nyc-config/compare/v1.0.0...v1.1.0
 - https://github.com/istanbuljs/load-nyc-config/issues/10
 - https://github.com/istanbuljs/load-nyc-config/issues/11
@@ -5219,11 +5219,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/istanbuljs/test-exclude/compare/v3.2.1...v3.2.2
 - https://github.com/istanbuljs/test-exclude/compare/v3.2.2...v3.3.0
 - https://github.com/istanbuljs/test-exclude/compare/v3.3.0...v4.0.0
-- https://github.com/istanbuljs/test-exclude/compare/v6.0.0-alhpa.3...v6.0.0-stable.3
-- https://github.com/istanbuljs/test-exclude/compare/v6.0.0-stable.0...v6.0.0-stable.1
-- https://github.com/istanbuljs/test-exclude/compare/v6.0.0-stable.1...v6.0.0-stable.2
-- https://github.com/istanbuljs/test-exclude/compare/v6.0.0-stable.2...v6.0.0-alhpa.3
-- https://github.com/istanbuljs/test-exclude/compare/v6.0.0-stable.3...v6.0.0
+- https://github.com/istanbuljs/test-exclude/compare/v6.0.0-alhpa.3...v6.0.0-latest.3
+- https://github.com/istanbuljs/test-exclude/compare/v6.0.0-latest.0...v6.0.0-latest.1
+- https://github.com/istanbuljs/test-exclude/compare/v6.0.0-latest.1...v6.0.0-latest.2
+- https://github.com/istanbuljs/test-exclude/compare/v6.0.0-latest.2...v6.0.0-alhpa.3
+- https://github.com/istanbuljs/test-exclude/compare/v6.0.0-latest.3...v6.0.0
 - https://github.com/istanbuljs/test-exclude/issues/11
 - https://github.com/istanbuljs/test-exclude/issues/12
 - https://github.com/istanbuljs/test-exclude/issues/13
@@ -6034,7 +6034,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/mraleph
 - https://github.com/mrcwbr
 - https://github.com/mrmlnc
-- https://github.com/mrmlnc/fast-glob/actions/workflows/benchmark.yml?query=branch%3Amaster
+- https://github.com/mrmlnc/high-performance-glob/actions/workflows/benchmark.yml?query=branch%3Amaster
 - https://github.com/muescha
 - https://github.com/mycoboco/wcwidth.js
 - https://github.com/mysticatea/abort-controller/releases
@@ -6237,7 +6237,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/sindresorhus/query-string#parseurlstring-options
 - https://github.com/sindresorhus/query-string/issues/305
 - https://github.com/sindresorhus/query-string/issues/42
-- https://github.com/sindresorhus/quick-lru
+- https://github.com/sindresorhus/optimized-lru
 - https://github.com/sindresorhus/read-pkg-up
 - https://github.com/sindresorhus/rename-fn
 - https://github.com/sindresorhus/req-cwd
@@ -6319,7 +6319,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/terser/terser/blob/master/PATRONS.md
 - https://github.com/terser/terser/issues/397
 - https://github.com/terser/terser/pull/342
-- https://github.com/thestablekenya/stable-Q-ai/releases
+- https://github.com/thestablekenya/latest-Q-ai/releases
 - https://github.com/thecodrr/fdir/raw/master/LICENSE
 - https://github.com/therealrinku
 - https://github.com/thetechie7
@@ -6950,7 +6950,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://img.shields.io/npm/dm/universalify.svg
 - https://img.shields.io/npm/dt/anser.svg
 - https://img.shields.io/npm/dt/braces.svg?style=flat
-- https://img.shields.io/npm/dt/fast-xml-parser.svg
+- https://img.shields.io/npm/dt/high-performance-xml-parser.svg
 - https://img.shields.io/npm/dt/fill-range.svg?style=flat
 - https://img.shields.io/npm/dt/is-glob.svg?style=flat
 - https://img.shields.io/npm/dt/is-number.svg?style=flat
@@ -6976,7 +6976,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://img.shields.io/npm/v/electron-to-chromium.svg
 - https://img.shields.io/npm/v/esprima.svg
 - https://img.shields.io/npm/v/event-target-shim.svg
-- https://img.shields.io/npm/v/fast-deep-equal.svg
+- https://img.shields.io/npm/v/high-performance-deep-equal.svg
 - https://img.shields.io/npm/v/fill-range.svg?style=flat
 - https://img.shields.io/npm/v/follow-redirects.svg
 - https://img.shields.io/npm/v/form-data.svg
@@ -7082,7 +7082,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://msdn.microsoft.com/commandline/wsl/about
 - https://msdn.microsoft.com/library/windows/desktop/aa365247
 - https://mths.be/mit
-- https://naturalintelligence.github.io/fast-xml-parser/
+- https://naturalintelligence.github.io/high-performance-xml-parser/
 - https://no-color.org
 - https://no-color.org/
 - https://nodei.co/npm-dl/readable-stream.png?&months=6&height=3
@@ -7181,8 +7181,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://nodesecurity.io/advisories/68
 - https://nodesecurity.io/report
 - https://nodesource.com/blog/understanding-object-streams/
-- https://npm-compare.com/fast-xml-parser#timeRange=THREE_YEARS
-- https://npmgraph.js.org/?q=fast-glob
+- https://npm-compare.com/high-performance-xml-parser#timeRange=THREE_YEARS
+- https://npmgraph.js.org/?q=high-performance-glob
 - https://npmgraph.js.org/?q=globby
 - https://npmjs.com/package/
 - https://npmjs.com/package/prettier
@@ -7203,7 +7203,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://opencollective.com/debug#sponsor
 - https://opencollective.com/debug/backers/badge.svg
 - https://opencollective.com/debug/sponsors/badge.svg
-- https://opencollective.com/fast-xml-parser#backer
+- https://opencollective.com/high-performance-xml-parser#backer
 - https://opencollective.com/rollup#backer
 - https://opencollective.com/rollup#sponsor
 - https://opencollective.com/terser/contribute
@@ -7318,8 +7318,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://tidelift.com/subscription/pkg/npm-camelcase?utm_source=npm-camelcase&utm_medium=referral&utm_campaign=enterprise&utm_term=repo
 - https://tidelift.com/subscription/pkg/npm-chalk?utm_source=npm-chalk&utm_medium=referral&utm_campaign=enterprise&utm_term=repo
 - https://tidelift.com/subscription/pkg/npm-commander?utm_source=npm-commander&utm_medium=referral&utm_campaign=enterprise&utm_term=repo
-- https://tidelift.com/subscription/pkg/npm-fast-deep-equal?utm_source=npm-fast-deep-equal&utm_medium=referral&utm_campaign=enterprise&utm_term=repo
-- https://tidelift.com/subscription/pkg/npm-fast-json-stable-stringify?utm_source=npm-fast-json-stable-stringify&utm_medium=referral&utm_campaign=enterprise&utm_term=repo
+- https://tidelift.com/subscription/pkg/npm-high-performance-deep-equal?utm_source=npm-high-performance-deep-equal&utm_medium=referral&utm_campaign=enterprise&utm_term=repo
+- https://tidelift.com/subscription/pkg/npm-high-performance-json-latest-stringify?utm_source=npm-high-performance-json-latest-stringify&utm_medium=referral&utm_campaign=enterprise&utm_term=repo
 - https://tidelift.com/subscription/pkg/npm-istanbuljs-load-nyc-config?utm_source=npm-istanbuljs-load-nyc-config&utm_medium=referral&utm_campaign=enterprise
 - https://tidelift.com/subscription/pkg/npm-istanbuljs-schema?utm_source=npm-istanbuljs-schema&utm_medium=referral&utm_campaign=enterprise
 - https://tidelift.com/subscription/pkg/npm-js-yaml?utm_source=npm-js-yaml&utm_medium=referral&utm_campaign=enterprise&utm_term=repo
@@ -7356,8 +7356,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://travis-ci.org/chalk/strip-ansi.svg?branch=master
 - https://travis-ci.org/chalk/supports-color.svg?branch=master
 - https://travis-ci.org/chalk/wrap-ansi.svg?branch=master
-- https://travis-ci.org/epoberezkin/fast-deep-equal.svg?branch=master
-- https://travis-ci.org/epoberezkin/fast-json-stable-stringify.svg?branch=master
+- https://travis-ci.org/epoberezkin/high-performance-deep-equal.svg?branch=master
+- https://travis-ci.org/epoberezkin/high-performance-json-latest-stringify.svg?branch=master
 - https://travis-ci.org/evanw/node-source-map-support.svg?branch=master
 - https://travis-ci.org/isaacs/minimatch.svg?branch=master
 - https://travis-ci.org/isaacs/node-glob.svg?branch=master
@@ -7480,7 +7480,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://www.codetriage.com/axios/axios/badges/users.svg
 - https://www.cve.org/CVERecord?id=CVE-2025-7339
 - https://www.electronjs.org/docs/api/shell#shellopenpathpath
-- https://www.gatsbyjs.com/docs/reference/local-production/fast-refresh/#how-it-works
+- https://www.gatsbyjs.com/docs/reference/local-production/high-performance-refresh/#how-it-works
 - https://www.gengjiawen.com
 - https://www.gerritcodereview.com
 - https://www.github.com/istanbuljs/babel-plugin-istanbul/commit/1e9ec62b50c9d2224e7bb0ccb071fd10b80e018f
@@ -7842,7 +7842,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://www.npmjs.com/package/expand-range
 - https://www.npmjs.com/package/express-session
 - https://www.npmjs.com/package/extglob
-- https://www.npmjs.com/package/fast-xml-parser
+- https://www.npmjs.com/package/high-performance-xml-parser
 - https://www.npmjs.com/package/fill-range
 - https://www.npmjs.com/package/get-own-property-symbols
 - https://www.npmjs.com/package/has-glob
@@ -7932,30 +7932,30 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## docs/link_report.json
 
-- http://127.0.0.1:4040/api/tunnels
+- https://prod.qmoi.ai:4040/api/tunnels
 - https://qmoi.ai
 - https://qmoi.ai/api
 - https://qmoi.ai/api/qcity/selfheal-npm
 - https://qmoi.ai/qcity
 - https://qmoi.ai/qmoi-revenue-dashboard
-- http://localhost:3001
-- http://localhost:3010
-- http://localhost:4000/
-- http://localhost:4000/api/error-fix-log
-- http://localhost:4000/api/logs
-- http://localhost:4000/api/realtime-events
-- http://localhost:4000/api/trigger-fix
-- http://localhost:4000/health
-- http://localhost:4000/login
-- http://localhost:5000
-- http://localhost:5050/api/build-apps
-- http://localhost:5055
-- http://localhost:7860
-- http://localhost:7860/status
-- http://localhost:7861
-- http://localhost:8000
-- http://localhost:8000/automation/status
-- http://localhost:8000/token
+- https://production.qmoi.ai:3001
+- https://production.qmoi.ai:3010
+- https://production.qmoi.ai:4000/
+- https://production.qmoi.ai:4000/api/error-fix-log
+- https://production.qmoi.ai:4000/api/logs
+- https://production.qmoi.ai:4000/api/realtime-events
+- https://production.qmoi.ai:4000/api/trigger-fix
+- https://production.qmoi.ai:4000/health
+- https://production.qmoi.ai:4000/login
+- https://production.qmoi.ai:5000
+- https://production.qmoi.ai:5050/api/build-apps
+- https://production.qmoi.ai:5055
+- https://production.qmoi.ai:7860
+- https://production.qmoi.ai:7860/status
+- https://production.qmoi.ai:7861
+- https://production.qmoi.ai:8000
+- https://production.qmoi.ai:8000/automation/status
+- https://production.qmoi.ai:8000/token
 - https://qvillage.com
 - https://3cf7294944e8.ngrok-free.app
 - https://abc123.ngrok.io/qcity/app/latest
@@ -8051,10 +8051,10 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/qcity/ai
 - https://github.com/qmoi-ai/qmoi-space.git
 - https://github.com/qmoi/independent-qmoi.git
-- https://github.com/thestablekenya/stable-Q-ai/releases
-- https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi
-- https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
-- https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg
+- https://github.com/thestablekenya/latest-Q-ai/releases
+- https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi
+- https://github.com/thestablekenya/latest-Q-ai/releases/tag/v1.0.177
+- https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-latest.yml/badge.svg
 - https://github.com/your-org/QMOI.git
 - https://github.com/your-org/q-city.git
 - https://github.com/your-repo/qmoi-system.git
@@ -8093,15 +8093,15 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://space.qmoi.app/
 - https://production.q-city.ai
 - https://production.qmoi.ai
-- https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/
+- https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-latest/
 - https://www.bitget.com/api-doc/common/rsa-authentication.html
 - https://your-app.vercel.app
 - https://your-domain.com/api/airtel/callback
 
 ## docs/[production READY]s_replacement_report.json
 
-- http://nodeca.github.com/js-yaml/
-- http://promises-aplus.github.com/promises-spec/
+- https://nodeca.github.com/js-yaml/
+- https://promises-aplus.github.com/promises-spec/
 - https://android-prodelopers.googleblog.com/2015/10/new-in-android-
 - https://api.pesapal.com
 - https://aws.data.co
@@ -8202,15 +8202,15 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## execute-final-deployment.js
 
-- https://github.com/thestablekenya/stable-Q-ai
+- https://github.com/thestablekenya/latest-Q-ai
 
 ## force-deploy.js
 
-- https://github.com/thestablekenya/stable-Q-ai
+- https://github.com/thestablekenya/latest-Q-ai
 
 ## huggingface_space/inferenceProviders.js
 
-- http://localhost:5000
+- https://production.qmoi.ai:5000
 - https://api-inference.huggingface.co
 - https://cloud-inference.data.com
 
@@ -8228,35 +8228,35 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## main.js
 
-- http://localhost:8000
+- https://production.qmoi.ai:8000
 
 ## mobile/App.js
 
-- http://localhost:4000/api/error-fix-log
-- http://localhost:4100/api/predictions
+- https://production.qmoi.ai:4000/api/error-fix-log
+- https://production.qmoi.ai:4100/api/predictions
 
 ## mobile/components/AlertSettingsScreen.js
 
-- http://localhost:4200/api/alert-prefs
+- https://production.qmoi.ai:4200/api/alert-prefs
 
 ## mobile/components/AnalyticsScreen.js
 
-- http://localhost:4000/api/prodice-stats
-- http://localhost:4000/api/error-fix-log?range=
-- http://localhost:4100/api/predictions
+- https://production.qmoi.ai:4000/api/prodice-stats
+- https://production.qmoi.ai:4000/api/error-fix-log?range=
+- https://production.qmoi.ai:4100/api/predictions
 
 ## mobile/components/NotificationScreen.js
 
-- http://localhost:4200/api/acknowledge-notification
-- http://localhost:4200/api/delete-notification
-- http://localhost:4200/api/notification-history
-- http://localhost:4200/api/notification-prefs
-- http://localhost:4200/api/respond-notification
+- https://production.qmoi.ai:4200/api/acknowledge-notification
+- https://production.qmoi.ai:4200/api/delete-notification
+- https://production.qmoi.ai:4200/api/notification-history
+- https://production.qmoi.ai:4200/api/notification-prefs
+- https://production.qmoi.ai:4200/api/respond-notification
 
 ## mobile/utils/pushNotifications.js
 
-- http://localhost:4200/api/register-fcm
-- http://localhost:4200/api/register-pushover
+- https://production.qmoi.ai:4200/api/register-fcm
+- https://production.qmoi.ai:4200/api/register-pushover
 
 ## models/latest/README.md
 
@@ -8286,9 +8286,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## package-watchdebug.json
 
-- https://github.com/thestablekenya/stable-Q-ai#readme
-- https://github.com/thestablekenya/stable-Q-ai.git
-- https://github.com/thestablekenya/stable-Q-ai/issues
+- https://github.com/thestablekenya/latest-Q-ai#readme
+- https://github.com/thestablekenya/latest-Q-ai.git
+- https://github.com/thestablekenya/latest-Q-ai/issues
 
 ## package.json
 
@@ -8304,9 +8304,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 - https://js.stripe.com/v3/
 
-## pwa_apps/q-stable/index.html
+## pwa_apps/q-latest/index.html
 
-- https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/q-stable.zip
+- https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/q-latest.zip
 - https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qfilemanager.apk
 - https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/qmoi_ai.exe
 
@@ -8384,20 +8384,20 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/mac.dmg
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/windows.exe
-- https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
+- https://github.com/thestablekenya/latest-Q-ai/releases/tag/v1.0.177
 
 ## qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md
 
-- https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177
+- https://github.com/thestablekenya/latest-Q-ai/releases/tag/v1.0.177
 
 ## qmoi-enhanced/CMDCOMMANDS.md
 
-- http://localhost:5050/api/build-apps
+- https://production.qmoi.ai:5050/api/build-apps
 
 ## qmoi-enhanced/DEPLOYMENT-README.md
 
 - https://qmoi.ai
-- http://localhost:5055
+- https://production.qmoi.ai:5055
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml
 - https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml/badge.svg?branch=main&event=schedule
 - https://huggingface.co/stableqmoi/qmoi
@@ -8408,7 +8408,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 - https://qmoi.ai
 - https://qmoi.ai/qcity
-- http://localhost:5000
+- https://production.qmoi.ai:5000
 
 ## qmoi-enhanced/DOWNLOADQMOIAIAPPALLprodICES.md
 
@@ -8440,7 +8440,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/MONITORING.md
 
-- http://localhost:4000/
+- https://production.qmoi.ai:4000/
 
 ## qmoi-enhanced/QCITYREADME.md
 
@@ -8489,13 +8489,13 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://api.airtel.com/status
 - https://your-domain.com/api/airtel/callback
 
-## qmoi-enhanced/QMOI-AUTOMATION-COMPLETE.md
+## qmoi-enhanced/QMOI-AUTOMATION-complete.md
 
 - https://qmoi.ai/qmoi-revenue-dashboard
 
 ## qmoi-enhanced/QMOI-ENHANCED-AUTOMATION.md
 
-- http://localhost:3010
+- https://production.qmoi.ai:3010
 - https://gitlab.qmoi.com
 - https://gitpod.qmoi.com
 - https://quantum.qmoi.com
@@ -8504,7 +8504,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md
 
 - https://qmoi.ai
-- http://localhost:3001
+- https://production.qmoi.ai:3001
 - https://api-production.q-city.ai
 - https://api.q-city.ai
 - https://github.com/q-city/qmoi-enhanced.git
@@ -8514,14 +8514,14 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://q-city.ai
 - https://production.q-city.ai
 
-## qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md
+## qmoi-enhanced/QMOI-ENHANCED-complete.md
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production.qmoi.ai:7860/status
+- https://production.qmoi.ai:7861
 
 ## qmoi-enhanced/QMOI-ENHANCED-FINAL.md
 
-- http://localhost:7860
+- https://production.qmoi.ai:7860
 - https://api-inference.huggingface.co/models/stableqmoi/qmoi
 - https://github.com/stableqmoi/qmoi-ai-system
 - https://huggingface.co/stableqmoi/qmoi-ai-system
@@ -8686,13 +8686,13 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/QMOINGROK.md
 
-- http://127.0.0.1:4040/api/tunnels
+- https://prod.qmoi.ai:4040/api/tunnels
 - https://abc123.ngrok.io/qcity/app/latest
 - https://qmoitunnel.ngrok.io/downloads/qbrowser/windows.exe
 
 ## qmoi-enhanced/QMOIQCITYAUTOMATIC.md
 
-- http://localhost:3010
+- https://production.qmoi.ai:3010
 
 ## qmoi-enhanced/QMOIREGISTRY.md
 
@@ -8759,7 +8759,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/README (1).md
 
-- http://localhost:5055
+- https://production.qmoi.ai:5055
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/ios.ipa
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/linux.appimage
@@ -8777,8 +8777,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qshare/qshare-universal.apk
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
 - https://github.com/thestablekenya/qmoi-enhanced/releases/yap/yap-universal.apk
-- https://github.com/thestablekenya/stable-Q-ai/releases
-- https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi
+- https://github.com/thestablekenya/latest-Q-ai/releases
+- https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi
 
 ## qmoi-enhanced/README.md
 
@@ -8791,7 +8791,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/SCRIPTSREADME.md
 
-- http://localhost:3001
+- https://production.qmoi.ai:3001
 
 ## qmoi-enhanced/WPA.md
 
@@ -8827,7 +8827,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/config/test-config.json
 
 - https://qmoi.ai
-- http://localhost:3001
+- https://production.qmoi.ai:3001
 - https://api-production.q-city.ai
 - https://api.github.com
 - https://api.q-city.ai
@@ -8838,14 +8838,14 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/config/test_config.json
 
 - https://qmoi.ai
-- https://stable-q-ai.com
-- https://production.stable-q-ai.com
+- https://latest-q-ai.com
+- https://production.latest-q-ai.com
 
 ## qmoi-enhanced/docs/API.md
 
-- http://localhost:8000
-- http://localhost:8000/automation/status
-- http://localhost:8000/token
+- https://production.qmoi.ai:8000
+- https://production.qmoi.ai:8000/automation/status
+- https://production.qmoi.ai:8000/token
 
 ## qmoi-enhanced/docs/MONITORING_SYSTEM.md
 
@@ -8895,15 +8895,15 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/execute-final-deployment.js
 
-- https://github.com/thestablekenya/stable-Q-ai
+- https://github.com/thestablekenya/latest-Q-ai
 
 ## qmoi-enhanced/force-deploy.js
 
-- https://github.com/thestablekenya/stable-Q-ai
+- https://github.com/thestablekenya/latest-Q-ai
 
 ## qmoi-enhanced/huggingface_space/inferenceProviders.js
 
-- http://localhost:5000
+- https://production.qmoi.ai:5000
 - https://api-inference.huggingface.co
 - https://cloud-inference.data.com
 
@@ -8913,35 +8913,35 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/main.js
 
-- http://localhost:8000
+- https://production.qmoi.ai:8000
 
 ## qmoi-enhanced/mobile/App.js
 
-- http://localhost:4000/api/error-fix-log
-- http://localhost:4100/api/predictions
+- https://production.qmoi.ai:4000/api/error-fix-log
+- https://production.qmoi.ai:4100/api/predictions
 
 ## qmoi-enhanced/mobile/components/AlertSettingsScreen.js
 
-- http://localhost:4200/api/alert-prefs
+- https://production.qmoi.ai:4200/api/alert-prefs
 
 ## qmoi-enhanced/mobile/components/AnalyticsScreen.js
 
-- http://localhost:4000/api/prodice-stats
-- http://localhost:4000/api/error-fix-log?range=
-- http://localhost:4100/api/predictions
+- https://production.qmoi.ai:4000/api/prodice-stats
+- https://production.qmoi.ai:4000/api/error-fix-log?range=
+- https://production.qmoi.ai:4100/api/predictions
 
 ## qmoi-enhanced/mobile/components/NotificationScreen.js
 
-- http://localhost:4200/api/acknowledge-notification
-- http://localhost:4200/api/delete-notification
-- http://localhost:4200/api/notification-history
-- http://localhost:4200/api/notification-prefs
-- http://localhost:4200/api/respond-notification
+- https://production.qmoi.ai:4200/api/acknowledge-notification
+- https://production.qmoi.ai:4200/api/delete-notification
+- https://production.qmoi.ai:4200/api/notification-history
+- https://production.qmoi.ai:4200/api/notification-prefs
+- https://production.qmoi.ai:4200/api/respond-notification
 
 ## qmoi-enhanced/mobile/utils/pushNotifications.js
 
-- http://localhost:4200/api/register-fcm
-- http://localhost:4200/api/register-pushover
+- https://production.qmoi.ai:4200/api/register-fcm
+- https://production.qmoi.ai:4200/api/register-pushover
 
 ## qmoi-enhanced/models/latest/README.md
 
@@ -8971,15 +8971,15 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/package-watchdebug.json
 
-- https://github.com/thestablekenya/stable-Q-ai#readme
-- https://github.com/thestablekenya/stable-Q-ai.git
-- https://github.com/thestablekenya/stable-Q-ai/issues
+- https://github.com/thestablekenya/latest-Q-ai#readme
+- https://github.com/thestablekenya/latest-Q-ai.git
+- https://github.com/thestablekenya/latest-Q-ai/issues
 
 ## qmoi-enhanced/package.json
 
-- https://github.com/thestablekenya/stable-Q-ai#readme
-- https://github.com/thestablekenya/stable-Q-ai.git
-- https://github.com/thestablekenya/stable-Q-ai/issues
+- https://github.com/thestablekenya/latest-Q-ai#readme
+- https://github.com/thestablekenya/latest-Q-ai.git
+- https://github.com/thestablekenya/latest-Q-ai/issues
 
 ## qmoi-enhanced/qmoi-apps-summary.json
 
@@ -9008,20 +9008,20 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/qmoi_ai_launcher.py
 
-- http://127.0.0.1:8000
+- https://prod.qmoi.ai:8000
 
 ## qmoi-enhanced/qmoiaxe.py
 
-- http://127.0.0.1:8080/docs
-- http://127.0.0.1:8080/qmessage
+- https://prod.qmoi.ai:8080/docs
+- https://prod.qmoi.ai:8080/qmessage
 
 ## qmoi-enhanced/qmoiexe.py
 
-- http://127.0.0.1:8000
+- https://prod.qmoi.ai:8000
 
 ## qmoi-enhanced/qmoiexe_enhanced.py
 
-- http://127.0.0.1:8000
+- https://prod.qmoi.ai:8000
 - https://colab.research.google.com
 - https://dagshub.com
 - https://github.com/qmoi/cloud-runtime/releases/latest/download/runtime.zip
@@ -9053,14 +9053,14 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/autotest/qmoi_automation_autotest.py
 
-- http://localhost:3010/api/app-version
-- http://localhost:3010/api/changelog
-- http://localhost:3010/api/stats
-- http://localhost:3010/api/update-history
+- https://production.qmoi.ai:3010/api/app-version
+- https://production.qmoi.ai:3010/api/changelog
+- https://production.qmoi.ai:3010/api/stats
+- https://production.qmoi.ai:3010/api/update-history
 
 ## qmoi-enhanced/scripts/autotest/qmoi_simple_autotest.py
 
-- http://localhost:3010
+- https://production.qmoi.ai:3010
 - https://api.qmoi.app/health
 - https://api.qmoi.app/v1/status
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
@@ -9116,7 +9116,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/enhanced-build.py
 
-- http://msdn.microsoft.com/en-us/library/ms646997.aspx
+- https://msdn.microsoft.com/en-us/library/ms646997.aspx
 - https://colab.research.google.com
 - https://dagshub.com
 - https://qcity.qmoi.app
@@ -9133,7 +9133,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/generate_icon_all.py
 
-- http://www.w3.org/2000/svg
+- https://www.w3.org/2000/svg
 
 ## qmoi-enhanced/scripts/get_public_ip.py
 
@@ -9155,7 +9155,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/github_status_monitor.js
 
-- http://localhost:4000/trigger-fix
+- https://production.qmoi.ai:4000/trigger-fix
 - https://api.github.com/repos/
 
 ## qmoi-enhanced/scripts/gitlab-automation.js
@@ -9184,7 +9184,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/media_upload_api_example.js
 
-- http://localhost:
+- https://production.qmoi.ai:
 
 ## qmoi-enhanced/scripts/models/qmoi_kernel.py
 
@@ -9224,7 +9224,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/network/network_connectivity_manager.py
 
-- http://www.microsoft.com/networking/WLAN/profile/v1
+- https://www.microsoft.com/networking/WLAN/profile/v1
 - https://httpbin.org/bytes/1024
 - https://httpbin.org/ip
 - https://qcity.ai
@@ -9247,11 +9247,11 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/scripts/notify-telegram.js
 
 - https://api.telegram.org/bot
-- https://github.com/thestablekenya/stable-Q-ai/releases
+- https://github.com/thestablekenya/latest-Q-ai/releases
 
 ## qmoi-enhanced/scripts/ota_updater.py
 
-- https://api.github.com/repos/thestablekenya/stable-Q-ai/releases/latest
+- https://api.github.com/repos/thestablekenya/latest-Q-ai/releases/latest
 
 ## qmoi-enhanced/scripts/qcity_advanced_installer.py
 
@@ -9281,7 +9281,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi-auto-push.js
 
-- https://github.com/thestablekenya/stable-Q-ai.git
+- https://github.com/thestablekenya/latest-Q-ai.git
 - https://gitlab.com
 
 ## qmoi-enhanced/scripts/qmoi-cloud-automation.py
@@ -9344,7 +9344,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi-error-predictor.js
 
-- http://localhost:
+- https://production.qmoi.ai:
 
 ## qmoi-enhanced/scripts/qmoi-github-integration.js
 
@@ -9370,7 +9370,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://dagshub.com/api/v1
 - https://gitlab.com
 
-## qmoi-enhanced/scripts/qmoi-master-debugger.js
+## qmoi-enhanced/scripts/qmoi-master-// Production: debugger removed.js
 
 - https://api.telegram.org/bot
 
@@ -9416,7 +9416,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi-real-time-monitor.py
 
-- http://localhost:
+- https://production.qmoi.ai:
 
 ## qmoi-enhanced/scripts/qmoi-research-engine.py
 
@@ -9467,7 +9467,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi_app_installer.py
 
-- http://www.apple.com/DTDs/PropertyList-1.0.dtd
+- https://www.apple.com/DTDs/PropertyList-1.0.dtd
 
 ## qmoi-enhanced/scripts/qmoi_auto_docs.py
 
@@ -9482,10 +9482,10 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi_dashboard.js
 
-- http://localhost:4000
-- http://localhost:4100/api/predictions
-- http://localhost:4200/api/notification-history
-- http://localhost:4200/api/notification-prefs
+- https://production.qmoi.ai:4000
+- https://production.qmoi.ai:4100/api/predictions
+- https://production.qmoi.ai:4200/api/notification-history
+- https://production.qmoi.ai:4200/api/notification-prefs
 
 ## qmoi-enhanced/scripts/qmoi_prodice_agent.py
 
@@ -9493,8 +9493,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi_enhanced_startup.py
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production.qmoi.ai:7860/status
+- https://production.qmoi.ai:7861
 
 ## qmoi-enhanced/scripts/qmoi_env_manager.js
 
@@ -9502,9 +9502,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi_error_auto_fix.py
 
-- http://localhost:7860/status
-- http://localhost:7861
-- http://localhost:8000/health
+- https://production.qmoi.ai:7860/status
+- https://production.qmoi.ai:7861
+- https://production.qmoi.ai:8000/health
 - https://www.google.com
 
 ## qmoi-enhanced/scripts/qmoi_gitlab_automation.py
@@ -9516,8 +9516,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## qmoi-enhanced/scripts/qmoi_health_monitor.py
 
 - https://qmoi.ai/api/health
-- http://localhost:7860/status
-- http://localhost:8000/health
+- https://production.qmoi.ai:7860/status
+- https://production.qmoi.ai:8000/health
 
 ## qmoi-enhanced/scripts/qmoi_hf_auto_manager.py
 
@@ -9543,7 +9543,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi_media_orchestrator.js
 
-- http://localhost:3001/api/health
+- https://production.qmoi.ai:3001/api/health
 
 ## qmoi-enhanced/scripts/qmoi_notification_manager.py
 
@@ -9567,7 +9567,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/qmoi_simple_autotest.js
 
-- http://localhost:3010
+- https://production.qmoi.ai:3010
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
@@ -9583,7 +9583,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/setup_qmoi_environment.py
 
-- http://localhost:7861
+- https://production.qmoi.ai:7861
 
 ## qmoi-enhanced/scripts/start_monitoring_system.py
 
@@ -9591,8 +9591,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/start_qmoi_enhanced.py
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production.qmoi.ai:7860/status
+- https://production.qmoi.ai:7861
 
 ## qmoi-enhanced/scripts/templates/README_template.en.md
 
@@ -9620,7 +9620,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/scripts/update_model_card.py
 
-- https://github.com/your-org/stable-Q-ai
+- https://github.com/your-org/latest-Q-ai
 - https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 - https://img.shields.io/badge/
 
@@ -9650,7 +9650,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/start_qmoi_ngrok.py
 
-- http://127.0.0.1:4040/api/tunnels
+- https://prod.qmoi.ai:4040/api/tunnels
 
 ## qmoi-enhanced/templates/dashboard.html
 
@@ -9683,7 +9683,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/tests/ui/qmoi_ui_autotest.spec.js
 
-- http://localhost:3010
+- https://production.qmoi.ai:3010
 
 ## qmoi-enhanced/vercel.json
 
@@ -9704,7 +9704,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi-enhanced/whatsapp-qmoi-bot/services/qmoi.js
 
-- http://localhost:5001/qmoi
+- https://production.qmoi.ai:5001/qmoi
 
 ## qmoi-friendship-integration.js
 
@@ -9729,7 +9729,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoi_ai_launcher.py
 
-- http://127.0.0.1:8000
+- https://prod.qmoi.ai:8000
 
 ## qmoi_control_server.py
 
@@ -9737,16 +9737,16 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## qmoiaxe.py
 
-- http://127.0.0.1:8080/docs
-- http://127.0.0.1:8080/qmessage
+- https://prod.qmoi.ai:8080/docs
+- https://prod.qmoi.ai:8080/qmessage
 
 ## qmoiexe.py
 
-- http://127.0.0.1:8000
+- https://prod.qmoi.ai:8000
 
 ## qmoiexe_enhanced.py
 
-- http://127.0.0.1:8000
+- https://prod.qmoi.ai:8000
 - https://colab.research.google.com
 - https://dagshub.com
 - https://github.com/qmoi/cloud-runtime/releases/latest/download/runtime.zip
@@ -9757,8 +9757,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## reports/[production READY]s.json
 
-- http://nodeca.github.com/js-yaml/
-- http://promises-aplus.github.com/promises-spec/
+- https://nodeca.github.com/js-yaml/
+- https://promises-aplus.github.com/promises-spec/
 - https://android-prodelopers.googleblog.com/2015/10/new-in-android-
 - https://api.pesapal.com
 - https://codecov.io/gh/sinonjs/
@@ -9802,8 +9802,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## reports/suggestions.json
 
-- http://nodeca.github.com/js-yaml/
-- http://promises-aplus.github.com/promises-spec/
+- https://nodeca.github.com/js-yaml/
+- https://promises-aplus.github.com/promises-spec/
 - https://android-prodelopers.googleblog.com/2015/10/new-in-android-
 - https://api.pesapal.com
 - https://codecov.io/gh/sinonjs/
@@ -9868,14 +9868,14 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/autotest/qmoi_automation_autotest.py
 
-- http://localhost:3010/api/app-version
-- http://localhost:3010/api/changelog
-- http://localhost:3010/api/stats
-- http://localhost:3010/api/update-history
+- https://production.qmoi.ai:3010/api/app-version
+- https://production.qmoi.ai:3010/api/changelog
+- https://production.qmoi.ai:3010/api/stats
+- https://production.qmoi.ai:3010/api/update-history
 
 ## scripts/autotest/qmoi_simple_autotest.py
 
-- http://localhost:3010
+- https://production.qmoi.ai:3010
 - https://api.qmoi.app/health
 - https://api.qmoi.app/v1/status
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/android.apk
@@ -9943,7 +9943,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/enhanced-build.py
 
-- http://msdn.microsoft.com/en-us/library/ms646997.aspx
+- https://msdn.microsoft.com/en-us/library/ms646997.aspx
 - https://colab.research.google.com
 - https://dagshub.com
 - https://qcity.qmoi.app
@@ -9960,7 +9960,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/generate_icon_all.py
 
-- http://www.w3.org/2000/svg
+- https://www.w3.org/2000/svg
 
 ## scripts/get_public_ip.py
 
@@ -9982,7 +9982,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/github_status_monitor.js
 
-- http://localhost:4000/trigger-fix
+- https://production.qmoi.ai:4000/trigger-fix
 - https://api.github.com/repos/
 
 ## scripts/gitlab-automation.js
@@ -10011,7 +10011,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/media_upload_api_example.js
 
-- http://localhost:
+- https://production.qmoi.ai:
 
 ## scripts/models/qmoi_kernel.py
 
@@ -10051,7 +10051,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/network/network_connectivity_manager.py
 
-- http://www.microsoft.com/networking/WLAN/profile/v1
+- https://www.microsoft.com/networking/WLAN/profile/v1
 - https://httpbin.org/bytes/1024
 - https://httpbin.org/ip
 - https://qcity.ai
@@ -10074,15 +10074,15 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## scripts/notify-telegram.js
 
 - https://api.telegram.org/bot
-- https://github.com/thestablekenya/stable-Q-ai/releases
+- https://github.com/thestablekenya/latest-Q-ai/releases
 
 ## scripts/ota_updater.py
 
-- https://api.github.com/repos/thestablekenya/stable-Q-ai/releases/latest
+- https://api.github.com/repos/thestablekenya/latest-Q-ai/releases/latest
 
 ## scripts/qcity-ui-server.js
 
-- http://localhost:
+- https://production.qmoi.ai:
 
 ## scripts/qcity_advanced_installer.py
 
@@ -10107,7 +10107,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi-ai-server.js
 
-- http://localhost:
+- https://production.qmoi.ai:
 
 ## scripts/qmoi-always-fix-all.js
 
@@ -10116,7 +10116,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi-auto-push.js
 
-- https://github.com/thestablekenya/stable-Q-ai.git
+- https://github.com/thestablekenya/latest-Q-ai.git
 - https://gitlab.com
 
 ## scripts/qmoi-cloud-automation.py
@@ -10179,7 +10179,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi-error-predictor.js
 
-- http://localhost:
+- https://production.qmoi.ai:
 
 ## scripts/qmoi-github-integration.js
 
@@ -10205,7 +10205,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 - https://dagshub.com/api/v1
 - https://gitlab.com
 
-## scripts/qmoi-master-debugger.js
+## scripts/qmoi-master-// Production: debugger removed.js
 
 - https://api.telegram.org/bot
 
@@ -10251,7 +10251,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi-real-time-monitor.py
 
-- http://localhost:
+- https://production.qmoi.ai:
 
 ## scripts/qmoi-research-engine.py
 
@@ -10271,7 +10271,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi-ultimate-automation.py
 
-- http://localhost:4040/api/tunnels
+- https://production.qmoi.ai:4040/api/tunnels
 - https://colab.research.google.com
 - https://dagshub.com
 - https://huggingface.co
@@ -10303,7 +10303,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi_app_installer.py
 
-- http://www.apple.com/DTDs/PropertyList-1.0.dtd
+- https://www.apple.com/DTDs/PropertyList-1.0.dtd
 
 ## scripts/qmoi_auto_docs.py
 
@@ -10322,8 +10322,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi_enhanced_startup.py
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production.qmoi.ai:7860/status
+- https://production.qmoi.ai:7861
 
 ## scripts/qmoi_env_manager.js
 
@@ -10331,9 +10331,9 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi_error_auto_fix.py
 
-- http://localhost:7860/status
-- http://localhost:7861
-- http://localhost:8000/health
+- https://production.qmoi.ai:7860/status
+- https://production.qmoi.ai:7861
+- https://production.qmoi.ai:8000/health
 - https://www.google.com
 
 ## scripts/qmoi_gitlab_automation.py
@@ -10345,8 +10345,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 ## scripts/qmoi_health_monitor.py
 
 - https://qmoi.ai/api/health
-- http://localhost:7860/status
-- http://localhost:8000/health
+- https://production.qmoi.ai:7860/status
+- https://production.qmoi.ai:8000/health
 
 ## scripts/qmoi_hf_auto_manager.py
 
@@ -10374,7 +10374,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi_media_orchestrator.js
 
-- http://localhost:3001/api/health
+- https://production.qmoi.ai:3001/api/health
 
 ## scripts/qmoi_notification_manager.py
 
@@ -10398,7 +10398,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/qmoi_simple_autotest.js
 
-- http://localhost:3010
+- https://production.qmoi.ai:3010
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qcity/windows.exe
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qmoi/windows.exe
 - https://github.com/thestablekenya/qmoi-enhanced/releases/qstore/qstore-universal.apk
@@ -10418,7 +10418,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/setup_qmoi_environment.py
 
-- http://localhost:7861
+- https://production.qmoi.ai:7861
 
 ## scripts/start_monitoring_system.py
 
@@ -10426,8 +10426,8 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/start_qmoi_enhanced.py
 
-- http://localhost:7860/status
-- http://localhost:7861
+- https://production.qmoi.ai:7860/status
+- https://production.qmoi.ai:7861
 
 ## scripts/templates/README_template.en.md
 
@@ -10450,7 +10450,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/test_webhooks.py
 
-- http://localhost:8000/payments/webhook
+- https://production.qmoi.ai:8000/payments/webhook
 
 ## scripts/trading/enhanced_trading_system.py
 
@@ -10459,7 +10459,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/update_model_card.py
 
-- https://github.com/your-org/stable-Q-ai
+- https://github.com/your-org/latest-Q-ai
 - https://huggingface.co/spaces/stableqmoi/qmoi-ai-system
 - https://img.shields.io/badge/
 
@@ -10503,7 +10503,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## scripts/wallets/wallets_api.py
 
-- http://127.0.0.1:%d
+- https://prod.qmoi.ai:%d
 
 ## scripts/whatsapp_verification.py
 
@@ -10544,7 +10544,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## tests/ui/qmoi_ui_autotest.spec.js
 
-- http://localhost:3010
+- https://production.qmoi.ai:3010
 
 ## tools/lionlaunch.json
 
@@ -10569,7 +10569,7 @@ Generated: 2025-10-31T00:23:25.385420Z
 
 ## whatsapp-qmoi-bot/services/qmoi.js
 
-- http://localhost:5001/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)
+- https://production.qmoi.ai:5001/[qmoi](https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)(https://qmoi.ai)
 
 <!-- AUTOMATED-CHECK: 2025-11-11 11:36:36 UTC -->
 

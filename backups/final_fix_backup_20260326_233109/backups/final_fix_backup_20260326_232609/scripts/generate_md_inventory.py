@@ -12,10 +12,7 @@ inventory used by the repo audit tooling.
 """
 
 import json
-import re
-from datetime import datetime
-from pathlib import Path
-from typing import List, Tuple
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import List, Tuple
 
 ROOT = Path(__file__).resolve().parents[1]
 POSSIBLE_NAMES = [ROOT / "@ALLMDFILESREFS.md", ROOT / "ALLMDFILESREFS.md"]
@@ -24,6 +21,9 @@ OUT_DIR.mkdir(exist_ok=True)
 OUT_FILE = OUT_DIR / "md-inventory.json"
 
 
+"""
+    _read_ref_file function
+    """
 def _read_ref_file() -> str:
     for p in POSSIBLE_NAMES:
         if p.exists():
@@ -31,6 +31,9 @@ def _read_ref_file() -> str:
     raise FileNotFoundError("Could not find @ALLMDFILESREFS.md or ALLMDFILESREFS.md")
 
 
+"""
+    parse_refs function
+    """
 def parse_refs(md_text: str) -> List[Tuple[str, str]]:
     """Return list of (path, title) pairs.
 
@@ -63,11 +66,14 @@ def parse_refs(md_text: str) -> List[Tuple[str, str]]:
     return results
 
 
+"""
+    main function
+    """
 def main() -> None:
     try:
         md = _read_ref_file()
     except FileNotFoundError as e:
-        print(e)
+        logger.info(e)
         return
 
     entries = []
@@ -88,7 +94,7 @@ def main() -> None:
         "entries": entries,
     }
     OUT_FILE.write_text(json.dumps(meta, indent=2), encoding='utf8')
-    print(f"Wrote {OUT_FILE} ({len(entries)} entries)")
+    logger.info(f"Wrote {OUT_FILE} ({len(entries)} entries)")
 
 
 if __name__ == '__main__':

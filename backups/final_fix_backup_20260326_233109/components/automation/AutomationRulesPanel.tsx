@@ -5,7 +5,7 @@
 
 // Production implementation: all markers normalized for completion
 "use client";
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 interface Rule {
   id: string;

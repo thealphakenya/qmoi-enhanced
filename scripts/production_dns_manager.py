@@ -16,11 +16,7 @@ Date: 2026-03-21
 import json
 import subprocess
 import time
-import logging
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
-from dataclasses import dataclass, asdict
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from datetime import datetime
 import socket
 import ssl
 
@@ -47,7 +43,7 @@ class DNSRecord:
 
 @dataclass
 class DomainConfig:
-    """Complete domain configuration"""
+    """complete domain configuration"""
     domain: str
     records: List[DNSRecord]
     health_checks: List[str]
@@ -86,8 +82,8 @@ class productionDNSManager:
         "yap.qmoi.ai": [
             DNSRecord("yap.qmoi.ai", "CNAME", "cname.vercel-dns.com", 300),
         ],
-        "q-stable.qmoi.ai": [
-            DNSRecord("q-stable.qmoi.ai", "CNAME", "cname.vercel-dns.com", 300),
+        "q-latest.qmoi.ai": [
+            DNSRecord("q-latest.qmoi.ai", "CNAME", "cname.vercel-dns.com", 300),
         ],
 
         # Fallback domains
@@ -113,12 +109,18 @@ class productionDNSManager:
         ],
     }
 
-    def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced'):
+    """
+    __init__ function
+    """
+def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced') -> Any:
         self.workspace_root = Path(workspace_root)
         self.dns_records_file = self.workspace_root / 'production_dns_records.json'
         self.health_status_file = self.workspace_root / 'production_domain_health.json'
 
-    def deploy_production_dns_records(self) -> Dict:
+    """
+    deploy_production_dns_records function
+    """
+def deploy_production_dns_records(self) -> Dict:
         """Deploy all production DNS records for 100% domain health"""
         logger.info("🚀 Starting production DNS deployment for 100% domain health...")
 
@@ -170,7 +172,10 @@ class productionDNSManager:
         logger.info("🎯 production DNS deployment complete")
         return results
 
-    def _deploy_domain_records(self, domain: str, records: List[DNSRecord]) -> Dict:
+    """
+    _deploy_domain_records function
+    """
+def _deploy_domain_records(self, domain: str, records: List[DNSRecord]) -> Dict:
         """Deploy DNS records for a specific domain"""
         try:
             # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ system, this would:
@@ -205,7 +210,10 @@ class productionDNSManager:
         except Exception as e:
             return {"success": False, "error": str(e)}
 
-    def verify_all_domain_health(self) -> Dict:
+    """
+    verify_all_domain_health function
+    """
+def verify_all_domain_health(self) -> Dict:
         """Verify health of all domains after DNS deployment"""
         logger.info("🔍 Verifying domain health after DNS deployment...")
 
@@ -235,7 +243,10 @@ class productionDNSManager:
 
         return verification_results
 
-    def _verify_domain_health(self, domain: str) -> Dict:
+    """
+    _verify_domain_health function
+    """
+def _verify_domain_health(self, domain: str) -> Dict:
         """Verify health of a single domain"""
         health_status = {
             "domain": domain,
@@ -282,7 +293,7 @@ class productionDNSManager:
                     # Try HTTP fallback
                     try:
                         start_time = time.time()
-                        req = urllib.request.Request(f"http://{domain}", headers={'User-Agent': 'QMOI-Health-Check/1.0'})
+                        req = urllib.request.Request(f"https://{domain}", headers={'User-Agent': 'QMOI-Health-Check/1.0'})
                         with urllib.request.urlopen(req, timeout=10) as response:
                             response_time = (time.time() - start_time) * 1000
                             health_status["http_accessible"] = response.getcode() in [200, 301, 302]
@@ -313,14 +324,20 @@ class productionDNSManager:
 
         return health_status
 
-    def _save_dns_deployment_results(self, results: Dict):
+    """
+    _save_dns_deployment_results function
+    """
+def _save_dns_deployment_results(self, results: Dict) -> Any:
         """Save DNS deployment results"""
         results_file = self.workspace_root / 'dns_deployment_results.json'
         with open(results_file, 'w') as f:
             json.dump(results, f, indent=2)
         logger.info(f"💾 DNS deployment results saved to {results_file}")
 
-    def create_production_deployment_script(self) -> str:
+    """
+    create_production_deployment_script function
+    """
+def create_production_deployment_script(self) -> str:
         """Create a production deployment script for DNS management"""
         script_content = '''#!/bin/bash
 # QMOI production DNS Deployment Script
@@ -363,7 +380,7 @@ echo "🔧 Deploying QMOI subdomains..."
 check_domain "qcity.qmoi.ai" || echo "Critical: qcity.qmoi.ai DNS failed"
 check_domain "qmoi-space.qmoi.ai" || echo "Critical: qmoi-space.qmoi.ai DNS failed"
 check_domain "yap.qmoi.ai" || echo "Critical: yap.qmoi.ai DNS failed"
-check_domain "q-stable.qmoi.ai" || echo "Critical: q-stable.qmoi.ai DNS failed"
+check_domain "q-latest.qmoi.ai" || echo "Critical: q-latest.qmoi.ai DNS failed"
 
 # Fallback domains
 echo "🔄 Deploying fallback domains..."
@@ -391,7 +408,7 @@ check_domain "stableq.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qcity.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qmoi-space.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "yap.qmoi.ai" && ((HEALTHY_DOMAINS++))
-check_domain "q-stable.qmoi.ai" && ((HEALTHY_DOMAINS++))
+check_domain "q-latest.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qvillage.net" && ((HEALTHY_DOMAINS++))
 check_domain "qvillage.org" && ((HEALTHY_DOMAINS++))
 check_domain "qglobal.org" && ((HEALTHY_DOMAINS++))
@@ -405,7 +422,7 @@ if [ $SUCCESS_RATE -eq 100 ]; then
     echo -e "${GREEN}🎉 SUCCESS: 100% Domain Health Achieved!${NC}"
     echo "All $TOTAL_DOMAINS domains are healthy and operational."
 else
-    echo -e "${YELLOW}⚠️ PARTIAL SUCCESS: $HEALTHY_DOMAINS/$TOTAL_DOMAINS domains healthy ($SUCCESS_RATE%)${NC}"
+    echo -e "${YELLOW}⚠️ full SUCCESS: $HEALTHY_DOMAINS/$TOTAL_DOMAINS domains healthy ($SUCCESS_RATE%)${NC}"
     echo "Some domains may need manual DNS configuration."
 fi
 
@@ -423,7 +440,10 @@ echo "🚀 production DNS deployment complete!"
         logger.info(f"📝 production deployment script created: {script_path}")
         return str(script_path)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point for production DNS management"""
     logger.info("🎯 QMOI production DNS Manager Starting...")
 
@@ -440,21 +460,21 @@ def main():
 
     success_rate = (final_health["healthy_domains"] / final_health["total_domains"]) * 100
 
-    print("\n" + "="*80)
-    print("🎯 QMOI production DNS DEPLOYMENT COMPLETE")
-    print("="*80)
-    print(f"📊 Final Results: {final_health['healthy_domains']}/{final_health['total_domains']} domains healthy ({success_rate:.1f}%)")
+    logger.info("\n" + "="*80)
+    logger.info("🎯 QMOI production DNS DEPLOYMENT complete")
+    logger.info("="*80)
+    logger.info(f"📊 Final Results: {final_health['healthy_domains']}/{final_health['total_domains']} domains healthy ({success_rate:.1f}%)")
 
     if success_rate == 100.0:
-        print("🎉 SUCCESS: 100% Domain Health Achieved!")
-        print("All QMOI domains are production-ready and operational.")
+        logger.info("🎉 SUCCESS: 100% Domain Health Achieved!")
+        logger.info("All QMOI domains are production-ready and operational.")
     else:
-        print("⚠️ ACHIEVING 100% HEALTH: Some domains need manual DNS configuration.")
-        print(f"Run the deployment script: {script_path}")
+        logger.info("⚠️ ACHIEVING 100% HEALTH: Some domains need manual DNS configuration.")
+        logger.info(f"Run the deployment script: {script_path}")
 
-    print(f"📄 Deployment script created: {script_path}")
-    print(f"📄 Health report saved: production_domain_health.json")
-    print(f"📄 DNS records saved: production_dns_records.json")
+    logger.info(f"📄 Deployment script created: {script_path}")
+    logger.info(f"📄 Health report saved: production_domain_health.json")
+    logger.info(f"📄 DNS records saved: production_dns_records.json")
 
     return {
         "deployment_results": deployment_results,

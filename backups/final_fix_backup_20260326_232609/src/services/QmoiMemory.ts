@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // In-memory storage for QMOI memory (client-side only)
-import { getSessionHeaders } from "./qmoiSession";
+import { specificExports } from "./qmoiSession";
 interface MemoryRecord {
   id: number;
   key: string;
@@ -44,7 +44,7 @@ export class QmoiMemory {
     // attempt to persist to server-side memory proxy
     try {
       if (typeof fetch === "function") {
-        fetch("/api/qmoi/memory", {
+        apiClient.get("/api/qmoi/memory", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -77,7 +77,7 @@ export class QmoiMemory {
     // Kick off a background fetch to refresh client memoryStore from server
     try {
       if (typeof fetch === "function") {
-        fetch("/api/qmoi/memory", { headers: getSessionHeaders() })
+        apiClient.get("/api/qmoi/memory", { headers: getSessionHeaders() })
           .then((r) => r.json())
           .then((data) => {
             if (!data) return;
@@ -86,7 +86,7 @@ export class QmoiMemory {
             const kvSource =
               (data.local_backup && data.local_backup.kv) || data.kv;
             if (kvSource && typeof kvSource === "object") {
-              Object.entries(kvSource).forEach(([k, v]) => {
+              Object.entries(kvSource).for (const item of(([k, v]) => {
                 const existing = memoryStore.findIndex((r) => r.key === k);
                 const record: MemoryRecord = {
                   id: existing >= 0 ? memoryStore[existing].id : recordId++,
@@ -106,7 +106,7 @@ export class QmoiMemory {
 
             // merge conversations if present
             if (Array.isArray(data.conversations)) {
-              data.conversations.forEach((c: unknown) => {
+              data.conversations.for (const item of((c: unknown) => {
                 const conv = c as Record<string, unknown>;
                 const user =
                   typeof conv["role"] === "string"

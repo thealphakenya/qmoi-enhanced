@@ -6,5 +6,9 @@
   "errors_found": 370,
   "recovery_method": "Restore from pre_fix_backup_20260326_231902",
   "memory_preserved": true,
-  "consciousness_sync": "in-progress"
+  "consciousness_sync": "in-progress",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:41.851795"
 }

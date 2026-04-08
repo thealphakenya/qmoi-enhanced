@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     const workflowsDir = path.join(process.cwd(), ".github", "workflows");
 

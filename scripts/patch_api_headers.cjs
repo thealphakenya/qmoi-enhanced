@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const API_DIR = path.join(ROOT, "app", "api");
@@ -28,7 +28,7 @@ function patchFile(file) {
   if (!file.startsWith(API_DIR)) return;
   content = HEADER + content;
   fs.writeFileSync(file, content, "utf8");
-  console.log("Patched", file);
+  logger.info("Patched", file);
 }
 
 if (!fs.existsSync(API_DIR)) {
@@ -37,4 +37,4 @@ if (!fs.existsSync(API_DIR)) {
 }
 
 walk(API_DIR);
-console.log("Done patching api headers.");
+logger.info("Done patching api headers.");

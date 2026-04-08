@@ -3,11 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { AuthService } from "@/lib/auth-service";
-import { userService } from "@/lib/db/services";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth-service";
+import { specificExports } from "@/lib/db/services";
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { userId } = body;
@@ -89,7 +92,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function PUT(request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(request: NextRequest): any {
   try {
     const authHeader = request.headers.get("authorization");
     if (!authHeader || !authHeader.startsWith("Bearer ")) {

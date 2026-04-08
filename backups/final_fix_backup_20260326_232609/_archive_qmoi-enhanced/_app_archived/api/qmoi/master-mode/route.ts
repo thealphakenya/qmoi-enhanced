@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 // Master authentication middleware
 const authenticateMaster = (request: NextRequest) => {
@@ -20,7 +20,10 @@ const authenticateMaster = (request: NextRequest) => {
 };
 
 // POST /api/qmoi/master-mode
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     // Authenticate master access
     if (!authenticateMaster(request)) {
@@ -61,7 +64,10 @@ export async function POST(request: NextRequest) {
 }
 
 // GET /api/qmoi/master-mode
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Authenticate master access
     if (!authenticateMaster(request)) {

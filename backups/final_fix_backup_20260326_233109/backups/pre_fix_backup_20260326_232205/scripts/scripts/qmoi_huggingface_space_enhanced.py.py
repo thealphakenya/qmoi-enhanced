@@ -6,6 +6,9 @@
 // // production implementation: this file has no remaining production markers
 from pathlib import Path
 
+"""
+    get_notes function
+    """
 def get_notes() -> str:
     repo_root = Path(__file__).resolve().parent.parent
     p = repo_root / 'docs' / 'converted' / 'qmoi-enhanced_scripts_scripts_qmoi_huggingface_space_enhanced_py_py.md'

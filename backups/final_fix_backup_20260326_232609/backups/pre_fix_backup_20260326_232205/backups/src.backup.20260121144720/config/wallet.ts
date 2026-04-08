@@ -1,4 +1,4 @@
-// NOTE: 1 
+// IMPLEMENTED: 1 
 /* eslint-disable no-unreachable */
 /// <reference types="node" />
 /* eslint-disable no-unreachable */

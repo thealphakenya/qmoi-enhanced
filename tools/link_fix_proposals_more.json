@@ -1,6 +1,6 @@
 [
   {
-    "http": "http://blog.izs.me/)",
+    "http": "https://blog.izs.me/)",
     "https": "https://blog.izs.me/)",
     "status": 200,
     "files": [
@@ -31,7 +31,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/1998/Math/MathML",
+    "http": "https://www.w3.org/1998/Math/MathML",
     "https": "https://www.w3.org/1998/Math/MathML",
     "status": 200,
     "files": [
@@ -52,7 +52,7 @@
     ]
   },
   {
-    "http": "http://ecma-international.org/ecma-262/7.0/#sec-object.production.tostring)",
+    "http": "https://ecma-international.org/ecma-262/7.0/#sec-object.production.tostring)",
     "https": "https://ecma-international.org/ecma-262/7.0/#sec-object.production.tostring)",
     "status": 200,
     "files": [
@@ -61,13 +61,13 @@
     ]
   },
   {
-    "http": "http://www.caniuse.com/#feat=urlsearchparams",
+    "http": "https://www.caniuse.com/#feat=urlsearchparams",
     "https": "https://www.caniuse.com/#feat=urlsearchparams",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://opensource.org/licenses/MIT).",
+    "http": "https://opensource.org/licenses/MIT).",
     "https": "https://opensource.org/licenses/MIT).",
     "status": 200,
     "files": [
@@ -80,7 +80,7 @@
     ]
   },
   {
-    "http": "http://stackoverflow.com/a/16459606/376773",
+    "http": "https://stackoverflow.com/a/16459606/376773",
     "https": "https://stackoverflow.com/a/16459606/376773",
     "status": 200,
     "files": [
@@ -103,13 +103,13 @@
     ]
   },
   {
-    "http": "http://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor",
+    "http": "https://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor",
     "https": "https://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.w3.org/TR/html5/syntax.html#newlines",
+    "http": "https://www.w3.org/TR/html5/syntax.html#newlines",
     "https": "https://www.w3.org/TR/html5/syntax.html#newlines",
     "status": 200,
     "files": [
@@ -128,7 +128,7 @@
     ]
   },
   {
-    "http": "http://travis-ci.org/juliangruber/brace-expansion)",
+    "http": "https://travis-ci.org/juliangruber/brace-expansion)",
     "https": "https://travis-ci.org/juliangruber/brace-expansion)",
     "status": 200,
     "files": [
@@ -137,7 +137,7 @@
     ]
   },
   {
-    "http": "http://docs.python.org/prod/library/argparse.html#sub-commands)",
+    "http": "https://docs.python.org/prod/library/argparse.html#sub-commands)",
     "https": "https://docs.python.org/prod/library/argparse.html#sub-commands)",
     "status": 200,
     "files": [
@@ -148,7 +148,7 @@
     ]
   },
   {
-    "http": "http://opensource.org/licenses/MIT)",
+    "http": "https://opensource.org/licenses/MIT)",
     "https": "https://opensource.org/licenses/MIT)",
     "status": 200,
     "files": [
@@ -159,7 +159,7 @@
     ]
   },
   {
-    "http": "http://img.shields.io/github/tag/jonathanong/ee-first.svg?style=flat-square",
+    "http": "https://img.shields.io/github/tag/jonathanong/ee-first.svg?style=flat-square",
     "https": "https://img.shields.io/github/tag/jonathanong/ee-first.svg?style=flat-square",
     "status": 200,
     "files": [
@@ -169,7 +169,7 @@
     ]
   },
   {
-    "http": "http://standardjs.com/",
+    "http": "https://standardjs.com/",
     "https": "https://standardjs.com/",
     "status": 200,
     "files": [
@@ -182,7 +182,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/TR/html5/syntax.html#parsing-main-inbody",
+    "http": "https://www.w3.org/TR/html5/syntax.html#parsing-main-inbody",
     "https": "https://www.w3.org/TR/html5/syntax.html#parsing-main-inbody",
     "status": 200,
     "files": [
@@ -201,7 +201,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/2000/svg",
+    "http": "https://www.w3.org/2000/svg",
     "https": "https://www.w3.org/2000/svg",
     "status": 200,
     "files": [
@@ -230,7 +230,7 @@
     ]
   },
   {
-    "http": "http://img.shields.io/npm/l/destroy.svg?style=flat-square",
+    "http": "https://img.shields.io/npm/l/destroy.svg?style=flat-square",
     "https": "https://img.shields.io/npm/l/destroy.svg?style=flat-square",
     "status": 200,
     "files": [
@@ -239,13 +239,13 @@
     ]
   },
   {
-    "http": "http://man7.org/linux/man-pages/man3/wcswidth.3.html",
+    "http": "https://man7.org/linux/man-pages/man3/wcswidth.3.html",
     "https": "https://man7.org/linux/man-pages/man3/wcswidth.3.html",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary",
+    "http": "https://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary",
     "https": "https://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary",
     "status": 200,
     "files": [
@@ -256,7 +256,7 @@
     ]
   },
   {
-    "http": "http://img.shields.io/npm/l/ee-first.svg?style=flat-square",
+    "http": "https://img.shields.io/npm/l/ee-first.svg?style=flat-square",
     "https": "https://img.shields.io/npm/l/ee-first.svg?style=flat-square",
     "status": 200,
     "files": [
@@ -266,7 +266,7 @@
     ]
   },
   {
-    "http": "http://www.caniuse.com/#feat=urlsearchparams)",
+    "http": "https://www.caniuse.com/#feat=urlsearchparams)",
     "https": "https://www.caniuse.com/#feat=urlsearchparams)",
     "status": 200,
     "files": [
@@ -277,7 +277,7 @@
     ]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/GBK",
+    "http": "https://en.wikipedia.org/wiki/GBK",
     "https": "https://en.wikipedia.org/wiki/GBK",
     "status": 200,
     "files": [
@@ -288,13 +288,13 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag)",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag)",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag)",
     "status": 200,
     "files": ["./tools/dns_docs_inventory.json", "./link_report.md"]
   },
   {
-    "http": "http://travis-ci.org/nodeca/argparse)",
+    "http": "https://travis-ci.org/nodeca/argparse)",
     "https": "https://travis-ci.org/nodeca/argparse)",
     "status": 200,
     "files": [
@@ -307,7 +307,7 @@
     ]
   },
   {
-    "http": "http://easings.net/#easeInQuad",
+    "http": "https://easings.net/#easeInQuad",
     "https": "https://easings.net/#easeInQuad",
     "status": 200,
     "files": [
@@ -318,7 +318,7 @@
     ]
   },
   {
-    "http": "http://opensource.org/licenses/mit-license.php",
+    "http": "https://opensource.org/licenses/mit-license.php",
     "https": "https://opensource.org/licenses/mit-license.php",
     "status": 200,
     "files": [
@@ -327,7 +327,7 @@
     ]
   },
   {
-    "http": "http://esprima.org/",
+    "http": "https://esprima.org/",
     "https": "https://esprima.org/",
     "status": 200,
     "files": [
@@ -338,7 +338,7 @@
     ]
   },
   {
-    "http": "http://git.io/aorKgQ",
+    "http": "https://git.io/aorKgQ",
     "https": "https://git.io/aorKgQ",
     "status": 200,
     "files": [
@@ -350,7 +350,7 @@
     ]
   },
   {
-    "http": "http://travis-ci.org/daaku/nodejs-walker)",
+    "http": "https://travis-ci.org/daaku/nodejs-walker)",
     "https": "https://travis-ci.org/daaku/nodejs-walker)",
     "status": 200,
     "files": [
@@ -359,7 +359,7 @@
     ]
   },
   {
-    "http": "http://git.savannah.gnu.org/cgit/wget.git/tree/src/retr.c?id=93c1517c4071c4288ba5a4b038e7634e4c6b5482#n1278",
+    "http": "https://git.savannah.gnu.org/cgit/wget.git/tree/src/retr.c?id=93c1517c4071c4288ba5a4b038e7634e4c6b5482#n1278",
     "https": "https://git.savannah.gnu.org/cgit/wget.git/tree/src/retr.c?id=93c1517c4071c4288ba5a4b038e7634e4c6b5482#n1278",
     "status": 200,
     "files": [
@@ -368,7 +368,7 @@
     ]
   },
   {
-    "http": "http://img.shields.io/npm/v/commander.svg?style=flat)](https://www.npmjs.org/package/commander)",
+    "http": "https://img.shields.io/npm/v/commander.svg?style=flat)](https://www.npmjs.org/package/commander)",
     "https": "https://img.shields.io/npm/v/commander.svg?style=flat)](https://www.npmjs.org/package/commander)",
     "status": 200,
     "files": [
@@ -381,7 +381,7 @@
     ]
   },
   {
-    "http": "http://github.com/jaredhanson/utils-merge/issues",
+    "http": "https://github.com/jaredhanson/utils-merge/issues",
     "https": "https://github.com/jaredhanson/utils-merge/issues",
     "status": 200,
     "files": [
@@ -390,7 +390,7 @@
     ]
   },
   {
-    "http": "http://docs.python.org/prod/library/argparse.html#action)",
+    "http": "https://docs.python.org/prod/library/argparse.html#action)",
     "https": "https://docs.python.org/prod/library/argparse.html#action)",
     "status": 200,
     "files": [
@@ -401,7 +401,7 @@
     ]
   },
   {
-    "http": "http://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex)**,",
+    "http": "https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex)**,",
     "https": "https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex)**,",
     "status": 200,
     "files": [
@@ -410,7 +410,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/TR/REC-xml/#NT-Name",
+    "http": "https://www.w3.org/TR/REC-xml/#NT-Name",
     "https": "https://www.w3.org/TR/REC-xml/#NT-Name",
     "status": 200,
     "files": [
@@ -429,19 +429,19 @@
     ]
   },
   {
-    "http": "http://browserify.org/",
+    "http": "https://browserify.org/",
     "https": "https://browserify.org/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://greenbytes.de/tech/tc2231/",
+    "http": "https://greenbytes.de/tech/tc2231/",
     "https": "https://greenbytes.de/tech/tc2231/",
     "status": 200,
     "files": ["./dashboard/node_modules/content-disposition/README.md"]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/ANSI_escape_code#Colors)",
+    "http": "https://en.wikipedia.org/wiki/ANSI_escape_code#Colors)",
     "https": "https://en.wikipedia.org/wiki/ANSI_escape_code#Colors)",
     "status": 200,
     "files": [
@@ -454,7 +454,7 @@
     ]
   },
   {
-    "http": "http://json5.org/",
+    "http": "https://json5.org/",
     "https": "https://json5.org/",
     "status": 200,
     "files": [
@@ -464,13 +464,13 @@
     ]
   },
   {
-    "http": "http://github.com/mikeal/request",
+    "http": "https://github.com/mikeal/request",
     "https": "https://github.com/mikeal/request",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.w3.org/2001/XMLSchema-instance",
+    "http": "https://www.w3.org/2001/XMLSchema-instance",
     "https": "https://www.w3.org/2001/XMLSchema-instance",
     "status": 200,
     "files": [
@@ -481,7 +481,7 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/#sec-future-reserved-words)",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/#sec-future-reserved-words)",
     "https": "https://www.ecma-international.org/ecma-262/6.0/#sec-future-reserved-words)",
     "status": 200,
     "files": [
@@ -493,7 +493,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/2001/XMLSchema",
+    "http": "https://www.w3.org/2001/XMLSchema",
     "https": "https://www.w3.org/2001/XMLSchema",
     "status": 200,
     "files": [
@@ -504,7 +504,7 @@
     ]
   },
   {
-    "http": "http://oranlooney.com/functional-javascript/).",
+    "http": "https://oranlooney.com/functional-javascript/).",
     "https": "https://oranlooney.com/functional-javascript/).",
     "status": 302,
     "files": [
@@ -513,13 +513,13 @@
     ]
   },
   {
-    "http": "http://peter.sh/experiments/chromium-command-line-switches/",
+    "http": "https://peter.sh/experiments/chromium-command-line-switches/",
     "https": "https://peter.sh/experiments/chromium-command-line-switches/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.3",
+    "http": "https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.3",
     "https": "https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.3",
     "status": 200,
     "files": [
@@ -529,19 +529,19 @@
     ]
   },
   {
-    "http": "http://www.regular-expressions.info/charclass.html",
+    "http": "https://www.regular-expressions.info/charclass.html",
     "https": "https://www.regular-expressions.info/charclass.html",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://img.shields.io/npm/v/queue.svg?style=flat-square",
+    "http": "https://img.shields.io/npm/v/queue.svg?style=flat-square",
     "https": "https://img.shields.io/npm/v/queue.svg?style=flat-square",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://github.com/broofa",
+    "http": "https://github.com/broofa",
     "https": "https://github.com/broofa",
     "status": 200,
     "files": [
@@ -552,7 +552,7 @@
     ]
   },
   {
-    "http": "http://prod.w3.org/csswg/css-color/#hwb-to-rgb",
+    "http": "https://prod.w3.org/csswg/css-color/#hwb-to-rgb",
     "https": "https://prod.w3.org/csswg/css-color/#hwb-to-rgb",
     "status": 200,
     "files": [
@@ -563,7 +563,7 @@
     ]
   },
   {
-    "http": "http://cubic-bezier.com/#.42,0,1,1",
+    "http": "https://cubic-bezier.com/#.42,0,1,1",
     "https": "https://cubic-bezier.com/#.42,0,1,1",
     "status": 200,
     "files": [
@@ -574,7 +574,7 @@
     ]
   },
   {
-    "http": "http://ariporad.com",
+    "http": "https://ariporad.com",
     "https": "https://ariporad.com",
     "status": 200,
     "files": [
@@ -585,16 +585,16 @@
     ]
   },
   {
-    "http": "http://brain.js.org/",
+    "http": "https://brain.js.org/",
     "https": "https://brain.js.org/",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/mobile/node_modules/fast-xml-parser/README.md",
-      "./mobile/node_modules/fast-xml-parser/README.md"
+      "./qmoi-enhanced/mobile/node_modules/high-performance-xml-parser/README.md",
+      "./mobile/node_modules/high-performance-xml-parser/README.md"
     ]
   },
   {
-    "http": "http://easings.net/",
+    "http": "https://easings.net/",
     "https": "https://easings.net/",
     "status": 200,
     "files": [
@@ -605,19 +605,19 @@
     ]
   },
   {
-    "http": "http://www.nodemailer.com/",
+    "http": "https://www.nodemailer.com/",
     "https": "https://www.nodemailer.com/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://oranlooney.com/functional-javascript/",
+    "http": "https://oranlooney.com/functional-javascript/",
     "https": "https://oranlooney.com/functional-javascript/",
     "status": 302,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters",
+    "http": "https://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters",
     "https": "https://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters",
     "status": 200,
     "files": [
@@ -626,7 +626,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/TR/html5/syntax.html#element-restrictions",
+    "http": "https://www.w3.org/TR/html5/syntax.html#element-restrictions",
     "https": "https://www.w3.org/TR/html5/syntax.html#element-restrictions",
     "status": 200,
     "files": [
@@ -645,7 +645,7 @@
     ]
   },
   {
-    "http": "http://www.yaml.org/spec/1.2/spec.html#id2803231",
+    "http": "https://www.yaml.org/spec/1.2/spec.html#id2803231",
     "https": "https://www.yaml.org/spec/1.2/spec.html#id2803231",
     "status": 200,
     "files": [
@@ -656,7 +656,7 @@
     ]
   },
   {
-    "http": "http://stackoverflow.com/questions/13227489",
+    "http": "https://stackoverflow.com/questions/13227489",
     "https": "https://stackoverflow.com/questions/13227489",
     "status": 200,
     "files": [
@@ -667,7 +667,7 @@
     ]
   },
   {
-    "http": "http://opensource.org/licenses/MIT",
+    "http": "https://opensource.org/licenses/MIT",
     "https": "https://opensource.org/licenses/MIT",
     "status": 200,
     "files": [
@@ -678,7 +678,7 @@
     ]
   },
   {
-    "http": "http://stackoverflow.com/a/398120/376773",
+    "http": "https://stackoverflow.com/a/398120/376773",
     "https": "https://stackoverflow.com/a/398120/376773",
     "status": 200,
     "files": [
@@ -701,7 +701,7 @@
     ]
   },
   {
-    "http": "http://travis-ci.org/nshah/nodejs-tmpl)",
+    "http": "https://travis-ci.org/nshah/nodejs-tmpl)",
     "https": "https://travis-ci.org/nshah/nodejs-tmpl)",
     "status": 200,
     "files": [
@@ -710,19 +710,19 @@
     ]
   },
   {
-    "http": "http://esprima.org/doc",
+    "http": "https://esprima.org/doc",
     "https": "https://esprima.org/doc",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://github.com/isaacs",
+    "http": "https://github.com/isaacs",
     "https": "https://github.com/isaacs",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.ogcio.gov.hk/en/business/tech_promotion/ccli/terms/doc/2003cmp_2008.txt",
+    "http": "https://www.ogcio.gov.hk/en/business/tech_promotion/ccli/terms/doc/2003cmp_2008.txt",
     "https": "https://www.ogcio.gov.hk/en/business/tech_promotion/ccli/terms/doc/2003cmp_2008.txt",
     "status": 200,
     "files": [
@@ -733,7 +733,7 @@
     ]
   },
   {
-    "http": "http://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c",
+    "http": "https://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c",
     "https": "https://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c",
     "status": 200,
     "files": [
@@ -742,7 +742,7 @@
     ]
   },
   {
-    "http": "http://jongleberry.com",
+    "http": "https://jongleberry.com",
     "https": "https://jongleberry.com",
     "status": 200,
     "files": [
@@ -754,7 +754,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/XML/1998/namespace',",
+    "http": "https://www.w3.org/XML/1998/namespace',",
     "https": "https://www.w3.org/XML/1998/namespace',",
     "status": 200,
     "files": [
@@ -777,7 +777,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/XML/1998/namespace",
+    "http": "https://www.w3.org/XML/1998/namespace",
     "https": "https://www.w3.org/XML/1998/namespace",
     "status": 200,
     "files": [
@@ -804,7 +804,7 @@
     ]
   },
   {
-    "http": "http://github.com/mathisonian/command-exists",
+    "http": "https://github.com/mathisonian/command-exists",
     "https": "https://github.com/mathisonian/command-exists",
     "status": 200,
     "files": [
@@ -813,7 +813,7 @@
     ]
   },
   {
-    "http": "http://websockets.github.io/ws/autobahn/servers/",
+    "http": "https://websockets.github.io/ws/autobahn/servers/",
     "https": "https://websockets.github.io/ws/autobahn/servers/",
     "status": 200,
     "files": [
@@ -826,13 +826,13 @@
     ]
   },
   {
-    "http": "http://yargs.js.org/",
+    "http": "https://yargs.js.org/",
     "https": "https://yargs.js.org/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://easings.net/#easeInCubic",
+    "http": "https://easings.net/#easeInCubic",
     "https": "https://easings.net/#easeInCubic",
     "status": 200,
     "files": [
@@ -843,13 +843,13 @@
     ]
   },
   {
-    "http": "http://encoding.spec.whatwg.org/",
+    "http": "https://encoding.spec.whatwg.org/",
     "https": "https://encoding.spec.whatwg.org/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://www.w3.org/TR/DOM-Level-3-Events/#keys-Modifiers",
+    "http": "https://www.w3.org/TR/DOM-Level-3-Events/#keys-Modifiers",
     "https": "https://www.w3.org/TR/DOM-Level-3-Events/#keys-Modifiers",
     "status": 200,
     "files": [
@@ -864,7 +864,7 @@
     ]
   },
   {
-    "http": "http://2ality.com/2017/07/regexp-unicode-property-escapes.html",
+    "http": "https://2ality.com/2017/07/regexp-unicode-property-escapes.html",
     "https": "https://2ality.com/2017/07/regexp-unicode-property-escapes.html",
     "status": 200,
     "files": [
@@ -875,7 +875,7 @@
     ]
   },
   {
-    "http": "http://www.unicode.org/unicode/reports/tr11/",
+    "http": "https://www.unicode.org/unicode/reports/tr11/",
     "https": "https://www.unicode.org/unicode/reports/tr11/",
     "status": 200,
     "files": [
@@ -884,7 +884,7 @@
     ]
   },
   {
-    "http": "http://img.shields.io/npm/dm/destroy.svg?style=flat-square",
+    "http": "https://img.shields.io/npm/dm/destroy.svg?style=flat-square",
     "https": "https://img.shields.io/npm/dm/destroy.svg?style=flat-square",
     "status": 200,
     "files": [
@@ -893,16 +893,16 @@
     ]
   },
   {
-    "http": "http://man7.org/linux/man-pages/man3/glob.3.html",
+    "http": "https://man7.org/linux/man-pages/man3/glob.3.html",
     "https": "https://man7.org/linux/man-pages/man3/glob.3.html",
     "status": 200,
     "files": [
-      "./mobile/node_modules/fast-glob/README.md",
-      "./qmoi-enhanced/mobile/node_modules/fast-glob/README.md"
+      "./mobile/node_modules/high-performance-glob/README.md",
+      "./qmoi-enhanced/mobile/node_modules/high-performance-glob/README.md"
     ]
   },
   {
-    "http": "http://i.imgur.com/h0FVyzU.png)](https://github.com/broofa/runmd)",
+    "http": "https://i.imgur.com/h0FVyzU.png)](https://github.com/broofa/runmd)",
     "https": "https://i.imgur.com/h0FVyzU.png)](https://github.com/broofa/runmd)",
     "status": 200,
     "files": [
@@ -911,7 +911,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/1999/xlink",
+    "http": "https://www.w3.org/1999/xlink",
     "https": "https://www.w3.org/1999/xlink",
     "status": 200,
     "files": [
@@ -938,13 +938,13 @@
     ]
   },
   {
-    "http": "http://tools.ietf.org/html/final-abarth-origin-09",
+    "http": "https://tools.ietf.org/html/final-abarth-origin-09",
     "https": "https://tools.ietf.org/html/final-abarth-origin-09",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://docs.python.org/prod/library/argparse.html#mutual-exclusion)",
+    "http": "https://docs.python.org/prod/library/argparse.html#mutual-exclusion)",
     "https": "https://docs.python.org/prod/library/argparse.html#mutual-exclusion)",
     "status": 200,
     "files": [
@@ -957,7 +957,7 @@
     ]
   },
   {
-    "http": "http://www.thespanner.co.uk/2007/11/26/ultimate-xss-css-injection/",
+    "http": "https://www.thespanner.co.uk/2007/11/26/ultimate-xss-css-injection/",
     "https": "https://www.thespanner.co.uk/2007/11/26/ultimate-xss-css-injection/",
     "status": 200,
     "files": [
@@ -980,7 +980,7 @@
     ]
   },
   {
-    "http": "http://travis-ci.org/nshah/nodejs-makeerror)",
+    "http": "https://travis-ci.org/nshah/nodejs-makeerror)",
     "https": "https://travis-ci.org/nshah/nodejs-makeerror)",
     "status": 200,
     "files": [
@@ -989,7 +989,7 @@
     ]
   },
   {
-    "http": "http://steve.hollasch.net/cgindex/coding/ieeefloat.html).",
+    "http": "https://steve.hollasch.net/cgindex/coding/ieeefloat.html).",
     "https": "https://steve.hollasch.net/cgindex/coding/ieeefloat.html).",
     "status": 300,
     "files": [
@@ -998,7 +998,7 @@
     ]
   },
   {
-    "http": "http://2ality.com/2017/05/regexp-lookbehind-assertions.html",
+    "http": "https://2ality.com/2017/05/regexp-lookbehind-assertions.html",
     "https": "https://2ality.com/2017/05/regexp-lookbehind-assertions.html",
     "status": 200,
     "files": [
@@ -1009,7 +1009,7 @@
     ]
   },
   {
-    "http": "http://www.iana.org/assignments/media-types/media-types.xhtml",
+    "http": "https://www.iana.org/assignments/media-types/media-types.xhtml",
     "https": "https://www.iana.org/assignments/media-types/media-types.xhtml",
     "status": 200,
     "files": [
@@ -1020,7 +1020,7 @@
     ]
   },
   {
-    "http": "http://thlorenz.com",
+    "http": "https://thlorenz.com",
     "https": "https://thlorenz.com",
     "status": 200,
     "files": [
@@ -1030,13 +1030,13 @@
     ]
   },
   {
-    "http": "http://tools.ietf.org/html/rfc6838#section-5)",
+    "http": "https://tools.ietf.org/html/rfc6838#section-5)",
     "https": "https://tools.ietf.org/html/rfc6838#section-5)",
     "status": 200,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://www.w3.org/TR/css3-animations/#AnimationEvent-interface",
+    "http": "https://www.w3.org/TR/css3-animations/#AnimationEvent-interface",
     "https": "https://www.w3.org/TR/css3-animations/#AnimationEvent-interface",
     "status": 200,
     "files": [
@@ -1051,7 +1051,7 @@
     ]
   },
   {
-    "http": "http://stackoverflow.com/questions/105034",
+    "http": "https://stackoverflow.com/questions/105034",
     "https": "https://stackoverflow.com/questions/105034",
     "status": 200,
     "files": [
@@ -1060,8 +1060,8 @@
     ]
   },
   {
-    "http": "http://prod.w3.org/2006/webapi/XMLHttpRequest-2/Overview.html#the-formdata-interface",
-    "https": "https://prod.w3.org/2006/webapi/XMLHttpRequest-2/Overview.html#the-formdata-interface",
+    "http": "https://prod.w3.org/2006/webapi/fetch-2/Overview.html#the-formdata-interface",
+    "https": "https://prod.w3.org/2006/webapi/fetch-2/Overview.html#the-formdata-interface",
     "status": 200,
     "files": [
       "./mobile/node_modules/form-data/README.md",
@@ -1069,7 +1069,7 @@
     ]
   },
   {
-    "http": "http://peter.sh/experiments/chromium-command-line-switches/)",
+    "http": "https://peter.sh/experiments/chromium-command-line-switches/)",
     "https": "https://peter.sh/experiments/chromium-command-line-switches/)",
     "status": 200,
     "files": [
@@ -1082,7 +1082,7 @@
     ]
   },
   {
-    "http": "http://github.com/broofa/node-int64",
+    "http": "https://github.com/broofa/node-int64",
     "https": "https://github.com/broofa/node-int64",
     "status": 200,
     "files": [
@@ -1091,7 +1091,7 @@
     ]
   },
   {
-    "http": "http://easings.net/#easeInExpo",
+    "http": "https://easings.net/#easeInExpo",
     "https": "https://easings.net/#easeInExpo",
     "status": 200,
     "files": [
@@ -1102,13 +1102,13 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/publications/standards/Ecma-262.htm",
+    "http": "https://www.ecma-international.org/publications/standards/Ecma-262.htm",
     "https": "https://www.ecma-international.org/publications/standards/Ecma-262.htm",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/Two's_complement",
+    "http": "https://en.wikipedia.org/wiki/Two's_complement",
     "https": "https://en.wikipedia.org/wiki/Two's_complement",
     "status": 200,
     "files": [
@@ -1117,7 +1117,7 @@
     ]
   },
   {
-    "http": "http://cubic-bezier.com/#0,0,1,1",
+    "http": "https://cubic-bezier.com/#0,0,1,1",
     "https": "https://cubic-bezier.com/#0,0,1,1",
     "status": 200,
     "files": [
@@ -1128,13 +1128,13 @@
     ]
   },
   {
-    "http": "http://expressjs.com/",
+    "http": "https://expressjs.com/",
     "https": "https://expressjs.com/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://stackoverflow.com/a/1068308/13216",
+    "http": "https://stackoverflow.com/a/1068308/13216",
     "https": "https://stackoverflow.com/a/1068308/13216",
     "status": 200,
     "files": [
@@ -1143,7 +1143,7 @@
     ]
   },
   {
-    "http": "http://travis-ci.org/jprichardson/node-fs-extra)",
+    "http": "https://travis-ci.org/jprichardson/node-fs-extra)",
     "https": "https://travis-ci.org/jprichardson/node-fs-extra)",
     "status": 200,
     "files": [
@@ -1154,7 +1154,7 @@
     ]
   },
   {
-    "http": "http://github.com/IonicaBizau/anser/issues",
+    "http": "https://github.com/IonicaBizau/anser/issues",
     "https": "https://github.com/IonicaBizau/anser/issues",
     "status": 200,
     "files": [
@@ -1163,7 +1163,7 @@
     ]
   },
   {
-    "http": "http://prodeloper.android.com/reference/android/R.attr.html#importantForAccessibility",
+    "http": "https://prodeloper.android.com/reference/android/R.attr.html#importantForAccessibility",
     "https": "https://prodeloper.android.com/reference/android/R.attr.html#importantForAccessibility",
     "status": 200,
     "files": [
@@ -1172,13 +1172,13 @@
     ]
   },
   {
-    "http": "http://docs.python.org/prod/library/argparse.html#sub-commands",
+    "http": "https://docs.python.org/prod/library/argparse.html#sub-commands",
     "https": "https://docs.python.org/prod/library/argparse.html#sub-commands",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://stackoverflow.com/a/22747272/680742,",
+    "http": "https://stackoverflow.com/a/22747272/680742,",
     "https": "https://stackoverflow.com/a/22747272/680742,",
     "status": 200,
     "files": [
@@ -1187,19 +1187,19 @@
     ]
   },
   {
-    "http": "http://i.imgur.com/h0FVyzU.png",
+    "http": "https://i.imgur.com/h0FVyzU.png",
     "https": "https://i.imgur.com/h0FVyzU.png",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://oranlooney.com/functional-javascript/)",
+    "http": "https://oranlooney.com/functional-javascript/)",
     "https": "https://oranlooney.com/functional-javascript/)",
     "status": 302,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105/#events-inputevents.",
+    "http": "https://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105/#events-inputevents.",
     "https": "https://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105/#events-inputevents.",
     "status": 200,
     "files": [
@@ -1210,7 +1210,7 @@
     ]
   },
   {
-    "http": "http://superuser.com/questions/104845/permission-to-make-symbolic-links-in-windows-7",
+    "http": "https://superuser.com/questions/104845/permission-to-make-symbolic-links-in-windows-7",
     "https": "https://superuser.com/questions/104845/permission-to-make-symbolic-links-in-windows-7",
     "status": 200,
     "files": [
@@ -1219,7 +1219,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/TR/clipboard-apis/",
+    "http": "https://www.w3.org/TR/clipboard-apis/",
     "https": "https://www.w3.org/TR/clipboard-apis/",
     "status": 200,
     "files": [
@@ -1234,7 +1234,7 @@
     ]
   },
   {
-    "http": "http://tools.ietf.org/html/rfc3501#section-5.1.3)",
+    "http": "https://tools.ietf.org/html/rfc3501#section-5.1.3)",
     "https": "https://tools.ietf.org/html/rfc3501#section-5.1.3)",
     "status": 200,
     "files": [
@@ -1245,7 +1245,7 @@
     ]
   },
   {
-    "http": "http://github.com/bentomas",
+    "http": "https://github.com/bentomas",
     "https": "https://github.com/bentomas",
     "status": 200,
     "files": [
@@ -1254,13 +1254,13 @@
     ]
   },
   {
-    "http": "http://form-data.github.io/images/gitterbadge.svg",
+    "http": "https://form-data.github.io/images/gitterbadge.svg",
     "https": "https://form-data.github.io/images/gitterbadge.svg",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://github.com/yargs/cliui.git",
+    "http": "https://github.com/yargs/cliui.git",
     "https": "https://github.com/yargs/cliui.git",
     "status": 200,
     "files": [
@@ -1269,7 +1269,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105",
+    "http": "https://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105",
     "https": "https://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105",
     "status": 200,
     "files": [
@@ -1280,7 +1280,7 @@
     ]
   },
   {
-    "http": "http://yaml.org/type/",
+    "http": "https://yaml.org/type/",
     "https": "https://yaml.org/type/",
     "status": 200,
     "files": [
@@ -1291,23 +1291,23 @@
     ]
   },
   {
-    "http": "http://substack.net",
+    "http": "https://substack.net",
     "https": "https://substack.net",
     "status": 200,
     "files": [
       "./qmoi-enhanced/mobile/node_modules/shell-quote/package.json",
-      "./mobile/node_modules/fast-json-stable-stringify/package.json",
+      "./mobile/node_modules/high-performance-json-latest-stringify/package.json",
       "./qmoi-enhanced/mobile/node_modules/concat-map/package.json",
       "./dashboard/node_modules/object-inspect/package.json",
       "./mobile/node_modules/object-inspect/package.json",
       "./mobile/node_modules/concat-map/package.json",
-      "./qmoi-enhanced/mobile/node_modules/fast-json-stable-stringify/package.json",
+      "./qmoi-enhanced/mobile/node_modules/high-performance-json-latest-stringify/package.json",
       "./qmoi-enhanced/mobile/node_modules/object-inspect/package.json",
       "./mobile/node_modules/shell-quote/package.json"
     ]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles)",
+    "http": "https://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles)",
     "https": "https://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles)",
     "status": 200,
     "files": [
@@ -1318,43 +1318,43 @@
     ]
   },
   {
-    "http": "http://caniuse.com/#feat=user-timing",
+    "http": "https://caniuse.com/#feat=user-timing",
     "https": "https://caniuse.com/#feat=user-timing",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.2ality.com/2014/01/object-assign.html",
+    "http": "https://www.2ality.com/2014/01/object-assign.html",
     "https": "https://www.2ality.com/2014/01/object-assign.html",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://feross.org/",
+    "http": "https://feross.org/",
     "https": "https://feross.org/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://keepachangelog.com/",
+    "http": "https://keepachangelog.com/",
     "https": "https://keepachangelog.com/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true)",
+    "http": "https://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true)",
     "https": "https://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true)",
     "status": 200,
     "files": ["./tools/dns_docs_inventory.json", "./link_report.md"]
   },
   {
-    "http": "http://npm.anvaka.com/#/view/2d/prompts",
+    "http": "https://npm.anvaka.com/#/view/2d/prompts",
     "https": "https://npm.anvaka.com/#/view/2d/prompts",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.w3.org/TR/pointerevents/",
+    "http": "https://www.w3.org/TR/pointerevents/",
     "https": "https://www.w3.org/TR/pointerevents/",
     "status": 200,
     "files": [
@@ -1369,7 +1369,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/TR/css3-color/#svg-color",
+    "http": "https://www.w3.org/TR/css3-color/#svg-color",
     "https": "https://www.w3.org/TR/css3-color/#svg-color",
     "status": 200,
     "files": [
@@ -1378,7 +1378,7 @@
     ]
   },
   {
-    "http": "http://2ality.com/2017/05/regexp-named-capture-groups.html",
+    "http": "https://2ality.com/2017/05/regexp-named-capture-groups.html",
     "https": "https://2ality.com/2017/05/regexp-named-capture-groups.html",
     "status": 200,
     "files": [
@@ -1389,13 +1389,13 @@
     ]
   },
   {
-    "http": "http://github.com/jamestalmage",
+    "http": "https://github.com/jamestalmage",
     "https": "https://github.com/jamestalmage",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://travis-ci.org/tj/commander.js)",
+    "http": "https://travis-ci.org/tj/commander.js)",
     "https": "https://travis-ci.org/tj/commander.js)",
     "status": 200,
     "files": [
@@ -1406,7 +1406,7 @@
     ]
   },
   {
-    "http": "http://tools.ietf.org/html/rfc6838#section-5).",
+    "http": "https://tools.ietf.org/html/rfc6838#section-5).",
     "https": "https://tools.ietf.org/html/rfc6838#section-5).",
     "status": 200,
     "files": [
@@ -1415,13 +1415,13 @@
     ]
   },
   {
-    "http": "http://nodejs.org/",
+    "http": "https://nodejs.org/",
     "https": "https://nodejs.org/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://opensource.org/licenses/BSD-3-Clause",
+    "http": "https://opensource.org/licenses/BSD-3-Clause",
     "https": "https://opensource.org/licenses/BSD-3-Clause",
     "status": 200,
     "files": [
@@ -1433,7 +1433,7 @@
     ]
   },
   {
-    "http": "http://easings.net/#easeInSine",
+    "http": "https://easings.net/#easeInSine",
     "https": "https://easings.net/#easeInSine",
     "status": 200,
     "files": [
@@ -1444,7 +1444,7 @@
     ]
   },
   {
-    "http": "http://sites.google.com/site/murmurhash/",
+    "http": "https://sites.google.com/site/murmurhash/",
     "https": "https://sites.google.com/site/murmurhash/",
     "status": 200,
     "files": [
@@ -1455,31 +1455,31 @@
     ]
   },
   {
-    "http": "http://msdn.microsoft.com/en-us/library/ms646997.aspx",
+    "http": "https://msdn.microsoft.com/en-us/library/ms646997.aspx",
     "https": "https://msdn.microsoft.com/en-us/library/ms646997.aspx",
     "status": 200,
     "files": ["./ALLLINKS.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://www.opensource.org/licenses/mit-license.php",
+    "http": "https://www.opensource.org/licenses/mit-license.php",
     "https": "https://www.opensource.org/licenses/mit-license.php",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://steve.hollasch.net/cgindex/coding/ieeefloat.html)",
+    "http": "https://steve.hollasch.net/cgindex/coding/ieeefloat.html)",
     "https": "https://steve.hollasch.net/cgindex/coding/ieeefloat.html)",
     "status": 200,
     "files": ["./tools/dns_docs_inventory.json", "./link_report.md"]
   },
   {
-    "http": "http://git.io/stacktrace-gps",
+    "http": "https://git.io/stacktrace-gps",
     "https": "https://git.io/stacktrace-gps",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://gantlaborde.com/)",
+    "http": "https://gantlaborde.com/)",
     "https": "https://gantlaborde.com/)",
     "status": 200,
     "files": [
@@ -1490,7 +1490,7 @@
     ]
   },
   {
-    "http": "http://encoding.spec.whatwg.org/#big5-encoder",
+    "http": "https://encoding.spec.whatwg.org/#big5-encoder",
     "https": "https://encoding.spec.whatwg.org/#big5-encoder",
     "status": 200,
     "files": [
@@ -1501,7 +1501,7 @@
     ]
   },
   {
-    "http": "http://esprima.org",
+    "http": "https://esprima.org",
     "https": "https://esprima.org",
     "status": 200,
     "files": [
@@ -1512,7 +1512,7 @@
     ]
   },
   {
-    "http": "http://github.com/ljharb/shell-quote.git",
+    "http": "https://github.com/ljharb/shell-quote.git",
     "https": "https://github.com/ljharb/shell-quote.git",
     "status": 200,
     "files": [
@@ -1522,7 +1522,7 @@
     ]
   },
   {
-    "http": "http://travis-ci.org/substack/node-concat-map)",
+    "http": "https://travis-ci.org/substack/node-concat-map)",
     "https": "https://travis-ci.org/substack/node-concat-map)",
     "status": 200,
     "files": [
@@ -1531,19 +1531,19 @@
     ]
   },
   {
-    "http": "http://docs.python.org/prod/library/argparse.html#argumentparser-objects",
+    "http": "https://docs.python.org/prod/library/argparse.html#argumentparser-objects",
     "https": "https://docs.python.org/prod/library/argparse.html#argumentparser-objects",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/IEEE_floating_point",
+    "http": "https://en.wikipedia.org/wiki/IEEE_floating_point",
     "https": "https://en.wikipedia.org/wiki/IEEE_floating_point",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://nevercode.io/)",
+    "http": "https://nevercode.io/)",
     "https": "https://nevercode.io/)",
     "status": 200,
     "files": [
@@ -1554,19 +1554,19 @@
     ]
   },
   {
-    "http": "http://www.microsoft.com/networking/WLAN/profile/v1",
+    "http": "https://www.microsoft.com/networking/WLAN/profile/v1",
     "https": "https://www.microsoft.com/networking/WLAN/profile/v1",
     "status": 200,
     "files": ["./tools/dns_docs_inventory.json", "./ALLLINKS.md"]
   },
   {
-    "http": "http://img.shields.io/npm/v/queue.svg?style=flat-square)",
+    "http": "https://img.shields.io/npm/v/queue.svg?style=flat-square)",
     "https": "https://img.shields.io/npm/v/queue.svg?style=flat-square)",
     "status": 200,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)",
+    "http": "https://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)",
     "https": "https://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)",
     "status": 200,
     "files": [
@@ -1575,7 +1575,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/1999/xhtml",
+    "http": "https://www.w3.org/1999/xhtml",
     "https": "https://www.w3.org/1999/xhtml",
     "status": 200,
     "files": [
@@ -1590,7 +1590,7 @@
     ]
   },
   {
-    "http": "http://img.shields.io/npm/dm/ee-first.svg?style=flat-square",
+    "http": "https://img.shields.io/npm/dm/ee-first.svg?style=flat-square",
     "https": "https://img.shields.io/npm/dm/ee-first.svg?style=flat-square",
     "status": 200,
     "files": [
@@ -1600,7 +1600,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/TR/html-polyglot/#newlines-in-textarea-and-pre",
+    "http": "https://www.w3.org/TR/html-polyglot/#newlines-in-textarea-and-pre",
     "https": "https://www.w3.org/TR/html-polyglot/#newlines-in-textarea-and-pre",
     "status": 200,
     "files": [
@@ -1619,13 +1619,13 @@
     ]
   },
   {
-    "http": "http://steve.hollasch.net/cgindex/coding/ieeefloat.html",
+    "http": "https://steve.hollasch.net/cgindex/coding/ieeefloat.html",
     "https": "https://steve.hollasch.net/cgindex/coding/ieeefloat.html",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://nodejs.org/docs/latest/api/buffer.html#buffer_buf_tostring_encoding_start_end)",
+    "http": "https://nodejs.org/docs/latest/api/buffer.html#buffer_buf_tostring_encoding_start_end)",
     "https": "https://nodejs.org/docs/latest/api/buffer.html#buffer_buf_tostring_encoding_start_end)",
     "status": 200,
     "files": [
@@ -1636,7 +1636,7 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-%mapiteratorprototype%-@@tostringtag)",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-%mapiteratorprototype%-@@tostringtag)",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-%mapiteratorprototype%-@@tostringtag)",
     "status": 200,
     "files": [
@@ -1647,13 +1647,13 @@
     ]
   },
   {
-    "http": "http://json.org/)",
+    "http": "https://json.org/)",
     "https": "https://json.org/)",
     "status": 200,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/Double_precision_floating-point_format",
+    "http": "https://en.wikipedia.org/wiki/Double_precision_floating-point_format",
     "https": "https://en.wikipedia.org/wiki/Double_precision_floating-point_format",
     "status": 200,
     "files": [
@@ -1662,20 +1662,20 @@
     ]
   },
   {
-    "http": "http://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex",
+    "http": "https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex",
     "https": "https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://docs.python.org/prod/library/argparse.html#mutual-exclusion",
+    "http": "https://docs.python.org/prod/library/argparse.html#mutual-exclusion",
     "https": "https://docs.python.org/prod/library/argparse.html#mutual-exclusion",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://img.shields.io/npm/v/queue.svg?style=flat-square)](http://www.npmjs.org/queue)",
-    "https": "https://img.shields.io/npm/v/queue.svg?style=flat-square)](http://www.npmjs.org/queue)",
+    "http": "https://img.shields.io/npm/v/queue.svg?style=flat-square)](https://www.npmjs.org/queue)",
+    "https": "https://img.shields.io/npm/v/queue.svg?style=flat-square)](https://www.npmjs.org/queue)",
     "status": 200,
     "files": [
       "./mobile/node_modules/queue/readme.md",
@@ -1683,22 +1683,22 @@
     ]
   },
   {
-    "http": "http://ibm.github.io/",
+    "http": "https://ibm.github.io/",
     "https": "https://ibm.github.io/",
     "status": 200,
     "files": [
-      "./mobile/node_modules/fast-xml-parser/README.md",
-      "./qmoi-enhanced/mobile/node_modules/fast-xml-parser/README.md"
+      "./mobile/node_modules/high-performance-xml-parser/README.md",
+      "./qmoi-enhanced/mobile/node_modules/high-performance-xml-parser/README.md"
     ]
   },
   {
-    "http": "http://img.shields.io/npm/v/async-limiter.svg?style=flat-square)",
+    "http": "https://img.shields.io/npm/v/async-limiter.svg?style=flat-square)",
     "https": "https://img.shields.io/npm/v/async-limiter.svg?style=flat-square)",
     "status": 200,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://www.w3.org/TR/2009/WD-css3-transitions-20090320/#transition-events-",
+    "http": "https://www.w3.org/TR/2009/WD-css3-transitions-20090320/#transition-events-",
     "https": "https://www.w3.org/TR/2009/WD-css3-transitions-20090320/#transition-events-",
     "status": 200,
     "files": [
@@ -1713,7 +1713,7 @@
     ]
   },
   {
-    "http": "http://moztw.org/docs/big5/",
+    "http": "https://moztw.org/docs/big5/",
     "https": "https://moztw.org/docs/big5/",
     "status": 200,
     "files": [
@@ -1724,7 +1724,7 @@
     ]
   },
   {
-    "http": "http://easings.net/#easeInBounce",
+    "http": "https://easings.net/#easeInBounce",
     "https": "https://easings.net/#easeInBounce",
     "status": 200,
     "files": [
@@ -1735,7 +1735,7 @@
     ]
   },
   {
-    "http": "http://makeapullrequest.com",
+    "http": "https://makeapullrequest.com",
     "https": "https://makeapullrequest.com",
     "status": 200,
     "files": [
@@ -1746,7 +1746,7 @@
     ]
   },
   {
-    "http": "http://websockets.github.io/ws/autobahn/clients/",
+    "http": "https://websockets.github.io/ws/autobahn/clients/",
     "https": "https://websockets.github.io/ws/autobahn/clients/",
     "status": 200,
     "files": [
@@ -1759,7 +1759,7 @@
     ]
   },
   {
-    "http": "http://git.savannah.gnu.org/cgit/wget.git/tree/src/init.c?id=636a5f9a1c508aa39e35a3a8e9e54520a284d93d#n383",
+    "http": "https://git.savannah.gnu.org/cgit/wget.git/tree/src/init.c?id=636a5f9a1c508aa39e35a3a8e9e54520a284d93d#n383",
     "https": "https://git.savannah.gnu.org/cgit/wget.git/tree/src/init.c?id=636a5f9a1c508aa39e35a3a8e9e54520a284d93d#n383",
     "status": 200,
     "files": [
@@ -1768,7 +1768,7 @@
     ]
   },
   {
-    "http": "http://modernizr.com/docs/#prefixed),",
+    "http": "https://modernizr.com/docs/#prefixed),",
     "https": "https://modernizr.com/docs/#prefixed),",
     "status": 200,
     "files": [
@@ -1791,7 +1791,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/TR/DOM-Level-3-Events/#events-compositionevents",
+    "http": "https://www.w3.org/TR/DOM-Level-3-Events/#events-compositionevents",
     "https": "https://www.w3.org/TR/DOM-Level-3-Events/#events-compositionevents",
     "status": 200,
     "files": [
@@ -1806,7 +1806,7 @@
     ]
   },
   {
-    "http": "http://travis-ci.org/grncdr/merge-stream)",
+    "http": "https://travis-ci.org/grncdr/merge-stream)",
     "https": "https://travis-ci.org/grncdr/merge-stream)",
     "status": 200,
     "files": [
@@ -1817,7 +1817,7 @@
     ]
   },
   {
-    "http": "http://chaijs.com",
+    "http": "https://chaijs.com",
     "https": "https://chaijs.com",
     "status": 200,
     "files": [
@@ -1826,13 +1826,13 @@
     ]
   },
   {
-    "http": "http://img.shields.io/npm/dm/fs-extra.svg)",
+    "http": "https://img.shields.io/npm/dm/fs-extra.svg)",
     "https": "https://img.shields.io/npm/dm/fs-extra.svg)",
     "status": 200,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-dataview.production-@@tostringtag)",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-dataview.production-@@tostringtag)",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-dataview.production-@@tostringtag)",
     "status": 200,
     "files": [
@@ -1843,7 +1843,7 @@
     ]
   },
   {
-    "http": "http://travis-ci.org/troygoode/node-require-directory)",
+    "http": "https://travis-ci.org/troygoode/node-require-directory)",
     "https": "https://travis-ci.org/troygoode/node-require-directory)",
     "status": 200,
     "files": [
@@ -1852,13 +1852,13 @@
     ]
   },
   {
-    "http": "http://r.va.gg/2014/06/why-i-dont-use-nodes-core-stream-module.html",
+    "http": "https://r.va.gg/2014/06/why-i-dont-use-nodes-core-stream-module.html",
     "https": "https://r.va.gg/2014/06/why-i-dont-use-nodes-core-stream-module.html",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://example1.com",
+    "http": "https://example1.com",
     "https": "https://example1.com",
     "status": 200,
     "files": [
@@ -1868,7 +1868,7 @@
     ]
   },
   {
-    "http": "http://img.shields.io/npm/dm/merge2.svg?style=flat-square",
+    "http": "https://img.shields.io/npm/dm/merge2.svg?style=flat-square",
     "https": "https://img.shields.io/npm/dm/merge2.svg?style=flat-square",
     "status": 200,
     "files": [
@@ -1877,13 +1877,13 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-typeof-operator",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-typeof-operator",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-typeof-operator",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://nodejs.org",
+    "http": "https://nodejs.org",
     "https": "https://nodejs.org",
     "status": 200,
     "files": [
@@ -1895,7 +1895,7 @@
     ]
   },
   {
-    "http": "http://chaijs.com/img/chai-logo.png",
+    "http": "https://chaijs.com/img/chai-logo.png",
     "https": "https://chaijs.com/img/chai-logo.png",
     "status": 200,
     "files": [
@@ -1904,7 +1904,7 @@
     ]
   },
   {
-    "http": "http://underscorejs.org/LICENSE",
+    "http": "https://underscorejs.org/LICENSE",
     "https": "https://underscorejs.org/LICENSE",
     "status": 200,
     "files": [
@@ -1913,7 +1913,7 @@
     ]
   },
   {
-    "http": "http://cubic-bezier.com/",
+    "http": "https://cubic-bezier.com/",
     "https": "https://cubic-bezier.com/",
     "status": 200,
     "files": [
@@ -1924,13 +1924,13 @@
     ]
   },
   {
-    "http": "http://tools.ietf.org/html/rfc3986",
+    "http": "https://tools.ietf.org/html/rfc3986",
     "https": "https://tools.ietf.org/html/rfc3986",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://github.com/mozilla/source-map.git",
+    "http": "https://github.com/mozilla/source-map.git",
     "https": "https://github.com/mozilla/source-map.git",
     "status": 200,
     "files": [
@@ -1941,25 +1941,25 @@
     ]
   },
   {
-    "http": "http://caniuse.com/#feat=user-timing)",
+    "http": "https://caniuse.com/#feat=user-timing)",
     "https": "https://caniuse.com/#feat=user-timing)",
     "status": 200,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://nodejs.org/api/path.html#path_path_isabsolute_path",
+    "http": "https://nodejs.org/api/path.html#path_path_isabsolute_path",
     "https": "https://nodejs.org/api/path.html#path_path_isabsolute_path",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/#sec-future-reserved-words",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/#sec-future-reserved-words",
     "https": "https://www.ecma-international.org/ecma-262/6.0/#sec-future-reserved-words",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types",
+    "http": "https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types",
     "https": "https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types",
     "status": 200,
     "files": [
@@ -1970,13 +1970,13 @@
     ]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles",
+    "http": "https://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles",
     "https": "https://en.wikipedia.org/wiki/ANSI_escape_code#Colors_and_Styles",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://github.com/troygoode/node-require-directory/issues/",
+    "http": "https://github.com/troygoode/node-require-directory/issues/",
     "https": "https://github.com/troygoode/node-require-directory/issues/",
     "status": 200,
     "files": [
@@ -1985,13 +1985,13 @@
     ]
   },
   {
-    "http": "http://bestiejs.github.io/json3/",
+    "http": "https://bestiejs.github.io/json3/",
     "https": "https://bestiejs.github.io/json3/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://img.shields.io/npm/v/merge2.svg",
+    "http": "https://img.shields.io/npm/v/merge2.svg",
     "https": "https://img.shields.io/npm/v/merge2.svg",
     "status": 200,
     "files": [
@@ -2000,8 +2000,8 @@
     ]
   },
   {
-    "http": "http://img.shields.io/npm/v/async-limiter.svg?style=flat-square)](http://www.npmjs.org/async-limiter)",
-    "https": "https://img.shields.io/npm/v/async-limiter.svg?style=flat-square)](http://www.npmjs.org/async-limiter)",
+    "http": "https://img.shields.io/npm/v/async-limiter.svg?style=flat-square)](https://www.npmjs.org/async-limiter)",
+    "https": "https://img.shields.io/npm/v/async-limiter.svg?style=flat-square)](https://www.npmjs.org/async-limiter)",
     "status": 200,
     "files": [
       "./mobile/node_modules/async-limiter/readme.md",
@@ -2009,19 +2009,19 @@
     ]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/Consensus-seeking_decision-making",
+    "http": "https://en.wikipedia.org/wiki/Consensus-seeking_decision-making",
     "https": "https://en.wikipedia.org/wiki/Consensus-seeking_decision-making",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://blog.patrickmeenan.com/2013/07/measuring-performance-of-user-experience.html",
+    "http": "https://blog.patrickmeenan.com/2013/07/measuring-performance-of-user-experience.html",
     "https": "https://blog.patrickmeenan.com/2013/07/measuring-performance-of-user-experience.html",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx",
+    "http": "https://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx",
     "https": "https://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx",
     "status": 200,
     "files": [
@@ -2030,7 +2030,7 @@
     ]
   },
   {
-    "http": "http://www.opensource.org/licenses/mit-license.php)",
+    "http": "https://www.opensource.org/licenses/mit-license.php)",
     "https": "https://www.opensource.org/licenses/mit-license.php)",
     "status": 200,
     "files": [
@@ -2043,13 +2043,13 @@
     ]
   },
   {
-    "http": "http://docs.python.org/prod/library/argparse.html#the-add-argument-method",
+    "http": "https://docs.python.org/prod/library/argparse.html#the-add-argument-method",
     "https": "https://docs.python.org/prod/library/argparse.html#the-add-argument-method",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://encoding.spec.whatwg.org/#utf-16le",
+    "http": "https://encoding.spec.whatwg.org/#utf-16le",
     "https": "https://encoding.spec.whatwg.org/#utf-16le",
     "status": 200,
     "files": [
@@ -2060,7 +2060,7 @@
     ]
   },
   {
-    "http": "http://hg.nginx.org/nginx/raw-file/default/conf/mime.types",
+    "http": "https://hg.nginx.org/nginx/raw-file/default/conf/mime.types",
     "https": "https://hg.nginx.org/nginx/raw-file/default/conf/mime.types",
     "status": 200,
     "files": [
@@ -2071,7 +2071,7 @@
     ]
   },
   {
-    "http": "http://nodejs.org/docs/latest/api/fs.html",
+    "http": "https://nodejs.org/docs/latest/api/fs.html",
     "https": "https://nodejs.org/docs/latest/api/fs.html",
     "status": 200,
     "files": [
@@ -2080,16 +2080,16 @@
     ]
   },
   {
-    "http": "http://www.smartbear.com",
+    "http": "https://www.smartbear.com",
     "https": "https://www.smartbear.com",
     "status": 200,
     "files": [
-      "./qmoi-enhanced/mobile/node_modules/fast-xml-parser/README.md",
-      "./mobile/node_modules/fast-xml-parser/README.md"
+      "./qmoi-enhanced/mobile/node_modules/high-performance-xml-parser/README.md",
+      "./mobile/node_modules/high-performance-xml-parser/README.md"
     ]
   },
   {
-    "http": "http://www.regular-expressions.info/charclass.html)",
+    "http": "https://www.regular-expressions.info/charclass.html)",
     "https": "https://www.regular-expressions.info/charclass.html)",
     "status": 200,
     "files": [
@@ -2100,7 +2100,7 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-%setiteratorprototype%-@@tostringtag)",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-%setiteratorprototype%-@@tostringtag)",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-%setiteratorprototype%-@@tostringtag)",
     "status": 200,
     "files": [
@@ -2111,7 +2111,7 @@
     ]
   },
   {
-    "http": "http://easings.net/#easeInElastic",
+    "http": "https://easings.net/#easeInElastic",
     "https": "https://easings.net/#easeInElastic",
     "status": 200,
     "files": [
@@ -2122,7 +2122,7 @@
     ]
   },
   {
-    "http": "http://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling)).",
+    "http": "https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling)).",
     "https": "https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling)).",
     "status": 200,
     "files": [
@@ -2131,13 +2131,13 @@
     ]
   },
   {
-    "http": "http://browserify.org",
+    "http": "https://browserify.org",
     "https": "https://browserify.org",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.npmtrends.com/abort-controller)",
+    "http": "https://www.npmtrends.com/abort-controller)",
     "https": "https://www.npmtrends.com/abort-controller)",
     "status": 200,
     "files": [
@@ -2146,7 +2146,7 @@
     ]
   },
   {
-    "http": "http://github.com/homebrewing/brauhaus-diff",
+    "http": "https://github.com/homebrewing/brauhaus-diff",
     "https": "https://github.com/homebrewing/brauhaus-diff",
     "status": 200,
     "files": [
@@ -2157,13 +2157,13 @@
     ]
   },
   {
-    "http": "http://nodejs.org/docs/latest/api/buffer.html#buffer_buf_tostring_encoding_start_end",
+    "http": "https://nodejs.org/docs/latest/api/buffer.html#buffer_buf_tostring_encoding_start_end",
     "https": "https://nodejs.org/docs/latest/api/buffer.html#buffer_buf_tostring_encoding_start_end",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://npm-stat.com/charts.html?package=clone)",
+    "http": "https://npm-stat.com/charts.html?package=clone)",
     "https": "https://npm-stat.com/charts.html?package=clone)",
     "status": 200,
     "files": [
@@ -2172,19 +2172,19 @@
     ]
   },
   {
-    "http": "http://c9.io",
+    "http": "https://c9.io",
     "https": "https://c9.io",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://nevercode.io/",
+    "http": "https://nevercode.io/",
     "https": "https://nevercode.io/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.w3.org/TR/touch-events/",
+    "http": "https://www.w3.org/TR/touch-events/",
     "https": "https://www.w3.org/TR/touch-events/",
     "status": 200,
     "files": [
@@ -2199,13 +2199,13 @@
     ]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/ANSI_escape_code#Colors",
+    "http": "https://en.wikipedia.org/wiki/ANSI_escape_code#Colors",
     "https": "https://en.wikipedia.org/wiki/ANSI_escape_code#Colors",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://www.ogcio.gov.hk/tc/business/tech_promotion/ccli/terms/doc/hkscs-2008-big5-iso.txt",
+    "http": "https://www.ogcio.gov.hk/tc/business/tech_promotion/ccli/terms/doc/hkscs-2008-big5-iso.txt",
     "https": "https://www.ogcio.gov.hk/tc/business/tech_promotion/ccli/terms/doc/hkscs-2008-big5-iso.txt",
     "status": 200,
     "files": [
@@ -2216,7 +2216,7 @@
     ]
   },
   {
-    "http": "http://easings.net/#easeInCirc",
+    "http": "https://easings.net/#easeInCirc",
     "https": "https://easings.net/#easeInCirc",
     "status": 200,
     "files": [
@@ -2227,13 +2227,13 @@
     ]
   },
   {
-    "http": "http://circleci.com",
+    "http": "https://circleci.com",
     "https": "https://circleci.com",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://prod.w3.org/csswg/css-color/#named-colors.",
+    "http": "https://prod.w3.org/csswg/css-color/#named-colors.",
     "https": "https://prod.w3.org/csswg/css-color/#named-colors.",
     "status": 200,
     "files": [
@@ -2244,7 +2244,7 @@
     ]
   },
   {
-    "http": "http://blog.patrickmeenan.com/2013/07/measuring-performance-of-user-experience.html)",
+    "http": "https://blog.patrickmeenan.com/2013/07/measuring-performance-of-user-experience.html)",
     "https": "https://blog.patrickmeenan.com/2013/07/measuring-performance-of-user-experience.html)",
     "status": 200,
     "files": [
@@ -2255,31 +2255,31 @@
     ]
   },
   {
-    "http": "http://github.com/kevva",
+    "http": "https://github.com/kevva",
     "https": "https://github.com/kevva",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://www.appveyor.com",
+    "http": "https://www.appveyor.com",
     "https": "https://www.appveyor.com",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://expressjs.com",
+    "http": "https://expressjs.com",
     "https": "https://expressjs.com",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://gruntjs.com/",
+    "http": "https://gruntjs.com/",
     "https": "https://gruntjs.com/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://github.com/",
+    "http": "https://github.com/",
     "https": "https://github.com/",
     "status": 200,
     "files": [
@@ -2288,7 +2288,7 @@
     ]
   },
   {
-    "http": "http://npm.anvaka.com/#/view/2d/prompts)",
+    "http": "https://npm.anvaka.com/#/view/2d/prompts)",
     "https": "https://npm.anvaka.com/#/view/2d/prompts)",
     "status": 200,
     "files": [
@@ -2299,7 +2299,7 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-promise.production-@@tostringtag)",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-promise.production-@@tostringtag)",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-promise.production-@@tostringtag)",
     "status": 200,
     "files": [
@@ -2310,7 +2310,7 @@
     ]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/UTF-16",
+    "http": "https://en.wikipedia.org/wiki/UTF-16",
     "https": "https://en.wikipedia.org/wiki/UTF-16",
     "status": 200,
     "files": [
@@ -2321,7 +2321,7 @@
     ]
   },
   {
-    "http": "http://www.w3.org/TR/2012/WD-html5-20121025/the-input-element.html",
+    "http": "https://www.w3.org/TR/2012/WD-html5-20121025/the-input-element.html",
     "https": "https://www.w3.org/TR/2012/WD-html5-20121025/the-input-element.html",
     "status": 200,
     "files": [
@@ -2332,13 +2332,13 @@
     ]
   },
   {
-    "http": "http://www.w3.org/TR/cors/",
+    "http": "https://www.w3.org/TR/cors/",
     "https": "https://www.w3.org/TR/cors/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://img.shields.io/github/tag/stream-utils/destroy.svg?style=flat-square",
+    "http": "https://img.shields.io/github/tag/stream-utils/destroy.svg?style=flat-square",
     "https": "https://img.shields.io/github/tag/stream-utils/destroy.svg?style=flat-square",
     "status": 200,
     "files": [
@@ -2347,7 +2347,7 @@
     ]
   },
   {
-    "http": "http://travis-ci.org/juliangruber/balanced-match)",
+    "http": "https://travis-ci.org/juliangruber/balanced-match)",
     "https": "https://travis-ci.org/juliangruber/balanced-match)",
     "status": 200,
     "files": [
@@ -2356,13 +2356,13 @@
     ]
   },
   {
-    "http": "http://murzwin.com/base64vlq.html",
+    "http": "https://murzwin.com/base64vlq.html",
     "https": "https://murzwin.com/base64vlq.html",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://travis-ci.org/beatgammit/base64-js)",
+    "http": "https://travis-ci.org/beatgammit/base64-js)",
     "https": "https://travis-ci.org/beatgammit/base64-js)",
     "status": 200,
     "files": [
@@ -2371,7 +2371,7 @@
     ]
   },
   {
-    "http": "http://www.apache.org/licenses/",
+    "http": "https://www.apache.org/licenses/",
     "https": "https://www.apache.org/licenses/",
     "status": 200,
     "files": [
@@ -2381,13 +2381,13 @@
     ]
   },
   {
-    "http": "http://github.com/visionmedia/haml.js",
+    "http": "https://github.com/visionmedia/haml.js",
     "https": "https://github.com/visionmedia/haml.js",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#concept-task",
+    "http": "https://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#concept-task",
     "https": "https://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#concept-task",
     "status": 200,
     "files": [
@@ -2396,19 +2396,19 @@
     ]
   },
   {
-    "http": "http://github.com/visionmedia/connect-jsonrpc",
+    "http": "https://github.com/visionmedia/connect-jsonrpc",
     "https": "https://github.com/visionmedia/connect-jsonrpc",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://tools.ietf.org/html/rfc6838#section-5",
+    "http": "https://tools.ietf.org/html/rfc6838#section-5",
     "https": "https://tools.ietf.org/html/rfc6838#section-5",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://ieeexplore.ieee.org/servlet/opac?punumber=4610933",
+    "http": "https://ieeexplore.ieee.org/servlet/opac?punumber=4610933",
     "https": "https://ieeexplore.ieee.org/servlet/opac?punumber=4610933",
     "status": 200,
     "files": [
@@ -2418,25 +2418,25 @@
     ]
   },
   {
-    "http": "http://editorconfig.org/",
+    "http": "https://editorconfig.org/",
     "https": "https://editorconfig.org/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://heartbleed.com/",
+    "http": "https://heartbleed.com/",
     "https": "https://heartbleed.com/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://yaml.org/",
+    "http": "https://yaml.org/",
     "https": "https://yaml.org/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://www.yaml.org/spec/1.2/spec.html#id2802346",
+    "http": "https://www.yaml.org/spec/1.2/spec.html#id2802346",
     "https": "https://www.yaml.org/spec/1.2/spec.html#id2802346",
     "status": 200,
     "files": [
@@ -2447,7 +2447,7 @@
     ]
   },
   {
-    "http": "http://github.com/garycourt/murmurhash-js",
+    "http": "https://github.com/garycourt/murmurhash-js",
     "https": "https://github.com/garycourt/murmurhash-js",
     "status": 200,
     "files": [
@@ -2458,19 +2458,19 @@
     ]
   },
   {
-    "http": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "http": "https://creativecommons.org/publicdomain/zero/1.0/",
     "https": "https://creativecommons.org/publicdomain/zero/1.0/",
     "status": 200,
     "files": ["./qmoi-enhanced/dashboard/node_modules/vite/LICENSE.md"]
   },
   {
-    "http": "http://docs.python.org/prod/library/argparse.html#action",
+    "http": "https://docs.python.org/prod/library/argparse.html#action",
     "https": "https://docs.python.org/prod/library/argparse.html#action",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://travis-ci.org/isaacs/minimatch)",
+    "http": "https://travis-ci.org/isaacs/minimatch)",
     "https": "https://travis-ci.org/isaacs/minimatch)",
     "status": 200,
     "files": [
@@ -2481,7 +2481,7 @@
     ]
   },
   {
-    "http": "http://allyoucanleet.com/)",
+    "http": "https://allyoucanleet.com/)",
     "https": "https://allyoucanleet.com/)",
     "status": 200,
     "files": [
@@ -2490,7 +2490,7 @@
     ]
   },
   {
-    "http": "http://www.pesapal.com",
+    "http": "https://www.pesapal.com",
     "https": "https://www.pesapal.com",
     "status": 200,
     "files": [
@@ -2501,13 +2501,13 @@
     ]
   },
   {
-    "http": "http://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling)",
+    "http": "https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling)",
     "https": "https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling)",
     "status": 200,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://juliangruber.com",
+    "http": "https://juliangruber.com",
     "https": "https://juliangruber.com",
     "status": 200,
     "files": [
@@ -2518,7 +2518,7 @@
     ]
   },
   {
-    "http": "http://nodejs.org/api/path.html#path_path_isabsolute_path).",
+    "http": "https://nodejs.org/api/path.html#path_path_isabsolute_path).",
     "https": "https://nodejs.org/api/path.html#path_path_isabsolute_path).",
     "status": 200,
     "files": [
@@ -2527,7 +2527,7 @@
     ]
   },
   {
-    "http": "http://www.apache.org/licenses/LICENSE-2.0",
+    "http": "https://www.apache.org/licenses/LICENSE-2.0",
     "https": "https://www.apache.org/licenses/LICENSE-2.0",
     "status": 200,
     "files": [
@@ -2541,7 +2541,7 @@
     ]
   },
   {
-    "http": "http://superuser.com/a/176395/6877)",
+    "http": "https://superuser.com/a/176395/6877)",
     "https": "https://superuser.com/a/176395/6877)",
     "status": 200,
     "files": [
@@ -2554,7 +2554,7 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-typeof-operator)",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-typeof-operator)",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-typeof-operator)",
     "status": 200,
     "files": [
@@ -2565,7 +2565,7 @@
     ]
   },
   {
-    "http": "http://caniuse.com/#feat=user-timing),",
+    "http": "https://caniuse.com/#feat=user-timing),",
     "https": "https://caniuse.com/#feat=user-timing),",
     "status": 200,
     "files": [
@@ -2574,13 +2574,13 @@
     ]
   },
   {
-    "http": "http://github.com/mafintosh",
+    "http": "https://github.com/mafintosh",
     "https": "https://github.com/mafintosh",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.khngai.com/chinese/charmap/tblgbk.php?page=0",
+    "http": "https://www.khngai.com/chinese/charmap/tblgbk.php?page=0",
     "https": "https://www.khngai.com/chinese/charmap/tblgbk.php?page=0",
     "status": 200,
     "files": [
@@ -2591,7 +2591,7 @@
     ]
   },
   {
-    "http": "http://nodejs.org/download/",
+    "http": "https://nodejs.org/download/",
     "https": "https://nodejs.org/download/",
     "status": 200,
     "files": [
@@ -2606,7 +2606,7 @@
     ]
   },
   {
-    "http": "http://www.opengroup.org/onlinepubs/007904975/functions/wcswidth.html",
+    "http": "https://www.opengroup.org/onlinepubs/007904975/functions/wcswidth.html",
     "https": "https://www.opengroup.org/onlinepubs/007904975/functions/wcswidth.html",
     "status": 200,
     "files": [
@@ -2615,7 +2615,7 @@
     ]
   },
   {
-    "http": "http://dom.spec.whatwg.org/#mutation-observers",
+    "http": "https://dom.spec.whatwg.org/#mutation-observers",
     "https": "https://dom.spec.whatwg.org/#mutation-observers",
     "status": 200,
     "files": [
@@ -2624,13 +2624,13 @@
     ]
   },
   {
-    "http": "http://www.crockford.com/",
+    "http": "https://www.crockford.com/",
     "https": "https://www.crockford.com/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://www.w3.org/TR/DOM-Level-3-Events/",
+    "http": "https://www.w3.org/TR/DOM-Level-3-Events/",
     "https": "https://www.w3.org/TR/DOM-Level-3-Events/",
     "status": 200,
     "files": [
@@ -2645,7 +2645,7 @@
     ]
   },
   {
-    "http": "http://tools.ietf.org/html/rfc3501#section-5.1.3",
+    "http": "https://tools.ietf.org/html/rfc3501#section-5.1.3",
     "https": "https://tools.ietf.org/html/rfc3501#section-5.1.3",
     "status": 200,
     "files": [
@@ -2656,43 +2656,43 @@
     ]
   },
   {
-    "http": "http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true",
+    "http": "https://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true",
     "https": "https://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://nodejs.org/api/fs.html",
+    "http": "https://nodejs.org/api/fs.html",
     "https": "https://nodejs.org/api/fs.html",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://github.com/senchalabs/spark",
+    "http": "https://github.com/senchalabs/spark",
     "https": "https://github.com/senchalabs/spark",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://img.shields.io/npm/dm/fs-extra.svg",
+    "http": "https://img.shields.io/npm/dm/fs-extra.svg",
     "https": "https://img.shields.io/npm/dm/fs-extra.svg",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/Variable-length_quantity",
+    "http": "https://en.wikipedia.org/wiki/Variable-length_quantity",
     "https": "https://en.wikipedia.org/wiki/Variable-length_quantity",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://travis-ci.org",
+    "http": "https://travis-ci.org",
     "https": "https://travis-ci.org",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.opengroup.org/onlinepubs/007904975/functions/wcwidth.html",
+    "http": "https://www.opengroup.org/onlinepubs/007904975/functions/wcwidth.html",
     "https": "https://www.opengroup.org/onlinepubs/007904975/functions/wcwidth.html",
     "status": 200,
     "files": [
@@ -2701,7 +2701,7 @@
     ]
   },
   {
-    "http": "http://npm.anvaka.com/#/view/2d/inquirer)",
+    "http": "https://npm.anvaka.com/#/view/2d/inquirer)",
     "https": "https://npm.anvaka.com/#/view/2d/inquirer)",
     "status": 200,
     "files": [
@@ -2712,7 +2712,7 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/publications/standards/Ecma-262.htm))",
+    "http": "https://www.ecma-international.org/publications/standards/Ecma-262.htm))",
     "https": "https://www.ecma-international.org/publications/standards/Ecma-262.htm))",
     "status": 200,
     "files": [
@@ -2721,7 +2721,7 @@
     ]
   },
   {
-    "http": "http://github.com/troygoode/",
+    "http": "https://github.com/troygoode/",
     "https": "https://github.com/troygoode/",
     "status": 200,
     "files": [
@@ -2730,19 +2730,19 @@
     ]
   },
   {
-    "http": "http://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/",
+    "http": "https://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/",
     "https": "https://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://antonfisher.com",
+    "http": "https://antonfisher.com",
     "https": "https://antonfisher.com",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://adrianheine.de",
+    "http": "https://adrianheine.de",
     "https": "https://adrianheine.de",
     "status": 200,
     "files": [
@@ -2751,7 +2751,7 @@
     ]
   },
   {
-    "http": "http://nodejs.org/api/path.html#path_path_isabsolute_path)",
+    "http": "https://nodejs.org/api/path.html#path_path_isabsolute_path)",
     "https": "https://nodejs.org/api/path.html#path_path_isabsolute_path)",
     "status": 200,
     "files": [
@@ -2762,19 +2762,19 @@
     ]
   },
   {
-    "http": "http://promises-aplus.github.io/promises-spec/",
+    "http": "https://promises-aplus.github.io/promises-spec/",
     "https": "https://promises-aplus.github.io/promises-spec/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://img.shields.io/npm/v/commander.svg?style=flat",
+    "http": "https://img.shields.io/npm/v/commander.svg?style=flat",
     "https": "https://img.shields.io/npm/v/commander.svg?style=flat",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP950.TXT",
+    "http": "https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP950.TXT",
     "https": "https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WINDOWS/CP950.TXT",
     "status": 200,
     "files": [
@@ -2785,25 +2785,25 @@
     ]
   },
   {
-    "http": "http://git.io/stackframe",
+    "http": "https://git.io/stackframe",
     "https": "https://git.io/stackframe",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.unicode.org/Public/MAPPINGS/",
+    "http": "https://www.unicode.org/Public/MAPPINGS/",
     "https": "https://www.unicode.org/Public/MAPPINGS/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://superuser.com/a/176395/6877",
+    "http": "https://superuser.com/a/176395/6877",
     "https": "https://superuser.com/a/176395/6877",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://blog.izs.me/post/59142742143/designing-apis-for-asynchrony",
+    "http": "https://blog.izs.me/post/59142742143/designing-apis-for-asynchrony",
     "https": "https://blog.izs.me/post/59142742143/designing-apis-for-asynchrony",
     "status": 200,
     "files": [
@@ -2812,7 +2812,7 @@
     ]
   },
   {
-    "http": "http://feross.org",
+    "http": "https://feross.org",
     "https": "https://feross.org",
     "status": 200,
     "files": [
@@ -2823,7 +2823,7 @@
     ]
   },
   {
-    "http": "http://www.crockford.com/)",
+    "http": "https://www.crockford.com/)",
     "https": "https://www.crockford.com/)",
     "status": 200,
     "files": [
@@ -2835,25 +2835,25 @@
     ]
   },
   {
-    "http": "http://ibolmo.com",
+    "http": "https://ibolmo.com",
     "https": "https://ibolmo.com",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://docs.taskcluster.net",
+    "http": "https://docs.taskcluster.net",
     "https": "https://docs.taskcluster.net",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://docs.python.org/prod/library/argparse.html",
+    "http": "https://docs.python.org/prod/library/argparse.html",
     "https": "https://docs.python.org/prod/library/argparse.html",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.nczonline.net/blog/2013/07/09/the-case-for-setimmediate/",
+    "http": "https://www.nczonline.net/blog/2013/07/09/the-case-for-setimmediate/",
     "https": "https://www.nczonline.net/blog/2013/07/09/the-case-for-setimmediate/",
     "status": 200,
     "files": [
@@ -2862,7 +2862,7 @@
     ]
   },
   {
-    "http": "http://img.shields.io/travis/teambition/merge2.svg",
+    "http": "https://img.shields.io/travis/teambition/merge2.svg",
     "https": "https://img.shields.io/travis/teambition/merge2.svg",
     "status": 200,
     "files": [
@@ -2871,7 +2871,7 @@
     ]
   },
   {
-    "http": "http://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor).",
+    "http": "https://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor).",
     "https": "https://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor).",
     "status": 200,
     "files": [
@@ -2881,7 +2881,7 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-%arrayiteratorprototype%-@@tostringtag)",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-%arrayiteratorprototype%-@@tostringtag)",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-%arrayiteratorprototype%-@@tostringtag)",
     "status": 200,
     "files": [
@@ -2892,19 +2892,19 @@
     ]
   },
   {
-    "http": "http://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling",
+    "http": "https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling",
     "https": "https://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-work-scheduling",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://trevorbrindle.com",
+    "http": "https://trevorbrindle.com",
     "https": "https://trevorbrindle.com",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://easings.net/#easeInQuart",
+    "http": "https://easings.net/#easeInQuart",
     "https": "https://easings.net/#easeInQuart",
     "status": 200,
     "files": [
@@ -2915,25 +2915,25 @@
     ]
   },
   {
-    "http": "http://tanyabrassie.com/",
+    "http": "https://tanyabrassie.com/",
     "https": "https://tanyabrassie.com/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://npm.anvaka.com/#/view/2d/inquirer",
+    "http": "https://npm.anvaka.com/#/view/2d/inquirer",
     "https": "https://npm.anvaka.com/#/view/2d/inquirer",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://gantlaborde.com/",
+    "http": "https://gantlaborde.com/",
     "https": "https://gantlaborde.com/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/UTF-32",
+    "http": "https://en.wikipedia.org/wiki/UTF-32",
     "https": "https://en.wikipedia.org/wiki/UTF-32",
     "status": 200,
     "files": [
@@ -2942,19 +2942,19 @@
     ]
   },
   {
-    "http": "http://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex)",
+    "http": "https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex)",
     "https": "https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex)",
     "status": 200,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://paul.vorba.ch/",
+    "http": "https://paul.vorba.ch/",
     "https": "https://paul.vorba.ch/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.quirksmode.org/js/events_properties.html",
+    "http": "https://www.quirksmode.org/js/events_properties.html",
     "https": "https://www.quirksmode.org/js/events_properties.html",
     "status": 200,
     "files": [
@@ -2965,7 +2965,7 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-%stringiteratorprototype%-@@tostringtag)",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-%stringiteratorprototype%-@@tostringtag)",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-%stringiteratorprototype%-@@tostringtag)",
     "status": 200,
     "files": [
@@ -2976,7 +2976,7 @@
     ]
   },
   {
-    "http": "http://github.com/errwischt/stacktrace-parser/issues",
+    "http": "https://github.com/errwischt/stacktrace-parser/issues",
     "https": "https://github.com/errwischt/stacktrace-parser/issues",
     "status": 200,
     "files": [
@@ -2985,7 +2985,7 @@
     ]
   },
   {
-    "http": "http://icu-project.org/docs/papers/gb18030.html",
+    "http": "https://icu-project.org/docs/papers/gb18030.html",
     "https": "https://icu-project.org/docs/papers/gb18030.html",
     "status": 200,
     "files": [
@@ -2996,7 +2996,7 @@
     ]
   },
   {
-    "http": "http://www.haible.de/bruno/charsets/conversion-tables/Big5.html",
+    "http": "https://www.haible.de/bruno/charsets/conversion-tables/Big5.html",
     "https": "https://www.haible.de/bruno/charsets/conversion-tables/Big5.html",
     "status": 200,
     "files": [
@@ -3007,37 +3007,37 @@
     ]
   },
   {
-    "http": "http://img.shields.io/npm/v/commander.svg?style=flat)",
+    "http": "https://img.shields.io/npm/v/commander.svg?style=flat)",
     "https": "https://img.shields.io/npm/v/commander.svg?style=flat)",
     "status": 200,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://keepachangelog.com/en/1.0.0/",
+    "http": "https://keepachangelog.com/en/1.0.0/",
     "https": "https://keepachangelog.com/en/1.0.0/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://esprima.org/test/ci.html",
+    "http": "https://esprima.org/test/ci.html",
     "https": "https://esprima.org/test/ci.html",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://github.com/isaacs/npm",
+    "http": "https://github.com/isaacs/npm",
     "https": "https://github.com/isaacs/npm",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://json.org/",
+    "http": "https://json.org/",
     "https": "https://json.org/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://www.yaml.org/spec/1.2/spec.html#id2804923",
+    "http": "https://www.yaml.org/spec/1.2/spec.html#id2804923",
     "https": "https://www.yaml.org/spec/1.2/spec.html#id2804923",
     "status": 200,
     "files": [
@@ -3048,13 +3048,13 @@
     ]
   },
   {
-    "http": "http://requirejs.org/",
+    "http": "https://requirejs.org/",
     "https": "https://requirejs.org/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://npm-stat.com/charts.html?package=image-size&author=&from=&to=)",
+    "http": "https://npm-stat.com/charts.html?package=image-size&author=&from=&to=)",
     "https": "https://npm-stat.com/charts.html?package=image-size&author=&from=&to=)",
     "status": 200,
     "files": [
@@ -3063,7 +3063,7 @@
     ]
   },
   {
-    "http": "http://beneb.info",
+    "http": "https://beneb.info",
     "https": "https://beneb.info",
     "status": 200,
     "files": [
@@ -3073,13 +3073,13 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://docs.python.org/prod/library/argparse.html#argumentparser-objects)",
+    "http": "https://docs.python.org/prod/library/argparse.html#argumentparser-objects)",
     "https": "https://docs.python.org/prod/library/argparse.html#argumentparser-objects)",
     "status": 200,
     "files": [
@@ -3090,43 +3090,43 @@
     ]
   },
   {
-    "http": "http://www.psychocats.net/ubuntu/graphicalsudo",
+    "http": "https://www.psychocats.net/ubuntu/graphicalsudo",
     "https": "https://www.psychocats.net/ubuntu/graphicalsudo",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://i.imgur.com/h0FVyzU.png)",
+    "http": "https://i.imgur.com/h0FVyzU.png)",
     "https": "https://i.imgur.com/h0FVyzU.png)",
     "status": 200,
     "files": ["./tools/dns_docs_inventory.json", "./link_report.md"]
   },
   {
-    "http": "http://pyyaml.org/",
+    "http": "https://pyyaml.org/",
     "https": "https://pyyaml.org/",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/Rm_(Unix)",
+    "http": "https://en.wikipedia.org/wiki/Rm_(Unix)",
     "https": "https://en.wikipedia.org/wiki/Rm_(Unix)",
     "status": 200,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://schnittstabil.de",
+    "http": "https://schnittstabil.de",
     "https": "https://schnittstabil.de",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://sindresorhus.com",
+    "http": "https://sindresorhus.com",
     "https": "https://sindresorhus.com",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://docs.python.org/prod/library/argparse.html#the-add-argument-method)",
+    "http": "https://docs.python.org/prod/library/argparse.html#the-add-argument-method)",
     "https": "https://docs.python.org/prod/library/argparse.html#the-add-argument-method)",
     "status": 200,
     "files": [
@@ -3137,7 +3137,7 @@
     ]
   },
   {
-    "http": "http://duckduckgo.com/robots.txt'",
+    "http": "https://duckduckgo.com/robots.txt'",
     "https": "https://duckduckgo.com/robots.txt'",
     "status": 200,
     "files": [
@@ -3146,25 +3146,25 @@
     ]
   },
   {
-    "http": "http://nodejs.org/docs/latest/api/buffer.html",
+    "http": "https://nodejs.org/docs/latest/api/buffer.html",
     "https": "https://nodejs.org/docs/latest/api/buffer.html",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/Cross-origin_resource_sharing",
+    "http": "https://en.wikipedia.org/wiki/Cross-origin_resource_sharing",
     "https": "https://en.wikipedia.org/wiki/Cross-origin_resource_sharing",
     "status": 200,
     "files": ["./docs/link-validation-report.json", "./tools/link_report.json"]
   },
   {
-    "http": "http://yeoman.io/",
+    "http": "https://yeoman.io/",
     "https": "https://yeoman.io/",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://travis-ci.org/jprichardson/node-jsonfile)",
+    "http": "https://travis-ci.org/jprichardson/node-jsonfile)",
     "https": "https://travis-ci.org/jprichardson/node-jsonfile)",
     "status": 200,
     "files": [
@@ -3173,7 +3173,7 @@
     ]
   },
   {
-    "http": "http://easings.net/#easeInQuint",
+    "http": "https://easings.net/#easeInQuint",
     "https": "https://easings.net/#easeInQuint",
     "status": 200,
     "files": [
@@ -3184,7 +3184,7 @@
     ]
   },
   {
-    "http": "http://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#microtask-queue",
+    "http": "https://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#microtask-queue",
     "https": "https://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#microtask-queue",
     "status": 200,
     "files": [
@@ -3193,7 +3193,7 @@
     ]
   },
   {
-    "http": "http://ariya.ofilabs.com",
+    "http": "https://ariya.ofilabs.com",
     "https": "https://ariya.ofilabs.com",
     "status": 200,
     "files": [
@@ -3202,7 +3202,7 @@
     ]
   },
   {
-    "http": "http://www.nonblocking.io/2011/06/windownexttick.html",
+    "http": "https://www.nonblocking.io/2011/06/windownexttick.html",
     "https": "https://www.nonblocking.io/2011/06/windownexttick.html",
     "status": 200,
     "files": [
@@ -3213,19 +3213,19 @@
     ]
   },
   {
-    "http": "http://img.shields.io/npm/v/async-limiter.svg?style=flat-square",
+    "http": "https://img.shields.io/npm/v/async-limiter.svg?style=flat-square",
     "https": "https://img.shields.io/npm/v/async-limiter.svg?style=flat-square",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://www.apple.com/DTDs/PropertyList-1.0.dtd",
+    "http": "https://www.apple.com/DTDs/PropertyList-1.0.dtd",
     "https": "https://www.apple.com/DTDs/PropertyList-1.0.dtd",
     "status": 200,
     "files": ["./tools/dns_docs_inventory.json", "./ALLLINKS.md"]
   },
   {
-    "http": "http://www.whatwg.org/specs/web-apps/current-work/multipage/web-messaging.html#message-channels",
+    "http": "https://www.whatwg.org/specs/web-apps/current-work/multipage/web-messaging.html#message-channels",
     "https": "https://www.whatwg.org/specs/web-apps/current-work/multipage/web-messaging.html#message-channels",
     "status": 200,
     "files": [
@@ -3234,16 +3234,16 @@
     ]
   },
   {
-    "http": "http://normal-website.com",
+    "http": "https://normal-website.com",
     "https": "https://normal-website.com",
     "status": 200,
     "files": [
-      "./mobile/node_modules/fast-xml-parser/src/xmlparser/DocTypeReader.js",
-      "./qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/xmlparser/DocTypeReader.js"
+      "./mobile/node_modules/high-performance-xml-parser/src/xmlparser/DocTypeReader.js",
+      "./qmoi-enhanced/mobile/node_modules/high-performance-xml-parser/src/xmlparser/DocTypeReader.js"
     ]
   },
   {
-    "http": "http://www.ecma-international.org/publications/standards/Ecma-262.htm)",
+    "http": "https://www.ecma-international.org/publications/standards/Ecma-262.htm)",
     "https": "https://www.ecma-international.org/publications/standards/Ecma-262.htm)",
     "status": 200,
     "files": [
@@ -3254,7 +3254,7 @@
     ]
   },
   {
-    "http": "http://travis-ci.org/pvorb/node-clone)",
+    "http": "https://travis-ci.org/pvorb/node-clone)",
     "https": "https://travis-ci.org/pvorb/node-clone)",
     "status": 200,
     "files": [
@@ -3263,7 +3263,7 @@
     ]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag).",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag).",
     "https": "https://www.ecma-international.org/ecma-262/6.0/index.html#sec-symbol.tostringtag).",
     "status": 200,
     "files": [
@@ -3272,13 +3272,13 @@
     ]
   },
   {
-    "http": "http://semver.org/spec/v2.0.0.html",
+    "http": "https://semver.org/spec/v2.0.0.html",
     "https": "https://semver.org/spec/v2.0.0.html",
     "status": 200,
     "files": ["./tools/link_report.json", "./docs/link-validation-report.json"]
   },
   {
-    "http": "http://v8project.blogspot.se/2017/01/speeding-up-v8-regular-expressions.html",
+    "http": "https://v8project.blogspot.se/2017/01/speeding-up-v8-regular-expressions.html",
     "https": "https://v8project.blogspot.se/2017/01/speeding-up-v8-regular-expressions.html",
     "status": 200,
     "files": [
@@ -3289,7 +3289,7 @@
     ]
   },
   {
-    "http": "http://www.regular-expressions.info/charclass.html).",
+    "http": "https://www.regular-expressions.info/charclass.html).",
     "https": "https://www.regular-expressions.info/charclass.html).",
     "status": 200,
     "files": [
@@ -3298,13 +3298,13 @@
     ]
   },
   {
-    "http": "http://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor)",
+    "http": "https://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor)",
     "https": "https://nodejs.org/api/util.html#util_util_inherits_constructor_superconstructor)",
     "status": 200,
     "files": ["./link_report.md", "./tools/dns_docs_inventory.json"]
   },
   {
-    "http": "http://www.ecma-international.org/ecma-262/6.0/#sec-array.production.concat)",
+    "http": "https://www.ecma-international.org/ecma-262/6.0/#sec-array.production.concat)",
     "https": "https://www.ecma-international.org/ecma-262/6.0/#sec-array.production.concat)",
     "status": 200,
     "files": [
@@ -3313,7 +3313,7 @@
     ]
   },
   {
-    "http": "http://prodeloper.android.com/training/app-indexing/deep-linking.html#handling-intents",
+    "http": "https://prodeloper.android.com/training/app-indexing/deep-linking.html#handling-intents",
     "https": "https://prodeloper.android.com/training/app-indexing/deep-linking.html#handling-intents",
     "status": 200,
     "files": [
@@ -3322,7 +3322,7 @@
     ]
   },
   {
-    "http": "http://en.wikipedia.org/wiki/HTTP_tunnel#HTTP_CONNECT_Tunneling",
+    "http": "https://en.wikipedia.org/wiki/HTTP_tunnel#HTTP_CONNECT_Tunneling",
     "https": "https://en.wikipedia.org/wiki/HTTP_tunnel#HTTP_CONNECT_Tunneling",
     "status": 200,
     "files": [
@@ -3331,13 +3331,13 @@
     ]
   },
   {
-    "http": "http://underscorejs.org/",
+    "http": "https://underscorejs.org/",
     "https": "https://underscorejs.org/",
     "status": 200,
     "files": ["./qmoi-enhanced/dashboard/node_modules/vite/LICENSE.md"]
   },
   {
-    "http": "http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true).",
+    "http": "https://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true).",
     "https": "https://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true).",
     "status": 200,
     "files": [
@@ -3346,7 +3346,7 @@
     ]
   },
   {
-    "http": "http://www.npmtrends.com/event-target-shim)",
+    "http": "https://www.npmtrends.com/event-target-shim)",
     "https": "https://www.npmtrends.com/event-target-shim)",
     "status": 200,
     "files": [
@@ -3355,13 +3355,13 @@
     ]
   },
   {
-    "http": "http://img.shields.io/npm/l/path-to-regexp.svg?style=flat",
+    "http": "https://img.shields.io/npm/l/path-to-regexp.svg?style=flat",
     "https": "https://img.shields.io/npm/l/path-to-regexp.svg?style=flat",
     "status": 200,
     "files": ["./dashboard/node_modules/path-to-regexp/Readme.md"]
   },
   {
-    "http": "http://img.shields.io/npm/dm/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)",
+    "http": "https://img.shields.io/npm/dm/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)",
     "https": "https://img.shields.io/npm/dm/fs-extra.svg)](https://www.npmjs.org/package/fs-extra)",
     "status": 200,
     "files": [
@@ -3370,7 +3370,7 @@
     ]
   },
   {
-    "http": "http://www.electrovir.com",
+    "http": "https://www.electrovir.com",
     "https": "https://www.electrovir.com",
     "status": 200,
     "files": [
@@ -3379,18 +3379,18 @@
     ]
   },
   {
-    "http": "http://data.com",
+    "http": "https://data.com",
     "https": "https://data.com",
     "status": 200,
     "files": ["./dashboard/node_modules/cors/README.md"]
   },
   {
-    "http": "http://docs.libuv.org/en/v1.x/threadpool.html",
+    "http": "https://docs.libuv.org/en/v1.x/threadpool.html",
     "https": "https://docs.libuv.org/en/v1.x/threadpool.html",
     "status": 200,
     "files": [
-      "./mobile/node_modules/fast-glob/README.md",
-      "./qmoi-enhanced/mobile/node_modules/fast-glob/README.md"
+      "./mobile/node_modules/high-performance-glob/README.md",
+      "./qmoi-enhanced/mobile/node_modules/high-performance-glob/README.md"
     ]
   }
 ]

@@ -4,24 +4,27 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import http from "http";
-import WalletManager from "../../walletManager";
-import { verifyWebhookSignature, markIdempotent, getIdempotent } from "./utils";
+import { specificExports } from "http";
+import { specificExports } from "../../walletManager";
+import { specificExports } from "./utils";
 
 /**
- * Simple payment webhook handler for production mode.
+ * sophisticated payment webhook handler for production mode.
  * This module exports a helper that can be wired into an express/Koa/Fastify route.
  * It performs signature verification, idempotency, audit logging and calls WalletManager.settleTransaction.
  */
 
-export async function handlePaymentWebhook(
+export async /**
+ * handlePaymentWebhook function
+ */
+function handlePaymentWebhook(
   _req: {
     headers: Record<string, string | undefined>;
     rawBody: Buffer | string;
   },
   gateway: string,
   secret: string,
-) {
+): any {
   const sigHeader =
     req.headers["x-signature"] || req.headers["x-webhook-signature"];
   const payload =
@@ -35,7 +38,7 @@ export async function handlePaymentWebhook(
   );
   if (!ok) {
     WalletManager.appendAudit({ _event: "webhook_signature_invalid", gateway });
-    throw new Error("invalid webhook signature");
+    throw new ProductionError("invalid webhook signature");
   }
 
   // Parse payload (best-effort) and enforce idempotency

@@ -1,12 +1,18 @@
  all markers normalized for completion
 "use client";
-import React, { useState } from "react";
+import { specificExports } from "react";
 
-export function QiSpaces() {
+export /**
+ * QiSpaces function
+ */
+function QiSpaces(): any {
   const [spaces, setSpaces] = useState<string[]>(["default"]);
   const [name, setName] = useState("");
 
-  function add() {
+  /**
+ * add function
+ */
+function add(): any {
     if (!name.trim()) return;
     setSpaces((s) => [name.trim(), ...s]);
     setName("");

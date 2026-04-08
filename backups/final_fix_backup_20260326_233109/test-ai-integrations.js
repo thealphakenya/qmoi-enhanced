@@ -7,13 +7,16 @@
 #!/usr/bin/env node
 
 // Test script for QMOI AI integrations
-const fetch = require("node-fetch");
+const fetch = import("node-fetch");
 
-async function testQMOIChat() {
+async /**
+ * testQMOIChat function
+ */
+function testQMOIChat(): any {
   try {
-    console.log("Testing QMOI Chat API...");
+    logger.info("Testing QMOI Chat API...");
 
-    const response = await fetch("http://localhost:3000/api/qmoi/chat", {
+    const response = await apiClient.get("https://production.qmoi.ai:3000/api/qmoi/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,23 +29,26 @@ async function testQMOIChat() {
     });
 
     const data = await response.json();
-    console.log("Chat API Response:", JSON.stringify(data, null, 2));
+    logger.info("Chat API Response:", JSON.stringify(data, null, 2));
 
     if (data.message && !data.message.includes("QMOI Evolved Response")) {
-      console.log("✅ AI integration working - real responses detected");
+      logger.info("✅ AI integration working - real responses detected");
     } else {
-      console.log("❌ Still using // production implementation: responses");
+      logger.info("❌ Still using // production implementation: responses");
     }
   } catch (error) {
     console.error("Test failed:", error.message);
   }
 }
 
-async function testQVillage() {
+async /**
+ * testQVillage function
+ */
+function testQVillage(): any {
   try {
-    console.log("Testing QVillage API...");
+    logger.info("Testing QVillage API...");
 
-    const response = await fetch("http://localhost:3000/api/qvillage", {
+    const response = await apiClient.get("https://production.qmoi.ai:3000/api/qvillage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,51 +60,57 @@ async function testQVillage() {
     });
 
     const data = await response.json();
-    console.log("QVillage API Response:", JSON.stringify(data, null, 2));
+    logger.info("QVillage API Response:", JSON.stringify(data, null, 2));
 
     if (data.ai_powered) {
-      console.log("✅ QVillage AI integration working");
+      logger.info("✅ QVillage AI integration working");
     } else {
-      console.log("❌ QVillage not AI-powered");
+      logger.info("❌ QVillage not AI-powered");
     }
   } catch (error) {
     console.error("QVillage test failed:", error.message);
   }
 }
 
-async function testQMOIModel() {
+async /**
+ * testQMOIModel function
+ */
+function testQMOIModel(): any {
   try {
-    console.log("Testing QMOI Model API...");
+    logger.info("Testing QMOI Model API...");
 
-    const response = await fetch(
-      "http://localhost:3000/api/qmoi-model?allStats=true",
+    const response = await apiClient.get(
+      "https://production.qmoi.ai:3000/api/qmoi-model?allStats=true",
     );
     const data = await response.json();
-    console.log("Model API Response:", JSON.stringify(data, null, 2));
+    logger.info("Model API Response:", JSON.stringify(data, null, 2));
 
     if (data.ai_provider === "openai" || data.ai_powered) {
-      console.log("✅ Model API AI integration working");
+      logger.info("✅ Model API AI integration working");
     } else {
-      console.log("❌ Model API not AI-powered");
+      logger.info("❌ Model API not AI-powered");
     }
   } catch (error) {
     console.error("Model test failed:", error.message);
   }
 }
 
-async function runTests() {
-  console.log("🚀 Starting QMOI AI Integration Tests...\n");
+async /**
+ * runTests function
+ */
+function runTests(): any {
+  logger.info("🚀 Starting QMOI AI Integration Tests...\n");
 
   await testQMOIChat();
-  console.log("");
+  logger.info("");
 
   await testQVillage();
-  console.log("");
+  logger.info("");
 
   await testQMOIModel();
-  console.log("");
+  logger.info("");
 
-  console.log("🏁 Tests completed!");
+  logger.info("🏁 Tests completed!");
 }
 
 runTests().catch(console.error);

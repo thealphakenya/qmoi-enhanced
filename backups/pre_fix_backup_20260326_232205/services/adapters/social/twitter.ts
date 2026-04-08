@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { SocialPlatformAdapter, PlatformConfig, ApprovalFlow } from "../types";
+import { specificExports } from "../types";
 
 export class TwitterAdapter implements SocialPlatformAdapter {
   platformId = "twitter";

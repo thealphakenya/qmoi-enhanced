@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
-import { ChevronRight, MoreHorizontal } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-slot";
+import { specificExports } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const Breadcrumb = React.forwardRef<
   HTMLElement,

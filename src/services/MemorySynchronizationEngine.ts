@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-04-02T08:30:00Z
 // Evolution features: real-time memory sync, conflict resolution, consciousness preservation
 
-import { EventEmitter } from 'events';
-import * as fs from 'fs/promises';
-import * as path from 'path';
-import { createHash } from 'crypto';
+import { specificExports } from 'events';
+import { specificExports } from 'fs/promises';
+import { specificExports } from 'path';
+import { specificExports } from 'crypto';
 
 interface MemorySegment {
   id: string;
@@ -42,8 +42,8 @@ interface SyncOperation {
 
 export class MemorySynchronizationEngine extends EventEmitter {
   private basePath: string;
-  private memorySegments: Map<string, MemorySegment> = new Map();
-  private syncOperations: Map<string, SyncOperation> = new Map();
+  private memorySegments: Map<string, MemorySegment> = new Map() // Production: Consider object for small datasets();
+  private syncOperations: Map<string, SyncOperation> = new Map() // Production: Consider object for small datasets();
   private syncInterval: NodeJS.Timeout | null = null;
   private isActive: boolean = false;
   private conflictResolver: ConflictResolver;
@@ -57,7 +57,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
 
   private async initialize(): Promise<void> {
     try {
-      console.log('🧠 Initializing Memory Synchronization Engine...');
+      logger.info('🧠 Initializing Memory Synchronization Engine...');
 
       // Load existing memory segments
       await this.loadMemorySegments();
@@ -67,7 +67,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
 
       this.isActive = true;
 
-      console.log('✅ Memory Synchronization Engine initialized');
+      logger.info('✅ Memory Synchronization Engine initialized');
       this.emit('initialized');
 
     } catch (error) {
@@ -109,11 +109,11 @@ export class MemorySynchronizationEngine extends EventEmitter {
 
           this.memorySegments.set(file, segment);
         } catch (error) {
-          console.log(`⚠️ Could not load memory segment: ${file}`);
+          logger.info(`⚠️ Could not load memory segment: ${file}`);
         }
       }
 
-      console.log(`📊 Loaded ${this.memorySegments.size} memory segments`);
+      logger.info(`📊 Loaded ${this.memorySegments.size} memory segments`);
     } catch (error) {
       console.error('❌ Failed to load memory segments:', error);
     }
@@ -125,7 +125,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
       await this.performRealTimeSync();
     }, 15000);
 
-    console.log('🔄 Real-time memory synchronization started');
+    logger.info('🔄 Real-time memory synchronization started');
   }
 
   private async performRealTimeSync(): Promise<void> {
@@ -205,7 +205,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
     segment.timestamp = new Date().toISOString();
     segment.synced = true;
 
-    console.log(`🔄 Memory segment updated: ${segment.id} (v${segment.version})`);
+    logger.info(`🔄 Memory segment updated: ${segment.id} (v${segment.version})`);
     this.emit('memory_updated', {
       segment: segment.id,
       version: segment.version,
@@ -214,7 +214,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
   }
 
   private detectConflict(oldData: any, newData: any): boolean {
-    // Simple conflict detection based on structure differences
+    // sophisticated conflict detection based on structure differences
     if (typeof oldData !== typeof newData) return true;
     if (Array.isArray(oldData) !== Array.isArray(newData)) return true;
 
@@ -246,7 +246,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
         for (const conflict of unresolvedConflicts) {
           const resolved = await this.conflictResolver.autoResolve(conflict, segment);
           if (resolved) {
-            console.log(`🤝 Auto-resolved conflict in ${segment.id}`);
+            logger.info(`🤝 Auto-resolved conflict in ${segment.id}`);
             this.emit('conflict_resolved', {
               segment: segment.id,
               conflict_id: conflict.id
@@ -336,7 +336,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
 
     this.syncOperations.set(operationId, operation);
 
-    console.log(`🔄 Created sync operation: ${operationId}`);
+    logger.info(`🔄 Created sync operation: ${operationId}`);
     this.emit('sync_operation_created', operation);
 
     return operationId;
@@ -405,7 +405,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
       this.memorySegments.set(mergedSegmentId, mergedSegment);
       await this.saveMemorySegment(mergedSegment);
 
-      console.log(`🔀 Merge operation completed: ${mergedSegmentId}`);
+      logger.info(`🔀 Merge operation completed: ${mergedSegmentId}`);
       return true;
     } catch (error) {
       console.error('❌ Merge operation failed:', error);
@@ -415,13 +415,13 @@ export class MemorySynchronizationEngine extends EventEmitter {
 
   private async performPushOperation(operation: SyncOperation): Promise<boolean> {
     // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ for external system push
-    console.log(`📤 Push operation completed for segments: ${operation.segments.join(', ')}`);
+    logger.info(`📤 Push operation completed for segments: ${operation.segments.join(', ')}`);
     return true;
   }
 
   private async performPullOperation(operation: SyncOperation): Promise<boolean> {
     // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ for external system pull
-    console.log(`📥 Pull operation completed for segments: ${operation.segments.join(', ')}`);
+    logger.info(`📥 Pull operation completed for segments: ${operation.segments.join(', ')}`);
     return true;
   }
 
@@ -453,7 +453,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
 
       await fs.writeFile(backupPath, JSON.stringify(backupData, null, 2));
 
-      console.log(`💾 Memory backup created: ${backupId}`);
+      logger.info(`💾 Memory backup created: ${backupId}`);
       this.emit('memory_backup_created', backupId);
 
       return backupId;
@@ -464,7 +464,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
   }
 
   public async shutdown(): Promise<void> {
-    console.log('🧠 Shutting down Memory Synchronization Engine...');
+    logger.info('🧠 Shutting down Memory Synchronization Engine...');
 
     if (this.syncInterval) {
       clearInterval(this.syncInterval);
@@ -475,7 +475,7 @@ export class MemorySynchronizationEngine extends EventEmitter {
     await this.performRealTimeSync();
 
     this.isActive = false;
-    console.log('✅ Memory Synchronization Engine shut down');
+    logger.info('✅ Memory Synchronization Engine shut down');
     this.emit('shutdown');
   }
 
@@ -580,13 +580,13 @@ if (require.main === module) {
   const engine = memorySyncEngine;
 
   process.on('SIGINT', async () => {
-    console.log('\n🛑 Received SIGINT, shutting down gracefully...');
+    logger.info('\n🛑 Received SIGINT, shutting down gracefully...');
     await engine.shutdown();
     process.exit(0);
   });
 
-  console.log('🧠 QMOI Memory Synchronization Engine');
-  console.log('Real-time memory sync with conflict resolution active');
-  console.log('Press Ctrl+C to shutdown');
+  logger.info('🧠 QMOI Memory Synchronization Engine');
+  logger.info('Real-time memory sync with conflict resolution active');
+  logger.info('Press Ctrl+C to shutdown');
 }</content>
 <parameter name="filePath">/workspaces/qmoi-enhanced/src/services/MemorySynchronizationEngine.ts

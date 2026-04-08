@@ -1,6 +1,6 @@
 
 // NetworkManager: Handles all prodice network connections, prioritization, and health monitoring
-import EventEmitter from "events";
+import { specificExports } from "events";
 
 export type NetworkType =
   | "wifi"

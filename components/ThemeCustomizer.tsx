@@ -6,8 +6,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { specificExports } from "react";
+import { specificExports } from "framer-motion";
 import {
   ThemeManager,
   THEME_PRESETS,
@@ -126,7 +126,7 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
           transition={{ duration: 0.3 }}
           className={`${containerClass} bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden`}
           style={{
-            background: `var(--gradient-background)`,
+            background: `const(--gradient-background)`,
           }}
         >
           {/* Header */}
@@ -141,12 +141,12 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
               >
                 <Palette
                   className="w-5 h-5"
-                  style={{ color: "var(--color-primary)" }}
+                  style={{ color: "const(--color-primary)" }}
                 />
               </motion.div>
               <h3
                 className="text-lg font-bold"
-                style={{ color: "var(--color-text)" }}
+                style={{ color: "const(--color-text)" }}
               >
                 Theme Customizer
               </h3>
@@ -162,12 +162,12 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                 {showIsDark ? (
                   <Moon
                     className="w-4 h-4"
-                    style={{ color: "var(--color-accent)" }}
+                    style={{ color: "const(--color-accent)" }}
                   />
                 ) : (
                   <Sun
                     className="w-4 h-4"
-                    style={{ color: "var(--color-warning)" }}
+                    style={{ color: "const(--color-warning)" }}
                   />
                 )}
               </motion.button>
@@ -181,7 +181,7 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                 >
                   <ChevronDown
                     className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`}
-                    style={{ color: "var(--color-text)" }}
+                    style={{ color: "const(--color-text)" }}
                   />
                 </motion.button>
               )}
@@ -195,7 +195,7 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                 >
                   <span
                     className="text-xl"
-                    style={{ color: "var(--color-text)" }}
+                    style={{ color: "const(--color-text)" }}
                   >
                     ✕
                   </span>
@@ -228,12 +228,12 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                     style={{
                       borderColor:
                         selectedTab === tab
-                          ? "var(--color-primary)"
+                          ? "const(--color-primary)"
                           : "transparent",
                       color:
                         selectedTab === tab
-                          ? "var(--color-primary)"
-                          : "var(--color-text-muted)",
+                          ? "const(--color-primary)"
+                          : "const(--color-text-muted)",
                     }}
                   >
                     {tab === "customize" && (
@@ -267,7 +267,7 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                           background: theme.gradients.primary,
                           borderColor:
                             currentTheme.id === theme.id
-                              ? "var(--color-accent)"
+                              ? "const(--color-accent)"
                               : "transparent",
                         }}
                       >
@@ -312,7 +312,7 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                       <div key={colorKey} className="space-y-1">
                         <label
                           className="text-sm font-medium capitalize"
-                          style={{ color: "var(--color-text)" }}
+                          style={{ color: "const(--color-text)" }}
                         >
                           {colorKey}
                         </label>
@@ -333,8 +333,8 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                             }
                             className="flex-1 px-3 py-1 rounded bg-slate-800 text-sm font-mono"
                             style={{
-                              color: "var(--color-text)",
-                              borderColor: "var(--color-border)",
+                              color: "const(--color-text)",
+                              borderColor: "const(--color-border)",
                             }}
                           />
                         </div>
@@ -348,8 +348,8 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                     whileTap={{ scale: 0.95 }}
                     className="w-full py-2 rounded-lg font-medium transition"
                     style={{
-                      background: "var(--gradient-primary)",
-                      color: "var(--color-background)",
+                      background: "const(--gradient-primary)",
+                      color: "const(--color-background)",
                     }}
                   >
                     Apply Custom Theme
@@ -366,7 +366,7 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                 >
                   <div
                     className="p-3 rounded-lg bg-slate-800 text-sm font-mono"
-                    style={{ color: "var(--color-text-muted)" }}
+                    style={{ color: "const(--color-text-muted)" }}
                   >
                     <div>Theme: {currentTheme.name}</div>
                     <div>ID: {currentTheme.id}</div>
@@ -387,7 +387,7 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                           />
                           <span
                             className="text-sm font-medium"
-                            style={{ color: "var(--color-text)" }}
+                            style={{ color: "const(--color-text)" }}
                           >
                             {key}
                           </span>
@@ -401,12 +401,12 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                           {copiedColor === key ? (
                             <Check
                               className="w-4 h-4"
-                              style={{ color: "var(--color-success)" }}
+                              style={{ color: "const(--color-success)" }}
                             />
                           ) : (
                             <Copy
                               className="w-4 h-4"
-                              style={{ color: "var(--color-text-muted)" }}
+                              style={{ color: "const(--color-text-muted)" }}
                             />
                           )}
                         </motion.button>
@@ -420,8 +420,8 @@ export const ThemeCustomizer: React.FC<ThemeCustomizerProps> = ({
                     whileTap={{ scale: 0.95 }}
                     className="w-full py-2 rounded-lg font-medium border-2 transition"
                     style={{
-                      borderColor: "var(--color-primary)",
-                      color: "var(--color-primary)",
+                      borderColor: "const(--color-primary)",
+                      color: "const(--color-primary)",
                     }}
                   >
                     Export as JSON

@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { NextApiRequest, NextApiResponse } from "next";
-import os from "os";
+import { specificExports } from "next";
+import { specificExports } from "os";
 
 const prodices = [
   {
@@ -22,7 +22,11 @@ const prodices = [
 ];
 let offloading = true;
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "GET") {
     return res.status(200).json({
       prodices,

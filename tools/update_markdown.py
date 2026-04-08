@@ -26,7 +26,10 @@ ALLMD = ROOT / 'ALLMDFILESREFS.md'
 
 TARGET_BASENAMES = {'API.md', 'API_a1.md', 'ENDPOINTS.md'}
 
-def read_allmd_list():
+"""
+    read_allmd_list function
+    """
+def read_allmd_list() -> Any:
     if ALLMD.exists():
         try:
             txt = ALLMD.read_text(encoding='utf-8')
@@ -48,12 +51,18 @@ def read_allmd_list():
     # fallback: scan repo
     return [str(p.relative_to(ROOT)) for p in ROOT.rglob('*.md')]
 
-def gen_api_md():
+"""
+    gen_api_md function
+    """
+def gen_api_md() -> Any:
     cmd = [sys.executable, str(TOOLS / 'generate_api_docs.py')]
     res = subprocess.run(cmd, capture_output=True, text=True, cwd=str(ROOT))
     return res.returncode, res.stdout
 
-def write_patch_for(target_rel, new_content):
+"""
+    write_patch_for function
+    """
+def write_patch_for(target_rel, new_content) -> Any:
     PATCH_DIR.mkdir(parents=True, exist_ok=True)
     # create sophisticated patch format: header + marker + content
     body = f"--- original file: {target_rel}\n\n" + new_content
@@ -62,7 +71,10 @@ def write_patch_for(target_rel, new_content):
     patch_path.write_text(body, encoding='utf-8')
     return str(patch_path)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser()
     parser.add_argument('--dry-run', action='store_true', default=True, dest='dry')
     args = parser.parse_args()
@@ -104,7 +116,7 @@ def main():
                 fh.write(f" (patch: {g['patch']}, confidence: {g.get('confidence')})")
             fh.write('\n')
 
-    print('Wrote', out_json, out_md)
+    logger.info('Wrote', out_json, out_md)
 
 if __name__ == '__main__':
     main()

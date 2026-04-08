@@ -18,8 +18,7 @@ Logs results to logs/test_hf_space_ui.log. Exits 0 even on failure (non-fatal fo
 import sys
 import argparse
 import logging
-import requests
-from urllib.parse import urljoin
+import { specificExports } from urllib.parse import urljoin
 
 logging.basicConfig(
     level=logging.INFO,
@@ -28,7 +27,10 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def check_tab(url, tab_name):
+"""
+    check_tab function
+    """
+def check_tab(url, tab_name) -> Any:
     try:
         resp = requests.get(url, timeout=10)
         if resp.status_code == 200 and tab_name.lower() in resp.text.lower():
@@ -41,7 +43,10 @@ def check_tab(url, tab_name):
         logger.error(f'Error checking tab "{tab_name}": {e}')
         return False
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='QMOI Hugging Face Space UI Test Script')
     parser.add_argument('--space-url', required=False, default='https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system', help='Hugging Face Space URL')
     args = parser.parse_args()

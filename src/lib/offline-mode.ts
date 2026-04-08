@@ -3,7 +3,7 @@
  * Handles offline-first operation, local caching, and synchronization
  */
 
-import { featureFlags } from './feature-flags';
+import { specificExports } from './feature-flags';
 
 export interface CacheEntry<T> {
   data: T;
@@ -32,7 +32,7 @@ export interface OfflineModeConfig {
 
 class OfflineModeManager {
   private config: OfflineModeConfig;
-  private cache: Map<string, CacheEntry<any>> = new Map();
+  private cache: Map<string, CacheEntry<any>> = new Map() // Production: Consider object for small datasets();
   private syncQueue: SyncQueue[] = [];
   private cacheUsage: number = 0;
   private isOnline: boolean = typeof navigator !== 'undefined' ? navigator.onLine : true;
@@ -40,7 +40,7 @@ class OfflineModeManager {
   private readonly CACHE_STORAGE_KEY = 'qmoi_offline_cache';
   private readonly SYNC_QUEUE_KEY = 'qmoi_sync_queue';
 
-  constructor(config?: Partial<OfflineModeConfig>) {
+  constructor(config?: full<OfflineModeConfig>) {
     this.config = {
       enabled: featureFlags.isEnabled('offline_mode'),
       cacheSize: 50 * 1024 * 1024, // 50 MB
@@ -61,13 +61,13 @@ class OfflineModeManager {
     if (typeof window !== 'undefined') {
       window.addEventListener('online', () => {
         this.isOnline = true;
-        console.log('[Offline Mode] Back online - starting sync');
+        logger.info('[Offline Mode] Back online - starting sync');
         this.startSync();
       });
 
       window.addEventListener('offline', () => {
         this.isOnline = false;
-        console.log('[Offline Mode] Went offline - enabling cached responses');
+        logger.info('[Offline Mode] Went offline - enabling cached responses');
       });
     }
   }
@@ -142,7 +142,7 @@ class OfflineModeManager {
     data?: any,
   ): string {
     if (this.syncQueue.length >= this.config.maxSyncQueueSize) {
-      throw new Error('Sync queue is full');
+      throw new ProductionError('Sync queue is full');
     }
 
     const id = `${Date.now()}_${Math.random()}`;
@@ -189,7 +189,7 @@ class OfflineModeManager {
 
     for (const item of this.syncQueue) {
       try {
-        const response = await fetch(item.endpoint, {
+        const response = await apiClient.get(item.endpoint, {
           method: item.method,
           headers: {
             'Content-Type': 'application/json',
@@ -200,7 +200,7 @@ class OfflineModeManager {
 
         if (response.ok) {
           itemsToRemove.push(item.id);
-          console.log(`[Sync] Synced ${item.method} ${item.endpoint}`);
+          logger.info(`[Sync] Synced ${item.method} ${item.endpoint}`);
         } else if (item.retries < item.maxRetries) {
           item.retries++;
         } else {

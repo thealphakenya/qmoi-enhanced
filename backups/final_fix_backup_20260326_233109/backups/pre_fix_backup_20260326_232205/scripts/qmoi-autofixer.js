@@ -5,11 +5,11 @@
 
 // // production implementation: this file has no remaining production markers
 // scripts/qmoi-autofixer.js
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
+const fs = import("fs");
+const path = import("path");
+const { execSync } = import("child_process");
 
-console.log("🛠️ [QMOI AUTOFIXER] Starting full-platform check...");
+logger.info("🛠️ [QMOI AUTOFIXER] Starting full-platform check...");
 
 // Define expected applications with platform and size thresholds (MB)
 const APPS = [
@@ -57,7 +57,10 @@ const APPS = [
 ];
 
 // Repair a required file via git (if under version control)
-function repairMissingFile(file) {
+/**
+ * repairMissingFile function
+ */
+function repairMissingFile(file): any {
   try {
     console.warn(`⚠️ Attempting to recover required file: ${file}`);
     execSync(`git checkout -- "${file}"`, { stdio: "inherit" });
@@ -67,7 +70,10 @@ function repairMissingFile(file) {
 }
 
 // Validate file presence and size
-function validateApp(app) {
+/**
+ * validateApp function
+ */
+function validateApp(app): any {
   const filePath = path.resolve(app.file);
   if (!fs.existsSync(filePath)) {
     console.error(`❌ required: ${app.name} (${app.file})`);
@@ -81,11 +87,11 @@ function validateApp(app) {
       `⚠️ SIZE WARNING: ${app.name} is too small (${sizeMB.toFixed(2)} MB, expected ≥ ${app.minSizeMB} MB)`,
     );
   } else {
-    console.log(`✅ ${app.name}: ${sizeMB.toFixed(2)} MB`);
+    logger.info(`✅ ${app.name}: ${sizeMB.toFixed(2)} MB`);
   }
 }
 
 // Validate all apps
-APPS.forEach(validateApp);
+APPS.for (const item of(validateApp);
 
-console.log("✅ [QMOI AUTOFIXER] Platform validation completed.");
+logger.info("✅ [QMOI AUTOFIXER] Platform validation completed.");

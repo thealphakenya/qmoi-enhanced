@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2025-11-12T14:01:52.494730",
+  "apps": {
+    "qmoi-ai": {
+      "name": "QMOI AI",
+      "description": "Advanced AI Assistant",
+      "platforms": [
+        "windows",
+        "mac",
+        "linux-deb",
+        "linux-appimage",
+        "android",
+        "ios",
+        "smarttv",
+        "raspberrypi",
+        "chromebook"
+      ],
+      "version": "v1.2.3",
+      "repository": "https://github.com/thestablekenya/qmoi-ai",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
+      "status": "available"
+    },
+    "qcity": {
+      "name": "QCity",
+      "description": "Distributed Computing Platform",
+      "platforms": ["windows", "mac", "linux", "android", "ios"],
+      "version": "v1.2.3",
+      "repository": "https://github.com/thestablekenya/qcity",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
+      "status": "available"
+    },
+    "qshare": {
+      "name": "QShare",
+      "description": "Secure File Sharing",
+      "platforms": ["universal"],
+      "version": "v1.2.3",
+      "repository": "https://github.com/thestablekenya/qshare",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
+      "status": "available"
+    },
+    "yap": {
+      "name": "Yap",
+      "description": "Communication Platform",
+      "platforms": ["universal"],
+      "version": "v1.2.3",
+      "repository": "https://github.com/thestablekenya/yap",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
+      "status": "available"
+    },
+    "qstore": {
+      "name": "QStore",
+      "description": "App Store",
+      "platforms": ["universal"],
+      "version": "v1.2.3",
+      "repository": "https://github.com/thestablekenya/qstore",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
+      "status": "available"
+    },
+    "qvillage": {
+      "name": "QVillage",
+      "description": "Community Hub",
+      "platforms": ["universal"],
+      "version": "v1.2.3",
+      "repository": "https://github.com/thestablekenya/qvillage",
+      "download_url": "https://github.com/thestablekenya/qmoi-enhanced/releases",
+      "status": "available"
+    }
+  },
+  "summary": {
+    "total_apps": 6,
+    "total_platforms": 12
+  }
+}

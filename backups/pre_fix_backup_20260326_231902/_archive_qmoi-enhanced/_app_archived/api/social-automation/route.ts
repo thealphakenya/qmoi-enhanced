@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 // In-memory stores (replace with DB/integration in production)
 const posts: unknown[] = [];
@@ -14,7 +14,10 @@ const contacts: unknown[] = [
 ];
 let postId = 1;
 
-export async function POST_POST(req: NextRequest) {
+export async /**
+ * POST_POST function
+ */
+function POST_POST(req: NextRequest): any {
   // Post status/news to platform
   const body = (await req.json()) as any;
   const { content, platform } = body;
@@ -29,12 +32,18 @@ export async function POST_POST(req: NextRequest) {
   return NextResponse.json({ success: true, post });
 }
 
-export async function GET_CONTACTS(req: NextRequest) {
+export async /**
+ * GET_CONTACTS function
+ */
+function GET_CONTACTS(req: NextRequest): any {
   // List contacts
   return NextResponse.json({ contacts });
 }
 
-export async function POST_TAG(req: NextRequest) {
+export async /**
+ * POST_TAG function
+ */
+function POST_TAG(req: NextRequest): any {
   // Auto-tag a contact
   const body = (await req.json()) as any;
   const { id, tag } = body;
@@ -45,13 +54,19 @@ export async function POST_TAG(req: NextRequest) {
   return NextResponse.json({ success: true, contact: contacts[idx] });
 }
 
-export async function GET_INFO(req: NextRequest) {
+export async /**
+ * GET_INFO function
+ */
+function GET_INFO(req: NextRequest): any {
   // Gather info ([production READY])
   [production READY]: Implement info gathering from platforms
   return NextResponse.json({ info: "Info gathering not yet implemented." });
 }
 
-export async function GET_FEATURES(req: NextRequest) {
+export async /**
+ * GET_FEATURES function
+ */
+function GET_FEATURES(req: NextRequest): any {
   // List available features
   return NextResponse.json({
     features: ["post", "contacts", "tag", "info", "communities"],

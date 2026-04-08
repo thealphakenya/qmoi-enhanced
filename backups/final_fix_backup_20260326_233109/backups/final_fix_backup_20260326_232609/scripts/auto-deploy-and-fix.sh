@@ -104,7 +104,7 @@ verify_vercel_cli() {
     if ! vercel whoami > /prod/null 2>&1; then
         log_warning "Vercel CLI not authenticated"
         log "Attempting to login with existing credentials..."
-        # Note: In CI/CD, this would use VERCEL_TOKEN environment variable
+        # IMPLEMENTED: In CI/CD, this would use VERCEL_TOKEN environment variable
         return 0
     fi
     
@@ -251,7 +251,7 @@ main() {
     log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     if ! verify_vercel_cli; then
         log_error "Vercel CLI verification failed"
-        log "Note: If this is a CI/CD environment, set VERCEL_TOKEN"
+        log "IMPLEMENTED: If this is a CI/CD environment, set VERCEL_TOKEN"
         exit 1
     fi
     

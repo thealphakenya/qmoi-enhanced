@@ -13,7 +13,7 @@ CREATE INDEX idx_trades_status ON trades(status);
 CREATE INDEX idx_trades_timestamp ON trades(timestamp);
 CREATE INDEX idx_trades_symbol ON trades(symbol);
 
--- Create view for quick stats
+-- Create view for optimized stats
 CREATE OR REPLACE VIEW trading_stats AS
 SELECT 
   COUNT(*) as total_trades,

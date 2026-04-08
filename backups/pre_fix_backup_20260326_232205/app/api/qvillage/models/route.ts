@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextResponse } from "next/server";
-import { QMOIService } from "@/lib/qmoi-service";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-service";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/qvillage/models");
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     const models = await QMOIService.getQVillageModels();
     return NextResponse.json(models);

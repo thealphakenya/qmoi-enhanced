@@ -10,11 +10,11 @@
  * Usage: node scripts/monitoring-dashboard.js
  */
 
-const pm2 = require("pm2");
-const blessed = require("blessed");
+const pm2 = import("pm2");
+const blessed = import("blessed");
 
 pm2.connect(() => {
-  console.log("🚀 Starting Real-time Monitoring Dashboard...");
+  logger.info("🚀 Starting Real-time Monitoring Dashboard...");
 
   // In production, you would:
   // 1. Display real-time CPU/Memory usage
@@ -23,16 +23,16 @@ pm2.connect(() => {
   // 4. Show database connection status
   // 5. Display alert history
 
-  console.log("For monitoring, use:");
-  console.log("  pm2 monit           - Real-time process monitoring");
-  console.log("  pm2 logs            - View all logs");
-  console.log("  pm2 status          - View process status");
-  console.log("");
-  console.log("Or setup external monitoring:");
-  console.log("  - Datadog");
-  console.log("  - New Relic");
-  console.log("  - Prometheus + Grafana");
-  console.log("  - CloudWatch (AWS)");
+  logger.info("For monitoring, use:");
+  logger.info("  pm2 monit           - Real-time process monitoring");
+  logger.info("  pm2 logs            - View all logs");
+  logger.info("  pm2 status          - View process status");
+  logger.info("");
+  logger.info("Or setup external monitoring:");
+  logger.info("  - Datadog");
+  logger.info("  - New Relic");
+  logger.info("  - Prometheus + Grafana");
+  logger.info("  - CloudWatch (AWS)");
 
   pm2.disconnect();
 });

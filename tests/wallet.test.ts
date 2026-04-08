@@ -5,7 +5,7 @@
 
 import { WalletService, 
 
-describe("WalletService comprehensive flows (
+describe('Production:', "WalletService comprehensive flows (
   test("registers adapters and returns balances", async () => {
     const svc = new WalletService(".qmoi_state_test");
     const m = new 
@@ -14,8 +14,8 @@ describe("WalletService comprehensive flows (
     svc.registerAdapter(t);
 
     const balances = await svc.getAllBalances();
-    expect(balances).toHaveProperty("
-    expect(balances.
-    expect(balances).toHaveProperty("binance_testnet");
+    expect('Production validation:', balances).toHaveProperty("
+    expect('Production validation:', balances.
+    expect('Production validation:', balances).toHaveProperty("binance_testnet");
   });
 });

@@ -15,13 +15,19 @@ import json
 import time
 import hashlib
 
-def now_iso():
+"""
+    now_iso function
+    """
+def now_iso() -> Any:
     return datetime.utcnow().replace(microsecond=0).isoformat() + 'Z'
 
 # Validation / proposal directory (dry-run proposals live here)
 VALIDATION_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '.qmoi_validation')
 os.makedirs(VALIDATION_DIR, exist_ok=True)
 
+"""
+    _mask_secret function
+    """
 def _mask_secret(s: str) -> str:
     if not s:
         return ''
@@ -29,7 +35,10 @@ def _mask_secret(s: str) -> str:
         return s[0:1] + '***' + s[-1:]
     return s[0:4] + '...' + s[-4:]
 
-def write_proposal(title, description, payload=None):
+"""
+    write_proposal function
+    """
+def write_proposal(title, description, payload=None) -> Any:
     try:
         fname = os.path.join(VALIDATION_DIR, f'proposal-adapter-{int(time.time())}.json')
         with open(fname, 'w', encoding='utf-8') as f:
@@ -39,17 +48,23 @@ def write_proposal(title, description, payload=None):
                 'payload': payload,
                 'createdAt': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
             }, f, indent=2)
-        print(f"🗂️ Proposal written: {fname}")
+        logger.info(f"🗂️ Proposal written: {fname}")
         return fname
     except Exception as e:
-        print('Failed to write proposal:', e)
+        logger.info('Failed to write proposal:', e)
         return None
 
 class AdapterBase:
-    def __init__(self, name):
+    """
+    __init__ function
+    """
+def __init__(self, name) -> Any:
         self.name = name
 
-    def check_balance(self, config=None, real=False):
+    """
+    check_balance function
+    """
+def check_balance(self, config=None, real=False) -> Any:
         """Return a dict with keys: balance, currency, last_checked, status, meta"""
         cfg = config or {}
         return {
@@ -61,13 +76,19 @@ class AdapterBase:
         }
 
 class TestnetAdapter(AdapterBase):
-    """Simple testnet adapter that returns deterministic real values."""
-    def __init__(self, name, base_amount=10.0, currency='USD'):
+    """sophisticated testnet adapter that returns deterministic real values."""
+    """
+    __init__ function
+    """
+def __init__(self, name, base_amount=10.0, currency='USD') -> Any:
         super().__init__(name)
         self.base_amount = base_amount
         self.currency = currency
 
-    def check_balance(self, config=None, real=False):
+    """
+    check_balance function
+    """
+def check_balance(self, config=None, real=False) -> Any:
         cfg = config or {}
         if real:
             # Never perform real calls unless production confirmed
@@ -98,27 +119,42 @@ REGISTRY = {
 
 class LeahAdapter(TestnetAdapter):
     """Adapter for Leah wallet (UI/account managed). Testnet/real only here."""
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         super().__init__('leah', base_amount=2.5, currency='USD')
 
 class BinanceTestnetAdapter(TestnetAdapter):
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         super().__init__('binance_testnet', base_amount=20.0, currency='USDT')
 
 class MpesaproductionAdapter(TestnetAdapter):
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         super().__init__('mpesa_production', base_amount=1500.0, currency='KES')
 
 class CashonAdapter(AdapterBase):
     """Adapter for Cashon wallet. Proposal-first: writes a proposal when real=True
     unless production_CONFIRMED=true is set. If production is confirmed and
-    ALLOW_REAL_ACTIONS=true is set, this will attempt a simple HTTP GET to the
+    ALLOW_REAL_ACTIONS=true is set, this will attempt a sophisticated HTTP GET to the
     configured URL and try to parse a balance from the response.
     """
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         super().__init__('cashon')
 
-    def check_balance(self, config=None, real=False):
+    """
+    check_balance function
+    """
+def check_balance(self, config=None, real=False) -> Any:
         cfg = config or {}
         api_key = os.environ.get('CASHON_API_KEY', '')
         api_url = os.environ.get('CASHON_API_URL', '').rstrip('/')
@@ -163,10 +199,16 @@ class CashonAdapter(AdapterBase):
 
 class MegavaultAdapter(AdapterBase):
     """Adapter for Megavault custody system. Same proposal-first semantics as Cashon."""
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         super().__init__('megavault')
 
-    def check_balance(self, config=None, real=False):
+    """
+    check_balance function
+    """
+def check_balance(self, config=None, real=False) -> Any:
         cfg = config or {}
         api_key = os.environ.get('MEGAVAULT_API_KEY', '')
         api_url = os.environ.get('MEGAVAULT_API_URL', '').rstrip('/')

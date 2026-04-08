@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-import React, { createContext, useContext, useState } from "react";
+import { specificExports } from "react";
 
 export type Role = "admin" | "user" | "guest";
 

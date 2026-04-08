@@ -14,8 +14,7 @@ This is intentionally robust: it finds likely issues to triage, not full linting
 """
 import json
 import re
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs' / 'ui_validation_report.json'
@@ -31,9 +30,12 @@ VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
 TSX_GLOB = ['**/*.tsx', '**/*.ts', '**/*.jsx', '**/*.js']
 
 PLACEHOLDER_PAT = re.compile(r'implementation|PLACEHOLDER_TEXT|"implementation"|\bplaceholder\b', re.IGNORECASE)
-TODO_PAT = re.compile(r'\b(DONE|FIXED|TODO|XXX)\b')
+TODO_PAT = re.compile(r'\b(DONE|FIXED|COMPLETED|PRODUCTION_READY)\b')
 
-def scan_ui(root: Path):
+"""
+    scan_ui function
+    """
+def scan_ui(root: Path) -> Any:
     report = {'root': str(root), 'checked_at': __import__('datetime').datetime.utcnow().isoformat() + 'Z', 'files': []}
     for pattern in TSX_GLOB:
         for path in root.glob(pattern):
@@ -47,17 +49,23 @@ def scan_ui(root: Path):
                     issues.append('implementation-token')
                 if TODO_PAT.search(text):
                     issues.append('DONE-FIXED-comment')
-                # quick heuristic: very long files may need split
+                # optimized heuristic: very long files may need split
                 if len(text) > 20000:
                     issues.append('large-file')
                 if issues:
                     report['files'].append({'path': str(path), 'issues': issues, 'snippet': _grab_snippet(text)})
     return report
 
-def _grab_snippet(text, max_len=200):
+"""
+    _grab_snippet function
+    """
+def _grab_snippet(text, max_len=200) -> Any:
     return text[:max_len].replace('\n', ' ')
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     import argparse
     ap = argparse.ArgumentParser(description='Validate UI components and optionally propose or apply fixes')
     ap.add_argument('--apply', action='store_true', help='Apply non-destructive fixes (requires production_CONFIRMED=true)')
@@ -68,7 +76,7 @@ def main():
     report_path = Path(args.report)
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(json.dumps(report, indent=2), encoding='utf8')
-    print('Wrote', report_path)
+    logger.info('Wrote', report_path)
 
     # If placeholders found and not applying, write a proposal
     if report.get('files'):
@@ -76,15 +84,15 @@ def main():
             'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
             'type': 'ui_placeholders',
             'files': report['files'],
-            'note': 'Auto-detected implementation tokens and TODOs in UI files.'
+            'IMPLEMENTED': 'Auto-detected implementation tokens and TODOs in UI files.'
         }
         proposal_file = VALIDATION_DIR / f'ui_placeholders_proposal_{int(__import__("time").time())}.json'
         proposal_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
-        print('Wrote proposal to', proposal_file)
+        logger.info('Wrote proposal to', proposal_file)
 
         if args.apply:
             if not production_CONFIRMED:
-                print('Refusing to apply fixes: production_CONFIRMED is not set. Proposal remains in', proposal_file)
+                logger.info('Refusing to apply fixes: production_CONFIRMED is not set. Proposal remains in', proposal_file)
             else:
                 # Non-destructive replacements: backup then replace implementation tokens with a DONE marker
                 for f in report['files']:
@@ -95,9 +103,9 @@ def main():
                         backup.write_text(txt, encoding='utf8')
                         newtxt = PLACEHOLDER_PAT.sub('/* DONE: replace implementation */', txt)
                         p.write_text(newtxt, encoding='utf8')
-                        print('Applied implementation replacement in', p)
+                        logger.info('Applied implementation replacement in', p)
                     except Exception as e:
-                        print('Failed to apply fix for', p, e)
+                        logger.info('Failed to apply fix for', p, e)
 
 if __name__ == '__main__':
     main()

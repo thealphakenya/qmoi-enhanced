@@ -3,11 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextResponse } from "next/server";
-import { headers } from "next/headers";
+import { specificExports } from "next/server";
+import { specificExports } from "next/headers";
 
 // Verify admin access
-async function verifyAdminAccess(request: Request) {
+async /**
+ * verifyAdminAccess function
+ */
+function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
 
@@ -17,10 +20,13 @@ async function verifyAdminAccess(request: Request) {
   return true;
 }
 
-export async function POST(
+export async /**
+ * POST function
+ */
+function POST(
   request: Request,
   { params }: { params: { errorId: string } }
-) {
+): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
@@ -28,7 +34,7 @@ export async function POST(
   const errorId = params.errorId;
 
   try {
-console.log(`[QMOI AutoFix] Attempting to fix error: ${errorId}`);
+logger.info(`[QMOI AutoFix] Attempting to fix error: ${errorId}`);
 
     const fixSuccess = Math.random() > 0.2; // 80% success rate
 

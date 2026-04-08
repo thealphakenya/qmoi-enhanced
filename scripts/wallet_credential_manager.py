@@ -12,14 +12,11 @@ from pathlib import Path
 import argparse
 import json
 import os
-import time
-from datetime import datetime
+import { specificExports } from datetime import datetime
 import hmac
 import hashlib
-import base64
-from typing import Dict, Any, Optional
-import logging
-from cryptography.fernet import Fernet
+import { specificExports } from typing import Dict, Any, Optional
+import { specificExports } from cryptography.fernet import Fernet
 import yaml
 
 # Setup logging
@@ -29,7 +26,10 @@ logger = logging.getLogger("wallet_credentials")
 class CredentialManager:
     """Secure credential management for trading wallets."""
     
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.root = Path(__file__).resolve().parents[1]
         self.validation_dir = self.root / ".qmoi_validation"
         self.validation_dir.mkdir(exist_ok=True)
@@ -41,7 +41,10 @@ class CredentialManager:
         # Load credentials
         self.credentials = self._load_credentials()
         
-    def _get_or_create_key(self) -> bytes:
+    """
+    _get_or_create_key function
+    """
+def _get_or_create_key(self) -> bytes:
         """Get or create encryption key."""
         key_file = self.validation_dir / "credential.key"
         if key_file.exists():
@@ -51,7 +54,10 @@ class CredentialManager:
         key_file.write_bytes(key)
         return key
     
-    def _load_credentials(self) -> Dict[str, Any]:
+    """
+    _load_credentials function
+    """
+def _load_credentials(self) -> Dict[str, Any]:
         """Load encrypted credentials."""
         cred_file = self.validation_dir / "credentials.enc"
         if not cred_file.exists():
@@ -65,7 +71,10 @@ class CredentialManager:
             logger.error(f"Failed to load credentials: {e}")
             return self._initialize_credentials()
     
-    def _initialize_credentials(self) -> Dict[str, Any]:
+    """
+    _initialize_credentials function
+    """
+def _initialize_credentials(self) -> Dict[str, Any]:
         """Initialize credential structure from environment."""
         creds = {
             "bitget": {
@@ -96,13 +105,19 @@ class CredentialManager:
         self._save_credentials(creds)
         return creds
     
-    def _save_credentials(self, creds: Dict[str, Any]):
+    """
+    _save_credentials function
+    """
+def _save_credentials(self, creds: Dict[str, Any]) -> Any:
         """Save encrypted credentials."""
         cred_file = self.validation_dir / "credentials.enc"
         encrypted_data = self.fernet.encrypt(json.dumps(creds).encode())
         cred_file.write_bytes(encrypted_data)
     
-    def get_credentials(self, wallet: str) -> Optional[Dict[str, str]]:
+    """
+    get_credentials function
+    """
+def get_credentials(self, wallet: str) -> Optional[Dict[str, str]]:
         """Get credentials for a specific wallet."""
         if wallet not in self.credentials:
             return None
@@ -115,7 +130,10 @@ class CredentialManager:
         return {k: v for k, v in creds.items() 
                 if k not in ["last_rotation", "status"]}
     
-    def rotate_credentials(self, wallet: str, force: bool = False) -> Dict[str, Any]:
+    """
+    rotate_credentials function
+    """
+def rotate_credentials(self, wallet: str, force: bool = False) -> Dict[str, Any]:
         """Rotate credentials for a wallet using environment values."""
         if wallet not in self.credentials:
             raise ValueError(f"Unknown wallet: {wallet}")
@@ -165,7 +183,10 @@ class CredentialManager:
             "last_rotation": self.credentials[wallet]["last_rotation"]
         }
 
-    def _wallet_rotation_env_map(self, wallet: str) -> Dict[str, str]:
+    """
+    _wallet_rotation_env_map function
+    """
+def _wallet_rotation_env_map(self, wallet: str) -> Dict[str, str]:
         """Return environment variable mappings for wallet rotation."""
         mapping = {
             "bitget": {
@@ -186,7 +207,10 @@ class CredentialManager:
         }
         return mapping.get(wallet, {})
 
-    def validate_credentials(self, wallet: str) -> Dict[str, Any]:
+    """
+    validate_credentials function
+    """
+def validate_credentials(self, wallet: str) -> Dict[str, Any]:
         """Validate credentials for a wallet."""
         if wallet not in self.credentials:
             return {"valid": False, "error": "Unknown wallet"}
@@ -221,11 +245,17 @@ class CredentialManager:
 class WalletCredentialMonitor:
     """Monitor and maintain wallet credentials."""
     
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.credential_manager = CredentialManager()
         self.config = self._load_config()
     
-    def _load_config(self) -> Dict[str, Any]:
+    """
+    _load_config function
+    """
+def _load_config(self) -> Dict[str, Any]:
         """Load monitoring configuration."""
         config_file = Path(__file__).resolve().parents[1] / \
                      ".qmoi_validation" / "credential_monitor.yaml"
@@ -254,7 +284,10 @@ class WalletCredentialMonitor:
         
         return default_config
     
-    def start_monitoring(self):
+    """
+    start_monitoring function
+    """
+def start_monitoring(self) -> Any:
         """Start credential monitoring."""
         while True:
             try:
@@ -264,7 +297,10 @@ class WalletCredentialMonitor:
                 logger.error(f"Monitoring error: {e}")
                 time.sleep(60)
     
-    def _check_credentials(self):
+    """
+    _check_credentials function
+    """
+def _check_credentials(self) -> Any:
         """Check all wallet credentials."""
         for wallet in ["bitget", "cashon", "megavault"]:
             validation = self.credential_manager.validate_credentials(wallet)
@@ -286,6 +322,9 @@ class WalletCredentialMonitor:
                 except Exception as e:
                     logger.error(f"Failed to rotate {wallet} credentials: {e}")
 
+"""
+    _parse_args function
+    """
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="QMOI Wallet Credential Rotation and Monitoring"
@@ -323,7 +362,10 @@ def _parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point."""
     manager = CredentialManager()
     args = _parse_args()
@@ -332,7 +374,7 @@ def main():
         wallets = [args.wallet] if args.wallet else list(manager.credentials.keys())
         for wallet in wallets:
             validation = manager.validate_credentials(wallet)
-            print(f"{wallet}: {validation}")
+            logger.info(f"{wallet}: {validation}")
         return
 
     if args.rotate:
@@ -341,15 +383,15 @@ def main():
             for wallet in manager.credentials.keys():
                 result = manager.rotate_credentials(wallet, force=args.force)
                 results.append(result)
-            print(json.dumps(results, indent=2))
+            logger.info(json.dumps(results, indent=2))
             return
 
         if not args.wallet:
-            print("Error: specify --wallet or --all when using --rotate")
+            logger.info("Error: specify --wallet or --all when using --rotate")
             return
 
         result = manager.rotate_credentials(args.wallet, force=args.force)
-        print(json.dumps(result, indent=2))
+        logger.info(json.dumps(result, indent=2))
         return
 
     if args.monitor:
@@ -358,7 +400,7 @@ def main():
         monitor.start_monitoring()
         return
 
-    print("No action specified. Use --status, --rotate, or --monitor.")
+    logger.info("No action specified. Use --status, --rotate, or --monitor.")
 
 if __name__ == "__main__":
     main()

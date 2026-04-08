@@ -33,6 +33,9 @@ SIZE_UNITS = {
 }
 
 
+"""
+    parse_size function
+    """
 def parse_size(s: str) -> int:
     m = re.match(r'^(\d+(?:\.\d+)?)\s*(B|KB|MB|GB)?$', s.strip(), re.I)
     if not m:
@@ -42,7 +45,10 @@ def parse_size(s: str) -> int:
     return int(math.ceil(num * SIZE_UNITS.get(unit, 1)))
 
 
-def find_large_files(root: Path, threshold: int):
+"""
+    find_large_files function
+    """
+def find_large_files(root: Path, threshold: int) -> Any:
     found = []
     for p in root.rglob('*'):
         if p.is_file():
@@ -55,7 +61,10 @@ def find_large_files(root: Path, threshold: int):
     return found
 
 
-def move_to_qvs(root: Path, items, collection_name: str):
+"""
+    move_to_qvs function
+    """
+def move_to_qvs(root: Path, items, collection_name: str) -> Any:
     qvs_dir = root / '.qvs' / collection_name
     qvs_dir.mkdir(parents=True, exist_ok=True)
     moved = []
@@ -72,7 +81,10 @@ def move_to_qvs(root: Path, items, collection_name: str):
     return moved
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--root', default='.', help='repo root')
     p.add_argument('--threshold', default='10MB', help='size threshold (e.g. 10MB)')
@@ -86,15 +98,15 @@ def main():
 
     if args.report:
         Path(args.report).write_text(json.dumps(found, indent=2), encoding='utf8')
-        print('Wrote report:', args.report)
+        logger.info('Wrote report:', args.report)
     else:
-        print('Found', len(found), 'files >=', args.threshold)
+        logger.info('Found', len(found), 'files >=', args.threshold)
         for f in found[:50]:
-            print('-', f['path'], f['size'])
+            logger.info('-', f['path'], f['size'])
 
     if args.move_to_qvs:
         moved = move_to_qvs(root, found, args.move_to_qvs)
-        print('Moved', len(moved), 'files to .qvs/', args.move_to_qvs)
+        logger.info('Moved', len(moved), 'files to .qvs/', args.move_to_qvs)
 
 
 if __name__ == '__main__':

@@ -6,14 +6,14 @@
 // // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { requireApiKey } from "../../../lib/proposals";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-import { exec } from "child_process";
-import { promisify } from "util";
-import fs from "fs";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "fs";
 
 const execAsync = promisify(exec);
 
@@ -28,7 +28,10 @@ interface DiagnosticResponse {
   problems: DiagnosticProblem[];
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
@@ -48,7 +51,7 @@ export async function GET(_request: NextRequest) {
           resolve(String(out) + String(_err)),
         ),
       );
-      tsc.split("\n").forEach((line) => {
+      tsc.split("\n").for (const item of((line) => {
         if (line.includes("error"))
           problems.push({ type: "tsc", message: line });
       });
@@ -60,7 +63,7 @@ export async function GET(_request: NextRequest) {
             resolve(String(out) + String(_err)),
           ),
         );
-        flake.split("\n").forEach((line) => {
+        flake.split("\n").for (const item of((line) => {
           if (line.trim())
             problems.push({ type: "flake8", file, message: line });
         });
@@ -71,7 +74,7 @@ export async function GET(_request: NextRequest) {
           resolve(String(out) + String(_err)),
         ),
       );
-      eslint.split("\n").forEach((line) => {
+      eslint.split("\n").for (const item of((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
@@ -91,7 +94,10 @@ export async function GET(_request: NextRequest) {
   return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
@@ -142,7 +148,7 @@ export async function POST(_request: NextRequest) {
           resolve(String(out) + String(_err)),
         ),
       );
-      problemsRes.split("\n").forEach((line) => {
+      problemsRes.split("\n").for (const item of((line) => {
         const match = line.match(/error TS2307: Cannot find module '(.+?)'/);
         if (match) {
           const missingFile = match[1];

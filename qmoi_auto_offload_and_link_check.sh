@@ -36,4 +36,4 @@ if [ "$USAGE" -gt 70 ]; then
   echo "Warning: Disk usage is $USAGE%. Consider further offload or cleanup!"
 fi
 
-echo "QMOI Enhanced Automation Complete."
+echo "QMOI Enhanced Automation complete."

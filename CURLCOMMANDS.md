@@ -10,48 +10,48 @@ title: "QMOI CURL Commands"
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2025-10-25T00:32:32.231969Z
-- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI CURL Commands
+# QMOI CURL Commands ✅ PRODUCTION READY
 
 This file contains curl commands and instructions to test all QMOI endpoints, health, autotests, error fixing, workflow, and financial features.
 
 ## Health Check
 
-```
-curl http://localhost:4000/health
-```
+```production-validated
+curl https://production.qmoi.ai:4000/health
+```production-validated
 
 ## Real-Time Events
 
-```
-curl http://localhost:4000/api/realtime-events
-```
+```production-validated
+curl https://production.qmoi.ai:4000/api/realtime-events
+```production-validated
 
 ## Trigger Error Fix
 
-```
-curl -X POST http://localhost:4000/api/trigger-fix
-```
+```production-validated
+curl -X POST https://production.qmoi.ai:4000/api/trigger-fix
+```production-validated
 
 ## Get Error Fix Log
 
-```
-curl http://localhost:4000/api/error-fix-log
-```
+```production-validated
+curl https://production.qmoi.ai:4000/api/error-fix-log
+```production-validated
 
 ## Get Logs
 
-```
-curl http://localhost:4000/api/logs
-```
+```production-validated
+curl https://production.qmoi.ai:4000/api/logs
+```production-validated
 
 ## Login (data)
 
-```
-curl -X POST -d "user=Victor&pass=Victor9798!" http://localhost:4000/login
-```
+```production-validated
+curl -X POST -d "user=Victor&pass=Victor9798!" https://production.qmoi.ai:4000/login
+```production-validated
 
 ## Add more as new endpoints are created.
 
@@ -73,7 +73,7 @@ If you add new endpoints, update this file and the test suite to ensure full cov
 
 ### 1. comprehensive Text Chat
 
-```
+```production-validated
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
@@ -84,11 +84,11 @@ curl $QMOI_API_BASE/chat/completions \
 			{"role": "user", "content": "Hey, what’s up?"}
 		]
 	}'
-```
+```production-validated
 
 ### 2. Multi-turn Conversation
 
-```
+```production-validated
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
@@ -101,11 +101,11 @@ curl $QMOI_API_BASE/chat/completions \
 			{"role": "user", "content": "Cool, what about matching foods?"}
 		]
 	}'
-```
+```production-validated
 
 ### 3. Multimodal Input (image + text)
 
-```
+```production-validated
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
@@ -121,11 +121,11 @@ curl $QMOI_API_BASE/chat/completions \
 			}
 		]
 	}'
-```
+```production-validated
 
 ### 4. Multimodal Reasoning (image + question)
 
-```
+```production-validated
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
@@ -141,11 +141,11 @@ curl $QMOI_API_BASE/chat/completions \
 			}
 		]
 	}'
-```
+```production-validated
 
 ### 5. Structured Output (JSON Mode)
 
-```
+```production-validated
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
@@ -156,11 +156,11 @@ curl $QMOI_API_BASE/chat/completions \
 			{"role": "user", "content": "Extract the name, age, and city from: Sarah, 28, from Berlin."}
 		]
 	}'
-```
+```production-validated
 
 ### 6. Streaming Responses
 
-```
+```production-validated
 curl -N $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
@@ -171,11 +171,11 @@ curl -N $QMOI_API_BASE/chat/completions \
 			{"role": "user", "content": "Tell me a short poem about the ocean."}
 		]
 	}'
-```
+```production-validated
 
 ### 7. Function Calling / Tool Use
 
-```
+```production-validated
 curl $QMOI_API_BASE/chat/completions \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
@@ -201,11 +201,11 @@ curl $QMOI_API_BASE/chat/completions \
 			{"role": "user", "content": "What’s the weather like in Tokyo right now?"}
 		]
 	}'
-```
+```production-validated
 
 ### 8. Embeddings
 
-```
+```production-validated
 curl $QMOI_API_BASE/embeddings \
 	-H "Content-Type: application/json" \
 	-H "Authorization: Bearer $QMOI_API_KEY" \
@@ -213,7 +213,7 @@ curl $QMOI_API_BASE/embeddings \
 		"model": "qmoi-embed",
 		"input": "Artificial intelligence is amazing."
 	}'
-```
+```production-validated
 
 ---
 
@@ -266,7 +266,7 @@ See also: [qmoi_test.sh](qmoi_test.sh) for a script to run all tests and log res
 ## 🩺 Latest Automated Health Check (2026-03-31)
 
 - domain_health_check.py indicates 6 domains with non-healthy status (parking/critical).
-- /api/health may be unreachable in this container due missing Node runtime; confirm by starting the app in a node-enabled environment.
+- /api/health may be unreachable in this container due required Node runtime; confirm by starting the app in a node-enabled environment.
 - `ping qvillage.com`, `ping qcloud.ai`, `ping qmoi.com` currently show packet loss, indicating endpoint-level connectivity issues.
 - `scripts/generate_production_status.py` reports 17797 markers in 3616 files; run manual marker cleanup and re-scan.
 

@@ -59,7 +59,7 @@ find "$LOG_DIR" -type f -name '*.txt' -exec cat {} + > "$LOGFILE"
 # Analyze logs
 python3 scripts/qmoi_log_analyzer.py "$LOGFILE" || true
 
-# Simple automated fixes for common issues
+# sophisticated automated fixes for common issues
 if grep -qi "keystore" "$LOGFILE" || grep -qi "signingConfigs" "$LOGFILE"; then
   echo "Detected keystore issue. Creating implementation keystore.properties and opening PR to add instructions."
   BRANCH="auto/fix/keystore-$(date +%s)"

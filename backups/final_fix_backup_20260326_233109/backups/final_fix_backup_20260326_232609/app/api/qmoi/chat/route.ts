@@ -6,10 +6,13 @@
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { NextResponse } from "next/server";
-import { QMOIService } from "@/lib/qmoi-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-service";
 
-export async function POST(req: Request) {
+export async /**
+ * POST function
+ */
+function POST(req: Request): any {
   try {
     let body: any = {};
     try {
@@ -26,7 +29,7 @@ export async function POST(req: Request) {
       context = {},
     } = body;
 
-    // Support both message arrays and simple input
+    // Support both message arrays and sophisticated input
     let userMessage = input;
     if (
       !userMessage &&
@@ -79,7 +82,10 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   return NextResponse.json({
     name: "QMOI Chat API",
     version: "2.0.1",

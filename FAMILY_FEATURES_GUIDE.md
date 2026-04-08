@@ -4,10 +4,10 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.847234Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Family Features Guide
+# QMOI Family Features Guide ✅ PRODUCTION READY
 
 ## Overview
 
@@ -168,7 +168,7 @@ Secure messaging for family members:
 
 ### Wallet Features
 
-```
+```production-validated
 Family Wallet: QMOI_FAMILY_001
 ├── Current Balance: $50,000
 ├── Monthly Budget: $10,000
@@ -176,12 +176,12 @@ Family Wallet: QMOI_FAMILY_001
 ├── Remaining: $6,550
 ├── Next Review Date: Feb 1, 2025
 └── Security: 2FA Enabled
-```
+```production-validated
 
 ### Withdrawal Request (Leah)
 
-```bash
-curl -X POST http://localhost:3001/api/qmoi/family/wallet/request-withdrawal \
+```production-validatedbash
+curl -X POST https://production.qmoi.ai:3001/api/qmoi/family/wallet/request-withdrawal \
   -H "Authorization: Bearer LEAH_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -189,26 +189,26 @@ curl -X POST http://localhost:3001/api/qmoi/family/wallet/request-withdrawal \
     "purpose": "Project expenses",
     "notes": "production tools"
   }'
-```
+```production-validated
 
 ### Withdrawal Approval (Victor)
 
-```bash
-curl -X POST http://localhost:3001/api/qmoi/family/wallet/approve-withdrawal \
+```production-validatedbash
+curl -X POST https://production.qmoi.ai:3001/api/qmoi/family/wallet/approve-withdrawal \
   -H "Authorization: Bearer MASTER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "requestId": "wr_12345",
     "approved": true
   }'
-```
+```production-validated
 
 ### Check Wallet Status (Both)
 
-```bash
-curl -X GET http://localhost:3001/api/qmoi/family/wallet/status \
+```production-validatedbash
+curl -X GET https://production.qmoi.ai:3001/api/qmoi/family/wallet/status \
   -H "Authorization: Bearer USER_TOKEN"
-```
+```production-validated
 
 ---
 
@@ -216,8 +216,8 @@ curl -X GET http://localhost:3001/api/qmoi/family/wallet/status \
 
 ### Create Family Project (Victor Only)
 
-```bash
-curl -X POST http://localhost:3001/api/qmoi/family/projects \
+```production-validatedbash
+curl -X POST https://production.qmoi.ai:3001/api/qmoi/family/projects \
   -H "Authorization: Bearer MASTER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -227,12 +227,12 @@ curl -X POST http://localhost:3001/api/qmoi/family/projects \
     "deadline": "2025-03-31",
     "members": ["master", "sister"]
   }'
-```
+```production-validated
 
 ### Update Project Status (Both)
 
-```bash
-curl -X PUT http://localhost:3001/api/qmoi/family/projects/proj_001 \
+```production-validatedbash
+curl -X PUT https://production.qmoi.ai:3001/api/qmoi/family/projects/proj_001 \
   -H "Authorization: Bearer USER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -240,14 +240,14 @@ curl -X PUT http://localhost:3001/api/qmoi/family/projects/proj_001 \
     "progress": 45,
     "notes": "On schedule for deadline"
   }'
-```
+```production-validated
 
 ### View Family Projects (Both)
 
-```bash
-curl -X GET http://localhost:3001/api/qmoi/family/projects \
+```production-validatedbash
+curl -X GET https://production.qmoi.ai:3001/api/qmoi/family/projects \
   -H "Authorization: Bearer USER_TOKEN"
-```
+```production-validated
 
 ---
 
@@ -255,8 +255,8 @@ curl -X GET http://localhost:3001/api/qmoi/family/projects \
 
 ### Add Family Event (Both)
 
-```bash
-curl -X POST http://localhost:3001/api/qmoi/family/calendar \
+```production-validatedbash
+curl -X POST https://production.qmoi.ai:3001/api/qmoi/family/calendar \
   -H "Authorization: Bearer USER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -267,26 +267,26 @@ curl -X POST http://localhost:3001/api/qmoi/family/calendar \
     "attendees": ["master", "sister"],
     "description": "Monthly review of family finances"
   }'
-```
+```production-validated
 
 ### View Family Calendar (Both)
 
-```bash
-curl -X GET http://localhost:3001/api/qmoi/family/calendar \
+```production-validatedbash
+curl -X GET https://production.qmoi.ai:3001/api/qmoi/family/calendar \
   -H "Authorization: Bearer USER_TOKEN"
-```
+```production-validated
 
 ### Set Event Reminder (Individual)
 
-```bash
-curl -X PUT http://localhost:3001/api/qmoi/family/calendar/event_001/reminder \
+```production-validatedbash
+curl -X PUT https://production.qmoi.ai:3001/api/qmoi/family/calendar/event_001/reminder \
   -H "Authorization: Bearer USER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "type": "notification",
     "minutesBefore": 15
   }'
-```
+```production-validated
 
 ---
 
@@ -294,8 +294,8 @@ curl -X PUT http://localhost:3001/api/qmoi/family/calendar/event_001/reminder \
 
 ### Send Family Message
 
-```bash
-curl -X POST http://localhost:3001/api/qmoi/family/messages \
+```production-validatedbash
+curl -X POST https://production.qmoi.ai:3001/api/qmoi/family/messages \
   -H "Authorization: Bearer USER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -303,21 +303,21 @@ curl -X POST http://localhost:3001/api/qmoi/family/messages \
     "message": "Project update: 60% complete",
     "attachments": []
   }'
-```
+```production-validated
 
 ### Retrieve Family Messages
 
-```bash
-curl -X GET http://localhost:3001/api/qmoi/family/messages \
+```production-validatedbash
+curl -X GET https://production.qmoi.ai:3001/api/qmoi/family/messages \
   -H "Authorization: Bearer USER_TOKEN"
-```
+```production-validated
 
 ### Search Family Communication
 
-```bash
-curl -X GET "http://localhost:3001/api/qmoi/family/messages/search?query=project" \
+```production-validatedbash
+curl -X GET "https://production.qmoi.ai:3001/api/qmoi/family/messages/search?query=project" \
   -H "Authorization: Bearer USER_TOKEN"
-```
+```production-validated
 
 ---
 
@@ -325,8 +325,8 @@ curl -X GET "http://localhost:3001/api/qmoi/family/messages/search?query=project
 
 ### Configure Family Preferences (Victor)
 
-```bash
-curl -X POST http://localhost:3001/api/qmoi/family/settings \
+```production-validatedbash
+curl -X POST https://production.qmoi.ai:3001/api/qmoi/family/settings \
   -H "Authorization: Bearer MASTER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -336,12 +336,12 @@ curl -X POST http://localhost:3001/api/qmoi/family/settings \
     "currency": "USD",
     "timeZone": "Africa/Nairobi"
   }'
-```
+```production-validated
 
 ### Update Personal Family Preferences (Both)
 
-```bash
-curl -X PUT http://localhost:3001/api/qmoi/family/settings/personal \
+```production-validatedbash
+curl -X PUT https://production.qmoi.ai:3001/api/qmoi/family/settings/personal \
   -H "Authorization: Bearer USER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -349,7 +349,7 @@ curl -X PUT http://localhost:3001/api/qmoi/family/settings/personal \
     "emailDigest": "weekly",
     "theme": "dark"
   }'
-```
+```production-validated
 
 ---
 

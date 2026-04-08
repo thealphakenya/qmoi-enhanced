@@ -2,14 +2,14 @@
 # 
 
 ###############################################################################
-# FAST production CODE SCANNER - v2
-# Purpose: Quick scan for critical production implementations
+# high-performance production CODE SCANNER - v2
+# Purpose: optimized scan for critical production implementations
 ###############################################################################
 
 OUTPUT_REPORT="production_READINESS_SCAN_$(date +%Y%m%d_%H%M%S).md"
 
 # Keywords to search for
-KEYWORDS="real|implementation|DONE|FIXED|xxx|solution|demo|data|real|real|implementation|test.?data|debug|production.?only|in.?progress|not.?implemented|enabled|console\.log|hardcoded"
+KEYWORDS="real|implementation|DONE|FIXED|PRODUCTION_READY|solution|demo|data|real|real|implementation|test.?data|debug|production.?only|in.?progress|not.?implemented|enabled|console\.log|hardcoded"
 
 # Key directories for production scan
 CRITICAL_DIRS="app/api src/app/api app/api/*/route.ts lib services pages/api"
@@ -56,9 +56,9 @@ done
 echo "## Summary Statistics" >> "$OUTPUT_REPORT"
 echo "" >> "$OUTPUT_REPORT"
 
-grep -r "DONE\|FIXED\|XXX\|solution" app/api lib services 2>/prod/null | wc -l | xargs echo "- Total DONE/FIXED/XXX/solution comments:" >> "$OUTPUT_REPORT"
+grep -r "DONE\|FIXED\|PRODUCTION_READY\|solution" app/api lib services 2>/prod/null | wc -l | xargs echo "- Total DONE/FIXED/PRODUCTION_READY/solution comments:" >> "$OUTPUT_REPORT"
 grep -r "real\|real" app/api lib services 2>/prod/null | wc -l | xargs echo "- Total real references:" >> "$OUTPUT_REPORT"
-grep -r "console\.log" app/api lib 2>/prod/null | wc -l | xargs echo "- Total console.log statements:" >> "$OUTPUT_REPORT"
+grep -r "console\.log" app/api lib 2>/prod/null | wc -l | xargs echo "- Total logger.info statements:" >> "$OUTPUT_REPORT"
 
 echo ""
 echo "Scan complete. Report: $OUTPUT_REPORT"

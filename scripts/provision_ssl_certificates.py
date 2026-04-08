@@ -9,12 +9,13 @@ import os
 import sys
 import time
 import argparse
-import subprocess
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
 class SSLProvisioningDeployer:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.dry_run = False
         self.verbose = False
         
@@ -33,12 +34,18 @@ class SSLProvisioningDeployer:
             if status.get("dns_status") == "✅ Deployed":
                 self.domains_to_process.append(domain)
     
-    def log(self, message: str):
+    """
+    log function
+    """
+def log(self, message: str) -> Any:
         """Log message with timestamp"""
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        print(f"[{timestamp}] {message}")
+        logger.info(f"[{timestamp}] {message}")
     
-    def validate_environment(self) -> bool:
+    """
+    validate_environment function
+    """
+def validate_environment(self) -> bool:
         """Validate SSL provisioning environment"""
         self.log("🔍 Validating SSL provisioning environment...")
         
@@ -55,7 +62,10 @@ class SSLProvisioningDeployer:
         self.log("✅ SSL environment validation passed")
         return True
     
-    def provision_ssl_certificate(self, domain: str) -> bool:
+    """
+    provision_ssl_certificate function
+    """
+def provision_ssl_certificate(self, domain: str) -> bool:
         """Provision SSL certificate for a domain"""
         if self.dry_run:
             self.log(f"🔍 DRY RUN: Would provision SSL for {domain}")
@@ -75,7 +85,10 @@ class SSLProvisioningDeployer:
             self.log(f"❌ SSL provisioning failed for {domain} (simulated failure)")
             return False
     
-    def verify_ssl_certificate(self, domain: str) -> bool:
+    """
+    verify_ssl_certificate function
+    """
+def verify_ssl_certificate(self, domain: str) -> bool:
         """Verify SSL certificate is valid"""
         base_domain = domain.split('/')[0]
         
@@ -93,7 +106,10 @@ class SSLProvisioningDeployer:
             self.log(f"❌ SSL verification failed for {base_domain} (simulated)")
             return False
     
-    def update_deployment_status(self, domain: str, ssl_status: str):
+    """
+    update_deployment_status function
+    """
+def update_deployment_status(self, domain: str, ssl_status: str) -> Any:
         """Update SSL status for a domain"""
         if domain in self.status["deployment_status_by_domain"]:
             self.status["deployment_status_by_domain"][domain]["ssl_status"] = ssl_status
@@ -109,7 +125,10 @@ class SSLProvisioningDeployer:
         with open(self.status_file, 'w') as f:
             json.dump(self.status, f, indent=2)
     
-    def run_provisioning(self):
+    """
+    run_provisioning function
+    """
+def run_provisioning(self) -> Any:
         """Run SSL provisioning for all domains with successful DNS"""
         self.log("🔐 Starting SSL Certificate Provisioning")
         self.log(f"📊 Domains with active DNS: {len(self.domains_to_process)}")
@@ -162,7 +181,10 @@ class SSLProvisioningDeployer:
             return False
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='Provision SSL certificates for QMOI domains')
     parser.add_argument('--provider', type=str, default='letsencrypt', help='SSL provider (default: letsencrypt)')
     parser.add_argument('--auto-renew', action='store_true', help='Enable automatic renewal')
@@ -172,7 +194,7 @@ def main():
     args = parser.parse_args()
     
     if not args.dry_run and not args.execute:
-        print("❌ Must specify --dry-run or --execute")
+        logger.info("❌ Must specify --dry-run or --execute")
         sys.exit(1)
     
     deployer = SSLProvisioningDeployer()

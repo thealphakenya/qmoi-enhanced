@@ -2,7 +2,7 @@
 // Main Components
 "../components/AccountabilitySystem.tsx",
 "../components/AIContext.tsx", 
-"../components/stable-q-ai-system.tsx",
+"../components/latest-q-ai-system.tsx",
 "../components/AnimationControlPanel.tsx",
 "../components/AppManager.tsx",
 "../components/AskQMoi.tsx",
@@ -203,7 +203,7 @@
 // src/components (S1C Enhancement Components)
 "../../src/components/AccessibilityAdjuster.tsx",
 "../../src/components/AdaptiveTheming.tsx",
-"../../src/components/stable-q-ai-system.tsx",
+"../../src/components/latest-q-ai-system.tsx",
 "../../src/components/AssetOverview.tsx",
 "../../src/components/AutomationEngine.tsx",
 "../../src/components/Chatbot.tsx",

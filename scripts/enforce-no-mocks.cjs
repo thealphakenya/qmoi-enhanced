@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const root = path.resolve(__dirname, "..");
 const include = [".js", ".ts", ".tsx", ".jsx", ".py", ".md", ".json", ".sh"];
@@ -44,13 +44,13 @@ function walk(dir) {
       const line = lines[i];
       for (const token of banned) {
         if (line.includes(token)) {
-          console.log(`${full}:${i + 1}: ${token}: ${line.trim()}`);
+          logger.info(`${full}:${i + 1}: ${token}: ${line.trim()}`);
         }
       }
     }
   }
 }
 
-console.log("Running production implementation/mocks scan...");
+logger.info("Running production implementation/mocks scan...");
 walk(root);
-console.log("Scan complete.");
+logger.info("Scan complete.");

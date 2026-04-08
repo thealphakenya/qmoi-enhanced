@@ -27,7 +27,7 @@
 .github/workflows/npm.yml.backup.1760307818143
 .github/workflows/npm.yml.backup.1760308915798
 .github/workflows/payed-validation.yml
-.github/workflows/publish-q-stable.yml
+.github/workflows/publish-q-latest.yml
 .github/workflows/q.yml
 .github/workflows/q.yml.backup.1760307818145
 .github/workflows/q.yml.backup.1760308915800
@@ -5860,13 +5860,13 @@ logrotate/qmoi-worker
 logs/qcity-automatic-stats.json
 logs/qmoi-activity-log.json
 logs/qmoi-qcity-automatic.log
-logs/qmoi-quick-test.log
+logs/qmoi-optimized-test.log
 logs/qmoi-service.err.log
 logs/qmoi-service.out.log
 logs/qmoi-start-watch-20251107T175609Z.log
 logs/qmoi-start-watch-20251107T211932Z.log
 logs/qmoi-start-watch-20251107T215045Z.log
-logs/quick-test-dashboard.html
+logs/optimized-test-dashboard.html
 memories.json
 metrics.json
 mobile/android/.gradle/8.14.3/fileChanges/last-build.bin
@@ -5910,9 +5910,9 @@ pwa_apps/deals/css/stripe-payment.css
 pwa_apps/deals/index.html
 pwa_apps/deals/js/stripe-payment.js
 pwa_apps/deals/templates/payment-form.html
-pwa_apps/q-stable/manifest.webmanifest
-pwa_apps/q-stable/package.json
-pwa_apps/q-stable/sw.js
+pwa_apps/q-latest/manifest.webmanifest
+pwa_apps/q-latest/package.json
+pwa_apps/q-latest/sw.js
 pwa_apps/qmoi-ai/index.html
 pwa_apps/qmoi-ai/manifest.webmanifest
 pwa_apps/qmoi-ai/sw.js
@@ -9051,7 +9051,7 @@ qmoi-enhanced/qmoi_memory.json.backup.1760308692692
 qmoi-enhanced/qmoi_release_report.json
 qmoi-enhanced/qmoiexe.spec
 qmoi-enhanced/qmoihugggingfacenotes.py
-qmoi-enhanced/quick-push.ps1
+qmoi-enhanced/optimized-push.ps1
 qmoi-enhanced/readme.txt
 qmoi-enhanced/release-verify.ps1
 qmoi-enhanced/reports/lint-report.html
@@ -9163,7 +9163,7 @@ qmoi-enhanced/scripts/qmoi-gitlab-sync.js
 qmoi-enhanced/scripts/qmoi-hf-sync.py
 qmoi-enhanced/scripts/qmoi-huggingface-space-enhanced.py
 qmoi-enhanced/scripts/qmoi-info.py
-qmoi-enhanced/scripts/qmoi-master-debugger.js
+qmoi-enhanced/scripts/qmoi-master-// Production: debugger removed.js
 qmoi-enhanced/scripts/qmoi-real-time-logger.py
 qmoi-enhanced/scripts/qmoi-real-time-monitor.py
 qmoi-enhanced/scripts/qmoi-self-updating-agent.js
@@ -9243,7 +9243,7 @@ qmoi-enhanced/src/components/PreviewWindow.tsx
 qmoi-enhanced/src/components/QI.tsx
 qmoi-enhanced/src/components/QIStateWindow.tsx
 qmoi-enhanced/src/components/QiSpaces.tsx
-qmoi-enhanced/src/components/stable-q-ai-system.tsx
+qmoi-enhanced/src/components/latest-q-ai-system.tsx
 qmoi-enhanced/src/components/q-city/AuditLogPanel.tsx
 qmoi-enhanced/src/components/q-city/AviatorGalleryPanel.tsx
 qmoi-enhanced/src/components/q-city/BackupRestorePanel.tsx
@@ -11299,7 +11299,7 @@ qmoi_release_report.json
 qmoi_system_controller.log
 qmoiexe.spec
 qmoihugggingfacenotes.py
-quick-push.ps1
+optimized-push.ps1
 readme.txt
 release-verify.ps1
 reports/lint-report.html
@@ -11441,7 +11441,7 @@ scripts/qmoi-gitlab-sync.js
 scripts/qmoi-hf-sync.py
 scripts/qmoi-huggingface-space-enhanced.py
 scripts/qmoi-info.py
-scripts/qmoi-master-debugger.js
+scripts/qmoi-master-// Production: debugger removed.js
 scripts/qmoi-parallel-autotest.js
 scripts/qmoi-real-time-logger.py
 scripts/qmoi-real-time-monitor.py
@@ -11546,7 +11546,7 @@ src/components/PreviewWindow.tsx
 src/components/QI.tsx
 src/components/QIStateWindow.tsx
 src/components/QiSpaces.tsx
-src/components/stable-q-ai-system.tsx
+src/components/latest-q-ai-system.tsx
 src/components/q-city/AuditLogPanel.tsx
 src/components/q-city/AviatorGalleryPanel.tsx
 src/components/q-city/BackupRestorePanel.tsx

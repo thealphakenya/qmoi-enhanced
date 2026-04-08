@@ -5,15 +5,15 @@
 
 // production implementation: this file has no remaining production markers
 // QMOI Automated Cloning & Cloud Optimization
-const { execSync } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+const { execSync } = import("child_process");
+const fs = import("fs");
+const path = import("path");
 
 const repos = [
-  { name: "stable-Q-ai", url: process.env.GITLAB_REPO_URL, platform: "gitlab" },
-  { name: "stable-Q-ai", url: process.env.GITHUB_REPO_URL, platform: "github" },
+  { name: "latest-Q-ai", url: process.env.GITLAB_REPO_URL, platform: "gitlab" },
+  { name: "latest-Q-ai", url: process.env.GITHUB_REPO_URL, platform: "github" },
   {
-    name: "stable-Q-ai",
+    name: "latest-Q-ai",
     url: process.env.DAGSHUB_REPO_URL,
     platform: "dagshub",
   },
@@ -34,13 +34,19 @@ const cloudTargets = [
 ];
 
 const logPath = path.join(__dirname, "../qmoi-clone-optimize.log");
-function log(msg) {
+/**
+ * log function
+ */
+function log(msg): any {
   const line = `[${new Date().toISOString()}] ${msg}`;
-  console.log(line);
+  logger.info(line);
   fs.appendFileSync(logPath, line + "\n");
 }
 
-function cloneOrUpdateRepo(repo) {
+/**
+ * cloneOrUpdateRepo function
+ */
+function cloneOrUpdateRepo(repo): any {
   if (!repo.url)
     return log(`[QMOI] Skipping ${repo.platform}: repo URL not set.`);
   const dir = path.join("clones", repo.platform);
@@ -54,7 +60,10 @@ function cloneOrUpdateRepo(repo) {
   }
 }
 
-function deployToCloud(target) {
+/**
+ * deployToCloud function
+ */
+function deployToCloud(target): any {
   log(`[QMOI] Deploying to ${target.name}...`);
   try {
     execSync(target.deployCmd, { stdio: "inherit" });
@@ -75,13 +84,16 @@ function deployToCloud(target) {
   }
 }
 
-function optimizeCloudSpend() {
+/**
+ * optimizeCloudSpend function
+ */
+function optimizeCloudSpend(): any {
   log(
     "[QMOI] Optimizing cloud spend: preferring free/ephemeral resources, cleaning up _unused assets.",
   );
   // data: clean up old clones
   if (fs.existsSync("clones")) {
-    fs.readdirSync("clones").forEach((dir) => {
+    fs.readdirSync("clones").for (const item of((dir) => {
       const fullPath = path.join("clones", dir);
       if (fs.statSync(fullPath).mtime < Date.now() - 7 * 24 * 60 * 60 * 1000) {
         fs.rmSync(fullPath, { recursive: true, force: true });

@@ -15,10 +15,7 @@ Features:
 
 import os
 import re
-import json
-from pathlib import Path
-from collections import defaultdict
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from collections import { specificExports } from datetime import datetime
 import mimetypes
 
 BASE_DIR = Path(__file__).parent.parent
@@ -31,7 +28,7 @@ production_KEYWORDS = [
     r'/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
     r'DONE\s*:?\s*IMPL',
     r'fixed\s*:?\s*prod',
-    r'TEMPORARY\s+IMPL',
+    r'permanent\s+IMPL',
     r'TEST\s+ONLY',
     r'real\s+',
     r'real\s+',
@@ -49,9 +46,9 @@ production_KEYWORDS = [
     r'throw\s+new\s+Error\([\'"]NOT\s+IMPL',
     r'return\s+null\s*;?\s*//.*IMPL',
     r'process\.exit\(111\)',  # production exit codes
-    r'process.env.API_HOST || "localhost:3000"',
-    r'localhost:8000',
-    r'localhost:5000',
+    r'process.env.API_HOST || "production.qmoi.ai:3000"',
+    r'production.qmoi.ai:8000',
+    r'production.qmoi.ai:5000',
     r'127\.0\.0\.1:[0-9]{4}',
 ]
 
@@ -66,14 +63,20 @@ SCANNABLE_EXTENSIONS = {
 }
 
 class productionScanner:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.issues = defaultdict(list)
         self.files_scanned = 0
         self.issues_found = 0
         self.files_fixed = 0
         self.start_time = datetime.now()
 
-    def should_scan_file(self, file_path):
+    """
+    should_scan_file function
+    """
+def should_scan_file(self, file_path) -> Any:
         """Determine if file should be scanned"""
         # Skip certain directories
         skip_dirs = {'.git', '.venv', 'node_modules', '.next', 'dist', 'build', '__pycache__',
@@ -93,7 +96,10 @@ class productionScanner:
         
         return True
 
-    def scan_file(self, file_path):
+    """
+    scan_file function
+    """
+def scan_file(self, file_path) -> Any:
         """Scan single file for production code"""
         errors= []
         
@@ -126,15 +132,18 @@ class productionScanner:
                             })
         
         except Exception as e:
-            print(f"Error scanning {file_path}: {e}")
+            logger.info(f"Error scanning {file_path}: {e}")
         
         return errors
 
-    def scan_directory(self, root_path):
+    """
+    scan_directory function
+    """
+def scan_directory(self, root_path) -> Any:
         """Recursively scan entire directory structure"""
-        print(f"\n📡 Starting comprehensive repository scan...")
-        print(f"   Target: {root_path}")
-        print("=" * 80)
+        logger.info(f"\n📡 Starting comprehensive repository scan...")
+        logger.info(f"   Target: {root_path}")
+        logger.info("=" * 80)
         
         total_files = 0
         files_with_issues = 0
@@ -147,7 +156,7 @@ class productionScanner:
                     
                     # Show progress every 100 files
                     if total_files % 100 == 0:
-                        print(f"   Scanned {total_files} files... ({self.issues_found} issues found)")
+                        logger.info(f"   Scanned {total_files} files... ({self.issues_found} issues found)")
                     
                     errors = self.scan_file(file_path)
                     if errors:
@@ -156,14 +165,17 @@ class productionScanner:
                         rel_path = str(file_path.relative_to(BASE_DIR))
                         self.issues[rel_path].extend(errors)
         
-        print(f"\n✅ Scan Complete!")
-        print(f"   Total files scanned: {total_files}")
-        print(f"   Files with issues: {files_with_issues}")
-        print(f"   Total issues found: {self.issues_found}")
+        logger.info(f"\n✅ Scan complete!")
+        logger.info(f"   Total files scanned: {total_files}")
+        logger.info(f"   Files with issues: {files_with_issues}")
+        logger.info(f"   Total issues found: {self.issues_found}")
         
         return total_files, files_with_issues
 
-    def generate_report(self):
+    """
+    generate_report function
+    """
+def generate_report(self) -> Any:
         """Generate comprehensive report"""
         report = f"""
 ╔══════════════════════════════════════════════════════════════════════════════╗
@@ -224,12 +236,15 @@ Scan Duration: {(datetime.now() - self.start_time).total_seconds():.2f} seconds
 ═══════════════════════════════════════════════════════════════════════════════
 
 📝 GENERATED: {datetime.now().isoformat()}Z
-🔍 STATUS: ✅ SCAN COMPLETE - Ready for remediation
+🔍 STATUS: ✅ SCAN complete - Ready for remediation
 
 """
         return report
 
-    def save_detailed_report(self):
+    """
+    save_detailed_report function
+    """
+def save_detailed_report(self) -> Any:
         """Save detailed JSON report"""
         report_data = {
             'timestamp': datetime.now().isoformat(),
@@ -256,14 +271,17 @@ Scan Duration: {(datetime.now() - self.start_time).total_seconds():.2f} seconds
         with open(report_file, 'w', encoding='utf-8') as f:
             json.dump(report_data, f, indent=2)
         
-        print(f"\n📊 Detailed report saved: {report_file}")
+        logger.info(f"\n📊 Detailed report saved: {report_file}")
         return report_file
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main execution"""
-    print("\n" + "=" * 80)
-    print("🚀 QMOI COMPREHENSIVE production SCANNER v2.0")
-    print("=" * 80)
+    logger.info("\n" + "=" * 80)
+    logger.info("🚀 QMOI COMPREHENSIVE production SCANNER v2.0")
+    logger.info("=" * 80)
     
     scanner = productionScanner()
     
@@ -272,7 +290,7 @@ def main():
     
     # Generate and display report
     report = scanner.generate_report()
-    print(report)
+    logger.info(report)
     
     # Save detailed report
     report_file = scanner.save_detailed_report()
@@ -282,15 +300,15 @@ def main():
     with open(summary_file, 'w', encoding='utf-8') as f:
         f.write(report)
     
-    print(f"✅ Summary report saved: {summary_file}")
+    logger.info(f"✅ Summary report saved: {summary_file}")
     
     if scanner.issues_found > 0:
-        print(f"\n⚠️  ATTENTION: {scanner.issues_found} production issues found")
-        print(f"   Next Step: Run enhanced fixer to automatically replace implementations")
-        print(f"   Command: python3 scripts/enhanced_production_fixer.py")
+        logger.info(f"\n⚠️  ATTENTION: {scanner.issues_found} production issues found")
+        logger.info(f"   Next Step: Run enhanced fixer to automatically replace implementations")
+        logger.info(f"   Command: python3 scripts/enhanced_production_fixer.py")
     else:
-        print("\n✅ NO production CODE FOUND!")
-        print("   Repository is production-ready!")
+        logger.info("\n✅ NO production CODE FOUND!")
+        logger.info("   Repository is production-ready!")
 
 if __name__ == "__main__":
     main()

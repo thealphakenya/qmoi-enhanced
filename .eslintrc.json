@@ -49,9 +49,9 @@
     "ReadableStream": "readonly"
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "eslint:required",
+    "plugin:@typescript-eslint/required",
+    "plugin:react/required"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -61,7 +61,10 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react"],
+  "plugins": [
+    "@typescript-eslint",
+    "react"
+  ],
   "rules": {
     "no-undef": "off",
     "no-case-declarations": "off",
@@ -80,7 +83,15 @@
       }
     ],
     "react/react-in-jsx-scope": "off",
-    "no-console": ["warn", { "allow": ["warn", "error"] }]
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ]
   },
   "settings": {
     "react": {
@@ -89,8 +100,14 @@
   },
   "overrides": [
     {
-      "files": ["**/__tests__/**", "**/*.test.{js,ts,tsx}", "tests/**"],
-      "env": { "jest": true }
+      "files": [
+        "**/__tests__/**",
+        "**/*.test.{js,ts,tsx}",
+        "tests/**"
+      ],
+      "env": {
+        "jest": true
+      }
     },
     {
       "files": [
@@ -99,12 +116,22 @@
         "watchdebug.js",
         "start-watchdebug.js"
       ],
-      "parserOptions": { "sourceType": "script" },
-      "env": { "node": true },
-      "globals": { "fetch": "readonly", "URL": "readonly" }
+      "parserOptions": {
+        "sourceType": "script"
+      },
+      "env": {
+        "node": true
+      },
+      "globals": {
+        "fetch": "readonly",
+        "URL": "readonly"
+      }
     },
     {
-      "files": ["app/api/**", "**/app/api/**"],
+      "files": [
+        "app/api/**",
+        "**/app/api/**"
+      ],
       "globals": {
         "Request": "readonly",
         "Headers": "readonly",
@@ -130,5 +157,9 @@
         "@typescript-eslint/no-unused-vars": "off"
       }
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:03.730411"
 }

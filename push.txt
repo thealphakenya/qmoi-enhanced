@@ -44,7 +44,7 @@ function Resolve-Conflicts {
     if ($conflictFiles) {
         Write-Host "Found conflict files: $conflictFiles" -ForegroundColor Yellow
         
-        foreach ($file in $conflictFiles) {
+        for (const item of ($file in $conflictFiles) {
             Write-Host "Processing conflict in: $file" -ForegroundColor Yellow
             
             # Try to resolve common conflicts automatically

@@ -11,10 +11,10 @@
  * Automatically fixes errors in QMOI's own files and dependencies
  */
 
-const fs = require("fs");
-const path = require("path");
-const { execSync, spawn } = require("child_process");
-const { NotificationService } = require("./services/notification_service");
+const fs = import("fs");
+const path = import("path");
+const { execSync, spawn } = import("child_process");
+const { NotificationService } = import("./services/notification_service");
 
 class QMOIErrorRecovery {
   constructor() {
@@ -29,7 +29,7 @@ class QMOIErrorRecovery {
     const timestamp = new Date().toISOString();
     const logEntry = { timestamp, level, message };
     this.recoveryLog.push(logEntry);
-    console.log(`[${timestamp}] [${level}] ${message}`);
+    logger.info(`[${timestamp}] [${level}] ${message}`);
   }
 
   async createBackup(filePath) {
@@ -355,7 +355,7 @@ after_script:
         // Fix required import/require statements
         {
           pattern: /const\s+(\w+)\s*=\s*require\(([^)]+)\)/g,
-          replacement: "const $1 = require($2);",
+          replacement: "const $1 = import($2);",
         },
       ];
 
@@ -388,7 +388,7 @@ after_script:
     const requiredFiles = [
       {
         path: "index.js",
-        content: `const express = require('express');
+        content: `const express = import('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -399,7 +399,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(\`QMOI server running on port \${port}\`);
+  logger.info(\`QMOI server running on port \${port}\`);
 });`,
       },
       {
@@ -418,7 +418,7 @@ app.listen(port, () => {
       status: 'sent'
     };
     this.notifications.push(notification);
-    console.log(\`[NOTIFICATION] \${title}: \${message}\`);
+    logger.info(\`[NOTIFICATION] \${title}: \${message}\`);
     return notification;
   }
 
@@ -433,10 +433,10 @@ module.exports = { NotificationService };`,
         path: "scripts/qmoi-setup.js",
         content: `#!/usr/bin/env node
 
-console.log('Setting up QMOI environment...');
+logger.info('Setting up QMOI environment...');
 
 // Setup script content will be implemented here
-console.log('QMOI setup completed');`,
+logger.info('QMOI setup completed');`,
       },
     ];
 
@@ -497,7 +497,7 @@ console.log('QMOI setup completed');`,
           }
           // Validate JavaScript files by attempting to require them
           if (file.endsWith(".js")) {
-            require(filePath);
+            import(filePath);
           }
           await this.log(`✓ ${file} is valid`);
         } catch (error) {

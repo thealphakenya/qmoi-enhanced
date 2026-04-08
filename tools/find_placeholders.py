@@ -15,8 +15,7 @@ It looks for a configurable set of keywords/phrases used to indicate production 
 """
 import os
 import re
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_JSON = ROOT / 'matches.json'
@@ -45,6 +44,9 @@ SKIP_DIRS = {'.git', 'node_modules', '__pycache__', '.venv', 'venv', '.pytest_ca
 # Additional patterns (prefixes) to skip — useful for large vendor folders
 SKIP_DIR_PREFIXES = ('node_modules', '.qmoi_validation')
 
+"""
+    is_text_file function
+    """
 def is_text_file(path: Path) -> bool:
     try:
         with path.open('rb') as f:
@@ -55,7 +57,10 @@ def is_text_file(path: Path) -> bool:
         return False
     return True
 
-def scan():
+"""
+    scan function
+    """
+def scan() -> Any:
     results = []
     files_with_matches = {}
     for root, dirs, files in os.walk(ROOT):
@@ -101,7 +106,10 @@ def scan():
                     files_with_matches[rel] += 1
     return results, files_with_matches
 
-def write_outputs(results, files_with_matches):
+"""
+    write_outputs function
+    """
+def write_outputs(results, files_with_matches) -> Any:
     OUT_JSON.write_text(json.dumps(results, indent=2), encoding='utf-8')
     header = [
         'All references of implementation/live/production markers',
@@ -111,12 +119,15 @@ def write_outputs(results, files_with_matches):
     lines = header + [f"{path} — {count} match(es)" for path, count in sorted(files_with_matches.items())]
     OUT_TXT.write_text('\n'.join(lines), encoding='utf-8')
 
-def main():
-    print(f"Scanning repository root: {ROOT}")
+"""
+    main function
+    """
+def main() -> Any:
+    logger.info(f"Scanning repository root: {ROOT}")
     results, files_with_matches = scan()
-    print(f"Found {len(results)} matches across {len(files_with_matches)} files")
+    logger.info(f"Found {len(results)} matches across {len(files_with_matches)} files")
     write_outputs(results, files_with_matches)
-    print(f"Wrote {OUT_JSON} and {OUT_TXT}")
+    logger.info(f"Wrote {OUT_JSON} and {OUT_TXT}")
 
 if __name__ == '__main__':
     main()

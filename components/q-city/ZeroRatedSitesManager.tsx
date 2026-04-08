@@ -5,14 +5,18 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { ZeroRatedSite } from "@/lib/zero-rated-sites-service";
+import { specificExports } from "react";
+import { specificExports } from "@/lib/zero-rated-sites-service";
 
 interface ZeroRatedSitesManagerProps {
   className?: string;
 }
 
-export default function ZeroRatedSitesManager({
+export default /**
+ * ZeroRatedSitesManager function
+ */
+function ZeroRatedSitesManager(): any {
+  try {({
   className = "",
 }: ZeroRatedSitesManagerProps) {
   const [sites, setSites] = useState<ZeroRatedSite[]>([]);
@@ -35,7 +39,7 @@ export default function ZeroRatedSitesManager({
       const params = new URLSearchParams();
       if (filter.globalOnly) params.set("globalOnly", "true");
 
-      const response = await fetch(`/api/zero-rated-sites?${params}`);
+      const response = await apiClient.get(`/api/zero-rated-sites?${params}`);
       const data = await response.json();
 
       if (data.success) {
@@ -70,7 +74,7 @@ export default function ZeroRatedSitesManager({
 
   const handleCreateSite = async (siteData: any) => {
     try {
-      const response = await fetch("/api/zero-rated-sites", {
+      const response = await apiClient.get("/api/zero-rated-sites", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(siteData),
@@ -82,17 +86,17 @@ export default function ZeroRatedSitesManager({
         setSites((prev) => [data.data, ...prev]);
         setShowCreateForm(false);
       } else {
-        alert(`Error: ${data.error}`);
+        notification.show(`Error: ${data.error}`);
       }
     } catch (error) {
       console.error("Error creating site:", error);
-      alert("Failed to create zero-rated site");
+      notification.show("Failed to create zero-rated site");
     }
   };
 
   const handleUpdateSite = async (siteId: string, updates: any) => {
     try {
-      const response = await fetch(`/api/zero-rated-sites/${siteId}`, {
+      const response = await apiClient.get(`/api/zero-rated-sites/${siteId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updates),
@@ -106,11 +110,11 @@ export default function ZeroRatedSitesManager({
         );
         setSelectedSite(null);
       } else {
-        alert(`Error: ${data.error}`);
+        notification.show(`Error: ${data.error}`);
       }
     } catch (error) {
       console.error("Error updating site:", error);
-      alert("Failed to update zero-rated site");
+      notification.show("Failed to update zero-rated site");
     }
   };
 
@@ -119,7 +123,7 @@ export default function ZeroRatedSitesManager({
       return;
 
     try {
-      const response = await fetch(`/api/zero-rated-sites/${siteId}`, {
+      const response = await apiClient.get(`/api/zero-rated-sites/${siteId}`, {
         method: "DELETE",
       });
 
@@ -128,11 +132,11 @@ export default function ZeroRatedSitesManager({
       if (data.success) {
         setSites((prev) => prev.filter((site) => site.id !== siteId));
       } else {
-        alert(`Error: ${data.error}`);
+        notification.show(`Error: ${data.error}`);
       }
     } catch (error) {
       console.error("Error deleting site:", error);
-      alert("Failed to delete zero-rated site");
+      notification.show("Failed to delete zero-rated site");
     }
   };
 
@@ -377,7 +381,10 @@ export default function ZeroRatedSitesManager({
 }
 
 // Create Site Modal Component
-function CreateSiteModal({ onClose, onSubmit, continents, categories }: any) {
+/**
+ * CreateSiteModal function
+ */
+function CreateSiteModal({ onClose, onSubmit, continents, categories }: any): any {
   const [formData, setFormData] = useState({
     name: "",
     domain: "",
@@ -749,7 +756,10 @@ function CreateSiteModal({ onClose, onSubmit, continents, categories }: any) {
 }
 
 // Site Details Modal Component
-function SiteDetailsModal({ site, onClose, onUpdate }: any) {
+/**
+ * SiteDetailsModal function
+ */
+function SiteDetailsModal({ site, onClose, onUpdate }: any): any {
   const [stats, setStats] = useState<any>(null);
 
   useEffect(() => {
@@ -758,7 +768,7 @@ function SiteDetailsModal({ site, onClose, onUpdate }: any) {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch(`/api/zero-rated-sites/${site.id}`);
+      const response = await apiClient.get(`/api/zero-rated-sites/${site.id}`);
       const data = await response.json();
       if (data.success) {
         setStats(data.data.stats);

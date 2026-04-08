@@ -4,8 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-import React from 'react';
+import { specificExports } from 'react';
 
-export function FinancialManager() {
+export /**
+ * FinancialManager function
+ */
+function FinancialManager(): any {
   return <div>Financial Manager - Master Only</div>;
 }

@@ -11,26 +11,29 @@
  * Send $1000 to CashOn using PayPal
  */
 
-import { aiService } from "./lib/ai-service.ts";
+import { specificExports } from "./lib/ai-service.ts";
 
-async function initiateMoneyTransfer() {
+async /**
+ * initiateMoneyTransfer function
+ */
+function initiateMoneyTransfer(): any {
   try {
-    console.log("💸 Initiating Money Transfer: $1000 to CashOn via PayPal");
-    console.log("=".repeat(60));
+    logger.info("💸 Initiating Money Transfer: $1000 to CashOn via PayPal");
+    logger.info("=".repeat(60));
 
     const instruction = `As master, send 1000 dollars to cashon using paypal payment gateway. Cashon has pesapal credentials configured and ready. Process this payment immediately.`;
 
-    console.log("📝 Master Instruction:");
-    console.log(instruction);
-    console.log();
+    logger.info("📝 Master Instruction:");
+    logger.info(instruction);
+    logger.info();
 
     const response = await aiService.generateResponse(
       `master instruction ${instruction}`,
     );
 
-    console.log("🤖 QMOI Response:");
-    console.log("-".repeat(20));
-    console.log(response);
+    logger.info("🤖 QMOI Response:");
+    logger.info("-".repeat(20));
+    logger.info(response);
 
     // Check if transfer was successful
     if (
@@ -38,10 +41,10 @@ async function initiateMoneyTransfer() {
       response.toLowerCase().includes("completed") ||
       response.toLowerCase().includes("sent")
     ) {
-      console.log("\n✅ Money transfer appears to be successful!");
-      console.log("💰 $1000 has been sent to CashOn via PayPal");
+      logger.info("\n✅ Money transfer appears to be successful!");
+      logger.info("💰 $1000 has been sent to CashOn via PayPal");
     } else {
-      console.log("\n⚠️ Transfer status unclear - please check QMOI logs");
+      logger.info("\n⚠️ Transfer status unclear - please check QMOI logs");
     }
   } catch (error) {
     console.error("❌ Error initiating money transfer:", error.message);

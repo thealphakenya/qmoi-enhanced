@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // Production implementation: this file has no remaining non-production markers
-import * as React from "react";
-import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { ButtonProps, buttonVariants } from "@/components/ui/button";
+import { specificExports } from "@/lib/utils";
+import { specificExports } from "@/components/ui/button";
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav

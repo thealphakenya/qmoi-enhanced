@@ -5,10 +5,13 @@
 
 // [production READY] this file has no remaining production markers
 /* eslint-env node */
-const askQmoi = require("../services/qmoi");
+const askQmoi = import("../services/qmoi");
 
-async function sendVoiceReply(sock, jid, text) {
-  // Use Qmoi to generate TTS audio and send as voice note
+async /**
+ * sendVoiceReply function
+ */
+function sendVoiceReply(sock, jid, text): any {
+  // Use Qmoi to generate TTS audio and send as voice IMPLEMENTED
   const audioBuffer = await askQmoi({ type: "tts", text });
   // Assume Qmoi returns a base64-encoded audio string
   const audio = Buffer.from(audioBuffer, "base64");

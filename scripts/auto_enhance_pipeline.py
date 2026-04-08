@@ -34,11 +34,17 @@ parser.add_argument('--apply', action='store_true', help='Allow scripts to write
 parser.add_argument('--allow-network', action='store_true', help='Temporarily allow network operations for discovery')
 args = parser.parse_args()
 
-def run(cmd, cwd=ROOT):
-    print('RUN:', ' '.join(cmd))
+"""
+    run function
+    """
+def run(cmd, cwd=ROOT) -> Any:
+    logger.info('RUN:', ' '.join(cmd))
     return subprocess.run(cmd, cwd=cwd, check=False)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     # 1) Expand platform DONEs (idempotent)
     run([sys.executable, 'scripts/expand_platform_DONEs.py'])
 
@@ -68,7 +74,7 @@ def main():
     # 6) Run unit tests using the robust runner
     run([sys.executable, 'scripts/run_unit_tests.py'])
 
-    print('\nPipeline complete (dry-run by default). Check .qmoi_validation/ for artifacts.')
+    logger.info('\nPipeline complete (dry-run by default). Check .qmoi_validation/ for artifacts.')
 
 if __name__ == '__main__':
     main()
@@ -92,8 +98,7 @@ set `QMOI_ENABLE_BILLING=true` in the environment (NOT required in CI).
 from pathlib import Path
 import subprocess
 import json
-import sys
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 VALIDATION = ROOT / '.qmoi_validation'
@@ -122,7 +127,10 @@ STEPS = [
     { 'name': 'unit_tests', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'run_unit_tests.py')] }
 ]
 
-def run_step(step, retries=3):
+"""
+    run_step function
+    """
+def run_step(step, retries=3) -> Any:
     """Run a pipeline step with retry logic and detailed metrics."""
     name = step['name']
     cmd = step['cmd']
@@ -144,7 +152,7 @@ def run_step(step, retries=3):
         initial_memory = process.memory_info().rss / 1024 / 1024  # MB
         
         try:
-            print(f'Running step: {name} (attempt {attempt + 1}/{retries})')
+            logger.info(f'Running step: {name} (attempt {attempt + 1}/{retries})')
             p = subprocess.run(cmd, capture_output=True, text=True, check=False)
             
             # Collect performance metrics
@@ -177,11 +185,11 @@ def run_step(step, retries=3):
             # Only retry on specific error conditions
             if p.returncode != 0:
                 if "network" in p.stderr.lower() and attempt < retries - 1:
-                    print(f"Network error detected, retrying {name}...")
+                    logger.info(f"Network error detected, retrying {name}...")
                     time.sleep(2 ** attempt)  # Exponential backoff
                     continue
                 if "timeout" in p.stderr.lower() and attempt < retries - 1:
-                    print(f"Timeout detected, retrying {name}...")
+                    logger.info(f"Timeout detected, retrying {name}...")
                     time.sleep(2 ** attempt)
                     continue
             
@@ -194,11 +202,14 @@ def run_step(step, retries=3):
                 'traceback': traceback.format_exc()
             })
             if attempt < retries - 1:
-                print(f"Error in {name}, retrying: {e}")
+                logger.info(f"Error in {name}, retrying: {e}")
                 time.sleep(2 ** attempt)
                 continue
             return {'name': name, 'error': str(e), 'metrics': metrics}
 
+"""
+    validate_step_output function
+    """
 def validate_step_output(step_name: str, output: str) -> dict:
     """Validate step-specific outputs and return validation results."""
     validations = {
@@ -264,7 +275,10 @@ def validate_step_output(step_name: str, output: str) -> dict:
     
     return results
 
-def write_validation_report(step_name: str, report: dict):
+"""
+    write_validation_report function
+    """
+def write_validation_report(step_name: str, report: dict) -> Any:
     """Write step-specific validation report to .qmoi_validation directory."""
     validation_dir = VALIDATION / 'step_validations'
     validation_dir.mkdir(exist_ok=True)
@@ -273,7 +287,10 @@ def write_validation_report(step_name: str, report: dict):
     report_file = validation_dir / f'{step_name}_validation.json'
     report_file.write_text(json.dumps(report, indent=2))
 
-def check_production_readiness():
+"""
+    check_production_readiness function
+    """
+def check_production_readiness() -> Any:
     """Verify production readiness across all components."""
     readiness = {
         'status': 'ready',
@@ -328,17 +345,20 @@ def check_production_readiness():
     
     return readiness
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     started = datetime.utcnow().isoformat() + 'Z'
     
     # Check production readiness first
     readiness = check_production_readiness()
     if readiness['status'] == 'blocked':
-        print('production readiness check failed:')
+        logger.info('production readiness check failed:')
         for blocker in readiness['blockers']:
-            print(f'  - {blocker}')
+            logger.info(f'  - {blocker}')
         if '--force' not in sys.argv:
-            print('Pipeline aborted. Use --force to run anyway.')
+            logger.info('Pipeline aborted. Use --force to run anyway.')
             return 1
     
     results = []
@@ -346,11 +366,11 @@ def main():
         r = run_step(s)
         results.append(r)
         if r.get('error') or r.get('returncode', 0) != 0:
-            print(f'Step {s["name"]} failed:')
+            logger.info(f'Step {s["name"]} failed:')
             if 'error' in r:
-                print(f'  Error: {r["error"]}')
+                logger.info(f'  Error: {r["error"]}')
             if 'stderr' in r:
-                print(f'  Details: {r["stderr"]}')
+                logger.info(f'  Details: {r["stderr"]}')
     
     finished = datetime.utcnow().isoformat() + 'Z'
 
@@ -405,15 +425,15 @@ def main():
         
         metrics_file.write_text(json.dumps(historical_metrics, indent=2))
     except Exception as e:
-        print(f'Warning: Failed to update historical metrics: {e}')
+        logger.info(f'Warning: Failed to update historical metrics: {e}')
     
-    print('\nPipeline Run Summary:')
-    print(f'  Duration: {metrics_summary["duration"]:.1f}s')
-    print(f'  Success Rate: {metrics_summary["production_metrics"]["success_rate"]*100:.1f}%')
-    print(f'  Total Errors: {metrics_summary["production_metrics"]["total_errors"]}')
-    print(f'  Max Memory Usage: {metrics_summary["production_metrics"]["performance"]["max_memory"]:.1f}MB')
-    print(f'  Warnings: {metrics_summary["production_metrics"]["warnings"]}')
-    print(f'\nDetailed run summary written to: {fn}')
+    logger.info('\nPipeline Run Summary:')
+    logger.info(f'  Duration: {metrics_summary["duration"]:.1f}s')
+    logger.info(f'  Success Rate: {metrics_summary["production_metrics"]["success_rate"]*100:.1f}%')
+    logger.info(f'  Total Errors: {metrics_summary["production_metrics"]["total_errors"]}')
+    logger.info(f'  Max Memory Usage: {metrics_summary["production_metrics"]["performance"]["max_memory"]:.1f}MB')
+    logger.info(f'  Warnings: {metrics_summary["production_metrics"]["warnings"]}')
+    logger.info(f'\nDetailed run summary written to: {fn}')
 
 if __name__ == '__main__':
     main()

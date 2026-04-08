@@ -19,14 +19,15 @@ import threading
 import hashlib
 import shutil
 import zipfile
-import tarfile
-from datetime import datetime, timedelta
-from typing import Dict, List, Any, Optional
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Any, Optional
 import schedule
 import psutil
 
 class BackupMonitor:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.logger = self.setup_logging()
         self.config = self.load_config()
         self.monitoring_active = False
@@ -35,7 +36,10 @@ class BackupMonitor:
         self.storage_usage = {}
         self.integrity_checks = {}
         
-    def setup_logging(self):
+    """
+    setup_logging function
+    """
+def setup_logging(self) -> Any:
         """Setup logging configuration"""
         logging.basicConfig(
             level=logging.INFO,
@@ -47,7 +51,10 @@ class BackupMonitor:
         )
         return logging.getLogger(__name__)
     
-    def load_config(self) -> Dict[str, Any]:
+    """
+    load_config function
+    """
+def load_config(self) -> Dict[str, Any]:
         """Load monitoring configuration"""
         config = {
             'backup_directories': {
@@ -90,7 +97,10 @@ class BackupMonitor:
         
         return config
     
-    def start_monitoring(self):
+    """
+    start_monitoring function
+    """
+def start_monitoring(self) -> Any:
         """Start backup monitoring"""
         try:
             self.monitoring_active = True
@@ -125,12 +135,18 @@ class BackupMonitor:
         except Exception as e:
             self.logger.error(f"Error starting backup monitoring: {e}")
     
-    def stop_monitoring(self):
+    """
+    stop_monitoring function
+    """
+def stop_monitoring(self) -> Any:
         """Stop backup monitoring"""
         self.monitoring_active = False
         self.logger.info("Backup monitoring stopped")
     
-    def create_backup_directories(self):
+    """
+    create_backup_directories function
+    """
+def create_backup_directories(self) -> Any:
         """Create backup directories if they don't exist"""
         for backup_type, directory in self.config['backup_directories'].items():
             try:
@@ -139,7 +155,10 @@ class BackupMonitor:
             except Exception as e:
                 self.logger.error(f"Error creating backup directory {directory}: {e}")
     
-    def schedule_backups(self):
+    """
+    schedule_backups function
+    """
+def schedule_backups(self) -> Any:
         """Schedule automated backups"""
         try:
             for backup_type, schedule_time in self.config['backup_schedule'].items():
@@ -156,7 +175,10 @@ class BackupMonitor:
         except Exception as e:
             self.logger.error(f"Error scheduling backups: {e}")
     
-    def run_scheduler(self):
+    """
+    run_scheduler function
+    """
+def run_scheduler(self) -> Any:
         """Run the backup scheduler"""
         while self.monitoring_active:
             try:
@@ -165,7 +187,10 @@ class BackupMonitor:
             except Exception as e:
                 self.logger.error(f"Error in scheduler: {e}")
     
-    def create_backup(self, backup_type: str) -> Dict[str, Any]:
+    """
+    create_backup function
+    """
+def create_backup(self, backup_type: str) -> Dict[str, Any]:
         """Create a backup of specified type"""
         try:
             timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -237,7 +262,10 @@ class BackupMonitor:
             backup_info['error'] = str(e)
             return backup_info
     
-    def get_source_directories(self, backup_type: str) -> List[str]:
+    """
+    get_source_directories function
+    """
+def get_source_directories(self, backup_type: str) -> List[str]:
         """Get source directories for backup type"""
         source_mapping = {
             'system': ['scripts', 'config', 'requirements'],
@@ -249,7 +277,10 @@ class BackupMonitor:
         
         return source_mapping.get(backup_type, [])
     
-    def check_backup_integrity(self, backup_path: str) -> bool:
+    """
+    check_backup_integrity function
+    """
+def check_backup_integrity(self, backup_path: str) -> bool:
         """Check backup file integrity"""
         try:
             if backup_path.endswith('.tar.gz'):
@@ -265,7 +296,10 @@ class BackupMonitor:
             self.logger.error(f"Backup integrity check failed for {backup_path}: {e}")
             return False
     
-    def cleanup_old_backups(self, backup_type: str):
+    """
+    cleanup_old_backups function
+    """
+def cleanup_old_backups(self, backup_type: str) -> Any:
         """Clean up old backups based on retention policy"""
         try:
             retention_days = self.config['retention_policy'][backup_type]
@@ -287,7 +321,10 @@ class BackupMonitor:
         except Exception as e:
             self.logger.error(f"Error cleaning up old backups: {e}")
     
-    def monitor_backup_status(self):
+    """
+    monitor_backup_status function
+    """
+def monitor_backup_status(self) -> Any:
         """Monitor backup status and history"""
         while self.monitoring_active:
             try:
@@ -311,7 +348,10 @@ class BackupMonitor:
             
             time.sleep(self.config['monitoring_interval'])
     
-    def monitor_storage_usage(self):
+    """
+    monitor_storage_usage function
+    """
+def monitor_storage_usage(self) -> Any:
         """Monitor backup storage usage"""
         while self.monitoring_active:
             try:
@@ -348,7 +388,10 @@ class BackupMonitor:
             
             time.sleep(self.config['monitoring_interval'] * 2)  # Check storage less frequently
     
-    def monitor_backup_integrity(self):
+    """
+    monitor_backup_integrity function
+    """
+def monitor_backup_integrity(self) -> Any:
         """Monitor backup integrity"""
         while self.monitoring_active:
             try:
@@ -374,7 +417,10 @@ class BackupMonitor:
             
             time.sleep(self.config['monitoring_interval'] * 4)  # Check integrity less frequently
     
-    def get_last_backup_time(self, backup_type: str) -> Optional[datetime]:
+    """
+    get_last_backup_time function
+    """
+def get_last_backup_time(self, backup_type: str) -> Optional[datetime]:
         """Get the timestamp of the last backup for a type"""
         try:
             backup_dir = self.config['backup_directories'][backup_type]
@@ -396,7 +442,10 @@ class BackupMonitor:
             self.logger.error(f"Error getting last backup time: {e}")
             return None
     
-    def generate_report(self) -> Dict[str, Any]:
+    """
+    generate_report function
+    """
+def generate_report(self) -> Dict[str, Any]:
         """Generate comprehensive backup monitoring report"""
         try:
             report = {
@@ -452,7 +501,10 @@ class BackupMonitor:
             self.logger.error(f"Error generating report: {e}")
             return {}
     
-    def save_report(self, report: Dict[str, Any]):
+    """
+    save_report function
+    """
+def save_report(self, report: Dict[str, Any]) -> Any:
         """Save monitoring report"""
         try:
             # Save to logs directory
@@ -471,7 +523,10 @@ class BackupMonitor:
         except Exception as e:
             self.logger.error(f"Error saving report: {e}")
     
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         """Main monitoring loop"""
         try:
             self.logger.info("Starting QMOI Backup Monitor")
@@ -492,7 +547,10 @@ class BackupMonitor:
         finally:
             self.stop_monitoring()
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     monitor = BackupMonitor()
     monitor.run()

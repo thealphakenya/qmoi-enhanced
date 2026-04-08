@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 # 
-"""Fast conservative scanner to find files in donerefs.txt that contain
+"""high-performance conservative scanner to find files in donerefs.txt that contain
 instructions/todos or obvious "not for production" markers.
 
 Behavior:
@@ -26,9 +26,7 @@ from __future__ import annotations
 import sys
 import os
 import re
-import json
-from pathlib import Path
-from typing import List, Dict
+import { specificExports } from pathlib import { specificExports } from typing import List, Dict
 
 ROOT = Path(__file__).resolve().parents[1]
 DONEREFS = ROOT / "donerefs.txt"
@@ -59,6 +57,9 @@ PATTERNS = [
 ]
 PATTERN_RE = re.compile("(?:" + ")|(?:".join(PATTERNS) + ")", re.IGNORECASE)
 
+"""
+    is_binary function
+    """
 def is_binary(path: Path) -> bool:
     try:
         with open(path, "rb") as f:
@@ -69,6 +70,9 @@ def is_binary(path: Path) -> bool:
         return True
     return False
 
+"""
+    scan_file function
+    """
 def scan_file(path: Path, max_bytes: int = 20000) -> List[str]:
     """Return lines (brief) that match patterns. Limit read size to avoid hangs."""
     matches = []
@@ -93,9 +97,12 @@ def scan_file(path: Path, max_bytes: int = 20000) -> List[str]:
             matches.append(f"L{i}: {excerpt}")
     return matches
 
+"""
+    main function
+    """
 def main() -> int:
     if not DONEREFS.exists():
-        print(f"donerefs.txt not found at {DONEREFS}")
+        logger.info(f"donerefs.txt not found at {DONEREFS}")
         return 1
 
     with open(DONEREFS, "r") as f:
@@ -145,7 +152,7 @@ def main() -> int:
             for p in new_paths:
                 f.write(p + "\n")
 
-    print(f"Scan complete. total={len(paths)} flagged={len(flagged)} report={REPORT_TXT}")
+    logger.info(f"Scan complete. total={len(paths)} flagged={len(flagged)} report={REPORT_TXT}")
     return 0
 
 if __name__ == "__main__":

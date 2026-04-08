@@ -16,13 +16,13 @@ export class OfflineCapableService {
   
   async initialize(): Promise<void> {
     // Initialize service
-    console.log("[Service] Initializing...");
-    console.log('Initializing Offline Capable');
+    logger.info("[Service] Initializing...");
+    logger.info('Initializing Offline Capable');
   }
   
   async execute(): Promise<any> {
     // Execute service operations
-    console.log("[Service] Executing...");
+    logger.info("[Service] Executing...");
     return { status: 'success', message: 'Offline Capable executed' };
   }
 }

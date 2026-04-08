@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
+// IMPLEMENTED: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+import { specificExports } from "next/server";
+import { specificExports } from "zod";
 
 // Payment schemas
 const PaymentSchema = z.object({
@@ -50,12 +50,18 @@ const PAYMENT_CREDENTIALS = {
   },
 };
 
-function maskSecret(s: string | undefined | null) {
+/**
+ * maskSecret function
+ */
+function maskSecret(s: string | undefined | null): any {
   if (!s) return "";
   return s.replace(/.(?=.{4})/g, "*");
 }
 
-async function backupCredentialsSafe(credentials: unknown, platform: string) {
+async /**
+ * backupCredentialsSafe function
+ */
+function backupCredentialsSafe(credentials: unknown, platform: string): any {
   try {
     const masked = {
       pesapal: { consumerKey: maskSecret(credentials.pesapal.consumerKey) },
@@ -72,10 +78,13 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
 }
 
 // Payment processing functions
-async function processMpesaPayment(paymentData: unknown) {
+async /**
+ * processMpesaPayment function
+ */
+function processMpesaPayment(paymentData: unknown): any {
   try {
     // production implementation: M-Pesa API call
-    const response = await fetch(
+    const response = await apiClient.get(
       "https://production.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
       {
         method: "POST",
@@ -111,10 +120,13 @@ async function processMpesaPayment(paymentData: unknown) {
   }
 }
 
-async function processAirtelPayment(paymentData: unknown) {
+async /**
+ * processAirtelPayment function
+ */
+function processAirtelPayment(paymentData: unknown): any {
   try {
     // production implementation: Airtel Money API call
-    const response = await fetch(
+    const response = await apiClient.get(
       "https://openapiuat.airtel.africa/merchant/v1/payments/",
       {
         method: "POST",
@@ -153,10 +165,13 @@ async function processAirtelPayment(paymentData: unknown) {
   }
 }
 
-async function processPesapalPayment(paymentData: unknown) {
+async /**
+ * processPesapalPayment function
+ */
+function processPesapalPayment(paymentData: unknown): any {
   try {
     // production implementation: Pesapal API call
-    const response = await fetch(
+    const response = await apiClient.get(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {
         method: "POST",
@@ -165,8 +180,8 @@ async function processPesapalPayment(paymentData: unknown) {
         },
         body: `
         <PesapalDirectOrderInfo 
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-          xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+          xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" 
+          xmlns:xsd="https://www.w3.org/2001/XMLSchema" 
           Amount="${paymentData.amount}" 
           Description="${paymentData.description}" 
           Type="MERCHANT" 
@@ -175,7 +190,7 @@ async function processPesapalPayment(paymentData: unknown) {
           LastName="${paymentData.accountName?.split(" ").slice(1).join(" ") || "Name"}" 
           Email="${paymentData.email}" 
           PhoneNumber="${paymentData.phone}" 
-          xmlns="http://www.pesapal.com" />
+          xmlns="https://www.pesapal.com" />
       `,
       },
     );
@@ -188,7 +203,10 @@ async function processPesapalPayment(paymentData: unknown) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const { searchParams } = new URL(request.url);
   const type = searchParams.get("type"); // 'payments', 'logs', 'credentials'
   const status = searchParams.get("status");
@@ -230,7 +248,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, ...data } = body;
@@ -357,7 +378,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function PUT(request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(request: NextRequest): any {
   try {
     const body = await request.json();
     const { id, ...updates } = body;

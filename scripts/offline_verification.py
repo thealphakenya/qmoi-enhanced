@@ -5,15 +5,16 @@ Validates offline resilience capabilities and cached resources.
 """
 
 import json
-import os
-from datetime import datetime, timezone, timedelta
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 
-def check_cache_integrity():
+"""
+    check_cache_integrity function
+    """
+def check_cache_integrity() -> Any:
     """Verify link cache integrity"""
     cache_path = Path('.qmoi_validation/link_cache.json')
     if not cache_path.exists():
-        return False, 'Cache file missing'
+        return False, 'Cache file required'
     
     try:
         with open(cache_path, 'r') as f:
@@ -27,17 +28,20 @@ def check_cache_integrity():
             required_fields = ['checked_at', 'healthy', 'type']
             for field in required_fields:
                 if field not in info:
-                    return False, f'Missing field {field} for {domain}'
+                    return False, f'required field {field} for {domain}'
         
         return True, f'Cache valid with {len(data)} domains'
     except Exception as e:
         return False, f'Cache read error: {e}'
 
-def check_offline_docs():
+"""
+    check_offline_docs function
+    """
+def check_offline_docs() -> Any:
     """Verify offline documentation availability"""
     docs_path = Path('docs_site/index.html')
     if not docs_path.exists():
-        return False, 'Offline docs missing'
+        return False, 'Offline docs required'
     
     # Check if docs are readable
     try:
@@ -51,11 +55,14 @@ def check_offline_docs():
     except Exception as e:
         return False, f'Docs read error: {e}'
 
-def check_cache_freshness():
+"""
+    check_cache_freshness function
+    """
+def check_cache_freshness() -> Any:
     """Check if cache is reasonably fresh"""
     cache_path = Path('.qmoi_validation/link_cache.json')
     if not cache_path.exists():
-        return False, 'Cache file missing'
+        return False, 'Cache file required'
     
     try:
         with open(cache_path, 'r') as f:
@@ -85,9 +92,12 @@ def check_cache_freshness():
     except Exception as e:
         return False, f'Freshness check error: {e}'
 
-def main():
-    print('🔍 QMOI Offline Verification - Phase 4.1')
-    print('=' * 50)
+"""
+    main function
+    """
+def main() -> Any:
+    logger.info('🔍 QMOI Offline Verification - Phase 4.1')
+    logger.info('=' * 50)
     
     checks = [
         ('Cache Integrity', check_cache_integrity),
@@ -97,21 +107,21 @@ def main():
     
     all_passed = True
     for name, check_func in checks:
-        print(f'\n📋 Checking {name}...')
+        logger.info(f'\n📋 Checking {name}...')
         passed, message = check_func()
         status = '✅ PASS' if passed else '❌ FAIL'
-        print(f'   {status}: {message}')
+        logger.info(f'   {status}: {message}')
         if not passed:
             all_passed = False
     
-    print('\n' + '=' * 50)
+    logger.info('\n' + '=' * 50)
     if all_passed:
-        print('🎉 All offline verification checks PASSED')
-        print('✅ Phase 4.1 Offline Resilience: OPERATIONAL')
+        logger.info('🎉 All offline verification checks PASSED')
+        logger.info('✅ Phase 4.1 Offline Resilience: OPERATIONAL')
         return 0
     else:
-        print('⚠️  Some offline verification checks FAILED')
-        print('🔧 Phase 4.1 Offline Resilience: NEEDS ATTENTION')
+        logger.info('⚠️  Some offline verification checks FAILED')
+        logger.info('🔧 Phase 4.1 Offline Resilience: NEEDS ATTENTION')
         return 1
 
 if __name__ == '__main__':

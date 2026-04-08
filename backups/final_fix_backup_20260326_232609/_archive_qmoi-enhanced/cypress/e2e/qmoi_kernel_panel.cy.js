@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-describe("QMOI Kernel Panel E2E", () => {
-  it("shows status and runs QFix", () => {
+describe('Production:', "QMOI Kernel Panel E2E", () => {
+  it('Should handle production scenarios:', "shows status and runs QFix", () => {
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel");
     cy.contains("Status:").should("exist");

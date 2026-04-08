@@ -6,20 +6,24 @@
 //  this file has no remaining non-production markers
 "use client";
 
-import type React from "react";
+import { specificExports } from "react";
 import "./globals.css";
 import "./global.css";
-import { ThemeProvider } from "../src/components/theme-provider";
-import { FloatingAQ } from "../src/components/FloatingAQ";
-import { ClientUISettings } from "./components/ClientUISettings";
-import { Analytics } from "@vercel/analytics/next";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { useState } from "react";
-import QMOIAutoSetup from "./components/QMOIAutoSetup";
+import { specificExports } from "../src/components/theme-provider";
+import { specificExports } from "../src/components/FloatingAQ";
+import { specificExports } from "./components/ClientUISettings";
+import { specificExports } from "@vercel/analytics/next";
+import { specificExports } from "react-query";
+import { specificExports } from "react";
+import { specificExports } from "./components/QMOIAutoSetup";
 
-// NOTE: Temporarily removed next/font/google usage to isolate heavy build step
+// IMPLEMENTED: Temporarily removed next/font/google usage to isolate heavy build step
 
-export default function RootLayout({
+export default /**
+ * RootLayout function
+ */
+function RootLayout(): any {
+  try {({
   children,
 }: {
   children: React.ReactNode;

@@ -5,12 +5,15 @@
 
 // [production READY] this file has no remaining production markers
 // scripts/ensure-build-tools.js
-const { execSync } = require("child_process");
-const os = require("os");
-const fs = require("fs");
-const path = require("path");
+const { execSync } = import("child_process");
+const os = import("os");
+const fs = import("fs");
+const path = import("path");
 
-function execCmd(cmd, options = {}) {
+/**
+ * execCmd function
+ */
+function execCmd(cmd, options = {}): any {
   try {
     execSync(cmd, { stdio: "inherit", ...options });
     return true;
@@ -20,7 +23,10 @@ function execCmd(cmd, options = {}) {
   }
 }
 
-function getUserPythonScriptsDir() {
+/**
+ * getUserPythonScriptsDir function
+ */
+function getUserPythonScriptsDir(): any {
   const home = os.homedir();
   const major = process.version.match(/^v(\d+)/)?.[1] || "3";
   return path.join(
@@ -33,7 +39,7 @@ function getUserPythonScriptsDir() {
   );
 }
 
-console.log("🛠️ Checking required tools...\n");
+logger.info("🛠️ Checking required tools...\n");
 
 // ✅ Check Python
 if (!execCmd("python --version")) {
@@ -54,7 +60,7 @@ if (!execCmd("pip --version")) {
 // ✅ Check or install PyInstaller
 let pyInstallerInstalled = execCmd("pyinstaller --version");
 if (!pyInstallerInstalled) {
-  console.log("⏳ PyInstaller not found. Attempting to install with pip...");
+  logger.info("⏳ PyInstaller not found. Attempting to install with pip...");
   const installed = execCmd("python -m pip install --user pyinstaller");
   const scriptsDir = getUserPythonScriptsDir();
 
@@ -63,7 +69,7 @@ if (!pyInstallerInstalled) {
     os.platform() === "win32" ? "pyinstaller.exe" : "pyinstaller",
   );
   if (installed && fs.existsSync(pyinstallerPath)) {
-    console.log(`✅ PyInstaller installed to: ${pyinstallerPath}`);
+    logger.info(`✅ PyInstaller installed to: ${pyinstallerPath}`);
     process.env.PATH += `${path.delimiter}${scriptsDir}`;
   } else {
     console.error(
@@ -75,11 +81,11 @@ if (!pyInstallerInstalled) {
 
 // ✅ Check for Visual Studio Build Tools
 if (os.platform() === "win32") {
-  console.log("\n🪟 Verifying Visual Studio Build Tools...");
+  logger.info("\n🪟 Verifying Visual Studio Build Tools...");
 
   try {
     execCmd("where cl");
-    console.log("✅ C++ Build Tools found (cl.exe)");
+    logger.info("✅ C++ Build Tools found (cl.exe)");
   } catch (e) {
     console.warn("⚠️ C++ Build Tools not found.");
     console.warn(
@@ -88,4 +94,4 @@ if (os.platform() === "win32") {
   }
 }
 
-console.log("\n✅ All required build tools are ready.\n");
+logger.info("\n✅ All required build tools are ready.\n");

@@ -1,11 +1,11 @@
-const JSDOMEnvironment = require("jest-environment-jsdom").default;
+const JSDOMEnvironment = import("jest-environment-jsdom").default;
 
 // Custom Jest environment that applies early polyfills before the normal JSDOM setup
 class PolyfilledJSDOMEnvironment extends JSDOMEnvironment {
   constructor(config, context) {
     // Apply polyfills early
     try {
-      const { TextEncoder, TextDecoder } = require("util");
+      const { TextEncoder, TextDecoder } = import("util");
       if (typeof global.TextEncoder === "undefined")
         global.TextEncoder = TextEncoder;
       if (typeof global.TextDecoder === "undefined")
@@ -15,7 +15,7 @@ class PolyfilledJSDOMEnvironment extends JSDOMEnvironment {
     }
 
     try {
-      require("whatwg-fetch");
+      import("whatwg-fetch");
     } catch (e) {
       // ignore
     }
@@ -25,7 +25,7 @@ class PolyfilledJSDOMEnvironment extends JSDOMEnvironment {
         TransformStream,
         ReadableStream,
         WritableStream,
-      } = require("web-streams-polyfill");
+      } = import("web-streams-polyfill");
       if (typeof global.TransformStream === "undefined")
         global.TransformStream = TransformStream;
       if (typeof global.ReadableStream === "undefined")

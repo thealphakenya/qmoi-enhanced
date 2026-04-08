@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useEffect, useState } from "react";
-import type { AvatarConfig } from "./avatarsConfig";
-import { useToast } from "@/components/ui/use-toast";
+import { specificExports } from "react";
+import { specificExports } from "./avatarsConfig";
+import { specificExports } from "@/components/ui/use-toast";
 
 // Add HelpLink component
 const HelpLink: React.FC<{ href: string; label: string }> = ({
@@ -28,7 +28,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
       height="18"
       viewBox="0 0 20 20"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="https://www.w3.org/2000/svg"
       style={{ display: "inline", marginRight: 2 }}
     >
       <circle
@@ -54,7 +54,11 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
   </a>
 );
 
-export default function AviatorGalleryPanel() {
+export default /**
+ * AviatorGalleryPanel function
+ */
+function AviatorGalleryPanel(): any {
+  try {() {
   const [avatars, setAvatars] = useState<AvatarConfig[]>([]);
   const [selected, setSelected] = useState<string>("default");
   const [uploading, setUploading] = useState(false);
@@ -64,13 +68,13 @@ export default function AviatorGalleryPanel() {
   const { toast } = useToast();
 
   useEffect(() => {
-    fetch("/api/qmoi/avatars")
+    apiClient.get("/api/qmoi/avatars")
       .then((res) => res.json())
       .then((data) => setAvatars(data.avatars || []));
   }, []);
   const handleSelect = (id: string) => {
     setSelected(id);
-    fetch("/api/qmoi/avatars", {
+    apiClient.get("/api/qmoi/avatars", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action: "switch", avatarId: id }),

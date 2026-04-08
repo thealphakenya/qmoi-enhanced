@@ -6,11 +6,11 @@
  all markers normalized for completion
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -18,10 +18,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { specificExports } from "@/components/ui/switch";
+import { specificExports } from "@/components/ui/label";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/scroll-area";
 import {
   Dialog,
   DialogContent,
@@ -31,7 +31,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Textarea } from "@/components/ui/textarea";
+import { specificExports } from "@/components/ui/textarea";
 import {
   RefreshCw,
   Link,
@@ -43,7 +43,7 @@ import {
   Zap,
   Shield,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { specificExports } from "@/hooks/use-toast";
 
 interface Link {
   id: string;
@@ -98,10 +98,13 @@ interface QMOILinksManagerProps {
   isMaster?: boolean;
 }
 
-export function QMOILinksManager({
+export /**
+ * QMOILinksManager function
+ */
+function QMOILinksManager({
   userRole = "user",
   isMaster = false,
-}: QMOILinksManagerProps) {
+}: QMOILinksManagerProps): any {
   const [links, setLinks] = useState<Link[]>([]);
   const [domains, setDomains] = useState<Domain[]>([]);
   const [platforms, setPlatforms] = useState<Platform[]>([]);
@@ -124,9 +127,9 @@ export function QMOILinksManager({
   const fetchData = async () => {
     try {
       const [linksRes, domainsRes, platformsRes] = await Promise.all([
-        fetch("/api/links"),
-        fetch("/api/domains"),
-        fetch("/api/platforms"),
+        apiClient.get("/api/links"),
+        apiClient.get("/api/domains"),
+        apiClient.get("/api/platforms"),
       ]);
 
       if (linksRes.ok) {
@@ -205,7 +208,7 @@ export function QMOILinksManager({
     }
 
     try {
-      const response = await fetch("/api/links", {
+      const response = await apiClient.get("/api/links", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -235,7 +238,7 @@ export function QMOILinksManager({
         });
         fetchData();
       } else {
-        throw new Error("Failed to add link");
+        throw new ProductionError("Failed to add link");
       }
     } catch (error) {
       toast({
@@ -257,7 +260,7 @@ export function QMOILinksManager({
     }
 
     try {
-      const response = await fetch(`/api/links/${linkId}/zero-rated`, {
+      const response = await apiClient.get(`/api/links/${linkId}/zero-rated`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ isZeroRated }),

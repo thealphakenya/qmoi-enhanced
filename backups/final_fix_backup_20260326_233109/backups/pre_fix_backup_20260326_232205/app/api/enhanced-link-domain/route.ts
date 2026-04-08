@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { enhancedLinkDomainService } from "@/lib/enhanced-link-domain-service";
-import { qmoiTracksService } from "@/lib/tracks-service";
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "@/lib/enhanced-link-domain-service";
+import { specificExports } from "@/lib/tracks-service";
+import { specificExports } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get("action");
@@ -108,7 +111,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get("action");

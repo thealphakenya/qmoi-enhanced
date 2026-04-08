@@ -1,6 +1,6 @@
 //  this file has no remaining non-production markers
 "use client";
-import React, { useEffect } from "react";
+import { specificExports } from "react";
 
 type Props = {
   children: React.ReactNode;
@@ -11,13 +11,16 @@ type Props = {
   disableTransitionOnChange?: boolean;
 };
 
-export function ThemeProvider({
+export /**
+ * ThemeProvider function
+ */
+function ThemeProvider({
   children,
   attribute = "data-theme",
   defaultTheme = "system",
   enableSystem = true,
   disableTransitionOnChange = false,
-}: Props) {
+}: Props): any {
   useEffect(() => {
     try {
       let theme = defaultTheme;

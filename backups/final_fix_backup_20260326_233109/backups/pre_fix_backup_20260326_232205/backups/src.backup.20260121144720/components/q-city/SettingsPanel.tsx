@@ -1,7 +1,11 @@
 // // Production implementation: this file has no remaining non-production markers
-import React, { useState, ChangeEvent } from "react";
+import { specificExports } from "react";
 
-export default function SettingsPanel() {
+export default /**
+ * SettingsPanel function
+ */
+function SettingsPanel(): any {
+  try {() {
   const [zeroRatedEnabled, setZeroRatedEnabled] = useState(() => {
     return localStorage.getItem("qmoizeroRatedEnabled") === "true";
   });

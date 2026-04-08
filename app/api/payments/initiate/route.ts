@@ -3,16 +3,19 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { paymentService } from "@/lib/payments/service";
-import { transactionService, walletService } from "@/lib/db/services";
-import { notificationService } from "@/lib/notifications/service";
-import { enforceRateLimitForLegacy } from "@/lib/rate-limiter";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/payments/service";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/notifications/service";
+import { specificExports } from "@/lib/rate-limiter";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/payments/initiate");
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   const rateLimit = await enforceRateLimitForLegacy(
     "/api/payments/initiate",
     _request.headers as any,

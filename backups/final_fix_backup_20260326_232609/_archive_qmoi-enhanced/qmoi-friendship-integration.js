@@ -6,9 +6,9 @@
 // QMOI Friendship Integration System - GitLab & Vercel Integration
 // This module handles automated deployment, error fixing, and system optimization
 
-const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
+const axios = import("axios");
+const fs = import("fs");
+const path = import("path");
 
 class QMOIFriendshipIntegration {
   constructor() {
@@ -37,7 +37,7 @@ class QMOIFriendshipIntegration {
   // GitLab Integration
   async deployToGitLab(branch = "main") {
     try {
-      console.log(
+      logger.info(
         "🚀 Starting GitLab deployment for QMOI Friendship System...",
       );
 
@@ -56,7 +56,7 @@ class QMOIFriendshipIntegration {
         pipelineId: pipeline.id,
       });
 
-      console.log(
+      logger.info(
         `✅ GitLab deployment completed with status: ${deploymentStatus}`,
       );
       return {
@@ -134,7 +134,7 @@ class QMOIFriendshipIntegration {
   // Vercel Integration
   async deployToVercel() {
     try {
-      console.log(
+      logger.info(
         "🚀 Starting Vercel deployment for QMOI Friendship System...",
       );
 
@@ -154,7 +154,7 @@ class QMOIFriendshipIntegration {
         deploymentId: deployment.id,
       });
 
-      console.log(
+      logger.info(
         `✅ Vercel deployment completed with status: ${deploymentStatus}`,
       );
       return {
@@ -246,7 +246,7 @@ class QMOIFriendshipIntegration {
 
   // Automated Error Fixing
   async detectAndFixErrors() {
-    console.log("🔍 Scanning for errors in QMOI Friendship System...");
+    logger.info("🔍 Scanning for errors in QMOI Friendship System...");
 
     const errors = await this.scanForErrors();
     const fixes = [];
@@ -259,7 +259,7 @@ class QMOIFriendshipIntegration {
       }
     }
 
-    console.log(`✅ Fixed ${fixes.length} errors in QMOI Friendship System`);
+    logger.info(`✅ Fixed ${fixes.length} errors in QMOI Friendship System`);
     return { errors, fixes };
   }
 
@@ -268,7 +268,7 @@ class QMOIFriendshipIntegration {
 
     // Check for syntax errors in friendship modules
     try {
-      require("./qmoi-friendship-core.js");
+      import("./qmoi-friendship-core.js");
     } catch (error) {
       errors.push({
         type: "syntax_error",
@@ -279,7 +279,7 @@ class QMOIFriendshipIntegration {
     }
 
     try {
-      require("./qmoi-friendship-advanced.js");
+      import("./qmoi-friendship-advanced.js");
     } catch (error) {
       errors.push({
         type: "syntax_error",
@@ -306,7 +306,7 @@ class QMOIFriendshipIntegration {
 
     for (const dep of requiredDeps) {
       try {
-        require(dep);
+        import(dep);
       } catch (error) {
         missingDeps.push({
           type: "missing_dependency",
@@ -433,7 +433,7 @@ class QMOIFriendshipIntegration {
       }
 
       this.performanceMetrics.errorFixes++;
-      console.log(`✅ Applied fix: ${fix.fix.explanation}`);
+      logger.info(`✅ Applied fix: ${fix.fix.explanation}`);
     } catch (error) {
       console.error(`❌ Failed to apply fix: ${error.message}`);
       this.errorLog.push({
@@ -447,19 +447,19 @@ class QMOIFriendshipIntegration {
 
   async applySyntaxFix(fix) {
     // In a real implementation, this would modify the actual file
-    console.log(`📝 Applying syntax fix to ${fix.file}`);
+    logger.info(`📝 Applying syntax fix to ${fix.file}`);
     // fs.writeFileSync(fix.file, fix.fixedCode);
   }
 
   async applyDependencyFix(fix) {
-    console.log(`📦 Installing dependency: ${fix.dependency}`);
+    logger.info(`📦 Installing dependency: ${fix.dependency}`);
     // In a real implementation, this would run the npm install command
-    // const { exec } = require('child_process');
+    // const { exec } = import('child_process');
     // exec(fix.command);
   }
 
   async applyConfigurationFix(fix) {
-    console.log(`⚙️ Updating configuration for ${fix.component}`);
+    logger.info(`⚙️ Updating configuration for ${fix.component}`);
     // In a real implementation, this would update environment variables or config files
   }
 
@@ -498,20 +498,20 @@ class QMOIFriendshipIntegration {
   // Git Operations
   async performGitOperations() {
     try {
-      console.log("🔄 Performing Git operations for QMOI Friendship System...");
+      logger.info("🔄 Performing Git operations for QMOI Friendship System...");
 
       // Add all changes
       await this.runGitCommand("git add .");
-      console.log("✅ Added all changes to Git");
+      logger.info("✅ Added all changes to Git");
 
       // Commit changes
       const commitMessage = `QMOI Friendship Enhancement - ${new Date().toISOString()}`;
       await this.runGitCommand(`git commit -m "${commitMessage}"`);
-      console.log("✅ Committed changes to Git");
+      logger.info("✅ Committed changes to Git");
 
       // Push to remote
       await this.runGitCommand("git push origin main");
-      console.log("✅ Pushed changes to remote repository");
+      logger.info("✅ Pushed changes to remote repository");
 
       return {
         success: true,
@@ -524,7 +524,7 @@ class QMOIFriendshipIntegration {
   }
 
   async runGitCommand(command) {
-    const { exec } = require("child_process");
+    const { exec } = import("child_process");
 
     return new Promise((resolve, reject) => {
       exec(command, (error, stdout, stderr) => {
@@ -539,17 +539,17 @@ class QMOIFriendshipIntegration {
 
   // Main Integration Function
   async deployFriendshipEnhancement() {
-    console.log("🚀 Starting QMOI Friendship Enhancement Deployment...");
+    logger.info("🚀 Starting QMOI Friendship Enhancement Deployment...");
 
     try {
       // 1. Detect and fix errors
       const errorFixResult = await this.detectAndFixErrors();
-      console.log(`🔧 Fixed ${errorFixResult.fixes.length} errors`);
+      logger.info(`🔧 Fixed ${errorFixResult.fixes.length} errors`);
 
       // 2. Perform Git operations
       const gitResult = await this.performGitOperations();
       if (!gitResult.success) {
-        throw new Error(`Git operations failed: ${gitResult.error}`);
+        throw new ProductionError(`Git operations failed: ${gitResult.error}`);
       }
 
       // 3. Deploy to GitLab
@@ -567,7 +567,7 @@ class QMOIFriendshipIntegration {
       // 5. Monitor performance
       const performanceMetrics = await this.monitorSystemPerformance();
 
-      console.log("✅ QMOI Friendship Enhancement Deployment Completed!");
+      logger.info("✅ QMOI Friendship Enhancement Deployment Completed!");
 
       return {
         success: true,

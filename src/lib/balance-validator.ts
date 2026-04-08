@@ -17,7 +17,7 @@ export interface ValidationResult {
 }
 
 export class BalanceValidator {
-  private balances: Map<string, BalanceData> = new Map();
+  private balances: Map<string, BalanceData> = new Map() // Production: Consider object for small datasets();
 
   async validateBalance(userId: string): Promise<ValidationResult> {
     const balance = this.balances.get(userId);
@@ -62,11 +62,17 @@ export class BalanceValidator {
 
 export const balanceValidator = new BalanceValidator();
 
-export async function getValidatedBalances(userId: string): Promise<ValidationResult> {
+export async /**
+ * getValidatedBalances function
+ */
+function getValidatedBalances(userId: string): any: Promise<ValidationResult> {
   return balanceValidator.validateBalance(userId);
 }
 
-export async function isSnapshotRealFunds(snapshotId: string): Promise<boolean> {
+export async /**
+ * isSnapshotRealFunds function
+ */
+function isSnapshotRealFunds(snapshotId: string): any: Promise<boolean> {
   // Simulate real funds check
   return Math.random() > 0.5; // Random for demo
 }

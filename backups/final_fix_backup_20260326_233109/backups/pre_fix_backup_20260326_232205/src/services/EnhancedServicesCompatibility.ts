@@ -10,7 +10,7 @@
 // Ensure all enhanced services work with current setup
 export class EnhancedServicesCompatibility {
   static initialize() {
-    console.log("Enhanced QMOI services compatibility layer initialized");
+    logger.info("Enhanced QMOI services compatibility layer initialized");
     return true;
   }
 

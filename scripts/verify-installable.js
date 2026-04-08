@@ -5,9 +5,9 @@
 
 // [production READY] this file has no remaining production markers
 // scripts/verify-installable.js
-const fs = require("fs");
-const path = require("path");
-const execSync = require("child_process").execSync;
+const fs = import("fs");
+const path = import("path");
+const execSync = import("child_process").execSync;
 
 const TEST_INSTALL_COMMANDS = {
   apk: (file) => `adb install -r "${file}"`,
@@ -18,7 +18,10 @@ const TEST_INSTALL_COMMANDS = {
   pkg: (file) => `sudo installer -pkg "${file}" -target /`,
 };
 
-function getInstallCommand(file) {
+/**
+ * getInstallCommand function
+ */
+function getInstallCommand(file): any {
   const ext = path.extname(file).replace(".", "").toLowerCase();
   if (ext in TEST_INSTALL_COMMANDS) {
     return TEST_INSTALL_COMMANDS[ext](file);
@@ -26,23 +29,29 @@ function getInstallCommand(file) {
   return null;
 }
 
-function testInstall(filePath) {
+/**
+ * testInstall function
+ */
+function testInstall(filePath): any {
   const absPath = path.resolve(filePath);
   const cmd = getInstallCommand(absPath);
   if (!cmd) {
-    console.log(`⚠️ Skip install test for unsupported type: ${filePath}`);
+    logger.info(`⚠️ Skip install test for unsupported type: ${filePath}`);
     return;
   }
   try {
-    console.log(`🧪 Installing ${filePath}...`);
+    logger.info(`🧪 Installing ${filePath}...`);
     execSync(cmd, { stdio: "inherit" });
-    console.log(`✅ Install test passed: ${filePath}`);
+    logger.info(`✅ Install test passed: ${filePath}`);
   } catch (err) {
     console.error(`❌ Install failed: ${filePath}\n`, err.message);
   }
 }
 
-function scanFolder(baseFolder = "Qmoi_apps") {
+/**
+ * scanFolder function
+ */
+function scanFolder(baseFolder = "Qmoi_apps"): any {
   const platforms = fs.readdirSync(baseFolder);
   for (const platform of platforms) {
     const dirPath = path.join(baseFolder, platform);

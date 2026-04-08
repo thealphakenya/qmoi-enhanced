@@ -3,9 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   const apps = [
     {id: "qbrowser", name: "Qbrowser", version: "1.2.0", download: "https://Qstore.qmoi.ai/downloads/qbrowser/qbrowser.zip"},
     {id: "qfilemanager", name: "QFileManager", version: "2.0.1", download: "https://QQdownload.qmoi.ai/apps/qfilemanager/qfilemanager.zip"},

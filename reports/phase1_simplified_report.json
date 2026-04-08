@@ -50,10 +50,14 @@
     "/ENHANCEDQVS.md",
     "/ENHANCED_AUTOMATION_SUMMARY.md",
     "/ENVIRONMENT_CONFIG.md",
-    "/FAST-BOOTSTRAP-README.md",
+    "/high-performance-BOOTSTRAP-README.md",
     "/FEATURESREADME.md",
-    "/GITHUB-ACTIONS-COMPLETE.md",
+    "/GITHUB-ACTIONS-complete.md",
     "/GITHUBPAYED.md",
     "/GITHUB_ACTIONS_AUTOFIX.md"
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:50.450718"
 }

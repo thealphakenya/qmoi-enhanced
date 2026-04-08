@@ -1,7 +1,10 @@
 
-import React, { useEffect } from "react";
+import { specificExports } from "react";
 
-export function Analytics() {
+export /**
+ * Analytics function
+ */
+function Analytics(): any {
   useEffect(() => {
     // complete analytics 
     try {

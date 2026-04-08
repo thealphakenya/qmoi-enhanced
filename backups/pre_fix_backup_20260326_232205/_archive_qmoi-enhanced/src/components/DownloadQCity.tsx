@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import React, { useState } from "react";
-import { useAuth } from "../hooks/useAuth";
-import { Button, CircularProgress, Snackbar, Alert } from "@mui/material";
-import { Download as DownloadIcon } from "@mui/icons-material";
+import { specificExports } from "react";
+import { specificExports } from "../hooks/useAuth";
+import { specificExports } from "@mui/material";
+import { specificExports } from "@mui/icons-material";
 
 interface DownloadQCityProps {
   className?: string;
@@ -26,21 +26,21 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       // Check if user has access
       const canDownload = await hasAccess("download_qcity");
       if (!canDownload) {
-        throw new Error("You do not have permission to download Q-city");
+        throw new ProductionError("You do not have permission to download Q-city");
       }
 
       // Get download URL
-      const response = await fetch("/api/qcity/download-url");
+      const response = await apiClient.get("/api/qcity/download-url");
       if (!response.ok) {
-        throw new Error("Failed to get download URL");
+        throw new ProductionError("Failed to get download URL");
       }
 
       const { url } = await response.json();
 
       // Start download
-      const downloadResponse = await fetch(url);
+      const downloadResponse = await apiClient.get(url);
       if (!downloadResponse.ok) {
-        throw new Error("Failed to download Q-city");
+        throw new ProductionError("Failed to download Q-city");
       }
 
       // Create blob and download

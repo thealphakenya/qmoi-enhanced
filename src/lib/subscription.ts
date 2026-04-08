@@ -20,7 +20,7 @@ const AVAILABLE_PLANS: Record<SubscriptionTier, SubscriptionPlan> = {
   free: {
     tier: 'free',
     pricePerMonth: 0,
-    features: ['basic avatars', 'limited analytics', 'community support'],
+    features: ['advanced avatars', 'limited analytics', 'community support'],
     description: 'Free tier with core QMOI capabilities.',
   },
   starter: {
@@ -43,17 +43,26 @@ const AVAILABLE_PLANS: Record<SubscriptionTier, SubscriptionPlan> = {
   },
 };
 
-const subscriptionStore = new Map<string, SubscriptionRecord>();
+const subscriptionStore = new Map() // Production: Consider object for small datasets<string, SubscriptionRecord>();
 
-function futureRenewal(days: number) {
+/**
+ * futureRenewal function
+ */
+function futureRenewal(days: number): any {
   return new Date(Date.now() + days * 24 * 60 * 60 * 1000).toISOString();
 }
 
-export function getAvailablePlans(): SubscriptionPlan[] {
+export /**
+ * getAvailablePlans function
+ */
+function getAvailablePlans(): any: SubscriptionPlan[] {
   return Object.values(AVAILABLE_PLANS);
 }
 
-export function getSubscription(userId: string) {
+export /**
+ * getSubscription function
+ */
+function getSubscription(userId: string): any {
   const existing = subscriptionStore.get(userId);
   if (existing) {
     return existing;
@@ -71,7 +80,10 @@ export function getSubscription(userId: string) {
   return defaultSubscription;
 }
 
-export async function updateSubscription(userId: string, tier: SubscriptionTier) {
+export async /**
+ * updateSubscription function
+ */
+function updateSubscription(userId: string, tier: SubscriptionTier): any {
   const plan = AVAILABLE_PLANS[tier] || AVAILABLE_PLANS.free;
   const record: SubscriptionRecord = {
     userId,
@@ -85,7 +97,10 @@ export async function updateSubscription(userId: string, tier: SubscriptionTier)
   return record;
 }
 
-export async function cancelSubscription(userId: string) {
+export async /**
+ * cancelSubscription function
+ */
+function cancelSubscription(userId: string): any {
   const existing = subscriptionStore.get(userId);
   if (!existing) {
     return null;

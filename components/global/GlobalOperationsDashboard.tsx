@@ -5,18 +5,18 @@
 
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Globe, TrendingUp, Users, DollarSign, Shield, Activity, Zap, Target } from 'lucide-react';
-import { consoleLog } from '@/utils/console-logger';
+import { specificExports } from 'react';
+import { specificExports } from '@/components/ui/card';
+import { specificExports } from '@/components/ui/button';
+import { specificExports } from '@/components/ui/badge';
+import { specificExports } from '@/components/ui/progress';
+import { specificExports } from '@/components/ui/tabs';
+import { specificExports } from '@/components/ui/select';
+import { specificExports } from '@/components/ui/input';
+import { specificExports } from '@/components/ui/label';
+import { specificExports } from '@/components/ui/alert';
+import { specificExports } from 'lucide-react';
+import { specificExports } from '@/utils/console-logger';
 
 interface GlobalStats {
   timestamp: string;
@@ -66,7 +66,11 @@ interface CountryData {
   complianceStatus: 'compliant' | 'pending' | 'non-compliant';
 }
 
-export default function GlobalOperationsDashboard() {
+export default /**
+ * GlobalOperationsDashboard function
+ */
+function GlobalOperationsDashboard(): any {
+  try {() {
   const [stats, setStats] = useState<GlobalStats | null>(null);
   const [countries, setCountries] = useState<CountryData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -78,14 +82,14 @@ export default function GlobalOperationsDashboard() {
 
   const fetchGlobalStats = useCallback(async () => {
     try {
-      const response = await fetch('/api/global?action=stats');
-      if (!response.ok) throw new Error('Failed to fetch global stats');
+      const response = await apiClient.get('/api/global?action=stats');
+      if (!response.ok) throw new ProductionError('Failed to fetch global stats');
       const data = await response.json();
       if (data.success) {
         setStats(data.data);
         setError(null);
       } else {
-        throw new Error(data.error || 'Unknown error');
+        throw new ProductionError(data.error || 'Unknown error');
       }
     } catch (err) {
       consoleLog('❌ Error fetching global stats', { error: err });
@@ -95,8 +99,8 @@ export default function GlobalOperationsDashboard() {
 
   const fetchCountries = useCallback(async () => {
     try {
-      const response = await fetch('/api/global?action=countries');
-      if (!response.ok) throw new Error('Failed to fetch countries');
+      const response = await apiClient.get('/api/global?action=countries');
+      if (!response.ok) throw new ProductionError('Failed to fetch countries');
       const data = await response.json();
       if (data.success) {
         setCountries(data.data);
@@ -118,7 +122,7 @@ export default function GlobalOperationsDashboard() {
 
   const handleBulkOperations = async () => {
     try {
-      const response = await fetch('/api/global', {
+      const response = await apiClient.get('/api/global', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -136,7 +140,7 @@ export default function GlobalOperationsDashboard() {
         consoleLog('🌍 Bulk operations initiated', { count: data.data.count });
         fetchGlobalStats(); // Refresh stats
       } else {
-        throw new Error(data.error || 'Failed to start bulk operations');
+        throw new ProductionError(data.error || 'Failed to start bulk operations');
       }
     } catch (err) {
       consoleLog('❌ Error starting bulk operations', { error: err });
@@ -146,7 +150,7 @@ export default function GlobalOperationsDashboard() {
 
   const handleComplianceCheck = async () => {
     try {
-      const response = await fetch('/api/global', {
+      const response = await apiClient.get('/api/global', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -164,7 +168,7 @@ export default function GlobalOperationsDashboard() {
         consoleLog('⚖️ Compliance checks initiated', { count: data.data.count });
         fetchGlobalStats();
       } else {
-        throw new Error(data.error || 'Failed to start compliance checks');
+        throw new ProductionError(data.error || 'Failed to start compliance checks');
       }
     } catch (err) {
       consoleLog('❌ Error starting compliance checks', { error: err });
@@ -174,7 +178,7 @@ export default function GlobalOperationsDashboard() {
 
   const handleExpansionInitiate = async () => {
     try {
-      const response = await fetch('/api/global', {
+      const response = await apiClient.get('/api/global', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -192,7 +196,7 @@ export default function GlobalOperationsDashboard() {
         consoleLog('🚀 Expansion activities initiated', { count: data.data.count });
         fetchGlobalStats();
       } else {
-        throw new Error(data.error || 'Failed to initiate expansion');
+        throw new ProductionError(data.error || 'Failed to initiate expansion');
       }
     } catch (err) {
       consoleLog('❌ Error initiating expansion', { error: err });
@@ -317,7 +321,7 @@ export default function GlobalOperationsDashboard() {
               <Label htmlFor="continent-select">Target Continent</Label>
               <Select value={selectedContinent} onValueChange={setSelectedContinent}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select continent" />
+                  <SelectValue implementation="Select continent" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Continents</SelectItem>

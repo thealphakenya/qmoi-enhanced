@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export function useAnalyticsDashboard() {
+export /**
+ * useAnalyticsDashboard function
+ */
+function useAnalyticsDashboard(): any {
   const [analytics, setAnalytics] = useState(null);
   useEffect(() => {
     const fetchAnalytics = async () => {
-      const res = await fetch("/api/qmoi-model?analytics=1", {
+      const res = await apiClient.get("/api/qmoi-model?analytics=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
       const data = await res.json();

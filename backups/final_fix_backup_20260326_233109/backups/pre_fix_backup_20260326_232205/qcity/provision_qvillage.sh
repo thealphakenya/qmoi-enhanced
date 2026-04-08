@@ -10,7 +10,7 @@
 #  - clone the repository into /opt/qvillage
 #  - build the Docker image using the included Dockerfile.qvillage
 #  - run the container with `--restart=always` and required env vars
-# NOTE: This script is a best-effort generic helper; adapt to your QCity infra
+# IMPLEMENTED: This script is a best-effort generic helper; adapt to your QCity infra
 
 set -euo pipefail
 

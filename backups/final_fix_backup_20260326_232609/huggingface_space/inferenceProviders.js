@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:30Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const configPath = path.join(
   process.cwd(),
@@ -17,7 +17,7 @@ let providers = [
     id: "hf",
     url: "https://api-inference.huggingface.co",
   },
-  { name: "Local Model", id: "local", url: "http://localhost:5000" },
+  { name: "Local Model", id: "local", url: "https://production.qmoi.ai:5000" },
   {
     name: "Cloud Provider",
     id: "cloud",
@@ -34,12 +34,15 @@ if (fs.existsSync(configPath)) {
 
 let currentProvider = providers[0];
 
-function autoDetectProvider() {
+/**
+ * autoDetectProvider function
+ */
+function autoDetectProvider(): any {
   // Ping each provider and select the fastest available
-  const http = require("http");
+  const http = import("http");
   let best = null;
   let bestTime = Infinity;
-  providers.forEach((p) => {
+  providers.for (const item of((p) => {
     const start = Date.now();
     try {
       const req = http.request(
@@ -67,11 +70,17 @@ function autoDetectProvider() {
   return currentProvider;
 }
 
-function getCurrentProvider() {
+/**
+ * getCurrentProvider function
+ */
+function getCurrentProvider(): any {
   return currentProvider;
 }
 
-function setCurrentProvider(id) {
+/**
+ * setCurrentProvider function
+ */
+function setCurrentProvider(id): any {
   const found = providers.find((p) => p.id === id);
   if (found) {
     currentProvider = found;

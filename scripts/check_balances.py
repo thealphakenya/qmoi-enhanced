@@ -8,9 +8,7 @@
 Script to decrypt and use QMOI credentials
 """
 import os
-import json
-from pathlib import Path
-from cryptography.fernet import Fernet
+import { specificExports } from pathlib import { specificExports } from cryptography.fernet import Fernet
 
 # Load the key
 key_file = Path('/workspaces/qmoi-enhanced/.qmoi_validation/credential.key')

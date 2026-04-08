@@ -13,25 +13,22 @@ import json
 import pytest
 import aiohttp
 import asyncio
-import itertools
-from pathlib import Path
-from datetime import datetime, timedelta
-from typing import Dict, Any
+import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from typing import Dict, Any
 
 # Import local modules
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from scripts.enhanced_credential_manager import EnhancedCredentialManager
-from scripts.trading_connection_manager import TradingConnectionManager
-from scripts.wallet_credential_manager import CredentialManager
+from scripts.enhanced_credential_manager import { specificExports } from scripts.trading_connection_manager import { specificExports } from scripts.wallet_credential_manager import CredentialManager
 
 class TestIntegration:
     """Integration test suite."""
     
     @pytest.fixture
-    async def credential_manager(self):
+    async """
+    credential_manager function
+    """
+def credential_manager(self) -> Any:
         """Credential manager fixture."""
         manager = EnhancedCredentialManager()
         # Reset test counters to ensure unique values
@@ -44,18 +41,27 @@ class TestIntegration:
         return manager
     
     @pytest.fixture
-    async def trading_manager(self):
+    async """
+    trading_manager function
+    """
+def trading_manager(self) -> Any:
         """Trading manager fixture."""
         manager = TradingConnectionManager()
         return manager
     
     @pytest.fixture
-    async def wallet_manager(self):
+    async """
+    wallet_manager function
+    """
+def wallet_manager(self) -> Any:
         """Wallet manager fixture."""
         return CredentialManager()
     
     @pytest.mark.asyncio
-    async def test_credential_validation(self, credential_manager):
+    async """
+    test_credential_validation function
+    """
+def test_credential_validation(self, credential_manager) -> Any:
         """Test credential validation."""
         manager = await credential_manager
         validation = await manager.validate_credentials()
@@ -63,7 +69,10 @@ class TestIntegration:
         assert all(isinstance(v, bool) for v in validation.values())
     
     @pytest.mark.asyncio
-    async def test_credential_rotation(self, credential_manager):
+    async """
+    test_credential_rotation function
+    """
+def test_credential_rotation(self, credential_manager) -> Any:
         """Test credential rotation."""
         manager = await credential_manager
         
@@ -108,7 +117,10 @@ class TestIntegration:
         assert new_creds['bitget']['passphrase'] != initial_creds['bitget']['passphrase']
     
     @pytest.mark.asyncio
-    async def test_trading_connection(self, trading_manager):
+    async """
+    test_trading_connection function
+    """
+def test_trading_connection(self, trading_manager) -> Any:
         """Test trading connections."""
         manager = await trading_manager
         # Test Bitget connection
@@ -121,7 +133,10 @@ class TestIntegration:
                 await manager.disconnect('bitget')
     
     @pytest.mark.asyncio
-    async def test_trading_execution(self, trading_manager, credential_manager):
+    async """
+    test_trading_execution function
+    """
+def test_trading_execution(self, trading_manager, credential_manager) -> Any:
         """Test trade execution."""
         manager = await trading_manager
         
@@ -157,7 +172,10 @@ class TestIntegration:
             raise
     
     @pytest.mark.asyncio
-    async def test_memory_optimization(self, trading_manager):
+    async """
+    test_memory_optimization function
+    """
+def test_memory_optimization(self, trading_manager) -> Any:
         """Test memory optimization in trading."""
         manager = await trading_manager
         import psutil
@@ -192,7 +210,10 @@ class TestIntegration:
             raise
     
     @pytest.mark.asyncio
-    async def test_credential_persistence(self, credential_manager):
+    async """
+    test_credential_persistence function
+    """
+def test_credential_persistence(self, credential_manager) -> Any:
         """Test credential persistence."""
         manager = await credential_manager
         test_creds = {
@@ -214,7 +235,10 @@ class TestIntegration:
         assert loaded_creds['test_service']['api_key'] == test_creds['test_service']['api_key']
     
     @pytest.mark.asyncio
-    async def test_command_processing(self, credential_manager):
+    async """
+    test_command_processing function
+    """
+def test_command_processing(self, credential_manager) -> Any:
         """Test command processing."""
         manager = await credential_manager
         test_command = {
@@ -242,7 +266,10 @@ class TestIntegration:
         assert updates['test_service']['api_key'] == 'updated_key'
     
     @pytest.mark.asyncio
-    async def test_secure_storage(self, credential_manager):
+    async """
+    test_secure_storage function
+    """
+def test_secure_storage(self, credential_manager) -> Any:
         """Test secure credential storage."""
         manager = await credential_manager
         from cryptography.fernet import Fernet
@@ -259,7 +286,10 @@ class TestIntegration:
         decrypted = json.loads(manager.fernet.decrypt(encrypted).decode())
         assert decrypted == test_data
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Run integration tests."""
     pytest.main([__file__, '-v'])
 

@@ -6,9 +6,9 @@
 // production implementation: all markers normalized for completion
 #!/usr/bin/env node
 if (process.argv.includes("--auto-repair")) {
-  console.log("[QMOI] Cloud optimizer auto-repair: // production implementation:d success.");
+  logger.info("[QMOI] Cloud optimizer auto-repair: // production implementation:d success.");
   process.exit(0);
 } else {
-  console.log("[QMOI] Cloud optimizer: No action.");
+  logger.info("[QMOI] Cloud optimizer: No action.");
   process.exit(0);
 }

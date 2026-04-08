@@ -5,23 +5,26 @@
 
 // production implementation: this file has no remaining production markers
 /* eslint-env node */
-const { execSync } = require("child_process");
-const { QmoiMemory } = require("../src/services/QmoiMemory");
-const path = require("path");
+const { execSync } = import("child_process");
+const { QmoiMemory } = import("../src/services/QmoiMemory");
+const path = import("path");
 
-function runEvolutionCycle() {
+/**
+ * runEvolutionCycle function
+ */
+function runEvolutionCycle(): any {
   try {
     const result = execSync("python scripts/qmoi_self_evolve.py .", {
       encoding: "utf-8",
     });
-    console.log("[Auto-Evolve] Evolution cycle output:", result);
+    logger.info("[Auto-Evolve] Evolution cycle output:", result);
     QmoiMemory.save(
       "evolution_cycle",
       { output: result, timestamp: new Date().toISOString() },
       "master",
     );
     // Notify master (console for now)
-    console.log("[Auto-Evolve] Master notified of evolution cycle.");
+    logger.info("[Auto-Evolve] Master notified of evolution cycle.");
   } catch (e) {
     console.error("[Auto-Evolve] Evolution cycle failed:", e.message);
   }

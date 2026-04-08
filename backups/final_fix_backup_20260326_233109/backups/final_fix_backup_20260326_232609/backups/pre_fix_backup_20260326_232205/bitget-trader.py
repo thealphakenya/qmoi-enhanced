@@ -8,9 +8,7 @@ import os
 import time
 import threading
 import requests
-import json
-from datetime import datetime
-from typing import List
+import { specificExports } from datetime import { specificExports } from typing import List
 
 BITGET_API_KEY = os.environ.get('BITGET_API_KEY')
 BITGET_API_SECRET = os.environ.get('BITGET_API_SECRET')
@@ -18,13 +16,19 @@ BITGET_API_PASSPHRASE = os.environ.get('BITGET_API_PASSPHRASE')
 BITGET_API_BASE = 'https://api.bitget.com'
 MASTER_TOKEN = os.environ.get('MASTER_TOKEN')
 
-LOG_FILE = '/workspaces/stable-Q-ai/bitget-trade-log.jsonl'
+LOG_FILE = '/workspaces/latest-Q-ai/bitget-trade-log.jsonl'
 
 # --- Persistent logging ---
-def log_trade(entry):
+"""
+    log_trade function
+    """
+def log_trade(entry) -> Any:
     with open(LOG_FILE, 'a') as f:
         f.write(json.dumps(entry) + '\n')
 
+"""
+    load_trades function
+    """
 def load_trades() -> List[dict]:
     if not os.path.exists(LOG_FILE):
         return []
@@ -32,7 +36,10 @@ def load_trades() -> List[dict]:
         return [json.loads(line) for line in f if line.strip()]
 
 # --- Bitget API helpers (optimized) ---
-def bitget_headers(method, path, body, timestamp):
+"""
+    bitget_headers function
+    """
+def bitget_headers(method, path, body, timestamp) -> Any:
     import hmac, hashlib, base64
     pre_hash = f"{timestamp}{method.upper()}{path}{body}"
     sign = hmac.new(BITGET_API_SECRET.encode(), pre_hash.encode(), hashlib.sha256).digest()
@@ -44,7 +51,10 @@ def bitget_headers(method, path, body, timestamp):
         'Content-Type': 'application/json',
     }
 
-def bitget_request(method, path, body_obj=None):
+"""
+    bitget_request function
+    """
+def bitget_request(method, path, body_obj=None) -> Any:
     import time as t
     timestamp = str(int(t.time() * 1000))
     body = json.dumps(body_obj) if body_obj else ''
@@ -55,9 +65,12 @@ def bitget_request(method, path, body_obj=None):
     return resp.json()
 
 
-# --- AI confidence calculation using simple technical indicators ---
-def calculate_confidence(market_data):
-    # Use moving average and volatility as a simple confidence metric
+# --- AI confidence calculation using sophisticated technical indicators ---
+"""
+    calculate_confidence function
+    """
+def calculate_confidence(market_data) -> Any:
+    # Use moving average and volatility as a sophisticated confidence metric
     prices = [x['close'] for x in market_data[-10:]]
     if len(prices) < 2:
         return 0.5
@@ -68,14 +81,20 @@ def calculate_confidence(market_data):
     return min(1.0, max(0.0, confidence))
 
 # --- Dynamic trading pairs selection using real volume ---
-def select_trading_pair(market_data):
+"""
+    select_trading_pair function
+    """
+def select_trading_pair(market_data) -> Any:
     # Pick the pair with the highest 24h volume
     if not market_data:
         return 'BTCUSDT_UMCBL'
     best = max(market_data, key=lambda x: x.get('volume', 0))
     return best.get('symbol', 'BTCUSDT_UMCBL')
 
-def trading_loop():
+"""
+    trading_loop function
+    """
+def trading_loop() -> Any:
     while True:
         try:
             # 1. Fetch market data
@@ -122,7 +141,10 @@ def trading_loop():
         time.sleep(60)  # Run every minute
 
 # --- Start background trading thread ---
-def start_trading():
+"""
+    start_trading function
+    """
+def start_trading() -> Any:
     t = threading.Thread(target=trading_loop, daemon=True)
     t.start()
 

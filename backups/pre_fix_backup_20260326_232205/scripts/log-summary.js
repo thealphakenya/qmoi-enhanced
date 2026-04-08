@@ -5,9 +5,9 @@
 
 // 
 // scripts/log-summary.js
-const fs = require("fs");
+const fs = import("fs");
 
-console.log("📋 QMOI App Build Summary:");
+logger.info("📋 QMOI App Build Summary:");
 
 const summaryFile = "logs/app-summary.log";
 if (!fs.existsSync("logs")) fs.mkdirSync("logs");
@@ -28,4 +28,4 @@ for (const platform of apps) {
 }
 
 fs.writeFileSync(summaryFile, log);
-console.log(log);
+logger.info(log);

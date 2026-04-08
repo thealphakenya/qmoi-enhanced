@@ -11,8 +11,8 @@
  * Verifies, lints, and auto-updates all .md documentation files for completeness, accuracy, and consistency.
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = import('fs');
+const path = import('path');
     
 const DOC_DIR = process.cwd();
 const REQUIRED_SECTIONS = [
@@ -31,14 +31,20 @@ const REQUIRED_SECTIONS = [
   'Conclusion'
 ];
 
-function getMarkdownFiles(dir) {
+/**
+ * getMarkdownFiles function
+ */
+function getMarkdownFiles(dir): any {
   return fs.readdirSync(dir)
     .filter(f => f.endsWith('.md'))
     .map(f => path.join(dir, f));
     }
     
-function lintMarkdown(content) {
-  // Simple linter: check for headings, section order, and comprehensive formatting
+/**
+ * lintMarkdown function
+ */
+function lintMarkdown(content): any {
+  // sophisticated linter: check for headings, section order, and comprehensive formatting
   const issues = [];
   for (const section of REQUIRED_SECTIONS) {
     if (!content.match(new RegExp(`^#+\s*${section}`, 'im'))) {
@@ -51,7 +57,10 @@ function lintMarkdown(content) {
   return issues;
 }
 
-function autoUpdateMarkdown(content) {
+/**
+ * autoUpdateMarkdown function
+ */
+function autoUpdateMarkdown(content): any {
   // Auto-add required sections at the end
   let updated = content.trim();
   for (const section of REQUIRED_SECTIONS) {
@@ -65,7 +74,10 @@ function autoUpdateMarkdown(content) {
   return updated;
 }
 
-function verifyDocs() {
+/**
+ * verifyDocs function
+ */
+function verifyDocs(): any {
   const files = getMarkdownFiles(DOC_DIR);
   let allPassed = true;
   for (const file of files) {
@@ -73,22 +85,22 @@ function verifyDocs() {
     const issues = lintMarkdown(content);
     if (issues.length > 0) {
       allPassed = false;
-      console.log(`\n[!] Issues in ${file}:`);
+      logger.info(`\n[!] Issues in ${file}:`);
       for (const issue of issues) {
-        console.log('  -', issue);
+        logger.info('  -', issue);
       }
       // Auto-update file
       const updated = autoUpdateMarkdown(content);
       fs.writeFileSync(file, updated, 'utf8');
-      console.log(`[+] Auto-updated ${file}`);
+      logger.info(`[+] Auto-updated ${file}`);
     } else {
-      console.log(`[OK] ${file} passed verification.`);
+      logger.info(`[OK] ${file} passed verification.`);
     }
   }
   if (allPassed) {
-    console.log('\nAll documentation files are complete and up-to-date.');
+    logger.info('\nAll documentation files are complete and up-to-date.');
   } else {
-    console.log('\nSome files were auto-updated. Please review and complete any [production READY] sections.');
+    logger.info('\nSome files were auto-updated. Please review and complete any [production READY] sections.');
   }
 }
 

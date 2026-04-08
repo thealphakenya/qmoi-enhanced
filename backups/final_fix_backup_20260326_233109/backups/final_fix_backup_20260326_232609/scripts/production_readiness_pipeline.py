@@ -12,9 +12,7 @@ Generates complete audit reports and deployment readiness verification
 
 import subprocess
 import json
-import sys
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
 WORKSPACE_ROOT = Path('/workspaces/qmoi-enhanced')
 SCRIPTS_DIR = WORKSPACE_ROOT / 'scripts'
@@ -56,26 +54,32 @@ PIPELINE_STAGES = [
 
 
 class productionReadinessPipeline:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.results = {}
         self.failed_stages = []
         self.start_time = datetime.now()
         RESULTS_DIR.mkdir(exist_ok=True)
 
-    def run_stage(self, stage: dict) -> bool:
+    """
+    run_stage function
+    """
+def run_stage(self, stage: dict) -> bool:
         """Run individual pipeline stage"""
-        print(f"\n{'='*70}")
-        print(f"▶️  Stage: {stage['name']}")
-        print(f"{'='*70}")
-        print(f"Description: {stage['description']}")
-        print(f"Executing: python3 {stage['script']}")
-        print()
+        logger.info(f"\n{'='*70}")
+        logger.info(f"▶️  Stage: {stage['name']}")
+        logger.info(f"{'='*70}")
+        logger.info(f"Description: {stage['description']}")
+        logger.info(f"Executing: python3 {stage['script']}")
+        logger.info()
         
         try:
             script_path = WORKSPACE_ROOT / stage['script']
             
             if not script_path.exists():
-                print(f"⚠️  Script not found: {script_path}")
+                logger.info(f"⚠️  Script not found: {script_path}")
                 if stage['critical']:
                     self.failed_stages.append(stage['name'])
                     return False
@@ -89,75 +93,81 @@ class productionReadinessPipeline:
                 timeout=300
             )
             
-            print(result.stdout)
+            logger.info(result.stdout)
             if result.stderr:
-                print(f"STDERR: {result.stderr}")
+                logger.info(f"STDERR: {result.stderr}")
             
             if result.returncode == 0:
-                print(f"✅ {stage['name']} completed successfully")
+                logger.info(f"✅ {stage['name']} completed successfully")
                 self.results[stage['name']] = 'passed'
                 return True
             else:
-                print(f"❌ {stage['name']} failed (exit code: {result.returncode})")
+                logger.info(f"❌ {stage['name']} failed (exit code: {result.returncode})")
                 self.results[stage['name']] = 'failed'
                 if stage['critical']:
                     self.failed_stages.append(stage['name'])
                 return False
                 
         except subprocess.TimeoutExpired:
-            print(f"❌ {stage['name']} timed out (>300s)")
+            logger.info(f"❌ {stage['name']} timed out (>300s)")
             self.results[stage['name']] = 'timeout'
             if stage['critical']:
                 self.failed_stages.append(stage['name'])
             return False
         except Exception as e:
-            print(f"❌ Error running {stage['name']}: {e}")
+            logger.info(f"❌ Error running {stage['name']}: {e}")
             self.results[stage['name']] = 'error'
             if stage['critical']:
                 self.failed_stages.append(stage['name'])
             return False
 
-    def run_pipeline(self):
+    """
+    run_pipeline function
+    """
+def run_pipeline(self) -> Any:
         """Execute all pipeline stages"""
-        print("\n")
-        print("╔════════════════════════════════════════════════════════════════════╗")
-        print("║   QMOI ENHANCED - production READINESS PIPELINE                    ║")
-        print(f"║   Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}                              ║")
-        print("╚════════════════════════════════════════════════════════════════════╝")
+        logger.info("\n")
+        logger.info("╔════════════════════════════════════════════════════════════════════╗")
+        logger.info("║   QMOI ENHANCED - production READINESS PIPELINE                    ║")
+        logger.info(f"║   Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}                              ║")
+        logger.info("╚════════════════════════════════════════════════════════════════════╝")
         
         for i, stage in enumerate(PIPELINE_STAGES, 1):
-            print(f"\nPhase {i}/{len(PIPELINE_STAGES)}")
+            logger.info(f"\nPhase {i}/{len(PIPELINE_STAGES)}")
             self.run_stage(stage)
         
         self.generate_summary()
 
-    def generate_summary(self):
+    """
+    generate_summary function
+    """
+def generate_summary(self) -> Any:
         """Generate pipeline execution summary"""
         end_time = datetime.now()
         duration = (end_time - self.start_time).total_seconds()
         
-        print("\n")
-        print("╔════════════════════════════════════════════════════════════════════╗")
-        print("║   PIPELINE EXECUTION SUMMARY                                       ║")
-        print("╚════════════════════════════════════════════════════════════════════╝")
-        print()
-        print(f"Total Execution Time: {duration:.2f} seconds")
-        print()
-        print("Stage Results:")
+        logger.info("\n")
+        logger.info("╔════════════════════════════════════════════════════════════════════╗")
+        logger.info("║   PIPELINE EXECUTION SUMMARY                                       ║")
+        logger.info("╚════════════════════════════════════════════════════════════════════╝")
+        logger.info()
+        logger.info(f"Total Execution Time: {duration:.2f} seconds")
+        logger.info()
+        logger.info("Stage Results:")
         for name, status in self.results.items():
             emoji = '✅' if status == 'passed' else '❌' if status == 'failed' else '⚠️'
-            print(f"  {emoji} {name}: {status.upper()}")
+            logger.info(f"  {emoji} {name}: {status.upper()}")
         
-        print()
-        print(f"Critical Stages Failed: {len(self.failed_stages)}")
+        logger.info()
+        logger.info(f"Critical Stages Failed: {len(self.failed_stages)}")
         if self.failed_stages:
             for stage in self.failed_stages:
-                print(f"  - {stage}")
+                logger.info(f"  - {stage}")
         
-        overall_status = 'SUCCESS' if len(self.failed_stages) == 0 else 'PARTIAL' if len(self.failed_stages) < len([s for s in PIPELINE_STAGES if s['critical']]) else 'FAILED'
-        print()
-        print(f"Overall Pipeline Status: {overall_status}")
-        print()
+        overall_status = 'SUCCESS' if len(self.failed_stages) == 0 else 'full' if len(self.failed_stages) < len([s for s in PIPELINE_STAGES if s['critical']]) else 'FAILED'
+        logger.info()
+        logger.info(f"Overall Pipeline Status: {overall_status}")
+        logger.info()
         
         # Save pipeline report
         report = {
@@ -172,20 +182,23 @@ class productionReadinessPipeline:
         with open(report_file, 'w') as f:
             json.dump(report, f, indent=2)
         
-        print(f"Report saved to: {report_file}")
-        print()
-        print("="*70)
+        logger.info(f"Report saved to: {report_file}")
+        logger.info()
+        logger.info("="*70)
         
         return len(self.failed_stages) == 0
 
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         """Main execution"""
         try:
             self.run_pipeline()
             success = len(self.failed_stages) == 0
             return 0 if success else 1
         except Exception as e:
-            print(f"\n❌ Pipeline error: {e}\n")
+            logger.info(f"\n❌ Pipeline error: {e}\n")
             return 1
 
 

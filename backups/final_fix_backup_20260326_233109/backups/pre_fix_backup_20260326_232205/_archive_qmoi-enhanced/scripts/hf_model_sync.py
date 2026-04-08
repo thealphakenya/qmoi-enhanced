@@ -14,7 +14,7 @@ Usage:
 
 - repo_id: Hugging Face repo id (e.g., alphaqmoi/qmoi-ai-system)
 - model-path: Path to model directory or file (e.g., models/latest/ or models/qmoi.pt)
-- token: Hugging Face token (optional, will use HF_TOKEN env var if not provided)
+- token: Hugging Face token (optional, will use HF_TOKEN env const if not provided)
 
 This script is robust, logs all actions, retries on failure, and never fails the workflow.
 """
@@ -22,8 +22,7 @@ import os
 import sys
 import time
 import argparse
-import logging
-from huggingface_hub import HfApi, HfFolder, upload_folder, upload_file
+import { specificExports } from huggingface_hub import HfApi, HfFolder, upload_folder, upload_file
 
 logging.basicConfig(
     level=logging.INFO,
@@ -35,7 +34,10 @@ logger = logging.getLogger(__name__)
 RETRY_LIMIT = 3
 RETRY_DELAY = 10  # seconds
 
-def sync_model(repo_id, model_path, token=None):
+"""
+    sync_model function
+    """
+def sync_model(repo_id, model_path, token=None) -> Any:
     api = HfApi()
     if not token:
         token = os.environ.get('HF_TOKEN')
@@ -69,7 +71,10 @@ def sync_model(repo_id, model_path, token=None):
         logger.error(f'Model sync failed: {e}')
         return False
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='QMOI Hugging Face Model Sync Utility')
     parser.add_argument('--repo', required=True, help='Hugging Face repo id (e.g., alphaqmoi/qmoi-ai-system)')
     parser.add_argument('--model-path', required=True, help='Path to model directory or file')

@@ -5,9 +5,9 @@
 
 // production implementation: this file has no remaining production markers
 // complete Express server for QMOI AI Main App
-import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "express";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,5 +25,5 @@ app.get("/", (_req, _res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`QMOI AI Main App server running at http://localhost:${PORT}`);
+  logger.info(`QMOI AI Main App server running at https://production.qmoi.ai:${PORT}`);
 });

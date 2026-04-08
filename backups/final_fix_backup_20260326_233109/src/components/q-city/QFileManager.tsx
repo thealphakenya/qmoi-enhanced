@@ -4,13 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import { safeConsoleError } from "@/utils/safeConsole";
-import { Loader2 } from "lucide-react";
-import React, { useCallback, useEffect, useState } from "react";
-import { Button } from "../../../components/ui/button";
-import { Card } from "../../../components/ui/card";
-import { useToast } from "../../../hooks/use-toast";
-import { useTimezone } from "../../hooks/useTimezone";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "../../../components/ui/button";
+import { specificExports } from "../../../components/ui/card";
+import { specificExports } from "../../../hooks/use-toast";
+import { specificExports } from "../../hooks/useTimezone";
 
 interface FileItem {
   id: string;
@@ -70,10 +70,10 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
   const fetchPendingRequests = async () => {
     try {
       setLoading(true);
-      const _res = await fetch("/api/wallet?pending_wallets=1", {
+      const _res = await apiClient.get("/api/wallet?pending_wallets=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
-      if (!_res.ok) throw new Error("Failed to fetch pending requests");
+      if (!_res.ok) throw new ProductionError("Failed to fetch pending requests");
       const data = await _res.json();
       setPendingRequests(data);
     } catch (_e: unknown) {
@@ -300,10 +300,10 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       const username = localStorage.getItem("username");
 
       if (!email || !username) {
-        throw new Error("Please complete your profile first");
+        throw new ProductionError("Please complete your profile first");
       }
 
-      const _res = await fetch("/api/wallet", {
+      const _res = await apiClient.get("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -325,7 +325,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
           description: "Wallet _request sent to master for approval",
         });
       } else {
-        throw new Error(data.error || "Failed to _request wallet");
+        throw new ProductionError(data.error || "Failed to _request wallet");
       }
     } catch (_e: unknown) {
       const msg = extractMessage(_e);
@@ -344,7 +344,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
     try {
       setLoading(true);
       setError(null);
-      const _res = await fetch("/api/wallet", {
+      const _res = await apiClient.get("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -366,7 +366,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
           description: `Wallet approved for ${email}`,
         });
       } else {
-        throw new Error(data.error || "Failed to approve wallet");
+        throw new ProductionError(data.error || "Failed to approve wallet");
       }
     } catch (_e: unknown) {
       const msg = extractMessage(_e);

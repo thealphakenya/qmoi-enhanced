@@ -8,7 +8,7 @@
   "max_length": 512,
   "training": {
     "batch_size": 32,
-    "learning_rate": 2e-5,
+    "learning_rate": 2e-05,
     "num_epochs": 3,
     "warmup_steps": 500,
     "weight_decay": 0.01,
@@ -23,7 +23,7 @@
     "max_grad_norm": 1.0,
     "adam_stable1": 0.9,
     "adam_stable2": 0.999,
-    "adam_epsilon": 1e-8,
+    "adam_epsilon": 1e-08,
     "scheduler": "cosine",
     "warmup_ratio": 0.1,
     "lr_scheduler_type": "cosine",
@@ -120,7 +120,11 @@
   "wandb": {
     "project": "qmoi",
     "entity": "your-username",
-    "tags": ["nlp", "transformer", "classification"],
+    "tags": [
+      "nlp",
+      "transformer",
+      "classification"
+    ],
     "notes": "QMOI model training"
   },
   "logging": {
@@ -149,7 +153,9 @@
     "smtp_port": 587,
     "sender_email": "your_email@gmail.com",
     "sender_password": "your_password",
-    "recipient_emails": ["master_email@gmail.com"]
+    "recipient_emails": [
+      "master_email@gmail.com"
+    ]
   },
   "slack_settings": {
     "enabled": true,
@@ -165,9 +171,16 @@
     "webhook_url": "https://discord.com/api/webhooks/your/webhook/url"
   },
   "escalation_contacts": {
-    "secondary_emails": ["secondary1@gmail.com", "secondary2@gmail.com"],
-    "secondary_whatsapp": ["+254700000000"],
-    "slack_channels": ["#critical-alerts"]
+    "secondary_emails": [
+      "secondary1@gmail.com",
+      "secondary2@gmail.com"
+    ],
+    "secondary_whatsapp": [
+      "+254700000000"
+    ],
+    "slack_channels": [
+      "#critical-alerts"
+    ]
   },
   "permission_self_check_interval": 600,
   "dashboard_settings": {
@@ -178,5 +191,9 @@
     "auth_password": "changeme"
   },
   "dashboard_health_check_interval": 60,
-  "dashboard_downtime_notify_threshold": 180
+  "dashboard_downtime_notify_threshold": 180,
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.825956"
 }

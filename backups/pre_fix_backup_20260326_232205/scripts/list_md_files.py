@@ -11,19 +11,24 @@ Usage:
   python3 scripts/list_md_files.py [--json out.json]
 """
 import json
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE = {'.git','node_modules','venv','.venv','.qmoi_validation'}
 
-def should_exclude(path: Path):
+"""
+    should_exclude function
+    """
+def should_exclude(path: Path) -> Any:
     for p in path.parts:
         if p in EXCLUDE:
             return True
     return False
 
-def find_md():
+"""
+    find_md function
+    """
+def find_md() -> Any:
     files = []
     for p in ROOT.rglob('*.md'):
         if should_exclude(p):
@@ -31,7 +36,10 @@ def find_md():
         files.append(str(p.relative_to(ROOT)).replace('\\','/'))
     return sorted(files)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument('--json', help='Write json to path')
@@ -40,10 +48,10 @@ def main():
     if args.json:
         with open(args.json,'w',encoding='utf-8') as fh:
             json.dump(md, fh, indent=2)
-        print(f'Wrote {args.json} ({len(md)} entries)')
+        logger.info(f'Wrote {args.json} ({len(md)} entries)')
     else:
         for m in md:
-            print(m)
+            logger.info(m)
 
 if __name__ == '__main__':
     main()

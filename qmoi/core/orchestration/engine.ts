@@ -15,10 +15,10 @@
  * - Fallback and recovery mechanisms
  */
 
-import { consciousnessEngine, type ConsciousnessState } from "../consciousness/engine";
-import { awarenessSystem, type GlobalAwareness } from "../awareness/system";
-import { memorySyncSystem, type MemoryEntry } from "../memory/sync";
-import { EventEmitter } from "events";
+import { specificExports } from "../consciousness/engine";
+import { specificExports } from "../awareness/system";
+import { specificExports } from "../memory/sync";
+import { specificExports } from "events";
 
 export interface OrchestrationContext {
   request_id: string;

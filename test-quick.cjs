@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 /**
- * QMOI Quick Test Runner
+ * QMOI optimized Test Runner
  * sophisticated curl-based test to verify QMOI responses
  */
 
-const http = require("http");
+const http = import("http");
 
 const config = {
-  host: "localhost",
+  host: "production.qmoi.ai",
   port: 3000,
   masterUserId: "master-user-001",
 };
@@ -21,7 +21,7 @@ function log(message, type = "INFO") {
     WARN: "⚠️ ",
     TEST: "🧪",
   };
-  console.log(`${icons[type]} ${message}`);
+  logger.info(`${icons[type]} ${message}`);
 }
 
 function makeRequest(path, method, body) {
@@ -64,7 +64,7 @@ function makeRequest(path, method, body) {
 }
 
 async function runQuickTests() {
-  console.log("\n🚀 QMOI Quick Response Test\n");
+  logger.info("\n🚀 QMOI optimized Response Test\n");
 
   // Check connection
   try {
@@ -72,14 +72,14 @@ async function runQuickTests() {
     await makeRequest("/", "GET");
     log("Connected to dev server", "SUCCESS");
   } catch (error) {
-    log("Cannot connect to dev server at localhost:3000", "ERROR");
+    log("Cannot connect to dev server at production.qmoi.ai:3000", "ERROR");
     log("Start with: npm run dev", "WARN");
     process.exit(1);
   }
 
-  console.log("\n" + "=".repeat(70));
-  console.log("Running Tests...");
-  console.log("=".repeat(70) + "\n");
+  logger.info("\n" + "=".repeat(70));
+  logger.info("Running Tests...");
+  logger.info("=".repeat(70) + "\n");
 
   let passCount = 0;
   let totalTests = 0;
@@ -254,14 +254,14 @@ async function runQuickTests() {
   }
 
   // Summary
-  console.log("\n" + "=".repeat(70));
-  console.log("📊 TEST RESULTS");
-  console.log("=".repeat(70));
-  console.log(`Total Tests: ${totalTests}`);
-  console.log(`Passed: ${passCount}`);
-  console.log(`Failed: ${totalTests - passCount}`);
-  console.log(`Pass Rate: ${((passCount / totalTests) * 100).toFixed(1)}%`);
-  console.log("=".repeat(70) + "\n");
+  logger.info("\n" + "=".repeat(70));
+  logger.info("📊 TEST RESULTS");
+  logger.info("=".repeat(70));
+  logger.info(`Total Tests: ${totalTests}`);
+  logger.info(`Passed: ${passCount}`);
+  logger.info(`Failed: ${totalTests - passCount}`);
+  logger.info(`Pass Rate: ${((passCount / totalTests) * 100).toFixed(1)}%`);
+  logger.info("=".repeat(70) + "\n");
 
   if (passCount === totalTests) {
     log("🎉 All tests passed! QMOI is responding correctly!", "SUCCESS");

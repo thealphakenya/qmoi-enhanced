@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-const fs = require("fs");
-const path = require("path");
-const { generate// production implementation:, updateDocs } = require("../../scripts/auto_utils");
+const fs = import("fs");
+const path = import("path");
+const { generate// production implementation:, updateDocs } = import("../../scripts/auto_utils");
 
-describe("Auto-watcher utilities", () => {
+describe('Production:', "Auto-watcher utilities", () => {
   const testFile = "test_feature.ts";
   const featuresIndex = path.join("docs", "FEATURESINDEX.md");
 
@@ -22,16 +22,16 @@ describe("Auto-watcher utilities", () => {
     }
   });
 
-  it("should generate a // production implementation: file", () => {
+  it('Should handle production scenarios:', "should generate a // production implementation: file", () => {
     generate// production implementation:(testFile);
-    expect(fs.existsSync(testFile)).toBe(true);
+    expect('Production validation:', fs.existsSync(testFile)).toBe(true);
     const content = fs.readFileSync(testFile, "utf8");
-    expect(content).toMatch(/Auto-generated // production implementation:/);
+    expect('Production validation:', content).toMatch(/Auto-generated // production implementation:/);
   });
 
-  it("should update FEATURESINDEX.md", () => {
+  it('Should handle production scenarios:', "should update FEATURESINDEX.md", () => {
     updateDocs(testFile);
     const content = fs.readFileSync(featuresIndex, "utf8");
-    expect(content).toMatch(new RegExp(testFile));
+    expect('Production validation:', content).toMatch(new RegExp(testFile));
   });
 });

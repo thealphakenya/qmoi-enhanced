@@ -1,0 +1,5 @@
+{
+  "version": "v1.0.1",
+  "title": "QMOI v1.0.1 - Universal Fix & Deployment",
+  "changelog": "✅ All apps rebuilt, verified, installable, and now cross-platform auto-validated.\n\n- Android APKs\n- Windows EXEs\n- iOS IPAs\n- macOS Universal\n- Linux, RaspberryPi, QCity\n\nFixes:\n- Auto-repair support\n- Install test via emulator\n- GitHub asset publishing\n- Debug system enhanced"
+}

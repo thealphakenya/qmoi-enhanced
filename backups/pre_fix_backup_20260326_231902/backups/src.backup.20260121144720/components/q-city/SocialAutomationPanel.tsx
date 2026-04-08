@@ -1,8 +1,8 @@
  all markers normalized for completion
-import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/card";
 
 interface Contact {
   id: number;
@@ -20,13 +20,13 @@ const SocialAutomationPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchContacts = async () => {
-    const _res = await fetch("/api/social-automation/contacts");
+    const _res = await apiClient.get("/api/social-automation/contacts");
     const data = await _res.json();
     setContacts(data.contacts || []);
   };
 
   const fetchFeatures = async () => {
-    const _res = await fetch("/api/social-automation/features");
+    const _res = await apiClient.get("/api/social-automation/features");
     const data = await _res.json();
     setFeatures(data.features || []);
   };
@@ -37,7 +37,7 @@ const SocialAutomationPanel: React.FC = () => {
   }, []);
 
   const postStatus = async () => {
-    const _res = await fetch("/api/social-automation/post", {
+    const _res = await apiClient.get("/api/social-automation/post", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content, platform }),
@@ -47,7 +47,7 @@ const SocialAutomationPanel: React.FC = () => {
   };
 
   const tagContact = async (id: number) => {
-    const _res = await fetch("/api/social-automation/tag", {
+    const _res = await apiClient.get("/api/social-automation/tag", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, tag }),

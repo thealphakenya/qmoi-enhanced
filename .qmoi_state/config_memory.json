@@ -1,4 +1,8 @@
 {
   "auto_recovery_enabled": true,
-  "last_update": "2026-01-22T05:35:55.786Z"
+  "last_update": "2026-01-22T05:35:55.786Z",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:41.872123"
 }

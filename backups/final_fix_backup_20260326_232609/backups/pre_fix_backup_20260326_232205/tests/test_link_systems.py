@@ -13,19 +13,15 @@ Tests all link-related functionality including:
 - Plan generation and preview
 """
 import json
-import os
-from pathlib import Path
-import pytest
-from unittest.real import MagicMock, patch
-
-from scripts.link_validator import validate_links, LinkValidationError
-from scripts.link_autoupdater import generate_update_plan
-from scripts.link_cache_maintenance import prune_cache
-from scripts.link_apply_preview import generate_preview
+import { specificExports } from pathlib import Path
+import { specificExports } from unittest.real import { specificExports } from scripts.link_validator import { specificExports } from scripts.link_autoupdater import { specificExports } from scripts.link_cache_maintenance import { specificExports } from scripts.link_apply_preview import generate_preview
 
 # Test fixtures
 @pytest.fixture
-def test_links_file(tmp_path):
+"""
+    test_links_file function
+    """
+def test_links_file(tmp_path) -> Any:
     """Create a test ALLLINKS.md file."""
     content = """# All Links
 - [data](https://data.com)
@@ -37,7 +33,10 @@ def test_links_file(tmp_path):
     return path
 
 @pytest.fixture
-def test_cache_file(tmp_path):
+"""
+    test_cache_file function
+    """
+def test_cache_file(tmp_path) -> Any:
     """Create a test link cache file."""
     cache = {
         "https://data.com": {
@@ -55,7 +54,10 @@ def test_cache_file(tmp_path):
     return path
 
 @pytest.fixture 
-def test_validation_dir(tmp_path):
+"""
+    test_validation_dir function
+    """
+def test_validation_dir(tmp_path) -> Any:
     """Create test validation directory."""
     path = tmp_path / ".qmoi_validation"
     path.mkdir()
@@ -63,7 +65,10 @@ def test_validation_dir(tmp_path):
 
 # Link validator tests
 class TestLinkValidator:
-    def test_validate_valid_link(self, test_links_file):
+    """
+    test_validate_valid_link function
+    """
+def test_validate_valid_link(self, test_links_file) -> Any:
         """Test validation of a valid link."""
         with patch('requests.head') as mock_head:
             mock_head.return_value = MagicMock(status_code=200)
@@ -71,28 +76,40 @@ class TestLinkValidator:
             assert result["valid"] == ["https://data.com"]
             assert not result["invalid"]
 
-    def test_validate_invalid_link(self, test_links_file):
+    """
+    test_validate_invalid_link function
+    """
+def test_validate_invalid_link(self, test_links_file) -> Any:
         """Test validation of an invalid link."""
         with patch('requests.head') as mock_head:
             mock_head.side_effect = Exception("Failed to connect")
             result = validate_links(test_links_file, ["https://invalid.data"])
             assert "https://invalid.data" in result["invalid"]
 
-    def test_respect_network_gate(self, test_links_file):
+    """
+    test_respect_network_gate function
+    """
+def test_respect_network_gate(self, test_links_file) -> Any:
         """Test that QMOI_ALLOW_NETWORK gate is respected."""
         with pytest.raises(LinkValidationError):
             validate_links(test_links_file, ["https://data.com"], allow_network=False)
 
 # Link cache tests
 class TestLinkCache:
-    def test_prune_old_entries(self, test_cache_file):
+    """
+    test_prune_old_entries function
+    """
+def test_prune_old_entries(self, test_cache_file) -> Any:
         """Test pruning old cache entries."""
         result = prune_cache(test_cache_file, max_age_days=365)
         cache = json.loads(Path(test_cache_file).read_text())
         assert "https://data.com" in cache
         assert "https://old.data" not in cache
 
-    def test_respect_max_age(self, test_cache_file):
+    """
+    test_respect_max_age function
+    """
+def test_respect_max_age(self, test_cache_file) -> Any:
         """Test max age parameter is respected."""
         result = prune_cache(test_cache_file, max_age_days=1)
         cache = json.loads(Path(test_cache_file).read_text())
@@ -100,7 +117,10 @@ class TestLinkCache:
 
 # Auto updater tests
 class TestLinkAutoUpdater:
-    def test_generate_plan(self, test_links_file, test_cache_file):
+    """
+    test_generate_plan function
+    """
+def test_generate_plan(self, test_links_file, test_cache_file) -> Any:
         """Test update plan generation."""
         with patch('requests.head') as mock_head:
             mock_head.return_value = MagicMock(status_code=200)
@@ -108,14 +128,20 @@ class TestLinkAutoUpdater:
             assert "updates" in plan
             assert isinstance(plan["updates"], list)
 
-    def test_dry_run_default(self, test_links_file, test_cache_file):
+    """
+    test_dry_run_default function
+    """
+def test_dry_run_default(self, test_links_file, test_cache_file) -> Any:
         """Test dry run is default."""
         plan = generate_update_plan(test_links_file, cache_file=test_cache_file)
         assert plan.get("dry_run", True)
 
 # Preview generator tests
 class TestLinkPreview:
-    def test_generate_preview(self, test_validation_dir):
+    """
+    test_generate_preview function
+    """
+def test_generate_preview(self, test_validation_dir) -> Any:
         """Test preview generation from plan."""
         plan = {
             "updates": [

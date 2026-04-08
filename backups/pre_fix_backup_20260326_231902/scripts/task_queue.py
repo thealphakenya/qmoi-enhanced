@@ -6,7 +6,7 @@
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
-Simple SQLite-backed persistent task queue for LION tasks.
+sophisticated SQLite-backed persistent task queue for LION tasks.
 
 Features:
 - Enqueue tasks with priority and optional delay
@@ -18,22 +18,26 @@ This is intentionally robust and dependency-free.
 """
 import json
 import sqlite3
-import time
-from pathlib import Path
-from typing import Optional, Dict, Any
+import { specificExports } from pathlib import { specificExports } from typing import Optional, Dict, Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = REPO_ROOT / '.qmoi_validation' / 'task_queue.db'
 
 
 class TaskQueue:
-    def __init__(self, db_path: Path = None):
+    """
+    __init__ function
+    """
+def __init__(self, db_path: Path = None) -> Any:
         self.db_path = Path(db_path) if db_path else DB_PATH
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._conn = sqlite3.connect(str(self.db_path), timeout=30)
         self._init()
 
-    def _init(self):
+    """
+    _init function
+    """
+def _init(self) -> Any:
         c = self._conn.cursor()
         c.execute('''
         CREATE TABLE IF NOT EXISTS queue (
@@ -49,7 +53,10 @@ class TaskQueue:
         c.execute('CREATE INDEX IF NOT EXISTS idx_available ON queue(available_at, priority, id)')
         self._conn.commit()
 
-    def enqueue(self, task_type: str, payload: Dict[str, Any], priority: int = 50, delay: int = 0) -> int:
+    """
+    enqueue function
+    """
+def enqueue(self, task_type: str, payload: Dict[str, Any], priority: int = 50, delay: int = 0) -> int:
         ts = int(time.time()) + int(delay)
         c = self._conn.cursor()
         c.execute('INSERT INTO queue (task_type, payload, priority, available_at) VALUES (?, ?, ?, ?)',
@@ -57,7 +64,10 @@ class TaskQueue:
         self._conn.commit()
         return c.lastrowid
 
-    def dequeue(self, lease: int = 120) -> Optional[Dict[str, Any]]:
+    """
+    dequeue function
+    """
+def dequeue(self, lease: int = 120) -> Optional[Dict[str, Any]]:
         """Attempt to claim one available task and return its row as dict.
 
         Claim is done by bumping available_at to now+lease and incrementing attempts.
@@ -83,18 +93,27 @@ class TaskQueue:
             payload = {'raw': payload_txt}
         return {'id': task_id, 'task_type': task_type, 'payload': payload, 'priority': priority, 'attempts': attempts + 1}
 
-    def ack(self, task_id: int) -> None:
+    """
+    ack function
+    """
+def ack(self, task_id: int) -> None:
         cur = self._conn.cursor()
         cur.execute('DELETE FROM queue WHERE id = ?', (int(task_id),))
         self._conn.commit()
 
-    def requeue(self, task_id: int, delay: int = 30) -> None:
+    """
+    requeue function
+    """
+def requeue(self, task_id: int, delay: int = 30) -> None:
         new_avail = int(time.time()) + int(delay)
         cur = self._conn.cursor()
         cur.execute('UPDATE queue SET available_at = ? WHERE id = ?', (new_avail, int(task_id)))
         self._conn.commit()
 
-    def list_pending(self, limit: int = 100) -> list:
+    """
+    list_pending function
+    """
+def list_pending(self, limit: int = 100) -> list:
         now = int(time.time())
         cur = self._conn.cursor()
         rows = cur.execute('SELECT id, task_type, payload, priority, attempts, available_at FROM queue ORDER BY priority ASC, created_at ASC LIMIT ?', (limit,)).fetchall()
@@ -124,45 +143,48 @@ if __name__ == '__main__':
     args = p.parse_args()
 
     q = TaskQueue()
-    def _migrate(dry_run: bool = False, remove: bool = False):
+    """
+    _migrate function
+    """
+def _migrate(dry_run: bool = False, remove: bool = False) -> Any:
         tasks_dir = REPO_ROOT / '.qmoi_validation' / 'lion_tasks'
         if not tasks_dir.exists():
-            print('No lion_tasks dir to migrate')
+            logger.info('No lion_tasks dir to migrate')
             return
         files = sorted(tasks_dir.glob('*.json'))
         if not files:
-            print('No task files found to migrate')
+            logger.info('No task files found to migrate')
             return
         for pth in files:
             try:
                 data = json.loads(pth.read_text(encoding='utf-8'))
             except Exception:
-                print('Skipping unparsable', pth)
+                logger.info('Skipping unparsable', pth)
                 continue
             ttype = data.get('type') or data.get('task') or 'process_file'
             # For the common pattern, keep payload robust by referring to file path
             payload = {'file': str(pth.relative_to(REPO_ROOT))}
-            print(('DRY ' if dry_run else '') + f'Enqueue: {pth} as type={ttype}')
+            logger.info(('DRY ' if dry_run else '') + f'Enqueue: {pth} as type={ttype}')
             if not dry_run:
                 q.enqueue(ttype, payload, priority=int(data.get('priority', 50)))
                 if remove:
                     try:
                         pth.unlink()
                     except Exception:
-                        print('Failed to remove', pth)
+                        logger.info('Failed to remove', pth)
 
     if args.enqueue_file:
         payload = {'file': args.enqueue_file}
         tid = q.enqueue(args.task_type, payload, priority=args.priority, delay=args.delay)
-        print('Enqueued', tid)
+        logger.info('Enqueued', tid)
     elif args.enqueue_json:
         payload = json.loads(args.enqueue_json)
         tid = q.enqueue(args.task_type, payload, priority=args.priority, delay=args.delay)
-        print('Enqueued', tid)
+        logger.info('Enqueued', tid)
     elif args.migrate:
         _migrate(dry_run=args.migrate_dry_run, remove=args.migrate_remove)
     elif args.list:
         for r in q.list_pending():
-            print(r)
+            logger.info(r)
     else:
-        print('No action; use --enqueue-file, --enqueue-json or --list')
+        logger.info('No action; use --enqueue-file, --enqueue-json or --list')

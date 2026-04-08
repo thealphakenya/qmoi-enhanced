@@ -287,7 +287,7 @@ Snapshot: 2026-01-01T00:00:00Z
 
 Notes: Ran coproductiond dry-run in `src/services` (no changes). Re-ran `npm run lint:fix` after pragmas; counts unchanged.
 
-Recent quick actions:
+Recent optimized actions:
 - Expanded `types/globals.d.ts` and `src/types/globals.d.ts` to add common runtime/test globals.
 - Ran `node scripts/prefix-wide.cjs` and `npm run lint:fix` iteratively.
 

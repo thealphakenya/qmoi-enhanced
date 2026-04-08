@@ -12,13 +12,13 @@
  * Repository management, issues, PRs, workflows, and more
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import crypto from "crypto";
-import { exec } from "child_process";
-import { promisify } from "util";
-import axios from "axios";
-import QMOINotificationSystem from "./qmoi-notification-system.js";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "axios";
+import { specificExports } from "./qmoi-notification-system.js";
 
 const execAsync = promisify(exec);
 
@@ -40,11 +40,11 @@ class QMOIGitHubIntegration {
   }
 
   async initialize() {
-    console.log("🔗 Initializing QMOI GitHub Integration...");
+    logger.info("🔗 Initializing QMOI GitHub Integration...");
     await this.notificationSystem.initialize();
 
     if (!this.githubToken) {
-      throw new Error(
+      throw new ProductionError(
         "GitHub token not found. Set GITHUB_TOKEN or QMOI_GITHUB_TOKEN environment variable.",
       );
     }
@@ -52,7 +52,7 @@ class QMOIGitHubIntegration {
     // Get repository information
     await this.getRepositoryInfo();
 
-    console.log("✅ QMOI GitHub Integration initialized");
+    logger.info("✅ QMOI GitHub Integration initialized");
   }
 
   async getRepositoryInfo() {
@@ -68,17 +68,17 @@ class QMOIGitHubIntegration {
       if (match) {
         const [, owner, repo] = match;
         this.repoInfo = { owner, repo: repo.replace(".git", "") };
-        console.log(`📦 Repository: ${owner}/${repo}`);
+        logger.info(`📦 Repository: ${owner}/${repo}`);
       } else {
-        throw new Error("Could not parse GitHub repository URL");
+        throw new ProductionError("Could not parse GitHub repository URL");
       }
     } catch (error) {
-      throw new Error(`Failed to get repository info: ${error.message}`);
+      throw new ProductionError(`Failed to get repository info: ${error.message}`);
     }
   }
 
   async createIssue(title, body, labels = []) {
-    console.log(`📝 Creating issue: ${title}`);
+    logger.info(`📝 Creating issue: ${title}`);
 
     try {
       const _response = await this.githubApi.post(
@@ -122,7 +122,7 @@ class QMOIGitHubIntegration {
   }
 
   async createPullRequest(title, body, head, base = "main") {
-    console.log(`🔀 Creating pull _request: ${title}`);
+    logger.info(`🔀 Creating pull _request: ${title}`);
 
     try {
       const _response = await this.githubApi.post(
@@ -167,7 +167,7 @@ class QMOIGitHubIntegration {
   }
 
   async updateWorkflow(workflowPath, content) {
-    console.log(`🔧 Updating workflow: ${workflowPath}`);
+    logger.info(`🔧 Updating workflow: ${workflowPath}`);
 
     try {
       // Read current content
@@ -211,7 +211,7 @@ class QMOIGitHubIntegration {
   }
 
   async createBranch(branchName, baseBranch = "main") {
-    console.log(`🌿 Creating branch: ${branchName}`);
+    logger.info(`🌿 Creating branch: ${branchName}`);
 
     try {
       // Get latest commit from base branch
@@ -253,7 +253,7 @@ class QMOIGitHubIntegration {
   }
 
   async commitAndPush(message) {
-    console.log(`💾 Committing and pushing: ${message}`);
+    logger.info(`💾 Committing and pushing: ${message}`);
 
     try {
       // Add all changes
@@ -279,7 +279,7 @@ class QMOIGitHubIntegration {
   }
 
   async mergePullRequest(prNumber, mergeMethod = "squash") {
-    console.log(`🔀 Merging pull _request #${prNumber}`);
+    logger.info(`🔀 Merging pull _request #${prNumber}`);
 
     try {
       const _response = await this.githubApi.put(
@@ -315,7 +315,7 @@ class QMOIGitHubIntegration {
   }
 
   async createRelease(tagName, name, body, final = false, prerelease = false) {
-    console.log(`🏷️ Creating release: ${tagName}`);
+    logger.info(`🏷️ Creating release: ${tagName}`);
 
     try {
       const _response = await this.githubApi.post(
@@ -360,7 +360,7 @@ class QMOIGitHubIntegration {
   }
 
   async updateRepositorySettings(settings) {
-    console.log("⚙️ Updating repository settings...");
+    logger.info("⚙️ Updating repository settings...");
 
     try {
       const _response = await this.githubApi.patch(
@@ -393,7 +393,7 @@ class QMOIGitHubIntegration {
   }
 
   async enableSecurityFeatures() {
-    console.log("🔒 Enabling security features...");
+    logger.info("🔒 Enabling security features...");
 
     try {
       // Enable Dependabot alerts
@@ -443,7 +443,7 @@ class QMOIGitHubIntegration {
     triggers = ["push"],
     branches = ["main", "master"],
   ) {
-    console.log(`🔧 Creating workflow: ${name}`);
+    logger.info(`🔧 Creating workflow: ${name}`);
 
     const workflowContent = {
       name: name,
@@ -541,7 +541,7 @@ class QMOIGitHubIntegration {
   }
 
   async getRepositoryStatus() {
-    console.log("📊 Getting repository status...");
+    logger.info("📊 Getting repository status...");
 
     try {
       const [repo, issues, prs, workflows] = await Promise.all([
@@ -603,7 +603,10 @@ if (isMainModule) {
   const integration = new QMOIGitHubIntegration();
   const args = process.argv.slice(2);
 
-  async function main() {
+  async /**
+ * main function
+ */
+function main(): any {
     await integration.initialize();
 
     if (args.includes("--create-issue")) {
@@ -611,33 +614,33 @@ if (isMainModule) {
       const body =
         args[args.indexOf("--create-issue") + 2] || "Issue created by QMOI";
       const issue = await integration.createIssue(title, body);
-      console.log("Issue created:", JSON.stringify(issue, null, 2));
+      logger.info("Issue created:", JSON.stringify(issue, null, 2));
     } else if (args.includes("--create-pr")) {
       const title = args[args.indexOf("--create-pr") + 1];
       const body =
         args[args.indexOf("--create-pr") + 2] || "PR created by QMOI";
       const head = args[args.indexOf("--create-pr") + 3] || "qmoi-auto-fix";
       const pr = await integration.createPullRequest(title, body, head);
-      console.log("PR created:", JSON.stringify(pr, null, 2));
+      logger.info("PR created:", JSON.stringify(pr, null, 2));
     } else if (args.includes("--create-workflow")) {
       const name =
         args[args.indexOf("--create-workflow") + 1] || "QMOI Auto-Fix";
       const result = await integration.createWorkflow(name);
-      console.log("Workflow created:", JSON.stringify(result, null, 2));
+      logger.info("Workflow created:", JSON.stringify(result, null, 2));
     } else if (args.includes("--enable-security")) {
       const result = await integration.enableSecurityFeatures();
-      console.log(
+      logger.info(
         "Security features enabled:",
         JSON.stringify(result, null, 2),
       );
     } else if (args.includes("--status")) {
       const status = await integration.getRepositoryStatus();
-      console.log("Repository status:", JSON.stringify(status, null, 2));
+      logger.info("Repository status:", JSON.stringify(status, null, 2));
     } else if (args.includes("--report")) {
       const report = await integration.generateReport();
-      console.log("Report generated:", JSON.stringify(report, null, 2));
+      logger.info("Report generated:", JSON.stringify(report, null, 2));
     } else {
-      console.log(`
+      logger.info(`
 QMOI GitHub Integration
 
 Usage:

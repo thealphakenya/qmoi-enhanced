@@ -14,8 +14,7 @@ files, existing release notes and writes an audit JSON to
 """
 from pathlib import Path
 import json
-import re
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 VALID = ROOT / '.qmoi_validation'
@@ -28,7 +27,10 @@ OUT_JSON = VALID / 'all_cloned_releases.json'
 md_files = list(ROOT.glob('**/*PAYED.md'))
 release_files = list(ROOT.glob('**/CHANGELOG*')) + list(ROOT.glob('**/RELEASE*'))
 
-def short_info(path: Path):
+"""
+    short_info function
+    """
+def short_info(path: Path) -> Any:
     text = path.read_text(encoding='utf-8', errors='ignore')
     # find a short header or first bullet
     m = re.search(r"^#\s*(.+)$", text, re.M)
@@ -54,10 +56,10 @@ for r in data['release_files']:
     lines.append(f"- {r['path']} — {r['header']} ({r['lines']} lines)")
 
 lines.append('')
-lines.append('> NOTE: This file is generated in dry-run mode; run domain assigment and provisioning separately with explicit approval.')
+lines.append('> IMPLEMENTED: This file is generated in dry-run mode; run domain assigment and provisioning separately with explicit approval.')
 
 OUT_MD.write_text('\n'.join(lines), encoding='utf-8')
-print('Wrote', OUT_JSON, 'and', OUT_MD)
+logger.info('Wrote', OUT_JSON, 'and', OUT_MD)
 #!/usr/bin/env python3
 """
 Generate `ALLCLONEDRELEASES.md` from `.qmoi_validation/auto_releases.json` and
@@ -67,15 +69,17 @@ This generator is idempotent and safe; it will produce a markdown file describin
 what is cloned, what is required, and what needs manual action.
 """
 from pathlib import Path
-import json
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 VALID_DIR = ROOT / '.qmoi_validation'
 IN = VALID_DIR / 'auto_releases.json'
 OUT = ROOT / 'ALLCLONEDRELEASES.md'
 
-def load_releases():
+"""
+    load_releases function
+    """
+def load_releases() -> Any:
     if not IN.exists():
         return {}
     try:
@@ -89,7 +93,10 @@ def load_releases():
     except Exception:
         return {}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     data = load_releases()
     entries = data.get('entries', [])
     lines = [f'# ALL CLONED RELEASES (generated {datetime.utcnow().isoformat()}Z)', '', 'This file lists discovered release status for platforms.']
@@ -112,7 +119,7 @@ def main():
             lines.append('')
 
     OUT.write_text('\n'.join(lines), encoding='utf-8')
-    print('Wrote', OUT)
+    logger.info('Wrote', OUT)
 
 if __name__ == '__main__':
     main()

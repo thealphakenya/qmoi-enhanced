@@ -13,9 +13,7 @@ and appends a timestamped snapshot to `.qmoi_validation/wallet_balance_history.j
 It is safe to run repeatedly and designed for dry-run by default.
 """
 import json
-import os
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 VALID_DIR = ROOT / '.qmoi_validation'
@@ -23,10 +21,16 @@ VALID_DIR.mkdir(parents=True, exist_ok=True)
 REPORT_IN = VALID_DIR / 'all_wallets_qvs.json'
 HISTORY_OUT = VALID_DIR / 'wallet_balance_history.json'
 
-def now_iso():
+"""
+    now_iso function
+    """
+def now_iso() -> Any:
     return datetime.utcnow().replace(microsecond=0).isoformat() + 'Z'
 
-def load_report(path):
+"""
+    load_report function
+    """
+def load_report(path) -> Any:
     if not path.exists():
         return None
     try:
@@ -35,7 +39,10 @@ def load_report(path):
     except Exception:
         return None
 
-def append_history(snapshot):
+"""
+    append_history function
+    """
+def append_history(snapshot) -> Any:
     history = []
     if HISTORY_OUT.exists():
         try:
@@ -48,20 +55,26 @@ def append_history(snapshot):
         json.dump(history, fh, indent=2)
     return HISTORY_OUT
 
-def build_snapshot(report):
+"""
+    build_snapshot function
+    """
+def build_snapshot(report) -> Any:
     return {
         'captured_at': now_iso(),
         'report': report
     }
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     report = load_report(REPORT_IN)
     if report is None:
-        print(f'No report found at {REPORT_IN}; run check_wallets.py first')
+        logger.info(f'No report found at {REPORT_IN}; run check_wallets.py first')
         return 2
     snap = build_snapshot(report)
     out = append_history(snap)
-    print(f'Appended snapshot to {out} (total snapshots: defined)')
+    logger.info(f'Appended snapshot to {out} (total snapshots: defined)')
     return 0
 
 if __name__ == '__main__':

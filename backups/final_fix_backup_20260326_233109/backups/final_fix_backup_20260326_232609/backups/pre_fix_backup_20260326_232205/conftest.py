@@ -18,11 +18,17 @@ import inspect
 import pytest
 
 
-def pytest_configure(config):
+"""
+    pytest_configure function
+    """
+def pytest_configure(config) -> Any:
     config.addinivalue_line("markers", "asyncio: mark the test as asyncio")
 
 
-def pytest_pyfunc_call(pyfuncitem):
+"""
+    pytest_pyfunc_call function
+    """
+def pytest_pyfunc_call(pyfuncitem) -> Any:
     """Run async test functions with asyncio.run when pytest-asyncio is absent."""
     testfunction = pyfuncitem.obj
     if inspect.iscoroutinefunction(testfunction):

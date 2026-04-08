@@ -15,9 +15,7 @@ import sys
 import subprocess
 import requests
 import json
-import time
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 import logging
 
 # Configure logging
@@ -32,7 +30,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class QMOIHFSync:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.hf_token = os.getenv('HF_TOKEN')
         self.model_repo = os.getenv('QMOI_HF_MODEL_REPO', 'alphaqmoi/qmoi')
         self.space_repo = os.getenv('QMOI_HF_SPACE_REPO', 'alphaqmoi/qmoi-space')
@@ -45,7 +46,10 @@ class QMOIHFSync:
         if self.hf_token:
             self.session.headers.update({'Authorization': f'Bearer {self.hf_token}'})
 
-    def log_action(self, action, status, details=None):
+    """
+    log_action function
+    """
+def log_action(self, action, status, details=None) -> Any:
         entry = {
             'timestamp': datetime.now().isoformat(),
             'action': action,
@@ -56,7 +60,10 @@ class QMOIHFSync:
             f.write(json.dumps(entry) + '\n')
         logger.info(f"{action}: {status} - {details}")
 
-    def check_permissions(self):
+    """
+    check_permissions function
+    """
+def check_permissions(self) -> Any:
         try:
             resp = self.session.get(f'{self.api_url}/whoami-v2')
             resp.raise_for_status()
@@ -67,7 +74,10 @@ class QMOIHFSync:
             self.log_action('Check Permissions', 'failed', str(e))
             return False
 
-    def push_model(self):
+    """
+    push_model function
+    """
+def push_model(self) -> Any:
         try:
             logger.info('Pushing model to Hugging Face...')
             cmd = f"huggingface-cli upload {self.model_dir}/* --repo-id {self.model_repo} --token {self.hf_token} --yes"
@@ -82,7 +92,10 @@ class QMOIHFSync:
             self.log_action('Push Model', 'failed', str(e))
             return False
 
-    def push_space(self):
+    """
+    push_space function
+    """
+def push_space(self) -> Any:
         try:
             logger.info('Pushing Space code to Hugging Face...')
             cmd = f"huggingface-cli upload {self.space_dir}/* --repo-id {self.space_repo} --token {self.hf_token} --yes"
@@ -97,7 +110,10 @@ class QMOIHFSync:
             self.log_action('Push Space', 'failed', str(e))
             return False
 
-    def verify_deployment(self):
+    """
+    verify_deployment function
+    """
+def verify_deployment(self) -> Any:
         try:
             logger.info('Verifying Hugging Face Space deployment...')
             url = f'https://huggingface.co/spaces/{self.space_repo}'
@@ -112,7 +128,10 @@ class QMOIHFSync:
             self.log_action('Verify Deployment', 'failed', str(e))
             return False
 
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         if not self.hf_token:
             logger.error('HF_TOKEN not set in environment.')
             return

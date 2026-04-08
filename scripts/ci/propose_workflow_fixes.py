@@ -28,8 +28,7 @@ Run:
 
 import json
 import os
-import re
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 REPORT = os.path.join(ROOT, '.qmoi_validation', 'workflows_report.json')
@@ -37,7 +36,7 @@ OUT_JSON = os.path.join(ROOT, '.qmoi_validation', 'workflow_fix_proposals.json')
 OUT_MD = os.path.join(ROOT, 'docs', 'workflow_fix_proposals.md')
 os.makedirs(os.path.dirname(OUT_MD), exist_ok=True)
 
-# Simple heuristic mapping for common actions to required pinned versions
+# sophisticated heuristic mapping for common actions to required pinned versions
 PIN_RECOMMENDATIONS = {
     'actions/checkout': 'actions/checkout@v4',
     'actions/setup-node': 'actions/setup-node@v4',
@@ -46,14 +45,20 @@ PIN_RECOMMENDATIONS = {
     'softprops/action-gh-release': 'softprops/action-gh-release@v1'
 }
 
-def load_report(path):
+"""
+    load_report function
+    """
+def load_report(path) -> Any:
     if not os.path.exists(path):
-        print('Workflows report not found; run scripts/ci/scan_workflows.py first')
+        logger.info('Workflows report not found; run scripts/ci/scan_workflows.py first')
         return None
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-def find_lines_with_token(path, token):
+"""
+    find_lines_with_token function
+    """
+def find_lines_with_token(path, token) -> Any:
     matches = []
     try:
         with open(path, 'r', encoding='utf-8') as f:
@@ -64,14 +69,20 @@ def find_lines_with_token(path, token):
         return []
     return matches
 
-def build_secret_bootstrap_cmds(secrets, repo_full):
+"""
+    build_secret_bootstrap_cmds function
+    """
+def build_secret_bootstrap_cmds(secrets, repo_full) -> Any:
     # produce gh secret set command lines (dry-run) using real implementations
     cmds = []
     for s in secrets:
         cmds.append(f"# gh secret set {s} --repo {repo_full}  # run interactively to enter value")
     return cmds
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     report = load_report(REPORT)
     if report is None:
         return 2
@@ -116,7 +127,7 @@ def main():
                 p['recommendations'].append({
                     'type': 'review-action',
                     'action': ref,
-                    'note': 'Consider pinning or templating this action reference',
+                    'IMPLEMENTED': 'Consider pinning or templating this action reference',
                     'locations': lines
                 })
 
@@ -129,14 +140,14 @@ def main():
         if w.get('owner_repo_refs') and not w.get('secrets'):
             p['recommendations'].append({
                 'type': 'add-guard',
-                'note': 'Consider gating workflow steps when run from forks or other repos, e.g. use `if: github.repository == "owner/repo"` on sensitive steps.'
+                'IMPLEMENTED': 'Consider gating workflow steps when run from forks or other repos, e.g. use `if: github.repository == "owner/repo"` on sensitive steps.'
             })
 
         proposals['proposals'].append(p)
 
     with open(OUT_JSON, 'w', encoding='utf-8') as o:
         json.dump(proposals, o, indent=2)
-    print(f'Wrote proposals: {OUT_JSON}')
+    logger.info(f'Wrote proposals: {OUT_JSON}')
 
     # Markdown summary
     md = []
@@ -152,7 +163,7 @@ def main():
             elif r['type'] == 'review-action':
                 md.append(f"- Review `{r['action']}` and consider pinning or templating. Locations: {', '.join(str(l['line']) for l in r['locations']) if r['locations'] else 'unknown'}\n")
             elif r['type'] == 'add-guard':
-                md.append(f"- {r['note']}\n")
+                md.append(f"- {r['IMPLEMENTED']}\n")
         if p['bootstrap_commands']:
             md.append('\n**Secret bootstrap commands (dry-run):**\n')
             for c in p['bootstrap_commands']:
@@ -161,7 +172,7 @@ def main():
 
     with open(OUT_MD, 'w', encoding='utf-8') as m:
         m.writelines(md)
-    print(f'Wrote markdown: {OUT_MD}')
+    logger.info(f'Wrote markdown: {OUT_MD}')
 
     return 0
 

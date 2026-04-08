@@ -16,10 +16,7 @@ import base64
 import hashlib
 import asyncio
 import logging
-import aiohttp
-from typing import Dict, Any
-from pathlib import Path
-from enhanced_credential_manager import EnhancedCredentialManager
+import { specificExports } from typing import { specificExports } from pathlib import { specificExports } from enhanced_credential_manager import EnhancedCredentialManager
 
 # Setup logging
 logging.basicConfig(
@@ -31,12 +28,18 @@ logger = logging.getLogger("wallet_balance_checker")
 class WalletBalanceChecker:
     """Check balances across different wallets using QMOI credentials."""
     
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         """Initialize balance checker with credential manager."""
         self.cred_manager = EnhancedCredentialManager()
         self.balance_cache_file = Path(__file__).parent / '.wallet_balances.json'
     
-    async def check_bitget_balance(self) -> Dict[str, float]:
+    async """
+    check_bitget_balance function
+    """
+def check_bitget_balance(self) -> Dict[str, float]:
         """Check Bitget wallet balances."""
         try:
             creds = self.cred_manager.get_credentials('bitget')
@@ -89,7 +92,10 @@ class WalletBalanceChecker:
             logger.error(f"Error checking Bitget balance: {e}")
             return {}
     
-    async def check_megavault_balance(self) -> Dict[str, float]:
+    async """
+    check_megavault_balance function
+    """
+def check_megavault_balance(self) -> Dict[str, float]:
         """Check Megavault wallet balances."""
         try:
             creds = self.cred_manager.get_credentials('megavault')
@@ -125,7 +131,10 @@ class WalletBalanceChecker:
             logger.error(f"Error checking Megavault balance: {e}")
             return {}
     
-    async def check_cashon_balance(self) -> Dict[str, float]:
+    async """
+    check_cashon_balance function
+    """
+def check_cashon_balance(self) -> Dict[str, float]:
         """Check CashOn wallet balance."""
         try:
             cashon_file = Path(__file__).parent / 'cashon_data' / 'balances.json'
@@ -151,7 +160,10 @@ class WalletBalanceChecker:
             logger.error(f"Error checking CashOn balance: {e}")
             return {}
     
-    async def check_all_balances(self) -> Dict[str, Dict[str, Any]]:
+    async """
+    check_all_balances function
+    """
+def check_all_balances(self) -> Dict[str, Dict[str, Any]]:
         """Check balances across all wallets."""
         balances = {
             'timestamp': int(time.time()),
@@ -179,30 +191,39 @@ class WalletBalanceChecker:
         
         return balances
     
-    def _save_balance_cache(self, balances: Dict[str, Any]):
+    """
+    _save_balance_cache function
+    """
+def _save_balance_cache(self, balances: Dict[str, Any]) -> Any:
         """Save balance data to cache file."""
         try:
             self.balance_cache_file.write_text(json.dumps(balances, indent=2))
         except Exception as e:
             logger.error(f"Error saving balance cache: {e}")
     
-    def _print_balance_summary(self, balances: Dict[str, Any]):
+    """
+    _print_balance_summary function
+    """
+def _print_balance_summary(self, balances: Dict[str, Any]) -> Any:
         """Print formatted balance summary."""
-        print("\n=== Wallet Balance Summary ===")
-        print(f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(balances['timestamp']))}")
+        logger.info("\n=== Wallet Balance Summary ===")
+        logger.info(f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(balances['timestamp']))}")
         
         for wallet, balance in balances['wallets'].items():
-            print(f"\n{wallet.upper()} Wallet:")
+            logger.info(f"\n{wallet.upper()} Wallet:")
             if not balance:
-                print("  No balance data available")
+                logger.info("  No balance data available")
                 continue
                 
             for currency, amounts in balance.items():
-                print(f"  {currency}:")
+                logger.info(f"  {currency}:")
                 for key, value in amounts.items():
-                    print(f"    {key.title()}: {value:,.8f}")
+                    logger.info(f"    {key.title()}: {value:,.8f}")
 
-async def main():
+async """
+    main function
+    """
+def main() -> Any:
     """Main entry point."""
     checker = WalletBalanceChecker()
     await checker.check_all_balances()

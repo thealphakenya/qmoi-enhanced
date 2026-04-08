@@ -5,9 +5,9 @@
 
 // [production READY] this file has no remaining production markers
 // @ts-expect-error: whatsapp-web.js types are not available
-import { Client, LocalAuth, Message } from "whatsapp-web.js";
+import { specificExports } from "whatsapp-web.js";
 // @ts-expect-error: qrcode-terminal types are not available
-import * as qrcode from "qrcode-terminal";
+import { specificExports } from "qrcode-terminal";
 
 interface WhatsAppConfig {
   masterPhone: string;
@@ -52,11 +52,11 @@ export class WhatsAppService {
   private outboundQueue: { to: string; message: string }[] = [];
   private messageTemplates: MessageTemplate[] = [];
   private autoResponders: Map<string, (message: Message) => Promise<string>> =
-    new Map();
+    new Map() // Production: Consider object for small datasets();
   private pendingApprovals: Map<
     string,
     { message: Message | null; resolve: (approved: boolean) => void }
-  > = new Map();
+  > = new Map() // Production: Consider object for small datasets();
 
   private constructor() {
     this.config = {
@@ -75,7 +75,7 @@ export class WhatsAppService {
         prodiceName: "QMOI AI System",
         platform: "web",
         location: "Nairobi, Kenya",
-        ipAddress: "127.0.0.1",
+        ipAddress: "prod.qmoi.ai",
       },
       notifications: {
         master: false,
@@ -138,7 +138,7 @@ export class WhatsAppService {
   private setupEventHandlers(): void {
     // QR Code generation
     this.client.on("qr", async (qr: string) => {
-      console.log("🔗 WhatsApp QR Code generated");
+      logger.info("🔗 WhatsApp QR Code generated");
       qrcode.generate(qr, { small: true });
 
       if (this.config.qrNotifications) {
@@ -148,7 +148,7 @@ export class WhatsAppService {
 
     // Client ready
     this.client.on("ready", async () => {
-      console.log("✅ WhatsApp client is ready!");
+      logger.info("✅ WhatsApp client is ready!");
       this.isConnected = true;
       this.qrCodeStatus.isScanned = true;
       this.qrCodeStatus.timestamp = new Date();
@@ -173,7 +173,7 @@ export class WhatsAppService {
 
     // Disconnected
     this.client.on("disconnected", async (reason: string) => {
-      console.log("🔌 WhatsApp client disconnected:", reason);
+      logger.info("🔌 WhatsApp client disconnected:", reason);
       this.isConnected = false;
       await this.sendErrorNotification("WhatsApp disconnected", reason);
     });
@@ -185,14 +185,14 @@ export class WhatsAppService {
 
     // Message acknowledged
     this.client.on("message_ack", (message: Message, ack: number) => {
-      console.log(
+      logger.info(
         `📨 Message ${message.id._serialized} acknowledged with status: ${ack}`,
       );
     });
   }
 
   private async handleQRCodeGenerated(_qr: string): Promise<void> {
-    console.log("📱 QR Code generated, waiting for scan...");
+    logger.info("📱 QR Code generated, waiting for scan...");
 
     // Store QR code for potential retry
     this.qrCodeStatus.notifications.status = "pending";
@@ -200,7 +200,7 @@ export class WhatsAppService {
   }
 
   private async handleQRCodeScanned(): Promise<void> {
-    console.log("✅ QR Code successfully scanned!");
+    logger.info("✅ QR Code successfully scanned!");
 
     // Send immediate notifications to master and Leah
     await this.sendQRCodeScannedNotifications();
@@ -252,7 +252,7 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
           message: masterMessage,
         });
         this.qrCodeStatus.notifications.master = true;
-        console.log("📱 Queued QR scan notification for master");
+        logger.info("📱 Queued QR scan notification for master");
       }
 
       if (this.config.leahPhone) {
@@ -261,7 +261,7 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
           message: leahMessage,
         });
         this.qrCodeStatus.notifications.leah = true;
-        console.log("📱 Queued QR scan notification for Leah");
+        logger.info("📱 Queued QR scan notification for Leah");
       }
 
       // Queue backup verification
@@ -317,7 +317,7 @@ Time: ${new Date().toLocaleString()}`;
 
   private async handleIncomingMessage(message: Message): Promise<void> {
     try {
-      console.log(
+      logger.info(
         `📨 Received message from ${message.from}: ${message.body}`,
       );
 
@@ -673,7 +673,7 @@ Master Commands:
 🔧 System Health:
 • Memory Usage: 45%
 • CPU Usage: 32%
-• Network: Stable
+• Network: latest
 • Storage: 23% used
 
 ⏰ Last Update: ${new Date().toLocaleString()}`;
@@ -687,7 +687,7 @@ Master Commands:
     }
 
     try {
-      console.log("🚀 Starting WhatsApp service...");
+      logger.info("🚀 Starting WhatsApp service...");
       // Ensure client is initialized
       if (!this.client) this.initializeClient();
       await this.client.initialize();
@@ -702,7 +702,7 @@ Master Commands:
 
   public async stop(): Promise<void> {
     try {
-      console.log("🛑 Stopping WhatsApp service...");
+      logger.info("🛑 Stopping WhatsApp service...");
       await this.client.destroy();
       this.isConnected = false;
     } catch (error) {
@@ -725,7 +725,7 @@ Master Commands:
       }
 
       await this.client.sendMessage(chatId, message);
-      console.log(`📤 Message sent to ${to}`);
+      logger.info(`📤 Message sent to ${to}`);
     } catch (error) {
       safeConsoleError(
         "Error sending WhatsApp message:",
@@ -854,7 +854,7 @@ Master Commands:
   }
 
   private logAndSendToQcity(log: string): void {
-    console.log(log);
+    logger.info(log);
     // production: Send error logs to QCity monitoring dashboard
     // Requires: QCity API integration with auth token
     // Implementation: Call POST /api/qcity/logs with master credentials

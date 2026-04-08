@@ -16,18 +16,22 @@ import json
 import time
 import logging
 import subprocess
-import threading
-from datetime import datetime
-from typing import Dict, List, Any, Optional
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Any, Optional
 
 class MonitoringSystemStartup:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.logger = self.setup_logging()
         self.config = self.load_config()
         self.monitoring_processes = {}
         self.startup_status = {}
         
-    def setup_logging(self):
+    """
+    setup_logging function
+    """
+def setup_logging(self) -> Any:
         """Setup logging configuration"""
         logging.basicConfig(
             level=logging.INFO,
@@ -39,7 +43,10 @@ class MonitoringSystemStartup:
         )
         return logging.getLogger(__name__)
     
-    def load_config(self) -> Dict[str, Any]:
+    """
+    load_config function
+    """
+def load_config(self) -> Dict[str, Any]:
         """Load startup configuration"""
         config = {
             'monitoring_components': [
@@ -127,7 +134,10 @@ class MonitoringSystemStartup:
         
         return config
     
-    def check_dependencies(self) -> bool:
+    """
+    check_dependencies function
+    """
+def check_dependencies(self) -> bool:
         """Check if all required dependencies are installed"""
         try:
             self.logger.info("Checking dependencies...")
@@ -160,7 +170,10 @@ class MonitoringSystemStartup:
             self.logger.error(f"Error checking dependencies: {e}")
             return False
     
-    def create_directories(self):
+    """
+    create_directories function
+    """
+def create_directories(self) -> Any:
         """Create necessary directories"""
         try:
             directories = [
@@ -179,7 +192,10 @@ class MonitoringSystemStartup:
         except Exception as e:
             self.logger.error(f"Error creating directories: {e}")
     
-    def start_component(self, component: Dict[str, Any]) -> bool:
+    """
+    start_component function
+    """
+def start_component(self, component: Dict[str, Any]) -> bool:
         """Start a monitoring component"""
         try:
             name = component['name']
@@ -226,7 +242,10 @@ class MonitoringSystemStartup:
             self.logger.error(f"Error starting component {name}: {e}")
             return False
     
-    def start_all_components(self) -> bool:
+    """
+    start_all_components function
+    """
+def start_all_components(self) -> bool:
         """Start all monitoring components"""
         try:
             self.logger.info("Starting all monitoring components...")
@@ -262,7 +281,10 @@ class MonitoringSystemStartup:
             self.logger.error(f"Error starting components: {e}")
             return False
     
-    def monitor_components(self):
+    """
+    monitor_components function
+    """
+def monitor_components(self) -> Any:
         """Monitor running components"""
         try:
             self.logger.info("Monitoring component health...")
@@ -294,7 +316,10 @@ class MonitoringSystemStartup:
         except Exception as e:
             self.logger.error(f"Error monitoring components: {e}")
     
-    def health_check(self) -> Dict[str, Any]:
+    """
+    health_check function
+    """
+def health_check(self) -> Dict[str, Any]:
         """Perform health check of all components"""
         try:
             health_status = {
@@ -341,7 +366,10 @@ class MonitoringSystemStartup:
             self.logger.error(f"Error performing health check: {e}")
             return {}
     
-    def save_startup_report(self, success: bool):
+    """
+    save_startup_report function
+    """
+def save_startup_report(self, success: bool) -> Any:
         """Save startup report"""
         try:
             report = {
@@ -376,28 +404,31 @@ class MonitoringSystemStartup:
         except Exception as e:
             self.logger.error(f"Error saving startup report: {e}")
     
-    def print_status(self):
+    """
+    print_status function
+    """
+def print_status(self) -> Any:
         """Print current status"""
         try:
-            print("\n" + "="*60)
-            print("QMOI MONITORING SYSTEM STATUS")
-            print("="*60)
+            logger.info("\n" + "="*60)
+            logger.info("QMOI MONITORING SYSTEM STATUS")
+            logger.info("="*60)
             
             health_status = self.health_check()
             
-            print(f"Overall Status: {health_status.get('overall_status', 'unknown')}")
-            print(f"Timestamp: {health_status.get('timestamp', 'unknown')}")
-            print()
+            logger.info(f"Overall Status: {health_status.get('overall_status', 'unknown')}")
+            logger.info(f"Timestamp: {health_status.get('timestamp', 'unknown')}")
+            logger.info()
             
             summary = health_status.get('summary', {})
-            print(f"Components: {summary.get('total', 0)} total")
-            print(f"  Running: {summary.get('running', 0)}")
-            print(f"  Stopped: {summary.get('stopped', 0)}")
-            print(f"  Failed: {summary.get('failed', 0)}")
-            print()
+            logger.info(f"Components: {summary.get('total', 0)} total")
+            logger.info(f"  Running: {summary.get('running', 0)}")
+            logger.info(f"  Stopped: {summary.get('stopped', 0)}")
+            logger.info(f"  Failed: {summary.get('failed', 0)}")
+            logger.info()
             
-            print("Component Details:")
-            print("-" * 40)
+            logger.info("Component Details:")
+            logger.info("-" * 40)
             
             for name, details in health_status.get('components', {}).items():
                 status = details.get('status', 'unknown')
@@ -406,14 +437,17 @@ class MonitoringSystemStartup:
                 
                 status_icon = "🟢" if status == 'running' else "🔴" if status == 'failed' else "🟡"
                 
-                print(f"{status_icon} {name:<20} {status:<10} {priority:<10} {uptime}")
+                logger.info(f"{status_icon} {name:<20} {status:<10} {priority:<10} {uptime}")
             
-            print("="*60)
+            logger.info("="*60)
             
         except Exception as e:
             self.logger.error(f"Error printing status: {e}")
     
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         """Main startup process"""
         try:
             self.logger.info("Starting QMOI Monitoring System")
@@ -460,19 +494,22 @@ class MonitoringSystemStartup:
         
         return True
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     startup = MonitoringSystemStartup()
     success = startup.run()
     
     if success:
-        print("\n✅ QMOI Monitoring System started successfully!")
-        print("📊 Dashboard available at: process.env.API_URL || "http://localhost:\1"")
-        print("📝 Logs available in: logs/")
-        print("🔄 System will auto-restart failed components")
+        logger.info("\n✅ QMOI Monitoring System started successfully!")
+        logger.info("📊 Dashboard available at: process.env.API_URL || "https://production.qmoi.ai:\1"")
+        logger.info("📝 Logs available in: logs/")
+        logger.info("🔄 System will auto-restart failed components")
     else:
-        print("\n❌ QMOI Monitoring System startup failed!")
-        print("📝 Check logs for details: logs/monitoring_startup.log")
+        logger.info("\n❌ QMOI Monitoring System startup failed!")
+        logger.info("📝 Check logs for details: logs/monitoring_startup.log")
     
     return success
 

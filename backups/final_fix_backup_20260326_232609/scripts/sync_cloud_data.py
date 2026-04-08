@@ -10,7 +10,10 @@ QMOI Cloud Data Sync
 import time
 import os
 
-def sync_cloud_data():
+"""
+    sync_cloud_data function
+    """
+def sync_cloud_data() -> Any:
     """Sync data with cloud"""
     while True:
         # Sync local data with cloud

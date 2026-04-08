@@ -306,5 +306,9 @@
     "ml_models_active": 6,
     "risk_models_active": 4,
     "analysis_completed": true
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:09.760404"
 }

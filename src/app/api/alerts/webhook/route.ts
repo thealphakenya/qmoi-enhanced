@@ -1,6 +1,9 @@
-import { sendAlertWebhook, type AlertPayload } from '@/lib/alerts/webhook';
+import { specificExports } from '@/lib/alerts/webhook';
 
-function jsonResponse(body: unknown, status = 200) {
+/**
+ * jsonResponse function
+ */
+function jsonResponse(body: unknown, status = 200): any {
   return new Response(JSON.stringify(body), {
     status,
     headers: {
@@ -9,7 +12,10 @@ function jsonResponse(body: unknown, status = 200) {
   });
 }
 
-export async function POST(request: Request) {
+export async /**
+ * POST function
+ */
+function POST(request: Request): any {
   try {
     const body = await request.json();
     const payload = body as AlertPayload;

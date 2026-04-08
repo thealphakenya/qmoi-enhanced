@@ -14,5 +14,9 @@
   "linux": {
     "status": "fail",
     "reason": "Binary included after rebuild"
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:05.766117"
 }

@@ -4,17 +4,23 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import qmoiRevenueEngine from "../../../../lib/qmoi-revenue-engine";
-import { logEvent } from "../../../../lib/security_check";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/qmoi-revenue-engine";
+import { specificExports } from "../../../../lib/security_check";
 
 // Verify master token
-function verifyMasterToken(req: NextRequest): boolean {
+/**
+ * verifyMasterToken function
+ */
+function verifyMasterToken(req: NextRequest): any: boolean {
   const masterToken = req.headers.get("x-qmoi-master");
   return masterToken === process.env.QMOI_MASTER_TOKEN;
 }
 
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   if (!verifyMasterToken(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -60,7 +66,10 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   if (!verifyMasterToken(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

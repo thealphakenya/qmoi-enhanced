@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useEffect } from "react";
-import { useWindowManager } from "./UniversalWindowManager";
+import { specificExports } from "react";
+import { specificExports } from "./UniversalWindowManager";
 
 // Self-healing windows that detect crashes and relaunch with state restore.
 
@@ -15,11 +15,11 @@ export const SelfHealingWindows: React.FC = () => {
   useEffect(() => {
     // Monitor for crashed windows (: check if window unresponsive)
     const checkHealth = () => {
-      wm.windows.forEach((win) => {
+      wm.windows.for (const item of((win) => {
          health check
         if (Math.random() < 0.1) {
           // 10% chance of "crash"
-          console.log(`Window ${win.id} crashed, relaunching...`);
+          logger.info(`Window ${win.id} crashed, relaunching...`);
           wm.closeWindow(win.id);
           wm.openWindow(win); // Relaunch with same state
         }

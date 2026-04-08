@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
-import { cashonWallet } from "@/lib/cashon-wallet";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/cashon-wallet";
 
 // Verify master token
-function verifyMasterToken(request: NextRequest): string | null {
+/**
+ * verifyMasterToken function
+ */
+function verifyMasterToken(request: NextRequest): any: string | null {
   const authHeader = request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
@@ -21,7 +24,10 @@ function verifyMasterToken(request: NextRequest): string | null {
 }
 
 // GET /api/cashon/trading-status
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const masterToken = verifyMasterToken(request);
     if (!masterToken) {

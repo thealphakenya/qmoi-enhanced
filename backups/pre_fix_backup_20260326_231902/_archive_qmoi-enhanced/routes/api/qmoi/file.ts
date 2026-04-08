@@ -4,18 +4,21 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import type { NextApiRequest, NextApiResponse } from "next";
-// import fs from 'fs';
-import path from "path";
+import { specificExports } from "next";
+// import { specificExports } from 'fs';
+import { specificExports } from "path";
 
 const AUDIT_LOG = path.join(process.cwd(), "qmoi_file_audit.log");
 
+/**
+ * logAudit function
+ */
 function logAudit(
   action: string,
   filePath: string,
   content?: string,
   replace?: string,
-) {
+): any {
   const entry = {
     timestamp: new Date().toISOString(),
     user: "master",
@@ -31,7 +34,11 @@ function logAudit(
   // fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + '\n');
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(req: NextApiRequest, res: NextApiResponse) {
   [production READY]: Add real master/admin authentication
   if (req.method === "POST") {
     const { action, filePath, content, replace } = req.body;

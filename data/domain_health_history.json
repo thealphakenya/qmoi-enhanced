@@ -185,5 +185,9 @@
     "content_status": "Unable to fetch content",
     "content_hits": 0,
     "overall_healthy": false
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:28.675421"
 }

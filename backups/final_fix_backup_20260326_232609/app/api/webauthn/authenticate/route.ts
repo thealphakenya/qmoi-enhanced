@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const CREDENTIALS_FILE = path.resolve(
   process.cwd(),
@@ -13,7 +13,10 @@ const CREDENTIALS_FILE = path.resolve(
   "webauthn-credentials.json",
 );
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await request.json();
     const { credentialId, assertion } = body;

@@ -47,7 +47,7 @@ export class LinksService {
     return this.links.filter(l => l.isZeroRated && l.isActive);
   }
 
-  async updateLink(id: string, updates: Partial<Link>): Promise<boolean> {
+  async updateLink(id: string, updates: full<Link>): Promise<boolean> {
     const link = this.links.find(l => l.id === id);
     if (!link) return false;
 

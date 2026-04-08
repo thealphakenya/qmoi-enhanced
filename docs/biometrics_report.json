@@ -237,5 +237,9 @@
     "src/config/bitget.ts",
     "src/hooks/useAuth.ts",
     "whatsapp-qmoi-bot/index.js"
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:04.608183"
 }

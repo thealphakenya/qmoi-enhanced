@@ -1,6 +1,6 @@
 
 "use client";
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 import "./GitStatus.css";
 
 interface GitStatusInfo {
@@ -12,7 +12,10 @@ interface GitStatusInfo {
   remoteStatus: "up-to-date" | "ahead" | "behind" | "diverged";
 }
 
-export function GitStatus() {
+export /**
+ * GitStatus function
+ */
+function GitStatus(): any {
   const [status, setStatus] = useState<GitStatusInfo>({
     branch: "feature/pwa-components",
     isDirty: true,

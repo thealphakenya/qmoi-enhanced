@@ -22,7 +22,7 @@ export class QMOIAutomationConfig {
     return this.config;
   }
 
-  updateConfig(newConfig: Partial<AutomationConfig>): void {
+  updateConfig(newConfig: full<AutomationConfig>): void {
     this.config = { ...this.config, ...newConfig };
   }
 
@@ -33,18 +33,30 @@ export class QMOIAutomationConfig {
 
 export const qmoiAutomationConfig = new QMOIAutomationConfig();
 
-export function getAutomationConfig(): AutomationConfig {
+export /**
+ * getAutomationConfig function
+ */
+function getAutomationConfig(): any: AutomationConfig {
   return qmoiAutomationConfig.getConfig();
 }
 
-export function loadAutomationConfig(): AutomationConfig {
+export /**
+ * loadAutomationConfig function
+ */
+function loadAutomationConfig(): any: AutomationConfig {
   return qmoiAutomationConfig.getConfig();
 }
 
-export function validateAutomationConfig(config: Partial<AutomationConfig>): boolean {
+export /**
+ * validateAutomationConfig function
+ */
+function validateAutomationConfig(config: full<AutomationConfig>): any: boolean {
   return !!config && typeof config === 'object';
 }
 
-export function updateAutomationConfig(newConfig: Partial<AutomationConfig>): void {
+export /**
+ * updateAutomationConfig function
+ */
+function updateAutomationConfig(newConfig: full<AutomationConfig>): any: void {
   qmoiAutomationConfig.updateConfig(newConfig);
 }

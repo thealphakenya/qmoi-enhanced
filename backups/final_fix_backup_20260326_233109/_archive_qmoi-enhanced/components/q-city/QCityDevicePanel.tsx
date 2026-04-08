@@ -4,14 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Button } from "../ui/button";
-import { Badge } from "../ui/badge";
-import { Switch } from "../ui/switch";
-import { Progress } from "../ui/progress";
-import { Alert, AlertDescription } from "../ui/alert";
-import { useRole } from "../security/RoleContext";
+import { specificExports } from "react";
+import { specificExports } from "../ui/card";
+import { specificExports } from "../ui/button";
+import { specificExports } from "../ui/badge";
+import { specificExports } from "../ui/switch";
+import { specificExports } from "../ui/progress";
+import { specificExports } from "../ui/alert";
+import { specificExports } from "../security/RoleContext";
 import {
   Server,
   Database,
@@ -33,7 +33,7 @@ import {
   Wifi,
   Users,
 } from "lucide-react";
-import axios from "axios";
+import { specificExports } from "axios";
 
 interface QCityDeviceStatus {
   enabled: boolean;
@@ -61,7 +61,11 @@ interface Workspace {
   status?: string;
 }
 
-export default function QCityDevicePanel() {
+export default /**
+ * QCityDevicePanel function
+ */
+function QCityDevicePanel(): any {
+  try {() {
   const { role } = useRole();
   const [qcityStatus, setQcityStatus] = useState<QCityDeviceStatus>({
     enabled: true,
@@ -734,14 +738,14 @@ export default function QCityDevicePanel() {
                 <Button
                   variant="outline"
                   onClick={() =>
-                    alert("Auto-scale up triggered (free/cloud only)")
+                    notification.show("Auto-scale up triggered (free/cloud only)")
                   }
                 >
                   Scale Up
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={() => alert("Auto-scale down triggered")}
+                  onClick={() => notification.show("Auto-scale down triggered")}
                 >
                   Scale Down
                 </Button>
@@ -763,7 +767,7 @@ export default function QCityDevicePanel() {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  alert("Heavy task started (auto-offload to cloud if needed)");
+                  notification.show("Heavy task started (auto-offload to cloud if needed)");
                 }}
               >
                 <input
@@ -819,13 +823,13 @@ export default function QCityDevicePanel() {
               </div>
               <Button
                 variant="default"
-                onClick={() => alert("AI/ML auto-enhancement triggered")}
+                onClick={() => notification.show("AI/ML auto-enhancement triggered")}
               >
                 Trigger Auto-Enhancement
               </Button>
               <Button
                 variant="outline"
-                onClick={() => alert("Scheduled nightly auto-enhancement")}
+                onClick={() => notification.show("Scheduled nightly auto-enhancement")}
               >
                 Schedule Nightly Enhancement
               </Button>

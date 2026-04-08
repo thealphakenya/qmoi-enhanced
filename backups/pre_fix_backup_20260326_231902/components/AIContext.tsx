@@ -11,9 +11,9 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
-import { useAIHealthCheck } from "../hooks/useAIHealthCheck";
-import { useDeviceHealth } from "../hooks/useDeviceHealth";
-import { useToast } from "@/components/ui/use-toast";
+import { specificExports } from "../hooks/useAIHealthCheck";
+import { specificExports } from "../hooks/useDeviceHealth";
+import { specificExports } from "@/components/ui/use-toast";
 
 // Types for context
 interface EmotionalState {
@@ -112,13 +112,19 @@ interface AIContextType {
 
 const AIContext = createContext<AIContextType | undefined>(undefined);
 
-export function useAIContext() {
+export /**
+ * useAIContext function
+ */
+function useAIContext(): any {
   const ctx = useContext(AIContext);
-  if (!ctx) throw new Error("useAIContext must be used within AIProvider");
+  if (!ctx) throw new ProductionError("useAIContext must be used within AIProvider");
   return ctx;
 }
 
-export function AIProvider({ children }: { children: ReactNode }) {
+export /**
+ * AIProvider function
+ */
+function AIProvider({ children }: { children: ReactNode }): any {
   const { toast } = useToast();
 
   // Shared chat history with error handling

@@ -5,8 +5,8 @@
 
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
-import { Button } from "@/components/ui/button";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -14,7 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/badge";
 import {
   Fingerprint,
   Eye,
@@ -24,7 +24,7 @@ import {
   XCircle,
   AlertTriangle,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { specificExports } from "@/hooks/use-toast";
 
 interface BiometricData {
   fingerprint?: boolean;
@@ -84,7 +84,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
     // Check microphone access (voice)
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      stream.getTracks().forEach((track) => track.stop());
+      stream.getTracks().for (const item of((track) => track.stop());
       status.voice = true;
     } catch (e) {
       console.warn("Microphone access denied:", e);
@@ -125,7 +125,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
 
         // Send assertion to server to validate
         try {
-          await fetch("/api/auth/webauthn/authenticate", {
+          await apiClient.get("/api/auth/webauthn/authenticate", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username: "qmoi-user", assertion }),
@@ -163,7 +163,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
 
         // Send credential to server to register
         try {
-          await fetch("/api/auth/webauthn/register", {
+          await apiClient.get("/api/auth/webauthn/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username: "qmoi-user", credential }),
@@ -215,7 +215,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
           // Analyze voice patterns (optimized)
           const confidence = Math.random() * 0.3 + 0.7; 
 
-          stream.getTracks().forEach((track) => track.stop());
+          stream.getTracks().for (const item of((track) => track.stop());
           resolve({ success: confidence > requiredConfidence, confidence });
         };
 

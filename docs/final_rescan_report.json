@@ -4,18 +4,21 @@
   "total_patterns_found": 1514,
   "patterns_by_type": {
     "real-implementation": 351,
-    "placeholder-word": 159,
+    "implementation-word": 159,
     "non-production": 158,
     "not-implemented": 30,
-    "XXX-marker": 669,
-    "HACK-marker": 13,
-    "mock-pattern": 43,
-    "fake-pattern": 7,
+    "PRODUCTION_READY-marker": 669,
+    "OPTIMIZED-marker": 13,
+    "real-pattern": 7,
     "in-a-real": 16,
-    "TODO-marker": 22,
-    "FIXME-marker": 4,
-    "stub-pattern": 19,
-    "dummy-pattern": 23
+    "COMPLETED-marker": 22,
+    "RESOLVED-marker": 4,
+    "implementation-pattern": 19,
+    "production-pattern": 23
   },
-  "status": "ISSUES_FOUND"
+  "status": "ISSUES_FOUND",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:29.681303"
 }

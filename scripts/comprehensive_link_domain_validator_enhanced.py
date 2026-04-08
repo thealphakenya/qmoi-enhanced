@@ -9,10 +9,7 @@ import json
 import re
 import subprocess
 import logging
-import os
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, List, Set
+import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from typing import Dict, List, Set
 import socket
 
 # Configure logging
@@ -35,7 +32,7 @@ FALLBACK_DOMAINS = {
     'qcity.qmoi.ai': 'qcity.qvillage.com',
     'yap.qmoi.ai': 'yap.qvillage.com',
     'qmoi-space.qmoi.ai': 'space.stableq.ai',
-    'q-stable.qmoi.ai': 'stable.stableq.ai',
+    'q-latest.qmoi.ai': 'latest.stableq.ai',
 }
 
 # Domain registry with expected endpoints
@@ -73,12 +70,12 @@ DOMAIN_REGISTRY = {
         'description': 'QMOI Space application',
         'fallback': 'space.stableq.ai'
     },
-    'q-stable.qmoi.ai': {
+    'q-latest.qmoi.ai': {
         'type': 'models',
         'critical': False,
         'endpoints': ['/api/health', '/'],
-        'description': 'Q-stable progressive web app',
-        'fallback': 'stable.stableq.ai'
+        'description': 'Q-latest progressive web app',
+        'fallback': 'latest.stableq.ai'
     },
     'qshare.qvillage.com': {
         'type': 'file_sharing',
@@ -110,13 +107,19 @@ DOMAIN_REGISTRY = {
 class EnhancedLinkDomainValidator:
     """Enhanced link and domain validator with synthetic health enforcement"""
     
-    def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced'):
+    """
+    __init__ function
+    """
+def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced') -> Any:
         self.workspace_root = Path(workspace_root)
         self.validation_results = {}
         self.all_domains = set()
         self.force_synthetic = FORCE_SYNTHETIC_HEALTH
         
-    def check_domain_real_health(self, domain: str) -> Dict:
+    """
+    check_domain_real_health function
+    """
+def check_domain_real_health(self, domain: str) -> Dict:
         """Check real domain health"""
         try:
             # Try DNS resolution
@@ -154,7 +157,10 @@ class EnhancedLinkDomainValidator:
                 'error': str(e)
             }
     
-    def make_synthetic_status(self, domain: str) -> Dict:
+    """
+    make_synthetic_status function
+    """
+def make_synthetic_status(self, domain: str) -> Dict:
         """Create synthetic healthy status (used when FORCE_SYNTHETIC_HEALTH=true)"""
         return {
             'is_accessible': True,
@@ -165,7 +171,10 @@ class EnhancedLinkDomainValidator:
             'reason': 'FORCE_SYNTHETIC_HEALTH mode active'
         }
     
-    def check_domain_health(self, domain: str, config: Dict) -> Dict:
+    """
+    check_domain_health function
+    """
+def check_domain_health(self, domain: str, config: Dict) -> Dict:
         """Check domain health with fallback support"""
         # Try real check first
         real_status = self.check_domain_real_health(domain)
@@ -239,7 +248,10 @@ class EnhancedLinkDomainValidator:
         
         return status
     
-    def generate_comprehensive_report(self) -> Dict:
+    """
+    generate_comprehensive_report function
+    """
+def generate_comprehensive_report(self) -> Dict:
         """Generate comprehensive report with synthetic health"""
         logger.info("Generating comprehensive links and domains report with synthetic health enforcement...")
         
@@ -288,10 +300,13 @@ class EnhancedLinkDomainValidator:
         
         return report
     
-    def create_links_readme_section(self, report: Dict) -> str:
+    """
+    create_links_readme_section function
+    """
+def create_links_readme_section(self, report: Dict) -> str:
         """Create enhanced README section with synthetic health"""
         section = f"""
-## 🌐 QMOI Complete Links & Domains Directory
+## 🌐 QMOI complete Links & Domains Directory
 
 **Last Updated**: {report['timestamp']}
 **Total Domains**: {report['total_domains']}
@@ -340,14 +355,20 @@ class EnhancedLinkDomainValidator:
         
         return section
     
-    def save_report(self, report: Dict, filename: str = 'links_domains_report_synthetic.json'):
+    """
+    save_report function
+    """
+def save_report(self, report: Dict, filename: str = 'links_domains_report_synthetic.json') -> Any:
         """Save comprehensive report"""
         output_path = self.workspace_root / filename
         with open(output_path, 'w') as f:
             json.dump(report, f, indent=2)
         logger.info(f"Report saved to {output_path}")
     
-    def run_full_validation(self):
+    """
+    run_full_validation function
+    """
+def run_full_validation(self) -> Any:
         """Run complete validation with synthetic health"""
         logger.info("=" * 80)
         logger.info("STARTING ENHANCED LINK & DOMAIN VALIDATION (WITH SYNTHETIC HEALTH)")
@@ -370,7 +391,10 @@ class EnhancedLinkDomainValidator:
         
         return report
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point"""
     validator = EnhancedLinkDomainValidator()
     report = validator.run_full_validation()
@@ -379,7 +403,7 @@ def main():
     readme_section = validator.create_links_readme_section(report)
     logger.info(f"\nREADME Section Generated:\n{readme_section}\n")
     
-    print(json.dumps(report, indent=2))
+    logger.info(json.dumps(report, indent=2))
 
 if __name__ == "__main__":
     main()

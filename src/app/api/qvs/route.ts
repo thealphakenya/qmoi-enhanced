@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 /* eslint-disable no-case-declarations */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { qvsSystem } from '@/qmoi/core/qvs/qvs-system';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/qmoi/core/qvs/qvs-system';
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
@@ -54,7 +57,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, config } = body;
@@ -64,7 +70,7 @@ export async function POST(request: NextRequest) {
         // Apply new configuration for unlimited operations
         if (config) {
           // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would update the QVS system configuration
-          console.log('QVS configuration update requested:', config);
+          logger.info('QVS configuration update requested:', config);
         }
         return NextResponse.json({
           success: true,

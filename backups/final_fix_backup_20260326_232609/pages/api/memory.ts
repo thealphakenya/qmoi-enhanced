@@ -3,15 +3,18 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextApiRequest, NextApiResponse } from "next";
-import path from "path";
-import fs from "fs";
+import { specificExports } from "next";
+import { specificExports } from "path";
+import { specificExports } from "fs";
 
 const MEMORY_FILE = path.resolve(process.cwd(), "qmoi_memory.json");
 
 type MemoryEntry = { user?: string; [key: string]: unknown };
 
-function readMemory(user?: string): MemoryEntry[] {
+/**
+ * readMemory function
+ */
+function readMemory(user?: string): any: MemoryEntry[] {
   if (!fs.existsSync(MEMORY_FILE)) return [];
   const all = JSON.parse(
     fs.readFileSync(MEMORY_FILE, "utf-8"),
@@ -20,7 +23,10 @@ function readMemory(user?: string): MemoryEntry[] {
   return all.filter((entry) => entry.user === user);
 }
 
-function saveMemory(entry: MemoryEntry) {
+/**
+ * saveMemory function
+ */
+function saveMemory(entry: MemoryEntry): any {
   let all: MemoryEntry[] = [];
   if (fs.existsSync(MEMORY_FILE)) {
     all = JSON.parse(fs.readFileSync(MEMORY_FILE, "utf-8")) as MemoryEntry[];
@@ -29,7 +35,11 @@ function saveMemory(entry: MemoryEntry) {
   fs.writeFileSync(MEMORY_FILE, JSON.stringify(all, null, 2));
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "GET") {
     const user = Array.isArray(req.query.user)
       ? req.query.user[0]

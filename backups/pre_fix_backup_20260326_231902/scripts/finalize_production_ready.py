@@ -3,8 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import re
 
 root_dir = Path('.')
@@ -63,10 +62,10 @@ for path in root_dir.rglob('*'):
         path.write_text(header + content, encoding='utf-8')
         files_marked_ready.append(str(path))
 
-print(f"Finalize scan: {len(files_marked_ready)} files marked ready, {len(files_with_gaps)} files still unresolved.")
+logger.info(f"Finalize scan: {len(files_marked_ready)} files marked ready, {len(files_with_gaps)} files still unresolved.")
 if files_with_gaps:
-    print('Examples of gaps:')
+    logger.info('Examples of gaps:')
     for f in files_with_gaps[:50]:
-        print(f)
+        logger.info(f)
     if len(files_with_gaps) > 50:
-        print(f"... and {len(files_with_gaps) - 50} more files")
+        logger.info(f"... and {len(files_with_gaps) - 50} more files")

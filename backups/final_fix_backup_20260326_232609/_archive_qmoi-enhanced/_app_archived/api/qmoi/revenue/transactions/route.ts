@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import qmoiRevenueEngine from "../../../../../lib/qmoi-revenue-engine";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../../lib/qmoi-revenue-engine";
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Verify master access
     const authHeader = request.headers.get("authorization");

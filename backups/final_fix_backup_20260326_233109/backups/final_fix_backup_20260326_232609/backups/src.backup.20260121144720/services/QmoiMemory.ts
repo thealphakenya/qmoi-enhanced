@@ -1,6 +1,6 @@
 // production implementation: this file has no remaining production markers
 // In-memory storage for QMOI memory (client-side only)
-import { getSessionHeaders } from "./qmoiSession";
+import { specificExports } from "./qmoiSession";
 interface MemoryRecord {
   id: number;
   key: string;
@@ -40,7 +40,7 @@ export class QmoiMemory {
     // attempt to persist to server-side memory proxy
     try {
       if (typeof fetch === "function") {
-        fetch("/api/qmoi/memory", {
+        apiClient.get("/api/qmoi/memory", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -77,13 +77,13 @@ export class QmoiMemory {
     // Kick off a background fetch to refresh client memoryStore from server
     try {
       if (typeof fetch === "function") {
-        fetch("/api/qmoi/memory", { headers: getSessionHeaders() })
+        apiClient.get("/api/qmoi/memory", { headers: getSessionHeaders() })
           .then((r) => r.json())
           .then((data) => {
             if (data && data.profiles) {
               // merge conversations if present
               if (Array.isArray(data.conversations)) {
-                data.conversations.forEach((c: unknown) => {
+                data.conversations.for (const item of((c: unknown) => {
                   const conv = c as Record<string, unknown>;
                   const user =
                     typeof conv["role"] === "string"

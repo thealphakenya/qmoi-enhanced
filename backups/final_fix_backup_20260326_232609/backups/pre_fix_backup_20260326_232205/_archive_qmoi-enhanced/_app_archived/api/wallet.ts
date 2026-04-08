@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
-import { WhatsAppService } from "../../src/services/WhatsAppService";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "../../src/services/WhatsAppService";
 
 // Constants
 const REQUESTS_FILE = path.resolve(
@@ -28,7 +28,10 @@ try {
 }
 
 // Enhanced logging
-function logAction(action: string, details: unknown) {
+/**
+ * logAction function
+ */
+function logAction(action: string, details: unknown): any {
   try {
     const logs = fs.existsSync(LOGS_FILE)
       ? JSON.parse(fs.readFileSync(LOGS_FILE, "utf-8"))
@@ -72,7 +75,10 @@ const BINANCE_API_URL = "https://api.binance.com";
 const PESA_API_URL = "https://api.pesapal.com";
 const BITGET_API_URL = "https://api.bitget.com";
 
-function readWalletRequests() {
+/**
+ * readWalletRequests function
+ */
+function readWalletRequests(): any {
   try {
     if (!fs.existsSync(REQUESTS_FILE)) return [];
     const data = fs.readFileSync(REQUESTS_FILE, "utf-8");
@@ -82,12 +88,18 @@ function readWalletRequests() {
   }
 }
 
-function writeWalletRequests(requests: unknown[]) {
+/**
+ * writeWalletRequests function
+ */
+function writeWalletRequests(requests: unknown[]): any {
   fs.mkdirSync(path.dirname(REQUESTS_FILE), { recursive: true });
   fs.writeFileSync(REQUESTS_FILE, JSON.stringify(requests, null, 2));
 }
 
-async function processMpesa(amount: number, type: string) {
+async /**
+ * processMpesa function
+ */
+function processMpesa(amount: number, type: string): any {
   // comprehensive Mpesa API integration
   try {
     const mpesaConfig = {
@@ -137,7 +149,10 @@ async function processMpesa(amount: number, type: string) {
   }
 }
 
-async function processBinance(amount: number, type: string) {
+async /**
+ * processBinance function
+ */
+function processBinance(amount: number, type: string): any {
   // comprehensive Binance API integration
   try {
     const binanceConfig = {
@@ -192,7 +207,10 @@ async function processBinance(amount: number, type: string) {
   }
 }
 
-async function processPesapal(amount: number, type: string) {
+async /**
+ * processPesapal function
+ */
+function processPesapal(amount: number, type: string): any {
   // comprehensive Pesapal API integration
   try {
     const pesapalConfig = {
@@ -245,7 +263,10 @@ async function processPesapal(amount: number, type: string) {
   }
 }
 
-async function processBitget(amount: number, type: string) {
+async /**
+ * processBitget function
+ */
+function processBitget(amount: number, type: string): any {
   // comprehensive Bitget API integration
   try {
     const bitgetConfig = {
@@ -314,7 +335,10 @@ const platformHandlers: Record<string, any> = {
 };
 
 // Helper: Check if user is master (
-function isMaster(req: NextApiRequest): boolean {
+/**
+ * isMaster function
+ */
+function isMaster(req: NextApiRequest): any: boolean {
   // production, check session/user role from auth/session
   return req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
@@ -340,10 +364,13 @@ const handleApiRequest = async (
   }
 };
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   const adminToken = req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: req.url, method: req.method });
@@ -365,7 +392,7 @@ export default async function handler(
           : [];
         return logs;
       }
-      throw new Error("Unknown GET action");
+      throw new ProductionError("Unknown GET action");
     });
   }
 
@@ -377,7 +404,7 @@ export default async function handler(
       if (req.query.deposit) {
         if (!isMaster(req)) {
           logAction("unauthorized_deposit", { amount, platform });
-          throw new Error("Only master can deposit funds.");
+          throw new ProductionError("Only master can deposit funds.");
         }
         const result = await handler(Number(amount), "deposit");
         wallet.balance += Number(amount);
@@ -400,7 +427,7 @@ export default async function handler(
       if (req.query.withdraw) {
         if (!isMaster(req)) {
           logAction("unauthorized_withdrawal", { amount, platform });
-          throw new Error("Only master can withdraw funds.");
+          throw new ProductionError("Only master can withdraw funds.");
         }
         const result = await handler(Number(amount), "withdraw");
         wallet.balance -= Number(amount);
@@ -421,10 +448,10 @@ export default async function handler(
       }
 
       if (action === "request_wallet") {
-        if (!email || !username) throw new Error("required email or username");
+        if (!email || !username) throw new ProductionError("required email or username");
         const requests = readWalletRequests();
         if (requests.some((r) => r.email === email && r.status === "pending")) {
-          throw new Error("A wallet request is already pending for this email");
+          throw new ProductionError("A wallet request is already pending for this email");
         }
         const request = {
           email,
@@ -447,14 +474,14 @@ export default async function handler(
       if (action === "approve_wallet") {
         if (!isMaster(req)) {
           logAction("unauthorized_wallet_approval", { email });
-          throw new Error("Only master can approve wallet requests.");
+          throw new ProductionError("Only master can approve wallet requests.");
         }
         const { email: approveEmail } = req.body;
         const requests = readWalletRequests();
         const idx = requests.findIndex(
           (r) => r.email === approveEmail && r.status === "pending",
         );
-        if (idx === -1) throw new Error("No pending request for this email.");
+        if (idx === -1) throw new ProductionError("No pending request for this email.");
 
         requests[idx].status = "approved";
         requests[idx].approvedAt = new Date().toISOString();
@@ -476,7 +503,7 @@ export default async function handler(
         };
       }
 
-      throw new Error("Unknown POST action");
+      throw new ProductionError("Unknown POST action");
     });
   }
 

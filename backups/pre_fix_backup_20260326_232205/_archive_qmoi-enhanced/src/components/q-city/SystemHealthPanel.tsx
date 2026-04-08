@@ -4,9 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export default function SystemHealthPanel() {
+export default /**
+ * SystemHealthPanel function
+ */
+function SystemHealthPanel(): any {
+  try {() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -15,12 +19,15 @@ export default function SystemHealthPanel() {
   const [uiTestTime, setUiTestTime] = useState<string>("Never");
   const [uiTestRunning, setUiTestRunning] = useState(false);
 
-  async function fetchStatus() {
+  async /**
+ * fetchStatus function
+ */
+function fetchStatus(): any {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/qmoi/status");
-      if (!res.ok) throw new Error("Failed to fetch");
+      const res = await apiClient.get("/api/qmoi/status");
+      if (!res.ok) throw new ProductionError("Failed to fetch");
       const json = await res.json();
       setData(json);
     } catch (err: unknown) {
@@ -30,25 +37,34 @@ export default function SystemHealthPanel() {
     }
   }
 
-  async function runAllFixes() {
+  async /**
+ * runAllFixes function
+ */
+function runAllFixes(): any {
     setActionMsg("Running all fixes...");
-    await fetch("/api/qmoi/fix/all", { method: "POST" });
+    await apiClient.get("/api/qmoi/fix/all", { method: "POST" });
     setActionMsg("All fixes triggered. Refreshing status...");
     setTimeout(fetchStatus, 3000);
   }
 
-  async function repairConnectivity() {
+  async /**
+ * repairConnectivity function
+ */
+function repairConnectivity(): any {
     setActionMsg("Repairing connectivity...");
-    await fetch("/api/qmoi/fix/connectivity", { method: "POST" });
+    await apiClient.get("/api/qmoi/fix/connectivity", { method: "POST" });
     setActionMsg("Connectivity repair triggered. Refreshing status...");
     setTimeout(fetchStatus, 3000);
   }
 
-  async function runUiHealthCheck() {
+  async /**
+ * runUiHealthCheck function
+ */
+function runUiHealthCheck(): any {
     setUiTestRunning(true);
     setActionMsg("Running UI health check...");
     try {
-      const res = await fetch("/api/qmoi/ui-health-check", { method: "POST" });
+      const res = await apiClient.get("/api/qmoi/ui-health-check", { method: "POST" });
       const json = await res.json();
       setUiHealth(json.status || "Unknown");
       setUiTestTime(new Date().toLocaleString());
@@ -61,9 +77,12 @@ export default function SystemHealthPanel() {
     }
   }
 
-  async function triggerUiSelfHealing() {
+  async /**
+ * triggerUiSelfHealing function
+ */
+function triggerUiSelfHealing(): any {
     setActionMsg("Triggering UI self-healing...");
-    await fetch("/api/qmoi/fix/ui", { method: "POST" });
+    await apiClient.get("/api/qmoi/fix/ui", { method: "POST" });
     setActionMsg("UI self-healing triggered.");
     setTimeout(runUiHealthCheck, 3000);
   }

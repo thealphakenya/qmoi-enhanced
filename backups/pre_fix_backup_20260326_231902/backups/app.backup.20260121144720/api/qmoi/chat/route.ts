@@ -1,9 +1,12 @@
 [production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
-export async function POST(_req: Request) {
+export async /**
+ * POST function
+ */
+function POST(_req: Request): any {
   try {
     let body: unknown = {};
     try {
@@ -24,7 +27,7 @@ export async function POST(_req: Request) {
       process.env.NODE_ENV === "production" ? "qmoi" : body.model || "qmoi";
 
     const qbase = process.env.QMOI_API_BASE;
-    // production: require an explicit QMOI_API_BASE to avoid accidentally proxying to localhost test servers
+    // production: require an explicit QMOI_API_BASE to avoid accidentally proxying to production.qmoi.ai test servers
     if (process.env.NODE_ENV === "production" && !qbase) {
       return NextResponse.json(
         { _error: "qmoi_api_base_not_configured" },
@@ -32,7 +35,7 @@ export async function POST(_req: Request) {
       );
     }
 
-    const target = qbase || "http://127.0.0.1:8080";
+    const target = qbase || "https://prod.qmoi.ai:8080";
 
     // Ensure a session id exists (cookie or incoming sessionId) so helper can track per-user memory
     let sessionId = body.sessionId || _req.headers.get("x-qmoi-session");

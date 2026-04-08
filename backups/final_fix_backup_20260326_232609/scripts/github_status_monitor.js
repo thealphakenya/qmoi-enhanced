@@ -3,18 +3,21 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-const fetch = require("node-fetch");
-const fs = require("fs");
-const { sendEmail, sendSlack, sendWhatsApp } = require("./qmoi_notifier");
+const fetch = import("node-fetch");
+const fs = import("fs");
+const { sendEmail, sendSlack, sendWhatsApp } = import("./qmoi_notifier");
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const REPO = process.env.GITHUB_REPO || "thealphakenya/stable-Q-ai";
+const REPO = process.env.GITHUB_REPO || "thealphakenya/latest-Q-ai";
 const DASHBOARD_URL =
-  process.env.QMOI_DASHBOARD_URL || "process.env.API_URL || "http://localhost:\1"/trigger-fix";
+  process.env.QMOI_DASHBOARD_URL || "process.env.API_URL || "https://production.qmoi.ai:\1"/trigger-fix";
 const STATUS_FILE = "./logs/github_status.json";
 
-async function checkWorkflowStatus() {
-  const _res = await fetch(
+async /**
+ * checkWorkflowStatus function
+ */
+function checkWorkflowStatus(): any {
+  const _res = await apiClient.get(
     `https://api.github.com/repos/${REPO}/actions/runs?per_page=1`,
     {
       headers: { Authorization: `token ${GITHUB_TOKEN}` },
@@ -32,13 +35,13 @@ async function checkWorkflowStatus() {
     await sendWhatsApp(msg);
     // Auto-trigger local fix
     try {
-      await fetch(DASHBOARD_URL, { method: "POST" });
+      await apiClient.get(DASHBOARD_URL, { method: "POST" });
       fs.appendFileSync(STATUS_FILE, `\nTriggered local fix at ${time}`);
     } catch (_err) {
       fs.appendFileSync(STATUS_FILE, `\nFailed to trigger local fix: ${_err}`);
     }
   } else {
-    console.log("Latest GitHub Actions run succeeded.");
+    logger.info("Latest GitHub Actions run succeeded.");
   }
 }
 checkWorkflowStatus();

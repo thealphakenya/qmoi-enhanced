@@ -27,7 +27,7 @@ STATUS = TOOLS / 'allrefs.status.json'
 PATCH_DIR = TOOLS / 'patches'
 
 if not STATUS.exists():
-    print('Status file not found:', STATUS)
+    logger.info('Status file not found:', STATUS)
     raise SystemExit(1)
 
 j = json.loads(STATUS.read_text(encoding='utf-8'))
@@ -37,7 +37,7 @@ for k,v in j.items():
         autos.append((k, v.get('patch')))
 
 if not autos:
-    print('No auto patches found to apply')
+    logger.info('No auto patches found to apply')
     raise SystemExit(0)
 
 # create branch
@@ -49,20 +49,20 @@ applied = []
 for target, patch_rel in autos:
     patch_path = ROOT / patch_rel
     if not patch_path.exists():
-        print('Patch required:', patch_path)
+        logger.info('Patch required:', patch_path)
         continue
     content = patch_path.read_text(encoding='utf-8')
     # find the marker line '--- original file:' and take content after it
     marker = '--- original file:'
     idx = content.find(marker)
     if idx == -1:
-        print('Patch format unexpected:', patch_path)
+        logger.info('Patch format unexpected:', patch_path)
         continue
     # find the end of the marker line
     rest = content[idx:].split('\n', 2)
     # rest[0] is marker line, rest[1] likely empty, rest[2] is file content
     if len(rest) < 3:
-        print('Patch content required after marker:', patch_path)
+        logger.info('Patch content required after marker:', patch_path)
         continue
     new_content = rest[2]
     tgt_path = ROOT / target
@@ -75,12 +75,12 @@ for target, patch_rel in autos:
 if applied:
     msg = 'Apply safe auto patches: ' + ', '.join(applied)
     subprocess.run(['git', 'commit', '-m', msg])
-    print('Committed applied patches on branch', branch)
-    print('\nFiles applied:')
+    logger.info('Committed applied patches on branch', branch)
+    logger.info('\nFiles applied:')
     for f in applied:
-        print('-', f)
+        logger.info('-', f)
 else:
-    print('No files were applied')
+    logger.info('No files were applied')
     subprocess.run(['git', 'checkout', '-'])
 
-print('Done')
+logger.info('Done')

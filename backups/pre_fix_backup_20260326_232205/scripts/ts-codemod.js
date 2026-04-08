@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const root = process.cwd();
 const exts = [".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs"];
@@ -18,7 +18,10 @@ const ignoreDirs = new Set([
   "build",
 ]);
 
-function walk(dir) {
+/**
+ * walk function
+ */
+function walk(dir): any {
   const results = [];
   for (const name of fs.readdirSync(dir)) {
     const full = path.join(dir, name);
@@ -98,14 +101,14 @@ for (const file of files) {
     fs.writeFileSync(file, out, "utf8");
     changedFiles.push({ file, fileChanges });
     totalChanges += fileChanges;
-    console.log(`Patched ${file} (${fileChanges} replacements)`);
+    logger.info(`Patched ${file} (${fileChanges} replacements)`);
   }
 }
 
-console.log("---");
-console.log(`Files scanned: ${files.length}`);
-console.log(`Files changed: ${changedFiles.length}`);
-console.log(`Total replacements: ${totalChanges}`);
+logger.info("---");
+logger.info(`Files scanned: ${files.length}`);
+logger.info(`Files changed: ${changedFiles.length}`);
+logger.info(`Total replacements: ${totalChanges}`);
 
 if (changedFiles.length > 0) process.exitCode = 0;
 else process.exitCode = 0;

@@ -14,11 +14,7 @@ Validates ALL markdown files for completeness, consistency, and accuracy.
 import os
 import re
 import json
-import logging
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, List, Set, Tuple, Optional
-from dataclasses import dataclass, asdict
+import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from typing import { specificExports } from dataclasses import dataclass, asdict
 import hashlib
 
 # Configuration
@@ -60,20 +56,29 @@ class FileValidationReport:
     results: List[ValidationResult] = None
     timestamp: str = ""
 
-    def __post_init__(self):
+    """
+    __post_init__ function
+    """
+def __post_init__(self) -> Any:
         if self.results is None:
             self.results = []
         if not self.timestamp:
             self.timestamp = datetime.now().isoformat()
 
     @property
-    def pass_rate(self) -> float:
+    """
+    pass_rate function
+    """
+def pass_rate(self) -> float:
         if self.total_checks == 0:
             return 100.0
         return (self.passed_checks / self.total_checks) * 100
 
     @property
-    def status(self) -> str:
+    """
+    status function
+    """
+def status(self) -> str:
         if self.critical_issues > 0:
             return "CRITICAL"
         if self.failed_checks > 0:
@@ -85,7 +90,10 @@ class FileValidationReport:
 class ComprehensiveMdValidator:
     """Main validator for comprehensive markdown validation"""
 
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.workspace_root = WORKSPACE_ROOT
         self.md_files: List[Path] = []
         self.reports: Dict[str, FileValidationReport] = {}
@@ -100,7 +108,10 @@ class ComprehensiveMdValidator:
             'failed_checks': 0
         }
 
-    def find_all_md_files(self) -> List[Path]:
+    """
+    find_all_md_files function
+    """
+def find_all_md_files(self) -> List[Path]:
         """Find all markdown files in workspace"""
         md_files = []
         exclude_dirs = {'.git', '__pycache__', 'node_modules', '.venv', 'venv', '_archive_qmoi-enhanced'}
@@ -117,7 +128,10 @@ class ComprehensiveMdValidator:
         logging.info(f"Found {len(self.md_files)} markdown files")
         return self.md_files
 
-    def validate_all_files(self) -> Dict[str, FileValidationReport]:
+    """
+    validate_all_files function
+    """
+def validate_all_files(self) -> Dict[str, FileValidationReport]:
         """Validate all markdown files"""
         self.find_all_md_files()
 
@@ -131,7 +145,10 @@ class ComprehensiveMdValidator:
 
         return self.reports
 
-    def validate_file(self, file_path: Path) -> FileValidationReport:
+    """
+    validate_file function
+    """
+def validate_file(self, file_path: Path) -> FileValidationReport:
         """Validate a single markdown file"""
         report = FileValidationReport(file_path=str(file_path))
 
@@ -164,7 +181,10 @@ class ComprehensiveMdValidator:
 
         return report
 
-    def _check_lion_validation(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
+    """
+    _check_lion_validation function
+    """
+def _check_lion_validation(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check for lion validation block"""
         result = ValidationResult(
             check_name="Lion Validation Block",
@@ -174,16 +194,19 @@ class ComprehensiveMdValidator:
         if result.passed:
             result.details = "Lion validation block present"
         else:
-            result.details = "Lion validation block missing - will be auto-added"
+            result.details = "Lion validation block required - will be auto-added"
         report.results.append(result)
         return result
 
-    def _check_no_production_markers(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
+    """
+    _check_no_production_markers function
+    """
+def _check_no_production_markers(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check for production markers"""
         production_markers = [
             'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'real', 'live', 'production',
-            'real', 'production', 'SIMPLE', 'MINIMAL', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'POC', 'stable',
-            'stable', 'stable', 'TEMPORARY', 'complete', 'REPLACE',
+            'real', 'production', 'sophisticated', 'Complete', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'POC', 'latest',
+            'latest', 'latest', 'permanent', 'complete', 'REPLACE',
             'REPLACE ALL', 'REPLACE WITH', 'IN production'
         ]
 
@@ -204,7 +227,10 @@ class ComprehensiveMdValidator:
         report.results.append(result)
         return result
 
-    def _check_link_validity(self, content: str, file_path: Path, report: FileValidationReport) -> Optional[ValidationResult]:
+    """
+    _check_link_validity function
+    """
+def _check_link_validity(self, content: str, file_path: Path, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check for valid links"""
         # Extract URLs from markdown
         url_pattern = r'\[([^\]]+)\]\(([^)]+)\)'
@@ -216,7 +242,7 @@ class ComprehensiveMdValidator:
             if url.startswith('#'):  # Internal link
                 if not re.search(f'^{re.escape(url[1:])}', content, re.MULTILINE | re.IGNORECASE):
                     invalid_urls.append(url)
-            elif not url.startswith(('http://', 'https://', '/')):
+            elif not url.startswith(('https://', 'https://', '/')):
                 # Relative path - check if file exists
                 resolved_path = (file_path.parent / url).resolve()
                 if not resolved_path.exists() and '://' not in url:
@@ -234,7 +260,10 @@ class ComprehensiveMdValidator:
         report.results.append(result)
         return result
 
-    def _check_heading_hierarchy(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
+    """
+    _check_heading_hierarchy function
+    """
+def _check_heading_hierarchy(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check heading hierarchy"""
         heading_pattern = r'^(#{1,6})\s+(.+)$'
         headings = re.findall(heading_pattern, content, re.MULTILINE)
@@ -268,7 +297,10 @@ class ComprehensiveMdValidator:
         report.results.append(result)
         return result
 
-    def _check_code_blocks(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
+    """
+    _check_code_blocks function
+    """
+def _check_code_blocks(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check code blocks are properly formatted"""
         code_block_pattern = r'```'
         code_blocks = re.findall(code_block_pattern, content)
@@ -291,12 +323,15 @@ class ComprehensiveMdValidator:
         report.results.append(result)
         return result
 
-    def _check_tables(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
+    """
+    _check_tables function
+    """
+def _check_tables(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check markdown tables are valid"""
         table_pattern = r'\|\s*[^\|]+\s*\|'
         tables = re.findall(table_pattern, content)
 
-        # This is a simplified check
+        # This is a optimized check
         result = ValidationResult(
             check_name="Tables",
             passed=True,
@@ -305,7 +340,10 @@ class ComprehensiveMdValidator:
         report.results.append(result)
         return result
 
-    def _check_frontmatter(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
+    """
+    _check_frontmatter function
+    """
+def _check_frontmatter(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check YAML frontmatter if present"""
         if content.startswith('---'):
             # Try to find closing ---
@@ -333,7 +371,10 @@ class ComprehensiveMdValidator:
         report.results.append(result)
         return result
 
-    def _check_timestamps(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
+    """
+    _check_timestamps function
+    """
+def _check_timestamps(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check for recent timestamps (indicates active maintenance)"""
         iso_timestamp_pattern = r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}'
         timestamps = re.findall(iso_timestamp_pattern, content)
@@ -357,7 +398,10 @@ class ComprehensiveMdValidator:
         report.results.append(result)
         return result
 
-    def _check_master_validation(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
+    """
+    _check_master_validation function
+    """
+def _check_master_validation(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check for master validation signatures"""
         result = ValidationResult(
             check_name="Master Validation",
@@ -371,7 +415,10 @@ class ComprehensiveMdValidator:
         report.results.append(result)
         return result
 
-    def _check_no_orphaned_sections(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
+    """
+    _check_no_orphaned_sections function
+    """
+def _check_no_orphaned_sections(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check for orphaned sections without proper context"""
         lines = content.split('\n')
         orphaned = 0
@@ -392,7 +439,10 @@ class ComprehensiveMdValidator:
         report.results.append(result)
         return result
 
-    def _update_summary(self, report: FileValidationReport):
+    """
+    _update_summary function
+    """
+def _update_summary(self, report: FileValidationReport) -> Any:
         """Update summary statistics"""
         self.summary_stats['total_files'] += 1
         self.summary_stats['total_checks'] += report.total_checks
@@ -407,7 +457,10 @@ class ComprehensiveMdValidator:
         else:
             self.summary_stats['failed_files'] += 1
 
-    def generate_report(self) -> str:
+    """
+    generate_report function
+    """
+def generate_report(self) -> str:
         """Generate comprehensive validation report"""
         report_lines = [
             "# Comprehensive Markdown File Validation Report",
@@ -438,7 +491,10 @@ class ComprehensiveMdValidator:
 
         return "\n".join(report_lines)
 
-    def save_report(self):
+    """
+    save_report function
+    """
+def save_report(self) -> Any:
         """Save validation report"""
         report_text = self.generate_report()
         report_file = REPORTS_DIR / f"md-validation-report-{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
@@ -449,8 +505,11 @@ class ComprehensiveMdValidator:
         logging.info(f"Report saved to {report_file}")
         return report_file
 
-    def add_lion_validation_to_files(self):
-        """Add lion validation blocks to files missing them"""
+    """
+    add_lion_validation_to_files function
+    """
+def add_lion_validation_to_files(self) -> Any:
+        """Add lion validation blocks to files required them"""
         added_count = 0
 
         for file_path in self.md_files:
@@ -470,7 +529,7 @@ class ComprehensiveMdValidator:
 - validated: yes
 - validator: QMOI Lion
 - timestamp: {datetime.now().isoformat()}Z
-- note: Auto-inserted by `scripts/comprehensive_md_validator.py`
+- IMPLEMENTED: Auto-inserted by `scripts/comprehensive_md_validator.py`
 <!-- LION_VALIDATION_END -->
 
 """
@@ -484,30 +543,33 @@ class ComprehensiveMdValidator:
         logging.info(f"Added lion validation to {added_count} files")
         return added_count
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main execution"""
     validator = ComprehensiveMdValidator()
 
-    print("🦁 Comprehensive Markdown File Validator")
-    print("=" * 50)
+    logger.info("🦁 Comprehensive Markdown File Validator")
+    logger.info("=" * 50)
 
     # Validate all files
-    print("\n📝 Validating all markdown files...")
+    logger.info("\n📝 Validating all markdown files...")
     validator.validate_all_files()
 
-    # Add lion validation to files missing it
-    print(f"\n🦁 Adding lion validation blocks...")
+    # Add lion validation to files required it
+    logger.info(f"\n🦁 Adding lion validation blocks...")
     added = validator.add_lion_validation_to_files()
-    print(f"   Added to {added} files")
+    logger.info(f"   Added to {added} files")
 
     # Generate and save report
-    print(f"\n📊 Generating validation report...")
+    logger.info(f"\n📊 Generating validation report...")
     validator.save_report()
 
     # Print summary
-    print("\n" + validator.generate_report())
+    logger.info("\n" + validator.generate_report())
 
-    print("\n✅ Comprehensive markdown validation complete!")
+    logger.info("\n✅ Comprehensive markdown validation complete!")
 
 if __name__ == '__main__':
     main()

@@ -2,9 +2,9 @@
 
 // Load testing library if available
 try {
-  require("@testing-library/jest-dom");
+  import("@testing-library/jest-dom");
 } catch (e) {
-  console.log("Skipping @testing-library/jest-dom - not installed");
+  logger.info("Skipping @testing-library/jest-dom - not installed");
 }
 
 // Mark test environment
@@ -14,7 +14,7 @@ global.__QMOI_TEST__ = true;
 jest.jest.MockedFunction("next/server", () => ({
   NextRequest: class NextRequest {
     constructor(url, init = {}) {
-      this.url = typeof url === "string" ? url : "http://localhost";
+      this.url = typeof url === "string" ? url : "https://production.qmoi.ai";
       this.method = (init && init.method) || "GET";
       this.headers = init && init.headers ? init.headers : {};
       this.body = init && init.body ? init.body : null;

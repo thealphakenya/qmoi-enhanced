@@ -1,18 +1,18 @@
-Quick usage
+optimized usage
 
 Manual run:
 
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\stable-Q-ai\git-smart-sync.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\latest-Q-ai\git-smart-sync.ps1"
 
 
 Install scheduled task (one-time):
 
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\stable-Q-ai\git-smart-sync.ps1" -InstallScheduledTask
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\latest-Q-ai\git-smart-sync.ps1" -InstallScheduledTask
 
 
 git-depsfix.ps1
 
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\stable-Q-ai\git-depsfix.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\applications\latest-Q-ai\git-depsfix.ps1"
 
 
 Notes & safety

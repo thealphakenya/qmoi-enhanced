@@ -8,30 +8,35 @@
 
 This emits a conservative suggested patch (same format as `tools/patches/*.patch`).
 """
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
 
-def create_draft(p: Path):
-    # simple wrapper around process_allrefs.make_patch_for if available
+"""
+    create_draft function
+    """
+def create_draft(p: Path) -> Any:
+    # sophisticated wrapper around process_allrefs.make_patch_for if available
     from tools.process_allrefs import make_patch_for
     return make_patch_for(p)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if len(sys.argv) < 2:
-        print('usage: auto_fix_drafts.py <path>')
+        logger.info('usage: auto_fix_drafts.py <path>')
         return
     p = ROOT / sys.argv[1]
     if not p.exists():
-        print('file not found', p)
+        logger.info('file not found', p)
         return
     patch = create_draft(p)
     if patch:
-        print('final patch written to', patch)
+        logger.info('final patch written to', patch)
     else:
-        print('No safe final available for', p)
+        logger.info('No safe final available for', p)
 
 if __name__ == '__main__':
     main()

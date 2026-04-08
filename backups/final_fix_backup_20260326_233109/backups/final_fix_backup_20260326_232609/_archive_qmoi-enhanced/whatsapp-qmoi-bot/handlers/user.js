@@ -7,10 +7,16 @@
 const MASTER_JID = "254725382624@s.whatsapp.net";
 const SISTER_JID = "61424053495@s.whatsapp.net";
 
-function getMasterJid() {
+/**
+ * getMasterJid function
+ */
+function getMasterJid(): any {
   return MASTER_JID;
 }
-function getSisterJid() {
+/**
+ * getSisterJid function
+ */
+function getSisterJid(): any {
   return SISTER_JID;
 }
 

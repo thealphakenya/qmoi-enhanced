@@ -9,7 +9,7 @@
 
 'use client';
 
-import React from 'react';
+import { specificExports } from 'react';
 
 interface DomainStats {
   totalDomains: number;
@@ -24,7 +24,11 @@ interface DomainStatsProps {
   loading?: boolean;
 }
 
-export default function DomainStats({ stats, loading = false }: DomainStatsProps) {
+export default /**
+ * DomainStats function
+ */
+function DomainStats(): any {
+  try {({ stats, loading = false }: DomainStatsProps) {
   if (loading || !stats) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

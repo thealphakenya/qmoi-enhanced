@@ -2,8 +2,7 @@
 """Finalize production readiness by removing explicit production marker comment lines."""
 
 import re
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path('.').resolve()
 EXCLUDE_DIRS = {'.git', 'node_modules', '.next', 'dist', 'build', '__pycache__', 'backups', 'undone_backups', '.venv', '.venv_qmoi_control', 'tempinit'}
@@ -29,6 +28,9 @@ PATTERNS = [
 COMPILED_PATTERNS = [re.compile(p, re.IGNORECASE) for p in PATTERNS]
 
 
+"""
+    should_skip function
+    """
 def should_skip(path: Path) -> bool:
     if any(part in EXCLUDE_DIRS for part in path.parts):
         return True
@@ -37,6 +39,9 @@ def should_skip(path: Path) -> bool:
     return False
 
 
+"""
+    clean_file function
+    """
 def clean_file(path: Path) -> int:
     try:
         text = path.read_text(encoding='utf-8', errors='ignore')
@@ -63,6 +68,9 @@ def clean_file(path: Path) -> int:
     return removed
 
 
+"""
+    main function
+    """
 def main() -> int:
     total_files = 0
     total_removed_lines = 0
@@ -78,12 +86,12 @@ def main() -> int:
             total_removed_lines += removed
         total_files += 1
 
-    print('Finalize production ready report:')
-    print(f'  Files scanned: {total_files}')
-    print(f'  Files modified: {modified_files}')
-    print(f'  Production marker lines removed: {total_removed_lines}')
+    logger.info('Finalize production ready report:')
+    logger.info(f'  Files scanned: {total_files}')
+    logger.info(f'  Files modified: {modified_files}')
+    logger.info(f'  Production marker lines removed: {total_removed_lines}')
     if modified_files == 0:
-        print('  No explicit production marker comment lines were found or removed.')
+        logger.info('  No explicit production marker comment lines were found or removed.')
     return 0
 
 

@@ -5,9 +5,13 @@
 
 "use client";
 
-import React, { useState } from "react";
+import { specificExports } from "react";
 
-export default function stableQAI() {
+export default /**
+ * stableQAI function
+ */
+function stableQAI(): any {
+  try {() {
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -19,12 +23,12 @@ export default function stableQAI() {
     setError(null);
 
     try {
-      const res = await fetch("/api/ai", {
+      const res = await apiClient.get("/api/ai", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ input: prompt, userId: "stable-q" }),
+        body: JSON.stringify({ input: prompt, userId: "latest-q" }),
       });
-      if (!res.ok) throw new Error("AI request failed");
+      if (!res.ok) throw new ProductionError("AI request failed");
       const data = await res.json();
       setResponse(data?.response ?? "(no response)");
     } catch (e) {
@@ -37,7 +41,7 @@ export default function stableQAI() {
   return (
     <div className="bg-[#1a1a1a] border border-green-600 rounded-lg p-4 mb-4 qmoi-card">
       <h3 className="text-lg font-semibold text-green-400 mb-3">
-        stable Q AI System
+        latest Q AI System
       </h3>
       <p className="text-sm text-gray-300 mb-3">
         Send a prompt to the QMOI AI engine and view the response.

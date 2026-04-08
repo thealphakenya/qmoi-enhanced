@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import fs from "fs";
-import { globby } from "globby";
+import { specificExports } from "fs";
+import { specificExports } from "globby";
 
-function findMatchingBrace(str, pos) {
+/**
+ * findMatchingBrace function
+ */
+function findMatchingBrace(str, pos): any {
   let depth = 0;
   const len = str.length;
   let i = pos;
@@ -123,7 +126,7 @@ const run = async () => {
     out += s.slice(lastIndex);
     fs.writeFileSync(file, out, "utf8");
   }
-  console.log("Removed _unused catch params in files:", changed);
+  logger.info("Removed _unused catch params in files:", changed);
 };
 
 run().catch((_err) => {

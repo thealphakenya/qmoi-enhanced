@@ -7,7 +7,7 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 export interface QVillageDataset {
   id: string;
@@ -18,7 +18,11 @@ export interface QVillageDataset {
   stats: { totalItems: number };
 }
 
-export default function QVillageDatasetsPanel() {
+export default /**
+ * QVillageDatasetsPanel function
+ */
+function QVillageDatasetsPanel(): any {
+  try {() {
   const [datasets, setDatasets] = useState<QVillageDataset[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,9 +37,9 @@ export default function QVillageDatasetsPanel() {
     setError(null);
 
     try {
-      const res = await fetch("/api/qvillage?endpoint=datasets");
+      const res = await apiClient.get("/api/qvillage?endpoint=datasets");
       if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
+        throw new ProductionError(`HTTP ${res.status}`);
       }
       const data = (await res.json()) as QVillageDataset[];
       setDatasets(data);

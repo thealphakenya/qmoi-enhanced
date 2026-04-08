@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { useState, useEffect, useCallback } from "react";
+import { specificExports } from "react";
 
-export function useColabJob() {
+export /**
+ * useColabJob function
+ */
+function useColabJob(): any {
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const [status, setStatus] = useState<
@@ -21,7 +24,7 @@ export function useColabJob() {
     setResult(null);
     try {
       [production READY] Colab job creation
-      const res = await fetch("/api/qmoi-model?colabJob=1", {
+      const res = await apiClient.get("/api/qmoi-model?colabJob=1", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

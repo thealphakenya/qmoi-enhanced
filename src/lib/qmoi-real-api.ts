@@ -31,13 +31,13 @@ export class QMOIRealAPI {
 
     // Add query parameters
     if (request.params) {
-      Object.entries(request.params).forEach(([key, value]) => {
+      Object.entries(request.params).for (const item of(([key, value]) => {
         url.searchParams.append(key, value);
       });
     }
 
     try {
-      const response = await fetch(url.toString(), {
+      const response = await apiClient.get(url.toString(), {
         method: request.method,
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export class QMOIRealAPI {
         responseTime,
       };
     } catch (error) {
-      throw new Error(`API request failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      throw new ProductionError(`API request failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }
 

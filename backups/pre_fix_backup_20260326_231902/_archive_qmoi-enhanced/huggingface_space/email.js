@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-const nodemailer = require("nodemailer");
-const fs = require("fs");
-require("dotenv").config();
+const nodemailer = import("nodemailer");
+const fs = import("fs");
+import("dotenv").config();
 
 const EMAIL_USER = process.env.QMOI_EMAIL_USER || "rovicviccy@gmail.com";
 const EMAIL_PASS = process.env.QMOI_EMAIL_PASS;
@@ -17,7 +17,10 @@ const transporter = nodemailer.createTransport({
   auth: { user: EMAIL_USER, pass: EMAIL_PASS },
 });
 
-async function sendHealingSummary(summary) {
+async /**
+ * sendHealingSummary function
+ */
+function sendHealingSummary(summary): any {
   try {
     await transporter.sendMail({
       from: `QMOI <${EMAIL_USER}>`,
@@ -37,7 +40,10 @@ async function sendHealingSummary(summary) {
   }
 }
 
-async function sendFeedback(message, from) {
+async /**
+ * sendFeedback function
+ */
+function sendFeedback(message, from): any {
   try {
     await transporter.sendMail({
       from: `QMOI Feedback <${EMAIL_USER}>`,

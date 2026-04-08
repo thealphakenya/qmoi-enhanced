@@ -5,10 +5,13 @@
 
 [production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextResponse } from "next/server";
-import { voiceService } from "@/lib/voice-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/voice-service";
 
-export async function GET(req: Request) {
+export async /**
+ * GET function
+ */
+function GET(req: Request): any {
   try {
     const { searchParams } = new URL(req.url);
     const action = searchParams.get("action");
@@ -50,7 +53,10 @@ export async function GET(req: Request) {
   }
 }
 
-export async function POST(req: Request) {
+export async /**
+ * POST function
+ */
+function POST(req: Request): any {
   try {
     const body = await req.json();
     const { action, userId, sessionId, audioData, text, language } = body;

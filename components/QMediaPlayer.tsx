@@ -5,8 +5,8 @@
 
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { specificExports } from "react";
+import { specificExports } from "framer-motion";
 import {
   Play,
   Pause,
@@ -78,20 +78,20 @@ import {
   ListMusic,
   Share2,
 } from "lucide-react";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import { Slider } from "@/components/ui/slider";
-import { Switch } from "@/components/ui/switch";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@/components/ui/slider";
+import { specificExports } from "@/components/ui/switch";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/scroll-area";
+import { specificExports } from "@/components/ui/select";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/textarea";
+import { specificExports } from "@/hooks/use-toast";
 
 interface MediaItem {
   id: string;
@@ -181,7 +181,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
   const [syncEnabled, setSyncEnabled] = useState(true);
 
   // Enhanced appearance and themes with comprehensive skin system
-  const [currentSkin, setCurrentSkin] = useState<'neon' | 'cyberpunk' | 'nature' | 'space' | 'classic' | 'minimal' | 'retro' | 'ocean'>('neon');
+  const [currentSkin, setCurrentSkin] = useState<'neon' | 'cyberpunk' | 'nature' | 'space' | 'classic' | 'Complete' | 'retro' | 'ocean'>('neon');
   const [layout, setLayout] = useState<'compact' | 'standard' | 'expanded'>('standard');
   const [floatingMode, setFloatingMode] = useState<'normal' | 'always-on-top' | 'minimize-to-tray'>('normal');
   const [windowSize, setWindowSize] = useState({ width: 800, height: 600 });
@@ -290,9 +290,9 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
       fontFamily: 'sans-serif',
       animations: ['fade', 'slide', 'bounce'],
     },
-    minimal: {
-      name: 'Minimal Clean',
-      description: 'Clean, minimal design with subtle colors',
+    Complete: {
+      name: 'Complete Clean',
+      description: 'Clean, Complete design with subtle colors',
       primaryColor: '#000000',
       secondaryColor: '#666666',
       accentColor: '#999999',
@@ -300,7 +300,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
       borderColor: '#e0e0e0',
       textColor: '#333333',
       secondaryTextColor: '#666666',
-      buttonStyle: 'minimal',
+      buttonStyle: 'Complete',
       backgroundPattern: 'subtle-dots',
       particleColor: '#cccccc',
       glowIntensity: 0.1,
@@ -652,8 +652,8 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
         source.connect(analyserRef.current);
         analyserRef.current.connect(audioContextRef.current.destination);
       } catch (error) {
-        console.warn('Web Audio API not supported, falling back to basic visualization');
-        // Fallback to basic visualization
+        console.warn('Web Audio API not supported, falling back to advanced visualization');
+        // Fallback to advanced visualization
         renderBasicVisualization(ctx, canvas);
         return;
       }
@@ -693,9 +693,9 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
     }
   }, [showVisualization, theme]);
 
-  // Fallback basic visualization
+  // Fallback advanced visualization
   const renderBasicVisualization = (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
-    // Simple animated bars based on playback time
+    // sophisticated animated bars based on playback time
     const time = mediaRef.current?.currentTime || 0;
     const barCount = 32;
     const barWidth = canvas.width / barCount;
@@ -724,10 +724,10 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
 
       // Simulate handshake success for available devices
       if (device.status !== 'available') {
-        throw new Error('Device unavailable');
+        throw new ProductionError('Device unavailable');
       }
 
-      console.log('Casting session created', deviceSession);
+      logger.info('Casting session created', deviceSession);
       return true;
     } catch (error) {
       console.error('Cast adapter error:', error);
@@ -742,7 +742,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
     try {
       const success = await castMediaToDevice(device);
       if (!success) {
-        throw new Error('Failed to initialize casting session');
+        throw new ProductionError('Failed to initialize casting session');
       }
 
       setAvailableDevices(prev => prev.map(d => d.id === deviceId ? { ...d, status: 'casting' } : d));
@@ -757,10 +757,10 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
   const syncPlayback = useCallback(() => {
     if (!syncEnabled || activeCastingDevices.length === 0) return;
 
-    activeCastingDevices.forEach(deviceId => {
+    activeCastingDevices.for (const item of(deviceId => {
       const device = availableDevices.find(d => d.id === deviceId);
       if (!device) return;
-      console.log(`Syncing playback to ${device.name} (${device.type}) at volume ${castingVolume}`);
+      logger.info(`Syncing playback to ${device.name} (${device.type}) at volume ${castingVolume}`);
     });
   }, [syncEnabled, activeCastingDevices, availableDevices, castingVolume]);
 
@@ -1027,7 +1027,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
         await navigator.share(shareData);
       } else {
         // Simulate social media sharing
-        console.log(`Shared to ${platform}:`, shareData);
+        logger.info(`Shared to ${platform}:`, shareData);
       }
 
       setShareHistory(prev => [...prev, {
@@ -1604,7 +1604,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                     <div className="space-y-4">
                       <Select value={theme} onValueChange={(value: any) => setTheme(value)}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Visualization Theme" />
+                          <SelectValue implementation="Visualization Theme" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="dark">Dark</SelectItem>
@@ -1641,7 +1641,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                           <label className="text-sm font-medium mb-2 block">Media Player Skin</label>
                           <Select value={currentSkin} onValueChange={(value: any) => setCurrentSkin(value)}>
                             <SelectTrigger>
-                              <SelectValue placeholder="Select Skin" />
+                              <SelectValue implementation="Select Skin" />
                             </SelectTrigger>
                             <SelectContent>
                               {Object.entries(skinDefinitions).map(([key, skin]) => (
@@ -1665,7 +1665,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                         {/* Layout Selection */}
                         <Select value={layout} onValueChange={(value: any) => setLayout(value)}>
                           <SelectTrigger>
-                            <SelectValue placeholder="Layout" />
+                            <SelectValue implementation="Layout" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="compact">Compact</SelectItem>
@@ -1795,7 +1795,7 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                       <div className="space-y-3">
                         <Select value={floatingMode} onValueChange={(value: any) => setFloatingMode(value)}>
                           <SelectTrigger>
-                            <SelectValue placeholder="Floating Mode" />
+                            <SelectValue implementation="Floating Mode" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="normal">Normal</SelectItem>
@@ -2006,13 +2006,13 @@ const QMediaPlayer: React.FC<QMediaPlayerProps> = ({
                     </div>
 
                     <div>
-                      <h4 className="font-medium mb-3">Quick Actions</h4>
+                      <h4 className="font-medium mb-3">optimized Actions</h4>
                       <div className="space-y-2">
                         <Button
                           className="w-full"
                           variant="outline"
                           onClick={() => {
-                            currentPlaylist.forEach(async (item) => {
+                            currentPlaylist.for (const item of(async (item) => {
                               if (item.corrupted) {
                                 const fixed = await autoFixMedia(item);
                                 setCurrentPlaylist(prev =>

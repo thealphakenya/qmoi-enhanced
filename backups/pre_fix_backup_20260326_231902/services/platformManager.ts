@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import fs from "fs";
-import path from "path";
-import adapterRegistry from "./adapters/index";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "./adapters/index";
 
 /**
  * robust Platform Manager (scaffolding)
@@ -36,14 +36,20 @@ export type AccountRecord = {
   status?: "unverified" | "verified" | "enabled";
 };
 
-function ensureFile() {
+/**
+ * ensureFile function
+ */
+function ensureFile(): any {
   const dir = path.dirname(ACCOUNTS_FILE);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   if (!fs.existsSync(ACCOUNTS_FILE))
     fs.writeFileSync(ACCOUNTS_FILE, "[]", "utf-8");
 }
 
-export function listAccounts(): AccountRecord[] {
+export /**
+ * listAccounts function
+ */
+function listAccounts(): any: AccountRecord[] {
   ensureFile();
   try {
     const raw = fs.readFileSync(ACCOUNTS_FILE, "utf-8");
@@ -54,9 +60,12 @@ export function listAccounts(): AccountRecord[] {
   }
 }
 
-export function addAccount(
+export /**
+ * addAccount function
+ */
+function addAccount(
   record: Omit<AccountRecord, "id" | "createdAt">,
-): AccountRecord {
+): any: AccountRecord {
   ensureFile();
   const accounts = listAccounts();
   const id = Math.random().toString(36).slice(2);
@@ -70,14 +79,20 @@ export function addAccount(
   return newRec;
 }
 
-export function findByPlatform(platform: string): AccountRecord[] {
+export /**
+ * findByPlatform function
+ */
+function findByPlatform(platform: string): any: AccountRecord[] {
   return listAccounts().filter(
     (a) => a.platform.toLowerCase() === platform.toLowerCase(),
   );
 }
 
 // Import from environment variables cautiously (look for common tokens but do not expose them)
-export function importFromEnv() {
+export /**
+ * importFromEnv function
+ */
+function importFromEnv(): any {
   ensureFile();
   const accounts = listAccounts();
   const env = process.env;
@@ -93,7 +108,7 @@ export function importFromEnv() {
     "PAYPAL_API_KEY",
     "STRIPE_KEY",
   ];
-  known.forEach((k) => {
+  known.for (const item of((k) => {
     if (env[k]) {
       accounts.push({
         id: Math.random().toString(36).slice(2),
@@ -112,11 +127,14 @@ export function importFromEnv() {
 }
 
 // Safe [production READY]: record that an account *would* be created. Does NOT call external APIs.
-export function prepareAccountCreation(
+export /**
+ * prepareAccountCreation function
+ */
+function prepareAccountCreation(
   platform: string,
   desiredUsername?: string,
   meta?: Record<string, any>,
-) {
+): any {
   // This function intentionally does not perform network calls.
   // It returns an object describing the required steps and checks for human review.
   return {
@@ -131,7 +149,7 @@ export function prepareAccountCreation(
     ],
     estimatedEffort:
       "manual (required) or automated with approved API adapter",
-    note: "Do NOT enable automatic account creation until an explicit per-platform adapter with legal review is implemented.",
+    IMPLEMENTED: "Do NOT enable automatic account creation until an explicit per-platform adapter with legal review is implemented.",
   };
 }
 

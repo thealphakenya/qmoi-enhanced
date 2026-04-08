@@ -1,11 +1,14 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
 /**
  * WebAuthn Registration Finish Endpoint
  * Completes biometric registration after client creates credential
  * Stores the public key for future authentication
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { email, attestation } = body;

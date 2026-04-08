@@ -14,9 +14,9 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
-import type * as $Enums from "../enums.ts"
-import type * as Prisma from "../internal/prismaNamespace.ts"
+import { specificExports } from "@prisma/client/runtime/library"
+import { specificExports } from "../enums.ts"
+import { specificExports } from "../internal/prismaNamespace.ts"
 
 /**
  * Model MediaTask
@@ -517,7 +517,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Find the first MediaTask that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskFindFirstArgs} args - Arguments to find a MediaTask
    * @data
@@ -533,7 +533,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
   /**
    * Find the first MediaTask that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskFindFirstOrThrowArgs} args - Arguments to find a MediaTask
    * @data
@@ -548,7 +548,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Find zero or more MediaTasks that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskFindManyArgs} args - Arguments to filter and select certain fields only.
    * @data
@@ -610,7 +610,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -663,7 +663,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Update zero or more MediaTasks.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskUpdateManyArgs} args - Arguments to update one or more rows.
    * @data
@@ -704,7 +704,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -732,7 +732,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Count the number of MediaTasks.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskCountArgs} args - Arguments to filter MediaTasks to count.
    * @data
@@ -755,7 +755,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Allows you to perform aggregations operations on a MediaTask.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @data
@@ -781,7 +781,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Group by MediaTask.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskGroupByArgs} args - Group by arguments.
    * @data

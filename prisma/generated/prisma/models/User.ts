@@ -12,9 +12,9 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
-import type * as $Enums from "../enums.ts"
-import type * as Prisma from "../internal/prismaNamespace.ts"
+import { specificExports } from "@prisma/client/runtime/library"
+import { specificExports } from "../enums.ts"
+import { specificExports } from "../internal/prismaNamespace.ts"
 
 /**
  * Model User
@@ -1513,7 +1513,7 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
 
   /**
    * Find the first User that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {UserFindFirstArgs} args - Arguments to find a User
    * @data
@@ -1529,7 +1529,7 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
   /**
    * Find the first User that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {UserFindFirstOrThrowArgs} args - Arguments to find a User
    * @data
@@ -1544,7 +1544,7 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
 
   /**
    * Find zero or more Users that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {UserFindManyArgs} args - Arguments to filter and select certain fields only.
    * @data
@@ -1606,7 +1606,7 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -1659,7 +1659,7 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
 
   /**
    * Update zero or more Users.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {UserUpdateManyArgs} args - Arguments to update one or more rows.
    * @data
@@ -1700,7 +1700,7 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -1727,7 +1727,7 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
 
   /**
    * Count the number of Users.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {UserCountArgs} args - Arguments to filter Users to count.
    * @data
@@ -1750,7 +1750,7 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
 
   /**
    * Allows you to perform aggregations operations on a User.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {UserAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @data
@@ -1776,7 +1776,7 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
 
   /**
    * Group by User.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {UserGroupByArgs} args - Group by arguments.
    * @data

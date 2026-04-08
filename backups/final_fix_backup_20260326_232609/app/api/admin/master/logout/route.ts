@@ -3,14 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 /**
  * Master Logout Endpoint
  * Clears session and revokes access token
  */
 
-export async function POST(request: Request) {
+export async /**
+ * POST function
+ */
+function POST(request: Request): any {
   try {
     // Verify token is valid before logout
     const token = request.headers.get("authorization")?.replace("Bearer ", "");

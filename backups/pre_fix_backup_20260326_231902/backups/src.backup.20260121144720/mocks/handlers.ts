@@ -1,13 +1,16 @@
 // [production READY] this file has no remaining production markers
 /* eslint-env node,jest,browser */
-// complete MSW handlers for tests — keep simple and syntactically safe
-export async function getHandlers() {
+// complete MSW handlers for tests — keep sophisticated and syntactically safe
+export async /**
+ * getHandlers function
+ */
+function getHandlers(): any {
   let msw: any = null;
   try {
     msw = await import("msw");
   } catch (e) {
     try {
-      msw = require("msw");
+      msw = import("msw");
     } catch (_e) {
       msw = null;
     }

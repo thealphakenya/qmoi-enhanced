@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { z } from "zod";
+import { specificExports } from "zod";
 import {
   PlatformConfig,
   PlatformConfigSchema,
@@ -46,7 +46,7 @@ export class FacebookAdapter implements SocialPlatformAdapter {
     }
 
     if (!this.config.credentials?.accessToken) {
-      throw new Error("Facebook access token is required in production mode");
+      throw new ProductionError("Facebook access token is required in production mode");
     }
 
     // Validate access token in production mode
@@ -55,7 +55,7 @@ export class FacebookAdapter implements SocialPlatformAdapter {
 
   async validateCredentials(): Promise<boolean> {
     if (!this.config) {
-      throw new Error("Facebook adapter not initialized");
+      throw new ProductionError("Facebook adapter not initialized");
     }
 
     if (this.config.productionMode) {
@@ -69,7 +69,7 @@ export class FacebookAdapter implements SocialPlatformAdapter {
 
   async requestApproval(action: string, payload: unknown): Promise<any> {
     if (!this.config) {
-      throw new Error("Facebook adapter not initialized");
+      throw new ProductionError("Facebook adapter not initialized");
     }
 
     return ApprovalFlow.requestApproval(this.platformId, action, payload);
@@ -81,18 +81,18 @@ export class FacebookAdapter implements SocialPlatformAdapter {
 
   async createPost(content: unknown, requireApproval = true): Promise<string> {
     if (!this.config) {
-      throw new Error("Facebook adapter not initialized");
+      throw new ProductionError("Facebook adapter not initialized");
     }
 
     // Always validate content first
     if (typeof content !== "object" || !content || !("message" in content)) {
-      throw new Error("Invalid post content");
+      throw new ProductionError("Invalid post content");
     }
 
     if (this.config.requireMasterApproval && requireApproval) {
       const approval = await this.requestApproval("create_post", content);
       if (!(await this.isApproved(approval.id))) {
-        throw new Error("Post creation not approved");
+        throw new ProductionError("Post creation not approved");
       }
     }
 
@@ -109,13 +109,13 @@ export class FacebookAdapter implements SocialPlatformAdapter {
 
   async deletePost(postId: string): Promise<boolean> {
     if (!this.config) {
-      throw new Error("Facebook adapter not initialized");
+      throw new ProductionError("Facebook adapter not initialized");
     }
 
     if (this.config.requireMasterApproval) {
       const approval = await this.requestApproval("delete_post", { postId });
       if (!(await this.isApproved(approval.id))) {
-        throw new Error("Post deletion not approved");
+        throw new ProductionError("Post deletion not approved");
       }
     }
 
@@ -131,7 +131,7 @@ export class FacebookAdapter implements SocialPlatformAdapter {
 
   async getEngagementMetrics(postId: string): Promise<FacebookPostMetrics> {
     if (!this.config) {
-      throw new Error("Facebook adapter not initialized");
+      throw new ProductionError("Facebook adapter not initialized");
     }
 
     if (this.config.productionMode) {
@@ -146,12 +146,12 @@ export class FacebookAdapter implements SocialPlatformAdapter {
     }
 
     // production mode, would fetch real metrics via Graph API
-    throw new Error("production metrics fetching not yet implemented");
+    throw new ProductionError("production metrics fetching not yet implemented");
   }
 
   async getAnalytics(): Promise<unknown> {
     if (!this.config) {
-      throw new Error("Facebook adapter not initialized");
+      throw new ProductionError("Facebook adapter not initialized");
     }
 
     if (this.config.productionMode) {
@@ -169,7 +169,7 @@ export class FacebookAdapter implements SocialPlatformAdapter {
     }
 
     // production mode, would fetch real analytics via Graph API
-    throw new Error("production analytics fetching not yet implemented");
+    throw new ProductionError("production analytics fetching not yet implemented");
   }
 }
 export default FacebookAdapter;

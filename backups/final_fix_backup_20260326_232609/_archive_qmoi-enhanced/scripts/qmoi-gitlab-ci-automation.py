@@ -16,15 +16,10 @@ import os
 import subprocess
 import sys
 import time
-import threading
-from datetime import datetime, timedelta
-from pathlib import Path
-from typing import Dict, List, Any, Optional
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Any, Optional
 import requests
 import schedule
-import git
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
+import { specificExports } from watchdog.observers import { specificExports } from watchdog.events import FileSystemEventHandler
 
 # Configure logging
 logging.basicConfig(
@@ -38,7 +33,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class QMOIGitLabCIAutomation:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.running = False
         self.gitlab_ci_running = False
         self.automation_stats = {
@@ -55,13 +53,22 @@ class QMOIGitLabCIAutomation:
         self.setup_file_watcher()
         self.setup_scheduled_tasks()
         
-    def setup_file_watcher(self):
+    """
+    setup_file_watcher function
+    """
+def setup_file_watcher(self) -> Any:
         """Setup file system watcher for automatic triggers"""
         class QMOIFileHandler(FileSystemEventHandler):
-            def __init__(self, automation):
+            """
+    __init__ function
+    """
+def __init__(self, automation) -> Any:
                 self.automation = automation
                 
-            def on_modified(self, event):
+            """
+    on_modified function
+    """
+def on_modified(self, event) -> Any:
                 if not event.is_directory:
                     if event.src_path.endswith(('.py', '.js', '.ts', '.tsx', '.json')):
                         logger.info(f"File modified: {event.src_path}")
@@ -72,7 +79,10 @@ class QMOIGitLabCIAutomation:
         self.observer.schedule(self.file_handler, '.', recursive=True)
         self.observer.start()
         
-    def setup_scheduled_tasks(self):
+    """
+    setup_scheduled_tasks function
+    """
+def setup_scheduled_tasks(self) -> Any:
         """Setup scheduled automation tasks"""
         # Run comprehensive automation every 15 minutes
         schedule.every(15).minutes.do(self.run_comprehensive_automation)
@@ -89,14 +99,20 @@ class QMOIGitLabCIAutomation:
         # Auto-evolution every hour
         schedule.every().hour.do(self.run_auto_evolution)
         
-        def run_scheduler():
+        """
+    run_scheduler function
+    """
+def run_scheduler() -> Any:
             while self.running:
                 schedule.run_pending()
                 time.sleep(1)
                 
         self.scheduler_thread = threading.Thread(target=run_scheduler, daemon=True)
         
-    def auto_trigger_gitlab_ci(self):
+    """
+    auto_trigger_gitlab_ci function
+    """
+def auto_trigger_gitlab_ci(self) -> Any:
         """Automatically trigger GitLab CI when files change"""
         try:
             logger.info("Auto-triggering GitLab CI due to file changes")
@@ -104,7 +120,10 @@ class QMOIGitLabCIAutomation:
         except Exception as e:
             logger.error(f"Error in auto-trigger: {e}")
             
-    def trigger_gitlab_ci(self):
+    """
+    trigger_gitlab_ci function
+    """
+def trigger_gitlab_ci(self) -> Any:
         """Trigger GitLab CI/CD pipeline"""
         try:
             self.gitlab_ci_running = True
@@ -130,7 +149,10 @@ class QMOIGitLabCIAutomation:
         finally:
             self.gitlab_ci_running = False
             
-    def run_gitlab_ci_commands(self):
+    """
+    run_gitlab_ci_commands function
+    """
+def run_gitlab_ci_commands(self) -> Any:
         """Run comprehensive GitLab CI commands"""
         gitlab_commands = [
             ('npm run qmoi:setup', 'Setup and dependencies'),
@@ -158,14 +180,17 @@ class QMOIGitLabCIAutomation:
             except Exception as e:
                 logger.error(f"❌ Error running {description}: {e}")
                 
-    def run_comprehensive_automation(self):
+    """
+    run_comprehensive_automation function
+    """
+def run_comprehensive_automation(self) -> Any:
         """Run comprehensive QMOI automation"""
         try:
             logger.info("🔄 Running comprehensive QMOI automation")
             
             # Run all automation steps
             automation_steps = [
-                ('npm run qmoi:all', 'Complete QMOI automation'),
+                ('npm run qmoi:all', 'complete QMOI automation'),
                 ('npm run qmoi:comprehensive', 'Comprehensive automation'),
                 ('npm run gitlab:full-pipeline', 'GitLab full pipeline'),
                 ('npm run qmoi:gitpod', 'Gitpod integration'),
@@ -195,7 +220,10 @@ class QMOIGitLabCIAutomation:
         except Exception as e:
             logger.error(f"Error in comprehensive automation: {e}")
             
-    def run_health_check(self):
+    """
+    run_health_check function
+    """
+def run_health_check(self) -> Any:
         """Run comprehensive health check"""
         try:
             logger.info("🏥 Running health check")
@@ -222,7 +250,10 @@ class QMOIGitLabCIAutomation:
         except Exception as e:
             logger.error(f"Error in health check: {e}")
             
-    def sync_all_platforms(self):
+    """
+    sync_all_platforms function
+    """
+def sync_all_platforms(self) -> Any:
         """Sync across all platforms"""
         try:
             logger.info("🔄 Syncing all platforms")
@@ -249,14 +280,17 @@ class QMOIGitLabCIAutomation:
         except Exception as e:
             logger.error(f"Error in platform sync: {e}")
             
-    def run_auto_evolution(self):
+    """
+    run_auto_evolution function
+    """
+def run_auto_evolution(self) -> Any:
         """Run auto-evolution for continuous improvement"""
         try:
             logger.info("🧬 Running auto-evolution")
             
             evolution_commands = [
                 ('python scripts/qmoi-auto-evolution.py', 'Auto-evolution analysis'),
-                ('python scripts/qmoi-quick-test.py', 'Quick test validation'),
+                ('python scripts/qmoi-optimized-test.py', 'optimized test validation'),
                 ('npm run qmoi:json-fix', 'JSON configuration fixing')
             ]
             
@@ -275,7 +309,10 @@ class QMOIGitLabCIAutomation:
         except Exception as e:
             logger.error(f"Error in auto-evolution: {e}")
             
-    def monitor_gitlab_pipeline(self):
+    """
+    monitor_gitlab_pipeline function
+    """
+def monitor_gitlab_pipeline(self) -> Any:
         """Monitor GitLab pipeline status"""
         try:
             # Check if GitLab CI is running
@@ -292,7 +329,10 @@ class QMOIGitLabCIAutomation:
         except Exception as e:
             logger.error(f"Error monitoring GitLab pipeline: {e}")
             
-    def save_stats(self):
+    """
+    save_stats function
+    """
+def save_stats(self) -> Any:
         """Save automation stats to file"""
         try:
             stats_file = 'logs/gitlab-ci-stats.json'
@@ -304,7 +344,10 @@ class QMOIGitLabCIAutomation:
         except Exception as e:
             logger.error(f"Error saving stats: {e}")
             
-    def start(self):
+    """
+    start function
+    """
+def start(self) -> Any:
         """Start the GitLab CI automation system"""
         try:
             # Create logs directory
@@ -347,7 +390,10 @@ class QMOIGitLabCIAutomation:
         finally:
             self.cleanup()
             
-    def cleanup(self):
+    """
+    cleanup function
+    """
+def cleanup(self) -> Any:
         """Cleanup resources"""
         try:
             self.running = False
@@ -365,7 +411,10 @@ class QMOIGitLabCIAutomation:
         except Exception as e:
             logger.error(f"Error in cleanup: {e}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function to start GitLab CI automation"""
     try:
         automation = QMOIGitLabCIAutomation()

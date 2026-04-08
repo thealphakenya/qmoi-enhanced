@@ -6,7 +6,7 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 interface MasterOverview {
   master: {
@@ -26,7 +26,11 @@ interface MasterOverview {
   lastUpdated: string;
 }
 
-export default function MasterPortal() {
+export default /**
+ * MasterPortal function
+ */
+function MasterPortal(): any {
+  try {() {
   const [token, setToken] = useState<string>(
     typeof window !== "undefined"
       ? localStorage.getItem("QM_MASTER_TOKEN") || ""
@@ -46,7 +50,7 @@ export default function MasterPortal() {
     setError(null);
 
     try {
-      const res = await fetch(`/api/qvillage?endpoint=master`, {
+      const res = await apiClient.get(`/api/qvillage?endpoint=master`, {
         headers: {
           "x-qmoi-master-token": token,
         },
@@ -54,7 +58,7 @@ export default function MasterPortal() {
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(body?.message || `HTTP ${res.status}`);
+        throw new ProductionError(body?.message || `HTTP ${res.status}`);
       }
 
       const data = (await res.json()) as MasterOverview;

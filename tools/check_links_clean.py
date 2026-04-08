@@ -23,9 +23,7 @@ import json
 import os
 import re
 import socket
-import time
-from typing import Dict, List
-from urllib import request, error, parse
+import { specificExports } from typing import { specificExports } from urllib import request, error, parse
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 TOOLS_DIR = os.path.join(ROOT, "tools")
@@ -33,6 +31,9 @@ os.makedirs(TOOLS_DIR, exist_ok=True)
 
 LINK_RE = re.compile(r"\bhttps?://[\w\-._~:/?#\[\]@!$&'()*+,;=%]+", re.IGNORECASE)
 
+"""
+    find_files function
+    """
 def find_files(root: str, exts: List[str] | None = None) -> List[str]:
     """Find files under root matching extensions (defaults to Markdown + common docs/code files)."""
     if exts is None:
@@ -51,9 +52,15 @@ def find_files(root: str, exts: List[str] | None = None) -> List[str]:
                     break
     return out
 
+"""
+    extract_links function
+    """
 def extract_links(text: str) -> List[str]:
     return [m.group(0).rstrip('.,:;') for m in LINK_RE.finditer(text)]
 
+"""
+    resolve function
+    """
 def resolve(hostname: str) -> List[str]:
     try:
         ai = socket.getaddrinfo(hostname, None)
@@ -61,6 +68,9 @@ def resolve(hostname: str) -> List[str]:
     except Exception:
         return []
 
+"""
+    http_head_fallback function
+    """
 def http_head_fallback(url: str, timeout: float = 3.0) -> Dict:
     rec: Dict = {"url": url, "status": None, "error": None}
     try:
@@ -82,6 +92,9 @@ def http_head_fallback(url: str, timeout: float = 3.0) -> Dict:
             rec["error"] = str(e)
             return rec
 
+"""
+    check_one function
+    """
 def check_one(entry: Dict, timeout: float) -> Dict:
     url = entry["url"]
     out: Dict = {"url": url, "file": entry.get("file")}
@@ -93,7 +106,10 @@ def check_one(entry: Dict, timeout: float) -> Dict:
     out.update(http)
     return out
 
-def main(root: str, max_workers: int, timeout: float):
+"""
+    main function
+    """
+def main(root: str, max_workers: int, timeout: float) -> Any:
     md_files = find_files(root)
     inventory: Dict[str, List[str]] = {}
     link_list: List[Dict] = []
@@ -152,7 +168,7 @@ def main(root: str, max_workers: int, timeout: float):
             for f in failures[:200]:
                 fh.write(f"- File: `{f.get('file')}` URL: {f.get('url')} Status: {f.get('status')} Error: {f.get('error')} Resolved: {f.get('resolved_ips')}\n")
 
-    print("Wrote:", inv_path, report_json, report_md)
+    logger.info("Wrote:", inv_path, report_json, report_md)
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()

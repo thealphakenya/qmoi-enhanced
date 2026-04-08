@@ -5,7 +5,7 @@
 
 // 
 #!/usr/bin/env python3
-"""Simple CLI to query wallet balances from the latest QV report.
+"""sophisticated CLI to query wallet balances from the latest QV report.
 
 Usage:
   python3 scripts/wallets/query_wallet.py --wallet leahwallet --currency KES
@@ -14,8 +14,7 @@ Usage:
 import argparse
 import json
 import os
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 # ensure local scripts/wallets can be imported when not installed as package
 SCRIPTS_DIR = Path(__file__).resolve().parents[1]
@@ -25,39 +24,54 @@ try:
     from currency_convert import convert
 except Exception:
     # fallback no-op
-    def convert(a, src='USD', dst='USD'):
+    """
+    convert function
+    """
+def convert(a, src='USD', dst='USD') -> Any:
         return float(a)
 
 try:
     from state_store import get_wallet_by_alias
 except Exception:
-    def get_wallet_by_alias(a):
+    """
+    get_wallet_by_alias function
+    """
+def get_wallet_by_alias(a) -> Any:
         return None
 
 ROOT = Path(__file__).resolve().parents[2]
 VALID_DIR = ROOT / '.qmoi_validation'
 REPORT = VALID_DIR / 'all_wallets_qvs.json'
 
-def load_report():
+"""
+    load_report function
+    """
+def load_report() -> Any:
     if not REPORT.exists():
-        print('No report found. Run scripts/wallets/check_wallets.py first')
+        logger.info('No report found. Run scripts/wallets/check_wallets.py first')
         return None
     with open(REPORT, 'r', encoding='utf-8') as fh:
         return json.load(fh)
 
-def print_wallet(name, data, dst_currency):
+"""
+    print_wallet function
+    """
+def print_wallet(name, data, dst_currency) -> Any:
     native = data.get('balance_native')
     native_cur = data.get('currency_native') or data.get('currency') or 'USD'
     if native is None:
-        print(f"{name}: no numeric balance available (status={data.get('status')})")
+        logger.info(f"{name}: no numeric balance available (status={data.get('status')})")
         return
     try:
         converted = convert(float(native), src=native_cur, dst=dst_currency)
     except Exception:
         converted = None
-    print(f"{name}: {native:.2f} {native_cur}  -> {converted if converted is not None else 'N/A'} {dst_currency}")
+    logger.info(f"{name}: {native:.2f} {native_cur}  -> {converted if converted is not None else 'N/A'} {dst_currency}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     ap = argparse.ArgumentParser()
     ap.add_argument('--wallet', help='Wallet name to query')
     ap.add_argument('--all', action='store_true', help='Show all wallets')
@@ -84,7 +98,7 @@ def main():
         else:
             data = canonical
         if not data:
-            print('Wallet not found in report')
+            logger.info('Wallet not found in report')
             return 2
         print_wallet(args.wallet, data, args.currency)
         return 0

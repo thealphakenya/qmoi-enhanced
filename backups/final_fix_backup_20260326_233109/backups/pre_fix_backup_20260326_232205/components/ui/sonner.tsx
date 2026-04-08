@@ -7,9 +7,9 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import * as React from "react";
-import { useTheme } from "next-themes";
-import { Toaster as Sonner } from "sonner";
+import { specificExports } from "react";
+import { specificExports } from "next-themes";
+import { specificExports } from "sonner";
 
 type ToasterProps = React.ComponentProps<typeof Sonner>;
 

@@ -9,8 +9,8 @@ export {};
 
 declare global {
   // Node/Browser globals used across app/api
-  var TextDecoder: unknown;
-  var TextEncoder: unknown;
+  const TextDecoder: unknown;
+  const TextEncoder: unknown;
   interface Buffer {
     toString(encoding?: string): string;
   }

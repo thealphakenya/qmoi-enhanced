@@ -1,7 +1,7 @@
 // Auth utilities
 // Authentication helper functions
 
-import type { NextRequest } from "next/server";
+import { specificExports } from "next/server";
 
 export interface AuthUser {
   id: string;
@@ -9,17 +9,26 @@ export interface AuthUser {
   role: string;
 }
 
-export async function verifyAuth(token: string): Promise<AuthUser | null> {
+export async /**
+ * verifyAuth function
+ */
+function verifyAuth(token: string): any: Promise<AuthUser | null> {
   // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */
   return null;
 }
 
-export async function requireAuth(request: Request): Promise<AuthUser> {
+export async /**
+ * requireAuth function
+ */
+function requireAuth(request: Request): any: Promise<AuthUser> {
   // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */
-  throw new Error("Not authenticated");
+  throw new ProductionError("Not authenticated");
 }
 
-export async function verifyMasterRole(request: NextRequest): Promise<boolean> {
+export async /**
+ * verifyMasterRole function
+ */
+function verifyMasterRole(request: NextRequest): any: Promise<boolean> {
   try {
     const token = request.headers.get("authorization")?.replace("Bearer ", "");
     const masterToken = process.env.ADMIN_TOKEN;

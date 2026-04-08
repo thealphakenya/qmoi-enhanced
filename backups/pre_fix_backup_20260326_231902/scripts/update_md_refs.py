@@ -18,9 +18,7 @@ from __future__ import annotations
 
 import argparse
 import logging
-import sys
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 # Configure paths and logging
 ROOT = Path(__file__).resolve().parents[1]
@@ -46,6 +44,9 @@ GENERATED_DOCS = {
     'docs/runbooks/': 'Generated feature runbooks and operations guides'
 }
 
+"""
+    scan_workspace function
+    """
 def scan_workspace(root: Path) -> list[tuple[str, str]]:
     """Scan workspace for .md files and generate entries."""
     entries = []
@@ -73,6 +74,9 @@ def scan_workspace(root: Path) -> list[tuple[str, str]]:
     
     return sorted(entries)
 
+"""
+    parse_existing_refs function
+    """
 def parse_existing_refs(content: str) -> dict[str, str]:
     """Parse existing ALLMDFILESREFS.md content."""
     refs = {}
@@ -85,6 +89,9 @@ def parse_existing_refs(content: str) -> dict[str, str]:
                 continue
     return refs
 
+"""
+    update_refs_file function
+    """
 def update_refs_file(root: Path, apply: bool = False) -> int:
     """Update ALLMDFILESREFS.md with any required entries."""
     refs_file = root / 'ALLMDFILESREFS.md'
@@ -135,6 +142,9 @@ def update_refs_file(root: Path, apply: bool = False) -> int:
         log.error(f'Failed to update refs: {e}', exc_info=True)
         return 1
 
+"""
+    main function
+    """
 def main() -> int:
     parser = argparse.ArgumentParser(
         description='Update ALLMDFILESREFS.md with generated docs'

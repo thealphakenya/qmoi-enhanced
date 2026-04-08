@@ -3,11 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { globalLinksService } from "@/lib/global-links-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/global-links-service";
 
 // GET /api/global-links - Get global health reports and statistics
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // const session = await getServerSession(authOptions);
     // if (!session) {
@@ -62,7 +65,10 @@ export async function GET(request: NextRequest) {
 }
 
 // POST /api/global-links - Perform global operations
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     // const session = await getServerSession(authOptions);
     // if (!session) {

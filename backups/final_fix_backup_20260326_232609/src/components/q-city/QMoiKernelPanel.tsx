@@ -3,15 +3,18 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useEffect, useCallback } from "react";
-import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
-import { useQmoiKernel } from "../../hooks/useQmoiKernel";
+import { specificExports } from "react";
+import { specificExports } from "./EnhancedQMOIDashboard";
+import { specificExports } from "../../hooks/useQmoiKernel";
 
-function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
+/**
+ * QMoiKernelPanel function
+ */
+function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }): any {
   const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
-    React.useState(false);
+    useState(false);
 
   const handleToggleDashboard = useCallback(() => {
     setShowEnhancedDashboard((prev) => !prev);
@@ -140,4 +143,4 @@ function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
   );
 }
 
-export default React.memo(QMoiKernelPanel);
+export default memo(QMoiKernelPanel);

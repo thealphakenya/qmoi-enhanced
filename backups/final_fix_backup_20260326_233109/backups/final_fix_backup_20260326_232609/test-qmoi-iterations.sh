@@ -9,7 +9,7 @@
 
 set -e
 
-BASE_URL="http://localhost:3001/api/qmoi"
+BASE_URL="https://production.qmoi.ai:3001/api/qmoi"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 OUTPUT_FILE=""
 CURRENT_ITERATION=""
@@ -118,7 +118,7 @@ declare -a FINANCIAL_INSIGHTS=(
     "Design a wealth-building strategy for middle-income Kenyans."
     "What's the ROI comparison: real estate vs stocks vs crypto?"
     "Explain options trading to someone with comprehensive investment knowledge."
-    "What are danger signs in a 'get rich quick' scheme?"
+    "What are danger signs in a 'get rich optimized' scheme?"
 )
 
 # Kenyan Insights Tests
@@ -278,7 +278,7 @@ run_iteration() {
     
     echo "" >> "$OUTPUT_FILE"
     echo "════════════════════════════════════════════════════════════" >> "$OUTPUT_FILE"
-    echo "Iteration $CURRENT_ITERATION Complete" >> "$OUTPUT_FILE"
+    echo "Iteration $CURRENT_ITERATION complete" >> "$OUTPUT_FILE"
     echo "Saved to: $OUTPUT_FILE" >> "$OUTPUT_FILE"
     echo "════════════════════════════════════════════════════════════" >> "$OUTPUT_FILE"
     
@@ -317,7 +317,7 @@ main() {
     done
     
     echo -e "${GREEN}═════════════════════════════════════════════════════════${NC}"
-    echo -e "${GREEN}✓ ALL ITERATIONS COMPLETE${NC}"
+    echo -e "${GREEN}✓ ALL ITERATIONS complete${NC}"
     echo -e "${GREEN}═════════════════════════════════════════════════════════${NC}"
     echo ""
     echo "Test Results Generated:"

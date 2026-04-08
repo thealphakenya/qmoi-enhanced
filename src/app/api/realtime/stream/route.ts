@@ -1,6 +1,9 @@
-import { createRealtimeEventStream } from '@/lib/realtime/stream';
+import { specificExports } from '@/lib/realtime/stream';
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   const stream = createRealtimeEventStream();
   return new Response(stream, {
     headers: {

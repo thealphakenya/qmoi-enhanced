@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-import os, re, json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 # Domains to verify
 entries = [
@@ -46,7 +45,7 @@ for domain in entries:
         feature_regex = re.compile(re.escape(feature), re.IGNORECASE)
         report[domain]['features'][feature] = any(feature_regex.search(Path(p).read_text(encoding='utf-8', errors='ignore')) for p in report[domain]['files'])
 
-# Also check feature files globally for missing features not in domain files
+# Also check feature files globally for required features not in domain files
 for domain in entries:
     for feature in required_features[domain]:
         if not report[domain]['features'][feature]:
@@ -55,4 +54,4 @@ for domain in entries:
 
 with open('logs/domain_ui_feature_report.json','w') as f:
     json.dump(report, f, indent=2)
-print('Domain UI feature report generated at logs/domain_ui_feature_report.json')
+logger.info('Domain UI feature report generated at logs/domain_ui_feature_report.json')

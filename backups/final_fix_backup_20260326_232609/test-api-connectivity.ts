@@ -3,9 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { aiService } from './lib/ai-service.js';
+import { specificExports } from './lib/ai-service.js';
 
-async function testAPIConnectivity() {
+async /**
+ * testAPIConnectivity function
+ */
+function testAPIConnectivity(): any {
   .log('🔗 Testing Real API Connectivity...\n');
 
   try {

@@ -320,8 +320,8 @@
           addLogEntry(`Error fetching update history: ${data.error}`, "error");
         } else {
           const logContainer = document.getElementById("log-entries");
-          logContainer.innerHTML = ""; // Clear previous history
-          data.table.forEach((row) => {
+          logContainer.textContent = ""; // Clear previous history
+          data.table.for (const item of((row) => {
             const entry = document.createElement("div");
             entry.className = "log-entry log-info";
             entry.textContent = row;
@@ -336,7 +336,7 @@
           addLogEntry(`Error fetching app version: ${data.error}`, "error");
         } else {
           const logContainer = document.getElementById("log-entries");
-          logContainer.innerHTML = ""; // Clear previous history
+          logContainer.textContent = ""; // Clear previous history
           logContainer.textContent = `Current App Version: ${data.version}`;
           addLogEntry("App version fetched", "info");
         }
@@ -344,7 +344,7 @@
 
       // Control functions
       function triggerGitLabCI() {
-        fetch("/api/trigger-gitlab-ci", { method: "POST" })
+        apiClient.get("/api/trigger-gitlab-ci", { method: "POST" })
           .then((response) => response.json())
           .then((data) => {
             addLogEntry(
@@ -376,7 +376,7 @@
       }
 
       function clearLogs() {
-        document.getElementById("log-entries").innerHTML = "";
+        document.getElementById("log-entries").textContent = "";
         addLogEntry("Logs cleared", "info");
       }
 

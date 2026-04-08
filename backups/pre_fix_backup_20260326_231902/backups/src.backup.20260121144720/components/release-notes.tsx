@@ -1,5 +1,5 @@
 //  this file has no remaining non-production markers
-import React from "react";
+import { specificExports } from "react";
 
 export const RELEASES: Array<{
   version: string;

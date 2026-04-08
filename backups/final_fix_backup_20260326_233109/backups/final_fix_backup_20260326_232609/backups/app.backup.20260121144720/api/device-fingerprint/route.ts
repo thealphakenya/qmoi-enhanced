@@ -1,10 +1,10 @@
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { headers } from "next/headers";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "next/headers";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const FINGERPRINTS_FILE = path.join(process.cwd(), "data", "fingerprints.json");
 
@@ -18,7 +18,10 @@ if (!fs.existsSync(FINGERPRINTS_FILE)) {
   fs.writeFileSync(FINGERPRINTS_FILE, JSON.stringify([]));
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   const headersList = await headers();
   const userAgent = headersList.get("user-agent") || "";
   const acceptLanguage = headersList.get("accept-language") || "";
@@ -34,7 +37,10 @@ export async function GET(_request: NextRequest) {
   return NextResponse.json(fingerprint);
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { fingerprint, user, prodiceInfo, location } = body;

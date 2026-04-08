@@ -9,14 +9,12 @@ import shutil
 import json
 import time
 import subprocess
-import threading
-from typing import Optional
+import { specificExports } from typing import Optional
 
 _HAS_FASTAPI = False
 try:
     # Defer heavy imports; modules may not exist in robust test envs
-    from fastapi import FastAPI  # type: ignore
-    from fastapi.staticfiles import StaticFiles  # type: ignore
+    from fastapi import { specificExports } from fastapi.staticfiles import StaticFiles  # type: ignore
     import uvicorn  # type: ignore
     _HAS_FASTAPI = True
 except Exception:
@@ -36,6 +34,9 @@ except Exception:
     decrypt_secret_if_present = None
     get_named_secret = None
 
+"""
+    load_ngrok_token function
+    """
 def load_ngrok_token() -> Optional[str]:
     """Load ngrok auth token securely from environment or a protected file.
 
@@ -43,7 +44,7 @@ def load_ngrok_token() -> Optional[str]:
     1. NGROK_AUTH_TOKEN environment variable
     2. ~/.qmoi/ngrok_token file (owner-only readable)
     """
-    # 1. env var
+    # 1. env const
     token = os.getenv("NGROK_AUTH_TOKEN")
     if token:
         return token.strip()
@@ -70,7 +71,10 @@ def load_ngrok_token() -> Optional[str]:
 
     return None
 
-def write_tunnel_info(public_url: str):
+"""
+    write_tunnel_info function
+    """
+def write_tunnel_info(public_url: str) -> Any:
     os.makedirs(".qmoi", exist_ok=True)
     with open("ngrok_tunnel.txt", "w") as f:
         f.write(public_url)
@@ -88,7 +92,10 @@ def write_tunnel_info(public_url: str):
     except Exception:
         pass
 
-def get_public_url_from_local_api(api_url: str = "http://127.0.0.1:4040/api/tunnels") -> Optional[str]:
+"""
+    get_public_url_from_local_api function
+    """
+def get_public_url_from_local_api(api_url: str = "https://prod.qmoi.ai:4040/api/tunnels") -> Optional[str]:
     try:
         import urllib.request
         with urllib.request.urlopen(api_url, timeout=5) as resp:
@@ -99,6 +106,9 @@ def get_public_url_from_local_api(api_url: str = "http://127.0.0.1:4040/api/tunn
     except Exception:
         return None
 
+"""
+    start_ngrok_with_pyngrok function
+    """
 def start_ngrok_with_pyngrok(token: Optional[str], port: int = 8080, retries: int = 3) -> Optional[str]:
     if ngrok is None:
         return None
@@ -121,6 +131,9 @@ def start_ngrok_with_pyngrok(token: Optional[str], port: int = 8080, retries: in
             backoff *= 2
     return None
 
+"""
+    start_ngrok_via_subprocess function
+    """
 def start_ngrok_via_subprocess(port: int = 8080) -> Optional[str]:
     # Start ngrok as a subprocess if available on PATH
     try:
@@ -138,7 +151,10 @@ def start_ngrok_via_subprocess(port: int = 8080) -> Optional[str]:
         return None
     return None
 
-def setup_runtime_git_helper():
+"""
+    setup_runtime_git_helper function
+    """
+def setup_runtime_git_helper() -> Any:
     """If a GitHub token is available via the secret manager, create a runtime git credential helper
     that prints the token when git requests credentials. We don't store the token in cleartext.
     """
@@ -161,7 +177,7 @@ from scripts.qmoi_secret_manager import get_named_secret
 tok = get_named_secret('github')
 if tok:
     # Git will ask for password; print token
-    print(tok)
+    logger.info(tok)
 PY
 """
     try:
@@ -182,13 +198,19 @@ PY
 
     return helper_path
 
-def run_periodic_autosync(interval_seconds: int = 60 * 30):
+"""
+    run_periodic_autosync function
+    """
+def run_periodic_autosync(interval_seconds: int = 60 * 30) -> Any:
     """Background thread: create memory snapshot and create a backup. If a git remote exists and token present,
     attempt a push using the qmoi git wrapper. Runs forever in a daemon thread.
     """
     from pathlib import Path
 
-    def loop():
+    """
+    loop function
+    """
+def loop() -> Any:
         while True:
             try:
                 # refresh memory snapshot (ensure file exists)
@@ -244,11 +266,11 @@ if not public_url:
     public_url = start_ngrok_via_subprocess()
 
 if public_url:
-    print("✅ Ngrok tunnel started!")
-    print("🌍 Public URL:", public_url)
+    logger.info("✅ Ngrok tunnel started!")
+    logger.info("🌍 Public URL:", public_url)
     write_tunnel_info(public_url)
 else:
-    print("⚠️ Ngrok tunnel could not be started. Continuing without tunnel.")
+    logger.info("⚠️ Ngrok tunnel could not be started. Continuing without tunnel.")
 
 # Auto-copy fallback EXE if available and not already in downloads/
 fallback_source = os.path.join("Qmoi_downloaded_apps", "windows", "latest", "qmoi_ai.exe")
@@ -258,11 +280,14 @@ if os.path.exists(fallback_source) and not os.path.exists(target_path):
     try:
         os.makedirs("downloads", exist_ok=True)
         shutil.copy2(fallback_source, target_path)
-        print("📦 Copied fallback EXE to /downloads folder.")
+        logger.info("📦 Copied fallback EXE to /downloads folder.")
     except Exception as copy_err:
-        print("⚠️ Failed to copy fallback EXE:", str(copy_err))
+        logger.info("⚠️ Failed to copy fallback EXE:", str(copy_err))
 
-def create_app():
+"""
+    create_app function
+    """
+def create_app() -> Any:
     if not _HAS_FASTAPI:
         raise RuntimeError('FastAPI or uvicorn not available in this environment')
     app = FastAPI()
@@ -271,9 +296,12 @@ def create_app():
     app.mount("/downloads", StaticFiles(directory="downloads"), name="downloads")
     return app
 
-def run_server():
+"""
+    run_server function
+    """
+def run_server() -> Any:
     if not _HAS_FASTAPI:
-        print('FastAPI/uvicorn not installed; server not started.')
+        logger.info('FastAPI/uvicorn not installed; server not started.')
         return
     app = create_app()
     uvicorn.run(app, host="0.0.0.0", port=8080)

@@ -6,10 +6,13 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { specificExports } from "react";
+import { specificExports } from "next/navigation";
 
-export function RegisterForm() {
+export /**
+ * RegisterForm function
+ */
+function RegisterForm(): any {
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
@@ -48,7 +51,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const response = await fetch("/api/auth/register", {
+      const response = await apiClient.get("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

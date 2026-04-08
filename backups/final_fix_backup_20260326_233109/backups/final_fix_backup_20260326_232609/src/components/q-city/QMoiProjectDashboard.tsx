@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: this file has no remaining non-production markers
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 export const QMoiProjectDashboard: React.FC = () => {
   // Projects state management
   const [projects, setProjects] = useState([
-    { id: 1, name: "stable Engine", status: "active", progress: 85 },
+    { id: 1, name: "latest Engine", status: "active", progress: 85 },
     { id: 2, name: "Q-City Deployment", status: "active", progress: 60 },
     { id: 3, name: "Automation Suite", status: "planning", progress: 30 },
   ]);

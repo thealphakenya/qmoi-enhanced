@@ -6,15 +6,15 @@
  all markers normalized for completion
 "use client";
 
-import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/alert";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/label";
 import {
   CheckCircle,
   XCircle,
@@ -71,7 +71,10 @@ interface Track {
   metadata: Record<string, any>;
 }
 
-export function EnhancedLinkDomainManager() {
+export /**
+ * EnhancedLinkDomainManager function
+ */
+function EnhancedLinkDomainManager(): any {
   const [stats, setStats] = useState<ValidationStats | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [lastScan, setLastScan] = useState<Date | null>(null);
@@ -90,7 +93,7 @@ export function EnhancedLinkDomainManager() {
 
   const loadStats = async () => {
     try {
-      const response = await fetch("/api/enhanced-link-domain?action=stats");
+      const response = await apiClient.get("/api/enhanced-link-domain?action=stats");
       const data = await response.json();
       if (data.success) {
         setStats(data.stats);
@@ -102,7 +105,7 @@ export function EnhancedLinkDomainManager() {
 
   const loadTracks = async () => {
     try {
-      const response = await fetch("/api/qmoi-tracks?type=link-validation&type=domain-validation&type=link-maintenance");
+      const response = await apiClient.get("/api/qmoi-tracks?type=link-validation&type=domain-validation&type=link-maintenance");
       const data = await response.json();
       if (data.success) {
         setTracks(data.tracks);
@@ -115,17 +118,17 @@ export function EnhancedLinkDomainManager() {
   const scanAllMarkdown = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/enhanced-link-domain?action=scan");
+      const response = await apiClient.get("/api/enhanced-link-domain?action=scan");
       const data = await response.json();
       if (data.success) {
         setLastScan(new Date());
         await loadStats();
         await loadTracks();
-        alert(`Scan completed! Found ${data.results.totalLinks} links in ${data.results.totalFiles} files.`);
+        notification.show(`Scan completed! Found ${data.results.totalLinks} links in ${data.results.totalFiles} files.`);
       }
     } catch (error) {
       console.error("Scan failed:", error);
-      alert("Scan failed. Check console for details.");
+      notification.show("Scan failed. Check console for details.");
     } finally {
       setIsLoading(false);
     }
@@ -134,18 +137,18 @@ export function EnhancedLinkDomainManager() {
   const autoReplaceBrokenLinks = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/enhanced-link-domain?action=auto-replace", {
+      const response = await apiClient.get("/api/enhanced-link-domain?action=auto-replace", {
         method: "POST"
       });
       const data = await response.json();
       if (data.success) {
         await loadStats();
         await loadTracks();
-        alert(`Auto-replacement completed! Updated ${data.results.filesUpdated} files, replaced ${data.results.linksReplaced} links.`);
+        notification.show(`Auto-replacement completed! Updated ${data.results.filesUpdated} files, replaced ${data.results.linksReplaced} links.`);
       }
     } catch (error) {
       console.error("Auto-replace failed:", error);
-      alert("Auto-replace failed. Check console for details.");
+      notification.show("Auto-replace failed. Check console for details.");
     } finally {
       setIsLoading(false);
     }
@@ -155,7 +158,7 @@ export function EnhancedLinkDomainManager() {
     if (!urlToValidate.trim()) return;
 
     try {
-      const response = await fetch(`/api/enhanced-link-domain?action=validate-link&url=${encodeURIComponent(urlToValidate)}`);
+      const response = await apiClient.get(`/api/enhanced-link-domain?action=validate-link&url=${encodeURIComponent(urlToValidate)}`);
       const data = await response.json();
       if (data.success) {
         setValidationResult(data.validation);
@@ -169,7 +172,7 @@ export function EnhancedLinkDomainManager() {
     if (!domainToValidate.trim()) return;
 
     try {
-      const response = await fetch(`/api/enhanced-link-domain?action=validate-domain&domain=${encodeURIComponent(domainToValidate)}`);
+      const response = await apiClient.get(`/api/enhanced-link-domain?action=validate-domain&domain=${encodeURIComponent(domainToValidate)}`);
       const data = await response.json();
       if (data.success) {
         setDomainValidationResult(data.validation);

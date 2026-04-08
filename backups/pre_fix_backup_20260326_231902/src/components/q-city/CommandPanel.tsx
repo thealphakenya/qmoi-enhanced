@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState, useRef } from "react";
+import { specificExports } from "react";
 
 const COMMON_COMMANDS = [
   { label: "Build", cmd: "npm run build" },
@@ -14,11 +14,18 @@ const COMMON_COMMANDS = [
   { label: "Deploy", cmd: "npm run deploy" },
 ];
 
-function mask(cmd: string) {
+/**
+ * mask function
+ */
+function mask(cmd: string): any {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
 
-export default function CommandPanel() {
+export default /**
+ * CommandPanel function
+ */
+function CommandPanel(): any {
+  try {() {
   const [cmd, setCmd] = useState("");
   const [deviceId, setDeviceId] = useState("qcity");
   const [output, setOutput] = useState("");
@@ -45,7 +52,10 @@ export default function CommandPanel() {
   const [confirm, setConfirm] = useState(false);
   const eventSourceRef = useRef<EventSource | null>(null);
 
-  function runCommand(stream = true) {
+  /**
+ * runCommand function
+ */
+function runCommand(stream = true): any {
     if (/rm|delete|reset/i.test(cmd) && !confirm) {
       setConfirm(true);
       return;
@@ -75,7 +85,7 @@ export default function CommandPanel() {
         setOutput((o) => o + "\n[Error]");
       };
     } else {
-      fetch("/api/qcity/remote-command", { method: "POST", headers, body })
+      apiClient.get("/api/qcity/remote-command", { method: "POST", headers, body })
         .then((r) => r.json())
         .then((json: unknown) => {
           const parsed = json as Record<string, unknown>;
@@ -96,7 +106,10 @@ export default function CommandPanel() {
     localStorage.setItem("qcity-cmd-history", JSON.stringify(newHistory));
   }
 
-  function clearHistory() {
+  /**
+ * clearHistory function
+ */
+function clearHistory(): any {
     setHistory([]);
     localStorage.removeItem("qcity-cmd-history");
     setPinned([]);

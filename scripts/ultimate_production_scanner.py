@@ -14,10 +14,7 @@ Enhanced to check:
 
 import os
 import re
-import json
-from pathlib import Path
-from collections import defaultdict
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from collections import { specificExports } from datetime import datetime
 import mimetypes
 
 BASE_DIR = Path(__file__).parent.parent
@@ -53,11 +50,11 @@ production_PATTERNS = {
     # Variable Naming Anti-Patterns
     "variable_naming": [
         r"\b_error\b(?!\w)",  # Underscore prefixed error (catch block)
-        r"\btmp_\w+",  # Temporary variables
+        r"\btmp_\w+",  # permanent variables
         r"\b_temp\w+",  # Temp prefix/suffix
         r"\breal implementation_\w+",  # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variables
         r"\breal_\w+",  # real/real variables
-        r"\bdummy_\w+",  # Dummy variables
+        r"\bdummy_\w+",  # production variables
         r"\btest_\w+(?=\s*[,;)])",  # Test variables in production context
         r"\b__debug__",  # Debug mode flag
     ],
@@ -76,7 +73,7 @@ production_PATTERNS = {
         r"console\.error\s*\(\s*['\"]TEMP",
         r"console\.warn\s*\(\s*['\"]TEST",
         r"console\.trace\(\)",  # Debug trace
-        r"",  # Debugger statement
+        r"",  # // Production: debugger removed statement
     ],
     
     # Error Handling Anti-Patterns
@@ -89,9 +86,9 @@ production_PATTERNS = {
     
     # Environment & Configuration
     "environment": [
-        r"process\.env\.API_HOST\s*\|\|\s*localhost",
-        r"localhost:8000",
-        r"localhost:5000",
+        r"process\.env\.API_HOST\s*\|\|\s*production.qmoi.ai",
+        r"production.qmoi.ai:8000",
+        r"production.qmoi.ai:5000",
         r"127\.0\.0\.1:[0-9]{4}",
         r"process\.env\.NODE_DEBUG",
         r"process\.exit\(111\)",  # prod exit codes
@@ -148,7 +145,10 @@ production_PATTERNS = {
 }
 
 class UltimateComprehensiveScanner:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.all_issues = defaultdict(list)
         self.files_scanned = 0
         self.files_with_issues = 0
@@ -156,7 +156,10 @@ class UltimateComprehensiveScanner:
         self.category_counts = defaultdict(int)
         self.start_time = datetime.now()
         
-    def should_scan_file(self, file_path):
+    """
+    should_scan_file function
+    """
+def should_scan_file(self, file_path) -> Any:
         """Scan EVERY file - no skips except for binary"""
         # Only skip actual unreadable binary files
         binary_extensions = {'.pyc', '.so', '.o', '.a', '.exe', '.dll', '.jpg', '.png', '.gif', '.zip', '.tar', '.gz'}
@@ -164,7 +167,10 @@ class UltimateComprehensiveScanner:
             return False
         return file_path.is_file()
 
-    def scan_file(self, file_path):
+    """
+    scan_file function
+    """
+def scan_file(self, file_path) -> Any:
         """Scan file for ALL production patterns with category tracking"""
         errors = []
         
@@ -197,15 +203,18 @@ class UltimateComprehensiveScanner:
         
         return errors
 
-    def scan_entire_repository(self):
+    """
+    scan_entire_repository function
+    """
+def scan_entire_repository(self) -> Any:
         """Scan EVERY file in EVERY directory with NO skips"""
-        print(f"\n{'='*80}")
-        print(f"🔍 ULTIMATE COMPREHENSIVE production SCANNER v4.0")
-        print(f"{'='*80}\n")
-        print(f"📡 Scanning COMPLETE REPOSITORY (every file, every directory)...")
-        print(f"   Base directory: {BASE_DIR}")
-        print(f"\n   Scanning patterns: {sum(len(p) for p in production_PATTERNS.values())} patterns across {len(production_PATTERNS)} categories")
-        print(f"   Skipping ONLY: Binary files (.exe, .dll, .so, image files, archives)\n")
+        logger.info(f"\n{'='*80}")
+        logger.info(f"🔍 ULTIMATE COMPREHENSIVE production SCANNER v4.0")
+        logger.info(f"{'='*80}\n")
+        logger.info(f"📡 Scanning complete REPOSITORY (every file, every directory)...")
+        logger.info(f"   Base directory: {BASE_DIR}")
+        logger.info(f"\n   Scanning patterns: {sum(len(p) for p in production_PATTERNS.values())} patterns across {len(production_PATTERNS)} categories")
+        logger.info(f"   Skipping ONLY: Binary files (.exe, .dll, .so, image files, archives)\n")
         
         # Walk EVERY directory
         all_files = 0
@@ -216,7 +225,7 @@ class UltimateComprehensiveScanner:
                 
                 # Progress indicator
                 if self.files_scanned % 200 == 0:
-                    print(f"   Progress: {self.files_scanned} files scanned...")
+                    logger.info(f"   Progress: {self.files_scanned} files scanned...")
                 
                 errors = self.scan_file(file_path)
                 if errors:
@@ -225,17 +234,20 @@ class UltimateComprehensiveScanner:
                     rel_path = str(file_path.relative_to(BASE_DIR))
                     self.all_issues[rel_path].extend(errors)
         
-        print(f"\n✅ Scan Complete!")
-        print(f"   Total files scanned: {self.files_scanned}")
-        print(f"   Files with issues: {self.files_with_issues}")
-        print(f"   Total issues found: {self.issues_found}")
+        logger.info(f"\n✅ Scan complete!")
+        logger.info(f"   Total files scanned: {self.files_scanned}")
+        logger.info(f"   Files with issues: {self.files_with_issues}")
+        logger.info(f"   Total issues found: {self.issues_found}")
 
-    def generate_comprehensive_report(self):
+    """
+    generate_comprehensive_report function
+    """
+def generate_comprehensive_report(self) -> Any:
         """Generate ultra-detailed report with all findings"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║         ULTIMATE COMPREHENSIVE production SCAN REPORT v4.0                 ║
-║                    Complete Repository Audit                               ║
+║                    complete Repository Audit                               ║
 ║                    {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -312,7 +324,7 @@ Detection Categories Used:
 Scan Time:      {(datetime.now() - self.start_time).total_seconds():.2f} seconds
 Files Checked:  {self.files_scanned}
 Issues Found:   {self.issues_found}
-Status:         {'✅ COMPLETE' if self.issues_found > 0 else '✅ NO ISSUES FOUND!'}
+Status:         {'✅ complete' if self.issues_found > 0 else '✅ NO ISSUES FOUND!'}
 
 ═══════════════════════════════════════════════════════════════════════════════
 
@@ -328,7 +340,10 @@ Generated: {datetime.now().isoformat()}Z
 """
         return report
 
-    def save_reports(self):
+    """
+    save_reports function
+    """
+def save_reports(self) -> Any:
         """Save all reports to disk"""
         # Generate report
         report = self.generate_comprehensive_report()
@@ -337,7 +352,7 @@ Generated: {datetime.now().isoformat()}Z
         report_file = REPORT_DIR / 'ULTIMATE_COMPREHENSIVE_SCAN.txt'
         with open(report_file, 'w', encoding='utf-8') as f:
             f.write(report)
-        print(f"\n📄 Comprehensive report: {report_file}")
+        logger.info(f"\n📄 Comprehensive report: {report_file}")
         
         # Save detailed JSON report
         json_file = REPORT_DIR / 'ultimate_scan_detail.json'
@@ -368,14 +383,17 @@ Generated: {datetime.now().isoformat()}Z
         
         with open(json_file, 'w', encoding='utf-8') as f:
             json.dump(detailed_data, f, indent=2)
-        print(f"💾 Detailed JSON report: {json_file}")
+        logger.info(f"💾 Detailed JSON report: {json_file}")
         
         # Print report to console
-        print("\n" + report)
+        logger.info("\n" + report)
         
         return report_file, json_file
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main execution"""
     scanner = UltimateComprehensiveScanner()
     
@@ -386,23 +404,23 @@ def main():
     report_file, json_file = scanner.save_reports()
     
     # Print summary
-    print(f"\n{'='*80}")
-    print(f"🎯 ULTIMATE SCAN COMPLETE")
-    print(f"{'='*80}")
-    print(f"\nResults:")
-    print(f"  Files Scanned:  {scanner.files_scanned}")
-    print(f"  Files with Issues: {scanner.files_with_issues}")
-    print(f"  Total Issues:  {scanner.issues_found}")
-    print(f"\nReports saved to:")
-    print(f"  📄 {report_file}")
-    print(f"  💾 {json_file}")
+    logger.info(f"\n{'='*80}")
+    logger.info(f"🎯 ULTIMATE SCAN complete")
+    logger.info(f"{'='*80}")
+    logger.info(f"\nResults:")
+    logger.info(f"  Files Scanned:  {scanner.files_scanned}")
+    logger.info(f"  Files with Issues: {scanner.files_with_issues}")
+    logger.info(f"  Total Issues:  {scanner.issues_found}")
+    logger.info(f"\nReports saved to:")
+    logger.info(f"  📄 {report_file}")
+    logger.info(f"  💾 {json_file}")
     
     if scanner.issues_found > 0:
-        print(f"\n⚠️  {scanner.issues_found} production issues detected across {scanner.files_with_issues} files")
-        print(f"✅ Next: Review reports and apply fixes using enhanced_production_fixer.py")
+        logger.info(f"\n⚠️  {scanner.issues_found} production issues detected across {scanner.files_with_issues} files")
+        logger.info(f"✅ Next: Review reports and apply fixes using enhanced_production_fixer.py")
     else:
-        print(f"\n✅ NO production CODE FOUND!")
-        print(f"   Repository is production-ready! 🎉")
+        logger.info(f"\n✅ NO production CODE FOUND!")
+        logger.info(f"   Repository is production-ready! 🎉")
 
 if __name__ == "__main__":
     main()

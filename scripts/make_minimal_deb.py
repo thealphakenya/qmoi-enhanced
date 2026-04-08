@@ -8,10 +8,12 @@
 import os
 import tarfile
 import time
-import gzip
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
-def make_dirs(root):
+"""
+    make_dirs function
+    """
+def make_dirs(root) -> Any:
     Path(root).mkdir(parents=True, exist_ok=True)
 
 BUILD_ROOT = '/tmp/qmoi_deb_build'
@@ -53,7 +55,10 @@ with tarfile.open(data_tar_path, 'w:gz') as tf:
 deb_path = '/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb'
 Path(os.path.dirname(deb_path)).mkdir(parents=True, exist_ok=True)
 
-def write_ar_member(f, name: str, data: bytes):
+"""
+    write_ar_member function
+    """
+def write_ar_member(f, name: str, data: bytes) -> Any:
     # ar header fields: name(16), timestamp(12), owner(6), group(6), mode(8), size(10), ending 2 chars
     timestamp = int(time.time())
     owner = 0
@@ -77,5 +82,5 @@ with open(deb_path, 'wb') as f:
     write_ar_member(f, 'control.tar.gz', control_bytes)
     write_ar_member(f, 'data.tar.gz', data_bytes)
 
-print('Wrote deb:', deb_path)
-print('Sizes:', len(control_bytes), len(data_bytes))
+logger.info('Wrote deb:', deb_path)
+logger.info('Sizes:', len(control_bytes), len(data_bytes))

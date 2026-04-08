@@ -6,10 +6,10 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import * as React from "react";
+import { specificExports } from "react";
 
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import { specificExports } from "@/lib/utils";
+import { specificExports } from "@/components/ui/button";
 
 // complete local shim for Radix Alert Dialog primitives used in the UI.
 const AlertDialogRoot: React.FC<any> = ({ children, ...props }) => (

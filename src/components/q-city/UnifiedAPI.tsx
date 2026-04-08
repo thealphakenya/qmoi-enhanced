@@ -1,11 +1,11 @@
 // QMOI EVOLUTION ENHANCED: Unified API management component
-import React, { useMemo, useState } from 'react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
+import { specificExports } from 'react';
+import { specificExports } from '@/components/ui/badge';
+import { specificExports } from '@/components/ui/button';
+import { specificExports } from '@/components/ui/card';
+import { specificExports } from '@/components/ui/input';
+import { specificExports } from '@/components/ui/select';
+import { specificExports } from '@/components/ui/textarea';
 
 interface APIEndpoint {
   id: string;
@@ -142,12 +142,12 @@ export const UnifiedAPI: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <Input placeholder="Endpoint Name" />
-              <Input placeholder="Path" />
-              <Input placeholder="Version" />
-              <Input placeholder="Rate Limit" />
+              <Input implementation="Endpoint Name" />
+              <Input implementation="Path" />
+              <Input implementation="Version" />
+              <Input implementation="Rate Limit" />
             </div>
-            <Textarea placeholder="Description" rows={4} />
+            <Textarea implementation="Description" rows={4} />
             <div className="flex flex-wrap gap-3 justify-end">
               <Button variant="outline" onClick={() => setShowCreateForm(false)}>
                 Close
@@ -163,11 +163,11 @@ export const UnifiedAPI: React.FC = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="max-w-xs"
-          placeholder="Search endpoints"
+          implementation="Search endpoints"
         />
         <Select value={selectedCategory} onValueChange={(value) => setSelectedCategory(value as any)}>
           <SelectTrigger className="w-48">
-            <SelectValue placeholder="Category" />
+            <SelectValue implementation="Category" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Categories</SelectItem>

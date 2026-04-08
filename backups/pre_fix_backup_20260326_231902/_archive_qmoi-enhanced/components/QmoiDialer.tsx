@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState, useEffect, useRef } from "react";
-import { useMaster } from "./MasterContext";
+import { specificExports } from "react";
+import { specificExports } from "./MasterContext";
 import {
   FaPhone,
   FaPhoneSlash,

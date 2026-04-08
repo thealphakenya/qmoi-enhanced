@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 const AccessibilitySettingsPanel = () => {
   const [highContrast, setHighContrast] = useState(false);

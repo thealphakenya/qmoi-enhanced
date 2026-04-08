@@ -3,7 +3,7 @@
 
 export class ConsoleLogger {
   static info(message: string, data?: any): void {
-    console.log(`[INFO] ${message}`, data);
+    logger.info(`[INFO] ${message}`, data);
   }
 
   static error(message: string, error?: any): void {
@@ -20,8 +20,11 @@ export class ConsoleLogger {
 }
 
 // Export a default logger function for convenience
-export function consoleLog(message: string, data?: any): void {
-  console.log(message, data);
+export /**
+ * consoleLog function
+ */
+function consoleLog(message: string, data?: any): any: void {
+  logger.info(message, data);
 }
 
 export default ConsoleLogger;

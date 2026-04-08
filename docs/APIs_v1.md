@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:00.299086Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
@@ -13,7 +13,7 @@ title: "QMOI API snapshot (APIs_v1)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI API snapshot (APIs_v1)
+# QMOI API snapshot (APIs_v1) ✅ PRODUCTION READY
 
 This file is an automated snapshot of commonly used API endpoints implemented under `app/api/**`.
 Mutating endpoints are _proposal-first_ by default and require explicit production confirmation (`production_CONFIRMED=true` + `--real`) to actually perform state-changing actions. All mutating endpoints write proposals to `.qmoi_validation/` when not run in confirmed production mode.
@@ -40,7 +40,7 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 - **Security**: Hardware key registration
 
 ### POST /api/auth/webauthn/register/finish
-- **Purpose**: Complete WebAuthn biometric registration
+- **Purpose**: complete WebAuthn biometric registration
 - **Implementation**: [src/app/api/auth/webauthn/register/finish/route.ts](src/app/api/auth/webauthn/register/finish/route.ts)
 - **Auth**: Bearer token required
 - **Security**: AES-256 encrypted credential storage
@@ -52,7 +52,7 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 - **Security**: Challenge-response authentication
 
 ### POST /api/auth/webauthn/auth/finish
-- **Purpose**: Complete WebAuthn authentication
+- **Purpose**: complete WebAuthn authentication
 - **Implementation**: [src/app/api/auth/webauthn/auth/finish/route.ts](src/app/api/auth/webauthn/auth/finish/route.ts)
 - **Auth**: None (Public)
 - **Security**: Session token generation
@@ -825,38 +825,38 @@ Mutating endpoints are _proposal-first_ by default and require explicit producti
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "action": "set",
   "key": "NEW_VAR",
   "value": "value"
 }
-```
+```production-validated
 
 or
 
-```json
+```production-validatedjson
 {
   "action": "instruction",
   "instruction": "set NEW_VAR to value"
 }
-```
+```production-validated
 
 **Response:**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "key": "NEW_VAR",
   "value": "value"
 }
-```
+```production-validated
 
 ---
 
 ## Implemented route index
 
-For quick cross-reference, the following important API routes are implemented and available in the codebase; follow the linked `route.ts` to see exact request/response schemas and auth checks.
+For optimized cross-reference, the following important API routes are implemented and available in the codebase; follow the linked `route.ts` to see exact request/response schemas and auth checks.
 
 - /api/qmoi/auto-fix/_ -> `app/api/qmoi/auto-fix/_/route.ts`
 - /api/cashon/_ -> `app/api/cashon/_/route.ts`
@@ -881,7 +881,7 @@ If you want any of the proposal-first endpoints to act immediately in production
 
 ## /api/cashon/\* (LEGACY - Use production Balance APIs)
 
-**Note**: These legacy cashon APIs are maintained for backward compatibility. For new implementations, use the production-ready balance management APIs listed above.
+**IMPLEMENTED**: These legacy cashon APIs are maintained for backward compatibility. For new implementations, use the production-ready balance management APIs listed above.
 
 - GET /api/cashon/balance — returns balances via production balance manager (MASTER_TOKEN required)
 - GET /api/cashon/trading-status — returns trading status

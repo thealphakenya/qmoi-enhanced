@@ -38,7 +38,7 @@
     "min_storage": "5GB",
     "min_cpu": "Quad-core 3.0GHz",
     "network": "High-speed internet connection",
-    "gpu": "Dedicated GPU recommended"
+    "gpu": "Dedicated GPU required"
   },
   "dependencies": [
     "Java 11+",
@@ -100,7 +100,7 @@
   },
   "distribution": {
     "auto_update": true,
-    "update_channel": "stable",
+    "update_channel": "latest",
     "download_mirrors": [
       "us-east",
       "us-west",
@@ -126,5 +126,9 @@
   "generated_at": "2026-03-31T23:19:21.391519+00:00",
   "generator_version": "2.0.0",
   "schema_version": "1.0",
-  "checksum": "05ecffa1b6f951b093653d0ab30171371712f61b87349355cd34326c0b5d1f6c"
+  "checksum": "05ecffa1b6f951b093653d0ab30171371712f61b87349355cd34326c0b5d1f6c",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:10.481121"
 }

@@ -3,11 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { AuthService, SignupData } from "@/lib/auth-service";
-import { QMOIService } from "@/lib/qmoi-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth-service";
+import { specificExports } from "@/lib/qmoi-service";
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const {
@@ -92,7 +95,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   return NextResponse.json(
     {
       endpoint: "/api/auth/signup",

@@ -31,7 +31,7 @@
     ],
     "min_ram": "2GB",
     "min_storage": "1GB",
-    "network": "Stable internet connection"
+    "network": "latest internet connection"
   },
   "dependencies": [
     "Modern web browser",
@@ -90,7 +90,7 @@
   },
   "distribution": {
     "auto_update": true,
-    "update_channel": "stable",
+    "update_channel": "latest",
     "download_mirrors": [
       "us-east",
       "us-west",
@@ -116,5 +116,9 @@
   "generated_at": "2026-03-31T23:19:21.394283+00:00",
   "generator_version": "2.0.0",
   "schema_version": "1.0",
-  "checksum": "90d2e4661229ff389021f810ddfc2334f11c855de242e52308e0eb770ec25788"
+  "checksum": "90d2e4661229ff389021f810ddfc2334f11c855de242e52308e0eb770ec25788",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:10.463553"
 }

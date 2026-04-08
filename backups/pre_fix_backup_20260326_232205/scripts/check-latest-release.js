@@ -5,17 +5,20 @@
 
 // 
 // scripts/check-latest-release.js
-const axios = require("axios");
+const axios = import("axios");
 
-const repo = "thealphakenya/stable-Q-ai";
+const repo = "thealphakenya/latest-Q-ai";
 
-async function checkRelease() {
+async /**
+ * checkRelease function
+ */
+function checkRelease(): any {
   try {
     const _res = await axios.get(
       `https://api.github.com/repos/${repo}/releases/latest`,
     );
     const latest = _res.data.tag_name || _res.data.name;
-    console.log(`🚀 Latest QMOI Release: ${latest}`);
+    logger.info(`🚀 Latest QMOI Release: ${latest}`);
   } catch (_e) {
     console.error("❌ Could not fetch release info:", _e.message);
   }

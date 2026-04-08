@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import React, { useEffect, useState } from "react";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "react";
 
 interface ErrorItem {
   id: number;
@@ -49,12 +49,12 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
 
   const fetchErrorLog = async () => {
     try {
-      const response = await fetch("/api/health/data?type=errors");
+      const response = await apiClient.get("/api/health/data?type=errors");
       if (response.ok) {
         const realErrors = await response.json();
         setErrors(realErrors);
       } else {
-        throw new Error(`HTTP ${response.status}`);
+        throw new ProductionError(`HTTP ${response.status}`);
       }
     } catch (error) {
       setErrors([]);
@@ -64,12 +64,12 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
 
   const fetchFixHistory = async () => {
     try {
-      const response = await fetch("/api/health/data?type=fixes");
+      const response = await apiClient.get("/api/health/data?type=fixes");
       if (response.ok) {
         const realFixes = await response.json();
         setFixes(realFixes);
       } else {
-        throw new Error(`HTTP ${response.status}`);
+        throw new ProductionError(`HTTP ${response.status}`);
       }
     } catch (error) {
       setFixes([]);
@@ -79,12 +79,12 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
 
   const fetchGitHubStatus = async () => {
     try {
-      const response = await fetch("/api/health/data?type=github");
+      const response = await apiClient.get("/api/health/data?type=github");
       if (response.ok) {
         const realStatus = await response.json();
         setGitHubStatus(realStatus);
       } else {
-        throw new Error(`HTTP ${response.status}`);
+        throw new ProductionError(`HTTP ${response.status}`);
       }
     } catch (error) {
       setGitHubStatus(null);
@@ -104,7 +104,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
   const triggerAutoFix = async () => {
     setIsRunning(true);
     try {
-      const response = await fetch("/api/health/data", {
+      const response = await apiClient.get("/api/health/data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -122,7 +122,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
           setLastUpdate(new Date().toISOString());
         }, result.estimatedDuration || 3000);
       } else {
-        throw new Error(`HTTP ${response.status}`);
+        throw new ProductionError(`HTTP ${response.status}`);
       }
     } catch (error) {
       safeConsoleError("Auto-fix failed:", error);

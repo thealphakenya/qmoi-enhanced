@@ -64,5 +64,9 @@
     "smart_replies",
     "search_integration",
     "schedule_messages"
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:20:10.613968"
 }

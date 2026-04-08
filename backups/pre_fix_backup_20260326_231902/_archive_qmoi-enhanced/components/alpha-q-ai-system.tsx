@@ -6,7 +6,7 @@
  all markers normalized for completion
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 interface AlphaQAISystemProps {
   className?: string;
@@ -14,7 +14,7 @@ interface AlphaQAISystemProps {
 
 const AlphaQAISystem: React.FC<AlphaQAISystemProps> = ({ className = "" }) => {
   const [systemStatus, setSystemStatus] = useState("active");
-  const [aiVersion, setAiVersion] = useState("stable-Q-1.0.0");
+  const [aiVersion, setAiVersion] = useState("latest-Q-1.0.0");
   const [lastUpdate, setLastUpdate] = useState(new Date().toLocaleString());
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const AlphaQAISystem: React.FC<AlphaQAISystemProps> = ({ className = "" }) => {
       className={`bg-[#1a1a1a] border border-green-600 rounded-lg p-4 mb-4 ${className}`}
     >
       <h3 className="text-lg font-semibold text-green-400 mb-3">
-        stable-Q AI System
+        latest-Q AI System
       </h3>
 
       <div className="space-y-2 text-sm">

@@ -99,7 +99,7 @@ Examples:
   ./publish-releases-realtime.sh --version v1.2.3
 
   # Create final release for testing
-  ./publish-releases-realtime.sh --version v1.3.0-stable --final
+  ./publish-releases-realtime.sh --version v1.3.0-latest --final
 
   # With verbose logging
   ./publish-releases-realtime.sh --version v1.2.3 --verbose
@@ -402,8 +402,8 @@ sha256sum -c qmoi-ai.exe.sha256
 
 ## 📖 Documentation
 
-- Complete Guide: [GITHUB_RELEASES_COMPLETE_GUIDE.md](../../blob/main/GITHUB_RELEASES_COMPLETE_GUIDE.md)
-- Quick Reference: [GITHUB_RELEASES_QUICK_REFERENCE.md](../../blob/main/GITHUB_RELEASES_QUICK_REFERENCE.md)
+- complete Guide: [GITHUB_RELEASES_COMPLETE_GUIDE.md](../../blob/main/GITHUB_RELEASES_COMPLETE_GUIDE.md)
+- optimized Reference: [GITHUB_RELEASES_QUICK_REFERENCE.md](../../blob/main/GITHUB_RELEASES_QUICK_REFERENCE.md)
 
 ---
 
@@ -557,8 +557,8 @@ print_summary() {
     echo ""
 
     echo -e "${CYAN}Documentation:${NC}"
-    echo "  📚 Complete Guide:    GITHUB_RELEASES_COMPLETE_GUIDE.md"
-    echo "  🚀 Quick Reference:   GITHUB_RELEASES_QUICK_REFERENCE.md"
+    echo "  📚 complete Guide:    GITHUB_RELEASES_COMPLETE_GUIDE.md"
+    echo "  🚀 optimized Reference:   GITHUB_RELEASES_QUICK_REFERENCE.md"
     echo "  ⚙️  Configuration:     GITHUB_RELEASES_CONFIG.json"
     echo ""
 

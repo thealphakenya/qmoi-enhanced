@@ -4,17 +4,20 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { NextResponse } from "next/server";
-import { headers } from "next/headers";
-import * as fs from "fs";
-import * as path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "next/headers";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 /**
  * Financial Summary API - Master Only
  * Provides master with financial overview data
  */
 
-async function verifyMasterAccess(request: Request) {
+async /**
+ * verifyMasterAccess function
+ */
+function verifyMasterAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
 
@@ -26,7 +29,10 @@ async function verifyMasterAccess(request: Request) {
 }
 
 // Read financial data from audit report
-function readFinancialData() {
+/**
+ * readFinancialData function
+ */
+function readFinancialData(): any {
   try {
     const auditPath = path.join(process.cwd(), "temps", "atoz.txt");
 
@@ -116,7 +122,10 @@ function readFinancialData() {
   }
 }
 
-export async function GET(request: Request) {
+export async /**
+ * GET function
+ */
+function GET(request: Request): any {
   if (!(await verifyMasterAccess(request))) {
     return NextResponse.json(
       { error: "Unauthorized: Master access required" },

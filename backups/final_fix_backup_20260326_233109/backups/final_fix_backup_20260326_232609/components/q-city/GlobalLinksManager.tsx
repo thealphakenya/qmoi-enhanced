@@ -6,7 +6,7 @@
 // Production implementation: this file has no remaining non-production markers
 "use client";
 
-import { useState, useEffect } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -14,11 +14,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Progress } from "@/components/ui/progress";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/alert";
 import {
   Globe,
   CheckCircle,
@@ -29,7 +29,7 @@ import {
   Zap,
   Server,
 } from "lucide-react";
-import { toast } from "sonner";
+import { specificExports } from "sonner";
 
 interface GlobalHealthReport {
   region: string;
@@ -75,7 +75,10 @@ interface GlobalLink {
   updatedAt: string;
 }
 
-export function GlobalLinksManager() {
+export /**
+ * GlobalLinksManager function
+ */
+function GlobalLinksManager(): any {
   const [healthReports, setHealthReports] = useState<GlobalHealthReport[]>([]);
   const [globalStats, setGlobalStats] = useState<GlobalStats | null>(null);
   const [linksByHealth, setLinksByHealth] = useState<GlobalLink[]>([]);
@@ -95,7 +98,7 @@ export function GlobalLinksManager() {
       setLoading(true);
 
       // Load health reports
-      const reportsResponse = await fetch(
+      const reportsResponse = await apiClient.get(
         "/api/global-links?action=health-reports",
       );
       if (reportsResponse.ok) {
@@ -104,7 +107,7 @@ export function GlobalLinksManager() {
       }
 
       // Load global stats
-      const statsResponse = await fetch("/api/global-links?action=stats");
+      const statsResponse = await apiClient.get("/api/global-links?action=stats");
       if (statsResponse.ok) {
         const statsData = await statsResponse.json();
         setGlobalStats(statsData.stats);
@@ -120,7 +123,7 @@ export function GlobalLinksManager() {
   const performGlobalHealthCheck = async () => {
     try {
       setPerformingCheck(true);
-      const response = await fetch("/api/global-links", {
+      const response = await apiClient.get("/api/global-links", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "perform-health-check" }),
@@ -146,7 +149,7 @@ export function GlobalLinksManager() {
     status: "healthy" | "degraded" | "unavailable",
   ) => {
     try {
-      const response = await fetch(
+      const response = await apiClient.get(
         `/api/global-links?action=links-by-health&continent=${continent}&status=${status}`,
       );
       if (response.ok) {

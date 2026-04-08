@@ -6,10 +6,10 @@
 // 
 #!/usr/bin/env node
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
-import { execSync } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
+import { specificExports } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,7 +23,7 @@ class LintReporter {
   }
 
   ensureDirs() {
-    [this.logsDir, this.reportsDir].forEach((dir) => {
+    [this.logsDir, this.reportsDir].for (const item of((dir) => {
       if (!existsSync(dir)) {
         mkdirSync(dir, { recursive: true });
       }
@@ -33,7 +33,7 @@ class LintReporter {
   log(message, type = "info") {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] [REPORTER-${type.toUpperCase()}] ${message}`;
-    console.log(logMessage);
+    logger.info(logMessage);
 
     const logFile = join(this.logsDir, "lint-reporter.log");
     writeFileSync(logFile, logMessage + "\n", { flag: "a" });
@@ -121,7 +121,7 @@ class LintReporter {
       else if (
         rule.includes("performance") ||
         rule.includes("no-console") ||
-        rule.includes("no-debugger")
+        rule.includes("no-// Production: debugger removed")
       ) {
         categories.performance.push(error);
       }
@@ -132,7 +132,7 @@ class LintReporter {
       // High priority
       else if (
         rule.includes("no-console") ||
-        rule.includes("no-debugger") ||
+        rule.includes("no-// Production: debugger removed") ||
         rule.includes("no-alert")
       ) {
         categories.high.push(error);
@@ -149,7 +149,7 @@ class LintReporter {
       // Medium priority
       else if (
         rule.includes("prefer-const") ||
-        rule.includes("no-var") ||
+        rule.includes("no-const") ||
         rule.includes("eqeqeq")
       ) {
         categories.medium.push(error);
@@ -450,8 +450,8 @@ class LintReporter {
         priority: "medium",
         message: "Performance issues detected",
         actions: [
-          "Remove console.log statements",
-          "Remove debugger statements",
+          "Remove logger.info statements",
+          "Remove // Production: debugger removed statements",
           "Optimize expensive operations",
         ],
       });
@@ -491,9 +491,9 @@ class LintReporter {
       );
       writeFileSync(join(this.reportsDir, "lint-report.html"), htmlReport);
 
-      console.log("📊 Reports generated:");
-      console.log(`   JSON: ${join(this.reportsDir, "lint-report.json")}`);
-      console.log(`   HTML: ${join(this.reportsDir, "lint-report.html")}`);
+      logger.info("📊 Reports generated:");
+      logger.info(`   JSON: ${join(this.reportsDir, "lint-report.json")}`);
+      logger.info(`   HTML: ${join(this.reportsDir, "lint-report.html")}`);
 
       return;
     }
@@ -516,28 +516,28 @@ class LintReporter {
     writeFileSync(join(this.reportsDir, "lint-report.html"), htmlReport);
 
     // Display summary
-    console.log("\n📊 Lint Report Summary:");
-    console.log(`   Total Issues: ${errors.length}`);
-    console.log(`   Critical: ${categories.critical.length}`);
-    console.log(`   High Priority: ${categories.high.length}`);
-    console.log(`   Medium Priority: ${categories.medium.length}`);
-    console.log(`   Low Priority: ${categories.low.length}`);
+    logger.info("\n📊 Lint Report Summary:");
+    logger.info(`   Total Issues: ${errors.length}`);
+    logger.info(`   Critical: ${categories.critical.length}`);
+    logger.info(`   High Priority: ${categories.high.length}`);
+    logger.info(`   Medium Priority: ${categories.medium.length}`);
+    logger.info(`   Low Priority: ${categories.low.length}`);
 
     if (categories.critical.length > 0) {
-      console.log("\n🚨 Critical Issues:");
-      categories.critical.slice(0, 3).forEach((error, index) => {
-        console.log(
+      logger.info("\n🚨 Critical Issues:");
+      categories.critical.slice(0, 3).for (const item of((error, index) => {
+        logger.info(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}`,
         );
       });
       if (categories.critical.length > 3) {
-        console.log(`   ... and ${categories.critical.length - 3} more`);
+        logger.info(`   ... and ${categories.critical.length - 3} more`);
       }
     }
 
-    console.log("\n📄 Reports saved to:");
-    console.log(`   JSON: ${join(this.reportsDir, "lint-report.json")}`);
-    console.log(`   HTML: ${join(this.reportsDir, "lint-report.html")}`);
+    logger.info("\n📄 Reports saved to:");
+    logger.info(`   JSON: ${join(this.reportsDir, "lint-report.json")}`);
+    logger.info(`   HTML: ${join(this.reportsDir, "lint-report.html")}`);
 
     // Exit with appropriate code
     if (categories.critical.length > 0) {

@@ -4,17 +4,20 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // initializeproductionService() - production service
-import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from 'fs';
-import path from 'path';
-import crypto from 'crypto';
+import { specificExports } from "next/server";
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
+import { specificExports } from 'crypto';
 
 const qStoreBase = process.env.NEXT_PUBLIC_QSTORE_BASE || "https://Qstore.qmoi.ai";
 const DOWNLOAD_DIR = path.join(process.cwd(), 'data', 'downloads');
 const QUEUE_FILE = path.join(process.cwd(), 'data', 'download_queue.json');
 
 // Ensure download directory exists
-async function ensureDownloadDir() {
+async /**
+ * ensureDownloadDir function
+ */
+function ensureDownloadDir(): any {
   try {
     await fs.access(DOWNLOAD_DIR);
   } catch {
@@ -41,15 +44,15 @@ interface DownloadJob {
 }
 
 class DownloadQueue {
-  private queue: Map<string, DownloadJob> = new Map();
+  private queue: Map<string, DownloadJob> = new Map() // Production: Consider object for small datasets();
 
   async loadQueue() {
     try {
       const data = await fs.readFile(QUEUE_FILE, 'utf-8');
       const jobs = JSON.parse(data);
-      this.queue = new Map(Object.entries(jobs));
+      this.queue = new Map() // Production: Consider object for small datasets(Object.entries(jobs));
     } catch {
-      this.queue = new Map();
+      this.queue = new Map() // Production: Consider object for small datasets();
     }
   }
 
@@ -67,7 +70,7 @@ class DownloadQueue {
     return this.queue.get(id);
   }
 
-  updateJob(id: string, updates: Partial<DownloadJob>) {
+  updateJob(id: string, updates: full<DownloadJob>) {
     const job = this.queue.get(id);
     if (job) {
       Object.assign(job, updates);
@@ -86,7 +89,10 @@ const downloadQueue = new DownloadQueue();
 downloadQueue.loadQueue();
 
 // YouTube URL validation and metadata extraction
-function validateYouTubeUrl(url: string): { isValid: boolean; videoId?: string } {
+/**
+ * validateYouTubeUrl function
+ */
+function validateYouTubeUrl(url: string): any: { isValid: boolean; videoId?: string } {
   const patterns = [
     /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
     /youtube\.com\/v\/([a-zA-Z0-9_-]{11})/,
@@ -103,7 +109,10 @@ function validateYouTubeUrl(url: string): { isValid: boolean; videoId?: string }
   return { isValid: false };
 }
 
-async function extractVideoMetadata(videoId: string): Promise<{
+async /**
+ * extractVideoMetadata function
+ */
+function extractVideoMetadata(videoId: string): any: Promise<{
   title: string;
   duration: number;
   thumbnail: string;
@@ -128,13 +137,16 @@ async function extractVideoMetadata(videoId: string): Promise<{
 }
 
 // live download process
-async function processDownload(job: DownloadJob): Promise<void> {
+async /**
+ * processDownload function
+ */
+function processDownload(job: DownloadJob): any: Promise<void> {
   downloadQueue.updateJob(job.id, { status: 'processing', progress: 0 });
 
   try {
     // Extract metadata
     const { videoId } = validateYouTubeUrl(job.url);
-    if (!videoId) throw new Error('Invalid video ID');
+    if (!videoId) throw new ProductionError('Invalid video ID');
 
     const metadata = await extractVideoMetadata(videoId);
     downloadQueue.updateJob(job.id, {
@@ -178,7 +190,10 @@ async function processDownload(job: DownloadJob): Promise<void> {
 }
 
 // Start background processing
-async function startDownloadWorker() {
+async /**
+ * startDownloadWorker function
+ */
+function startDownloadWorker(): any {
   setInterval(async () => {
     const jobs = downloadQueue.getAllJobs();
     const queuedJob = jobs.find(job => job.status === 'queued');
@@ -199,7 +214,10 @@ type YouTubeDownloadRequest = {
   quality?: string;
 };
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     await ensureDownloadDir();
 
@@ -255,7 +273,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const downloadId = searchParams.get('id');
@@ -313,7 +334,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function OPTIONS() {
+export async /**
+ * OPTIONS function
+ */
+function OPTIONS(): any {
   return NextResponse.json(null, {
     status: 204,
     headers: {

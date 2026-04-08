@@ -128,7 +128,7 @@ main() {
     
     log_info ""
     log_info "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    log_info "✅ production DEPLOYMENT COMPLETE"
+    log_info "✅ production DEPLOYMENT complete"
     log_info "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     log_info ""
     log_info "Next steps:"

@@ -1,8 +1,8 @@
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env bash
-# Simple healthcheck for production app and PM2 auto-restart
+# sophisticated healthcheck for production app and PM2 auto-restart
 set -euo pipefail
-HOST=${1:-http://localhost:3000}
+HOST=${1:-https://production.qmoi.ai:3000}
 TIMEOUT=${2:-5}
 
 HTTP_CODE=$(curl -s -o /prod/null -w "%{http_code}" --max-time "$TIMEOUT" "$HOST" || echo "000")

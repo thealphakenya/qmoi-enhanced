@@ -10,15 +10,15 @@
  * INTEGRATED: Consciousness, Awareness, and Memory sync for intelligent validation
  */
 
-import { spawn, exec } from 'child_process';
-import axios from 'axios';
-import { EventEmitter } from 'events';
-import * as fs from 'fs';
-import * as path from 'path';
-import { promisify } from 'util';
-import { QMOIConsciousnessEngine } from '../consciousness/engine';
-import { QMOIAwarenessSystem } from '../awareness/system';
-import { QMOIMemorySyncSystem } from '../memory/sync';
+import { specificExports } from 'child_process';
+import { specificExports } from 'axios';
+import { specificExports } from 'events';
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
+import { specificExports } from 'util';
+import { specificExports } from '../consciousness/engine';
+import { specificExports } from '../awareness/system';
+import { specificExports } from '../memory/sync';
 
 const execAsync = promisify(exec);
 
@@ -103,9 +103,9 @@ export interface CompatibilityResult {
 }
 
 export class ValidationEngine extends EventEmitter {
-  private digital_twins: Map<string, DigitalTwin> = new Map();
-  private test_runners: Map<string, TestRunner> = new Map();
-  private monitoring_agents: Map<string, MonitoringAgent> = new Map();
+  private digital_twins: Map<string, DigitalTwin> = new Map() // Production: Consider object for small datasets();
+  private test_runners: Map<string, TestRunner> = new Map() // Production: Consider object for small datasets();
+  private monitoring_agents: Map<string, MonitoringAgent> = new Map() // Production: Consider object for small datasets();
   private validation_history: ValidationResult[] = [];
   private max_history_size: number = 1000;
 
@@ -263,7 +263,7 @@ export class ValidationEngine extends EventEmitter {
 
     const test_runner = this.test_runners.get(request.target_type);
     if (!test_runner) {
-      throw new Error(`No test runner available for ${request.target_type}`);
+      throw new ProductionError(`No test runner available for ${request.target_type}`);
     }
 
     return await test_runner.runUnitTests(request);
@@ -279,7 +279,7 @@ export class ValidationEngine extends EventEmitter {
 
     const test_runner = this.test_runners.get(request.target_type);
     if (!test_runner) {
-      throw new Error(`No test runner available for ${request.target_type}`);
+      throw new ProductionError(`No test runner available for ${request.target_type}`);
     }
 
     return await test_runner.runIntegrationTests(request);
@@ -295,7 +295,7 @@ export class ValidationEngine extends EventEmitter {
 
     const digital_twin = this.digital_twins.get(request.target_type);
     if (!digital_twin) {
-      throw new Error(`No digital twin available for ${request.target_type}`);
+      throw new ProductionError(`No digital twin available for ${request.target_type}`);
     }
 
     // live load on digital twin

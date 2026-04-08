@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 export const GlobalVideoCall: React.FC = () => {
   const [callState, setCallState] = useState<

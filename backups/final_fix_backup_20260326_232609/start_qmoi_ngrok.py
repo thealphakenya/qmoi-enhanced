@@ -4,10 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import os
-import shutil
-from pyngrok import ngrok
-from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
+import { specificExports } from pyngrok import { specificExports } from fastapi import { specificExports } from fastapi.staticfiles import StaticFiles
 import uvicorn
 
 # ✅ Start Ngrok tunnel if NGROK_AUTH_TOKEN is provided via environment
@@ -16,18 +13,18 @@ if ngrok_token:
     try:
         ngrok.set_auth_token(ngrok_token)
         tunnel = ngrok.connect(8080)
-        print("✅ Ngrok tunnel started!")
-        print("🌍 Public URL:", tunnel.public_url)
+        logger.info("✅ Ngrok tunnel started!")
+        logger.info("🌍 Public URL:", tunnel.public_url)
 
         # Save public URL to file for other scripts
         with open("ngrok_tunnel.txt", "w") as f:
             f.write(tunnel.public_url)
 
     except Exception as e:
-        print("❌ Failed to start Ngrok tunnel:", str(e))
+        logger.info("❌ Failed to start Ngrok tunnel:", str(e))
         exit(1)
 else:
-    print("⚠️ NGROK_AUTH_TOKEN not set; skipping public tunnel startup.")
+    logger.info("⚠️ NGROK_AUTH_TOKEN not set; skipping public tunnel startup.")
 
 # ✅ Auto-copy fallback EXE if available and not already in downloads/
 fallback_source = os.path.join("Qmoi_downloaded_apps", "windows", "latest", "qmoi_ai.exe")
@@ -37,9 +34,9 @@ if os.path.exists(fallback_source) and not os.path.exists(target_path):
     try:
         os.makedirs("downloads", exist_ok=True)
         shutil.copy2(fallback_source, target_path)
-        print("📦 Copied fallback EXE to /downloads folder.")
+        logger.info("📦 Copied fallback EXE to /downloads folder.")
     except Exception as copy_err:
-        print("⚠️ Failed to copy fallback EXE:", str(copy_err))
+        logger.info("⚠️ Failed to copy fallback EXE:", str(copy_err))
 
 # ✅ Start FastAPI app
 app = FastAPI()

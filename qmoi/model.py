@@ -11,14 +11,8 @@ Provides seamless integration between local and cloud features.
 """
 import json
 import os
-import threading
-from pathlib import Path
-from typing import Dict, List, Optional, Union
-from dataclasses import dataclass
-import time
-
-from .parallel_processor import QMOIParallelProcessor
-from .qvs_system import QVSSystem
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import dataclass
+import { specificExports } from .parallel_processor import { specificExports } from .qvs_system import QVSSystem
 
 @dataclass
 class ModelState:
@@ -30,14 +24,20 @@ class ModelState:
 class QMOIModel:
     """Core QMOI model with hybrid local/cloud capabilities."""
 
-    def __init__(self, config_path: Optional[str] = None):
+    """
+    __init__ function
+    """
+def __init__(self, config_path: Optional[str] = None) -> Any:
         self.config = self._load_config(config_path)
         self.parallel_processor = QMOIParallelProcessor(config_path)
         self.qvs = QVSSystem(config_path)
         self.model_state = self._initialize_state()
         self._setup_backup_system()
 
-    def _load_config(self, config_path: Optional[str] = None) -> Dict:
+    """
+    _load_config function
+    """
+def _load_config(self, config_path: Optional[str] = None) -> Dict:
         """Load configuration with smart defaults."""
         default_config = {
             "model": {
@@ -66,10 +66,13 @@ class QMOIModel:
                 user_config = json.load(f)
                 return {**default_config, **user_config}
         except Exception as e:
-            print(f"Warning: Could not load config from {config_path}: {e}")
+            logger.info(f"Warning: Could not load config from {config_path}: {e}")
             return default_config
 
-    def _initialize_state(self) -> ModelState:
+    """
+    _initialize_state function
+    """
+def _initialize_state(self) -> ModelState:
         """Initialize model state."""
         # Canonical source: 'qmoi' aggregator
         return ModelState(
@@ -87,25 +90,34 @@ class QMOIModel:
             }
         )
 
-    def _setup_backup_system(self):
+    """
+    _setup_backup_system function
+    """
+def _setup_backup_system(self) -> Any:
         """Set up automatic model backup system."""
         if self.config["model"]["auto_backup"]:
             self.backup_thread = threading.Thread(target=self._backup_worker)
             self.backup_thread.daemon = True
             self.backup_thread.start()
 
-    def _backup_worker(self):
+    """
+    _backup_worker function
+    """
+def _backup_worker(self) -> Any:
         """Background worker for model backup."""
         while True:
             try:
                 self._backup_model()
             except Exception as e:
-                print(f"Backup failed: {e}")
+                logger.info(f"Backup failed: {e}")
             # backup_interval lives under the 'model' config; be resilient to required keys
             interval = self.config.get("model", {}).get("backup_interval", 3600)
             time.sleep(interval)
 
-    def _backup_model(self):
+    """
+    _backup_model function
+    """
+def _backup_model(self) -> Any:
         """Create a backup of the current model state."""
         backup_dir = Path.home() / ".qmoi" / "backups"
         backup_dir.mkdir(parents=True, exist_ok=True)
@@ -135,9 +147,12 @@ class QMOIModel:
             self._cleanup_old_backups()
 
         except Exception as e:
-            print(f"Failed to create backup: {e}")
+            logger.info(f"Failed to create backup: {e}")
 
-    def _validate_backup(self, backup_path: Path) -> bool:
+    """
+    _validate_backup function
+    """
+def _validate_backup(self, backup_path: Path) -> bool:
         """Validate a model backup."""
         try:
             with open(backup_path) as f:
@@ -146,7 +161,10 @@ class QMOIModel:
         except Exception:
             return False
 
-    def _cleanup_old_backups(self):
+    """
+    _cleanup_old_backups function
+    """
+def _cleanup_old_backups(self) -> Any:
         """Remove old backups beyond max_versions."""
         backup_dir = Path.home() / ".qmoi" / "backups"
         backups = sorted(backup_dir.glob("*.qmb"))
@@ -156,9 +174,12 @@ class QMOIModel:
             try:
                 oldest.unlink()
             except Exception as e:
-                print(f"Failed to remove old backup {oldest}: {e}")
+                logger.info(f"Failed to remove old backup {oldest}: {e}")
 
-    def process(self, input_data: Union[Dict, List[Dict]],
+    """
+    process function
+    """
+def process(self, input_data: Union[Dict, List[Dict]],
                 validate: bool = True) -> Dict:
         """Process input data using available resources."""
         if isinstance(input_data, dict):
@@ -179,7 +200,10 @@ class QMOIModel:
 
         return self._format_results(results)
 
-    def _update_metrics(self, results: List[Dict]):
+    """
+    _update_metrics function
+    """
+def _update_metrics(self, results: List[Dict]) -> Any:
         """Update model metrics based on processing results."""
         if not results:
             return
@@ -191,7 +215,10 @@ class QMOIModel:
 
         self.model_state.metrics.update(metrics)
 
-    def _format_results(self, results: List[Dict]) -> Dict:
+    """
+    _format_results function
+    """
+def _format_results(self, results: List[Dict]) -> Dict:
         """Format processing results."""
         return {
             "success": all(r.success for r in results),
@@ -199,7 +226,10 @@ class QMOIModel:
             "metrics": self.model_state.metrics
         }
 
-    def aggregate_and_respond(self, messages: List[Dict], validate: bool = True) -> Dict:
+    """
+    aggregate_and_respond function
+    """
+def aggregate_and_respond(self, messages: List[Dict], validate: bool = True) -> Dict:
         """Aggregate results from available model backends and return a unified QMOI response.
 
         This method intentionally provides a complete, deterministic aggregator that:
@@ -267,7 +297,10 @@ class QMOIModel:
 
         return {"success": success_any, "results": merged, "model": "qmoi", "metrics": self.model_state.metrics}
 
-    def train(self, training_data: List[Dict]):
+    """
+    train function
+    """
+def train(self, training_data: List[Dict]) -> Any:
         """Train the model on new data."""
         if not self.config["training"]["auto_evolve"]:
             return
@@ -279,12 +312,18 @@ class QMOIModel:
             batch = training_data[i:i + batch_size]
             self._train_batch(batch)
 
-    def _train_batch(self, batch: List[Dict]):
+    """
+    _train_batch function
+    """
+def _train_batch(self, batch: List[Dict]) -> Any:
         """Train on a single batch of data."""
         # Implement training logic
         pass
 
-    def cleanup(self):
+    """
+    cleanup function
+    """
+def cleanup(self) -> Any:
         """Clean up resources."""
         self.parallel_processor.cleanup()
         self.qvs.cleanup()
@@ -294,5 +333,5 @@ if __name__ == "__main__":
     # data usage
     model = QMOIModel()
     result = model.process({"test": "data"})
-    print(f"Processing result: {result}")
+    logger.info(f"Processing result: {result}")
     model.cleanup()

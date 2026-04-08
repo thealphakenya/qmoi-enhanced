@@ -5,7 +5,7 @@
 
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env node
-const { spawnSync } = require("child_process");
+const { spawnSync } = import("child_process");
 const result = spawnSync(
   "python",
   ["scripts/network/network_connectivity_manager.py", "auto-repair"],

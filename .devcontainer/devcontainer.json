@@ -58,7 +58,12 @@
       }
     }
   },
-  "forwardPorts": [3000, 5432, 6379, 8080],
+  "forwardPorts": [
+    3000,
+    5432,
+    6379,
+    8080
+  ],
   "portsAttributes": {
     "3000": {
       "label": "Next.js App",
@@ -82,5 +87,9 @@
     "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,readonly",
     "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,readonly"
   ],
-  "shutdownAction": "stopContainer"
+  "shutdownAction": "stopContainer",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.850354"
 }

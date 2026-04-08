@@ -8,14 +8,17 @@
  * Server-Sent Events for real-time health, pulse, and consciousness updates
  */
 
-import { NextRequest } from "next/server";
-import { qmoiHealthService } from "@/lib/qmoi-health";
-import { authService } from "@/lib/auth/service";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-health";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/qmoi/health/stream");
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Check authentication
     const authHeader = request.headers.get("authorization");

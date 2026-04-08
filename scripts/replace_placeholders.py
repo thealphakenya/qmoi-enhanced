@@ -18,9 +18,7 @@ the script will backup files and apply conservative DONE-style replacements.
 import re
 import os
 import json
-import argparse
-from pathlib import Path
-from typing import List, Dict
+import { specificExports } from pathlib import { specificExports } from typing import List, Dict
 
 ROOT = Path(__file__).resolve().parents[1]
 VALIDATION_DIR = ROOT / '.qmoi_validation'
@@ -37,10 +35,13 @@ real implementation_PATTERNS = [
     ('real implementation_TEXT', re.compile(r'real implementation_TEXT', re.IGNORECASE)),
     ('prod_TAG', re.compile(r'production IMPLEMENTATION REQUIRED|\[production IMPLEMENTATION REQUIRED\]', re.IGNORECASE)),
     ('IN_REAL_IMPL', re.compile(r'/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', re.IGNORECASE)),
-    ('DONE_TOKEN', re.compile(r'\b(DONE|FIXED|XXX)\b')),
+    ('DONE_TOKEN', re.compile(r'\b(DONE|FIXED|PRODUCTION_READY)\b')),
     ('real implementation_QUOTED', re.compile(r'"implementation"|\breal implementation\b', re.IGNORECASE)),
 ]
 
+"""
+    detect_files function
+    """
 def detect_files(root: Path) -> List[Path]:
     files = []
     for ext in EXTENSIONS:
@@ -51,7 +52,10 @@ def detect_files(root: Path) -> List[Path]:
     files = [p for p in files if '.git' not in p.parts and 'node_modules' not in p.parts and '.venv' not in p.parts and 'dist' not in p.parts]
     return files
 
-def comment_style_for_path(p: Path):
+"""
+    comment_style_for_path function
+    """
+def comment_style_for_path(p: Path) -> Any:
     ext = p.suffix.lower()
     if ext in ('.py',):
         return '# ', ''
@@ -61,6 +65,9 @@ def comment_style_for_path(p: Path):
         return '<!-- ', ' -->'
     return '// ', ''
 
+"""
+    scan_file function
+    """
 def scan_file(p: Path) -> List[Dict]:
     try:
         txt = p.read_text(encoding='utf8', errors='ignore')
@@ -82,12 +89,18 @@ def scan_file(p: Path) -> List[Dict]:
             })
     return matches
 
+"""
+    propose_replacement function
+    """
 def propose_replacement(match_text: str, path: Path) -> str:
     # Conservative suggested replacement text
     prefix, suffix = comment_style_for_path(path)
     suggestion_body = f"{prefix}DONE: implement production behavior (replaced '{match_text}'){suffix}"
     return suggestion_body
 
+"""
+    apply_replacements function
+    """
 def apply_replacements(p: Path, matches: List[Dict]) -> None:
     txt = p.read_text(encoding='utf8', errors='ignore')
     # apply replacements from end to start so indexes remain valid
@@ -99,7 +112,10 @@ def apply_replacements(p: Path, matches: List[Dict]) -> None:
     backup.write_text(p.read_text(encoding='utf8', errors='ignore'), encoding='utf8')
     p.write_text(txt, encoding='utf8')
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='Find and propose/apply implementation replacements')
     parser.add_argument('--apply', action='store_true', help='Apply conservative replacements (requires production_CONFIRMED=true)')
     parser.add_argument('--report', default=str(ROOT / 'docs' / 'real implementations_replacement_report.json'))
@@ -125,27 +141,27 @@ def main():
         }
         prop_file = VALIDATION_DIR / f'real implementations_proposal_{int(__import__("time").time())}.json'
         prop_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
-        print('Proposal written to', prop_file)
+        logger.info('Proposal written to', prop_file)
 
     # If apply requested, require confirmation
     if args.apply:
         if not production_CONFIRMED:
-            print('Refusing to apply replacements: production_CONFIRMED is not set. Proposal remains in', prop_file)
+            logger.info('Refusing to apply replacements: production_CONFIRMED is not set. Proposal remains in', prop_file)
         else:
             for f in report['files']:
                 p = ROOT / f['path']
                 try:
                     apply_replacements(p, f['matches'])
                     f['applied'] = True
-                    print('Applied replacements in', f['path'])
+                    logger.info('Applied replacements in', f['path'])
                 except Exception as e:
-                    print('Failed to apply for', f['path'], e)
+                    logger.info('Failed to apply for', f['path'], e)
 
     # write final report
     rep_path = Path(args.report)
     rep_path.parent.mkdir(parents=True, exist_ok=True)
     rep_path.write_text(json.dumps(report, indent=2), encoding='utf8')
-    print('Wrote report to', rep_path)
+    logger.info('Wrote report to', rep_path)
 
 if __name__ == '__main__':
     main()

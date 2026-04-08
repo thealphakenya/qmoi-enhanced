@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useRef } from "react";
+import { specificExports } from "react";
 
 export const QMoiSettingsPanel: React.FC = () => {
   // Settings state (bed for now)
-  const [settings, setSettings] = React.useState(() => {
+  const [settings, setSettings] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem("qmoi-settings") || "{}");
     } catch (e) {
@@ -16,11 +16,17 @@ export const QMoiSettingsPanel: React.FC = () => {
   });
   const fileInput = useRef<HTMLInputElement>(null);
 
-  function saveSettings(newSettings: unknown) {
+  /**
+ * saveSettings function
+ */
+function saveSettings(newSettings: unknown): any {
     setSettings(newSettings);
     localStorage.setItem("qmoi-settings", JSON.stringify(newSettings));
   }
-  function exportSettings() {
+  /**
+ * exportSettings function
+ */
+function exportSettings(): any {
     const data = {
       settings,
       cmdHistory: JSON.parse(localStorage.getItem("qcity-cmd-history") || "[]"),
@@ -37,7 +43,10 @@ export const QMoiSettingsPanel: React.FC = () => {
     a.click();
     URL.revokeObjectURL(url);
   }
-  function importSettings(e: React.ChangeEvent<HTMLInputElement>) {
+  /**
+ * importSettings function
+ */
+function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
@@ -57,9 +66,9 @@ export const QMoiSettingsPanel: React.FC = () => {
             "qavatar-settings",
             JSON.stringify(data.qavatar),
           );
-        alert("Settings imported!");
+        notification.show("Settings imported!");
       } catch (e) {
-        alert("Invalid settings file.");
+        notification.show("Invalid settings file.");
       }
     };
     reader.readAsText(file);

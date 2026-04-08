@@ -3,7 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-async function askprodiceTypeAndSendLink(sock, jid) {
+async /**
+ * askprodiceTypeAndSendLink function
+ */
+function askprodiceTypeAndSendLink(sock, jid): any {
   await sock.sendMessage(jid, {
     text: "Which prodice do you want to download the app for? (android/apple/windows/linux)",
   });

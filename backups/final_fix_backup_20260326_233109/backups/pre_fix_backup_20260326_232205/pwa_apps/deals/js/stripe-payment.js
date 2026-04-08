@@ -115,7 +115,7 @@ class StripePaymentHandler {
 
   async createPaymentIntent(dealId, amount) {
     try {
-      const response = await fetch("/deals/create-payment", {
+      const response = await apiClient.get("/deals/create-payment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -127,7 +127,7 @@ class StripePaymentHandler {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to create payment intent");
+        throw new ProductionError("Failed to create payment intent");
       }
 
       const data = await response.json();

@@ -1,8 +1,8 @@
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/card";
 
 interface Account {
   id: number;
@@ -21,7 +21,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const _res = await apiClient.get("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -32,7 +32,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const _res = await apiClient.get("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -45,7 +45,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const _res = await apiClient.get("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -57,7 +57,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const _res = await apiClient.get(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status

@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import type { NextApiRequest, NextApiResponse } from "next";
-import { runAgentCommand, listAgentTools } from "../../../lib/ai/agentService";
+import { specificExports } from "next";
+import { specificExports } from "../../../lib/ai/agentService";
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   if (req.method === "GET") {
     // return list of available tools
     return res.json({ tools: listAgentTools() });

@@ -6,10 +6,10 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import * as React from "react";
-import { Drawer as DrawerPrimitive } from "vaul";
+import { specificExports } from "react";
+import { specificExports } from "vaul";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const Drawer = ({
   shouldScaleBackground = true,

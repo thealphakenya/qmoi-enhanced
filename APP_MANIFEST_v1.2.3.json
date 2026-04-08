@@ -6,8 +6,7 @@
       "binaries": [
         {
           "path": "Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
-          "size": 5242880
-          ,
+          "size": 5242880,
           "sha256": "0a7bd2608b2d7ba9fce026d64b9ea3f1ee2904ed98b6a7ece685bd9880109b8e"
         },
         {
@@ -65,18 +64,18 @@
         "present": true
       }
     },
-    "q-stable": {
+    "q-latest": {
       "binaries": [],
       "pwa": {
-        "path": "pwa_apps/q-stable",
+        "path": "pwa_apps/q-latest",
         "files": [
-          "pwa_apps/q-stable/index.html",
-          "pwa_apps/q-stable/README.md",
-          "pwa_apps/q-stable/manifest.webmanifest",
-          "pwa_apps/q-stable/package.json",
-          "pwa_apps/q-stable/sw.js",
-          "pwa_apps/q-stable/icons/icon-192.png",
-          "pwa_apps/q-stable/icons/icon-512.png"
+          "pwa_apps/q-latest/index.html",
+          "pwa_apps/q-latest/README.md",
+          "pwa_apps/q-latest/manifest.webmanifest",
+          "pwa_apps/q-latest/package.json",
+          "pwa_apps/q-latest/sw.js",
+          "pwa_apps/q-latest/icons/icon-192.png",
+          "pwa_apps/q-latest/icons/icon-512.png"
         ],
         "present": true
       }
@@ -91,5 +90,9 @@
       ],
       "pwa": {}
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:02.753486"
 }

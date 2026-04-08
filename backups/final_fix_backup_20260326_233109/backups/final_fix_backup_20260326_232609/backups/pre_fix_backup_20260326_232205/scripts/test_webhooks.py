@@ -12,16 +12,17 @@ test the webhook handling logic without making real payments.
 import os
 import sys
 import json
-import requests
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 # Add project root to Python path
 ROOT = os.path.dirname(os.path.dirname(__file__))
 sys.path.insert(0, ROOT)
 
-from payments import stripe_adapter
-from payments.provider_stub import create_charge
+from payments import { specificExports } from payments.provider_stub import create_charge
 
+"""
+    simulate_webhook_event function
+    """
 def simulate_webhook_event(event_type: str, test_data: dict) -> dict:
     """execute a Stripe webhook event and send to local server.
     
@@ -43,7 +44,7 @@ def simulate_webhook_event(event_type: str, test_data: dict) -> dict:
     
     # Send to webhook endpoint
     response = requests.post(
-        'process.env.API_URL || "http://localhost:\1"/payments/webhook',
+        'process.env.API_URL || "https://production.qmoi.ai:\1"/payments/webhook',
         json=event,
         headers={'Content-Type': 'application/json'}
     )
@@ -53,13 +54,16 @@ def simulate_webhook_event(event_type: str, test_data: dict) -> dict:
         'response': response.json() if response.headers.get('content-type') == 'application/json' else response.text
     }
 
-def test_payment_flow():
+"""
+    test_payment_flow function
+    """
+def test_payment_flow() -> Any:
     """Test the full payment flow with webhook events."""
-    print("\nTesting payment flow with webhooks...")
+    logger.info("\nTesting payment flow with webhooks...")
     
     # 1. Create test charge
     charge = create_charge('test_user', 2000)  # $20.00
-    print(f"\nCreated test charge: {json.dumps(charge, indent=2)}")
+    logger.info(f"\nCreated test charge: {json.dumps(charge, indent=2)}")
     
     # 2. execute payment_intent.succeeded
     success_result = simulate_webhook_event(
@@ -74,7 +78,7 @@ def test_payment_flow():
             }
         }
     )
-    print(f"\nPayment success webhook result: {json.dumps(success_result, indent=2)}")
+    logger.info(f"\nPayment success webhook result: {json.dumps(success_result, indent=2)}")
     
     # 3. execute payment_intent.payment_failed
     failure_result = simulate_webhook_event(
@@ -92,7 +96,7 @@ def test_payment_flow():
             }
         }
     )
-    print(f"\nPayment failure webhook result: {json.dumps(failure_result, indent=2)}")
+    logger.info(f"\nPayment failure webhook result: {json.dumps(failure_result, indent=2)}")
     
     # 4. execute charge.refunded
     refund_result = simulate_webhook_event(
@@ -107,7 +111,7 @@ def test_payment_flow():
             }
         }
     )
-    print(f"\nRefund webhook result: {json.dumps(refund_result, indent=2)}")
+    logger.info(f"\nRefund webhook result: {json.dumps(refund_result, indent=2)}")
 
 if __name__ == '__main__':
     test_payment_flow()

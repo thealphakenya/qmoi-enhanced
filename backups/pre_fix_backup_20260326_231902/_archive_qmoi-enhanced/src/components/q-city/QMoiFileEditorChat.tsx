@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState, ReactNode } from "react";
+import { specificExports } from "react";
 
-function highlightCode(code: string) {
-  // Simple code block for now; can be replaced with PrismJS/highlight.js
+/**
+ * highlightCode function
+ */
+function highlightCode(code: string): any {
+  // sophisticated code block for now; can be replaced with PrismJS/highlight.js
   return (
     <pre
       style={{
@@ -23,7 +26,11 @@ function highlightCode(code: string) {
   );
 }
 
-export default function QMoiFileEditorChat({
+export default /**
+ * QMoiFileEditorChat function
+ */
+function QMoiFileEditorChat(): any {
+  try {({
   isMaster = false,
 }: {
   isMaster?: boolean;
@@ -38,13 +45,16 @@ export default function QMoiFileEditorChat({
   const [batchFiles, setBatchFiles] = useState("");
   const [batchOp, setBatchOp] = useState("");
 
-  async function handleCommand(cmd: string) {
+  async /**
+ * handleCommand function
+ */
+function handleCommand(cmd: string): any {
     setLoading(true);
     let response: string | React.ReactElement = "";
     try {
       if (cmd.startsWith("/view ")) {
         const filePath = cmd.replace("/view ", "").trim();
-        const res = await fetch("/api/qmoi/file", {
+        const res = await apiClient.get("/api/qmoi/file", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action: "read", filePath }),
@@ -62,7 +72,7 @@ export default function QMoiFileEditorChat({
         // Show diff preview if lastView is available
         const before = lastView;
         const after = content;
-        const res = await fetch("/api/qmoi/file", {
+        const res = await apiClient.get("/api/qmoi/file", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action: "write", filePath, content }),
@@ -86,7 +96,7 @@ export default function QMoiFileEditorChat({
       } else if (cmd.startsWith("/append ")) {
         const [_, filePath, ...contentArr] = cmd.split(" ");
         const content = contentArr.join(" ");
-        const res = await fetch("/api/qmoi/file", {
+        const res = await apiClient.get("/api/qmoi/file", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action: "append", filePath, content }),
@@ -101,7 +111,7 @@ export default function QMoiFileEditorChat({
         // Show diff preview if lastView is available
         const before = lastView;
         const after = before.replace(search, content);
-        const res = await fetch("/api/qmoi/file", {
+        const res = await apiClient.get("/api/qmoi/file", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -141,11 +151,14 @@ export default function QMoiFileEditorChat({
     setLoading(false);
   }
 
-  async function handleRollback() {
+  async /**
+ * handleRollback function
+ */
+function handleRollback(): any {
     setLoading(true);
     let response: string | React.ReactElement = "";
     try {
-      const res = await fetch("/api/qmoi/autodev", {
+      const res = await apiClient.get("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "rollback" }),
@@ -163,11 +176,14 @@ export default function QMoiFileEditorChat({
     setLoading(false);
   }
 
-  async function handleAISuggest() {
+  async /**
+ * handleAISuggest function
+ */
+function handleAISuggest(): any {
     setLoading(true);
     let response: string | React.ReactElement = "";
     try {
-      const res = await fetch("/api/qmoi/autodev", {
+      const res = await apiClient.get("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -191,11 +207,14 @@ export default function QMoiFileEditorChat({
     setLoading(false);
   }
 
-  async function handleBatchEdit(files: string, op: string) {
+  async /**
+ * handleBatchEdit function
+ */
+function handleBatchEdit(files: string, op: string): any {
     setLoading(true);
     let response: string | React.ReactElement = "";
     try {
-      const res = await fetch("/api/qmoi/autodev", {
+      const res = await apiClient.get("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -220,7 +239,10 @@ export default function QMoiFileEditorChat({
     setBatchOp("");
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  /**
+ * handleSubmit function
+ */
+function handleSubmit(e: React.FormEvent): any {
     e.preventDefault();
     if (!input.trim()) return;
     handleCommand(input.trim());

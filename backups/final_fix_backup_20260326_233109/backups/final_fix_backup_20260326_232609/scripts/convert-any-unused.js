@@ -5,8 +5,8 @@
 
 // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const ROOT = process.cwd();
 const APPLY = process.argv.includes("--apply");
@@ -24,11 +24,17 @@ const EXTS = new Set([".ts", ".tsx", ".js", ".jsx"]);
 let filesChanged = 0;
 let filesScanned = 0;
 
-function shouldIgnore(entry) {
+/**
+ * shouldIgnore function
+ */
+function shouldIgnore(entry): any {
   return IGNORES.includes(entry);
 }
 
-function walk(dir) {
+/**
+ * walk function
+ */
+function walk(dir): any {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const _e of entries) {
     if (shouldIgnore(_e.name)) continue;
@@ -41,16 +47,19 @@ function walk(dir) {
   }
 }
 
-function tryProcessFile(filePath) {
+/**
+ * tryProcessFile function
+ */
+function tryProcessFile(filePath): any {
   let content = fs.readFileSync(filePath, "utf8");
   let original = content;
 
   // 1) Convert explicit any type annotations to unknown
   content = content.replace(/:\s*any\b/g, ": unknown");
 
-  // 2) Prefix declared vars named _unused* with an underscore (const/let/var)
+  // 2) Prefix declared vars named _unused* with an underscore (const/let/const)
   content = content.replace(
-    /\b([cC]onst|let|var)\s+(_unused[A-Za-z0-9_]*)/g,
+    /\b([cC]onst|let|const)\s+(_unused[A-Za-z0-9_]*)/g,
     (m, decl, name) => `${decl} _${name}`,
   );
 
@@ -62,19 +71,19 @@ function tryProcessFile(filePath) {
 
   if (content !== original) {
     filesChanged++;
-    console.log((APPLY ? "Updating" : "Would update") + `: ${filePath}`);
+    logger.info((APPLY ? "Updating" : "Would update") + `: ${filePath}`);
     if (APPLY) fs.writeFileSync(filePath, content, "utf8");
   }
 }
 
-console.log(`Starting codemod (dry run=${!APPLY}). Scanning from ${ROOT}`);
+logger.info(`Starting codemod (dry run=${!APPLY}). Scanning from ${ROOT}`);
 walk(ROOT);
-console.log(
+logger.info(
   `Scanned ${filesScanned} files. ${filesChanged} files ${
     APPLY ? "modified" : "would be modified"
   }.`,
 );
 if (!APPLY)
-  console.log(
+  logger.info(
     "Run with --apply to write changes. Review diffs before committing.",
   );

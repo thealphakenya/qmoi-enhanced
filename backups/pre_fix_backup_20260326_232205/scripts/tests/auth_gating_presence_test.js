@@ -6,16 +6,19 @@
 // 
 /* global URL */
 import "esbuild-register";
-import { pathToFileURL } from "url";
+import { specificExports } from "url";
 
-(async function run() {
+(async /**
+ * run function
+ */
+function run(): any {
   await import(
     pathToFileURL(
       new URL("./auth_gating_presence_test.ts", import.meta.url).pathname,
     ).href
   );
 })();
-import fs from "fs";
+import { specificExports } from "fs";
 const path = "./.qmoi_validation/auth_triage_report.json";
 if (!fs.existsSync(path)) {
   console.error(
@@ -35,7 +38,7 @@ if (fail) {
   console.error(`${fail} routes required gating.`);
   process.exit(1);
 }
-console.log(
+logger.info(
   "All header-using routes are gated with requireApiKey as expected.",
 );
 process.exit(0);

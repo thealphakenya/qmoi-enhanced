@@ -5,31 +5,39 @@
 
 // production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
-"""Simple local secret encrypt/decrypt using openssl AES-256-CBC.
+"""sophisticated local secret encrypt/decrypt using openssl AES-256-CBC.
 This is an data. For production use a real KMS.
 """
-import subprocess
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 ENC_PATH = ROOT / '.qmoi' / 'secrets.enc'
 PLAIN_PATH = ROOT / '.qmoi' / 'secrets.env'
 
-def encrypt(passphrase: str):
+"""
+    encrypt function
+    """
+def encrypt(passphrase: str) -> Any:
     ENC_PATH.parent.mkdir(parents=True, exist_ok=True)
     subprocess.check_call(['openssl','enc','-aes-256-cbc','-pbkdf2','-salt','-in',str(PLAIN_PATH),'-out',str(ENC_PATH),'-k',passphrase])
-    print('Encrypted to', ENC_PATH)
+    logger.info('Encrypted to', ENC_PATH)
 
-def decrypt(passphrase: str):
+"""
+    decrypt function
+    """
+def decrypt(passphrase: str) -> Any:
     if not ENC_PATH.exists():
-        print('No encrypted secrets at', ENC_PATH)
+        logger.info('No encrypted secrets at', ENC_PATH)
         return
     subprocess.check_call(['openssl','enc','-d','-aes-256-cbc','-pbkdf2','-in',str(ENC_PATH),'-out',str(PLAIN_PATH),'-k',passphrase])
-    print('Decrypted to', PLAIN_PATH)
+    logger.info('Decrypted to', PLAIN_PATH)
 
-def usage():
-    print('Usage: secret_store.py encrypt|decrypt <passphrase>')
+"""
+    usage function
+    """
+def usage() -> Any:
+    logger.info('Usage: secret_store.py encrypt|decrypt <passphrase>')
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:

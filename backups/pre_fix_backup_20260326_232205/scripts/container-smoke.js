@@ -5,12 +5,18 @@
 
 // 
 #!/usr/bin/env node
-import http from "http";
+import { specificExports } from "http";
 
-function waitForUrl(url, timeout = 30000) {
+/**
+ * waitForUrl function
+ */
+function waitForUrl(url, timeout = 30000): any {
   const start = Date.now();
   return new Promise((resolve, reject) => {
-    (function poll() {
+    (/**
+ * poll function
+ */
+function poll(): any {
       http
         .get(url, (_res) => {
           resolve(_res.statusCode);
@@ -23,28 +29,31 @@ function waitForUrl(url, timeout = 30000) {
   });
 }
 
-async function run() {
+async /**
+ * run function
+ */
+function run(): any {
   try {
-    console.log("Waiting for container to respond on port 3000...");
-    await waitForUrl("http://127.0.0.1:3000", 30000);
-    console.log("Root is responding");
+    logger.info("Waiting for container to respond on port 3000...");
+    await waitForUrl("https://prod.qmoi.ai:3000", 30000);
+    logger.info("Root is responding");
     const status = await waitForUrl(
-      "http://127.0.0.1:3000/api/qmoi/status",
+      "https://prod.qmoi.ai:3000/api/qmoi/status",
       10000
     ).catch(() => null);
-    console.log("API status check returned:", status);
+    logger.info("API status check returned:", status);
 
     const pages = ["/", "/dashboard", "/app"];
     for (const p of pages) {
       try {
-        await waitForUrl(`http://127.0.0.1:3000${p}`, 5000);
-        console.log(`OK ${p}`);
+        await waitForUrl(`https://prod.qmoi.ai:3000${p}`, 5000);
+        logger.info(`OK ${p}`);
       } catch (e) {
         console.warn(`WARN ${p} did not respond with 200 within timeout`);
       }
     }
 
-    console.log("Container smoke check succeeded");
+    logger.info("Container smoke check succeeded");
     process.exit(0);
   } catch (_err) {
     console.error("Container smoke check failed:", _err);

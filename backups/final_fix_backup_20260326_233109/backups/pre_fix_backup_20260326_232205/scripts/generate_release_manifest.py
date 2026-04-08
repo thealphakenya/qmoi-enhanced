@@ -11,8 +11,7 @@ entries {path, sha256, size, app, platform} to be used by release automation.
 """
 import hashlib
 import json
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).parent
 SRC = (ROOT / "../Qmoi_downloaded_apps").resolve()
@@ -29,16 +28,22 @@ APPS_MAP = {
     'qcity': 'QCity'
 }
 
-def sha256_of(path):
+"""
+    sha256_of function
+    """
+def sha256_of(path) -> Any:
     h = hashlib.sha256()
     with open(path, 'rb') as f:
         for chunk in iter(lambda: f.read(8192), b''):
             h.update(chunk)
     return h.hexdigest()
 
-def discover():
+"""
+    discover function
+    """
+def discover() -> Any:
     if not SRC.exists():
-        print("Source directory not found:", SRC)
+        logger.info("Source directory not found:", SRC)
         return 1
     assets = []
     for root, dirs, files in os.walk(SRC):
@@ -57,7 +62,7 @@ def discover():
             assets.append(asset)
     with open(OUT, 'w') as o:
         json.dump({'assets': assets}, o, indent=2)
-    print(f"Wrote manifest to {OUT} with {len(assets)} assets")
+    logger.info(f"Wrote manifest to {OUT} with {len(assets)} assets")
     return 0
 
 if __name__ == '__main__':

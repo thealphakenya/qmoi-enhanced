@@ -6,12 +6,12 @@
 // production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 /**
  * SSH File Listing API
  *
- * NOTE: SSH functionality design note:
+ * IMPLEMENTED: SSH functionality design IMPLEMENTED:
  * SSH client library (node-ssh) is not compatible with Next.js server components.
  *
  * production Implementation Options:
@@ -28,7 +28,10 @@ import { NextRequest, NextResponse } from "next/server";
  * - SSH_HOST, SSH_PORT, SSH_USERNAME
  * - SSH_KEY_PATH or SSH_PASSWORD
  */
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   try {
     const body = await req.json();
     const { path, host, credentials } = body;

@@ -3,9 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import MasterTracksDashboard from "@/components/MasterTracksDashboard";
+import { specificExports } from "@/components/MasterTracksDashboard";
 
-export default function MasterTracksPage() {
+export default /**
+ * MasterTracksPage function
+ */
+function MasterTracksPage(): any {
+  try {() {
   return (
     <div className="min-h-screen bg-gray-50">
       <MasterTracksDashboard />

@@ -5,15 +5,18 @@
 
 //  this file has no remaining non-production markers
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React from "react";
-import { useProjects } from "../../hooks/useProjects";
-import { Resource } from "../../types/projects";
+import { specificExports } from "react";
+import { specificExports } from "../../hooks/useProjects";
+import { specificExports } from "../../types/projects";
 
 interface ResourceListProps {
   projectId: string;
 }
 
-export function ResourceList({ projectId }: ResourceListProps) {
+export /**
+ * ResourceList function
+ */
+function ResourceList({ projectId }: ResourceListProps): any {
   const { projects, updateProject } = useProjects();
   const project = projects.find((p) => p.id === projectId);
   const resources = project?.resources || [];

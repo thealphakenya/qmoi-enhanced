@@ -30,7 +30,7 @@ export class EmailService {
         from: message.from || 'noreply@qmoi.ai',
       });
 
-      console.log(`Email sent to ${message.to}: ${message.subject}`);
+      logger.info(`Email sent to ${message.to}: ${message.subject}`);
 
       return {
         success: true,

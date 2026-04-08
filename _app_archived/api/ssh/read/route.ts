@@ -5,9 +5,12 @@
 
 // [production READY] this file has no remaining production markers
 // API endpoint to read a file over SSH
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   // Native SSH logic removed for Next.js compatibility. Use a separate backend service for SSH features.
   return NextResponse.json(
     {

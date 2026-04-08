@@ -5,7 +5,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 interface WiFiNetwork {
   ssid: string;
@@ -18,7 +18,10 @@ interface WiFiNetwork {
 }
 
 // production helper functions (replace with actual system API/service calls)
-async function scanWiFiNetworks(): Promise<WiFiNetwork[]> {
+async /**
+ * scanWiFiNetworks function
+ */
+function scanWiFiNetworks(): any: Promise<WiFiNetwork[]> {
   // production: Use system command (iwlist on Linux, Get-NetAdapter on Windows)
   // or Node WiFi package to scan available networks
   // Parse output and return formatted network list
@@ -53,7 +56,10 @@ async function scanWiFiNetworks(): Promise<WiFiNetwork[]> {
   ];
 }
 
-async function connectToWiFi({
+async /**
+ * connectToWiFi function
+ */
+function connectToWiFi({
   ssid,
   password,
   bssid,
@@ -61,7 +67,7 @@ async function connectToWiFi({
   ssid: string;
   password: string;
   bssid?: string;
-}): Promise<{
+}): any: Promise<{
   success: boolean;
   details?: unknown;
   message?: string;
@@ -98,7 +104,10 @@ async function connectToWiFi({
   }
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     // production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
@@ -115,7 +124,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { ssid, password, bssid } = body;

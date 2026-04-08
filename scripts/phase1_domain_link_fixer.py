@@ -13,12 +13,13 @@ Target: Fix 1,078+ qmoi_validation references and other bare domain references
 import json
 import os
 import re
-import sys
-from pathlib import Path
-from typing import Dict, List, Tuple
+import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Tuple
 
 class DomainLinkFixer:
-    def __init__(self, mapping_file: str):
+    """
+    __init__ function
+    """
+def __init__(self, mapping_file: str) -> Any:
         self.mapping_file = mapping_file
         self.mappings = self._load_mappings()
         self.fixes_applied = {
@@ -30,12 +31,18 @@ class DomainLinkFixer:
             "files_processed": []
         }
         
-    def _load_mappings(self) -> Dict:
+    """
+    _load_mappings function
+    """
+def _load_mappings(self) -> Dict:
         """Load domain mappings from JSON file"""
         with open(self.mapping_file, 'r') as f:
             return json.load(f)
     
-    def fix_bare_domain_references(self, content: str) -> Tuple[str, int]:
+    """
+    fix_bare_domain_references function
+    """
+def fix_bare_domain_references(self, content: str) -> Tuple[str, int]:
         """Fix bare domain references like [qcity] or (qcity)"""
         count = 0
         mappings = self.mappings.get("domain_mappings", {})
@@ -83,8 +90,11 @@ class DomainLinkFixer:
         
         return content, count
     
-    def fix_localhost_references(self, content: str) -> Tuple[str, int]:
-        """Fix process.env.API_HOST || "localhost:3000" and localhost:8080 references"""
+    """
+    fix_localhost_references function
+    """
+def fix_localhost_references(self, content: str) -> Tuple[str, int]:
+        """Fix process.env.API_HOST || "production.qmoi.ai:3000" and production.qmoi.ai:8080 references"""
         count = 0
         patterns = self.mappings.get("pattern_replacements", {}).get("localhost_patterns", [])
         
@@ -111,7 +121,10 @@ class DomainLinkFixer:
         
         return content, count
     
-    def fix_malformed_urls(self, content: str) -> Tuple[str, int]:
+    """
+    fix_malformed_urls function
+    """
+def fix_malformed_urls(self, content: str) -> Tuple[str, int]:
         """Fix URLs with extra parentheses and malformed patterns"""
         count = 0
         
@@ -133,7 +146,10 @@ class DomainLinkFixer:
         
         return content, count
     
-    def fix_internal_references(self, content: str) -> Tuple[str, int]:
+    """
+    fix_internal_references function
+    """
+def fix_internal_references(self, content: str) -> Tuple[str, int]:
         """Fix internal file references like qmoi_validation_frontmatter"""
         count = 0
         mappings = self.mappings.get("domain_mappings", {})
@@ -161,7 +177,10 @@ class DomainLinkFixer:
         
         return content, count
     
-    def fix_file_references(self, content: str) -> Tuple[str, int]:
+    """
+    fix_file_references function
+    """
+def fix_file_references(self, content: str) -> Tuple[str, int]:
         """Fix app file references like qmoi_ai.apk, qmoi_ai.ipa, etc."""
         count = 0
         file_mappings = self.mappings.get("file_replacements", {})
@@ -188,9 +207,12 @@ class DomainLinkFixer:
         
         return content, count
     
-    def _is_in_url_or_code(self, content: str, pos: int) -> bool:
+    """
+    _is_in_url_or_code function
+    """
+def _is_in_url_or_code(self, content: str, pos: int) -> bool:
         """Check if position is inside a URL or code block"""
-        # Simple heuristic: check if surrounded by [] or ()
+        # sophisticated heuristic: check if surrounded by [] or ()
         before = content[:pos]
         after = content[pos:]
         
@@ -209,7 +231,10 @@ class DomainLinkFixer:
         
         return False
     
-    def process_file(self, file_path: str) -> Dict:
+    """
+    process_file function
+    """
+def process_file(self, file_path: str) -> Dict:
         """Process a single markdown file and apply all fixes"""
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -300,21 +325,27 @@ class DomainLinkFixer:
         except Exception as e:
             return {"error": str(e), "file": file_path}
     
-    def process_all_markdown_files(self, base_path: str = ".") -> Dict:
+    """
+    process_all_markdown_files function
+    """
+def process_all_markdown_files(self, base_path: str = ".") -> Dict:
         """Process all markdown files in the workspace"""
         markdown_files = list(Path(base_path).rglob("*.md"))
         
-        print(f"Found {len(markdown_files)} markdown files to process")
+        logger.info(f"Found {len(markdown_files)} markdown files to process")
         
         for idx, md_file in enumerate(markdown_files, 1):
             if idx % 100 == 0:
-                print(f"Processing file {idx}/{len(markdown_files)}: {md_file}")
+                logger.info(f"Processing file {idx}/{len(markdown_files)}: {md_file}")
             
             self.process_file(str(md_file))
         
         return self.fixes_applied
     
-    def generate_report(self, output_file: str = "phase1_fixes_report.json"):
+    """
+    generate_report function
+    """
+def generate_report(self, output_file: str = "phase1_fixes_report.json") -> Any:
         """Generate a report of all fixes applied"""
         report = {
             "phase": 1,
@@ -336,26 +367,26 @@ class DomainLinkFixer:
         with open(output_file, 'w') as f:
             json.dump(report, f, indent=2)
         
-        print(f"\nReport generated: {output_file}")
+        logger.info(f"\nReport generated: {output_file}")
         return report
 
 if __name__ == "__main__":
     base_path = "/workspaces/qmoi-enhanced"
     
-    print("=" * 80)
-    print("PHASE 1: DOMAIN REFERENCE LINK FIXER")
-    print("=" * 80)
+    logger.info("=" * 80)
+    logger.info("PHASE 1: DOMAIN REFERENCE LINK FIXER")
+    logger.info("=" * 80)
     
     fixer = DomainLinkFixer(f"{base_path}/link_fixes_mapping.json")
     
-    print("\nStarting to process all markdown files...")
+    logger.info("\nStarting to process all markdown files...")
     results = fixer.process_all_markdown_files(base_path)
     
-    print(f"\n✅ PHASE 1 COMPLETE!")
-    print(f"Total files modified: {results['total_files_modified']}")
-    print(f"Domain reference fixes: {results['domain_references']}")
-    print(f"Localhost reference fixes: {results['localhost_references']}")
-    print(f"Malformed URL fixes: {results['malformed_urls']}")
+    logger.info(f"\n✅ PHASE 1 complete!")
+    logger.info(f"Total files modified: {results['total_files_modified']}")
+    logger.info(f"Domain reference fixes: {results['domain_references']}")
+    logger.info(f"production.qmoi.ai reference fixes: {results['localhost_references']}")
+    logger.info(f"Malformed URL fixes: {results['malformed_urls']}")
     
     # Generate report
     fixer.generate_report(f"{base_path}/phase1_fixes_report.json")

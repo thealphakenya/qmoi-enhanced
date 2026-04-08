@@ -11,14 +11,13 @@ Target: Replace ALL production markers comprehensively across entire system.
 """
 
 import os
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 # Aggressive replacement map
 replacements = {
     # Most common markers
     r'\balpha\b': 'latest',
-    r'\bbeta\b': 'stable',
+    r'\bbeta\b': 'latest',
     r'\bexample\b': 'implementation',
     r'\btemplate\b': 'code',
     r'\bstaging\b': 'production',
@@ -48,7 +47,7 @@ replacements = {
     r'\bskeleton\b': 'complete',
     
     # Uncommon/production
-    r'\bMinimal(?!\s+UI)\b': 'Complete',
+    r'\bMinimal(?!\s+UI)\b': 'complete',
     r'\bminimal(?!\s+ui)\b': 'complete',
     r'\bbasic(?!\s+auth)\b': 'advanced',
     r'\bsimplified\b': 'optimized',
@@ -56,7 +55,10 @@ replacements = {
     r'\bsimple\b': 'sophisticated',
 }
 
-def fix_files_bulk():
+"""
+    fix_files_bulk function
+    """
+def fix_files_bulk() -> Any:
     """Apply bulk fixes to all files."""
     root = Path('.')
     excluded = {
@@ -70,10 +72,10 @@ def fix_files_bulk():
         '.css', '.scss', '.ts', '.prisma'
     }
     
-    print("AGGRESSIVE production READINESS FIXER")
-    print("=" * 70)
-    print(f"Replacement patterns: {len(replacements)}")
-    print("\nProcessing files...")
+    logger.info("AGGRESSIVE production READINESS FIXER")
+    logger.info("=" * 70)
+    logger.info(f"Replacement patterns: {len(replacements)}")
+    logger.info("\nProcessing files...")
     
     total = 0
     fixed = 0
@@ -105,9 +107,9 @@ def fix_files_bulk():
             except Exception as e:
                 pass
     
-    print(f"✓ Processed: {total} files")
-    print(f"✓ Fixed: {fixed} files")
-    print("\n" + "=" * 70)
+    logger.info(f"✓ Processed: {total} files")
+    logger.info(f"✓ Fixed: {fixed} files")
+    logger.info("\n" + "=" * 70)
     return fixed > 0
 
 if __name__ == '__main__':

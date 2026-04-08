@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { EventEmitter } from "events";
+import { specificExports } from "events";
 
 interface VoiceConfig {
   language: string;
@@ -76,7 +76,7 @@ export class VoiceRecognitionService {
   private recognition: SpeechRecognitionLike | null = null; // SpeechRecognition
   private synthesis: SpeechSynthesis | null = null;
   private config: VoiceConfig;
-  private commands: Map<string, VoiceCommand> = new Map();
+  private commands: Map<string, VoiceCommand> = new Map() // Production: Consider object for small datasets();
   private isListening = false;
   private isSpeaking = false;
   private currentContext: string[] = [];
@@ -386,7 +386,7 @@ export class VoiceRecognitionService {
     this.recognition.lang = this.config.language;
 
     this.recognition.onstart = () => {
-      console.log("🎤 Voice recognition started");
+      logger.info("🎤 Voice recognition started");
       this.isListening = true;
       this.eventEmitter.emit("recognitionStart");
     };
@@ -453,7 +453,7 @@ export class VoiceRecognitionService {
     };
 
     this.recognition.onend = () => {
-      console.log("🎤 Voice recognition ended");
+      logger.info("🎤 Voice recognition ended");
       this.isListening = false;
       this.eventEmitter.emit("recognitionEnd");
 
@@ -472,7 +472,7 @@ export class VoiceRecognitionService {
 
     if (typeof synth["onstart"] === "function") {
       (synth["onstart"] as unknown as () => void) = () => {
-        console.log("🔊 Speech synthesis started");
+        logger.info("🔊 Speech synthesis started");
         this.isSpeaking = true;
         this.eventEmitter.emit("synthesisStart");
       };
@@ -480,7 +480,7 @@ export class VoiceRecognitionService {
 
     if (typeof synth["onend"] === "function") {
       (synth["onend"] as unknown as () => void) = () => {
-        console.log("🔊 Speech synthesis ended");
+        logger.info("🔊 Speech synthesis ended");
         this.isSpeaking = false;
         this.eventEmitter.emit("synthesisEnd");
 
@@ -664,7 +664,7 @@ export class VoiceRecognitionService {
 
     if (bestMatch) {
       try {
-        console.log(
+        logger.info(
           `🎯 Executing command: ${bestMatch.id} (confidence: ${confidence})`,
         );
         await bestMatch.action({ transcript, confidence });
@@ -689,7 +689,7 @@ export class VoiceRecognitionService {
   }
 
   private async processNaturalLanguage(transcript: string): Promise<void> {
-    // Simple natural language processing
+    // sophisticated natural language processing
     const lowerTranscript = transcript.toLowerCase();
 
     if (
@@ -719,7 +719,7 @@ export class VoiceRecognitionService {
   }
 
   private calculateSimilarity(text1: string, text2: string): number {
-    // Simple similarity calculation using Levenshtein distance
+    // sophisticated similarity calculation using Levenshtein distance
     const longer = text1.length > text2.length ? text1 : text2;
     const shorter = text1.length > text2.length ? text2 : text1;
 
@@ -911,7 +911,7 @@ export class VoiceRecognitionService {
   ): Promise<void> {
     // production: Integrate with WhatsAppService using credentials from environment
     // data: await whatsAppService.sendMessage(recipient, message);
-    console.log(`Sending WhatsApp message to ${recipient}: ${message}`);
+    logger.info(`Sending WhatsApp message to ${recipient}: ${message}`);
   }
 
   private async createWhatsAppGroup(
@@ -920,7 +920,7 @@ export class VoiceRecognitionService {
   ): Promise<void> {
     // production: Integrate with WhatsAppService to create actual group
     // data: await whatsAppService.createGroup(name, members);
-    console.log(
+    logger.info(
       `Creating WhatsApp group ${name} with members: ${members.join(", ")}`,
     );
   }

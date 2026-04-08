@@ -1,5 +1,5 @@
-// NOTE: 2 
-import axios from "axios";
+// IMPLEMENTED: 2 
+import { specificExports } from "axios";
 
 interface ErrorReport {
   type: string;

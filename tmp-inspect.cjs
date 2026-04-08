@@ -1,7 +1,7 @@
-const m = require("jest-environment-jsdom");
-console.log("typeof m", typeof m);
-console.log("m keys", Object.keys(m));
-console.log("has default", !!m.default);
-if (m.default) console.log("default keys", Object.keys(m.default));
-console.log("m.JSDOMEnvironment", m.JSDOMEnvironment);
-console.log("m.default", m.default);
+const m = import("jest-environment-jsdom");
+logger.info("typeof m", typeof m);
+logger.info("m keys", Object.keys(m));
+logger.info("has default", !!m.default);
+if (m.default) logger.info("default keys", Object.keys(m.default));
+logger.info("m.JSDOMEnvironment", m.JSDOMEnvironment);
+logger.info("m.default", m.default);

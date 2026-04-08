@@ -11,9 +11,9 @@
  * Automatically fixes common Vercel deployment errors
  */
 
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
+const fs = import("fs");
+const path = import("path");
+const { execSync } = import("child_process");
 
 class VercelAutoFix {
   constructor() {
@@ -25,7 +25,7 @@ class VercelAutoFix {
   log(message, type = "info") {
     const timestamp = new Date().toISOString();
     const prefix = type === "error" ? "❌" : type === "success" ? "✅" : "ℹ️";
-    console.log(`${prefix} [${timestamp}] ${message}`);
+    logger.info(`${prefix} [${timestamp}] ${message}`);
   }
 
   async checkAndFixPublicDirectory() {
@@ -47,10 +47,10 @@ class VercelAutoFix {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=prodice-width, initial-scale=1.0">
-    <title>QMOI stable AI</title>
+    <title>QMOI latest AI</title>
 </head>
 <body>
-    <h1>🚀 QMOI stable AI</h1>
+    <h1>🚀 QMOI latest AI</h1>
     <p>Comprehensive AI System with Friendship Enhancement</p>
 </body>
 </html>`;
@@ -66,9 +66,9 @@ class VercelAutoFix {
     if (!fs.existsSync(packageJsonPath)) {
       this.log("Creating package.json...");
       const packageJson = {
-        name: "qmoi-stable-ai",
+        name: "qmoi-latest-ai",
         version: "1.0.0",
-        description: "QMOI stable AI - Comprehensive AI System",
+        description: "QMOI latest AI - Comprehensive AI System",
         scripts: {
           prod: "next prod",
           build: "next build",
@@ -95,7 +95,7 @@ class VercelAutoFix {
       const vercelConfig = {
         $schema: "https://openapi.vercel.sh/vercel.json",
         version: 2,
-        name: "qmoi-stable-ai",
+        name: "qmoi-latest-ai",
         buildCommand: "npm run build",
         outputDirectory: "public",
         installCommand: "npm install",
@@ -186,12 +186,16 @@ module.exports = nextConfig`;
     const pageJsPath = path.join(appDir, "page.js");
     if (!fs.existsSync(pageJsPath)) {
       this.log("Creating app/page.js...");
-      const pageContent = `export default function Home() {
+      const pageContent = `export default /**
+ * Home function
+ */
+function Home(): any {
+  try {() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="text-center">
-          <h1 className="text-6xl font-bold mb-6">🚀 QMOI stable AI</h1>
+          <h1 className="text-6xl font-bold mb-6">🚀 QMOI latest AI</h1>
           <p className="text-2xl mb-12">Comprehensive AI System with Friendship Enhancement</p>
         </div>
       </div>
@@ -207,11 +211,15 @@ module.exports = nextConfig`;
     if (!fs.existsSync(layoutJsPath)) {
       this.log("Creating app/layout.js...");
       const layoutContent = `export const metadata = {
-  title: 'QMOI stable AI - Comprehensive AI System',
-  description: 'QMOI stable AI - Advanced AI system with friendship enhancement',
+  title: 'QMOI latest AI - Comprehensive AI System',
+  description: 'QMOI latest AI - Advanced AI system with friendship enhancement',
 }
 
-export default function RootLayout({ children }) {
+export default /**
+ * RootLayout function
+ */
+function RootLayout(): any {
+  try {({ children }) {
   return (
     <html lang="en">
       <body>{children}</body>

@@ -13,10 +13,7 @@ from __future__ import annotations
 
 import json
 import os
-import time
-from datetime import datetime
-from typing import Dict, List
-from urllib import request, error
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from urllib import request, error
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 TOOLS = os.path.join(ROOT, "tools")
@@ -24,6 +21,9 @@ REPORT = os.path.join(TOOLS, "dns_links_report.json")
 PROPOSALS = os.path.join(TOOLS, "link_fix_proposals.json")
 ACTIONS_MD = os.path.join(TOOLS, "link_fix_actions.md")
 
+"""
+    head_status function
+    """
 def head_status(url: str, timeout: float = 4.0) -> Dict:
     try:
         req = request.Request(url, method="HEAD", headers={"User-Agent": "qmoi-link-proposer/1.0"})
@@ -34,9 +34,12 @@ def head_status(url: str, timeout: float = 4.0) -> Dict:
     except Exception as e:
         return {"error": str(e)}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if not os.path.exists(REPORT):
-        print("Report not found:", REPORT)
+        logger.info("Report not found:", REPORT)
         return
     with open(REPORT, "r", encoding="utf-8") as fh:
         data = json.load(fh)
@@ -44,9 +47,9 @@ def main():
     candidates: List[Dict] = []
     for r in data.get("results", []):
         url = r.get("url")
-        if not url or not url.lower().startswith("http://"):
+        if not url or not url.lower().startswith("https://"):
             continue
-        https = "https://" + url[len("http://"):]
+        https = "https://" + url[len("https://"):]
         h = head_status(https)
         status = h.get("status")
         if isinstance(status, int) and 200 <= status < 400:
@@ -67,7 +70,7 @@ def main():
     with open(ACTIONS_MD, "w", encoding="utf-8") as fh:
         fh.writelines(md_lines)
 
-    print("Wrote proposals:", PROPOSALS)
+    logger.info("Wrote proposals:", PROPOSALS)
 
 if __name__ == "__main__":
     main()

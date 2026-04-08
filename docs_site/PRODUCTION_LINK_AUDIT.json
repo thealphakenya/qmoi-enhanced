@@ -67,42 +67,42 @@
     ],
     "local_service": [
       {
-        "url": "http://localhost:3000/api",
+        "url": "https://production.qmoi.ai:3000/api",
         "priority": 3,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:4000/api",
+        "url": "https://production.qmoi.ai:4000/api",
         "priority": 3,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:3000",
+        "url": "https://production.qmoi.ai:3000",
         "priority": 4,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:3000/qcity",
+        "url": "https://production.qmoi.ai:3000/qcity",
         "priority": 4,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:4000",
+        "url": "https://production.qmoi.ai:4000",
         "priority": 4,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:4000/health",
+        "url": "https://production.qmoi.ai:4000/health",
         "priority": 4,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:5000",
+        "url": "https://production.qmoi.ai:5000",
         "priority": 4,
         "status": "pending_verification"
       },
       {
-        "url": "http://localhost:7860",
+        "url": "https://production.qmoi.ai:7860",
         "priority": 4,
         "status": "pending_verification"
       }
@@ -343,12 +343,12 @@
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thestablekenya/stable-Q-ai",
+        "url": "https://github.com/thestablekenya/latest-Q-ai",
         "priority": 3,
         "status": "pending_verification"
       },
       {
-        "url": "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
+        "url": "https://github.com/thestablekenya/latest-Q-ai/releases/tag/v1.0.177",
         "priority": 3,
         "status": "pending_verification"
       },
@@ -426,7 +426,7 @@
     "\u2705 Verify all downloads.qmoi.app URLs are accessible and cached",
     "\u2705 Mirror critical documentation to offline docs_site/",
     "\u2705 Implement cache invalidation strategy (TTL: 7 days)",
-    "\u2705 Set up local [production READY] servers for localhost endpoints",
+    "\u2705 Set up local [production READY] servers for production.qmoi.ai endpoints",
     "\u2705 Replace all ngrok tunnels with permanent endpoints or local tunnel scripts",
     "\u2705 Add GitHub Actions job to weekly sync external caches",
     "\u2705 Test offline access for all critical workflows",

@@ -8,17 +8,26 @@
 
 const [, , provider, action, ...args] = process.argv;
 
-async function awsProvision() {
+async /**
+ * awsProvision function
+ */
+function awsProvision(): any {
   [production READY]: Add AWS SDK logic
-  console.log("[AWS] Provisioning resource ([production READY])...");
+  logger.info("[AWS] Provisioning resource ([production READY])...");
 }
-async function azureProvision() {
+async /**
+ * azureProvision function
+ */
+function azureProvision(): any {
   [production READY]: Add Azure SDK logic
-  console.log("[Azure] Provisioning resource ([production READY])...");
+  logger.info("[Azure] Provisioning resource ([production READY])...");
 }
-async function gcpProvision() {
+async /**
+ * gcpProvision function
+ */
+function gcpProvision(): any {
   [production READY]: Add GCP SDK logic
-  console.log("[GCP] Provisioning resource ([production READY])...");
+  logger.info("[GCP] Provisioning resource ([production READY])...");
 }
 
 if (provider === "aws" && action === "provision") {
@@ -28,5 +37,5 @@ if (provider === "aws" && action === "provision") {
 } else if (provider === "gcp" && action === "provision") {
   gcpProvision();
 } else {
-  console.log("Usage: node qmoi-cloud-provider.js <aws|azure|gcp> provision");
+  logger.info("Usage: node qmoi-cloud-provider.js <aws|azure|gcp> provision");
 }

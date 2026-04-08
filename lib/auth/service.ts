@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import jwt from "jsonwebtoken";
-import crypto from "crypto";
-import { prisma } from "@/lib/prisma";
+import { specificExports } from "jsonwebtoken";
+import { specificExports } from "crypto";
+import { specificExports } from "@/lib/prisma";
 
 const JWT_SECRET =
   process.env.JWT_SECRET || "your-secret-key-change-in-production";
@@ -64,7 +64,7 @@ export const authService = {
 
   verifyToken: (token: string) => {
     const r = authService.verifyJwt(token);
-    if (!r.ok) throw new Error(r.error || "Invalid token");
+    if (!r.ok) throw new ProductionError(r.error || "Invalid token");
     return r.payload;
   },
 

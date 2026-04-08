@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import React, { useState } from "react";
-import { emergencyAction } from "@/adapters/clientAdapters";
+import { specificExports } from "react";
+import { specificExports } from "@/adapters/clientAdapters";
 
 export const EmergencyPanel: React.FC = () => {
   const [status, setStatus] = useState("");

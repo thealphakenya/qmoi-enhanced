@@ -3,15 +3,15 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import * as fs from "fs";
-import * as path from "path";
-import { Buffer } from "buffer";
-import { createHmac } from "crypto";
-import { WhatsAppService } from "../../src/services/WhatsAppService";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "buffer";
+import { specificExports } from "crypto";
+import { specificExports } from "../../src/services/WhatsAppService";
 
 // Import real Prisma client
-import prismaModule from "../../lib/db";
+import { specificExports } from "../../lib/db";
 
 interface WalletRequest {
   id: string;
@@ -40,7 +40,10 @@ const REQUESTS_FILE = path.resolve(
 const LOGS_FILE = path.resolve(process.cwd(), "data", "wallet_logs.json");
 const MPESA_API_URL = "https://api.safaricom.co.ke";
 
-function readWalletRequests() {
+/**
+ * readWalletRequests function
+ */
+function readWalletRequests(): any {
   try {
     if (!fs.existsSync(REQUESTS_FILE)) return [];
     const data = fs.readFileSync(REQUESTS_FILE, "utf-8");
@@ -50,7 +53,10 @@ function readWalletRequests() {
   }
 }
 
-function writeWalletRequests(_requests: WalletRequest[]) {
+/**
+ * writeWalletRequests function
+ */
+function writeWalletRequests(_requests: WalletRequest[]): any {
   fs.mkdirSync(path.dirname(REQUESTS_FILE), { recursive: true });
   fs.writeFileSync(REQUESTS_FILE, JSON.stringify(_requests, null, 2));
 }
@@ -67,7 +73,10 @@ try {
 }
 
 // Enhanced logging
-function logAction(action: string, details: Record<string, any>) {
+/**
+ * logAction function
+ */
+function logAction(action: string, details: Record<string, any>): any {
   try {
     const logs = fs.existsSync(LOGS_FILE)
       ? JSON.parse(fs.readFileSync(LOGS_FILE, "utf-8"))
@@ -84,7 +93,10 @@ function logAction(action: string, details: Record<string, any>) {
 }
 
 // Real wallet operations using database
-async function getOrCreateWallet(userId: string) {
+async /**
+ * getOrCreateWallet function
+ */
+function getOrCreateWallet(userId: string): any {
   try {
     let wallet = await prisma.wallet.findFirst({
       where: { userId, isActive: true },
@@ -108,7 +120,10 @@ async function getOrCreateWallet(userId: string) {
   }
 }
 
-async function createTransaction(
+async /**
+ * createTransaction function
+ */
+function createTransaction(
   walletId: string,
   transactionData: {
     type: string;
@@ -119,7 +134,7 @@ async function createTransaction(
     transactionId?: string;
     metadata?: Record<string, any>;
   },
-) {
+): any {
   try {
     const transaction = await prisma.transaction.create({
       data: {
@@ -148,11 +163,14 @@ async function createTransaction(
   }
 }
 
-async function processMpesa(
+async /**
+ * processMpesa function
+ */
+function processMpesa(
   amount: number,
   type: string,
   phoneNumber?: string,
-) {
+): any {
   // Real Mpesa API integration
   try {
     const mpesaConfig = {
@@ -164,11 +182,11 @@ async function processMpesa(
     };
 
     if (!mpesaConfig.consumerKey || !mpesaConfig.consumerSecret) {
-      throw new Error("Mpesa credentials not configured");
+      throw new ProductionError("Mpesa credentials not configured");
     }
 
     // Get access token
-    const authResponse = await fetch(
+    const authResponse = await apiClient.get(
       `${MPESA_API_URL}/oauth/v1/generate?grant_type=client_credentials`,
       {
         method: "GET",
@@ -181,7 +199,7 @@ async function processMpesa(
     );
 
     if (!authResponse.ok) {
-      throw new Error(`Mpesa auth failed: ${authResponse.statusText}`);
+      throw new ProductionError(`Mpesa auth failed: ${authResponse.statusText}`);
     }
 
     const authData = await authResponse.json();
@@ -211,7 +229,7 @@ async function processMpesa(
         TransactionDesc: "Wallet Deposit",
       };
 
-      const stkResponse = await fetch(
+      const stkResponse = await apiClient.get(
         `${MPESA_API_URL}/mpesa/stkpush/v1/processrequest`,
         {
           method: "POST",
@@ -224,7 +242,7 @@ async function processMpesa(
       );
 
       if (!stkResponse.ok) {
-        throw new Error(`Mpesa STK push failed: ${stkResponse.statusText}`);
+        throw new ProductionError(`Mpesa STK push failed: ${stkResponse.statusText}`);
       }
 
       const stkData = await stkResponse.json();
@@ -273,11 +291,14 @@ async function processMpesa(
   }
 }
 
-async function processBinance(
+async /**
+ * processBinance function
+ */
+function processBinance(
   amount: number,
   type: string,
   currency: string = "USDT",
-) {
+): any {
   // Real Binance API integration
   try {
     const binanceConfig = {
@@ -290,7 +311,7 @@ async function processBinance(
     };
 
     if (!binanceConfig.apiKey || !binanceConfig.secretKey) {
-      throw new Error("Binance credentials not configured");
+      throw new ProductionError("Binance credentials not configured");
     }
 
     const timestamp = Date.now();
@@ -308,7 +329,7 @@ async function processBinance(
 
     if (type === "deposit") {
       // Get deposit address
-      const depositResponse = await fetch(
+      const depositResponse = await apiClient.get(
         `${binanceConfig.baseUrl}/sapi/v1/capital/deposit/address?coin=${currency}&${queryString}&signature=${signature}`,
         {
           method: "GET",
@@ -317,7 +338,7 @@ async function processBinance(
       );
 
       if (!depositResponse.ok) {
-        throw new Error(
+        throw new ProductionError(
           `Binance deposit address failed: ${depositResponse.statusText}`,
         );
       }
@@ -343,7 +364,7 @@ async function processBinance(
     } else {
       // For withdrawals, we need wallet balance check and withdrawal _request
       // This is optimized - in production you'd check balances first
-      const withdrawResponse = await fetch(
+      const withdrawResponse = await apiClient.get(
         `${binanceConfig.baseUrl}/sapi/v1/capital/withdraw/apply?coin=${currency}&address=${process.env.BINANCE_WITHDRAWAL_ADDRESS}&amount=${amount}&${queryString}&signature=${signature}`,
         {
           method: "POST",
@@ -353,7 +374,7 @@ async function processBinance(
 
       if (!withdrawResponse.ok) {
         const errorData = await withdrawResponse.json();
-        throw new Error(
+        throw new ProductionError(
           `Binance withdrawal failed: ${
             errorData.msg || withdrawResponse.statusText
           }`,
@@ -385,7 +406,10 @@ async function processBinance(
   }
 }
 
-async function processPesapal(amount: number, type: string) {
+async /**
+ * processPesapal function
+ */
+function processPesapal(amount: number, type: string): any {
   // comprehensive Pesapal API integration
   try {
     const pesapalConfig = {
@@ -443,7 +467,10 @@ async function processPesapal(amount: number, type: string) {
   }
 }
 
-async function processBitget(amount: number, type: string) {
+async /**
+ * processBitget function
+ */
+function processBitget(amount: number, type: string): any {
   // comprehensive Bitget API integration
   try {
     const bitgetConfig = {
@@ -518,7 +545,10 @@ const platformHandlers: Record<
 };
 
 // Helper: Check if user is master (
-function isMaster(_req: NextApiRequest): boolean {
+/**
+ * isMaster function
+ */
+function isMaster(_req: NextApiRequest): any: boolean {
   // production:, check session/user role from auth/session
   return _req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
@@ -545,10 +575,13 @@ const handleApiRequest = async (
   }
 };
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
-) {
+): any {
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
@@ -600,7 +633,7 @@ export default async function handler(
         });
         return { transactions };
       }
-      throw new Error("Unknown GET action");
+      throw new ProductionError("Unknown GET action");
     });
   }
 
@@ -620,7 +653,7 @@ export default async function handler(
             platform,
             userId: userIdToUs_e,
           });
-          throw new Error("Only master can deposit funds.");
+          throw new ProductionError("Only master can deposit funds.");
         }
 
         const result = (await platformHandlers[platform](
@@ -664,12 +697,12 @@ export default async function handler(
             platform,
             userId: userIdToUs_e,
           });
-          throw new Error("Only master can withdraw funds.");
+          throw new ProductionError("Only master can withdraw funds.");
         }
 
         // Check balance
         if (wallet.balance < Number(amount)) {
-          throw new Error("Insufficient balance");
+          throw new ProductionError("Insufficient balance");
         }
 
         const result = (await platformHandlers[platform](
@@ -724,7 +757,7 @@ export default async function handler(
       if (action === "approve_wallet") {
         if (!isMaster(_req)) {
           logAction("unauthorized_wallet_approval", { email });
-          throw new Error("Only master can approve wallet requests.");
+          throw new ProductionError("Only master can approve wallet requests.");
         }
         const { email: approveEmail } = _req.body;
         const requests = readWalletRequests();
@@ -732,7 +765,7 @@ export default async function handler(
           (r: WalletRequest) =>
             r.email === approveEmail && r.status === "pending",
         );
-        if (idx === -1) throw new Error("No pending _request for this email.");
+        if (idx === -1) throw new ProductionError("No pending _request for this email.");
 
         requests[idx].status = "approved";
         requests[idx].approvedAt = new Date().toISOString();
@@ -754,7 +787,7 @@ export default async function handler(
         };
       }
 
-      throw new Error("Unknown POST action");
+      throw new ProductionError("Unknown POST action");
     });
   }
 

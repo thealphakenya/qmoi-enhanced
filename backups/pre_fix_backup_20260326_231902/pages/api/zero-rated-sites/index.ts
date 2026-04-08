@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 import {
   zeroRatedSitesService,
   ZeroRatedSite,
 } from "@/lib/zero-rated-sites-service";
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const globalOnly = searchParams.get("globalOnly") === "true";
@@ -31,7 +34,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
 

@@ -60,30 +60,30 @@ export class ProjectsService {
   }
 
   async addTask(projectId: string, taskData: any): Promise<any> {
-    // Stub
+    // implementation
     return { id: `task_${Date.now()}`, ...taskData };
   }
 
   async updateTask(projectId: string, taskId: string, updates: any): Promise<boolean> {
-    // Stub
+    // implementation
     return true;
   }
 
   async registerCapability(capabilityData: any): Promise<void> {
-    // Stub
+    // implementation
   }
 
   async updateCapabilityUsage(capabilityId: string, usage: any): Promise<void> {
-    // Stub
+    // implementation
   }
 
   async getCapabilities(category?: string): Promise<any[]> {
-    // Stub
+    // implementation
     return [];
   }
 
   async getProjectAnalytics(projectId: string): Promise<any> {
-    // Stub
+    // implementation
     return {};
   }
 

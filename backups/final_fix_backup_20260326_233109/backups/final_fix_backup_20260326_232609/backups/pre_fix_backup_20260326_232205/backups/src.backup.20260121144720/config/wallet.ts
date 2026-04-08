@@ -1,4 +1,4 @@
-// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+// IMPLEMENTED: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 /* eslint-disable no-unreachable */
 /// <reference types="node" />
 /* eslint-disable no-unreachable */

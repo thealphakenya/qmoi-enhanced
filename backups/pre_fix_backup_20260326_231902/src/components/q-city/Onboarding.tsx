@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import * as React from "react";
-import { useState } from "react";
+import { specificExports } from "react";
+import { specificExports } from "react";
 
 type OnboardingForm = {
   name: string;
@@ -27,7 +27,7 @@ const Onboarding: React.FC = () => {
 
   const handleGoogleOAuth = () => {
     // Google OAuth  - in production, integrate with @react-oauth/google
-    console.log("Initiating Google OAuth flow...");
+    logger.info("Initiating Google OAuth flow...");
     setForm((f) => ({ ...f, googleConnected: true, email: "user@gmail.com" }));
     setStep(2);
   };
@@ -41,7 +41,7 @@ const Onboarding: React.FC = () => {
   const handleSubmit = (_e: React.FormEvent) => {
     _e.preventDefault();
     // Save user details and preferences to backend
-    console.log("Saving user data:", form);
+    logger.info("Saving user data:", form);
     setStep(3);
   };
 

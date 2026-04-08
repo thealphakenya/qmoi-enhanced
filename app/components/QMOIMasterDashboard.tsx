@@ -10,7 +10,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 import {
   AlertCircle,
   BarChart3,
@@ -27,17 +27,17 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { SponsoredUsersManager } from "./SponsoredUsersManager";
-import { AvatarSelector } from "../../src/components/q-city/AvatarSelector";
-import { VoiceSelector } from "../../src/components/q-city/VoiceSelector";
-import { Camera, Eye, EyeOff } from "lucide-react";
+import { specificExports } from "./SponsoredUsersManager";
+import { specificExports } from "../../src/components/q-city/AvatarSelector";
+import { specificExports } from "../../src/components/q-city/VoiceSelector";
+import { specificExports } from "lucide-react";
 
 const PWA_PLATFORMS = [
-  { id: "stableq", name: "stable Q AI", url: "https://stableq.ai", logo: "🔷" },
+  { id: "stableq", name: "latest Q AI", url: "https://stableq.ai", logo: "🔷" },
   { id: "qmoi", name: "QMOI AI", url: "https://qmoi.ai", logo: "🤖" },
   { id: "qmoi-space", name: "QMOI Space", url: "https://qmoi-space.qmoi.ai", logo: "🌌" },
   { id: "qcity", name: "QCity", url: "https://qcity.qmoi.ai", logo: "🏙️" },
-  { id: "q-stable", name: "Q-stable", url: "https://q-stable.qmoi.ai", logo: "🌀" },
+  { id: "q-latest", name: "Q-latest", url: "https://q-latest.qmoi.ai", logo: "🌀" },
   { id: "qshare", name: "QShare", url: "qshare.qvillage.com", logo: "📤" },
   { id: "qstore", name: "QStore", url: "qstore.qvillage.com", logo: "🛒" },
   { id: "yap", name: "Yap", url: "https://yap.qmoi.ai", logo: "💬" },
@@ -93,10 +93,13 @@ interface MasterDashboardProps {
   onUnauthorized?: () => void;
 }
 
-export function QMOIMasterDashboard({
+export /**
+ * QMOIMasterDashboard function
+ */
+function QMOIMasterDashboard({
   masterToken,
   onUnauthorized,
-}: MasterDashboardProps) {
+}: MasterDashboardProps): any {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [token, setToken] = useState(masterToken || "");
   const [automationStatus, setAutomationStatus] =
@@ -132,7 +135,7 @@ export function QMOIMasterDashboard({
         window.matchMedia("(display-mode: standalone)").matches ||
         (window.navigator as any).standalone === true;
       if (isInstalled) {
-        PWA_PLATFORMS.forEach((p) => {
+        PWA_PLATFORMS.for (const item of((p) => {
           localStorage.setItem(`pwa_installed_${p.id}`, "true");
           setPwaInstallStatus((prev) => ({ ...prev, [p.id]: true }));
         });
@@ -175,7 +178,7 @@ export function QMOIMasterDashboard({
   const verifyMasterAccess = async (authToken: string) => {
     try {
       setLoading(true);
-      const response = await fetch("/api/admin/autofix/background-automation", {
+      const response = await apiClient.get("/api/admin/autofix/background-automation", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -206,7 +209,7 @@ export function QMOIMasterDashboard({
     if (!isAuthenticated) return;
 
     try {
-      const response = await fetch("/api/admin/autofix/background-automation", {
+      const response = await apiClient.get("/api/admin/autofix/background-automation", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -227,7 +230,7 @@ export function QMOIMasterDashboard({
 
     try {
       // Fetch from backend financial endpoint
-      const response = await fetch("/api/admin/financial/summary", {
+      const response = await apiClient.get("/api/admin/financial/summary", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -248,7 +251,7 @@ export function QMOIMasterDashboard({
 
     try {
       // Fetch from master links endpoint
-      const response = await fetch("/api/master/links", {
+      const response = await apiClient.get("/api/master/links", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -268,7 +271,7 @@ export function QMOIMasterDashboard({
     if (!isAuthenticated) return;
 
     try {
-      const response = await fetch("/api/admin/financial/global", {
+      const response = await apiClient.get("/api/admin/financial/global", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -289,7 +292,7 @@ export function QMOIMasterDashboard({
     if (!isAuthenticated) return;
 
     try {
-      const response = await fetch("/api/master/domains/status", {
+      const response = await apiClient.get("/api/master/domains/status", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -308,7 +311,7 @@ export function QMOIMasterDashboard({
   const handleLogout = async () => {
     try {
       setLoading(true);
-      await fetch("/api/admin/master/logout", {
+      await apiClient.get("/api/admin/master/logout", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -346,7 +349,7 @@ export function QMOIMasterDashboard({
 
   const stopCamera = () => {
     if (cameraStream) {
-      cameraStream.getTracks().forEach(track => track.stop());
+      cameraStream.getTracks().for (const item of(track => track.stop());
       setCameraStream(null);
     }
     setCameraEnabled(false);
@@ -358,7 +361,7 @@ export function QMOIMasterDashboard({
 
     try {
       setLoading(true);
-      const response = await fetch("/api/admin/autofix/background-automation", {
+      const response = await apiClient.get("/api/admin/autofix/background-automation", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -398,7 +401,7 @@ export function QMOIMasterDashboard({
   useEffect(() => {
     return () => {
       if (cameraStream) {
-        cameraStream.getTracks().forEach(track => track.stop());
+        cameraStream.getTracks().for (const item of(track => track.stop());
       }
     };
   }, [cameraStream]);
@@ -964,7 +967,7 @@ export function QMOIMasterDashboard({
                     onClick={async () => {
                       try {
                         setLoading(true);
-                        const response = await fetch("/api/master/domains/force-refresh", {
+                        const response = await apiClient.get("/api/master/domains/force-refresh", {
                           method: "POST",
                           headers: {
                             Authorization: `Bearer ${token}`,
@@ -973,7 +976,7 @@ export function QMOIMasterDashboard({
                         if (response.ok) {
                           setError(null);
                           // Log to QMOI_TRACKS
-                          await fetch("/api/master/tracks?action=log", {
+                          await apiClient.get("/api/master/tracks?action=log", {
                             method: "POST",
                             headers: {
                               Authorization: `Bearer ${token}`,
@@ -1005,7 +1008,7 @@ export function QMOIMasterDashboard({
                     onClick={async () => {
                       try {
                         setLoading(true);
-                        const response = await fetch("/api/master/domains/emergency-takeover", {
+                        const response = await apiClient.get("/api/master/domains/emergency-takeover", {
                           method: "POST",
                           headers: {
                             Authorization: `Bearer ${token}`,
@@ -1014,7 +1017,7 @@ export function QMOIMasterDashboard({
                         if (response.ok) {
                           setError(null);
                           // Log to QMOI_TRACKS
-                          await fetch("/api/master/tracks?action=log", {
+                          await apiClient.get("/api/master/tracks?action=log", {
                             method: "POST",
                             headers: {
                               Authorization: `Bearer ${token}`,
@@ -1066,7 +1069,7 @@ export function QMOIMasterDashboard({
                         <button
                           onClick={async () => {
                             try {
-                              const response = await fetch(`/api/master/domains/approve/${encodeURIComponent(entry.domain)}`, {
+                              const response = await apiClient.get(`/api/master/domains/approve/${encodeURIComponent(entry.domain)}`, {
                                 method: "POST",
                                 headers: {
                                   Authorization: `Bearer ${token}`,
@@ -1075,7 +1078,7 @@ export function QMOIMasterDashboard({
                               if (response.ok) {
                                 fetchDomainData();
                                 // Log to QMOI_TRACKS
-                                await fetch("/api/master/tracks?action=log", {
+                                await apiClient.get("/api/master/tracks?action=log", {
                                   method: "POST",
                                   headers: {
                                     Authorization: `Bearer ${token}`,
@@ -1099,7 +1102,7 @@ export function QMOIMasterDashboard({
                         <button
                           onClick={async () => {
                             try {
-                              const response = await fetch(`/api/master/domains/remove/${encodeURIComponent(entry.domain)}`, {
+                              const response = await apiClient.get(`/api/master/domains/remove/${encodeURIComponent(entry.domain)}`, {
                                 method: "DELETE",
                                 headers: {
                                   Authorization: `Bearer ${token}`,
@@ -1108,7 +1111,7 @@ export function QMOIMasterDashboard({
                               if (response.ok) {
                                 fetchDomainData();
                                 // Log to QMOI_TRACKS
-                                await fetch("/api/master/tracks?action=log", {
+                                await apiClient.get("/api/master/tracks?action=log", {
                                   method: "POST",
                                   headers: {
                                     Authorization: `Bearer ${token}`,
@@ -1161,7 +1164,7 @@ export function QMOIMasterDashboard({
                 <button
                   onClick={async () => {
                     try {
-                      const response = await fetch("/api/master/tracks?action=report", {
+                      const response = await apiClient.get("/api/master/tracks?action=report", {
                         headers: {
                           Authorization: `Bearer ${token}`,
                         },
@@ -1169,7 +1172,7 @@ export function QMOIMasterDashboard({
                       if (response.ok) {
                         const report = await response.text();
                         // PRODUCTION IMPLEMENTATION: , this would download or display the report
-                        console.log("Audit report generated:", report);
+                        logger.info("Audit report generated:", report);
                       }
                     } catch (err) {
                       setError("Failed to generate audit report");
@@ -1260,7 +1263,7 @@ export function QMOIMasterDashboard({
                       <button
                         onClick={() => {
                           // PRODUCTION IMPLEMENTATION: , this would open track details
-                          console.log("View track details:", track.id);
+                          logger.info("View track details:", track.id);
                         }}
                         className="px-3 py-1 bg-slate-600 hover:bg-slate-500 text-slate-300 text-sm rounded transition-colors"
                       >
@@ -1276,14 +1279,14 @@ export function QMOIMasterDashboard({
                   onClick={async () => {
                     try {
                       setLoading(true);
-                      const response = await fetch("/api/qmoi-tracks", {
+                      const response = await apiClient.get("/api/qmoi-tracks", {
                         headers: {
                           Authorization: `Bearer ${token}`,
                         },
                       });
                       if (response.ok) {
                         const data = await response.json();
-                        console.log("Tracks data:", data);
+                        logger.info("Tracks data:", data);
                         setError(null);
                       } else {
                         setError("Failed to fetch tracks data");
@@ -1334,7 +1337,7 @@ export function QMOIMasterDashboard({
                   <AvatarSelector
                     onAvatarChange={(avatarId) => {
                       // Handle avatar change - could add logging or additional actions here
-                      console.log(`Avatar changed to: ${avatarId}`);
+                      logger.info(`Avatar changed to: ${avatarId}`);
                     }}
                     className="max-w-4xl"
                   />
@@ -1346,7 +1349,7 @@ export function QMOIMasterDashboard({
                   <VoiceSelector
                     onVoiceChange={(voiceId) => {
                       // Handle voice change - could add logging or additional actions here
-                      console.log(`Voice changed to: ${voiceId}`);
+                      logger.info(`Voice changed to: ${voiceId}`);
                     }}
                     className="max-w-4xl"
                   />
@@ -1687,7 +1690,7 @@ export function QMOIMasterDashboard({
                             }
                             try {
                               setLoading(true);
-                              const response = await fetch(`/api/qvillage?endpoint=master_commands&command=force_refresh_domain_validation&domain=${encodeURIComponent(domain)}`, {
+                              const response = await apiClient.get(`/api/qvillage?endpoint=master_commands&command=force_refresh_domain_validation&domain=${encodeURIComponent(domain)}`, {
                                 headers: {
                                   "x-qmoi-master-token": token,
                                 },
@@ -1695,7 +1698,7 @@ export function QMOIMasterDashboard({
                               const result = await response.json();
                               if (result.success) {
                                 setError(null);
-                                alert(`✅ Domain validation refreshed for ${domain}`);
+                                notification.show(`✅ Domain validation refreshed for ${domain}`);
                               } else {
                                 setError(result.error || "Failed to refresh domain validation");
                               }
@@ -1734,7 +1737,7 @@ export function QMOIMasterDashboard({
                             }
                             try {
                               setLoading(true);
-                              const response = await fetch(`/api/qvillage?endpoint=master_commands&command=approve_new_domain&domain=${encodeURIComponent(domain)}`, {
+                              const response = await apiClient.get(`/api/qvillage?endpoint=master_commands&command=approve_new_domain&domain=${encodeURIComponent(domain)}`, {
                                 headers: {
                                   "x-qmoi-master-token": token,
                                 },
@@ -1742,7 +1745,7 @@ export function QMOIMasterDashboard({
                               const result = await response.json();
                               if (result.success) {
                                 setError(null);
-                                alert(`✅ Domain ${domain} approved and added to registry`);
+                                notification.show(`✅ Domain ${domain} approved and added to registry`);
                               } else {
                                 setError(result.error || "Failed to approve domain");
                               }
@@ -1791,7 +1794,7 @@ export function QMOIMasterDashboard({
                             }
                             try {
                               setLoading(true);
-                              const response = await fetch(`/api/qvillage?endpoint=master_commands&command=add_monitored_link&link=${encodeURIComponent(link)}`, {
+                              const response = await apiClient.get(`/api/qvillage?endpoint=master_commands&command=add_monitored_link&link=${encodeURIComponent(link)}`, {
                                 headers: {
                                   "x-qmoi-master-token": token,
                                 },
@@ -1799,7 +1802,7 @@ export function QMOIMasterDashboard({
                               const result = await response.json();
                               if (result.success) {
                                 setError(null);
-                                alert(`✅ Link ${link} added to monitoring`);
+                                notification.show(`✅ Link ${link} added to monitoring`);
                               } else {
                                 setError(result.error || "Failed to add monitored link");
                               }
@@ -1838,7 +1841,7 @@ export function QMOIMasterDashboard({
                             }
                             try {
                               setLoading(true);
-                              const response = await fetch(`/api/qvillage?endpoint=master_commands&command=remove_monitored_link&link=${encodeURIComponent(link)}`, {
+                              const response = await apiClient.get(`/api/qvillage?endpoint=master_commands&command=remove_monitored_link&link=${encodeURIComponent(link)}`, {
                                 headers: {
                                   "x-qmoi-master-token": token,
                                 },
@@ -1846,7 +1849,7 @@ export function QMOIMasterDashboard({
                               const result = await response.json();
                               if (result.success) {
                                 setError(null);
-                                alert(`✅ Link ${link} removed from monitoring`);
+                                notification.show(`✅ Link ${link} removed from monitoring`);
                               } else {
                                 setError(result.error || "Failed to remove monitored link");
                               }
@@ -1879,7 +1882,7 @@ export function QMOIMasterDashboard({
                     onClick={async () => {
                       try {
                         setLoading(true);
-                        const response = await fetch(`/api/qvillage?endpoint=master_commands&command=audit_all_actions`, {
+                        const response = await apiClient.get(`/api/qvillage?endpoint=master_commands&command=audit_all_actions`, {
                           headers: {
                             "x-qmoi-master-token": token,
                           },
@@ -1887,7 +1890,7 @@ export function QMOIMasterDashboard({
                         const result = await response.json();
                         if (result.success) {
                           setError(null);
-                          alert(`✅ Audit report generated. Check TRACKS.md for details.`);
+                          notification.show(`✅ Audit report generated. Check TRACKS.md for details.`);
                         } else {
                           setError(result.error || "Failed to generate audit report");
                         }

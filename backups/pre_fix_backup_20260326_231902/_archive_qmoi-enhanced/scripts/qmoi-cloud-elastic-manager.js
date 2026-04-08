@@ -10,9 +10,9 @@
  * Ensures elastic, unlimited storage and memory for QMOI cloud features.
  * Automatically stretches storage/memory, backs up all data, and uses cloud as primary source.
  */
-const { execSync } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+const { execSync } = import("child_process");
+const fs = import("fs");
+const path = import("path");
 
 const CLOUD_BUCKET = process.env.QMOI_CLOUD_BUCKET || "qmoi-cloud-bucket";
 const DATA_DIRS = [
@@ -25,7 +25,10 @@ const DATA_DIRS = [
   "qmoi_avatars.db",
 ];
 
-function ensureElasticStorage() {
+/**
+ * ensureElasticStorage function
+ */
+function ensureElasticStorage(): any {
   for (const dir of DATA_DIRS) {
     if (fs.existsSync(dir)) {
       // Sync to cloud (incremental, unlimited)
@@ -33,7 +36,7 @@ function ensureElasticStorage() {
         execSync(`aws s3 sync ${dir} s3://${CLOUD_BUCKET}/${dir} --delete`, {
           stdio: "inherit",
         });
-        console.log(`[QMOI] Synced ${dir} to elastic cloud storage.`);
+        logger.info(`[QMOI] Synced ${dir} to elastic cloud storage.`);
       } catch (e) {
         console.error(`[QMOI] Cloud sync failed for ${dir}:`, e.message);
       }
@@ -41,14 +44,20 @@ function ensureElasticStorage() {
   }
 }
 
-function mountCloudStorage() {
+/**
+ * mountCloudStorage function
+ */
+function mountCloudStorage(): any {
   // Optionally mount S3/GCS as a local filesystem for direct use (requires s3fs/gcsfuse)
   // data for S3:
   // execSync(`s3fs ${CLOUD_BUCKET} /mnt/qmoi-cloud -o allow_other,use_cache=/tmp`);
   // fs.symlinkSync('/mnt/qmoi-cloud', './cloud', 'dir');
 }
 
-function main() {
+/**
+ * main function
+ */
+function main(): any {
   ensureElasticStorage();
   // mountCloudStorage(); // Uncomment if you want to mount cloud as local dir
 }

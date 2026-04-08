@@ -22,26 +22,26 @@
       }
     ]
   },
-  "q-stable.qmoi.ai": {
+  "q-latest.qmoi.ai": {
     "timestamp": "2026-04-03T02:43:52.038746",
     "suggestions": [
       {
         "type": "DNS_Record",
-        "domain": "q-stable.qmoi.ai",
+        "domain": "q-latest.qmoi.ai",
         "record_type": "A or CNAME",
         "target": "Point to your hosting provider or load balancer",
         "provider": "Check qmoi.ai DNS zone configuration",
-        "command": "dig q-stable.qmoi.ai @8.8.8.8"
+        "command": "dig q-latest.qmoi.ai @8.8.8.8"
       },
       {
         "type": "TTL_Check",
         "suggestion": "Check DNS TTL - propagation may take 24-48 hours",
-        "command": "dig q-stable.qmoi.ai +nocmd +noall +answer"
+        "command": "dig q-latest.qmoi.ai +nocmd +noall +answer"
       },
       {
         "type": "WHOIS_Check",
         "suggestion": "Verify domain registration and nameservers",
-        "command": "whois q-stable.qmoi.ai"
+        "command": "whois q-latest.qmoi.ai"
       }
     ]
   },
@@ -83,18 +83,18 @@
       }
     ]
   },
-  "stable.stableq.ai": {
+  "latest.stableq.ai": {
     "timestamp": "2026-04-03T02:43:52.097704",
     "suggestions": [
       {
         "type": "TTL_Check",
         "suggestion": "Check DNS TTL - propagation may take 24-48 hours",
-        "command": "dig stable.stableq.ai +nocmd +noall +answer"
+        "command": "dig latest.stableq.ai +nocmd +noall +answer"
       },
       {
         "type": "WHOIS_Check",
         "suggestion": "Verify domain registration and nameservers",
-        "command": "whois stable.stableq.ai"
+        "command": "whois latest.stableq.ai"
       }
     ]
   },
@@ -188,5 +188,9 @@
         "command": "whois qmoi.ai"
       }
     ]
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:21.279776"
 }

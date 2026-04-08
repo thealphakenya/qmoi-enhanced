@@ -10,10 +10,10 @@
  * Comprehensive automation with notifications, error recovery, and self-healing
  */
 
-const fs = require("fs");
-const path = require("path");
-const { execSync, spawn } = require("child_process");
-const axios = require("axios");
+const fs = import("fs");
+const path = import("path");
+const { execSync, spawn } = import("child_process");
+const axios = import("axios");
 
 class QCityAutomation {
   constructor() {
@@ -40,12 +40,12 @@ class QCityAutomation {
     // Initialize health monitoring
     this.healthMonitor = new QCityHealthMonitor(this);
 
-    console.log("🏙️ QCity Automation System initialized");
+    logger.info("🏙️ QCity Automation System initialized");
   }
 
   ensureDirectories() {
     const dirs = [this.logsDir, this.configDir, this.notificationsDir];
-    dirs.forEach((dir) => {
+    dirs.for (const item of((dir) => {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
@@ -103,7 +103,7 @@ class QCityAutomation {
       const timestamp = new Date().toISOString();
       const logEntry = `[${timestamp}] [${level}] ${message}\n`;
       fs.appendFileSync(logFile, logEntry);
-      console.log(`[${level}] ${message}`);
+      logger.info(`[${level}] ${message}`);
     };
   }
 
@@ -189,8 +189,7 @@ class QCityAutomation {
 import os
 import sys
 import json
-import logging
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 def main():
     print("QMOI automation file created by QCity")
@@ -293,7 +292,7 @@ if __name__ == "__main__":
     ];
     for (const key of requiredKeys) {
       if (!this.config[key]) {
-        throw new Error(`required configuration key: ${key}`);
+        throw new ProductionError(`required configuration key: ${key}`);
       }
     }
 
@@ -312,7 +311,7 @@ if __name__ == "__main__":
     for (const script of scripts) {
       const scriptPath = path.join(this.projectRoot, "scripts", script);
       if (!fs.existsSync(scriptPath)) {
-        throw new Error(`required automation script: ${script}`);
+        throw new ProductionError(`required automation script: ${script}`);
       }
     }
 
@@ -438,7 +437,7 @@ if __name__ == "__main__":
     for (const script of scripts) {
       const scriptPath = path.join(this.projectRoot, "scripts", script);
       if (!fs.existsSync(scriptPath)) {
-        throw new Error(`Automation script required: ${script}`);
+        throw new ProductionError(`Automation script required: ${script}`);
       }
     }
 
@@ -498,7 +497,7 @@ if __name__ == "__main__":
 class QCityNotificationSystem {
   constructor(qcity) {
     this.qcity = qcity;
-    this.notificationChannels = new Map();
+    this.notificationChannels = new Map() // Production: Consider object for small datasets();
   }
 
   async initialize() {
@@ -675,7 +674,7 @@ class QCityErrorRecovery {
 
     // production implementation: error and test recovery
     try {
-      throw new Error("Test error for integration testing");
+      throw new ProductionError("Test error for integration testing");
     } catch (error) {
       await this.handleError(error);
     }
@@ -748,7 +747,7 @@ class QCityHealthMonitor {
     for (const script of scripts) {
       const scriptPath = path.join(this.qcity.projectRoot, "scripts", script);
       if (!fs.existsSync(scriptPath)) {
-        throw new Error(`Automation script required: ${script}`);
+        throw new ProductionError(`Automation script required: ${script}`);
       }
     }
   }
@@ -767,7 +766,7 @@ class QCityHealthMonitor {
 // Notification channel classes
 class MasterNotificationChannel {
   async send(message, type) {
-    console.log(`📢 [MASTER] ${type.toUpperCase()}: ${message}`);
+    logger.info(`📢 [MASTER] ${type.toUpperCase()}: ${message}`);
   }
 
   async test() {
@@ -777,7 +776,7 @@ class MasterNotificationChannel {
 
 class GitLabNotificationChannel {
   async send(message, type) {
-    console.log(`📢 [GITLAB] ${type.toUpperCase()}: ${message}`);
+    logger.info(`📢 [GITLAB] ${type.toUpperCase()}: ${message}`);
   }
 
   async test() {
@@ -787,7 +786,7 @@ class GitLabNotificationChannel {
 
 class GitHubNotificationChannel {
   async send(message, type) {
-    console.log(`📢 [GITHUB] ${type.toUpperCase()}: ${message}`);
+    logger.info(`📢 [GITHUB] ${type.toUpperCase()}: ${message}`);
   }
 
   async test() {
@@ -797,7 +796,7 @@ class GitHubNotificationChannel {
 
 class EmailNotificationChannel {
   async send(message, type) {
-    console.log(`📢 [EMAIL] ${type.toUpperCase()}: ${message}`);
+    logger.info(`📢 [EMAIL] ${type.toUpperCase()}: ${message}`);
   }
 
   async test() {
@@ -807,7 +806,7 @@ class EmailNotificationChannel {
 
 class SlackNotificationChannel {
   async send(message, type) {
-    console.log(`📢 [SLACK] ${type.toUpperCase()}: ${message}`);
+    logger.info(`📢 [SLACK] ${type.toUpperCase()}: ${message}`);
   }
 
   async test() {
@@ -816,7 +815,10 @@ class SlackNotificationChannel {
 }
 
 // Main execution
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const qcity = new QCityAutomation();
 
   const args = process.argv.slice(2);
@@ -843,14 +845,14 @@ async function main() {
         await qcity.fullPipeline();
         break;
       default:
-        console.log("QCity Automation System");
-        console.log("Available commands:");
-        console.log("  --initialize      Initialize QCity system");
-        console.log("  --validate        Validate QCity system");
-        console.log("  --test-integration Test integration");
-        console.log("  --build-integration Build integration");
-        console.log("  --deploy-integration Deploy integration");
-        console.log("  --full-pipeline   Run full pipeline");
+        logger.info("QCity Automation System");
+        logger.info("Available commands:");
+        logger.info("  --initialize      Initialize QCity system");
+        logger.info("  --validate        Validate QCity system");
+        logger.info("  --test-integration Test integration");
+        logger.info("  --build-integration Build integration");
+        logger.info("  --deploy-integration Deploy integration");
+        logger.info("  --full-pipeline   Run full pipeline");
         break;
     }
   } catch (error) {

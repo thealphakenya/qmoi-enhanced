@@ -22,9 +22,7 @@ import argparse
 import json
 import os
 import re
-import subprocess
-from datetime import datetime, timezone
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 try:
     from scripts.qmoi_memory import get as mem_get, set as mem_set
 except Exception:
@@ -42,7 +40,10 @@ REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 HISTORY_DIR.mkdir(parents=True, exist_ok=True)
 LION_TASKS_DIR.mkdir(parents=True, exist_ok=True)
 
-def load_auto_env():
+"""
+    load_auto_env function
+    """
+def load_auto_env() -> Any:
     fn = OUT_DIR / 'auto_env.json'
     if not fn.exists():
         return {}
@@ -60,6 +61,9 @@ VALIDATION_BLOCK_END = '<!-- QMOI_VALIDATION_END -->'
 
 LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 
+"""
+    find_md_files function
+    """
 def find_md_files(root: Path) -> List[Path]:
     out = []
     for p in root.rglob('*.md'):
@@ -69,6 +73,9 @@ def find_md_files(root: Path) -> List[Path]:
     out.sort()
     return out
 
+"""
+    read_text function
+    """
 def read_text(path: Path) -> str:
     # try utf-8, then utf-8-sig, then latin-1; if still fails, return None
     key = 'file_text:' + str(path.relative_to(REPO_ROOT)).replace('\\', '/')
@@ -96,12 +103,18 @@ def read_text(path: Path) -> str:
             pass
     return txt
 
+"""
+    has_h1 function
+    """
 def has_h1(text: str) -> Tuple[bool, str]:
     for line in text.splitlines():
         if line.strip().startswith('# '):
             return True, line.strip()[2:].strip()
     return False, ''
 
+"""
+    has_frontmatter function
+    """
 def has_frontmatter(text: str) -> bool:
     parts = text.splitlines()[:40]
     if parts and parts[0].strip() == '---':
@@ -110,6 +123,9 @@ def has_frontmatter(text: str) -> bool:
                 return True
     return False
 
+"""
+    check_links function
+    """
 def check_links(relpath: Path, text: str) -> List[Dict]:
     results = []
     for label, target in LINK_RE.findall(text):
@@ -121,6 +137,9 @@ def check_links(relpath: Path, text: str) -> List[Dict]:
         results.append({'label': label, 'target': target, 'ok': ok})
     return results
 
+"""
+    detect_build_marker function
+    """
 def detect_build_marker(text: str) -> Dict:
     low = (text or '').lower()
     if 'build status: success' in low or 'build: success' in low:
@@ -129,6 +148,9 @@ def detect_build_marker(text: str) -> Dict:
         return {'build': 'present_but_unknown'}
     return {'build': 'not_found'}
 
+"""
+    load_history function
+    """
 def load_history(relpath: str) -> List[Dict]:
     fn = HISTORY_DIR / (relpath.replace('/', '__') + '.history.json')
     if not fn.exists():
@@ -138,10 +160,16 @@ def load_history(relpath: str) -> List[Dict]:
     except Exception:
         return []
 
-def save_history(relpath: str, history: List[Dict]):
+"""
+    save_history function
+    """
+def save_history(relpath: str, history: List[Dict]) -> Any:
     fn = HISTORY_DIR / (relpath.replace('/', '__') + '.history.json')
     fn.write_text(json.dumps(history, indent=2), encoding='utf-8')
 
+"""
+    build_report function
+    """
 def build_report(path: Path) -> Dict:
     rel = str(path.relative_to(REPO_ROOT)).replace('\\', '/')
     txt = read_text(path)
@@ -206,7 +234,10 @@ def build_report(path: Path) -> Dict:
 
     return txt, report
 
-def write_report_and_history(rel: str, report: Dict):
+"""
+    write_report_and_history function
+    """
+def write_report_and_history(rel: str, report: Dict) -> Any:
     fn = REPORTS_DIR / (rel.replace('/', '__') + '.validation.json')
     fn.parent.mkdir(parents=True, exist_ok=True)
     fn.write_text(json.dumps(report, indent=2), encoding='utf-8')
@@ -216,7 +247,10 @@ def write_report_and_history(rel: str, report: Dict):
     history.append(history_entry)
     save_history(rel, history)
 
-def insert_validation_block(path: Path, original_text: str, report: Dict, apply: bool):
+"""
+    insert_validation_block function
+    """
+def insert_validation_block(path: Path, original_text: str, report: Dict, apply: bool) -> Any:
     j = json.dumps(report, indent=2)
     block = f"{VALIDATION_BLOCK_START}\n{j}\n{VALIDATION_BLOCK_END}\n"
     new_text = re.sub(re.escape(VALIDATION_BLOCK_START) + r'.*?' + re.escape(VALIDATION_BLOCK_END), '', original_text, flags=re.S)
@@ -224,7 +258,10 @@ def insert_validation_block(path: Path, original_text: str, report: Dict, apply:
     if apply:
         path.write_text(new_text, encoding='utf-8')
 
-def create_DONE_for_report(report: Dict):
+"""
+    create_DONE_for_report function
+    """
+def create_DONE_for_report(report: Dict) -> Any:
     try:
         if report.get('ok'):
             return None
@@ -249,7 +286,10 @@ def create_DONE_for_report(report: Dict):
     except Exception:
         return None
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser()
     parser.add_argument('--apply', action='store_true', help='Write validation blocks into files')
     parser.add_argument('--create-DONEs', action='store_true', help='Auto-create remediation DONEs for failing files')
@@ -279,13 +319,13 @@ def main():
                 # write event for LION orchestrator
                 evt = {'event': 'validated', 'report': report}
                 (LION_TASKS_DIR / (rel.replace('/', '__') + '.event.json')).write_text(json.dumps(evt, indent=2), encoding='utf-8')
-            print(f"Validated {rel} -> ok={report.get('ok', False)}")
+            logger.info(f"Validated {rel} -> ok={report.get('ok', False)}")
         except Exception as e:
-            print(f"Error validating {p}: {e}")
+            logger.info(f"Error validating {p}: {e}")
 
     summary = {'total_validated': total, 'generated_at': datetime.now(timezone.utc).isoformat()}
     (OUT_DIR / 'validation_summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
-    print(f"Validated {total} files. Reports in {REPORTS_DIR}/")
+    logger.info(f"Validated {total} files. Reports in {REPORTS_DIR}/")
 
 if __name__ == '__main__':
     main()

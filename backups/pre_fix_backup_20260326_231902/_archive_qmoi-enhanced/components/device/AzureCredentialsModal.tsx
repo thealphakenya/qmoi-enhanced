@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 export const AzureCredentialsModal: React.FC<{
   open: boolean;

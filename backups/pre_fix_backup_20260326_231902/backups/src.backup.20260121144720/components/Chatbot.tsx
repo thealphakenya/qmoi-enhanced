@@ -1,7 +1,7 @@
  all markers normalized for completion
 "use client";
-import React, { useState, useRef, useEffect } from "react";
-import { playSSML, supportsSpeechSynthesis } from "../services/tts";
+import { specificExports } from "react";
+import { specificExports } from "../services/tts";
 import "./Chatbot.css";
 
 interface ChatMessage {
@@ -11,7 +11,10 @@ interface ChatMessage {
   timestamp: Date;
 }
 
-export function Chatbot() {
+export /**
+ * Chatbot function
+ */
+function Chatbot(): any {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "1",
@@ -80,7 +83,7 @@ export function Chatbot() {
 
       // Best-effort: report updated conversation length to QMOI memory API
       try {
-        fetch("/api/qmoi/memory", {
+        apiClient.get("/api/qmoi/memory", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

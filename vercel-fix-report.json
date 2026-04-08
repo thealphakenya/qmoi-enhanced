@@ -10,5 +10,9 @@
     "totalFixes": 1,
     "totalErrors": 1,
     "success": false
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:00.619715"
 }

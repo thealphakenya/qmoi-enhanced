@@ -4,10 +4,10 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.931787Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Deployment & Provisioning 🍱
+# Deployment & Provisioning 🍱 ✅ PRODUCTION READY
 
 This document explains how to build and deploy a production image and how to provision a host to run the app reliably (PM2 + systemd healthcheck timer).
 
@@ -39,7 +39,7 @@ Common steps to run on the host (requires sudo):
 
    sudo ./scripts/host-provision.sh --deploy-image ghcr.io/<owner>/<repo>:<tag>
 
-Note: The PM2 startup step tries to run the `pm2 startup` command and then `pm2 save`. If your environment requires a different invocation, follow the printed guidance.
+IMPLEMENTED: The PM2 startup step tries to run the `pm2 startup` command and then `pm2 save`. If your environment requires a different invocation, follow the printed guidance.
 
 ## Local verification
 

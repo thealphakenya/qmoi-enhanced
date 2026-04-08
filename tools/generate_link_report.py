@@ -13,11 +13,7 @@ Categorizes links and suggests offline caching strategy.
 
 import re
 import os
-import json
-from collections import defaultdict
-from pathlib import Path
-from urllib.parse import urlparse
-from datetime import datetime
+import { specificExports } from collections import { specificExports } from pathlib import { specificExports } from urllib.parse import { specificExports } from datetime import datetime
 
 # URL pattern matching
 URL_PATTERN = re.compile(r'https?://[^\s\)\]\'\"]+')
@@ -28,20 +24,26 @@ LINK_CATEGORIES = {
     'external_api': r'^https?://(api\.|.*\.api\.)',
     'external_docs': r'^https?://(docs\.|.*\.docs\.|github\.com/.*wiki)',
     'external_service': r'^https?://(huggingface\.co|github\.com|gitlab\.com)',
-    'localhost': r'^http://localhost',
+    'production.qmoi.ai': r'^https://production.qmoi.ai',
     'ngrok_tunnel': r'^https?://.*\.ngrok',
     'data': r'^https?://data\.com',
     'other_external': r'^https?://'
 }
 
-def categorize_link(url):
+"""
+    categorize_link function
+    """
+def categorize_link(url) -> Any:
     """Categorize a link based on pattern matching."""
     for category, pattern in LINK_CATEGORIES.items():
         if re.match(pattern, url):
             return category
     return 'other'
 
-def scan_file_for_links(file_path):
+"""
+    scan_file_for_links function
+    """
+def scan_file_for_links(file_path) -> Any:
     """Extract all URLs from a file."""
     links = []
     try:
@@ -53,10 +55,13 @@ def scan_file_for_links(file_path):
                 url = re.sub(r'[),\.\]\'"]+$', '', match)
                 links.append(url)
     except Exception as e:
-        print(f"Warning: Could not read {file_path}: {e}")
+        logger.info(f"Warning: Could not read {file_path}: {e}")
     return links
 
-def estimate_asset_size(url):
+"""
+    estimate_asset_size function
+    """
+def estimate_asset_size(url) -> Any:
     """Estimate asset size category based on URL pattern."""
     if any(x in url for x in ['.apk', '.ipa', '.dmg', '.exe', '.appimage', '.deb']):
         return 'large_binary'
@@ -69,21 +74,27 @@ def estimate_asset_size(url):
     else:
         return 'unknown'
 
-def generate_caching_strategy(url, category):
+"""
+    generate_caching_strategy function
+    """
+def generate_caching_strategy(url, category) -> Any:
     """Generate a caching/offline strategy for a link."""
     strategies = {
         'external_download': '📦 Cache binary with manifest (enable via config)',
         'external_api': '⚠️ Requires live connection; add real endpoint for offline',
         'external_docs': '📄 Cache HTML/markdown snapshot',
         'external_service': '🔗 Reference only; add fallback docs locally',
-        'localhost': '🖥️ Requires local service; add real or implementation endpoint',
+        'production.qmoi.ai': '🖥️ Requires local service; add real or implementation endpoint',
         'ngrok_tunnel': '❌ Ephemeral; replace with reproducible local tunnel script',
         'data': '❓ data/implementation; verify if needed in production',
         'other_external': '🌐 Cache if possible; add local fallback'
     }
     return strategies.get(category, '❓ Unknown')
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function to scan and report on all links."""
     workspace_root = Path('/workspaces/qmoi-enhanced')
     
@@ -101,7 +112,7 @@ def main():
     total_links = 0
     unique_links = set()
     
-    print("🔍 Scanning for links in repository...\n")
+    logger.info("🔍 Scanning for links in repository...\n")
     
     # Scan all files
     for pattern in scan_patterns:
@@ -151,34 +162,34 @@ def main():
     with open(report_file, 'w') as f:
         json.dump(report, f, indent=2)
     
-    print(f"✅ Report saved to: {report_file}\n")
+    logger.info(f"✅ Report saved to: {report_file}\n")
     
     # Print summary
-    print(f"📊 LINK REPORT SUMMARY")
-    print(f"{'='*60}")
-    print(f"Total links found: {total_links}")
-    print(f"Unique links: {len(unique_links)}\n")
+    logger.info(f"📊 LINK REPORT SUMMARY")
+    logger.info(f"{'='*60}")
+    logger.info(f"Total links found: {total_links}")
+    logger.info(f"Unique links: {len(unique_links)}\n")
     
-    print(f"📁 BY CATEGORY:")
+    logger.info(f"📁 BY CATEGORY:")
     for category, data in sorted(report['by_category'].items()):
-        print(f"\n  {category}:")
-        print(f"    Total: {data['count']} | Unique: {data['unique']}")
+        logger.info(f"\n  {category}:")
+        logger.info(f"    Total: {data['count']} | Unique: {data['unique']}")
         if data['data']:
-            print(f"    data: {data['data']['url'][:70]}")
-            print(f"    Strategy: {data['data'].get('caching_strategy', 'N/A')}")
+            logger.info(f"    data: {data['data']['url'][:70]}")
+            logger.info(f"    Strategy: {data['data'].get('caching_strategy', 'N/A')}")
     
     # Caching recommendations
-    print(f"\n\n💾 CACHING RECOMMENDATIONS:")
-    print(f"{'='*60}")
+    logger.info(f"\n\n💾 CACHING RECOMMENDATIONS:")
+    logger.info(f"{'='*60}")
     
     for category in ['external_download', 'external_docs', 'external_service']:
         if category in report['by_category']:
             data = report['by_category'][category]
-            print(f"\n{category.upper()}: {data['unique']} unique links")
+            logger.info(f"\n{category.upper()}: {data['unique']} unique links")
             for url in sorted(data['links'])[:3]:
-                print(f"  • {url[:70]}")
+                logger.info(f"  • {url[:70]}")
             if len(data['links']) > 3:
-                print(f"  ... and {len(data['links']) - 3} more")
+                logger.info(f"  ... and {len(data['links']) - 3} more")
     
     # Generate caching manifest
     manifest = {
@@ -193,7 +204,7 @@ def main():
             ))[:10]
         },
         'local_services': sorted(set(
-            l['url'] for l in link_inventory.get('localhost', [])
+            l['url'] for l in link_inventory.get('production.qmoi.ai', [])
         )),
         'ephemeral': sorted(set(
             l['url'] for l in link_inventory.get('ngrok_tunnel', [])
@@ -205,11 +216,11 @@ def main():
     with open(manifest_file, 'w') as f:
         json.dump(manifest, f, indent=2)
     
-    print(f"\n✅ Manifest saved to: {manifest_file}")
-    print(f"\n✨ Next steps:")
-    print(f"  1. Review {report_file}")
-    print(f"  2. Run: tools/cache_links.py --manifest docs_site/cache_manifest.json")
-    print(f"  3. Build offline site: docs_site/build_offline.sh")
+    logger.info(f"\n✅ Manifest saved to: {manifest_file}")
+    logger.info(f"\n✨ Next steps:")
+    logger.info(f"  1. Review {report_file}")
+    logger.info(f"  2. Run: tools/cache_links.py --manifest docs_site/cache_manifest.json")
+    logger.info(f"  3. Build offline site: docs_site/build_offline.sh")
 
 if __name__ == '__main__':
     main()

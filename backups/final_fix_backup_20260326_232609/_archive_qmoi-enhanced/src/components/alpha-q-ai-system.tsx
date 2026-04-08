@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as React from "react";
-import { useState } from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import { specificExports } from "react";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Box";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/Button";
 
 export const AlphaQAiSystem: React.FC = () => {
   const [status, setStatus] = useState<"online" | "offline">("offline");
@@ -20,7 +20,7 @@ export const AlphaQAiSystem: React.FC = () => {
     <Box
       sx={{ p: 2, border: "1px solid #ccc", borderRadius: 2, maxWidth: 400 }}
     >
-      <Typography variant="h6">stable Q AI System</Typography>
+      <Typography variant="h6">latest Q AI System</Typography>
       <Typography sx={{ mb: 2 }}>
         Status: <strong>{status}</strong>
       </Typography>

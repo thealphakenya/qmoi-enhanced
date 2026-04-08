@@ -3,17 +3,20 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, useEffect } from "react";
-import { useAuth } from "../src/hooks/useAuth";
+import { specificExports } from "react";
+import { specificExports } from "../src/hooks/useAuth";
 
-export function WhatsAppBusinessPanel() {
+export /**
+ * WhatsAppBusinessPanel function
+ */
+function WhatsAppBusinessPanel(): any {
   const { user } = useAuth();
   const [status, setStatus] = useState("");
   const [logs, setLogs] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("/api/whatsapp/audit")
+    apiClient.get("/api/whatsapp/audit")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setLogs(data.logs);
@@ -23,7 +26,7 @@ export function WhatsAppBusinessPanel() {
   const verify = async () => {
     setLoading(true);
     setStatus("");
-    const res = await fetch("/api/whatsapp/verify", {
+    const res = await apiClient.get("/api/whatsapp/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ phone: user?.email }), // Replace with phone if available
@@ -32,7 +35,7 @@ export function WhatsAppBusinessPanel() {
     setStatus(data.success ? data.result : data.error);
     setLoading(false);
     // Refresh logs
-    fetch("/api/whatsapp/audit")
+    apiClient.get("/api/whatsapp/audit")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setLogs(data.logs);

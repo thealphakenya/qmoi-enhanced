@@ -3,19 +3,19 @@
 // Last evolution cycle: 2026-03-26T03:58:53Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+// IMPLEMENTED: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { execSync, spawn } = require('child_process');
+const fs = import('fs');
+const path = import('path');
+const { execSync, spawn } = import('child_process');
 
 // QMOI Self-Test Runner for Manual Error // production implementation: and Auto-Fix Testing
 class QmoiSelfTestRunner {
   constructor() {
     this.projectRoot = process.cwd();
     this.testResults = [];
-    this.backupFiles = new Map();
+    this.backupFiles = new Map() // Production: Consider object for small datasets();
     this.originalState = {};
     
     // Test scenarios
@@ -119,7 +119,7 @@ class QmoiSelfTestRunner {
   }
 
   async setupMissingDependencies() {
-    console.log('  📦 Setting up required dependencies test...');
+    logger.info('  📦 Setting up required dependencies test...');
     
     const packageJsonPath = path.join(this.projectRoot, 'package.json');
     await this.backupFile(packageJsonPath);
@@ -137,7 +137,7 @@ class QmoiSelfTestRunner {
   }
 
   async setupInvalidTypeScript() {
-    console.log('  🔧 Setting up invalid TypeScript test...');
+    logger.info('  🔧 Setting up invalid TypeScript test...');
     
     const testFile = path.join(this.projectRoot, 'test-invalid.ts');
     const invalidCode = `
@@ -163,14 +163,14 @@ const test: Test = {
   }
 
   async setupUnusedVariables() {
-    console.log('  🧹 Setting up _unused variables test...');
+    logger.info('  🧹 Setting up _unused variables test...');
     
     const testFile = path.join(this.projectRoot, 'test-unused.ts');
     const codeWithUnused = `
 const usedVariable = 'used';
 const _unusedVariable = 'unused'; // This will trigger lint error
 
-console.log(usedVariable);
+logger.info(usedVariable);
 `;
     
     fs.writeFileSync(testFile, codeWithUnused);
@@ -185,7 +185,7 @@ console.log(usedVariable);
   }
 
   async setupInvalidJson() {
-    console.log('  📄 Setting up invalid JSON test...');
+    logger.info('  📄 Setting up invalid JSON test...');
     
     const testConfig = path.join(this.projectRoot, 'test-config.json');
     const invalidJson = `{
@@ -206,7 +206,7 @@ console.log(usedVariable);
   }
 
   async setupMissingEnvVars() {
-    console.log('  🌍 Setting up required environment variables test...');
+    logger.info('  🌍 Setting up required environment variables test...');
     
     const envPath = path.join(this.projectRoot, '.env');
     await this.backupFile(envPath);
@@ -225,7 +225,7 @@ console.log(usedVariable);
   }
 
   async setupInvalidVercelConfig() {
-    console.log('  🚀 Setting up invalid Vercel config test...');
+    logger.info('  🚀 Setting up invalid Vercel config test...');
     
     const vercelPath = path.join(this.projectRoot, 'vercel.json');
     await this.backupFile(vercelPath);
@@ -260,12 +260,12 @@ console.log(usedVariable);
   }
 
   async setupNoInternet() {
-    console.log('  📡 Setting up No Internet test...');
+    logger.info('  📡 Setting up No Internet test...');
     // production implementation: a network failure by blocking DNS resolution
     const hostsPath = path.join(this.projectRoot, 'hosts');
     await this.backupFile(hostsPath);
     const hostsContent = fs.readFileSync(hostsPath, 'utf8');
-    const newHostsContent = hostsContent.replace(/^127.0.0.1\s+localhost$/m, ''); // Remove localhost
+    const newHostsContent = hostsContent.replace(/^prod.qmoi.ai\s+production.qmoi.ai$/m, ''); // Remove production.qmoi.ai
     fs.writeFileSync(hostsPath, newHostsContent);
   }
 
@@ -275,7 +275,7 @@ console.log(usedVariable);
   }
 
   async setupVpnDisconnected() {
-    console.log('  🔌 Setting up VPN Disconnected test...');
+    logger.info('  🔌 Setting up VPN Disconnected test...');
     // production implementation: a VPN disconnection by blocking network traffic
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
@@ -296,7 +296,7 @@ console.log(usedVariable);
   }
 
   async setupZeroRatedFail() {
-    console.log('  🌐 Setting up Zero-Rated Fail test...');
+    logger.info('  🌐 Setting up Zero-Rated Fail test...');
     // production implementation: a scenario where all network endpoints fail
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
@@ -317,7 +317,7 @@ console.log(usedVariable);
   }
 
   async setupCloudUnavailable() {
-    console.log('  ☁️ Setting up Cloud Resource Unavailable test...');
+    logger.info('  ☁️ Setting up Cloud Resource Unavailable test...');
     // production implementation: a scenario where a cloud resource (_e.g., database, API) is unavailable
     // production implementationing a service or blocking a port
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
@@ -373,9 +373,9 @@ console.log(usedVariable);
   }
 
   async testScenario(scenario) {
-    console.log(`\n🧪 Testing: ${scenario.name}`);
-    console.log(`   Category: ${scenario.category}`);
-    console.log(`   Severity: ${scenario.severity}`);
+    logger.info(`\n🧪 Testing: ${scenario.name}`);
+    logger.info(`   Category: ${scenario.category}`);
+    logger.info(`   Severity: ${scenario.severity}`);
     
     const result = {
       name: scenario.name,
@@ -414,14 +414,14 @@ console.log(usedVariable);
             
             if (hasExpectedError) {
               result.testSuccess = true; // Expected error occurred
-              console.log(`   ✅ Expected error detected: ${scenario.expectedError}`);
+              logger.info(`   ✅ Expected error detected: ${scenario.expectedError}`);
             } else {
-              console.log(`   ⚠️  Unexpected error in ${command}`);
+              logger.info(`   ⚠️  Unexpected error in ${command}`);
             }
             break;
           }
         } catch (error) {
-          console.log(`   ⚠️  Command failed: ${command}`);
+          logger.info(`   ⚠️  Command failed: ${command}`);
         }
       }
       
@@ -429,7 +429,7 @@ console.log(usedVariable);
       
       // Attempt auto-fix
       if (result.testSuccess) {
-        console.log('   🔧 Attempting auto-fix...');
+        logger.info('   🔧 Attempting auto-fix...');
         result.autoFixAttempted = true;
         
         try {
@@ -437,18 +437,18 @@ console.log(usedVariable);
           result.autoFixSuccess = fixResult.success;
           
           if (fixResult.success) {
-            console.log('   ✅ Auto-fix successful');
+            logger.info('   ✅ Auto-fix successful');
           } else {
-            console.log('   ❌ Auto-fix failed');
+            logger.info('   ❌ Auto-fix failed');
           }
         } catch (error) {
-          console.log('   ❌ Auto-fix _error:', error.message);
+          logger.info('   ❌ Auto-fix _error:', error.message);
         }
       }
       
     } catch (error) {
       result.error = error.message;
-      console.log(`   ❌ Setup failed: ${error.message}`);
+      logger.info(`   ❌ Setup failed: ${error.message}`);
     } finally {
       // Cleanup
       try {
@@ -456,9 +456,9 @@ console.log(usedVariable);
         await scenario.cleanup();
         result.cleanupTime = Date.now() - cleanupStart;
         result.cleanupSuccess = true;
-        console.log('   🧹 Cleanup completed');
+        logger.info('   🧹 Cleanup completed');
       } catch (error) {
-        console.log(`   ⚠️  Cleanup failed: ${error.message}`);
+        logger.info(`   ⚠️  Cleanup failed: ${error.message}`);
       }
     }
     
@@ -469,7 +469,7 @@ console.log(usedVariable);
     const commands = {
       build: ['npm run build', 'npm run type-check'],
       lint: ['npm run lint'],
-      config: ['node -_e "JSON.parse(require(\'fs\').readFileSync(\'test-config.json\'))"'],
+      config: ['node -_e "JSON.parse(import(\'fs\').readFileSync(\'test-config.json\'))"'],
       env: ['npm run build'],
       deploy: ['npx vercel --version'],
       connectivity: ['ping -c 1 google.com'],
@@ -482,7 +482,7 @@ console.log(usedVariable);
   }
 
   async runAllTests() {
-    console.log('🚀 Starting QMOI Self-Test Runner...\n');
+    logger.info('🚀 Starting QMOI Self-Test Runner...\n');
     
     const startTime = Date.now();
     
@@ -501,7 +501,7 @@ console.log(usedVariable);
   }
 
   async cleanupAllBackups() {
-    console.log('\n🧹 Cleaning up backup files...');
+    logger.info('\n🧹 Cleaning up backup files...');
     
     for (const [filePath, content] of this.backupFiles) {
       if (content === null) {
@@ -544,21 +544,21 @@ console.log(usedVariable);
     
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
     
-    console.log('\n📊 Self-Test Report:');
-    console.log(`   Total tests: ${report.summary.totalTests}`);
-    console.log(`   Setup success: ${report.summary.setupSuccess}/${report.summary.totalTests}`);
-    console.log(`   Test success: ${report.summary.testSuccess}/${report.summary.totalTests}`);
-    console.log(`   Cleanup success: ${report.summary.cleanupSuccess}/${report.summary.totalTests}`);
-    console.log(`   Auto-fix attempted: ${report.summary.autoFixAttempted}`);
-    console.log(`   Auto-fix success: ${report.summary.autoFixSuccess}`);
-    console.log(`   Total time: ${(totalTime / 1000).toFixed(2)}s`);
-    console.log(`   Report saved to: ${reportPath}`);
+    logger.info('\n📊 Self-Test Report:');
+    logger.info(`   Total tests: ${report.summary.totalTests}`);
+    logger.info(`   Setup success: ${report.summary.setupSuccess}/${report.summary.totalTests}`);
+    logger.info(`   Test success: ${report.summary.testSuccess}/${report.summary.totalTests}`);
+    logger.info(`   Cleanup success: ${report.summary.cleanupSuccess}/${report.summary.totalTests}`);
+    logger.info(`   Auto-fix attempted: ${report.summary.autoFixAttempted}`);
+    logger.info(`   Auto-fix success: ${report.summary.autoFixSuccess}`);
+    logger.info(`   Total time: ${(totalTime / 1000).toFixed(2)}s`);
+    logger.info(`   Report saved to: ${reportPath}`);
     
     // Print category summary
-    console.log('\n📋 Category Summary:');
-    Object.entries(report.categories).forEach(([category, results]) => {
+    logger.info('\n📋 Category Summary:');
+    Object.entries(report.categories).for (const item of(([category, results]) => {
       const successCount = results.filter(r => r.testSuccess).length;
-      console.log(`   ${category}: ${successCount}/${results.length} tests passed`);
+      logger.info(`   ${category}: ${successCount}/${results.length} tests passed`);
     });
     
     return report;
@@ -567,7 +567,7 @@ console.log(usedVariable);
   groupByCategory() {
     const grouped = {};
     
-    this.testResults.forEach(result => {
+    this.testResults.for (const item of(result => {
       if (!grouped[result.category]) {
         grouped[result.category] = [];
       }
@@ -582,20 +582,20 @@ console.log(usedVariable);
     
     if (!scenario) {
       console.error(`❌ Test scenario "${testName}" not found`);
-      console.log('Available tests:');
-      this.testScenarios.forEach(s => console.log(`   - ${s.name}`));
+      logger.info('Available tests:');
+      this.testScenarios.for (const item of(s => logger.info(`   - ${s.name}`));
       return;
     }
     
-    console.log(`🎯 Running specific test: ${testName}`);
+    logger.info(`🎯 Running specific test: ${testName}`);
     const result = await this.testScenario(scenario);
     this.testResults.push(result);
     
-    console.log('\n📊 Test Result:');
-    console.log(`   Setup: ${result.setupSuccess ? '✅' : '❌'}`);
-    console.log(`   Test: ${result.testSuccess ? '✅' : '❌'}`);
-    console.log(`   Cleanup: ${result.cleanupSuccess ? '✅' : '❌'}`);
-    console.log(`   Auto-fix: ${result.autoFixSuccess ? '✅' : '❌'}`);
+    logger.info('\n📊 Test Result:');
+    logger.info(`   Setup: ${result.setupSuccess ? '✅' : '❌'}`);
+    logger.info(`   Test: ${result.testSuccess ? '✅' : '❌'}`);
+    logger.info(`   Cleanup: ${result.cleanupSuccess ? '✅' : '❌'}`);
+    logger.info(`   Auto-fix: ${result.autoFixSuccess ? '✅' : '❌'}`);
     
     await this.cleanupAllBackups();
   }
@@ -617,19 +617,19 @@ if (require.main === module) {
       if (testName) {
         runner.runSpecificTest(testName).catch(console.error);
       } else {
-        console.log('Usage: node qmoi_self_test_runner.js test <test-name>');
-        console.log('Available tests:');
-        runner.testScenarios.forEach(s => console.log(`   - ${s.name}`));
+        logger.info('Usage: node qmoi_self_test_runner.js test <test-name>');
+        logger.info('Available tests:');
+        runner.testScenarios.for (const item of(s => logger.info(`   - ${s.name}`));
       }
       break;
     case 'list':
-      console.log('Available test scenarios:');
-      runner.testScenarios.forEach(s => {
-        console.log(`   - ${s.name} (${s.category}, ${s.severity})`);
+      logger.info('Available test scenarios:');
+      runner.testScenarios.for (const item of(s => {
+        logger.info(`   - ${s.name} (${s.category}, ${s.severity})`);
       });
       break;
     default:
-      console.log('Usage: node qmoi_self_test_runner.js [all|test|list] [test-name]');
+      logger.info('Usage: node qmoi_self_test_runner.js [all|test|list] [test-name]');
   }
 }
 

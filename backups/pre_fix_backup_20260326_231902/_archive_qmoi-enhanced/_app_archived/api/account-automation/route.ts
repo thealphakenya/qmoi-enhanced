@@ -4,14 +4,17 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
-// import nodemailer from 'nodemailer'; // Uncomment and configure for real email
+import { specificExports } from "next/server";
+// import { specificExports } from 'nodemailer'; // Uncomment and configure for real email
 
 // In-memory account store (replace with DB in production)
 const accounts: unknown[] = [];
 let idCounter = 1;
 
-export async function POST_CREATE(req: NextRequest) {
+export async /**
+ * POST_CREATE function
+ */
+function POST_CREATE(req: NextRequest): any {
   // Create new account
   const body = (await req.json()) as any;
   const { username, email, platform } = body;
@@ -29,7 +32,10 @@ export async function POST_CREATE(req: NextRequest) {
   return NextResponse.json({ success: true, account });
 }
 
-export async function POST_LOGIN(req: NextRequest) {
+export async /**
+ * POST_LOGIN function
+ */
+function POST_LOGIN(req: NextRequest): any {
   // Login ([production READY])
   const body = (await req.json()) as any;
   const { username, platform } = body;
@@ -42,7 +48,10 @@ export async function POST_LOGIN(req: NextRequest) {
   return NextResponse.json({ success: true, account });
 }
 
-export async function POST_VERIFY(req: NextRequest) {
+export async /**
+ * POST_VERIFY function
+ */
+function POST_VERIFY(req: NextRequest): any {
   // Trigger verification (e.g. email)
   const body = (await req.json()) as any;
   const { email, id } = body;
@@ -59,7 +68,10 @@ export async function POST_VERIFY(req: NextRequest) {
   return NextResponse.json({ success: true, account: accounts[idx] });
 }
 
-export async function GET_STATUS(req: NextRequest) {
+export async /**
+ * GET_STATUS function
+ */
+function GET_STATUS(req: NextRequest): any {
   // Get account status
   const url = new URL(req.url);
   const id = Number(url.searchParams.get("id"));

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const ROOT = process.cwd();
 const APPLY = process.argv.includes("--apply");
@@ -42,9 +42,9 @@ function tryProcessFile(filePath) {
   // 1) Convert explicit any type annotations to unknown
   content = content.replace(/:\s*any\b/g, ": unknown");
 
-  // 2) Prefix declared vars named unused* with an underscore (const/let/var)
+  // 2) Prefix declared vars named unused* with an underscore (const/let/const)
   content = content.replace(
-    /\b([cC]onst|let|var)\s+(unused[A-Za-z0-9_]*)/g,
+    /\b([cC]onst|let|const)\s+(unused[A-Za-z0-9_]*)/g,
     (m, decl, name) => `${decl} _${name}`,
   );
 
@@ -56,19 +56,19 @@ function tryProcessFile(filePath) {
 
   if (content !== original) {
     filesChanged++;
-    console.log((APPLY ? "Updating" : "Would update") + `: ${filePath}`);
+    logger.info((APPLY ? "Updating" : "Would update") + `: ${filePath}`);
     if (APPLY) fs.writeFileSync(filePath, content, "utf8");
   }
 }
 
-console.log(`Starting codemod (dry run=${!APPLY}). Scanning from ${ROOT}`);
+logger.info(`Starting codemod (dry run=${!APPLY}). Scanning from ${ROOT}`);
 walk(ROOT);
-console.log(
+logger.info(
   `Scanned ${filesScanned} files. ${filesChanged} files ${
     APPLY ? "modified" : "would be modified"
   }.`,
 );
 if (!APPLY)
-  console.log(
+  logger.info(
     "Run with --apply to write changes. Review diffs before committing.",
   );

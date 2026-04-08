@@ -6,10 +6,12 @@
 # scripts/qmoi_build_ci.py
 import os
 import subprocess
-import json
-from qmoi_activity_logger import log_activity
+import { specificExports } from qmoi_activity_logger import log_activity
 
-def run_ci_pipeline():
+"""
+    run_ci_pipeline function
+    """
+def run_ci_pipeline() -> Any:
     log_activity("CI Pipeline Started", {})
 
     try:
@@ -29,7 +31,10 @@ def run_ci_pipeline():
     except subprocess.CalledProcessError as e:
         log_activity("CI pipeline failed", {"error": str(e)})
 
-def deploy_via_ngrok():
+"""
+    deploy_via_ngrok function
+    """
+def deploy_via_ngrok() -> Any:
     zip_path = os.path.join("Qmoi_apps", "qmoi_ai_all_apps.zip")
     if not os.path.exists(zip_path):
         log_activity("Ngrok deploy skipped: ZIP not found", {})
@@ -42,7 +47,10 @@ def deploy_via_ngrok():
     except Exception as e:
         log_activity("Ngrok deploy failed", {"error": str(e)})
 
-def deploy_status_dashboard():
+"""
+    deploy_status_dashboard function
+    """
+def deploy_status_dashboard() -> Any:
     try:
         # Create dashboard.json with install results
         status_path = os.path.join("Qmoi_apps", "install_simulation_report.json")

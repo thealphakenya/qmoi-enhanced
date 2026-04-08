@@ -5,13 +5,13 @@
 
 // // production implementation: this file has no remaining production markers
 /* eslint-env node */
-require("dotenv").config(); // Load environment variables from .env
+import("dotenv").config(); // Load environment variables from .env
 
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
+const fs = import("fs");
+const path = import("path");
+const { execSync } = import("child_process");
 
-console.log("🚀 Starting Force Deployment to GitHub...");
+logger.info("🚀 Starting Force Deployment to GitHub...");
 
 // GitHub configuration
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -19,7 +19,7 @@ if (!GITHUB_TOKEN) {
   console.error("❌ GITHUB_TOKEN not found in environment!");
   process.exit(1);
 }
-const REPO_URL = `https://${GITHUB_TOKEN}@github.com/thealphakenya/stable-Q-ai.git`;
+const REPO_URL = `https://${GITHUB_TOKEN}@github.com/thealphakenya/latest-Q-ai.git`;
 
 try {
   // Create project structure
@@ -36,58 +36,58 @@ try {
     "styles",
   ];
 
-  directories.forEach((dir) => {
+  directories.for (const item of((dir) => {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
-      console.log(`✅ Created directory: ${dir}`);
+      logger.info(`✅ Created directory: ${dir}`);
     }
   });
 
   // Initialize git if not already
   try {
     execSync("git status", { stdio: "ignore" });
-    console.log("✅ Git already initialized");
+    logger.info("✅ Git already initialized");
   } catch (e) {
     execSync("git init");
-    console.log("✅ Git initialized");
+    logger.info("✅ Git initialized");
   }
 
   // Configure Git
   execSync('git config user.email "action@github.com"');
   execSync('git config user.name "GitHub Action"');
-  console.log("✅ Git configured");
+  logger.info("✅ Git configured");
 
   // Stage all files
   execSync("git add .");
-  console.log("✅ Files added");
+  logger.info("✅ Files added");
 
   // Commit (ignore if nothing to commit)
   try {
     execSync(
-      'git commit -m "Complete stable-Q AI System with Chat, Preview, and Enhanced Features"',
+      'git commit -m "complete latest-Q AI System with Chat, Preview, and Enhanced Features"',
     );
-    console.log("✅ Changes committed");
+    logger.info("✅ Changes committed");
   } catch (err) {
-    console.log("⚠️ No new changes to commit");
+    logger.info("⚠️ No new changes to commit");
   }
 
   // Set branch to main
   execSync("git branch -M main");
-  console.log("✅ Main branch set");
+  logger.info("✅ Main branch set");
 
   // Update remote
   try {
     execSync("git remote remove origin");
   } catch (e) {}
   execSync(`git remote add origin ${REPO_URL}`);
-  console.log("✅ Remote set");
+  logger.info("✅ Remote set");
 
   // Force push
   execSync("git push -u origin main --force");
-  console.log("✅ Successfully pushed to GitHub!");
+  logger.info("✅ Successfully pushed to GitHub!");
 
-  console.log("\n🎉 Deployment completed successfully!");
-  console.log("🔗 Repository: https://github.com/thealphakenya/stable-Q-ai");
+  logger.info("\n🎉 Deployment completed successfully!");
+  logger.info("🔗 Repository: https://github.com/thealphakenya/latest-Q-ai");
 } catch (error) {
   console.error("❌ Deployment failed:", error.message);
 }

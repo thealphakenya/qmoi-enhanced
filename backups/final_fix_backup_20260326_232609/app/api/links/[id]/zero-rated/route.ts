@@ -3,13 +3,16 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { linksService } from "@/lib/links-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/links-service";
 
-export async function PATCH(
+export async /**
+ * PATCH function
+ */
+function PATCH(
   req: NextRequest,
   { params }: { params: { id: string } },
-) {
+): any {
   try {
     const body = await req.json();
     const { isZeroRated } = body;

@@ -4,16 +4,19 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
-import { getLogger } from "@/lib/logger";
-import { NotificationService } from "../../../../scripts/services/notification_service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/logger";
+import { specificExports } from "../../../../scripts/services/notification_service";
 
 const logger = getLogger("/api/notifications/test");
 const notificationService = new NotificationService();
 
 const VALID_TYPES = new Set(["email", "slack", "discord", "whatsapp", "console"]);
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   try {
     const body: any = await req.json();
     const { type, recipient } = body;

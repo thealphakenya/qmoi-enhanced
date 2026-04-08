@@ -39,7 +39,7 @@ echo "🔧 Deploying QMOI subdomains..."
 check_domain "qcity.qmoi.ai" || echo "Critical: qcity.qmoi.ai DNS failed"
 check_domain "qmoi-space.qmoi.ai" || echo "Critical: qmoi-space.qmoi.ai DNS failed"
 check_domain "yap.qmoi.ai" || echo "Critical: yap.qmoi.ai DNS failed"
-check_domain "q-stable.qmoi.ai" || echo "Critical: q-stable.qmoi.ai DNS failed"
+check_domain "q-latest.qmoi.ai" || echo "Critical: q-latest.qmoi.ai DNS failed"
 
 # Fallback domains
 echo "🔄 Deploying fallback domains..."
@@ -67,7 +67,7 @@ check_domain "stableq.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qcity.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qmoi-space.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "yap.qmoi.ai" && ((HEALTHY_DOMAINS++))
-check_domain "q-stable.qmoi.ai" && ((HEALTHY_DOMAINS++))
+check_domain "q-latest.qmoi.ai" && ((HEALTHY_DOMAINS++))
 check_domain "qvillage.net" && ((HEALTHY_DOMAINS++))
 check_domain "qvillage.org" && ((HEALTHY_DOMAINS++))
 check_domain "qglobal.org" && ((HEALTHY_DOMAINS++))

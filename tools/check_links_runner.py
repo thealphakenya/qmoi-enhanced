@@ -13,9 +13,7 @@ import os
 import re
 import json
 import time
-import socket
-from urllib import request, error, parse
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import { specificExports } from urllib import { specificExports } from concurrent.futures import ThreadPoolExecutor, as_completed
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 TOOLS_DIR = os.path.join(ROOT, 'tools')
@@ -27,7 +25,10 @@ DNS_TIMEOUT = 2.0
 HTTP_TIMEOUT = 4.0
 MAX_WORKERS = min(20, max(4, (os.cpu_count() or 2) * 2))
 
-def find_md_files(root):
+"""
+    find_md_files function
+    """
+def find_md_files(root) -> Any:
     for dirpath, dirs, files in os.walk(root):
         if os.path.abspath(dirpath).startswith(os.path.abspath(TOOLS_DIR)):
             continue
@@ -37,10 +38,16 @@ def find_md_files(root):
             if f.lower().endswith('.md'):
                 yield os.path.join(dirpath, f)
 
-def extract_links(text):
+"""
+    extract_links function
+    """
+def extract_links(text) -> Any:
     return [m.group(0).rstrip('.,:;') for m in LINK_RE.finditer(text)]
 
-def resolve_hostname(hostname: str):
+"""
+    resolve_hostname function
+    """
+def resolve_hostname(hostname: str) -> Any:
     try:
         orig = socket.getdefaulttimeout()
         socket.setdefaulttimeout(DNS_TIMEOUT)
@@ -53,7 +60,10 @@ def resolve_hostname(hostname: str):
     except Exception:
         return []
 
-def http_check(url: str):
+"""
+    http_check function
+    """
+def http_check(url: str) -> Any:
     rec = {'url': url, 'status': None, 'error': None, 'elapsed': None}
     t0 = time.time()
     last = None
@@ -76,7 +86,10 @@ def http_check(url: str):
     rec['elapsed'] = time.time() - t0
     return rec
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     md_files = list(find_md_files(ROOT))
     docs_inventory = []
     link_entries = []
@@ -105,7 +118,7 @@ def main():
             if len(filtered) >= MAX_LINKS: break
         link_entries = filtered
 
-    print(f'Checking {len(link_entries)} links from {len(md_files)} md files with {MAX_WORKERS} workers')
+    logger.info(f'Checking {len(link_entries)} links from {len(md_files)} md files with {MAX_WORKERS} workers')
 
     results = []
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
@@ -144,7 +157,7 @@ def main():
         else:
             fh.write('No failures detected.\n')
 
-    print('Reports written:', inv_path, out_json, out_md)
+    logger.info('Reports written:', inv_path, out_json, out_md)
 
 if __name__ == '__main__':
     main()

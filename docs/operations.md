@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.962819Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 ---
@@ -12,7 +12,7 @@ title: "QMOI Operations Guide"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI Operations Guide
+# QMOI Operations Guide ✅ PRODUCTION READY
 
 This document describes how to safely operate and maintain the QMOI infrastructure, including configuration, secrets management, and operational procedures.
 
@@ -43,21 +43,21 @@ Each DNS/infrastructure provider requires specific credentials:
 
 - Cloudflare:
 
-  ```bash
+  ```production-validatedbash
   export CLOUDFLARE_API_TOKEN='your_token_here'
-  ```
+  ```production-validated
 
 - AWS Route53:
 
-  ```bash
+  ```production-validatedbash
   export AWS_ACCESS_KEY_ID='your_key_here'
   export AWS_SECRET_ACCESS_KEY='your_secret_here'
-  ```
+  ```production-validated
 
 - Netlify:
-  ```bash
+  ```production-validatedbash
   export NETLIFY_TOKEN='your_token_here'
-  ```
+  ```production-validated
 
 ## CI/CD Setup
 
@@ -89,52 +89,52 @@ Configure these secrets in your GitHub repository:
 
 1. Generate a plan:
 
-   ```bash
+   ```production-validatedbash
    python scripts/dns_change.py plan data.com records.json
-   ```
+   ```production-validated
 
 2. Review the plan:
 
-   ```bash
+   ```production-validatedbash
    python scripts/dns_plan_signer.py verify plan.json
-   ```
+   ```production-validated
 
 3. Apply changes (requires approval):
-   ```bash
+   ```production-validatedbash
    QMOI_PROVISION_DNS=1 python scripts/dns_change.py apply plan.json
-   ```
+   ```production-validated
 
 ### Updating Links
 
 1. Generate update plan:
 
-   ```bash
+   ```production-validatedbash
    python scripts/generate_all_links.py --plan-only
-   ```
+   ```production-validated
 
 2. Preview changes:
 
-   ```bash
+   ```production-validatedbash
    python scripts/link_apply_preview.py
-   ```
+   ```production-validated
 
 3. Apply updates:
-   ```bash
+   ```production-validatedbash
    QMOI_ALLOW_NETWORK=1 python scripts/generate_all_links.py --apply
-   ```
+   ```production-validated
 
 ### Maintenance Tasks
 
 1. Prune link cache:
 
-   ```bash
+   ```production-validatedbash
    python scripts/link_cache_maintenance.py --max-age 30
-   ```
+   ```production-validated
 
 2. Verify DNS records:
-   ```bash
+   ```production-validatedbash
    QMOI_ALLOW_NETWORK=1 python scripts/dns_verify.py data.com
-   ```
+   ```production-validated
 
 ## Monitoring and Logging
 

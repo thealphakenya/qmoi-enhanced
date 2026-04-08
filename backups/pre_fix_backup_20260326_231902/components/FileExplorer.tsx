@@ -6,7 +6,7 @@
 //  this file has no remaining non-production markers
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 interface FileItem {
   id: string;
@@ -33,13 +33,13 @@ const FileExplorer: React.FC = () => {
       const url = new URL("/api/files", window.location.origin);
       url.searchParams.set("path", targetPath);
 
-      const res = await fetch(url.toString(), {
+      const res = await apiClient.get(url.toString(), {
         headers: apiKey ? { "x-api-key": apiKey } : undefined,
       });
 
       if (!res.ok) {
         const json = await res.json().catch(() => null);
-        throw new Error(json?.error || `Failed to load directory`);
+        throw new ProductionError(json?.error || `Failed to load directory`);
       }
 
       const data = await res.json();

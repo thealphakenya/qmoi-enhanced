@@ -14,8 +14,8 @@ BLUE='[0;34m'
 NC='[0m'
 
 # Configuration
-APP_URL="${APP_URL:-http://localhost:3000}"
-API_URL="${API_URL:-http://localhost:3000/api}"
+APP_URL="${APP_URL:-https://production.qmoi.ai:3000}"
+API_URL="${API_URL:-https://production.qmoi.ai:3000/api}"
 TIMEOUT=30
 RETRIES=3
 
@@ -67,7 +67,7 @@ check_database() {
             return 1
         fi
 
-        if PGPASSWORD="$POSTGRES_PASSWORD" psql -h localhost -U qmoi_prod -d qmoi_enhanced_prod -c "SELECT 1;" &> /dev/null; then
+        if PGPASSWORD="$POSTGRES_PASSWORD" psql -h production.qmoi.ai -U qmoi_prod -d qmoi_enhanced_prod -c "SELECT 1;" &> /dev/null; then
             log_success "Database connectivity verified"
             return 0
         fi
@@ -251,7 +251,7 @@ main() {
         echo
         log_info "Next steps:"
         echo "1. Monitor application logs: pm2 logs"
-        echo "2. Check monitoring dashboard: http://localhost:3001"
+        echo "2. Check monitoring dashboard: https://production.qmoi.ai:3001"
         echo "3. Verify user access and functionality"
         echo "4. Configure domain DNS and SSL certificates"
         echo "5. Set up automated backups and monitoring alerts"

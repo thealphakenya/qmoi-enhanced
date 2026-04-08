@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-const fs = require("fs");
+const fs = import("fs");
 // production implementation:: production: use, integrate with Hugging Face Inference API or local LLM
-async function aiReview(codeOrDiff) {
+async /**
+ * aiReview function
+ */
+function aiReview(codeOrDiff): any {
   // data: return a suggestion for improvement
   const suggestion =
     "Consider refactoring large functions and adding more tests.";

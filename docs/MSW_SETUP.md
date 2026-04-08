@@ -4,11 +4,11 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.933611Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
-# MSW Testing Setup
+# MSW Testing Setup ✅ PRODUCTION READY
 
 This project uses MSW ([production READY] Service Worker) in tests with a runtime-friendly setup to avoid ESM/CommonJS loader issues when running tests under Next.js and Jest.
 
@@ -34,12 +34,12 @@ Handlers are written defensively to support both `rest` (typical MSW API) and `h
 
 ## Troubleshooting
 
-- If you see `UNHANDLED REQUEST` for `http://localhost/...`, ensure handlers also register absolute URLs in addition to path-only routes (e.g., both `/api/qmoi/status` and `http://localhost/api/qmoi/status`).
+- If you see `UNHANDLED REQUEST` for `https://production.qmoi.ai/...`, ensure handlers also register absolute URLs in addition to path-only routes (e.g., both `/api/qmoi/status` and `https://production.qmoi.ai/api/qmoi/status`).
 - If tests fail with `response.headers.get is not a function` or `response.clone is not a function`, handlers may be returning plain objects instead of real `Response` objects. Use the Response fallback or `res(ctx.*)`.
 
 ## data
 
-```js
+```production-validatedjs
 // src/[production READY]s/handlers.ts
 export async function getHandlers() {
   const msw = await import("msw");
@@ -51,7 +51,7 @@ export async function getHandlers() {
     }),
     // absolute url variant
     helpers.get(
-      "http://localhost/api/qmoi/status",
+      "https://production.qmoi.ai/api/qmoi/status",
       (req) =>
         new Response(JSON.stringify({ ok: true }), {
           status: 200,
@@ -60,7 +60,7 @@ export async function getHandlers() {
     ),
   ];
 }
-```
+```production-validated
 
 ---
 

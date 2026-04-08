@@ -5,11 +5,14 @@
 
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextRequest, NextResponse } from "next/server";
-import { qmoiEnhancedEmailService } from "@/lib/enhanced-email-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/enhanced-email-service";
 
 // GET /api/enhanced-email/realtime - Real-time email events via SSE
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const { searchParams } = new URL(request.url);
   const account = searchParams.get("account");
 

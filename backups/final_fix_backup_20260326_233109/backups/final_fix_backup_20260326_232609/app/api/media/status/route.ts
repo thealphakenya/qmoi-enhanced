@@ -6,10 +6,13 @@
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/prisma";
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     const tasks = await prisma.mediaTask.findMany({
       orderBy: { updatedAt: "desc" },

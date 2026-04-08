@@ -17,17 +17,17 @@ REDIS_URL = os.environ.get('QMOI_REDIS_URL')
 MEMORY_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'qmoi_memory.json'))
 
 if not REDIS_URL:
-    print('QMOI_REDIS_URL not set. Set it to run migration.')
+    logger.info('QMOI_REDIS_URL not set. Set it to run migration.')
     sys.exit(2)
 
 try:
     import redis
 except Exception as e:
-    print('redis package not available. Install with `pip install redis`')
+    logger.info('redis package not available. Install with `pip install redis`')
     raise
 
 if not os.path.exists(MEMORY_FILE):
-    print('No local memory file found at', MEMORY_FILE)
+    logger.info('No local memory file found at', MEMORY_FILE)
     sys.exit(1)
 
 with open(MEMORY_FILE, 'r') as f:
@@ -36,7 +36,7 @@ with open(MEMORY_FILE, 'r') as f:
 client = redis.from_url(REDIS_URL)
 try:
     client.set('qmoi:memory', json.dumps(mem))
-    print('Successfully migrated local memory to Redis key qmoi:memory')
+    logger.info('Successfully migrated local memory to Redis key qmoi:memory')
 except Exception as e:
-    print('Failed to write to Redis:', str(e))
+    logger.info('Failed to write to Redis:', str(e))
     raise

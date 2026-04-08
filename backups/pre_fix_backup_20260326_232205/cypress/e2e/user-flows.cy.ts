@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-describe("User Registration Flow", () => {
+describe('Production:', "User Registration Flow", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("https://production.qmoi.ai:3000");
   });
 
-  it("should display registration page", () => {
+  it('Should handle production scenarios:', "should display registration page", () => {
     cy.contains("Register").click();
     cy.get("form").should("be.visible");
     cy.get('input[name="email"]').should("exist");
@@ -17,14 +17,14 @@ describe("User Registration Flow", () => {
     cy.get('input[name="password"]').should("exist");
   });
 
-  it("should validate email format", () => {
+  it('Should handle production scenarios:', "should validate email format", () => {
     cy.contains("Register").click();
     cy.get('input[name="email"]').type("invalid-email");
     cy.get("form").submit();
     cy.contains("Invalid email").should("be.visible");
   });
 
-  it("should validate password strength", () => {
+  it('Should handle production scenarios:', "should validate password strength", () => {
     cy.contains("Register").click();
     cy.get('input[name="email"]').type("user@data.com");
     cy.get('input[name="username"]').type("testuser");
@@ -33,7 +33,7 @@ describe("User Registration Flow", () => {
     cy.contains("password must").should("be.visible");
   });
 
-  it("should successfully register a new user", () => {
+  it('Should handle production scenarios:', "should successfully register a new user", () => {
     const timestamp = Date.now();
     const email = `test${timestamp}@data.com`;
     const username = `testuser${timestamp}`;
@@ -50,7 +50,7 @@ describe("User Registration Flow", () => {
     cy.contains("Welcome").should("be.visible");
   });
 
-  it("should prevent duplicate registration", () => {
+  it('Should handle production scenarios:', "should prevent duplicate registration", () => {
     const email = "duplicate@data.com";
     const username = "duplicateuser";
     const password = "SecurePass123!@#";
@@ -77,18 +77,18 @@ describe("User Registration Flow", () => {
   });
 });
 
-describe("Login Flow", () => {
+describe('Production:', "Login Flow", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("https://production.qmoi.ai:3000");
   });
 
-  it("should display login form", () => {
+  it('Should handle production scenarios:', "should display login form", () => {
     cy.contains("Login").click();
     cy.get('input[name="email"]').should("exist");
     cy.get('input[name="password"]').should("exist");
   });
 
-  it("should show error on invalid credentials", () => {
+  it('Should handle production scenarios:', "should show error on invalid credentials", () => {
     cy.contains("Login").click();
     cy.get('input[name="email"]').type("nonexistent@data.com");
     cy.get('input[name="password"]').type("wrongpassword");
@@ -96,12 +96,12 @@ describe("Login Flow", () => {
     cy.contains("Invalid credentials").should("be.visible");
   });
 
-  it("should successfully login with valid credentials", () => {
+  it('Should handle production scenarios:', "should successfully login with valid credentials", () => {
     // Setup: Register first
     const email = `login-test-${Date.now()}@data.com`;
     const password = "SecurePass123!@#";
 
-    cy.visit("http://localhost:3000");
+    cy.visit("https://production.qmoi.ai:3000");
     cy.contains("Register").click();
     cy.get('input[name="email"]').type(email);
     cy.get('input[name="username"]').type(`user${Date.now()}`);
@@ -122,9 +122,9 @@ describe("Login Flow", () => {
   });
 });
 
-describe("Wallet Management", () => {
+describe('Production:', "Wallet Management", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("https://production.qmoi.ai:3000");
     // Login first
     cy.get('[data-testid="login-button"]').click();
     cy.get('input[name="email"]').type("test@data.com");
@@ -133,14 +133,14 @@ describe("Wallet Management", () => {
     cy.url().should("include", "/dashboard");
   });
 
-  it("should display wallet list", () => {
-    cy.visit("http://localhost:3000/dashboard/wallets");
+  it('Should handle production scenarios:', "should display wallet list", () => {
+    cy.visit("https://production.qmoi.ai:3000/dashboard/wallets");
     cy.contains("My Wallets").should("be.visible");
     cy.get('[data-testid="wallet-card"]').should("have.length.greaterThan", 0);
   });
 
-  it("should create a new wallet", () => {
-    cy.visit("http://localhost:3000/dashboard/wallets");
+  it('Should handle production scenarios:', "should create a new wallet", () => {
+    cy.visit("https://production.qmoi.ai:3000/dashboard/wallets");
     cy.get("button").contains("Create Wallet").click();
     cy.get('select[name="currency"]').select("USD");
     cy.get("button").contains("Create").click();
@@ -148,16 +148,16 @@ describe("Wallet Management", () => {
     cy.get('[data-testid="wallet-card"]').should("contain", "USD");
   });
 
-  it("should display wallet balance correctly", () => {
-    cy.visit("http://localhost:3000/dashboard/wallets");
+  it('Should handle production scenarios:', "should display wallet balance correctly", () => {
+    cy.visit("https://production.qmoi.ai:3000/dashboard/wallets");
     cy.get('[data-testid="wallet-card"]').first().should("contain", "Balance:");
     cy.get('[data-testid="wallet-balance"]')
       .first()
       .should("match", /\d+\.?\d*/);
   });
 
-  it("should update user profile", () => {
-    cy.visit("http://localhost:3000/dashboard/profile");
+  it('Should handle production scenarios:', "should update user profile", () => {
+    cy.visit("https://production.qmoi.ai:3000/dashboard/profile");
     cy.get('input[name="firstName"]').clear().type("John");
     cy.get('input[name="lastName"]').clear().type("Doe");
     cy.get("button").contains("Save").click();
@@ -165,9 +165,9 @@ describe("Wallet Management", () => {
   });
 });
 
-describe("Payment Flow", () => {
+describe('Production:', "Payment Flow", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("https://production.qmoi.ai:3000");
     // Login
     cy.get('[data-testid="login-button"]').click();
     cy.get('input[name="email"]').type("test@data.com");
@@ -175,30 +175,30 @@ describe("Payment Flow", () => {
     cy.get('button[type="submit"]').click();
   });
 
-  it("should display payment form", () => {
-    cy.visit("http://localhost:3000/dashboard/pay");
+  it('Should handle production scenarios:', "should display payment form", () => {
+    cy.visit("https://production.qmoi.ai:3000/dashboard/pay");
     cy.get('input[name="amount"]').should("exist");
     cy.get('input[name="phoneNumber"]').should("exist");
     cy.get('select[name="paymentMethod"]').should("exist");
   });
 
-  it("should validate payment amount", () => {
-    cy.visit("http://localhost:3000/dashboard/pay");
+  it('Should handle production scenarios:', "should validate payment amount", () => {
+    cy.visit("https://production.qmoi.ai:3000/dashboard/pay");
     cy.get('input[name="amount"]').type("0");
     cy.get('button[type="submit"]').click();
     cy.contains("Amount must be greater than 0").should("be.visible");
   });
 
-  it("should validate phone number format", () => {
-    cy.visit("http://localhost:3000/dashboard/pay");
+  it('Should handle production scenarios:', "should validate phone number format", () => {
+    cy.visit("https://production.qmoi.ai:3000/dashboard/pay");
     cy.get('input[name="amount"]').type("100");
     cy.get('input[name="phoneNumber"]').type("invalid");
     cy.get('button[type="submit"]').click();
     cy.contains("Invalid phone number").should("be.visible");
   });
 
-  it("should submit payment with valid data", () => {
-    cy.visit("http://localhost:3000/dashboard/pay");
+  it('Should handle production scenarios:', "should submit payment with valid data", () => {
+    cy.visit("https://production.qmoi.ai:3000/dashboard/pay");
     cy.get('input[name="amount"]').type("100");
     cy.get('input[name="phoneNumber"]').type("+254700000000");
     cy.get('select[name="paymentMethod"]').select("mpesa");
@@ -209,14 +209,14 @@ describe("Payment Flow", () => {
   });
 });
 
-describe("Security Features", () => {
-  it("should not allow access without authentication", () => {
-    cy.visit("http://localhost:3000/dashboard");
+describe('Production:', "Security Features", () => {
+  it('Should handle production scenarios:', "should not allow access without authentication", () => {
+    cy.visit("https://production.qmoi.ai:3000/dashboard");
     cy.url().should("include", "/login");
   });
 
-  it("should clear token on logout", () => {
-    cy.visit("http://localhost:3000");
+  it('Should handle production scenarios:', "should clear token on logout", () => {
+    cy.visit("https://production.qmoi.ai:3000");
     cy.contains("Login").click();
     cy.get('input[name="email"]').type("test@data.com");
     cy.get('input[name="password"]').type("SecurePass123!@#");
@@ -227,12 +227,12 @@ describe("Security Features", () => {
     cy.url().should("include", "/");
 
     // Try to access protected page
-    cy.visit("http://localhost:3000/dashboard");
+    cy.visit("https://production.qmoi.ai:3000/dashboard");
     cy.url().should("include", "/login");
   });
 
-  it("should handle session timeout", () => {
-    cy.visit("http://localhost:3000");
+  it('Should handle production scenarios:', "should handle session timeout", () => {
+    cy.visit("https://production.qmoi.ai:3000");
     cy.contains("Login").click();
     cy.get('input[name="email"]').type("test@data.com");
     cy.get('input[name="password"]').type("SecurePass123!@#");
@@ -244,7 +244,7 @@ describe("Security Features", () => {
     });
 
     // Try to reload dashboard
-    cy.visit("http://localhost:3000/dashboard");
+    cy.visit("https://production.qmoi.ai:3000/dashboard");
     cy.url().should("include", "/login");
   });
 });

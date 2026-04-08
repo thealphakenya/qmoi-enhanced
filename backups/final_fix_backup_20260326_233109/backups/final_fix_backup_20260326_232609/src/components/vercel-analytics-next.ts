@@ -5,6 +5,10 @@
 
 // production implementation: this file has no remaining production markers
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-export default function Analytics() {
+export default /**
+ * Analytics function
+ */
+function Analytics(): any {
+  try {() {
   return null;
 }

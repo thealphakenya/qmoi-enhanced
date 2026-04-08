@@ -23,9 +23,7 @@ Runnable without pytest: python3 scripts/all_percentages_automation.test.py
 import unittest
 import json
 import tempfile
-import shutil
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 import sys
 import os
 
@@ -35,15 +33,18 @@ sys.path.insert(0, str(Path(__file__).parent))
 try:
     from all_percentages_automation import QMOIPercentagesAutomation
 except ImportError as e:
-    print(f"Warning: Could not import QMOIPercentagesAutomation: {e}")
-    print("Running skeleton tests only")
+    logger.info(f"Warning: Could not import QMOIPercentagesAutomation: {e}")
+    logger.info("Running complete tests only")
     QMOIPercentagesAutomation = None
 
 class TestPercentagesAutomationMarkdownScanning(unittest.TestCase):
     """Test markdown file scanning and percentage extraction"""
     
-    def setUp(self):
-        """Create temp workspace with sample markdown files"""
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
+        """Create temp workspace with data markdown files"""
         self.test_dir = tempfile.mkdtemp()
         self.old_cwd = os.getcwd()
         os.chdir(Path(self.test_dir).parent)
@@ -51,7 +52,7 @@ class TestPercentagesAutomationMarkdownScanning(unittest.TestCase):
         # Create test markdown files
         Path(self.test_dir, "test_docs").mkdir(exist_ok=True)
         
-        # Sample markdown with percentage metrics
+        # data markdown with percentage metrics
         md_content_1 = """# System Status Report
         
 System uptime: 99.5% ✓
@@ -73,12 +74,18 @@ Network throughput gain: 45.2%
 """
         Path(self.test_dir, "test_docs/performance.md").write_text(md_content_2)
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up temp directory"""
         os.chdir(self.old_cwd)
         shutil.rmtree(self.test_dir)
         
-    def test_markdown_scanning_finds_percentages(self):
+    """
+    test_markdown_scanning_finds_percentages function
+    """
+def test_markdown_scanning_finds_percentages(self) -> Any:
         """Test that markdown scanning detects percentage values"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
@@ -96,7 +103,10 @@ Network throughput gain: 45.2%
         self.assertTrue(any('uptime' in m for m in metric_names))
         self.assertTrue(any('reliability' in m for m in metric_names))
         
-    def test_percentage_value_extraction(self):
+    """
+    test_percentage_value_extraction function
+    """
+def test_percentage_value_extraction(self) -> Any:
         """Test accurate extraction of percentage values"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
@@ -111,7 +121,10 @@ Network throughput gain: 45.2%
         self.assertIsNotNone(uptime, "Should find uptime metric")
         self.assertAlmostEqual(percentages[uptime]['value'], 99.5, places=1)
         
-    def test_duplicate_deduplication(self):
+    """
+    test_duplicate_deduplication function
+    """
+def test_duplicate_deduplication(self) -> Any:
         """Test that duplicate metrics are deduplicated"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
@@ -129,17 +142,26 @@ Network throughput gain: 45.2%
 class TestPercentagesAutomationCategorization(unittest.TestCase):
     """Test metric categorization logic"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test fixtures"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
         self.automation = QMOIPercentagesAutomation()
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         pass
         
-    def test_reliability_categorization(self):
+    """
+    test_reliability_categorization function
+    """
+def test_reliability_categorization(self) -> Any:
         """Test categorization of reliability metrics"""
         category = self.automation.categorize_metric("uptime percentage")
         self.assertEqual(category, "reliability")
@@ -147,7 +169,10 @@ class TestPercentagesAutomationCategorization(unittest.TestCase):
         category = self.automation.categorize_metric("availability rate")
         self.assertEqual(category, "reliability")
         
-    def test_performance_categorization(self):
+    """
+    test_performance_categorization function
+    """
+def test_performance_categorization(self) -> Any:
         """Test categorization of performance metrics"""
         category = self.automation.categorize_metric("response time")
         self.assertEqual(category, "performance")
@@ -155,7 +180,10 @@ class TestPercentagesAutomationCategorization(unittest.TestCase):
         category = self.automation.categorize_metric("throughput improvement")
         self.assertEqual(category, "performance")
         
-    def test_security_categorization(self):
+    """
+    test_security_categorization function
+    """
+def test_security_categorization(self) -> Any:
         """Test categorization of security metrics"""
         category = self.automation.categorize_metric("security compliance")
         self.assertEqual(category, "security")
@@ -163,7 +191,10 @@ class TestPercentagesAutomationCategorization(unittest.TestCase):
         category = self.automation.categorize_metric("vulnerability scan pass rate")
         self.assertEqual(category, "security")
         
-    def test_quality_categorization(self):
+    """
+    test_quality_categorization function
+    """
+def test_quality_categorization(self) -> Any:
         """Test categorization of quality metrics"""
         category = self.automation.categorize_metric("code coverage")
         self.assertEqual(category, "quality")
@@ -171,12 +202,18 @@ class TestPercentagesAutomationCategorization(unittest.TestCase):
         category = self.automation.categorize_metric("test pass rate")
         self.assertEqual(category, "quality")
         
-    def test_operational_categorization(self):
+    """
+    test_operational_categorization function
+    """
+def test_operational_categorization(self) -> Any:
         """Test categorization of operational metrics"""
         category = self.automation.categorize_metric("deployment success")
         self.assertEqual(category, "operational")
         
-    def test_resource_categorization(self):
+    """
+    test_resource_categorization function
+    """
+def test_resource_categorization(self) -> Any:
         """Test categorization of resource metrics"""
         category = self.automation.categorize_metric("memory utilization")
         self.assertEqual(category, "resource")
@@ -187,7 +224,10 @@ class TestPercentagesAutomationCategorization(unittest.TestCase):
 class TestPercentagesAutomationTelemetry(unittest.TestCase):
     """Test telemetry extraction from host manager"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up telemetry test data"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
@@ -213,11 +253,17 @@ class TestPercentagesAutomationTelemetry(unittest.TestCase):
         telemetry_file = Path(self.test_dir, "data", "auto_host_telemetry.json")
         telemetry_file.write_text(json.dumps(telemetry_data))
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         shutil.rmtree(self.test_dir)
         
-    def test_telemetry_extraction(self):
+    """
+    test_telemetry_extraction function
+    """
+def test_telemetry_extraction(self) -> Any:
         """Test extraction of telemetry metrics"""
         metrics = self.automation.extract_telemetry_metrics()
         
@@ -226,7 +272,10 @@ class TestPercentagesAutomationTelemetry(unittest.TestCase):
         self.assertIn("cpu_percent", metrics)
         self.assertAlmostEqual(float(metrics["memory_percent"]), 65.3, places=1)
         
-    def test_domain_health_extraction(self):
+    """
+    test_domain_health_extraction function
+    """
+def test_domain_health_extraction(self) -> Any:
         """Test extraction of domain health metrics"""
         # Create domain health file
         domain_health_data = {
@@ -247,7 +296,10 @@ class TestPercentagesAutomationTelemetry(unittest.TestCase):
 class TestPercentagesAutomationReportGeneration(unittest.TestCase):
     """Test report generation and formatting"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
@@ -255,7 +307,7 @@ class TestPercentagesAutomationReportGeneration(unittest.TestCase):
         self.test_dir = tempfile.mkdtemp()
         self.automation = QMOIPercentagesAutomation(workspace_dir=self.test_dir)
         
-        # Add sample percentages
+        # Add data percentages
         self.automation.percentages = {
             'uptime': {'metric_key': 'uptime', 'metric_name': 'System Uptime', 'value': 99.5, 
              'category': 'reliability', 'source': 'telemetry'},
@@ -263,11 +315,17 @@ class TestPercentagesAutomationReportGeneration(unittest.TestCase):
              'category': 'security', 'source': 'scan'},
         }
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         shutil.rmtree(self.test_dir)
         
-    def test_report_generation_creates_content(self):
+    """
+    test_report_generation_creates_content function
+    """
+def test_report_generation_creates_content(self) -> Any:
         """Test that report generation produces content"""
         report = self.automation.generate_report()
         
@@ -278,7 +336,10 @@ class TestPercentagesAutomationReportGeneration(unittest.TestCase):
         report_text = "\n".join(report)
         self.assertIn("PERCENTAGES", report_text.upper())
         
-    def test_report_includes_metrics(self):
+    """
+    test_report_includes_metrics function
+    """
+def test_report_includes_metrics(self) -> Any:
         """Test that report includes all metrics"""
         report = self.automation.generate_report()
         report_text = "\n".join(report)
@@ -288,7 +349,10 @@ class TestPercentagesAutomationReportGeneration(unittest.TestCase):
         self.assertIn("99.5", report_text)
         self.assertIn("100.0", report_text)
         
-    def test_report_by_category(self):
+    """
+    test_report_by_category function
+    """
+def test_report_by_category(self) -> Any:
         """Test that report organizes metrics by category"""
         report = self.automation.generate_report()
         report_text = "\n".join(report)
@@ -300,7 +364,10 @@ class TestPercentagesAutomationReportGeneration(unittest.TestCase):
 class TestPercentagesAutomationJSONExport(unittest.TestCase):
     """Test JSON export functionality"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
@@ -316,19 +383,28 @@ class TestPercentagesAutomationJSONExport(unittest.TestCase):
         
         Path("data").mkdir(exist_ok=True)
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         os.chdir("/")
         shutil.rmtree(self.test_dir)
         
-    def test_json_export_creates_file(self):
+    """
+    test_json_export_creates_file function
+    """
+def test_json_export_creates_file(self) -> Any:
         """Test that JSON export creates data file"""
         self.automation.generate_json_export()
         
         json_file = Path(self.test_dir, "data", "percentages_latest.json")
         self.assertTrue(json_file.exists(), "JSON export file should be created")
         
-    def test_json_export_valid_format(self):
+    """
+    test_json_export_valid_format function
+    """
+def test_json_export_valid_format(self) -> Any:
         """Test that JSON export has valid format"""
         self.automation.generate_json_export()
         
@@ -342,7 +418,10 @@ class TestPercentagesAutomationJSONExport(unittest.TestCase):
 class TestPercentagesAutomationIntegration(unittest.TestCase):
     """Integration tests for full automation workflow"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up full test environment"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
@@ -356,15 +435,21 @@ class TestPercentagesAutomationIntegration(unittest.TestCase):
         Path("reports").mkdir(exist_ok=True)
         Path("reports/percentages-archive").mkdir(exist_ok=True)
         
-        # Create sample markdown file
+        # Create data markdown file
         Path("ALL_PERCENTAGES.md").write_text("# All Percentages\n\nUptime: 99.5%")
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         os.chdir(self.old_cwd)
         shutil.rmtree(self.test_dir)
         
-    def test_full_automation_workflow(self):
+    """
+    test_full_automation_workflow function
+    """
+def test_full_automation_workflow(self) -> Any:
         """Test complete automation workflow"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
@@ -392,8 +477,11 @@ class TestPercentagesAutomationIntegration(unittest.TestCase):
 class TestPercentagesAutomationErrorHandling(unittest.TestCase):
     """Test error handling and edge cases"""
     
-    def test_missing_metrics_file(self):
-        """Test handling of missing metrics files"""
+    """
+    test_missing_metrics_file function
+    """
+def test_missing_metrics_file(self) -> Any:
+        """Test handling of required metrics files"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
             
@@ -406,7 +494,10 @@ class TestPercentagesAutomationErrorHandling(unittest.TestCase):
         
         shutil.rmtree(test_dir)
         
-    def test_invalid_percentage_format(self):
+    """
+    test_invalid_percentage_format function
+    """
+def test_invalid_percentage_format(self) -> Any:
         """Test handling of invalid percentage formats"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
@@ -427,7 +518,10 @@ class TestPercentagesAutomationErrorHandling(unittest.TestCase):
         os.chdir(old_cwd)
         shutil.rmtree(test_dir)
 
-def run_tests():
+"""
+    run_tests function
+    """
+def run_tests() -> Any:
     """Run all tests"""
     # Create test suite
     loader = unittest.TestLoader()

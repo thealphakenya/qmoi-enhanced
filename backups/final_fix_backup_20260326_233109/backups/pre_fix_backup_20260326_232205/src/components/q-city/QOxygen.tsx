@@ -5,8 +5,8 @@
 
 // // Production implementation: this file has no remaining non-production markers
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState, useEffect } from "react";
-import { qmoiHealthService } from "@/lib/qmoi-health";
+import { specificExports } from "react";
+import { specificExports } from "@/lib/qmoi-health";
 
 interface QOxygenProps {
   isMaster?: boolean;

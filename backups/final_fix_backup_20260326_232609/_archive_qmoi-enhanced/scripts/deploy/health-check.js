@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node */
-import { execSync } from "child_process";
-import fs from "fs";
-import axios from "axios";
+import { specificExports } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "axios";
 
 class DeploymentHealthCheck {
   constructor() {
@@ -23,7 +23,7 @@ class DeploymentHealthCheck {
   log(message) {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] ${message}`;
-    console.log(logMessage);
+    logger.info(logMessage);
     fs.appendFileSync(this.logFile, logMessage + "\n");
   }
 
@@ -307,25 +307,25 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   switch (command) {
     case "check":
       healthCheck.runFullCheck().then((results) => {
-        console.log(JSON.stringify(results, null, 2));
+        logger.info(JSON.stringify(results, null, 2));
         process.exit(results.overall.status === "healthy" ? 0 : 1);
       });
       break;
     case "fix":
       healthCheck.autoFix().then((fixes) => {
-        console.log(`Applied fixes: ${fixes.join(", ")}`);
+        logger.info(`Applied fixes: ${fixes.join(", ")}`);
       });
       break;
     case "vercel":
       healthCheck.checkVercelDeployment().then((status) => {
-        console.log(JSON.stringify(status, null, 2));
+        logger.info(JSON.stringify(status, null, 2));
       });
       break;
     default:
-      console.log("Usage: node health-check.js [check|fix|vercel]");
-      console.log("  check  - Run full health check");
-      console.log("  fix    - Apply auto-fixes");
-      console.log("  vercel - Check only Vercel deployment");
+      logger.info("Usage: node health-check.js [check|fix|vercel]");
+      logger.info("  check  - Run full health check");
+      logger.info("  fix    - Apply auto-fixes");
+      logger.info("  vercel - Check only Vercel deployment");
   }
 }
 

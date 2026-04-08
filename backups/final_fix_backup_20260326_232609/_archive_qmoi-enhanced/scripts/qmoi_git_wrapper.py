@@ -11,16 +11,21 @@ It intercepts push/pull/fetch commands and sets GIT_ASKPASS to a small helper th
 """
 import os
 import sys
-import subprocess
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
-def get_github_token():
+"""
+    get_github_token function
+    """
+def get_github_token() -> Any:
     try:
         from scripts.qmoi_secret_manager import get_named_secret
     except Exception:
         return None
     return get_named_secret('github')
 
+"""
+    write_askpass_helper function
+    """
 def write_askpass_helper(token: str) -> str:
     p = Path('.qmoi') / 'git-askpass-qmoi.sh'
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -28,9 +33,12 @@ def write_askpass_helper(token: str) -> str:
     p.chmod(0o700)
     return str(p)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if len(sys.argv) < 2:
-        print('Usage: qmoi_git_wrapper.py git <git-args...>')
+        logger.info('Usage: qmoi_git_wrapper.py git <git-args...>')
         sys.exit(1)
 
     # pass-through for non-network commands

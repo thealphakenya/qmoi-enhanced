@@ -1,12 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server';
-import crypto from 'crypto';
+import { specificExports } from 'next/server';
+import { specificExports } from 'crypto';
 
 /**
  * WebAuthn Registration Options Endpoint
  * Initiates biometric registration process by providing options to client
  * Client then uses this to create a credential with the prodice's biometric sensor
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { email } = body;

@@ -1,5 +1,5 @@
 // Production implementation: this file has no remaining non-production markers
-import React from "react";
+import { specificExports } from "react";
 import {
   runSecurityCheck,
   isTampered,
@@ -22,7 +22,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <p>stable-Q AI is running.</p>
+        <p>latest-Q AI is running.</p>
       </header>
     </div>
   );

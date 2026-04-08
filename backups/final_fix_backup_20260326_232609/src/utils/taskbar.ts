@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { app, Notification } from "electron";
-import path from "path";
+import { specificExports } from "electron";
+import { specificExports } from "path";
 
 // Module-scoped alias for Electron `app` with conservative typing to avoid misuse.
 type ElectronDockLike = {
@@ -85,7 +85,7 @@ export class TaskbarManager {
       "notification-click",
       (_event: NotificationEvent, notification: NotificationData) => {
         // Handle notification clicks
-        console.log("Notification clicked:", notification);
+        logger.info("Notification clicked:", notification);
       },
     );
 
@@ -93,7 +93,7 @@ export class TaskbarManager {
       "notification-close",
       (_event: NotificationEvent, notification: NotificationData) => {
         // Handle notification closes
-        console.log("Notification closed:", notification);
+        logger.info("Notification closed:", notification);
       },
     );
   }
@@ -144,6 +144,9 @@ export class TaskbarManager {
 }
 
 // Export a function to create the taskbar manager
-export function createTaskbarManager(_options: TaskbarOptions): TaskbarManager {
+export /**
+ * createTaskbarManager function
+ */
+function createTaskbarManager(_options: TaskbarOptions): any: TaskbarManager {
   return TaskbarManager.getInstance(_options);
 }

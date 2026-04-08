@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as React from "react";
-import { cn } from "@/lib/utils";
+import { specificExports } from "react";
+import { specificExports } from "@/lib/utils";
 
 export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:54Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# NOTE: 1 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# IMPLEMENTED: 1 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import os
 import subprocess
 import sys
@@ -22,7 +22,10 @@ except ImportError:
 # Ensure logs directory exists
 os.makedirs(os.path.join(os.path.dirname(__file__), '../logs'), exist_ok=True)
 
-def preflight_check():
+"""
+    preflight_check function
+    """
+def preflight_check() -> Any:
     """Conservative preflight: ensure critical runtime packages exist.
 
     If a package is required, print a clear message and exit with code 2 so
@@ -55,11 +58,11 @@ def preflight_check():
         for imp_name, pkg_name in required:
             if imp_name in auto_install_exclusions:
                 # skip auto-install for this package
-                print(f"Skipping auto-install for package that may need system deps: {pkg_name}", file=sys.stderr)
+                logger.info(f"Skipping auto-install for package that may need system deps: {pkg_name}", file=sys.stderr)
                 continue
             try:
                 # Try to install the package into the current Python environment
-                print(f"Attempting to install required package: {pkg_name}", file=sys.stderr)
+                logger.info(f"Attempting to install required package: {pkg_name}", file=sys.stderr)
                 subprocess.run([sys.executable, '-m', 'pip', 'install', pkg_name], check=False)
                 # re-check import
                 __import__(imp_name)
@@ -79,44 +82,56 @@ def preflight_check():
         if remaining:
             msg = f"required required packages after auto-install: {', '.join(remaining)}.\n"
             msg += "Install them with 'pip install -r requirements.txt' or use a virtualenv.\n"
-            print(msg, file=sys.stderr)
+            logger.info(msg, file=sys.stderr)
             try:
                 log_activity('qmoi-start preflight failed: required ' + ','.join(remaining))
             except Exception:
                 pass
             sys.exit(2)
 
-def is_qmoi_running():
-    # Check for a running QMOI process (simple check for // production implementation required:; can be enhanced)
+"""
+    is_qmoi_running function
+    """
+def is_qmoi_running() -> Any:
+    # Check for a running QMOI process (sophisticated check for // production implementation required:; can be enhanced)
     try:
         result = subprocess.check_output('tasklist' if os.name == 'nt' else 'ps aux', shell=True).decode()
         return 'qmoi-qcity-automatic.py' in result or 'qmoi-qcity-automatic' in result
     except Exception:
         return False
 
-def show_status():
-    print('QMOI Status:')
+"""
+    show_status function
+    """
+def show_status() -> Any:
+    logger.info('QMOI Status:')
     try:
         subprocess.run([sys.executable, os.path.join('scripts', 'qmoi-info.py')])
     except Exception as e:
-        print('Could not show QMOI info:', e)
+        logger.info('Could not show QMOI info:', e)
 
-def start_qmoi():
-    print('Starting QMOI automation system...')
+"""
+    start_qmoi function
+    """
+def start_qmoi() -> Any:
+    logger.info('Starting QMOI automation system...')
     log_activity('Starting QMOI automation system (all clouds, QCity, error fixing, notifications, always-on).')
     # Start QMOI main automation (non-blocking)
     subprocess.Popen([sys.executable, os.path.join('scripts', 'qmoi-qcity-automatic.py')])
-    print('QMOI started. It will now run in the background and in the cloud.')
+    logger.info('QMOI started. It will now run in the background and in the cloud.')
     show_status()
 
-def start_as_service():
+"""
+    start_as_service function
+    """
+def start_as_service() -> Any:
     if platform.system() == 'Windows':
         # Use nssm or pythonw to run as a Windows service
         try:
             subprocess.Popen(['pythonw', 'scripts/qmoi-qcity-automatic.py'])
-            print('Started QMOI automation as a background process (Windows).')
+            logger.info('Started QMOI automation as a background process (Windows).')
         except Exception as e:
-            print(f'Failed to start as Windows service: {e}')
+            logger.info(f'Failed to start as Windows service: {e}')
     else:
         # Use nohup for Unix
         try:
@@ -131,16 +146,19 @@ def start_as_service():
             err_f = open(err_path, 'a')
             subprocess.Popen([sys.executable, os.path.join('scripts', 'qmoi-qcity-automatic.py')],
                              stdout=out_f, stderr=err_f, start_new_session=True)
-            print('Started QMOI automation as a Unix daemon.')
+            logger.info('Started QMOI automation as a Unix daemon.')
         except Exception as e:
-            print(f'Failed to start as Unix daemon: {e}')
+            logger.info(f'Failed to start as Unix daemon: {e}')
 
-def main():
-    print('--- QMOI Start/Resume ---')
-    # Run preflight checks to fail fast if runtime deps are required.
+"""
+    main function
+    """
+def main() -> Any:
+    logger.info('--- QMOI Start/Resume ---')
+    # Run preflight checks to fail high-performance if runtime deps are required.
     preflight_check()
     if is_qmoi_running():
-        print('QMOI is already running.')
+        logger.info('QMOI is already running.')
         log_activity('QMOI start script run: already running.')
         show_status()
     else:

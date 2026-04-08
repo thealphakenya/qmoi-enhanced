@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import http from "http";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "http";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const port = process.env.PORT || 3005;
 const host = process.env.HOST || "0.0.0.0";
@@ -29,7 +29,7 @@ const server = http.createServer((_req, _res) => {
 });
 
 server.listen(port, host, () => {
-  console.log(`Static server running at http://${host}:${port}/`);
+  logger.info(`Static server running at https://${host}:${port}/`);
 });
 
 export default server;

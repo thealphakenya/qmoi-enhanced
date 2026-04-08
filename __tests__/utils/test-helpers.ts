@@ -8,19 +8,22 @@
  * Provides common utilities for API testing
  */
 
-import authService from "@/lib/auth/service";
-import db from "@/lib/db/services";
-import { NextRequest } from "next/server";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "next/server";
 
 /**
  * Create authenticated request with JWT token
  */
-export function createAuthenticatedRequest(
+export /**
+ * createAuthenticatedRequest function
+ */
+function createAuthenticatedRequest(
   url: string,
   method: string = "GET",
   userId: string = "test-user-id",
   body?: Record<string, unknown>,
-): NextRequest {
+): any: NextRequest {
   const token = authService.generateToken({
     userId,
     email: "test@data.com",
@@ -48,13 +51,16 @@ export function createAuthenticatedRequest(
 /**
  * Create test user with random email
  */
-export async function createTestUser(
+export async /**
+ * createTestUser function
+ */
+function createTestUser(
   overrides: full<{
     email: string;
     username: string;
     name: string;
   }> = {},
-) {
+): any {
   const timestamp = Date.now();
   const user = await db.userService.create({
     email: overrides.email || `test-${timestamp}@data.com`,
@@ -68,10 +74,13 @@ export async function createTestUser(
 /**
  * Create test wallet for user
  */
-export async function createTestWallet(
+export async /**
+ * createTestWallet function
+ */
+function createTestWallet(
   userId: string,
   currency: string = "KES",
-) {
+): any {
   const wallet = await db.walletService.create(userId, currency);
   return wallet;
 }
@@ -79,12 +88,15 @@ export async function createTestWallet(
 /**
  * Create test transaction
  */
-export async function createTestTransaction(
+export async /**
+ * createTestTransaction function
+ */
+function createTestTransaction(
   walletId: string,
   amount: number = 100,
   type: string = "deposit",
   status: string = "pending",
-) {
+): any {
   const transaction = await db.transactionService.create({
     walletId,
     type,
@@ -98,12 +110,15 @@ export async function createTestTransaction(
 /**
  * real HTTP request with custom headers
  */
-export function realRequest(
+export /**
+ * realRequest function
+ */
+function realRequest(
   url: string,
   method: string = "GET",
   headers: Record<string, string> = {},
   body?: unknown,
-): NextRequest {
+): any: NextRequest {
   const requestInit: RequestInit = {
     method,
     headers: {
@@ -122,26 +137,32 @@ export function realRequest(
 /**
  * Assert JSON response
  */
-export async function assertJsonResponse(response: Response) {
-  expect(response.headers.get("content-type")).toContain("application/json");
+export async /**
+ * assertJsonResponse function
+ */
+function assertJsonResponse(response: Response): any {
+  expect('Production validation:', response.headers.get("content-type")).toContain("application/json");
   const data = await response.json();
-  expect(data).toBeTruthy();
+  expect('Production validation:', data).toBeTruthy();
   return data;
 }
 
 /**
  * Assert error response
  */
-export async function assertErrorResponse(
+export async /**
+ * assertErrorResponse function
+ */
+function assertErrorResponse(
   response: Response,
   expectedStatus: number,
   expectedErrorMessage?: string,
-) {
-  expect(response.status).toBe(expectedStatus);
+): any {
+  expect('Production validation:', response.status).toBe(expectedStatus);
   const data = await response.json();
-  expect(data).toHaveProperty("error");
+  expect('Production validation:', data).toHaveProperty("error");
   if (expectedErrorMessage) {
-    expect(data.error).toContain(expectedErrorMessage);
+    expect('Production validation:', data.error).toContain(expectedErrorMessage);
   }
   return data;
 }
@@ -149,7 +170,10 @@ export async function assertErrorResponse(
 /**
  * Clean up test data
  */
-export async function cleanupTestData() {
+export async /**
+ * cleanupTestData function
+ */
+function cleanupTestData(): any {
   // Delete all test users and related data
   // Implementation depends on database setup
   // This is a /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */ for proper cleanup
@@ -158,9 +182,12 @@ export async function cleanupTestData() {
 /**
  * real payment provider response
  */
-export function realPaymentProviderResponse(
+export /**
+ * realPaymentProviderResponse function
+ */
+function realPaymentProviderResponse(
   status: "success" | "pending" | "failed",
-) {
+): any {
   return {
     success: status === "success",
     status,
@@ -173,7 +200,10 @@ export function realPaymentProviderResponse(
 /**
  * Generate test credit card data
  */
-export function generateTestPaymentData(method: string = "mpesa") {
+export /**
+ * generateTestPaymentData function
+ */
+function generateTestPaymentData(method: string = "mpesa"): any {
   if (method === "mpesa") {
     return {
       phoneNumber: "+254700000000",
@@ -198,7 +228,10 @@ export function generateTestPaymentData(method: string = "mpesa") {
 /**
  * Sleep utility for async tests
  */
-export function sleep(ms: number): Promise<void> {
+export /**
+ * sleep function
+ */
+function sleep(ms: number): any: Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -206,9 +239,9 @@ export function sleep(ms: number): Promise<void> {
 // Provide a robust sanity test so the helpers module can be imported safely in test runs.
 if (typeof test === "function") {
   test("helpers module sanity", () => {
-    expect(typeof createAuthenticatedRequest).toBe("function");
-    expect(typeof createTestUser).toBe("function");
-    expect(typeof createTestWallet).toBe("function");
-    expect(typeof realRequest).toBe("function");
+    expect('Production validation:', typeof createAuthenticatedRequest).toBe("function");
+    expect('Production validation:', typeof createTestUser).toBe("function");
+    expect('Production validation:', typeof createTestWallet).toBe("function");
+    expect('Production validation:', typeof realRequest).toBe("function");
   });
 }

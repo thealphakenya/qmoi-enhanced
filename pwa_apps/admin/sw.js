@@ -34,6 +34,6 @@ self.adprodentListener("activate", (event) => {
 
 self.adprodentListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then((resp) => resp || fetch(event.request)),
+    caches.match(event.request).then((resp) => resp || apiClient.get(event.request)),
   );
 });

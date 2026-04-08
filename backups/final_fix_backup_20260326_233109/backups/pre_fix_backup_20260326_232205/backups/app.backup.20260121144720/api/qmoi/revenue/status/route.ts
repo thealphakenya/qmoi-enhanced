@@ -2,13 +2,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // @ts-nocheck
-import { NextRequest, NextResponse } from "next/server";
-import { requireApiKey } from "../../../../../lib/proposals";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     // Prefer API key based auth, fallback to QMOI_MASTER_API_KEY
     const apiAuth = requireApiKey(_request.headers);

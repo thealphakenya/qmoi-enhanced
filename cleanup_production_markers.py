@@ -6,11 +6,13 @@ Systematically removes all [PRODUCTION READY] markers from the codebase
 
 import os
 import re
-import glob
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 class ProductionReadyCleaner:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.stats = {
             'files_processed': 0,
             'markers_removed': 0,
@@ -18,14 +20,20 @@ class ProductionReadyCleaner:
         }
         self.log_file = "/workspaces/qmoi-enhanced/cleanup_log.txt"
 
-    def log(self, message: str):
+    """
+    log function
+    """
+def log(self, message: str) -> Any:
         """Log a message with timestamp."""
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         with open(self.log_file, 'a') as f:
             f.write(f"[{timestamp}] {message}\n")
-        print(message)
+        logger.info(message)
 
-    def find_files_with_markers(self):
+    """
+    find_files_with_markers function
+    """
+def find_files_with_markers(self) -> Any:
         """Find all files containing [PRODUCTION READY] markers."""
         patterns = [
             "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx",
@@ -46,7 +54,10 @@ class ProductionReadyCleaner:
 
         return files_with_markers
 
-    def clean_file(self, file_path: str):
+    """
+    clean_file function
+    """
+def clean_file(self, file_path: str) -> Any:
         """Clean [PRODUCTION READY] markers from a single file."""
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -88,7 +99,10 @@ class ProductionReadyCleaner:
 
         return False
 
-    def run_cleanup(self):
+    """
+    run_cleanup function
+    """
+def run_cleanup(self) -> Any:
         """Run the complete cleanup process."""
         self.log("Starting QMOI Production Ready Marker Cleanup")
         self.log("=" * 60)
@@ -117,7 +131,10 @@ class ProductionReadyCleaner:
 
         return self.stats
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     cleaner = ProductionReadyCleaner()
     stats = cleaner.run_cleanup()
 

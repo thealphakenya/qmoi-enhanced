@@ -4,15 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
-import axios from "axios";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "axios";
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   try {
     const memoryPath = path.join(
       process.cwd(),

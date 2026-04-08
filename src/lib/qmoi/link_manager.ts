@@ -3,39 +3,66 @@
 // Last evolution cycle: 2026-03-26T04:00:00Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-export function generateVillageLink(id: string): string {
+export /**
+ * generateVillageLink function
+ */
+function generateVillageLink(id: string): any: string {
   return `https://qvillage.qmoi.ai/${id}`;
 }
 
-export function generateDatabaseLink(id: string): string {
+export /**
+ * generateDatabaseLink function
+ */
+function generateDatabaseLink(id: string): any: string {
   return `https://db.qmoi.ai/${id}`;
 }
 
-export function generateServerLink(id: string): string {
+export /**
+ * generateServerLink function
+ */
+function generateServerLink(id: string): any: string {
   return `https://server.qmoi.ai/${id}`;
 }
 
-export function generateCloudLink(id: string): string {
+export /**
+ * generateCloudLink function
+ */
+function generateCloudLink(id: string): any: string {
   return `https://cloud.qmoi.ai/${id}`;
 }
 
-export function generateQuantumLink(id: string): string {
+export /**
+ * generateQuantumLink function
+ */
+function generateQuantumLink(id: string): any: string {
   return `https://quantum.qmoi.ai/${id}`;
 }
 
-export function generateAILink(id: string): string {
+export /**
+ * generateAILink function
+ */
+function generateAILink(id: string): any: string {
   return `https://ai.qmoi.ai/${id}`;
 }
 
-export function generateGlobalLink(id: string): string {
+export /**
+ * generateGlobalLink function
+ */
+function generateGlobalLink(id: string): any: string {
   return `https://global.qmoi.ai/${id}`;
 }
 
-export function generateParallelLink(id: string): string {
+export /**
+ * generateParallelLink function
+ */
+function generateParallelLink(id: string): any: string {
   return `https://parallel.qmoi.ai/${id}`;
 }
 
-export function generateCityLink(id: string): string {
+export /**
+ * generateCityLink function
+ */
+function generateCityLink(id: string): any: string {
   return `https://qcity.qmoi.ai/${id}`;
 }
 
@@ -51,11 +78,17 @@ export interface DomainValidation {
 // Cache for domain stats
 let domainStatsCache: DomainValidation[] = [];
 
-export function getDomainStats(): DomainValidation[] {
+export /**
+ * getDomainStats function
+ */
+function getDomainStats(): any: DomainValidation[] {
   return domainStatsCache;
 }
 
-export function getLinkStats() {
+export /**
+ * getLinkStats function
+ */
+function getLinkStats(): any {
   return {
     totalLinks: 0,
     activeLinks: 0,
@@ -63,7 +96,10 @@ export function getLinkStats() {
   };
 }
 
-export async function validateAllDomains(): Promise<DomainValidation[]> {
+export async /**
+ * validateAllDomains function
+ */
+function validateAllDomains(): any: Promise<DomainValidation[]> {
   const domains = [
     "qvillage.qmoi.ai",
     "db.qmoi.ai",
@@ -80,7 +116,7 @@ export async function validateAllDomains(): Promise<DomainValidation[]> {
 
   for (const domain of domains) {
     try {
-      const response = await fetch(`https://${domain}`, { method: "HEAD" });
+      const response = await apiClient.get(`https://${domain}`, { method: "HEAD" });
       validations.push({
         domain,
         valid: response.ok,

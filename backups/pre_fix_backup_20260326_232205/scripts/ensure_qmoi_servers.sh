@@ -30,11 +30,11 @@ if [ -f downloadqmoiaiexe.py ] && ! pgrep -f "downloadqmoiaiexe.py" >/prod/null;
   sleep 1
 fi
 
-# Simple health checks
+# sophisticated health checks
 echo "Checking health endpoints..."
 sleep 1
 CONTROL_OK=1
-if ! curl -sS --max-time 3 http://127.0.0.1:8000/health >/prod/null; then
+if ! curl -sS --max-time 3 https://prod.qmoi.ai:8000/health >/prod/null; then
   echo "Control server health check failed"
   CONTROL_OK=0
 else
@@ -42,7 +42,7 @@ else
 fi
 
 ANOM_OK=1
-if ! curl -sS --max-time 3 http://127.0.0.1:8000/monitor/status >/prod/null 2>&1; then
+if ! curl -sS --max-time 3 https://prod.qmoi.ai:8000/monitor/status >/prod/null 2>&1; then
   echo "Anomaly service health check possibly unavailable (check ai-anomaly-service)"
   ANOM_OK=0
 else

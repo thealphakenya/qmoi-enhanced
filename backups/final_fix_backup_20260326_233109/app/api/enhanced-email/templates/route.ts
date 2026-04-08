@@ -5,11 +5,14 @@
 
 // production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextRequest, NextResponse } from "next/server";
-import { qmoiEnhancedEmailService } from "@/lib/enhanced-email-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/enhanced-email-service";
 
 // GET /api/enhanced-email/templates - Get email templates
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get("category");
@@ -32,7 +35,10 @@ export async function GET(request: NextRequest) {
 }
 
 // POST /api/enhanced-email/templates - Create email standard
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
 

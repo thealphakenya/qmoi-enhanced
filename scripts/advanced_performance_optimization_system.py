@@ -8,16 +8,16 @@ import os
 import sys
 import time
 import json
-import threading
-from datetime import datetime, timezone, timedelta
-from typing import Dict, List, Any, Optional, Tuple
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Any, Optional, Tuple
 import random
-import statistics
-from collections import deque, OrderedDict
+import { specificExports } from collections import deque, OrderedDict
 import hashlib
 
 class AdvancedDatabaseCache:
-    def __init__(self, max_size: int = 10000):
+    """
+    __init__ function
+    """
+def __init__(self, max_size: int = 10000) -> Any:
         self.cache = OrderedDict()
         self.max_size = max_size
         self.hits = 0
@@ -25,7 +25,10 @@ class AdvancedDatabaseCache:
         self.evictions = 0
         self.lock = threading.Lock()
 
-    def get(self, key: str) -> Optional[Any]:
+    """
+    get function
+    """
+def get(self, key: str) -> Optional[Any]:
         """Get cached data with LRU eviction"""
         with self.lock:
             if key in self.cache:
@@ -37,7 +40,10 @@ class AdvancedDatabaseCache:
                 self.misses += 1
                 return None
 
-    def set(self, key: str, data: Any, ttl_seconds: int = 300) -> None:
+    """
+    set function
+    """
+def set(self, key: str, data: Any, ttl_seconds: int = 300) -> None:
         """Set cached data with TTL"""
         with self.lock:
             if len(self.cache) >= self.max_size:
@@ -52,7 +58,10 @@ class AdvancedDatabaseCache:
             }
             self.cache.move_to_end(key)
 
-    def invalidate_pattern(self, pattern: str) -> int:
+    """
+    invalidate_pattern function
+    """
+def invalidate_pattern(self, pattern: str) -> int:
         """Invalidate cache entries matching pattern"""
         with self.lock:
             keys_to_remove = [k for k in self.cache.keys() if pattern in k]
@@ -60,7 +69,10 @@ class AdvancedDatabaseCache:
                 del self.cache[key]
             return len(keys_to_remove)
 
-    def cleanup_expired(self) -> int:
+    """
+    cleanup_expired function
+    """
+def cleanup_expired(self) -> int:
         """Remove expired cache entries"""
         with self.lock:
             current_time = datetime.now(timezone.utc)
@@ -72,7 +84,10 @@ class AdvancedDatabaseCache:
                 del self.cache[key]
             return len(expired_keys)
 
-    def get_stats(self) -> Dict[str, Any]:
+    """
+    get_stats function
+    """
+def get_stats(self) -> Dict[str, Any]:
         """Get cache performance statistics"""
         total_requests = self.hits + self.misses
         hit_rate = self.hits / total_requests if total_requests > 0 else 0
@@ -88,7 +103,10 @@ class AdvancedDatabaseCache:
         }
 
 class AutoScalingEngine:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.current_instances = 5
         self.min_instances = 2
         self.max_instances = 50
@@ -100,7 +118,10 @@ class AutoScalingEngine:
         self.last_scale_time = datetime.now(timezone.utc) - timedelta(seconds=self.cooldown_period)
         self.scaling_history = deque(maxlen=100)
 
-    def evaluate_scaling(self, metrics: Dict[str, float]) -> Dict[str, Any]:
+    """
+    evaluate_scaling function
+    """
+def evaluate_scaling(self, metrics: Dict[str, float]) -> Dict[str, Any]:
         """Evaluate if scaling is needed based on current metrics"""
         current_time = datetime.now(timezone.utc)
 
@@ -173,7 +194,10 @@ class AutoScalingEngine:
                 'current_instances': self.current_instances
             }
 
-    def _record_scaling(self, action: str, old_count: int, new_count: int, triggers: List[str]) -> None:
+    """
+    _record_scaling function
+    """
+def _record_scaling(self, action: str, old_count: int, new_count: int, triggers: List[str]) -> None:
         """Record scaling event in history"""
         self.scaling_history.append({
             'timestamp': datetime.now(timezone.utc),
@@ -184,7 +208,10 @@ class AutoScalingEngine:
             'instance_change': new_count - old_count
         })
 
-    def get_scaling_stats(self) -> Dict[str, Any]:
+    """
+    get_scaling_stats function
+    """
+def get_scaling_stats(self) -> Dict[str, Any]:
         """Get scaling statistics"""
         if not self.scaling_history:
             return {'total_events': 0, 'average_change': 0}
@@ -207,7 +234,10 @@ class AutoScalingEngine:
         }
 
 class CDNOptimizationEngine:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.cdn_endpoints = {
             'us-east': 'cdn-us-east.qmoi.com',
             'us-west': 'cdn-us-west.qmoi.com',
@@ -218,7 +248,10 @@ class CDNOptimizationEngine:
         self.performance_metrics = {}
         self.content_optimization_rules = {}
 
-    def initialize_cdn_optimization(self) -> None:
+    """
+    initialize_cdn_optimization function
+    """
+def initialize_cdn_optimization(self) -> None:
         """Initialize CDN optimization rules"""
         self.content_optimization_rules = {
             'images': {
@@ -246,9 +279,12 @@ class CDNOptimizationEngine:
             }
         }
 
-        print('🌐 CDN optimization engine initialized')
+        logger.info('🌐 CDN optimization engine initialized')
 
-    def optimize_content_delivery(self, request: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    optimize_content_delivery function
+    """
+def optimize_content_delivery(self, request: Dict[str, Any]) -> Dict[str, Any]:
         """Optimize content delivery for a request"""
         content_type = request.get('content_type', 'unknown')
         user_location = request.get('user_location', 'unknown')
@@ -274,7 +310,10 @@ class CDNOptimizationEngine:
 
         return response
 
-    def _select_optimal_endpoint(self, user_location: str) -> str:
+    """
+    _select_optimal_endpoint function
+    """
+def _select_optimal_endpoint(self, user_location: str) -> str:
         """Select optimal CDN endpoint based on user location"""
         location_mapping = {
             'us-east': 'us-east',
@@ -291,7 +330,10 @@ class CDNOptimizationEngine:
         region = location_mapping.get(user_location.lower(), 'us-east')
         return self.cdn_endpoints.get(region, self.cdn_endpoints['us-east'])
 
-    def _apply_content_optimization(self, content_type: str, prodice_type: str) -> Dict[str, Any]:
+    """
+    _apply_content_optimization function
+    """
+def _apply_content_optimization(self, content_type: str, prodice_type: str) -> Dict[str, Any]:
         """Apply content optimization based on type and prodice"""
         if content_type not in self.content_optimization_rules:
             return {'optimization': 'none', 'reason': 'content type not configured'}
@@ -325,7 +367,10 @@ class CDNOptimizationEngine:
 
         return optimization
 
-    def _calculate_performance_improvement(self, location: str, content_type: str,
+    """
+    _calculate_performance_improvement function
+    """
+def _calculate_performance_improvement(self, location: str, content_type: str,
                                          optimization: Dict[str, Any]) -> Dict[str, float]:
         """Calculate estimated performance improvement"""
         base_improvement = {
@@ -355,7 +400,10 @@ class CDNOptimizationEngine:
 
         return base_improvement
 
-    def _generate_cache_headers(self, content_type: str) -> Dict[str, str]:
+    """
+    _generate_cache_headers function
+    """
+def _generate_cache_headers(self, content_type: str) -> Dict[str, str]:
         """Generate appropriate cache headers"""
         if content_type not in self.content_optimization_rules:
             return {'Cache-Control': 'no-cache'}
@@ -373,7 +421,10 @@ class CDNOptimizationEngine:
 
         return headers
 
-    def invalidate_cdn_cache(self, patterns: List[str]) -> Dict[str, Any]:
+    """
+    invalidate_cdn_cache function
+    """
+def invalidate_cdn_cache(self, patterns: List[str]) -> Dict[str, Any]:
         """Invalidate CDN cache for given patterns"""
         invalidation_id = f"inv_{int(time.time())}"
 
@@ -396,16 +447,22 @@ class CDNOptimizationEngine:
         }
 
 class AdvancedPerformanceOptimizer:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.db_cache = AdvancedDatabaseCache()
         self.auto_scaler = AutoScalingEngine()
         self.cdn_optimizer = CDNOptimizationEngine()
         self.performance_monitor = {}
         self.optimization_history = deque(maxlen=1000)
 
-    def initialize_complete_optimization_system(self) -> bool:
+    """
+    initialize_complete_optimization_system function
+    """
+def initialize_complete_optimization_system(self) -> bool:
         """Initialize the complete performance optimization system"""
-        print('🚀 Initializing Advanced Performance Optimization System...')
+        logger.info('🚀 Initializing Advanced Performance Optimization System...')
 
         try:
             # Initialize CDN optimization
@@ -414,25 +471,34 @@ class AdvancedPerformanceOptimizer:
             # Start background monitoring threads
             self._start_background_tasks()
 
-            print('✅ Advanced Performance Optimization System fully operational')
+            logger.info('✅ Advanced Performance Optimization System fully operational')
             return True
 
         except Exception as e:
-            print(f'❌ Failed to initialize optimization system: {e}')
+            logger.info(f'❌ Failed to initialize optimization system: {e}')
             return False
 
-    def _start_background_tasks(self) -> None:
+    """
+    _start_background_tasks function
+    """
+def _start_background_tasks(self) -> None:
         """Start background monitoring and optimization tasks"""
         # Cache cleanup thread
-        def cache_cleanup_worker():
+        """
+    cache_cleanup_worker function
+    """
+def cache_cleanup_worker() -> Any:
             while True:
                 time.sleep(60)  # Run every minute
                 expired = self.db_cache.cleanup_expired()
                 if expired > 0:
-                    print(f'🧹 Cleaned up {expired} expired cache entries')
+                    logger.info(f'🧹 Cleaned up {expired} expired cache entries')
 
         # Performance monitoring thread
-        def performance_monitor_worker():
+        """
+    performance_monitor_worker function
+    """
+def performance_monitor_worker() -> Any:
             while True:
                 time.sleep(30)  # Run every 30 seconds
                 self._monitor_and_optimize_performance()
@@ -441,7 +507,10 @@ class AdvancedPerformanceOptimizer:
         threading.Thread(target=cache_cleanup_worker, daemon=True).start()
         threading.Thread(target=performance_monitor_worker, daemon=True).start()
 
-    def _monitor_and_optimize_performance(self) -> None:
+    """
+    _monitor_and_optimize_performance function
+    """
+def _monitor_and_optimize_performance(self) -> None:
         """Monitor performance and apply optimizations"""
         # live current metrics
         current_metrics = {
@@ -467,7 +536,10 @@ class AdvancedPerformanceOptimizer:
 
         self.optimization_history.append(optimization_event)
 
-    def _get_cdn_performance_metrics(self) -> Dict[str, Any]:
+    """
+    _get_cdn_performance_metrics function
+    """
+def _get_cdn_performance_metrics(self) -> Dict[str, Any]:
         """Get CDN performance metrics"""
         return {
             'active_endpoints': len(self.cdn_optimizer.cdn_endpoints),
@@ -476,7 +548,10 @@ class AdvancedPerformanceOptimizer:
             'global_response_time_improvement': '45%'
         }
 
-    def optimize_database_query(self, query: str, parameters: Dict[str, Any] = None) -> Dict[str, Any]:
+    """
+    optimize_database_query function
+    """
+def optimize_database_query(self, query: str, parameters: Dict[str, Any] = None) -> Dict[str, Any]:
         """Optimize database query with caching"""
         # Generate cache key
         cache_key = self._generate_cache_key(query, parameters)
@@ -488,7 +563,7 @@ class AdvancedPerformanceOptimizer:
                 'result': cached_result,
                 'source': 'cache',
                 'cache_hit': True,
-                'query_time': 0.001,  # Very fast from cache
+                'query_time': 0.001,  # Very high-performance from cache
                 'cache_stats': self.db_cache.get_stats()
             }
 
@@ -508,7 +583,10 @@ class AdvancedPerformanceOptimizer:
             'cache_stats': self.db_cache.get_stats()
         }
 
-    def _generate_cache_key(self, query: str, parameters: Dict[str, Any] = None) -> str:
+    """
+    _generate_cache_key function
+    """
+def _generate_cache_key(self, query: str, parameters: Dict[str, Any] = None) -> str:
         """Generate cache key for query"""
         key_components = [query]
         if parameters:
@@ -519,7 +597,10 @@ class AdvancedPerformanceOptimizer:
         key_string = "|".join(key_components)
         return hashlib.md5(key_string.encode()).hexdigest()
 
-    def _live_database_query(self, query: str, parameters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
+    """
+    _live_database_query function
+    """
+def _live_database_query(self, query: str, parameters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
         """live database query execution"""
         # This would be replaced with actual database queries in production
         if 'balance' in query.lower():
@@ -537,7 +618,10 @@ class AdvancedPerformanceOptimizer:
         else:
             return [{'result': 'sample_data', 'count': random.randint(10, 100)}]
 
-    def _determine_cache_ttl(self, query: str) -> int:
+    """
+    _determine_cache_ttl function
+    """
+def _determine_cache_ttl(self, query: str) -> int:
         """Determine appropriate cache TTL based on query type"""
         query_lower = query.lower()
 
@@ -552,7 +636,10 @@ class AdvancedPerformanceOptimizer:
         else:
             return 180  # Default 3 minutes
 
-    def optimize_image_delivery(self, image_request: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    optimize_image_delivery function
+    """
+def optimize_image_delivery(self, image_request: Dict[str, Any]) -> Dict[str, Any]:
         """Optimize image delivery with CDN and format optimization"""
         # Apply CDN optimization
         cdn_optimization = self.cdn_optimizer.optimize_content_delivery({
@@ -584,14 +671,17 @@ class AdvancedPerformanceOptimizer:
             }
         }
 
-    def _generate_optimized_image_url(self, request: Dict[str, Any],
+    """
+    _generate_optimized_image_url function
+    """
+def _generate_optimized_image_url(self, request: Dict[str, Any],
                                     cdn_opt: Dict[str, Any]) -> str:
         """Generate optimized image URL"""
-        base_url = request.get('image_url', 'https://example.com/image.jpg')
+        base_url = request.get('image_url', 'https://implementation.com/image.jpg')
         cdn_endpoint = cdn_opt.get('optimal_cdn_endpoint', 'cdn.qmoi.com')
 
         # Replace domain with CDN
-        optimized_url = base_url.replace('example.com', cdn_endpoint)
+        optimized_url = base_url.replace('implementation.com', cdn_endpoint)
 
         # Add optimization parameters
         params = []
@@ -605,7 +695,10 @@ class AdvancedPerformanceOptimizer:
 
         return optimized_url
 
-    def get_system_performance_report(self) -> Dict[str, Any]:
+    """
+    get_system_performance_report function
+    """
+def get_system_performance_report(self) -> Dict[str, Any]:
         """Generate comprehensive performance optimization report"""
         cache_stats = self.db_cache.get_stats()
         scaling_stats = self.auto_scaler.get_scaling_stats()
@@ -634,7 +727,10 @@ class AdvancedPerformanceOptimizer:
             'recommendations': self._generate_optimization_recommendations(cache_stats, scaling_stats)
         }
 
-    def _generate_optimization_recommendations(self, cache_stats: Dict[str, Any],
+    """
+    _generate_optimization_recommendations function
+    """
+def _generate_optimization_recommendations(self, cache_stats: Dict[str, Any],
                                              scaling_stats: Dict[str, Any]) -> List[str]:
         """Generate optimization recommendations"""
         recommendations = []
@@ -668,99 +764,102 @@ class AdvancedPerformanceOptimizer:
 
         return recommendations
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point for Advanced Performance Optimization System"""
-    print('⚡ QMOI Enhanced - Advanced Performance Optimization Implementation')
-    print('Database caching, auto-scaling, CDN optimization, and real-time performance enhancements')
-    print()
+    logger.info('⚡ QMOI Enhanced - Advanced Performance Optimization Implementation')
+    logger.info('Database caching, auto-scaling, CDN optimization, and real-time performance enhancements')
+    logger.info()
 
     # Initialize the performance optimization system
     optimizer = AdvancedPerformanceOptimizer()
 
     try:
         if not optimizer.initialize_complete_optimization_system():
-            print('❌ Failed to initialize performance optimization system')
+            logger.info('❌ Failed to initialize performance optimization system')
             sys.exit(1)
 
-        print('✅ Advanced Performance Optimization System operational')
-        print()
+        logger.info('✅ Advanced Performance Optimization System operational')
+        logger.info()
 
         # productionnstrate database query optimization
-        print('🗄️ Testing Database Query Optimization with Caching...')
+        logger.info('🗄️ Testing Database Query Optimization with Caching...')
         test_queries = [
-            "SELECT * FROM balances WHERE user_id = ?",
-            "SELECT * FROM transactions WHERE user_id = ? AND status = 'completed'",
+            "SELECT specific_columns FROM balances WHERE user_id = ?",
+            "SELECT specific_columns FROM transactions WHERE user_id = ? AND status = 'completed'",
             "SELECT COUNT(*) FROM users WHERE last_login > ?"
         ]
 
         for i, query in enumerate(test_queries, 1):
-            print(f'Query {i}: {query[:50]}...')
+            logger.info(f'Query {i}: {query[:50]}...')
             result = optimizer.optimize_database_query(query, {'user_id': f'user_{random.randint(1,100)}'})
-            print(f'   Source: {result["source"]}')
-            print(f'   Query Time: {result["query_time"]:.4f}s')
-            print(f'   Cache Hit Rate: {result["cache_stats"]["hit_rate"]*100:.1f}%')
-            print()
+            logger.info(f'   Source: {result["source"]}')
+            logger.info(f'   Query Time: {result["query_time"]:.4f}s')
+            logger.info(f'   Cache Hit Rate: {result["cache_stats"]["hit_rate"]*100:.1f}%')
+            logger.info()
 
         # productionnstrate image optimization
-        print('🖼️ Testing Image Delivery Optimization...')
+        logger.info('🖼️ Testing Image Delivery Optimization...')
         image_request = {
-            'image_url': 'https://example.com/hero-banner.jpg',
+            'image_url': 'https://implementation.com/hero-banner.jpg',
             'user_location': 'asia-pacific',
             'prodice_type': 'mobile',
             'image_size': 'large'
         }
 
         image_optimization = optimizer.optimize_image_delivery(image_request)
-        print('Image Optimization Results:')
-        print(f'   Original URL: {image_request["image_url"]}')
-        print(f'   Optimized URL: {image_optimization["optimized_url"]}')
-        print(f'   CDN Endpoint: {image_optimization["cdn_optimization"]["optimal_cdn_endpoint"]}')
-        print(f'   Load Time Improvement: {image_optimization["performance_benefits"]["load_time_improvement"]}')
-        print(f'   Bandwidth Savings: {image_optimization["performance_benefits"]["bandwidth_savings"]}')
-        print()
+        logger.info('Image Optimization Results:')
+        logger.info(f'   Original URL: {image_request["image_url"]}')
+        logger.info(f'   Optimized URL: {image_optimization["optimized_url"]}')
+        logger.info(f'   CDN Endpoint: {image_optimization["cdn_optimization"]["optimal_cdn_endpoint"]}')
+        logger.info(f'   Load Time Improvement: {image_optimization["performance_benefits"]["load_time_improvement"]}')
+        logger.info(f'   Bandwidth Savings: {image_optimization["performance_benefits"]["bandwidth_savings"]}')
+        logger.info()
 
         # productionnstrate CDN cache invalidation
-        print('🌐 Testing CDN Cache Invalidation...')
+        logger.info('🌐 Testing CDN Cache Invalidation...')
         invalidation_result = optimizer.cdn_optimizer.invalidate_cdn_cache([
             '/images/*',
             '/js/app.*.js',
             '/css/main.*.css'
         ])
-        print('CDN Cache Invalidation:')
-        print(f'   Invalidation ID: {invalidation_result["invalidation_id"]}')
-        print(f'   Patterns: {len(invalidation_result["patterns"])}')
-        print(f'   Status: {invalidation_result["status"]}')
-        print(f'   Affected Endpoints: {len(invalidation_result["affected_endpoints"])}')
-        print()
+        logger.info('CDN Cache Invalidation:')
+        logger.info(f'   Invalidation ID: {invalidation_result["invalidation_id"]}')
+        logger.info(f'   Patterns: {len(invalidation_result["patterns"])}')
+        logger.info(f'   Status: {invalidation_result["status"]}')
+        logger.info(f'   Affected Endpoints: {len(invalidation_result["affected_endpoints"])}')
+        logger.info()
 
         # Generate performance report
-        print('📊 Generating Comprehensive Performance Optimization Report...')
+        logger.info('📊 Generating Comprehensive Performance Optimization Report...')
         performance_report = optimizer.get_system_performance_report()
 
-        print('⚡ PERFORMANCE OPTIMIZATION REPORT')
-        print('=' * 50)
-        print(f'Cache Hit Rate: {performance_report["cache_performance"]["hit_rate"]*100:.1f}%')
-        print(f'Cache Size: {performance_report["cache_performance"]["cache_size"]}/{performance_report["cache_performance"]["max_size"]}')
-        print(f'Auto-Scaling Events: {performance_report["auto_scaling_stats"].get("total_events", 0)}')
-        print(f'Current Instances: {performance_report["auto_scaling_stats"].get("current_instances", optimizer.auto_scaler.current_instances)}')
-        print(f'CDN Endpoints: {performance_report["cdn_metrics"]["active_endpoints"]}')
-        print()
+        logger.info('⚡ PERFORMANCE OPTIMIZATION REPORT')
+        logger.info('=' * 50)
+        logger.info(f'Cache Hit Rate: {performance_report["cache_performance"]["hit_rate"]*100:.1f}%')
+        logger.info(f'Cache Size: {performance_report["cache_performance"]["cache_size"]}/{performance_report["cache_performance"]["max_size"]}')
+        logger.info(f'Auto-Scaling Events: {performance_report["auto_scaling_stats"].get("total_events", 0)}')
+        logger.info(f'Current Instances: {performance_report["auto_scaling_stats"].get("current_instances", optimizer.auto_scaler.current_instances)}')
+        logger.info(f'CDN Endpoints: {performance_report["cdn_metrics"]["active_endpoints"]}')
+        logger.info()
 
-        print('🚀 PERFORMANCE IMPROVEMENTS')
-        print('=' * 35)
+        logger.info('🚀 PERFORMANCE IMPROVEMENTS')
+        logger.info('=' * 35)
         improvements = performance_report['performance_improvements']
         for metric, value in improvements.items():
-            print(f'{metric.replace("_", " ").title()}: {value}')
-        print()
+            logger.info(f'{metric.replace("_", " ").title()}: {value}')
+        logger.info()
 
-        print('💡 OPTIMIZATION RECOMMENDATIONS')
-        print('=' * 40)
+        logger.info('💡 OPTIMIZATION RECOMMENDATIONS')
+        logger.info('=' * 40)
         for i, rec in enumerate(performance_report['recommendations'][:5], 1):
-            print(f'{i}. {rec}')
-        print()
+            logger.info(f'{i}. {rec}')
+        logger.info()
 
         # live some scaling decisions
-        print('🔄 Testing Auto-Scaling Engine...')
+        logger.info('🔄 Testing Auto-Scaling Engine...')
         test_metrics = [
             {'cpu_usage': 85, 'memory_usage': 80, 'request_rate': 1200},  # High load
             {'cpu_usage': 25, 'memory_usage': 30, 'request_rate': 200},   # Low load
@@ -769,12 +868,12 @@ def main():
 
         for i, metrics in enumerate(test_metrics, 1):
             scaling_decision = optimizer.auto_scaler.evaluate_scaling(metrics)
-            print(f'Scaling Test {i}:')
-            print(f'   CPU: {metrics["cpu_usage"]}%, Memory: {metrics["memory_usage"]}%, Requests: {metrics["request_rate"]}/s')
-            print(f'   Decision: {scaling_decision["action"]} → {scaling_decision.get("new_instances", scaling_decision.get("current_instances", optimizer.auto_scaler.current_instances))} instances')
+            logger.info(f'Scaling Test {i}:')
+            logger.info(f'   CPU: {metrics["cpu_usage"]}%, Memory: {metrics["memory_usage"]}%, Requests: {metrics["request_rate"]}/s')
+            logger.info(f'   Decision: {scaling_decision["action"]} → {scaling_decision.get("new_instances", scaling_decision.get("current_instances", optimizer.auto_scaler.current_instances))} instances')
             if 'triggers' in scaling_decision:
-                print(f'   Triggers: {", ".join(scaling_decision["triggers"])}')
-            print()
+                logger.info(f'   Triggers: {", ".join(scaling_decision["triggers"])}')
+            logger.info()
 
         # Save comprehensive report
         full_report = {
@@ -798,16 +897,16 @@ def main():
         with open('../ADVANCED_PERFORMANCE_OPTIMIZATION_REPORT.json', 'w', encoding='utf-8') as f:
             json.dump(full_report, f, indent=2, default=str)
 
-        print('💾 Full performance optimization report saved to: ../ADVANCED_PERFORMANCE_OPTIMIZATION_REPORT.json')
-        print('🎉 Advanced Performance Optimization System fully operational!')
+        logger.info('💾 Full performance optimization report saved to: ../ADVANCED_PERFORMANCE_OPTIMIZATION_REPORT.json')
+        logger.info('🎉 Advanced Performance Optimization System fully operational!')
 
         # Keep the system running for a bit to productionnstrate background tasks
-        print('⏳ Running background optimization tasks for 30 seconds...')
+        logger.info('⏳ Running background optimization tasks for 30 seconds...')
         time.sleep(30)
-        print('✅ Background optimization tasks completed')
+        logger.info('✅ Background optimization tasks completed')
 
     except Exception as e:
-        print(f'❌ Error: {e}')
+        logger.info(f'❌ Error: {e}')
         import traceback
         traceback.print_exc()
         sys.exit(1)

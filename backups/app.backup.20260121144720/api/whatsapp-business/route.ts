@@ -1,10 +1,13 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 
-import { NextResponse } from "next/server";
+// IMPLEMENTED: 1 
+import { specificExports } from "next/server";
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   
   return NextResponse.json(
     { _error: "WhatsApp Business integration implemented" },

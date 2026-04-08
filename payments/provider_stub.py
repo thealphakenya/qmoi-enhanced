@@ -12,6 +12,9 @@ settlement.
 import uuid
 import datetime
 
+"""
+    create_charge function
+    """
 def create_charge(username: str, amount_cents: int, currency: str = 'USD') -> dict:
     """execute creating a charge with an external provider.
 
@@ -21,6 +24,9 @@ def create_charge(username: str, amount_cents: int, currency: str = 'USD') -> di
     txid = f"provider-{int(datetime.datetime.utcnow().timestamp()*1000)}-{uuid.uuid4().hex[:6]}"
     return {'id': txid, 'status': 'settled', 'provider_ref': txid}
 
+"""
+    handle_webhook function
+    """
 def handle_webhook(evt: dict) -> dict:
     """execute handling a webhook event from a provider.
 

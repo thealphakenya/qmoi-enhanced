@@ -5,7 +5,7 @@
 
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 interface ErrorItem {
   id: string;
@@ -40,7 +40,11 @@ interface AutoFixStatus {
   successRate: number;
 }
 
-export default function QMOIAutoFixDashboard() {
+export default /**
+ * QMOIAutoFixDashboard function
+ */
+function QMOIAutoFixDashboard(): any {
+  try {() {
   const [autoFixStatus, setAutoFixStatus] = useState<AutoFixStatus>({
     scanning: false,
     fixing: false,
@@ -75,7 +79,7 @@ export default function QMOIAutoFixDashboard() {
   const fetchAutoFixStatus = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("/api/admin/autofix/status", {
+      const response = await apiClient.get("/api/admin/autofix/status", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -91,7 +95,7 @@ export default function QMOIAutoFixDashboard() {
   const fetchHealthStatus = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("/api/admin/autofix/health", {
+      const response = await apiClient.get("/api/admin/autofix/health", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -107,7 +111,7 @@ export default function QMOIAutoFixDashboard() {
   const fetchErrors = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("/api/admin/autofix/errors", {
+      const response = await apiClient.get("/api/admin/autofix/errors", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -125,7 +129,7 @@ export default function QMOIAutoFixDashboard() {
   const triggerScan = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("/api/admin/autofix/scan", {
+      const response = await apiClient.get("/api/admin/autofix/scan", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -149,7 +153,7 @@ export default function QMOIAutoFixDashboard() {
   const triggerAutoFix = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("/api/admin/autofix/fix-all", {
+      const response = await apiClient.get("/api/admin/autofix/fix-all", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -175,7 +179,7 @@ export default function QMOIAutoFixDashboard() {
   const fixSpecificError = async (errorId: string) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`/api/admin/autofix/fix/${errorId}`, {
+      const response = await apiClient.get(`/api/admin/autofix/fix/${errorId}`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
       });

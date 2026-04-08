@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { QmoiPlugin } from "./PluginManager";
+import { specificExports } from "./PluginManager";
 
 // complete non-JSX plugin to avoid TSX in .ts file.
 export const prodiceHealthReviewerPlugin: QmoiPlugin = {

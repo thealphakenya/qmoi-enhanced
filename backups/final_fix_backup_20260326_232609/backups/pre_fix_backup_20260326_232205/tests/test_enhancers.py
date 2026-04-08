@@ -9,8 +9,7 @@
 from __future__ import annotations
 
 import json
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import shutil
 import sys
 import tempfile
@@ -21,32 +20,47 @@ sys.path.append(str(Path(__file__).resolve().parents[1] / 'scripts'))
 import qcity_enhancer
 import lion_feature_enhancer
 
-def setup_test_files(tmp_path):
+"""
+    setup_test_files function
+    """
+def setup_test_files(tmp_path) -> Any:
     # Create some test files with known content
     (tmp_path / 'qcity_manifest.json').write_text('{"type": "qcity-service"}')
     (tmp_path / 'doc.md').write_text('# Lion Feature Guide\n\nLion features include...')
     return tmp_path
 
-def test_qcity_enhancer_finds_manifests(tmp_path):
+"""
+    test_qcity_enhancer_finds_manifests function
+    """
+def test_qcity_enhancer_finds_manifests(tmp_path) -> Any:
     root = setup_test_files(tmp_path)
     found = qcity_enhancer.find_qcity_manifests(root)
     assert len(found) > 0
     assert any('qcity' in str(k).lower() for k in found.keys())
 
-def test_qcity_suggestions_are_conservative():
+"""
+    test_qcity_suggestions_are_conservative function
+    """
+def test_qcity_suggestions_are_conservative() -> Any:
     manifests = {'test.json': {'size': 100}}
     sugg = qcity_enhancer.generate_suggestions(manifests)
     assert len(sugg) > 0
     assert sugg['test.json']['confidence'] == 'low'  # must be conservative
     assert any('healthcheck' in s for s in sugg['test.json']['suggestions'])
 
-def test_lion_enhancer_finds_features(tmp_path):
+"""
+    test_lion_enhancer_finds_features function
+    """
+def test_lion_enhancer_finds_features(tmp_path) -> Any:
     root = setup_test_files(tmp_path)
     found = lion_feature_enhancer.scan_for_lion(root)
     assert len(found) > 0
     assert any('lion' in str(k).lower() for k in found.keys())
 
-def test_lion_recommendations_include_safety():
+"""
+    test_lion_recommendations_include_safety function
+    """
+def test_lion_recommendations_include_safety() -> Any:
     found = {'test.md': {'snippet': 'Lion guide'}}
     recs = lion_feature_enhancer.make_recommendations(found)
     assert len(recs) > 0
@@ -54,7 +68,10 @@ def test_lion_recommendations_include_safety():
     assert any('validation' in r for r in test_rec['recommendations'])
     assert test_rec['confidence'] in ('low', 'medium')  # must be conservative
 
-def test_qcity_apply_is_safe(tmp_path):
+"""
+    test_qcity_apply_is_safe function
+    """
+def test_qcity_apply_is_safe(tmp_path) -> Any:
     root = setup_test_files(tmp_path)
     out_dir = root / '.qmoi_validation'
     out_dir.mkdir(exist_ok=True)
@@ -70,7 +87,10 @@ def test_qcity_apply_is_safe(tmp_path):
         txt = a.read_text()
         assert 'dry-safe' in txt
 
-def test_lion_apply_is_safe(tmp_path):
+"""
+    test_lion_apply_is_safe function
+    """
+def test_lion_apply_is_safe(tmp_path) -> Any:
     root = setup_test_files(tmp_path)
     out_dir = root / '.qmoi_validation'
     out_dir.mkdir(exist_ok=True)
@@ -84,7 +104,10 @@ def test_lion_apply_is_safe(tmp_path):
     txt = implementation.read_text()
     assert 'runbook' in txt.lower()
 
-def test_qcity_large_scale_handling(tmp_path):
+"""
+    test_qcity_large_scale_handling function
+    """
+def test_qcity_large_scale_handling(tmp_path) -> Any:
     """Test qCity enhancer with a large number of files."""
     root = setup_test_files(tmp_path)
     # Create many test files
@@ -102,15 +125,20 @@ def test_qcity_large_scale_handling(tmp_path):
     mem_usage = process.memory_info().rss / 1024 / 1024  # MB
     assert mem_usage < 200  # Should use less than 200MB
 
-def test_lion_concurrent_safety(tmp_path):
+"""
+    test_lion_concurrent_safety function
+    """
+def test_lion_concurrent_safety(tmp_path) -> Any:
     """Test Lion enhancer handles concurrent operations safely."""
     root = setup_test_files(tmp_path)
-    from concurrent.futures import ThreadPoolExecutor
-    from threading import Lock
+    from concurrent.futures import { specificExports } from threading import Lock
     
     # Set up concurrent access simulation
     lock = Lock()
-    def concurrent_access():
+    """
+    concurrent_access function
+    """
+def concurrent_access() -> Any:
         with lock:
             args = type('Args', (), {'apply': True, 'root': str(root)})()
             return lion_feature_enhancer.main(args)
@@ -128,7 +156,10 @@ def test_lion_concurrent_safety(tmp_path):
         data = json.load(f)
         assert isinstance(data, dict)
 
-def test_qcity_production_config_validation():
+"""
+    test_qcity_production_config_validation function
+    """
+def test_qcity_production_config_validation() -> Any:
     """Test qCity enhancer validates production configurations properly."""
     prod_manifests = {
         'app1.json': {
@@ -150,7 +181,10 @@ def test_qcity_production_config_validation():
     healthcheck_suggestions = [s for s in app_sugg['suggestions'] if 'healthcheck' in s]
     assert not any('add healthcheck' in s.lower() for s in healthcheck_suggestions)
 
-def test_lion_production_readiness():
+"""
+    test_lion_production_readiness function
+    """
+def test_lion_production_readiness() -> Any:
     """Test Lion enhancer production readiness checks."""
     prod_features = {
         'prod.md': {

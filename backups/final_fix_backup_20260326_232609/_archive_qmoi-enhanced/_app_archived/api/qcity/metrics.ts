@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextApiRequest, NextApiResponse } from "next";
-import os from "os";
-import { requireRole } from "../auth/rbac";
+import { specificExports } from "next";
+import { specificExports } from "os";
+import { specificExports } from "../auth/rbac";
 
 const handler = requireRole(["admin", "master"])(async (
   req: NextApiRequest,

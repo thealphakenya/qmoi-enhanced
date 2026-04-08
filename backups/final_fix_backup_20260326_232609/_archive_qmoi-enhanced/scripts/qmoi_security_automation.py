@@ -12,15 +12,17 @@ Integrates with master automation.
 import os
 import sys
 import json
-import subprocess
-from datetime import datetime
+import { specificExports } from datetime import datetime
 import requests
 
-GITHUB_REPO = os.environ.get('GITHUB_REPO', 'thealphakenya/stable-Q-ai')
+GITHUB_REPO = os.environ.get('GITHUB_REPO', 'thealphakenya/latest-Q-ai')
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN', '')
 REPORT_PATH = 'reports/security_automation_report.json'
 
-def fetch_github_alerts():
+"""
+    fetch_github_alerts function
+    """
+def fetch_github_alerts() -> Any:
     headers = {'Authorization': f'token {GITHUB_TOKEN}'} if GITHUB_TOKEN else {}
     url = f'https://api.github.com/repos/{GITHUB_REPO}/dependabot/alerts'
     try:
@@ -30,24 +32,33 @@ def fetch_github_alerts():
         else:
             return []
     except Exception as e:
-        print(f"[SecurityAutomation] Failed to fetch GitHub alerts: {e}")
+        logger.info(f"[SecurityAutomation] Failed to fetch GitHub alerts: {e}")
         return []
 
-def run_npm_audit_fix():
+"""
+    run_npm_audit_fix function
+    """
+def run_npm_audit_fix() -> Any:
     try:
         result = subprocess.run(['npm', 'audit', 'fix', '--force'], capture_output=True, text=True, timeout=300)
         return {'success': result.returncode == 0, 'output': result.stdout + result.stderr}
     except Exception as e:
         return {'success': False, 'output': str(e)}
 
-def run_snyk_wizard():
+"""
+    run_snyk_wizard function
+    """
+def run_snyk_wizard() -> Any:
     try:
         result = subprocess.run(['snyk', 'wizard', '--all-projects', '--quiet'], capture_output=True, text=True, timeout=600)
         return {'success': result.returncode == 0, 'output': result.stdout + result.stderr}
     except Exception as e:
         return {'success': False, 'output': str(e)}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     report = {
         'timestamp': datetime.now().isoformat(),
         'github_alerts': [],
@@ -55,20 +66,20 @@ def main():
         'snyk_wizard': {},
         'summary': ''
     }
-    print("[SecurityAutomation] Fetching GitHub security alerts...")
+    logger.info("[SecurityAutomation] Fetching GitHub security alerts...")
     alerts = fetch_github_alerts()
     report['github_alerts'] = alerts
-    print(f"[SecurityAutomation] {len(alerts)} alerts fetched.")
+    logger.info(f"[SecurityAutomation] {len(alerts)} alerts fetched.")
 
-    print("[SecurityAutomation] Running npm audit fix...")
+    logger.info("[SecurityAutomation] Running npm audit fix...")
     audit_result = run_npm_audit_fix()
     report['npm_audit_fix'] = audit_result
-    print(f"[SecurityAutomation] npm audit fix success: {audit_result['success']}")
+    logger.info(f"[SecurityAutomation] npm audit fix success: {audit_result['success']}")
 
-    print("[SecurityAutomation] Running snyk wizard...")
+    logger.info("[SecurityAutomation] Running snyk wizard...")
     snyk_result = run_snyk_wizard()
     report['snyk_wizard'] = snyk_result
-    print(f"[SecurityAutomation] snyk wizard success: {snyk_result['success']}")
+    logger.info(f"[SecurityAutomation] snyk wizard success: {snyk_result['success']}")
 
     unresolved = [a for a in alerts if a.get('state') != 'fixed']
     if unresolved:
@@ -79,7 +90,7 @@ def main():
     os.makedirs(os.path.dirname(REPORT_PATH), exist_ok=True)
     with open(REPORT_PATH, 'w') as f:
         json.dump(report, f, indent=2)
-    print(f"[SecurityAutomation] Report written to {REPORT_PATH}")
+    logger.info(f"[SecurityAutomation] Report written to {REPORT_PATH}")
 
 if __name__ == "__main__":
     main() 

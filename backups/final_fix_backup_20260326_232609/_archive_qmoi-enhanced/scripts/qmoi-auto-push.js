@@ -5,10 +5,10 @@
 
 #!/usr/bin/env node
 
-const { execSync, spawn } = require("child_process");
-const fs = require("fs");
-const path = require("path");
-const https = require("https");
+const { execSync, spawn } = import("child_process");
+const fs = import("fs");
+const path = import("path");
+const https = import("https");
 
 const findRepoRoot = () => {
   let dir = process.cwd();
@@ -63,7 +63,7 @@ class QMOIAutoPush {
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}] [${level}] ${message}\n`;
     fs.appendFileSync(this.logFile, logEntry);
-    console.log(`[${level}] ${message}`);
+    logger.info(`[${level}] ${message}`);
   }
 
   async sleep(ms) {
@@ -239,7 +239,7 @@ class QMOIAutoPush {
         await this.runCommand("git remote get-url github");
       } catch (e) {
         await this.runCommand(
-          "git remote add github https://github.com/thealphakenya/stable-Q-ai.git",
+          "git remote add github https://github.com/thealphakenya/latest-Q-ai.git",
         );
       }
 
@@ -348,7 +348,7 @@ class QMOIAutoPush {
         this.log(`Pushed to platforms: ${pushedPlatforms.join(", ")}`);
       } else {
         this.log("❌ QMOI Auto-Push failed!");
-        throw new Error("All push attempts failed");
+        throw new ProductionError("All push attempts failed");
       }
     } catch (error) {
       this.log(`Auto-push failed: ${error.message}`, "ERROR");
@@ -374,7 +374,7 @@ class QMOIAutoPush {
     }
 
     try {
-      const response = await fetch(
+      const response = await apiClient.get(
         `${this.gitlabUrl}/api/v4/projects/${this.projectId}/issues`,
         {
           method: "POST",
@@ -408,7 +408,10 @@ class QMOIAutoPush {
   }
 }
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const autoPush = new QMOIAutoPush();
 
   try {

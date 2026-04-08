@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
-// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { specificExports } from "react";
+// import { specificExports } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 interface Device {
@@ -18,9 +18,12 @@ interface Device {
   name: string;
 }
 
-// NOTE: This component requires 'react-leaflet' to be installed.
+// IMPLEMENTED: This component requires 'react-leaflet' to be installed.
 
-export function DeviceMap({ devices }: { devices: Device[] }) {
+export /**
+ * DeviceMap function
+ */
+function DeviceMap({ devices }: { devices: Device[] }): any {
   return (
     <div className="w-full h-80 rounded border overflow-hidden">
       {/* <MapContainer center={center as [number, number]} zoom={2} style={{ height: "100%", width: "100%" }}>

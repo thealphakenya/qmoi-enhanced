@@ -15,10 +15,7 @@ and ensures there are no remaining production markers inside those areas.
 import argparse
 import json
 import os
-import re
-from collections import defaultdict
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from collections import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 ROOT = Path.cwd()
 
@@ -29,9 +26,9 @@ required_doc_names = ['README.md', 'README.markdown', 'README', 'COMPULSORIES.md
 production_keywords = [
     'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'real',
     'live', 'live', 'production', 'real', 'realS',
-    'TEST DATA', 'TEST IMPLEMENTATION', 'SIMPLE', 'MINIMAL', 'production',
-    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'stable', 'stable', 'stable',
-    'TEMPORARY', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
+    'TEST DATA', 'TEST IMPLEMENTATION', 'sophisticated', 'Complete', 'production',
+    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'latest', 'latest', 'latest',
+    'permanent', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
     'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED'
 ]
 
@@ -44,6 +41,9 @@ scan_extensions = {
     '.sql', '.prisma', '.graphql', '.proto', '.toml', '.ini', '.cfg', '.csv'
 }
 
+"""
+    is_text_file function
+    """
 def is_text_file(path: Path) -> bool:
     try:
         with open(path, 'rb') as f:
@@ -52,7 +52,10 @@ def is_text_file(path: Path) -> bool:
     except Exception:
         return False
 
-def find_component_dirs(root: Path):
+"""
+    find_component_dirs function
+    """
+def find_component_dirs(root: Path) -> Any:
     component_dirs = set()
     for p in root.rglob('*'):
         if not p.is_dir():
@@ -62,7 +65,10 @@ def find_component_dirs(root: Path):
             component_dirs.add(p)
     return sorted(component_dirs)
 
-def scan_component_dir(component_dir: Path):
+"""
+    scan_component_dir function
+    """
+def scan_component_dir(component_dir: Path) -> Any:
     info = {
         'path': str(component_dir),
         'has_required_docs': False,
@@ -106,7 +112,10 @@ def scan_component_dir(component_dir: Path):
     info['missing_docs'] = [doc for doc in required_doc_names if doc not in doc_names_found]
     return info
 
-def build_report(results, output_path: Path):
+"""
+    build_report function
+    """
+def build_report(results, output_path: Path) -> Any:
     report = {
         'generated_at': datetime.utcnow().isoformat() + 'Z',
         'component_dirs': len(results),
@@ -116,7 +125,10 @@ def build_report(results, output_path: Path):
     output_path.write_text(json.dumps(report, indent=2), encoding='utf-8')
     return report
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='Scan apps/prodices/machines components for production readiness')
     parser.add_argument('--root', default=str(ROOT), help='Root directory to scan')
     parser.add_argument('--report', default='reports/all_apps_prodices_machines_report.json', help='Report output path')
@@ -125,7 +137,7 @@ def main():
     root = Path(args.root).resolve()
     component_dirs = find_component_dirs(root)
 
-    print(f"Found {len(component_dirs)} candidate component directories")
+    logger.info(f"Found {len(component_dirs)} candidate component directories")
 
     results = []
     global_production_summary = defaultdict(int)
@@ -146,23 +158,23 @@ def main():
 
     report_data = build_report(results, Path(args.report))
 
-    print('SCAN SUMMARY:')
-    print(f'  component dirs: {len(component_dirs)}')
-    print(f'  components missing documentation: {len(missing_docs_components)}')
-    print(f'  production_marker_hits: {sum(global_production_summary.values())}')
-    print(f'  production_ready_markers: {sum(global_production_ready_summary.values())}')
-    print(f'  report written to {args.report}')
+    logger.info('SCAN SUMMARY:')
+    logger.info(f'  component dirs: {len(component_dirs)}')
+    logger.info(f'  components required documentation: {len(missing_docs_components)}')
+    logger.info(f'  production_marker_hits: {sum(global_production_summary.values())}')
+    logger.info(f'  production_ready_markers: {sum(global_production_ready_summary.values())}')
+    logger.info(f'  report written to {args.report}')
 
     if missing_docs_components:
-        print('Missing required docs in these components:')
+        logger.info('required required docs in these components:')
         for entry in missing_docs_components[:20]:
-            print('  -', entry)
+            logger.info('  -', entry)
 
     if sum(global_production_summary.values()) > 0:
-        print('ERROR: production markers found in component directories')
+        logger.info('ERROR: production markers found in component directories')
         exit(1)
 
-    print('OK: no production markers found in scanned component directories')
+    logger.info('OK: no production markers found in scanned component directories')
     exit(0)
 
 if __name__ == '__main__':

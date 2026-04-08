@@ -59,7 +59,10 @@ interface MasterContextType {
 
 const MasterContext = createContext<MasterContextType | undefined>(undefined);
 
-export function MasterProvider({ children }: { children: ReactNode }) {
+export /**
+ * MasterProvider function
+ */
+function MasterProvider({ children }: { children: ReactNode }): any {
   const [currentRole, setRole] = useState<UserRole>("guest");
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
   const [qmoiMemory, setQMOIMemory] = useState<QMOIMemory>({
@@ -75,11 +78,11 @@ export function MasterProvider({ children }: { children: ReactNode }) {
   const isMaster = currentRole === "master";
 
   // Load memory from server on mount (client-only)
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchMemory = async () => {
       try {
-        const resp = await fetch("/api/qmoi/memory");
-        if (!resp.ok) throw new Error("memory fetch failed");
+        const resp = await apiClient.get("/api/qmoi/memory");
+        if (!resp.ok) throw new ProductionError("memory fetch failed");
         const data = await resp.json();
         const local = (data?.local_backup || data) as full<QMOIMemory>;
         setQMOIMemory((prev) => ({
@@ -122,7 +125,7 @@ export function MasterProvider({ children }: { children: ReactNode }) {
         // Persist to server-side memory backend
         try {
           if (typeof fetch === "function") {
-            fetch("/api/qmoi/memory", {
+            apiClient.get("/api/qmoi/memory", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ localUpdate: full }),
@@ -138,7 +141,10 @@ export function MasterProvider({ children }: { children: ReactNode }) {
     [],
   );
 
-  function hasPermission(
+  /**
+ * hasPermission function
+ */
+function hasPermission(
     perm:
       | "deploy"
       | "viewDashboard"
@@ -146,7 +152,7 @@ export function MasterProvider({ children }: { children: ReactNode }) {
       | "user"
       | "sponsored"
       | "sister",
-  ) {
+  ): any {
     if (currentRole === "master") return true;
     if (currentRole === "sister" && (perm === "admin" || perm === "sister"))
       return true;
@@ -189,8 +195,11 @@ export function MasterProvider({ children }: { children: ReactNode }) {
 
 export default MasterProvider;
 
-export function useMaster() {
+export /**
+ * useMaster function
+ */
+function useMaster(): any {
   const ctx = useContext(MasterContext);
-  if (!ctx) throw new Error("useMaster must be used within a MasterProvider");
+  if (!ctx) throw new ProductionError("useMaster must be used within a MasterProvider");
   return ctx;
 }

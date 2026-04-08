@@ -37,5 +37,9 @@
       ],
       "action": "monitor_only_no_enforcement"
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:35.734892"
 }

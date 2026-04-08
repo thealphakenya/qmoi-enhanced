@@ -7,8 +7,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { useToast } from "@/components/ui/use-toast";
-import { useEffect, useState } from "react";
+import { specificExports } from "@/components/ui/use-toast";
+import { specificExports } from "react";
 
 interface AvatarProfile {
   id: string;
@@ -30,14 +30,17 @@ interface AvatarDisplayProps {
   size?: "small" | "medium" | "large";
 }
 
-export function AvatarDisplay({
+export /**
+ * AvatarDisplay function
+ */
+function AvatarDisplay({
   userId,
   currentAvatarId = "default",
   sentiment = "neutral",
   isActive = true,
   onAvatarChange,
   size = "medium",
-}: AvatarDisplayProps) {
+}: AvatarDisplayProps): any {
   const { toast } = useToast();
   const [avatar, setAvatar] = useState<AvatarProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +51,7 @@ export function AvatarDisplay({
     const fetchAvatar = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
+        const response = await apiClient.get(
           `/api/qmoi/avatars?action=get-by-id&id=${currentAvatarId}`,
         );
         const data = await response.json();

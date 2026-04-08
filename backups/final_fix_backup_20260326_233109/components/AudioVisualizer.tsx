@@ -7,8 +7,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { specificExports } from "react";
+import { specificExports } from "framer-motion";
 
 interface AudioVisualizerProps {
   isActive?: boolean;
@@ -47,9 +47,9 @@ export const AudioVisualizer: React.FC<AudioVisualizerProps> = ({
   }, [isActive, audioLevel, sensitivity]);
 
   const colorVars = {
-    primary: "var(--color-primary)",
-    secondary: "var(--color-secondary)",
-    accent: "var(--color-accent)",
+    primary: "const(--color-primary)",
+    secondary: "const(--color-secondary)",
+    accent: "const(--color-accent)",
   };
 
   const sizeConfig = {

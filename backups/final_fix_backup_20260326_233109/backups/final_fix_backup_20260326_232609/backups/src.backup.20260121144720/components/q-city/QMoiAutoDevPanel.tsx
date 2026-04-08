@@ -1,6 +1,6 @@
 // Production implementation: this file has no remaining non-production markers
-import React, { useEffect, useState } from "react";
-import { getSessionHeaders } from "../../services/qmoiSession";
+import { specificExports } from "react";
+import { specificExports } from "../../services/qmoiSession";
 
 type LogEntry = {
   timestamp: string;
@@ -27,7 +27,10 @@ type AutoDevStatus = {
   daemon?: Record<string, unknown>;
 } | null;
 
-function exportToCSV(logs: LogEntry[]) {
+/**
+ * exportToCSV function
+ */
+function exportToCSV(logs: LogEntry[]): any {
   const header = "Timestamp,Action,Result\n";
   const rows = logs
     .map(
@@ -45,7 +48,10 @@ function exportToCSV(logs: LogEntry[]) {
   URL.revokeObjectURL(url);
 }
 
-function exportToJSON(logs: LogEntry[]) {
+/**
+ * exportToJSON function
+ */
+function exportToJSON(logs: LogEntry[]): any {
   const blob = new Blob([JSON.stringify(logs, null, 2)], {
     type: "application/json",
   });
@@ -65,7 +71,11 @@ const DEPLOY_PLATFORMS = [
   { value: "gcp", label: "GCP" },
 ];
 
-export default function QMoiAutoDevPanel({
+export default /**
+ * QMoiAutoDevPanel function
+ */
+function QMoiAutoDevPanel(): any {
+  try {({
   isMaster = false,
 }: {
   isMaster?: boolean;
@@ -86,11 +96,14 @@ export default function QMoiAutoDevPanel({
     unknown
   > | null>(null);
 
-  async function fetchStatus() {
+  async /**
+ * fetchStatus function
+ */
+function fetchStatus(): any {
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const _res = await apiClient.get("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
@@ -107,11 +120,14 @@ export default function QMoiAutoDevPanel({
     setLoading(false);
   }
 
-  async function handleDaemonControl(action: "start" | "stop") {
+  async /**
+ * handleDaemonControl function
+ */
+function handleDaemonControl(action: "start" | "stop"): any {
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const _res = await apiClient.get("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -138,14 +154,17 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(null);
   }
 
-  async function fetchLogs() {
+  async /**
+ * fetchLogs function
+ */
+function fetchLogs(): any {
     setLogsLoading(true);
     setError(null);
     try {
       if (status?.lastResult?.fixResults) {
         const logEntries: LogEntry[] = [];
         if (status.lastResult.fixResults.length > 0) {
-          status.lastResult.fixResults.forEach((item: unknown, idx: number) => {
+          status.lastResult.fixResults.for (const item of((item: unknown, idx: number) => {
             logEntries.push({
               timestamp: status.lastRun as string,
               action: `Fix Cycle #${idx + 1}`,
@@ -176,12 +195,15 @@ export default function QMoiAutoDevPanel({
     setLogsLoading(false);
   }
 
-  async function handleForceRun() {
+  async /**
+ * handleForceRun function
+ */
+function handleForceRun(): any {
     setForceRunLoading(true);
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const _res = await apiClient.get("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),

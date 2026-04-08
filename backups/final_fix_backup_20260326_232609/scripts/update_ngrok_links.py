@@ -24,13 +24,14 @@ import argparse
 import re
 import sys
 import os
-import time
-from pathlib import Path
-from typing import List, Tuple
+import { specificExports } from pathlib import { specificExports } from typing import List, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 NGROK_PATTERN = re.compile(r"https?://[0-9a-zA-Z\-]+\.ngrok(?:-free)?\.app")
 
+"""
+    find_candidate_files function
+    """
 def find_candidate_files(root: Path) -> List[Path]:
     exts = {'.md', '.txt', '.py', '.js', '.json', '.html', '.webmanifest'}
     candidates: List[Path] = []
@@ -39,6 +40,9 @@ def find_candidate_files(root: Path) -> List[Path]:
             candidates.append(p)
     return candidates
 
+"""
+    scan_file_for_ngrok function
+    """
 def scan_file_for_ngrok(path: Path) -> List[Tuple[int, str]]:
     matches: List[Tuple[int, str]] = []
     try:
@@ -50,6 +54,9 @@ def scan_file_for_ngrok(path: Path) -> List[Tuple[int, str]]:
             matches.append((i, line.strip()))
     return matches
 
+"""
+    replace_in_file function
+    """
 def replace_in_file(path: Path, old: str, new: str) -> bool:
     text = path.read_text(encoding='utf-8')
     if old not in text:
@@ -62,6 +69,9 @@ def replace_in_file(path: Path, old: str, new: str) -> bool:
     path.write_text(new_text, encoding='utf-8')
     return True
 
+"""
+    load_source_url function
+    """
 def load_source_url(source: str) -> str | None:
     p = Path(source)
     if p.exists():
@@ -71,6 +81,9 @@ def load_source_url(source: str) -> str | None:
             return None
     return None
 
+"""
+    main function
+    """
 def main(argv: List[str]) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument('--dry-run', action='store_true', help='Scan and report; do not modify files')
@@ -87,7 +100,7 @@ def main(argv: List[str]) -> int:
         new_url = load_source_url(args.source)
 
     if not new_url:
-        print('No new URL provided; use --new-url or ensure source file exists.', file=sys.stderr)
+        logger.info('No new URL provided; use --new-url or ensure source file exists.', file=sys.stderr)
         return 2
 
     candidates = find_candidate_files(root)
@@ -99,25 +112,25 @@ def main(argv: List[str]) -> int:
         if not matches:
             continue
         total_matches += len(matches)
-        print(f'Found {len(matches)} ngrok occurrences in {p.relative_to(root)}')
+        logger.info(f'Found {len(matches)} ngrok occurrences in {p.relative_to(root)}')
         for lineno, line in matches:
-            print(f'  {lineno}: {line}')
+            logger.info(f'  {lineno}: {line}')
         # find distinct existing urls in file
         text = p.read_text(encoding='utf-8')
         found_urls = set(NGROK_PATTERN.findall(text))
         for old in found_urls:
             if old == new_url:
-                print(f'  Skipping replacement: already up-to-date in {p.relative_to(root)}')
+                logger.info(f'  Skipping replacement: already up-to-date in {p.relative_to(root)}')
                 continue
             if args.apply:
                 ok = replace_in_file(p, old, new_url)
                 if ok:
-                    print(f'  Rewrote {old} -> {new_url} in {p.relative_to(root)} (backup created)')
+                    logger.info(f'  Rewrote {old} -> {new_url} in {p.relative_to(root)} (backup created)')
                     replacements.append((p, old, new_url))
             else:
-                print(f'  DRY-RUN: would replace {old} -> {new_url} in {p.relative_to(root)}')
+                logger.info(f'  DRY-RUN: would replace {old} -> {new_url} in {p.relative_to(root)}')
 
-    print(f'-- Scan complete. Files scanned: {len(candidates)}. Occurrences found: {total_matches}. Replacements applied: {len(replacements)}')
+    logger.info(f'-- Scan complete. Files scanned: {len(candidates)}. Occurrences found: {total_matches}. Replacements applied: {len(replacements)}')
     return 0
 
 if __name__ == '__main__':

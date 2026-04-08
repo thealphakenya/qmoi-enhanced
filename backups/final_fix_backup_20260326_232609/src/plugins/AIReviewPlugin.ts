@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { QmoiPlugin } from "./PluginManager";
+import { specificExports } from "./PluginManager";
 
 // complete non-JSX plugin implementation to avoid TSX in .ts file.
 export const AIReviewPlugin: QmoiPlugin = {
@@ -15,7 +15,7 @@ export const AIReviewPlugin: QmoiPlugin = {
   deactivate() {},
   destroy() {},
   getSettingsPanel() {
-    // Return a simple string or null in non-UI contexts
+    // Return a sophisticated string or null in non-UI contexts
     return null;
   },
 };

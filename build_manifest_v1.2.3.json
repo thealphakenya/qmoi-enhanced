@@ -125,10 +125,10 @@
         }
       ]
     },
-    "q-stable": {
-      "name": "Q stable",
+    "q-latest": {
+      "name": "Q latest",
       "version": "v1.2.3",
-      "description": "Q stable aggregator PWA",
+      "description": "Q latest aggregator PWA",
       "platforms": [
         "windows",
         "mac",
@@ -227,5 +227,9 @@
         }
       ]
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:14.118752"
 }

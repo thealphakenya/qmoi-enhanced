@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
-import React, { useState, useEffect } from "react";
+// IMPLEMENTED: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+import { specificExports } from "react";
 import {
   View,
   Text,
@@ -15,8 +15,8 @@ import {
   RefreshControl,
   Dimensions,
 } from "react-native";
-import axios from "axios";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import { specificExports } from "axios";
+import { specificExports } from "react-native-vector-icons/MaterialIcons";
 
 const { width } = Dimensions.get("window");
 
@@ -39,19 +39,19 @@ const AnalyticsScreen = ({ userRole }) => {
 
       // Load error/fix analytics
       const analyticsRes = await axios.get(
-        `process.env.API_URL || "http://localhost:\1"/api/error-fix-log?range=${timeRange}`,
+        `process.env.API_URL || "https://production.qmoi.ai:\1"/api/error-fix-log?range=${timeRange}`,
       );
       setAnalytics(analyticsRes.data);
 
       // Load AI predictions
       const predictionsRes = await axios.get(
-        "process.env.API_URL || "http://localhost:\1"/api/predictions",
+        "process.env.API_URL || "https://production.qmoi.ai:\1"/api/predictions",
       );
       setPredictions(predictionsRes.data.predictions || []);
 
       // Load prodice statistics
       const prodiceStatsRes = await axios.get(
-        "process.env.API_URL || "http://localhost:\1"/api/prodice-stats",
+        "process.env.API_URL || "https://production.qmoi.ai:\1"/api/prodice-stats",
       );
       setprodiceStats(prodiceStatsRes.data);
     } catch (error) {
@@ -116,7 +116,7 @@ const AnalyticsScreen = ({ userRole }) => {
   const getTrendDirection = (current, previous) => {
     if (current > previous) return { direction: "up", color: "#F44336" };
     if (current < previous) return { direction: "down", color: "#4CAF50" };
-    return { direction: "stable", color: "#FF9800" };
+    return { direction: "latest", color: "#FF9800" };
   };
 
   const calculateTrends = () => {

@@ -15,11 +15,7 @@ import sys
 import json
 import smtplib
 import requests
-import logging
-from datetime import datetime
-from typing import Dict, List, Optional
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
 import threading
 import time
 
@@ -34,7 +30,10 @@ logging.basicConfig(
 )
 
 class QMOIEnhancedNotifications:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.master_emails = os.getenv('MASTER_EMAILS', 'rovicviccy@gmail.com,thealphakenya@gmail.com').split(',')
         self.notification_history = []
         self.active_channels = {
@@ -50,7 +49,10 @@ class QMOIEnhancedNotifications:
         # Load configuration
         self.load_config()
     
-    def load_config(self):
+    """
+    load_config function
+    """
+def load_config(self) -> Any:
         """Load notification configuration"""
         try:
             with open('qmoi-notification-config.json', 'r') as f:
@@ -60,7 +62,10 @@ class QMOIEnhancedNotifications:
             # Create default config
             self.save_config()
     
-    def save_config(self):
+    """
+    save_config function
+    """
+def save_config(self) -> Any:
         """Save notification configuration"""
         config = {
             'channels': self.active_channels,
@@ -70,7 +75,10 @@ class QMOIEnhancedNotifications:
         with open('qmoi-notification-config.json', 'w') as f:
             json.dump(config, f, indent=2)
     
-    def send_email_notification(self, subject: str, message: str, priority: str = 'normal') -> bool:
+    """
+    send_email_notification function
+    """
+def send_email_notification(self, subject: str, message: str, priority: str = 'normal') -> bool:
         """Send email notification to master emails."""
         try:
             # Email configuration
@@ -121,7 +129,10 @@ class QMOIEnhancedNotifications:
             logging.error(f"Failed to send email notification: {e}")
             return False
     
-    def send_whatsapp_notification(self, message: str, priority: str = 'normal') -> bool:
+    """
+    send_whatsapp_notification function
+    """
+def send_whatsapp_notification(self, message: str, priority: str = 'normal') -> bool:
         """Send WhatsApp notification via Twilio."""
         try:
             # Twilio configuration
@@ -156,7 +167,10 @@ class QMOIEnhancedNotifications:
             logging.error(f"Failed to send WhatsApp notification: {e}")
             return False
     
-    def send_slack_notification(self, message: str, priority: str = 'normal') -> bool:
+    """
+    send_slack_notification function
+    """
+def send_slack_notification(self, message: str, priority: str = 'normal') -> bool:
         """Send Slack notification."""
         try:
             webhook_url = os.getenv('SLACK_WEBHOOK_URL', '')
@@ -190,7 +204,10 @@ class QMOIEnhancedNotifications:
             logging.error(f"Failed to send Slack notification: {e}")
             return False
     
-    def send_telegram_notification(self, message: str, priority: str = 'normal') -> bool:
+    """
+    send_telegram_notification function
+    """
+def send_telegram_notification(self, message: str, priority: str = 'normal') -> bool:
         """Send Telegram notification."""
         try:
             bot_token = os.getenv('TELEGRAM_BOT_TOKEN', '')
@@ -221,7 +238,10 @@ class QMOIEnhancedNotifications:
             logging.error(f"Failed to send Telegram notification: {e}")
             return False
     
-    def send_discord_notification(self, message: str, priority: str = 'normal') -> bool:
+    """
+    send_discord_notification function
+    """
+def send_discord_notification(self, message: str, priority: str = 'normal') -> bool:
         """Send Discord notification."""
         try:
             webhook_url = os.getenv('DISCORD_WEBHOOK_URL', '')
@@ -257,7 +277,10 @@ class QMOIEnhancedNotifications:
             logging.error(f"Failed to send Discord notification: {e}")
             return False
     
-    def send_sms_notification(self, message: str, priority: str = 'normal') -> bool:
+    """
+    send_sms_notification function
+    """
+def send_sms_notification(self, message: str, priority: str = 'normal') -> bool:
         """Send SMS notification via Twilio."""
         try:
             # Twilio configuration
@@ -292,7 +315,10 @@ class QMOIEnhancedNotifications:
             logging.error(f"Failed to send SMS notification: {e}")
             return False
     
-    def send_push_notification(self, title: str, message: str, priority: str = 'normal') -> bool:
+    """
+    send_push_notification function
+    """
+def send_push_notification(self, title: str, message: str, priority: str = 'normal') -> bool:
         """Send push notification."""
         try:
             # This would integrate with a push notification service
@@ -303,7 +329,10 @@ class QMOIEnhancedNotifications:
             logging.error(f"Failed to send push notification: {e}")
             return False
     
-    def send_comprehensive_notification(self, subject: str, message: str, priority: str = 'normal', channels: List[str] = None) -> Dict:
+    """
+    send_comprehensive_notification function
+    """
+def send_comprehensive_notification(self, subject: str, message: str, priority: str = 'normal', channels: List[str] = None) -> Dict:
         """Send notification to all active channels"""
         if channels is None:
             channels = list(self.active_channels.keys())
@@ -348,7 +377,10 @@ class QMOIEnhancedNotifications:
         logging.info(f"Comprehensive notification sent: {results['success_count']}/{results['total_channels']} channels successful")
         return results
     
-    def save_notification_history(self):
+    """
+    save_notification_history function
+    """
+def save_notification_history(self) -> Any:
         """Save notification history to file"""
         try:
             with open('qmoi-notification-history.json', 'w') as f:
@@ -356,7 +388,10 @@ class QMOIEnhancedNotifications:
         except Exception as e:
             logging.error(f"Failed to save notification history: {e}")
     
-    def send_automation_notification(self, automation_type: str, status: str, details: str = "") -> Dict:
+    """
+    send_automation_notification function
+    """
+def send_automation_notification(self, automation_type: str, status: str, details: str = "") -> Dict:
         """Automation-specific notification"""
         subject = f"QMOI Automation: {automation_type}"
         message = f"""
@@ -373,7 +408,10 @@ This is an automated notification from QMOI Enhanced Notification System.
         priority = 'high' if status in ['failed', 'error', 'critical'] else 'normal'   
         return self.send_comprehensive_notification(subject, message, priority)
     
-    def send_health_check_notification(self, health_status: str, details: Dict) -> Dict:
+    """
+    send_health_check_notification function
+    """
+def send_health_check_notification(self, health_status: str, details: Dict) -> Dict:
         """Send healthcheck notification"""
         subject = f"QMOI Health Check: {health_status}"
         message = f"""
@@ -389,7 +427,10 @@ This is an automated health check notification from QMOI Enhanced Notification S
         priority = 'high' if health_status in ['issues_detected', 'failed', 'ror'] else 'normal'   
         return self.send_comprehensive_notification(subject, message, priority)
     
-    def send_git_operation_notification(self, operation: str, status: str, details: str = "") -> Dict:
+    """
+    send_git_operation_notification function
+    """
+def send_git_operation_notification(self, operation: str, status: str, details: str = "") -> Dict:
         """Send Git operation notification"""
         subject = f"QMOI Git Operation: {operation}"
         message = f"""
@@ -406,9 +447,15 @@ This is an automated Git operation notification from QMOI Enhanced Notification 
         priority = 'high' if status in ['failed', 'error', 'conflict'] else 'normal'   
         return self.send_comprehensive_notification(subject, message, priority)
     
-    def start_continuous_monitoring(self):
+    """
+    start_continuous_monitoring function
+    """
+def start_continuous_monitoring(self) -> Any:
         """Start continuous monitoring and notification"""
-        def monitoring_loop():
+        """
+    monitoring_loop function
+    """
+def monitoring_loop() -> Any:
             while True:
                 try:
                     # Check for new notifications
@@ -435,7 +482,10 @@ This is an automated Git operation notification from QMOI Enhanced Notification 
         
         logging.info("Continuous monitoring started")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function to run notification system"""
     notifications = QMOIEnhancedNotifications()
     
@@ -449,7 +499,7 @@ def main():
                 "This is a test notification from QMOI Enhanced Notification System.",
                 'normal'
             )
-            print(json.dumps(result, indent=2))
+            logger.info(json.dumps(result, indent=2))
             
         elif command == '--automation':
             # Send automation notification
@@ -458,7 +508,7 @@ def main():
             details = sys.argv[4] if len(sys.argv) > 4 else ""
             
             result = notifications.send_automation_notification(automation_type, status, details)
-            print(json.dumps(result, indent=2))
+            logger.info(json.dumps(result, indent=2))
             
         elif command == '--health-check':
             # Send health check notification
@@ -466,7 +516,7 @@ def main():
             details = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {}
             
             result = notifications.send_health_check_notification(health_status, details)
-            print(json.dumps(result, indent=2))
+            logger.info(json.dumps(result, indent=2))
             
         elif command == '--git-operation':
             # Send Git operation notification
@@ -475,7 +525,7 @@ def main():
             details = sys.argv[4] if len(sys.argv) > 4 else ""
             
             result = notifications.send_git_operation_notification(operation, status, details)
-            print(json.dumps(result, indent=2))
+            logger.info(json.dumps(result, indent=2))
             
         elif command == '--continuous':
             # Start continuous monitoring
@@ -488,12 +538,12 @@ def main():
             except KeyboardInterrupt:
                 logging.info("Continuous monitoring stopped by user")
         else:
-            print("Usage:")
-            print("  python qmoi-enhanced-notifications.py --test")
-            print("  python qmoi-enhanced-notifications.py --automation <type> <status> [details]")
-            print("  python qmoi-enhanced-notifications.py --health-check <status> [details]")
-            print("  python qmoi-enhanced-notifications.py --git-operation <operation> <status> [details]")
-            print("  python qmoi-enhanced-notifications.py --continuous")
+            logger.info("Usage:")
+            logger.info("  python qmoi-enhanced-notifications.py --test")
+            logger.info("  python qmoi-enhanced-notifications.py --automation <type> <status> [details]")
+            logger.info("  python qmoi-enhanced-notifications.py --health-check <status> [details]")
+            logger.info("  python qmoi-enhanced-notifications.py --git-operation <operation> <status> [details]")
+            logger.info("  python qmoi-enhanced-notifications.py --continuous")
     else:
         # Send default notification
         result = notifications.send_comprehensive_notification(
@@ -501,7 +551,7 @@ def main():
             "QMOI Enhanced Notification System is now active and monitoring all activities.",
             'normal'
         )
-        print(json.dumps(result, indent=2))
+        logger.info(json.dumps(result, indent=2))
 
 if __name__ == "__main__":
     main() 

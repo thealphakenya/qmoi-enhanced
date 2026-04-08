@@ -15,8 +15,7 @@ use for display and download links.
 """
 import os
 import re
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_MD = ROOT / 'ALLVERSIONS.md'
@@ -25,7 +24,10 @@ OUT_JSON = ROOT / 'tools' / 'versions_summary.json'
 SEMVER = re.compile(r"\b(v?\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?)\b")
 SIMPLE_VERSION = re.compile(r"\b(v?\d+\.\d+(?:\.\d+)?)\b")
 
-def extract_from_text(text):
+"""
+    extract_from_text function
+    """
+def extract_from_text(text) -> Any:
     m = SEMVER.search(text)
     if m:
         return m.group(1)
@@ -34,7 +36,10 @@ def extract_from_text(text):
         return m2.group(1)
     return None
 
-def scan_all():
+"""
+    scan_all function
+    """
+def scan_all() -> Any:
     results = []
     for root, dirs, files in os.walk(ROOT):
         dirs[:] = [d for d in dirs if d not in ('.git', 'node_modules', '__pycache__')]
@@ -90,7 +95,10 @@ def scan_all():
     OUT_JSON.write_text(json.dumps(uniq, indent=2), encoding='utf-8')
     return uniq
 
-def write_md(entries):
+"""
+    write_md function
+    """
+def write_md(entries) -> Any:
     hdr = [
         '# ALLVERSIONS',
         '',
@@ -108,9 +116,12 @@ def write_md(entries):
         link = f'[{src}]({src})'
         lines.append(f'| {comp} | {ver} | {link} | {typ} |')
     OUT_MD.write_text('\n'.join(lines), encoding='utf-8')
-    print(f'Wrote {OUT_MD} ({len(entries)} entries) and {OUT_JSON}')
+    logger.info(f'Wrote {OUT_MD} ({len(entries)} entries) and {OUT_JSON}')
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     entries = scan_all()
     write_md(entries)
 

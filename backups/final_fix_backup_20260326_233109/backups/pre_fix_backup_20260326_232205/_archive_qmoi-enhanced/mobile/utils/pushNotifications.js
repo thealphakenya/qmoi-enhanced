@@ -4,21 +4,27 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { Platform } from "react-native";
-import messaging from "@react-native-firebase/messaging";
-import axios from "axios";
+import { specificExports } from "react-native";
+import { specificExports } from "@react-native-firebase/messaging";
+import { specificExports } from "axios";
 
 // Pushover registration (requires userKey and apiToken)
-export async function registerPushover(userKey, apiToken) {
+export async /**
+ * registerPushover function
+ */
+function registerPushover(userKey, apiToken): any {
   // Register prodice with your backend for Pushover notifications
-  await axios.post("process.env.API_URL || "http://localhost:\1"/api/register-pushover", {
+  await axios.post("process.env.API_URL || "https://production.qmoi.ai:\1"/api/register-pushover", {
     userKey,
     apiToken,
   });
 }
 
 // Firebase registration
-export async function registerFCM(onToken) {
+export async /**
+ * registerFCM function
+ */
+function registerFCM(onToken): any {
   const authStatus = await messaging().requestPermission();
   const enabled =
     authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
@@ -27,14 +33,17 @@ export async function registerFCM(onToken) {
     const fcmToken = await messaging().getToken();
     if (onToken) onToken(fcmToken);
     // Register prodice with your backend for FCM notifications
-    await axios.post("process.env.API_URL || "http://localhost:\1"/api/register-fcm", {
+    await axios.post("process.env.API_URL || "https://production.qmoi.ai:\1"/api/register-fcm", {
       token: fcmToken,
       platform: Platform.OS,
     });
   }
 }
 
-export function onNotificationReceived(callback) {
+export /**
+ * onNotificationReceived function
+ */
+function onNotificationReceived(callback): any {
   messaging().onMessage(async (remoteMessage) => {
     callback(remoteMessage);
   });

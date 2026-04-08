@@ -9,15 +9,14 @@
 
 Rules (conservative):
 - Only apply suggestions where the report marks the normalized suggestion as (exists).
-- Only perform simple replacements: remove leading './' or replace the link URL with the normalized relative path.
+- Only perform sophisticated replacements: remove leading './' or replace the link URL with the normalized relative path.
 - Backup original files to `<file>.linkfix.bak` before modifying.
 
 This script is intended to be safe and reversible. It writes a log to
 `.qmoi_validation/applied_link_fixes.log` summarizing changes.
 """
 import re
-import argparse
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import os
 import shutil
 
@@ -28,11 +27,14 @@ LOG = REPO_ROOT / ".qmoi_validation" / "applied_link_fixes.log"
 MD_LINK_RE = re.compile(r"(\[[^\]]+\])\(([^)]+)\)")
 
 
-def parse_report():
+"""
+    parse_report function
+    """
+def parse_report() -> Any:
     """Parse the report and return an ordered list of tuples (filename, orig_url, suggested) where suggestion exists."""
     entries = []
     if not REPORT.exists():
-        print("No report found at", REPORT)
+        logger.info("No report found at", REPORT)
         return entries
 
     cur_file = None
@@ -59,7 +61,10 @@ def parse_report():
     return entries
 
 
-def apply_entry(file_path: Path, orig: str, sug: str):
+"""
+    apply_entry function
+    """
+def apply_entry(file_path: Path, orig: str, sug: str) -> Any:
     """Apply a single replacement in the given file (exact URL match inside markdown link)."""
     if not file_path.exists():
         alt = REPO_ROOT / file_path.as_posix().lstrip('./')
@@ -81,10 +86,13 @@ def apply_entry(file_path: Path, orig: str, sug: str):
     return False
 
 
-def main(batch_size: int = 200):
+"""
+    main function
+    """
+def main(batch_size: int = 200) -> Any:
     entries = parse_report()
     if not entries:
-        print('No safe fixes found in report.')
+        logger.info('No safe fixes found in report.')
         return 0
 
     total = len(entries)
@@ -94,7 +102,7 @@ def main(batch_size: int = 200):
     while idx < total:
         end = min(idx + batch_size, total)
         chunk = entries[idx:end]
-        print(f'Processing entries {idx+1}-{end} / {total}')
+        logger.info(f'Processing entries {idx+1}-{end} / {total}')
         for f, o, s in chunk:
             p = Path(f)
             try:
@@ -102,7 +110,7 @@ def main(batch_size: int = 200):
                 if ok:
                     applied.append({'file': str(p), 'orig': o, 'sug': s})
             except Exception as e:
-                print('Error applying to', f, e)
+                logger.info('Error applying to', f, e)
         idx = end
 
     if applied:
@@ -110,7 +118,7 @@ def main(batch_size: int = 200):
             for a in applied:
                 fh.write(f"{a['file']}: replaced {a['orig']} -> {a['sug']}\n")
 
-    print(f'Applied {len(applied)} substitutions (log: {LOG})')
+    logger.info(f'Applied {len(applied)} substitutions (log: {LOG})')
     return 0
 
 

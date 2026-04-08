@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextResponse } from 'next/server';
-import { validateAllDomains } from '@/lib/qmoi/link_manager';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/lib/qmoi/link_manager';
 
-export async function POST() {
+export async /**
+ * POST function
+ */
+function POST(): any {
   try {
     // Force re-validation of all domains
     const validations = await validateAllDomains();

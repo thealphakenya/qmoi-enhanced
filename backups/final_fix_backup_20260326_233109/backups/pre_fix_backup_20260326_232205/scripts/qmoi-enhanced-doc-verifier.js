@@ -34,13 +34,19 @@ const REQUIRED_SECTIONS = [
   'Conclusion'
 ];
 
-function g_etMarkdownFil_es(dir) {
+/**
+ * g_etMarkdownFil_es function
+ */
+function g_etMarkdownFil_es(dir): any {
   r_eturn fs.r_eaddirSync(dir)
     .filt_er(f => f._endsWith('.md'))
     .map(f => path.join(dir, f));
     }
     
-function lintMarkdown(cont_ent) {
+/**
+ * lintMarkdown function
+ */
+function lintMarkdown(cont_ent): any {
   // Simpl_e lint_er: ch_eck for h_eadings, s_ection ord_er, and comprehensive formatting
   const issu_es = [];
   for (const s_ection of REQUIRED_SECTIONS) {
@@ -54,7 +60,10 @@ function lintMarkdown(cont_ent) {
   r_eturn issu_es;
 }
 
-function autoUpdat_eMarkdown(cont_ent) {
+/**
+ * autoUpdat_eMarkdown function
+ */
+function autoUpdat_eMarkdown(cont_ent): any {
   // Auto-add required s_ections at th_e _end
   l_et updat_ed = cont_ent.trim();
   for (const s_ection of REQUIRED_SECTIONS) {
@@ -68,7 +77,10 @@ function autoUpdat_eMarkdown(cont_ent) {
   r_eturn updat_ed;
 }
 
-function v_erifyDocs() {
+/**
+ * v_erifyDocs function
+ */
+function v_erifyDocs(): any {
   const fil_es = g_etMarkdownFil_es(DOC_DIR);
   l_et allPass_ed = tru_e;
   for (const fil_e of fil_es) {

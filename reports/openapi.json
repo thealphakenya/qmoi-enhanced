@@ -14,7 +14,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api",
+      "url": "https://production.qmoi.ai:3000/api",
       "description": "production server"
     },
     {
@@ -59,7 +59,9 @@
   "paths": {
     "/auth/register": {
       "post": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "summary": "Register new user",
         "requestBody": {
           "required": true,
@@ -82,7 +84,11 @@
                     "minLength": 8
                   }
                 },
-                "required": ["email", "username", "password"]
+                "required": [
+                  "email",
+                  "username",
+                  "password"
+                ]
               }
             }
           }
@@ -109,7 +115,9 @@
     },
     "/auth/login": {
       "post": {
-        "tags": ["Authentication"],
+        "tags": [
+          "Authentication"
+        ],
         "summary": "Login user",
         "requestBody": {
           "required": true,
@@ -126,7 +134,10 @@
                     "type": "string"
                   }
                 },
-                "required": ["email", "password"]
+                "required": [
+                  "email",
+                  "password"
+                ]
               }
             }
           }
@@ -150,9 +161,15 @@
     },
     "/users/profile": {
       "get": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Get user profile",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "User profile",
@@ -170,9 +187,15 @@
         }
       },
       "put": {
-        "tags": ["Users"],
+        "tags": [
+          "Users"
+        ],
         "summary": "Update user profile",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -180,10 +203,18 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "firstName": { "type": "string" },
-                  "lastName": { "type": "string" },
-                  "phoneNumber": { "type": "string" },
-                  "bio": { "type": "string" }
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "phoneNumber": {
+                    "type": "string"
+                  },
+                  "bio": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -201,19 +232,31 @@
     },
     "/wallets": {
       "get": {
-        "tags": ["Wallets"],
+        "tags": [
+          "Wallets"
+        ],
         "summary": "List user wallets",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "skip",
             "in": "query",
-            "schema": { "type": "integer", "default": 0 }
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
           },
           {
             "name": "take",
             "in": "query",
-            "schema": { "type": "integer", "default": 10 }
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
           }
         ],
         "responses": {
@@ -226,9 +269,15 @@
         }
       },
       "post": {
-        "tags": ["Wallets"],
+        "tags": [
+          "Wallets"
+        ],
         "summary": "Create wallet",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -238,10 +287,19 @@
                 "properties": {
                   "currency": {
                     "type": "string",
-                    "enum": ["KES", "USD", "EUR", "GBP", "UGX", "TZS"]
+                    "enum": [
+                      "KES",
+                      "USD",
+                      "EUR",
+                      "GBP",
+                      "UGX",
+                      "TZS"
+                    ]
                   }
                 },
-                "required": ["currency"]
+                "required": [
+                  "currency"
+                ]
               }
             }
           }
@@ -258,9 +316,15 @@
     },
     "/payments/initiate": {
       "post": {
-        "tags": ["Payments"],
+        "tags": [
+          "Payments"
+        ],
         "summary": "Initiate payment",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -268,12 +332,22 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "walletId": { "type": "string" },
-                  "amount": { "type": "number" },
-                  "phoneNumber": { "type": "string" },
+                  "walletId": {
+                    "type": "string"
+                  },
+                  "amount": {
+                    "type": "number"
+                  },
+                  "phoneNumber": {
+                    "type": "string"
+                  },
                   "paymentMethod": {
                     "type": "string",
-                    "enum": ["mpesa", "pesapal", "stripe"]
+                    "enum": [
+                      "mpesa",
+                      "pesapal",
+                      "stripe"
+                    ]
                   }
                 },
                 "required": [
@@ -298,9 +372,15 @@
     },
     "/admin/dashboard": {
       "get": {
-        "tags": ["Admin"],
+        "tags": [
+          "Admin"
+        ],
         "summary": "Get admin dashboard (admin only)",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Dashboard statistics"
@@ -316,24 +396,43 @@
     },
     "/analytics/transactions": {
       "get": {
-        "tags": ["Analytics"],
+        "tags": [
+          "Analytics"
+        ],
         "summary": "Get transaction analytics",
-        "security": [{ "bearerAuth": [] }],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "startDate",
             "in": "query",
-            "schema": { "type": "string", "format": "date" }
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
           },
           {
             "name": "endDate",
             "in": "query",
-            "schema": { "type": "string", "format": "date" }
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
           },
           {
             "name": "groupBy",
             "in": "query",
-            "schema": { "type": "string", "enum": ["day", "week", "month"] }
+            "schema": {
+              "type": "string",
+              "enum": [
+                "day",
+                "week",
+                "month"
+              ]
+            }
           }
         ],
         "responses": {
@@ -352,23 +451,48 @@
       "AuthResponse": {
         "type": "object",
         "properties": {
-          "accessToken": { "type": "string" },
-          "refreshToken": { "type": "string" },
-          "expiresIn": { "type": "integer" },
-          "user": { "$ref": "#/components/schemas/User" }
+          "accessToken": {
+            "type": "string"
+          },
+          "refreshToken": {
+            "type": "string"
+          },
+          "expiresIn": {
+            "type": "integer"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
         }
       },
       "User": {
         "type": "object",
         "properties": {
-          "id": { "type": "string" },
-          "email": { "type": "string" },
-          "username": { "type": "string" },
-          "firstName": { "type": "string" },
-          "lastName": { "type": "string" },
-          "emailVerified": { "type": "boolean" },
-          "role": { "type": "string" },
-          "createdAt": { "type": "string", "format": "date-time" }
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "emailVerified": {
+            "type": "boolean"
+          },
+          "role": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       }
     },
@@ -379,5 +503,9 @@
         "bearerFormat": "JWT"
       }
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:04.371862"
 }

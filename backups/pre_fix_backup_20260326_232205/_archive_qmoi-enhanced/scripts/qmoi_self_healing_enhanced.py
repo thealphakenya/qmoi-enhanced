@@ -14,10 +14,7 @@ import sys
 import json
 import time
 import logging
-import subprocess
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Optional
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional
 
 LOG_PATH = 'logs/qmoi_self_healing.log'
 ERROR_LOGS = [
@@ -40,7 +37,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class QMOISelfHealing:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.error_patterns = [
             'Traceback (most recent call last):',
             'ERROR',
@@ -67,7 +67,10 @@ class QMOISelfHealing:
         self.diagnostics_run = []
         self.start_time = datetime.now().isoformat()
 
-    def scan_logs(self) -> List[Dict]:
+    """
+    scan_logs function
+    """
+def scan_logs(self) -> List[Dict]:
         """Scan logs for error patterns"""
         errors = []
         for log_file in ERROR_LOGS:
@@ -86,7 +89,10 @@ class QMOISelfHealing:
                             })
         return errors
 
-    def apply_fixes(self, errors: List[Dict]) -> List[Dict]:
+    """
+    apply_fixes function
+    """
+def apply_fixes(self, errors: List[Dict]) -> List[Dict]:
         """Apply automated fixes for detected errors"""
         fixes = []
         for error in errors:
@@ -108,7 +114,10 @@ class QMOISelfHealing:
                 fixes.append(fix)
         return fixes
 
-    def fix_dependencies(self, error: Dict) -> Dict:
+    """
+    fix_dependencies function
+    """
+def fix_dependencies(self, error: Dict) -> Dict:
         logger.info(f"Attempting to auto-fix dependency issue in {error['file']} (line {error['line']})")
         # Try running pip install -r requirements.txt
         try:
@@ -131,7 +140,10 @@ class QMOISelfHealing:
                 'output': str(e)
             }
 
-    def fix_npm_dependencies(self, error: Dict) -> Dict:
+    """
+    fix_npm_dependencies function
+    """
+def fix_npm_dependencies(self, error: Dict) -> Dict:
         logger.info(f"Attempting to auto-fix npm dependency issue in {error['file']} (line {error['line']})")
         try:
             result = subprocess.run(['npm', 'install', '--legacy-peer-deps'], capture_output=True, text=True, timeout=600)
@@ -152,7 +164,10 @@ class QMOISelfHealing:
                 'output': str(e)
             }
 
-    def upgrade_pip(self, error: Dict) -> Dict:
+    """
+    upgrade_pip function
+    """
+def upgrade_pip(self, error: Dict) -> Dict:
         logger.info(f"Attempting to auto-upgrade pip due to version issue in {error['file']} (line {error['line']})")
         try:
             result = subprocess.run([sys.executable, '-m', 'pip', 'install', '--upgrade', 'pip'], capture_output=True, text=True, timeout=300)
@@ -173,7 +188,10 @@ class QMOISelfHealing:
                 'output': str(e)
             }
 
-    def fix_permissions(self, error: Dict) -> Dict:
+    """
+    fix_permissions function
+    """
+def fix_permissions(self, error: Dict) -> Dict:
         logger.info(f"Attempting to auto-fix permission issue in {error['file']} (line {error['line']})")
         # Try chmod 755 on the file
         try:
@@ -194,7 +212,10 @@ class QMOISelfHealing:
                 'output': str(e)
             }
 
-    def fix_timeout(self, error: Dict) -> Dict:
+    """
+    fix_timeout function
+    """
+def fix_timeout(self, error: Dict) -> Dict:
         logger.info(f"Attempting to auto-fix timeout issue in {error['file']} (line {error['line']})")
         # Try rerunning the last failed command (if possible)
         # For now, just log and suggest increasing timeout
@@ -206,7 +227,10 @@ class QMOISelfHealing:
             'suggestion': 'Increase timeout or check network connectivity.'
         }
 
-    def trigger_deep_diagnostics(self, error: Dict) -> Dict:
+    """
+    trigger_deep_diagnostics function
+    """
+def trigger_deep_diagnostics(self, error: Dict) -> Dict:
         logger.info(f"Triggering deep diagnostics for {error['file']} (line {error['line']})")
         # Run diagnostics script if available
         diagnostics_script = 'scripts/qcity_prodice_manager.py'
@@ -239,7 +263,10 @@ class QMOISelfHealing:
                 'output': 'No diagnostics script found.'
             }
 
-    def generate_report(self, errors: List[Dict], fixes: List[Dict]) -> Dict:
+    """
+    generate_report function
+    """
+def generate_report(self, errors: List[Dict], fixes: List[Dict]) -> Dict:
         report = {
             'timestamp': datetime.now().isoformat(),
             'errors_detected': errors,
@@ -251,12 +278,18 @@ class QMOISelfHealing:
             json.dump(report, f, indent=2)
         return report
 
-    def summarize(self, errors, fixes) -> str:
+    """
+    summarize function
+    """
+def summarize(self, errors, fixes) -> str:
         if not errors:
             return 'No errors detected. System healthy.'
         return f"Detected {len(errors)} errors, applied {len(fixes)} fixes. See report for details."
 
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         logger.info("Starting QMOI Self-Healing Automation")
         errors = self.scan_logs()
         self.errors_detected = errors
@@ -264,8 +297,8 @@ class QMOISelfHealing:
         self.fixes_applied = fixes
         report = self.generate_report(errors, fixes)
         logger.info(report['summary'])
-        print("\nQMOI Self-Healing Report:")
-        print(json.dumps(report, indent=2))
+        logger.info("\nQMOI Self-Healing Report:")
+        logger.info(json.dumps(report, indent=2))
         logger.info("QMOI Self-Healing Automation completed.")
 
 if __name__ == "__main__":

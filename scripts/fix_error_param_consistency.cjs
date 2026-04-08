@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 function walk(dir) {
   const files = [];
@@ -51,4 +51,4 @@ for (const file of files) {
     modified++;
   }
 }
-console.log("Processed", files.length, "files; modified", modified, "files");
+logger.info("Processed", files.length, "files; modified", modified, "files");

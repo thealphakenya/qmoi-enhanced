@@ -1,16 +1,19 @@
 // 
-import { NextRequest, NextResponse } from "next/server";
-import authService from "@/lib/auth/service";
-import { db } from "@/lib/db/prisma";
-import { errorTracker } from "@/lib/monitoring/error-tracker";
-import { monitor } from "@/lib/monitoring/performance";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/monitoring/error-tracker";
+import { specificExports } from "@/lib/monitoring/performance";
 
 /**
  * GET /api/admin/alerts
  * Get active alerts and incidents
  * Admin only
  */
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -68,7 +71,10 @@ export async function GET(_request: NextRequest) {
  * Acknowledge or dismiss alerts
  * Admin only
  */
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -141,7 +147,10 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-function generateAlerts() {
+/**
+ * generateAlerts function
+ */
+function generateAlerts(): any {
   const alerts: unknown[] = [];
   const now = new Date();
   const errorStats = errorTracker.getErrorStats();

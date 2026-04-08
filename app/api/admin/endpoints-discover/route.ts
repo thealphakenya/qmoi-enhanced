@@ -3,9 +3,9 @@
  * Used for auto-generating API documentation
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { specificExports } from 'next/server';
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
 
 interface EndpointInfo {
   path: string;
@@ -15,7 +15,10 @@ interface EndpointInfo {
   description?: string;
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const endpoints = collectAllEndpoints();
     return NextResponse.json({
@@ -35,7 +38,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-function collectAllEndpoints(): EndpointInfo[] {
+/**
+ * collectAllEndpoints function
+ */
+function collectAllEndpoints(): any: EndpointInfo[] {
   const endpoints: EndpointInfo[] = [];
   const apiDir = path.join(process.cwd(), 'app', 'api');
 
@@ -63,7 +69,10 @@ function collectAllEndpoints(): EndpointInfo[] {
   return endpoints;
 }
 
-function walkDirectory(dir: string, callback: (file: string, relative: string) => void) {
+/**
+ * walkDirectory function
+ */
+function walkDirectory(dir: string, callback: (file: string, relative: string): any => void) {
   const items = fs.readdirSync(dir);
 
   for (const item of items) {
@@ -79,7 +88,10 @@ function walkDirectory(dir: string, callback: (file: string, relative: string) =
   }
 }
 
-function extractMethods(content: string): string[] {
+/**
+ * extractMethods function
+ */
+function extractMethods(content: string): any: string[] {
   const methods = new Set<string>();
 
   // Match export function patterns
@@ -102,7 +114,10 @@ function extractMethods(content: string): string[] {
   return Array.from(methods);
 }
 
-function normalizeApiPath(filePath: string): string {
+/**
+ * normalizeApiPath function
+ */
+function normalizeApiPath(filePath: string): any: string {
   // Convert: app/api/users/[id]/route.ts -> /api/users/[id]
   let apiPath = filePath
     .replace(/\\/g, '/') // Normalize slashes
@@ -113,7 +128,10 @@ function normalizeApiPath(filePath: string): string {
   return apiPath.includes('[') ? apiPath : apiPath;
 }
 
-function checkAuthentication(content: string): boolean {
+/**
+ * checkAuthentication function
+ */
+function checkAuthentication(content: string): any: boolean {
   const authPatterns = [
     /auth|Authorization|Bearer|JWT|token|session|userId|authenticated/i,
   ];
@@ -121,7 +139,10 @@ function checkAuthentication(content: string): boolean {
   return authPatterns.some(pattern => pattern.test(content));
 }
 
-function extractDescription(content: string): string | undefined {
+/**
+ * extractDescription function
+ */
+function extractDescription(content: string): any: string | undefined {
   // Try to extract JSDoc or inline comments
   const jsdocMatch = content.match(/\/\*\*[\s\S]*?\*\/|\/\/\s*(.+)/);
 

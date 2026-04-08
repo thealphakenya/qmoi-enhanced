@@ -6,10 +6,10 @@
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
 
-import * as React from "react";
-import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-popover";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const Popover = PopoverPrimitive.Root;
 

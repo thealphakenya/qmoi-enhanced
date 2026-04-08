@@ -7,7 +7,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // @ts-nocheck
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 // In-memory stores (replace with DB/integration in production)
 const posts: unknown[] = [];
@@ -17,7 +17,10 @@ const contacts: unknown[] = [
 ];
 let postId = 1;
 
-export async function POST_POST(_req: NextRequest) {
+export async /**
+ * POST_POST function
+ */
+function POST_POST(_req: NextRequest): any {
   // Post status/news to platform
   const body = (await _req.json()) as any;
   const { content, platform } = body;
@@ -33,12 +36,18 @@ export async function POST_POST(_req: NextRequest) {
   return NextResponse.json({ success: true, post });
 }
 
-export async function GET_CONTACTS(_req: NextRequest) {
+export async /**
+ * GET_CONTACTS function
+ */
+function GET_CONTACTS(_req: NextRequest): any {
   // List contacts
   return NextResponse.json({ contacts });
 }
 
-export async function POST_TAG(_req: NextRequest) {
+export async /**
+ * POST_TAG function
+ */
+function POST_TAG(_req: NextRequest): any {
   // Auto-tag a contact
   const body = (await _req.json()) as any;
   const { id, tag } = body;
@@ -49,7 +58,10 @@ export async function POST_TAG(_req: NextRequest) {
   return NextResponse.json({ success: true, contact: contacts[idx] });
 }
 
-export async function GET_INFO(_req: NextRequest) {
+export async /**
+ * GET_INFO function
+ */
+function GET_INFO(_req: NextRequest): any {
   // Gather platform analytics info (baseline using current local state)
   return NextResponse.json({
     success: true,
@@ -64,7 +76,10 @@ export async function GET_INFO(_req: NextRequest) {
   });
 }
 
-export async function GET_FEATURES(_req: NextRequest) {
+export async /**
+ * GET_FEATURES function
+ */
+function GET_FEATURES(_req: NextRequest): any {
   // List available features
   return NextResponse.json({
     features: ["post", "contacts", "tag", "info", "communities"],
@@ -72,7 +87,10 @@ export async function GET_FEATURES(_req: NextRequest) {
 }
 
 // Unified GET/POST handlers for routing
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const url = new URL(request.url);
   const action = url.searchParams.get("action");
 
@@ -100,7 +118,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   let body: any = {};
   try {
     body = await request.json();

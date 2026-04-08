@@ -1,0 +1,7 @@
+{
+  "colab_optimized": true,
+  "gpu_enabled": false,
+  "memory_optimized": true,
+  "cloud_storage": true,
+  "auto_scaling": true
+}

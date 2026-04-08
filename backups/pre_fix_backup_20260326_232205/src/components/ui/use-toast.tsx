@@ -4,7 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-export function useToast() {
+export /**
+ * useToast function
+ */
+function useToast(): any {
   return {
     toast: () => {},
   };

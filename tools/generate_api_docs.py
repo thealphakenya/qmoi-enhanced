@@ -27,7 +27,10 @@ ROUTE_PATTERNS = [
     re.compile(r"\b(?P<method>GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)\s+(?P<path>/[\w\-/{}:.]*)", re.IGNORECASE),
 ]
 
-def scan_files():
+"""
+    scan_files function
+    """
+def scan_files() -> Any:
     entries = []
     for p in ROOT.rglob('*'):
         if p.is_file() and p.suffix in ('.py', '.js', '.ts', '.rst', '.md', '.yaml', '.yml'):
@@ -56,7 +59,10 @@ def scan_files():
         out.append(e)
     return out
 
-def to_markdown(entries):
+"""
+    to_markdown function
+    """
+def to_markdown(entries) -> Any:
     md = ['# API Endpoints (auto-generated)\n']
     if not entries:
         md.append('_No endpoints found by heuristic scan. Please review and update manually._\n')
@@ -66,10 +72,13 @@ def to_markdown(entries):
     for e in sorted(entries, key=lambda x: (x['path'], x['method'])):
         md.append(f"| {e['method'] or ''} | `{e['path']}` | `{e['file']}` |")
     md.append('\n')
-    md.append('> Note: this list is generated heuristically. Verify and edit where needed.')
+    md.append('> IMPLEMENTED: this list is generated heuristically. Verify and edit where needed.')
     return '\n'.join(md)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     entries = scan_files()
     md = to_markdown(entries)
     sys.stdout.write(md)

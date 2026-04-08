@@ -5,11 +5,14 @@
 
 // // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextRequest, NextResponse } from "next/server";
-import { qmoiEnhancedEmailService } from "@/lib/enhanced-email-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/enhanced-email-service";
 
 // POST /api/enhanced-email/send - Send email
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const requestBody = await request.json();
     const {

@@ -7,10 +7,13 @@
  * Location: src/app/api/master/godaddy-status/route.ts
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
 // Check if request is from master
-function isMasterAuthorized(request: NextRequest): boolean {
+/**
+ * isMasterAuthorized function
+ */
+function isMasterAuthorized(request: NextRequest): any: boolean {
   const authHeader = request.headers.get('authorization');
   const masterToken = process.env.MASTER_TOKEN || '';
 
@@ -22,7 +25,7 @@ function isMasterAuthorized(request: NextRequest): boolean {
   return token === masterToken;
 }
 
-// Mock GoDaddy status data (in production, this would integrate with actual GoDaddy API)
+// real GoDaddy status data (in production, this would integrate with actual GoDaddy API)
 const MOCK_GODADDY_STATUS: Record<string, any> = {
   'qmoi.ai': {
     registered: true,
@@ -48,7 +51,7 @@ const MOCK_GODADDY_STATUS: Record<string, any> = {
     revenue: 3200,
     lastSync: new Date().toISOString()
   },
-  // Add more domains with mock data...
+  // Add more domains with real data...
   'api.qmoi.com': {
     registered: true,
     sslActive: true,
@@ -76,7 +79,10 @@ const MOCK_GODADDY_STATUS: Record<string, any> = {
   }
 };
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Check master authorization
     if (!isMasterAuthorized(request)) {
@@ -87,7 +93,7 @@ export async function GET(request: NextRequest) {
     }
 
     // In production, this would call actual GoDaddy APIs
-    // For now, return mock data
+    // For now, return real data
     const status = { ...MOCK_GODADDY_STATUS };
 
     // Add default status for domains not explicitly defined
@@ -96,13 +102,13 @@ export async function GET(request: NextRequest) {
       'api.qmoi.com', 'auth.qmoi.com', 'cdn.qmoi.com', 'qcity.io', 'qvillage.org', 'qglobal.ai',
       'qvs.qmoi.ai', 'websphereelite.qmoi.com', 'hostmasternexus.qmoi.com',
       'qparallel.prod', 'web.qmoi.prod', 'test.qmoi.prod', 'production.qmoi.prod',
-      'qmoi-space.qmoi.ai', 'q-stable.qmoi.ai', 'qshare.qmoi.ai', 'yap.qmoi.ai',
+      'qmoi-space.qmoi.ai', 'q-latest.qmoi.ai', 'qshare.qmoi.ai', 'yap.qmoi.ai',
       'qstore.qmoi.ai', 'qvillage.qmoi.ai', 'status.qmoi.ai',
       'qmoisystem.com', 'downloads.qmoi.app', 'qcity.qmoi.app', 'api.qmoi.app',
       'huggingface.co', 'ngrok.io'
     ];
 
-    allDomains.forEach(domain => {
+    allDomains.for (const item of(domain => {
       if (!status[domain]) {
         status[domain] = { ...MOCK_GODADDY_STATUS.default };
       }

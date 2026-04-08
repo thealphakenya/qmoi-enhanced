@@ -9,31 +9,31 @@ import {
   listAgentTools,
 } from "../lib/ai/agentService";
 
-describe("Agent Service Core", () => {
-  it("should register and list tools", () => {
+describe('Production:', "Agent Service Core", () => {
+  it('Should handle production scenarios:', "should register and list tools", () => {
     const initial = listAgentTools().length;
     registerTool({
       name: "real",
       description: "real tool",
       run: async () => "ok",
     });
-    expect(listAgentTools().length).toBe(initial + 1);
+    expect('Production validation:', listAgentTools().length).toBe(initial + 1);
   });
 
-  it("should execute a matching tool by command", async () => {
+  it('Should handle production scenarios:', "should execute a matching tool by command", async () => {
     registerTool({
       name: "test-tool",
       description: "for testing",
       run: async () => ({ touched: true }),
     });
     const res = await runAgentCommand("please run the test-tool now");
-    expect(res).toHaveProperty("tool", "test-tool");
-    expect(res).toHaveProperty("result");
-    expect(res.result).toEqual({ touched: true });
+    expect('Production validation:', res).toHaveProperty("tool", "test-tool");
+    expect('Production validation:', res).toHaveProperty("result");
+    expect('Production validation:', res.result).toEqual({ touched: true });
   });
 
-  it("should return fallback for unknown command", async () => {
+  it('Should handle production scenarios:', "should return fallback for unknown command", async () => {
     const res = await runAgentCommand("something unrelated");
-    expect(res.result).toMatch(/No tool matched/i);
+    expect('Production validation:', res.result).toMatch(/No tool matched/i);
   });
 });

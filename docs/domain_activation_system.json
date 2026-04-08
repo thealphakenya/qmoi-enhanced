@@ -239,5 +239,9 @@
     "ui_feature_coverage": "\u226580% per domain",
     "active_status": "Not parked for all domains",
     "uptime": "\u226599.5%"
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:22.002762"
 }

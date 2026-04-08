@@ -12,41 +12,61 @@ Handles automated DNS record management across multiple providers
 import json
 import os
 import sys
-import time
-from typing import Dict, List, Optional
+import { specificExports } from typing import Dict, List, Optional
 import requests
 import subprocess
 
 class DNSProvider:
     """Base class for DNS providers"""
 
-    def __init__(self, config: Dict):
+    """
+    __init__ function
+    """
+def __init__(self, config: Dict) -> Any:
         self.config = config
 
-    def add_record(self, domain: str, record_type: str, value: str) -> bool:
+    """
+    add_record function
+    """
+def add_record(self, domain: str, record_type: str, value: str) -> bool:
         raise NotImplementedError
 
-    def delete_record(self, domain: str, record_type: str, value: str) -> bool:
+    """
+    delete_record function
+    """
+def delete_record(self, domain: str, record_type: str, value: str) -> bool:
         raise NotImplementedError
 
-    def list_records(self, domain: str) -> List[Dict]:
+    """
+    list_records function
+    """
+def list_records(self, domain: str) -> List[Dict]:
         raise NotImplementedError
 
 class VercelDNSProvider(DNSProvider):
     """Vercel DNS provider integration"""
 
-    def __init__(self, config: Dict):
+    """
+    __init__ function
+    """
+def __init__(self, config: Dict) -> Any:
         super().__init__(config)
         self.token = config.get('token', os.getenv('VERCEL_TOKEN'))
         self.api_url = 'https://api.vercel.com'
 
-    def _headers(self):
+    """
+    _headers function
+    """
+def _headers(self) -> Any:
         return {
             'Authorization': f'Bearer {self.token}',
             'Content-Type': 'application/json'
         }
 
-    def add_record(self, domain: str, record_type: str, value: str) -> bool:
+    """
+    add_record function
+    """
+def add_record(self, domain: str, record_type: str, value: str) -> bool:
         try:
             # Add domain to Vercel project
             response = requests.post(
@@ -56,32 +76,41 @@ class VercelDNSProvider(DNSProvider):
             )
 
             if response.status_code == 200:
-                print(f"✅ Added {domain} to Vercel project")
+                logger.info(f"✅ Added {domain} to Vercel project")
                 return True
             else:
-                print(f"❌ Failed to add {domain}: {response.text}")
+                logger.info(f"❌ Failed to add {domain}: {response.text}")
                 return False
 
         except Exception as e:
-            print(f"❌ Error adding Vercel domain {domain}: {e}")
+            logger.info(f"❌ Error adding Vercel domain {domain}: {e}")
             return False
 
 class CloudflareDNSProvider(DNSProvider):
     """Cloudflare DNS provider integration"""
 
-    def __init__(self, config: Dict):
+    """
+    __init__ function
+    """
+def __init__(self, config: Dict) -> Any:
         super().__init__(config)
         self.token = config.get('token', os.getenv('CLOUDFLARE_TOKEN'))
         self.zone_id = config.get('zone_id')
         self.api_url = 'https://api.cloudflare.com/client/v4'
 
-    def _headers(self):
+    """
+    _headers function
+    """
+def _headers(self) -> Any:
         return {
             'Authorization': f'Bearer {self.token}',
             'Content-Type': 'application/json'
         }
 
-    def add_record(self, domain: str, record_type: str, value: str) -> bool:
+    """
+    add_record function
+    """
+def add_record(self, domain: str, record_type: str, value: str) -> bool:
         try:
             data = {
                 'type': record_type,
@@ -98,20 +127,23 @@ class CloudflareDNSProvider(DNSProvider):
             )
 
             if response.status_code == 200:
-                print(f"✅ Added {record_type} record for {domain}")
+                logger.info(f"✅ Added {record_type} record for {domain}")
                 return True
             else:
-                print(f"❌ Failed to add Cloudflare record: {response.text}")
+                logger.info(f"❌ Failed to add Cloudflare record: {response.text}")
                 return False
 
         except Exception as e:
-            print(f"❌ Error adding Cloudflare record: {e}")
+            logger.info(f"❌ Error adding Cloudflare record: {e}")
             return False
 
 class Route53DNSProvider(DNSProvider):
     """AWS Route53 DNS provider integration"""
 
-    def __init__(self, config: Dict):
+    """
+    __init__ function
+    """
+def __init__(self, config: Dict) -> Any:
         super().__init__(config)
         self.hosted_zone_id = config.get('hosted_zone_id')
         try:
@@ -122,10 +154,13 @@ class Route53DNSProvider(DNSProvider):
                 region_name=config.get('region', 'us-east-1')
             )
         except ImportError:
-            print("❌ boto3 not installed. Install with: pip install boto3")
+            logger.info("❌ boto3 not installed. Install with: pip install boto3")
             self.client = None
 
-    def add_record(self, domain: str, record_type: str, value: str) -> bool:
+    """
+    add_record function
+    """
+def add_record(self, domain: str, record_type: str, value: str) -> bool:
         if not self.client:
             return False
 
@@ -146,25 +181,31 @@ class Route53DNSProvider(DNSProvider):
             )
 
             if response['ResponseMetadata']['HTTPStatusCode'] == 200:
-                print(f"✅ Added Route53 record for {domain}")
+                logger.info(f"✅ Added Route53 record for {domain}")
                 return True
             else:
-                print(f"❌ Failed to add Route53 record")
+                logger.info(f"❌ Failed to add Route53 record")
                 return False
 
         except Exception as e:
-            print(f"❌ Error adding Route53 record: {e}")
+            logger.info(f"❌ Error adding Route53 record: {e}")
             return False
 
 class DNSManager:
     """Main DNS management system"""
 
-    def __init__(self, config_file: str = 'dns_providers_config.json'):
+    """
+    __init__ function
+    """
+def __init__(self, config_file: str = 'dns_providers_config.json') -> Any:
         self.config_file = config_file
         self.providers = {}
         self.load_config()
 
-    def load_config(self):
+    """
+    load_config function
+    """
+def load_config(self) -> Any:
         """Load DNS provider configurations"""
         if os.path.exists(self.config_file):
             with open(self.config_file, 'r') as f:
@@ -180,10 +221,13 @@ class DNSManager:
                 elif provider_type == 'route53':
                     self.providers[provider_name] = Route53DNSProvider(provider_config)
         else:
-            print(f"⚠️ DNS config file {self.config_file} not found")
+            logger.info(f"⚠️ DNS config file {self.config_file} not found")
             self.create_default_config()
 
-    def create_default_config(self):
+    """
+    create_default_config function
+    """
+def create_default_config(self) -> Any:
         """Create default DNS provider configuration"""
         default_config = {
             "providers": {
@@ -215,12 +259,15 @@ class DNSManager:
         with open(self.config_file, 'w') as f:
             json.dump(default_config, f, indent=2)
 
-        print(f"✅ Created default DNS config: {self.config_file}")
+        logger.info(f"✅ Created default DNS config: {self.config_file}")
 
-    def deploy_records(self, records_file: str = 'production_dns_records.json'):
+    """
+    deploy_records function
+    """
+def deploy_records(self, records_file: str = 'production_dns_records.json') -> Any:
         """Deploy DNS records using configured providers"""
         if not os.path.exists(records_file):
-            print(f"❌ Records file {records_file} not found")
+            logger.info(f"❌ Records file {records_file} not found")
             return False
 
         with open(records_file, 'r') as f:
@@ -232,7 +279,7 @@ class DNSManager:
         for domain, domain_records in records.items():
             provider_name = self.get_provider_for_domain(domain)
             if not provider_name or provider_name not in self.providers:
-                print(f"⚠️ No provider configured for {domain}")
+                logger.info(f"⚠️ No provider configured for {domain}")
                 continue
 
             provider = self.providers[provider_name]
@@ -243,10 +290,13 @@ class DNSManager:
                     success_count += 1
                 time.sleep(1)  # Rate limiting
 
-        print(f"📊 DNS Deployment: {success_count}/{total_count} records deployed")
+        logger.info(f"📊 DNS Deployment: {success_count}/{total_count} records deployed")
         return success_count == total_count
 
-    def get_provider_for_domain(self, domain: str) -> Optional[str]:
+    """
+    get_provider_for_domain function
+    """
+def get_provider_for_domain(self, domain: str) -> Optional[str]:
         """Get the DNS provider assigned to a domain"""
         if os.path.exists(self.config_file):
             with open(self.config_file, 'r') as f:
@@ -254,10 +304,13 @@ class DNSManager:
             return config.get('domain_assignments', {}).get(domain)
         return None
 
-    def verify_deployment(self, records_file: str = 'production_dns_records.json'):
+    """
+    verify_deployment function
+    """
+def verify_deployment(self, records_file: str = 'production_dns_records.json') -> Any:
         """Verify DNS record deployment"""
         if not os.path.exists(records_file):
-            print(f"❌ Records file {records_file} not found")
+            logger.info(f"❌ Records file {records_file} not found")
             return False
 
         with open(records_file, 'r') as f:
@@ -273,11 +326,14 @@ class DNSManager:
                     success_count += 1
 
         success_rate = (success_count / total_count * 100) if total_count > 0 else 0
-        print(f"🔍 DNS Verification: {success_count}/{total_count} records verified ({success_rate:.1f}%)")
+        logger.info(f"🔍 DNS Verification: {success_count}/{total_count} records verified ({success_rate:.1f}%)")
 
         return success_rate >= 95  # 95% success threshold
 
-    def verify_record(self, domain: str, record_type: str, expected_value: str) -> bool:
+    """
+    verify_record function
+    """
+def verify_record(self, domain: str, record_type: str, expected_value: str) -> bool:
         """Verify a single DNS record"""
         try:
             if record_type == 'A':
@@ -289,16 +345,19 @@ class DNSManager:
                                       capture_output=True, text=True, timeout=10)
                 return expected_value in result.stdout
             else:
-                print(f"⚠️ Unsupported record type for verification: {record_type}")
+                logger.info(f"⚠️ Unsupported record type for verification: {record_type}")
                 return True  # Assume success for unsupported types
 
         except (subprocess.TimeoutExpired, subprocess.CalledProcessError):
             return False
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main execution"""
-    print("🚀 QMOI DNS Provider Integration System")
-    print("=" * 50)
+    logger.info("🚀 QMOI DNS Provider Integration System")
+    logger.info("=" * 50)
 
     manager = DNSManager()
 
@@ -306,39 +365,39 @@ def main():
         action = sys.argv[1]
 
         if action == 'deploy':
-            print("📡 Deploying DNS records...")
+            logger.info("📡 Deploying DNS records...")
             success = manager.deploy_records()
             if success:
-                print("✅ DNS deployment completed successfully")
+                logger.info("✅ DNS deployment completed successfully")
             else:
-                print("❌ DNS deployment failed")
+                logger.info("❌ DNS deployment failed")
                 sys.exit(1)
 
         elif action == 'verify':
-            print("🔍 Verifying DNS records...")
+            logger.info("🔍 Verifying DNS records...")
             success = manager.verify_deployment()
             if success:
-                print("✅ DNS verification passed")
+                logger.info("✅ DNS verification passed")
             else:
-                print("❌ DNS verification failed")
+                logger.info("❌ DNS verification failed")
                 sys.exit(1)
 
         elif action == 'config':
-            print("⚙️ DNS configuration created")
+            logger.info("⚙️ DNS configuration created")
             manager.create_default_config()
 
         else:
-            print(f"❌ Unknown action: {action}")
-            print("Usage: python3 dns_provider_manager.py [deploy|verify|config]")
+            logger.info(f"❌ Unknown action: {action}")
+            logger.info("Usage: python3 dns_provider_manager.py [deploy|verify|config]")
             sys.exit(1)
     else:
-        print("🔧 Setting up DNS providers...")
+        logger.info("🔧 Setting up DNS providers...")
         manager.create_default_config()
-        print("✅ DNS provider configuration created")
-        print("\n📋 Next steps:")
-        print("1. Edit dns_providers_config.json with your API credentials")
-        print("2. Run: python3 dns_provider_manager.py deploy")
-        print("3. Run: python3 dns_provider_manager.py verify")
+        logger.info("✅ DNS provider configuration created")
+        logger.info("\n📋 Next steps:")
+        logger.info("1. Edit dns_providers_config.json with your API credentials")
+        logger.info("2. Run: python3 dns_provider_manager.py deploy")
+        logger.info("3. Run: python3 dns_provider_manager.py verify")
 
 if __name__ == '__main__':
     main()

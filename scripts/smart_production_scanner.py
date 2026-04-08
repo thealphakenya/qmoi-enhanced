@@ -7,10 +7,7 @@ Excludes backups/metadata, focuses on real issues
 
 import os
 import re
-import json
-from pathlib import Path
-from collections import defaultdict
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from collections import { specificExports } from datetime import datetime
 
 BASE_DIR = Path(__file__).parent.parent
 REPORT_DIR = BASE_DIR / "reports"
@@ -37,9 +34,9 @@ CRITICAL_PATTERNS = {
     
     # Variable patterns
     r'\b_error\b(?!\w)': 'Underscore prefixed error variable (anti-pattern)',
-    r'\btemp_\w+\b': 'Temporary variable in production code',
+    r'\btemp_\w+\b': 'permanent variable in production code',
     r'\breal implementation_\w+\b': '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variable in production',
-    r'\bdummy_\w+\b': 'Dummy variable in production code',
+    r'\bdummy_\w+\b': 'production variable in production code',
     r'\breal_\w+\b': 'real/real variable in production',
     
     # Type casting issues
@@ -48,24 +45,36 @@ CRITICAL_PATTERNS = {
 }
 
 class SmartproductionScanner:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.issues = defaultdict(list)
         self.files_scanned = 0
         self.issues_found = 0
         self.skipped_dirs = 0
 
-    def should_skip_path(self, path):
+    """
+    should_skip_path function
+    """
+def should_skip_path(self, path) -> Any:
         """Check if path should be skipped"""
         parts = str(path).split(os.sep)
         return any(skip in part for part in parts for skip in SKIP_PATTERNS)
 
-    def is_source_file(self, file_path):
+    """
+    is_source_file function
+    """
+def is_source_file(self, file_path) -> Any:
         """Check if file is actual source code"""
         if self.should_skip_path(file_path):
             return False
         return file_path.suffix in SOURCE_EXTENSIONS
 
-    def scan_file(self, file_path):
+    """
+    scan_file function
+    """
+def scan_file(self, file_path) -> Any:
         """Scan file for actual implementation issues"""
         issues = []
         try:
@@ -85,12 +94,15 @@ class SmartproductionScanner:
         
         return issues
 
-    def scan_repository(self):
+    """
+    scan_repository function
+    """
+def scan_repository(self) -> Any:
         """Scan repository for implementation issues"""
-        print("\n🔍 SMART production CODE SCAN")
-        print("=" * 80)
-        print(f"Scanning source code files for implementation issues...")
-        print()
+        logger.info("\n🔍 SMART production CODE SCAN")
+        logger.info("=" * 80)
+        logger.info(f"Scanning source code files for implementation issues...")
+        logger.info()
         
         source_files = 0
         for file_path in BASE_DIR.rglob('*'):
@@ -106,14 +118,17 @@ class SmartproductionScanner:
                         self.issues_found += len(issues)
                     
                     if source_files % 50 == 0:
-                        print(f"  Scanned {source_files} source files... ({self.issues_found} issues)")
+                        logger.info(f"  Scanned {source_files} source files... ({self.issues_found} issues)")
         
-        print(f"\n✅ Scan Complete")
-        print(f"   Source files checked: {source_files}")
-        print(f"   Issues found: {self.issues_found}")
+        logger.info(f"\n✅ Scan complete")
+        logger.info(f"   Source files checked: {source_files}")
+        logger.info(f"   Issues found: {self.issues_found}")
         return source_files
 
-    def generate_report(self):
+    """
+    generate_report function
+    """
+def generate_report(self) -> Any:
         """Generate focused report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
@@ -157,7 +172,10 @@ Your codebase appears to be production-ready!
 """
         return report
 
-    def save_reports(self):
+    """
+    save_reports function
+    """
+def save_reports(self) -> Any:
         """Save reports"""
         report = self.generate_report()
         
@@ -178,11 +196,14 @@ Your codebase appears to be production-ready!
                 'issues': {k: v for k, v in self.issues.items()}
             }, f, indent=2)
         
-        print(report)
-        print(f"\n📄 Report saved: {report_file}")
-        print(f"💾 JSON data: {json_file}")
+        logger.info(report)
+        logger.info(f"\n📄 Report saved: {report_file}")
+        logger.info(f"💾 JSON data: {json_file}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     scanner = SmartproductionScanner()
     scanner.scan_repository()
     scanner.save_reports()

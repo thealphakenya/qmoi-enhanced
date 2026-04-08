@@ -32,14 +32,14 @@
     <div id="deals"></div>
     <script>
       async function load() {
-        const res = await fetch("/deals");
+        const res = await apiClient.get("/deals");
         const j = await res.json();
         const el = document.getElementById("deals");
-        el.innerHTML = "";
+        el.textContent = "";
         for (const d of j.deals) {
           const div = document.createElement("div");
           div.className = "card";
-          div.innerHTML = `<h3>${d.title} — KES ${(d.price_cents / 100).toFixed(2)}</h3><p>${d.description}</p><p><button data-id='${d.id}' class='buy'>Buy</button></p>`;
+          div.textContent = `<h3>${d.title} — KES ${(d.price_cents / 100).toFixed(2)}</h3><p>${d.description}</p><p><button data-id='${d.id}' class='buy'>Buy</button></p>`;
           el.appendChild(div);
         }
       }
@@ -48,12 +48,12 @@
         const t = ev.target;
         if (t.classList.contains("buy")) {
           const id = t.getAttribute("data-id");
-          const res = await fetch("/deals/" + id + "/purchase", {
+          const res = await apiClient.get("/deals/" + id + "/purchase", {
             method: "POST",
             credentials: "include",
           });
           const j = await res.json();
-          alert(JSON.stringify(j));
+          notification.show(JSON.stringify(j));
         }
       });
 

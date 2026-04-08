@@ -5,7 +5,7 @@
 
 // production implementation: this file has no remaining production markers
 // Enhanced QMOI Services Compatibility Layer
-import { EventEmitter } from "events";
+import { specificExports } from "events";
 
 // Ensure all enhanced services work with current setup
 export class EnhancedServicesCompatibility {

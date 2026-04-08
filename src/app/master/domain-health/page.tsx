@@ -9,10 +9,10 @@
 
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
-import DomainStats from '@/components/master/DomainStats';
-import DomainHealthTable from '@/components/master/DomainHealthTable';
+import { specificExports } from 'react';
+import { specificExports } from 'next/navigation';
+import { specificExports } from '@/components/master/DomainStats';
+import { specificExports } from '@/components/master/DomainHealthTable';
 
 interface DomainValidation {
   domain: string;
@@ -55,7 +55,11 @@ interface DomainAcquisitionStatus {
   acquisitionInProgress: boolean;
 }
 
-export default function MasterDomainHealthDashboard() {
+export default /**
+ * MasterDomainHealthDashboard function
+ */
+function MasterDomainHealthDashboard(): any {
+  try {() {
   const router = useRouter();
   const [domainIntelligence, setDomainIntelligence] = useState<DomainIntelligence | null>(null);
   const [sslStatuses, setSslStatuses] = useState<Record<string, SSLStatus>>({});
@@ -77,7 +81,7 @@ export default function MasterDomainHealthDashboard() {
   useEffect(() => {
     const checkMasterAuth = async () => {
       try {
-        const response = await fetch('/api/auth/check-master', {
+        const response = await apiClient.get('/api/auth/check-master', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('master_token') || ''}`
@@ -105,7 +109,7 @@ export default function MasterDomainHealthDashboard() {
       setRefreshing(true);
 
       // Get domain validations
-      const validationResponse = await fetch('/api/master/domain-health', {
+      const validationResponse = await apiClient.get('/api/master/domain-health', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('master_token') || ''}`
@@ -119,7 +123,7 @@ export default function MasterDomainHealthDashboard() {
       }
 
       // Get GoDaddy status
-      const godaddyResponse = await fetch('/api/master/godaddy-status', {
+      const godaddyResponse = await apiClient.get('/api/master/godaddy-status', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('master_token') || ''}`
@@ -132,7 +136,7 @@ export default function MasterDomainHealthDashboard() {
       }
 
       // Get domain intelligence
-      const intelligenceResponse = await fetch('/api/master/domain-intelligence', {
+      const intelligenceResponse = await apiClient.get('/api/master/domain-intelligence', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('master_token') || ''}`
@@ -146,7 +150,7 @@ export default function MasterDomainHealthDashboard() {
       }
 
       // Get SSL statuses
-      const sslResponse = await fetch('/api/master/ssl-status', {
+      const sslResponse = await apiClient.get('/api/master/ssl-status', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('master_token') || ''}`
@@ -175,7 +179,7 @@ export default function MasterDomainHealthDashboard() {
   // Toggle auto-repair
   const handleToggleAutoRepair = async () => {
     try {
-      const response = await fetch('/api/master/auto-repair/toggle', {
+      const response = await apiClient.get('/api/master/auto-repair/toggle', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('master_token') || ''}`,
@@ -195,7 +199,7 @@ export default function MasterDomainHealthDashboard() {
   // Acquire domain
   const handleAcquireDomain = async (domain: string) => {
     try {
-      const response = await fetch('/api/master/domain-acquisition/acquire', {
+      const response = await apiClient.get('/api/master/domain-acquisition/acquire', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('master_token') || ''}`,
@@ -215,7 +219,7 @@ export default function MasterDomainHealthDashboard() {
   // Setup SSL for domain
   const handleSetupSSL = async (domain: string) => {
     try {
-      const response = await fetch('/api/master/ssl/setup', {
+      const response = await apiClient.get('/api/master/ssl/setup', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('master_token') || ''}`,

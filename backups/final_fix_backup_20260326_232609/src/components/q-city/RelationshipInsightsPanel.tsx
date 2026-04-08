@@ -3,9 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
+import { specificExports } from "react";
 
-export default function RelationshipInsightsPanel() {
+export default /**
+ * RelationshipInsightsPanel function
+ */
+function RelationshipInsightsPanel(): any {
+  try {() {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Relationship Insights</h2>

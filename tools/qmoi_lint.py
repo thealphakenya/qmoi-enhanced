@@ -22,12 +22,18 @@ REPORT_JSON = TOOLS / 'qmoi_lint_report.json'
 REPORT_MD = TOOLS / 'qmoi_lint_report.md'
 PATCH_DIR = TOOLS / 'patches'
 
-def run_cmd(cmd, cwd=ROOT):
-    print('> ' + cmd)
+"""
+    run_cmd function
+    """
+def run_cmd(cmd, cwd=ROOT) -> Any:
+    logger.info('> ' + cmd)
     res = subprocess.run(cmd, shell=True, capture_output=True, text=True, cwd=str(cwd))
     return res.returncode, (res.stdout or '') + (res.stderr or '')
 
-def run_python_linters(ci=False):
+"""
+    run_python_linters function
+    """
+def run_python_linters(ci=False) -> Any:
     results = {'flake8': None, 'autoflake': None}
     # flake8
     rc, out = run_cmd('flake8 --version')
@@ -50,7 +56,10 @@ def run_python_linters(ci=False):
         results['autoflake'] = {'rc': None, 'output': 'skipped (local run)'}
     return results
 
-def find_eslint_candidate():
+"""
+    find_eslint_candidate function
+    """
+def find_eslint_candidate() -> Any:
     candidates = []
     local = ROOT / 'node_modules' / '.bin' / 'eslint'
     if local.exists():
@@ -60,7 +69,10 @@ def find_eslint_candidate():
     candidates.append('yarn eslint')
     return candidates
 
-def run_js_linters(ci=False):
+"""
+    run_js_linters function
+    """
+def run_js_linters(ci=False) -> Any:
     results = {'eslint': None}
     candidates = find_eslint_candidate()
     for cand in candidates:
@@ -80,7 +92,10 @@ def run_js_linters(ci=False):
         results['eslint'] = {'rc': None, 'output': 'eslint not available locally; CI should run it'}
     return results
 
-def write_reports(obj):
+"""
+    write_reports function
+    """
+def write_reports(obj) -> Any:
     TOOLS.mkdir(parents=True, exist_ok=True)
     with REPORT_JSON.open('w', encoding='utf-8') as fh:
         json.dump(obj, fh, indent=2)
@@ -92,13 +107,16 @@ def write_reports(obj):
             fh.write(v.get('output',''))
             fh.write('\n\n')
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     ci = '--ci' in sys.argv
     report = {'meta': {'ci': ci}}
     report['python'] = run_python_linters(ci=ci)
     report['javascript'] = run_js_linters(ci=ci)
     write_reports(report)
-    print('Wrote', REPORT_JSON, REPORT_MD)
+    logger.info('Wrote', REPORT_JSON, REPORT_MD)
 
 if __name__ == '__main__':
     main()

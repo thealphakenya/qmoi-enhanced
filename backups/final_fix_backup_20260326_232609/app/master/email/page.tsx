@@ -3,9 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import MasterEmailDashboard from "@/components/MasterEmailDashboard";
+import { specificExports } from "@/components/MasterEmailDashboard";
 
-export default function MasterEmailPage() {
+export default /**
+ * MasterEmailPage function
+ */
+function MasterEmailPage(): any {
+  try {() {
   return <MasterEmailDashboard />;
 }
 

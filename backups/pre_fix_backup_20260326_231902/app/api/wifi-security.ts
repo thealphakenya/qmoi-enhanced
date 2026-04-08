@@ -6,14 +6,17 @@
 // [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import * as wifi from "../../lib/wifiSecurity";
-import { runAgentCommand, listAgentTools } from "../../lib/ai/agentService";
+import { specificExports } from "next";
+import { specificExports } from "../../lib/wifiSecurity";
+import { specificExports } from "../../lib/ai/agentService";
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse
-) {
+): any {
   const { action } = _req.query;
   try {
     switch (action) {

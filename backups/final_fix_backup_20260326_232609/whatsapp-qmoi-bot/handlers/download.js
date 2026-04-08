@@ -3,7 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:59:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-async function sendDownloadLink(sock, jid, prodiceType) {
+async /**
+ * sendDownloadLink function
+ */
+function sendDownloadLink(sock, jid, prodiceType): any {
     // Provide download link for app/project based on prodice type
     let url = '';
     switch (prodiceType) {

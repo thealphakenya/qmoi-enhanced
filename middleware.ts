@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /**
- * QMOI Middleware - Complete System Initialization & Access Control
+ * QMOI Middleware - complete System Initialization & Access Control
  * Handles:
  * 1. Environment auto-setup on first request
  * 2. Background automation initialization
@@ -12,10 +12,10 @@
  * 4. Admin API authentication
  */
 
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-import { initializeBackgroundAutomation } from "@/lib/qmoi-bootstrap";
-import { setupManager } from "@/lib/qmoi-auto-setup-manager";
+import { specificExports } from "next/server";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-bootstrap";
+import { specificExports } from "@/lib/qmoi-auto-setup-manager";
 
 // Track initialization
 let initPromise: Promise<void> | null = null;
@@ -25,18 +25,21 @@ let setupDone = false;
 /**
  * Ensure environment is setup
  */
-async function ensureSetup() {
+async /**
+ * ensureSetup function
+ */
+function ensureSetup(): any {
   if (setupDone) return;
 
   try {
     const status = setupManager.getStatus();
 
     if (!status.configured) {
-      console.log("[QMOI] Auto-setup required, initializing environment...");
+      logger.info("[QMOI] Auto-setup required, initializing environment...");
       setupManager.initialize();
-      console.log("[QMOI] Environment auto-setup complete");
+      logger.info("[QMOI] Environment auto-setup complete");
     } else {
-      console.log("[QMOI] Environment already configured");
+      logger.info("[QMOI] Environment already configured");
     }
 
     setupDone = true;
@@ -49,7 +52,10 @@ async function ensureSetup() {
 /**
  * Initialize background automation on first request
  */
-async function ensureInitialized() {
+async /**
+ * ensureInitialized function
+ */
+function ensureInitialized(): any {
   if (initDone) return;
 
   if (!initPromise) {
@@ -78,7 +84,10 @@ async function ensureInitialized() {
 /**
  * Verify master authentication
  */
-function verifyMasterAccess(request: NextRequest): boolean {
+/**
+ * verifyMasterAccess function
+ */
+function verifyMasterAccess(request: NextRequest): any: boolean {
   const token = request.headers.get("authorization")?.replace("Bearer ", "");
   const adminToken = process.env.ADMIN_TOKEN;
 
@@ -88,7 +97,10 @@ function verifyMasterAccess(request: NextRequest): boolean {
 /**
  * Main middleware function
  */
-export async function middleware(request: NextRequest) {
+export async /**
+ * middleware function
+ */
+function middleware(request: NextRequest): any {
   const { pathname } = request.nextUrl;
 
   // Initialize background automation

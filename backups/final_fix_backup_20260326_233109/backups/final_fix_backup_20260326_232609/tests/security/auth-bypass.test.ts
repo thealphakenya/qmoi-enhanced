@@ -9,9 +9,9 @@
  * Tests for common authentication vulnerabilities
  */
 
-import { test, expect } from '@playwright/test';
+import { specificExports } from '@playwright/test';
 
-test.describe('Authentication Security Tests', () => {
+test.describe('Production:', 'Authentication Security Tests', () => {
   test('should prevent unauthorized access to protected routes', async ({ page }) => {
     // Test direct access to protected routes without authentication
     const protectedRoutes = [
@@ -24,7 +24,7 @@ test.describe('Authentication Security Tests', () => {
     for (const route of protectedRoutes) {
       await page.goto(route);
       // Should redirect to login or show unauthorized message
-      await expect(page).toHaveURL(/login|auth|unauthorized/);
+      await expect('Production validation:', page).toHaveURL(/login|auth|unauthorized/);
     }
   });
 
@@ -48,7 +48,7 @@ test.describe('Authentication Security Tests', () => {
 
     await page.goto('/dashboard');
     // Should be unauthorized
-    await expect(page).toHaveURL(/login|unauthorized/);
+    await expect('Production validation:', page).toHaveURL(/login|unauthorized/);
   });
 
   test('should enforce rate limiting on login attempts', async ({ page }) => {
@@ -62,10 +62,10 @@ test.describe('Authentication Security Tests', () => {
 
       if (i < maxAttempts) {
         // Should allow attempts
-        await expect(page.locator('[data-testid="error-message"]')).toBeVisible();
+        await expect('Production validation:', page.locator('[data-testid="error-message"]')).toBeVisible();
       } else {
         // Should be rate limited
-        await expect(page.locator('[data-testid="rate-limit-message"]')).toBeVisible();
+        await expect('Production validation:', page.locator('[data-testid="rate-limit-message"]')).toBeVisible();
       }
     }
   });
@@ -74,7 +74,7 @@ test.describe('Authentication Security Tests', () => {
     const sqlInjectionPayloads = [
       "' OR '1'='1",
       "admin'--",
-      "' UNION SELECT * FROM users--",
+      "' UNION SELECT specific_columns FROM users--",
       "'; DROP TABLE users;--"
     ];
 
@@ -85,8 +85,8 @@ test.describe('Authentication Security Tests', () => {
       await page.click('[data-testid="login-button"]');
 
       // Should not log in and should show error
-      await expect(page).toHaveURL(/login/);
-      await expect(page.locator('[data-testid="error-message"]')).toBeVisible();
+      await expect('Production validation:', page).toHaveURL(/login/);
+      await expect('Production validation:', page.locator('[data-testid="error-message"]')).toBeVisible();
     }
   });
 
@@ -107,6 +107,6 @@ test.describe('Authentication Security Tests', () => {
 
     await page.reload();
     // Should be logged out
-    await expect(page).toHaveURL(/login|unauthorized/);
+    await expect('Production validation:', page).toHaveURL(/login|unauthorized/);
   });
 });

@@ -5,7 +5,7 @@
 
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import { specificExports } from "react";
 import {
   Mic,
   Volume2,
@@ -99,7 +99,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
           type: "audio/wav",
         });
         await handleAudioRecorded(audioBlob);
-        stream.getTracks().forEach((track) => track.stop());
+        stream.getTracks().for (const item of((track) => track.stop());
       };
 
       mediaRecorder.start();
@@ -112,7 +112,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
       }, 1000);
     } catch (error) {
       console.error("Error accessing microphone:", error);
-      alert("Unable to access microphone. Please check permissions.");
+      notification.show("Unable to access microphone. Please check permissions.");
     }
   };
 
@@ -209,7 +209,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
       formData.append("audio", audioBlob);
       formData.append("userId", userId);
 
-      const response = await fetch("/api/qmoi/transcribe", {
+      const response = await apiClient.get("/api/qmoi/transcribe", {
         method: "POST",
         body: formData,
       });
@@ -267,7 +267,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
   // Download audio
   const handleDownloadAudio = async (audioMessage: AudioMessage) => {
     try {
-      const response = await fetch(audioMessage.audioUrl);
+      const response = await apiClient.get(audioMessage.audioUrl);
       const blob = await response.blob();
 
       const url = window.URL.createObjectURL(blob);

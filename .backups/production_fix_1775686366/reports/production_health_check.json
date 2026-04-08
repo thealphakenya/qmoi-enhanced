@@ -1,0 +1,114 @@
+{
+  "timestamp": "2026-03-21T23:26:58.097722",
+  "domains": [
+    {
+      "domain": "qmoi.ai",
+      "healthy": false,
+      "dns_resolved": false,
+      "http_accessible": false,
+      "error": "DNS resolution failed",
+      "timestamp": "2026-03-21T23:26:58.097744"
+    },
+    {
+      "domain": "www.qmoi.ai",
+      "healthy": false,
+      "dns_resolved": false,
+      "http_accessible": false,
+      "error": "DNS resolution failed",
+      "timestamp": "2026-03-21T23:26:58.395427"
+    },
+    {
+      "domain": "api.qmoi.ai",
+      "healthy": false,
+      "dns_resolved": false,
+      "http_accessible": false,
+      "error": "DNS resolution failed",
+      "timestamp": "2026-03-21T23:26:58.479087"
+    },
+    {
+      "domain": "qcity.qmoi.ai",
+      "healthy": false,
+      "dns_resolved": false,
+      "http_accessible": false,
+      "error": "DNS resolution failed",
+      "timestamp": "2026-03-21T23:26:58.583977"
+    },
+    {
+      "domain": "qmoi-space.qmoi.ai",
+      "healthy": false,
+      "dns_resolved": false,
+      "http_accessible": false,
+      "error": "DNS resolution failed",
+      "timestamp": "2026-03-21T23:26:58.644116"
+    },
+    {
+      "domain": "yap.qmoi.ai",
+      "healthy": false,
+      "dns_resolved": false,
+      "http_accessible": false,
+      "error": "DNS resolution failed",
+      "timestamp": "2026-03-21T23:26:58.697440"
+    },
+    {
+      "domain": "q-stable.qmoi.ai",
+      "healthy": false,
+      "dns_resolved": false,
+      "http_accessible": false,
+      "error": "DNS resolution failed",
+      "timestamp": "2026-03-21T23:26:58.733812"
+    },
+    {
+      "domain": "qvillage.com",
+      "healthy": false,
+      "dns_resolved": true,
+      "http_accessible": false,
+      "error": null,
+      "timestamp": "2026-03-21T23:26:58.788509"
+    },
+    {
+      "domain": "qvillage.net",
+      "healthy": true,
+      "dns_resolved": true,
+      "http_accessible": true,
+      "error": null,
+      "timestamp": "2026-03-21T23:26:58.833271"
+    },
+    {
+      "domain": "qvillage.org",
+      "healthy": false,
+      "dns_resolved": false,
+      "http_accessible": false,
+      "error": "DNS resolution failed",
+      "timestamp": "2026-03-21T23:26:59.033325"
+    },
+    {
+      "domain": "qglobal.org",
+      "healthy": false,
+      "dns_resolved": true,
+      "http_accessible": false,
+      "error": null,
+      "timestamp": "2026-03-21T23:26:59.091201"
+    },
+    {
+      "domain": "stableq.ai",
+      "healthy": false,
+      "dns_resolved": true,
+      "http_accessible": false,
+      "error": null,
+      "timestamp": "2026-03-21T23:26:59.135687"
+    },
+    {
+      "domain": "qparallel.prod",
+      "healthy": false,
+      "dns_resolved": false,
+      "http_accessible": false,
+      "error": "DNS resolution failed",
+      "timestamp": "2026-03-21T23:26:59.235073"
+    }
+  ],
+  "summary": {
+    "total_domains": 13,
+    "healthy_domains": 1,
+    "overall_health_percentage": 7.6923076923076925
+  }
+}

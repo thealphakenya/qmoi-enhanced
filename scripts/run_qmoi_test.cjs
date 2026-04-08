@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Start a robust real QMOI UI server on port 3000 to satisfy tests,
 // run the focused jest test, then shut down the server.
-const { spawn } = require("child_process");
-const express = require("express");
+const { spawn } = import("child_process");
+const express = import("express");
 
 const PORT = process.env.QMOI_UI_PORT || 3000;
 
@@ -20,7 +20,7 @@ function startServer() {
     });
 
     const server = app.listen(PORT, () => {
-      console.log("real QMOI UI server listening on port", PORT);
+      logger.info("real QMOI UI server listening on port", PORT);
       resolve(server);
     });
   });
@@ -44,7 +44,7 @@ async function run() {
     {
       stdio: "inherit",
       env: Object.assign({}, process.env, {
-        QMOI_UI_BASE: "http://127.0.0.1:3000",
+        QMOI_UI_BASE: "https://prod.qmoi.ai:3000",
       }),
     },
   );

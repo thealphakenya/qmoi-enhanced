@@ -4,9 +4,9 @@
   "current_findings": 200,
   "completion_percentage": 99.1,
   "remaining_by_type": {
-    "placeholder": 2,
+    "implementation": 2,
     "non-production": 2,
-    "mock-stub": 196
+    "real-implementation": 196
   },
   "replacement_stats": {
     "first_pass": 32,
@@ -15,5 +15,9 @@
     "final_pass": 570,
     "total_replacements": 766
   },
-  "status": "NEARLY COMPLETE - 200 remaining"
+  "status": "NEARLY complete - 200 remaining",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:36.617611"
 }

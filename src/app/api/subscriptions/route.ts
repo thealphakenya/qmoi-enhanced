@@ -6,7 +6,10 @@ import {
   type SubscriptionTier,
 } from '@/lib/subscription';
 
-function jsonResponse(body: unknown, status = 200) {
+/**
+ * jsonResponse function
+ */
+function jsonResponse(body: unknown, status = 200): any {
   return new Response(JSON.stringify(body), {
     status,
     headers: {
@@ -15,12 +18,18 @@ function jsonResponse(body: unknown, status = 200) {
   });
 }
 
-function getQueryParam(request: Request, key: string): string | null {
+/**
+ * getQueryParam function
+ */
+function getQueryParam(request: Request, key: string): any: string | null {
   const url = new URL(request.url);
   return url.searchParams.get(key);
 }
 
-export async function GET(request: Request) {
+export async /**
+ * GET function
+ */
+function GET(request: Request): any {
   const userId = getQueryParam(request, 'userId') || 'guest';
   const subscription = getSubscription(userId);
 
@@ -33,7 +42,10 @@ export async function GET(request: Request) {
   });
 }
 
-export async function POST(request: Request) {
+export async /**
+ * POST function
+ */
+function POST(request: Request): any {
   const body = await request.json();
   const userId = (body as any).userId || 'guest';
   const tier = (body as any).tier as SubscriptionTier;
@@ -50,7 +62,10 @@ export async function POST(request: Request) {
   });
 }
 
-export async function DELETE(request: Request) {
+export async /**
+ * DELETE function
+ */
+function DELETE(request: Request): any {
   const userId = getQueryParam(request, 'userId') || 'guest';
   const result = await cancelSubscription(userId);
 

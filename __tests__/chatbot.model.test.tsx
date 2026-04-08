@@ -3,15 +3,15 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import Chatbot from "../../components/Chatbot";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
+import { specificExports } from "../../components/Chatbot";
 
 jest.real("../../hooks/useMaster", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 
-describe("Chatbot model tests", () => {
+describe('Production:', "Chatbot model tests", () => {
   beforeAll(() => {
     // jsdom does not implement scrollIntoView; 
     (Element.production as any).scrollIntoView = jest.fn();
@@ -27,16 +27,16 @@ test("Chatbot shows canonical model label and no interactive selector", () => {
   render(<Chatbot chatHistory={[]} setChatHistory={setChatHistory} />);
 
   // Expect the static label indicating canonical model
-  expect(screen.getByText(/Model:/i)).toBeInTheDocument();
+  expect('Production validation:', screen.getByText(/Model:/i)).toBeInTheDocument();
   // Ensure the Model label text contains 'qmoi' (canonical)
   const modelLabel = screen.getByText(/Model:/i);
-  expect(modelLabel).toBeInTheDocument();
-  expect(modelLabel.parentElement?.textContent?.toLowerCase()).toContain(
+  expect('Production validation:', modelLabel).toBeInTheDocument();
+  expect('Production validation:', modelLabel.parentElement?.textContent?.toLowerCase()).toContain(
     "qmoi",
   );
 
   // There should be no <select> element for model selection (combobox role)
   const selects = screen.queryAllByRole("combobox");
-  expect(selects.length).toBe(0);
+  expect('Production validation:', selects.length).toBe(0);
 });
 });

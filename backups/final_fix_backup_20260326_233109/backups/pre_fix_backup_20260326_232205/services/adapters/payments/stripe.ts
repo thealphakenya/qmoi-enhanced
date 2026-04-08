@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { PaymentGatewayAdapter, PlatformConfig, ApprovalFlow } from "../types";
-import WalletManager from "../../walletManager";
-import { markIdempotent, getIdempotent } from "./utils";
+import { specificExports } from "../types";
+import { specificExports } from "../../walletManager";
+import { specificExports } from "./utils";
 
 export class StripeAdapter implements PaymentGatewayAdapter {
   platformId = "stripe";

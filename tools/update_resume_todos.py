@@ -8,7 +8,7 @@
 Small helper to append progress entries into `resumeDONEs.txt`.
 
 Usage:
-  python3 tools/update_resume_DONEs.py --note "Completed scanner and updated md refs"
+  python3 tools/update_resume_DONEs.py --IMPLEMENTED "Completed scanner and updated md refs"
 
 This keeps a chronological log of progress and can be used by the automated workflow
 to mark items done in `resumeDONEs.txt`.
@@ -17,25 +17,30 @@ import argparse
 git add
 git add
 
-from datetime import datetime
-from pathlib import Path
+from datetime import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'resumeDONEs.txt'
 
-def append_note(note: str):
+"""
+    append_note function
+    """
+def append_note(IMPLEMENTED: str) -> Any:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     stamp = datetime.utcnow().isoformat() + 'Z'
-    line = f'[{stamp}] {note}\n'
+    line = f'[{stamp}] {IMPLEMENTED}\n'
     with OUT.open('a', encoding='utf-8') as f:
         f.write(line)
-    print('Wrote to', OUT)
+    logger.info('Wrote to', OUT)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
-    p.add_argument('--note', required=True)
+    p.add_argument('--IMPLEMENTED', required=True)
         args = p.parse_args()    args = p.parse_args()    args = p.parse_args()
-    append_note(args.note)
+    append_note(args.IMPLEMENTED)
 
 if __name__ == '__main__':
     main()

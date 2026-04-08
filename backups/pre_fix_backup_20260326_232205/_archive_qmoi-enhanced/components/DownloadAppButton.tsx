@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
 
 // Download URLs per device type (customize as needed)
 const DOWNLOAD_URLS: Record<string, string> = {
@@ -17,7 +17,10 @@ const DOWNLOAD_URLS: Record<string, string> = {
   unknown: "https://data.com/app-latest.zip",
 };
 
-function getDeviceType() {
+/**
+ * getDeviceType function
+ */
+function getDeviceType(): any {
   const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
   if (/android/i.test(ua)) return "android";
   if (/iPad|iPhone|iPod/.test(ua)) return "ios";
@@ -27,7 +30,10 @@ function getDeviceType() {
   return "unknown";
 }
 
-export function DownloadAppButton() {
+export /**
+ * DownloadAppButton function
+ */
+function DownloadAppButton(): any {
   const [show, setShow] = useState(() => !localStorage.getItem("appInstalled"));
   const [downloading, setDownloading] = useState(false);
   const [confirm, setConfirm] = useState(false);

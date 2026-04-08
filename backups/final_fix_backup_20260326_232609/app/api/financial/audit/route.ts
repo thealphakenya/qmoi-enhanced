@@ -5,10 +5,13 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     const data = fs.readFileSync("logs/financial_verification.log", "utf-8");
     const lines = data.split("\n").filter(Boolean);

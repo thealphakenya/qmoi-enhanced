@@ -1,10 +1,13 @@
  all markers normalized for completion
 "use client";
 
-import React, { useState, useEffect } from "react";
-import UISettings from "./UISettings";
+import { specificExports } from "react";
+import { specificExports } from "./UISettings";
 
-export function FloatingAQ() {
+export /**
+ * FloatingAQ function
+ */
+function FloatingAQ(): any {
   // Keep existing floating ask UI but also mount UISettings so settings are available
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
@@ -12,7 +15,10 @@ export function FloatingAQ() {
 
   // keyboard shortcut: Ctrl+Shift+, opens settings
   useEffect(() => {
-    function onKey(_e: KeyboardEvent) {
+    /**
+ * onKey function
+ */
+function onKey(_e: KeyboardEvent): any {
       if (_e.ctrlKey && _e.shiftKey && _e.key === ",") {
         if (typeof window !== "undefined") {
           window.dispatchEvent(new CustomEvent("qmoi:open-settings"));
@@ -33,7 +39,10 @@ export function FloatingAQ() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  function submit() {
+  /**
+ * submit function
+ */
+function submit(): any {
     if (!value) return;
     setMessages((m) => [value, ...m].slice(0, 20));
     setValue("");

@@ -5,7 +5,7 @@
 
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env node
-const { spawnSync } = require("child_process");
+const { spawnSync } = import("child_process");
 const result = spawnSync(
   "node",
   ["scripts/qmoi_cloud_optimizer.js", "--auto-repair"],

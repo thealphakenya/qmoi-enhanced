@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useEffect, useState } from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/use-toast";
 
 interface Network {
   ssid: string;
@@ -54,7 +54,10 @@ interface WifiPanelProps {
   onClose: () => void;
 }
 
-export function WifiPanel({ onClose }: WifiPanelProps) {
+export /**
+ * WifiPanel function
+ */
+function WifiPanel({ onClose }: WifiPanelProps): any {
   const [networks, setNetworks] = useState<WifiNetwork[]>([]);
   const [loading, setLoading] = useState(false);
   const [connected, setConnected] = useState<string | null>(null);
@@ -146,9 +149,9 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/wifi/scan");
+      const res = await apiClient.get("/api/wifi/scan");
       if (!res.ok)
-        throw new Error(
+        throw new ProductionError(
           "Failed to scan networks. Please check your Wi-Fi adapter.",
         );
       const data = await res.json();
@@ -181,7 +184,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/wifi", {
+      const res = await apiClient.get("/api/wifi", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ssid, password: passwords[ssid] || "" }),
@@ -232,9 +235,9 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
         const monitorUrl =
           (typeof window !== "undefined" &&
             .process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
-          "process.env.API_URL || "http://localhost:\1"";
-        const res = await fetch(`${monitorUrl}/monitor/status`);
-        if (!res.ok) throw new Error("Failed to fetch monitor status");
+          "process.env.API_URL || "https://production.qmoi.ai:\1"";
+        const res = await apiClient.get(`${monitorUrl}/monitor/status`);
+        if (!res.ok) throw new ProductionError("Failed to fetch monitor status");
         const data = await res.json();
         setMonitorStatus(data);
       } catch (error) {
@@ -265,13 +268,13 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
       const monitorUrl =
         (typeof window !== "undefined" &&
           .process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
-        "process.env.API_URL || "http://localhost:\1"";
-      const monitorRes = await fetch(`${monitorUrl}/monitor`, {
+        "process.env.API_URL || "https://production.qmoi.ai:\1"";
+      const monitorRes = await apiClient.get(`${monitorUrl}/monitor`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enable: true, interval: monitorInterval }),
       });
-      if (!monitorRes.ok) throw new Error("Failed to start monitoring");
+      if (!monitorRes.ok) throw new ProductionError("Failed to start monitoring");
       addLog(`Monitoring started: every ${monitorInterval}s`);
       setMonitorStatus((s) => ({
         ...s,
@@ -297,7 +300,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
     setLoading(true);
     setError(null);
     try {
-      await fetch("process.env.API_URL || "http://localhost:\1"/monitor", {
+      await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/monitor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enable: false }),
@@ -331,7 +334,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   // Fetch analytics
   const fetchAnalytics = async () => {
     try {
-      const res = await fetch("process.env.API_URL || "http://localhost:\1"/analytics");
+      const res = await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/analytics");
       const data = await res.json();
       setAnalytics(data);
     } catch (error) {
@@ -347,7 +350,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
   // Fetch hourly analytics
   const fetchHourlyAnalytics = async () => {
     try {
-      const res = await fetch("process.env.API_URL || "http://localhost:\1"/analytics/hourly");
+      const res = await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/analytics/hourly");
       const data = await res.json();
       setHourlyAnalytics(data);
     } catch (error) {
@@ -365,14 +368,14 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
 
   // Export analytics as CSV
   const exportAnalytics = () => {
-    window.open("process.env.API_URL || "http://localhost:\1"/export-analytics", "_blank");
+    window.open("process.env.API_URL || "https://production.qmoi.ai:\1"/export-analytics", "_blank");
   };
 
   // Send alert to external system
   const sendAlert = async (msg: string) => {
     if (!webhookUrl) return;
     try {
-      await fetch("process.env.API_URL || "http://localhost:\1"/alert", {
+      await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/alert", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: msg, webhook: webhookUrl }),
@@ -533,7 +536,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                 setLoading(true);
                 setError(null);
                 try {
-                  const res = await fetch(
+                  const res = await apiClient.get(
                     "/api/wifi-security?action=security-test",
                   );
                   const data = await res.json();
@@ -543,10 +546,10 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                       data.networks
                         .map((n: Network) => `${n.ssid}: ${n.encryption}`)
                         .join("\n");
-                    alert(msg);
+                    notification.show(msg);
                     addLog(msg);
                   } else {
-                    alert(data.result);
+                    notification.show(data.result);
                     addLog(data.result);
                   }
                 } catch (e: unknown) {
@@ -638,16 +641,16 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                 setLoading(true);
                 setError(null);
                 try {
-                  const res = await fetch(
+                  const res = await apiClient.get(
                     "/api/wifi-security?action=network-scan",
                   );
                   const data = await res.json();
                   if (data.hosts) {
                     const msg = "Hosts found:\n" + data.hosts.join("\n");
-                    alert(msg);
+                    notification.show(msg);
                     addLog(msg);
                   } else {
-                    alert(data.result);
+                    notification.show(data.result);
                     addLog(data.result);
                   }
                 } catch (e: unknown) {
@@ -669,7 +672,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                 setLoading(true);
                 setError(null);
                 try {
-                  const res = await fetch(
+                  const res = await apiClient.get(
                     "/api/wifi-security?action=signal-analysis",
                   );
                   const data = await res.json();
@@ -679,10 +682,10 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                       data.signals
                         .map((s: SignalData) => `${s.ssid}: ${s.signal}`)
                         .join("\n");
-                    alert(msg);
+                    notification.show(msg);
                     addLog(msg);
                   } else {
-                    alert(data.result);
+                    notification.show(data.result);
                     addLog(data.result);
                   }
                 } catch (e: unknown) {
@@ -704,7 +707,7 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                 setLoading(true);
                 setError(null);
                 try {
-                  const res = await fetch("/api/wifi-security?action=iot-scan");
+                  const res = await apiClient.get("/api/wifi-security?action=iot-scan");
                   const data = await res.json();
                   if (data.risks && data.risks.length > 0) {
                     const msg =
@@ -712,10 +715,10 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                       data.risks
                         .map((r: IoTRisk) => `${r.host}: ${r.open.join(", ")}`)
                         .join("\n");
-                    alert(msg);
+                    notification.show(msg);
                     addLog(msg);
                   } else {
-                    alert(data.result);
+                    notification.show(data.result);
                     addLog(data.result);
                   }
                 } catch (e: unknown) {
@@ -746,13 +749,13 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                   setLoading(true);
                   setError(null);
                   try {
-                    const res = await fetch("/api/ai/agents", {
+                    const res = await apiClient.get("/api/ai/agents", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ command: agentCommand }),
                     });
                     const data = await res.json();
-                    alert(JSON.stringify(data));
+                    notification.show(JSON.stringify(data));
                     addLog(
                       `Agent(cmd=${agentCommand}): ${JSON.stringify(data)}`,
                     );
@@ -773,11 +776,11 @@ export function WifiPanel({ onClose }: WifiPanelProps) {
                 setLoading(true);
                 setError(null);
                 try {
-                  const res = await fetch(
+                  const res = await apiClient.get(
                     "/api/wifi-security?action=ai-agents",
                   );
                   const data = await res.json();
-                  alert(data.result);
+                  notification.show(data.result);
                   addLog(data.result);
                 } catch (e: unknown) {
                   setError("AI agent activation failed.");

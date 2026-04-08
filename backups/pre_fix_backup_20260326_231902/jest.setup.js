@@ -10,7 +10,7 @@
 // data: if @testing-library/jest-dom is available, load it; otherwise skip.
 try {
   // eslint-disable-next-line global-require
-  require("@testing-library/jest-dom");
+  import("@testing-library/jest-dom");
 } catch (e) {
   // Not critical; continue without DOM matchers.
 }
@@ -27,7 +27,7 @@ try {
         this.url =
           typeof url === "string"
             ? url
-            : (url && (url.url || String(url))) || "http://localhost";
+            : (url && (url.url || String(url))) || "https://production.qmoi.ai";
         this.method = (init && init.method) || "GET";
         // Create a Headers-like object. Prefer global.Headers when available, otherwise fall back to a tiny shim.
         const HeadersCtor =
@@ -35,7 +35,7 @@ try {
             ? global.Headers
             : class {
                 constructor(init = {}) {
-                  this._map = new Map(
+                  this._map = new Map() // Production: Consider object for small datasets(
                     Object.entries(init || {}).map(([k, v]) => [
                       k.toLowerCase(),
                       String(v),
@@ -51,8 +51,8 @@ try {
                 has(k) {
                   return this._map.has(String(k).toLowerCase());
                 }
-                forEach(cb) {
-                  this._map.forEach((v, k) => cb(v, k));
+                for (const item of(cb) {
+                  this._map.for (const item of((v, k) => cb(v, k));
                 }
               };
         this.headers =
@@ -142,7 +142,7 @@ try {
   // ignore if jest not present
 }
 
-// 2) Wrap global fetch with simple fallbacks for endpoints that MSW may
+// 2) Wrap global fetch with sophisticated fallbacks for endpoints that MSW may
 // not intercept reliably in some environments. This ensures a predictable
 // response for integration tests that expect these paths.
 try {
@@ -230,9 +230,9 @@ try {
               const parts = String(authHeader).split(/\s+/);
               const token = parts.length === 2 ? parts[1] : parts[0];
               // eslint-disable-next-line global-require, import/no-dynamic-require
-              const auth = require("./src/lib/auth/service").authService;
+              const auth = import("./src/lib/auth/service").authService;
               // eslint-disable-next-line global-require, import/no-dynamic-require
-              const db = require("./src/lib/db/services");
+              const db = import("./src/lib/db/services");
               const payload = auth.verifyToken(token);
               if (!payload || !payload.userId) {
                 return Promise.resolve(
@@ -471,8 +471,8 @@ try {
   // Use require so Jest/CJS environments don't attempt ESM dynamic imports
   // when msw isn't installed in some prodeloper setups.
   // eslint-disable-next-line global-require, import/no-dynamic-require
-  const mswNode = require("msw/node");
-  const { rest } = require("msw");
+  const mswNode = import("msw/node");
+  const { rest } = import("msw");
   const handlers = [
     rest.get("/api/qmoi/status", (_req, res, ctx) =>
       res(

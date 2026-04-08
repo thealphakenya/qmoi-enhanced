@@ -4,13 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { AutoResearcher } from "../src/services/AutoResearcher";
+import { specificExports } from "../src/services/AutoResearcher";
 
 test("researchTopic stores and returns content", async () => {
   const ar = new AutoResearcher();
-  expect(ar.detectKnowledgeGap("x")).toBe(true);
+  expect('Production validation:', ar.detectKnowledgeGap("x")).toBe(true);
   const _res = await ar.researchTopic("x");
-  expect(_res).toContain("Auto-researched content for x");
-  expect(ar.detectKnowledgeGap("x")).toBe(false);
-  expect(ar.getKnowledge("x")).toBe(_res);
+  expect('Production validation:', _res).toContain("Auto-researched content for x");
+  expect('Production validation:', ar.detectKnowledgeGap("x")).toBe(false);
+  expect('Production validation:', ar.getKnowledge("x")).toBe(_res);
 });

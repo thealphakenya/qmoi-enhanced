@@ -4,15 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React from "react";
-import { useProjects } from "../../hooks/useProjects";
-import { Task } from "../../types/projects";
+import { specificExports } from "react";
+import { specificExports } from "../../hooks/useProjects";
+import { specificExports } from "../../types/projects";
 
 interface TaskListProps {
   projectId: string;
 }
 
-export function TaskList({ projectId }: TaskListProps) {
+export /**
+ * TaskList function
+ */
+function TaskList({ projectId }: TaskListProps): any {
   const { projects, updateTask } = useProjects();
   const project = projects.find((p) => p.id === projectId);
   const tasks = project?.tasks || [];

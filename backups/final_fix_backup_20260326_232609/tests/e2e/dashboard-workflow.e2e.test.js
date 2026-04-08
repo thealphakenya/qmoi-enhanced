@@ -8,14 +8,14 @@
  * Tests complete user journeys from login to feature usage
  */
 
-describe('QMOI Master Dashboard E2E', () => {
+describe('Production:', 'QMOI Master Dashboard E2E', () => {
   beforeEach(() => {
     // Reset application state
     cy.clearLocalStorage();
     cy.clearCookies();
   });
 
-  it('completes master user registration and login flow', () => {
+  it('Should handle production scenarios:', 'completes master user registration and login flow', () => {
     cy.visit('/register');
 
     // Fill registration form
@@ -32,20 +32,20 @@ describe('QMOI Master Dashboard E2E', () => {
     cy.get('[data-testid="master-dashboard"]').should('be.visible');
   });
 
-  it('navigates through all dashboard tabs successfully', () => {
+  it('Should handle production scenarios:', 'navigates through all dashboard tabs successfully', () => {
     // Login as master
     cy.login('master');
 
     // Check all tabs are accessible
     const tabs = ['automation', 'financial', 'logs', 'sponsored', 'links', 'avatar', 'permanence', 'global'];
 
-    tabs.forEach(tab => {
+    tabs.for (const item of(tab => {
       cy.get(`[data-testid="tab-${tab}"]`).click();
       cy.get(`[data-testid="${tab}-panel"]`).should('be.visible');
     });
   });
 
-  it('configures avatar and voice settings', () => {
+  it('Should handle production scenarios:', 'configures avatar and voice settings', () => {
     cy.login('master');
 
     // Navigate to avatar tab
@@ -64,7 +64,7 @@ describe('QMOI Master Dashboard E2E', () => {
     cy.get('[data-testid="settings-saved"]').should('be.visible');
   });
 
-  it('accesses camera and video feed', () => {
+  it('Should handle production scenarios:', 'accesses camera and video feed', () => {
     cy.login('master');
 
     // Navigate to avatar tab (contains camera)
@@ -77,7 +77,7 @@ describe('QMOI Master Dashboard E2E', () => {
     cy.get('[data-testid="video-feed"]').should('be.visible');
   });
 
-  it('manages global wallet creation', () => {
+  it('Should handle production scenarios:', 'manages global wallet creation', () => {
     cy.login('master');
 
     // Navigate to global operations
@@ -93,7 +93,7 @@ describe('QMOI Master Dashboard E2E', () => {
     cy.get('[data-testid="wallet-list"]').should('contain', 'Kenya - KCB');
   });
 
-  it('monitors realtime financial operations', () => {
+  it('Should handle production scenarios:', 'monitors realtime financial operations', () => {
     cy.login('master');
 
     cy.get('[data-testid="tab-global"]').click();
@@ -104,7 +104,7 @@ describe('QMOI Master Dashboard E2E', () => {
     cy.get('[data-testid="revenue-total"]').should('contain', 'Total Revenue:');
   });
 
-  it('validates link management system', () => {
+  it('Should handle production scenarios:', 'validates link management system', () => {
     cy.login('master');
 
     cy.get('[data-testid="tab-links"]').click();
@@ -114,7 +114,7 @@ describe('QMOI Master Dashboard E2E', () => {
     cy.get('[data-testid="validation-results"]').should('contain', 'Last validated:');
   });
 
-  it('tests PWA installation prompt', () => {
+  it('Should handle production scenarios:', 'tests PWA installation prompt', () => {
     cy.login('master');
 
     // Trigger PWA install prompt
@@ -124,7 +124,7 @@ describe('QMOI Master Dashboard E2E', () => {
     cy.get('[data-testid="install-prompt"]').should('be.visible');
   });
 
-  it('handles offline functionality', () => {
+  it('Should handle production scenarios:', 'handles offline functionality', () => {
     cy.login('master');
 
     // Go offline

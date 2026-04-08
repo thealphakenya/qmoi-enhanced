@@ -26,10 +26,7 @@ import sys
 import json
 import subprocess
 import argparse
-import logging
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Optional
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional
 
 logging.basicConfig(
     level=logging.INFO,
@@ -40,7 +37,10 @@ logger = logging.getLogger(__name__)
 class QMOIDeploymentOrchestrator:
     """Orchestrates deployment to all distribution channels"""
 
-    def __init__(self, version: str, dry_run: bool = False):
+    """
+    __init__ function
+    """
+def __init__(self, version: str, dry_run: bool = False) -> Any:
         self.version = self._normalize_version(version)
         self.dry_run = dry_run
         self.stats = {
@@ -51,13 +51,19 @@ class QMOIDeploymentOrchestrator:
             'downloads_portal': {'status': 'pending', 'deployed': 0, 'failed': 0},
         }
 
-    def _normalize_version(self, version: str) -> str:
+    """
+    _normalize_version function
+    """
+def _normalize_version(self, version: str) -> str:
         """Ensure version starts with 'v'"""
         if not version.startswith('v'):
             return f"v{version}"
         return version
 
-    def deploy_github(self) -> bool:
+    """
+    deploy_github function
+    """
+def deploy_github(self) -> bool:
         """Deploy to GitHub Releases"""
         logger.info("📤 Deploying to GitHub Releases...")
 
@@ -82,7 +88,10 @@ class QMOIDeploymentOrchestrator:
             self.stats['github']['failed'] = 1
             return False
 
-    def deploy_playstore(self) -> bool:
+    """
+    deploy_playstore function
+    """
+def deploy_playstore(self) -> bool:
         """Deploy to Google Play Store"""
         logger.info("📱 Deploying to Google Play Store...")
 
@@ -95,7 +104,10 @@ class QMOIDeploymentOrchestrator:
         self.stats['playstore']['status'] = 'pending'
         return False
 
-    def deploy_appstore(self) -> bool:
+    """
+    deploy_appstore function
+    """
+def deploy_appstore(self) -> bool:
         """Deploy to Apple App Store"""
         logger.info("🍎 Deploying to Apple App Store...")
 
@@ -108,7 +120,10 @@ class QMOIDeploymentOrchestrator:
         self.stats['appstore']['status'] = 'pending'
         return False
 
-    def deploy_downloads_portal(self) -> bool:
+    """
+    deploy_downloads_portal function
+    """
+def deploy_downloads_portal(self) -> bool:
         """Deploy to official downloads portal"""
         logger.info("🌐 Deploying to downloads.qmoi.app...")
 
@@ -121,7 +136,10 @@ class QMOIDeploymentOrchestrator:
         self.stats['downloads_portal']['status'] = 'pending'
         return False
 
-    def deploy_web(self) -> bool:
+    """
+    deploy_web function
+    """
+def deploy_web(self) -> bool:
         """Deploy to web/PWA distribution"""
         logger.info("🌐 Deploying to web/PWA distribution...")
 
@@ -149,7 +167,10 @@ class QMOIDeploymentOrchestrator:
             self.stats['web']['status'] = 'failed'
             return False
 
-    def verify_deployments(self) -> Dict:
+    """
+    verify_deployments function
+    """
+def verify_deployments(self) -> Dict:
         """Verify all deployments"""
         logger.info("✅ Verifying deployments...")
 
@@ -160,7 +181,10 @@ class QMOIDeploymentOrchestrator:
 
         return verification
 
-    def _verify_github(self) -> bool:
+    """
+    _verify_github function
+    """
+def _verify_github(self) -> bool:
         """Verify GitHub Releases deployment"""
         try:
             result = subprocess.run(
@@ -176,12 +200,18 @@ class QMOIDeploymentOrchestrator:
             logger.warning("⚠️  Could not verify GitHub Release")
             return False
 
-    def _verify_web(self) -> bool:
+    """
+    _verify_web function
+    """
+def _verify_web(self) -> bool:
         """Verify web deployment"""
         logger.warning("⚠️  Web verification not yet implemented")
         return False
 
-    def generate_report(self) -> str:
+    """
+    generate_report function
+    """
+def generate_report(self) -> str:
         """Generate deployment report"""
         report = f"""
 # 🚀 QMOI Multi-Channel Deployment Report
@@ -256,7 +286,10 @@ https://github.com/thestablekenya/qmoi-enhanced/releases/tag/{self.version}
 """
         return report
 
-    def deploy_all(self) -> bool:
+    """
+    deploy_all function
+    """
+def deploy_all(self) -> bool:
         """Deploy to all channels"""
         logger.info("")
         logger.info("╔════════════════════════════════════════════════════════════╗")
@@ -285,7 +318,7 @@ https://github.com/thestablekenya/qmoi-enhanced/releases/tag/{self.version}
         logger.info("")
         logger.info("📊 Deployment Summary:")
         for channel, result in results:
-            status = "✅ Complete" if result else "⏳ Pending"
+            status = "✅ complete" if result else "⏳ Pending"
             logger.info(f"  {channel}: {status}")
 
         # Generate report
@@ -294,7 +327,10 @@ https://github.com/thestablekenya/qmoi-enhanced/releases/tag/{self.version}
 
         return all(result for _, result in results)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(
         description='🚀 QMOI Multi-Channel Deployment System',
         formatter_class=argparse.RawDescriptionHelpFormatter,

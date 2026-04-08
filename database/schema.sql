@@ -298,7 +298,7 @@ SELECT
     COALESCE(SUM(p.quantity * p.current_price), 0) as total_value,
     COALESCE(SUM(p.pnl), 0) as total_pnl
 FROM users u
-LEFT JOIN portfolio p ON u.id = p.user_id
+INNER JOIN portfolio p ON u.id = p.user_id
 GROUP BY u.id, u.email;
 
 CREATE OR REPLACE VIEW system_health_summary AS

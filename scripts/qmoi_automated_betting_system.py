@@ -17,9 +17,7 @@ import json
 import logging
 import threading
 import requests
-import random
-from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Any
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Optional, Any
 import psutil
 
 # Configure logging
@@ -53,7 +51,10 @@ class QMOIBettingCredentials:
     }
 
 class QMOIAutomatedBettingSystem:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.running = False
         self.betting_interval = 300  # 5 minutes
         self.analysis_interval = 180  # 3 minutes
@@ -106,7 +107,10 @@ class QMOIAutomatedBettingSystem:
             'errors': []
         })
     
-    def update_status(self, status_updates: Dict[str, Any]):
+    """
+    update_status function
+    """
+def update_status(self, status_updates: Dict[str, Any]) -> Any:
         """Update betting system status"""
         try:
             current_status = {}
@@ -122,7 +126,10 @@ class QMOIAutomatedBettingSystem:
         except Exception as e:
             logging.error(f"Failed to update status: {e}")
     
-    def log_bet(self, bet_data: Dict[str, Any]):
+    """
+    log_bet function
+    """
+def log_bet(self, bet_data: Dict[str, Any]) -> Any:
         """Log betting activity"""
         try:
             bet_history = []
@@ -142,7 +149,10 @@ class QMOIAutomatedBettingSystem:
         except Exception as e:
             logging.error(f"Failed to log bet: {e}")
     
-    def login_platform(self, platform_name: str) -> bool:
+    """
+    login_platform function
+    """
+def login_platform(self, platform_name: str) -> bool:
         """Login to betting platform"""
         try:
             platform = self.platforms[platform_name]
@@ -170,7 +180,10 @@ class QMOIAutomatedBettingSystem:
             logging.error(f"❌ Failed to login to {platform_name}: {e}")
             return False
     
-    def get_platform_balance(self, platform_name: str) -> float:
+    """
+    get_platform_balance function
+    """
+def get_platform_balance(self, platform_name: str) -> float:
         """Get platform balance"""
         try:
             platform = self.platforms[platform_name]
@@ -186,7 +199,10 @@ class QMOIAutomatedBettingSystem:
             logging.error(f"Failed to get balance for {platform_name}: {e}")
             return 0.0
     
-    def analyze_betting_opportunities(self) -> List[Dict[str, Any]]:
+    """
+    analyze_betting_opportunities function
+    """
+def analyze_betting_opportunities(self) -> List[Dict[str, Any]]:
         """Analyze betting opportunities using AI"""
         try:
             logging.info("🧠 Analyzing betting opportunities...")
@@ -218,7 +234,10 @@ class QMOIAutomatedBettingSystem:
             logging.error(f"Analysis error: {e}")
             return []
     
-    def place_bet(self, platform_name: str, bet_data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    place_bet function
+    """
+def place_bet(self, platform_name: str, bet_data: Dict[str, Any]) -> Dict[str, Any]:
         """Place a bet on the platform"""
         try:
             platform = self.platforms[platform_name]
@@ -251,7 +270,10 @@ class QMOIAutomatedBettingSystem:
             logging.error(f"Failed to place bet on {platform_name}: {e}")
             return {'status': 'error', 'error': str(e)}
     
-    def check_bet_results(self, platform_name: str) -> List[Dict[str, Any]]:
+    """
+    check_bet_results function
+    """
+def check_bet_results(self, platform_name: str) -> List[Dict[str, Any]]:
         """Check results of placed bets"""
         try:
             platform = self.platforms[platform_name]
@@ -286,7 +308,10 @@ class QMOIAutomatedBettingSystem:
             logging.error(f"Failed to check bet results for {platform_name}: {e}")
             return []
     
-    def transfer_to_mpesa(self, amount: float) -> bool:
+    """
+    transfer_to_mpesa function
+    """
+def transfer_to_mpesa(self, amount: float) -> bool:
         """Transfer winnings to M-Pesa"""
         try:
             logging.info(f"💸 Transferring KSH {amount:.2f} to M-Pesa...")
@@ -305,7 +330,10 @@ class QMOIAutomatedBettingSystem:
             logging.error(f"Failed to transfer to M-Pesa: {e}")
             return False
     
-    def betting_worker(self):
+    """
+    betting_worker function
+    """
+def betting_worker(self) -> Any:
         """Background betting worker"""
         while self.running:
             try:
@@ -362,7 +390,10 @@ class QMOIAutomatedBettingSystem:
                 logging.error(f"Betting worker error: {e}")
                 time.sleep(60)  # Wait 1 minute on error
     
-    def analysis_worker(self):
+    """
+    analysis_worker function
+    """
+def analysis_worker(self) -> Any:
         """Background analysis worker"""
         while self.running:
             try:
@@ -384,7 +415,10 @@ class QMOIAutomatedBettingSystem:
                 logging.error(f"Analysis worker error: {e}")
                 time.sleep(60)
     
-    def get_status(self) -> Dict[str, Any]:
+    """
+    get_status function
+    """
+def get_status(self) -> Dict[str, Any]:
         """Get current betting system status"""
         try:
             if os.path.exists(self.status_file):
@@ -395,7 +429,10 @@ class QMOIAutomatedBettingSystem:
             logging.error(f"Failed to get status: {e}")
             return {}
     
-    def start(self):
+    """
+    start function
+    """
+def start(self) -> Any:
         """Start the automated betting system"""
         if self.running:
             logging.warning("Betting system is already running")
@@ -420,14 +457,20 @@ class QMOIAutomatedBettingSystem:
         logging.info("📝 Check logs/qmoi_betting_system.log for detailed activity")
         logging.info("📊 Check logs/betting_system_status.json for status updates")
     
-    def stop(self):
+    """
+    stop function
+    """
+def stop(self) -> Any:
         """Stop the automated betting system"""
         logging.info("🛑 Stopping QMOI Automated Betting System...")
         self.running = False
         self.update_status({'running': False})
         logging.info("✅ Betting system stopped")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     betting_system = QMOIAutomatedBettingSystem()
     

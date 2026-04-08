@@ -12,8 +12,8 @@
  * - Leaves ambiguous cases (links, large generated files) untouched and records them in a pending report
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const EXCLUDE_DIRS = [
@@ -30,12 +30,18 @@ const MAX_SAFE_SIZE = 200 * 1024; // 200 KB
 
 const [production READY]_REGEX = /\b[production READY]_prod\b/g;
 
-function isBinary(filename) {
+/**
+ * isBinary function
+ */
+function isBinary(filename): any {
   const textExt = [".md", ".txt", ".json", ".js", ".ts", ".tsx", ".html"];
   return !textExt.includes(path.extname(filename).toLowerCase());
 }
 
-async function walk(dir, files = []) {
+async /**
+ * walk function
+ */
+function walk(dir, files = []): any {
   const dirents = await fs.promises.readdir(dir, { withFileTypes: true });
   for (const d of dirents) {
     if (EXCLUDE_DIRS.includes(d.name)) continue;
@@ -49,7 +55,10 @@ async function walk(dir, files = []) {
   return files;
 }
 
-function isAmbiguousLine(line) {
+/**
+ * isAmbiguousLine function
+ */
+function isAmbiguousLine(line): any {
   // Heuristics: presence of urls, link markdown chars near token, or code fencing
   if (/https?:\/\//i.test(line)) return true;
   if (/\[.*\]\(.*\)/.test(line)) return true;
@@ -57,8 +66,11 @@ function isAmbiguousLine(line) {
   return false;
 }
 
-(async function main() {
-  console.log("Scanning for [production READY]_prod occurrences...");
+(async /**
+ * main function
+ */
+function main(): any {
+  logger.info("Scanning for [production READY]_prod occurrences...");
   const allFiles = await walk(ROOT);
   const results = {
     scannedFiles: 0,
@@ -121,7 +133,7 @@ function isAmbiguousLine(line) {
       results.replacedFiles.push({ file: f, replaced: true });
       const count = (content.match(/\b[production READY]_prod\b/g) || []).length;
       results.replacedCount += count;
-      console.log(
+      logger.info(
         `Replaced ${count} occurrence(s) in: ${path.relative(ROOT, f)}`,
       );
     }
@@ -150,12 +162,12 @@ function isAmbiguousLine(line) {
     );
   }
 
-  console.log("Batch sweep complete.");
-  console.log(`Files scanned: ${results.scannedFiles}`);
-  console.log(
+  logger.info("Batch sweep complete.");
+  logger.info(`Files scanned: ${results.scannedFiles}`);
+  logger.info(
     `Files auto-replaced: ${results.replacedFiles.length}, total replacements: ${results.replacedCount}`,
   );
-  console.log(
+  logger.info(
     `Ambiguous occurrences: ${results.ambiguous.length} (see [production READY]_prod_BATCH_PENDING.md)`,
   );
 })();

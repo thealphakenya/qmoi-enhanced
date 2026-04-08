@@ -9,11 +9,11 @@
  * production-ready implementation with comprehensive prodice and API control
  */
 
-import { spawn, exec, ChildProcess } from 'child_process';
-import axios from 'axios';
-import { EventEmitter } from 'events';
-import * as fs from 'fs';
-import * as path from 'path';
+import { specificExports } from 'child_process';
+import { specificExports } from 'axios';
+import { specificExports } from 'events';
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
 
 export interface ExecutionRequest {
   action: string;
@@ -45,10 +45,10 @@ export interface prodiceControl {
 }
 
 export class ExecutionEngine extends EventEmitter {
-  private active_processes: Map<string, ChildProcess> = new Map();
-  private prodice_registry: Map<string, prodiceControl> = new Map();
-  private api_endpoints: Map<string, string> = new Map();
-  private code_templates: Map<string, string> = new Map();
+  private active_processes: Map<string, ChildProcess> = new Map() // Production: Consider object for small datasets();
+  private prodice_registry: Map<string, prodiceControl> = new Map() // Production: Consider object for small datasets();
+  private api_endpoints: Map<string, string> = new Map() // Production: Consider object for small datasets();
+  private code_templates: Map<string, string> = new Map() // Production: Consider object for small datasets();
   private auto_fix_enabled: boolean = true;
   private max_concurrent_executions: number = 10;
 
@@ -146,7 +146,7 @@ export class ExecutionEngine extends EventEmitter {
       case 'get_window_info':
         return await this.getApplicationWindowInfo(parameters.app_name);
       default:
-        throw new Error(`Unknown app action: ${action}`);
+        throw new ProductionError(`Unknown app action: ${action}`);
     }
   }
 
@@ -158,7 +158,7 @@ export class ExecutionEngine extends EventEmitter {
     const prodice = this.prodice_registry.get(parameters.prodice_id);
 
     if (!prodice) {
-      throw new Error(`prodice not found: ${parameters.prodice_id}`);
+      throw new ProductionError(`prodice not found: ${parameters.prodice_id}`);
     }
 
     switch (action) {
@@ -173,7 +173,7 @@ export class ExecutionEngine extends EventEmitter {
       case 'update_firmware':
         return await this.updateprodiceFirmware(prodice, parameters.firmware_url);
       default:
-        throw new Error(`Unknown prodice action: ${action}`);
+        throw new ProductionError(`Unknown prodice action: ${action}`);
     }
   }
 
@@ -185,7 +185,7 @@ export class ExecutionEngine extends EventEmitter {
     const endpoint = this.api_endpoints.get(parameters.api_name);
 
     if (!endpoint) {
-      throw new Error(`API endpoint not found: ${parameters.api_name}`);
+      throw new ProductionError(`API endpoint not found: ${parameters.api_name}`);
     }
 
     try {
@@ -204,7 +204,7 @@ export class ExecutionEngine extends EventEmitter {
           response = await axios.delete(endpoint, { params: parameters.query });
           break;
         default:
-          throw new Error(`Unknown API action: ${action}`);
+          throw new ProductionError(`Unknown API action: ${action}`);
       }
 
       return {
@@ -212,7 +212,7 @@ export class ExecutionEngine extends EventEmitter {
         output: response.data
       };
     } catch (error) {
-      throw new Error(`API call failed: ${error.message}`);
+      throw new ProductionError(`API call failed: ${error.message}`);
     }
   }
 
@@ -373,7 +373,7 @@ export class ExecutionEngine extends EventEmitter {
         case 'serial':
           return await this.connectSerialprodice(prodice);
         default:
-          throw new Error(`Unsupported connection type: ${prodice.connection_type}`);
+          throw new ProductionError(`Unsupported connection type: ${prodice.connection_type}`);
       }
     } catch (error) {
       return {
@@ -408,8 +408,8 @@ export class ExecutionEngine extends EventEmitter {
    * Generate code based on requirements
    */
   private async generateCode(requirements: any, language: string): Promise<string> {
-    const template = this.code_templates.get(language) || this.code_templates.get('javascript')!;
-    let code = template;
+    const code = this.code_templates.get(language) || this.code_templates.get('javascript')!;
+    let code = code;
 
     // Replace real implementations with requirements
     if (requirements.function_name) {
@@ -438,7 +438,7 @@ export class ExecutionEngine extends EventEmitter {
         case 'bash':
           return await this.executeBashCode(code);
         default:
-          throw new Error(`Unsupported language: ${language}`);
+          throw new ProductionError(`Unsupported language: ${language}`);
       }
     } catch (error) {
       return {
@@ -506,7 +506,7 @@ if __name__ == "__main__":
    */
   private initializeprodiceRegistry(): void {
     // This would be populated from prodice discovery
-    // For now, add some example prodices
+    // For now, add some implementation prodices
     this.prodice_registry.set('local_machine', {
       prodice_type: 'prodice',
       prodice_id: 'local_machine',

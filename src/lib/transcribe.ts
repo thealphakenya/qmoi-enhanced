@@ -56,7 +56,7 @@ export class TranscribeService {
 
       return result;
     } catch (error) {
-      throw new Error(`Transcription failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      throw new ProductionError(`Transcription failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }
 
@@ -72,6 +72,9 @@ export class TranscribeService {
 
 export const transcribeService = new TranscribeService();
 
-export async function transcribeAudioFile(audioUrl: string, language?: string): Promise<TranscriptionResult> {
+export async /**
+ * transcribeAudioFile function
+ */
+function transcribeAudioFile(audioUrl: string, language?: string): any: Promise<TranscriptionResult> {
   return transcribeService.transcribe({ audioUrl, language });
 }

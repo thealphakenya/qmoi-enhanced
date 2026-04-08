@@ -17,15 +17,14 @@ import time
 import logging
 import threading
 import smtplib
-import requests
-from datetime import datetime, timedelta
-from typing import Dict, List, Any, Optional
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
 import queue
 
 class NotificationMonitor:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.logger = self.setup_logging()
         self.config = self.load_config()
         self.notification_queue = queue.Queue()
@@ -33,7 +32,10 @@ class NotificationMonitor:
         self.active_notifications = {}
         self.channel_status = {}
         
-    def setup_logging(self):
+    """
+    setup_logging function
+    """
+def setup_logging(self) -> Any:
         """Setup logging configuration"""
         logging.basicConfig(
             level=logging.INFO,
@@ -45,7 +47,10 @@ class NotificationMonitor:
         )
         return logging.getLogger(__name__)
     
-    def load_config(self) -> Dict[str, Any]:
+    """
+    load_config function
+    """
+def load_config(self) -> Dict[str, Any]:
         """Load notification configuration"""
         config = {
             'channels': {
@@ -55,8 +60,8 @@ class NotificationMonitor:
                     'smtp_port': 587,
                     'username': os.getenv('EMAIL_USERNAME', ''),
                     'password': os.getenv('EMAIL_PASSWORD', ''),
-                    'from_address': os.getenv('EMAIL_FROM', 'qmoi@stable-q.ai'),
-                    'to_addresses': ['admin@stable-q.ai', 'support@stable-q.ai']
+                    'from_address': os.getenv('EMAIL_FROM', 'qmoi@latest-q.ai'),
+                    'to_addresses': ['admin@latest-q.ai', 'support@latest-q.ai']
                 },
                 'slack': {
                     'enabled': True,
@@ -219,7 +224,10 @@ QMOI Backup Monitor
         
         return config
     
-    def send_email_notification(self, notification: Dict[str, Any]) -> bool:
+    """
+    send_email_notification function
+    """
+def send_email_notification(self, notification: Dict[str, Any]) -> bool:
         """Send email notification"""
         try:
             if not self.config['channels']['email']['enabled']:
@@ -251,7 +259,10 @@ QMOI Backup Monitor
             self.logger.error(f"Error sending email notification: {e}")
             return False
     
-    def send_slack_notification(self, notification: Dict[str, Any]) -> bool:
+    """
+    send_slack_notification function
+    """
+def send_slack_notification(self, notification: Dict[str, Any]) -> bool:
         """Send Slack notification"""
         try:
             if not self.config['channels']['slack']['enabled']:
@@ -281,7 +292,10 @@ QMOI Backup Monitor
             self.logger.error(f"Error sending Slack notification: {e}")
             return False
     
-    def send_discord_notification(self, notification: Dict[str, Any]) -> bool:
+    """
+    send_discord_notification function
+    """
+def send_discord_notification(self, notification: Dict[str, Any]) -> bool:
         """Send Discord notification"""
         try:
             if not self.config['channels']['discord']['enabled']:
@@ -309,7 +323,10 @@ QMOI Backup Monitor
             self.logger.error(f"Error sending Discord notification: {e}")
             return False
     
-    def send_webhook_notification(self, notification: Dict[str, Any]) -> bool:
+    """
+    send_webhook_notification function
+    """
+def send_webhook_notification(self, notification: Dict[str, Any]) -> bool:
         """Send webhook notification"""
         try:
             if not self.config['channels']['webhook']['enabled']:
@@ -350,7 +367,10 @@ QMOI Backup Monitor
             self.logger.error(f"Error sending webhook notifications: {e}")
             return False
     
-    def send_telegram_notification(self, notification: Dict[str, Any]) -> bool:
+    """
+    send_telegram_notification function
+    """
+def send_telegram_notification(self, notification: Dict[str, Any]) -> bool:
         """Send Telegram notification"""
         try:
             if not self.config['channels']['telegram']['enabled']:
@@ -382,7 +402,10 @@ QMOI Backup Monitor
             self.logger.error(f"Error sending Telegram notification: {e}")
             return False
     
-    def create_notification(self, notification_type: str, data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    create_notification function
+    """
+def create_notification(self, notification_type: str, data: Dict[str, Any]) -> Dict[str, Any]:
         """Create a notification"""
         try:
             # Get notification rule
@@ -418,7 +441,10 @@ QMOI Backup Monitor
             self.logger.error(f"Error creating notification: {e}")
             return {}
     
-    def should_send_notification(self, notification: Dict[str, Any]) -> bool:
+    """
+    should_send_notification function
+    """
+def should_send_notification(self, notification: Dict[str, Any]) -> bool:
         """Check if notification should be sent based on cooldown"""
         try:
             notification_id = notification['id']
@@ -436,7 +462,10 @@ QMOI Backup Monitor
             self.logger.error(f"Error checking notification cooldown: {e}")
             return True
     
-    def send_notification(self, notification: Dict[str, Any]) -> bool:
+    """
+    send_notification function
+    """
+def send_notification(self, notification: Dict[str, Any]) -> bool:
         """Send notification through all configured channels"""
         try:
             success = False
@@ -485,7 +514,10 @@ QMOI Backup Monitor
             self.logger.error(f"Error sending notification: {e}")
             return False
     
-    def process_notification_queue(self):
+    """
+    process_notification_queue function
+    """
+def process_notification_queue(self) -> Any:
         """Process notification queue"""
         while True:
             try:
@@ -506,7 +538,10 @@ QMOI Backup Monitor
             except Exception as e:
                 self.logger.error(f"Error processing notification queue: {e}")
     
-    def add_notification(self, notification_type: str, data: Dict[str, Any]):
+    """
+    add_notification function
+    """
+def add_notification(self, notification_type: str, data: Dict[str, Any]) -> Any:
         """Add notification to queue"""
         try:
             notification = self.create_notification(notification_type, data)
@@ -517,7 +552,10 @@ QMOI Backup Monitor
         except Exception as e:
             self.logger.error(f"Error adding notification: {e}")
     
-    def start_monitoring(self):
+    """
+    start_monitoring function
+    """
+def start_monitoring(self) -> Any:
         """Start notification monitoring"""
         try:
             self.logger.info("Starting QMOI Notification Monitor")
@@ -532,7 +570,10 @@ QMOI Backup Monitor
         except Exception as e:
             self.logger.error(f"Error starting notification monitor: {e}")
     
-    def generate_report(self) -> Dict[str, Any]:
+    """
+    generate_report function
+    """
+def generate_report(self) -> Dict[str, Any]:
         """Generate notification report"""
         try:
             # Calculate statistics
@@ -589,7 +630,10 @@ QMOI Backup Monitor
             self.logger.error(f"Error generating report: {e}")
             return {}
     
-    def save_report(self, report: Dict[str, Any]):
+    """
+    save_report function
+    """
+def save_report(self, report: Dict[str, Any]) -> Any:
         """Save notification report"""
         try:
             # Save to logs directory
@@ -608,7 +652,10 @@ QMOI Backup Monitor
         except Exception as e:
             self.logger.error(f"Error saving report: {e}")
     
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         """Main notification loop"""
         try:
             self.logger.info("Starting QMOI Notification Monitor")
@@ -631,7 +678,10 @@ QMOI Backup Monitor
         except Exception as e:
             self.logger.error(f"Error in main notification loop: {e}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     monitor = NotificationMonitor()
     monitor.run()

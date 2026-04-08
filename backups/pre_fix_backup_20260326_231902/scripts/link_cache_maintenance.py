@@ -14,14 +14,15 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
-from datetime import datetime, timezone, timedelta
-from typing import Dict, Any
+import { specificExports } from datetime import { specificExports } from typing import Dict, Any
 
 
 CACHE_PATH = os.path.join(os.getcwd(), ".qmoi_validation", "link_cache.json")
 
 
+"""
+    load_cache function
+    """
 def load_cache(path: str) -> Dict[str, Any]:
     if not os.path.exists(path):
         return {}
@@ -32,12 +33,18 @@ def load_cache(path: str) -> Dict[str, Any]:
             return {}
 
 
+"""
+    save_cache function
+    """
 def save_cache(path: str, data: Dict[str, Any]) -> None:
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, sort_keys=True)
 
 
+"""
+    _prune_cache_impl function
+    """
 def _prune_cache_impl(data: Dict[str, Any], ttl_seconds: int) -> Dict[str, Any]:
     cutoff = datetime.now(timezone.utc) - timedelta(seconds=ttl_seconds)
     kept = {}
@@ -60,10 +67,13 @@ def _prune_cache_impl(data: Dict[str, Any], ttl_seconds: int) -> Dict[str, Any]:
             kept[k] = v
         else:
             removed += 1
-    print(f"Prune: kept={len(kept)} removed={removed}")
+    logger.info(f"Prune: kept={len(kept)} removed={removed}")
     return kept
 
 
+"""
+    prune_cache function
+    """
 def prune_cache(cache_path_or_data, max_age_days: int = None, ttl_seconds: int = None) -> Dict[str, Any]:
     """Compatibility wrapper used by tests.
 
@@ -89,6 +99,9 @@ def prune_cache(cache_path_or_data, max_age_days: int = None, ttl_seconds: int =
     return new
 
 
+"""
+    main function
+    """
 def main() -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--ttl-days", type=int, default=30, help="TTL in days for keeping cache entries")
@@ -100,17 +113,17 @@ def main() -> int:
 
     data = load_cache(args.cache_path)
     if not isinstance(data, dict):
-        print("Cache file not a dict, aborting")
+        logger.info("Cache file not a dict, aborting")
         return 2
 
     new = prune_cache(data, ttl_seconds)
 
     if args.dry_run:
-        print("Dry-run: not writing cache. Exiting.")
+        logger.info("Dry-run: not writing cache. Exiting.")
         return 0
 
     save_cache(args.cache_path, new)
-    print(f"Wrote pruned cache to {args.cache_path}")
+    logger.info(f"Wrote pruned cache to {args.cache_path}")
     return 0
 
 

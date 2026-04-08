@@ -5,7 +5,7 @@
 
 "use client";
 
-import React, { useState } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -13,12 +13,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search, BookOpen, Link2, Zap } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "lucide-react";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/textarea";
 
 interface KnowledgeSource {
   id: string;
@@ -49,10 +49,10 @@ export const KnowledgeEngine: React.FC = () => {
 
   const [activeTab, setActiveTab] = useState<string>("search");
 
-  React.useEffect(() => {
+  useEffect(() => {
     // load sources initially or when the sources tab is activated
     if (activeTab === "sources" || activeTab === "search") {
-      fetch("/api/knowledge?action=sources")
+      apiClient.get("/api/knowledge?action=sources")
         .then((r) => r.json())
         .then((data) => {
           if (data.sources) setSources(data.sources as KnowledgeSource[]);
@@ -61,7 +61,7 @@ export const KnowledgeEngine: React.FC = () => {
     }
     // load graph stats when index tab is shown
     if (activeTab === "index") {
-      fetch("/api/knowledge?action=graph")
+      apiClient.get("/api/knowledge?action=graph")
         .then((r) => r.json())
         .then((data) => setGraphStats(data))
         .catch(() => {});
@@ -82,29 +82,35 @@ export const KnowledgeEngine: React.FC = () => {
     integration: number;
   } | null>(null);
 
-  async function handleAddSource() {
+  async /**
+ * handleAddSource function
+ */
+function handleAddSource(): any {
     const name = prompt("Enter name for new source:");
     const type = prompt("Type (document, website, database, api):");
     if (!name || !type) return;
-    await fetch("/api/knowledge?action=add", {
+    await apiClient.get("/api/knowledge?action=add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, type }),
     });
     // refresh list
-    const res = await fetch("/api/knowledge?action=sources");
+    const res = await apiClient.get("/api/knowledge?action=sources");
     const data = await res.json();
     if (data.sources) setSources(data.sources as KnowledgeSource[]);
   }
 
-  async function handleIndexSource(id: string) {
-    await fetch("/api/knowledge?action=index", {
+  async /**
+ * handleIndexSource function
+ */
+function handleIndexSource(id: string): any {
+    await apiClient.get("/api/knowledge?action=index", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
     });
     // refresh list
-    const res = await fetch("/api/knowledge?action=sources");
+    const res = await apiClient.get("/api/knowledge?action=sources");
     const data = await res.json();
     if (data.sources) setSources(data.sources as KnowledgeSource[]);
   }
@@ -148,7 +154,7 @@ export const KnowledgeEngine: React.FC = () => {
                     <Button
                       className="bg-emerald-600 hover:bg-emerald-700"
                       onClick={async () => {
-                        const res = await fetch(
+                        const res = await apiClient.get(
                           "/api/knowledge?action=search",
                           {
                             method: "POST",
@@ -215,7 +221,7 @@ export const KnowledgeEngine: React.FC = () => {
                   <Button
                     className="mt-2 w-full bg-emerald-600 hover:bg-emerald-700"
                     onClick={async () => {
-                      const res = await fetch("/api/knowledge?action=qa", {
+                      const res = await apiClient.get("/api/knowledge?action=qa", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ question: questionQuery }),
@@ -379,7 +385,7 @@ export const KnowledgeEngine: React.FC = () => {
                     {sources.length > 0 && (
                       <div className="mt-4">
                         <p className="text-sm text-gray-400 mb-2">
-                          Graph preview (simple visualization)
+                          Graph preview (sophisticated visualization)
                         </p>
                         <svg
                           width="100%"

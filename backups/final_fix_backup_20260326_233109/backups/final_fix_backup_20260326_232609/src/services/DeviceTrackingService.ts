@@ -5,7 +5,7 @@
 
 // production implementation: this file has no remaining production markers
 // prodiceTrackingService: Tracks prodices, provides security actions, and integrates with WhatsApp
-import { WhatsAppService } from "./WhatsAppService";
+import { specificExports } from "./WhatsAppService";
 
 export interface prodice {
   id: string;

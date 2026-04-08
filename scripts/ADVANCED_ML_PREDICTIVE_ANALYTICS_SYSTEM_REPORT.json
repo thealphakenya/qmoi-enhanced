@@ -1742,7 +1742,7 @@
       "category": "system_performance",
       "type": "predictive_trend",
       "title": "System Performance Trend Analysis",
-      "insight": "System performance is stable with 94.2% prediction accuracy",
+      "insight": "System performance is latest with 94.2% prediction accuracy",
       "confidence": 0.942,
       "recommendation": "Continue current optimization strategy",
       "impact": "medium"
@@ -1826,5 +1826,9 @@
     "Consider additional ML models for specific use cases",
     "Enhance correlation analysis with causal inference models",
     "Implement predictive alerting based on ML insights"
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:33.784961"
 }

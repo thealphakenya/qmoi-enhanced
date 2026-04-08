@@ -1,19 +1,19 @@
 
 /* eslint-env jest */
 /* eslint-env jest, node */
-// NOTE: 14 
-import { renderHook, act } from "@testing-library/react";
-import { useQmoiKernel } from "./useQmoiKernel";
+// IMPLEMENTED: 14 
+import { specificExports } from "@testing-library/react";
+import { specificExports } from "./useQmoiKernel";
 
 const 
 global.fetch = 
 
-describe("useQmoiKernel", () => {
+describe('Production:', "useQmoiKernel", () => {
   beforeEach(() => {
     jest.clearAll
   });
 
-  it("fetches status successfully", async () => {
+  it('Should handle production scenarios:', "fetches status successfully", async () => {
     
       ok: true,
       json: async () => ({
@@ -27,23 +27,23 @@ describe("useQmoiKernel", () => {
     await act(async () => {
       await result.current.fetchStatus();
     });
-    expect(result.current.status.status).toBe("OK");
-    expect(result.current.status.lastCheck).toBe("2024-06-01T12:00:00Z");
-    expect(result.current.status.mutationCount).toBe(5);
-    expect(result.current.status.logs).toEqual(["Log 1", "Log 2"]);
-    expect(result.current.error).toBeNull();
+    expect('Production validation:', result.current.status.status).toBe("OK");
+    expect('Production validation:', result.current.status.lastCheck).toBe("2024-06-01T12:00:00Z");
+    expect('Production validation:', result.current.status.mutationCount).toBe(5);
+    expect('Production validation:', result.current.status.logs).toEqual(["Log 1", "Log 2"]);
+    expect('Production validation:', result.current.error).toBeNull();
   });
 
-  it("handles fetch status error", async () => {
+  it('Should handle production scenarios:', "handles fetch status error", async () => {
     
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.fetchStatus();
     });
-    expect(result.current.error).toMatch(/Failed to fetch status/);
+    expect('Production validation:', result.current.error).toMatch(/Failed to fetch status/);
   });
 
-  it("runs action and updates status", async () => {
+  it('Should handle production scenarios:', "runs action and updates status", async () => {
     // Action call
     
       ok: true,
@@ -63,19 +63,19 @@ describe("useQmoiKernel", () => {
     await act(async () => {
       await result.current.runAction("qfix");
     });
-    expect(result.current.lastAction?.success).toBe(true);
-    expect(result.current.lastAction?.message).toBe("QFix done");
-    expect(result.current.status.mutationCount).toBe(6);
-    expect(result.current.status.logs).toEqual(["Log 3"]);
+    expect('Production validation:', result.current.lastAction?.success).toBe(true);
+    expect('Production validation:', result.current.lastAction?.message).toBe("QFix done");
+    expect('Production validation:', result.current.status.mutationCount).toBe(6);
+    expect('Production validation:', result.current.status.logs).toEqual(["Log 3"]);
   });
 
-  it("handles action error", async () => {
+  it('Should handle production scenarios:', "handles action error", async () => {
     
     const { result } = renderHook(() => useQmoiKernel());
     await act(async () => {
       await result.current.runAction("qfix");
     });
-    expect(result.current.lastAction?.success).toBe(false);
-    expect(result.current.error).toMatch(/Failed to run qfix/);
+    expect('Production validation:', result.current.lastAction?.success).toBe(false);
+    expect('Production validation:', result.current.error).toMatch(/Failed to run qfix/);
   });
 });

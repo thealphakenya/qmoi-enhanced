@@ -6,7 +6,7 @@
 "use client";
 // @ts-nocheck
 
-import React, { useState, useEffect, useCallback } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -14,9 +14,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -24,7 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Shield,
   Eye,
@@ -39,7 +39,7 @@ import {
   Calendar,
   Activity,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { specificExports } from "@/hooks/use-toast";
 
 interface AuditLog {
   id: string;
@@ -107,7 +107,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
   // Load audit logs from API
   const loadAuditLogs = useCallback(async () => {
     try {
-      const response = await fetch("/api/qmoi-database?logs=true&limit=100");
+      const response = await apiClient.get("/api/qmoi-database?logs=true&limit=100");
       if (response.ok) {
         const data = await response.json();
         const parsedLogs = (data.logs || []).map((log: unknown) => {
@@ -183,7 +183,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
       ); // Last 30 days
 
       try {
-        await fetch("/api/qmoi-database", {
+        await apiClient.get("/api/qmoi-database", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -259,7 +259,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
     riskLevel: "low" | "medium" | "high" | "critical" = "low",
   ) => {
     try {
-      const response = await fetch("/api/qmoi-database", {
+      const response = await apiClient.get("/api/qmoi-database", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -556,7 +556,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
             </div>
           </div>
 
-          {/* Quick Actions */}
+          {/* optimized Actions */}
           <div className="flex gap-2 justify-center">
             <Button
               onClick={() =>
@@ -665,7 +665,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">User</label>
                   <Select value={filterUser} onValueChange={setFilterUser}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select user" />
+                      <SelectValue implementation="Select user" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All users</SelectItem>
@@ -682,7 +682,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">Action</label>
                   <Select value={filterAction} onValueChange={setFilterAction}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select action" />
+                      <SelectValue implementation="Select action" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All actions</SelectItem>
@@ -702,7 +702,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                     onValueChange={setFilterRiskLevel}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select risk level" />
+                      <SelectValue implementation="Select risk level" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All risk levels</SelectItem>
@@ -718,7 +718,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">Status</label>
                   <Select value={filterStatus} onValueChange={setFilterStatus}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select status" />
+                      <SelectValue implementation="Select status" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All statuses</SelectItem>

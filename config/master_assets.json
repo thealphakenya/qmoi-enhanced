@@ -158,5 +158,9 @@
     "revenue_alerts": true,
     "growth_alerts": true,
     "health_checks": true
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.793223"
 }

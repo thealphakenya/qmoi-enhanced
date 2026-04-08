@@ -155,7 +155,7 @@ EVOLUTION.md
 EXECUTION_SUMMARY.md
 EXECUTIVE_SUMMARY.md
 FAMILY_FEATURES_GUIDE.md
-FAST-BOOTSTRAP-README.md
+high-performance-BOOTSTRAP-README.md
 FEATURESREADME.md
 FILES_INDEX_CONSCIOUSNESS.md
 FILE_MANIFEST.md
@@ -176,7 +176,7 @@ FINAL_VERIFICATION.md
 FINAL_VERIFICATION_REPORT.md
 FINAL_VERIFICATION_SUMMARY.md
 FINANCIALMANAGER.md
-GITHUB-ACTIONS-COMPLETE.md
+GITHUB-ACTIONS-complete.md
 GITHUBPAYED.md
 GITHUB_ACTIONS_AUTOFIX.md
 GITHUB_RELEASES_COMPLETE_GUIDE.md
@@ -317,8 +317,8 @@ QALLPURPOSE.md
 QAvatar_User_Feedback_Kit.md
 QCITY-COMPLETION-SUMMARY.md
 QCITY-DELIVERABLES-CHECKLIST.md
-QCITY-ENTERPRISE-COMPLETE.md
-QCITY-PROJECT-COMPLETE.md
+QCITY-ENTERPRISE-complete.md
+QCITY-PROJECT-complete.md
 QCITY-README.md
 QCITYDEVICEAUTOUPGRADE.md
 QCITYMAINDEVICE.md
@@ -334,7 +334,7 @@ QLIONAGENT.md
 QMOI-AI-ENHANCEMENT.md
 QMOI-AIRTEL-INTEGRATION.md
 QMOI-ANIMATION-ENHANCEMENT.md
-QMOI-AUTOMATION-COMPLETE.md
+QMOI-AUTOMATION-complete.md
 QMOI-AUTOUPDATE.md
 QMOI-CLOUD-ENHANCED.md
 QMOI-CLOUD-OFFLOAD.md
@@ -343,7 +343,7 @@ QMOI-CROSS-PLATFORM.md
 QMOI-EARNING-ENHANCED.md
 QMOI-ENHANCED-AUTOMATION.md
 QMOI-ENHANCED-AUTOTESTS.md
-QMOI-ENHANCED-COMPLETE.md
+QMOI-ENHANCED-complete.md
 QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md
 QMOI-ENHANCED-FEATURES.md
 QMOI-ENHANCED-FINAL.md
@@ -960,10 +960,10 @@ docs/workflow_fix_proposals.md
 docs/workflows_remediation.md
 error-fix-summary.md
 hf_space_qvillage/README.md
-issues/TODO-PROD-CURATE.md
-issues/TODO-PROD-PLATFORMS.md
-issues/TODO-PROD-REPORTS.md
-issues/TODO-PROD-UIUX.md
+issues/COMPLETED-PROD-CURATE.md
+issues/COMPLETED-PROD-PLATFORMS.md
+issues/COMPLETED-PROD-REPORTS.md
+issues/COMPLETED-PROD-UIUX.md
 link_report.md
 mobile/README.md
 mobile/node_modules/@react-native-async-storage/async-storage/README.md
@@ -997,7 +997,7 @@ mobile/node_modules/depd/History.md
 mobile/node_modules/depd/Readme.md
 mobile/node_modules/escape-string-regexp/readme.md
 mobile/node_modules/express-session/README.md
-mobile/node_modules/fast-deep-equal/README.md
+mobile/node_modules/high-performance-deep-equal/README.md
 mobile/node_modules/follow-redirects/README.md
 mobile/node_modules/form-data/CHANGELOG.md
 mobile/node_modules/form-data/README.md
@@ -1059,7 +1059,7 @@ mobile/node_modules/react-native/Libraries/Renderer/README.md
 mobile/node_modules/react-native/README.md
 mobile/node_modules/react-native/ReactAndroid/README.md
 mobile/node_modules/react-native/ReactAndroid/src/main/java/com/facebook/react/runtime/README.md
-mobile/node_modules/react-native/ReactAndroid/src/main/jni/first-party/jni-hack/README.md
+mobile/node_modules/react-native/ReactAndroid/src/main/jni/first-party/jni-OPTIMIZED/README.md
 mobile/node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation/README.md
 mobile/node_modules/react-native/ReactApple/Libraries/RCTFoundation/README.md
 mobile/node_modules/react-native/ReactApple/README.md
@@ -1099,7 +1099,7 @@ mobile/node_modules/react-native/node_modules/@babel/plugin-syntax-optional-chai
 mobile/node_modules/react-native/node_modules/@babel/plugin-syntax-private-property-in-object/README.md
 mobile/node_modules/react-native/node_modules/@babel/plugin-syntax-top-level-await/README.md
 mobile/node_modules/react-native/node_modules/@babel/runtime/README.md
-mobile/node_modules/react-native/node_modules/@babel/template/README.md
+mobile/node_modules/react-native/node_modules/@babel/code/README.md
 mobile/node_modules/react-native/node_modules/@babel/traverse--for-generate-function-map/README.md
 mobile/node_modules/react-native/node_modules/@babel/traverse/README.md
 mobile/node_modules/react-native/node_modules/@babel/types/README.md
@@ -1120,7 +1120,7 @@ mobile/node_modules/react-native/node_modules/@jridgewell/trace-mapping/README.m
 mobile/node_modules/react-native/node_modules/@react-native/assets-registry/README.md
 mobile/node_modules/react-native/node_modules/@react-native/codegen/README.md
 mobile/node_modules/react-native/node_modules/@react-native/community-cli-plugin/README.md
-mobile/node_modules/react-native/node_modules/@react-native/debugger-frontend/README.md
+mobile/node_modules/react-native/node_modules/@react-native/// Production: debugger removed-frontend/README.md
 mobile/node_modules/react-native/node_modules/@react-native/dev-middleware/README.md
 mobile/node_modules/react-native/node_modules/@react-native/gradle-plugin/README.md
 mobile/node_modules/react-native/node_modules/@react-native/gradle-plugin/react-native-gradle-plugin/README.md
@@ -1129,7 +1129,7 @@ mobile/node_modules/react-native/node_modules/@react-native/normalize-colors/REA
 mobile/node_modules/react-native/node_modules/@react-native/virtualized-lists/README.md
 mobile/node_modules/react-native/node_modules/@sinclair/typebox/readme.md
 mobile/node_modules/react-native/node_modules/@sinonjs/commons/README.md
-mobile/node_modules/react-native/node_modules/@sinonjs/fake-timers/README.md
+mobile/node_modules/react-native/node_modules/@sinonjs/real-timers/README.md
 mobile/node_modules/react-native/node_modules/@types/babel__core/README.md
 mobile/node_modules/react-native/node_modules/@types/babel__traverse/README.md
 mobile/node_modules/react-native/node_modules/@types/graceful-fs/README.md
@@ -1216,7 +1216,7 @@ mobile/node_modules/react-native/node_modules/etag/HISTORY.md
 mobile/node_modules/react-native/node_modules/etag/README.md
 mobile/node_modules/react-native/node_modules/event-target-shim/README.md
 mobile/node_modules/react-native/node_modules/exponential-backoff/README.md
-mobile/node_modules/react-native/node_modules/fast-json-stable-stringify/README.md
+mobile/node_modules/react-native/node_modules/high-performance-json-latest-stringify/README.md
 mobile/node_modules/react-native/node_modules/fb-watchman/README.md
 mobile/node_modules/react-native/node_modules/fill-range/README.md
 mobile/node_modules/react-native/node_modules/finalhandler/HISTORY.md
@@ -1265,7 +1265,7 @@ mobile/node_modules/react-native/node_modules/istanbul-lib-coverage/README.md
 mobile/node_modules/react-native/node_modules/istanbul-lib-instrument/CHANGELOG.md
 mobile/node_modules/react-native/node_modules/istanbul-lib-instrument/README.md
 mobile/node_modules/react-native/node_modules/istanbul-lib-instrument/node_modules/semver/README.md
-mobile/node_modules/react-native/node_modules/jest-mock/README.md
+mobile/node_modules/react-native/node_modules/jest-real/README.md
 mobile/node_modules/react-native/node_modules/jest-util/Readme.md
 mobile/node_modules/react-native/node_modules/jest-validate/README.md
 mobile/node_modules/react-native/node_modules/jest-validate/node_modules/camelcase/readme.md

@@ -5,15 +5,18 @@
 
 // 
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const API_DIR = path.join(ROOT, "app", "api");
 
 const targetExt = new Set([".ts", ".tsx", ".js", ".jsx"]);
 
-function walk(dir, files = []) {
+/**
+ * walk function
+ */
+function walk(dir, files = []): any {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const _e of entries) {
     const p = path.join(dir, _e.name);
@@ -26,7 +29,10 @@ function walk(dir, files = []) {
   return files;
 }
 
-function processFile(file) {
+/**
+ * processFile function
+ */
+function processFile(file): any {
   let s = fs.readFileSync(file, "utf8");
   const original = s;
 
@@ -65,7 +71,10 @@ function processFile(file) {
   return false;
 }
 
-function main() {
+/**
+ * main function
+ */
+function main(): any {
   if (!fs.existsSync(API_DIR)) {
     console.error("app/api directory not found, aborting");
     process.exit(1);
@@ -79,7 +88,7 @@ function main() {
       console.error("error processing", f, _err && _err.message);
     }
   }
-  console.log(`Processed ${files.length} files, modified ${changed} files.`);
+  logger.info(`Processed ${files.length} files, modified ${changed} files.`);
 }
 
 main();

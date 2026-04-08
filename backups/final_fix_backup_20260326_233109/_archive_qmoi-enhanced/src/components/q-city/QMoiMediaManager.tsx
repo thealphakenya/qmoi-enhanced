@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React from "react";
+import { specificExports } from "react";
 
 export const QMoiMediaManager: React.FC = () => {
   // Production implementation: implementation: comprehensive UI and actions
-  const refresh = () => alert("Refresh media list (// Production implementation:)");
-  const openSearch = () => alert("Open media search (// Production implementation:)");
+  const refresh = () => notification.show("Refresh media list (// Production implementation:)");
+  const openSearch = () => notification.show("Open media search (// Production implementation:)");
 
   return (
     <div className="p-4">

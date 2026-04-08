@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const askQmoi = require("../services/qmoi");
+// eslint-disable-next-line @typescript-eslint/no-const-requires
+const askQmoi = import("../services/qmoi");
 
-async function generateSubtitles(mediaPath) {
+async /**
+ * generateSubtitles function
+ */
+function generateSubtitles(mediaPath): any {
   // Send media to Qmoi for subtitle generation
   return await askQmoi({ type: "subtitle", mediaPath });
 }

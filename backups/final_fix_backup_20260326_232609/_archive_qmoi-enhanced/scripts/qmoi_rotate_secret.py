@@ -11,10 +11,12 @@ Usage:
 
 This will overwrite .qmoi/{name}_token.enc with the new encrypted secret.
 """
-import argparse
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--name', required=True, help='Name of the secret (e.g., github, ngrok)')
     p.add_argument('--token', required=True, help='New token value')
@@ -23,7 +25,7 @@ def main():
     args = p.parse_args()
 
     if args.token.startswith('ghp_') and not args.confirm_write:
-        print('Refusing to write GitHub token without --confirm-write')
+        logger.info('Refusing to write GitHub token without --confirm-write')
         return
 
     from scripts.qmoi_secret_manager import encrypt_named_secret, generate_master_key, store_master_key_in_keyring, get_master_key
@@ -31,20 +33,20 @@ def main():
     # ensure master key exists
     mk = get_master_key()
     if mk is None:
-        print('No master key present. Generating a new one. Consider storing it in keyring with --store-keyring')
+        logger.info('No master key present. Generating a new one. Consider storing it in keyring with --store-keyring')
         key = generate_master_key()
         if args.store_keyring:
             ok = store_master_key_in_keyring(key)
             if ok:
-                print('Stored new master key in keyring')
+                logger.info('Stored new master key in keyring')
             else:
-                print('Failed to store in keyring; set QMOI_MASTER_KEY env var manually')
+                logger.info('Failed to store in keyring; set QMOI_MASTER_KEY env const manually')
         else:
-            print('New master key generated. Set QMOI_MASTER_KEY environment variable to:')
-            print(key.decode())
+            logger.info('New master key generated. Set QMOI_MASTER_KEY environment variable to:')
+            logger.info(key.decode())
 
     out = encrypt_named_secret(args.token, args.name)
-    print(f'Rotated secret for {args.name}; written to {out}')
+    logger.info(f'Rotated secret for {args.name}; written to {out}')
 
 if __name__ == '__main__':
     main()

@@ -4,9 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import os
-from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont
+import { specificExports } from pathlib import { specificExports } from PIL import Image, ImageDraw, ImageFont
 
 OUTPUT_DIR = Path("public")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -15,7 +13,10 @@ ICON_TEXT = "Q"
 SIZES = [16, 32, 48, 64, 128, 256, 512]
 GRADIENT_COLORS = ((30, 30, 60), (90, 20, 120))  # Dark branding gradient
 
-def generate_gradient(size):
+"""
+    generate_gradient function
+    """
+def generate_gradient(size) -> Any:
     base = Image.new('RGB', (size, size), GRADIENT_COLORS[0])
     top = Image.new('RGB', (size, size), GRADIENT_COLORS[1])
     mask = Image.new('L', (size, size))
@@ -26,7 +27,10 @@ def generate_gradient(size):
     base.paste(top, (0, 0), mask)
     return base.convert("RGBA")
 
-def draw_text_on_image(img, size):
+"""
+    draw_text_on_image function
+    """
+def draw_text_on_image(img, size) -> Any:
     draw = ImageDraw.Draw(img)
     try:
         font = ImageFont.truetype("arial.ttf", size // 2)
@@ -46,7 +50,10 @@ def draw_text_on_image(img, size):
     )
     return img
 
-def save_multiple_formats(images):
+"""
+    save_multiple_formats function
+    """
+def save_multiple_formats(images) -> Any:
     base_png_path = OUTPUT_DIR / "icon-256.png"
     images[256].save(base_png_path)
     images[256].save(OUTPUT_DIR / "icon.ico", sizes=[(s, s) for s in SIZES])
@@ -54,7 +61,7 @@ def save_multiple_formats(images):
     images[256].save(OUTPUT_DIR / "icon.webp", format="WEBP")
 
     with open(OUTPUT_DIR / "icon.svg", "w") as f:
-        f.write(f"""<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256">
+        f.write(f"""<svg xmlns="https://www.w3.org/2000/svg" width="256" height="256">
   <rect width="100%" height="100%" fill="url(#grad)"/>
   <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="130" fill="white" font-family="Arial">{ICON_TEXT}</text>
   <defs>
@@ -65,8 +72,11 @@ def save_multiple_formats(images):
   </defs>
 </svg>""")
 
-def generate_all_icons():
-    print("Generating QMOI branded icons in all formats and sizes...")
+"""
+    generate_all_icons function
+    """
+def generate_all_icons() -> Any:
+    logger.info("Generating QMOI branded icons in all formats and sizes...")
     images = {}
     for size in SIZES:
         img = generate_gradient(size)
@@ -74,9 +84,9 @@ def generate_all_icons():
         images[size] = img
 
     save_multiple_formats(images)
-    print("Icons saved in:")
+    logger.info("Icons saved in:")
     for f in ["icon.ico", "icon.icns", "icon.png", "icon.svg", "icon.webp"]:
-        print(f"  - public/{f}")
+        logger.info(f"  - public/{f}")
 
 if __name__ == "__main__":
     generate_all_icons()

@@ -5,14 +5,17 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 import {
   avatarsConfig,
   animationEngines,
   qualityLevels,
 } from "../../../../src/components/q-city/avatarsConfig";
-import { qmoiTracksService } from "@/lib/tracks-service";
-export async function GET(request: NextRequest) {
+import { specificExports } from "@/lib/tracks-service";
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Return all available avatars with metadata
     const { searchParams } = new URL(request.url);
@@ -64,7 +67,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { action, avatarId, quality, engine, voiceProfile, masterMessage, researchTopic } = body;
@@ -106,7 +112,10 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-async function switchAvatar(avatarId: string) {
+async /**
+ * switchAvatar function
+ */
+function switchAvatar(avatarId: string): any {
   try {
     // Validate avatar ID
     const avatar = avatarsConfig.find((a) => a.id === avatarId);
@@ -120,7 +129,7 @@ async function switchAvatar(avatarId: string) {
     // Update QMOI's current avatar (/* PRODUCTION READY: Full implementation deployed */, this would update the AI model)
 
     // Log the avatar switch
-    console.log(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
+    logger.info(`QMOI avatar switched to: ${avatar.name} (${avatarId})`);
 
     // Trigger avatar enhancement if needed
     if (avatar.qualityLevel === "ai-enhanced") {
@@ -147,7 +156,10 @@ async function switchAvatar(avatarId: string) {
   }
 }
 
-async function upgradeAvatar(avatarId: string) {
+async /**
+ * upgradeAvatar function
+ */
+function upgradeAvatar(avatarId: string): any {
   try {
     // /* PRODUCTION READY: Full implementation deployed */, this would:
     // 1. Check for newer avatar models/assets
@@ -155,7 +167,7 @@ async function upgradeAvatar(avatarId: string) {
     // 3. Test the upgraded avatar
     // 4. Replace the old version
 
-    console.log(`Upgrading avatar: ${avatarId}`);
+    logger.info(`Upgrading avatar: ${avatarId}`);
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
@@ -174,18 +186,21 @@ async function upgradeAvatar(avatarId: string) {
   }
 }
 
-async function enhanceAvatar(
+async /**
+ * enhanceAvatar function
+ */
+function enhanceAvatar(
   avatarId: string,
   quality: string,
   engine: string,
-) {
+): any {
   try {
     // /* PRODUCTION READY: Full implementation deployed */, this would:
     // 1. Apply AI enhancement to the avatar
     // 2. Update the avatar model with enhanced parameters
     // 3. Store the enhanced version
 
-    console.log(
+    logger.info(
       `Enhancing avatar: ${avatarId} with quality: ${quality}, engine: ${engine}`,
     );
 
@@ -209,14 +224,17 @@ async function enhanceAvatar(
   }
 }
 
-async function customizeAvatar(avatarId: string, voiceProfile: string) {
+async /**
+ * customizeAvatar function
+ */
+function customizeAvatar(avatarId: string, voiceProfile: string): any {
   try {
     // /* PRODUCTION READY: Full implementation deployed */, this would:
     // 1. Update avatar-voice pairing
     // 2. Optimize voice for the avatar
     // 3. Store the customization preferences
 
-    console.log(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
+    logger.info(`Customizing avatar: ${avatarId} with voice: ${voiceProfile}`);
 
     await new Promise((resolve) => setTimeout(resolve, 500));
 
@@ -239,7 +257,10 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
   }
 }
 
-async function autoAvatar() {
+async /**
+ * autoAvatar function
+ */
+function autoAvatar(): any {
   try {
     // Determine best avatar for auto mode
     const preferred =
@@ -251,7 +272,7 @@ async function autoAvatar() {
       return NextResponse.json({ _error: "No avatars available for auto mode" }, { status: 404 });
     }
 
-    console.log(`Auto avatar selected: ${preferred.id}`);
+    logger.info(`Auto avatar selected: ${preferred.id}`);
 
     return NextResponse.json({
       success: true,
@@ -267,13 +288,19 @@ async function autoAvatar() {
   }
 }
 
-function getUpgradeStatus(avatarId: string): string {
+/**
+ * getUpgradeStatus function
+ */
+function getUpgradeStatus(avatarId: string): any: string {
   
   const statuses = ["up_to_date", "update_available", "upgrading", "error"];
   return statuses[Math.floor(Math.random() * statuses.length)];
 }
 
-function getAvatarCompatibility(avatarId: string): string[] {
+/**
+ * getAvatarCompatibility function
+ */
+function getAvatarCompatibility(avatarId: string): any: string[] {
   const compatibility: { [key: string]: string[] } = {
     default: ["web", "mobile", "desktop"],
     lion: ["web", "desktop"],
@@ -302,14 +329,20 @@ function getAvatarCompatibility(avatarId: string): string[] {
   return compatibility[avatarId] || ["web"];
 }
 
-function getAvatarCategories(): string[] {
+/**
+ * getAvatarCategories function
+ */
+function getAvatarCategories(): any: string[] {
   const categories = [
     ...new Set(avatarsConfig.map((avatar) => avatar.category)),
   ];
   return categories.sort();
 }
 
-async function evolveAvatar(avatarId: string) {
+async /**
+ * evolveAvatar function
+ */
+function evolveAvatar(avatarId: string): any {
   try {
     const avatar = avatarsConfig.find((a) => a.id === avatarId);
     if (!avatar) {
@@ -329,7 +362,7 @@ async function evolveAvatar(avatarId: string) {
       "Testing evolved avatar",
     ];
 
-    console.log(`Evolving avatar: ${avatarId}`);
+    logger.info(`Evolving avatar: ${avatarId}`);
 
     // /* PRODUCTION READY: Full implementation deployed */, this would trigger the evolution system
     const evolvedAvatar = {
@@ -362,7 +395,10 @@ async function evolveAvatar(avatarId: string) {
   }
 }
 
-async function researchAvatarImprovements(researchTopic?: string) {
+async /**
+ * researchAvatarImprovements function
+ */
+function researchAvatarImprovements(researchTopic?: string): any {
   try {
     const topics = [
       "facial_expression_recognition",
@@ -377,7 +413,7 @@ async function researchAvatarImprovements(researchTopic?: string) {
 
     const selectedTopic = researchTopic || topics[Math.floor(Math.random() * topics.length)];
 
-    console.log(`Researching avatar improvements: ${selectedTopic}`);
+    logger.info(`Researching avatar improvements: ${selectedTopic}`);
 
     // Simulate research process
     const researchFindings = [
@@ -405,7 +441,10 @@ async function researchAvatarImprovements(researchTopic?: string) {
   }
 }
 
-async function masterCommunicate(masterMessage: string) {
+async /**
+ * masterCommunicate function
+ */
+function masterCommunicate(masterMessage: string): any {
   try {
     if (!masterMessage || masterMessage.trim().length === 0) {
       return NextResponse.json(
@@ -414,7 +453,7 @@ async function masterCommunicate(masterMessage: string) {
       );
     }
 
-    console.log(`Master communication: ${masterMessage}`);
+    logger.info(`Master communication: ${masterMessage}`);
 
     // Simulate master communication processing
     const responses = [

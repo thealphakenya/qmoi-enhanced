@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import jwt from "jsonwebtoken";
-import { extractRoleFromHeader } from "@/lib/roleAuth";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "jsonwebtoken";
+import { specificExports } from "@/lib/roleAuth";
 
 const BIOMETRIC_TEMPLATES_FILE = path.resolve(
   process.cwd(),
@@ -17,7 +17,10 @@ const BIOMETRIC_TEMPLATES_FILE = path.resolve(
 );
 const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     // Extract and verify role from Authorization header
     const authHeader = request.headers.get("authorization") || undefined;

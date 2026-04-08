@@ -52,17 +52,23 @@ replacements = {
     r'\bfuture feature\b': 'current feature',
     r'\bplanned\b': 'executed',
     r'\bunder production\b': 'released',
-    r'\bstable\b': 'stable',
+    r'\bstable\b': 'latest',
     r'\bstable\b': 'production'
 }
 
-def should_process_file(file_path):
+"""
+    should_process_file function
+    """
+def should_process_file(file_path) -> Any:
     for excl in excluded_dirs:
         if excl in file_path:
             return False
     return True
 
-def fix_file(file_path):
+"""
+    fix_file function
+    """
+def fix_file(file_path) -> Any:
     try:
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
@@ -89,4 +95,4 @@ for dirpath, dirnames, filenames in os.walk(root_dir):
         if should_process_file(full_path) and fix_file(full_path):
             fixed_count += 1
 
-print(f"Fixed {fixed_count} files with marker replacements.")
+logger.info(f"Fixed {fixed_count} files with marker replacements.")

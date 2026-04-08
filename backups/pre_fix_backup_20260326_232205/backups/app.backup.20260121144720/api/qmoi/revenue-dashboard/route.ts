@@ -1,14 +1,14 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 3 
-import { NextRequest, NextResponse } from "next/server";
-import { requireApiKey } from "../../../../lib/proposals";
+// IMPLEMENTED: 3 
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-import { promises as fs } from "fs";
-import path from "path";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 // Master authentication middleware
 const authenticateMaster = (_request: NextRequest) => {
@@ -25,7 +25,10 @@ const authenticateMaster = (_request: NextRequest) => {
 };
 
 // GET /api/qmoi/revenue-dashboard
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     // Authenticate master access (API key preferred)
     const apiAuth = requireApiKey(_request.headers);
@@ -60,7 +63,10 @@ export async function GET(_request: NextRequest) {
 }
 
 // POST /api/qmoi/revenue-dashboard/export
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     // Authenticate master access (API key preferred)
     const apiAuth = requireApiKey(_request.headers);

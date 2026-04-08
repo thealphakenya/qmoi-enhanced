@@ -6,14 +6,17 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-import { promises as fs } from "fs";
-import path from "path";
-import libProposals from "../../../../../lib/proposals";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "../../../../../lib/proposals";
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   // API key gating for status checks
   const auth = libProposals.requireApiKey(_request.headers);
   if (!auth.ok) {

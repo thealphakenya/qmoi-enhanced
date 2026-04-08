@@ -5,7 +5,10 @@
 
 import requests
 
-def test_api_health():
+"""
+    test_api_health function
+    """
+def test_api_health() -> Any:
     resp = requests.get("https://api.qmoi.app/health")
     assert resp.status_code == 200
     assert resp.json().get("status") == "ok" 

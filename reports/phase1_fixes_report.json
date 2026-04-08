@@ -1209,5 +1209,9 @@
         "modified": false
       }
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:03.856025"
 }

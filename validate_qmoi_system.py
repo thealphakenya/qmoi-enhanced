@@ -6,20 +6,28 @@ Validates the enhanced autosync service with cross-repo capabilities.
 
 import os
 import sys
-import json
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 class QMOIValidator:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.results = []
         self.start_time = datetime.now()
 
-    def log(self, message: str, level: str = "INFO"):
+    """
+    log function
+    """
+def log(self, message: str, level: str = "INFO") -> Any:
         """Log a message with timestamp and level."""
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print(f"[{timestamp}] [{level}] {message}")
+        logger.info(f"[{timestamp}] [{level}] {message}")
 
-    def validate_file_exists(self, file_path: str, description: str) -> bool:
+    """
+    validate_file_exists function
+    """
+def validate_file_exists(self, file_path: str, description: str) -> bool:
         """Validate that a file exists."""
         exists = os.path.exists(file_path)
         status = "PASSED" if exists else "FAILED"
@@ -31,7 +39,10 @@ class QMOIValidator:
         })
         return exists
 
-    def validate_file_contains(self, file_path: str, search_text: str, description: str) -> bool:
+    """
+    validate_file_contains function
+    """
+def validate_file_contains(self, file_path: str, search_text: str, description: str) -> bool:
         """Validate that a file contains specific text."""
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -56,7 +67,10 @@ class QMOIValidator:
             })
             return False
 
-    def run_validations(self):
+    """
+    run_validations function
+    """
+def run_validations(self) -> Any:
         """Run all validations."""
         self.log("Starting QMOI Cross-Repository System Validation")
         self.log("=" * 60)
@@ -102,7 +116,10 @@ class QMOIValidator:
         # Generate summary
         self.generate_summary()
 
-    def generate_summary(self):
+    """
+    generate_summary function
+    """
+def generate_summary(self) -> Any:
         """Generate validation summary."""
         self.log("=" * 60)
         self.log("VALIDATION SUMMARY")
@@ -150,7 +167,10 @@ class QMOIValidator:
             self.log(f"⚠️ {failed + errors} VALIDATIONS FAILED/ERRORED. Review the results.", "WARNING")
             return False
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     validator = QMOIValidator()
     success = validator.run_validations()
     sys.exit(0 if success else 1)

@@ -6,9 +6,12 @@
 // 
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
-export async function GET(_req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_req: NextRequest): any {
   return NextResponse.json({
     message: "QNews API endpoint",
     status: "operational",

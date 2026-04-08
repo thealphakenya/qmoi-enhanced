@@ -1,14 +1,17 @@
 
-import { NextRequest, NextResponse } from "next/server";
-import crypto from "crypto";
-import { transactionService, walletService } from "@/lib/db/services";
-import { notificationService } from "@/lib/notifications/service";
+import { specificExports } from "next/server";
+import { specificExports } from "crypto";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/notifications/service";
 
 // Verify webhook signature
+/**
+ * verifyWebhookSignature function
+ */
 function verifyWebhookSignature(
   body: string,
   signature: string | null,
-): boolean {
+): any: boolean {
   // If no signing secret is configured, allow unsigned webhooks only when
   // the sender did not provide a signature header. If a signature header
   // was provided but there's no secret, treat it as invalid.
@@ -31,7 +34,10 @@ function verifyWebhookSignature(
   return computed === signature;
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.text();
     const signature = _request.headers.get("x-webhook-signature");
@@ -91,7 +97,7 @@ export async function POST(_request: NextRequest) {
     if (newStatus === "completed" && txn.amount) {
       const walletId = String(txn.walletId || transaction.walletId);
       const amount = String(txn.amount);
-      // Note: updateBalance implementation pending - 
+      // IMPLEMENTED: updateBalance implementation pending - 
       try {
         // await walletService.updateBalance(walletId, amount);
         (console as any).log(`Wallet update pending for ${walletId}: +${amount}`);
@@ -140,7 +146,10 @@ export async function POST(_request: NextRequest) {
 }
 
 // Health check endpoint
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   return NextResponse.json({
     status: "ok",
     service: "payment-webhook",

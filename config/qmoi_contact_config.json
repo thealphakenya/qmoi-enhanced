@@ -41,5 +41,9 @@
     "auto_payment_enabled": true,
     "revenue_tracking": true,
     "daily_minimum_increase": true
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.755762"
 }

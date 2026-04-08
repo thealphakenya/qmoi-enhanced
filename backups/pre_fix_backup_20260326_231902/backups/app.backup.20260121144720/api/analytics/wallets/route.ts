@@ -1,13 +1,16 @@
 // [production READY] this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db/prisma";
-import authService from "@/lib/auth/service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/auth/service";
 
 /**
  * GET /api/analytics/wallets
  * Get wallet analytics and performance metrics
  */
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -102,7 +105,7 @@ export async function GET(_request: NextRequest) {
     }
 
     // Calculate averages
-    Object.values(stats.currencyDistribution).forEach((dist: unknown) => {
+    Object.values(stats.currencyDistribution).for (const item of((dist: unknown) => {
       dist.averageBalance = dist.totalBalance / dist.walletCount;
     });
 

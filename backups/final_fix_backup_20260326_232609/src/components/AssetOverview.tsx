@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { AccountBalance, Info, Refresh } from "@mui/icons-material";
+import { specificExports } from "@mui/icons-material";
 import {
     Alert,
     Box,
@@ -17,9 +17,9 @@ import {
     Tooltip,
     Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { Asset, AssetManagerImpl } from "../config/assets";
-import { useAuth } from "../hooks/useAuth";
+import { specificExports } from "react";
+import { specificExports } from "../config/assets";
+import { specificExports } from "../hooks/useAuth";
 
 interface AssetOverviewProps {
   className?: string;

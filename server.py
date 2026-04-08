@@ -10,14 +10,15 @@ Serves the QCity Enterprise dashboard with proper routing
 """
 
 import os
-import sys
-from http.server import HTTPServer, SimpleHTTPRequestHandler
-from pathlib import Path
+import { specificExports } from http.server import { specificExports } from pathlib import Path
 
 class QCityHTTPRequestHandler(SimpleHTTPRequestHandler):
     """Custom HTTP handler for QCity that serves the dashboard"""
     
-    def do_GET(self):
+    """
+    do_GET function
+    """
+def do_GET(self) -> Any:
         """Handle GET requests"""
         # Strip query strings
         path = self.path.split('?')[0]
@@ -41,37 +42,46 @@ class QCityHTTPRequestHandler(SimpleHTTPRequestHandler):
         # For other paths, use the default handler
         super().do_GET()
     
-    def end_headers(self):
+    """
+    end_headers function
+    """
+def end_headers(self) -> Any:
         """Add cache control headers"""
         self.send_header('Cache-Control', 'no-store, no-cache, must-revalidate')
         self.send_header('Pragma', 'no-cache')
         self.send_header('Expires', '0')
         super().end_headers()
     
-    def log_message(self, format, *args):
+    """
+    log_message function
+    """
+def log_message(self, format, *args) -> Any:
         """Custom logging"""
-        print(f"[QCity Server] {format % args}")
+        logger.info(f"[QCity Server] {format % args}")
 
-def start_server(port=8080):
+"""
+    start_server function
+    """
+def start_server(port=8080) -> Any:
     """Start the QCity HTTP server"""
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     
     server_address = ('', port)
     httpd = HTTPServer(server_address, QCityHTTPRequestHandler)
     
-    print(f"╔════════════════════════════════════════════════════════════╗")
-    print(f"║              QCity Enterprise Server Started               ║")
-    print(f"╠════════════════════════════════════════════════════════════╣")
-    print(f"║  URL: http://localhost:{port}                              ║")
-    print(f"║  Dashboard: qcity-enterprise.html                          ║")
-    print(f"║  Status: RUNNING                                           ║")
-    print(f"╚════════════════════════════════════════════════════════════╝")
-    print()
+    logger.info(f"╔════════════════════════════════════════════════════════════╗")
+    logger.info(f"║              QCity Enterprise Server Started               ║")
+    logger.info(f"╠════════════════════════════════════════════════════════════╣")
+    logger.info(f"║  URL: https://production.qmoi.ai:{port}                              ║")
+    logger.info(f"║  Dashboard: qcity-enterprise.html                          ║")
+    logger.info(f"║  Status: RUNNING                                           ║")
+    logger.info(f"╚════════════════════════════════════════════════════════════╝")
+    logger.info()
     
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print("\n\n✅ QCity Server stopped")
+        logger.info("\n\n✅ QCity Server stopped")
         sys.exit(0)
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { useCallback, useEffect, useState } from "react";
+import { specificExports } from "react";
 
 interface AutoProject {
   id: string;
@@ -275,10 +275,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
   const notifyMaster = useCallback(async (message: string) => {
     try {
       
-      console.log("📱 WhatsApp notification to master:", message);
+      logger.info("📱 WhatsApp notification to master:", message);
 
       // production implementation, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/notify-master', {
+      // await apiClient.get('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })
@@ -291,10 +291,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
   const createWhatsAppGroup = useCallback(async () => {
     try {
       
-      console.log('📱 Creating "Qmoi Auto Projects" WhatsApp group');
+      logger.info('📱 Creating "Qmoi Auto Projects" WhatsApp group');
 
       // production implementation, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/create-group', {
+      // await apiClient.get('/api/whatsapp/create-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({
@@ -310,10 +310,10 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
   const postToWhatsAppGroup = useCallback(async (message: string) => {
     try {
       
-      console.log("📱 Posting to WhatsApp group:", message);
+      logger.info("📱 Posting to WhatsApp group:", message);
 
       // production implementation, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/post-to-group', {
+      // await apiClient.get('/api/whatsapp/post-to-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })

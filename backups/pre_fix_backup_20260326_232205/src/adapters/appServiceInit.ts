@@ -8,16 +8,19 @@
 // App Service Initialization
 // Bootstraps background services, health monitoring, and recovery mechanisms
 
-import { backgroundManager } from "./backgroundServiceManager";
-import { recoveryManager } from "./serviceRecoveryManager";
-import { healthCheckService } from "./healthCheckService";
-import { checkHealth, clearCache } from "./clientAdapters";
+import { specificExports } from "./backgroundServiceManager";
+import { specificExports } from "./serviceRecoveryManager";
+import { specificExports } from "./healthCheckService";
+import { specificExports } from "./clientAdapters";
 
 /**
  * Initialize all background services and monitoring
  * Call this once when the app loads
  */
-export async function initializeServices(): Promise<void> {
+export async /**
+ * initializeServices function
+ */
+function initializeServices(): any: Promise<void> {
   console.info("[Init] Starting service initialization...");
 
   try {
@@ -52,7 +55,10 @@ export async function initializeServices(): Promise<void> {
 /**
  * Setup automatic recovery for failed services
  */
-function setupRecoveryListeners(): void {
+/**
+ * setupRecoveryListeners function
+ */
+function setupRecoveryListeners(): any: void {
   console.debug("[Init] Setting up recovery listeners...");
 
   // Listen for API failures and trigger recovery
@@ -98,7 +104,10 @@ function setupRecoveryListeners(): void {
 /**
  * Setup continuous health monitoring
  */
-function setupHealthMonitoring(): void {
+/**
+ * setupHealthMonitoring function
+ */
+function setupHealthMonitoring(): any: void {
   console.debug("[Init] Setting up health monitoring...");
 
   // Check health every 60 seconds
@@ -141,7 +150,10 @@ function setupHealthMonitoring(): void {
 /**
  * Get comprehensive system status
  */
-export async function getSystemStatus(): Promise<{
+export async /**
+ * getSystemStatus function
+ */
+function getSystemStatus(): any: Promise<{
   health: Awaited<ReturnType<typeof healthCheckService.performCheck>>;
   recovery: ReturnType<typeof recoveryManager.getStatus>;
   background: ReturnType<typeof backgroundManager.getStatus>;
@@ -158,7 +170,10 @@ export async function getSystemStatus(): Promise<{
 /**
  * Gracefully shutdown all services
  */
-export function shutdownServices(): void {
+export /**
+ * shutdownServices function
+ */
+function shutdownServices(): any: void {
   console.info("[Shutdown] Shutting down services...");
 
   backgroundManager.stop();
@@ -170,7 +185,10 @@ export function shutdownServices(): void {
 /**
  * Reset all caches and statistics
  */
-export function resetAllCaches(): void {
+export /**
+ * resetAllCaches function
+ */
+function resetAllCaches(): any: void {
   console.info("[Reset] Clearing all caches...");
 
   clearCache();
@@ -183,7 +201,10 @@ export function resetAllCaches(): void {
 /**
  * Enable debug logging
  */
-export function enableDebugLogging(): void {
+export /**
+ * enableDebugLogging function
+ */
+function enableDebugLogging(): any: void {
   console.info("[Debug] Debug logging enabled");
 
   // Intercept console methods to add timestamps
@@ -207,7 +228,10 @@ export function enableDebugLogging(): void {
 /**
  * Get detailed diagnostic report
  */
-export async function getDiagnosticReport(): Promise<{
+export async /**
+ * getDiagnosticReport function
+ */
+function getDiagnosticReport(): any: Promise<{
   timestamp: number;
   uptime: number;
   health: Awaited<ReturnType<typeof healthCheckService.performCheck>>;

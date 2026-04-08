@@ -4,17 +4,17 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-const { spawn, execSync } = require("child_process");
-const fs = require("fs");
-const path = require("path");
-const http = require("http");
-const { sendEmail, sendSlack, sendWhatsApp } = require("./qmoi_notifier");
+const { spawn, execSync } = import("child_process");
+const fs = import("fs");
+const path = import("path");
+const http = import("http");
+const { sendEmail, sendSlack, sendWhatsApp } = import("./qmoi_notifier");
 
 const BACKEND_SCRIPT = path.join(__dirname, "media_upload_api_example.js");
 const SYNC_SCRIPT = path.join(__dirname, "media_sync.js");
 const FIX_SCRIPT = path.join(__dirname, "enhanced-error-fix.js");
 const LOG_FILE = path.join(__dirname, "../logs/qmoi_media_orchestrator.log");
-const HEALTH_URL = "http:process.env.API_HOST || "localhost:3000"/api/health";
+const HEALTH_URL = "http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health";
 const VERCEL_TOKEN = process.env.VERCEL_TOKEN;
 const VERCEL_ORG_ID = process.env.VERCEL_ORG_ID;
 const VERCEL_PROJECT_ID = process.env.VERCEL_PROJECT_ID;
@@ -23,13 +23,19 @@ const ENV_FILE = ".env.production";
 let failureCount = 0;
 const FAILURE_THRESHOLD = 3;
 
-function log(message) {
+/**
+ * log function
+ */
+function log(message): any {
   const timestamp = new Date().toISOString();
   fs.appendFileSync(LOG_FILE, `[${timestamp}] ${message}\n`);
-  console.log(message);
+  logger.info(message);
 }
 
-async function notifyFailure(message) {
+async /**
+ * notifyFailure function
+ */
+function notifyFailure(message): any {
   log("Sending failure notification: " + message);
   try {
     await sendEmail("QMOI System Alert", message);
@@ -41,7 +47,10 @@ async function notifyFailure(message) {
   }
 }
 
-function startBackend() {
+/**
+ * startBackend function
+ */
+function startBackend(): any {
   log("Starting backend API...");
   const backend = spawn("node", [BACKEND_SCRIPT], {
     detached: true,
@@ -51,7 +60,10 @@ function startBackend() {
   log("Backend API started.");
 }
 
-function runSync() {
+/**
+ * runSync function
+ */
+function runSync(): any {
   log("Running S3 sync...");
   try {
     execSync(`node ${SYNC_SCRIPT}`);
@@ -70,7 +82,10 @@ function runSync() {
   }
 }
 
-function runFixAndGit() {
+/**
+ * runFixAndGit function
+ */
+function runFixAndGit(): any {
   try {
     log("Running enhanced error fix...");
     execSync(`node ${FIX_SCRIPT}`);
@@ -98,7 +113,10 @@ function runFixAndGit() {
   }
 }
 
-function runVercelAutoFix() {
+/**
+ * runVercelAutoFix function
+ */
+function runVercelAutoFix(): any {
   try {
     log("Running Vercel auto-fix...");
     execSync(`node ${FIX_SCRIPT} --type=vercel`);
@@ -108,7 +126,10 @@ function runVercelAutoFix() {
   }
 }
 
-function forceVercelRedeploy() {
+/**
+ * forceVercelRedeploy function
+ */
+function forceVercelRedeploy(): any {
   try {
     log("Forcing Vercel redeploy with cache clear...");
     execSync(
@@ -121,7 +142,10 @@ function forceVercelRedeploy() {
   }
 }
 
-function checkHealth(cb) {
+/**
+ * checkHealth function
+ */
+function checkHealth(cb): any {
   http
     .get(HEALTH_URL, (_res) => {
       let data = "";
@@ -153,7 +177,10 @@ function checkHealth(cb) {
     });
 }
 
-function orchestrate() {
+/**
+ * orchestrate function
+ */
+function orchestrate(): any {
   // Start backend if not running
   checkHealth((isUp) => {
     if (!isUp) startBackend();

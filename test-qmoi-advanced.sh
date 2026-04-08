@@ -4,7 +4,7 @@
 # Enhanced QMOI Testing with Advanced Analysis
 # Uses the new advanced-analysis endpoint for specialized handling
 
-API_URL="http://localhost:3001/api/qmoi/advanced-analysis"
+API_URL="https://production.qmoi.ai:3001/api/qmoi/advanced-analysis"
 OUTPUT_FILE="/workspaces/qmoi-enhanced/responsesa_enhanced.txt"
 USER_ID="enhanced-test-$(date +%s)"
 

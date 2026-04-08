@@ -9,9 +9,9 @@
  * Endpoints for dashboard, reporting, and bulk operations
  */
 
-import { Router, Request, Response } from "express";
-import MasterLinkValidator from "@/lib/qmoi/MasterLinkValidator";
-import { requireMaster } from "@/middleware/auth";
+import { specificExports } from "express";
+import { specificExports } from "@/lib/qmoi/MasterLinkValidator";
+import { specificExports } from "@/middleware/auth";
 
 const router = Router();
 const validator = new MasterLinkValidator(process.cwd());
@@ -25,7 +25,7 @@ router.post(
   requireMaster,
   async (req: Request, res: Response) => {
     try {
-      console.log("[API] Starting full link validation scan");
+      logger.info("[API] Starting full link validation scan");
       const result = await validator.scanAllMarkdownFiles();
 
       // Export to file
@@ -141,8 +141,8 @@ router.get(
         ...result.linksByStatus.broken,
         ...result.linksByStatus.dns_error,
         ...result.linksByStatus.timeout,
-      ].forEach((link) => {
-        link.source.forEach((src) => {
+      ].for (const item of((link) => {
+        link.source.for (const item of((src) => {
           fileCount[src.file] = (fileCount[src.file] || 0) + 1;
         });
       });
@@ -247,7 +247,7 @@ router.post(
 
       // This would be implemented with actual file modification
       // For now, just log the request
-      console.log(
+      logger.info(
         `[API] Batch fix requested: ${fixes.length} replacements`
       );
 
@@ -300,9 +300,9 @@ router.get(
       // Convert to CSV
       let csv = "URL,Status,Type,File,Line,Context\n";
 
-      Object.values(result.linksByStatus).forEach((links) => {
-        links.forEach((link) => {
-          link.source.forEach((src) => {
+      Object.values(result.linksByStatus).for (const item of((links) => {
+        links.for (const item of((link) => {
+          link.source.for (const item of((src) => {
             csv += `"${link.url}","${link.status}","${link.type}","${src.file}",${src.line},"${src.context.replace(/"/g, '""')}"\n`;
           });
         });

@@ -51,4 +51,4 @@ for top in TARGET_DIRS:
             files_updated += 1
             lines_updated += replaced
 
-print(f"production-ready conversion complete: {files_updated} files updated, {lines_updated} replacements.")
+logger.info(f"production-ready conversion complete: {files_updated} files updated, {lines_updated} replacements.")

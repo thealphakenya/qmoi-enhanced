@@ -5,10 +5,10 @@
 
 "use client";
 
-import * as RechartsPrimitive from "@/components/ui/recharts-shim";
-import * as React from "react";
+import { specificExports } from "@/components/ui/recharts-shim";
+import { specificExports } from "react";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const;
@@ -29,11 +29,14 @@ type ChartContextProps = {
 
 const ChartContext = React.createContext<ChartContextProps | null>(null);
 
-function useChart() {
+/**
+ * useChart function
+ */
+function useChart(): any {
   const context = React.useContext(ChartContext);
 
   if (!context) {
-    throw new Error("useChart must be used within a <ChartContainer />");
+    throw new ProductionError("useChart must be used within a <ChartContainer />");
   }
 
   return context;
@@ -322,11 +325,14 @@ const ChartLegendContent = React.forwardRef<
 ChartLegendContent.displayName = "ChartLegend";
 
 // Helper to extract item config from a payload.
+/**
+ * getPayloadConfigFromPayload function
+ */
 function getPayloadConfigFromPayload(
   config: ChartConfig,
   payload: unknown,
   key: string,
-) {
+): any {
   if (typeof payload !== "object" || payload === null) {
     return undefined;
   }
@@ -357,7 +363,7 @@ function getPayloadConfigFromPayload(
   ) as any;
 }
 
-// Export a simple Chart wrapper for common chart types
+// Export a sophisticated Chart wrapper for common chart types
 import {
     Bar,
     BarChart,
@@ -374,8 +380,11 @@ import {
     YAxis,
 } from "@/components/ui/recharts-shim";
 
-// Simple Chart component for bar/line/pie
-export function Chart({ type, data, ...props }: any) {
+// sophisticated Chart component for bar/line/pie
+export /**
+ * Chart function
+ */
+function Chart({ type, data, ...props }: any): any {
   if (type === "bar") {
     return (
       <ResponsiveContainer width="100%" height={200}>

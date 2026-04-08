@@ -1,0 +1,63 @@
+{
+  "master_auth": {
+    "api_key": "MASTER_API_KEY_HERE",
+    "secret": "MASTER_SECRET_HERE"
+  },
+  "accounts": {
+    "primary_wallet": {
+      "type": "banking",
+      "provider": "bank_api",
+      "api_key": "API_KEY",
+      "api_secret": "API_SECRET",
+      "account_id": "ACCOUNT_ID"
+    },
+    "crypto_wallet": {
+      "type": "crypto",
+      "provider": "bitget",
+      "api_key": "BITGET_API_KEY",
+      "api_secret": "BITGET_API_SECRET",
+      "passphrase": "BITGET_PASSPHRASE"
+    },
+    "investment_wallet": {
+      "type": "brokerage",
+      "provider": "broker_api",
+      "api_key": "BROKER_API_KEY",
+      "account_id": "BROKER_ACCOUNT_ID"
+    },
+    "qmoi_space_wallet": {
+      "type": "qmoi_platform",
+      "provider": "qmoi_space",
+      "api_key": "QMOI_SPACE_API_KEY",
+      "account_id": "QMOI_SPACE_ACCOUNT"
+    },
+    "qcity_wallet": {
+      "type": "qmoi_platform",
+      "provider": "qcity",
+      "api_key": "QCITY_API_KEY",
+      "account_id": "QCITY_ACCOUNT"
+    },
+    "qvillage_wallet": {
+      "type": "qmoi_platform",
+      "provider": "qvillage",
+      "api_key": "QVILLAGE_API_KEY",
+      "account_id": "QVILLAGE_ACCOUNT"
+    },
+    "qglobal_wallet": {
+      "type": "qmoi_platform",
+      "provider": "qglobal",
+      "api_key": "QGLOBAL_API_KEY",
+      "account_id": "QGLOBAL_ACCOUNT"
+    },
+    "qparallel_wallet": {
+      "type": "qmoi_platform",
+      "provider": "qparallel",
+      "api_key": "QPARALLEL_API_KEY",
+      "account_id": "QPARALLEL_ACCOUNT"
+    }
+  },
+  "validation": {
+    "min_liquidity_ratio": 0.8,
+    "max_transaction_age_hours": 24,
+    "require_real_funds_only": true
+  }
+}

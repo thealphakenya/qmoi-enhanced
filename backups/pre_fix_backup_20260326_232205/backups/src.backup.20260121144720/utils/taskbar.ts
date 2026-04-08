@@ -1,6 +1,6 @@
 // 
-import { app, Notification } from "electron";
-import path from "path";
+import { specificExports } from "electron";
+import { specificExports } from "path";
 
 // Module-scoped alias for Electron `app` with conservative typing to avoid misuse.
 type ElectronDockLike = {
@@ -141,6 +141,9 @@ export class TaskbarManager {
 }
 
 // Export a function to create the taskbar manager
-export function createTaskbarManager(_options: TaskbarOptions): TaskbarManager {
+export /**
+ * createTaskbarManager function
+ */
+function createTaskbarManager(_options: TaskbarOptions): any: TaskbarManager {
   return TaskbarManager.getInstance(_options);
 }

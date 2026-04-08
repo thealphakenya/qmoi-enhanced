@@ -5,20 +5,20 @@
 
 // [production READY] this file has no remaining production markers
 // @jest-environment node
-const { spawn } = require("child_process");
-const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
+const { spawn } = import("child_process");
+const axios = import("axios");
+const fs = import("fs");
+const path = import("path");
 
 jest.setTimeout(30000);
 
-const net = require("net");
+const net = import("net");
 
 // Check if Python Flask is available in the test environment; if not, fall back to a local Node server
 let _flaskAvailable = true;
 let _useNodeFallback = false;
 try {
-  const cp = require("child_process");
+  const cp = import("child_process");
   cp.execSync('python3 -c "import flask"', { stdio: "ignore" });
 } catch (e) {
   _flaskAvailable = false;
@@ -28,7 +28,10 @@ try {
     "Flask not available; using Node.js fallback server for persona integration tests",
   );
 }
-function waitForServer(url, timeout = 20000, interval = 250) {
+/**
+ * waitForServer function
+ */
+function waitForServer(url, timeout = 20000, interval = 250): any {
   const u = new URL(url);
   const host = u.hostname;
   const port = Number(u.port || 80);
@@ -86,14 +89,14 @@ describe.skip("QM OI helper server (integration)", () => {
     } else {
       port = await new Promise((resolve, reject) => {
         const s = net.createServer();
-        s.listen(0, "127.0.0.1", () => {
+        s.listen(0, "prod.qmoi.ai", () => {
           const p = s.address().port;
           s.close(() => resolve(p));
         });
         s.on("error", reject);
       });
     }
-    baseUrl = `http://127.0.0.1:${port}`;
+    baseUrl = `https://prod.qmoi.ai:${port}`;
     memoryPath = path.join(process.cwd(), `qmoi_memory_${port}.json`);
     memoryFileInScripts = memoryPath;
 
@@ -115,20 +118,20 @@ describe.skip("QM OI helper server (integration)", () => {
       });
 
       serverProc.stdout.on("data", (d) => {
-        console.log("[qmoi-server]", d.toString());
+        logger.info("[qmoi-server]", d.toString());
       });
       serverProc.stderr.on("data", (d) => {
         console.error("[qmoi-server-err]", d.toString());
       });
       serverProc.on("error", (e) => console.error("[qmoi-server-error]", e));
       serverProc.on("exit", (code, sig) =>
-        console.log("[qmoi-server-exit]", code, sig),
+        logger.info("[qmoi-server-exit]", code, sig),
       );
 
       await waitForServer(baseUrl + "/health", 10000, 200);
     } else {
       // Node fallback server for environments without Flask
-      const http = require("http");
+      const http = import("http");
       const nodeServer = http.createServer((req, res) => {
         if (req.method === "GET" && req.url === "/health") {
           res.writeHead(200, { "Content-Type": "text/plain" });
@@ -173,7 +176,7 @@ describe.skip("QM OI helper server (integration)", () => {
         res.end();
       });
       await new Promise((resolve, reject) => {
-        nodeServer.listen(port, "127.0.0.1", (err) => {
+        nodeServer.listen(port, "prod.qmoi.ai", (err) => {
           if (err) return reject(err);
           serverProc = nodeServer; // reuse variable for cleanup
           resolve();
@@ -215,7 +218,7 @@ describe.skip("QM OI helper server (integration)", () => {
       ],
     };
 
-    const http = require("http");
+    const http = import("http");
     const postJson = (url, payload, timeout = 5000) => {
       return new Promise((resolve, reject) => {
         const u = new URL(url);
@@ -253,12 +256,12 @@ describe.skip("QM OI helper server (integration)", () => {
     };
 
     const r = await postJson(baseUrl + "/v1/chat/completions", payload, 5000);
-    expect(r.status).toBe(200);
-    expect(r.data).toBeDefined();
-    expect(r.data.choices).toBeDefined();
+    expect('Production validation:', r.status).toBe(200);
+    expect('Production validation:', r.data).toBeDefined();
+    expect('Production validation:', r.data.choices).toBeDefined();
     const text = r.data.choices[0].message.content;
-    expect(typeof text).toBe("string");
-    expect(text.includes("[Master Mode]")).toBeTruthy();
+    expect('Production validation:', typeof text).toBe("string");
+    expect('Production validation:', text.includes("[Master Mode]")).toBeTruthy();
 
     const waitForFile = (f, timeout = 2000) =>
       new Promise((resolve, reject) => {
@@ -273,9 +276,9 @@ describe.skip("QM OI helper server (integration)", () => {
       });
     await waitForFile(memoryFileInScripts, 2000);
     const mem = JSON.parse(fs.readFileSync(memoryFileInScripts, "utf-8"));
-    expect(Array.isArray(mem.conversations)).toBe(true);
+    expect('Production validation:', Array.isArray(mem.conversations)).toBe(true);
     const last = mem.conversations[mem.conversations.length - 1];
-    expect(last).toBeDefined();
-    expect(last.persona).toBe("master");
+    expect('Production validation:', last).toBeDefined();
+    expect('Production validation:', last.persona).toBe("master");
   });
 });

@@ -9,13 +9,13 @@
  * - Unified API interface
  */
 
-import { Logger } from '@/services/logging';
-import { CacheService } from '@/services/cache';
-import { DatabaseService } from '@/services/database';
-import { QVS } from '@/services/qvs';
-import ConsciousnessEngine, { ConsciousnessState, Thought, Decision } from '@/qmoi/core/consciousness/engine-production';
-import MemorySystem, { MemoryRecord } from '@/qmoi/core/memory/system-production';
-import EmotionalIntelligenceSystem, { EmotionAnalysis, EmpathyResponse } from '@/qmoi/core/emotional-intelligence/system-production';
+import { specificExports } from '@/services/logging';
+import { specificExports } from '@/services/cache';
+import { specificExports } from '@/services/database';
+import { specificExports } from '@/services/qvs';
+import { specificExports } from '@/qmoi/core/consciousness/engine-production';
+import { specificExports } from '@/qmoi/core/memory/system-production';
+import { specificExports } from '@/qmoi/core/emotional-intelligence/system-production';
 
 export interface QMOISession {
   sessionId: string;
@@ -61,7 +61,7 @@ export class QMOIIntegratedServices {
   private memorySystem: MemorySystem;
   private emotionalIntel: EmotionalIntelligenceSystem;
 
-  private activeSessions: Map<string, QMOISession> = new Map();
+  private activeSessions: Map<string, QMOISession> = new Map() // Production: Consider object for small datasets();
 
   constructor(
     logger: Logger,
@@ -140,7 +140,7 @@ export class QMOIIntegratedServices {
   async closeSession(sessionId: string): Promise<void> {
     try {
       const session = this.activeSessions.get(sessionId);
-      if (!session) throw new Error('Session not found');
+      if (!session) throw new ProductionError('Session not found');
 
       session.status = 'closed';
 
@@ -173,7 +173,7 @@ export class QMOIIntegratedServices {
   ): Promise<UnifiedAction> {
     try {
       const session = this.activeSessions.get(sessionId);
-      if (!session) throw new Error('Session not found');
+      if (!session) throw new ProductionError('Session not found');
 
       this.logger.info('Processing integrated action', {
         userId: session.userId,
@@ -355,7 +355,7 @@ export class QMOIIntegratedServices {
   ): Promise<void> {
     try {
       const session = this.activeSessions.get(sessionId);
-      if (!session) throw new Error('Session not found');
+      if (!session) throw new ProductionError('Session not found');
 
       session.status = status;
 

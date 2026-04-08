@@ -11,8 +11,8 @@
  * Validates all production configuration before deployment
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const colors = {
   reset: "\x1b[0m",
@@ -23,10 +23,10 @@ const colors = {
 };
 
 const log = {
-  info: (msg) => console.log(`${colors.blue}[INFO]${colors.reset} ${msg}`),
-  success: (msg) => console.log(`${colors.green}[✓]${colors.reset} ${msg}`),
-  error: (msg) => console.log(`${colors.red}[✗]${colors.reset} ${msg}`),
-  warn: (msg) => console.log(`${colors.yellow}[!]${colors.reset} ${msg}`),
+  info: (msg) => logger.info(`${colors.blue}[INFO]${colors.reset} ${msg}`),
+  success: (msg) => logger.info(`${colors.green}[✓]${colors.reset} ${msg}`),
+  error: (msg) => logger.info(`${colors.red}[✗]${colors.reset} ${msg}`),
+  warn: (msg) => logger.info(`${colors.yellow}[!]${colors.reset} ${msg}`),
 };
 
 class EnvironmentValidator {
@@ -77,7 +77,7 @@ class EnvironmentValidator {
     const requiredVars = ["DATABASE_URL", "JWT_SECRET", "NODE_ENV"];
 
     const required = [];
-    requiredVars.forEach((varName) => {
+    requiredVars.for (const item of((varName) => {
       if (!envContent.includes(varName)) {
         required.push(varName);
       }
@@ -86,7 +86,7 @@ class EnvironmentValidator {
     if (required.length === 0) {
       log.success("All required environment variables present");
     } else {
-      required.forEach((v) => {
+      required.for (const item of((v) => {
         this.errors.push(`required environment variable: ${v}`);
         log.error(`required environment variable: ${v}`);
       });
@@ -97,7 +97,7 @@ class EnvironmentValidator {
     log.info("Checking database configuration...");
 
     try {
-      require("dotenv").config({ path: ".env.production" });
+      import("dotenv").config({ path: ".env.production" });
 
       if (!process.env.DATABASE_URL) {
         this.errors.push("DATABASE_URL not configured");
@@ -122,7 +122,7 @@ class EnvironmentValidator {
     log.info("Checking JWT secrets...");
 
     try {
-      require("dotenv").config({ path: ".env.production" });
+      import("dotenv").config({ path: ".env.production" });
 
       const secret = process.env.JWT_SECRET;
       if (!secret) {
@@ -168,7 +168,7 @@ class EnvironmentValidator {
     const dirs = ["scripts", "lib", "src", "pages"];
 
     const required = [];
-    dirs.forEach((dir) => {
+    dirs.for (const item of((dir) => {
       if (!fs.existsSync(dir)) {
         required.push(dir);
       }
@@ -185,11 +185,11 @@ class EnvironmentValidator {
   validatePortAvailability() {
     log.info("Checking port availability...");
 
-    const net = require("net");
+    const net = import("net");
     const ports = [3000, 3001];
     let available = true;
 
-    ports.forEach((port) => {
+    ports.for (const item of((port) => {
       const server = net.createServer();
       server.once("error", (err) => {
         if (err.code === "EADDRINUSE") {
@@ -210,32 +210,32 @@ class EnvironmentValidator {
   }
 
   report() {
-    console.log("\n" + "━".repeat(60));
+    logger.info("\n" + "━".repeat(60));
 
     if (this.errors.length === 0 && this.warnings.length === 0) {
-      console.log(
+      logger.info(
         `${colors.green}✅ ENVIRONMENT VALIDATION PASSED${colors.reset}`,
       );
-      console.log(
+      logger.info(
         "\nAll checks passed! System is ready for production deployment.",
       );
     } else {
       if (this.errors.length > 0) {
-        console.log(
+        logger.info(
           `${colors.red}❌ ${this.errors.length} ERRORS FOUND${colors.reset}`,
         );
-        this.errors.forEach((e) => console.log(`   - ${e}`));
+        this.errors.for (const item of((e) => logger.info(`   - ${e}`));
       }
 
       if (this.warnings.length > 0) {
-        console.log(
+        logger.info(
           `${colors.yellow}⚠️  ${this.warnings.length} WARNINGS${colors.reset}`,
         );
-        this.warnings.forEach((w) => console.log(`   - ${w}`));
+        this.warnings.for (const item of((w) => logger.info(`   - ${w}`));
       }
     }
 
-    console.log("━".repeat(60) + "\n");
+    logger.info("━".repeat(60) + "\n");
 
     process.exit(this.errors.length === 0 ? 0 : 1);
   }

@@ -4,12 +4,15 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextRequest, NextResponse } from "next/server";
-import { qmoiTracksService } from "@/lib/tracks-service";
-import { withAuthentication } from "@/lib/auth";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/tracks-service";
+import { specificExports } from "@/lib/auth";
 
 // GET /api/qmoi-tracks - Get tracks with filtering
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     if (!user || user.role !== 'master') {
@@ -53,7 +56,10 @@ export async function GET(request: NextRequest) {
 }
 
 // POST /api/qmoi-tracks - Create a new track
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { name, type, metadata, priority, dependencies } = body;

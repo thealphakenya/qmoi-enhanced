@@ -42,7 +42,7 @@ export class Logger {
     };
 
     this.logs.push(entry);
-    console.log(`[${level.toUpperCase()}] ${message}`, context || '');
+    logger.info(`[${level.toUpperCase()}] ${message}`, context || '');
   }
 
   getLogs(level?: LogEntry['level'], userId?: string): LogEntry[] {
@@ -67,6 +67,9 @@ export class Logger {
 const logger = new Logger();
 
 export { logger };
-export function getLogger(): Logger {
+export /**
+ * getLogger function
+ */
+function getLogger(): any: Logger {
   return logger;
 }

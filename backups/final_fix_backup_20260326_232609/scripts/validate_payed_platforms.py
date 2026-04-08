@@ -43,17 +43,17 @@ for p in ROOT.glob('*PAYED.md'):
 
 OUT = OUTDIR / 'payed_validation_report.json'
 OUT.write_text(json.dumps(report, indent=2), encoding='utf-8')
-print('Wrote', OUT)
+logger.info('Wrote', OUT)
 
 # Try to refresh ALLMDFILESREFS.md via existing generator, if available
 gen = ROOT / 'scripts' / 'generate_allmdrefs.py'
 if gen.exists():
     try:
         subprocess.run([sys.executable, str(gen)], check=True)
-        print('Ran generate_allmdrefs.py')
+        logger.info('Ran generate_allmdrefs.py')
     except Exception as e:
-        print('Failed to run generate_allmdrefs.py:', e)
+        logger.info('Failed to run generate_allmdrefs.py:', e)
 else:
-    print('generate_allmdrefs.py not found; skip')
+    logger.info('generate_allmdrefs.py not found; skip')
 
-print('Validation complete')
+logger.info('Validation complete')

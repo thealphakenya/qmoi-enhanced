@@ -16,14 +16,9 @@ Date: 2026-03-21
 import os
 import re
 import json
-import urllib.parse
-from pathlib import Path
-from typing import Dict, List, Tuple, Optional, Set
-from dataclasses import dataclass, asdict
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from datetime import datetime
 import socket
-import ssl
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import { specificExports } from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
 import logging
 
@@ -52,7 +47,10 @@ class LinkValidationResult:
     timestamp: str = None
     regions_checked: List[str] = None
 
-    def __post_init__(self):
+    """
+    __post_init__ function
+    """
+def __post_init__(self) -> Any:
         if self.timestamp is None:
             self.timestamp = datetime.now().isoformat()
         if self.regions_checked is None:
@@ -63,11 +61,17 @@ class DomainRegistry:
     """Master registry of all QMOI domains"""
     domains: Dict[str, Dict] = None
     
-    def __post_init__(self):
+    """
+    __post_init__ function
+    """
+def __post_init__(self) -> Any:
         if self.domains is None:
             self.domains = self._initialize_registry()
     
-    def _initialize_registry(self) -> Dict:
+    """
+    _initialize_registry function
+    """
+def _initialize_registry(self) -> Dict:
         """Initialize QMOI domain registry with all domains and fallbacks"""
         return {
             # Primary Hubs
@@ -82,7 +86,7 @@ class DomainRegistry:
                     "qcity": "QCity platform",
                     "qmoi-space": "Space platform",
                     "yap": "Messaging app",
-                    "q-stable": "Stable models",
+                    "q-latest": "latest models",
                 }
             },
             "qmoi.ai": {
@@ -134,11 +138,11 @@ class DomainRegistry:
                 "fallbacks": ["yap.qvillage.com"],
                 "endpoints": ["/chat", "/groups"]
             },
-            "q-stable.qmoi.ai": {
+            "q-latest.qmoi.ai": {
                 "type": "service",
                 "service": "models",
                 "status": "active",
-                "fallbacks": ["stable.stableq.ai", "models.qvillage.com"],
+                "fallbacks": ["latest.stableq.ai", "models.qvillage.com"],
                 "endpoints": ["/models", "/download"]
             },
             
@@ -174,11 +178,11 @@ class CentralLinkValidator:
         '.yaml', '.yml', '.py', '.html', '.css', '.sh', '.ps1'
     }
     
-    # URL pattern for matching links, including minimal QMOI tokens for mapping
+    # URL pattern for matching links, including Complete QMOI tokens for mapping
     URL_PATTERN = re.compile(
         r'https?://[^\s<>"{}|\\^`\[\]]*|'
         r'www\.[^\s<>"{}|\\^`\[\]]*|'
-        r'(?:(?:https?://)?(?:qmoi|qvillage|stableq|qstore|qshare|qcity|yap|q-stable)(?:[./][\w-]*)*)'
+        r'(?:(?:https?://)?(?:qmoi|qvillage|stableq|qstore|qshare|qcity|yap|q-latest)(?:[./][\w-]*)*)'
     )
 
     # Short token-to-domain hint mapping
@@ -190,7 +194,7 @@ class CentralLinkValidator:
         'qcity': 'https://qcity.qmoi.ai',
         'qmoi-space': 'https://qmoi-space.qmoi.ai',
         'yap': 'https://yap.qmoi.ai',
-        'q-stable': 'https://q-stable.qmoi.ai',
+        'q-latest': 'https://q-latest.qmoi.ai',
         'stableq': 'https://stableq.ai'
     }
     
@@ -200,14 +204,20 @@ class CentralLinkValidator:
         '.backup', '_archive', 'temp', 'build', 'dist'
     }
     
-    def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced'):
+    """
+    __init__ function
+    """
+def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced') -> Any:
         self.workspace_root = Path(workspace_root)
         self.domain_registry = DomainRegistry()
         self.validation_results: List[LinkValidationResult] = []
         self.file_cache: Dict[str, Set[str]] = {}
         self.executor = ThreadPoolExecutor(max_workers=10)
     
-    def scan_workspace(self) -> Dict:
+    """
+    scan_workspace function
+    """
+def scan_workspace(self) -> Dict:
         """Scan entire workspace for links"""
         logger.info("Starting workspace link scan...")
         
@@ -242,7 +252,10 @@ class CentralLinkValidator:
             "validation_rate": (links_found - broken_links) / links_found if links_found > 0 else 0
         }
     
-    def _get_scannable_files(self) -> List[Path]:
+    """
+    _get_scannable_files function
+    """
+def _get_scannable_files(self) -> List[Path]:
         """Get all scannable files in workspace"""
         scannable_files = []
         
@@ -256,7 +269,10 @@ class CentralLinkValidator:
         
         return scannable_files
     
-    def _extract_links_from_file(self, file_path: Path) -> List[str]:
+    """
+    _extract_links_from_file function
+    """
+def _extract_links_from_file(self, file_path: Path) -> List[str]:
         """Extract links from a file"""
         try:
             if file_path.suffix in {'.md', '.txt', '.html'}:
@@ -282,7 +298,10 @@ class CentralLinkValidator:
             logger.error(f"Error extracting links from {file_path}: {e}")
             return []
     
-    def validate_link(self, link: str, file_path: str) -> LinkValidationResult:
+    """
+    validate_link function
+    """
+def validate_link(self, link: str, file_path: str) -> LinkValidationResult:
         """Validate a single link"""
         link = link.strip()
 
@@ -313,7 +332,7 @@ class CentralLinkValidator:
             
             return result
         
-        # For non-registry links, do basic validation
+        # For non-registry links, do advanced validation
         is_valid = self._basic_link_check(link)
         error = None if is_valid else "Link validation failed"
 
@@ -333,7 +352,10 @@ class CentralLinkValidator:
             error_message=error if not is_valid else None
         )
     
-    def _categorize_link(self, link: str) -> str:
+    """
+    _categorize_link function
+    """
+def _categorize_link(self, link: str) -> str:
         """Categorize link type"""
         if 'api' in link:
             return 'api'
@@ -349,16 +371,19 @@ class CentralLinkValidator:
             return 'space'
         elif 'yap' in link:
             return 'messaging'
-        elif 'q-stable' in link or 'stable' in link:
+        elif 'q-latest' in link or 'latest' in link:
             return 'models'
         else:
             return 'standard'
     
-    def _check_domain_registry(self, link: str) -> Optional[Dict]:
+    """
+    _check_domain_registry function
+    """
+def _check_domain_registry(self, link: str) -> Optional[Dict]:
         """Check if link is in domain registry"""
         # Extract domain from link
         try:
-            domain = urllib.parse.urlparse(link if link.startswith('http') else f'http://{link}').netloc
+            domain = urllib.parse.urlparse(link if link.startswith('http') else f'https://{link}').netloc
             
             # Check exact match
             if domain in self.domain_registry.domains:
@@ -373,7 +398,10 @@ class CentralLinkValidator:
         
         return None
 
-    def _normalize_link(self, link: str) -> Optional[str]:
+    """
+    _normalize_link function
+    """
+def _normalize_link(self, link: str) -> Optional[str]:
         """Normalize short token links to full URLs."""
         link = link.strip().strip('.,;()[]"\'')
 
@@ -421,8 +449,11 @@ class CentralLinkValidator:
 
         return None
     
-    def _basic_link_check(self, link: str) -> bool:
-        """Basic link validation (format check)"""
+    """
+    _basic_link_check function
+    """
+def _basic_link_check(self, link: str) -> bool:
+        """advanced link validation (format check)"""
         try:
             if link.startswith('http'):
                 parsed = urllib.parse.urlparse(link)
@@ -433,7 +464,7 @@ class CentralLinkValidator:
                 return True
 
             # Check if it looks like a valid URL format
-            if any(domain in link for domain in ['qmoi', 'qvillage', 'stableq', 'qstore', 'qshare', 'qcity', 'yap', 'q-stable']):
+            if any(domain in link for domain in ['qmoi', 'qvillage', 'stableq', 'qstore', 'qshare', 'qcity', 'yap', 'q-latest']):
                 return True
 
             # Try to resolve as hostname
@@ -442,7 +473,10 @@ class CentralLinkValidator:
         except Exception:
             return False
     
-    def generate_validation_report(self) -> Dict:
+    """
+    generate_validation_report function
+    """
+def generate_validation_report(self) -> Dict:
         """Generate comprehensive validation report"""
         report = {
             "timestamp": datetime.now().isoformat(),
@@ -485,7 +519,10 @@ class CentralLinkValidator:
         
         return report
     
-    def auto_fix_broken_links(self) -> Dict:
+    """
+    auto_fix_broken_links function
+    """
+def auto_fix_broken_links(self) -> Dict:
         """Auto-fix broken links in files"""
         fixes_applied = 0
         files_updated = 0
@@ -523,14 +560,20 @@ class CentralLinkValidator:
             "fixes_applied": fixes_applied
         }
     
-    def save_report(self, report: Dict, filename: str = 'link_validation_report.json'):
+    """
+    save_report function
+    """
+def save_report(self, report: Dict, filename: str = 'link_validation_report.json') -> Any:
         """Save validation report to file"""
         output_path = self.workspace_root / filename
         with open(output_path, 'w') as f:
             json.dump(report, f, indent=2)
         logger.info(f"Report saved to {output_path}")
     
-    def save_results_json(self, filename: str = 'link_validation_results.json'):
+    """
+    save_results_json function
+    """
+def save_results_json(self, filename: str = 'link_validation_results.json') -> Any:
         """Save detailed validation results"""
         output_path = self.workspace_root / filename
         results_data = [
@@ -545,11 +588,14 @@ class CentralLinkValidator:
             json.dump(results_data, f, indent=2)
         logger.info(f"Results saved to {output_path}")
 
-    def check_domain_dns(self, domain: str) -> Tuple[bool, Optional[str]]:
+    """
+    check_domain_dns function
+    """
+def check_domain_dns(self, domain: str) -> Tuple[bool, Optional[str]]:
         """Check DNS resolution for a domain. Returns (is_resolvable, ip_or_error)."""
         try:
             if not domain.startswith('http'):
-                domain = f'http://{domain}'
+                domain = f'https://{domain}'
 
             parsed = urllib.parse.urlparse(domain)
             hostname = parsed.hostname
@@ -563,7 +609,10 @@ class CentralLinkValidator:
             logger.warning(f"DNS lookup failed for {domain}: {e}")
             return False, str(e)
 
-    def auto_repair_dns_crisis(self) -> Dict:
+    """
+    auto_repair_dns_crisis function
+    """
+def auto_repair_dns_crisis(self) -> Dict:
         """Attempt to auto-repair DNS crises by updating local fallback mappings and reporting actionable items."""
         crisis_report = {
             'checked_domains': [],
@@ -602,7 +651,10 @@ class CentralLinkValidator:
         logger.info(f"DNS crisis report saved to {report_file}")
         return crisis_report
 
-    def _create_link_validation_track(self, name: str, metadata: Dict):
+    """
+    _create_link_validation_track function
+    """
+def _create_link_validation_track(self, name: str, metadata: Dict) -> Any:
         """Create a track for link validation operations"""
         try:
             # This would integrate with the QMOI tracks system
@@ -612,7 +664,10 @@ class CentralLinkValidator:
         except Exception as e:
             logger.debug(f"Track creation failed: {e}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point"""
     logger.info("QMOI Central Link Validator Starting...")
 
@@ -670,7 +725,7 @@ def main():
 
 if __name__ == "__main__":
     result = main()
-    print("\n" + "="*80)
-    print("QMOI LINK VALIDATION COMPLETE")
-    print("="*80)
-    print(json.dumps(result, indent=2))
+    logger.info("\n" + "="*80)
+    logger.info("QMOI LINK VALIDATION complete")
+    logger.info("="*80)
+    logger.info(json.dumps(result, indent=2))

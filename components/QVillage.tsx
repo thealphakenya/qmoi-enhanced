@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, useEffect, useRef } from "react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Input } from "./ui/input";
-import { Badge } from "./ui/badge";
-import { Progress } from "./ui/progress";
+import { specificExports } from "react";
+import { specificExports } from "./ui/button";
+import { specificExports } from "./ui/card";
+import { specificExports } from "./ui/input";
+import { specificExports } from "./ui/badge";
+import { specificExports } from "./ui/progress";
 import {
   BookOpen,
   Search,
@@ -235,7 +235,7 @@ export const QVillage: React.FC = () => {
       if (results) {
         notifications.addNotification({
           type: "search_complete",
-          title: "Search Complete",
+          title: "Search complete",
           message: `Found ${results.total} results for "${searchQuery}"`,
           priority: "low",
         });
@@ -315,7 +315,7 @@ export const QVillage: React.FC = () => {
     },
     {
       id: "app-dev-003",
-      name: "AI App Development Pipeline",
+      name: "AI App production Pipeline",
       type: "auto_projects",
       status: "active",
       revenue: 3200.0,

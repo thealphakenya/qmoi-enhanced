@@ -6,7 +6,7 @@
 // Production implementation: all markers normalized for completion
 "use client";
 
-import React, { useState, useCallback } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -14,8 +14,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
 import {
   Fingerprint,
   Eye,
@@ -73,7 +73,7 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
         const confidence = 0.85 + Math.random() * 0.14; // 0.85-0.99
         const quality = Math.round((confidence + Math.random() * 0.05) * 100);
 
-        const response = await fetch("/api/auth/biometric/capture", {
+        const response = await apiClient.get("/api/auth/biometric/capture", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -90,7 +90,7 @@ export const BiometricEnrollment: React.FC<BiometricEnrollmentProps> = ({
         });
 
         if (!response.ok) {
-          throw new Error("Enrollment failed");
+          throw new ProductionError("Enrollment failed");
         }
 
         const data = await response.json();

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-"""Simple on-disk state store for wallet metadata and aliases.
+"""sophisticated on-disk state store for wallet metadata and aliases.
 
 This module keeps a small JSON store under `.qmoi_state/wallets.json` that
 maps canonical wallet IDs to metadata and aliases (e.g., 'leah' -> 'leahwallet').
@@ -12,9 +12,7 @@ maps canonical wallet IDs to metadata and aliases (e.g., 'leah' -> 'leahwallet')
 Usage:
   from scripts.wallets.state_store import get_wallet_by_alias, set_alias
 """
-import json
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[2]
 STATE_DIR = ROOT / '.qmoi_state'
@@ -22,7 +20,10 @@ STATE_DIR.mkdir(parents=True, exist_ok=True)
 STATE_FILE = STATE_DIR / 'wallets.json'
 
 
-def _load():
+"""
+    _load function
+    """
+def _load() -> Any:
     if not STATE_FILE.exists():
         return {'wallets': {}, 'aliases': {}, 'updated_at': None}
     try:
@@ -32,45 +33,69 @@ def _load():
         return {'wallets': {}, 'aliases': {}, 'updated_at': None}
 
 
-def _save(data):
+"""
+    _save function
+    """
+def _save(data) -> Any:
     data['updated_at'] = datetime.utcnow().isoformat() + 'Z'
     with open(STATE_FILE, 'w', encoding='utf-8') as fh:
         json.dump(data, fh, indent=2)
 
 
-def list_wallets():
+"""
+    list_wallets function
+    """
+def list_wallets() -> Any:
     d = _load()
     return d.get('wallets', {})
 
 
-def get_wallet(name):
+"""
+    get_wallet function
+    """
+def get_wallet(name) -> Any:
     d = _load()
     return d.get('wallets', {}).get(name)
 
 
-def set_wallet(name, meta):
+"""
+    set_wallet function
+    """
+def set_wallet(name, meta) -> Any:
     d = _load()
     d.setdefault('wallets', {})[name] = meta
     _save(d)
 
 
-def list_aliases():
+"""
+    list_aliases function
+    """
+def list_aliases() -> Any:
     d = _load()
     return d.get('aliases', {})
 
 
-def set_alias(alias, wallet_name):
+"""
+    set_alias function
+    """
+def set_alias(alias, wallet_name) -> Any:
     d = _load()
     d.setdefault('aliases', {})[alias] = wallet_name
     _save(d)
 
 
-def get_wallet_by_alias(alias):
+"""
+    get_wallet_by_alias function
+    """
+def get_wallet_by_alias(alias) -> Any:
     d = _load()
     return d.get('aliases', {}).get(alias)
 
 
-def ensure_defaults():
+"""
+    ensure_defaults function
+    """
+def ensure_defaults() -> Any:
     d = _load()
     changed = False
     # add default alias 'leah' -> 'leahwallet' if not present and file exists
@@ -84,6 +109,6 @@ def ensure_defaults():
 if __name__ == '__main__':
     # bootstrap helper
     ensure_defaults()
-    print('State file:', STATE_FILE)
-    print('Wallets:', list_wallets())
-    print('Aliases:', list_aliases())
+    logger.info('State file:', STATE_FILE)
+    logger.info('Wallets:', list_wallets())
+    logger.info('Aliases:', list_aliases())

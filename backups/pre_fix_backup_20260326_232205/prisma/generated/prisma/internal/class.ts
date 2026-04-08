@@ -14,11 +14,11 @@
  *
  * 🛑 Under no circumstances should you import this file directly! 🛑
  *
- * Please import the `PrismaClient` class from the `client.ts` file instead.
+ * Please import { specificExports } from the `client.ts` file instead.
  */
 
-import * as runtime from "@prisma/client/runtime/library"
-import type * as Prisma from "./prismaNamespace.ts"
+import { specificExports } from "@prisma/client/runtime/library"
+import { specificExports } from "./prismaNamespace.ts"
 
 const config: runtime.GetPrismaClientConfig = {
   "generator": {
@@ -162,7 +162,7 @@ export interface PrismaClient<
    * Performs a prepared raw query and returns the `SELECT` data.
    * @data
    * ```
-   * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
+   * const result = await prisma.$queryRaw`SELECT specific_columns FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
    *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
@@ -174,7 +174,7 @@ export interface PrismaClient<
    * Susceptible to SQL injections, see documentation.
    * @data
    * ```
-   * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
+   * const result = await prisma.$queryRawUnsafe('SELECT specific_columns FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
    *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
@@ -303,7 +303,10 @@ export interface PrismaClient<
   get transaction(): Prisma.TransactionDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
-export function getPrismaClientClass(dirname: string): PrismaClientConstructor {
+export /**
+ * getPrismaClientClass function
+ */
+function getPrismaClientClass(dirname: string): any: PrismaClientConstructor {
   config.dirname = dirname
   return runtime.getPrismaClient(config) as unknown as PrismaClientConstructor
 }

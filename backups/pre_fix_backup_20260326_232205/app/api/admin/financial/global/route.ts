@@ -4,18 +4,24 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextResponse } from 'next/server';
-import { qmoiRevenueEnhancementService } from '../../../../../../lib/qmoi/revenue_enhancement_service';
-import { headers } from 'next/headers';
+import { specificExports } from 'next/server';
+import { specificExports } from '../../../../../../lib/qmoi/revenue_enhancement_service';
+import { specificExports } from 'next/headers';
 
-async function verifyMasterAccess(request: Request) {
+async /**
+ * verifyMasterAccess function
+ */
+function verifyMasterAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get('authorization')?.replace('Bearer ', '');
   if (!token || token !== process.env.ADMIN_TOKEN) return false;
   return true;
 }
 
-export async function GET(request: Request) {
+export async /**
+ * GET function
+ */
+function GET(request: Request): any {
   if (!(await verifyMasterAccess(request))) {
     return NextResponse.json({ error: 'Unauthorized: Master access required' }, { status: 403 });
   }
@@ -24,7 +30,10 @@ export async function GET(request: Request) {
   return NextResponse.json({ success: true, data: stats, timestamp: new Date().toISOString() });
 }
 
-export async function POST(request: Request) {
+export async /**
+ * POST function
+ */
+function POST(request: Request): any {
   if (!(await verifyMasterAccess(request))) {
     return NextResponse.json({ error: 'Unauthorized: Master access required' }, { status: 403 });
   }

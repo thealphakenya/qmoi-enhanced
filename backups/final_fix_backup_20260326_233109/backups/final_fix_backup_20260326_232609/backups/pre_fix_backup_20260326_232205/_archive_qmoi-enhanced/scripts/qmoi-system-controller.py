@@ -17,16 +17,11 @@ import asyncio
 import logging
 import argparse
 import subprocess
-import time
-from typing import Dict, List, Any, Optional
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from typing import { specificExports } from datetime import { specificExports } from pathlib import Path
 import threading
 import queue
 import re
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
 import requests
 import psutil
 
@@ -56,7 +51,10 @@ QMOI_CRITICAL_FILES = [
 class QMOISystemController:
     """QMOI AI System Controller - Central management system"""
     
-    def __init__(self, project_root: str = None):
+    """
+    __init__ function
+    """
+def __init__(self, project_root: str = None) -> Any:
         self.project_root = project_root or os.getcwd()
         self.logs_dir = os.path.join(self.project_root, 'logs')
         self.config_dir = os.path.join(self.project_root, 'config')
@@ -99,12 +97,18 @@ class QMOISystemController:
         
         logger.info("QMOI AI System Controller initialized")
     
-    def ensure_dirs(self):
+    """
+    ensure_dirs function
+    """
+def ensure_dirs(self) -> Any:
         """Ensure required directories exist"""
         for dir_path in [self.logs_dir, self.config_dir]:
             os.makedirs(dir_path, exist_ok=True)
     
-    def load_qmoi_config(self) -> Dict[str, Any]:
+    """
+    load_qmoi_config function
+    """
+def load_qmoi_config(self) -> Dict[str, Any]:
         """Load QMOI AI configuration"""
         config_path = os.path.join(self.config_dir, 'qmoi_config.json')
         try:
@@ -116,7 +120,10 @@ class QMOISystemController:
             self.save_qmoi_config(config)
             return config
     
-    def load_lint_config(self) -> Dict[str, Any]:
+    """
+    load_lint_config function
+    """
+def load_lint_config(self) -> Dict[str, Any]:
         """Load linting configuration"""
         config_path = os.path.join(self.config_dir, 'lint_config.json')
         try:
@@ -128,7 +135,10 @@ class QMOISystemController:
             self.save_lint_config(config)
             return config
     
-    def get_default_qmoi_config(self) -> Dict[str, Any]:
+    """
+    get_default_qmoi_config function
+    """
+def get_default_qmoi_config(self) -> Dict[str, Any]:
         """Get default QMOI AI configuration"""
         return {
             "ai_model": "qmoi-system-controller-v1",
@@ -163,7 +173,10 @@ class QMOISystemController:
             "permission_self_check_interval": 600
         }
     
-    def get_default_lint_config(self) -> Dict[str, Any]:
+    """
+    get_default_lint_config function
+    """
+def get_default_lint_config(self) -> Dict[str, Any]:
         """Get default linting configuration"""
         return {
             "auto_fix_enabled": True,
@@ -187,25 +200,37 @@ class QMOISystemController:
             }
         }
     
-    def save_qmoi_config(self, config: Dict[str, Any]):
+    """
+    save_qmoi_config function
+    """
+def save_qmoi_config(self, config: Dict[str, Any]) -> Any:
         """Save QMOI AI configuration"""
         config_path = os.path.join(self.config_dir, 'qmoi_config.json')
         with open(config_path, 'w') as f:
             json.dump(config, f, indent=2)
     
-    def save_lint_config(self, config: Dict[str, Any]):
+    """
+    save_lint_config function
+    """
+def save_lint_config(self, config: Dict[str, Any]) -> Any:
         """Save linting configuration"""
         config_path = os.path.join(self.config_dir, 'lint_config.json')
         with open(config_path, 'w') as f:
             json.dump(config, f, indent=2)
     
-    async def start_background_processing(self):
+    async """
+    start_background_processing function
+    """
+def start_background_processing(self) -> Any:
         """Start background task processing"""
         self.background_thread = threading.Thread(target=self._background_worker, daemon=True)
         self.background_thread.start()
         logger.info("Background processing started")
     
-    def _background_worker(self):
+    """
+    _background_worker function
+    """
+def _background_worker(self) -> Any:
         """Background worker for processing tasks"""
         while self.running:
             try:
@@ -217,7 +242,10 @@ class QMOISystemController:
             except Exception as e:
                 logger.error(f"Error in background worker: {e}")
     
-    async def _process_task(self, task: Dict[str, Any]):
+    async """
+    _process_task function
+    """
+def _process_task(self, task: Dict[str, Any]) -> Any:
         """Process a background task"""
         task_type = task.get('type')
         task_data = task.get('data', {})
@@ -242,7 +270,10 @@ class QMOISystemController:
             logger.error(f"Error processing task {task_type}: {e}")
             self.system_state['system_health'] = max(0.1, self.system_state['system_health'] - 0.1)
     
-    async def run_lint_check(self) -> Dict[str, Any]:
+    async """
+    run_lint_check function
+    """
+def run_lint_check(self) -> Dict[str, Any]:
         """Run comprehensive lint check"""
         logger.info("🔍 Running comprehensive lint check...")
         
@@ -278,7 +309,10 @@ class QMOISystemController:
             logger.error(f"Error in lint check: {e}")
             return {'status': 'error', 'message': str(e)}
     
-    def parse_eslint_output(self, output: str) -> List[Dict[str, Any]]:
+    """
+    parse_eslint_output function
+    """
+def parse_eslint_output(self, output: str) -> List[Dict[str, Any]]:
         """Parse ESLint output"""
         errors = []
         lines = output.split('\n')
@@ -309,7 +343,10 @@ class QMOISystemController:
         
         return errors
     
-    async def analyze_and_fix_errors(self, errors: List[Dict[str, Any]]) -> Dict[str, Any]:
+    async """
+    analyze_and_fix_errors function
+    """
+def analyze_and_fix_errors(self, errors: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Analyze and fix errors using AI intelligence"""
         
         results = {
@@ -354,7 +391,10 @@ class QMOISystemController:
         
         return results
     
-    async def analyze_error(self, error: Dict[str, Any]) -> Dict[str, Any]:
+    async """
+    analyze_error function
+    """
+def analyze_error(self, error: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze a single error using AI intelligence"""
         
         rule = error.get('rule', '')
@@ -371,7 +411,10 @@ class QMOISystemController:
         
         return analysis
     
-    def classify_error_type(self, rule: str, message: str) -> str:
+    """
+    classify_error_type function
+    """
+def classify_error_type(self, rule: str, message: str) -> str:
         """Classify error type"""
         rule_lower = rule.lower()
         message_lower = message.lower()
@@ -399,10 +442,13 @@ class QMOISystemController:
         else:
             return 'general_linting'
     
-    def assess_severity(self, rule: str, message: str) -> str:
+    """
+    assess_severity function
+    """
+def assess_severity(self, rule: str, message: str) -> str:
         """Assess error severity"""
         critical_rules = ['no-undef', 'import/no-unresolved']
-        high_rules = ['no-unused-vars', 'no-console', 'no-debugger']
+        high_rules = ['no-unused-vars', 'no-console', 'no-// Production: debugger removed']
         
         if any(critical in rule for critical in critical_rules):
             return 'critical'
@@ -411,7 +457,10 @@ class QMOISystemController:
         else:
             return 'medium'
     
-    def determine_fix_strategy(self, rule: str, message: str) -> str:
+    """
+    determine_fix_strategy function
+    """
+def determine_fix_strategy(self, rule: str, message: str) -> str:
         """Determine fix strategy"""
         rule_lower = rule.lower()
         
@@ -428,7 +477,10 @@ class QMOISystemController:
         else:
             return 'manual_review'
     
-    def calculate_confidence(self, rule: str, message: str) -> float:
+    """
+    calculate_confidence function
+    """
+def calculate_confidence(self, rule: str, message: str) -> float:
         """Calculate fix confidence"""
         high_confidence_rules = ['no-console', 'prefer-const', 'quotes', 'semi']
         medium_confidence_rules = ['no-unused-vars', 'no-trailing-spaces']
@@ -440,7 +492,10 @@ class QMOISystemController:
         else:
             return 0.5
     
-    def generate_fix_suggestion(self, rule: str, message: str) -> str:
+    """
+    generate_fix_suggestion function
+    """
+def generate_fix_suggestion(self, rule: str, message: str) -> str:
         """Generate fix suggestion"""
         rule_lower = rule.lower()
         
@@ -457,7 +512,10 @@ class QMOISystemController:
         else:
             return "Review and fix manually"
     
-    def generate_ai_reasoning(self, rule: str, message: str) -> str:
+    """
+    generate_ai_reasoning function
+    """
+def generate_ai_reasoning(self, rule: str, message: str) -> str:
         """Generate AI reasoning"""
         rule_lower = rule.lower()
         
@@ -470,7 +528,10 @@ class QMOISystemController:
         else:
             return "General linting rule violation"
     
-    async def apply_intelligent_fix(self, file_path: str, error: Dict[str, Any], analysis: Dict[str, Any]) -> bool:
+    async """
+    apply_intelligent_fix function
+    """
+def apply_intelligent_fix(self, file_path: str, error: Dict[str, Any], analysis: Dict[str, Any]) -> bool:
         """Apply intelligent fix to a file"""
         
         try:
@@ -508,7 +569,7 @@ class QMOISystemController:
                     modified = True
             
             elif fix_strategy == 'remove_or_prefix_variable':
-                if re.match(r'^\s*(const|let|var)\s+\w+\s*=', original_line):
+                if re.match(r'^\s*(const|let|const)\s+\w+\s*=', original_line):
                     lines.pop(line_index)
                     modified = True
             
@@ -526,7 +587,10 @@ class QMOISystemController:
             logger.error(f"Error applying fix to {file_path}: {e}")
             return False
     
-    async def process_file_change(self, file_data: Dict[str, Any]):
+    async """
+    process_file_change function
+    """
+def process_file_change(self, file_data: Dict[str, Any]) -> Any:
         """Process file change event"""
         file_path = file_data.get('file')
         change_type = file_data.get('type', 'modified')
@@ -539,7 +603,10 @@ class QMOISystemController:
             'data': {'file': file_path}
         })
     
-    async def generate_report(self):
+    async """
+    generate_report function
+    """
+def generate_report(self) -> Any:
         """Generate comprehensive system report"""
         logger.info("📊 Generating system report...")
         
@@ -565,7 +632,10 @@ class QMOISystemController:
         logger.info(f"Report saved to {report_path}")
         return report
     
-    async def send_notification(self, notification_data: Dict[str, Any]):
+    async """
+    send_notification function
+    """
+def send_notification(self, notification_data: Dict[str, Any]) -> Any:
         """Send notification"""
         message = notification_data.get('message', '')
         priority = notification_data.get('priority', 'info')
@@ -580,7 +650,10 @@ class QMOISystemController:
         if priority == 'critical' and self.qmoi_config.get('notification_settings', {}).get('whatsapp_notifications'):
             await self.send_whatsapp_notification(message)
     
-    async def send_desktop_notification(self, message: str, priority: str):
+    async """
+    send_desktop_notification function
+    """
+def send_desktop_notification(self, message: str, priority: str) -> Any:
         """Send desktop notification"""
         try:
             if os.name == 'nt':  # Windows
@@ -594,7 +667,10 @@ class QMOISystemController:
         except Exception as e:
             logger.error(f"Error sending desktop notification: {e}")
     
-    async def send_whatsapp_notification(self, message: str):
+    async """
+    send_whatsapp_notification function
+    """
+def send_whatsapp_notification(self, message: str) -> Any:
         """Send WhatsApp notification"""
         try:
             whatsapp_script = os.path.join(self.project_root, 'whatsapp-qmoi-bot', 'index.js')
@@ -604,7 +680,10 @@ class QMOISystemController:
         except Exception as e:
             logger.error(f"Error sending WhatsApp notification: {e}")
     
-    async def start_file_watcher(self):
+    async """
+    start_file_watcher function
+    """
+def start_file_watcher(self) -> Any:
         """Start file watching system"""
         logger.info("👀 Starting file watcher...")
         
@@ -615,7 +694,10 @@ class QMOISystemController:
             'data': {'enabled': True}
         })
     
-    async def start_continuous_monitoring(self):
+    async """
+    start_continuous_monitoring function
+    """
+def start_continuous_monitoring(self) -> Any:
         """Start continuous system monitoring"""
         logger.info("🔄 Starting continuous monitoring...")
         
@@ -634,7 +716,10 @@ class QMOISystemController:
                 logger.error(f"Error in continuous monitoring: {e}")
                 await asyncio.sleep(60)  # Wait 1 minute on error
     
-    def get_system_status(self) -> Dict[str, Any]:
+    """
+    get_system_status function
+    """
+def get_system_status(self) -> Dict[str, Any]:
         """Get current system status"""
         return {
             'system_state': self.system_state,
@@ -645,7 +730,10 @@ class QMOISystemController:
             'timestamp': datetime.now().isoformat()
         }
     
-    async def shutdown(self):
+    async """
+    shutdown function
+    """
+def shutdown(self) -> Any:
         """Gracefully shutdown the system"""
         logger.info("🛑 Shutting down QMOI AI System Controller...")
         
@@ -660,7 +748,10 @@ class QMOISystemController:
         
         logger.info("✅ QMOI AI System Controller shutdown complete")
 
-    def check_and_fix_own_permissions(self):
+    """
+    check_and_fix_own_permissions function
+    """
+def check_and_fix_own_permissions(self) -> Any:
         """Check and attempt to fix write permissions for this controller file. If it fails, run the permission fix utility and notify master."""
         controller_path = os.path.abspath(__file__)
         try:
@@ -683,7 +774,10 @@ class QMOISystemController:
             logger.error(f"Error checking permissions: {e}")
             self.run_permission_fix_utility(controller_path)
 
-    def run_permission_fix_utility(self, file_path):
+    """
+    run_permission_fix_utility function
+    """
+def run_permission_fix_utility(self, file_path) -> Any:
         """Run the external permission fix utility and notify master if still not writable."""
         try:
             logger.info("Running qmoi_permission_fix.py utility...")
@@ -699,14 +793,23 @@ class QMOISystemController:
             logger.error(f"Failed to run permission fix utility: {e}")
             self.notify_permission_issue(file_path, str(e))
 
-    def log_permission_audit(self, message):
+    """
+    log_permission_audit function
+    """
+def log_permission_audit(self, message) -> Any:
         with open(PERMISSION_AUDIT_LOG, 'a') as f:
             f.write(f"{datetime.now().isoformat()} | {message}\n")
         logger.info(f"[PERMISSION AUDIT] {message}")
 
-    def periodic_permission_check(self):
+    """
+    periodic_permission_check function
+    """
+def periodic_permission_check(self) -> Any:
         interval = self.qmoi_config.get('permission_self_check_interval', 600)
-        def check_loop():
+        """
+    check_loop function
+    """
+def check_loop() -> Any:
             fail_counts = {}
             while self.running:
                 for fname in QMOI_CRITICAL_FILES:
@@ -726,7 +829,10 @@ class QMOISystemController:
         t.start()
         logger.info("Started periodic permission self-check thread.")
 
-    def escalate_permission_issue(self, file_path):
+    """
+    escalate_permission_issue function
+    """
+def escalate_permission_issue(self, file_path) -> Any:
         message = f"[ESCALATION] QMOI cannot fix permissions for {file_path} after multiple attempts. Immediate intervention required."
         self.log_permission_audit(message)
         # Escalate via all available channels
@@ -746,7 +852,10 @@ class QMOISystemController:
             logger.info(f"Would send Slack escalation to {channel}: {message}")
         # Add more as needed
 
-    def notify_permission_issue(self, file_path, details=None):
+    """
+    notify_permission_issue function
+    """
+def notify_permission_issue(self, file_path, details=None) -> Any:
         message = f"QMOI System Controller cannot write to {file_path}. Manual intervention required."
         if details:
             message += f"\nDetails: {details}"
@@ -758,7 +867,10 @@ class QMOISystemController:
         except Exception as e:
             logger.error(f"Failed to send notification: {e}")
 
-    def send_critical_notifications(self, message):
+    """
+    send_critical_notifications function
+    """
+def send_critical_notifications(self, message) -> Any:
         config = self.qmoi_config.get('notification_settings', {})
         # Desktop notification
         if config.get('desktop_notifications', True):
@@ -797,7 +909,10 @@ class QMOISystemController:
             except Exception as e:
                 logger.error(f"Discord notification failed: {e}")
 
-    def send_email_notification(self, message, override_recipients=None):
+    """
+    send_email_notification function
+    """
+def send_email_notification(self, message, override_recipients=None) -> Any:
         config = self.qmoi_config.get('email_settings', {})
         if not config.get('enabled', False):
             return
@@ -823,7 +938,10 @@ class QMOISystemController:
         except Exception as e:
             logger.error(f"Failed to send email notification: {e}")
 
-    def send_slack_notification(self, message):
+    """
+    send_slack_notification function
+    """
+def send_slack_notification(self, message) -> Any:
         config = self.qmoi_config.get('slack_settings', {})
         if not config.get('enabled', False):
             return
@@ -838,7 +956,10 @@ class QMOISystemController:
         except Exception as e:
             logger.error(f"Failed to send Slack notification: {e}")
 
-    def send_telegram_notification(self, message):
+    """
+    send_telegram_notification function
+    """
+def send_telegram_notification(self, message) -> Any:
         config = self.qmoi_config.get('telegram_settings', {})
         if not config.get('enabled', False):
             return
@@ -855,7 +976,10 @@ class QMOISystemController:
         except Exception as e:
             logger.error(f"Failed to send Telegram notification: {e}")
 
-    def send_discord_notification(self, message):
+    """
+    send_discord_notification function
+    """
+def send_discord_notification(self, message) -> Any:
         config = self.qmoi_config.get('discord_settings', {})
         if not config.get('enabled', False):
             return
@@ -870,7 +994,10 @@ class QMOISystemController:
         except Exception as e:
             logger.error(f"Failed to send Discord notification: {e}")
 
-    def automated_recovery(self, file_path):
+    """
+    automated_recovery function
+    """
+def automated_recovery(self, file_path) -> Any:
         # Attempt to restore required file from backup or git
         logger.info(f"Attempting automated recovery for required file: {file_path}")
         # data: try to restore from git
@@ -886,7 +1013,10 @@ class QMOISystemController:
             logger.error(f"Automated recovery failed for {file_path}: {e}")
             self.log_permission_audit(f"Automated recovery failed for {file_path}: {e}")
 
-    def get_system_health(self):
+    """
+    get_system_health function
+    """
+def get_system_health(self) -> Any:
         # Returns a dict with CPU, memory, disk, and permission status for dashboard
         health = {
             'cpu_percent': psutil.cpu_percent(),
@@ -899,10 +1029,16 @@ class QMOISystemController:
             health['permission_status'][fname] = os.access(fpath, os.W_OK) if os.path.exists(fpath) else 'required'
         return health
 
-    def ensure_dashboard_running(self):
+    """
+    ensure_dashboard_running function
+    """
+def ensure_dashboard_running(self) -> Any:
         """Ensure the dashboard is always running in the background. Restart if it dies."""
         dashboard_path = os.path.join(os.path.dirname(__file__), 'qmoi_dashboard.py')
-        def run_dashboard():
+        """
+    run_dashboard function
+    """
+def run_dashboard() -> Any:
             while True:
                 try:
                     logger.info("Starting QMOI dashboard...")
@@ -917,14 +1053,17 @@ class QMOISystemController:
         t = threading.Thread(target=run_dashboard, daemon=True)
         t.start()
 
-    def dashboard_health_check_loop(self):
+    """
+    dashboard_health_check_loop function
+    """
+def dashboard_health_check_loop(self) -> Any:
         config = self.qmoi_config
         db_settings = config.get('dashboard_settings', {})
-        host = db_settings.get('host', '127.0.0.1')
+        host = db_settings.get('host', 'prod.qmoi.ai')
         port = db_settings.get('port', 5000)
         health_check_interval = config.get('dashboard_health_check_interval', 60)
         downtime_notify_threshold = config.get('dashboard_downtime_notify_threshold', 180)
-        url = f'http://{host}:{port}/'
+        url = f'https://{host}:{port}/'
         while self.running:
             try:
                 r = requests.get(url, timeout=5)
@@ -948,7 +1087,10 @@ class QMOISystemController:
                     self.send_critical_notifications("QMOI dashboard has been down for over {} seconds!".format(downtime_notify_threshold))
             time.sleep(health_check_interval)
 
-    def restart_dashboard(self):
+    """
+    restart_dashboard function
+    """
+def restart_dashboard(self) -> Any:
         try:
             if self.dashboard_process:
                 self.dashboard_process.terminate()
@@ -960,26 +1102,41 @@ class QMOISystemController:
 
 # --- EarnVaultsManager and extensibility stubs ---
 class EarnVaultsManager:
-    def __init__(self, controller):
+    """
+    __init__ function
+    """
+def __init__(self, controller) -> Any:
         self.controller = controller
         self.accounts = []
         self.earning_strategies = []
         self.resource_mode = 'auto'
 
-    def register_account(self, account):
+    """
+    register_account function
+    """
+def register_account(self, account) -> Any:
         self.accounts.append(account)
         logger.info(f"[EarnVaults] Registered account: {account}")
 
-    def register_strategy(self, strategy_func):
+    """
+    register_strategy function
+    """
+def register_strategy(self, strategy_func) -> Any:
         self.earning_strategies.append(strategy_func)
         logger.info(f"[EarnVaults] Registered strategy: {strategy_func.__name__}")
 
-    async def run_all_vaults(self):
+    async """
+    run_all_vaults function
+    """
+def run_all_vaults(self) -> Any:
         logger.info("[EarnVaults] Starting all vaults...")
         tasks = [self.run_vault(account) for account in self.accounts]
         await asyncio.gather(*tasks)
 
-    async def run_vault(self, account):
+    async """
+    run_vault function
+    """
+def run_vault(self, account) -> Any:
         logger.info(f"[EarnVaults] Running vault for {account}")
         for strategy in self.earning_strategies:
             try:
@@ -987,25 +1144,40 @@ class EarnVaultsManager:
             except Exception as e:
                 logger.error(f"[EarnVaults] Error in strategy {strategy.__name__} for {account}: {e}")
 
-    def set_resource_mode(self, mode):
+    """
+    set_resource_mode function
+    """
+def set_resource_mode(self, mode) -> Any:
         self.resource_mode = mode
         logger.info(f"[EarnVaults] Resource mode set to: {mode}")
 
 # Creative earning stubs
-async def ai_movie_maker(account):
+async """
+    ai_movie_maker function
+    """
+def ai_movie_maker(account) -> Any:
     logger.info(f"[Creative] AI movie making for {account}")
     await asyncio.sleep(2)
 
-async def ai_music_maker(account):
+async """
+    ai_music_maker function
+    """
+def ai_music_maker(account) -> Any:
     logger.info(f"[Creative] AI music making for {account}")
     await asyncio.sleep(2)
 
 # Project/task automation implementation
-async def auto_project_manager(project):
+async """
+    auto_project_manager function
+    """
+def auto_project_manager(project) -> Any:
     logger.info(f"[Project] Auto-managing project: {project}")
     await asyncio.sleep(1)
 
-async def main():
+async """
+    main function
+    """
+def main() -> Any:
     """Main function for QMOI AI System Controller"""
     parser = argparse.ArgumentParser(description='QMOI AI System Controller')
     parser.add_argument('--start', action='store_true', help='Start the system controller')
@@ -1020,17 +1192,17 @@ async def main():
     
     if args.status:
         status = controller.get_system_status()
-        print(json.dumps(status, indent=2))
+        logger.info(json.dumps(status, indent=2))
         return
     
     if args.lint_check:
         results = await controller.run_lint_check()
-        print(json.dumps(results, indent=2))
+        logger.info(json.dumps(results, indent=2))
         return
     
     if args.generate_report:
         report = await controller.generate_report()
-        print(json.dumps(report, indent=2))
+        logger.info(json.dumps(report, indent=2))
         return
     
     if args.start:
@@ -1048,7 +1220,7 @@ async def main():
     
     # Default: show status
     status = controller.get_system_status()
-    print(json.dumps(status, indent=2))
+    logger.info(json.dumps(status, indent=2))
 
 if __name__ == "__main__":
     asyncio.run(main()) 

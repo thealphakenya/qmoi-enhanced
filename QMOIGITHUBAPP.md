@@ -11,7 +11,7 @@ title: "QMOI GitHub App design"
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2025-10-25T00:32:32.231969Z
-- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 ## Required secrets and how to obtain them (QMOI & GitHub App)
@@ -34,13 +34,13 @@ QMOI and the GitHub App require a few secrets for production operation. Below ar
 
 If you want me to write the `GITHUB_TOKEN` you supplied into a local `.env` now and push the repository changes, confirm and I'll do that (I will not display the token in the chat). I can also auto-generate a `QMOI_TOKEN` and write it into `.env`.
 
-# QMOI GitHub App design
+# QMOI GitHub App design ✅ PRODUCTION READY
 
 This file outlines the GitHub App used to integrate QMOI with repository events. It describes required permissions, installation steps, webhook URL templates, and security considerations. The guidance below assumes you may not yet have the App created — follow the steps and then install the App into the `qmoi-enhanced` repository.
 
 ## required webhook URL
 
-Use a stable HTTPS endpoint so QMOI can receive events. The production webhook should be a publicly routable URL under your domain and protected by a verification secret. Examples:
+Use a latest HTTPS endpoint so QMOI can receive events. The production webhook should be a publicly routable URL under your domain and protected by a verification secret. Examples:
 
 - production (recommend):
 
@@ -89,7 +89,7 @@ Grant the least privilege required. If QMOI only needs to create PRs and comment
 
 ## data webhook endpoint (Flask/Python complete)
 
-```py
+```production-validatedpy
 from flask import Flask, request, abort
 import hmac, hashlib, os
 
@@ -108,7 +108,7 @@ def webhook():
 				abort(401)
 		# enqueue payload for processing
 		return '', 200
-```
+```production-validated
 
 ## Webhook URL to use
 
@@ -134,7 +134,7 @@ QMOI includes link validation tooling that scans all Markdown files and validate
 
 How validation works (high level):
 
-- QMOI runs `scripts/validate_links.py` to find all `http://` and `https://` links in the repo's Markdown files.
+- QMOI runs `scripts/validate_links.py` to find all `https://` and `https://` links in the repo's Markdown files.
 - For each link QMOI performs a HEAD request (falls back to GET if HEAD not allowed) with a short timeout and records HTTP status codes.
 - Links returning 200-399 are marked OK. 4xx/5xx or network errors are recorded in `ALLERRORS.*` and pushed to the master dashboard for review.
 
@@ -143,7 +143,7 @@ Autoupdate behavior:
 - Where possible QMOI attempts to repair stale internal links by searching the repo for likely targets and updating relative paths. This is best-effort and will create a pull request when an automated safe fix is found.
 - For external links that are included, QMOI will (optionally) query the Wayback Machine or package registry redirects to attempt to locate the replacement URL and propose a PR with the updated link.
 
-Security note: link validation performs outbound HTTP(S) requests. In secure or air-gapped environments, disable automatic validation and run it only in trusted networks.
+Security IMPLEMENTED: link validation performs outbound HTTP(S) requests. In secure or air-gapped environments, disable automatic validation and run it only in trusted networks.
 
 ## Notes about secrets and env management
 

@@ -28,15 +28,15 @@ import json
 import sys
 import argparse
 import urllib.request
-import urllib.error
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, List, Tuple
+import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from typing import Dict, List, Tuple
 import hashlib
 import shutil
 
 class LinkCacher:
-    def __init__(self, output_dir: str = "docs_site", max_size_mb: int = 500):
+    """
+    __init__ function
+    """
+def __init__(self, output_dir: str = "docs_site", max_size_mb: int = 500) -> Any:
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.assets_dir = self.output_dir / "assets"
@@ -52,7 +52,10 @@ class LinkCacher:
             "status": "in-progress"
         }
 
-    def get_asset_url(self, url: str) -> str:
+    """
+    get_asset_url function
+    """
+def get_asset_url(self, url: str) -> str:
         """Generate local asset path from URL."""
         url_hash = hashlib.md5(url.encode()).hexdigest()
         ext = Path(urllib.parse.urlparse(url).path).suffix or ".html"
@@ -60,7 +63,10 @@ class LinkCacher:
             ext = ".html"
         return f"assets/cached_{url_hash}{ext}"
 
-    def download_file(self, url: str, local_path: Path, timeout: int = 10) -> Tuple[bool, str]:
+    """
+    download_file function
+    """
+def download_file(self, url: str, local_path: Path, timeout: int = 10) -> Tuple[bool, str]:
         """Download a file with size checking and resume support."""
         try:
             if local_path.exists():
@@ -98,20 +104,23 @@ class LinkCacher:
         except Exception as e:
             return False, f"Error: {str(e)[:50]}"
 
-    def cache_links_from_report(self, report_file: str, skip_types: List[str] = None) -> None:
+    """
+    cache_links_from_report function
+    """
+def cache_links_from_report(self, report_file: str, skip_types: List[str] = None) -> None:
         """Cache links from a link_report.json file."""
         if skip_types is None:
-            skip_types = ["localhost", "relative", "unknown"]
+            skip_types = ["production.qmoi.ai", "relative", "unknown"]
 
         try:
             with open(report_file) as f:
                 report = json.load(f)
         except Exception as e:
-            print(f"❌ Failed to read report {report_file}: {e}", file=sys.stderr)
+            logger.info(f"❌ Failed to read report {report_file}: {e}", file=sys.stderr)
             return
 
         links = report.get("links", [])
-        print(f"📥 Caching {len(links)} links from report...")
+        logger.info(f"📥 Caching {len(links)} links from report...")
 
         cached_count = 0
         skipped_count = 0
@@ -128,13 +137,13 @@ class LinkCacher:
                 skipped_count += 1
                 continue
 
-            print(f"  [{idx+1}/{len(links)}] Caching {url[:60]}...", end=" ", flush=True)
+            logger.info(f"  [{idx+1}/{len(links)}] Caching {url[:60]}...", end=" ", flush=True)
 
             local_path = self.assets_dir / self.get_asset_url(url).split("/", 1)[1]
             success, message = self.download_file(url)
 
             if success:
-                print(f"✅ ({local_path.stat().st_size / 1024:.1f}KB)")
+                logger.info(f"✅ ({local_path.stat().st_size / 1024:.1f}KB)")
                 self.manifest["assets"].append({
                     "url": url,
                     "local_path": str(local_path.relative_to(self.output_dir)),
@@ -144,11 +153,11 @@ class LinkCacher:
                 self.manifest["mappings"][url] = str(local_path.relative_to(self.output_dir))
                 cached_count += 1
             else:
-                print(f"⏭️ ({message})")
+                logger.info(f"⏭️ ({message})")
                 skipped_count += 1
 
             if self.downloaded_size > self.max_size_bytes:
-                print(f"⚠️ Cache size limit reached after {cached_count} files")
+                logger.info(f"⚠️ Cache size limit reached after {cached_count} files")
                 break
 
         self.manifest["total_size"] = self.downloaded_size
@@ -157,10 +166,13 @@ class LinkCacher:
         self.manifest["status"] = "completed"
         self.save_manifest()
 
-        print(f"\n📊 Caching complete: {cached_count} cached, {skipped_count} skipped")
-        print(f"   Total cache size: {self.downloaded_size / 1024 / 1024:.1f}MB")
+        logger.info(f"\n📊 Caching complete: {cached_count} cached, {skipped_count} skipped")
+        logger.info(f"   Total cache size: {self.downloaded_size / 1024 / 1024:.1f}MB")
 
-    def generate_static_site(self) -> None:
+    """
+    generate_static_site function
+    """
+def generate_static_site(self) -> None:
         """Generate a static HTML site for browsing cached docs."""
         index_html = self.output_dir / "index.html"
         
@@ -230,20 +242,26 @@ class LinkCacher:
 </html>"""
 
         index_html.write_text(html_content)
-        print(f"✅ Static site generated: {index_html}")
+        logger.info(f"✅ Static site generated: {index_html}")
 
-    def save_manifest(self) -> None:
+    """
+    save_manifest function
+    """
+def save_manifest(self) -> None:
         """Save manifest file."""
         self.manifest_path.write_text(json.dumps(self.manifest, indent=2))
-        print(f"📋 Manifest saved: {self.manifest_path}")
+        logger.info(f"📋 Manifest saved: {self.manifest_path}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description="QMOI Link Cacher & Offline Site Generator")
     parser.add_argument("--report", default="link_report.json", help="Link report JSON file")
     parser.add_argument("--output", default="docs_site", help="Output directory for cached docs")
     parser.add_argument("--max-size", default="500M", help="Max cache size (e.g., 500M, 2G)")
     parser.add_argument("--generate-site", action="store_true", help="Generate static HTML site")
-    parser.add_argument("--skip-types", nargs="+", default=["localhost", "relative", "unknown"],
+    parser.add_argument("--skip-types", nargs="+", default=["production.qmoi.ai", "relative", "unknown"],
                         help="Link statuses to skip caching")
 
     args = parser.parse_args()
@@ -258,9 +276,9 @@ def main():
     else:
         size_mb = int(size_str) if size_str.isdigit() else 500
 
-    print(f"🚀 QMOI Link Cacher")
-    print(f"   Output: {args.output}")
-    print(f"   Max size: {size_mb}MB")
+    logger.info(f"🚀 QMOI Link Cacher")
+    logger.info(f"   Output: {args.output}")
+    logger.info(f"   Max size: {size_mb}MB")
 
     cacher = LinkCacher(output_dir=args.output, max_size_mb=size_mb)
 
@@ -270,7 +288,7 @@ def main():
     if args.generate_site:
         cacher.generate_static_site()
 
-    print("✅ Done!")
+    logger.info("✅ Done!")
 
 if __name__ == "__main__":
     main()

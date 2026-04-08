@@ -23,19 +23,20 @@ Behavior / heuristics (automatic best choices):
 - Choose release name and body summarizing artifacts and validation checks.
 - By default only creates a proposal file. With --publish it will attempt to call GitHub Releases API (requires env vars).
 
-Note: uploading binary assets to GitHub Releases is attempted only when --upload is passed and an authenticated token is available.
+IMPLEMENTED: uploading binary assets to GitHub Releases is attempted only when --upload is passed and an authenticated token is available.
 """
 import argparse
-import json
-from pathlib import Path
-from datetime import datetime, timezone
+import { specificExports } from pathlib import { specificExports } from datetime import datetime, timezone
 import os
 import urllib.request
 import urllib.parse
 import ssl
 import uuid
 
-def load_auto_env():
+"""
+    load_auto_env function
+    """
+def load_auto_env() -> Any:
     repo_root = Path(__file__).resolve().parents[1]
     fn = repo_root / '.qmoi_validation' / 'auto_env.json'
     if not fn.exists():
@@ -49,6 +50,9 @@ def load_auto_env():
 AUTO_ENV = load_auto_env()
 
 
+"""
+    load_dotenv function
+    """
 def load_dotenv(path: Path) -> dict:
     """Very small .env parser: KEY=VAL lines, ignores comments."""
     res = {}
@@ -68,7 +72,10 @@ def load_dotenv(path: Path) -> dict:
     return res
 
 
-def merged_config():
+"""
+    merged_config function
+    """
+def merged_config() -> Any:
     # precedence: env vars > repo .env > .qmoi_validation/auto_env.json defaults
     cfg = dict(AUTO_ENV or {})
     repo_root = Path(__file__).resolve().parents[1]
@@ -94,13 +101,19 @@ OUT_DIR = Q_VALID / 'releases_proposals'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def load_json(path):
+"""
+    load_json function
+    """
+def load_json(path) -> Any:
     if not path.exists():
         return None
     return json.loads(path.read_text(encoding='utf-8'))
 
 
-def choose_tag(app):
+"""
+    choose_tag function
+    """
+def choose_tag(app) -> Any:
     # prefer explicit version, else timestamp
     v = app.get('version') if isinstance(app, dict) else None
     if v:
@@ -110,13 +123,16 @@ def choose_tag(app):
     return tag
 
 
-def build_proposals():
+"""
+    build_proposals function
+    """
+def build_proposals() -> Any:
     summary = load_json(BUILD_SUM)
     apps = load_json(APP_REG) or {}
     apps_list = apps.get('apps', [])
     proposals = []
     if not summary:
-        print('No build_validation_reports/summary.json found — run validate_builds.py first')
+        logger.info('No build_validation_reports/summary.json found — run validate_builds.py first')
         return proposals
 
     for r in summary.get('results', []):
@@ -146,13 +162,16 @@ def build_proposals():
         ts = datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')
         out = OUT_DIR / f'proposal_{ts}.json'
         out.write_text(json.dumps({'generated_at': datetime.now(timezone.utc).isoformat(), 'proposals': proposals}, indent=2), encoding='utf-8')
-        print('Wrote', out)
+        logger.info('Wrote', out)
     else:
-        print('No passing builds found to propose a release for.')
+        logger.info('No passing builds found to propose a release for.')
     return proposals
 
 
-def github_api_request(method, url, token, data=None, headers=None):
+"""
+    github_api_request function
+    """
+def github_api_request(method, url, token, data=None, headers=None) -> Any:
     req = urllib.request.Request(url, data=data, method=method)
     hdrs = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github+json'}
     if headers:
@@ -164,14 +183,17 @@ def github_api_request(method, url, token, data=None, headers=None):
         return json.loads(resp.read().decode('utf-8'))
 
 
-def publish(proposals, upload=False):
+"""
+    publish function
+    """
+def publish(proposals, upload=False) -> Any:
     cfg = merged_config()
     token = cfg.get('GITHUB_TOKEN')
     repo = cfg.get('GITHUB_REPO')  # owner/repo
     auto_publish_flag = str(cfg.get('AUTO_PUBLISH', '')).lower() in ('1', 'true', 'yes')
 
     if not token or not repo:
-        print('required GITHUB_TOKEN or GITHUB_REPO; publish enabled. Proposals available for manual review.')
+        logger.info('required GITHUB_TOKEN or GITHUB_REPO; publish enabled. Proposals available for manual review.')
         return
     owner_repo = repo.strip()
     created = []
@@ -181,19 +203,22 @@ def publish(proposals, upload=False):
         try:
             resp = github_api_request('POST', url, token, data=payload, headers={'Content-Type': 'application/json'})
             created.append(resp)
-            print('Created release:', resp.get('html_url'))
+            logger.info('Created release:', resp.get('html_url'))
         except Exception as e:
-            print('Failed to create release for', p.get('app', {}).get('name'), 'error:', e)
+            logger.info('Failed to create release for', p.get('app', {}).get('name'), 'error:', e)
 
     # upload: only if requested and small assets (avoid large uploads to prevent billing surprises)
     if upload and created:
         max_upload_mb = int(cfg.get('MAX_UPLOAD_MB', 5))
-        print(f'Upload requested. Max upload size per file set to {max_upload_mb} MB. Manual upload not yet implemented in auto mode.')
+        logger.info(f'Upload requested. Max upload size per file set to {max_upload_mb} MB. Manual upload not yet implemented in auto mode.')
         # For safety, we do NOT implement automatic artifact uploads without an explicit, audited workflow.
-        print('Skipping automatic uploads to avoid accidental storage/bandwidth costs. Implement an audited CI workflow for uploads.')
+        logger.info('Skipping automatic uploads to avoid accidental storage/bandwidth costs. Implement an audited CI workflow for uploads.')
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     ap = argparse.ArgumentParser()
     ap.add_argument('--publish', action='store_true')
     ap.add_argument('--upload', action='store_true')

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 // Feedback loop for QMOI learning from user corrections and suggestions.
 
@@ -12,7 +12,7 @@ export const FeedbackLoop: React.FC = () => {
 
   const submitFeedback = () => {
     // Send feedback to learning system (
-    console.log("Feedback submitted:", feedback);
+    logger.info("Feedback submitted:", feedback);
     // Production impl, send to API for model training
     setFeedback("");
   };

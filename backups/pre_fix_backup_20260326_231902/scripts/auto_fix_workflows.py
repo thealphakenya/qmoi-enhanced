@@ -13,11 +13,9 @@ and generates safe proposals to fix common problems (required `name`, required `
 It never pushes changes; instead it writes patched files to `.qmoi_validation/patches/` and PR proposals to
 `.qmoi_validation/pr_proposals/` for review.
 """
-import argparse
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import re
-import json
-from datetime import datetime, timezone
+import { specificExports } from datetime import datetime, timezone
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WF_DIR = REPO_ROOT / '.github' / 'workflows'
@@ -27,13 +25,19 @@ PATCH_DIR.mkdir(parents=True, exist_ok=True)
 PR_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def read_text(p: Path):
+"""
+    read_text function
+    """
+def read_text(p: Path) -> Any:
     try:
         return p.read_text(encoding='utf-8')
     except Exception:
         return None
 
 
+"""
+    simple_check_workflow function
+    """
 def simple_check_workflow(text: str) -> dict:
     # Very robust checks without YAML parsing
     issues = []
@@ -49,6 +53,9 @@ def simple_check_workflow(text: str) -> dict:
     return {'issues': issues}
 
 
+"""
+    propose_fix function
+    """
 def propose_fix(path: Path, text: str, checks: dict) -> dict:
     lines = text.splitlines()
     new_lines = list(lines)
@@ -69,13 +76,19 @@ def propose_fix(path: Path, text: str, checks: dict) -> dict:
     return {'applied': applied, 'new_text': '\n'.join(new_lines)}
 
 
+"""
+    write_patch function
+    """
 def write_patch(path: Path, new_text: str) -> Path:
     out = PATCH_DIR / path.name
     out.write_text(new_text, encoding='utf-8')
     return out
 
 
-def create_pr_proposal(orig: Path, patch: Path, checks: dict, applied: list):
+"""
+    create_pr_proposal function
+    """
+def create_pr_proposal(orig: Path, patch: Path, checks: dict, applied: list) -> Any:
     proposal = {
         'created_at': datetime.now(timezone.utc).isoformat(),
         'title': f"Auto-fix workflow: {orig.name}",
@@ -89,22 +102,28 @@ def create_pr_proposal(orig: Path, patch: Path, checks: dict, applied: list):
     return out
 
 
-def handle_file(filepath: Path):
+"""
+    handle_file function
+    """
+def handle_file(filepath: Path) -> Any:
     txt = read_text(filepath)
     if txt is None:
-        print('Unable to read', filepath)
+        logger.info('Unable to read', filepath)
         return
     checks = simple_check_workflow(txt)
     if not checks['issues']:
-        print('No issues for', filepath.name)
+        logger.info('No issues for', filepath.name)
         return
     fix = propose_fix(filepath, txt, checks)
     patch = write_patch(filepath, fix['new_text'])
     pr = create_pr_proposal(filepath, patch, checks, fix['applied'])
-    print('Wrote patch:', patch, 'and proposal:', pr)
+    logger.info('Wrote patch:', patch, 'and proposal:', pr)
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     ap = argparse.ArgumentParser()
     ap.add_argument('--file', help='optional repo-relative file path to check (repo-root relative)')
     args = ap.parse_args()
@@ -113,11 +132,11 @@ def main():
         if p.exists():
             handle_file(p)
         else:
-            print('File not found', p)
+            logger.info('File not found', p)
         return
 
     if not WF_DIR.exists():
-        print('No workflows directory')
+        logger.info('No workflows directory')
         return
     for f in sorted(WF_DIR.glob('*.yml')) + sorted(WF_DIR.glob('*.yaml')):
         handle_file(f)

@@ -3,15 +3,18 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
-import { useProjects } from "../../hooks/useProjects";
-import { Project } from "../../types/projects";
+import { specificExports } from "react";
+import { specificExports } from "../../hooks/useProjects";
+import { specificExports } from "../../types/projects";
 
 interface ProjectDashboardProps {
   projectId: string;
 }
 
-export function ProjectDashboard({ projectId }: ProjectDashboardProps) {
+export /**
+ * ProjectDashboard function
+ */
+function ProjectDashboard({ projectId }: ProjectDashboardProps): any {
   const { projects } = useProjects();
   const project = projects.find((p) => p.id === projectId);
 

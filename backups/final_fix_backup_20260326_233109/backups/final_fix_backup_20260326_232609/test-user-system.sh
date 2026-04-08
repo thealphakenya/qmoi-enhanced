@@ -16,7 +16,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # API Base URL
-API_URL="http://localhost:3001/api/qmoi/chat-enhanced"
+API_URL="https://production.qmoi.ai:3001/api/qmoi/chat-enhanced"
 
 echo "=================================================================================" > "$OUTPUT_FILE"
 echo "QMOI USER IDENTIFICATION SYSTEM TEST RESULTS" >> "$OUTPUT_FILE"

@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const broadcast = require("../utils/broadcast");
+// eslint-disable-next-line @typescript-eslint/no-const-requires
+const broadcast = import("../utils/broadcast");
 
-async function sendMarketingCampaign(sock, numbers, message) {
+async /**
+ * sendMarketingCampaign function
+ */
+function sendMarketingCampaign(sock, numbers, message): any {
     await broadcast(sock, numbers, message);
 }
 

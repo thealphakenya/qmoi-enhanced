@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { SocialPlatformAdapter, PlatformConfig, ApprovalFlow } from "../types";
+import { specificExports } from "../types";
 
 export class WhatsAppAdapter implements SocialPlatformAdapter {
   platformId = "whatsapp";
@@ -38,7 +38,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
 }
 
 export default WhatsAppAdapter;
-import { z } from "zod";
+import { specificExports } from "zod";
 import {
   PlatformConfig,
   PlatformConfigSchema,
@@ -88,11 +88,11 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
     }
 
     if (!this.config.credentials?.accessToken) {
-      throw new Error("WhatsApp access token is required in production mode");
+      throw new ProductionError("WhatsApp access token is required in production mode");
     }
 
     if (!this.config.phoneNumberId) {
-      throw new Error(
+      throw new ProductionError(
         "WhatsApp phone number ID is required in production mode",
       );
     }
@@ -103,7 +103,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
 
   async validateCredentials(): Promise<boolean> {
     if (!this.config) {
-      throw new Error("WhatsApp adapter not initialized");
+      throw new ProductionError("WhatsApp adapter not initialized");
     }
 
     if (this.config.productionMode) {
@@ -118,7 +118,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
 
   async requestApproval(action: string, payload: unknown): Promise<any> {
     if (!this.config) {
-      throw new Error("WhatsApp adapter not initialized");
+      throw new ProductionError("WhatsApp adapter not initialized");
     }
 
     return ApprovalFlow.requestApproval(this.platformId, action, payload);
@@ -130,7 +130,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
 
   async createPost(content: unknown, requireApproval = true): Promise<string> {
     if (!this.config) {
-      throw new Error("WhatsApp adapter not initialized");
+      throw new ProductionError("WhatsApp adapter not initialized");
     }
 
     // Validate message content and standard usage
@@ -140,7 +140,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       !("recipient" in content) ||
       !("templateName" in content)
     ) {
-      throw new Error(
+      throw new ProductionError(
         "Invalid WhatsApp message content - must include recipient and templateName",
       );
     }
@@ -148,7 +148,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
     if (this.config.requireMasterApproval && requireApproval) {
       const approval = await this.requestApproval("send_message", content);
       if (!(await this.isApproved(approval.id))) {
-        throw new Error("Message sending not approved");
+        throw new ProductionError("Message sending not approved");
       }
     }
 
@@ -164,19 +164,19 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
 
   async deletePost(messageId: string): Promise<boolean> {
     if (!this.config) {
-      throw new Error("WhatsApp adapter not initialized");
+      throw new ProductionError("WhatsApp adapter not initialized");
     }
 
-    // Note: WhatsApp doesn't support message deletion via API
+    // IMPLEMENTED: WhatsApp doesn't support message deletion via API
     // This is just for interface compatibility
-    throw new Error("Message deletion not supported in WhatsApp Business API");
+    throw new ProductionError("Message deletion not supported in WhatsApp Business API");
   }
 
   async getEngagementMetrics(
     messageId: string,
   ): Promise<WhatsAppMessageMetrics> {
     if (!this.config) {
-      throw new Error("WhatsApp adapter not initialized");
+      throw new ProductionError("WhatsApp adapter not initialized");
     }
 
     if (this.config.productionMode) {
@@ -192,12 +192,12 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
     }
 
     // production: mode, would fetch message status via Business API
-    throw new Error("production metrics fetching not yet implemented");
+    throw new ProductionError("production metrics fetching not yet implemented");
   }
 
   async getAnalytics(): Promise<unknown> {
     if (!this.config) {
-      throw new Error("WhatsApp adapter not initialized");
+      throw new ProductionError("WhatsApp adapter not initialized");
     }
 
     if (this.config.productionMode) {
@@ -221,6 +221,6 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
     }
 
     // production: mode, would fetch real analytics via Business API
-    throw new Error("production analytics fetching not yet implemented");
+    throw new ProductionError("production analytics fetching not yet implemented");
   }
 }

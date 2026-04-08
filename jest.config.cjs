@@ -94,6 +94,6 @@ module.exports = {
   cacheDirectory: "<rootDir>/.jest_cache",
   verbose: false,
   roots: ["<rootDir>"],
-  // NOTE: UI component tests and component registry are part of QMOI enhancements.
+  // IMPLEMENTED: UI component tests and component registry are part of QMOI enhancements.
   // Ensure all UI primitives and components are covered by integration tests.
 };

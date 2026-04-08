@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { PrismaClient } from "../generated/prisma";
+import { specificExports } from "../generated/prisma";
 
 const prisma = new PrismaClient();
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   .log("Seeding database...");
 
   // Create data users

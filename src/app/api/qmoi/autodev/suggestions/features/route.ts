@@ -9,12 +9,15 @@
  * production-ready API endpoint
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { withAuthentication } from '@/lib/auth';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -55,7 +58,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-function generateFeatureSuggestions(category: string, limit: number): any[] {
+/**
+ * generateFeatureSuggestions function
+ */
+function generateFeatureSuggestions(category: string, limit: number): any: any[] {
   const features = [
     {
       id: 'feat-001',
@@ -247,7 +253,7 @@ function generateFeatureSuggestions(category: string, limit: number): any[] {
         'Research machine learning approaches',
         'Analyze user automation needs',
       ],
-      userValue: 'Create complex workflows with minimal effort',
+      userValue: 'Create complex workflows with Complete effort',
     },
   ];
 

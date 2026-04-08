@@ -11,9 +11,7 @@ Ensures WhatsApp and Airtel Money numbers are properly saved across the system
 
 import json
 import os
-import sys
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 # Contact Information
 WHATSAPP_NUMBER = "+254786322855"
@@ -21,12 +19,18 @@ AIRTEL_MONEY_NUMBER = "+254786322855"
 MASTER_EMAIL = "rovicviccy@gmail.com"
 
 class QMOIContactVerifier:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.project_root = Path(__file__).parent.parent
         self.config_file = self.project_root / "config" / "qmoi_contact_config.json"
         self.verification_results = []
         
-    def load_contact_config(self):
+    """
+    load_contact_config function
+    """
+def load_contact_config(self) -> Any:
         """Load the contact configuration file"""
         try:
             if self.config_file.exists():
@@ -35,10 +39,13 @@ class QMOIContactVerifier:
             else:
                 return self.create_default_config()
         except Exception as e:
-            print(f"❌ Error loading contact config: {e}")
+            logger.info(f"❌ Error loading contact config: {e}")
             return None
     
-    def create_default_config(self):
+    """
+    create_default_config function
+    """
+def create_default_config(self) -> Any:
         """Create default contact configuration"""
         config = {
             "contact_information": {
@@ -95,7 +102,10 @@ class QMOIContactVerifier:
         
         return config
     
-    def verify_contact_files(self):
+    """
+    verify_contact_files function
+    """
+def verify_contact_files(self) -> Any:
         """Verify contact information in various files"""
         files_to_check = [
             "components/QIStateWindow.tsx",
@@ -105,16 +115,19 @@ class QMOIContactVerifier:
             "scripts/account_verification.py"
         ]
         
-        print("🔍 Verifying contact information in files...")
+        logger.info("🔍 Verifying contact information in files...")
         
         for file_path in files_to_check:
             full_path = self.project_root / file_path
             if full_path.exists():
                 self.verify_file_contacts(full_path)
             else:
-                print(f"⚠️  File not found: {file_path}")
+                logger.info(f"⚠️  File not found: {file_path}")
     
-    def verify_file_contacts(self, file_path):
+    """
+    verify_file_contacts function
+    """
+def verify_file_contacts(self, file_path) -> Any:
         """Verify contact information in a specific file"""
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -125,7 +138,7 @@ class QMOIContactVerifier:
             airtel_found = AIRTEL_MONEY_NUMBER in content
             
             status = "✅" if whatsapp_found and airtel_found else "❌"
-            print(f"{status} {file_path.name}")
+            logger.info(f"{status} {file_path.name}")
             
             if not whatsapp_found or not airtel_found:
                 self.verification_results.append({
@@ -143,17 +156,23 @@ class QMOIContactVerifier:
                 })
                 
         except Exception as e:
-            print(f"❌ Error reading {file_path.name}: {e}")
+            logger.info(f"❌ Error reading {file_path.name}: {e}")
     
-    def update_contact_files(self):
+    """
+    update_contact_files function
+    """
+def update_contact_files(self) -> Any:
         """Update contact information in files that need it"""
-        print("\n🔧 Updating contact information in files...")
+        logger.info("\n🔧 Updating contact information in files...")
         
         for result in self.verification_results:
             if result.get("needs_update", False):
                 self.update_file_contacts(result["file"])
     
-    def update_file_contacts(self, file_path):
+    """
+    update_file_contacts function
+    """
+def update_file_contacts(self, file_path) -> Any:
         """Update contact information in a specific file"""
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -185,12 +204,15 @@ class QMOIContactVerifier:
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             
-            print(f"✅ Updated: {Path(file_path).name}")
+            logger.info(f"✅ Updated: {Path(file_path).name}")
             
         except Exception as e:
-            print(f"❌ Error updating {Path(file_path).name}: {e}")
+            logger.info(f"❌ Error updating {Path(file_path).name}: {e}")
     
-    def create_contact_backup(self):
+    """
+    create_contact_backup function
+    """
+def create_contact_backup(self) -> Any:
         """Create a backup of current contact information"""
         backup_file = self.project_root / "logs" / "contact_backup.json"
         backup_file.parent.mkdir(exist_ok=True)
@@ -206,9 +228,12 @@ class QMOIContactVerifier:
         with open(backup_file, 'w') as f:
             json.dump(backup_data, f, indent=2)
         
-        print(f"💾 Contact backup created: {backup_file}")
+        logger.info(f"💾 Contact backup created: {backup_file}")
     
-    def generate_contact_report(self):
+    """
+    generate_contact_report function
+    """
+def generate_contact_report(self) -> Any:
         """Generate a comprehensive contact report"""
         report_file = self.project_root / "logs" / "contact_verification_report.md"
         report_file.parent.mkdir(exist_ok=True)
@@ -250,17 +275,20 @@ The contact information is properly saved in:
         with open(report_file, 'w') as f:
             f.write(report)
         
-        print(f"📄 Contact report generated: {report_file}")
+        logger.info(f"📄 Contact report generated: {report_file}")
     
-    def run_verification(self):
+    """
+    run_verification function
+    """
+def run_verification(self) -> Any:
         """Run the complete contact verification process"""
-        print("🔍 QMOI Contact Information Verifier")
-        print("=" * 50)
+        logger.info("🔍 QMOI Contact Information Verifier")
+        logger.info("=" * 50)
         
         # Load or create contact configuration
         config = self.load_contact_config()
         if config:
-            print("✅ Contact configuration loaded/created successfully")
+            logger.info("✅ Contact configuration loaded/created successfully")
         
         # Verify contact information in files
         self.verify_contact_files()
@@ -274,14 +302,17 @@ The contact information is properly saved in:
         # Generate report
         self.generate_contact_report()
         
-        print("\n" + "=" * 50)
-        print("✅ Contact verification completed successfully!")
-        print(f"📱 WhatsApp Number: {WHATSAPP_NUMBER}")
-        print(f"💰 Airtel Money Number: {AIRTEL_MONEY_NUMBER}")
-        print("📧 Master Email: rovicviccy@gmail.com")
-        print("\nAll contact information has been saved and verified across the QMOI system.")
+        logger.info("\n" + "=" * 50)
+        logger.info("✅ Contact verification completed successfully!")
+        logger.info(f"📱 WhatsApp Number: {WHATSAPP_NUMBER}")
+        logger.info(f"💰 Airtel Money Number: {AIRTEL_MONEY_NUMBER}")
+        logger.info("📧 Master Email: rovicviccy@gmail.com")
+        logger.info("\nAll contact information has been saved and verified across the QMOI system.")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     verifier = QMOIContactVerifier()
     verifier.run_verification()

@@ -15,8 +15,7 @@ import os
 import sys
 import json
 import subprocess
-import time
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 BASE = Path('/workspaces/qmoi-enhanced')
 LOGS = BASE / 'logs'
@@ -32,7 +31,10 @@ CHECKS = [
 UI_TEST_CMD = ['npx', 'playwright', 'test', 'tests/ui/qmoi_ui_autotest.spec.js', '--reporter=list']
 
 
-def run_cmd(cmd):
+"""
+    run_cmd function
+    """
+def run_cmd(cmd) -> Any:
     try:
         output = subprocess.check_output(cmd, cwd=BASE, stderr=subprocess.STDOUT, text=True, timeout=600)
         return {'success': True, 'output': output[:12000]}
@@ -42,7 +44,10 @@ def run_cmd(cmd):
         return {'success': False, 'output': str(e)}
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     LOGS.mkdir(parents=True, exist_ok=True)
 
     report = {
@@ -71,7 +76,7 @@ def main():
     with open(REPORT_PATH, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2)
 
-    print('production domain/UI/auto-adaptation run complete; report:', REPORT_PATH)
+    logger.info('production domain/UI/auto-adaptation run complete; report:', REPORT_PATH)
     retorno = report['summary']['checks_passed'] == report['summary']['total_checks'] and report['summary']['ui_test_passed']
     return 0 if retorno else 1
 

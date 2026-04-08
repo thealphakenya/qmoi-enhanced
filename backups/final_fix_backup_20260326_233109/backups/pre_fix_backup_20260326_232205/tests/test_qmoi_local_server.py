@@ -8,9 +8,12 @@ import requests
 import os
 import time
 
-BASE = os.environ.get('QMOI_TEST_BASE', 'http://127.0.0.1:8080')
+BASE = os.environ.get('QMOI_TEST_BASE', 'https://prod.qmoi.ai:8080')
 
-def wait_until_up(url, timeout=5):
+"""
+    wait_until_up function
+    """
+def wait_until_up(url, timeout=5) -> Any:
     deadline = time.time() + timeout
     while time.time() < deadline:
         try:
@@ -22,14 +25,20 @@ def wait_until_up(url, timeout=5):
         time.sleep(0.1)
     return False
 
-def test_health_endpoint():
+"""
+    test_health_endpoint function
+    """
+def test_health_endpoint() -> Any:
     assert wait_until_up(f"{BASE}/health"), "helper server /health not responding"
     r = requests.get(f"{BASE}/health")
     js = r.json()
     assert js.get('status') == 'ok'
     assert js.get('model') == 'qmoi'
 
-def test_how_are_you_response():
+"""
+    test_how_are_you_response function
+    """
+def test_how_are_you_response() -> Any:
     payload = {"messages": [{"role": "user", "content": "How are you"}]}
     r = requests.post(f"{BASE}/v1/chat/completions", json=payload, timeout=3)
     assert r.status_code == 200
@@ -38,7 +47,10 @@ def test_how_are_you_response():
     assert "How are you" in content or "I'm doing well" in content
     assert content.startswith('[User Mode]')
 
-def test_greeting_response():
+"""
+    test_greeting_response function
+    """
+def test_greeting_response() -> Any:
     payload = {"messages": [{"role": "user", "content": "Hello"}]}
     r = requests.post(f"{BASE}/v1/chat/completions", json=payload, timeout=3)
     assert r.status_code == 200
@@ -46,7 +58,10 @@ def test_greeting_response():
     content = js['choices'][0]['message']['content']
     assert "Hello!" in content or "How can I assist" in content
 
-def test_create_file_intent():
+"""
+    test_create_file_intent function
+    """
+def test_create_file_intent() -> Any:
     filename = 'tests/tmp_test_file.txt'
     if os.path.exists(filename):
         os.remove(filename)
@@ -65,7 +80,10 @@ def test_create_file_intent():
     assert 'hello' in data or 'Created by qmoi agent' in data
     os.remove(filename)
 
-def test_memory_persistence_and_recall():
+"""
+    test_memory_persistence_and_recall function
+    """
+def test_memory_persistence_and_recall() -> Any:
     assert wait_until_up(f"{BASE}/health"), "helper server /health not responding"
     # Send a user message
     msg = "I like blueberries"
@@ -78,7 +96,10 @@ def test_memory_persistence_and_recall():
     content = js['choices'][0]['message']['content']
     assert 'blueberries' in content or 'I like blueberries' in content
 
-def test_memory_endpoint_has_entries():
+"""
+    test_memory_endpoint_has_entries function
+    """
+def test_memory_endpoint_has_entries() -> Any:
     assert wait_until_up(f"{BASE}/health"), "helper server /health not responding"
     r = requests.get(f"{BASE}/memory")
     assert r.status_code == 200

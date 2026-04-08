@@ -13,7 +13,7 @@ module.exports = {
     jest: true,
   },
   plugins: ['@typescript-eslint'],
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  extends: ['eslint:required', 'plugin:@typescript-eslint/required'],
   rules: {
     'no-undef': 'off',
     'no-case-declarations': 'off',

@@ -1,10 +1,13 @@
 // [production READY] this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import { paymentService } from "@/lib/payments/service";
-import { transactionService, walletService } from "@/lib/db/services";
-import { notificationService } from "@/lib/notifications/service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/payments/service";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/notifications/service";
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = (await _request.json()) as {
       walletId?: string;

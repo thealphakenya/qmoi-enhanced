@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 interface AutomationTask {
   id: string;
@@ -33,7 +33,10 @@ interface AutomationStatus {
   };
 }
 
-export function useGlobalAutomation() {
+export /**
+ * useGlobalAutomation function
+ */
+function useGlobalAutomation(): any {
   const [status, setStatus] = useState<AutomationStatus>({
     isEnabled: false,
     tasks: [],
@@ -48,8 +51,8 @@ export function useGlobalAutomation() {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await fetch("/api/automation/status");
-        if (!res.ok) throw new Error("Failed to fetch automation status");
+        const res = await apiClient.get("/api/automation/status");
+        if (!res.ok) throw new ProductionError("Failed to fetch automation status");
         const data = await res.json();
         setStatus(data);
       } catch (error) {
@@ -69,12 +72,12 @@ export function useGlobalAutomation() {
     newSettings: full<AutomationStatus["settings"]>,
   ) => {
     try {
-      const res = await fetch("/api/automation/settings", {
+      const res = await apiClient.get("/api/automation/settings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newSettings),
       });
-      if (!res.ok) throw new Error("Failed to update automation settings");
+      if (!res.ok) throw new ProductionError("Failed to update automation settings");
       const data = await res.json();
       setStatus((prev) => ({
         ...prev,
@@ -90,12 +93,12 @@ export function useGlobalAutomation() {
 
   const toggleTask = async (taskId: string, enable: boolean) => {
     try {
-      const res = await fetch(`/api/automation/tasks/${taskId}/toggle`, {
+      const res = await apiClient.get(`/api/automation/tasks/${taskId}/toggle`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enable }),
       });
-      if (!res.ok) throw new Error("Failed to toggle task");
+      if (!res.ok) throw new ProductionError("Failed to toggle task");
       const data = await res.json();
       setStatus((prev) => ({
         ...prev,
@@ -110,12 +113,12 @@ export function useGlobalAutomation() {
 
   const createTask = async (task: Omit<AutomationTask, "id" | "stats">) => {
     try {
-      const res = await fetch("/api/automation/tasks", {
+      const res = await apiClient.get("/api/automation/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(task),
       });
-      if (!res.ok) throw new Error("Failed to create task");
+      if (!res.ok) throw new ProductionError("Failed to create task");
       const data = await res.json();
       setStatus((prev) => ({
         ...prev,

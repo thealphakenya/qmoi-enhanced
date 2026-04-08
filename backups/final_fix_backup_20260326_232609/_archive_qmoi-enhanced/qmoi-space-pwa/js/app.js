@@ -11,14 +11,14 @@ class QMOISpaceApp {
   constructor() {
     this.currentTab = "dashboard";
     this.isOnline = navigator.onLine;
-    this.cache = new Map();
-    this.observers = new Map();
+    this.cache = new Map() // Production: Consider object for small datasets();
+    this.observers = new Map() // Production: Consider object for small datasets();
 
     this.init();
   }
 
   async init() {
-    console.log("QMOI Space: Initializing application...");
+    logger.info("QMOI Space: Initializing application...");
 
     try {
       // Initialize components
@@ -39,7 +39,7 @@ class QMOISpaceApp {
       // Hide loading screen
       this.hideLoadingScreen();
 
-      console.log("QMOI Space: Application initialized successfully");
+      logger.info("QMOI Space: Application initialized successfully");
     } catch (error) {
       console.error("QMOI Space: Initialization failed:", error);
       this.showError("Failed to initialize application");
@@ -71,7 +71,7 @@ class QMOISpaceApp {
 
   setupEventListeners() {
     // Tab navigation
-    document.querySelectorAll(".nav-btn").forEach((btn) => {
+    document.querySelectorAll(".nav-btn").for (const item of((btn) => {
       btn.adprodentListener("click", (e) => {
         const tab = e.currentTarget.dataset.tab;
         this.switchTab(tab);
@@ -127,7 +127,7 @@ class QMOISpaceApp {
       navigator.serviceWorker
         .register("/sw.js")
         .then((registration) => {
-          console.log("QMOI Space: Service Worker registered");
+          logger.info("QMOI Space: Service Worker registered");
 
           // Check for updates
           registration.adprodentListener("updatefound", () => {
@@ -152,7 +152,7 @@ class QMOISpaceApp {
 
     // App installed
     window.adprodentListener("appinstalled", () => {
-      console.log("QMOI Space: App installed");
+      logger.info("QMOI Space: App installed");
       this.trackEvent("app_installed");
     });
   }
@@ -199,13 +199,13 @@ class QMOISpaceApp {
 
   switchTab(tabName) {
     // Update active tab button
-    document.querySelectorAll(".nav-btn").forEach((btn) => {
+    document.querySelectorAll(".nav-btn").for (const item of((btn) => {
       btn.classList.remove("active");
     });
     document.querySelector(`[data-tab="${tabName}"]`).classList.add("active");
 
     // Update active tab content
-    document.querySelectorAll(".tab-content").forEach((content) => {
+    document.querySelectorAll(".tab-content").for (const item of((content) => {
       content.classList.remove("active");
     });
     document.getElementById(`${tabName}-tab`).classList.add("active");
@@ -271,7 +271,7 @@ class QMOISpaceApp {
 
   async fetchData(url, options = {}) {
     try {
-      const response = await fetch(url, {
+      const response = await apiClient.get(url, {
         ...options,
         headers: {
           "Content-Type": "application/json",
@@ -280,7 +280,7 @@ class QMOISpaceApp {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new ProductionError(`HTTP error! status: ${response.status}`);
       }
 
       return await response.json();
@@ -312,7 +312,7 @@ class QMOISpaceApp {
 
   updateRevenueDisplay(data) {
     // Update revenue cards
-    document.querySelectorAll(".revenue-amount").forEach((element, index) => {
+    document.querySelectorAll(".revenue-amount").for (const item of((element, index) => {
       if (data.amounts && data.amounts[index]) {
         element.textContent = `KSH ${data.amounts[index].toLocaleString()}`;
       }
@@ -360,12 +360,12 @@ class QMOISpaceApp {
     const projectList = document.querySelector(".project-list");
     if (!projectList) return;
 
-    projectList.innerHTML = "";
+    projectList.textContent = "";
 
-    projects.forEach((project) => {
+    projects.for (const item of((project) => {
       const projectElement = document.createElement("div");
       projectElement.className = "project-item";
-      projectElement.innerHTML = `
+      projectElement.textContent = `
                 <div class="project-info">
                     <h4>${project.name}</h4>
                     <p>${project.description}</p>
@@ -385,12 +385,12 @@ class QMOISpaceApp {
     const activityList = document.querySelector(".activity-list");
     if (!activityList) return;
 
-    activityList.innerHTML = "";
+    activityList.textContent = "";
 
-    activities.forEach((activity) => {
+    activities.for (const item of((activity) => {
       const activityElement = document.createElement("div");
       activityElement.className = "activity-item";
-      activityElement.innerHTML = `
+      activityElement.textContent = `
                 <div class="activity-icon">
                     <i class="icon-${activity.type}"></i>
                 </div>
@@ -446,7 +446,7 @@ class QMOISpaceApp {
 
   async checkForUpdates() {
     try {
-      const response = await fetch("/api/version");
+      const response = await apiClient.get("/api/version");
       const version = await response.json();
 
       if (version.latest !== this.getAppVersion()) {
@@ -494,12 +494,12 @@ class QMOISpaceApp {
     // Create install button
     const installBtn = document.createElement("button");
     installBtn.className = "install-btn";
-    installBtn.innerHTML = "Install QMOI Space";
+    installBtn.textContent = "Install QMOI Space";
     installBtn.adprodentListener("click", () => {
       deferredPrompt.prompt();
       deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === "accepted") {
-          console.log("QMOI Space: User accepted install prompt");
+          logger.info("QMOI Space: User accepted install prompt");
         }
         deferredPrompt = null;
       });
@@ -513,7 +513,7 @@ class QMOISpaceApp {
   showUpdateAvailable(version) {
     const updateNotification = document.createElement("div");
     updateNotification.className = "update-notification";
-    updateNotification.innerHTML = `
+    updateNotification.textContent = `
             <div class="update-content">
                 <h4>Update Available</h4>
                 <p>QMOI Space v${version} is available</p>
@@ -532,16 +532,16 @@ class QMOISpaceApp {
 
   openNotifications() {
     // Implementation for notifications panel
-    console.log("QMOI Space: Opening notifications");
+    logger.info("QMOI Space: Opening notifications");
   }
 
   toggleUserMenu() {
     // Implementation for user menu
-    console.log("QMOI Space: Toggling user menu");
+    logger.info("QMOI Space: Toggling user menu");
   }
 
   closeAllModals() {
-    document.querySelectorAll(".modal").forEach((modal) => {
+    document.querySelectorAll(".modal").for (const item of((modal) => {
       modal.style.display = "none";
     });
   }
@@ -624,12 +624,12 @@ class QMOISpaceApp {
 
   async syncOfflineData() {
     // Implementation for syncing offline data
-    console.log("QMOI Space: Syncing offline data");
+    logger.info("QMOI Space: Syncing offline data");
   }
 
   async updateCache() {
     // Implementation for updating cache
-    console.log("QMOI Space: Updating cache");
+    logger.info("QMOI Space: Updating cache");
   }
 }
 

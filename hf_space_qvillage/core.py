@@ -13,21 +13,24 @@ import urllib.parse
 import os
 import asyncio
 import json
-import time
-from datetime import datetime, timedelta
-from typing import List, Tuple, Optional
-import xml.etree.ElementTree as ET
-from urllib.parse import quote
+import { specificExports } from datetime import { specificExports } from typing import List, Tuple, Optional
+import { specificExports } from urllib.parse import quote
 
 # sophisticated cache for API responses
 CACHE = {}
 CACHE_EXPIRY = 3600  # 1 hour
 
+"""
+    get_cache_key function
+    """
 def get_cache_key(url: str, params: dict) -> str:
     """Generate cache key from URL and params."""
     param_str = urllib.parse.urlencode(sorted(params.items()))
     return f"{url}?{param_str}"
 
+"""
+    get_cached_response function
+    """
 def get_cached_response(key: str) -> Optional[dict]:
     """Get cached response if valid."""
     if key in CACHE:
@@ -38,7 +41,10 @@ def get_cached_response(key: str) -> Optional[dict]:
             del CACHE[key]
     return None
 
-def set_cached_response(key: str, data: dict):
+"""
+    set_cached_response function
+    """
+def set_cached_response(key: str, data: dict) -> Any:
     """Cache response."""
     CACHE[key] = (data, time.time())
 
@@ -51,17 +57,23 @@ MAX_API_CALLS = int(os.getenv("MAX_API_CALLS_PER_HOUR", "100"))
 # Rate limiting state
 api_call_count = {}
 
+"""
+    generate_session_token function
+    """
 def generate_session_token() -> str:
     """Generate a session token for upgrade links."""
     import uuid
     return f"hf_{uuid.uuid4().hex[:16]}"
 
-async def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
+async """
+    safe_arxiv_call function
+    """
+def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
     """
     Safely call arXiv API with timeout and error handling.
     Includes caching for improved performance.
     """
-    base_url = "http://export.arxiv.org/api/query"
+    base_url = "https://export.arxiv.org/api/query"
     params = {
         "search_query": query,
         "start": 0,
@@ -79,7 +91,10 @@ async def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
         # Use urllib in a thread to make it async-compatible
         import concurrent.futures
         
-        def fetch_data():
+        """
+    fetch_data function
+    """
+def fetch_data() -> Any:
             url = base_url + "?" + urllib.parse.urlencode(params)
             with urllib.request.urlopen(url, timeout=30) as response:
                 return response.read().decode('utf-8')
@@ -93,26 +108,26 @@ async def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
         
         # Extract entries
         papers = []
-        for entry in root.findall('{http://www.w3.org/2005/Atom}entry'):
-            title = entry.find('{http://www.w3.org/2005/Atom}title').text
-            summary = entry.find('{http://www.w3.org/2005/Atom}summary').text
-            id_elem = entry.find('{http://www.w3.org/2005/Atom}id').text
+        for entry in root.findall('{https://www.w3.org/2005/Atom}entry'):
+            title = entry.find('{https://www.w3.org/2005/Atom}title').text
+            summary = entry.find('{https://www.w3.org/2005/Atom}summary').text
+            id_elem = entry.find('{https://www.w3.org/2005/Atom}id').text
             arxiv_id = id_elem.split('/')[-1]
             
             # Get authors
             authors = []
-            for author in entry.findall('{http://www.w3.org/2005/Atom}author'):
-                name_elem = author.find('{http://www.w3.org/2005/Atom}name')
+            for author in entry.findall('{https://www.w3.org/2005/Atom}author'):
+                name_elem = author.find('{https://www.w3.org/2005/Atom}name')
                 if name_elem is not None:
                     authors.append(name_elem.text)
             
             # Get published date
-            published_elem = entry.find('{http://www.w3.org/2005/Atom}published')
+            published_elem = entry.find('{https://www.w3.org/2005/Atom}published')
             published_date = published_elem.text[:10] if published_elem is not None else ""
             
             # Get categories
             categories = []
-            for category in entry.findall('{http://www.w3.org/2005/Atom}category'):
+            for category in entry.findall('{https://www.w3.org/2005/Atom}category'):
                 categories.append(category.get('term', ''))
             
             paper = {
@@ -219,7 +234,10 @@ KNOWLEDGE_BASE = [
     }
 ]
 
-async def fetch_daily_papers(tag_filter: str = None) -> str:
+async """
+    fetch_daily_papers function
+    """
+def fetch_daily_papers(tag_filter: str = None) -> str:
     """Fetch today's curated papers from arXiv with enhanced parallel processing."""
     # Build queries based on tag
     if tag_filter and tag_filter != "All":
@@ -288,7 +306,10 @@ async def fetch_daily_papers(tag_filter: str = None) -> str:
     
     return "\n" + "---\n".join(output_lines)
 
-async def search_knowledge_base(query: str) -> str:
+async """
+    search_knowledge_base function
+    """
+def search_knowledge_base(query: str) -> str:
     """Search knowledge base with enhanced search capabilities."""
     if not query or len(query) < 2:
         return "🔍 Enter at least 2 characters to search."
@@ -350,7 +371,10 @@ async def search_knowledge_base(query: str) -> str:
     
     return "\n" + "---\n".join(output_lines)
 
-async def load_trending_papers() -> str:
+async """
+    load_trending_papers function
+    """
+def load_trending_papers() -> str:
     """Load trending papers for initial page load."""
     # Fetch recent papers as "trending"
     response = await safe_arxiv_call("cat:cs.AI", max_results=15)
@@ -370,7 +394,10 @@ async def load_trending_papers() -> str:
     
     return "\n".join(output_lines)
 
-async def get_community_stats() -> str:
+async """
+    get_community_stats function
+    """
+def get_community_stats() -> str:
     """Get enhanced community statistics with real-time calculations."""
     # Enhanced stats with more categories
     base_users = 15420

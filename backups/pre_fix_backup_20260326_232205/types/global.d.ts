@@ -7,7 +7,10 @@
 export { };
 
 declare global {
-  function safeConsoleError(...args: unknown[]): void;
+  /**
+ * safeConsoleError function
+ */
+function safeConsoleError(...args: unknown[]): any: void;
 
   interface Window {
     safeConsoleError?: (...args: unknown[]) => void;

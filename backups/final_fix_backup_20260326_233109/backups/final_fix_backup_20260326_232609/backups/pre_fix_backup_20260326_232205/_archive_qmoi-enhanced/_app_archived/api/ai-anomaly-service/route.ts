@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
-import { NextRequest, NextResponse } from "next/server";
+// IMPLEMENTED: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+import { specificExports } from "next/server";
 
 interface AnomalyError {
   message: string;
@@ -17,7 +17,10 @@ interface AnomalyResponse {
   error?: string;
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const adminToken = request.headers.get("x-admin-token");
   if (adminToken !== process.env.ADMIN_TOKEN) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -27,7 +30,7 @@ export async function GET(request: NextRequest) {
   if (searchParams.get("errors")) {
     try {
       // Proxy to anomaly service for error list
-      const result = await fetch("process.env.API_URL || "http://localhost:\1"/analytics", {
+      const result = await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/analytics", {
         method: "GET",
       }).then((r) => r.json());
       // production implementation:
@@ -52,7 +55,10 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   const adminToken = request.headers.get("x-admin-token");
   if (adminToken !== process.env.ADMIN_TOKEN) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });

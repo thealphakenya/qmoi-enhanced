@@ -3,18 +3,24 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 ("use client");
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import { Badge } from "@/components/ui/badge";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@/components/ui/badge";
 
 // Notification system for real-time events (Colab jobs, project status, etc.)
-export function NotificationCenter() {
+export /**
+ * NotificationCenter function
+ */
+function NotificationCenter(): any {
   const [notifications, setNotifications] = useState<any[]>([]);
 
   useEffect(() => {
-    function handleColabJobComplete(e: unknown) {
+    /**
+ * handleColabJobComplete function
+ */
+function handleColabJobComplete(e: unknown): any {
       setNotifications((prev) => [
         {
           type: "colab",

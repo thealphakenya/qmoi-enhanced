@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--bg-primary, #1a1a1a);
-  border: 1px solid var(--border-color, #333);
+  background: const(--bg-primary, #1a1a1a);
+  border: 1px solid const(--border-color, #333);
   border-radius: 8px;
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -17,8 +17,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  background: linear-gradient(135deg, var(--bg-tertiary, #252526), var(--bg-secondary, #1e1e1e));
-  border-bottom: 1px solid var(--border-color, #333);
+  background: linear-gradient(135deg, const(--bg-tertiary, #252526), const(--bg-secondary, #1e1e1e));
+  border-bottom: 1px solid const(--border-color, #333);
   gap: 12px;
 }
 
@@ -32,12 +32,12 @@
   margin: 0;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-primary, #e0e0e0);
+  color: const(--text-primary, #e0e0e0);
 }
 
 .status-badge {
   padding: 2px 8px;
-  background: var(--success, #4ec9b0);
+  background: const(--success, #4ec9b0);
   color: white;
   font-size: 11px;
   font-weight: 600;
@@ -46,7 +46,7 @@
 }
 
 .status-badge.automatic {
-  background: var(--warning, #dcdcaa);
+  background: const(--warning, #dcdcaa);
   color: #333;
 }
 
@@ -58,9 +58,9 @@
 
 .personality-selector {
   padding: 4px 8px;
-  background: var(--bg-secondary, #1e1e1e);
-  border: 1px solid var(--border-color, #333);
-  color: var(--text-secondary, #b0b0b0);
+  background: const(--bg-secondary, #1e1e1e);
+  border: 1px solid const(--border-color, #333);
+  color: const(--text-secondary, #b0b0b0);
   font-size: 11px;
   border-radius: 4px;
   cursor: pointer;
@@ -69,17 +69,17 @@
 
 .personality-selector:hover,
 .personality-selector:focus {
-  background: var(--bg-hover, #3e3e42);
-  border-color: var(--accent, #007acc);
+  background: const(--bg-hover, #3e3e42);
+  border-color: const(--accent, #007acc);
 }
 
 .control-button {
   width: 28px;
   height: 28px;
   padding: 0;
-  background: var(--bg-secondary, #1e1e1e);
-  border: 1px solid var(--border-color, #333);
-  color: var(--text-secondary, #b0b0b0);
+  background: const(--bg-secondary, #1e1e1e);
+  border: 1px solid const(--border-color, #333);
+  color: const(--text-secondary, #b0b0b0);
   font-size: 14px;
   border-radius: 4px;
   cursor: pointer;
@@ -90,13 +90,13 @@
 }
 
 .control-button:hover {
-  background: var(--bg-hover, #3e3e42);
-  border-color: var(--accent, #007acc);
+  background: const(--bg-hover, #3e3e42);
+  border-color: const(--accent, #007acc);
 }
 
 .control-button.active {
-  background: var(--accent, #007acc);
-  border-color: var(--accent, #007acc);
+  background: const(--accent, #007acc);
+  border-color: const(--accent, #007acc);
   color: white;
 }
 
@@ -113,8 +113,8 @@
   width: 180px;
   min-width: 180px;
   padding: 12px;
-  background: var(--bg-secondary, #1e1e1e);
-  border-right: 1px solid var(--border-color, #333);
+  background: const(--bg-secondary, #1e1e1e);
+  border-right: 1px solid const(--border-color, #333);
   overflow-y: auto;
 }
 
@@ -122,7 +122,7 @@
   margin: 0 0 8px 0;
   font-size: 12px;
   font-weight: 600;
-  color: var(--text-secondary, #b0b0b0);
+  color: const(--text-secondary, #b0b0b0);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -134,8 +134,8 @@
   padding: 6px 8px;
   margin-bottom: 4px;
   background: transparent;
-  border: 1px solid var(--border-color, #333);
-  color: var(--text-secondary, #b0b0b0);
+  border: 1px solid const(--border-color, #333);
+  color: const(--text-secondary, #b0b0b0);
   font-size: 11px;
   border-radius: 3px;
   cursor: pointer;
@@ -145,13 +145,13 @@
 
 .branch-item:hover,
 .branch-button-new:hover {
-  background: var(--bg-hover, #3e3e42);
-  border-color: var(--accent, #007acc);
+  background: const(--bg-hover, #3e3e42);
+  border-color: const(--accent, #007acc);
 }
 
 .branch-item.active {
-  background: var(--accent, #007acc);
-  border-color: var(--accent, #007acc);
+  background: const(--accent, #007acc);
+  border-color: const(--accent, #007acc);
   color: white;
 }
 
@@ -203,19 +203,19 @@
 }
 
 .message-user .message-content {
-  background: var(--accent, #007acc);
+  background: const(--accent, #007acc);
   color: white;
 }
 
 .message-bot .message-content {
-  background: var(--bg-secondary, #1e1e1e);
-  color: var(--text-primary, #e0e0e0);
-  border: 1px solid var(--border-color, #333);
+  background: const(--bg-secondary, #1e1e1e);
+  color: const(--text-primary, #e0e0e0);
+  border: 1px solid const(--border-color, #333);
 }
 
 .message-content pre {
   margin: 0;
-  background: var(--bg-primary, #1a1a1a);
+  background: const(--bg-primary, #1a1a1a);
   padding: 8px;
   border-radius: 4px;
   overflow-x: auto;
@@ -225,12 +225,12 @@
 
 .message-content code {
   font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
-  color: var(--text-code, #ce9178);
+  color: const(--text-code, #ce9178);
 }
 
 .message-time {
   font-size: 10px;
-  color: var(--text-tertiary, #858585);
+  color: const(--text-tertiary, #858585);
   margin-top: 4px;
   margin-left: 4px;
 }
@@ -245,8 +245,8 @@
 .action-button {
   padding: 3px 6px;
   background: transparent;
-  border: 1px solid var(--border-color, #333);
-  color: var(--text-secondary, #b0b0b0);
+  border: 1px solid const(--border-color, #333);
+  color: const(--text-secondary, #b0b0b0);
   font-size: 11px;
   border-radius: 2px;
   cursor: pointer;
@@ -254,14 +254,14 @@
 }
 
 .action-button:hover {
-  background: var(--bg-hover, #3e3e42);
-  border-color: var(--accent, #007acc);
+  background: const(--bg-hover, #3e3e42);
+  border-color: const(--accent, #007acc);
 }
 
 .suggestion-badge {
   font-size: 10px;
   padding: 2px 6px;
-  background: var(--warning, #dcdcaa);
+  background: const(--warning, #dcdcaa);
   color: #333;
   border-radius: 2px;
 }
@@ -281,7 +281,7 @@
 .typing-indicator span {
   width: 4px;
   height: 4px;
-  background: var(--accent, #007acc);
+  background: const(--accent, #007acc);
   border-radius: 50%;
   animation: typing 1.4s infinite;
 }
@@ -312,21 +312,21 @@
   display: flex;
   gap: 8px;
   padding: 8px 12px;
-  background: var(--bg-secondary, #1e1e1e);
-  border-top: 1px solid var(--border-color, #333);
+  background: const(--bg-secondary, #1e1e1e);
+  border-top: 1px solid const(--border-color, #333);
   font-size: 11px;
   flex-wrap: wrap;
 }
 
 .context-item {
   padding: 2px 6px;
-  background: var(--bg-tertiary, #252526);
+  background: const(--bg-tertiary, #252526);
   border-radius: 3px;
-  color: var(--text-secondary, #b0b0b0);
+  color: const(--text-secondary, #b0b0b0);
 }
 
 .context-item.error {
-  background: var(--error, #f48771);
+  background: const(--error, #f48771);
   color: white;
 }
 
@@ -335,17 +335,17 @@
   display: flex;
   gap: 8px;
   padding: 12px;
-  background: var(--bg-secondary, #1e1e1e);
-  border-top: 1px solid var(--border-color, #333);
+  background: const(--bg-secondary, #1e1e1e);
+  border-top: 1px solid const(--border-color, #333);
   flex-shrink: 0;
 }
 
 .chat-input-field {
   flex: 1;
   padding: 8px 12px;
-  background: var(--bg-primary, #1a1a1a);
-  border: 1px solid var(--border-color, #333);
-  color: var(--text-primary, #e0e0e0);
+  background: const(--bg-primary, #1a1a1a);
+  border: 1px solid const(--border-color, #333);
+  color: const(--text-primary, #e0e0e0);
   font-size: 12px;
   border-radius: 4px;
   outline: none;
@@ -353,7 +353,7 @@
 }
 
 .chat-input-field:focus {
-  border-color: var(--accent, #007acc);
+  border-color: const(--accent, #007acc);
   box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.1);
 }
 
@@ -364,8 +364,8 @@
 
 .send-button {
   padding: 8px 16px;
-  background: var(--accent, #007acc);
-  border: 1px solid var(--accent, #007acc);
+  background: const(--accent, #007acc);
+  border: 1px solid const(--accent, #007acc);
   color: white;
   font-size: 12px;
   font-weight: 600;
@@ -376,8 +376,8 @@
 }
 
 .send-button:hover:not(:enabled) {
-  background: var(--accent-hover, #005a9e);
-  border-color: var(--accent-hover, #005a9e);
+  background: const(--accent-hover, #005a9e);
+  border-color: const(--accent-hover, #005a9e);
 }
 
 .send-button:enabled {
@@ -398,13 +398,13 @@
 
 .chatbot-messages::-webkit-scrollbar-thumb,
 .branches-sidebar::-webkit-scrollbar-thumb {
-  background: var(--border-color, #333);
+  background: const(--border-color, #333);
   border-radius: 4px;
 }
 
 .chatbot-messages::-webkit-scrollbar-thumb:hover,
 .branches-sidebar::-webkit-scrollbar-thumb:hover {
-  background: var(--accent, #007acc);
+  background: const(--accent, #007acc);
 }
 
 /* Responsive */

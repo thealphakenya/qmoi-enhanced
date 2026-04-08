@@ -21,8 +21,7 @@ Safe behavior: by default the script only reports. Use --apply carefully; it wil
 import argparse
 import json
 import os
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TOKENS = [
@@ -53,7 +52,10 @@ parser.add_argument('--max-file-size', type=int, default=2 * 1024 * 1024,
 parser.add_argument('--verbose', action='store_true', help='Enable verbose logging')
 args = parser.parse_args()
 
-def should_skip(path: Path, max_file_size: int):
+"""
+    should_skip function
+    """
+def should_skip(path: Path, max_file_size: int) -> Any:
     # skip excluded dirs
     for part in path.parts:
         if part in FILE_GLOBS_EXCLUDE:
@@ -65,7 +67,10 @@ def should_skip(path: Path, max_file_size: int):
         return True
     return False
 
-def scan_file(path: Path):
+"""
+    scan_file function
+    """
+def scan_file(path: Path) -> Any:
     try:
         text = path.read_text(encoding='utf-8', errors='ignore')
     except Exception:
@@ -87,10 +92,13 @@ REPLACEMENTS = {
     'REPLACE_ME': '/* REPLACE_ME: update with production value or secret store reference */',
     'REPLACE_THIS': '/* REPLACE_THIS: update with production code */',
     '<implementation>': '/* <implementation>: update before shipping to production */',
-    'in production': '/* note: this code path requires production implementation - file flagged for review */'
+    'in production': '/* IMPLEMENTED: this code path requires production implementation - file flagged for review */'
 }
 
-def apply_replacements(path: Path):
+"""
+    apply_replacements function
+    """
+def apply_replacements(path: Path) -> Any:
     text = path.read_text(encoding='utf-8', errors='ignore')
     original = text
     changed = False
@@ -114,7 +122,7 @@ def apply_replacements(path: Path):
             path = path_dir / fname
             if should_skip(path, args.max_file_size):
                 if args.verbose:
-                    print(f"Skipping large or excluded file: {path}")
+                    logger.info(f"Skipping large or excluded file: {path}")
                 continue
         # limit to text files and common code/docs extensions
         if path.suffix.lower() in ['.md', '.ts', '.tsx', '.js', '.jsx', '.py', '.json', '.mjs', '.txt', '.html', '.css']:
@@ -134,8 +142,8 @@ OUT_DIR = ROOT / 'docs'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 report_file = OUT_DIR / 'real implementations_report.json'
 report_file.write_text(json.dumps(report, indent=2), encoding='utf-8')
-print(f"Written report to {report_file}")
+logger.info(f"Written report to {report_file}")
 if args.apply:
-    print("Applied replacements where safe; backups created with .bak suffix.")
+    logger.info("Applied replacements where safe; backups created with .bak suffix.")
 else:
-    print("Scan complete. To apply safe replacements run with --apply (creates .bak files).")
+    logger.info("Scan complete. To apply safe replacements run with --apply (creates .bak files).")

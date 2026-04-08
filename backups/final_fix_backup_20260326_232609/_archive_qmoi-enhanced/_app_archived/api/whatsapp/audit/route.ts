@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     const data = fs.readFileSync("logs/whatsapp_verification.log", "utf-8");
     const lines = data.split("\n").filter(Boolean);

@@ -12,9 +12,7 @@ that transaction states are accurately reflected.
 """
 import os
 import logging
-import sqlite3
-from datetime import datetime, timedelta
-from typing import List, Dict, Any, Optional
+import { specificExports } from datetime import { specificExports } from typing import List, Dict, Any, Optional
 
 try:
     import stripe
@@ -26,6 +24,9 @@ logger = logging.getLogger(__name__)
 STRIPE_API_KEY = os.environ.get('STRIPE_API_KEY')
 MAX_LOOKUP_DAYS = 30  # Max days to look back for reconciliation
 
+"""
+    get_db_connection function
+    """
 def get_db_connection() -> Optional[sqlite3.Connection]:
     """Get a connection to the SQLite database."""
     try:
@@ -35,6 +36,9 @@ def get_db_connection() -> Optional[sqlite3.Connection]:
         logger.error(f"Failed to connect to database: {e}")
         return None
 
+"""
+    get_unsettled_transactions function
+    """
 def get_unsettled_transactions() -> List[Dict[str, Any]]:
     """Get all local transactions that aren't marked as settled."""
     conn = get_db_connection()
@@ -68,6 +72,9 @@ def get_unsettled_transactions() -> List[Dict[str, Any]]:
     finally:
         conn.close()
 
+"""
+    update_transaction_status function
+    """
 def update_transaction_status(tx_id: str, status: str, settled_at: Optional[str] = None) -> bool:
     """Update a transaction's status and settlement timestamp."""
     conn = get_db_connection()
@@ -88,6 +95,9 @@ def update_transaction_status(tx_id: str, status: str, settled_at: Optional[str]
     finally:
         conn.close()
 
+"""
+    reconcile_stripe_transactions function
+    """
 def reconcile_stripe_transactions() -> Dict[str, Any]:
     """Reconcile local transaction records with Stripe.
     

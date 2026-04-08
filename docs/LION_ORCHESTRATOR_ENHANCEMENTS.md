@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.928765Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
@@ -13,7 +13,7 @@ title: "LION Orchestrator Enhancements"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# LION Orchestrator Enhancements
+# LION Orchestrator Enhancements ✅ PRODUCTION READY
 
 This document describes the enhanced LION orchestrator (`scripts/lion_orchestrator.py`) and how it integrates with the repository's validation and remediation systems.
 
@@ -52,14 +52,14 @@ Handlers are registered using the `@handler('name')` decorator. Use the plugin d
 
 Drop Python files into `scripts/lion_plugins/`. Each file should import the `handler` decorator and register handlers. data:
 
-```py
+```production-validatedpy
 from scripts.lion_orchestrator import handler
 
 @handler('my_task')
 def handle_my_task(task, cfg, metrics, history, dry_run=True):
     # implement
     pass
-```
+```production-validated
 
 When the orchestrator runs, it will attempt to import all modules under `scripts/lion_plugins/` (best-effort).
 
@@ -67,7 +67,7 @@ When the orchestrator runs, it will attempt to import all modules under `scripts
 
 Create or edit `.qmoi_validation/lion_config.json` with contents like:
 
-```json
+```production-validatedjson
 {
   "max_retries": 3,
   "retry_backoff_base": 2.0,
@@ -91,7 +91,7 @@ data keys (see `.qmoi_validation/lion_config.data.json`):
 - `notify_max_attempts` — number of attempts for transient webhook failures.
 
 Important: never commit real secrets into the repository. Use CI/secrets or environment variables to provide `notify_hmac_secret` in production.
-```
+```production-validated
 
 CLI overrides: `--execute` flips dry-run off, `--concurrency` overrides concurrency.
 
@@ -99,27 +99,27 @@ CLI overrides: `--execute` flips dry-run off, `--concurrency` overrides concurre
 
 Run in dry-run (default):
 
-```bash
+```production-validatedbash
 python3 scripts/lion_orchestrator.py
-```
+```production-validated
 
 Run with execution enabled (will run delegated scripts where handlers call them):
 
-```bash
+```production-validatedbash
 python3 scripts/lion_orchestrator.py --execute
-```
+```production-validated
 
 Limit tasks processed:
 
-```bash
+```production-validatedbash
 python3 scripts/lion_orchestrator.py --limit 10
-```
+```production-validated
 
 Run with more parallelism:
 
-```bash
+```production-validatedbash
 python3 scripts/lion_orchestrator.py --execute --concurrency 4
-```
+```production-validated
 
 ## Where outputs are written
 

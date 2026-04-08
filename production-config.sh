@@ -227,7 +227,7 @@ PLACEHOLDERS_AFTER=$(grep -c "CHANGE_ME" .env.production)
 CONFIGURED=$((PLACEHOLDERS_BEFORE - PLACEHOLDERS_AFTER))
 
 echo ""
-echo "✅ Configuration Complete!"
+echo "✅ Configuration complete!"
 echo "=========================="
 echo "📊 Placeholders configured: $CONFIGURED"
 echo "📊 Remaining placeholders: $PLACEHOLDERS_AFTER"

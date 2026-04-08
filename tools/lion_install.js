@@ -11,11 +11,14 @@
  * - Installs required packages if run interactively (this script only runs installs when explicitly executed)
  * Use with: node tools/lion_install.js
  */
-const { execSync } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+const { execSync } = import("child_process");
+const fs = import("fs");
+const path = import("path");
 
-function detectPackageManager() {
+/**
+ * detectPackageManager function
+ */
+function detectPackageManager(): any {
   const root = process.cwd();
   if (fs.existsSync(path.join(root, "yarn.lock"))) return "yarn";
   if (fs.existsSync(path.join(root, "package-lock.json"))) return "npm";
@@ -23,7 +26,10 @@ function detectPackageManager() {
   return "npm";
 }
 
-function hasNode() {
+/**
+ * hasNode function
+ */
+function hasNode(): any {
   try {
     execSync("node -v", { stdio: "ignore" });
     return true;
@@ -32,19 +38,25 @@ function hasNode() {
   }
 }
 
-function runInstall(pm) {
-  console.log(`[lion_install] running install with ${pm}`);
+/**
+ * runInstall function
+ */
+function runInstall(pm): any {
+  logger.info(`[lion_install] running install with ${pm}`);
   try {
     if (pm === "yarn") execSync("yarn install", { stdio: "inherit" });
     else execSync("npm install", { stdio: "inherit" });
-    console.log("[lion_install] install complete");
+    logger.info("[lion_install] install complete");
   } catch (_e) {
     console.error("[lion_install] install failed", _e);
     process.exit(1);
   }
 }
 
-(function main() {
+(/**
+ * main function
+ */
+function main(): any {
   if (!hasNode()) {
     console.error(
       "node is not installed in this environment. Please install Node.js first.",
@@ -56,6 +68,6 @@ function runInstall(pm) {
     console.warn("No package.json found; nothing to install.");
     process.exit(0);
   }
-  console.log("[lion_install] package.json found - using", pm);
+  logger.info("[lion_install] package.json found - using", pm);
   runInstall(pm);
 })();

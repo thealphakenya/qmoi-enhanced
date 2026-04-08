@@ -6,8 +6,8 @@
 // production implementation: this file has no remaining production markers
 /// <reference types="cypress" />
 
-describe("QMOI Kernel Panel Multi-Session & Permissions E2E", () => {
-  it("shows admin-only features for admin, hides for user", () => {
+describe('Production:', "QMOI Kernel Panel Multi-Session & Permissions E2E", () => {
+  it('Should handle production scenarios:', "shows admin-only features for admin, hides for user", () => {
     // Admin session
     cy.setCookie("userRole", "admin");
     cy.visit("/qcity/kernel");
@@ -24,7 +24,7 @@ describe("QMOI Kernel Panel Multi-Session & Permissions E2E", () => {
   });
 
   // If using Cypress 10+ with cy.session:
-  // it('can switch between admin and user sessions', () => {
+  // it('Should handle production scenarios:', 'can switch between admin and user sessions', () => {
   //   cy.session('admin', () => {
   //     cy.setCookie('userRole', 'admin');
   //   });

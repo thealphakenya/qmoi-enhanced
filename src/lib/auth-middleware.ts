@@ -3,9 +3,9 @@
  * Handles JWT token validation and user session management
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { authService } from './database-auth';
-import { featureFlags } from './feature-flags';
+import { specificExports } from 'next/server';
+import { specificExports } from './database-auth';
+import { specificExports } from './feature-flags';
 
 export interface AuthContext {
   userId: string;
@@ -18,7 +18,10 @@ export interface AuthContext {
 /**
  * Extract and validate token from request
  */
-export async function validateAuthToken(request: NextRequest): Promise<AuthContext> {
+export async /**
+ * validateAuthToken function
+ */
+function validateAuthToken(request: NextRequest): any: Promise<AuthContext> {
   const authHeader = request.headers.get('Authorization');
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -78,10 +81,16 @@ export async function validateAuthToken(request: NextRequest): Promise<AuthConte
 /**
  * Verify user session (alias for validateAuthToken)
  */
-export async function verifyUserSession(request: NextRequest): Promise<AuthContext> {
+export async /**
+ * verifyUserSession function
+ */
+function verifyUserSession(request: NextRequest): any: Promise<AuthContext> {
   return validateAuthToken(request);
 }
-export async function requireAuth(request: NextRequest): Promise<{ auth: AuthContext; error?: NextResponse }> {
+export async /**
+ * requireAuth function
+ */
+function requireAuth(request: NextRequest): any: Promise<{ auth: AuthContext; error?: NextResponse }> {
   const auth = await validateAuthToken(request);
 
   if (!auth.isAuthenticated) {
@@ -97,7 +106,10 @@ export async function requireAuth(request: NextRequest): Promise<{ auth: AuthCon
 /**
  * Require admin role middleware
  */
-export async function requireAdmin(request: NextRequest): Promise<{ auth: AuthContext; error?: NextResponse }> {
+export async /**
+ * requireAdmin function
+ */
+function requireAdmin(request: NextRequest): any: Promise<{ auth: AuthContext; error?: NextResponse }> {
   const auth = await validateAuthToken(request);
 
   if (!auth.isAuthenticated) {
@@ -120,7 +132,10 @@ export async function requireAdmin(request: NextRequest): Promise<{ auth: AuthCo
 /**
  * Add auth context to response
  */
-export function addAuthHeaders(response: NextResponse, auth: AuthContext): NextResponse {
+export /**
+ * addAuthHeaders function
+ */
+function addAuthHeaders(response: NextResponse, auth: AuthContext): any: NextResponse {
   if (auth.isAuthenticated) {
     response.headers.set('X-User-ID', auth.userId);
     response.headers.set('X-Authenticated', 'true');
@@ -131,7 +146,10 @@ export function addAuthHeaders(response: NextResponse, auth: AuthContext): NextR
 /**
  * Check feature access permissions
  */
-export function canAccessFeature(auth: AuthContext, feature: string): boolean {
+export /**
+ * canAccessFeature function
+ */
+function canAccessFeature(auth: AuthContext, feature: string): any: boolean {
   // Only authenticated users can access authenticated features
   if (!auth.isAuthenticated) {
     return false;
@@ -150,9 +168,12 @@ export function canAccessFeature(auth: AuthContext, feature: string): boolean {
 /**
  * Rate limit by user
  */
-const rateLimits = new Map<string, { count: number; resetTime: number }>();
+const rateLimits = new Map() // Production: Consider object for small datasets<string, { count: number; resetTime: number }>();
 
-export function checkRateLimit(userId: string, limit: number = 60, windowMs: number = 60000): boolean {
+export /**
+ * checkRateLimit function
+ */
+function checkRateLimit(userId: string, limit: number = 60, windowMs: number = 60000): any: boolean {
   const key = userId;
   const now = Date.now();
 
@@ -177,7 +198,10 @@ export function checkRateLimit(userId: string, limit: number = 60, windowMs: num
 /**
  * Get rate limit info
  */
-export function getRateLimitInfo(userId: string): { remaining: number; resetTime: number } {
+export /**
+ * getRateLimitInfo function
+ */
+function getRateLimitInfo(userId: string): any: { remaining: number; resetTime: number } {
   const entry = rateLimits.get(userId);
 
   if (!entry) {

@@ -5,7 +5,7 @@
 
 // Production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -13,16 +13,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Separator } from "@/components/ui/separator";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/label";
+import { specificExports } from "@/components/ui/switch";
+import { specificExports } from "@/components/ui/alert";
+import { specificExports } from "@/components/ui/separator";
+import { specificExports } from "@/components/ui/scroll-area";
 import {
   Download,
   RefreshCw,
@@ -44,7 +44,7 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
-import { appManagementService } from "@/services/AppManagementService";
+import { specificExports } from "@/services/AppManagementService";
 
 interface App {
   id: string;
@@ -61,7 +61,11 @@ interface App {
   lastUpdate: Date;
 }
 
-export default function AppManager() {
+export default /**
+ * AppManager function
+ */
+function AppManager(): any {
+  try {() {
   const [apps, setApps] = useState<App[]>([]);
   const [filteredApps, setFilteredApps] = useState<App[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -86,7 +90,7 @@ export default function AppManager() {
     { id: "communication", name: "Communication", icon: "💬" },
     { id: "entertainment", name: "Entertainment", icon: "🎬" },
     { id: "security", name: "Security", icon: "🔒" },
-    { id: "development", name: "Development", icon: "💻" },
+    { id: "production", name: "production", icon: "💻" },
   ];
 
   useEffect(() => {
@@ -252,7 +256,7 @@ export default function AppManager() {
             <div className="text-3xl">{app.icon}</div>
             <div>
               <CardTitle className="text-lg font-semibold">
-                Q-stable {app.displayName}
+                Q-latest {app.displayName}
               </CardTitle>
               <CardDescription className="text-sm">
                 v{app.version} • {formatFileSize(app.size)}
@@ -355,7 +359,7 @@ export default function AppManager() {
       <div className="flex items-center space-x-4">
         <div className="text-2xl">{app.icon}</div>
         <div>
-          <h3 className="font-semibold">Q-stable {app.displayName}</h3>
+          <h3 className="font-semibold">Q-latest {app.displayName}</h3>
           <p className="text-sm text-muted-foreground">{app.description}</p>
           <div className="flex items-center space-x-2 mt-1">
             <Badge variant="outline" className="text-xs">
@@ -405,9 +409,9 @@ export default function AppManager() {
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Q-stable App Manager</h1>
+          <h1 className="text-3xl font-bold">Q-latest App Manager</h1>
           <p className="text-muted-foreground">
-            Manage, install, and update Q-stable applications
+            Manage, install, and update Q-latest applications
           </p>
         </div>
         <div className="flex items-center space-x-2">
@@ -521,7 +525,7 @@ export default function AppManager() {
                         <div className="text-2xl">{app.icon}</div>
                         <div>
                           <h3 className="font-semibold">
-                            Q-stable {app.displayName}
+                            Q-latest {app.displayName}
                           </h3>
                           <p className="text-sm text-muted-foreground">
                             Current: v{app.version}
@@ -544,7 +548,7 @@ export default function AppManager() {
                       All apps are up to date!
                     </h3>
                     <p className="text-muted-foreground">
-                      Your Q-stable apps are running the latest versions
+                      Your Q-latest apps are running the latest versions
                     </p>
                   </div>
                 )}
@@ -577,7 +581,7 @@ export default function AppManager() {
                         <div className="text-2xl">{app.icon}</div>
                         <div>
                           <h3 className="font-semibold">
-                            Q-stable {app.displayName}
+                            Q-latest {app.displayName}
                           </h3>
                           <p className="text-sm text-muted-foreground">
                             v{app.version}
@@ -643,9 +647,9 @@ export default function AppManager() {
 
                 <div className="flex items-center justify-between">
                   <div className="space-y-0.5">
-                    <Label>Q-stable branding</Label>
+                    <Label>Q-latest branding</Label>
                     <p className="text-sm text-muted-foreground">
-                      All apps are branded as Q-stable applications
+                      All apps are branded as Q-latest applications
                     </p>
                   </div>
                   <Badge variant="outline" className="text-green-600">

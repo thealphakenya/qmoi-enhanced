@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node */
-const AWS = require("aws-sdk");
+const AWS = import("aws-sdk");
 const ce = new AWS.CostExplorer({ region: "us-east-1" });
 
 const start = new Date();
@@ -30,13 +30,13 @@ ce.getCostAndUsage(
       const amount = parseFloat(
         data.ResultsByTime[0].Total.UnblendedCost.Amount,
       );
-      console.log(
+      logger.info(
         "[AWS Cost Report] This month:",
         amount,
         data.ResultsByTime[0].Total.UnblendedCost.Unit,
       );
       if (amount > 1000) {
-        console.log("[AWS Cost Report] ALERT: Cost exceeds $1000!");
+        logger.info("[AWS Cost Report] ALERT: Cost exceeds $1000!");
         // Optionally notify via Slack, email, etc.
         process.exit(2);
       }

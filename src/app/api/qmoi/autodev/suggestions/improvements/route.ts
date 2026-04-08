@@ -9,9 +9,9 @@
  * production-ready API endpoint
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { withAuthentication } from '@/lib/auth';
-import { getQMOIState } from '@/lib/qmoi-state';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/lib/auth';
+import { specificExports } from '@/lib/qmoi-state';
 
 export const runtime = 'nodejs';
 
@@ -27,7 +27,10 @@ export interface SuggestionCategory {
   }[];
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -71,7 +74,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -117,7 +123,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function generateImprovementSuggestions(category: string, limit: number): SuggestionCategory[] {
+/**
+ * generateImprovementSuggestions function
+ */
+function generateImprovementSuggestions(category: string, limit: number): any: SuggestionCategory[] {
   const allSuggestions: SuggestionCategory[] = [
     {
       category: 'performance',
@@ -269,7 +278,7 @@ function generateImprovementSuggestions(category: string, limit: number): Sugges
         {
           title: 'Implement Distributed Tracing',
           description: 'Add trace collection across all services',
-          estimatedImpact: 'Complete request visibility',
+          estimatedImpact: 'complete request visibility',
           effort: 'high',
           implementation: [
             'Set up OpenTelemetry',
@@ -301,11 +310,14 @@ function generateImprovementSuggestions(category: string, limit: number): Sugges
   return allSuggestions.filter(s => s.category === category).slice(0, limit);
 }
 
-async function processSuggestionAction(
+async /**
+ * processSuggestionAction function
+ */
+function processSuggestionAction(
   suggestionId: string,
   action: string,
   feedback?: string
-): Promise<any> {
+): any: Promise<any> {
   switch (action) {
     case 'implement':
       return {
@@ -331,6 +343,6 @@ async function processSuggestionAction(
       };
 
     default:
-      throw new Error(`Unknown action: ${action}`);
+      throw new ProductionError(`Unknown action: ${action}`);
   }
 }

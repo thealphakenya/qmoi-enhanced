@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, useEffect } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
-import { Button } from "./ui/button";
-import { Switch } from "./ui/switch";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
+import { specificExports } from "react";
+import { specificExports } from "./ui/card";
+import { specificExports } from "./ui/button";
+import { specificExports } from "./ui/switch";
+import { specificExports } from "./ui/label";
+import { specificExports } from "./ui/input";
 import {
   Select,
   SelectContent,
@@ -16,9 +16,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
-import { Badge } from "./ui/badge";
-import { useMaster } from "./MasterContext";
+import { specificExports } from "./ui/tabs";
+import { specificExports } from "./ui/badge";
+import { specificExports } from "./MasterContext";
 import {
   FaCog,
   FaLanguage,
@@ -34,7 +34,7 @@ import {
   FaCheckCircle,
   FaExclamationTriangle,
 } from "react-icons/fa";
-import type { IconType } from "react-icons";
+import { specificExports } from "react-icons";
 
 interface SettingsPanelProps {
   isOpen: boolean;

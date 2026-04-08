@@ -2,8 +2,14 @@
   "compilerOptions": {
     "target": "ES2022",
     "useDefineForClassFields": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "types": ["node"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [
+      "node"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -24,14 +30,35 @@
     "useUnknownInCatchVariables": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*", "./src/*"],
-      "@/utils/*": ["./src/utils/*", "./utils/*"],
-      "@/components/*": ["./components/*", "./src/components/*"],
-      "@/app/*": ["./app/*"],
-      "@/services/*": ["./src/services/*"],
-      "@/adapters/*": ["./src/adapters/*"],
-      "@/hooks/*": ["./hooks/*", "./src/hooks/*"],
-      "@/lib/*": ["./src/lib/*", "./lib/*"]
+      "@/*": [
+        "./*",
+        "./src/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/*",
+        "./utils/*"
+      ],
+      "@/components/*": [
+        "./components/*",
+        "./src/components/*"
+      ],
+      "@/app/*": [
+        "./app/*"
+      ],
+      "@/services/*": [
+        "./src/services/*"
+      ],
+      "@/adapters/*": [
+        "./src/adapters/*"
+      ],
+      "@/hooks/*": [
+        "./hooks/*",
+        "./src/hooks/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*",
+        "./lib/*"
+      ]
     },
     "allowJs": true,
     "incremental": true,
@@ -40,8 +67,7 @@
       {
         "name": "next"
       }
-    ],
-    "strictNullChecks": true
+    ]
   },
   "include": [
     "next-env.d.ts",
@@ -75,5 +101,9 @@
     "**/*.bak",
     "**/*.bak.*",
     "_archive_*/**"
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:12:50.083443"
 }

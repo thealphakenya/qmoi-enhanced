@@ -10,14 +10,14 @@ import sys
 
 # Define replacements  
 replacements = {
-    'http://localhost:3000': 'https://qmoi.ai',
-    'http://localhost:8080': 'https://qvillage.com',
-    'localhost:3000': 'qmoi.ai',
-    'localhost:8080': 'qvillage.com',
+    'https://production.qmoi.ai:3000': 'https://qmoi.ai',
+    'https://production.qmoi.ai:8080': 'https://qvillage.com',
+    'production.qmoi.ai:3000': 'qmoi.ai',
+    'production.qmoi.ai:8080': 'qvillage.com',
 }
 
 md_files = sorted(list(Path('.').rglob('*.md')))
-print(f'Found {len(md_files)} markdown files')
+logger.info(f'Found {len(md_files)} markdown files')
 
 files_modified = 0
 total_fixes = 0
@@ -25,7 +25,7 @@ modified_files = []
 
 for idx, md_file in enumerate(md_files):
     if idx % 1000 == 0:
-        print(f'Progress: {idx}/{len(md_files)}')
+        logger.info(f'Progress: {idx}/{len(md_files)}')
         sys.stdout.flush()
     
     try:
@@ -58,7 +58,7 @@ results = {
 with open('phase1_results.json', 'w') as f:
     json.dump(results, f, indent=2)
 
-print(f'\n✅ PHASE 1 COMPLETE!')
-print(f'Files modified: {files_modified}')
-print(f'Total fixes: {total_fixes}')
-print(f'Results saved to: phase1_results.json')
+logger.info(f'\n✅ PHASE 1 complete!')
+logger.info(f'Files modified: {files_modified}')
+logger.info(f'Total fixes: {total_fixes}')
+logger.info(f'Results saved to: phase1_results.json')

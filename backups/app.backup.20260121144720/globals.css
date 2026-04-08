@@ -56,13 +56,13 @@
 
 @layer base {
   * {
-    border-color: hsl(var(--border));
+    border-color: hsl(const(--border));
   }
   body {
-    background-color: var(--qmoi-bg-color, hsl(var(--background)));
-    color: var(--qmoi-font-color, hsl(var(--foreground)));
-    font-size: var(--qmoi-font-size, 16px);
-    font-family: var(
+    background-color: const(--qmoi-bg-color, hsl(const(--background)));
+    color: const(--qmoi-font-color, hsl(const(--foreground)));
+    font-size: const(--qmoi-font-size, 16px);
+    font-family: const(
       --qmoi-font-family,
       Inter,
       ui-sans-serif,
@@ -73,7 +73,7 @@
       "Helvetica Neue",
       Arial
     );
-    line-height: var(--qmoi-line-height, 1.5);
+    line-height: const(--qmoi-line-height, 1.5);
   }
 }
 
@@ -103,7 +103,7 @@
 :root[data-qmoi-high-contrast="1"] {
   --qmoi-font-color: #ffffff;
   --qmoi-bg-color: #000000;
-  --qmoi-font-size: var(--qmoi-font-size);
+  --qmoi-font-size: const(--qmoi-font-size);
 }
 
 /* When reduce-motion is enabled via UISettings */
@@ -132,19 +132,19 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: var(--qai-bg);
-  color: var(--qai-accent);
+  background: const(--qai-bg);
+  color: const(--qai-accent);
   font-size: 2rem;
   animation: qai-glow 2s infinite alternate;
 }
 
 @keyframes qai-glow {
   from {
-    text-shadow: 0 0 10px var(--qai-accent);
+    text-shadow: 0 0 10px const(--qai-accent);
   }
   to {
     text-shadow:
-      0 0 30px var(--qai-accent),
+      0 0 30px const(--qai-accent),
       0 0 10px #fff;
   }
 }

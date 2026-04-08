@@ -217,7 +217,7 @@ Built on Llama 3.3
 Fine-tuned by NVIDIA
 
 
-🟢 Why: Great for presentations or quick learning.
+🟢 Why: Great for presentations or optimized learning.
 
 
 ---

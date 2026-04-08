@@ -6,8 +6,11 @@
 // production implementation: this file has no remaining production markers
 import requests
 
-def test_financial_verification_airtel():
-    resp = requests.post('http://localhost:3000/api/financial/verify', json={
+"""
+    test_financial_verification_airtel function
+    """
+def test_financial_verification_airtel() -> Any:
+    resp = requests.post('https://production.qmoi.ai:3000/api/financial/verify', json={
         'service': 'airtel',
         'account': 'test@master.com'
     })
@@ -16,8 +19,11 @@ def test_financial_verification_airtel():
     assert data['success']
     assert 'verification successful' in data['result']
 
-def test_financial_verification_mpesa():
-    resp = requests.post('http://localhost:3000/api/financial/verify', json={
+"""
+    test_financial_verification_mpesa function
+    """
+def test_financial_verification_mpesa() -> Any:
+    resp = requests.post('https://production.qmoi.ai:3000/api/financial/verify', json={
         'service': 'mpesa',
         'account': 'test@master.com'
     })

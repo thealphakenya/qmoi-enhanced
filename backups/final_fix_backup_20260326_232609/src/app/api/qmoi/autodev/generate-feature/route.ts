@@ -8,12 +8,15 @@
  * Generate new features autonomously
  */
 
-import { safeConsoleError } from "@/utils/safeConsole";
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-import { TaskQueue } from "@/lib/taskQueue";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "next/server";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/taskQueue";
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { description } = body;
@@ -43,7 +46,7 @@ export async function POST(request: NextRequest) {
 
     // Create a track entry for auditing and tracking auto-prod actions
     try {
-      await fetch(new URL("/api/tracks", request.url).toString(), {
+      await apiClient.get(new URL("/api/tracks", request.url).toString(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

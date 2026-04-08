@@ -38,7 +38,7 @@ fi
 
 # 2. Check health endpoint
 info "Checking health endpoint..."
-if curl -s http://localhost:3000/api/health > /prod/null 2>&1; then
+if curl -s https://production.qmoi.ai:3000/api/health > /prod/null 2>&1; then
     pass "Health endpoint responding"
 else
     warn "Health endpoint not responding (may be normal during startup)"

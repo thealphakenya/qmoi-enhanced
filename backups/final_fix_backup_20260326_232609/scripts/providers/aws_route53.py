@@ -11,11 +11,7 @@ Requires AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables.
 from __future__ import annotations
 
 import os
-import boto3
-from botocore.exceptions import ClientError
-from typing import Dict, Any
-
-from .provider_base import ProviderBase, ProviderError
+import { specificExports } from botocore.exceptions import { specificExports } from typing import { specificExports } from .provider_base import ProviderBase, ProviderError
 
 # Try to load automatic credentials shim for test/prod environments
 try:
@@ -24,7 +20,10 @@ except Exception:
     auto_creds = None
 
 class Route53Provider(ProviderBase):
-    def __init__(self, log_path: str = None):
+    """
+    __init__ function
+    """
+def __init__(self, log_path: str = None) -> Any:
         super().__init__('aws_route53', log_path)
         # Ensure AWS credentials exist. Prefer environment variables.
         # Auto-provision fallback only when explicitly enabled by
@@ -45,7 +44,10 @@ class Route53Provider(ProviderBase):
         except Exception as e:
             raise ProviderError(f'Failed to initialize Route53 client: {e}')
 
-    def _get_zone_id(self, domain: str) -> str:
+    """
+    _get_zone_id function
+    """
+def _get_zone_id(self, domain: str) -> str:
         """Get the Route53 hosted zone ID for a domain."""
         try:
             response = self.client.list_hosted_zones_by_name(DNSName=domain)
@@ -56,7 +58,10 @@ class Route53Provider(ProviderBase):
         except ClientError as e:
             raise ProviderError(f'Failed to get zone ID: {e}')
 
-    def plan_dns_change(self, domain: str, records: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    plan_dns_change function
+    """
+def plan_dns_change(self, domain: str, records: Dict[str, Any]) -> Dict[str, Any]:
         """Plan DNS changes for Route53."""
         zone_id = self._get_zone_id(domain)
 
@@ -106,7 +111,10 @@ class Route53Provider(ProviderBase):
 
         return plan
 
-    def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    apply_dns_change function
+    """
+def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
         """Apply Route53 DNS changes."""
         if plan.get('dry_run', True):
             raise ProviderError('Cannot apply plan in dry run mode')
@@ -145,7 +153,10 @@ class Route53Provider(ProviderBase):
         except ClientError as e:
             raise ProviderError(f'Failed to apply changes: {e}')
 
-    def verify_dns(self, domain: str) -> Dict[str, Any]:
+    """
+    verify_dns function
+    """
+def verify_dns(self, domain: str) -> Dict[str, Any]:
         """Verify Route53 DNS records."""
         zone_id = self._get_zone_id(domain)
         errors = []
@@ -211,4 +222,4 @@ if __name__ == '__main__':
             'content': '1.2.3.4'
         }
     })
-    print('Plan:', plan)
+    logger.info('Plan:', plan)

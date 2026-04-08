@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as React from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import FolderIcon from "@mui/icons-material/Folder";
-import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/List";
+import { specificExports } from "@mui/material/ListItem";
+import { specificExports } from "@mui/material/ListItemIcon";
+import { specificExports } from "@mui/material/ListItemText";
+import { specificExports } from "@mui/icons-material/Folder";
+import { specificExports } from "@mui/icons-material/InsertDriveFile";
 
 const Files = [
   { name: "src", type: "folder" },
@@ -19,7 +19,10 @@ const Files = [
   { name: "next.config.js", type: "file" },
 ];
 
-export function FileExplorer() {
+export /**
+ * FileExplorer function
+ */
+function FileExplorer(): any {
   return (
     <List
       sx={{

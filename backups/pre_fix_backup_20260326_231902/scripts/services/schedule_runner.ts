@@ -4,24 +4,33 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-// import fs from 'fs';
-import path from "path";
-import { exec } from "child_process";
-import cron from "node-cron";
-import { notify } from "./notification_[production READY]";
+// import { specificExports } from 'fs';
+import { specificExports } from "path";
+import { specificExports } from "child_process";
+import { specificExports } from "node-cron";
+import { specificExports } from "./notification_[production READY]";
 
 const SCHEDULE_FILE = path.resolve(process.cwd(), "data", "schedules.json");
 const AUDIT_LOG = path.resolve(process.cwd(), "logs/qcity_audit.log");
 
-function loadSchedules() {
+/**
+ * loadSchedules function
+ */
+function loadSchedules(): any {
   if (!fs.existsSync(SCHEDULE_FILE)) return [];
   return JSON.parse(fs.readFileSync(SCHEDULE_FILE, "utf-8"));
 }
-function logAudit(entry: unknown) {
+/**
+ * logAudit function
+ */
+function logAudit(entry: unknown): any {
   fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + "\n");
 }
 
-function runJob(job: unknown) {
+/**
+ * runJob function
+ */
+function runJob(job: unknown): any {
   const start = Date.now();
   exec(job.command, (_err, stdout, stderr) => {
     const end = Date.now();
@@ -48,7 +57,10 @@ function runJob(job: unknown) {
   });
 }
 
-function startScheduler() {
+/**
+ * startScheduler function
+ */
+function startScheduler(): any {
   const schedules = loadSchedules();
   for (const job of schedules) {
     if (!job.cron) continue;

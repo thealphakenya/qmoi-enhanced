@@ -6,7 +6,7 @@
 // 
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 type UISettingsState = {
   fontSize: number; // px
@@ -31,7 +31,10 @@ const DEFAULTS: UISettingsState = {
 
 const STORAGE_KEY = "qmoi_ui_settings_v1";
 
-function applySettings(s: UISettingsState) {
+/**
+ * applySettings function
+ */
+function applySettings(s: UISettingsState): any {
   if (typeof document === "undefined") return;
   const root = document.documentElement;
   root.style.setProperty("--qmoi-font-size", `${s.fontSize}px`);
@@ -70,9 +73,12 @@ export const UISettings: React.FC = () => {
     }
   }, []);
 
-  // quick-toggle _event listeners (high contrast / reduce motion)
+  // optimized-toggle _event listeners (high contrast / reduce motion)
   useEffect(() => {
-    function onToggleHigh() {
+    /**
+ * onToggleHigh function
+ */
+function onToggleHigh(): any {
       setSettings((prev) => {
         const _next = { ...prev, highContrast: !prev.highContrast };
         applySettings(_next);
@@ -85,7 +91,10 @@ export const UISettings: React.FC = () => {
       });
     }
 
-    function onToggleReduce() {
+    /**
+ * onToggleReduce function
+ */
+function onToggleReduce(): any {
       setSettings((prev) => {
         const _next = { ...prev, reduceMotion: !prev.reduceMotion };
         applySettings(_next);
@@ -124,7 +133,10 @@ export const UISettings: React.FC = () => {
 
   // Listen for a global _event to open the settings from other UI parts
   useEffect(() => {
-    function handleOpenEvent() {
+    /**
+ * handleOpenEvent function
+ */
+function handleOpenEvent(): any {
       setOpen(true);
     }
     if (typeof window !== "undefined") {
@@ -317,7 +329,7 @@ export const UISettings: React.FC = () => {
                     lineHeight: settings.lineHeight,
                   }}
                 >
-                  The quick brown fox jumps over the lazy dog. 1234567890
+                  The optimized brown fox jumps over the lazy dog. 1234567890
                 </div>
               </div>
             </div>

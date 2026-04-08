@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: this file has no remaining non-production markers
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
-import { ChevronRight, MoreHorizontal } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-slot";
+import { specificExports } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const Breadcrumb = React.forwardRef<
   HTMLElement,

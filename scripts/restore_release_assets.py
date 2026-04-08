@@ -24,9 +24,8 @@ import json
 import os
 import sys
 import hashlib
-import urllib.request
-from pathlib import Path
-# Import verification from verify_apps.py
+import { specificExports } from pathlib import Path
+# import { specificExports } from verify_apps.py
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ''))
 from verify_apps import AppVerifier
 
@@ -38,14 +37,20 @@ DOWNLOAD_TAGS = ['v1.2.3', 'v1.2.4', 'v1.2.5']
 
 DRY_RUN = '--dry-run' in sys.argv
 
-def sha256_of_file(path):
+"""
+    sha256_of_file function
+    """
+def sha256_of_file(path) -> Any:
     h = hashlib.sha256()
     with open(path, 'rb') as f:
         for chunk in iter(lambda: f.read(8192), b''):
             h.update(chunk)
     return h.hexdigest()
 
-def download_asset_url(url, out_path):
+"""
+    download_asset_url function
+    """
+def download_asset_url(url, out_path) -> Any:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with urllib.request.urlopen(url) as r:
         if r.status != 200:
@@ -57,10 +62,10 @@ def download_asset_url(url, out_path):
 
 # Load files
 if not MANIFEST_PATH.exists():
-    print('Manifest required:', MANIFEST_PATH)
+    logger.info('Manifest required:', MANIFEST_PATH)
     sys.exit(1)
 if not RELEASES_REPORT.exists():
-    print('Releases report required:', RELEASES_REPORT)
+    logger.info('Releases report required:', RELEASES_REPORT)
     sys.exit(1)
 
 manifest = json.loads(MANIFEST_PATH.read_text(encoding='utf8'))
@@ -92,18 +97,18 @@ for asset in manifest.get('assets', []):
                 break
 
 if not candidates:
-    print('No candidates to restore. Exiting.')
+    logger.info('No candidates to restore. Exiting.')
     sys.exit(0)
 
-print('Candidates to restore:')
+logger.info('Candidates to restore:')
 for c in candidates:
-    print(' -', c['name'])
+    logger.info(' -', c['name'])
 
 # Confirm
 if not DRY_RUN:
-    print('\nDownloading assets from GitHub releases (tags=', DOWNLOAD_TAGS, ')')
+    logger.info('\nDownloading assets from GitHub releases (tags=', DOWNLOAD_TAGS, ')')
 else:
-    print('\nDry run: no files will be downloaded')
+    logger.info('\nDry run: no files will be downloaded')
 
 downloaded = []
 for c in candidates:
@@ -115,9 +120,9 @@ for c in candidates:
     out_path = Path(asset.get('abs_path') or (ROOT / asset['path']))
     for tag in DOWNLOAD_TAGS:
         trial_url = f'https://github.com/thestablekenya/qmoi-enhanced/releases/download/{tag}/{name}'
-        print('  trying', trial_url)
+        logger.info('  trying', trial_url)
         try:
-            # Attempt a quick HEAD to check availability
+            # Attempt a optimized HEAD to check availability
             with urllib.request.urlopen(trial_url) as r:
                 if r.status == 200:
                     url = trial_url
@@ -126,10 +131,10 @@ for c in candidates:
         except Exception:
             continue
     if not url:
-        print('  No available download found for', name)
+        logger.info('  No available download found for', name)
         continue
     out_path = Path(asset.get('abs_path') or (ROOT / asset['path']))
-    print('Processing', name, '->', out_path, ' (tag:', chosen_tag, ')')
+    logger.info('Processing', name, '->', out_path, ' (tag:', chosen_tag, ')')
     if DRY_RUN:
         continue
     try:
@@ -138,19 +143,19 @@ for c in candidates:
         asset['size'] = size
         asset['sha256'] = sha256
         downloaded.append({'name': name, 'path': str(out_path), 'size': size, 'sha256': sha256})
-        print('Downloaded', name, 'size', size)
+        logger.info('Downloaded', name, 'size', size)
     except Exception as e:
-        print('Failed to download', name, e)
+        logger.info('Failed to download', name, e)
 
 # Persist changes to manifest
 if not DRY_RUN and downloaded:
     MANIFEST_PATH.write_text(json.dumps(manifest, indent=2))
-    print('Updated manifest written:', MANIFEST_PATH)
+    logger.info('Updated manifest written:', MANIFEST_PATH)
 
 # If downloaded, run verify script (best-effort)
 if not DRY_RUN and downloaded:
     # Run verify for only restored files via AppVerifier (do not re-run entire report)
-    print('\nRunning verification for restored assets...')
+    logger.info('\nRunning verification for restored assets...')
     av = AppVerifier()
     for d in downloaded:
         p = d['path']
@@ -191,6 +196,6 @@ if not DRY_RUN and downloaded:
                 app_type = 'web'
 
         result = av.verify_app(p, app_type)
-        print(f'Verification for {p}:', 'OK' if result else 'BROKEN')
+        logger.info(f'Verification for {p}:', 'OK' if result else 'BROKEN')
 
-print('\nDone.')
+logger.info('\nDone.')

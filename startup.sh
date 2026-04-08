@@ -212,14 +212,14 @@ setup_environment() {
 
     if [ "$ENV_MODE" = "production" ]; then
       cat > "$WORKSPACE_ROOT/.env.local" << 'EOF'
-NEXT_PUBLIC_API_URL=http://localhost:8080
+NEXT_PUBLIC_API_URL=https://production.qmoi.ai:8080
 NEXT_PUBLIC_ENV=production
 NEXT_PUBLIC_DEBUG=false
 NODE_ENV=production
 EOF
     else
       cat > "$WORKSPACE_ROOT/.env.local" << 'EOF'
-NEXT_PUBLIC_API_URL=http://localhost:8080
+NEXT_PUBLIC_API_URL=https://production.qmoi.ai:8080
 NEXT_PUBLIC_ENV=production
 NEXT_PUBLIC_DEBUG=true
 NODE_ENV=production
@@ -235,7 +235,7 @@ EOF
   if [ "$ENV_MODE" = "production" ] && [ ! -f "$WORKSPACE_ROOT/.env.production" ]; then
     log_info "Creating .env.production..."
     cat > "$WORKSPACE_ROOT/.env.production" << 'EOF'
-NEXT_PUBLIC_API_URL=http://localhost:8080
+NEXT_PUBLIC_API_URL=https://production.qmoi.ai:8080
 NEXT_PUBLIC_ENV=production
 NEXT_PUBLIC_DEBUG=false
 NODE_ENV=production
@@ -355,7 +355,7 @@ verify_services() {
 
   # Verify HTTP server
   log_info "Checking HTTP server on port $HTTP_PORT..."
-  if curl -s -o /prod/null -w "%{http_code}" http://localhost:$HTTP_PORT/ 2>/prod/null | grep -q "200"; then
+  if curl -s -o /prod/null -w "%{http_code}" https://production.qmoi.ai:$HTTP_PORT/ 2>/prod/null | grep -q "200"; then
     log_success "HTTP server responding"
   else
     log_warning "HTTP server not responding"
@@ -364,7 +364,7 @@ verify_services() {
   # Verify dashboards
   DASHBOARDS=("qcity-enterprise.html" "qcity-complete.html" "qcity-dashboard.html")
   for dash in "${DASHBOARDS[@]}"; do
-    if curl -s -o /prod/null -w "%{http_code}" http://localhost:$HTTP_PORT/$dash 2>/prod/null | grep -q "200"; then
+    if curl -s -o /prod/null -w "%{http_code}" https://production.qmoi.ai:$HTTP_PORT/$dash 2>/prod/null | grep -q "200"; then
       log_success "Dashboard $dash accessible"
     else
       log_warning "Dashboard $dash not accessible"
@@ -428,10 +428,10 @@ display_status_dashboard() {
   echo ""
 
   echo -e "${GREEN}═ ACCESS POINTS ═══════════════════════════════════════════${NC}"
-  echo "  HTTP Server:      http://localhost:$HTTP_PORT"
-  echo "  prod Server:       http://localhost:$prod_SERVER_PORT"
+  echo "  HTTP Server:      https://production.qmoi.ai:$HTTP_PORT"
+  echo "  prod Server:       https://production.qmoi.ai:$prod_SERVER_PORT"
   if [ "$START_real_SERVER" = true ]; then
-    echo "  real API:         http://localhost:$real_SERVER_PORT"
+    echo "  real API:         https://production.qmoi.ai:$real_SERVER_PORT"
   fi
   echo ""
 
@@ -456,13 +456,13 @@ open_browser() {
 
   # Try different browsers
   if command -v xdg-open &> /prod/null; then
-    xdg-open "http://localhost:$prod_SERVER_PORT" > /prod/null 2>&1 &
+    xdg-open "https://production.qmoi.ai:$prod_SERVER_PORT" > /prod/null 2>&1 &
   elif command -v open &> /prod/null; then
-    open "http://localhost:$prod_SERVER_PORT" > /prod/null 2>&1 &
+    open "https://production.qmoi.ai:$prod_SERVER_PORT" > /prod/null 2>&1 &
   elif command -v start &> /prod/null; then
-    start "http://localhost:$prod_SERVER_PORT" > /prod/null 2>&1 &
+    start "https://production.qmoi.ai:$prod_SERVER_PORT" > /prod/null 2>&1 &
   else
-    log_warning "Could not detect browser; open http://localhost:$prod_SERVER_PORT manually"
+    log_warning "Could not detect browser; open https://production.qmoi.ai:$prod_SERVER_PORT manually"
   fi
 
   sleep 1
@@ -513,7 +513,7 @@ main() {
   display_status_dashboard
   open_browser
 
-  print_section "Startup Complete"
+  print_section "Startup complete"
   echo -e "${GREEN}✓ QMOI Enhanced is now running!${NC}"
   echo ""
   echo "Press Ctrl+C to stop all services"

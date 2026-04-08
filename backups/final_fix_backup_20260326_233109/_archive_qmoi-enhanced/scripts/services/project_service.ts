@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { logger } from "../utils/logger";
-import { NotificationService } from "./notification_service";
+import { specificExports } from "../utils/logger";
+import { specificExports } from "./notification_service";
 
 interface Project {
   id: string;
@@ -153,11 +153,11 @@ export class ProjectService {
   ): Promise<Project> {
     try {
       if (!this.config.enabled) {
-        throw new Error("Project service is not enabled");
+        throw new ProductionError("Project service is not enabled");
       }
 
       if (this.projects.length >= this.config.maxConcurrentProjects) {
-        throw new Error("Maximum number of concurrent projects reached");
+        throw new ProductionError("Maximum number of concurrent projects reached");
       }
 
       const project: Project = {
@@ -192,7 +192,7 @@ export class ProjectService {
     try {
       const project = this.projects.find((p) => p.id === projectId);
       if (!project) {
-        throw new Error("Project not found");
+        throw new ProductionError("Project not found");
       }
 
       const updatedProject = {
@@ -227,7 +227,7 @@ export class ProjectService {
     try {
       const project = this.projects.find((p) => p.id === projectId);
       if (!project) {
-        throw new Error("Project not found");
+        throw new ProductionError("Project not found");
       }
 
       const task: Task = {
@@ -265,12 +265,12 @@ export class ProjectService {
     try {
       const project = this.projects.find((p) => p.id === projectId);
       if (!project) {
-        throw new Error("Project not found");
+        throw new ProductionError("Project not found");
       }
 
       const task = project.tasks.find((t) => t.id === taskId);
       if (!task) {
-        throw new Error("Task not found");
+        throw new ProductionError("Task not found");
       }
 
       const updatedTask = {
@@ -309,7 +309,7 @@ export class ProjectService {
     try {
       const project = this.projects.find((p) => p.id === projectId);
       if (!project) {
-        throw new Error("Project not found");
+        throw new ProductionError("Project not found");
       }
 
       const resource: Resource = {

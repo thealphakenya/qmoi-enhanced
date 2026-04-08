@@ -17,16 +17,14 @@ Usage:
 - status: Health status (e.g., healthy, warning, error)
 - dashboard_url: Link to QMOI dashboard
 - status_url: Link to live status endpoint
-- token: Hugging Face token (optional, will use HF_TOKEN env var if not provided)
+- token: Hugging Face token (optional, will use HF_TOKEN env const if not provided)
 
 This script is robust, logs all actions, and never fails the workflow.
 """
 import os
 import sys
 import argparse
-import logging
-from datetime import datetime
-from huggingface_hub import HfApi, upload_file, hf_hub_download
+import { specificExports } from datetime import { specificExports } from huggingface_hub import HfApi, upload_file, hf_hub_download
 import json
 
 logging.basicConfig(
@@ -77,7 +75,7 @@ QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-h
 
 ## Links & Resources
 - [QMOI Hugging Face Space](https://huggingface.co/spaces/alphaqmoi/qmoi-ai-system)
-- [QMOI Project Documentation](https://github.com/your-org/stable-Q-ai)
+- [QMOI Project Documentation](https://github.com/your-org/latest-Q-ai)
 - [QMOI Dashboard](DASHBOARD_URL)
 - [Live Status](STATUS_URL)
 
@@ -89,7 +87,7 @@ QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-h
     from huggingface_hub import InferenceApi
     api = InferenceApi(repo_id="alphaqmoi/qmoi-ai-system")
     result = api(inputs={"text": "Hello QMOI!"})
-    print(result)
+    logger.info(result)
     ```
 - **Integration:**
   - Integrate with QMOI Spaces, WhatsApp, or your own apps using the API.
@@ -112,10 +110,16 @@ QMOI is a permanent, ever-evolving AI system—always running, always healing, a
 {STATS_SECTION}
 """
 
-def make_badge(label, value, color):
+"""
+    make_badge function
+    """
+def make_badge(label, value, color) -> Any:
     return f"{BADGE_BASE}{label}-{value}-{color}"
 
-def update_model_card(repo_id, version, health, status, dashboard_url, status_url, token=None):
+"""
+    update_model_card function
+    """
+def update_model_card(repo_id, version, health, status, dashboard_url, status_url, token=None) -> Any:
     api = HfApi()
     if not token:
         token = os.environ.get('HF_TOKEN')
@@ -170,7 +174,10 @@ def update_model_card(repo_id, version, health, status, dashboard_url, status_ur
         logger.error(f'Model card update failed: {e}')
         return False
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='QMOI Hugging Face Model Card Updater')
     parser.add_argument('--repo', required=True, help='Hugging Face repo id (e.g., alphaqmoi/qmoi-ai-system)')
     parser.add_argument('--version', required=True, help='Latest model version')

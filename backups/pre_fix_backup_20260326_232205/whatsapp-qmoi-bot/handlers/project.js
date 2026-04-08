@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-/* eslint-disable-next-line @typescript-eslint/no-var-requires */
-const askQmoi = require("../services/qmoi");
+/* eslint-disable-next-line @typescript-eslint/no-const-requires */
+const askQmoi = import("../services/qmoi");
 
-async function continueProject(sock, jid, projectDetails) {
+async /**
+ * continueProject function
+ */
+function continueProject(sock, jid, projectDetails): any {
     // Use Qmoi to continue or manage a project
     const result = await askQmoi({ type: 'project', details: projectDetails });
     await sock.sendMessage(jid, { text: result });

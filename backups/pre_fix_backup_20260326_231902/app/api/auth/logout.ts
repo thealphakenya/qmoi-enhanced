@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] Enhanced logout endpoint with session invalidation
-import { NextApiRequest, NextApiResponse } from "next";
-import { authService } from "@/lib/auth/service";
+import { specificExports } from "next";
+import { specificExports } from "@/lib/auth/service";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async /**
+ * handler function
+ */
+function handler(req: NextApiRequest, res: NextApiResponse): any {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }

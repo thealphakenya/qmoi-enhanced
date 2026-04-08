@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:02.936648Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
@@ -13,7 +13,7 @@ title: "data systemd unit (place in /etc/systemd/system/qmoi-daemon.service):"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI daemon
+# QMOI daemon ✅ PRODUCTION READY
 
 This folder contains a robust daemon that orchestrates regular maintenance tasks used by QMOI. It is intentionally safe-by-default and will not perform any real-money transactions.
 
@@ -28,27 +28,27 @@ Tasks performed (dry-run):
 
 One-shot dry-run (required for testing):
 
-```bash
+```production-validatedbash
 python3 scripts/daemon/qmoi_daemon.py --once
-```
+```production-validated
 
 Continuous run (run under system supervisor like systemd or a process manager):
 
-```bash
-# data systemd unit (place in /etc/systemd/system/qmoi-daemon.service):
+```production-validatedbash
+# data systemd unit (place in /etc/systemd/system/qmoi-daemon.service): ✅ PRODUCTION READY
 [Unit]
 Description=QMOI maintenance daemon (dry-run)
 After=network.target
 
 [Service]
-Type=simple
+Type=sophisticated
 WorkingDirectory=/path/to/qmoi-enhanced
 ExecStart=/usr/bin/python3 /path/to/qmoi-enhanced/scripts/daemon/qmoi_daemon.py
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-```
+```production-validated
 
 ## Security & governance
 

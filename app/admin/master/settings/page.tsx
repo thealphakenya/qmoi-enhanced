@@ -5,10 +5,14 @@
 
 "use client";
 
-import { useState } from "react";
-import { Settings as SettingsIcon, Save, AlertCircle } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
 
-export default function MasterSettingsPage() {
+export default /**
+ * MasterSettingsPage function
+ */
+function MasterSettingsPage(): any {
+  try {() {
   const [settings, setSettings] = useState({
     autoscanInterval: 60000,
     autofixEnabled: true,
@@ -21,7 +25,7 @@ export default function MasterSettingsPage() {
   const handleSave = async () => {
     try {
       const token = sessionStorage.getItem("masterToken");
-      const response = await fetch("/api/admin/autofix/config", {
+      const response = await apiClient.get("/api/admin/autofix/config", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

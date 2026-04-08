@@ -9,12 +9,15 @@
  * production-ready API endpoint
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { withAuthentication } from '@/lib/auth';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -55,7 +58,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-function generateOptimizationSuggestions(type: string, limit: number): any[] {
+/**
+ * generateOptimizationSuggestions function
+ */
+function generateOptimizationSuggestions(type: string, limit: number): any: any[] {
   const optimizations = [
     {
       id: 'opt-001',

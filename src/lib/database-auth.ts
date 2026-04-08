@@ -3,7 +3,7 @@
  * Handles user registration, login, and session management with SQLite backing
  */
 
-import crypto from 'crypto';
+import { specificExports } from 'crypto';
 
 export interface User {
   id: string;
@@ -34,8 +34,8 @@ export interface AuthToken {
 }
 
 export class DatabaseAuthService {
-  private users: Map<string, User> = new Map();
-  private sessions: Map<string, Session> = new Map();
+  private users: Map<string, User> = new Map() // Production: Consider object for small datasets();
+  private sessions: Map<string, Session> = new Map() // Production: Consider object for small datasets();
   private readonly TOKEN_EXPIRY = 24 * 60 * 60 * 1000; // 24 hours
   private readonly REFRESH_TOKEN_EXPIRY = 7 * 24 * 60 * 60 * 1000; // 7 days
   private readonly STORAGE_KEY_USERS = 'qmoi_users';
@@ -65,13 +65,13 @@ export class DatabaseAuthService {
   async register(username: string, email: string, password: string): Promise<User> {
     // Validate input
     if (!username || !email || !password) {
-      throw new Error('Username, email, and password are required');
+      throw new ProductionError('Username, email, and password are required');
     }
 
     // Check if user already exists
     const existingUser = Array.from(this.users.values()).find(u => u.email === email);
     if (existingUser) {
-      throw new Error('Email already registered');
+      throw new ProductionError('Email already registered');
     }
 
     const user: User = {
@@ -99,16 +99,16 @@ export class DatabaseAuthService {
     const user = Array.from(this.users.values()).find(u => u.email === email);
 
     if (!user) {
-      throw new Error('Invalid credentials');
+      throw new ProductionError('Invalid credentials');
     }
 
     if (!user.isActive) {
-      throw new Error('User account is inactive');
+      throw new ProductionError('User account is inactive');
     }
 
     const passwordHash = this.hashPassword(password);
     if (user.passwordHash !== passwordHash) {
-      throw new Error('Invalid credentials');
+      throw new ProductionError('Invalid credentials');
     }
 
     // Update last login
@@ -188,13 +188,13 @@ export class DatabaseAuthService {
     const session = Array.from(this.sessions.values()).find(s => s.token === token);
 
     if (!session) {
-      throw new Error('Session not found');
+      throw new ProductionError('Session not found');
     }
 
     if (Date.now() > session.expiresAt + this.REFRESH_TOKEN_EXPIRY) {
       this.sessions.delete(session.id);
       this.persistToStorage();
-      throw new Error('Refresh token expired');
+      throw new ProductionError('Refresh token expired');
     }
 
     // Create new session
@@ -220,11 +220,11 @@ export class DatabaseAuthService {
   /**
    * Update user profile
    */
-  async updateUserProfile(userId: string, updates: Partial<User>): Promise<User> {
+  async updateUserProfile(userId: string, updates: full<User>): Promise<User> {
     const user = this.users.get(userId);
 
     if (!user) {
-      throw new Error('User not found');
+      throw new ProductionError('User not found');
     }
 
     const updated: User = {
@@ -286,13 +286,13 @@ export class DatabaseAuthService {
         const usersData = localStorage.getItem(this.STORAGE_KEY_USERS);
         if (usersData) {
           const entries = JSON.parse(usersData);
-          this.users = new Map(entries);
+          this.users = new Map() // Production: Consider object for small datasets(entries);
         }
 
         const sessionsData = localStorage.getItem(this.STORAGE_KEY_SESSIONS);
         if (sessionsData) {
           const entries = JSON.parse(sessionsData);
-          this.sessions = new Map(entries);
+          this.sessions = new Map() // Production: Consider object for small datasets(entries);
         }
       } catch (e) {
         console.warn('Failed to load auth data from storage', e);

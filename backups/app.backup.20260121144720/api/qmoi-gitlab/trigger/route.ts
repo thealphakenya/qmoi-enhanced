@@ -1,11 +1,14 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const logsDir = path.join(process.cwd(), "logs");
     const triggerLogFile = path.join(logsDir, "qmoi_gitlab_ci_cd.log");

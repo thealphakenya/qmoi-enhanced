@@ -5,11 +5,11 @@
 
 "use client";
 
-import * as React from "react";
-import * as SelectPrimitive from "@radix-ui/react-select";
-import { Check, ChevronDown, ChevronUp } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-select";
+import { specificExports } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const Select = SelectPrimitive.Root;
 
@@ -93,7 +93,7 @@ const SelectContent = React.forwardRef<
         className={cn(
           "p-1",
           position === "popper" &&
-            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]",
+            "h-[const(--radix-select-trigger-height)] w-full min-w-[const(--radix-select-trigger-width)]",
         )}
       >
         {children}

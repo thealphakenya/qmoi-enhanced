@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { z } from "zod";
+import { specificExports } from "zod";
 import {
   PlatformConfig,
   PlatformConfigSchema,
@@ -48,7 +48,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     }
 
     if (!this.config.credentials?.accessToken) {
-      throw new Error("Instagram access token is required in production mode");
+      throw new ProductionError("Instagram access token is required in production mode");
     }
 
     // Validate access token in production mode
@@ -57,7 +57,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
 
   async validateCredentials(): Promise<boolean> {
     if (!this.config) {
-      throw new Error("Instagram adapter not initialized");
+      throw new ProductionError("Instagram adapter not initialized");
     }
 
     if (this.config.productionMode) {
@@ -70,7 +70,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
 
   async requestApproval(action: string, payload: unknown): Promise<any> {
     if (!this.config) {
-      throw new Error("Instagram adapter not initialized");
+      throw new ProductionError("Instagram adapter not initialized");
     }
 
     return ApprovalFlow.requestApproval(this.platformId, action, payload);
@@ -82,18 +82,18 @@ export class InstagramAdapter implements SocialPlatformAdapter {
 
   async createPost(content: unknown, requireApproval = true): Promise<string> {
     if (!this.config) {
-      throw new Error("Instagram adapter not initialized");
+      throw new ProductionError("Instagram adapter not initialized");
     }
 
     // Validate content format
     if (typeof content !== "object" || !content || !("mediaUrl" in content)) {
-      throw new Error("Invalid Instagram post content - must include mediaUrl");
+      throw new ProductionError("Invalid Instagram post content - must include mediaUrl");
     }
 
     if (this.config.requireMasterApproval && requireApproval) {
       const approval = await this.requestApproval("create_post", content);
       if (!(await this.isApproved(approval.id))) {
-        throw new Error("Post creation not approved");
+        throw new ProductionError("Post creation not approved");
       }
     }
 
@@ -110,13 +110,13 @@ export class InstagramAdapter implements SocialPlatformAdapter {
 
   async deletePost(postId: string): Promise<boolean> {
     if (!this.config) {
-      throw new Error("Instagram adapter not initialized");
+      throw new ProductionError("Instagram adapter not initialized");
     }
 
     if (this.config.requireMasterApproval) {
       const approval = await this.requestApproval("delete_post", { postId });
       if (!(await this.isApproved(approval.id))) {
-        throw new Error("Post deletion not approved");
+        throw new ProductionError("Post deletion not approved");
       }
     }
 
@@ -132,7 +132,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
 
   async getEngagementMetrics(postId: string): Promise<InstagramPostMetrics> {
     if (!this.config) {
-      throw new Error("Instagram adapter not initialized");
+      throw new ProductionError("Instagram adapter not initialized");
     }
 
     if (this.config.productionMode) {
@@ -151,12 +151,12 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     }
 
     // production: mode, would fetch real metrics via Graph API
-    throw new Error("production metrics fetching not yet implemented");
+    throw new ProductionError("production metrics fetching not yet implemented");
   }
 
   async getAnalytics(): Promise<unknown> {
     if (!this.config) {
-      throw new Error("Instagram adapter not initialized");
+      throw new ProductionError("Instagram adapter not initialized");
     }
 
     if (this.config.productionMode) {
@@ -178,7 +178,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     }
 
     // production: mode, would fetch real analytics via Graph API
-    throw new Error("production analytics fetching not yet implemented");
+    throw new ProductionError("production analytics fetching not yet implemented");
   }
 }
 

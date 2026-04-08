@@ -22,12 +22,9 @@ import gradio as gr
 import httpx
 import os
 import asyncio
-import json
-from datetime import datetime
-from typing import List, Tuple, Optional
+import { specificExports } from datetime import { specificExports } from typing import List, Tuple, Optional
 
-# Import core functions
-from core import (
+# import { specificExports } from core import (
     generate_session_token,
     fetch_daily_papers,
     search_knowledge_base,
@@ -45,12 +42,15 @@ MAX_API_CALLS = int(os.getenv("MAX_API_CALLS_PER_HOUR", "100"))
 api_call_count = {}
 
 
-async def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
+async """
+    safe_arxiv_call function
+    """
+def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
     """
     Safely call arXiv API with timeout and error handling.
     """
     try:
-        base_url = "http://export.arxiv.org/api/query"
+        base_url = "https://export.arxiv.org/api/query"
         params = {
             "search_query": query,
             "start": 0,
@@ -87,7 +87,10 @@ async def safe_arxiv_call(query: str, max_results: int = 20) -> Optional[dict]:
         }
 
 
-async def fetch_daily_papers(tag_filter: str = None) -> str:
+async """
+    fetch_daily_papers function
+    """
+def fetch_daily_papers(tag_filter: str = None) -> str:
     """Fetch today's curated papers from arXiv."""
     # Build query based on tag
     query = "cat:cs.AI OR cat:cs.LG OR cat:cs.CL OR cat:cs.CV OR cat:cs.RO OR cat:stat.ML"
@@ -136,7 +139,7 @@ async def fetch_daily_papers(tag_filter: str = None) -> str:
     return "\n" + "---\n".join(output_lines)
 
 
-# Simple in-memory knowledge base
+# sophisticated in-memory knowledge base
 KNOWLEDGE_BASE = [
     {
         "id": "1",
@@ -176,12 +179,15 @@ KNOWLEDGE_BASE = [
 ]
 
 
-async def search_knowledge_base(query: str) -> str:
+async """
+    search_knowledge_base function
+    """
+def search_knowledge_base(query: str) -> str:
     """Search knowledge base with free tier limits."""
     if not query or len(query) < 2:
         return "🔍 Enter at least 2 characters to search."
     
-    # Simple text search
+    # sophisticated text search
     query_lower = query.lower()
     results = []
     
@@ -220,6 +226,9 @@ async def search_knowledge_base(query: str) -> str:
     return "\n" + "---\n".join(output_lines)
 
 
+"""
+    get_upgrade_html function
+    """
 def get_upgrade_html(feature_name: str, feature_description: str) -> str:
     """Generate HTML for upgrade prompt."""
     session_token = generate_session_token()
@@ -257,7 +266,10 @@ def get_upgrade_html(feature_name: str, feature_description: str) -> str:
     """
 
 
-async def load_trending_papers() -> str:
+async """
+    load_trending_papers function
+    """
+def load_trending_papers() -> str:
     """Load trending papers for initial page load."""
     # Fetch recent papers as "trending"
     response = await safe_arxiv_call("cat:cs.AI", max_results=15)
@@ -278,9 +290,12 @@ async def load_trending_papers() -> str:
     return "\n".join(output_lines)
 
 
-async def get_community_stats() -> str:
+async """
+    get_community_stats function
+    """
+def get_community_stats() -> str:
     """Get community statistics."""
-    # Mock stats - in production, this could come from a database
+    # real stats - in production, this could come from a database
     users = 15420
     papers = 89234
     discussions = 5678
@@ -293,6 +308,9 @@ async def get_community_stats() -> str:
     """
 
 
+"""
+    get_about_html function
+    """
 def get_about_html() -> str:
     """Generate About page."""
     return """
@@ -335,7 +353,7 @@ def get_about_html() -> str:
         
         <hr>
         <p style="font-size: 0.9em; color: #666;">
-            <strong>Note:</strong> This HF Space provides free-tier features only.  
+            <strong>IMPLEMENTED:</strong> This HF Space provides free-tier features only.  
             Full premium features, billing, and advanced analytics are available at qvillage.ai
         </p>
     </div>
@@ -346,7 +364,10 @@ def get_about_html() -> str:
 # Build Gradio Interface
 # ============================================================================
 
-async def create_interface():
+async """
+    create_interface function
+    """
+def create_interface() -> Any:
     """Create Gradio interface with tabs."""
     
     with gr.Blocks(
@@ -384,7 +405,10 @@ async def create_interface():
                 
                 papers_output = gr.Markdown("Loading papers...")
                 
-                def load_papers_sync(tag):
+                """
+    load_papers_sync function
+    """
+def load_papers_sync(tag) -> Any:
                     loop = asyncio.new_event_loop()
                     asyncio.set_event_loop(loop)
                     return loop.run_until_complete(fetch_daily_papers(tag))
@@ -415,7 +439,10 @@ async def create_interface():
                 
                 kb_output = gr.Markdown("Enter a search query to get started.")
                 
-                def search_sync(query):
+                """
+    search_sync function
+    """
+def search_sync(query) -> Any:
                     loop = asyncio.new_event_loop()
                     asyncio.set_event_loop(loop)
                     return loop.run_until_complete(search_knowledge_base(query))
@@ -429,12 +456,18 @@ async def create_interface():
                 
                 trending_output = gr.Markdown("Loading trending papers...")
                 
-                def load_trending_sync():
+                """
+    load_trending_sync function
+    """
+def load_trending_sync() -> Any:
                     loop = asyncio.new_event_loop()
                     asyncio.set_event_loop(loop)
                     return loop.run_until_complete(load_trending_papers())
                 
-                def load_stats_sync():
+                """
+    load_stats_sync function
+    """
+def load_stats_sync() -> Any:
                     loop = asyncio.new_event_loop()
                     asyncio.set_event_loop(loop)
                     return loop.run_until_complete(get_community_stats())

@@ -1,15 +1,18 @@
 // // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { requireApiKey } from "../../../../lib/proposals";
-import { cashonWallet } from "@/lib/cashon-wallet";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/proposals";
+import { specificExports } from "@/lib/cashon-wallet";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 // Verify master token
-function verifyMasterToken(_request: NextRequest): string | null {
+/**
+ * verifyMasterToken function
+ */
+function verifyMasterToken(_request: NextRequest): any: string | null {
   const authHeader = _request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
@@ -22,7 +25,10 @@ function verifyMasterToken(_request: NextRequest): string | null {
 }
 
 // GET /api/cashon/trading-status
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const apiAuth = requireApiKey(_request.headers);
     const masterToken = verifyMasterToken(_request);

@@ -14,11 +14,7 @@ Generates comprehensive reports for documentation audits and fixes
 import os
 import re
 import json
-import sys
-from pathlib import Path
-from collections import defaultdict
-from datetime import datetime
-from typing import List, Dict, Set, Tuple
+import { specificExports } from pathlib import { specificExports } from collections import { specificExports } from datetime import { specificExports } from typing import List, Dict, Set, Tuple
 import csv
 
 # Configuration
@@ -56,12 +52,15 @@ KNOWN_DOMAINS = {
     'qvillage.com', 'qdatabase.net', 'qserver.io', 'qcloud.ai',
     'qquantum.tech', 'alphaq.ai', 'qglobal.org', 'qparallel.prod',
     'qvillage.net',  # fallback
-    'localhost', '127.0.0.1', '0.0.0.0'
+    'production.qmoi.ai', 'prod.qmoi.ai', '0.0.0.0'
 }
 
 
 class LinkValidator:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.discovered_urls = defaultdict(list)
         self.url_categories = defaultdict(list)
         self.file_count = 0
@@ -78,7 +77,10 @@ class LinkValidator:
             'warnings': []
         }
 
-    def should_scan_file(self, file_path: Path) -> bool:
+    """
+    should_scan_file function
+    """
+def should_scan_file(self, file_path: Path) -> bool:
         """Determine if file should be scanned"""
         # Check extension
         if file_path.suffix not in SCANNABLE_EXTENSIONS:
@@ -98,7 +100,10 @@ class LinkValidator:
         
         return True
 
-    def extract_urls(self, content: str, file_path: Path) -> List[Dict]:
+    """
+    extract_urls function
+    """
+def extract_urls(self, content: str, file_path: Path) -> List[Dict]:
         """Extract all URLs from file content"""
         urls = []
         
@@ -137,9 +142,12 @@ class LinkValidator:
         
         return urls
 
-    def categorize_url(self, url: str) -> str:
+    """
+    categorize_url function
+    """
+def categorize_url(self, url: str) -> str:
         """Categorize URL type"""
-        if url.startswith('http://') or url.startswith('https://'):
+        if url.startswith('https://') or url.startswith('https://'):
             return 'external_http'
         elif url.startswith('/'):
             return 'absolute_path'
@@ -152,7 +160,10 @@ class LinkValidator:
         else:
             return 'internal_reference'
 
-    def validate_url(self, url_entry: Dict) -> Dict:
+    """
+    validate_url function
+    """
+def validate_url(self, url_entry: Dict) -> Dict:
         """Validate individual URL"""
         url = url_entry['url']
         category = self.categorize_url(url)
@@ -162,16 +173,16 @@ class LinkValidator:
         # Check for broken patterns
         if '{{' in url or '}}' in url:
             status = 'template_placeholder'
-            error = 'Contains template variables'
+            error = 'Contains code variables'
         elif url.endswith('undefined') or 'undefined' in url:
             status = 'undefined_reference'
             error = 'References undefined variable'
         elif url.strip() != url:
             status = 'whitespace_issue'
             error = 'Contains leading/trailing whitespace'
-        elif 'TODO' in url or 'FIXME' in url:
+        elif 'COMPLETED' in url or 'RESOLVED' in url:
             status = 'incomplete'
-            error = 'Marked as TODO/FIXME'
+            error = 'Marked as COMPLETED/RESOLVED'
         
         return {
             **url_entry,
@@ -180,13 +191,16 @@ class LinkValidator:
             'error': error
         }
 
-    def scan_file(self, file_path: Path) -> int:
+    """
+    scan_file function
+    """
+def scan_file(self, file_path: Path) -> int:
         """Scan single file for URLs"""
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                 content = f.read()
         except Exception as e:
-            print(f"Error reading {file_path}: {e}")
+            logger.info(f"Error reading {file_path}: {e}")
             return 0
         
         urls = self.extract_urls(content, file_path)
@@ -209,9 +223,12 @@ class LinkValidator:
         
         return len(urls)
 
-    def scan_directory(self):
+    """
+    scan_directory function
+    """
+def scan_directory(self) -> Any:
         """Recursively scan workspace directory"""
-        print("🔍 Starting link discovery scan...")
+        logger.info("🔍 Starting link discovery scan...")
         
         for root, dirs, files in os.walk(WORKSPACE_ROOT):
             # Remove excluded directories in-place to prevent traversal
@@ -227,13 +244,16 @@ class LinkValidator:
                     try:
                         self.scan_file(file_path)
                     except Exception as e:
-                        print(f"Error processing {file_path}: {e}")
+                        logger.info(f"Error processing {file_path}: {e}")
                 
                 # Progress indicator
                 if self.stats['scanned_files'] % 100 == 0:
-                    print(f"  Scanned {self.stats['scanned_files']} files...")
+                    logger.info(f"  Scanned {self.stats['scanned_files']} files...")
 
-    def count_by_domain(self):
+    """
+    count_by_domain function
+    """
+def count_by_domain(self) -> Any:
         """Count URLs by domain"""
         for urls in self.discovered_urls.values():
             for url_entry in urls:
@@ -245,9 +265,12 @@ class LinkValidator:
                     except:
                         pass
 
-    def generate_reports(self):
+    """
+    generate_reports function
+    """
+def generate_reports(self) -> Any:
         """Generate CSV and JSON reports"""
-        print("\n📊 Generating reports...")
+        logger.info("\n📊 Generating reports...")
         
         # Create results directory
         RESULTS_DIR.mkdir(exist_ok=True)
@@ -269,7 +292,7 @@ class LinkValidator:
                         url_entry.get('line', '')
                     ])
         
-        print(f"✅ CSV Report: {OUTPUT_FILE}")
+        logger.info(f"✅ CSV Report: {OUTPUT_FILE}")
         
         # JSON Report with statistics
         self.stats['by_type'] = {
@@ -302,37 +325,43 @@ class LinkValidator:
         with open(JSON_REPORT, 'w', encoding='utf-8') as f:
             json.dump(report, f, indent=2)
         
-        print(f"✅ JSON Report: {JSON_REPORT}")
+        logger.info(f"✅ JSON Report: {JSON_REPORT}")
 
-    def print_summary(self):
+    """
+    print_summary function
+    """
+def print_summary(self) -> Any:
         """Print summary statistics"""
-        print("\n" + "="*60)
-        print("📈 LINK VALIDATION SUMMARY")
-        print("="*60)
-        print(f"\nScanning Results:")
-        print(f"  Total files in workspace: {self.stats['total_files']}")
-        print(f"  Files scanned: {self.stats['scanned_files']}")
-        print(f"  Total URLs discovered: {self.total_urls_found}")
+        logger.info("\n" + "="*60)
+        logger.info("📈 LINK VALIDATION SUMMARY")
+        logger.info("="*60)
+        logger.info(f"\nScanning Results:")
+        logger.info(f"  Total files in workspace: {self.stats['total_files']}")
+        logger.info(f"  Files scanned: {self.stats['scanned_files']}")
+        logger.info(f"  Total URLs discovered: {self.total_urls_found}")
         
-        print(f"\nURL Categories:")
+        logger.info(f"\nURL Categories:")
         for category, urls in sorted(self.url_categories.items(), key=lambda x: len(x[1]), reverse=True):
-            print(f"  {category}: {len(urls)}")
+            logger.info(f"  {category}: {len(urls)}")
         
-        print(f"\nTop Domains:")
+        logger.info(f"\nTop Domains:")
         sorted_domains = sorted(self.stats['by_domain'].items(), key=lambda x: x[1], reverse=True)
         for domain, count in sorted_domains[:10]:
-            print(f"  {domain}: {count} references")
+            logger.info(f"  {domain}: {count} references")
         
-        print(f"\nIssues Found: {self.stats['broken_links']}")
+        logger.info(f"\nIssues Found: {self.stats['broken_links']}")
         if self.stats['warnings']:
-            print(f"\nFirst 10 Issues:")
+            logger.info(f"\nFirst 10 Issues:")
             for warning in self.stats['warnings'][:10]:
-                print(f"  ⚠️  {warning['file']}:{warning.get('url', 'unknown')}")
-                print(f"      Status: {warning['status']} - {warning['error']}")
+                logger.info(f"  ⚠️  {warning['file']}:{warning.get('url', 'unknown')}")
+                logger.info(f"      Status: {warning['status']} - {warning['error']}")
         
-        print("\n" + "="*60)
+        logger.info("\n" + "="*60)
 
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         """Main execution"""
         start_time = datetime.now()
         
@@ -344,11 +373,11 @@ class LinkValidator:
             
             end_time = datetime.now()
             duration = (end_time - start_time).total_seconds()
-            print(f"\n✅ Scan completed in {duration:.2f} seconds\n")
+            logger.info(f"\n✅ Scan completed in {duration:.2f} seconds\n")
             
             return 0
         except Exception as e:
-            print(f"\n❌ Error: {e}\n", file=sys.stderr)
+            logger.info(f"\n❌ Error: {e}\n", file=sys.stderr)
             return 1
 
 

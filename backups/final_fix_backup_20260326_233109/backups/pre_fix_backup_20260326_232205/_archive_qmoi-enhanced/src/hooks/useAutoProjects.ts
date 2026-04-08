@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { useState, useEffect, useCallback } from "react";
+import { specificExports } from "react";
 
 interface AutoProject {
   id: string;
@@ -251,7 +251,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       .log("📱 WhatsApp notification to master:", message);
 
       // production implementation, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/notify-master', {
+      // await apiClient.get('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })
@@ -267,7 +267,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       .log('📱 Creating "Qmoi Auto Projects" WhatsApp group');
 
       // production implementation, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/create-group', {
+      // await apiClient.get('/api/whatsapp/create-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({
@@ -289,7 +289,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       .log("📱 Posting to WhatsApp group:", message);
 
       // production implementation, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/post-to-group', {
+      // await apiClient.get('/api/whatsapp/post-to-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })

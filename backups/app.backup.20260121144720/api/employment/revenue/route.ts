@@ -1,9 +1,9 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
+// IMPLEMENTED: 1 
+import { specificExports } from "next/server";
+import { specificExports } from "zod";
 
 // Revenue generation schemas
 const MicrotaskSchema = z.object({
@@ -74,10 +74,13 @@ const MPESA_CREDENTIALS = {
 };
 
 // Email backup function
-async function backupCredentialsToEmail(
+async /**
+ * backupCredentialsToEmail function
+ */
+function backupCredentialsToEmail(
   credentials: unknown,
   platform: string,
-) {
+): any {
   try {
     const emailData = {
       to: "rovicviccy@gmail.com",
@@ -92,7 +95,7 @@ async function backupCredentialsToEmail(
     (console as any).log("Credentials backed up to email:", emailData);
 
     // Backup to QMOI server
-    await fetch("/api/qmoi-database", {
+    await apiClient.get("/api/qmoi-database", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -108,7 +111,10 @@ async function backupCredentialsToEmail(
 }
 
 // Platform account creation functions
-async function createPlatformAccount(platform: string, accountData: unknown) {
+async /**
+ * createPlatformAccount function
+ */
+function createPlatformAccount(platform: string, accountData: unknown): any {
   try {
     const account = {
       id: `acc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -204,9 +210,12 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
 }
 
 // Revenue generation functions
-async function generateMicrotaskRevenue(
+async /**
+ * generateMicrotaskRevenue function
+ */
+function generateMicrotaskRevenue(
   taskData: z.infer<typeof MicrotaskSchema>,
-) {
+): any {
   try {
     
     const clientPayment = (taskData.reward || 0) * 1.5; // QMOI takes 33% cut
@@ -232,9 +241,12 @@ async function generateMicrotaskRevenue(
   }
 }
 
-async function generateAffiliateRevenue(
+async /**
+ * generateAffiliateRevenue function
+ */
+function generateAffiliateRevenue(
   campaignData: z.infer<typeof AffiliateCampaignSchema>,
-) {
+): any {
   try {
     
     const sales = Math.floor(Math.random() * 10) + 1; // Random sales 1-10
@@ -264,9 +276,12 @@ async function generateAffiliateRevenue(
   }
 }
 
-async function generateContentRevenue(
+async /**
+ * generateContentRevenue function
+ */
+function generateContentRevenue(
   projectData: z.infer<typeof ContentProjectSchema>,
-) {
+): any {
   try {
     
     const salePrice = (projectData.reward || 0) * 3; // Content sold for 3x reward
@@ -292,9 +307,12 @@ async function generateContentRevenue(
   }
 }
 
-async function generateReferralRevenue(
+async /**
+ * generateReferralRevenue function
+ */
+function generateReferralRevenue(
   referralData: z.infer<typeof ReferralProgramSchema>,
-) {
+): any {
   try {
     
     const referrals = Math.floor(Math.random() * 5) + 1; // Random referrals 1-5
@@ -323,10 +341,13 @@ async function generateReferralRevenue(
 }
 
 // M-Pesa integration
-async function addToMpesaAccount(amount: number, description: string) {
+async /**
+ * addToMpesaAccount function
+ */
+function addToMpesaAccount(amount: number, description: string): any {
   try {
     
-    const _response = await fetch(
+    const _response = await apiClient.get(
       "https://production.safaricom.co.ke/mpesa/c2b/v1/
       {
         method: "POST",
@@ -365,7 +386,10 @@ async function addToMpesaAccount(amount: number, description: string) {
 }
 
 // Additional revenue streams
-async function generateSurveyRevenue(surveyData: { title?: string }) {
+async /**
+ * generateSurveyRevenue function
+ */
+function generateSurveyRevenue(surveyData: { title?: string }): any {
   try {
     const participants = Math.floor(Math.random() * 20) + 5; // 5-25 participants
     const rewardPerParticipant = 5; // $5 per survey
@@ -391,7 +415,10 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
   }
 }
 
-async function generateDataLabelingRevenue(labelingData: { project?: string }) {
+async /**
+ * generateDataLabelingRevenue function
+ */
+function generateDataLabelingRevenue(labelingData: { project?: string }): any {
   try {
     const dataPoints = Math.floor(Math.random() * 1000) + 100; // 100-1100 data points
     const rewardPerPoint = 0.1; // $0.10 per data point
@@ -417,7 +444,10 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
   }
 }
 
-async function generateSaaSResellingRevenue(saasData: { service?: string }) {
+async /**
+ * generateSaaSResellingRevenue function
+ */
+function generateSaaSResellingRevenue(saasData: { service?: string }): any {
   try {
     const subscriptions = Math.floor(Math.random() * 50) + 10; // 10-60 subscriptions
     const monthlyFee = 29; // $29/month per subscription
@@ -444,7 +474,10 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
   }
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   const { searchParams } = new URL(_request.url);
   const type = searchParams.get("type"); // 'microtasks', 'affiliate', 'content', 'referral', 'platforms', 'revenue'
   const status = searchParams.get("status");
@@ -512,7 +545,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { action, ...data } = body;
@@ -716,7 +752,10 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-export async function PUT(_request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { id, type, ...updates } = body;

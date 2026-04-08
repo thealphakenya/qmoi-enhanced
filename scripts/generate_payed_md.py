@@ -40,7 +40,7 @@ parser.add_argument('--run-gen-refs', action='store_true', help='Run scripts/gen
 args = parser.parse_args()
 
 if not IN.exists():
-    print('platformspayed.txt not found at', IN)
+    logger.info('platformspayed.txt not found at', IN)
     sys.exit(1)
 
 text = IN.read_text(encoding='utf-8')
@@ -83,7 +83,7 @@ for title, lines in sections:
     fname = f"{key}PAYED.md"
     outp = OUT_DIR / fname
     if outp.exists() and not args.force:
-        print('Skipping existing', fname)
+        logger.info('Skipping existing', fname)
         continue
     # If billing is not explicitly enabled, avoid creating final PAYED.md files.
     # Instead write a tiny final marker so the operator knows generation was
@@ -91,7 +91,7 @@ for title, lines in sections:
     if not billing_allowed():
         implementation = OUT_DIR / f"{fname}.payed-final.md"
         implementation.write_text('\n'.join([f'# {title} PAYED (final)', '', 'Generation blocked: billing enabled.']), encoding='utf-8')
-        print('Billing enabled; wrote final', implementation.name)
+        logger.info('Billing enabled; wrote final', implementation.name)
         continue
     # prepare body
     body_lines = [f"# {title} - PAYED Features", "", "This file was generated from `platformspayed.txt`.",
@@ -107,22 +107,22 @@ for title, lines in sections:
     body = "\n".join(body_lines)
     outp.write_text(body, encoding='utf-8')
     created.append(str(outp.relative_to(ROOT)))
-    print('Wrote', outp)
+    logger.info('Wrote', outp)
 
 if args.run_gen_refs:
     gen = ROOT / 'scripts' / 'generate_allmdrefs.py'
     if gen.exists():
         try:
             subprocess.run([sys.executable, str(gen)], check=True)
-            print('Ran generate_allmdrefs.py')
+            logger.info('Ran generate_allmdrefs.py')
         except Exception as e:
-            print('Failed to run generate_allmdrefs.py:', e)
+            logger.info('Failed to run generate_allmdrefs.py:', e)
     else:
-        print('generate_allmdrefs.py not found; skipping refs update')
+        logger.info('generate_allmdrefs.py not found; skipping refs update')
 
 if created:
-    print('Created files:')
+    logger.info('Created files:')
     for c in created:
-        print(' -', c)
+        logger.info(' -', c)
 else:
-    print('No new files created')
+    logger.info('No new files created')

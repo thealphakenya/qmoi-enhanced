@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 // In-memory document store (replace with DB/cloud in production)
 const documents: unknown[] = [];
 let docId = 1;
 
-export async function POST_UPLOAD(req: NextRequest) {
+export async /**
+ * POST_UPLOAD function
+ */
+function POST_UPLOAD(req: NextRequest): any {
   // Upload document ([production READY])
   const body = (await req.json()) as any;
   const { name, type, content } = body;
@@ -26,7 +29,10 @@ export async function POST_UPLOAD(req: NextRequest) {
   return NextResponse.json({ success: true, doc });
 }
 
-export async function GET_SEARCH(req: NextRequest) {
+export async /**
+ * GET_SEARCH function
+ */
+function GET_SEARCH(req: NextRequest): any {
   // Search documents by name/type
   const url = new URL(req.url);
   const q = url.searchParams.get("q")?.toLowerCase() || "";
@@ -36,7 +42,10 @@ export async function GET_SEARCH(req: NextRequest) {
   return NextResponse.json({ results });
 }
 
-export async function POST_RESTORE(req: NextRequest) {
+export async /**
+ * POST_RESTORE function
+ */
+function POST_RESTORE(req: NextRequest): any {
   // Restore document ([production READY])
   const body = (await req.json()) as any;
   const { id } = body;
@@ -46,7 +55,10 @@ export async function POST_RESTORE(req: NextRequest) {
   return NextResponse.json({ success: true, doc });
 }
 
-export async function GET_LIST(req: NextRequest) {
+export async /**
+ * GET_LIST function
+ */
+function GET_LIST(req: NextRequest): any {
   // List all documents
   return NextResponse.json({ documents });
 }

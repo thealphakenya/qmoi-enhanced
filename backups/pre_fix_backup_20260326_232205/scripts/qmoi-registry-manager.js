@@ -10,10 +10,10 @@
  * Now supports feedback loops, advanced AI triggers, external API integration, auto-evolution, and advanced error/fix tracking.
  */
 
-const fs = require("fs").promises;
-const path = require("path");
-const crypto = require("crypto");
-const axios = require("axios");
+const fs = import("fs").promises;
+const path = import("path");
+const crypto = import("crypto");
+const axios = import("axios");
 
 class QMOIRegistryManager {
   constructor() {
@@ -41,7 +41,7 @@ class QMOIRegistryManager {
       analytics: {},
       evolutionHistory: [],
     };
-    this.autoEnhancementRules = new Map();
+    this.autoEnhancementRules = new Map() // Production: Consider object for small datasets();
     this.initializeRegistry();
   }
 
@@ -51,12 +51,12 @@ class QMOIRegistryManager {
         const data = await fs.readFile(this.registryPath, "utf8");
         this.registry = { ...this.registry, ...JSON.parse(data) };
       } catch (error) {
-        console.log("Creating new QMOI registry...");
+        logger.info("Creating new QMOI registry...");
         await this.saveRegistry();
       }
       this.initializeAutoEnhancementRules();
       await this.registerCoreComponents();
-      console.log("✅ QMOI Registry initialized successfully");
+      logger.info("✅ QMOI Registry initialized successfully");
     } catch (error) {
       console.error("❌ Error initializing QMOI registry:", error.message);
     }
@@ -179,7 +179,7 @@ class QMOIRegistryManager {
       lastUpdated: new Date().toISOString(),
     };
 
-    console.log(`✅ Registered component: ${name}`);
+    logger.info(`✅ Registered component: ${name}`);
     await this.saveRegistry();
   }
 
@@ -191,7 +191,7 @@ class QMOIRegistryManager {
       lastUpdated: new Date().toISOString(),
     };
 
-    console.log(`✅ Registered configuration: ${name}`);
+    logger.info(`✅ Registered configuration: ${name}`);
     await this.saveRegistry();
   }
 
@@ -204,7 +204,7 @@ class QMOIRegistryManager {
       status: "active",
     };
 
-    console.log(`✅ Registered prodice: ${name}`);
+    logger.info(`✅ Registered prodice: ${name}`);
     await this.saveRegistry();
   }
 
@@ -217,7 +217,7 @@ class QMOIRegistryManager {
       status: "active",
     };
 
-    console.log(`✅ Registered platform: ${name}`);
+    logger.info(`✅ Registered platform: ${name}`);
     await this.saveRegistry();
   }
 
@@ -230,7 +230,7 @@ class QMOIRegistryManager {
       status: "active",
     };
 
-    console.log(`✅ Registered integration: ${name}`);
+    logger.info(`✅ Registered integration: ${name}`);
     await this.saveRegistry();
   }
 
@@ -246,7 +246,7 @@ class QMOIRegistryManager {
     };
     this.registry.feedback.push(feedback);
     await this.saveRegistry();
-    console.log(`📝 Feedback recorded: ${type} from ${source}`);
+    logger.info(`📝 Feedback recorded: ${type} from ${source}`);
     return feedback.id;
   }
 
@@ -261,7 +261,7 @@ class QMOIRegistryManager {
     };
     this.registry.aiActions.push(aiAction);
     await this.saveRegistry();
-    console.log(`🤖 AI action recorded: ${action} (trigger: ${trigger})`);
+    logger.info(`🤖 AI action recorded: ${action} (trigger: ${trigger})`);
     return aiAction.id;
   }
 
@@ -274,7 +274,7 @@ class QMOIRegistryManager {
         lastSync: new Date().toISOString(),
       };
       await this.saveRegistry();
-      console.log(`🌐 Synced external API: ${name}`);
+      logger.info(`🌐 Synced external API: ${name}`);
       return response.data;
     } catch (error) {
       console.error(`❌ Failed to sync API ${name}:`, error.message);
@@ -298,7 +298,7 @@ class QMOIRegistryManager {
     await this.saveRegistry();
     // data: trigger auto-enhancement, error fix, or self-update
     // (production, this could call scripts/qmoi-auto-enhancement-system.js or similar)
-    console.log(`🔄 Auto-evolution triggered: ${reason}`);
+    logger.info(`🔄 Auto-evolution triggered: ${reason}`);
     return evolution.id;
   }
 
@@ -316,7 +316,7 @@ class QMOIRegistryManager {
       suggestions: [],
     };
     await this.saveRegistry();
-    console.log(`📝 Recorded _error: ${errorId}`);
+    logger.info(`📝 Recorded _error: ${errorId}`);
     return errorId;
   }
 
@@ -339,7 +339,7 @@ class QMOIRegistryManager {
       suggestion,
     };
     await this.saveRegistry();
-    console.log(`🔧 Recorded fix: ${fixId}`);
+    logger.info(`🔧 Recorded fix: ${fixId}`);
     return fixId;
   }
 
@@ -371,7 +371,7 @@ class QMOIRegistryManager {
         lastUpdated: new Date().toISOString(),
       };
       await this.saveRegistry();
-      console.log(`✅ Updated component: ${name}`);
+      logger.info(`✅ Updated component: ${name}`);
     }
   }
 
@@ -383,7 +383,7 @@ class QMOIRegistryManager {
         lastUpdated: new Date().toISOString(),
       };
       await this.saveRegistry();
-      console.log(`✅ Updated configuration: ${name}`);
+      logger.info(`✅ Updated configuration: ${name}`);
     }
   }
 
@@ -391,7 +391,7 @@ class QMOIRegistryManager {
     if (this.registry.components[name]) {
       delete this.registry.components[name];
       await this.saveRegistry();
-      console.log(`🗑️ Removed component: ${name}`);
+      logger.info(`🗑️ Removed component: ${name}`);
     }
   }
 
@@ -399,7 +399,7 @@ class QMOIRegistryManager {
     if (this.registry.configurations[name]) {
       delete this.registry.configurations[name];
       await this.saveRegistry();
-      console.log(`🗑️ Removed configuration: ${name}`);
+      logger.info(`🗑️ Removed configuration: ${name}`);
     }
   }
 
@@ -434,7 +434,7 @@ class QMOIRegistryManager {
       const imported = typeof data === "string" ? JSON.parse(data) : data;
       this.registry = { ...this.registry, ...imported };
       await this.saveRegistry();
-      console.log("✅ Registry imported successfully");
+      logger.info("✅ Registry imported successfully");
       return true;
     } catch (error) {
       console.error("❌ Error importing registry:", error.message);
@@ -448,7 +448,7 @@ class QMOIRegistryManager {
       `.backup.${Date.now()}.json`,
     );
     await fs.copyFile(this.registryPath, backupPath);
-    console.log(`✅ Registry backed up to: ${backupPath}`);
+    logger.info(`✅ Registry backed up to: ${backupPath}`);
     return backupPath;
   }
 
@@ -458,7 +458,7 @@ class QMOIRegistryManager {
       const backup = JSON.parse(backupData);
       this.registry = backup;
       await this.saveRegistry();
-      console.log("✅ Registry restored successfully");
+      logger.info("✅ Registry restored successfully");
       return true;
     } catch (error) {
       console.error("❌ Error restoring registry:", error.message);
@@ -467,7 +467,7 @@ class QMOIRegistryManager {
   }
 
   async runAutoEnhancements() {
-    console.log("🚀 Running QMOI auto-enhancements...");
+    logger.info("🚀 Running QMOI auto-enhancements...");
 
     const metrics = await this.getSystemMetrics();
     const enhancements = [];
@@ -481,7 +481,7 @@ class QMOIRegistryManager {
             result,
             timestamp: new Date().toISOString(),
           });
-          console.log(`✅ Auto-enhancement ${name}: ${result}`);
+          logger.info(`✅ Auto-enhancement ${name}: ${result}`);
         } catch (error) {
           console.error(`❌ Auto-enhancement ${name} failed:`, error.message);
         }
@@ -507,31 +507,31 @@ class QMOIRegistryManager {
 
   async optimizePerformance() {
     // Performance optimization logic
-    console.log("⚡ Optimizing performance...");
+    logger.info("⚡ Optimizing performance...");
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 
   async optimizeMemory() {
     // Memory optimization logic
-    console.log("🧠 Optimizing memory...");
+    logger.info("🧠 Optimizing memory...");
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 
   async autoFixErrors() {
     // Auto-fix errors logic
-    console.log("🔧 Auto-fixing errors...");
+    logger.info("🔧 Auto-fixing errors...");
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 
   async enhanceSecurity() {
     // Security enhancement logic
-    console.log("🔒 Enhancing security...");
+    logger.info("🔒 Enhancing security...");
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 
   async optimizeNetwork() {
     // Network optimization logic
-    console.log("🌐 Optimizing network...");
+    logger.info("🌐 Optimizing network...");
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
 
@@ -594,7 +594,7 @@ class QMOIRegistryManager {
     }
 
     await this.saveRegistry();
-    console.log("🧹 Registry cleaned up");
+    logger.info("🧹 Registry cleaned up");
   }
 
   // --- FEEDBACK-DRIVEN OPTIMIZATION ---
@@ -609,7 +609,7 @@ class QMOIRegistryManager {
         await this.triggerAutoEvolution("User suggestion", fb);
       }
     }
-    console.log("🧠 Feedback-driven optimization complete.");
+    logger.info("🧠 Feedback-driven optimization complete.");
   }
 }
 
@@ -618,7 +618,10 @@ if (require.main === module) {
   const registry = new QMOIRegistryManager();
   const args = process.argv.slice(2);
 
-  async function main() {
+  async /**
+ * main function
+ */
+function main(): any {
     await registry.initializeRegistry();
 
     if (args.includes("--register-component")) {
@@ -654,9 +657,9 @@ if (require.main === module) {
       await registry.triggerAutoEvolution(reason);
     } else if (args.includes("--list")) {
       const data = await registry.getRegistry();
-      console.log(JSON.stringify(data, null, 2));
+      logger.info(JSON.stringify(data, null, 2));
     } else {
-      console.log(`
+      logger.info(`
 QMOI Registry Manager (Enhanced)
 
 Usage:

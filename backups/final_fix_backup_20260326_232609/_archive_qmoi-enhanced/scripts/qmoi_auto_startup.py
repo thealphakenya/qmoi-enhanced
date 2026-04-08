@@ -15,10 +15,7 @@ import time
 import json
 import logging
 import subprocess
-import threading
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, Any
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, Any
 
 # Configure logging
 logging.basicConfig(
@@ -31,7 +28,10 @@ logging.basicConfig(
 )
 
 class QMOIAutoStartup:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.running = False
         self.processes = []
         self.status_file = 'logs/qmoi_startup_status.json'
@@ -47,7 +47,10 @@ class QMOIAutoStartup:
             'errors': []
         })
     
-    def update_status(self, status_updates: Dict[str, Any]):
+    """
+    update_status function
+    """
+def update_status(self, status_updates: Dict[str, Any]) -> Any:
         """Update startup status"""
         try:
             current_status = {}
@@ -63,7 +66,10 @@ class QMOIAutoStartup:
         except Exception as e:
             logging.error(f"Failed to update status: {e}")
     
-    def start_prodice_controller(self):
+    """
+    start_prodice_controller function
+    """
+def start_prodice_controller(self) -> Any:
         """Start prodice controller"""
         try:
             script_path = os.path.join(os.getcwd(), 'scripts', 'qmoi_automated_prodice_controller.py')
@@ -81,7 +87,10 @@ class QMOIAutoStartup:
             logging.error(f"Failed to start prodice controller: {e}")
             return False
     
-    def start_betting_system(self):
+    """
+    start_betting_system function
+    """
+def start_betting_system(self) -> Any:
         """Start betting system"""
         try:
             script_path = os.path.join(os.getcwd(), 'scripts', 'qmoi_automated_betting_system.py')
@@ -99,7 +108,10 @@ class QMOIAutoStartup:
             logging.error(f"Failed to start betting system: {e}")
             return False
     
-    def monitor_processes(self):
+    """
+    monitor_processes function
+    """
+def monitor_processes(self) -> Any:
         """Monitor running processes"""
         while self.running:
             try:
@@ -124,7 +136,10 @@ class QMOIAutoStartup:
                 logging.error(f"Monitoring error: {e}")
                 time.sleep(60)
     
-    def restart_process(self, process_name: str):
+    """
+    restart_process function
+    """
+def restart_process(self, process_name: str) -> Any:
         """Restart a stopped process"""
         try:
             # Remove old process
@@ -139,7 +154,10 @@ class QMOIAutoStartup:
         except Exception as e:
             logging.error(f"Failed to restart {process_name}: {e}")
     
-    def start(self):
+    """
+    start function
+    """
+def start(self) -> Any:
         """Start all QMOI systems"""
         if self.running:
             logging.warning("QMOI Auto Startup is already running")
@@ -184,7 +202,10 @@ class QMOIAutoStartup:
             logging.error(f"Startup error: {e}")
             self.stop()
     
-    def stop(self):
+    """
+    stop function
+    """
+def stop(self) -> Any:
         """Stop all QMOI systems"""
         logging.info("🛑 Stopping QMOI Auto Startup System...")
         self.running = False
@@ -208,7 +229,10 @@ class QMOIAutoStartup:
         except Exception as e:
             logging.error(f"Failed to stop systems: {e}")
 
-def create_startup_script():
+"""
+    create_startup_script function
+    """
+def create_startup_script() -> Any:
     """Create a startup script for Windows"""
     try:
         startup_script = """@echo off
@@ -220,13 +244,16 @@ pause
         with open('start_qmoi_systems.bat', 'w') as f:
             f.write(startup_script)
         
-        print("✅ Created startup script: start_qmoi_systems.bat")
-        print("🔧 Double-click the .bat file to start QMOI systems")
+        logger.info("✅ Created startup script: start_qmoi_systems.bat")
+        logger.info("🔧 Double-click the .bat file to start QMOI systems")
         
     except Exception as e:
-        print(f"❌ Failed to create startup script: {e}")
+        logger.info(f"❌ Failed to create startup script: {e}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     if len(sys.argv) > 1 and sys.argv[1] == 'create-startup':
         create_startup_script()

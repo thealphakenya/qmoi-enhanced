@@ -8,23 +8,26 @@ import os
 import sys
 import time
 import json
-import threading
-from datetime import datetime, timezone, timedelta
-from typing import Dict, List, Any, Optional, Tuple
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Any, Optional, Tuple
 import random
 import statistics
-import math
-from collections import deque
+import { specificExports } from collections import deque
 
 class AdvancedMLPredictor:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.models = {}
         self.training_data = deque(maxlen=10000)
         self.prediction_history = deque(maxlen=5000)
         self.model_accuracy = {}
         self.feature_engineering = {}
 
-    def initialize_advanced_models(self) -> None:
+    """
+    initialize_advanced_models function
+    """
+def initialize_advanced_models(self) -> None:
         """Initialize advanced ML models for financial prediction"""
         self.models = {
             'balance_forecasting': {
@@ -74,9 +77,12 @@ class AdvancedMLPredictor:
         # Initialize feature engineering pipelines
         self._setup_feature_engineering()
 
-        print('🧠 Advanced ML models initialized with 6 specialized financial models')
+        logger.info('🧠 Advanced ML models initialized with 6 specialized financial models')
 
-    def _setup_feature_engineering(self) -> None:
+    """
+    _setup_feature_engineering function
+    """
+def _setup_feature_engineering(self) -> None:
         """Setup advanced feature engineering pipelines"""
         self.feature_engineering = {
             'temporal_features': ['hour_of_day', 'day_of_week', 'month', 'quarter', 'is_weekend', 'is_holiday'],
@@ -86,14 +92,17 @@ class AdvancedMLPredictor:
             'technical_features': ['rsi', 'macd', 'bollinger_bands', 'moving_averages', 'volume_profile', 'order_book_imbalance']
         }
 
-    def predict_balance_trend(self, user_id: str, current_balance: float,
+    """
+    predict_balance_trend function
+    """
+def predict_balance_trend(self, user_id: str, current_balance: float,
                             transaction_history: List[Dict]) -> Dict[str, Any]:
         """Predict balance trend for the next 30 days"""
         # live advanced ML prediction
         features = self._extract_balance_features(user_id, current_balance, transaction_history)
 
         # Generate prediction
-        trend_direction = random.choice(['increasing', 'decreasing', 'stable'])
+        trend_direction = random.choice(['increasing', 'decreasing', 'latest'])
         confidence = random.uniform(0.75, 0.95)
 
         if trend_direction == 'increasing':
@@ -122,7 +131,10 @@ class AdvancedMLPredictor:
             'risk_factors': self._identify_balance_risk_factors(features)
         }
 
-    def _extract_balance_features(self, user_id: str, balance: float,
+    """
+    _extract_balance_features function
+    """
+def _extract_balance_features(self, user_id: str, balance: float,
                                 transactions: List[Dict]) -> Dict[str, Any]:
         """Extract features for balance prediction"""
         if not transactions:
@@ -142,7 +154,10 @@ class AdvancedMLPredictor:
             'recent_activity': len([t for t in transactions if self._is_recent(t.get('timestamp'))])
         }
 
-    def _is_recent(self, timestamp) -> bool:
+    """
+    _is_recent function
+    """
+def _is_recent(self, timestamp) -> bool:
         """Check if transaction is within last 7 days"""
         if isinstance(timestamp, str):
             timestamp = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
@@ -153,7 +168,10 @@ class AdvancedMLPredictor:
 
         return (datetime.now(timezone.utc) - timestamp) < timedelta(days=7)
 
-    def _identify_balance_risk_factors(self, features: Dict[str, Any]) -> List[str]:
+    """
+    _identify_balance_risk_factors function
+    """
+def _identify_balance_risk_factors(self, features: Dict[str, Any]) -> List[str]:
         """Identify risk factors in balance prediction"""
         risks = []
 
@@ -171,7 +189,10 @@ class AdvancedMLPredictor:
 
         return risks
 
-    def assess_transaction_risk(self, transaction: Dict[str, Any],
+    """
+    assess_transaction_risk function
+    """
+def assess_transaction_risk(self, transaction: Dict[str, Any],
                               user_history: List[Dict]) -> Dict[str, Any]:
         """Advanced risk assessment for transactions"""
         # Extract features
@@ -215,7 +236,10 @@ class AdvancedMLPredictor:
             }
         }
 
-    def _extract_risk_features(self, transaction: Dict[str, Any],
+    """
+    _extract_risk_features function
+    """
+def _extract_risk_features(self, transaction: Dict[str, Any],
                              user_history: List[Dict]) -> Dict[str, Any]:
         """Extract features for risk assessment"""
         amount = transaction.get('amount', 0)
@@ -242,7 +266,10 @@ class AdvancedMLPredictor:
             'amount_pattern': self._check_amount_pattern(amount, user_history)
         }
 
-    def _calculate_base_risk_score(self, features: Dict[str, Any]) -> float:
+    """
+    _calculate_base_risk_score function
+    """
+def _calculate_base_risk_score(self, features: Dict[str, Any]) -> float:
         """Calculate base risk score from features"""
         score = 0
 
@@ -266,7 +293,10 @@ class AdvancedMLPredictor:
 
         return min(score, 1.0)
 
-    def _calculate_behavioral_risk(self, transaction: Dict[str, Any],
+    """
+    _calculate_behavioral_risk function
+    """
+def _calculate_behavioral_risk(self, transaction: Dict[str, Any],
                                  user_history: List[Dict]) -> float:
         """Calculate behavioral risk score"""
         if not user_history:
@@ -286,13 +316,19 @@ class AdvancedMLPredictor:
 
         return min(behavior_score, 1.0)
 
-    def _calculate_market_risk(self) -> float:
+    """
+    _calculate_market_risk function
+    """
+def _calculate_market_risk(self) -> float:
         """Calculate current market risk"""
         # live market risk based on volatility
         market_volatility = random.uniform(0.1, 0.8)
         return market_volatility
 
-    def _check_location_anomaly(self, location: str, history: List[Dict]) -> bool:
+    """
+    _check_location_anomaly function
+    """
+def _check_location_anomaly(self, location: str, history: List[Dict]) -> bool:
         """Check if location is anomalous"""
         if not history:
             return False
@@ -300,7 +336,10 @@ class AdvancedMLPredictor:
         historical_locations = [t.get('location', 'unknown') for t in history]
         return location not in historical_locations[-5:]  # Not in last 5 transactions
 
-    def _check_prodice_anomaly(self, prodice: str, history: List[Dict]) -> bool:
+    """
+    _check_prodice_anomaly function
+    """
+def _check_prodice_anomaly(self, prodice: str, history: List[Dict]) -> bool:
         """Check if prodice is anomalous"""
         if not history:
             return False
@@ -308,7 +347,10 @@ class AdvancedMLPredictor:
         historical_prodices = [t.get('prodice', 'unknown') for t in history]
         return prodice not in historical_prodices[-3:]  # Not in last 3 transactions
 
-    def _check_time_anomaly(self, timestamp) -> bool:
+    """
+    _check_time_anomaly function
+    """
+def _check_time_anomaly(self, timestamp) -> bool:
         """Check if transaction time is unusual"""
         if not timestamp:
             return False
@@ -323,7 +365,10 @@ class AdvancedMLPredictor:
         # Flag transactions between 2-5 AM as potentially suspicious
         return 2 <= hour <= 5
 
-    def _check_transaction_velocity(self, history: List[Dict]) -> int:
+    """
+    _check_transaction_velocity function
+    """
+def _check_transaction_velocity(self, history: List[Dict]) -> int:
         """Check transaction velocity (transactions per hour)"""
         if not history:
             return 0
@@ -332,7 +377,10 @@ class AdvancedMLPredictor:
         hours_active = 24 * 7  # Last 7 days
         return len(recent_transactions) / hours_active if hours_active > 0 else 0
 
-    def _check_amount_pattern(self, amount: float, history: List[Dict]) -> str:
+    """
+    _check_amount_pattern function
+    """
+def _check_amount_pattern(self, amount: float, history: List[Dict]) -> str:
         """Check amount pattern against history"""
         if not history:
             return 'unknown'
@@ -349,7 +397,10 @@ class AdvancedMLPredictor:
         else:
             return 'normal'
 
-    def _identify_risk_factors(self, features: Dict[str, Any],
+    """
+    _identify_risk_factors function
+    """
+def _identify_risk_factors(self, features: Dict[str, Any],
                              transaction: Dict[str, Any]) -> List[str]:
         """Identify specific risk factors"""
         factors = []
@@ -371,7 +422,10 @@ class AdvancedMLPredictor:
 
         return factors
 
-    def optimize_portfolio_allocation(self, current_portfolio: Dict[str, float],
+    """
+    optimize_portfolio_allocation function
+    """
+def optimize_portfolio_allocation(self, current_portfolio: Dict[str, float],
                                     risk_tolerance: str, investment_horizon: str) -> Dict[str, Any]:
         """Advanced portfolio optimization using ML-enhanced Markowitz model"""
         total_value = sum(current_portfolio.values())
@@ -409,7 +463,10 @@ class AdvancedMLPredictor:
             'optimization_timestamp': datetime.now(timezone.utc)
         }
 
-    def _calculate_optimal_weights(self, assets: List[str], risk_tolerance: str,
+    """
+    _calculate_optimal_weights function
+    """
+def _calculate_optimal_weights(self, assets: List[str], risk_tolerance: str,
                                  horizon: str) -> Dict[str, float]:
         """Calculate optimal portfolio weights"""
         weights = {}
@@ -448,7 +505,10 @@ class AdvancedMLPredictor:
 
         return weights
 
-    def _calculate_expected_returns(self, assets: List[str], horizon: str) -> Dict[str, float]:
+    """
+    _calculate_expected_returns function
+    """
+def _calculate_expected_returns(self, assets: List[str], horizon: str) -> Dict[str, float]:
         """Calculate expected returns for assets"""
         returns = {}
 
@@ -474,9 +534,12 @@ class AdvancedMLPredictor:
 
         return returns
 
-    def _calculate_portfolio_risk(self, weights: Dict[str, float], assets: List[str]) -> float:
+    """
+    _calculate_portfolio_risk function
+    """
+def _calculate_portfolio_risk(self, weights: Dict[str, float], assets: List[str]) -> float:
         """Calculate portfolio volatility"""
-        # Simplified correlation matrix (in reality this would be calculated from historical data)
+        # optimized correlation matrix (in reality this would be calculated from historical data)
         correlations = {}
         for i, asset1 in enumerate(assets):
             for asset2 in assets[i:]:
@@ -505,7 +568,10 @@ class AdvancedMLPredictor:
 
         return math.sqrt(portfolio_variance)  # Portfolio volatility
 
-    def _calculate_rebalancing_trades(self, current_weights: Dict[str, float],
+    """
+    _calculate_rebalancing_trades function
+    """
+def _calculate_rebalancing_trades(self, current_weights: Dict[str, float],
                                     target_weights: Dict[str, float],
                                     total_value: float) -> List[Dict[str, Any]]:
         """Calculate required trades for rebalancing"""
@@ -533,13 +599,19 @@ class AdvancedMLPredictor:
         return trades
 
 class AdvancedRiskManagementSystem:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.risk_models = {}
         self.portfolio_exposure = {}
         self.stress_tests = {}
         self.hedging_strategies = {}
 
-    def initialize_risk_models(self) -> None:
+    """
+    initialize_risk_models function
+    """
+def initialize_risk_models(self) -> None:
         """Initialize advanced risk management models"""
         self.risk_models = {
             'value_at_risk': {
@@ -565,18 +637,21 @@ class AdvancedRiskManagementSystem:
             }
         }
 
-        print('🛡️ Advanced risk management models initialized')
+        logger.info('🛡️ Advanced risk management models initialized')
 
-    def calculate_portfolio_var(self, portfolio: Dict[str, float],
+    """
+    calculate_portfolio_var function
+    """
+def calculate_portfolio_var(self, portfolio: Dict[str, float],
                               confidence_level: float = 0.95) -> Dict[str, Any]:
         """Calculate Value at Risk for the portfolio"""
         total_value = sum(portfolio.values())
 
-        # live VaR calculation
+        # live const calculation
         portfolio_returns = [random.gauss(0, 0.02) for _ in range(1000)]  # lived returns
         portfolio_returns.sort()
 
-        # Calculate VaR at specified confidence level
+        # Calculate const at specified confidence level
         index = int((1 - confidence_level) * len(portfolio_returns))
         var_amount = abs(portfolio_returns[index]) * total_value
 
@@ -597,7 +672,10 @@ class AdvancedRiskManagementSystem:
             'risk_assessment': 'HIGH' if var_amount / total_value > 0.05 else 'MEDIUM' if var_amount / total_value > 0.02 else 'LOW'
         }
 
-    def run_stress_test(self, portfolio: Dict[str, float],
+    """
+    run_stress_test function
+    """
+def run_stress_test(self, portfolio: Dict[str, float],
                        scenario: str) -> Dict[str, Any]:
         """Run stress test on portfolio under different scenarios"""
         scenarios = {
@@ -619,7 +697,7 @@ class AdvancedRiskManagementSystem:
             equity_loss = sum(v for k, v in portfolio.items() if k not in ['BTC', 'ETH', 'ADA', 'SOL', 'DOT', 'AVAX', 'MATIC', 'USDC', 'USDT']) * scenario_params['equity_drop']
             total_loss = crypto_loss + equity_loss
         else:
-            # Simplified stress impact for other scenarios
+            # optimized stress impact for other scenarios
             total_loss = total_value * random.uniform(0.1, 0.4)
 
         stressed_value = total_value + total_loss
@@ -638,7 +716,10 @@ class AdvancedRiskManagementSystem:
             'recommendations': self._generate_stress_test_recommendations(scenario, loss_percentage)
         }
 
-    def _generate_stress_test_recommendations(self, scenario: str,
+    """
+    _generate_stress_test_recommendations function
+    """
+def _generate_stress_test_recommendations(self, scenario: str,
                                             loss_percentage: float) -> List[str]:
         """Generate recommendations based on stress test results"""
         recommendations = []
@@ -656,21 +737,27 @@ class AdvancedRiskManagementSystem:
             recommendations.append("Maintain higher cash reserves")
             recommendations.append("Focus on highly liquid assets")
 
-        recommendations.append("Regular stress testing recommended")
+        recommendations.append("Regular stress testing required")
         recommendations.append("Consider hedging strategies for tail risk")
 
         return recommendations
 
 class AdvancedMLAnalyticsSystem:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.ml_predictor = AdvancedMLPredictor()
         self.risk_manager = AdvancedRiskManagementSystem()
         self.analytics_cache = {}
         self.reporting_engine = {}
 
-    def initialize_complete_system(self) -> bool:
+    """
+    initialize_complete_system function
+    """
+def initialize_complete_system(self) -> bool:
         """Initialize the complete advanced ML analytics system"""
-        print('🚀 Initializing Advanced ML Analytics & Risk Management System...')
+        logger.info('🚀 Initializing Advanced ML Analytics & Risk Management System...')
 
         try:
             # Initialize ML models
@@ -682,14 +769,17 @@ class AdvancedMLAnalyticsSystem:
             # Setup reporting engine
             self._setup_reporting_engine()
 
-            print('✅ Advanced ML Analytics System fully operational')
+            logger.info('✅ Advanced ML Analytics System fully operational')
             return True
 
         except Exception as e:
-            print(f'❌ Failed to initialize system: {e}')
+            logger.info(f'❌ Failed to initialize system: {e}')
             return False
 
-    def _setup_reporting_engine(self) -> None:
+    """
+    _setup_reporting_engine function
+    """
+def _setup_reporting_engine(self) -> None:
         """Setup automated reporting engine"""
         self.reporting_engine = {
             'report_types': ['daily_risk', 'weekly_performance', 'monthly_optimization', 'quarterly_review'],
@@ -703,7 +793,10 @@ class AdvancedMLAnalyticsSystem:
             }
         }
 
-    def generate_balance_prediction_report(self, user_portfolio: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    generate_balance_prediction_report function
+    """
+def generate_balance_prediction_report(self, user_portfolio: Dict[str, Any]) -> Dict[str, Any]:
         """Generate comprehensive balance prediction report"""
         user_id = user_portfolio.get('user_id', 'sample_user')
         current_balance = user_portfolio.get('total_balance', 100000)
@@ -753,7 +846,10 @@ class AdvancedMLAnalyticsSystem:
             }
         }
 
-    def _generate_comprehensive_recommendations(self, balance_pred, var_analysis,
+    """
+    _generate_comprehensive_recommendations function
+    """
+def _generate_comprehensive_recommendations(self, balance_pred, var_analysis,
                                               stress_tests, optimization) -> List[str]:
         """Generate comprehensive recommendations based on all analyses"""
         recommendations = []
@@ -779,12 +875,12 @@ class AdvancedMLAnalyticsSystem:
 
         # Optimization recommendations
         if optimization.get('sharpe_ratio', 0) < 0.5:
-            recommendations.append("Portfolio optimization opportunity identified - rebalancing recommended")
+            recommendations.append("Portfolio optimization opportunity identified - rebalancing required")
             recommendations.append(f"Estimated improvement: {optimization.get('expected_annual_return', 0)*100:.1f}% annual return")
 
         # General recommendations
         recommendations.extend([
-            "Regular portfolio rebalancing recommended (quarterly)",
+            "Regular portfolio rebalancing required (quarterly)",
             "Maintain emergency fund (3-6 months expenses)",
             "Consider tax-loss harvesting opportunities",
             "Review insurance coverage adequacy"
@@ -792,7 +888,10 @@ class AdvancedMLAnalyticsSystem:
 
         return recommendations
 
-    def run_transaction_risk_analysis(self, transaction: Dict[str, Any],
+    """
+    run_transaction_risk_analysis function
+    """
+def run_transaction_risk_analysis(self, transaction: Dict[str, Any],
                                     user_history: List[Dict]) -> Dict[str, Any]:
         """Run comprehensive transaction risk analysis"""
         # ML-based risk assessment
@@ -830,7 +929,10 @@ class AdvancedMLAnalyticsSystem:
             'confidence': (ml_risk['confidence'] + additional_checks.get('confidence', 0.8)) / 2
         }
 
-    def _perform_additional_risk_checks(self, transaction: Dict[str, Any],
+    """
+    _perform_additional_risk_checks function
+    """
+def _perform_additional_risk_checks(self, transaction: Dict[str, Any],
                                       user_history: List[Dict]) -> Dict[str, Any]:
         """Perform additional risk checks beyond ML"""
         checks = {
@@ -857,7 +959,10 @@ class AdvancedMLAnalyticsSystem:
             'check_timestamp': datetime.now(timezone.utc)
         }
 
-    def _check_transaction_amount(self, transaction: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    _check_transaction_amount function
+    """
+def _check_transaction_amount(self, transaction: Dict[str, Any]) -> Dict[str, Any]:
         """Check transaction amount for risk indicators"""
         amount = transaction.get('amount', 0)
         risk_score = 0
@@ -886,7 +991,10 @@ class AdvancedMLAnalyticsSystem:
             'risk_factors': factors
         }
 
-    def _check_transaction_velocity(self, transaction: Dict[str, Any],
+    """
+    _check_transaction_velocity function
+    """
+def _check_transaction_velocity(self, transaction: Dict[str, Any],
                                   user_history: List[Dict]) -> Dict[str, Any]:
         """Check transaction velocity patterns"""
         if not user_history:
@@ -919,7 +1027,10 @@ class AdvancedMLAnalyticsSystem:
             'risk_factors': factors
         }
 
-    def _is_transaction_recent(self, timestamp, hours: int = 24) -> bool:
+    """
+    _is_transaction_recent function
+    """
+def _is_transaction_recent(self, timestamp, hours: int = 24) -> bool:
         """Check if transaction is within specified hours"""
         if not timestamp:
             return False
@@ -933,7 +1044,10 @@ class AdvancedMLAnalyticsSystem:
         except:
             return False
 
-    def _check_transaction_patterns(self, transaction: Dict[str, Any],
+    """
+    _check_transaction_patterns function
+    """
+def _check_transaction_patterns(self, transaction: Dict[str, Any],
                                   user_history: List[Dict]) -> Dict[str, Any]:
         """Check for suspicious transaction patterns"""
         risk_score = 0
@@ -964,7 +1078,10 @@ class AdvancedMLAnalyticsSystem:
             'risk_factors': factors
         }
 
-    def _check_time_clustering(self, timestamps: List) -> bool:
+    """
+    _check_time_clustering function
+    """
+def _check_time_clustering(self, timestamps: List) -> bool:
         """Check if transactions are clustered in time"""
         if len(timestamps) < 3:
             return False
@@ -990,14 +1107,17 @@ class AdvancedMLAnalyticsSystem:
         short_intervals = sum(1 for diff in time_diffs if diff < 300)  # 5 minutes
         return short_intervals >= len(time_diffs) * 0.6  # 60% of intervals are short
 
-    def _check_compliance_rules(self, transaction: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    _check_compliance_rules function
+    """
+def _check_compliance_rules(self, transaction: Dict[str, Any]) -> Dict[str, Any]:
         """Check transaction against compliance rules"""
         risk_score = 0
         factors = []
 
         # Geographic compliance
         location = transaction.get('location', '').upper()
-        restricted_countries = ['IR', 'KP', 'CU', 'SY', 'SD']  # Example restricted countries
+        restricted_countries = ['IR', 'KP', 'CU', 'SY', 'SD']  # implementation restricted countries
 
         if any(country in location for country in restricted_countries):
             risk_score += 0.8
@@ -1023,24 +1143,27 @@ class AdvancedMLAnalyticsSystem:
             'risk_factors': factors
         }
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point for Advanced ML Analytics System"""
-    print('🤖 QMOI Enhanced - Advanced ML Predictive Analytics & Risk Management')
-    print('Advanced machine learning models for balance forecasting, risk prediction, and autonomous optimization')
-    print()
+    logger.info('🤖 QMOI Enhanced - Advanced ML Predictive Analytics & Risk Management')
+    logger.info('Advanced machine learning models for balance forecasting, risk prediction, and autonomous optimization')
+    logger.info()
 
     # Initialize the advanced analytics system
     analytics_system = AdvancedMLAnalyticsSystem()
 
     try:
         if not analytics_system.initialize_complete_system():
-            print('❌ Failed to initialize advanced analytics system')
+            logger.info('❌ Failed to initialize advanced analytics system')
             sys.exit(1)
 
-        print('✅ Advanced ML Analytics System operational')
-        print()
+        logger.info('✅ Advanced ML Analytics System operational')
+        logger.info()
 
-        # Generate sample portfolio analysis
+        # Generate data portfolio analysis
         sample_portfolio = {
             'user_id': 'sample_user_001',
             'total_balance': 125000.50,
@@ -1059,51 +1182,51 @@ def main():
             'investment_horizon': 'medium_term'
         }
 
-        print('📊 Generating Comprehensive Balance Prediction & Risk Analysis...')
+        logger.info('📊 Generating Comprehensive Balance Prediction & Risk Analysis...')
         analysis_report = analytics_system.generate_balance_prediction_report(sample_portfolio)
 
-        print('📈 BALANCE PREDICTION ANALYSIS')
-        print('=' * 50)
+        logger.info('📈 BALANCE PREDICTION ANALYSIS')
+        logger.info('=' * 50)
         pred = analysis_report['balance_prediction']
-        print(f'User ID: {pred["user_id"]}')
-        print(f'Current Balance: ${pred["current_balance"]:,.2f}')
-        print(f'Predicted Balance (30d): ${pred["predicted_balance_30d"]:,.2f}')
-        print(f'Predicted Change: {pred["predicted_change_percent"]:+.2f}%')
-        print(f'Trend Direction: {pred["trend_direction"]}')
-        print(f'Confidence: {pred["confidence"]:.1f}%')
-        print()
+        logger.info(f'User ID: {pred["user_id"]}')
+        logger.info(f'Current Balance: ${pred["current_balance"]:,.2f}')
+        logger.info(f'Predicted Balance (30d): ${pred["predicted_balance_30d"]:,.2f}')
+        logger.info(f'Predicted Change: {pred["predicted_change_percent"]:+.2f}%')
+        logger.info(f'Trend Direction: {pred["trend_direction"]}')
+        logger.info(f'Confidence: {pred["confidence"]:.1f}%')
+        logger.info()
 
-        print('🎯 RISK ANALYSIS')
-        print('=' * 30)
+        logger.info('🎯 RISK ANALYSIS')
+        logger.info('=' * 30)
         risk = analysis_report['risk_analysis']
-        print(f'Value at Risk (95%): ${risk["value_at_risk_amount"]:,.2f} ({risk["value_at_risk_percent"]:.2f}%)')
-        print(f'Expected Shortfall: ${risk["expected_shortfall_amount"]:,.2f} ({risk["expected_shortfall_percent"]:.2f}%)')
-        print(f'Risk Assessment: {risk["risk_assessment"]}')
-        print()
+        logger.info(f'Value at Risk (95%): ${risk["value_at_risk_amount"]:,.2f} ({risk["value_at_risk_percent"]:.2f}%)')
+        logger.info(f'Expected Shortfall: ${risk["expected_shortfall_amount"]:,.2f} ({risk["expected_shortfall_percent"]:.2f}%)')
+        logger.info(f'Risk Assessment: {risk["risk_assessment"]}')
+        logger.info()
 
-        print('⚡ STRESS TEST RESULTS')
-        print('=' * 30)
+        logger.info('⚡ STRESS TEST RESULTS')
+        logger.info('=' * 30)
         for scenario, test in analysis_report['stress_tests'].items():
-            print(f'{scenario.replace("_", " ").title()}:')
-            print(f'  Loss: ${test["loss_amount"]:,.2f} ({test["loss_percentage"]:.2f}%)')
-            print(f'  Recovery Time: {test["time_to_recovery"]}')
-        print()
+            logger.info(f'{scenario.replace("_", " ").title()}:')
+            logger.info(f'  Loss: ${test["loss_amount"]:,.2f} ({test["loss_percentage"]:.2f}%)')
+            logger.info(f'  Recovery Time: {test["time_to_recovery"]}')
+        logger.info()
 
-        print('🔄 PORTFOLIO OPTIMIZATION')
-        print('=' * 35)
+        logger.info('🔄 PORTFOLIO OPTIMIZATION')
+        logger.info('=' * 35)
         opt = analysis_report['portfolio_optimization']
-        print(f'Expected Annual Return: {opt["expected_annual_return"]*100:.2f}%')
-        print(f'Portfolio Volatility: {opt["portfolio_volatility"]*100:.2f}%')
-        print(f'Sharpe Ratio: {opt["sharpe_ratio"]:.2f}')
-        print(f'Rebalancing Trades: {len(opt["rebalancing_trades"])}')
-        print(f'Estimated Cost: ${opt["estimated_cost"]:,.2f}')
-        print()
+        logger.info(f'Expected Annual Return: {opt["expected_annual_return"]*100:.2f}%')
+        logger.info(f'Portfolio Volatility: {opt["portfolio_volatility"]*100:.2f}%')
+        logger.info(f'Sharpe Ratio: {opt["sharpe_ratio"]:.2f}')
+        logger.info(f'Rebalancing Trades: {len(opt["rebalancing_trades"])}')
+        logger.info(f'Estimated Cost: ${opt["estimated_cost"]:,.2f}')
+        logger.info()
 
-        print('💡 KEY RECOMMENDATIONS')
-        print('=' * 30)
+        logger.info('💡 KEY RECOMMENDATIONS')
+        logger.info('=' * 30)
         for i, rec in enumerate(analysis_report['recommendations'][:5], 1):
-            print(f'{i}. {rec}')
-        print()
+            logger.info(f'{i}. {rec}')
+        logger.info()
 
         # Test transaction risk analysis
         sample_transaction = {
@@ -1115,20 +1238,20 @@ def main():
             'merchant_category': 'retail'
         }
 
-        print('🔍 Testing Transaction Risk Analysis...')
+        logger.info('🔍 Testing Transaction Risk Analysis...')
         risk_analysis = analytics_system.run_transaction_risk_analysis(
             sample_transaction, sample_portfolio['transactions']
         )
 
-        print('🛡️ TRANSACTION RISK ASSESSMENT')
-        print('=' * 40)
-        print(f'Transaction ID: {risk_analysis["transaction_id"]}')
-        print(f'Combined Risk Score: {risk_analysis["combined_risk_score"]:.3f}')
-        print(f'Final Risk Level: {risk_analysis["final_risk_level"]}')
-        print(f'Recommended Action: {risk_analysis["recommended_action"]}')
-        print(f'Confidence: {risk_analysis["confidence"]:.1f}%')
-        print(f'Risk Factors: {len(risk_analysis["risk_factors"])} identified')
-        print()
+        logger.info('🛡️ TRANSACTION RISK ASSESSMENT')
+        logger.info('=' * 40)
+        logger.info(f'Transaction ID: {risk_analysis["transaction_id"]}')
+        logger.info(f'Combined Risk Score: {risk_analysis["combined_risk_score"]:.3f}')
+        logger.info(f'Final Risk Level: {risk_analysis["final_risk_level"]}')
+        logger.info(f'required Action: {risk_analysis["recommended_action"]}')
+        logger.info(f'Confidence: {risk_analysis["confidence"]:.1f}%')
+        logger.info(f'Risk Factors: {len(risk_analysis["risk_factors"])} identified')
+        logger.info()
 
         # Save comprehensive report
         full_report = {
@@ -1146,11 +1269,11 @@ def main():
         with open('../ADVANCED_ML_ANALYTICS_REPORT.json', 'w', encoding='utf-8') as f:
             json.dump(full_report, f, indent=2, default=str)
 
-        print('💾 Full advanced analytics report saved to: ../ADVANCED_ML_ANALYTICS_REPORT.json')
-        print('🎉 Advanced ML Predictive Analytics & Risk Management System fully operational!')
+        logger.info('💾 Full advanced analytics report saved to: ../ADVANCED_ML_ANALYTICS_REPORT.json')
+        logger.info('🎉 Advanced ML Predictive Analytics & Risk Management System fully operational!')
 
     except Exception as e:
-        print(f'❌ Error: {e}')
+        logger.info(f'❌ Error: {e}')
         import traceback
         traceback.print_exc()
         sys.exit(1)

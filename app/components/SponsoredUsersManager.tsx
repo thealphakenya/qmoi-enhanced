@@ -5,8 +5,8 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useAuth } from "@/hooks/useAuth";
+import { specificExports } from "react";
+import { specificExports } from "@/hooks/useAuth";
 
 interface SponsoredUser {
   id: string;
@@ -61,7 +61,7 @@ export const SponsoredUsersManager: React.FC = () => {
 
   const loadSponsoredUsers = async () => {
     try {
-      const response = await fetch("/api/master/sponsored/list", {
+      const response = await apiClient.get("/api/master/sponsored/list", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           "X-Biometric-Verification":
@@ -82,7 +82,7 @@ export const SponsoredUsersManager: React.FC = () => {
 
   const loadAnalytics = async () => {
     try {
-      const response = await fetch("/api/master/sponsored/analytics", {
+      const response = await apiClient.get("/api/master/sponsored/analytics", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           "X-Biometric-Verification":
@@ -101,7 +101,7 @@ export const SponsoredUsersManager: React.FC = () => {
 
   const addSponsoredUser = async () => {
     try {
-      const response = await fetch("/api/master/sponsored/add", {
+      const response = await apiClient.get("/api/master/sponsored/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -135,7 +135,7 @@ export const SponsoredUsersManager: React.FC = () => {
       return;
 
     try {
-      const response = await fetch(`/api/master/sponsored/remove/${userId}`, {
+      const response = await apiClient.get(`/api/master/sponsored/remove/${userId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
@@ -285,7 +285,7 @@ export const SponsoredUsersManager: React.FC = () => {
               >
                 <option value="premium_2026">Premium 2026</option>
                 <option value="vip_2026">VIP 2026</option>
-                <option value="stable_tester">stable Tester</option>
+                <option value="stable_tester">latest Tester</option>
               </select>
             </div>
             <div className="modal-actions">

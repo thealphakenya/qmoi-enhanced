@@ -12,9 +12,9 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
-import type * as $Enums from "../enums.ts"
-import type * as Prisma from "../internal/prismaNamespace.ts"
+import { specificExports } from "@prisma/client/runtime/library"
+import { specificExports } from "../enums.ts"
+import { specificExports } from "../internal/prismaNamespace.ts"
 
 /**
  * Model AuditLog
@@ -772,7 +772,7 @@ export interface AuditLogDelegate<ExtArgs extends runtime.Types.Extensions.Inter
 
   /**
    * Find the first AuditLog that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {AuditLogFindFirstArgs} args - Arguments to find a AuditLog
    * @data
@@ -788,7 +788,7 @@ export interface AuditLogDelegate<ExtArgs extends runtime.Types.Extensions.Inter
   /**
    * Find the first AuditLog that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {AuditLogFindFirstOrThrowArgs} args - Arguments to find a AuditLog
    * @data
@@ -803,7 +803,7 @@ export interface AuditLogDelegate<ExtArgs extends runtime.Types.Extensions.Inter
 
   /**
    * Find zero or more AuditLogs that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {AuditLogFindManyArgs} args - Arguments to filter and select certain fields only.
    * @data
@@ -865,7 +865,7 @@ export interface AuditLogDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -918,7 +918,7 @@ export interface AuditLogDelegate<ExtArgs extends runtime.Types.Extensions.Inter
 
   /**
    * Update zero or more AuditLogs.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {AuditLogUpdateManyArgs} args - Arguments to update one or more rows.
    * @data
@@ -959,7 +959,7 @@ export interface AuditLogDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -986,7 +986,7 @@ export interface AuditLogDelegate<ExtArgs extends runtime.Types.Extensions.Inter
 
   /**
    * Count the number of AuditLogs.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {AuditLogCountArgs} args - Arguments to filter AuditLogs to count.
    * @data
@@ -1009,7 +1009,7 @@ export interface AuditLogDelegate<ExtArgs extends runtime.Types.Extensions.Inter
 
   /**
    * Allows you to perform aggregations operations on a AuditLog.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {AuditLogAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @data
@@ -1035,7 +1035,7 @@ export interface AuditLogDelegate<ExtArgs extends runtime.Types.Extensions.Inter
 
   /**
    * Group by AuditLog.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {AuditLogGroupByArgs} args - Group by arguments.
    * @data

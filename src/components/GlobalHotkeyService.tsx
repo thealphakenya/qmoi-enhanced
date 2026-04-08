@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useEffect } from "react";
+import { specificExports } from "react";
 
 // GlobalHotkeyService listens for key combinations and triggers callbacks.
 // Hotkeys can be registered programmatically or via configuration.
@@ -41,9 +41,9 @@ const keyMatcher = (e: KeyboardEvent, combo: string) => {
 export const GlobalHotkeyService: React.FC = () => {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      Object.keys(registry).forEach((combo) => {
+      Object.keys(registry).for (const item of((combo) => {
         if (keyMatcher(e, combo)) {
-          registry[combo].forEach((cb) => cb());
+          registry[combo].for (const item of((cb) => cb());
           e.preventDefault();
         }
       });

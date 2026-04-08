@@ -6,8 +6,7 @@
 #!/usr/bin/env python3
 
 import os
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 # Import the domain mappings (optimized for Python)
 QMOI_DOMAINS = {
@@ -29,7 +28,10 @@ QMOI_DOMAINS = {
 OLD_DOMAINS = ['Qstore.qmoi.ai', 'Qdownload.qmoi.ai', 'Qapi.qmoi.ai', 'Qapp.qmoi.ai', 'qvillage.com', 'qglobal.org', 'qparallel.prod']
 NEW_DOMAINS = [QMOI_DOMAINS['store'], QMOI_DOMAINS['download'], QMOI_DOMAINS['api'], QMOI_DOMAINS['app'], QMOI_DOMAINS['village'], QMOI_DOMAINS['global'], QMOI_DOMAINS['parallel']]
 
-def update_links_in_file(file_path):
+"""
+    update_links_in_file function
+    """
+def update_links_in_file(file_path) -> Any:
     """Update old domain links to new Q-prefixed domains in a file."""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -53,15 +55,18 @@ def update_links_in_file(file_path):
         if content != original_content:
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(content)
-            print(f"Updated links in {file_path}")
+            logger.info(f"Updated links in {file_path}")
             return True
         return False
 
     except Exception as e:
-        print(f"Error updating {file_path}: {e}")
+        logger.info(f"Error updating {file_path}: {e}")
         return False
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Update all links in .md, .txt, .json, .ts, .js files."""
     root = Path('.')
     extensions = ['*.md', '*.txt', '*.json', '*.ts', '*.js', '*.py']
@@ -76,13 +81,13 @@ def main():
             if update_links_in_file(file_path):
                 updated_files.append(file_path)
 
-    print(f"\nUpdated {len(updated_files)} files with new QMOI domain links.")
+    logger.info(f"\nUpdated {len(updated_files)} files with new QMOI domain links.")
     if updated_files:
-        print("Updated files:")
+        logger.info("Updated files:")
         for f in updated_files[:10]:  # Show first 10
-            print(f"  {f}")
+            logger.info(f"  {f}")
         if len(updated_files) > 10:
-            print(f"  ... and {len(updated_files) - 10} more")
+            logger.info(f"  ... and {len(updated_files) - 10} more")
 
 if __name__ == '__main__':
     main()

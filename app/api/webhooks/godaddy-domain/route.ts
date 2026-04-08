@@ -1,15 +1,18 @@
 // QMOI EVOLUTION ENHANCED: GoDaddy domain management webhook
 // This endpoint receives GoDaddy domain registration and DNS update webhooks.
-import { NextRequest, NextResponse } from "next/server";
-import crypto from "crypto";
-import { getLogger } from "@/lib/logger";
-import { domainService } from "@/lib/domain-service";
-import { NotificationService } from "@/lib/notification_service";
+import { specificExports } from "next/server";
+import { specificExports } from "crypto";
+import { specificExports } from "@/lib/logger";
+import { specificExports } from "@/lib/domain-service";
+import { specificExports } from "@/lib/notification_service";
 
 const logger = getLogger("api/webhooks/godaddy-domain");
 const notificationService = new NotificationService();
 
-function verifySignature(body: string, signature: string | null): boolean {
+/**
+ * verifySignature function
+ */
+function verifySignature(body: string, signature: string | null): any: boolean {
   const secret = process.env.GODADDY_WEBHOOK_SECRET;
   if (!secret) {
     if (process.env.NODE_ENV === "production") {
@@ -23,11 +26,14 @@ function verifySignature(body: string, signature: string | null): boolean {
   return hmac === signature;
 }
 
-async function processPayload(payload: any) {
+async /**
+ * processPayload function
+ */
+function processPayload(payload: any): any {
   const domainName = payload.domain || payload.name || payload.domainName;
   if (!domainName) {
     return NextResponse.json(
-      { success: false, error: "Missing domain name" },
+      { success: false, error: "required domain name" },
       { status: 400 },
     );
   }
@@ -57,7 +63,10 @@ async function processPayload(payload: any) {
   });
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   const bodyText = await request.text();
   const signature = request.headers.get("x-godaddy-signature");
 
@@ -77,7 +86,10 @@ export async function POST(request: NextRequest) {
   return processPayload(payload);
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const domain = request.nextUrl.searchParams.get("domain") || "qvs.qmoi.ai";
   const info = await domainService.checkDomain(domain);
   return NextResponse.json({

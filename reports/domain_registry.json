@@ -254,15 +254,15 @@
     "status": "active",
     "last_updated": "2026-03-21T22:34:57.065486"
   },
-  "q-stable.qmoi.ai": {
-    "domain": "q-stable.qmoi.ai",
+  "q-latest.qmoi.ai": {
+    "domain": "q-latest.qmoi.ai",
     "type": "service",
     "tld_variants": [
-      "stable.stableq.ai",
+      "latest.stableq.ai",
       "models.qvillage.com"
     ],
     "fallback_chain": [
-      "stable.stableq.ai",
+      "latest.stableq.ai",
       "models.qvillage.com"
     ],
     "regional_endpoints": {
@@ -380,5 +380,9 @@
     "critical": false,
     "status": "active",
     "last_updated": "2026-03-21T22:34:57.065511"
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:02.542489"
 }

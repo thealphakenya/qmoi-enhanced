@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 export interface SystemMetrics {
   cpu: {
@@ -58,20 +58,26 @@ export interface SystemMetrics {
   lastUpdate: number;
 }
 
-export function useSystemMetrics() {
+export /**
+ * useSystemMetrics function
+ */
+function useSystemMetrics(): any {
   const [metrics, setMetrics] = useState<SystemMetrics | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchMetrics() {
+    async /**
+ * fetchMetrics function
+ */
+function fetchMetrics(): any {
       try {
         const adminToken = localStorage.getItem("adminToken") || "";
-        const response = await fetch("/api/system/metrics", {
+        const response = await apiClient.get("/api/system/metrics", {
           headers: { "x-admin-token": adminToken },
         });
 
         if (!response.ok) {
-          throw new Error("Failed to fetch system metrics");
+          throw new ProductionError("Failed to fetch system metrics");
         }
 
         const data = await response.json();
@@ -99,7 +105,7 @@ export function useSystemMetrics() {
   ) => {
     try {
       const adminToken = localStorage.getItem("adminToken") || "";
-      const response = await fetch(
+      const response = await apiClient.get(
         `/api/system/metrics/history?metric=${metric}&duration=${duration}`,
         {
           headers: { "x-admin-token": adminToken },
@@ -107,7 +113,7 @@ export function useSystemMetrics() {
       );
 
       if (!response.ok) {
-        throw new Error("Failed to fetch metric history");
+        throw new ProductionError("Failed to fetch metric history");
       }
 
       return await response.json();
@@ -123,12 +129,12 @@ export function useSystemMetrics() {
   const getProcessDetails = async (pid: number) => {
     try {
       const adminToken = localStorage.getItem("adminToken") || "";
-      const response = await fetch(`/api/system/processes/${pid}`, {
+      const response = await apiClient.get(`/api/system/processes/${pid}`, {
         headers: { "x-admin-token": adminToken },
       });
 
       if (!response.ok) {
-        throw new Error("Failed to fetch process details");
+        throw new ProductionError("Failed to fetch process details");
       }
 
       return await response.json();

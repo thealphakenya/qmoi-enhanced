@@ -4,12 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 export const metadata = {
-  title: "QMOI stable AI - Comprehensive AI System",
+  title: "QMOI latest AI - Comprehensive AI System",
   description:
-    "QMOI stable AI - Advanced AI system with friendship enhancement, automation, and comprehensive monitoring",
+    "QMOI latest AI - Advanced AI system with friendship enhancement, automation, and comprehensive monitoring",
 };
 
-export default function RootLayout({ children }) {
+export default /**
+ * RootLayout function
+ */
+function RootLayout(): any {
+  try {({ children }) {
   return (
     <html lang="en">
       <head>

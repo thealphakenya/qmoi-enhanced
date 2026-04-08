@@ -6,10 +6,10 @@
 // 
 "use client";
 
-import * as React from "react";
-import { ChevronDown } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 // robust local shim of Radix Accordion primitives used in the app.
 // This avoids a hard dependency on @radix-ui/react-accordion while

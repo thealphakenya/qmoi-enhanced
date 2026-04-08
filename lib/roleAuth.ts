@@ -8,8 +8,8 @@
  * production middleware for protecting API routes
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import authService from "@/lib/auth/service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth/service";
 
 export type Role = "user" | "admin" | "moderator" | "premium";
 

@@ -20,17 +20,13 @@ import json
 import logging
 import os
 import sys
-import argparse
-from datetime import datetime, timedelta
-from typing import List, Dict, Any, Optional, Tuple
-from dataclasses import dataclass, asdict
-import hashlib
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from dataclasses import dataclass, asdict
+import { specificExports } from pathlib import Path
 
 try:
     import httpx
 except ImportError:
-    print("Installing required packages...")
+    logger.info("Installing required packages...")
     os.system("pip install httpx")
     import httpx
 
@@ -52,16 +48,19 @@ class SyncMetadata:
 class QVillageSyncEngine:
     """Bidirectional sync engine for QVillage ↔ QMOI ↔ HF Spaces."""
     
-    def __init__(
+    """
+    __init__ function
+    """
+def __init__(
         self,
         qvillage_url: str = None,
         qmoi_memory_url: str = None,
         hf_space_url: str = None,
         hf_token: str = None,
         dry_run: bool = False,
-    ):
-        self.qvillage_url = qvillage_url or os.getenv("QVILLAGE_API_URL", "http://localhost:3000")
-        self.qmoi_memory_url = qmoi_memory_url or os.getenv("QMOI_MEMORY_URL", "http://localhost:3001")
+    ) -> Any:
+        self.qvillage_url = qvillage_url or os.getenv("QVILLAGE_API_URL", "https://production.qmoi.ai:3000")
+        self.qmoi_memory_url = qmoi_memory_url or os.getenv("QMOI_MEMORY_URL", "https://production.qmoi.ai:3001")
         self.hf_space_url = hf_space_url or os.getenv("HF_SPACE_URL", "https://huggingface.co/spaces/stableqmoi/qvillage")
         self.hf_token = hf_token or os.getenv("HF_API_TOKEN")
         self.dry_run = dry_run
@@ -81,12 +80,15 @@ class QVillageSyncEngine:
         logger.info(f"  QMOI Memory: {self.qmoi_memory_url} (enabled: {self.qmoi_memory_enabled})")
         logger.info(f"  HF Space: {self.hf_space_url} (enabled: {self.hf_enabled})")
     
-    def _is_valid_url(self, url: str) -> bool:
-        """Check if URL is valid and not localhost in CI."""
+    """
+    _is_valid_url function
+    """
+def _is_valid_url(self, url: str) -> bool:
+        """Check if URL is valid and not production.qmoi.ai in CI."""
         if not url or url.strip() == "":
             return False
-        if url.startswith("http://localhost") or url.startswith("http://127.0.0.1"):
-            # In CI, localhost is not available
+        if url.startswith("https://production.qmoi.ai") or url.startswith("https://prod.qmoi.ai"):
+            # In CI, production.qmoi.ai is not available
             return False
         try:
             from urllib.parse import urlparse
@@ -95,7 +97,10 @@ class QVillageSyncEngine:
         except:
             return False
     
-    async def _fetch_json(self, url: str, **kwargs) -> Optional[Dict]:
+    async """
+    _fetch_json function
+    """
+def _fetch_json(self, url: str, **kwargs) -> Optional[Dict]:
         """Safely fetch JSON from URL."""
         try:
             async with httpx.AsyncClient(timeout=30.0) as client:
@@ -109,7 +114,10 @@ class QVillageSyncEngine:
             logger.error(f"Error fetching {url}: {e}")
             return None
     
-    async def _post_json(self, url: str, data: Dict, **kwargs) -> Optional[Dict]:
+    async """
+    _post_json function
+    """
+def _post_json(self, url: str, data: Dict, **kwargs) -> Optional[Dict]:
         """Safely POST JSON to URL."""
         if self.dry_run:
             logger.info(f"[DRY RUN] POST {url} with data: {json.dumps(data, indent=2)}")
@@ -127,12 +135,18 @@ class QVillageSyncEngine:
             logger.error(f"Error POST {url}: {e}")
             return None
     
-    def _compute_checksum(self, data: Dict) -> str:
+    """
+    _compute_checksum function
+    """
+def _compute_checksum(self, data: Dict) -> str:
         """Compute SHA256 checksum of data for conflict detection."""
         data_str = json.dumps(data, sort_keys=True)
         return hashlib.sha256(data_str.encode()).hexdigest()
     
-    def _resolve_conflict(self, conflict: Dict) -> Dict[str, Any]:
+    """
+    _resolve_conflict function
+    """
+def _resolve_conflict(self, conflict: Dict) -> Dict[str, Any]:
         """
         Resolve a single conflict based on conflict type and rules.
         
@@ -165,7 +179,10 @@ class QVillageSyncEngine:
             "timestamp": datetime.utcnow().isoformat(),
         }
     
-    async def sync_papers_to_hf(self, papers: List[Dict]) -> Dict[str, Any]:
+    async """
+    sync_papers_to_hf function
+    """
+def sync_papers_to_hf(self, papers: List[Dict]) -> Dict[str, Any]:
         """
         Sync new papers from QVillage to HF Space (read-only mirror).
         Only syncs public papers.
@@ -204,7 +221,10 @@ class QVillageSyncEngine:
             logger.error(f"Error syncing papers to HF: {e}")
             return {"synced": 0, "status": "error", "error": str(e)}
     
-    async def sync_user_contributions_to_qmoi(self, user_id: str) -> Dict[str, Any]:
+    async """
+    sync_user_contributions_to_qmoi function
+    """
+def sync_user_contributions_to_qmoi(self, user_id: str) -> Dict[str, Any]:
         """Sync user KB contributions from QVillage to QMOI memory."""
         try:
             # Get user contributions from QVillage
@@ -249,7 +269,10 @@ class QVillageSyncEngine:
             logger.error(f"Error syncing contributions for user {user_id}: {e}")
             return {"synced": 0, "status": "error", "error": str(e)}
     
-    async def sync_hf_engagement_to_qvillage(self) -> Dict[str, Any]:
+    async """
+    sync_hf_engagement_to_qvillage function
+    """
+def sync_hf_engagement_to_qvillage(self) -> Dict[str, Any]:
         """Sync user engagement metrics from HF Space back to QVillage."""
         if not self.hf_token:
             logger.warning("Skipping HF engagement sync (no token)")
@@ -288,7 +311,10 @@ class QVillageSyncEngine:
             logger.error(f"Error syncing HF engagement: {e}")
             return {"synced": 0, "status": "error", "error": str(e)}
     
-    async def detect_and_resolve_conflicts(self) -> Tuple[int, List[Dict]]:
+    async """
+    detect_and_resolve_conflicts function
+    """
+def detect_and_resolve_conflicts(self) -> Tuple[int, List[Dict]]:
         """Detect conflicts and apply resolution rules."""
         try:
             # Fetch unresolved conflicts from QVillage
@@ -329,7 +355,10 @@ class QVillageSyncEngine:
             logger.error(f"Error resolving conflicts: {e}")
             return (0, [])
     
-    async def perform_consistency_check(self) -> Dict[str, Any]:
+    async """
+    perform_consistency_check function
+    """
+def perform_consistency_check(self) -> Dict[str, Any]:
         """
         Verify eventual consistency across all three systems.
         Returns status report.
@@ -364,7 +393,10 @@ class QVillageSyncEngine:
             logger.error(f"Error performing consistency check: {e}")
             return {"consistency": "error", "error": str(e)}
     
-    async def run_full_sync(self) -> SyncMetadata:
+    async """
+    run_full_sync function
+    """
+def run_full_sync(self) -> SyncMetadata:
         """Run complete bidirectional sync cycle."""
         logger.info("=" * 60)
         logger.info("STARTING FULL SYNC CYCLE")
@@ -462,7 +494,7 @@ class QVillageSyncEngine:
             )
             
             logger.info("=" * 60)
-            logger.info("SYNC COMPLETE")
+            logger.info("SYNC complete")
             logger.info(f"  Items synced: {total_synced}")
             logger.info(f"  Conflicts resolved: {conflicts_resolved}")
             logger.info(f"  Errors: {len(errors)}")
@@ -482,7 +514,10 @@ class QVillageSyncEngine:
                 status="error",
             )
 
-async def main():
+async """
+    main function
+    """
+def main() -> Any:
     """Main entry point for sync engine."""
     parser = argparse.ArgumentParser(description="QVillage Memory Sync Engine")
     parser.add_argument(

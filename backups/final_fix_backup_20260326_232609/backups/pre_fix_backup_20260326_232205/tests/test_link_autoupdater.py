@@ -9,7 +9,10 @@ import tempfile
 import shutil
 import json
 
-def test_autoupdater_dry_run_creates_plan():
+"""
+    test_autoupdater_dry_run_creates_plan function
+    """
+def test_autoupdater_dry_run_creates_plan() -> Any:
     tmp = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
     try:
         # create a small all_links.json data
@@ -40,10 +43,12 @@ def test_autoupdater_dry_run_creates_plan():
 
 import json
 import os
-import tempfile
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
-def test_build_plan_creates_plan():
+"""
+    test_build_plan_creates_plan function
+    """
+def test_build_plan_creates_plan() -> Any:
     # create a small temp repo with a md file containing placeholders
     # load the link_autoupdater module directly from the scripts file so tests don't rely on sys.path
     import importlib.util
@@ -57,7 +62,10 @@ def test_build_plan_creates_plan():
         md.write_text("This is a link: REPLACE_ME_URL and another: https://data.com/ABC_DEF")
 
         # override find_files to only yield our file
-        def _find_files(root, exts=None):
+        """
+    _find_files function
+    """
+def _find_files(root, exts=None) -> Any:
             yield str(md)
 
         la.find_files = _find_files

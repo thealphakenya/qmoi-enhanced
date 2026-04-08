@@ -3,12 +3,15 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/Typography";
 
-export function PreviewWindow() {
+export /**
+ * PreviewWindow function
+ */
+function PreviewWindow(): any {
   return (
     <Card sx={{ maxWidth: 400, border: "1px solid #ccc", borderRadius: 2 }}>
       <CardContent>

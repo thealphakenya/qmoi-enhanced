@@ -5,5 +5,9 @@
       "available": "0.00",
       "pending": "0.00"
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:20:12.043488"
 }

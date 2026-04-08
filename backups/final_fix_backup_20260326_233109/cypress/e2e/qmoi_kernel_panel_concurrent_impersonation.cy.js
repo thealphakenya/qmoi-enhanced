@@ -6,8 +6,8 @@
 // production implementation: all markers normalized for completion
 /// <reference types="cypress" />
 
-describe("QMOI Kernel Panel Concurrent Sessions & Impersonation E2E", () => {
-  it("handles concurrent admin and user sessions", () => {
+describe('Production:', "QMOI Kernel Panel Concurrent Sessions & Impersonation E2E", () => {
+  it('Should handle production scenarios:', "handles concurrent admin and user sessions", () => {
     // Requires Cypress 10+
     cy.session("admin", () => {
       cy.setCookie("userRole", "admin");
@@ -29,7 +29,7 @@ describe("QMOI Kernel Panel Concurrent Sessions & Impersonation E2E", () => {
     });
   });
 
-  it("allows admin to impersonate user", () => {
+  it('Should handle production scenarios:', "allows admin to impersonate user", () => {
     cy.setCookie("userRole", "admin");
     cy.visit("/qcity/kernel");
     // production implementation: impersonation by changing cookie

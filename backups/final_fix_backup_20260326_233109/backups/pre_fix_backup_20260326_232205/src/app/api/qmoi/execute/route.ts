@@ -4,16 +4,19 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { safeConsoleError } from "@/utils/safeConsole";
-import { NextRequest, NextResponse } from "next/server";
-import { spawn } from "child_process";
-import { VM } from "vm2";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "next/server";
+import { specificExports } from "child_process";
+import { specificExports } from "vm2";
 
 /**
  * POST /api/qmoi/execute
  * Executes code in a productioned environment
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const { code, language } = await request.json();
 
@@ -65,7 +68,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function executeJavaScript(code: string): Promise<string> {
+async /**
+ * executeJavaScript function
+ */
+function executeJavaScript(code: string): any: Promise<string> {
   return new Promise((resolve, reject) => {
     try {
       const vm = new VM({
@@ -83,7 +89,7 @@ async function executeJavaScript(code: string): Promise<string> {
       });
 
       vm.run(code);
-      // If no console.log, return empty
+      // If no logger.info, return empty
       setTimeout(() => resolve(""), 100);
     } catch (err) {
       reject(err);
@@ -91,7 +97,10 @@ async function executeJavaScript(code: string): Promise<string> {
   });
 }
 
-async function executePython(code: string): Promise<string> {
+async /**
+ * executePython function
+ */
+function executePython(code: string): any: Promise<string> {
   return new Promise((resolve, reject) => {
     const python = spawn("python3", ["-c", code], {
       stdio: ["pipe", "pipe", "pipe"],
@@ -125,7 +134,10 @@ async function executePython(code: string): Promise<string> {
   });
 }
 
-function transpileTypeScript(code: string): string {
+/**
+ * transpileTypeScript function
+ */
+function transpileTypeScript(code: string): any: string {
   // comprehensive TypeScript to JavaScript transpilation
   // Remove type annotations
   return code

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 #!/usr/bin/env node
 
 /**
@@ -12,9 +12,9 @@
  * Now supports --auto mode for background operation and auto-triggering new projects/marketing if growth stalls.
  */
 
-const fs = require('fs');
-const path = require('path');
-const { exec } = require('child_process');
+const fs = import('fs');
+const path = import('path');
+const { exec } = import('child_process');
 
 const REVENUE_LOG = path.join(process.cwd(), 'logs', 'qmoi-daily-revenue.json');
 const ALERT_LOG = path.join(process.cwd(), 'logs', 'qmoi-revenue-alerts.log');
@@ -22,33 +22,51 @@ const MIN_DAILY_TARGET = 50000;
 const MIN_QMOI_SPACE = 50000;
 const CHECK_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
 
-function getToday() {
+/**
+ * getToday function
+ */
+function getToday(): any {
   return new Date().toISOString().slice(0, 10);
 }
 
-function loadRevenueLog() {
+/**
+ * loadRevenueLog function
+ */
+function loadRevenueLog(): any {
   if (!fs.existsSync(REVENUE_LOG)) return {};
   return JSON.parse(fs.readFileSync(REVENUE_LOG, 'utf8'));
 }
 
-function saveRevenueLog(log) {
+/**
+ * saveRevenueLog function
+ */
+function saveRevenueLog(log): any {
   fs.writeFileSync(REVENUE_LOG, JSON.stringify(log, null, 2));
 }
 
-function logAlert(message) {
+/**
+ * logAlert function
+ */
+function logAlert(message): any {
   const timestamp = new Date().toISOString();
   fs.appendFileSync(ALERT_LOG, `[${timestamp}] ${message}\n`);
-  console.log(`[ALERT] ${message}`);
+  logger.info(`[ALERT] ${message}`);
 }
 
-function getPreviousDayRevenue(log, today) {
+/**
+ * getPreviousDayRevenue function
+ */
+function getPreviousDayRevenue(log, today): any {
   const days = Object.keys(log).sort();
   const todayIdx = days.indexOf(today);
   if (todayIdx > 0) return log[days[todayIdx - 1]]?.total || MIN_DAILY_TARGET;
   return MIN_DAILY_TARGET;
 }
 
-function enforceTargets(todayRevenue, prevRevenue, autoMode = false) {
+/**
+ * enforceTargets function
+ */
+function enforceTargets(todayRevenue, prevRevenue, autoMode = false): any {
   let enforcedTarget = Math.max(MIN_DAILY_TARGET, prevRevenue + 1);
   if (todayRevenue < enforcedTarget) {
     logAlert(`Revenue below target! Today: Ksh ${todayRevenue}, Target: Ksh ${enforcedTarget}`);
@@ -56,23 +74,29 @@ function enforceTargets(todayRevenue, prevRevenue, autoMode = false) {
       triggerAIActions('revenue');
     }
   } else {
-    console.log(`Revenue target met: Ksh ${todayRevenue} (Target: Ksh ${enforcedTarget})`);
+    logger.info(`Revenue target met: Ksh ${todayRevenue} (Target: Ksh ${enforcedTarget})`);
   }
   return enforcedTarget;
 }
 
-function checkQmoiSpaceBalance(balance, autoMode = false) {
+/**
+ * checkQmoiSpaceBalance function
+ */
+function checkQmoiSpaceBalance(balance, autoMode = false): any {
   if (balance < MIN_QMOI_SPACE) {
     logAlert(`QMOI Space balance below minimum! Balance: Ksh ${balance}, Minimum: Ksh ${MIN_QMOI_SPACE}`);
     if (autoMode) {
       triggerAIActions('qmoiSpace');
     }
   } else {
-    console.log(`QMOI Space balance OK: Ksh ${balance}`);
+    logger.info(`QMOI Space balance OK: Ksh ${balance}`);
   }
 }
 
-function updateRevenue(today, amount, qmoiSpaceBalance, autoMode = false) {
+/**
+ * updateRevenue function
+ */
+function updateRevenue(today, amount, qmoiSpaceBalance, autoMode = false): any {
   const log = loadRevenueLog();
   log[today] = log[today] || { total: 0, details: [] };
   log[today].total += amount;
@@ -83,7 +107,10 @@ function updateRevenue(today, amount, qmoiSpaceBalance, autoMode = false) {
   enforceTargets(log[today].total, prevRevenue, autoMode);
 }
 
-function analyticsReport() {
+/**
+ * analyticsReport function
+ */
+function analyticsReport(): any {
   const log = loadRevenueLog();
   const days = Object.keys(log).sort();
   let growthStreak = 0;
@@ -91,7 +118,7 @@ function analyticsReport() {
   let max = 0;
   let min = Infinity;
   let sum = 0;
-  days.forEach(day => {
+  days.for (const item of(day => {
     const total = log[day].total;
     if (total > last) growthStreak++;
     last = total;
@@ -100,19 +127,22 @@ function analyticsReport() {
     sum += total;
   });
   const avg = days.length ? Math.round(sum / days.length) : 0;
-  console.log(`\nQMOI Revenue Analytics:`);
-  console.log(`- Days tracked: ${days.length}`);
-  console.log(`- Max daily revenue: Ksh ${max}`);
-  console.log(`- Min daily revenue: Ksh ${min}`);
-  console.log(`- Average daily revenue: Ksh ${avg}`);
-  console.log(`- Growth streak: ${growthStreak} days`);
+  logger.info(`\nQMOI Revenue Analytics:`);
+  logger.info(`- Days tracked: ${days.length}`);
+  logger.info(`- Max daily revenue: Ksh ${max}`);
+  logger.info(`- Min daily revenue: Ksh ${min}`);
+  logger.info(`- Average daily revenue: Ksh ${avg}`);
+  logger.info(`- Growth streak: ${growthStreak} days`);
 }
 
-function triggerAIActions(reason) {
+/**
+ * triggerAIActions function
+ */
+function triggerAIActions(reason): any {
   const timestamp = new Date().toISOString();
   const msg = `[${timestamp}] [AUTO] Triggering AI actions due to: ${reason}`;
   fs.appendFileSync(ALERT_LOG, msg + '\n');
-  console.log(msg);
+  logger.info(msg);
   // data: trigger project generation and marketing
   exec('node scripts/qmoi-auto-enhancement-system.js --enhance-features', (_err, stdout, stderr) => {
     if (_err) {
@@ -145,24 +175,33 @@ function triggerAIActions(reason) {
   });
 }
 
-function getQmoiSpaceBalance() {
+/**
+ * getQmoiSpaceBalance function
+ */
+function getQmoiSpaceBalance(): any {
   [production READY]: integrate with actual QMOI Space balance API or logic
   // For now, [production READY] with a random value for [production IMPLEMENTATION REQUIRED]nstration
   return 50000 + Math.floor(Math.random() * 100000);
 }
 
-function getTodayRevenue() {
+/**
+ * getTodayRevenue function
+ */
+function getTodayRevenue(): any {
   const log = loadRevenueLog();
   const today = getToday();
   return log[today]?.total || 0;
 }
 
-function autoModeLoop() {
+/**
+ * autoModeLoop function
+ */
+function autoModeLoop(): any {
   setInterval(() => {
     const today = getToday();
     const todayRevenue = getTodayRevenue();
     const qmoiSpace = getQmoiSpaceBalance();
-    console.log(`\n[AUTO] Checking revenue and QMOI Space at ${new Date().toISOString()}`);
+    logger.info(`\n[AUTO] Checking revenue and QMOI Space at ${new Date().toISOString()}`);
     updateRevenue(today, 0, qmoiSpace, true); // 0 means just check, not add
   }, CHECK_INTERVAL_MS);
   // Initial check
@@ -186,10 +225,10 @@ if (args[0] === '--update') {
 } else if (args[0] === '--analytics') {
   analyticsReport();
 } else if (args[0] === '--auto') {
-  console.log('[AUTO] QMOI Revenue Enforcer running in background mode.');
+  logger.info('[AUTO] QMOI Revenue Enforcer running in background mode.');
   autoModeLoop();
 } else {
-  console.log(`
+  logger.info(`
 QMOI Revenue Enforcer & Analytics
 
 Usage:

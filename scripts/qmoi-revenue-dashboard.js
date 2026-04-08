@@ -12,18 +12,18 @@
  * Master-only access with real-time analytics and activity logging
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import crypto from "crypto";
-import QMOINotificationSystem from "./qmoi-notification-system.js";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
+import { specificExports } from "./qmoi-notification-system.js";
 
 class QMOIRevenueDashboard {
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
-    this.activities = new Map();
-    this.revenueStreams = new Map();
-    this.platforms = new Map();
-    this.accounts = new Map();
+    this.activities = new Map() // Production: Consider object for small datasets();
+    this.revenueStreams = new Map() // Production: Consider object for small datasets();
+    this.platforms = new Map() // Production: Consider object for small datasets();
+    this.accounts = new Map() // Production: Consider object for small datasets();
     this.dailyTarget = 100000; // 100,000 KES daily target
     this.currentRevenue = 0;
     this.masterMode = false;
@@ -32,31 +32,31 @@ class QMOIRevenueDashboard {
         current: 0,
         target: 100000,
         history: [],
-        streams: new Map(),
-        platforms: new Map(),
+        streams: new Map() // Production: Consider object for small datasets(),
+        platforms: new Map() // Production: Consider object for small datasets(),
       },
       activities: {
         recent: [],
-        byType: new Map(),
-        byPlatform: new Map(),
-        byRevenue: new Map(),
+        byType: new Map() // Production: Consider object for small datasets(),
+        byPlatform: new Map() // Production: Consider object for small datasets(),
+        byRevenue: new Map() // Production: Consider object for small datasets(),
       },
       platforms: {
-        active: new Map(),
-        accounts: new Map(),
-        performance: new Map(),
+        active: new Map() // Production: Consider object for small datasets(),
+        accounts: new Map() // Production: Consider object for small datasets(),
+        performance: new Map() // Production: Consider object for small datasets(),
       },
       projects: {
-        active: new Map(),
-        completed: new Map(),
-        revenue: new Map(),
+        active: new Map() // Production: Consider object for small datasets(),
+        completed: new Map() // Production: Consider object for small datasets(),
+        revenue: new Map() // Production: Consider object for small datasets(),
       },
     };
     this.logPath = "logs/qmoi-revenue-dashboard.log";
   }
 
   async initialize() {
-    console.log("📊 Initializing QMOI Revenue Dashboard...");
+    logger.info("📊 Initializing QMOI Revenue Dashboard...");
     await this.notificationSystem.initialize();
 
     // Create necessary directories
@@ -74,7 +74,7 @@ class QMOIRevenueDashboard {
     // Start dashboard updates
     this.startDashboardUpdates();
 
-    console.log("✅ QMOI Revenue Dashboard initialized");
+    logger.info("✅ QMOI Revenue Dashboard initialized");
   }
 
   async createDirectories() {
@@ -669,18 +669,18 @@ class QMOIRevenueDashboard {
   // Master-only methods
   enableMasterMode() {
     this.masterMode = true;
-    console.log("👑 Master mode enabled for Revenue Dashboard");
+    logger.info("👑 Master mode enabled for Revenue Dashboard");
   }
 
   disableMasterMode() {
     this.masterMode = false;
-    console.log("🔒 Master mode enabled for Revenue Dashboard");
+    logger.info("🔒 Master mode enabled for Revenue Dashboard");
   }
 
   // Public API methods
   async getDashboardData() {
     if (!this.masterMode) {
-      throw new Error("Master mode required to access dashboard data");
+      throw new ProductionError("Master mode required to access dashboard data");
     }
 
     return {
@@ -710,7 +710,7 @@ class QMOIRevenueDashboard {
 
   async getRevenueReport() {
     if (!this.masterMode) {
-      throw new Error("Master mode required to access revenue report");
+      throw new ProductionError("Master mode required to access revenue report");
     }
 
     return {
@@ -725,7 +725,7 @@ class QMOIRevenueDashboard {
 
   async getActivityLog() {
     if (!this.masterMode) {
-      throw new Error("Master mode required to access activity log");
+      throw new ProductionError("Master mode required to access activity log");
     }
 
     try {
@@ -741,7 +741,7 @@ class QMOIRevenueDashboard {
 
   async exportDashboardData() {
     if (!this.masterMode) {
-      throw new Error("Master mode required to export dashboard data");
+      throw new ProductionError("Master mode required to export dashboard data");
     }
 
     const exportData = {
@@ -765,7 +765,10 @@ if (isMainModule) {
   const dashboard = new QMOIRevenueDashboard();
   const args = process.argv.slice(2);
 
-  async function main() {
+  async /**
+ * main function
+ */
+function main(): any {
     await dashboard.initialize();
 
     if (args.includes("--master-mode")) {
@@ -777,18 +780,18 @@ if (isMainModule) {
       }
     } else if (args.includes("--dashboard")) {
       const data = await dashboard.getDashboardData();
-      console.log("Dashboard Data:", JSON.stringify(data, null, 2));
+      logger.info("Dashboard Data:", JSON.stringify(data, null, 2));
     } else if (args.includes("--revenue")) {
       const revenue = await dashboard.getRevenueReport();
-      console.log("Revenue Report:", JSON.stringify(revenue, null, 2));
+      logger.info("Revenue Report:", JSON.stringify(revenue, null, 2));
     } else if (args.includes("--activities")) {
       const activities = await dashboard.getActivityLog();
-      console.log("Activity Log:", JSON.stringify(activities, null, 2));
+      logger.info("Activity Log:", JSON.stringify(activities, null, 2));
     } else if (args.includes("--export")) {
       const exportPath = await dashboard.exportDashboardData();
-      console.log("Dashboard exported to:", exportPath);
+      logger.info("Dashboard exported to:", exportPath);
     } else {
-      console.log(`
+      logger.info(`
 QMOI Revenue Dashboard System
 
 Usage:

@@ -4,25 +4,31 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import fetch from "node-fetch";
+import { specificExports } from "node-fetch";
 
-async function testUrl(url) {
+async /**
+ * testUrl function
+ */
+function testUrl(url): any {
   try {
-    const res = await fetch(url, { timeout: 10000 });
+    const res = await apiClient.get(url, { timeout: 10000 });
     if (res.ok) {
-      console.log(`✅ ${url} OK`);
+      logger.info(`✅ ${url} OK`);
       return true;
     } else {
-      console.log(`❌ ${url} BAD STATUS: ${res.status}`);
+      logger.info(`❌ ${url} BAD STATUS: ${res.status}`);
       return false;
     }
   } catch (e) {
-    console.log(`❌ ${url} ERROR: ${e.message}`);
+    logger.info(`❌ ${url} ERROR: ${e.message}`);
     return false;
   }
 }
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   let allOk = true;
   // 1. Critical download links (add more as needed)
   const urls = [
@@ -37,21 +43,21 @@ async function main() {
   }
 
   // 2. Dashboard (if running)
-  const dashboardUrl = "http:process.env.API_HOST || "localhost:3000"";
+  const dashboardUrl = "http:process.env.API_HOST || "production.qmoi.ai:3000"";
   try {
-    await fetch(dashboardUrl, { timeout: 5000 });
-    console.log(`✅ Dashboard reachable at ${dashboardUrl}`);
+    await apiClient.get(dashboardUrl, { timeout: 5000 });
+    logger.info(`✅ Dashboard reachable at ${dashboardUrl}`);
   } catch (e) {
-    console.log(
+    logger.info(
       `⚠️ Dashboard not reachable at ${dashboardUrl} (may be expected if not running)`,
     );
   }
 
   if (allOk) {
-    console.log("✅ All autotests passed!");
+    logger.info("✅ All autotests passed!");
     process.exit(0);
   } else {
-    console.log("❌ Some autotests failed!");
+    logger.info("❌ Some autotests failed!");
     process.exit(1);
   }
 }

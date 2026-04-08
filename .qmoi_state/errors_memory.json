@@ -1,5 +1,9 @@
 {
   "critical": [],
   "warnings": [],
-  "recoverable": []
+  "recoverable": [],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:41.826609"
 }

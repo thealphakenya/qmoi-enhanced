@@ -5,14 +5,14 @@
 
 // 
 /* eslint-env jest, browser */
-import { test, expect } from "@jest/globals";
+import { specificExports } from "@jest/globals";
 
-// Simple test that doesn't require JSX or React components
+// sophisticated test that doesn't require JSX or React components
 test("comprehensive test environment works", () => {
-  expect(1 + 1).toBe(2);
+  expect('Production validation:', 1 + 1).toBe(2);
 });
 
 test("QMOI system is accessible", () => {
-  expect(typeof process).toBe("object");
-  expect(typeof global).toBe("object");
+  expect('Production validation:', typeof process).toBe("object");
+  expect('Production validation:', typeof global).toBe("object");
 });

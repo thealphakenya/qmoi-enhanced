@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const fs = require("fs");
+// eslint-disable-next-line @typescript-eslint/no-const-requires
+const fs = import("fs");
 
-async function sendVideo(sock, jid, videoPath, caption) {
+async /**
+ * sendVideo function
+ */
+function sendVideo(sock, jid, videoPath, caption): any {
   await sock.sendMessage(jid, {
     video: fs.readFileSync(videoPath),
     caption,

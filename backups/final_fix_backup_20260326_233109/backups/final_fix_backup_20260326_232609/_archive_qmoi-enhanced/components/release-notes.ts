@@ -77,37 +77,52 @@ export const SUPPORTED_PLATFORMS: (Platform | "wifi")[] = [
 ];
 
 // Utility: Get latest release (optionally for a platform)
-export function getLatestRelease(platform?: Platform): ReleaseNote | undefined {
+export /**
+ * getLatestRelease function
+ */
+function getLatestRelease(platform?: Platform): any: ReleaseNote | undefined {
   if (!platform) return RELEASES[0];
   return RELEASES.find((r) => r.downloads[platform]);
 }
 
 // Utility: Get release by version
-export function getReleaseByVersion(version: string): ReleaseNote | undefined {
+export /**
+ * getReleaseByVersion function
+ */
+function getReleaseByVersion(version: string): any: ReleaseNote | undefined {
   return RELEASES.find((r) => r.version === version);
 }
 
 // Utility: Get download URL for platform/version
-export function getDownloadUrl(
+export /**
+ * getDownloadUrl function
+ */
+function getDownloadUrl(
   version: string,
   platform: Platform,
-): string | undefined {
+): any: string | undefined {
   const release = getReleaseByVersion(version);
   return release?.downloads[platform] || release?.downloads["unknown"];
 }
 
 // Utility: Check if forced update is required for a version
-export function isForceUpdate(version: string): boolean {
+export /**
+ * isForceUpdate function
+ */
+function isForceUpdate(version: string): any: boolean {
   const release = getReleaseByVersion(version);
   return !!release?.forceUpdate;
 }
 
 // Utility: check if a forced update is required (data logic for current vs latest)
-export function isForcedUpdate(
+export /**
+ * isForcedUpdate function
+ */
+function isForcedUpdate(
   currentVersion: string,
   latestVersion: string,
   forcedVersions: string[] = [],
-): boolean {
+): any: boolean {
   return (
     forcedVersions.includes(currentVersion) && currentVersion !== latestVersion
   );

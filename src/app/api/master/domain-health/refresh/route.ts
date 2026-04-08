@@ -7,11 +7,14 @@
  * Location: src/app/api/master/domain-health/refresh/route.ts
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { LionAgentWorkflowMonitor } from '@/services/lion-agent-workflows';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/services/lion-agent-workflows';
 
 // Check if request is from master
-function isMasterAuthorized(request: NextRequest): boolean {
+/**
+ * isMasterAuthorized function
+ */
+function isMasterAuthorized(request: NextRequest): any: boolean {
   const authHeader = request.headers.get('authorization');
   const masterToken = process.env.MASTER_TOKEN || '';
 
@@ -23,7 +26,10 @@ function isMasterAuthorized(request: NextRequest): boolean {
   return token === masterToken;
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     // Check master authorization
     if (!isMasterAuthorized(request)) {
@@ -33,7 +39,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log('🦁 Master: Forcing domain validation refresh...');
+    logger.info('🦁 Master: Forcing domain validation refresh...');
 
     // Force domain validation refresh
     const lionAgent = new LionAgentWorkflowMonitor();
@@ -54,7 +60,7 @@ export async function POST(request: NextRequest) {
       allHealthy: healthyDomains === totalDomains
     };
 
-    console.log(`🦁 Master: Domain validation refresh completed - ${healthyDomains}/${totalDomains} domains healthy`);
+    logger.info(`🦁 Master: Domain validation refresh completed - ${healthyDomains}/${totalDomains} domains healthy`);
 
     return NextResponse.json({
       success: true,

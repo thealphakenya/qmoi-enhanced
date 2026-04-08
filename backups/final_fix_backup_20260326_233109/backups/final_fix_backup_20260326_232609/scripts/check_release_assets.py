@@ -9,8 +9,7 @@
 
 Outputs `tools/releases_assets_report.json` and `tools/releases_assets_report.md`.
 """
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 # Expected apps and platform filename hints
@@ -27,7 +26,7 @@ releases_file = ROOT / 'tools' / 'releases_api.json'
 out_json = ROOT / 'tools' / 'releases_assets_report.json'
 out_md = ROOT / 'tools' / 'releases_assets_report.md'
 if not releases_file.exists():
-    print('required', releases_file, '— run scripts/audit_releases.py first')
+    logger.info('required', releases_file, '— run scripts/audit_releases.py first')
     raise SystemExit(1)
 
 data = json.loads(releases_file.read_text())
@@ -71,4 +70,4 @@ for r in report['releases']:
     md_lines.append('')
 
 out_md.write_text('\n'.join(md_lines))
-print('Wrote', out_json, 'and', out_md)
+logger.info('Wrote', out_json, 'and', out_md)

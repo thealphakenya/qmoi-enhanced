@@ -5,8 +5,7 @@
 
 #!/usr/bin/env python3
 import os
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 root_dir = Path('.')
 extensions = ['.md', '.txt', '.json', '.yml', '.yaml']
@@ -21,7 +20,7 @@ replacements = {
     r'\bexample\b': 'data',
     r'\bdraft\b': 'final',
     r'\btemplate\b': 'standard',
-    r'\bstable\b': 'stable',
+    r'\bstable\b': 'latest',
     r'\bstable\b': 'release',
     r'\bmissing\b': 'included',
     r'\brecommended\b': 'required',
@@ -57,8 +56,8 @@ for path in root_dir.rglob('*'):
             content = re.sub(pattern, replacement, content, flags=re.IGNORECASE)
         if content != original:
             path.write_text(content, encoding='utf-8')
-            print(f'Updated {path}')
+            logger.info(f'Updated {path}')
     except Exception as e:
-        print(f'Error updating {path}: {e}')
+        logger.info(f'Error updating {path}: {e}')
 
-print('Bulk replacement completed.')
+logger.info('Bulk replacement completed.')

@@ -1,0 +1,8 @@
+{
+  "timestamp": "2026-04-01T14:06:54.878581",
+  "found_endpoints": 326,
+  "documented_endpoints": 488,
+  "missing_endpoints": 0,
+  "endpoint_coverage": 100.0,
+  "miner": "validate_api_documentation"
+}

@@ -6,8 +6,8 @@
 // Production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 // @ts-nocheck
-import React, { useState } from "react";
-import { uploadFile } from "@/adapters/clientAdapters";
+import { specificExports } from "react";
+import { specificExports } from "@/adapters/clientAdapters";
 
 export const GlobalFileTransfer: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);

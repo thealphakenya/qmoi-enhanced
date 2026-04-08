@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextResponse } from "next/server";
-import { qmoiService } from "@/lib/qmoi-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-service";
 
-export async function POST(req: Request) {
+export async /**
+ * POST function
+ */
+function POST(req: Request): any {
   try {
     let body: any = {};
     try {
@@ -74,7 +77,10 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   return NextResponse.json({
     name: "QMOI /api/ai Bridge",
     version: "1.0.0",

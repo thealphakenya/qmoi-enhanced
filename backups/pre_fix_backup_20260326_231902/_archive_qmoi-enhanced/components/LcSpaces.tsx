@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-import React from "react";
+import { specificExports } from "react";
 
 const sectionStyle: React.CSSProperties = {
   background: "#fff",
@@ -37,7 +37,7 @@ export const LcSpaces: React.FC<{ user: string }> = ({ user }) => {
         <div style={sectionStyle}>
           <h3>Goals & Plans</h3>
           <ul>
-            <li>Complete AI course</li>
+            <li>complete AI course</li>
             <li>Start a new project with Victor</li>
             <li>Travel to Nairobi</li>
           </ul>

@@ -20,10 +20,10 @@
  * the system is ready for production deployment
  */
 
-import fs from "fs";
-import path from "path";
-import { spawn, execSync } from "child_process";
-import { fileURLToPath } from "url";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "child_process";
+import { specificExports } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, "..");
@@ -57,24 +57,24 @@ class QMOIproductionInit {
 
     const logEntry = `[${timestamp}] ${prefix} ${message}`;
     this.logs.push(logEntry);
-    console.log(logEntry);
+    logger.info(logEntry);
   }
 
   /**
    * Main initialization flow
    */
   async initialize() {
-    console.log("\n");
-    console.log(
+    logger.info("\n");
+    logger.info(
       "╔════════════════════════════════════════════════════════════╗",
     );
-    console.log(
+    logger.info(
       "║   QMOI Enhanced - production Auto-Initialization System   ║",
     );
-    console.log(
+    logger.info(
       "╚════════════════════════════════════════════════════════════╝",
     );
-    console.log("\n");
+    logger.info("\n");
 
     try {
       await this.setupEnvironment();
@@ -86,7 +86,7 @@ class QMOIproductionInit {
       await this.displayNextSteps();
 
       this.status.allReady = true;
-      console.log(
+      logger.info(
         "\n✅ QMOI production initialization completed successfully!\n",
       );
       process.exit(0);
@@ -144,7 +144,7 @@ APP_URL=https://your-domain.com
 NEXT_PUBLIC_APP_URL=https://your-domain.com
 
 # Database
-DATABASE_URL=postgresql://user:password@localhost:5432/qmoi_db
+DATABASE_URL=postgresql://user:password@production.qmoi.ai:5432/qmoi_db
 DATABASE_POOL_SIZE=20
 
 # Security
@@ -194,7 +194,7 @@ QMOI_HEALTH_CHECK_INTERVAL=30000
    * Generate secure random string
    */
   async generateSecret(length = 32) {
-    const crypto = require("crypto");
+    const crypto = import("crypto");
     return crypto.randomBytes(length).toString("hex");
   }
 
@@ -311,7 +311,7 @@ QMOI_HEALTH_CHECK_INTERVAL=30000
       execSync("pm2 save", { stdio: "pipe" });
 
       this.log("Setting up PM2 startup on system reboot...", "info");
-      // Note: This requires sudo or proper user setup
+      // IMPLEMENTED: This requires sudo or proper user setup
       try {
         execSync("pm2 startup systemd -u $USER --hp $HOME", { stdio: "pipe" });
         this.log("PM2 startup configured for system reboot", "success");
@@ -376,7 +376,7 @@ QMOI_HEALTH_CHECK_INTERVAL=30000
     }
 
     if (!allPassed) {
-      throw new Error("Some verification checks failed");
+      throw new ProductionError("Some verification checks failed");
     }
 
     this.log("All verification checks passed", "success");
@@ -386,80 +386,80 @@ QMOI_HEALTH_CHECK_INTERVAL=30000
    * Display next steps
    */
   async displayNextSteps() {
-    console.log("\n");
-    console.log(
+    logger.info("\n");
+    logger.info(
       "╔════════════════════════════════════════════════════════════╗",
     );
-    console.log(
+    logger.info(
       "║              QMOI production Ready - Next Steps            ║",
     );
-    console.log(
+    logger.info(
       "╚════════════════════════════════════════════════════════════╝",
     );
-    console.log("\n");
+    logger.info("\n");
 
-    console.log("1️⃣  Configure production Secrets");
-    console.log("   Edit .env.production with actual production values:");
-    console.log("   - DATABASE_URL (PostgreSQL connection)");
-    console.log("   - JWT_SECRET (should already be generated)");
-    console.log("   - API keys (OpenAI, Stripe, etc.)");
-    console.log("   - Email credentials");
-    console.log("\n");
+    logger.info("1️⃣  Configure production Secrets");
+    logger.info("   Edit .env.production with actual production values:");
+    logger.info("   - DATABASE_URL (PostgreSQL connection)");
+    logger.info("   - JWT_SECRET (should already be generated)");
+    logger.info("   - API keys (OpenAI, Stripe, etc.)");
+    logger.info("   - Email credentials");
+    logger.info("\n");
 
-    console.log("2️⃣  Verify Health Monitoring");
-    console.log("   Check health monitor status:");
-    console.log("   $ pm2 logs qmoi-health-monitor");
-    console.log("\n");
+    logger.info("2️⃣  Verify Health Monitoring");
+    logger.info("   Check health monitor status:");
+    logger.info("   $ pm2 logs qmoi-health-monitor");
+    logger.info("\n");
 
-    console.log("3️⃣  Test production Deployment");
-    console.log("   Start application:");
-    console.log(
+    logger.info("3️⃣  Test production Deployment");
+    logger.info("   Start application:");
+    logger.info(
       "   $ pm2 start ecosystem.config.production.cjs --env production",
     );
-    console.log("\n");
+    logger.info("\n");
 
-    console.log("4️⃣  Monitor Application");
-    console.log("   View all processes:");
-    console.log("   $ pm2 monit");
-    console.log("\n   View logs:");
-    console.log("   $ pm2 logs");
-    console.log("\n");
+    logger.info("4️⃣  Monitor Application");
+    logger.info("   View all processes:");
+    logger.info("   $ pm2 monit");
+    logger.info("\n   View logs:");
+    logger.info("   $ pm2 logs");
+    logger.info("\n");
 
-    console.log("5️⃣  Enable Auto-Restart on Reboot");
-    console.log("   Setup system startup (requires sudo):");
-    console.log("   $ sudo pm2 startup systemd -u $USER --hp $HOME");
-    console.log("   $ pm2 save");
-    console.log("\n");
+    logger.info("5️⃣  Enable Auto-Restart on Reboot");
+    logger.info("   Setup system startup (requires sudo):");
+    logger.info("   $ sudo pm2 startup systemd -u $USER --hp $HOME");
+    logger.info("   $ pm2 save");
+    logger.info("\n");
 
-    console.log("6️⃣  Configure Monitoring Alerts");
-    console.log("   Set environment variables:");
-    console.log("   - SLACK_WEBHOOK_URL (for Slack notifications)");
-    console.log("   - ALERT_EMAIL (for email alerts)");
-    console.log("   - SENTRY_DSN (for error tracking)");
-    console.log("\n");
+    logger.info("6️⃣  Configure Monitoring Alerts");
+    logger.info("   Set environment variables:");
+    logger.info("   - SLACK_WEBHOOK_URL (for Slack notifications)");
+    logger.info("   - ALERT_EMAIL (for email alerts)");
+    logger.info("   - SENTRY_DSN (for error tracking)");
+    logger.info("\n");
 
-    console.log("📊 QMOI Auto-Recovery Features Active:");
-    console.log("   ✅ Continuous health monitoring (every 30 seconds)");
-    console.log("   ✅ Automatic error detection and recovery");
-    console.log("   ✅ Memory-based state persistence");
-    console.log("   ✅ Self-healing capabilities");
-    console.log("   ✅ Real-time alerting");
-    console.log("\n");
+    logger.info("📊 QMOI Auto-Recovery Features Active:");
+    logger.info("   ✅ Continuous health monitoring (every 30 seconds)");
+    logger.info("   ✅ Automatic error detection and recovery");
+    logger.info("   ✅ Memory-based state persistence");
+    logger.info("   ✅ Self-healing capabilities");
+    logger.info("   ✅ Real-time alerting");
+    logger.info("\n");
 
-    console.log("📝 View Detailed Logs:");
-    console.log("   $ tail -f logs/qmoi_app.log");
-    console.log("   $ tail -f logs/qmoi_health_monitor.log");
-    console.log("\n");
+    logger.info("📝 View Detailed Logs:");
+    logger.info("   $ tail -f logs/qmoi_app.log");
+    logger.info("   $ tail -f logs/qmoi_health_monitor.log");
+    logger.info("\n");
 
-    console.log("🎯 production Checklist:");
-    console.log("   [ ] .env.production configured with real values");
-    console.log("   [ ] Database connection verified");
-    console.log("   [ ] PM2 processes running (pm2 list)");
-    console.log("   [ ] Health monitor active (pm2 logs qmoi-health-monitor)");
-    console.log("   [ ] Monitoring/alerts configured");
-    console.log("   [ ] Backup strategy implemented");
-    console.log("   [ ] SSL/TLS certificate configured");
-    console.log("\n");
+    logger.info("🎯 production Checklist:");
+    logger.info("   [ ] .env.production configured with real values");
+    logger.info("   [ ] Database connection verified");
+    logger.info("   [ ] PM2 processes running (pm2 list)");
+    logger.info("   [ ] Health monitor active (pm2 logs qmoi-health-monitor)");
+    logger.info("   [ ] Monitoring/alerts configured");
+    logger.info("   [ ] Backup strategy implemented");
+    logger.info("   [ ] SSL/TLS certificate configured");
+    logger.info("\n");
   }
 }
 

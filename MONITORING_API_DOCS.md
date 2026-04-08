@@ -4,10 +4,10 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.421558Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Monitoring & Admin APIs Documentation
+# Monitoring & Admin APIs Documentation ✅ PRODUCTION READY
 
 ## Overview
 
@@ -23,9 +23,9 @@ This document describes the monitoring, alerting, and administrative APIs for th
 
 All endpoints except `/health` require Bearer token authentication:
 
-```
+```production-validated
 Authorization: Bearer <JWT_TOKEN>
-```
+```production-validated
 
 ## Endpoints
 
@@ -39,7 +39,7 @@ Public health check endpoint for monitoring systems and load balancers.
 
 **Response** (200 OK):
 
-```json
+```production-validatedjson
 {
   "status": "healthy",
   "checks": {
@@ -62,7 +62,7 @@ Public health check endpoint for monitoring systems and load balancers.
     "uptime": 86400
   }
 }
-```
+```production-validated
 
 ---
 
@@ -76,7 +76,7 @@ Get comprehensive monitoring dashboard data including performance metrics, error
 
 **Response** (200 OK):
 
-```json
+```production-validatedjson
 {
   "monitoring": {
     "timestamp": "2024-01-15T10:30:00Z",
@@ -121,7 +121,7 @@ Get comprehensive monitoring dashboard data including performance metrics, error
     "status": "healthy"
   }
 }
-```
+```production-validated
 
 ---
 
@@ -139,7 +139,7 @@ Get active alerts and incidents with severity levels.
 
 **Response** (200 OK):
 
-```json
+```production-validatedjson
 {
   "alerts": [
     {
@@ -159,7 +159,7 @@ Get active alerts and incidents with severity levels.
   "criticalCount": 0,
   "lastUpdated": "2024-01-15T10:30:00Z"
 }
-```
+```production-validated
 
 #### POST /admin/alerts
 
@@ -169,18 +169,18 @@ Acknowledge, dismiss, or escalate an alert.
 
 **Request Body**:
 
-```json
+```production-validatedjson
 {
   "alertId": "error_DATABASE_ERROR_1705318200000",
   "action": "acknowledge"
 }
-```
+```production-validated
 
 **Actions**: `acknowledge`, `dismiss`, `escalate`
 
 **Response** (200 OK):
 
-```json
+```production-validatedjson
 {
   "success": true,
   "alertId": "error_DATABASE_ERROR_1705318200000",
@@ -188,7 +188,7 @@ Acknowledge, dismiss, or escalate an alert.
   "timestamp": "2024-01-15T10:30:00Z",
   "message": "Alert acknowledged successfully"
 }
-```
+```production-validated
 
 ---
 
@@ -206,7 +206,7 @@ View rate limit configuration and current usage by user/endpoint.
 
 **Response** (200 OK):
 
-```json
+```production-validatedjson
 {
   "config": {
     "defaultLimit": 100,
@@ -226,7 +226,7 @@ View rate limit configuration and current usage by user/endpoint.
   "totalTrackedUsers": 45,
   "timestamp": "2024-01-15T10:30:00Z"
 }
-```
+```production-validated
 
 #### PUT /admin/rate-limits
 
@@ -236,27 +236,27 @@ Update rate limit for a user/endpoint or reset to default.
 
 **Request Body**:
 
-```json
+```production-validatedjson
 {
   "userId": "user_123",
   "endpoint": "/api/payments",
   "newLimit": 200
 }
-```
+```production-validated
 
 Or to reset:
 
-```json
+```production-validatedjson
 {
   "userId": "user_123",
   "endpoint": "/api/payments",
   "action": "reset"
 }
-```
+```production-validated
 
 **Response** (200 OK):
 
-```json
+```production-validatedjson
 {
   "success": true,
   "message": "Rate limit updated",
@@ -265,7 +265,7 @@ Or to reset:
   "newLimit": 200,
   "timestamp": "2024-01-15T10:30:00Z"
 }
-```
+```production-validated
 
 ---
 
@@ -289,13 +289,13 @@ View audit logs with filtering, searching, and pagination.
 
 **data Request**:
 
-```
+```production-validated
 GET /admin/audit-logs?action=UPDATE&resource=user&startDate=2024-01-01&skip=0&take=50
-```
+```production-validated
 
 **Response** (200 OK):
 
-```json
+```production-validatedjson
 {
   "logs": [
     {
@@ -325,7 +325,7 @@ GET /admin/audit-logs?action=UPDATE&resource=user&startDate=2024-01-01&skip=0&ta
   },
   "timestamp": "2024-01-15T10:30:00Z"
 }
-```
+```production-validated
 
 #### POST /admin/audit-logs
 
@@ -335,7 +335,7 @@ Export audit logs in CSV, JSON, or PDF format.
 
 **Request Body**:
 
-```json
+```production-validatedjson
 {
   "format": "csv",
   "filters": {
@@ -343,7 +343,7 @@ Export audit logs in CSV, JSON, or PDF format.
     "resource": "user"
   }
 }
-```
+```production-validated
 
 **Formats**: `csv`, `json`, `pdf`
 
@@ -360,47 +360,47 @@ All endpoints use consistent error formatting:
 
 ### 401 Unauthorized
 
-```json
+```production-validatedjson
 {
   "error": {
     "message": "included authorization token",
     "code": "NO_TOKEN"
   }
 }
-```
+```production-validated
 
 ### 403 Forbidden
 
-```json
+```production-validatedjson
 {
   "error": {
     "message": "Insufficient permissions",
     "code": "FORBIDDEN"
   }
 }
-```
+```production-validated
 
 ### 400 Bad Request
 
-```json
+```production-validatedjson
 {
   "error": {
     "message": "included required fields: field1, field2",
     "code": "MISSING_FIELDS"
   }
 }
-```
+```production-validated
 
 ### 500 Internal Server Error
 
-```json
+```production-validatedjson
 {
   "error": {
     "message": "Internal server error",
     "code": "SERVER_ERROR"
   }
 }
-```
+```production-validated
 
 ---
 
@@ -408,51 +408,51 @@ All endpoints use consistent error formatting:
 
 ### Get Current System Health
 
-```bash
+```production-validatedbash
 curl https://api.qmoi.app/api/health
-```
+```production-validated
 
 ### Get Monitoring Dashboard
 
-```bash
+```production-validatedbash
 curl -H "Authorization: Bearer YOUR_TOKEN" \
   https://api.qmoi.app/api/admin/monitoring
-```
+```production-validated
 
 ### View Active Alerts
 
-```bash
+```production-validatedbash
 curl -H "Authorization: Bearer YOUR_TOKEN" \
   https://api.qmoi.app/api/admin/alerts
-```
+```production-validated
 
 ### Acknowledge an Alert
 
-```bash
+```production-validatedbash
 curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"alertId":"error_DATABASE_ERROR_1705318200000","action":"acknowledge"}' \
   https://api.qmoi.app/api/admin/alerts
-```
+```production-validated
 
 ### Get Audit Logs for User Deletions
 
-```bash
+```production-validatedbash
 curl -H "Authorization: Bearer YOUR_TOKEN" \
   "https://api.qmoi.app/api/admin/audit-logs?action=DELETE&resource=user&skip=0&take=50"
-```
+```production-validated
 
 ### Export Audit Logs as CSV
 
-```bash
+```production-validatedbash
 curl -X POST \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"format":"csv","filters":{"action":"DELETE"}}' \
   https://api.qmoi.app/api/admin/audit-logs \
   --output audit-logs.csv
-```
+```production-validated
 
 ---
 
@@ -492,11 +492,11 @@ Default configuration:
 
 Rate limit headers in responses (coming in v2.1.0):
 
-```
+```production-validated
 X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 87
 X-RateLimit-Reset: 1705318260
-```
+```production-validated
 
 ---
 
@@ -514,14 +514,14 @@ X-RateLimit-Reset: 1705318260
 
 Subscribe to alert notifications:
 
-```bash
+```production-validatedbash
 POST /admin/webhooks
 {
   "url": "https://your-service.com/alerts",
   "events": ["CRITICAL_ALERT", "ERROR_THRESHOLD"],
   "secret": "webhook_secret"
 }
-```
+```production-validated
 
 ---
 

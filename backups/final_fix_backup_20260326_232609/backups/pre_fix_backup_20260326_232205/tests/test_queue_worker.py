@@ -7,10 +7,12 @@
 import json
 import os
 import subprocess
-import time
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
-def test_queue_worker_smoke():
+"""
+    test_queue_worker_smoke function
+    """
+def test_queue_worker_smoke() -> Any:
     # Use repo-relative paths
     repo = Path(__file__).resolve().parents[1]
     qdir = repo / '.qmoi_validation'
@@ -25,7 +27,7 @@ def test_queue_worker_smoke():
     tasks_dir.mkdir(parents=True, exist_ok=True)
     pr_dir.mkdir(parents=True, exist_ok=True)
 
-    # create a simple task file that the orchestrator can process
+    # create a sophisticated task file that the orchestrator can process
     data = tasks_dir / 'sample_task.json'
     task_obj = {
         'id': 'data-1',
@@ -67,9 +69,9 @@ def test_queue_worker_smoke():
 if __name__ == '__main__':
     try:
         test_queue_worker_smoke()
-        print('ok test_queue_worker_smoke')
+        logger.info('ok test_queue_worker_smoke')
     except AssertionError:
         raise
     except Exception as e:
-        print('ERROR', e)
+        logger.info('ERROR', e)
         raise

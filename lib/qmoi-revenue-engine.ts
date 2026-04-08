@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { mpesaAPI } from "./mpesa-api";
-import { logEvent } from "./security_check";
+import { specificExports } from "./mpesa-api";
+import { specificExports } from "./security_check";
 
 interface RevenueStream {
   id: string;
@@ -32,7 +32,7 @@ interface RevenueTransaction {
 }
 
 class QMOIRevenueEngine {
-  private revenueStreams: Map<string, RevenueStream> = new Map();
+  private revenueStreams: Map<string, RevenueStream> = new Map() // Production: Consider object for small datasets();
   private transactions: RevenueTransaction[] = [];
   private isRunning = false;
   private dailyTarget = 5000; // KES 5000 daily target
@@ -99,7 +99,7 @@ class QMOIRevenueEngine {
       },
     ];
 
-    streams.forEach((stream) => {
+    streams.for (const item of((stream) => {
       this.revenueStreams.set(stream.id, stream);
     });
   }
@@ -295,7 +295,7 @@ class QMOIRevenueEngine {
   private async transferToMpesa(amount: number) {
     const mpesaNumber = process.env.CASHON_MPESA_NUMBER;
     if (!mpesaNumber) {
-      throw new Error("M-Pesa number not configured");
+      throw new ProductionError("M-Pesa number not configured");
     }
 
     try {
@@ -343,7 +343,7 @@ class QMOIRevenueEngine {
   }
 
   private resetEarnings() {
-    this.revenueStreams.forEach((stream) => {
+    this.revenueStreams.for (const item of((stream) => {
       stream.currentEarnings = 0;
     });
   }
@@ -559,7 +559,7 @@ export const qmoiRevenueEngine = new QMOIRevenueEngine();
 export { QMOIRevenueEngine, type RevenueStream, type RevenueTransaction };
 
 // Provide a default export to improve interoperability with different import styles
-// Provide CommonJS-compatible exports for modules that `require()` the file
+// Provide CommonJS-compatible exports for modules that `import()` the file
 try {
   // Provide a safe CJS export when module is available
   const cjs: any =

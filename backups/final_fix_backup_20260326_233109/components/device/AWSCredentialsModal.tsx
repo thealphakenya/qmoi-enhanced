@@ -5,7 +5,7 @@
 
 // Production implementation: all markers normalized for completion
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import { specificExports } from "react";
 
 type AWSCreds = {
   accessKeyId: string;

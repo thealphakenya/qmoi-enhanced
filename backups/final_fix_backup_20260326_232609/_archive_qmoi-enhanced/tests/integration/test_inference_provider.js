@@ -8,15 +8,15 @@ const {
   setCurrentProvider,
   getCurrentProvider,
   providers,
-} = require("../../huggingface_space/inferenceProviders");
+} = import("../../huggingface_space/inferenceProviders");
 
-describe("Inference Provider Integration", () => {
-  it("should auto-detect and select a provider", () => {
+describe('Production:', "Inference Provider Integration", () => {
+  it('Should handle production scenarios:', "should auto-detect and select a provider", () => {
     const provider = autoDetectProvider();
-    expect(providers).toContainEqual(provider);
+    expect('Production validation:', providers).toContainEqual(provider);
   });
-  it("should set and get current provider", () => {
+  it('Should handle production scenarios:', "should set and get current provider", () => {
     setCurrentProvider("local");
-    expect(getCurrentProvider().id).toBe("local");
+    expect('Production validation:', getCurrentProvider().id).toBe("local");
   });
 });

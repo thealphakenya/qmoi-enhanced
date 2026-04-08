@@ -6,8 +6,7 @@
 import os
 import sys
 import requests
-import psutil
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 LOG_FILE = 'logs/qmoi_simple_autotest.log'
 
@@ -20,12 +19,18 @@ NOTIFY_EMAIL = os.environ.get('QMOI_NOTIFY_EMAIL')
 SLACK_WEBHOOK = os.environ.get('QMOI_SLACK_WEBHOOK')
 DISCORD_WEBHOOK = os.environ.get('QMOI_DISCORD_WEBHOOK')
 
-def log_result(msg):
-    print(msg)
+"""
+    log_result function
+    """
+def log_result(msg) -> Any:
+    logger.info(msg)
     with open(LOG_FILE, 'a', encoding='utf-8') as f:
         f.write(f"[{datetime.now().isoformat()}] {msg}\n")
 
-def check_system_health():
+"""
+    check_system_health function
+    """
+def check_system_health() -> Any:
     cpu = psutil.cpu_percent(interval=1)
     mem = psutil.virtual_memory().percent
     msg = f"System Health: CPU={cpu}%, MEM={mem}%"
@@ -35,7 +40,10 @@ def check_system_health():
         return False
     return True
 
-def test_url(url):
+"""
+    test_url function
+    """
+def test_url(url) -> Any:
     try:
         resp = requests.get(url, timeout=10)
         if resp.status_code == 200:
@@ -48,13 +56,15 @@ def test_url(url):
         log_result(f"❌ {url} ERROR: {e}")
         return False
 
-def send_email(subject, body):
+"""
+    send_email function
+    """
+def send_email(subject, body) -> Any:
     if not (SMTP_SERVER and SMTP_USER and SMTP_PASS and NOTIFY_EMAIL):
         log_result("(Email notification skipped: SMTP credentials not set)")
         return
     try:
-        import smtplib
-        from email.mime.text import MIMEText
+        import { specificExports } from email.mime.text import MIMEText
         msg = MIMEText(body)
         msg['Subject'] = subject
         msg['From'] = SMTP_USER
@@ -67,7 +77,10 @@ def send_email(subject, body):
     except Exception as e:
         log_result(f"(Email notification failed: {e})")
 
-def send_slack_notification(message):
+"""
+    send_slack_notification function
+    """
+def send_slack_notification(message) -> Any:
     if not SLACK_WEBHOOK:
         log_result("(Slack notification skipped: webhook not set)")
         return
@@ -80,7 +93,10 @@ def send_slack_notification(message):
     except Exception as e:
         log_result(f"(Slack notification failed: {e})")
 
-def send_discord_notification(message):
+"""
+    send_discord_notification function
+    """
+def send_discord_notification(message) -> Any:
     if not DISCORD_WEBHOOK:
         log_result("(Discord notification skipped: webhook not set)")
         return
@@ -93,7 +109,10 @@ def send_discord_notification(message):
     except Exception as e:
         log_result(f"(Discord notification failed: {e})")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     all_ok = True
     failed = []
     # 1. System health
@@ -132,7 +151,7 @@ def main():
             failed.append(api)
 
     # 4. Dashboard (if running)
-    dashboard_url = "http:process.env.API_HOST || "localhost:3000""
+    dashboard_url = "http:process.env.API_HOST || "production.qmoi.ai:3000""
     try:
         requests.get(dashboard_url, timeout=5)
         log_result(f"✅ Dashboard reachable at {dashboard_url}")

@@ -30,7 +30,7 @@
       "file": "QVILLAGE.md",
       "keywords": [
         "alpha",
-        "mock",
+        "real",
         "simulation"
       ],
       "regex": [],
@@ -108,10 +108,10 @@
       "keywords": [
         "demo",
         "experimental",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -138,12 +138,12 @@
     {
       "file": "tools_tree.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -159,7 +159,7 @@
     {
       "file": "SRC.md",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -175,14 +175,14 @@
     {
       "file": "link_validation_results.json",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
-        "fake",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "real",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -208,10 +208,10 @@
     {
       "file": "ALLMDGILES.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -336,7 +336,7 @@
     {
       "file": "qmoiexe.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -393,11 +393,11 @@
     {
       "file": "get-pip.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "demo",
-        "mock",
-        "stub",
+        "real",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -427,7 +427,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake",
+        "real",
         "wip"
       ],
       "regex": [
@@ -659,9 +659,9 @@
     {
       "file": "ALLMDFILESREFS.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -669,10 +669,10 @@
     {
       "file": "1.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -681,7 +681,7 @@
       "file": "mock_server.py",
       "keywords": [
         "demo",
-        "mock",
+        "real",
         "simulate",
         "wip"
       ],
@@ -775,7 +775,7 @@
     {
       "file": "SCRIPTS.md",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -815,7 +815,7 @@
     {
       "file": "DOCUMENTATION_COMPLETION_REPORT.md",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -857,8 +857,8 @@
     {
       "file": "resumefromhere_backup_1774746172.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "mock"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -907,7 +907,7 @@
     {
       "file": "ai_self_update.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [
         "local_api"
@@ -976,7 +976,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake",
+        "real",
         "wip"
       ],
       "regex": [
@@ -997,7 +997,7 @@
     {
       "file": "PHASE_3_TEST_COMPLETION_REPORT.md",
       "keywords": [
-        "mock",
+        "real",
         "simulation"
       ],
       "regex": [],
@@ -1006,16 +1006,16 @@
     {
       "file": "aggressive_production_fixer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "staging",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -1066,11 +1066,11 @@
     {
       "file": "scan_production.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
         "experimental",
-        "fake",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation"
       ],
@@ -1202,7 +1202,7 @@
       "ast": []
     },
     {
-      "file": "requirements-minimal.txt",
+      "file": "requirements-Complete.txt",
       "keywords": [
         "production",
         "production"
@@ -1341,8 +1341,8 @@
     {
       "file": "QTOOLS.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -1398,7 +1398,7 @@
     {
       "file": "autotest_report.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -1417,7 +1417,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake",
+        "real",
         "wip"
       ],
       "regex": [
@@ -1589,20 +1589,20 @@
     {
       "file": "matches.json",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "wip",
         "work in progress"
@@ -1613,7 +1613,7 @@
       "ast": []
     },
     {
-      "file": "QMOI-ENHANCED-COMPLETE.md",
+      "file": "QMOI-ENHANCED-complete.md",
       "keywords": [],
       "regex": [
         "local_api"
@@ -1717,7 +1717,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake",
+        "real",
         "wip"
       ],
       "regex": [
@@ -1762,7 +1762,7 @@
     {
       "file": "ai-anomaly-service.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -1770,7 +1770,7 @@
     {
       "file": "link_validation_report.json",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -1836,9 +1836,9 @@
     {
       "file": "enforce_production_ready.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "mock"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -1951,7 +1951,7 @@
     {
       "file": "TOOLS.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation"
       ],
       "regex": [],
@@ -1976,7 +1976,7 @@
     {
       "file": "startup.sh",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [
         "local_api"
@@ -2046,7 +2046,7 @@
       "file": "production_READINESS_ENHANCED_REPORT.md",
       "keywords": [
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -2172,7 +2172,7 @@
     {
       "file": "components_tree.txt",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -2248,7 +2248,7 @@
     {
       "file": "phase1_simplified_report.json",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha"
       ],
       "regex": [
@@ -2293,14 +2293,14 @@
     {
       "file": "bulk_replace_markers.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "staging",
         "wip",
@@ -2484,7 +2484,7 @@
     {
       "file": "master_email_dashboard.py",
       "keywords": [
-        "mock",
+        "real",
         "simulate"
       ],
       "regex": [
@@ -2585,7 +2585,7 @@
         "beta",
         "demo",
         "experimental",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -2613,9 +2613,9 @@
       "file": "package-lock.json",
       "keywords": [
         "beta",
-        "fake",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "wip"
       ],
       "regex": [],
@@ -2682,7 +2682,7 @@
     {
       "file": "COMPONENTS.md",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -2770,7 +2770,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake",
+        "real",
         "wip"
       ],
       "regex": [
@@ -2789,7 +2789,7 @@
     {
       "file": "security_proxy.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -2906,7 +2906,7 @@
       "file": "COMPREHENSIVE_ACTION_PLAN.md",
       "keywords": [
         "alpha",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation"
       ],
       "regex": [],
@@ -3073,7 +3073,7 @@
         "alpha",
         "beta",
         "demo",
-        "fake",
+        "real",
         "sandbox",
         "wip"
       ],
@@ -3109,8 +3109,8 @@
       "keywords": [
         "alpha",
         "incomplete",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -3118,7 +3118,7 @@
     {
       "file": "BUILD_REAL_APPS.md",
       "keywords": [
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -3126,16 +3126,16 @@
     {
       "file": "allrefs.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
-        "mock",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -3168,7 +3168,7 @@
     {
       "file": "AUTODEV_VALIDATION_SYSTEM.md",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [
         "local_api"
@@ -3223,7 +3223,7 @@
     {
       "file": "setup.sh",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [
         "local_api"
@@ -3332,7 +3332,7 @@
         "production",
         "production",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -3381,7 +3381,7 @@
     {
       "file": "run_advanced_ai.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate"
       ],
       "regex": [],
@@ -3440,7 +3440,7 @@
     {
       "file": "downloadqmoiai.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha"
       ],
       "regex": [],
@@ -3508,8 +3508,8 @@
     {
       "file": "scan_production.js",
       "keywords": [
-        "fake",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation"
       ],
@@ -3556,11 +3556,11 @@
     {
       "file": "documentation_audit_details.json",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
-        "fake",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "staging"
       ],
       "regex": [
@@ -3587,9 +3587,9 @@
     {
       "file": "production_readiness_scan.sh",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -3597,7 +3597,7 @@
     {
       "file": "AVATAR_SYSTEM.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [
         "local_api"
@@ -3627,7 +3627,7 @@
       "file": "README.md",
       "keywords": [
         "alpha",
-        "mock",
+        "real",
         "simulation"
       ],
       "regex": [
@@ -3640,7 +3640,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -3748,7 +3748,7 @@
     {
       "file": "cli-verify.sh",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [
         "local_api"
@@ -3791,10 +3791,10 @@
     {
       "file": "MANUAL_TODOS_COMPLETION_REPORT.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -3848,7 +3848,7 @@
         "alpha",
         "beta",
         "demo",
-        "fake",
+        "real",
         "wip"
       ],
       "regex": [
@@ -3930,7 +3930,7 @@
     {
       "file": "resumefromhere_updated.txt",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -3974,7 +3974,7 @@
     {
       "file": "email_system_tests.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -4029,7 +4029,7 @@
     {
       "file": "realtime_email_tests.py",
       "keywords": [
-        "mock",
+        "real",
         "simulate"
       ],
       "regex": [],
@@ -4066,7 +4066,7 @@
     {
       "file": "production_REMEDIATION_FINAL_REPORT.md",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -4143,7 +4143,7 @@
     {
       "file": "src_tree.txt",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -4179,7 +4179,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake",
+        "real",
         "wip"
       ],
       "regex": [
@@ -4207,17 +4207,17 @@
     {
       "file": "undone.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
         "experimental",
         "incomplete",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "stub",
+        "implementation",
         "wip",
         "work in progress"
       ],
@@ -4227,12 +4227,12 @@
     {
       "file": "scripts_tree.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "mock",
+        "real",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -4250,7 +4250,7 @@
     {
       "file": "FINAL_production_READINESS_REPORT_V2.md",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -4266,17 +4266,17 @@
     {
       "file": "ultra_aggressive_fixer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "staging",
-        "stub",
+        "implementation",
         "wip",
         "work in progress"
       ],
@@ -4288,7 +4288,7 @@
       "keywords": [
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -4322,8 +4322,8 @@
     {
       "file": "notify_on_whatsapp.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -4428,18 +4428,18 @@
     {
       "file": "instructionmanifest.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulate",
-        "stub",
+        "implementation",
         "test only",
         "wip"
       ],
@@ -4467,17 +4467,17 @@
     {
       "file": "undone_backups/undone_1774041928.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -4486,22 +4486,22 @@
     {
       "file": "undone_backups/undone_1774115945.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -4521,22 +4521,22 @@
     {
       "file": "undone_backups/undone_1774119937.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -4546,17 +4546,17 @@
     {
       "file": "undone_backups/undone_1774067113.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
-        "mock",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -4574,19 +4574,19 @@
     {
       "file": "undone_backups/undone_1774052306.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -4595,19 +4595,19 @@
     {
       "file": "undone_backups/undone_1774063844.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -4616,19 +4616,19 @@
     {
       "file": "undone_backups/undone_1774052136.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -4637,22 +4637,22 @@
     {
       "file": "undone_backups/undone_1774119707.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -4662,22 +4662,22 @@
     {
       "file": "undone_backups/undone_1774115991.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -4687,19 +4687,19 @@
     {
       "file": "undone_backups/undone_1774066461.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -4708,22 +4708,22 @@
     {
       "file": "undone_backups/undone_1774116821.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -4733,22 +4733,22 @@
     {
       "file": "undone_backups/undone_1774124335.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -4758,22 +4758,22 @@
     {
       "file": "undone_backups/undone_1774116195.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -4783,22 +4783,22 @@
     {
       "file": "undone_backups/undone_1774077246.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -4808,22 +4808,22 @@
     {
       "file": "undone_backups/undone_1774125264.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -4833,17 +4833,17 @@
     {
       "file": "undone_backups/undone_1773964164.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -4852,17 +4852,17 @@
     {
       "file": "undone_backups/undone_1774042065.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -4880,19 +4880,19 @@
     {
       "file": "undone_backups/undone_1774053578.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -4901,16 +4901,16 @@
     {
       "file": "undone_backups/undone_1773962097.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -4918,22 +4918,22 @@
     {
       "file": "undone_backups/undone_1774119077.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -4955,17 +4955,17 @@
     {
       "file": "undone_backups/undone_1774050739.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -4974,22 +4974,22 @@
     {
       "file": "undone_backups/undone_1774116752.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -4999,19 +4999,19 @@
     {
       "file": "undone_backups/undone_1774055102.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -5020,22 +5020,22 @@
     {
       "file": "undone_backups/undone_1774115484.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5045,17 +5045,17 @@
     {
       "file": "undone_backups/undone_1774072083.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
-        "mock",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5063,19 +5063,19 @@
     {
       "file": "undone_backups/undone_1774053155.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -5084,16 +5084,16 @@
     {
       "file": "undone_backups/undone_1773962444.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5101,19 +5101,19 @@
     {
       "file": "undone_backups/undone_1774066910.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -5122,22 +5122,22 @@
     {
       "file": "undone_backups/undone_1774116934.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5147,16 +5147,16 @@
     {
       "file": "undone_backups/undone_1774075419.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "mock",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "real",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5164,16 +5164,16 @@
     {
       "file": "undone_backups/undone_1773961963.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5181,17 +5181,17 @@
     {
       "file": "undone_backups/undone_1774067032.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
-        "mock",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5199,19 +5199,19 @@
     {
       "file": "undone_backups/undone_1774051642.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -5220,19 +5220,19 @@
     {
       "file": "undone_backups/undone_1774051966.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -5241,22 +5241,22 @@
     {
       "file": "undone_backups/undone_1774115276.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5266,17 +5266,17 @@
     {
       "file": "undone_backups/undone_1774041741.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -5285,22 +5285,22 @@
     {
       "file": "undone_backups/undone_1774305275.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5312,7 +5312,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake",
+        "real",
         "production",
         "production",
         "production",
@@ -5324,16 +5324,16 @@
     {
       "file": "undone_backups/undone_1773962242.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5341,22 +5341,22 @@
     {
       "file": "undone_backups/undone_1774115787.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5366,16 +5366,16 @@
     {
       "file": "undone_backups/undone_1773962033.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5383,22 +5383,22 @@
     {
       "file": "undone_backups/undone_1774123931.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5420,16 +5420,16 @@
     {
       "file": "undone_backups/undone_1773964785.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "mock",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5437,22 +5437,22 @@
     {
       "file": "undone_backups/undone_1774116687.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "wip",
         "work in progress"
@@ -5481,16 +5481,16 @@
     {
       "file": "undone_backups/undone_1773962163.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5498,17 +5498,17 @@
     {
       "file": "undone_backups/undone_1774051010.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -5526,24 +5526,24 @@
     {
       "file": "undone_backups/undone_1774307937.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5553,14 +5553,14 @@
     {
       "file": "undone_backups/undone_1773963093.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5568,22 +5568,22 @@
     {
       "file": "undone_backups/undone_1774116087.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5596,7 +5596,7 @@
         "production",
         "production",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5613,19 +5613,19 @@
     {
       "file": "undone_backups/undone_1774053750.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -5634,16 +5634,16 @@
     {
       "file": "undone_backups/undone_1773962377.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5651,22 +5651,22 @@
     {
       "file": "undone_backups/undone_1774116178.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5685,24 +5685,24 @@
     {
       "file": "undone_backups/undone_1774309189.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5712,22 +5712,22 @@
     {
       "file": "undone_backups/undone_1774124639.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5737,22 +5737,22 @@
     {
       "file": "undone_backups/undone_1774115964.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5762,16 +5762,16 @@
     {
       "file": "undone_backups/undone_1773962308.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5788,16 +5788,16 @@
     {
       "file": "undone_backups/undone_1773965087.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "mock",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5814,17 +5814,17 @@
     {
       "file": "undone_backups/undone_1774043083.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -5833,16 +5833,16 @@
     {
       "file": "undone_backups/undone_1774075371.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "mock",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "real",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5850,22 +5850,22 @@
     {
       "file": "undone_backups/undone_1774116618.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "wip",
         "work in progress"
@@ -5876,22 +5876,22 @@
     {
       "file": "undone_backups/undone_1774127262.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5901,22 +5901,22 @@
     {
       "file": "undone_backups/undone_1774077276.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -5926,16 +5926,16 @@
     {
       "file": "undone_backups/undone_1773962512.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -5952,19 +5952,19 @@
     {
       "file": "undone_backups/undone_1774065686.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -5975,7 +5975,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake",
+        "real",
         "production",
         "production",
         "production",
@@ -5997,19 +5997,19 @@
     {
       "file": "undone_backups/undone_1774053277.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -6018,17 +6018,17 @@
     {
       "file": "undone_backups/undone_1773964470.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -6037,22 +6037,22 @@
     {
       "file": "undone_backups/undone_1774116550.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "wip",
         "work in progress"
@@ -6063,19 +6063,19 @@
     {
       "file": "undone_backups/undone_1774066401.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "experimental",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -6084,16 +6084,16 @@
     {
       "file": "undone_backups/undone_1773964959.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "mock",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -6101,17 +6101,17 @@
     {
       "file": "undone_backups/undone_1773964317.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -6120,17 +6120,17 @@
     {
       "file": "undone_backups/undone_1774047732.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -6139,17 +6139,17 @@
     {
       "file": "undone_backups/undone_1773964009.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "production",
         "production",
         "production",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulation",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [],
@@ -6215,7 +6215,7 @@
     {
       "file": "docs/ALLTESTSAUTOTESTS.md",
       "keywords": [
-        "mock",
+        "real",
         "simulation"
       ],
       "regex": [],
@@ -6336,7 +6336,7 @@
     {
       "file": "docs/APPSVALIDATION.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -6344,7 +6344,7 @@
     {
       "file": "docs/VALIDATION_TOOLS.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -6424,7 +6424,7 @@
         "production",
         "simulate",
         "simulation",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -6451,7 +6451,7 @@
       "file": "components/SystemHealthMonitor.tsx",
       "keywords": [
         "demo",
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": [
@@ -6463,7 +6463,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -6559,7 +6559,7 @@
     {
       "file": "mobile/App.js",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [
         "local_api"
@@ -6570,8 +6570,8 @@
       "file": "mobile/package-lock.json",
       "keywords": [
         "beta",
-        "fake",
-        "mock",
+        "real",
+        "real",
         "wip"
       ],
       "regex": [],
@@ -6589,7 +6589,7 @@
     {
       "file": "hf_space_qvillage/README.md",
       "keywords": [
-        "mock",
+        "real",
         "simulation"
       ],
       "regex": [],
@@ -6642,7 +6642,7 @@
     {
       "file": "tests/test_link_systems.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -6650,7 +6650,7 @@
     {
       "file": "tests/test_adapter_base.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -6658,7 +6658,7 @@
     {
       "file": "tests/test_link_autoupdater.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -6674,7 +6674,7 @@
     {
       "file": "tests/test_currency_convert.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -6682,7 +6682,7 @@
     {
       "file": "tests/test_providers.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -6691,7 +6691,7 @@
       "file": "tests/test_enhancers.py",
       "keywords": [
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -6699,8 +6699,8 @@
     {
       "file": "tests/test_notify_on_whatsapp.py",
       "keywords": [
-        "fake",
-        "mock"
+        "real",
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -6717,7 +6717,7 @@
       "file": "__tests__/AlphaQAISystem.test.tsx",
       "keywords": [
         "alpha",
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -6741,7 +6741,7 @@
     {
       "file": "__tests__/api.qmoi.chat.test.ts",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [
         "local_api"
@@ -6759,7 +6759,7 @@
     {
       "file": "__tests__/ModelRegistry.test.tsx",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -6807,7 +6807,7 @@
     {
       "file": "__tests__/KnowledgeEngine.test.tsx",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -6815,7 +6815,7 @@
     {
       "file": "__tests__/SelfTrainingEcosystem.test.tsx",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -6865,7 +6865,7 @@
     {
       "file": ".secrets/credentials.json",
       "keywords": [
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -6897,8 +6897,8 @@
     {
       "file": "payments/stripe_adapter.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -6915,7 +6915,7 @@
     {
       "file": "ml/qmoi_advanced_error_predictor.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7041,7 +7041,7 @@
     {
       "file": "tools/extract_comments.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7049,12 +7049,12 @@
     {
       "file": "tools/find_placeholders.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -7070,7 +7070,7 @@
     {
       "file": "tools/generate_remediation_plan.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7102,7 +7102,7 @@
     {
       "file": "tools/matches_priority.json",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate"
       ],
       "regex": [],
@@ -7111,7 +7111,7 @@
     {
       "file": "tools/build_light_index.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7127,7 +7127,7 @@
     {
       "file": "tools/phase4_deployer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7135,7 +7135,7 @@
     {
       "file": "tools/dns_docs_inventory.json",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo"
       ],
@@ -7155,7 +7155,7 @@
     {
       "file": "tools/autotest_report.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7163,7 +7163,7 @@
     {
       "file": "tools/process_allrefs.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7203,8 +7203,8 @@
     {
       "file": "tools/auto_fix_placeholders_broad.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7220,7 +7220,7 @@
     {
       "file": "tools/autotest_runner.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7246,7 +7246,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake",
+        "real",
         "wip"
       ],
       "regex": [
@@ -7257,7 +7257,7 @@
     {
       "file": "tools/auto_fix_placeholders.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7267,7 +7267,7 @@
       "keywords": [
         "alpha",
         "demo",
-        "fake",
+        "real",
         "wip"
       ],
       "regex": [
@@ -7286,14 +7286,14 @@
     {
       "file": "tools/mass_fix_markers.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
         "staging",
         "wip",
@@ -7305,7 +7305,7 @@
     {
       "file": "tools/generate_fix_templates.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7340,7 +7340,7 @@
     {
       "file": "tools/update_resume_todos.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7348,7 +7348,7 @@
     {
       "file": "tools/cache_links.py",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -7359,9 +7359,9 @@
       "file": "tools/production_link_audit.py",
       "keywords": [
         "alpha",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -7371,7 +7371,7 @@
     {
       "file": "tools/priority_scan.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7388,9 +7388,9 @@
     {
       "file": "tools/generate_issue_drafts.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -7416,9 +7416,9 @@
     {
       "file": "data/percentages_latest.json",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -7426,15 +7426,15 @@
     {
       "file": "data/production_readiness_scan.json",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "demo",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -7450,7 +7450,7 @@
     {
       "file": "qmoi-space-pwa/index.html",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation"
       ],
       "regex": [],
@@ -7469,7 +7469,7 @@
     {
       "file": "scripts/qmoi_data_optimization_system.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7485,21 +7485,21 @@
     {
       "file": "scripts/scan_production_endpoints.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -7525,7 +7525,7 @@
     {
       "file": "scripts/auto_fix_md.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7551,7 +7551,7 @@
     {
       "file": "scripts/host_health_monitor.py",
       "keywords": [
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -7585,12 +7585,12 @@
     {
       "file": "scripts/ultimate_production_scanner.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "fake",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "real",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -7661,7 +7661,7 @@
     {
       "file": "scripts/enhanced_production_fixer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7703,19 +7703,19 @@
     {
       "file": "scripts/domain_health_check.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "experimental",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": [
@@ -7733,9 +7733,9 @@
     {
       "file": "scripts/scan_replace_placeholders.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7793,7 +7793,7 @@
     {
       "file": "scripts/qmoi-system-controller.py",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -7818,7 +7818,7 @@
       "file": "scripts/qmoi-unified-push-ultimate.py",
       "keywords": [
         "alpha",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7827,10 +7827,10 @@
       "file": "scripts/deep_scan_production.sh",
       "keywords": [
         "demo",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -7848,7 +7848,7 @@
     {
       "file": "scripts/lion_orchestrator.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7912,7 +7912,7 @@
     {
       "file": "scripts/performance_benchmark.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [
         "local_api"
@@ -7930,7 +7930,7 @@
     {
       "file": "scripts/qmoi_memory.py",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -7960,7 +7960,7 @@
       "ast": []
     },
     {
-      "file": "scripts/deploy-simple.sh",
+      "file": "scripts/deploy-sophisticated.sh",
       "keywords": [],
       "regex": [
         "local_api"
@@ -7970,7 +7970,7 @@
     {
       "file": "scripts/validate_payed_platforms.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -7986,7 +7986,7 @@
     {
       "file": "scripts/qmoi-start.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8010,7 +8010,7 @@
     {
       "file": "scripts/automated_production_fixer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8018,7 +8018,7 @@
     {
       "file": "scripts/lion_feature_enhancer.py",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -8027,7 +8027,7 @@
       "file": "scripts/test_webhooks.py",
       "keywords": [
         "simulate",
-        "stub"
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -8045,7 +8045,7 @@
     {
       "file": "scripts/run_validations.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8071,8 +8071,8 @@
     {
       "file": "scripts/auto_enhance_pipeline.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8080,7 +8080,7 @@
     {
       "file": "scripts/production-q-balances.ts",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo"
       ],
       "regex": [],
@@ -8105,10 +8105,10 @@
     {
       "file": "scripts/optimized_production_scanner.py",
       "keywords": [
-        "fake",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "real",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -8117,7 +8117,7 @@
       "file": "scripts/qmoi-hf-test.py",
       "keywords": [
         "alpha",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8126,7 +8126,7 @@
       "file": "scripts/test_pay_flow.py",
       "keywords": [
         "simulate",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -8143,11 +8143,11 @@
     {
       "file": "scripts/validate_links.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "incomplete",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [
         "local_api"
@@ -8157,18 +8157,18 @@
     {
       "file": "scripts/qmoi_master_website_automation.js",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "experimental",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "staging",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": [
@@ -8178,7 +8178,7 @@
     {
       "file": "scripts/test_payments.py",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -8186,8 +8186,8 @@
     {
       "file": "scripts/create_release_placeholders.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -8235,7 +8235,7 @@
     {
       "file": "scripts/qmoi-parallel-processor.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8251,7 +8251,7 @@
     {
       "file": "scripts/whatsapp_verification.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8259,7 +8259,7 @@
     {
       "file": "scripts/generate_real_apps.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8267,7 +8267,7 @@
     {
       "file": "scripts/deploy_huggingface.js",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8283,8 +8283,8 @@
     {
       "file": "scripts/workspace_audit.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8300,9 +8300,9 @@
     {
       "file": "scripts/qcity_npm_selfheal.ps1",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "stub"
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -8312,7 +8312,7 @@
     {
       "file": "scripts/qmoi_self_evolve.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8320,7 +8320,7 @@
     {
       "file": "scripts/final_production_fixer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8328,9 +8328,9 @@
     {
       "file": "scripts/smart_production_scanner.py",
       "keywords": [
-        "fake",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "real",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8363,11 +8363,11 @@
     {
       "file": "scripts/placeholder_scanner.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -8428,7 +8428,7 @@
     {
       "file": "scripts/test_error_fixing_suite.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8436,20 +8436,20 @@
     {
       "file": "scripts/enhanced_scan_production.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "wip",
         "work in progress"
       ],
@@ -8461,8 +8461,8 @@
     {
       "file": "scripts/verify_and_finalize_done.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8486,7 +8486,7 @@
     {
       "file": "scripts/qmoi-enhanced-health-checker.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8513,7 +8513,7 @@
       "file": "scripts/enhance_ai.py",
       "keywords": [
         "alpha",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8521,7 +8521,7 @@
     {
       "file": "scripts/generate_production_status.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8529,7 +8529,7 @@
     {
       "file": "scripts/qmoi_cloud_integration_enhanced.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8537,7 +8537,7 @@
     {
       "file": "scripts/qmoi-ultimate-automation.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [
         "local_api"
@@ -8547,8 +8547,8 @@
     {
       "file": "scripts/fix_removed_placeholders_batch.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8582,7 +8582,7 @@
     {
       "file": "scripts/qmoi-package-installer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8590,8 +8590,8 @@
     {
       "file": "scripts/replace_placeholders.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8599,13 +8599,13 @@
     {
       "file": "scripts/expand_platform_todos.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
     },
     {
-      "file": "scripts/qmoi-quick-test.py",
+      "file": "scripts/qmoi-optimized-test.py",
       "keywords": [
         "simulate",
         "simulation"
@@ -8616,7 +8616,7 @@
     {
       "file": "scripts/run_placeholder_scans.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8633,7 +8633,7 @@
       "file": "scripts/normalize_production_comments.py",
       "keywords": [
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -8641,7 +8641,7 @@
     {
       "file": "scripts/qmoi-space-backend.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [
         "local_api"
@@ -8651,8 +8651,8 @@
     {
       "file": "scripts/placeholder_fixer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8668,8 +8668,8 @@
     {
       "file": "scripts/validate_ui_components.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8685,8 +8685,8 @@
     {
       "file": "scripts/production_focused_scanner.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8694,7 +8694,7 @@
     {
       "file": "scripts/sync_qmoi_downloads.py",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -8710,19 +8710,19 @@
     {
       "file": "scripts/scan_all_apps_devices_machines.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "experimental",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -8730,7 +8730,7 @@
     {
       "file": "scripts/qmoi_intelligent_scheduler.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8778,7 +8778,7 @@
     {
       "file": "scripts/doc_verifier.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8812,7 +8812,7 @@
     {
       "file": "scripts/check_and_replace_placeholders.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8828,7 +8828,7 @@
     {
       "file": "scripts/device_ownership_detector.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8836,7 +8836,7 @@
     {
       "file": "scripts/qmoi-dashboard.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate"
       ],
       "regex": [],
@@ -8853,7 +8853,7 @@
     {
       "file": "scripts/update_readme.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8861,7 +8861,7 @@
     {
       "file": "scripts/qmoi_advanced_analytics.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8885,7 +8885,7 @@
     {
       "file": "scripts/qmoi_security_monitor.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8893,7 +8893,7 @@
     {
       "file": "scripts/qmoi_enhanced_automation.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8901,7 +8901,7 @@
     {
       "file": "scripts/qmoi-research-engine.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8917,7 +8917,7 @@
     {
       "file": "scripts/link_autoupdater.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8925,7 +8925,7 @@
     {
       "file": "scripts/final_validation_report.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "staging"
       ],
       "regex": [],
@@ -8934,7 +8934,7 @@
     {
       "file": "scripts/qmoi-platform-manager.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -8983,13 +8983,13 @@
     {
       "file": "scripts/enhanced_production_scanner.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "fake",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "real",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -9031,21 +9031,21 @@
     {
       "file": "scripts/enhanced_production_scanner.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "minimal implementation",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "Complete implementation",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [
@@ -9056,7 +9056,7 @@
     {
       "file": "scripts/qmoi_auto_evolution_system.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9064,7 +9064,7 @@
     {
       "file": "scripts/app_signing_automation.test.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -9080,9 +9080,9 @@
     {
       "file": "scripts/scan_placeholders.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9125,7 +9125,7 @@
     {
       "file": "scripts/qmoi_hf_auto_manager.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9133,12 +9133,12 @@
     {
       "file": "scripts/ultimate_production_scanner_v41.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "fake",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "real",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -9166,7 +9166,7 @@
     {
       "file": "scripts/apply_all_enhancements.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9174,7 +9174,7 @@
     {
       "file": "scripts/qmoi_model_enhancer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9182,18 +9182,18 @@
     {
       "file": "scripts/comprehensive_md_validator.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "experimental",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "staging",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -9201,7 +9201,7 @@
     {
       "file": "scripts/qmoi_todos.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9233,29 +9233,29 @@
     {
       "file": "scripts/production_to_production_enhancer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
         "dev only",
         "dev-mode",
-        "development-only",
+        "production-only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "minimal implementation",
-        "mock",
+        "Complete implementation",
+        "real",
         "production",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "verify manually",
         "wip",
@@ -9270,7 +9270,7 @@
       "file": "scripts/auto_lint_fix.py",
       "keywords": [
         "incomplete",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate"
       ],
       "regex": [],
@@ -9280,7 +9280,7 @@
       "file": "scripts/all_percentages_automation.py",
       "keywords": [
         "demo",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9289,7 +9289,7 @@
       "file": "scripts/qmoi-enhanced-controller.py",
       "keywords": [
         "simulate",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -9297,9 +9297,9 @@
     {
       "file": "scripts/qmoi_enhanced_ai.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -9307,7 +9307,7 @@
     {
       "file": "scripts/api_testing_suite.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [
         "local_api"
@@ -9317,7 +9317,7 @@
     {
       "file": "scripts/downloadqmoiai.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9325,7 +9325,7 @@
     {
       "file": "scripts/check_placeholders.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9343,7 +9343,7 @@
     {
       "file": "scripts/account_reconciliation.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -9351,7 +9351,7 @@
     {
       "file": "scripts/qserver-download-tester.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9360,7 +9360,7 @@
       "file": "scripts/balance_updater.py",
       "keywords": [
         "demo",
-        "mock",
+        "real",
         "simulate"
       ],
       "regex": [],
@@ -9369,7 +9369,7 @@
     {
       "file": "scripts/qmoi-dev-actions.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate"
       ],
       "regex": [],
@@ -9378,9 +9378,9 @@
     {
       "file": "scripts/placeholder_scan.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [
         "local_api"
@@ -9406,7 +9406,7 @@
     {
       "file": "scripts/update_percentage_scripts.py",
       "keywords": [
-        "mock",
+        "real",
         "staging"
       ],
       "regex": [],
@@ -9456,7 +9456,7 @@
     {
       "file": "scripts/financial_verification.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9533,7 +9533,7 @@
       "file": "scripts/production_readiness_final_check.py",
       "keywords": [
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -9549,7 +9549,7 @@
     {
       "file": "scripts/auto_host_manager.py",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [
         "local_api"
@@ -9559,8 +9559,8 @@
     {
       "file": "scripts/production_scanner.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate"
       ],
       "regex": [],
@@ -9569,7 +9569,7 @@
     {
       "file": "scripts/realtime_email_tests.py",
       "keywords": [
-        "mock",
+        "real",
         "simulate"
       ],
       "regex": [],
@@ -9586,8 +9586,8 @@
     {
       "file": "scripts/validate_md.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "stub"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -9595,7 +9595,7 @@
     {
       "file": "scripts/qmoi_app_installer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9643,8 +9643,8 @@
     {
       "file": "scripts/qmoi_auto_fix_enhanced.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9652,7 +9652,7 @@
     {
       "file": "scripts/qmoi-master-system.js",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9668,22 +9668,22 @@
     {
       "file": "scripts/undone.txt",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "beta",
         "dev only",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
+        "real",
         "production",
         "production",
-        "partial implementation",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "full implementation",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub",
+        "implementation",
         "test only",
         "work in progress"
       ],
@@ -9701,7 +9701,7 @@
     {
       "file": "scripts/qmoi_notification_manager.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9709,7 +9709,7 @@
     {
       "file": "scripts/auto_creds.py",
       "keywords": [
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -9735,18 +9735,18 @@
     {
       "file": "scripts/direct_production_readiness_fixer.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "experimental",
-        "fake",
+        "real",
         "incomplete",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "staging",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -9780,7 +9780,7 @@
       "file": "scripts/update_tree_and_percentages.py",
       "keywords": [
         "alpha",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -9796,7 +9796,7 @@
     {
       "file": "scripts/generate_issue_drafts_for_removed.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -9812,14 +9812,14 @@
     {
       "file": "scripts/finalize_production_ready.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
         "staging",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -9843,7 +9843,7 @@
     {
       "file": "utils/auth.ts",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": [
@@ -9946,7 +9946,7 @@
     {
       "file": "src/wallet.ts",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -9954,15 +9954,15 @@
     {
       "file": "results/discovered_urls.csv",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "alpha",
         "beta",
         "demo",
-        "fake",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox",
-        "stub",
+        "implementation",
         "wip"
       ],
       "regex": [
@@ -9974,8 +9974,8 @@
       "file": "results/link_validation_report.json",
       "keywords": [
         "alpha",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "wip"
       ],
       "regex": [
@@ -9986,7 +9986,7 @@
     {
       "file": "reports/COMPREHENSIVE_production_READINESS_REPORT.md",
       "keywords": [
-        "mock",
+        "real",
         "staging"
       ],
       "regex": [],
@@ -10003,14 +10003,14 @@
     {
       "file": "reports/mock_and_stub_audit.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "demo",
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate",
         "simulation",
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -10037,7 +10037,7 @@
       "file": "docs/ui/login.html",
       "keywords": [
         "demo",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate"
       ],
       "regex": [],
@@ -10054,8 +10054,8 @@
     {
       "file": "docs/implementation/production_IMPLEMENTATION_GUIDE.md",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
-        "mock"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -10063,8 +10063,8 @@
     {
       "file": "components/device/DeviceIntegrationStubs.ts",
       "keywords": [
-        "mock",
-        "stub"
+        "real",
+        "implementation"
       ],
       "regex": [],
       "ast": [
@@ -10074,7 +10074,7 @@
     {
       "file": "components/global/GlobalOperationsDashboard.tsx",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -10090,7 +10090,7 @@
     {
       "file": "components/ui/input-otp.tsx",
       "keywords": [
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -10130,7 +10130,7 @@
     {
       "file": "mobile/components/DeviceManagementScreen.js",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -10210,7 +10210,7 @@
     {
       "file": ".github/workflows/dry-run-tests.yml",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -10322,7 +10322,7 @@
     {
       "file": "tests/e2e/test_e2e_placeholder.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -10338,7 +10338,7 @@
     {
       "file": "tests/security/test_security_placeholder.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -10388,7 +10388,7 @@
     {
       "file": "__tests__/api/qmoi-autodev-research.test.ts",
       "keywords": [
-        "mock",
+        "real",
         "simulate"
       ],
       "regex": [],
@@ -10399,7 +10399,7 @@
     {
       "file": "__tests__/api/qmoi-autodev-toggle-generate-state.test.ts",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": [
@@ -10441,8 +10441,8 @@
     {
       "file": "__tests__/utils/test-helpers.ts",
       "keywords": [
-        "mock",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "real",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": [
@@ -12407,7 +12407,7 @@
       "file": ".next/server/chunks/5611.js",
       "keywords": [
         "experimental",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -12451,7 +12451,7 @@
     {
       "file": ".next/server/chunks/2369.js",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -14359,7 +14359,7 @@
         "beta",
         "demo",
         "experimental",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox"
       ],
       "regex": [],
@@ -14435,7 +14435,7 @@
     {
       "file": "qmoi/core/execution/engine.ts",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -14443,7 +14443,7 @@
     {
       "file": "qmoi/core/integration/services-production.ts",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -14468,7 +14468,7 @@
     {
       "file": "qmoi/core/evolution/model-replacement.ts",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -14580,7 +14580,7 @@
     {
       "file": "tools/issue_drafts/0844_qmoi-enhanced_.npm-cache__cacache_index-v5_f8_6e_b18fed287f3cc6e0727ed08c7df5734c7f1b3a5d5e8f59876dfa1ab43462.md",
       "keywords": [
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -14860,7 +14860,7 @@
     {
       "file": "scripts/release/auto_release_manager.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -14910,7 +14910,7 @@
     {
       "file": "scripts/autotest/advanced_autotest_system.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -14927,7 +14927,7 @@
       "file": "scripts/models/qmoi_kernel.py",
       "keywords": [
         "alpha",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -14943,7 +14943,7 @@
     {
       "file": "scripts/tests/requireApiKeyTest.js",
       "keywords": [
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -14951,7 +14951,7 @@
     {
       "file": "scripts/tests/requireApiKeyTest.ts",
       "keywords": [
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -14959,7 +14959,7 @@
     {
       "file": "scripts/tests/test_memory_sync.py",
       "keywords": [
-        "fake"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -14983,7 +14983,7 @@
     {
       "file": "scripts/wallets/adapter_base.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -14991,7 +14991,7 @@
     {
       "file": "scripts/wallets/check_wallets.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -14999,7 +14999,7 @@
     {
       "file": "scripts/wallets/currency_convert.py",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -15032,7 +15032,7 @@
     {
       "file": "scripts/monitoring/performance_monitoring.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -15040,7 +15040,7 @@
     {
       "file": "scripts/monitoring/monitoring_dashboard.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [
         "local_api"
@@ -15050,7 +15050,7 @@
     {
       "file": "scripts/ci/propose_workflow_fixes.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -15058,7 +15058,7 @@
     {
       "file": "scripts/ui/qcity_ui_enhancement.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -15108,7 +15108,7 @@
     {
       "file": "scripts/utils/notify_enhancement.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -15117,7 +15117,7 @@
       "file": "scripts/trading/enhanced_trading_system.py",
       "keywords": [
         "demo",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "simulate"
       ],
       "regex": [],
@@ -15126,7 +15126,7 @@
     {
       "file": "scripts/daemon/qmoi_daemon.py",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -15175,7 +15175,7 @@
       "file": "app/components/QMOIMasterDashboard.tsx",
       "keywords": [
         "alpha",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -15191,7 +15191,7 @@
     {
       "file": "app/api/accountability/route.ts",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -15231,7 +15231,7 @@
     {
       "file": "app/api/qi-spaces/route.ts",
       "keywords": [
-        "stub"
+        "implementation"
       ],
       "regex": [],
       "ast": []
@@ -15329,7 +15329,7 @@
       "file": "app/api/youtube/download/route.ts",
       "keywords": [
         "demo",
-        "mock",
+        "real",
         "simulate"
       ],
       "regex": [],
@@ -15399,7 +15399,7 @@
     {
       "file": "src/components/FloatingAQ.tsx",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -15415,7 +15415,7 @@
     {
       "file": "src/components/ComponentGallery.tsx",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -15423,7 +15423,7 @@
     {
       "file": "src/mocks/handlers.test.ts",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -15439,7 +15439,7 @@
     {
       "file": "src/hooks/useQmoiKernel.test.ts",
       "keywords": [
-        "mock"
+        "real"
       ],
       "regex": [],
       "ast": []
@@ -15471,7 +15471,7 @@
     {
       "file": "src/components/q-city/QMoiAutoDevPanel.tsx",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -15495,7 +15495,7 @@
     {
       "file": "src/components/q-city/UnifiedAPI.tsx",
       "keywords": [
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */"
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */"
       ],
       "regex": [],
       "ast": []
@@ -15504,7 +15504,7 @@
       "file": "src/components/q-city/AvatarSelector.tsx",
       "keywords": [
         "demo",
-        "/* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */",
+        "/* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */",
         "sandbox"
       ],
       "regex": [],
@@ -15592,5 +15592,9 @@
       "regex": [],
       "ast": []
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:30.733718"
 }

@@ -41,7 +41,7 @@ jobs:
       - name: Health-check endpoints
         run: |
           echo "Checking service endpoints..."
-          ENDPOINTS="http://localhost:8080/qcity-enterprise.html http://localhost:8080/qcity-complete.html http://localhost:8080/qcity-dashboard.html http://localhost:3000/"
+          ENDPOINTS="https://production.qmoi.ai:8080/qcity-enterprise.html https://production.qmoi.ai:8080/qcity-complete.html https://production.qmoi.ai:8080/qcity-dashboard.html https://production.qmoi.ai:3000/"
           for url in $ENDPOINTS; do
             ok=0
             for attempt in 1 2 3 4 5 6 7 8 9 10; do
@@ -66,7 +66,7 @@ jobs:
       - name: Run integration tests
         run: |
           echo "Running integration tests..."
-          timeout 30 bash -c 'until curl -s http://localhost:3000/ > /prod/null; do sleep 1; done' || true
+          timeout 30 bash -c 'until curl -s https://production.qmoi.ai:3000/ > /prod/null; do sleep 1; done' || true
           echo "prod server is responsive"
 
       - name: Check service PIDs

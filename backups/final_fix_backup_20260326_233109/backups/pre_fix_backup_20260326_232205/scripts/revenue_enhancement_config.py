@@ -9,8 +9,7 @@
 QMOI Revenue Enhancement Configuration.
 Defines settings and thresholds for revenue optimization and wallet management.
 """
-import yaml
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 # Revenue optimization settings
 REVENUE_CONFIG = {
@@ -132,7 +131,10 @@ REVENUE_CONFIG = {
     }
 }
 
-def save_config():
+"""
+    save_config function
+    """
+def save_config() -> Any:
     """Save the configuration to YAML file."""
     config_dir = Path(__file__).resolve().parents[1] / ".qmoi_validation"
     config_dir.mkdir(exist_ok=True)

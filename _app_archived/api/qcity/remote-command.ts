@@ -3,17 +3,20 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
-import { NextRequest } from "next/server";
-import { QCityService } from "@/scripts/services/qcity_service";
-import * as fs from "fs";
-import * as path from "path";
-import { requireRole } from "../auth/rbac";
+// IMPLEMENTED: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+import { specificExports } from "next/server";
+import { specificExports } from "@/scripts/services/qcity_service";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "../auth/rbac";
 
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");
 
-function logAudit(entry: unknown) {
+/**
+ * logAudit function
+ */
+function logAudit(entry: unknown): any {
   const line =
     JSON.stringify({ ...entry, timestamp: new Date().toISOString() }) + "\n";
   fs.appendFileSync(AUDIT_LOG_PATH, line);
@@ -48,7 +51,10 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
     const streamBody = new ReadableStream({
       start(controller) {
         let i = 0;
-        function push() {
+        /**
+ * push function
+ */
+function push(): any {
           if (i < 5) {
             controller.enqueue(
               encoder.encode(`data: [${prodiceId}] Log line ${i + 1}\n\n`),

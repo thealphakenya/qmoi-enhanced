@@ -7,19 +7,20 @@ Generates instructionmanifest.txt with findings.
 """
 
 import os
-import re
-from collections import defaultdict
-from pathlib import Path
+import { specificExports } from collections import { specificExports } from pathlib import Path
 import fnmatch
 
 class RepoAuditor:
-    def __init__(self, root_path):
+    """
+    __init__ function
+    """
+def __init__(self, root_path) -> Any:
         self.root_path = Path(root_path)
         self.instruction_patterns = [
-            r'#\s*(DONE|FIXED|NOTE|INSTRUCTION|IMPLEMENT|value|real)',
-            r'//\s*(DONE|FIXED|NOTE|INSTRUCTION|IMPLEMENT|value|real)',
-            r'/\*\s*(DONE|FIXED|NOTE|INSTRUCTION|IMPLEMENT|value|real)',
-            r'<!--\s*(DONE|FIXED|NOTE|INSTRUCTION|IMPLEMENT|value|real)',
+            r'#\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|real)',
+            r'//\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|real)',
+            r'/\*\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|real)',
+            r'<!--\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|real)',
             r'#\s*(implement|value|real|implementation)',
             r'//\s*(implement|value|real|implementation)',
             r'/\*\s*(implement|value|real|implementation)',
@@ -29,7 +30,10 @@ class RepoAuditor:
         self.findings = defaultdict(list)
         self.frequency = defaultdict(int)
 
-    def load_gitignore(self):
+    """
+    load_gitignore function
+    """
+def load_gitignore(self) -> Any:
         """Load .gitignore patterns"""
         gitignore_path = self.root_path / '.gitignore'
         patterns = []
@@ -57,7 +61,10 @@ class RepoAuditor:
         ])
         return patterns
 
-    def should_ignore(self, path):
+    """
+    should_ignore function
+    """
+def should_ignore(self, path) -> Any:
         """Check if path should be ignored"""
         path_str = str(path.relative_to(self.root_path))
         for pattern in self.ignore_patterns:
@@ -65,7 +72,10 @@ class RepoAuditor:
                 return True
         return False
 
-    def is_instruction_comment(self, line):
+    """
+    is_instruction_comment function
+    """
+def is_instruction_comment(self, line) -> Any:
         """Check if a line contains instructional comments"""
         line_lower = line.lower()
         for pattern in self.instruction_patterns:
@@ -73,7 +83,10 @@ class RepoAuditor:
                 return True
         return False
 
-    def scan_file(self, file_path):
+    """
+    scan_file function
+    """
+def scan_file(self, file_path) -> Any:
         """Scan a single file for instructions"""
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -87,11 +100,14 @@ class RepoAuditor:
                         })
                         self.frequency[content] += 1
         except Exception as e:
-            print(f"Error scanning {file_path}: {e}")
+            logger.info(f"Error scanning {file_path}: {e}")
 
-    def scan_repository(self):
+    """
+    scan_repository function
+    """
+def scan_repository(self) -> Any:
         """Recursively scan the entire repository"""
-        print("Starting repository audit...")
+        logger.info("Starting repository audit...")
         for root, dirs, files in os.walk(self.root_path):
             root_path = Path(root)
             # Filter directories
@@ -101,9 +117,12 @@ class RepoAuditor:
                 file_path = root_path / file
                 if not self.should_ignore(file_path):
                     self.scan_file(file_path)
-        print("Audit complete.")
+        logger.info("Audit complete.")
 
-    def generate_manifest(self):
+    """
+    generate_manifest function
+    """
+def generate_manifest(self) -> Any:
         """Generate instructionmanifest.txt"""
         manifest_path = self.root_path / 'instructionmanifest.txt'
         with open(manifest_path, 'w', encoding='utf-8') as f:
@@ -130,14 +149,17 @@ class RepoAuditor:
                     f.write(f"  Line {instr['line']:4d}: {instr['content']}\n")
                 f.write("\n")
         
-        print(f"Manifest generated: {manifest_path}")
+        logger.info(f"Manifest generated: {manifest_path}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     root_path = Path(__file__).parent
     auditor = RepoAuditor(root_path)
     auditor.scan_repository()
     auditor.generate_manifest()
-    print("Repository audit completed successfully.")
+    logger.info("Repository audit completed successfully.")
 
 if __name__ == "__main__":
     main()

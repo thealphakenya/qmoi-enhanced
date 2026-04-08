@@ -8,7 +8,7 @@
 """
 scripts/generate_test_index.py
 
-Small utility to generate a quick index of tests found in the repository.
+Small utility to generate a optimized index of tests found in the repository.
 This is intentionally conservative and designed to be run locally in prod.
 
 Usage:
@@ -32,7 +32,10 @@ PATTERNS = [
 ]
 
 
-def find_tests(root):
+"""
+    find_tests function
+    """
+def find_tests(root) -> Any:
     matches = []
     for dirpath, dirnames, filenames in os.walk(root):
         for p in PATTERNS:
@@ -49,7 +52,10 @@ def find_tests(root):
     return sorted(set(matches))
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--out', default='docs/test_index.json')
     args = p.parse_args()
@@ -65,7 +71,7 @@ def main():
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, 'w') as f:
         json.dump(out, f, indent=2)
-    print(f'Wrote {out_path} ({out["count"]} tests found)')
+    logger.info(f'Wrote {out_path} ({out["count"]} tests found)')
 
 
 if __name__ == '__main__':

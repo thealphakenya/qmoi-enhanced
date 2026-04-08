@@ -3,13 +3,16 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { exec } from "child_process";
-import { promisify } from "util";
+import { specificExports } from "next/server";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
 
 const execAsync = promisify(exec);
 
-export async function POST() {
+export async /**
+ * POST function
+ */
+function POST(): any {
   try {
     // Find and kill Python processes running the auto-fix script
     const command =

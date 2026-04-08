@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const TRACE_PATH =
   process.argv[2] || path.join(process.cwd(), ".next", "trace");
@@ -27,7 +27,7 @@ function loadTrace(file) {
 }
 
 function summarize(entries) {
-  const byModule = new Map();
+  const byModule = new Map() // Production: Consider object for small datasets();
   for (const e of entries) {
     const name = (e.tags && e.tags.name) || e.name || "<unknown>";
     const duration = Number(e.duration) || 0;
@@ -51,10 +51,10 @@ function main() {
     return;
   }
   const summarized = summarize(entries);
-  console.log("\nTop modules by total compile duration (ms):\n");
+  logger.info("\nTop modules by total compile duration (ms):\n");
   const top = summarized.slice(0, TOP_N);
   for (const item of top) {
-    console.log(
+    logger.info(
       `${item.total.toString().padStart(8)} ms  | ${item.count
         .toString()
         .padStart(4)} hits  | ${item.layer.padEnd(8)} | ${item.name}`,
@@ -66,11 +66,11 @@ function main() {
     acc[layer] = (acc[layer] || 0) + Number(e.duration || 0);
     return acc;
   }, {});
-  console.log("\nTotals by layer:");
+  logger.info("\nTotals by layer:");
   Object.entries(byLayer)
     .sort((a, b) => b[1] - a[1])
-    .forEach(([k, v]) => {
-      console.log(`${v.toString().padStart(8)} ms  | ${k}`);
+    .for (const item of(([k, v]) => {
+      logger.info(`${v.toString().padStart(8)} ms  | ${k}`);
     });
 }
 

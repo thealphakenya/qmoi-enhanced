@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import React, { useState } from "react";
+import { specificExports } from "react";
 import {
   ChakraProvider,
   Box,
@@ -14,7 +14,7 @@ import {
   Textarea,
   useToast,
 } from "@chakra-ui/react";
-import AccessibilitySettingsPanel from "../components/ui/AccessibilitySettingsPanel";
+import { specificExports } from "../components/ui/AccessibilitySettingsPanel";
 
 const providers = [
   { label: "Hugging Face Inference API", value: "hf" },
@@ -22,7 +22,10 @@ const providers = [
   { label: "Cloud Provider", value: "cloud" },
 ];
 
-function QmoispaceApp() {
+/**
+ * QmoispaceApp function
+ */
+function QmoispaceApp(): any {
   const [provider, setProvider] = useState("hf");
   const [feedback, setFeedback] = useState("");
   const toast = useToast();

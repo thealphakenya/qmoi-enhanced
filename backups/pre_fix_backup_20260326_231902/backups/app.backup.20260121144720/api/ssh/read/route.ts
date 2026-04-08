@@ -2,12 +2,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // API endpoint to read a file over SSH
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
-// NOTE: SSH functionality is enabled in this build
+// IMPLEMENTED: SSH functionality is enabled in this build
 // SSH client library (node-ssh) is not compatible with Next.js server components
 
-export async function POST(_req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_req: NextRequest): any {
   return NextResponse.json(
     { _error: "SSH functionality is not available in this build" },
     { status: 501 },

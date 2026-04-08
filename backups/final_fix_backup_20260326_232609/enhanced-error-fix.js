@@ -5,21 +5,24 @@
 
 /* eslint-env node */
 // enhanced-error-fix.js
-import { execSync } from "child_process";
-import path from "path";
+import { specificExports } from "child_process";
+import { specificExports } from "path";
 
 /**
  * Run auto-fix loop: runs eslint --fix, prettier, type check and tests up to maxTries
  * Returns an object with the final results.
  */
-export function fixFile({ maxTries = 10 } = {}) {
+export /**
+ * fixFile function
+ */
+function fixFile({ maxTries = 10 } = {}): any {
   let lastLint = "";
   let lastType = "";
   let lastTest = "";
   let allClean = false;
 
   for (let i = 0; i < maxTries; i++) {
-    console.log(`\n--- QMOI Auto-prod: Auto-fix round ${i + 1} ---`);
+    logger.info(`\n--- QMOI Auto-prod: Auto-fix round ${i + 1} ---`);
     try {
       execSync("npx eslint . --fix", { stdio: "inherit" });
     } catch (e) {
@@ -32,21 +35,21 @@ export function fixFile({ maxTries = 10 } = {}) {
     }
     try {
       lastLint = execSync("npx eslint .", { encoding: "utf8" });
-      console.log("ESLint output:", lastLint);
+      logger.info("ESLint output:", lastLint);
     } catch (e) {
       lastLint = e.stdout ? e.stdout.toString() : e.message;
       console.warn("ESLint errors remain.");
     }
     try {
       lastType = execSync("npx tsc --noEmit", { encoding: "utf8" });
-      console.log("TypeScript output:", lastType);
+      logger.info("TypeScript output:", lastType);
     } catch (e) {
       lastType = e.stdout ? e.stdout.toString() : e.message;
       console.warn("Type errors remain.");
     }
     try {
       lastTest = execSync("npm test", { encoding: "utf8" });
-      console.log("Test output:", lastTest);
+      logger.info("Test output:", lastTest);
     } catch (e) {
       lastTest = e.stdout ? e.stdout.toString() : e.message;
       console.warn("Test failures remain.");
@@ -57,20 +60,20 @@ export function fixFile({ maxTries = 10 } = {}) {
       /pass|success|all tests passed/i.test(lastTest)
     ) {
       allClean = true;
-      console.log("All errors fixed and tests passing!");
+      logger.info("All errors fixed and tests passing!");
       break;
     }
   }
 
   if (!allClean) {
-    console.log(
+    logger.info(
       "\nQMOI Auto-prod: Some errors could not be auto-fixed. Manual intervention required.",
     );
-    console.log("Final Lint Output:", lastLint);
-    console.log("Final Type Output:", lastType);
-    console.log("Final Test Output:", lastTest);
+    logger.info("Final Lint Output:", lastLint);
+    logger.info("Final Type Output:", lastType);
+    logger.info("Final Test Output:", lastTest);
   } else {
-    console.log("\nQMOI Auto-prod: Codebase is clean!");
+    logger.info("\nQMOI Auto-prod: Codebase is clean!");
   }
 
   return { allClean, lastLint, lastType, lastTest };

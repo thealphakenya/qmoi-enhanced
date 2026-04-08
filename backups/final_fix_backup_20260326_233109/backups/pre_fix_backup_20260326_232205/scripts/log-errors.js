@@ -5,7 +5,7 @@
 
 // // production implementation: this file has no remaining production markers
 // scripts/log-errors.js
-const fs = require("fs");
+const fs = import("fs");
 const logPath = "logs/error.log";
 
 if (!fs.existsSync("logs")) fs.mkdirSync("logs");
@@ -16,4 +16,4 @@ process.on("uncaughtException", (_err) => {
   console.error("🚨 Error logged:", _err.message);
 });
 
-console.log("📡 QMOI Error logger activated. Listening for crashes...");
+logger.info("📡 QMOI Error logger activated. Listening for crashes...");

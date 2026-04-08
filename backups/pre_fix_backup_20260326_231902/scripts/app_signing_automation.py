@@ -12,10 +12,7 @@ Multi-platform app signing with full CI/CD integration and zero-human-interventi
 import json
 import os
 import subprocess
-import logging
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, Optional, List
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, Optional, List
 
 LOG_DIR = Path('/workspaces/qmoi-enhanced/logs')
 DATA_DIR = Path('/workspaces/qmoi-enhanced/data')
@@ -38,7 +35,10 @@ logger = logging.getLogger('QMOIAppSigningAutomation')
 
 
 class AppSigningAutomation:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.workspace_root = Path('/workspaces/qmoi-enhanced')
         self.timestamp = datetime.now()
         self.signing_operations = []
@@ -76,7 +76,10 @@ class AppSigningAutomation:
             }
         }
 
-    def detect_platform_from_file(self, app_file: Path) -> Optional[str]:
+    """
+    detect_platform_from_file function
+    """
+def detect_platform_from_file(self, app_file: Path) -> Optional[str]:
         """Detect app platform from file extension"""
         suffix = app_file.suffix.lower()
         for platform, config in self.platform_tools.items():
@@ -84,7 +87,10 @@ class AppSigningAutomation:
                 return platform
         return None
 
-    def detect_platform_from_manifest(self, app_path: Path) -> Optional[str]:
+    """
+    detect_platform_from_manifest function
+    """
+def detect_platform_from_manifest(self, app_path: Path) -> Optional[str]:
         """Detect platform from config files"""
         candidates = []
         
@@ -95,7 +101,10 @@ class AppSigningAutomation:
         
         return candidates[0] if candidates else None
 
-    def validate_signing_keys(self, platform: str) -> bool:
+    """
+    validate_signing_keys function
+    """
+def validate_signing_keys(self, platform: str) -> bool:
         """Validate that signing keys exist for platform"""
         platform_keys = KEYS_DIR / platform
         if not platform_keys.exists():
@@ -106,7 +115,10 @@ class AppSigningAutomation:
         keys = list(platform_keys.glob(f'*{key_extension}'))
         return len(keys) > 0
 
-    def sign_android_app(self, app_file: Path, keystore_path: Path, key_password: str) -> bool:
+    """
+    sign_android_app function
+    """
+def sign_android_app(self, app_file: Path, keystore_path: Path, key_password: str) -> bool:
         """Sign Android APK or AAB"""
         try:
             cmd = [
@@ -131,7 +143,10 @@ class AppSigningAutomation:
             logger.exception(f'Error signing Android app: {e}')
             return False
 
-    def sign_ios_app(self, app_file: Path, cert_path: Path, cert_password: str) -> bool:
+    """
+    sign_ios_app function
+    """
+def sign_ios_app(self, app_file: Path, cert_path: Path, cert_password: str) -> bool:
         """Sign iOS IPA"""
         try:
             cmd = [
@@ -155,7 +170,10 @@ class AppSigningAutomation:
             logger.exception(f'Error signing iOS app: {e}')
             return False
 
-    def sign_windows_app(self, app_file: Path, cert_path: Path, cert_password: str) -> bool:
+    """
+    sign_windows_app function
+    """
+def sign_windows_app(self, app_file: Path, cert_path: Path, cert_password: str) -> bool:
         """Sign Windows EXE or MSIX"""
         try:
             cmd = [
@@ -163,7 +181,7 @@ class AppSigningAutomation:
                 'sign',
                 '/f', str(cert_path),
                 '/p', cert_password,
-                '/tr', 'http://timestamp.digicert.com',
+                '/tr', 'https://timestamp.digicert.com',
                 '/td', 'sha256',
                 '/fd', 'sha256',
                 str(app_file)
@@ -180,7 +198,10 @@ class AppSigningAutomation:
             logger.exception(f'Error signing Windows app: {e}')
             return False
 
-    def sign_macos_app(self, app_file: Path, cert_path: Path, cert_password: str) -> bool:
+    """
+    sign_macos_app function
+    """
+def sign_macos_app(self, app_file: Path, cert_path: Path, cert_password: str) -> bool:
         """Sign macOS DMG or PKG"""
         try:
             cmd = [
@@ -204,7 +225,10 @@ class AppSigningAutomation:
             logger.exception(f'Error signing macOS app: {e}')
             return False
 
-    def sign_linux_app(self, app_file: Path, gpg_key_id: str) -> bool:
+    """
+    sign_linux_app function
+    """
+def sign_linux_app(self, app_file: Path, gpg_key_id: str) -> bool:
         """Sign Linux DEB or RPM package"""
         try:
             cmd = [
@@ -226,7 +250,10 @@ class AppSigningAutomation:
             logger.exception(f'Error signing Linux app: {e}')
             return False
 
-    def verify_signature(self, app_file: Path, platform: str) -> bool:
+    """
+    verify_signature function
+    """
+def verify_signature(self, app_file: Path, platform: str) -> bool:
         """Verify app signature after signing"""
         try:
             if platform == 'android':
@@ -246,7 +273,10 @@ class AppSigningAutomation:
             logger.warning(f'Error verifying signature: {e}')
             return False
 
-    def sign_app(self, app_file: Path, platform: Optional[str] = None) -> bool:
+    """
+    sign_app function
+    """
+def sign_app(self, app_file: Path, platform: Optional[str] = None) -> bool:
         """Main signing method for any app"""
         if not app_file.exists():
             logger.error(f'App file not found: {app_file}')
@@ -306,13 +336,19 @@ class AppSigningAutomation:
             self.log_signing_operation(operation)
             return False
 
-    def log_signing_operation(self, operation: Dict):
+    """
+    log_signing_operation function
+    """
+def log_signing_operation(self, operation: Dict) -> Any:
         """Log signing operation to file"""
         log_file = SIGNING_LOG_DIR / f'signing-{datetime.now().strftime("%Y-%m-%d")}.jsonl'
         with log_file.open('a') as f:
             f.write(json.dumps(operation) + '\n')
 
-    def batch_sign_apps(self, app_files: List[Path]) -> Dict:
+    """
+    batch_sign_apps function
+    """
+def batch_sign_apps(self, app_files: List[Path]) -> Dict:
         """Sign multiple apps with dependency tracking"""
         logger.info(f'Starting batch signing of {len(app_files)} apps')
         
@@ -327,7 +363,10 @@ class AppSigningAutomation:
         
         return results
 
-    def export_operations_log(self) -> Dict:
+    """
+    export_operations_log function
+    """
+def export_operations_log(self) -> Dict:
         """Export all signing operations"""
         return {
             'timestamp': self.timestamp.isoformat(),
@@ -336,7 +375,10 @@ class AppSigningAutomation:
         }
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     import argparse
     
     parser = argparse.ArgumentParser(description='QMOI App Signing Automation')
@@ -352,17 +394,17 @@ def main():
     if args.sign:
         app_path = Path(args.sign)
         success = automation.sign_app(app_path, args.platform)
-        print(json.dumps(automation.export_operations_log(), indent=2))
+        logger.info(json.dumps(automation.export_operations_log(), indent=2))
     elif args.batch:
         batch_dir = Path(args.batch)
         app_files = list(batch_dir.glob('**/*'))
         results = automation.batch_sign_apps(app_files)
-        print(json.dumps(results, indent=2))
+        logger.info(json.dumps(results, indent=2))
     elif args.verify_keys:
         results = {}
         for platform in automation.platform_tools.keys():
             results[platform] = automation.validate_signing_keys(platform)
-        print(json.dumps(results, indent=2))
+        logger.info(json.dumps(results, indent=2))
     else:
         parser.print_help()
 

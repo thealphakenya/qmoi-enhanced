@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const MANIFEST = path.join(process.cwd(), "release_assets_manifest.json");
 const VERIFY_REPORT = path.join(
@@ -15,7 +15,10 @@ const VERIFY_REPORT = path.join(
 );
 const VERIFY_LOG = path.join(process.cwd(), "reports", "verify_apps_run.log");
 
-function readJsonSafe(p: string) {
+/**
+ * readJsonSafe function
+ */
+function readJsonSafe(p: string): any {
   try {
     if (!fs.existsSync(p)) return null;
     return JSON.parse(fs.readFileSync(p, "utf-8"));
@@ -24,7 +27,11 @@ function readJsonSafe(p: string) {
   }
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(req: NextApiRequest, res: NextApiResponse) {
   const manifest = readJsonSafe(MANIFEST);
   const report = readJsonSafe(VERIFY_REPORT);
 

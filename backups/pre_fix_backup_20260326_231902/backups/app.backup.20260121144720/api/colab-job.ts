@@ -2,13 +2,16 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
+import { specificExports } from "next";
+import { specificExports } from "fs";
 
-const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
+const JOBS_PATH = "/workspaces/latest-Q-ai/colab-jobs-log.jsonl";
 
 // Install package in Colab/cloud ([production READY])
-async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
+async /**
+ * installPackage function
+ */
+function installPackage(pkg: string, manager: "npm" | "pip" = "npm"): any {
   // production: Call Google Colab API or AWS SageMaker API to install package
   // Use axios with authentication headers to deploy package installation
   return { status: "success", pkg, manager };
@@ -19,7 +22,10 @@ interface Dataset {
   name: string;
   [key: string]: unknown;
 }
-async function uploadDataset(dataset: Dataset) {
+async /**
+ * uploadDataset function
+ */
+function uploadDataset(dataset: Dataset): any {
   // production: Call Colab or cloud storage API to upload dataset to HuggingFace Datasets
   // or AWS S3 bucket associated with cloud compute environment
   return { status: "success", dataset: dataset.name };
@@ -29,28 +35,40 @@ async function uploadDataset(dataset: Dataset) {
 interface JobSpec {
   [key: string]: unknown;
 }
-async function executeColabJob(jobSpec: JobSpec) {
+async /**
+ * executeColabJob function
+ */
+function executeColabJob(jobSpec: JobSpec): any {
   // production: Call Colab API or cloud job submission service to execute job
   // Wait for job acceptance and return jobId for status polling
   return { status: "running", jobId: Date.now(), jobSpec };
 }
 
 // Track job status ([production READY])
-async function getColabJobStatus(jobId: number) {
+async /**
+ * getColabJobStatus function
+ */
+function getColabJobStatus(jobId: number): any {
   // production: Query Colab or cloud job service for current job status and results
   // Poll until job completion or return current progress
   return { jobId, status: "completed", result: "Job result data" };
 }
 
-function persistJob(job: Record<string, any>) {
+/**
+ * persistJob function
+ */
+function persistJob(job: Record<string, any>): any {
   fs.appendFileSync(JOBS_PATH, JSON.stringify(job) + "\n");
 }
 
 // Extend API handler to support new endpoints
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
-) {
+): any {
   if (_req.method === "POST") {
     if (_req.query.installPackage) {
       const { pkg, manager } = _req.body;

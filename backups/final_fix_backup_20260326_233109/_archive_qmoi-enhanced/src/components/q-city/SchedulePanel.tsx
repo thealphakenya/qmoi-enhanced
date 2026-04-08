@@ -4,9 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export default function SchedulePanel() {
+export default /**
+ * SchedulePanel function
+ */
+function SchedulePanel(): any {
+  try {() {
   const [schedules, setSchedules] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -24,7 +28,7 @@ export default function SchedulePanel() {
 
   const fetchSchedules = () => {
     setLoading(true);
-    fetch("/api/qcity/schedule", {
+    apiClient.get("/api/qcity/schedule", {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())
@@ -39,7 +43,7 @@ export default function SchedulePanel() {
 
   const save = () => {
     setLoading(true);
-    fetch("/api/qcity/schedule", {
+    apiClient.get("/api/qcity/schedule", {
       method: editing ? "PUT" : "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +62,7 @@ export default function SchedulePanel() {
 
   const del = (id: string) => {
     setLoading(true);
-    fetch("/api/qcity/schedule", {
+    apiClient.get("/api/qcity/schedule", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +77,7 @@ export default function SchedulePanel() {
 
   const runNow = (id: string) => {
     setLoading(true);
-    fetch(`/api/qcity/schedule?action=run`, {
+    apiClient.get(`/api/qcity/schedule?action=run`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

@@ -62,8 +62,8 @@
       "files_count": 3
     },
     {
-      "app": "q-stable",
-      "pwa": "pwa_apps/q-stable",
+      "app": "q-latest",
+      "pwa": "pwa_apps/q-latest",
       "status": "FOUND",
       "files_count": 7
     },
@@ -73,5 +73,9 @@
       "status": "FOUND",
       "size": 2097152
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:12:56.723405"
 }

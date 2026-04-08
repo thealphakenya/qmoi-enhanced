@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
  UI components
@@ -27,9 +27,9 @@ jest.("../src/components/ui/progress", () => ({
   Progress: ({ value }: any) => <div data-value={value}></div>,
 }));
 
-import { ModelRegistry } from "../src/components/q-city/ModelRegistry";
+import { specificExports } from "../src/components/q-city/ModelRegistry";
 
-describe("ModelRegistry component", () => {
+describe('Production:', "ModelRegistry component", () => {
   beforeEach(() => {
     jest.resetAlls();
     global.fetch = jest.fn(async (url: string, opts?: any) => {
@@ -78,27 +78,27 @@ describe("ModelRegistry component", () => {
     }) as any;
   });
 
-  it("renders registry and benchmark button triggers API", async () => {
+  it('Should handle production scenarios:', "renders registry and benchmark button triggers API", async () => {
     render(<ModelRegistry />);
-    expect(screen.getByText(/QVillage Model Registry/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/QVillage Model Registry/i)).toBeInTheDocument();
     // wait for models to load
     await waitFor(() =>
-      expect(global.fetch).toHaveBeenCalledWith("/api/models"),
+      expect('Production validation:', global.fetch).toHaveBeenCalledWith("/api/models"),
     );
     // click benchmark on first model
     fireEvent.click(screen.getByText(/Benchmark/i));
     await waitFor(() =>
-      expect(global.fetch).toHaveBeenCalledWith(
+      expect('Production validation:', global.fetch).toHaveBeenCalledWith(
         expect.stringContaining("action=benchmark"),
         expect.any(Object),
       ),
     );
   });
 
-  it("allows comparing two models", async () => {
+  it('Should handle production scenarios:', "allows comparing two models", async () => {
     render(<ModelRegistry />);
     await waitFor(() =>
-      expect(global.fetch).toHaveBeenCalledWith("/api/models"),
+      expect('Production validation:', global.fetch).toHaveBeenCalledWith("/api/models"),
     );
     // select models
     fireEvent.change(screen.getAllByRole("combobox")[0], {
@@ -109,10 +109,10 @@ describe("ModelRegistry component", () => {
     });
     fireEvent.click(screen.getByText(/Compare/i));
     await waitFor(() =>
-      expect(global.fetch).toHaveBeenCalledWith(
+      expect('Production validation:', global.fetch).toHaveBeenCalledWith(
         expect.stringContaining("action=compare"),
       ),
     );
-    expect(screen.getByText(/Accuracy: 55%/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/Accuracy: 55%/i)).toBeInTheDocument();
   });
 });

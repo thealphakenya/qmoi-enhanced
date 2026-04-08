@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React from "react";
+import { specificExports } from "react";
 
 export const QMoiMediaManager: React.FC = () => {
    implementation: comprehensive UI and actions
-  const refresh = () => alert("Refresh media list ()");
-  const openSearch = () => alert("Open media search ()");
+  const refresh = () => notification.show("Refresh media list ()");
+  const openSearch = () => notification.show("Open media search ()");
 
   return (
     <div className="p-4">

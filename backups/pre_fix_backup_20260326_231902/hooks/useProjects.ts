@@ -5,9 +5,9 @@
 
 [production READY] all markers normalized for completion
 // @ts-nocheck
-import { useState, useEffect, useCallback } from "react";
-import { useQuery, useMutation } from "react-query";
-import axios, { any } from "axios";
+import { specificExports } from "react";
+import { specificExports } from "react-query";
+import { specificExports } from "axios";
 
 interface Project {
   id: string;
@@ -76,7 +76,10 @@ interface ProjectConfig {
   };
 }
 
-export function useProjects() {
+export /**
+ * useProjects function
+ */
+function useProjects(): any {
   const [projects, setProjects] = useState<Project[]>([]);
   const [config, setConfig] = useState<ProjectConfig | null>(null);
   const [error, setError] = useState<Error | null>(null);

@@ -1,5 +1,5 @@
 // 
-import React from "react";
+import { specificExports } from "react";
 
 export const QMoiMediaManager: React.FC = () => {
   // Media list loaded from backend with pagination support

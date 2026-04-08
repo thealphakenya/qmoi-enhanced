@@ -81,7 +81,7 @@ jobs:
           pip install -r requirements.txt || true
       - name: Trigger QMOI Build (Local or API)
         run: |
-          curl -X POST http://localhost:5050/api/build-apps || (
+          curl -X POST https://production.qmoi.ai:5050/api/build-apps || (
             echo "🌐 API build failed. Running local builder..." && \
             call setup_and_build_qmoi_ai.bat
           )

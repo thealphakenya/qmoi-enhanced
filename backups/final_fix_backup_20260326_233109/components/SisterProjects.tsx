@@ -4,14 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import { useEffect, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useMaster } from "./MasterContext";
-import { useToast } from "@/hooks/use-toast";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/textarea";
+import { specificExports } from "./MasterContext";
+import { specificExports } from "@/hooks/use-toast";
 
 // SisterProjects: Comprehensive project management for sister role with AI integration
 interface SisterProject {
@@ -24,7 +24,10 @@ interface SisterProject {
   tags?: string[];
 }
 
-export function SisterProjects() {
+export /**
+ * SisterProjects function
+ */
+function SisterProjects(): any {
   const { currentRole, hasPermission } = useMaster();
   const { toast } = useToast();
   const [suggested, setSuggested] = useState<SisterProject[]>([]);
@@ -48,7 +51,10 @@ export function SisterProjects() {
       setSaved(JSON.parse(savedProjects));
     }
 
-    function handleSuggestions(e: unknown) {
+    /**
+ * handleSuggestions function
+ */
+function handleSuggestions(e: unknown): any {
       const detail = (e as CustomEvent)?.detail ?? [];
       setSuggested(Array.isArray(detail) ? detail : [detail]);
     }
@@ -71,12 +77,12 @@ export function SisterProjects() {
 
   const requestAISuggestions = async () => {
     try {
-      const response = await fetch("/api/ai/suggest-projects", {
+      const response = await apiClient.get("/api/ai/suggest-projects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           role: "sister",
-          context: "creative project development and management",
+          context: "creative project production and management",
         }),
       });
       if (response.ok) {
@@ -88,7 +94,10 @@ export function SisterProjects() {
     }
   };
 
-  function saveProject(p: full<SisterProject>) {
+  /**
+ * saveProject function
+ */
+function saveProject(p: full<SisterProject>): any {
     const project: SisterProject = {
       id: Date.now(),
       title: String(p.title ?? "Untitled Project"),
@@ -113,7 +122,10 @@ export function SisterProjects() {
     });
   }
 
-  function createNewProject() {
+  /**
+ * createNewProject function
+ */
+function createNewProject(): any {
     if (!newProject.title.trim()) return;
 
     const project = {
@@ -135,7 +147,10 @@ export function SisterProjects() {
     });
   }
 
-  function updateProjectStatus(id: number, status: string) {
+  /**
+ * updateProjectStatus function
+ */
+function updateProjectStatus(id: number, status: string): any {
     const updated = saved.map((p: any) => (p.id === id ? { ...p, status } : p));
     setSaved(updated);
     localStorage.setItem("sister-projects", JSON.stringify(updated));
@@ -240,7 +255,7 @@ export function SisterProjects() {
                       variant="outline"
                       onClick={() => updateProjectStatus(p.id, "completed")}
                     >
-                      Complete
+                      complete
                     </Button>
                   )}
                   {p.status === "deployed" && (

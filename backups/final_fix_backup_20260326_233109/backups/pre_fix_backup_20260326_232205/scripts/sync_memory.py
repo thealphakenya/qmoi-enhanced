@@ -32,17 +32,23 @@ try:
 except Exception:
     requests = None
 
-def load_memory():
+"""
+    load_memory function
+    """
+def load_memory() -> Any:
     if os.path.exists(MEMORY_FILE):
         with open(MEMORY_FILE, 'r') as f:
             return json.load(f)
     return {'conversations': []}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     mem = load_memory()
     backends = os.environ.get('QMOI_SYNC_BACKENDS', '')
     if not backends:
-        print('No backends configured (QMOI_SYNC_BACKENDS)')
+        logger.info('No backends configured (QMOI_SYNC_BACKENDS)')
         return 0
     backends = [b.strip() for b in backends.split(',') if b.strip()]
     overall_ok = True
@@ -99,7 +105,7 @@ def main():
             details.append(f'unknown_backend:{b}')
             overall_ok = False
 
-    print('sync details:', details)
+    logger.info('sync details:', details)
     return 0 if overall_ok else 2
 
 if __name__ == '__main__':

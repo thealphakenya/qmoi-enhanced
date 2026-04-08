@@ -295,7 +295,7 @@
       "reason": "no-change"
     },
     {
-      "file": "/workspaces/qmoi-enhanced/components/stable-q-ai-system.js",
+      "file": "/workspaces/qmoi-enhanced/components/latest-q-ai-system.js",
       "reason": "no-change"
     },
     {
@@ -618,5 +618,9 @@
       "file": "/workspaces/qmoi-enhanced/src/setupTests.ts",
       "reason": "no-change"
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:04.493357"
 }

@@ -3,14 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 /**
  * File Management Routes
  * Handles file download, delete, and retrieval
  */
 
-const fileStorage = new Map<
+const fileStorage = new Map() // Production: Consider object for small datasets<
   string,
   {
     name: string;
@@ -21,10 +21,13 @@ const fileStorage = new Map<
   }
 >();
 
-export async function GET(
+export async /**
+ * GET function
+ */
+function GET(
   req: NextRequest,
   { params }: { params: { id: string } },
-) {
+): any {
   try {
     const fileId = params.id;
     const download = req.nextUrl.searchParams.get("download") === "true";
@@ -64,10 +67,13 @@ export async function GET(
   }
 }
 
-export async function DELETE(
+export async /**
+ * DELETE function
+ */
+function DELETE(
   req: NextRequest,
   { params }: { params: { id: string } },
-) {
+): any {
   try {
     const fileId = params.id;
     const userId = req.headers.get("X-User-ID") || "anonymous";

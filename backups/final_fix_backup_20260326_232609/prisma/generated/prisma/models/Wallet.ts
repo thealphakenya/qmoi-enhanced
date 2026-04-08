@@ -12,9 +12,9 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
-import type * as $Enums from "../enums.ts"
-import type * as Prisma from "../internal/prismaNamespace.ts"
+import { specificExports } from "@prisma/client/runtime/library"
+import { specificExports } from "../enums.ts"
+import { specificExports } from "../internal/prismaNamespace.ts"
 
 /**
  * Model Wallet
@@ -766,7 +766,7 @@ export interface WalletDelegate<ExtArgs extends runtime.Types.Extensions.Interna
 
   /**
    * Find the first Wallet that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {WalletFindFirstArgs} args - Arguments to find a Wallet
    * @data
@@ -782,7 +782,7 @@ export interface WalletDelegate<ExtArgs extends runtime.Types.Extensions.Interna
   /**
    * Find the first Wallet that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {WalletFindFirstOrThrowArgs} args - Arguments to find a Wallet
    * @data
@@ -797,7 +797,7 @@ export interface WalletDelegate<ExtArgs extends runtime.Types.Extensions.Interna
 
   /**
    * Find zero or more Wallets that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {WalletFindManyArgs} args - Arguments to filter and select certain fields only.
    * @data
@@ -859,7 +859,7 @@ export interface WalletDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -912,7 +912,7 @@ export interface WalletDelegate<ExtArgs extends runtime.Types.Extensions.Interna
 
   /**
    * Update zero or more Wallets.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {WalletUpdateManyArgs} args - Arguments to update one or more rows.
    * @data
@@ -953,7 +953,7 @@ export interface WalletDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -980,7 +980,7 @@ export interface WalletDelegate<ExtArgs extends runtime.Types.Extensions.Interna
 
   /**
    * Count the number of Wallets.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {WalletCountArgs} args - Arguments to filter Wallets to count.
    * @data
@@ -1003,7 +1003,7 @@ export interface WalletDelegate<ExtArgs extends runtime.Types.Extensions.Interna
 
   /**
    * Allows you to perform aggregations operations on a Wallet.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {WalletAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @data
@@ -1029,7 +1029,7 @@ export interface WalletDelegate<ExtArgs extends runtime.Types.Extensions.Interna
 
   /**
    * Group by Wallet.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {WalletGroupByArgs} args - Group by arguments.
    * @data

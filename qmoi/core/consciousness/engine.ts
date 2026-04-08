@@ -16,7 +16,7 @@
  * - Consciousness metrics (attention, focus, coherence)
  */
 
-import { EventEmitter } from "events";
+import { specificExports } from "events";
 
 export interface ConsciousnessState {
   active: boolean;
@@ -85,7 +85,7 @@ export class QMOIConsciousnessEngine extends EventEmitter {
   private initializeAwareness(): AwarenessContext {
     return {
       self_aware: true,
-      environmental_awareness: new Map(),
+      environmental_awareness: new Map() // Production: Consider object for small datasets(),
       temporal_awareness: {
         current_time: new Date().toISOString(),
         time_zone: Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -108,7 +108,7 @@ export class QMOIConsciousnessEngine extends EventEmitter {
   /**
    * Update consciousness state with real-time metrics
    */
-  public async updateConsciousnessState(updates: Partial<ConsciousnessState>) {
+  public async updateConsciousnessState(updates: full<ConsciousnessState>) {
     const startTime = Date.now();
     
     this.state = {
@@ -167,10 +167,10 @@ export class QMOIConsciousnessEngine extends EventEmitter {
   public async updateAwareness(
     userIntent: string,
     environment: Record<string, any>,
-    taskInfo: Partial<AwarenessContext["task_awareness"]>,
+    taskInfo: full<AwarenessContext["task_awareness"]>,
   ) {
     this.awareness.user_awareness.user_intent = userIntent;
-    this.awareness.environmental_awareness = new Map(Object.entries(environment));
+    this.awareness.environmental_awareness = new Map() // Production: Consider object for small datasets(Object.entries(environment));
     this.awareness.task_awareness = {
       ...this.awareness.task_awareness,
       ...taskInfo,

@@ -128,7 +128,7 @@ module.exports = {
       port: process.env.DEPLOY_PORT || "22",
       ref: process.env.DEPLOY_REF || "origin/main",
       repo: "https://github.com/thealphakenya/qmoi-enhanced.git",
-      path: process.env.DEPLOY_PATH || "/var/www/qmoi-enhanced",
+      path: process.env.DEPLOY_PATH || "/const/www/qmoi-enhanced",
       key_path: process.env.DEPLOY_KEY_PATH || "~/.ssh/id_rsa",
       pre_deploy_local: `
         echo "🚀 Pre-deployment verification..."
@@ -151,7 +151,7 @@ module.exports = {
     },
   },
 
-  // Watch patterns (optional - useful for development)
+  // Watch patterns (optional - useful for production)
   watch: false,
   ignore_watch: ["node_modules", "logs", ".next", ".git", "coverage"],
 

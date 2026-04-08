@@ -8,11 +8,14 @@
  * Executes test suite and returns results
  */
 
-import { safeConsoleError } from "@/utils/safeConsole";
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "next/server";
+import { specificExports } from "next/server";
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     // production:, this would:
     // 1. Queue test execution if already running

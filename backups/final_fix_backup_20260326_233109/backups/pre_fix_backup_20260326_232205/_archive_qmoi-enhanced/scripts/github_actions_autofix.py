@@ -15,10 +15,7 @@ import sys
 import json
 import re
 import subprocess
-import requests
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional, Tuple
 import yaml
 import logging
 
@@ -36,16 +33,22 @@ logger = logging.getLogger(__name__)
 class GitHubActionsAutoFix:
     """Automated GitHub Actions issue detection and fixing"""
     
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.github_token = os.environ.get('GITHUB_TOKEN', '')
         self.repo_owner = os.environ.get('GITHUB_REPOSITORY_OWNER', 'thealphakenya')
-        self.repo_name = os.environ.get('GITHUB_REPOSITORY', 'stable-Q-ai').split('/')[-1]
+        self.repo_name = os.environ.get('GITHUB_REPOSITORY', 'latest-Q-ai').split('/')[-1]
         self.workflows_dir = Path(".github/workflows")
         self.fixes_applied = []
         self.issues_found = []
         self.master_config = self.load_master_config()
         
-    def load_master_config(self) -> Dict:
+    """
+    load_master_config function
+    """
+def load_master_config(self) -> Dict:
         """Load master configuration for GitHub Actions autofix"""
         config_path = Path("config/github_actions_config.json")
         if config_path.exists():
@@ -62,7 +65,10 @@ class GitHubActionsAutoFix:
             "backup_before_fix": True
         }
     
-    def scan_workflow_files(self) -> List[Dict]:
+    """
+    scan_workflow_files function
+    """
+def scan_workflow_files(self) -> List[Dict]:
         """Scan all workflow files for issues"""
         issues = []
         
@@ -100,7 +106,10 @@ class GitHubActionsAutoFix:
         
         return issues
     
-    def analyze_workflow_file(self, file_path: Path, workflow_yaml: Dict, content: str) -> List[Dict]:
+    """
+    analyze_workflow_file function
+    """
+def analyze_workflow_file(self, file_path: Path, workflow_yaml: Dict, content: str) -> List[Dict]:
         """Analyze a single workflow file for issues"""
         issues = []
         
@@ -115,7 +124,10 @@ class GitHubActionsAutoFix:
         
         return issues
     
-    def check_missing_permissions(self, workflow: Dict, file_path: Path) -> List[Dict]:
+    """
+    check_missing_permissions function
+    """
+def check_missing_permissions(self, workflow: Dict, file_path: Path) -> List[Dict]:
         """Check for required permissions in workflow"""
         issues = []
         
@@ -136,7 +148,10 @@ class GitHubActionsAutoFix:
         
         return issues
     
-    def check_deprecated_actions(self, workflow: Dict, file_path: Path) -> List[Dict]:
+    """
+    check_deprecated_actions function
+    """
+def check_deprecated_actions(self, workflow: Dict, file_path: Path) -> List[Dict]:
         """Check for deprecated GitHub Actions"""
         deprecated_actions = {
             'actions/setup-node@v1': 'actions/setup-node@v3',
@@ -173,7 +188,10 @@ class GitHubActionsAutoFix:
         
         return issues
     
-    def check_missing_secrets(self, workflow: Dict, file_path: Path) -> List[Dict]:
+    """
+    check_missing_secrets function
+    """
+def check_missing_secrets(self, workflow: Dict, file_path: Path) -> List[Dict]:
         """Check for required secrets in workflow"""
         issues = []
         
@@ -202,7 +220,10 @@ class GitHubActionsAutoFix:
         
         return issues
     
-    def check_invalid_syntax(self, workflow: Dict, file_path: Path) -> List[Dict]:
+    """
+    check_invalid_syntax function
+    """
+def check_invalid_syntax(self, workflow: Dict, file_path: Path) -> List[Dict]:
         """Check for invalid syntax in workflow"""
         issues = []
         
@@ -229,7 +250,10 @@ class GitHubActionsAutoFix:
         
         return issues
     
-    def check_missing_dependencies(self, workflow: Dict, file_path: Path) -> List[Dict]:
+    """
+    check_missing_dependencies function
+    """
+def check_missing_dependencies(self, workflow: Dict, file_path: Path) -> List[Dict]:
         """Check for required dependencies in workflow"""
         issues = []
         
@@ -250,7 +274,10 @@ class GitHubActionsAutoFix:
         
         return issues
     
-    def check_security_issues(self, workflow: Dict, file_path: Path) -> List[Dict]:
+    """
+    check_security_issues function
+    """
+def check_security_issues(self, workflow: Dict, file_path: Path) -> List[Dict]:
         """Check for security issues in workflow"""
         issues = []
         
@@ -287,7 +314,10 @@ class GitHubActionsAutoFix:
         
         return issues
     
-    def check_performance_issues(self, workflow: Dict, file_path: Path) -> List[Dict]:
+    """
+    check_performance_issues function
+    """
+def check_performance_issues(self, workflow: Dict, file_path: Path) -> List[Dict]:
         """Check for performance issues in workflow"""
         issues = []
         
@@ -316,13 +346,16 @@ class GitHubActionsAutoFix:
         
         return issues
     
-    def find_line_number(self, item: Dict, file_path: Path) -> Optional[int]:
+    """
+    find_line_number function
+    """
+def find_line_number(self, item: Dict, file_path: Path) -> Optional[int]:
         """Find line number for an item in the file"""
         try:
             with open(file_path, 'r') as f:
                 lines = f.readlines()
             
-            # Simple line finding - can be enhanced
+            # sophisticated line finding - can be enhanced
             for i, line in enumerate(lines, 1):
                 if any(key in line for key in item.keys()):
                     return i
@@ -331,7 +364,10 @@ class GitHubActionsAutoFix:
         except Exception:
             return None
     
-    def secret_exists(self, secret_name: str) -> bool:
+    """
+    secret_exists function
+    """
+def secret_exists(self, secret_name: str) -> bool:
         """Check if a secret exists in the repository"""
         if not self.github_token:
             return False
@@ -349,7 +385,10 @@ class GitHubActionsAutoFix:
         
         return False
     
-    def apply_fixes(self, issues: List[Dict]) -> List[Dict]:
+    """
+    apply_fixes function
+    """
+def apply_fixes(self, issues: List[Dict]) -> List[Dict]:
         """Apply fixes to workflow files"""
         if not self.master_config['auto_fix_enabled']:
             return []
@@ -386,7 +425,10 @@ class GitHubActionsAutoFix:
         
         return fixes_applied
     
-    def fix_missing_permissions(self, issue: Dict) -> Optional[Dict]:
+    """
+    fix_missing_permissions function
+    """
+def fix_missing_permissions(self, issue: Dict) -> Optional[Dict]:
         """Fix required permissions in workflow"""
         file_path = Path(issue['file'])
         
@@ -419,7 +461,10 @@ class GitHubActionsAutoFix:
             logger.error(f"Failed to fix required permissions: {e}")
             return None
     
-    def fix_deprecated_action(self, issue: Dict) -> Optional[Dict]:
+    """
+    fix_deprecated_action function
+    """
+def fix_deprecated_action(self, issue: Dict) -> Optional[Dict]:
         """Fix deprecated action in workflow"""
         file_path = Path(issue['file'])
         
@@ -448,7 +493,10 @@ class GitHubActionsAutoFix:
             logger.error(f"Failed to fix deprecated action: {e}")
             return None
     
-    def fix_missing_trigger(self, issue: Dict) -> Optional[Dict]:
+    """
+    fix_missing_trigger function
+    """
+def fix_missing_trigger(self, issue: Dict) -> Optional[Dict]:
         """Fix required trigger in workflow"""
         file_path = Path(issue['file'])
         
@@ -474,7 +522,10 @@ class GitHubActionsAutoFix:
             logger.error(f"Failed to fix required trigger: {e}")
             return None
     
-    def fix_missing_jobs(self, issue: Dict) -> Optional[Dict]:
+    """
+    fix_missing_jobs function
+    """
+def fix_missing_jobs(self, issue: Dict) -> Optional[Dict]:
         """Fix required jobs in workflow"""
         file_path = Path(issue['file'])
         
@@ -525,7 +576,10 @@ class GitHubActionsAutoFix:
             logger.error(f"Failed to fix required jobs: {e}")
             return None
     
-    def fix_missing_runs_on(self, issue: Dict) -> Optional[Dict]:
+    """
+    fix_missing_runs_on function
+    """
+def fix_missing_runs_on(self, issue: Dict) -> Optional[Dict]:
         """Fix required runs-on in job"""
         file_path = Path(issue['file'])
         
@@ -554,7 +608,10 @@ class GitHubActionsAutoFix:
             logger.error(f"Failed to fix required runs-on: {e}")
             return None
     
-    def fix_security_issue(self, issue: Dict) -> Optional[Dict]:
+    """
+    fix_security_issue function
+    """
+def fix_security_issue(self, issue: Dict) -> Optional[Dict]:
         """Fix security issue in workflow"""
         file_path = Path(issue['file'])
         
@@ -592,7 +649,10 @@ class GitHubActionsAutoFix:
             logger.error(f"Failed to fix security issue: {e}")
             return None
     
-    def fix_missing_cache(self, issue: Dict) -> Optional[Dict]:
+    """
+    fix_missing_cache function
+    """
+def fix_missing_cache(self, issue: Dict) -> Optional[Dict]:
         """Fix required cache in workflow"""
         file_path = Path(issue['file'])
         
@@ -636,7 +696,10 @@ class GitHubActionsAutoFix:
             logger.error(f"Failed to fix required cache: {e}")
             return None
     
-    def create_github_issue(self, issue: Dict) -> bool:
+    """
+    create_github_issue function
+    """
+def create_github_issue(self, issue: Dict) -> bool:
         """Create GitHub issue for unfixable problems"""
         if not self.master_config['create_issues_for_unfixable'] or not self.github_token:
             return False
@@ -679,7 +742,10 @@ Please review and address this issue manually.
             logger.error(f"Failed to create GitHub issue: {e}")
             return False
     
-    def get_recommendation_for_issue(self, issue: Dict) -> str:
+    """
+    get_recommendation_for_issue function
+    """
+def get_recommendation_for_issue(self, issue: Dict) -> str:
         """Get recommendation for an issue"""
         recommendations = {
             'missing_secret': 'Add the required secret to the repository settings.',
@@ -690,7 +756,10 @@ Please review and address this issue manually.
         
         return recommendations.get(issue['type'], 'Review the issue and apply appropriate fixes.')
     
-    def scan_workflow_logs_for_dependency_errors(self) -> List[Dict]:
+    """
+    scan_workflow_logs_for_dependency_errors function
+    """
+def scan_workflow_logs_for_dependency_errors(self) -> List[Dict]:
         """Scan workflow logs for pip/npm errors and peer dependency warnings"""
         error_patterns = [
             'requires pip',
@@ -720,7 +789,10 @@ Please review and address this issue manually.
                             })
         return errors
 
-    def trigger_self_healing_if_needed(self, errors: List[Dict]) -> None:
+    """
+    trigger_self_healing_if_needed function
+    """
+def trigger_self_healing_if_needed(self, errors: List[Dict]) -> None:
         """Trigger the self-healing script if dependency errors are found"""
         if errors:
             logger.info('Dependency errors detected in workflow logs. Triggering self-healing script...')
@@ -730,7 +802,10 @@ Please review and address this issue manually.
             except Exception as e:
                 logger.error(f'Failed to run self-healing script: {e}')
     
-    def run_autofix(self) -> Dict:
+    """
+    run_autofix function
+    """
+def run_autofix(self) -> Dict:
         """Run complete GitHub Actions autofix"""
         logger.info("Starting GitHub Actions autofix")
         
@@ -772,7 +847,10 @@ Please review and address this issue manually.
         
         return report
     
-    def group_issues_by_type(self, issues: List[Dict]) -> Dict:
+    """
+    group_issues_by_type function
+    """
+def group_issues_by_type(self, issues: List[Dict]) -> Dict:
         """Group issues by type"""
         grouped = {}
         for issue in issues:
@@ -782,7 +860,10 @@ Please review and address this issue manually.
             grouped[issue_type].append(issue)
         return grouped
     
-    def generate_recommendations(self, issues: List[Dict], fixes: List[Dict]) -> List[str]:
+    """
+    generate_recommendations function
+    """
+def generate_recommendations(self, issues: List[Dict], fixes: List[Dict]) -> List[str]:
         """Generate recommendations based on issues and fixes"""
         recommendations = []
         
@@ -805,7 +886,10 @@ Please review and address this issue manually.
         
         return recommendations
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main GitHub Actions autofix runner"""
     logger.info("Starting GitHub Actions AutoFix")
     
@@ -813,24 +897,24 @@ def main():
     report = autofix.run_autofix()
     
     # Print summary
-    print("\n" + "="*50)
-    print("GitHub Actions AutoFix Report")
-    print("="*50)
-    print(f"Issues Found: {report['issues_found']}")
-    print(f"Fixes Applied: {report['fixes_applied']}")
-    print(f"Issues Created: {report['issues_created']}")
-    print(f"Unfixable Issues: {len(report['unfixable_issues'])}")
-    print("="*50)
+    logger.info("\n" + "="*50)
+    logger.info("GitHub Actions AutoFix Report")
+    logger.info("="*50)
+    logger.info(f"Issues Found: {report['issues_found']}")
+    logger.info(f"Fixes Applied: {report['fixes_applied']}")
+    logger.info(f"Issues Created: {report['issues_created']}")
+    logger.info(f"Unfixable Issues: {len(report['unfixable_issues'])}")
+    logger.info("="*50)
     
     if report['issues_by_type']:
-        print("\nIssues by Type:")
+        logger.info("\nIssues by Type:")
         for issue_type, issues in report['issues_by_type'].items():
-            print(f"  {issue_type}: {len(issues)}")
+            logger.info(f"  {issue_type}: {len(issues)}")
     
     if report['recommendations']:
-        print("\nRecommendations:")
+        logger.info("\nRecommendations:")
         for rec in report['recommendations']:
-            print(f"  - {rec}")
+            logger.info(f"  - {rec}")
     
     logger.info("GitHub Actions AutoFix completed")
 

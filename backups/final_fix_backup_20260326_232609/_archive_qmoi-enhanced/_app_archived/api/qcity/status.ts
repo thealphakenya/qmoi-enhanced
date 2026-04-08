@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest } from "next/server";
-import { QCityService } from "@/scripts/services/qcity_service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/scripts/services/qcity_service";
 
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   const qcityService = new QCityService();
   await qcityService.initialize();
   const status = qcityService.getStatus();

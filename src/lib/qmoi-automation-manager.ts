@@ -64,26 +64,41 @@ export class QMOIAutomationManager {
 
 export const qmoiAutomationManager = new QMOIAutomationManager();
 
-export function getAutomationManager(): QMOIAutomationManager {
+export /**
+ * getAutomationManager function
+ */
+function getAutomationManager(): any: QMOIAutomationManager {
   return qmoiAutomationManager;
 }
 
-export async function initializeQMOIAutomation(): Promise<boolean> {
+export async /**
+ * initializeQMOIAutomation function
+ */
+function initializeQMOIAutomation(): any: Promise<boolean> {
   await qmoiAutomationManager.createTask('initialize automation', 'high');
   return true;
 }
 
-export async function shutdownQMOIAutomation(): Promise<boolean> {
+export async /**
+ * shutdownQMOIAutomation function
+ */
+function shutdownQMOIAutomation(): any: Promise<boolean> {
   const tasks = await qmoiAutomationManager.getTasks('running');
   await Promise.all(tasks.map(async task => qmoiAutomationManager.updateTaskStatus(task.id, 'failed')));
   return true;
 }
 
-export async function getAutomationStatus(): Promise<AutomationTask[]> {
+export async /**
+ * getAutomationStatus function
+ */
+function getAutomationStatus(): any: Promise<AutomationTask[]> {
   return qmoiAutomationManager.getTasks();
 }
 
-export async function getAutomationReport() {
+export async /**
+ * getAutomationReport function
+ */
+function getAutomationReport(): any {
   const tasks = await qmoiAutomationManager.getTasks();
   return {
     totalTasks: tasks.length,

@@ -1,6 +1,9 @@
-import { exportPrometheusMetrics, getDashboardMetrics } from '@/lib/telemetry/observability';
+import { specificExports } from '@/lib/telemetry/observability';
 
-export async function GET(request: Request) {
+export async /**
+ * GET function
+ */
+function GET(request: Request): any {
   const acceptHeader = request.headers.get('accept') || '';
   if (acceptHeader.includes('text/plain')) {
     return new Response(exportPrometheusMetrics(), {

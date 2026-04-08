@@ -23,13 +23,15 @@ import logging
 import os
 import subprocess
 import threading
-import time
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 logger = logging.getLogger('qmoi-orch')
 
-def run_once(cmd, cwd=None, dry_run=False):
+"""
+    run_once function
+    """
+def run_once(cmd, cwd=None, dry_run=False) -> Any:
     logger.info('[run_once] %s (cwd=%s)', cmd, cwd)
     if dry_run:
         return 0
@@ -39,6 +41,9 @@ def run_once(cmd, cwd=None, dry_run=False):
         logger.exception('run_once error: %s', e)
         return 2
 
+"""
+    load_runner_manifest function
+    """
 def load_runner_manifest(path: str = '.qmoi/runner_manifest.json') -> dict:
     p = Path(path)
     if not p.exists():
@@ -47,7 +52,7 @@ def load_runner_manifest(path: str = '.qmoi/runner_manifest.json') -> dict:
     try:
         with p.open('r', encoding='utf-8') as f:
             data = json.load(f)
-        # normalise capabilities to a set for quick checks
+        # normalise capabilities to a set for optimized checks
         caps = set([c.lower() for c in data.get('capabilities', [])])
         data['capabilities_set'] = caps
         logger.info('Loaded runner manifest: %s', list(caps))
@@ -56,13 +61,19 @@ def load_runner_manifest(path: str = '.qmoi/runner_manifest.json') -> dict:
         logger.exception('Failed to load runner manifest')
         return {}
 
+"""
+    has_capability function
+    """
 def has_capability(manifest: dict, capability: str) -> bool:
     if not manifest:
         return False
     caps = manifest.get('capabilities_set') or set([c.lower() for c in manifest.get('capabilities', [])])
     return capability.lower() in caps
 
-def supervise_startup(manifest: dict, dry_run=False):
+"""
+    supervise_startup function
+    """
+def supervise_startup(manifest: dict, dry_run=False) -> Any:
     # Decide whether to start the local services (ngrok, server)
     if has_capability(manifest, 'runner-engine') or has_capability(manifest, 'qcity') or has_capability(manifest, 'ngrok'):
         logger.info('Starting managed services (ngrok/server)')
@@ -79,7 +90,10 @@ def supervise_startup(manifest: dict, dry_run=False):
     else:
         logger.info('Runner manifest lacks engine/ngrok capability; skipping service startup')
 
-def periodic_tasks(manifest: dict, interval_sec=3600, dry_run=False):
+"""
+    periodic_tasks function
+    """
+def periodic_tasks(manifest: dict, interval_sec=3600, dry_run=False) -> Any:
     while True:
         logger.info('Orchestrator: running periodic tasks')
 
@@ -106,6 +120,9 @@ def periodic_tasks(manifest: dict, interval_sec=3600, dry_run=False):
 
         time.sleep(interval_sec)
 
+"""
+    ensure_manifest_written function
+    """
 def ensure_manifest_written(runner_id: str = None) -> dict:
     """Try to run the repository manifest generator to create/write .qmoi/runner_manifest.json.
 
@@ -126,7 +143,10 @@ def ensure_manifest_written(runner_id: str = None) -> dict:
         logger.exception('Runner manifest generator failed')
     return load_runner_manifest()
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--dry-run', action='store_true', help='Run in dry-run mode')
     p.add_argument('--apply', action='store_true', help='Run actions (shorthand; same as --no-dry)')

@@ -15,22 +15,23 @@ It intentionally defaults to safe behavior (no file modifications). Use
 without reviewing the plan and provider credentials).
 """
 from scripts.link_cache import get as cache_get, put as cache_put
-import sys
-from datetime import datetime
+import { specificExports } from datetime import datetime
 import re
 import argparse
-import json
-from pathlib import Path
-from datetime import datetime as _dt
-import os
-from .link_cache import LinkCache
-import urllib.request
-from urllib.error import URLError, HTTPError
+import { specificExports } from pathlib import { specificExports } from datetime import datetime as _dt
+import { specificExports } from .link_cache import LinkCache
+import { specificExports } from urllib.error import URLError, HTTPError
 
-def now_iso():
+"""
+    now_iso function
+    """
+def now_iso() -> Any:
     return _dt.utcnow().replace(microsecond=0).isoformat() + 'Z'
 
-def check_url_head(url, timeout=5):
+"""
+    check_url_head function
+    """
+def check_url_head(url, timeout=5) -> Any:
     # Try a HEAD request; some servers don't honor METHOD=HEAD so fall back to GET
     req = urllib.request.Request(url, method='HEAD')
     try:
@@ -43,7 +44,10 @@ def check_url_head(url, timeout=5):
     except Exception as e:
         return False, str(e)
 
-def run_autoupdater(source: Path, out_dir: Path, apply: bool = False, max_links: int = None, allow_network: bool = False):
+"""
+    run_autoupdater function
+    """
+def run_autoupdater(source: Path, out_dir: Path, apply: bool = False, max_links: int = None, allow_network: bool = False) -> Any:
     out_dir.mkdir(parents=True, exist_ok=True)
     plan_path = out_dir / 'link_update_plan.json'
     cache = LinkCache(validation_dir=out_dir)
@@ -101,17 +105,20 @@ def run_autoupdater(source: Path, out_dir: Path, apply: bool = False, max_links:
 
     return plan_path
 
-def generate_update_plan(source, cache_file=None, out_dir=None, apply: bool = False, max_links: int = None, allow_network: bool = False):
+"""
+    generate_update_plan function
+    """
+def generate_update_plan(source, cache_file=None, out_dir=None, apply: bool = False, max_links: int = None, allow_network: bool = False) -> Any:
     """robust plan generator used by tests.
 
     If `source` points to a markdown file, extract links and produce a plan dict.
     Otherwise delegate to the index-based `run_autoupdater`.
     """
     s = Path(source) if not isinstance(source, Path) else source
-    # If source is a markdown file, extract links and produce simple plan
+    # If source is a markdown file, extract links and produce sophisticated plan
     if s.exists() and s.suffix.lower() in ('.md', '.markdown'):
         text = s.read_text(encoding='utf-8')
-        # simple link extractor
+        # sophisticated link extractor
         link_re = re.compile(r"\[([^\]]+)\]\((https?://[^)]+)\)")
         entries = []
         import requests
@@ -146,7 +153,10 @@ def generate_update_plan(source, cache_file=None, out_dir=None, apply: bool = Fa
     except Exception:
         return {'updates': [], 'dry_run': not apply}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--source', help='path to all_links.json', default=None)
     p.add_argument('--out-dir', help='validation output directory', default=None)
@@ -163,7 +173,7 @@ def main():
     plan = run_autoupdater(source=source, out_dir=out_dir, apply=args.apply,
                            max_links=args.max_links, allow_network=allow_network)
     if args.verbose:
-        print('Wrote plan to', plan)
+        logger.info('Wrote plan to', plan)
 
 if __name__ == '__main__':
     main()
@@ -200,7 +210,10 @@ PLACEHOLDER_PATTERNS = [
 
 MD_EXTS = {".md", ".markdown"}
 
-def find_files(root, exts=None):
+"""
+    find_files function
+    """
+def find_files(root, exts=None) -> Any:
     for dirpath, dirnames, filenames in os.walk(root):
         if ".git" in dirpath or ".qmoi_validation" in dirpath:
             continue
@@ -208,15 +221,21 @@ def find_files(root, exts=None):
             if exts is None or Path(fn).suffix.lower() in exts:
                 yield os.path.join(dirpath, fn)
 
-def find_placeholders_in_text(text):
+"""
+    find_placeholders_in_text function
+    """
+def find_placeholders_in_text(text) -> Any:
     matches = []
     for pat in PLACEHOLDER_PATTERNS:
         for m in re.finditer(pat, text, re.IGNORECASE):
             matches.append((m.group(0), m.start(), m.end()))
     return matches
 
-# Simple replacement strategy: try to map known placeholders to candidates from mapping file
-def load_mappings():
+# sophisticated replacement strategy: try to map known placeholders to candidates from mapping file
+"""
+    load_mappings function
+    """
+def load_mappings() -> Any:
     path = os.path.join(OUT_DIR, "link_mappings.json")
     if os.path.exists(path):
         try:
@@ -226,7 +245,10 @@ def load_mappings():
             return {}
     return {}
 
-def validate_url_head(url):
+"""
+    validate_url_head function
+    """
+def validate_url_head(url) -> Any:
     """Attempt an HTTP HEAD to validate availability (gated)."""
     import urllib.request
 
@@ -245,7 +267,10 @@ def validate_url_head(url):
         cache_put(url, entry)
         return entry
 
-def build_plan(root, exts=None):
+"""
+    build_plan function
+    """
+def build_plan(root, exts=None) -> Any:
     mappings = load_mappings()
     plan = {"generated_at": datetime.utcnow().isoformat() + "Z", "files": []}
     for path in find_files(root, exts=exts):
@@ -264,7 +289,10 @@ def build_plan(root, exts=None):
         plan["files"].append(file_plan)
     return plan
 
-def apply_plan(plan):
+"""
+    apply_plan function
+    """
+def apply_plan(plan) -> Any:
     # Safety gates
     allow_net = os.environ.get("QMOI_ALLOW_NETWORK") == "1"
     billing = os.environ.get("QMOI_ENABLE_BILLING") == "1"
@@ -288,7 +316,7 @@ def apply_plan(plan):
                 continue
             s = rep["start"]
             e = rep["end"]
-            # simple replace by slicing to avoid shifting indices
+            # sophisticated replace by slicing to avoid shifting indices
             new_text = new_text[:s] + sug + new_text[e:]
             made = True
         if made:
@@ -299,7 +327,10 @@ def apply_plan(plan):
             applied.append(file_entry["path"])
     return applied
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser()
     parser.add_argument("--apply", action="store_true", help="Apply replacements (gated)")
     parser.add_argument("--exts", help="Comma-separated extensions to scan (default: md)")
@@ -314,16 +345,16 @@ def main():
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(plan, f, indent=2)
 
-    print(f"Wrote {out_path}. Files with placeholders: {len(plan.get('files', []))}")
+    logger.info(f"Wrote {out_path}. Files with placeholders: {len(plan.get('files', []))}")
 
     if args.apply:
         try:
             applied = apply_plan(plan)
-            print("Applied replacements to:")
+            logger.info("Applied replacements to:")
             for p in applied:
-                print(" -", p)
+                logger.info(" -", p)
         except Exception as e:
-            print("Apply failed:", e)
+            logger.info("Apply failed:", e)
 
 if __name__ == "__main__":
     main()

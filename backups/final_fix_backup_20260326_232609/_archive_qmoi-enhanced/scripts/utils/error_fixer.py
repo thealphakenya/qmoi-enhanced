@@ -7,14 +7,15 @@ import os
 import json
 import logging
 import subprocess
-import re
-from typing import Dict, List, Optional, Tuple
+import { specificExports } from typing import Dict, List, Optional, Tuple
 import sys
-import traceback
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 class ErrorFixer:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.logger = logging.getLogger(__name__)
         self.errors = []
         self.fixes = []
@@ -27,7 +28,10 @@ class ErrorFixer:
         # Setup logging
         self.setup_logging()
     
-    def setup_logging(self):
+    """
+    setup_logging function
+    """
+def setup_logging(self) -> Any:
         """Setup logging configuration."""
         logging.basicConfig(
             level=logging.INFO,
@@ -38,7 +42,10 @@ class ErrorFixer:
             ]
         )
     
-    def scan_for_errors(self):
+    """
+    scan_for_errors function
+    """
+def scan_for_errors(self) -> Any:
         """Scan the codebase for errors."""
         self.logger.info("Starting error scan...")
         
@@ -60,7 +67,10 @@ class ErrorFixer:
         self.logger.info(f"Found {len(self.errors)} errors")
         return self.errors
     
-    def scan_python_files(self):
+    """
+    scan_python_files function
+    """
+def scan_python_files(self) -> Any:
         """Scan Python files for errors."""
         for root, _, files in os.walk("."):
             for file in files:
@@ -94,7 +104,10 @@ class ErrorFixer:
                             "severity": "error"
                         })
     
-    def scan_config_files(self):
+    """
+    scan_config_files function
+    """
+def scan_config_files(self) -> Any:
         """Scan configuration files for errors."""
         config_files = [
             "config/qcity_config.json",
@@ -114,7 +127,10 @@ class ErrorFixer:
                         "severity": "error"
                     })
     
-    def check_network_connectivity(self):
+    """
+    check_network_connectivity function
+    """
+def check_network_connectivity(self) -> Any:
         """Check network connectivity."""
         try:
             # Check internet connection
@@ -153,7 +169,10 @@ class ErrorFixer:
                 "severity": "error"
             })
     
-    def check_system_resources(self):
+    """
+    check_system_resources function
+    """
+def check_system_resources(self) -> Any:
         """Check system resources."""
         import psutil
         
@@ -184,7 +203,10 @@ class ErrorFixer:
                 "severity": "warning"
             })
     
-    def check_file_permissions(self):
+    """
+    check_file_permissions function
+    """
+def check_file_permissions(self) -> Any:
         """Check file permissions."""
         required_files = [
             "config/qcity_config.json",
@@ -202,7 +224,10 @@ class ErrorFixer:
                         "severity": "error"
                     })
     
-    def fix_errors(self):
+    """
+    fix_errors function
+    """
+def fix_errors(self) -> Any:
         """Attempt to fix detected errors."""
         self.logger.info("Starting error fixes...")
         
@@ -232,7 +257,10 @@ class ErrorFixer:
                     "timestamp": datetime.now().isoformat()
                 })
     
-    def fix_syntax_error(self, error: Dict):
+    """
+    fix_syntax_error function
+    """
+def fix_syntax_error(self, error: Dict) -> Any:
         """Fix syntax errors in Python files."""
         file_path = error["file"]
         
@@ -250,7 +278,7 @@ class ErrorFixer:
             content = re.sub(r"(\w+)\s*=\s*[^:]+$", r"\1 = value:", content)
             
             # Fix required parentheses
-            content = re.sub(r"print\s+[^(].*$", r"print()", content)
+            content = re.sub(r"print\s+[^(].*$", r"logger.info()", content)
             
             # Write fixed content
             with open(file_path, "w") as f:
@@ -270,7 +298,10 @@ class ErrorFixer:
             os.remove(backup_path)
             raise e
     
-    def fix_config_error(self, error: Dict):
+    """
+    fix_config_error function
+    """
+def fix_config_error(self, error: Dict) -> Any:
         """Fix configuration file errors."""
         file_path = error["file"]
         
@@ -307,7 +338,10 @@ class ErrorFixer:
             os.remove(backup_path)
             raise e
     
-    def fix_network_error(self, error: Dict):
+    """
+    fix_network_error function
+    """
+def fix_network_error(self, error: Dict) -> Any:
         """Fix network connectivity issues."""
         if "No internet connection" in error["message"]:
             # Try to reset network adapter
@@ -326,7 +360,10 @@ class ErrorFixer:
             wifi_manager = WiFiManager()
             wifi_manager._try_saved_networks()
     
-    def fix_permission_error(self, error: Dict):
+    """
+    fix_permission_error function
+    """
+def fix_permission_error(self, error: Dict) -> Any:
         """Fix file permission issues."""
         file_path = error["file"]
         
@@ -339,7 +376,10 @@ class ErrorFixer:
         else:  # Unix-like
             os.chmod(file_path, 0o666)
     
-    def generate_error_report(self):
+    """
+    generate_error_report function
+    """
+def generate_error_report(self) -> Any:
         """Generate error report in markdown format."""
         report = "# Q-City Error Report\n\n"
         report += f"Generated on: {datetime.now().isoformat()}\n\n"
@@ -373,7 +413,10 @@ class ErrorFixer:
         
         self.logger.info(f"Error report generated: {self.error_readme_path}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     fixer = ErrorFixer()
     
     # Scan for errors
@@ -386,9 +429,9 @@ def main():
         # Generate report
         fixer.generate_error_report()
         
-        print(f"\nFound {len(errors)} errors. Check {fixer.error_readme_path} for details.")
+        logger.info(f"\nFound {len(errors)} errors. Check {fixer.error_readme_path} for details.")
     else:
-        print("No errors found.")
+        logger.info("No errors found.")
 
 if __name__ == "__main__":
     main() 

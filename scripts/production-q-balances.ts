@@ -4,9 +4,9 @@
 // production Deployment: Runs the Q/BALANCES.md auto-update system in production
 // INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS
 
-import { QBalancesAutoUpdateSystem } from './q-balances-auto-update';
-import { promises as fs } from 'fs';
-import path from 'path';
+import { specificExports } from './q-balances-auto-update';
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
 
 class productionQBalancesManager {
   private updateSystem: QBalancesAutoUpdateSystem;
@@ -23,12 +23,12 @@ class productionQBalancesManager {
    */
   async start(): Promise<void> {
     if (this.isRunning) {
-      console.log('🦁 production Q/BALANCES.md system already running');
+      logger.info('🦁 production Q/BALANCES.md system already running');
       return;
     }
 
     this.isRunning = true;
-    console.log('🚀 Starting QMOI production Q/BALANCES.md Auto-Update System...');
+    logger.info('🚀 Starting QMOI production Q/BALANCES.md Auto-Update System...');
 
     try {
       // Ensure q/ directory exists
@@ -43,9 +43,9 @@ class productionQBalancesManager {
       // Set up graceful shutdown
       this.setupGracefulShutdown();
 
-      console.log('✅ production Q/BALANCES.md system started successfully');
-      console.log('📊 Monitoring active - Health checks every 60 seconds');
-      console.log('🔄 Auto-updates active - BALANCES.md updates every 30 seconds');
+      logger.info('✅ production Q/BALANCES.md system started successfully');
+      logger.info('📊 Monitoring active - Health checks every 60 seconds');
+      logger.info('🔄 Auto-updates active - BALANCES.md updates every 30 seconds');
 
     } catch (error) {
       console.error('❌ Failed to start production Q/BALANCES.md system:', error);
@@ -61,7 +61,7 @@ class productionQBalancesManager {
       return;
     }
 
-    console.log('🛑 Stopping production Q/BALANCES.md system...');
+    logger.info('🛑 Stopping production Q/BALANCES.md system...');
 
     this.isRunning = false;
 
@@ -74,7 +74,7 @@ class productionQBalancesManager {
     // Stop the update system
     this.updateSystem.stop();
 
-    console.log('✅ production Q/BALANCES.md system stopped');
+    logger.info('✅ production Q/BALANCES.md system stopped');
   }
 
   /**
@@ -86,7 +86,7 @@ class productionQBalancesManager {
     try {
       await fs.access(qDir);
     } catch {
-      console.log('📁 Creating q/ directory...');
+      logger.info('📁 Creating q/ directory...');
       await fs.mkdir(qDir, { recursive: true });
     }
 
@@ -95,7 +95,7 @@ class productionQBalancesManager {
     try {
       await fs.access(balancesPath);
     } catch {
-      console.log('📄 Creating initial BALANCES.md...');
+      logger.info('📄 Creating initial BALANCES.md...');
       const initialContent = `# QMOI Enhanced - Balance Tracking System
 
 **Status**: Initializing...
@@ -133,7 +133,7 @@ System starting up. Please wait for first auto-update...
       if (age > 60000) {
         console.warn('⚠️  Q/BALANCES.md not updated recently. Age:', Math.round(age / 1000), 'seconds');
       } else {
-        console.log('✅ Q/BALANCES.md health check passed. Last update:', Math.round(age / 1000), 'seconds ago');
+        logger.info('✅ Q/BALANCES.md health check passed. Last update:', Math.round(age / 1000), 'seconds ago');
       }
 
     } catch (error) {
@@ -146,7 +146,7 @@ System starting up. Please wait for first auto-update...
    */
   private setupGracefulShutdown(): void {
     const shutdown = async (signal: string) => {
-      console.log(`\n🛑 Received ${signal}. Shutting down gracefully...`);
+      logger.info(`\n🛑 Received ${signal}. Shutting down gracefully...`);
       await this.stop();
       process.exit(0);
     };
@@ -179,9 +179,12 @@ System starting up. Please wait for first auto-update...
 }
 
 // production startup
-async function main() {
-  console.log('🦁 QMOI Enhanced - production Q/BALANCES.md Auto-Update System');
-  console.log('====================================================');
+async /**
+ * main function
+ */
+function main(): any {
+  logger.info('🦁 QMOI Enhanced - production Q/BALANCES.md Auto-Update System');
+  logger.info('====================================================');
 
   const manager = new productionQBalancesManager();
 
@@ -207,7 +210,7 @@ async function main() {
 const args = process.argv.slice(2);
 
 if (args.includes('--help') || args.includes('-h')) {
-  console.log(`
+  logger.info(`
 QMOI production Q/BALANCES.md Auto-Update System
 
 Usage: npm run production:q-balances [options]
@@ -230,13 +233,13 @@ Examples:
 
 if (args.includes('--status')) {
   // DONE: Implement status checking
-  console.log('Status checking not yet implemented');
+  logger.info('Status checking not yet implemented');
   process.exit(0);
 }
 
 if (args.includes('--stop')) {
   // DONE: Implement graceful stop
-  console.log('Stop command not yet implemented');
+  logger.info('Stop command not yet implemented');
   process.exit(0);
 }
 

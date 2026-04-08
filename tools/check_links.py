@@ -13,11 +13,14 @@ import os
 import runpy
 import sys
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     here = os.path.dirname(__file__)
     target = os.path.join(here, "check_links_clean.py")
     if not os.path.exists(target):
-        print("ERROR: tools/check_links_clean.py not found. Please restore the clean implementation.", file=sys.stderr)
+        logger.info("ERROR: tools/check_links_clean.py not found. Please restore the clean implementation.", file=sys.stderr)
         raise SystemExit(2)
     runpy.run_path(target, run_name="__main__")
 

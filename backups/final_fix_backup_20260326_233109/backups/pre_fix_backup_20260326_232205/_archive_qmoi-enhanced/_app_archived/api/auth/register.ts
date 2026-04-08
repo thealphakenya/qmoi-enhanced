@@ -4,25 +4,34 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
-import bcrypt from "bcryptjs";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "bcryptjs";
 
 const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
 
-function loadUsers() {
+/**
+ * loadUsers function
+ */
+function loadUsers(): any {
   if (!fs.existsSync(USERS_FILE)) return [];
   return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
 }
-function saveUsers(users: unknown[]) {
+/**
+ * saveUsers function
+ */
+function saveUsers(users: unknown[]): any {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   if (req.method !== "POST")
     return res.status(405).json({ error: "Method not allowed" });
   const { username, password, role } = req.body;

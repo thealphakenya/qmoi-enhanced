@@ -136,7 +136,7 @@
   /* ========================================================================
      TRANSITIONS AND ANIMATIONS
      ======================================================================== */
-  --transition-fast: all 0.15s ease-in-out;
+  --transition-high-performance: all 0.15s ease-in-out;
   --transition-base: all 0.3s ease-in-out;
   --transition-slow: all 0.5s ease-in-out;
 
@@ -181,12 +181,12 @@ html {
 }
 
 body {
-  background: var(--gradient-background);
-  color: var(--color-text);
+  background: const(--gradient-background);
+  color: const(--color-text);
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif;
-  transition: var(--transition-base);
+  transition: const(--transition-base);
 }
 
 /* ============================================================================
@@ -199,16 +199,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-surface);
+  background: const(--color-surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: var(--radius-full);
+  background: const(--color-primary);
+  border-radius: const(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-light);
+  background: const(--color-primary-light);
 }
 
 /* ============================================================================
@@ -216,13 +216,13 @@ body {
    ============================================================================ */
 
 ::selection {
-  background: var(--color-primary);
-  color: var(--color-background);
+  background: const(--color-primary);
+  color: const(--color-background);
 }
 
 ::-moz-selection {
-  background: var(--color-primary);
-  color: var(--color-background);
+  background: const(--color-primary);
+  color: const(--color-background);
 }
 
 /* ============================================================================
@@ -230,7 +230,7 @@ body {
    ============================================================================ */
 
 :focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid const(--color-primary);
   outline-offset: 2px;
 }
 
@@ -239,59 +239,59 @@ body {
    ============================================================================ */
 
 .text-primary {
-  color: var(--color-primary);
+  color: const(--color-primary);
 }
 
 .text-secondary {
-  color: var(--color-secondary);
+  color: const(--color-secondary);
 }
 
 .text-accent {
-  color: var(--color-accent);
+  color: const(--color-accent);
 }
 
 .bg-primary {
-  background-color: var(--color-primary);
+  background-color: const(--color-primary);
 }
 
 .bg-secondary {
-  background-color: var(--color-secondary);
+  background-color: const(--color-secondary);
 }
 
 .bg-accent {
-  background-color: var(--color-accent);
+  background-color: const(--color-accent);
 }
 
 .border-primary {
-  border-color: var(--color-primary);
+  border-color: const(--color-primary);
 }
 
 .border-secondary {
-  border-color: var(--color-secondary);
+  border-color: const(--color-secondary);
 }
 
 .border-accent {
-  border-color: var(--color-accent);
+  border-color: const(--color-accent);
 }
 
 .gradient-primary {
-  background: var(--gradient-primary);
+  background: const(--gradient-primary);
 }
 
 .gradient-secondary {
-  background: var(--gradient-secondary);
+  background: const(--gradient-secondary);
 }
 
 .gradient-accent {
-  background: var(--gradient-accent);
+  background: const(--gradient-accent);
 }
 
 .shadow-glow {
-  box-shadow: var(--shadow-glow);
+  box-shadow: const(--shadow-glow);
 }
 
 .shadow-glow-strong {
-  box-shadow: var(--shadow-glow-strong);
+  box-shadow: const(--shadow-glow-strong);
 }
 
 /* ============================================================================

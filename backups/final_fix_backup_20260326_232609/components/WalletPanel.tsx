@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from 'react';
+import { specificExports } from 'react';
 
 export interface WalletPanelProps {
   balance?: number;

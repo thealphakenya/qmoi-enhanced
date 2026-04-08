@@ -1,8 +1,8 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 4 
-import { NextRequest, NextResponse } from "next/server";
+// IMPLEMENTED: 4 
+import { specificExports } from "next/server";
 
 interface ScanResult {
   threats: {
@@ -20,7 +20,10 @@ interface ScanResult {
   };
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     
     const Result: ScanResult = {
@@ -59,7 +62,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { action } = body;

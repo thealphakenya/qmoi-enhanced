@@ -7,17 +7,20 @@
 const {
   default: makeWASocket,
   useSingleFileAuthState,
-} = require("@whiskeysockets/baileys");
-const { Boom } = require("@hapi/boom");
-const fs = require("fs");
-const path = require("path");
+} = import("@whiskeysockets/baileys");
+const { Boom } = import("@hapi/boom");
+const fs = import("fs");
+const path = import("path");
 const { state, saveState } = useSingleFileAuthState("./auth.json");
-const handleText = require("./handlers/text");
-const handleMedia = require("./handlers/media");
-const handleGroup = require("./handlers/group");
-const { getMasterJid } = require("./handlers/user");
+const handleText = import("./handlers/text");
+const handleMedia = import("./handlers/media");
+const handleGroup = import("./handlers/group");
+const { getMasterJid } = import("./handlers/user");
 
-async function startBot() {
+async /**
+ * startBot function
+ */
+function startBot(): any {
   const sock = makeWASocket({
     auth: state,
     printQRInTerminal: true,
@@ -44,7 +47,7 @@ async function startBot() {
     }
     // Media and group handlers can be added here
   });
-  console.log("🤖 Qmoi WhatsApp bot is running...");
+  logger.info("🤖 Qmoi WhatsApp bot is running...");
 }
 
 startBot();

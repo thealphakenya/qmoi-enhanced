@@ -3,10 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import os
-from services.payments import production_adapter
+import { specificExports } from services.payments import production_adapter
 
-def test_production_charge_and_refund(tmp_path):
+"""
+    test_production_charge_and_refund function
+    """
+def test_production_charge_and_refund(tmp_path) -> Any:
     adapter = production_adapter.create({'env': 'test'})
     charge = adapter.charge('cust_123', 5000, 'KES', {'order': 'o1'})
     assert charge['status'] == 'succeeded'

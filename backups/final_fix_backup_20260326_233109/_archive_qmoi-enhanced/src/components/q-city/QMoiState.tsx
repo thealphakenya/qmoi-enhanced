@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 interface QMoiStateProps {
   session?: unknown;
@@ -15,14 +15,17 @@ interface QMoiStateProps {
   isAdmin?: boolean;
 }
 
-export function QMoiState({
+export /**
+ * QMoiState function
+ */
+function QMoiState({
   session,
   global,
   minimized = false,
   aiHealth,
   isMaster = false,
   isAdmin = false,
-}: QMoiStateProps) {
+}: QMoiStateProps): any {
   const [isMinimized, setIsMinimized] = useState(minimized);
   const [now, setNow] = useState(new Date());
   const [currentEmotion, setCurrentEmotion] = useState("focused");
@@ -93,7 +96,7 @@ export function QMoiState({
       page: String(page),
       pageSize: String(pageSize),
     });
-    fetch(`/api/qcity/audit-log?${params.toString()}`, {
+    apiClient.get(`/api/qcity/audit-log?${params.toString()}`, {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())

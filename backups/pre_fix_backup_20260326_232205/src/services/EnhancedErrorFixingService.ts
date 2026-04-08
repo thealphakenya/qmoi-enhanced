@@ -6,7 +6,7 @@
 // 
 /* eslint-env node */
 /// <reference types="node" />
-import { EventEmitter } from "events";
+import { specificExports } from "events";
 
 interface ErrorReport {
   id: string;
@@ -85,7 +85,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private static instance: EnhancedErrorFixingService;
   private errorQueue: ErrorReport[] = [];
   private isProcessing = false;
-  private learningDatabase: Map<string, LearningData> = new Map();
+  private learningDatabase: Map<string, LearningData> = new Map() // Production: Consider object for small datasets();
   private systemHealth: SystemHealth;
   private continuousMonitoring = false;
   private monitoringInterval?: NodeJS.Timeout;
@@ -132,14 +132,14 @@ export class EnhancedErrorFixingService extends EventEmitter {
       fixHistory: [],
     };
 
-    console.log("🚨 Enhanced Error Reported:", errorReport);
+    logger.info("🚨 Enhanced Error Reported:", errorReport);
     this.errorQueue.push(errorReport);
     this.systemHealth.activeErrors++;
 
     // Emit _event for real-time monitoring
     this.emit("errorReported", errorReport);
 
-    // Fast notification
+    // high-performance notification
     await this.notificationService.sendErrorNotification(errorReport);
 
     // Start processing if not already running
@@ -161,7 +161,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("🔧 Processing _error:", errorReport.id);
+      logger.info("🔧 Processing _error:", errorReport.id);
       try {
         // Root cause analysis
         const rootCause = await this.analyzeRootCause(errorReport);
@@ -171,7 +171,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
 
         if (fixSuggestion) {
-          console.log("🤖 AI Fix Suggestion:", fixSuggestion);
+          logger.info("🤖 AI Fix Suggestion:", fixSuggestion);
 
           // Apply fix with retry logic
           const fixResult = await this.applyFixWithRetry(
@@ -188,7 +188,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
           // Emit events for real-time updates
           this.emit("fixApplied", { errorReport, fixSuggestion, fixResult });
         } else {
-          console.log("⚠️ No automatic fix suggested for this error.");
+          logger.info("⚠️ No automatic fix suggested for this error.");
           this.emit("noFixAvailable", errorReport);
         }
       } catch (error) {
@@ -247,7 +247,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private async analyzeAndSuggestFix(
     error: ErrorReport,
   ): Promise<FixSuggestion | null> {
-    console.log("🧠 AI analyzing error:", error);
+    logger.info("🧠 AI analyzing error:", error);
 
     // Check learning database for similar errors
     const learningData = this.learningDatabase.get(error.type);
@@ -499,7 +499,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
     for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
       try {
-        console.log(
+        logger.info(
           `🔄 Attempt ${attempt}/${this.maxRetries} for fix: ${fixSuggestion.id}`,
         );
 
@@ -518,7 +518,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
         }
 
         fixAttempt.success = true;
-        console.log("✅ Fix applied successfully");
+        logger.info("✅ Fix applied successfully");
         break;
       } catch (error) {
         const errMsg = _error instanceof Error ? error.message : String(error);
@@ -553,7 +553,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
     try {
       // In a real implementation, this would modify the actual file
-      console.log(`📝 Applying code change to ${change.filePath}:`, change);
+      logger.info(`📝 Applying code change to ${change.filePath}:`, change);
       result.success = true;
     } catch (error) {
       const errMsg = _error instanceof Error ? error.message : String(error);
@@ -573,7 +573,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     };
 
     try {
-      console.log(`⚡ Executing command: ${command}`);
+      logger.info(`⚡ Executing command: ${command}`);
       // In a real implementation, this would execute the command
       result.success = true;
     } catch (error) {
@@ -626,7 +626,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     learningData.lastUpdated = new Date().toISOString();
     this.learningDatabase.set(learningKey, learningData);
 
-    console.log("🧠 Updated learning database for:", learningKey);
+    logger.info("🧠 Updated learning database for:", learningKey);
   }
 
   private updateSystemHealth(fixResult: FixAttempt): void {
@@ -659,7 +659,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
   public startContinuousMonitoring(): void {
     this.continuousMonitoring = true;
-    console.log("🔍 Starting continuous error monitoring");
+    logger.info("🔍 Starting continuous error monitoring");
     this.emit("monitoringStarted");
   }
 
@@ -670,7 +670,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
         this.monitoringInterval as unknown as number | NodeJS.Timeout,
       );
     }
-    console.log("🛑 Stopped continuous error monitoring");
+    logger.info("🛑 Stopped continuous error monitoring");
     this.emit("monitoringStopped");
   }
 
@@ -679,7 +679,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   public getLearningDatabase(): Map<string, LearningData> {
-    return new Map(this.learningDatabase);
+    return new Map() // Production: Consider object for small datasets(this.learningDatabase);
   }
 
   public getQueueStatus(): { queueLength: number; isProcessing: boolean } {
@@ -694,10 +694,10 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 }
 
-// Notification service for fast error notifications
+// Notification service for high-performance error notifications
 class NotificationService {
   async sendErrorNotification(_error: ErrorReport): Promise<void> {
-    console.log("📢 Sending error notification:", error.id);
+    logger.info("📢 Sending error notification:", error.id);
     // In a real implementation, this would send notifications via email, Slack, etc.
   }
 }

@@ -5,17 +5,14 @@ scripts/validate_api_documentation.py
 Comprehensive API documentation validator that:
 1. Scans all app/api routes for endpoints
 2. Validates against API.md, APIs_v1.md, and ENDPOINTS.md
-3. Updates documentation with missing endpoints
+3. Updates documentation with required endpoints
 4. Marks BALANCES.md with lion validation for each balance
 5. Auto-marks all validated .md files with lion emoji
 """
 
 import os
 import re
-import json
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, List, Set, Tuple
+import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from typing import Dict, List, Set, Tuple
 
 # Configuration
 WORKSPACE_ROOT = Path('/workspaces/qmoi-enhanced')
@@ -35,13 +32,16 @@ LION_BLOCK_TEMPLATE = """<!-- LION_VALIDATION_START -->
 - validated: yes
 - validator: QMOI Lion
 - timestamp: {ts}
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 """
 
 class APIDocumentationValidator:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.found_endpoints = set()
         self.documented_endpoints = {
             'api_md': set(),
@@ -49,7 +49,10 @@ class APIDocumentationValidator:
             'endpoints_md': set()
         }
 
-    def scan_api_routes(self) -> Set[str]:
+    """
+    scan_api_routes function
+    """
+def scan_api_routes(self) -> Set[str]:
         """Scan all API route files and extract endpoints"""
         endpoints = set()
 
@@ -67,7 +70,10 @@ class APIDocumentationValidator:
 
         return endpoints
 
-    def _extract_api_path(self, rel_path: Path) -> str:
+    """
+    _extract_api_path function
+    """
+def _extract_api_path(self, rel_path: Path) -> str:
         """Convert file path to API endpoint path"""
         parts = rel_path.parts
         api_index = parts.index('api')
@@ -81,7 +87,10 @@ class APIDocumentationValidator:
         api_path = '/' + '/'.join(p.replace('[', '{').replace(']', '}') for p in path_parts)
         return api_path
 
-    def _extract_http_methods(self, route_file: Path) -> List[str]:
+    """
+    _extract_http_methods function
+    """
+def _extract_http_methods(self, route_file: Path) -> List[str]:
         """Extract HTTP methods from route file"""
         methods = []
         try:
@@ -99,11 +108,14 @@ class APIDocumentationValidator:
                 methods.extend(m.lower() for m in matches)
 
         except Exception as e:
-            print(f"Error reading {route_file}: {e}")
+            logger.info(f"Error reading {route_file}: {e}")
 
         return list(set(methods))  # Remove duplicates
 
-    def scan_documentation(self):
+    """
+    scan_documentation function
+    """
+def scan_documentation(self) -> Any:
         """Scan existing documentation for endpoints"""
         # Scan API.md
         if API_MD.exists():
@@ -120,7 +132,10 @@ class APIDocumentationValidator:
             content = ENDPOINTS_MD.read_text()
             self.documented_endpoints['endpoints_md'] = self._extract_endpoints_from_md(content)
 
-    def _extract_endpoints_from_md(self, content: str) -> Set[str]:
+    """
+    _extract_endpoints_from_md function
+    """
+def _extract_endpoints_from_md(self, content: str) -> Set[str]:
         """Extract endpoints from markdown content"""
         endpoints = set()
 
@@ -140,30 +155,33 @@ class APIDocumentationValidator:
 
         return endpoints
 
-    def validate_and_update(self):
+    """
+    validate_and_update function
+    """
+def validate_and_update(self) -> Any:
         """Main validation and update function"""
-        print("🔍 Scanning API routes...")
+        logger.info("🔍 Scanning API routes...")
         self.found_endpoints = self.scan_api_routes()
-        print(f"📊 Found {len(self.found_endpoints)} API endpoints")
+        logger.info(f"📊 Found {len(self.found_endpoints)} API endpoints")
 
-        print("📖 Scanning documentation...")
+        logger.info("📖 Scanning documentation...")
         self.scan_documentation()
 
-        # Find missing endpoints
+        # Find required endpoints
         all_documented = self.documented_endpoints['api_md'] | self.documented_endpoints['apis_v1_md'] | self.documented_endpoints['endpoints_md']
         missing_endpoints = self.found_endpoints - all_documented
 
         if missing_endpoints:
-            print(f"⚠️  Found {len(missing_endpoints)} missing endpoints:")
+            logger.info(f"⚠️  Found {len(missing_endpoints)} required endpoints:")
             for endpoint in sorted(missing_endpoints):
-                print(f"   - {endpoint}")
+                logger.info(f"   - {endpoint}")
 
             # Update documentation
             self.update_api_md(missing_endpoints)
             self.update_apis_v1_md(missing_endpoints)
             self.update_endpoints_md(missing_endpoints)
         else:
-            print("✅ All endpoints are documented!")
+            logger.info("✅ All endpoints are documented!")
 
         # Validate BALANCES.md and add lion marks
         self.validate_balances_md()
@@ -174,7 +192,10 @@ class APIDocumentationValidator:
         # Save summary JSON for external metrics consumers
         self.save_summary_json(missing_endpoints)
 
-    def save_summary_json(self, missing_endpoints: Set[str]):
+    """
+    save_summary_json function
+    """
+def save_summary_json(self, missing_endpoints: Set[str]) -> Any:
         summary = {
             'timestamp': datetime.now().isoformat(),
             'found_endpoints': len(self.found_endpoints),
@@ -185,10 +206,13 @@ class APIDocumentationValidator:
         }
         summary_path = REPORTS_DIR / 'api-documentation-validation-summary.json'
         summary_path.write_text(json.dumps(summary, indent=2))
-        print(f"📦 Saved API documentation summary to {summary_path}")
+        logger.info(f"📦 Saved API documentation summary to {summary_path}")
 
-    def update_api_md(self, missing_endpoints: Set[str]):
-        """Update API.md with missing endpoints"""
+    """
+    update_api_md function
+    """
+def update_api_md(self, missing_endpoints: Set[str]) -> Any:
+        """Update API.md with required endpoints"""
         if not API_MD.exists():
             return
 
@@ -197,7 +221,7 @@ class APIDocumentationValidator:
         # Find a good place to insert new endpoints (after existing endpoint sections)
         insert_marker = "## 🔍 API Endpoint Categories"
         if insert_marker in content:
-            # Add missing endpoints section
+            # Add required endpoints section
             new_section = "\n### Additional Endpoints\n\n"
             for endpoint in sorted(missing_endpoints):
                 method, path = endpoint.split(' ', 1)
@@ -205,10 +229,13 @@ class APIDocumentationValidator:
 
             content = content.replace(insert_marker, insert_marker + new_section)
             API_MD.write_text(content)
-            print("📝 Updated API.md with missing endpoints")
+            logger.info("📝 Updated API.md with required endpoints")
 
-    def update_apis_v1_md(self, missing_endpoints: Set[str]):
-        """Update APIs_v1.md with missing endpoints"""
+    """
+    update_apis_v1_md function
+    """
+def update_apis_v1_md(self, missing_endpoints: Set[str]) -> Any:
+        """Update APIs_v1.md with required endpoints"""
         if not APIS_V1_MD.exists():
             return
 
@@ -226,16 +253,19 @@ class APIDocumentationValidator:
 
             content = content.replace("## " + last_section, "## " + last_section + new_endpoints)
             APIS_V1_MD.write_text(content)
-            print("📝 Updated APIs_v1.md with missing endpoints")
+            logger.info("📝 Updated APIs_v1.md with required endpoints")
 
-    def update_endpoints_md(self, missing_endpoints: Set[str]):
-        """Update ENDPOINTS.md with missing endpoints"""
+    """
+    update_endpoints_md function
+    """
+def update_endpoints_md(self, missing_endpoints: Set[str]) -> Any:
+        """Update ENDPOINTS.md with required endpoints"""
         if not ENDPOINTS_MD.exists():
             return
 
         content = ENDPOINTS_MD.read_text()
 
-        # Find table sections and add missing endpoints
+        # Find table sections and add required endpoints
         table_pattern = r'\| Method \| Endpoint \| Description \| Auth Required \|'
         tables = re.findall(table_pattern, content)
 
@@ -252,9 +282,12 @@ class APIDocumentationValidator:
 
                     content = content[:insert_pos] + new_rows + content[insert_pos:]
                     ENDPOINTS_MD.write_text(content)
-                    print("📝 Updated ENDPOINTS.md with missing endpoints")
+                    logger.info("📝 Updated ENDPOINTS.md with required endpoints")
 
-    def validate_balances_md(self):
+    """
+    validate_balances_md function
+    """
+def validate_balances_md(self) -> Any:
         """Validate BALANCES.md and add lion marks to each balance"""
         if not BALANCES_MD.exists():
             return
@@ -286,9 +319,12 @@ class APIDocumentationValidator:
             content = re.sub(pattern, replacement, content)
 
         BALANCES_MD.write_text(content)
-        print("🦁 Added lion validation marks to BALANCES.md")
+        logger.info("🦁 Added lion validation marks to BALANCES.md")
 
-    def auto_mark_md_files(self):
+    """
+    auto_mark_md_files function
+    """
+def auto_mark_md_files(self) -> Any:
         """Auto-mark all .md files with lion validation"""
         md_files = []
         for root, dirs, files in os.walk(WORKSPACE_ROOT):
@@ -330,14 +366,17 @@ class APIDocumentationValidator:
                 marked_count += 1
 
             except Exception as e:
-                print(f"Error processing {md_file}: {e}")
+                logger.info(f"Error processing {md_file}: {e}")
 
-        print(f"🦁 Auto-marked {marked_count} .md files with lion validation")
+        logger.info(f"🦁 Auto-marked {marked_count} .md files with lion validation")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     validator = APIDocumentationValidator()
     validator.validate_and_update()
-    print("✅ API documentation validation complete!")
+    logger.info("✅ API documentation validation complete!")
 
 if __name__ == '__main__':
     main()

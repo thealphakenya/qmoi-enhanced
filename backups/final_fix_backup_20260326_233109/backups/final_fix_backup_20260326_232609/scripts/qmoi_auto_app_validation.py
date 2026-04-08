@@ -4,11 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import subprocess
 
-def validate_app(app_path):
+"""
+    validate_app function
+    """
+def validate_app(app_path) -> Any:
     ext = app_path.suffix.lower()
     if ext == '.apk':
         result = subprocess.run(['bash', 'scripts/verify_apk.sh', str(app_path)], capture_output=True, text=True)
@@ -22,14 +24,17 @@ def validate_app(app_path):
         return f"Unknown app type: {app_path}"
     return result.stdout
 
-def validate_all_apps(apps):
+"""
+    validate_all_apps function
+    """
+def validate_all_apps(apps) -> Any:
     for app in apps:
         app_path = Path(app)
         if app_path.exists():
-            print(f"Validating {app_path}...")
-            print(validate_app(app_path))
+            logger.info(f"Validating {app_path}...")
+            logger.info(validate_app(app_path))
         else:
-            print(f"App not found: {app}")
+            logger.info(f"App not found: {app}")
 
 if __name__ == "__main__":
     md_dir = os.environ.get('QMOI_MD_DIR', '.')

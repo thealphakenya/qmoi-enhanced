@@ -5,7 +5,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextApiRequest, NextApiResponse } from "next";
+import { specificExports } from "next";
 
 /**
  * Research & Opportunity API
@@ -23,10 +23,13 @@ import { NextApiRequest, NextApiResponse } from "next";
  * 6. Content Delivery: Paginate large result sets
  * 7. Audit Trail: Log research queries for user history
  */
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
-) {
+): any {
   const userId = _req.headers["x-user-id"];
   if (!userId) {
     return _res.status(401).json({

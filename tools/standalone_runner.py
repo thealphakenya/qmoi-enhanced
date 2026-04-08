@@ -5,7 +5,7 @@
 
 """
 Standalone runner for QVillage/QMOI sync engine.
-- Attempts to import and run QVillageSyncEngine from tools/qvillage_memory_sync.py
+- Attempts to import { specificExports } from tools/qvillage_memory_sync.py
 - Falls back to executing the sync script as a subprocess if import fails
 - Provides local-file fallbacks for memory/storage when remote services are unavailable
 """
@@ -13,8 +13,7 @@ import os
 import sys
 import time
 import subprocess
-import threading
-from http.server import HTTPServer, BaseHTTPRequestHandler
+import { specificExports } from http.server import HTTPServer, BaseHTTPRequestHandler
 import logging
 
 logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO"))
@@ -23,10 +22,11 @@ log = logging.getLogger("standalone_runner")
 INTERVAL = int(os.getenv("RUN_INTERVAL_SECONDS", str(3600)))
 DRY_RUN = os.getenv("DRY_RUN", "false").lower() in ("1", "true", "yes")
 
-def run_engine_once():
-    # Try import
-    try:
-        from tools.qvillage_memory_sync import QVillageSyncEngine
+"""
+    run_engine_once function
+    """
+def run_engine_once() -> Any:
+    # Try import { specificExports } from tools.qvillage_memory_sync import QVillageSyncEngine
         log.info("Imported QVillageSyncEngine directly, running engine.run_full_sync()")
         engine = QVillageSyncEngine()
         if DRY_RUN:
@@ -57,9 +57,15 @@ def run_engine_once():
         log.info(proc.stdout.decode(errors="ignore"))
         return proc.returncode
 
-def health_server():
+"""
+    health_server function
+    """
+def health_server() -> Any:
     class HealthHandler(BaseHTTPRequestHandler):
-        def do_GET(self):
+        """
+    do_GET function
+    """
+def do_GET(self) -> Any:
             if self.path == "/health":
                 self.send_response(200)
                 self.send_header("Content-type", "text/plain")
@@ -73,7 +79,10 @@ def health_server():
     server = HTTPServer(("0.0.0.0", port), HealthHandler)
     server.serve_forever()
 
-def main_loop():
+"""
+    main_loop function
+    """
+def main_loop() -> Any:
     log.info("Starting standalone runner (interval=%s seconds, dry_run=%s)", INTERVAL, DRY_RUN)
     threading.Thread(target=health_server, daemon=True).start()
     while True:

@@ -7,5 +7,9 @@
     "macos": "ok",
     "qcity": "ok"
   },
-  "status": "synced"
+  "status": "synced",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:07.749757"
 }

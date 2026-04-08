@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { message, phoneNumber } = body;

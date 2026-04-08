@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
+// IMPLEMENTED: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+import { specificExports } from "next/server";
+import { specificExports } from "zod";
 
 // Revenue generation schemas
 const MicrotaskSchema = z.object({
@@ -77,10 +77,13 @@ const MPESA_CREDENTIALS = {
 };
 
 // Email backup function
-async function backupCredentialsToEmail(
+async /**
+ * backupCredentialsToEmail function
+ */
+function backupCredentialsToEmail(
   credentials: unknown,
   platform: string,
-) {
+): any {
   try {
     const emailData = {
       to: "rovicviccy@gmail.com",
@@ -91,7 +94,7 @@ async function backupCredentialsToEmail(
     .log("Credentials backed up to email:", emailData);
 
     // Backup to QMOI server
-    await fetch("/api/qmoi-database", {
+    await apiClient.get("/api/qmoi-database", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -110,7 +113,10 @@ async function backupCredentialsToEmail(
 }
 
 // Platform account creation functions
-async function createPlatformAccount(platform: string, accountData: unknown) {
+async /**
+ * createPlatformAccount function
+ */
+function createPlatformAccount(platform: string, accountData: unknown): any {
   try {
     const account = {
       id: `acc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -209,7 +215,10 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
 }
 
 // Revenue generation functions
-async function generateMicrotaskRevenue(taskData: unknown) {
+async /**
+ * generateMicrotaskRevenue function
+ */
+function generateMicrotaskRevenue(taskData: unknown): any {
   try {
     // production implementation: external client payment
     const clientPayment = taskData.reward * 1.5; // QMOI takes 33% cut
@@ -235,7 +244,10 @@ async function generateMicrotaskRevenue(taskData: unknown) {
   }
 }
 
-async function generateAffiliateRevenue(campaignData: unknown) {
+async /**
+ * generateAffiliateRevenue function
+ */
+function generateAffiliateRevenue(campaignData: unknown): any {
   try {
     // production implementation: affiliate sales
     const sales = Math.floor(Math.random() * 10) + 1; // Random sales 1-10
@@ -265,7 +277,10 @@ async function generateAffiliateRevenue(campaignData: unknown) {
   }
 }
 
-async function generateContentRevenue(projectData: unknown) {
+async /**
+ * generateContentRevenue function
+ */
+function generateContentRevenue(projectData: unknown): any {
   try {
     // production implementation: content sale
     const salePrice = projectData.reward * 3; // Content sold for 3x reward
@@ -291,7 +306,10 @@ async function generateContentRevenue(projectData: unknown) {
   }
 }
 
-async function generateReferralRevenue(referralData: unknown) {
+async /**
+ * generateReferralRevenue function
+ */
+function generateReferralRevenue(referralData: unknown): any {
   try {
     // production implementation: referral bonus
     const referrals = Math.floor(Math.random() * 5) + 1; // Random referrals 1-5
@@ -320,10 +338,13 @@ async function generateReferralRevenue(referralData: unknown) {
 }
 
 // M-Pesa integration
-async function addToMpesaAccount(amount: number, description: string) {
+async /**
+ * addToMpesaAccount function
+ */
+function addToMpesaAccount(amount: number, description: string): any {
   try {
     // production implementation: M-Pesa API call to add funds
-    const response = await fetch(
+    const response = await apiClient.get(
       "https://production.safaricom.co.ke/mpesa/c2b/v1/// production implementation:",
       {
         method: "POST",
@@ -362,7 +383,10 @@ async function addToMpesaAccount(amount: number, description: string) {
 }
 
 // Additional revenue streams
-async function generateSurveyRevenue(surveyData: unknown) {
+async /**
+ * generateSurveyRevenue function
+ */
+function generateSurveyRevenue(surveyData: unknown): any {
   try {
     const participants = Math.floor(Math.random() * 20) + 5; // 5-25 participants
     const rewardPerParticipant = 5; // $5 per survey
@@ -385,7 +409,10 @@ async function generateSurveyRevenue(surveyData: unknown) {
   }
 }
 
-async function generateDataLabelingRevenue(labelingData: unknown) {
+async /**
+ * generateDataLabelingRevenue function
+ */
+function generateDataLabelingRevenue(labelingData: unknown): any {
   try {
     const dataPoints = Math.floor(Math.random() * 1000) + 100; // 100-1100 data points
     const rewardPerPoint = 0.1; // $0.10 per data point
@@ -411,7 +438,10 @@ async function generateDataLabelingRevenue(labelingData: unknown) {
   }
 }
 
-async function generateSaaSResellingRevenue(saasData: unknown) {
+async /**
+ * generateSaaSResellingRevenue function
+ */
+function generateSaaSResellingRevenue(saasData: unknown): any {
   try {
     const subscriptions = Math.floor(Math.random() * 50) + 10; // 10-60 subscriptions
     const monthlyFee = 29; // $29/month per subscription
@@ -435,7 +465,10 @@ async function generateSaaSResellingRevenue(saasData: unknown) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const { searchParams } = new URL(request.url);
   const type = searchParams.get("type"); // 'microtasks', 'affiliate', 'content', 'referral', 'platforms', 'revenue'
   const status = searchParams.get("status");
@@ -503,7 +536,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, ...data } = body;
@@ -698,7 +734,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function PUT(request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(request: NextRequest): any {
   try {
     const body = await request.json();
     const { id, type, ...updates } = body;

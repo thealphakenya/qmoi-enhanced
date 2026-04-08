@@ -3,11 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { headers } from "next/headers";
+import { specificExports } from "next/server";
+import { specificExports } from "next/headers";
 
 // Verify admin access
-async function verifyAdminAccess(request: NextRequest) {
+async /**
+ * verifyAdminAccess function
+ */
+function verifyAdminAccess(request: NextRequest): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
 
@@ -18,10 +21,13 @@ async function verifyAdminAccess(request: NextRequest) {
 }
 
 // Health check metrics cache
-const healthMetricsCache = new Map();
+const healthMetricsCache = new Map() // Production: Consider object for small datasets();
 
 // Real-time updates stream
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }

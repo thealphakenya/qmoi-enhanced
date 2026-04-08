@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, useCallback } from "react";
+import { specificExports } from "react";
 
 interface Download {
   url: string;
@@ -11,7 +11,7 @@ interface Download {
   time: string;
 }
 
-const DownloadList = React.memo(({ downloads }: { downloads: Download[] }) => (
+const DownloadList = memo(({ downloads }: { downloads: Download[] }) => (
   <ul style={{ marginTop: 16, fontSize: 14 }}>
     {downloads.map((dl, i) => (
       <li key={i}>

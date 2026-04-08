@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { useState, useEffect, useCallback } from "react";
-import { useQuery, useMutation } from "react-query";
-import axios, { any } from "axios";
+import { specificExports } from "react";
+import { specificExports } from "react-query";
+import { specificExports } from "axios";
 
 interface TradingPosition {
   id: string;
@@ -31,7 +31,10 @@ interface TradingConfig {
   takeProfit: number;
 }
 
-export function useTrading() {
+export /**
+ * useTrading function
+ */
+function useTrading(): any {
   const [positions, setPositions] = useState<TradingPosition[]>([]);
   const [config, setConfig] = useState<TradingConfig | null>(null);
   const [error, setError] = useState<Error | null>(null);

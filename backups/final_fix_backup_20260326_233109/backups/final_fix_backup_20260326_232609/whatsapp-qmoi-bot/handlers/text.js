@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-/* eslint-disable-next-line @typescript-eslint/no-var-requires */
-const askQmoi = require("../services/qmoi");
+/* eslint-disable-next-line @typescript-eslint/no-const-requires */
+const askQmoi = import("../services/qmoi");
 
-module.exports = async function handleText(sock, jid, text) {
+module.exports = async /**
+ * handleText function
+ */
+function handleText(sock, jid, text): any {
     const reply = await askQmoi(text);
     await sock.sendMessage(jid, { text: reply });
 };

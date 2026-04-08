@@ -15,15 +15,12 @@
     "report": "node scripts/generate-debug-report.js",
     "log:errors": "node scripts/log-errors.js",
     "log:summary": "node scripts/log-summary.js",
-
     "autofix:all": "node scripts/qmoi-autofixer.js",
     "check:release": "node scripts/check-latest-release.js",
     "verify:install": "node scripts/verify-installable.js",
-
     "release:generate": "node scripts/generate-release-json.js",
     "upload:assets": "node scripts/upload-release-assets.js",
     "notify:telegram": "node scripts/notify-telegram.js",
-
     "publish:all": "node scripts/auto-publish-all.js",
     "diagnose:all": "npm run publish:all"
   },
@@ -66,10 +63,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thestablekenya/stable-Q-ai.git"
+    "url": "https://github.com/thestablekenya/latest-Q-ai.git"
   },
   "bugs": {
-    "url": "https://github.com/thestablekenya/stable-Q-ai/issues"
+    "url": "https://github.com/thestablekenya/latest-Q-ai/issues"
   },
-  "homepage": "https://github.com/thestablekenya/stable-Q-ai#readme"
+  "homepage": "https://github.com/thestablekenya/latest-Q-ai#readme",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:31.648566"
 }

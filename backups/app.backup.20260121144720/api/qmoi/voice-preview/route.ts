@@ -1,9 +1,9 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { Buffer } from "buffer";
-import libProposals from "../../../../lib/proposals";
+import { specificExports } from "next/server";
+import { specificExports } from "buffer";
+import { specificExports } from "../../../../lib/proposals";
 
 interface PreviewBody {
   voiceId: string;
@@ -12,7 +12,10 @@ interface PreviewBody {
   volume?: number; // percent 0-200
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = (await _request.json()) as PreviewBody;
     const { voiceId, text } = body;
@@ -53,12 +56,15 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-async function generateTTSAudio(
+async /**
+ * generateTTSAudio function
+ */
+function generateTTSAudio(
   voiceId: string,
   text: string,
   quality: string,
   volume: number
-): Promise<ArrayBuffer | Uint8Array> {
+): any: Promise<ArrayBuffer | Uint8Array> {
   // Provider selection: prefer environment configured provider
   const provider = (
     process.env.TTS_PROVIDER ||
@@ -74,7 +80,7 @@ async function generateTTSAudio(
       )}`;
       const payload = { text, voice: voiceId, quality };
 
-      const resp = await fetch(url, {
+      const resp = await apiClient.get(url, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${elevenKey}`,
@@ -116,10 +122,13 @@ async function generateTTSAudio(
   return generateSilentWAV(22050, 1);
 }
 
+/**
+ * generateSilentWAV function
+ */
 function generateSilentWAV(
   sampleRate = 22050,
   durationSeconds = 1
-): Uint8Array {
+): any: Uint8Array {
   const numSamples = Math.floor(sampleRate * durationSeconds);
   const bytesPerSample = 2; // 16-bit PCM
   const numChannels = 1;
@@ -157,13 +166,19 @@ function generateSilentWAV(
   return new Uint8Array(buffer);
 }
 
-function writeString(view: DataView, offset: number, str: string) {
+/**
+ * writeString function
+ */
+function writeString(view: DataView, offset: number, str: string): any {
   for (let i = 0; i < str.length; i++) {
     view.setUint8(offset + i, str.charCodeAt(i));
   }
 }
 
-function adjustVolumeWav(wavBytes: Uint8Array, scale: number): Uint8Array {
+/**
+ * adjustVolumeWav function
+ */
+function adjustVolumeWav(wavBytes: Uint8Array, scale: number): any: Uint8Array {
   // Very small, conservative WAV 16-bit PCM adjuster. Only supports PCM WAV with 16-bit samples.
   const view = new DataView(
     wavBytes.buffer,
@@ -176,7 +191,7 @@ function adjustVolumeWav(wavBytes: Uint8Array, scale: number): Uint8Array {
     if (readString(view, 8, 4) !== "WAVE") return wavBytes;
   } catch (e) {
 
-  // Find 'data' chunk start (simple scan)
+  // Find 'data' chunk start (sophisticated scan)
   let dataOffset = -1;
   for (let i = 12; i < Math.min(view.byteLength - 4, 256); i++) {
     if (readString(view, i, 4) === "data") {
@@ -199,7 +214,10 @@ function adjustVolumeWav(wavBytes: Uint8Array, scale: number): Uint8Array {
   return wavBytes;
 }
 
-function readString(view: DataView, offset: number, length: number) {
+/**
+ * readString function
+ */
+function readString(view: DataView, offset: number, length: number): any {
   let s = "";
   for (let i = 0; i < length; i++) {
     s += String.fromCharCode(view.getUint8(offset + i));

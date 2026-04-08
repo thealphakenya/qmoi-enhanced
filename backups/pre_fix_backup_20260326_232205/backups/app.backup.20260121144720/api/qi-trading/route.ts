@@ -1,10 +1,10 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { requireApiKey, writeProposal } from "../../../lib/proposals";
-import { TradingService } from "../../../lib/services/trading";
-import { connectToTradingEngine } from "../../../lib/services/trading-engine";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../lib/proposals";
+import { specificExports } from "../../../lib/services/trading";
+import { specificExports } from "../../../lib/services/trading-engine";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -31,22 +31,34 @@ interface TradingStats {
   worstTrade: Trade;
 }
 
-async function fetchTradingStats(): Promise<TradingStats> {
+async /**
+ * fetchTradingStats function
+ */
+function fetchTradingStats(): any: Promise<TradingStats> {
   const tradingService = TradingService.getInstance();
   return await tradingService.getTradingStats();
 }
 
-async function fetchTradeHistory(): Promise<Trade[]> {
+async /**
+ * fetchTradeHistory function
+ */
+function fetchTradeHistory(): any: Promise<Trade[]> {
   const tradingService = TradingService.getInstance();
   return await tradingService.getTradeHistory();
 }
 
-async function fetchActiveTrades(): Promise<Trade[]> {
+async /**
+ * fetchActiveTrades function
+ */
+function fetchActiveTrades(): any: Promise<Trade[]> {
   const tradingService = TradingService.getInstance();
   return await tradingService.getActiveTrades();
 }
 
-async function executeTrade(trade: Trade): Promise<Trade> {
+async /**
+ * executeTrade function
+ */
+function executeTrade(trade: Trade): any: Promise<Trade> {
   const tradingService = TradingService.getInstance();
 
   // Create initial trade record
@@ -73,9 +85,12 @@ async function executeTrade(trade: Trade): Promise<Trade> {
   } catch (e) {
 }
 
-async function cancelTrade(
+async /**
+ * cancelTrade function
+ */
+function cancelTrade(
   tradeId: string,
-): Promise<{ success: boolean; message: string }> {
+): any: Promise<{ success: boolean; message: string }> {
   const tradingService = TradingService.getInstance();
 
   try {
@@ -108,7 +123,10 @@ async function cancelTrade(
   }
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   // Gate reads with API key as well
   const auth = await requireApiKey(_request.headers);
   if (!auth.ok) return auth.response;
@@ -147,7 +165,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   // Mutating actions are proposal-first by default
   const auth = await requireApiKey(_request.headers);
   if (!auth.ok) return auth.response;

@@ -15,8 +15,7 @@ NOT perform network calls by default — it reads local hints (existing RELEASE
 files and PAYED files) and produces a conservative plan.
 """
 from pathlib import Path
-import json
-from datetime import datetime
+import { specificExports } from datetime import datetime
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,7 +48,7 @@ for d in tracked:
 
 summary = {'generated_at': datetime.utcnow().isoformat() + 'Z', 'plans': plans}
 OUT.write_text(json.dumps(summary, indent=2), encoding='utf-8')
-print('Wrote dry-run auto release summary to', OUT)
+logger.info('Wrote dry-run auto release summary to', OUT)
 #!/usr/bin/env python3
 """
 Auto-release manager (safe, dry-run by default).
@@ -68,8 +67,7 @@ is explicitly passed. It writes audit logs to `.qmoi_validation/`.
 from pathlib import Path
 import os
 import json
-import argparse
-from datetime import datetime
+import { specificExports } from datetime import datetime
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -86,7 +84,10 @@ args = parser.parse_args()
 
 ALLOW_NETWORK = args.allow_network or os.environ.get('QMOI_ALLOW_NETWORK', 'false').lower() in ('1','true','yes')
 
-def parse_platforms(text: str):
+"""
+    parse_platforms function
+    """
+def parse_platforms(text: str) -> Any:
     sections = []
     cur = None
     lines = []
@@ -111,7 +112,10 @@ def parse_platforms(text: str):
         sections.append((cur, lines))
     return [s[0] for s in sections]
 
-def discover_latest_release_for(platform: str):
+"""
+    discover_latest_release_for function
+    """
+def discover_latest_release_for(platform: str) -> Any:
     """Conservative discovery implementation.
 
     If network is allowed and provider info is available, implement real
@@ -130,7 +134,10 @@ def discover_latest_release_for(platform: str):
         info['detected_provider'] = 'github'
     return info
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     txt = IN.read_text(encoding='utf-8') if IN.exists() else ''
     platforms = parse_platforms(txt)
     out = {
@@ -144,12 +151,12 @@ def main():
 
     # write artifacts only when --apply passed; always write a dry-run snapshot
     OUT.write_text(json.dumps({'dry_run_snapshot': out}, indent=2), encoding='utf-8')
-    print('Wrote dry-run snapshot to', OUT)
+    logger.info('Wrote dry-run snapshot to', OUT)
 
     if args.apply:
         # in apply mode, write a live file (overwriting) and mark applied
         OUT.write_text(json.dumps({'applied_at': datetime.utcnow().isoformat() + 'Z', 'entries': out['entries']}, indent=2), encoding='utf-8')
-        print('Applied: wrote full auto_releases.json')
+        logger.info('Applied: wrote full auto_releases.json')
 
 if __name__ == '__main__':
     main()

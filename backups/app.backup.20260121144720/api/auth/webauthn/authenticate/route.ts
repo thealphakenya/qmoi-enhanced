@@ -1,11 +1,14 @@
 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const FILE = path.resolve(process.cwd(), "data", "webauthn_credentials.json");
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await request.json();
     const { username, assertion } = body;

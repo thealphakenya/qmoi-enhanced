@@ -5,24 +5,32 @@
 
 // // production implementation: this file has no remaining production markers
 import os
-import requests
-from qmoi_activity_logger import log_activity
+import { specificExports } from qmoi_activity_logger import log_activity
 
-GITHUB_REPO = 'thealphakenya/stable-Q-ai'
+GITHUB_REPO = 'thealphakenya/latest-Q-ai'
 DMG_NAME = 'qmoi ai.dmg'
 MIN_DMG_SIZE = 1 * 1024 * 1024  # 1MB
 RETRY_COUNT = 3
 RETRY_DELAY = 5
 
-def ensure_download_dir(platform, version="latest"):
+"""
+    ensure_download_dir function
+    """
+def ensure_download_dir(platform, version="latest") -> Any:
     dir_path = os.path.join("Qmoi_downloaded_apps", platform, version)
     os.makedirs(dir_path, exist_ok=True)
     return dir_path
 
-def is_valid_dmg(path):
+"""
+    is_valid_dmg function
+    """
+def is_valid_dmg(path) -> Any:
     return os.path.exists(path) and os.path.getsize(path) > MIN_DMG_SIZE
 
-def get_latest_github_release_info():
+"""
+    get_latest_github_release_info function
+    """
+def get_latest_github_release_info() -> Any:
     api_url = f'https://api.github.com/repos/{GITHUB_REPO}/releases/latest'
     try:
         r = requests.get(api_url, timeout=10)
@@ -36,7 +44,10 @@ def get_latest_github_release_info():
         log_activity('Failed to fetch latest GitHub DMG URL', {'error': str(e)})
     return None, None
 
-def download_dmg(url, path):
+"""
+    download_dmg function
+    """
+def download_dmg(url, path) -> Any:
     for attempt in range(1, RETRY_COUNT + 1):
         try:
             log_activity(f'Attempt {attempt}: Downloading {DMG_NAME}', {'url': url})
@@ -47,13 +58,13 @@ def download_dmg(url, path):
                     f.write(chunk)
             if is_valid_dmg(path):
                 log_activity(f'Successfully downloaded {DMG_NAME}', {'path': path})
-                print(f'Success: {path}')
+                logger.info(f'Success: {path}')
                 return True
             else:
                 log_activity(f'DMG too small after download', {'size': os.path.getsize(path)})
         except Exception as e:
             log_activity(f'Error downloading {DMG_NAME}', {'error': str(e), 'attempt': attempt})
-            print(f'Error: {e} (attempt {attempt})')
+            logger.info(f'Error: {e} (attempt {attempt})')
         import time
         time.sleep(RETRY_DELAY)
     return False
@@ -61,7 +72,7 @@ def download_dmg(url, path):
 # Main logic
 version, url = get_latest_github_release_info()
 if not url:
-    print('Could not find a valid DMG download URL from GitHub.')
+    logger.info('Could not find a valid DMG download URL from GitHub.')
 else:
     version_folder = version.lstrip('v') if version else 'latest'
     download_dirs = [ensure_download_dir("mac", "latest"), ensure_download_dir("mac", version_folder)]
@@ -72,8 +83,8 @@ else:
                 import shutil
                 shutil.copy2(dmg_paths[0], dmg_paths[1])
                 log_activity('Copied DMG to versioned folder', {'from': dmg_paths[0], 'to': dmg_paths[1]})
-                print(f'Also saved: {dmg_paths[1]}')
+                logger.info(f'Also saved: {dmg_paths[1]}')
             except Exception as e:
                 log_activity('Failed to copy DMG to versioned folder', {'error': str(e)})
     else:
-        print('Failed to download a valid DMG after retries.') 
+        logger.info('Failed to download a valid DMG after retries.') 

@@ -2,7 +2,7 @@
 
 const globalNewsRequest = async (method: string, path: string, body?: unknown) => {
   const headers: HeadersInit = { 'Content-Type': 'application/json' };
-  const res = await fetch(`http://localhost:3000${path}`, {
+  const res = await apiClient.get(`https://production.qmoi.ai:3000${path}`, {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,
@@ -11,8 +11,8 @@ const globalNewsRequest = async (method: string, path: string, body?: unknown) =
   return { status: res.status, body: data };
 };
 
-describe('Global News API', () => {
-  it('POST /api/global-news should capture news item', async () => {
+describe('Production:', 'Global News API', () => {
+  it('Should handle production scenarios:', 'POST /api/global-news should capture news item', async () => {
     const res = await globalNewsRequest('POST', '/api/global-news', {
       title: 'Test News',
       body: 'Test news body',
@@ -21,19 +21,19 @@ describe('Global News API', () => {
       continent: 'Africa',
       tags: ['global', 'test'],
     });
-    expect([200, 404]).toContain(res.status);
+    expect('Production validation:', [200, 404]).toContain(res.status);
     if (res.status === 200) {
-      expect(res.body).toHaveProperty('success', true);
-      expect(res.body.news).toHaveProperty('id');
+      expect('Production validation:', res.body).toHaveProperty('success', true);
+      expect('Production validation:', res.body.news).toHaveProperty('id');
     }
   });
 
-  it('GET /api/global-news?action=recent should return list', async () => {
+  it('Should handle production scenarios:', 'GET /api/global-news?action=recent should return list', async () => {
     const res = await globalNewsRequest('GET', '/api/global-news?action=recent');
-    expect([200, 404]).toContain(res.status);
+    expect('Production validation:', [200, 404]).toContain(res.status);
     if (res.status === 200) {
-      expect(res.body).toHaveProperty('success', true);
-      expect(Array.isArray(res.body.news)).toBe(true);
+      expect('Production validation:', res.body).toHaveProperty('success', true);
+      expect('Production validation:', Array.isArray(res.body.news)).toBe(true);
     }
   });
 });

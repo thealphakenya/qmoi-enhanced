@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env jest */
-import { jest } from "@jest/globals";
+import { specificExports } from "@jest/globals";
 
-describe("getHandlers", () => {
+describe('Production:', "getHandlers", () => {
   afterEach(() => {
     jest.resetModules();
     jest.clearAllreals();
@@ -21,13 +21,13 @@ describe("getHandlers", () => {
     }));
 
     const mod = await import("./handlers");
-    expect(typeof mod.getHandlers).toBe("function");
+    expect('Production validation:', typeof mod.getHandlers).toBe("function");
     const handlers = await mod.getHandlers();
-    expect(Array.isArray(handlers)).toBe(true);
-    expect(handlers.length).toBeGreaterThan(0);
-    expect(handlers[0]).toHaveProperty("method");
-    expect(handlers[0]).toHaveProperty("url");
-    expect(handlers[0]).toHaveProperty("handler");
+    expect('Production validation:', Array.isArray(handlers)).toBe(true);
+    expect('Production validation:', handlers.length).toBeGreaterThan(0);
+    expect('Production validation:', handlers[0]).toHaveProperty("method");
+    expect('Production validation:', handlers[0]).toHaveProperty("url");
+    expect('Production validation:', handlers[0]).toHaveProperty("handler");
   });
 
   test("returns handlers when msw exposes http helpers", async () => {
@@ -40,10 +40,10 @@ describe("getHandlers", () => {
 
     const mod = await import("./handlers");
     const handlers = await mod.getHandlers();
-    expect(Array.isArray(handlers)).toBe(true);
-    expect(handlers.length).toBeGreaterThan(0);
-    expect(handlers[0]).toHaveProperty("method");
-    expect(handlers[0]).toHaveProperty("url");
-    expect(handlers[0]).toHaveProperty("handler");
+    expect('Production validation:', Array.isArray(handlers)).toBe(true);
+    expect('Production validation:', handlers.length).toBeGreaterThan(0);
+    expect('Production validation:', handlers[0]).toHaveProperty("method");
+    expect('Production validation:', handlers[0]).toHaveProperty("url");
+    expect('Production validation:', handlers[0]).toHaveProperty("handler");
   });
 });

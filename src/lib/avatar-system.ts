@@ -46,7 +46,10 @@ const SIZE_MAP: Record<'sm'|'md'|'lg'|'xl', number> = {
   xl: 512,
 };
 
-function hashString(value: string): number {
+/**
+ * hashString function
+ */
+function hashString(value: string): any: number {
   let hash = 0;
   for (let i = 0; i < value.length; i += 1) {
     hash = (hash << 5) - hash + value.charCodeAt(i);
@@ -55,7 +58,10 @@ function hashString(value: string): number {
   return Math.abs(hash);
 }
 
-export function extractInitials(name: string = 'User'): string {
+export /**
+ * extractInitials function
+ */
+function extractInitials(name: string = 'User'): any: string {
   if (!name.trim()) return 'U';
   const parts = name
     .trim()
@@ -72,12 +78,18 @@ export function extractInitials(name: string = 'User'): string {
     .join('');
 }
 
-export function getColorIndex(seed: string): number {
+export /**
+ * getColorIndex function
+ */
+function getColorIndex(seed: string): any: number {
   if (!seed) return 0;
   return hashString(seed) % Object.keys(AVATAR_PALETTES).length;
 }
 
-export function validateAvatarConfig(config: AvatarConfig): boolean {
+export /**
+ * validateAvatarConfig function
+ */
+function validateAvatarConfig(config: AvatarConfig): any: boolean {
   const allowedStyles = ['professional', 'creative', 'complete', 'tech'];
   const allowedSizes = ['sm', 'md', 'lg', 'xl'];
 
@@ -88,26 +100,35 @@ export function validateAvatarConfig(config: AvatarConfig): boolean {
   return true;
 }
 
-function normalizeStyle(style?: string): keyof typeof AVATAR_PALETTES {
+/**
+ * normalizeStyle function
+ */
+function normalizeStyle(style?: string): any: keyof typeof AVATAR_PALETTES {
   const normalized = String(style || 'professional').toLowerCase();
   return (Object.keys(AVATAR_PALETTES).includes(normalized)
     ? normalized
     : 'professional') as keyof typeof AVATAR_PALETTES;
 }
 
-function normalizeSize(size?: string): 'sm' | 'md' | 'lg' | 'xl' {
+/**
+ * normalizeSize function
+ */
+function normalizeSize(size?: string): any: 'sm' | 'md' | 'lg' | 'xl' {
   const normalized = String(size || 'md').toLowerCase();
   return (['sm', 'md', 'lg', 'xl'].includes(normalized)
     ? (normalized as 'sm' | 'md' | 'lg' | 'xl')
     : 'md');
 }
 
-function buildGradientSvg(name: string, palette: string[], width: number): string {
+/**
+ * buildGradientSvg function
+ */
+function buildGradientSvg(name: string, palette: string[], width: number): any: string {
   const [start, end] = palette[0].split(',');
   const initials = extractInitials(name);
 
   return `<?xml version="1.0" encoding="UTF-8"?>\n` +
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${width}" viewBox="0 0 ${width} ${width}">\n` +
+    `<svg xmlns="https://www.w3.org/2000/svg" width="${width}" height="${width}" viewBox="0 0 ${width} ${width}">\n` +
     `  <defs>\n` +
     `    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">\n` +
     `      <stop offset="0%" stop-color="${start}"/>\n` +
@@ -119,7 +140,10 @@ function buildGradientSvg(name: string, palette: string[], width: number): strin
     `</svg>`;
 }
 
-export function initializeAvatar(config: AvatarConfig): AvatarSet {
+export /**
+ * initializeAvatar function
+ */
+function initializeAvatar(config: AvatarConfig): any: AvatarSet {
   const validated = validateAvatarConfig(config);
   const finalConfig: AvatarConfig = {
     ...config,
@@ -141,7 +165,10 @@ export function initializeAvatar(config: AvatarConfig): AvatarSet {
   };
 }
 
-export function generateAvatarBatch(config: AvatarConfig): Record<string, string> {
+export /**
+ * generateAvatarBatch function
+ */
+function generateAvatarBatch(config: AvatarConfig): any: Record<string, string> {
   const finalConfig: AvatarConfig = {
     ...config,
     size: normalizeSize(config.size),
@@ -160,7 +187,10 @@ export function generateAvatarBatch(config: AvatarConfig): Record<string, string
   };
 }
 
-export function getAvatarUrl(config: AvatarConfig): string {
+export /**
+ * getAvatarUrl function
+ */
+function getAvatarUrl(config: AvatarConfig): any: string {
   const style = normalizeStyle(config.style);
   const size = normalizeSize(config.size);
   return `/api/avatars/${encodeURIComponent(config.userId)}?size=${SIZE_MAP[size]}&style=${encodeURIComponent(style)}`;

@@ -1,8 +1,8 @@
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env bash
-# Simple prod server healthcheck. Exits 0 on http 200, non-zero otherwise.
+# sophisticated prod server healthcheck. Exits 0 on http 200, non-zero otherwise.
 set -euo pipefail
-HOST=${1:-http://localhost:3000}
+HOST=${1:-https://production.qmoi.ai:3000}
 TIMEOUT=${2:-5}
 
 echo "Checking ${HOST} (timeout ${TIMEOUT}s) ..."

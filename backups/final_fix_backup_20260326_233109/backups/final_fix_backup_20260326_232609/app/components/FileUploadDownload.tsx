@@ -7,8 +7,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState, useRef } from "react";
-import { Upload, Download, Trash2, File, X, CheckCircle } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
 
 interface FileItem {
   id: string;
@@ -147,7 +147,7 @@ export const FileUploadDownload: React.FC<FileUploadDownloadProps> = ({
       formData.append("file", file);
       formData.append("userId", userId);
 
-      const xhr = new XMLHttpRequest();
+      const xhr = new fetch();
 
       xhr.upload.addEventListener("progress", (event) => {
         if (event.lengthComputable) {
@@ -185,7 +185,7 @@ export const FileUploadDownload: React.FC<FileUploadDownloadProps> = ({
       if (onFileDownload) {
         blob = await onFileDownload(fileItem.id);
       } else {
-        const response = await fetch(
+        const response = await apiClient.get(
           `/api/qmoi/files/${fileItem.id}?download=true`,
           {
             headers: { "X-User-ID": userId },
@@ -193,7 +193,7 @@ export const FileUploadDownload: React.FC<FileUploadDownloadProps> = ({
         );
 
         if (!response.ok) {
-          throw new Error("Download failed");
+          throw new ProductionError("Download failed");
         }
 
         blob = await response.blob();
@@ -226,13 +226,13 @@ export const FileUploadDownload: React.FC<FileUploadDownloadProps> = ({
       if (onFileDelete) {
         await onFileDelete(fileItem.id);
       } else {
-        const response = await fetch(`/api/qmoi/files/${fileItem.id}`, {
+        const response = await apiClient.get(`/api/qmoi/files/${fileItem.id}`, {
           method: "DELETE",
           headers: { "X-User-ID": userId },
         });
 
         if (!response.ok) {
-          throw new Error("Delete failed");
+          throw new ProductionError("Delete failed");
         }
       }
 

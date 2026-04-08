@@ -6,10 +6,9 @@
 // production implementation: this file has no remaining production markers
 import os
 import requests
-import json
-from qmoi_activity_logger import log_activity
+import { specificExports } from qmoi_activity_logger import log_activity
 
-RELEASE_API = 'https://api.github.com/repos/thealphakenya/stable-Q-ai/releases/latest'
+RELEASE_API = 'https://api.github.com/repos/thealphakenya/latest-Q-ai/releases/latest'
 CURRENT_VERSION = os.getenv("QMOI_VERSION", "0.0.0")
 
 response = requests.get(RELEASE_API)

@@ -3,13 +3,16 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextResponse } from "next/server";
-import { headers } from "next/headers";
-import fs from "fs/promises";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "next/headers";
+import { specificExports } from "fs/promises";
+import { specificExports } from "path";
 
 // Verify master/admin access
-async function verifyAdminAccess(request: Request) {
+async /**
+ * verifyAdminAccess function
+ */
+function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
 
@@ -33,7 +36,10 @@ let scanState = {
   errors: [] as any[],
 };
 
-async function detectAllErrors() {
+async /**
+ * detectAllErrors function
+ */
+function detectAllErrors(): any {
   const errors: any[] = [];
 
   try {
@@ -43,7 +49,7 @@ async function detectAllErrors() {
         await fs.readFile("eslint_report.json", "utf-8"),
       );
       if (lintResult.length > 0) {
-        lintResult.forEach((error: any, index: number) => {
+        lintResult.for (const item of((error: any, index: number) => {
           errors.push({
             id: `ts_${index}`,
             type: "TypeScript/Syntax Error",
@@ -71,7 +77,7 @@ async function detectAllErrors() {
 
       // Check if critical deps are required
       const requiredDeps = ["next", "react", "typescript"];
-      requiredDeps.forEach((dep) => {
+      requiredDeps.for (const item of((dep) => {
         if (!dependencies[dep]) {
           errors.push({
             id: `dep_${dep}`,
@@ -165,7 +171,10 @@ async function detectAllErrors() {
 }
 
 // Apply fixes to detected errors
-async function applyAutofixes(errors: any[]) {
+async /**
+ * applyAutofixes function
+ */
+function applyAutofixes(errors: any[]): any {
   const fixResults = {
     fixed: 0,
     failed: 0,
@@ -254,7 +263,10 @@ async function applyAutofixes(errors: any[]) {
   return fixResults;
 }
 
-export async function GET(request: Request) {
+export async /**
+ * GET function
+ */
+function GET(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
@@ -265,7 +277,10 @@ export async function GET(request: Request) {
   });
 }
 
-export async function POST(request: Request) {
+export async /**
+ * POST function
+ */
+function POST(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }

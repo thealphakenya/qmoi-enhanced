@@ -6,15 +6,18 @@
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { logEvent } from "../../../../lib/security_check";
-import { verifyWebhook } from "@/lib/payments/service";
-import { notifyPaymentSuccess, notifyPaymentFailure } from "@/lib/notifier";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/security_check";
+import { specificExports } from "@/lib/payments/service";
+import { specificExports } from "@/lib/notifier";
 
 // production helper functions (module-level to avoid inner-declaration lint errors)
-import { getPrismaClient } from "@/lib/prisma";
+import { specificExports } from "@/lib/prisma";
 
-async function updateMpesaTransaction(details: any) {
+async /**
+ * updateMpesaTransaction function
+ */
+function updateMpesaTransaction(details: any): any {
   // production: update the transaction record in the database
   try {
     const prisma = await getPrismaClient();
@@ -38,7 +41,10 @@ async function updateMpesaTransaction(details: any) {
   return true;
 }
 
-async function triggerPostPaymentActions(details: any) {
+async /**
+ * triggerPostPaymentActions function
+ */
+function triggerPostPaymentActions(details: any): any {
   // Send notifications via Email, Slack, WhatsApp
   try {
     const {
@@ -67,7 +73,10 @@ async function triggerPostPaymentActions(details: any) {
   return true;
 }
 
-export async function POST(_req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_req: NextRequest): any {
   try {
     // Read raw body for optional signature verification
     const raw = await _req.text();

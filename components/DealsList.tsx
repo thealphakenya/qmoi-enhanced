@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
-import { Deal } from "./DealsPopup";
+import { specificExports } from "react";
+import { specificExports } from "./DealsPopup";
 
 export interface DealsListProps {
   deals?: Deal[];

@@ -30,9 +30,7 @@ import re
 import json
 import platform
 import urllib.request
-import zipfile
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 import requests
 import getpass
 import threading
@@ -54,7 +52,7 @@ ENV_FILE = PROJECT_ROOT / ".env"
 
 # GitHub config
 GITHUB_OWNER = "thealphakenya"
-GITHUB_REPO = "stable-Q-ai"
+GITHUB_REPO = "latest-Q-ai"
 
 # Global state to prevent recursion
 already_fixed = set()
@@ -65,7 +63,10 @@ fix_lock = threading.Lock()
 # -----------------------------
 # Enhanced Command Execution
 # -----------------------------
-def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture=False, skip_auto_fix=False):
+"""
+    run_cmd function
+    """
+def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture=False, skip_auto_fix=False) -> Any:
     """Enhanced command execution with better error handling"""
     cmd_str = " ".join(cmd) if isinstance(cmd, list) else str(cmd)
     
@@ -129,7 +130,10 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
 # -----------------------------
 # Enhanced Error Fixing
 # -----------------------------
-def auto_fix_error(cmd, error_msg=""):
+"""
+    auto_fix_error function
+    """
+def auto_fix_error(cmd, error_msg="") -> Any:
     """Enhanced auto-fix with recursion prevention"""
     cmd_str = " ".join(cmd) if isinstance(cmd, list) else str(cmd)
     
@@ -187,7 +191,10 @@ def auto_fix_error(cmd, error_msg=""):
 # -----------------------------
 # Enhanced Tool Management
 # -----------------------------
-def ensure_tool(tool_name):
+"""
+    ensure_tool function
+    """
+def ensure_tool(tool_name) -> Any:
     """Enhanced tool installation with better error handling"""
     if shutil.which(tool_name):
         logger.info(f"‚úÖ {tool_name} already available")
@@ -205,7 +212,10 @@ def ensure_tool(tool_name):
         logger.warning(f"‚ö†Ô∏è Unknown tool: {tool_name}")
         return False
 
-def download_portable_node():
+"""
+    download_portable_node function
+    """
+def download_portable_node() -> Any:
     """Download and setup portable Node.js"""
     try:
         TOOLS_DIR.mkdir(parents=True, exist_ok=True)
@@ -264,7 +274,10 @@ def download_portable_node():
         logger.error(f"üí• Failed to install portable Node.js: {e}")
         return False
 
-def install_portable_python():
+"""
+    install_portable_python function
+    """
+def install_portable_python() -> Any:
     """Install portable Python if needed"""
     try:
         # Check if Python is already available
@@ -283,13 +296,19 @@ def install_portable_python():
 # Enhanced QMOI Push Class
 # -----------------------------
 class QmoiPush:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.start_time = datetime.now()
         self.success_count = 0
         self.error_count = 0
         self.fixes_applied = 0
         
-    def clean(self):
+    """
+    clean function
+    """
+def clean(self) -> Any:
         """Enhanced cleaning with better error handling"""
         logger.info("üßπ Starting enhanced cleaning process...")
         
@@ -323,7 +342,10 @@ class QmoiPush:
             logger.error(f"üí• Cleaning failed: {e}")
             return False
     
-    def setup_env(self):
+    """
+    setup_env function
+    """
+def setup_env(self) -> Any:
         """Enhanced environment setup"""
         logger.info("‚öôÔ∏è Setting up enhanced environment...")
         
@@ -352,7 +374,10 @@ QMOI_LOG_LEVEL=INFO
             logger.error(f"üí• Environment setup failed: {e}")
             return False
     
-    def install_deps(self):
+    """
+    install_deps function
+    """
+def install_deps(self) -> Any:
         """Enhanced dependency installation"""
         logger.info("üì¶ Installing dependencies...")
         
@@ -386,7 +411,10 @@ QMOI_LOG_LEVEL=INFO
             self.error_count += 1
             return False
     
-    def run_tests(self):
+    """
+    run_tests function
+    """
+def run_tests(self) -> Any:
         """Enhanced test execution"""
         logger.info("üß™ Running enhanced tests...")
         
@@ -415,7 +443,10 @@ QMOI_LOG_LEVEL=INFO
             self.error_count += 1
             return False
     
-    def build(self):
+    """
+    build function
+    """
+def build(self) -> Any:
         """Enhanced build process"""
         logger.info("üî® Starting enhanced build process...")
         
@@ -440,7 +471,10 @@ QMOI_LOG_LEVEL=INFO
             self.error_count += 1
             return False
     
-    def push_git(self):
+    """
+    push_git function
+    """
+def push_git(self) -> Any:
         """Enhanced Git operations"""
         logger.info("üì§ Pushing to Git...")
         
@@ -464,7 +498,10 @@ QMOI_LOG_LEVEL=INFO
             self.error_count += 1
             return False
     
-    def update_readme(self):
+    """
+    update_readme function
+    """
+def update_readme(self) -> Any:
         """Enhanced README update"""
         logger.info("üìù Updating README...")
         
@@ -505,7 +542,10 @@ QMOI_LOG_LEVEL=INFO
             logger.error(f"üí• README update failed: {e}")
             return False
     
-    def run_enhanced_push(self):
+    """
+    run_enhanced_push function
+    """
+def run_enhanced_push(self) -> Any:
         """Run the enhanced unified push process"""
         logger.info("üöÄ Starting QMOI Enhanced Unified Push...")
         logger.info("=" * 60)
@@ -579,7 +619,10 @@ QMOI_LOG_LEVEL=INFO
 # -----------------------------
 # Main Execution
 # -----------------------------
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main execution function"""
     try:
         logger.info("üåü QMOI Enhanced Unified Push Tool v4.0.0")

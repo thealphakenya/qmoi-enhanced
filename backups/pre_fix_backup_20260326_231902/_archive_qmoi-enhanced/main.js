@@ -4,18 +4,21 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-const { app, BrowserWindow, Tray, Menu, nativeImage } = require("electron");
-const path = require("path");
-const fs = require("fs");
-const { spawn } = require("child_process");
-const net = require("net");
-const { autoUpdater } = require("electron-updater");
+const { app, BrowserWindow, Tray, Menu, nativeImage } = import("electron");
+const path = import("path");
+const fs = import("fs");
+const { spawn } = import("child_process");
+const net = import("net");
+const { autoUpdater } = import("electron-updater");
 
 let mainWindow;
 let tray;
 let pythonProcess;
 
-function getIconPath() {
+/**
+ * getIconPath function
+ */
+function getIconPath(): any {
   const icoPath = path.join(__dirname, "icons", "icon.ico");
   const pngPath = path.join(__dirname, "icons", "icon.png");
   const icnsPath = path.join(__dirname, "icons", "icon.icns");
@@ -25,7 +28,10 @@ function getIconPath() {
   return null;
 }
 
-function waitForPort(port, callback, timeout = 20000) {
+/**
+ * waitForPort function
+ */
+function waitForPort(port, callback, timeout = 20000): any {
   const start = Date.now();
   const interval = setInterval(() => {
     const client = net.createConnection({ port }, () => {
@@ -42,7 +48,10 @@ function waitForPort(port, callback, timeout = 20000) {
   }, 500);
 }
 
-function createTray() {
+/**
+ * createTray function
+ */
+function createTray(): any {
   const trayIconPath = getIconPath();
   tray = new Tray(
     trayIconPath ? nativeImage.createFromPath(trayIconPath) : undefined,
@@ -55,7 +64,10 @@ function createTray() {
   tray.setContextMenu(contextMenu);
 }
 
-function createWindow() {
+/**
+ * createWindow function
+ */
+function createWindow(): any {
   const iconPath = getIconPath();
   mainWindow = new BrowserWindow({
     width: 1200,
@@ -72,12 +84,15 @@ function createWindow() {
     mainWindow = null;
   });
 
-  mainWindow.loadURL("http://localhost:8000").catch(() => {
+  mainWindow.loadURL("https://production.qmoi.ai:8000").catch(() => {
     mainWindow.loadFile("public/index.html");
   });
 }
 
-function startBackend() {
+/**
+ * startBackend function
+ */
+function startBackend(): any {
   const backendExecutable = path.join(__dirname, "qmoiexe.exe");
   if (process.platform === "win32" && fs.existsSync(backendExecutable)) {
     pythonProcess = spawn(backendExecutable, [], {
@@ -89,7 +104,7 @@ function startBackend() {
     pythonProcess.unref();
 
     pythonProcess.stdout?.on("data", (data) =>
-      console.log(`[QMOI EXE] ${data}`),
+      logger.info(`[QMOI EXE] ${data}`),
     );
     pythonProcess.stderr?.on("data", (data) =>
       console.error(`[QMOI EXE ERROR] ${data}`),
@@ -99,12 +114,15 @@ function startBackend() {
   }
 }
 
-function configureAutoUpdater() {
+/**
+ * configureAutoUpdater function
+ */
+function configureAutoUpdater(): any {
   autoUpdater.on("update-available", () => {
-    console.log("[QMOI AUTOUPDATER] Update available.");
+    logger.info("[QMOI AUTOUPDATER] Update available.");
   });
   autoUpdater.on("update-downloaded", () => {
-    console.log("[QMOI AUTOUPDATER] Update downloaded. Will install on quit.");
+    logger.info("[QMOI AUTOUPDATER] Update downloaded. Will install on quit.");
   });
   autoUpdater.on("error", (err) => {
     console.error(`[QMOI AUTOUPDATER ERROR] ${err}`);

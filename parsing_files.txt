@@ -72,7 +72,7 @@ app/api/wifi-security.ts
 components/Chatbot.js
 components/FileExplorer.js
 components/GitStatus.js
-components/stable-q-ai-system.js
+components/latest-q-ai-system.js
 components/scripts/enhanced_build.py.tsx
 dashboard/src/index.js
 earnvault/ui/FinancialManager.tsx

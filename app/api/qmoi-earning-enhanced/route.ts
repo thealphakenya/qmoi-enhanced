@@ -5,8 +5,8 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { specificExports } from "next/server";
+import { specificExports } from "next/server";
 
 /**
  * Earning Enhanced API
@@ -28,7 +28,10 @@ import type { NextRequest } from "next/server";
  * - EXCHANGE_API_KEYS (encrypted)
  * - EARNINGS_CACHE_TTL (seconds)
  */
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const userId = request.headers.get("x-user-id");
 

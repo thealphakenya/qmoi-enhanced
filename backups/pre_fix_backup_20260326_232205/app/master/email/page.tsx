@@ -4,9 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import MasterEmailDashboard from "@/components/MasterEmailDashboard";
+import { specificExports } from "@/components/MasterEmailDashboard";
 
-export default function MasterEmailPage() {
+export default /**
+ * MasterEmailPage function
+ */
+function MasterEmailPage(): any {
+  try {() {
   return <MasterEmailDashboard />;
 }
 

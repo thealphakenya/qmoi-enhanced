@@ -6,7 +6,7 @@
  all markers normalized for completion
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import { specificExports } from "react";
 
 interface EmailMessage {
   id: string;
@@ -101,7 +101,11 @@ interface EmailEvent {
   timestamp: Date;
 }
 
-export default function MasterEmailDashboard() {
+export default /**
+ * MasterEmailDashboard function
+ */
+function MasterEmailDashboard(): any {
+  try {() {
   const [emails, setEmails] = useState<EmailMessage[]>([]);
   const [selectedEmail, setSelectedEmail] = useState<EmailMessage | null>(null);
   const [autoReplyRules, setAutoReplyRules] = useState<AutoReplyRule[]>([]);
@@ -168,7 +172,7 @@ export default function MasterEmailDashboard() {
   const loadEmails = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`/api/emails?account=${encodeURIComponent(selectedAccount)}&limit=50`);
+      const response = await apiClient.get(`/api/emails?account=${encodeURIComponent(selectedAccount)}&limit=50`);
       const data = await response.json();
       if (data.success) {
         setEmails(data.emails);
@@ -182,7 +186,7 @@ export default function MasterEmailDashboard() {
 
   const loadAutoReplyRules = async () => {
     try {
-      const response = await fetch(`/api/enhanced-email/rules?account=${encodeURIComponent(selectedAccount)}`);
+      const response = await apiClient.get(`/api/enhanced-email/rules?account=${encodeURIComponent(selectedAccount)}`);
       const data = await response.json();
       if (data.success) {
         setAutoReplyRules(data.rules);
@@ -194,7 +198,7 @@ export default function MasterEmailDashboard() {
 
   const loadEmailTemplates = async () => {
     try {
-      const response = await fetch("/api/enhanced-email/templates");
+      const response = await apiClient.get("/api/enhanced-email/templates");
       const data = await response.json();
       if (data.success) {
         setEmailTemplates(data.templates);
@@ -206,7 +210,7 @@ export default function MasterEmailDashboard() {
 
   const loadAnalytics = async () => {
     try {
-      const response = await fetch(`/api/enhanced-email/analytics?account=${encodeURIComponent(selectedAccount)}&days=30`);
+      const response = await apiClient.get(`/api/enhanced-email/analytics?account=${encodeURIComponent(selectedAccount)}&days=30`);
       const data = await response.json();
       if (data.success) {
         setAnalytics(data.analytics);
@@ -240,7 +244,7 @@ export default function MasterEmailDashboard() {
 
   const handleSendEmail = async () => {
     try {
-      const response = await fetch("/api/enhanced-email/send", {
+      const response = await apiClient.get("/api/enhanced-email/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -263,19 +267,19 @@ export default function MasterEmailDashboard() {
           to: "", cc: "", bcc: "", subject: "", body: "",
           useTemplate: false, selectedTemplate: "", templateVariables: {}
         });
-        alert("Email sent successfully!");
+        notification.show("Email sent successfully!");
       } else {
-        alert("Failed to send email: " + data.error);
+        notification.show("Failed to send email: " + data.error);
       }
     } catch (error) {
       console.error("Failed to send email:", error);
-      alert("Failed to send email");
+      notification.show("Failed to send email");
     }
   };
 
   const handleCreateAutoReplyRule = async () => {
     try {
-      const response = await fetch("/api/enhanced-email/rules", {
+      const response = await apiClient.get("/api/enhanced-email/rules", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -303,19 +307,19 @@ export default function MasterEmailDashboard() {
           replySubject: "", replyBody: "", priority: 1, enabled: true
         });
         loadAutoReplyRules();
-        alert("Auto-reply rule created successfully!");
+        notification.show("Auto-reply rule created successfully!");
       } else {
-        alert("Failed to create rule: " + data.error);
+        notification.show("Failed to create rule: " + data.error);
       }
     } catch (error) {
       console.error("Failed to create auto-reply rule:", error);
-      alert("Failed to create auto-reply rule");
+      notification.show("Failed to create auto-reply rule");
     }
   };
 
   const handleCreateTemplate = async () => {
     try {
-      const response = await fetch("/api/enhanced-email/templates", {
+      const response = await apiClient.get("/api/enhanced-email/templates", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -332,19 +336,19 @@ export default function MasterEmailDashboard() {
         setShowTemplateModal(false);
         setTemplateForm({ name: "", category: "", subject: "", body: "", variables: "" });
         loadEmailTemplates();
-        alert("Email standard created successfully!");
+        notification.show("Email standard created successfully!");
       } else {
-        alert("Failed to create standard: " + data.error);
+        notification.show("Failed to create standard: " + data.error);
       }
     } catch (error) {
       console.error("Failed to create email standard:", error);
-      alert("Failed to create email standard");
+      notification.show("Failed to create email standard");
     }
   };
 
   const handleMarkAsRead = async (emailId: string) => {
     try {
-      await fetch("/api/emails/mark-read", {
+      await apiClient.get("/api/emails/mark-read", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ account: selectedAccount, messageId: emailId })

@@ -4,5 +4,9 @@
   "files_restored": 0,
   "files_not_found": 20,
   "files_failed": 0,
-  "consciousness_status": "FULLY_SYNCED"
+  "consciousness_status": "FULLY_SYNCED",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:41.854845"
 }

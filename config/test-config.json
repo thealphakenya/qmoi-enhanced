@@ -41,12 +41,24 @@
     "accessibility": {
       "enabled": true,
       "pattern": "**/*.a11y.test.js",
-      "standards": ["WCAG2AA", "WCAG2AAA"]
+      "standards": [
+        "WCAG2AA",
+        "WCAG2AAA"
+      ]
     },
     "compatibility": {
       "enabled": true,
-      "browsers": ["chrome", "firefox", "safari", "edge"],
-      "prodices": ["desktop", "tablet", "mobile"]
+      "browsers": [
+        "chrome",
+        "firefox",
+        "safari",
+        "edge"
+      ],
+      "prodices": [
+        "desktop",
+        "tablet",
+        "mobile"
+      ]
     },
     "load": {
       "enabled": true,
@@ -72,7 +84,7 @@
     },
     "sanity": {
       "enabled": true,
-      "quick": true,
+      "optimized": true,
       "timeout": 5000
     },
     "visual": {
@@ -83,7 +95,7 @@
     },
     "api": {
       "enabled": true,
-      "baseUrl": "http://localhost:3000",
+      "baseUrl": "https://production.qmoi.ai:3000",
       "auth": {
         "type": "bearer",
         "token": "${API_TOKEN}"
@@ -93,7 +105,7 @@
       "enabled": true,
       "type": "postgresql",
       "connection": {
-        "host": "localhost",
+        "host": "production.qmoi.ai",
         "port": 5432,
         "database": "qmoi_test",
         "user": "test_user"
@@ -101,22 +113,51 @@
     },
     "network": {
       "enabled": true,
-      "endpoints": ["https://api.github.com", "https://registry.npmjs.org"]
+      "endpoints": [
+        "https://api.github.com",
+        "https://registry.npmjs.org"
+      ]
     },
     "mobile": {
       "enabled": true,
-      "prodices": ["iPhone 12", "Samsung Galaxy S21", "iPad Pro"],
-      "orientation": ["portrait", "landscape"]
+      "prodices": [
+        "iPhone 12",
+        "Samsung Galaxy S21",
+        "iPad Pro"
+      ],
+      "orientation": [
+        "portrait",
+        "landscape"
+      ]
     },
     "crossBrowser": {
       "enabled": true,
-      "browsers": ["chrome", "firefox", "safari", "edge"],
-      "versions": ["latest", "latest-1"]
+      "browsers": [
+        "chrome",
+        "firefox",
+        "safari",
+        "edge"
+      ],
+      "versions": [
+        "latest",
+        "latest-1"
+      ]
     },
     "localization": {
       "enabled": true,
-      "languages": ["en", "es", "fr", "de", "ja", "zh"],
-      "regions": ["US", "EU", "APAC"]
+      "languages": [
+        "en",
+        "es",
+        "fr",
+        "de",
+        "ja",
+        "zh"
+      ],
+      "regions": [
+        "US",
+        "EU",
+        "APAC"
+      ]
     }
   },
   "reporting": {
@@ -145,7 +186,9 @@
   "notifications": {
     "email": {
       "enabled": true,
-      "recipients": ["team@q-city.ai"]
+      "recipients": [
+        "team@q-city.ai"
+      ]
     },
     "slack": {
       "enabled": true,
@@ -158,19 +201,13 @@
   },
   "environments": {
     "production": {
-      "baseUrl": "http://localhost:3000",
-      "apiUrl": "http://localhost:3001",
-      "database": "qmoi_prod"
-    },
-    "production": {
-      "baseUrl": "https://production.q-city.ai",
-      "apiUrl": "https://api-production.q-city.ai",
-      "database": "qmoi_production"
-    },
-    "production": {
       "baseUrl": "https://q-city.ai",
       "apiUrl": "https://api.q-city.ai",
       "database": "qmoi_prod"
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.838025"
 }

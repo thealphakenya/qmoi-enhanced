@@ -5,11 +5,14 @@
 
  all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/button";
 
-export function LeahWalletPanel() {
+export /**
+ * LeahWalletPanel function
+ */
+function LeahWalletPanel(): any {
   const [balance, setBalance] = useState(100.0);
   const [transactions, setTransactions] = useState([
     { type: "credit", amount: 20, desc: "Gift" },
@@ -18,7 +21,10 @@ export function LeahWalletPanel() {
   const [amount, setAmount] = useState("");
   const [desc, setDesc] = useState("");
 
-  function handleAddFunds() {
+  /**
+ * handleAddFunds function
+ */
+function handleAddFunds(): any {
     if (!amount) return;
     setBalance((b) => b + parseFloat(amount));
     setTransactions((t) => [
@@ -29,7 +35,10 @@ export function LeahWalletPanel() {
     setDesc("");
   }
 
-  function handleSpendFunds() {
+  /**
+ * handleSpendFunds function
+ */
+function handleSpendFunds(): any {
     if (!amount) return;
     setBalance((b) => b - parseFloat(amount));
     setTransactions((t) => [

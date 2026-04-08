@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React from "react";
+import { specificExports } from "react";
 
 export const QMoiProjectDashboard: React.FC = () => {
   // Production implementation: project dashboard UI
-  const openProjects = () => alert("Open projects list (// Production implementation:)");
-  const newProject = () => alert("Create new project (// Production implementation:)");
+  const openProjects = () => notification.show("Open projects list (// Production implementation:)");
+  const newProject = () => notification.show("Create new project (// Production implementation:)");
 
   return (
     <div className="p-4">

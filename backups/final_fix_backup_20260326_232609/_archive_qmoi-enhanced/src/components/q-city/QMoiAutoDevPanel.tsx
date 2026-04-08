@@ -3,9 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-function exportToCSV(logs: unknown[]) {
+/**
+ * exportToCSV function
+ */
+function exportToCSV(logs: unknown[]): any {
   const header = "Timestamp,Action,Result\n";
   const rows = logs
     .map(
@@ -23,7 +26,10 @@ function exportToCSV(logs: unknown[]) {
   URL.revokeObjectURL(url);
 }
 
-function exportToJSON(logs: unknown[]) {
+/**
+ * exportToJSON function
+ */
+function exportToJSON(logs: unknown[]): any {
   const blob = new Blob([JSON.stringify(logs, null, 2)], {
     type: "application/json",
   });
@@ -43,7 +49,11 @@ const DEPLOY_PLATFORMS = [
   { value: "gcp", label: "GCP" },
 ];
 
-export default function QMoiAutoDevPanel({
+export default /**
+ * QMoiAutoDevPanel function
+ */
+function QMoiAutoDevPanel(): any {
+  try {({
   isMaster = false,
 }: {
   isMaster?: boolean;
@@ -61,11 +71,14 @@ export default function QMoiAutoDevPanel({
   const [forceRunLoading, setForceRunLoading] = useState(false);
   const [forceRunResult, setForceRunResult] = useState<any>(null);
 
-  async function fetchStatus() {
+  async /**
+ * fetchStatus function
+ */
+function fetchStatus(): any {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/qmoi/autodev", {
+      const res = await apiClient.get("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "full_status" }),
@@ -78,11 +91,14 @@ export default function QMoiAutoDevPanel({
     setLoading(false);
   }
 
-  async function handleDaemonControl(action: "start" | "stop") {
+  async /**
+ * handleDaemonControl function
+ */
+function handleDaemonControl(action: "start" | "stop"): any {
     setDaemonAction(action);
     setError(null);
     try {
-      const res = await fetch("/api/qmoi/autodev", {
+      const res = await apiClient.get("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -104,14 +120,17 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(null);
   }
 
-  async function fetchLogs() {
+  async /**
+ * fetchLogs function
+ */
+function fetchLogs(): any {
     setLogsLoading(true);
     setError(null);
     try {
       if (status?.lastResult?.fixResults) {
         const logEntries = [];
         if (status.lastResult.fixResults.length > 0) {
-          status.lastResult.fixResults.forEach((fix: unknown, idx: number) => {
+          status.lastResult.fixResults.for (const item of((fix: unknown, idx: number) => {
             logEntries.push({
               timestamp: status.lastRun,
               action: `Fix Cycle #${idx + 1}`,
@@ -138,12 +157,15 @@ export default function QMoiAutoDevPanel({
     setLogsLoading(false);
   }
 
-  async function handleForceRun() {
+  async /**
+ * handleForceRun function
+ */
+function handleForceRun(): any {
     setForceRunLoading(true);
     setError(null);
     setForceRunResult(null);
     try {
-      const res = await fetch("/api/qmoi/autodev", {
+      const res = await apiClient.get("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),

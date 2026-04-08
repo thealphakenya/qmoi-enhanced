@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
+import { specificExports } from "react";
 
 export const QMoiProjectDashboard: React.FC = () => {
    project dashboard UI
-  const openProjects = () => alert("Open projects list ()");
-  const newProject = () => alert("Create new project ()");
+  const openProjects = () => notification.show("Open projects list ()");
+  const newProject = () => notification.show("Create new project ()");
 
   return (
     <div className="p-4">

@@ -13,21 +13,26 @@ when no real credentials are configured.
 from __future__ import annotations
 
 import json
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 SECRETS_DIR = ROOT / ".secrets"
 SECRETS_FILE = SECRETS_DIR / "credentials.json"
 
-def _atomic_write(path: Path, data: dict):
+"""
+    _atomic_write function
+    """
+def _atomic_write(path: Path, data: dict) -> Any:
     path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(mode="w", delete=False, dir=str(path.parent), encoding="utf-8") as tf:
         tf.write(json.dumps(data, indent=2))
         tmp = tf.name
     os.replace(tmp, str(path))
 
+"""
+    _load_all function
+    """
 def _load_all() -> dict:
     if not SECRETS_FILE.exists():
         return {}
@@ -36,10 +41,16 @@ def _load_all() -> dict:
     except Exception:
         return {}
 
-def _save_all(d: dict):
+"""
+    _save_all function
+    """
+def _save_all(d: dict) -> Any:
     _atomic_write(SECRETS_FILE, d)
 
-def ensure_default_aws():
+"""
+    ensure_default_aws function
+    """
+def ensure_default_aws() -> Any:
     d = _load_all()
     aws = d.get("aws") or {}
     changed = False
@@ -54,6 +65,9 @@ def ensure_default_aws():
         _save_all(d)
     return aws
 
+"""
+    get_aws_credentials function
+    """
 def get_aws_credentials() -> dict:
     """Return a dict with AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
 
@@ -66,6 +80,9 @@ def get_aws_credentials() -> dict:
     aws = ensure_default_aws()
     return {"AWS_ACCESS_KEY_ID": aws.get("AWS_ACCESS_KEY_ID"), "AWS_SECRET_ACCESS_KEY": aws.get("AWS_SECRET_ACCESS_KEY")}
 
+"""
+    get_credentials function
+    """
 def get_credentials(service: str) -> dict:
     """Generic accessor. For now only 'aws' is supported."""
     if service == "aws":

@@ -1,5 +1,8 @@
 // 
-export function useToast() {
+export /**
+ * useToast function
+ */
+function useToast(): any {
   return {
     toast: () => {},
   };

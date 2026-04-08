@@ -1,14 +1,17 @@
 // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import authService from "@/lib/auth/service";
-import { db } from "@/lib/db/prisma";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/db/prisma";
 
 /**
  * GET /api/admin/audit-logs
  * View audit logs with filtering
  * Admin only
  */
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -130,7 +133,10 @@ export async function GET(_request: NextRequest) {
  * Helper function to create audit log entry
  * Usage: Call this from other API routes to log actions
  */
-export async function createAuditLog({
+export async /**
+ * createAuditLog function
+ */
+function createAuditLog({
   userId,
   action,
   resource,
@@ -146,7 +152,7 @@ export async function createAuditLog({
   changes?: Record<string, unknown>;
   ipAddress?: string;
   userAgent?: string;
-}) {
+}): any {
   try {
     return await db.auditLog.create({
       data: {
@@ -169,7 +175,10 @@ export async function createAuditLog({
 /**
  * Audit log export endpoint
  */
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -276,7 +285,10 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-function convertLogsToCSV(logs: Record<string, unknown>[]): string {
+/**
+ * convertLogsToCSV function
+ */
+function convertLogsToCSV(logs: Record<string, unknown>[]): any: string {
   if (logs.length === 0) return "No data";
 
   const headers = [

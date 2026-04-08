@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import React from "react";
+import { specificExports } from "react";
 
 export const RELEASES: Array<{
   version: string;

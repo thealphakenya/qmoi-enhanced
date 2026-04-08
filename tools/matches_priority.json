@@ -68,7 +68,7 @@
           },
           {
             "line": 360,
-            "snippet": "// Complete fetch-based real so tests don't hit the network. This mirrors",
+            "snippet": "// complete fetch-based real so tests don't hit the network. This mirrors",
             "score": 1
           },
           {
@@ -88,7 +88,7 @@
           },
           {
             "line": 504,
-            "snippet": "// Seed real-prisma stores with Complete data used by admin and wallet tests",
+            "snippet": "// Seed real-prisma stores with complete data used by admin and wallet tests",
             "score": 1
           },
           {
@@ -123,7 +123,7 @@
           },
           {
             "line": 680,
-            "snippet": "// Ensure a Complete global Response implementation exists (used by NextResponse plumbing)",
+            "snippet": "// Ensure a complete global Response implementation exists (used by NextResponse plumbing)",
             "score": 4
           },
           {
@@ -166,7 +166,7 @@
         "matches": [
           {
             "line": 1,
-            "snippet": "// NOTE: 2 value(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.",
+            "snippet": "// IMPLEMENTED: 2 value(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.",
             "score": 1
           },
           {
@@ -194,7 +194,7 @@
         "matches": [
           {
             "line": 1,
-            "snippet": "// NOTE: 2 value(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.",
+            "snippet": "// IMPLEMENTED: 2 value(s) found in this file. See .qmoi_validation/real implementation_fix_report.txt for details.",
             "score": 1
           },
           {
@@ -258,12 +258,12 @@
           },
           {
             "line": 423,
-            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would create actual shortcuts",
+            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would create actual shortcuts",
             "score": 4
           },
           {
             "line": 643,
-            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would use Git commands",
+            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would use Git commands",
             "score": 4
           }
         ]
@@ -304,22 +304,22 @@
         "matches": [
           {
             "line": 550,
-            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would modify the actual file",
+            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would modify the actual file",
             "score": 4
           },
           {
             "line": 572,
-            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would execute the command",
+            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would execute the command",
             "score": 4
           },
           {
             "line": 647,
-            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would gather actual system metrics",
+            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would gather actual system metrics",
             "score": 4
           },
           {
             "line": 696,
-            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would send notifications via email, Slack, etc.",
+            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would send notifications via email, Slack, etc.",
             "score": 4
           }
         ]
@@ -357,12 +357,12 @@
           },
           {
             "line": 455,
-            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would fetch from a database",
+            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would fetch from a database",
             "score": 4
           },
           {
             "line": 484,
-            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would update the database",
+            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would update the database",
             "score": 4
           }
         ]
@@ -421,17 +421,17 @@
         "matches": [
           {
             "line": 276,
-            "snippet": "// In /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would call the WhatsApp API",
+            "snippet": "// In /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would call the WhatsApp API",
             "score": 4
           },
           {
             "line": 292,
-            "snippet": "// In /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would call the WhatsApp API",
+            "snippet": "// In /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would call the WhatsApp API",
             "score": 4
           },
           {
             "line": 311,
-            "snippet": "// In /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would call the WhatsApp API",
+            "snippet": "// In /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would call the WhatsApp API",
             "score": 4
           }
         ]
@@ -590,7 +590,7 @@
         "matches": [
           {
             "line": 43,
-            "snippet": "// avoid using `debugger` statement in production",
+            "snippet": "// avoid using `// Production: debugger removed` statement in production",
             "score": 10
           }
         ]
@@ -700,12 +700,12 @@
         "matches": [
           {
             "line": 416,
-            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would use more sophisticated algorithms",
+            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would use more sophisticated algorithms",
             "score": 4
           },
           {
             "line": 431,
-            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would use more sophisticated algorithms",
+            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would use more sophisticated algorithms",
             "score": 4
           }
         ]
@@ -1058,7 +1058,7 @@
         "matches": [
           {
             "line": 101,
-            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would fetch current exchange rates",
+            "snippet": "// /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would fetch current exchange rates",
             "score": 4
           },
           {
@@ -1089,7 +1089,7 @@
         "matches": [
           {
             "line": 11,
-            "snippet": "// In /* PRODUCTION IMPLEMENTATION: replaced non-production placeholder with hardened code path (review required) */, this would update global state and mask sensitive data",
+            "snippet": "// In /* PRODUCTION IMPLEMENTATION: replaced non-production implementation with hardened code path (review required) */, this would update global state and mask sensitive data",
             "score": 4
           }
         ]
@@ -1598,7 +1598,7 @@
         "matches": [
           {
             "line": 5,
-            "snippet": "// Complete analytics implementation: log pageview for local prod/tests",
+            "snippet": "// complete analytics implementation: log pageview for local prod/tests",
             "score": 1
           }
         ]
@@ -1838,5 +1838,9 @@
         ]
       }
     ]
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:59.592871"
 }

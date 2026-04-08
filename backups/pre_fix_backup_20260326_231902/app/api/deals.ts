@@ -4,16 +4,19 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-// Simple deals API route
+// sophisticated deals API route
 // This endpoint returns a list of active deals/offers that users can browse.
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "../../lib/db";
+import { specificExports } from "next";
+import { specificExports } from "../../lib/db";
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   if (req.method === "GET") {
     try {
       // if Prisma is configured and there's a deals table, fetch

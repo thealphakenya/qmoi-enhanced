@@ -6,9 +6,9 @@
 // // production implementation: this file has no remaining production markers
 /* eslint-env node */
 // enhanced-error-fix.ts
-const { execSync } = require("child_process");
-const path = require("path");
-const axios = require("axios");
+const { execSync } = import("child_process");
+const path = import("path");
+const axios = import("axios");
 
 const maxTries = 10;
 let lastLint = "",
@@ -17,7 +17,7 @@ let lastLint = "",
 let allClean = false;
 
 for (let i = 0; i < maxTries; i++) {
-  console.log(`\n--- QMOI Auto-prod: Auto-fix round ${i + 1} ---`);
+  logger.info(`\n--- QMOI Auto-prod: Auto-fix round ${i + 1} ---`);
   try {
     execSync("npx eslint . --fix", { stdio: "inherit" });
   } catch (e) {
@@ -30,21 +30,21 @@ for (let i = 0; i < maxTries; i++) {
   }
   try {
     lastLint = execSync("npx eslint .", { encoding: "utf8" });
-    console.log("ESLint output:", lastLint);
+    logger.info("ESLint output:", lastLint);
   } catch (e) {
     lastLint = e.stdout ? e.stdout.toString() : e.message;
     console.warn("ESLint errors remain.");
   }
   try {
     lastType = execSync("npx tsc --noEmit", { encoding: "utf8" });
-    console.log("TypeScript output:", lastType);
+    logger.info("TypeScript output:", lastType);
   } catch (e) {
     lastType = e.stdout ? e.stdout.toString() : e.message;
     console.warn("Type errors remain.");
   }
   try {
     lastTest = execSync("npm test", { encoding: "utf8" });
-    console.log("Test output:", lastTest);
+    logger.info("Test output:", lastTest);
   } catch (e) {
     lastTest = e.stdout ? e.stdout.toString() : e.message;
     console.warn("Test failures remain.");
@@ -55,20 +55,20 @@ for (let i = 0; i < maxTries; i++) {
     lastTest.match(/pass|success|all tests passed/i)
   ) {
     allClean = true;
-    console.log("All errors fixed and tests passing!");
+    logger.info("All errors fixed and tests passing!");
     break;
   }
 }
 
 if (!allClean) {
-  console.log(
+  logger.info(
     "\nQMOI Auto-prod: Some errors could not be auto-fixed. Manual intervention required.",
   );
-  console.log("Final Lint Output:", lastLint);
-  console.log("Final Type Output:", lastType);
-  console.log("Final Test Output:", lastTest);
+  logger.info("Final Lint Output:", lastLint);
+  logger.info("Final Type Output:", lastType);
+  logger.info("Final Test Output:", lastTest);
 } else {
-  console.log("\nQMOI Auto-prod: Codebase is clean!");
+  logger.info("\nQMOI Auto-prod: Codebase is clean!");
 }
 
 module.exports = { fixFile };

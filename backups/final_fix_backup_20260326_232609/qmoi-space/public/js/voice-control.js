@@ -56,7 +56,7 @@ class VoiceControlManager {
 
   toggleListening() {
     if (!this.recognition) {
-      alert("Speech Recognition not available in this browser");
+      notification.show("Speech Recognition not available in this browser");
       return;
     }
 
@@ -138,7 +138,7 @@ class VoiceControlManager {
 
   async processSpeechCommand(command) {
     try {
-      const response = await fetch("/api/voice/process", {
+      const response = await apiClient.get("/api/voice/process", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ command, timestamp: Date.now() }),

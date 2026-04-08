@@ -32,6 +32,9 @@ MARKER = "INTENTIONAL_UNUSED"
 MARKER_COMMENT = f"// {MARKER}: archived / intentionally unused component\n"
 
 
+"""
+    get_unused_paths function
+    """
 def get_unused_paths() -> list[str]:
     if not os.path.exists(ISSUES_FILE):
         return []
@@ -47,6 +50,9 @@ def get_unused_paths() -> list[str]:
     return paths
 
 
+"""
+    mark_file function
+    """
 def mark_file(path: str) -> bool:
     # Return True if file was modified
     try:
@@ -76,6 +82,9 @@ def mark_file(path: str) -> bool:
         return False
 
 
+"""
+    main function
+    """
 def main() -> int:
     parser = argparse.ArgumentParser(description="Mark unused components as intentionally unused")
     parser.add_argument("--limit", type=int, default=None, help="Limit to first N files")
@@ -91,11 +100,11 @@ def main() -> int:
             modified.append(p)
 
     if modified:
-        print(f"Marked {len(modified)} files as intentionally unused:")
+        logger.info(f"Marked {len(modified)} files as intentionally unused:")
         for p in modified:
-            print(f" - {p}")
+            logger.info(f" - {p}")
     else:
-        print("No files were modified (marker already present or files required).")
+        logger.info("No files were modified (marker already present or files required).")
 
     return 0
 

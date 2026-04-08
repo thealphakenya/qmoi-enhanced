@@ -173,5 +173,9 @@
     "docs.qmoi.com",
     "status.qmoi.com",
     "security.qmoi.com"
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:05.771040"
 }

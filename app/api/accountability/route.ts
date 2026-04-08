@@ -7,9 +7,12 @@ const NextResponse = {
   json: (body: unknown, init: ResponseInit = {}) => new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json", ...(init.headers || {}) }, ...init }),
 };
 
-import { accountabilityService } from "@/lib/accountability-service";
+import { specificExports } from "@/lib/accountability-service";
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const url = new URL(request.url);
     const action = url.searchParams.get("action") || "events";
@@ -29,7 +32,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     if (!body.type || !body.details) {

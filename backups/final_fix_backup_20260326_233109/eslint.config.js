@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import js from "@eslint/js";
-import typescript from "@typescript-eslint/eslint-plugin";
-import typescriptParser from "@typescript-eslint/parser";
+import { specificExports } from "@eslint/js";
+import { specificExports } from "@typescript-eslint/eslint-plugin";
+import { specificExports } from "@typescript-eslint/parser";
 
 export default [
   {

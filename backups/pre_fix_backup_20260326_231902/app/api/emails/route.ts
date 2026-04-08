@@ -5,11 +5,14 @@
 
 // [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextRequest, NextResponse } from "next/server";
-import { qmoiEmailService } from "@/lib/email-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/email-service";
 
 // GET /api/emails - Get emails for account
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const account = searchParams.get("account");
@@ -48,7 +51,10 @@ export async function GET(request: NextRequest) {
 }
 
 // POST /api/emails - Send email or perform email actions
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, ...params } = body;

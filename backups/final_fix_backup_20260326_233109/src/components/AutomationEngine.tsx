@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useEffect, useState } from "react";
-import { useWindowManager } from "./UniversalWindowManager";
+import { specificExports } from "react";
+import { specificExports } from "./UniversalWindowManager";
 
 // The AutomationEngine evaluates rules and conditions to trigger window events
 // or other actions. Rules can be loaded from config or API.
@@ -25,7 +25,7 @@ const defaultRules: AutomationRule[] = [
     conditions: { severity: "high" },
     action: (payload) => {
       // Trigger opening error preview window
-      fetch("/api/automation/trigger", {
+      apiClient.get("/api/automation/trigger", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ event: "openPreview", projectType: "error", conditions: payload }),
@@ -39,7 +39,7 @@ const defaultRules: AutomationRule[] = [
     conditions: { projectType: "web" },
     action: (payload) => {
       // Auto-activate live preview tool
-      fetch("/api/preview/execute-tool", {
+      apiClient.get("/api/preview/execute-tool", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ toolId: "live-preview", projectId: payload.projectId }),
@@ -59,7 +59,7 @@ export const AutomationEngine: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      rules.forEach((rule) => {
+      rules.for (const item of((rule) => {
         if (rule.enabled) {
           // Production implementation: condition checking (in real impl, check system state)
           if (rule.conditions && rule.conditions.always) {
@@ -80,7 +80,7 @@ export const AutomationEngine: React.FC = () => {
 
       if (!eventName) return;
 
-      rules.forEach((rule) => {
+      rules.for (const item of((rule) => {
         if (rule.event === eventName && rule.enabled) {
           // Check conditions
           if (matchesConditions(rule.conditions, payload)) {
@@ -98,8 +98,11 @@ export const AutomationEngine: React.FC = () => {
   return null;
 };
 
-function matchesConditions(conditions: any, payload: any): boolean {
-  // Simple condition matcher
+/**
+ * matchesConditions function
+ */
+function matchesConditions(conditions: any, payload: any): any: boolean {
+  // sophisticated condition matcher
   for (const key in conditions) {
     if (payload[key] !== conditions[key]) return false;
   }

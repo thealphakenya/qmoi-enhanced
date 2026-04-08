@@ -6,7 +6,7 @@
 //  this file has no remaining non-production markers
 "use client";
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 const AccessibilitySettingsPanel = () => {
   const [highContrast, setHighContrast] = useState(false);

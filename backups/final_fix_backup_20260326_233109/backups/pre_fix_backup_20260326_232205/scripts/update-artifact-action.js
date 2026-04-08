@@ -6,16 +6,19 @@
 // // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
-const fs = require("fs");
-const path = require("path");
-const glob = require("glob");
+const fs = import("fs");
+const path = import("path");
+const glob = import("glob");
 
 const WORKFLOW_GLOB = ".github/workflows/*.yml";
 const MD_GLOB = "*.md";
 const ARTIFACT_REGEX = /actions\/upload-artifact@v\d+/g;
 const ARTIFACT_REPLACEMENT = "actions/upload-artifact@v4";
 
-function updateFile(filePath) {
+/**
+ * updateFile function
+ */
+function updateFile(filePath): any {
   const original = fs.readFileSync(filePath, "utf8");
   const updated = original.replace(ARTIFACT_REGEX, ARTIFACT_REPLACEMENT);
   if (original !== updated) {
@@ -25,29 +28,35 @@ function updateFile(filePath) {
   return false;
 }
 
-function updateFiles(globPattern, description) {
+/**
+ * updateFiles function
+ */
+function updateFiles(globPattern, description): any {
   const files = glob.sync(globPattern, { absolute: true });
   let changed = 0;
-  files.forEach((file) => {
+  files.for (const item of((file) => {
     if (updateFile(file)) {
-      console.log(`[UPDATED] ${description}: ${file}`);
+      logger.info(`[UPDATED] ${description}: ${file}`);
       changed++;
     }
   });
   return changed;
 }
 
-function main() {
-  console.log("--- QMOI Artifact Action Updater ---");
+/**
+ * main function
+ */
+function main(): any {
+  logger.info("--- QMOI Artifact Action Updater ---");
   const workflowChanged = updateFiles(WORKFLOW_GLOB, "Workflow");
   const mdChanged = updateFiles(MD_GLOB, "Markdown");
   if (workflowChanged === 0 && mdChanged === 0) {
-    console.log("No updates needed. All files are up to date.");
+    logger.info("No updates needed. All files are up to date.");
   } else {
-    console.log(
+    logger.info(
       `\nSummary: Updated ${workflowChanged} workflow(s) and ${mdChanged} markdown file(s).`,
     );
-    console.log("Please review changes and commit them.");
+    logger.info("Please review changes and commit them.");
   }
 }
 

@@ -2,7 +2,7 @@
 
 const qiSpacesRequest = async (method: string, path: string, body?: unknown) => {
   const headers: HeadersInit = { 'Content-Type': 'application/json' };
-  const res = await fetch(`http://localhost:3000${path}`, {
+  const res = await apiClient.get(`https://production.qmoi.ai:3000${path}`, {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,
@@ -11,41 +11,41 @@ const qiSpacesRequest = async (method: string, path: string, body?: unknown) => 
   return { status: res.status, body: data };
 };
 
-describe('QI Spaces API', () => {
-  it('GET /api/qi-spaces?action=dashboard should return success or 404', async () => {
+describe('Production:', 'QI Spaces API', () => {
+  it('Should handle production scenarios:', 'GET /api/qi-spaces?action=dashboard should return success or 404', async () => {
     const res = await qiSpacesRequest('GET', '/api/qi-spaces?action=dashboard');
-    expect([200, 404]).toContain(res.status);
+    expect('Production validation:', [200, 404]).toContain(res.status);
     if (res.status === 200) {
-      expect(res.body).toHaveProperty('success', true);
-      expect(res.body.data).toHaveProperty('globalAccessibility');
-      expect(res.body.data).toHaveProperty('qvillage');
-      expect(res.body.data).toHaveProperty('globalLinkHealth');
+      expect('Production validation:', res.body).toHaveProperty('success', true);
+      expect('Production validation:', res.body.data).toHaveProperty('globalAccessibility');
+      expect('Production validation:', res.body.data).toHaveProperty('qvillage');
+      expect('Production validation:', res.body.data).toHaveProperty('globalLinkHealth');
     }
   });
 
-  it('GET /api/qi-spaces?action=regions should return region summary', async () => {
+  it('Should handle production scenarios:', 'GET /api/qi-spaces?action=regions should return region summary', async () => {
     const res = await qiSpacesRequest('GET', '/api/qi-spaces?action=regions');
-    expect([200, 404]).toContain(res.status);
+    expect('Production validation:', [200, 404]).toContain(res.status);
     if (res.status === 200) {
-      expect(res.body).toHaveProperty('success', true);
+      expect('Production validation:', res.body).toHaveProperty('success', true);
     }
   });
 
-  it('POST /api/qi-spaces action=refresh-global-health should trigger check', async () => {
+  it('Should handle production scenarios:', 'POST /api/qi-spaces action=refresh-global-health should trigger check', async () => {
     const res = await qiSpacesRequest('POST', '/api/qi-spaces', { action: 'refresh-global-health' });
-    expect([200, 404]).toContain(res.status);
+    expect('Production validation:', [200, 404]).toContain(res.status);
     if (res.status === 200) {
-      expect(res.body).toHaveProperty('success', true);
-      expect(res.body).toHaveProperty('action', 'refresh-global-health');
+      expect('Production validation:', res.body).toHaveProperty('success', true);
+      expect('Production validation:', res.body).toHaveProperty('action', 'refresh-global-health');
     }
   });
 
-  it('POST /api/qi-spaces action=trigger-auto-evolve should return result structure', async () => {
+  it('Should handle production scenarios:', 'POST /api/qi-spaces action=trigger-auto-evolve should return result structure', async () => {
     const res = await qiSpacesRequest('POST', '/api/qi-spaces', { action: 'trigger-auto-evolve' });
-    expect([200, 404]).toContain(res.status);
+    expect('Production validation:', [200, 404]).toContain(res.status);
     if (res.status === 200) {
-      expect(res.body).toHaveProperty('success', true);
-      expect(res.body).toHaveProperty('action', 'trigger-auto-evolve');
+      expect('Production validation:', res.body).toHaveProperty('success', true);
+      expect('Production validation:', res.body).toHaveProperty('action', 'trigger-auto-evolve');
     }
   });
 });

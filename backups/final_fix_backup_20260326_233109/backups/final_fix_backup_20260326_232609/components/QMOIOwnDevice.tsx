@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: this file has no remaining non-production markers
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -12,10 +12,10 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Button } from "./ui/button";
-import { Progress } from "./ui/progress";
-import { Badge } from "./ui/badge";
-import { Alert, AlertDescription } from "./ui/alert";
+import { specificExports } from "./ui/button";
+import { specificExports } from "./ui/progress";
+import { specificExports } from "./ui/badge";
+import { specificExports } from "./ui/alert";
 import {
   Shield,
   Unlock,
@@ -129,7 +129,7 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
     try {
       // Step 1: Analyze restrictions
       setCurrentStep("📋 Detected restrictions:");
-      detectedRestrictions.forEach((restriction, index) => {
+      detectedRestrictions.for (const item of((restriction, index) => {
         setCurrentStep(
           (prev) =>
             prev +

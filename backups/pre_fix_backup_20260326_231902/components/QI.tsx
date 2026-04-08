@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { useToast } from "@/components/ui/use-toast";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/use-toast";
+import { specificExports } from "react";
 import {
   FaBell,
   FaChalkboardTeacher,
@@ -34,22 +34,22 @@ import {
   FaVideo,
   FaWallet,
 } from "react-icons/fa";
-import { useDeviceHealth } from "../hooks/useDeviceHealth";
-import { useGlobalAutomation } from "../hooks/useGlobalAutomation";
-import { useMediaGenerationStatus } from "../hooks/useMediaGenerationStatus";
-import { AIRequestRouter } from "../src/services/AIRequestRouter";
-import { ContextEngine } from "../src/services/ContextEngine";
-import { MultiUserSessionManager } from "../src/services/MultiUserSessionManager";
-import type { BadgeVariant } from "../types/index";
-import { useAIContext } from "./AIContext";
-import CashonTradingPanel from "./CashonTradingPanel";
-import { FloatingPreviewWindow } from "./FloatingPreviewWindow";
-import { useMaster } from "./MasterContext";
-import QIStateWindow from "./QIStateWindow";
-import QmoiAutoDistribution from "./QmoiAutoDistribution";
-import QmoiMediaManager from "./QmoiMediaManager";
-import TransactionHistory from "./TransactionHistory";
-import WalletPanel from "./WalletPanel";
+import { specificExports } from "../hooks/useDeviceHealth";
+import { specificExports } from "../hooks/useGlobalAutomation";
+import { specificExports } from "../hooks/useMediaGenerationStatus";
+import { specificExports } from "../src/services/AIRequestRouter";
+import { specificExports } from "../src/services/ContextEngine";
+import { specificExports } from "../src/services/MultiUserSessionManager";
+import { specificExports } from "../types/index";
+import { specificExports } from "./AIContext";
+import { specificExports } from "./CashonTradingPanel";
+import { specificExports } from "./FloatingPreviewWindow";
+import { specificExports } from "./MasterContext";
+import { specificExports } from "./QIStateWindow";
+import { specificExports } from "./QmoiAutoDistribution";
+import { specificExports } from "./QmoiMediaManager";
+import { specificExports } from "./TransactionHistory";
+import { specificExports } from "./WalletPanel";
 
 // Types
 interface ChatMessage {
@@ -234,12 +234,18 @@ const MASTER_EMAILS_SET = new Set(MASTER_EMAILS);
 const REFRESH_INTERVAL = 30000; // 30 seconds
 
 // Utility functions
-function getUserEmail(): string {
+/**
+ * getUserEmail function
+ */
+function getUserEmail(): any: string {
   if (typeof window === "undefined") return "";
   return (localStorage.getItem("userEmail") || "").trim().toLowerCase();
 }
 
-function isMasterOrSister(): boolean {
+/**
+ * isMasterOrSister function
+ */
+function isMasterOrSister(): any: boolean {
   try {
     const email = getUserEmail();
     return MASTER_EMAILS_SET.has(email);
@@ -250,7 +256,10 @@ function isMasterOrSister(): boolean {
 }
 
 // Main component
-function QIComponent() {
+/**
+ * QIComponent function
+ */
+function QIComponent(): any {
   const { toast } = useToast();
   const {
     chatHistory,
@@ -299,23 +308,26 @@ function QIComponent() {
     let isMounted = true;
     let timeoutId: NodeJS.Timeout;
 
-    async function fetchData() {
+    async /**
+ * fetchData function
+ */
+function fetchData(): any {
       setLoading(true);
       setError(null);
       try {
         const adminToken = localStorage.getItem("adminToken") || "";
 
         const [tradingRes, aiRes] = await Promise.all([
-          fetch("/api/qi-trading?action=stats", {
+          apiClient.get("/api/qi-trading?action=stats", {
             headers: { "x-admin-token": adminToken },
           }),
-          fetch("/api/qmoi-model?allStats=1", {
+          apiClient.get("/api/qmoi-model?allStats=1", {
             headers: { "x-admin-token": adminToken },
           }),
         ]);
 
-        if (!tradingRes.ok) throw new Error("Failed to fetch trading stats");
-        if (!aiRes.ok) throw new Error("Failed to fetch AI tasks");
+        if (!tradingRes.ok) throw new ProductionError("Failed to fetch trading stats");
+        if (!aiRes.ok) throw new ProductionError("Failed to fetch AI tasks");
 
         const [tradingData, aiData] = await Promise.all([
           tradingRes.json(),
@@ -368,13 +380,13 @@ function QIComponent() {
       };
       setChatHistory([...chatHistory, newMessage]);
 
-      const response = await fetch("/api/qmoi-model?enhance=1", {
+      const response = await apiClient.get("/api/qmoi-model?enhance=1", {
         method: "POST",
         headers: { "x-admin-token": adminToken },
         body: JSON.stringify({ desc }),
       });
 
-      if (!response.ok) throw new Error("Failed to trigger enhancement");
+      if (!response.ok) throw new ProductionError("Failed to trigger enhancement");
     } catch (error) {
       globalThis.console?.error?.(
         "Failed to trigger enhancement:",
@@ -510,7 +522,7 @@ function QIComponent() {
     const types: Record<string, number> = {};
     tasks
       .filter((t) => t.type === "file-upload")
-      .forEach((t) => {
+      .for (const item of((t) => {
         const ext = t.file?.split(".").pop() || "unknown";
         types[ext] = (types[ext] || 0) + 1;
       });

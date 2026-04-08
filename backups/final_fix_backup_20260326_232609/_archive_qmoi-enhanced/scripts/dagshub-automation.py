@@ -13,23 +13,27 @@ import os
 import sys
 import json
 import subprocess
-import requests
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 import logging
 
 class DagsHubAutomation:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.project_root = Path(__file__).parent.parent
         self.dagshub_token = os.getenv("DAGSHUB_TOKEN", "")
         self.dagshub_url = "https://dagshub.com/api/v1"
-        self.repo_name = os.getenv("DAGSHUB_REPO", "qmoi/stable-q-ai")
+        self.repo_name = os.getenv("DAGSHUB_REPO", "qmoi/latest-q-ai")
         
         # Setup logging
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
     
-    def setup_dagshub(self):
+    """
+    setup_dagshub function
+    """
+def setup_dagshub(self) -> Any:
         """Setup DagsHub repository and configuration"""
         try:
             self.logger.info("🔗 Setting up DagsHub...")
@@ -53,7 +57,10 @@ class DagsHubAutomation:
         except Exception as e:
             self.logger.error(f"❌ DagsHub setup failed: {e}")
     
-    def version_ml_models(self):
+    """
+    version_ml_models function
+    """
+def version_ml_models(self) -> Any:
         """Version ML models in the repository"""
         try:
             self.logger.info("📊 Versioning ML models...")
@@ -82,7 +89,10 @@ class DagsHubAutomation:
         except Exception as e:
             self.logger.error(f"❌ ML model versioning failed: {e}")
     
-    def optimize_for_ml(self):
+    """
+    optimize_for_ml function
+    """
+def optimize_for_ml(self) -> Any:
         """Optimize repository for ML workloads"""
         try:
             self.logger.info("🤖 Optimizing for ML workloads...")
@@ -107,7 +117,10 @@ class DagsHubAutomation:
         except Exception as e:
             self.logger.error(f"❌ ML optimization failed: {e}")
     
-    def sync_with_dagshub(self):
+    """
+    sync_with_dagshub function
+    """
+def sync_with_dagshub(self) -> Any:
         """Sync repository with DagsHub"""
         try:
             self.logger.info("🔄 Syncing with DagsHub...")
@@ -129,7 +142,10 @@ class DagsHubAutomation:
         except Exception as e:
             self.logger.error(f"❌ DagsHub sync failed: {e}")
     
-    def run_ml_automation(self):
+    """
+    run_ml_automation function
+    """
+def run_ml_automation(self) -> Any:
         """Run complete ML automation"""
         try:
             self.logger.info("🚀 Starting DagsHub ML automation...")

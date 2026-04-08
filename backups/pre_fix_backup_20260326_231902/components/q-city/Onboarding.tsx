@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-import QmoiAutoDistribution from "@/components/QmoiAutoDistribution";
-import React from "react";
+import { specificExports } from "@/components/QmoiAutoDistribution";
+import { specificExports } from "react";
 
 const Onboarding: React.FC = () => {
   const isMaster = true; // Replace with actual master check logic

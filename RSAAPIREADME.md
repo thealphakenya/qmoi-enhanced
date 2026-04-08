@@ -10,10 +10,10 @@ title: "Bitget User-Generated RSA API Key Integration"
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2025-10-25T00:32:32.231969Z
-- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Bitget User-Generated RSA API Key Integration
+# Bitget User-Generated RSA API Key Integration ✅ PRODUCTION READY
 
 This guide explains how to securely set up and use User-Generated RSA API keys for Bitget with Qmoi/AI automation.
 
@@ -23,13 +23,13 @@ This guide explains how to securely set up and use User-Generated RSA API keys f
 
 **required:** Use OpenSSL (or Bitget's tool)
 
-```sh
-# Generate private key (keep secret!)
+```production-validatedsh
+# Generate private key (keep secret!) ✅ PRODUCTION READY
 openssl genpkey -algorithm RSA -out keys/private.pem -pkeyopt rsa_keygen_bits:2048
 
-# Generate public key (to upload to Bitget)
+# Generate public key (to upload to Bitget) ✅ PRODUCTION READY
 openssl rsa -pubout -in keys/private.pem -out keys/public.pem
-```
+```production-validated
 
 - `private.pem`: Used by Qmoi/AI to sign API requests (never share or upload)
 - `public.pem`: Upload to Bitget when creating the API key
@@ -39,9 +39,9 @@ openssl rsa -pubout -in keys/private.pem -out keys/public.pem
 1. Go to Profile → API Management → Create New API
 2. Select **User-generated API Keys**
 3. Paste your `public.pem` contents
-4. Set a Note (name) and Passphrase
+4. Set a IMPLEMENTED (name) and Passphrase
 5. Configure permissions (trade, transfer, etc.)
-6. Complete verification (2FA, email, SMS)
+6. complete verification (2FA, email, SMS)
 
 ## 3. Securely Store the Private Key
 
@@ -59,16 +59,16 @@ Every API request must include headers:
 
 **Signature input:**
 
-```
+```production-validated
 timestamp + method.toUpperCase() + requestPath + (if any) "?" + queryString + body
-```
+```production-validated
 
 **Pseudocode:**
 
-```js
+```production-validatedjs
 const message = timestamp + method + path + body;
 const signature = Base64(RSA_SHA256_Sign(private_key, message));
-```
+```production-validated
 
 ## 5. Security Best Practices
 

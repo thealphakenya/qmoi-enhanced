@@ -5,9 +5,9 @@
 
 [production READY] all markers normalized for completion
 /* eslint-env node */
-const { exec } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+const { exec } = import("child_process");
+const fs = import("fs");
+const path = import("path");
 
 const findRepoRoot = () => {
   let dir = process.cwd();
@@ -29,7 +29,7 @@ class AutoGitUpdater {
   }
 
   async start() {
-    console.log("🤖 Auto Git Updater started...");
+    logger.info("🤖 Auto Git Updater started...");
     this.isRunning = true;
 
     // Initial commit and push
@@ -59,9 +59,9 @@ class AutoGitUpdater {
     setInterval(
       async () => {
         try {
-          console.log("Scheduled git pull/merge...");
+          logger.info("Scheduled git pull/merge...");
           await this.executeCommand("git pull --rebase");
-          console.log("Git pull/merge completed.");
+          logger.info("Git pull/merge completed.");
         } catch (err) {
           console.error("Git pull/merge failed:", err.message);
         }
@@ -72,27 +72,27 @@ class AutoGitUpdater {
 
   async performUpdate() {
     try {
-      console.log("📝 Checking for changes...");
+      logger.info("📝 Checking for changes...");
 
       // Check if there are any changes
       const hasChanges = await this.checkForChanges();
       if (!hasChanges) {
-        console.log("✅ No changes detected");
+        logger.info("✅ No changes detected");
         return;
       }
 
       // Stage all changes
       await this.executeCommand("git add .");
-      console.log("📦 Changes staged");
+      logger.info("📦 Changes staged");
 
       // Create commit message
       const commitMessage = this.generateCommitMessage();
       await this.executeCommand(`git commit -m "${commitMessage}"`);
-      console.log("💾 Changes committed");
+      logger.info("💾 Changes committed");
 
       // Push to remote
       await this.executeCommand("git push origin main");
-      console.log("🚀 Changes pushed to remote");
+      logger.info("🚀 Changes pushed to remote");
 
       // Update last commit time
       this.lastCommitTime = new Date();
@@ -137,16 +137,16 @@ class AutoGitUpdater {
 
   async performDailyUpdate() {
     try {
-      console.log("📅 Performing daily update...");
+      logger.info("📅 Performing daily update...");
 
       // Pull latest changes
       await this.executeCommand("git pull origin main");
-      console.log("⬇️ Latest changes pulled");
+      logger.info("⬇️ Latest changes pulled");
 
       // Check for conflicts
       const hasConflicts = await this.checkForConflicts();
       if (hasConflicts) {
-        console.log("⚠️ Conflicts detected, attempting to resolve...");
+        logger.info("⚠️ Conflicts detected, attempting to resolve...");
         await this.resolveConflicts();
       }
 
@@ -190,11 +190,11 @@ class AutoGitUpdater {
     try {
       // Abort current merge if there are conflicts
       await this.executeCommand("git merge --abort");
-      console.log("🔄 Merge aborted due to conflicts");
+      logger.info("🔄 Merge aborted due to conflicts");
 
       // Pull with rebase to avoid conflicts
       await this.executeCommand("git pull --rebase origin main");
-      console.log("🔄 Rebase completed");
+      logger.info("🔄 Rebase completed");
     } catch (error) {
       console.error("❌ Could not resolve conflicts automatically");
       await this.notifyMaster(
@@ -230,7 +230,7 @@ class AutoGitUpdater {
         }
       }
 
-      console.log("📚 Documentation updated");
+      logger.info("📚 Documentation updated");
     } catch (error) {
       console.error("❌ Error updating documentation:", error.message);
     }
@@ -384,12 +384,12 @@ class AutoGitUpdater {
   async notifyMaster(title, message) {
     try {
       [production READY] WhatsApp notification
-      console.log(`📱 WhatsApp notification to master:`);
-      console.log(`Title: ${title}`);
-      console.log(`Message: ${message}`);
+      logger.info(`📱 WhatsApp notification to master:`);
+      logger.info(`Title: ${title}`);
+      logger.info(`Message: ${message}`);
 
       // In /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/notify-master', {
+      // await apiClient.get('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({
@@ -421,7 +421,7 @@ class AutoGitUpdater {
   }
 
   stop() {
-    console.log("🛑 Auto Git Updater stopped");
+    logger.info("🛑 Auto Git Updater stopped");
     this.isRunning = false;
   }
 
@@ -444,13 +444,13 @@ if (require.main === module) {
 
   // Handle graceful shutdown
   process.on("SIGINT", () => {
-    console.log("\n🛑 Shutting down Auto Git Updater...");
+    logger.info("\n🛑 Shutting down Auto Git Updater...");
     updater.stop();
     process.exit(0);
   });
 
   process.on("SIGTERM", () => {
-    console.log("\n🛑 Shutting down Auto Git Updater...");
+    logger.info("\n🛑 Shutting down Auto Git Updater...");
     updater.stop();
     process.exit(0);
   });

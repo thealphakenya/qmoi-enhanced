@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import handler from "../routes/api/qmoi/memory-backup";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "../routes/api/qmoi/memory-backup";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
-describe("memory-backup API", () => {
+describe('Production:', "memory-backup API", () => {
   const memoryDir = path.join(process.cwd(), "scripts", "models");
   const memoryPath = path.join(memoryDir, "qmoi_memory.json");
 
@@ -51,12 +51,12 @@ describe("memory-backup API", () => {
 
     await handler(req, res);
 
-    expect(statusCode).toBe(200);
-    expect(payload).toBeDefined();
-    expect(payload.success).toBe(true);
-    expect(typeof payload.backupFile).toBe("string");
+    expect('Production validation:', statusCode).toBe(200);
+    expect('Production validation:', payload).toBeDefined();
+    expect('Production validation:', payload.success).toBe(true);
+    expect('Production validation:', typeof payload.backupFile).toBe("string");
 
     // Ensure file exists
-    expect(fs.existsSync(payload.backupFile)).toBe(true);
+    expect('Production validation:', fs.existsSync(payload.backupFile)).toBe(true);
   });
 });

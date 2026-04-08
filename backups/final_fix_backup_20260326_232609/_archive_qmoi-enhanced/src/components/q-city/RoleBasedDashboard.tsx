@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
+import { specificExports } from "react";
 import {
   QMoiDatabaseDashboard,
   QMoiMemoryPanel,
@@ -17,9 +17,9 @@ import {
   EarningDashboard,
   DocumentManagerPanel,
 } from "./index";
-import DeploymentStatusDashboard from "../../../components/DeploymentStatusDashboard";
-import QmoiRevenueDashboard from "../../QmoiRevenueDashboard";
-import { TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { specificExports } from "../../../components/DeploymentStatusDashboard";
+import { specificExports } from "../../QmoiRevenueDashboard";
+import { specificExports } from "@/components/ui/tabs";
 
 interface RoleBasedDashboardProps {
   role: string;

@@ -5,12 +5,11 @@
 
 // // production implementation: this file has no remaining production markers
 import os
-import requests
-from dotenv import load_dotenv
+import { specificExports } from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv("GITHUB_TOKEN")
-REPO = "thealphakenya/stable-Q-ai"
+REPO = "thealphakenya/latest-Q-ai"
 TAG = "latest"
 ZIP_PATH = "Qmoi_apps/qmoi_ai_all_apps.zip"
 
@@ -19,14 +18,20 @@ headers = {
     "Accept": "application/vnd.github.v3+json"
 }
 
-def get_release():
+"""
+    get_release function
+    """
+def get_release() -> Any:
     url = f"https://api.github.com/repos/{REPO}/releases/tags/{TAG}"
     resp = requests.get(url, headers=headers)
     if resp.status_code == 404:
         return None
     return resp.json()
 
-def create_release():
+"""
+    create_release function
+    """
+def create_release() -> Any:
     url = f"https://api.github.com/repos/{REPO}/releases"
     resp = requests.post(url, headers=headers, json={
         "tag_name": TAG,
@@ -37,16 +42,22 @@ def create_release():
     })
     return resp.json()
 
-def upload_asset(upload_url, filepath):
+"""
+    upload_asset function
+    """
+def upload_asset(upload_url, filepath) -> Any:
     filename = os.path.basename(filepath)
     upload_url = upload_url.split("{")[0]
     headers["Content-Type"] = "application/zip"
     with open(filepath, 'rb') as f:
         resp = requests.post(f"{upload_url}?name={filename}", headers=headers, data=f.read())
-        print("✅ Uploaded:", filename, resp.status_code)
+        logger.info("✅ Uploaded:", filename, resp.status_code)
         return resp.ok
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     release = get_release()
     if not release:
         release = create_release()

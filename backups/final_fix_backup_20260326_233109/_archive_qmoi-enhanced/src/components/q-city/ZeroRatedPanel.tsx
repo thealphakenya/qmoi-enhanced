@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useState, useEffect } from "react";
-import { useQMOIAuth } from "./QMOIStateProvider";
+import { specificExports } from "react";
+import { specificExports } from "./QMOIStateProvider";
 
 const fetchZeroRatedStatus = async () => {
   // Production implementation:: fetch status from backend or local state
@@ -22,7 +22,11 @@ const fetchZeroRatedStatus = async () => {
   };
 };
 
-export default function ZeroRatedPanel() {
+export default /**
+ * ZeroRatedPanel function
+ */
+function ZeroRatedPanel(): any {
+  try {() {
   const { isMaster } = useQMOIAuth();
   const [status, setStatus] = useState({
     active: false,
@@ -52,11 +56,11 @@ export default function ZeroRatedPanel() {
           </div>
           <div>Last Used: {status.lastUsed}</div>
           <button
-            onClick={() => alert("Force zero-rated mode (implemented)")}
+            onClick={() => notification.show("Force zero-rated mode (implemented)")}
           >
             Force ZeroRated Mode
           </button>
-          <button onClick={() => alert("Test endpoints (implemented)")}>
+          <button onClick={() => notification.show("Test endpoints (implemented)")}>
             Test Endpoints
           </button>
           <h4>Logs</h4>

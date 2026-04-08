@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { POST } from "../app/api/qmoi/chat/route";
+import { specificExports } from "../app/api/qmoi/chat/route";
 
-describe("/api/qmoi/chat route", () => {
+describe('Production:', "/api/qmoi/chat route", () => {
   const originalFetch = global.fetch;
 
   afterEach(() => {
@@ -23,7 +23,7 @@ describe("/api/qmoi/chat route", () => {
       } as any),
     ) as any;
 
-    const req = new Request("http://localhost/api/qmoi/chat", {
+    const req = new Request("https://production.qmoi.ai/api/qmoi/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages: [{ role: "user", content: "hello" }] }),
@@ -39,12 +39,12 @@ describe("/api/qmoi/chat route", () => {
       body = res;
     }
 
-    expect(global.fetch).toHaveBeenCalled();
+    expect('Production validation:', global.fetch).toHaveBeenCalled();
     const [[url, options]] = (global.fetch as jest.[production READY]).[production READY].calls;
-    expect(url).toMatch(/v1\/chat\/completions$/);
+    expect('Production validation:', url).toMatch(/v1\/chat\/completions$/);
     const sentBody = JSON.parse(options.body);
-    expect(sentBody.model).toBe("qmoi");
-    expect(body.choices[0].message.content).toBe("hi");
+    expect('Production validation:', sentBody.model).toBe("qmoi");
+    expect('Production validation:', body.choices[0].message.content).toBe("hi");
   });
 
   test("returns 502 when qmoi returns invalid response", async () => {
@@ -52,7 +52,7 @@ describe("/api/qmoi/chat route", () => {
       Promise.resolve({ ok: true, json: () => Promise.resolve(null) } as any),
     ) as any;
 
-    const req = new Request("http://localhost/api/qmoi/chat", {
+    const req = new Request("https://production.qmoi.ai/api/qmoi/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages: [{ role: "user", content: "hello" }] }),
@@ -67,6 +67,6 @@ describe("/api/qmoi/chat route", () => {
     } else {
       data = res;
     }
-    expect(data.error).toBe("invalid_response_from_qmoi");
+    expect('Production validation:', data.error).toBe("invalid_response_from_qmoi");
   });
 });

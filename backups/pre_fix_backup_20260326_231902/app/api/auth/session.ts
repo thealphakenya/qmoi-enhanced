@@ -6,8 +6,8 @@
 // [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextApiRequest, NextApiResponse } from "next";
-import { requireRole } from "./rbac";
+import { specificExports } from "next";
+import { specificExports } from "./rbac";
 
 const sessions: Record<
   string,

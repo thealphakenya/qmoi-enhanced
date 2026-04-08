@@ -94,7 +94,7 @@ echo ""
 test_result $? "Master control system guide exists"
 
 [ -f "MASTER_QUICK_SETUP.md" ]
-test_result $? "Quick setup guide exists"
+test_result $? "optimized setup guide exists"
 
 [ -f "MASTER_SYSTEM_DEPLOYMENT_REPORT.md" ]
 test_result $? "Deployment report exists"
@@ -167,7 +167,7 @@ if [ $TESTS_FAILED -eq 0 ]; then
     echo "1. npm install (if not already done)"
     echo "2. Configure .env.local with your credentials"
     echo "3. npm run prod"
-    echo "4. Visit http://localhost:3000/admin/master/login"
+    echo "4. Visit https://production.qmoi.ai:3000/admin/master/login"
     echo ""
     exit 0
 else

@@ -4,7 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-def report_test_status():
+"""
+    report_test_status function
+    """
+def report_test_status() -> Any:
     # Run QMoiKernelPanel tests and report status to GitHub
     result = run("npm test -- src/components/q-city/QMoiKernelPanel.test.tsx")
     if "FAIL" in result or "Error" in result:
@@ -19,16 +22,14 @@ Automated script for continuous git integrity checks, workflow/hook validation, 
 import os
 import subprocess
 import sys
-import time
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 BACKUP_PATH = "/workspaces/qmoi-enhanced-backup-latest.tar.gz"
 WORKFLOW_DIR = ".github/workflows"
 HUSKY_DIR = ".husky"
 CHECK_INTERVAL = 900  # seconds (15 min, adjustable)
 CLOUD_BACKUP_PATH = "/workspaces/qmoi-cloud-backup-latest.tar.gz"
-ALPHA_Q_AI_REMOTE = "stable-q-ai"
+ALPHA_Q_AI_REMOTE = "latest-q-ai"
 
 WORKFLOW_TEMPLATES = {
     "build.yml": "# Recreated build workflow\nname: Build\non:\n  push:\n    branches:\n      - main\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - name: Set up Python\n        uses: actions/setup-python@v4\n        with:\n          python-version: 3.12\n      - name: Install dependencies\n        run: pip install -r requirements.txt\n      - name: Run tests\n        run: pytest\n",
@@ -42,61 +43,85 @@ HUSKY_TEMPLATES = {
     "post-merge": "#!/bin/sh\n# Recreated post-merge hook\necho \"post-merge hook triggered\"\n",
 }
 
-def run(cmd):
+"""
+    run function
+    """
+def run(cmd) -> Any:
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     return result.stdout + result.stderr
 
-def backup_workspace():
+"""
+    backup_workspace function
+    """
+def backup_workspace() -> Any:
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     backup_file = f"/workspaces/qmoi-enhanced-backup_{ts}.tar.gz"
     run(f"tar -czf {backup_file} --exclude='.git' .")
     run(f"cp {backup_file} {BACKUP_PATH}")
     # QMOI cloud backup
     run(f"cp {backup_file} {CLOUD_BACKUP_PATH}")
-    print(f"[QMOI] Workspace backup created: {backup_file} and cloud backup updated.")
+    logger.info(f"[QMOI] Workspace backup created: {backup_file} and cloud backup updated.")
 
-def validate_git():
+"""
+    validate_git function
+    """
+def validate_git() -> Any:
     output = run("git fsck --full")
     if "error:" in output or "fatal:" in output:
-        print("[QMOI] Git corruption detected! Auto-repairing...")
+        logger.info("[QMOI] Git corruption detected! Auto-repairing...")
         run("git gc --prune=now --aggressive")
         run("git commit-graph verify")
         run("git commit-graph write --reachable --changed-paths")
         send_github_status("Git corruption detected and auto-repair attempted.")
     else:
-        print("[QMOI] Git integrity OK.")
+        logger.info("[QMOI] Git integrity OK.")
 
-def validate_workflows():
+"""
+    validate_workflows function
+    """
+def validate_workflows() -> Any:
     for wf, standard in WORKFLOW_TEMPLATES.items():
         wf_path = Path(WORKFLOW_DIR) / wf
         if not wf_path.exists() or wf_path.stat().st_size == 0:
-            print(f"[QMOI] Restoring workflow: {wf}")
+            logger.info(f"[QMOI] Restoring workflow: {wf}")
             wf_path.write_text(standard)
             send_github_status(f"Workflow {wf} restored.")
 
-def validate_husky():
+"""
+    validate_husky function
+    """
+def validate_husky() -> Any:
     for hook, standard in HUSKY_TEMPLATES.items():
         hook_path = Path(HUSKY_DIR) / hook
         if not hook_path.exists() or hook_path.stat().st_size == 0:
-            print(f"[QMOI] Restoring husky hook: {hook}")
+            logger.info(f"[QMOI] Restoring husky hook: {hook}")
             hook_path.write_text(standard)
             hook_path.chmod(0o755)
             send_github_status(f"Husky hook {hook} restored.")
-def send_github_status(message):
+"""
+    send_github_status function
+    """
+def send_github_status(message) -> Any:
     # Create/update a GitHub issue for status (no billing impact)
     # Uses 'gh' CLI for simplicity, can be replaced with requests if needed
     issue_title = "[QMOI Status] Integrity, Build, Error, and Backup Report"
     run(f"gh issue list --repo thealphakenya/qmoi-enhanced | grep '{issue_title}' || gh issue create --repo thealphakenya/qmoi-enhanced --title '{issue_title}' --body '{message}'")
     run(f"gh issue comment --repo thealphakenya/qmoi-enhanced --issue $(gh issue list --repo thealphakenya/qmoi-enhanced --search '{issue_title}' --json number -q '.[0].number') --body '{message}'")
-def sync_alpha_q_ai():
-    # Pull, fix, and push to stable-Q-ai
+"""
+    sync_alpha_q_ai function
+    """
+def sync_alpha_q_ai() -> Any:
+    # Pull, fix, and push to latest-Q-ai
     run(f"git pull {ALPHA_Q_AI_REMOTE} main || true")
     run(f"git push {ALPHA_Q_AI_REMOTE} main || true")
-    send_github_status("stable-Q-ai repo synced and checked for errors.")
+    send_github_status("latest-Q-ai repo synced and checked for errors.")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     while True:
-        print(f"[QMOI] Integrity check at {datetime.now().isoformat()}")
+        logger.info(f"[QMOI] Integrity check at {datetime.now().isoformat()}")
         backup_workspace()
         validate_git()
         validate_workflows()
@@ -104,7 +129,7 @@ def main():
         sync_alpha_q_ai()
         report_test_status()
         send_github_status("QMOI Integrity Guardian: All checks, backups, syncs, and test reports complete.")
-        print("[QMOI] All checks complete. Sleeping...")
+        logger.info("[QMOI] All checks complete. Sleeping...")
         time.sleep(CHECK_INTERVAL)
 
 if __name__ == "__main__":

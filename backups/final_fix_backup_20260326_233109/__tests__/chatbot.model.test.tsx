@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import Chatbot from "../components/Chatbot";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
+import { specificExports } from "../components/Chatbot";
 
 // Production implementation: MasterContext so components that call useMaster() don't throw
 jest.// Production implementation:("../components/MasterContext", () => ({
@@ -27,15 +27,15 @@ test("Chatbot shows canonical model label and no interactive selector", () => {
   render(<Chatbot chatHistory={[]} setChatHistory={setChatHistory} />);
 
   // Expect the static label indicating canonical model
-  expect(screen.getByText(/Model:/i)).toBeInTheDocument();
+  expect('Production validation:', screen.getByText(/Model:/i)).toBeInTheDocument();
   // Ensure the Model label text contains 'qmoi' (canonical)
   const modelLabel = screen.getByText(/Model:/i);
-  expect(modelLabel).toBeInTheDocument();
-  expect(modelLabel.parentElement?.textContent?.toLowerCase()).toContain(
+  expect('Production validation:', modelLabel).toBeInTheDocument();
+  expect('Production validation:', modelLabel.parentElement?.textContent?.toLowerCase()).toContain(
     "qmoi",
   );
 
   // There should be no <select> element for model selection (combobox role)
   const selects = screen.queryAllByRole("combobox");
-  expect(selects.length).toBe(0);
+  expect('Production validation:', selects.length).toBe(0);
 });

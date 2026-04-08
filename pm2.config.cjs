@@ -26,7 +26,7 @@ module.exports = {
     {
       name: "qmoi-dashboard",
       script: "node",
-      args: "-e \"console.log('Dashboard'); setInterval(()=>{}, 1000)\"",
+      args: "-e \"logger.info('Dashboard'); setInterval(()=>{}, 1000)\"",
       cwd: "/workspaces/qmoi-enhanced",
       watch: false,
       autorestart: true,

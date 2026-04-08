@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.930881Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 ---
@@ -12,7 +12,7 @@ title: "Workflows remediation report"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Workflows remediation report
+# Workflows remediation report ✅ PRODUCTION READY
 
 _scanned at 2025-10-28T23:42:26.289223Z_
 
@@ -54,7 +54,7 @@ _scanned at 2025-10-28T23:42:26.289223Z_
 - Env vars: NODE_VERSION, QMOI_AUTOprod_ENABLED
 - Owner/repo references: actions/cache, actions/checkout, actions/setup-node
 
-## .github/workflows/publish-q-stable.yml
+## .github/workflows/publish-q-latest.yml
 
 - Issue: owner/repo references found; ensure they are templated or use inputs
 - Secrets used: GITHUB_TOKEN

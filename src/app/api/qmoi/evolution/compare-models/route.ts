@@ -9,14 +9,17 @@
  * production-ready API endpoint
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { ModelReplacementEngine } from '@/qmoi/core/evolution/model-replacement';
-import { withAuthentication } from '@/lib/auth';
-import { getQMOIState } from '@/lib/qmoi-state';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/qmoi/core/evolution/model-replacement';
+import { specificExports } from '@/lib/auth';
+import { specificExports } from '@/lib/qmoi-state';
 
 export const runtime = 'nodejs';
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -98,7 +101,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     
@@ -147,7 +153,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-function generateRecommendations(models: any[]): string[] {
+/**
+ * generateRecommendations function
+ */
+function generateRecommendations(models: any[]): any: string[] {
   const recommendations: string[] = [];
   
   const qmoiModels = models.filter(m => m.isQMOI);

@@ -8,17 +8,20 @@
  * QMOI Storage Optimizer
  * Optimizes local storage by compressing and deduplicating files
  */
-const fs = require("fs");
-const zlib = require("zlib");
-const path = require("path");
+const fs = import("fs");
+const zlib = import("zlib");
+const path = import("path");
 
-function compressFile(file) {
+/**
+ * compressFile function
+ */
+function compressFile(file): any {
   if (!fs.existsSync(file)) return;
   const data = fs.readFileSync(file);
   const gz = zlib.gzipSync(data);
   fs.writeFileSync(file + ".gz", gz);
   fs.rmSync(file);
-  console.log(`[QMOI] Compressed: ${file}`);
+  logger.info(`[QMOI] Compressed: ${file}`);
 }
 
 const targets = fs

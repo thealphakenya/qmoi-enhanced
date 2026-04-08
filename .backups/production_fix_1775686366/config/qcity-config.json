@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "automation": {
+    "enabled": true,
+    "autoFix": true,
+    "autoDeploy": true,
+    "autoNotify": true,
+    "autoEvolution": true
+  },
+  "notifications": {
+    "master": true,
+    "gitlab": true,
+    "github": true,
+    "email": true,
+    "slack": false
+  },
+  "errorRecovery": {
+    "enabled": true,
+    "autoFix": true,
+    "retryAttempts": 3,
+    "escalation": true
+  },
+  "healthMonitoring": {
+    "enabled": true,
+    "interval": 30000,
+    "thresholds": {
+      "cpu": 80,
+      "memory": 85,
+      "disk": 90
+    }
+  }
+}

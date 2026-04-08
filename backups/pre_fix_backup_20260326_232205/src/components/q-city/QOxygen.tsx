@@ -5,8 +5,8 @@
 
 // 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState, useEffect } from "react";
-import { qmoiHealthService } from "@/lib/qmoi-health";
+import { specificExports } from "react";
+import { specificExports } from "@/lib/qmoi-health";
 
 interface QOxygenProps {
   isMaster?: boolean;

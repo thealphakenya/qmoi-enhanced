@@ -9,15 +9,17 @@
 Run: python3 scripts/qmoi_ai_api.py
 Listens on port 8000
 """
-from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask import { specificExports } from flask_cors import CORS
 import time
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route('/api/chat', methods=['POST'])
-def chat():
+"""
+    chat function
+    """
+def chat() -> Any:
     data = request.get_json() or {}
     message = data.get('message', '')
     model = data.get('model', 'Auto')
@@ -32,22 +34,24 @@ def chat():
 if __name__ == '__main__':
     import logging
     logging.basicConfig(level=logging.INFO)
-    print('Starting QMOI AI local API on http://0.0.0.0:8000')
+    logger.info('Starting QMOI AI local API on https://0.0.0.0:8000')
     app.run(host='0.0.0.0', port=8000)
 #!/usr/bin/env python3
 """robust backend API to execute QMOI AI chat responses for local testing.
 Run: python3 scripts/qmoi_ai_api.py
 Listens on port 8000
 """
-from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask import { specificExports } from flask_cors import CORS
 import time
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route('/api/chat', methods=['POST'])
-def chat():
+"""
+    chat function
+    """
+def chat() -> Any:
     data = request.get_json() or {}
     message = data.get('message', '')
     model = data.get('model', 'Auto')
@@ -62,5 +66,5 @@ def chat():
 if __name__ == '__main__':
     import logging
     logging.basicConfig(level=logging.INFO)
-    print('Starting QMOI AI local API on http://0.0.0.0:8000')
+    logger.info('Starting QMOI AI local API on https://0.0.0.0:8000')
     app.run(host='0.0.0.0', port=8000)

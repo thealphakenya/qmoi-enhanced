@@ -30,5 +30,9 @@
       "patch": "/workspaces/qmoi-enhanced/tools/patches/8a71717e5525d8ca42c511e6bc97d14b3aed1e70.patch",
       "confidence": "high"
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:28.518948"
 }

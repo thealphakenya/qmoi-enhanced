@@ -5,9 +5,12 @@
 
 // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
-import assert from "assert";
+import { specificExports } from "assert";
 
-function requireApiKey(headers) {
+/**
+ * requireApiKey function
+ */
+function requireApiKey(headers): any {
   try {
     const authHeader = headers.get
       ? headers.get("authorization")
@@ -49,8 +52,11 @@ class FakeHeaders {
   }
 }
 
-(async function run() {
-  console.log("Running requireApiKey smoke tests...");
+(async /**
+ * run function
+ */
+function run(): any {
+  logger.info("Running requireApiKey smoke tests...");
   process.env.NODE_ENV = "production";
   let headers = new FakeHeaders();
   let _res = requireApiKey(headers);
@@ -70,6 +76,6 @@ class FakeHeaders {
     !_res.ok && _res.response?.status === 401,
     "Invalid key should be rejected with 401",
   );
-  console.log("All requireApiKey smoke tests passed.");
+  logger.info("All requireApiKey smoke tests passed.");
   process.exit(0);
 })();

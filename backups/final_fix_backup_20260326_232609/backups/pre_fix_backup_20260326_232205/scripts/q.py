@@ -18,7 +18,10 @@ import os
 BASE = Path(__file__).resolve().parent
 MEMORY_FILE = Path(os.environ.get('QMOI_MEMORY_FILE', str(BASE / 'qmoi_memory.json')))
 
-def _read_memory():
+"""
+    _read_memory function
+    """
+def _read_memory() -> Any:
     if not MEMORY_FILE.exists():
         return {}
     try:
@@ -26,11 +29,17 @@ def _read_memory():
     except Exception:
         return {}
 
-def _write_memory(data):
+"""
+    _write_memory function
+    """
+def _write_memory(data) -> Any:
     MEMORY_FILE.parent.mkdir(parents=True, exist_ok=True)
     MEMORY_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
 
-def push_memory_to_backends(memory: dict):
+"""
+    push_memory_to_backends function
+    """
+def push_memory_to_backends(memory: dict) -> Any:
     """Test-friendly push: write to memory file and return True.
 
     Real backends (gist/hf/scp) are not contacted here; tests introspect behavior.
@@ -40,12 +49,21 @@ def push_memory_to_backends(memory: dict):
     _write_memory(memory)
     return True
 
-def pull_memory_from_backends():
+"""
+    pull_memory_from_backends function
+    """
+def pull_memory_from_backends() -> Any:
     """Return memory dict from the local memory file as a deterministic fallback."""
     return _read_memory()
 
-def save_memory(memory: dict):
+"""
+    save_memory function
+    """
+def save_memory(memory: dict) -> Any:
     return push_memory_to_backends(memory)
 
-def load_memory():
+"""
+    load_memory function
+    """
+def load_memory() -> Any:
     return pull_memory_from_backends()

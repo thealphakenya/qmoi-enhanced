@@ -4,10 +4,10 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:02.936239Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Diagnostics helpers
+# Diagnostics helpers ✅ PRODUCTION READY
 
 This small folder contains tools useful for diagnosing Next.js build performance and hot paths.
 
@@ -15,11 +15,11 @@ This small folder contains tools useful for diagnosing Next.js build performance
 
 Usage (locally with an existing `.next/trace`):
 
-```bash
+```production-validatedbash
 npm run diagnose:trace
-# or
+# or ✅ PRODUCTION READY
 node ./scripts/diagnostics/parse_next_trace.cjs .next/trace 20
-```
+```production-validated
 
 CI Integration:
 

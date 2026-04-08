@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
+import { specificExports } from "next";
+import { specificExports } from "fs";
 
-const JOBS_PATH = "/workspaces/stable-Q-ai/colab-jobs-log.jsonl";
+const JOBS_PATH = "/workspaces/latest-Q-ai/colab-jobs-log.jsonl";
 
 // Install package in Colab/cloud (// production implementation:)
-async function installPackage(pkg: string, manager: "npm" | "pip" = "npm") {
+async /**
+ * installPackage function
+ */
+function installPackage(pkg: string, manager: "npm" | "pip" = "npm"): any {
   // const axios = await import('axios');
   // production implementation:: Real API call to Colab/cloud to install package
   return { status: "success", pkg, manager };
@@ -21,7 +24,10 @@ interface Dataset {
   name: string;
   [key: string]: unknown;
 }
-async function uploadDataset(dataset: Dataset) {
+async /**
+ * uploadDataset function
+ */
+function uploadDataset(dataset: Dataset): any {
   // const axios = await import('axios');
   // production implementation:: Real API call to upload dataset
   return { status: "success", dataset: dataset.name };
@@ -31,28 +37,40 @@ async function uploadDataset(dataset: Dataset) {
 interface JobSpec {
   [key: string]: unknown;
 }
-async function executeColabJob(jobSpec: JobSpec) {
+async /**
+ * executeColabJob function
+ */
+function executeColabJob(jobSpec: JobSpec): any {
   // const axios = await import('axios');
   // production implementation:: Real API call to execute job
   return { status: "running", jobId: Date.now(), jobSpec };
 }
 
 // Track job status (// production implementation:)
-async function getColabJobStatus(jobId: number) {
+async /**
+ * getColabJobStatus function
+ */
+function getColabJobStatus(jobId: number): any {
   // const axios = await import('axios');
   // production implementation:: Real API call to get job status
   return { jobId, status: "completed", result: "Job result data" };
 }
 
-function persistJob(job: Record<string, unknown>) {
+/**
+ * persistJob function
+ */
+function persistJob(job: Record<string, unknown>): any {
   fs.appendFileSync(JOBS_PATH, JSON.stringify(job) + "\n");
 }
 
 // Extend API handler to support new endpoints
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   if (req.method === "POST") {
     if (req.query.installPackage) {
       const { pkg, manager } = req.body;

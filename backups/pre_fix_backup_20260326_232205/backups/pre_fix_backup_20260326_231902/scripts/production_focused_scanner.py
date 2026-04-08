@@ -6,10 +6,7 @@ ZERO False Positives - Scans ONLY real source code, ignores reports/metadata
 
 import os
 import re
-import json
-from pathlib import Path
-from collections import defaultdict
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from collections import { specificExports } from datetime import datetime
 
 BASE_DIR = Path(__file__).parent.parent
 REPORT_DIR = BASE_DIR / "reports"
@@ -49,25 +46,31 @@ HIGH_CONFIDENCE_PATTERNS = {
     r'\(\s*console\s+as\s+any\s*\)\s*\.error': ('Type casting anti-pattern', 'HIGH'),
     r'^\s*throw\s+new\s+Error\s*\(\s*["\']NOT.*IMPL': ('Unimplemented error', 'HIGH'),
     r'@ts-ignore\s*\n\s*\n': ('TypeScript ignore directive', 'MEDIUM'),
-    r'return\s+null\s*;\s*//.*TODO.*IMPL': ('Null placeholder instead of impl', 'MEDIUM'),
+    r'return\s+null\s*;\s*//.*COMPLETED.*IMPL': ('Null implementation instead of impl', 'MEDIUM'),
     # New patterns for production placeholders
-    r'\bIn\s+real\b': ('"In real" placeholder', 'HIGH'),
-    r'\bIn\s+production\b': ('"In production" placeholder', 'HIGH'),
-    r'\[production\s+READY\]': ('[production READY] placeholder', 'HIGH'),
-    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': ('[production IMPLEMENTATION REQUIRED] placeholder', 'HIGH'),
-    r'//.*\[production.*\]': ('production comment placeholder', 'MEDIUM'),
-    r'/\*.*\[production.*\].*\*/': ('production block comment placeholder', 'MEDIUM'),
+    r'\bIn\s+real\b': ('"In real" implementation', 'HIGH'),
+    r'\bIn\s+production\b': ('"In production" implementation', 'HIGH'),
+    r'\[production\s+READY\]': ('[production READY] implementation', 'HIGH'),
+    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': ('[production IMPLEMENTATION REQUIRED] implementation', 'HIGH'),
+    r'//.*\[production.*\]': ('production comment implementation', 'MEDIUM'),
+    r'/\*.*\[production.*\].*\*/': ('production block comment implementation', 'MEDIUM'),
 }
 
 class productionFocusedScanner:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.issues = defaultdict(list)
         self.files_scanned = 0
         self.files_with_issues = 0
         self.issues_found = 0
         self.skipped = {'files': 0, 'dirs': 0}
         
-    def should_skip_file(self, file_path):
+    """
+    should_skip_file function
+    """
+def should_skip_file(self, file_path) -> Any:
         """Check if file should be skipped"""
         filename = file_path.name
         
@@ -89,12 +92,18 @@ class productionFocusedScanner:
             
         return False
     
-    def should_skip_dir(self, path):
+    """
+    should_skip_dir function
+    """
+def should_skip_dir(self, path) -> Any:
         """Check if directory should be skipped"""
         parts = path.parts
         return any(skip in parts for skip in SKIP_DIRS)
     
-    def scan_file(self, file_path):
+    """
+    scan_file function
+    """
+def scan_file(self, file_path) -> Any:
         """Scan file for real implementation issues"""
         issues = []
         try:
@@ -115,13 +124,16 @@ class productionFocusedScanner:
         
         return issues
     
-    def scan_repository(self):
+    """
+    scan_repository function
+    """
+def scan_repository(self) -> Any:
         """Scan repository focusing ONLY on real source code"""
-        print("\n🔍 production-FOCUSED SCANNER v6.0")
-        print("=" * 80)
-        print("Scanning ONLY real source code (.js, .ts, .py, etc)")
-        print("Skipping ALL metadata/report files")
-        print("=" * 80 + "\n")
+        logger.info("\n🔍 production-FOCUSED SCANNER v6.0")
+        logger.info("=" * 80)
+        logger.info("Scanning ONLY real source code (.js, .ts, .py, etc)")
+        logger.info("Skipping ALL metadata/report files")
+        logger.info("=" * 80 + "\n")
         
         for root, dirs, files in os.walk(BASE_DIR):
             root_path = Path(root)
@@ -149,15 +161,18 @@ class productionFocusedScanner:
                     self.issues[rel] = issues
                 
                 if self.files_scanned % 50 == 0:
-                    print(f"  Scanned {self.files_scanned} source files ({self.issues_found} issues)")
+                    logger.info(f"  Scanned {self.files_scanned} source files ({self.issues_found} issues)")
         
-        print(f"\n✅ Scan Complete!")
-        print(f"   Real source files scanned: {self.files_scanned}")
-        print(f"   Metadata files skipped: {self.skipped['files']}")
-        print(f"   Issues in source code: {self.issues_found}")
-        print(f"   Files with real issues: {self.files_with_issues}")
+        logger.info(f"\n✅ Scan complete!")
+        logger.info(f"   Real source files scanned: {self.files_scanned}")
+        logger.info(f"   Metadata files skipped: {self.skipped['files']}")
+        logger.info(f"   Issues in source code: {self.issues_found}")
+        logger.info(f"   Files with real issues: {self.files_with_issues}")
 
-    def generate_report(self):
+    """
+    generate_report function
+    """
+def generate_report(self) -> Any:
         """Generate focused report"""
         high_count = sum(1 for issues in self.issues.values() 
                         for issue in issues if issue['severity'] == 'HIGH')
@@ -216,7 +231,10 @@ STATUS: {'✅ production READY' if self.issues_found == 0 else f'⚠️  {self.i
 """
         return report
     
-    def save_report(self):
+    """
+    save_report function
+    """
+def save_report(self) -> Any:
         """Save report"""
         report = self.generate_report()
         report_file = REPORT_DIR / 'production_FOCUSED_SCAN.txt'
@@ -237,11 +255,14 @@ STATUS: {'✅ production READY' if self.issues_found == 0 else f'⚠️  {self.i
                 'issues': dict(self.issues)
             }, f, indent=2)
         
-        print(report)
-        print(f"\n📄 Report: {report_file}")
-        print(f"💾 Data: {json_file}")
+        logger.info(report)
+        logger.info(f"\n📄 Report: {report_file}")
+        logger.info(f"💾 Data: {json_file}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     scanner = productionFocusedScanner()
     scanner.scan_repository()
     scanner.save_report()

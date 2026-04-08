@@ -4250,7 +4250,7 @@
     {
       "type": "syntax",
       "category": "typescript",
-      "message": "src/components/q-city/QMOIDashboard.tsx(24,10): error TS2614: Module '\"./QMoiAutoprodPanel\"' has no exported member 'QMoiAutoprodPanel'. Did you mean to use 'import QMoiAutoprodPanel from \"./QMoiAutoprodPanel\"' instead?",
+      "message": "src/components/q-city/QMOIDashboard.tsx(24,10): error TS2614: Module '\"./QMoiAutoprodPanel\"' has no exported member 'QMoiAutoprodPanel'. Did you mean to use 'import { specificExports } from \"./QMoiAutoprodPanel\"' instead?",
       "severity": "CRITICAL",
       "timestamp": "2026-03-12T23:15:31.214Z"
     },
@@ -4852,14 +4852,14 @@
     {
       "type": "syntax",
       "category": "typescript",
-      "message": "src/[production READY]s/handlers.ts(2,10): error TS2614: Module '\"msw\"' has no exported member 'http'. Did you mean to use 'import http from \"msw\"' instead?",
+      "message": "src/[production READY]s/handlers.ts(2,10): error TS2614: Module '\"msw\"' has no exported member 'http'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
       "severity": "CRITICAL",
       "timestamp": "2026-03-12T23:15:31.214Z"
     },
     {
       "type": "syntax",
       "category": "typescript",
-      "message": "src/[production READY]s/handlers.ts(2,16): error TS2614: Module '\"msw\"' has no exported member 'HttpResponse'. Did you mean to use 'import HttpResponse from \"msw\"' instead?",
+      "message": "src/[production READY]s/handlers.ts(2,16): error TS2614: Module '\"msw\"' has no exported member 'HttpResponse'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
       "severity": "CRITICAL",
       "timestamp": "2026-03-12T23:15:31.214Z"
     },
@@ -11229,14 +11229,14 @@
     {
       "type": "accessibility",
       "category": "wcag_violation",
-      "message": "Button included aria-label in backups/src.backup.20260121144720/components/stable-q-ai-system.tsx",
+      "message": "Button included aria-label in backups/src.backup.20260121144720/components/latest-q-ai-system.tsx",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:56.835Z"
     },
     {
       "type": "accessibility",
       "category": "wcag_violation",
-      "message": "Input included associated label in backups/src.backup.20260121144720/components/stable-q-ai-system.tsx",
+      "message": "Input included associated label in backups/src.backup.20260121144720/components/latest-q-ai-system.tsx",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:56.835Z"
     },
@@ -12426,14 +12426,14 @@
     {
       "type": "accessibility",
       "category": "wcag_violation",
-      "message": "Button included aria-label in src/components/stable-q-ai-system.tsx",
+      "message": "Button included aria-label in src/components/latest-q-ai-system.tsx",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:56.858Z"
     },
     {
       "type": "accessibility",
       "category": "wcag_violation",
-      "message": "Input included associated label in src/components/stable-q-ai-system.tsx",
+      "message": "Input included associated label in src/components/latest-q-ai-system.tsx",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:56.858Z"
     },
@@ -13119,7 +13119,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in ALLVERSIONS.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+      "message": "Broken link in ALLVERSIONS.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.428Z"
     },
@@ -14834,7 +14834,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in GITHUB_RELEASES_REALTIME_GUIDE.md: #quick-start",
+      "message": "Broken link in GITHUB_RELEASES_REALTIME_GUIDE.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.440Z"
     },
@@ -15702,14 +15702,14 @@
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in QCITY-ENTERPRISE-COMPLETE.md",
+      "message": "included frontmatter in QCITY-ENTERPRISE-complete.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.446Z"
     },
     {
       "type": "documentation",
       "category": "missing_frontmatter",
-      "message": "included frontmatter in QCITY-PROJECT-COMPLETE.md",
+      "message": "included frontmatter in QCITY-PROJECT-complete.md",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:16:57.446Z"
     },
@@ -19874,7 +19874,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.630Z"
     },
@@ -22842,7 +22842,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.636Z"
     },
@@ -25236,7 +25236,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.641Z"
     },
@@ -31501,7 +31501,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.660Z"
     },
@@ -33895,7 +33895,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.662Z"
     },
@@ -39131,7 +39131,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #Quick-Start",
+      "message": "Broken link in link_report.md: #optimized-Start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.667Z"
     },
@@ -39565,7 +39565,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.668Z"
     },
@@ -42533,7 +42533,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.672Z"
     },
@@ -44927,7 +44927,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.674Z"
     },
@@ -51192,7 +51192,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.683Z"
     },
@@ -53586,7 +53586,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.685Z"
     },
@@ -58822,7 +58822,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #Quick-Start",
+      "message": "Broken link in link_report.md: #optimized-Start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.690Z"
     },
@@ -59256,7 +59256,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.691Z"
     },
@@ -62224,7 +62224,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.695Z"
     },
@@ -64618,7 +64618,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.697Z"
     },
@@ -70883,7 +70883,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.703Z"
     },
@@ -73277,7 +73277,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.706Z"
     },
@@ -78513,7 +78513,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #Quick-Start",
+      "message": "Broken link in link_report.md: #optimized-Start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.711Z"
     },
@@ -78947,7 +78947,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.711Z"
     },
@@ -81915,7 +81915,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.718Z"
     },
@@ -84309,7 +84309,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.720Z"
     },
@@ -90574,7 +90574,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.726Z"
     },
@@ -92968,7 +92968,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.728Z"
     },
@@ -98204,7 +98204,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #Quick-Start",
+      "message": "Broken link in link_report.md: #optimized-Start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.734Z"
     },
@@ -98638,7 +98638,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+      "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.734Z"
     },
@@ -101606,7 +101606,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.738Z"
     },
@@ -104000,7 +104000,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.740Z"
     },
@@ -110265,7 +110265,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.749Z"
     },
@@ -112659,7 +112659,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #quick-start",
+      "message": "Broken link in link_report.md: #optimized-start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.752Z"
     },
@@ -117895,7 +117895,7 @@
     {
       "type": "documentation",
       "category": "broken_link",
-      "message": "Broken link in link_report.md: #Quick-Start",
+      "message": "Broken link in link_report.md: #optimized-Start",
       "severity": "MEDIUM",
       "timestamp": "2026-03-12T23:16:57.757Z"
     },
@@ -123411,7 +123411,7 @@
     {
       "type": "test",
       "category": "missing_test",
-      "message": "included test for _archive_qmoi-enhanced/src/components/stable-q-ai-system.tsx",
+      "message": "included test for _archive_qmoi-enhanced/src/components/latest-q-ai-system.tsx",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:17:50.870Z"
     },
@@ -124174,7 +124174,7 @@
     {
       "type": "test",
       "category": "missing_test",
-      "message": "included test for src/components/stable-q-ai-system.tsx",
+      "message": "included test for src/components/latest-q-ai-system.tsx",
       "severity": "LOW",
       "timestamp": "2026-03-12T23:17:50.873Z"
     },
@@ -129189,7 +129189,7 @@
       {
         "type": "syntax",
         "category": "typescript",
-        "message": "src/components/q-city/QMOIDashboard.tsx(24,10): error TS2614: Module '\"./QMoiAutoprodPanel\"' has no exported member 'QMoiAutoprodPanel'. Did you mean to use 'import QMoiAutoprodPanel from \"./QMoiAutoprodPanel\"' instead?",
+        "message": "src/components/q-city/QMOIDashboard.tsx(24,10): error TS2614: Module '\"./QMoiAutoprodPanel\"' has no exported member 'QMoiAutoprodPanel'. Did you mean to use 'import { specificExports } from \"./QMoiAutoprodPanel\"' instead?",
         "severity": "CRITICAL",
         "timestamp": "2026-03-12T23:15:31.214Z"
       },
@@ -129791,14 +129791,14 @@
       {
         "type": "syntax",
         "category": "typescript",
-        "message": "src/[production READY]s/handlers.ts(2,10): error TS2614: Module '\"msw\"' has no exported member 'http'. Did you mean to use 'import http from \"msw\"' instead?",
+        "message": "src/[production READY]s/handlers.ts(2,10): error TS2614: Module '\"msw\"' has no exported member 'http'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
         "severity": "CRITICAL",
         "timestamp": "2026-03-12T23:15:31.214Z"
       },
       {
         "type": "syntax",
         "category": "typescript",
-        "message": "src/[production READY]s/handlers.ts(2,16): error TS2614: Module '\"msw\"' has no exported member 'HttpResponse'. Did you mean to use 'import HttpResponse from \"msw\"' instead?",
+        "message": "src/[production READY]s/handlers.ts(2,16): error TS2614: Module '\"msw\"' has no exported member 'HttpResponse'. Did you mean to use 'import { specificExports } from \"msw\"' instead?",
         "severity": "CRITICAL",
         "timestamp": "2026-03-12T23:15:31.214Z"
       },
@@ -136180,14 +136180,14 @@
       {
         "type": "accessibility",
         "category": "wcag_violation",
-        "message": "Button included aria-label in backups/src.backup.20260121144720/components/stable-q-ai-system.tsx",
+        "message": "Button included aria-label in backups/src.backup.20260121144720/components/latest-q-ai-system.tsx",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:56.835Z"
       },
       {
         "type": "accessibility",
         "category": "wcag_violation",
-        "message": "Input included associated label in backups/src.backup.20260121144720/components/stable-q-ai-system.tsx",
+        "message": "Input included associated label in backups/src.backup.20260121144720/components/latest-q-ai-system.tsx",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:56.835Z"
       },
@@ -137377,14 +137377,14 @@
       {
         "type": "accessibility",
         "category": "wcag_violation",
-        "message": "Button included aria-label in src/components/stable-q-ai-system.tsx",
+        "message": "Button included aria-label in src/components/latest-q-ai-system.tsx",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:56.858Z"
       },
       {
         "type": "accessibility",
         "category": "wcag_violation",
-        "message": "Input included associated label in src/components/stable-q-ai-system.tsx",
+        "message": "Input included associated label in src/components/latest-q-ai-system.tsx",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:56.858Z"
       },
@@ -138072,7 +138072,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in ALLVERSIONS.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+        "message": "Broken link in ALLVERSIONS.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.428Z"
       },
@@ -139787,7 +139787,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in GITHUB_RELEASES_REALTIME_GUIDE.md: #quick-start",
+        "message": "Broken link in GITHUB_RELEASES_REALTIME_GUIDE.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.440Z"
       },
@@ -140655,14 +140655,14 @@
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in QCITY-ENTERPRISE-COMPLETE.md",
+        "message": "included frontmatter in QCITY-ENTERPRISE-complete.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.446Z"
       },
       {
         "type": "documentation",
         "category": "missing_frontmatter",
-        "message": "included frontmatter in QCITY-PROJECT-COMPLETE.md",
+        "message": "included frontmatter in QCITY-PROJECT-complete.md",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:16:57.446Z"
       },
@@ -144827,7 +144827,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.630Z"
       },
@@ -147795,7 +147795,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.636Z"
       },
@@ -150189,7 +150189,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.641Z"
       },
@@ -156454,7 +156454,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.660Z"
       },
@@ -158848,7 +158848,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.662Z"
       },
@@ -164084,7 +164084,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #Quick-Start",
+        "message": "Broken link in link_report.md: #optimized-Start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.667Z"
       },
@@ -164518,7 +164518,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.668Z"
       },
@@ -167486,7 +167486,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.672Z"
       },
@@ -169880,7 +169880,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.674Z"
       },
@@ -176145,7 +176145,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.683Z"
       },
@@ -178539,7 +178539,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.685Z"
       },
@@ -183775,7 +183775,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #Quick-Start",
+        "message": "Broken link in link_report.md: #optimized-Start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.690Z"
       },
@@ -184209,7 +184209,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.691Z"
       },
@@ -187177,7 +187177,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.695Z"
       },
@@ -189571,7 +189571,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.697Z"
       },
@@ -195836,7 +195836,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.703Z"
       },
@@ -198230,7 +198230,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.706Z"
       },
@@ -203466,7 +203466,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #Quick-Start",
+        "message": "Broken link in link_report.md: #optimized-Start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.711Z"
       },
@@ -203900,7 +203900,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.711Z"
       },
@@ -206868,7 +206868,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.718Z"
       },
@@ -209262,7 +209262,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.720Z"
       },
@@ -215527,7 +215527,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.726Z"
       },
@@ -217921,7 +217921,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.728Z"
       },
@@ -223157,7 +223157,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #Quick-Start",
+        "message": "Broken link in link_report.md: #optimized-Start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.734Z"
       },
@@ -223591,7 +223591,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/FAST-BOOTSTRAP-README.md.json",
+        "message": "Broken link in link_report.md: .qmoi_validation/validation_reports/high-performance-BOOTSTRAP-README.md.json",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.734Z"
       },
@@ -226559,7 +226559,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.738Z"
       },
@@ -228953,7 +228953,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.740Z"
       },
@@ -235218,7 +235218,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.749Z"
       },
@@ -237612,7 +237612,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #quick-start",
+        "message": "Broken link in link_report.md: #optimized-start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.752Z"
       },
@@ -242848,7 +242848,7 @@
       {
         "type": "documentation",
         "category": "broken_link",
-        "message": "Broken link in link_report.md: #Quick-Start",
+        "message": "Broken link in link_report.md: #optimized-Start",
         "severity": "MEDIUM",
         "timestamp": "2026-03-12T23:16:57.757Z"
       },
@@ -248374,7 +248374,7 @@
       {
         "type": "test",
         "category": "missing_test",
-        "message": "included test for _archive_qmoi-enhanced/src/components/stable-q-ai-system.tsx",
+        "message": "included test for _archive_qmoi-enhanced/src/components/latest-q-ai-system.tsx",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:17:50.870Z"
       },
@@ -249137,7 +249137,7 @@
       {
         "type": "test",
         "category": "missing_test",
-        "message": "included test for src/components/stable-q-ai-system.tsx",
+        "message": "included test for src/components/latest-q-ai-system.tsx",
         "severity": "LOW",
         "timestamp": "2026-03-12T23:17:50.873Z"
       },

@@ -4,16 +4,19 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "bcryptjs";
+import { specificExports } from "jsonwebtoken";
 
 const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
 const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
-function loadUsers(): unknown[] {
+/**
+ * loadUsers function
+ */
+function loadUsers(): any: unknown[] {
   if (!fs.existsSync(USERS_FILE)) return [];
   try {
     return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
@@ -22,7 +25,10 @@ function loadUsers(): unknown[] {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { username, password } = body;

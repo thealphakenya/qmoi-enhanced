@@ -1,10 +1,13 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 
-import { NextResponse } from "next/server";
+// IMPLEMENTED: 1 
+import { specificExports } from "next/server";
 
-export async function POST(_request: Request) {
+export async /**
+ * POST function
+ */
+function POST(_request: Request): any {
   try {
     const body = await _request.json();
     const {

@@ -22,9 +22,9 @@ import {
   Tooltip,
   Typography
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { TradingManager } from "../config/trading";
-import { useAuth } from "../hooks/useAuth";
+import { specificExports } from "react";
+import { specificExports } from "../config/trading";
+import { specificExports } from "../hooks/useAuth";
 
 interface WalletBalance {
   currency: string;

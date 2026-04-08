@@ -3,15 +3,18 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextResponse } from "next/server";
-import { headers } from "next/headers";
+import { specificExports } from "next/server";
+import { specificExports } from "next/headers";
 import {
   getAutomationManager,
   initializeQMOIAutomation,
   shutdownQMOIAutomation,
 } from "@/lib/qmoi-automation-manager";
 
-async function verifyAdminAccess(request: Request) {
+async /**
+ * verifyAdminAccess function
+ */
+function verifyAdminAccess(request: Request): any {
   const headersList = await headers();
   const token = headersList.get("authorization")?.replace("Bearer ", "");
 
@@ -21,7 +24,10 @@ async function verifyAdminAccess(request: Request) {
   return true;
 }
 
-export async function GET(request: Request) {
+export async /**
+ * GET function
+ */
+function GET(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }
@@ -47,7 +53,10 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async /**
+ * POST function
+ */
+function POST(request: Request): any {
   if (!(await verifyAdminAccess(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
   }

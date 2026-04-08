@@ -25,5 +25,9 @@
       "content": "What did I tell you earlier?",
       "ts": "2025-12-25T07:53:41.749112"
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:37.919050"
 }

@@ -23,7 +23,7 @@
 
 "use client";
 
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { specificExports } from "react";
 
 // Component metadata for enhanced tracking
 interface ComponentMetadata {
@@ -245,7 +245,7 @@ export const componentPaths = [
   "../components/ui/separator",
   "../components/ui/sheet",
   "../components/ui/sidebar",
-  "../components/ui/skeleton",
+  "../components/ui/complete",
   "../components/ui/slider",
   "../components/ui/sonner",
   "../components/ui/switch",
@@ -267,7 +267,7 @@ const qmoiOperations = {
   syncMemory: async (component: ComponentMetadata): Promise<boolean> => {
     try {
       // Simulate memory sync with QMOI consciousness
-      console.log(`🔄 Syncing memory for ${component.name}`);
+      logger.info(`🔄 Syncing memory for ${component.name}`);
       await new Promise(resolve => setTimeout(resolve, 100));
       return true;
     } catch (error) {
@@ -370,7 +370,7 @@ const qmoiOperations = {
   accessDatasets: async (component: ComponentMetadata): Promise<boolean> => {
     try {
       // Simulate dataset access for component learning
-      console.log(`📊 Accessing datasets for ${component.name} intelligence`);
+      logger.info(`📊 Accessing datasets for ${component.name} intelligence`);
       await new Promise(resolve => setTimeout(resolve, 50));
       return true;
     } catch (error) {
@@ -380,7 +380,11 @@ const qmoiOperations = {
   }
 };
 
-export default function ComponentGallery() {
+export default /**
+ * ComponentGallery function
+ */
+function ComponentGallery(): any {
+  try {() {
   const [results, setResults] = useState<ComponentMetadata[]>([]);
   const [filterCategory, setFilterCategory] = useState<string>("all");
   const [filterStatus, setFilterStatus] = useState<string>("all");
@@ -499,7 +503,7 @@ export default function ComponentGallery() {
         }
       };
 
-      metadata.forEach((m) => {
+      metadata.for (const item of((m) => {
         if (!stats.byCategory[m.category]) {
           stats.byCategory[m.category] = 0;
         }
@@ -509,7 +513,7 @@ export default function ComponentGallery() {
       });
 
       // Update COMPONENTS.md with QMOI-enhanced documentation
-      console.log("QMOI Component stats:", stats);
+      logger.info("QMOI Component stats:", stats);
     } finally {
       setIsGeneratingDocs(false);
     }
@@ -661,7 +665,7 @@ export default function ComponentGallery() {
             </label>
             <input
               type="text"
-              placeholder="Search by name or path..."
+              implementation="Search by name or path..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"

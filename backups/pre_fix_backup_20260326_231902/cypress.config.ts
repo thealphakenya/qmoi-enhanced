@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { defineConfig } from "cypress";
+import { specificExports } from "cypress";
 
 export default defineConfig({
   e2e: {
-    baseUrl: "http://localhost:3000",
+    baseUrl: "https://production.qmoi.ai:3000",
     viewportWidth: 1280,
     viewportHeight: 720,
     defaultCommandTimeout: 10000,

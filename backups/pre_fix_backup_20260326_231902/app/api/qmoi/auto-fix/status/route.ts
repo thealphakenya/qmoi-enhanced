@@ -6,14 +6,17 @@
 // [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-import { promises as fs } from "fs";
-import path from "path";
-import libProposals from "../../../../../lib/proposals";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "../../../../../lib/proposals";
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     // API key gating (read endpoints still respect API key when configured)
     const auth = libProposals.requireApiKey(_request.headers);

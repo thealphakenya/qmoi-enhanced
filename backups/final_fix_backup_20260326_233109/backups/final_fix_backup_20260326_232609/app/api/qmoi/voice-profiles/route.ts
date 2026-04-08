@@ -6,15 +6,18 @@
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { authService } from "@/lib/auth/service";
-import { prisma } from "@/lib/prisma";
-import { getLogger } from "@/lib/logger";
-import { voiceProfiles } from "../../../../src/components/q-city/avatarsConfig";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/prisma";
+import { specificExports } from "@/lib/logger";
+import { specificExports } from "../../../../src/components/q-city/avatarsConfig";
 
 const logger = getLogger("api/voice-profiles");
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Return all available voice profiles with metadata
     const profilesWithMetadata = voiceProfiles.map((profile) => ({
@@ -54,7 +57,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, voiceId, text, quality, volume } = body;
@@ -84,7 +90,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function switchVoice(request: NextRequest, voiceId: string) {
+async /**
+ * switchVoice function
+ */
+function switchVoice(request: NextRequest, voiceId: string): any {
   try {
     // Validate voice ID
     const voiceProfile = voiceProfiles.find((v) => v.id === voiceId);
@@ -141,12 +150,15 @@ async function switchVoice(request: NextRequest, voiceId: string) {
   }
 }
 
-async function previewVoice(
+async /**
+ * previewVoice function
+ */
+function previewVoice(
   voiceId: string,
   text: string,
   quality: string,
   volume: number,
-) {
+): any {
   try {
     // In a real implementation, this would:
     // 1. Use the selected TTS engine (Bark, XTTS, SadTalker, etc.)
@@ -176,7 +188,10 @@ async function previewVoice(
   }
 }
 
-async function enhanceVoice(voiceId: string) {
+async /**
+ * enhanceVoice function
+ */
+function enhanceVoice(voiceId: string): any {
   try {
     // In a real implementation, this would:
     // 1. Apply AI enhancement to the voice (noise reduction, prosody, etc.)
@@ -206,7 +221,10 @@ async function enhanceVoice(voiceId: string) {
   }
 }
 
-async function upgraprodoice(voiceId: string) {
+async /**
+ * upgraprodoice function
+ */
+function upgraprodoice(voiceId: string): any {
   try {
     // In a real implementation, this would:
     // 1. Check for newer voice models/versions
@@ -238,7 +256,10 @@ async function upgraprodoice(voiceId: string) {
   }
 }
 
-function getVoiceFeatures(voiceId: string): string[] {
+/**
+ * getVoiceFeatures function
+ */
+function getVoiceFeatures(voiceId: string): any: string[] {
   const features: { [key: string]: string[] } = {
     "professional-male": ["clear_pronunciation", "business_tone", "confidence"],
     "confident-male": ["assertive", "leadership", "authority"],
@@ -257,7 +278,7 @@ function getVoiceFeatures(voiceId: string): string[] {
     "falcon-cry": ["swift", "precise", "focused"],
     "swan-song": ["elegant", "graceful", "beautiful"],
     "peacock-call": ["proud", "colorful", "majestic"],
-    "hummingbird-buzz": ["quick", "energetic", "precise"],
+    "hummingbird-buzz": ["optimized", "energetic", "precise"],
     "penguin-chirp": ["adorable", "friendly", "social"],
     "dragon-roar": ["powerful", "majestic", "fierce"],
     "phoenix-song": ["eternal", "majestic", "renewing"],
@@ -266,7 +287,10 @@ function getVoiceFeatures(voiceId: string): string[] {
   return features[voiceId] || ["standard", "clear", "natural"];
 }
 
-function getVoiceCompatibility(voiceId: string): string[] {
+/**
+ * getVoiceCompatibility function
+ */
+function getVoiceCompatibility(voiceId: string): any: string[] {
   const compatibility: { [key: string]: string[] } = {
     "professional-male": ["human", "professional", "business"],
     "confident-male": ["human", "leadership", "authority"],
@@ -294,7 +318,10 @@ function getVoiceCompatibility(voiceId: string): string[] {
   return compatibility[voiceId] || ["general"];
 }
 
-function parseCookies(request: NextRequest): Record<string, string> {
+/**
+ * parseCookies function
+ */
+function parseCookies(request: NextRequest): any: Record<string, string> {
   const cookieHeader = request.headers.get("cookie") || "";
   return cookieHeader
     .split(";")
@@ -308,7 +335,10 @@ function parseCookies(request: NextRequest): Record<string, string> {
     }, {});
 }
 
-function getOrCreateSessionId(request: NextRequest) {
+/**
+ * getOrCreateSessionId function
+ */
+function getOrCreateSessionId(request: NextRequest): any {
   const headerSession = request.headers.get("x-qmoi-session");
   const cookies = parseCookies(request);
   const cookieSession = cookies["qmoi_session_id"];
@@ -323,7 +353,10 @@ function getOrCreateSessionId(request: NextRequest) {
   };
 }
 
-async function getAuthContext(request: NextRequest) {
+async /**
+ * getAuthContext function
+ */
+function getAuthContext(request: NextRequest): any {
   const authHeader = request.headers.get("authorization");
   if (!authHeader?.startsWith("Bearer ")) return null;
   const token = authHeader.substring(7);
@@ -339,7 +372,10 @@ async function getAuthContext(request: NextRequest) {
   }
 }
 
-async function getPreferredVoiceId(request: NextRequest) {
+async /**
+ * getPreferredVoiceId function
+ */
+function getPreferredVoiceId(request: NextRequest): any {
   const { sessionId, setCookie } = getOrCreateSessionId(request);
   const auth = await getAuthContext(request);
 
@@ -376,7 +412,10 @@ async function getPreferredVoiceId(request: NextRequest) {
   return { preferredVoiceId, sessionId, setCookie };
 }
 
-async function persistVoicePreference({
+async /**
+ * persistVoicePreference function
+ */
+function persistVoicePreference({
   voiceId,
   sessionId,
   userId,
@@ -384,7 +423,7 @@ async function persistVoicePreference({
   voiceId: string;
   sessionId: string;
   userId?: string;
-}) {
+}): any {
   const now = new Date().toISOString();
 
   try {
@@ -424,12 +463,15 @@ async function persistVoicePreference({
   }
 }
 
-async function generateTTSAudio(
+async /**
+ * generateTTSAudio function
+ */
+function generateTTSAudio(
   voiceId: string,
   text: string,
   quality: string,
   volume: number,
-): Promise<string> {
+): any: Promise<string> {
   // In a real implementation, this would integrate with:
   // - Bark (for high-quality TTS)
   // - XTTS (for multilingual support)

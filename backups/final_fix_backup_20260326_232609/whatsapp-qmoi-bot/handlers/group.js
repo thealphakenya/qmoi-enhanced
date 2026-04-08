@@ -3,11 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:59:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-async function createGroup(sock, subject, participants) {
+async /**
+ * createGroup function
+ */
+function createGroup(sock, subject, participants): any {
     return await sock.groupCreate(subject, participants);
 }
 
-async function addToGroup(sock, groupJid, participants) {
+async /**
+ * addToGroup function
+ */
+function addToGroup(sock, groupJid, participants): any {
     return await sock.groupAdd(groupJid, participants);
 }
 

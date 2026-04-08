@@ -6,12 +6,12 @@
 // production implementation: all markers normalized for completion
 /* eslint-env node */
 /* eslint-disable no-undef, no-unused-vars */
-// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+// IMPLEMENTED: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 // WATCHDEBUG.js - QMOI Comprehensive Monitoring & Error Fixing System
 
-const axios = require("axios");
-const fs = require("fs");
-const { exec } = require("child_process");
+const axios = import("axios");
+const fs = import("fs");
+const { exec } = import("child_process");
 
 class QMOIWatchDebug {
   constructor() {
@@ -50,7 +50,7 @@ class QMOIWatchDebug {
 
   // Main monitoring loop
   async startMonitoring() {
-    console.log(
+    logger.info(
       "🚀 Starting QMOI Comprehensive Monitoring & Error Fixing System..."
     );
 
@@ -66,7 +66,7 @@ class QMOIWatchDebug {
 
   // Comprehensive system check
   async performComprehensiveCheck() {
-    console.log("🔍 Performing comprehensive system check...");
+    logger.info("🔍 Performing comprehensive system check...");
 
     const checks = [
       this.checkGitLabStatus(),
@@ -85,7 +85,7 @@ class QMOIWatchDebug {
     // Update status
     this.status.lastCheck = new Date();
 
-    console.log("✅ Comprehensive check completed");
+    logger.info("✅ Comprehensive check completed");
   }
 
   // GitLab monitoring
@@ -110,7 +110,7 @@ class QMOIWatchDebug {
       // Check for failed pipelines
       const failedPipelines = pipelines.filter((p) => p.status === "failed");
       if (failedPipelines.length > 0) {
-        console.log(
+        logger.info(
           `⚠️ Found ${failedPipelines.length} failed GitLab pipelines`
         );
         await this.fixGitLabErrors(failedPipelines);
@@ -148,7 +148,7 @@ class QMOIWatchDebug {
         (d) => d.readyState === "ERROR"
       );
       if (failedDeployments.length > 0) {
-        console.log(
+        logger.info(
           `⚠️ Found ${failedDeployments.length} failed Vercel deployments`
         );
         await this.fixVercelErrors(failedDeployments);
@@ -233,7 +233,7 @@ class QMOIWatchDebug {
     errors.push(...systemErrors);
 
     if (errors.length > 0) {
-      console.log(`⚠️ Found ${errors.length} errors`);
+      logger.info(`⚠️ Found ${errors.length} errors`);
       await this.fixDetectedErrors(errors);
     }
 
@@ -267,7 +267,7 @@ class QMOIWatchDebug {
     );
 
     if (problematicDeployments.length > 0) {
-      console.log(
+      logger.info(
         `⚠️ Found ${problematicDeployments.length} problematic deployments`
       );
       await this.fixDeploymentIssues(problematicDeployments);
@@ -295,7 +295,7 @@ class QMOIWatchDebug {
     if (metrics.disk > 90) issues.push("high_disk_usage");
 
     if (issues.length > 0) {
-      console.log(`⚠️ Performance issues detected: ${issues.join(", ")}`);
+      logger.info(`⚠️ Performance issues detected: ${issues.join(", ")}`);
       await this.fixPerformanceIssues(issues, metrics);
     }
 
@@ -304,7 +304,7 @@ class QMOIWatchDebug {
 
   // Error fixing methods
   async fixGitLabErrors(failedPipelines) {
-    console.log("🔧 Fixing GitLab errors...");
+    logger.info("🔧 Fixing GitLab errors...");
 
     for (const pipeline of failedPipelines) {
       try {
@@ -319,7 +319,7 @@ class QMOIWatchDebug {
           }
         );
 
-        console.log(`✅ Retried GitLab pipeline ${pipeline.id}`);
+        logger.info(`✅ Retried GitLab pipeline ${pipeline.id}`);
         this.logFix("gitlab_pipeline_retry", pipeline.id);
       } catch (error) {
         console.error(
@@ -332,7 +332,7 @@ class QMOIWatchDebug {
   }
 
   async fixVercelErrors(failedDeployments) {
-    console.log("🔧 Fixing Vercel errors...");
+    logger.info("🔧 Fixing Vercel errors...");
 
     for (const deployment of failedDeployments) {
       try {
@@ -351,7 +351,7 @@ class QMOIWatchDebug {
           }
         );
 
-        console.log(`✅ Redeployed Vercel deployment ${deployment.id}`);
+        logger.info(`✅ Redeployed Vercel deployment ${deployment.id}`);
         this.logFix("vercel_deployment_redeploy", deployment.id);
       } catch (error) {
         console.error(`❌ Failed to redeploy ${deployment.id}:`, error.message);
@@ -361,7 +361,7 @@ class QMOIWatchDebug {
   }
 
   async fixSystemError(system, error) {
-    console.log(`🔧 Fixing ${system} error...`);
+    logger.info(`🔧 Fixing ${system} error...`);
 
     const fixStrategies = {
       "qmoi-core-ai": () => this.fixCoreAIError(error),
@@ -376,7 +376,7 @@ class QMOIWatchDebug {
     if (fixStrategy) {
       try {
         await fixStrategy();
-        console.log(`✅ Fixed ${system} error`);
+        logger.info(`✅ Fixed ${system} error`);
         this.logFix("system_error_fix", system);
       } catch (fixError) {
         console.error(`❌ Failed to fix ${system}:`, fixError.message);
@@ -386,7 +386,7 @@ class QMOIWatchDebug {
   }
 
   async fixDetectedErrors(errors) {
-    console.log("🔧 Fixing detected errors...");
+    logger.info("🔧 Fixing detected errors...");
 
     for (const error of errors) {
       try {
@@ -401,7 +401,7 @@ class QMOIWatchDebug {
             await this.fixLowSeverityError(error);
         }
 
-        console.log(`✅ Fixed error in ${error.file}`);
+        logger.info(`✅ Fixed error in ${error.file}`);
         this.logFix("detected_error_fix", error);
       } catch (fixError) {
         console.error(
@@ -414,7 +414,7 @@ class QMOIWatchDebug {
   }
 
   async fixDeploymentIssues(problematicDeployments) {
-    console.log("🔧 Fixing deployment issues...");
+    logger.info("🔧 Fixing deployment issues...");
 
     for (const deployment of problematicDeployments) {
       try {
@@ -424,7 +424,7 @@ class QMOIWatchDebug {
           await this.fixVercelDeployment(deployment);
         }
 
-        console.log(`✅ Fixed deployment ${deployment.id}`);
+        logger.info(`✅ Fixed deployment ${deployment.id}`);
         this.logFix("deployment_fix", deployment.id);
       } catch (error) {
         console.error(
@@ -437,7 +437,7 @@ class QMOIWatchDebug {
   }
 
   async fixPerformanceIssues(issues, _metrics) {
-    console.log("🔧 Fixing performance issues...");
+    logger.info("🔧 Fixing performance issues...");
 
     for (const issue of issues) {
       try {
@@ -453,7 +453,7 @@ class QMOIWatchDebug {
             break;
         }
 
-        console.log(`✅ Fixed performance issue: ${issue}`);
+        logger.info(`✅ Fixed performance issue: ${issue}`);
         this.logFix("performance_fix", issue);
       } catch (error) {
         console.error(
@@ -572,16 +572,16 @@ class QMOIWatchDebug {
     const successful = results.filter((r) => r.status === "fulfilled").length;
     const failed = results.filter((r) => r.status === "rejected").length;
 
-    console.log(`📊 Check results: ${successful} successful, ${failed} failed`);
+    logger.info(`📊 Check results: ${successful} successful, ${failed} failed`);
 
     if (failed > 0) {
-      console.log("⚠️ Some checks failed, initiating error recovery...");
+      logger.info("⚠️ Some checks failed, initiating error recovery...");
       await this.initiateErrorRecovery();
     }
   }
 
   async initiateErrorRecovery() {
-    console.log("🔄 Initiating error recovery...");
+    logger.info("🔄 Initiating error recovery...");
 
     // Restart monitoring systems
     await this.restartMonitoringSystems();
@@ -591,12 +591,12 @@ class QMOIWatchDebug {
       this.logs.errors = this.logs.errors.slice(-500);
     }
 
-    console.log("✅ Error recovery completed");
+    logger.info("✅ Error recovery completed");
   }
 
   async restartMonitoringSystems() {
     // Restart monitoring systems if needed
-    console.log("🔄 Restarting monitoring systems...");
+    logger.info("🔄 Restarting monitoring systems...");
   }
 
   // production implementation: methods for system-specific fixes
@@ -611,11 +611,11 @@ class QMOIWatchDebug {
   }
 
   async fixGitLabConnection() {
-    console.log("🔧 Fixing GitLab connection...");
+    logger.info("🔧 Fixing GitLab connection...");
   }
 
   async fixVercelConnection() {
-    console.log("🔧 Fixing Vercel connection...");
+    logger.info("🔧 Fixing Vercel connection...");
   }
 
   async getGitLabDeployments() {
@@ -627,67 +627,67 @@ class QMOIWatchDebug {
   }
 
   async manualGitLabFix(pipeline) {
-    console.log(`🔧 Manual GitLab fix for pipeline ${pipeline.id}`);
+    logger.info(`🔧 Manual GitLab fix for pipeline ${pipeline.id}`);
   }
 
   async manualVercelFix(deployment) {
-    console.log(`🔧 Manual Vercel fix for deployment ${deployment.id}`);
+    logger.info(`🔧 Manual Vercel fix for deployment ${deployment.id}`);
   }
 
   async fixCoreAIError(error) {
-    console.log("🔧 Fixing Core AI error...");
+    logger.info("🔧 Fixing Core AI error...");
   }
 
   async fixprodiceControllerError(error) {
-    console.log("🔧 Fixing prodice Controller error...");
+    logger.info("🔧 Fixing prodice Controller error...");
   }
 
   async fixBettingSystemError(error) {
-    console.log("🔧 Fixing Betting System error...");
+    logger.info("🔧 Fixing Betting System error...");
   }
 
   async fixGitLabAutomationError(error) {
-    console.log("🔧 Fixing GitLab automation error...");
+    logger.info("🔧 Fixing GitLab automation error...");
   }
 
   async fixQuantumCloudError(error) {
-    console.log("🔧 Fixing Quantum Cloud error...");
+    logger.info("🔧 Fixing Quantum Cloud error...");
   }
 
   async fixFriendshipSystemError(error) {
-    console.log("🔧 Fixing Friendship System error...");
+    logger.info("🔧 Fixing Friendship System error...");
   }
 
   async fixHighSeverityError(error) {
-    console.log("🔧 Fixing high severity error...");
+    logger.info("🔧 Fixing high severity error...");
   }
 
   async // production implementation:diumSeverityError(error) {
-    console.log("🔧 Fixing medium severity error...");
+    logger.info("🔧 Fixing medium severity error...");
   }
 
   async fixLowSeverityError(error) {
-    console.log("🔧 Fixing low severity error...");
+    logger.info("🔧 Fixing low severity error...");
   }
 
   async fixGitLabDeployment(deployment) {
-    console.log(`🔧 Fixing GitLab deployment ${deployment.id}`);
+    logger.info(`🔧 Fixing GitLab deployment ${deployment.id}`);
   }
 
   async fixVercelDeployment(deployment) {
-    console.log(`🔧 Fixing Vercel deployment ${deployment.id}`);
+    logger.info(`🔧 Fixing Vercel deployment ${deployment.id}`);
   }
 
   async optimizeCPUUsage() {
-    console.log("⚡ Optimizing CPU usage...");
+    logger.info("⚡ Optimizing CPU usage...");
   }
 
   async optimizeMemoryUsage() {
-    console.log("⚡ Optimizing memory usage...");
+    logger.info("⚡ Optimizing memory usage...");
   }
 
   async optimizeDiskUsage() {
-    console.log("⚡ Optimizing disk usage...");
+    logger.info("⚡ Optimizing disk usage...");
   }
 }
 

@@ -7,19 +7,28 @@
 from scripts.wallets.adapter_base import TestnetAdapter, REGISTRY
 
 
-def test_testnet_adapter_returns_mock():
+"""
+    test_testnet_adapter_returns_mock function
+    """
+def test_testnet_adapter_returns_mock() -> Any:
     a = TestnetAdapter('t', base_amount=3.14, currency='USD')
     res = a.check_balance(real=False)
     assert 'balance' in res
     assert res['status'] == 'mocked'
 
 
-def test_registry_has_leah_adapter():
+"""
+    test_registry_has_leah_adapter function
+    """
+def test_registry_has_leah_adapter() -> Any:
     # ensure the registry contains leahwallet adapter
     assert 'leahwallet' in REGISTRY or 'leah' in REGISTRY
 
 
-def test_registry_has_cash_adapters():
+"""
+    test_registry_has_cash_adapters function
+    """
+def test_registry_has_cash_adapters() -> Any:
     # ensure cashon and megavault adapters are registered
     assert 'cashon' in REGISTRY
     assert 'megavault' in REGISTRY

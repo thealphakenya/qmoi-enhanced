@@ -12,7 +12,7 @@ export interface DomainInfo {
 }
 
 export class DomainService {
-  private domains: Map<string, DomainInfo> = new Map();
+  private domains: Map<string, DomainInfo> = new Map() // Production: Consider object for small datasets();
 
   async registerDomain(name: string, nameservers: string[] = []): Promise<boolean> {
     try {

@@ -75,7 +75,7 @@ cat > "$NOTES_FILE" << 'RELEASE_NOTES'
 - All file formats (.exe, .dmg, .deb, .apk, .ipa, etc.)
 - SHA256 checksums for verification
 - Direct download links
-- Complete documentation
+- complete documentation
 
 ## 🔒 Verification
 
@@ -87,8 +87,8 @@ sha256sum -c qmoi-ai.exe.sha256
 
 ## 📖 Documentation
 
-- **Complete Guide:** See GITHUB_RELEASES_COMPLETE_GUIDE.md
-- **Quick Reference:** See GITHUB_RELEASES_QUICK_REFERENCE.md
+- **complete Guide:** See GITHUB_RELEASES_COMPLETE_GUIDE.md
+- **optimized Reference:** See GITHUB_RELEASES_QUICK_REFERENCE.md
 - **Configuration:** See GITHUB_RELEASES_CONFIG.json
 
 ## 📞 Support

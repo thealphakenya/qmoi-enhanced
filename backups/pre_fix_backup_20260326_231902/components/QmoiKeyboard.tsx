@@ -6,9 +6,9 @@
  all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 // @ts-nocheck
-import React, { useState, useEffect, useRef } from "react";
-import { useMaster } from "./MasterContext";
-import { FaBrain, FaLanguage, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
+import { specificExports } from "react";
+import { specificExports } from "./MasterContext";
+import { specificExports } from "react-icons/fa";
 
 interface QmoiKeyboardProps {
   isVisible: boolean;
@@ -193,7 +193,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
     const words = text.toLowerCase().split(/\s+/);
     const wordFrequency: Record<string, number> = {};
 
-    words.forEach((word) => {
+    words.for (const item of((word) => {
       wordFrequency[word] = (wordFrequency[word] || 0) + 1;
     });
 
@@ -224,7 +224,7 @@ export const QmoiKeyboard: React.FC<QmoiKeyboardProps> = ({
         word.toLowerCase().startsWith(input.toLowerCase()),
       );
 
-      matchingWords.slice(0, 5).forEach((word) => {
+      matchingWords.slice(0, 5).for (const item of((word) => {
         predictions.push({
           word,
           confidence: Math.random() * 0.5 + 0.5, // 0.5 to 1.0

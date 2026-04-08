@@ -5,9 +5,12 @@
 
 "use client";
 
-import { UISettings } from "../../src/components/UISettings";
+import { specificExports } from "../../src/components/UISettings";
 
-export function ClientUISettings() {
+export /**
+ * ClientUISettings function
+ */
+function ClientUISettings(): any {
   return (
     <div id="qmoi-ui-settings">
       <UISettings />

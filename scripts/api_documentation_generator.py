@@ -4,18 +4,19 @@ QMOI Enhanced - API Documentation Generator
 Generates comprehensive OpenAPI/Swagger documentation for all production APIs
 Version: 2.0.0
 Date: 2026-03-30
-Description: Complete API documentation with OpenAPI 3.0 specification
+Description: complete API documentation with OpenAPI 3.0 specification
 """
 
 import json
-import os
-from datetime import datetime
-from typing import Dict, List, Any, Optional
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Any, Optional
 
 class APIDocumentationGenerator:
     """Generates comprehensive OpenAPI documentation for QMOI Enhanced APIs"""
 
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.openapi_version = "3.0.3"
         self.api_version = "2.0.0"
         self.title = "QMOI Enhanced API"
@@ -46,7 +47,7 @@ class APIDocumentationGenerator:
                     "description": "production server"
                 },
                 {
-                    "url": "http://localhost:3000/api",
+                    "url": "https://production.qmoi.ai:3000/api",
                     "description": "production server"
                 }
             ],
@@ -80,7 +81,10 @@ class APIDocumentationGenerator:
         self._define_parameters()
         self._define_paths()
 
-    def _define_schemas(self):
+    """
+    _define_schemas function
+    """
+def _define_schemas(self) -> Any:
         """Define all API schemas"""
         self.spec["components"]["schemas"] = {
 
@@ -262,7 +266,7 @@ class APIDocumentationGenerator:
                 "properties": {
                     "valueAtRisk": {"type": "number"},
                     "expectedShortfall": {"type": "number"},
-                    "stable": {"type": "number"},
+                    "latest": {"type": "number"},
                     "correlation": {"type": "number"},
                     "diversificationRatio": {"type": "number"}
                 }
@@ -421,7 +425,7 @@ class APIDocumentationGenerator:
             "Error": {
                 "type": "object",
                 "properties": {
-                    "success": {"type": "boolean", "example": False},
+                    "success": {"type": "boolean", "implementation": False},
                     "error": {
                         "type": "object",
                         "properties": {
@@ -439,7 +443,7 @@ class APIDocumentationGenerator:
             "Success": {
                 "type": "object",
                 "properties": {
-                    "success": {"type": "boolean", "example": True},
+                    "success": {"type": "boolean", "implementation": True},
                     "data": {"type": "object"},
                     "message": {"type": "string"}
                 },
@@ -447,7 +451,10 @@ class APIDocumentationGenerator:
             }
         }
 
-    def _define_responses(self):
+    """
+    _define_responses function
+    """
+def _define_responses(self) -> Any:
         """Define common API responses"""
         self.spec["components"]["responses"] = {
             "Unauthorized": {
@@ -455,7 +462,7 @@ class APIDocumentationGenerator:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "example": {
+                        "implementation": {
                             "success": False,
                             "error": {
                                 "code": "UNAUTHORIZED",
@@ -470,7 +477,7 @@ class APIDocumentationGenerator:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "example": {
+                        "implementation": {
                             "success": False,
                             "error": {
                                 "code": "FORBIDDEN",
@@ -485,7 +492,7 @@ class APIDocumentationGenerator:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "example": {
+                        "implementation": {
                             "success": False,
                             "error": {
                                 "code": "NOT_FOUND",
@@ -500,7 +507,7 @@ class APIDocumentationGenerator:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "example": {
+                        "implementation": {
                             "success": False,
                             "error": {
                                 "code": "BAD_REQUEST",
@@ -515,7 +522,7 @@ class APIDocumentationGenerator:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "example": {
+                        "implementation": {
                             "success": False,
                             "error": {
                                 "code": "RATE_LIMITED",
@@ -530,7 +537,7 @@ class APIDocumentationGenerator:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "example": {
+                        "implementation": {
                             "success": False,
                             "error": {
                                 "code": "INTERNAL_ERROR",
@@ -542,7 +549,10 @@ class APIDocumentationGenerator:
             }
         }
 
-    def _define_parameters(self):
+    """
+    _define_parameters function
+    """
+def _define_parameters(self) -> Any:
         """Define common API parameters"""
         self.spec["components"]["parameters"] = {
             "userId": {
@@ -592,7 +602,10 @@ class APIDocumentationGenerator:
             }
         }
 
-    def _define_paths(self):
+    """
+    _define_paths function
+    """
+def _define_paths(self) -> Any:
         """Define all API paths and operations"""
         self.spec["tags"] = [
             {"name": "Authentication", "description": "User authentication and authorization"},
@@ -1543,20 +1556,29 @@ class APIDocumentationGenerator:
             }
         }
 
-    def generate_specification(self) -> Dict[str, Any]:
+    """
+    generate_specification function
+    """
+def generate_specification(self) -> Dict[str, Any]:
         """Generate the complete OpenAPI specification"""
         return self.spec
 
-    def save_to_file(self, output_path: str = "openapi_spec.json"):
+    """
+    save_to_file function
+    """
+def save_to_file(self, output_path: str = "openapi_spec.json") -> Any:
         """Save the OpenAPI specification to a JSON file"""
         spec = self.generate_specification()
 
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(spec, f, indent=2, ensure_ascii=False)
 
-        print(f"✅ OpenAPI specification saved to {output_path}")
+        logger.info(f"✅ OpenAPI specification saved to {output_path}")
 
-    def generate_html_docs(self, output_path: str = "api_docs.html"):
+    """
+    generate_html_docs function
+    """
+def generate_html_docs(self, output_path: str = "api_docs.html") -> Any:
         """Generate HTML documentation from the OpenAPI spec"""
         spec = self.generate_specification()
 
@@ -1701,12 +1723,15 @@ class APIDocumentationGenerator:
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
 
-        print(f"✅ HTML documentation saved to {output_path}")
+        logger.info(f"✅ HTML documentation saved to {output_path}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function to generate API documentation"""
-    print("🚀 Generating QMOI Enhanced API Documentation")
-    print("=" * 60)
+    logger.info("🚀 Generating QMOI Enhanced API Documentation")
+    logger.info("=" * 60)
 
     generator = APIDocumentationGenerator()
 
@@ -1720,16 +1745,16 @@ def main():
     spec = generator.generate_specification()
     total_endpoints = sum(len(methods) for methods in spec['paths'].values())
 
-    print("
-📊 Documentation Summary:"    print(f"• Total API Endpoints: {total_endpoints}")
-    print(f"• API Version: {spec['info']['version']}")
-    print(f"• OpenAPI Version: {spec['openapi']}")
-    print(f"• Tags: {len(spec['tags'])}")
-    print(f"• Schemas: {len(spec['components']['schemas'])}")
-    print("
-✅ API Documentation Generation Complete!"    print("Files generated:")
-    print("• api_openapi_spec.json - OpenAPI 3.0 specification")
-    print("• api_documentation.html - Human-readable HTML documentation")
+    logger.info("
+📊 Documentation Summary:"    logger.info(f"• Total API Endpoints: {total_endpoints}")
+    logger.info(f"• API Version: {spec['info']['version']}")
+    logger.info(f"• OpenAPI Version: {spec['openapi']}")
+    logger.info(f"• Tags: {len(spec['tags'])}")
+    logger.info(f"• Schemas: {len(spec['components']['schemas'])}")
+    logger.info("
+✅ API Documentation Generation complete!"    logger.info("Files generated:")
+    logger.info("• api_openapi_spec.json - OpenAPI 3.0 specification")
+    logger.info("• api_documentation.html - Human-readable HTML documentation")
 
 if __name__ == "__main__":
     main()

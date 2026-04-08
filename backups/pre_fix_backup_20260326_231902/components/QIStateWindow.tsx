@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 const MASTER_EMAIL = "rovicviccy@gmail.com";
 const MASTER_PHONE = "+254786322855";
@@ -15,7 +15,11 @@ interface SessionState {
   recent?: string[];
 }
 
-export default function QIStateWindow({
+export default /**
+ * QIStateWindow function
+ */
+function QIStateWindow(): any {
+  try {({
   userEmail,
   userPhone,
   state,
@@ -31,7 +35,7 @@ export default function QIStateWindow({
   const [auditLog, setAuditLog] = useState<string[]>([]);
 
    fetching audit log
-  React.useEffect(() => {
+  useEffect(() => {
     setAuditLog([
       "Linked Airtel Money to master.",
       "Linked Mpesa to master.",

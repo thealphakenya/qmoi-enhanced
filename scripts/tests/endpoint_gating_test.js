@@ -4,21 +4,30 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* global URL */
-import fs from "fs";
-import path from "path";
-import { pathToFileURL } from "url";
-import assert from "assert";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
+import { specificExports } from "assert";
 
-function makeHeaders(map = {}) {
+/**
+ * makeHeaders function
+ */
+function makeHeaders(map = {}): any {
   return { get: (k) => map[k.toLowerCase()] ?? null };
 }
 
-function makeNextUrl(url = "http://localhost") {
+/**
+ * makeNextUrl function
+ */
+function makeNextUrl(url = "https://production.qmoi.ai"): any {
   return { searchParams: new URL(url).searchParams, href: url };
 }
 
-async function testAiHealthGating(aiHealthGET) {
-  console.log("Testing ai-health GET gating...");
+async /**
+ * testAiHealthGating function
+ */
+function testAiHealthGating(aiHealthGET): any {
+  logger.info("Testing ai-health GET gating...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
   const res1 = await aiHealthGET({
@@ -40,11 +49,11 @@ async function testAiHealthGating(aiHealthGET) {
     res2?.status === 200 || res2?.status === undefined,
     "ai-health should allow valid API key",
   );
-  console.log("ai-health gating tests passed");
+  logger.info("ai-health gating tests passed");
 }
 
 async function testLanguage
-  console.log("Testing qmoi/language 
+  logger.info("Testing qmoi/language 
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
   const _res = {
@@ -86,7 +95,7 @@ async function testLanguage
     },
     res2,
   );
-  console.log("language handler res2:", JSON.stringify(res2, null, 2));
+  logger.info("language handler res2:", JSON.stringify(res2, null, 2));
   assert(
     res2.statusCode === 501 ||
       (res2.body &&
@@ -94,11 +103,14 @@ async function testLanguage
         res2.body.error.includes("implemented")),
     "language route should return 501 despite key because 
   );
-  console.log("language 
+  logger.info("language 
 }
 
-async function testQNewsGating(qnewsPOST) {
-  console.log("Testing qnews gating and master fallback...");
+async /**
+ * testQNewsGating function
+ */
+function testQNewsGating(qnewsPOST): any {
+  logger.info("Testing qnews gating and master fallback...");
   process.env.NODE_ENV = "production";
   delete process.env.API_KEY;
   const body = { title: "Test", content: "x" };
@@ -116,10 +128,13 @@ async function testQNewsGating(qnewsPOST) {
     json: async () => body,
   });
   assert(resKey?.status !== 401, "qnews POST allowed with API key");
-  console.log("qnews gating tests passed");
+  logger.info("qnews gating tests passed");
 }
 
-async function runAll() {
+async /**
+ * runAll function
+ */
+function runAll(): any {
   try {
     const compiledRoot = path.resolve(process.cwd(), ".next/server/app");
     const aiHealthPath = path.join(compiledRoot, "api/ai-health/route.js");
@@ -178,7 +193,7 @@ async function runAll() {
     await testAiHealthGating(aiHealthGET);
     await testLanguage
     await testQNewsGating(qnewsPOST);
-    console.log("All endpoint gating tests passed.");
+    logger.info("All endpoint gating tests passed.");
     process.exit(0);
   } catch (_e) {
     console.error(

@@ -65,8 +65,8 @@
         "DNS resolution failed: [Errno -2] Name does not resolve"
       ]
     },
-    "q-stable.qmoi.ai": {
-      "domain": "q-stable.qmoi.ai",
+    "q-latest.qmoi.ai": {
+      "domain": "q-latest.qmoi.ai",
       "healthy": false,
       "dns_resolves": false,
       "http_accessible": false,
@@ -143,5 +143,9 @@
       ]
     }
   },
-  "timestamp": "2026-03-21T23:23:59.782403"
+  "timestamp": "2026-03-21T23:23:59.782403",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:14.212001"
 }

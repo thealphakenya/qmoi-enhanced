@@ -4,15 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import fs from "fs/promises";
-import path from "path";
+import { specificExports } from "fs/promises";
+import { specificExports } from "path";
 
 const ROOT = path.resolve(process.cwd());
 const API_MD = path.join(ROOT, "API.md");
 const API_V1_MD = path.join(ROOT, "APIs_v1.md");
 const ENDPOINTS_MD = path.join(ROOT, "ENDPOINTS.md");
 
-async function getRouteFiles(baseDirs) {
+async /**
+ * getRouteFiles function
+ */
+function getRouteFiles(baseDirs): any {
   const routeFiles = [];
   for (const base of baseDirs) {
     const dir = path.join(ROOT, base);
@@ -26,7 +29,10 @@ async function getRouteFiles(baseDirs) {
   return routeFiles;
 }
 
-async function exists(p) {
+async /**
+ * exists function
+ */
+function exists(p): any {
   try {
     await fs.access(p);
     return true;
@@ -35,7 +41,10 @@ async function exists(p) {
   }
 }
 
-async function walk(dir, cb) {
+async /**
+ * walk function
+ */
+function walk(dir, cb): any {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   for (const e of entries) {
     const full = path.join(dir, e.name);
@@ -47,7 +56,10 @@ async function walk(dir, cb) {
   }
 }
 
-function toEndpoint(routeFile, base) {
+/**
+ * toEndpoint function
+ */
+function toEndpoint(routeFile, base): any {
   const rel = path.relative(path.join(ROOT, base), routeFile);
   let routePath = path.dirname(rel);
   if (routePath === ".") {
@@ -66,13 +78,19 @@ function toEndpoint(routeFile, base) {
   return "/api/" + normalized;
 }
 
-function formatList(entries) {
+/**
+ * formatList function
+ */
+function formatList(entries): any {
   return entries
     .map((e) => `- \`${e.endpoint}\` -> ${e.file}`)
     .join("\n");
 }
 
-function replaceSection(content, markerStart, markerEnd, newSection) {
+/**
+ * replaceSection function
+ */
+function replaceSection(content, markerStart, markerEnd, newSection): any {
   const startIndex = content.indexOf(markerStart);
   const endIndex = content.indexOf(markerEnd);
   if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
@@ -85,7 +103,10 @@ function replaceSection(content, markerStart, markerEnd, newSection) {
   return null;
 }
 
-async function injectInFile(filePath, header, markerStart, markerEnd, newSection) {
+async /**
+ * injectInFile function
+ */
+function injectInFile(filePath, header, markerStart, markerEnd, newSection): any {
   const data = await fs.readFile(filePath, "utf-8");
   // First try existing marker replacement.
   const replaced = replaceSection(data, markerStart, markerEnd, newSection);
@@ -112,7 +133,10 @@ async function injectInFile(filePath, header, markerStart, markerEnd, newSection
   await fs.writeFile(filePath, data + "\n" + markerStart + "\n" + newSection + "\n" + markerEnd + "\n", "utf-8");
 }
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const routeFiles = await getRouteFiles(["app/api", "src/app/api"]);
   const entries = routeFiles
     .map((file) => {
@@ -155,7 +179,7 @@ async function main() {
 
   const outPath = path.join(ROOT, "all_api_endpoints_found.txt");
   await fs.writeFile(outPath, list + "\n", "utf-8");
-  console.log(`Wrote ${entries.length} routes to ${outPath}`);
+  logger.info(`Wrote ${entries.length} routes to ${outPath}`);
 }
 
 main().catch((err) => {

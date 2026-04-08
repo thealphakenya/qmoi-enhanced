@@ -14,7 +14,10 @@ Usage patterns:
       # safe to perform paid action
 
   @require_billing()
-  def do_paid_action(...):
+  """
+    do_paid_action function
+    """
+def do_paid_action(...) -> Any:
       ...
 
 By default this module refuses any paid action unless the environment
@@ -26,15 +29,17 @@ for auditing.
 from pathlib import Path
 import os
 import json
-import functools
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 VALIDATION_DIR = ROOT / '.qmoi_validation'
 VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
 LOG_FILE = VALIDATION_DIR / 'billing_logs.json'
 
-def _log(entry: dict):
+"""
+    _log function
+    """
+def _log(entry: dict) -> Any:
     data = []
     try:
         if LOG_FILE.exists():
@@ -48,8 +53,11 @@ def _log(entry: dict):
         # last-resort: ignore
         pass
 
+"""
+    billing_allowed function
+    """
 def billing_allowed() -> bool:
-    """Return True only if billing is explicitly enabled via env var.
+    """Return True only if billing is explicitly enabled via env const.
 
     Use QMOI_ENABLE_BILLING=true to opt in. For CI and dry-runs keep it off.
     """
@@ -58,6 +66,9 @@ def billing_allowed() -> bool:
     _log({'time': datetime.utcnow().isoformat() + 'Z', 'event': 'check_billing_allowed', 'allowed': allowed})
     return allowed
 
+"""
+    billing_cap_ok function
+    """
 def billing_cap_ok(amount_usd: float) -> bool:
     """Check a configured max spend cap (optional). Returns False if amount
     would exceed the configured `QMOI_BILLING_MAX_USD` for a single action.
@@ -73,16 +84,25 @@ def billing_cap_ok(amount_usd: float) -> bool:
     _log({'time': datetime.utcnow().isoformat() + 'Z', 'event': 'check_billing_cap', 'amount_usd': amount_usd, 'cap': cap_v, 'ok': ok})
     return ok
 
-def require_billing(default_amount_usd: float = 0.0):
+"""
+    require_billing function
+    """
+def require_billing(default_amount_usd: float = 0.0) -> Any:
     """Decorator to guard a function that performs billing.
 
     The decorated function will only run if `billing_allowed()` and
     `billing_cap_ok(default_amount_usd)` are True. Otherwise it raises
     a RuntimeError and logs the attempt.
     """
-    def deco(func):
+    """
+    deco function
+    """
+def deco(func) -> Any:
         @functools.wraps(func)
-        def wrapper(*args, **kwargs):
+        """
+    wrapper function
+    """
+def wrapper(*args, **kwargs) -> Any:
             entry = {'time': datetime.utcnow().isoformat() + 'Z', 'event': 'attempt_billing_call', 'function': func.__name__}
             if not billing_allowed():
                 entry['status'] = 'blocked_disabled'
@@ -99,5 +119,5 @@ def require_billing(default_amount_usd: float = 0.0):
     return deco
 
 if __name__ == '__main__':
-    print('Billing guard: billing_allowed=', billing_allowed())
-    print('Log file:', LOG_FILE)
+    logger.info('Billing guard: billing_allowed=', billing_allowed())
+    logger.info('Log file:', LOG_FILE)

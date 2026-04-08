@@ -3,16 +3,19 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextApiRequest, NextApiResponse } from "next";
-import { QCityService } from "../../../scripts/services/qcity_service";
-import { logger } from "../../../scripts/utils/logger";
+import { specificExports } from "next";
+import { specificExports } from "../../../scripts/services/qcity_service";
+import { specificExports } from "../../../scripts/utils/logger";
 
 const qcityService = new QCityService();
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   try {
     if (req.method === "POST") {
       await qcityService.shutdown();

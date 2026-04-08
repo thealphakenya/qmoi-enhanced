@@ -3,8 +3,7 @@
 Scans for DONE/FIXED/real/PENDING IMPLEMENTATION/production markers and writes report.
 """
 import os
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).parent
 IGNORE_DIRS = {'.git', 'node_modules', 'dist', 'build', '.venv', '.venv_qmoi_control', '_archive_qmoi-enhanced', '.idea', '.vscode'}
@@ -38,4 +37,4 @@ with open(output_path, 'w', encoding='utf-8') as out:
     for l in report_lines:
         out.write(l + "\n")
 
-print(f"Pending production instruction report generated with {count} entries: {output_path}")
+logger.info(f"Pending production instruction report generated with {count} entries: {output_path}")

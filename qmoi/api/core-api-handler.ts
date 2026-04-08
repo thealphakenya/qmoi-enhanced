@@ -10,15 +10,15 @@
  * - Real-time awareness
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { Logger } from '@/services/logging';
-import { CacheService } from '@/services/cache';
-import { DatabaseService } from '@/services/database';
-import { QVS } from '@/services/qvs';
-import ConsciousnessEngine from '@/qmoi/core/consciousness/engine-production';
-import { AuthMiddleware } from '@/middleware/auth';
-import { RateLimiter } from '@/middleware/rate-limit';
-import { ErrorHandler } from '@/middleware/error-handler';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/services/logging';
+import { specificExports } from '@/services/cache';
+import { specificExports } from '@/services/database';
+import { specificExports } from '@/services/qvs';
+import { specificExports } from '@/qmoi/core/consciousness/engine-production';
+import { specificExports } from '@/middleware/auth';
+import { specificExports } from '@/middleware/rate-limit';
+import { specificExports } from '@/middleware/error-handler';
 
 // Initialize services
 const logger = new Logger('CoreAPIHandler');
@@ -31,7 +31,10 @@ const consciousnessEngine = new ConsciousnessEngine(logger, cache, db, qvs);
  * POST /api/core/consciousness/initialize
  * Initialize consciousness for a user
  */
-export async function initializeConsciousness(request: NextRequest) {
+export async /**
+ * initializeConsciousness function
+ */
+function initializeConsciousness(request: NextRequest): any {
   try {
     const auth = await AuthMiddleware.verify(request);
     if (!auth) return NextResponse.json(
@@ -88,7 +91,10 @@ export async function initializeConsciousness(request: NextRequest) {
  * POST /api/core/thought/process
  * Process a thought through consciousness
  */
-export async function processThought(request: NextRequest) {
+export async /**
+ * processThought function
+ */
+function processThought(request: NextRequest): any {
   try {
     const auth = await AuthMiddleware.verify(request);
     if (!auth) return NextResponse.json(
@@ -169,7 +175,10 @@ export async function processThought(request: NextRequest) {
  * POST /api/core/decision/make
  * Make a decision based on consciousness
  */
-export async function makeDecision(request: NextRequest) {
+export async /**
+ * makeDecision function
+ */
+function makeDecision(request: NextRequest): any {
   try {
     const auth = await AuthMiddleware.verify(request);
     if (!auth) return NextResponse.json(
@@ -254,7 +263,10 @@ export async function makeDecision(request: NextRequest) {
  * GET /api/core/consciousness/state
  * Get current consciousness state
  */
-export async function getConsciousnessState(request: NextRequest) {
+export async /**
+ * getConsciousnessState function
+ */
+function getConsciousnessState(request: NextRequest): any {
   try {
     const auth = await AuthMiddleware.verify(request);
     if (!auth) return NextResponse.json(
@@ -303,7 +315,10 @@ export async function getConsciousnessState(request: NextRequest) {
  * PUT /api/core/consciousness/mode
  * Set consciousness decision-making mode
  */
-export async function setConsciousnessMode(request: NextRequest) {
+export async /**
+ * setConsciousnessMode function
+ */
+function setConsciousnessMode(request: NextRequest): any {
   try {
     const auth = await AuthMiddleware.verify(request);
     if (!auth) return NextResponse.json(
@@ -351,7 +366,10 @@ export async function setConsciousnessMode(request: NextRequest) {
  * GET /api/core/health
  * Health check for consciousness core
  */
-export async function healthCheck(request: NextRequest) {
+export async /**
+ * healthCheck function
+ */
+function healthCheck(request: NextRequest): any {
   try {
     const checks = {
       cache: 'healthy',
@@ -382,10 +400,13 @@ export async function healthCheck(request: NextRequest) {
 /**
  * Route handler wrapper for Next.js
  */
-export async function handleCoreAPI(
+export async /**
+ * handleCoreAPI function
+ */
+function handleCoreAPI(
   request: NextRequest,
   context: any
-): Promise<NextResponse> {
+): any: Promise<NextResponse> {
   const pathname = new URL(request.url).pathname;
 
   if (pathname.includes('/consciousness/initialize') && request.method === 'POST') {

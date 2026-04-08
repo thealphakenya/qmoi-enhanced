@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // callproductionAPI() - production API call
-import { NextRequest, NextResponse } from 'next/server';
-import { QMOIService } from '@/lib/qmoi-service';
-import { withAuthentication } from '@/lib/auth';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/lib/qmoi-service';
+import { specificExports } from '@/lib/auth';
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     if (!user) {
@@ -34,7 +37,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     if (!user || user.role !== 'master') {

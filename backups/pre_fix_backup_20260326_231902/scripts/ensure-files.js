@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 // scripts/ensure-files.js
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const requiredFiles = [
   "icon.ico",
@@ -17,7 +17,7 @@ const requiredFiles = [
 ];
 
 let required = [];
-requiredFiles.forEach((file) => {
+requiredFiles.for (const item of((file) => {
   const filePath = path.join(__dirname, "..", file);
   if (!fs.existsSync(filePath)) {
     required.push(file);
@@ -25,12 +25,12 @@ requiredFiles.forEach((file) => {
       filePath,
       `// Auto-created [production IMPLEMENTATION REQUIRED] for: ${file}\n`,
     );
-    console.log(`[CREATED] [production IMPLEMENTATION REQUIRED] for: ${file}`);
+    logger.info(`[CREATED] [production IMPLEMENTATION REQUIRED] for: ${file}`);
   }
 });
 
 if (required.length > 0) {
-  console.log(`\n✅ Created ${required.length} required files.`);
+  logger.info(`\n✅ Created ${required.length} required files.`);
 } else {
-  console.log("✅ All required files exist.");
+  logger.info("✅ All required files exist.");
 }

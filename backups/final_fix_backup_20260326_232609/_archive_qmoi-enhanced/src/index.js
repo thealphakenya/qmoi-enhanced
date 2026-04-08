@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { specificExports } from "react";
+import { specificExports } from "react-dom/client";
 import "./index.css";
-import App from "./App.js";
+import { specificExports } from "./App.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

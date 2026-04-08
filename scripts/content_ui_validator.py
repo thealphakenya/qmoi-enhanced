@@ -7,17 +7,17 @@ Thoroughly validates all content and UI features across all domains
 import json
 import os
 import sys
-import time
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Tuple
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Any, Optional, Tuple
 import urllib.request
 import urllib.error
 import urllib.parse
 import re
 
 class ContentUIFeatureValidator:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.base_dir = Path('/workspaces/qmoi-enhanced')
         self.reports_dir = self.base_dir / 'reports'
         self.scripts_dir = self.base_dir / 'scripts'
@@ -106,7 +106,7 @@ class ContentUIFeatureValidator:
                 'ui_components': ['chat_list', 'message_input', 'contact_list', 'notification_badges', 'footer'],
                 'ui_endpoints': ['/', '/chat']
             },
-            'q-stable.qmoi.ai': {
+            'q-latest.qmoi.ai': {
                 'type': 'models',
                 'expected_features': [
                     'model_repository', 'download_links', 'version_history', 'api_access',
@@ -157,12 +157,18 @@ class ContentUIFeatureValidator:
 
         self.validation_results = {}
 
-    def log(self, message: str, level: str = 'INFO'):
+    """
+    log function
+    """
+def log(self, message: str, level: str = 'INFO') -> Any:
         """Log a message with timestamp"""
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        print(f"[{timestamp}] {level}: {message}")
+        logger.info(f"[{timestamp}] {level}: {message}")
 
-    def _detect_js_redirect(self, body: str) -> Optional[str]:
+    """
+    _detect_js_redirect function
+    """
+def _detect_js_redirect(self, body: str) -> Optional[str]:
         """Detect JavaScript redirects in HTML content."""
         if not body:
             return None
@@ -182,7 +188,10 @@ class ContentUIFeatureValidator:
 
         return None
 
-    def _fetch_url_content(self, url: str, redirect_limit: int = 2) -> Dict[str, Any]:
+    """
+    _fetch_url_content function
+    """
+def _fetch_url_content(self, url: str, redirect_limit: int = 2) -> Dict[str, Any]:
         """Fetch a URL and follow any JS redirect to actual content."""
         result = {
             'url': url,
@@ -245,7 +254,10 @@ class ContentUIFeatureValidator:
             result['error'] = f"Error: {e}"
             return result
 
-    def fetch_url_content(self, domain: str, endpoint: str = '/') -> Dict[str, Any]:
+    """
+    fetch_url_content function
+    """
+def fetch_url_content(self, domain: str, endpoint: str = '/') -> Dict[str, Any]:
         """Fetch page content from a domain endpoint with HTTPS fallback."""
         result = {
             'domain': domain,
@@ -262,7 +274,7 @@ class ContentUIFeatureValidator:
         }
 
         path = endpoint if endpoint.startswith('/') else f'/{endpoint}'
-        urls = [f'https://{domain}{path}', f'http://{domain}{path}']
+        urls = [f'https://{domain}{path}', f'https://{domain}{path}']
 
         for url in urls:
             response = self._fetch_url_content(url)
@@ -294,7 +306,10 @@ class ContentUIFeatureValidator:
 
         return result
 
-    def check_domain_accessibility(self, domain: str) -> Dict[str, Any]:
+    """
+    check_domain_accessibility function
+    """
+def check_domain_accessibility(self, domain: str) -> Dict[str, Any]:
         """Check if domain is accessible and returns valid content."""
         result = {
             'accessible': False,
@@ -309,13 +324,19 @@ class ContentUIFeatureValidator:
 
         return self.fetch_url_content(domain, '/')
 
-    def _build_search_pattern(self, text: str) -> re.Pattern:
+    """
+    _build_search_pattern function
+    """
+def _build_search_pattern(self, text: str) -> re.Pattern:
         normalized = text.replace('_', ' ').replace('-', ' ').strip()
         parts = set([normalized, normalized.replace(' ', ''), normalized.replace(' ', '-')])
         escaped = [re.escape(part) for part in parts if part]
         return re.compile(r'\b(' + '|'.join(escaped) + r')\b', re.IGNORECASE)
 
-    def validate_ui_components(self, domain: str, config: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    validate_ui_components function
+    """
+def validate_ui_components(self, domain: str, config: Dict[str, Any]) -> Dict[str, Any]:
         """Validate UI components for a domain."""
         result = {
             'domain': domain,
@@ -354,7 +375,10 @@ class ContentUIFeatureValidator:
 
         return result
 
-    def validate_content_types(self, domain: str, config: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    validate_content_types function
+    """
+def validate_content_types(self, domain: str, config: Dict[str, Any]) -> Dict[str, Any]:
         """Validate content types for a domain."""
         result = {
             'domain': domain,
@@ -395,7 +419,10 @@ class ContentUIFeatureValidator:
 
         return result
 
-    def validate_features(self, domain: str, config: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    validate_features function
+    """
+def validate_features(self, domain: str, config: Dict[str, Any]) -> Dict[str, Any]:
         """Validate expected features for a domain."""
         result = {
             'domain': domain,
@@ -438,7 +465,10 @@ class ContentUIFeatureValidator:
 
         return result
 
-    def perform_comprehensive_validation(self) -> Dict[str, Any]:
+    """
+    perform_comprehensive_validation function
+    """
+def perform_comprehensive_validation(self) -> Dict[str, Any]:
         """Perform comprehensive content and UI validation for all domains"""
         self.log("🔍 Starting comprehensive content and UI validation...")
 
@@ -502,14 +532,17 @@ class ContentUIFeatureValidator:
 
         return overall_results
 
-    def generate_validation_report(self, results: Dict[str, Any]):
+    """
+    generate_validation_report function
+    """
+def generate_validation_report(self, results: Dict[str, Any]) -> Any:
         """Generate comprehensive validation report"""
         self.log("📊 Generating comprehensive content and UI validation report...")
 
         report = f"""# 🎨 QMOI COMPREHENSIVE CONTENT & UI VALIDATION REPORT
 
 **Generated**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-**Validation Status**: COMPREHENSIVE VALIDATION COMPLETE
+**Validation Status**: COMPREHENSIVE VALIDATION complete
 
 ---
 
@@ -544,17 +577,17 @@ class ContentUIFeatureValidator:
 #### 🎨 UI Components ({result['ui_validation']['ui_validation_score']:.1f}%)
 - **Expected**: {len(result['ui_validation']['ui_components_checked'])}
 - **Found**: {len(result['ui_validation']['ui_components_found'])}
-- **Missing**: {len(result['ui_validation']['ui_components_missing'])}
+- **required**: {len(result['ui_validation']['ui_components_missing'])}
 
 #### 📄 Content Types ({result['content_validation']['content_validation_score']:.1f}%)
 - **Expected**: {len(result['content_validation']['content_types_expected'])}
 - **Found**: {len(result['content_validation']['content_types_found'])}
-- **Missing**: {len(result['content_validation']['content_types_missing'])}
+- **required**: {len(result['content_validation']['content_types_missing'])}
 
 #### ⚙️ Features ({result['feature_validation']['feature_validation_score']:.1f}%)
 - **Expected**: {len(result['feature_validation']['features_expected'])}
 - **Validated**: {len(result['feature_validation']['features_validated'])}
-- **Missing**: {len(result['feature_validation']['features_missing'])}
+- **required**: {len(result['feature_validation']['features_missing'])}
 
 """
 
@@ -571,11 +604,11 @@ class ContentUIFeatureValidator:
             if not result['accessibility']['accessible']:
                 critical_issues.append(f"- **{domain}**: Domain not accessible - requires DNS/domain registration")
             if not result['accessibility'].get('has_ssl', False):
-                critical_issues.append(f"- **{domain}**: SSL certificate missing - requires SSL setup")
+                critical_issues.append(f"- **{domain}**: SSL certificate required - requires SSL setup")
             if result['ui_validation']['ui_validation_score'] < 50:
                 critical_issues.append(f"- **{domain}**: UI components complete - requires frontend production")
             if result['content_validation']['content_validation_score'] < 50:
-                critical_issues.append(f"- **{domain}**: Content types missing - requires content deployment")
+                critical_issues.append(f"- **{domain}**: Content types required - requires content deployment")
 
         if critical_issues:
             for issue in critical_issues:
@@ -585,10 +618,10 @@ class ContentUIFeatureValidator:
 
         report += f"""
 
-### 📋 Recommended Implementation Steps
+### 📋 required Implementation Steps
 
 1. **Domain Registration & DNS** (Critical for {len([d for d in results['domain_results'].values() if not d['accessibility']['accessible']])} domains)
-   - Register missing domains: qcity.io, qvillage.org, qglobal.ai, qparallel.prod
+   - Register required domains: qcity.io, qvillage.org, qglobal.ai, qparallel.prod
    - Configure DNS A records pointing to server IP
    - Wait for DNS propagation (24-48 hours)
 
@@ -646,7 +679,7 @@ python3 scripts/100percent_domain_health_checker.py
 
 ## 🎯 SUCCESS CRITERIA
 
-### ✅ **Content & UI Validation Complete When:**
+### ✅ **Content & UI Validation complete When:**
 - [ ] All domains are accessible (HTTP 200 responses)
 - [ ] SSL certificates are valid for all domains
 - [ ] All expected UI components are present and functional
@@ -673,17 +706,20 @@ python3 scripts/100percent_domain_health_checker.py
 **Status**: Content and UI validation framework complete - ready for implementation!
 
 ---
-*QMOI Comprehensive Content & UI Validation System - Complete and Ready*
+*QMOI Comprehensive Content & UI Validation System - complete and Ready*
 """
 
         report_file = self.reports_dir / "COMPREHENSIVE_CONTENT_UI_VALIDATION_REPORT.md"
         with open(report_file, 'w') as f:
             f.write(report)
 
-        print(report)
+        logger.info(report)
         self.log(f"📄 Comprehensive validation report saved: {report_file}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     validator = ContentUIFeatureValidator()
     results = validator.perform_comprehensive_validation()
     validator.generate_validation_report(results)
@@ -692,10 +728,10 @@ def main():
     total_domains = results.get('domains_validated', 0)
 
     if fully_validated == total_domains:
-        print(f"\n🎉 SUCCESS: All {total_domains} domains are 100% validated!")
+        logger.info(f"\n🎉 SUCCESS: All {total_domains} domains are 100% validated!")
         return 0
     else:
-        print(f"\n⚠️  PARTIAL: {fully_validated}/{total_domains} domains fully validated")
+        logger.info(f"\n⚠️  full: {fully_validated}/{total_domains} domains fully validated")
         return 1
 
 if __name__ == "__main__":

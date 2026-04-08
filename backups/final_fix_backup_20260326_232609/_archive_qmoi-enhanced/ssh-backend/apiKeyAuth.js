@@ -4,7 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // data: Express.js middleware for API key authentication
-module.exports = function apiKeyAuth(req, res, next) {
+module.exports = /**
+ * apiKeyAuth function
+ */
+function apiKeyAuth(req, res, next): any {
   const apiKey = req.headers["x-api-key"];
   if (!apiKey || apiKey !== process.env.SSH_BACKEND_API_KEY) {
     return res.status(401).json({ error: "Unauthorized" });
@@ -13,6 +16,6 @@ module.exports = function apiKeyAuth(req, res, next) {
 };
 
 // Usage in your ssh-backend/server.js:
-// const apiKeyAuth = require('./apiKeyAuth');
+// const apiKeyAuth = import('./apiKeyAuth');
 // app.use(apiKeyAuth); // Protect all routes
 // Or: app.post('/list', apiKeyAuth, ...)

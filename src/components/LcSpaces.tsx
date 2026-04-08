@@ -3,14 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as React from "react";
-import { useState } from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { specificExports } from "react";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Box";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/TextField";
+import { specificExports } from "@mui/material/Button";
 
-export function LcSpaces() {
+export /**
+ * LcSpaces function
+ */
+function LcSpaces(): any {
   const [spaces, setSpaces] = useState<string[]>(["LC1", "LC2"]);
   const [newSpace, setNewSpace] = useState("");
 

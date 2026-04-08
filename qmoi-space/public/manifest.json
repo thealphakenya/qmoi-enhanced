@@ -1,7 +1,7 @@
 {
   "name": "QMOI Space - Advanced AI Platform",
   "short_name": "QMOI Space",
-  "description": "Complete QMOI experience with AI, gaming, revenue generation, and hands-free operation",
+  "description": "complete QMOI experience with AI, gaming, revenue generation, and hands-free operation",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
@@ -189,13 +189,40 @@
     {
       "action": "/file-handler",
       "accept": {
-        "text/*": [".txt", ".md", ".json", ".csv"],
-        "image/*": [".jpg", ".jpeg", ".png", ".gif", ".webp"],
-        "video/*": [".mp4", ".avi", ".mov", ".webm"],
-        "audio/*": [".mp3", ".wav", ".ogg", ".m4a"],
-        "application/pdf": [".pdf"],
-        "application/zip": [".zip"],
-        "application/x-zip-compressed": [".zip"]
+        "text/*": [
+          ".txt",
+          ".md",
+          ".json",
+          ".csv"
+        ],
+        "image/*": [
+          ".jpg",
+          ".jpeg",
+          ".png",
+          ".gif",
+          ".webp"
+        ],
+        "video/*": [
+          ".mp4",
+          ".avi",
+          ".mov",
+          ".webm"
+        ],
+        "audio/*": [
+          ".mp3",
+          ".wav",
+          ".ogg",
+          ".m4a"
+        ],
+        "application/pdf": [
+          ".pdf"
+        ],
+        "application/zip": [
+          ".zip"
+        ],
+        "application/x-zip-compressed": [
+          ".zip"
+        ]
       }
     }
   ],
@@ -210,11 +237,20 @@
       "files": [
         {
           "name": "files",
-          "accept": ["image/*", "text/*", "video/*", "audio/*"]
+          "accept": [
+            "image/*",
+            "text/*",
+            "video/*",
+            "audio/*"
+          ]
         }
       ]
     }
   },
   "handle_links": "preferred",
-  "capture_links": "new-client"
+  "capture_links": "new-client",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:10.696022"
 }

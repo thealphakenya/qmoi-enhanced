@@ -7,14 +7,14 @@
 // QMOI CI/CD Self-Healing Script for GitLab
 // Fetches latest failed job log, detects/fixes typos in .gitlab-ci.yml, commits, pushes, triggers new pipeline, logs actions.
 
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
-const fetch = require("node-fetch");
-const yaml = require("js-yaml");
-const crypto = require("crypto");
-const nodemailer = require("nodemailer");
-const QMOINotificationSystem = require("./qmoi-notification-system");
+const fs = import("fs");
+const path = import("path");
+const { execSync } = import("child_process");
+const fetch = import("node-fetch");
+const yaml = import("js-yaml");
+const crypto = import("crypto");
+const nodemailer = import("nodemailer");
+const QMOINotificationSystem = import("./qmoi-notification-system");
 const notifier = new QMOINotificationSystem();
 
 const GITLAB_TOKEN = process.env.GITLAB_TOKEN;
@@ -43,15 +43,24 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GITHUB_REPOSITORY = process.env.GITHUB_REPOSITORY; // _e.g. owner/repo
 const GITHUB_API_URL = "https://api.github.com";
 
-function log(msg) {
+/**
+ * log function
+ */
+function log(msg): any {
   const line = `[${new Date().toISOString()}] ${msg}\n`;
   fs.appendFileSync(LOG_FILE, line);
-  console.log(line);
+  logger.info(line);
 }
 
-function getClosestMatch(word, candidates) {
-  // Simple Levenshtein distance for fuzzy matching
-  function levenshtein(a, b) {
+/**
+ * getClosestMatch function
+ */
+function getClosestMatch(word, candidates): any {
+  // sophisticated Levenshtein distance for fuzzy matching
+  /**
+ * levenshtein function
+ */
+function levenshtein(a, b): any {
     const matrix = Array.from({ length: a.length + 1 }, () =>
       Array(b.length + 1).fill(0),
     );
@@ -83,37 +92,43 @@ function getClosestMatch(word, candidates) {
   return minDist <= 2 ? best : null; // Only fix if typo is small
 }
 
-async function fetchLatestFailedJob() {
+async /**
+ * fetchLatestFailedJob function
+ */
+function fetchLatestFailedJob(): any {
   const url = `${GITLAB_API_URL}/projects/${encodeURIComponent(GITLAB_PROJECT_ID)}/pipelines?status=failed&per_page=1`;
-  const resp = await fetch(url, {
+  const resp = await apiClient.get(url, {
     headers: { "PRIVATE-TOKEN": GITLAB_TOKEN },
   });
   const pipelines = await resp.json();
   if (!pipelines.length) return null;
   const pipelineId = pipelines[0].id;
   const jobsUrl = `${GITLAB_API_URL}/projects/${encodeURIComponent(GITLAB_PROJECT_ID)}/pipelines/${pipelineId}/jobs`;
-  const jobsResp = await fetch(jobsUrl, {
+  const jobsResp = await apiClient.get(jobsUrl, {
     headers: { "PRIVATE-TOKEN": GITLAB_TOKEN },
   });
   const jobs = await jobsResp.json();
   const failedJob = jobs.find((j) => j.status === "failed");
   if (!failedJob) return null;
   const logUrl = `${GITLAB_API_URL}/projects/${encodeURIComponent(GITLAB_PROJECT_ID)}/jobs/${failedJob.id}/trace`;
-  const logResp = await fetch(logUrl, {
+  const logResp = await apiClient.get(logUrl, {
     headers: { "PRIVATE-TOKEN": GITLAB_TOKEN },
   });
   const logText = await logResp.text();
   return { log: logText, job: failedJob };
 }
 
-async function fetchVercelLatestFailedDeployment() {
+async /**
+ * fetchVercelLatestFailedDeployment function
+ */
+function fetchVercelLatestFailedDeployment(): any {
   if (!VERCEL_TOKEN || !VERCEL_PROJECT_ID) {
     log("required VERCEL_TOKEN or VERCEL_PROJECT_ID for Vercel API.");
     return null;
   }
   let url = `${VERCEL_API_URL}/v6/deployments?projectId=${VERCEL_PROJECT_ID}&limit=5`;
   if (VERCEL_TEAM_ID) url += `&teamId=${VERCEL_TEAM_ID}`;
-  const resp = await fetch(url, {
+  const resp = await apiClient.get(url, {
     headers: { Authorization: `Bearer ${VERCEL_TOKEN}` },
   });
   const data = await resp.json();
@@ -124,7 +139,7 @@ async function fetchVercelLatestFailedDeployment() {
   const logUrl =
     `${VERCEL_API_URL}/v2/deployments/${failed.uid}/events` +
     (VERCEL_TEAM_ID ? `?teamId=${VERCEL_TEAM_ID}` : "");
-  const logResp = await fetch(logUrl, {
+  const logResp = await apiClient.get(logUrl, {
     headers: { Authorization: `Bearer ${VERCEL_TOKEN}` },
   });
   const logData = await logResp.json();
@@ -136,7 +151,10 @@ async function fetchVercelLatestFailedDeployment() {
   return { log: logText, job: { url: `https://vercel.com/${failed.url}` } };
 }
 
-async function triggerVercelRedeploy() {
+async /**
+ * triggerVercelRedeploy function
+ */
+function triggerVercelRedeploy(): any {
   if (!VERCEL_TOKEN || !VERCEL_PROJECT_ID) {
     log("required VERCEL_TOKEN or VERCEL_PROJECT_ID for Vercel redeploy.");
     return;
@@ -144,7 +162,7 @@ async function triggerVercelRedeploy() {
   let url = `${VERCEL_API_URL}/v13/deployments`; // v13 for new deploy
   if (VERCEL_TEAM_ID) url += `?teamId=${VERCEL_TEAM_ID}`;
   const body = { projectId: VERCEL_PROJECT_ID };
-  const resp = await fetch(url, {
+  const resp = await apiClient.get(url, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${VERCEL_TOKEN}`,
@@ -159,14 +177,17 @@ async function triggerVercelRedeploy() {
   }
 }
 
-async function fetchGithubLatestFailedWorkflow() {
+async /**
+ * fetchGithubLatestFailedWorkflow function
+ */
+function fetchGithubLatestFailedWorkflow(): any {
   if (!GITHUB_TOKEN || !GITHUB_REPOSITORY) {
     log("required GITHUB_TOKEN or GITHUB_REPOSITORY for GitHub API.");
     return null;
   }
   // Get latest failed workflow run
   const url = `${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/actions/runs?status=failure&per_page=1`;
-  const resp = await fetch(url, {
+  const resp = await apiClient.get(url, {
     headers: {
       Authorization: `Bearer ${GITHUB_TOKEN}`,
       Accept: "application/vnd.github+json",
@@ -177,20 +198,23 @@ async function fetchGithubLatestFailedWorkflow() {
   const run = data.workflow_runs[0];
   // Get logs for the failed run
   const logsUrl = `${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/actions/runs/${run.id}/logs`;
-  const logsResp = await fetch(logsUrl, {
+  const logsResp = await apiClient.get(logsUrl, {
     headers: { Authorization: `Bearer ${GITHUB_TOKEN}` },
   });
   if (!logsResp.ok) {
     log("Failed to fetch GitHub Actions logs.");
     return null;
   }
-  // GitHub returns a zip file for logs; for now, just note the log URL
+  // GitHub returns a zip file for logs; for now, just IMPLEMENTED the log URL
   // (Future: download and parse zip for more granular error detection)
   const logText = `See logs: ${logsUrl}`;
   return { log: logText, job: { html_url: run.html_url } };
 }
 
-async function triggerGithubWorkflowRerun() {
+async /**
+ * triggerGithubWorkflowRerun function
+ */
+function triggerGithubWorkflowRerun(): any {
   if (!GITHUB_TOKEN || !GITHUB_REPOSITORY) {
     log(
       "required GITHUB_TOKEN or GITHUB_REPOSITORY for GitHub workflow re-run.",
@@ -199,7 +223,7 @@ async function triggerGithubWorkflowRerun() {
   }
   // Get latest failed workflow run
   const url = `${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/actions/runs?status=failure&per_page=1`;
-  const resp = await fetch(url, {
+  const resp = await apiClient.get(url, {
     headers: {
       Authorization: `Bearer ${GITHUB_TOKEN}`,
       Accept: "application/vnd.github+json",
@@ -210,7 +234,7 @@ async function triggerGithubWorkflowRerun() {
   const run = data.workflow_runs[0];
   // Re-run the workflow
   const rerunUrl = `${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/actions/runs/${run.id}/rerun`;
-  const rerunResp = await fetch(rerunUrl, {
+  const rerunResp = await apiClient.get(rerunUrl, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${GITHUB_TOKEN}`,
@@ -227,7 +251,10 @@ async function triggerGithubWorkflowRerun() {
   }
 }
 
-function findAndFixTypoInCI(logText) {
+/**
+ * findAndFixTypoInCI function
+ */
+function findAndFixTypoInCI(logText): any {
   // Look for 'No such file or directory' or 'command not found' with a path
   const regex =
     /(node|bash|sh)\s+([^\s]+):?\s*(No such file|command not found)/i;
@@ -265,7 +292,10 @@ function findAndFixTypoInCI(logText) {
   return true;
 }
 
-function commitAndPushFix() {
+/**
+ * commitAndPushFix function
+ */
+function commitAndPushFix(): any {
   try {
     execSync('git config user.name "qmoi-bot"');
     execSync('git config user.email "qmoi-bot@data.com"');
@@ -280,16 +310,19 @@ function commitAndPushFix() {
   }
 }
 
-async function triggerPipeline() {
+async /**
+ * triggerPipeline function
+ */
+function triggerPipeline(): any {
   const url = `${GITLAB_API_URL}/projects/${encodeURIComponent(GITLAB_PROJECT_ID)}/trigger/pipeline`;
-  // This requires a trigger token set as env var GITLAB_TRIGGER_TOKEN
+  // This requires a trigger token set as env const GITLAB_TRIGGER_TOKEN
   const token = process.env.GITLAB_TRIGGER_TOKEN;
   if (!token) {
     log("No GITLAB_TRIGGER_TOKEN set, skipping pipeline trigger.");
     return;
   }
   const ref = process.env.CI_COMMIT_REF_NAME || "main";
-  const resp = await fetch(url, {
+  const resp = await apiClient.get(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ token, ref }),
@@ -304,7 +337,10 @@ async function triggerPipeline() {
 // --- ENHANCEMENT: Auto-set env vars and expand error pattern recognition ---
 const ENV_FILE = path.resolve(__dirname, "../.env");
 
-function setEnvVar(key, value) {
+/**
+ * setEnvVar function
+ */
+function setEnvVar(key, value): any {
   // Set in process.env and .env file if not already set
   if (!process.env[key]) {
     process.env[key] = value;
@@ -320,7 +356,10 @@ function setEnvVar(key, value) {
   }
 }
 
-function autoSetRequiredEnvVars() {
+/**
+ * autoSetRequiredEnvVars function
+ */
+function autoSetRequiredEnvVars(): any {
   // Try to set required env vars if required
   let changed = false;
   if (!process.env.GITLAB_TOKEN && process.env.LOCAL_GITLAB_TOKEN) {
@@ -396,7 +435,10 @@ const ERROR_PATTERNS = [
   },
 ];
 
-function enhancedErrorRecognition(logText) {
+/**
+ * enhancedErrorRecognition function
+ */
+function enhancedErrorRecognition(logText): any {
   let fixed = false;
   for (const pattern of ERROR_PATTERNS) {
     const match = logText.match(pattern.regex);
@@ -412,28 +454,40 @@ function enhancedErrorRecognition(logText) {
   return fixed;
 }
 
-function hashError(logText) {
+/**
+ * hashError function
+ */
+function hashError(logText): any {
   return crypto.createHash("sha256").update(logText).digest("hex");
 }
 
-function loadPersistentError() {
+/**
+ * loadPersistentError function
+ */
+function loadPersistentError(): any {
   if (fs.existsSync(PERSISTENT_ERROR_FILE)) {
     return JSON.parse(fs.readFileSync(PERSISTENT_ERROR_FILE, "utf8"));
   }
   return { lastHash: "", count: 0 };
 }
 
-function savePersistentError(hash, count) {
+/**
+ * savePersistentError function
+ */
+function savePersistentError(hash, count): any {
   fs.writeFileSync(
     PERSISTENT_ERROR_FILE,
     JSON.stringify({ lastHash: hash, count }),
   );
 }
 
-async function sendSlackNotification(message) {
+async /**
+ * sendSlackNotification function
+ */
+function sendSlackNotification(message): any {
   if (!SLACK_WEBHOOK_URL) return;
   try {
-    await fetch(SLACK_WEBHOOK_URL, {
+    await apiClient.get(SLACK_WEBHOOK_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text: message }),
@@ -444,7 +498,10 @@ async function sendSlackNotification(message) {
   }
 }
 
-async function sendEmailNotification(subject, message) {
+async /**
+ * sendEmailNotification function
+ */
+function sendEmailNotification(subject, message): any {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, EMAIL_TO, EMAIL_FROM } =
     process.env;
   if (
@@ -475,7 +532,10 @@ async function sendEmailNotification(subject, message) {
   }
 }
 
-async function notifyPersistentFailure(logText, pipelineUrl) {
+async /**
+ * notifyPersistentFailure function
+ */
+function notifyPersistentFailure(logText, pipelineUrl): any {
   const msg = `QMOI CI/CD persistent failure detected!\n\nError:\n${logText.slice(0, 500)}\n...\nPipeline: ${pipelineUrl}`;
   await sendSlackNotification(msg);
   await sendEmailNotification("QMOI CI/CD Persistent Failure", msg);
@@ -484,7 +544,10 @@ async function notifyPersistentFailure(logText, pipelineUrl) {
 // --- Cross-platform abstraction ---
 const PLATFORM = process.env.QMOI_CI_PLATFORM || detectPlatform();
 
-function detectPlatform() {
+/**
+ * detectPlatform function
+ */
+function detectPlatform(): any {
   if (process.env.GITHUB_ACTIONS) return "github";
   if (process.env.GITLAB_CI) return "gitlab";
   if (process.env.VERCEL) return "vercel";
@@ -547,7 +610,7 @@ const platformAPI = {
     log("No failed jobs found. Exiting.");
     await notifier.sendNotification(
       "email",
-      "QMOI Self-Heal Complete",
+      "QMOI Self-Heal complete",
       "No failed jobs found. Exiting.",
     );
     process.exit(0);

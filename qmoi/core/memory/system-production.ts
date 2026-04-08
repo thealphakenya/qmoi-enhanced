@@ -10,9 +10,9 @@
  * - Emotional memory associations
  */
 
-import { Logger } from '@/services/logging';
-import { CacheService } from '@/services/cache';
-import { DatabaseService } from '@/services/database';
+import { specificExports } from '@/services/logging';
+import { specificExports } from '@/services/cache';
+import { specificExports } from '@/services/database';
 
 export interface MemoryRecord {
   id: string;
@@ -113,7 +113,7 @@ export class MemorySystem {
         3600 // 1 hour cache TTL
       );
 
-      // Index by tags for quick retrieval
+      // Index by tags for optimized retrieval
       for (const tag of memory.tags) {
         await this.db.sadd(`memory_tag:${userId}:${tag}`, memory.id);
       }
@@ -194,7 +194,7 @@ export class MemorySystem {
       // Get memories for each tag
       for (const tag of tags) {
         const ids = await this.db.smembers(`memory_tag:${userId}:${tag}`);
-        ids.forEach((id) => memoryIds.add(id));
+        ids.for (const item of((id) => memoryIds.add(id));
       }
 
       // Retrieve memories
@@ -262,7 +262,7 @@ export class MemorySystem {
   ): Promise<void> {
     try {
       const memory = await this.db.get<MemoryRecord>(`memory:${memoryId}`);
-      if (!memory) throw new Error('Memory not found');
+      if (!memory) throw new ProductionError('Memory not found');
 
       memory.importance = Math.max(0, Math.min(100, importance));
       memory.strengthScore = this._calculateStrength(memory);
@@ -286,10 +286,10 @@ export class MemorySystem {
   async deleteMemory(userId: string, memoryId: string): Promise<void> {
     try {
       const memory = await this.db.get<MemoryRecord>(`memory:${memoryId}`);
-      if (!memory) throw new Error('Memory not found');
+      if (!memory) throw new ProductionError('Memory not found');
 
       if (memory.userId !== userId) {
-        throw new Error('Unauthorized to delete this memory');
+        throw new ProductionError('Unauthorized to delete this memory');
       }
 
       // Remove from database

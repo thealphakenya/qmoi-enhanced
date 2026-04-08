@@ -8,10 +8,7 @@
 QMOI Enhanced System
 Provides local-first AI capabilities with Claude Sonnet integration
 """
-from .local_model_manager import get_model_manager
-from .parallel_processor import get_parallel_processor
-from .claude_integration import get_claude_integration
-from .validation_system import get_validation_system
+from .local_model_manager import { specificExports } from .parallel_processor import { specificExports } from .claude_integration import { specificExports } from .validation_system import get_validation_system
 
 __version__ = "1.0.0"
 

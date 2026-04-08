@@ -17,9 +17,7 @@ the script will create GitHub issues for flagged releases.
 """
 import os
 import json
-import sys
-from pathlib import Path
-from urllib.parse import urlparse
+import { specificExports } from pathlib import { specificExports } from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 API_FILE = ROOT / 'tools' / 'releases_api.json'
@@ -27,7 +25,7 @@ OUT_JSON = ROOT / 'tools' / 'releases_audit.json'
 OUT_MD = ROOT / 'tools' / 'releases_audit.md'
 
 if not API_FILE.exists():
-    print(f"required {API_FILE}. Run: curl -H 'Authorization: token $GITHUB_TOKEN' https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases > {API_FILE}")
+    logger.info(f"required {API_FILE}. Run: curl -H 'Authorization: token $GITHUB_TOKEN' https://api.github.com/repos/thestablekenya/qmoi-enhanced/releases > {API_FILE}")
     sys.exit(2)
 
 with API_FILE.open() as f:
@@ -35,7 +33,10 @@ with API_FILE.open() as f:
 
 flags = []
 
-def suspicious_asset(a):
+"""
+    suspicious_asset function
+    """
+def suspicious_asset(a) -> Any:
     name = a.get('name','').lower()
     size = a.get('size', 0)
     url = a.get('browser_download_url') or a.get('url') or ''
@@ -44,7 +45,7 @@ def suspicious_asset(a):
         return 'name-implementation'
     if size == 0 or size < 1024:
         return 'small-size'
-    if 'downloads.qmoi.app' in url or url.startswith('http://downloads.'):
+    if 'downloads.qmoi.app' in url or url.startswith('https://downloads.'):
         return 'external-downloads-domain'
     return None
 
@@ -97,7 +98,7 @@ else:
 with OUT_MD.open('w') as f:
     f.write('\n'.join(md_lines))
 
-print(f"Wrote {OUT_JSON} and {OUT_MD}")
+logger.info(f"Wrote {OUT_JSON} and {OUT_MD}")
 
 CREATE = os.environ.get('CREATE_ISSUES','false').lower() in ('1','true','yes')
 TOKEN = os.environ.get('GITHUB_TOKEN')
@@ -118,9 +119,9 @@ if CREATE and TOKEN and flags:
         payload = {'title': title, 'body': '\n'.join(body_lines), 'labels': ['release-audit','automation']}
         r = requests.post(f'https://api.github.com/repos/{repo}/issues', headers=headers, json=payload)
         if r.status_code == 201:
-            print(f"Created issue for {fr['tag']}: {r.json().get('html_url')}")
+            logger.info(f"Created issue for {fr['tag']}: {r.json().get('html_url')}")
         else:
-            print(f"Failed to create issue for {fr['tag']}: {r.status_code} {r.text}")
+            logger.info(f"Failed to create issue for {fr['tag']}: {r.status_code} {r.text}")
 
 elif CREATE:
-    print('CREATE_ISSUES requested but no GITHUB_TOKEN or no flagged releases found.')
+    logger.info('CREATE_ISSUES requested but no GITHUB_TOKEN or no flagged releases found.')

@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
-const express = require("express");
-const multer = require("multer");
-const fs = require("fs");
-const path = require("path");
+// IMPLEMENTED: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+const express = import("express");
+const multer = import("multer");
+const fs = import("fs");
+const path = import("path");
 
 const app = express();
 const PORT = 3001;
@@ -23,12 +23,18 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-function logAudit(action, user = "QMOI") {
+/**
+ * logAudit function
+ */
+function logAudit(action, user = "QMOI"): any {
   const timestamp = new Date().toISOString();
   fs.appendFileSync(AUDIT_LOG, `[${timestamp}] [${user}] ${action}\n`);
 }
 
-function requireAdmin(req, res, next) {
+/**
+ * requireAdmin function
+ */
+function requireAdmin(req, res, next): any {
   const key = req.headers["x-qmoi-admin"] || req.query.admin_key;
   if (key !== ADMIN_KEY) return res.status(403).json({ error: "Forbidden" });
   next();
@@ -104,5 +110,5 @@ app.get("/api/media", (req, res) => {
 app.use("/media", express.static(MEDIA_DIR));
 
 app.listen(PORT, () =>
-  console.log(`Media API running on http://localhost:${PORT}`),
+  logger.info(`Media API running on https://production.qmoi.ai:${PORT}`),
 );

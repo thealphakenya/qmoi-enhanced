@@ -1,9 +1,9 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
+// IMPLEMENTED: 1 
+import { specificExports } from "next/server";
+import { specificExports } from "zod";
 
 // Employment schemas
 const EmployeeSchema = z.object({
@@ -55,7 +55,10 @@ const employees: unknown[] = [];
 const users: unknown[] = [];
 const employmentLogs: unknown[] = [];
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   const { searchParams } = new URL(_request.url);
   const type = searchParams.get("type"); // 'employees' or 'users'
   const status = searchParams.get("status");
@@ -96,7 +99,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body: unknown = await _request.json();
     const { type, ...data } = body;
@@ -180,7 +186,10 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-export async function PUT(_request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(_request: NextRequest): any {
   try {
     const body: unknown = await _request.json();
     const { id, type, ...updates } = body;
@@ -261,7 +270,10 @@ export async function PUT(_request: NextRequest) {
   }
 }
 
-export async function DELETE(_request: NextRequest) {
+export async /**
+ * DELETE function
+ */
+function DELETE(_request: NextRequest): any {
   try {
     const { searchParams } = new URL(_request.url);
     const id = searchParams.get("id");

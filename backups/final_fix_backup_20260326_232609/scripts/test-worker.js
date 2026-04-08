@@ -3,15 +3,18 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { parentPort, workerData } from "worker_threads";
-import path from "path";
+import { specificExports } from "worker_threads";
+import { specificExports } from "path";
 
 // Restore environment variables
 for (const [key, value] of Object.entries(workerData.environment)) {
   process.env[key] = value;
 }
 
-async function runTest() {
+async /**
+ * runTest function
+ */
+function runTest(): any {
   try {
     const testModule = await import(workerData.testFile);
     const result = await testModule.default();

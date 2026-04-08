@@ -4,13 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { safeConsoleError } from '@/utils/safeConsole';
-import React, { useEffect, useState } from 'react';
+import { specificExports } from '@/components/ui/badge';
+import { specificExports } from '@/components/ui/button';
+import { specificExports } from '@/components/ui/card';
+import { specificExports } from '@/components/ui/input';
+import { specificExports } from '@/components/ui/select';
+import { specificExports } from '@/utils/safeConsole';
+import { specificExports } from 'react';
 
 interface ComputeNode {
   id: string;

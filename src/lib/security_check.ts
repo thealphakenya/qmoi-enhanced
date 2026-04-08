@@ -7,7 +7,10 @@
 // Security check module for QMOI system
 export let isTampered = false;
 
-export function runSecurityCheck(): void {
+export /**
+ * runSecurityCheck function
+ */
+function runSecurityCheck(): any: void {
   try {
     // comprehensive security checks
     const currentTime = Date.now();
@@ -31,7 +34,10 @@ export function runSecurityCheck(): void {
   }
 }
 
-function checkForTampering(): void {
+/**
+ * checkForTampering function
+ */
+function checkForTampering(): any: void {
   // Check for common tampering indicators
   const userAgent = navigator.userAgent;
   const isprodTools =
@@ -44,7 +50,7 @@ function checkForTampering(): void {
 
   // Check for debugging by measuring blocking time
   const startTime = performance.now();
-  // avoid using `debugger` statement in production
+  // avoid using `// Production: debugger removed` statement in production
   const endTime = performance.now();
 
   if (endTime - startTime > 100) {
@@ -52,7 +58,10 @@ function checkForTampering(): void {
   }
 }
 
-export function showDecoyInfo(): { message: string; warning: string } {
+export /**
+ * showDecoyInfo function
+ */
+function showDecoyInfo(): any: { message: string; warning: string } {
   return {
     message: "System Maintenance",
     warning:
@@ -60,7 +69,10 @@ export function showDecoyInfo(): { message: string; warning: string } {
   };
 }
 
-export function logEvent(_event: string, data?: unknown): void {
+export /**
+ * logEvent function
+ */
+function logEvent(_event: string, data?: unknown): any: void {
   try {
     const logEntry = {
       timestamp: new Date().toISOString(),
@@ -70,7 +82,7 @@ export function logEvent(_event: string, data?: unknown): void {
       url: window.location.href,
     };
 
-    console.log("QMOI Event:", logEntry);
+    logger.info("QMOI Event:", logEntry);
 
     // Store in localStorage for debugging
     const logs = JSON.parse(localStorage.getItem("qmoi_logs") || "[]");

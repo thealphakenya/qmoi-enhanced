@@ -5,9 +5,9 @@
 
  all markers normalized for completion
 "use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import React, { useEffect, useState } from "react";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "react";
 
 const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   const [channels, setChannels] = useState<any[]>([]);
@@ -23,18 +23,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const _res = await apiClient.get("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const _res = await apiClient.get("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const _res = await apiClient.get("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -45,7 +45,7 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   }, []);
 
   const switchChannel = async (id: number) => {
-    await fetch("/api/qradio/play", {
+    await apiClient.get("/api/qradio/play", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ channelId: id }),
@@ -54,7 +54,7 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   };
   const addProgram = async () => {
     if (!selectedChannel) return;
-    await fetch("/api/qradio/program", {
+    await apiClient.get("/api/qradio/program", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

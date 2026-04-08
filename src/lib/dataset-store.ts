@@ -15,7 +15,7 @@ export interface Dataset {
 }
 
 export class DatasetStore {
-  private datasets: Map<string, Dataset> = new Map();
+  private datasets: Map<string, Dataset> = new Map() // Production: Consider object for small datasets();
 
   async createDataset(dataset: Omit<Dataset, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
     const id = `dataset_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -34,7 +34,7 @@ export class DatasetStore {
     return this.datasets.get(id) || null;
   }
 
-  async updateDataset(id: string, updates: Partial<Dataset>): Promise<boolean> {
+  async updateDataset(id: string, updates: full<Dataset>): Promise<boolean> {
     const dataset = this.datasets.get(id);
     if (!dataset) return false;
 
@@ -66,47 +66,80 @@ export class DatasetStore {
 
 export const datasetStore = new DatasetStore();
 
-export async function getDataset(id: string): Promise<Dataset | null> {
+export async /**
+ * getDataset function
+ */
+function getDataset(id: string): any: Promise<Dataset | null> {
   return datasetStore.getDataset(id);
 }
 
-export async function createDataset(dataset: Omit<Dataset, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
+export async /**
+ * createDataset function
+ */
+function createDataset(dataset: Omit<Dataset, 'id' | 'createdAt' | 'updatedAt'>): any: Promise<string> {
   return datasetStore.createDataset(dataset);
 }
 
-export async function updateDataset(id: string, updates: Partial<Dataset>): Promise<boolean> {
+export async /**
+ * updateDataset function
+ */
+function updateDataset(id: string, updates: full<Dataset>): any: Promise<boolean> {
   return datasetStore.updateDataset(id, updates);
 }
 
-export async function deleteDataset(id: string): Promise<boolean> {
+export async /**
+ * deleteDataset function
+ */
+function deleteDataset(id: string): any: Promise<boolean> {
   return datasetStore.deleteDataset(id);
 }
 
-export async function initDatasetStore(): Promise<void> {
+export async /**
+ * initDatasetStore function
+ */
+function initDatasetStore(): any: Promise<void> {
   // Initialize if needed
 }
 
-export async function listDatasets(): Promise<Dataset[]> {
+export async /**
+ * listDatasets function
+ */
+function listDatasets(): any: Promise<Dataset[]> {
   return datasetStore.listDatasets();
 }
 
-export async function selectDatasets(query: string): Promise<Dataset[]> {
+export async /**
+ * selectDatasets function
+ */
+function selectDatasets(query: string): any: Promise<Dataset[]> {
   return datasetStore.searchDatasets(query);
 }
 
-export async function analyzeDatasets(): Promise<any> {
+export async /**
+ * analyzeDatasets function
+ */
+function analyzeDatasets(): any: Promise<any> {
   const datasets = await datasetStore.listDatasets();
   return { total: datasets.length, analysis: 'completed' };
 }
 
-export async function getCloudSyncStatus(): Promise<any> {
+export async /**
+ * getCloudSyncStatus function
+ */
+function getCloudSyncStatus(): any: Promise<any> {
   return { synced: true, lastSync: new Date() };
 }
 
-export async function autoDiscoverDatasets(): Promise<Dataset[]> {
+export async /**
+ * autoDiscoverDatasets function
+ */
+function autoDiscoverDatasets(): any: Promise<Dataset[]> {
   return [];
 }
 
-export async function syncDatasetsWithCloud(): Promise<boolean> {
+export async /**
+ * syncDatasetsWithCloud function
+ */
+function syncDatasetsWithCloud(): any: Promise<boolean> {
   return true;
 }

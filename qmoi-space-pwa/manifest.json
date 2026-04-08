@@ -10,7 +10,12 @@
   "scope": "/",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["productivity", "business", "games", "prodeloper"],
+  "categories": [
+    "productivity",
+    "business",
+    "games",
+    "prodeloper"
+  ],
   "icons": [
     {
       "src": "icons/icon.svg",
@@ -150,9 +155,15 @@
     {
       "action": "/open-file",
       "accept": {
-        "text/plain": [".txt"],
-        "text/python": [".py"],
-        "application/json": [".json"]
+        "text/plain": [
+          ".txt"
+        ],
+        "text/python": [
+          ".py"
+        ],
+        "application/json": [
+          ".json"
+        ]
       }
     }
   ],
@@ -173,11 +184,19 @@
       "files": [
         {
           "name": "file",
-          "accept": ["text/*", "image/*", "application/*"]
+          "accept": [
+            "text/*",
+            "image/*",
+            "application/*"
+          ]
         }
       ]
     }
   },
   "handle_links": "preferred",
-  "capture_links": "new-client"
+  "capture_links": "new-client",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:30.122349"
 }

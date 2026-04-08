@@ -50,6 +50,9 @@ export class QMOIBackgroundAutoscan {
 
 export const qmoiBackgroundAutoscan = new QMOIBackgroundAutoscan();
 
-export function getBackgroundAutoScan(): QMOIBackgroundAutoscan {
+export /**
+ * getBackgroundAutoScan function
+ */
+function getBackgroundAutoScan(): any: QMOIBackgroundAutoscan {
   return qmoiBackgroundAutoscan;
 }

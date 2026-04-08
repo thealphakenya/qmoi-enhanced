@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { useState } from "react";
+import { specificExports } from "react";
 
-export function useLargeFileUpload() {
+export /**
+ * useLargeFileUpload function
+ */
+function useLargeFileUpload(): any {
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState<
     "idle" | "uploading" | "success" | "error"

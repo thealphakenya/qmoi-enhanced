@@ -15,12 +15,9 @@ import sys
 import json
 import time
 import subprocess
-import logging
-from pathlib import Path
-from typing import Dict, List, Optional
+import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional
 import argparse
-import requests
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 # Setup logging
 logging.basicConfig(
@@ -34,7 +31,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class QMOIAutoDeploy:
-    def __init__(self, environment: str = 'production', force_upgrade: bool = False):
+    """
+    __init__ function
+    """
+def __init__(self, environment: str = 'production', force_upgrade: bool = False) -> Any:
         self.environment = environment
         self.force_upgrade = force_upgrade
         self.root_dir = Path(__file__).parent.parent.parent
@@ -58,7 +58,10 @@ class QMOIAutoDeploy:
             'performance_metrics': {}
         }
 
-    def load_config(self) -> Dict:
+    """
+    load_config function
+    """
+def load_config(self) -> Dict:
         """Load deployment configuration"""
         config_path = self.root_dir / 'config' / 'deployment_config.json'
         if config_path.exists():
@@ -69,7 +72,7 @@ class QMOIAutoDeploy:
             return {
                 'environments': {
                     'production': {
-                        'url': 'http:process.env.API_HOST || "localhost:3000"',
+                        'url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"',
                         'auto_restart': True,
                         'health_check_timeout': 30
                     },
@@ -97,7 +100,10 @@ class QMOIAutoDeploy:
                 ]
             }
 
-    def run_command(self, command: List[str], cwd: Optional[Path] = None) -> Dict:
+    """
+    run_command function
+    """
+def run_command(self, command: List[str], cwd: Optional[Path] = None) -> Dict:
         """Run a command and return results"""
         try:
             logger.info(f"Running command: {' '.join(command)}")
@@ -139,7 +145,10 @@ class QMOIAutoDeploy:
                 'execution_time': 0
             }
 
-    def pre_deployment_checks(self) -> bool:
+    """
+    pre_deployment_checks function
+    """
+def pre_deployment_checks(self) -> bool:
         """Run pre-deployment checks"""
         logger.info("Running pre-deployment checks...")
         
@@ -163,7 +172,10 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('pre_deployment_checks')
         return all_passed
 
-    def install_dependencies(self) -> bool:
+    """
+    install_dependencies function
+    """
+def install_dependencies(self) -> bool:
         """Install and update dependencies"""
         logger.info("Installing dependencies...")
         
@@ -190,7 +202,10 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('dependency_installation')
         return True
 
-    def optimize_build(self) -> bool:
+    """
+    optimize_build function
+    """
+def optimize_build(self) -> bool:
         """Optimize build process"""
         logger.info("Optimizing build...")
         
@@ -208,7 +223,10 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('build_optimization')
         return True
 
-    def run_quality_checks(self) -> bool:
+    """
+    run_quality_checks function
+    """
+def run_quality_checks(self) -> bool:
         """Run quality checks"""
         logger.info("Running quality checks...")
         
@@ -231,7 +249,10 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('quality_checks')
         return all_passed
 
-    def run_security_audit(self) -> bool:
+    """
+    run_security_audit function
+    """
+def run_security_audit(self) -> bool:
         """Run security audit"""
         logger.info("Running security audit...")
         
@@ -253,7 +274,10 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('security_audit')
         return all_passed
 
-    def run_tests(self) -> bool:
+    """
+    run_tests function
+    """
+def run_tests(self) -> bool:
         """Run comprehensive tests"""
         logger.info("Running comprehensive tests...")
         
@@ -277,7 +301,10 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('testing')
         return all_passed
 
-    def deploy(self) -> bool:
+    """
+    deploy function
+    """
+def deploy(self) -> bool:
         """Deploy the application"""
         logger.info(f"Deploying to {self.environment}...")
         
@@ -299,7 +326,10 @@ class QMOIAutoDeploy:
             logger.error(f"Unknown environment: {self.environment}")
             return False
 
-    def deploy_production(self) -> bool:
+    """
+    deploy_production function
+    """
+def deploy_production(self) -> bool:
         """Deploy to production environment"""
         logger.info("Deploying to production...")
         
@@ -312,7 +342,10 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('deployment')
         return True
 
-    def deploy_staging(self) -> bool:
+    """
+    deploy_staging function
+    """
+def deploy_staging(self) -> bool:
         """Deploy to production environment"""
         logger.info("Deploying to production...")
         
@@ -325,7 +358,10 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('deployment')
         return True
 
-    def deploy_production(self) -> bool:
+    """
+    deploy_production function
+    """
+def deploy_production(self) -> bool:
         """Deploy to production environment"""
         logger.info("Deploying to production...")
         
@@ -348,7 +384,10 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('deployment')
         return all_successful
 
-    def post_deployment_checks(self) -> bool:
+    """
+    post_deployment_checks function
+    """
+def post_deployment_checks(self) -> bool:
         """Run post-deployment checks"""
         logger.info("Running post-deployment checks...")
         
@@ -372,7 +411,10 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('post_deployment_checks')
         return True
 
-    def health_check(self) -> bool:
+    """
+    health_check function
+    """
+def health_check(self) -> bool:
         """Check application health"""
         try:
             url = self.config['environments'][self.environment]['url']
@@ -389,7 +431,10 @@ class QMOIAutoDeploy:
             logger.error(f"Health check error: {e}")
             return False
 
-    def performance_check(self) -> bool:
+    """
+    performance_check function
+    """
+def performance_check(self) -> bool:
         """Check application performance"""
         try:
             # Run performance tests
@@ -404,7 +449,10 @@ class QMOIAutoDeploy:
             logger.error(f"Performance check error: {e}")
             return False
 
-    def setup_monitoring(self) -> bool:
+    """
+    setup_monitoring function
+    """
+def setup_monitoring(self) -> bool:
         """Setup monitoring and alerting"""
         logger.info("Setting up monitoring...")
         
@@ -426,7 +474,10 @@ class QMOIAutoDeploy:
         self.deployment_status['steps_completed'].append('monitoring_setup')
         return all_successful
 
-    def generate_report(self) -> None:
+    """
+    generate_report function
+    """
+def generate_report(self) -> None:
         """Generate deployment report"""
         logger.info("Generating deployment report...")
         
@@ -442,7 +493,10 @@ class QMOIAutoDeploy:
         
         logger.info(f"Deployment report saved to: {report_path}")
 
-    def notify_deployment(self, success: bool) -> None:
+    """
+    notify_deployment function
+    """
+def notify_deployment(self, success: bool) -> None:
         """Notify about deployment status"""
         logger.info("Sending deployment notification...")
         
@@ -458,7 +512,10 @@ class QMOIAutoDeploy:
         except Exception as e:
             logger.error(f"Failed to send notification: {e}")
 
-    def run_full_deployment(self) -> bool:
+    """
+    run_full_deployment function
+    """
+def run_full_deployment(self) -> bool:
         """Run the complete deployment process"""
         logger.info(f"Starting QMOI auto-deployment for {self.environment}")
         
@@ -507,7 +564,10 @@ class QMOIAutoDeploy:
         
         return all_successful
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='QMOI Auto-Deployment Script')
     parser.add_argument('--environment', '-e', 
                        choices=['production', 'production', 'production'],

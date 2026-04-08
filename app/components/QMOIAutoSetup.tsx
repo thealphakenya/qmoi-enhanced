@@ -5,7 +5,7 @@
 
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 interface AutoSetupState {
   configured: boolean;
@@ -31,7 +31,11 @@ interface AutoSetupResponse {
  * Handles automatic environment configuration on app startup
  * Wraps app content and blocks rendering until setup is complete
  */
-export default function QMOIAutoSetup({
+export default /**
+ * QMOIAutoSetup function
+ */
+function QMOIAutoSetup(): any {
+  try {({
   children,
 }: {
   children: React.ReactNode;

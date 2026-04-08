@@ -17,15 +17,10 @@ import os
 import subprocess
 import sys
 import time
-import threading
-from datetime import datetime, timedelta
-from pathlib import Path
-from typing import Dict, List, Any, Optional
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Any, Optional
 import requests
 import schedule
-import git
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
+import { specificExports } from watchdog.observers import { specificExports } from watchdog.events import FileSystemEventHandler
 
 # Configure logging
 logging.basicConfig(
@@ -39,7 +34,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class QMOIQCityAutomatic:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.running = False
         self.automation_stats = {
             'total_runs': 0,
@@ -63,13 +61,22 @@ class QMOIQCityAutomatic:
         self.setup_file_watcher()
         self.setup_scheduled_tasks()
         
-    def setup_file_watcher(self):
+    """
+    setup_file_watcher function
+    """
+def setup_file_watcher(self) -> Any:
         """Setup file system watcher for automatic triggers"""
         class QMOIFileHandler(FileSystemEventHandler):
-            def __init__(self, automation):
+            """
+    __init__ function
+    """
+def __init__(self, automation) -> Any:
                 self.automation = automation
                 
-            def on_modified(self, event):
+            """
+    on_modified function
+    """
+def on_modified(self, event) -> Any:
                 if not event.is_directory:
                     if event.src_path.endswith(('.py', '.js', '.ts', '.tsx', '.json', '.md')):
                         logger.info(f"File modified: {event.src_path}")
@@ -80,7 +87,10 @@ class QMOIQCityAutomatic:
         self.observer.schedule(self.file_handler, '.', recursive=True)
         self.observer.start()
         
-    def setup_scheduled_tasks(self):
+    """
+    setup_scheduled_tasks function
+    """
+def setup_scheduled_tasks(self) -> Any:
         """Setup scheduled automation tasks"""
         # Run comprehensive automation every 10 minutes
         schedule.every(10).minutes.do(self.run_comprehensive_qcity)
@@ -100,14 +110,20 @@ class QMOIQCityAutomatic:
         # Dashboard update every 2 minutes
         schedule.every(2).minutes.do(self.update_dashboard)
         
-        def run_scheduler():
+        """
+    run_scheduler function
+    """
+def run_scheduler() -> Any:
             while self.running:
                 schedule.run_pending()
                 time.sleep(1)
                 
         self.scheduler_thread = threading.Thread(target=run_scheduler, daemon=True)
         
-    def auto_trigger_qcity(self):
+    """
+    auto_trigger_qcity function
+    """
+def auto_trigger_qcity(self) -> Any:
         """Automatically trigger QCity automation when files change"""
         try:
             logger.info("🔄 Auto-triggering QCity automation due to file changes")
@@ -115,7 +131,10 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"❌ Error in auto-trigger: {e}")
             
-    def run_comprehensive_qcity(self):
+    """
+    run_comprehensive_qcity function
+    """
+def run_comprehensive_qcity(self) -> Any:
         """Run comprehensive QMOI QCity automation"""
         try:
             # Always run from repo root
@@ -183,14 +202,20 @@ class QMOIQCityAutomatic:
             self.automation_stats['current_status'] = 'failed'
             self.send_notification("QMOI QCity automation failed", str(e))
 
-    def send_notification(self, subject, message):
+    """
+    send_notification function
+    """
+def send_notification(self, subject, message) -> Any:
         try:
             # Use the notification manager if available
             subprocess.run(f'python scripts/qmoi_notification_manager.py "{subject}" "{message}"', shell=True)
         except Exception as e:
             logger.error(f"Failed to send notification: {e}")
             
-    def trigger_gitlab_ci(self):
+    """
+    trigger_gitlab_ci function
+    """
+def trigger_gitlab_ci(self) -> Any:
         """Trigger GitLab CI/CD pipeline"""
         try:
             logger.info("🚀 Triggering GitLab CI/CD pipeline")
@@ -217,7 +242,10 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"Error triggering GitLab CI: {e}")
             
-    def run_health_check(self):
+    """
+    run_health_check function
+    """
+def run_health_check(self) -> Any:
         """Run comprehensive health check"""
         try:
             logger.info("🏥 Running health check")
@@ -245,7 +273,10 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"Error in health check: {e}")
             
-    def sync_all_platforms(self):
+    """
+    sync_all_platforms function
+    """
+def sync_all_platforms(self) -> Any:
         """Sync across all platforms"""
         try:
             logger.info("🔄 Syncing all platforms")
@@ -273,14 +304,17 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"Error in platform sync: {e}")
             
-    def run_auto_evolution(self):
+    """
+    run_auto_evolution function
+    """
+def run_auto_evolution(self) -> Any:
         """Run auto-evolution for continuous improvement"""
         try:
             logger.info("🧬 Running auto-evolution")
             
             evolution_commands = [
                 ('python scripts/qmoi-auto-evolution.py', 'Auto-evolution'),
-                ('python scripts/qmoi-quick-test.py', 'Quick test'),
+                ('python scripts/qmoi-optimized-test.py', 'optimized test'),
                 ('npm run qmoi:json-fix', 'JSON fix')
             ]
             
@@ -300,7 +334,10 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"Error in auto-evolution: {e}")
             
-    def update_dashboard(self):
+    """
+    update_dashboard function
+    """
+def update_dashboard(self) -> Any:
         """Update dashboard with current stats"""
         try:
             # Save stats to file for dashboard access
@@ -316,7 +353,10 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"Error updating dashboard: {e}")
             
-    def update_platform_status(self):
+    """
+    update_platform_status function
+    """
+def update_platform_status(self) -> Any:
         """Update platform status"""
         try:
             # Check GitLab status
@@ -349,7 +389,10 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"Error updating platform status: {e}")
             
-    def start_dashboard(self):
+    """
+    start_dashboard function
+    """
+def start_dashboard(self) -> Any:
         """Start the dashboard in background"""
         try:
             logger.info("📊 Starting QMOI dashboard")
@@ -360,7 +403,10 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"Error starting dashboard: {e}")
             
-    def start_gitlab_ci_automation(self):
+    """
+    start_gitlab_ci_automation function
+    """
+def start_gitlab_ci_automation(self) -> Any:
         """Start GitLab CI automation in background"""
         try:
             logger.info("🚀 Starting GitLab CI automation")
@@ -371,7 +417,10 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"Error starting GitLab CI automation: {e}")
             
-    def save_stats(self):
+    """
+    save_stats function
+    """
+def save_stats(self) -> Any:
         """Save automation stats to file"""
         try:
             stats_file = 'logs/qcity-automatic-stats.json'
@@ -383,7 +432,10 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"Error saving stats: {e}")
             
-    def start(self):
+    """
+    start function
+    """
+def start(self) -> Any:
         """Start the QMOI QCity automatic system"""
         try:
             # Create logs directory
@@ -436,7 +488,10 @@ class QMOIQCityAutomatic:
         finally:
             self.cleanup()
             
-    def cleanup(self):
+    """
+    cleanup function
+    """
+def cleanup(self) -> Any:
         """Cleanup resources"""
         try:
             self.running = False
@@ -454,14 +509,20 @@ class QMOIQCityAutomatic:
         except Exception as e:
             logger.error(f"Error in cleanup: {e}")
 
-def run_doc_verifier():
+"""
+    run_doc_verifier function
+    """
+def run_doc_verifier() -> Any:
     try:
-        print("[QMOI] Running documentation verifier...")
+        logger.info("[QMOI] Running documentation verifier...")
         subprocess.run(["node", "scripts/qmoi_doc_verifier.js", "verify"], check=True)
     except Exception as e:
-        print(f"[QMOI] Documentation verifier failed: {e}")
+        logger.info(f"[QMOI] Documentation verifier failed: {e}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function to start QMOI QCity automatic system"""
     try:
         automation = QMOIQCityAutomatic()

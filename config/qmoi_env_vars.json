@@ -14,5 +14,9 @@
   "NEW_VAR": {
     "default": "test-value",
     "description": "A new test variable"
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.761327"
 }

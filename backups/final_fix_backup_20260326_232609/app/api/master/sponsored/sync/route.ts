@@ -3,15 +3,18 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import authService from "@/lib/auth/service";
-import { db } from "@/lib/db/prisma";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/db/prisma";
 
 /**
  * GET /api/master/sponsored/sync
  * Sync sponsored users list for auto-refresh (Master only)
  */
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Verify master authentication
     const authHeader = request.headers.get("authorization");
@@ -84,7 +87,7 @@ export async function GET(request: NextRequest) {
       })),
       totalCount: sponsoredUsers.length,
       lastSyncTimestamp: new Date().toISOString(),
-      syncVersion: `v${Date.now()}`, // Simple versioning
+      syncVersion: `v${Date.now()}`, // sophisticated versioning
       autoRefreshInterval: 30000, // 30 seconds
     };
 

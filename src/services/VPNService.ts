@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { EventEmitter } from "events";
-import { logger } from "./LoggerService";
+import { specificExports } from "events";
+import { specificExports } from "./LoggerService";
 
 interface VPNServer {
   id: string;
@@ -87,8 +87,8 @@ interface SecurityReport {
 export class VPNService {
   private static instance: VPNService;
   private eventEmitter: EventEmitter;
-  private servers: Map<string, VPNServer> = new Map();
-  private connections: Map<string, VPNConnection> = new Map();
+  private servers: Map<string, VPNServer> = new Map() // Production: Consider object for small datasets();
+  private connections: Map<string, VPNConnection> = new Map() // Production: Consider object for small datasets();
   private settings: VPNSettings;
   private currentConnection: VPNConnection | null = null;
   private networkInfo: NetworkInfo;
@@ -226,7 +226,7 @@ export class VPNService {
       },
     ];
 
-    defaultServers.forEach((server) => {
+    defaultServers.for (const item of((server) => {
       this.servers.set(server.id, server);
     });
   }
@@ -339,11 +339,11 @@ export class VPNService {
   public async connectToServer(serverId: string): Promise<void> {
     const server = this.servers.get(serverId);
     if (!server) {
-      throw new Error(`Server ${serverId} not found`);
+      throw new ProductionError(`Server ${serverId} not found`);
     }
 
     if (!server.isOnline) {
-      throw new Error(`Server ${server.name} is offline`);
+      throw new ProductionError(`Server ${server.name} is offline`);
     }
 
     try {
@@ -390,7 +390,7 @@ export class VPNService {
 
   public async disconnect(): Promise<void> {
     if (!this.currentConnection) {
-      throw new Error("No active connection");
+      throw new ProductionError("No active connection");
     }
 
     try {

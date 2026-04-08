@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
-import crypto from "crypto";
+import { specificExports } from "next/server";
+import { specificExports } from "crypto";
 
 // In-memory key store (replace with persistent storage in production)
 const apiKeys: {
@@ -15,7 +15,10 @@ const apiKeys: {
   usage: number;
 }[] = [];
 
-function generateKey() {
+/**
+ * generateKey function
+ */
+function generateKey(): any {
   return crypto.randomBytes(32).toString("hex");
 }
 
@@ -32,7 +35,10 @@ if (apiKeys.length === 0) {
   // production implementation:: Save to keys/ directory
 }
 
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   // List all keys (hide revoked by default)
   const url = new URL(req.url);
   const showRevoked = url.searchParams.get("showRevoked") === "true";
@@ -40,7 +46,10 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ keys });
 }
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   // Create a new key
   const key = generateKey();
   apiKeys.push({
@@ -53,7 +62,10 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ key });
 }
 
-export async function DELETE(req: NextRequest) {
+export async /**
+ * DELETE function
+ */
+function DELETE(req: NextRequest): any {
   // Revoke a key
   const body = (await req.json()) as any;
   const { key } = body;
@@ -66,7 +78,10 @@ export async function DELETE(req: NextRequest) {
 }
 
 // GET /api/qapikey/usage - Usage stats
-export async function GET_USAGE(req: NextRequest) {
+export async /**
+ * GET_USAGE function
+ */
+function GET_USAGE(req: NextRequest): any {
   // Return usage stats for all keys
   return NextResponse.json({
     usage: apiKeys.map((k) => ({ key: k.key, usage: k.usage })),

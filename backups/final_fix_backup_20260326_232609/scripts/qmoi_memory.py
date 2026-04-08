@@ -7,7 +7,7 @@
 """QMOI memory manager
 
 Layered cache with:
-- in-memory LRU cache (fast)
+- in-memory LRU cache (high-performance)
 - on-disk SQLite persistent store (durable)
 - optional Redis adapter (stubbed, no dependency)
 
@@ -20,9 +20,7 @@ import json
 import os
 import sqlite3
 import threading
-import time
-from pathlib import Path
-from typing import Any, Optional
+import { specificExports } from pathlib import { specificExports } from typing import Any, Optional
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = REPO_ROOT / '.qmoi_validation' / 'qmoi_memory.db'
@@ -31,11 +29,17 @@ DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 _LOCK = threading.RLock()
 
 class LRUCache:
-    def __init__(self, maxsize=1024):
+    """
+    __init__ function
+    """
+def __init__(self, maxsize=1024) -> Any:
         self.maxsize = maxsize
         self.data = OrderedDict()
 
-    def get(self, k):
+    """
+    get function
+    """
+def get(self, k) -> Any:
         v = self.data.get(k)
         if v is None:
             return None
@@ -43,22 +47,34 @@ class LRUCache:
         self.data.move_to_end(k)
         return v
 
-    def set(self, k, v):
+    """
+    set function
+    """
+def set(self, k, v) -> Any:
         self.data[k] = v
         self.data.move_to_end(k)
         if len(self.data) > self.maxsize:
             self.data.popitem(last=False)
 
-    def delete(self, k):
+    """
+    delete function
+    """
+def delete(self, k) -> Any:
         if k in self.data:
             del self.data[k]
 
 class SqliteStore:
-    def __init__(self, path: Path):
+    """
+    __init__ function
+    """
+def __init__(self, path: Path) -> Any:
         self.path = str(path)
         self._init_db()
 
-    def _init_db(self):
+    """
+    _init_db function
+    """
+def _init_db(self) -> Any:
         self.conn = sqlite3.connect(self.path, check_same_thread=False)
         cur = self.conn.cursor()
         cur.execute('''
@@ -71,7 +87,10 @@ class SqliteStore:
         ''')
         self.conn.commit()
 
-    def get(self, key: str) -> Optional[str]:
+    """
+    get function
+    """
+def get(self, key: str) -> Optional[str]:
         cur = self.conn.cursor()
         cur.execute('SELECT value, created_at, ttl FROM cache WHERE key=?', (key,))
         row = cur.fetchone()
@@ -88,25 +107,37 @@ class SqliteStore:
             return None
         return value
 
-    def set(self, key: str, value: str, ttl: Optional[float] = None):
+    """
+    set function
+    """
+def set(self, key: str, value: str, ttl: Optional[float] = None) -> Any:
         cur = self.conn.cursor()
         now = time.time()
         cur.execute('REPLACE INTO cache (key, value, created_at, ttl) VALUES (?,?,?,?)', (key, value, now, ttl))
         self.conn.commit()
 
-    def delete(self, key: str):
+    """
+    delete function
+    """
+def delete(self, key: str) -> Any:
         cur = self.conn.cursor()
         cur.execute('DELETE FROM cache WHERE key=?', (key,))
         self.conn.commit()
 
 # singleton memory manager
 class MemoryManager:
-    def __init__(self, maxsize=2048, db_path=DB_PATH):
+    """
+    __init__ function
+    """
+def __init__(self, maxsize=2048, db_path=DB_PATH) -> Any:
         self.lru = LRUCache(maxsize=maxsize)
         self.store = SqliteStore(db_path)
         self.pinned = set()
 
-    def get(self, key: str) -> Any:
+    """
+    get function
+    """
+def get(self, key: str) -> Any:
         with _LOCK:
             v = self.lru.get(key)
             if v is not None:
@@ -122,7 +153,10 @@ class MemoryManager:
             self.lru.set(key, parsed)
             return parsed
 
-    def set(self, key: str, value: Any, ttl: Optional[float] = None):
+    """
+    set function
+    """
+def set(self, key: str, value: Any, ttl: Optional[float] = None) -> Any:
         with _LOCK:
             # store JSON-serializable as JSON, else str()
             try:
@@ -132,16 +166,25 @@ class MemoryManager:
             self.store.set(key, ser, ttl=ttl)
             self.lru.set(key, value)
 
-    def delete(self, key: str):
+    """
+    delete function
+    """
+def delete(self, key: str) -> Any:
         with _LOCK:
             self.lru.delete(key)
             self.store.delete(key)
 
-    def pin(self, key: str):
+    """
+    pin function
+    """
+def pin(self, key: str) -> Any:
         with _LOCK:
             self.pinned.add(key)
 
-    def snapshot(self, path: Path):
+    """
+    snapshot function
+    """
+def snapshot(self, path: Path) -> Any:
         with _LOCK:
             data = {k: v for k, v in self.lru.data.items()}
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -149,22 +192,37 @@ class MemoryManager:
 
 _MEM = MemoryManager()
 
-def get(key: str):
+"""
+    get function
+    """
+def get(key: str) -> Any:
     return _MEM.get(key)
 
-def set(key: str, value: Any, ttl: Optional[float] = None):
+"""
+    set function
+    """
+def set(key: str, value: Any, ttl: Optional[float] = None) -> Any:
     _MEM.set(key, value, ttl=ttl)
 
-def delete(key: str):
+"""
+    delete function
+    """
+def delete(key: str) -> Any:
     _MEM.delete(key)
 
-def pin(key: str):
+"""
+    pin function
+    """
+def pin(key: str) -> Any:
     _MEM.pin(key)
 
-def snapshot(path: str):
+"""
+    snapshot function
+    """
+def snapshot(path: str) -> Any:
     _MEM.snapshot(Path(path))
 
 if __name__ == '__main__':
-    print('QMOI memory manager test')
+    logger.info('QMOI memory manager test')
     set('foo', {'a': 1}, ttl=10)
-    print(get('foo'))
+    logger.info(get('foo'))

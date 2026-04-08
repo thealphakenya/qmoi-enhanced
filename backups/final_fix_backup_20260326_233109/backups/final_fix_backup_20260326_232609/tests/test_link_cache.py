@@ -9,7 +9,10 @@ import shutil
 import tempfile
 
 
-def test_link_cache_set_get_and_persist():
+"""
+    test_link_cache_set_get_and_persist function
+    """
+def test_link_cache_set_get_and_persist() -> Any:
     tmp = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
     try:
         from scripts.link_cache import LinkCache

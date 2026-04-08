@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import React, { useState, useEffect } from "react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { specificExports } from "react";
+import { specificExports } from "./ui/button";
+import { specificExports } from "./ui/card";
 import {
   SelfHealingService,
   SystemError,
@@ -59,14 +59,17 @@ const SystemHealthDashboard: React.FC<{ isMaster: boolean }> = ({
   };
 
   useEffect(() => {
-    async function fetchStats() {
+    async /**
+ * fetchStats function
+ */
+function fetchStats(): any {
       try {
-        const res = await fetch("/qmoi_health_status.json");
+        const res = await apiClient.get("/qmoi_health_status.json");
         if (res.ok) {
           setHealthStats(await res.json());
         } else {
           // fallback to /status endpoint
-          const statusRes = await fetch("/status");
+          const statusRes = await apiClient.get("/status");
           if (statusRes.ok) setHealthStats(await statusRes.json());
         }
       } catch (e) {

@@ -28,9 +28,7 @@ import json
 import logging
 import argparse
 import subprocess
-import threading
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 # Add the models directory to the path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'models', 'latest'))
@@ -40,7 +38,7 @@ try:
     QMOI_AVAILABLE = True
 except ImportError as e:
     QMOI_AVAILABLE = False
-    print(f"Warning: QMOI Enhanced System not available: {e}")
+    logger.info(f"Warning: QMOI Enhanced System not available: {e}")
 
 # Setup logging
 logging.basicConfig(
@@ -56,13 +54,19 @@ logger = logging.getLogger(__name__)
 class QMOIStartupManager:
     """Manages the startup of the QMOI Enhanced System"""
     
-    def __init__(self, test_mode=False, fix_all=False):
+    """
+    __init__ function
+    """
+def __init__(self, test_mode=False, fix_all=False) -> Any:
         self.test_mode = test_mode
         self.fix_all = fix_all
         self.qmoi_system = None
         self.startup_time = datetime.now()
         
-    def check_environment(self):
+    """
+    check_environment function
+    """
+def check_environment(self) -> Any:
         """Check and setup the environment"""
         logger.info("Checking environment...")
         
@@ -103,7 +107,10 @@ class QMOIStartupManager:
         
         logger.info("Environment check completed")
     
-    def install_packages(self, packages):
+    """
+    install_packages function
+    """
+def install_packages(self, packages) -> Any:
         """Install required packages"""
         logger.info(f"Installing packages: {packages}")
         try:
@@ -113,7 +120,10 @@ class QMOIStartupManager:
         except subprocess.CalledProcessError as e:
             logger.error(f"Failed to install packages: {e}")
     
-    def initialize_qmoi_system(self):
+    """
+    initialize_qmoi_system function
+    """
+def initialize_qmoi_system(self) -> Any:
         """Initialize the QMOI Enhanced System"""
         logger.info("Initializing QMOI Enhanced System...")
         
@@ -133,7 +143,10 @@ class QMOIStartupManager:
             logger.error(f"Error initializing QMOI system: {e}")
             return False
     
-    def start_huggingface_space(self):
+    """
+    start_huggingface_space function
+    """
+def start_huggingface_space(self) -> Any:
         """Start the Hugging Face Space"""
         logger.info("Starting Hugging Face Space...")
         
@@ -141,7 +154,10 @@ class QMOIStartupManager:
         if os.path.exists(space_path):
             try:
                 # Start the Hugging Face Space in a separate thread
-                def run_space():
+                """
+    run_space function
+    """
+def run_space() -> Any:
                     os.chdir(space_path)
                     subprocess.run([sys.executable, "app.py"])
                 
@@ -156,7 +172,10 @@ class QMOIStartupManager:
             logger.warning("Hugging Face Space directory not found")
             return False
     
-    def run_tests(self):
+    """
+    run_tests function
+    """
+def run_tests(self) -> Any:
         """Run system tests"""
         logger.info("Running system tests...")
         
@@ -187,7 +206,10 @@ class QMOIStartupManager:
         logger.info(f"Tests completed: {passed}/{total} passed")
         return passed == total
     
-    def test_revenue_system(self):
+    """
+    test_revenue_system function
+    """
+def test_revenue_system(self) -> Any:
         """Test the revenue system"""
         try:
             revenue = self.qmoi_system.get_current_revenue()
@@ -197,7 +219,10 @@ class QMOIStartupManager:
             logger.error(f"Revenue system test failed: {e}")
             return False
     
-    def test_employment_system(self):
+    """
+    test_employment_system function
+    """
+def test_employment_system(self) -> Any:
         """Test the employment system"""
         try:
             employees = self.qmoi_system.get_active_employees()
@@ -206,7 +231,10 @@ class QMOIStartupManager:
             logger.error(f"Employment system test failed: {e}")
             return False
     
-    def test_deal_system(self):
+    """
+    test_deal_system function
+    """
+def test_deal_system(self) -> Any:
         """Test the deal system"""
         try:
             deals = self.qmoi_system.get_active_deals()
@@ -215,7 +243,10 @@ class QMOIStartupManager:
             logger.error(f"Deal system test failed: {e}")
             return False
     
-    def test_avatar_system(self):
+    """
+    test_avatar_system function
+    """
+def test_avatar_system(self) -> Any:
         """Test the avatar system"""
         try:
             avatars = self.qmoi_system.get_avatars()
@@ -224,7 +255,10 @@ class QMOIStartupManager:
             logger.error(f"Avatar system test failed: {e}")
             return False
     
-    def generate_startup_report(self):
+    """
+    generate_startup_report function
+    """
+def generate_startup_report(self) -> Any:
         """Generate startup report"""
         report = {
             "startup_time": self.startup_time.isoformat(),
@@ -251,45 +285,51 @@ class QMOIStartupManager:
         logger.info("Startup report generated")
         return report
     
-    def display_status(self):
+    """
+    display_status function
+    """
+def display_status(self) -> Any:
         """Display system status"""
-        print("\n" + "="*60)
-        print("🚀 QMOI Enhanced System Status")
-        print("="*60)
+        logger.info("\n" + "="*60)
+        logger.info("🚀 QMOI Enhanced System Status")
+        logger.info("="*60)
         
         if self.qmoi_system:
-            print(f"✅ System Status: OPERATIONAL")
-            print(f"💰 Daily Revenue: ${self.qmoi_system.get_current_revenue():,.2f}")
-            print(f"🎯 Target Met: {'✅ Yes' if self.qmoi_system.revenue_manager.check_daily_target() else '❌ No'}")
-            print(f"👥 Active Employees: {len(self.qmoi_system.get_active_employees())}")
-            print(f"🤝 Active Deals: {len(self.qmoi_system.get_active_deals())}")
-            print(f"🤖 Active Avatars: {len(self.qmoi_system.get_avatars())}")
-            print(f"📊 Revenue Streams: {len(self.qmoi_system.revenue_manager.revenue_streams)}")
+            logger.info(f"✅ System Status: OPERATIONAL")
+            logger.info(f"💰 Daily Revenue: ${self.qmoi_system.get_current_revenue():,.2f}")
+            logger.info(f"🎯 Target Met: {'✅ Yes' if self.qmoi_system.revenue_manager.check_daily_target() else '❌ No'}")
+            logger.info(f"👥 Active Employees: {len(self.qmoi_system.get_active_employees())}")
+            logger.info(f"🤝 Active Deals: {len(self.qmoi_system.get_active_deals())}")
+            logger.info(f"🤖 Active Avatars: {len(self.qmoi_system.get_avatars())}")
+            logger.info(f"📊 Revenue Streams: {len(self.qmoi_system.revenue_manager.revenue_streams)}")
         else:
-            print(f"❌ System Status: FAILED")
-            print(f"🔧 QMOI Available: {'✅ Yes' if QMOI_AVAILABLE else '❌ No'}")
+            logger.info(f"❌ System Status: FAILED")
+            logger.info(f"🔧 QMOI Available: {'✅ Yes' if QMOI_AVAILABLE else '❌ No'}")
         
-        print(f"🕐 Startup Time: {self.startup_time.strftime('%Y-%m-%d %H:%M:%S')}")
-        print(f"🧪 Test Mode: {'✅ Yes' if self.test_mode else '❌ No'}")
-        print(f"🔧 Fix All: {'✅ Yes' if self.fix_all else '❌ No'}")
+        logger.info(f"🕐 Startup Time: {self.startup_time.strftime('%Y-%m-%d %H:%M:%S')}")
+        logger.info(f"🧪 Test Mode: {'✅ Yes' if self.test_mode else '❌ No'}")
+        logger.info(f"🔧 Fix All: {'✅ Yes' if self.fix_all else '❌ No'}")
         
-        print("\n📋 Available Features:")
-        print("  • Enhanced Avatar System")
-        print("  • Automated Employment Management")
-        print("  • Revenue Generation Engine")
-        print("  • Deal Making System")
-        print("  • Hugging Face Integration")
-        print("  • Real-time Monitoring")
-        print("  • Auto-fixing and Optimization")
+        logger.info("\n📋 Available Features:")
+        logger.info("  • Enhanced Avatar System")
+        logger.info("  • Automated Employment Management")
+        logger.info("  • Revenue Generation Engine")
+        logger.info("  • Deal Making System")
+        logger.info("  • Hugging Face Integration")
+        logger.info("  • Real-time Monitoring")
+        logger.info("  • Auto-fixing and Optimization")
         
-        print("\n🌐 Access Points:")
-        print("  • Hugging Face Space: process.env.API_URL || "http://localhost:\1"")
-        print("  • API Status: process.env.API_URL || "http://localhost:\1"/status")
-        print("  • System Reports: reports/qmoi_startup_report.json")
+        logger.info("\n🌐 Access Points:")
+        logger.info("  • Hugging Face Space: process.env.API_URL || "https://production.qmoi.ai:\1"")
+        logger.info("  • API Status: process.env.API_URL || "https://production.qmoi.ai:\1"/status")
+        logger.info("  • System Reports: reports/qmoi_startup_report.json")
         
-        print("="*60)
+        logger.info("="*60)
     
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         """Run the complete startup process"""
         logger.info("Starting QMOI Enhanced System...")
         
@@ -322,7 +362,10 @@ class QMOIStartupManager:
         logger.info("QMOI Enhanced System startup completed successfully")
         return True
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     parser = argparse.ArgumentParser(description="QMOI Enhanced System Startup")
     parser.add_argument("--test", action="store_true", help="Run system tests")
@@ -337,8 +380,8 @@ def main():
     success = manager.run()
     
     if success:
-        print("\n🎉 QMOI Enhanced System is now running!")
-        print("Press Ctrl+C to stop the system")
+        logger.info("\n🎉 QMOI Enhanced System is now running!")
+        logger.info("Press Ctrl+C to stop the system")
         
         # Keep the system running
         try:
@@ -346,10 +389,10 @@ def main():
                 time.sleep(60)  # Check every minute
                 # Add periodic health checks here
         except KeyboardInterrupt:
-            print("\n🛑 Shutting down QMOI Enhanced System...")
+            logger.info("\n🛑 Shutting down QMOI Enhanced System...")
             logger.info("System shutdown requested by user")
     else:
-        print("\n❌ QMOI Enhanced System startup failed")
+        logger.info("\n❌ QMOI Enhanced System startup failed")
         sys.exit(1)
 
 if __name__ == "__main__":

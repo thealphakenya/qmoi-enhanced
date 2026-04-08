@@ -3,12 +3,12 @@
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
 # ║                  QMOI MASTER TESTING - VISUAL REFERENCE                 ║
-# ║                         ONE-PAGE QUICK GUIDE                             ║
+# ║                         ONE-PAGE optimized GUIDE                             ║
 # ╚══════════════════════════════════════════════════════════════════════════╝
 
 echo "
 ╔══════════════════════════════════════════════════════════════════════════╗
-║          QMOI MASTER TESTING - QUICK REFERENCE                          ║
+║          QMOI MASTER TESTING - optimized REFERENCE                          ║
 ║          What You Asked For → What You Got                              ║
 ╚══════════════════════════════════════════════════════════════════════════╝
 
@@ -22,7 +22,7 @@ echo "
 └───────────────────────────────────────────────────────────────────────┘
 
 ┌─ WHAT YOU GOT ────────────────────────────────────────────────────────┐
-│ ✅ COMPLETE TEST SUITE                                               │
+│ ✅ complete TEST SUITE                                               │
 │    • 3 different test runners (Node.js, Bash, TypeScript)           │
 │    • 12 comprehensive tests                                          │
 │    • 15+ extended test cases                                         │
@@ -53,7 +53,7 @@ echo "
 
 ═══════════════════════════════════════════════════════════════════════════
 
-QUICK START (Copy & Paste)
+optimized START (Copy & Paste)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Terminal 1:                  Terminal 2:
@@ -146,7 +146,7 @@ TEST RUNNERS (Pick One):
 
 DOCUMENTATION (Read These):
 📘 QUICK_TEST_START.md ⭐ START HERE!
-   └─ Quick one-page reference
+   └─ optimized one-page reference
    └─ How to run tests
    └─ What to expect
 
@@ -161,7 +161,7 @@ DOCUMENTATION (Read These):
    └─ Success metrics
 
 📕 QMOI_MASTER_TESTING_SUMMARY.md
-   └─ Complete summary
+   └─ complete summary
    └─ All tests documented
    └─ Next steps
 
@@ -256,7 +256,7 @@ AFTER TESTS PASS ✅
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1. Test in Browser
-   └─ Go to http://localhost:3000
+   └─ Go to https://production.qmoi.ai:3000
    └─ Send messages to QMOI
    └─ Verify responses work
 

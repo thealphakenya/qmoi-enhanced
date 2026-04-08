@@ -1,5 +1,5 @@
 -- QMOI Enhanced Balance Management Database Schema
--- Production Implementation: Complete database integration for auto-updating balances
+-- Production Implementation: complete database integration for auto-updating balances
 -- INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS
 
 -- Create database
@@ -9,7 +9,7 @@ USE qmoi_balances;
 -- Wallets table
 CREATE TABLE IF NOT EXISTS wallets (
     id VARCHAR(50) PRIMARY KEY,
-    type ENUM('System', 'Revenue', 'Escrow', 'Development', 'Crypto', 'Fiat') NOT NULL,
+    type ENUM('System', 'Revenue', 'Escrow', 'production', 'Crypto', 'Fiat') NOT NULL,
     currency ENUM('USD', 'EUR', 'GBP', 'KES', 'BTC', 'ETH') NOT NULL,
     name VARCHAR(100) NOT NULL,
     description TEXT,
@@ -177,7 +177,7 @@ INSERT IGNORE INTO wallets (id, type, currency, name, description) VALUES
 ('qmoi-main-wallet', 'System', 'USD', 'QMOI Main System Wallet', 'Primary system wallet for all operations'),
 ('qmoi-revenue-wallet', 'Revenue', 'USD', 'QMOI Revenue Wallet', 'Revenue collection and distribution'),
 ('qmoi-escrow-wallet', 'Escrow', 'USD', 'QMOI Escrow Wallet', 'Third-party held funds'),
-('qmoi-dev-wallet', 'Development', 'USD', 'QMOI Development Wallet', 'Development and testing funds'),
+('qmoi-dev-wallet', 'production', 'USD', 'QMOI production Wallet', 'production and testing funds'),
 ('qmoi-crypto-wallet', 'Crypto', 'BTC', 'QMOI Bitcoin Wallet', 'Bitcoin holdings and operations'),
 ('qmoi-eth-wallet', 'Crypto', 'ETH', 'QMOI Ethereum Wallet', 'Ethereum holdings and operations'),
 ('qmoi-eur-wallet', 'Fiat', 'EUR', 'QMOI Euro Wallet', 'Euro currency operations'),
@@ -356,7 +356,7 @@ INSERT IGNORE INTO wallet_balances (wallet_id, balance_type, amount, qmoi_valida
 ('qmoi-escrow-wallet', 'interest', 0.00, TRUE),
 ('qmoi-escrow-wallet', 'rewards', 0.00, TRUE),
 
--- QMOI Development Wallet
+-- QMOI production Wallet
 ('qmoi-dev-wallet', 'available', 23456.78, TRUE),
 ('qmoi-dev-wallet', 'pending', 567.89, TRUE),
 ('qmoi-dev-wallet', 'reserved', 2000.00, TRUE),
@@ -426,7 +426,7 @@ SELECT
     MIN(wb.qmoi_validated) as all_qmoi_validated,
     COUNT(*) as balance_types_count
 FROM wallets w
-LEFT JOIN wallet_balances wb ON w.id = wb.wallet_id
+INNER JOIN wallet_balances wb ON w.id = wb.wallet_id
 WHERE w.is_active = TRUE
 GROUP BY w.id, w.type, w.currency, w.name;
 
@@ -443,7 +443,7 @@ SELECT
     MAX(qv.created_at) as last_validation,
     AVG(qv.consciousness_level) as avg_consciousness_level
 FROM wallets w
-LEFT JOIN qmoi_validations qv ON w.id = qv.wallet_id
+INNER JOIN qmoi_validations qv ON w.id = qv.wallet_id
 WHERE w.is_active = TRUE
 GROUP BY w.id, w.name;
 

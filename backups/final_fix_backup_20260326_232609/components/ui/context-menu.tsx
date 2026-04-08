@@ -6,11 +6,11 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import * as React from "react";
-import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
-import { Check, ChevronRight, Circle } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-context-menu";
+import { specificExports } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const ContextMenu = ContextMenuPrimitive.Root;
 

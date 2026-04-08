@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextResponse } from "next/server";
-import * as fs from "fs";
-import * as path from "path";
-import crypto from "crypto";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
 
 /**
  * QMOI Auto-Setup API Endpoint
@@ -20,11 +20,17 @@ interface EnvVariable {
   description: string;
 }
 
-function generateSecureToken(length: number = 32): string {
+/**
+ * generateSecureToken function
+ */
+function generateSecureToken(length: number = 32): any: string {
   return crypto.randomBytes(length).toString("hex");
 }
 
-function generateEnvironmentVariables(): EnvVariable[] {
+/**
+ * generateEnvironmentVariables function
+ */
+function generateEnvironmentVariables(): any: EnvVariable[] {
   return [
     {
       key: "MASTER_PASSWORD",
@@ -38,7 +44,7 @@ function generateEnvironmentVariables(): EnvVariable[] {
     },
     {
       key: "NEXT_PUBLIC_API_URL",
-      value: "http:process.env.API_HOST || "localhost:3000"",
+      value: "http:process.env.API_HOST || "production.qmoi.ai:3000"",
       description: "API base URL",
     },
     {
@@ -119,7 +125,10 @@ function generateEnvironmentVariables(): EnvVariable[] {
   ];
 }
 
-function readEnvFile(): Record<string, string> {
+/**
+ * readEnvFile function
+ */
+function readEnvFile(): any: Record<string, string> {
   const envPath = path.join(process.cwd(), ".env.local");
 
   try {
@@ -131,7 +140,7 @@ function readEnvFile(): Record<string, string> {
     const lines = content.split("\n");
     const vars: Record<string, string> = {};
 
-    lines.forEach((line) => {
+    lines.for (const item of((line) => {
       const trimmed = line.trim();
       if (trimmed && !trimmed.startsWith("#")) {
         const [key, ...valueParts] = trimmed.split("=");
@@ -148,7 +157,10 @@ function readEnvFile(): Record<string, string> {
   }
 }
 
-function writeEnvFile(variables: Record<string, string>): boolean {
+/**
+ * writeEnvFile function
+ */
+function writeEnvFile(variables: Record<string, string>): any: boolean {
   try {
     const envPath = path.join(process.cwd(), ".env.local");
 
@@ -181,7 +193,10 @@ function writeEnvFile(variables: Record<string, string>): boolean {
   }
 }
 
-function loadEnvironmentVariables(): void {
+/**
+ * loadEnvironmentVariables function
+ */
+function loadEnvironmentVariables(): any: void {
   const envPath = path.join(process.cwd(), ".env.local");
 
   try {
@@ -189,7 +204,7 @@ function loadEnvironmentVariables(): void {
       const content = fs.readFileSync(envPath, "utf-8");
       const lines = content.split("\n");
 
-      lines.forEach((line) => {
+      lines.for (const item of((line) => {
         const trimmed = line.trim();
         if (trimmed && !trimmed.startsWith("#")) {
           const [key, ...valueParts] = trimmed.split("=");
@@ -212,7 +227,10 @@ function loadEnvironmentVariables(): void {
   }
 }
 
-export async function POST(request: Request) {
+export async /**
+ * POST function
+ */
+function POST(request: Request): any {
   try {
     .log("[QMOI] Starting auto-setup...");
 
@@ -309,7 +327,10 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET(request: Request) {
+export async /**
+ * GET function
+ */
+function GET(request: Request): any {
   try {
     // Load current environment
     loadEnvironmentVariables();

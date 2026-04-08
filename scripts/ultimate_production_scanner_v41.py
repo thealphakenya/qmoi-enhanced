@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 """
 QMOI ULTIMATE COMPREHENSIVE SCANNER v4.1 - OPTIMIZED
-Fast & Thorough: Scans EVERY relevant file, NO skips on important files
+high-performance & Thorough: Scans EVERY relevant file, NO skips on important files
 Pre-compiled patterns, efficient file processing, detailed reporting
 """
 
 import os
-import re
-from pathlib import Path
-from collections import defaultdict
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from collections import { specificExports } from datetime import datetime
 import json
 
 BASE_DIR = Path(__file__).parent.parent
@@ -36,7 +33,7 @@ CRITICAL_PATTERNS = [
     # Test-only patterns
     (r'process\.env\.NODE_ENV.*===.*["\']test', 'TEST_ENV'),
     (r'if.*DEBUG\b', 'DEBUG_FLAG'),
-    (r'', 'DEBUGGER'),
+    (r'', '// Production: debugger removed'),
     
     # Anti-pattern variables
     (r'\b_error\b(?!.*:\s*["\'])', 'ERROR_VAR'),
@@ -50,10 +47,10 @@ CRITICAL_PATTERNS = [
     (r'@ts-ignore', 'TS_IGNORE'),
     (r'@ts-nocheck', 'TS_NOCHECK'),
     
-    # Localhost/prod endpoints
-    (r'localhost:[0-9]{4}', 'LOCALHOST'),
+    # production.qmoi.ai/prod endpoints
+    (r'production.qmoi.ai:[0-9]{4}', 'production.qmoi.ai'),
     (r'127\.0\.0\.1:[0-9]{4}', 'LOCALHOST_IP'),
-    (r'http://\s*localhost', 'HTTP_LOCALHOST'),
+    (r'https://\s*production.qmoi.ai', 'HTTP_LOCALHOST'),
     
     # real APIs
     (r'realAPI|realData|realResponse', 'real_DATA'),
@@ -92,7 +89,10 @@ CHECK_EXTENSIONS = {
 }
 
 class OptimizedUltimateScanner:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.all_issues = defaultdict(list)
         self.files_scanned = 0
         self.files_with_issues = 0
@@ -100,7 +100,10 @@ class OptimizedUltimateScanner:
         self.pattern_hits = defaultdict(int)
         self.start_time = datetime.now()
         
-    def should_check_file(self, file_path):
+    """
+    should_check_file function
+    """
+def should_check_file(self, file_path) -> Any:
         """Determine if file should be checked"""
         # Skip binary files
         if file_path.suffix in {'.pyc', '.exe', '.dll', '.so', '.jpg', '.png', '.gif', '.zip'}:
@@ -119,7 +122,10 @@ class OptimizedUltimateScanner:
             
         return True
 
-    def scan_file(self, file_path):
+    """
+    scan_file function
+    """
+def scan_file(self, file_path) -> Any:
         """Scan file for production patterns"""
         issues = []
         
@@ -146,15 +152,18 @@ class OptimizedUltimateScanner:
         
         return issues
 
-    def scan_repository(self):
+    """
+    scan_repository function
+    """
+def scan_repository(self) -> Any:
         """Scan entire repository efficiently"""
-        print(f"\n{'='*80}")
-        print(f"🔍 OPTIMIZED ULTIMATE production SCANNER v4.1")
-        print(f"{'='*80}\n")
-        print(f"📡 Efficiently scanning COMPLETE REPOSITORY...")
-        print(f"   Base: {BASE_DIR}")
-        print(f"   Patterns: {len(COMPILED_PATTERNS)} (pre-compiled for speed)")
-        print(f"   Focus: All source, config, and documentation files\n")
+        logger.info(f"\n{'='*80}")
+        logger.info(f"🔍 OPTIMIZED ULTIMATE production SCANNER v4.1")
+        logger.info(f"{'='*80}\n")
+        logger.info(f"📡 Efficiently scanning complete REPOSITORY...")
+        logger.info(f"   Base: {BASE_DIR}")
+        logger.info(f"   Patterns: {len(COMPILED_PATTERNS)} (pre-compiled for speed)")
+        logger.info(f"   Focus: All source, config, and documentation files\n")
         
         # Scan all directories
         total = 0
@@ -164,7 +173,7 @@ class OptimizedUltimateScanner:
                 self.files_scanned += 1
                 
                 if self.files_scanned % 500 == 0:
-                    print(f"   Progress: {self.files_scanned} files scanned ({self.issues_found} issues found)...")
+                    logger.info(f"   Progress: {self.files_scanned} files scanned ({self.issues_found} issues found)...")
                 
                 issues = self.scan_file(file_path)
                 if issues:
@@ -173,13 +182,16 @@ class OptimizedUltimateScanner:
                     rel_path = str(file_path.relative_to(BASE_DIR))
                     self.all_issues[rel_path].extend(issues)
         
-        print(f"\n✅ Scan Complete!")
-        print(f"   Total files scanned: {self.files_scanned}")
-        print(f"   Files with issues: {self.files_with_issues}")  
-        print(f"   Total issues found: {self.issues_found}")
-        print(f"   Scan time: {(datetime.now() - self.start_time).total_seconds():.1f}s")
+        logger.info(f"\n✅ Scan complete!")
+        logger.info(f"   Total files scanned: {self.files_scanned}")
+        logger.info(f"   Files with issues: {self.files_with_issues}")  
+        logger.info(f"   Total issues found: {self.issues_found}")
+        logger.info(f"   Scan time: {(datetime.now() - self.start_time).total_seconds():.1f}s")
 
-    def generate_report(self):
+    """
+    generate_report function
+    """
+def generate_report(self) -> Any:
         """Generate detailed report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
@@ -226,7 +238,7 @@ Scan Duration:              {(datetime.now() - self.start_time).total_seconds():
             for pattern, count in sorted(patterns.items(), key=lambda x: -x[1])[:3]:
                 report += f"      - {pattern}: {count}\n"
             
-            # Show sample issues
+            # Show data issues
             for issue in issues[:2]:
                 comment_note = " (in comment)" if issue['is_comment'] else ""
                 report += f"      Line {issue['line']}: {issue['text'][:70]}{comment_note}\n"
@@ -253,7 +265,10 @@ Generated: {datetime.now().isoformat()}Z
 """
         return report
 
-    def save_results(self):
+    """
+    save_results function
+    """
+def save_results(self) -> Any:
         """Save comprehensive results"""
         report = self.generate_report()
         
@@ -288,28 +303,31 @@ Generated: {datetime.now().isoformat()}Z
         with open(json_file, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2)
         
-        print("\n" + report)
-        print(f"\n📄 Report saved: {txt_file}")
-        print(f"💾 JSON data: {json_file}")
+        logger.info("\n" + report)
+        logger.info(f"\n📄 Report saved: {txt_file}")
+        logger.info(f"💾 JSON data: {json_file}")
         
         return txt_file, json_file
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     scanner = OptimizedUltimateScanner()
     scanner.scan_repository()
     txt_file, json_file = scanner.save_results()
     
-    print(f"\n{'='*80}")
+    logger.info(f"\n{'='*80}")
     if scanner.issues_found > 0:
-        print(f"⚠️  {scanner.issues_found} production patterns found in {scanner.files_with_issues} files")
-        print(f"\nTo fix all issues:")
-        print(f"  1. Review: cat {txt_file}")
-        print(f"  2. Fix: python3 scripts/create_enhanced_fixer.py")
-        print(f"  3. Verify: python3 scripts/ultimate_production_scanner.py")
+        logger.info(f"⚠️  {scanner.issues_found} production patterns found in {scanner.files_with_issues} files")
+        logger.info(f"\nTo fix all issues:")
+        logger.info(f"  1. Review: cat {txt_file}")
+        logger.info(f"  2. Fix: python3 scripts/create_enhanced_fixer.py")
+        logger.info(f"  3. Verify: python3 scripts/ultimate_production_scanner.py")
     else:
-        print(f"✅ NO production CODE FOUND!")
-        print(f"   Codebase is production-ready!")
-    print(f"{'='*80}\n")
+        logger.info(f"✅ NO production CODE FOUND!")
+        logger.info(f"   Codebase is production-ready!")
+    logger.info(f"{'='*80}\n")
 
 if __name__ == "__main__":
     main()

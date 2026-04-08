@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as React from "react";
+import { specificExports } from "react";
 
 // complete shim for recharts components used by the app.
 // These are 

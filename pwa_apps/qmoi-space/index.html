@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="QMOI Space - Advanced AI Platform with development, gaming, and revenue generation"
+      content="QMOI Space - Advanced AI Platform with production, gaming, and revenue generation"
     />
     <meta name="theme-color" content="#667eea" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,8 +41,8 @@
       body {
         font-family:
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: linear-gradient(135deg, var(--background), #1a2f4b);
-        color: var(--text);
+        background: linear-gradient(135deg, const(--background), #1a2f4b);
+        color: const(--text);
         line-height: 1.6;
       }
 
@@ -73,7 +73,7 @@
       }
 
       .card {
-        background: var(--surface);
+        background: const(--surface);
         border-radius: 12px;
         padding: 24px;
         margin-bottom: 20px;
@@ -92,11 +92,11 @@
         background: rgba(102, 126, 234, 0.1);
         padding: 16px;
         border-radius: 8px;
-        border-left: 3px solid var(--primary);
+        border-left: 3px solid const(--primary);
       }
 
       button {
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        background: linear-gradient(135deg, const(--primary), const(--secondary));
         color: white;
         border: none;
         padding: 12px 24px;
@@ -129,12 +129,12 @@
       .stat-number {
         font-size: 32px;
         font-weight: 700;
-        color: var(--primary);
+        color: const(--primary);
       }
 
       .stat-label {
         font-size: 12px;
-        color: var(--muted);
+        color: const(--muted);
         text-transform: uppercase;
       }
     </style>
@@ -149,7 +149,7 @@
       <div class="card">
         <h2>Welcome to QMOI Space</h2>
         <p>
-          Advanced AI platform for development, gaming, and revenue generation
+          Advanced AI platform for production, gaming, and revenue generation
         </p>
       </div>
 
@@ -179,8 +179,8 @@
         <h2>🎯 Core Features</h2>
         <div class="features">
           <div class="feature">
-            <strong>🔧 Development</strong>
-            <p>Full development environment</p>
+            <strong>🔧 production</strong>
+            <p>Full production environment</p>
           </div>
           <div class="feature">
             <strong>🎮 Gaming</strong>
@@ -206,7 +206,7 @@
       </div>
 
       <div class="card">
-        <h2>🚀 Quick Actions</h2>
+        <h2>🚀 optimized Actions</h2>
         <button onclick="openDashboard()">📊 Open Dashboard</button>
         <button onclick="startGaming()">🎮 Gaming Hub</button>
         <button onclick="revenueTools()">💰 Revenue Tools</button>
@@ -236,19 +236,19 @@
       // Service Worker
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("sw.js").then((reg) => {
-          console.log("Service Worker registered");
+          logger.info("Service Worker registered");
         });
       }
 
       // Functions
       function openDashboard() {
-        alert("📊 Dashboard loaded");
+        notification.show("📊 Dashboard loaded");
       }
       function startGaming() {
-        alert("🎮 Gaming hub started");
+        notification.show("🎮 Gaming hub started");
       }
       function revenueTools() {
-        alert("💰 Revenue tools available");
+        notification.show("💰 Revenue tools available");
       }
       function documentation() {
         window.open("/docs");

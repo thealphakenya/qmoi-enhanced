@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as React from "react";
-import { useState } from "react";
-import { ContextEngine, UserContext } from "../../services/ContextEngine";
+import { specificExports } from "react";
+import { specificExports } from "react";
+import { specificExports } from "../../services/ContextEngine";
 
 const contextEngine = new ContextEngine();
 const userId = "current-user"; // Replace with real user ID logic

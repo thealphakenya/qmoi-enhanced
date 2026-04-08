@@ -4,15 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
-import authService from "@/lib/auth/service";
-import { db } from "@/lib/db/prisma";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/db/prisma";
 
 /**
  * POST /api/master/sponsored/add
  * Add a new sponsored user (Master only)
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     // Verify master authentication
     const authHeader = request.headers.get("authorization");

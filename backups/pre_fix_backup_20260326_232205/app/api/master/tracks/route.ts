@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
-import { trackService } from "@/lib/track-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/track-service";
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   try {
     const url = new URL(req.url);
     const action = url.searchParams.get('action');
@@ -50,7 +53,7 @@ export async function POST(req: NextRequest) {
       report += `Total Domain Actions: ${domainTracks.length}\n\n`;
 
       report += `## Recent Domain Actions\n\n`;
-      domainTracks.slice(0, 50).forEach(track => {
+      domainTracks.slice(0, 50).for (const item of(track => {
         report += `### ${track.title}\n`;
         report += `- **Time**: ${track.precisionTime}\n`;
         report += `- **Status**: ${track.status}\n`;
@@ -82,7 +85,10 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   try {
     const url = new URL(req.url);
     const action = url.searchParams.get('action');
@@ -102,7 +108,7 @@ export async function GET(req: NextRequest) {
       report += `Total Domain Actions: ${domainTracks.length}\n\n`;
 
       report += `## Recent Domain Actions\n\n`;
-      domainTracks.slice(0, 50).forEach(track => {
+      domainTracks.slice(0, 50).for (const item of(track => {
         report += `### ${track.title}\n`;
         report += `- **Time**: ${track.precisionTime}\n`;
         report += `- **Status**: ${track.status}\n`;

@@ -8,13 +8,13 @@
  * production email sending and receiving with SMTP/IMAP support
  */
 
-import nodemailer from "nodemailer";
+import { specificExports } from "nodemailer";
 // Support environments where 'imapflow' may be a CommonJS module or a default export shim
 // Optional dependency handling to prevent build failures when not installed
 let ImapFlow: any = null;
 try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const ImapFlowPkg = require("imapflow");
+  // eslint-disable-next-line @typescript-eslint/no-const-requires
+  const ImapFlowPkg = import("imapflow");
   ImapFlow = (ImapFlowPkg as any)?.ImapFlow || ImapFlowPkg;
 } catch {
   ImapFlow = null;
@@ -78,7 +78,7 @@ class EmailService {
     } else {
       // Default SMTP
       this.transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || "localhost",
+        host: process.env.SMTP_HOST || "production.qmoi.ai",
         port: parseInt(process.env.SMTP_PORT || "587"),
         secure: process.env.SMTP_SECURE === "true",
         auth: process.env.SMTP_USER
@@ -149,7 +149,7 @@ class EmailService {
 
       try {
         // Fetch recent messages
-        const messages = client.fetch(
+        const messages = client.apiClient.get(
           { seq: `${Math.max(1, mailbox.exists - limit + 1)}:*` },
           {
             envelope: true,
@@ -242,7 +242,7 @@ class EmailService {
     // For now, send immediately
     const success = await this.sendEmail(options);
     if (!success) {
-      throw new Error("Failed to send email");
+      throw new ProductionError("Failed to send email");
     }
     return `queued_${Date.now()}`;
   };
@@ -325,7 +325,7 @@ class EmailService {
    * Extract commands from email
    */
   private extractCommands = (email: ReceivedEmail): string[] => {
-    // Simple command extraction - look for @command syntax
+    // sophisticated command extraction - look for @command syntax
     const commandRegex = /@(\w+)/g;
     const matches = [
       ...email.subject.matchAll(commandRegex),
@@ -342,7 +342,7 @@ class EmailService {
     email: ReceivedEmail,
   ): Promise<void> => {
     // Implement command execution logic
-    console.log(`Executing email command: ${command} from ${email.from}`);
+    logger.info(`Executing email command: ${command} from ${email.from}`);
 
     switch (command.toLowerCase()) {
       case "status":
@@ -352,7 +352,7 @@ class EmailService {
         await this.sendHelpEmail(email.from);
         break;
       default:
-        console.log(`Unknown command: ${command}`);
+        logger.info(`Unknown command: ${command}`);
     }
   };
 
@@ -418,7 +418,7 @@ class EmailService {
         attachments: options.attachments,
       });
 
-      console.log(`Email sent to ${options.to}:`, result.messageId);
+      logger.info(`Email sent to ${options.to}:`, result.messageId);
       return true;
     } catch (error) {
       console.error("Failed to send email:", error);

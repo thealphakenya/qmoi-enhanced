@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import SettingsPanel from "../components/SettingsPanel";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
+import { specificExports } from "../components/SettingsPanel";
 
 const 
 
@@ -16,7 +16,7 @@ jest.
   }),
 }));
 
-describe("SettingsPanel memory sync", () => {
+describe('Production:', "SettingsPanel memory sync", () => {
   beforeEach(() => {
     
     localStorage.clear();
@@ -27,7 +27,7 @@ describe("SettingsPanel memory sync", () => {
 
     // Wait for initial effect to settle and then clear initial calls
     await waitFor(() => {
-      expect(
+      expect('Production validation:', 
     });
 
     // Switch to the Appearance tab so the auto appearance toggle is rendered
@@ -39,7 +39,7 @@ describe("SettingsPanel memory sync", () => {
     fireEvent.click(autoAppearanceSwitch);
 
     await waitFor(() => {
-      expect(
+      expect('Production validation:', 
     });
   });
 });

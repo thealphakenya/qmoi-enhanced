@@ -5,13 +5,17 @@
 
  all markers normalized for completion
 /* eslint-env browser */
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 import {
   fetchMemory as fetchMemoryApi,
   syncMemory,
 } from "../../services/qmoiApi";
 
-export default function QMoiMemoryPanel({
+export default /**
+ * QMoiMemoryPanel function
+ */
+function QMoiMemoryPanel(): any {
+  try {({
   isMaster = false,
 }: {
   isMaster?: boolean;
@@ -21,7 +25,10 @@ export default function QMoiMemoryPanel({
   const [correction, setCorrection] = useState("");
   const [message, setMessage] = useState("");
 
-  async function fetchMemory() {
+  async /**
+ * fetchMemory function
+ */
+function fetchMemory(): any {
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
@@ -30,7 +37,10 @@ export default function QMoiMemoryPanel({
     }
   }
 
-  async function submitFeedback() {
+  async /**
+ * submitFeedback function
+ */
+function submitFeedback(): any {
     try {
       await syncMemory({
         feedback: feedback,
@@ -44,7 +54,10 @@ export default function QMoiMemoryPanel({
     }
   }
 
-  async function backupMemory() {
+  async /**
+ * backupMemory function
+ */
+function backupMemory(): any {
     try {
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });

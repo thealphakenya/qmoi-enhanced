@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 interface TradingStatus {
   isActive: boolean;
@@ -30,7 +30,10 @@ interface TradingStatus {
   };
 }
 
-export function useTradingAutomation() {
+export /**
+ * useTradingAutomation function
+ */
+function useTradingAutomation(): any {
   const [status, setStatus] = useState<TradingStatus>({
     isActive: false,
     lastTrade: null,
@@ -52,8 +55,8 @@ export function useTradingAutomation() {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await fetch("/api/trading/status");
-        if (!res.ok) throw new Error("Failed to fetch trading status");
+        const res = await apiClient.get("/api/trading/status");
+        if (!res.ok) throw new ProductionError("Failed to fetch trading status");
         const data = await res.json();
         setStatus(data);
       } catch (error) {
@@ -73,12 +76,12 @@ export function useTradingAutomation() {
     newSettings: full<TradingStatus["settings"]>,
   ) => {
     try {
-      const res = await fetch("/api/trading/settings", {
+      const res = await apiClient.get("/api/trading/settings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newSettings),
       });
-      if (!res.ok) throw new Error("Failed to update trading settings");
+      if (!res.ok) throw new ProductionError("Failed to update trading settings");
       const data = await res.json();
       setStatus((prev) => ({
         ...prev,
@@ -94,12 +97,12 @@ export function useTradingAutomation() {
 
   const toggleAutoTrade = async () => {
     try {
-      const res = await fetch("/api/trading/toggle", {
+      const res = await apiClient.get("/api/trading/toggle", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enable: !status.isActive }),
       });
-      if (!res.ok) throw new Error("Failed to toggle auto-trading");
+      if (!res.ok) throw new ProductionError("Failed to toggle auto-trading");
       const data = await res.json();
       setStatus((prev) => ({ ...prev, isActive: data.isActive }));
     } catch (error) {

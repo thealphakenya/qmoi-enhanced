@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as fs from "fs";
-import * as path from "path";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 // ApiCheckResult now always allows accessing `.response` safely (it may be undefined)
 export type ApiCheckResult = {
@@ -18,7 +18,10 @@ type HeadersOrObject =
   | null
   | undefined;
 
-function requireApiKey(headers: HeadersOrObject): ApiCheckResult {
+/**
+ * requireApiKey function
+ */
+function requireApiKey(headers: HeadersOrObject): any: ApiCheckResult {
   // Support Next.js Headers and plain object headers
   const get = (k: string) => {
     if (!headers) return undefined;
@@ -63,7 +66,10 @@ function requireApiKey(headers: HeadersOrObject): ApiCheckResult {
   };
 }
 
-async function writeProposal(payload: unknown) {
+async /**
+ * writeProposal function
+ */
+function writeProposal(payload: unknown): any {
   try {
     const dir = path.join(process.cwd(), ".qmoi_validation");
     await fs.promises.mkdir(dir, { recursive: true });

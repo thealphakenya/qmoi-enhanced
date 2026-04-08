@@ -5,12 +5,13 @@ Comprehensive validation of all systems before production deployment
 """
 
 import json
-import subprocess
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
 class ProductionValidator:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.root = Path('.')
         self.results = {
             'timestamp': datetime.utcnow().isoformat() + 'Z',
@@ -20,9 +21,12 @@ class ProductionValidator:
             'warnings': 0
         }
     
-    def check_feature_flags(self):
+    """
+    check_feature_flags function
+    """
+def check_feature_flags(self) -> Any:
         """Validate feature flags system"""
-        print("🚩 Checking Feature Flags...")
+        logger.info("🚩 Checking Feature Flags...")
         try:
             # Verify feature flags file exists
             ff_file = self.root / 'src' / 'lib' / 'feature-flags.ts'
@@ -35,9 +39,9 @@ class ProductionValidator:
                     'minimal_data_mode',
                     'proprietary_apis'
                 ]
-                missing = [f for f in required_flags if f not in content]
-                if missing:
-                    self.results['checks']['feature_flags'] = '❌ Missing flags: ' + ', '.join(missing)
+                required = [f for f in required_flags if f not in content]
+                if required:
+                    self.results['checks']['feature_flags'] = '❌ required flags: ' + ', '.join(required)
                     self.results['failed'] += 1
                 else:
                     self.results['checks']['feature_flags'] = '✅ All required flags present'
@@ -49,17 +53,20 @@ class ProductionValidator:
             self.results['checks']['feature_flags'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
-    def check_offline_mode(self):
+    """
+    check_offline_mode function
+    """
+def check_offline_mode(self) -> Any:
         """Validate offline mode implementation"""
-        print("📱 Checking Offline Mode...")
+        logger.info("📱 Checking Offline Mode...")
         try:
             om_file = self.root / 'src' / 'lib' / 'offline-mode.ts'
             if om_file.exists():
                 content = om_file.read_text()
                 required = ['cacheResponse', 'getCachedResponse', 'queueForSync', 'processSyncQueue']
-                missing = [f for f in required if f not in content]
-                if missing:
-                    self.results['checks']['offline_mode'] = '❌ Missing methods: ' + ', '.join(missing)
+                required = [f for f in required if f not in content]
+                if required:
+                    self.results['checks']['offline_mode'] = '❌ required methods: ' + ', '.join(required)
                     self.results['failed'] += 1
                 else:
                     self.results['checks']['offline_mode'] = '✅ Offline mode fully implemented'
@@ -71,17 +78,20 @@ class ProductionValidator:
             self.results['checks']['offline_mode'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
-    def check_authentication(self):
+    """
+    check_authentication function
+    """
+def check_authentication(self) -> Any:
         """Validate database authentication"""
-        print("🔐 Checking Authentication...")
+        logger.info("🔐 Checking Authentication...")
         try:
             auth_file = self.root / 'src' / 'lib' / 'database-auth.ts'
             if auth_file.exists():
                 content = auth_file.read_text()
                 required = ['register', 'login', 'validateToken', 'logout', 'refreshToken']
-                missing = [f for f in required if f not in content]
-                if missing:
-                    self.results['checks']['authentication'] = '❌ Missing auth methods: ' + ', '.join(missing)
+                required = [f for f in required if f not in content]
+                if required:
+                    self.results['checks']['authentication'] = '❌ required auth methods: ' + ', '.join(required)
                     self.results['failed'] += 1
                 else:
                     self.results['checks']['authentication'] = '✅ Authentication fully implemented'
@@ -93,18 +103,21 @@ class ProductionValidator:
             self.results['checks']['authentication'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
-    def check_documentation(self):
+    """
+    check_documentation function
+    """
+def check_documentation(self) -> Any:
         """Validate API documentation"""
-        print("📚 Checking Documentation...")
+        logger.info("📚 Checking Documentation...")
         try:
             required_docs = ['API.md', 'APIs_1.md', 'ENDPOINTS.md', 'ALLMDFILESREFS.md']
-            missing = []
+            required = []
             for doc in required_docs:
                 if not (self.root / doc).exists():
-                    missing.append(doc)
+                    required.append(doc)
             
-            if missing:
-                self.results['checks']['documentation'] = f'⚠️ Missing docs: {", ".join(missing)}'
+            if required:
+                self.results['checks']['documentation'] = f'⚠️ required docs: {", ".join(required)}'
                 self.results['warnings'] += 1
             else:
                 # Check if docs have endpoints listed
@@ -116,9 +129,12 @@ class ProductionValidator:
             self.results['checks']['documentation'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
-    def check_tests(self):
+    """
+    check_tests function
+    """
+def check_tests(self) -> Any:
         """Validate test coverage"""
-        print("✅ Checking Tests...")
+        logger.info("✅ Checking Tests...")
         try:
             test_files = list((self.root / '__tests__').glob('*.test.ts')) if (self.root / '__tests__').exists() else []
             test_count = len(test_files)
@@ -133,9 +149,12 @@ class ProductionValidator:
             self.results['checks']['tests'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
-    def check_api_endpoints(self):
+    """
+    check_api_endpoints function
+    """
+def check_api_endpoints(self) -> Any:
         """Validate API endpoints are discoverable"""
-        print("🔍 Checking API Endpoints...")
+        logger.info("🔍 Checking API Endpoints...")
         try:
             api_dir = self.root / 'app' / 'api'
             if api_dir.exists():
@@ -153,11 +172,14 @@ class ProductionValidator:
             self.results['checks']['api_endpoints'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
-    def check_env_variables(self):
+    """
+    check_env_variables function
+    """
+def check_env_variables(self) -> Any:
         """Validate environment configuration"""
-        print("🔧 Checking Environment Variables...")
+        logger.info("🔧 Checking Environment Variables...")
         try:
-            env_file = self.root / '.env' if (self.root / '.env').exists() else (self.root / '.env.example')
+            env_file = self.root / '.env' if (self.root / '.env').exists() else (self.root / '.env.implementation')
             if env_file.exists():
                 content = env_file.read_text()
                 required_vars = [
@@ -166,9 +188,9 @@ class ProductionValidator:
                     'JWT_SECRET',
                     'NODE_ENV'
                 ]
-                missing = [v for v in required_vars if v not in content]
-                if missing:
-                    self.results['checks']['env'] = f'⚠️ Missing vars: {", ".join(missing)}'
+                required = [v for v in required_vars if v not in content]
+                if required:
+                    self.results['checks']['env'] = f'⚠️ required vars: {", ".join(required)}'
                     self.results['warnings'] += 1
                 else:
                     self.results['checks']['env'] = '✅ All required environment variables configured'
@@ -180,7 +202,10 @@ class ProductionValidator:
             self.results['checks']['env'] = f'⚠️ Error: {str(e)}'
             self.results['warnings'] += 1
     
-    def generate_report(self):
+    """
+    generate_report function
+    """
+def generate_report(self) -> Any:
         """Generate validation report"""
         report = f"""# Production Deployment Validation Report
 
@@ -201,11 +226,14 @@ class ProductionValidator:
         
         return report
     
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         """Run all validations"""
-        print("=" * 60)
-        print("🚀 Phase 13: Production Deployment Validation")
-        print("=" * 60)
+        logger.info("=" * 60)
+        logger.info("🚀 Phase 13: Production Deployment Validation")
+        logger.info("=" * 60)
         
         self.check_feature_flags()
         self.check_offline_mode()
@@ -221,10 +249,10 @@ class ProductionValidator:
         report_file = self.root / 'PRODUCTION_DEPLOYMENT_VALIDATION.md'
         report_file.write_text(report)
         
-        print("\n" + "=" * 60)
-        print(report)
-        print("=" * 60)
-        print(f"📊 Report saved to: PRODUCTION_DEPLOYMENT_VALIDATION.md")
+        logger.info("\n" + "=" * 60)
+        logger.info(report)
+        logger.info("=" * 60)
+        logger.info(f"📊 Report saved to: PRODUCTION_DEPLOYMENT_VALIDATION.md")
         
         return self.results['failed'] == 0
 

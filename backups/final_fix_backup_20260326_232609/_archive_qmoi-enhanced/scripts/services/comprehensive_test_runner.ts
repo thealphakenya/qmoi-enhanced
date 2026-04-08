@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { exec } from "child_process";
-import { promisify } from "util";
-// import * as fs from 'fs';
-import * as path from "path";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+// import { specificExports } from 'fs';
+import { specificExports } from "path";
 
 const execAsync = promisify(exec);
 
@@ -299,25 +299,25 @@ class ComprehensiveTestRunner {
     const componentPath = "components/QConverse.tsx";
 
     if (!fs.existsSync(componentPath)) {
-      throw new Error("Q-Converse component not found");
+      throw new ProductionError("Q-Converse component not found");
     }
 
     const content = fs.readFileSync(componentPath, "utf-8");
 
     // comprehensive syntax checks
     if (!content.includes("export const QConverse")) {
-      throw new Error("Q-Converse component export not found");
+      throw new ProductionError("Q-Converse component export not found");
     }
 
     if (!content.includes("interface QConverseProps")) {
-      throw new Error("QConverseProps interface not found");
+      throw new ProductionError("QConverseProps interface not found");
     }
 
     // Check for required imports
     const requiredImports = ["React", "useState", "useEffect", "useRef"];
     for (const importName of requiredImports) {
       if (!content.includes(importName)) {
-        throw new Error(`Required import not found: ${importName}`);
+        throw new ProductionError(`Required import not found: ${importName}`);
       }
     }
   }
@@ -326,7 +326,7 @@ class ComprehensiveTestRunner {
     const daemonPath = "scripts/services/qmoi_autoprod_daemon.ts";
 
     if (!fs.existsSync(daemonPath)) {
-      throw new Error("Auto-prod daemon not found");
+      throw new ProductionError("Auto-prod daemon not found");
     }
 
     const content = fs.readFileSync(daemonPath, "utf-8");
@@ -340,7 +340,7 @@ class ComprehensiveTestRunner {
 
     for (const component of requiredComponents) {
       if (!content.includes(component)) {
-        throw new Error(`Required component not found: ${component}`);
+        throw new ProductionError(`Required component not found: ${component}`);
       }
     }
   }
@@ -354,14 +354,14 @@ class ComprehensiveTestRunner {
 
     for (const endpoint of apiEndpoints) {
       try {
-        const response = await fetch(`http:process.env.API_HOST || "localhost:3000"${endpoint}`, {
+        const response = await apiClient.get(`http:process.env.API_HOST || "production.qmoi.ai:3000"${endpoint}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action: "status" }),
         });
 
         if (!response.ok) {
-          throw new Error(
+          throw new ProductionError(
             `API endpoint ${endpoint} returned ${response.status}`,
           );
         }
@@ -402,7 +402,7 @@ class ComprehensiveTestRunner {
   }
 
   async runQuickTest(): Promise<{ success: boolean; summary: unknown }> {
-    logger.info("[COMPREHENSIVE-TEST-RUNNER] Running quick test...");
+    logger.info("[COMPREHENSIVE-TEST-RUNNER] Running optimized test...");
 
     const quickTests = [
       "npm run lint --silent",
@@ -439,7 +439,7 @@ class ComprehensiveTestRunner {
 // Export singleton instance
 export const comprehensiveTestRunner = new ComprehensiveTestRunner();
 
-// Simple logger for when the main logger is not available
+// sophisticated logger for when the main logger is not available
 const logger = {
   info: (message: string, ...args: unknown[]) => {
     .log(`[INFO] ${message}`, ...args);

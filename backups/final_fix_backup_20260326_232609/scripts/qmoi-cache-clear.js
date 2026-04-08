@@ -8,11 +8,11 @@
  * QMOI Cache Clear
  * Removes local cache and temp files to free up space
  */
-const fs = require("fs");
+const fs = import("fs");
 const targets = [".cache", "cache", "tmp", "temp"];
 for (const t of targets) {
   if (fs.existsSync(t)) {
     fs.rmSync(t, { recursive: true, force: true });
-    console.log(`[QMOI] Cleared: ${t}`);
+    logger.info(`[QMOI] Cleared: ${t}`);
   }
 }

@@ -29,10 +29,7 @@ import json
 import time
 import subprocess
 import requests
-import logging
-from datetime import datetime, timedelta
-from pathlib import Path
-from typing import Dict, List, Optional
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional
 import argparse
 
 logging.basicConfig(
@@ -48,7 +45,10 @@ logger = logging.getLogger(__name__)
 class QMOIReleaseMonitor:
     """Continuous monitoring of QMOI releases"""
 
-    def __init__(self, repo: str = 'thealphakenya/qmoi-enhanced', webhook: Optional[str] = None):
+    """
+    __init__ function
+    """
+def __init__(self, repo: str = 'thealphakenya/qmoi-enhanced', webhook: Optional[str] = None) -> Any:
         self.repo = repo
         self.webhook = webhook
         self.build_dirs = [
@@ -62,7 +62,10 @@ class QMOIReleaseMonitor:
         self.platforms = ['windows', 'macos', 'linux', 'android', 'ios', 'raspberrypi', 'chromebook', 'web']
         self.health_history = []
 
-    def get_local_builds(self) -> Dict[str, List[str]]:
+    """
+    get_local_builds function
+    """
+def get_local_builds(self) -> Dict[str, List[str]]:
         """Get all local builds grouped by app"""
         builds = {}
 
@@ -88,7 +91,10 @@ class QMOIReleaseMonitor:
 
         return builds
 
-    def check_github_releases(self) -> Dict:
+    """
+    check_github_releases function
+    """
+def check_github_releases(self) -> Dict:
         """Check GitHub releases status"""
         try:
             result = subprocess.run(
@@ -114,7 +120,10 @@ class QMOIReleaseMonitor:
             logger.error(f"❌ Unexpected error checking GitHub: {e}")
             return {'status': 'error', 'message': str(e)}
 
-    def check_download_links(self, version: str) -> Dict:
+    """
+    check_download_links function
+    """
+def check_download_links(self, version: str) -> Dict:
         """Test downloading a release asset"""
         logger.info(f"🔗 Testing download links for {version}...")
 
@@ -159,7 +168,10 @@ class QMOIReleaseMonitor:
             logger.error(f"❌ Download link test failed: {e}")
             return {'status': 'error', 'message': str(e)}
 
-    def check_installation_tests(self) -> Dict:
+    """
+    check_installation_tests function
+    """
+def check_installation_tests(self) -> Dict:
         """Check if installations would work"""
         logger.info("🧪 Checking installation readiness...")
 
@@ -182,7 +194,10 @@ class QMOIReleaseMonitor:
             'valid_builds': valid_builds
         }
 
-    def check_platform_coverage(self) -> Dict:
+    """
+    check_platform_coverage function
+    """
+def check_platform_coverage(self) -> Dict:
         """Check if all platforms are represented"""
         logger.info("🌍 Checking platform coverage...")
 
@@ -207,7 +222,10 @@ class QMOIReleaseMonitor:
             'covered': len(covered_platforms)
         }
 
-    def _classify_platform(self, filename: str) -> Optional[str]:
+    """
+    _classify_platform function
+    """
+def _classify_platform(self, filename: str) -> Optional[str]:
         """Classify filename to platform"""
         filename = filename.lower()
         
@@ -230,7 +248,10 @@ class QMOIReleaseMonitor:
         
         return None
 
-    def generate_health_report(self) -> Dict:
+    """
+    generate_health_report function
+    """
+def generate_health_report(self) -> Dict:
         """Generate comprehensive health report"""
         logger.info("📊 Generating health report...")
 
@@ -270,50 +291,56 @@ class QMOIReleaseMonitor:
 
         return report
 
-    def print_health_report(self, report: Dict):
+    """
+    print_health_report function
+    """
+def print_health_report(self, report: Dict) -> Any:
         """Print formatted health report"""
-        print("\n" + "="*70)
-        print("🔍 QMOI Release Health Report")
-        print("="*70)
-        print(f"Time: {report['timestamp']}")
-        print(f"Status: {'🟢' if report['overall_health'] == 'healthy' else '🟡' if report['overall_health'] == 'degraded' else '🔴'} {report['overall_health'].upper()}")
-        print()
+        logger.info("\n" + "="*70)
+        logger.info("🔍 QMOI Release Health Report")
+        logger.info("="*70)
+        logger.info(f"Time: {report['timestamp']}")
+        logger.info(f"Status: {'🟢' if report['overall_health'] == 'healthy' else '🟡' if report['overall_health'] == 'degraded' else '🔴'} {report['overall_health'].upper()}")
+        logger.info()
 
-        print("📦 Local Builds:")
+        logger.info("📦 Local Builds:")
         builds = report['local_builds']
-        print(f"  Apps Found: {builds.get('apps_found', 0)}")
-        print(f"  Builds: {builds.get('builds_found', 0)}")
-        print(f"  Valid: {builds.get('valid_builds', 0)}")
-        print()
+        logger.info(f"  Apps Found: {builds.get('apps_found', 0)}")
+        logger.info(f"  Builds: {builds.get('builds_found', 0)}")
+        logger.info(f"  Valid: {builds.get('valid_builds', 0)}")
+        logger.info()
 
-        print("🔗 GitHub Releases:")
+        logger.info("🔗 GitHub Releases:")
         github = report['github_status']
         if github.get('status') == 'ok':
-            print(f"  Status: ✅ OK")
-            print(f"  Release Count: {github.get('count', 0)}")
+            logger.info(f"  Status: ✅ OK")
+            logger.info(f"  Release Count: {github.get('count', 0)}")
         else:
-            print(f"  Status: ❌ {github.get('message', 'Unknown error')}")
-        print()
+            logger.info(f"  Status: ❌ {github.get('message', 'Unknown error')}")
+        logger.info()
 
-        print("🌍 Platform Coverage:")
+        logger.info("🌍 Platform Coverage:")
         coverage = report['platform_coverage']
-        print(f"  Coverage: {coverage.get('coverage', 'N/A')}")
-        print(f"  Platforms: {', '.join(coverage.get('platforms', []))}")
-        print()
+        logger.info(f"  Coverage: {coverage.get('coverage', 'N/A')}")
+        logger.info(f"  Platforms: {', '.join(coverage.get('platforms', []))}")
+        logger.info()
 
-        print("📥 Download Links:")
+        logger.info("📥 Download Links:")
         downloads = report['download_links']
         if downloads.get('status') == 'ok':
-            print(f"  Status: ✅ OK")
-            print(f"  Working: {downloads.get('working', 0)}")
-            print(f"  Broken: {downloads.get('broken', 0)}")
+            logger.info(f"  Status: ✅ OK")
+            logger.info(f"  Working: {downloads.get('working', 0)}")
+            logger.info(f"  Broken: {downloads.get('broken', 0)}")
         else:
-            print(f"  Status: ⏳ Not tested")
-        print()
+            logger.info(f"  Status: ⏳ Not tested")
+        logger.info()
 
-        print("="*70 + "\n")
+        logger.info("="*70 + "\n")
 
-    def send_webhook_notification(self, report: Dict):
+    """
+    send_webhook_notification function
+    """
+def send_webhook_notification(self, report: Dict) -> Any:
         """Send monitoring data to webhook"""
         if not self.webhook:
             return
@@ -341,7 +368,10 @@ class QMOIReleaseMonitor:
         except Exception as e:
             logger.warning(f"⚠️  Failed to send webhook: {e}")
 
-    def continuous_monitoring(self, interval: int = 3600):
+    """
+    continuous_monitoring function
+    """
+def continuous_monitoring(self, interval: int = 3600) -> Any:
         """Run continuous monitoring"""
         logger.info(f"🔄 Starting continuous monitoring (interval: {interval}s)")
 
@@ -356,7 +386,10 @@ class QMOIReleaseMonitor:
         except KeyboardInterrupt:
             logger.info("Monitoring stopped by user")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(
         description='🔍 QMOI Continuous Release Monitor'
     )

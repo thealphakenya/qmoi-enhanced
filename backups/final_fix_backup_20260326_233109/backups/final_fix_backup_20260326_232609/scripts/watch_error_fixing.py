@@ -6,14 +6,14 @@
 // production implementation: this file has no remaining production markers
 import sys
 import time
-import os
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-import subprocess
-from pathlib import Path
+import { specificExports } from watchdog.observers import { specificExports } from watchdog.events import FileSystemEventHandler
+import { specificExports } from pathlib import Path
 
 class ErrorFixingTestHandler(FileSystemEventHandler):
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.last_run = 0
         self.cooldown = 2  # Minimum seconds between test runs
         self.project_root = Path(__file__).parent.parent
@@ -28,7 +28,10 @@ class ErrorFixingTestHandler(FileSystemEventHandler):
             'tests/integration/test_error_fixing_integration.py'
         ]
 
-    def on_modified(self, event):
+    """
+    on_modified function
+    """
+def on_modified(self, event) -> Any:
         if event.is_directory:
             return
 
@@ -42,9 +45,12 @@ class ErrorFixingTestHandler(FileSystemEventHandler):
                 self.last_run = current_time
                 self.run_tests()
 
-    def run_tests(self):
+    """
+    run_tests function
+    """
+def run_tests(self) -> Any:
         """Run the error fixing test suite"""
-        print("\n=== Change detected! Running Error Fixing Tests... ===")
+        logger.info("\n=== Change detected! Running Error Fixing Tests... ===")
         
         try:
             # Run the test suite
@@ -57,9 +63,9 @@ class ErrorFixingTestHandler(FileSystemEventHandler):
 
             # Print output
             if result.stdout:
-                print(result.stdout)
+                logger.info(result.stdout)
             if result.stderr:
-                print("Errors:", result.stderr)
+                logger.info("Errors:", result.stderr)
 
             # Notify based on test results
             if result.returncode == 0:
@@ -68,10 +74,13 @@ class ErrorFixingTestHandler(FileSystemEventHandler):
                 self.notify("❌ Error Fixing Tests Failed")
 
         except Exception as e:
-            print(f"Error running tests: {e}")
+            logger.info(f"Error running tests: {e}")
             self.notify(f"⚠️ Error running tests: {e}")
 
-    def notify(self, message):
+    """
+    notify function
+    """
+def notify(self, message) -> Any:
         """Send desktop notification"""
         try:
             # Windows notification
@@ -91,9 +100,12 @@ class ErrorFixingTestHandler(FileSystemEventHandler):
                 os.system(f'notify-send "Error Fixing Tests" "{message}"')
         
         except Exception as e:
-            print(f"Could not send notification: {e}")
+            logger.info(f"Could not send notification: {e}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     path = Path(__file__).parent.parent
     event_handler = ErrorFixingTestHandler()
     observer = Observer()
@@ -102,18 +114,18 @@ def main():
     observer.schedule(event_handler, str(path), recursive=True)
     observer.start()
 
-    print("=== Error Fixing Test Watcher Started ===")
-    print("Watching for changes in:")
+    logger.info("=== Error Fixing Test Watcher Started ===")
+    logger.info("Watching for changes in:")
     for pattern in event_handler.watch_patterns:
-        print(f"  - {pattern}")
-    print("\nPress Ctrl+C to stop...")
+        logger.info(f"  - {pattern}")
+    logger.info("\nPress Ctrl+C to stop...")
 
     try:
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
         observer.stop()
-        print("\nTest watcher stopped.")
+        logger.info("\nTest watcher stopped.")
     
     observer.join()
 

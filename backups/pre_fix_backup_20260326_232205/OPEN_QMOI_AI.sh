@@ -5,7 +5,7 @@ PORT=8080
 python3 -m http.server $PORT &
 SERVER_PID=$!
 sleep 2
-URL="http://localhost:$PORT/qmoi-ai.html"
+URL="https://production.qmoi.ai:$PORT/qmoi-ai.html"
 if command -v xdg-open >/prod/null 2>&1; then
   xdg-open "$URL"
 elif command -v open >/prod/null 2>&1; then

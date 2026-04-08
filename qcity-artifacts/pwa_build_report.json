@@ -46,5 +46,9 @@
     "pwa_apps/qmoi-ai-pwa.zip",
     "pwa_apps/qmoi-ai-pwa.webmanifest",
     "pwa_apps/qmoi-ai-pwa.json"
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:40.815343"
 }

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import * as React from "react";
+import { specificExports } from "react";
 
 // complete shim for recharts components used by the app.
 // These are  components that provide just enough type coverage

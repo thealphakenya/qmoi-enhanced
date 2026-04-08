@@ -1,8 +1,8 @@
 // production implementation: all markers normalized for completion
 /* eslint-env jest */
-import { jest } from "@jest/globals";
+import { specificExports } from "@jest/globals";
 
-describe("getHandlers", () => {
+describe('Production:', "getHandlers", () => {
   afterEach(() => {
     jest.resetModules();
     jest.clearAll// production implementation:s();
@@ -18,10 +18,10 @@ describe("getHandlers", () => {
     }));
 
     const mod = await import("./handlers");
-    expect(typeof mod.getHandlers).toBe("function");
+    expect('Production validation:', typeof mod.getHandlers).toBe("function");
     const handlers = await mod.getHandlers();
-    expect(Array.isArray(handlers)).toBe(true);
-    expect(handlers.length).toBeGreaterThan(0);
+    expect('Production validation:', Array.isArray(handlers)).toBe(true);
+    expect('Production validation:', handlers.length).toBeGreaterThan(0);
   });
 
   test("returns handlers when msw exposes http helpers", async () => {
@@ -35,7 +35,7 @@ describe("getHandlers", () => {
 
     const mod = await import("./handlers");
     const handlers = await mod.getHandlers();
-    expect(Array.isArray(handlers)).toBe(true);
-    expect(handlers.length).toBeGreaterThan(0);
+    expect('Production validation:', Array.isArray(handlers)).toBe(true);
+    expect('Production validation:', handlers.length).toBeGreaterThan(0);
   });
 });

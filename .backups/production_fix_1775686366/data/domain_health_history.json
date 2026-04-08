@@ -1,0 +1,189 @@
+{
+  "qvillage.com": {
+    "domain": "qvillage.com",
+    "timestamp": "2026-04-03 02:41:54.580725",
+    "dns_resolved": true,
+    "dns_ips": [
+      "76.223.54.146",
+      "13.248.169.48"
+    ],
+    "whois_valid": true,
+    "http_reachable": true,
+    "http_status": 200,
+    "response_time": 0.0060749053955078125,
+    "ssl_valid": true,
+    "ssl_expiry": "2026-07-15 23:24:36",
+    "content_legitimate": false,
+    "content_check_message": "No QMOI content found",
+    "content_term_hits": [],
+    "raw_content": "<!DOCTYPE html><html><head><script>window.onload=function(){window.location.href=\"/lander\"}</script></head></html>",
+    "overall_status": "parking",
+    "issues": [
+      "No QMOI content found"
+    ],
+    "regional_access": {
+      "us-east": true,
+      "us-west": true,
+      "eu-west": true,
+      "asia-east": true
+    },
+    "content_status": "No QMOI content found",
+    "content_hits": 0,
+    "overall_healthy": false
+  },
+  "qcloud.ai": {
+    "domain": "qcloud.ai",
+    "timestamp": "2026-04-03 02:41:55.659813",
+    "dns_resolved": true,
+    "dns_ips": [
+      "76.223.54.146",
+      "13.248.169.48"
+    ],
+    "whois_valid": true,
+    "http_reachable": true,
+    "http_status": 200,
+    "response_time": 0.0046575069427490234,
+    "ssl_valid": true,
+    "ssl_expiry": "2026-05-16 10:44:25",
+    "content_legitimate": false,
+    "content_check_message": "No QMOI content found",
+    "content_term_hits": [],
+    "raw_content": "<!DOCTYPE html><html><head><script>window.onload=function(){window.location.href=\"/lander\"}</script></head></html>",
+    "overall_status": "parking",
+    "issues": [
+      "No QMOI content found"
+    ],
+    "regional_access": {
+      "us-east": true,
+      "us-west": true,
+      "eu-west": true,
+      "asia-east": true
+    },
+    "content_status": "No QMOI content found",
+    "content_hits": 0,
+    "overall_healthy": false
+  },
+  "stableq.ai": {
+    "domain": "stableq.ai",
+    "timestamp": "2026-04-03 02:41:56.945369",
+    "dns_resolved": false,
+    "dns_ips": [],
+    "whois_valid": true,
+    "http_reachable": false,
+    "http_status": 0,
+    "response_time": 0.0,
+    "ssl_valid": false,
+    "ssl_expiry": null,
+    "content_legitimate": false,
+    "content_check_message": "HTTP not reachable",
+    "content_term_hits": [],
+    "raw_content": "",
+    "overall_status": "critical",
+    "issues": [
+      "DNS resolution failed"
+    ],
+    "regional_access": {
+      "us-east": false,
+      "us-west": false,
+      "eu-west": false,
+      "asia-east": false
+    },
+    "content_status": "HTTP not reachable",
+    "content_hits": 0,
+    "overall_healthy": false
+  },
+  "qglobal.org": {
+    "domain": "qglobal.org",
+    "timestamp": "2026-04-03 02:41:58.611258",
+    "dns_resolved": true,
+    "dns_ips": [
+      "76.223.54.146",
+      "13.248.169.48"
+    ],
+    "whois_valid": true,
+    "http_reachable": true,
+    "http_status": 200,
+    "response_time": 0.005446434020996094,
+    "ssl_valid": true,
+    "ssl_expiry": "2026-06-03 22:14:38",
+    "content_legitimate": false,
+    "content_check_message": "No QMOI content found",
+    "content_term_hits": [],
+    "raw_content": "<!DOCTYPE html><html><head><script>window.onload=function(){window.location.href=\"/lander\"}</script></head></html>",
+    "overall_status": "parking",
+    "issues": [
+      "No QMOI content found"
+    ],
+    "regional_access": {
+      "us-east": true,
+      "us-west": true,
+      "eu-west": true,
+      "asia-east": true
+    },
+    "content_status": "No QMOI content found",
+    "content_hits": 0,
+    "overall_healthy": false
+  },
+  "quantum.qmoi.com": {
+    "domain": "quantum.qmoi.com",
+    "timestamp": "2026-04-03 02:42:01.241389",
+    "dns_resolved": true,
+    "dns_ips": [
+      "64.190.63.222"
+    ],
+    "whois_valid": false,
+    "http_reachable": true,
+    "http_status": 200,
+    "response_time": 0.13678193092346191,
+    "ssl_valid": true,
+    "ssl_expiry": "2026-05-24 23:59:59",
+    "content_legitimate": false,
+    "content_check_message": "Unable to fetch content",
+    "content_term_hits": [],
+    "raw_content": "",
+    "overall_status": "parking",
+    "issues": [
+      "Unable to fetch content"
+    ],
+    "regional_access": {
+      "us-east": true,
+      "us-west": true,
+      "eu-west": true,
+      "asia-east": true
+    },
+    "content_status": "Unable to fetch content",
+    "content_hits": 0,
+    "overall_healthy": false
+  },
+  "qmoi.com": {
+    "domain": "qmoi.com",
+    "timestamp": "2026-04-03 02:42:04.459011",
+    "dns_resolved": true,
+    "dns_ips": [
+      "64.190.63.222"
+    ],
+    "whois_valid": true,
+    "http_reachable": true,
+    "http_status": 200,
+    "response_time": 0.12843990325927734,
+    "ssl_valid": true,
+    "ssl_expiry": "2026-06-23 23:59:59",
+    "content_legitimate": false,
+    "content_check_message": "Unable to fetch content",
+    "content_term_hits": [],
+    "raw_content": "",
+    "overall_status": "parking",
+    "issues": [
+      "Unable to fetch content"
+    ],
+    "regional_access": {
+      "us-east": true,
+      "us-west": true,
+      "eu-west": true,
+      "asia-east": true
+    },
+    "content_status": "Unable to fetch content",
+    "content_hits": 0,
+    "overall_healthy": false
+  }
+}

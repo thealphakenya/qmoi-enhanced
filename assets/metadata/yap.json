@@ -32,7 +32,7 @@
     "min_ram": "4GB",
     "min_storage": "2GB",
     "network": "High-speed internet connection",
-    "hardware": "Microphone and camera recommended"
+    "hardware": "Microphone and camera required"
   },
   "dependencies": [
     "WebRTC compatible browser",
@@ -95,7 +95,7 @@
   },
   "distribution": {
     "auto_update": true,
-    "update_channel": "stable",
+    "update_channel": "latest",
     "download_mirrors": [
       "us-east",
       "us-west",
@@ -121,5 +121,9 @@
   "generated_at": "2026-03-31T23:19:21.396971+00:00",
   "generator_version": "2.0.0",
   "schema_version": "1.0",
-  "checksum": "34081d8cac1c1e4f2b752e330be858339aa8f202d44e0b0254e82199a04c0409"
+  "checksum": "34081d8cac1c1e4f2b752e330be858339aa8f202d44e0b0254e82199a04c0409",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:10.436553"
 }

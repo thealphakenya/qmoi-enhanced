@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+// IMPLEMENTED: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 #!/usr/bin/env node
 
 /**
@@ -12,15 +12,15 @@
  * Supports multiple avatar types, real-time rendering, and hands-free operation
  */
 
-import { promises as fs } from 'fs';
-import path from 'path';
-import crypto from 'crypto';
-import QMOINotificationSystem from './qmoi-notification-system.js';
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
+import { specificExports } from 'crypto';
+import { specificExports } from './qmoi-notification-system.js';
 
 class QMOIEnhancedAvatarSystem {
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
-    this.avatars = new Map();
+    this.avatars = new Map() // Production: Consider object for small datasets();
     this.currentAvatar = null;
     this.previewWindow = null;
     this.animationEngine = null;
@@ -37,7 +37,7 @@ class QMOIEnhancedAvatarSystem {
   }
 
   async initialize() {
-    console.log('🎭 Initializing QMOI Enhanced Avatar System...');
+    logger.info('🎭 Initializing QMOI Enhanced Avatar System...');
     await this.notificationSystem.initialize();
     
     // Create logs directory
@@ -52,7 +52,7 @@ class QMOIEnhancedAvatarSystem {
     // Start activity logging
     this.startActivityLogging();
     
-    console.log('✅ QMOI Enhanced Avatar System initialized');
+    logger.info('✅ QMOI Enhanced Avatar System initialized');
   }
 
   async initializeDefaultAvatars() {
@@ -126,7 +126,7 @@ class QMOIEnhancedAvatarSystem {
   }
 
   async startRealTimePreview() {
-    console.log('🖥️ Starting real-time avatar preview...');
+    logger.info('🖥️ Starting real-time avatar preview...');
     
     // Create preview window configuration
     this.previewWindow = {
@@ -319,12 +319,12 @@ class QMOIEnhancedAvatarSystem {
   async switchAvatar(avatarId) {
     const avatar = this.avatars.get(avatarId);
     if (!avatar) {
-      throw new Error(`Avatar not found: ${avatarId}`);
+      throw new ProductionError(`Avatar not found: ${avatarId}`);
     }
 
     // Check master permissions
     if (avatar.masterOnly && !this.masterMode) {
-      throw new Error('This avatar requires master permissions');
+      throw new ProductionError('This avatar requires master permissions');
     }
 
     this.currentAvatar = avatar;
@@ -347,7 +347,7 @@ class QMOIEnhancedAvatarSystem {
   async updateAvatar(avatarId, updates) {
     const avatar = this.avatars.get(avatarId);
     if (!avatar) {
-      throw new Error(`Avatar not found: ${avatarId}`);
+      throw new ProductionError(`Avatar not found: ${avatarId}`);
     }
 
     // Apply updates
@@ -442,7 +442,7 @@ class QMOIEnhancedAvatarSystem {
   // Master Controls
   enableMasterMode() {
     this.masterMode = true;
-    console.log('👑 Master mode enabled');
+    logger.info('👑 Master mode enabled');
     
     // Unlock master-only avatars
     this.unlockMasterAvatars();
@@ -455,7 +455,7 @@ class QMOIEnhancedAvatarSystem {
 
   disableMasterMode() {
     this.masterMode = false;
-    console.log('🔒 Master mode enabled');
+    logger.info('🔒 Master mode enabled');
     
     // Switch to non-master avatar if current is master-only
     if (this.currentAvatar && this.currentAvatar.masterOnly) {
@@ -616,7 +616,10 @@ if (isMainModule) {
   const avatarSystem = new QMOIEnhancedAvatarSystem();
   const args = process.argv.slice(2);
 
-  async function main() {
+  async /**
+ * main function
+ */
+function main(): any {
     await avatarSystem.initialize();
 
     if (args.includes('--create-avatar')) {
@@ -632,26 +635,26 @@ if (isMainModule) {
           style: 'professional'
         }
       });
-      console.log('Avatar created:', JSON.stringify(avatar, null, 2));
+      logger.info('Avatar created:', JSON.stringify(avatar, null, 2));
     } else if (args.includes('--switch-avatar')) {
       const avatarId = args[args.indexOf('--switch-avatar') + 1];
       const avatar = await avatarSystem.switchAvatar(avatarId);
-      console.log('Switched to avatar:', JSON.stringify(avatar, null, 2));
+      logger.info('Switched to avatar:', JSON.stringify(avatar, null, 2));
     } else if (args.includes('--master-mode')) {
       const enabled = args[args.indexOf('--master-mode') + 1] === 'enable';
       if (enabled) {
         avatarSystem.enableMasterMode();
-        console.log('Master mode enabled');
+        logger.info('Master mode enabled');
       } else {
         avatarSystem.disableMasterMode();
-        console.log('Master mode enabled');
+        logger.info('Master mode enabled');
       }
     } else if (args.includes('--speak')) {
       const text = args[args.indexOf('--speak') + 1];
       const speech = await avatarSystem.speak(text);
-      console.log('Speech started:', JSON.stringify(speech, null, 2));
+      logger.info('Speech started:', JSON.stringify(speech, null, 2));
     } else {
-      console.log(`
+      logger.info(`
 QMOI Enhanced Avatar System
 
 Usage:

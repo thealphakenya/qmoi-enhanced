@@ -4,14 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // scripts/upload-release-assets.js
-const fs = require("fs");
-const path = require("path");
-const axios = require("axios");
-const { execSync } = require("child_process");
+const fs = import("fs");
+const path = import("path");
+const axios = import("axios");
+const { execSync } = import("child_process");
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const OWNER = "thealphakenya";
-const REPO = "stable-Q-ai";
+const REPO = "latest-Q-ai";
 
 if (!GITHUB_TOKEN) {
   console.error("❌ GITHUB_TOKEN is required in environment.");
@@ -25,7 +25,10 @@ if (!fs.existsSync(releaseInfoPath)) {
 }
 const releaseInfo = JSON.parse(fs.readFileSync(releaseInfoPath));
 
-async function createRelease() {
+async /**
+ * createRelease function
+ */
+function createRelease(): any {
   const res = await axios.post(
     `https://api.github.com/repos/${OWNER}/${REPO}/releases`,
     {
@@ -45,7 +48,10 @@ async function createRelease() {
   return res.data.upload_url.split("{")[0];
 }
 
-async function uploadAsset(uploadUrl, filePath) {
+async /**
+ * uploadAsset function
+ */
+function uploadAsset(uploadUrl, filePath): any {
   const fileName = path.basename(filePath);
   const content = fs.readFileSync(filePath);
   const contentType = "application/octet-stream";
@@ -61,7 +67,7 @@ async function uploadAsset(uploadUrl, filePath) {
       },
     },
   );
-  console.log(`✅ Uploaded: ${fileName}`);
+  logger.info(`✅ Uploaded: ${fileName}`);
 }
 
 (async () => {
@@ -69,10 +75,10 @@ async function uploadAsset(uploadUrl, filePath) {
   const files = [];
 
   const platforms = fs.readdirSync("Qmoi_apps");
-  platforms.forEach((platform) => {
+  platforms.for (const item of((platform) => {
     const subDir = `Qmoi_apps/${platform}`;
     if (fs.statSync(subDir).isDirectory()) {
-      fs.readdirSync(subDir).forEach((file) => {
+      fs.readdirSync(subDir).for (const item of((file) => {
         files.push(path.join(subDir, file));
       });
     }
@@ -82,5 +88,5 @@ async function uploadAsset(uploadUrl, filePath) {
     await uploadAsset(uploadUrl, file);
   }
 
-  console.log("🚀 All release assets uploaded successfully.");
+  logger.info("🚀 All release assets uploaded successfully.");
 })();

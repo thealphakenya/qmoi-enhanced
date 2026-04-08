@@ -7,8 +7,7 @@
 import random
 import os
 import json
-import shutil
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 # === Core Personality (fixed, but can evolve) ===
 PERSONALITY_PROFILE = {
@@ -52,11 +51,17 @@ MEMORY_FILE = os.path.join(os.path.dirname(__file__), 'qmoi_memory.json')
 BACKUP_DIR = os.path.join(os.path.dirname(__file__), 'memory_backups')
 
 # Ensure backup directory exists
-def ensure_backup_dir():
+"""
+    ensure_backup_dir function
+    """
+def ensure_backup_dir() -> Any:
     if not os.path.exists(BACKUP_DIR):
         os.makedirs(BACKUP_DIR)
 
-def backup_memory():
+"""
+    backup_memory function
+    """
+def backup_memory() -> Any:
     """Backup the current memory to a timestamped file."""
     ensure_backup_dir()
     if os.path.exists(MEMORY_FILE):
@@ -66,24 +71,36 @@ def backup_memory():
         return backup_file
     return None
 
-def restore_memory(backup_file):
+"""
+    restore_memory function
+    """
+def restore_memory(backup_file) -> Any:
     """Restore memory from a backup file."""
     if os.path.exists(backup_file):
         shutil.copy2(backup_file, MEMORY_FILE)
         return True
     return False
 
-def load_memory():
+"""
+    load_memory function
+    """
+def load_memory() -> Any:
     if os.path.exists(MEMORY_FILE):
         with open(MEMORY_FILE, 'r') as f:
             return json.load(f)
     return {"history": [], "preferences": {}, "emotions": [], "personality": PERSONALITY_PROFILE.copy(), "master_feedback": []}
 
-def save_memory(memory):
+"""
+    save_memory function
+    """
+def save_memory(memory) -> Any:
     with open(MEMORY_FILE, 'w') as f:
         json.dump(memory, f)
 
-def update_memory(user_input, emotion):
+"""
+    update_memory function
+    """
+def update_memory(user_input, emotion) -> Any:
     memory = load_memory()
     memory['history'].append({"input": user_input, "emotion": emotion})
     memory['emotions'].append(emotion)
@@ -94,12 +111,18 @@ def update_memory(user_input, emotion):
     save_memory(memory)
     return memory
 
-def log_personality_change(change):
+"""
+    log_personality_change function
+    """
+def log_personality_change(change) -> Any:
     log_file = os.path.join(os.path.dirname(__file__), 'qmoi_personality_log.txt')
     with open(log_file, 'a') as f:
         f.write(f"[{datetime.now().isoformat()}] {change}\n")
 
-def evolve_personality_from_feedback(feedback, master_correction=None):
+"""
+    evolve_personality_from_feedback function
+    """
+def evolve_personality_from_feedback(feedback, master_correction=None) -> Any:
     """
     Evolve QMOI's personality traits based on master feedback or correction.
     Feedback can be 'praise', 'correction', or a custom string.
@@ -122,7 +145,10 @@ def evolve_personality_from_feedback(feedback, master_correction=None):
     save_memory(memory)
     return memory['personality']
 
-def detect_emotion(user_input):
+"""
+    detect_emotion function
+    """
+def detect_emotion(user_input) -> Any:
     """Detect emotion from user input (implementation, replace with real model if available)."""
     if "happy" in user_input.lower():
         return "joy"
@@ -135,11 +161,14 @@ def detect_emotion(user_input):
     else:
         return "neutral"
 
-def compose_personality_prompt(user_input, detected_emotion, memory):
+"""
+    compose_personality_prompt function
+    """
+def compose_personality_prompt(user_input, detected_emotion, memory) -> Any:
     mods = EMOTION_PERSONALITY_MODS.get(detected_emotion, EMOTION_PERSONALITY_MODS["neutral"])
     personality = memory.get('personality', PERSONALITY_PROFILE)
     personality_intro = (
-        f"You are stable-Q-ai, a {personality['archetype']} AI with a {mods['tone']} tone. "
+        f"You are latest-Q-ai, a {personality['archetype']} AI with a {mods['tone']} tone. "
         f"You speak in a {mods['style']} style and value {', '.join(personality['values'])}. "
         f"You often {random.choice(personality['quirks'] + mods['quirks'])}."
     )
@@ -151,11 +180,17 @@ def compose_personality_prompt(user_input, detected_emotion, memory):
     instruction = "Respond to the user below with warmth, emotional intelligence, and deep curiosity."
     return f"{personality_intro}\n{context}\n{instruction}\n\nUser: {user_input}\nAlpha-Q-ai:"
 
-def generate_response(prompt):
+"""
+    generate_response function
+    """
+def generate_response(prompt) -> Any:
     """implementation for language model response. Replace with real model call."""
     return f"[Generated response based on personality-enhanced prompt]\n\nPrompt was:\n{prompt}"
 
-def qmoi_personality_respond(user_input):
+"""
+    qmoi_personality_respond function
+    """
+def qmoi_personality_respond(user_input) -> Any:
     emotion = detect_emotion(user_input)
     memory = update_memory(user_input, emotion)
     personality_prompt = compose_personality_prompt(user_input, emotion, memory)

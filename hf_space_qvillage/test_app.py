@@ -16,8 +16,7 @@ import os
 # Add the app directory to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-# Import only the functions we need, avoiding gradio
-from core import (
+# import { specificExports } from core import (
     safe_arxiv_call,
     fetch_daily_papers,
     search_knowledge_base,
@@ -30,39 +29,60 @@ from core import (
 class TestRunner:
     """sophisticated test runner without pytest dependency."""
     
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.passed = 0
         self.failed = 0
         self.tests = []
     
-    def assert_true(self, condition, message):
+    """
+    assert_true function
+    """
+def assert_true(self, condition, message) -> Any:
         if condition:
             self.passed += 1
-            print(f"✓ {message}")
+            logger.info(f"✓ {message}")
         else:
             self.failed += 1
-            print(f"✗ {message}")
+            logger.info(f"✗ {message}")
     
-    def assert_in(self, substring, string, message):
+    """
+    assert_in function
+    """
+def assert_in(self, substring, string, message) -> Any:
         self.assert_true(substring in string, message)
     
-    def assert_equal(self, a, b, message):
+    """
+    assert_equal function
+    """
+def assert_equal(self, a, b, message) -> Any:
         self.assert_true(a == b, message)
     
-    def assert_not_equal(self, a, b, message):
+    """
+    assert_not_equal function
+    """
+def assert_not_equal(self, a, b, message) -> Any:
         self.assert_true(a != b, message)
     
-    def run_test(self, test_func):
+    """
+    run_test function
+    """
+def run_test(self, test_func) -> Any:
         """Run a test function."""
         try:
             result = asyncio.run(test_func())
             return result
         except Exception as e:
-            print(f"✗ Test failed with exception: {e}")
+            logger.info(f"✗ Test failed with exception: {e}")
             self.failed += 1
             return None
 
-async def test_safe_arxiv_call_success():
+async """
+    test_safe_arxiv_call_success function
+    """
+def test_safe_arxiv_call_success() -> Any:
     """Test successful arXiv API call."""
     # This will test the real API call
     result = await safe_arxiv_call("cat:cs.AI", max_results=5)
@@ -73,49 +93,67 @@ async def test_safe_arxiv_call_success():
         paper = result["papers"][0]
         assert "title" in paper
         assert "arxiv_id" in paper
-    print("✓ safe_arxiv_call success test passed")
+    logger.info("✓ safe_arxiv_call success test passed")
 
-async def test_fetch_daily_papers():
+async """
+    test_fetch_daily_papers function
+    """
+def test_fetch_daily_papers() -> Any:
     """Test fetching daily papers."""
     result = await fetch_daily_papers()
     
     assert isinstance(result, str)
     assert len(result) > 0
-    print("✓ fetch_daily_papers test passed")
+    logger.info("✓ fetch_daily_papers test passed")
 
-async def test_search_knowledge_base():
+async """
+    test_search_knowledge_base function
+    """
+def test_search_knowledge_base() -> Any:
     """Test knowledge base search."""
     result = await search_knowledge_base("transformer")
     
     assert isinstance(result, str)
     assert "Transformer" in result
-    print("✓ search_knowledge_base test passed")
+    logger.info("✓ search_knowledge_base test passed")
 
-async def test_search_empty_query():
+async """
+    test_search_empty_query function
+    """
+def test_search_empty_query() -> Any:
     """Test search with empty query."""
     result = await search_knowledge_base("")
     
     assert "Enter at least 2 characters" in result
-    print("✓ search_empty_query test passed")
+    logger.info("✓ search_empty_query test passed")
 
-async def test_load_trending_papers():
+async """
+    test_load_trending_papers function
+    """
+def test_load_trending_papers() -> Any:
     """Test loading trending papers."""
     result = await load_trending_papers()
     
     assert isinstance(result, str)
     assert "Trending" in result
-    print("✓ load_trending_papers test passed")
+    logger.info("✓ load_trending_papers test passed")
 
-async def test_get_community_stats():
+async """
+    test_get_community_stats function
+    """
+def test_get_community_stats() -> Any:
     """Test getting community stats."""
     result = await get_community_stats()
     
     assert isinstance(result, str)
     assert "Community Stats" in result
     assert "Active Users" in result
-    print("✓ get_community_stats test passed")
+    logger.info("✓ get_community_stats test passed")
 
-def test_generate_session_token():
+"""
+    test_generate_session_token function
+    """
+def test_generate_session_token() -> Any:
     """Test session token generation."""
     token1 = generate_session_token()
     token2 = generate_session_token()
@@ -123,12 +161,15 @@ def test_generate_session_token():
     assert token1.startswith("hf_")
     assert len(token1) == 19  # hf_ + 16 hex chars
     assert token1 != token2
-    print("✓ generate_session_token test passed")
+    logger.info("✓ generate_session_token test passed")
 
-async def run_all_tests():
+async """
+    run_all_tests function
+    """
+def run_all_tests() -> Any:
     """Run all tests."""
-    print("Running QVillage App Tests...")
-    print("=" * 50)
+    logger.info("Running QVillage App Tests...")
+    logger.info("=" * 50)
     
     try:
         await test_safe_arxiv_call_success()
@@ -139,12 +180,12 @@ async def run_all_tests():
         await test_get_community_stats()
         test_generate_session_token()
         
-        print("=" * 50)
-        print("All tests passed! ✓")
+        logger.info("=" * 50)
+        logger.info("All tests passed! ✓")
         return True
         
     except Exception as e:
-        print(f"Test suite failed: {e}")
+        logger.info(f"Test suite failed: {e}")
         return False
 
 if __name__ == "__main__":

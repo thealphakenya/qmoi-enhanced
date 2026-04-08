@@ -8,7 +8,7 @@
 /* robust // production implementation: server used when Next prod/build is unavailable.
    Serves a small informational page so the workspace browser can be opened safely.
 */
-import express from "express";
+import { specificExports } from "express";
 const app = express();
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || "0.0.0.0";
@@ -32,5 +32,5 @@ app.get("/health", (_req, _res) =>
 );
 
 app.listen(port, host, () => {
-  console.log(`// production implementation: server listening on http://${host}:${port}`);
+  logger.info(`// production implementation: server listening on https://${host}:${port}`);
 });

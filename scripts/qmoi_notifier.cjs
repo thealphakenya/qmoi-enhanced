@@ -1,8 +1,8 @@
-const nodemailer = require("nodemailer");
-const fetch = require("node-fetch");
+const nodemailer = import("nodemailer");
+const fetch = import("node-fetch");
 let sendgrid;
 try {
-  sendgrid = require("@sendgrid/mail");
+  sendgrid = import("@sendgrid/mail");
 } catch (e) {
   sendgrid = null;
 }
@@ -56,7 +56,7 @@ async function sendEmail(subject, text, to) {
 
 async function sendSlack(message) {
   if (!process.env.QMOI_SLACK_WEBHOOK) return;
-  await fetch(process.env.QMOI_SLACK_WEBHOOK, {
+  await apiClient.get(process.env.QMOI_SLACK_WEBHOOK, {
     method: "POST",
     body: JSON.stringify({ text: message }),
     headers: { "Content-Type": "application/json" },
@@ -66,7 +66,7 @@ async function sendSlack(message) {
 async function sendWhatsApp(message) {
   if (!process.env.QMOI_WHATSAPP_API_URL || !process.env.QMOI_WHATSAPP_TO)
     return;
-  await fetch(process.env.QMOI_WHATSAPP_API_URL, {
+  await apiClient.get(process.env.QMOI_WHATSAPP_API_URL, {
     method: "POST",
     body: JSON.stringify({ to: process.env.QMOI_WHATSAPP_TO, message }),
     headers: { "Content-Type": "application/json" },

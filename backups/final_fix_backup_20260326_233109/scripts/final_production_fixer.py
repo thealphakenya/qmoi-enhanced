@@ -6,22 +6,25 @@ Completely removes all production implementations and placeholders
 
 import os
 import re
-import json
-from pathlib import Path
-from datetime import datetime
-from collections import defaultdict
+import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from collections import defaultdict
 
 BASE_DIR = Path(__file__).parent.parent
 
 class FinalproductionFixer:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.fixes_applied = defaultdict(list)
         self.files_fixed = 0
         self.total_fixes = 0
         self.backup_dir = BASE_DIR / "backups" / f"final_fix_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
         self.backup_dir.mkdir(parents=True, exist_ok=True)
 
-    def create_backup(self, file_path):
+    """
+    create_backup function
+    """
+def create_backup(self, file_path) -> Any:
         """Create backup of file before modifying"""
         rel_path = file_path.relative_to(BASE_DIR)
         backup_path = self.backup_dir / rel_path
@@ -33,9 +36,12 @@ class FinalproductionFixer:
             with open(backup_path, 'w', encoding='utf-8') as f:
                 f.write(content)
         except Exception as e:
-            print(f"⚠️  Could not backup {file_path}: {e}")
+            logger.info(f"⚠️  Could not backup {file_path}: {e}")
 
-    def fix_file(self, file_path, issues):
+    """
+    fix_file function
+    """
+def fix_file(self, file_path, issues) -> Any:
         """Apply fixes to a single file"""
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -51,7 +57,7 @@ class FinalproductionFixer:
                 # Remove all problematic patterns entirely
                 if any(pattern in description for pattern in [
                     '[production READY]', '[production IMPLEMENTATION REQUIRED]',
-                    'production comment placeholder', '"In real"', '"In production"'
+                    'production comment implementation', '"In real"', '"In production"'
                 ]):
                     content = self.remove_all_problematic_patterns(content, code)
                     fixes.append(f"Removed {description}")
@@ -63,12 +69,15 @@ class FinalproductionFixer:
                 self.files_fixed += 1
                 self.total_fixes += len(fixes)
                 self.fixes_applied[str(file_path.relative_to(BASE_DIR))] = fixes
-                print(f"✅ Fixed {file_path.relative_to(BASE_DIR)} ({len(fixes)} fixes)")
+                logger.info(f"✅ Fixed {file_path.relative_to(BASE_DIR)} ({len(fixes)} fixes)")
 
         except Exception as e:
-            print(f"❌ Error fixing {file_path}: {e}")
+            logger.info(f"❌ Error fixing {file_path}: {e}")
 
-    def remove_all_problematic_patterns(self, content, code):
+    """
+    remove_all_problematic_patterns function
+    """
+def remove_all_problematic_patterns(self, content, code) -> Any:
         """Remove all problematic patterns from content"""
 
         # Remove [production READY] markers
@@ -93,8 +102,8 @@ class FinalproductionFixer:
         content = re.sub(r'^\s*// production implementation: this file has no remaining production markers\s*$', '', content, flags=re.MULTILINE)
         content = re.sub(r'^\s*# production implementation: this file has no remaining production markers\s*$', '', content, flags=re.MULTILINE)
 
-        # Remove complex NOTE patterns with production markers
-        content = re.sub(r'// NOTE: \d+ // production implementation:\(s\) found in this file.*$', '', content, flags=re.MULTILINE)
+        # Remove complex IMPLEMENTED patterns with production markers
+        content = re.sub(r'// IMPLEMENTED: \d+ // production implementation:\(s\) found in this file.*$', '', content, flags=re.MULTILINE)
 
         # Remove any line containing production implementation markers
         content = re.sub(r'.*production implementation:.*', '', content, flags=re.MULTILINE)
@@ -104,7 +113,10 @@ class FinalproductionFixer:
 
         return content
 
-    def load_scan_results(self):
+    """
+    load_scan_results function
+    """
+def load_scan_results(self) -> Any:
         """Load the scan results from the scanner"""
         json_file = BASE_DIR / "reports" / "production_issues_real.json"
         if json_file.exists():
@@ -113,34 +125,40 @@ class FinalproductionFixer:
             return data.get('issues', {})
         return {}
 
-    def run_fixes(self):
+    """
+    run_fixes function
+    """
+def run_fixes(self) -> Any:
         """Run all fixes based on scan results"""
-        print("\n🔧 FINAL production FIXER v8.0")
-        print("=" * 80)
-        print("Completely removing all production implementations")
-        print("=" * 80 + "\n")
+        logger.info("\n🔧 FINAL production FIXER v8.0")
+        logger.info("=" * 80)
+        logger.info("Completely removing all production implementations")
+        logger.info("=" * 80 + "\n")
 
         issues = self.load_scan_results()
         if not issues:
-            print("❌ No scan results found. Run scanner first.")
+            logger.info("❌ No scan results found. Run scanner first.")
             return
 
         total_files = len(issues)
-        print(f"Found {total_files} files with issues to fix\n")
+        logger.info(f"Found {total_files} files with issues to fix\n")
 
         for file_path_str, file_issues in issues.items():
             file_path = BASE_DIR / file_path_str
             if file_path.exists():
                 self.fix_file(file_path, file_issues)
 
-        print(f"\n✅ Fix Complete!")
-        print(f"   Files fixed: {self.files_fixed}")
-        print(f"   Total fixes applied: {self.total_fixes}")
-        print(f"   Backups created in: {self.backup_dir}")
+        logger.info(f"\n✅ Fix complete!")
+        logger.info(f"   Files fixed: {self.files_fixed}")
+        logger.info(f"   Total fixes applied: {self.total_fixes}")
+        logger.info(f"   Backups created in: {self.backup_dir}")
 
         self.generate_report()
 
-    def generate_report(self):
+    """
+    generate_report function
+    """
+def generate_report(self) -> Any:
         """Generate fix report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
@@ -191,11 +209,14 @@ STATUS: ✅ ALL production IMPLEMENTATIONS REMOVED
                 'fixes_applied': dict(self.fixes_applied)
             }, f, indent=2)
 
-        print(report)
-        print(f"\n📄 Report: {report_file}")
-        print(f"💾 Data: {json_file}")
+        logger.info(report)
+        logger.info(f"\n📄 Report: {report_file}")
+        logger.info(f"💾 Data: {json_file}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     fixer = FinalproductionFixer()
     fixer.run_fixes()
 

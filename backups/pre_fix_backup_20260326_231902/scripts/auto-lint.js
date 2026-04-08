@@ -6,10 +6,10 @@
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env node
 
-import { execSync, spawn } from "child_process";
-import { writeFileSync, readFileSync, existsSync, mkdirSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -34,7 +34,7 @@ class AutoLinter {
   log(message, type = "info") {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] [${type.toUpperCase()}] ${message}`;
-    console.log(logMessage);
+    logger.info(logMessage);
 
     // Also write to log file
     const logFile = join(this.logsDir, "auto-lint.log");
@@ -131,7 +131,7 @@ class AutoLinter {
       "no-undef",
       "no-console",
       "prefer-const",
-      "no-var",
+      "no-const",
       "eqeqeq",
       "no-trailing-spaces",
       "eol-last",
@@ -317,57 +317,57 @@ class AutoLinter {
   }
 
   displayReport(report) {
-    console.log("\n" + "=".repeat(60));
-    console.log("🔍 AUTO-LINT REPORT");
-    console.log("=".repeat(60));
+    logger.info("\n" + "=".repeat(60));
+    logger.info("🔍 AUTO-LINT REPORT");
+    logger.info("=".repeat(60));
 
-    console.log(`\n📊 Summary:`);
-    console.log(`   Total Issues: ${report.summary.total}`);
-    console.log(`   Fixable: ${report.summary.fixable}`);
-    console.log(`   Unfixable: ${report.summary.unfixable}`);
-    console.log(`   Critical: ${report.summary.critical}`);
-    console.log(`   Warnings: ${report.summary.warnings}`);
+    logger.info(`\n📊 Summary:`);
+    logger.info(`   Total Issues: ${report.summary.total}`);
+    logger.info(`   Fixable: ${report.summary.fixable}`);
+    logger.info(`   Unfixable: ${report.summary.unfixable}`);
+    logger.info(`   Critical: ${report.summary.critical}`);
+    logger.info(`   Warnings: ${report.summary.warnings}`);
 
     if (report.errors.critical.length > 0) {
-      console.log(`\n🚨 CRITICAL ERRORS (${report.errors.critical.length}):`);
-      report.errors.critical.forEach((error, index) => {
-        console.log(
+      logger.info(`\n🚨 CRITICAL ERRORS (${report.errors.critical.length}):`);
+      report.errors.critical.for (const item of((error, index) => {
+        logger.info(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column}`,
         );
-        console.log(`      ${error.rule}: ${error.message}`);
+        logger.info(`      ${error.rule}: ${error.message}`);
       });
     }
 
     if (report.errors.unfixable.length > 0) {
-      console.log(
+      logger.info(
         `\n⚠️  UNFIXABLE ERRORS (${report.errors.unfixable.length}):`,
       );
-      report.errors.unfixable.slice(0, 5).forEach((error, index) => {
-        console.log(
+      report.errors.unfixable.slice(0, 5).for (const item of((error, index) => {
+        logger.info(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column}`,
         );
-        console.log(`      ${error.rule}: ${error.message}`);
+        logger.info(`      ${error.rule}: ${error.message}`);
       });
 
       if (report.errors.unfixable.length > 5) {
-        console.log(`   ... and ${report.errors.unfixable.length - 5} more`);
+        logger.info(`   ... and ${report.errors.unfixable.length - 5} more`);
       }
     }
 
     if (report.recommendations.length > 0) {
-      console.log(`\n💡 RECOMMENDATIONS:`);
-      report.recommendations.forEach((rec, index) => {
-        console.log(
+      logger.info(`\n💡 RECOMMENDATIONS:`);
+      report.recommendations.for (const item of((rec, index) => {
+        logger.info(
           `   ${index + 1}. [${rec.priority.toUpperCase()}] ${rec.message}`,
         );
-        rec.actions.forEach((action) => {
-          console.log(`      • ${action}`);
+        rec.actions.for (const item of((action) => {
+          logger.info(`      • ${action}`);
         });
       });
     }
 
-    console.log(`\n📄 Full report saved to: ${this.errorLogFile}`);
-    console.log("=".repeat(60) + "\n");
+    logger.info(`\n📄 Full report saved to: ${this.errorLogFile}`);
+    logger.info("=".repeat(60) + "\n");
   }
 
   async run() {

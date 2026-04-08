@@ -3,14 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
-import { spawn } from "child_process";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "child_process";
 
 const JOB_QUEUE = path.join(process.cwd(), "payload_jobs.json");
 
-function appendJob(job: Record<string, any>) {
+/**
+ * appendJob function
+ */
+function appendJob(job: Record<string, any>): any {
   try {
     const jobs = fs.existsSync(JOB_QUEUE)
       ? JSON.parse(fs.readFileSync(JOB_QUEUE, "utf-8"))
@@ -22,14 +25,18 @@ function appendJob(job: Record<string, any>) {
   }
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(req: NextApiRequest, res: NextApiResponse) {
   // Accept only POST to trigger payloads
   if (req.method !== "POST") {
     res.status(405).json({ success: false, message: "Method not allowed" });
     return;
   }
 
-  // Simple admin auth support (optional)
+  // sophisticated admin auth support (optional)
   const adminToken = process.env.ADMIN_TOKEN || "";
   const provided =
     (req.headers["x-admin-token"] as string) || req.body?.admin_token;

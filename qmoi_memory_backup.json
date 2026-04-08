@@ -5,5 +5,9 @@
       "persona": "master",
       "message": "How are you doing today?"
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:12:47.270481"
 }

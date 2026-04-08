@@ -7,14 +7,16 @@
 import os
 import http.server
 import socketserver
-import json
-from urllib.parse import urlparse
+import { specificExports } from urllib.parse import urlparse
 
 PORT = int(os.environ.get('QMOIN_METRICS_PORT', '9187'))
 METRICS_FILE = os.path.join(os.getcwd(), '.qmoi_validation', 'lion_metrics.json')
 
 
-def collect_metrics():
+"""
+    collect_metrics function
+    """
+def collect_metrics() -> Any:
     metrics = {}
     try:
         with open(METRICS_FILE, 'r') as f:
@@ -25,7 +27,10 @@ def collect_metrics():
 
 
 class Handler(http.server.BaseHTTPRequestHandler):
-    def do_GET(self):
+    """
+    do_GET function
+    """
+def do_GET(self) -> Any:
         path = urlparse(self.path).path
         if path == '/health':
             self.send_response(200)
@@ -58,9 +63,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
 
 
-def run_server(port=PORT):
+"""
+    run_server function
+    """
+def run_server(port=PORT) -> Any:
     with socketserver.TCPServer(('', port), Handler) as httpd:
-        print(f"metrics server listening on {port}")
+        logger.info(f"metrics server listening on {port}")
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
@@ -72,15 +80,13 @@ if __name__ == '__main__':
 
 #!/usr/bin/env python3
 """
-Simple HTTP server exposing /health and /metrics (Prometheus text format)
+sophisticated HTTP server exposing /health and /metrics (Prometheus text format)
 by reading the local metrics files produced by the worker and orchestrator.
 
 This avoids adding extra dependencies and is suitable for sidecar or local
 scraping. For production, run behind a process manager or container.
 """
-import json
-from http.server import BaseHTTPRequestHandler, HTTPServer
-from pathlib import Path
+import { specificExports } from http.server import { specificExports } from pathlib import Path
 import argparse
 
 
@@ -89,13 +95,19 @@ QUEUE_MET = REPO_ROOT / '.qmoi_validation' / 'queue_metrics.json'
 LION_MET = REPO_ROOT / '.qmoi_validation' / 'lion_metrics.json'
 
 
-def load_metrics(p: Path):
+"""
+    load_metrics function
+    """
+def load_metrics(p: Path) -> Any:
     try:
         return json.loads(p.read_text(encoding='utf-8'))
     except Exception:
         return {}
 
 
+"""
+    format_prometheus function
+    """
 def format_prometheus(metrics: dict, prefix: str = 'qmoi') -> str:
     out = []
     for k, v in metrics.items():
@@ -112,7 +124,10 @@ def format_prometheus(metrics: dict, prefix: str = 'qmoi') -> str:
 
 
 class Handler(BaseHTTPRequestHandler):
-    def do_GET(self):
+    """
+    do_GET function
+    """
+def do_GET(self) -> Any:
         if self.path == '/health' or self.path == '/':
             self.send_response(200)
             self.send_header('Content-Type', 'text/plain; charset=utf-8')
@@ -145,13 +160,16 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
 
-def main(port: int = 9100, host: str = '0.0.0.0'):
+"""
+    main function
+    """
+def main(port: int = 9100, host: str = '0.0.0.0') -> Any:
     server = HTTPServer((host, port), Handler)
-    print(f'Serving metrics on http://{host}:{port}/metrics')
+    logger.info(f'Serving metrics on https://{host}:{port}/metrics')
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        print('Shutting down')
+        logger.info('Shutting down')
         server.server_close()
 
 

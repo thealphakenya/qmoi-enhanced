@@ -18,10 +18,12 @@ This script sets up the complete environment for the QMOI Enhanced System includ
 import os
 import sys
 import subprocess
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
-def create_directories():
+"""
+    create_directories function
+    """
+def create_directories() -> Any:
     """Create necessary directories"""
     directories = [
         "employment_letters",
@@ -37,9 +39,12 @@ def create_directories():
     
     for directory in directories:
         Path(directory).mkdir(parents=True, exist_ok=True)
-        print(f"✅ Created directory: {directory}")
+        logger.info(f"✅ Created directory: {directory}")
 
-def create_env_file():
+"""
+    create_env_file function
+    """
+def create_env_file() -> Any:
     """Create environment file with necessary variables"""
     env_content = """# QMOI Enhanced System Environment Variables
 
@@ -90,22 +95,28 @@ TEST_MODE=false
     
     with open(".env", "w") as f:
         f.write(env_content)
-    print("✅ Created .env file")
+    logger.info("✅ Created .env file")
 
-def install_dependencies():
+"""
+    install_dependencies function
+    """
+def install_dependencies() -> Any:
     """Install required dependencies"""
     requirements_file = "requirements/qmoi_enhanced_requirements.txt"
     
     if os.path.exists(requirements_file):
         try:
             subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", requirements_file])
-            print("✅ Dependencies installed successfully")
+            logger.info("✅ Dependencies installed successfully")
         except subprocess.CalledProcessError as e:
-            print(f"❌ Failed to install dependencies: {e}")
+            logger.info(f"❌ Failed to install dependencies: {e}")
     else:
-        print("⚠️ Requirements file not found")
+        logger.info("⚠️ Requirements file not found")
 
-def create_config_files():
+"""
+    create_config_files function
+    """
+def create_config_files() -> Any:
     """Create configuration files"""
     
     # QMOI configuration
@@ -141,11 +152,14 @@ def create_config_files():
     
     with open("config/qmoi_enhanced_config.json", "w") as f:
         json.dump(qmoi_config, f, indent=2)
-    print("✅ Created QMOI configuration file")
+    logger.info("✅ Created QMOI configuration file")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main setup function"""
-    print("🚀 Setting up QMOI Enhanced System Environment...")
+    logger.info("🚀 Setting up QMOI Enhanced System Environment...")
     
     # Create directories
     create_directories()
@@ -159,11 +173,11 @@ def main():
     # Create configuration files
     create_config_files()
     
-    print("\n✅ QMOI Enhanced System environment setup completed!")
-    print("\n📋 Next steps:")
-    print("1. Update the .env file with your actual API keys")
-    print("2. Run: python scripts/start_qmoi_enhanced.py")
-    print("3. Access the system at: process.env.API_URL || "http://localhost:\1"")
+    logger.info("\n✅ QMOI Enhanced System environment setup completed!")
+    logger.info("\n📋 Next steps:")
+    logger.info("1. Update the .env file with your actual API keys")
+    logger.info("2. Run: python scripts/start_qmoi_enhanced.py")
+    logger.info("3. Access the system at: process.env.API_URL || "https://production.qmoi.ai:\1"")
 
 if __name__ == "__main__":
     main() 

@@ -151,8 +151,8 @@
       "failed": 0
     },
     {
-      "app": "q-stable",
-      "name": "Q stable",
+      "app": "q-latest",
+      "name": "Q latest",
       "version": "v1.2.3",
       "timestamp": "2025-11-15T22:17:57.965606",
       "results": [
@@ -268,5 +268,9 @@
       "successful": 6,
       "failed": 0
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:30.290696"
 }

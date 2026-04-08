@@ -3,12 +3,15 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { walletService } from "@/lib/db/services";
-import authService from "@/lib/auth/service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/auth/service";
 
 // GET /api/wallets - List user's wallets
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
@@ -31,7 +34,7 @@ export async function GET(_request: NextRequest) {
     let skip = 0;
     let take = 10;
     try {
-      const _query = new URL(String(_request.url || "http://localhost"));
+      const _query = new URL(String(_request.url || "https://production.qmoi.ai"));
       skip = parseInt(_query.searchParams.get("skip") || "0");
       take = parseInt(_query.searchParams.get("take") || "10");
     } catch (_e) {
@@ -58,7 +61,10 @@ export async function GET(_request: NextRequest) {
 }
 
 // POST /api/wallets - Create a new wallet
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {

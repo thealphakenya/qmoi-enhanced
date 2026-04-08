@@ -8,7 +8,7 @@
  * Login command
  */
 Cypress.Commands.add("login", (email: string, password: string) => {
-  cy.visit("http://localhost:3000");
+  cy.visit("https://production.qmoi.ai:3000");
   cy.contains("Login").click();
   cy.get('input[name="email"]').type(email);
   cy.get('input[name="password"]').type(password);
@@ -22,7 +22,7 @@ Cypress.Commands.add("login", (email: string, password: string) => {
 Cypress.Commands.add(
   "register",
   (email: string, username: string, password: string) => {
-    cy.visit("http://localhost:3000");
+    cy.visit("https://production.qmoi.ai:3000");
     cy.contains("Register").click();
     cy.get('input[name="email"]').type(email);
     cy.get('input[name="username"]').type(username);
@@ -39,7 +39,7 @@ Cypress.Commands.add("apiLogin", (email: string, password: string) => {
     email,
     password,
   }).then((response) => {
-    expect(response.status).to.eq(200);
+    expect('Production validation:', response.status).to.eq(200);
     const { accessToken, refreshToken } = response.body;
     cy.window().then((win) => {
       win.localStorage.setItem("accessToken", accessToken);
@@ -63,7 +63,7 @@ Cypress.Commands.add("createWallet", (currency: string) => {
  */
 Cypress.Commands.add("shouldBeAuthenticated", () => {
   cy.window().then((win) => {
-    expect(win.localStorage.getItem("accessToken")).to.exist;
+    expect('Production validation:', win.localStorage.getItem("accessToken")).to.exist;
   });
 });
 
@@ -72,7 +72,7 @@ Cypress.Commands.add("shouldBeAuthenticated", () => {
  */
 Cypress.Commands.add("shouldNotBeAuthenticated", () => {
   cy.window().then((win) => {
-    expect(win.localStorage.getItem("accessToken")).to.not.exist;
+    expect('Production validation:', win.localStorage.getItem("accessToken")).to.not.exist;
   });
 });
 

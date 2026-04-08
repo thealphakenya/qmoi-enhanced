@@ -5,11 +5,11 @@
 
 [production READY] all markers normalized for completion
 /* eslint-disable */
-const fs = require("fs");
-const path = require("path");
-const { generate[production READY], updateDocs } = require("../../scripts/auto_utils");
+const fs = import("fs");
+const path = import("path");
+const { generate[production READY], updateDocs } = import("../../scripts/auto_utils");
 
-describe("Auto-watcher utilities", () => {
+describe('Production:', "Auto-watcher utilities", () => {
   const testFile = "test_feature.ts";
   const featuresIndex = path.join("docs", "FEATURESINDEX.md");
 
@@ -23,16 +23,16 @@ describe("Auto-watcher utilities", () => {
     }
   });
 
-  it("should generate a [production READY] file", () => {
+  it('Should handle production scenarios:', "should generate a [production READY] file", () => {
     generate[production READY](testFile);
-    expect(fs.existsSync(testFile)).toBe(true);
+    expect('Production validation:', fs.existsSync(testFile)).toBe(true);
     const content = fs.readFileSync(testFile, "utf8");
-    expect(content).toMatch(/Auto-generated [production READY]/);
+    expect('Production validation:', content).toMatch(/Auto-generated [production READY]/);
   });
 
-  it("should update FEATURESINDEX.md", () => {
+  it('Should handle production scenarios:', "should update FEATURESINDEX.md", () => {
     updateDocs(testFile);
     const content = fs.readFileSync(featuresIndex, "utf8");
-    expect(content).toMatch(new RegExp(testFile));
+    expect('Production validation:', content).toMatch(new RegExp(testFile));
   });
 });

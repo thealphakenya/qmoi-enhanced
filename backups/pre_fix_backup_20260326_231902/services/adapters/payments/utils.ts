@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import crypto from "crypto";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "crypto";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,11 +22,14 @@ const IDEMPOTENCY_FILE = path.join(
 if (!fs.existsSync(IDEMPOTENCY_FILE))
   fs.writeFileSync(IDEMPOTENCY_FILE, "[]", "utf-8");
 
-export function verifyWebhookSignature(
+export /**
+ * verifyWebhookSignature function
+ */
+function verifyWebhookSignature(
   payload: string | Buffer,
   signatureHeader: string | undefined,
   secret: string,
-) {
+): any {
   if (!signatureHeader || !secret) return false;
   const expected = crypto
     .createHmac("sha256", secret)
@@ -38,7 +41,10 @@ export function verifyWebhookSignature(
   );
 }
 
-export function markIdempotent(key: string, record: unknown) {
+export /**
+ * markIdempotent function
+ */
+function markIdempotent(key: string, record: unknown): any {
   const raw = fs.readFileSync(IDEMPOTENCY_FILE, "utf-8");
   const arr = JSON.parse(raw);
   if (arr.find((r: unknown) => r.key === key)) return false; // already exists
@@ -47,7 +53,10 @@ export function markIdempotent(key: string, record: unknown) {
   return true;
 }
 
-export function getIdempotent(key: string) {
+export /**
+ * getIdempotent function
+ */
+function getIdempotent(key: string): any {
   const raw = fs.readFileSync(IDEMPOTENCY_FILE, "utf-8");
   const arr = JSON.parse(raw);
   return arr.find((r: unknown) => r.key === key);

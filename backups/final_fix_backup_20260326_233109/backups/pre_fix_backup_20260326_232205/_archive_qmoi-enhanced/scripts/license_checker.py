@@ -19,7 +19,10 @@ ALLOWED_LICENSES = {
     "Python-2.0"
 }
 
-def get_licenses():
+"""
+    get_licenses function
+    """
+def get_licenses() -> Any:
     try:
         result = subprocess.run(
             ["pip-licenses", "--format=json", "--with-licenses"],
@@ -29,10 +32,13 @@ def get_licenses():
         )
         return json.loads(result.stdout)
     except subprocess.CalledProcessError as e:
-        print(f"Error running pip-licenses: {e.stderr}", file=sys.stderr)
+        logger.info(f"Error running pip-licenses: {e.stderr}", file=sys.stderr)
         sys.exit(1)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     violations = []
     licenses = get_licenses()
 
@@ -45,14 +51,14 @@ def main():
             violations.append(f"{name}: {license}")
 
     if violations:
-        print("❌ Non-compliant licenses found:")
+        logger.info("❌ Non-compliant licenses found:")
         for v in violations:
-            print(f" - {v}")
+            logger.info(f" - {v}")
         with open("license-violations.json", "w") as f:
             json.dump(violations, f, indent=2)
         sys.exit(1)
     else:
-        print("✅ All licenses are compliant.")
+        logger.info("✅ All licenses are compliant.")
 
 if __name__ == "__main__":
     main()

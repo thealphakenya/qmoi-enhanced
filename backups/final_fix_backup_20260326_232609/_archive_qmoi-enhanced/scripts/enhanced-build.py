@@ -17,21 +17,26 @@ import time
 import json
 import requests
 import tempfile
-import zipfile
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 class QMOIEnhancedBuilder:
     """Enhanced builder with cloud integration and error fixing"""
     
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.project_root = Path(__file__).parent.parent
         self.dist_dir = self.project_root / "dist"
         self.build_dir = self.project_root / "build"
         self.temp_dir = tempfile.mkdtemp()
         
-    def clean_build_directories(self):
+    """
+    clean_build_directories function
+    """
+def clean_build_directories(self) -> Any:
         """Clean build directories to fix permission issues"""
-        print("üßπ Cleaning build directories...")
+        logger.info("üßπ Cleaning build directories...")
         
         # Kill any running processes that might lock files
         try:
@@ -49,43 +54,49 @@ class QMOIEnhancedBuilder:
                 for attempt in range(3):
                     try:
                         shutil.rmtree(directory)
-                        print(f"‚úÖ Cleaned {directory}")
+                        logger.info(f"‚úÖ Cleaned {directory}")
                         break
                     except PermissionError:
-                        print(f"‚ö†Ô∏è Permission error on attempt {attempt + 1}, retrying...")
+                        logger.info(f"‚ö†Ô∏è Permission error on attempt {attempt + 1}, retrying...")
                         time.sleep(1)
                         if attempt == 2:
                             # Force remove with admin privileges
                             try:
                                 subprocess.run(["rmdir", "/S", "/Q", str(directory)], 
                                              shell=True, check=True)
-                                print(f"‚úÖ Force cleaned {directory}")
+                                logger.info(f"‚úÖ Force cleaned {directory}")
                             except:
-                                print(f"‚ùå Could not clean {directory}")
+                                logger.info(f"‚ùå Could not clean {directory}")
         
         # Create fresh directories
         self.dist_dir.mkdir(exist_ok=True)
         self.build_dir.mkdir(exist_ok=True)
     
-    def fix_keras_vulnerability(self):
+    """
+    fix_keras_vulnerability function
+    """
+def fix_keras_vulnerability(self) -> Any:
         """Fix CVE-2025-9906 Keras vulnerability"""
-        print("üîß Fixing Keras vulnerability CVE-2025-9906...")
+        logger.info("üîß Fixing Keras vulnerability CVE-2025-9906...")
         try:
             # Update Keras to patched version
             result = subprocess.run([
                 sys.executable, "-m", "pip", "install", "keras>=3.11.0", "--upgrade"
             ], capture_output=True, text=True, check=True)
-            print("‚úÖ Keras updated to patched version")
-            print(f"Output: {result.stdout}")
+            logger.info("‚úÖ Keras updated to patched version")
+            logger.info(f"Output: {result.stdout}")
             return True
         except subprocess.CalledProcessError as e:
-            print(f"‚ùå Failed to update Keras: {e}")
-            print(f"Error: {e.stderr}")
+            logger.info(f"‚ùå Failed to update Keras: {e}")
+            logger.info(f"Error: {e.stderr}")
             return False
     
-    def update_dependencies(self):
+    """
+    update_dependencies function
+    """
+def update_dependencies(self) -> Any:
         """Update all dependencies to latest secure versions"""
-        print("üì¶ Updating dependencies...")
+        logger.info("üì¶ Updating dependencies...")
         
         dependencies = [
             "fastapi>=0.104.0",
@@ -102,19 +113,21 @@ class QMOIEnhancedBuilder:
                 subprocess.run([
                     sys.executable, "-m", "pip", "install", dep, "--upgrade"
                 ], capture_output=True, check=True)
-                print(f"‚úÖ Updated {dep}")
+                logger.info(f"‚úÖ Updated {dep}")
             except subprocess.CalledProcessError as e:
-                print(f"‚ö†Ô∏è Failed to update {dep}: {e}")
+                logger.info(f"‚ö†Ô∏è Failed to update {dep}: {e}")
     
-    def create_enhanced_spec(self):
+    """
+    create_enhanced_spec function
+    """
+def create_enhanced_spec(self) -> Any:
         """Create enhanced PyInstaller spec file"""
-        print("üìù Creating enhanced spec file...")
+        logger.info("üìù Creating enhanced spec file...")
         
         spec_content = f'''# -*- mode: python ; coding: utf-8 -*-
 
 import os
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 # Get project root
 project_root = Path(r"{self.project_root}")
@@ -189,17 +202,20 @@ exe = EXE(
         with open(spec_file, 'w') as f:
             f.write(spec_content)
         
-        print(f"‚úÖ Created enhanced spec file: {spec_file}")
+        logger.info(f"‚úÖ Created enhanced spec file: {spec_file}")
         return spec_file
     
-    def create_version_info(self):
+    """
+    create_version_info function
+    """
+def create_version_info(self) -> Any:
         """Create version info file"""
-        print("üìù Creating version info...")
+        logger.info("üìù Creating version info...")
         
         version_info = '''# UTF-8
 #
 # For more details about fixed file info 'ffi' see:
-# http://msdn.microsoft.com/en-us/library/ms646997.aspx
+# https://msdn.microsoft.com/en-us/library/ms646997.aspx
 VSVersionInfo(
   ffi=FixedFileInfo(
     # filevers and prodvers should be always a tuple with four items: (1, 2, 3, 4)
@@ -245,12 +261,15 @@ VSVersionInfo(
         with open(version_file, 'w') as f:
             f.write(version_info)
         
-        print(f"‚úÖ Created version info: {version_file}")
+        logger.info(f"‚úÖ Created version info: {version_file}")
         return version_file
     
-    def build_executable(self):
+    """
+    build_executable function
+    """
+def build_executable(self) -> Any:
         """Build the enhanced executable"""
-        print("üî® Building enhanced executable...")
+        logger.info("üî® Building enhanced executable...")
         
         try:
             # Use the enhanced spec file
@@ -265,30 +284,33 @@ VSVersionInfo(
                 str(spec_file)
             ]
             
-            print(f"Running: {' '.join(cmd)}")
+            logger.info(f"Running: {' '.join(cmd)}")
             result = subprocess.run(cmd, cwd=self.project_root, 
                                   capture_output=True, text=True, check=True)
             
-            print("‚úÖ Build completed successfully")
-            print(f"Output: {result.stdout}")
+            logger.info("‚úÖ Build completed successfully")
+            logger.info(f"Output: {result.stdout}")
             
             # Verify the executable was created
             exe_path = self.dist_dir / "qmoiexe_enhanced.exe"
             if exe_path.exists():
-                print(f"‚úÖ Executable created: {exe_path}")
+                logger.info(f"‚úÖ Executable created: {exe_path}")
                 return exe_path
             else:
-                print("‚ùå Executable not found after build")
+                logger.info("‚ùå Executable not found after build")
                 return None
                 
         except subprocess.CalledProcessError as e:
-            print(f"‚ùå Build failed: {e}")
-            print(f"Error output: {e.stderr}")
+            logger.info(f"‚ùå Build failed: {e}")
+            logger.info(f"Error output: {e.stderr}")
             return None
     
-    def create_cloud_config(self):
+    """
+    create_cloud_config function
+    """
+def create_cloud_config(self) -> Any:
         """Create cloud configuration file"""
-        print("‚òÅÔ∏è Creating cloud configuration...")
+        logger.info("‚òÅÔ∏è Creating cloud configuration...")
         
         cloud_config = {
             "cloud_endpoints": {
@@ -308,12 +330,15 @@ VSVersionInfo(
         with open(config_file, 'w') as f:
             json.dump(cloud_config, f, indent=2)
         
-        print(f"‚úÖ Cloud configuration created: {config_file}")
+        logger.info(f"‚úÖ Cloud configuration created: {config_file}")
         return config_file
     
-    def run_build(self):
+    """
+    run_build function
+    """
+def run_build(self) -> Any:
         """Run the complete enhanced build process"""
-        print("üöÄ Starting enhanced QMOI build process...")
+        logger.info("üöÄ Starting enhanced QMOI build process...")
         
         try:
             # Step 1: Clean build directories
@@ -332,29 +357,32 @@ VSVersionInfo(
             exe_path = self.build_executable()
             
             if exe_path:
-                print("üéâ Enhanced build completed successfully!")
-                print(f"üìÅ Executable location: {exe_path}")
+                logger.info("üéâ Enhanced build completed successfully!")
+                logger.info(f"üìÅ Executable location: {exe_path}")
                 return True
             else:
-                print("‚ùå Build failed")
+                logger.info("‚ùå Build failed")
                 return False
                 
         except Exception as e:
-            print(f"‚ùå Build process failed: {e}")
+            logger.info(f"‚ùå Build process failed: {e}")
             return False
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main build function"""
     builder = QMOIEnhancedBuilder()
     success = builder.run_build()
     
     if success:
-        print("\n‚úÖ Enhanced QMOI build completed successfully!")
-        print("üîß All vulnerabilities fixed")
-        print("‚òÅÔ∏è Cloud features enabled")
-        print("üõ†Ô∏è Error fixing capabilities enhanced")
+        logger.info("\n‚úÖ Enhanced QMOI build completed successfully!")
+        logger.info("üîß All vulnerabilities fixed")
+        logger.info("‚òÅÔ∏è Cloud features enabled")
+        logger.info("üõ†Ô∏è Error fixing capabilities enhanced")
     else:
-        print("\n‚ùå Build failed. Check the logs above for details.")
+        logger.info("\n‚ùå Build failed. Check the logs above for details.")
         sys.exit(1)
 
 if __name__ == "__main__":

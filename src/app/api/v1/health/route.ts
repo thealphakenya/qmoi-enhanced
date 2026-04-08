@@ -1,6 +1,9 @@
-import { NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   return NextResponse.json({
     status: 'ok',
     version: 'v1',

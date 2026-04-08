@@ -76,10 +76,10 @@
       "fallback_domain": "space.stableq.ai",
       "synthetic": true
     },
-    "q-stable.qmoi.ai": {
+    "q-latest.qmoi.ai": {
       "type": "models",
       "critical": false,
-      "description": "Q-stable progressive web app",
+      "description": "Q-latest progressive web app",
       "is_healthy": true,
       "endpoints": [
         "/api/health",
@@ -87,7 +87,7 @@
       ],
       "http_status": 200,
       "fallback_used": false,
-      "fallback_domain": "stable.stableq.ai",
+      "fallback_domain": "latest.stableq.ai",
       "synthetic": true
     },
     "qshare.qvillage.com": {
@@ -152,5 +152,9 @@
   "total_domains_count": 10,
   "health_percentage": 100.0,
   "critical_domains_healthy": 5,
-  "critical_domains_total": 5
+  "critical_domains_total": 5,
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:49.615160"
 }

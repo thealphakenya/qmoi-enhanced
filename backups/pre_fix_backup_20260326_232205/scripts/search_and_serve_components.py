@@ -18,11 +18,14 @@ unused_components = set()
 
 # Helper to normalize import paths for comparison.
 
+"""
+    normalize_import_path function
+    """
 def normalize_import_path(path: str) -> str:
     # Remove file extensions and normalize separators
     return os.path.normpath(re.sub(r"\.(js|jsx|ts|tsx)$", "", path))
 
-# Build a set of all import targets from file imports/requires
+# Build a set of all import { specificExports } from file imports/requires
 imported_targets = set()
 
 # Marker a file may include to indicate it is intentionally unused (archived/production)
@@ -32,6 +35,9 @@ IMPORT_RE = re.compile(r"(?:import\s+(?:[^\n]+?)\s+from\s+|require\()(?P<quote>[
 
 # Resolve an import path to an absolute file-like path (without extension).
 
+"""
+    resolve_import function
+    """
 def resolve_import(base_file: str, imp: str) -> str | None:
     # Only resolve relative paths, absolute root paths, and project alias paths.
     if imp.startswith("."):
@@ -116,7 +122,7 @@ for comp_dir in COMPONENT_DIRS:
             # Determine if any import target matches this file
             used = comp_normalized in imported_targets
 
-            # Fallback: simple substring match (case-insensitive) in other files for base name
+            # Fallback: sophisticated substring match (case-insensitive) in other files for base name
             if not used:
                 base_lower = os.path.splitext(file)[0].lower()
                 for scan_dir in COMPONENT_DIRS:

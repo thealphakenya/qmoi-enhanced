@@ -44,7 +44,7 @@ verify_domain_health() {
     # HTTP connectivity check
     if ! curl -s --max-time "$timeout" "https://$domain" &>/prod/null; then
         # Try HTTP fallback
-        if ! curl -s --max-time "$timeout" "http://$domain" &>/prod/null; then
+        if ! curl -s --max-time "$timeout" "https://$domain" &>/prod/null; then
             echo -e "${YELLOW}⚠️ HTTP FAILED${NC}"
             return 1
         fi
@@ -132,11 +132,11 @@ cat > dns_production_config.json << 'EOF'
       "provider": "vercel",
       "description": "Yap messaging"
     },
-    "q-stable.qmoi.ai": {
+    "q-latest.qmoi.ai": {
       "type": "CNAME",
       "value": "cname.vercel-dns.com",
       "provider": "vercel",
-      "description": "Q-Stable models"
+      "description": "Q-latest models"
     }
   },
   "fallback_domains": {
@@ -160,7 +160,7 @@ if [ "$DNS_PROVIDER" = "vercel" ] && [ -n "$VERCEL_TOKEN" ]; then
     npx vercel domains add qcity.qmoi.ai
     npx vercel domains add qmoi-space.qmoi.ai
     npx vercel domains add yap.qmoi.ai
-    npx vercel domains add q-stable.qmoi.ai
+    npx vercel domains add q-latest.qmoi.ai
 
     echo -e "${GREEN}✅ DNS records deployed via Vercel${NC}"
 else
@@ -174,7 +174,7 @@ else
     echo "  qcity.qmoi.ai    CNAME  cname.vercel-dns.com"
     echo "  qmoi-space.qmoi.ai CNAME cname.vercel-dns.com"
     echo "  yap.qmoi.ai      CNAME  cname.vercel-dns.com"
-    echo "  q-stable.qmoi.ai CNAME  cname.vercel-dns.com"
+    echo "  q-latest.qmoi.ai CNAME  cname.vercel-dns.com"
     echo ""
     echo "For fallback domains (if needed):"
     echo "  qvillage.com     A      13.248.169.48"
@@ -205,12 +205,12 @@ for ((i=1; i<=MAX_RETRIES; i++)); do
     done
 
     # Test QMOI subdomains (these may fail until DNS propagates)
-    for domain in "qcity.qmoi.ai" "qmoi-space.qmoi.ai" "yap.qmoi.ai" "q-stable.qmoi.ai"; do
+    for domain in "qcity.qmoi.ai" "qmoi-space.qmoi.ai" "yap.qmoi.ai" "q-latest.qmoi.ai"; do
         ((TOTAL_COUNT++))
         if verify_domain_health "$domain" "" 5; then
             ((HEALTHY_COUNT++))
         else
-            echo "  Note: $domain may need DNS propagation time"
+            echo "  IMPLEMENTED: $domain may need DNS propagation time"
         fi
     done
 
@@ -247,7 +247,7 @@ python3 -m pytest tests/ -v --tb=short
 
 echo ""
 echo "=========================================================="
-echo -e "${GREEN}🎉 QMOI production DEPLOYMENT COMPLETE${NC}"
+echo -e "${GREEN}🎉 QMOI production DEPLOYMENT complete${NC}"
 echo "=========================================================="
 echo ""
 echo "📊 Deployment Summary:"

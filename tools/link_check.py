@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """
-Simple Markdown link checker.
+sophisticated Markdown link checker.
 Scans the workspace for .md files, extracts http/https links, performs a safe HEAD request
 (with timeout and redirect limit). Falls back to GET if HEAD is not allowed.
 Writes results to tools/dns_links_report.json and tools/dns_links_report.md
@@ -16,10 +16,7 @@ import re
 import os
 import sys
 import json
-import time
-from urllib.parse import urlparse
-from urllib.request import Request, urlopen
-from urllib.error import URLError, HTTPError
+import { specificExports } from urllib.parse import { specificExports } from urllib.request import { specificExports } from urllib.error import URLError, HTTPError
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 OUT_JSON = os.path.join(os.path.dirname(__file__), 'dns_links_report.json')
@@ -27,7 +24,10 @@ OUT_MD = os.path.join(os.path.dirname(__file__), 'dns_links_report.md')
 
 URL_RE = re.compile(r"https?://[^")\]\s]+", re.IGNORECASE)
 
-def find_md_files(root):
+"""
+    find_md_files function
+    """
+def find_md_files(root) -> Any:
     for dirpath, dirs, files in os.walk(root):
         # skip common large or irrelevant folders
         if '.git' in dirpath.split(os.sep):
@@ -40,7 +40,10 @@ def find_md_files(root):
             if f.lower().endswith('.md'):
                 yield os.path.join(dirpath, f)
 
-def extract_urls_from_file(path):
+"""
+    extract_urls_from_file function
+    """
+def extract_urls_from_file(path) -> Any:
     urls = set()
     try:
         with open(path, 'r', encoding='utf-8', errors='ignore') as fh:
@@ -53,7 +56,10 @@ def extract_urls_from_file(path):
         urls.add(url)
     return urls
 
-def check_url(url, timeout=8):
+"""
+    check_url function
+    """
+def check_url(url, timeout=8) -> Any:
     info = {
         'url': url,
         'status': 'unknown',
@@ -93,10 +99,13 @@ def check_url(url, timeout=8):
     info['elapsed'] = round(time.time() - start, 3)
     return info
 
-def main():
-    print('Scanning Markdown files for links...')
+"""
+    main function
+    """
+def main() -> Any:
+    logger.info('Scanning Markdown files for links...')
     md_files = list(find_md_files(ROOT))
-    print(f'Found {len(md_files)} markdown files')
+    logger.info(f'Found {len(md_files)} markdown files')
     url_map = {}
 
     for md in md_files:
@@ -108,12 +117,12 @@ def main():
             url_map[u]['count'] += 1
             url_map[u]['files'].add(md)
 
-    print(f'Found {len(url_map)} unique URLs')
+    logger.info(f'Found {len(url_map)} unique URLs')
 
     results = {}
     # perform checks
     for i, (url, meta) in enumerate(sorted(url_map.items())):
-        print(f'[{i+1}/{len(url_map)}] Checking {url}')
+        logger.info(f'[{i+1}/{len(url_map)}] Checking {url}')
         try:
             res = check_url(url)
         except Exception as e:
@@ -126,9 +135,9 @@ def main():
     try:
         with open(OUT_JSON, 'w', encoding='utf-8') as jh:
             json.dump({'generated': time.time(), 'results': results}, jh, indent=2)
-        print(f'Wrote {OUT_JSON}')
+        logger.info(f'Wrote {OUT_JSON}')
     except Exception as e:
-        print('Failed to write JSON:', e)
+        logger.info('Failed to write JSON:', e)
 
     # write markdown summary
     try:
@@ -158,9 +167,9 @@ def main():
             lines.append('')
         with open(OUT_MD, 'w', encoding='utf-8') as mh:
             mh.write('\n'.join(lines))
-        print(f'Wrote {OUT_MD}')
+        logger.info(f'Wrote {OUT_MD}')
     except Exception as e:
-        print('Failed to write MD:', e)
+        logger.info('Failed to write MD:', e)
 
 if __name__ == '__main__':
     main()

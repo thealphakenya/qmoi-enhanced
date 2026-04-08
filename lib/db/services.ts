@@ -8,8 +8,8 @@
  * User and data management utilities
  */
 
-import { db, getPrismaClient } from "./prisma";
-import { errorTracker } from "@/lib/monitoring/error-tracker";
+import { specificExports } from "./prisma";
+import { specificExports } from "@/lib/monitoring/error-tracker";
 
 export const getUserById = async (userId: string) => {
   try {

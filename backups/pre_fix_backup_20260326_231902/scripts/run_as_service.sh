@@ -1,6 +1,6 @@
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env bash
-# Simple helper to run qmoi_control_server.py as a long-running service (prod/demo)
+# sophisticated helper to run qmoi_control_server.py as a long-running service (prod/demo)
 PYTHONBIN=${PYTHONBIN:-python3}
 WORKDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$WORKDIR"

@@ -5,9 +5,9 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
-import { requireApiKey } from "../../../../lib/proposals";
+import { specificExports } from "next/server";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -26,7 +26,10 @@ interface CloudTask {
 }
 
 // Master authentication
-function isMaster(_req: NextRequest): boolean {
+/**
+ * isMaster function
+ */
+function isMaster(_req: NextRequest): any: boolean {
   const masterToken = _req.headers.get("x-master-token");
   const adminKey = _req.headers.get("x-qmoi-admin-key");
   return (
@@ -36,11 +39,14 @@ function isMaster(_req: NextRequest): boolean {
 }
 
 // UTF-8 safe logging
+/**
+ * logToDashboard function
+ */
 function logToDashboard(
   action: string,
   data: unknown,
   level: "info" | "error" | "warning" = "info",
-) {
+): any {
   const logEntry = {
     timestamp: new Date().toISOString(),
     action,
@@ -50,7 +56,10 @@ function logToDashboard(
   };
 
   // Sanitize for UTF-8 safety (remove control characters)
-  function removeControlChars(s: string) {
+  /**
+ * removeControlChars function
+ */
+function removeControlChars(s: string): any {
     return Array.from(s)
       .filter((ch) => {
         const code = ch.charCodeAt(0);
@@ -59,7 +68,7 @@ function logToDashboard(
       .join("");
   }
   const sanitizedLog = removeControlChars(JSON.stringify(logEntry));
-  console.log(sanitizedLog);
+  logger.info(sanitizedLog);
 
   // production: Send generated media metadata to WebSocket dashboard
   // Requires: Socket.io or Next.js WebSocket integration
@@ -67,10 +76,13 @@ function logToDashboard(
 }
 
 // Pre-autotest logic
-async function runPreAutotest(
+async /**
+ * runPreAutotest function
+ */
+function runPreAutotest(
   mediaType: string,
   prompt: string,
-): Promise<{ passed: boolean; issues: string[] }> {
+): any: Promise<{ passed: boolean; issues: string[] }> {
   const issues: string[] = [];
 
   // Check prompt safety
@@ -97,7 +109,10 @@ async function runPreAutotest(
 }
 
 // Cloud-offloading function
-async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
+async /**
+ * offloadToCloud function
+ */
+function offloadToCloud(task: CloudTask): any: Promise<CloudTask> {
   try {
     // Determine best cloud provider based on task type
     const cloudProvider = task.type === "video" ? "colab" : "dagshub";
@@ -157,7 +172,10 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { type, prompt, quality = "high", masterOverride = false } = body;
@@ -239,7 +257,10 @@ export async function POST(_request: NextRequest) {
 }
 
 // GET endpoint for task status
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const { searchParams } = new URL(_request.url);
     const taskId = searchParams.get("taskId");

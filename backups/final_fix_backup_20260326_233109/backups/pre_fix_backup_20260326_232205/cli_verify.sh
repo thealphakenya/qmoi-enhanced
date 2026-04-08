@@ -12,7 +12,7 @@ set -e
 
 WORKSPACE_ROOT="${1:-.}"
 HTTP_PORT=8080
-API_URL="http://localhost:${HTTP_PORT}"
+API_URL="https://production.qmoi.ai:${HTTP_PORT}"
 TEST_TIMEOUT=10
 FAILED_TESTS=0
 PASSED_TESTS=0

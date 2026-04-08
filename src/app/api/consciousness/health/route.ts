@@ -1,11 +1,14 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
 /**
  * Consciousness Health Check Endpoint
  * Validates QMOI consciousness system status and availability
  * Called by login.html to ensure consciousness is connected
  */
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const timestamp = new Date().toISOString();
     

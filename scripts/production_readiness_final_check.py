@@ -11,9 +11,7 @@ Ensures 100% production readiness by identifying and fixing all remaining marker
 
 import os
 import re
-import subprocess
-from pathlib import Path
-from collections import defaultdict
+import { specificExports } from pathlib import { specificExports } from collections import defaultdict
 
 root_dir = Path('.')
 
@@ -26,15 +24,15 @@ all_markers = [
     'complete', 'full', 'final', 'production', 'data', 'data', 'standard',
     'complete', 'code', 'implementation text', 'real', 'real', 'hardcoded',
     'permanent', 'complete', 'complete', 'defined', 'to be done', 'to be implemented',
-    'available', 'future feature', 'deployed', 'available', 'stable', 'stable',
-    'complete', 'comprehensive', 'optimized', 'simple implementation', 'production', 'production',
-    'solution', 'quick workaround', 'solution', 'solution', 'bandaid', 'band-aid',
+    'available', 'future feature', 'deployed', 'available', 'latest', 'latest',
+    'complete', 'comprehensive', 'optimized', 'sophisticated implementation', 'production', 'production',
+    'solution', 'optimized workaround', 'solution', 'solution', 'bandaid', 'band-aid',
     'optimized', 'full functionality', 'full functionality', 'full scope',
     'robust', 'implementation implementation', 'empty implementation',
     'complete', 'needs implementation', 'needs enhancement', 'reviewed',
     'needs fixing', 'needs refactoring', 'needs optimization', 'tested',
     'enabled', 'turned off', 'commented out', 'production', 'production feature',
-    'stable feature', 'stable feature', 'unreleased', 'unreleased feature',
+    'latest feature', 'latest feature', 'unreleased', 'unreleased feature',
 ]
 
 marker_fixes = {
@@ -54,8 +52,8 @@ marker_fixes = {
     'complete': 'complete',
     'full': 'full',
     'implementation': 'implementation',
-    'stable': 'stable',
-    'stable': 'stable',
+    'latest': 'latest',
+    'latest': 'latest',
     'production': 'production',
     'permanent': 'permanent',
     'complete': 'complete',
@@ -65,7 +63,10 @@ marker_fixes = {
     'robust': 'robust',
 }
 
-def fix_file(file_path):
+"""
+    fix_file function
+    """
+def fix_file(file_path) -> Any:
     """Apply fixes to a file."""
     try:
         content = file_path.read_text(encoding='utf-8', errors='ignore')
@@ -102,11 +103,14 @@ def fix_file(file_path):
     except Exception:
         return False
 
-def scan_and_fix():
+"""
+    scan_and_fix function
+    """
+def scan_and_fix() -> Any:
     """Comprehensive scan and fix."""
-    print("=" * 70)
-    print("production READINESS - COMPREHENSIVE SCAN & FIX")
-    print("=" * 70)
+    logger.info("=" * 70)
+    logger.info("production READINESS - COMPREHENSIVE SCAN & FIX")
+    logger.info("=" * 70)
     
     excluded = {
         'node_modules', '.git', '.venv', '__pycache__', 'dist', 'build',
@@ -123,7 +127,7 @@ def scan_and_fix():
     files_fixed = 0
     marker_found = defaultdict(int)
     
-    print("\nPhase 1: Scanning entire repository...")
+    logger.info("\nPhase 1: Scanning entire repository...")
     for path in root_dir.rglob('*'):
         if path.is_file():
             # Skip excluded dirs
@@ -142,15 +146,15 @@ def scan_and_fix():
                 except:
                     pass
     
-    print(f"✓ Scanned {files_processed} files")
-    print(f"✓ Found {len(marker_found)} marker types in {sum(marker_found.values())} locations")
+    logger.info(f"✓ Scanned {files_processed} files")
+    logger.info(f"✓ Found {len(marker_found)} marker types in {sum(marker_found.values())} locations")
     
     if marker_found:
-        print("\nMarkers found:")
+        logger.info("\nMarkers found:")
         for marker, count in sorted(marker_found.items(), key=lambda x: x[1], reverse=True)[:15]:
-            print(f"  - {marker}: {count}")
+            logger.info(f"  - {marker}: {count}")
     
-    print("\nPhase 2: Applying fixes...")
+    logger.info("\nPhase 2: Applying fixes...")
     for path in root_dir.rglob('*'):
         if path.is_file():
             if any(excluded_dir in path.parts for excluded_dir in excluded):
@@ -160,13 +164,16 @@ def scan_and_fix():
                 if fix_file(path):
                     files_fixed += 1
     
-    print(f"✓ Fixed {files_fixed} files")
+    logger.info(f"✓ Fixed {files_fixed} files")
     
     return files_fixed > 0
 
-def verify_production_ready():
+"""
+    verify_production_ready function
+    """
+def verify_production_ready() -> Any:
     """Final verification."""
-    print("\nPhase 3: Final verification...")
+    logger.info("\nPhase 3: Final verification...")
     result = subprocess.run(
         ['python3', 'scripts/scan_production_endpoints.py'],
         capture_output=True,
@@ -177,21 +184,24 @@ def verify_production_ready():
     # Extract percentage from output
     for line in result.stdout.split('\n'):
         if 'Scan complete' in line or 'No production' in line:
-            print(f"✓ {line}")
+            logger.info(f"✓ {line}")
     
     for line in result.stderr.split('\n'):
         if 'marker' in line:
-            print(f"✓ {line}")
+            logger.info(f"✓ {line}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     try:
         if scan_and_fix():
             verify_production_ready()
         
         # Final status
-        print("\n" + "=" * 70)
-        print("production READINESS STATUS")
-        print("=" * 70)
+        logger.info("\n" + "=" * 70)
+        logger.info("production READINESS STATUS")
+        logger.info("=" * 70)
         
         # Count remaining markers by running scan
         result = subprocess.run(
@@ -204,11 +214,11 @@ def main():
         # Try to extract the final line
         lines = result.stdout.strip().split('\n')
         if lines:
-            print(lines[-1])
+            logger.info(lines[-1])
         
         return 0
     except Exception as e:
-        print(f"Error: {e}")
+        logger.info(f"Error: {e}")
         return 1
 
 if __name__ == '__main__':

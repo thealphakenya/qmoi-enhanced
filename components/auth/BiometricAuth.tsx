@@ -3,20 +3,20 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, useEffect, useRef } from "react";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Switch } from "@/components/ui/switch";
-import { Slider } from "@/components/ui/slider";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/label";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/alert";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/switch";
+import { specificExports } from "@/components/ui/slider";
 import {
   Select,
   SelectContent,
@@ -24,8 +24,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { Separator } from "@/components/ui/separator";
+import { specificExports } from "@/components/ui/textarea";
+import { specificExports } from "@/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,
@@ -178,7 +178,11 @@ interface BiometricAuthProps {
   onSystemHealth?: () => Promise<SystemHealth>;
 }
 
-export default function BiometricAuth({
+export default /**
+ * BiometricAuth function
+ */
+function BiometricAuth(): any {
+  try {({
   onAuthSuccess,
   onAuthFailure,
   onBiometricSaved,

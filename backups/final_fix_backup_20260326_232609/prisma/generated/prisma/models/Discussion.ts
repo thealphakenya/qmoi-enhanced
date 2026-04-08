@@ -12,9 +12,9 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
-import type * as $Enums from "../enums.ts"
-import type * as Prisma from "../internal/prismaNamespace.ts"
+import { specificExports } from "@prisma/client/runtime/library"
+import { specificExports } from "../enums.ts"
+import { specificExports } from "../internal/prismaNamespace.ts"
 
 /**
  * Model Discussion
@@ -802,7 +802,7 @@ export interface DiscussionDelegate<ExtArgs extends runtime.Types.Extensions.Int
 
   /**
    * Find the first Discussion that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DiscussionFindFirstArgs} args - Arguments to find a Discussion
    * @data
@@ -818,7 +818,7 @@ export interface DiscussionDelegate<ExtArgs extends runtime.Types.Extensions.Int
   /**
    * Find the first Discussion that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DiscussionFindFirstOrThrowArgs} args - Arguments to find a Discussion
    * @data
@@ -833,7 +833,7 @@ export interface DiscussionDelegate<ExtArgs extends runtime.Types.Extensions.Int
 
   /**
    * Find zero or more Discussions that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DiscussionFindManyArgs} args - Arguments to filter and select certain fields only.
    * @data
@@ -895,7 +895,7 @@ export interface DiscussionDelegate<ExtArgs extends runtime.Types.Extensions.Int
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -948,7 +948,7 @@ export interface DiscussionDelegate<ExtArgs extends runtime.Types.Extensions.Int
 
   /**
    * Update zero or more Discussions.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DiscussionUpdateManyArgs} args - Arguments to update one or more rows.
    * @data
@@ -989,7 +989,7 @@ export interface DiscussionDelegate<ExtArgs extends runtime.Types.Extensions.Int
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -1016,7 +1016,7 @@ export interface DiscussionDelegate<ExtArgs extends runtime.Types.Extensions.Int
 
   /**
    * Count the number of Discussions.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DiscussionCountArgs} args - Arguments to filter Discussions to count.
    * @data
@@ -1039,7 +1039,7 @@ export interface DiscussionDelegate<ExtArgs extends runtime.Types.Extensions.Int
 
   /**
    * Allows you to perform aggregations operations on a Discussion.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DiscussionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @data
@@ -1065,7 +1065,7 @@ export interface DiscussionDelegate<ExtArgs extends runtime.Types.Extensions.Int
 
   /**
    * Group by Discussion.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DiscussionGroupByArgs} args - Group by arguments.
    * @data

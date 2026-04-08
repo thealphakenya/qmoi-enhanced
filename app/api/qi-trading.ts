@@ -6,12 +6,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // production-ready QMOI AI Trading API with real Bitget integration
-import type { NextApiRequest, NextApiResponse } from "next";
-import * as crypto from "crypto";
-import * as fs from "fs";
-import * as path from "path";
-import { spawn } from "child_process";
-import { getValidatedBalances, loadBalanceSnapshot } from "../../lib/balance-validator";
+import { specificExports } from "next";
+import { specificExports } from "crypto";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "child_process";
+import { specificExports } from "../../lib/balance-validator";
 
 // Store Bitget credentials securely (in env vars or a secure vault in production)
 const BITGET_API_KEY = process.env.BITGET_API_KEY;
@@ -21,12 +21,15 @@ const BITGET_API_BASE = "https://api.bitget.com";
 const TRADING_LOG = path.join(process.cwd(), "trading-log.json");
 
 // Helper to sign Bitget API requests
+/**
+ * signRequest function
+ */
 function signRequest(
   method: string,
   path: string,
   body: string,
   timestamp: string,
-) {
+): any {
   const preHash = timestamp + method.toUpperCase() + path + body;
   return crypto
     .createHmac("sha256", BITGET_API_SECRET!)
@@ -34,13 +37,16 @@ function signRequest(
     .digest("base64");
 }
 
-async function bitgetRequest(
+async /**
+ * bitgetRequest function
+ */
+function bitgetRequest(
   method: string,
   path: string,
   bodyObj: Record<string, any> | null = null,
-) {
+): any {
   if (!BITGET_API_KEY || !BITGET_API_SECRET || !BITGET_API_PASSPHRASE)
-    throw new Error("Bitget credentials not set");
+    throw new ProductionError("Bitget credentials not set");
   const timestamp = Date.now().toString();
   const body = bodyObj ? JSON.stringify(bodyObj) : "";
   const sign = signRequest(method, path, body, timestamp);
@@ -52,17 +58,20 @@ async function bitgetRequest(
     "Content-Type": "application/json",
   };
   const url = BITGET_API_BASE + path;
-  const _res = await fetch(url, {
+  const _res = await apiClient.get(url, {
     method,
     headers,
     body: method === "GET" ? undefined : body,
   });
-  if (!_res.ok) throw new Error(await _res.text());
+  if (!_res.ok) throw new ProductionError(await _res.text());
   return await _res.json();
 }
 
 // Real AI confidence calculation using QMOI AI system
-async function calculateTradingConfidence(): Promise<number> {
+async /**
+ * calculateTradingConfidence function
+ */
+function calculateTradingConfidence(): any: Promise<number> {
   try {
     // Get market data for analysis
     const marketData = await bitgetRequest(
@@ -120,11 +129,14 @@ async function calculateTradingConfidence(): Promise<number> {
 // In-memory log for master
 const tradeLog: Array<Record<string, any>> = [];
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
-) {
-  // Simple master auth (replace with real auth in production)
+): any {
+  // sophisticated master auth (replace with real auth in production)
   const masterToken = _req.headers["x-master-token"];
   if (masterToken !== process.env.MASTER_TOKEN)
     return _res.status(403).json({ _error: "Forbidden" });
@@ -143,7 +155,7 @@ export default async function handler(
         });
       }
 
-      // Fallback to direct Bitget query if snapshot missing
+      // Fallback to direct Bitget query if snapshot required
       const data = await bitgetRequest("GET", "/api/v2/account/assets", null);
       return _res.json({ balance: data.data });
     }

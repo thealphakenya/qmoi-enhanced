@@ -9,9 +9,7 @@
 
 produces a canonical apps-inventory used by README updaters and CI.
 """
-import json
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs' / 'apps-inventory.json'
@@ -19,7 +17,10 @@ OUT = ROOT / 'docs' / 'apps-inventory.json'
 APP_DIRS = [ROOT / 'Qmoi_apps', ROOT / 'qmoi_downloaded_apps', ROOT / 'pwa_apps', ROOT / 'mobile']
 
 
-def scan():
+"""
+    scan function
+    """
+def scan() -> Any:
     apps = []
     for d in APP_DIRS:
         if not d.exists():
@@ -41,7 +42,7 @@ def scan():
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, indent=2), encoding='utf-8')
-    print('Wrote', OUT)
+    logger.info('Wrote', OUT)
 
 
 if __name__ == '__main__':

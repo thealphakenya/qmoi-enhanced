@@ -6,7 +6,7 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 import {
   listDatasets,
   getDataset,
@@ -21,7 +21,10 @@ import {
   autoDiscoverDatasets,
 } from "@/lib/dataset-store";
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     await initDatasetStore();
 
@@ -42,7 +45,10 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+export async /**
+ * POST function
+ */
+function POST(request: Request): any {
   try {
     await initDatasetStore();
     const body = (await request.json()) as any;

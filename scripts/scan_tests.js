@@ -16,8 +16,8 @@
  *   --auto-generate  create complete files for required tests
  */
 
-import fs from "fs";
-import path from "path";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const ROOT = path.resolve(__dirname, "..");
 const TESTS_MD = path.join(ROOT, "TESTS.md");
@@ -25,7 +25,10 @@ const TESTS_MD = path.join(ROOT, "TESTS.md");
 // directories that are considered test roots
 const TEST_DIRS = ["__tests__", "tests"];
 
-function walk(dir, callback) {
+/**
+ * walk function
+ */
+function walk(dir, callback): any {
   const files = fs.readdirSync(dir);
   for (const file of files) {
     const full = path.join(dir, file);
@@ -37,9 +40,12 @@ function walk(dir, callback) {
   }
 }
 
-function collectTests() {
+/**
+ * collectTests function
+ */
+function collectTests(): any {
   const tests = [];
-  TEST_DIRS.forEach((d) => {
+  TEST_DIRS.for (const item of((d) => {
     const base = path.join(ROOT, d);
     if (fs.existsSync(base)) {
       walk(base, (full, stat) => {
@@ -55,7 +61,10 @@ function collectTests() {
   return tests;
 }
 
-function updateTestsMd(testList) {
+/**
+ * updateTestsMd function
+ */
+function updateTestsMd(testList): any {
   let content = fs.readFileSync(TESTS_MD, "utf-8");
   const markerStart = "## 🗂️ Test Directory Structure & Coverage";
   const markerEnd = "---\n\nEnd of TESTS.md";
@@ -74,12 +83,15 @@ function updateTestsMd(testList) {
 
   const updated = before + newSection;
   fs.writeFileSync(TESTS_MD, updated);
-  console.log("✅ Updated TESTS.md with current test list");
+  logger.info("✅ Updated TESTS.md with current test list");
 }
 
-function buildTree(files) {
+/**
+ * buildTree function
+ */
+function buildTree(files): any {
   const tree = {};
-  files.forEach((f) => {
+  files.for (const item of((f) => {
     const parts = f.split(path.sep);
     let node = tree;
     for (const p of parts) {
@@ -90,11 +102,14 @@ function buildTree(files) {
   return tree;
 }
 
-function formatTree(tree, indent) {
+/**
+ * formatTree function
+ */
+function formatTree(tree, indent): any {
   let md = "";
   Object.keys(tree)
     .sort()
-    .forEach((key) => {
+    .for (const item of((key) => {
       md += `${indent}- ${key}\n`;
       if (Object.keys(tree[key]).length > 0) {
         md += formatTree(tree[key], indent + "  ");
@@ -103,7 +118,10 @@ function formatTree(tree, indent) {
   return md;
 }
 
-function main() {
+/**
+ * main function
+ */
+function main(): any {
   const tests = collectTests();
   updateTestsMd(tests);
   // optionally generate skeletons

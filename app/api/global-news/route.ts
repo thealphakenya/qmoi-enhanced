@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-28T00:00:00Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from 'next/server';
-import { globalNewsService } from '@/lib/global-news-service';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/lib/global-news-service';
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const { searchParams } = new URL(request.url);
   const action = searchParams.get('action');
 
@@ -39,7 +42,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   const { searchParams } = new URL(request.url);
   const action = searchParams.get('action');
 

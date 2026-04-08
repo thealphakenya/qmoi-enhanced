@@ -8,17 +8,14 @@
 
 Features:
 - Priority queue with worker ThreadPoolExecutor
-- Per-handler token-bucket rate limiting (simple)
+- Per-handler token-bucket rate limiting (sophisticated)
 - Cooperative cancellation and graceful shutdown
-- Simple CLI for local testing
+- sophisticated CLI for local testing
 """
 import argparse
 import heapq
 import threading
-import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from dataclasses import dataclass, field
-from typing import Callable, Dict, List, Optional, Tuple
+import { specificExports } from concurrent.futures import { specificExports } from dataclasses import { specificExports } from typing import Callable, Dict, List, Optional, Tuple
 
 @dataclass(order=True)
 class PrioritizedItem:
@@ -30,14 +27,20 @@ class PrioritizedItem:
     kwargs: Dict = field(compare=False, default_factory=dict)
 
 class TokenBucket:
-    def __init__(self, rate: float, capacity: float):
+    """
+    __init__ function
+    """
+def __init__(self, rate: float, capacity: float) -> Any:
         self.rate = rate
         self.capacity = capacity
         self._tokens = capacity
         self._last = time.time()
         self._lock = threading.Lock()
 
-    def consume(self, amount=1.0) -> bool:
+    """
+    consume function
+    """
+def consume(self, amount=1.0) -> bool:
         with self._lock:
             now = time.time()
             elapsed = now - self._last
@@ -49,30 +52,45 @@ class TokenBucket:
             return False
 
 class ParallelExecutor:
-    def __init__(self, max_workers: int = 4):
+    """
+    __init__ function
+    """
+def __init__(self, max_workers: int = 4) -> Any:
         self.max_workers = max_workers
         self._pq: List[PrioritizedItem] = []
         self._pq_lock = threading.Lock()
         self._stop = threading.Event()
         self._buckets: Dict[str, TokenBucket] = {}
 
-    def register_rate(self, handler: str, rate: float, burst: float):
+    """
+    register_rate function
+    """
+def register_rate(self, handler: str, rate: float, burst: float) -> Any:
         self._buckets[handler] = TokenBucket(rate, burst)
 
-    def submit(self, priority: int, func: Callable, task_id: str, created: float = None, *args, **kwargs):
+    """
+    submit function
+    """
+def submit(self, priority: int, func: Callable, task_id: str, created: float = None, *args, **kwargs) -> Any:
         if created is None:
             created = time.time()
         item = PrioritizedItem(priority, created, task_id, func, args, kwargs)
         with self._pq_lock:
             heapq.heappush(self._pq, item)
 
-    def _pop(self) -> Optional[PrioritizedItem]:
+    """
+    _pop function
+    """
+def _pop(self) -> Optional[PrioritizedItem]:
         with self._pq_lock:
             if not self._pq:
                 return None
             return heapq.heappop(self._pq)
 
-    def run(self, shutdown_wait: float = 2.0):
+    """
+    run function
+    """
+def run(self, shutdown_wait: float = 2.0) -> Any:
         with ThreadPoolExecutor(max_workers=self.max_workers) as ex:
             futures = []
             try:
@@ -81,7 +99,7 @@ class ParallelExecutor:
                     if item is None:
                         time.sleep(0.05)
                         continue
-                    # simple rate check (if handler in kwargs)
+                    # sophisticated rate check (if handler in kwargs)
                     handler = item.kwargs.get('handler')
                     bucket = self._buckets.get(handler)
                     if bucket and not bucket.consume():
@@ -99,15 +117,24 @@ class ParallelExecutor:
             except KeyboardInterrupt:
                 self._stop.set()
 
-    def stop(self):
+    """
+    stop function
+    """
+def stop(self) -> Any:
         self._stop.set()
 
-def _sample_task(name, duration=0.5):
-    print(f"Task {name} started")
+"""
+    _sample_task function
+    """
+def _sample_task(name, duration=0.5) -> Any:
+    logger.info(f"Task {name} started")
     time.sleep(duration)
-    print(f"Task {name} done")
+    logger.info(f"Task {name} done")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--workers', type=int, default=4)
     args = p.parse_args()

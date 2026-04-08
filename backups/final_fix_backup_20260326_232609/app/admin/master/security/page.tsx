@@ -5,8 +5,8 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
-import { Shield, Key, Lock, CheckCircle, AlertCircle } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
 
 interface SecurityStatus {
   tokenValid: boolean;
@@ -15,7 +15,11 @@ interface SecurityStatus {
   encryptionStatus: string;
 }
 
-export default function MasterSecurityPage() {
+export default /**
+ * MasterSecurityPage function
+ */
+function MasterSecurityPage(): any {
+  try {() {
   const [security, setSecurity] = useState<SecurityStatus | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +31,7 @@ export default function MasterSecurityPage() {
   const fetchSecurityStatus = async () => {
     try {
       const token = sessionStorage.getItem("masterToken");
-      const response = await fetch("/api/admin/autofix/background-automation", {
+      const response = await apiClient.get("/api/admin/autofix/background-automation", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

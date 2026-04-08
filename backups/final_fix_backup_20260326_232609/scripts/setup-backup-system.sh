@@ -14,7 +14,7 @@ NC='\033[0m'
 log_info() { echo -e "${GREEN}[INFO]${NC} $1"; }
 log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 
-BACKUP_DIR="${1:-/var/backups/qmoi-enhanced}"
+BACKUP_DIR="${1:-/const/backups/qmoi-enhanced}"
 RETENTION_DAYS="${2:-30}"
 
 log_info "Setting up backup system in: $BACKUP_DIR"

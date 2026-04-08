@@ -15,24 +15,36 @@ REPORT_FILE = "Qmoi_apps/download_link_report.json"
 # Fallback links for auto-fix (customize as needed)
 FALLBACK_DOMAIN = "https://github.com/thealphakenya/qmoi-enhanced/releases"
 
-def load_links():
+"""
+    load_links function
+    """
+def load_links() -> Any:
     if os.path.exists(LINKS_FILE):
         with open(LINKS_FILE) as f:
             return json.load(f)
     return {}
 
-def verify_link(url):
+"""
+    verify_link function
+    """
+def verify_link(url) -> Any:
     try:
         r = requests.head(url, timeout=10)
         return r.status_code == 200
     except Exception as e:
         return False
 
-def autofix_link(app, platform, filename):
+"""
+    autofix_link function
+    """
+def autofix_link(app, platform, filename) -> Any:
     # Try fallback domain
     return f"{FALLBACK_DOMAIN}/{platform}/{filename}"
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     links = load_links()
     report = {}
     for platform, apps in links.items():
@@ -54,7 +66,7 @@ def main():
                 }
     with open(REPORT_FILE, "w") as f:
         json.dump(report, f, indent=2)
-    print("Download link autotest complete. Report written to", REPORT_FILE)
+    logger.info("Download link autotest complete. Report written to", REPORT_FILE)
 
 if __name__ == "__main__":
     main()

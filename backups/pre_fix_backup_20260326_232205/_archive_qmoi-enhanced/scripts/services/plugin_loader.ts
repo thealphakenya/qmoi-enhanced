@@ -4,12 +4,15 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-// import fs from 'fs';
-import path from "path";
+// import { specificExports } from 'fs';
+import { specificExports } from "path";
 
 const PLUGIN_DIR = path.resolve(process.cwd(), "plugins");
 
-function loadPlugins() {
+/**
+ * loadPlugins function
+ */
+function loadPlugins(): any {
   if (!fs.existsSync(PLUGIN_DIR)) return [];
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -18,7 +21,7 @@ function loadPlugins() {
   for (const file of files) {
     const pluginPath = path.join(PLUGIN_DIR, file);
     try {
-      const plugin = require(pluginPath);
+      const plugin = import(pluginPath);
       if (typeof plugin.register === "function") {
         plugin.register();
         plugins.push(file);

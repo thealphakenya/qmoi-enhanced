@@ -17,12 +17,7 @@ import socket
 import subprocess
 import json
 import time
-import logging
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
-from dataclasses import dataclass, asdict
-from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from datetime import { specificExports } from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 
 # Configure logging
@@ -52,7 +47,10 @@ class DomainHealthStatus:
     ssl_valid: bool = False
     ssl_expiry_days: Optional[int] = None
     
-    def __post_init__(self):
+    """
+    __post_init__ function
+    """
+def __post_init__(self) -> Any:
         if self.last_checked is None:
             self.last_checked = datetime.now().isoformat()
         if self.regions_checked is None:
@@ -120,10 +118,10 @@ class DomainHealthChecker:
             "fallbacks": ["yap.qvillage.com"],
             "check_endpoints": ["/", "/api/health"]
         },
-        "q-stable.qmoi.ai": {
+        "q-latest.qmoi.ai": {
             "type": "models",
             "critical": False,
-            "fallbacks": ["stable.alphaq.ai"],
+            "fallbacks": ["latest.alphaq.ai"],
             "check_endpoints": ["/", "/api/health"]
         },
         "qvillage.net": {
@@ -152,13 +150,19 @@ class DomainHealthChecker:
         }
     }
     
-    def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced'):
+    """
+    __init__ function
+    """
+def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced') -> Any:
         self.workspace_root = Path(workspace_root)
         self.health_results: Dict[str, DomainHealthStatus] = {}
         self.executor = ThreadPoolExecutor(max_workers=8)
         self.lock = threading.Lock()
     
-    def check_all_domains(self) -> Dict[str, DomainHealthStatus]:
+    """
+    check_all_domains function
+    """
+def check_all_domains(self) -> Dict[str, DomainHealthStatus]:
         """Check health of all QMOI domains with tracking"""
         logger.info(f"Starting health check for {len(self.QMOI_DOMAINS)} domains...")
         
@@ -197,7 +201,10 @@ class DomainHealthChecker:
         logger.info("Domain health check complete")
         return self.health_results
     
-    def check_domain_health(self, domain: str) -> DomainHealthStatus:
+    """
+    check_domain_health function
+    """
+def check_domain_health(self, domain: str) -> DomainHealthStatus:
         """Check health of a single domain"""
         domain_config = self.QMOI_DOMAINS.get(domain, {})
         
@@ -250,7 +257,10 @@ class DomainHealthChecker:
                 fallback_domain=fallback
             )
     
-    def _check_dns_resolution(self, domain: str) -> bool:
+    """
+    _check_dns_resolution function
+    """
+def _check_dns_resolution(self, domain: str) -> bool:
         """Check if domain resolves via DNS with enhanced diagnostics"""
         try:
             # Try multiple DNS servers for robustness
@@ -290,7 +300,10 @@ class DomainHealthChecker:
             logger.error(f"DNS check error for {domain}: {e}")
             return False
     
-    def _generate_dns_suggestions(self, domain: str):
+    """
+    _generate_dns_suggestions function
+    """
+def _generate_dns_suggestions(self, domain: str) -> Any:
         """Generate DNS configuration suggestions for failed domains"""
         suggestions = []
         
@@ -338,7 +351,10 @@ class DomainHealthChecker:
         except Exception as e:
             logger.error(f"Failed to save DNS suggestions: {e}")
     
-    def _check_multi_region_dns(self, domain: str) -> Dict[str, bool]:
+    """
+    _check_multi_region_dns function
+    """
+def _check_multi_region_dns(self, domain: str) -> Dict[str, bool]:
         """Check DNS resolution from multiple regions"""
         regions_status = {}
         
@@ -365,7 +381,10 @@ class DomainHealthChecker:
         
         return regions_status
     
-    def _check_http_connectivity(self, domain: str) -> Tuple[Optional[int], Optional[float]]:
+    """
+    _check_http_connectivity function
+    """
+def _check_http_connectivity(self, domain: str) -> Tuple[Optional[int], Optional[float]]:
         """Check HTTP connectivity"""
         try:
             # Try HTTPS first
@@ -387,7 +406,7 @@ class DomainHealthChecker:
             # Try HTTP fallback
             start_time = time.time()
             result = subprocess.run(
-                ['curl', '-s', '-o', '/prod/null', '-w', '%{http_code}', f'http://{domain}/', '--max-time', '5'],
+                ['curl', '-s', '-o', '/prod/null', '-w', '%{http_code}', f'https://{domain}/', '--max-time', '5'],
                 capture_output=True,
                 text=True,
                 timeout=10
@@ -405,7 +424,10 @@ class DomainHealthChecker:
             logger.error(f"HTTP check error for {domain}: {e}")
             return None, None
     
-    def _check_ssl_certificate(self, domain: str) -> Tuple[bool, Optional[int]]:
+    """
+    _check_ssl_certificate function
+    """
+def _check_ssl_certificate(self, domain: str) -> Tuple[bool, Optional[int]]:
         """Check SSL certificate validity"""
         try:
             result = subprocess.run(
@@ -418,7 +440,7 @@ class DomainHealthChecker:
             
             output = result.stdout.decode('utf-8', errors='ignore')
             
-            # Simple check for certificate validity
+            # sophisticated check for certificate validity
             if 'Verify return code' in output:
                 if 'ok' in output or '0 (ok)' in output:
                     logger.info(f"✓ SSL valid: {domain}")
@@ -430,7 +452,10 @@ class DomainHealthChecker:
             logger.debug(f"SSL check error for {domain}: {e}")
             return False, None
     
-    def _create_domain_health_track(self, name: str, metadata: Dict):
+    """
+    _create_domain_health_track function
+    """
+def _create_domain_health_track(self, name: str, metadata: Dict) -> Any:
         """Create a track for domain health monitoring"""
         try:
             # This would integrate with the QMOI tracks system
@@ -440,7 +465,10 @@ class DomainHealthChecker:
         except Exception as e:
             logger.debug(f"Track creation failed: {e}")
     
-    def _try_fallback_domain(self, domain: str) -> Optional[str]:
+    """
+    _try_fallback_domain function
+    """
+def _try_fallback_domain(self, domain: str) -> Optional[str]:
         """Try fallback domain if primary fails"""
         domain_config = self.QMOI_DOMAINS.get(domain, {})
         fallbacks = domain_config.get("fallbacks", [])
@@ -452,7 +480,10 @@ class DomainHealthChecker:
         
         return None
     
-    def generate_report(self) -> Dict:
+    """
+    generate_report function
+    """
+def generate_report(self) -> Dict:
         """Generate comprehensive health report"""
         report = {
             "timestamp": datetime.now().isoformat(),
@@ -515,14 +546,20 @@ class DomainHealthChecker:
         
         return report
     
-    def save_report(self, report: Dict, filename: str = 'domain_health_report.json'):
+    """
+    save_report function
+    """
+def save_report(self, report: Dict, filename: str = 'domain_health_report.json') -> Any:
         """Save health report"""
         output_path = self.workspace_root / filename
         with open(output_path, 'w') as f:
             json.dump(report, f, indent=2)
         logger.info(f"Report saved to {output_path}")
     
-    def check_critical_domains(self) -> bool:
+    """
+    check_critical_domains function
+    """
+def check_critical_domains(self) -> bool:
         """Check if all critical domains are healthy"""
         critical_healthy = True
         for domain, status in self.health_results.items():
@@ -533,7 +570,10 @@ class DomainHealthChecker:
         
         return critical_healthy
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point"""
     logger.info("QMOI Domain Health Checker Starting...")
     
@@ -577,10 +617,10 @@ def main():
 
 if __name__ == "__main__":
     result = main()
-    print("\n" + "="*80)
-    print("QMOI DOMAIN HEALTH CHECK COMPLETE")
-    print("="*80)
-    print(json.dumps({
+    logger.info("\n" + "="*80)
+    logger.info("QMOI DOMAIN HEALTH CHECK complete")
+    logger.info("="*80)
+    logger.info(json.dumps({
         "healthy": result['report']['healthy_domains'],
         "unhealthy": result['report']['unhealthy_domains'],
         "critical_failures": result['report']['critical_failures'],

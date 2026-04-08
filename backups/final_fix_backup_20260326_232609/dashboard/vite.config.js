@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:59:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import react from "@vitejs/plugin-react";
-import path from "path";
-import { defineConfig } from "vite";
+import { specificExports } from "@vitejs/plugin-react";
+import { specificExports } from "path";
+import { specificExports } from "vite";
 
 export default defineConfig({
   root: ".",
@@ -20,7 +20,7 @@ export default defineConfig({
     },
     proxy: {
       "/api": {
-        target: "http://localhost:3000",
+        target: "https://production.qmoi.ai:3000",
         changeOrigin: true,
         secure: false,
       },

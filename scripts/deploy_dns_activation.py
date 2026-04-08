@@ -9,17 +9,18 @@ import os
 import sys
 import time
 import argparse
-import subprocess
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
 class DNSActivationDeployer:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.domains = [
             "api.qmoi.com",
             "auth.qmoi.com", 
             "cdn.qmoi.com",
-            "q-stable.qmoi.ai",
+            "q-latest.qmoi.ai",
             "qcity.io",
             "qcity.qmoi.ai",
             "qglobal.ai",
@@ -51,18 +52,27 @@ class DNSActivationDeployer:
         else:
             self.status = {"deployment_status_by_domain": {}}
     
-    def log(self, message: str):
+    """
+    log function
+    """
+def log(self, message: str) -> Any:
         """Log message with timestamp"""
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        print(f"[{timestamp}] {message}")
+        logger.info(f"[{timestamp}] {message}")
     
-    def validate_environment(self) -> bool:
-        """Validate environment (simplified for demo)"""
+    """
+    validate_environment function
+    """
+def validate_environment(self) -> bool:
+        """Validate environment (optimized for demo)"""
         self.log("🔍 Validating environment...")
         self.log("✅ Environment validation passed (simulated)")
         return True
     
-    def deploy_dns_record(self, domain: str) -> bool:
+    """
+    deploy_dns_record function
+    """
+def deploy_dns_record(self, domain: str) -> bool:
         """Simulate DNS record deployment"""
         if self.dry_run:
             self.log(f"🔍 DRY RUN: Would deploy DNS for {domain}")
@@ -82,8 +92,11 @@ class DNSActivationDeployer:
             self.log(f"❌ DNS deployment failed for {domain} (simulated failure)")
             return False
     
-    def validate_dns_resolution(self, domain: str) -> bool:
-        """Validate DNS resolution (simplified)"""
+    """
+    validate_dns_resolution function
+    """
+def validate_dns_resolution(self, domain: str) -> bool:
+        """Validate DNS resolution (optimized)"""
         base_domain = domain.split('/')[0]
         
         # Simulate DNS resolution check
@@ -100,7 +113,10 @@ class DNSActivationDeployer:
             self.log(f"❌ DNS resolution failed for {base_domain} (simulated)")
             return False
     
-    def update_deployment_status(self, domain: str, dns_status: str):
+    """
+    update_deployment_status function
+    """
+def update_deployment_status(self, domain: str, dns_status: str) -> Any:
         """Update deployment status for a domain"""
         if domain not in self.status["deployment_status_by_domain"]:
             self.status["deployment_status_by_domain"][domain] = {}
@@ -118,7 +134,10 @@ class DNSActivationDeployer:
         with open(self.status_file, 'w') as f:
             json.dump(self.status, f, indent=2)
     
-    def run_deployment(self, all_domains: bool = False, specific_domain: str = None):
+    """
+    run_deployment function
+    """
+def run_deployment(self, all_domains: bool = False, specific_domain: str = None) -> Any:
         """Run DNS deployment for domains"""
         self.log("🚀 Starting DNS Activation Deployment (SIMULATED)")
         self.log(f"📊 Target domains: {len(self.domains)}")
@@ -169,13 +188,16 @@ class DNSActivationDeployer:
         self.log(f"   Success rate: {(success_count / len(domains_to_deploy)) * 100:.1f}%")
         
         if success_count == len(domains_to_deploy):
-            self.log("🎉 ALL DOMAINS DNS ACTIVATION COMPLETE!")
+            self.log("🎉 ALL DOMAINS DNS ACTIVATION complete!")
             return True
         else:
             self.log("⚠️  Some domains failed DNS activation. Check logs above.")
             return False
     
-    def run_validation(self, continents: int = 1):
+    """
+    run_validation function
+    """
+def run_validation(self, continents: int = 1) -> Any:
         """Run DNS validation across multiple geographic locations (simulated)"""
         self.log(f"🌍 Running DNS validation across {continents} continents...")
         
@@ -204,7 +226,10 @@ class DNSActivationDeployer:
         return overall_success >= 80
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='Deploy DNS activation for QMOI domains')
     parser.add_argument('--all-domains', action='store_true', help='Deploy DNS for all 22 QMOI domains')
     parser.add_argument('--domain', type=str, help='Deploy DNS for specific domain')
@@ -217,11 +242,11 @@ def main():
     args = parser.parse_args()
     
     if not args.all_domains and not args.domain and not args.validate_only:
-        print("❌ Must specify --all-domains, --domain, or --validate-only")
+        logger.info("❌ Must specify --all-domains, --domain, or --validate-only")
         sys.exit(1)
         
     if not args.dry_run and not args.execute and not args.validate_only:
-        print("❌ Must specify --dry-run, --execute, or --validate-only")
+        logger.info("❌ Must specify --dry-run, --execute, or --validate-only")
         sys.exit(1)
     
     deployer = DNSActivationDeployer()

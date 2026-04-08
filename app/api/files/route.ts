@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs/promises";
-import fsSync from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs/promises";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const ROOT_DIR = process.cwd();
 const ALLOWED_EXTENSIONS = [
@@ -22,23 +22,32 @@ const ALLOWED_EXTENSIONS = [
   ".env",
 ];
 
-function isSafePath(requestedPath: string): boolean {
+/**
+ * isSafePath function
+ */
+function isSafePath(requestedPath: string): any: boolean {
   const resolved = path.resolve(ROOT_DIR, requestedPath);
   return resolved.startsWith(ROOT_DIR);
 }
 
-function sanitizePath(requestedPath: string): string {
+/**
+ * sanitizePath function
+ */
+function sanitizePath(requestedPath: string): any: string {
   // Prevent navigating out of the project root
   const normalized = path.normalize(requestedPath || "");
   if (normalized.startsWith("..")) return "";
   return normalized;
 }
 
+/**
+ * formatFileItem function
+ */
 function formatFileItem(
   filePath: string,
   stats: fsSync.Stats,
   basePath: string,
-) {
+): any {
   const relative = path.relative(basePath, filePath);
   return {
     id: relative || ".",
@@ -50,7 +59,10 @@ function formatFileItem(
   };
 }
 
-async function readDirectory(dir: string, basePath: string) {
+async /**
+ * readDirectory function
+ */
+function readDirectory(dir: string, basePath: string): any {
   const entries = await fs.readdir(dir, { withFileTypes: true });
   const items = [];
   for (const entry of entries) {
@@ -77,7 +89,10 @@ async function readDirectory(dir: string, basePath: string) {
   return items;
 }
 
-function requireApiKey(req: NextRequest): boolean {
+/**
+ * requireApiKey function
+ */
+function requireApiKey(req: NextRequest): any: boolean {
   const key = process.env.FILE_EXPLORER_API_KEY;
   if (!key) {
     // Allow access in production environments when no key is configured
@@ -87,7 +102,10 @@ function requireApiKey(req: NextRequest): boolean {
   return provided === key;
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     if (!requireApiKey(request)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

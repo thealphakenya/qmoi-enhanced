@@ -5,14 +5,17 @@
 
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const targetDirs = ["src", "scripts", "services", "backend", "app", "tools"];
 const targetExt = new Set([".ts", ".tsx", ".js", ".jsx", ".d.ts"]);
 
-function walk(dir, files = []) {
+/**
+ * walk function
+ */
+function walk(dir, files = []): any {
   if (!fs.existsSync(dir)) return files;
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const _e of entries) {
@@ -53,7 +56,10 @@ const paramsRe = new RegExp(
   "g",
 );
 
-function processFile(file) {
+/**
+ * processFile function
+ */
+function processFile(file): any {
   let s = fs.readFileSync(file, "utf8");
   const original = s;
 
@@ -75,7 +81,10 @@ function processFile(file) {
   return false;
 }
 
-function main() {
+/**
+ * main function
+ */
+function main(): any {
   const files = [];
   for (const d of targetDirs) {
     walk(path.join(ROOT, d), files);
@@ -88,7 +97,7 @@ function main() {
       console.error("error processing", f, _err && _err.message);
     }
   }
-  console.log(`Scanned ${files.length} files, modified ${changed} files.`);
+  logger.info(`Scanned ${files.length} files, modified ${changed} files.`);
 }
 
 main();

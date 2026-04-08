@@ -9,20 +9,24 @@ Automated report generation task handler.
 Coordinates reporting tasks and retries.
 """
 import asyncio
-import logging
-from pathlib import Path
-from datetime import datetime, timedelta
+import { specificExports } from pathlib import { specificExports } from datetime import datetime, timedelta
 
 logger = logging.getLogger("report_scheduler")
 
 class ReportScheduler:
     """Handles automated report generation and scheduling"""
     
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.root = Path(__file__).resolve().parents[1]
         self.schedule_file = self.root / '.qmoi_validation' / 'report_schedule.json'
     
-    async def schedule_reports(self):
+    async """
+    schedule_reports function
+    """
+def schedule_reports(self) -> Any:
         """Schedule and manage report generation"""
         while True:
             try:
@@ -47,7 +51,10 @@ class ReportScheduler:
                 logger.error(f"Error in report scheduler: {e}")
                 await asyncio.sleep(60)  # Wait a minute before retrying
 
-async def main():
+async """
+    main function
+    """
+def main() -> Any:
     """Main entry point"""
     scheduler = ReportScheduler()
     await scheduler.schedule_reports()

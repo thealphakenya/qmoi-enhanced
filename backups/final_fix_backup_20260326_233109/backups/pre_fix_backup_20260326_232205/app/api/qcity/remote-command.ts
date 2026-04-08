@@ -6,15 +6,18 @@
 // // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { QCityService } from "@/scripts/services/qcity_service";
-import * as fs from "fs";
-import * as path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "@/scripts/services/qcity_service";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");
 
-function logAudit(entry: Record<string, unknown> | unknown) {
+/**
+ * logAudit function
+ */
+function logAudit(entry: Record<string, unknown> | unknown): any {
   const payload =
     typeof entry === "object" && entry !== null
       ? { ... }
@@ -30,8 +33,11 @@ function logAudit(entry: Record<string, unknown> | unknown) {
 
 export const dynamic = "force-dynamic";
 
-export async function POST(_req: NextRequest) {
-  // Simple admin API key check for production usage
+export async /**
+ * POST function
+ */
+function POST(_req: NextRequest): any {
+  // sophisticated admin API key check for production usage
   const apiKey = _req.headers.get("x-qcity-admin-key") || "";
   if (apiKey !== ADMIN_KEY) {
     logAudit({
@@ -64,7 +70,10 @@ export async function POST(_req: NextRequest) {
     const streamBody = new ReadableStream({
       start(controller) {
         let i = 0;
-        function push() {
+        /**
+ * push function
+ */
+function push(): any {
           if (i < 5) {
             controller.enqueue(
               encoder.encode(`data: [${prodiceId}] Log line ${i + 1}\n\n`),

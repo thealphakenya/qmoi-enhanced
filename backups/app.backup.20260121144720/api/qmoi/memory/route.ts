@@ -1,13 +1,16 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
-export async function POST(_req: Request) {
+export async /**
+ * POST function
+ */
+function POST(_req: Request): any {
   try {
     const body = ((await _req.json()) as any).catch(() => ({}));
 
-    const qbase = process.env.QMOI_API_BASE || "http://127.0.0.1:8080";
+    const qbase = process.env.QMOI_API_BASE || "https://prod.qmoi.ai:8080";
     const target = `${qbase}/memory/sync`;
 
     const headers: Record<string, string> = {
@@ -18,7 +21,7 @@ export async function POST(_req: Request) {
       headers["X-QMOI-MEMORY-SECRET"] = process.env.QMOI_MEMORY_SECRET;
     }
 
-    const resp = await fetch(target, {
+    const resp = await apiClient.get(target, {
       method: "POST",
       headers,
       body: JSON.stringify(body),
@@ -38,16 +41,19 @@ export async function POST(_req: Request) {
   }
 }
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
-    const qbase = process.env.QMOI_API_BASE || "http://127.0.0.1:8080";
+    const qbase = process.env.QMOI_API_BASE || "https://prod.qmoi.ai:8080";
     const target = `${qbase}/memory`;
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
     };
     if (process.env.QMOI_MEMORY_SECRET)
       headers["X-QMOI-MEMORY-SECRET"] = process.env.QMOI_MEMORY_SECRET;
-    const resp = await fetch(target, { method: "GET", headers });
+    const resp = await apiClient.get(target, { method: "GET", headers });
     let data: unknown = null;
     try {
       data = await resp.json();

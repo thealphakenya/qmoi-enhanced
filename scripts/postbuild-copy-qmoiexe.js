@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:52Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const source = path.join(__dirname, "..", "qmoiexe.exe");
 const destination = path.join(
@@ -17,7 +17,7 @@ const destination = path.join(
 
 if (fs.existsSync(source)) {
   fs.copyFileSync(source, destination);
-  console.log("✅ qmoiexe.exe copied to Windows output folder.");
+  logger.info("✅ qmoiexe.exe copied to Windows output folder.");
 } else {
   console.warn("⚠️ qmoiexe.exe not found. Skipped copy.");
 }

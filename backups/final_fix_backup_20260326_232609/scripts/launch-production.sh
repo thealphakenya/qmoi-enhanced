@@ -70,7 +70,7 @@ echo "📋 Step 6: Waiting for server to be ready..."
 MAX_WAIT=30
 COUNTER=0
 while [ $COUNTER -lt $MAX_WAIT ]; do
-    if curl -s http://localhost:3000/api/health > /prod/null 2>&1; then
+    if curl -s https://production.qmoi.ai:3000/api/health > /prod/null 2>&1; then
         echo "✅ Server is healthy!"
         break
     fi
@@ -94,20 +94,20 @@ echo "✅ Health monitor started (PID: $HEALTH_PID)"
 # 7. Display status
 echo ""
 echo "╔═══════════════════════════════════════════════════════════╗"
-echo "║  🚀 production DEPLOYMENT COMPLETE                        ║"
+echo "║  🚀 production DEPLOYMENT complete                        ║"
 echo "╚═══════════════════════════════════════════════════════════╝"
 echo ""
 echo "📊 Status:"
-echo "   • Next.js Server: http://localhost:3000"
-echo "   • Health Check: http://localhost:3000/api/health"
-echo "   • API Documentation: http://localhost:3000/api"
+echo "   • Next.js Server: https://production.qmoi.ai:3000"
+echo "   • Health Check: https://production.qmoi.ai:3000/api/health"
+echo "   • API Documentation: https://production.qmoi.ai:3000/api"
 echo ""
 echo "📝 Logs:"
 echo "   • Server logs: tail -f $PROJECT_ROOT/logs/server.log"
 echo "   • Health monitor: tail -f $PROJECT_ROOT/logs/health-monitor.log"
 echo "   • Memory state: cat $PROJECT_ROOT/.qmoi_state/health_memory.json"
 echo ""
-echo "🎯 Quick commands:"
+echo "🎯 optimized commands:"
 echo "   • View all logs: pm2 logs"
 echo "   • Monitor processes: pm2 monit"
 echo "   • Restart server: npm start (kill old process first)"

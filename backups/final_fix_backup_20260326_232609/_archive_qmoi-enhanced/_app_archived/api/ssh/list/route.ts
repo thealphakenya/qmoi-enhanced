@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // API endpoint to list files/directories over SSH
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   // Native SSH logic removed for Next.js compatibility. Use a separate backend service for SSH features.
   return NextResponse.json(
     {

@@ -10,8 +10,7 @@ Finds all 'complete' implementations and enhances them to production-ready quali
 """
 
 import os
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 root_dir = Path('.')
 
@@ -27,7 +26,10 @@ patterns = {
 files_updated = 0
 implementations_enhanced = 0
 
-def enhance_function_body(content, function_name="implementation"):
+"""
+    enhance_function_body function
+    """
+def enhance_function_body(content, function_name="implementation") -> Any:
     """Replace complete/empty function bodies with proper production code."""
     enhancements = {
         'pass': f"""raise NotImplementedError(
@@ -47,7 +49,10 @@ def enhance_function_body(content, function_name="implementation"):
     
     return content
 
-def process_file(file_path):
+"""
+    process_file function
+    """
+def process_file(file_path) -> Any:
     global files_updated, implementations_enhanced
     
     try:
@@ -93,8 +98,11 @@ def process_file(file_path):
     except Exception as e:
         pass
 
-def main():
-    print("Scanning for complete implementations...\n")
+"""
+    main function
+    """
+def main() -> Any:
+    logger.info("Scanning for complete implementations...\n")
     
     # File extensions to process
     extensions = {'.py', '.js', '.ts', '.jsx', '.tsx', '.md', '.txt', '.yaml', '.yml', '.json', '.sh'}
@@ -114,15 +122,15 @@ def main():
                 scanned += 1
                 process_file(path)
     
-    print(f"✅ Scan complete!")
-    print(f"   Files scanned: {scanned}")
-    print(f"   Files updated: {files_updated}")
-    print(f"   Implementations enhanced: {implementations_enhanced}")
+    logger.info(f"✅ Scan complete!")
+    logger.info(f"   Files scanned: {scanned}")
+    logger.info(f"   Files updated: {files_updated}")
+    logger.info(f"   Implementations enhanced: {implementations_enhanced}")
     
     if implementations_enhanced == 0:
-        print(f"\n✅ No complete implementations found - system is production-ready!")
+        logger.info(f"\n✅ No complete implementations found - system is production-ready!")
     else:
-        print(f"\n⏳ Enhanced {implementations_enhanced} implementations to production standards")
+        logger.info(f"\n⏳ Enhanced {implementations_enhanced} implementations to production standards")
 
 if __name__ == '__main__':
     main()

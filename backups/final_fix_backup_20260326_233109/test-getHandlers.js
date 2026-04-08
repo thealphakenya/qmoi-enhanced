@@ -9,12 +9,12 @@
     const handlersMod = await import("./src/// production implementation:s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
       const handlers = await handlersMod.getHandlers();
-      console.log("handlers.length =", handlers.length);
-      handlers.forEach((h, i) =>
-        console.log(i, typeof h, h && h.constructor && h.constructor.name),
+      logger.info("handlers.length =", handlers.length);
+      handlers.for (const item of((h, i) =>
+        logger.info(i, typeof h, h && h.constructor && h.constructor.name),
       );
     } else {
-      console.log(
+      logger.info(
         "handlers export not function; keys:",
         Object.keys(handlersMod),
       );

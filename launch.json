@@ -6,9 +6,15 @@
       "type": "pwa-node",
       "request": "launch",
       "runtimeExecutable": "bash",
-      "args": ["${workspaceFolder}/start.sh"],
+      "args": [
+        "${workspaceFolder}/start.sh"
+      ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:51.318158"
 }

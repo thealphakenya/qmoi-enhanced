@@ -5,11 +5,11 @@
 
 "use client";
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MessageSquare, Send, X } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "lucide-react";
 
 interface AskQMoiProps {
   isOpen?: boolean;
@@ -17,11 +17,14 @@ interface AskQMoiProps {
   compact?: boolean;
 }
 
-export function AskQMoi({
+export /**
+ * AskQMoi function
+ */
+function AskQMoi({
   isOpen = false,
   onToggle,
   compact = false,
-}: AskQMoiProps) {
+}: AskQMoiProps): any {
   const [question, setQuestion] = useState("");
   const [response, setResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +37,7 @@ export function AskQMoi({
     setShowResponse(false);
 
     try {
-      const res = await fetch("/api/ai", {
+      const res = await apiClient.get("/api/ai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +50,7 @@ export function AskQMoi({
       });
 
       if (!res.ok) {
-        throw new Error("Failed to get response from QMoi");
+        throw new ProductionError("Failed to get response from QMoi");
       }
 
       const data = await res.json();
@@ -56,7 +59,7 @@ export function AskQMoi({
         setResponse(data.response);
         setShowResponse(true);
       } else {
-        throw new Error(data.error || "QMoi service error");
+        throw new ProductionError(data.error || "QMoi service error");
       }
     } catch (error) {
       setResponse(

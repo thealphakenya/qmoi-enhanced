@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { Info, Refresh, TrendingDown, TrendingUp } from "@mui/icons-material";
+import { specificExports } from "@mui/icons-material";
 import {
     Alert,
     Box,
@@ -23,9 +23,9 @@ import {
     Tooltip,
     Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { TradingManager } from "../config/trading";
-import { useAuth } from "../hooks/useAuth";
+import { specificExports } from "react";
+import { specificExports } from "../config/trading";
+import { specificExports } from "../hooks/useAuth";
 
 interface Trade {
   id: string;

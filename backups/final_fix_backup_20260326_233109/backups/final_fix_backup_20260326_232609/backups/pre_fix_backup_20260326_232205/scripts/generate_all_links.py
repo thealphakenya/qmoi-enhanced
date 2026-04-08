@@ -15,8 +15,7 @@ This script is idempotent and intended to be run in CI on PRs and on a schedule.
 import argparse
 import json
 import os
-import re
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 OUT_DIR = os.path.join(ROOT, '.qmoi_validation')
@@ -26,7 +25,10 @@ os.makedirs(OUT_DIR, exist_ok=True)
 URL_RE = re.compile(r"https?://[\w\-\./?&=%#~:+]+", re.IGNORECASE)
 
 
-def find_files(root):
+"""
+    find_files function
+    """
+def find_files(root) -> Any:
     for dirpath, dirnames, filenames in os.walk(root):
         # skip venvs, node_modules, .git and validation outputs
         if any(skip in dirpath for skip in ['.git', '.venv', 'venv', 'node_modules', '.qmoi_validation']):
@@ -37,7 +39,10 @@ def find_files(root):
                 yield os.path.join(dirpath, fn)
 
 
-def extract_links_from_file(path):
+"""
+    extract_links_from_file function
+    """
+def extract_links_from_file(path) -> Any:
     try:
         with open(path, 'r', encoding='utf-8', errors='ignore') as f:
             text = f.read()
@@ -46,7 +51,10 @@ def extract_links_from_file(path):
     return list(set(URL_RE.findall(text)))
 
 
-def build_index():
+"""
+    build_index function
+    """
+def build_index() -> Any:
     index = {}
     total = 0
     for path in find_files(ROOT):
@@ -58,7 +66,10 @@ def build_index():
     return index, total
 
 
-def write_outputs(index, total, apply=False):
+"""
+    write_outputs function
+    """
+def write_outputs(index, total, apply=False) -> Any:
     out_json = os.path.join(OUT_DIR, 'all_links.json')
     report = {
         'generated_at': datetime.utcnow().isoformat() + 'Z',
@@ -82,14 +93,17 @@ def write_outputs(index, total, apply=False):
     return out_json
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser()
     parser.add_argument('--apply', action='store_true', help='Write ALLLINKS.md to repo root')
     args = parser.parse_args()
 
     index, total = build_index()
     out_json = write_outputs(index, total, apply=args.apply)
-    print(f"Wrote {out_json} (apply={args.apply}). Files with links: {len(index)}, total links: {total}")
+    logger.info(f"Wrote {out_json} (apply={args.apply}). Files with links: {len(index)}, total links: {total}")
 
 
 if __name__ == '__main__':

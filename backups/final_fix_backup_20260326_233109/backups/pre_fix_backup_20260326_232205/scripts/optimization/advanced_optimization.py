@@ -16,10 +16,7 @@ import json
 import time
 import logging
 import subprocess
-import threading
-from pathlib import Path
-from typing import Dict, List, Optional, Any
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from datetime import datetime
 import argparse
 import psutil
 import shutil
@@ -37,7 +34,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class QMOIAdvancedOptimizer:
-    def __init__(self, aggressive: bool = False, dry_run: bool = False):
+    """
+    __init__ function
+    """
+def __init__(self, aggressive: bool = False, dry_run: bool = False) -> Any:
         self.aggressive = aggressive
         self.dry_run = dry_run
         self.root_dir = Path(__file__).parent.parent.parent
@@ -86,7 +86,10 @@ class QMOIAdvancedOptimizer:
             }
         }
 
-    def run_command(self, command: List[str], cwd: Optional[Path] = None) -> Dict:
+    """
+    run_command function
+    """
+def run_command(self, command: List[str], cwd: Optional[Path] = None) -> Dict:
         """Run a command and return results"""
         try:
             logger.info(f"Running command: {' '.join(command)}")
@@ -128,7 +131,10 @@ class QMOIAdvancedOptimizer:
                 'execution_time': 0
             }
 
-    def get_system_info(self) -> Dict[str, Any]:
+    """
+    get_system_info function
+    """
+def get_system_info(self) -> Dict[str, Any]:
         """Get comprehensive system information"""
         try:
             # CPU info
@@ -175,7 +181,10 @@ class QMOIAdvancedOptimizer:
             logger.error(f"Error getting system info: {e}")
             return {}
 
-    def get_high_cpu_processes(self, threshold: float = 50.0) -> List[Dict]:
+    """
+    get_high_cpu_processes function
+    """
+def get_high_cpu_processes(self, threshold: float = 50.0) -> List[Dict]:
         """Get processes using high CPU"""
         high_cpu_processes = []
         try:
@@ -194,7 +203,10 @@ class QMOIAdvancedOptimizer:
         
         return sorted(high_cpu_processes, key=lambda x: x['cpu_percent'], reverse=True)[:10]
 
-    def get_high_memory_processes(self, threshold_mb: float = 100.0) -> List[Dict]:
+    """
+    get_high_memory_processes function
+    """
+def get_high_memory_processes(self, threshold_mb: float = 100.0) -> List[Dict]:
         """Get processes using high memory"""
         high_memory_processes = []
         try:
@@ -214,7 +226,10 @@ class QMOIAdvancedOptimizer:
         
         return sorted(high_memory_processes, key=lambda x: x['memory_mb'], reverse=True)[:10]
 
-    def cleanup_files(self) -> Dict[str, Any]:
+    """
+    cleanup_files function
+    """
+def cleanup_files(self) -> Dict[str, Any]:
         """Clean up permanent and cache files"""
         logger.info("Starting file cleanup...")
         
@@ -279,7 +294,10 @@ class QMOIAdvancedOptimizer:
         logger.info(f"File cleanup complete. Removed {cleanup_results['files_removed']} files, freed {cleanup_results['space_freed_mb']:.2f} MB")
         return cleanup_results
 
-    def cleanup_logs_directory(self, cleanup_results: Dict[str, Any]) -> None:
+    """
+    cleanup_logs_directory function
+    """
+def cleanup_logs_directory(self, cleanup_results: Dict[str, Any]) -> None:
         """Clean up logs directory"""
         try:
             log_files = list(self.logs_dir.glob('*.log'))
@@ -299,7 +317,10 @@ class QMOIAdvancedOptimizer:
         except Exception as e:
             logger.error(f"Error cleaning logs directory: {e}")
 
-    def optimize_processes(self) -> Dict[str, Any]:
+    """
+    optimize_processes function
+    """
+def optimize_processes(self) -> Dict[str, Any]:
         """Optimize running processes"""
         logger.info("Starting process optimization...")
         
@@ -361,7 +382,10 @@ class QMOIAdvancedOptimizer:
         logger.info(f"Process optimization complete. Terminated {optimization_results['processes_terminated']} processes")
         return optimization_results
 
-    def optimize_system(self) -> Dict[str, Any]:
+    """
+    optimize_system function
+    """
+def optimize_system(self) -> Dict[str, Any]:
         """Perform system-level optimizations"""
         logger.info("Starting system optimization...")
         
@@ -375,7 +399,7 @@ class QMOIAdvancedOptimizer:
             
             # Clear permanent files
             if config['clear_temp']:
-                temp_dirs = ['/tmp', '/var/tmp', os.environ.get('TEMP', ''), os.environ.get('TMP', '')]
+                temp_dirs = ['/tmp', '/const/tmp', os.environ.get('TEMP', ''), os.environ.get('TMP', '')]
                 for temp_dir in temp_dirs:
                     if temp_dir and os.path.exists(temp_dir):
                         try:
@@ -435,7 +459,10 @@ class QMOIAdvancedOptimizer:
         logger.info(f"System optimization complete. Applied {len(optimization_results['optimizations_applied'])} optimizations")
         return optimization_results
 
-    def optimize_applications(self) -> Dict[str, Any]:
+    """
+    optimize_applications function
+    """
+def optimize_applications(self) -> Dict[str, Any]:
         """Optimize applications and their caches"""
         logger.info("Starting application optimization...")
         
@@ -488,7 +515,10 @@ class QMOIAdvancedOptimizer:
         logger.info(f"Application optimization complete. Cleared {len(optimization_results['caches_cleared'])} caches")
         return optimization_results
 
-    def get_browser_cache_paths(self) -> Dict[str, str]:
+    """
+    get_browser_cache_paths function
+    """
+def get_browser_cache_paths(self) -> Dict[str, str]:
         """Get browser cache paths"""
         cache_paths = {}
         
@@ -507,7 +537,10 @@ class QMOIAdvancedOptimizer:
         
         return cache_paths
 
-    def get_application_cache_paths(self) -> Dict[str, str]:
+    """
+    get_application_cache_paths function
+    """
+def get_application_cache_paths(self) -> Dict[str, str]:
         """Get application cache paths"""
         cache_paths = {}
         
@@ -526,7 +559,10 @@ class QMOIAdvancedOptimizer:
         
         return cache_paths
 
-    def optimize_databases(self) -> List[str]:
+    """
+    optimize_databases function
+    """
+def optimize_databases(self) -> List[str]:
         """Optimize databases"""
         optimized_dbs = []
         
@@ -554,7 +590,10 @@ class QMOIAdvancedOptimizer:
         
         return optimized_dbs
 
-    def generate_optimization_report(self) -> Dict[str, Any]:
+    """
+    generate_optimization_report function
+    """
+def generate_optimization_report(self) -> Dict[str, Any]:
         """Generate comprehensive optimization report"""
         logger.info("Generating optimization report...")
         
@@ -590,7 +629,10 @@ class QMOIAdvancedOptimizer:
         
         return report
 
-    def generate_recommendations(self) -> List[Dict]:
+    """
+    generate_recommendations function
+    """
+def generate_recommendations(self) -> List[Dict]:
         """Generate optimization recommendations"""
         recommendations = []
         
@@ -644,7 +686,10 @@ class QMOIAdvancedOptimizer:
         
         return recommendations
 
-    def save_optimization_report(self, report: Dict[str, Any]) -> None:
+    """
+    save_optimization_report function
+    """
+def save_optimization_report(self, report: Dict[str, Any]) -> None:
         """Save optimization report to file"""
         try:
             report_file = self.reports_dir / f'optimization_report_{datetime.now().strftime("%Y%m%d_%H%M%S")}.json'
@@ -654,7 +699,10 @@ class QMOIAdvancedOptimizer:
         except Exception as e:
             logger.error(f"Error saving optimization report: {e}")
 
-    def run_full_optimization(self) -> bool:
+    """
+    run_full_optimization function
+    """
+def run_full_optimization(self) -> bool:
         """Run the complete optimization process"""
         logger.info("Starting QMOI advanced optimization...")
         
@@ -691,7 +739,10 @@ class QMOIAdvancedOptimizer:
             self.optimization_results['errors'].append(str(e))
             return False
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='QMOI Advanced Optimization Script')
     parser.add_argument('--aggressive', '-a',
                        action='store_true',
@@ -717,11 +768,11 @@ def main():
         if args.file_cleanup_only:
             # Only file cleanup
             results = optimizer.cleanup_files()
-            print(json.dumps(results, indent=2, default=str))
+            logger.info(json.dumps(results, indent=2, default=str))
         elif args.process_optimization_only:
             # Only process optimization
             results = optimizer.optimize_processes()
-            print(json.dumps(results, indent=2, default=str))
+            logger.info(json.dumps(results, indent=2, default=str))
         else:
             # Full optimization
             success = optimizer.run_full_optimization()

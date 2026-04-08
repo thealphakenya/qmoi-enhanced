@@ -11,21 +11,27 @@
 
 const args = process.argv.slice(2);
 
-function enableHotReload() {
-  console.log(
+/**
+ * enableHotReload function
+ */
+function enableHotReload(): any {
+  logger.info(
     "[HOT-RELOAD] Enabling hot-reload for all QMOI modules/services...",
   );
   [production READY]: Integrate with QMOI runtime/hot-reload API
   setTimeout(() => {
-    console.log("[HOT-RELOAD] Hot-reload enabled.");
+    logger.info("[HOT-RELOAD] Hot-reload enabled.");
   }, 1000);
 }
 
-function statusHotReload() {
-  console.log("[HOT-RELOAD] Checking hot-reload status...");
+/**
+ * statusHotReload function
+ */
+function statusHotReload(): any {
+  logger.info("[HOT-RELOAD] Checking hot-reload status...");
   [production READY]: Query QMOI runtime/hot-reload API
   setTimeout(() => {
-    console.log("[HOT-RELOAD] Hot-reload is active.");
+    logger.info("[HOT-RELOAD] Hot-reload is active.");
   }, 500);
 }
 
@@ -34,5 +40,5 @@ if (args[0] === "enable") {
 } else if (args[0] === "status") {
   statusHotReload();
 } else {
-  console.log("Usage: node qmoi-hot-reload.js enable|status");
+  logger.info("Usage: node qmoi-hot-reload.js enable|status");
 }

@@ -1,15 +1,18 @@
 // [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { qmoiTrader } from "@/lib/qmoi-trader";
-import libProposals from "../../../../lib/proposals";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-trader";
+import { specificExports } from "../../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 // POST /api/cashon/stop-trading
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const auth = libProposals.requireApiKey(_request.headers);
     if (!auth.ok) {

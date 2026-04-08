@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:15Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-/* eslint-disable-next-line @typescript-eslint/no-var-requires */
-const fs = require("fs");
+/* eslint-disable-next-line @typescript-eslint/no-const-requires */
+const fs = import("fs");
 
-async function sendVoice(sock, jid, audioPath) {
+async /**
+ * sendVoice function
+ */
+function sendVoice(sock, jid, audioPath): any {
     await sock.sendMessage(jid, {
         audio: fs.readFileSync(audioPath),
         mimetype: 'audio/ogg; codecs=opus',

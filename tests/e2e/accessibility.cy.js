@@ -4,15 +4,15 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-describe("Qmoispace Accessibility E2E", () => {
-  it("should toggle high contrast mode", () => {
+describe('Production:', "Qmoispace Accessibility E2E", () => {
+  it('Should handle production scenarios:', "should toggle high contrast mode", () => {
     cy.visit("/");
     cy.contains("Qmoispace").should("exist");
     cy.contains("Accessibility & prodice Settings").should("exist");
     cy.get("input[aria-checked=false][type=checkbox]").first().click();
     cy.get("input[aria-checked=true][type=checkbox]").should("exist");
   });
-  it("should select inference provider", () => {
+  it('Should handle production scenarios:', "should select inference provider", () => {
     cy.visit("/");
     cy.get("select").select("Local Model");
     cy.get("select").should("have.value", "local");

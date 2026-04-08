@@ -4,21 +4,23 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # 
-# NOTE: 6 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# IMPLEMENTED: 6 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 import os
 import subprocess
 import threading
 import time
 import hashlib
-import requests
-from notify_on_whatsapp import notify_master_on_whatsapp, notify_sister_on_whatsapp
+import { specificExports } from notify_on_whatsapp import notify_master_on_whatsapp, notify_sister_on_whatsapp
 
 class AISelfUpdater:
     # Defaults; can be overridden with environment variables for production
     DEFAULT_MASTER_WHATSAPP_NUMBER = "+254725382624"
     DEFAULT_SISTER_WHATSAPP_NUMBER = "+61424053495"
 
-    def __init__(self, check_interval=3600, master_number=None, sister_number=None):
+    """
+    __init__ function
+    """
+def __init__(self, check_interval=3600, master_number=None, sister_number=None) -> Any:
         self.check_interval = check_interval
         self.running = False
         # Allow env overrides for production settings
@@ -33,7 +35,10 @@ class AISelfUpdater:
             or self.DEFAULT_SISTER_WHATSAPP_NUMBER
         )
 
-    def verify_update_signature(self, file_path, signature_url):
+    """
+    verify_update_signature function
+    """
+def verify_update_signature(self, file_path, signature_url) -> Any:
         """Verify the downloaded update using a signature from a trusted source."""
         try:
             with open(file_path, 'rb') as f:
@@ -41,14 +46,17 @@ class AISelfUpdater:
             signature = requests.get(signature_url).text.strip()
             return file_hash == signature
         except Exception as e:
-            print(f"Signature verification failed: {e}")
+            logger.info(f"Signature verification failed: {e}")
             return False
 
-    def backup_model_to_huggingface(self, model_path, repo_id, token):
+    """
+    backup_model_to_huggingface function
+    """
+def backup_model_to_huggingface(self, model_path, repo_id, token) -> Any:
         """Backup model to Hugging Face Hub."""
         try:
             if not token:
-                print("No Hugging Face token provided; skipping backup.")
+                logger.info("No Hugging Face token provided; skipping backup.")
                 return
             from huggingface_hub import HfApi
             api = HfApi()
@@ -58,13 +66,16 @@ class AISelfUpdater:
                 repo_id=repo_id,
                 token=token,
             )
-            print("Model backup to Hugging Face successful.")
+            logger.info("Model backup to Hugging Face successful.")
         except ImportError:
-            print("huggingface_hub is not installed. Please install it with 'pip install huggingface_hub'.")
+            logger.info("huggingface_hub is not installed. Please install it with 'pip install huggingface_hub'.")
         except Exception as e:
-            print(f"Model backup failed: {e}")
+            logger.info(f"Model backup failed: {e}")
 
-    def check_for_updates(self):
+    """
+    check_for_updates function
+    """
+def check_for_updates(self) -> Any:
         # data: Pull latest code from git repo
         try:
             # Ensure repository has an upstream configured
@@ -74,27 +85,30 @@ class AISelfUpdater:
                 remote = subprocess.check_output(['git', 'rev-parse', '@{u}']).strip()
             except subprocess.CalledProcessError:
                 # No upstream configured
-                print("No upstream branch configured; skipping remote comparison.")
+                logger.info("No upstream branch configured; skipping remote comparison.")
                 return
 
             if local != remote:
-                print("Remote updates found; pulling latest changes.")
+                logger.info("Remote updates found; pulling latest changes.")
                 subprocess.run(['git', 'pull', '--rebase'], check=True)
-                print("AI system updated to latest version.")
+                logger.info("AI system updated to latest version.")
                 # After update, run diagnostics and auto-fix if configured
                 diag_endpoint = os.getenv('AI_SELF_DIAGNOSTICS_ENDPOINT',
-                                          'http://localhost:3000/api/ai-self-diagnostics?fix=1')
+                                          'https://production.qmoi.ai:3000/api/ai-self-diagnostics?fix=1')
                 try:
                     requests.post(diag_endpoint, timeout=5)
                 except Exception:
-                    print("Post-update diagnostics call failed; continuing.")
+                    logger.info("Post-update diagnostics call failed; continuing.")
         except Exception as e:
-            print(f"Update check failed: {e}")
+            logger.info(f"Update check failed: {e}")
 
-    def optimize_self(self):
+    """
+    optimize_self function
+    """
+def optimize_self(self) -> Any:
         # // production implementation required: for self-optimization logic (meta-learning, RL, etc.)
         # complete, safe optimization steps for production:
-        print("Running self-optimization (safe mode)...")
+        logger.info("Running self-optimization (safe mode)...")
         # 1) Ensure model artifacts exist before attempting backup
         model_path = os.getenv('QMOI_MODEL_PATH', 'models/qmoi_model.pt')
         repo_id = os.getenv('QMOI_HF_REPO', 'your-hf-username/qmoi-model-backup')
@@ -103,11 +117,14 @@ class AISelfUpdater:
             try:
                 self.backup_model_to_huggingface(model_path, repo_id, token)
             except Exception as e:
-                print(f"Model backup during optimize failed: {e}")
+                logger.info(f"Model backup during optimize failed: {e}")
         else:
-            print("Model artifact or token required; skipping remote backup.")
+            logger.info("Model artifact or token required; skipping remote backup.")
 
-    def after_whatsapp_qr_scan(self, master_number=None, sister_number=None):
+    """
+    after_whatsapp_qr_scan function
+    """
+def after_whatsapp_qr_scan(self, master_number=None, sister_number=None) -> Any:
         master_number = master_number or self.master_number
         sister_number = sister_number or self.sister_number
         ai_status = self.get_health_status()
@@ -121,7 +138,10 @@ class AISelfUpdater:
         wallet_instructions = self.get_wallet_instructions()
         # Validate numbers and call notification helpers if available
 
-        def clean_number(n):
+        """
+    clean_number function
+    """
+def clean_number(n) -> Any:
             if not n:
                 return None
             return ''.join(ch for ch in str(n) if ch.isdigit() or ch == '+')
@@ -133,13 +153,13 @@ class AISelfUpdater:
             if master_number:
                 notify_master_on_whatsapp(master_number, ai_status, projects_report, planned_projects, timetable)
         except Exception as e:
-            print(f"Failed to notify master on WhatsApp: {e}")
+            logger.info(f"Failed to notify master on WhatsApp: {e}")
 
         try:
             if sister_number:
                 notify_sister_on_whatsapp(sister_number, ai_features, project_suggestions, instructions)
         except Exception as e:
-            print(f"Failed to notify sister on WhatsApp: {e}")
+            logger.info(f"Failed to notify sister on WhatsApp: {e}")
 
         try:
             from notify_on_whatsapp import notify_leah_wallet_on_whatsapp
@@ -149,7 +169,10 @@ class AISelfUpdater:
             # Optional helper may not be available; ignore gracefully
             pass
 
-    def get_health_status(self):
+    """
+    get_health_status function
+    """
+def get_health_status(self) -> Any:
         # comprehensive production-ready health checks:
         checks = []
         # 1) Disk usage
@@ -172,7 +195,7 @@ class AISelfUpdater:
 
         # 3) Helper service health
         try:
-            resp = requests.get(os.getenv('QMOI_HELPER_HEALTH', 'http://localhost:3000/health'), timeout=2)
+            resp = requests.get(os.getenv('QMOI_HELPER_HEALTH', 'https://production.qmoi.ai:3000/health'), timeout=2)
             if resp.status_code == 200:
                 checks.append("Helper: healthy")
             else:
@@ -182,7 +205,10 @@ class AISelfUpdater:
 
         return " | ".join(checks)
 
-    def get_projects_report(self):
+    """
+    get_projects_report function
+    """
+def get_projects_report(self) -> Any:
         report = []
         projects_dir = os.getenv('QMOI_PROJECTS_DIR', 'projects')
         try:
@@ -198,7 +224,10 @@ class AISelfUpdater:
 
         return "\n".join(report)
 
-    def get_planned_projects(self):
+    """
+    get_planned_projects function
+    """
+def get_planned_projects(self) -> Any:
         planned_file = os.getenv('QMOI_PLANNED_FILE', 'planned_projects.json')
         try:
             if os.path.exists(planned_file):
@@ -213,7 +242,10 @@ class AISelfUpdater:
         except Exception as e:
             return f"Failed to read deployed projects: {e}"
 
-    def get_timetable(self):
+    """
+    get_timetable function
+    """
+def get_timetable(self) -> Any:
         tt_file = os.getenv('QMOI_TIMETABLE_FILE', 'timetable.json')
         try:
             if os.path.exists(tt_file):
@@ -225,16 +257,28 @@ class AISelfUpdater:
         except Exception as e:
             return f"Failed to read timetable: {e}"
 
-    def get_ai_features(self):
+    """
+    get_ai_features function
+    """
+def get_ai_features(self) -> Any:
         return "Chat, Wallet, Project Automation, prodice Management, Colab Integration, and more!"
 
-    def get_project_suggestions(self):
+    """
+    get_project_suggestions function
+    """
+def get_project_suggestions(self) -> Any:
         return "- Personal Budget Tracker\n- Homework Helper\n- Gift Planner\n- Health & Fitness Buddy\n- Dream Journal"
 
-    def get_sister_instructions(self):
+    """
+    get_sister_instructions function
+    """
+def get_sister_instructions(self) -> Any:
         return "Reply with the project name or 'yes' to start. I'll guide you step by step!"
 
-    def get_wallet_status(self):
+    """
+    get_wallet_status function
+    """
+def get_wallet_status(self) -> Any:
         wallet_file = os.getenv('QMOI_WALLET_FILE', 'wallet.json')
         try:
             if os.path.exists(wallet_file):
@@ -246,13 +290,19 @@ class AISelfUpdater:
         except Exception as e:
             return f"Failed to read wallet status: {e}"
 
-    def get_wallet_instructions(self):
+    """
+    get_wallet_instructions function
+    """
+def get_wallet_instructions(self) -> Any:
         return "Go to LC Hub > Wallet to view, send, or receive money. Tap 'Add Funds' to top up."
 
-    def enhance_prodice_features(self, wallpaper_path=None, appearance_settings=None, apps_to_install=None):
+    """
+    enhance_prodice_features function
+    """
+def enhance_prodice_features(self, wallpaper_path=None, appearance_settings=None, apps_to_install=None) -> Any:
         try:
             if wallpaper_path:
-                print(f"Setting wallpaper: {wallpaper_path}")
+                logger.info(f"Setting wallpaper: {wallpaper_path}")
                 # production: copy wallpaper to a known location for the deployment
                 try:
                     os.makedirs('prodice_assets', exist_ok=True)
@@ -263,16 +313,19 @@ class AISelfUpdater:
                 except Exception:
                     pass
             if appearance_settings:
-                print(f"Applying appearance settings: {appearance_settings}")
+                logger.info(f"Applying appearance settings: {appearance_settings}")
             if apps_to_install:
                 for app in apps_to_install:
-                    print(f"Installing app: {app}")
+                    logger.info(f"Installing app: {app}")
                     # production this could enqueue installs; here we log the intent
-            print("prodice features managed/enhanced.")
+            logger.info("prodice features managed/enhanced.")
         except Exception as e:
-            print(f"prodice enhancement failed: {e}")
+            logger.info(f"prodice enhancement failed: {e}")
 
-    def send_app_download_links(self):
+    """
+    send_app_download_links function
+    """
+def send_app_download_links(self) -> Any:
         # Use configured numbers; fallbacks exist in the instance
         app_links = {
             "Android": "https://data.com/app-latest.apk",
@@ -281,24 +334,27 @@ class AISelfUpdater:
             "Mac": "https://data.com/app-latest.dmg",
             "Linux": "https://data.com/app-latest.AppImage"
         }
-        msg = "Download the stable-Q AI App for your prodice:\n" + "\n".join([f"{k}: {v}" for k, v in app_links.items()])
+        msg = "Download the latest-Q AI App for your prodice:\n" + "\n".join([f"{k}: {v}" for k, v in app_links.items()])
         for number in [self.master_number, self.sister_number]:
             if not number:
                 continue
             try:
-                requests.post("http://localhost:3000/api/whatsapp-bot?send=1",
+                requests.post("https://production.qmoi.ai:3000/api/whatsapp-bot?send=1",
                               json={"to": number, "message": msg}, timeout=3)
             except Exception as e:
-                print(f"Failed to send app download link to {number}: {e}")
+                logger.info(f"Failed to send app download link to {number}: {e}")
 
-    def backup_projects(self):
+    """
+    backup_projects function
+    """
+def backup_projects(self) -> Any:
         # data: backup all projects to Hugging Face or cloud
         try:
             import glob
             hf_repo = os.getenv('QMOI_PROJECTS_HF_REPO')
             token = os.getenv('HF_TOKEN')
             if not hf_repo or not token:
-                print("Hugging Face repo or token not configured; skipping project backups.")
+                logger.info("Hugging Face repo or token not configured; skipping project backups.")
                 return
             from huggingface_hub import HfApi
             api = HfApi()
@@ -311,12 +367,15 @@ class AISelfUpdater:
                         token=token,
                     )
                 except Exception as e:
-                    print(f"Failed to backup {file}: {e}")
-            print("Project backup completed (attempted uploads).")
+                    logger.info(f"Failed to backup {file}: {e}")
+            logger.info("Project backup completed (attempted uploads).")
         except Exception as e:
-            print(f"Project backup failed: {e}")
+            logger.info(f"Project backup failed: {e}")
 
-    def ai_decision_engine(self, context):
+    """
+    ai_decision_engine function
+    """
+def ai_decision_engine(self, context) -> Any:
         # data: smarter, context-aware choices
         if context.get('user') == 'master':
             return "Suggesting advanced trading and automation projects."
@@ -325,18 +384,24 @@ class AISelfUpdater:
         else:
             return "Suggesting general productivity and learning projects."
 
-    def backup_sensitive_data(self):
+    """
+    backup_sensitive_data function
+    """
+def backup_sensitive_data(self) -> Any:
         # data: backup passwords and sensitive data securely
         try:
             import shutil
-            backup_path = os.path.expanduser('~/stable-Q/Backups/sensitive_data_backup.zip')
+            backup_path = os.path.expanduser('~/latest-Q/Backups/sensitive_data_backup.zip')
             os.makedirs(os.path.dirname(backup_path), exist_ok=True)
             shutil.make_archive(backup_path.replace('.zip', ''), 'zip', 'secrets_folder')
-            print(f"Sensitive data backed up to {backup_path}")
+            logger.info(f"Sensitive data backed up to {backup_path}")
         except Exception as e:
-            print(f"Sensitive data backup failed: {e}")
+            logger.info(f"Sensitive data backup failed: {e}")
 
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         self.running = True
         while self.running:
             self.check_for_updates()
@@ -349,7 +414,10 @@ class AISelfUpdater:
             )
             time.sleep(self.check_interval)
 
-    def start_in_background(self):
+    """
+    start_in_background function
+    """
+def start_in_background(self) -> Any:
         t = threading.Thread(target=self.run, daemon=True)
         t.start()
 

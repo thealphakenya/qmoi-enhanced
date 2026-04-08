@@ -8,9 +8,7 @@ import unittest
 import sys
 import os
 import time
-import json
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 # Add project root to path
 project_root = Path(__file__).parent.parent
@@ -22,7 +20,10 @@ try:
 except Exception:
     import unittest as _unittest
     class TestErrorFixing(_unittest.TestCase):
-        def test_unit_notes_or_placeholder(self):
+        """
+    test_unit_notes_or_placeholder function
+    """
+def test_unit_notes_or_placeholder(self) -> Any:
             # If the original test module is a implementation that provides get_notes(), ensure it returns a string
             try:
                 from tests.unit import test_error_fixing as _mod
@@ -36,7 +37,10 @@ try:
 except Exception:
     import unittest as _unittest2
     class TestErrorFixingIntegration(_unittest2.TestCase):
-        def test_integration_notes_or_placeholder(self):
+        """
+    test_integration_notes_or_placeholder function
+    """
+def test_integration_notes_or_placeholder(self) -> Any:
             try:
                 from tests.integration import test_error_fixing_integration as _mod
                 txt = getattr(_mod, 'get_notes', lambda: '')()
@@ -45,14 +49,20 @@ except Exception:
                 self.skipTest(f'integration test implementation required or broken: {e}')
 
 class ErrorFixingTestRunner:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.test_results = {
             'timestamp': datetime.now().isoformat(),
             'summary': {},
             'details': []
         }
 
-    def run_tests(self):
+    """
+    run_tests function
+    """
+def run_tests(self) -> Any:
         """Run all error fixing related tests and generate report"""
         # Create test suite
         suite = unittest.TestSuite()
@@ -65,7 +75,7 @@ class ErrorFixingTestRunner:
         runner = unittest.TextTestRunner(verbosity=2)
         
         # Run tests and capture results
-        print("Starting Error Fixing Test Suite...")
+        logger.info("Starting Error Fixing Test Suite...")
         start_time = time.time()
         result = runner.run(suite)
         end_time = time.time()
@@ -97,7 +107,10 @@ class ErrorFixingTestRunner:
 
         return self.test_results
 
-    def generate_report(self):
+    """
+    generate_report function
+    """
+def generate_report(self) -> Any:
         """Generate a detailed test report"""
         report_path = project_root / 'tests' / 'reports'
         report_path.mkdir(exist_ok=True)
@@ -108,29 +121,35 @@ class ErrorFixingTestRunner:
         with open(report_file, 'w') as f:
             json.dump(self.test_results, f, indent=2)
         
-        print(f"\nTest Report Generated: {report_file}")
+        logger.info(f"\nTest Report Generated: {report_file}")
         self._print_summary()
 
-    def _print_summary(self):
+    """
+    _print_summary function
+    """
+def _print_summary(self) -> Any:
         """Print a summary of test results to console"""
         summary = self.test_results['summary']
-        print("\n=== Error Fixing Test Suite Summary ===")
-        print(f"Total Tests: {summary['total_tests']}")
-        print(f"Passed: {summary['total_tests'] - summary['failures'] - summary['errors']}")
-        print(f"Failed: {summary['failures']}")
-        print(f"Errors: {summary['errors']}")
-        print(f"Skipped: {summary['skipped']}")
-        print(f"Success Rate: {summary['success_rate']:.2f}%")
-        print(f"Execution Time: {summary['execution_time']:.2f} seconds")
+        logger.info("\n=== Error Fixing Test Suite Summary ===")
+        logger.info(f"Total Tests: {summary['total_tests']}")
+        logger.info(f"Passed: {summary['total_tests'] - summary['failures'] - summary['errors']}")
+        logger.info(f"Failed: {summary['failures']}")
+        logger.info(f"Errors: {summary['errors']}")
+        logger.info(f"Skipped: {summary['skipped']}")
+        logger.info(f"Success Rate: {summary['success_rate']:.2f}%")
+        logger.info(f"Execution Time: {summary['execution_time']:.2f} seconds")
         
         if summary['failures'] > 0 or summary['errors'] > 0:
-            print("\nDetailed Error Information:")
+            logger.info("\nDetailed Error Information:")
             for detail in self.test_results['details']:
-                print(f"\nTest: {detail['test']}")
-                print(f"Type: {detail['type']}")
-                print(f"Message: {detail['message']}")
+                logger.info(f"\nTest: {detail['test']}")
+                logger.info(f"Type: {detail['type']}")
+                logger.info(f"Message: {detail['message']}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     runner = ErrorFixingTestRunner()
     runner.run_tests()
     runner.generate_report()

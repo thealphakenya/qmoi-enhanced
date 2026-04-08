@@ -4,9 +4,7 @@
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-import os, json, re
-from urllib import request, error
-from datetime import datetime
+import { specificExports } from urllib import { specificExports } from datetime import datetime
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 MANIFEST = os.path.join(ROOT, 'release_assets_manifest.json')
@@ -17,7 +15,10 @@ REPO = os.environ.get('GITHUB_REPO', 'qmoi-enhanced')
 GITHUB_API = 'https://api.github.com'
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 
-def find_token():
+"""
+    find_token function
+    """
+def find_token() -> Any:
     if not os.path.exists(PLAYBOOK): return None
     text = open(PLAYBOOK).read()
     m = re.search(r"ghp_[A-Za-z0-9_\-]{20,}", text)
@@ -26,7 +27,10 @@ def find_token():
 if not GITHUB_TOKEN:
     GITHUB_TOKEN = find_token()
 
-def gh_get(path):
+"""
+    gh_get function
+    """
+def gh_get(path) -> Any:
     url = GITHUB_API + path
     req = request.Request(url)
     if GITHUB_TOKEN:
@@ -35,9 +39,12 @@ def gh_get(path):
     with request.urlopen(req) as r:
         return json.load(r)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if not os.path.exists(MANIFEST):
-        print('Manifest not found')
+        logger.info('Manifest not found')
         return 1
     manifest = json.load(open(MANIFEST))
     try:
@@ -56,7 +63,7 @@ def main():
     os.makedirs(os.path.dirname(REPORT), exist_ok=True)
     with open(REPORT, 'w') as f:
         json.dump(report, f, indent=2)
-    print('Report written to', REPORT)
+    logger.info('Report written to', REPORT)
     return 0
 
 if __name__ == '__main__':

@@ -14,6 +14,10 @@
     "qglobal.ai": "Individual SSL certificate needed",
     "qparallel.prod": "Individual SSL certificate needed"
   },
-  "certificate_authority": "Let's Encrypt (recommended) or commercial CA",
-  "auto_renewal": "Certbot or similar tool for automatic renewal"
+  "certificate_authority": "Let's Encrypt (required) or commercial CA",
+  "auto_renewal": "Certbot or similar tool for automatic renewal",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.852706"
 }

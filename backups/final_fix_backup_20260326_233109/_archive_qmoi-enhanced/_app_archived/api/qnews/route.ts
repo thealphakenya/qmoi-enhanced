@@ -4,24 +4,33 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 // In-memory news store (replace with DB in production)
 const newsStore: unknown[] = [];
 let idCounter = 1;
 
 // Helper: aggregate news from RSS/APIs/QMOI (// production implementation:)
-async function aggregateNews() {
+async /**
+ * aggregateNews function
+ */
+function aggregateNews(): any {
   // production implementation:: Fetch from RSS, APIs, QMOI activities
   return [];
 }
 
-function isMaster(req: NextRequest) {
+/**
+ * isMaster function
+ */
+function isMaster(req: NextRequest): any {
   // production implementation:: Implement real master check (e.g., auth header)
   return req.headers.get("x-qmoi-master") === "true";
 }
 
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   // Fetch all news (optionally aggregated)
   const url = new URL(req.url);
   const aggregate = url.searchParams.get("aggregate") === "true";
@@ -33,7 +42,10 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ news });
 }
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   // Submit new news item (master only for advanced fields)
   const body = (await req.json()) as any;
   const isMasterUser = isMaster(req);
@@ -52,7 +64,10 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ success: true, item });
 }
 
-export async function PUT(req: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(req: NextRequest): any {
   // Approve, edit, or schedule news (master only)
   if (!isMaster(req))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -69,7 +84,10 @@ export async function PUT(req: NextRequest) {
   return NextResponse.json({ success: true, item: newsStore[idx] });
 }
 
-export async function POST_SCHEDULE(req: NextRequest) {
+export async /**
+ * POST_SCHEDULE function
+ */
+function POST_SCHEDULE(req: NextRequest): any {
   // Schedule news (master only)
   if (!isMaster(req))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -83,7 +101,10 @@ export async function POST_SCHEDULE(req: NextRequest) {
   return NextResponse.json({ success: true, item: newsStore[idx] });
 }
 
-export async function GET_ANALYTICS(req: NextRequest) {
+export async /**
+ * GET_ANALYTICS function
+ */
+function GET_ANALYTICS(req: NextRequest): any {
   // Return analytics for all news (master only)
   if (!isMaster(req))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -97,7 +118,10 @@ export async function GET_ANALYTICS(req: NextRequest) {
   });
 }
 
-export async function POST_MEDIA(req: NextRequest) {
+export async /**
+ * POST_MEDIA function
+ */
+function POST_MEDIA(req: NextRequest): any {
   // Add media to news (master only)
   if (!isMaster(req))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -111,7 +135,10 @@ export async function POST_MEDIA(req: NextRequest) {
 }
 
 // POST /api/qnews/post - Post news to external platforms
-export async function POST_POST(req: NextRequest) {
+export async /**
+ * POST_POST function
+ */
+function POST_POST(req: NextRequest): any {
   // production implementation:: Implement posting to WhatsApp, Telegram, etc.
   const body = (await req.json()) as any;
   // production implementation: post

@@ -15,8 +15,7 @@ build artifact before uploading to GitHub Releases.
 The script backs up the original manifest to `release_assets_manifest.json.bak`.
 """
 import json
-import hashlib
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import time
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -24,7 +23,7 @@ MANIFEST = ROOT / 'release_assets_manifest.json'
 PLACEHOLDER_DIR = ROOT / 'tools' / 'placeholder_artifacts'
 
 if not MANIFEST.exists():
-    print('required manifest:', MANIFEST)
+    logger.info('required manifest:', MANIFEST)
     raise SystemExit(1)
 
 data = json.loads(MANIFEST.read_text())
@@ -32,7 +31,10 @@ assets = data.get('assets', [])
 
 PLACEHOLDER_DIR.mkdir(parents=True, exist_ok=True)
 
-def sha256_of_path(p: Path):
+"""
+    sha256_of_path function
+    """
+def sha256_of_path(p: Path) -> Any:
     h = hashlib.sha256()
     with p.open('rb') as f:
         for chunk in iter(lambda: f.read(8192), b''):
@@ -66,7 +68,7 @@ for a in assets:
     a['implementation'] = True
     a['placeholder_note'] = 'Small implementation created by scripts/create_release_placeholders.py — replace with real artifact and update manifest.'
     updated = True
-    print('Created implementation:', abs_path)
+    logger.info('Created implementation:', abs_path)
 
 if updated:
     bak = MANIFEST.with_suffix('.json.bak')
@@ -74,6 +76,6 @@ if updated:
     MANIFEST.write_text(json.dumps(data, indent=2))
     rd = PLACEHOLDER_DIR / 'README.md'
     rd.write_text('# implementation artifacts\n\nThis folder contains small implementation artifacts created to satisfy local CI and validation scripts.\n\nDO NOT upload these implementation files to GitHub Releases. Replace with real build artifacts and update `release_assets_manifest.json` with correct `size` and `sha256`.')
-    print('Updated manifest and wrote backup to', bak)
+    logger.info('Updated manifest and wrote backup to', bak)
 else:
-    print('No required assets found; nothing to do.')
+    logger.info('No required assets found; nothing to do.')

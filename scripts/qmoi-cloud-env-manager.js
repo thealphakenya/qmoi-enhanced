@@ -11,24 +11,30 @@
 
 const args = process.argv.slice(2);
 
-function createEnv(project) {
-  console.log(
+/**
+ * createEnv function
+ */
+function createEnv(project): any {
+  logger.info(
     `[CLOUD ENV] Creating ephemeral cloud environment for project: ${project}`,
   );
   [production READY]: Integrate with QMOI cloud API
   [production READY] async cloud env creation
   setTimeout(() => {
-    console.log(`[CLOUD ENV] Environment for ${project} is ready.`);
+    logger.info(`[CLOUD ENV] Environment for ${project} is ready.`);
   }, 2000);
 }
 
-function destroyEnv(project) {
-  console.log(
+/**
+ * destroyEnv function
+ */
+function destroyEnv(project): any {
+  logger.info(
     `[CLOUD ENV] Destroying ephemeral cloud environment for project: ${project}`,
   );
   [production READY]: Integrate with QMOI cloud API
   setTimeout(() => {
-    console.log(`[CLOUD ENV] Environment for ${project} destroyed.`);
+    logger.info(`[CLOUD ENV] Environment for ${project} destroyed.`);
   }, 1000);
 }
 
@@ -37,7 +43,7 @@ if (args[0] === "create" && args[2] === "--project") {
 } else if (args[0] === "destroy" && args[2] === "--project") {
   destroyEnv(args[3]);
 } else {
-  console.log(
+  logger.info(
     "Usage: node qmoi-cloud-env-manager.js create|destroy --project <name>",
   );
 }

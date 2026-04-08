@@ -1,6 +1,6 @@
 // Production implementation: this file has no remaining non-production markers
 "use client";
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 import {
   Box,
   Card,
@@ -19,8 +19,8 @@ import {
   Refresh,
   Warning,
 } from "@mui/icons-material";
-import { useAuth } from "../hooks/useAuth";
-import { TradingManager } from "../config/trading";
+import { specificExports } from "../hooks/useAuth";
+import { specificExports } from "../config/trading";
 
 interface WalletBalance {
   currency: string;

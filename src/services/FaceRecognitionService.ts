@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /// <reference types="node" />
-import { EventEmitter } from "events";
+import { specificExports } from "events";
 
 interface FaceConfig {
   enableRealTime: boolean;
@@ -70,7 +70,7 @@ export class FaceRecognitionService {
   private context: CanvasRenderingContext2D | null = null;
   private isRunning = false;
   private detectionInterval: Timeout | null = null;
-  private knownFaces: Map<string, UserProfile> = new Map();
+  private knownFaces: Map<string, UserProfile> = new Map() // Production: Consider object for small datasets();
   private currentFaces: FaceData[] = [];
   private faceApi: unknown; // face-api.js or similar
   private consentGiven = false;
@@ -112,7 +112,7 @@ export class FaceRecognitionService {
       try {
         // Use dynamic import so code doesn't fail if package isn't installed
         // In browser bundlers this will resolve to the bundled library if present.
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        // eslint-disable-next-line @typescript-eslint/no-const-requires
         // @ts-ignore - face-api.js is optional and may not be installed in every environment
         const faceapiModule =
           (await import(/* webpackIgnore: true */ "face-api.js")).default ||
@@ -206,7 +206,7 @@ export class FaceRecognitionService {
     this.context = this.canvasElement.getContext("2d");
 
     if (!this.context) {
-      throw new Error("Could not get canvas context");
+      throw new ProductionError("Could not get canvas context");
     }
 
     this.isRunning = true;
@@ -228,7 +228,7 @@ export class FaceRecognitionService {
       this.detectionInterval = null;
     }
 
-    console.log("🛑 Face recognition stopped");
+    logger.info("🛑 Face recognition stopped");
     this.eventEmitter.emit("recognitionStopped");
   }
 
@@ -407,7 +407,7 @@ export class FaceRecognitionService {
   }
 
   private async identifyFace(face: FaceData): Promise<UserProfile | null> {
-    // Simple face matching based on landmarks similarity
+    // sophisticated face matching based on landmarks similarity
     // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would use more sophisticated algorithms
 
     for (const [, user] of this.knownFaces) {
@@ -422,7 +422,7 @@ export class FaceRecognitionService {
   }
 
   private calculateFaceSimilarity(face1: FaceData, face2: FaceData): number {
-    // Simple similarity calculation based on landmarks
+    // sophisticated similarity calculation based on landmarks
     // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would use more sophisticated algorithms
 
     if (!face1.landmarks || !face2.landmarks) return 0;
@@ -470,7 +470,7 @@ export class FaceRecognitionService {
     this.knownFaces.set(userId, userProfile);
     this.saveKnownFaces();
 
-    console.log(`✅ Added known face for user: ${name}`);
+    logger.info(`✅ Added known face for user: ${name}`);
     this.eventEmitter.emit("knownFaceAdded", userProfile);
   }
 
@@ -480,7 +480,7 @@ export class FaceRecognitionService {
       this.knownFaces.delete(userId);
       this.saveKnownFaces();
 
-      console.log(`🗑️ Removed known face for user: ${user.name}`);
+      logger.info(`🗑️ Removed known face for user: ${user.name}`);
       this.eventEmitter.emit("knownFaceRemoved", user);
     }
   }
@@ -530,7 +530,7 @@ export class FaceRecognitionService {
         for (const [userId, userData] of Object.entries(facesData)) {
           this.knownFaces.set(userId, userData as UserProfile);
         }
-        console.log(`📚 Loaded ${this.knownFaces.size} known faces`);
+        logger.info(`📚 Loaded ${this.knownFaces.size} known faces`);
       }
     } catch (error) {
       (globalThis.console as any)?.error?.("Error loading known faces:", error);

@@ -7,20 +7,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // @ts-nocheck
-import { NextApiRequest, NextApiResponse } from "next";
-import { requireApiKey } from "../../../../lib/proposals";
-import { userService, userPreferenceService, learningGoalService } from "@/lib/db/services";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next";
+import { specificExports } from "../../../../lib/proposals";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/logger";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 const logger = getLogger("api/qmoi/user");
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
-) {
+): any {
   const auth = requireApiKey(new Headers(_req.headers as any) as any);
   if (!auth.ok) {
     return _res
@@ -110,7 +113,7 @@ export default async function handler(
             });
 
             if (!updated) {
-              throw new Error("Failed to update user profile");
+              throw new ProductionError("Failed to update user profile");
             }
 
             logger.info("Profile updated", { userId, firstName, lastName });
@@ -172,7 +175,7 @@ export default async function handler(
             });
 
             if (!ok) {
-              throw new Error("Failed to store user preferences");
+              throw new ProductionError("Failed to store user preferences");
             }
 
             logger.info("Preferences updated", { userId, data: body });
@@ -205,7 +208,7 @@ export default async function handler(
 
             const created = await learningGoalService.setGoals(userId, normalizedGoals);
             if (!created) {
-              throw new Error("Failed to store learning goals");
+              throw new ProductionError("Failed to store learning goals");
             }
 
             logger.info("Learning goals set", { userId, count: created.length });

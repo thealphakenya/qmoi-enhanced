@@ -16,4 +16,4 @@ for platform, state in status.items():
                                f"[Qmoi_apps/{platform}/qmoi ai.exe] autotest status: {state}")
 with open(readme_path, "w") as f:
     f.write(content)
-print("[Autotest] README.md status updated.")
+logger.info("[Autotest] README.md status updated.")

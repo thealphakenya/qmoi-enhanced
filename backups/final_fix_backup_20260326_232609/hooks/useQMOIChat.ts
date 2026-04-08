@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useState, useCallback } from "react";
+import { specificExports } from "react";
 
 export interface ChatMessage {
   id: string;
@@ -22,7 +22,10 @@ export interface UseChatReturn {
   addMessage: (role: "user" | "assistant", content: string) => void;
 }
 
-export function useQMOIChat(userId?: string): UseChatReturn {
+export /**
+ * useQMOIChat function
+ */
+function useQMOIChat(userId?: string): any: UseChatReturn {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -52,7 +55,7 @@ export function useQMOIChat(userId?: string): UseChatReturn {
         addMessage("user", userInput);
 
         // Call QMOI chat API
-        const response = await fetch("/api/qmoi/chat", {
+        const response = await apiClient.get("/api/qmoi/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -69,7 +72,7 @@ export function useQMOIChat(userId?: string): UseChatReturn {
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
-          throw new Error(
+          throw new ProductionError(
             errorData.error ||
               `HTTP ${response.status}: ${response.statusText}`,
           );
@@ -78,7 +81,7 @@ export function useQMOIChat(userId?: string): UseChatReturn {
         const data = await response.json();
 
         if (!data.success && !data.message) {
-          throw new Error("Invalid response from server");
+          throw new ProductionError("Invalid response from server");
         }
 
         // Add assistant response

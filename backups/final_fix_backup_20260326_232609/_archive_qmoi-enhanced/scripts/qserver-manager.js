@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import fs from "fs";
-import path from "path";
-import { execSync } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "child_process";
 
 class QServerManager {
   constructor() {
@@ -21,7 +21,7 @@ class QServerManager {
     try {
       return JSON.parse(fs.readFileSync("config/qserver-config.json", "utf8"));
     } catch (error) {
-      console.log("QServer config not found, using defaults");
+      logger.info("QServer config not found, using defaults");
       return {
         qserver: {
           enabled: true,
@@ -62,11 +62,11 @@ class QServerManager {
 
   async startServer(options = {}) {
     if (!this.qserverEnabled) {
-      console.log("QServer not enabled");
+      logger.info("QServer not enabled");
       return { success: false, reason: "QServer enabled" };
     }
 
-    console.log("Starting QServer with unlimited resources...");
+    logger.info("Starting QServer with unlimited resources...");
 
     const result = {
       success: true,
@@ -99,7 +99,7 @@ class QServerManager {
   }
 
   async stopServer() {
-    console.log("Stopping QServer gracefully...");
+    logger.info("Stopping QServer gracefully...");
     return this.executeInQServer("stop", {
       graceful: true,
       dataPreservation: true,
@@ -108,13 +108,13 @@ class QServerManager {
   }
 
   async restartServer() {
-    console.log("Restarting QServer with zero downtime...");
+    logger.info("Restarting QServer with zero downtime...");
     await this.stopServer();
     return this.startServer({ zeroDowntime: true });
   }
 
   async applyAIOptimization(operation, options) {
-    console.log("Applying AI optimization to QServer...");
+    logger.info("Applying AI optimization to QServer...");
     return {
       predictiveAllocation: true,
       automatedTuning: true,
@@ -127,7 +127,7 @@ class QServerManager {
   }
 
   async setupAutoScaling(options) {
-    console.log("Setting up QServer auto-scaling...");
+    logger.info("Setting up QServer auto-scaling...");
     return {
       horizontalScaling: true,
       verticalScaling: true,
@@ -139,7 +139,7 @@ class QServerManager {
   }
 
   async initializeSelfHealing(options) {
-    console.log("Initializing QServer self-healing...");
+    logger.info("Initializing QServer self-healing...");
     return {
       errorDetection: true,
       autoRepair: true,
@@ -152,11 +152,11 @@ class QServerManager {
 
   async executeInQServer(command, options = {}) {
     if (!this.qserverEnabled) {
-      console.log("QServer not enabled, executing locally");
+      logger.info("QServer not enabled, executing locally");
       return this.executeLocally(command, options);
     }
 
-    console.log(`Executing in QServer with unlimited resources: ${command}`);
+    logger.info(`Executing in QServer with unlimited resources: ${command}`);
 
     const result = {
       success: true,
@@ -181,7 +181,7 @@ class QServerManager {
   }
 
   async scale(instances = 1) {
-    console.log(`Scaling QServer to ${instances} instances...`);
+    logger.info(`Scaling QServer to ${instances} instances...`);
     return this.executeInQServer("scale", {
       instances: instances,
       unlimitedScaling: true,
@@ -191,28 +191,28 @@ class QServerManager {
   }
 
   async monitor() {
-    console.log("Monitoring QServer with unlimited resources...");
+    logger.info("Monitoring QServer with unlimited resources...");
     const status = await this.status();
-    console.log("Unlimited Resource Usage:");
-    console.log(
+    logger.info("Unlimited Resource Usage:");
+    logger.info(
       `- Memory: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`,
     );
-    console.log(
+    logger.info(
       `- Storage: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`,
     );
-    console.log(
+    logger.info(
       `- Processing: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`,
     );
-    console.log(
+    logger.info(
       `- Bandwidth: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`,
     );
-    console.log(
+    logger.info(
       `- Connections: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`,
     );
-    console.log(
+    logger.info(
       `- CPU Cores: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`,
     );
-    console.log(
+    logger.info(
       `- GPU Cores: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`,
     );
     return status;
@@ -220,11 +220,11 @@ class QServerManager {
 
   async optimize() {
     if (!this.aiOptimization.enabled) {
-      console.log("AI optimization not enabled");
+      logger.info("AI optimization not enabled");
       return { success: false, reason: "AI optimization enabled" };
     }
 
-    console.log("Running AI-powered QServer optimization...");
+    logger.info("Running AI-powered QServer optimization...");
     return this.executeInQServer("optimize", {
       machineLearning: true,
       predictiveAnalytics: true,
@@ -234,7 +234,7 @@ class QServerManager {
   }
 
   async healthCheck() {
-    console.log("Running comprehensive QServer health check...");
+    logger.info("Running comprehensive QServer health check...");
     return this.executeInQServer("health-check", {
       comprehensive: true,
       aiPowered: true,
@@ -244,7 +244,7 @@ class QServerManager {
   }
 
   async backup() {
-    console.log("Creating QServer backup with unlimited storage...");
+    logger.info("Creating QServer backup with unlimited storage...");
     return this.executeInQServer("backup", {
       unlimitedStorage: true,
       dataIntegrity: true,
@@ -254,7 +254,7 @@ class QServerManager {
   }
 
   async restore(backupId) {
-    console.log(`Restoring QServer from backup ${backupId}...`);
+    logger.info(`Restoring QServer from backup ${backupId}...`);
     return this.executeInQServer("restore", {
       backupId: backupId,
       unlimitedStorage: true,
@@ -264,7 +264,7 @@ class QServerManager {
   }
 
   async securityAudit() {
-    console.log("Running comprehensive QServer security audit...");
+    logger.info("Running comprehensive QServer security audit...");
     return this.executeInQServer("security-audit", {
       quantumEncryption: true,
       zeroTrustArchitecture: true,
@@ -274,7 +274,7 @@ class QServerManager {
   }
 
   async performanceTune() {
-    console.log("Running QServer performance tuning...");
+    logger.info("Running QServer performance tuning...");
     return this.executeInQServer("performance-tune", {
       subMillisecondResponse: true,
       parallelProcessing: true,
@@ -285,19 +285,19 @@ class QServerManager {
 
   async status() {
     const status = this.getQServerStatus();
-    console.log("QServer Status (Unlimited Resources):");
-    console.log(`- Enabled: ${status.enabled}`);
-    console.log(`- Unlimited Resources: ${status.unlimitedResources}`);
-    console.log(`- AI Optimization: ${status.aiOptimization}`);
-    console.log(`- Auto Scaling: ${status.autoScaling}`);
-    console.log(`- Self Healing: ${status.selfHealing}`);
-    console.log(`- Running: ${status.running}`);
-    console.log(`- Instances: ${status.instances}`);
+    logger.info("QServer Status (Unlimited Resources):");
+    logger.info(`- Enabled: ${status.enabled}`);
+    logger.info(`- Unlimited Resources: ${status.unlimitedResources}`);
+    logger.info(`- AI Optimization: ${status.aiOptimization}`);
+    logger.info(`- Auto Scaling: ${status.autoScaling}`);
+    logger.info(`- Self Healing: ${status.selfHealing}`);
+    logger.info(`- Running: ${status.running}`);
+    logger.info(`- Instances: ${status.instances}`);
     return status;
   }
 
   async autoFix() {
-    console.log("Running advanced auto-fix in QServer with AI...");
+    logger.info("Running advanced auto-fix in QServer with AI...");
     await this.executeInQServer("auto-fix", {
       aiPowered: true,
       comprehensive: true,
@@ -308,12 +308,12 @@ class QServerManager {
       autoRepair: true,
       recoveryMechanisms: true,
     });
-    console.log("Advanced auto-fix completed in QServer with AI optimization");
+    logger.info("Advanced auto-fix completed in QServer with AI optimization");
   }
 
   async testAndFixDownloads() {
     try {
-      console.log("Running QServer download link health checker...");
+      logger.info("Running QServer download link health checker...");
       const output = execSync("python scripts/qserver-download-tester.py", {
         encoding: "utf-8",
       });
@@ -337,11 +337,11 @@ class QServerManager {
       selfHealing: this.selfHealing.enabled,
     };
 
-    console.log("QServer log (unlimited storage):", logEntry);
+    logger.info("QServer log (unlimited storage):", logEntry);
   }
 
   executeLocally(command, options) {
-    console.log(`Executing locally: ${command}`);
+    logger.info(`Executing locally: ${command}`);
     return {
       success: true,
       output: `Local execution: ${command}`,
@@ -403,8 +403,8 @@ class QServerManager {
       case "test-downloads":
         return await this.testAndFixDownloads();
       default:
-        console.log(`Unknown command: ${command}`);
-        console.log(
+        logger.info(`Unknown command: ${command}`);
+        logger.info(
           "Available commands: start, stop, restart, deploy, scale, monitor, optimize, health-check, backup, restore, security-audit, performance-tune, status, auto-fix",
         );
     }
@@ -421,7 +421,7 @@ if (process.argv[1] === new URL(import.meta.url).pathname) {
     .handleCommand(command, args)
     .then((result) => {
       if (result) {
-        console.log(
+        logger.info(
           "QServer command completed successfully with unlimited resources",
         );
       }

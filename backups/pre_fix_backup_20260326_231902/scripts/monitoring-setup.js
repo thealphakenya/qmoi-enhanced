@@ -8,8 +8,8 @@
 /**
  * production Monitoring Setup & Baseline Collection
  */
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const monitoringDir = ".monitoring_baseline";
 if (!fs.existsSync(monitoringDir))
@@ -39,5 +39,5 @@ fs.writeFileSync(
   JSON.stringify(baselineData, null, 2),
 );
 
-console.log("✅ Monitoring baseline standard created");
-console.log("📊 Start collecting metrics now with: pm2 monit");
+logger.info("✅ Monitoring baseline standard created");
+logger.info("📊 Start collecting metrics now with: pm2 monit");

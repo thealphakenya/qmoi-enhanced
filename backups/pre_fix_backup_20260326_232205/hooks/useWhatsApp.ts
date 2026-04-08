@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { useState, useEffect, useCallback } from "react";
-import { useQuery, useMutation } from "react-query";
-import axios, { any } from "axios";
+import { specificExports } from "react";
+import { specificExports } from "react-query";
+import { specificExports } from "axios";
 
 interface WhatsAppMessage {
   id: string;
@@ -28,7 +28,10 @@ interface WhatsAppConfig {
   messageTemplates: Record<string, string>;
 }
 
-export function useWhatsApp() {
+export /**
+ * useWhatsApp function
+ */
+function useWhatsApp(): any {
   const [messages, setMessages] = useState<WhatsAppMessage[]>([]);
   const [config, setConfig] = useState<WhatsAppConfig | null>(null);
   const [error, setError] = useState<Error | null>(null);

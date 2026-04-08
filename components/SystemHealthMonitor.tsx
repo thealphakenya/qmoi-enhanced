@@ -5,7 +5,7 @@
 
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -13,10 +13,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Activity,
   Cpu,
@@ -35,7 +35,7 @@ import {
   Settings,
   BarChart3,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { specificExports } from "@/hooks/use-toast";
 
 interface SystemMetrics {
   cpu: {
@@ -266,8 +266,8 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
     setIsRefreshing(true);
     try {
       // Fetch real health data from API
-      const response = await fetch("/api/health");
-      if (!response.ok) throw new Error("Failed to fetch health data");
+      const response = await apiClient.get("/api/health");
+      if (!response.ok) throw new ProductionError("Failed to fetch health data");
       const healthData = await response.json();
 
       // Convert API response to component format

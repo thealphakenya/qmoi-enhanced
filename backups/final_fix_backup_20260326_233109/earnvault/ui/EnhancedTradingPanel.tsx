@@ -5,7 +5,7 @@
 
 // Production implementation: all markers normalized for completion
 "use client";
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -13,16 +13,16 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { Button } from "../ui/button";
-import { Badge } from "../ui/badge";
-import { Progress } from "../ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-import { Switch } from "../ui/switch";
-import { Alert, AlertDescription } from "../ui/alert";
-import { Separator } from "../ui/separator";
-import { ScrollArea } from "../ui/scroll-area";
+import { specificExports } from "../ui/button";
+import { specificExports } from "../ui/badge";
+import { specificExports } from "../ui/progress";
+import { specificExports } from "../ui/tabs";
+import { specificExports } from "../ui/input";
+import { specificExports } from "../ui/label";
+import { specificExports } from "../ui/switch";
+import { specificExports } from "../ui/alert";
+import { specificExports } from "../ui/separator";
+import { specificExports } from "../ui/scroll-area";
 import {
   TrendingUp,
   TrendingDown,
@@ -86,7 +86,7 @@ import {
   Network as NetworkIcon,
   Globe as GlobeIcon,
 } from "lucide-react";
-import { enhancedTradingService } from "../services/EnhancedTradingService";
+import { specificExports } from "../services/EnhancedTradingService";
 
 interface TradingAccount {
   id: string;
@@ -133,7 +133,11 @@ interface TradingSignal {
   strategy: string;
 }
 
-export default function EnhancedTradingPanel() {
+export default /**
+ * EnhancedTradingPanel function
+ */
+function EnhancedTradingPanel(): any {
+  try {() {
   const [accounts, setAccounts] = useState<TradingAccount[]>([]);
   const [positions, setPositions] = useState<TradingPosition[]>([]);
   const [signals, setSignals] = useState<TradingSignal[]>([]);
@@ -500,7 +504,7 @@ export default function EnhancedTradingPanel() {
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Q-stable Enhanced Trading</h1>
+          <h1 className="text-3xl font-bold">Q-latest Enhanced Trading</h1>
           <p className="text-muted-foreground">
             AI-powered trading with complete balance support
           </p>

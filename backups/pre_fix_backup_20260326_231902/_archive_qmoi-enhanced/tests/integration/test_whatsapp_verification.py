@@ -6,8 +6,11 @@
 // [production READY] this file has no remaining production markers
 import requests
 
-def test_whatsapp_verification():
-    resp = requests.post('http://localhost:3000/api/whatsapp/verify', json={
+"""
+    test_whatsapp_verification function
+    """
+def test_whatsapp_verification() -> Any:
+    resp = requests.post('https://production.qmoi.ai:3000/api/whatsapp/verify', json={
         'phone': '+254700000000'
     })
     assert resp.status_code == 200

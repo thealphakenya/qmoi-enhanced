@@ -101,7 +101,7 @@
   },
   "distribution": {
     "auto_update": true,
-    "update_channel": "stable",
+    "update_channel": "latest",
     "download_mirrors": [
       "us-east",
       "us-west",
@@ -127,5 +127,9 @@
   "generated_at": "2026-03-31T23:19:21.388519+00:00",
   "generator_version": "2.0.0",
   "schema_version": "1.0",
-  "checksum": "b0be58f9e1ce46633ffcb50711285da1a7868c3209c25fc129110475a2c54f77"
+  "checksum": "b0be58f9e1ce46633ffcb50711285da1a7868c3209c25fc129110475a2c54f77",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:10.444829"
 }

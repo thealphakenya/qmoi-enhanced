@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     const data = fs.readFileSync("logs/whatsapp_verification.log", "utf-8");
     const lines = data.split("\n").filter(Boolean);

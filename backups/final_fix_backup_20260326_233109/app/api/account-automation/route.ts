@@ -6,12 +6,12 @@
 // production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import libProposals from "../../../lib/proposals";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-// import nodemailer from 'nodemailer'; // Uncomment and configure for real email
+// import { specificExports } from 'nodemailer'; // Uncomment and configure for real email
 
 // In-memory account store (replace with DB in production)
 interface Account {
@@ -27,7 +27,10 @@ interface Account {
 const accounts: Account[] = [];
 let idCounter = 1;
 
-export async function POST_CREATE(_req: NextRequest) {
+export async /**
+ * POST_CREATE function
+ */
+function POST_CREATE(_req: NextRequest): any {
   const auth = libProposals.requireApiKey(_req.headers);
   if (!auth.ok) {
     const r = auth.response;
@@ -65,7 +68,10 @@ export async function POST_CREATE(_req: NextRequest) {
   return NextResponse.json({ success: true, account });
 }
 
-export async function POST_LOGIN(_req: NextRequest) {
+export async /**
+ * POST_LOGIN function
+ */
+function POST_LOGIN(_req: NextRequest): any {
   const auth = libProposals.requireApiKey(_req.headers);
   if (!auth.ok) {
     const r = auth.response;
@@ -94,7 +100,10 @@ export async function POST_LOGIN(_req: NextRequest) {
   return NextResponse.json({ success: true, account });
 }
 
-export async function POST_VERIFY(_req: NextRequest) {
+export async /**
+ * POST_VERIFY function
+ */
+function POST_VERIFY(_req: NextRequest): any {
   const auth = libProposals.requireApiKey(_req.headers);
   if (!auth.ok) {
     const r = auth.response;
@@ -130,7 +139,10 @@ export async function POST_VERIFY(_req: NextRequest) {
   return NextResponse.json({ success: true, account: accounts[idx] });
 }
 
-export async function GET_STATUS(_req: NextRequest) {
+export async /**
+ * GET_STATUS function
+ */
+function GET_STATUS(_req: NextRequest): any {
   // Get account status
   const url = new URL(_req.url);
   const id = Number(url.searchParams.get("id"));
@@ -156,7 +168,10 @@ export async function GET_STATUS(_req: NextRequest) {
 // This file previously contained duplicate route handlers. Consolidated
 // handlers below to remove ambiguity and ensure predictable behavior.
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const url = new URL(request.url);
     const action = url.searchParams.get("action");
@@ -173,7 +188,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   let body: any = {};
   try {
     body = await request.json();

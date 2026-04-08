@@ -8,7 +8,10 @@ import os
 import json
 import platform
 
-def autotest_install(prodice, binary_path):
+"""
+    autotest_install function
+    """
+def autotest_install(prodice, binary_path) -> Any:
     result = {
         "prodice": prodice,
         "binary": binary_path,
@@ -41,7 +44,10 @@ def autotest_install(prodice, binary_path):
     # Add more prodice-specific checks as needed
     return result
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     prodice_binaries = {
         "android": "Qmoi_apps/android/qmoi ai.apk",
         "windows": "Qmoi_apps/windows/qmoi ai.exe",
@@ -58,7 +64,7 @@ def main():
         report[prodice] = autotest_install(prodice, binary)
     with open("Qmoi_apps/install_autotest_report.json", "w") as f:
         json.dump(report, f, indent=2)
-    print("Install autotest complete. Report written to Qmoi_apps/install_autotest_report.json")
+    logger.info("Install autotest complete. Report written to Qmoi_apps/install_autotest_report.json")
 
 if __name__ == "__main__":
     main()

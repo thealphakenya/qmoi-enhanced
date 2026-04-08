@@ -7,11 +7,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // @ts-nocheck
-import { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
-export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(_req: NextApiRequest, _res: NextApiResponse) {
   const logsDir = path.join(process.cwd(), "logs");
   let preActivity = null,
     connectivity = null,

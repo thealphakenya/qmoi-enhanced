@@ -10,8 +10,8 @@
  * Sets up comprehensive monitoring and alerting
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const colors = {
   green: "\x1b[32m",
@@ -21,7 +21,7 @@ const colors = {
 };
 
 const log = (msg, color = "reset") =>
-  console.log(`${colors[color]}${msg}${colors.reset}`);
+  logger.info(`${colors[color]}${msg}${colors.reset}`);
 
 class MonitoringInitializer {
   constructor() {
@@ -150,9 +150,9 @@ class MonitoringInitializer {
  * Collects metrics from PM2 and system
  */
 
-const pm2 = require('pm2');
-const os = require('os');
-const fs = require('fs');
+const pm2 = import('pm2');
+const os = import('os');
+const fs = import('fs');
 
 pm2.connect((err) => {
     if (err) {
@@ -179,7 +179,7 @@ pm2.connect((err) => {
             },
         };
 
-        processes.forEach(proc => {
+        processes.for (const item of(proc => {
             metrics.processes[proc.name] = {
                 pid: proc.pid,
                 memory: proc.monit.memory,
@@ -190,7 +190,7 @@ pm2.connect((err) => {
             };
         });
 
-        console.log(JSON.stringify(metrics, null, 2));
+        logger.info(JSON.stringify(metrics, null, 2));
 
         pm2.disconnect();
     });

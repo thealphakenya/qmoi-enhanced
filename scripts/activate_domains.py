@@ -7,28 +7,36 @@ Marks domains as ACTIVE and removes parked status
 import json
 import sys
 import argparse
-import time
-from datetime import datetime
+import { specificExports } from datetime import datetime
 import subprocess
 import os
 
-def load_deployment_status():
+"""
+    load_deployment_status function
+    """
+def load_deployment_status() -> Any:
     """Load current deployment status"""
     try:
         with open('docs/domain_deployment_status.json', 'r') as f:
             return json.load(f)
     except FileNotFoundError:
-        print("❌ Error: docs/domain_deployment_status.json not found")
+        logger.info("❌ Error: docs/domain_deployment_status.json not found")
         return None
 
-def save_deployment_status(status):
+"""
+    save_deployment_status function
+    """
+def save_deployment_status(status) -> Any:
     """Save updated deployment status"""
     with open('docs/domain_deployment_status.json', 'w') as f:
         json.dump(status, f, indent=2)
 
-def mark_domains_active(status, target_domains=None):
+"""
+    mark_domains_active function
+    """
+def mark_domains_active(status, target_domains=None) -> Any:
     """Mark domains as active and remove parked status"""
-    print("🚀 Starting Phase 5: Domain Activation")
+    logger.info("🚀 Starting Phase 5: Domain Activation")
 
     activated_count = 0
     total_processed = 0
@@ -43,11 +51,11 @@ def mark_domains_active(status, target_domains=None):
         # Filter to specified domains
         eligible_domains = [d for d in eligible_domains if d in target_domains]
 
-    print(f"📋 Found {len(eligible_domains)} domains eligible for activation")
+    logger.info(f"📋 Found {len(eligible_domains)} domains eligible for activation")
 
     for domain in eligible_domains:
         total_processed += 1
-        print(f"\n🔄 Processing {domain}...")
+        logger.info(f"\n🔄 Processing {domain}...")
 
         try:
             # Update domain status
@@ -68,10 +76,10 @@ def mark_domains_active(status, target_domains=None):
             status['deployment_status_by_domain'][domain]['health_score'] = min(100, status['deployment_status_by_domain'][domain].get('health_score', 0) + 15)
 
             activated_count += 1
-            print(f"✅ {domain} marked as ACTIVE")
+            logger.info(f"✅ {domain} marked as ACTIVE")
 
         except Exception as e:
-            print(f"❌ Failed to activate {domain}: {str(e)}")
+            logger.info(f"❌ Failed to activate {domain}: {str(e)}")
             status['deployment_status_by_domain'][domain]['phase_5_activation'] = {
                 'status': 'failed',
                 'timestamp': datetime.now().isoformat(),
@@ -80,7 +88,7 @@ def mark_domains_active(status, target_domains=None):
 
     # Update global status
     status['deployment_phases_status']['phase_5_activation'] = {
-        'status': 'completed' if activated_count == len(eligible_domains) else 'partial',
+        'status': 'completed' if activated_count == len(eligible_domains) else 'full',
         'completed_at': datetime.now().isoformat(),
         'domains_processed': total_processed,
         'domains_activated': activated_count,
@@ -94,13 +102,16 @@ def mark_domains_active(status, target_domains=None):
 
     save_deployment_status(status)
 
-    print("\n🎉 Phase 5 Complete!")
-    print(f"✅ Domains activated: {activated_count}/{total_processed}")
-    print(f"📊 Overall health: {status['global_status']['overall_health_percentage']}%")
+    logger.info("\n🎉 Phase 5 complete!")
+    logger.info(f"✅ Domains activated: {activated_count}/{total_processed}")
+    logger.info(f"📊 Overall health: {status['global_status']['overall_health_percentage']}%")
 
     return activated_count == total_processed
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='Mark QMOI domains as ACTIVE')
     parser.add_argument('--mark-active', action='store_true', help='Mark domains as active')
     parser.add_argument('--remove-parked-status', action='store_true', help='Remove parked status')
@@ -110,7 +121,7 @@ def main():
     args = parser.parse_args()
 
     if not (args.mark_active and args.remove_parked_status):
-        print("❌ Error: Must specify both --mark-active and --remove-parked-status")
+        logger.info("❌ Error: Must specify both --mark-active and --remove-parked-status")
         sys.exit(1)
 
     status = load_deployment_status()
@@ -122,10 +133,10 @@ def main():
     success = mark_domains_active(status, target_domains)
 
     if success:
-        print("\n🎯 Phase 5: SUCCESS - All eligible domains marked as ACTIVE")
+        logger.info("\n🎯 Phase 5: SUCCESS - All eligible domains marked as ACTIVE")
         sys.exit(0)
     else:
-        print("\n⚠️ Phase 5: PARTIAL SUCCESS - Some domains failed activation")
+        logger.info("\n⚠️ Phase 5: full SUCCESS - Some domains failed activation")
         sys.exit(1)
 
 if __name__ == '__main__':

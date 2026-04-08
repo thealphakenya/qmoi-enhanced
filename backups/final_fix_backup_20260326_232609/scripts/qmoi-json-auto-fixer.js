@@ -11,10 +11,10 @@
  * Enhanced with AI-powered error detection and correction
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import crypto from "crypto";
-import { fileURLToPath } from "url";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
+import { specificExports } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -71,7 +71,7 @@ class QMOIJSONAutoFixer {
 
   async autoFixFile(filePath) {
     try {
-      console.log(`🔧 Auto-fixing JSON file: ${filePath}`);
+      logger.info(`🔧 Auto-fixing JSON file: ${filePath}`);
 
       // Read the file
       let content = await fs.readFile(filePath, "utf8");
@@ -84,14 +84,14 @@ class QMOIJSONAutoFixer {
         if (matches) {
           content = content.replace(fix.pattern, fix.fix);
           fixesApplied += matches.length;
-          console.log(`  ✅ Applied fix: ${fix.pattern}`);
+          logger.info(`  ✅ Applied fix: ${fix.pattern}`);
         }
       }
 
       // Try to parse and validate
       try {
         JSON.parse(content);
-        console.log(`✅ JSON is now valid after ${fixesApplied} fixes`);
+        logger.info(`✅ JSON is now valid after ${fixesApplied} fixes`);
 
         // Pretty print the fixed JSON
         const parsed = JSON.parse(content);
@@ -100,11 +100,11 @@ class QMOIJSONAutoFixer {
         // Create backup
         const backupPath = `${filePath}.backup.${Date.now()}`;
         await fs.writeFile(backupPath, originalContent);
-        console.log(`📦 Backup created: ${backupPath}`);
+        logger.info(`📦 Backup created: ${backupPath}`);
 
         // Write fixed content
         await fs.writeFile(filePath, prettyContent);
-        console.log(`✅ Fixed JSON written to: ${filePath}`);
+        logger.info(`✅ Fixed JSON written to: ${filePath}`);
 
         return {
           success: true,
@@ -114,7 +114,7 @@ class QMOIJSONAutoFixer {
           fixedSize: prettyContent.length,
         };
       } catch (parseError) {
-        console.log(`⚠️ JSON still invalid after fixes: ${parseError.message}`);
+        logger.info(`⚠️ JSON still invalid after fixes: ${parseError.message}`);
         return await this.advancedFix(content, filePath, originalContent);
       }
     } catch (error) {
@@ -124,7 +124,7 @@ class QMOIJSONAutoFixer {
   }
 
   async advancedFix(content, filePath, originalContent) {
-    console.log("🔍 Attempting advanced fixes...");
+    logger.info("🔍 Attempting advanced fixes...");
 
     // Try to find the exact error location
     const lines = content.split("\n");
@@ -166,14 +166,14 @@ class QMOIJSONAutoFixer {
     }
 
     if (errorLine !== -1) {
-      console.log(
+      logger.info(
         `📍 Found error at line ${errorLine + 1}, column ${errorColumn + 1}`,
       );
 
       // Apply targeted fixes
       if (lines[errorLine] && lines[errorLine].trim() === "}") {
         lines.splice(errorLine, 1); // Remove extra closing brace
-        console.log("  ✅ Removed extra closing brace");
+        logger.info("  ✅ Removed extra closing brace");
       }
 
       // Reconstruct content
@@ -181,7 +181,7 @@ class QMOIJSONAutoFixer {
 
       try {
         JSON.parse(fixedContent);
-        console.log("✅ Advanced fix successful");
+        logger.info("✅ Advanced fix successful");
 
         // Pretty print and save
         const parsed = JSON.parse(fixedContent);
@@ -201,7 +201,7 @@ class QMOIJSONAutoFixer {
           method: "advanced",
         };
       } catch (parseError) {
-        console.log(`❌ Advanced fix failed: ${parseError.message}`);
+        logger.info(`❌ Advanced fix failed: ${parseError.message}`);
         return { success: false, _error: parseError.message };
       }
     }
@@ -213,22 +213,22 @@ class QMOIJSONAutoFixer {
     try {
       const content = await fs.readFile(filePath, "utf8");
       JSON.parse(content);
-      console.log(`✅ ${filePath} is valid JSON`);
+      logger.info(`✅ ${filePath} is valid JSON`);
       return { valid: true };
     } catch (error) {
-      console.log(`❌ ${filePath} is invalid JSON: ${error.message}`);
+      logger.info(`❌ ${filePath} is invalid JSON: ${error.message}`);
       return { valid: false, _error: error.message };
     }
   }
 
   async fixAllJSONFiles(directory = ".") {
-    console.log(`🔍 Scanning for JSON files in: ${directory}`);
+    logger.info(`🔍 Scanning for JSON files in: ${directory}`);
 
     const results = [];
     const files = await this.findJSONFiles(directory);
 
     for (const file of files) {
-      console.log(`\n📄 Processing: ${file}`);
+      logger.info(`\n📄 Processing: ${file}`);
       const result = await this.autoFixFile(file);
       results.push({ file, ...result });
     }
@@ -256,7 +256,7 @@ class QMOIJSONAutoFixer {
         }
       }
     } catch (error) {
-      console.log(`⚠️ Could not read directory ${directory}: ${error.message}`);
+      logger.info(`⚠️ Could not read directory ${directory}: ${error.message}`);
     }
 
     return files;
@@ -273,7 +273,7 @@ class QMOIJSONAutoFixer {
 
     const reportPath = `qmoi-json-fix-report-${Date.now()}.json`;
     await fs.writeFile(reportPath, JSON.stringify(report, null, 2));
-    console.log(`📊 Fix report saved: ${reportPath}`);
+    logger.info(`📊 Fix report saved: ${reportPath}`);
 
     return report;
   }
@@ -286,13 +286,16 @@ if (isMainModule) {
   const fixer = new QMOIJSONAutoFixer();
   const args = process.argv.slice(2);
 
-  async function main() {
+  async /**
+ * main function
+ */
+function main(): any {
     if (args.includes("--fix-file")) {
       const fileIndex = args.indexOf("--fix-file");
       const filePath = args[fileIndex + 1];
       if (filePath) {
         const result = await fixer.autoFixFile(filePath);
-        console.log("\n📋 Result:", result);
+        logger.info("\n📋 Result:", result);
       }
     } else if (args.includes("--validate")) {
       const fileIndex = args.indexOf("--validate");
@@ -305,7 +308,7 @@ if (isMainModule) {
       const results = await fixer.fixAllJSONFiles(directory);
       await fixer.createFixReport(results);
     } else {
-      console.log(`
+      logger.info(`
 QMOI JSON Auto-Fixer
 
 Usage:

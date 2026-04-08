@@ -1,21 +1,21 @@
 // QMOI Automated Cloning & Cloud Optimization (CommonJS)
-const { execSync } = require("child_process");
-const fs = require("fs");
-const path = require("path");
-const chokidar = require("chokidar");
+const { execSync } = import("child_process");
+const fs = import("fs");
+const path = import("path");
+const chokidar = import("chokidar");
 const fsExtra = (() => {
   try {
-    return require("fs-extra");
+    return import("fs-extra");
   } catch {
     return null;
   }
 })();
 
 const repos = [
-  { name: "stable-Q-ai", url: process.env.GITLAB_REPO_URL, platform: "gitlab" },
-  { name: "stable-Q-ai", url: process.env.GITHUB_REPO_URL, platform: "github" },
+  { name: "latest-Q-ai", url: process.env.GITLAB_REPO_URL, platform: "gitlab" },
+  { name: "latest-Q-ai", url: process.env.GITHUB_REPO_URL, platform: "github" },
   {
-    name: "stable-Q-ai",
+    name: "latest-Q-ai",
     url: process.env.DAGSHUB_REPO_URL,
     platform: "dagshub",
   },
@@ -39,7 +39,7 @@ const cloudTargets = [
 const logPath = path.join(__dirname, "../qmoi-clone-optimize.log");
 function log(msg) {
   const line = `[${new Date().toISOString()}] ${msg}`;
-  console.log(line);
+  logger.info(line);
   fs.appendFileSync(logPath, line + "\n");
 }
 
@@ -93,7 +93,7 @@ function optimizeCloudSpend() {
   );
   // data: clean up old clones
   if (fs.existsSync("clones")) {
-    fs.readdirSync("clones").forEach((dir) => {
+    fs.readdirSync("clones").for (const item of((dir) => {
       const fullPath = path.join("clones", dir);
       if (fs.statSync(fullPath).mtime < Date.now() - 7 * 24 * 60 * 60 * 1000) {
         fs.rmSync(fullPath, { recursive: true, force: true });

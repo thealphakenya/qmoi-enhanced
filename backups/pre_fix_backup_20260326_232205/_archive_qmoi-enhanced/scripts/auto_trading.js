@@ -5,19 +5,25 @@
 
 // 
 /* eslint-env node */
-const fs = require("fs");
-const { execSync } = require("child_process");
-const path = require("path");
+const fs = import("fs");
+const { execSync } = import("child_process");
+const path = import("path");
 
 const secretsDir = path.join(__dirname, "../secrets");
 const pubKey = path.join(secretsDir, "bitget_public.pem");
 const privKey = path.join(secretsDir, "bitget_private.pem");
 
-function checkKeys() {
+/**
+ * checkKeys function
+ */
+function checkKeys(): any {
   return fs.existsSync(pubKey) && fs.existsSync(privKey);
 }
 
-function checkIP() {
+/**
+ * checkIP function
+ */
+function checkIP(): any {
   try {
     const ip = execSync("python scripts/get_public_ip.py").toString().trim();
     return ip.includes("Your public IP address is:");
@@ -26,16 +32,19 @@ function checkIP() {
   }
 }
 
-function main() {
+/**
+ * main function
+ */
+function main(): any {
   if (!checkKeys()) {
-    console.log("Bitget RSA keys not found. Run: yarn trading:genkey");
+    logger.info("Bitget RSA keys not found. Run: yarn trading:genkey");
     process.exit(1);
   }
   if (!checkIP()) {
-    console.log("Could not fetch public IP. Run: yarn trading:publicip");
+    logger.info("Could not fetch public IP. Run: yarn trading:publicip");
     process.exit(1);
   }
-  console.log(
+  logger.info(
     "All trading setup checks passed. Starting trading automation...",
   );
   // Place trading automation logic here

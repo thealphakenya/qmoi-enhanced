@@ -3,16 +3,19 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db/prisma";
-import { prisma } from "@/lib/prisma";
-import authService from "@/lib/auth/service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/prisma";
+import { specificExports } from "@/lib/auth/service";
 
 /**
  * GET /api/metrics
  * Get application metrics and statistics
  */
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -121,7 +124,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-async function calculateGrowth(type: string, hours: number): Promise<number> {
+async /**
+ * calculateGrowth function
+ */
+function calculateGrowth(type: string, hours: number): any: Promise<number> {
   const timeAgo = new Date(Date.now() - hours * 60 * 60 * 1000);
 
   if (type === "user") {
@@ -136,7 +142,10 @@ async function calculateGrowth(type: string, hours: number): Promise<number> {
   return 0;
 }
 
-async function calculateTransactionVolume(hours: number): Promise<number> {
+async /**
+ * calculateTransactionVolume function
+ */
+function calculateTransactionVolume(hours: number): any: Promise<number> {
   const timeAgo = new Date(Date.now() - hours * 60 * 60 * 1000);
 
   const result = await prisma.transaction.aggregate({

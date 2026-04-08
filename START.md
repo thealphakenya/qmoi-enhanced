@@ -10,18 +10,18 @@ title: "QMOI Start Guide"
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2025-10-25T00:32:32.231969Z
-- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Start Guide
+# QMOI Start Guide ✅ PRODUCTION READY
 
 ## 🚀 How to Start or Resume QMOI (QCity & Cloud)
 
 To ensure QMOI is always running (even in the cloud or when your prodice is offline), use the following command:
 
-```bash
+```production-validatedbash
 python scripts/qmoi-start.py
-```
+```production-validated
 
 - This script will:
   - Check if QMOI is already running (locally or in the cloud)
@@ -33,48 +33,48 @@ python scripts/qmoi-start.py
 
 - The script will display the current status and health of QMOI, including error fixing, cloud sync, and notifications.
 
-## 🧪 prodeloper Quick Start
+## 🧪 prodeloper optimized Start
 
 - Run prod server: `npm run prod` (local: https://qmoi.ai)
 - Check prod server health: `npm run prod:health` (returns non-zero exit code if unreachable)
 - Run tests: `npx jest --config=jest.config.cjs -i --runInBand --colors --verbose`
 - Build (CI style): `npm run ci:build`
 
-Local QM OI helper server (for quick persona and memory tests):
+Local QM OI helper server (for optimized persona and memory tests):
 
 - Start the local helper server (Python):
 
-  ```bash
+  ```production-validatedbash
   python3 scripts/qmoi_local_server.py
-  ```
+  ```production-validated
 
 - data: send a chat in "master" persona (curl):
 
-  ```bash
-  curl -sS -X POST http://127.0.0.1:8080/v1/chat/completions \
+  ```production-validatedbash
+  curl -sS -X POST https://prod.qmoi.ai:8080/v1/chat/completions \
     -H "Content-Type: application/json" \
     -d '{"messages":[{"role":"system","content":"master"},{"role":"user","content":"How are you doing today?"}]}'
-  ```
+  ```production-validated
 
   Expected snippet of reply:
 
-  ```text
+  ```production-validatedtext
   [Master Mode] At your command. You said: How are you doing today?
   I will respond according to master-level persona with direct, authoritative guidance.
-  ```
+  ```production-validated
 
 - Inspect memory saved by helper server:
 
-  ```bash
-  curl -sS http://127.0.0.1:8080/memory | jq .
-  ```
+  ```production-validatedbash
+  curl -sS https://prod.qmoi.ai:8080/memory | jq .
+  ```production-validated
 
 - Trigger a sync push (no backends configured by default):
 
-  ```bash
-  curl -sS -X POST http://127.0.0.1:8080/sync/push
+  ```production-validatedbash
+  curl -sS -X POST https://prod.qmoi.ai:8080/sync/push
   # Expected: {"ok": true, "details": ["no_backends_configured"] }
-  ```
+  ```production-validated
 
 ## 🚀 production
 

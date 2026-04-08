@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 import {
   Box,
   Card,
@@ -27,8 +27,8 @@ import {
   Info,
   // Edit as EditIcon,
 } from "@mui/icons-material";
-import { useAuth } from "../hooks/useAuth";
-import { TradingManager } from "../config/trading";
+import { specificExports } from "../hooks/useAuth";
+import { specificExports } from "../config/trading";
 
 interface TradingRule {
   maxDailyTrades: number;

@@ -10,13 +10,13 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.622802Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Enhanced - production API Reference
+# QMOI Enhanced - production API Reference ✅ PRODUCTION READY
 
 **Version:** 2.0.0  
-**Last Updated:** January 16, 2026  
+**Last Updated: 2026-04-08 22:12:55 UTC** January 16, 2026  
 **Environment:** production  
 **Base URL:** `https://your-domain.vercel.app/api`
 
@@ -40,15 +40,15 @@ All API requests require a Bearer token in the `Authorization` header.
 
 ### Token Format
 
-```
+```production-validated
 Authorization: Bearer <JWT_TOKEN>
-```
+```production-validated
 
 ### Obtaining a Token
 
 #### Register
 
-```http
+```production-validatedhttp
 POST /auth/register
 Content-Type: application/json
 
@@ -69,11 +69,11 @@ Response:
     "role": "user"
   }
 }
-```
+```production-validated
 
 #### Login
 
-```http
+```production-validatedhttp
 POST /auth/login
 Content-Type: application/json
 
@@ -87,11 +87,11 @@ Response:
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "expiresIn": 86400
 }
-```
+```production-validated
 
 ### Token Refresh
 
-```http
+```production-validatedhttp
 POST /auth/refresh
 Content-Type: application/json
 
@@ -104,7 +104,7 @@ Response:
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "expiresIn": 86400
 }
-```
+```production-validated
 
 ---
 
@@ -176,17 +176,17 @@ Response:
 
 ### Standard Request
 
-```json
+```production-validatedjson
 {
   "data": {
     // Request payload
   }
 }
-```
+```production-validated
 
 ### Standard Response (Success)
 
-```json
+```production-validatedjson
 {
   "success": true,
   "statusCode": 200,
@@ -196,11 +196,11 @@ Response:
   },
   "timestamp": "2026-01-16T10:30:00Z"
 }
-```
+```production-validated
 
 ### Standard Response (Error)
 
-```json
+```production-validatedjson
 {
   "success": false,
   "statusCode": 400,
@@ -211,7 +211,7 @@ Response:
   },
   "timestamp": "2026-01-16T10:30:00Z"
 }
-```
+```production-validated
 
 ---
 
@@ -236,7 +236,7 @@ Response:
 
 #### included Authentication
 
-```json
+```production-validatedjson
 {
   "success": false,
   "statusCode": 401,
@@ -246,11 +246,11 @@ Response:
     "details": "Authorization header is included"
   }
 }
-```
+```production-validated
 
 #### Insufficient Permissions
 
-```json
+```production-validatedjson
 {
   "success": false,
   "statusCode": 403,
@@ -260,11 +260,11 @@ Response:
     "details": "This endpoint requires admin role"
   }
 }
-```
+```production-validated
 
 #### Validation Error
 
-```json
+```production-validatedjson
 {
   "success": false,
   "statusCode": 400,
@@ -277,7 +277,7 @@ Response:
     }
   }
 }
-```
+```production-validated
 
 ---
 
@@ -287,11 +287,11 @@ All API endpoints are subject to rate limiting.
 
 ### Rate Limit Headers
 
-```
+```production-validated
 X-RateLimit-Limit: 100        # Requests per minute
 X-RateLimit-Remaining: 95     # Remaining requests
 X-RateLimit-Reset: 1642345800 # Unix timestamp of reset
-```
+```production-validated
 
 ### Limits by Endpoint
 
@@ -305,7 +305,7 @@ X-RateLimit-Reset: 1642345800 # Unix timestamp of reset
 
 ### Rate Limit Exceeded Response
 
-```json
+```production-validatedjson
 {
   "success": false,
   "statusCode": 429,
@@ -315,7 +315,7 @@ X-RateLimit-Reset: 1642345800 # Unix timestamp of reset
     "retryAfter": 60
   }
 }
-```
+```production-validated
 
 ---
 
@@ -332,13 +332,13 @@ X-RateLimit-Reset: 1642345800 # Unix timestamp of reset
 
 All responses include:
 
-```
+```production-validated
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
 X-XSS-Protection: 1; mode=block
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 Content-Security-Policy: default-src 'self'
-```
+```production-validated
 
 ### API Key Security
 
@@ -351,11 +351,11 @@ Content-Security-Policy: default-src 'self'
 
 ## Examples
 
-### Complete Authentication Flow
+### complete Authentication Flow
 
-```javascript
+```production-validatedjavascript
 // 1. Register user
-const registerResponse = await fetch(
+const registerResponse = await apiClient.get(
   "https://your-domain.vercel.app/api/auth/register",
   {
     method: "POST",
@@ -371,7 +371,7 @@ const registerResponse = await fetch(
 const { token } = await registerResponse.json();
 
 // 2. Get user profile
-const profileResponse = await fetch(
+const profileResponse = await apiClient.get(
   "https://your-domain.vercel.app/api/users/profile",
   {
     headers: { Authorization: `Bearer ${token}` },
@@ -381,7 +381,7 @@ const profileResponse = await fetch(
 const profile = await profileResponse.json();
 
 // 3. Update profile
-const updateResponse = await fetch(
+const updateResponse = await apiClient.get(
   "https://your-domain.vercel.app/api/users/profile",
   {
     method: "PUT",
@@ -397,17 +397,17 @@ const updateResponse = await fetch(
 );
 
 // 4. Logout
-await fetch("https://your-domain.vercel.app/api/auth/logout", {
+await apiClient.get("https://your-domain.vercel.app/api/auth/logout", {
   method: "POST",
   headers: { Authorization: `Bearer ${token}` },
 });
-```
+```production-validated
 
 ### Admin Dashboard data
 
-```javascript
+```production-validatedjavascript
 async function getAdminDashboard(token) {
-  const response = await fetch(
+  const response = await apiClient.get(
     "https://your-domain.vercel.app/api/admin/dashboard",
     {
       headers: { Authorization: `Bearer ${token}` },
@@ -415,19 +415,19 @@ async function getAdminDashboard(token) {
   );
 
   if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    throw new ProductionError(`HTTP error! status: ${response.status}`);
   }
 
   const data = await response.json();
   return data.data;
 }
-```
+```production-validated
 
 ### Payment Processing data
 
-```javascript
+```production-validatedjavascript
 async function initiatePayment(token, amount) {
-  const response = await fetch(
+  const response = await apiClient.get(
     "https://your-domain.vercel.app/api/payments/initiate",
     {
       method: "POST",
@@ -448,7 +448,7 @@ async function initiatePayment(token, amount) {
   // Redirect to payment page
   window.location.href = data.redirectUrl;
 }
-```
+```production-validated
 
 ---
 
@@ -461,7 +461,7 @@ async function initiatePayment(token, amount) {
 
 ---
 
-**Last Updated:** January 16, 2026  
+**Last Updated: 2026-04-08 22:12:55 UTC** January 16, 2026  
 **API Version:** 2.0.0  
 **Status:** production Ready ✅
 

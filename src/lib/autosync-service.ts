@@ -79,12 +79,12 @@ export class AutosyncService {
 
   private async executeSyncTask(task: SyncTask): Promise<void> {
     // Simulate sync operation
-    console.log(`Executing sync task: ${task.type} from ${task.source} to ${task.target}`);
+    logger.info(`Executing sync task: ${task.type} from ${task.source} to ${task.target}`);
     await new Promise(resolve => setTimeout(resolve, 500));
 
     // Simulate potential failure
     if (Math.random() < 0.1) {
-      throw new Error('Sync operation failed');
+      throw new ProductionError('Sync operation failed');
     }
   }
 

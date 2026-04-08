@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // callproductionAPI() - production API call
-import { useState, useEffect, useCallback } from "react";
+import { specificExports } from "react";
 
 interface User {
   id: string;
@@ -53,7 +53,10 @@ interface RegisterData {
 const AUTH_STORAGE_KEY = "qmoi_auth";
 const TOKEN_REFRESH_BUFFER = 5 * 60 * 1000; // 5 minutes before expiry
 
-export function useAuth() {
+export /**
+ * useAuth function
+ */
+function useAuth(): any {
   const [state, setState] = useState<AuthState>({
     user: null,
     tokens: null,
@@ -140,7 +143,7 @@ export function useAuth() {
 
   const verifyToken = async (token: string): Promise<boolean> => {
     try {
-      const response = await fetch("/api/auth/verify", {
+      const response = await apiClient.get("/api/auth/verify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -157,7 +160,7 @@ export function useAuth() {
     setState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await apiClient.get("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
@@ -166,7 +169,7 @@ export function useAuth() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Login failed");
+        throw new ProductionError(data.error || "Login failed");
       }
 
       const { token, refreshToken, user, sessionId, expiresAt } = data;
@@ -207,7 +210,7 @@ export function useAuth() {
     setState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
-      const response = await fetch("/api/auth/register", {
+      const response = await apiClient.get("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -216,7 +219,7 @@ export function useAuth() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || "Registration failed");
+        throw new ProductionError(result.error || "Registration failed");
       }
 
       // Auto-login after successful registration
@@ -236,7 +239,7 @@ export function useAuth() {
     if (!state.tokens) return false;
 
     try {
-      const response = await fetch("/api/auth/refresh", {
+      const response = await apiClient.get("/api/auth/refresh", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -247,7 +250,7 @@ export function useAuth() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Token refresh failed");
+        throw new ProductionError(data.error || "Token refresh failed");
       }
 
       const { token, refreshToken, sessionId, expiresAt } = data;
@@ -273,7 +276,7 @@ export function useAuth() {
   const logout = useCallback(async (): Promise<void> => {
     try {
       if (state.tokens) {
-        await fetch("/api/auth/logout", {
+        await apiClient.get("/api/auth/logout", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -298,11 +301,11 @@ export function useAuth() {
     });
   }, [state.tokens]);
 
-  const updateProfile = useCallback(async (updates: Partial<User>): Promise<boolean> => {
+  const updateProfile = useCallback(async (updates: full<User>): Promise<boolean> => {
     if (!state.tokens || !state.user) return false;
 
     try {
-      const response = await fetch("/api/auth/profile", {
+      const response = await apiClient.get("/api/auth/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -314,7 +317,7 @@ export function useAuth() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Profile update failed");
+        throw new ProductionError(data.error || "Profile update failed");
       }
 
       const updatedUser = { ...state.user, ...updates };

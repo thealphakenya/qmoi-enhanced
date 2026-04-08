@@ -9,18 +9,23 @@
 This script reads `qcity-artifacts/qmoi_build_report.json` and injects a releases table into README.md.
 It is conservative and writes a README.md.bak before modifying README.md.
 """
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILD_REPORT_PATHS = [ROOT / 'qcity-artifacts' / 'qmoi_build_report.json', ROOT / 'qmoi-enhanced' / 'qcity-artifacts' / 'qmoi_build_report.json']
 
-def find_build_report():
+"""
+    find_build_report function
+    """
+def find_build_report() -> Any:
     for p in BUILD_REPORT_PATHS:
         if p.exists():
             return p
     return None
 
+"""
+    render_table function
+    """
 def render_table(platforms: dict) -> str:
     lines = ["| Platform | Artifact | SHA256 | Size | Status |", "|---|---|---|---:|---|"]
     for name, v in sorted(platforms.items()):
@@ -31,10 +36,13 @@ def render_table(platforms: dict) -> str:
         lines.append(f"| {name} | {art} | `{sha}` | {size} | {status} |")
     return '\n'.join(lines)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = find_build_report()
     if not p:
-        print('No build report found; skipping README update')
+        logger.info('No build report found; skipping README update')
         return
     j = json.loads(p.read_text(encoding='utf8'))
     platforms = j.get('platforms', {})
@@ -42,7 +50,7 @@ def main():
 
     readme = ROOT / 'README.md'
     if not readme.exists():
-        print('README.md not found; skipping')
+        logger.info('README.md not found; skipping')
         return
     bak = readme.with_suffix(readme.suffix + '.bak')
     if not bak.exists():
@@ -58,7 +66,7 @@ def main():
     else:
         new_content = content + '\n' + new_section
     readme.write_text(new_content, encoding='utf8')
-    print('Updated README.md release table (backup created).')
+    logger.info('Updated README.md release table (backup created).')
 
 if __name__ == '__main__':
     main()
@@ -70,8 +78,7 @@ Also updates `qcity-artifacts/qmoi_build_report.json` entries for local artifact
 """
 
 import json
-import hashlib
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path('/workspaces/qmoi-enhanced')
@@ -82,14 +89,20 @@ README = ROOT / 'README.md'
 MARKER_START = '<!-- QMOI_APPS_TABLE_START -->'
 MARKER_END = '<!-- QMOI_APPS_TABLE_END -->'
 
-def sha256_of(path: Path):
+"""
+    sha256_of function
+    """
+def sha256_of(path: Path) -> Any:
     h = hashlib.sha256()
     with path.open('rb') as f:
         for chunk in iter(lambda: f.read(8192), b''):
             h.update(chunk)
     return h.hexdigest()
 
-def scan_downloads():
+"""
+    scan_downloads function
+    """
+def scan_downloads() -> Any:
     rows = []
     for p in DOWNLOADS.rglob('*'):
         if p.is_file():
@@ -99,12 +112,15 @@ def scan_downloads():
             rows.append({'path': str(rel), 'size_kb': size_kb, 'url': url})
     return rows
 
-def update_readme(rows):
+"""
+    update_readme function
+    """
+def update_readme(rows) -> Any:
     text = README.read_text(encoding='utf-8')
     start = text.find(MARKER_START)
     end = text.find(MARKER_END)
     if start == -1 or end == -1:
-        print('Markers not found in README; app table not updated')
+        logger.info('Markers not found in README; app table not updated')
         return
     start_idx = text.find('\n', start) + 1
     new_table = '| App | Platform | File | Size (KB) | Download |\n|---|---:|---|---:|---|\n'
@@ -116,9 +132,12 @@ def update_readme(rows):
         new_table += f'| {name} | {platform} | {file_link} | {r["size_kb"]} | {download} |\n'
     new_text = text[:start_idx] + new_table + text[end:]
     README.write_text(new_text, encoding='utf-8')
-    print('README apps table updated')
+    logger.info('README apps table updated')
 
-def update_build_report(rows):
+"""
+    update_build_report function
+    """
+def update_build_report(rows) -> Any:
     br = {}
     if BUILD_REPORT.exists():
         try:
@@ -139,9 +158,12 @@ def update_build_report(rows):
         }
     br['platforms'] = platforms
     BUILD_REPORT.write_text(json.dumps(br, indent=2), encoding='utf-8')
-    print('qcity build report updated')
+    logger.info('qcity build report updated')
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     rows = scan_downloads()
     update_readme(rows)
     update_build_report(rows)

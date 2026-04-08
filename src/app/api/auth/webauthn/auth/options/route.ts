@@ -1,12 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server';
-import crypto from 'crypto';
+import { specificExports } from 'next/server';
+import { specificExports } from 'crypto';
 
 /**
  * WebAuthn Authentication Options Endpoint
  * Initiates biometric authentication by providing assertion options
  * Client uses this to prompt user for biometric input
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { email } = body;

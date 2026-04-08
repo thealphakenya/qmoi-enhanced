@@ -5,12 +5,12 @@
 
 // Production implementation: all markers normalized for completion
 "use client";
-import React, { useState, useRef, useCallback, useEffect } from "react";
-import { Chatbot } from "@/components/Chatbot";
+import { specificExports } from "react";
+import { specificExports } from "@/components/Chatbot";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { AIProvider, useAIContext } from "./AIContext";
-import { useToast } from "@/components/ui/use-toast";
+import { specificExports } from "framer-motion";
+import { specificExports } from "./AIContext";
+import { specificExports } from "@/components/ui/use-toast";
 
 type ModalType =
   | "image"
@@ -339,7 +339,7 @@ export const FloatingAQ: React.FC = () => {
   }, [onTouchMove]);
 
   // Keyboard accessibility: open/close with Ctrl+Shift+A
-  React.useEffect(() => {
+  useEffect(() => {
     const handler = (e: React.KeyboardEvent | KeyboardEvent) => {
       if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "a") {
         setOpen((v) => !v);
@@ -353,13 +353,13 @@ export const FloatingAQ: React.FC = () => {
   const closeModal = () => setModal(null);
 
   // Fetch wallet data when modal opens
-  React.useEffect(() => {
+  useEffect(() => {
     if (modal === "wallet") {
       setWalletLoading(true);
       setWalletError(null);
       Promise.all([
-        fetch("/api/qi-trading?action=account").then((r) => r.json()),
-        fetch("/api/qi-trading").then((r) => r.json()),
+        apiClient.get("/api/qi-trading?action=account").then((r) => r.json()),
+        apiClient.get("/api/qi-trading").then((r) => r.json()),
       ])
         .then(([balance, txs]) => {
           setWalletBalance(balance.balance || balance || null);
@@ -374,11 +374,11 @@ export const FloatingAQ: React.FC = () => {
   }, [modal]);
 
   // Fetch automation jobs when modal opens
-  React.useEffect(() => {
+  useEffect(() => {
     if (modal === "automation") {
       setAutomationLoading(true);
       setAutomationError(null);
-      fetch("/api/colab-job")
+      apiClient.get("/api/colab-job")
         .then((r) => r.json())
         .then((jobs) => {
           setAutomationJobs(Array.isArray(jobs) ? jobs : []);
@@ -396,7 +396,7 @@ export const FloatingAQ: React.FC = () => {
     setAutomationLoading(true);
     setAutomationError(null);
     try {
-      await fetch("/api/colab-job", {
+      await apiClient.get("/api/colab-job", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -405,7 +405,7 @@ export const FloatingAQ: React.FC = () => {
         }),
       });
       // Refresh jobs
-      const jobs = await fetch("/api/colab-job").then((r) => r.json());
+      const jobs = await apiClient.get("/api/colab-job").then((r) => r.json());
       setAutomationJobs(Array.isArray(jobs) ? jobs : []);
     } catch (e) {
       setAutomationError("Failed to trigger automation job.");
@@ -421,12 +421,12 @@ export const FloatingAQ: React.FC = () => {
     setImageUrl(null);
     try {
       // Try to call a real API endpoint if available
-      const res = await fetch("/api/qmoi-model", {
+      const res = await apiClient.get("/api/qmoi-model", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "generate-image", prompt: imagePrompt }),
       });
-      if (!res.ok) throw new Error(await res.text());
+      if (!res.ok) throw new ProductionError(await res.text());
       const data = await res.json();
       if (data.imageUrl) setImageUrl(data.imageUrl);
       else if (data.image)
@@ -743,7 +743,7 @@ export const FloatingAQ: React.FC = () => {
                   📁
                 </button>
                 <button
-                  title="Quick Settings"
+                  title="optimized Settings"
                   style={{
                     background: "none",
                     border: "none",
@@ -1582,7 +1582,7 @@ export const FloatingAQ: React.FC = () => {
                       marginBottom: 12,
                     }}
                   >
-                    <b>Quick Settings</b>
+                    <b>optimized Settings</b>
                     <button
                       onClick={closeModal}
                       style={{
@@ -1729,7 +1729,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Bluetooth Manager...</div>}
                     >
                       {React.createElement(
-                        require("./BluetoothManager").BluetoothManager,
+                        import("./BluetoothManager").BluetoothManager,
                       )}
                     </React.Suspense>
                   </div>
@@ -1843,7 +1843,7 @@ export const FloatingAQ: React.FC = () => {
                         color: "#888",
                       }}
                     >
-                      Global call feature is in stable. For issues, contact
+                      Global call feature is in latest. For issues, contact
                       support.
                     </div>
                   </div>
@@ -1904,7 +1904,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Global Video Call...</div>}
                     >
                       {React.createElement(
-                        require("./GlobalVideoCall").GlobalVideoCall,
+                        import("./GlobalVideoCall").GlobalVideoCall,
                       )}
                     </React.Suspense>
                   </div>
@@ -1964,7 +1964,7 @@ export const FloatingAQ: React.FC = () => {
                     <React.Suspense
                       fallback={<div>Loading Global Mail...</div>}
                     >
-                      {React.createElement(require("./GlobalMail").GlobalMail)}
+                      {React.createElement(import("./GlobalMail").GlobalMail)}
                     </React.Suspense>
                   </div>
                 </motion.div>
@@ -2024,7 +2024,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading File Transfer...</div>}
                     >
                       {React.createElement(
-                        require("./GlobalFileTransfer").GlobalFileTransfer,
+                        import("./GlobalFileTransfer").GlobalFileTransfer,
                       )}
                     </React.Suspense>
                   </div>
@@ -2083,7 +2083,7 @@ export const FloatingAQ: React.FC = () => {
                   <div style={{ color: "#333", width: "100%" }}>
                     <React.Suspense fallback={<div>Loading WiFi Panel...</div>}>
                       {React.createElement(
-                        require("./WifiAutoConnectPanel").WifiAutoConnectPanel,
+                        import("./WifiAutoConnectPanel").WifiAutoConnectPanel,
                       )}
                     </React.Suspense>
                   </div>
@@ -2144,7 +2144,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Price/Product Verifier...</div>}
                     >
                       {React.createElement(
-                        require("./PriceProductVerifier").PriceProductVerifier,
+                        import("./PriceProductVerifier").PriceProductVerifier,
                       )}
                     </React.Suspense>
                   </div>
@@ -2205,7 +2205,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Download Manager...</div>}
                     >
                       {React.createElement(
-                        require("./DownloadManager").DownloadManager,
+                        import("./DownloadManager").DownloadManager,
                       )}
                     </React.Suspense>
                   </div>
@@ -2266,7 +2266,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Farm/Business Manager...</div>}
                     >
                       {React.createElement(
-                        require("./FarmBusinessManager").FarmBusinessManager,
+                        import("./FarmBusinessManager").FarmBusinessManager,
                       )}
                     </React.Suspense>
                   </div>
@@ -2327,7 +2327,7 @@ export const FloatingAQ: React.FC = () => {
                       fallback={<div>Loading Map/Location Panel...</div>}
                     >
                       {React.createElement(
-                        require("./MapLocationPanel").MapLocationPanel,
+                        import("./MapLocationPanel").MapLocationPanel,
                       )}
                     </React.Suspense>
                   </div>
@@ -2342,7 +2342,11 @@ export const FloatingAQ: React.FC = () => {
 };
 
 // Wrap FloatingAQ in AIProvider for persistent context
-export default function FloatingAQWithProvider(props: unknown) {
+export default /**
+ * FloatingAQWithProvider function
+ */
+function FloatingAQWithProvider(): any {
+  try {(props: unknown) {
   return (
     <AIProvider>
       <FloatingAQ {...props} />

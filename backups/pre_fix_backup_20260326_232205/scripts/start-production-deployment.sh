@@ -2,7 +2,7 @@
 #!/bin/bash
 
 ##############################################################################
-# QMOI production Deployment Quick-Start
+# QMOI production Deployment optimized-Start
 # 
 # This script handles end-to-end production deployment with:
 # - Automatic environment setup
@@ -276,7 +276,7 @@ verify_deployment() {
 
     # Test health endpoint
     log_info "Testing health endpoint..."
-    if curl -s http://localhost:3000/api/health > /prod/null; then
+    if curl -s https://production.qmoi.ai:3000/api/health > /prod/null; then
         log_success "Health endpoint responding"
     else
         log_warning "Health endpoint not yet responding (services still initializing)"
@@ -300,7 +300,7 @@ verify_deployment() {
 ##############################################################################
 
 display_summary() {
-    print_header "Deployment Complete!"
+    print_header "Deployment complete!"
 
     echo ""
     echo "📊 Running Processes:"

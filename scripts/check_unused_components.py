@@ -32,10 +32,10 @@ with open(ISSUES_FILE, "r", encoding="utf-8") as f:
 unused_entries = [l for l in lines if l.startswith("- ")]
 
 if unused_entries:
-    print("ERROR: Found unused components still listed in", ISSUES_FILE)
-    print("First entries:")
+    logger.info("ERROR: Found unused components still listed in", ISSUES_FILE)
+    logger.info("First entries:")
     for entry in unused_entries[:10]:
-        print("  ", entry)
+        logger.info("  ", entry)
     sys.exit(1)
 
-print("OK: No unused components detected (SERVINGERRORSISSUES.md is clean).")
+logger.info("OK: No unused components detected (SERVINGERRORSISSUES.md is clean).")

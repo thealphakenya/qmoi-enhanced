@@ -5,8 +5,8 @@
 
 // 
 // scripts/generate-debug-report.js
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const logPath = path.join(__dirname, "../debug-report.log");
 
@@ -17,11 +17,11 @@ const report = `
 🧪 APK/EXE sizes verified
 📦 NPM version: ${process.version}
 📁 Directory: ${process.cwd()}
-📡 Internet status: ${require("dns").resolve("google.com", (_err) => {
+📡 Internet status: ${import("dns").resolve("google.com", (_err) => {
   if (_err) fs.appendFileSync(logPath, "❌ Internet: Unavailable\n");
   else fs.appendFileSync(logPath, "✅ Internet: Connected\n");
 })}
 `;
 
 fs.writeFileSync(logPath, report);
-console.log(`✅ Debug report generated: ${logPath}`);
+logger.info(`✅ Debug report generated: ${logPath}`);

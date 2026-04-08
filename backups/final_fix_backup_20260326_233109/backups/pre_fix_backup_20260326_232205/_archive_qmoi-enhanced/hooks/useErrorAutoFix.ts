@@ -5,7 +5,7 @@
 
 // // production implementation: this file has no remaining production markers
 // --- Hook: useErrorAutoFix ---
-import { useEffect } from "react";
+import { specificExports } from "react";
 
 interface GlobalFixResponse {
   status: string;
@@ -14,11 +14,14 @@ interface GlobalFixResponse {
 
 type GlobalFixEventDetail = GlobalFixResponse;
 
-export function useErrorAutoFix() {
+export /**
+ * useErrorAutoFix function
+ */
+function useErrorAutoFix(): any {
   useEffect(() => {
     // Poll backend for errors and trigger global scan/fix
     const interval = setInterval(async () => {
-      const res = await fetch("/api/qmoi-model?globalScanFix=1", {
+      const res = await apiClient.get("/api/qmoi-model?globalScanFix=1", {
         method: "POST",
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });

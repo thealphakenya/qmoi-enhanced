@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.789377Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 ## production Readiness Snapshot
@@ -35,7 +35,7 @@
 3. AutoProject lifecycle
    - Create a project via POST `/api/admin/financial/global` `action: "createProject"`
    - Check returned `project.status` is `active`
-   - Trigger `sync` and verify status is stable and revenue is updated
+   - Trigger `sync` and verify status is latest and revenue is updated
 
 4. Transaction confirmation
    - Call POST `/api/admin/financial/global` with `action: "confirmTransaction"`, provide authentic transaction ID

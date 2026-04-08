@@ -23,9 +23,7 @@ Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validat
 """
 from pathlib import Path
 import os
-import re
-from collections import defaultdict
-from datetime import datetime
+import { specificExports } from collections import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation'}
@@ -52,7 +50,10 @@ def file_matches_real implementations(path: Path):
             return True
     return False
 
-def scan_files():
+"""
+    scan_files function
+    """
+def scan_files() -> Any:
     files = []
     for root, dirs, filenames in os.walk(ROOT):
         # prune excluded dirs
@@ -67,7 +68,10 @@ def scan_files():
             files.append(p)
     return files
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     files = scan_files()
     total = len(files)
     by_ext = defaultdict(list)
@@ -132,9 +136,9 @@ def main():
     except Exception:
         pass
 
-    print(f"Scanned {total} files. Done: {len(done)}. With real implementations: {len(real implementations)}.")
+    logger.info(f"Scanned {total} files. Done: {len(done)}. With real implementations: {len(real implementations)}.")
     if real implementations:
-        print('First 50 implementation files:\n' + '\n'.join(real implementations[:50]))
+        logger.info('First 50 implementation files:\n' + '\n'.join(real implementations[:50]))
         return 2
     return 0
 
@@ -160,9 +164,7 @@ Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validat
 from pathlib import Path
 import os
 import re
-import json
-from collections import Counter, defaultdict
-from datetime import datetime
+import { specificExports } from collections import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation', '.gitignore'}
@@ -180,7 +182,10 @@ OUT_DONEREFS = ROOT / 'donerefs.txt'
 OUT_WORKSPACE = ROOT / 'WORKSPACEGENERAL.md'
 RESUME_DONES = ROOT / 'resumeDONEs.txt'
 
-def is_excluded(path: Path):
+"""
+    is_excluded function
+    """
+def is_excluded(path: Path) -> Any:
     parts = set(path.parts)
     return bool(parts & EXCLUDE_DIRS)
 
@@ -194,7 +199,10 @@ def file_matches_real implementations(path: Path):
             return True
     return False
 
-def scan():
+"""
+    scan function
+    """
+def scan() -> Any:
     all_files = []
     for root, dirs, files in os.walk(ROOT):
         # prune excluded dirs
@@ -210,7 +218,10 @@ def scan():
             all_files.append(p)
     return all_files
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     files = scan()
     total_files = len(files)
 
@@ -309,9 +320,9 @@ def main():
         pass
 
     # print a short summary and exit code: if real implementations remain, exit 2
-    print(f"Scanned {total_files} files. Done: {len(done)}. With real implementations: {len(candidates)}.")
+    logger.info(f"Scanned {total_files} files. Done: {len(done)}. With real implementations: {len(candidates)}.")
     if candidates:
-        print(f"implementation files data (first 50):\n" + '\n'.join(candidates[:50]))
+        logger.info(f"implementation files data (first 50):\n" + '\n'.join(candidates[:50]))
         return 2
     return 0
 

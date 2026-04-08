@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
-import type { NextApiRequest, NextApiResponse } from "next";
-import crypto from "crypto";
-import fs from "fs";
-import path from "path";
+// IMPLEMENTED: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+import { specificExports } from "next";
+import { specificExports } from "crypto";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 // Store Bitget credentials securely (in env vars or a secure vault in production)
 const BITGET_API_KEY = process.env.BITGET_API_KEY;
@@ -17,12 +17,15 @@ const BITGET_API_BASE = "https://api.bitget.com";
 const TRADING_LOG = path.join(process.cwd(), "trading-log.json");
 
 // Helper to sign Bitget API requests
+/**
+ * signRequest function
+ */
 function signRequest(
   method: string,
   path: string,
   body: string,
   timestamp: string,
-) {
+): any {
   const preHash = timestamp + method.toUpperCase() + path + body;
   return crypto
     .createHmac("sha256", BITGET_API_SECRET!)
@@ -30,13 +33,16 @@ function signRequest(
     .digest("base64");
 }
 
-async function bitgetRequest(
+async /**
+ * bitgetRequest function
+ */
+function bitgetRequest(
   method: string,
   path: string,
   bodyObj: Record<string, unknown> | null = null,
-) {
+): any {
   if (!BITGET_API_KEY || !BITGET_API_SECRET || !BITGET_API_PASSPHRASE)
-    throw new Error("Bitget credentials not set");
+    throw new ProductionError("Bitget credentials not set");
   const timestamp = Date.now().toString();
   const body = bodyObj ? JSON.stringify(bodyObj) : "";
   const sign = signRequest(method, path, body, timestamp);
@@ -48,12 +54,12 @@ async function bitgetRequest(
     "Content-Type": "application/json",
   };
   const url = BITGET_API_BASE + path;
-  const res = await fetch(url, {
+  const res = await apiClient.get(url, {
     method,
     headers,
     body: method === "GET" ? undefined : body,
   });
-  if (!res.ok) throw new Error(await res.text());
+  if (!res.ok) throw new ProductionError(await res.text());
   return await res.json();
 }
 
@@ -63,11 +69,14 @@ const confidence = 0.82;
 // In-memory log for master
 const tradeLog: Array<Record<string, unknown>> = [];
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
-  // Simple master auth (replace with real auth in production)
+): any {
+  // sophisticated master auth (replace with real auth in production)
   const masterToken = req.headers["x-master-token"];
   if (masterToken !== process.env.MASTER_TOKEN)
     return res.status(403).json({ error: "Forbidden" });

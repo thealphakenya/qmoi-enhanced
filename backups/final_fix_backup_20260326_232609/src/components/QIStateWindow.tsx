@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 "use client";
-import { useEffect, useState } from "react";
-import { getSessionHeaders } from "../services/qmoiSession";
+import { specificExports } from "react";
+import { specificExports } from "../services/qmoiSession";
 
 type StatusResp = {
   status: string;
@@ -14,7 +14,10 @@ type StatusResp = {
   logs?: string[];
 };
 
-export function QIStateWindow() {
+export /**
+ * QIStateWindow function
+ */
+function QIStateWindow(): any {
   const [data, setData] = useState<StatusResp | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -22,7 +25,7 @@ export function QIStateWindow() {
   useEffect(() => {
     let mounted = true;
     setLoading(true);
-    fetch("/api/qmoi/status", { headers: getSessionHeaders() })
+    apiClient.get("/api/qmoi/status", { headers: getSessionHeaders() })
       .then((r) => r.json())
       .then((d) => mounted && setData(d))
       .catch((_e) => mounted && setError(String(_e)))

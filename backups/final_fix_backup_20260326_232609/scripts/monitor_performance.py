@@ -6,15 +6,15 @@
 import psutil
 import time
 import logging
-import json
-from datetime import datetime
-from typing import Dict, List, Optional
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Optional
 import matplotlib.pyplot as plt
-import numpy as np
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 class PerformanceMonitor:
-    def __init__(self, log_dir: str = 'logs'):
+    """
+    __init__ function
+    """
+def __init__(self, log_dir: str = 'logs') -> Any:
         self.log_dir = Path(log_dir)
         self.log_dir.mkdir(exist_ok=True)
         self.logger = self._setup_logger()
@@ -23,7 +23,10 @@ class PerformanceMonitor:
         self.sampling_interval = 1.0  # seconds
         self.max_history_size = 1000  # maximum number of metrics to store
 
-    def _setup_logger(self) -> logging.Logger:
+    """
+    _setup_logger function
+    """
+def _setup_logger(self) -> logging.Logger:
         logger = logging.getLogger('PerformanceMonitor')
         logger.setLevel(logging.INFO)
         
@@ -42,7 +45,10 @@ class PerformanceMonitor:
         
         return logger
 
-    def collect_metrics(self) -> Dict:
+    """
+    collect_metrics function
+    """
+def collect_metrics(self) -> Dict:
         """Collect current system metrics."""
         try:
             process = psutil.Process()
@@ -72,7 +78,10 @@ class PerformanceMonitor:
             self.logger.error(f"Error collecting metrics: {str(e)}")
             return {'error': str(e)}
 
-    def save_metrics(self, filename: Optional[str] = None) -> None:
+    """
+    save_metrics function
+    """
+def save_metrics(self, filename: Optional[str] = None) -> None:
         """Save collected metrics to a JSON file."""
         if not filename:
             filename = f"metrics_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
@@ -85,7 +94,10 @@ class PerformanceMonitor:
         except Exception as e:
             self.logger.error(f"Error saving metrics: {str(e)}")
 
-    def generate_report(self) -> Dict:
+    """
+    generate_report function
+    """
+def generate_report(self) -> Dict:
         """Generate a performance report from collected metrics."""
         try:
             if not self.metrics_history:
@@ -122,7 +134,10 @@ class PerformanceMonitor:
             self.logger.error(f"Error generating report: {str(e)}")
             return {'error': str(e)}
 
-    def plot_metrics(self, save_path: Optional[str] = None) -> None:
+    """
+    plot_metrics function
+    """
+def plot_metrics(self, save_path: Optional[str] = None) -> None:
         """Generate plots of collected metrics."""
         try:
             if not self.metrics_history:
@@ -162,7 +177,10 @@ class PerformanceMonitor:
         except Exception as e:
             self.logger.error(f"Error plotting metrics: {str(e)}")
 
-    def monitor(self, duration: Optional[float] = None) -> None:
+    """
+    monitor function
+    """
+def monitor(self, duration: Optional[float] = None) -> None:
         """Monitor performance for a specified duration or until interrupted."""
         try:
             self.logger.info("Starting performance monitoring...")
@@ -189,7 +207,10 @@ class PerformanceMonitor:
             self.save_metrics()
             self.plot_metrics(save_path=str(self.log_dir / 'performance_plot.png'))
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     monitor = PerformanceMonitor()
     
     # Monitor for 60 seconds
@@ -197,8 +218,8 @@ def main():
     
     # Generate and print final report
     report = monitor.generate_report()
-    print("\nPerformance Report:")
-    print(json.dumps(report, indent=2))
+    logger.info("\nPerformance Report:")
+    logger.info(json.dumps(report, indent=2))
 
 if __name__ == '__main__':
     main() 

@@ -5,8 +5,8 @@
 
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env node
-import fs from "fs";
-import path from "path";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const reportPath = path.resolve(".qmoi_validation/auth_triage_report.json");
 if (!fs.existsSync(reportPath)) {
@@ -38,12 +38,12 @@ for (const r of results) {
     );
     failures++;
   } else {
-    console.log(`OK: ${r.file}`);
+    logger.info(`OK: ${r.file}`);
   }
 }
 if (failures > 0) {
   console.error(`${failures} route(s) failed route flag checks.`);
   process.exit(1);
 }
-console.log("All route files have runtime/dynamic flags where required.");
+logger.info("All route files have runtime/dynamic flags where required.");
 process.exit(0);

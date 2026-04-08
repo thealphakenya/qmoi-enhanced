@@ -9,9 +9,9 @@
  * Email verification endpoint for new user sign-ups
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import QMOISignupSystem from "@/lib/qmoi-signup-system";
-import { getDatabase } from "@/lib/database";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-signup-system";
+import { specificExports } from "@/lib/database";
 
 const signupSystem = new QMOISignupSystem({
   database: getDatabase(),
@@ -21,7 +21,10 @@ const signupSystem = new QMOISignupSystem({
   },
 });
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
 
@@ -63,7 +66,10 @@ export async function POST(request: NextRequest) {
  * Resend verification code
  */
 
-export async function PUT(request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(request: NextRequest): any {
   try {
     const body = await request.json();
 

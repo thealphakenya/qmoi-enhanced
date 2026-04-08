@@ -5,17 +5,23 @@
 
 // Production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/button";
 
-export function MediaPreviewWindow() {
+export /**
+ * MediaPreviewWindow function
+ */
+function MediaPreviewWindow(): any {
   const [mediaUrl, setMediaUrl] = useState("");
   const [mediaType, setMediaType] = useState<
     "movie" | "youtube" | "audio" | ""
   >("");
 
-  function handlePreview(url: string, type: "movie" | "youtube" | "audio") {
+  /**
+ * handlePreview function
+ */
+function handlePreview(url: string, type: "movie" | "youtube" | "audio"): any {
     setMediaUrl(url);
     setMediaType(type);
   }

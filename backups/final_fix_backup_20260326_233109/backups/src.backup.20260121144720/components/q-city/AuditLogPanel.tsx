@@ -1,7 +1,11 @@
 // Production implementation: all markers normalized for completion
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export default function AuditLogPanel() {
+export default /**
+ * AuditLogPanel function
+ */
+function AuditLogPanel(): any {
+  try {() {
   type AuditRow = Record<string, unknown> | string[];
   const [logs, setLogs] = useState<AuditRow[]>([]);
   const [filter, setFilter] = useState({
@@ -15,10 +19,13 @@ export default function AuditLogPanel() {
   useEffect(() => {
     fetchLogs();
   }, [filter]);
-  function fetchLogs() {
+  /**
+ * fetchLogs function
+ */
+function fetchLogs(): any {
     setLoading(true);
     const _params = new URLSearchParams({ ...filter, format });
-    fetch(`/api/qcity/audit-log?${_params.toString()}`, {
+    apiClient.get(`/api/qcity/audit-log?${_params.toString()}`, {
       headers: {
         "x-qcity-admin-key": localStorage.getItem("qcity-admin-key") || "",
       },
@@ -37,7 +44,10 @@ export default function AuditLogPanel() {
         setLoading(false);
       });
   }
-  function exportLogs(fmt: string) {
+  /**
+ * exportLogs function
+ */
+function exportLogs(fmt: string): any {
     setFormat(fmt);
     fetchLogs();
   }

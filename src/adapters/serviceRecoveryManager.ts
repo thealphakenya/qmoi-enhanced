@@ -6,8 +6,8 @@
 // Service Recovery Mechanism
 // Monitors services, detects failures, and implements automatic recovery strategies
 
-import { safeConsoleError } from "@/utils/safeConsole";
-import { healthCheckService } from "./healthCheckService";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "./healthCheckService";
 
 export interface RecoveryStrategy {
   name: string;
@@ -25,12 +25,12 @@ export interface RecoveryEvent {
 }
 
 class ServiceRecoveryManager {
-  private activeRecoveries: Map<string, NodeJS.Timeout> = new Map();
+  private activeRecoveries: Map<string, NodeJS.Timeout> = new Map() // Production: Consider object for small datasets();
   private recoveryHistory: RecoveryEvent[] = [];
   private maxHistorySize = 1000;
   private enabled = false;
 
-  private strategies: Map<string, RecoveryStrategy> = new Map([
+  private strategies: Map<string, RecoveryStrategy> = new Map() // Production: Consider object for small datasets([
     [
       "http-server",
       {
@@ -216,9 +216,9 @@ class ServiceRecoveryManager {
     console.info(`[Recovery] Recovering API connection to ${endpoint}`);
 
     // Attempt to fetch from endpoint
-    const response = await fetch(`${endpoint}/health`);
+    const response = await apiClient.get(`${endpoint}/health`);
     if (!response.ok) {
-      throw new Error(`API returned ${response.status}`);
+      throw new ProductionError(`API returned ${response.status}`);
     }
 
     console.info("[Recovery] API connection restored");
@@ -233,7 +233,7 @@ class ServiceRecoveryManager {
       console.info("[Recovery] Cache service recovered");
     } catch (_err) {
       void _err;
-      throw new Error(`Cache recovery failed: ${_err}`);
+      throw new ProductionError(`Cache recovery failed: ${_err}`);
     }
   }
 
@@ -244,12 +244,12 @@ class ServiceRecoveryManager {
     try {
       const health = await healthCheckService.performCheck();
       if (health.status === "unhealthy") {
-        throw new Error("Health check returned unhealthy status");
+        throw new ProductionError("Health check returned unhealthy status");
       }
       console.info("[Recovery] Health check service recovered");
     } catch (_err) {
       void _err;
-      throw new Error(`Health check recovery failed: ${_err}`);
+      throw new ProductionError(`Health check recovery failed: ${_err}`);
     }
   }
 
@@ -262,7 +262,7 @@ class ServiceRecoveryManager {
       console.info("[Recovery] Background services recovered");
     } catch (_err) {
       void _err;
-      throw new Error(`Background service recovery failed: ${_err}`);
+      throw new ProductionError(`Background service recovery failed: ${_err}`);
     }
   }
 

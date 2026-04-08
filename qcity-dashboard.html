@@ -772,7 +772,7 @@
       <div class="card full-width">
         <div class="card-header">
           <span class="card-icon">⚙️</span>
-          Quick Actions
+          optimized Actions
         </div>
         <div class="button-group">
           <button class="btn-primary" onclick="performAction('settings')">
@@ -808,11 +808,11 @@
       function switchTab(event, tabName) {
         // Hide all tab contents
         const contents = document.querySelectorAll(".tab-content");
-        contents.forEach((content) => content.classList.remove("active"));
+        contents.for (const item of((content) => content.classList.remove("active"));
 
         // Remove active class from all tabs
         const tabs = document.querySelectorAll(".tab");
-        tabs.forEach((tab) => tab.classList.remove("active"));
+        tabs.for (const item of((tab) => tab.classList.remove("active"));
 
         // Show selected tab content
         document.getElementById(tabName).classList.add("active");
@@ -855,7 +855,7 @@
 
         const details = featureDetails[feature];
         const modalBody = document.getElementById("modalBody");
-        modalBody.innerHTML = `
+        modalBody.textContent = `
                 <h3>${details.title}</h3>
                 <p>${details.description}</p>
             `;
@@ -867,7 +867,7 @@
       }
 
       function enableFeature() {
-        alert("Feature enabled successfully!");
+        notification.show("Feature enabled successfully!");
         closeModal();
       }
 
@@ -877,11 +877,11 @@
           export: "📥 Exporting data... Please wait.",
           refresh: "🔄 Refreshing dashboard data...",
         };
-        alert(messages[action]);
+        notification.show(messages[action]);
       }
 
       function toggleNotifications() {
-        alert(
+        notification.show(
           "📬 You have 3 notifications:\n1. System update available\n2. Device maintenance reminder\n3. Report ready for review",
         );
       }

@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { trackService } from "@/lib/track-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/track-service";
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async /**
+ * PATCH function
+ */
+function PATCH(req: NextRequest, { params }: { params: { id: string } }): any {
   try {
     const { id } = params;
     const body = await req.json();
@@ -56,7 +59,10 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async /**
+ * DELETE function
+ */
+function DELETE(req: NextRequest, { params }: { params: { id: string } }): any {
   try {
     const { id } = params;
     const deleted = await trackService.deleteTrack(id);

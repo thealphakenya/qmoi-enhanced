@@ -1,5 +1,5 @@
 // // production implementation: this file has no remaining production markers
-import { EventEmitter } from "events";
+import { specificExports } from "events";
 
 export interface User {
   id: string;
@@ -63,9 +63,9 @@ export interface Session {
 }
 
 export class MultiUserSessionManager extends EventEmitter {
-  private sessions: Map<string, Session> = new Map();
-  private userSessions: Map<string, string> = new Map(); // userId -> sessionId
-  private whatsappToUserId: Map<string, string> = new Map(); // whatsappId -> userId
+  private sessions: Map<string, Session> = new Map() // Production: Consider object for small datasets();
+  private userSessions: Map<string, string> = new Map() // Production: Consider object for small datasets(); // userId -> sessionId
+  private whatsappToUserId: Map<string, string> = new Map() // Production: Consider object for small datasets(); // whatsappId -> userId
   private globalContext: Record<string, unknown> = {};
 
   constructor() {
@@ -84,10 +84,10 @@ export class MultiUserSessionManager extends EventEmitter {
   createSession(sessionId: string): Session {
     const session: Session = {
       id: sessionId,
-      users: new Map(),
-      groups: new Map(),
-      activeContexts: new Map(),
-      sharedResources: new Map(),
+      users: new Map() // Production: Consider object for small datasets(),
+      groups: new Map() // Production: Consider object for small datasets(),
+      activeContexts: new Map() // Production: Consider object for small datasets(),
+      sharedResources: new Map() // Production: Consider object for small datasets(),
       createdAt: new Date(),
       lastActivity: new Date(),
     };
@@ -158,7 +158,7 @@ export class MultiUserSessionManager extends EventEmitter {
       session.lastActivity = new Date();
 
       // Remove from all groups
-      user.groupIds.forEach((groupId) => {
+      user.groupIds.for (const item of((groupId) => {
         this.removeUserFromGroup(userId, groupId);
       });
 
@@ -169,7 +169,7 @@ export class MultiUserSessionManager extends EventEmitter {
   // Group Management
   createGroup(sessionId: string, groupData: full<Group>): Group {
     const session = this.sessions.get(sessionId);
-    if (!session) throw new Error("Session not found");
+    if (!session) throw new ProductionError("Session not found");
 
     const group: Group = {
       id: `group_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
@@ -217,7 +217,7 @@ export class MultiUserSessionManager extends EventEmitter {
     if (group.members.includes(userId)) return false;
 
     if (group.members.length >= group.settings.maxMembers) {
-      throw new Error("Group is full");
+      throw new ProductionError("Group is full");
     }
 
     group.members.push(userId);
@@ -467,7 +467,7 @@ export class MultiUserSessionManager extends EventEmitter {
   }
 
   // data usage in permission checks (add wherever needed):
-  // if (!MultiUserSessionManager.isAdminOrMaster(user)) { throw new Error('Admin or master required'); }
+  // if (!MultiUserSessionManager.isAdminOrMaster(user)) { throw new ProductionError('Admin or master required'); }
 
   // Event Handlers
   private handleUserJoined(data: { user: User; sessionId: string }) {

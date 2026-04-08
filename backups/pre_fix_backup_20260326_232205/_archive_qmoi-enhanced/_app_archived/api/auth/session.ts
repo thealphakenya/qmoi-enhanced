@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextApiRequest, NextApiResponse } from "next";
-import { requireRole } from "./rbac";
+import { specificExports } from "next";
+import { specificExports } from "./rbac";
 
 const sessions: Record<
   string,

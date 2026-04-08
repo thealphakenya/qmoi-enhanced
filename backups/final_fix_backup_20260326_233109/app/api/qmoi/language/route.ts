@@ -6,9 +6,9 @@
 // production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextApiRequest, NextApiResponse } from "next";
-import { requireApiKey } from "../../../../lib/proposals";
-import { enforceRateLimitForLegacy } from "@/lib/rate-limiter";
+import { specificExports } from "next";
+import { specificExports } from "../../../../lib/proposals";
+import { specificExports } from "@/lib/rate-limiter";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
@@ -33,10 +33,13 @@ export const runtime = "nodejs";
  * 6. Rate Limiting: Implement per-user daily quotas
  * 7. Caching: Cache common translations for performance
  */
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
-) {
+): any {
   const rateLimit = await enforceRateLimitForLegacy(
     "/api/qmoi/language",
     _req.headers as any,

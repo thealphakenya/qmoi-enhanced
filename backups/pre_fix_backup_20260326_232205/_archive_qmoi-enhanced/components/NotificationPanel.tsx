@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 interface NotificationPanelProps {
   className?: string;
@@ -19,7 +19,7 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
   const fetchNotifications = async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/ai-health");
+      const res = await apiClient.get("/api/ai-health");
       const data = await res.json();
       setNotifications((data.notifications || []).slice(-10).reverse());
     } catch (e) {

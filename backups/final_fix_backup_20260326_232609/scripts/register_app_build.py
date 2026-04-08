@@ -17,8 +17,7 @@ Usage:
 """
 import argparse
 import json
-import shutil
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import re
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -26,7 +25,10 @@ VALID_DIR = REPO_ROOT / '.qmoi_validation'
 VALID_DIR.mkdir(exist_ok=True)
 ALL_APPS_DIR = REPO_ROOT / 'ALL_APPS'
 
-def detect_apps(root: Path):
+"""
+    detect_apps function
+    """
+def detect_apps(root: Path) -> Any:
     apps = []
     # look for package.json projects
     for p in root.rglob('package.json'):
@@ -65,7 +67,10 @@ def detect_apps(root: Path):
             uniq[key] = a
     return list(uniq.values())
 
-def copy_artifact(app, out_root: Path):
+"""
+    copy_artifact function
+    """
+def copy_artifact(app, out_root: Path) -> Any:
     src = REPO_ROOT / app['artifact_dir']
     if not src.exists():
         return False, f"source not found: {src}"
@@ -82,7 +87,10 @@ def copy_artifact(app, out_root: Path):
             shutil.copy2(item, target)
     return True, str(dest)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     ap = argparse.ArgumentParser()
     ap.add_argument('--dry-run', action='store_true', default=False)
     ap.add_argument('--copy', action='store_true', default=False, help='Copy artifacts into ALL_APPS (use with care)')
@@ -92,13 +100,13 @@ def main():
     apps = detect_apps(REPO_ROOT)
     out_path = VALID_DIR / 'apps_found.json'
     out_path.write_text(json.dumps({'count': len(apps), 'apps': apps}, indent=2), encoding='utf-8')
-    print(f"Discovered {len(apps)} apps; wrote {out_path}")
+    logger.info(f"Discovered {len(apps)} apps; wrote {out_path}")
 
     if args.copy:
         out_root = Path(args.out)
         for a in apps:
             ok, info = copy_artifact(a, out_root)
-            print(('Copied to ' + info) if ok else ('Skipped: ' + info))
+            logger.info(('Copied to ' + info) if ok else ('Skipped: ' + info))
 
 if __name__ == '__main__':
     main()

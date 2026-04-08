@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
-import { requireRole } from "../auth/rbac";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "../auth/rbac";
 
 const PLUGIN_DIR = path.resolve(process.cwd(), "plugins");
 

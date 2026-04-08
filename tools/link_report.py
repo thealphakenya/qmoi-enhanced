@@ -10,8 +10,7 @@ Usage: python tools/link_report.py > tools/link_report.json
 """
 import re
 import json
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 URL_RE = re.compile(r"https?://[^\s)\]\'\"]+")

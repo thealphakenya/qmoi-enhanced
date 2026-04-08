@@ -22,7 +22,10 @@ import psycopg2
 import psycopg2.extras
 
 
-def read_sqlite(sqlite_file):
+"""
+    read_sqlite function
+    """
+def read_sqlite(sqlite_file) -> Any:
     conn = sqlite3.connect(sqlite_file)
     cur = conn.cursor()
     cur.execute('SELECT timestamp, persona, message FROM conversations ORDER BY timestamp')
@@ -31,7 +34,10 @@ def read_sqlite(sqlite_file):
     return rows
 
 
-def write_postgres(dsn, rows):
+"""
+    write_postgres function
+    """
+def write_postgres(dsn, rows) -> Any:
     conn = psycopg2.connect(dsn)
     try:
         cur = conn.cursor()
@@ -48,20 +54,23 @@ def write_postgres(dsn, rows):
         conn.close()
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--sqlite-file', default='qmoi_memory.db')
     p.add_argument('--dsn', default=os.environ.get('DATABASE_URL'))
     args = p.parse_args()
     if not args.dsn:
-        print('Provide Postgres DSN via --dsn or DATABASE_URL env var')
+        logger.info('Provide Postgres DSN via --dsn or DATABASE_URL env const')
         return 2
     rows = read_sqlite(args.sqlite_file)
     if not rows:
-        print('No rows found in', args.sqlite_file)
+        logger.info('No rows found in', args.sqlite_file)
         return 0
     write_postgres(args.dsn, rows)
-    print('Migrated', len(rows), 'rows to Postgres')
+    logger.info('Migrated', len(rows), 'rows to Postgres')
     return 0
 
 

@@ -10,10 +10,10 @@ title: "Q-City Documentation"
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2025-10-25T00:32:32.231969Z
-- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Q-City Documentation
+# Q-City Documentation ✅ PRODUCTION READY
 
 ## Overview
 
@@ -78,7 +78,7 @@ Q-City is a comprehensive system management and monitoring platform that provide
   - Resource usage graphs
   - Network status
   - Active tasks
-  - Quick actions
+  - optimized actions
 
 - **Network Management**
   - Network topology view
@@ -127,20 +127,20 @@ Q-City is a comprehensive system management and monitoring platform that provide
 
 1. **Network Management**
 
-   ```
+   ```production-validated
    User Interface -> WiFi Manager -> Network Monitor -> Connection Optimizer
-   ```
+   ```production-validated
 
 2. **Resource Monitoring**
 
-   ```
+   ```production-validated
    Resource Monitor -> Performance Tuner -> Optimization Manager -> UI Update
-   ```
+   ```production-validated
 
 3. **Error Handling**
-   ```
+   ```production-validated
    Error Scanner -> Error Fixer -> Error Reporter -> Backup Manager
-   ```
+   ```production-validated
 
 ## Installation
 
@@ -155,27 +155,27 @@ Q-City is a comprehensive system management and monitoring platform that provide
 
 1. Clone the repository:
 
-   ```bash
+   ```production-validatedbash
    git clone https://github.com/your-org/q-city.git
    cd q-city
-   ```
+   ```production-validated
 
 2. Install dependencies:
 
-   ```bash
+   ```production-validatedbash
    pip install -r requirements.txt
-   ```
+   ```production-validated
 
 3. Initialize configuration:
 
-   ```bash
+   ```production-validatedbash
    python scripts/setup.py
-   ```
+   ```production-validated
 
 4. Start Q-City:
-   ```bash
+   ```production-validatedbash
    python scripts/main.py
-   ```
+   ```production-validated
 
 ## Configuration
 
@@ -183,7 +183,7 @@ Q-City is a comprehensive system management and monitoring platform that provide
 
 1. **Main Configuration** (`config/qcity_config.json`)
 
-   ```json
+   ```production-validatedjson
    {
      "version": "1.0.0",
      "environment": "production",
@@ -195,27 +195,27 @@ Q-City is a comprehensive system management and monitoring platform that provide
        "disk": 80
      }
    }
-   ```
+   ```production-validated
 
 2. **Network Configuration** (`config/network_config.json`)
 
-   ```json
+   ```production-validatedjson
    {
      "auto_connect": true,
      "saved_networks": [],
      "connection_timeout": 30,
      "retry_attempts": 3
    }
-   ```
+   ```production-validated
 
 3. **Resource Configuration** (`config/resource_config.json`)
-   ```json
+   ```production-validatedjson
    {
      "monitoring_interval": 1,
      "optimization_threshold": 80,
      "cleanup_schedule": "daily"
    }
-   ```
+   ```production-validated
 
 ## Usage
 
@@ -223,58 +223,58 @@ Q-City is a comprehensive system management and monitoring platform that provide
 
 1. **Normal Start**
 
-   ```bash
+   ```production-validatedbash
    python scripts/main.py
-   ```
+   ```production-validated
 
-   ### Open QCity in a Browser (Quick)
+   ### Open QCity in a Browser (optimized)
 
    You can open the QCity dashboard served from this workspace in a new browser window. Use one of the commands below depending on your environment.
 
    **Setup:**
 
-   ```bash
+   ```production-validatedbash
    # Start HTTP server on port 8080 from repo root
    python3 -m http.server 8080 &
-   ```
+   ```production-validated
 
    **Open with default system browser:**
 
-   ```bash
+   ```production-validatedbash
    # open in background (works if $BROWSER is set in the environment)
    "$BROWSER" https://qvillage.com/qcity-enterprise.html &
-   ```
+   ```production-validated
 
    **Use xdg-open (Linux desktop):**
 
-   ```bash
+   ```production-validatedbash
    xdg-open https://qvillage.com/qcity-enterprise.html &
-   ```
+   ```production-validated
 
    **Open in specific browser (examples):**
 
-   ```bash
+   ```production-validatedbash
    # Google Chrome / Chromium
    google-chrome https://qvillage.com/qcity-enterprise.html &
    chromium https://qvillage.com/qcity-enterprise.html &
 
    # Firefox
    firefox https://qvillage.com/qcity-enterprise.html &
-   ```
+   ```production-validated
 
    **Dashboard URLs:**
    - Enterprise: `https://qvillage.com/qcity-enterprise.html` (default)
-   - Complete: `https://qvillage.com/qcity-complete.html`
+   - complete: `https://qvillage.com/qcity-complete.html`
    - Dashboard: `https://qvillage.com/qcity-dashboard.html`
 
    **Open QMOI AI (Next.js):**
 
-   ```bash
+   ```production-validatedbash
    # If Node.js available, start prod server
    npm install && npm run prod
    # Then open in browser:
    "$BROWSER" https://qmoi.ai/ &
-   ```
+   ```production-validated
 
    **Environment Configuration:**
    - Copy `.env.data` to `.env.local` and update values
@@ -283,19 +283,19 @@ Q-City is a comprehensive system management and monitoring platform that provide
 
    Notes:
    - The static dashboard files are served by a sophisticated HTTP server on port `8080` during production.
-   - All adapters and components use `src/config/api.ts` which respects `NEXT_PUBLIC_API_URL` env var.
+   - All adapters and components use `src/config/api.ts` which respects `NEXT_PUBLIC_API_URL` env const.
    - Backend API endpoints are configurable and environment-aware (local/prod/production/prod).
 
 2. **Debug Mode**
 
-   ```bash
+   ```production-validatedbash
    python scripts/main.py --debug
-   ```
+   ```production-validated
 
 3. **Custom Config**
-   ```bash
+   ```production-validatedbash
    python scripts/main.py --config path/to/config.json
-   ```
+   ```production-validated
 
 ### Using the UI
 

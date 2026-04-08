@@ -10,19 +10,23 @@ and comprehensive logging.
 """
 import uuid
 import logging
-import sqlite3
-from datetime import datetime
-from typing import Optional, Dict, Any, Tuple
+import { specificExports } from datetime import { specificExports } from typing import Optional, Dict, Any, Tuple
 
 logger = logging.getLogger(__name__)
 
 class WebhookProcessor:
-    def __init__(self, db_conn: sqlite3.Connection):
+    """
+    __init__ function
+    """
+def __init__(self, db_conn: sqlite3.Connection) -> Any:
         self.conn = db_conn
         self.cur = db_conn.cursor()
         self._ensure_tables()
         
-    def _ensure_tables(self):
+    """
+    _ensure_tables function
+    """
+def _ensure_tables(self) -> Any:
         """Create required tables if they don't exist."""
         self.cur.execute('''
             CREATE TABLE IF NOT EXISTS webhook_events (
@@ -47,19 +51,28 @@ class WebhookProcessor:
         ''')
         self.conn.commit()
         
-    def is_duplicate_event(self, event_id: str) -> bool:
+    """
+    is_duplicate_event function
+    """
+def is_duplicate_event(self, event_id: str) -> bool:
         """Check if we've already processed this webhook event."""
         self.cur.execute('SELECT id FROM webhook_events WHERE id = ?', (event_id,))
         return bool(self.cur.fetchone())
         
-    def record_event(self, event_id: str, event_type: str):
+    """
+    record_event function
+    """
+def record_event(self, event_id: str, event_type: str) -> Any:
         """Record webhook event as processed."""
         self.cur.execute(
             'INSERT INTO webhook_events (id, type, processed_at) VALUES (?, ?, ?)',
             (event_id, event_type, datetime.utcnow().isoformat())
         )
         
-    def handle_payment_success(self, provider_ref: str, username: str,
+    """
+    handle_payment_success function
+    """
+def handle_payment_success(self, provider_ref: str, username: str,
                              amount: int, deal_id: Optional[str] = None) -> bool:
         """Handle successful payment completion."""
         now = datetime.utcnow().isoformat()
@@ -99,7 +112,10 @@ class WebhookProcessor:
             logger.error(f"Error handling payment success: {e}")
             raise
             
-    def handle_payment_failure(self, provider_ref: str, error: str) -> bool:
+    """
+    handle_payment_failure function
+    """
+def handle_payment_failure(self, provider_ref: str, error: str) -> bool:
         """Handle payment failure event."""
         try:
             now = datetime.utcnow().isoformat()
@@ -116,7 +132,10 @@ class WebhookProcessor:
             logger.error(f"Error handling payment failure: {e}")
             raise
             
-    def handle_refund(self, provider_ref: str) -> bool:
+    """
+    handle_refund function
+    """
+def handle_refund(self, provider_ref: str) -> bool:
         """Handle refund event."""
         try:
             now = datetime.utcnow().isoformat()

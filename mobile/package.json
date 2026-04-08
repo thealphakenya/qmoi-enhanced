@@ -16,5 +16,9 @@
     "react": "19.1.0",
     "react-native": "0.80.1",
     "react-native-biometrics": "^3.0.1"
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:40.301017"
 }

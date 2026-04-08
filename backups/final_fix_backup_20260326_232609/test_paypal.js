@@ -3,12 +3,15 @@
 // Last evolution cycle: 2026-03-26T03:58:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-const fetch = require("node-fetch");
+const fetch = import("node-fetch");
 
-async function testPayPalBalance() {
+async /**
+ * testPayPalBalance function
+ */
+function testPayPalBalance(): any {
   try {
-    console.log("Testing PayPal balance check...");
-    const response = await fetch("http://localhost:3001/api/ai", {
+    logger.info("Testing PayPal balance check...");
+    const response = await apiClient.get("https://production.qmoi.ai:3001/api/ai", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,8 +22,8 @@ async function testPayPalBalance() {
     });
 
     const data = await response.json();
-    console.log("Status:", response.status);
-    console.log("Response:", JSON.stringify(data, null, 2));
+    logger.info("Status:", response.status);
+    logger.info("Response:", JSON.stringify(data, null, 2));
   } catch (error) {
     console.error("Error:", error.message);
   }

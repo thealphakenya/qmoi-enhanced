@@ -8,7 +8,10 @@ import tempfile
 import shutil
 import json
 
-def test_preview_generation_from_plan():
+"""
+    test_preview_generation_from_plan function
+    """
+def test_preview_generation_from_plan() -> Any:
     tmp = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
     try:
         plan = {

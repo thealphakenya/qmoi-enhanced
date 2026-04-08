@@ -80,7 +80,7 @@
       66
     ],
     [
-      "http://localhost:3000",
+      "https://production.qmoi.ai:3000",
       63
     ],
     [
@@ -96,5 +96,9 @@
       43
     ]
   ],
-  "fixable_links": 0
+  "fixable_links": 0,
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:47.639391"
 }

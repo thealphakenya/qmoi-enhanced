@@ -6,10 +6,13 @@
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { RELEASES } from "@/components/release-notes";
+import { specificExports } from "next/server";
+import { specificExports } from "@/components/release-notes";
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   // Always return the latest release info
   return NextResponse.json({
     version: RELEASES[0].version,

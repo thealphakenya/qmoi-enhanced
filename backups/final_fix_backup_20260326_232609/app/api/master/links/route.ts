@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextResponse } from 'next/server';
-import { getLinkStats } from '@/lib/qmoi/link_manager';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/lib/qmoi/link_manager';
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     const tracks = getLinkStats();
     return NextResponse.json({ tracks });

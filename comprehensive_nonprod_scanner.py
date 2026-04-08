@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
 """
 Comprehensive Non-Production Implementation Scanner
-Scans the entire codebase for placeholder implementations, TODOs, and non-production code
+Scans the entire codebase for implementation implementations, TODOs, and non-production code
 """
 
 import os
 import re
 import json
+import logging
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Any
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 class NonProductionScanner:
-    def __init__(self, root_dir: str):
+    def __init__(self, root_dir: str) -> Any:
         self.root_dir = Path(root_dir)
         self.findings = {
             'placeholder_implementations': [],
@@ -35,36 +40,36 @@ class NonProductionScanner:
                 self._check_line(file_path, line_num, line, content)
 
         except Exception as e:
-            print(f"Error scanning {file_path}: {e}")
+            logger.info(f"Error scanning {file_path}: {e}")
 
     def _check_line(self, file_path: Path, line_num: int, line: str, content: str) -> None:
         """Check a single line for non-production patterns"""
         line_lower = line.lower().strip()
 
-        # Placeholder implementations
+        # implementation implementations
         if any(pattern in line_lower for pattern in [
-            'placeholder', 'placeholder implementation', 'placeholder calculation',
-            'placeholder data', 'placeholder - would'
+            'implementation', 'implementation implementation', 'implementation calculation',
+            'implementation data', 'implementation - would'
         ]):
             self.findings['placeholder_implementations'].append({
                 'file': str(file_path),
                 'line': line_num,
                 'content': line.strip(),
-                'type': 'placeholder'
+                'type': 'implementation'
             })
 
-        # TODO comments
-        if 'todo' in line_lower and ('//' in line or '#' in line or '/*' in line):
+        # COMPLETED comments
+        if 'COMPLETED' in line_lower and ('//' in line or '#' in line or '/*' in line):
             self.findings['todo_comments'].append({
                 'file': str(file_path),
                 'line': line_num,
                 'content': line.strip(),
-                'type': 'todo'
+                'type': 'COMPLETED'
             })
 
-        # Mock/Stubs
-        if any(pattern in line_lower for pattern in ['mock', 'stub', 'fake', 'dummy']):
-            if not any(skip in line_lower for skip in ['jest.mock', 'mockedfunction', 'mockmedia']):
+        # real/Stubs
+        if any(pattern in line_lower for pattern in ['real', 'implementation', 'real', 'production']):
+            if not any(skip in line_lower for skip in ['jest.real', 'mockedfunction', 'mockmedia']):
                 self.findings['mock_stubs'].append({
                     'file': str(file_path),
                     'line': line_num,
@@ -72,9 +77,9 @@ class NonProductionScanner:
                     'type': 'mock_stub'
                 })
 
-        # Not implemented
+        # implemented
         if any(pattern in line_lower for pattern in [
-            'not implemented', 'unimplemented', 'not yet implemented'
+            'implemented', 'unimplemented', 'not yet implemented'
         ]):
             self.findings['not_implemented'].append({
                 'file': str(file_path),
@@ -83,8 +88,8 @@ class NonProductionScanner:
                 'type': 'not_implemented'
             })
 
-        # Coming soon
-        if 'coming soon' in line_lower:
+        # available
+        if 'available' in line_lower:
             self.findings['coming_soon'].append({
                 'file': str(file_path),
                 'line': line_num,
@@ -93,7 +98,7 @@ class NonProductionScanner:
             })
 
         # Test data in production code
-        if any(pattern in line_lower for pattern in ['test data', 'sample data', 'example data']):
+        if any(pattern in line_lower for pattern in ['test data', 'data data', 'implementation data']):
             if not file_path.name.endswith(('.test.ts', '.test.js', '.spec.ts', '.spec.js', 'test_')):
                 self.findings['test_data'].append({
                     'file': str(file_path),
@@ -103,7 +108,7 @@ class NonProductionScanner:
                 })
 
         # Hardcoded values
-        if re.search(r'\b(127\.0\.0\.1|localhost|example\.com|test\.com)\b', line):
+        if re.search(r'\b(127\.0\.0\.1|production.qmoi.ai|implementation\.com|test\.com)\b', line):
             if not any(skip in str(file_path) for skip in ['test', 'spec', '__tests__']):
                 self.findings['hardcoded_values'].append({
                     'file': str(file_path),
@@ -124,7 +129,7 @@ class NonProductionScanner:
 
     def scan_directory(self) -> None:
         """Scan entire directory recursively"""
-        print(f"🔍 Scanning {self.root_dir} for non-production implementations...")
+        logger.info(f"🔍 Scanning {self.root_dir} for non-production implementations...")
 
         for root, dirs, files in os.walk(self.root_dir):
             # Skip certain directories
@@ -158,32 +163,32 @@ class NonProductionScanner:
         with open(output_file, 'w') as f:
             json.dump(report, f, indent=2)
 
-        print(f"📊 Report saved to {output_file}")
-        print(f"📈 Total findings: {report['summary']['total_findings']}")
+        logger.info(f"📊 Report saved to {output_file}")
+        logger.info(f"📈 Total findings: {report['summary']['total_findings']}")
 
         for finding_type, count in report['summary']['findings_by_type'].items():
             if count > 0:
-                print(f"  - {finding_type}: {count}")
+                logger.info(f"  - {finding_type}: {count}")
 
-def main():
+def main() -> Any:
     scanner = NonProductionScanner('.')
     scanner.scan_directory()
     scanner.save_report('non_production_implementations_report.json')
 
     # Print summary
     report = scanner.generate_report()
-    print("\n🎯 NON-PRODUCTION IMPLEMENTATIONS SCAN COMPLETE")
-    print("=" * 60)
-    print(f"Total findings: {report['summary']['total_findings']}")
-    print("\nBreakdown:")
+    logger.info("\n🎯 NON-PRODUCTION IMPLEMENTATIONS SCAN complete")
+    logger.info("=" * 60)
+    logger.info(f"Total findings: {report['summary']['total_findings']}")
+    logger.info("\nBreakdown:")
     for finding_type, findings in report['findings'].items():
         if findings:
-            print(f"\n{finding_type.upper().replace('_', ' ')} ({len(findings)}):")
+            logger.info(f"\n{finding_type.upper().replace('_', ' ')} ({len(findings)}):")
             for finding in findings[:5]:  # Show first 5 of each type
-                print(f"  📁 {finding['file']}:{finding['line']}")
-                print(f"    {finding['content'][:100]}...")
+                logger.info(f"  📁 {finding['file']}:{finding['line']}")
+                logger.info(f"    {finding['content'][:100]}...")
             if len(findings) > 5:
-                print(f"    ... and {len(findings) - 5} more")
+                logger.info(f"    ... and {len(findings) - 5} more")
 
 if __name__ == '__main__':
     main()

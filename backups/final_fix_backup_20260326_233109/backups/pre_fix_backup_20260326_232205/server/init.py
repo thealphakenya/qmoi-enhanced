@@ -10,7 +10,10 @@ This module sets up the environment before the server starts.
 """
 from utils.env_manager import setup_environment
 
-def init_server_env():
+"""
+    init_server_env function
+    """
+def init_server_env() -> Any:
     """Initialize server environment with all required variables."""
     env = setup_environment()
     

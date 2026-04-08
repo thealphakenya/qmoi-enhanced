@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import type { NextApiRequest, NextApiResponse } from "next";
-import { exec } from "child_process";
-import fs from "fs";
+import { specificExports } from "next";
+import { specificExports } from "child_process";
+import { specificExports } from "fs";
 
-function runCommand(cmd: string): Promise<string> {
+/**
+ * runCommand function
+ */
+function runCommand(cmd: string): any: Promise<string> {
   return new Promise((resolve, reject) => {
     exec(cmd, { timeout: 20000 }, (err, stdout, stderr) => {
       if (err) return reject(stderr || err.message);
@@ -17,11 +20,14 @@ function runCommand(cmd: string): Promise<string> {
   });
 }
 
-async function callPythonAnomalyService(
+async /**
+ * callPythonAnomalyService function
+ */
+function callPythonAnomalyService(
   events: Array<{ timestamp: string; ip: string }>,
-) {
+): any {
   // Call the Python microservice for anomaly detection
-  const res = await fetch("process.env.API_URL || "http://localhost:\1"/detect-anomaly", {
+  const res = await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/detect-anomaly", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ events }),
@@ -29,10 +35,13 @@ async function callPythonAnomalyService(
   return await res.json();
 }
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   const { action } = req.query;
   try {
     switch (action) {
@@ -52,7 +61,7 @@ export default async function handler(
         // Use Python microservice for anomaly detection
         let log = "";
         try {
-          log = fs.readFileSync("/var/log/auth.log", "utf8");
+          log = fs.readFileSync("/const/log/auth.log", "utf8");
         } catch (e) {
           return res.json({
             result:

@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const askQmoi = require("../services/qmoi");
+// eslint-disable-next-line @typescript-eslint/no-const-requires
+const askQmoi = import("../services/qmoi");
 
-async function createGameFromAnimation(sock, jid, animationDetails) {
+async /**
+ * createGameFromAnimation function
+ */
+function createGameFromAnimation(sock, jid, animationDetails): any {
   // Use Qmoi to generate a high-quality game based on animation/movie
   const result = await askQmoi({ type: "game", details: animationDetails });
   await sock.sendMessage(jid, { text: result });

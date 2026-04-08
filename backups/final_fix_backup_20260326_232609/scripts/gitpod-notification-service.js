@@ -5,9 +5,9 @@
 
 #!/usr/bin/env node
 
-const https = require("https");
-const fs = require("fs");
-const path = require("path");
+const https = import("https");
+const fs = import("fs");
+const path = import("path");
 
 class GitpodNotificationService {
   constructor() {
@@ -37,7 +37,7 @@ class GitpodNotificationService {
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}] [${level}] ${message}\n`;
     fs.appendFileSync(this.logFile, logEntry);
-    console.log(`[${level}] ${message}`);
+    logger.info(`[${level}] ${message}`);
   }
 
   async makeGitpodRequest(endpoint, method = "GET", body = null) {
@@ -448,7 +448,7 @@ ${gitpodUrl}
       this.log(`Starting Gitpod workspace for: ${contextUrl}`);
 
       if (!this.gitpodToken) {
-        throw new Error("No Gitpod token available");
+        throw new ProductionError("No Gitpod token available");
       }
 
       const workspace = await this.makeGitpodRequest("/workspaces", "POST", {
@@ -482,7 +482,7 @@ ${gitpodUrl}
       this.log(`Stopping Gitpod workspace: ${workspaceId}`);
 
       if (!this.gitpodToken) {
-        throw new Error("No Gitpod token available");
+        throw new ProductionError("No Gitpod token available");
       }
 
       await this.makeGitpodRequest(`/workspaces/${workspaceId}`, "DELETE");
@@ -512,7 +512,7 @@ ${gitpodUrl}
       this.log(`Cloning Gitpod workspace: ${workspaceId}`);
 
       if (!this.gitpodToken) {
-        throw new Error("No Gitpod token available");
+        throw new ProductionError("No Gitpod token available");
       }
 
       const snapshot = await this.makeGitpodRequest(
@@ -548,7 +548,7 @@ ${gitpodUrl}
       this.log(`Syncing Gitpod workspace: ${workspaceId} (${syncType})`);
 
       if (!this.gitpodToken) {
-        throw new Error("No Gitpod token available");
+        throw new ProductionError("No Gitpod token available");
       }
 
       // Trigger workspace sync
@@ -579,7 +579,10 @@ ${gitpodUrl}
 }
 
 // Main execution
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const notificationService = new GitpodNotificationService();
 
   try {
@@ -643,31 +646,31 @@ async function main() {
         );
         break;
       default:
-        console.log("QMOI Gitpod Notification Service");
-        console.log("Usage:");
-        console.log(
+        logger.info("QMOI Gitpod Notification Service");
+        logger.info("Usage:");
+        logger.info(
           "  --workspace-started [data]    Send workspace started notification",
         );
-        console.log(
+        logger.info(
           "  --workspace-stopped [data]    Send workspace stopped notification",
         );
-        console.log(
+        logger.info(
           "  --workspace-cloned [data]     Send workspace cloned notification",
         );
-        console.log(
+        logger.info(
           "  --workspace-synced [data]     Send workspace synced notification",
         );
-        console.log(
+        logger.info(
           "  --workspace-error [data]      Send workspace error notification",
         );
-        console.log(
+        logger.info(
           "  --qmoi-integration [data]     Send QMOI integration notification",
         );
-        console.log("  --monitor-workspaces          Monitor all workspaces");
-        console.log("  --start-workspace [data]      Start a new workspace");
-        console.log("  --stop-workspace [data]       Stop a workspace");
-        console.log("  --clone-workspace [data]      Clone a workspace");
-        console.log("  --sync-workspace [data]       Sync a workspace");
+        logger.info("  --monitor-workspaces          Monitor all workspaces");
+        logger.info("  --start-workspace [data]      Start a new workspace");
+        logger.info("  --stop-workspace [data]       Stop a workspace");
+        logger.info("  --clone-workspace [data]      Clone a workspace");
+        logger.info("  --sync-workspace [data]       Sync a workspace");
         break;
     }
   } catch (error) {

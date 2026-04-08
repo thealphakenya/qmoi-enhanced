@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export function useMobile(): boolean {
+export /**
+ * useMobile function
+ */
+function useMobile(): any: boolean {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

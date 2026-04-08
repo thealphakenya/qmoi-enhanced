@@ -1,5 +1,5 @@
 // // Production implementation: this file has no remaining non-production markers
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 import {
   Box,
   Card,
@@ -12,9 +12,9 @@ import {
   CircularProgress,
   Alert,
 } from "@mui/material";
-import { AccountBalance, Refresh, Info } from "@mui/icons-material";
-import { useAuth } from "../hooks/useAuth";
-import { AssetManagerImpl, Asset } from "../config/assets";
+import { specificExports } from "@mui/icons-material";
+import { specificExports } from "../hooks/useAuth";
+import { specificExports } from "../config/assets";
 
 interface AssetOverviewProps {
   className?: string;

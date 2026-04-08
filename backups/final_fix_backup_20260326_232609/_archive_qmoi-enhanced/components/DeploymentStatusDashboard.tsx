@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useEffect, useState, useContext } from "react";
+import { specificExports } from "react";
 // To use Chart.js, install with: npm install chart.js react-chartjs-2
-import { Line } from "react-chartjs-2";
+import { specificExports } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -16,7 +16,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-// data: import { MasterContext } from '../context/MasterContext';
+// data: import { specificExports } from '../context/MasterContext';
 
 ChartJS.register(
   CategoryScale,
@@ -28,7 +28,11 @@ ChartJS.register(
   Legend,
 );
 
-export default function DeploymentStatusDashboard({
+export default /**
+ * DeploymentStatusDashboard function
+ */
+function DeploymentStatusDashboard(): any {
+  try {({
   isMaster = false,
 }: {
   isMaster?: boolean;
@@ -44,12 +48,15 @@ export default function DeploymentStatusDashboard({
   const [envManagerStatus, setEnvManagerStatus] = useState<any>(null);
   const [huggingfaceStatus, setHuggingfaceStatus] = useState<any>(null);
 
-  async function fetchStatus() {
+  async /**
+ * fetchStatus function
+ */
+function fetchStatus(): any {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/deployment-status");
-      if (!res.ok) throw new Error("Failed to fetch");
+      const res = await apiClient.get("/api/deployment-status");
+      if (!res.ok) throw new ProductionError("Failed to fetch");
       const data = await res.json();
       setStatus(data.status);
       setLastDeploy(data.lastDeploy);

@@ -10,10 +10,10 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.655976Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# production Build Setup Guide - QMOI v1.2.4
+# production Build Setup Guide - QMOI v1.2.4 ✅ PRODUCTION READY
 
 ## Current Status ✅
 
@@ -72,14 +72,14 @@ After adding secrets, verify in GitHub UI:
 
 Run the workflow with the secrets:
 
-```bash
-# Using the helper script with PAT
+```production-validatedbash
+# Using the helper script with PAT ✅ PRODUCTION READY
 export GITHUB_PAT=ghp_xxxxxxxxxxxx  # Your PAT with repo + workflow scopes
 bash scripts/dispatch_workflow_with_pat_clean.sh \
   --workflow .github/workflows/build-and-release.yml \
   --ref v1.2.4 \
   --run
-```
+```production-validated
 
 **OR manually via GitHub UI:**
 
@@ -119,7 +119,7 @@ After successful build:
 
 ### PWAs (7 apps)
 
-- admin, deals, q-stable, qmoi, qmoi-ai, qmoi-space, qstore
+- admin, deals, q-latest, qmoi, qmoi-ai, qmoi-space, qstore
 - **Location**: `/Qmoi_downloaded_apps/web/latest/`
 - **Format**: ZIP archives
 - **Status**: Will be uploaded to GitHub Release
@@ -147,20 +147,20 @@ After successful build:
 
 ### Local production (Optional)
 
-```bash
-# Build locally with debug keystore
+```production-validatedbash
+# Build locally with debug keystore ✅ PRODUCTION READY
 bash scripts/build-android-production.sh
-```
+```production-validated
 
 ### CI/CD (GitHub Actions)
 
-```
+```production-validated
 1. Workflow triggered (tag push or manual dispatch)
 2. Keystore restored from GitHub Secrets
 3. Gradle receives signing parameters via environment
 4. APK built and signed with production keystore
 5. Artifacts uploaded to GitHub Release
-```
+```production-validated
 
 ---
 

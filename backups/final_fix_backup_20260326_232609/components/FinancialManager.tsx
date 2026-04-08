@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, useEffect } from "react";
-import { useAuth } from "../src/hooks/useAuth";
+import { specificExports } from "react";
+import { specificExports } from "../src/hooks/useAuth";
 
-export function FinancialManager() {
+export /**
+ * FinancialManager function
+ */
+function FinancialManager(): any {
   const { user } = useAuth();
   const [status, setStatus] = useState("");
   const [logs, setLogs] = useState<string[]>([]);
@@ -14,12 +17,12 @@ export function FinancialManager() {
   const [transactions, setTransactions] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("/api/financial/audit")
+    apiClient.get("/api/financial/audit")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setLogs(data.logs);
       });
-    fetch("/api/financial/transactions")
+    apiClient.get("/api/financial/transactions")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setTransactions(data.transactions);
@@ -29,7 +32,7 @@ export function FinancialManager() {
   const verify = async (service: string) => {
     setLoading(true);
     setStatus("");
-    const res = await fetch("/api/financial/verify", {
+    const res = await apiClient.get("/api/financial/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ service, account: user?.email }),
@@ -38,7 +41,7 @@ export function FinancialManager() {
     setStatus(data.success ? data.result : data.error);
     setLoading(false);
     // Refresh logs
-    fetch("/api/financial/audit")
+    apiClient.get("/api/financial/audit")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setLogs(data.logs);
@@ -51,7 +54,7 @@ export function FinancialManager() {
   ) => {
     setLoading(true);
     setStatus("");
-    const res = await fetch("/api/financial/transactions", {
+    const res = await apiClient.get("/api/financial/transactions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, action }),
@@ -60,12 +63,12 @@ export function FinancialManager() {
     setStatus(data.message);
     setLoading(false);
     // Refresh logs and transactions
-    fetch("/api/financial/audit")
+    apiClient.get("/api/financial/audit")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setLogs(data.logs);
       });
-    fetch("/api/financial/transactions")
+    apiClient.get("/api/financial/transactions")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setTransactions(data.transactions);

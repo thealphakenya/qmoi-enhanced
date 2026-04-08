@@ -1,11 +1,11 @@
 #!/bin/bash
-# Quick Start Guide for QMOI-Enhanced Production Deployment
+# optimized Start Guide for QMOI-Enhanced Production Deployment
 # This script helps set up the environment for production deployment
 
 set -e
 
 echo "╔════════════════════════════════════════════════════════════════════╗"
-echo "║       QMOI-Enhanced: Production Deployment Quick Start            ║"
+echo "║       QMOI-Enhanced: Production Deployment optimized Start            ║"
 echo "╚════════════════════════════════════════════════════════════════════╝"
 echo ""
 
@@ -27,7 +27,7 @@ echo -e "${BLUE}📋 Step 2: Environment Configuration${NC}"
 if [ -f .env ]; then
     echo "✅ .env file exists"
 else
-    echo "⚠️  Creating .env file from template"
+    echo "⚠️  Creating .env file from code"
     cat > .env << 'ENVEOF'
 # QMOI-Enhanced Environment Configuration
 # Generated: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -37,7 +37,7 @@ NODE_ENV=production
 ENVIRONMENT=production
 
 # API Configuration
-NEXT_PUBLIC_API_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=https://production.qmoi.ai:3000
 NEXT_PUBLIC_APP_NAME=QMOI-Enhanced
 
 # Database
@@ -108,7 +108,7 @@ else
 fi
 
 echo ""
-echo -e "${GREEN}✅ Setup Complete!${NC}"
+echo -e "${GREEN}✅ Setup complete!${NC}"
 echo ""
 echo -e "${BLUE}Next Steps:${NC}"
 echo "1. Review and update .env file with your configuration"
@@ -116,7 +116,7 @@ echo "2. Set secure values for JWT_SECRET and SESSION_SECRET"
 echo "3. Run: npm run build"
 echo "4. Run: npm start"
 echo ""
-echo -e "${YELLOW}Default Credentials (for development):${NC}"
+echo -e "${YELLOW}Default Credentials (for production):${NC}"
 echo "  Admin: admin@qmoi.local / password"
 echo "  User:  user@qmoi.local / password"
 echo ""

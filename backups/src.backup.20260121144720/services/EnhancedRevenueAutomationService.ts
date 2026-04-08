@@ -1,5 +1,5 @@
 
-import { EventEmitter } from "events";
+import { specificExports } from "events";
 
 interface RevenueProjectRequest {
   id: string;

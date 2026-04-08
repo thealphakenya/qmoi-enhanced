@@ -5,7 +5,7 @@
 
  all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 interface Asset {
   type: "farm" | "livestock" | "business";

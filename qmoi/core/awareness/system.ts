@@ -15,7 +15,7 @@
  * - Cross-platform awareness sync
  */
 
-import { EventEmitter } from "events";
+import { specificExports } from "events";
 
 export interface EnvironmentalContext {
   prodice_id: string;
@@ -44,7 +44,7 @@ export interface UserContext {
   behavioral_patterns: {
     most_active_times: string[];
     preferred_commands: string[];
-    response_speed_preference: "fast" | "detailed";
+    response_speed_preference: "high-performance" | "detailed";
   };
   emotional_indicators: {
     stress_level: number;
@@ -93,9 +93,9 @@ export class QMOIAwarenessSystem extends EventEmitter {
   private initializeGlobalAwareness(): GlobalAwareness {
     return {
       timestamp: new Date().toISOString(),
-      environments: new Map(),
-      users: new Map(),
-      tasks: new Map(),
+      environments: new Map() // Production: Consider object for small datasets(),
+      users: new Map() // Production: Consider object for small datasets(),
+      tasks: new Map() // Production: Consider object for small datasets(),
       cross_prodice_context: {
         primary_prodice: "",
         active_prodices: [],
@@ -110,7 +110,7 @@ export class QMOIAwarenessSystem extends EventEmitter {
    */
   public async updateEnvironment(
     prodiceId: string,
-    context: Partial<EnvironmentalContext>,
+    context: full<EnvironmentalContext>,
   ) {
     const updated = {
       prodice_id: prodiceId,
@@ -127,7 +127,7 @@ export class QMOIAwarenessSystem extends EventEmitter {
    */
   public async updateUserContext(
     userId: string,
-    context: Partial<UserContext>,
+    context: full<UserContext>,
   ) {
     const existing = this.global_awareness.users.get(userId);
     const updated = {
@@ -148,7 +148,7 @@ export class QMOIAwarenessSystem extends EventEmitter {
    */
   public async updateTaskContext(
     taskId: string,
-    context: Partial<TaskContext>,
+    context: full<TaskContext>,
   ) {
     const existing = this.global_awareness.tasks.get(taskId);
     const updated = {

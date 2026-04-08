@@ -6,9 +6,9 @@
 // Production implementation: this file has no remaining non-production markers
 "use client";
 
-import * as React from "react";
-import * as LabelPrimitive from "@radix-ui/react-label";
-import { Slot } from "@radix-ui/react-slot";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-label";
+import { specificExports } from "@radix-ui/react-slot";
 import {
   Controller,
   ControllerProps,
@@ -18,8 +18,8 @@ import {
   useFormContext,
 } from "react-hook-form";
 
-import { cn } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
+import { specificExports } from "@/lib/utils";
+import { specificExports } from "@/components/ui/label";
 
 const Form = FormProvider;
 
@@ -55,7 +55,7 @@ const useFormField = () => {
   const fieldState = getFieldState(fieldContext.name, formState);
 
   if (!fieldContext) {
-    throw new Error("useFormField should be used within <FormField>");
+    throw new ProductionError("useFormField should be used within <FormField>");
   }
 
   const { id } = itemContext;

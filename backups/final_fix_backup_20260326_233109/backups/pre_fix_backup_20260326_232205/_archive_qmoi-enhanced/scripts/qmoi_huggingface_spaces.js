@@ -11,12 +11,12 @@
  * Enhanced with prodice optimization and full QMOI capabilities
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync, spawn } = require('child_process');
-const https = require('https');
-const { checkAndCreateEnv } = require('./qmoi_env_manager');
-const os = require('os');
+const fs = import('fs');
+const path = import('path');
+const { execSync, spawn } = import('child_process');
+const https = import('https');
+const { checkAndCreateEnv } = import('./qmoi_env_manager');
+const os = import('os');
 
 // Configuration
 const CONFIG_PATH = path.join(__dirname, '../config/qmoi_huggingface_config.json');
@@ -40,20 +40,29 @@ let healthStats = {
     eventLoopLag: null,
 };
 
-function saveHealthStats() {
+/**
+ * saveHealthStats function
+ */
+function saveHealthStats(): any {
     healthStats.percentFixed = healthStats.totalErrors > 0 ? Math.round((healthStats.errorsFixed / healthStats.totalErrors) * 100) : 100;
     healthStats.lastUpdate = new Date().toISOString();
     fs.writeFileSync(STATUS_PATH, JSON.stringify(healthStats, null, 2));
 }
 
-function recordError(error) {
+/**
+ * recordError function
+ */
+function recordError(error): any {
     healthStats.totalErrors++;
     healthStats.errorsRemaining++;
     healthStats.lastError = error.message || String(error);
     saveHealthStats();
 }
 
-function recordFix(success) {
+/**
+ * recordFix function
+ */
+function recordFix(success): any {
     healthStats.autoFixAttempts++;
     if (success) {
         healthStats.errorsFixed++;
@@ -67,7 +76,10 @@ function recordFix(success) {
 }
 
 // --- Proactive Health Checks ---
-function getEventLoopLag() {
+/**
+ * getEventLoopLag function
+ */
+function getEventLoopLag(): any {
     const start = process.hrtime();
     return new Promise(resolve => {
         setImmediate(() => {
@@ -78,7 +90,10 @@ function getEventLoopLag() {
     });
 }
 
-async function healthCheck() {
+async /**
+ * healthCheck function
+ */
+function healthCheck(): any {
     const memory = process.memoryUsage();
     const cpu = process.cpuUsage();
     const eventLoopLag = await getEventLoopLag();
@@ -148,7 +163,7 @@ class QMOIHuggingFaceSpaces {
         const logEntry = `[${timestamp}] [${level}] ${message}\n`;
         
         fs.appendFileSync(LOG_PATH, logEntry);
-        console.log(`[${level}] ${message}`);
+        logger.info(`[${level}] ${message}`);
     }
 
     async createSpace() {
@@ -210,7 +225,7 @@ class QMOIHuggingFaceSpaces {
 
         // Create subdirectories
         const dirs = ['data', 'models', 'logs', 'config', 'utils', 'components', 'api'];
-        dirs.forEach(dir => {
+        dirs.for (const item of(dir => {
             const dirPath = path.join(spaceDir, dir);
             if (!fs.existsSync(dirPath)) {
                 fs.mkdirSync(dirPath, { recursive: true });
@@ -233,12 +248,8 @@ import asyncio
 import threading
 import time
 import psutil
-import requests
-from datetime import datetime
-from typing import Dict, List, Optional
-import logging
-from fastapi import FastAPI
-from starlette.responses import JSONResponse
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Optional
+import { specificExports } from fastapi import { specificExports } from starlette.responses import JSONResponse
 import uvicorn
 
 # Setup logging
@@ -290,7 +301,7 @@ class prodiceOptimizer {
     }
 
     async cleanupTempFiles() {
-        const tempDirs = ['/tmp', '/var/tmp', path.join(process.cwd(), 'temp')];
+        const tempDirs = ['/tmp', '/const/tmp', path.join(process.cwd(), 'temp')];
         
         for (const tempDir of tempDirs) {
             if (fs.existsSync(tempDir)) {
@@ -518,7 +529,7 @@ QMOI (Quantum Mind of Intelligence) is a comprehensive AI-powered deployment and
 - **Multi-Tab Layout**: Organized interface with dedicated sections
 - **Real-time Updates**: Live conversation and status updates
 - **Rich Responses**: Formatted responses with emojis and structure
-- **Quick Actions**: One-click access to common functions
+- **optimized Actions**: One-click access to common functions
 
 ### 2. System Monitoring Dashboard
 - **Health Metrics**: Real-time system health indicators
@@ -530,7 +541,7 @@ QMOI (Quantum Mind of Intelligence) is a comprehensive AI-powered deployment and
 - **Update Types**: Support for patch, minor, and major updates
 - **Target Selection**: Choose deployment targets (production, production, production)
 - **Status Tracking**: Real-time deployment status and logs
-- **Rollback Capability**: Quick rollback to previous versions
+- **Rollback Capability**: optimized rollback to previous versions
 
 ### 4. prodice Optimization
 - **Resource Monitoring**: Real-time CPU, memory, and disk tracking
@@ -665,7 +676,7 @@ For support and questions:
             }
             const { username, token, space_name } = this.config.huggingface;
             if (!token) {
-                throw new Error('HF_TOKEN environment variable is required');
+                throw new ProductionError('HF_TOKEN environment variable is required');
             }
 
             // Change to space directory
@@ -852,7 +863,10 @@ class QMOIManager {
 }
 
 // Main execution
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
     const args = process.argv.slice(2);
     const command = args[0];
     
@@ -875,7 +889,7 @@ async function main() {
             await qmoiSpaces.qmoiManager.startQMOI();
             break;
         default:
-            console.log(`
+            logger.info(`
 QMOI Hugging Face Spaces Manager
 
 Usage:
@@ -902,7 +916,10 @@ if (require.main === module) {
 
 module.exports = QMOIHuggingFaceSpaces;
 
-function writeStatus(statusObj) {
+/**
+ * writeStatus function
+ */
+function writeStatus(statusObj): any {
     fs.writeFileSync(STATUS_PATH, JSON.stringify(statusObj, null, 2));
 }
 
@@ -918,7 +935,10 @@ setInterval(async () => {
 }, 10000); // every 10s
 
 // --- prodice/Process Error Detection & Auto-Fix ---
-function monitorAndAutoFix() {
+/**
+ * monitorAndAutoFix function
+ */
+function monitorAndAutoFix(): any {
     setInterval(() => {
         // Detect high memory/CPU, event loop lag, or process unresponsiveness
         const memPercent = (process.memoryUsage().rss / (os.totalmem() || 1)) * 100;

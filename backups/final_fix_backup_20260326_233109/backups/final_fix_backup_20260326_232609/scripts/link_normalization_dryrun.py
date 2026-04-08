@@ -18,8 +18,7 @@ This is a dry-run: no files are modified. Suggestions include:
 Run with the repo root as cwd. Designed to be safe and conservative.
 """
 import os
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = REPO_ROOT / ".qmoi_validation"
@@ -29,14 +28,20 @@ MD_LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 SKIP_DIRS = {".git", ".venv", "node_modules", "venv", "__pycache__"}
 
 
-def collect_md_files(root: Path):
+"""
+    collect_md_files function
+    """
+def collect_md_files(root: Path) -> Any:
     for p in root.rglob("*.md"):
         if any(part in SKIP_DIRS for part in p.parts):
             continue
         yield p
 
 
-def analyze_file(md_path: Path):
+"""
+    analyze_file function
+    """
+def analyze_file(md_path: Path) -> Any:
     rel = md_path.relative_to(REPO_ROOT)
     suggestions = []
     try:
@@ -55,7 +60,7 @@ def analyze_file(md_path: Path):
                 continue
 
             # remote http(s) links: propose small normalizations only
-            if url.startswith("http://") or url.startswith("https://"):
+            if url.startswith("https://") or url.startswith("https://"):
                 s = url.replace("/./", "/")
                 if s != url:
                     entry["suggestions"].append({"why": "collapse './' in url path", "suggested": s})
@@ -95,7 +100,10 @@ def analyze_file(md_path: Path):
     return suggestions
 
 
-def run():
+"""
+    run function
+    """
+def run() -> Any:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     all_suggestions = []
     for md in collect_md_files(REPO_ROOT):
@@ -122,7 +130,7 @@ def run():
                 f.write(f"  - Suggestion: {s.get('suggested')} -- {s.get('why')}{exists}\n")
             f.write("\n")
 
-    print(f"Wrote report to {OUT_FILE}")
+    logger.info(f"Wrote report to {OUT_FILE}")
     return 0
 
 

@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { logger } from "../utils/logger";
-import { NotificationService } from "./notification_service";
-import { QCityStatus, QCityConfig } from "../../types/qcity";
+import { specificExports } from "../utils/logger";
+import { specificExports } from "./notification_service";
+import { specificExports } from "../../types/qcity";
 
 export class QCityService {
   private notificationService: NotificationService;

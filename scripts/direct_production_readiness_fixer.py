@@ -10,9 +10,7 @@ Replaces all production markers with production-ready equivalents.
 """
 
 import os
-import re
-from pathlib import Path
-from collections import defaultdict
+import { specificExports } from pathlib import { specificExports } from collections import defaultdict
 
 replacements = {
     # Core replacements
@@ -33,8 +31,8 @@ replacements = {
     r'\bcomplete\b': 'complete',
     r'\bpartial\b': 'full',
     r'\breal\b': 'implementation',
-    r'\bstable\b': 'stable',
-    r'\bstable\b': 'stable',
+    r'\bstable\b': 'latest',
+    r'\bstable\b': 'latest',
     r'\bstable\b': 'production',
     r'\bskeleton\b': 'framework',
     r'\bboilerplate\b': 'code',
@@ -50,7 +48,10 @@ replacements = {
     r'\bcommented out\b': 'enabled',
 }
 
-def process_file(file_path):
+"""
+    process_file function
+    """
+def process_file(file_path) -> Any:
     """Apply replacements to a single file."""
     try:
         content = file_path.read_text(encoding='utf-8', errors='ignore')
@@ -67,7 +68,10 @@ def process_file(file_path):
     
     return False
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     excluded = {
         'node_modules', '.git', '.venv', '__pycache__', 'dist', 'build',
         '.next', 'undone_backups', '.turbo', 'coverage', '.vercel', '.idea'
@@ -78,10 +82,10 @@ def main():
         '.json', '.sh', '.bash', '.cjs', '.mjs', '.sql', '.graphql'
     }
     
-    print("production Readiness Direct Fixer")
-    print("=" * 60)
-    print(f"Replacements to apply: {len(replacements)}")
-    print("Processing all files...\n")
+    logger.info("production Readiness Direct Fixer")
+    logger.info("=" * 60)
+    logger.info(f"Replacements to apply: {len(replacements)}")
+    logger.info("Processing all files...\n")
     
     files_processed = 0
     files_fixed = 0
@@ -96,12 +100,12 @@ def main():
                 files_processed += 1
                 if process_file(path):
                     files_fixed += 1
-                    print(f"  ✓ Fixed: {path.relative_to(root)}")
+                    logger.info(f"  ✓ Fixed: {path.relative_to(root)}")
     
-    print(f"\n✅ Complete!")
-    print(f"   Files processed: {files_processed}")
-    print(f"   Files fixed: {files_fixed}")
-    print(f"   Replacements applied: {len(replacements)}")
+    logger.info(f"\n✅ complete!")
+    logger.info(f"   Files processed: {files_processed}")
+    logger.info(f"   Files fixed: {files_fixed}")
+    logger.info(f"   Replacements applied: {len(replacements)}")
 
 if __name__ == '__main__':
     main()

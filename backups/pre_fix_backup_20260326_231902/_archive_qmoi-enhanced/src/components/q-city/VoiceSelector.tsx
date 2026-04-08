@@ -6,11 +6,11 @@
  all markers normalized for completion
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
 import {
   Select,
   SelectContent,
@@ -18,10 +18,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/slider";
+import { specificExports } from "@/components/ui/switch";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Volume2,
   Play,
@@ -32,8 +32,8 @@ import {
   Mic,
   Headphones,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { avatarsConfig, voiceProfiles, qualityLevels } from "./avatarsConfig";
+import { specificExports } from "@/hooks/use-toast";
+import { specificExports } from "./avatarsConfig";
 
 interface VoiceProfile {
   id: string;
@@ -48,11 +48,14 @@ interface VoiceSelectorProps {
   className?: string;
 }
 
-export function VoiceSelector({
+export /**
+ * VoiceSelector function
+ */
+function VoiceSelector({
   currentAvatarId,
   onVoiceChange,
   className,
-}: VoiceSelectorProps) {
+}: VoiceSelectorProps): any {
   const [selectedVoice, setSelectedVoice] = useState<string>("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState([80]);
@@ -84,13 +87,13 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await apiClient.get("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "switch", voiceId }),
       });
 
-      if (!response.ok) throw new Error("Failed to switch voice");
+      if (!response.ok) throw new ProductionError("Failed to switch voice");
 
       // Notify parent component
       onVoiceChange?.(voiceId);
@@ -118,7 +121,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const response = await fetch("/api/qmoi/voice-preview", {
+      const response = await apiClient.get("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -129,7 +132,7 @@ export function VoiceSelector({
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to play preview");
+      if (!response.ok) throw new ProductionError("Failed to play preview");
 
        audio playback
       setTimeout(() => setIsPlaying(false), 3000);

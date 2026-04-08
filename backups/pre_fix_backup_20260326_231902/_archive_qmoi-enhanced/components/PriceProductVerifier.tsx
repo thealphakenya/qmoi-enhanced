@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState } from "react";
-import { verifyProduct } from "@/adapters/clientAdapters";
+import { specificExports } from "react";
+import { specificExports } from "@/adapters/clientAdapters";
 
 export const PriceProductVerifier: React.FC = () => {
   const [query, setQuery] = useState("");

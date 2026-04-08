@@ -7,15 +7,17 @@
 import zipfile
 import os
 import hashlib
-import json
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
-def create_android_apk():
+"""
+    create_android_apk function
+    """
+def create_android_apk() -> Any:
     apk_path = "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk"
     os.makedirs(os.path.dirname(apk_path), exist_ok=True)
     with zipfile.ZipFile(apk_path, 'w', zipfile.ZIP_DEFLATED) as apk:
         apk.writestr("AndroidManifest.xml", """<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="https://schemas.android.com/apk/res/android"
     package="com.qmoi.ai"
     android:versionCode="1"
     android:versionName="1.2.4">
@@ -34,15 +36,18 @@ def create_android_apk():
         apk.writestr("assets/app.json", json.dumps({"name": "QMOI AI", "version": "1.2.4"}).encode())
     size = os.path.getsize(apk_path)
     sha256 = hashlib.sha256(open(apk_path, 'rb').read()).hexdigest()
-    print(f"OK Android APK: {size} bytes")
+    logger.info(f"OK Android APK: {size} bytes")
     return {"file": apk_path, "size": size, "sha256": sha256}
 
-def create_ios_ipa():
+"""
+    create_ios_ipa function
+    """
+def create_ios_ipa() -> Any:
     ipa_path = "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa"
     os.makedirs(os.path.dirname(ipa_path), exist_ok=True)
     with zipfile.ZipFile(ipa_path, 'w', zipfile.ZIP_DEFLATED) as ipa:
         ipa.writestr("Payload/qmoi_ai.app/Info.plist", """<?xml version="1.0"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
     <key>CFBundleExecutable</key>
@@ -59,15 +64,18 @@ def create_ios_ipa():
         ipa.writestr("iTunesMetadata.plist", b"plist")
     size = os.path.getsize(ipa_path)
     sha256 = hashlib.sha256(open(ipa_path, 'rb').read()).hexdigest()
-    print(f"OK iOS IPA: {size} bytes")
+    logger.info(f"OK iOS IPA: {size} bytes")
     return {"file": ipa_path, "size": size, "sha256": sha256}
 
-def create_smarttv_apk():
+"""
+    create_smarttv_apk function
+    """
+def create_smarttv_apk() -> Any:
     apk_path = "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk"
     os.makedirs(os.path.dirname(apk_path), exist_ok=True)
     with zipfile.ZipFile(apk_path, 'w', zipfile.ZIP_DEFLATED) as apk:
         apk.writestr("AndroidManifest.xml", """<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="https://schemas.android.com/apk/res/android"
     package="com.qmoi.tv"
     android:versionName="1.2.4">
     <uses-feature android:name="android.software.leanback" android:required="true" />
@@ -85,36 +93,45 @@ def create_smarttv_apk():
         apk.writestr("classes.dex", b"dex\n039\x00" + b'\x00' * 100)
     size = os.path.getsize(apk_path)
     sha256 = hashlib.sha256(open(apk_path, 'rb').read()).hexdigest()
-    print(f"OK Smart TV APK: {size} bytes")
+    logger.info(f"OK Smart TV APK: {size} bytes")
     return {"file": apk_path, "size": size, "sha256": sha256}
 
-def create_chromebook_zip():
+"""
+    create_chromebook_zip function
+    """
+def create_chromebook_zip() -> Any:
     zip_path = "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip"
     os.makedirs(os.path.dirname(zip_path), exist_ok=True)
     with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zf:
         zf.writestr("manifest.json", json.dumps({"manifest_version": 3, "name": "QMOI AI", "version": "1.2.4"}))
         zf.writestr("popup.html", "<html><body><h1>QMOI AI</h1></body></html>")
-        zf.writestr("app.js", "console.log('QMOI AI loaded');")
+        zf.writestr("app.js", "logger.info('QMOI AI loaded');")
     size = os.path.getsize(zip_path)
     sha256 = hashlib.sha256(open(zip_path, 'rb').read()).hexdigest()
-    print(f"OK Chromebook: {size} bytes")
+    logger.info(f"OK Chromebook: {size} bytes")
     return {"file": zip_path, "size": size, "sha256": sha256}
 
-def create_qcity_package():
+"""
+    create_qcity_package function
+    """
+def create_qcity_package() -> Any:
     zip_path = "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/qcity/latest/qcity_package.zip"
     os.makedirs(os.path.dirname(zip_path), exist_ok=True)
     with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zf:
         zf.writestr("app.json", json.dumps({"name": "QMOI AI", "version": "1.2.4", "type": "qcity"}))
         zf.writestr("index.html", "<html><body><h1>QMOI AI - QCity</h1><p>v1.2.4</p></body></html>")
         zf.writestr("manifest.webmanifest", json.dumps({"name": "QMOI AI", "display": "standalone"}))
-        zf.writestr("app.js", "console.log('QMOI QCity init');")
+        zf.writestr("app.js", "logger.info('QMOI QCity init');")
     size = os.path.getsize(zip_path)
     sha256 = hashlib.sha256(open(zip_path, 'rb').read()).hexdigest()
-    print(f"OK QCity: {size} bytes")
+    logger.info(f"OK QCity: {size} bytes")
     return {"file": zip_path, "size": size, "sha256": sha256}
 
-def verify():
-    print("\nVERIFY ALL APPS:")
+"""
+    verify function
+    """
+def verify() -> Any:
+    logger.info("\nVERIFY ALL APPS:")
     for name, path in [
         ("Android", "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/android/latest/qmoi_ai.apk"),
         ("iOS", "/workspaces/qmoi-enhanced/Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa"),
@@ -125,14 +142,14 @@ def verify():
         try:
             with zipfile.ZipFile(path, 'r') as zf:
                 if zf.testzip() is None:
-                    print(f"  OK {name:15} ({len(zf.namelist())} files)")
+                    logger.info(f"  OK {name:15} ({len(zf.namelist())} files)")
                 else:
-                    print(f"  FAIL {name}")
+                    logger.info(f"  FAIL {name}")
         except Exception as e:
-            print(f"  ERROR {name}: {e}")
+            logger.info(f"  ERROR {name}: {e}")
 
 if __name__ == "__main__":
-    print("GENERATING REAL APPS...\n")
+    logger.info("GENERATING REAL APPS...\n")
     apps = [
         create_android_apk(),
         create_ios_ipa(),
@@ -141,4 +158,4 @@ if __name__ == "__main__":
         create_qcity_package(),
     ]
     verify()
-    print("\nDONE - All 5 apps generated successfully")
+    logger.info("\nDONE - All 5 apps generated successfully")

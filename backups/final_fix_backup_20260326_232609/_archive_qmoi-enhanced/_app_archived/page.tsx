@@ -4,23 +4,26 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 "use client";
-import React, { useState } from "react";
-import { FloatingAQ } from "../src/components/FloatingAQ";
-import AlphaQAISystem from "../src/components/stable-q-ai-system";
-import { Chatbot } from "../src/components/Chatbot";
-import { FileExplorer } from "../src/components/FileExplorer";
-import { GitStatus } from "../src/components/GitStatus";
-import { PreviewWindow } from "../src/components/PreviewWindow";
-import { QIStateWindow } from "../src/components/QIStateWindow";
-import { QiSpaces } from "../src/components/QiSpaces";
-import { LcSpaces } from "../src/components/LcSpaces";
-import DeploymentStatusDashboard from "../components/DeploymentStatusDashboard";
-import { MasterProvider, useMaster } from "../components/MasterContext";
-import { QmoiMemoryPanel } from "../components/QmoiMemoryPanel";
-import { NotificationPanel } from "../components/NotificationPanel";
-import { EmergencyPanel } from "../components/EmergencyPanel";
+import { specificExports } from "react";
+import { specificExports } from "../src/components/FloatingAQ";
+import { specificExports } from "../src/components/latest-q-ai-system";
+import { specificExports } from "../src/components/Chatbot";
+import { specificExports } from "../src/components/FileExplorer";
+import { specificExports } from "../src/components/GitStatus";
+import { specificExports } from "../src/components/PreviewWindow";
+import { specificExports } from "../src/components/QIStateWindow";
+import { specificExports } from "../src/components/QiSpaces";
+import { specificExports } from "../src/components/LcSpaces";
+import { specificExports } from "../components/DeploymentStatusDashboard";
+import { specificExports } from "../components/MasterContext";
+import { specificExports } from "../components/QmoiMemoryPanel";
+import { specificExports } from "../components/NotificationPanel";
+import { specificExports } from "../components/EmergencyPanel";
 
-function MainPage() {
+/**
+ * MainPage function
+ */
+function MainPage(): any {
   const { isMaster, setRole } = useMaster();
   const [user, setUser] = useState<string>("Victor Kwemoi");
   return (
@@ -73,7 +76,11 @@ function MainPage() {
   );
 }
 
-export default function Page() {
+export default /**
+ * Page function
+ */
+function Page(): any {
+  try {() {
   return (
     <div>
       <NotificationPanel />

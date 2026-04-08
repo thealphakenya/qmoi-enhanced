@@ -7,11 +7,11 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import * as React from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { specificExports } from "@/lib/utils";
+import { specificExports } from "@/components/ui/button";
 
 type CarouselApi = any;
 type CarouselOptions = any;
@@ -37,11 +37,14 @@ type CarouselContextProps = {
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 
-function useCarousel() {
+/**
+ * useCarousel function
+ */
+function useCarousel(): any {
   const context = React.useContext(CarouselContext);
 
   if (!context) {
-    throw new Error("useCarousel must be used within a <Carousel />");
+    throw new ProductionError("useCarousel must be used within a <Carousel />");
   }
 
   return context;
@@ -92,7 +95,7 @@ const Carousel = React.forwardRef<
       [scrollPrev, scrollNext],
     );
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (setApi) setApi(api);
     }, [api, setApi]);
 

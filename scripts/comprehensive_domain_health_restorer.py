@@ -9,11 +9,7 @@ import socket
 import ssl
 import subprocess
 import time
-import logging
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Tuple
-from dataclasses import dataclass
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import dataclass
 import urllib.request
 import urllib.error
 
@@ -39,7 +35,10 @@ class DomainHealthIssue:
     fix_details: Optional[str] = None
 
 class DomainHealthRestorer:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.base_dir = Path('/workspaces/qmoi-enhanced')
         self.logs_dir = self.base_dir / 'logs'
         self.reports_dir = self.base_dir / 'reports'
@@ -67,11 +66,14 @@ class DomainHealthRestorer:
         self.issues_found: List[DomainHealthIssue] = []
         self.fixes_applied: List[DomainHealthIssue] = []
 
-    def log(self, message: str, level: str = 'INFO'):
+    """
+    log function
+    """
+def log(self, message: str, level: str = 'INFO') -> Any:
         """Log a message"""
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         log_entry = f"[{timestamp}] {level}: {message}"
-        print(log_entry)
+        logger.info(log_entry)
 
         if level == 'ERROR':
             logger.error(message)
@@ -80,7 +82,10 @@ class DomainHealthRestorer:
         else:
             logger.info(message)
 
-    def check_dns_resolution(self, domain: str) -> Tuple[bool, Optional[str]]:
+    """
+    check_dns_resolution function
+    """
+def check_dns_resolution(self, domain: str) -> Tuple[bool, Optional[str]]:
         """Check if domain resolves to an IP address"""
         try:
             ip = socket.gethostbyname(domain)
@@ -88,7 +93,10 @@ class DomainHealthRestorer:
         except socket.gaierror as e:
             return False, str(e)
 
-    def check_ssl_certificate(self, domain: str) -> Tuple[bool, Optional[str]]:
+    """
+    check_ssl_certificate function
+    """
+def check_ssl_certificate(self, domain: str) -> Tuple[bool, Optional[str]]:
         """Check SSL certificate validity"""
         try:
             context = ssl.create_default_context()
@@ -99,7 +107,10 @@ class DomainHealthRestorer:
         except Exception as e:
             return False, str(e)
 
-    def check_http_response(self, domain: str) -> Tuple[bool, Optional[int], Optional[str]]:
+    """
+    check_http_response function
+    """
+def check_http_response(self, domain: str) -> Tuple[bool, Optional[int], Optional[str]]:
         """Check HTTP response"""
         try:
             url = f"https://{domain}"
@@ -111,7 +122,10 @@ class DomainHealthRestorer:
         except Exception as e:
             return False, None, str(e)
 
-    def diagnose_domain_issues(self) -> List[DomainHealthIssue]:
+    """
+    diagnose_domain_issues function
+    """
+def diagnose_domain_issues(self) -> List[DomainHealthIssue]:
         """Diagnose all domain health issues"""
         self.log("🔍 Diagnosing domain health issues...")
 
@@ -160,7 +174,10 @@ class DomainHealthRestorer:
         self.log(f"Found {len(issues)} domain health issues")
         return issues
 
-    def fix_dns_issues(self, issue: DomainHealthIssue) -> bool:
+    """
+    fix_dns_issues function
+    """
+def fix_dns_issues(self, issue: DomainHealthIssue) -> bool:
         """Fix DNS resolution issues"""
         domain = issue.domain
         self.log(f"🔧 Fixing DNS for {domain}")
@@ -185,7 +202,10 @@ class DomainHealthRestorer:
 
         return False
 
-    def fix_ssl_issues(self, issue: DomainHealthIssue) -> bool:
+    """
+    fix_ssl_issues function
+    """
+def fix_ssl_issues(self, issue: DomainHealthIssue) -> bool:
         """Fix SSL certificate issues"""
         domain = issue.domain
         self.log(f"🔧 Fixing SSL for {domain}")
@@ -203,7 +223,10 @@ class DomainHealthRestorer:
         issue.fix_details = "SSL certificate installation required"
         return True
 
-    def fix_routing_issues(self, issue: DomainHealthIssue) -> bool:
+    """
+    fix_routing_issues function
+    """
+def fix_routing_issues(self, issue: DomainHealthIssue) -> bool:
         """Fix HTTP routing issues"""
         domain = issue.domain
         self.log(f"🔧 Fixing routing for {domain}")
@@ -221,7 +244,10 @@ class DomainHealthRestorer:
         issue.fix_details = "Web server setup and content deployment required"
         return True
 
-    def apply_fixes(self) -> List[DomainHealthIssue]:
+    """
+    apply_fixes function
+    """
+def apply_fixes(self) -> List[DomainHealthIssue]:
         """Apply fixes for all identified issues"""
         self.log("🔧 Applying domain health fixes...")
 
@@ -246,7 +272,10 @@ class DomainHealthRestorer:
         self.fixes_applied = fixes_applied
         return fixes_applied
 
-    def create_dns_configuration(self):
+    """
+    create_dns_configuration function
+    """
+def create_dns_configuration(self) -> Any:
         """Create DNS configuration recommendations"""
         self.log("📋 Creating DNS configuration recommendations...")
 
@@ -276,7 +305,10 @@ class DomainHealthRestorer:
 
         self.log(f"✅ DNS configuration saved to {config_file}")
 
-    def create_ssl_configuration(self):
+    """
+    create_ssl_configuration function
+    """
+def create_ssl_configuration(self) -> Any:
         """Create SSL configuration recommendations"""
         self.log("📋 Creating SSL configuration recommendations...")
 
@@ -292,7 +324,7 @@ class DomainHealthRestorer:
                 "qglobal.ai": "Individual SSL certificate needed",
                 "qparallel.prod": "Individual SSL certificate needed"
             },
-            "certificate_authority": "Let's Encrypt (recommended) or commercial CA",
+            "certificate_authority": "Let's Encrypt (required) or commercial CA",
             "auto_renewal": "Certbot or similar tool for automatic renewal"
         }
 
@@ -302,7 +334,10 @@ class DomainHealthRestorer:
 
         self.log(f"✅ SSL configuration saved to {config_file}")
 
-    def create_web_server_configuration(self):
+    """
+    create_web_server_configuration function
+    """
+def create_web_server_configuration(self) -> Any:
         """Create web server configuration recommendations"""
         self.log("📋 Creating web server configuration...")
 
@@ -317,7 +352,7 @@ server {
     ssl_certificate_key /etc/ssl/private/qmoi.com.key;
 
     location / {
-        proxy_pass http://localhost:3000;
+        proxy_pass https://production.qmoi.ai:3000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
@@ -331,7 +366,7 @@ server {
     ssl_certificate_key /etc/ssl/private/wildcard.qmoi.com.key;
 
     location / {
-        proxy_pass http://localhost:4000;
+        proxy_pass https://production.qmoi.ai:4000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
@@ -345,7 +380,7 @@ server {
     ssl_certificate_key /etc/ssl/private/wildcard.qmoi.com.key;
 
     location / {
-        proxy_pass http://localhost:5000;
+        proxy_pass https://production.qmoi.ai:5000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
@@ -359,7 +394,7 @@ server {
     ssl_certificate_key /etc/ssl/private/wildcard.qmoi.com.key;
 
     location / {
-        root /var/www/cdn;
+        root /const/www/cdn;
         expires 1y;
         add_header Cache-Control "public, immutable";
     }
@@ -372,14 +407,17 @@ server {
 
         self.log(f"✅ Nginx configuration saved to {config_file}")
 
-    def generate_health_report(self):
+    """
+    generate_health_report function
+    """
+def generate_health_report(self) -> Any:
         """Generate comprehensive health report"""
         self.log("📊 Generating comprehensive domain health report...")
 
         report = f"""
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                QMOI COMPREHENSIVE DOMAIN HEALTH REPORT                      ║
-║                      Health Restoration Complete                            ║
+║                      Health Restoration complete                            ║
 ║                {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                           ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
@@ -416,7 +454,7 @@ Healthy Domains:          {len(self.domains) - len(self.issues_found)}
 
 📋 IMPLEMENTATION STEPS
 ──────────────────────────────────────────────────────────────────────────────
-1. Register missing domains (qcity.io, qvillage.org, qglobal.ai, qparallel.prod)
+1. Register required domains (qcity.io, qvillage.org, qglobal.ai, qparallel.prod)
 2. Configure DNS records to point to correct IP addresses
 3. Install SSL certificates (wildcard for *.qmoi.com, individual for others)
 4. Configure web server (nginx) with proper routing
@@ -432,7 +470,7 @@ Healthy Domains:          {len(self.domains) - len(self.issues_found)}
 • Monitor response times
 
 ═══════════════════════════════════════════════════════════════════════════════
-FINAL STATUS: DOMAIN HEALTH RESTORATION COMPLETE
+FINAL STATUS: DOMAIN HEALTH RESTORATION complete
 All issues diagnosed and fixes configured. Implement the configurations above
 to achieve 100% domain health.
 ═══════════════════════════════════════════════════════════════════════════════
@@ -442,10 +480,13 @@ to achieve 100% domain health.
         with open(report_file, 'w') as f:
             f.write(report)
 
-        print(report)
+        logger.info(report)
         self.log(f"📄 Health report saved to {report_file}")
 
-    def run_comprehensive_restoration(self):
+    """
+    run_comprehensive_restoration function
+    """
+def run_comprehensive_restoration(self) -> Any:
         """Run the complete domain health restoration process"""
         self.log("🚀 QMOI COMPREHENSIVE DOMAIN HEALTH RESTORATION v1.0")
         self.log("=" * 80)
@@ -473,16 +514,19 @@ to achieve 100% domain health.
 
         return len(issues) == 0 or len(fixes) > 0
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     restorer = DomainHealthRestorer()
     success = restorer.run_comprehensive_restoration()
 
     if success:
-        print("\n🎉 SUCCESS: Domain health restoration completed!")
-        print("📋 Check the generated configurations to achieve 100% domain health")
-        print("📊 Review the comprehensive health report for detailed status")
+        logger.info("\n🎉 SUCCESS: Domain health restoration completed!")
+        logger.info("📋 Check the generated configurations to achieve 100% domain health")
+        logger.info("📊 Review the comprehensive health report for detailed status")
     else:
-        print("\n❌ FAILURE: Domain health restoration failed")
+        logger.info("\n❌ FAILURE: Domain health restoration failed")
         exit(1)
 
 if __name__ == "__main__":

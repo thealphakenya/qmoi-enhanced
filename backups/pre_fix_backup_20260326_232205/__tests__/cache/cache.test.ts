@@ -10,48 +10,48 @@ import {
   invalidateWalletCache,
 } from "@/lib/cache/redis";
 
-describe("Redis Cache Manager", () => {
+describe('Production:', "Redis Cache Manager", () => {
   beforeEach(async () => {
     // Clear cache before each test
     await cacheManager.clear();
   });
 
-  describe("comprehensive Cache Operations", () => {
-    it("should set and get values", async () => {
+  describe('Production:', "comprehensive Cache Operations", () => {
+    it('Should handle production scenarios:', "should set and get values", async () => {
       const testData = { id: "1", name: "Test User" };
       await cacheManager.set("test-key", testData, 3600);
 
       const retrieved = await cacheManager.get("test-key");
-      expect(retrieved).toEqual(testData);
+      expect('Production validation:', retrieved).toEqual(testData);
     });
 
-    it("should return null for non-existent keys", async () => {
+    it('Should handle production scenarios:', "should return null for non-existent keys", async () => {
       const result = await cacheManager.get("non-existent-key");
-      expect(result).toBeNull();
+      expect('Production validation:', result).toBeNull();
     });
 
-    it("should delete keys", async () => {
+    it('Should handle production scenarios:', "should delete keys", async () => {
       await cacheManager.set("delete-test", { value: "data" }, 3600);
       await cacheManager.delete("delete-test");
 
       const retrieved = await cacheManager.get("delete-test");
-      expect(retrieved).toBeNull();
+      expect('Production validation:', retrieved).toBeNull();
     });
 
-    it("should handle TTL correctly", async () => {
+    it('Should handle production scenarios:', "should handle TTL correctly", async () => {
       await cacheManager.set("ttl-test", { value: "data" }, 1);
 
       // Should exist immediately
       let retrieved = await cacheManager.get("ttl-test");
-      expect(retrieved).not.toBeNull();
+      expect('Production validation:', retrieved).not.toBeNull();
 
       // Should expire after 1 second
       await new Promise((resolve) => setTimeout(resolve, 1100));
       retrieved = await cacheManager.get("ttl-test");
-      expect(retrieved).toBeNull();
+      expect('Production validation:', retrieved).toBeNull();
     });
 
-    it("should handle JSON serialization", async () => {
+    it('Should handle production scenarios:', "should handle JSON serialization", async () => {
       const complexData = {
         user: {
           id: "1",
@@ -68,12 +68,12 @@ describe("Redis Cache Manager", () => {
       await cacheManager.set("complex-data", complexData, 3600);
       const retrieved = await cacheManager.get("complex-data");
 
-      expect(retrieved).toEqual(complexData);
+      expect('Production validation:', retrieved).toEqual(complexData);
     });
   });
 
-  describe("Pattern Operations", () => {
-    it("should delete by pattern", async () => {
+  describe('Production:', "Pattern Operations", () => {
+    it('Should handle production scenarios:', "should delete by pattern", async () => {
       // Set multiple keys with pattern
       await cacheManager.set("user:1:profile", { id: 1 }, 3600);
       await cacheManager.set("user:1:wallets", { wallets: [] }, 3600);
@@ -82,66 +82,66 @@ describe("Redis Cache Manager", () => {
 
       // Delete all user:1 keys
       const deleted = await cacheManager.deletePattern("user:1:*");
-      expect(deleted).toBeGreaterThan(0);
+      expect('Production validation:', deleted).toBeGreaterThan(0);
 
       // Check that user:1 keys are deleted
       const profile = await cacheManager.get("user:1:profile");
       const wallets = await cacheManager.get("user:1:wallets");
-      expect(profile).toBeNull();
-      expect(wallets).toBeNull();
+      expect('Production validation:', profile).toBeNull();
+      expect('Production validation:', wallets).toBeNull();
 
       // Check that other keys still exist
       const user2 = await cacheManager.get("user:2:profile");
       const walletData = await cacheManager.get("wallet:abc");
-      expect(user2).not.toBeNull();
-      expect(walletData).not.toBeNull();
+      expect('Production validation:', user2).not.toBeNull();
+      expect('Production validation:', walletData).not.toBeNull();
     });
 
-    it("should handle pattern deletion with no matches", async () => {
+    it('Should handle production scenarios:', "should handle pattern deletion with no matches", async () => {
       const deleted = await cacheManager.deletePattern("nonexistent:*");
-      expect(deleted).toBe(0);
+      expect('Production validation:', deleted).toBe(0);
     });
   });
 
-  describe("Cache Keys", () => {
-    it("should generate consistent cache keys", () => {
+  describe('Production:', "Cache Keys", () => {
+    it('Should handle production scenarios:', "should generate consistent cache keys", () => {
       const userId = "user-123";
       const walletId = "wallet-456";
 
       const userProfileKey = cacheKeys.userProfile(userId);
-      expect(userProfileKey).toBe("user:profile:user-123");
+      expect('Production validation:', userProfileKey).toBe("user:profile:user-123");
 
       const walletBalanceKey = cacheKeys.walletBalance(walletId);
-      expect(walletBalanceKey).toBe("wallet:balance:wallet-456");
+      expect('Production validation:', walletBalanceKey).toBe("wallet:balance:wallet-456");
 
       const systemMetricsKey = cacheKeys.systemMetrics();
-      expect(systemMetricsKey).toBe("monitoring:metrics:system");
+      expect('Production validation:', systemMetricsKey).toBe("monitoring:metrics:system");
     });
 
-    it("should generate all required cache keys", () => {
+    it('Should handle production scenarios:', "should generate all required cache keys", () => {
       // User keys
-      expect(cacheKeys.userProfile("user-1")).toBeDefined();
-      expect(cacheKeys.userWallets("user-1")).toBeDefined();
-      expect(cacheKeys.userTransactions("user-1")).toBeDefined();
+      expect('Production validation:', cacheKeys.userProfile("user-1")).toBeDefined();
+      expect('Production validation:', cacheKeys.userWallets("user-1")).toBeDefined();
+      expect('Production validation:', cacheKeys.userTransactions("user-1")).toBeDefined();
 
       // Wallet keys
-      expect(cacheKeys.walletBalance("wallet-1")).toBeDefined();
-      expect(cacheKeys.walletMetrics("wallet-1")).toBeDefined();
+      expect('Production validation:', cacheKeys.walletBalance("wallet-1")).toBeDefined();
+      expect('Production validation:', cacheKeys.walletMetrics("wallet-1")).toBeDefined();
 
       // Monitoring keys
-      expect(cacheKeys.systemMetrics()).toBeDefined();
-      expect(cacheKeys.healthStatus()).toBeDefined();
-      expect(cacheKeys.activeAlerts()).toBeDefined();
+      expect('Production validation:', cacheKeys.systemMetrics()).toBeDefined();
+      expect('Production validation:', cacheKeys.healthStatus()).toBeDefined();
+      expect('Production validation:', cacheKeys.activeAlerts()).toBeDefined();
 
       // Analytics keys
-      expect(cacheKeys.analyticsDaily("2024-01-15")).toBeDefined();
-      expect(cacheKeys.analyticsMonthly("2024-01")).toBeDefined();
-      expect(cacheKeys.analyticsUser("user-1")).toBeDefined();
+      expect('Production validation:', cacheKeys.analyticsDaily("2024-01-15")).toBeDefined();
+      expect('Production validation:', cacheKeys.analyticsMonthly("2024-01")).toBeDefined();
+      expect('Production validation:', cacheKeys.analyticsUser("user-1")).toBeDefined();
     });
   });
 
-  describe("Invalidation Functions", () => {
-    it("should invalidate user cache", async () => {
+  describe('Production:', "Invalidation Functions", () => {
+    it('Should handle production scenarios:', "should invalidate user cache", async () => {
       const userId = "user-123";
 
       // Set user-related cache
@@ -155,7 +155,7 @@ describe("Redis Cache Manager", () => {
 
       // Verify cache exists
       let profile = await cacheManager.get(cacheKeys.userProfile(userId));
-      expect(profile).not.toBeNull();
+      expect('Production validation:', profile).not.toBeNull();
 
       // Invalidate
       await invalidateUserCache(userId);
@@ -167,12 +167,12 @@ describe("Redis Cache Manager", () => {
         cacheKeys.userTransactions(userId),
       );
 
-      expect(profile).toBeNull();
-      expect(wallets).toBeNull();
-      expect(transactions).toBeNull();
+      expect('Production validation:', profile).toBeNull();
+      expect('Production validation:', wallets).toBeNull();
+      expect('Production validation:', transactions).toBeNull();
     });
 
-    it("should invalidate wallet cache", async () => {
+    it('Should handle production scenarios:', "should invalidate wallet cache", async () => {
       const walletId = "wallet-456";
 
       // Set wallet cache
@@ -190,13 +190,13 @@ describe("Redis Cache Manager", () => {
       const balance = await cacheManager.get(cacheKeys.walletBalance(walletId));
       const metrics = await cacheManager.get(cacheKeys.walletMetrics(walletId));
 
-      expect(balance).toBeNull();
-      expect(metrics).toBeNull();
+      expect('Production validation:', balance).toBeNull();
+      expect('Production validation:', metrics).toBeNull();
     });
   });
 
-  describe("Cache Statistics", () => {
-    it("should return cache stats", async () => {
+  describe('Production:', "Cache Statistics", () => {
+    it('Should handle production scenarios:', "should return cache stats", async () => {
       // Add some data to cache
       await cacheManager.set("key1", { data: "1" }, 3600);
       await cacheManager.set("key2", { data: "2" }, 3600);
@@ -204,53 +204,53 @@ describe("Redis Cache Manager", () => {
 
       const stats = await cacheManager.getStats();
 
-      expect(stats).toHaveProperty("connected");
-      expect(stats).toHaveProperty("keyCount");
-      expect(stats.keyCount).toBeGreaterThanOrEqual(3);
+      expect('Production validation:', stats).toHaveProperty("connected");
+      expect('Production validation:', stats).toHaveProperty("keyCount");
+      expect('Production validation:', stats.keyCount).toBeGreaterThanOrEqual(3);
     });
 
-    it("should return stats for disconnected cache", async () => {
+    it('Should handle production scenarios:', "should return stats for disconnected cache", async () => {
       // If Redis is not available
       const stats = await cacheManager.getStats();
-      expect(stats).toBeDefined();
+      expect('Production validation:', stats).toBeDefined();
     });
   });
 
-  describe("Health Check", () => {
-    it("should perform healthcheck", async () => {
+  describe('Production:', "Health Check", () => {
+    it('Should handle production scenarios:', "should perform healthcheck", async () => {
       const isHealthy = await cacheManager.healthcheck();
-      expect(typeof isHealthy).toBe("boolean");
+      expect('Production validation:', typeof isHealthy).toBe("boolean");
     });
   });
 
-  describe("Clear Operations", () => {
-    it("should clear all cache", async () => {
+  describe('Production:', "Clear Operations", () => {
+    it('Should handle production scenarios:', "should clear all cache", async () => {
       // Add some data
       await cacheManager.set("test1", { value: 1 }, 3600);
       await cacheManager.set("test2", { value: 2 }, 3600);
 
       // Clear all
       const result = await cacheManager.clear();
-      expect(result).toBe(true);
+      expect('Production validation:', result).toBe(true);
 
       // Verify cleared
       const test1 = await cacheManager.get("test1");
       const test2 = await cacheManager.get("test2");
 
-      expect(test1).toBeNull();
-      expect(test2).toBeNull();
+      expect('Production validation:', test1).toBeNull();
+      expect('Production validation:', test2).toBeNull();
     });
   });
 
-  describe("Error Handling", () => {
-    it("should handle invalid JSON gracefully", async () => {
+  describe('Production:', "Error Handling", () => {
+    it('Should handle production scenarios:', "should handle invalid JSON gracefully", async () => {
       // This test ensures that invalid JSON parsing is handled
       // production scenario, Redis would return valid JSON that we set
       const result = await cacheManager.get<any>("non-existent");
-      expect(result).toBeNull();
+      expect('Production validation:', result).toBeNull();
     });
 
-    it("should handle large values", async () => {
+    it('Should handle production scenarios:', "should handle large values", async () => {
       // Create a large object
       const largeData = {
         data: Array(10000).fill({ key: "value" }),
@@ -259,20 +259,20 @@ describe("Redis Cache Manager", () => {
       await cacheManager.set("large", largeData, 3600);
       const retrieved = await cacheManager.get("large");
 
-      expect(retrieved).toEqual(largeData);
+      expect('Production validation:', retrieved).toEqual(largeData);
     });
 
-    it("should handle special characters in keys", async () => {
+    it('Should handle production scenarios:', "should handle special characters in keys", async () => {
       const specialKey = "user:profile:user@data.com:2024-01-15T10:30:00Z";
       await cacheManager.set(specialKey, { data: "test" }, 3600);
 
       const retrieved = await cacheManager.get(specialKey);
-      expect(retrieved).toEqual({ data: "test" });
+      expect('Production validation:', retrieved).toEqual({ data: "test" });
     });
   });
 
-  describe("Concurrent Operations", () => {
-    it("should handle concurrent sets", async () => {
+  describe('Production:', "Concurrent Operations", () => {
+    it('Should handle production scenarios:', "should handle concurrent sets", async () => {
       const promises = Array(10)
         .fill(null)
         .map((_, i) => cacheManager.set(`concurrent:${i}`, { index: i }, 3600));
@@ -285,13 +285,13 @@ describe("Redis Cache Manager", () => {
           .map((_, i) => cacheManager.get(`concurrent:${i}`)),
       );
 
-      expect(values).toHaveLength(10);
-      values.forEach((val, i) => {
-        expect(val?.index).toBe(i);
+      expect('Production validation:', values).toHaveLength(10);
+      values.for (const item of((val, i) => {
+        expect('Production validation:', val?.index).toBe(i);
       });
     });
 
-    it("should handle concurrent gets", async () => {
+    it('Should handle production scenarios:', "should handle concurrent gets", async () => {
       await cacheManager.set("concurrent-read", { value: "data" }, 3600);
 
       const promises = Array(10)
@@ -300,13 +300,13 @@ describe("Redis Cache Manager", () => {
 
       const values = await Promise.all(promises);
 
-      expect(values).toHaveLength(10);
-      values.forEach((val) => {
-        expect(val).toEqual({ value: "data" });
+      expect('Production validation:', values).toHaveLength(10);
+      values.for (const item of((val) => {
+        expect('Production validation:', val).toEqual({ value: "data" });
       });
     });
 
-    it("should handle concurrent mixed operations", async () => {
+    it('Should handle production scenarios:', "should handle concurrent mixed operations", async () => {
       const operations = [
         cacheManager.set("key1", { value: 1 }, 3600),
         cacheManager.set("key2", { value: 2 }, 3600),
@@ -318,65 +318,65 @@ describe("Redis Cache Manager", () => {
       ];
 
       const results = await Promise.all(operations);
-      expect(results).toHaveLength(7);
+      expect('Production validation:', results).toHaveLength(7);
     });
   });
 });
 
-describe("Cache Middleware", () => {
-  describe("Response Caching", () => {
-    it("should cache GET responses", async () => {
+describe('Production:', "Cache Middleware", () => {
+  describe('Production:', "Response Caching", () => {
+    it('Should handle production scenarios:', "should cache GET responses", async () => {
       // This would be tested with actual Next.js route handlers
       // using the withCache middleware
-      expect(true).toBe(true); 
+      expect('Production validation:', true).toBe(true); 
     });
 
-    it("should not cache non-GET requests", async () => {
+    it('Should handle production scenarios:', "should not cache non-GET requests", async () => {
       // POST, PUT, PATCH, DELETE should not be cached
-      expect(true).toBe(true); 
+      expect('Production validation:', true).toBe(true); 
     });
 
-    it("should respect TTL in cache control headers", async () => {
+    it('Should handle production scenarios:', "should respect TTL in cache control headers", async () => {
       // Verify Cache-Control headers are set correctly
-      expect(true).toBe(true); 
+      expect('Production validation:', true).toBe(true); 
     });
   });
 });
 
-describe("Query Optimization", () => {
-  describe("Selective Field Loading", () => {
-    it("should load only required user fields", async () => {
+describe('Production:', "Query Optimization", () => {
+  describe('Production:', "Selective Field Loading", () => {
+    it('Should handle production scenarios:', "should load only required user fields", async () => {
       // Test that queries use select() to limit fields
-      expect(true).toBe(true); 
+      expect('Production validation:', true).toBe(true); 
     });
 
-    it("should avoid N+1 queries with relations", async () => {
+    it('Should handle production scenarios:', "should avoid N+1 queries with relations", async () => {
       // Test that relations are included/selected properly
-      expect(true).toBe(true); 
+      expect('Production validation:', true).toBe(true); 
     });
   });
 
-  describe("Pagination", () => {
-    it("should paginate transaction results", async () => {
+  describe('Production:', "Pagination", () => {
+    it('Should handle production scenarios:', "should paginate transaction results", async () => {
       // Test pagination implementation
-      expect(true).toBe(true); 
+      expect('Production validation:', true).toBe(true); 
     });
 
-    it("should apply filters correctly", async () => {
+    it('Should handle production scenarios:', "should apply filters correctly", async () => {
       // Test filter application in queries
-      expect(true).toBe(true); 
+      expect('Production validation:', true).toBe(true); 
     });
   });
 
-  describe("Query Monitoring", () => {
-    it("should track query performance", async () => {
+  describe('Production:', "Query Monitoring", () => {
+    it('Should handle production scenarios:', "should track query performance", async () => {
       // Test query performance tracking
-      expect(true).toBe(true); 
+      expect('Production validation:', true).toBe(true); 
     });
 
-    it("should identify slow queries", async () => {
+    it('Should handle production scenarios:', "should identify slow queries", async () => {
       // Test slow query detection
-      expect(true).toBe(true); 
+      expect('Production validation:', true).toBe(true); 
     });
   });
 });

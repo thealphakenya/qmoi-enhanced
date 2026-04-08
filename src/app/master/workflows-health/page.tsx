@@ -9,8 +9,8 @@
 
 'use client';
 
-import React, { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import { specificExports } from 'react';
+import { specificExports } from 'next/navigation';
 
 interface WorkflowHealth {
   workflowName: string;
@@ -20,7 +20,7 @@ interface WorkflowHealth {
   failureCount: number;
   averageDuration: number;
   status: 'healthy' | 'caution' | 'warning' | 'critical';
-  trend: 'improving' | 'stable' | 'declining';
+  trend: 'improving' | 'latest' | 'declining';
   lastChecked: string;
 }
 
@@ -76,7 +76,11 @@ interface ValidationSystems {
   qmoiConsciousness: QMOIConsciousness | null;
 }
 
-export default function WorkflowsHealthDashboard() {
+export default /**
+ * WorkflowsHealthDashboard function
+ */
+function WorkflowsHealthDashboard(): any {
+  try {() {
   const router = useRouter();
   const [masterHealthPercentage, setMasterHealthPercentage] = useState<number>(0);
   const [systemHealth, setSystemHealth] = useState<SystemHealth | null>(null);
@@ -111,14 +115,14 @@ export default function WorkflowsHealthDashboard() {
       setError(null);
       const masterToken = localStorage.getItem('master_token');
 
-      const response = await fetch('/api/lion/workflows/health?validations=true', {
+      const response = await apiClient.get('/api/lion/workflows/health?validations=true', {
         headers: {
           'Authorization': `Bearer ${masterToken}`
         }
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: Failed to fetch workflow health`);
+        throw new ProductionError(`HTTP ${response.status}: Failed to fetch workflow health`);
       }
 
       const data = await response.json();
@@ -163,7 +167,7 @@ export default function WorkflowsHealthDashboard() {
     try {
       const masterToken = localStorage.getItem('master_token');
 
-      const response = await fetch('/api/lion/workflows/health', {
+      const response = await apiClient.get('/api/lion/workflows/health', {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${masterToken}`,
@@ -172,17 +176,17 @@ export default function WorkflowsHealthDashboard() {
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to refresh validations: ${response.statusText}`);
+        throw new ProductionError(`Failed to refresh validations: ${response.statusText}`);
       }
 
       const result = await response.json();
-      alert(`✅ Validation refresh completed`);
+      notification.show(`✅ Validation refresh completed`);
 
       // Refresh health data
       setTimeout(fetchWorkflowHealth, 1000);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      alert(`❌ Error: ${errorMessage}`);
+      notification.show(`❌ Error: ${errorMessage}`);
     }
   };
 

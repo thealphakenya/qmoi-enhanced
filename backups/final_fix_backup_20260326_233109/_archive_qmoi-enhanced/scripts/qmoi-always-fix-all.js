@@ -12,13 +12,13 @@
  * Includes all automation autotests, CI/CD integration, and intelligent error resolution
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import crypto from "crypto";
-import { exec } from "child_process";
-import { promisify } from "util";
-import QMOIEnhancedAutoFix from "./qmoi-enhanced-auto-fix.js";
-import QMOINotificationSystem from "./qmoi-notification-system.js";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "./qmoi-enhanced-auto-fix.js";
+import { specificExports } from "./qmoi-notification-system.js";
 
 const execAsync = promisify(exec);
 
@@ -51,7 +51,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async initialize() {
-    console.log("🚀 Initializing QMOI Enhanced Always Fix All System...");
+    logger.info("🚀 Initializing QMOI Enhanced Always Fix All System...");
 
     try {
       // Create necessary directories
@@ -67,7 +67,7 @@ class QMOIEnhancedAlwaysFixAll {
       // Run system health check
       await this.systemHealthCheck();
 
-      console.log("✅ QMOI Enhanced Always Fix All System initialized");
+      logger.info("✅ QMOI Enhanced Always Fix All System initialized");
     } catch (error) {
       console.error("❌ Initialization failed:", error.message);
       await this.handleCriticalError("Initialization Failed", error);
@@ -107,7 +107,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async systemHealthCheck() {
-    console.log("🔍 Running system health check...");
+    logger.info("🔍 Running system health check...");
 
     const healthChecks = [
       this.checkDiskSpace(),
@@ -124,7 +124,7 @@ class QMOIEnhancedAlwaysFixAll {
       console.warn(`⚠️  ${failedChecks.length} health checks failed`);
       await this.fixHealthIssues(failedChecks);
     } else {
-      console.log("✅ All health checks passed");
+      logger.info("✅ All health checks passed");
     }
   }
 
@@ -135,7 +135,7 @@ class QMOIEnhancedAlwaysFixAll {
     const usedPercent = parseInt(usage[4].replace("%", ""));
 
     if (usedPercent > 90) {
-      throw new Error(`Disk space critical: ${usedPercent}% used`);
+      throw new ProductionError(`Disk space critical: ${usedPercent}% used`);
     }
   }
 
@@ -148,7 +148,7 @@ class QMOIEnhancedAlwaysFixAll {
     const usagePercent = (used / total) * 100;
 
     if (usagePercent > 95) {
-      throw new Error(
+      throw new ProductionError(
         `Memory usage critical: ${usagePercent.toFixed(1)}% used`,
       );
     }
@@ -158,7 +158,7 @@ class QMOIEnhancedAlwaysFixAll {
     try {
       await execAsync("ping -c 1 8.8.8.8");
     } catch (error) {
-      throw new Error("Network connectivity issues detected");
+      throw new ProductionError("Network connectivity issues detected");
     }
   }
 
@@ -166,7 +166,7 @@ class QMOIEnhancedAlwaysFixAll {
     try {
       await execAsync("npm list --depth=0");
     } catch (error) {
-      throw new Error("Dependency issues detected");
+      throw new ProductionError("Dependency issues detected");
     }
   }
 
@@ -174,12 +174,12 @@ class QMOIEnhancedAlwaysFixAll {
     try {
       await fs.access(".", fs.constants.R_OK | fs.constants.W_OK);
     } catch (error) {
-      throw new Error("Permission issues detected");
+      throw new ProductionError("Permission issues detected");
     }
   }
 
   async fixHealthIssues(failedChecks) {
-    console.log("🔧 Fixing health issues...");
+    logger.info("🔧 Fixing health issues...");
 
     for (const check of failedChecks) {
       if (check.reason.message.includes("Disk space")) {
@@ -197,7 +197,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async cleanupDiskSpace() {
-    console.log("🧹 Cleaning up disk space...");
+    logger.info("🧹 Cleaning up disk space...");
 
     const cleanupTasks = [
       "npm cache clean --force",
@@ -219,7 +219,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async optimizeMemory() {
-    console.log("🧠 Optimizing memory usage...");
+    logger.info("🧠 Optimizing memory usage...");
 
     try {
       await execAsync("node --max-old-space-size=4096");
@@ -229,7 +229,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async fixNetworkIssues() {
-    console.log("🌐 Fixing network issues...");
+    logger.info("🌐 Fixing network issues...");
 
     try {
       await execAsync("npm config set registry https://registry.npmjs.org/");
@@ -239,7 +239,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async fixDependencies() {
-    console.log("📦 Fixing dependencies...");
+    logger.info("📦 Fixing dependencies...");
 
     try {
       await execAsync("npm install --force");
@@ -249,13 +249,13 @@ class QMOIEnhancedAlwaysFixAll {
           "npx rimraf node_modules package-lock.json && npm install",
         );
       } catch (error2) {
-        throw new Error("Failed to fix dependencies");
+        throw new ProductionError("Failed to fix dependencies");
       }
     }
   }
 
   async fixPermissions() {
-    console.log("🔐 Fixing permissions...");
+    logger.info("🔐 Fixing permissions...");
 
     try {
       await execAsync("chmod -R 755 .");
@@ -265,7 +265,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runComprehensiveFix() {
-    console.log("🚀 Starting comprehensive QMOI fix process...");
+    logger.info("🚀 Starting comprehensive QMOI fix process...");
 
     let attempts = 0;
     let lastReport = null;
@@ -274,7 +274,7 @@ class QMOIEnhancedAlwaysFixAll {
 
     while (attempts < this.maxAttempts && !success) {
       attempts++;
-      console.log(`\n📋 Attempt ${attempts}/${this.maxAttempts}`);
+      logger.info(`\n📋 Attempt ${attempts}/${this.maxAttempts}`);
 
       try {
         // Run all fix categories
@@ -293,10 +293,10 @@ class QMOIEnhancedAlwaysFixAll {
         // Check if all issues are resolved
         if (report.summary.failedFixes === 0 && testResults.allPassed) {
           success = true;
-          console.log("✅ All issues resolved successfully!");
+          logger.info("✅ All issues resolved successfully!");
           break;
         } else {
-          console.log(
+          logger.info(
             `⚠️  ${report.summary.failedFixes} fixes failed, ${testResults.failedTests} tests failed`,
           );
           await this.sleep(this.retryDelay);
@@ -323,7 +323,7 @@ class QMOIEnhancedAlwaysFixAll {
       await this.handlePersistentFailure(attempts, logs);
       process.exit(1);
     } else {
-      console.log(
+      logger.info(
         `🎉 QMOI Enhanced Always Fix All completed successfully after ${attempts} attempt(s)`,
       );
       process.exit(0);
@@ -390,32 +390,32 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runJSONFixes() {
-    console.log("🔧 Fixing JSON files...");
+    logger.info("🔧 Fixing JSON files...");
     return await this.autoFix.fixJSONFiles();
   }
 
   async runYAMLFixes() {
-    console.log("🔧 Fixing YAML files...");
+    logger.info("🔧 Fixing YAML files...");
     return await this.autoFix.fixYAMLFiles();
   }
 
   async runBuildFixes() {
-    console.log("🔧 Fixing build issues...");
+    logger.info("🔧 Fixing build issues...");
     return await this.autoFix.fixBuildIssues();
   }
 
   async runDependencyFixes() {
-    console.log("🔧 Fixing dependency issues...");
+    logger.info("🔧 Fixing dependency issues...");
     return await this.autoFix.fixDependencyIssues();
   }
 
   async runConfigurationFixes() {
-    console.log("🔧 Fixing configuration issues...");
+    logger.info("🔧 Fixing configuration issues...");
     return await this.autoFix.fixConfigurationIssues();
   }
 
   async runSecurityFixes() {
-    console.log("🔧 Fixing security issues...");
+    logger.info("🔧 Fixing security issues...");
     const fixes = [];
 
     try {
@@ -440,7 +440,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runPerformanceFixes() {
-    console.log("🔧 Fixing performance issues...");
+    logger.info("🔧 Fixing performance issues...");
     const fixes = [];
 
     try {
@@ -464,7 +464,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runDatabaseFixes() {
-    console.log("🔧 Fixing database issues...");
+    logger.info("🔧 Fixing database issues...");
     const fixes = [];
 
     try {
@@ -488,7 +488,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runAPIFixes() {
-    console.log("🔧 Fixing API issues...");
+    logger.info("🔧 Fixing API issues...");
     const fixes = [];
 
     try {
@@ -512,7 +512,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runGitFixes() {
-    console.log("🔧 Fixing Git issues...");
+    logger.info("🔧 Fixing Git issues...");
     const fixes = [];
 
     try {
@@ -541,7 +541,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runDockerFixes() {
-    console.log("🔧 Fixing Docker issues...");
+    logger.info("🔧 Fixing Docker issues...");
     const fixes = [];
 
     try {
@@ -565,7 +565,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runKubernetesFixes() {
-    console.log("🔧 Fixing Kubernetes issues...");
+    logger.info("🔧 Fixing Kubernetes issues...");
     const fixes = [];
 
     try {
@@ -589,7 +589,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runNetworkFixes() {
-    console.log("🔧 Fixing network issues...");
+    logger.info("🔧 Fixing network issues...");
     const fixes = [];
 
     try {
@@ -613,7 +613,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runPermissionFixes() {
-    console.log("🔧 Fixing permission issues...");
+    logger.info("🔧 Fixing permission issues...");
     const fixes = [];
 
     try {
@@ -636,13 +636,13 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runMemoryFixes() {
-    console.log("🔧 Fixing memory issues...");
+    logger.info("🔧 Fixing memory issues...");
     const fixes = [];
 
     try {
       // Clear Node.js cache
       await execAsync(
-        "node --max-old-space-size=4096 -e \"global.gc && console.log('Memory cleaned')\"",
+        "node --max-old-space-size=4096 -e \"global.gc && logger.info('Memory cleaned')\"",
       );
       fixes.push({
         type: "memory",
@@ -662,7 +662,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runDiskFixes() {
-    console.log("🔧 Fixing disk issues...");
+    logger.info("🔧 Fixing disk issues...");
     const fixes = [];
 
     try {
@@ -685,7 +685,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runSyntaxFixes() {
-    console.log("🔧 Fixing syntax issues...");
+    logger.info("🔧 Fixing syntax issues...");
     const fixes = [];
 
     try {
@@ -709,7 +709,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runRuntimeFixes() {
-    console.log("🔧 Fixing runtime issues...");
+    logger.info("🔧 Fixing runtime issues...");
     const fixes = [];
 
     try {
@@ -787,7 +787,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async runComprehensiveTests() {
-    console.log("🧪 Running comprehensive tests...");
+    logger.info("🧪 Running comprehensive tests...");
 
     const testResults = {
       allPassed: true,
@@ -1074,10 +1074,10 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async fixJSONError(error) {
-    console.log("🔧 Fixing JSON error...");
+    logger.info("🔧 Fixing JSON error...");
     try {
       await execAsync(
-        "find . -name \"*.json\" -exec node -e \"JSON.parse(require('fs').readFileSync('{}', 'utf8'))\" \\;",
+        "find . -name \"*.json\" -exec node -e \"JSON.parse(import('fs').readFileSync('{}', 'utf8'))\" \\;",
       );
     } catch (error) {
       // Continue with other fixes
@@ -1085,7 +1085,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async fixYAMLError(error) {
-    console.log("🔧 Fixing YAML error...");
+    logger.info("🔧 Fixing YAML error...");
     try {
       await execAsync(
         'find . -name "*.yml" -o -name "*.yaml" -exec python3 -c "import yaml; yaml.safe_load(open(\'{}\'))" \\;',
@@ -1096,7 +1096,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async fixBuildError(error) {
-    console.log("🔧 Fixing build error...");
+    logger.info("🔧 Fixing build error...");
     try {
       await execAsync("npm run build -- --no-cache");
     } catch (error) {
@@ -1111,7 +1111,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async fixDependencyError(error) {
-    console.log("🔧 Fixing dependency error...");
+    logger.info("🔧 Fixing dependency error...");
     try {
       await execAsync("npm install --force");
     } catch (error) {
@@ -1126,7 +1126,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async fixNetworkError(error) {
-    console.log("🔧 Fixing network error...");
+    logger.info("🔧 Fixing network error...");
     try {
       await execAsync("npm config set registry https://registry.npmjs.org/");
     } catch (error) {
@@ -1135,7 +1135,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async fixPermissionError(error) {
-    console.log("🔧 Fixing permission error...");
+    logger.info("🔧 Fixing permission error...");
     try {
       await execAsync("chmod -R 755 .");
     } catch (error) {
@@ -1144,7 +1144,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async // production implementation:moryError(error) {
-    console.log("🔧 Fixing memory error...");
+    logger.info("🔧 Fixing memory error...");
     try {
       await execAsync("node --max-old-space-size=4096");
     } catch (error) {
@@ -1153,12 +1153,12 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async fixDiskError(error) {
-    console.log("🔧 Fixing disk error...");
+    logger.info("🔧 Fixing disk error...");
     await this.cleanupDiskSpace();
   }
 
   async fixSyntaxError(error) {
-    console.log("🔧 Fixing syntax error...");
+    logger.info("🔧 Fixing syntax error...");
     try {
       await execAsync("npx eslint . --fix");
     } catch (error) {
@@ -1167,7 +1167,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async fixRuntimeError(error) {
-    console.log("🔧 Fixing runtime error...");
+    logger.info("🔧 Fixing runtime error...");
     try {
       await execAsync("node --trace-warnings");
     } catch (error) {
@@ -1176,7 +1176,7 @@ class QMOIEnhancedAlwaysFixAll {
   }
 
   async fixGenericError(error) {
-    console.log("🔧 Fixing generic error...");
+    logger.info("🔧 Fixing generic error...");
     try {
       await execAsync("npm run fix");
     } catch (error) {
@@ -1243,7 +1243,10 @@ class QMOIEnhancedAlwaysFixAll {
   }
 }
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const fixAll = new QMOIEnhancedAlwaysFixAll();
 
   try {
@@ -1258,12 +1261,12 @@ async function main() {
 
 // Handle process signals
 process.on("SIGINT", async () => {
-  console.log("\n🛑 Received SIGINT, cleaning up...");
+  logger.info("\n🛑 Received SIGINT, cleaning up...");
   process.exit(0);
 });
 
 process.on("SIGTERM", async () => {
-  console.log("\n🛑 Received SIGTERM, cleaning up...");
+  logger.info("\n🛑 Received SIGTERM, cleaning up...");
   process.exit(0);
 });
 

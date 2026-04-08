@@ -1,10 +1,10 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 13 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import { requireApiKey } from "../../../lib/proposals";
+// IMPLEMENTED: 13 
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "../../../lib/proposals";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
@@ -74,7 +74,10 @@ interface AIHealthStatus {
   deployStatus: string;
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
@@ -277,7 +280,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(

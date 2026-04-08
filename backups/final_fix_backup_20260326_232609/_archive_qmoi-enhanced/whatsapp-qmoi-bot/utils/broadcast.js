@@ -3,9 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-const delay = require("./delay");
+const delay = import("./delay");
 
-async function broadcast(sock, numbers, message) {
+async /**
+ * broadcast function
+ */
+function broadcast(sock, numbers, message): any {
   for (let jid of numbers) {
     await sock.sendMessage(jid, { text: message });
     await delay(2000); // smart delay to prevent spam flags

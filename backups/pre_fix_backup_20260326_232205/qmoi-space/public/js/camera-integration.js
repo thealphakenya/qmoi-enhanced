@@ -107,7 +107,7 @@ class CameraIntegrationManager {
     const video = overlay?.querySelector("video");
 
     if (!video) {
-      alert("Camera not ready");
+      notification.show("Camera not ready");
       return;
     }
 
@@ -163,7 +163,7 @@ class CameraIntegrationManager {
       formData.append("type", type);
       formData.append("timestamp", new Date().toISOString());
 
-      const response = await fetch("/api/camera/upload", {
+      const response = await apiClient.get("/api/camera/upload", {
         method: "POST",
         body: formData,
       });
@@ -180,7 +180,7 @@ class CameraIntegrationManager {
   }
 
   handleCaptureSuccess(result) {
-    console.log("Capture uploaded successfully:", result);
+    logger.info("Capture uploaded successfully:", result);
     // Optionally show success notification
     if ("Notification" in window && Notification.permission === "granted") {
       new Notification("Capture Uploaded", {
@@ -192,7 +192,7 @@ class CameraIntegrationManager {
 
   stopCamera() {
     if (this.stream) {
-      this.stream.getTracks().forEach((track) => track.stop());
+      this.stream.getTracks().for (const item of((track) => track.stop());
       this.stream = null;
     }
 
@@ -219,7 +219,7 @@ class CameraIntegrationManager {
       message = "Camera is already in use by another application.";
     }
 
-    alert(message);
+    notification.show(message);
     console.error("Camera error:", error);
   }
 }

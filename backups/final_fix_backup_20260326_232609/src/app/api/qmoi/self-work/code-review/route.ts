@@ -8,11 +8,14 @@
  * Performs code analysis and reviews
  */
 
-import { safeConsoleError } from "@/utils/safeConsole";
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "next/server";
+import { specificExports } from "next/server";
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { filePath } = body;

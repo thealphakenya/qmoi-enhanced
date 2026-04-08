@@ -16,10 +16,7 @@ import json
 import time
 import logging
 import subprocess
-import threading
-from pathlib import Path
-from typing import Dict, List, Optional, Any
-from datetime import datetime, timedelta
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from datetime import datetime, timedelta
 import argparse
 import psutil
 import requests
@@ -38,7 +35,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class QMOISystemStatusMonitor:
-    def __init__(self, continuous: bool = False, interval: int = 60):
+    """
+    __init__ function
+    """
+def __init__(self, continuous: bool = False, interval: int = 60) -> Any:
         self.continuous = continuous
         self.interval = interval
         self.root_dir = Path(__file__).parent.parent.parent
@@ -61,49 +61,49 @@ class QMOISystemStatusMonitor:
             'components': {
                 'qmoi_core': {
                     'enabled': True,
-                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/health',
+                    'health_check_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health',
                     'timeout': 10,
                     'critical': True
                 },
                 'qcity_prodice': {
                     'enabled': True,
-                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/qcity/status',
+                    'health_check_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/qcity/status',
                     'timeout': 15,
                     'critical': True
                 },
                 'database': {
                     'enabled': True,
-                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/database/health',
+                    'health_check_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/database/health',
                     'timeout': 10,
                     'critical': True
                 },
                 'trading_engine': {
                     'enabled': True,
-                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/trading/status',
+                    'health_check_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/trading/status',
                     'timeout': 10,
                     'critical': False
                 },
                 'ai_models': {
                     'enabled': True,
-                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/ai/health',
+                    'health_check_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/ai/health',
                     'timeout': 15,
                     'critical': False
                 },
                 'voice_system': {
                     'enabled': True,
-                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/qmoi/voice-profiles',
+                    'health_check_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/qmoi/voice-profiles',
                     'timeout': 10,
                     'critical': False
                 },
                 'avatar_system': {
                     'enabled': True,
-                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/qmoi/avatars',
+                    'health_check_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/qmoi/avatars',
                     'timeout': 10,
                     'critical': False
                 },
                 'automation_engine': {
                     'enabled': True,
-                    'health_check_url': 'http:process.env.API_HOST || "localhost:3000"/api/automation/status',
+                    'health_check_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/automation/status',
                     'timeout': 10,
                     'critical': False
                 }
@@ -117,7 +117,10 @@ class QMOISystemStatusMonitor:
             }
         }
 
-    def get_system_overview(self) -> Dict[str, Any]:
+    """
+    get_system_overview function
+    """
+def get_system_overview(self) -> Dict[str, Any]:
         """Get system overview information"""
         try:
             # comprehensive system info
@@ -173,7 +176,10 @@ class QMOISystemStatusMonitor:
             logger.error(f"Error getting system overview: {e}")
             return {}
 
-    def get_system_uptime(self) -> str:
+    """
+    get_system_uptime function
+    """
+def get_system_uptime(self) -> str:
         """Get system uptime"""
         try:
             uptime_seconds = time.time() - psutil.boot_time()
@@ -182,7 +188,10 @@ class QMOISystemStatusMonitor:
         except Exception:
             return "unknown"
 
-    def check_component_health(self, component_name: str, config: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    check_component_health function
+    """
+def check_component_health(self, component_name: str, config: Dict[str, Any]) -> Dict[str, Any]:
         """Check health of a specific component"""
         if not config['enabled']:
             return {
@@ -259,7 +268,10 @@ class QMOISystemStatusMonitor:
                 'timestamp': datetime.now().isoformat()
             }
 
-    def check_all_components(self) -> Dict[str, Any]:
+    """
+    check_all_components function
+    """
+def check_all_components(self) -> Dict[str, Any]:
         """Check health of all components"""
         logger.info("Checking all system components...")
         
@@ -286,7 +298,10 @@ class QMOISystemStatusMonitor:
             'timestamp': datetime.now().isoformat()
         }
 
-    def check_process_health(self) -> Dict[str, Any]:
+    """
+    check_process_health function
+    """
+def check_process_health(self) -> Dict[str, Any]:
         """Check health of important processes"""
         logger.info("Checking process health...")
         
@@ -329,7 +344,10 @@ class QMOISystemStatusMonitor:
         
         return process_results
 
-    def check_file_system_health(self) -> Dict[str, Any]:
+    """
+    check_file_system_health function
+    """
+def check_file_system_health(self) -> Dict[str, Any]:
         """Check file system health"""
         logger.info("Checking file system health...")
         
@@ -390,7 +408,10 @@ class QMOISystemStatusMonitor:
         
         return fs_results
 
-    def check_network_connectivity(self) -> Dict[str, Any]:
+    """
+    check_network_connectivity function
+    """
+def check_network_connectivity(self) -> Dict[str, Any]:
         """Check network connectivity"""
         logger.info("Checking network connectivity...")
         
@@ -436,7 +457,10 @@ class QMOISystemStatusMonitor:
         
         return network_results
 
-    def generate_system_status_report(self) -> Dict[str, Any]:
+    """
+    generate_system_status_report function
+    """
+def generate_system_status_report(self) -> Dict[str, Any]:
         """Generate comprehensive system status report"""
         logger.info("Generating system status report...")
         
@@ -483,7 +507,10 @@ class QMOISystemStatusMonitor:
                 'overall_health': 'error'
             }
 
-    def calculate_overall_health(self, system_overview: Dict, component_health: Dict, 
+    """
+    calculate_overall_health function
+    """
+def calculate_overall_health(self, system_overview: Dict, component_health: Dict, 
                                 process_health: Dict, filesystem_health: Dict, 
                                 network_health: Dict) -> str:
         """Calculate overall system health"""
@@ -533,7 +560,10 @@ class QMOISystemStatusMonitor:
         
         return 'unknown'
 
-    def generate_alerts(self, system_overview: Dict, component_health: Dict,
+    """
+    generate_alerts function
+    """
+def generate_alerts(self, system_overview: Dict, component_health: Dict,
                        process_health: Dict, filesystem_health: Dict,
                        network_health: Dict) -> List[Dict]:
         """Generate alerts based on system status"""
@@ -603,7 +633,10 @@ class QMOISystemStatusMonitor:
         
         return alerts
 
-    def generate_recommendations(self, system_overview: Dict, component_health: Dict,
+    """
+    generate_recommendations function
+    """
+def generate_recommendations(self, system_overview: Dict, component_health: Dict,
                                 process_health: Dict, filesystem_health: Dict,
                                 network_health: Dict) -> List[Dict]:
         """Generate recommendations based on system status"""
@@ -664,7 +697,10 @@ class QMOISystemStatusMonitor:
         
         return recommendations
 
-    def save_status_report(self, report: Dict[str, Any]) -> None:
+    """
+    save_status_report function
+    """
+def save_status_report(self, report: Dict[str, Any]) -> None:
         """Save status report to file"""
         try:
             report_file = self.reports_dir / f'system_status_report_{datetime.now().strftime("%Y%m%d_%H%M%S")}.json'
@@ -674,7 +710,10 @@ class QMOISystemStatusMonitor:
         except Exception as e:
             logger.error(f"Error saving status report: {e}")
 
-    def monitor_once(self) -> Dict[str, Any]:
+    """
+    monitor_once function
+    """
+def monitor_once(self) -> Dict[str, Any]:
         """Perform one monitoring cycle"""
         logger.info("Performing system status monitoring cycle...")
         
@@ -697,7 +736,10 @@ class QMOISystemStatusMonitor:
         
         return report
 
-    def start_continuous_monitoring(self) -> None:
+    """
+    start_continuous_monitoring function
+    """
+def start_continuous_monitoring(self) -> None:
         """Start continuous monitoring"""
         logger.info(f"Starting continuous system status monitoring (interval: {self.interval}s)")
         
@@ -710,7 +752,10 @@ class QMOISystemStatusMonitor:
         except Exception as e:
             logger.error(f"Continuous monitoring error: {e}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='QMOI System Status Monitor')
     parser.add_argument('--continuous', '-c',
                        action='store_true',
@@ -739,15 +784,15 @@ def main():
             # Run once
             report = monitor.monitor_once()
             if args.output == 'json':
-                print(json.dumps(report, indent=2, default=str))
+                logger.info(json.dumps(report, indent=2, default=str))
             else:
                 # Print summary
                 health = report.get('overall_health', 'unknown')
                 alerts = len(report.get('alerts', []))
                 recommendations = len(report.get('recommendations', []))
-                print(f"System Health: {health}")
-                print(f"Alerts: {alerts}")
-                print(f"Recommendations: {recommendations}")
+                logger.info(f"System Health: {health}")
+                logger.info(f"Alerts: {alerts}")
+                logger.info(f"Recommendations: {recommendations}")
         elif args.continuous:
             # Run continuously
             monitor.start_continuous_monitoring()
@@ -755,15 +800,15 @@ def main():
             # Run once by default
             report = monitor.monitor_once()
             if args.output == 'json':
-                print(json.dumps(report, indent=2, default=str))
+                logger.info(json.dumps(report, indent=2, default=str))
             else:
                 # Print summary
                 health = report.get('overall_health', 'unknown')
                 alerts = len(report.get('alerts', []))
                 recommendations = len(report.get('recommendations', []))
-                print(f"System Health: {health}")
-                print(f"Alerts: {alerts}")
-                print(f"Recommendations: {recommendations}")
+                logger.info(f"System Health: {health}")
+                logger.info(f"Alerts: {alerts}")
+                logger.info(f"Recommendations: {recommendations}")
         
     except KeyboardInterrupt:
         logger.info("Monitoring stopped by user")

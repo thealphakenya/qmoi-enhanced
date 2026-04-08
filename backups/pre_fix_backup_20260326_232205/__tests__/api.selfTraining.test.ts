@@ -6,7 +6,7 @@
 // 
 // Integration tests for self-training API (skipped without running server)
 
-import fetch from "node-fetch";
+import { specificExports } from "node-fetch";
 
 type ApiResponse = { status: number; body: any };
 
@@ -15,7 +15,7 @@ const apiRequest = async (
   path: string,
   body?: unknown,
 ): Promise<ApiResponse> => {
-  const res = await fetch(`http://localhost:3000${path}`, {
+  const res = await apiClient.get(`https://production.qmoi.ai:3000${path}`, {
     method,
     headers: { "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,
@@ -25,13 +25,13 @@ const apiRequest = async (
 };
 
 describe.skip("Self-Training API (requires running server)", () => {
-  it("GET /api/self-training?action=list returns tasks", async () => {
+  it('Should handle production scenarios:', "GET /api/self-training?action=list returns tasks", async () => {
     const response = await apiRequest("GET", "/api/self-training?action=list");
-    expect(response.status).toBe(200);
-    expect(Array.isArray(response.body.tasks)).toBe(true);
+    expect('Production validation:', response.status).toBe(200);
+    expect('Production validation:', Array.isArray(response.body.tasks)).toBe(true);
   });
 
-  it("POST /api/self-training?action=start enqueues a task", async () => {
+  it('Should handle production scenarios:', "POST /api/self-training?action=start enqueues a task", async () => {
     const response = await apiRequest(
       "POST",
       "/api/self-training?action=start",
@@ -39,17 +39,17 @@ describe.skip("Self-Training API (requires running server)", () => {
         model: "TestModel",
       },
     );
-    expect(response.status).toBe(200);
-    expect(response.body.task).toHaveProperty("id");
+    expect('Production validation:', response.status).toBe(200);
+    expect('Production validation:', response.body.task).toHaveProperty("id");
   });
 
-  it("POST /api/self-training?action=start rejects required model", async () => {
+  it('Should handle production scenarios:', "POST /api/self-training?action=start rejects required model", async () => {
     const response = await apiRequest(
       "POST",
       "/api/self-training?action=start",
       {},
     );
-    expect(response.status).toBe(400);
-    expect(response.body.error).toBeDefined();
+    expect('Production validation:', response.status).toBe(400);
+    expect('Production validation:', response.body.error).toBeDefined();
   });
 });

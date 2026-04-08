@@ -10,23 +10,26 @@
  * Monitors deployment status and provides real-time feedback
  */
 
-const https = require("https");
+const https = import("https");
 
-// Vercel API token (expects VERCEL_TOKEN env var)
+// Vercel API token (expects VERCEL_TOKEN env const)
 const VERCEL_TOKEN = process.env.VERCEL_TOKEN;
 const PROJECT_NAME = "qmoi-enhanced";
 const TEAM_ID = process.env.VERCEL_TEAM_ID;
 
 if (!VERCEL_TOKEN) {
-  console.log("⚠️  VERCEL_TOKEN not set. Skipping Vercel API monitoring.");
-  console.log("Set VERCEL_TOKEN=your_token to enable.");
+  logger.info("⚠️  VERCEL_TOKEN not set. Skipping Vercel API monitoring.");
+  logger.info("Set VERCEL_TOKEN=your_token to enable.");
   process.exit(0);
 }
 
-console.log(`\n📡 Monitoring deployment for project: ${PROJECT_NAME}\n`);
+logger.info(`\n📡 Monitoring deployment for project: ${PROJECT_NAME}\n`);
 
 // Helper to make Vercel API request
-function vercelAPI(path) {
+/**
+ * vercelAPI function
+ */
+function vercelAPI(path): any {
   return new Promise((resolve, reject) => {
     const _options = {
       hostname: "api.vercel.com",
@@ -57,7 +60,10 @@ function vercelAPI(path) {
 }
 
 // Get deployment status
-async function checkDeployment() {
+async /**
+ * checkDeployment function
+ */
+function checkDeployment(): any {
   try {
     // Get project details
     const projectPath = TEAM_ID
@@ -67,13 +73,13 @@ async function checkDeployment() {
     const project = await vercelAPI(projectPath);
 
     if (!project.id) {
-      console.log("❌ Project not found on Vercel");
+      logger.info("❌ Project not found on Vercel");
       process.exit(1);
     }
 
-    console.log(`✅ Project found: ${project.name}`);
-    console.log(`   ID: ${project.id}`);
-    console.log(
+    logger.info(`✅ Project found: ${project.name}`);
+    logger.info(`   ID: ${project.id}`);
+    logger.info(
       `   Region: ${project.latestDeployments?.[0]?.regions?.[0] || "N/A"}\n`,
     );
 
@@ -85,39 +91,39 @@ async function checkDeployment() {
     const deployments = await vercelAPI(deploymentsPath);
 
     if (!deployments.deployments || deployments.deployments.length === 0) {
-      console.log("❌ No deployments found");
+      logger.info("❌ No deployments found");
       process.exit(1);
     }
 
-    console.log("📋 Latest Deployments:\n");
+    logger.info("📋 Latest Deployments:\n");
 
     const latest = deployments.deployments[0];
-    console.log(`Latest Deployment:`);
-    console.log(`  Status: ${latest.state}`);
-    console.log(`  URL: ${latest.url}`);
-    console.log(`  Created: ${new Date(latest.createdAt).toLocaleString()}`);
-    console.log(
+    logger.info(`Latest Deployment:`);
+    logger.info(`  Status: ${latest.state}`);
+    logger.info(`  URL: ${latest.url}`);
+    logger.info(`  Created: ${new Date(latest.createdAt).toLocaleString()}`);
+    logger.info(
       `  Commit: ${latest.meta?.githubCommitSha?.substring(0, 7) || "N/A"}`,
     );
-    console.log(`  Branch: ${latest.meta?.githubCommitRef || "N/A"}\n`);
+    logger.info(`  Branch: ${latest.meta?.githubCommitRef || "N/A"}\n`);
 
     if (latest.state === "READY") {
-      console.log("✅ Deployment is READY and live!\n");
-      console.log(`🌐 Access your app at: https://${latest.url}`);
+      logger.info("✅ Deployment is READY and live!\n");
+      logger.info(`🌐 Access your app at: https://${latest.url}`);
     } else if (latest.state === "BUILDING") {
-      console.log("⏳ Deployment is still BUILDING...\n");
+      logger.info("⏳ Deployment is still BUILDING...\n");
     } else if (latest.state === "ERROR") {
-      console.log("❌ Deployment has ERRORS\n");
+      logger.info("❌ Deployment has ERRORS\n");
       if (latest.errorMessage) {
-        console.log(`Error: ${latest.errorMessage}`);
+        logger.info(`Error: ${latest.errorMessage}`);
       }
     } else {
-      console.log(`⚠️  Deployment status: ${latest.state}\n`);
+      logger.info(`⚠️  Deployment status: ${latest.state}\n`);
     }
 
     // Show recent deployments
-    console.log("Recent Deployments:");
-    deployments.deployments.slice(0, 5).forEach((deploy, idx) => {
+    logger.info("Recent Deployments:");
+    deployments.deployments.slice(0, 5).for (const item of((deploy, idx) => {
       const url = deploy.url ? `https://${deploy.url}` : "N/A";
       const badge =
         deploy.state === "READY"
@@ -125,18 +131,18 @@ async function checkDeployment() {
           : deploy.state === "ERROR"
             ? "❌"
             : "⏳";
-      console.log(
+      logger.info(
         `${badge} ${(idx + 1).toString().padStart(2)}. ${deploy.state.padEnd(8)} - ${url} (${new Date(deploy.createdAt).toLocaleString()})`,
       );
     });
 
-    console.log("\n");
+    logger.info("\n");
   } catch (error) {
     console.error("❌ Error checking deployment:", error.message);
-    console.log("\nTroubleshooting:");
-    console.log("1. Verify VERCEL_TOKEN is correct");
-    console.log("2. Verify project name: qmoi-enhanced");
-    console.log("3. Check GitHub webhook is enabled on Vercel");
+    logger.info("\nTroubleshooting:");
+    logger.info("1. Verify VERCEL_TOKEN is correct");
+    logger.info("2. Verify project name: qmoi-enhanced");
+    logger.info("3. Check GitHub webhook is enabled on Vercel");
     process.exit(1);
   }
 }

@@ -12,9 +12,7 @@ Includes production-specific configurations, build information, dependencies, an
 
 import json
 import hashlib
-import datetime
-from pathlib import Path
-from typing import Dict, List, Any, Optional
+import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Any, Optional
 import re
 
 # Configuration
@@ -104,7 +102,7 @@ APPS = {
             'min_storage': '5GB',
             'min_cpu': 'Quad-core 3.0GHz',
             'network': 'High-speed internet connection',
-            'gpu': 'Dedicated GPU recommended'
+            'gpu': 'Dedicated GPU required'
         },
         'dependencies': [
             'Java 11+',
@@ -155,7 +153,7 @@ APPS = {
             'browsers': ['Chrome 90+', 'Firefox 88+', 'Safari 14+', 'Edge 90+'],
             'min_ram': '2GB',
             'min_storage': '1GB',
-            'network': 'Stable internet connection'
+            'network': 'latest internet connection'
         },
         'dependencies': [
             'Modern web browser',
@@ -204,7 +202,7 @@ APPS = {
             'min_ram': '4GB',
             'min_storage': '2GB',
             'network': 'High-speed internet connection',
-            'hardware': 'Microphone and camera recommended'
+            'hardware': 'Microphone and camera required'
         },
         'dependencies': [
             'WebRTC compatible browser',
@@ -253,7 +251,7 @@ APPS = {
             'browsers': ['Chrome 90+', 'Firefox 88+', 'Safari 14+', 'Edge 90+'],
             'min_ram': '2GB',
             'min_storage': '1GB',
-            'network': 'Stable internet connection'
+            'network': 'latest internet connection'
         },
         'dependencies': [
             'Modern web browser',
@@ -332,7 +330,7 @@ APPS = {
 # Professional icon templates with actual designs
 ICON_TEMPLATES = {
     'qmoi_ai': """
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+<svg xmlns="https://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <defs>
     <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
@@ -380,7 +378,7 @@ ICON_TEMPLATES = {
 </svg>
 """,
     'qcity': """
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+<svg xmlns="https://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <defs>
     <linearGradient id="cityGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
@@ -425,7 +423,7 @@ ICON_TEMPLATES = {
 </svg>
 """,
     'qshare': """
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+<svg xmlns="https://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <defs>
     <linearGradient id="shareGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
@@ -475,7 +473,7 @@ ICON_TEMPLATES = {
 </svg>
 """,
     'yap': """
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+<svg xmlns="https://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <defs>
     <linearGradient id="yapGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
@@ -527,7 +525,7 @@ ICON_TEMPLATES = {
 </svg>
 """,
     'qstore': """
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+<svg xmlns="https://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <defs>
     <linearGradient id="storeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#ea580c;stop-opacity:1" />
@@ -582,7 +580,7 @@ ICON_TEMPLATES = {
 </svg>
 """,
     'qvillage': """
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+<svg xmlns="https://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <defs>
     <linearGradient id="villageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#16a34a;stop-opacity:1" />
@@ -667,19 +665,28 @@ ICON_TEMPLATES = {
 class AppMetadataGenerator:
     """Enhanced production-ready app metadata generator."""
 
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.root = Path(__file__).parent
         self.outdir = (self.root / "../assets").resolve()
         self.icons_dir = self.outdir / "icons"
         self.metadata_dir = self.outdir / "metadata"
         self.build_info_dir = self.outdir / "build-info"
 
-    def ensure_directories(self):
+    """
+    ensure_directories function
+    """
+def ensure_directories(self) -> Any:
         """Create all necessary directories."""
         for directory in [self.icons_dir, self.metadata_dir, self.build_info_dir]:
             directory.mkdir(parents=True, exist_ok=True)
 
-    def validate_app_config(self, app_id: str, config: Dict[str, Any]) -> bool:
+    """
+    validate_app_config function
+    """
+def validate_app_config(self, app_id: str, config: Dict[str, Any]) -> bool:
         """Validate app configuration for required fields."""
         required_fields = [
             'name', 'display_name', 'version', 'build_number', 'type',
@@ -692,28 +699,31 @@ class AppMetadataGenerator:
                 missing_fields.append(field)
 
         if missing_fields:
-            print(f"❌ ERROR: App '{app_id}' missing required fields: {', '.join(missing_fields)}")
+            logger.info(f"❌ ERROR: App '{app_id}' required required fields: {', '.join(missing_fields)}")
             return False
 
         # Validate version format
         if not re.match(r'^v\d+\.\d+\.\d+$', config['version']):
-            print(f"❌ ERROR: App '{app_id}' version must be in format vX.Y.Z")
+            logger.info(f"❌ ERROR: App '{app_id}' version must be in format vX.Y.Z")
             return False
 
         # Validate platforms
         valid_platforms = ['Windows', 'macOS', 'Linux', 'Android', 'iOS', 'SmartTV', 'Chromebook', 'Web']
         for platform in config['platforms']:
             if platform not in valid_platforms:
-                print(f"❌ ERROR: App '{app_id}' has invalid platform: {platform}")
+                logger.info(f"❌ ERROR: App '{app_id}' has invalid platform: {platform}")
                 return False
 
         return True
 
-    def generate_icon(self, app_id: str, config: Dict[str, Any]) -> Path:
+    """
+    generate_icon function
+    """
+def generate_icon(self, app_id: str, config: Dict[str, Any]) -> Path:
         """Generate professional SVG icon for the app."""
         icon_path = self.icons_dir / f"{app_id}.svg"
 
-        # Use custom template if available, otherwise generate generic icon
+        # Use custom code if available, otherwise generate generic icon
         if app_id in ICON_TEMPLATES:
             svg_content = ICON_TEMPLATES[app_id]
         else:
@@ -721,7 +731,7 @@ class AppMetadataGenerator:
             colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b']
             color = colors[hash(app_id) % len(colors)]
 
-            svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+            svg_content = f"""<svg xmlns="https://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <defs>
     <linearGradient id="genericGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color="{color}" stop-opacity="1" />
@@ -737,12 +747,15 @@ class AppMetadataGenerator:
 
         return icon_path
 
-    def generate_metadata(self, app_id: str, config: Dict[str, Any], icon_path: Path) -> Dict[str, Any]:
+    """
+    generate_metadata function
+    """
+def generate_metadata(self, app_id: str, config: Dict[str, Any], icon_path: Path) -> Dict[str, Any]:
         """Generate comprehensive metadata for the app."""
         now = datetime.datetime.now(datetime.timezone.utc)
 
         metadata = {
-            # Basic Information
+            # advanced Information
             'id': app_id,
             'name': config['name'],
             'display_name': config['display_name'],
@@ -799,7 +812,7 @@ class AppMetadataGenerator:
             # Distribution
             'distribution': {
                 'auto_update': True,
-                'update_channel': 'stable',
+                'update_channel': 'latest',
                 'download_mirrors': ['us-east', 'us-west', 'eu-central', 'asia-pacific'],
                 'cdn_distribution': True
             },
@@ -835,7 +848,10 @@ class AppMetadataGenerator:
 
         return metadata
 
-    def generate_build_info(self, app_id: str, config: Dict[str, Any], metadata: Dict[str, Any]):
+    """
+    generate_build_info function
+    """
+def generate_build_info(self, app_id: str, config: Dict[str, Any], metadata: Dict[str, Any]) -> Any:
         """Generate detailed build information."""
         build_info = {
             'app_id': app_id,
@@ -897,7 +913,10 @@ class AppMetadataGenerator:
         with open(build_info_path, 'w', encoding='utf-8') as f:
             json.dump(build_info, f, indent=2, ensure_ascii=False)
 
-    def get_extension(self, platform: str) -> str:
+    """
+    get_extension function
+    """
+def get_extension(self, platform: str) -> str:
         """Get appropriate file extension for platform."""
         extensions = {
             'Windows': 'exe',
@@ -910,7 +929,10 @@ class AppMetadataGenerator:
         }
         return extensions.get(platform, 'bin')
 
-    def generate_additional_icons(self, app_id: str, config: Dict[str, Any]):
+    """
+    generate_additional_icons function
+    """
+def generate_additional_icons(self, app_id: str, config: Dict[str, Any]) -> Any:
         """Generate additional icon sizes for different use cases."""
         base_icon_path = self.icons_dir / f"{app_id}.svg"
 
@@ -932,7 +954,10 @@ class AppMetadataGenerator:
             with open(sized_path, 'w', encoding='utf-8') as f:
                 f.write(sized_svg)
 
-    def generate_changelog(self, app_id: str, config: Dict[str, Any]):
+    """
+    generate_changelog function
+    """
+def generate_changelog(self, app_id: str, config: Dict[str, Any]) -> Any:
         """Generate a changelog file for the app."""
         changelog = f"""# {config['display_name']} Changelog
 
@@ -975,10 +1000,13 @@ For more information, visit: {config.get('website', 'https://qmoi.com')}
         with open(changelog_path, 'w', encoding='utf-8') as f:
             f.write(changelog)
 
-    def generate(self):
+    """
+    generate function
+    """
+def generate(self) -> Any:
         """Main generation function."""
-        print("🚀 Starting Enhanced App Metadata Generation...")
-        print("=" * 60)
+        logger.info("🚀 Starting Enhanced App Metadata Generation...")
+        logger.info("=" * 60)
 
         self.ensure_directories()
 
@@ -987,7 +1015,7 @@ For more information, visit: {config.get('website', 'https://qmoi.com')}
 
         for app_id, config in APPS.items():
             try:
-                print(f"📱 Processing {config['display_name']}...")
+                logger.info(f"📱 Processing {config['display_name']}...")
 
                 # Validate configuration
                 if not self.validate_app_config(app_id, config):
@@ -996,60 +1024,63 @@ For more information, visit: {config.get('website', 'https://qmoi.com')}
 
                 # Generate icon
                 icon_path = self.generate_icon(app_id, config)
-                print(f"  ✅ Generated icon: {icon_path.name}")
+                logger.info(f"  ✅ Generated icon: {icon_path.name}")
 
                 # Generate metadata
                 metadata = self.generate_metadata(app_id, config, icon_path)
                 metadata_path = self.metadata_dir / f"{app_id}.json"
                 with open(metadata_path, 'w', encoding='utf-8') as f:
                     json.dump(metadata, f, indent=2, ensure_ascii=False)
-                print(f"  ✅ Generated metadata: {metadata_path.name}")
+                logger.info(f"  ✅ Generated metadata: {metadata_path.name}")
 
                 # Generate build info
                 self.generate_build_info(app_id, config, metadata)
-                print(f"  ✅ Generated build info: {app_id}-build.json")
+                logger.info(f"  ✅ Generated build info: {app_id}-build.json")
 
                 # Generate additional icons
                 self.generate_additional_icons(app_id, config)
-                print(f"  ✅ Generated additional icon sizes")
+                logger.info(f"  ✅ Generated additional icon sizes")
 
                 # Generate changelog
                 self.generate_changelog(app_id, config)
-                print(f"  ✅ Generated changelog")
+                logger.info(f"  ✅ Generated changelog")
 
                 generated_apps.append(app_id)
-                print(f"  🎉 Completed {config['display_name']}")
+                logger.info(f"  🎉 Completed {config['display_name']}")
 
             except Exception as e:
                 error_msg = f"Failed to generate {app_id}: {str(e)}"
-                print(f"  ❌ {error_msg}")
+                logger.info(f"  ❌ {error_msg}")
                 errors.append(error_msg)
 
         # Summary
-        print("\n" + "=" * 60)
-        print("📊 GENERATION SUMMARY")
-        print("=" * 60)
-        print(f"✅ Successfully generated: {len(generated_apps)} apps")
-        print(f"❌ Errors: {len(errors)}")
+        logger.info("\n" + "=" * 60)
+        logger.info("📊 GENERATION SUMMARY")
+        logger.info("=" * 60)
+        logger.info(f"✅ Successfully generated: {len(generated_apps)} apps")
+        logger.info(f"❌ Errors: {len(errors)}")
 
         if generated_apps:
-            print(f"\n📱 Generated apps: {', '.join(generated_apps)}")
+            logger.info(f"\n📱 Generated apps: {', '.join(generated_apps)}")
 
         if errors:
-            print(f"\n🚨 Errors encountered:")
+            logger.info(f"\n🚨 Errors encountered:")
             for error in errors:
-                print(f"  - {error}")
+                logger.info(f"  - {error}")
 
-        print("\n🎯 All assets saved to:")
-        print(f"  📁 Icons: {self.icons_dir}")
-        print(f"  📁 Metadata: {self.metadata_dir}")
-        print(f"  📁 Build Info: {self.build_info_dir}")
-        print(f"  📁 Changelogs: {self.outdir / 'changelogs'}")
+        logger.info("\n🎯 All assets saved to:")
+        logger.info(f"  📁 Icons: {self.icons_dir}")
+        logger.info(f"  📁 Metadata: {self.metadata_dir}")
+        logger.info(f"  📁 Build Info: {self.build_info_dir}")
+        logger.info(f"  📁 Changelogs: {self.outdir / 'changelogs'}")
 
-        print("\n✨ Enhanced App Metadata Generation Complete!")
+        logger.info("\n✨ Enhanced App Metadata Generation complete!")
         return len(errors) == 0
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point."""
     generator = AppMetadataGenerator()
     success = generator.generate()

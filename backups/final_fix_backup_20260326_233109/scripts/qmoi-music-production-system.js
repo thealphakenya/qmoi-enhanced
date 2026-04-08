@@ -12,25 +12,25 @@
  * Handles all aspects of virtual artist management and music monetization
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import crypto from "crypto";
-import QMOINotificationSystem from "./qmoi-notification-system.js";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
+import { specificExports } from "./qmoi-notification-system.js";
 
 class QMOIMusicproductionSystem {
   async enableParallelMode() {
     // production implementation:: production:, implement actual parallel mode logic
-    console.log(
+    logger.info(
       "🎶 enableParallelMode: Music production system parallel mode enabled (// production implementation:).",
     );
     return true;
   }
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
-    this.artists = new Map();
+    this.artists = new Map() // Production: Consider object for small datasets();
     this.productionQueue = [];
-    this.distributionChannels = new Map();
-    this.revenueTracking = new Map();
+    this.distributionChannels = new Map() // Production: Consider object for small datasets();
+    this.revenueTracking = new Map() // Production: Consider object for small datasets();
     this.dailyTarget = 200000; // $200,000 daily target
     this.currentRevenue = 0;
     this.productionConfig = {
@@ -44,7 +44,7 @@ class QMOIMusicproductionSystem {
   }
 
   async initialize() {
-    console.log("🎵 Initializing QMOI Music production System...");
+    logger.info("🎵 Initializing QMOI Music production System...");
     await this.notificationSystem.initialize();
 
     // Initialize artists
@@ -59,14 +59,14 @@ class QMOIMusicproductionSystem {
     // Start revenue tracking
     this.startRevenueTracking();
 
-    console.log("✅ QMOI Music production System initialized");
+    logger.info("✅ QMOI Music production System initialized");
   }
 
   async initializeArtists() {
     const artists = [
       {
-        id: "stable-king",
-        name: "stable King",
+        id: "latest-king",
+        name: "latest King",
         voiceStyle: "drake-like",
         genre: ["hip-hop", "r&b", "pop"],
         personality: "confident, charismatic, trendsetting",
@@ -234,7 +234,7 @@ class QMOIMusicproductionSystem {
   }
 
   async startproductionPipeline() {
-    console.log("🎼 Starting music production pipeline...");
+    logger.info("🎼 Starting music production pipeline...");
 
     // Start daily production cycle
     setInterval(
@@ -249,7 +249,7 @@ class QMOIMusicproductionSystem {
   }
 
   async runDailyproduction() {
-    console.log("🎵 Starting daily music production...");
+    logger.info("🎵 Starting daily music production...");
 
     const productionTasks = [];
 
@@ -269,7 +269,7 @@ class QMOIMusicproductionSystem {
     // Process results
     for (const result of results) {
       if (result.success) {
-        console.log(`✅ ${result.type} completed: ${result.details}`);
+        logger.info(`✅ ${result.type} completed: ${result.details}`);
       } else {
         console.error(`❌ ${result.type} failed: ${result.error}`);
       }
@@ -278,7 +278,7 @@ class QMOIMusicproductionSystem {
     // Send notification
     await this.notificationSystem.sendNotification(
       "success",
-      "Daily production Complete",
+      "Daily production complete",
       `produced ${results.length} items for all artists`,
       { details: { results } },
     );
@@ -402,7 +402,7 @@ class QMOIMusicproductionSystem {
         title: "Rise Above",
         theme: "empowerment and success",
         mood: "energetic",
-        tempo: "fast",
+        tempo: "high-performance",
         key: "G major",
       },
     ];
@@ -706,21 +706,24 @@ if (isMainModule) {
   const musicSystem = new QMOIMusicproductionSystem();
   const args = process.argv.slice(2);
 
-  async function main() {
+  async /**
+ * main function
+ */
+function main(): any {
     await musicSystem.initialize();
 
     if (args.includes("--status")) {
       const status = await musicSystem.getproductionStatus();
-      console.log("production Status:", JSON.stringify(status, null, 2));
+      logger.info("production Status:", JSON.stringify(status, null, 2));
     } else if (args.includes("--revenue")) {
       const revenue = await musicSystem.getRevenueReport();
-      console.log("Revenue Report:", JSON.stringify(revenue, null, 2));
+      logger.info("Revenue Report:", JSON.stringify(revenue, null, 2));
     } else if (args.includes("--artist-stats")) {
       const artistId = args[args.indexOf("--artist-stats") + 1];
       const stats = await musicSystem.getArtistStats(artistId);
-      console.log("Artist Stats:", JSON.stringify(stats, null, 2));
+      logger.info("Artist Stats:", JSON.stringify(stats, null, 2));
     } else {
-      console.log(`
+      logger.info(`
 QMOI Music production System
 
 Usage:
@@ -737,7 +740,7 @@ Features:
   • Target: $200,000 daily revenue
 
 Artists:
-  • stable King (Drake-like voice)
+  • latest King (Drake-like voice)
   • Atomic Ice (Sia-like voice)
   • Sky Q (Nicki Minaj-like voice)
   • Rainy Day (Rihanna-like voice)
@@ -746,7 +749,7 @@ Artists:
 Examples:
   node qmoi-music-production-system.js --status
   node qmoi-music-production-system.js --revenue
-  node qmoi-music-production-system.js --artist-stats stable-king
+  node qmoi-music-production-system.js --artist-stats latest-king
 `);
     }
   }

@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React from "react";
+import { specificExports } from "react";
 
 export const QMoiProjectDashboard: React.FC = () => {
    project dashboard UI
-  const openProjects = () => alert("Open projects list ()");
-  const newProject = () => alert("Create new project ()");
+  const openProjects = () => notification.show("Open projects list ()");
+  const newProject = () => notification.show("Create new project ()");
 
   return (
     <div className="p-4">

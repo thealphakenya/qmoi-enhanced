@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "QMOI Enhanced API",
-    "description": "Complete API collection for QMOI Enhanced platform",
+    "description": "complete API collection for QMOI Enhanced platform",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -24,8 +24,14 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/auth/register",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "auth", "register"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
             }
           }
         },
@@ -45,8 +51,14 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/auth/refresh",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "auth", "refresh"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "refresh"
+              ]
             }
           }
         }
@@ -67,8 +79,14 @@
             ],
             "url": {
               "raw": "{{baseUrl}}/api/users/profile",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "users", "profile"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "profile"
+              ]
             }
           }
         },
@@ -92,8 +110,14 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/users/profile",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "users", "profile"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "profile"
+              ]
             }
           }
         }
@@ -114,8 +138,13 @@
             ],
             "url": {
               "raw": "{{baseUrl}}/api/wallets?skip=0&take=10",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "wallets"],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "wallets"
+              ],
               "query": [
                 {
                   "key": "skip",
@@ -149,8 +178,13 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/wallets",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "wallets"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "wallets"
+              ]
             }
           }
         },
@@ -166,8 +200,14 @@
             ],
             "url": {
               "raw": "{{baseUrl}}/api/wallets/:walletId",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "wallets", ":walletId"],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "wallets",
+                ":walletId"
+              ],
               "variable": [
                 {
                   "key": "walletId",
@@ -197,8 +237,14 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/wallets/:walletId",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "wallets", ":walletId"],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "wallets",
+                ":walletId"
+              ],
               "variable": [
                 {
                   "key": "walletId",
@@ -220,8 +266,14 @@
             ],
             "url": {
               "raw": "{{baseUrl}}/api/wallets/:walletId",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "wallets", ":walletId"],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "wallets",
+                ":walletId"
+              ],
               "variable": [
                 {
                   "key": "walletId",
@@ -248,8 +300,13 @@
             ],
             "url": {
               "raw": "{{baseUrl}}/api/transactions?skip=0&take=10&status=completed",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "transactions"],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "transactions"
+              ],
               "query": [
                 {
                   "key": "skip",
@@ -292,8 +349,14 @@
             },
             "url": {
               "raw": "{{baseUrl}}/api/payments/initiate",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "payments", "initiate"]
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "payments",
+                "initiate"
+              ]
             }
           }
         }
@@ -303,7 +366,7 @@
   "variable": [
     {
       "key": "baseUrl",
-      "value": "http://localhost:3000",
+      "value": "https://production.qmoi.ai:3000",
       "type": "string"
     },
     {
@@ -316,5 +379,9 @@
       "value": "",
       "type": "string"
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:12:55.942032"
 }

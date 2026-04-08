@@ -8,10 +8,10 @@
  * Autonomous evolution of cloned platforms
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { platformEvolutionEngine } from '@/qmoi/core/evolution/platform-evolution';
-import { verifyMasterRole } from '@/utils/auth';
-import { consoleLog } from '@/utils/console-logger';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/qmoi/core/evolution/platform-evolution';
+import { specificExports } from '@/utils/auth';
+import { specificExports } from '@/utils/console-logger';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -19,7 +19,10 @@ export const revalidate = 0;
 /**
  * GET - Get all platform evolution status
  */
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const status = platformEvolutionEngine.getEvolutionStatus();
 
@@ -40,7 +43,10 @@ export async function GET(request: NextRequest) {
 /**
  * POST - Register platform for evolution
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { platformMetrics, action } = body;

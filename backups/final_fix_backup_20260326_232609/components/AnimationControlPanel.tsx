@@ -6,9 +6,9 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Play, Pause, RotateCcw, Settings, Zap, Wind } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "framer-motion";
+import { specificExports } from "lucide-react";
 
 interface AnimationConfig {
   type: string;
@@ -267,7 +267,7 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           className={`${containerClass} bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden`}
           style={{
-            background: `var(--gradient-background)`,
+            background: `const(--gradient-background)`,
           }}
         >
           {/* Header */}
@@ -282,12 +282,12 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
               >
                 <Zap
                   className="w-5 h-5"
-                  style={{ color: "var(--color-accent)" }}
+                  style={{ color: "const(--color-accent)" }}
                 />
               </motion.div>
               <h3
                 className="text-lg font-bold"
-                style={{ color: "var(--color-text)" }}
+                style={{ color: "const(--color-text)" }}
               >
                 Animation Control
               </h3>
@@ -297,12 +297,12 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
             {selectedAnimation && (
               <div
                 className="text-sm p-2 rounded bg-slate-800 mt-2"
-                style={{ color: "var(--color-text-muted)" }}
+                style={{ color: "const(--color-text-muted)" }}
               >
                 <p className="text-xs opacity-70">Current Animation</p>
                 <p
                   className="font-semibold"
-                  style={{ color: "var(--color-accent)" }}
+                  style={{ color: "const(--color-accent)" }}
                 >
                   {selectedAnimation.description}
                 </p>
@@ -325,12 +325,12 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                   style={{
                     background:
                       expandedCategory === category
-                        ? "var(--color-primary)"
+                        ? "const(--color-primary)"
                         : "transparent",
                     color:
                       expandedCategory === category
-                        ? "var(--color-background)"
-                        : "var(--color-text)",
+                        ? "const(--color-background)"
+                        : "const(--color-text)",
                   }}
                 >
                   <span className="font-semibold text-sm">{category}</span>
@@ -366,8 +366,8 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                           style={{
                             borderColor:
                               selectedAnimation?.type === animation.type
-                                ? "var(--color-accent)"
-                                : "var(--color-border)",
+                                ? "const(--color-accent)"
+                                : "const(--color-border)",
                             background:
                               selectedAnimation?.type === animation.type
                                 ? "rgba(0, 255, 165, 0.1)"
@@ -378,7 +378,7 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                             <div>
                               <p
                                 className="text-sm font-medium"
-                                style={{ color: "var(--color-text)" }}
+                                style={{ color: "const(--color-text)" }}
                               >
                                 {animation.description}
                               </p>
@@ -386,7 +386,7 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                                 <span
                                   className="text-xs px-2 py-0.5 rounded bg-slate-700"
                                   style={{
-                                    color: "var(--color-text-muted)",
+                                    color: "const(--color-text-muted)",
                                   }}
                                 >
                                   Speed: {animation.speed}x
@@ -394,7 +394,7 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                                 <span
                                   className="text-xs px-2 py-0.5 rounded bg-slate-700"
                                   style={{
-                                    color: "var(--color-text-muted)",
+                                    color: "const(--color-text-muted)",
                                   }}
                                 >
                                   Power:{" "}
@@ -423,13 +423,13 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
               <div className="flex items-center justify-between mb-2">
                 <label
                   className="text-sm font-medium"
-                  style={{ color: "var(--color-text)" }}
+                  style={{ color: "const(--color-text)" }}
                 >
                   Speed Multiplier
                 </label>
                 <span
                   className="text-xs font-mono px-2 py-0.5 rounded bg-slate-800"
-                  style={{ color: "var(--color-accent)" }}
+                  style={{ color: "const(--color-accent)" }}
                 >
                   {speedMultiplier.toFixed(1)}x
                 </span>
@@ -443,7 +443,7 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                 onChange={(e) => setSpeedMultiplier(parseFloat(e.target.value))}
                 className="w-full h-1 rounded-lg cursor-pointer"
                 style={{
-                  accentColor: "var(--color-accent)",
+                  accentColor: "const(--color-accent)",
                 }}
               />
             </div>
@@ -453,13 +453,13 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
               <div className="flex items-center justify-between mb-2">
                 <label
                   className="text-sm font-medium"
-                  style={{ color: "var(--color-text)" }}
+                  style={{ color: "const(--color-text)" }}
                 >
                   Animation Intensity
                 </label>
                 <span
                   className="text-xs font-mono px-2 py-0.5 rounded bg-slate-800"
-                  style={{ color: "var(--color-accent)" }}
+                  style={{ color: "const(--color-accent)" }}
                 >
                   {(intensityMultiplier * 100).toFixed(0)}%
                 </span>
@@ -475,7 +475,7 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                 }
                 className="w-full h-1 rounded-lg cursor-pointer"
                 style={{
-                  accentColor: "var(--color-accent)",
+                  accentColor: "const(--color-accent)",
                 }}
               />
             </div>
@@ -489,10 +489,10 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                   onChange={(e) => setIsAutoLoop(e.target.checked)}
                   className="w-4 h-4 rounded"
                   style={{
-                    accentColor: "var(--color-accent)",
+                    accentColor: "const(--color-accent)",
                   }}
                 />
-                <span style={{ color: "var(--color-text)" }}>
+                <span style={{ color: "const(--color-text)" }}>
                   Auto-loop Animations
                 </span>
               </label>
@@ -505,7 +505,7 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                 >
                   <label
                     className="text-xs"
-                    style={{ color: "var(--color-text-muted)" }}
+                    style={{ color: "const(--color-text-muted)" }}
                   >
                     Loop Interval (ms)
                   </label>
@@ -518,7 +518,7 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                     onChange={(e) => setAutoLoopDelay(parseInt(e.target.value))}
                     className="w-full px-3 py-1 rounded bg-slate-800 border border-slate-700 text-sm"
                     style={{
-                      color: "var(--color-text)",
+                      color: "const(--color-text)",
                     }}
                   />
                 </motion.div>
@@ -534,9 +534,9 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                 className="flex-1 py-2 rounded-lg font-medium flex items-center justify-center gap-2 transition"
                 style={{
                   background: isPlaying
-                    ? "var(--gradient-accent)"
-                    : "var(--gradient-primary)",
-                  color: "var(--color-background)",
+                    ? "const(--gradient-accent)"
+                    : "const(--gradient-primary)",
+                  color: "const(--color-background)",
                 }}
               >
                 {isPlaying ? (
@@ -555,8 +555,8 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
                 onClick={resetToDefaults}
                 className="flex-1 py-2 rounded-lg font-medium flex items-center justify-center gap-2 transition border-2"
                 style={{
-                  borderColor: "var(--color-primary)",
-                  color: "var(--color-primary)",
+                  borderColor: "const(--color-primary)",
+                  color: "const(--color-primary)",
                 }}
               >
                 <RotateCcw className="w-4 h-4" /> Reset
@@ -570,8 +570,8 @@ export const AnimationControlPanel: React.FC<AnimationControlPanelProps> = ({
               onClick={applyAnimationModifiers}
               className="w-full py-2 rounded-lg font-medium transition"
               style={{
-                background: "var(--gradient-primary)",
-                color: "var(--color-background)",
+                background: "const(--gradient-primary)",
+                color: "const(--color-background)",
               }}
             >
               Apply Settings

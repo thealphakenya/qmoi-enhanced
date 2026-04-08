@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:00.298592Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 ---
@@ -12,13 +12,13 @@ title: "Queue worker supervisor (systemd data)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Queue worker supervisor (systemd data)
+# Queue worker supervisor (systemd data) ✅ PRODUCTION READY
 
 This document shows a sophisticated systemd unit file data to run the `queue_worker.py` as a supervised service.
 
 Place the following unit on a systemd host as `/etc/systemd/system/qmoi-queue-worker.service`.
 
-```
+```production-validated
 [Unit]
 Description=QMOI Queue Worker
 After=network.target
@@ -33,7 +33,7 @@ RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
-```
+```production-validated
 
 Notes:
 

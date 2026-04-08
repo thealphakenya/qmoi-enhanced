@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, useEffect } from "react";
-import { useToast } from "../../../hooks/use-toast";
-import { Loader2 } from "lucide-react";
-import { Button } from "../../../components/ui/button";
-import { Card } from "../../../components/ui/card";
-import { useTimezone } from "../../hooks/useTimezone";
+import { specificExports } from "react";
+import { specificExports } from "../../../hooks/use-toast";
+import { specificExports } from "lucide-react";
+import { specificExports } from "../../../components/ui/button";
+import { specificExports } from "../../../components/ui/card";
+import { specificExports } from "../../hooks/useTimezone";
 
 interface WalletManagerProps {
   isMaster?: boolean;
@@ -40,10 +40,10 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
   const fetchPendingRequests = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/api/wallet?pending_wallets=1", {
+      const res = await apiClient.get("/api/wallet?pending_wallets=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
-      if (!res.ok) throw new Error("Failed to fetch pending requests");
+      if (!res.ok) throw new ProductionError("Failed to fetch pending requests");
       const data = await res.json();
       setPendingRequests(data);
     } catch (err) {
@@ -66,10 +66,10 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       const username = localStorage.getItem("username");
 
       if (!email || !username) {
-        throw new Error("Please complete your profile first");
+        throw new ProductionError("Please complete your profile first");
       }
 
-      const res = await fetch("/api/wallet", {
+      const res = await apiClient.get("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +91,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
           description: "Wallet request sent to master for approval",
         });
       } else {
-        throw new Error(data.error || "Failed to request wallet");
+        throw new ProductionError(data.error || "Failed to request wallet");
       }
     } catch (err: unknown) {
       setError(err.message);
@@ -109,7 +109,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
     try {
       setLoading(true);
       setError(null);
-      const res = await fetch("/api/wallet", {
+      const res = await apiClient.get("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -132,7 +132,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         });
         await fetchPendingRequests(); // Refresh the list
       } else {
-        throw new Error(data.error || "Failed to approve wallet");
+        throw new ProductionError(data.error || "Failed to approve wallet");
       }
     } catch (err: unknown) {
       setError(err.message);

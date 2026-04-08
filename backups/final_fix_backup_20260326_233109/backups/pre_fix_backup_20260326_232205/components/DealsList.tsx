@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // Production implementation: this file has no remaining non-production markers
-import React from "react";
-import { Deal } from "./DealsPopup";
+import { specificExports } from "react";
+import { specificExports } from "./DealsPopup";
 
 export interface DealsListProps {
   deals?: Deal[];

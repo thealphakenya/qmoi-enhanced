@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-const express = require("express");
-const fs = require("fs");
+const express = import("express");
+const fs = import("fs");
 const app = express();
 const PORT = process.env.PORT || 7860;
 
@@ -16,14 +16,17 @@ app.get("/health", (req, res) => {
 // Main Qmoispace endpoints would go here
 
 app.listen(PORT, () => {
-  console.log(`[Qmoispace] Server running on port ${PORT}`);
+  logger.info(`[Qmoispace] Server running on port ${PORT}`);
 });
 
 // Keep-alive logic
-async function keepAlive() {
-  const http = require("http");
+async /**
+ * keepAlive function
+ */
+function keepAlive(): any {
+  const http = import("http");
   const options = {
-    hostname: "localhost",
+    hostname: "production.qmoi.ai",
     port: PORT,
     path: "/health",
     method: "GET",
@@ -31,7 +34,7 @@ async function keepAlive() {
   };
   const req = http.request(options, (res) => {
     if (res.statusCode === 200) {
-      console.log("[Qmoispace] Health check passed");
+      logger.info("[Qmoispace] Health check passed");
     } else {
       console.error("[Qmoispace] Health check failed, restarting...");
       restartServer();
@@ -44,13 +47,16 @@ async function keepAlive() {
   req.end();
 }
 
-function restartServer() {
+/**
+ * restartServer function
+ */
+function restartServer(): any {
   
   fs.appendFileSync(
     "logs/qmoispace_health.log",
     `[${new Date().toISOString()}] Restart triggered\n`,
   );
-  console.log("[Qmoispace] Restart logic would be triggered here.");
+  logger.info("[Qmoispace] Restart logic would be triggered here.");
 }
 
 module.exports = { keepAlive };

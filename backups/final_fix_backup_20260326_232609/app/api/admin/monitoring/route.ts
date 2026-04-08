@@ -3,18 +3,21 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import authService from "@/lib/auth/service";
-import { db } from "@/lib/db/prisma";
-import { monitor } from "@/lib/monitoring/performance";
-import { errorTracker } from "@/lib/monitoring/error-tracker";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/monitoring/performance";
+import { specificExports } from "@/lib/monitoring/error-tracker";
 
 /**
  * GET /api/admin/monitoring
  * Get comprehensive monitoring dashboard data
  * Admin only
  */
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -105,7 +108,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-function calculateHealthScore(monitoring: Record<string, unknown>): number {
+/**
+ * calculateHealthScore function
+ */
+function calculateHealthScore(monitoring: Record<string, unknown>): any: number {
   let score = 100;
 
   // Check memory usage (safe access)

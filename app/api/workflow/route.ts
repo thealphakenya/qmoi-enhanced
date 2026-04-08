@@ -3,13 +3,16 @@
 // Last evolution cycle: 2026-04-03T10:00:00Z
 // Evolution features: autonomous workflow orchestration, real-time updates, AI-powered sync
 
-import { NextRequest, NextResponse } from 'next/server';
-import { workflowEngine } from '@/lib/workflow-engine';
-import { autosyncService } from '@/lib/autosync-service';
-import { qmoiTracksService } from '@/lib/tracks-service';
-import { realtimeSystem } from '@/lib/realtime-system';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/lib/workflow-engine';
+import { specificExports } from '@/lib/autosync-service';
+import { specificExports } from '@/lib/tracks-service';
+import { specificExports } from '@/lib/realtime-system';
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
@@ -65,7 +68,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, ...params } = body;
@@ -240,7 +246,10 @@ export async function POST(request: NextRequest) {
 }
 
 // WebSocket endpoint for real-time workflow updates
-export async function websocketHandler(ws: WebSocket) {
+export async /**
+ * websocketHandler function
+ */
+function websocketHandler(ws: WebSocket): any {
   // This would be handled by the realtime system
   // For now, delegate to realtime system
   await realtimeSystem.handleWebSocketConnection(ws, 'workflow-updates');

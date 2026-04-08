@@ -3,15 +3,18 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { QMOIService } from "@/lib/qmoi-service";
-import { transcribeAudioFile as transcribeHelper } from "../../../../lib/transcribe";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-service";
+import { specificExports } from "../../../../lib/transcribe";
 
 /**
  * Audio/Voice Message Processing
  * Handles audio transcription and processing
  */
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   try {
     const formData = await req.formData();
     const audio = formData.get("audio") as File;

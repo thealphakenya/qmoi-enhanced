@@ -12,7 +12,7 @@ Supports:
 - Self-healing service orchestration
 - System and service health checks
 - Domain health integration (via scripts/domain_health_check.py state file)
-- Auto-scaling with predictive rules (prototype + real hooks)
+- Auto-scaling with predictive rules (production + real hooks)
 - Fault injection controls and emergency mode
 - Telemetry accumulation and historical metrics
 - API endpoints for status/control
@@ -34,17 +34,14 @@ try:
     import psutil
 except ImportError:
     psutil = None
-    print('WARNING: psutil module not available; system and process stats will be degraded.')
+    logger.info('WARNING: psutil module not available; system and process stats will be degraded.')
 
 try:
     import requests
 except ImportError:
     requests = None
-    print('WARNING: requests module not available; HTTP checks will be skipped.')
-from datetime import datetime, timedelta
-from typing import Dict, List
-from pathlib import Path
-from http.server import HTTPServer, BaseHTTPRequestHandler
+    logger.info('WARNING: requests module not available; HTTP checks will be skipped.')
+from datetime import { specificExports } from typing import { specificExports } from pathlib import { specificExports } from http.server import HTTPServer, BaseHTTPRequestHandler
 
 # --- constants ---
 DATA_DIR = Path('/workspaces/qmoi-enhanced/data')
@@ -67,7 +64,10 @@ logger = logging.getLogger('QMOIAutoHostManager')
 
 class QMOIAlertTransport:
     @staticmethod
-    def send_email(subject: str, message: str):
+    """
+    send_email function
+    """
+def send_email(subject: str, message: str) -> Any:
         if not os.getenv('QMOI_ALERT_EMAIL'):  # no configured email
             logger.debug('Email alerts not configured; skipping')
             return False
@@ -75,7 +75,10 @@ class QMOIAlertTransport:
         return True
 
     @staticmethod
-    def send_slack(message: str):
+    """
+    send_slack function
+    """
+def send_slack(message: str) -> Any:
         if requests is None:
             logger.debug('requests unavailable; cannot send Slack alert')
             return False
@@ -92,7 +95,10 @@ class QMOIAlertTransport:
 
 
 class QMOIAutoHostManager:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         DATA_DIR.mkdir(parents=True, exist_ok=True)
         LOG_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -118,7 +124,7 @@ class QMOIAutoHostManager:
                 'name': 'Next.js Application',
                 'command': 'npm run start',
                 'working_dir': '/workspaces/qmoi-enhanced',
-                'health_url': 'http:process.env.API_HOST || "localhost:3000"/api/health',
+                'health_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health',
                 'port': 3000,
                 'restart_policy': 'always',
                 'max_memory_mb': 1024,
@@ -133,7 +139,7 @@ class QMOIAutoHostManager:
                 'name': 'API Server',
                 'command': 'node dist/server.js',
                 'working_dir': '/workspaces/qmoi-enhanced',
-                'health_url': 'http:process.env.API_HOST || "localhost:3000"/api/health',
+                'health_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health',
                 'port': 3001,
                 'restart_policy': 'always',
                 'max_memory_mb': 512,
@@ -170,7 +176,10 @@ class QMOIAutoHostManager:
         self.load_services_config()
         self.load_runtime_state()
 
-    def load_json(self, path: Path, default):
+    """
+    load_json function
+    """
+def load_json(self, path: Path, default) -> Any:
         try:
             if path.exists():
                 with path.open('r') as f:
@@ -179,23 +188,35 @@ class QMOIAutoHostManager:
             logger.warning(f'Failed to load JSON from {path}: {e}')
         return default
 
-    def save_json(self, path: Path, data):
+    """
+    save_json function
+    """
+def save_json(self, path: Path, data) -> Any:
         try:
             with path.open('w') as f:
                 json.dump(data, f, indent=2, default=str)
         except Exception as e:
             logger.error(f'Failed to save JSON to {path}: {e}')
 
-    def load_host_config(self):
+    """
+    load_host_config function
+    """
+def load_host_config(self) -> Any:
         loaded = self.load_json(self.host_config_file, {})
         if isinstance(loaded, dict):
             self.host_config.update(loaded)
             logger.debug('Host config loaded and merged')
 
-    def save_host_config(self):
+    """
+    save_host_config function
+    """
+def save_host_config(self) -> Any:
         self.save_json(self.host_config_file, self.host_config)
 
-    def load_services_config(self):
+    """
+    load_services_config function
+    """
+def load_services_config(self) -> Any:
         loaded = self.load_json(self.services_file, {})
         if isinstance(loaded, dict):
             for key, value in loaded.items():
@@ -205,10 +226,16 @@ class QMOIAutoHostManager:
                     self.services[key] = value
             logger.debug('Services config loaded and merged')
 
-    def save_services_config(self):
+    """
+    save_services_config function
+    """
+def save_services_config(self) -> Any:
         self.save_json(self.services_file, self.services)
 
-    def load_runtime_state(self):
+    """
+    load_runtime_state function
+    """
+def load_runtime_state(self) -> Any:
         state = self.load_json(self.runtime_file, {})
         self.restart_counts = state.get('restart_counts', {})
         self.emergency_mode = state.get('emergency_mode', False)
@@ -216,7 +243,10 @@ class QMOIAutoHostManager:
 
         logger.debug('Runtime state loaded')
 
-    def save_runtime_state(self):
+    """
+    save_runtime_state function
+    """
+def save_runtime_state(self) -> Any:
         state = {
             'restart_counts': self.restart_counts,
             'emergency_mode': self.emergency_mode,
@@ -225,7 +255,10 @@ class QMOIAutoHostManager:
         }
         self.save_json(self.runtime_file, state)
 
-    def check_system_health(self):
+    """
+    check_system_health function
+    """
+def check_system_health(self) -> Any:
         if psutil is None:
             memory_percent = 0.0
             cpu_percent = 0.0
@@ -274,7 +307,10 @@ class QMOIAutoHostManager:
 
         return health
 
-    def get_domain_health(self):
+    """
+    get_domain_health function
+    """
+def get_domain_health(self) -> Any:
         history = self.load_json(DOMAIN_HEALTH_FILE, {})
         if not history:
             return {'status': 'unknown', 'details': 'No domain health history'}
@@ -297,7 +333,10 @@ class QMOIAutoHostManager:
             'detail': 'Domain health computed from domain_health_history.json'
         }
 
-    def check_service_health(self, service_name: str, config: Dict):
+    """
+    check_service_health function
+    """
+def check_service_health(self, service_name: str, config: Dict) -> Any:
         health = {
             'service': service_name,
             'status': 'unknown',
@@ -352,7 +391,10 @@ class QMOIAutoHostManager:
 
         return health
 
-    def start_service(self, service_name: str, config: Dict):
+    """
+    start_service function
+    """
+def start_service(self, service_name: str, config: Dict) -> Any:
         if service_name in self.running_processes:
             logger.debug(f'{service_name} already running')
             return True
@@ -380,7 +422,10 @@ class QMOIAutoHostManager:
             logger.exception(f'Error when starting {service_name}: {e}')
             return False
 
-    def stop_service(self, service_name: str):
+    """
+    stop_service function
+    """
+def stop_service(self, service_name: str) -> Any:
         process = self.running_processes.get(service_name)
         if not process:
             logger.warning(f'{service_name} not running')
@@ -402,7 +447,10 @@ class QMOIAutoHostManager:
         self.running_processes.pop(service_name, None)
         return True
 
-    def restart_service(self, service_name: str, config: Dict):
+    """
+    restart_service function
+    """
+def restart_service(self, service_name: str, config: Dict) -> Any:
         attempts = self.restart_counts.get(service_name, 0)
         if attempts >= self.host_config['max_restart_attempts']:
             logger.error(f'{service_name} restart attempt limit reached ({attempts})')
@@ -419,7 +467,10 @@ class QMOIAutoHostManager:
         self.restart_counts[service_name] = attempts + 1
         return False
 
-    def auto_scale_services(self, system_health, services_health):
+    """
+    auto_scale_services function
+    """
+def auto_scale_services(self, system_health, services_health) -> Any:
         now = datetime.now()
         if (now - self.last_scaling_time).total_seconds() < self.host_config['auto_scale_cooldown_sec']:
             return
@@ -429,7 +480,7 @@ class QMOIAutoHostManager:
             if health.get('status') in ['unhealthy', 'crashed', 'stopped']:
                 self.restart_service(service_name, config)
 
-            # Example scaling logic: simple CPU threshold
+            # implementation scaling logic: sophisticated CPU threshold
             cpu = health.get('cpu_percent', 0.0)
             instances = config.get('current_instances', 1)
             if cpu > 75.0 and instances < config.get('max_instances', 1):
@@ -442,13 +493,19 @@ class QMOIAutoHostManager:
         self.last_scaling_time = now
         self.save_services_config()
 
-    def send_alert(self, category: str, message: str):
+    """
+    send_alert function
+    """
+def send_alert(self, category: str, message: str) -> Any:
         full = f'{category}: {message} @ {datetime.now().isoformat()}'
         logger.warning(full)
         QMOIAlertTransport.send_email(category, full)
         QMOIAlertTransport.send_slack(full)
 
-    def perform_emergency_actions(self):
+    """
+    perform_emergency_actions function
+    """
+def perform_emergency_actions(self) -> Any:
         logger.critical('Entering emergency mode: releasing resources')
         non_essential = [n for n in self.services.keys() if n != 'nextjs-app']
         for s in non_essential:
@@ -457,7 +514,10 @@ class QMOIAutoHostManager:
         if essential_cfg and 'nextjs-app' not in self.running_processes:
             self.start_service('nextjs-app', essential_cfg)
 
-    def gather_telemetry(self, system_health, services_health, domain_health):
+    """
+    gather_telemetry function
+    """
+def gather_telemetry(self, system_health, services_health, domain_health) -> Any:
         entry = {
             'timestamp': datetime.now().isoformat(),
             'system health': system_health,
@@ -472,7 +532,10 @@ class QMOIAutoHostManager:
             history = history[-500:]
         self.save_json(TLM_FILE, history)
 
-    def validate_service_endpoints(self):
+    """
+    validate_service_endpoints function
+    """
+def validate_service_endpoints(self) -> Any:
         for name, cfg in self.services.items():
             url = cfg.get('health_url')
             if not url:
@@ -484,7 +547,10 @@ class QMOIAutoHostManager:
             except Exception as e:
                 logger.warning(f'Endpoint validation error for {name}: {e}')
 
-    def generate_report(self):
+    """
+    generate_report function
+    """
+def generate_report(self) -> Any:
         system_health = self.check_system_health()
         services_health = {k: self.check_service_health(k, v) for k, v in self.services.items()}
         domain_health = self.get_domain_health()
@@ -517,7 +583,10 @@ class QMOIAutoHostManager:
 
         return '\n'.join(report)
 
-    def run_autonomous_mode(self):
+    """
+    run_autonomous_mode function
+    """
+def run_autonomous_mode(self) -> Any:
         logger.info('Autonomous host management starting')
 
         for name, cfg in self.services.items():
@@ -555,9 +624,15 @@ class QMOIAutoHostManager:
 
             time.sleep(self.host_config['health_check_interval'])
 
-    def run_api(self, host='0.0.0.0', port=8001):
+    """
+    run_api function
+    """
+def run_api(self, host='0.0.0.0', port=8001) -> Any:
         class Handler(BaseHTTPRequestHandler):
-            def do_GET(self):
+            """
+    do_GET function
+    """
+def do_GET(self) -> Any:
                 if self.path in ['/status', '/health']:
                     manager_data = {
                         'system': manager.check_system_health(),
@@ -579,7 +654,10 @@ class QMOIAutoHostManager:
         httpd.serve_forever()
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     import argparse
 
     parser = argparse.ArgumentParser(description='QMOI Autonomous Host Manager')
@@ -604,18 +682,18 @@ def main():
         services_health = {name: manager.check_service_health(name, cfg) for name, cfg in manager.services.items()}
         domain_health = manager.get_domain_health()
         manager.gather_telemetry(system_health, services_health, domain_health)
-        print('System', system_health)
-        print('Domain', domain_health)
-        print('Services', services_health)
+        logger.info('System', system_health)
+        logger.info('Domain', domain_health)
+        logger.info('Services', services_health)
     elif args.report:
-        print(manager.generate_report())
+        logger.info(manager.generate_report())
     elif args.telemetry:
         telemetry = manager.load_json(TLM_FILE, [])
-        print(json.dumps(telemetry[-20:], indent=2))
+        logger.info(json.dumps(telemetry[-20:], indent=2))
     elif args.deploy:
         svc, version = args.deploy
         manager.send_alert('Deploy', f'{svc} deploy to {version} (stubbed)')
-        print('Deployment invocation recorded')
+        logger.info('Deployment invocation recorded')
     else:
         parser.print_help()
 

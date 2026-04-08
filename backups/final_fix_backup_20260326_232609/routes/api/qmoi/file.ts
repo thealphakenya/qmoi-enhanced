@@ -3,14 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const SAFE_ROOT = path.join(process.cwd(), "Qmoi_downloaded_apps");
 const AUDIT_LOG = path.join(process.cwd(), "qmoi_file_audit.log");
 
-function logAudit(entry: Record<string, any>) {
+/**
+ * logAudit function
+ */
+function logAudit(entry: Record<string, any>): any {
   try {
     fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + "\n", "utf-8");
   } catch (e) {
@@ -22,15 +25,22 @@ function logAudit(entry: Record<string, any>) {
   }
 }
 
-function isPathSafe(requestPath: string) {
+/**
+ * isPathSafe function
+ */
+function isPathSafe(requestPath: string): any {
   const normalized = path.normalize(requestPath);
   return (
     normalized.startsWith(SAFE_ROOT + path.sep) || normalized === SAFE_ROOT
   );
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Simple token-based admin auth (set ADMIN_TOKEN in env)
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(req: NextApiRequest, res: NextApiResponse) {
+  // sophisticated token-based admin auth (set ADMIN_TOKEN in env)
   const adminToken = process.env.ADMIN_TOKEN || "";
   const provided =
     (req.headers["x-admin-token"] as string) ||

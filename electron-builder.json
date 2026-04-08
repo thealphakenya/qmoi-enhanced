@@ -1,23 +1,45 @@
 {
   "appId": "com.qmoi.ai",
   "productName": "QMOI AI",
-  "files": ["main.js", "public/**/*", "package.json", "icon.ico"],
+  "files": [
+    "main.js",
+    "public/**/*",
+    "package.json",
+    "icon.ico"
+  ],
   "directories": {
     "output": "Qmoi_apps/windows"
   },
   "win": {
     "target": [
-      { "target": "nsis", "arch": ["x64", "ia32"] },
-      { "target": "portable", "arch": ["x64"] }
+      {
+        "target": "nsis",
+        "arch": [
+          "x64",
+          "ia32"
+        ]
+      },
+      {
+        "target": "portable",
+        "arch": [
+          "x64"
+        ]
+      }
     ],
     "icon": "icon.ico"
   },
   "linux": {
-    "target": ["AppImage", "deb"],
+    "target": [
+      "AppImage",
+      "deb"
+    ],
     "icon": "icon.png"
   },
   "mac": {
-    "target": ["dmg", "zip"],
+    "target": [
+      "dmg",
+      "zip"
+    ],
     "icon": "icon.icns"
   },
   "nsis": {
@@ -36,6 +58,10 @@
   "publish": {
     "provider": "github",
     "owner": "thestablekenya",
-    "repo": "stable-Q-ai"
-  }
+    "repo": "latest-Q-ai"
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:30.346777"
 }

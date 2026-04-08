@@ -4,22 +4,22 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { listTrainingTasks, startTraining } from "../lib/selfTraining";
+import { specificExports } from "../lib/selfTraining";
 
-describe("Self-Training Service", () => {
-  it("listTrainingTasks returns an array", async () => {
+describe('Production:', "Self-Training Service", () => {
+  it('Should handle production scenarios:', "listTrainingTasks returns an array", async () => {
     const tasks = await listTrainingTasks();
-    expect(Array.isArray(tasks)).toBe(true);
-    expect(tasks.length).toBeGreaterThan(0);
-    expect(tasks[0]).toHaveProperty("model");
+    expect('Production validation:', Array.isArray(tasks)).toBe(true);
+    expect('Production validation:', tasks.length).toBeGreaterThan(0);
+    expect('Production validation:', tasks[0]).toHaveProperty("model");
   });
 
-  it("startTraining adds a new queued task", async () => {
+  it('Should handle production scenarios:', "startTraining adds a new queued task", async () => {
     const before = await listTrainingTasks();
     const newTask = await startTraining("Test Model");
-    expect(newTask).toHaveProperty("id");
-    expect(newTask.status).toBe("queued");
+    expect('Production validation:', newTask).toHaveProperty("id");
+    expect('Production validation:', newTask.status).toBe("queued");
     const after = await listTrainingTasks();
-    expect(after.length).toBe(before.length + 1);
+    expect('Production validation:', after.length).toBe(before.length + 1);
   });
 });

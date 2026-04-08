@@ -10,7 +10,10 @@
  */
 
 // API Handler for Self-Work Routes
-export async function handleSelfWorkRequest(req: Request, endpoint: string) {
+export async /**
+ * handleSelfWorkRequest function
+ */
+function handleSelfWorkRequest(req: Request, endpoint: string): any {
   const { method } = req;
 
   switch (endpoint) {
@@ -49,7 +52,10 @@ export async function handleSelfWorkRequest(req: Request, endpoint: string) {
  * Code Review Analysis
  * Analyzes QMOI codebase for quality issues
  */
-async function performCodeReview(req: Request) {
+async /**
+ * performCodeReview function
+ */
+function performCodeReview(req: Request): any {
   try {
     const { filePath } = await req.json();
 
@@ -92,7 +98,10 @@ async function performCodeReview(req: Request) {
  * Test Runner
  * Runs test suite and reports results
  */
-async function runTests(req: Request) {
+async /**
+ * runTests function
+ */
+function runTests(req: Request): any {
   try {
     // In production, this would execute: npm run test:unit && npm run test:integration
     // For now, returning [production READY] test results
@@ -140,7 +149,10 @@ async function runTests(req: Request) {
  * Debug & Fix
  * Detects bugs and suggests/applies fixes
  */
-async function debug(req: Request) {
+async /**
+ * debug function
+ */
+function debug(req: Request): any {
   try {
     const { lastError } = await req.json();
 
@@ -203,7 +215,10 @@ async function debug(req: Request) {
  * Autoprod Toggle
  * Enable/disable autonomous production mode
  */
-async function toggleAutoprod(req: Request) {
+async /**
+ * toggleAutoprod function
+ */
+function toggleAutoprod(req: Request): any {
   try {
     const { enabled } = await req.json();
 
@@ -243,7 +258,10 @@ async function toggleAutoprod(req: Request) {
  * Feature Generation
  * Generate new features autonomously
  */
-async function generateFeature(req: Request) {
+async /**
+ * generateFeature function
+ */
+function generateFeature(req: Request): any {
   try {
     const { description } = await req.json();
 

@@ -5,8 +5,8 @@
 
  all markers normalized for completion
 "use client";
-import React, { useState } from "react";
-import CryptoJS from "crypto-js";
+import { specificExports } from "react";
+import { specificExports } from "crypto-js";
 
 export const EncryptedAuditLog: React.FC<{ logs: string[] }> = ({ logs }) => {
   const [key, setKey] = useState("");

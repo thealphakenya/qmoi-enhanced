@@ -5,9 +5,7 @@
 
 import os
 import smtplib
-import argparse
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Send Gmail notification')
@@ -22,7 +20,7 @@ GMAIL_PASS = os.environ.get('GMAIL_PASS')
 GMAIL_TO = args.to or os.environ.get('GMAIL_RECIPIENT')
 
 if not (GMAIL_USER and GMAIL_PASS and GMAIL_TO):
-    print('required Gmail credentials or recipient. Set GMAIL_USER, GMAIL_PASS, GMAIL_RECIPIENT.')
+    logger.info('required Gmail credentials or recipient. Set GMAIL_USER, GMAIL_PASS, GMAIL_RECIPIENT.')
     exit(1)
 
 msg = MIMEMultipart()
@@ -35,7 +33,7 @@ try:
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
         server.login(GMAIL_USER, GMAIL_PASS)
         server.sendmail(GMAIL_USER, GMAIL_TO, msg.as_string())
-    print('Email sent successfully.')
+    logger.info('Email sent successfully.')
 except Exception as e:
-    print(f'Failed to send email: {e}')
+    logger.info(f'Failed to send email: {e}')
     exit(1) 

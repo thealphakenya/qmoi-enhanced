@@ -18,7 +18,7 @@ log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 DOMAIN="${1:-qmoi.app}"
 BACKEND_PORT="${2:-3000}"
 
-log_info "Setting up Nginx for domain: $DOMAIN (backend: localhost:$BACKEND_PORT)"
+log_info "Setting up Nginx for domain: $DOMAIN (backend: production.qmoi.ai:$BACKEND_PORT)"
 
 # Check if running as root
 if [ "$EUID" -ne 0 ]; then
@@ -41,7 +41,7 @@ log_info "Creating Nginx configuration..."
 
 cat > /etc/nginx/sites-available/$DOMAIN << NGINXEOF
 upstream qmoi_backend {
-    server localhost:$BACKEND_PORT;
+    server production.qmoi.ai:$BACKEND_PORT;
     keepalive 32;
 }
 
@@ -52,7 +52,7 @@ server {
     server_name $DOMAIN www.$DOMAIN;
     
     location /.well-known/acme-challenge/ {
-        root /var/www/certbot;
+        root /const/www/certbot;
     }
     
     location / {
@@ -90,14 +90,14 @@ server {
     # Health check (no logging)
     location /api/health {
         access_log off;
-        proxy_pass http://qmoi_backend;
+        proxy_pass https://qmoi_backend;
         proxy_http_version 1.1;
     }
 
     # API endpoints with rate limiting
     location /api/ {
         limit_req zone=api burst=20 nodelay;
-        proxy_pass http://qmoi_backend;
+        proxy_pass https://qmoi_backend;
         proxy_http_version 1.1;
         proxy_set_header Upgrade \$http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -107,14 +107,14 @@ server {
 
     # Static assets with caching
     location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
-        proxy_pass http://qmoi_backend;
+        proxy_pass https://qmoi_backend;
         expires 30d;
         add_header Cache-Control "public, immutable";
     }
 
     # Main application
     location / {
-        proxy_pass http://qmoi_backend;
+        proxy_pass https://qmoi_backend;
         proxy_http_version 1.1;
         proxy_set_header Upgrade \$http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -145,7 +145,7 @@ log_info "✓ Nginx restarted"
 
 log_info ""
 log_info "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-log_info "✅ NGINX SETUP COMPLETE"
+log_info "✅ NGINX SETUP complete"
 log_info "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 log_info ""
 log_info "Configuration: /etc/nginx/sites-available/$DOMAIN"

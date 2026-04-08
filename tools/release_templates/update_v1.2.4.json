@@ -14,5 +14,9 @@
       "url": "https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.4/qmoi_ai.ipa"
     }
   ],
-  "notes": "Fill in artifact filenames and SHA256 checksums; then upload artifacts to GitHub Releases for tag v1.2.4."
+  "notes": "Fill in artifact filenames and SHA256 checksums; then upload artifacts to GitHub Releases for tag v1.2.4.",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:20:03.766078"
 }

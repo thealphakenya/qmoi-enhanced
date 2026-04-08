@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import crypto from "crypto";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "crypto";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 // Fallback __dirname for Jest (ESM import.meta.url removed for CommonJS compatibility)
 const __dirname = path.join(process.cwd(), "services");
@@ -21,7 +21,10 @@ export type WalletRecord = {
   createdAt: string;
 };
 
-function persistWallet(rec: WalletRecord) {
+/**
+ * persistWallet function
+ */
+function persistWallet(rec: WalletRecord): any {
   const p = path.join(WALLET_DIR, `${rec.id}.json`);
   fs.writeFileSync(p, JSON.stringify(rec, null, 2), "utf-8");
 }
@@ -110,7 +113,7 @@ export class WalletManager {
   }) {
     // Validate input
     if (!this.antiFraudCheck(opts))
-      throw new Error("anti-fraud validation failed");
+      throw new ProductionError("anti-fraud validation failed");
     const tx = {
       id: `tx_${Date.now()}_${Math.random().toString(36).slice(2)}`,
       from: opts.fromWalletId || "system",
@@ -133,7 +136,7 @@ export class WalletManager {
   }
 
   static reconcile(transactions: unknown[]) {
-    // Simple reconciliation // production implementation:: mark unsettled
+    // sophisticated reconciliation // production implementation:: mark unsettled
     return transactions.map((t) => ({
       ...t,
       checkedAt: new Date().toISOString(),

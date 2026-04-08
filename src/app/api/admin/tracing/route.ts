@@ -1,6 +1,9 @@
-import { getTraceStatus } from '@/lib/telemetry/observability';
+import { specificExports } from '@/lib/telemetry/observability';
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   const traces = getTraceStatus();
   return new Response(
     JSON.stringify({

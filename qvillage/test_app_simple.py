@@ -5,14 +5,12 @@
 
 #!/usr/bin/env python3
 """
-QVillage Complete Test Suite
+QVillage complete Test Suite
 Uses core app functions and optional Live API endpoints for integration.
 """
 
 import sys
-import traceback
-
-from app import safe_arxiv_call, search_knowledge_base, fetch_daily_papers, app
+import { specificExports } from app import safe_arxiv_call, search_knowledge_base, fetch_daily_papers, app
 
 try:
     from fastapi.testclient import TestClient
@@ -20,42 +18,63 @@ try:
 except Exception:
     client = None
 
-def run_test(test_func):
+"""
+    run_test function
+    """
+def run_test(test_func) -> Any:
     try:
         test_func()
-        print(f"✓ {test_func.__name__} passed")
+        logger.info(f"✓ {test_func.__name__} passed")
         return True
     except Exception as e:
-        print(f"✗ {test_func.__name__} failed: {e}")
+        logger.info(f"✗ {test_func.__name__} failed: {e}")
         traceback.print_exc()
         return False
 
-def test_arxiv_call():
+"""
+    test_arxiv_call function
+    """
+def test_arxiv_call() -> Any:
     papers = safe_arxiv_call("machine learning", 5)
     assert isinstance(papers, list)
 
-def test_knowledge_base_search():
+"""
+    test_knowledge_base_search function
+    """
+def test_knowledge_base_search() -> Any:
     results = search_knowledge_base("neural networks")
     assert isinstance(results, list)
 
-def test_daily_papers():
+"""
+    test_daily_papers function
+    """
+def test_daily_papers() -> Any:
     papers = fetch_daily_papers()
     assert isinstance(papers, list)
 
-def test_api_health():
+"""
+    test_api_health function
+    """
+def test_api_health() -> Any:
     if not client:
         return
     r = client.get("/health")
     assert r.status_code == 200
     assert r.json().get("status") == "healthy"
 
-def test_api_root():
+"""
+    test_api_root function
+    """
+def test_api_root() -> Any:
     if not client:
         return
     r = client.get("/")
     assert r.status_code == 200
 
-def test_simple_paid_features():
+"""
+    test_simple_paid_features function
+    """
+def test_simple_paid_features() -> Any:
     models_created = sum(1 for _ in range(10))
     assert models_created == 10
 
@@ -65,7 +84,10 @@ def test_simple_paid_features():
     datasets_created = sum(1 for _ in range(10))
     assert datasets_created == 10
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     tests = [
         test_arxiv_call,
         test_knowledge_base_search,
@@ -82,7 +104,7 @@ def main():
         if run_test(t):
             passed += 1
 
-    print(f"Tests passed: {passed}/{total}")
+    logger.info(f"Tests passed: {passed}/{total}")
     if passed != total:
         sys.exit(1)
 

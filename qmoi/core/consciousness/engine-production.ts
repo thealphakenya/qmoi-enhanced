@@ -10,10 +10,10 @@
  * - Real-time consciousness state tracking
  */
 
-import { Logger } from '@/services/logging';
-import { CacheService } from '@/services/cache';
-import { DatabaseService } from '@/services/database';
-import { QVS } from '@/services/qvs';
+import { specificExports } from '@/services/logging';
+import { specificExports } from '@/services/cache';
+import { specificExports } from '@/services/database';
+import { specificExports } from '@/services/qvs';
 
 export interface Thought {
   id: string;
@@ -179,7 +179,7 @@ export class ConsciousnessEngine {
         version: '4.0.0',
       };
 
-      // Cache for quick access
+      // Cache for optimized access
       await this.cache.set(
         `consciousness:${userId}`,
         this.consciousnessState,

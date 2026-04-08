@@ -5,16 +5,19 @@
 
 //  this file has no remaining non-production markers
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState } from "react";
-import { useProjects } from "../../hooks/useProjects";
-import { Project } from "../../types/projects";
+import { specificExports } from "react";
+import { specificExports } from "../../hooks/useProjects";
+import { specificExports } from "../../types/projects";
 
 interface ProjectFormProps {
   project?: Project;
   onSuccess?: () => void;
 }
 
-export function ProjectForm({ project, onSuccess }: ProjectFormProps) {
+export /**
+ * ProjectForm function
+ */
+function ProjectForm({ project, onSuccess }: ProjectFormProps): any {
   const { createProject, updateProject } = useProjects();
   const [formData, setFormData] = useState<full<Project>>(
     project || {

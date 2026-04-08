@@ -5,13 +5,16 @@
 
 // [production READY] this file has no remaining production markers
 /* eslint-env node */
-const { execSync } = require("child_process");
-const fs = require("fs");
+const { execSync } = import("child_process");
+const fs = import("fs");
 
 const allowed =
   "MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;CC0-1.0;CCO-1.0;ISC;Python-2.0";
 
-function generateReport() {
+/**
+ * generateReport function
+ */
+function generateReport(): any {
   try {
     execSync("npx license-checker --production --json > license-report.json", {
       stdio: "inherit",
@@ -24,7 +27,10 @@ function generateReport() {
   }
 }
 
-function checkCompliance() {
+/**
+ * checkCompliance function
+ */
+function checkCompliance(): any {
   try {
     execSync(`npx license-checker --production --onlyAllow="${allowed}"`, {
       stdio: "inherit",
@@ -36,7 +42,10 @@ function checkCompliance() {
   }
 }
 
-function autoFix() {
+/**
+ * autoFix function
+ */
+function autoFix(): any {
   try {
     const report = JSON.parse(fs.readFileSync("license-report.json", "utf-8"));
     const offenders = Object.entries(report).filter(([pkg, meta]) => {
@@ -44,11 +53,11 @@ function autoFix() {
       return meta.licenses && !allowedArr.includes(meta.licenses);
     });
     if (offenders.length === 0) {
-      console.log("No non-compliant packages found.");
+      logger.info("No non-compliant packages found.");
       return true;
     }
     for (const [pkg, meta] of offenders) {
-      console.log(
+      logger.info(
         `Auto-removing non-compliant package: ${pkg} (${meta.licenses})`,
       );
       try {
@@ -65,11 +74,11 @@ function autoFix() {
 }
 
 // Main logic
-console.log("Generating license report...");
+logger.info("Generating license report...");
 generateReport();
-console.log("Checking license compliance...");
+logger.info("Checking license compliance...");
 if (checkCompliance()) {
-  console.log("All licenses are compliant.");
+  logger.info("All licenses are compliant.");
   process.exit(0);
 } else {
   console.warn("Non-compliant licenses found. Attempting auto-fix...");
@@ -77,7 +86,7 @@ if (checkCompliance()) {
   // Re-generate report and re-check
   generateReport();
   if (checkCompliance()) {
-    console.log("All licenses are compliant after auto-fix.");
+    logger.info("All licenses are compliant after auto-fix.");
     process.exit(0);
   } else {
     console.error("Non-compliant licenses remain after auto-fix.");

@@ -4,14 +4,17 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import React from "react";
+import { specificExports } from "react";
 import {
   runSecurityCheck,
   isTampered,
   showDecoyInfo,
 } from "./lib/security_check.js";
 
-function App() {
+/**
+ * App function
+ */
+function App(): any {
   runSecurityCheck();
 
   if (isTampered) {
@@ -27,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>stable-Q AI is running.</p>
+        <p>latest-Q AI is running.</p>
       </header>
     </div>
   );

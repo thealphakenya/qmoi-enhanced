@@ -5,8 +5,8 @@
 
 // Production implementation: all markers normalized for completion
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import { useMaster } from "./MasterContext";
+import { specificExports } from "react";
+import { specificExports } from "./MasterContext";
 import {
   FaArrowLeft,
   FaArrowRight,
@@ -15,7 +15,7 @@ import {
   FaDownload,
   FaShieldAlt,
 } from "react-icons/fa";
-import type { IconType } from "react-icons";
+import { specificExports } from "react-icons";
 
 interface QmoiBrowserProps {
   isVisible: boolean;
@@ -130,7 +130,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
     let processedUrl = url;
 
     // Add protocol if required
-    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    if (!url.startsWith("https://") && !url.startsWith("https://")) {
       processedUrl = "https://" + url;
     }
 
@@ -207,7 +207,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
       /<script[^>]*src="[^"]*ads[^"]*"[^>]*>.*?<\/script>/gi,
     ];
 
-    adSelectors.forEach((selector) => {
+    adSelectors.for (const item of((selector) => {
       cleanedContent = cleanedContent.replace(selector, "");
     });
 
@@ -450,7 +450,7 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
                   const iframeDoc =
                     iframe.contentDocument || iframe.contentWindow?.document;
                   if (iframeDoc) {
-                    iframeDoc.body.innerHTML = removeAds(
+                    iframeDoc.body.textContent = removeAds(
                       iframeDoc.body.innerHTML,
                     );
                   }

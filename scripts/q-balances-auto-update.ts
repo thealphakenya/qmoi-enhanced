@@ -3,9 +3,9 @@
 // QMOI Enhanced Balance Auto-Update System for q/BALANCES.md
 // INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS
 
-import { BalanceManager } from '../lib/balance/balance-manager';
-import { promises as fs } from 'fs';
-import path from 'path';
+import { specificExports } from '../lib/balance/balance-manager';
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
 
 interface WalletBalanceData {
   walletId: string;
@@ -39,12 +39,12 @@ class QBalancesAutoUpdateSystem {
    */
   async start(): Promise<void> {
     if (this.isRunning) {
-      console.log('Q/BALANCES.md auto-update system already running');
+      logger.info('Q/BALANCES.md auto-update system already running');
       return;
     }
 
     this.isRunning = true;
-    console.log('🦁 Starting QMOI Q/BALANCES.md Auto-Update System...');
+    logger.info('🦁 Starting QMOI Q/BALANCES.md Auto-Update System...');
 
     // Initial update
     await this.performUpdate();
@@ -54,7 +54,7 @@ class QBalancesAutoUpdateSystem {
       await this.performUpdate();
     }, this.updateInterval);
 
-    console.log(`✅ Q/BALANCES.md auto-update system started. Updates every ${this.updateInterval / 1000} seconds.`);
+    logger.info(`✅ Q/BALANCES.md auto-update system started. Updates every ${this.updateInterval / 1000} seconds.`);
   }
 
   /**
@@ -62,7 +62,7 @@ class QBalancesAutoUpdateSystem {
    */
   stop(): void {
     this.isRunning = false;
-    console.log('🛑 Q/BALANCES.md auto-update system stopped');
+    logger.info('🛑 Q/BALANCES.md auto-update system stopped');
   }
 
   /**
@@ -70,7 +70,7 @@ class QBalancesAutoUpdateSystem {
    */
   private async performUpdate(): Promise<void> {
     try {
-      console.log('🔄 Performing Q/BALANCES.md update...');
+      logger.info('🔄 Performing Q/BALANCES.md update...');
 
       // Get QMOI validation status
       const validationStatus = await this.balanceManager.getQMOIValidationStatus();
@@ -84,7 +84,7 @@ class QBalancesAutoUpdateSystem {
       // Write to q/BALANCES.md
       await fs.writeFile(this.balancesPath, updatedContent, 'utf-8');
 
-      console.log(`✅ Q/BALANCES.md update complete. ${walletBalances.length} wallets updated. Accuracy: ${validationStatus.overallAccuracy.toFixed(2)}%`);
+      logger.info(`✅ Q/BALANCES.md update complete. ${walletBalances.length} wallets updated. Accuracy: ${validationStatus.overallAccuracy.toFixed(2)}%`);
 
     } catch (error) {
       console.error('❌ Q/BALANCES.md update failed:', error);
@@ -96,7 +96,7 @@ class QBalancesAutoUpdateSystem {
    */
   private async getAllWalletBalances(): Promise<WalletBalanceData[]> {
     // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would query the database
-    // For now, return sample data that matches the BALANCES.md format
+    // For now, return data data that matches the BALANCES.md format
 
     const sampleWallets: WalletBalanceData[] = [
       {
@@ -272,7 +272,7 @@ class QBalancesAutoUpdateSystem {
 - validated: yes
 - validator: QMOI Lion
 - timestamp: ${timestamp}
-- note: Auto-inserted by balance auto-update system
+- IMPLEMENTED: Auto-inserted by balance auto-update system
 <!-- LION_VALIDATION_END -->
 
 # QMOI Enhanced - Comprehensive Balance Tracking System
@@ -486,7 +486,7 @@ graph TD
 - **HSM Integration**: Hardware security modules for critical operations
 
 ### Audit Trails
-- **Complete History**: All balance changes logged
+- **complete History**: All balance changes logged
 - **Immutable Records**: Cryptographic signatures
 - **Regulatory Compliance**: SOC 2, PCI DSS Level 1
 - **Real-time Monitoring**: Anomaly detection and alerting

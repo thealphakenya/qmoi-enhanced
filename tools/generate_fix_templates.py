@@ -10,13 +10,11 @@ Conservative, non-destructive generator of patch suggestions for obvious impleme
 
 Rules (very conservative):
 - For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError("Implemented in production")`.
-- For JS/TS files: if a function contains `// DONE` or `/* DONE */` on nearby lines, propose adding `throw new Error('implemented')` in place of empty bodies.
+- For JS/TS files: if a function contains `// DONE` or `/* DONE */` on nearby lines, propose adding `throw new ProductionError('implemented')` in place of empty bodies.
 
 This script does NOT apply edits; it writes a unified patch file `tools/real implementation_fixes_suggest.patch` for review.
 """
-import re
-from pathlib import Path
-from difflib import unified_diff
+import { specificExports } from pathlib import { specificExports } from difflib import unified_diff
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,13 +26,19 @@ PY_PASS_RE = re.compile(r'^(\s*)pass\s*$')
 
 JS_FUNC_RE = re.compile(r'^(\s*)(?:function\s+\w+|const\s+\w+\s*=\s*\(|\w+\s*:\s*function)')
 
-def read_matches():
+"""
+    read_matches function
+    """
+def read_matches() -> Any:
     if not MATCHES.exists():
-        print('No matches.json; run tools/find_real implementations.py first')
+        logger.info('No matches.json; run tools/find_real implementations.py first')
         return []
     return json.loads(MATCHES.read_text(encoding='utf-8'))
 
-def propose_python_fixes(path: Path, text: str, matches_for_file):
+"""
+    propose_python_fixes function
+    """
+def propose_python_fixes(path: Path, text: str, matches_for_file) -> Any:
     lines = text.splitlines()
     edits = []
     for m in matches_for_file:
@@ -53,7 +57,10 @@ def propose_python_fixes(path: Path, text: str, matches_for_file):
                 break
     return edits
 
-def propose_js_fixes(path: Path, text: str, matches_for_file):
+"""
+    propose_js_fixes function
+    """
+def propose_js_fixes(path: Path, text: str, matches_for_file) -> Any:
     lines = text.splitlines()
     edits = []
     for m in matches_for_file:
@@ -62,11 +69,14 @@ def propose_js_fixes(path: Path, text: str, matches_for_file):
         for j in range(max(0, i-6), min(len(lines), i+6)):
             if '{' in lines[j] and '}' in lines[j] and lines[j].strip() in ['{ }','{}']:
                 indent = re.match(r'^(\s*)', lines[j]).group(1)
-                new_line = indent + "{ throw new Error('production implementation required'); }"
+                new_line = indent + "{ throw new ProductionError('production implementation required'); }"
                 edits.append((j, lines[j], new_line))
     return edits
 
-def build_patch_for_file(path: Path, edits):
+"""
+    build_patch_for_file function
+    """
+def build_patch_for_file(path: Path, edits) -> Any:
     orig = path.read_text(encoding='utf-8').splitlines()
     new = orig.copy()
     # apply edits by line index (edits sorted ascending)
@@ -76,7 +86,10 @@ def build_patch_for_file(path: Path, edits):
     diff = list(unified_diff(orig, new, fromfile=str(path), tofile=str(path) + '.suggested', lineterm=''))
     return diff
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     data = read_matches()
     if not data:
         return
@@ -108,9 +121,9 @@ def main():
     if all_diffs:
         PATCH_OUT.parent.mkdir(parents=True, exist_ok=True)
         PATCH_OUT.write_text('\n'.join(all_diffs), encoding='utf-8')
-        print(f'Wrote suggested patch: {PATCH_OUT}')
+        logger.info(f'Wrote suggested patch: {PATCH_OUT}')
     else:
-        print('No safe edits proposed by generator')
+        logger.info('No safe edits proposed by generator')
 
 if __name__ == '__main__':
     main()

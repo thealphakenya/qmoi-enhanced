@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useState, useEffect, useCallback } from "react";
+import { specificExports } from "react";
 
 interface AutoProject {
   id: string;
@@ -250,7 +250,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       .log("📱 WhatsApp notification to master:", message);
 
       // In /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/notify-master', {
+      // await apiClient.get('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })
@@ -266,7 +266,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       .log('📱 Creating "Qmoi Auto Projects" WhatsApp group');
 
       // In /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/create-group', {
+      // await apiClient.get('/api/whatsapp/create-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({
@@ -288,7 +288,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       .log("📱 Posting to WhatsApp group:", message);
 
       // In /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
-      // await fetch('/api/whatsapp/post-to-group', {
+      // await apiClient.get('/api/whatsapp/post-to-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
       //   body: JSON.stringify({ message })

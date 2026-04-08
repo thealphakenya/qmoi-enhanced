@@ -16,7 +16,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api",
+      "url": "https://production.qmoi.ai:3000/api",
       "description": "production server"
     },
     {
@@ -65,7 +65,9 @@
   "paths": {
     "/health": {
       "get": {
-        "tags": ["Health"],
+        "tags": [
+          "Health"
+        ],
         "summary": "Health check endpoint",
         "description": "Check service health status including database connectivity and memory usage",
         "operationId": "getHealth",
@@ -76,7 +78,11 @@
             "description": "Type of health check",
             "schema": {
               "type": "string",
-              "enum": ["comprehensive", "full", "detailed"],
+              "enum": [
+                "comprehensive",
+                "full",
+                "detailed"
+              ],
               "default": "full"
             }
           }
@@ -91,7 +97,11 @@
                   "properties": {
                     "status": {
                       "type": "string",
-                      "enum": ["healthy", "degraded", "unhealthy"]
+                      "enum": [
+                        "healthy",
+                        "degraded",
+                        "unhealthy"
+                      ]
                     },
                     "checks": {
                       "type": "object",
@@ -103,27 +113,45 @@
                         "service": {
                           "type": "object",
                           "properties": {
-                            "status": { "type": "string" },
-                            "version": { "type": "string" }
+                            "status": {
+                              "type": "string"
+                            },
+                            "version": {
+                              "type": "string"
+                            }
                           }
                         },
                         "database": {
                           "type": "object",
                           "properties": {
-                            "status": { "type": "string" },
-                            "responseTime": { "type": "string" }
+                            "status": {
+                              "type": "string"
+                            },
+                            "responseTime": {
+                              "type": "string"
+                            }
                           }
                         },
                         "memory": {
                           "type": "object",
                           "properties": {
-                            "status": { "type": "string" },
-                            "heapUsedMB": { "type": "integer" },
-                            "heapTotalMB": { "type": "integer" },
-                            "heapUsedPercent": { "type": "integer" }
+                            "status": {
+                              "type": "string"
+                            },
+                            "heapUsedMB": {
+                              "type": "integer"
+                            },
+                            "heapTotalMB": {
+                              "type": "integer"
+                            },
+                            "heapUsedPercent": {
+                              "type": "integer"
+                            }
                           }
                         },
-                        "uptime": { "type": "number" }
+                        "uptime": {
+                          "type": "number"
+                        }
                       }
                     }
                   }
@@ -146,11 +174,17 @@
     },
     "/admin/monitoring": {
       "get": {
-        "tags": ["Admin"],
+        "tags": [
+          "Admin"
+        ],
         "summary": "Get monitoring dashboard",
         "description": "Get comprehensive monitoring data including performance metrics, errors, and health score (admin only)",
         "operationId": "getMonitoring",
-        "security": [{ "BearerAuth": [] }],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Monitoring data retrieved successfully",
@@ -169,16 +203,26 @@
                         "system": {
                           "type": "object",
                           "properties": {
-                            "uptime": { "type": "number" },
+                            "uptime": {
+                              "type": "number"
+                            },
                             "memory": {
                               "type": "object",
                               "properties": {
-                                "heapUsed": { "type": "integer" },
-                                "heapTotal": { "type": "integer" }
+                                "heapUsed": {
+                                  "type": "integer"
+                                },
+                                "heapTotal": {
+                                  "type": "integer"
+                                }
                               }
                             },
-                            "noprodersion": { "type": "string" },
-                            "platform": { "type": "string" }
+                            "noprodersion": {
+                              "type": "string"
+                            },
+                            "platform": {
+                              "type": "string"
+                            }
                           }
                         },
                         "performance": {
@@ -200,7 +244,11 @@
                         },
                         "status": {
                           "type": "string",
-                          "enum": ["healthy", "degraded", "critical"]
+                          "enum": [
+                            "healthy",
+                            "degraded",
+                            "critical"
+                          ]
                         }
                       }
                     }
@@ -209,18 +257,28 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
         }
       }
     },
     "/admin/alerts": {
       "get": {
-        "tags": ["Admin"],
+        "tags": [
+          "Admin"
+        ],
         "summary": "Get active alerts",
         "description": "View active alerts and incidents with severity levels (admin only)",
         "operationId": "getAlerts",
-        "security": [{ "BearerAuth": [] }],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Alerts retrieved successfully",
@@ -235,24 +293,41 @@
                         "$ref": "#/components/schemas/Alert"
                       }
                     },
-                    "count": { "type": "integer" },
-                    "criticalCount": { "type": "integer" },
-                    "lastUpdated": { "type": "string", "format": "date-time" }
+                    "count": {
+                      "type": "integer"
+                    },
+                    "criticalCount": {
+                      "type": "integer"
+                    },
+                    "lastUpdated": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
         }
       },
       "post": {
-        "tags": ["Admin"],
+        "tags": [
+          "Admin"
+        ],
         "summary": "Manage alert",
         "description": "Acknowledge, dismiss, or escalate an alert (admin only)",
         "operationId": "manageAlert",
-        "security": [{ "BearerAuth": [] }],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -260,13 +335,22 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "alertId": { "type": "string" },
+                  "alertId": {
+                    "type": "string"
+                  },
                   "action": {
                     "type": "string",
-                    "enum": ["acknowledge", "dismiss", "escalate"]
+                    "enum": [
+                      "acknowledge",
+                      "dismiss",
+                      "escalate"
+                    ]
                   }
                 },
-                "required": ["alertId", "action"]
+                "required": [
+                  "alertId",
+                  "action"
+                ]
               }
             }
           }
@@ -279,35 +363,60 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success": { "type": "boolean" },
-                    "alertId": { "type": "string" },
-                    "action": { "type": "string" },
-                    "timestamp": { "type": "string", "format": "date-time" },
-                    "message": { "type": "string" }
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "alertId": {
+                      "type": "string"
+                    },
+                    "action": {
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
                   }
                 }
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" }
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
         }
       }
     },
     "/admin/rate-limits": {
       "get": {
-        "tags": ["Admin"],
+        "tags": [
+          "Admin"
+        ],
         "summary": "Get rate limit configuration",
         "description": "View rate limit configuration and current usage (admin only)",
         "operationId": "getRateLimits",
-        "security": [{ "BearerAuth": [] }],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "userId",
             "in": "query",
             "description": "Filter by user ID",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -321,9 +430,15 @@
                     "config": {
                       "type": "object",
                       "properties": {
-                        "defaultLimit": { "type": "integer" },
-                        "windowSize": { "type": "integer" },
-                        "unit": { "type": "string" }
+                        "defaultLimit": {
+                          "type": "integer"
+                        },
+                        "windowSize": {
+                          "type": "integer"
+                        },
+                        "unit": {
+                          "type": "string"
+                        }
                       }
                     },
                     "currentUsage": {
@@ -331,34 +446,61 @@
                       "items": {
                         "type": "object",
                         "properties": {
-                          "userId": { "type": "string" },
-                          "endpoint": { "type": "string" },
-                          "requestCount": { "type": "integer" },
-                          "limit": { "type": "integer" },
-                          "percentageUsed": { "type": "integer" },
+                          "userId": {
+                            "type": "string"
+                          },
+                          "endpoint": {
+                            "type": "string"
+                          },
+                          "requestCount": {
+                            "type": "integer"
+                          },
+                          "limit": {
+                            "type": "integer"
+                          },
+                          "percentageUsed": {
+                            "type": "integer"
+                          },
                           "status": {
                             "type": "string",
-                            "enum": ["normal", "warning", "exceeded"]
+                            "enum": [
+                              "normal",
+                              "warning",
+                              "exceeded"
+                            ]
                           }
                         }
                       }
                     },
-                    "timestamp": { "type": "string", "format": "date-time" }
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
         }
       },
       "put": {
-        "tags": ["Admin"],
+        "tags": [
+          "Admin"
+        ],
         "summary": "Update rate limit",
         "description": "Update rate limit for specific user or endpoint (admin only)",
         "operationId": "updateRateLimit",
-        "security": [{ "BearerAuth": [] }],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -368,20 +510,44 @@
                   {
                     "type": "object",
                     "properties": {
-                      "userId": { "type": "string" },
-                      "endpoint": { "type": "string" },
-                      "newLimit": { "type": "integer", "minimum": 1 }
+                      "userId": {
+                        "type": "string"
+                      },
+                      "endpoint": {
+                        "type": "string"
+                      },
+                      "newLimit": {
+                        "type": "integer",
+                        "minimum": 1
+                      }
                     },
-                    "required": ["userId", "endpoint", "newLimit"]
+                    "required": [
+                      "userId",
+                      "endpoint",
+                      "newLimit"
+                    ]
                   },
                   {
                     "type": "object",
                     "properties": {
-                      "userId": { "type": "string" },
-                      "endpoint": { "type": "string" },
-                      "action": { "type": "string", "enum": ["reset"] }
+                      "userId": {
+                        "type": "string"
+                      },
+                      "endpoint": {
+                        "type": "string"
+                      },
+                      "action": {
+                        "type": "string",
+                        "enum": [
+                          "reset"
+                        ]
+                      }
                     },
-                    "required": ["userId", "endpoint", "action"]
+                    "required": [
+                      "userId",
+                      "endpoint",
+                      "action"
+                    ]
                   }
                 ]
               }
@@ -396,30 +562,55 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "success": { "type": "boolean" },
-                    "message": { "type": "string" },
-                    "userId": { "type": "string" },
-                    "endpoint": { "type": "string" },
-                    "newLimit": { "type": "integer" },
-                    "timestamp": { "type": "string", "format": "date-time" }
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "userId": {
+                      "type": "string"
+                    },
+                    "endpoint": {
+                      "type": "string"
+                    },
+                    "newLimit": {
+                      "type": "integer"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
                   }
                 }
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" }
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
         }
       }
     },
     "/admin/audit-logs": {
       "get": {
-        "tags": ["Admin"],
+        "tags": [
+          "Admin"
+        ],
         "summary": "Get audit logs",
         "description": "View audit logs with filtering and pagination (admin only)",
         "operationId": "getAuditLogs",
-        "security": [{ "BearerAuth": [] }],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "action",
@@ -427,14 +618,22 @@
             "description": "Filter by action type",
             "schema": {
               "type": "string",
-              "enum": ["CREATE", "UPDATE", "DELETE", "LOGIN", "LOGOUT"]
+              "enum": [
+                "CREATE",
+                "UPDATE",
+                "DELETE",
+                "LOGIN",
+                "LOGOUT"
+              ]
             }
           },
           {
             "name": "userId",
             "in": "query",
             "description": "Filter by user ID",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "resource",
@@ -442,26 +641,42 @@
             "description": "Filter by resource type",
             "schema": {
               "type": "string",
-              "enum": ["user", "wallet", "transaction", "payment", "setting"]
+              "enum": [
+                "user",
+                "wallet",
+                "transaction",
+                "payment",
+                "setting"
+              ]
             }
           },
           {
             "name": "startDate",
             "in": "query",
             "description": "Range start date (ISO 8601)",
-            "schema": { "type": "string", "format": "date-time" }
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
           {
             "name": "endDate",
             "in": "query",
             "description": "Range end date (ISO 8601)",
-            "schema": { "type": "string", "format": "date-time" }
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
           },
           {
             "name": "skip",
             "in": "query",
             "description": "Pagination offset",
-            "schema": { "type": "integer", "default": 0, "minimum": 0 }
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0
+            }
           },
           {
             "name": "take",
@@ -492,28 +707,49 @@
                     "pagination": {
                       "type": "object",
                       "properties": {
-                        "skip": { "type": "integer" },
-                        "take": { "type": "integer" },
-                        "total": { "type": "integer" },
-                        "pages": { "type": "integer" }
+                        "skip": {
+                          "type": "integer"
+                        },
+                        "take": {
+                          "type": "integer"
+                        },
+                        "total": {
+                          "type": "integer"
+                        },
+                        "pages": {
+                          "type": "integer"
+                        }
                       }
                     },
-                    "timestamp": { "type": "string", "format": "date-time" }
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
                   }
                 }
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
         }
       },
       "post": {
-        "tags": ["Admin"],
+        "tags": [
+          "Admin"
+        ],
         "summary": "Export audit logs",
         "description": "Export audit logs in CSV, JSON, or PDF format (admin only)",
         "operationId": "exportAuditLogs",
-        "security": [{ "BearerAuth": [] }],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -523,20 +759,32 @@
                 "properties": {
                   "format": {
                     "type": "string",
-                    "enum": ["csv", "json", "pdf"],
+                    "enum": [
+                      "csv",
+                      "json",
+                      "pdf"
+                    ],
                     "description": "Export format"
                   },
                   "filters": {
                     "type": "object",
                     "description": "Optional filters to apply",
                     "properties": {
-                      "action": { "type": "string" },
-                      "resource": { "type": "string" },
-                      "userId": { "type": "string" }
+                      "action": {
+                        "type": "string"
+                      },
+                      "resource": {
+                        "type": "string"
+                      },
+                      "userId": {
+                        "type": "string"
+                      }
                     }
                   }
                 },
-                "required": ["format"]
+                "required": [
+                  "format"
+                ]
               }
             }
           }
@@ -545,13 +793,27 @@
           "200": {
             "description": "File exported successfully",
             "content": {
-              "text/csv": { "schema": { "type": "string" } },
-              "application/json": { "schema": { "type": "object" } }
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" }
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
         }
       }
     }
@@ -563,7 +825,11 @@
         "properties": {
           "status": {
             "type": "string",
-            "enum": ["healthy", "degraded", "unhealthy"]
+            "enum": [
+              "healthy",
+              "degraded",
+              "unhealthy"
+            ]
           },
           "checks": {
             "type": "object"
@@ -573,36 +839,77 @@
             "format": "date-time"
           }
         },
-        "required": ["status", "checks", "timestamp"]
+        "required": [
+          "status",
+          "checks",
+          "timestamp"
+        ]
       },
       "PerformanceMetric": {
         "type": "object",
         "properties": {
-          "count": { "type": "integer" },
-          "successCount": { "type": "integer" },
-          "failureCount": { "type": "integer" },
-          "successRate": { "type": "string" },
-          "avgDuration": { "type": "string" },
-          "minDuration": { "type": "string" },
-          "maxDuration": { "type": "string" },
-          "p95Duration": { "type": "string" },
-          "p99Duration": { "type": "string" }
+          "count": {
+            "type": "integer"
+          },
+          "successCount": {
+            "type": "integer"
+          },
+          "failureCount": {
+            "type": "integer"
+          },
+          "successRate": {
+            "type": "string"
+          },
+          "avgDuration": {
+            "type": "string"
+          },
+          "minDuration": {
+            "type": "string"
+          },
+          "maxDuration": {
+            "type": "string"
+          },
+          "p95Duration": {
+            "type": "string"
+          },
+          "p99Duration": {
+            "type": "string"
+          }
         }
       },
       "Alert": {
         "type": "object",
         "properties": {
-          "id": { "type": "string" },
-          "type": { "type": "string" },
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
           "severity": {
             "type": "string",
-            "enum": ["critical", "warning", "info"]
+            "enum": [
+              "critical",
+              "warning",
+              "info"
+            ]
           },
-          "component": { "type": "string" },
-          "message": { "type": "string" },
-          "timestamp": { "type": "string", "format": "date-time" },
-          "actionable": { "type": "boolean" },
-          "suggestedAction": { "type": "string" }
+          "component": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actionable": {
+            "type": "boolean"
+          },
+          "suggestedAction": {
+            "type": "string"
+          }
         },
         "required": [
           "id",
@@ -616,17 +923,42 @@
       "AuditLog": {
         "type": "object",
         "properties": {
-          "id": { "type": "string" },
-          "userId": { "type": "string" },
-          "action": { "type": "string" },
-          "resource": { "type": "string" },
-          "resourceId": { "type": "string" },
-          "changes": { "type": "string" },
-          "ipAddress": { "type": "string" },
-          "userAgent": { "type": "string" },
-          "timestamp": { "type": "string", "format": "date-time" }
+          "id": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "resource": {
+            "type": "string"
+          },
+          "resourceId": {
+            "type": "string"
+          },
+          "changes": {
+            "type": "string"
+          },
+          "ipAddress": {
+            "type": "string"
+          },
+          "userAgent": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
         },
-        "required": ["id", "userId", "action", "resource", "timestamp"]
+        "required": [
+          "id",
+          "userId",
+          "action",
+          "resource",
+          "timestamp"
+        ]
       }
     },
     "responses": {
@@ -640,8 +972,12 @@
                 "error": {
                   "type": "object",
                   "properties": {
-                    "message": { "type": "string" },
-                    "code": { "type": "string" }
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -663,7 +999,10 @@
                       "type": "string",
                       "data": "included authorization token"
                     },
-                    "code": { "type": "string", "data": "NO_TOKEN" }
+                    "code": {
+                      "type": "string",
+                      "data": "NO_TOKEN"
+                    }
                   }
                 }
               }
@@ -685,7 +1024,10 @@
                       "type": "string",
                       "data": "Insufficient permissions"
                     },
-                    "code": { "type": "string", "data": "FORBIDDEN" }
+                    "code": {
+                      "type": "string",
+                      "data": "FORBIDDEN"
+                    }
                   }
                 }
               }
@@ -702,5 +1044,9 @@
         "description": "JWT token for authentication"
       }
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:31.372232"
 }

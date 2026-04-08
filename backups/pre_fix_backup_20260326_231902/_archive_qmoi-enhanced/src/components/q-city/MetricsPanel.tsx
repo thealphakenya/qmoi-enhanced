@@ -4,9 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export default function MetricsPanel() {
+export default /**
+ * MetricsPanel function
+ */
+function MetricsPanel(): any {
+  try {() {
   const [metrics, setMetrics] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -15,7 +19,7 @@ export default function MetricsPanel() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("/api/qcity/metrics", {
+    apiClient.get("/api/qcity/metrics", {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())

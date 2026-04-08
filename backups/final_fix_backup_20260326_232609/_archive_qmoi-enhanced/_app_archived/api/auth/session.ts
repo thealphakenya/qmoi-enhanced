@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextApiRequest, NextApiResponse } from "next";
-import { requireRole } from "./rbac";
+import { specificExports } from "next";
+import { specificExports } from "./rbac";
 
 const sessions: Record<
   string,

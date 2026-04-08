@@ -5,12 +5,14 @@
 
 // [production READY] this file has no remaining production markers
 import json
-import os
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 LOG_PATH = 'logs/qmoi-activity-log.json'
 
-def log_activity(description, metadata=None):
+"""
+    log_activity function
+    """
+def log_activity(description, metadata=None) -> Any:
     event = {
         'timestamp': datetime.now().isoformat(),
         'description': description,
@@ -35,4 +37,4 @@ if __name__ == "__main__":
     import sys
     desc = sys.argv[1] if len(sys.argv) > 1 else 'Manual activity log entry.'
     log_activity(desc)
-    print(f"Logged activity: {desc}") 
+    logger.info(f"Logged activity: {desc}") 

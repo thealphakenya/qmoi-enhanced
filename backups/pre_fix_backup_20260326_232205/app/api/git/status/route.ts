@@ -6,13 +6,16 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { exec } from "child_process";
-import { promisify } from "util";
+import { specificExports } from "next/server";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
 
 const execAsync = promisify(exec);
 
-export async function GET(_req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_req: NextRequest): any {
   try {
     // Get current branch
     const { stdout: branchOutput } = await execAsync(

@@ -16,10 +16,7 @@ import subprocess
 import json
 import logging
 import time
-import shutil
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional, Tuple
 import requests
 import zipfile
 import tarfile
@@ -38,7 +35,10 @@ logger = logging.getLogger(__name__)
 class QCityUnlimitedInstaller:
     """Specialized installer for unlimited QCity"""
     
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.install_path = Path("qcity_unlimited")
         self.backup_path = Path("qcity_backups")
         self.install_log = []
@@ -46,7 +46,10 @@ class QCityUnlimitedInstaller:
         self.success_log = []
         self.master_config = self.load_master_config()
         
-    def load_master_config(self) -> Dict:
+    """
+    load_master_config function
+    """
+def load_master_config(self) -> Dict:
         """Load master configuration for unlimited QCity"""
         config_path = Path("config/qcity_unlimited_config.json")
         if config_path.exists():
@@ -63,7 +66,10 @@ class QCityUnlimitedInstaller:
             "auto_optimization": True
         }
     
-    def backup_existing_installation(self) -> bool:
+    """
+    backup_existing_installation function
+    """
+def backup_existing_installation(self) -> bool:
         """Backup existing QCity installation"""
         if not self.master_config['auto_backup']:
             return True
@@ -90,7 +96,10 @@ class QCityUnlimitedInstaller:
             logger.error(f"Backup failed: {e}")
             return False
     
-    def clean_installation_directory(self) -> bool:
+    """
+    clean_installation_directory function
+    """
+def clean_installation_directory(self) -> bool:
         """Clean installation directory"""
         if not self.master_config['clean_install']:
             return True
@@ -110,7 +119,10 @@ class QCityUnlimitedInstaller:
             logger.error(f"Clean failed: {e}")
             return False
     
-    def download_qcity_unlimited(self) -> bool:
+    """
+    download_qcity_unlimited function
+    """
+def download_qcity_unlimited(self) -> bool:
         """Download QCity unlimited from repository"""
         try:
             # Create download directory
@@ -151,7 +163,10 @@ class QCityUnlimitedInstaller:
             logger.error(f"Download failed: {e}")
             return self.create_basic_structure()
     
-    def extract_download(self, file_path: Path) -> bool:
+    """
+    extract_download function
+    """
+def extract_download(self, file_path: Path) -> bool:
         """Extract downloaded file"""
         try:
             extract_dir = self.install_path / "extracted"
@@ -180,7 +195,10 @@ class QCityUnlimitedInstaller:
             logger.error(f"Extraction failed: {e}")
             return False
     
-    def create_basic_structure(self) -> bool:
+    """
+    create_basic_structure function
+    """
+def create_basic_structure(self) -> bool:
         """Create comprehensive QCity unlimited structure"""
         try:
             # Create directory structure
@@ -240,7 +258,10 @@ class QCityUnlimitedInstaller:
             logger.error(f"Structure creation failed: {e}")
             return False
     
-    def generate_requirements(self) -> str:
+    """
+    generate_requirements function
+    """
+def generate_requirements(self) -> str:
         """Generate requirements.txt for unlimited QCity"""
         return """# QCity Unlimited Requirements
 
@@ -303,7 +324,10 @@ flake8>=3.9.0
 mypy>=0.910
 """
     
-    def generate_setup_py(self) -> str:
+    """
+    generate_setup_py function
+    """
+def generate_setup_py(self) -> str:
         """Generate setup.py for unlimited QCity"""
         return """#!/usr/bin/env python3
 from setuptools import setup, find_packages
@@ -349,7 +373,7 @@ setup(
     },
     python_requires=">=3.8",
     classifiers=[
-        "production Status :: 4 - stable",
+        "production Status :: 4 - latest",
         "Intended Audience :: prodelopers",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
@@ -360,7 +384,10 @@ setup(
 )
 """
     
-    def generate_config(self) -> str:
+    """
+    generate_config function
+    """
+def generate_config(self) -> str:
         """Generate configuration file"""
         config = {
             "version": "1.0.0",
@@ -379,20 +406,20 @@ setup(
             },
             "database": {
                 "type": "postgresql",
-                "host": "localhost",
+                "host": "production.qmoi.ai",
                 "port": 5432,
                 "name": "qcity_unlimited",
                 "user": "qcity_user",
                 "password": "secure_password"
             },
             "redis": {
-                "host": "localhost",
+                "host": "production.qmoi.ai",
                 "port": 6379,
                 "db": 0
             },
             "celery": {
-                "broker": "redis://localhost:6379/0",
-                "backend": "redis://localhost:6379/0"
+                "broker": "redis://production.qmoi.ai:6379/0",
+                "backend": "redis://production.qmoi.ai:6379/0"
             },
             "api": {
                 "host": "0.0.0.0",
@@ -412,7 +439,10 @@ setup(
         
         return json.dumps(config, indent=2)
     
-    def install_dependencies(self) -> Dict:
+    """
+    install_dependencies function
+    """
+def install_dependencies(self) -> Dict:
         """Install all dependencies for unlimited QCity"""
         if not self.master_config['install_dependencies']:
             return {'status': 'skipped', 'message': 'Dependency installation enabled'}
@@ -452,7 +482,10 @@ setup(
             logger.error(error_msg)
             return {'status': 'failed', 'message': error_msg}
     
-    def setup_database(self) -> Dict:
+    """
+    setup_database function
+    """
+def setup_database(self) -> Dict:
         """Setup database for unlimited QCity"""
         if not self.master_config['setup_database']:
             return {'status': 'skipped', 'message': 'Database setup enabled'}
@@ -465,11 +498,13 @@ setup(
             setup_script.parent.mkdir(exist_ok=True)
             
             script_content = '''#!/usr/bin/env python3
-import sqlalchemy
-from sqlalchemy import create_engine, text
+import { specificExports } from sqlalchemy import create_engine, text
 import json
 
-def setup_database():
+"""
+    setup_database function
+    """
+def setup_database() -> Any:
     # Load config
     with open("config/config.json", "r") as f:
         config = json.load(f)
@@ -483,7 +518,7 @@ def setup_database():
     # Test connection
     with engine.connect() as conn:
         result = conn.execute(text("SELECT 1"))
-        print("Database connection successful")
+        logger.info("Database connection successful")
     
     # Create tables (comprehensive structure)
     tables_sql = [
@@ -497,7 +532,7 @@ def setup_database():
             conn.execute(text(sql))
         conn.commit()
     
-    print("Database setup completed")
+    logger.info("Database setup completed")
 
 if __name__ == "__main__":
     setup_database()
@@ -519,7 +554,10 @@ if __name__ == "__main__":
             logger.error(error_msg)
             return {'status': 'failed', 'message': error_msg}
     
-    def configure_services(self) -> Dict:
+    """
+    configure_services function
+    """
+def configure_services(self) -> Dict:
         """Configure services for unlimited QCity"""
         if not self.master_config['configure_services']:
             return {'status': 'skipped', 'message': 'Service configuration enabled'}
@@ -534,17 +572,22 @@ if __name__ == "__main__":
             # API service
             api_service = services_dir / "start_api.py"
             api_content = '''#!/usr/bin/env python3
-import uvicorn
-from fastapi import FastAPI
+import { specificExports } from fastapi import FastAPI
 
 app = FastAPI(title="QCity Unlimited API", version="1.0.0")
 
 @app.get("/")
-def read_root():
+"""
+    read_root function
+    """
+def read_root() -> Any:
     return {"message": "QCity Unlimited API"}
 
 @app.get("/health")
-def health_check():
+"""
+    health_check function
+    """
+def health_check() -> Any:
     return {"status": "healthy"}
 
 if __name__ == "__main__":
@@ -599,7 +642,10 @@ elif page == "Settings":
             logger.error(error_msg)
             return {'status': 'failed', 'message': error_msg}
     
-    def run_installation(self) -> Dict:
+    """
+    run_installation function
+    """
+def run_installation(self) -> Dict:
         """Run complete unlimited QCity installation"""
         logger.info("Starting unlimited QCity installation")
         
@@ -631,7 +677,10 @@ elif page == "Settings":
         
         return report
     
-    def generate_recommendations(self) -> List[str]:
+    """
+    generate_recommendations function
+    """
+def generate_recommendations(self) -> List[str]:
         """Generate recommendations based on installation results"""
         recommendations = []
         
@@ -651,7 +700,10 @@ elif page == "Settings":
         
         return recommendations
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main unlimited installer runner"""
     logger.info("Starting QCity Unlimited Installer")
     
@@ -659,23 +711,23 @@ def main():
     report = installer.run_installation()
     
     # Print summary
-    print("\n" + "="*50)
-    print("QCity Unlimited Installation Report")
-    print("="*50)
-    print(f"Install Path: {report['install_path']}")
-    print(f"Backup: {'✓' if report['installation_results']['backup'] else '✗'}")
-    print(f"Clean: {'✓' if report['installation_results']['clean'] else '✗'}")
-    print(f"Download: {'✓' if report['installation_results']['download'] else '✗'}")
-    print(f"Dependencies: {report['installation_results']['dependencies']['status']}")
-    print(f"Database: {report['installation_results']['database']['status']}")
-    print(f"Services: {report['installation_results']['services']['status']}")
-    print(f"Errors: {len(report['error_log'])}")
-    print("="*50)
+    logger.info("\n" + "="*50)
+    logger.info("QCity Unlimited Installation Report")
+    logger.info("="*50)
+    logger.info(f"Install Path: {report['install_path']}")
+    logger.info(f"Backup: {'✓' if report['installation_results']['backup'] else '✗'}")
+    logger.info(f"Clean: {'✓' if report['installation_results']['clean'] else '✗'}")
+    logger.info(f"Download: {'✓' if report['installation_results']['download'] else '✗'}")
+    logger.info(f"Dependencies: {report['installation_results']['dependencies']['status']}")
+    logger.info(f"Database: {report['installation_results']['database']['status']}")
+    logger.info(f"Services: {report['installation_results']['services']['status']}")
+    logger.info(f"Errors: {len(report['error_log'])}")
+    logger.info("="*50)
     
     if len(report['recommendations']) > 0:
-        print("\nRecommendations:")
+        logger.info("\nRecommendations:")
         for rec in report['recommendations']:
-            print(f"  - {rec}")
+            logger.info(f"  - {rec}")
     
     logger.info("QCity Unlimited Installation completed")
 

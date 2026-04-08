@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # QMOI Enhanced - production Deployment Script
-# production READY: Complete deployment automation for financial systems
+# production READY: complete deployment automation for financial systems
 # Last Updated: March 29, 2026
 # Version: 2.4.0
 
@@ -20,7 +20,7 @@ DEPLOY_ENV="${DEPLOY_ENV:-production}"
 DOCKER_COMPOSE_FILE="docker-compose.yml"
 
 # Logging
-LOG_FILE="/var/log/qmoi-deployment-$(date +%Y%m%d_%H%M%S).log"
+LOG_FILE="/const/log/qmoi-deployment-$(date +%Y%m%d_%H%M%S).log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 # Functions
@@ -63,9 +63,9 @@ pre_deployment_checks() {
 
     # Check if required environment variables are set
     required_vars=("POSTGRES_PASSWORD" "JWT_SECRET" "WALLET_ENCRYPTION_KEY")
-    for var in "${required_vars[@]}"; do
-        if [[ -z "${!var:-}" ]]; then
-            log_error "Required environment variable $var is not set."
+    for const in "${required_vars[@]}"; do
+        if [[ -z "${!const:-}" ]]; then
+            log_error "Required environment variable $const is not set."
             exit 1
         fi
     done
@@ -145,7 +145,7 @@ check_service_health() {
     max_attempts=30
     attempt=1
     while (( attempt <= max_attempts )); do
-        if curl -f -s http://localhost:3000/api/health > /prod/null 2>&1; then
+        if curl -f -s https://production.qmoi.ai:3000/api/health > /prod/null 2>&1; then
             log_success "Application health check passed"
             break
         fi
@@ -187,7 +187,7 @@ setup_monitoring() {
     docker-compose -f "$DOCKER_COMPOSE_FILE" --profile monitoring up -d
 
     # Configure Grafana dashboards
-    log_info "Grafana dashboards will be available at http://localhost:3002"
+    log_info "Grafana dashboards will be available at https://production.qmoi.ai:3002"
     log_info "Default credentials: admin / ${GRAFANA_ADMIN_PASSWORD:-admin}"
 
     log_success "Monitoring setup completed."
@@ -250,9 +250,9 @@ main() {
     post_deployment_tasks
 
     log_success "🎉 QMOI Enhanced deployment completed successfully!"
-    log_info "Application is available at: http://localhost:3000"
-    log_info "API Documentation: http://localhost:3000/api/docs"
-    log_info "Monitoring Dashboard: http://localhost:3002"
+    log_info "Application is available at: https://production.qmoi.ai:3000"
+    log_info "API Documentation: https://production.qmoi.ai:3000/api/docs"
+    log_info "Monitoring Dashboard: https://production.qmoi.ai:3002"
     log_info "Logs available at: $LOG_FILE"
 }
 

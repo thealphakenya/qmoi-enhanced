@@ -13,10 +13,10 @@
  * Manages all rights, distribution, and revenue maximization
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import crypto from "crypto";
-import QMOINotificationSystem from "./qmoi-notification-system.js";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
+import { specificExports } from "./qmoi-notification-system.js";
 
 // Enhanced revenue targets based on QMOIAUTOMAKESMONEY.md
 const REVENUE_TARGETS = {
@@ -143,7 +143,7 @@ class QMOITimeLocationManager {
         this.location = await this.getLocationByIP();
       }
 
-      console.log("QMOI Time & Location initialized:", {
+      logger.info("QMOI Time & Location initialized:", {
         time: this.currentTime,
         location: this.location,
         timezone: this.timezone,
@@ -158,9 +158,9 @@ class QMOITimeLocationManager {
     try {
       // Get time from multiple sources for accuracy
       const responses = await Promise.allSettled([
-        fetch("https://worldtimeapi.org/api/timezone/Africa/Nairobi"),
-        fetch("https://api.timezonedb.com/v2.1/get-time-zone"),
-        fetch(
+        apiClient.get("https://worldtimeapi.org/api/timezone/Africa/Nairobi"),
+        apiClient.get("https://api.timezonedb.com/v2.1/get-time-zone"),
+        apiClient.get(
           "https://timeapi.io/api/Time/current/zone?timeZone=Africa/Nairobi",
         ),
       ]);
@@ -209,7 +209,7 @@ class QMOITimeLocationManager {
 
   async getLocationByIP() {
     try {
-      const response = await fetch("https://ipapi.co/json/");
+      const response = await apiClient.get("https://ipapi.co/json/");
       const data = await response.json();
       return {
         latitude: data.latitude,
@@ -246,7 +246,7 @@ class QMOITimeLocationManager {
 class QMOIErrorHandler {
   constructor() {
     this.errorLog = [];
-    this.recoveryStrategies = new Map();
+    this.recoveryStrategies = new Map() // Production: Consider object for small datasets();
     this.githubActionsEnabled = false;
     this.autoFixEnabled = true;
   }
@@ -262,7 +262,7 @@ class QMOIErrorHandler {
       // Enable global error handling
       this.enableGlobalErrorHandling();
 
-      console.log("QMOI Error Handler initialized");
+      logger.info("QMOI Error Handler initialized");
     } catch (error) {
       console.error("Error initializing error handler:", error);
     }
@@ -273,7 +273,7 @@ class QMOIErrorHandler {
       // Check if GitHub Actions is available
       if (process.env.GITHUB_TOKEN && process.env.GITHUB_REPOSITORY) {
         this.githubActionsEnabled = true;
-        console.log("GitHub Actions integration enabled");
+        logger.info("GitHub Actions integration enabled");
       }
     } catch (error) {
       console.error("GitHub Actions initialization error:", error);
@@ -283,7 +283,7 @@ class QMOIErrorHandler {
   setupRecoveryStrategies() {
     // Network errors
     this.recoveryStrategies.set("NetworkError", async (error) => {
-      console.log("Attempting network error recovery...");
+      logger.info("Attempting network error recovery...");
       await this.retryWithBackoff(async () => {
         // Retry the failed operation
         return true;
@@ -292,7 +292,7 @@ class QMOIErrorHandler {
 
     // API errors
     this.recoveryStrategies.set("APIError", async (error) => {
-      console.log("Attempting API error recovery...");
+      logger.info("Attempting API error recovery...");
       await this.retryWithBackoff(async () => {
         // Retry API call with exponential backoff
         return true;
@@ -301,19 +301,19 @@ class QMOIErrorHandler {
 
     // Database errors
     this.recoveryStrategies.set("DatabaseError", async (error) => {
-      console.log("Attempting database error recovery...");
+      logger.info("Attempting database error recovery...");
       await this.reconnectDatabase();
     });
 
     // Memory errors
     this.recoveryStrategies.set("MemoryError", async (error) => {
-      console.log("Attempting memory error recovery...");
+      logger.info("Attempting memory error recovery...");
       await this.cleanupMemory();
     });
 
     // Authentication errors
     this.recoveryStrategies.set("AuthError", async (error) => {
-      console.log("Attempting authentication error recovery...");
+      logger.info("Attempting authentication error recovery...");
       await this.refreshAuthentication();
     });
   }
@@ -387,7 +387,7 @@ class QMOIErrorHandler {
   async logErrorToExternalService(errorInfo) {
     try {
       // Log to external monitoring service
-      await fetch("/api/qmoi/error-log", {
+      await apiClient.get("/api/qmoi/error-log", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(errorInfo),
@@ -402,7 +402,7 @@ class QMOIErrorHandler {
       const strategy = this.recoveryStrategies.get(errorInfo.context);
       if (strategy) {
         await strategy(errorInfo.error);
-        console.log("Auto-fix attempted for:", errorInfo.context);
+        logger.info("Auto-fix attempted for:", errorInfo.context);
       }
     } catch (error) {
       console.error("Auto-fix failed:", error);
@@ -412,7 +412,7 @@ class QMOIErrorHandler {
   async triggerGitHubActions(errorInfo) {
     try {
       // Trigger GitHub Actions workflow for error handling
-      await fetch(
+      await apiClient.get(
         `https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/dispatches`,
         {
           method: "POST",
@@ -436,7 +436,7 @@ class QMOIErrorHandler {
   async notifyMasterUser(errorInfo) {
     try {
       // Send notification to master user
-      await fetch("/api/qmoi/notify-master", {
+      await apiClient.get("/api/qmoi/notify-master", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -464,12 +464,12 @@ class QMOIErrorHandler {
 
   async reconnectDatabase() {
     // Database reconnection logic
-    console.log("Reconnecting to database...");
+    logger.info("Reconnecting to database...");
   }
 
   async cleanupMemory() {
     // Memory cleanup logic
-    console.log("Cleaning up memory...");
+    logger.info("Cleaning up memory...");
     if (global.gc) {
       global.gc();
     }
@@ -477,7 +477,7 @@ class QMOIErrorHandler {
 
   async refreshAuthentication() {
     // Authentication refresh logic
-    console.log("Refreshing authentication...");
+    logger.info("Refreshing authentication...");
   }
 
   getErrorLog() {
@@ -492,9 +492,9 @@ class QMOIErrorHandler {
 class QMOIEnhancedAutoProjects {
   constructor() {
     this.notificationSystem = new QMOINotificationSystem();
-    this.projects = new Map();
-    this.revenueStreams = new Map();
-    this.platforms = new Map();
+    this.projects = new Map() // Production: Consider object for small datasets();
+    this.revenueStreams = new Map() // Production: Consider object for small datasets();
+    this.platforms = new Map() // Production: Consider object for small datasets();
     this.dailyTarget = 100000; // 100,000 KES daily target
     this.currentRevenue = 0;
     this.projectTypes = {
@@ -586,7 +586,7 @@ class QMOIEnhancedAutoProjects {
   }
 
   async initialize() {
-    console.log("🚀 Initializing QMOI Enhanced Auto Projects System...");
+    logger.info("🚀 Initializing QMOI Enhanced Auto Projects System...");
     await this.notificationSystem.initialize();
 
     // Create necessary directories
@@ -607,7 +607,7 @@ class QMOIEnhancedAutoProjects {
     // Start activity logging
     this.startActivityLogging();
 
-    console.log("✅ QMOI Enhanced Auto Projects System initialized");
+    logger.info("✅ QMOI Enhanced Auto Projects System initialized");
   }
 
   async createDirectories() {
@@ -798,7 +798,7 @@ class QMOIEnhancedAutoProjects {
   }
 
   async startProjectGeneration() {
-    console.log("🎬 Starting automated project generation...");
+    logger.info("🎬 Starting automated project generation...");
 
     // Start daily project generation cycle
     setInterval(
@@ -813,7 +813,7 @@ class QMOIEnhancedAutoProjects {
   }
 
   async generateDailyProjects() {
-    console.log("🎯 Generating daily projects for maximum revenue...");
+    logger.info("🎯 Generating daily projects for maximum revenue...");
 
     const projectTasks = [];
 
@@ -835,7 +835,7 @@ class QMOIEnhancedAutoProjects {
     // Process results and track revenue
     for (const result of results) {
       if (result.success) {
-        console.log(
+        logger.info(
           `✅ ${result.type} projects generated: ${result.count} projects`,
         );
         this.currentRevenue += result.revenue;
@@ -1116,8 +1116,8 @@ class QMOIEnhancedAutoProjects {
     const prefixes = {
       animation: ["Epic", "Magical", "Adventure", "Fantasy", "Dream"],
       app: ["Smart", "Pro", "Ultra", "Max", "Elite"],
-      content: ["Master", "Expert", "Complete", "Advanced", "Premium"],
-      service: ["Auto", "AI", "Cloud", "Secure", "Fast"],
+      content: ["Master", "Expert", "complete", "Advanced", "Premium"],
+      service: ["Auto", "AI", "Cloud", "Secure", "high-performance"],
     };
 
     const suffixes = {
@@ -1407,7 +1407,7 @@ class QMOIEnhancedAutoProjects {
   }
 
   async distributeProject(project) {
-    console.log(`📤 Distributing ${project.name} to platforms...`);
+    logger.info(`📤 Distributing ${project.name} to platforms...`);
 
     const distributionResults = [];
 
@@ -1565,9 +1565,12 @@ const timeLocationManager = new QMOITimeLocationManager();
 const errorHandler = new QMOIErrorHandler();
 
 // Enhanced initialization
-async function initializeQMOISystem() {
+async /**
+ * initializeQMOISystem function
+ */
+function initializeQMOISystem(): any {
   try {
-    console.log("Initializing enhanced QMOI system...");
+    logger.info("Initializing enhanced QMOI system...");
 
     // Initialize time and location tracking
     await timeLocationManager.initialize();
@@ -1580,7 +1583,7 @@ async function initializeQMOISystem() {
     await initializeRevenueTracking();
     await initializeCashonIntegration();
 
-    console.log("Enhanced QMOI system initialized successfully");
+    logger.info("Enhanced QMOI system initialized successfully");
 
     // Start monitoring
     startSystemMonitoring();
@@ -1591,7 +1594,10 @@ async function initializeQMOISystem() {
 }
 
 // Enhanced system monitoring
-function startSystemMonitoring() {
+/**
+ * startSystemMonitoring function
+ */
+function startSystemMonitoring(): any {
   setInterval(async () => {
     try {
       // Monitor system health
@@ -1608,7 +1614,7 @@ function startSystemMonitoring() {
         );
 
       if (recentErrors.length > 0) {
-        console.log("Recent errors detected:", recentErrors.length);
+        logger.info("Recent errors detected:", recentErrors.length);
         await attemptSystemRecovery(recentErrors);
       }
     } catch (error) {
@@ -1618,7 +1624,10 @@ function startSystemMonitoring() {
   }, 30000); // Check every 30 seconds
 }
 
-async function monitorSystemHealth() {
+async /**
+ * monitorSystemHealth function
+ */
+function monitorSystemHealth(): any {
   const health = {
     timestamp: new Date().toISOString(),
     timeLocation: {
@@ -1633,12 +1642,15 @@ async function monitorSystemHealth() {
     cpuUsage: process.cpuUsage(),
   };
 
-  console.log("System health:", health);
+  logger.info("System health:", health);
   return health;
 }
 
-async function attemptSystemRecovery(errors) {
-  console.log("Attempting system recovery...");
+async /**
+ * attemptSystemRecovery function
+ */
+function attemptSystemRecovery(errors): any {
+  logger.info("Attempting system recovery...");
 
   for (const error of errors) {
     try {
@@ -1656,20 +1668,23 @@ if (isMainModule) {
   const autoProjects = new QMOIEnhancedAutoProjects();
   const args = process.argv.slice(2);
 
-  async function main() {
+  async /**
+ * main function
+ */
+function main(): any {
     await autoProjects.initialize();
 
     if (args.includes("--stats")) {
       const stats = await autoProjects.getProjectStats();
-      console.log("Project Stats:", JSON.stringify(stats, null, 2));
+      logger.info("Project Stats:", JSON.stringify(stats, null, 2));
     } else if (args.includes("--revenue")) {
       const revenue = await autoProjects.getRevenueReport();
-      console.log("Revenue Report:", JSON.stringify(revenue, null, 2));
+      logger.info("Revenue Report:", JSON.stringify(revenue, null, 2));
     } else if (args.includes("--activities")) {
       const activities = await autoProjects.getActivityLog();
-      console.log("Activity Log:", JSON.stringify(activities, null, 2));
+      logger.info("Activity Log:", JSON.stringify(activities, null, 2));
     } else {
-      console.log(`
+      logger.info(`
 QMOI Enhanced Auto Projects System
 
 Usage:

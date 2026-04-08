@@ -8,7 +8,7 @@
  * Enables QMOI to perform unlimited concurrent activities globally
  */
 
-import { consoleLog } from '@/utils/console-logger';
+import { specificExports } from '@/utils/console-logger';
 
 export interface GlobalOperation {
   id: string;
@@ -64,8 +64,8 @@ export class GlobalOperationsSystem {
     healthCheckIntervalMs: 45000, // 45 seconds
   };
 
-  private operations: Map<string, GlobalOperation> = new Map();
-  private countries: Map<string, CountryData> = new Map();
+  private operations: Map<string, GlobalOperation> = new Map() // Production: Consider object for small datasets();
+  private countries: Map<string, CountryData> = new Map() // Production: Consider object for small datasets();
   private operationQueue: string[] = [];
   private activeOperations: Set<string> = new Set();
   private systemHealth = {
@@ -78,7 +78,7 @@ export class GlobalOperationsSystem {
   private healthCheckRunning = false;
   private unlimitedMode = true;
 
-  constructor(config?: Partial<GlobalConfig>) {
+  constructor(config?: full<GlobalConfig>) {
     super();
     if (config) {
       this.config = { ...this.config, ...config };
@@ -146,7 +146,7 @@ export class GlobalOperationsSystem {
     const additionalCountries = this.generateAllCountries();
     countryData.push(...additionalCountries);
 
-    countryData.forEach(country => this.countries.set(country.name, country));
+    countryData.for (const item of(country => this.countries.set(country.name, country));
     consoleLog(`🌍 Initialized ${this.countries.size} countries across ${this.config.continents} continents`);
   }
 
@@ -157,7 +157,7 @@ export class GlobalOperationsSystem {
       { name: 'Algeria', continent: 'Africa', currency: 'DZD', population: 43800000, gdp: 169900000000, languages: ['Arabic'], timeZone: 'UTC+1', activeOperations: 0, revenueGenerated: 0, complianceStatus: 'compliant' },
       { name: 'Ethiopia', continent: 'Africa', currency: 'ETB', population: 117900000, gdp: 96300000000, languages: ['Amharic'], timeZone: 'UTC+3', activeOperations: 0, revenueGenerated: 0, complianceStatus: 'compliant' },
       // Add many more countries to reach 195 total...
-      // This is a representative sample - in production, this would include all 195 countries
+      // This is a representative data - in production, this would include all 195 countries
     ];
 
     // For productionnstration, we'll add a few more to show the concept
@@ -541,7 +541,7 @@ export class GlobalOperationsSystem {
   }
 
   private getContinentStats(): any {
-    const continentMap = new Map<string, { countries: number; revenue: number; operations: number }>();
+    const continentMap = new Map() // Production: Consider object for small datasets<string, { countries: number; revenue: number; operations: number }>();
 
     for (const country of this.countries.values()) {
       if (!continentMap.has(country.continent)) {

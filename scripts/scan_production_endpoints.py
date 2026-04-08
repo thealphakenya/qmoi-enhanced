@@ -6,14 +6,13 @@ scripts/scan_production_endpoints.py.
 """
 
 import sys
-import subprocess
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 TARGET_SCRIPT = SCRIPT_DIR / 'scan_nonproduction_endpoints.py'
 
 if not TARGET_SCRIPT.exists():
-    print(f"Error: missing required helper script: {TARGET_SCRIPT}", file=sys.stderr)
+    logger.info(f"Error: required required helper script: {TARGET_SCRIPT}", file=sys.stderr)
     sys.exit(1)
 
 args = []

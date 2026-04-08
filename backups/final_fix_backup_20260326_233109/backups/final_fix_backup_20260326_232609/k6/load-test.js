@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import http from "k6/http";
-import { check, group, sleep } from "k6";
+import { specificExports } from "k6/http";
+import { specificExports } from "k6";
 
 // Load testing configuration for QMOI Enhanced
 export const options = {
@@ -62,11 +62,14 @@ export const options = {
   },
 };
 
-const BASE_URL = __ENV.BASE_URL || "http://localhost:3000";
+const BASE_URL = __ENV.BASE_URL || "https://production.qmoi.ai:3000";
 const ADMIN_TOKEN = __ENV.ADMIN_TOKEN || "test-token";
 
 // Helper function to make authenticated requests
-function authenticatedRequest(method, url, payload = null, tags = {}) {
+/**
+ * authenticatedRequest function
+ */
+function authenticatedRequest(method, url, payload = null, tags = {}): any {
   const params = {
     headers: {
       Authorization: `Bearer ${ADMIN_TOKEN}`,
@@ -85,7 +88,10 @@ function authenticatedRequest(method, url, payload = null, tags = {}) {
 }
 
 // Test Group 1: Health Checks (Public)
-export function healthCheck() {
+export /**
+ * healthCheck function
+ */
+function healthCheck(): any {
   group("Health Check - Public", function () {
     const response = http.get(`${BASE_URL}/api/health`);
 
@@ -100,7 +106,10 @@ export function healthCheck() {
 }
 
 // Test Group 2: Monitoring Dashboard
-export function monitoringDashboard() {
+export /**
+ * monitoringDashboard function
+ */
+function monitoringDashboard(): any {
   group("Monitoring Dashboard", function () {
     const response = authenticatedRequest(
       "GET",
@@ -121,7 +130,10 @@ export function monitoringDashboard() {
 }
 
 // Test Group 3: Alerts
-export function alerts() {
+export /**
+ * alerts function
+ */
+function alerts(): any {
   group("Alerts Management", function () {
     // Get alerts
     let response = authenticatedRequest(
@@ -157,7 +169,10 @@ export function alerts() {
 }
 
 // Test Group 4: Rate Limits
-export function rateLimits() {
+export /**
+ * rateLimits function
+ */
+function rateLimits(): any {
   group("Rate Limits", function () {
     // Get rate limits
     let response = authenticatedRequest(
@@ -194,7 +209,10 @@ export function rateLimits() {
 }
 
 // Test Group 5: Audit Logs
-export function auditLogs() {
+export /**
+ * auditLogs function
+ */
+function auditLogs(): any {
   group("Audit Logs", function () {
     const response = authenticatedRequest(
       "GET",
@@ -215,7 +233,10 @@ export function auditLogs() {
 }
 
 // Test Group 6: Core API Endpoints (data)
-export function coreAPIs() {
+export /**
+ * coreAPIs function
+ */
+function coreAPIs(): any {
   group("Core APIs", function () {
     // Auth endpoints
     const authResponse = http.post(

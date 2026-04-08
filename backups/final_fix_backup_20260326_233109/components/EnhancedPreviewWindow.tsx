@@ -5,18 +5,24 @@
 
 // Production implementation: all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import { useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import Image from "next/image";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "next/image";
 
-export function EnhancedPreviewWindow() {
+export /**
+ * EnhancedPreviewWindow function
+ */
+function EnhancedPreviewWindow(): any {
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);
   const [mediaType, setMediaType] = useState<
     "image" | "video" | "audio" | "youtube" | null
   >(null);
   const [youtubeUrl, setYoutubeUrl] = useState<string>("");
 
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+  /**
+ * handleFileChange function
+ */
+function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;
     const url = URL.createObjectURL(file);
@@ -33,7 +39,7 @@ export function EnhancedPreviewWindow() {
           .localStorage.getItem("qmoi_session_id")) ||
         undefined;
       if (sid) {
-        fetch("/api/qmoi/memory", {
+        apiClient.get("/api/qmoi/memory", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -52,7 +58,10 @@ export function EnhancedPreviewWindow() {
     } catch (error) { /* Handle error */ }
   }
 
-  function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>) {
+  /**
+ * handleYoutubeChange function
+ */
+function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
     setYoutubeUrl(e.target.value);
     setMediaType("youtube");
     // persist youtube preview
@@ -63,7 +72,7 @@ export function EnhancedPreviewWindow() {
           .localStorage.getItem("qmoi_session_id")) ||
         undefined;
       if (sid && e.target.value) {
-        fetch("/api/qmoi/memory", {
+        apiClient.get("/api/qmoi/memory", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

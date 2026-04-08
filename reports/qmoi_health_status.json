@@ -7,5 +7,9 @@
   "auto_fix_success": 0,
   "last_error": null,
   "last_fix": null,
-  "last_update": "2025-07-06T00:58:24Z"
+  "last_update": "2025-07-06T00:58:24Z",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:04.680460"
 }

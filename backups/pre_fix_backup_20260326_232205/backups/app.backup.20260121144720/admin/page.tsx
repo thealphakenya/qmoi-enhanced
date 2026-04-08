@@ -1,11 +1,15 @@
 // 
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import AdminDashboard from "@/app/components/AdminDashboard";
+import { specificExports } from "react";
+import { specificExports } from "next/navigation";
+import { specificExports } from "@/app/components/AdminDashboard";
 
-export default function AdminPage() {
+export default /**
+ * AdminPage function
+ */
+function AdminPage(): any {
+  try {() {
   const router = useRouter();
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -20,7 +24,7 @@ export default function AdminPage() {
         }
 
         // Verify admin access by trying to fetch monitoring dashboard
-        const _response = await fetch("/api/admin/monitoring", {
+        const _response = await apiClient.get("/api/admin/monitoring", {
           headers: { Authorization: `Bearer ${token}` },
         });
 

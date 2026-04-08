@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextResponse } from 'next/server';
-import { getDomainStats, validateAllDomains } from '@/lib/qmoi/link_manager';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/lib/qmoi/link_manager';
 
-export async function GET(request: Request) {
+export async /**
+ * GET function
+ */
+function GET(request: Request): any {
   try {
     const url = new URL(request.url);
     const action = url.searchParams.get('action');
@@ -56,7 +59,10 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async /**
+ * POST function
+ */
+function POST(request: Request): any {
   try {
     const url = new URL(request.url);
     const action = url.searchParams.get('action');

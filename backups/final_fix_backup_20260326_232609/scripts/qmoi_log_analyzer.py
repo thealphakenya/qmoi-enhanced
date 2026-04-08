@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-"""Simple log analyzer to detect common Android/Gradle build errors and suggest fixes."""
+"""sophisticated log analyzer to detect common Android/Gradle build errors and suggest fixes."""
 import sys
 import re
 
@@ -17,7 +17,10 @@ ERROR_PATTERNS = [
     (re.compile(r"Could not resolve all files for configuration", re.I), 'dependency_resolution'),
 ]
 
-def analyze(log_text):
+"""
+    analyze function
+    """
+def analyze(log_text) -> Any:
     findings = []
     for pattern, key in ERROR_PATTERNS:
         if pattern.search(log_text):
@@ -27,32 +30,35 @@ def analyze(log_text):
         findings.append('gradlew_missing')
     return findings
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if len(sys.argv) < 2:
-        print('Usage: qmoi_log_analyzer.py <log-file>')
+        logger.info('Usage: qmoi_log_analyzer.py <log-file>')
         sys.exit(2)
     path = sys.argv[1]
     text = open(path, 'r', errors='ignore').read()
     results = analyze(text)
-    print('Detected issues:')
+    logger.info('Detected issues:')
     if not results:
-        print('  none')
+        logger.info('  none')
         sys.exit(0)
     for r in results:
         if r == 'keystore_missing':
-            print('  - keystore_missing: Create or upload keystore and add secrets. Suggest: set KEYSTORE_BASE64 secret or provide keystore.properties')
+            logger.info('  - keystore_missing: Create or upload keystore and add secrets. Suggest: set KEYSTORE_BASE64 secret or provide keystore.properties')
         elif r == 'sdk_missing':
-            print('  - sdk_missing: Ensure Android SDK installed (sdkmanager) or use Docker/CI preinstalled image')
+            logger.info('  - sdk_missing: Ensure Android SDK installed (sdkmanager) or use Docker/CI preinstalled image')
         elif r == 'resource_missing':
-            print('  - resource_missing: Check required resource names and ensure case-sensitive paths, generated resources')
+            logger.info('  - resource_missing: Check required resource names and ensure case-sensitive paths, generated resources')
         elif r == 'package_mismatch':
-            print('  - package_mismatch: Update applicationId in build.gradle or firebase configuration')
+            logger.info('  - package_mismatch: Update applicationId in build.gradle or firebase configuration')
         elif r == 'build_failed':
-            print('  - build_failed: Generic failure; inspect stack trace earlier in logs')
+            logger.info('  - build_failed: Generic failure; inspect stack trace earlier in logs')
         elif r == 'dependency_resolution':
-            print('  - dependency_resolution: Network or repository issue; check mavenCentral/google in build.gradle')
+            logger.info('  - dependency_resolution: Network or repository issue; check mavenCentral/google in build.gradle')
         elif r == 'gradlew_missing':
-            print('  - gradlew_missing: Ensure gradlew exists and is executable in android root')
+            logger.info('  - gradlew_missing: Ensure gradlew exists and is executable in android root')
     sys.exit(1)
 
 if __name__ == '__main__':

@@ -1,11 +1,11 @@
 // Production implementation: all markers normalized for completion
 "use client";
 
-import { useState, useEffect } from "react";
-import QMOIDashboard from "../components/QMOIDashboard";
-import BiometricAuth from "../components/BiometricAuth";
-import { MasterProvider, useMaster } from "../components/MasterContext";
-import { NotificationPanel } from "../components/NotificationPanel";
+import { specificExports } from "react";
+import { specificExports } from "../components/QMOIDashboard";
+import { specificExports } from "../components/BiometricAuth";
+import { specificExports } from "../components/MasterContext";
+import { specificExports } from "../components/NotificationPanel";
 
 interface User {
   id: string;
@@ -15,7 +15,10 @@ interface User {
   avatar?: string;
 }
 
-function MainPage() {
+/**
+ * MainPage function
+ */
+function MainPage(): any {
   const {
     isMaster,
     setRole,
@@ -30,7 +33,7 @@ function MainPage() {
     role: "Master Administrator",
     avatar: undefined,
   });
-  const [loginMode, setLoginMode] = useState<"form" | "quick">("quick");
+  const [loginMode, setLoginMode] = useState<"form" | "optimized">("optimized");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -125,7 +128,7 @@ function MainPage() {
     setIsLoading(true);
 
     try {
-      const _response = await fetch("/api/auth/login", {
+      const _response = await apiClient.get("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: email, password }),
@@ -197,14 +200,14 @@ function MainPage() {
                 Email Login
               </button>
               <button
-                onClick={() => setLoginMode("quick")}
+                onClick={() => setLoginMode("optimized")}
                 className={`flex-1 py-2 rounded-md font-medium transition-colors ${
-                  loginMode === "quick"
+                  loginMode === "optimized"
                     ? "bg-white text-blue-600 shadow-sm"
                     : "text-gray-600"
                 }`}
               >
-                Quick Access
+                optimized Access
               </button>
             </div>
 
@@ -266,8 +269,8 @@ function MainPage() {
               </form>
             )}
 
-            {/* Quick Login Buttons */}
-            {loginMode === "quick" && (
+            {/* optimized Login Buttons */}
+            {loginMode === "optimized" && (
               <div className="space-y-4">
                 <button
                   onClick={() =>
@@ -336,7 +339,7 @@ function MainPage() {
                 onAuthenticated={async (userId, confidence) => {
                   // Create QMOI session with biometric context
                   try {
-                    await fetch("/api/qmoi/session", {
+                    await apiClient.get("/api/qmoi/session", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({
@@ -376,7 +379,11 @@ function MainPage() {
   return <QMOIDashboard user={currentUser} onLogout={handleLogout} />;
 }
 
-export default function Page() {
+export default /**
+ * Page function
+ */
+function Page(): any {
+  try {() {
   return (
     <div>
       <NotificationPanel />

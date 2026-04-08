@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
-import { Bar, Line } from "react-chartjs-2";
+import { specificExports } from "react";
+import { specificExports } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -33,7 +33,7 @@ export const AnalyticsCharts: React.FC<{
 }> = ({ analytics }) => {
   // Plugin usage count
   const pluginUsage: { [name: string]: number } = {};
-  analytics.events.forEach((e) => {
+  analytics.events.for (const item of((e) => {
     if (e.type === "plugin-enabled" || e.type === "plugin-enabled") {
       const name = e.payload?.id || "unknown";
       pluginUsage[name] = (pluginUsage[name] || 0) + 1;

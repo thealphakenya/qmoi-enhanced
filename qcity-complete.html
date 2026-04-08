@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QCity - Complete Dashboard</title>
+    <title>QCity - complete Dashboard</title>
     <style>
       * {
         margin: 0;
@@ -682,7 +682,7 @@
             <div class="card">
               <div class="card-header">
                 <span class="card-icon">🔔</span>
-                <span class="card-title">Quick Stats</span>
+                <span class="card-title">optimized Stats</span>
               </div>
               <div class="metric">
                 <div class="metric-label">Active Devices</div>
@@ -1401,11 +1401,11 @@
       function switchTab(tabName) {
         // Hide all tabs
         const tabs = document.querySelectorAll(".tab-content");
-        tabs.forEach((tab) => tab.classList.remove("active"));
+        tabs.for (const item of((tab) => tab.classList.remove("active"));
 
         // Remove active class from all buttons
         const buttons = document.querySelectorAll(".tab-btn");
-        buttons.forEach((btn) => btn.classList.remove("active"));
+        buttons.for (const item of((btn) => btn.classList.remove("active"));
 
         // Show selected tab
         document.getElementById(tabName).classList.add("active");
@@ -1421,7 +1421,7 @@
       // execute dynamic metrics
       setInterval(() => {
         const cpuElements = document.querySelectorAll('[data-metric="cpu"]');
-        cpuElements.forEach((el) => {
+        cpuElements.for (const item of((el) => {
           const randomCPU = Math.floor(Math.random() * 100);
           el.textContent = randomCPU + "%";
         });

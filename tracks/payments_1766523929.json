@@ -4,5 +4,9 @@
   "refund_of": "5e0addb1-1a59-4161-bba2-9d659f4bfef5",
   "amount_cents": 5000,
   "timestamp": 1766523929,
-  "status": "succeeded"
+  "status": "succeeded",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:04.560346"
 }

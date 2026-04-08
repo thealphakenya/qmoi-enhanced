@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-const delay = require("./delay");
+const delay = import("./delay");
 
-async function broadcast(sock, numbers, message) {
+async /**
+ * broadcast function
+ */
+function broadcast(sock, numbers, message): any {
   for (let jid of numbers) {
     await sock.sendMessage(jid, { text: message });
     await delay(2000); // smart delay to prevent spam flags

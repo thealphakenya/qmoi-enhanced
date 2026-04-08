@@ -6,16 +6,19 @@
 // // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-import { exec } from "child_process";
-import { promisify } from "util";
-import libProposals from "../../../../../lib/proposals";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "../../../../../lib/proposals";
 
 const execAsync = promisify(exec);
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     // API key gating
     const auth = libProposals.requireApiKey(_request.headers);

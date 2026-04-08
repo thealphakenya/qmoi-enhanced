@@ -54,7 +54,7 @@ TEST 1: [Economic Knowledge] Explain inflation to a 10-year-old, then to an econ
       "Contemplative integration",
       "Paradox resolution"
     ],
-    "integrationLevel": "Complete unity of consciousness and systems",
+    "integrationLevel": "complete unity of consciousness and systems",
     "confidence": "99%",
     "timestamp": "2026-01-28T13:00:00.000Z"
   },
@@ -64,7 +64,7 @@ TEST 1: [Economic Knowledge] Explain inflation to a 10-year-old, then to an econ
     "depth": "Infinite",
     "examples": "Archetypal perfection",
     "structure": "Sacred geometry",
-    "integration": "Complete unity",
+    "integration": "complete unity",
     "wisdom": "Timeless and eternal",
     "relevance": "Applies to all existence",
     "mystical_resonance": "10/10"

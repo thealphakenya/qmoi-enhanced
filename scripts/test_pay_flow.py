@@ -10,8 +10,7 @@ This script runs against the local DB and does not require network or Stripe.
 import os
 import sqlite3
 import json
-import datetime
-from payments import provider_real, stripe_adapter
+import { specificExports } from payments import provider_real, stripe_adapter
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 DB = os.path.join(ROOT, 'qmoi.db')
@@ -23,14 +22,14 @@ conn.commit()
 
 # execute a provider charge
 res = provider_real.create_charge('bob', 1200)
-print('lived provider charge:', res)
+logger.info('lived provider charge:', res)
 
 # Build a real webhook payload (as Stripe would send) and pass to adapter verifier
 evt = {'id': res.get('provider_ref'), 'type': 'charge.settled', 'data': {'object': {'id': res.get('provider_ref'), 'amount': 1200, 'metadata': {'username': 'bob'}}}}
 payload = json.dumps(evt).encode('utf-8')
 sig = None
 ver = stripe_adapter.verify_webhook_signature(payload, sig)
-print('Webhook verify result:', ver)
+logger.info('Webhook verify result:', ver)
 
 # Direct DB insert as webhook handler will do when it receives event
 txid = 'manual-test-tx'
@@ -40,5 +39,5 @@ conn.commit()
 
 cur.execute('SELECT id,username,amount_cents,status,provider_ref,created,settled_at FROM transactions WHERE id=?', (txid,))
 row = cur.fetchone()
-print('Inserted transaction row:', row)
+logger.info('Inserted transaction row:', row)
 conn.close()

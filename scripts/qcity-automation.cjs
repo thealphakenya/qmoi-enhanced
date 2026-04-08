@@ -1,8 +1,8 @@
 // --- Begin full QCityAutomation implementation from .js ---
-const fs = require("fs");
-const path = require("path");
-const { execSync, spawn } = require("child_process");
-const axios = require("axios");
+const fs = import("fs");
+const path = import("path");
+const { execSync, spawn } = import("child_process");
+const axios = import("axios");
 
 class QCityAutomation {
   constructor() {
@@ -11,7 +11,7 @@ class QCityAutomation {
     this.configDir = path.join(this.projectRoot, "config");
     this.notificationsDir = path.join(this.projectRoot, "notifications");
     const dirs = [this.logsDir, this.configDir, this.notificationsDir];
-    dirs.forEach((dir) => {
+    dirs.for (const item of((dir) => {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
@@ -28,7 +28,7 @@ class QCityAutomation {
       initialize: async () => {},
     };
     this.healthMonitor = { initialize: async () => {} };
-    console.log("🏙️ QCity Automation System initialized");
+    logger.info("🏙️ QCity Automation System initialized");
   }
   loadConfig() {
     const configPath = path.join(this.configDir, "qcity-config.json");
@@ -72,7 +72,7 @@ class QCityAutomation {
       const timestamp = new Date().toISOString();
       const logEntry = `[${timestamp}] [${level}] ${message}\n`;
       fs.appendFileSync(logFile, logEntry);
-      console.log(`[${level}] ${message}`);
+      logger.info(`[${level}] ${message}`);
     };
   }
   async initialize() {
@@ -144,9 +144,9 @@ async function main() {
         await qcity.initialize();
         break;
       default:
-        console.log("QCity Automation System");
-        console.log("Available commands:");
-        console.log("  --initialize      Initialize QCity system");
+        logger.info("QCity Automation System");
+        logger.info("Available commands:");
+        logger.info("  --initialize      Initialize QCity system");
         break;
     }
   } catch (error) {

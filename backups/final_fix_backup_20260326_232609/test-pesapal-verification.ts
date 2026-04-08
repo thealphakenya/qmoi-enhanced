@@ -3,9 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { aiService } from "./lib/ai-service.js";
+import { specificExports } from "./lib/ai-service.js";
 
-async function testPesapalVerification() {
+async /**
+ * testPesapalVerification function
+ */
+function testPesapalVerification(): any {
   .log("🔍 Starting Pesapal Balance Verification...\n");
 
   try {

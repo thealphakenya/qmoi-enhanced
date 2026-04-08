@@ -23,9 +23,7 @@ Runnable without pytest: python3 scripts/prodice_orchestration_manager.test.py
 import unittest
 import tempfile
 import shutil
-import json
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 import sys
 import os
 
@@ -35,14 +33,17 @@ sys.path.insert(0, str(Path(__file__).parent))
 try:
     from prodice_orchestration_manager import prodiceOrchestrationManager
 except ImportError as e:
-    print(f"Warning: Could not import prodiceOrchestrationManager: {e}")
-    print("Running skeleton tests only")
+    logger.info(f"Warning: Could not import prodiceOrchestrationManager: {e}")
+    logger.info("Running complete tests only")
     prodiceOrchestrationManager = None
 
 class TestprodiceOrchestrationManagerRegistry(unittest.TestCase):
     """Test prodice registry management"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
             self.skipTest("prodiceOrchestrationManager not available")
@@ -56,18 +57,27 @@ class TestprodiceOrchestrationManagerRegistry(unittest.TestCase):
         
         self.manager = prodiceOrchestrationManager()
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         os.chdir(self.old_cwd)
         shutil.rmtree(self.test_dir)
         
-    def test_load_prodice_registry_creates_empty_on_missing(self):
-        """Test that load_prodice_registry creates empty dict when file missing"""
+    """
+    test_load_prodice_registry_creates_empty_on_missing function
+    """
+def test_load_prodice_registry_creates_empty_on_missing(self) -> Any:
+        """Test that load_prodice_registry creates empty dict when file required"""
         prodices = self.manager.load_prodice_registry()
         
         self.assertIsInstance(prodices, dict)
         
-    def test_save_prodice_registry_creates_file(self):
+    """
+    test_save_prodice_registry_creates_file function
+    """
+def test_save_prodice_registry_creates_file(self) -> Any:
         """Test that save_prodice_registry creates JSON file"""
         test_prodices = {
             "android_1": [{
@@ -84,7 +94,10 @@ class TestprodiceOrchestrationManagerRegistry(unittest.TestCase):
         registry_file = Path(self.test_dir, "data", "prodice_registry.json")
         self.assertTrue(registry_file.exists(), "prodice registry file should be created")
         
-    def test_prodice_registry_persistence(self):
+    """
+    test_prodice_registry_persistence function
+    """
+def test_prodice_registry_persistence(self) -> Any:
         """Test that prodice registry persists and loads correctly"""
         test_prodices = {
             "android": [{
@@ -111,7 +124,10 @@ class TestprodiceOrchestrationManagerRegistry(unittest.TestCase):
 class TestprodiceOrchestrationManagerDiscovery(unittest.TestCase):
     """Test prodice discovery for all platforms"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
             self.skipTest("prodiceOrchestrationManager not available")
@@ -122,18 +138,27 @@ class TestprodiceOrchestrationManagerDiscovery(unittest.TestCase):
         
         self.manager = prodiceOrchestrationManager()
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         os.chdir("/")
         shutil.rmtree(self.test_dir)
         
-    def test_discover_prodices_returns_dict(self):
+    """
+    test_discover_prodices_returns_dict function
+    """
+def test_discover_prodices_returns_dict(self) -> Any:
         """Test that discover_prodices returns dictionary"""
         prodices = self.manager.discover_prodices()
         
         self.assertIsInstance(prodices, dict)
         
-    def test_discover_prodices_includes_prodice_types(self):
+    """
+    test_discover_prodices_includes_prodice_types function
+    """
+def test_discover_prodices_includes_prodice_types(self) -> Any:
         """Test that discovery includes prodice type keys"""
         prodices = self.manager.discover_prodices()
         
@@ -142,28 +167,43 @@ class TestprodiceOrchestrationManagerDiscovery(unittest.TestCase):
         for key in prodices.keys():
             self.assertIn(key, ["android", "ios", "macos", "windows", "linux"])
             
-    def test_android_prodice_discovery_returns_list(self):
+    """
+    test_android_prodice_discovery_returns_list function
+    """
+def test_android_prodice_discovery_returns_list(self) -> Any:
         """Test Android prodice discovery returns list"""
         # This will use real adb if available, or return empty list
         result = self.manager._discover_android()
         self.assertIsInstance(result, (list, type(None)))
         
-    def test_ios_prodice_discovery_returns_list(self):
+    """
+    test_ios_prodice_discovery_returns_list function
+    """
+def test_ios_prodice_discovery_returns_list(self) -> Any:
         """Test iOS prodice discovery returns list"""
         result = self.manager._discover_ios()
         self.assertIsInstance(result, (list, type(None)))
         
-    def test_macos_prodice_discovery_returns_list(self):
+    """
+    test_macos_prodice_discovery_returns_list function
+    """
+def test_macos_prodice_discovery_returns_list(self) -> Any:
         """Test macOS prodice discovery returns list"""
         result = self.manager._discover_macos()
         self.assertIsInstance(result, (list, type(None)))
         
-    def test_windows_prodice_discovery_returns_list(self):
+    """
+    test_windows_prodice_discovery_returns_list function
+    """
+def test_windows_prodice_discovery_returns_list(self) -> Any:
         """Test Windows prodice discovery returns list"""
         result = self.manager._discover_windows()
         self.assertIsInstance(result, (list, type(None)))
         
-    def test_linux_prodice_discovery_returns_list(self):
+    """
+    test_linux_prodice_discovery_returns_list function
+    """
+def test_linux_prodice_discovery_returns_list(self) -> Any:
         """Test Linux prodice discovery returns list"""
         result = self.manager._discover_linux()
         self.assertIsInstance(result, (list, type(None)))
@@ -171,7 +211,10 @@ class TestprodiceOrchestrationManagerDiscovery(unittest.TestCase):
 class TestprodiceOrchestrationManagerHealthChecks(unittest.TestCase):
     """Test prodice health checking"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
             self.skipTest("prodiceOrchestrationManager not available")
@@ -190,12 +233,18 @@ class TestprodiceOrchestrationManagerHealthChecks(unittest.TestCase):
             "discovered_at": datetime.now().isoformat()
         }
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         os.chdir("/")
         shutil.rmtree(self.test_dir)
         
-    def test_check_prodice_health_returns_dict(self):
+    """
+    test_check_prodice_health_returns_dict function
+    """
+def test_check_prodice_health_returns_dict(self) -> Any:
         """Test that health check returns dictionary"""
         health = self.manager.check_prodice_health(self.test_prodice)
         
@@ -204,13 +253,19 @@ class TestprodiceOrchestrationManagerHealthChecks(unittest.TestCase):
         self.assertIn("prodice_type", health)
         self.assertIn("status", health)
         
-    def test_health_check_includes_timestamp(self):
+    """
+    test_health_check_includes_timestamp function
+    """
+def test_health_check_includes_timestamp(self) -> Any:
         """Test that health check includes timestamp"""
         health = self.manager.check_prodice_health(self.test_prodice)
         
         self.assertIn("timestamp", health)
         
-    def test_health_check_includes_metrics(self):
+    """
+    test_health_check_includes_metrics function
+    """
+def test_health_check_includes_metrics(self) -> Any:
         """Test that health check includes metrics"""
         health = self.manager.check_prodice_health(self.test_prodice)
         
@@ -222,7 +277,10 @@ class TestprodiceOrchestrationManagerHealthChecks(unittest.TestCase):
 class TestprodiceOrchestrationManagerDeployment(unittest.TestCase):
     """Test app deployment to prodices"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
             self.skipTest("prodiceOrchestrationManager not available")
@@ -246,12 +304,18 @@ class TestprodiceOrchestrationManagerDeployment(unittest.TestCase):
             "discovered_at": datetime.now().isoformat()
         }
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         os.chdir(self.old_cwd)
         shutil.rmtree(self.test_dir)
         
-    def test_deploy_app_returns_deployment_object(self):
+    """
+    test_deploy_app_returns_deployment_object function
+    """
+def test_deploy_app_returns_deployment_object(self) -> Any:
         """Test that deploy_app returns deployment tracking object"""
         deployment = self.manager.deploy_app(self.test_prodice, str(self.test_app))
         
@@ -261,20 +325,29 @@ class TestprodiceOrchestrationManagerDeployment(unittest.TestCase):
         self.assertIn("app_file", deployment)
         self.assertIn("status", deployment)
         
-    def test_deployment_includes_tracking_id(self):
+    """
+    test_deployment_includes_tracking_id function
+    """
+def test_deployment_includes_tracking_id(self) -> Any:
         """Test that deployment includes QMOI tracking ID"""
         deployment = self.manager.deploy_app(self.test_prodice, str(self.test_app))
         
         if "tracking_id" in deployment:
             self.assertTrue(deployment["tracking_id"].startswith("QMOI-DEPLOY-"))
             
-    def test_deployment_includes_timestamp(self):
+    """
+    test_deployment_includes_timestamp function
+    """
+def test_deployment_includes_timestamp(self) -> Any:
         """Test that deployment includes timestamp"""
         deployment = self.manager.deploy_app(self.test_prodice, str(self.test_app))
         
         self.assertIn("timestamp", deployment)
         
-    def test_parallel_deploy_returns_aggregated_results(self):
+    """
+    test_parallel_deploy_returns_aggregated_results function
+    """
+def test_parallel_deploy_returns_aggregated_results(self) -> Any:
         """Test that parallel_deploy returns aggregated results"""
         prodices = [self.test_prodice]
         results = self.manager.parallel_deploy(prodices, str(self.test_app))
@@ -287,7 +360,10 @@ class TestprodiceOrchestrationManagerDeployment(unittest.TestCase):
 class TestprodiceOrchestrationManagerListing(unittest.TestCase):
     """Test prodice listing and filtering"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
             self.skipTest("prodiceOrchestrationManager not available")
@@ -318,18 +394,27 @@ class TestprodiceOrchestrationManagerListing(unittest.TestCase):
             ]
         }
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         os.chdir("/")
         shutil.rmtree(self.test_dir)
         
-    def test_list_prodices_returns_list(self):
+    """
+    test_list_prodices_returns_list function
+    """
+def test_list_prodices_returns_list(self) -> Any:
         """Test that list_prodices returns list"""
         prodices = self.manager.list_prodices()
         
         self.assertIsInstance(prodices, list)
         
-    def test_list_prodices_includes_all_prodices(self):
+    """
+    test_list_prodices_includes_all_prodices function
+    """
+def test_list_prodices_includes_all_prodices(self) -> Any:
         """Test that list_prodices includes all prodices when no filter"""
         prodices = self.manager.list_prodices()
         
@@ -338,7 +423,10 @@ class TestprodiceOrchestrationManagerListing(unittest.TestCase):
             prodice_types = [d["type"] for d in prodices]
             self.assertGreater(len(set(prodice_types)), 0)
             
-    def test_list_prodices_filters_by_type(self):
+    """
+    test_list_prodices_filters_by_type function
+    """
+def test_list_prodices_filters_by_type(self) -> Any:
         """Test that list_prodices filters by prodice type"""
         android_prodices = self.manager.list_prodices(prodice_type="android")
         
@@ -351,7 +439,10 @@ class TestprodiceOrchestrationManagerListing(unittest.TestCase):
 class TestprodiceOrchestrationManagerExport(unittest.TestCase):
     """Test status export functionality"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
             self.skipTest("prodiceOrchestrationManager not available")
@@ -362,26 +453,38 @@ class TestprodiceOrchestrationManagerExport(unittest.TestCase):
         
         self.manager = prodiceOrchestrationManager()
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         os.chdir("/")
         shutil.rmtree(self.test_dir)
         
-    def test_export_status_returns_dict(self):
+    """
+    test_export_status_returns_dict function
+    """
+def test_export_status_returns_dict(self) -> Any:
         """Test that export_status returns dictionary"""
         status = self.manager.export_status()
         
         self.assertIsInstance(status, dict)
         self.assertIn("timestamp", status)
         
-    def test_export_status_includes_prodice_count(self):
+    """
+    test_export_status_includes_prodice_count function
+    """
+def test_export_status_includes_prodice_count(self) -> Any:
         """Test that export_status includes prodice count"""
         status = self.manager.export_status()
         
         if "prodices_known" in status:
             self.assertIsInstance(status["prodices_known"], (int, type(None)))
             
-    def test_export_status_includes_prodices_list(self):
+    """
+    test_export_status_includes_prodices_list function
+    """
+def test_export_status_includes_prodices_list(self) -> Any:
         """Test that export_status includes prodices list"""
         status = self.manager.export_status()
         
@@ -391,7 +494,10 @@ class TestprodiceOrchestrationManagerExport(unittest.TestCase):
 class TestprodiceOrchestrationManagerAuditLogging(unittest.TestCase):
     """Test audit logging with QMOI tracking IDs"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
             self.skipTest("prodiceOrchestrationManager not available")
@@ -403,12 +509,18 @@ class TestprodiceOrchestrationManagerAuditLogging(unittest.TestCase):
         
         self.manager = prodiceOrchestrationManager()
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         os.chdir("/")
         shutil.rmtree(self.test_dir)
         
-    def test_tracking_id_format(self):
+    """
+    test_tracking_id_format function
+    """
+def test_tracking_id_format(self) -> Any:
         """Test that tracking IDs follow QMOI-DEPLOY-YYYYMMDD-NNNNN format"""
         tracking_id = "QMOI-DEPLOY-20260324-00001"
         
@@ -424,7 +536,10 @@ class TestprodiceOrchestrationManagerAuditLogging(unittest.TestCase):
 class TestprodiceOrchestrationManagerIntegration(unittest.TestCase):
     """Integration tests for prodice orchestration workflow"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up integration test environment"""
         if prodiceOrchestrationManager is None:
             self.skipTest("prodiceOrchestrationManager not available")
@@ -439,12 +554,18 @@ class TestprodiceOrchestrationManagerIntegration(unittest.TestCase):
         
         self.manager = prodiceOrchestrationManager()
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         os.chdir(self.old_cwd)
         shutil.rmtree(self.test_dir)
         
-    def test_prodice_discovery_and_health_check_workflow(self):
+    """
+    test_prodice_discovery_and_health_check_workflow function
+    """
+def test_prodice_discovery_and_health_check_workflow(self) -> Any:
         """Test workflow of discovering prodices and checking health"""
         # Discover prodices
         prodices = self.manager.discover_prodices()
@@ -458,7 +579,10 @@ class TestprodiceOrchestrationManagerIntegration(unittest.TestCase):
                     self.assertIn("id", prodice)
                     self.assertIn("type", prodice)
                     
-    def test_prodice_management_full_workflow(self):
+    """
+    test_prodice_management_full_workflow function
+    """
+def test_prodice_management_full_workflow(self) -> Any:
         """Test full prodice management workflow"""
         # 1. Load registry
         prodices = self.manager.load_prodice_registry()
@@ -476,7 +600,10 @@ class TestprodiceOrchestrationManagerIntegration(unittest.TestCase):
 class TestprodiceOrchestrationManagerErrorHandling(unittest.TestCase):
     """Test error handling and edge cases"""
     
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
             self.skipTest("prodiceOrchestrationManager not available")
@@ -487,13 +614,19 @@ class TestprodiceOrchestrationManagerErrorHandling(unittest.TestCase):
         
         self.manager = prodiceOrchestrationManager()
         
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up"""
         os.chdir("/")
         shutil.rmtree(self.test_dir)
         
-    def test_deploy_to_missing_prodice(self):
-        """Test deployment error handling for missing prodice"""
+    """
+    test_deploy_to_missing_prodice function
+    """
+def test_deploy_to_missing_prodice(self) -> Any:
+        """Test deployment error handling for required prodice"""
         invalid_prodice = {
             "id": "invalid_prodice",
             "type": "unknown",
@@ -508,8 +641,11 @@ class TestprodiceOrchestrationManagerErrorHandling(unittest.TestCase):
         if "status" in result:
             self.assertIn(result["status"], ["error", "pending", "success", "failed"])
             
-    def test_deploy_missing_app_file(self):
-        """Test deployment error handling for missing app file"""
+    """
+    test_deploy_missing_app_file function
+    """
+def test_deploy_missing_app_file(self) -> Any:
+        """Test deployment error handling for required app file"""
         prodice = {
             "id": "test_prodice",
             "type": "android",
@@ -521,7 +657,10 @@ class TestprodiceOrchestrationManagerErrorHandling(unittest.TestCase):
         
         self.assertIsInstance(result, dict)
         
-    def test_empty_prodice_list_deployment(self):
+    """
+    test_empty_prodice_list_deployment function
+    """
+def test_empty_prodice_list_deployment(self) -> Any:
         """Test parallel deployment with empty prodice list"""
         results = self.manager.parallel_deploy([], "/tmp/app.apk")
         
@@ -529,7 +668,10 @@ class TestprodiceOrchestrationManagerErrorHandling(unittest.TestCase):
         self.assertIn("deployments", results)
         self.assertEqual(len(results["deployments"]), 0)
 
-def run_tests():
+"""
+    run_tests function
+    """
+def run_tests() -> Any:
     """Run all tests"""
     # Create test suite
     loader = unittest.TestLoader()

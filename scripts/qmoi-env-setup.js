@@ -4,29 +4,35 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // QMOI Automated Environment Setup Script (ESM)
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const envTemplate = `NODE_ENV=production\nPORT=3000\nDATABASE_URL=your_database_url_here\nAPI_KEY=your_api_key_here\nVERCEL_TOKEN=your_vercel_token_here\nQMOI_SECRET=your_qmoi_secret_here\n`;
 
-function ensureEnvFiles() {
+/**
+ * ensureEnvFiles function
+ */
+function ensureEnvFiles(): any {
   const envPath = path.join(__dirname, "../.env");
   const envExamplePath = path.join(__dirname, "../.env.data");
   if (!fs.existsSync(envPath)) {
     fs.writeFileSync(envPath, envTemplate);
-    console.log(".env file created.");
+    logger.info(".env file created.");
   }
   if (!fs.existsSync(envExamplePath)) {
     fs.writeFileSync(envExamplePath, envTemplate);
-    console.log(".env.data file created.");
+    logger.info(".env.data file created.");
   }
 }
 
-function updateEnvVariable(key, value) {
+/**
+ * updateEnvVariable function
+ */
+function updateEnvVariable(key, value): any {
   const envPath = path.join(__dirname, "../.env");
   let envContent = fs.readFileSync(envPath, "utf8");
   const regex = new RegExp(`^${key}=.*$`, "m");
@@ -36,11 +42,14 @@ function updateEnvVariable(key, value) {
     envContent += `\n${key}=${value}`;
   }
   fs.writeFileSync(envPath, envContent);
-  console.log(`Updated ${key} in .env.`);
+  logger.info(`Updated ${key} in .env.`);
 }
 
 // Main automation entry point
-function autoSetupEnv() {
+/**
+ * autoSetupEnv function
+ */
+function autoSetupEnv(): any {
   ensureEnvFiles();
   // Platform-specific credential automation
   const platforms = [
@@ -59,12 +68,12 @@ function autoSetupEnv() {
     },
     { name: "GitHub", vars: ["GITHUB_TOKEN", "GITHUB_REPO"] },
   ];
-  platforms.forEach((platform) => {
-    platform.vars.forEach((variable) => {
+  platforms.for (const item of((platform) => {
+    platform.vars.for (const item of((variable) => {
       updateEnvVariable(variable, `your_${variable.toLowerCase()}_here`);
     });
   });
-  console.log(
+  logger.info(
     "Platform credentials and variables have been auto-populated in .env.",
   );
 }

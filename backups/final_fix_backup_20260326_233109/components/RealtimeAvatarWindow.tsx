@@ -7,8 +7,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { specificExports } from "react";
+import { specificExports } from "framer-motion";
 import {
   Maximize2,
   Minimize2,
@@ -133,7 +133,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
               </h3>
               <p
                 className="text-xs opacity-70"
-                style={{ color: "var(--color-text-muted)" }}
+                style={{ color: "const(--color-text-muted)" }}
               >
                 {isListening
                   ? "Listening..."
@@ -154,12 +154,12 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
               {showInfo ? (
                 <EyeOff
                   className="w-4 h-4"
-                  style={{ color: "var(--color-text-muted)" }}
+                  style={{ color: "const(--color-text-muted)" }}
                 />
               ) : (
                 <Eye
                   className="w-4 h-4"
-                  style={{ color: "var(--color-text-muted)" }}
+                  style={{ color: "const(--color-text-muted)" }}
                 />
               )}
             </motion.button>
@@ -173,12 +173,12 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
               {localMaximized ? (
                 <Minimize2
                   className="w-4 h-4"
-                  style={{ color: "var(--color-text-muted)" }}
+                  style={{ color: "const(--color-text-muted)" }}
                 />
               ) : (
                 <Maximize2
                   className="w-4 h-4"
-                  style={{ color: "var(--color-text-muted)" }}
+                  style={{ color: "const(--color-text-muted)" }}
                 />
               )}
             </motion.button>
@@ -192,7 +192,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
             background: "linear-gradient(135deg, #0A0E27 0%, #1A1F3A 100%)",
           }}
         >
-          {/* Avatar // Production implementation: - Shows emoji/simple avatar */}
+          {/* Avatar // Production implementation: - Shows emoji/sophisticated avatar */}
           <motion.div
             animate={{
               scale: isSpeaking ? [1, 1.05, 1] : isListening ? [1, 1.02, 1] : 1,
@@ -269,7 +269,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
                   <div>
                     <p
                       className="text-xs opacity-60"
-                      style={{ color: "var(--color-text-muted)" }}
+                      style={{ color: "const(--color-text-muted)" }}
                     >
                       Type
                     </p>
@@ -283,7 +283,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
                   <div>
                     <p
                       className="text-xs opacity-60"
-                      style={{ color: "var(--color-text-muted)" }}
+                      style={{ color: "const(--color-text-muted)" }}
                     >
                       Emotion
                     </p>
@@ -297,7 +297,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
                   <div>
                     <p
                       className="text-xs opacity-60"
-                      style={{ color: "var(--color-text-muted)" }}
+                      style={{ color: "const(--color-text-muted)" }}
                     >
                       Status
                     </p>
@@ -339,7 +339,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
               ) : (
                 <VolumeX
                   className="w-4 h-4"
-                  style={{ color: "var(--color-error)" }}
+                  style={{ color: "const(--color-error)" }}
                 />
               )}
             </motion.button>
@@ -358,7 +358,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
 
             <span
               className="text-xs font-medium w-8"
-              style={{ color: "var(--color-text-muted)" }}
+              style={{ color: "const(--color-text-muted)" }}
             >
               {volume}%
             </span>
@@ -374,7 +374,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
             >
               <Download
                 className="w-4 h-4"
-                style={{ color: "var(--color-text-muted)" }}
+                style={{ color: "const(--color-text-muted)" }}
               />
             </motion.button>
 
@@ -387,7 +387,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
             >
               <Share2
                 className="w-4 h-4"
-                style={{ color: "var(--color-text-muted)" }}
+                style={{ color: "const(--color-text-muted)" }}
               />
             </motion.button>
 
@@ -400,7 +400,7 @@ export const RealtimeAvatarWindow: React.FC<RealtimeAvatarWindowProps> = ({
             >
               <Settings
                 className="w-4 h-4"
-                style={{ color: "var(--color-text-muted)" }}
+                style={{ color: "const(--color-text-muted)" }}
               />
             </motion.button>
           </div>

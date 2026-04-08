@@ -348,5 +348,9 @@
       "warning_count": 0
     }
   },
-  "last_updated": "2026-03-24T19:32:38.524508"
+  "last_updated": "2026-03-24T19:32:38.524508",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:29.715765"
 }

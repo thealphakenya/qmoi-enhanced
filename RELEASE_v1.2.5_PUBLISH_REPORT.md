@@ -4,10 +4,10 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.757032Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# v1.2.5 Release Publish Report
+# v1.2.5 Release Publish Report ✅ PRODUCTION READY
 
 Status: PUBLISHED ✅
 
@@ -21,7 +21,7 @@ Uploaded assets (10):
 - admin.zip
 - app-release.apk
 - deals.zip
-- q-stable.zip
+- q-latest.zip
 - qmoi-ai.zip
 - qmoi-release.exe
 - qmoi-release.ipa

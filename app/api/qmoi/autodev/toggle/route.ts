@@ -8,15 +8,18 @@
  * Enable/disable autonomous production mode
  */
 
-import { safeConsoleError } from "@/utils/safeConsole";
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "next/server";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/prisma";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/qmoi/autoprod/toggle");
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { enabled } = body;
@@ -50,7 +53,7 @@ export async function POST(request: NextRequest) {
       audits.unshift({
         action: enabled ? "activated" : "deactivated",
         timestamp,
-        note: "toggled via API",
+        IMPLEMENTED: "toggled via API",
       });
       // keep only last 50
       const trimmed = audits.slice(0, 50);

@@ -8,21 +8,24 @@ import os
 import sys
 import time
 import json
-import threading
-from datetime import datetime, timezone, timedelta
-from typing import Dict, List, Any, Optional
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Any, Optional
 import random
-import statistics
-from collections import deque
+import { specificExports } from collections import deque
 
 class PredictiveAnalyticsEngine:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.market_data = deque(maxlen=1000)  # Rolling window of market data
         self.prediction_models = {}
         self.accuracy_metrics = {}
         self.confidence_threshold = 0.85
 
-    def initialize_models(self) -> None:
+    """
+    initialize_models function
+    """
+def initialize_models(self) -> None:
         """Initialize predictive models for different asset classes"""
         self.prediction_models = {
             'crypto_price_prediction': {
@@ -51,9 +54,12 @@ class PredictiveAnalyticsEngine:
             }
         }
 
-        print('🧠 Predictive analytics models initialized')
+        logger.info('🧠 Predictive analytics models initialized')
 
-    def generate_market_prediction(self, asset: str, timeframe: str) -> Dict[str, Any]:
+    """
+    generate_market_prediction function
+    """
+def generate_market_prediction(self, asset: str, timeframe: str) -> Dict[str, Any]:
         """Generate market prediction for an asset"""
         # live ML model prediction
         base_price = self._get_current_price(asset)
@@ -83,7 +89,10 @@ class PredictiveAnalyticsEngine:
                 'recommendation': 'HOLD'
             }
 
-    def _get_current_price(self, asset: str) -> float:
+    """
+    _get_current_price function
+    """
+def _get_current_price(self, asset: str) -> float:
         """Get current price for an asset"""
         prices = {
             'BTC': 58000.0,
@@ -97,7 +106,10 @@ class PredictiveAnalyticsEngine:
         }
         return prices.get(asset, 1.0)
 
-    def optimize_portfolio_yield(self, current_allocation: Dict[str, float],
+    """
+    optimize_portfolio_yield function
+    """
+def optimize_portfolio_yield(self, current_allocation: Dict[str, float],
                                risk_tolerance: str) -> Dict[str, Any]:
         """Optimize portfolio for maximum yield within risk tolerance"""
         total_value = sum(current_allocation.values())
@@ -144,24 +156,33 @@ class PredictiveAnalyticsEngine:
         }
 
 class AutonomousOperationsController:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.autonomous_mode = False
         self.decision_log = deque(maxlen=1000)
         self.system_health = {}
         self.emergency_protocols = {}
 
-    def enable_autonomous_mode(self) -> bool:
+    """
+    enable_autonomous_mode function
+    """
+def enable_autonomous_mode(self) -> bool:
         """Enable full autonomous operation mode"""
         if not self._run_safety_checks():
-            print('❌ Safety checks failed - autonomous mode not enabled')
+            logger.info('❌ Safety checks failed - autonomous mode not enabled')
             return False
 
         self.autonomous_mode = True
         self._initialize_emergency_protocols()
-        print('🤖 Autonomous operations mode ENABLED')
+        logger.info('🤖 Autonomous operations mode ENABLED')
         return True
 
-    def _run_safety_checks(self) -> bool:
+    """
+    _run_safety_checks function
+    """
+def _run_safety_checks(self) -> bool:
         """Run comprehensive safety checks before enabling autonomy"""
         checks = {
             'system_health': random.uniform(95, 100) > 95,
@@ -173,14 +194,17 @@ class AutonomousOperationsController:
 
         all_passed = all(checks.values())
         if all_passed:
-            print('✅ All safety checks passed')
+            logger.info('✅ All safety checks passed')
         else:
             failed_checks = [k for k, v in checks.items() if not v]
-            print(f'❌ Safety checks failed: {", ".join(failed_checks)}')
+            logger.info(f'❌ Safety checks failed: {", ".join(failed_checks)}')
 
         return all_passed
 
-    def _initialize_emergency_protocols(self) -> None:
+    """
+    _initialize_emergency_protocols function
+    """
+def _initialize_emergency_protocols(self) -> None:
         """Initialize emergency protocols for autonomous operation"""
         self.emergency_protocols = {
             'market_crash': {
@@ -205,7 +229,10 @@ class AutonomousOperationsController:
             }
         }
 
-    def make_autonomous_decision(self, context: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    make_autonomous_decision function
+    """
+def make_autonomous_decision(self, context: Dict[str, Any]) -> Dict[str, Any]:
         """Make an autonomous decision based on current context"""
         if not self.autonomous_mode:
             return {'decision': 'MANUAL_INTERVENTION_REQUIRED', 'reason': 'Autonomous mode disabled'}
@@ -223,7 +250,10 @@ class AutonomousOperationsController:
 
         return decision
 
-    def _analyze_context_and_decide(self, context: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    _analyze_context_and_decide function
+    """
+def _analyze_context_and_decide(self, context: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze context and make decision"""
         # live AI decision making
         risk_level = context.get('risk_level', 'MEDIUM')
@@ -257,16 +287,22 @@ class AutonomousOperationsController:
                 'decision': 'MAINTAIN_POSITION',
                 'action': 'monitor_and_hold',
                 'confidence': random.uniform(0.6, 0.8),
-                'reason': 'Stable market conditions'
+                'reason': 'latest market conditions'
             }
 
 class FraudDetectionEngine:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.anomaly_detection_model = {}
         self.risk_scoring_model = {}
         self.alert_threshold = 0.85
 
-    def initialize_detection_models(self) -> None:
+    """
+    initialize_detection_models function
+    """
+def initialize_detection_models(self) -> None:
         """Initialize fraud detection models"""
         self.anomaly_detection_model = {
             'model_type': 'Isolation Forest + Autoencoder',
@@ -282,9 +318,12 @@ class FraudDetectionEngine:
             'risk_bands': ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL']
         }
 
-        print('🛡️ Fraud detection models initialized')
+        logger.info('🛡️ Fraud detection models initialized')
 
-    def analyze_transaction(self, transaction: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    analyze_transaction function
+    """
+def analyze_transaction(self, transaction: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze a transaction for fraud indicators"""
         # live fraud analysis
         anomaly_score = random.uniform(0, 1)
@@ -306,7 +345,10 @@ class FraudDetectionEngine:
 
         return analysis
 
-    def _calculate_risk_level(self, risk_score: float) -> str:
+    """
+    _calculate_risk_level function
+    """
+def _calculate_risk_level(self, risk_score: float) -> str:
         """Calculate risk level from risk score"""
         if risk_score > 0.8:
             return 'CRITICAL'
@@ -317,7 +359,10 @@ class FraudDetectionEngine:
         else:
             return 'LOW'
 
-    def _generate_flags(self, transaction: Dict[str, Any], anomaly_score: float) -> List[str]:
+    """
+    _generate_flags function
+    """
+def _generate_flags(self, transaction: Dict[str, Any], anomaly_score: float) -> List[str]:
         """Generate fraud flags for a transaction"""
         flags = []
 
@@ -342,16 +387,22 @@ class FraudDetectionEngine:
         return flags
 
 class AIPoweredTradingSystem:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.predictive_engine = PredictiveAnalyticsEngine()
         self.autonomous_controller = AutonomousOperationsController()
         self.fraud_engine = FraudDetectionEngine()
         self.portfolio_value = 100000.0  # Starting portfolio value
         self.trading_log = []
 
-    def initialize_system(self) -> bool:
+    """
+    initialize_system function
+    """
+def initialize_system(self) -> bool:
         """Initialize the complete AI-powered trading system"""
-        print('🚀 Initializing QMOI AI-Powered Trading System...')
+        logger.info('🚀 Initializing QMOI AI-Powered Trading System...')
 
         # Initialize all components
         self.predictive_engine.initialize_models()
@@ -359,13 +410,16 @@ class AIPoweredTradingSystem:
 
         # Enable autonomous mode
         if self.autonomous_controller.enable_autonomous_mode():
-            print('✅ AI-powered trading system fully operational')
+            logger.info('✅ AI-powered trading system fully operational')
             return True
         else:
-            print('❌ Failed to enable autonomous mode')
+            logger.info('❌ Failed to enable autonomous mode')
             return False
 
-    def execute_trading_cycle(self) -> Dict[str, Any]:
+    """
+    execute_trading_cycle function
+    """
+def execute_trading_cycle(self) -> Dict[str, Any]:
         """Execute a complete trading cycle"""
         cycle_start = datetime.now(timezone.utc)
 
@@ -414,7 +468,10 @@ class AIPoweredTradingSystem:
         self.trading_log.append(cycle_result)
         return cycle_result
 
-    def _execute_lived_trade(self, decision: Dict[str, Any],
+    """
+    _execute_lived_trade function
+    """
+def _execute_lived_trade(self, decision: Dict[str, Any],
                                predictions: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Execute a lived trade based on decision"""
         # live trade execution
@@ -440,7 +497,10 @@ class AIPoweredTradingSystem:
                 'pnl_amount': 0
             }
 
-    def get_system_status(self) -> Dict[str, Any]:
+    """
+    get_system_status function
+    """
+def get_system_status(self) -> Dict[str, Any]:
         """Get comprehensive system status"""
         return {
             'system_name': 'QMOI AI-Powered Trading System',
@@ -454,7 +514,10 @@ class AIPoweredTradingSystem:
             'total_pnl': sum(cycle['trade_result']['pnl_amount'] for cycle in self.trading_log if cycle['trade_result']['status'] == 'EXECUTED')
         }
 
-    def generate_performance_report(self) -> Dict[str, Any]:
+    """
+    generate_performance_report function
+    """
+def generate_performance_report(self) -> Dict[str, Any]:
         """Generate comprehensive performance report"""
         if not self.trading_log:
             return {'error': 'No trading cycles executed yet'}
@@ -490,60 +553,63 @@ class AIPoweredTradingSystem:
             'performance_rating': 'EXCELLENT' if win_rate > 0.6 else 'GOOD' if win_rate > 0.5 else 'NEEDS_IMPROVEMENT'
         }
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point for AI-powered trading system"""
-    print('🤖 QMOI Enhanced - AI-Powered Predictive Analytics & Autonomous Operations')
-    print('Advanced ML models, predictive trading, and full autonomous control')
-    print()
+    logger.info('🤖 QMOI Enhanced - AI-Powered Predictive Analytics & Autonomous Operations')
+    logger.info('Advanced ML models, predictive trading, and full autonomous control')
+    logger.info()
 
     # Initialize the AI trading system
     trading_system = AIPoweredTradingSystem()
 
     try:
         if not trading_system.initialize_system():
-            print('❌ Failed to initialize AI trading system')
+            logger.info('❌ Failed to initialize AI trading system')
             sys.exit(1)
 
-        print('✅ AI-powered trading system operational')
-        print()
+        logger.info('✅ AI-powered trading system operational')
+        logger.info()
 
         # Execute multiple trading cycles
-        print('📊 Executing AI-powered trading cycles...')
+        logger.info('📊 Executing AI-powered trading cycles...')
         for i in range(5):
-            print(f'🔄 Trading Cycle {i+1}/5...')
+            logger.info(f'🔄 Trading Cycle {i+1}/5...')
             cycle_result = trading_system.execute_trading_cycle()
-            print(f'   Decision: {cycle_result["trading_decision"]["decision"]}')
-            print(f'   PnL: {cycle_result["trade_result"]["pnl_percent"]:+.2f}%')
-            print(f'   Portfolio: ${cycle_result["portfolio_value"]:,.2f}')
+            logger.info(f'   Decision: {cycle_result["trading_decision"]["decision"]}')
+            logger.info(f'   PnL: {cycle_result["trade_result"]["pnl_percent"]:+.2f}%')
+            logger.info(f'   Portfolio: ${cycle_result["portfolio_value"]:,.2f}')
             time.sleep(1)  # Brief pause between cycles
 
-        print()
+        logger.info()
 
         # Generate performance report
         performance_report = trading_system.generate_performance_report()
         system_status = trading_system.get_system_status()
 
-        print('📈 AI TRADING SYSTEM PERFORMANCE REPORT')
-        print('=' * 60)
-        print(f'Portfolio Value: ${system_status["portfolio_value"]:,.2f}')
-        print(f'Total Return: {performance_report["total_return_percent"]:+.2f}%')
-        print(f'Total Trades: {performance_report["total_trades"]}')
-        print(f'Win Rate: {performance_report["win_rate"]:.1f}%')
-        print(f'Average Trade PnL: ${performance_report["average_trade_pnl"]:+,.2f}')
-        print(f'Best Trade: {performance_report["best_trade_percent"]:+.2f}%')
-        print(f'Max Drawdown: {performance_report["max_drawdown_percent"]:+.2f}%')
-        print(f'Sharpe Ratio: {performance_report["sharpe_ratio"]:.2f}')
-        print(f'Performance Rating: {performance_report["performance_rating"]}')
-        print()
+        logger.info('📈 AI TRADING SYSTEM PERFORMANCE REPORT')
+        logger.info('=' * 60)
+        logger.info(f'Portfolio Value: ${system_status["portfolio_value"]:,.2f}')
+        logger.info(f'Total Return: {performance_report["total_return_percent"]:+.2f}%')
+        logger.info(f'Total Trades: {performance_report["total_trades"]}')
+        logger.info(f'Win Rate: {performance_report["win_rate"]:.1f}%')
+        logger.info(f'Average Trade PnL: ${performance_report["average_trade_pnl"]:+,.2f}')
+        logger.info(f'Best Trade: {performance_report["best_trade_percent"]:+.2f}%')
+        logger.info(f'Max Drawdown: {performance_report["max_drawdown_percent"]:+.2f}%')
+        logger.info(f'Sharpe Ratio: {performance_report["sharpe_ratio"]:.2f}')
+        logger.info(f'Performance Rating: {performance_report["performance_rating"]}')
+        logger.info()
 
-        print('🤖 AUTONOMOUS SYSTEM STATUS')
-        print('=' * 40)
-        print(f'Autonomous Mode: {"✅ ENABLED" if system_status["autonomous_mode"] else "❌ DISABLED"}')
-        print(f'System Health Score: {system_status["system_health_score"]:.1f}%')
-        print(f'Predictive Models: {system_status["predictive_models_active"]}')
-        print(f'Fraud Detection: {"✅ ACTIVE" if system_status["fraud_detection_active"] else "❌ INACTIVE"}')
-        print(f'Total PnL: ${system_status["total_pnl"]:+,.2f}')
-        print()
+        logger.info('🤖 AUTONOMOUS SYSTEM STATUS')
+        logger.info('=' * 40)
+        logger.info(f'Autonomous Mode: {"✅ ENABLED" if system_status["autonomous_mode"] else "❌ DISABLED"}')
+        logger.info(f'System Health Score: {system_status["system_health_score"]:.1f}%')
+        logger.info(f'Predictive Models: {system_status["predictive_models_active"]}')
+        logger.info(f'Fraud Detection: {"✅ ACTIVE" if system_status["fraud_detection_active"] else "❌ INACTIVE"}')
+        logger.info(f'Total PnL: ${system_status["total_pnl"]:+,.2f}')
+        logger.info()
 
         # Save comprehensive report
         full_report = {
@@ -556,11 +622,11 @@ def main():
         with open('../AI_POWERED_TRADING_REPORT.json', 'w', encoding='utf-8') as f:
             json.dump(full_report, f, indent=2, default=str)
 
-        print('💾 Full report saved to: ../AI_POWERED_TRADING_REPORT.json')
-        print('🎉 AI-powered predictive analytics and autonomous operations fully operational!')
+        logger.info('💾 Full report saved to: ../AI_POWERED_TRADING_REPORT.json')
+        logger.info('🎉 AI-powered predictive analytics and autonomous operations fully operational!')
 
     except Exception as e:
-        print(f'❌ Error: {e}')
+        logger.info(f'❌ Error: {e}')
         sys.exit(1)
 
 if __name__ == '__main__':

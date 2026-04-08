@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-import React from "react";
+import { specificExports } from "react";
 
 export const QMoiMediaManager: React.FC = () => {
   // Media list loaded from backend with pagination support

@@ -6,8 +6,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { specificExports } from "react";
+import { specificExports } from "framer-motion";
 import {
   Play,
   Pause,
@@ -196,13 +196,13 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
           exit={{ opacity: 0, x: 400 }}
           transition={{ duration: 0.3 }}
           className="fixed right-0 top-0 h-screen w-96 rounded-l-3xl shadow-2xl border-l border-slate-700 flex flex-col overflow-hidden"
-          style={{ background: "var(--gradient-background)" }}
+          style={{ background: "const(--gradient-background)" }}
         >
           {/* Header */}
           <div className="px-6 py-4 border-b border-slate-700">
             <h2
               className="text-xl font-bold mb-4"
-              style={{ color: "var(--color-secondary)" }}
+              style={{ color: "const(--color-secondary)" }}
             >
               Voice Library
             </h2>
@@ -211,7 +211,7 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
             <div className="relative mb-4">
               <Search
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
-                style={{ color: "var(--color-text-muted)" }}
+                style={{ color: "const(--color-text-muted)" }}
               />
               <input
                 type="text"
@@ -220,8 +220,8 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-sm transition"
                 style={{
-                  color: "var(--color-text)",
-                  borderColor: "var(--color-border)",
+                  color: "const(--color-text)",
+                  borderColor: "const(--color-border)",
                 }}
               />
             </div>
@@ -230,7 +230,7 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
             <div className="mb-4">
               <label
                 className="text-xs font-medium mb-2 block"
-                style={{ color: "var(--color-text-muted)" }}
+                style={{ color: "const(--color-text-muted)" }}
               >
                 Gender
               </label>
@@ -246,8 +246,8 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                   }`}
                   style={{
                     color: !selectedGender
-                      ? "var(--color-secondary)"
-                      : "var(--color-text)",
+                      ? "const(--color-secondary)"
+                      : "const(--color-text)",
                   }}
                 >
                   All
@@ -266,8 +266,8 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                     style={{
                       color:
                         selectedGender === gender
-                          ? "var(--color-secondary)"
-                          : "var(--color-text)",
+                          ? "const(--color-secondary)"
+                          : "const(--color-text)",
                     }}
                   >
                     {gender}
@@ -280,7 +280,7 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
             <div>
               <label
                 className="text-xs font-medium mb-2 block"
-                style={{ color: "var(--color-text-muted)" }}
+                style={{ color: "const(--color-text-muted)" }}
               >
                 Accent
               </label>
@@ -296,8 +296,8 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                   }`}
                   style={{
                     color: !selectedAccent
-                      ? "var(--color-secondary)"
-                      : "var(--color-text)",
+                      ? "const(--color-secondary)"
+                      : "const(--color-text)",
                   }}
                 >
                   All
@@ -316,8 +316,8 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                     style={{
                       color:
                         selectedAccent === accent
-                          ? "var(--color-secondary)"
-                          : "var(--color-text)",
+                          ? "const(--color-secondary)"
+                          : "const(--color-text)",
                     }}
                   >
                     {accent}
@@ -339,8 +339,8 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                 style={{
                   borderColor:
                     selectedVoiceId === voice.id
-                      ? "var(--color-secondary)"
-                      : "var(--color-border)",
+                      ? "const(--color-secondary)"
+                      : "const(--color-border)",
                   background:
                     selectedVoiceId === voice.id
                       ? "rgba(165, 76, 230, 0.1)"
@@ -365,7 +365,7 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                         style={{
                           background:
                             playingVoiceId === voice.id
-                              ? "var(--color-secondary)"
+                              ? "const(--color-secondary)"
                               : "bg-slate-700",
                         }}
                       >
@@ -379,13 +379,13 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                       <div>
                         <p
                           className="font-semibold text-sm"
-                          style={{ color: "var(--color-text)" }}
+                          style={{ color: "const(--color-text)" }}
                         >
                           {voice.name}
                         </p>
                         <p
                           className="text-xs"
-                          style={{ color: "var(--color-text-muted)" }}
+                          style={{ color: "const(--color-text-muted)" }}
                         >
                           {voice.gender} • {voice.accent} • {voice.personality}
                         </p>
@@ -405,8 +405,8 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                         className="w-4 h-4"
                         style={{
                           color: favorites.has(voice.id)
-                            ? "var(--color-error)"
-                            : "var(--color-text-muted)",
+                            ? "const(--color-error)"
+                            : "const(--color-text-muted)",
                           fill: favorites.has(voice.id)
                             ? "currentColor"
                             : "none",
@@ -435,7 +435,7 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                             repeat: Infinity,
                           }}
                           style={{
-                            backgroundColor: "var(--color-secondary)",
+                            backgroundColor: "const(--color-secondary)",
                           }}
                         />
                       ))}
@@ -456,13 +456,13 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                       <div className="flex items-center justify-between mb-2">
                         <label
                           className="text-xs font-medium"
-                          style={{ color: "var(--color-text-muted)" }}
+                          style={{ color: "const(--color-text-muted)" }}
                         >
                           Pitch
                         </label>
                         <span
                           className="text-xs font-mono"
-                          style={{ color: "var(--color-secondary)" }}
+                          style={{ color: "const(--color-secondary)" }}
                         >
                           {voice.pitch.toFixed(1)}
                         </span>
@@ -475,7 +475,7 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                         defaultValue={voice.pitch}
                         className="w-full h-1 rounded-lg cursor-pointer"
                         style={{
-                          accentColor: "var(--color-secondary)",
+                          accentColor: "const(--color-secondary)",
                         }}
                       />
                     </div>
@@ -485,13 +485,13 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                       <div className="flex items-center justify-between mb-2">
                         <label
                           className="text-xs font-medium"
-                          style={{ color: "var(--color-text-muted)" }}
+                          style={{ color: "const(--color-text-muted)" }}
                         >
                           Speed
                         </label>
                         <span
                           className="text-xs font-mono"
-                          style={{ color: "var(--color-secondary)" }}
+                          style={{ color: "const(--color-secondary)" }}
                         >
                           {voice.rate.toFixed(2)}x
                         </span>
@@ -504,7 +504,7 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                         defaultValue={voice.rate}
                         className="w-full h-1 rounded-lg cursor-pointer"
                         style={{
-                          accentColor: "var(--color-secondary)",
+                          accentColor: "const(--color-secondary)",
                         }}
                       />
                     </div>
@@ -514,13 +514,13 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                       <div className="flex items-center justify-between mb-2">
                         <label
                           className="text-xs font-medium"
-                          style={{ color: "var(--color-text-muted)" }}
+                          style={{ color: "const(--color-text-muted)" }}
                         >
                           Volume
                         </label>
                         <span
                           className="text-xs font-mono"
-                          style={{ color: "var(--color-secondary)" }}
+                          style={{ color: "const(--color-secondary)" }}
                         >
                           {Math.round(voice.volume * 100)}%
                         </span>
@@ -533,7 +533,7 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                         defaultValue={voice.volume}
                         className="w-full h-1 rounded-lg cursor-pointer"
                         style={{
-                          accentColor: "var(--color-secondary)",
+                          accentColor: "const(--color-secondary)",
                         }}
                       />
                     </div>
@@ -543,22 +543,22 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
                       <div className="text-xs">
                         <p
                           className="font-medium"
-                          style={{ color: "var(--color-text-muted)" }}
+                          style={{ color: "const(--color-text-muted)" }}
                         >
                           Language
                         </p>
-                        <p style={{ color: "var(--color-text)" }}>
+                        <p style={{ color: "const(--color-text)" }}>
                           {voice.language}
                         </p>
                       </div>
                       <div className="text-xs">
                         <p
                           className="font-medium"
-                          style={{ color: "var(--color-text-muted)" }}
+                          style={{ color: "const(--color-text-muted)" }}
                         >
                           Age Group
                         </p>
-                        <p style={{ color: "var(--color-text)" }}>
+                        <p style={{ color: "const(--color-text)" }}>
                           {voice.age}
                         </p>
                       </div>
@@ -572,7 +572,7 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
           {/* Footer */}
           <div
             className="px-6 py-4 border-t border-slate-700 text-xs"
-            style={{ color: "var(--color-text-muted)" }}
+            style={{ color: "const(--color-text-muted)" }}
           >
             <p>
               {filteredVoices.length} voice

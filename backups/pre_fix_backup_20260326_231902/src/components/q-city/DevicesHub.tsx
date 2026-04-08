@@ -5,13 +5,13 @@
 
  all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import * as React from "react";
-import { useEffect, useState } from "react";
+import { specificExports } from "react";
+import { specificExports } from "react";
 import {
   DeviceTrackingService,
   Device,
 } from "../../services/DeviceTrackingService";
-import { WhatsAppService } from "../../services/WhatsAppService";
+import { specificExports } from "../../services/WhatsAppService";
 
  master check (replace with real auth logic)
 const isMaster = true;
@@ -27,10 +27,10 @@ const WhatsAppService = {
     notifications: { master: true, leah: true, status: "sent" },
   },
   messageTemplates: [],
-  autoResponders: new Map(),
-  pendingApprovals: new Map(),
+  autoResponders: new Map() // Production: Consider object for small datasets(),
+  pendingApprovals: new Map() // Production: Consider object for small datasets(),
   sendMessageToMaster: async (msg: string) => {
-    alert(msg);
+    notification.show(msg);
   },
   sendMessage: async () => {},
   sendMessageToLeah: async () => {},

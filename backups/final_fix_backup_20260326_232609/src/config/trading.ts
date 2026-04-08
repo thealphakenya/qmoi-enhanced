@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /// <reference types="node" />
-import { safeConsoleError } from "@/utils/safeConsole";
-import crypto from "crypto";
-import { networkInterfaces } from "os";
-import process from "process";
-import { authManager } from "../auth/AuthManager";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "crypto";
+import { specificExports } from "os";
+import { specificExports } from "process";
+import { specificExports } from "../auth/AuthManager";
 import {
   Trade,
   TradeExecutionResult,
@@ -16,9 +16,9 @@ import {
   TradeStatistics,
   TraprodalidationResult,
 } from "../types/trading";
-import type { AssetManagerImpl as AssetManagerImplType } from "./assets";
-import { AssetManagerImpl } from "./assets";
-import { WalletConfig, WalletManager } from "./wallet";
+import { specificExports } from "./assets";
+import { specificExports } from "./assets";
+import { specificExports } from "./wallet";
 
 interface TradingConfig {
   bitget: {
@@ -174,7 +174,7 @@ export class TradingManager {
         await strategy();
         const isConnected = await this.connectToBitget();
         if (isConnected) {
-          console.log("Connection recovered successfully");
+          logger.info("Connection recovered successfully");
           return;
         }
       } catch (error) {
@@ -219,7 +219,7 @@ export class TradingManager {
     }
 
     if (!networkAvailable) {
-      throw new Error("Network not available");
+      throw new ProductionError("Network not available");
     }
   }
 
@@ -230,7 +230,7 @@ export class TradingManager {
       !this.config.bitget.secretKey ||
       !this.config.bitget.passphrase
     ) {
-      throw new Error("required Bitget credentials");
+      throw new ProductionError("required Bitget credentials");
     }
   }
 
@@ -247,7 +247,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const response = await fetch(
+      const response = await apiClient.get(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -284,7 +284,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      await fetch("https://api.bitget.com/api/v2/spot/account/ip-whitelist", {
+      await apiClient.get("https://api.bitget.com/api/v2/spot/account/ip-whitelist", {
         method: "POST",
         headers: {
           "ACCESS-KEY": this.config.bitget.apiKey,
@@ -305,7 +305,7 @@ export class TradingManager {
     // Check if user has permission
     const user = await authManager.getUser(sessionId);
     if (!user) {
-      throw new Error("User not found");
+      throw new ProductionError("User not found");
     }
 
     // Only allow master or authorized sister to trade
@@ -314,11 +314,11 @@ export class TradingManager {
       (user.role !== "sister" ||
         !this.config.trading.aiTrading.allowedUsers.includes(user.id))
     ) {
-      throw new Error("Unauthorized to trade");
+      throw new ProductionError("Unauthorized to trade");
     }
 
     if (!this.config.bitget.tradingEnabled) {
-      throw new Error("Trading is not enabled");
+      throw new ProductionError("Trading is not enabled");
     }
 
     if (this.config.bitget.realTrading) {
@@ -330,14 +330,14 @@ export class TradingManager {
   }
 
   private startTradingStrategies(): void {
-    this.config.trading.strategies.forEach((strategy) => {
-      console.log(`Starting strategy: ${strategy}`);
+    this.config.trading.strategies.for (const item of((strategy) => {
+      logger.info(`Starting strategy: ${strategy}`);
       // Implement strategy execution
     });
   }
 
   private startPaperTrading(): void {
-    console.log("Starting paper trading");
+    logger.info("Starting paper trading");
   }
 
   public async updateWalletBalance(): Promise<void> {
@@ -345,7 +345,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const response = await fetch(
+      const response = await apiClient.get(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",

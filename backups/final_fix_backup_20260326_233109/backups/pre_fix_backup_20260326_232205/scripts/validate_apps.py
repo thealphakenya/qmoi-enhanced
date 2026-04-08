@@ -16,8 +16,7 @@ Checks performed:
 Outputs `tools/validation_report.json` and `tools/validation_report.md`.
 """
 import json
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 icons_dir = ROOT / 'tools' / 'release_templates' / 'icons'
@@ -71,4 +70,4 @@ for app, ar in report['apps'].items():
 with OUT_MD.open('w') as f:
     f.write('\n'.join(md_lines))
 
-print('Wrote', OUT_JSON, 'and', OUT_MD)
+logger.info('Wrote', OUT_JSON, 'and', OUT_MD)

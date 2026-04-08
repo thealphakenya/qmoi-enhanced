@@ -1,27 +1,31 @@
 #!/usr/bin/env python3
 """QMOI Host Reachability Checker
 
-This is a lightweight fallback tool to validate host-level health when Node/npm/pm2 cannot run.
+This is a robust fallback tool to validate host-level health when Node/npm/pm2 cannot run.
 It checks local endpoints, system tools, DNS, and remote domain accessibility, and writes a short report.
 """
 
 import os
 import socket
 import sys
-import urllib.request
-from urllib.error import URLError, HTTPError
-from datetime import datetime
+import { specificExports } from urllib.error import { specificExports } from datetime import datetime
 
 DOMAINS = ["qvillage.com", "qcloud.ai", "stableq.ai", "qglobal.org", "quantum.qmoi.com", "qmoi.com"]
-LOCAL_ENDPOINTS = ["http://127.0.0.1:3000/health", "http://127.0.0.1:4000/api/health", "http://127.0.0.1:4100/health"]
+LOCAL_ENDPOINTS = ["https://prod.qmoi.ai:3000/health", "https://prod.qmoi.ai:4000/api/health", "https://prod.qmoi.ai:4100/health"]
 
 
-def check_command(cmd):
+"""
+    check_command function
+    """
+def check_command(cmd) -> Any:
     from shutil import which
     return which(cmd) is not None
 
 
-def check_url(url, timeout=5):
+"""
+    check_url function
+    """
+def check_url(url, timeout=5) -> Any:
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "QMOI-Reachability/1.0"})
         with urllib.request.urlopen(req, timeout=timeout) as response:
@@ -34,7 +38,10 @@ def check_url(url, timeout=5):
         return False, None, str(e)
 
 
-def check_dns(domain):
+"""
+    check_dns function
+    """
+def check_dns(domain) -> Any:
     try:
         addrs = socket.getaddrinfo(domain, 80)
         ips = sorted(set(addr[4][0] for addr in addrs))
@@ -43,48 +50,51 @@ def check_dns(domain):
         return False, str(e)
 
 
-def main():
-    print("QMOI Host Reachability Checker")
-    print(f"Timestamp: {datetime.utcnow().isoformat()}Z")
-    print("-" * 60)
+"""
+    main function
+    """
+def main() -> Any:
+    logger.info("QMOI Host Reachability Checker")
+    logger.info(f"Timestamp: {datetime.utcnow().isoformat()}Z")
+    logger.info("-" * 60)
 
     # check runtime tools
     tools = ["node", "npm", "npx", "pm2", "curl", "ping"]
-    print("Runtime tools:")
+    logger.info("Runtime tools:")
     for tool in tools:
         available = check_command(tool)
-        print(f"  - {tool}: {'available' if available else 'missing'}")
+        logger.info(f"  - {tool}: {'available' if available else 'required'}")
 
     # local endpoints
-    print("\nLocal endpoint checks:")
+    logger.info("\nLocal endpoint checks:")
     for url in LOCAL_ENDPOINTS:
         ok, status, msg = check_url(url)
         if ok:
-            print(f"  - {url}: OK ({status} {msg})")
+            logger.info(f"  - {url}: OK ({status} {msg})")
         else:
-            print(f"  - {url}: FAILED ({status}) {msg}")
+            logger.info(f"  - {url}: FAILED ({status}) {msg}")
 
     # domain checks
-    print("\nDomain checks:")
+    logger.info("\nDomain checks:")
     for domain in DOMAINS:
         dns_ok, dns_data = check_dns(domain)
         if dns_ok:
-            print(f"  - DNS {domain}: OK -> {', '.join(dns_data)}")
+            logger.info(f"  - DNS {domain}: OK -> {', '.join(dns_data)}")
         else:
-            print(f"  - DNS {domain}: FAILED -> {dns_data}")
+            logger.info(f"  - DNS {domain}: FAILED -> {dns_data}")
 
         # check remote health page if dns OK
         if dns_ok:
-            for scheme in ["https://", "http://"]:
+            for scheme in ["https://", "https://"]:
                 health_url = f"{scheme}{domain}/health"
                 ok, status, msg = check_url(health_url)
                 status_text = f"{status} {msg}" if status else msg
-                print(f"    - {health_url}: {'OK' if ok else 'FAIL'} ({status_text})")
+                logger.info(f"    - {health_url}: {'OK' if ok else 'FAIL'} ({status_text})")
 
-    print("\nSummary:")
-    print("  * Please execute this script on the intended production host after Node/pm2 is installed.")
-    print("  * Ensure that services are started and endpoints return 200.")
-    print("  * Record/log results and remediate any failures.")
+    logger.info("\nSummary:")
+    logger.info("  * Please execute this script on the intended production host after Node/pm2 is installed.")
+    logger.info("  * Ensure that services are started and endpoints return 200.")
+    logger.info("  * Record/log results and remediate any failures.")
 
 
 if __name__ == '__main__':

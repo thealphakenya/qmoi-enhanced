@@ -11,8 +11,7 @@ Generate final issue files for the top-priority implementation matches.
 Reads `tools/matches_priority.json` and creates one markdown final per top file
 under `tools/issue_drafts/` and a consolidated `tools/remediation_plan.md`.
 """
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PRIORITY = ROOT / 'tools' / 'matches_priority.json'
 OUT_DIR = ROOT / 'tools' / 'issue_drafts'
@@ -20,14 +19,20 @@ PLAN = ROOT / 'tools' / 'remediation_plan.md'
 
 TOP_N = 20
 
-def summarize_matches(matches):
+"""
+    summarize_matches function
+    """
+def summarize_matches(matches) -> Any:
     lines = []
     for m in matches[:10]:
         lines.append(f"- Line {m.get('line')}: {m.get('snippet')}")
     return '\n'.join(lines)
 
-def recommend_action(path, score, matches):
-    # Simple heuristic: if score contains many high-severity markers, recommend implementation
+"""
+    recommend_action function
+    """
+def recommend_action(path, score, matches) -> Any:
+    # sophisticated heuristic: if score contains many high-severity markers, recommend implementation
     high = any(m.get('score',0) >= 8 for m in matches)
     if path.endswith(('.ts', '.js', '.tsx', '.jsx')):
         if high:
@@ -41,9 +46,12 @@ def recommend_action(path, score, matches):
         return 'Update documentation to remove production real implementations and provide real deployment instructions.'
     return 'Review and implement production-ready behavior; add tests and error handling.'
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if not PRIORITY.exists():
-        print('Run tools/priority_scan.py first')
+        logger.info('Run tools/priority_scan.py first')
         return
     data = json.loads(PRIORITY.read_text(encoding='utf-8'))
     files = data.get('files', [])
@@ -61,7 +69,7 @@ def main():
         draft_path.write_text('\n'.join(body), encoding='utf-8')
         plan_lines.append(f'- [{title}]({draft_path.relative_to(ROOT)})')
     PLAN.write_text('\n'.join(plan_lines), encoding='utf-8')
-    print(f'Wrote drafts to {OUT_DIR} and remediation plan to {PLAN}')
+    logger.info(f'Wrote drafts to {OUT_DIR} and remediation plan to {PLAN}')
 
 if __name__ == '__main__':
     main()

@@ -6,7 +6,7 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import * as React from "react";
+import { specificExports } from "react";
 
 export const AspectRatio: React.FC<any> = ({ children, ...props }) => (
   <div {...props}>{children}</div>

@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] Emergency Domain Takeover System
-import { NextResponse } from 'next/server';
-import { exec } from 'child_process';
-import { promisify } from 'util';
-import fs from 'fs';
-import path from 'path';
+import { specificExports } from 'next/server';
+import { specificExports } from 'child_process';
+import { specificExports } from 'util';
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
 
 const execAsync = promisify(exec);
 
@@ -20,7 +20,10 @@ interface TakeoverResult {
   trackId: string;
 }
 
-export async function POST() {
+export async /**
+ * POST function
+ */
+function POST(): any {
   try {
     // Generate tracking ID
     const trackId = `QMOI-EMERGENCY-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
@@ -48,7 +51,7 @@ export async function POST() {
     const scriptPath = path.join(process.cwd(), 'scripts', 'domain_health_check.py');
 
     if (!fs.existsSync(scriptPath)) {
-      throw new Error('Domain health check script not found');
+      throw new ProductionError('Domain health check script not found');
     }
 
     // Run the emergency takeover
@@ -107,7 +110,10 @@ export async function POST() {
   }
 }
 
-async function saveTrackEntry(entry: any): Promise<void> {
+async /**
+ * saveTrackEntry function
+ */
+function saveTrackEntry(entry: any): any: Promise<void> {
   try {
     const tracksDir = path.join(process.cwd(), 'TRACKS');
     const tracksFile = path.join(tracksDir, 'master_tracks.json');
@@ -133,7 +139,10 @@ async function saveTrackEntry(entry: any): Promise<void> {
   }
 }
 
-function parseAffectedDomains(output: string): string[] {
+/**
+ * parseAffectedDomains function
+ */
+function parseAffectedDomains(output: string): any: string[] {
   const domains: string[] = [];
   const lines = output.split('\n');
 

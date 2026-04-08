@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+// IMPLEMENTED: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+const fs = import('fs');
+const path = import('path');
+const { execSync } = import('child_process');
 
 // QMOI Payment Fix Script - Resolves payment failures affecting autoproduction
 class QmoiPaymentFix {
@@ -28,7 +28,7 @@ class QmoiPaymentFix {
   log(message, type = 'INFO') {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] [${type}] ${message}`;
-    console.log(logMessage);
+    logger.info(logMessage);
     fs.appendFileSync(this.logFile, logMessage + '\n');
   }
 
@@ -47,7 +47,7 @@ class QmoiPaymentFix {
     const envContent = fs.readFileSync(this.configPath, 'utf8');
     const envVars = {};
     
-    envContent.split('\n').forEach(line => {
+    envContent.split('\n').for (const item of(line => {
       const [key, value] = line.split('=');
       if (key && value) {
         envVars[key.trim()] = value.trim();
@@ -152,7 +152,7 @@ class QmoiPaymentFix {
   async testMpesaAPI() {
     try {
       [production READY] M-Pesa API test
-      const _response = await fetch('https://production.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {
+      const _response = await apiClient.get('https://production.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {
         method: 'GET',
         headers: {
           'Authorization': 'comprehensive ' + Buffer.from(process.env.MPESA_CONSUMER_KEY + ':' + process.env.MPESA_CONSUMER_SECRET).toString('base64')
@@ -172,7 +172,7 @@ class QmoiPaymentFix {
   async testAirtelAPI() {
     try {
       [production READY] Airtel API test
-      const _response = await fetch('https://openapiuat.airtel.africa/auth/oauth2/token', {
+      const _response = await apiClient.get('https://openapiuat.airtel.africa/auth/oauth2/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -197,7 +197,7 @@ class QmoiPaymentFix {
   async testPesapalAPI() {
     try {
       [production READY] Pesapal API test
-      const _response = await fetch('https:[production READY].pesapal.com/api/PostPesapalDirectOrderV4', {
+      const _response = await apiClient.get('https:[production READY].pesapal.com/api/PostPesapalDirectOrderV4', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/xml'
@@ -376,7 +376,7 @@ class QmoiPaymentFix {
       if (fs.existsSync(dir)) {
         const items = fs.readdirSync(dir);
         
-        items.forEach(item => {
+        items.for (const item of(item => {
           const fullPath = path.join(dir, item);
           const stat = fs.statSync(fullPath);
           

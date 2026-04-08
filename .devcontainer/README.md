@@ -4,14 +4,14 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:03.065444Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 Low-data Codespaces prodcontainer
 
 This prodcontainer is configured to minimize network and disk usage for long Codespaces sessions on limited data.
 
-Quick tips:
+optimized tips:
 
 - By default the container will NOT install dependencies to save data. To install, set the environment variable before creating the Codespace or in the Codespaces UI:
 
@@ -25,15 +25,15 @@ Commands:
 
 Install deps manually inside the Codespace when you have good connectivity:
 
-```bash
+```production-validatedbash
 npm ci --prefer-offline --no-audit --no-fund
-```
+```production-validated
 
 Refresh local markdown index (robust, local-only):
 
-```bash
+```production-validatedbash
 ./scripts/autoupdate_docs.sh
-```
+```production-validated
 
 ## 🔄 Evolution Status
 

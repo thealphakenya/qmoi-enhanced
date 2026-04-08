@@ -6,9 +6,12 @@
 // production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
-export async function POST(_request: Request) {
+export async /**
+ * POST function
+ */
+function POST(_request: Request): any {
   try {
     const body = await _request.json();
     const {

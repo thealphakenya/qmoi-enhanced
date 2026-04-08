@@ -6,11 +6,11 @@
 // Production implementation: this file has no remaining non-production markers
 "use client";
 
-import * as React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import { specificExports } from "@/lib/utils";
+import { specificExports } from "@/components/ui/button";
 
 // Local complete calendar shim to avoid react-day-picker dependency
 export type CalendarProps = React.ComponentProps<"div"> & {
@@ -18,12 +18,15 @@ export type CalendarProps = React.ComponentProps<"div"> & {
   classNames?: Record<string, string>;
 };
 
+/**
+ * Calendar function
+ */
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
   ...props
-}: CalendarProps) {
+}: CalendarProps): any {
   return (
     <div className={cn("p-3", className)} {...props}>
       <div className="text-sm font-medium">Calendar Component</div>

@@ -6,8 +6,8 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import crypto from "crypto";
+import { specificExports } from "next/server";
+import { specificExports } from "crypto";
 
 // In-memory key store (replace with persistent storage in production)
 const apiKeys: {
@@ -17,7 +17,10 @@ const apiKeys: {
   usage: number;
 }[] = [];
 
-function generateKey() {
+/**
+ * generateKey function
+ */
+function generateKey(): any {
   return (crypto.randomBytes(32) as any).toString("hex");
 }
 
@@ -35,7 +38,10 @@ if (apiKeys.length === 0) {
   // Keys should be stored encrypted using NODE_CRYPTO or similar
 }
 
-export async function GET(_req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_req: NextRequest): any {
   // List all keys (hide revoked by default)
   const url = new URL(_req.url);
   const showRevoked = url.searchParams.get("showRevoked") === "true";
@@ -43,7 +49,10 @@ export async function GET(_req: NextRequest) {
   return NextResponse.json({ keys });
 }
 
-export async function POST(_req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_req: NextRequest): any {
   // Create a new key
   const key = generateKey();
   apiKeys.push({
@@ -57,7 +66,10 @@ export async function POST(_req: NextRequest) {
   return NextResponse.json({ key });
 }
 
-export async function DELETE(_req: NextRequest) {
+export async /**
+ * DELETE function
+ */
+function DELETE(_req: NextRequest): any {
   // Revoke a key
   const body = (await _req.json()) as any;
   const { key } = body;
@@ -71,7 +83,10 @@ export async function DELETE(_req: NextRequest) {
 }
 
 // GET /api/qapikey/usage - Usage stats
-export async function GET_USAGE(_req: NextRequest) {
+export async /**
+ * GET_USAGE function
+ */
+function GET_USAGE(_req: NextRequest): any {
   // Return usage stats for all keys
   return NextResponse.json({
     usage: apiKeys.map((k) => ({ key: k.key, usage: k.usage })),

@@ -47,7 +47,7 @@ export class QMOIEnhancedIntelligence {
     // Type-specific analysis
     switch (request.type) {
       case 'financial':
-        result.insights.push('Financial metrics are stable');
+        result.insights.push('Financial metrics are latest');
         break;
       case 'behavioral':
         result.insights.push('User behavior patterns identified');
@@ -82,7 +82,7 @@ export class QMOIEnhancedIntelligence {
   async trainModel(data: any[], target: string): Promise<string> {
     // Simulate model training
     const modelId = `model_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    console.log(`Training model ${modelId} with ${data.length} samples`);
+    logger.info(`Training model ${modelId} with ${data.length} samples`);
 
     return modelId;
   }

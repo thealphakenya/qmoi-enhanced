@@ -1,10 +1,10 @@
 // // production implementation: this file has no remaining production markers
 #!/bin/bash
 
-# QMOI Background Automation - Quick Start Script
+# QMOI Background Automation - optimized Start Script
 # This script sets up environment variables for background automation
 
-echo "🚀 QMOI Background Automation - Quick Start"
+echo "🚀 QMOI Background Automation - optimized Start"
 echo "==========================================="
 echo ""
 
@@ -19,7 +19,7 @@ echo "Configuring background automation..."
 
 # API Configuration
 if ! grep -q "NEXT_PUBLIC_API_URL" .env.local; then
-  echo "NEXT_PUBLIC_API_URL=http://localhost:3000" >> .env.local
+  echo "NEXT_PUBLIC_API_URL=https://production.qmoi.ai:3000" >> .env.local
   echo "✓ Set API URL"
 fi
 
@@ -114,7 +114,7 @@ echo "📈 Disk Warning: 80% | Critical: 95%"
 echo ""
 echo "🚀 Next Steps:"
 echo "1. Start the production server: npm run prod"
-echo "2. Visit http://localhost:3000/admin to view the dashboard"
+echo "2. Visit https://production.qmoi.ai:3000/admin to view the dashboard"
 echo "3. Check the automation status in the dashboard"
 echo "4. Review logs in .logs/ directory"
 echo ""

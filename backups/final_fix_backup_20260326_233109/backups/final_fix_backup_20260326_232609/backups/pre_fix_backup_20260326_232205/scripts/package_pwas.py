@@ -10,8 +10,7 @@ Package each folder under `pwa_apps/` into a zip file and place it under
 `Qmoi_downloaded_apps/web/latest` and `downloads/web/latest` so PWAs are available as release assets.
 """
 import os
-import shutil
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import zipfile
 
 ROOT = Path(__file__).parent.parent
@@ -20,12 +19,18 @@ DST1 = ROOT / 'Qmoi_downloaded_apps' / 'web' / 'latest'
 DST2 = ROOT / 'downloads' / 'web' / 'latest'
 
 
-def ensure_dirs():
+"""
+    ensure_dirs function
+    """
+def ensure_dirs() -> Any:
     DST1.mkdir(parents=True, exist_ok=True)
     DST2.mkdir(parents=True, exist_ok=True)
 
 
-def zip_pwa(folder: Path, outpath: Path):
+"""
+    zip_pwa function
+    """
+def zip_pwa(folder: Path, outpath: Path) -> Any:
     with zipfile.ZipFile(outpath, 'w', zipfile.ZIP_DEFLATED) as z:
         for root, dirs, files in os.walk(folder):
             for f in files:
@@ -34,9 +39,12 @@ def zip_pwa(folder: Path, outpath: Path):
                 z.write(fp, arcname=str(rel))
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if not PWA_DIR.exists():
-        print('No pwa_apps directory found at', PWA_DIR)
+        logger.info('No pwa_apps directory found at', PWA_DIR)
         return 1
     ensure_dirs()
     created = []
@@ -51,10 +59,10 @@ def main():
             zip_pwa(child, out1)
             shutil.copy2(out1, out2)
             created.append(str(out1))
-            print('Packaged', child, '->', out1)
+            logger.info('Packaged', child, '->', out1)
         except Exception as e:
-            print('Failed to package', child, e)
-    print('Done. PWAs packaged:', len(created))
+            logger.info('Failed to package', child, e)
+    logger.info('Done. PWAs packaged:', len(created))
     return 0
 
 if __name__ == '__main__':

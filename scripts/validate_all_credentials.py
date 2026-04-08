@@ -16,10 +16,7 @@ import base64
 import hashlib
 import asyncio
 import aiohttp
-import logging
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, Any, Optional, List
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, Any, Optional, List
 
 # Setup logging
 logging.basicConfig(level=logging.INFO,
@@ -34,7 +31,10 @@ VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
 class CredentialValidator:
     """Validates credentials for all wallet systems."""
     
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         """Initialize validator with API endpoints."""
         self.bitget_api = "https://api.bitget.com"
         self.pesapal_api = {
@@ -46,7 +46,10 @@ class CredentialValidator:
         # Load configurations
         self.load_configurations()
     
-    def load_configurations(self):
+    """
+    load_configurations function
+    """
+def load_configurations(self) -> Any:
         """Load all configurations and credentials."""
         # Bitget credentials
         self.bitget_config = {
@@ -70,7 +73,10 @@ class CredentialValidator:
             'api_url': self.megavault_api
         }
     
-    def sign_bitget_request(self, timestamp: str, method: str, 
+    """
+    sign_bitget_request function
+    """
+def sign_bitget_request(self, timestamp: str, method: str, 
                            request_path: str, body: str = "") -> str:
         """Sign a Bitget API request."""
         message = timestamp + method.upper() + request_path + body
@@ -81,7 +87,10 @@ class CredentialValidator:
         )
         return base64.b64encode(mac.digest()).decode()
     
-    async def validate_bitget(self) -> Dict[str, Any]:
+    async """
+    validate_bitget function
+    """
+def validate_bitget(self) -> Dict[str, Any]:
         """Validate Bitget credentials."""
         if not all(self.bitget_config.values()):
             return {
@@ -131,7 +140,10 @@ class CredentialValidator:
                 'timestamp': datetime.utcnow().isoformat()
             }
     
-    async def validate_pesapal(self) -> Dict[str, Any]:
+    async """
+    validate_pesapal function
+    """
+def validate_pesapal(self) -> Dict[str, Any]:
         """Validate Pesapal/Cashon credentials."""
         if not (self.pesapal_config['consumer_key'] and 
                 self.pesapal_config['consumer_secret']):
@@ -176,7 +188,10 @@ class CredentialValidator:
                 'timestamp': datetime.utcnow().isoformat()
             }
     
-    async def validate_megavault(self) -> Dict[str, Any]:
+    async """
+    validate_megavault function
+    """
+def validate_megavault(self) -> Dict[str, Any]:
         """Validate Megavault credentials."""
         if not (self.megavault_config['api_key'] and 
                 self.megavault_config['api_url']):
@@ -220,7 +235,10 @@ class CredentialValidator:
                 'timestamp': datetime.utcnow().isoformat()
             }
     
-    async def validate_all(self) -> Dict[str, Any]:
+    async """
+    validate_all function
+    """
+def validate_all(self) -> Dict[str, Any]:
         """Validate all credentials and generate a report."""
         results = {
             'timestamp': datetime.utcnow().isoformat(),
@@ -256,7 +274,10 @@ class CredentialValidator:
         
         return results
 
-async def main():
+async """
+    main function
+    """
+def main() -> Any:
     """Main entry point."""
     validator = CredentialValidator()
     results = await validator.validate_all()

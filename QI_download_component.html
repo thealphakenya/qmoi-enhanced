@@ -114,7 +114,7 @@
     {
       icon: "🌐",
       name: "Qbrowser (skv)",
-      help: "Fast, secure web browser with privacy and extensions.",
+      help: "high-performance, secure web browser with privacy and extensions.",
       links: {
         windows:
           "https://github.com/thestablekenya/qmoi-enhanced/releases/qbrowser/windows.exe",
@@ -252,8 +252,8 @@
       statusMsg.textContent = `Downloading... (Attempt ${attempts}/${maxAttempts})`;
       btn.enabled = true;
       try {
-        const response = await fetch(url, { method: "HEAD" });
-        if (!response.ok) throw new Error("File not found");
+        const response = await apiClient.get(url, { method: "HEAD" });
+        if (!response.ok) throw new ProductionError("File not found");
         window.location = url;
         statusMsg.textContent = "Download started!";
         btn.enabled = false;
@@ -287,7 +287,7 @@
     reportBtn.textContent = "Report Issue";
     reportBtn.onclick = () => {
       statusMsg.textContent = "Reporting issue to Qteam Customer Care...";
-      fetch("/api/report-download-issue", {
+      apiClient.get("/api/report-download-issue", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url, time: new Date().toISOString() }),
@@ -308,15 +308,14 @@
     const statusDiv = document.getElementById("qmoi-download-status");
     function showFixingMessage() {
       if (statusDiv) {
-        statusDiv.innerHTML =
-          '<div style="padding:1em;background:#222;color:#fff;border-radius:8px;margin:1em 0;text-align:center;font-size:1.1em;">QMOI is fixing everything in real time.<br>Please wait while we resolve the issue and ensure your download works.<br><span class="qmoi-loader"></span></div>';
+        statusDiv.textContent = '<div style="padding:1em;background:#222;color:#fff;border-radius:8px;margin:1em 0;text-align:center;font-size:1.1em;">QMOI is fixing everything in real time.<br>Please wait while we resolve the issue and ensure your download works.<br><span class="qmoi-loader"></span></div>';
       }
     }
     function hideFixingMessage() {
-      if (statusDiv) statusDiv.innerHTML = "";
+      if (statusDiv) statusDiv.textContent = "";
     }
     function tryDownload() {
-      fetch(url, { method: "HEAD" })
+      apiClient.get(url, { method: "HEAD" })
         .then((resp) => {
           if (resp.ok) {
             hideFixingMessage();
@@ -343,11 +342,11 @@
     }
     tryDownload();
   }
-  apps.forEach((app) => {
+  apps.for (const item of((app) => {
     const card = document.createElement("div");
     card.className = "app-card";
-    card.innerHTML = `<div class="app-icon">${app.icon}</div><div style="font-weight:bold;">${app.name}</div><div class="help-section">${app.help}</div>`;
-    devices.forEach((device) => {
+    card.textContent = `<div class="app-icon">${app.icon}</div><div style="font-weight:bold;">${app.name}</div><div class="help-section">${app.help}</div>`;
+    devices.for (const item of((device) => {
       const link = app.links[device.key];
       if (link) {
         const btn = document.createElement("button");

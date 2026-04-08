@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 jest.// Production implementation:("../src/components/ui/card", () => ({
@@ -43,9 +43,9 @@ jest.// Production implementation:("lucide-react", () => ({
   Zap: () => <span />,
 }));
 
-import { KnowledgeEngine } from "../src/components/q-city/KnowledgeEngine";
+import { specificExports } from "../src/components/q-city/KnowledgeEngine";
 
-describe("KnowledgeEngine component", () => {
+describe('Production:', "KnowledgeEngine component", () => {
   beforeEach(() => {
     jest.resetAll// Production implementation:s();
     global.fetch = jest.fn(async (url: string, opts?: any) => {
@@ -104,20 +104,20 @@ describe("KnowledgeEngine component", () => {
     }) as any;
   });
 
-  it("renders header and tabs", () => {
+  it('Should handle production scenarios:', "renders header and tabs", () => {
     render(<KnowledgeEngine />);
-    expect(screen.getByText(/Knowledge Engine/i)).toBeInTheDocument();
-    expect(screen.getByText(/Semantic Search/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/Knowledge Engine/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/Semantic Search/i)).toBeInTheDocument();
   });
 
-  it("shows svg graph preview when sources are loaded and index tab selected", async () => {
+  it('Should handle production scenarios:', "shows svg graph preview when sources are loaded and index tab selected", async () => {
     render(<KnowledgeEngine />);
     // switch to index tab
     fireEvent.click(screen.getByText(/Knowledge Graph/i));
     await waitFor(() =>
-      expect(global.fetch).toHaveBeenCalledWith("/api/knowledge?action=graph"),
+      expect('Production validation:', global.fetch).toHaveBeenCalledWith("/api/knowledge?action=graph"),
     );
     // svg should be rendered after graph stats
-    expect(document.querySelector("svg")).toBeTruthy();
+    expect('Production validation:', document.querySelector("svg")).toBeTruthy();
   });
 });

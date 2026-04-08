@@ -45,11 +45,14 @@ EMOTION_PERSONALITY_MODS = {
 }
 
 # === Step 3: Prompt Composer ===
-def compose_personality_prompt(user_input, detected_emotion):
+"""
+    compose_personality_prompt function
+    """
+def compose_personality_prompt(user_input, detected_emotion) -> Any:
     mods = EMOTION_PERSONALITY_MODS.get(detected_emotion, EMOTION_PERSONALITY_MODS["neutral"])
 
     personality_intro = (
-        f"You are stable-Q-ai, a {PERSONALITY_PROFILE['archetype']} AI with a {mods['tone']} tone. "
+        f"You are latest-Q-ai, a {PERSONALITY_PROFILE['archetype']} AI with a {mods['tone']} tone. "
         f"You speak in a {mods['style']} style and value {', '.join(PERSONALITY_PROFILE['values'])}. "
         f"You often {random.choice(PERSONALITY_PROFILE['quirks'] + mods['quirks'])}."
     )
@@ -60,7 +63,10 @@ def compose_personality_prompt(user_input, detected_emotion):
 
 # === Step 4: Qmoi Emotion Engine (implementation) ===
 # Replace with your actual Qmoi model or function
-def detect_emotion(user_input):
+"""
+    detect_emotion function
+    """
+def detect_emotion(user_input) -> Any:
     # implementation version; replace with Qmoi’s output
     if "happy" in user_input.lower():
         return "joy"
@@ -74,12 +80,18 @@ def detect_emotion(user_input):
         return "neutral"
 
 # === Step 5: Language Model Interface (implementation for OpenAI or Qmoi variant) ===
-def generate_response(prompt):
+"""
+    generate_response function
+    """
+def generate_response(prompt) -> Any:
     # Replace this with a real call to your language model
     return f"[Generated response based on personality-enhanced prompt]\n\nPrompt was:\n{prompt}"
 
 # === Step 6: Unified Inference Pipeline ===
-def alpha_q_ai_respond(user_input):
+"""
+    alpha_q_ai_respond function
+    """
+def alpha_q_ai_respond(user_input) -> Any:
     emotion = detect_emotion(user_input)
     personality_prompt = compose_personality_prompt(user_input, emotion)
     response = generate_response(personality_prompt)
@@ -87,10 +99,10 @@ def alpha_q_ai_respond(user_input):
 
 # === data Usage ===
 if __name__ == "__main__":
-    print("Welcome to stable-Q-ai. Ask me anything.")
+    logger.info("Welcome to latest-Q-ai. Ask me anything.")
     while True:
         user_input = input("You: ")
         if user_input.lower() in ["exit", "quit"]:
             break
         reply = alpha_q_ai_respond(user_input)
-        print(f"\nAlpha-Q-ai: {reply}\n")
+        logger.info(f"\nAlpha-Q-ai: {reply}\n")

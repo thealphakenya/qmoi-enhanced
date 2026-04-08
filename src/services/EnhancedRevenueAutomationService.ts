@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { EventEmitter } from "events";
+import { specificExports } from "events";
 
 interface RevenueProjectRequest {
   id: string;

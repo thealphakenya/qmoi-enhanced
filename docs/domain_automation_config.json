@@ -200,5 +200,9 @@
     "redirect_to_production": true,
     "activate_cdn": true,
     "enable_caching": true
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:18.772466"
 }

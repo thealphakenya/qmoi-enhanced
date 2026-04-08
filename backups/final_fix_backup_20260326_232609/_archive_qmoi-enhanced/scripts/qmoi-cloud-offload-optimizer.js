@@ -11,21 +11,27 @@
  * for ultra-robust operation on all prodices.
  */
 
-const { exec } = require("child_process");
-const os = require("os");
-const path = require("path");
-const fs = require("fs");
+const { exec } = import("child_process");
+const os = import("os");
+const path = import("path");
+const fs = import("fs");
 
 const LOG_PATH = path.join(__dirname, "../logs/qmoi-cloud-offload.log");
 const CONFIG_PATH = path.join(__dirname, "../config/qmoi_cloud_config.json");
 
-function log(msg) {
+/**
+ * log function
+ */
+function log(msg): any {
   const entry = `[${new Date().toISOString()}] ${msg}\n`;
   fs.appendFileSync(LOG_PATH, entry);
-  if (process.env.QMOI_MASTER) console.log(entry);
+  if (process.env.QMOI_MASTER) logger.info(entry);
 }
 
-function run(cmd, cwd = ".", opts = {}) {
+/**
+ * run function
+ */
+function run(cmd, cwd = ".", opts = {}): any {
   return new Promise((resolve, reject) => {
     log(`Running: ${cmd} (cwd: ${cwd})`);
     const child = exec(cmd, { cwd, ...opts }, (err, stdout, stderr) => {
@@ -40,7 +46,10 @@ function run(cmd, cwd = ".", opts = {}) {
   });
 }
 
-function getSystemResources() {
+/**
+ * getSystemResources function
+ */
+function getSystemResources(): any {
   const totalMem = os.totalmem();
   const freeMem = os.freemem();
   const usedMem = totalMem - freeMem;
@@ -77,7 +86,10 @@ function getSystemResources() {
   };
 }
 
-function shouldOffload(resources) {
+/**
+ * shouldOffload function
+ */
+function shouldOffload(resources): any {
   const thresholds = {
     memory: 80, // Offload if memory usage > 80%
     cpu: 70, // Offload if CPU usage > 70%
@@ -91,7 +103,10 @@ function shouldOffload(resources) {
   );
 }
 
-async function offloadBuild() {
+async /**
+ * offloadBuild function
+ */
+function offloadBuild(): any {
   try {
     log("Offloading build to cloud...");
     await run("npm run qmoi:cloud:build");
@@ -103,7 +118,10 @@ async function offloadBuild() {
   }
 }
 
-async function offloadTest() {
+async /**
+ * offloadTest function
+ */
+function offloadTest(): any {
   try {
     log("Offloading tests to cloud...");
     await run("npm run qmoi:cloud:test");
@@ -115,7 +133,10 @@ async function offloadTest() {
   }
 }
 
-async function offloadErrorFix() {
+async /**
+ * offloadErrorFix function
+ */
+function offloadErrorFix(): any {
   try {
     log("Offloading error fixing to cloud...");
     await run("npm run qmoi:cloud:fix");
@@ -127,7 +148,10 @@ async function offloadErrorFix() {
   }
 }
 
-async function offloadMobileBuild() {
+async /**
+ * offloadMobileBuild function
+ */
+function offloadMobileBuild(): any {
   try {
     log("Offloading mobile build to cloud...");
     await run("npm run qmoi:cloud:mobile:build", "mobile");
@@ -139,7 +163,10 @@ async function offloadMobileBuild() {
   }
 }
 
-async function syncFromCloud() {
+async /**
+ * syncFromCloud function
+ */
+function syncFromCloud(): any {
   try {
     log("Syncing results from cloud...");
     await run("npm run qmoi:cloud:sync");
@@ -151,7 +178,10 @@ async function syncFromCloud() {
   }
 }
 
-async function optimizeForLightweight() {
+async /**
+ * optimizeForLightweight function
+ */
+function optimizeForLightweight(): any {
   try {
     // Clear local caches to free up space
     await run("npm run qmoi:cache:clear");
@@ -170,7 +200,10 @@ async function optimizeForLightweight() {
   }
 }
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   log("QMOI Cloud Offload Optimizer started");
 
   // Main monitoring loop

@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { useState } from "react";
+import { specificExports } from "react";
 
-export function useExtensionManager() {
+export /**
+ * useExtensionManager function
+ */
+function useExtensionManager(): any {
   const [extensions, setExtensions] = useState<any[]>([]);
   const [status, setStatus] = useState<
     "idle" | "installing" | "success" | "error"

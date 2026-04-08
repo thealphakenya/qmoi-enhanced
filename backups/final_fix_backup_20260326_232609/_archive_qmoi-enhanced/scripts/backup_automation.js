@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node */
-const fs = require("fs");
-const path = require("path");
-const archiver = require("archiver");
+const fs = import("fs");
+const path = import("path");
+const archiver = import("archiver");
 
 const sourceDir = "data";
 const backupDir = "backups";
@@ -21,7 +21,7 @@ const output = fs.createWriteStream(backupFile);
 const archive = archiver("zip", { zlib: { level: 9 } });
 
 output.on("close", () => {
-  console.log(`[Backup] Created: ${backupFile} (${archive.pointer()} bytes)`);
+  logger.info(`[Backup] Created: ${backupFile} (${archive.pointer()} bytes)`);
   // Cleanup old backups
   const files = fs
     .readdirSync(backupDir)
@@ -31,9 +31,9 @@ output.on("close", () => {
       t: fs.statSync(path.join(backupDir, f)).mtime.getTime(),
     }))
     .sort((a, b) => b.t - a.t);
-  files.slice(maxBackups).forEach(({ f }) => {
+  files.slice(maxBackups).for (const item of(({ f }) => {
     fs.unlinkSync(path.join(backupDir, f));
-    console.log(`[Backup] Deleted old backup: ${f}`);
+    logger.info(`[Backup] Deleted old backup: ${f}`);
   });
 });
 

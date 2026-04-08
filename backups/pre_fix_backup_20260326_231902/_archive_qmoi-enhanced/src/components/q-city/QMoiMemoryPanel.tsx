@@ -4,9 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export default function QMoiMemoryPanel({
+export default /**
+ * QMoiMemoryPanel function
+ */
+function QMoiMemoryPanel(): any {
+  try {({
   isMaster = false,
 }: {
   isMaster?: boolean;
@@ -16,13 +20,19 @@ export default function QMoiMemoryPanel({
   const [correction, setCorrection] = useState("");
   const [message, setMessage] = useState("");
 
-  async function fetchMemory() {
-    const res = await fetch("/api/qmoi/memory");
+  async /**
+ * fetchMemory function
+ */
+function fetchMemory(): any {
+    const res = await apiClient.get("/api/qmoi/memory");
     if (res.ok) setMemory(await res.json());
   }
 
-  async function submitFeedback() {
-    const res = await fetch("/api/qmoi/feedback", {
+  async /**
+ * submitFeedback function
+ */
+function submitFeedback(): any {
+    const res = await apiClient.get("/api/qmoi/feedback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -38,8 +48,11 @@ export default function QMoiMemoryPanel({
     }
   }
 
-  async function backupMemory() {
-    const res = await fetch("/api/qmoi/memory-backup");
+  async /**
+ * backupMemory function
+ */
+function backupMemory(): any {
+    const res = await apiClient.get("/api/qmoi/memory-backup");
     if (res.ok) setMessage("Memory backup created!");
     else setMessage("Backup failed.");
   }

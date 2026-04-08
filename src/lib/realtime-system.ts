@@ -21,7 +21,7 @@ export interface RealtimeSubscription {
 
 export class RealtimeSystem {
   private events: RealtimeEvent[] = [];
-  private subscriptions: Map<string, RealtimeSubscription> = new Map();
+  private subscriptions: Map<string, RealtimeSubscription> = new Map() // Production: Consider object for small datasets();
   private eventHistory: RealtimeEvent[] = [];
 
   async emitEvent(event: Omit<RealtimeEvent, 'id' | 'timestamp'>): Promise<string> {

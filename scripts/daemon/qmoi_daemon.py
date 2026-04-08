@@ -30,8 +30,7 @@ import argparse
 import os
 import subprocess
 import sys
-import time
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 VALIDATION_DIR = os.path.join(BASE_DIR, '.qmoi_validation')
@@ -70,42 +69,48 @@ TASKS = [
     }
 ]
 
-def run_task(task):
+"""
+    run_task function
+    """
+def run_task(task) -> Any:
     name = task['name']
     cmd = task['cmd']
     cwd = task.get('cwd')
-    print(f"[{datetime.utcnow().isoformat()}] Starting task: {name}")
+    logger.info(f"[{datetime.utcnow().isoformat()}] Starting task: {name}")
     try:
         res = subprocess.run(cmd, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=300)
-        print(f"[{name}] exit={res.returncode}")
+        logger.info(f"[{name}] exit={res.returncode}")
         if res.stdout:
-            print(f"[{name}] stdout:\n{res.stdout[:4000]}")
+            logger.info(f"[{name}] stdout:\n{res.stdout[:4000]}")
         if res.stderr:
-            print(f"[{name}] stderr:\n{res.stderr[:4000]}")
+            logger.info(f"[{name}] stderr:\n{res.stderr[:4000]}")
         return res.returncode == 0
     except subprocess.TimeoutExpired:
-        print(f"[{name}] timed out")
+        logger.info(f"[{name}] timed out")
         return False
     except FileNotFoundError as e:
-        print(f"[{name}] file not found: {e}")
+        logger.info(f"[{name}] file not found: {e}")
         return False
     except Exception as e:
-        print(f"[{name}] unexpected error: {e}")
+        logger.info(f"[{name}] unexpected error: {e}")
         return False
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--once', action='store_true', help='Run tasks once and exit')
     p.add_argument('--interval', type=int, default=3600, help='Interval seconds between runs when running continuously')
     args = p.parse_args()
 
-    print('QMOI daemon starting (safe-by-default).')
+    logger.info('QMOI daemon starting (safe-by-default).')
     if args.once:
         success = True
         for t in TASKS:
             ok = run_task(t)
             success = success and ok
-        print('One-shot run completed. Success=' + str(success))
+        logger.info('One-shot run completed. Success=' + str(success))
         return 0 if success else 2
 
     # continuous loop
@@ -113,10 +118,10 @@ def main():
         while True:
             for t in TASKS:
                 run_task(t)
-            print(f"Sleeping {args.interval}s before next run...")
+            logger.info(f"Sleeping {args.interval}s before next run...")
             time.sleep(args.interval)
     except KeyboardInterrupt:
-        print('Daemon stopped by user')
+        logger.info('Daemon stopped by user')
         return 0
 
 if __name__ == '__main__':

@@ -21,7 +21,7 @@ if command -v gh >/prod/null 2>&1; then
   gh workflow run "$WORKFLOW_FILE" --repo "$REPO" --ref "$REF"
   echo "Triggered. Check Actions tab for progress."
 else
-  echo "gh CLI not found. Falling back to GitHub API (requires GITHUB_TOKEN env var)"
+  echo "gh CLI not found. Falling back to GitHub API (requires GITHUB_TOKEN env const)"
   if [ -z "${GITHUB_TOKEN-}" ]; then
     echo "Set GITHUB_TOKEN environment variable with workflow dispatch permission"
     exit 1

@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:33Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,7 +27,10 @@ const paramNames = [
   "_event",
 ];
 
-function walk(dir) {
+/**
+ * walk function
+ */
+function walk(dir): any {
   const files = [];
   for (const name of fs.readdirSync(dir)) {
     const p = path.join(dir, name);
@@ -38,7 +41,10 @@ function walk(dir) {
   return files;
 }
 
-function fixFile(file) {
+/**
+ * fixFile function
+ */
+function fixFile(file): any {
   let src = fs.readFileSync(file, "utf8");
   const original = src;
   for (const name of paramNames) {
@@ -49,7 +55,7 @@ function fixFile(file) {
   }
   if (src !== original) {
     fs.writeFileSync(file, src, "utf8");
-    console.log("fixed refs", path.relative(root, file));
+    logger.info("fixed refs", path.relative(root, file));
   }
 }
 
@@ -61,4 +67,4 @@ for (const f of files) {
     console.error("_err", f, _e.message);
   }
 }
-console.log("done");
+logger.info("done");

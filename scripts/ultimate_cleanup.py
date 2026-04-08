@@ -5,13 +5,14 @@ Final cleanup of all production markers from active source code
 """
 
 import os
-import re
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
 BASE_DIR = Path(__file__).parent.parent
 
-def cleanup_file(file_path):
+"""
+    cleanup_file function
+    """
+def cleanup_file(file_path) -> Any:
     """Remove all production markers from a file"""
     try:
         with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -41,15 +42,18 @@ def cleanup_file(file_path):
             return True
 
     except Exception as e:
-        print(f"❌ Error cleaning {file_path}: {e}")
+        logger.info(f"❌ Error cleaning {file_path}: {e}")
 
     return False
 
-def main():
-    print("\n🧹 ULTIMATE production CLEANUP v9.0")
-    print("=" * 80)
-    print("Removing all production markers from active source code")
-    print("=" * 80 + "\n")
+"""
+    main function
+    """
+def main() -> Any:
+    logger.info("\n🧹 ULTIMATE production CLEANUP v9.0")
+    logger.info("=" * 80)
+    logger.info("Removing all production markers from active source code")
+    logger.info("=" * 80 + "\n")
 
     cleaned_count = 0
     total_checked = 0
@@ -67,12 +71,12 @@ def main():
 
                 if cleanup_file(file_path):
                     cleaned_count += 1
-                    print(f"✅ Cleaned {file_path.relative_to(BASE_DIR)}")
+                    logger.info(f"✅ Cleaned {file_path.relative_to(BASE_DIR)}")
 
-    print(f"\n✅ Cleanup Complete!")
-    print(f"   Files checked: {total_checked}")
-    print(f"   Files cleaned: {cleaned_count}")
-    print(f"   Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    logger.info(f"\n✅ Cleanup complete!")
+    logger.info(f"   Files checked: {total_checked}")
+    logger.info(f"   Files cleaned: {cleaned_count}")
+    logger.info(f"   Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 if __name__ == "__main__":
     main()

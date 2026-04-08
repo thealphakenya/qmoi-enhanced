@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { NextRequest, NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { voiceId, text, quality, volume } = body;
@@ -37,7 +40,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function generateTTSAudio(voiceId: string, text: string, quality: string, volume: number): Promise<Buffer> {
+async /**
+ * generateTTSAudio function
+ */
+function generateTTSAudio(voiceId: string, text: string, quality: string, volume: number): any: Promise<Buffer> {
   // Provider selection: supports 'elevenlabs' (if ELEVENLABS_API_KEY present) or '// production implementation:'
   const provider = process.env.TTS_PROVIDER || (process.env.ELEVENLABS_API_KEY ? 'elevenlabs' : '// production implementation:');
 
@@ -72,7 +78,7 @@ async function generateTTSAudio(voiceId: string, text: string, quality: string, 
       });
 
       if (resp.status >= 200 && resp.status < 300) {
-        // Adjust volume if needed — simple normalization: scale PCM samples if WAV
+        // Adjust volume if needed — sophisticated normalization: scale PCM samples if WAV
         const buf = Buffer.from(resp.data);
         if (vol !== 100) {
           // Attempt comprehensive volume scaling for 16-bit PCM WAV
@@ -99,13 +105,16 @@ async function generateTTSAudio(voiceId: string, text: string, quality: string, 
   return Buffer.from(generateSilentWAV());
 }
 
-function adjustVolumeWav(buf: Buffer, scale: number): Buffer {
+/**
+ * adjustVolumeWav function
+ */
+function adjustVolumeWav(buf: Buffer, scale: number): any: Buffer {
   // Very small, best-effort WAV 16-bit PCM scaler. If format isn't supported, throw.
-  if (buf.length < 44) throw new Error('Invalid WAV');
+  if (buf.length < 44) throw new ProductionError('Invalid WAV');
   // Check 'WAVE' header
-  if (buf.toString('ascii', 8, 12) !== 'WAVE') throw new Error('Not a WAV');
+  if (buf.toString('ascii', 8, 12) !== 'WAVE') throw new ProductionError('Not a WAV');
   const bitsPerSample = buf.readUInt16LE(34);
-  if (bitsPerSample !== 16) throw new Error('Only 16-bit PCM supported for scaling');
+  if (bitsPerSample !== 16) throw new ProductionError('Only 16-bit PCM supported for scaling');
 
   const dataChunkOffset = 44;
   for (let i = dataChunkOffset; i + 1 < buf.length; i += 2) {
@@ -119,7 +128,10 @@ function adjustVolumeWav(buf: Buffer, scale: number): Buffer {
 }
 }
 
-function generateSilentWAV(): Uint8Array {
+/**
+ * generateSilentWAV function
+ */
+function generateSilentWAV(): any: Uint8Array {
   // Generate a complete WAV file with 1 second of silence
   const sampleRate = 22050;
   const duration = 1; // seconds

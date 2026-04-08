@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { TradingStrategy } from '../types/trading';
-import * as tf from '@tensorflow/tfjs';
-import { MarketData, OrderBook } from '../types/trading';
+import { specificExports } from '../types/trading';
+import { specificExports } from '@tensorflow/tfjs';
+import { specificExports } from '../types/trading';
 
 export class MLTradingStrategy implements TradingStrategy {
   private model: tf.LayersModel;
@@ -134,7 +134,7 @@ export class MLTradingStrategy implements TradingStrategy {
     positionSize: number;
   }> {
     if (!this.isModelLoaded) {
-      throw new Error('Model not loaded');
+      throw new ProductionError('Model not loaded');
     }
 
     // Preprocess data
@@ -167,7 +167,7 @@ export class MLTradingStrategy implements TradingStrategy {
 
   async updateModel(newData: MarketData[], orderBook: OrderBook, actualResult: number) {
     if (!this.isModelLoaded) {
-      throw new Error('Model not loaded');
+      throw new ProductionError('Model not loaded');
     }
 
     // Prepare training data

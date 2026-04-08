@@ -1,10 +1,10 @@
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
-import { requireRole } from "../auth/rbac";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "../auth/rbac";
 
 const PLUGIN_DIR = path.resolve(process.cwd(), "plugins");
 

@@ -1,11 +1,14 @@
 // // production implementation: this file has no remaining production markers
-import fs from "fs";
-import path from "path";
-import { NextResponse } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "next/server";
 
 const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     const data = fs.existsSync(USERS_FILE)
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))

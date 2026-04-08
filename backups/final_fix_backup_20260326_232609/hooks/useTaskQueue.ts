@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 export interface Task {
   id: string;
@@ -43,7 +43,10 @@ export interface TaskQueue {
   };
 }
 
-export function useTaskQueue() {
+export /**
+ * useTaskQueue function
+ */
+function useTaskQueue(): any {
   const [queue, setQueue] = useState<TaskQueue>({
     tasks: [],
     stats: {
@@ -65,15 +68,18 @@ export function useTaskQueue() {
   });
 
   useEffect(() => {
-    async function fetchQueue() {
+    async /**
+ * fetchQueue function
+ */
+function fetchQueue(): any {
       try {
         const adminToken = localStorage.getItem("adminToken") || "";
-        const response = await fetch("/api/tasks/queue", {
+        const response = await apiClient.get("/api/tasks/queue", {
           headers: { "x-admin-token": adminToken },
         });
 
         if (!response.ok) {
-          throw new Error("Failed to fetch task queue");
+          throw new ProductionError("Failed to fetch task queue");
         }
 
         const data = await response.json();
@@ -98,7 +104,7 @@ export function useTaskQueue() {
   ) => {
     try {
       const adminToken = localStorage.getItem("adminToken") || "";
-      const response = await fetch("/api/tasks", {
+      const response = await apiClient.get("/api/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -108,7 +114,7 @@ export function useTaskQueue() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to add task");
+        throw new ProductionError("Failed to add task");
       }
 
       const task = await response.json();
@@ -127,13 +133,13 @@ export function useTaskQueue() {
   const cancelTask = async (taskId: string) => {
     try {
       const adminToken = localStorage.getItem("adminToken") || "";
-      const response = await fetch(`/api/tasks/${taskId}/cancel`, {
+      const response = await apiClient.get(`/api/tasks/${taskId}/cancel`, {
         method: "POST",
         headers: { "x-admin-token": adminToken },
       });
 
       if (!response.ok) {
-        throw new Error("Failed to cancel task");
+        throw new ProductionError("Failed to cancel task");
       }
 
       setQueue((prev) => ({
@@ -153,13 +159,13 @@ export function useTaskQueue() {
   const retryTask = async (taskId: string) => {
     try {
       const adminToken = localStorage.getItem("adminToken") || "";
-      const response = await fetch(`/api/tasks/${taskId}/retry`, {
+      const response = await apiClient.get(`/api/tasks/${taskId}/retry`, {
         method: "POST",
         headers: { "x-admin-token": adminToken },
       });
 
       if (!response.ok) {
-        throw new Error("Failed to retry task");
+        throw new ProductionError("Failed to retry task");
       }
 
       const task = await response.json();
@@ -180,7 +186,7 @@ export function useTaskQueue() {
   ) => {
     try {
       const adminToken = localStorage.getItem("adminToken") || "";
-      const response = await fetch("/api/tasks/settings", {
+      const response = await apiClient.get("/api/tasks/settings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -190,7 +196,7 @@ export function useTaskQueue() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to update settings");
+        throw new ProductionError("Failed to update settings");
       }
 
       const data = await response.json();

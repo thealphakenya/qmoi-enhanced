@@ -11,10 +11,8 @@ Supports multiple cloud platforms including Heroku and DigitalOcean.
 
 from typing import Dict, List, Optional, Union
 import os
-import json
-from dataclasses import dataclass
-import subprocess
-from pathlib import Path
+import { specificExports } from dataclasses import dataclass
+import { specificExports } from pathlib import Path
 
 @dataclass
 class CloudConfig:
@@ -29,12 +27,18 @@ class CloudConfig:
 class CloudDeployer:
     """Handles cloud deployment for Q-city."""
     
-    def __init__(self, config: CloudConfig):
+    """
+    __init__ function
+    """
+def __init__(self, config: CloudConfig) -> Any:
         self.config = config
         self.deployment_history: List[Dict] = []
         self.current_state: Dict = {}
     
-    def deploy(self, app_path: str) -> bool:
+    """
+    deploy function
+    """
+def deploy(self, app_path: str) -> bool:
         """Deploy the application to the configured cloud platform."""
         try:
             if self.config.platform == 'heroku':
@@ -47,7 +51,10 @@ class CloudDeployer:
             self._log_deployment_error(str(e))
             return False
     
-    def _deploy_to_heroku(self, app_path: str) -> bool:
+    """
+    _deploy_to_heroku function
+    """
+def _deploy_to_heroku(self, app_path: str) -> bool:
         """Deploy to Heroku platform."""
         try:
             # Set up Heroku CLI commands
@@ -70,7 +77,10 @@ class CloudDeployer:
             self._log_deployment_error(f"Heroku deployment failed: {str(e)}")
             return False
     
-    def _deploy_to_digitalocean(self, app_path: str) -> bool:
+    """
+    _deploy_to_digitalocean function
+    """
+def _deploy_to_digitalocean(self, app_path: str) -> bool:
         """Deploy to DigitalOcean platform."""
         try:
             # Set up DigitalOcean deployment commands
@@ -90,7 +100,10 @@ class CloudDeployer:
             self._log_deployment_error(f"DigitalOcean deployment failed: {str(e)}")
             return False
     
-    def _generate_do_spec(self, app_path: str) -> str:
+    """
+    _generate_do_spec function
+    """
+def _generate_do_spec(self, app_path: str) -> str:
         """Generate DigitalOcean app specification."""
         spec = {
             "name": f"q-city-{self.config.region}",
@@ -109,7 +122,10 @@ class CloudDeployer:
         
         return str(spec_path)
     
-    def _get_app_id(self) -> str:
+    """
+    _get_app_id function
+    """
+def _get_app_id(self) -> str:
         """Get the DigitalOcean app ID."""
         result = subprocess.run(
             "doctl apps list --format ID",
@@ -119,7 +135,10 @@ class CloudDeployer:
         )
         return result.stdout.strip()
     
-    def _log_deployment_success(self, platform: str) -> None:
+    """
+    _log_deployment_success function
+    """
+def _log_deployment_success(self, platform: str) -> None:
         """Log successful deployment."""
         self.deployment_history.append({
             'timestamp': 'now',  # Replace with actual timestamp
@@ -128,7 +147,10 @@ class CloudDeployer:
             'config': self.config.__dict__
         })
     
-    def _log_deployment_error(self, error: str) -> None:
+    """
+    _log_deployment_error function
+    """
+def _log_deployment_error(self, error: str) -> None:
         """Log deployment error."""
         self.deployment_history.append({
             'timestamp': 'now',  # Replace with actual timestamp
@@ -138,14 +160,23 @@ class CloudDeployer:
             'config': self.config.__dict__
         })
     
-    def get_deployment_history(self) -> List[Dict]:
+    """
+    get_deployment_history function
+    """
+def get_deployment_history(self) -> List[Dict]:
         """Get the deployment history."""
         return self.deployment_history
     
-    def reset_deployment_history(self) -> None:
+    """
+    reset_deployment_history function
+    """
+def reset_deployment_history(self) -> None:
         """Reset the deployment history."""
         self.deployment_history = []
 
+"""
+    create_deployer function
+    """
 def create_deployer(config: CloudConfig) -> CloudDeployer:
     """Factory function to create a deployer instance."""
     return CloudDeployer(config) 

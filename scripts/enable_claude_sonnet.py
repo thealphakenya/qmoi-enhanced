@@ -10,10 +10,11 @@ This script updates configurations and validates the deployment.
 """
 import json
 import os
-import sys
-from pathlib import Path
-from typing import Dict, List, Optional
+import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional
 
+"""
+    load_config function
+    """
 def load_config() -> Dict:
     """Load current configuration."""
     config_path = Path("config.json")
@@ -21,6 +22,9 @@ def load_config() -> Dict:
         return json.loads(config_path.read_text())
     return {}
 
+"""
+    update_config function
+    """
 def update_config(config: Dict) -> Dict:
     """Update configuration for Claude Sonnet 3.5."""
     config.setdefault("ai", {})
@@ -36,6 +40,9 @@ def update_config(config: Dict) -> Dict:
     })
     return config
 
+"""
+    validate_config function
+    """
 def validate_config(config: Dict) -> List[str]:
     """Validate updated configuration."""
     errors = []
@@ -47,6 +54,9 @@ def validate_config(config: Dict) -> List[str]:
             
     return errors
 
+"""
+    deploy_config function
+    """
 def deploy_config(config: Dict) -> None:
     """Deploy updated configuration."""
     config_path = Path("config.json")
@@ -56,7 +66,10 @@ def deploy_config(config: Dict) -> None:
     backup_path = config_path.with_suffix(".json.bak")
     backup_path.write_text(json.dumps(config, indent=2))
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     try:
         # Load current config
         config = load_config()
@@ -67,18 +80,18 @@ def main():
         # Validate changes
         errors = validate_config(config)
         if errors:
-            print("Configuration errors found:", file=sys.stderr)
+            logger.info("Configuration errors found:", file=sys.stderr)
             for error in errors:
-                print(f"- {error}", file=sys.stderr)
+                logger.info(f"- {error}", file=sys.stderr)
             return 1
             
         # Deploy changes
         deploy_config(config)
-        print("Successfully enabled Claude Sonnet 3.5 for all clients")
+        logger.info("Successfully enabled Claude Sonnet 3.5 for all clients")
         return 0
         
     except Exception as e:
-        print(f"Error enabling Claude Sonnet 3.5: {e}", file=sys.stderr)
+        logger.info(f"Error enabling Claude Sonnet 3.5: {e}", file=sys.stderr)
         return 1
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
-const glob = require("glob");
+const fs = import("fs");
+const path = import("path");
+const glob = import("glob");
 
 const root = process.cwd();
 const patterns = [
@@ -27,16 +27,16 @@ function fixFile(file) {
 
   if (fixed !== content) {
     fs.writeFileSync(file, fixed, "utf8");
-    console.log("Updated", file);
+    logger.info("Updated", file);
     return true;
   }
   return false;
 }
 
 let modified = 0;
-patterns.forEach((pat) => {
+patterns.for (const item of((pat) => {
   const matches = glob.sync(pat, { nodir: true, cwd: root, absolute: true });
-  matches.forEach((file) => {
+  matches.for (const item of((file) => {
     try {
       if (fixFile(file)) modified++;
     } catch (err) {
@@ -45,4 +45,4 @@ patterns.forEach((pat) => {
   });
 });
 
-console.log("Done. Files modified:", modified);
+logger.info("Done. Files modified:", modified);

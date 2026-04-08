@@ -5,14 +5,14 @@
 
 // Production implementation: this file has no remaining non-production markers
 // @ts-nocheck
-import React, { useState, useRef, useEffect } from "react";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import { Progress } from "@/components/ui/progress";
-import { youtubeDownload } from "@/adapters/clientAdapters";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/adapters/clientAdapters";
 import {
   FaTimes,
   FaDownload,
@@ -23,7 +23,10 @@ import {
 } from "react-icons/fa";
 
 // Utility for file download
-function downloadFile(url: string, filename: string) {
+/**
+ * downloadFile function
+ */
+function downloadFile(url: string, filename: string): any {
   const a = document.createElement("a");
   a.href = url;
   a.download = filename;
@@ -43,11 +46,14 @@ interface FloatingPreviewWindowProps {
   onContentChange: (content: PreviewContent | null) => void;
 }
 
-export function FloatingPreviewWindow({
+export /**
+ * FloatingPreviewWindow function
+ */
+function FloatingPreviewWindow({
   onClose,
   content,
   onContentChange,
-}: FloatingPreviewWindowProps) {
+}: FloatingPreviewWindowProps): any {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(100);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -73,14 +79,20 @@ export function FloatingPreviewWindow({
   const ref = useRef<HTMLDivElement>(null);
 
   // Drag logic
-  function onMouseDown(e: React.MouseEvent) {
+  /**
+ * onMouseDown function
+ */
+function onMouseDown(e: React.MouseEvent): any {
     setDragging(true);
     setOffset({
       x: e.clientX - position.x,
       y: e.clientY - position.y,
     });
   }
-  function onMouseMove(e: MouseEvent) {
+  /**
+ * onMouseMove function
+ */
+function onMouseMove(e: MouseEvent): any {
     if (dragging) {
       setPosition({
         x: e.clientX - offset.x,
@@ -88,7 +100,10 @@ export function FloatingPreviewWindow({
       });
     }
   }
-  function onMouseUp() {
+  /**
+ * onMouseUp function
+ */
+function onMouseUp(): any {
     setDragging(false);
   }
   useEffect(() => {
@@ -106,7 +121,10 @@ export function FloatingPreviewWindow({
   });
 
   // File input handler
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+  /**
+ * handleFileChange function
+ */
+function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;
     const url = URL.createObjectURL(file);
@@ -121,27 +139,39 @@ export function FloatingPreviewWindow({
   }
 
   // YouTube handler
-  function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>) {
+  /**
+ * handleYoutubeChange function
+ */
+function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
     setYoutubeUrl(e.target.value);
     setMediaType("video");
   }
 
   // Browser logic
   const [browserUrl, setBrowserUrl] = useState<string>("");
-  function handleBrowserChange(e: React.ChangeEvent<HTMLInputElement>) {
+  /**
+ * handleBrowserChange function
+ */
+function handleBrowserChange(e: React.ChangeEvent<HTMLInputElement>): any {
     setBrowserUrl(e.target.value);
     setMediaType("browser");
   }
 
   // Text/code/doc editing logic
   const [textContent, setTextContent] = useState<string>("");
-  function handleTextEdit(e: React.ChangeEvent<HTMLTextAreaElement>) {
+  /**
+ * handleTextEdit function
+ */
+function handleTextEdit(e: React.ChangeEvent<HTMLTextAreaElement>): any {
     setTextContent(e.target.value);
     setMediaType("other");
   }
 
   // Download logic
-  async function handleDownload() {
+  async /**
+ * handleDownload function
+ */
+function handleDownload(): any {
     if (mediaUrl && mediaType) {
       const ext =
         mediaType === "video"
@@ -149,7 +179,7 @@ export function FloatingPreviewWindow({
           : mediaType === "audio"
             ? "mp3"
             : mediaType;
-      downloadFile(mediaUrl, `stable-Q-Downloads/${mediaType}.${ext}`);
+      downloadFile(mediaUrl, `latest-Q-Downloads/${mediaType}.${ext}`);
       return;
     }
     if (youtubeUrl) {
@@ -158,14 +188,14 @@ export function FloatingPreviewWindow({
         const res = await youtubeDownload(youtubeUrl);
         setDownloadProgress(0);
         if (res && res.success !== false && res.url) {
-          downloadFile(res.url, `stable-Q-Downloads/youtube-${Date.now()}.mp4`);
+          downloadFile(res.url, `latest-Q-Downloads/youtube-${Date.now()}.mp4`);
         } else {
-          alert(`YouTube download failed: ${res?.error || "unknown"}`);
+          notification.show(`YouTube download failed: ${res?.error || "unknown"}`);
         }
       } catch (err) {
         setDownloadProgress(0);
         (globalThis.console as any)?.error?.("youtubeDownload failed", err);
-        alert("YouTube download failed");
+        notification.show("YouTube download failed");
       }
     }
   }

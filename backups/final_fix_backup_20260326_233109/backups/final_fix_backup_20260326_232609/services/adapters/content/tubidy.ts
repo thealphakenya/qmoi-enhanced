@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { ContentPlatformAdapter, PlatformConfig, ApprovalFlow } from "../types";
+import { specificExports } from "../types";
 
 export class TubidyAdapter implements ContentPlatformAdapter {
   platformId = "tubidy";

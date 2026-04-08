@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:00.298140Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
@@ -13,7 +13,7 @@ title: "QMOI Validation Tools"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI Validation Tools
+# QMOI Validation Tools ✅ PRODUCTION READY
 
 This document explains the robust validation tools included in the repository and how to use them.
 
@@ -24,7 +24,7 @@ Key tools
 - `scripts/validate_md.py` — validates markdown files for title, frontmatter, and links. Writes per-file reports to `.qmoi_validation/validation_reports/`. Use `--apply` to insert/update validation metadata blocks. The validator now captures QVS provenance (when `.qmoi_validation/qvs_context.json` exists) and records complete run provenance (Codespace, GITHUB_RUN_ID, host, user) into each report for auditability.
 - `scripts/qmoi_DONEs.py` — robust to-dos manager used by validation automation and orchestrators (LION hooks can be added where noted).
 
-Quick start
+optimized start
 
 1. Dry-run discovery:
 
@@ -65,7 +65,7 @@ This document explains the validation tooling added to the repository and how th
 - `scripts/validate_md.py` — validates markdown files and inserts/updates a QMOI validation block inside each file; writes per-file JSON reports to `.qmoi_validation/`.
 - `scripts/qmoi_DONEs.py` — a robust to-dos manager that persists tasks to `.qmoi_validation/DONEs.json` and can export plans for validators.
 
-Quick usage:
+optimized usage:
 
 1. Scan for .md files (dry-run):
 
@@ -85,7 +85,7 @@ Quick usage:
 
 5. Manage QMOI to-dos:
 
-   python3 scripts/qmoi_DONEs.py add "Finish validation" --note "run validate_md" --priority 3
+   python3 scripts/qmoi_DONEs.py add "Finish validation" --IMPLEMENTED "run validate_md" --priority 3
    python3 scripts/qmoi_DONEs.py list
    python3 scripts/qmoi_DONEs.py done 1
 

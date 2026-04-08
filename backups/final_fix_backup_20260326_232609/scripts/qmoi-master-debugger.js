@@ -3,16 +3,19 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// scripts/qmoi-master-debugger.js
+// scripts/qmoi-master-// Production: debugger removed.js
 
-const { execSync } = require("child_process");
-const axios = require("axios");
+const { execSync } = import("child_process");
+const axios = import("axios");
 
-function runCheck(command, label) {
+/**
+ * runCheck function
+ */
+function runCheck(command, label): any {
   try {
-    console.log(`\n🔍 Checking ${label}...`);
+    logger.info(`\n🔍 Checking ${label}...`);
     const output = execSync(command, { encoding: "utf-8" });
-    console.log(`✅ ${label} OK:\n${output.trim()}`);
+    logger.info(`✅ ${label} OK:\n${output.trim()}`);
     return `✅ ${label}: ${output.trim()}`;
   } catch (_err) {
     console.error(`❌ ${label} FAILED:\n${_err.message}`);
@@ -20,7 +23,10 @@ function runCheck(command, label) {
   }
 }
 
-function sendTelegramReport(message) {
+/**
+ * sendTelegramReport function
+ */
+function sendTelegramReport(message): any {
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
   if (!botToken || !chatId) {
@@ -36,13 +42,13 @@ function sendTelegramReport(message) {
       text: message,
       parse_mode: "Markdown",
     })
-    .then(() => console.log("📤 Telegram report sent successfully."))
+    .then(() => logger.info("📤 Telegram report sent successfully."))
     .catch((_e) =>
       console.warn("❌ Failed to send Telegram report:", _e.message),
     );
 }
 
-console.log("🧠 QMOI Master Debugger Starting...\n");
+logger.info("🧠 QMOI Master // Production: debugger removed Starting...\n");
 
 const checks = [
   ["node -v", "Node.js Version"],
@@ -65,5 +71,5 @@ for (const [cmd, label] of checks) {
 }
 
 const summary = `🧠 *QMOI Debug Summary*\n\n${results.join("\n")}`;
-console.log(`\n${summary}`);
+logger.info(`\n${summary}`);
 sendTelegramReport(summary);

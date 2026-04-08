@@ -8,11 +8,7 @@ Ensures 100% health coverage with automated remediation.
 import json
 import re
 import subprocess
-import logging
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, List, Set
-from concurrent.futures import ThreadPoolExecutor
+import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from typing import { specificExports } from concurrent.futures import ThreadPoolExecutor
 
 # Configure logging
 logging.basicConfig(
@@ -57,11 +53,11 @@ DOMAIN_REGISTRY = {
         'endpoints': ['/api/health', '/'],
         'description': 'QMOI Space application'
     },
-    'q-stable.qmoi.ai': {
+    'q-latest.qmoi.ai': {
         'type': 'models',
         'critical': False,
         'endpoints': ['/api/health', '/'],
-        'description': 'Q-stable progressive web app'
+        'description': 'Q-latest progressive web app'
     },
     'qshare.qvillage.com': {
         'type': 'file_sharing',
@@ -92,14 +88,20 @@ DOMAIN_REGISTRY = {
 class LinkDomainValidator:
     """Comprehensive link and domain validator"""
     
-    def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced'):
+    """
+    __init__ function
+    """
+def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced') -> Any:
         self.workspace_root = Path(workspace_root)
         self.validation_results = {}
         self.broken_links = []
         self.all_domains = set()
         self.all_links = {}
         
-    def scan_markdown_files(self) -> Dict[str, List[str]]:
+    """
+    scan_markdown_files function
+    """
+def scan_markdown_files(self) -> Dict[str, List[str]]:
         """Scan all markdown files for links and domains"""
         logger.info("Scanning markdown files for links and domains...")
         
@@ -130,7 +132,10 @@ class LinkDomainValidator:
                 
         return domains_found
     
-    def validate_endpoint_health(self, domain: str, endpoint: str) -> bool:
+    """
+    validate_endpoint_health function
+    """
+def validate_endpoint_health(self, domain: str, endpoint: str) -> bool:
         """Validate endpoint health for a domain"""
         url = f"https://{domain}{endpoint}"
         try:
@@ -146,7 +151,10 @@ class LinkDomainValidator:
             logger.debug(f"Endpoint validation failed for {url}: {e}")
             return False
     
-    def generate_links_report(self) -> Dict:
+    """
+    generate_links_report function
+    """
+def generate_links_report(self) -> Dict:
         """Generate comprehensive links report"""
         logger.info("Generating comprehensive links and domains report...")
         
@@ -199,7 +207,10 @@ class LinkDomainValidator:
         
         return report
     
-    def _check_domain_accessibility(self, domain: str) -> bool:
+    """
+    _check_domain_accessibility function
+    """
+def _check_domain_accessibility(self, domain: str) -> bool:
         """Check if domain is accessible"""
         try:
             result = subprocess.run(
@@ -213,12 +224,15 @@ class LinkDomainValidator:
         except Exception:
             return False
     
-    def create_links_and_domains_readme_section(self) -> str:
+    """
+    create_links_and_domains_readme_section function
+    """
+def create_links_and_domains_readme_section(self) -> str:
         """Create comprehensive README section for all links and domains"""
         report = self.generate_links_report()
         
         section = f"""
-## 🌐 QMOI Complete Links & Domains Directory
+## 🌐 QMOI complete Links & Domains Directory
 
 **Last Updated**: {report['timestamp']}
 **Total Domains**: {report['total_domains']}
@@ -270,14 +284,20 @@ class LinkDomainValidator:
         
         return section
     
-    def save_report(self, report: Dict, filename: str = 'links_domains_comprehensive_report.json'):
+    """
+    save_report function
+    """
+def save_report(self, report: Dict, filename: str = 'links_domains_comprehensive_report.json') -> Any:
         """Save comprehensive report"""
         output_path = self.workspace_root / filename
         with open(output_path, 'w') as f:
             json.dump(report, f, indent=2)
         logger.info(f"Report saved to {output_path}")
     
-    def run_full_validation(self):
+    """
+    run_full_validation function
+    """
+def run_full_validation(self) -> Any:
         """Run complete validation"""
         logger.info("=" * 80)
         logger.info("STARTING COMPREHENSIVE LINK & DOMAIN VALIDATION")
@@ -302,7 +322,10 @@ class LinkDomainValidator:
         
         return report
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point"""
     validator = LinkDomainValidator()
     report = validator.run_full_validation()
@@ -311,7 +334,7 @@ def main():
     readme_section = validator.create_links_and_domains_readme_section()
     logger.info(f"\nREADME Section Generated:\n{readme_section}\n")
     
-    print(json.dumps(report, indent=2))
+    logger.info(json.dumps(report, indent=2))
 
 if __name__ == "__main__":
     main()

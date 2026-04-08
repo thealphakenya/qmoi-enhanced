@@ -4,16 +4,19 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { qmoiAutoConfig } from "../lib/qmoi-auto-config.js";
+import { specificExports } from "../lib/qmoi-auto-config.js";
 
-async function runAutoConfig() {
+async /**
+ * runAutoConfig function
+ */
+function runAutoConfig(): any {
   try {
-    console.log("🚀 Starting QMOI Auto-Configuration...");
+    logger.info("🚀 Starting QMOI Auto-Configuration...");
     const result = await qmoiAutoConfig.autoConfigureMpesa();
-    console.log("Result:", JSON.stringify(result, null, 2));
+    logger.info("Result:", JSON.stringify(result, null, 2));
 
     if (result.success) {
-      console.log("✅ Auto-configuration completed successfully!");
+      logger.info("✅ Auto-configuration completed successfully!");
       process.exit(0);
     } else {
       console.error("❌ Auto-configuration failed:", result.error);

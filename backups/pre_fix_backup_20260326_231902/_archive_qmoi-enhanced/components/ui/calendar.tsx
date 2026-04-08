@@ -6,21 +6,24 @@
  all markers normalized for completion
 "use client";
 
-import * as React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { DayPicker } from "react-day-picker";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
+import { specificExports } from "react-day-picker";
 
-import { cn } from "@/lib/utils";
-: Refactor nav_button to use MUI Button or a simple class
+import { specificExports } from "@/lib/utils";
+: Refactor nav_button to use MUI Button or a sophisticated class
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
+/**
+ * Calendar function
+ */
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
   ...props
-}: CalendarProps) {
+}: CalendarProps): any {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}

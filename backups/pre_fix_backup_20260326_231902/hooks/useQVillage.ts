@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { useCallback, useEffect, useRef, useState } from "react";
+import { specificExports } from "react";
 
 // Enhanced QVillage React Hooks with superior performance and parallel processing
 
@@ -73,7 +73,10 @@ interface QVillageTrackEvent {
 }
 
 // Main QVillage hook with comprehensive state management
-export function useQVillage() {
+export /**
+ * useQVillage function
+ */
+function useQVillage(): any {
   const [state, setState] = useState<{
     papers: QVillagePaper[];
     kbEntries: QVillageKBEntry[];
@@ -118,11 +121,11 @@ export function useQVillage() {
     try {
       const [papersRes, kbRes, discussionsRes, metricsRes, datasetsRaw] =
         await Promise.all([
-          fetch("/api/qvillage?endpoint=papers"),
-          fetch("/api/qvillage?endpoint=kb"),
-          fetch("/api/qvillage?endpoint=discussions"),
-          fetch("/api/qvillage?endpoint=metrics"),
-          fetch("/api/qvillage?endpoint=datasets"),
+          apiClient.get("/api/qvillage?endpoint=papers"),
+          apiClient.get("/api/qvillage?endpoint=kb"),
+          apiClient.get("/api/qvillage?endpoint=discussions"),
+          apiClient.get("/api/qvillage?endpoint=metrics"),
+          apiClient.get("/api/qvillage?endpoint=datasets"),
         ]);
 
       const [papers, kb, discussions, metrics, ds] = await Promise.all([
@@ -159,7 +162,7 @@ export function useQVillage() {
     setTracksLoading(true);
     setTracksError(null);
     try {
-      const res = await fetch(`/api/tracks?limit=${limit}`);
+      const res = await apiClient.get(`/api/tracks?limit=${limit}`);
       const json = await res.json();
       if (json.success && Array.isArray(json.tracks)) {
         setState((prev) => ({ ...prev, tracks: json.tracks }));
@@ -188,7 +191,7 @@ export function useQVillage() {
       metadata?: Record<string, unknown>;
     }) => {
       try {
-        const res = await fetch("/api/tracks", {
+        const res = await apiClient.get("/api/tracks", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(trackPayload),
@@ -219,7 +222,7 @@ export function useQVillage() {
   const search = useCallback(async (query: string, filters: unknown = {}) => {
     setLoading(true);
     try {
-      const response = await fetch("/api/qvillage?endpoint=search", {
+      const response = await apiClient.get("/api/qvillage?endpoint=search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query, filters }),
@@ -239,7 +242,7 @@ export function useQVillage() {
     async (target = "all", direction = "bidirectional") => {
       setLoading(true);
       try {
-        const response = await fetch("/api/qvillage?endpoint=sync", {
+        const response = await apiClient.get("/api/qvillage?endpoint=sync", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ target, direction }),
@@ -265,7 +268,7 @@ export function useQVillage() {
   const analyze = useCallback(
     async (content: string, type: string, options: unknown = {}) => {
       try {
-        const response = await fetch("/api/qvillage?endpoint=analyze", {
+        const response = await apiClient.get("/api/qvillage?endpoint=analyze", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ content, type, options }),
@@ -300,7 +303,10 @@ export function useQVillage() {
 }
 
 // Enhanced real-time status hook
-export function useQVillageStatus() {
+export /**
+ * useQVillageStatus function
+ */
+function useQVillageStatus(): any {
   const [status, setStatus] = useState({
     online: false,
     lastUpdate: null,
@@ -316,7 +322,7 @@ export function useQVillageStatus() {
   useEffect(() => {
     // Enhanced WebSocket connection with auto-reconnect
     const connectWebSocket = () => {
-      wsRef.current = new WebSocket("ws:process.env.API_HOST || "localhost:3000"/qvillage/status");
+      wsRef.current = new WebSocket("ws:process.env.API_HOST || "production.qmoi.ai:3000"/qvillage/status");
 
       wsRef.current.onmessage = (event: MessageEvent) => {
         const data = JSON.parse(event.data);
@@ -351,7 +357,10 @@ interface QVillageParallelTask {
   status: "running" | "complete";
 }
 
-export function useQMOIThinking() {
+export /**
+ * useQMOIThinking function
+ */
+function useQMOIThinking(): any {
   const [thinkingState, setThinkingState] = useState<{
     isThinking: boolean;
     progress: number;
@@ -455,7 +464,10 @@ export function useQMOIThinking() {
 }
 
 // Enhanced accessibility hook
-export function useQVillageAccessibility() {
+export /**
+ * useQVillageAccessibility function
+ */
+function useQVillageAccessibility(): any {
   const [accessibilitySettings, setAccessibilitySettings] = useState({
     highContrast: false,
     largeText: false,
@@ -519,7 +531,10 @@ export function useQVillageAccessibility() {
 }
 
 // Enhanced performance monitoring hook
-export function useQVillagePerformance() {
+export /**
+ * useQVillagePerformance function
+ */
+function useQVillagePerformance(): any {
   const [performance, setPerformance] = useState({
     responseTime: 0,
     throughput: 0,
@@ -597,7 +612,10 @@ export function useQVillagePerformance() {
 }
 
 // Enhanced auto-healing hook
-export function useQVillageAutoHeal() {
+export /**
+ * useQVillageAutoHeal function
+ */
+function useQVillageAutoHeal(): any {
   const [healthStatus, setHealthStatus] = useState<{
     overall: string;
     components: unknown;
@@ -612,7 +630,7 @@ export function useQVillageAutoHeal() {
 
   const checkHealth = useCallback(async () => {
     try {
-      const response = await fetch("/api/qvillage/health");
+      const response = await apiClient.get("/api/qvillage/health");
       const health = await response.json();
 
       setHealthStatus({
@@ -636,7 +654,7 @@ export function useQVillageAutoHeal() {
   const applyAutoFix = useCallback(
     async (component: string, fixType: string) => {
       try {
-        const response = await fetch("/api/qvillage/autofix", {
+        const response = await apiClient.get("/api/qvillage/autofix", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ component, fixType }),
@@ -681,7 +699,10 @@ export function useQVillageAutoHeal() {
 }
 
 // Enhanced notification hook
-export function useQVillageNotifications() {
+export /**
+ * useQVillageNotifications function
+ */
+function useQVillageNotifications(): any {
   const [notifications, setNotifications] = useState<
     Array<Record<string, unknown>>
   >([]);

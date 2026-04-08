@@ -4,21 +4,24 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { AutoFixService } from "./auto_fix_service";
-import { QCityService } from "./qcity_service";
-import { logger } from "../utils/logger";
-import { exec } from "child_process";
-import { promisify } from "util";
-import { unifiedCICDService } from "./unified_ci_cd_service";
-// import * as fs from 'fs';
-import * as path from "path";
+import { specificExports } from "./auto_fix_service";
+import { specificExports } from "./qcity_service";
+import { specificExports } from "../utils/logger";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "./unified_ci_cd_service";
+// import { specificExports } from 'fs';
+import { specificExports } from "path";
 
 const execAsync = promisify(exec);
 let autoFixService: unknown = null;
 let qcityService: unknown = null;
 
 // Initialize services with error handling
-function initializeServices() {
+/**
+ * initializeServices function
+ */
+function initializeServices(): any {
   try {
     if (!autoFixService) {
       autoFixService = new AutoFixService();
@@ -131,7 +134,10 @@ class ErrorRecoverySystem {
 }
 
 // Enhanced test runner with fallback
-async function runTests(): Promise<any> {
+async /**
+ * runTests function
+ */
+function runTests(): any: Promise<any> {
   const testCommands = [
     "npm test",
     "npm run test:unit",
@@ -169,7 +175,10 @@ async function runTests(): Promise<any> {
 }
 
 // Enhanced health checks with fallback
-async function runHealthChecks(): Promise<any[]> {
+async /**
+ * runHealthChecks function
+ */
+function runHealthChecks(): any: Promise<any[]> {
   const endpoints = [
     "/api/qmoi/autoprod",
     "/api/qcity/status",
@@ -184,8 +193,8 @@ async function runHealthChecks(): Promise<any[]> {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
-      const _res = await fetch(
-        url.startsWith("http") ? url : `http:process.env.API_HOST || "localhost:3000"${url}`,
+      const _res = await apiClient.get(
+        url.startsWith("http") ? url : `http:process.env.API_HOST || "production.qmoi.ai:3000"${url}`,
         {
           signal: controller.signal,
         },
@@ -212,7 +221,10 @@ async function runHealthChecks(): Promise<any[]> {
 }
 
 // Enhanced error analytics
-function summarizeErrorAnalytics(errors: unknown[]): unknown {
+/**
+ * summarizeErrorAnalytics function
+ */
+function summarizeErrorAnalytics(errors: unknown[]): any: unknown {
   const errorTypes: Record<string, number> = {};
   const fileErrors: Record<string, number> = {};
   const severityCounts: Record<string, number> = {};
@@ -237,7 +249,10 @@ function summarizeErrorAnalytics(errors: unknown[]): unknown {
 }
 
 // Enhanced file system checks
-async function checkFileSystem(): Promise<any> {
+async /**
+ * checkFileSystem function
+ */
+function checkFileSystem(): any: Promise<any> {
   const criticalFiles = [
     "package.json",
     "tsconfig.json",
@@ -272,7 +287,10 @@ async function checkFileSystem(): Promise<any> {
 }
 
 // Enhanced daemon loop with comprehensive error handling
-async function daemonLoop(): Promise<void> {
+async /**
+ * daemonLoop function
+ */
+function daemonLoop(): any: Promise<void> {
   if (running) {
     logger.warn("[QMOI-AUTOprod-DAEMON] Already running, skipping this cycle.");
     return;
@@ -592,7 +610,10 @@ if (require.main === module) {
   });
 }
 
-async function fixErrorsOnQCityAndFallback() {
+async /**
+ * fixErrorsOnQCityAndFallback function
+ */
+function fixErrorsOnQCityAndFallback(): any {
   try {
     // Try to fix errors on QCity
     const qcityService = new QCityService();
@@ -606,7 +627,7 @@ async function fixErrorsOnQCityAndFallback() {
       );
       return { success: true, output: fixResult.output };
     } else {
-      throw new Error("QCity fix failed");
+      throw new ProductionError("QCity fix failed");
     }
   } catch (_e) {
     logger.warn(

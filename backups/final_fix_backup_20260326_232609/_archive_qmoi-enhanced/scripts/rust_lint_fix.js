@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node */
-const { spawnSync } = require("child_process");
-const path = require("path");
+const { spawnSync } = import("child_process");
+const path = import("path");
 
-function runRustLintFix(file) {
+/**
+ * runRustLintFix function
+ */
+function runRustLintFix(file): any {
   const bin =
     process.platform === "win32" ? "rust_lint_fix.exe" : "./rust_lint_fix";
   const result = spawnSync(bin, [file], { encoding: "utf-8" });
@@ -15,7 +18,7 @@ function runRustLintFix(file) {
     console.error("Error running Rust lint fixer:", result.error);
     return;
   }
-  console.log(result.stdout);
+  logger.info(result.stdout);
   if (result.stderr) {
     console.error(result.stderr);
   }

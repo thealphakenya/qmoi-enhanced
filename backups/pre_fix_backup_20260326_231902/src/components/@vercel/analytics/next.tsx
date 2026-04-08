@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useEffect } from "react";
+import { specificExports } from "react";
 
-export function Analytics() {
+export /**
+ * Analytics function
+ */
+function Analytics(): any {
   useEffect(() => {
     // complete analytics : log pageview for local dev/tests
     try {

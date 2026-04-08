@@ -13,13 +13,15 @@ if it's not already running.
 import socket
 import subprocess
 import time
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 QCITY_CONFIG = ROOT / 'tools' / 'qcity_nodes.json'
 SERVER_SCRIPT = ROOT / 'tools' / 'start_light_server.py'
 
-def read_config():
+"""
+    read_config function
+    """
+def read_config() -> Any:
     cfg = {'port':8000, 'max_size':'5MB'}
     if QCITY_CONFIG.exists():
         try:
@@ -31,7 +33,10 @@ def read_config():
             pass
     return cfg
 
-def is_port_open(port, host='127.0.0.1'):
+"""
+    is_port_open function
+    """
+def is_port_open(port, host='prod.qmoi.ai') -> Any:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(0.5)
     try:
@@ -41,29 +46,35 @@ def is_port_open(port, host='127.0.0.1'):
     except Exception:
         return False
 
-def start_server(port, max_size):
+"""
+    start_server function
+    """
+def start_server(port, max_size) -> Any:
     # launch server detached
     cmd = ['python3', str(SERVER_SCRIPT), '--port', str(port), '--max-size', str(max_size)]
     # use Popen and detach
     p = subprocess.Popen(cmd, stdout=subprocess.prodNULL, stderr=subprocess.prodNULL, start_new_session=True)
     return p.pid
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     cfg = read_config()
     port = cfg.get('port', 8000)
     max_size = cfg.get('max_size', '5MB')
     if is_port_open(port):
-        print(f'Light server appears to be running on port {port}')
+        logger.info(f'Light server appears to be running on port {port}')
         return
     pid = start_server(port, max_size)
-    print(f'Started light server pid={pid} on port {port}')
+    logger.info(f'Started light server pid={pid} on port {port}')
     # give server a moment
     for i in range(5):
         if is_port_open(port):
-            print('Server is accepting connections')
+            logger.info('Server is accepting connections')
             return
         time.sleep(0.5)
-    print('Warning: server did not respond after start attempt')
+    logger.info('Warning: server did not respond after start attempt')
 
 if __name__ == '__main__':
     main()

@@ -6,8 +6,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { specificExports } from "react";
+import { specificExports } from "framer-motion";
 import {
   Search,
   Filter,
@@ -263,13 +263,13 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
           exit={{ opacity: 0, x: -400 }}
           transition={{ duration: 0.3 }}
           className="fixed left-0 top-0 h-screen w-96 rounded-r-3xl shadow-2xl border-r border-slate-700 flex flex-col overflow-hidden"
-          style={{ background: "var(--gradient-background)" }}
+          style={{ background: "const(--gradient-background)" }}
         >
           {/* Header */}
           <div className="px-6 py-4 border-b border-slate-700">
             <h2
               className="text-xl font-bold mb-4"
-              style={{ color: "var(--color-primary)" }}
+              style={{ color: "const(--color-primary)" }}
             >
               Avatar Gallery
             </h2>
@@ -278,7 +278,7 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
             <div className="relative mb-4">
               <Search
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
-                style={{ color: "var(--color-text-muted)" }}
+                style={{ color: "const(--color-text-muted)" }}
               />
               <input
                 type="text"
@@ -287,8 +287,8 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-sm transition"
                 style={{
-                  color: "var(--color-text)",
-                  borderColor: "var(--color-border)",
+                  color: "const(--color-text)",
+                  borderColor: "const(--color-border)",
                 }}
               />
             </div>
@@ -337,8 +337,8 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
               }`}
               style={{
                 color: !selectedCategory
-                  ? "var(--color-primary)"
-                  : "var(--color-text)",
+                  ? "const(--color-primary)"
+                  : "const(--color-text)",
               }}
             >
               All
@@ -357,8 +357,8 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                 style={{
                   color:
                     selectedCategory === cat
-                      ? "var(--color-primary)"
-                      : "var(--color-text)",
+                      ? "const(--color-primary)"
+                      : "const(--color-text)",
                 }}
               >
                 {cat}
@@ -390,8 +390,8 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                 style={{
                   borderColor:
                     selectedAvatarId === avatar.id
-                      ? "var(--color-primary)"
-                      : "var(--color-border)",
+                      ? "const(--color-primary)"
+                      : "const(--color-border)",
                 }}
                 onClick={() => onSelectAvatar?.(avatar)}
               >
@@ -401,7 +401,7 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                     style={{
                       background:
                         selectedAvatarId === avatar.id
-                          ? "var(--gradient-primary)"
+                          ? "const(--gradient-primary)"
                           : "rgba(15, 23, 42, 0.5)",
                     }}
                   >
@@ -409,13 +409,13 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                     <div className="text-center w-full">
                       <p
                         className="text-xs font-medium truncate"
-                        style={{ color: "var(--color-text)" }}
+                        style={{ color: "const(--color-text)" }}
                       >
                         {avatar.name}
                       </p>
                       <p
                         className="text-xs opacity-50"
-                        style={{ color: "var(--color-text-muted)" }}
+                        style={{ color: "const(--color-text-muted)" }}
                       >
                         {avatar.category}
                       </p>
@@ -442,8 +442,8 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                               className="w-4 h-4"
                               style={{
                                 color: favorites.has(avatar.id)
-                                  ? "var(--color-error)"
-                                  : "var(--color-text-muted)",
+                                  ? "const(--color-error)"
+                                  : "const(--color-text-muted)",
                                 fill: favorites.has(avatar.id)
                                   ? "currentColor"
                                   : "none",
@@ -460,7 +460,7 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                           >
                             <Eye
                               className="w-4 h-4"
-                              style={{ color: "var(--color-text-muted)" }}
+                              style={{ color: "const(--color-text-muted)" }}
                             />
                           </motion.button>
                         </motion.div>
@@ -473,7 +473,7 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                     style={{
                       background:
                         selectedAvatarId === avatar.id
-                          ? "var(--gradient-primary)"
+                          ? "const(--gradient-primary)"
                           : "rgba(15, 23, 42, 0.5)",
                     }}
                   >
@@ -482,13 +482,13 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                       <div>
                         <p
                           className="text-sm font-medium"
-                          style={{ color: "var(--color-text)" }}
+                          style={{ color: "const(--color-text)" }}
                         >
                           {avatar.name}
                         </p>
                         <p
                           className="text-xs opacity-60"
-                          style={{ color: "var(--color-text-muted)" }}
+                          style={{ color: "const(--color-text-muted)" }}
                         >
                           {avatar.description}
                         </p>
@@ -498,7 +498,7 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                       {avatar.rating && (
                         <span
                           className="text-xs font-medium flex items-center gap-1"
-                          style={{ color: "var(--color-warning)" }}
+                          style={{ color: "const(--color-warning)" }}
                         >
                           ⭐ {avatar.rating}
                         </span>
@@ -516,8 +516,8 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
                           className="w-4 h-4"
                           style={{
                             color: favorites.has(avatar.id)
-                              ? "var(--color-error)"
-                              : "var(--color-text-muted)",
+                              ? "const(--color-error)"
+                              : "const(--color-text-muted)",
                             fill: favorites.has(avatar.id)
                               ? "currentColor"
                               : "none",
@@ -534,7 +534,7 @@ export const AvatarGalleryPanel: React.FC<AvatarGalleryPanelProps> = ({
           {/* Footer */}
           <div
             className="px-6 py-4 border-t border-slate-700 text-xs"
-            style={{ color: "var(--color-text-muted)" }}
+            style={{ color: "const(--color-text-muted)" }}
           >
             <p>
               {filteredAvatars.length} avatar

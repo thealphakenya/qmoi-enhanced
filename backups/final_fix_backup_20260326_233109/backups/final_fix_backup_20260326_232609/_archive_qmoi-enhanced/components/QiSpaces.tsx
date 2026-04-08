@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: this file has no remaining non-production markers
-import React from "react";
+import { specificExports } from "react";
 
 const sectionStyle: React.CSSProperties = {
   background: "#fff",
@@ -40,7 +40,7 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
         <div style={sectionStyle}>
           <h3>Achievements</h3>
           <ul>
-            <li>QMOI stable AI launched</li>
+            <li>QMOI latest AI launched</li>
             <li>1000+ users onboarded</li>
             <li>First revenue milestone reached</li>
           </ul>

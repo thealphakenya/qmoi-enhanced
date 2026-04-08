@@ -247,8 +247,8 @@
 ./QALLPURPOSE.md
 ./QCITY-COMPLETION-SUMMARY.md
 ./QCITY-DELIVERABLES-CHECKLIST.md
-./QCITY-ENTERPRISE-COMPLETE.md
-./QCITY-PROJECT-COMPLETE.md
+./QCITY-ENTERPRISE-complete.md
+./QCITY-PROJECT-complete.md
 ./QCITY-README.md
 ./QCITYMAINDEVICE.md
 ./QCITYREADME.md
@@ -259,11 +259,11 @@
 ./QI_ENHANCEMENT_PLAN.md
 ./QMOI-AIRTEL-INTEGRATION.md
 ./QMOI-ANIMATION-ENHANCEMENT.md
-./QMOI-AUTOMATION-COMPLETE.md
+./QMOI-AUTOMATION-complete.md
 ./QMOI-AUTOUPDATE.md
 ./QMOI-ENHANCED-AUTOMATION.md
 ./QMOI-ENHANCED-AUTOTESTS.md
-./QMOI-ENHANCED-COMPLETE.md
+./QMOI-ENHANCED-complete.md
 ./QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md
 ./QMOI-ENHANCED-FEATURES.md
 ./QMOI-ENHANCED-FINAL.md
@@ -1373,11 +1373,11 @@
 ./_archive_qmoi-enhanced/QGLOBAL.md
 ./_archive_qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md
 ./_archive_qmoi-enhanced/QMOI-ANIMATION-ENHANCEMENT.md
-./_archive_qmoi-enhanced/QMOI-AUTOMATION-COMPLETE.md
+./_archive_qmoi-enhanced/QMOI-AUTOMATION-complete.md
 ./_archive_qmoi-enhanced/QMOI-AUTOUPDATE.md
 ./_archive_qmoi-enhanced/QMOI-ENHANCED-AUTOMATION.md
 ./_archive_qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md
-./_archive_qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md
+./_archive_qmoi-enhanced/QMOI-ENHANCED-complete.md
 ./_archive_qmoi-enhanced/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md
 ./_archive_qmoi-enhanced/QMOI-ENHANCED-FINAL.md
 ./_archive_qmoi-enhanced/QMOI-ENHANCED-README.md
@@ -1553,7 +1553,7 @@
 ./_archive_qmoi-enhanced/components/WifiPanel.tsx
 ./_archive_qmoi-enhanced/components/WifiPanel.tsx.bak.1768901506
 ./_archive_qmoi-enhanced/components/advanced_ui_&_parallel_processing_features_(2025_01_22).tsx
-./_archive_qmoi-enhanced/components/stable-q-ai-system.tsx
+./_archive_qmoi-enhanced/components/latest-q-ai-system.tsx
 ./_archive_qmoi-enhanced/components/analytics/EncryptedAuditLog.tsx
 ./_archive_qmoi-enhanced/components/analytics/EncryptedAuditLog.tsx.bak.1768901506
 ./_archive_qmoi-enhanced/components/auth/BiometricAuth.tsx
@@ -1764,7 +1764,7 @@
 ./_archive_qmoi-enhanced/scripts/qmoi-parallel-processor.py
 ./_archive_qmoi-enhanced/scripts/qmoi-platform-manager.py
 ./_archive_qmoi-enhanced/scripts/qmoi-qcity-enhanced-automatic.py
-./_archive_qmoi-enhanced/scripts/qmoi-quick-test.py
+./_archive_qmoi-enhanced/scripts/qmoi-optimized-test.py
 ./_archive_qmoi-enhanced/scripts/qmoi-registry-manager.js
 ./_archive_qmoi-enhanced/scripts/qmoi-research-engine.py
 ./_archive_qmoi-enhanced/scripts/qmoi-revenue-dashboard.js
@@ -2169,7 +2169,7 @@
 ./backups/src.backup.20260121144720/components/LcSpaces.tsx
 ./backups/src.backup.20260121144720/components/QI.tsx
 ./backups/src.backup.20260121144720/components/QiSpaces.tsx
-./backups/src.backup.20260121144720/components/stable-q-ai-system.tsx
+./backups/src.backup.20260121144720/components/latest-q-ai-system.tsx
 ./backups/src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx
 ./backups/src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx.bak2
 ./backups/src.backup.20260121144720/components/q-city/AuditLogPanel.tsx
@@ -2333,8 +2333,8 @@
 ./components/VoiceSelectionPanel.tsx
 ./components/WifiPanel.tsx
 ./components/WifiPanel.tsx.bak.1768901506
-./components/stable-q-ai-system.js
-./components/stable-q-ai-system.tsx
+./components/latest-q-ai-system.js
+./components/latest-q-ai-system.tsx
 ./components/analytics/EncryptedAuditLog.tsx
 ./components/analytics/EncryptedAuditLog.tsx.bak.1768901506
 ./components/auth/BiometricAuth.tsx
@@ -2631,7 +2631,7 @@
 ./push.ps1
 ./push.txt
 ./push_all_chunks.ps1
-./pwa_apps/q-stable/index.html
+./pwa_apps/q-latest/index.html
 ./pwa_apps/qmoi-ai/index.html
 ./pwa_apps/qmoi-ai/preview.html
 ./pwa_apps/qmoi-ai/sw.js
@@ -2967,7 +2967,7 @@
 ./scripts/qmoi-production-autohealth.js
 ./scripts/qmoi-production-init.js
 ./scripts/qmoi-qcity-enhanced-automatic.py
-./scripts/qmoi-quick-test.py
+./scripts/qmoi-optimized-test.py
 ./scripts/qmoi-registry-manager.js
 ./scripts/qmoi-research-engine.py
 ./scripts/qmoi-revenue-dashboard.js
@@ -3183,7 +3183,7 @@
 ./src/components/UsageAnalytics.tsx
 ./src/components/VoiceGestureHooks.tsx
 ./src/components/WindowTelemetryPanel.tsx
-./src/components/stable-q-ai-system.tsx
+./src/components/latest-q-ai-system.tsx
 ./src/components/q-city/AIAgentSystem.tsx
 ./src/components/q-city/AccountAutomationPanel.tsx
 ./src/components/q-city/AccountAutomationPanel.tsx.bak2

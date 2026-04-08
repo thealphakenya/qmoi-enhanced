@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useEffect, useRef, useState } from "react";
+import { specificExports } from "react";
 
 interface SpeechRecognitionEventResult {
   transcript: string;
@@ -62,7 +62,7 @@ export const VoiceGestureHooks: React.FC = () => {
       );
     } else if (command.includes("close window")) {
       // Close top window ()
-      console.log("Voice: close window");
+      logger.info("Voice: close window");
     } else if (command.includes("run test")) {
       // Run tests
       window.dispatchEvent(new CustomEvent("qmoiEvent", { detail: { event: "runTests" } }));
@@ -127,7 +127,7 @@ export const VoiceGestureHooks: React.FC = () => {
     document.addEventListener('touchstart', handleTouchStart);
     document.addEventListener('touchend', handleTouchEnd);
 
-    console.log("Gesture detection initialized with touch swipe support");
+    logger.info("Gesture detection initialized with touch swipe support");
 
     return () => {
       document.removeEventListener('touchstart', handleTouchStart);

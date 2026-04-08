@@ -1,11 +1,11 @@
 // 
 #!/bin/bash
-# QMOI AutoFix System - Quick Start Script
+# QMOI AutoFix System - optimized Start Script
 # Usage: ./qmoi-autofix-quickstart.sh
 
 set -e
 
-echo "🚀 QMOI AutoFix System - Quick Start"
+echo "🚀 QMOI AutoFix System - optimized Start"
 echo "======================================"
 
 # Colors for output
@@ -37,7 +37,7 @@ echo -e "${BLUE}3. Checking admin token...${NC}"
 if [ -z "$ADMIN_TOKEN" ]; then
     echo -e "${YELLOW}⚠ ADMIN_TOKEN not set in environment${NC}"
     echo -e "${BLUE}  Generating secure token...${NC}"
-    ADMIN_TOKEN=$(node -e "console.log(require('crypto').randomBytes(32).toString('hex'))")
+    ADMIN_TOKEN=$(node -e "logger.info(import('crypto').randomBytes(32).toString('hex'))")
     echo -e "${GREEN}✓ Generated token: $ADMIN_TOKEN${NC}"
     echo -e "${YELLOW}  Add this to .env.local:${NC}"
     echo -e "${YELLOW}  ADMIN_TOKEN=$ADMIN_TOKEN${NC}"
@@ -110,13 +110,13 @@ fi
 # 9. Display next steps
 echo ""
 echo -e "${GREEN}======================================"
-echo "✓ QMOI AutoFix System Setup Complete!"
+echo "✓ QMOI AutoFix System Setup complete!"
 echo "=====================================${NC}"
 echo ""
 echo -e "${BLUE}Next Steps:${NC}"
 echo "1. Ensure ADMIN_TOKEN is set in .env.local"
 echo "2. Start the prod server: ${YELLOW}npm run prod${NC}"
-echo "3. Navigate to: ${YELLOW}http://localhost:3000/admin${NC}"
+echo "3. Navigate to: ${YELLOW}https://production.qmoi.ai:3000/admin${NC}"
 echo "4. Click '🔧 QMOI AutoFix System' tab"
 echo "5. Use Master Control buttons to:"
 echo "   - 🔍 Scan For Errors"

@@ -15,9 +15,7 @@ import time
 import json
 import logging
 import subprocess
-import threading
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 import win32serviceutil
 import win32service
 import win32event
@@ -41,7 +39,10 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
     _svc_display_name_ = "QMOI Automated System Service"
     _svc_description_ = "QMOI prodice Controller and Betting System Service"
     
-    def __init__(self, args):
+    """
+    __init__ function
+    """
+def __init__(self, args) -> Any:
         win32serviceutil.ServiceFramework.__init__(self, args)
         self.stop_event = win32event.CreateEvent(None, 0, 0, None)
         self.running = False
@@ -51,13 +52,19 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
         self.status_file = 'logs/qmoi_service_status.json'
         os.makedirs('logs', exist_ok=True)
     
-    def SvcStop(self):
+    """
+    SvcStop function
+    """
+def SvcStop(self) -> Any:
         """Stop the service"""
         logging.info("🛑 Stopping QMOI Windows Service...")
         self.running = False
         win32event.SetEvent(self.stop_event)
     
-    def SvcDoRun(self):
+    """
+    SvcDoRun function
+    """
+def SvcDoRun(self) -> Any:
         """Run the service"""
         logging.info("🚀 Starting QMOI Windows Service...")
         self.running = True
@@ -78,7 +85,10 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
             self.stop_automated_systems()
             self.update_service_status('stopped')
     
-    def start_automated_systems(self):
+    """
+    start_automated_systems function
+    """
+def start_automated_systems(self) -> Any:
         """Start all automated systems"""
         try:
             logging.info("🔧 Starting automated systems...")
@@ -97,7 +107,10 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
         except Exception as e:
             logging.error(f"Failed to start automated systems: {e}")
     
-    def start_prodice_controller(self):
+    """
+    start_prodice_controller function
+    """
+def start_prodice_controller(self) -> Any:
         """Start prodice controller process"""
         try:
             script_path = os.path.join(os.getcwd(), 'scripts', 'qmoi_automated_prodice_controller.py')
@@ -112,7 +125,10 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
         except Exception as e:
             logging.error(f"Failed to start prodice controller: {e}")
     
-    def start_betting_system(self):
+    """
+    start_betting_system function
+    """
+def start_betting_system(self) -> Any:
         """Start betting system process"""
         try:
             script_path = os.path.join(os.getcwd(), 'scripts', 'qmoi_automated_betting_system.py')
@@ -127,7 +143,10 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
         except Exception as e:
             logging.error(f"Failed to start betting system: {e}")
     
-    def start_monitoring(self):
+    """
+    start_monitoring function
+    """
+def start_monitoring(self) -> Any:
         """Start monitoring process"""
         try:
             # Create monitoring thread
@@ -137,7 +156,10 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
         except Exception as e:
             logging.error(f"Failed to start monitoring: {e}")
     
-    def monitor_processes(self):
+    """
+    monitor_processes function
+    """
+def monitor_processes(self) -> Any:
         """Monitor running processes"""
         while self.running:
             try:
@@ -152,7 +174,10 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
                 logging.error(f"Monitoring error: {e}")
                 time.sleep(60)
     
-    def restart_process(self, process_name: str):
+    """
+    restart_process function
+    """
+def restart_process(self, process_name: str) -> Any:
         """Restart a stopped process"""
         try:
             # Remove old process
@@ -167,7 +192,10 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
         except Exception as e:
             logging.error(f"Failed to restart {process_name}: {e}")
     
-    def stop_automated_systems(self):
+    """
+    stop_automated_systems function
+    """
+def stop_automated_systems(self) -> Any:
         """Stop all automated systems"""
         try:
             logging.info("🛑 Stopping automated systems...")
@@ -188,7 +216,10 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
         except Exception as e:
             logging.error(f"Failed to stop automated systems: {e}")
     
-    def update_service_status(self, status: str, error: str = None):
+    """
+    update_service_status function
+    """
+def update_service_status(self, status: str, error: str = None) -> Any:
         """Update service status"""
         try:
             status_data = {
@@ -203,7 +234,10 @@ class QMOIWindowsService(win32serviceutil.ServiceFramework):
         except Exception as e:
             logging.error(f"Failed to update service status: {e}")
 
-def install_service():
+"""
+    install_service function
+    """
+def install_service() -> Any:
     """Install the Windows service"""
     try:
         win32serviceutil.InstallService(
@@ -211,21 +245,27 @@ def install_service():
             QMOIWindowsService._svc_display_name_,
             QMOIWindowsService._svc_description_
         )
-        print("✅ QMOI Windows Service installed successfully")
-        print("🔧 To start the service, run: net start QMOIAutomatedSystem")
-        print("🛑 To stop the service, run: net stop QMOIAutomatedSystem")
+        logger.info("✅ QMOI Windows Service installed successfully")
+        logger.info("🔧 To start the service, run: net start QMOIAutomatedSystem")
+        logger.info("🛑 To stop the service, run: net stop QMOIAutomatedSystem")
     except Exception as e:
-        print(f"❌ Failed to install service: {e}")
+        logger.info(f"❌ Failed to install service: {e}")
 
-def uninstall_service():
+"""
+    uninstall_service function
+    """
+def uninstall_service() -> Any:
     """Uninstall the Windows service"""
     try:
         win32serviceutil.RemoveService(QMOIWindowsService._svc_name_)
-        print("✅ QMOI Windows Service uninstalled successfully")
+        logger.info("✅ QMOI Windows Service uninstalled successfully")
     except Exception as e:
-        print(f"❌ Failed to uninstall service: {e}")
+        logger.info(f"❌ Failed to uninstall service: {e}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     if len(sys.argv) == 1:
         servicemanager.Initialize()

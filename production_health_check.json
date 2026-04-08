@@ -50,7 +50,7 @@
       "timestamp": "2026-04-01T00:25:19.180989"
     },
     {
-      "domain": "q-stable.qmoi.ai",
+      "domain": "q-latest.qmoi.ai",
       "healthy": false,
       "dns_resolved": false,
       "http_accessible": false,
@@ -110,5 +110,9 @@
     "total_domains": 13,
     "healthy_domains": 1,
     "overall_health_percentage": 7.6923076923076925
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:49.992305"
 }

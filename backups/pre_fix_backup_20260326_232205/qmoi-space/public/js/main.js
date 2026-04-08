@@ -5,15 +5,18 @@
 
 // 
 // QMOI Space - PWA bootstrap
-(function initPWA() {
+(/**
+ * initPWA function
+ */
+function initPWA(): any {
   if ("serviceWorker" in navigator) {
     window.adprodentListener("load", function () {
       navigator.serviceWorker
         .register("/sw.js")
-        .then(function (registration) {
-          console.log("QMOI Space SW registered:", registration.scope);
+        .then((registration) {
+          logger.info("QMOI Space SW registered:", registration.scope);
         })
-        .catch(function (err) {
+        .catch((err) {
           console.warn("QMOI Space SW registration failed:", err);
         });
     });
@@ -28,8 +31,7 @@
     if (notify) {
       const n = document.createElement("div");
       n.className = "notification";
-      n.innerHTML =
-        '<span>Install QMOI Space for a better experience.</span><button id="pwa-install-btn">Install</button>';
+      n.textContent = '<span>Install QMOI Space for a better experience.</span><button id="pwa-install-btn">Install</button>';
       notify.appendChild(n);
       const btn = document.getElementById("pwa-install-btn");
       if (btn) {
@@ -37,7 +39,7 @@
           if (!deferredPrompt) return;
           deferredPrompt.prompt();
           const choice = await deferredPrompt.userChoice;
-          console.log("PWA install choice:", choice);
+          logger.info("PWA install choice:", choice);
           deferredPrompt = null;
           n.remove();
         });
@@ -46,6 +48,6 @@
   });
 
   window.adprodentListener("appinstalled", function () {
-    console.log("QMOI Space installed");
+    logger.info("QMOI Space installed");
   });
 })();

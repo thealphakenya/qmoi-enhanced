@@ -6,7 +6,7 @@
 // @ts-nocheck
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -14,10 +14,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Brain,
   Database,
@@ -32,7 +32,7 @@ import {
   Download,
   Upload,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { specificExports } from "@/hooks/use-toast";
 
 interface MemoryStats {
   conversations: number;
@@ -183,14 +183,14 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
     const groups: { [key: string]: MemoryEntry[] } = {};
 
     // Group similar entries
-    entries.forEach((entry) => {
+    entries.for (const item of((entry) => {
       const key = `${entry.type}_${entry.content.substring(0, 50)}`;
       if (!groups[key]) groups[key] = [];
       groups[key].push(entry);
     });
 
     // Compress each group
-    Object.values(groups).forEach((group) => {
+    Object.values(groups).for (const item of((group) => {
       if (group.length === 1) {
         compressed.push(group[0]);
       } else {

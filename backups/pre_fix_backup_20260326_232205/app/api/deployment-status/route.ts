@@ -6,13 +6,16 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { getLogger } from "@/lib/logger";
-import { db } from "@/lib/db/prisma";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/logger";
+import { specificExports } from "@/lib/db/prisma";
 
 const logger = getLogger("api/deployment-status");
 
-export async function GET(_req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_req: NextRequest): any {
   try {
     const userCount = await db.user.count();
     const trackCount = await db.track.count();

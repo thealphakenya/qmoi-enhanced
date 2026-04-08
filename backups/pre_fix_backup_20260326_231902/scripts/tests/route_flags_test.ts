@@ -5,8 +5,8 @@
 
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env node
-import fs from "fs";
-import path from "path";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const reportPath = path.resolve(".qmoi_validation/auth_triage_report.json");
 if (!fs.existsSync(reportPath)) {

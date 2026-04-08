@@ -1,11 +1,14 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 // Dynamic import for Prisma to avoid build-time issues
 let prisma: unknown = null;
 
-async function getPrisma() {
+async /**
+ * getPrisma function
+ */
+function getPrisma(): any {
   if (!prisma) {
     const { prisma: prismaClient } = await import("@/lib/prisma");
     prisma = prismaClient;
@@ -29,17 +32,23 @@ interface MediaItem {
 }
 
 // Master-only access check
-function isMaster(_request: NextRequest) {
+/**
+ * isMaster function
+ */
+function isMaster(_request: NextRequest): any {
   // production: implement real master auth via sessions/JWT/tokens
   return _request.headers.get("x-qmoi-master") === "true";
 }
 
 // Media search implementation
-async function searchMedia(
+async /**
+ * searchMedia function
+ */
+function searchMedia(
   _query: string,
   type?: string,
   source?: string,
-): Promise<MediaItem[]> {
+): any: Promise<MediaItem[]> {
   const prisma = await getPrisma();
   const where: Record<string, unknown> = {
     title: {
@@ -82,7 +91,10 @@ async function searchMedia(
 }
 
 // Download media implementation
-async function downloadMedia(mediaId: string) {
+async /**
+ * downloadMedia function
+ */
+function downloadMedia(mediaId: string): any {
   const prisma = await getPrisma();
   const mediaTask = await prisma.mediaTask.findUnique({
     where: { id: mediaId },
@@ -138,11 +150,14 @@ async function downloadMedia(mediaId: string) {
 }
 
 // Get media logs (using audit logs for now)
-async function getMediaLogs(filter?: {
+async /**
+ * getMediaLogs function
+ */
+function getMediaLogs(filter?: {
   action?: string;
   mediaId?: string;
   limit?: number;
-}) {
+}): any {
   const where: unknown = {};
 
   if (filter?.action) {
@@ -164,7 +179,10 @@ async function getMediaLogs(filter?: {
   return logs;
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   if (!isMaster(_request)) {
     return NextResponse.json(
       { _error: "Master access required" },
@@ -234,7 +252,10 @@ export async function GET(_request: NextRequest) {
   return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   if (!isMaster(_request)) {
     return NextResponse.json(
       { _error: "Master access required" },

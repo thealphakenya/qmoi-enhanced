@@ -5,11 +5,14 @@
 
 // [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextRequest, NextResponse } from "next/server";
-import { qmoiEnhancedEmailService } from "@/lib/enhanced-email-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/enhanced-email-service";
 
 // GET /api/enhanced-email/rules - Get auto-reply rules
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const account = searchParams.get("account");
@@ -37,7 +40,10 @@ export async function GET(request: NextRequest) {
 }
 
 // POST /api/enhanced-email/rules - Create auto-reply rule
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { account, ...ruleData } = body;

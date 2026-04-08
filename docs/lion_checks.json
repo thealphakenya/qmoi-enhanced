@@ -7,5 +7,9 @@
     "tar": true,
     "unzip": true
   },
-  "build_report_present": true
+  "build_report_present": true,
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:05.185326"
 }

@@ -5,6 +5,9 @@
 
 from pathlib import Path
 
+"""
+    get_notes function
+    """
 def get_notes() -> str:
     repo_root = Path(__file__).resolve().parent.parent
     p = repo_root / 'docs' / 'converted' / 'qmoi-enhanced_qmoi-enhanced_tests_integration_test_error_fixing_integration_py.md'

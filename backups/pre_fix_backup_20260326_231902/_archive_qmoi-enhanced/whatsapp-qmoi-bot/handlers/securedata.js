@@ -4,14 +4,17 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-/* eslint-disable-next-line @typescript-eslint/no-var-requires */
-const crypto = require("crypto");
+/* eslint-disable-next-line @typescript-eslint/no-const-requires */
+const crypto = import("crypto");
 
 const ENCRYPTION_KEY =
   process.env.QMOI_BOT_KEY || crypto.randomBytes(32).toString("hex");
 const IV_LENGTH = 16;
 
-function encrypt(text) {
+/**
+ * encrypt function
+ */
+function encrypt(text): any {
   let iv = crypto.randomBytes(IV_LENGTH);
   let cipher = crypto.createCipheriv(
     "aes-256-cbc",
@@ -23,7 +26,10 @@ function encrypt(text) {
   return iv.toString("hex") + ":" + encrypted.toString("hex");
 }
 
-function decrypt(text) {
+/**
+ * decrypt function
+ */
+function decrypt(text): any {
   let textParts = text.split(":");
   let iv = Buffer.from(textParts.shift(), "hex");
   let encryptedText = Buffer.from(textParts.join(":"), "hex");

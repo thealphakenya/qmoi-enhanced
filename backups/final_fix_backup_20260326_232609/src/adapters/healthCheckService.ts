@@ -6,7 +6,7 @@
 // Health check API endpoint with diagnostic information
 // Provides comprehensive service health, cache statistics, and pending requests
 
-import { backgroundManager } from "./backgroundServiceManager";
+import { specificExports } from "./backgroundServiceManager";
 import {
     checkHealth,
     getCacheStats,
@@ -43,7 +43,7 @@ export interface HealthCheckResponse {
 }
 
 export class HealthCheckService {
-  private responseTimes: Map<string, number[]> = new Map();
+  private responseTimes: Map<string, number[]> = new Map() // Production: Consider object for small datasets();
   private maxSamples = 100;
 
   // ========================================================================
@@ -192,12 +192,12 @@ export class HealthCheckService {
     }
 
     // Check API config
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "process.env.API_URL || "http://localhost:\1"";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "process.env.API_URL || "https://production.qmoi.ai:\1"";
     status["api-endpoint"] = apiUrl;
 
     // Background services
     const bgServices = backgroundManager.getServices();
-    bgServices.forEach((s) => {
+    bgServices.for (const item of((s) => {
       status[`service-${s.name.toLowerCase().replace(/\s+/g, "-")}`] = s.status;
     });
 

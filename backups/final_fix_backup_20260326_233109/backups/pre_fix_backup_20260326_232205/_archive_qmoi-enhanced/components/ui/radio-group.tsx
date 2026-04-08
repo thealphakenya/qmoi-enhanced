@@ -6,11 +6,11 @@
 // // Production implementation: this file has no remaining non-production markers
 "use client";
 
-import * as React from "react";
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import { Circle } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-radio-group";
+import { specificExports } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,

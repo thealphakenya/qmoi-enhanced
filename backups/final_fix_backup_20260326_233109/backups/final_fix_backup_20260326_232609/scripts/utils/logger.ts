@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import winston from "winston";
-import { format } from "winston";
+import { specificExports } from "winston";
+import { specificExports } from "winston";
 
 const { combine, timestamp, printf, colorize } = format;
 

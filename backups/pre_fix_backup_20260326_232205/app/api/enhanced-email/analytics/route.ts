@@ -5,11 +5,14 @@
 
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextRequest, NextResponse } from "next/server";
-import { qmoiEnhancedEmailService } from "@/lib/enhanced-email-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/enhanced-email-service";
 
 // GET /api/enhanced-email/analytics - Get email analytics
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const account = searchParams.get("account");

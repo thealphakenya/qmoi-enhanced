@@ -7,8 +7,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useEffect, useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/use-toast";
 
 type ProjectType =
   | "code"
@@ -52,10 +52,13 @@ interface ProjectManagementProps {
   onProjectSelect?: (project: Project) => void;
 }
 
-export function ProjectManagement({
+export /**
+ * ProjectManagement function
+ */
+function ProjectManagement({
   userId,
   onProjectSelect,
-}: ProjectManagementProps) {
+}: ProjectManagementProps): any {
   const { toast } = useToast();
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -84,7 +87,7 @@ export function ProjectManagement({
   const fetchProjects = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(
+      const response = await apiClient.get(
         `/api/qmoi/projects?action=list&userId=${userId}`,
       );
       const data = await response.json();
@@ -107,7 +110,7 @@ export function ProjectManagement({
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/qmoi/projects", {
+      const response = await apiClient.get("/api/qmoi/projects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -140,7 +143,7 @@ export function ProjectManagement({
     if (!confirm("Are you sure you want to delete this project?")) return;
 
     try {
-      const response = await fetch("/api/qmoi/projects", {
+      const response = await apiClient.get("/api/qmoi/projects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -170,7 +173,7 @@ export function ProjectManagement({
 
   const handleAddTask = async (projectId: string, taskTitle: string) => {
     try {
-      const response = await fetch("/api/qmoi/projects", {
+      const response = await apiClient.get("/api/qmoi/projects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -481,7 +484,7 @@ export function ProjectManagement({
             </div>
           )}
 
-          {/* Quick Stats */}
+          {/* optimized Stats */}
           <div className="grid grid-cols-3 gap-2 text-center">
             <div className="p-2 bg-white dark:bg-gray-700 rounded">
               <div className="text-lg font-bold text-blue-600">
@@ -496,7 +499,7 @@ export function ProjectManagement({
                 {Math.round(selectedProject.progress)}%
               </div>
               <div className="text-xs text-gray-600 dark:text-gray-400">
-                Complete
+                complete
               </div>
             </div>
             <div className="p-2 bg-white dark:bg-gray-700 rounded">

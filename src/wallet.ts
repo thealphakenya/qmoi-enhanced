@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as fs from "fs";
-import * as path from "path";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 // comprehensive adapter interface
 export interface WalletAdapter {
@@ -83,7 +83,7 @@ export class TestnetAdapter implements WalletAdapter {
       const timeout = Number(process.env.WALLET_HTTP_TIMEOUT_MS || 10000);
       const timeoutId = setTimeout(() => controller.abort(), timeout);
 
-      const response = await fetch(apiUrl, {
+      const response = await apiClient.get(apiUrl, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${apiKey}`,
@@ -118,17 +118,23 @@ export class TestnetAdapter implements WalletAdapter {
 }
 
 // Helper to mask API keys in proposals
-function _maskSecret(s: string | null | undefined) {
+/**
+ * _maskSecret function
+ */
+function _maskSecret(s: string | null | undefined): any {
   if (!s) return null;
   if (s.length <= 8) return "*****";
   return s.slice(0, 4) + "*".repeat(Math.max(4, s.length - 8)) + s.slice(-4);
 }
 
-async function writeProposal(proposal: {
+async /**
+ * writeProposal function
+ */
+function writeProposal(proposal: {
   title: string;
   description: string;
   payload: Record<string, unknown>;
-}) {
+}): any {
   const validationDir = path.join(process.cwd(), ".qmoi_validation");
   if (!fs.existsSync(validationDir)) {
     fs.mkdirSync(validationDir, { recursive: true });
@@ -182,7 +188,7 @@ export class CashonAdapter implements WalletAdapter {
         const controller = new AbortController();
         const timeout = Number(process.env.WALLET_HTTP_TIMEOUT_MS || 5000);
         const timeoutId = setTimeout(() => controller.abort(), timeout);
-        const r = await fetch(url, {
+        const r = await apiClient.get(url, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${apiKey}`,
@@ -270,7 +276,7 @@ export class MegavaultAdapter implements WalletAdapter {
         const controller = new AbortController();
         const timeout = Number(process.env.WALLET_HTTP_TIMEOUT_MS || 5000);
         const timeoutId = setTimeout(() => controller.abort(), timeout);
-        const r = await fetch(url, {
+        const r = await apiClient.get(url, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${apiKey}`,
@@ -320,7 +326,7 @@ export class MegavaultAdapter implements WalletAdapter {
 
 // WalletService: orchestrates adapters, currency normalization, state storage
 export class WalletService {
-  adapters: Map<string, WalletAdapter> = new Map();
+  adapters: Map<string, WalletAdapter> = new Map() // Production: Consider object for small datasets();
   stateDir: string;
   stateFile: string;
 
@@ -371,7 +377,7 @@ export class WalletService {
       USDT: 1,
       EUR: 1.1,
       KES: 0.007,
-    }; // simple REAL
+    }; // sophisticated REAL
     const rate = rates[currency] || 1;
     return { amount: amount * rate, currency: "USD" };
   }

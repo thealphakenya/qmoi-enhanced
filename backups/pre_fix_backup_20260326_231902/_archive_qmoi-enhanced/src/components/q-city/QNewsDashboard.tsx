@@ -4,13 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/TextField";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/CardContent";
 
 interface NewsItem {
   id: number;
@@ -46,7 +46,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const res = await fetch("/api/qnews");
+    const res = await apiClient.get("/api/qnews");
     const data = await res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -54,7 +54,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const res = await fetch("/api/qnews/analytics", {
+    const res = await apiClient.get("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await res.json();
@@ -67,7 +67,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   }, [isMaster]);
 
   const handleApprove = async (id: number) => {
-    await fetch("/api/qnews", {
+    await apiClient.get("/api/qnews", {
       method: "PUT",
       headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
       body: JSON.stringify({ id, status: "approved" }),
@@ -88,7 +88,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const handleSave = async () => {
     if (editingId) {
-      await fetch("/api/qnews", {
+      await apiClient.get("/api/qnews", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
       });
       setEditingId(null);
     } else {
-      await fetch("/api/qnews", {
+      await apiClient.get("/api/qnews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -119,7 +119,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   };
 
   const handleSchedule = async (id: number, scheduledAt: string) => {
-    await fetch("/api/qnews/schedule", {
+    await apiClient.get("/api/qnews/schedule", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
       body: JSON.stringify({ id, scheduledAt }),
@@ -129,7 +129,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const handleAddMedia = async () => {
     if (!editingId) return;
-    await fetch("/api/qnews/media", {
+    await apiClient.get("/api/qnews/media", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
       body: JSON.stringify({
@@ -143,9 +143,9 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   // Small s for advanced features
   const exportEngagement = () =>
-    alert("Export engagement analytics ()");
+    notification.show("Export engagement analytics ()");
   const shareToChannels = () =>
-    alert("Share to WhatsApp/Telegram ()");
+    notification.show("Share to WhatsApp/Telegram ()");
 
   return (
     <Card className="space-y-4">

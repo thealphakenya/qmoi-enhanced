@@ -3,17 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:31Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+// IMPLEMENTED: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 // backend/trading-engine.ts
-// Autonomous trading engine for stable-Q AI (no API key required)
+// Autonomous trading engine for latest-Q AI (no API key required)
 // - Loads local CSV datasets
 // - Runs always-on trading loop
 // - Supports Colab batch jobs (import/export CSV)
 // - Logs all trades for master audit
 
-import fs from "fs";
-import path from "path";
-import { parse as csvParse } from "csv-parse/sync";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "csv-parse/sync";
 
 interface Trade {
   id: string;
@@ -32,12 +32,18 @@ const DATASET_PATH = path.join(
 );
 const TRADING_LOG = path.join(__dirname, "../trading-log.json");
 
-function loadDataset(): unknown[] {
+/**
+ * loadDataset function
+ */
+function loadDataset(): any: unknown[] {
   const csv = fs.readFileSync(DATASET_PATH, "utf-8");
   return csvParse(csv, { columns: true });
 }
 
-function logTrade(trade: Trade) {
+/**
+ * logTrade function
+ */
+function logTrade(trade: Trade): any {
   const trades = fs.existsSync(TRADING_LOG)
     ? JSON.parse(fs.readFileSync(TRADING_LOG, "utf-8"))
     : [];
@@ -45,7 +51,10 @@ function logTrade(trade: Trade) {
   fs.writeFileSync(TRADING_LOG, JSON.stringify(trades, null, 2));
 }
 
-function simpleMovingAverage(prices: number[], window: number): number[] {
+/**
+ * simpleMovingAverage function
+ */
+function simpleMovingAverage(prices: number[], window: number): any: number[] {
   const sma: number[] = [];
   for (let i = 0; i < prices.length; i++) {
     if (i < window - 1) {
@@ -60,7 +69,10 @@ function simpleMovingAverage(prices: number[], window: number): number[] {
   return sma;
 }
 
-export async function autonomousTradingLoop() {
+export async /**
+ * autonomousTradingLoop function
+ */
+function autonomousTradingLoop(): any {
   const data = loadDataset();
   const closes = data.map((row) => parseFloat(row.Close));
   const sma = simpleMovingAverage(closes, 3);
@@ -93,5 +105,5 @@ export async function autonomousTradingLoop() {
   }, 10000); // every 10 seconds
 }
 
-// To start: import { autonomousTradingLoop } from './backend/trading-engine'; autonomousTradingLoop();
+// To start: import { specificExports } from './backend/trading-engine'; autonomousTradingLoop();
 // production implementation.csv

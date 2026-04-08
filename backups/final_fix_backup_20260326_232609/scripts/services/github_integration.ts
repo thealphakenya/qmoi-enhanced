@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import axios from "axios";
-import { exec } from "child_process";
-import { promisify } from "util";
-import { autoFixService } from "./auto_fix_service";
+import { specificExports } from "axios";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "./auto_fix_service";
 
 const execAsync = promisify(exec);
 

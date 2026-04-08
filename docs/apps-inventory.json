@@ -4,36 +4,36 @@
   "apps": [
     {
       "name": "README",
-      "file": "pwa_apps/q-stable/README.md",
-      "platform": "q-stable",
+      "file": "pwa_apps/q-latest/README.md",
+      "platform": "q-latest",
       "size_bytes": 315,
       "exists": true
     },
     {
       "name": "index",
-      "file": "pwa_apps/q-stable/index.html",
-      "platform": "q-stable",
+      "file": "pwa_apps/q-latest/index.html",
+      "platform": "q-latest",
       "size_bytes": 11378,
       "exists": true
     },
     {
       "name": "manifest",
-      "file": "pwa_apps/q-stable/manifest.webmanifest",
-      "platform": "q-stable",
+      "file": "pwa_apps/q-latest/manifest.webmanifest",
+      "platform": "q-latest",
       "size_bytes": 331,
       "exists": true
     },
     {
       "name": "package",
-      "file": "pwa_apps/q-stable/package.json",
-      "platform": "q-stable",
+      "file": "pwa_apps/q-latest/package.json",
+      "platform": "q-latest",
       "size_bytes": 205,
       "exists": true
     },
     {
       "name": "sw",
-      "file": "pwa_apps/q-stable/sw.js",
-      "platform": "q-stable",
+      "file": "pwa_apps/q-latest/sw.js",
+      "platform": "q-latest",
       "size_bytes": 322,
       "exists": true
     },
@@ -170,5 +170,9 @@
       "size_bytes": 1095,
       "exists": true
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:32.056542"
 }

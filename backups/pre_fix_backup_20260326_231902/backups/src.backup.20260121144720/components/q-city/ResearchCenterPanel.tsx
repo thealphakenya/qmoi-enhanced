@@ -1,7 +1,11 @@
 //  this file has no remaining non-production markers
-import React from "react";
+import { specificExports } from "react";
 
-export default function ResearchCenterPanel() {
+export default /**
+ * ResearchCenterPanel function
+ */
+function ResearchCenterPanel(): any {
+  try {() {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Research Center</h2>

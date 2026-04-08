@@ -6,7 +6,7 @@
 // Production implementation: all markers normalized for completion
 "use client";
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 import {
   Box,
   Container,

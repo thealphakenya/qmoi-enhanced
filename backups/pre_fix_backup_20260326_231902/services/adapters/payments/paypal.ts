@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { PaymentGatewayAdapter, PlatformConfig, ApprovalFlow } from "../types";
-import WalletManager from "../../walletManager";
-import { markIdempotent, getIdempotent } from "./utils";
-import paypal from "paypal-rest-sdk";
+import { specificExports } from "../types";
+import { specificExports } from "../../walletManager";
+import { specificExports } from "./utils";
+import { specificExports } from "paypal-rest-sdk";
 
 export class PayPalAdapter implements PaymentGatewayAdapter {
   platformId = "paypal";

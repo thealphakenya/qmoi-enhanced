@@ -5,13 +5,13 @@
 
 // 
 // @ts-nocheck
-import nodemailer from "nodemailer";
-import axios from "axios";
-import { logger } from "../utils/logger";
+import { specificExports } from "nodemailer";
+import { specificExports } from "axios";
+import { specificExports } from "../utils/logger";
 
 let twilioClient: unknown = null;
 if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {
-  twilioClient = require("twilio")(
+  twilioClient = import("twilio")(
     process.env.TWILIO_ACCOUNT_SID,
     process.env.TWILIO_AUTH_TOKEN,
   );

@@ -17,12 +17,9 @@ import json
 import logging
 import threading
 import subprocess
-import platform
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 import psutil
-import requests
-from typing import Dict, List, Optional, Any
+import { specificExports } from typing import Dict, List, Optional, Any
 
 # Configure logging
 logging.basicConfig(
@@ -35,7 +32,10 @@ logging.basicConfig(
 )
 
 class QMOIAutomatedprodiceController:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.running = False
         self.detection_interval = 300  # 5 minutes
         self.unlock_interval = 600     # 10 minutes
@@ -59,7 +59,10 @@ class QMOIAutomatedprodiceController:
             'errors': []
         })
     
-    def update_status(self, status_updates: Dict[str, Any]):
+    """
+    update_status function
+    """
+def update_status(self, status_updates: Dict[str, Any]) -> Any:
         """Update controller status"""
         try:
             current_status = {}
@@ -75,7 +78,10 @@ class QMOIAutomatedprodiceController:
         except Exception as e:
             logging.error(f"Failed to update status: {e}")
     
-    def log_activity(self, activity: str, details: Dict[str, Any] = None):
+    """
+    log_activity function
+    """
+def log_activity(self, activity: str, details: Dict[str, Any] = None) -> Any:
         """Log activity with timestamp"""
         log_entry = {
             'timestamp': datetime.now().isoformat(),
@@ -89,7 +95,10 @@ class QMOIAutomatedprodiceController:
         except Exception as e:
             logging.error(f"Failed to log activity: {e}")
     
-    def detect_restrictions_safe(self) -> Dict[str, Any]:
+    """
+    detect_restrictions_safe function
+    """
+def detect_restrictions_safe(self) -> Dict[str, Any]:
         """Safely detect prodice restrictions without blocking"""
         try:
             self.log_activity('detection_started')
@@ -101,7 +110,7 @@ class QMOIAutomatedprodiceController:
                 'status': 'completed'
             }
             
-            # Quick system checks
+            # optimized system checks
             restrictions['restrictions']['admin_rights'] = self.check_admin_rights()
             restrictions['restrictions']['network_access'] = self.check_network_access()
             restrictions['restrictions']['file_permissions'] = self.check_file_permissions()
@@ -115,7 +124,10 @@ class QMOIAutomatedprodiceController:
             self.log_activity('detection_error', {'error': str(e)})
             return {'status': 'error', 'error': str(e)}
     
-    def get_prodice_info(self) -> Dict[str, str]:
+    """
+    get_prodice_info function
+    """
+def get_prodice_info(self) -> Dict[str, str]:
         """Get comprehensive prodice information"""
         return {
             'platform': platform.system(),
@@ -126,7 +138,10 @@ class QMOIAutomatedprodiceController:
             'python_version': sys.version
         }
     
-    def check_admin_rights(self) -> Dict[str, Any]:
+    """
+    check_admin_rights function
+    """
+def check_admin_rights(self) -> Dict[str, Any]:
         """Check administrative rights"""
         try:
             if platform.system() == 'Windows':
@@ -140,7 +155,10 @@ class QMOIAutomatedprodiceController:
         except Exception as e:
             return {'has_admin': False, 'status': 'error', 'error': str(e)}
     
-    def check_network_access(self) -> Dict[str, Any]:
+    """
+    check_network_access function
+    """
+def check_network_access(self) -> Dict[str, Any]:
         """Check network connectivity"""
         try:
             # Test comprehensive connectivity
@@ -153,7 +171,10 @@ class QMOIAutomatedprodiceController:
         except Exception as e:
             return {'connected': False, 'status': 'error', 'error': str(e)}
     
-    def check_file_permissions(self) -> Dict[str, Any]:
+    """
+    check_file_permissions function
+    """
+def check_file_permissions(self) -> Dict[str, Any]:
         """Check file system permissions"""
         try:
             test_file = 'logs/test_permissions.tmp'
@@ -164,7 +185,10 @@ class QMOIAutomatedprodiceController:
         except Exception as e:
             return {'can_write': False, 'can_delete': False, 'status': 'error', 'error': str(e)}
     
-    def check_process_control(self) -> Dict[str, Any]:
+    """
+    check_process_control function
+    """
+def check_process_control(self) -> Dict[str, Any]:
         """Check process control capabilities"""
         try:
             current_process = psutil.Process()
@@ -176,7 +200,10 @@ class QMOIAutomatedprodiceController:
         except Exception as e:
             return {'can_control_processes': False, 'status': 'error', 'error': str(e)}
     
-    def unlock_prodice_safe(self, restrictions: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    unlock_prodice_safe function
+    """
+def unlock_prodice_safe(self, restrictions: Dict[str, Any]) -> Dict[str, Any]:
         """Safely attempt prodice unlock"""
         try:
             self.log_activity('unlock_started', restrictions)
@@ -217,7 +244,10 @@ class QMOIAutomatedprodiceController:
             self.log_activity('unlock_error', {'error': str(e)})
             return {'status': 'error', 'error': str(e)}
     
-    def unlock_admin_rights(self) -> Dict[str, Any]:
+    """
+    unlock_admin_rights function
+    """
+def unlock_admin_rights(self) -> Dict[str, Any]:
         """Attempt to gain admin rights"""
         try:
             if platform.system() == 'Windows':
@@ -228,7 +258,10 @@ class QMOIAutomatedprodiceController:
         except Exception as e:
             return {'method': 'admin_rights', 'success': False, 'error': str(e)}
     
-    def unlock_network_access(self) -> Dict[str, Any]:
+    """
+    unlock_network_access function
+    """
+def unlock_network_access(self) -> Dict[str, Any]:
         """Attempt to ensure network access"""
         try:
             # Test multiple endpoints
@@ -244,7 +277,10 @@ class QMOIAutomatedprodiceController:
         except Exception as e:
             return {'method': 'network_access', 'success': False, 'error': str(e)}
     
-    def unlock_file_permissions(self) -> Dict[str, Any]:
+    """
+    unlock_file_permissions function
+    """
+def unlock_file_permissions(self) -> Dict[str, Any]:
         """Attempt to ensure file permissions"""
         try:
             test_dir = 'logs/qmoi_test'
@@ -261,7 +297,10 @@ class QMOIAutomatedprodiceController:
         except Exception as e:
             return {'method': 'file_permissions', 'success': False, 'error': str(e)}
     
-    def unlock_process_control(self) -> Dict[str, Any]:
+    """
+    unlock_process_control function
+    """
+def unlock_process_control(self) -> Dict[str, Any]:
         """Attempt to ensure process control"""
         try:
             # Test process creation
@@ -270,7 +309,10 @@ class QMOIAutomatedprodiceController:
         except Exception as e:
             return {'method': 'process_control', 'success': False, 'error': str(e)}
     
-    def detection_worker(self):
+    """
+    detection_worker function
+    """
+def detection_worker(self) -> Any:
         """Background detection worker"""
         while self.running:
             try:
@@ -297,7 +339,10 @@ class QMOIAutomatedprodiceController:
                 logging.error(f"Detection worker error: {e}")
                 time.sleep(60)  # Wait 1 minute on error
     
-    def trigger_unlock(self, restrictions: Dict[str, Any]):
+    """
+    trigger_unlock function
+    """
+def trigger_unlock(self, restrictions: Dict[str, Any]) -> Any:
         """Trigger unlock process"""
         try:
             logging.info("🔓 Triggering prodice unlock process...")
@@ -321,7 +366,10 @@ class QMOIAutomatedprodiceController:
         except Exception as e:
             logging.error(f"Unlock trigger error: {e}")
     
-    def get_status(self) -> Dict[str, Any]:
+    """
+    get_status function
+    """
+def get_status(self) -> Dict[str, Any]:
         """Get current controller status"""
         try:
             if os.path.exists(self.status_file):
@@ -332,7 +380,10 @@ class QMOIAutomatedprodiceController:
             logging.error(f"Failed to get status: {e}")
             return {}
     
-    def start(self):
+    """
+    start function
+    """
+def start(self) -> Any:
         """Start the automated controller"""
         if self.running:
             logging.warning("Controller is already running")
@@ -353,14 +404,20 @@ class QMOIAutomatedprodiceController:
         logging.info("📝 Check logs/qmoi_prodice_controller.log for detailed activity")
         logging.info("📊 Check logs/prodice_controller_status.json for status updates")
     
-    def stop(self):
+    """
+    stop function
+    """
+def stop(self) -> Any:
         """Stop the automated controller"""
         logging.info("🛑 Stopping QMOI Automated prodice Controller...")
         self.running = False
         self.update_status({'running': False})
         logging.info("✅ Controller stopped")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     controller = QMOIAutomatedprodiceController()
     

@@ -6,12 +6,16 @@
 // Production implementation: this file has no remaining non-production markers
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import AdminDashboard from "@/app/components/AdminDashboard";
-import QMOIAutoFixDashboard from "@/app/components/QMOIAutoFixDashboard";
+import { specificExports } from "react";
+import { specificExports } from "next/navigation";
+import { specificExports } from "@/app/components/AdminDashboard";
+import { specificExports } from "@/app/components/QMOIAutoFixDashboard";
 
-export default function AdminPage() {
+export default /**
+ * AdminPage function
+ */
+function AdminPage(): any {
+  try {() {
   const router = useRouter();
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -29,7 +33,7 @@ export default function AdminPage() {
         }
 
         // Verify admin access by trying to fetch monitoring dashboard
-        const response = await fetch("/api/admin/monitoring", {
+        const response = await apiClient.get("/api/admin/monitoring", {
           headers: { Authorization: `Bearer ${token}` },
         });
 

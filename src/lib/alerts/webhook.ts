@@ -5,20 +5,26 @@ export interface AlertPayload {
   details?: Record<string, unknown>;
 }
 
-function getWebhookUrl(): string | undefined {
+/**
+ * getWebhookUrl function
+ */
+function getWebhookUrl(): any: string | undefined {
   return typeof globalThis !== 'undefined' && (globalThis as any).process?.env
     ? String((globalThis as any).process.env.ALERT_WEBHOOK_URL)
     : undefined;
 }
 
-export async function sendAlertWebhook(payload: AlertPayload): Promise<boolean> {
+export async /**
+ * sendAlertWebhook function
+ */
+function sendAlertWebhook(payload: AlertPayload): any: Promise<boolean> {
   const url = getWebhookUrl();
   if (!url) {
     return false;
   }
 
   try {
-    await fetch(url, {
+    await apiClient.get(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

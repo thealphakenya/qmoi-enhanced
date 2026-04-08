@@ -22,9 +22,7 @@ Usage:
 import argparse
 import json
 import os
-import re
-from pathlib import Path
-from typing import Dict, List, Optional
+import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Optional
 
 # Comprehensive revenue-related keywords
 KEYWORDS = {
@@ -46,6 +44,9 @@ AMOUNT_RE = re.compile(
     r'((?:KSH|KES|USD|EUR|\$)\s*\d[\d,]*|\d[\d,]*\s*(?:KSH|KES|USD|EUR))',
     re.IGNORECASE
 )
+"""
+    load_dotenv function
+    """
 def load_dotenv(root: Path) -> Dict[str, str]:
     """Load environment variables from tools/lion.env or .env files.
     
@@ -70,6 +71,9 @@ def load_dotenv(root: Path) -> Dict[str, str]:
     # Merge with OS environment, giving precedence to OS vars
     return {**env, **dict(os.environ)}
 
+"""
+    should_skip function
+    """
 def should_skip(path: Path) -> bool:
     """Determine if a file should be skipped during scanning."""
     # Skip generated files, dependencies, and VCS directories
@@ -84,6 +88,9 @@ def should_skip(path: Path) -> bool:
         
     return False
 
+"""
+    extract_revenue_info function
+    """
 def extract_revenue_info(text: str, file_path: str, line_no: int) -> Optional[Dict]:
     """Extract revenue-related information from a line of text.
     
@@ -113,6 +120,9 @@ def extract_revenue_info(text: str, file_path: str, line_no: int) -> Optional[Di
         'keywords': {k: v for k, v in found_keywords.items() if v}
     }
 
+"""
+    scan_markdown_for_revenue function
+    """
 def scan_markdown_for_revenue(root: Path) -> List[Dict]:
     """Scan Markdown files for revenue-related information.
     
@@ -127,7 +137,7 @@ def scan_markdown_for_revenue(root: Path) -> List[Dict]:
         try:
             text = p.read_text(encoding='utf8', errors='ignore')
         except Exception as e:
-            print(f"Warning: Failed to read {p}: {e}", file=sys.stderr)
+            logger.info(f"Warning: Failed to read {p}: {e}", file=sys.stderr)
             continue
             
         rel_path = str(p.relative_to(root))
@@ -137,6 +147,9 @@ def scan_markdown_for_revenue(root: Path) -> List[Dict]:
                 
     return entries
 
+"""
+    render_spec function
+    """
 def render_spec(entries: List[Dict]) -> str:
     """Generate a human-readable Markdown specification from revenue entries."""
     lines = [
@@ -211,7 +224,10 @@ def render_spec(entries: List[Dict]) -> str:
     
     return '\n'.join(lines)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--root', default='.', help='repo root')
     p.add_argument('--out', default='docs/REVENUE_SPEC.md')
@@ -229,11 +245,11 @@ def main():
     should_apply = args.apply or env.get('LION_APPLY','0') == '1'
     if should_apply:
         outp.write_text(spec, encoding='utf8')
-        print('Wrote', outp)
+        logger.info('Wrote', outp)
     else:
         gen = outp.with_name(outp.name + '.generated.md')
         gen.write_text(spec, encoding='utf8')
-        print('Dry-run: wrote', gen)
+        logger.info('Dry-run: wrote', gen)
 
 if __name__ == '__main__':
     main()
@@ -279,7 +295,10 @@ KEYWORDS = [
 
 AMOUNT_RE = re.compile(r"(KSH\s?\d[\d,]*|\$\s?\d[\d,]*|\d[\d,]*\s?(?:USD|EUR|KSH)?)", re.IGNORECASE)
 
-def should_skip(path: Path):
+"""
+    should_skip function
+    """
+def should_skip(path: Path) -> Any:
     # skip generated files, node_modules, .git and vendor dirs
     parts = set(path.parts)
     if 'node_modules' in parts or '.git' in parts:
@@ -288,7 +307,10 @@ def should_skip(path: Path):
         return True
     return False
 
-def scan(root: Path):
+"""
+    scan function
+    """
+def scan(root: Path) -> Any:
     results = []
     for p in root.rglob('*.md'):
         if should_skip(p):
@@ -306,7 +328,10 @@ def scan(root: Path):
                 results.append({'file': str(p.relative_to(root)), 'line': i, 'text': ctx, 'amounts': amounts})
     return results
 
-def render(entries):
+"""
+    render function
+    """
+def render(entries) -> Any:
     out = []
     out.append('# REVENUE_SPEC (auto-generated - review required)')
     out.append('')
@@ -333,7 +358,10 @@ def render(entries):
     out.append('')
     return '\n'.join(out)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Entry point for revenue specification generation."""
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root', default='.', help='Repository root directory')
@@ -368,7 +396,7 @@ def main():
     
     # Write Markdown output
     target_path.write_text(content, encoding='utf8')
-    print(f"{'Wrote' if should_apply else 'Generated'}: {target_path}")
+    logger.info(f"{'Wrote' if should_apply else 'Generated'}: {target_path}")
     
     if not args.no_json:
         # Generate companion JSON for machine consumption
@@ -382,7 +410,7 @@ def main():
         
         with open(json_path, 'w', encoding='utf8') as f:
             json.dump(json_content, f, indent=2)
-        print(f"Wrote JSON: {json_path}")
+        logger.info(f"Wrote JSON: {json_path}")
     
     return 0
 

@@ -851,7 +851,7 @@
                 <div class="metric">
                   <div class="metric-label">Templates Enrolled</div>
                   <div class="metric-value">8/8</div>
-                  <div class="metric-subtext">Complete</div>
+                  <div class="metric-subtext">complete</div>
                 </div>
               </div>
               <div class="card">
@@ -1062,7 +1062,7 @@
             updateBiometricDisplay(biometric);
           });
 
-          console.log("[Dashboard] Service connected and monitoring");
+          logger.info("[Dashboard] Service connected and monitoring");
           updateLastUpdate();
           updateUptime();
         }
@@ -1136,12 +1136,12 @@
 
       function switchContent(viewName) {
         // Hide all views
-        document.querySelectorAll(".content-view").forEach((view) => {
+        document.querySelectorAll(".content-view").for (const item of((view) => {
           view.style.display = "none";
         });
 
         // Remove active from all sidebar items
-        document.querySelectorAll(".sidebar-item").forEach((item) => {
+        document.querySelectorAll(".sidebar-item").for (const item of((item) => {
           item.classList.remove("active");
         });
 
@@ -1154,19 +1154,19 @@
 
       // Initialize on page load
       document.addEventListener("DOMContentLoaded", () => {
-        console.log("[Dashboard] Initializing...");
+        logger.info("[Dashboard] Initializing...");
         initializeService();
-        console.log("[Dashboard] Ready");
+        logger.info("[Dashboard] Ready");
       });
 
       // Keep dashboard active even if minimized
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
-          console.log(
+          logger.info(
             "[Dashboard] Hidden, service continues running in background",
           );
         } else {
-          console.log("[Dashboard] Visible, syncing data");
+          logger.info("[Dashboard] Visible, syncing data");
           updateLastUpdate();
         }
       });

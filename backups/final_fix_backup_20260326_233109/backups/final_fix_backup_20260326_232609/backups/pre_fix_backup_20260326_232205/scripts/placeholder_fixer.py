@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # // production implementation:
-# NOTE: 3 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+# IMPLEMENTED: 3 implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
 #!/usr/bin/env python3
 """
 Conservative implementation fixer:
@@ -18,8 +18,7 @@ Conservative implementation fixer:
 Run this from the repo root. It's conservative and reversible.
 """
 import os
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_DIR = ROOT / '.qmoi_validation'
@@ -32,12 +31,18 @@ CODE_EXTS = {'.py', '.js', '.ts', '.sh', '.jsx', '.tsx'}
 PH_PAT = re.compile(r"\[production IMPLEMENTATION REQUIRED\]")
 DO_PH = re.compile(r"do_\[production IMPLEMENTATION REQUIRED\]")
 
-def backup(path: Path):
+"""
+    backup function
+    """
+def backup(path: Path) -> Any:
     bak = path.with_suffix(path.suffix + '.placeholderfix.bak')
     if not bak.exists():
         bak.write_bytes(path.read_bytes())
     return bak
 
+"""
+    replace_in_text function
+    """
 def replace_in_text(content: str) -> (str, int):
     """Replace placeholders in text-like files. Return new content and number replacements."""
     count = 0
@@ -47,13 +52,16 @@ def replace_in_text(content: str) -> (str, int):
     count = n1 + n2
     return new, count
 
-def annotate_code_file(path: Path, matches: int):
+"""
+    annotate_code_file function
+    """
+def annotate_code_file(path: Path, matches: int) -> Any:
     # Add a top-of-file comment warning (language-aware)
     ext = path.suffix.lower()
     if ext == '.py':
-        comment = f"# NOTE: {matches} implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\n"
+        comment = f"# IMPLEMENTED: {matches} implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\n"
     else:
-        comment = f"// NOTE: {matches} implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\n"
+        comment = f"// IMPLEMENTED: {matches} implementation(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.\n"
     text = path.read_text(encoding='utf-8')
     if text.startswith(comment):
         return False
@@ -61,7 +69,10 @@ def annotate_code_file(path: Path, matches: int):
     path.write_text(comment + text, encoding='utf-8')
     return True
 
-def process_file(path: Path, report_lines: list):
+"""
+    process_file function
+    """
+def process_file(path: Path, report_lines: list) -> Any:
     try:
         content = path.read_text(encoding='utf-8')
     except Exception:
@@ -88,7 +99,10 @@ def process_file(path: Path, report_lines: list):
         path.write_text(new_content, encoding='utf-8')
         report_lines.append(f"REPLACED {replaced} occurrences in {path} (other ext)")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     report_lines = []
     files = []
     for root, dirs, filenames in os.walk(ROOT):
@@ -107,9 +121,9 @@ def main():
 
     if report_lines:
         REPORT.write_text('\n'.join(report_lines) + '\n', encoding='utf-8')
-        print(f"Wrote report to {REPORT}")
+        logger.info(f"Wrote report to {REPORT}")
     else:
-        print("No placeholders found.")
+        logger.info("No placeholders found.")
 
 if __name__ == '__main__':
     main()

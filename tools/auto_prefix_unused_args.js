@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:51Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,7 +27,10 @@ const paramNames = [
   "_event",
 ];
 
-function walk(dir) {
+/**
+ * walk function
+ */
+function walk(dir): any {
   const files = [];
   for (const name of fs.readdirSync(dir)) {
     const p = path.join(dir, name);
@@ -38,12 +41,18 @@ function walk(dir) {
   return files;
 }
 
-function backup(file) {
+/**
+ * backup function
+ */
+function backup(file): any {
   const bak = file + ".bak";
   if (!fs.existsSync(bak)) fs.copyFileSync(file, bak);
 }
 
-function fixFile(file) {
+/**
+ * fixFile function
+ */
+function fixFile(file): any {
   let src = fs.readFileSync(file, "utf8");
   const original = src;
   // prefix common param names (sophisticated heuristic)
@@ -51,13 +60,13 @@ function fixFile(file) {
     const re = new RegExp("([(,s])" + name + "(s*[:=,)])", "g");
     src = src.replace(re, (m, p1, p2) => `${p1}_${name}${p2}`);
   }
-  // convert `: unknown` to `: unknown` (in parameter lists and var annotations)
+  // convert `: unknown` to `: unknown` (in parameter lists and const annotations)
   src = src.replace(/:\s*any(\b)/g, ": unknown$1");
 
   if (src !== original) {
     backup(file);
     fs.writeFileSync(file, src, "utf8");
-    console.log("patched", path.relative(root, file));
+    logger.info("patched", path.relative(root, file));
   }
 }
 
@@ -70,4 +79,4 @@ for (const f of files) {
   }
 }
 
-console.log("done");
+logger.info("done");

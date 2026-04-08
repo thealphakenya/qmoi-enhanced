@@ -1,6 +1,6 @@
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                                                                            ║
-║              🚀 QMOI ENHANCED - PRODUCTION QUICK START 🚀                 ║
+║              🚀 QMOI ENHANCED - PRODUCTION optimized START 🚀                 ║
 ║                                                                            ║
 ║               Your system is LIVE and ready to use!                        ║
 ║                                                                            ║

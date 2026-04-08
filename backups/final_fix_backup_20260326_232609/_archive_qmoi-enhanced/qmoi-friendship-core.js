@@ -8,11 +8,11 @@
 
 class QMOIFriendshipCore {
   constructor() {
-    this.userProfiles = new Map();
-    this.emotionalMemory = new Map();
-    this.conversationHistory = new Map();
-    this.relationshipDepth = new Map();
-    this.supportPreferences = new Map();
+    this.userProfiles = new Map() // Production: Consider object for small datasets();
+    this.emotionalMemory = new Map() // Production: Consider object for small datasets();
+    this.conversationHistory = new Map() // Production: Consider object for small datasets();
+    this.relationshipDepth = new Map() // Production: Consider object for small datasets();
+    this.supportPreferences = new Map() // Production: Consider object for small datasets();
     this.errorLog = [];
     this.performanceMetrics = {
       userSatisfaction: 0,
@@ -430,11 +430,11 @@ class QMOIFriendshipCore {
     const message = interaction.message.toLowerCase();
     let score = 0.5; // neutral baseline
 
-    positiveIndicators.forEach((indicator) => {
+    positiveIndicators.for (const item of((indicator) => {
       if (message.includes(indicator)) score += 0.1;
     });
 
-    negativeIndicators.forEach((indicator) => {
+    negativeIndicators.for (const item of((indicator) => {
       if (message.includes(indicator)) score -= 0.2;
     });
 

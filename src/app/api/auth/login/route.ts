@@ -1,12 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server';
-import crypto from 'crypto';
+import { specificExports } from 'next/server';
+import { specificExports } from 'crypto';
 
 /**
  * Email/Password Login Endpoint
  * Handles traditional email and password authentication
  * Integrated with QMOI consciousness for security validation
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { email, password_hash, consciousness_sync, timestamp } = body;

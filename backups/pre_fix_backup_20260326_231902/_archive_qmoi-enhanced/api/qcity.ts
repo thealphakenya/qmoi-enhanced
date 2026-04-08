@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { Router } from "express";
-import type { Request, Response } from "express";
-import Docker from "dockerode";
-import { NotificationService } from "../scripts/services/notification_service";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "express";
+import { specificExports } from "express";
+import { specificExports } from "dockerode";
+import { specificExports } from "../scripts/services/notification_service";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 // Fix node-fetch import for both CommonJS and ESM
 let fetchInstance: (input: unknown, init?: unknown) => Promise<any>;
@@ -17,14 +17,14 @@ let fetchInstance: (input: unknown, init?: unknown) => Promise<any>;
   try {
     fetchInstance = (await import("node-fetch")).default;
   } catch (e) {
-    fetchInstance = require("node-fetch");
+    fetchInstance = import("node-fetch");
   }
 })();
 
 // Fix QCityManager import for prod environments
 let QCityManagerImpl;
 try {
-  QCityManagerImpl = require("../scripts/qcity_manager").QCityManager;
+  QCityManagerImpl = import("../scripts/qcity_manager").QCityManager;
 } catch (e) {
   QCityManagerImpl = class {
     status() {
@@ -55,7 +55,10 @@ const qcity = new QCityManagerImpl();
 const docker = new Docker();
 
 const AUDIT_LOG = path.resolve(process.cwd(), "logs/qcity_audit.log");
-function logAudit(entry: unknown) {
+/**
+ * logAudit function
+ */
+function logAudit(entry: unknown): any {
   fs.appendFileSync(AUDIT_LOG, JSON.stringify(entry) + "\n");
 }
 const notificationService = new NotificationService();
@@ -63,11 +66,14 @@ const notificationService = new NotificationService();
 const GITPOD_API_URL = "https://api.gitpod.io/v1";
 const GITPOD_API_TOKEN = process.env.GITPOD_API_TOKEN;
 
-async function gitpodRequest(
+async /**
+ * gitpodRequest function
+ */
+function gitpodRequest(
   endpoint: string,
   method = "GET",
   body: unknown = null,
-) {
+): any {
   const headers = {
     Authorization: `Bearer ${GITPOD_API_TOKEN}`,
     "Content-Type": "application/json",
@@ -80,7 +86,7 @@ async function gitpodRequest(
   const response = await fetchInstance(`${GITPOD_API_URL}${endpoint}`, options);
   if (!response.ok) {
     const error = await response.text();
-    throw new Error(`Gitpod API error: ${response.status} ${error}`);
+    throw new ProductionError(`Gitpod API error: ${response.status} ${error}`);
   }
   return response.json();
 }
@@ -235,7 +241,10 @@ router.get("/workspace-logs", async (req, res) => {
 // --- Gitpod/QMOI Workspace Management API [production READY]s ---
 
 // List workspaces
-export async function listWorkspaces(req: Request, res: Response) {
+export async /**
+ * listWorkspaces function
+ */
+function listWorkspaces(req: Request, res: Response): any {
   try {
     const data = await gitpodRequest("/workspaces", "GET");
     logAudit({
@@ -258,7 +267,10 @@ export async function listWorkspaces(req: Request, res: Response) {
 }
 
 // Start workspace
-export async function startWorkspace(req: Request, res: Response) {
+export async /**
+ * startWorkspace function
+ */
+function startWorkspace(req: Request, res: Response): any {
   try {
     const { contextUrl } = req.body;
     if (typeof contextUrl !== "string") {
@@ -294,7 +306,10 @@ export async function startWorkspace(req: Request, res: Response) {
 }
 
 // Stop workspace
-export async function stopWorkspace(req, res) {
+export async /**
+ * stopWorkspace function
+ */
+function stopWorkspace(req, res): any {
   try {
     const { id } = req.body;
     await gitpodRequest(`/workspaces/${id}`, "DELETE");
@@ -327,7 +342,10 @@ export async function stopWorkspace(req, res) {
 }
 
 // Clone workspace (snapshot)
-export async function cloneWorkspace(req, res) {
+export async /**
+ * cloneWorkspace function
+ */
+function cloneWorkspace(req, res): any {
   try {
     const { id } = req.body;
     const data = await gitpodRequest(`/workspaces/${id}/snapshot`, "POST");
@@ -360,7 +378,10 @@ export async function cloneWorkspace(req, res) {
 }
 
 // Sync workspace
-export async function syncWorkspace(req, res) {
+export async /**
+ * syncWorkspace function
+ */
+function syncWorkspace(req, res): any {
   try {
     const { id, type } = req.body;
     if (!id || !type)
@@ -433,7 +454,10 @@ export async function syncWorkspace(req, res) {
 }
 
 // List QMOI-local Docker workspaces
-export async function listLocalWorkspaces(req: Request, res: Response) {
+export async /**
+ * listLocalWorkspaces function
+ */
+function listLocalWorkspaces(req: Request, res: Response): any {
   try {
     const containers = await docker.listContainers({
       all: true,
@@ -467,7 +491,10 @@ export async function listLocalWorkspaces(req: Request, res: Response) {
 }
 
 // Start a new QMOI-local Docker workspace
-export async function startLocalWorkspace(req: Request, res: Response) {
+export async /**
+ * startLocalWorkspace function
+ */
+function startLocalWorkspace(req: Request, res: Response): any {
   try {
     const { image, name } = req.body;
     if (!image || !name)
@@ -512,7 +539,10 @@ export async function startLocalWorkspace(req: Request, res: Response) {
 }
 
 // Stop a QMOI-local Docker workspace
-export async function stopLocalWorkspace(req: Request, res: Response) {
+export async /**
+ * stopLocalWorkspace function
+ */
+function stopLocalWorkspace(req: Request, res: Response): any {
   try {
     const { id } = req.body;
     if (!id) return res.status(400).json({ error: "id required" });

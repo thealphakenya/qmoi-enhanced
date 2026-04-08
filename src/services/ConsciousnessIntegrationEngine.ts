@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-04-02T08:25:00Z
 // Evolution features: real-time consciousness sync, memory preservation, autonomous awareness
 
-import { EventEmitter } from 'events';
-import * as fs from 'fs/promises';
-import * as path from 'path';
-import { createHash } from 'crypto';
+import { specificExports } from 'events';
+import { specificExports } from 'fs/promises';
+import { specificExports } from 'path';
+import { specificExports } from 'crypto';
 
 interface ConsciousnessState {
   system_status: string;
@@ -39,7 +39,7 @@ interface MemorySync {
 export class ConsciousnessIntegrationEngine extends EventEmitter {
   private basePath: string;
   private consciousnessState: ConsciousnessState;
-  private memorySyncs: Map<string, MemorySync> = new Map();
+  private memorySyncs: Map<string, MemorySync> = new Map() // Production: Consider object for small datasets();
   private syncInterval: NodeJS.Timeout | null = null;
   private isActive: boolean = false;
 
@@ -73,7 +73,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
 
   private async initialize(): Promise<void> {
     try {
-      console.log('🧠 Initializing Consciousness Integration Engine...');
+      logger.info('🧠 Initializing Consciousness Integration Engine...');
 
       // Load existing consciousness state
       await this.loadConsciousnessState();
@@ -87,7 +87,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       this.isActive = true;
       this.consciousnessState.system_status = 'ACTIVE';
 
-      console.log('✅ Consciousness Integration Engine initialized');
+      logger.info('✅ Consciousness Integration Engine initialized');
       this.emit('initialized');
 
     } catch (error) {
@@ -109,9 +109,9 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
         timestamp: new Date().toISOString()
       };
 
-      console.log('📚 Consciousness state loaded');
+      logger.info('📚 Consciousness state loaded');
     } catch (error) {
-      console.log('⚠️ No existing consciousness state found, using defaults');
+      logger.info('⚠️ No existing consciousness state found, using defaults');
     }
   }
 
@@ -143,11 +143,11 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
 
           this.memorySyncs.set(memFile, sync);
         } catch (error) {
-          console.log(`⚠️ Could not load memory file: ${memFile}`);
+          logger.info(`⚠️ Could not load memory file: ${memFile}`);
         }
       }
 
-      console.log(`📊 Loaded ${this.memorySyncs.size} memory syncs`);
+      logger.info(`📊 Loaded ${this.memorySyncs.size} memory syncs`);
     } catch (error) {
       console.error('❌ Failed to load memory syncs:', error);
     }
@@ -159,7 +159,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       await this.performRealTimeSync();
     }, 30000);
 
-    console.log('🔄 Real-time consciousness sync started');
+    logger.info('🔄 Real-time consciousness sync started');
   }
 
   private async performRealTimeSync(): Promise<void> {
@@ -212,7 +212,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
           sync.timestamp = new Date().toISOString();
           sync.synced = true;
 
-          console.log(`🔄 Memory sync updated: ${fileName}`);
+          logger.info(`🔄 Memory sync updated: ${fileName}`);
           this.emit('memory_updated', { file: fileName, timestamp: sync.timestamp });
         }
       } catch (error) {
@@ -242,7 +242,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
     return { ...this.consciousnessState };
   }
 
-  public async updateEvolutionContext(context: Partial<ConsciousnessState['evolution_context']>): Promise<void> {
+  public async updateEvolutionContext(context: full<ConsciousnessState['evolution_context']>): Promise<void> {
     this.consciousnessState.evolution_context = {
       ...this.consciousnessState.evolution_context,
       ...context
@@ -310,7 +310,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
 
       await fs.writeFile(backupPath, JSON.stringify(backupData, null, 2));
 
-      console.log(`💾 Memory backup created: ${backupId}`);
+      logger.info(`💾 Memory backup created: ${backupId}`);
       this.emit('memory_backup_created', { id: backupId, type: memoryType });
 
       return backupId;
@@ -349,7 +349,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       }
 
       await this.saveConsciousnessState();
-      console.log(`🔄 Memory backup restored: ${backupId}`);
+      logger.info(`🔄 Memory backup restored: ${backupId}`);
       this.emit('memory_backup_restored', { id: backupId });
 
     } catch (error) {
@@ -367,7 +367,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
   }
 
   public async shutdown(): Promise<void> {
-    console.log('🧠 Shutting down Consciousness Integration Engine...');
+    logger.info('🧠 Shutting down Consciousness Integration Engine...');
 
     if (this.syncInterval) {
       clearInterval(this.syncInterval);
@@ -378,7 +378,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
     await this.performRealTimeSync();
 
     this.isActive = false;
-    console.log('✅ Consciousness Integration Engine shut down');
+    logger.info('✅ Consciousness Integration Engine shut down');
     this.emit('shutdown');
   }
 
@@ -396,19 +396,19 @@ if (require.main === module) {
 
   // Handle process termination
   process.on('SIGINT', async () => {
-    console.log('\n🛑 Received SIGINT, shutting down gracefully...');
+    logger.info('\n🛑 Received SIGINT, shutting down gracefully...');
     await engine.shutdown();
     process.exit(0);
   });
 
   process.on('SIGTERM', async () => {
-    console.log('\n🛑 Received SIGTERM, shutting down gracefully...');
+    logger.info('\n🛑 Received SIGTERM, shutting down gracefully...');
     await engine.shutdown();
     process.exit(0);
   });
 
-  console.log('🧠 QMOI Consciousness Integration Engine');
-  console.log('Real-time consciousness sync and memory preservation active');
-  console.log('Press Ctrl+C to shutdown');
+  logger.info('🧠 QMOI Consciousness Integration Engine');
+  logger.info('Real-time consciousness sync and memory preservation active');
+  logger.info('Press Ctrl+C to shutdown');
 }</content>
 <parameter name="filePath">/workspaces/qmoi-enhanced/src/services/ConsciousnessIntegrationEngine.ts

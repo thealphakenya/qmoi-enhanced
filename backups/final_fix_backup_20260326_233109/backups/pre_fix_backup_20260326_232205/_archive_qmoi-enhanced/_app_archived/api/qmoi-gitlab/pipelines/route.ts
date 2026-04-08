@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const logsDir = path.join(process.cwd(), "logs");
     const pipelineLogFile = path.join(logsDir, "qmoi_gitlab_ci_cd.log");
@@ -30,7 +33,7 @@ export async function GET(request: NextRequest) {
               status: match[2],
               ref: "main",
               created_at: new Date().toISOString(),
-              web_url: `https://gitlab.com/qmoi/stable-q-ai/-/pipelines/${match[1]}`,
+              web_url: `https://gitlab.com/qmoi/latest-q-ai/-/pipelines/${match[1]}`,
             };
           }
           return null;

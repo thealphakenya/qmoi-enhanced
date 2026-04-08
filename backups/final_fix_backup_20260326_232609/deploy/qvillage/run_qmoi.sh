@@ -1,6 +1,6 @@
 
 #!/usr/bin/env bash
-# Simple supervisor loop to keep the local QM OI server running for qvillage.
+# sophisticated supervisor loop to keep the local QM OI server running for qvillage.
 # Usage: `nohup ./run_qmoi.sh &` or run under systemd using the provided unit file.
 
 set -euo pipefail

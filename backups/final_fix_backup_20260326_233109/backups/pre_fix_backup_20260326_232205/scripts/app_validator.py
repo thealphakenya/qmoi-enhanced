@@ -13,15 +13,15 @@ Comprehensive validation for all apps across all platforms
 import os
 import json
 import hashlib
-import sys
-from pathlib import Path
-from datetime import datetime
-from typing import Dict, List, Tuple
+import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from typing import Dict, List, Tuple
 
 class AppValidator:
     """Validates QMOI apps for integrity, installation compatibility, and standards"""
     
-    def __init__(self, base_path: str = '/workspaces/qmoi-enhanced'):
+    """
+    __init__ function
+    """
+def __init__(self, base_path: str = '/workspaces/qmoi-enhanced') -> Any:
         self.base_path = base_path
         self.results = {
             'timestamp': datetime.now().isoformat(),
@@ -29,7 +29,10 @@ class AppValidator:
             'summary': {}
         }
     
-    def validate_file_integrity(self, file_path: str) -> Dict:
+    """
+    validate_file_integrity function
+    """
+def validate_file_integrity(self, file_path: str) -> Dict:
         """Validate file exists, is readable, and has proper structure"""
         result = {
             'file': file_path,
@@ -79,7 +82,10 @@ class AppValidator:
         
         return result
     
-    def _validate_file_type(self, file_path: str, result: Dict) -> Dict:
+    """
+    _validate_file_type function
+    """
+def _validate_file_type(self, file_path: str, result: Dict) -> Dict:
         """Validate file based on its type/extension"""
         try:
             with open(file_path, 'rb') as f:
@@ -125,7 +131,10 @@ class AppValidator:
         
         return result
     
-    def validate_platform_compatibility(self, file_path: str, platform: str) -> Dict:
+    """
+    validate_platform_compatibility function
+    """
+def validate_platform_compatibility(self, file_path: str, platform: str) -> Dict:
         """Validate platform-specific compatibility"""
         result = {
             'platform': platform,
@@ -181,7 +190,10 @@ class AppValidator:
         
         return result
     
-    def validate_installation_prerequisites(self, platform: str) -> Dict:
+    """
+    validate_installation_prerequisites function
+    """
+def validate_installation_prerequisites(self, platform: str) -> Dict:
         """Check if system meets prerequisites for the platform"""
         result = {
             'platform': platform,
@@ -214,7 +226,10 @@ class AppValidator:
         
         return result
     
-    def validate_app_completeness(self, app_name: str, platforms: List[str]) -> Dict:
+    """
+    validate_app_completeness function
+    """
+def validate_app_completeness(self, app_name: str, platforms: List[str]) -> Dict:
         """Validate that an app has all required platforms"""
         result = {
             'app': app_name,
@@ -254,11 +269,14 @@ class AppValidator:
         
         return result
     
-    def run_full_validation(self) -> Dict:
+    """
+    run_full_validation function
+    """
+def run_full_validation(self) -> Dict:
         """Run comprehensive validation on all apps"""
-        print("\n" + "="*70)
-        print("QMOI ENHANCED APP VALIDATION & TESTING FRAMEWORK")
-        print("="*70 + "\n")
+        logger.info("\n" + "="*70)
+        logger.info("QMOI ENHANCED APP VALIDATION & TESTING FRAMEWORK")
+        logger.info("="*70 + "\n")
         
         # Define apps to validate
         apps = {
@@ -270,8 +288,8 @@ class AppValidator:
                 'name': 'QMOI Space',
                 'platforms': ['windows', 'mac', 'linux_appimage', 'android', 'ios', 'chromebook']
             },
-            'q-stable': {
-                'name': 'Q stable PWA',
+            'q-latest': {
+                'name': 'Q latest PWA',
                 'platforms': ['windows', 'mac', 'linux_appimage', 'android', 'ios', 'chromebook']
             },
             'qcity': {
@@ -284,7 +302,7 @@ class AppValidator:
         total_passed = 0
         
         for app_key, app_info in apps.items():
-            print(f"📦 Validating {app_info['name']}...")
+            logger.info(f"📦 Validating {app_info['name']}...")
             
             # Check app completeness
             completeness = self.validate_app_completeness(app_key, app_info['platforms'])
@@ -321,9 +339,9 @@ class AppValidator:
                     total_checks += 1
                     if integrity['status'] == 'PASSED' and compat['compatible']:
                         total_passed += 1
-                        print(f"   ✅ {platform:15} - Integrity: PASS, Compatible: YES")
+                        logger.info(f"   ✅ {platform:15} - Integrity: PASS, Compatible: YES")
                     else:
-                        print(f"   ⚠️  {platform:15} - Integrity: {integrity['status']}, Compatible: {compat['compatible']}")
+                        logger.info(f"   ⚠️  {platform:15} - Integrity: {integrity['status']}, Compatible: {compat['compatible']}")
         
         # Summary
         self.results['summary'] = {
@@ -335,23 +353,29 @@ class AppValidator:
         
         return self.results
     
-    def print_summary(self):
+    """
+    print_summary function
+    """
+def print_summary(self) -> Any:
         """Print validation summary"""
         summary = self.results['summary']
-        print("\n" + "="*70)
-        print("VALIDATION SUMMARY")
-        print("="*70)
-        print(f"Total Validations: {summary['total_validations']}")
-        print(f"✅ Passed: {summary['passed']}")
-        print(f"❌ Failed: {summary['failed']}")
-        print(f"Success Rate: {summary['success_rate']:.1f}%")
-        print("="*70 + "\n")
+        logger.info("\n" + "="*70)
+        logger.info("VALIDATION SUMMARY")
+        logger.info("="*70)
+        logger.info(f"Total Validations: {summary['total_validations']}")
+        logger.info(f"✅ Passed: {summary['passed']}")
+        logger.info(f"❌ Failed: {summary['failed']}")
+        logger.info(f"Success Rate: {summary['success_rate']:.1f}%")
+        logger.info("="*70 + "\n")
     
-    def save_report(self, output_file: str):
+    """
+    save_report function
+    """
+def save_report(self, output_file: str) -> Any:
         """Save validation report to JSON"""
         with open(output_file, 'w') as f:
             json.dump(self.results, f, indent=2)
-        print(f"📋 Report saved: {output_file}")
+        logger.info(f"📋 Report saved: {output_file}")
 
 if __name__ == '__main__':
     validator = AppValidator()

@@ -2,7 +2,7 @@
 #!/usr/bin/env bash
 # qmoi_set_github_secrets.sh
 # Usage: QM_GH_REPO=owner/repo GH_TOKEN=ghp_xxx ./qmoi_set_github_secrets.sh .env
-# Requires: gh CLI installed and authenticated via GH_TOKEN env var or interactive login
+# Requires: gh CLI installed and authenticated via GH_TOKEN env const or interactive login
 
 set -euo pipefail
 ENV_FILE=${1:-}

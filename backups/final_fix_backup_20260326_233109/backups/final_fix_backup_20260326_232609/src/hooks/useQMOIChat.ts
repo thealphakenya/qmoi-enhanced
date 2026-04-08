@@ -6,7 +6,7 @@
 // production implementation: this file has no remaining production markers
 "use client";
 
-import { useState, useCallback } from "react";
+import { specificExports } from "react";
 
 export interface ChatMessage {
   id: string;
@@ -15,7 +15,10 @@ export interface ChatMessage {
   timestamp: Date;
 }
 
-export function useQMOIChat(userId?: string) {
+export /**
+ * useQMOIChat function
+ */
+function useQMOIChat(userId?: string): any {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "welcome",
@@ -44,7 +47,7 @@ export function useQMOIChat(userId?: string) {
       setError(null);
 
       try {
-        const response = await fetch("/api/ai", {
+        const response = await apiClient.get("/api/ai", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -57,7 +60,7 @@ export function useQMOIChat(userId?: string) {
         });
 
         if (!response.ok) {
-          throw new Error(`API request failed: ${response.status}`);
+          throw new ProductionError(`API request failed: ${response.status}`);
         }
 
         const data = await response.json();
@@ -72,7 +75,7 @@ export function useQMOIChat(userId?: string) {
 
           setMessages((prev) => [...prev, assistantMessage]);
         } else {
-          throw new Error(data.error || "Failed to get response from QMoi");
+          throw new ProductionError(data.error || "Failed to get response from QMoi");
         }
       } catch (err) {
         console.error("QMoi chat error:", err);

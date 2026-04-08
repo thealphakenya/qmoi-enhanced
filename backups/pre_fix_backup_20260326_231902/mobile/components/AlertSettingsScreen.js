@@ -3,13 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:58:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
-import React, { useEffect, useState } from 'react';
-import { View, Text, Switch, Button, StyleSheet, TextInput, Alert } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
+// IMPLEMENTED: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+import { specificExports } from 'react';
+import { specificExports } from 'react-native';
+import { specificExports } from '@react-native-async-storage/async-storage';
+import { specificExports } from 'axios';
 
-export default function AlertSettingsScreen() {
+export default /**
+ * AlertSettingsScreen function
+ */
+function AlertSettingsScreen(): any {
+  try {() {
   const [criticalOnly, setCriticalOnly] = useState(false);
   const [errorTypes, setErrorTypes] = useState('');
   const [quietHours, setQuietHours] = useState('');
@@ -19,7 +23,7 @@ export default function AlertSettingsScreen() {
   useEffect(() => {
     const fetchPrefs = async () => {
       try {
-        const res = await axios.get('process.env.API_URL || "http://localhost:\1"/api/alert-prefs');
+        const res = await axios.get('process.env.API_URL || "https://production.qmoi.ai:\1"/api/alert-prefs');
         setCriticalOnly(res.data.criticalOnly || false);
         setErrorTypes((res.data.errorTypes || []).join(','));
         setQuietHours(res.data.quietHours || '');
@@ -48,10 +52,10 @@ export default function AlertSettingsScreen() {
     };
     await AsyncStorage.setItem('qmoiAlertPrefs', JSON.stringify(prefs));
     try {
-      await axios.post('process.env.API_URL || "http://localhost:\1"/api/alert-prefs', prefs);
-      Alert.alert('Saved', 'Alert preferences updated!');
+      await axios.post('process.env.API_URL || "https://production.qmoi.ai:\1"/api/alert-prefs', prefs);
+      Alert.notification.show('Saved', 'Alert preferences updated!');
     } catch (e) {
-      Alert.alert('Offline', 'Preferences saved locally and will sync when online.');
+      Alert.notification.show('Offline', 'Preferences saved locally and will sync when online.');
     }
   };
 

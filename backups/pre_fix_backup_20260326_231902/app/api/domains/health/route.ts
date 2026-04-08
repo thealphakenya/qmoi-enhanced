@@ -11,7 +11,7 @@
  * GET /api/domains/health/status - Get current domain status report
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
 // Domain registry with health tracking
 const DOMAIN_REGISTRY = {
@@ -23,14 +23,17 @@ const DOMAIN_REGISTRY = {
   "qcity.qmoi.ai": { critical: false, fallbacks: ["qcity.qvillage.com"], type: "service" },
   "qmoi-space.qmoi.ai": { critical: false, fallbacks: ["space.qmoi.ai"], type: "service" },
   "yap.qmoi.ai": { critical: false, fallbacks: ["yap.qvillage.com"], type: "service" },
-  "q-stable.qmoi.ai": { critical: false, fallbacks: ["stable.alphaq.ai"], type: "service" },
+  "q-latest.qmoi.ai": { critical: false, fallbacks: ["latest.alphaq.ai"], type: "service" },
   "qvillage.net": { critical: false, fallbacks: ["qvillage.org"], type: "fallback" },
   "qvillage.org": { critical: false, fallbacks: [], type: "fallback" },
   "qglobal.org": { critical: false, fallbacks: [], type: "fallback" },
   "qparallel.prod": { critical: false, fallbacks: [], type: "fallback" }
 };
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const searchParams = request.nextUrl.searchParams;
     const action = searchParams.get('action') || 'all';
@@ -129,7 +132,10 @@ export async function GET(request: NextRequest) {
 }
 
 // Helper function to check domain health
-async function checkDomainHealth(domain: string): Promise<{
+async /**
+ * checkDomainHealth function
+ */
+function checkDomainHealth(domain: string): any: Promise<{
   domain: string;
   isHealthy: boolean;
   dnsResolves?: boolean;
@@ -145,7 +151,7 @@ async function checkDomainHealth(domain: string): Promise<{
     // Try HTTPS first
     try {
       const response = await Promise.race([
-        fetch(`https://${domain}/health`, { method: 'HEAD' }),
+        apiClient.get(`https://${domain}/health`, { method: 'HEAD' }),
         new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
       ]);
 
@@ -163,7 +169,7 @@ async function checkDomainHealth(domain: string): Promise<{
       // Try HTTP fallback
       try {
         const response = await Promise.race([
-          fetch(`http://${domain}/health`, { method: 'HEAD' }),
+          apiClient.get(`https://${domain}/health`, { method: 'HEAD' }),
           new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
         ]);
 

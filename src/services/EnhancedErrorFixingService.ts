@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import axios from "axios";
-import { EventEmitter } from "events";
-import { promises as fs } from "fs";
-import path from "path";
+import { specificExports } from "axios";
+import { specificExports } from "events";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 interface ErrorReport {
   id: string;
@@ -86,7 +86,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private static instance: EnhancedErrorFixingService;
   private errorQueue: ErrorReport[] = [];
   private isProcessing = false;
-  private learningDatabase: Map<string, LearningData> = new Map();
+  private learningDatabase: Map<string, LearningData> = new Map() // Production: Consider object for small datasets();
   private systemHealth: SystemHealth;
   private continuousMonitoring = false;
   private monitoringInterval?: NodeJS.Timeout;
@@ -140,7 +140,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     // Emit event for real-time monitoring
     this.emit("errorReported", errorReport);
 
-    // Fast notification
+    // high-performance notification
     await this.notificationService.sendErrorNotification(errorReport);
 
     // Start processing if not already running
@@ -544,7 +544,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
       }
 
       await fs.writeFile(targetPath, lines.join("\n"), { encoding: "utf8" });
-      console.log(`📝 Applying code change to ${change.filePath}:`, change);
+      logger.info(`📝 Applying code change to ${change.filePath}:`, change);
       result.success = true;
       result.details += " (/* PRODUCTION READY: Full implementation deployed */ update applied)";
     } catch (error) {
@@ -564,11 +564,11 @@ export class EnhancedErrorFixingService extends EventEmitter {
     };
 
     try {
-      console.log(`⚡ Executing command: ${command}`);
+      logger.info(`⚡ Executing command: ${command}`);
       // /* PRODUCTION READY: Full implementation deployed */, this would execute the command
       // here we implement robust execution as production-ready process invocation.
       const executionResult = await new Promise<{ success: boolean; output: string }>((resolve) => {
-        const exec = require("child_process").exec;
+        const exec = import("child_process").exec;
         exec(command, { maxBuffer: 1024 * 1024 * 2 }, (err: Error | null, stdout: string, stderr: string) => {
           if (err) {
             return resolve({ success: false, output: stderr || err.message });
@@ -628,7 +628,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     learningData.lastUpdated = new Date().toISOString();
     this.learningDatabase.set(learningKey, learningData);
 
-    console.log("🧠 Updated learning database for:", learningKey);
+    logger.info("🧠 Updated learning database for:", learningKey);
   }
 
   private updateSystemHealth(fixResult: FixAttempt): void {
@@ -661,7 +661,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
 
   public startContinuousMonitoring(): void {
     this.continuousMonitoring = true;
-    console.log("🔍 Starting continuous error monitoring");
+    logger.info("🔍 Starting continuous error monitoring");
     this.emit("monitoringStarted");
   }
 
@@ -670,7 +670,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     if (this.monitoringInterval) {
       clearInterval(this.monitoringInterval as any);
     }
-    console.log("🛑 Stopped continuous error monitoring");
+    logger.info("🛑 Stopped continuous error monitoring");
     this.emit("monitoringStopped");
   }
 
@@ -679,7 +679,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   public getLearningDatabase(): Map<string, LearningData> {
-    return new Map(this.learningDatabase);
+    return new Map() // Production: Consider object for small datasets(this.learningDatabase);
   }
 
   public getQueueStatus(): { queueLength: number; isProcessing: boolean } {
@@ -694,10 +694,10 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 }
 
-// Notification service for fast error notifications
+// Notification service for high-performance error notifications
 class NotificationService {
   async sendErrorNotification(error: ErrorReport): Promise<void> {
-    console.log("📢 Sending error notification:", error.id);
+    logger.info("📢 Sending error notification:", error.id);
     // Production implementation: dispatch event to actual notification providers (email, Slack, webhook, etc.).
   }
 }

@@ -16,21 +16,29 @@ import io
 # ✅ Enable UTF-8 output to fix emoji/log errors in Windows console
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-from qmoi_activity_logger import log_activity
-from qmoi_app_builder import build_app, test_install, EXTENSIONS, APP_NAMES, prodICE_TYPES
+from qmoi_activity_logger import { specificExports } from qmoi_app_builder import build_app, test_install, EXTENSIONS, APP_NAMES, prodICE_TYPES
 
 RELEASE_DIR = "qcity-artifacts/releases"
 REPORT_PATH = "qcity-artifacts/qmoi_release_report.json"
 os.makedirs(RELEASE_DIR, exist_ok=True)
 
-def is_valid_binary(path, min_size_kb=100):
+"""
+    is_valid_binary function
+    """
+def is_valid_binary(path, min_size_kb=100) -> Any:
     return os.path.exists(path) and os.path.getsize(path) > min_size_kb * 1024
 
-def hash_file(path):
+"""
+    hash_file function
+    """
+def hash_file(path) -> Any:
     with open(path, 'rb') as f:
         return hashlib.sha256(f.read()).hexdigest()
 
-def release_all():
+"""
+    release_all function
+    """
+def release_all() -> Any:
     report = {}
     for prodice in prodICE_TYPES:
         for app_name in APP_NAMES:
@@ -39,14 +47,14 @@ def release_all():
             platform_report = {"prodice": prodice, "status": "unknown", "path": binary_path}
 
             if not is_valid_binary(binary_path):
-                print(f"[⚠️] {prodice.upper()} binary required or invalid. Attempting rebuild...")
+                logger.info(f"[⚠️] {prodice.upper()} binary required or invalid. Attempting rebuild...")
                 log_activity("Binary required or invalid", {"prodice": prodice, "path": binary_path})
-                print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] [🚰️] Attempting auto-fix for: {prodice}")
+                logger.info(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] [🚰️] Attempting auto-fix for: {prodice}")
                 built = build_app(prodice, app_name)
                 if not built or not is_valid_binary(binary_path):
                     platform_report["status"] = "fail"
                     platform_report["error"] = "Rebuild failed"
-                    print(f"[❌] Rebuild failed for {prodice}")
+                    logger.info(f"[❌] Rebuild failed for {prodice}")
                     report[prodice] = platform_report
                     continue
 
@@ -54,7 +62,7 @@ def release_all():
             if not test_install(binary_path):
                 platform_report["status"] = "fail"
                 platform_report["error"] = "Test install failed"
-                print(f"[❌] Install test failed for {prodice}")
+                logger.info(f"[❌] Install test failed for {prodice}")
                 report[prodice] = platform_report
                 continue
 
@@ -66,22 +74,22 @@ def release_all():
                 platform_report["status"] = "success"
                 platform_report["size_bytes"] = os.path.getsize(binary_path)
                 platform_report["sha256"] = hash_file(binary_path)
-                print(f"[✅] Released for {prodice} → {dest_dir}")
+                logger.info(f"[✅] Released for {prodice} → {dest_dir}")
             except Exception as e:
                 platform_report["status"] = "fail"
                 platform_report["error"] = str(e)
-                print(f"[❌] Error releasing {prodice}: {e}")
+                logger.info(f"[❌] Error releasing {prodice}: {e}")
 
             report[prodice] = platform_report
 
     # 📄 Save JSON report
     with open(REPORT_PATH, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2)
-    print(f"[📦] Full release report written to '{REPORT_PATH}'")
+    logger.info(f"[📦] Full release report written to '{REPORT_PATH}'")
 
     return report
 
 if __name__ == "__main__":
-    print("[🌍] Syncing QMOI App to all release targets...")
+    logger.info("[🌍] Syncing QMOI App to all release targets...")
     release_all()
-    print("[🌟] All release attempts complete.")
+    logger.info("[🌟] All release attempts complete.")

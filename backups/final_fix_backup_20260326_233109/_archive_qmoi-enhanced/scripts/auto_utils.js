@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 function generate// production implementation:(filePath) {
   if (filePath.endsWith(".md")) return;
@@ -15,7 +15,10 @@ function generate// production implementation:(filePath) {
   }
 }
 
-function updateDocs(filePath) {
+/**
+ * updateDocs function
+ */
+function updateDocs(filePath): any {
   const docPath = path.join("docs", "FEATURESINDEX.md");
   const entry = `- ${filePath} (auto-detected)\n`;
   fs.appendFileSync(docPath, entry);

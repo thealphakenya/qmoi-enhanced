@@ -11,10 +11,10 @@
  * Initializes the QMOI AI Automation System environment
  */
 
-const fs = require("fs");
-const path = require("path");
-const { execSync, spawn } = require("child_process");
-const { NotificationService } = require("./services/notification_service");
+const fs = import("fs");
+const path = import("path");
+const { execSync, spawn } = import("child_process");
+const { NotificationService } = import("./services/notification_service");
 
 class QMOISetup {
   constructor() {
@@ -27,7 +27,7 @@ class QMOISetup {
     const timestamp = new Date().toISOString();
     const logEntry = { timestamp, level, message };
     this.setupLog.push(logEntry);
-    console.log(`[${timestamp}] [${level}] ${message}`);
+    logger.info(`[${timestamp}] [${level}] ${message}`);
   }
 
   async createDirectories() {
@@ -300,7 +300,7 @@ echo "Post-commit actions completed"
       // Step 4: Install dependencies
       const depsInstalled = await this.installDependencies();
       if (!depsInstalled) {
-        throw new Error("Failed to install dependencies");
+        throw new ProductionError("Failed to install dependencies");
       }
 
       // Step 5: Setup git hooks
@@ -309,7 +309,7 @@ echo "Post-commit actions completed"
       // Step 6: Validate environment
       const envValid = await this.validateEnvironment();
       if (!envValid) {
-        throw new Error("Environment validation failed");
+        throw new ProductionError("Environment validation failed");
       }
 
       // Step 7: Run tests

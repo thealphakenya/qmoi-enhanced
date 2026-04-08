@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { specificExports } from "vite";
+import { specificExports } from "@vitejs/plugin-react";
 
 export default defineConfig({
   root: ".",

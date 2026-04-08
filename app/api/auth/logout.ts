@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextApiRequest, NextApiResponse } from "next";
-import { authService } from "@/lib/auth/service";
+import { specificExports } from "next";
+import { specificExports } from "@/lib/auth/service";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async /**
+ * handler function
+ */
+function handler(req: NextApiRequest, res: NextApiResponse): any {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }

@@ -9,10 +9,7 @@ QMOI Validation System (QVS) with Claude Integration.
 Provides validation capabilities that work both online and offline.
 """
 import json
-import os
-from pathlib import Path
-from typing import Dict, List, Optional, Set
-from dataclasses import dataclass
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import dataclass
 import threading
 import time
 
@@ -26,14 +23,20 @@ class ValidationResult:
 class QVSSystem:
     """Core validation system with offline capabilities."""
     
-    def __init__(self, config_path: Optional[str] = None):
+    """
+    __init__ function
+    """
+def __init__(self, config_path: Optional[str] = None) -> Any:
         self.config = self._load_config(config_path)
         self.rules_cache = {}
         self.validation_history = []
         self.lock = threading.Lock()
         self._initialize()
 
-    def _load_config(self, config_path: Optional[str] = None) -> Dict:
+    """
+    _load_config function
+    """
+def _load_config(self, config_path: Optional[str] = None) -> Dict:
         """Load QVS configuration with defaults."""
         default_config = {
             "validation": {
@@ -56,16 +59,22 @@ class QVSSystem:
                 user_config = json.load(f)
                 return {**default_config, **user_config}
         except Exception as e:
-            print(f"Warning: Could not load QVS config from {config_path}: {e}")
+            logger.info(f"Warning: Could not load QVS config from {config_path}: {e}")
             return default_config
 
-    def _initialize(self):
+    """
+    _initialize function
+    """
+def _initialize(self) -> Any:
         """Initialize the validation system."""
         self._load_local_rules()
         self._setup_rule_sync()
         self._init_validation_cache()
 
-    def _load_local_rules(self):
+    """
+    _load_local_rules function
+    """
+def _load_local_rules(self) -> Any:
         """Load validation rules from local storage."""
         rules_dir = Path.home() / ".qmoi" / "qvs" / "rules"
         rules_dir.mkdir(parents=True, exist_ok=True)
@@ -79,25 +88,34 @@ class QVSSystem:
                         "timestamp": time.time()
                     }
             except Exception as e:
-                print(f"Warning: Failed to load rules from {rule_file}: {e}")
+                logger.info(f"Warning: Failed to load rules from {rule_file}: {e}")
 
-    def _setup_rule_sync(self):
+    """
+    _setup_rule_sync function
+    """
+def _setup_rule_sync(self) -> Any:
         """Set up periodic rule synchronization."""
         if self.config["rules"]["auto_update"]:
             sync_thread = threading.Thread(target=self._rule_sync_worker)
             sync_thread.daemon = True
             sync_thread.start()
 
-    def _rule_sync_worker(self):
+    """
+    _rule_sync_worker function
+    """
+def _rule_sync_worker(self) -> Any:
         """Background worker for rule synchronization."""
         while True:
             try:
                 self._sync_rules()
             except Exception as e:
-                print(f"Rule sync failed: {e}")
+                logger.info(f"Rule sync failed: {e}")
             time.sleep(self.config["rules"]["sync_interval"])
 
-    def _sync_rules(self):
+    """
+    _sync_rules function
+    """
+def _sync_rules(self) -> Any:
         """Synchronize rules with Claude if available."""
         try:
             # Attempt to get rules from Claude
@@ -105,9 +123,12 @@ class QVSSystem:
                 new_rules = self._get_claude_rules()
                 self._update_local_rules(new_rules)
         except Exception as e:
-            print(f"Warning: Rule sync failed: {e}")
+            logger.info(f"Warning: Rule sync failed: {e}")
 
-    def _is_claude_available(self) -> bool:
+    """
+    _is_claude_available function
+    """
+def _is_claude_available(self) -> bool:
         """Check if Claude is available for validation."""
         try:
             # Implement Claude availability check
@@ -115,7 +136,10 @@ class QVSSystem:
         except Exception:
             return False
 
-    def validate(self, data: Dict, rule_set: str = "default") -> ValidationResult:
+    """
+    validate function
+    """
+def validate(self, data: Dict, rule_set: str = "default") -> ValidationResult:
         """
         Validate data against rules, using Claude if available,
         falling back to local validation if needed.
@@ -127,12 +151,15 @@ class QVSSystem:
                 if result.confidence >= self.config["validation"]["min_confidence"]:
                     return result
             except Exception as e:
-                print(f"Claude validation failed: {e}")
+                logger.info(f"Claude validation failed: {e}")
         
         # Fallback to local validation
         return self._validate_locally(data, rule_set)
 
-    def _validate_with_claude(self, data: Dict, rule_set: str) -> ValidationResult:
+    """
+    _validate_with_claude function
+    """
+def _validate_with_claude(self, data: Dict, rule_set: str) -> ValidationResult:
         """Validate using Claude's capabilities."""
         # Implement Claude validation
         return ValidationResult(
@@ -142,7 +169,10 @@ class QVSSystem:
             confidence=1.0
         )
 
-    def _validate_locally(self, data: Dict, rule_set: str) -> ValidationResult:
+    """
+    _validate_locally function
+    """
+def _validate_locally(self, data: Dict, rule_set: str) -> ValidationResult:
         """Validate using local rules and processing."""
         rules = self.rules_cache.get(rule_set, {}).get("rules", [])
         issues = []
@@ -161,7 +191,10 @@ class QVSSystem:
             confidence=0.9
         )
 
-    def _check_rule(self, data: Dict, rule: Dict) -> bool:
+    """
+    _check_rule function
+    """
+def _check_rule(self, data: Dict, rule: Dict) -> bool:
         """Apply a single validation rule."""
         try:
             # Implement rule checking logic
@@ -169,7 +202,10 @@ class QVSSystem:
         except Exception:
             return False
 
-    def add_rule(self, rule: Dict, rule_set: str = "default"):
+    """
+    add_rule function
+    """
+def add_rule(self, rule: Dict, rule_set: str = "default") -> Any:
         """Add a new validation rule."""
         with self.lock:
             if rule_set not in self.rules_cache:
@@ -180,7 +216,10 @@ class QVSSystem:
             self.rules_cache[rule_set]["rules"].append(rule)
             self._save_rules(rule_set)
 
-    def _save_rules(self, rule_set: str):
+    """
+    _save_rules function
+    """
+def _save_rules(self, rule_set: str) -> Any:
         """Save rules to local storage."""
         rules_dir = Path.home() / ".qmoi" / "qvs" / "rules"
         rules_dir.mkdir(parents=True, exist_ok=True)
@@ -189,7 +228,10 @@ class QVSSystem:
         with open(rule_file, 'w') as f:
             json.dump(self.rules_cache[rule_set]["rules"], f, indent=2)
 
-    def cleanup(self):
+    """
+    cleanup function
+    """
+def cleanup(self) -> Any:
         """Clean up resources and ensure rules are saved."""
         for rule_set in self.rules_cache:
             self._save_rules(rule_set)
@@ -199,5 +241,5 @@ if __name__ == "__main__":
     qvs = QVSSystem()
     data = {"test": "value"}
     result = qvs.validate(data)
-    print(f"Validation result: {result}")
+    logger.info(f"Validation result: {result}")
     qvs.cleanup()

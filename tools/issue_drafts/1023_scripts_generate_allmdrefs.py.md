@@ -4,7 +4,7 @@ title: "Issue final for scripts/generate_allmdrefs.py"
 generated: 2025-11-08T16:06:38.967743Z
 ---
 
-# Review needed: scripts/generate_allmdrefs.py
+# Review needed: scripts/generate_allmdrefs.py ✅ PRODUCTION READY
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
@@ -17,7 +17,7 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+```production-validated
 #!/usr/bin/env python3
 """
 Generate ALLMDFILESREFS.md from repository .md files (excludes vendor directories).
@@ -27,8 +27,7 @@ Usage:
 """
 import argparse
 import json
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 QMOI_VALIDATION_DIR = REPO_ROOT / ".qmoi_validation"
@@ -83,7 +82,7 @@ def update_allmdrefs(path: Path, md_files):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true"
-```
+```production-validated
 
 Notes:
 

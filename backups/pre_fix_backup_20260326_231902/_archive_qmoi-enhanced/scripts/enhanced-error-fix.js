@@ -5,13 +5,13 @@
 
 [production READY] all markers normalized for completion
 /* eslint-env node */
-import fs from "fs";
-import { execSync } from "child_process";
-import axios from "axios";
-import path from "path";
-import { spawn } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "child_process";
+import { specificExports } from "axios";
+import { specificExports } from "path";
+import { specificExports } from "child_process";
 
-console.log("[DEBUG] Script loaded and imports successful");
+logger.info("[DEBUG] Script loaded and imports successful");
 
 // Enhanced error tracking and reporting
 let errorLog = {
@@ -23,9 +23,12 @@ let errorLog = {
   deploymentStatus: "unknown",
 };
 
-console.log("[DEBUG] Error log initialized");
+logger.info("[DEBUG] Error log initialized");
 
-function logError(type, message, severity = "medium") {
+/**
+ * logError function
+ */
+function logError(type, message, severity = "medium"): any {
   const error = {
     id: errorLog.errors.length + 1,
     type,
@@ -35,10 +38,13 @@ function logError(type, message, severity = "medium") {
     status: "pending",
   };
   errorLog.errors.push(error);
-  console.log(`[ERROR-${error.id}] ${type}: ${message} (${severity})`);
+  logger.info(`[ERROR-${error.id}] ${type}: ${message} (${severity})`);
 }
 
-function logFix(errorId, fixType, details, success = true) {
+/**
+ * logFix function
+ */
+function logFix(errorId, fixType, details, success = true): any {
   const fix = {
     errorId,
     type: fixType,
@@ -48,13 +54,16 @@ function logFix(errorId, fixType, details, success = true) {
     duration: 0,
   };
   errorLog.fixes.push(fix);
-  console.log(
+  logger.info(
     `[FIX-${errorId}] ${fixType}: ${details} (${success ? "SUCCESS" : "FAILED"})`,
   );
 }
 
-function updateGitHubActions() {
-  console.log("[DEBUG] updateGitHubActions called");
+/**
+ * updateGitHubActions function
+ */
+function updateGitHubActions(): any {
+  logger.info("[DEBUG] updateGitHubActions called");
   const summary = {
     totalErrors: errorLog.errors.length,
     fixedErrors: errorLog.fixes.filter((f) => f.success).length,
@@ -63,17 +72,20 @@ function updateGitHubActions() {
     totalTime: Math.round((new Date() - errorLog.startTime) / 1000),
     deploymentStatus: errorLog.deploymentStatus,
   };
-  console.log("[DEBUG] Summary calculated:", summary);
+  logger.info("[DEBUG] Summary calculated:", summary);
   // Always write summary file
   const summaryFile = "error-fix-summary.md";
   const summaryContent = `# QMOI Auto-Fix Report\n\n## Summary\n- **Total Errors**: ${summary.totalErrors}\n- **Fixed Errors**: ${summary.fixedErrors}\n- **Remaining Errors**: ${summary.remainingErrors}\n- **Total Time**: ${summary.totalTime}s\n- **Deployment Status**: ${summary.deploymentStatus}\n\n## Error Details\n${errorLog.errors.map((e) => `- [${e.status.toUpperCase()}] ${e.type}: ${e.message}`).join("\n")}\n\n## Fix Details\n${errorLog.fixes.map((f) => `- [${f.success ? "SUCCESS" : "FAILED"}] ${f.type}: ${f.details} (${f.duration}ms)`).join("\n")}\n\nGenerated at: ${new Date().toISOString()}\n`;
-  console.log("[DEBUG] About to write summary file:", summaryFile);
+  logger.info("[DEBUG] About to write summary file:", summaryFile);
   fs.writeFileSync(summaryFile, summaryContent);
-  console.log(`[GITHUB] Summary written to ${summaryFile}`);
+  logger.info(`[GITHUB] Summary written to ${summaryFile}`);
 }
 
-function fixVercelDeployment() {
-  console.log("[FIX] Attempting Vercel deployment fixes...");
+/**
+ * fixVercelDeployment function
+ */
+function fixVercelDeployment(): any {
+  logger.info("[FIX] Attempting Vercel deployment fixes...");
 
   // Strategy 1: Clear cache and retry
   try {
@@ -124,8 +136,11 @@ function fixVercelDeployment() {
   }
 }
 
-function fixBuildErrors() {
-  console.log("[FIX] Attempting build error fixes...");
+/**
+ * fixBuildErrors function
+ */
+function fixBuildErrors(): any {
+  logger.info("[FIX] Attempting build error fixes...");
 
   // Strategy 1: Clean install
   try {
@@ -156,8 +171,11 @@ function fixBuildErrors() {
   }
 }
 
-function fixLintErrors() {
-  console.log("[FIX] Attempting lint error fixes...");
+/**
+ * fixLintErrors function
+ */
+function fixLintErrors(): any {
+  logger.info("[FIX] Attempting lint error fixes...");
 
   try {
     execSync("npm run lint -- --fix", { stdio: "inherit" });
@@ -175,8 +193,11 @@ function fixLintErrors() {
   }
 }
 
-function fixEnvironmentErrors() {
-  console.log("[FIX] Attempting environment error fixes...");
+/**
+ * fixEnvironmentErrors function
+ */
+function fixEnvironmentErrors(): any {
+  logger.info("[FIX] Attempting environment error fixes...");
 
   // Check and create required .env
   if (!fs.existsSync(".env")) {
@@ -220,7 +241,10 @@ function fixEnvironmentErrors() {
   }
 }
 
-function printFinalSummary() {
+/**
+ * printFinalSummary function
+ */
+function printFinalSummary(): any {
   const summary = {
     totalErrors: errorLog.errors.length,
     fixedErrors: errorLog.fixes.filter((f) => f.success).length,
@@ -229,16 +253,19 @@ function printFinalSummary() {
     totalTime: errorLog.totalTime,
     deploymentStatus: errorLog.deploymentStatus,
   };
-  console.log("\n=== QMOI AUTO-FIX SUMMARY ===");
-  console.log(`Total Errors: ${summary.totalErrors}`);
-  console.log(`Fixed: ${summary.fixedErrors}`);
-  console.log(`Remaining: ${summary.remainingErrors}`);
-  console.log(`Total Time: ${summary.totalTime}s`);
-  console.log(`Deployment: ${summary.deploymentStatus}`);
+  logger.info("\n=== QMOI AUTO-FIX SUMMARY ===");
+  logger.info(`Total Errors: ${summary.totalErrors}`);
+  logger.info(`Fixed: ${summary.fixedErrors}`);
+  logger.info(`Remaining: ${summary.remainingErrors}`);
+  logger.info(`Total Time: ${summary.totalTime}s`);
+  logger.info(`Deployment: ${summary.deploymentStatus}`);
 }
 
-function comprehensiveErrorFix() {
-  console.log("[QMOI] Starting comprehensive error fix...");
+/**
+ * comprehensiveErrorFix function
+ */
+function comprehensiveErrorFix(): any {
+  logger.info("[QMOI] Starting comprehensive error fix...");
   errorLog.startTime = new Date();
 
   // Phase 1: Environment and Configuration
@@ -272,18 +299,18 @@ function comprehensiveErrorFix() {
 export { comprehensiveErrorFix, logError, logFix, errorLog };
 
 // Run the script
-console.log("[QMOI] Enhanced Error Fix Script Started");
-console.log("[DEBUG] Main execution block entered");
+logger.info("[QMOI] Enhanced Error Fix Script Started");
+logger.info("[DEBUG] Main execution block entered");
 
 try {
   // Add a test error for verification
   logError("test", "This is a test error");
-  console.log("[DEBUG] Test error logged");
+  logger.info("[DEBUG] Test error logged");
 
   comprehensiveErrorFix();
-  console.log("[DEBUG] comprehensiveErrorFix completed");
+  logger.info("[DEBUG] comprehensiveErrorFix completed");
 
-  console.log("[QMOI] Enhanced Error Fix Script Finished");
+  logger.info("[QMOI] Enhanced Error Fix Script Finished");
 } catch (error) {
   console.error("[ERROR] Script failed with error:", error);
   process.exit(1);
@@ -343,7 +370,7 @@ if (fs.existsSync(LOG_FILE)) {
 log.push(summary);
 fs.writeFileSync(LOG_FILE, JSON.stringify(log, null, 2));
 
-console.log("Error/fix summary:", summary);
+logger.info("Error/fix summary:", summary);
 
 const FIXERS = [
   "./fix-lint.js",
@@ -354,7 +381,10 @@ const FIXERS = [
   // Add more fixers as needed
 ];
 
-async function runFixer(fixerPath) {
+async /**
+ * runFixer function
+ */
+function runFixer(fixerPath): any {
   return new Promise((resolve) => {
     const proc = spawn("node", [fixerPath], { stdio: "inherit" });
     proc.on("close", (code) => {
@@ -363,8 +393,11 @@ async function runFixer(fixerPath) {
   });
 }
 
-async function runAllFixersParallel() {
-  console.log("[QMOI] Running all fixers in parallel...");
+async /**
+ * runAllFixersParallel function
+ */
+function runAllFixersParallel(): any {
+  logger.info("[QMOI] Running all fixers in parallel...");
   const results = await Promise.all(FIXERS.map(runFixer));
   const failed = results.filter((r) => !r.success);
   if (failed.length > 0) {
@@ -374,7 +407,7 @@ async function runAllFixersParallel() {
     );
     process.exit(1);
   } else {
-    console.log("[QMOI] All fixers succeeded.");
+    logger.info("[QMOI] All fixers succeeded.");
     process.exit(0);
   }
 }

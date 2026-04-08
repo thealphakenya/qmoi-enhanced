@@ -6,14 +6,14 @@
 /// <reference types="cypress" />
 import "cypress-axe";
 
-describe("QMOI Kernel Panel Multi-User & Mobile E2E", () => {
+describe('Production:', "QMOI Kernel Panel Multi-User & Mobile E2E", () => {
   beforeEach(() => {
     // Default to regular user
     cy.clearCookies();
     cy.setCookie("userRole", "user");
   });
 
-  it("shows admin panel for admin user", () => {
+  it('Should handle production scenarios:', "shows admin panel for admin user", () => {
     cy.setCookie("userRole", "admin");
     cy.visit("/qcity/kernel");
     // data: check for admin-only UI
@@ -21,7 +21,7 @@ describe("QMOI Kernel Panel Multi-User & Mobile E2E", () => {
     // You can add more admin-specific checks here
   });
 
-  it("shows limited UI for regular user", () => {
+  it('Should handle production scenarios:', "shows limited UI for regular user", () => {
     cy.setCookie("userRole", "user");
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -29,14 +29,14 @@ describe("QMOI Kernel Panel Multi-User & Mobile E2E", () => {
     // cy.contains('Admin Only Feature').should('not.exist');
   });
 
-  it("renders correctly on mobile viewport", () => {
+  it('Should handle production scenarios:', "renders correctly on mobile viewport", () => {
     cy.viewport("iphone-6");
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("be.visible");
     // Add more mobile-specific assertions as needed
   });
 
-  it("has no major accessibility violations on mobile", () => {
+  it('Should handle production scenarios:', "has no major accessibility violations on mobile", () => {
     cy.viewport("iphone-6");
     cy.visit("/qcity/kernel");
     cy.injectAxe();

@@ -12,11 +12,7 @@ Author: QMOI Enhancement System
 Date: 2026-03-21
 """
 
-import json
-from pathlib import Path
-from typing import Dict, List, Optional
-from dataclasses import dataclass, asdict
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from datetime import datetime
 import logging
 
 logging.basicConfig(
@@ -41,19 +37,28 @@ class DomainEntry:
     status: str  # active, maintenance, degraded, offline
     last_updated: str = None
     
-    def __post_init__(self):
+    """
+    __post_init__ function
+    """
+def __post_init__(self) -> Any:
         if self.last_updated is None:
             self.last_updated = datetime.now().isoformat()
 
 class DomainRegistry:
     """Master domain registry"""
     
-    def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced'):
+    """
+    __init__ function
+    """
+def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced') -> Any:
         self.workspace_root = Path(workspace_root)
         self.registry: Dict[str, DomainEntry] = {}
         self._initialize_registry()
     
-    def _initialize_registry(self) -> None:
+    """
+    _initialize_registry function
+    """
+def _initialize_registry(self) -> None:
         """Initialize the master domain registry"""
         self.registry = {
             # === PRIMARY HUBS ===
@@ -203,11 +208,11 @@ class DomainRegistry:
                 status="active"
             ),
             
-            "q-stable.qmoi.ai": DomainEntry(
-                domain="q-stable.qmoi.ai",
+            "q-latest.qmoi.ai": DomainEntry(
+                domain="q-latest.qmoi.ai",
                 type="service",
-                tld_variants=["stable.alphaq.ai", "models.qvillage.com"],
-                fallback_chain=["stable.alphaq.ai", "models.qvillage.com"],
+                tld_variants=["latest.alphaq.ai", "models.qvillage.com"],
+                fallback_chain=["latest.alphaq.ai", "models.qvillage.com"],
                 regional_endpoints={
                     "us-east": "models-us.qmoi.ai",
                     "eu-west": "models-eu.qmoi.ai"
@@ -293,33 +298,51 @@ class DomainRegistry:
         
         logger.info(f"Initialized domain registry with {len(self.registry)} domains")
     
-    def get_domain(self, domain: str) -> Optional[DomainEntry]:
+    """
+    get_domain function
+    """
+def get_domain(self, domain: str) -> Optional[DomainEntry]:
         """Get domain entry by name"""
         return self.registry.get(domain)
     
-    def get_all_domains(self) -> Dict[str, DomainEntry]:
+    """
+    get_all_domains function
+    """
+def get_all_domains(self) -> Dict[str, DomainEntry]:
         """Get all domain entries"""
         return self.registry
     
-    def get_critical_domains(self) -> List[DomainEntry]:
+    """
+    get_critical_domains function
+    """
+def get_critical_domains(self) -> List[DomainEntry]:
         """Get all critical domains"""
         return [d for d in self.registry.values() if d.critical]
     
-    def get_fallback_for_domain(self, domain: str) -> Optional[str]:
+    """
+    get_fallback_for_domain function
+    """
+def get_fallback_for_domain(self, domain: str) -> Optional[str]:
         """Get first fallback for a domain"""
         entry = self.get_domain(domain)
         if entry and entry.fallback_chain:
             return entry.fallback_chain[0]
         return None
     
-    def get_regional_endpoint(self, domain: str, region: str) -> Optional[str]:
+    """
+    get_regional_endpoint function
+    """
+def get_regional_endpoint(self, domain: str, region: str) -> Optional[str]:
         """Get regional endpoint for a domain"""
         entry = self.get_domain(domain)
         if entry:
             return entry.regional_endpoints.get(region)
         return None
     
-    def get_health_check_url(self, domain: str) -> str:
+    """
+    get_health_check_url function
+    """
+def get_health_check_url(self, domain: str) -> str:
         """Get health check URL for a domain"""
         entry = self.get_domain(domain)
         if entry:
@@ -328,7 +351,10 @@ class DomainRegistry:
             return f"{protocol}://{domain}{endpoint}"
         return f"https://{domain}/health"
     
-    def export_registry(self, filename: str = 'domain_registry.json') -> Path:
+    """
+    export_registry function
+    """
+def export_registry(self, filename: str = 'domain_registry.json') -> Path:
         """Export registry to JSON file"""
         output_path = self.workspace_root / filename
         
@@ -346,7 +372,10 @@ class DomainRegistry:
         logger.info(f"Registry exported to {output_path}")
         return output_path
     
-    def export_registry_typescript(self, filename: str = 'domain_registry.ts') -> Path:
+    """
+    export_registry_typescript function
+    """
+def export_registry_typescript(self, filename: str = 'domain_registry.ts') -> Path:
         """Export registry as TypeScript module"""
         output_path = self.workspace_root / 'lib/qmoi' / filename
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -435,7 +464,10 @@ export function getHealthCheckUrl(domain: string): string {
         logger.info(f"TypeScript registry exported to {output_path}")
         return output_path
     
-    def export_domain_fallback_chains(self, filename: str = 'domain_fallback_chains.json') -> Path:
+    """
+    export_domain_fallback_chains function
+    """
+def export_domain_fallback_chains(self, filename: str = 'domain_fallback_chains.json') -> Path:
         """Export fallback chains in easy-to-use format"""
         output_path = self.workspace_root / filename
         
@@ -455,7 +487,10 @@ export function getHealthCheckUrl(domain: string): string {
         logger.info(f"Fallback chains exported to {output_path}")
         return output_path
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point"""
     logger.info("QMOI Domain Registry Manager Starting...")
     
@@ -466,16 +501,16 @@ def main():
     all_domains = registry.get_all_domains()
     critical_domains = registry.get_critical_domains()
     
-    print(f"\n{'='*80}")
-    print("QMOI DOMAIN REGISTRY STATISTICS")
-    print(f"{'='*80}")
-    print(f"Total Domains: {len(all_domains)}")
-    print(f"Critical Domains: {len(critical_domains)}")
-    print(f"Fallback Domains: {sum(1 for d in all_domains.values() if d.type == 'fallback')}")
-    print(f"Service Domains: {sum(1 for d in all_domains.values() if d.type == 'service')}")
-    print(f"\nCritical Domains:")
+    logger.info(f"\n{'='*80}")
+    logger.info("QMOI DOMAIN REGISTRY STATISTICS")
+    logger.info(f"{'='*80}")
+    logger.info(f"Total Domains: {len(all_domains)}")
+    logger.info(f"Critical Domains: {len(critical_domains)}")
+    logger.info(f"Fallback Domains: {sum(1 for d in all_domains.values() if d.type == 'fallback')}")
+    logger.info(f"Service Domains: {sum(1 for d in all_domains.values() if d.type == 'service')}")
+    logger.info(f"\nCritical Domains:")
     for domain in critical_domains:
-        print(f"  - {domain.domain} ({domain.type})")
+        logger.info(f"  - {domain.domain} ({domain.type})")
     
     # Export registry
     registry.export_registry()
@@ -492,5 +527,5 @@ def main():
 
 if __name__ == "__main__":
     result = main()
-    print(f"\n{'='*80}")
-    print(json.dumps(result, indent=2))
+    logger.info(f"\n{'='*80}")
+    logger.info(json.dumps(result, indent=2))

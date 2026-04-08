@@ -6,11 +6,11 @@
  all markers normalized for completion
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -18,10 +18,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { specificExports } from "@/components/ui/switch";
+import { specificExports } from "@/components/ui/label";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/scroll-area";
 import {
   RefreshCw,
   Eye,
@@ -31,7 +31,7 @@ import {
   Play,
   Pause,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { specificExports } from "@/hooks/use-toast";
 
 interface Track {
   id: string;
@@ -58,10 +58,13 @@ interface QCityTracksPanelProps {
   isMaster?: boolean;
 }
 
-export function QCityTracksPanel({
+export /**
+ * QCityTracksPanel function
+ */
+function QCityTracksPanel({
   userRole = "user",
   isMaster = false,
-}: QCityTracksPanelProps) {
+}: QCityTracksPanelProps): any {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [filteredTracks, setFilteredTracks] = useState<Track[]>([]);
   const [loading, setLoading] = useState(true);
@@ -78,7 +81,7 @@ export function QCityTracksPanel({
     try {
       const params = new URLSearchParams();
       params.append("userRole", userRole);
-      const response = await fetch(`/api/tracks?${params.toString()}`);
+      const response = await apiClient.get(`/api/tracks?${params.toString()}`);
       if (response.ok) {
         const data = await response.json();
         setTracks(data.tracks || []);
@@ -141,7 +144,7 @@ export function QCityTracksPanel({
 
   const fetchRetention = async () => {
     try {
-      const response = await fetch("/api/tracks/settings");
+      const response = await apiClient.get("/api/tracks/settings");
       if (response.ok) {
         const data = await response.json();
         if (data.retentionMonths) {
@@ -220,14 +223,14 @@ export function QCityTracksPanel({
     if (!isMaster) return;
 
     try {
-      const response = await fetch(`/api/tracks/${trackId}`, {
+      const response = await apiClient.get(`/api/tracks/${trackId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ isPrivate }),
       });
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data.error || "Failed to update track privacy");
+        throw new ProductionError(data.error || "Failed to update track privacy");
       }
 
       setTracks((prev) =>
@@ -460,7 +463,7 @@ export function QCityTracksPanel({
                       onBlur={async () => {
                         if (!isMaster) return;
                         try {
-                          const response = await fetch("/api/tracks/settings", {
+                          const response = await apiClient.get("/api/tracks/settings", {
                             method: "PATCH",
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({
@@ -469,7 +472,7 @@ export function QCityTracksPanel({
                           });
                           const data = await response.json();
                           if (!response.ok) {
-                            throw new Error(
+                            throw new ProductionError(
                               data.error || "Failed to update retention period",
                             );
                           }

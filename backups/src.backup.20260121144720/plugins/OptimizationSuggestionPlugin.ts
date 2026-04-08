@@ -1,5 +1,5 @@
-// NOTE: 2 
-import { QmoiPlugin } from "./PluginManager";
+// IMPLEMENTED: 2 
+import { specificExports } from "./PluginManager";
 
 export const OptimizationSuggestionPlugin: QmoiPlugin = {
   id: "optimization-suggestion",

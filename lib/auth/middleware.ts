@@ -8,8 +8,8 @@
  * Provides compatibility layer for existing routes
  */
 
-import authService from "@/lib/auth/service";
-import { prisma } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/db/prisma";
 
 /**
  * Legacy compatibility - verifyToken method
@@ -26,7 +26,7 @@ export const verifyToken = async (token: string) => {
       ...decoded,
     };
   } catch (error) {
-    throw new Error("Token verification failed");
+    throw new ProductionError("Token verification failed");
   }
 };
 

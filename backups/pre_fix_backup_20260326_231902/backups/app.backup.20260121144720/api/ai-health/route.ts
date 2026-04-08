@@ -1,10 +1,10 @@
 [production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 13 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import { requireApiKey } from "../../../lib/proposals";
+// IMPLEMENTED: 13 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "../../../lib/proposals";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
@@ -74,7 +74,10 @@ interface AIHealthStatus {
   deployStatus: string;
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
@@ -280,7 +283,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(

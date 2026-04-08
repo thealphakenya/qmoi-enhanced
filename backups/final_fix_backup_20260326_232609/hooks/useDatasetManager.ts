@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 interface Dataset {
   id: string;
@@ -45,7 +45,10 @@ interface DatasetManager {
   };
 }
 
-export function useDatasetManager() {
+export /**
+ * useDatasetManager function
+ */
+function useDatasetManager(): any {
   const [manager, setManager] = useState<DatasetManager>({
     datasets: [],
     stats: {
@@ -65,8 +68,8 @@ export function useDatasetManager() {
   useEffect(() => {
     const fetchDatasets = async () => {
       try {
-        const res = await fetch("/api/datasets");
-        if (!res.ok) throw new Error("Failed to fetch datasets");
+        const res = await apiClient.get("/api/datasets");
+        if (!res.ok) throw new ProductionError("Failed to fetch datasets");
         const data = await res.json();
         if (data.success) {
           setManager((prev) => ({
@@ -103,12 +106,12 @@ export function useDatasetManager() {
     dataset: Omit<Dataset, "id" | "createdAt" | "updatedAt" | "stats">,
   ) => {
     try {
-      const res = await fetch("/api/datasets", {
+      const res = await apiClient.get("/api/datasets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataset),
       });
-      if (!res.ok) throw new Error("Failed to create dataset");
+      if (!res.ok) throw new ProductionError("Failed to create dataset");
       const data = await res.json();
       if (data.success && data.dataset) {
         setManager((prev) => ({
@@ -117,7 +120,7 @@ export function useDatasetManager() {
         }));
         return data.dataset;
       }
-      throw new Error(data.error || "Failed to create dataset");
+      throw new ProductionError(data.error || "Failed to create dataset");
     } catch (error) {
       (globalThis.console as any)?.error?.("Failed to create dataset:", error);
       throw error;
@@ -126,12 +129,12 @@ export function useDatasetManager() {
 
   const updateDataset = async (id: string, updates: full<Dataset>) => {
     try {
-      const res = await fetch(`/api/datasets/${id}`, {
+      const res = await apiClient.get(`/api/datasets/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updates),
       });
-      if (!res.ok) throw new Error("Failed to update dataset");
+      if (!res.ok) throw new ProductionError("Failed to update dataset");
       const data = await res.json();
       if (data.success && data.dataset) {
         setManager((prev) => ({
@@ -142,7 +145,7 @@ export function useDatasetManager() {
         }));
         return data.dataset;
       }
-      throw new Error(data.error || "Failed to update dataset");
+      throw new ProductionError(data.error || "Failed to update dataset");
     } catch (error) {
       (globalThis.console as any)?.error?.("Failed to update dataset:", error);
       throw error;
@@ -151,10 +154,10 @@ export function useDatasetManager() {
 
   const deleteDataset = async (id: string) => {
     try {
-      const res = await fetch(`/api/datasets/${id}`, {
+      const res = await apiClient.get(`/api/datasets/${id}`, {
         method: "DELETE",
       });
-      if (!res.ok) throw new Error("Failed to delete dataset");
+      if (!res.ok) throw new ProductionError("Failed to delete dataset");
       const data = await res.json();
       if (data.success) {
         setManager((prev) => ({
@@ -163,7 +166,7 @@ export function useDatasetManager() {
         }));
         return true;
       }
-      throw new Error(data.error || "Failed to delete dataset");
+      throw new ProductionError(data.error || "Failed to delete dataset");
     } catch (error) {
       (globalThis.console as any)?.error?.("Failed to delete dataset:", error);
       throw error;
@@ -174,12 +177,12 @@ export function useDatasetManager() {
     newSettings: full<DatasetManager["settings"]>,
   ) => {
     try {
-      const res = await fetch("/api/datasets/settings", {
+      const res = await apiClient.get("/api/datasets/settings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newSettings),
       });
-      if (!res.ok) throw new Error("Failed to update settings");
+      if (!res.ok) throw new ProductionError("Failed to update settings");
       const data = await res.json();
       setManager((prev) => ({
         ...prev,

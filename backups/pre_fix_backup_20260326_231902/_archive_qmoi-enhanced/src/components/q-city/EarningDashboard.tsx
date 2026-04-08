@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/Typography";
 
 interface Strategy {
   id: number;
@@ -31,13 +31,13 @@ const EarningDashboard: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchStrategies = async () => {
-    const res = await fetch("/api/earning/strategies");
+    const res = await apiClient.get("/api/earning/strategies");
     const data = await res.json();
     setStrategies(data.strategies || []);
   };
 
   const fetchAnalytics = async () => {
-    const res = await fetch("/api/earning/analytics");
+    const res = await apiClient.get("/api/earning/analytics");
     const data = await res.json();
     setAnalytics(data.analytics || null);
   };
@@ -48,7 +48,7 @@ const EarningDashboard: React.FC = () => {
   }, []);
 
   const toggleMonitoring = async () => {
-    const res = await fetch("/api/earning/monitor", {
+    const res = await apiClient.get("/api/earning/monitor", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ monitor: !monitoring }),
@@ -59,7 +59,7 @@ const EarningDashboard: React.FC = () => {
   };
 
   const selfHeal = async () => {
-    const res = await fetch("/api/earning/self-heal", {
+    const res = await apiClient.get("/api/earning/self-heal", {
       method: "POST",
     });
     const data = await res.json();
@@ -120,7 +120,7 @@ const EarningDashboard: React.FC = () => {
             size="small"
             variant="contained"
             color="primary"
-            onClick={() => alert("Open advanced analytics ()")}
+            onClick={() => notification.show("Open advanced analytics ()")}
             style={{ marginTop: 8 }}
           >
             Open Advanced Analytics

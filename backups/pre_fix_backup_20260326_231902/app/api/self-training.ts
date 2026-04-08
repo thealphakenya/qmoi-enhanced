@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import type { NextApiRequest, NextApiResponse } from "next";
-import * as st from "../../lib/selfTraining";
+import { specificExports } from "next";
+import { specificExports } from "../../lib/selfTraining";
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   const { action } = req.query;
   try {
     switch (action) {

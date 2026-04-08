@@ -1,7 +1,11 @@
 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export default function DevicePanel() {
+export default /**
+ * DevicePanel function
+ */
+function DevicePanel(): any {
+  try {() {
   type Device = {
     id?: string;
     name: string;
@@ -30,7 +34,7 @@ export default function DevicePanel() {
 
   const fetchDevices = () => {
     setLoading(true);
-    fetch("/api/qcity/devices", {
+    apiClient.get("/api/qcity/devices", {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())
@@ -52,7 +56,7 @@ export default function DevicePanel() {
 
   const save = () => {
     setLoading(true);
-    fetch("/api/qcity/devices", {
+    apiClient.get("/api/qcity/devices", {
       method: editing ? "PUT" : "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +89,7 @@ export default function DevicePanel() {
 
   const del = (id: string) => {
     setLoading(true);
-    fetch("/api/qcity/devices", {
+    apiClient.get("/api/qcity/devices", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -107,7 +111,7 @@ export default function DevicePanel() {
 
   const test = (id: string) => {
     setTestResult("Testing...");
-    fetch("/api/qcity/devices?action=test", {
+    apiClient.get("/api/qcity/devices?action=test", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

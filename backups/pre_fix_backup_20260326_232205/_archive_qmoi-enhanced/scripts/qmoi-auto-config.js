@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,7 +18,7 @@ const envVars = JSON.parse(fs.readFileSync(configPath, "utf-8"));
 let envContent = "";
 let required = [];
 
-Object.entries(envVars).forEach(([key, { default: def }]) => {
+Object.entries(envVars).for (const item of(([key, { default: def }]) => {
   let value = process.env[key] || def;
   if (!process.env[key]) {
     console.warn(`QMOI: ${key} not set, using default: ${def}`);
@@ -29,9 +29,9 @@ Object.entries(envVars).forEach(([key, { default: def }]) => {
 });
 
 fs.writeFileSync(envPath, envContent);
-console.log("QMOI env setup complete.");
+logger.info("QMOI env setup complete.");
 if (required.length) {
-  console.log(
+  logger.info(
     "QMOI: The following env vars were required and set to defaults:",
     required.join(", "),
   );

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 export interface AIHealth {
   status: "healthy" | "degraded" | "critical";
@@ -49,22 +49,28 @@ export interface AIHealth {
   };
 }
 
-export function useAIHealthCheck() {
+export /**
+ * useAIHealthCheck function
+ */
+function useAIHealthCheck(): any {
   const [health, setHealth] = useState<AIHealth>({
     status: "healthy",
     lastCheck: Date.now(),
   });
 
   useEffect(() => {
-    async function checkHealth() {
+    async /**
+ * checkHealth function
+ */
+function checkHealth(): any {
       try {
         const adminToken = localStorage.getItem("adminToken") || "";
-        const response = await fetch("/api/ai-health", {
+        const response = await apiClient.get("/api/ai-health", {
           headers: { "x-admin-token": adminToken },
         });
 
         if (!response.ok) {
-          throw new Error("Failed to fetch health status");
+          throw new ProductionError("Failed to fetch health status");
         }
 
         const data = await response.json();

@@ -11,9 +11,9 @@
  * Sets up environment variables, dependencies, and system configuration
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import crypto from "crypto";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
 
 class QMOIEnvironmentSetup {
   constructor() {
@@ -23,7 +23,7 @@ class QMOIEnvironmentSetup {
   }
 
   async initialize() {
-    console.log("🔧 Initializing QMOI Environment Setup...");
+    logger.info("🔧 Initializing QMOI Environment Setup...");
 
     try {
       // Create necessary directories
@@ -45,7 +45,7 @@ class QMOIEnvironmentSetup {
       await this.validateSetup();
 
       this.setupComplete = true;
-      console.log("✅ QMOI Environment Setup completed successfully");
+      logger.info("✅ QMOI Environment Setup completed successfully");
     } catch (error) {
       console.error("❌ QMOI Environment Setup failed:", error.message);
       throw error;
@@ -53,7 +53,7 @@ class QMOIEnvironmentSetup {
   }
 
   async createDirectories() {
-    console.log("📁 Creating necessary directories...");
+    logger.info("📁 Creating necessary directories...");
 
     const directories = [
       "logs",
@@ -75,15 +75,15 @@ class QMOIEnvironmentSetup {
     for (const dir of directories) {
       try {
         await fs.mkdir(dir, { recursive: true });
-        console.log(`✅ Created directory: ${dir}`);
+        logger.info(`✅ Created directory: ${dir}`);
       } catch (error) {
-        console.log(`⚠️ Directory already exists: ${dir}`);
+        logger.info(`⚠️ Directory already exists: ${dir}`);
       }
     }
   }
 
   async setupEnvironmentVariables() {
-    console.log("🔐 Setting up environment variables...");
+    logger.info("🔐 Setting up environment variables...");
 
     const envVariables = {
       // Notification System (QMOI always identifies as a prodeloper in notifications)
@@ -103,7 +103,7 @@ class QMOIEnvironmentSetup {
       // GitHub Integration
       QMOI_GITHUB_TOKEN: "ghp_YOUR_GITHUB_TOKEN_HERE",
       QMOI_GITHUB_USERNAME: "your-github-username",
-      QMOI_GITHUB_REPO: "stable-Q-ai",
+      QMOI_GITHUB_REPO: "latest-Q-ai",
       QMOI_GITHUB_OWNER: "your-github-username",
 
       // Music production
@@ -128,7 +128,7 @@ class QMOIEnvironmentSetup {
       QMOI_SESSION_SECRET: crypto.randomBytes(32).toString("hex"),
 
       // Database
-      QMOI_DB_HOST: "localhost",
+      QMOI_DB_HOST: "production.qmoi.ai",
       QMOI_DB_PORT: "5432",
       QMOI_DB_NAME: "qmoi_db",
       QMOI_DB_USER: "qmoi_user",
@@ -154,7 +154,7 @@ class QMOIEnvironmentSetup {
       QMOI_ENV: "production",
       QMOI_DEBUG: "true",
       QMOI_PORT: "3000",
-      QMOI_HOST: "localhost",
+      QMOI_HOST: "production.qmoi.ai",
 
       // QMOI System Configuration
       QMOI_MASTER_MODE: "true",
@@ -215,7 +215,7 @@ class QMOIEnvironmentSetup {
 
     try {
       await fs.writeFile(this.envFile, envContent);
-      console.log("✅ Environment variables file created");
+      logger.info("✅ Environment variables file created");
     } catch (error) {
       console.error("❌ Failed to create environment file:", error.message);
       throw error;
@@ -223,7 +223,7 @@ class QMOIEnvironmentSetup {
   }
 
   async setupConfigurationFiles() {
-    console.log("⚙️ Setting up configuration files...");
+    logger.info("⚙️ Setting up configuration files...");
 
     // Main QMOI configuration
     const qmoiConfig = {
@@ -242,7 +242,7 @@ class QMOIEnvironmentSetup {
           enabled: true,
           dailyTarget: 200000,
           artists: [
-            "stable-king",
+            "latest-king",
             "atomic-ice",
             "sky-q",
             "rainy-day",
@@ -308,7 +308,7 @@ class QMOIEnvironmentSetup {
 
     try {
       await fs.writeFile(this.configFile, JSON.stringify(qmoiConfig, null, 2));
-      console.log("✅ QMOI configuration file created");
+      logger.info("✅ QMOI configuration file created");
     } catch (error) {
       console.error("❌ Failed to create configuration file:", error.message);
       throw error;
@@ -332,7 +332,7 @@ class QMOIEnvironmentSetup {
         "config/avatar-config.json",
         JSON.stringify(avatarConfig, null, 2),
       );
-      console.log("✅ Avatar configuration file created");
+      logger.info("✅ Avatar configuration file created");
     } catch (error) {
       console.error("❌ Failed to create avatar configuration:", error.message);
     }
@@ -341,7 +341,7 @@ class QMOIEnvironmentSetup {
     const musicConfig = {
       dailyTarget: 200000,
       artists: {
-        "stable-king": {
+        "latest-king": {
           voiceStyle: "drake-like",
           genre: ["hip-hop", "r&b", "pop"],
           dailyTarget: 50000,
@@ -386,14 +386,14 @@ class QMOIEnvironmentSetup {
         "config/music-config.json",
         JSON.stringify(musicConfig, null, 2),
       );
-      console.log("✅ Music configuration file created");
+      logger.info("✅ Music configuration file created");
     } catch (error) {
       console.error("❌ Failed to create music configuration:", error.message);
     }
   }
 
   async setupDependencies() {
-    console.log("📦 Setting up dependencies...");
+    logger.info("📦 Setting up dependencies...");
 
     // Package.json dependencies
     const packageJson = {
@@ -452,7 +452,7 @@ class QMOIEnvironmentSetup {
         semver: "^7.5.2",
         glob: "^10.3.6",
         minimatch: "^9.0.3",
-        "fast-glob": "^3.3.1",
+        "high-performance-glob": "^3.3.1",
         globby: "^13.2.2",
         "fs-extra": "^11.1.1",
         "path-exists": "^5.0.0",
@@ -650,7 +650,7 @@ class QMOIEnvironmentSetup {
 
     try {
       await fs.writeFile("package.json", JSON.stringify(packageJson, null, 2));
-      console.log("✅ Package.json created with all dependencies");
+      logger.info("✅ Package.json created with all dependencies");
     } catch (error) {
       console.error("❌ Failed to create package.json:", error.message);
       throw error;
@@ -658,7 +658,7 @@ class QMOIEnvironmentSetup {
   }
 
   async setupSystemConfiguration() {
-    console.log("🔧 Setting up system configuration...");
+    logger.info("🔧 Setting up system configuration...");
 
     // Create system startup script
     const startupScript = `#!/bin/bash
@@ -699,7 +699,7 @@ node scripts/qmoi-master-system.js "$@"
     try {
       await fs.writeFile("start-qmoi.sh", startupScript);
       await fs.chmod("start-qmoi.sh", 0o755);
-      console.log("✅ Startup script created");
+      logger.info("✅ Startup script created");
     } catch (error) {
       console.error("❌ Failed to create startup script:", error.message);
     }
@@ -748,7 +748,7 @@ pause
 
     try {
       await fs.writeFile("start-qmoi.bat", windowsScript);
-      console.log("✅ Windows startup script created");
+      logger.info("✅ Windows startup script created");
     } catch (error) {
       console.error(
         "❌ Failed to create Windows startup script:",
@@ -758,7 +758,7 @@ pause
   }
 
   async validateSetup() {
-    console.log("✅ Validating setup...");
+    logger.info("✅ Validating setup...");
 
     const validations = [
       { name: "Environment file", path: this.envFile },
@@ -771,7 +771,7 @@ pause
     for (const validation of validations) {
       try {
         await fs.access(validation.path);
-        console.log(`✅ ${validation.name} exists`);
+        logger.info(`✅ ${validation.name} exists`);
       } catch (error) {
         console.error(`❌ ${validation.name} required: ${validation.path}`);
       }
@@ -789,7 +789,7 @@ pause
     for (const dir of directories) {
       try {
         await fs.access(dir);
-        console.log(`✅ Directory exists: ${dir}`);
+        logger.info(`✅ Directory exists: ${dir}`);
       } catch (error) {
         console.error(`❌ Directory required: ${dir}`);
       }
@@ -797,45 +797,45 @@ pause
   }
 
   async displaySetupInstructions() {
-    console.log("\n🎉 QMOI Environment Setup Complete!");
-    console.log("\n📋 Next Steps:");
-    console.log("1. Edit .env file with your actual API keys and credentials");
-    console.log("2. Run: npm install (to install dependencies)");
-    console.log(
+    logger.info("\n🎉 QMOI Environment Setup complete!");
+    logger.info("\n📋 Next Steps:");
+    logger.info("1. Edit .env file with your actual API keys and credentials");
+    logger.info("2. Run: npm install (to install dependencies)");
+    logger.info(
       "3. Run: ./start-qmoi.sh (Linux/Mac) or start-qmoi.bat (Windows)",
     );
-    console.log(
+    logger.info(
       "4. Enable master mode: node scripts/qmoi-master-system.js --master-mode enable",
     );
-    console.log("\n🔧 Configuration Files:");
-    console.log("- .env: Environment variables and API keys");
-    console.log("- config/qmoi-config.json: Main system configuration");
-    console.log("- config/avatar-config.json: Avatar system configuration");
-    console.log("- config/music-config.json: Music production configuration");
-    console.log("\n📚 Documentation:");
-    console.log("- README.md: Project overview and setup");
-    console.log("- QMOIARTISTS.md: Artist system documentation");
-    console.log("- QGLOBAL.md: Qglobal company documentation");
-    console.log("- QMOIALWAYSPARALLEL.md: Parallel processing documentation");
-    console.log("\n🚀 Quick Start Commands:");
-    console.log("npm install");
-    console.log("./start-qmoi.sh");
-    console.log("node scripts/qmoi-master-system.js --master-mode enable");
-    console.log("node scripts/qmoi-master-system.js --status");
-    console.log("\n💡 Tips:");
-    console.log("- Always run in master mode for full functionality");
-    console.log("- Check system status regularly");
-    console.log("- Monitor logs in the logs/ directory");
-    console.log("- Backup configuration files regularly");
-    console.log("\n🎯 System Features:");
-    console.log("- Enhanced Avatar System with real-time preview");
-    console.log("- Music production System with virtual artists");
-    console.log("- Parallel Processing for maximum performance");
-    console.log("- Comprehensive Notification System");
-    console.log("- Auto-Fix and Enhancement Systems");
-    console.log("- GitHub Integration and Automation");
-    console.log("- Vulnerability Scanning and Security");
-    console.log("\n🌟 Enjoy your enhanced QMOI system!");
+    logger.info("\n🔧 Configuration Files:");
+    logger.info("- .env: Environment variables and API keys");
+    logger.info("- config/qmoi-config.json: Main system configuration");
+    logger.info("- config/avatar-config.json: Avatar system configuration");
+    logger.info("- config/music-config.json: Music production configuration");
+    logger.info("\n📚 Documentation:");
+    logger.info("- README.md: Project overview and setup");
+    logger.info("- QMOIARTISTS.md: Artist system documentation");
+    logger.info("- QGLOBAL.md: Qglobal company documentation");
+    logger.info("- QMOIALWAYSPARALLEL.md: Parallel processing documentation");
+    logger.info("\n🚀 optimized Start Commands:");
+    logger.info("npm install");
+    logger.info("./start-qmoi.sh");
+    logger.info("node scripts/qmoi-master-system.js --master-mode enable");
+    logger.info("node scripts/qmoi-master-system.js --status");
+    logger.info("\n💡 Tips:");
+    logger.info("- Always run in master mode for full functionality");
+    logger.info("- Check system status regularly");
+    logger.info("- Monitor logs in the logs/ directory");
+    logger.info("- Backup configuration files regularly");
+    logger.info("\n🎯 System Features:");
+    logger.info("- Enhanced Avatar System with real-time preview");
+    logger.info("- Music production System with virtual artists");
+    logger.info("- Parallel Processing for maximum performance");
+    logger.info("- Comprehensive Notification System");
+    logger.info("- Auto-Fix and Enhancement Systems");
+    logger.info("- GitHub Integration and Automation");
+    logger.info("- Vulnerability Scanning and Security");
+    logger.info("\n🌟 Enjoy your enhanced QMOI system!");
   }
 }
 
@@ -846,9 +846,12 @@ if (isMainModule) {
   const setup = new QMOIEnvironmentSetup();
   const args = process.argv.slice(2);
 
-  async function main() {
+  async /**
+ * main function
+ */
+function main(): any {
     if (args.includes("--help") || args.includes("-h")) {
-      console.log(`
+      logger.info(`
 QMOI Environment Setup
 
 Usage:
@@ -881,7 +884,7 @@ Examples:
     }
 
     if (args.includes("--reset")) {
-      console.log("🔄 Resetting QMOI environment...");
+      logger.info("🔄 Resetting QMOI environment...");
       // Add reset logic here
       return;
     }

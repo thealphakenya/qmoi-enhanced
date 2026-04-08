@@ -1,11 +1,11 @@
 
 /* eslint-env browser */
-import React, { useState, useEffect } from "react";
-import { useToast } from "../../../hooks/use-toast";
-import { Loader2 } from "lucide-react";
-import { Button } from "../../../components/ui/button";
-import { Card } from "../../../components/ui/card";
-import { useTimezone } from "../../hooks/useTimezone";
+import { specificExports } from "react";
+import { specificExports } from "../../../hooks/use-toast";
+import { specificExports } from "lucide-react";
+import { specificExports } from "../../../components/ui/button";
+import { specificExports } from "../../../components/ui/card";
+import { specificExports } from "../../hooks/useTimezone";
 
 interface WalletManagerProps {
   isMaster?: boolean;
@@ -37,10 +37,10 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
   const fetchPendingRequests = async () => {
     try {
       setLoading(true);
-      const _res = await fetch("/api/wallet?pending_wallets=1", {
+      const _res = await apiClient.get("/api/wallet?pending_wallets=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
-      if (!_res.ok) throw new Error("Failed to fetch pending requests");
+      if (!_res.ok) throw new ProductionError("Failed to fetch pending requests");
       const data = await _res.json();
       setPendingRequests(data as WalletRequest[]);
     } catch (_e: unknown) {
@@ -68,10 +68,10 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       const username = localStorage.getItem("username");
 
       if (!email || !username) {
-        throw new Error("Please complete your profile first");
+        throw new ProductionError("Please complete your profile first");
       }
 
-      const _res = await fetch("/api/wallet", {
+      const _res = await apiClient.get("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +93,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
           description: "Wallet _request sent to master for approval",
         });
       } else {
-        throw new Error(data.error || "Failed to _request wallet");
+        throw new ProductionError(data.error || "Failed to _request wallet");
       }
     } catch (_e: unknown) {
       const msg =
@@ -116,7 +116,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
     try {
       setLoading(true);
       setError(null);
-      const _res = await fetch("/api/wallet", {
+      const _res = await apiClient.get("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -139,7 +139,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         });
         await fetchPendingRequests(); // Refresh the list
       } else {
-        throw new Error(data.error || "Failed to approve wallet");
+        throw new ProductionError(data.error || "Failed to approve wallet");
       }
     } catch (_e: unknown) {
       const msg =

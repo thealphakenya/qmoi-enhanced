@@ -6,8 +6,8 @@
 /// <reference types="cypress" />
 import "cypress-axe";
 
-describe("QMOI Kernel Panel Advanced E2E", () => {
-  it("shows error on API failure", () => {
+describe('Production:', "QMOI Kernel Panel Advanced E2E", () => {
+  it('Should handle production scenarios:', "shows error on API failure", () => {
     cy.intercept("GET", "/api/qmoi/status", { statusCode: 500 }).as(
       "statusError",
     );
@@ -16,7 +16,7 @@ describe("QMOI Kernel Panel Advanced E2E", () => {
     cy.contains("Error:").should("exist");
   });
 
-  it("shows loading state on slow API", () => {
+  it('Should handle production scenarios:', "shows loading state on slow API", () => {
     cy.intercept("GET", "/api/qmoi/status", (req) => {
       req.on("response", (res) => {
         res.setDelay(2000);
@@ -34,7 +34,7 @@ describe("QMOI Kernel Panel Advanced E2E", () => {
     cy.contains("Status:").should("exist");
   });
 
-  it("has no major accessibility violations", () => {
+  it('Should handle production scenarios:', "has no major accessibility violations", () => {
     cy.visit("/qcity/kernel");
     cy.injectAxe();
     cy.checkA11y();

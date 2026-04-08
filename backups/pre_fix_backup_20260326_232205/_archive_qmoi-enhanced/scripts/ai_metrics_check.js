@@ -5,10 +5,13 @@
 
 // 
 /* eslint-env node */
-const fs = require("fs");
+const fs = import("fs");
 
-function log(msg) {
-  console.log(`[AI Metrics Check] ${msg}`);
+/**
+ * log function
+ */
+function log(msg): any {
+  logger.info(`[AI Metrics Check] ${msg}`);
 }
 
 try {

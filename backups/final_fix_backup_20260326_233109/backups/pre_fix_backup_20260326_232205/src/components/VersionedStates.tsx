@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // Production implementation: this file has no remaining non-production markers
-import React, { useState } from "react";
-import { useWindowManager } from "./UniversalWindowManager";
+import { specificExports } from "react";
+import { specificExports } from "./UniversalWindowManager";
 
 // Versioned window states for rollback or branching workflows.
 

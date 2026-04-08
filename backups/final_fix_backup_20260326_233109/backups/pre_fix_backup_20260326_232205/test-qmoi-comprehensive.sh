@@ -4,7 +4,7 @@
 # Comprehensive QMOI Intelligence Testing Suite
 # Tests 12 dimensions of AI capability
 
-API_URL="http://localhost:3001/api/qmoi/chat"
+API_URL="https://production.qmoi.ai:3001/api/qmoi/chat"
 OUTPUT_FILE="/workspaces/qmoi-enhanced/responsesa.txt"
 USER_ID="test-user-$(date +%s)"
 
@@ -14,9 +14,9 @@ cat > "$OUTPUT_FILE" << 'EOF'
 QMOI COMPREHENSIVE INTELLIGENCE & PERFORMANCE TEST SUITE
 ================================================================================
 Date: $(date)
-Test Duration: Complete Cognitive Assessment
+Test Duration: complete Cognitive Assessment
 User ID: $USER_ID
-API Endpoint: http://localhost:3001/api/qmoi/chat
+API Endpoint: https://production.qmoi.ai:3001/api/qmoi/chat
 ================================================================================
 
 EOF
@@ -123,7 +123,7 @@ test_qmoi 20 "Memory" "What is my name?" "Name Recall"
 test_qmoi 21 "Memory" "What do I like?" "Preference Recall"
 test_qmoi 22 "Memory" "Earlier, you explained inflation. Summarize your own explanation." "Self-Reference"
 test_qmoi 23 "Memory" "Refer back to the business idea you gave in test 12 and improve it." "Cross-Reference"
-test_qmoi 24 "Memory" "Tell me everything you remember about me so far." "Complete Context"
+test_qmoi 24 "Memory" "Tell me everything you remember about me so far." "complete Context"
 
 # ============================================================================
 # ⚡ SECTION 5: SPEED & RESPONSE TIME (Tests 25-29)

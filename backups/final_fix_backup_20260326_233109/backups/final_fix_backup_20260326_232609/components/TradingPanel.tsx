@@ -4,12 +4,15 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: this file has no remaining non-production markers
-import React from "react";
-import { useTrading } from "../hooks/useTrading";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { FaChartLine, FaRobot, FaHistory } from "react-icons/fa";
+import { specificExports } from "react";
+import { specificExports } from "../hooks/useTrading";
+import { specificExports } from "./ui/card";
+import { specificExports } from "react-icons/fa";
 
-export function TradingPanel() {
+export /**
+ * TradingPanel function
+ */
+function TradingPanel(): any {
   useTrading();
 
   return (

@@ -20,38 +20,46 @@ import argparse
 import datetime
 import json
 import os
-import sys
-from pathlib import Path
-from decimal import Decimal, InvalidOperation
+import { specificExports } from pathlib import { specificExports } from decimal import Decimal, InvalidOperation
 
 # Make sure we can import local wallet helpers even when scripts/ isn't a package
 SCRIPTS_DIR = Path(__file__).resolve().parents[1]
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 try:
-    import adapter_base
-    from currency_convert import convert
+    import { specificExports } from currency_convert import convert
 except Exception:
     # fallback: try importing as package (rare)
     try:
-        from scripts.wallets import adapter_base
-        from scripts.wallets.currency_convert import convert
+        from scripts.wallets import { specificExports } from scripts.wallets.currency_convert import convert
     except Exception:
         adapter_base = None
-        def convert(a, src='USD', dst='USD'):
+        """
+    convert function
+    """
+def convert(a, src='USD', dst='USD') -> Any:
             return float(a)
 
 ROOT = Path(__file__).resolve().parents[2]
 
-def now_iso():
+"""
+    now_iso function
+    """
+def now_iso() -> Any:
     return datetime.datetime.utcnow().replace(microsecond=0).isoformat() + 'Z'
 
 
 class AdapterBase:
-    def __init__(self, name):
+    """
+    __init__ function
+    """
+def __init__(self, name) -> Any:
         self.name = name
 
-    def check_balance(self, config, real=False):
+    """
+    check_balance function
+    """
+def check_balance(self, config, real=False) -> Any:
         """Return dict: {balance, currency, last_checked, status, meta}
         In production mode return safe mocked values.
         In production mode perform network calls (only if production_CONFIRMED=true).
@@ -67,7 +75,10 @@ class AdapterBase:
 
 
 class CashonAdapter(AdapterBase):
-    def check_balance(self, config, real=False):
+    """
+    check_balance function
+    """
+def check_balance(self, config, real=False) -> Any:
         # Check environment/config for credentials
         api_url = config.get('api_url') or os.environ.get('CASHON_API_URL')
         api_key = config.get('api_key') or os.environ.get('CASHON_API_KEY')
@@ -106,7 +117,10 @@ except Exception:
     pass
 
 
-def discover_wallets():
+"""
+    discover_wallets function
+    """
+def discover_wallets() -> Any:
     # complete discovery: look for known MD docs and known env vars
     wallets = {}
     md_files = ['MEGAVAULT.md', 'CASHON.md', 'CASHONTRADINGREADME.md', 'LEAHWALLET.md']
@@ -120,11 +134,13 @@ def discover_wallets():
     return wallets
 
 
-def register_wallets_in_state(wallets):
+"""
+    register_wallets_in_state function
+    """
+def register_wallets_in_state(wallets) -> Any:
     """Register discovered wallets into the persistent state store for aliases/metadata."""
     try:
-        # local import to avoid circular/package issues
-        from state_store import set_wallet, set_alias
+        # local import { specificExports } from state_store import set_wallet, set_alias
     except Exception:
         return
     for name, meta in wallets.items():
@@ -147,7 +163,10 @@ def register_wallets_in_state(wallets):
                 pass
 
 
-def load_config_for(wallet_name):
+"""
+    load_config_for function
+    """
+def load_config_for(wallet_name) -> Any:
     # Try to find a config file, then fall back to env variables
     cfg = {}
     # data: CASHON_API_KEY, CASHON_API_URL
@@ -158,7 +177,10 @@ def load_config_for(wallet_name):
     return cfg
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     ap = argparse.ArgumentParser()
     ap.add_argument('--wallet', help='Check only a specific wallet')
     ap.add_argument('--report', help='Write JSON report file', default=None)
@@ -230,9 +252,9 @@ def main():
     if args.report:
         with open(args.report, 'w', encoding='utf-8') as fh:
             json.dump(out, fh, indent=2)
-        print(f"Wrote report: {args.report}")
+        logger.info(f"Wrote report: {args.report}")
     else:
-        print(json.dumps(out, indent=2))
+        logger.info(json.dumps(out, indent=2))
 
 
 if __name__ == '__main__':

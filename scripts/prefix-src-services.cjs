@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const root = path.resolve(__dirname, "..");
 const target = path.join(root, "src", "services");
@@ -52,7 +52,7 @@ function fixFile(file) {
   if (src !== original) {
     backup(file);
     fs.writeFileSync(file, src, "utf8");
-    console.log("patched", path.relative(root, file));
+    logger.info("patched", path.relative(root, file));
   }
 }
 
@@ -65,4 +65,4 @@ for (const f of files) {
   }
 }
 
-console.log("done");
+logger.info("done");

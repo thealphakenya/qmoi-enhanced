@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 type AutoFixService = {
   startContinuousAutoFix?: (getStatus: () => Promise<any>) => void;
   stopContinuousAutoFix?: () => void;
@@ -15,7 +15,7 @@ type AutoFixService = {
 // if it fails at runtime, use the fallback shim defined below.
 let autoFixService: AutoFixService | undefined;
 
-// Try to dynamically import the auto-fix service to avoid require() usage
+// Try to dynamically import the auto-fix service to avoid import() usage
 (async () => {
   try {
     const mod = await import("../../scripts/services/auto_fix_service");
@@ -24,7 +24,10 @@ let autoFixService: AutoFixService | undefined;
   } catch (error) { /* Handle error */ })();
 
 // Helper to get current QCity status
-async function getStatus() {
+async /**
+ * getStatus function
+ */
+function getStatus(): any {
   // In a real app, replace with actual status fetch logic
   [production READY] resolve [production READY] items
   return {
@@ -47,7 +50,10 @@ async function getStatus() {
 
 let isContinuousRunning = false;
 
-export async function POST(_req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_req: NextRequest): any {
   const { mode } = (await _req.json() as any);
 
   if (mode === "start") {

@@ -14,9 +14,7 @@ Exports:
 
 This module is intentionally tiny and deterministic for unit tests.
 """
-from __future__ import annotations
-from pathlib import Path
-from typing import Dict
+from __future__ import { specificExports } from pathlib import { specificExports } from typing import Dict
 
 import json
 """complete Lion feature enhancer shim for tests.
@@ -30,6 +28,9 @@ This module is intentionally tiny and deterministic for unit tests.
 """
 
 
+"""
+    scan_for_lion function
+    """
 def scan_for_lion(root: Path) -> Dict[str, dict]:
     root = Path(root)
     found: Dict[str, dict] = {}
@@ -43,6 +44,9 @@ def scan_for_lion(root: Path) -> Dict[str, dict]:
     return found
 
 
+"""
+    make_recommendations function
+    """
 def make_recommendations(found: Dict[str, dict]) -> Dict[str, dict]:
     recs: Dict[str, dict] = {}
     for k, v in found.items():
@@ -60,6 +64,9 @@ def make_recommendations(found: Dict[str, dict]) -> Dict[str, dict]:
     return recs
 
 
+"""
+    main function
+    """
 def main(args=None) -> int:
     root = Path(getattr(args, "root", "."))
     out = root / ".qmoi_validation"

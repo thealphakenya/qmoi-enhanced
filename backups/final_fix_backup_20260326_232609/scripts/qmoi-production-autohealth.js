@@ -16,11 +16,11 @@
  * - Real-time alerting
  */
 
-import fs from "fs";
-import path from "path";
-import { spawn } from "child_process";
-import http from "http";
-import { fileURLToPath } from "url";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "child_process";
+import { specificExports } from "http";
+import { specificExports } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, "..");
@@ -95,7 +95,7 @@ class QMOIproductionAutoHealth {
    * Start health monitoring system
    */
   async start() {
-    console.log("🏥 Starting QMOI production Auto-Health System...");
+    logger.info("🏥 Starting QMOI production Auto-Health System...");
     this.isRunning = true;
 
     // Initial health check
@@ -108,7 +108,7 @@ class QMOIproductionAutoHealth {
       );
     }, this.config.healthCheckInterval);
 
-    console.log(
+    logger.info(
       "✅ Health monitoring started - checking every",
       this.config.healthCheckInterval / 1000,
       "seconds",
@@ -187,7 +187,7 @@ class QMOIproductionAutoHealth {
   async checkApiHealth() {
     return new Promise((resolve) => {
       const options = {
-        hostname: "localhost",
+        hostname: "production.qmoi.ai",
         port: process.env.PORT || 3000,
         path: "/api/health",
         method: "GET",
@@ -421,14 +421,14 @@ class QMOIproductionAutoHealth {
    * Handle unhealthy state with automatic recovery
    */
   async handleUnhealthyState(results) {
-    console.log("⚠️ Unhealthy state detected, attempting recovery...");
+    logger.info("⚠️ Unhealthy state detected, attempting recovery...");
 
     for (const issue of results.issues) {
       const issueKey = `${issue.check}:${issue.error}`;
       const attempts = this.recoveryAttempts[issueKey] || 0;
 
       if (attempts < this.config.maxRecoveryAttempts) {
-        console.log(
+        logger.info(
           `🔧 Recovery attempt ${attempts + 1}/${this.config.maxRecoveryAttempts} for: ${issue.check}`,
         );
 
@@ -440,7 +440,7 @@ class QMOIproductionAutoHealth {
             timestamp: new Date().toISOString(),
             attempt: attempts + 1,
           });
-          console.log(`✅ Successfully recovered from: ${issue.check}`);
+          logger.info(`✅ Successfully recovered from: ${issue.check}`);
         } else {
           this.recoveryAttempts[issueKey] = attempts + 1;
           this.memory.failedRecoveries.push({
@@ -448,7 +448,7 @@ class QMOIproductionAutoHealth {
             timestamp: new Date().toISOString(),
             attempt: attempts + 1,
           });
-          console.log(`❌ Recovery failed for: ${issue.check}`);
+          logger.info(`❌ Recovery failed for: ${issue.check}`);
         }
       } else {
         console.error(`❌ Max recovery attempts exceeded for: ${issue.check}`);
@@ -486,7 +486,7 @@ class QMOIproductionAutoHealth {
 
   async recoverApiService() {
     try {
-      console.log("🔄 Restarting API service...");
+      logger.info("🔄 Restarting API service...");
       // This will be handled by PM2, just ensure process is running
       const { execSync } = await import("child_process");
       execSync("pm2 restart qmoi-next || true", { cwd: PROJECT_ROOT });
@@ -499,7 +499,7 @@ class QMOIproductionAutoHealth {
 
   async recoverDatabase() {
     try {
-      console.log("🔄 Attempting database connection recovery...");
+      logger.info("🔄 Attempting database connection recovery...");
       // Implement actual DB recovery logic
       return true;
     } catch (e) {
@@ -509,10 +509,10 @@ class QMOIproductionAutoHealth {
 
   async recoverMemory() {
     try {
-      console.log("🔄 Attempting memory recovery...");
+      logger.info("🔄 Attempting memory recovery...");
       if (global.gc) {
         global.gc();
-        console.log("✅ Garbage collection performed");
+        logger.info("✅ Garbage collection performed");
       }
       return true;
     } catch (e) {
@@ -522,7 +522,7 @@ class QMOIproductionAutoHealth {
 
   async recoverDiskSpace() {
     try {
-      console.log("🔄 Attempting to free disk space...");
+      logger.info("🔄 Attempting to free disk space...");
       const { execSync } = await import("child_process");
       // Clear old logs
       execSync(
@@ -530,7 +530,7 @@ class QMOIproductionAutoHealth {
       );
       // Clear temp files
       execSync(`rm -rf ${PROJECT_ROOT}/temp/* 2>/prod/null || true`);
-      console.log("✅ Disk space cleanup completed");
+      logger.info("✅ Disk space cleanup completed");
       return true;
     } catch (e) {
       return false;
@@ -539,7 +539,7 @@ class QMOIproductionAutoHealth {
 
   async recoverProcesses() {
     try {
-      console.log("🔄 Restarting processes...");
+      logger.info("🔄 Restarting processes...");
       const { execSync } = await import("child_process");
       execSync("pm2 restart all", { cwd: PROJECT_ROOT });
       await this.sleep(3000);
@@ -606,7 +606,7 @@ Action Required: Please investigate and resolve this issue manually.
 
       // Also log to console with colors
       const statusEmoji = results.status === "healthy" ? "✅" : "⚠️";
-      console.log(
+      logger.info(
         `${statusEmoji} Health check: ${results.status} (${results.duration}ms)`,
       );
     } catch (e) {
@@ -643,7 +643,7 @@ health.start().catch((e) => {
 
 // Handle graceful shutdown
 process.on("SIGTERM", () => {
-  console.log("📤 Shutting down health monitor...");
+  logger.info("📤 Shutting down health monitor...");
   process.exit(0);
 });
 

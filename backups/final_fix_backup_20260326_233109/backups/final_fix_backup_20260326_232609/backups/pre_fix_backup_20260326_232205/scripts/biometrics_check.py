@@ -12,13 +12,15 @@ Writes a JSON report to docs/ by default (dry-run). Use --apply or set LION_APPL
 """
 import argparse
 import json
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 KEYWORDS = ['biometric', 'fingerprint', 'face', 'sll', 'login', 'authenticator', 'webauthn', 'biometrics']
 
 
-def scan_repo(root: Path):
+"""
+    scan_repo function
+    """
+def scan_repo(root: Path) -> Any:
     findings = []
     for p in root.rglob('*'):
         if p.is_file() and p.suffix.lower() in ('.md', '.py', '.js', '.ts', '.tsx', '.html'):
@@ -34,7 +36,10 @@ def scan_repo(root: Path):
     return findings
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--root', default='.', help='repo root')
     p.add_argument('--out', default='docs/biometrics_report.generated.json')
@@ -47,12 +52,12 @@ def main():
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(report, indent=2), encoding='utf8')
-    print('Wrote', out_path)
+    logger.info('Wrote', out_path)
 
     if args.apply or os.environ.get('LION_APPLY') == '1':
         canonical = root / 'docs' / 'biometrics_report.json'
         canonical.write_text(json.dumps(report, indent=2), encoding='utf8')
-        print('Applied canonical biometrics report ->', canonical)
+        logger.info('Applied canonical biometrics report ->', canonical)
 
 
 if __name__ == '__main__':
@@ -65,11 +70,13 @@ Dry-run by default; set LION_APPLY=1 or pass --apply to enable any automated fix
 """
 import argparse
 import json
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 
-def load_dotenv(root: Path):
+"""
+    load_dotenv function
+    """
+def load_dotenv(root: Path) -> Any:
     candidates = [root / 'tools' / 'lion.env', root / '.env']
     env = {}
     for p in candidates:
@@ -88,7 +95,10 @@ def load_dotenv(root: Path):
     return env
 
 
-def scan_login_pages(root: Path):
+"""
+    scan_login_pages function
+    """
+def scan_login_pages(root: Path) -> Any:
     candidates = []
     for p in root.rglob('*.tsx'):
         try:
@@ -107,7 +117,10 @@ def scan_login_pages(root: Path):
     return candidates
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--root', default='.')
     p.add_argument('--out', default='docs/biometrics_report.json')
@@ -122,7 +135,7 @@ def main():
     outp = Path(args.out)
     outp.parent.mkdir(parents=True, exist_ok=True)
     outp.write_text(json.dumps(report, indent=2), encoding='utf8')
-    print('Wrote', outp)
+    logger.info('Wrote', outp)
 
 
 if __name__ == '__main__':
@@ -133,13 +146,15 @@ if __name__ == '__main__':
 Finds files mentioning biometric/login pages and emits a JSON report. No live biometric checks.
 """
 import argparse
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 KEYWORDS = ['biometric', 'fingerprint', 'faceid', 'touchid', 'webauthn', 'login', 'sll', 'biometrics']
 
 
-def scan(root: Path):
+"""
+    scan function
+    """
+def scan(root: Path) -> Any:
     findings = []
     for p in root.rglob('*'):
         if p.is_file() and p.suffix in ('.md', '.py', '.ts', '.tsx', '.js', '.html'):
@@ -153,7 +168,10 @@ def scan(root: Path):
     return findings
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--root', default='.', help='repo root')
     p.add_argument('--out', default='docs/biometrics_report.json')
@@ -173,7 +191,7 @@ def main():
     }
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(report, indent=2), encoding='utf8')
-    print('Wrote', out_path)
+    logger.info('Wrote', out_path)
 
 if __name__ == '__main__':
     main()
@@ -181,16 +199,18 @@ if __name__ == '__main__':
 """Biometrics/login pages checker.
 
 Generates `docs/biometrics_report.json` describing files that mention biometric/login flows
-and suggests simple checks. Non-destructive; always dry-run in terms of code changes.
+and suggests sophisticated checks. Non-destructive; always dry-run in terms of code changes.
 """
 import argparse
 import json
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 KEYWORDS = ['biometric', 'biometrics', 'fingerprint', 'faceid', 'login', 'sll', 'webauthn']
 
-def find_candidates(root: Path):
+"""
+    find_candidates function
+    """
+def find_candidates(root: Path) -> Any:
     results = []
     for p in root.rglob('*'):
         if p.is_file() and p.suffix.lower() in ('.md', '.ts', '.tsx', '.py', '.js'):
@@ -204,7 +224,10 @@ def find_candidates(root: Path):
                     break
     return sorted(set(results))
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--root', default='.')
     p.add_argument('--out', default='docs/biometrics_report.json')
@@ -216,7 +239,7 @@ def main():
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(report, indent=2), encoding='utf8')
-    print('Wrote', out_path)
+    logger.info('Wrote', out_path)
 
 if __name__ == '__main__':
     main()

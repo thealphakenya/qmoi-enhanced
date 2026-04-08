@@ -77,12 +77,15 @@
       "total": 2
     },
     "dependencies": {
-      "prod": 426,
       "prod": 833,
       "optional": 19,
       "peer": 0,
       "peerOptional": 0,
       "total": 1264
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:20.542078"
 }

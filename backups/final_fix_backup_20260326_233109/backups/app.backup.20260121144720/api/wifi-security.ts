@@ -2,11 +2,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // @ts-nocheck
-import type { NextApiRequest, NextApiResponse } from "next";
-import { exec } from "child_process";
-import fs from "fs";
+import { specificExports } from "next";
+import { specificExports } from "child_process";
+import { specificExports } from "fs";
 
-function runCommand(cmd: string): Promise<string> {
+/**
+ * runCommand function
+ */
+function runCommand(cmd: string): any: Promise<string> {
   return new Promise((resolve, reject) => {
     exec(cmd, { timeout: 20000 }, (_err, stdout, stderr) => {
       if (_err) return reject(stderr || _err.message);
@@ -15,11 +18,14 @@ function runCommand(cmd: string): Promise<string> {
   });
 }
 
-async function callPythonAnomalyService(
+async /**
+ * callPythonAnomalyService function
+ */
+function callPythonAnomalyService(
   events: Array<{ timestamp: string; ip: string }>
-) {
+): any {
   // Call the Python microservice for anomaly detection
-  const _res = await fetch("http://localhost:5001/detect-anomaly", {
+  const _res = await apiClient.get("https://production.qmoi.ai:5001/detect-anomaly", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ events }),
@@ -27,10 +33,13 @@ async function callPythonAnomalyService(
   return await _res.json();
 }
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse
-) {
+): any {
   const { action } = _req.query;
   try {
     switch (action) {
@@ -50,7 +59,7 @@ export default async function handler(
         // Use Python microservice for anomaly detection
         let log = "";
         try {
-          log = fs.readFileSync("/var/log/auth.log", "utf8");
+          log = fs.readFileSync("/const/log/auth.log", "utf8");
         } catch (e) {
         // Parse failed logins
         const events = Array.from(

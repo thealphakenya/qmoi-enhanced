@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { headers } from "next/headers";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "next/headers";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const FINGERPRINTS_FILE = path.join(process.cwd(), "data", "fingerprints.json");
 
@@ -20,7 +20,10 @@ if (!fs.existsSync(FINGERPRINTS_FILE)) {
   fs.writeFileSync(FINGERPRINTS_FILE, JSON.stringify([]));
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const headersList = await headers();
   const userAgent = headersList.get("user-agent") || "";
   const acceptLanguage = headersList.get("accept-language") || "";
@@ -36,7 +39,10 @@ export async function GET(request: NextRequest) {
   return NextResponse.json(fingerprint);
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { fingerprint, user, prodiceInfo, location } = body;

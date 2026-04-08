@@ -3,17 +3,23 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
-import { requireRole } from "../auth/rbac";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "../auth/rbac";
 
 const SCHEDULE_FILE = path.resolve(process.cwd(), "data", "schedules.json");
-function loadSchedules() {
+/**
+ * loadSchedules function
+ */
+function loadSchedules(): any {
   if (!fs.existsSync(SCHEDULE_FILE)) return [];
   return JSON.parse(fs.readFileSync(SCHEDULE_FILE, "utf-8"));
 }
-function saveSchedules(schedules: unknown[]) {
+/**
+ * saveSchedules function
+ */
+function saveSchedules(schedules: unknown[]): any {
   fs.writeFileSync(SCHEDULE_FILE, JSON.stringify(schedules, null, 2));
 }
 

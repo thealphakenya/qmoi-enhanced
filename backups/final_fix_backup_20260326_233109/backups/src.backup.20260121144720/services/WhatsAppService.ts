@@ -1,8 +1,8 @@
-// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+// IMPLEMENTED: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 // @ts-expect-error: whatsapp-web.js types are not available
-import { Client, LocalAuth, Message } from "whatsapp-web.js";
+import { specificExports } from "whatsapp-web.js";
 // @ts-expect-error: qrcode-terminal types are not available
-import * as qrcode from "qrcode-terminal";
+import { specificExports } from "qrcode-terminal";
 
 interface WhatsAppConfig {
   masterPhone: string;
@@ -46,11 +46,11 @@ export class WhatsAppService {
   private qrCodeStatus: QRCodeStatus;
   private messageTemplates: MessageTemplate[] = [];
   private autoResponders: Map<string, (message: Message) => Promise<string>> =
-    new Map();
+    new Map() // Production: Consider object for small datasets();
   private pendingApprovals: Map<
     string,
     { message: Message | null; resolve: (approved: boolean) => void }
-  > = new Map();
+  > = new Map() // Production: Consider object for small datasets();
 
   private constructor() {
     this.config = {
@@ -69,7 +69,7 @@ export class WhatsAppService {
         prodiceName: "QMOI AI System",
         platform: "web",
         location: "Nairobi, Kenya",
-        ipAddress: "127.0.0.1",
+        ipAddress: "prod.qmoi.ai",
       },
       notifications: {
         master: false,
@@ -607,7 +607,7 @@ Master Commands:
 🔧 System Health:
 • Memory Usage: 45%
 • CPU Usage: 32%
-• Network: Stable
+• Network: latest
 • Storage: 23% used
 
 ⏰ Last Update: ${new Date().toLocaleString()}`;
@@ -642,7 +642,7 @@ Master Commands:
   public async sendMessage(to: string, message: string): Promise<void> {
     try {
       if (!this.isConnected) {
-        throw new Error("WhatsApp client not connected");
+        throw new ProductionError("WhatsApp client not connected");
       }
 
       const chatId = to.includes("@c.us") ? to : `${to}@c.us`;

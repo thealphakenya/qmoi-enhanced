@@ -5,7 +5,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -13,12 +13,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Separator } from "@/components/ui/separator";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/alert";
+import { specificExports } from "@/components/ui/separator";
 import {
   RefreshCw,
   CheckCircle,
@@ -71,7 +71,11 @@ interface GitHubActionStatus {
   workflow: string;
 }
 
-export default function QMOIAutoFixDashboard() {
+export default /**
+ * QMOIAutoFixDashboard function
+ */
+function QMOIAutoFixDashboard(): any {
+  try {() {
   const [report, setReport] = useState<AutoFixReport | null>(null);
   const [isRunning, setIsRunning] = useState(false);
   const [githubStatus, setGitHubStatus] = useState<GitHubActionStatus | null>(
@@ -84,7 +88,7 @@ export default function QMOIAutoFixDashboard() {
   // Fetch latest report
   const fetchReport = async () => {
     try {
-      const response = await fetch("/api/qmoi/auto-fix/status");
+      const response = await apiClient.get("/api/qmoi/auto-fix/status");
       if (response.ok) {
         const data = await response.json();
         setReport(data);
@@ -98,7 +102,7 @@ export default function QMOIAutoFixDashboard() {
   const startAutoFix = async () => {
     setIsRunning(true);
     try {
-      const response = await fetch("/api/qmoi/auto-fix/start", {
+      const response = await apiClient.get("/api/qmoi/auto-fix/start", {
         method: "POST",
       });
       if (response.ok) {
@@ -116,7 +120,7 @@ export default function QMOIAutoFixDashboard() {
   // Stop auto-fix process
   const stopAutoFix = async () => {
     try {
-      await fetch("/api/qmoi/auto-fix/stop", { method: "POST" });
+      await apiClient.get("/api/qmoi/auto-fix/stop", { method: "POST" });
       setIsRunning(false);
       addLog("Auto-fix process stopped");
     } catch (error) {
@@ -139,7 +143,7 @@ export default function QMOIAutoFixDashboard() {
   // Fetch GitHub Actions status
   const fetchGitHubStatus = async () => {
     try {
-      const response = await fetch("/api/qmoi/auto-fix/github-status");
+      const response = await apiClient.get("/api/qmoi/auto-fix/github-status");
       if (response.ok) {
         const data = await response.json();
         setGitHubStatus(data);
@@ -155,7 +159,7 @@ export default function QMOIAutoFixDashboard() {
   // Fetch deployment status
   const fetchDeploymentStatus = async () => {
     try {
-      const response = await fetch("/api/deployment-status");
+      const response = await apiClient.get("/api/deployment-status");
       if (response.ok) {
         const data = await response.json();
         setDeploymentStatus(data.status);
@@ -171,7 +175,7 @@ export default function QMOIAutoFixDashboard() {
   // Download report
   const downloadReport = async () => {
     try {
-      const response = await fetch("/api/qmoi/auto-fix/download-report");
+      const response = await apiClient.get("/api/qmoi/auto-fix/download-report");
       if (response.ok) {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);

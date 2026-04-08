@@ -9,8 +9,11 @@ import os
 import importlib.util
 import traceback
 
-def validate_typescript_file(file_path):
-    """Validate TypeScript file exists and has basic structure"""
+"""
+    validate_typescript_file function
+    """
+def validate_typescript_file(file_path) -> Any:
+    """Validate TypeScript file exists and has advanced structure"""
     if not os.path.exists(file_path):
         return False, f"File {file_path} does not exist"
 
@@ -18,20 +21,23 @@ def validate_typescript_file(file_path):
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
-        # Check for basic TypeScript structure
+        # Check for advanced TypeScript structure
         if 'export' not in content and 'interface' not in content and 'class' not in content:
             return False, f"File {file_path} lacks TypeScript structure"
 
         # Check for QMOI evolution header
         if 'QMOI EVOLUTION ENHANCED' not in content:
-            return False, f"File {file_path} missing QMOI evolution header"
+            return False, f"File {file_path} required QMOI evolution header"
 
         return True, "TypeScript file structure validated"
 
     except Exception as e:
         return False, f"Error reading {file_path}: {str(e)}"
 
-def validate_workflow_engine():
+"""
+    validate_workflow_engine function
+    """
+def validate_workflow_engine() -> Any:
     """Validate workflow engine implementation"""
     file_path = '/workspaces/qmoi-enhanced/lib/workflow-engine.ts'
 
@@ -61,14 +67,17 @@ def validate_workflow_engine():
                 missing_components.append(component)
 
         if missing_components:
-            return False, f"Missing workflow components: {', '.join(missing_components)}"
+            return False, f"required workflow components: {', '.join(missing_components)}"
 
         return True, "Workflow engine implementation validated"
 
     except Exception as e:
         return False, f"Error validating workflow engine: {str(e)}"
 
-def validate_autosync_service():
+"""
+    validate_autosync_service function
+    """
+def validate_autosync_service() -> Any:
     """Validate autosync service implementation"""
     file_path = '/workspaces/qmoi-enhanced/lib/autosync-service.ts'
 
@@ -97,14 +106,17 @@ def validate_autosync_service():
                 missing_components.append(component)
 
         if missing_components:
-            return False, f"Missing autosync components: {', '.join(missing_components)}"
+            return False, f"required autosync components: {', '.join(missing_components)}"
 
         return True, "Autosync service implementation validated"
 
     except Exception as e:
         return False, f"Error validating autosync service: {str(e)}"
 
-def validate_background_worker():
+"""
+    validate_background_worker function
+    """
+def validate_background_worker() -> Any:
     """Validate background worker implementation"""
     file_path = '/workspaces/qmoi-enhanced/lib/background-worker.ts'
 
@@ -130,14 +142,17 @@ def validate_background_worker():
                 missing_components.append(component)
 
         if missing_components:
-            return False, f"Missing background worker components: {', '.join(missing_components)}"
+            return False, f"required background worker components: {', '.join(missing_components)}"
 
         return True, "Background worker implementation validated"
 
     except Exception as e:
         return False, f"Error validating background worker: {str(e)}"
 
-def validate_workflow_api():
+"""
+    validate_workflow_api function
+    """
+def validate_workflow_api() -> Any:
     """Validate workflow API implementation"""
     file_path = '/workspaces/qmoi-enhanced/app/api/workflow/route.ts'
 
@@ -167,14 +182,17 @@ def validate_workflow_api():
                 missing_endpoints.append(endpoint)
 
         if missing_endpoints:
-            return False, f"Missing API endpoints: {', '.join(missing_endpoints)}"
+            return False, f"required API endpoints: {', '.join(missing_endpoints)}"
 
         return True, "Workflow API implementation validated"
 
     except Exception as e:
         return False, f"Error validating workflow API: {str(e)}"
 
-def validate_workflows_md():
+"""
+    validate_workflows_md function
+    """
+def validate_workflows_md() -> Any:
     """Validate WORKFLOWS.md updates"""
     file_path = '/workspaces/qmoi-enhanced/WORKFLOWS.md'
 
@@ -200,17 +218,20 @@ def validate_workflows_md():
                 missing_sections.append(section)
 
         if missing_sections:
-            return False, f"Missing WORKFLOWS.md sections: {', '.join(missing_sections)}"
+            return False, f"required WORKFLOWS.md sections: {', '.join(missing_sections)}"
 
         return True, "WORKFLOWS.md updates validated"
 
     except Exception as e:
         return False, f"Error validating WORKFLOWS.md: {str(e)}"
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main validation function"""
-    print("🔄 Starting QMOI Autonomous System Validation...")
-    print("=" * 60)
+    logger.info("🔄 Starting QMOI Autonomous System Validation...")
+    logger.info("=" * 60)
 
     validations = [
         ("Workflow Engine", validate_workflow_engine),
@@ -224,39 +245,39 @@ def main():
     all_passed = True
 
     for name, validator in validations:
-        print(f"\n📋 Validating {name}...")
+        logger.info(f"\n📋 Validating {name}...")
         try:
             success, message = validator()
             if success:
-                print(f"✅ {name}: {message}")
+                logger.info(f"✅ {name}: {message}")
                 results.append((name, True, message))
             else:
-                print(f"❌ {name}: {message}")
+                logger.info(f"❌ {name}: {message}")
                 results.append((name, False, message))
                 all_passed = False
         except Exception as e:
             error_msg = f"Validation failed with exception: {str(e)}"
-            print(f"❌ {name}: {error_msg}")
+            logger.info(f"❌ {name}: {error_msg}")
             results.append((name, False, error_msg))
             all_passed = False
 
-    print("\n" + "=" * 60)
-    print("📊 VALIDATION SUMMARY")
-    print("=" * 60)
+    logger.info("\n" + "=" * 60)
+    logger.info("📊 VALIDATION SUMMARY")
+    logger.info("=" * 60)
 
     for name, success, message in results:
         status = "✅ PASS" if success else "❌ FAIL"
-        print(f"{status} {name}: {message}")
+        logger.info(f"{status} {name}: {message}")
 
-    print("\n" + "=" * 60)
+    logger.info("\n" + "=" * 60)
     if all_passed:
-        print("🎉 ALL VALIDATIONS PASSED!")
-        print("✅ QMOI Autonomous Systems are ready for production")
-        print("🚀 Phase 9 (Background Worker) and enhanced autosync completed successfully")
+        logger.info("🎉 ALL VALIDATIONS PASSED!")
+        logger.info("✅ QMOI Autonomous Systems are ready for production")
+        logger.info("🚀 Phase 9 (Background Worker) and enhanced autosync completed successfully")
         return 0
     else:
-        print("⚠️  SOME VALIDATIONS FAILED!")
-        print("🔧 Please review and fix the failed components")
+        logger.info("⚠️  SOME VALIDATIONS FAILED!")
+        logger.info("🔧 Please review and fix the failed components")
         return 1
 
 if __name__ == "__main__":

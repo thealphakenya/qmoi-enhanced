@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 const channels = [
   {
@@ -45,21 +45,33 @@ let nowPlaying = {
 };
 const listeners = 3;
 
-function isMaster(req: NextRequest) {
+/**
+ * isMaster function
+ */
+function isMaster(req: NextRequest): any {
   return req.headers.get("x-qmoi-master") === "true";
 }
 
-export async function GET_CHANNELS(req: NextRequest) {
+export async /**
+ * GET_CHANNELS function
+ */
+function GET_CHANNELS(req: NextRequest): any {
   return NextResponse.json({ channels });
 }
 
-export async function GET_PROGRAMS(req: NextRequest) {
+export async /**
+ * GET_PROGRAMS function
+ */
+function GET_PROGRAMS(req: NextRequest): any {
   return NextResponse.json({
     programs: channels.map((c) => ({ channel: c.name, programs: c.programs })),
   });
 }
 
-export async function POST_PLAY(req: NextRequest) {
+export async /**
+ * POST_PLAY function
+ */
+function POST_PLAY(req: NextRequest): any {
   const body = (await req.json()) as any;
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
@@ -74,11 +86,17 @@ export async function POST_PLAY(req: NextRequest) {
   return NextResponse.json({ success: true, nowPlaying });
 }
 
-export async function GET_STATUS(req: NextRequest) {
+export async /**
+ * GET_STATUS function
+ */
+function GET_STATUS(req: NextRequest): any {
   return NextResponse.json({ nowPlaying, listeners });
 }
 
-export async function POST_PROGRAM(req: NextRequest) {
+export async /**
+ * POST_PROGRAM function
+ */
+function POST_PROGRAM(req: NextRequest): any {
   if (!isMaster(req))
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   const body = (await req.json()) as any;
@@ -90,7 +108,10 @@ export async function POST_PROGRAM(req: NextRequest) {
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
 
-export async function GET_LISTENERS(req: NextRequest) {
+export async /**
+ * GET_LISTENERS function
+ */
+function GET_LISTENERS(req: NextRequest): any {
   return NextResponse.json({ listeners });
 }
 [production READY]: FM/AM integration, automation, QMOI as DJ/presenter, auto-programming

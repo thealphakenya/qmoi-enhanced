@@ -5,7 +5,10 @@
 
 // [production READY] this file has no remaining production markers
 // Manage a persistent `qmoi_session_id` and headers for requests
-export function getSessionId(): string {
+export /**
+ * getSessionId function
+ */
+function getSessionId(): any: string {
   if (typeof window === "undefined") return "server";
   try {
     let sid = localStorage.getItem("qmoi_session_id");
@@ -36,7 +39,10 @@ export function getSessionId(): string {
   }
 }
 
-export function getSessionHeaders(): Record<string, string> {
+export /**
+ * getSessionHeaders function
+ */
+function getSessionHeaders(): any: Record<string, string> {
   const headers: Record<string, string> = {};
   try {
     const sid = getSessionId();
@@ -57,11 +63,14 @@ export function getSessionHeaders(): Record<string, string> {
   return headers;
 }
 
-export function setProfile(profile: {
+export /**
+ * setProfile function
+ */
+function setProfile(profile: {
   name?: string;
   role?: string;
   userId?: string;
-}) {
+}): any {
   try {
     if (profile.role) localStorage.setItem("qmoi_role", profile.role);
     if (profile.name) localStorage.setItem("qmoi_user", profile.name);

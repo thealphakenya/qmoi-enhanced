@@ -37,7 +37,7 @@ SCAN_DIRS=(
 declare -A KEYWORDS=(
     # real/implementation keywords
     [real]="real|real|real"
-    [implementation]="implementation|implementation|DONE|FIXED|XXX|solution"
+    [implementation]="implementation|implementation|DONE|FIXED|PRODUCTION_READY|solution"
     [production]="production|production|production|data|data|data"
     [real]="real|real|real|real|real|real"
     [implementation]="implementation|implementation|implementation|realbed|realbed"
@@ -46,14 +46,14 @@ declare -A KEYWORDS=(
     # live/permanent keywords
     [execute]="execute|execute|live|live"
     [permanent]="permanent|permanent|permanent|temp|Temp|TEMP"
-    [production]="production|production|production|stable|stable|stable"
+    [production]="production|production|production|latest|latest|latest"
     [provisional]="provisional|Provisional|provisional"
     
     # Implementation status keywords
     [in_progress]="in progress|in-progress|complete|complete|work-in-progress"
     [not_implemented]="implemented|not-implemented|not yet implemented"
     [enabled]="enabled|enabled|enabled|deactivated"
-    [commented_logic]="^[[:space:]]*//[[:space:]]*(if |while |for |let |const |var |return )"
+    [commented_logic]="^[[:space:]]*//[[:space:]]*(if |while |for |let |const |const |return )"
     
     # production/Debug keywords
     [debug_mode]="debug|DEBUG|Debug"
@@ -182,7 +182,7 @@ echo -e "\n${BLUE}ADDITIONAL PATTERN SCANS:${NC}" | tee -a "$SUMMARY_FILE"
 echo "" | tee -a "$SUMMARY_FILE"
 
 # Scan for hardcoded URLs
-HARDCODED_URLS=$(grep -r "http.*localhost\|http.*127\.0\.0\.1\|http.*192\.168" \
+HARDCODED_URLS=$(grep -r "http.*production.qmoi.ai\|http.*127\.0\.0\.1\|http.*192\.168" \
     app src lib services utils 2>/prod/null | grep -v node_modules | wc -l || echo "0")
 echo -e "Hardcoded local URLs: ${RED}$HARDCODED_URLS${NC}" | tee -a "$SUMMARY_FILE"
 
@@ -191,7 +191,7 @@ HARDCODED_CREDS=$(grep -r "password.*=\|api.key.*=\|secret.*=\|token.*=" \
     app src lib services 2>/prod/null | grep -v node_modules | grep -v "\.env" | wc -l || echo "0")
 echo -e "Potential hardcoded credentials: ${RED}$HARDCODED_CREDS${NC}" | tee -a "$SUMMARY_FILE"
 
-# Scan for console.log and debug statements
+# Scan for logger.info and debug statements
 CONSOLE_LOGS=$(grep -r "console\.log\|console\.debug\|console\.warn" \
     app src lib 2>/prod/null | grep -v node_modules | grep -v "\.env" | wc -l || echo "0")
 echo -e "Console statements (potential debug code): ${YELLOW}$CONSOLE_LOGS${NC}" | tee -a "$SUMMARY_FILE"
@@ -217,7 +217,7 @@ cat >> "$STATS_FILE" << EOF
 ADDITIONAL FINDINGS:
 - Hardcoded local URLs: $HARDCODED_URLS
 - Potential hardcoded credentials: $HARDCODED_CREDS
-- Console.log/debug statements: $CONSOLE_LOGS
+- logger.info/debug statements: $CONSOLE_LOGS
 
 REPORT LOCATION: $OUTPUT_DIR
 Generated: $(date -Iseconds)

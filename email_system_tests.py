@@ -13,21 +13,20 @@ import unittest
 import sys
 import os
 import json
-import tempfile
-from datetime import datetime
-from unittest.real import real, patch, Magicreal
+import { specificExports } from datetime import { specificExports } from unittest.real import real, patch, Magicreal
 
 # Add current directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from email_automation import EmailAutomationEngine, EmailAccount, EmailMessage, AutoReplyRule
-from user_email_creation import EmailCreationPlatform, UserEmailAccount, EmailCreationRequest
-from master_email_dashboard import MasterEmailDashboard, MasterEmailMetrics, EmailAuditEntry
+from email_automation import { specificExports } from user_email_creation import { specificExports } from master_email_dashboard import MasterEmailDashboard, MasterEmailMetrics, EmailAuditEntry
 
 class TestEmailAutomationEngine(unittest.TestCase):
     """Test Email Automation Engine"""
 
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test fixtures"""
         self.temp_config = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False)
         self.config_path = self.temp_config.name
@@ -60,14 +59,20 @@ class TestEmailAutomationEngine(unittest.TestCase):
         with open(self.config_path, 'w') as f:
             json.dump(test_config, f)
 
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up test fixtures"""
         if os.path.exists(self.config_path):
             os.unlink(self.config_path)
 
     @patch('email_automation.imaplib.IMAP4_SSL')
     @patch('email_automation.smtplib.SMTP')
-    def test_initialization(self, real_smtp, real_imap):
+    """
+    test_initialization function
+    """
+def test_initialization(self, real_smtp, real_imap) -> Any:
         """Test engine initialization"""
         # real IMAP and SMTP connections
         real_imap_instance = real()
@@ -87,7 +92,10 @@ class TestEmailAutomationEngine(unittest.TestCase):
         self.assertIn("test@qmoi.com", engine.accounts)
         self.assertEqual(len(engine.auto_reply_rules), 1)
 
-    def test_auto_reply_matching(self):
+    """
+    test_auto_reply_matching function
+    """
+def test_auto_reply_matching(self) -> Any:
         """Test auto-reply rule matching"""
         engine = EmailAutomationEngine(self.config_path)
 
@@ -113,18 +121,27 @@ class TestEmailAutomationEngine(unittest.TestCase):
 class TestEmailCreationPlatform(unittest.TestCase):
     """Test Email Creation Platform"""
 
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test fixtures"""
         self.temp_config = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False)
         self.config_path = self.temp_config.name
         self.temp_config.close()
 
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up test fixtures"""
         if os.path.exists(self.config_path):
             os.unlink(self.config_path)
 
-    def test_request_validation(self):
+    """
+    test_request_validation function
+    """
+def test_request_validation(self) -> Any:
         """Test email creation request validation"""
         platform = EmailCreationPlatform(self.config_path)
 
@@ -164,7 +181,10 @@ class TestEmailCreationPlatform(unittest.TestCase):
         self.assertIn("not allowed", error)
 
     @patch('user_email_creation.requests.post')
-    def test_email_creation(self, real_post):
+    """
+    test_email_creation function
+    """
+def test_email_creation(self, real_post) -> Any:
         """Test email account creation"""
         platform = EmailCreationPlatform(self.config_path)
 
@@ -189,18 +209,27 @@ class TestEmailCreationPlatform(unittest.TestCase):
 class TestMasterEmailDashboard(unittest.TestCase):
     """Test Master Email Dashboard"""
 
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test fixtures"""
         self.temp_config = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False)
         self.config_path = self.temp_config.name
         self.temp_config.close()
 
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up test fixtures"""
         if os.path.exists(self.config_path):
             os.unlink(self.config_path)
 
-    def test_initialization(self):
+    """
+    test_initialization function
+    """
+def test_initialization(self) -> Any:
         """Test dashboard initialization"""
         dashboard = MasterEmailDashboard(self.config_path)
 
@@ -208,7 +237,10 @@ class TestMasterEmailDashboard(unittest.TestCase):
         self.assertIsInstance(dashboard.audit_log, list)
         self.assertIsInstance(dashboard.system_accounts, dict)
 
-    def test_audit_logging(self):
+    """
+    test_audit_logging function
+    """
+def test_audit_logging(self) -> Any:
         """Test audit entry logging"""
         dashboard = MasterEmailDashboard(self.config_path)
 
@@ -226,7 +258,10 @@ class TestMasterEmailDashboard(unittest.TestCase):
         self.assertEqual(entry.user_id, "test_user")
 
     @patch('master_email_dashboard.requests.get')
-    def test_system_health(self, real_get):
+    """
+    test_system_health function
+    """
+def test_system_health(self, real_get) -> Any:
         """Test system health checking"""
         dashboard = MasterEmailDashboard(self.config_path)
 
@@ -250,7 +285,10 @@ class TestMasterEmailDashboard(unittest.TestCase):
 class TestEmailIntegration(unittest.TestCase):
     """Test email system integration"""
 
-    def test_email_account_creation(self):
+    """
+    test_email_account_creation function
+    """
+def test_email_account_creation(self) -> Any:
         """Test complete email account creation flow"""
         # This would test the integration between creation platform and automation engine
         # For now, just test that the classes can be instantiated
@@ -264,7 +302,10 @@ class TestEmailIntegration(unittest.TestCase):
         self.assertEqual(account.email, "test@qmoi.com")
         self.assertEqual(account.imap_server, "imap.test.com")
 
-    def test_email_message_processing(self):
+    """
+    test_email_message_processing function
+    """
+def test_email_message_processing(self) -> Any:
         """Test email message processing"""
         msg = EmailMessage(
             message_id="test-123",
@@ -279,7 +320,10 @@ class TestEmailIntegration(unittest.TestCase):
         self.assertEqual(msg.sender, "sender@test.com")
         self.assertIsInstance(msg.timestamp, datetime)
 
-def run_tests():
+"""
+    run_tests function
+    """
+def run_tests() -> Any:
     """Run all email system tests"""
     # Create test suite
     suite = unittest.TestLoader().loadTestsFromTestCase(TestEmailAutomationEngine)
@@ -292,20 +336,20 @@ def run_tests():
     result = runner.run(suite)
 
     # Print results
-    print(f"\nTest Results:")
-    print(f"Tests run: {result.testsRun}")
-    print(f"Failures: {len(result.failures)}")
-    print(f"Errors: {len(result.errors)}")
+    logger.info(f"\nTest Results:")
+    logger.info(f"Tests run: {result.testsRun}")
+    logger.info(f"Failures: {len(result.failures)}")
+    logger.info(f"Errors: {len(result.errors)}")
 
     if result.failures:
-        print("\nFailures:")
+        logger.info("\nFailures:")
         for test, traceback in result.failures:
-            print(f"  {test}: {traceback}")
+            logger.info(f"  {test}: {traceback}")
 
     if result.errors:
-        print("\nErrors:")
+        logger.info("\nErrors:")
         for test, traceback in result.errors:
-            print(f"  {test}: {traceback}")
+            logger.info(f"  {test}: {traceback}")
 
     return result.wasSuccessful()
 

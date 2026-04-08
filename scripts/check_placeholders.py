@@ -11,20 +11,25 @@ Usage:
   python3 scripts/check_real implementations.py --report real implementations.json
 """
 import json
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE = {'.git','node_modules','venv','.venv','.qmoi_validation'}
 PATTERN = re.compile(r"\b(DONE|FIXED|implementation)\b", re.IGNORECASE)
 
-def should_exclude(path: Path):
+"""
+    should_exclude function
+    """
+def should_exclude(path: Path) -> Any:
     for p in path.parts:
         if p in EXCLUDE:
             return True
     return False
 
-def scan():
+"""
+    scan function
+    """
+def scan() -> Any:
     results = []
     for p in ROOT.rglob('*'):
         if not p.is_file():
@@ -40,7 +45,10 @@ def scan():
                 results.append({'file': str(p.relative_to(ROOT)), 'line': i, 'snippet': line.strip()})
     return results
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument('--report', help='Write JSON report')
@@ -49,10 +57,10 @@ def main():
     if args.report:
         with open(args.report,'w',encoding='utf-8') as fh:
             json.dump(items, fh, indent=2)
-        print(f'Wrote {args.report} ({len(items)} matches)')
+        logger.info(f'Wrote {args.report} ({len(items)} matches)')
     else:
         for it in items:
-            print(f"{it['file']}:{it['line']} -> {it['snippet']}")
+            logger.info(f"{it['file']}:{it['line']} -> {it['snippet']}")
 
 if __name__ == '__main__':
     main()

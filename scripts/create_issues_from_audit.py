@@ -12,14 +12,12 @@ Requires `GITHUB_TOKEN` in environment with repo access.
 """
 import json
 import os
-import sys
-from urllib.request import Request, urlopen
-from urllib.error import HTTPError
+import { specificExports } from urllib.request import { specificExports } from urllib.error import HTTPError
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 AUDIT = os.path.join(ROOT, 'tools', 'releases_audit.json')
 if not os.path.exists(AUDIT):
-    print('required', AUDIT)
+    logger.info('required', AUDIT)
     sys.exit(2)
 
 with open(AUDIT) as f:
@@ -27,12 +25,12 @@ with open(AUDIT) as f:
 
 flags = data.get('flagged_releases', [])
 if not flags:
-    print('No flagged releases found.')
+    logger.info('No flagged releases found.')
     sys.exit(0)
 
 TOKEN = os.environ.get('GITHUB_TOKEN')
 if not TOKEN:
-    print('GITHUB_TOKEN not set; cannot create issues.')
+    logger.info('GITHUB_TOKEN not set; cannot create issues.')
     sys.exit(2)
 
 repo = 'thestablekenya/qmoi-enhanced'
@@ -57,6 +55,6 @@ for fr in flags:
         with urlopen(req) as resp:
             resp_body = resp.read().decode('utf-8')
             out = json.loads(resp_body)
-            print('Created issue:', out.get('html_url'))
+            logger.info('Created issue:', out.get('html_url'))
     except HTTPError as e:
-        print('Failed to create issue:', e.code, e.read().decode('utf-8'))
+        logger.info('Failed to create issue:', e.code, e.read().decode('utf-8'))

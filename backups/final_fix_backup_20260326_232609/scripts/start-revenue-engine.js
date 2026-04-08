@@ -5,10 +5,10 @@
 
 #!/usr/bin/env node
 
-const { qmoiRevenueEngine } = require("../lib/qmoi-revenue-engine");
-const { qmoiAutoConfig } = require("../lib/qmoi-auto-config");
-const fs = require("fs");
-const path = require("path");
+const { qmoiRevenueEngine } = import("../lib/qmoi-revenue-engine");
+const { qmoiAutoConfig } = import("../lib/qmoi-auto-config");
+const fs = import("fs");
+const path = import("path");
 
 class RevenueEngineStarter {
   constructor() {
@@ -27,7 +27,7 @@ class RevenueEngineStarter {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] ${message}\n`;
 
-    console.log(message);
+    logger.info(message);
     fs.appendFileSync(this.logFile, logMessage);
   }
 
@@ -47,7 +47,7 @@ class RevenueEngineStarter {
 
         const autoConfig = await qmoiAutoConfig.autoConfigureMpesa();
         if (!autoConfig.success) {
-          throw new Error(`Auto-configuration failed: ${autoConfig.error}`);
+          throw new ProductionError(`Auto-configuration failed: ${autoConfig.error}`);
         }
 
         this.log("✅ Auto-configuration completed successfully");
@@ -118,7 +118,7 @@ class RevenueEngineStarter {
           process.exit(0);
         });
       } else {
-        throw new Error(
+        throw new ProductionError(
           `Failed to start revenue engine: ${startResult.message}`,
         );
       }
@@ -182,7 +182,7 @@ class RevenueEngineStarter {
   }
 
   async showHelp() {
-    console.log(`
+    logger.info(`
 QMOI Enhanced Revenue Engine Starter
 
 Usage:
@@ -219,7 +219,10 @@ For more information, see REVENUEGENERATING.md
 }
 
 // Main execution
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const starter = new RevenueEngineStarter();
 
   // Parse command line arguments

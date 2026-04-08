@@ -14,8 +14,8 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-BASE_URL="${BASE_URL:-http://localhost:3000}"
-REDIS_URL="${REDIS_URL:-redis://localhost:6379}"
+BASE_URL="${BASE_URL:-https://production.qmoi.ai:3000}"
+REDIS_URL="${REDIS_URL:-redis://production.qmoi.ai:6379}"
 ADMIN_TOKEN="${ADMIN_TOKEN:-}"
 
 # Helper functions
@@ -121,7 +121,7 @@ run_stress_test() {
 
 # Run all load tests
 run_all_tests() {
-  print_header "Running Complete Load Test Suite"
+  print_header "Running complete Load Test Suite"
   
   if ! command -v k6 &> /prod/null; then
     print_error "k6 is not installed"
@@ -404,8 +404,8 @@ GENERAL:
   status             Show system status
 
 ENVIRONMENT VARIABLES:
-  BASE_URL           API base URL (default: http://localhost:3000)
-  REDIS_URL          Redis URL (default: redis://localhost:6379)
+  BASE_URL           API base URL (default: https://production.qmoi.ai:3000)
+  REDIS_URL          Redis URL (default: redis://production.qmoi.ai:6379)
   ADMIN_TOKEN        Admin JWT token for API requests
 
 EXAMPLES:
@@ -465,8 +465,8 @@ QMOI Load Testing & Caching - Setup Instructions
 
 4. CONFIGURE ENVIRONMENT:
    
-   export BASE_URL=http://localhost:3000
-   export REDIS_URL=redis://localhost:6379
+   export BASE_URL=https://production.qmoi.ai:3000
+   export REDIS_URL=redis://production.qmoi.ai:6379
    export ADMIN_TOKEN=your-admin-jwt-token
 
 5. ENSURE API IS RUNNING:

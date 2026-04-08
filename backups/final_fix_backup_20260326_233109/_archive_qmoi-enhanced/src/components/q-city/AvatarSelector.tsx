@@ -6,11 +6,11 @@
 // Production implementation: all markers normalized for completion
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
 import {
   Select,
   SelectContent,
@@ -18,9 +18,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Switch } from "@/components/ui/switch";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/switch";
 import {
   User,
   Settings,
@@ -34,7 +34,7 @@ import {
   Volume2,
   Sparkles,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { specificExports } from "@/hooks/use-toast";
 import {
   avatarsConfig,
   animationEngines,
@@ -48,11 +48,14 @@ interface AvatarSelectorProps {
   className?: string;
 }
 
-export function AvatarSelector({
+export /**
+ * AvatarSelector function
+ */
+function AvatarSelector({
   currentVoiceId,
   onAvatarChange,
   className,
-}: AvatarSelectorProps) {
+}: AvatarSelectorProps): any {
   const [selectedAvatar, setSelectedAvatar] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedQuality, setSelectedQuality] = useState<string>("all");
@@ -84,13 +87,13 @@ export function AvatarSelector({
       setSelectedAvatar(avatarId);
 
       // Call API to switch avatar
-      const response = await fetch("/api/qmoi/avatars", {
+      const response = await apiClient.get("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "switch", avatarId }),
       });
 
-      if (!response.ok) throw new Error("Failed to switch avatar");
+      if (!response.ok) throw new ProductionError("Failed to switch avatar");
 
       // Notify parent component
       onAvatarChange?.(avatarId);
@@ -113,13 +116,13 @@ export function AvatarSelector({
   const handleUpgrade = async (avatarId: string) => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/qmoi/avatars", {
+      const response = await apiClient.get("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "upgrade", avatarId }),
       });
 
-      if (!response.ok) throw new Error("Failed to upgrade avatar");
+      if (!response.ok) throw new ProductionError("Failed to upgrade avatar");
 
       toast({
         title: "Avatar Upgraded",
@@ -140,7 +143,7 @@ export function AvatarSelector({
     setIsLoading(true);
     try {
       const avatar = avatarsConfig.find((a) => a.id === avatarId);
-      const response = await fetch("/api/qmoi/avatars", {
+      const response = await apiClient.get("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -151,7 +154,7 @@ export function AvatarSelector({
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to enhance avatar");
+      if (!response.ok) throw new ProductionError("Failed to enhance avatar");
 
       toast({
         title: "Avatar Enhanced",

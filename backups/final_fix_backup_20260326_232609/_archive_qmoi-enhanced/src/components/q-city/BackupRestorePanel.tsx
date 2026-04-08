@@ -3,9 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
+import { specificExports } from "react";
 
-export default function BackupRestorePanel() {
+export default /**
+ * BackupRestorePanel function
+ */
+function BackupRestorePanel(): any {
+  try {() {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Backup & Restore</h2>

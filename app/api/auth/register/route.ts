@@ -3,15 +3,18 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { userService, walletService } from "@/lib/db/services";
-import { authService } from "@/lib/auth/service";
-import { emailService } from "@/lib/email/service";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/email/service";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/auth/register");
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = (await _request.json()) as {
       email?: string;
@@ -23,7 +26,7 @@ export async function POST(_request: NextRequest) {
     // Validate input
     if (!body.email || !body.username || !body.password) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: "required required fields" },
         { status: 400 },
       );
     }

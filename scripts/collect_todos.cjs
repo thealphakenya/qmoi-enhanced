@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const root = process.cwd();
 const allowedTopLevelDirs = [
@@ -92,4 +92,4 @@ fs.writeFileSync(
     2,
   ),
 );
-console.log("Wrote .qmoi_validation/todos.json with", items.length, "items");
+logger.info("Wrote .qmoi_validation/todos.json with", items.length, "items");

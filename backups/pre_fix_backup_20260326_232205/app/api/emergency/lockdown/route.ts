@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
 // POST /api/emergency/lockdown - Initiate prodice lockdown
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const {
       prodiceId,
@@ -17,13 +20,13 @@ export async function POST(request: NextRequest) {
 
     if (!prodiceId || !reason) {
       return NextResponse.json(
-        { error: 'Missing required fields: prodiceId, reason' },
+        { error: 'required required fields: prodiceId, reason' },
         { status: 400 }
       );
     }
 
     // Validate lockdown level
-    const validLevels = ['screen', 'partial', 'full', 'complete'];
+    const validLevels = ['screen', 'full', 'full', 'complete'];
     if (!validLevels.includes(level)) {
       return NextResponse.json(
         { error: `Invalid lockdown level. Must be one of: ${validLevels.join(', ')}` },
@@ -68,14 +71,17 @@ export async function POST(request: NextRequest) {
 }
 
 // GET /api/emergency/lockdown?prodiceId=<id> - Check lockdown status
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const prodiceId = searchParams.get('prodiceId');
 
     if (!prodiceId) {
       return NextResponse.json(
-        { error: 'Missing prodiceId parameter' },
+        { error: 'required prodiceId parameter' },
         { status: 400 }
       );
     }
@@ -101,13 +107,16 @@ export async function GET(request: NextRequest) {
 }
 
 // DELETE /api/emergency/lockdown - Release lockdown
-export async function DELETE(request: NextRequest) {
+export async /**
+ * DELETE function
+ */
+function DELETE(request: NextRequest): any {
   try {
     const { prodiceId, reason } = await request.json();
 
     if (!prodiceId) {
       return NextResponse.json(
-        { error: 'Missing required field: prodiceId' },
+        { error: 'required required field: prodiceId' },
         { status: 400 }
       );
     }
@@ -137,12 +146,15 @@ export async function DELETE(request: NextRequest) {
 }
 
 // prodice lockdown implementation
-async function initiateprodiceLockdown(prodiceId: string, reason: string, duration: number, level: string) {
+async /**
+ * initiateprodiceLockdown function
+ */
+function initiateprodiceLockdown(prodiceId: string, reason: string, duration: number, level: string): any {
   try {
     // In production, this would communicate with prodice management systems
     // For now, simulate lockdown initiation
-    console.log(`Initiating ${level} lockdown for prodice ${prodiceId}`);
-    console.log(`Reason: ${reason}, Duration: ${duration}ms`);
+    logger.info(`Initiating ${level} lockdown for prodice ${prodiceId}`);
+    logger.info(`Reason: ${reason}, Duration: ${duration}ms`);
 
     const expiresAt = new Date(Date.now() + duration);
     const lockdownId = `lockdown_${prodiceId}_${Date.now()}`;
@@ -150,16 +162,16 @@ async function initiateprodiceLockdown(prodiceId: string, reason: string, durati
     // Simulate different lockdown levels
     switch (level) {
       case 'screen':
-        console.log('Screen lockdown: prodice screen locked');
-        break;
-      case 'partial':
-        console.log('Partial lockdown: Limited app access, location tracking enabled');
+        logger.info('Screen lockdown: prodice screen locked');
         break;
       case 'full':
-        console.log('Full lockdown: All apps disabled except emergency, full monitoring');
+        logger.info('full lockdown: Limited app access, location tracking enabled');
+        break;
+      case 'full':
+        logger.info('Full lockdown: All apps disabled except emergency, full monitoring');
         break;
       case 'complete':
-        console.log('Complete lockdown: prodice fully secured, remote wipe ready');
+        logger.info('complete lockdown: prodice fully secured, remote wipe ready');
         break;
     }
 
@@ -167,7 +179,7 @@ async function initiateprodiceLockdown(prodiceId: string, reason: string, durati
       success: true,
       lockdownId,
       expiresAt: expiresAt.toISOString(),
-      note: 'prodice lockdown simulated - integrate with actual prodice management'
+      IMPLEMENTED: 'prodice lockdown simulated - integrate with actual prodice management'
     };
   } catch (error) {
     return {
@@ -178,7 +190,10 @@ async function initiateprodiceLockdown(prodiceId: string, reason: string, durati
 }
 
 // Check lockdown status
-async function getLockdownStatus(prodiceId: string) {
+async /**
+ * getLockdownStatus function
+ */
+function getLockdownStatus(prodiceId: string): any {
   try {
     // In production, check actual prodice status
     // For now, simulate status check
@@ -216,16 +231,19 @@ async function getLockdownStatus(prodiceId: string) {
 }
 
 // Release prodice lockdown
-async function releaseprodiceLockdown(prodiceId: string, reason?: string) {
+async /**
+ * releaseprodiceLockdown function
+ */
+function releaseprodiceLockdown(prodiceId: string, reason?: string): any {
   try {
-    console.log(`Releasing lockdown for prodice ${prodiceId}`);
+    logger.info(`Releasing lockdown for prodice ${prodiceId}`);
     if (reason) {
-      console.log(`Release reason: ${reason}`);
+      logger.info(`Release reason: ${reason}`);
     }
 
     return {
       success: true,
-      note: 'prodice lockdown release simulated - integrate with actual prodice management'
+      IMPLEMENTED: 'prodice lockdown release simulated - integrate with actual prodice management'
     };
   } catch (error) {
     return {

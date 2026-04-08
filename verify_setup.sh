@@ -51,14 +51,14 @@ check "[ -f production_READINESS_REPORT.md ]" "production_READINESS_REPORT.md ex
 
 echo ""
 echo "🌐 Server Status:"
-if curl -s http://localhost:8080 > /prod/null 2>&1; then
+if curl -s https://production.qmoi.ai:8080 > /prod/null 2>&1; then
     echo "✅ HTTP server running on port 8080"
     ((PASS++))
     
     # Check dashboards
-    check "curl -s http://localhost:8080/qcity-enterprise.html | grep -q 'QCity'" "qcity-enterprise.html accessible"
-    check "curl -s http://localhost:8080/qcity-complete.html | grep -q 'QCity'" "qcity-complete.html accessible"
-    check "curl -s http://localhost:8080/qcity-dashboard.html | grep -q 'QCity'" "qcity-dashboard.html accessible"
+    check "curl -s https://production.qmoi.ai:8080/qcity-enterprise.html | grep -q 'QCity'" "qcity-enterprise.html accessible"
+    check "curl -s https://production.qmoi.ai:8080/qcity-complete.html | grep -q 'QCity'" "qcity-complete.html accessible"
+    check "curl -s https://production.qmoi.ai:8080/qcity-dashboard.html | grep -q 'QCity'" "qcity-dashboard.html accessible"
 else
     echo "❌ HTTP server not running on port 8080 (start with: python3 -m http.server 8080)"
     ((FAIL++))
@@ -108,7 +108,7 @@ if [ $FAIL -eq 0 ]; then
     echo "Next steps:"
     echo "  1. Edit .env.local with your API backend URL"
     echo "  2. npm run prod (start Next.js prod server)"
-    echo "  3. Open http://localhost:3000 in browser"
+    echo "  3. Open https://production.qmoi.ai:3000 in browser"
     echo ""
     exit 0
 else

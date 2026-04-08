@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // @ts-nocheck
-import axios from "axios";
-import crypto from "crypto";
+import { specificExports } from "axios";
+import { specificExports } from "crypto";
 
 interface MpesaConfig {
   consumerKey: string;
@@ -71,7 +71,7 @@ class MpesaAPI {
       return this.accessToken || "";
     } catch (error) {
       (globalThis.console as any)?.error?.("Failed to get M-Pesa access token:", error);
-      throw new Error("M-Pesa authentication failed");
+      throw new ProductionError("M-Pesa authentication failed");
     }
   }
 
@@ -134,7 +134,7 @@ class MpesaAPI {
       };
     } catch (error) {
       (globalThis.console as any)?.error?.("STK Push failed:", error);
-      throw new Error("Failed to initiate M-Pesa payment");
+      throw new ProductionError("Failed to initiate M-Pesa payment");
     }
   }
 
@@ -177,7 +177,7 @@ class MpesaAPI {
       };
     } catch (error) {
       (globalThis.console as any)?.error?.("Transaction status check failed:", error);
-      throw new Error("Failed to check transaction status");
+      throw new ProductionError("Failed to check transaction status");
     }
   }
 

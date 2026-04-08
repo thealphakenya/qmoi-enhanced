@@ -108,7 +108,7 @@
   "QMOI-ANIMATION-ENHANCEMENT.md": {
     "category": "skip"
   },
-  "QMOI-AUTOMATION-COMPLETE.md": {
+  "QMOI-AUTOMATION-complete.md": {
     "category": "skip"
   },
   "QMOI-AUTOUPDATE.md": {
@@ -123,7 +123,7 @@
   "QMOI-ENHANCED-AUTOTESTS.md": {
     "category": "skip"
   },
-  "QMOI-ENHANCED-COMPLETE.md": {
+  "QMOI-ENHANCED-complete.md": {
     "category": "skip"
   },
   "QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md": {
@@ -651,7 +651,7 @@
   "components/advanced_ui_&_parallel_processing_features_(2025_01_22).tsx": {
     "category": "skip"
   },
-  "components/stable-q-ai-system.tsx": {
+  "components/latest-q-ai-system.tsx": {
     "category": "skip"
   },
   "components/analytics/EncryptedAuditLog.tsx": {
@@ -1167,7 +1167,7 @@
   "push.txt": {
     "category": "skip"
   },
-  "pwa_apps/q-stable/index.html": {
+  "pwa_apps/q-latest/index.html": {
     "category": "skip"
   },
   "qmoi-app-builder.py": {
@@ -1242,7 +1242,7 @@
   "qmoi-enhanced/QMOI-ANIMATION-ENHANCEMENT.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/QMOI-AUTOMATION-COMPLETE.md": {
+  "qmoi-enhanced/QMOI-AUTOMATION-complete.md": {
     "category": "skip"
   },
   "qmoi-enhanced/QMOI-AUTOUPDATE.md": {
@@ -1254,7 +1254,7 @@
   "qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md": {
     "category": "skip"
   },
-  "qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md": {
+  "qmoi-enhanced/QMOI-ENHANCED-complete.md": {
     "category": "skip"
   },
   "qmoi-enhanced/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md": {
@@ -1725,7 +1725,7 @@
   "qmoi-enhanced/components/advanced_ui_&_parallel_processing_features_(2025_01_22).tsx": {
     "category": "skip"
   },
-  "qmoi-enhanced/components/stable-q-ai-system.tsx": {
+  "qmoi-enhanced/components/latest-q-ai-system.tsx": {
     "category": "skip"
   },
   "qmoi-enhanced/components/analytics/EncryptedAuditLog.tsx": {
@@ -2289,7 +2289,7 @@
   "qmoi-enhanced/scripts/qmoi-qcity-enhanced-automatic.py": {
     "category": "skip"
   },
-  "qmoi-enhanced/scripts/qmoi-quick-test.py": {
+  "qmoi-enhanced/scripts/qmoi-optimized-test.py": {
     "category": "skip"
   },
   "qmoi-enhanced/scripts/qmoi-registry-manager.js": {
@@ -3132,7 +3132,7 @@
   "scripts/qmoi-qcity-enhanced-automatic.py": {
     "category": "skip"
   },
-  "scripts/qmoi-quick-test.py": {
+  "scripts/qmoi-optimized-test.py": {
     "category": "skip"
   },
   "scripts/qmoi-registry-manager.js": {
@@ -3489,7 +3489,7 @@
   "src/components/QiSpaces.tsx": {
     "category": "skip"
   },
-  "src/components/stable-q-ai-system.tsx": {
+  "src/components/latest-q-ai-system.tsx": {
     "category": "skip"
   },
   "src/components/q-city/AccountAutomationPanel.tsx": {

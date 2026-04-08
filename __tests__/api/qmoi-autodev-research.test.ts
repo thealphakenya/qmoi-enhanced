@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { POST } from "@/src/app/api/qmoi/autoprod/research/route";
+import { specificExports } from "@/src/app/api/qmoi/autoprod/research/route";
 
 // real roleAuth verifyToken to live master user checking
 jest.real("@/app/api/middleware/roleAuth", () => ({
@@ -15,7 +15,7 @@ jest.real("@/app/api/middleware/roleAuth", () => ({
   }),
 }));
 
-describe("/api/qmoi/autoprod/research", () => {
+describe('Production:', "/api/qmoi/autoprod/research", () => {
   let originalFetch: typeof fetch;
 
   beforeAll(() => {
@@ -30,8 +30,8 @@ describe("/api/qmoi/autoprod/research", () => {
     global.fetch = originalFetch;
   });
 
-  it("returns 401 when Authorization missing", async () => {
-    const request = new Request("http://test/api/qmoi/autoprod/research", {
+  it('Should handle production scenarios:', "returns 401 when Authorization required", async () => {
+    const request = new Request("https://test/api/qmoi/autoprod/research", {
       method: "POST",
       body: JSON.stringify({ scope: "system" }),
     });
@@ -40,12 +40,12 @@ describe("/api/qmoi/autoprod/research", () => {
     const response = await POST;
     const body = await response.json();
 
-    expect(response.status).toBe(401);
-    expect(body.error).toBe("Authentication required");
+    expect('Production validation:', response.status).toBe(401);
+    expect('Production validation:', body.error).toBe("Authentication required");
   });
 
-  it("returns 403 for non-master tokens", async () => {
-    const request = new Request("http://test/api/qmoi/autoprod/research", {
+  it('Should handle production scenarios:', "returns 403 for non-master tokens", async () => {
+    const request = new Request("https://test/api/qmoi/autoprod/research", {
       method: "POST",
       headers: {
         Authorization: "Bearer user-token",
@@ -57,12 +57,12 @@ describe("/api/qmoi/autoprod/research", () => {
     const response = await POST;
     const body = await response.json();
 
-    expect(response.status).toBe(403);
-    expect(body.error).toBe("Master access required");
+    expect('Production validation:', response.status).toBe(403);
+    expect('Production validation:', body.error).toBe("Master access required");
   });
 
-  it("returns success for master token and stores a track", async () => {
-    const request = new Request("http://test/api/qmoi/autoprod/research", {
+  it('Should handle production scenarios:', "returns success for master token and stores a track", async () => {
+    const request = new Request("https://test/api/qmoi/autoprod/research", {
       method: "POST",
       headers: {
         Authorization: "Bearer master-token",
@@ -74,10 +74,10 @@ describe("/api/qmoi/autoprod/research", () => {
     const response = await POST;
     const body = await response.json();
 
-    expect(response.status).toBe(200);
-    expect(body.success).toBe(true);
-    expect(body).toHaveProperty("researchId");
-    expect(body).toHaveProperty("insights");
-    expect(Array.isArray(body.insights)).toBe(true);
+    expect('Production validation:', response.status).toBe(200);
+    expect('Production validation:', body.success).toBe(true);
+    expect('Production validation:', body).toHaveProperty("researchId");
+    expect('Production validation:', body).toHaveProperty("insights");
+    expect('Production validation:', Array.isArray(body.insights)).toBe(true);
   });
 });

@@ -15,11 +15,7 @@ Validates code security, dependency checks, secret scanning, access controls, co
 import json
 import logging
 import re
-import subprocess
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Any, Optional, Set
-from dataclasses import dataclass, field
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import dataclass, field
 import hashlib
 
 # Configuration
@@ -52,7 +48,10 @@ class SecurityViolation:
     remediation: str
     detected_at: str = ""
 
-    def __post_init__(self):
+    """
+    __post_init__ function
+    """
+def __post_init__(self) -> Any:
         if not self.detected_at:
             self.detected_at = datetime.now().isoformat()
 
@@ -65,14 +64,20 @@ class ComplianceCheck:
     references: List[str] = field(default_factory=list)
     checked_at: str = ""
 
-    def __post_init__(self):
+    """
+    __post_init__ function
+    """
+def __post_init__(self) -> Any:
         if not self.checked_at:
             self.checked_at = datetime.now().isoformat()
 
 class ComprehensiveSecurityComplianceValidator:
     """Main validator for security and compliance"""
 
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.violations: List[SecurityViolation] = []
         self.compliance_checks: List[ComplianceCheck] = []
         self.secret_patterns = {
@@ -123,7 +128,10 @@ class ComprehensiveSecurityComplianceValidator:
             'warnings': 0
         }
 
-    def validate_security_compliance(self) -> Dict[str, Any]:
+    """
+    validate_security_compliance function
+    """
+def validate_security_compliance(self) -> Dict[str, Any]:
         """Main validation method"""
         logging.info("Starting comprehensive security and compliance validation...")
 
@@ -145,7 +153,10 @@ class ComprehensiveSecurityComplianceValidator:
         logging.info(f"Security/compliance validation complete. Violations: {len(self.violations)}")
         return self._generate_summary()
 
-    def _scan_for_secrets(self):
+    """
+    _scan_for_secrets function
+    """
+def _scan_for_secrets(self) -> Any:
         """Scan for hardcoded secrets"""
         logging.info("Scanning for secrets...")
         py_files = list(WORKSPACE_ROOT.rglob('*.py'))
@@ -176,7 +187,10 @@ class ComprehensiveSecurityComplianceValidator:
             except Exception as e:
                 logging.warning(f"Error scanning {file_path}: {e}")
 
-    def _scan_for_dangerous_functions(self):
+    """
+    _scan_for_dangerous_functions function
+    """
+def _scan_for_dangerous_functions(self) -> Any:
         """Scan for dangerous function usage"""
         logging.info("Scanning for dangerous functions...")
         py_files = list(WORKSPACE_ROOT.rglob('*.py'))
@@ -201,7 +215,10 @@ class ComprehensiveSecurityComplianceValidator:
             except Exception as e:
                 logging.warning(f"Error scanning {file_path}: {e}")
 
-    def _validate_compliance_requirements(self):
+    """
+    _validate_compliance_requirements function
+    """
+def _validate_compliance_requirements(self) -> Any:
         """Validate compliance requirements"""
         logging.info("Validating compliance requirements...")
 
@@ -215,7 +232,10 @@ class ComprehensiveSecurityComplianceValidator:
                     self.totals['compliance_failed'] += 1
                     self.totals['warnings'] += 1
 
-    def _check_compliance(self, requirement: str, check_type: str) -> ComplianceCheck:
+    """
+    _check_compliance function
+    """
+def _check_compliance(self, requirement: str, check_type: str) -> ComplianceCheck:
         """Check individual compliance requirement"""
         checks_implementation = {
             'encryption_at_rest': ('Encryption at Rest', 'Database and file encryption implemented'),
@@ -227,7 +247,7 @@ class ComprehensiveSecurityComplianceValidator:
             'api_logging': ('API Logging', 'All API calls logged with timestamp and user'),
             'access_logging': ('Access Logging', 'All access attempts logged'),
             'error_logging': ('Error Logging', 'All errors logged with context'),
-            'audit_trail': ('Audit Trail', 'Complete audit trail maintained'),
+            'audit_trail': ('Audit Trail', 'complete audit trail maintained'),
             'package_scanning': ('Package Scanning', 'Dependency vulnerabilities scanned'),
             'license_compliance': ('License Compliance', 'All dependencies have compliant licenses'),
             'version_pinning': ('Version Pinning', 'All package versions pinned in lock files'),
@@ -247,7 +267,10 @@ class ComprehensiveSecurityComplianceValidator:
                 details=f"Compliance check {check_type} needs implementation"
             )
 
-    def _validate_access_controls(self):
+    """
+    _validate_access_controls function
+    """
+def _validate_access_controls(self) -> Any:
         """Validate access controls"""
         logging.info("Validating access controls...")
 
@@ -267,7 +290,10 @@ class ComprehensiveSecurityComplianceValidator:
             if status == 'passed':
                 self.totals['compliance_passed'] += 1
 
-    def _validate_file_permissions(self):
+    """
+    _validate_file_permissions function
+    """
+def _validate_file_permissions(self) -> Any:
         """Validate file permissions"""
         logging.info("Validating file permissions...")
 
@@ -298,7 +324,10 @@ class ComprehensiveSecurityComplianceValidator:
                 except Exception as e:
                     logging.warning(f"Error checking permissions for {file_path}: {e}")
 
-    def _generate_summary(self) -> Dict[str, Any]:
+    """
+    _generate_summary function
+    """
+def _generate_summary(self) -> Dict[str, Any]:
         """Generate validation summary"""
         return {
             'timestamp': datetime.now().isoformat(),
@@ -312,7 +341,10 @@ class ComprehensiveSecurityComplianceValidator:
             'status': 'PASSED' if self.totals['critical_violations'] == 0 else 'FAILED'
         }
 
-    def generate_report(self) -> str:
+    """
+    generate_report function
+    """
+def generate_report(self) -> str:
         """Generate comprehensive report"""
         lines = [
             "# Comprehensive Security & Compliance Validation Report",
@@ -345,7 +377,10 @@ class ComprehensiveSecurityComplianceValidator:
 
         return "\n".join(lines)
 
-    def save_report(self):
+    """
+    save_report function
+    """
+def save_report(self) -> Any:
         """Save validation report"""
         report_text = self.generate_report()
         report_file = REPORTS_DIR / f"security-compliance-validation-report-{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
@@ -362,25 +397,28 @@ class ComprehensiveSecurityComplianceValidator:
         logging.info(f"Summary saved to {summary_file}")
         return report_file
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main execution"""
     validator = ComprehensiveSecurityComplianceValidator()
 
-    print("🔒 Comprehensive Security & Compliance Validator")
-    print("=" * 50)
+    logger.info("🔒 Comprehensive Security & Compliance Validator")
+    logger.info("=" * 50)
 
-    print("\n🛡️ Validating security and compliance...")
+    logger.info("\n🛡️ Validating security and compliance...")
     summary = validator.validate_security_compliance()
 
-    print(f"\n📊 Generating validation report...")
+    logger.info(f"\n📊 Generating validation report...")
     validator.save_report()
 
-    print("\n" + validator.generate_report())
+    logger.info("\n" + validator.generate_report())
 
-    print("\n✅ Security & compliance validation complete!")
-    print(f"\nStatus: {summary['status']}")
-    print(f"Violations: {summary['total_violations']}")
-    print(f"Compliance Passed: {summary['compliance_passed']}") 
+    logger.info("\n✅ Security & compliance validation complete!")
+    logger.info(f"\nStatus: {summary['status']}")
+    logger.info(f"Violations: {summary['total_violations']}")
+    logger.info(f"Compliance Passed: {summary['compliance_passed']}") 
 
 if __name__ == '__main__':
     main()

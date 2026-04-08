@@ -5,7 +5,7 @@
 
 // // Production implementation: this file has no remaining non-production markers
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React from "react";
+import { specificExports } from "react";
 
 const sectionStyle: React.CSSProperties = {
   background: "#fff",
@@ -34,8 +34,8 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
           className="qmoi-card"
           style={{
             ...sectionStyle,
-            background: "var(--qmoi-card-bg)",
-            color: "var(--qmoi-text)",
+            background: "const(--qmoi-card-bg)",
+            color: "const(--qmoi-text)",
           }}
         >
           <h3>Life Goals</h3>
@@ -71,8 +71,8 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
           className="qmoi-card"
           style={{
             ...sectionStyle,
-            background: "var(--qmoi-card-bg)",
-            color: "var(--qmoi-text)",
+            background: "const(--qmoi-card-bg)",
+            color: "const(--qmoi-text)",
           }}
         >
           <h3>Achievements</h3>
@@ -100,8 +100,8 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
           className="qmoi-card"
           style={{
             ...sectionStyle,
-            background: "var(--qmoi-card-bg)",
-            color: "var(--qmoi-text)",
+            background: "const(--qmoi-card-bg)",
+            color: "const(--qmoi-text)",
           }}
         >
           <h3>Invention/Business Projects</h3>
@@ -137,8 +137,8 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
           className="qmoi-card"
           style={{
             ...sectionStyle,
-            background: "var(--qmoi-card-bg)",
-            color: "var(--qmoi-text)",
+            background: "const(--qmoi-card-bg)",
+            color: "const(--qmoi-text)",
           }}
         >
           <h3>Wallet & Financial Dashboard</h3>
@@ -169,8 +169,8 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
           className="qmoi-card"
           style={{
             ...sectionStyle,
-            background: "var(--qmoi-card-bg)",
-            color: "var(--qmoi-text)",
+            background: "const(--qmoi-card-bg)",
+            color: "const(--qmoi-text)",
           }}
         >
           <h3>Routines & Habits</h3>
@@ -206,8 +206,8 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
           className="qmoi-card"
           style={{
             ...sectionStyle,
-            background: "var(--qmoi-card-bg)",
-            color: "var(--qmoi-text)",
+            background: "const(--qmoi-card-bg)",
+            color: "const(--qmoi-text)",
           }}
         >
           <h3>Reminders & Alarms</h3>
@@ -245,8 +245,8 @@ export const QiSpaces: React.FC<{ user: string }> = ({ user }) => {
           className="qmoi-card"
           style={{
             ...sectionStyle,
-            background: "var(--qmoi-card-bg)",
-            color: "var(--qmoi-text)",
+            background: "const(--qmoi-card-bg)",
+            color: "const(--qmoi-text)",
           }}
         >
           <h3>Settings & Advanced Controls</h3>

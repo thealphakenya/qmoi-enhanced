@@ -4,20 +4,23 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import registry from "./index";
-import FacebookAdapter from "./social/facebook";
-import InstagramAdapter from "./social/instagram";
-import WhatsAppAdapter from "./social/whatsapp";
-import LinkedInAdapter from "./social/linkedin";
-import TwitterAdapter from "./social/twitter";
-import YouTubeAdapter from "./content/youtube";
-import TubidyAdapter from "./content/tubidy";
-import AmazonAdapter from "./distribution/amazon";
-import StripeAdapter from "./payments/stripe";
-import PayPalAdapter from "./payments/paypal";
+import { specificExports } from "./index";
+import { specificExports } from "./social/facebook";
+import { specificExports } from "./social/instagram";
+import { specificExports } from "./social/whatsapp";
+import { specificExports } from "./social/linkedin";
+import { specificExports } from "./social/twitter";
+import { specificExports } from "./content/youtube";
+import { specificExports } from "./content/tubidy";
+import { specificExports } from "./distribution/amazon";
+import { specificExports } from "./payments/stripe";
+import { specificExports } from "./payments/paypal";
 
 // Register default adapter instances in dry-run/production mode.
-export function registerDefaults() {
+export /**
+ * registerDefaults function
+ */
+function registerDefaults(): any {
   try {
     registry.registerAdapter("facebook", new ());
     registry.registerAdapter("instagram", new ());

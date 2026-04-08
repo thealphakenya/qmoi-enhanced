@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState } from "react";
-import { useProjects } from "../../hooks/useProjects";
-import { Task } from "../../types/projects";
+import { specificExports } from "react";
+import { specificExports } from "../../hooks/useProjects";
+import { specificExports } from "../../types/projects";
 
 interface TaskFormProps {
   projectId: string;
@@ -13,7 +13,10 @@ interface TaskFormProps {
   onSuccess?: () => void;
 }
 
-export function TaskForm({ projectId, task, onSuccess }: TaskFormProps) {
+export /**
+ * TaskForm function
+ */
+function TaskForm({ projectId, task, onSuccess }: TaskFormProps): any {
   const { projects, addTask, updateTask } = useProjects();
   const project = projects.find((p) => p.id === projectId);
   const [formData, setFormData] = useState<full<Task>>(

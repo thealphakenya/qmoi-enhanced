@@ -4,10 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-import React from "react";
-import { LeahWallet } from "@/components/LeahWallet";
+import { specificExports } from "react";
+import { specificExports } from "@/components/LeahWallet";
 
-export default function LCHub() {
+export default /**
+ * LCHub function
+ */
+function LCHub(): any {
+  try {() {
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">LC Hub</h2>

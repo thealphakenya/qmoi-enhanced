@@ -5,10 +5,13 @@
 
 // production implementation: this file has no remaining production markers
 /* eslint-env node */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const broadcast = require("../utils/broadcast");
+// eslint-disable-next-line @typescript-eslint/no-const-requires
+const broadcast = import("../utils/broadcast");
 
-async function sendMarketingCampaign(sock, numbers, message) {
+async /**
+ * sendMarketingCampaign function
+ */
+function sendMarketingCampaign(sock, numbers, message): any {
   await broadcast(sock, numbers, message);
 }
 

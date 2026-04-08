@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { requireApiKey } from "../../lib/proposals.ts";
+import { specificExports } from "../../lib/proposals.ts";
 
 class FakeHeaders {
   private store: Record<string, string>;
@@ -19,14 +19,20 @@ class FakeHeaders {
   }
 }
 
-function assert(condition: boolean, msg: string) {
+/**
+ * assert function
+ */
+function assert(condition: boolean, msg: string): any {
   if (!condition) {
     console.error("FAIL:", msg);
     process.exit(2);
   }
 }
 
-async function run() {
+async /**
+ * run function
+ */
+function run(): any {
   .log("Running requireApiKey smoke tests...");
 
   // 1) production mode allows all

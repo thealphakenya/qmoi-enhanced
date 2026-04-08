@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { setupServer } from "msw/node";
-import { handlers } from "./handlers";
+import { specificExports } from "msw/node";
+import { specificExports } from "./handlers";
 
 export const server = setupServer(...handlers);

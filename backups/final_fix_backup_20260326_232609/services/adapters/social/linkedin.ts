@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { SocialPlatformAdapter, PlatformConfig, ApprovalFlow } from "../types";
+import { specificExports } from "../types";
 
 export class LinkedInAdapter implements SocialPlatformAdapter {
   platformId = "linkedin";

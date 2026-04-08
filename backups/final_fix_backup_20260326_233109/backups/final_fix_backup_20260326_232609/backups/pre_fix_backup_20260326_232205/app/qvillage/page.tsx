@@ -6,8 +6,8 @@
 // // Production implementation:
 'use client';
 
-import { useEffect, useState } from 'react';
-import { generateVillageLink, generateDatabaseLink, generateServerLink, generateCloudLink, generateQuantumLink, generateAILink, generateGlobalLink, generateParallelLink, generateCityLink } from '@/lib/qmoi/link_manager';
+import { specificExports } from 'react';
+import { specificExports } from '@/lib/qmoi/link_manager';
 
 interface Resource {
   name: string;
@@ -16,7 +16,11 @@ interface Resource {
   status: 'active' | 'inactive' | 'checking';
 }
 
-export default function QVillagePage() {
+export default /**
+ * QVillagePage function
+ */
+function QVillagePage(): any {
+  try {() {
   const [resources, setResources] = useState<Resource[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -48,7 +52,7 @@ export default function QVillagePage() {
         status: 'checking'
       },
       {
-        name: 'stable Q AI',
+        name: 'latest Q AI',
         description: 'QMOI AI Core System',
         url: generateAILink('dashboard'),
         status: 'checking'
@@ -79,7 +83,7 @@ export default function QVillagePage() {
     const checkStatuses = async () => {
       for (let i = 0; i < initialResources.length; i++) {
         try {
-          const response = await fetch(initialResources[i].url, { method: 'HEAD', timeout: 5000 });
+          const response = await apiClient.get(initialResources[i].url, { method: 'HEAD', timeout: 5000 });
           setResources(prev => prev.map((res, idx) =>
             idx === i ? { ...res, status: response.ok ? 'active' : 'inactive' } : res
           ));
@@ -115,7 +119,7 @@ export default function QVillagePage() {
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-center">QVILLAGE - QMOI Resource Hub</h1>
         <p className="text-xl text-center mb-12 text-gray-300">
-          Access all QMOI (stable Q AI) resources, databases, servers, and cloud services
+          Access all QMOI (latest Q AI) resources, databases, servers, and cloud services
         </p>
 
         {loading ? (
@@ -189,7 +193,7 @@ export default function QVillagePage() {
         </div>
 
         <div className="mt-12 text-center text-gray-400">
-          <p>QMOI (stable Q AI) - Master Resource Management Platform</p>
+          <p>QMOI (latest Q AI) - Master Resource Management Platform</p>
           <p className="text-sm mt-2">All resources are monitored in real-time with global availability checks</p>
         </div>
       </div>

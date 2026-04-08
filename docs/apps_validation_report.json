@@ -104,5 +104,9 @@
     "computed_sha256": "7ce5af4a8937cd4eaeee3874445f87f5fec9a8ef8b9fd777482f2096a88b2af5",
     "computed_size": 126,
     "status": "ok"
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:36.091454"
 }

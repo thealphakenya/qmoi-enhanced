@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 export const MapLocationPanel: React.FC = () => {
   const [location, setLocation] = useState<{ lat: number; lon: number } | null>(

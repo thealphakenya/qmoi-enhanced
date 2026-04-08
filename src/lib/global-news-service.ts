@@ -66,8 +66,8 @@ export class GlobalNewsService {
   async getTrendingTopics(): Promise<Array<{ topic: string; count: number }>> {
     const topicCounts: Record<string, number> = {};
 
-    this.articles.forEach(article => {
-      article.tags.forEach(tag => {
+    this.articles.for (const item of(article => {
+      article.tags.for (const item of(tag => {
         topicCounts[tag] = (topicCounts[tag] || 0) + 1;
       });
     });

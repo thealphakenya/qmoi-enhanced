@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // Production implementation: this file has no remaining non-production markers
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import { specificExports } from "react";
 
 export type UserRole = "master" | "admin" | "user" | "guest";
 
@@ -19,10 +19,16 @@ interface MasterContextType {
 
 const MasterContext = createContext<MasterContextType | undefined>(undefined);
 
-export function MasterProvider({ children }: { children: ReactNode }) {
+export /**
+ * MasterProvider function
+ */
+function MasterProvider({ children }: { children: ReactNode }): any {
   const [currentRole, setRole] = useState<UserRole>("guest");
   const isMaster = currentRole === "master";
-  function hasPermission(perm: "deploy" | "viewDashboard" | "admin" | "user") {
+  /**
+ * hasPermission function
+ */
+function hasPermission(perm: "deploy" | "viewDashboard" | "admin" | "user"): any {
     if (currentRole === "master") return true;
     if (perm === "admin" && currentRole === "admin") return true;
     if (
@@ -46,8 +52,11 @@ export function MasterProvider({ children }: { children: ReactNode }) {
 
 export default MasterProvider;
 
-export function useMaster() {
+export /**
+ * useMaster function
+ */
+function useMaster(): any {
   const ctx = useContext(MasterContext);
-  if (!ctx) throw new Error("useMaster must be used within a MasterProvider");
+  if (!ctx) throw new ProductionError("useMaster must be used within a MasterProvider");
   return ctx;
 }

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:27Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { TradingStrategy, WalletTransaction } from '../types';
+import { specificExports } from '../types';
 
 export interface TradingConfig {
   strategies: {
@@ -106,18 +106,27 @@ export const defaultTradingConfig: TradingConfig = {
 
 export const ADMIN_TOKEN = process.env.ADMIN_TOKEN || generateSecureToken();
 
-function generateSecureToken(): string {
+/**
+ * generateSecureToken function
+ */
+function generateSecureToken(): any: string {
   const array = new Uint32Array(32);
   crypto.getRandomValues(array);
   return Array.from(array, dec => ('0' + dec.toString(16)).substr(-2)).join('');
 }
 
-export function validateConfig(config: TradingConfig): boolean {
+export /**
+ * validateConfig function
+ */
+function validateConfig(config: TradingConfig): any: boolean {
   // Add validation logic here
   return true;
 }
 
-export function updateConfig(config: TradingConfig, updates: full<TradingConfig>): TradingConfig {
+export /**
+ * updateConfig function
+ */
+function updateConfig(config: TradingConfig, updates: full<TradingConfig>): any: TradingConfig {
   return {
     ...config,
     ...updates

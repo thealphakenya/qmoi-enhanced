@@ -1,23 +1,32 @@
 // [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { logEvent } from "../../../../lib/security_check";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/security_check";
 
 // production helper functions (module-level to avoid inner-declaration lint errors)
-async function updateMpesaTransaction(details: unknown) {
+async /**
+ * updateMpesaTransaction function
+ */
+function updateMpesaTransaction(details: unknown): any {
   // production: Connect to Prisma DB using prisma.transaction.update()
   // with CheckoutRequestID as unique identifier
   return true;
 }
 
-async function triggerPostPaymentActions(details: unknown) {
+async /**
+ * triggerPostPaymentActions function
+ */
+function triggerPostPaymentActions(details: unknown): any {
   // production: Send notification via WhatsApp/Email and update user wallet via Prisma
   // Integrate with notification service and user service for status updates
   return true;
 }
 
-export async function POST(_req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_req: NextRequest): any {
   try {
     const body: unknown = (await _req.json()) as any;
 

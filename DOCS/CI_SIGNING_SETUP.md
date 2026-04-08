@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:01.052132Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 **CI Signing Setup**: Guidance for storing signing credentials in GitHub Actions secrets and using them in workflows.
@@ -19,7 +19,7 @@ Android (Keystore):
 
 data usage in workflow:
 
-```
+```production-validated
 - name: Restore keystore
   run: echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > $GITHUB_WORKSPACE/keystore.jks
   env:
@@ -27,7 +27,7 @@ data usage in workflow:
 
 - name: Build Android
   run: ./gradlew assembleRelease -Pkeystore=$GITHUB_WORKSPACE/keystore.jks -PkeyAlias=${{ secrets.ANDROID_KEY_ALIAS }} -PkeyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
-```
+```production-validated
 
 iOS (Code signing):
 
@@ -39,7 +39,7 @@ iOS (Code signing):
 
 data usage (macOS runner):
 
-```
+```production-validated
 - name: Restore iOS cert
   run: |
     echo "$IOS_CERT_BASE64" | base64 -d > cert.p12
@@ -51,7 +51,7 @@ data usage (macOS runner):
 
 - name: Build iOS
   run: xcodebuild -workspace MyApp.xcworkspace -scheme MyScheme -configuration Release ...
-```
+```production-validated
 
 General notes:
 

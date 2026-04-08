@@ -52,5 +52,9 @@
     "nmcli",
     "nums",
     "probs"
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:08.570824"
 }

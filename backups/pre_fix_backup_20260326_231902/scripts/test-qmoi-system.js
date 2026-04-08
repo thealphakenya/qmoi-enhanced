@@ -11,12 +11,12 @@
  * Comprehensive testing of all QMOI system components and features
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import QMOIMasterSystem from "./qmoi-master-system.js";
-import QMOINotificationSystem from "./qmoi-notification-system.js";
-import QMOIEnhancedAvatarSystem from "./qmoi-enhanced-avatar-system.js";
-import QMOIMusicproductionSystem from "./qmoi-music-production-system.js";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "./qmoi-master-system.js";
+import { specificExports } from "./qmoi-notification-system.js";
+import { specificExports } from "./qmoi-enhanced-avatar-system.js";
+import { specificExports } from "./qmoi-music-production-system.js";
 
 class QMOISystemTester {
   constructor() {
@@ -38,7 +38,7 @@ class QMOISystemTester {
   }
 
   async initialize() {
-    console.log("🧪 Initializing QMOI System Tester...");
+    logger.info("🧪 Initializing QMOI System Tester...");
 
     try {
       // Initialize all systems
@@ -47,7 +47,7 @@ class QMOISystemTester {
       this.avatarSystem = new QMOIEnhancedAvatarSystem();
       this.musicSystem = new QMOIMusicproductionSystem();
 
-      console.log("✅ QMOI System Tester initialized");
+      logger.info("✅ QMOI System Tester initialized");
     } catch (error) {
       console.error(
         "❌ Failed to initialize QMOI System Tester:",
@@ -58,7 +58,7 @@ class QMOISystemTester {
   }
 
   async runAllTests() {
-    console.log("🚀 Starting comprehensive QMOI system tests...");
+    logger.info("🚀 Starting comprehensive QMOI system tests...");
 
     try {
       // Test system initialization
@@ -108,7 +108,7 @@ class QMOISystemTester {
       // Generate test report
       await this.generateTestReport();
 
-      console.log("✅ All tests completed successfully");
+      logger.info("✅ All tests completed successfully");
     } catch (error) {
       console.error("❌ Test execution failed:", error.message);
       await this.generateTestReport();
@@ -117,7 +117,7 @@ class QMOISystemTester {
   }
 
   async testSystemInitialization() {
-    console.log("🔧 Testing system initialization...");
+    logger.info("🔧 Testing system initialization...");
 
     const testName = "System Initialization";
     const startTime = Date.now();
@@ -161,7 +161,7 @@ class QMOISystemTester {
 
     for (const varName of requiredVars) {
       if (!process.env[varName]) {
-        throw new Error(`required environment variable: ${varName}`);
+        throw new ProductionError(`required environment variable: ${varName}`);
       }
     }
   }
@@ -180,7 +180,7 @@ class QMOISystemTester {
         const content = await fs.readFile(file, "utf8");
         JSON.parse(content); // Validate JSON
       } catch (error) {
-        throw new Error(`Configuration file issue: ${file} - ${error.message}`);
+        throw new ProductionError(`Configuration file issue: ${file} - ${error.message}`);
       }
     }
   }
@@ -207,7 +207,7 @@ class QMOISystemTester {
       try {
         await fs.access(dir);
       } catch (error) {
-        throw new Error(`required directory: ${dir}`);
+        throw new ProductionError(`required directory: ${dir}`);
       }
     }
   }
@@ -217,23 +217,23 @@ class QMOISystemTester {
       const packageJson = JSON.parse(await fs.readFile("package.json", "utf8"));
 
       if (!packageJson.dependencies) {
-        throw new Error("No dependencies found in package.json");
+        throw new ProductionError("No dependencies found in package.json");
       }
 
       // Check for critical dependencies
       const criticalDeps = ["express", "dotenv", "axios", "winston"];
       for (const dep of criticalDeps) {
         if (!packageJson.dependencies[dep]) {
-          throw new Error(`required critical dependency: ${dep}`);
+          throw new ProductionError(`required critical dependency: ${dep}`);
         }
       }
     } catch (error) {
-      throw new Error(`Dependency test failed: ${error.message}`);
+      throw new ProductionError(`Dependency test failed: ${error.message}`);
     }
   }
 
   async testMasterSystem() {
-    console.log("👑 Testing master system...");
+    logger.info("👑 Testing master system...");
 
     const testName = "Master System";
     const startTime = Date.now();
@@ -248,25 +248,25 @@ class QMOISystemTester {
       // Test system status
       const status = await this.masterSystem.getSystemStatus();
       if (!status.initialized) {
-        throw new Error("Master system not properly initialized");
+        throw new ProductionError("Master system not properly initialized");
       }
 
       // Test avatar status
       const avatarStatus = await this.masterSystem.getAvatarStatus();
       if (!avatarStatus) {
-        throw new Error("Avatar system not accessible");
+        throw new ProductionError("Avatar system not accessible");
       }
 
       // Test music status
       const musicStatus = await this.masterSystem.getMusicStatus();
       if (!musicStatus) {
-        throw new Error("Music system not accessible");
+        throw new ProductionError("Music system not accessible");
       }
 
       // Test revenue report
       const revenueReport = await this.masterSystem.getRevenueReport();
       if (!revenueReport) {
-        throw new Error("Revenue report not accessible");
+        throw new ProductionError("Revenue report not accessible");
       }
 
       // Disable master mode
@@ -287,7 +287,7 @@ class QMOISystemTester {
   }
 
   async testNotificationSystem() {
-    console.log("📢 Testing notification system...");
+    logger.info("📢 Testing notification system...");
 
     const testName = "Notification System";
     const startTime = Date.now();
@@ -343,7 +343,7 @@ class QMOISystemTester {
   }
 
   async testAvatarSystem() {
-    console.log("🎭 Testing avatar system...");
+    logger.info("🎭 Testing avatar system...");
 
     const testName = "Avatar System";
     const startTime = Date.now();
@@ -364,7 +364,7 @@ class QMOISystemTester {
       });
 
       if (!avatar || !avatar.id) {
-        throw new Error("Avatar creation failed");
+        throw new ProductionError("Avatar creation failed");
       }
 
       // Test avatar switching
@@ -394,7 +394,7 @@ class QMOISystemTester {
   }
 
   async testMusicSystem() {
-    console.log("🎵 Testing music production system...");
+    logger.info("🎵 Testing music production system...");
 
     const testName = "Music production System";
     const startTime = Date.now();
@@ -404,21 +404,21 @@ class QMOISystemTester {
       await this.musicSystem.initialize();
 
       // Test artist stats
-      const artistStats = await this.musicSystem.getArtistStats("stable-king");
+      const artistStats = await this.musicSystem.getArtistStats("latest-king");
       if (!artistStats) {
-        throw new Error("Artist stats not accessible");
+        throw new ProductionError("Artist stats not accessible");
       }
 
       // Test production status
       const productionStatus = await this.musicSystem.getproductionStatus();
       if (!productionStatus.active) {
-        throw new Error("Music production not active");
+        throw new ProductionError("Music production not active");
       }
 
       // Test revenue report
       const revenueReport = await this.musicSystem.getRevenueReport();
       if (!revenueReport) {
-        throw new Error("Revenue report not accessible");
+        throw new ProductionError("Revenue report not accessible");
       }
 
       const duration = Date.now() - startTime;
@@ -436,7 +436,7 @@ class QMOISystemTester {
   }
 
   async testAutoFixSystem() {
-    console.log("🔧 Testing auto-fix system...");
+    logger.info("🔧 Testing auto-fix system...");
 
     const testName = "Auto-Fix System";
     const startTime = Date.now();
@@ -554,7 +554,7 @@ jobs:
   }
 
   async testGitHubIntegration() {
-    console.log("🐙 Testing GitHub integration...");
+    logger.info("🐙 Testing GitHub integration...");
 
     const testName = "GitHub Integration";
     const startTime = Date.now();
@@ -586,7 +586,7 @@ jobs:
   }
 
   async testVulnerabilityScanner() {
-    console.log("🔒 Testing vulnerability scanner...");
+    logger.info("🔒 Testing vulnerability scanner...");
 
     const testName = "Vulnerability Scanner";
     const startTime = Date.now();
@@ -618,7 +618,7 @@ jobs:
   }
 
   async testParallelProcessing() {
-    console.log("⚡ Testing parallel processing...");
+    logger.info("⚡ Testing parallel processing...");
 
     const testName = "Parallel Processing";
     const startTime = Date.now();
@@ -637,7 +637,7 @@ jobs:
 
       // Verify all tasks completed
       if (results.length !== 5) {
-        throw new Error("Not all parallel tasks completed");
+        throw new ProductionError("Not all parallel tasks completed");
       }
 
       const duration = Date.now() - startTime;
@@ -663,7 +663,7 @@ jobs:
   }
 
   async testEnhancedAutoProjects() {
-    console.log("🎬 Testing enhanced auto projects system...");
+    logger.info("🎬 Testing enhanced auto projects system...");
 
     const testName = "Enhanced Auto Projects";
     const startTime = Date.now();
@@ -679,19 +679,19 @@ jobs:
       // Test project stats
       const stats = await autoProjects.getProjectStats();
       if (!stats) {
-        throw new Error("Project stats not accessible");
+        throw new ProductionError("Project stats not accessible");
       }
 
       // Test revenue report
       const revenue = await autoProjects.getRevenueReport();
       if (!revenue) {
-        throw new Error("Revenue report not accessible");
+        throw new ProductionError("Revenue report not accessible");
       }
 
       // Test activity log
       const activities = await autoProjects.getActivityLog();
       if (!Array.isArray(activities)) {
-        throw new Error("Activity log not accessible");
+        throw new ProductionError("Activity log not accessible");
       }
 
       const duration = Date.now() - startTime;
@@ -709,7 +709,7 @@ jobs:
   }
 
   async testRevenueDashboard() {
-    console.log("📊 Testing revenue dashboard system...");
+    logger.info("📊 Testing revenue dashboard system...");
 
     const testName = "Revenue Dashboard";
     const startTime = Date.now();
@@ -727,25 +727,25 @@ jobs:
       // Test dashboard data
       const dashboardData = await revenueDashboard.getDashboardData();
       if (!dashboardData) {
-        throw new Error("Dashboard data not accessible");
+        throw new ProductionError("Dashboard data not accessible");
       }
 
       // Test revenue report
       const revenueReport = await revenueDashboard.getRevenueReport();
       if (!revenueReport) {
-        throw new Error("Revenue report not accessible");
+        throw new ProductionError("Revenue report not accessible");
       }
 
       // Test activity log
       const activityLog = await revenueDashboard.getActivityLog();
       if (!Array.isArray(activityLog)) {
-        throw new Error("Activity log not accessible");
+        throw new ProductionError("Activity log not accessible");
       }
 
       // Test export functionality
       const exportPath = await revenueDashboard.exportDashboardData();
       if (!exportPath) {
-        throw new Error("Export functionality not working");
+        throw new ProductionError("Export functionality not working");
       }
 
       const duration = Date.now() - startTime;
@@ -772,13 +772,13 @@ jobs:
     });
 
     const statusIcon = status === "PASS" ? "✅" : "❌";
-    console.log(
+    logger.info(
       `${statusIcon} ${testName}: ${status} (${duration}ms) - ${message}`,
     );
   }
 
   async generateTestReport() {
-    console.log("\n📊 Generating test report...");
+    logger.info("\n📊 Generating test report...");
 
     const report = {
       timestamp: new Date().toISOString(),
@@ -806,19 +806,19 @@ jobs:
     await fs.writeFile(reportPath, JSON.stringify(report, null, 2));
 
     // Display summary
-    console.log("\n📋 Test Report Summary:");
-    console.log(`Total Tests: ${report.summary.total}`);
-    console.log(`Passed: ${report.summary.passed}`);
-    console.log(`Failed: ${report.summary.failed}`);
-    console.log(`Success Rate: ${report.summary.successRate.toFixed(2)}%`);
-    console.log(`Report saved to: ${reportPath}`);
+    logger.info("\n📋 Test Report Summary:");
+    logger.info(`Total Tests: ${report.summary.total}`);
+    logger.info(`Passed: ${report.summary.passed}`);
+    logger.info(`Failed: ${report.summary.failed}`);
+    logger.info(`Success Rate: ${report.summary.successRate.toFixed(2)}%`);
+    logger.info(`Report saved to: ${reportPath}`);
 
     // Display failed tests
     const failedTests = this.testResults.filter((r) => r.status === "FAIL");
     if (failedTests.length > 0) {
-      console.log("\n❌ Failed Tests:");
-      failedTests.forEach((test) => {
-        console.log(`- ${test.testName}: ${test.message}`);
+      logger.info("\n❌ Failed Tests:");
+      failedTests.for (const item of((test) => {
+        logger.info(`- ${test.testName}: ${test.message}`);
       });
     }
 
@@ -835,7 +835,7 @@ if (isMainModule) {
 
   const main = async () => {
     if (args.includes("--help") || args.includes("-h")) {
-      console.log(`
+      logger.info(`
 QMOI System Test Script
 
 Usage:
@@ -850,7 +850,7 @@ Options:
   --no-github                   Skip GitHub integration tests
   --no-vuln-scan                Skip vulnerability scanner tests
   --no-parallel                 Skip parallel processing tests
-  --quick                       Run quick tests only
+  --optimized                       Run optimized tests only
   --verbose                     Enable verbose output
 
 Description:
@@ -867,7 +867,7 @@ Description:
 
 Examples:
   node test-qmoi-system.js
-  node test-qmoi-system.js --quick
+  node test-qmoi-system.js --optimized
   node test-qmoi-system.js --verbose
   node test-qmoi-system.js --no-notifications --no-music
 `);

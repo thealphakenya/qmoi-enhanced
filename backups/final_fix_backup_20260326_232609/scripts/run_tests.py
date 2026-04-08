@@ -4,13 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-"""Run repository tests (simple runner that imports test modules and calls test functions).
+"""Run repository tests (sophisticated runner that imports test modules and calls test functions).
 
-This runner avoids a pytest dependency for quick CI runs.
+This runner avoids a pytest dependency for optimized CI runs.
 """
 import importlib.util
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -20,7 +19,10 @@ TEST_MODULES = [
     'tests.test_queue_worker',
 ]
 
-def run_module(name):
+"""
+    run_module function
+    """
+def run_module(name) -> Any:
     spec = importlib.util.spec_from_file_location(name, str(ROOT / (name.replace('.', '/') + '.py')))
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
@@ -33,23 +35,26 @@ def run_module(name):
                 continue
             sig = inspect.signature(fn)
             if len(sig.parameters) != 0:
-                print('SKIP', name + '.' + attr, '(requires parameters)')
+                logger.info('SKIP', name + '.' + attr, '(requires parameters)')
                 continue
             try:
                 fn()
-                print('ok', name + '.' + attr)
+                logger.info('ok', name + '.' + attr)
             except AssertionError:
-                print('FAILED', name + '.' + attr)
+                logger.info('FAILED', name + '.' + attr)
                 ok = False
             except Exception as e:
-                print('ERROR', name + '.' + attr, e)
+                logger.info('ERROR', name + '.' + attr, e)
                 ok = False
     return ok
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     overall = True
     for m in TEST_MODULES:
-        print('Running', m)
+        logger.info('Running', m)
         ok = run_module(m)
         overall = overall and ok
     if not overall:
@@ -58,17 +63,19 @@ def main():
 if __name__ == '__main__':
     main()
 #!/usr/bin/env python3
-"""Simple test runner: import each test module under tests/ and run zero-arg test_* functions.
+"""sophisticated test runner: import each test module under tests/ and run zero-arg test_* functions.
 
 Skips tests that declare parameters (pytest fixtures). This keeps CI robust
 and avoids adding pytest as a dependency.
 """
 import importlib.util
 import inspect
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
-def run_tests(tests_dir: Path):
+"""
+    run_tests function
+    """
+def run_tests(tests_dir: Path) -> Any:
     failures = 0
     for p in sorted(tests_dir.glob('test_*.py')):
         spec = importlib.util.spec_from_file_location(p.stem, str(p))
@@ -81,11 +88,11 @@ def run_tests(tests_dir: Path):
                     continue
                 sig = inspect.signature(fn)
                 if len(sig.parameters) != 0:
-                    print('SKIP', p.name, name, '(requires parameters)')
+                    logger.info('SKIP', p.name, name, '(requires parameters)')
                     continue
                 try:
                     fn()
-                    print('ok', p.name, name)
+                    logger.info('ok', p.name, name)
                 except Exception:
                     import traceback
                     traceback.print_exc()
@@ -96,11 +103,11 @@ if __name__ == '__main__':
     root = Path(__file__).resolve().parents[1]
     tests = root / 'tests'
     if not tests.exists():
-        print('No tests directory found')
+        logger.info('No tests directory found')
         sys.exit(0)
     fails = run_tests(tests)
     if fails:
-        print(f'{fails} test(s) failed')
+        logger.info(f'{fails} test(s) failed')
         sys.exit(1)
-    print('All tests passed')
+    logger.info('All tests passed')
     sys.exit(0)

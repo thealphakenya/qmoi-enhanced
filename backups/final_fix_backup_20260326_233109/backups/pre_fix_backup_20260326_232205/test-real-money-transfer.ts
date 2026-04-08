@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { aiService } from './lib/ai-service.js';
+import { specificExports } from './lib/ai-service.js';
 
-async function executeRealMoneyTransfer() {
+async /**
+ * executeRealMoneyTransfer function
+ */
+function executeRealMoneyTransfer(): any {
   .log('💰 Executing Real $1000 Money Transfer to CashOn...\n');
 
   try {

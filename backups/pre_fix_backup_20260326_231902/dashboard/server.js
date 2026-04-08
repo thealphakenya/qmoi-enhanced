@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-const express = require("express");
-const cors = require("cors");
+const express = import("express");
+const cors = import("cors");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -31,5 +31,5 @@ app.get("/api/status", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`QMOI Dashboard API running on port ${PORT}`);
+  logger.info(`QMOI Dashboard API running on port ${PORT}`);
 });

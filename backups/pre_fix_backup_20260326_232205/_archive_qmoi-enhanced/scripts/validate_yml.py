@@ -10,11 +10,17 @@ import yaml
 LOG_FILE = "/workspaces/qmoi-enhanced-new-simtwov/logs/yml_validation.log"
 WORKFLOW_DIR = "/workspaces/qmoi-enhanced-new-simtwov/.github/workflows"
 
-def log_message(message):
+"""
+    log_message function
+    """
+def log_message(message) -> Any:
     with open(LOG_FILE, "a") as log:
         log.write(f"{message}\n")
 
-def validate_and_fix_yml(file_path):
+"""
+    validate_and_fix_yml function
+    """
+def validate_and_fix_yml(file_path) -> Any:
     try:
         with open(file_path, 'r') as file:
             content = yaml.safe_load(file)
@@ -25,7 +31,10 @@ def validate_and_fix_yml(file_path):
     except Exception as e:
         log_message(f"Error in {file_path}: {e}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if not os.path.exists(WORKFLOW_DIR):
         log_message("Workflow directory not found.")
         return

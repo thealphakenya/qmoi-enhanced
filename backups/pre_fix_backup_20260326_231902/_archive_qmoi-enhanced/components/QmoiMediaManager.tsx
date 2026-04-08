@@ -7,16 +7,16 @@
 "use client";
 
 "use client";
-import React, { useState, useEffect } from "react";
-import { Input } from "@/components/ui/input";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Search,
   Download,
@@ -35,8 +35,8 @@ import {
   Video,
   Image,
 } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { fetchMedia } from "@/adapters/clientAdapters";
+import { specificExports } from "@/components/ui/scroll-area";
+import { specificExports } from "@/adapters/clientAdapters";
 
 interface MediaItem {
   id: string;
@@ -203,7 +203,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   // Fetch logs
   const fetchLogs = async () => {
     try {
-      const response = await fetch("/api/qmoi-database?logs=true&limit=50", {
+      const response = await apiClient.get("/api/qmoi-database?logs=true&limit=50", {
         headers: {
           "x-qmoi-master": "true",
         },
@@ -223,7 +223,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   }, []);
 
   useEffect(() => {
-    fetch("/api/health")
+    apiClient.get("/api/health")
       .then((res) => res.json())
       .then((data) => setHealthStatus(data.status))
       .catch(() => setHealthStatus("offline"));
@@ -231,7 +231,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
 
   const handleDelete = async (id: string) => {
     if (!window.confirm("Delete this media file?")) return;
-    await fetch(`/api/media/${id}`, {
+    await apiClient.get(`/api/media/${id}`, {
       method: "DELETE",
       headers: { "x-qmoi-admin": "qmoi-master-key" },
     });
@@ -247,7 +247,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
     const formData = new FormData();
     formData.append("file", e.target.files[0]);
     try {
-      const xhr = new XMLHttpRequest();
+      const xhr = new fetch();
       xhr.open("POST", "/api/media");
       xhr.setRequestHeader("x-qmoi-admin", "qmoi-master-key");
       xhr.upload.onprogress = (event) => {

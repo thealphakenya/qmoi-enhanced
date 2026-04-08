@@ -4,29 +4,33 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: this file has no remaining non-production markers
-import React, { useState } from "react";
-import SchedulePanel from "./SchedulePanel";
-import DevicePanel from "./DevicePanel";
-import PluginPanel from "./PluginPanel";
-import MetricsPanel from "./MetricsPanel";
-import SessionPanel from "./SessionPanel";
-import HelpPanel from "./HelpPanel";
-import { QMoiState } from "./QMoiState";
-import QAvatar from "./QAvatar";
-import CommandPanel from "./CommandPanel";
-import AuditLogPanel from "./AuditLogPanel";
-import SelfHealPanel from "./SelfHealPanel";
-import LanguageLabPanel from "./LanguageLabPanel";
-import ResearchCenterPanel from "./ResearchCenterPanel";
-import BackupRestorePanel from "./BackupRestorePanel";
-import AviatorGalleryPanel from "./AviatorGalleryPanel";
-import RelationshipInsightsPanel from "./RelationshipInsightsPanel";
-import SystemHealthPanel from "./SystemHealthPanel";
+import { specificExports } from "react";
+import { specificExports } from "./SchedulePanel";
+import { specificExports } from "./DevicePanel";
+import { specificExports } from "./PluginPanel";
+import { specificExports } from "./MetricsPanel";
+import { specificExports } from "./SessionPanel";
+import { specificExports } from "./HelpPanel";
+import { specificExports } from "./QMoiState";
+import { specificExports } from "./QAvatar";
+import { specificExports } from "./CommandPanel";
+import { specificExports } from "./AuditLogPanel";
+import { specificExports } from "./SelfHealPanel";
+import { specificExports } from "./LanguageLabPanel";
+import { specificExports } from "./ResearchCenterPanel";
+import { specificExports } from "./BackupRestorePanel";
+import { specificExports } from "./AviatorGalleryPanel";
+import { specificExports } from "./RelationshipInsightsPanel";
+import { specificExports } from "./SystemHealthPanel";
 
-export default function Dashboard() {
+export default /**
+ * Dashboard function
+ */
+function Dashboard(): any {
+  try {() {
   const [theme, setTheme] = useState("dark");
   const [panel, setPanel] = useState("schedules");
-  React.useEffect(() => {
+  useEffect(() => {
     document.body.className = theme === "dark" ? "bg-gray-950" : "bg-white";
   }, [theme]);
 

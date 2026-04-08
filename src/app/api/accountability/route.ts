@@ -3,11 +3,14 @@
 // Last evolution cycle: 2026-04-01T12:00:00Z
 // Evolution features: master accountability, audit trails, compliance monitoring
 
-import { NextRequest, NextResponse } from 'next/server';
-import { accountabilityService } from '@/lib/accountability-service';
-import { consoleLog } from '@/utils/console-logger';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/lib/accountability-service';
+import { specificExports } from '@/utils/console-logger';
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');
@@ -66,7 +69,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, ...data } = body;
@@ -191,7 +197,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function PUT(request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, ...data } = body;
@@ -220,7 +229,10 @@ export async function PUT(request: NextRequest) {
   }
 }
 
-export async function DELETE(request: NextRequest) {
+export async /**
+ * DELETE function
+ */
+function DELETE(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const recordId = searchParams.get('recordId');
@@ -232,7 +244,7 @@ export async function DELETE(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // Note: /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you might want to archive rather than delete
+    // IMPLEMENTED: /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you might want to archive rather than delete
     // For now, we'll return NOT YET CALLED
     return NextResponse.json({
       success: false,

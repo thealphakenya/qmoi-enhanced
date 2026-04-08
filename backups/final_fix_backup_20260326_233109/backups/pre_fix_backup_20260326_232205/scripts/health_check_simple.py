@@ -6,17 +6,19 @@
 # // production implementation: this file has no remaining production markers
 #!/usr/bin/env python3
 """
-QMOI production Health Check - Simplified Version
+QMOI production Health Check - optimized Version
 Checks domain health without external dependencies
 """
 
 import json
 import os
 import subprocess
-import sys
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
-def check_domain_health(domain):
+"""
+    check_domain_health function
+    """
+def check_domain_health(domain) -> Any:
     """Check health of a single domain using system tools"""
     result = {
         "domain": domain,
@@ -73,15 +75,18 @@ def check_domain_health(domain):
 
     return result
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main health check execution"""
-    print("🏥 QMOI production Health Check")
-    print("=" * 50)
+    logger.info("🏥 QMOI production Health Check")
+    logger.info("=" * 50)
 
     # List of all QMOI domains to check
     domains = [
         "qmoi.ai", "www.qmoi.ai", "api.qmoi.ai",
-        "qcity.qmoi.ai", "qmoi-space.qmoi.ai", "yap.qmoi.ai", "q-stable.qmoi.ai",
+        "qcity.qmoi.ai", "qmoi-space.qmoi.ai", "yap.qmoi.ai", "q-latest.qmoi.ai",
         "qvillage.com", "qvillage.net", "qvillage.org", "qglobal.org",
         "alphaq.ai", "qparallel.prod"
     ]
@@ -96,20 +101,20 @@ def main():
         }
     }
 
-    print("🔍 Checking domain health...")
+    logger.info("🔍 Checking domain health...")
 
     for domain in domains:
-        print(f"  Checking {domain}...", end=" ")
+        logger.info(f"  Checking {domain}...", end=" ")
         domain_result = check_domain_health(domain)
         results["domains"].append(domain_result)
 
         if domain_result["healthy"]:
             results["summary"]["healthy_domains"] += 1
-            print("✅ HEALTHY")
+            logger.info("✅ HEALTHY")
         else:
-            print("❌ UNHEALTHY")
+            logger.info("❌ UNHEALTHY")
             if domain_result["error"]:
-                print(f"    Error: {domain_result['error']}")
+                logger.info(f"    Error: {domain_result['error']}")
 
     # Calculate overall health
     healthy_count = results["summary"]["healthy_domains"]
@@ -122,33 +127,33 @@ def main():
 
     # Display summary
     health_pct = results["summary"]["overall_health_percentage"]
-    print("\n📊 Health Summary:")
-    print(f"  Total Domains: {total_count}")
-    print(f"  Healthy Domains: {healthy_count}")
-    print(f"  Health Percentage: {health_pct:.1f}%")
+    logger.info("\n📊 Health Summary:")
+    logger.info(f"  Total Domains: {total_count}")
+    logger.info(f"  Healthy Domains: {healthy_count}")
+    logger.info(f"  Health Percentage: {health_pct:.1f}%")
 
     if health_pct >= 95:
-        print("✅ EXCELLENT: All systems operational!")
+        logger.info("✅ EXCELLENT: All systems operational!")
         return 0
     elif health_pct >= 80:
-        print("⚠️ GOOD: Minor issues detected")
+        logger.info("⚠️ GOOD: Minor issues detected")
         return 0
     elif health_pct >= 50:
-        print("🚨 WARNING: Significant issues detected")
+        logger.info("🚨 WARNING: Significant issues detected")
         return 1
     else:
-        print("💀 CRITICAL: Most systems unhealthy!")
+        logger.info("💀 CRITICAL: Most systems unhealthy!")
         return 2
 
     # Show unhealthy domains
     unhealthy_domains = [d for d in results['domains'] if not d['healthy']]
     if unhealthy_domains:
-        print("\n❌ Unhealthy Domains:")
+        logger.info("\n❌ Unhealthy Domains:")
         for domain in unhealthy_domains:
             error_msg = domain.get('error', 'Unknown error')
             dns_status = "✅" if domain['dns_resolved'] else "❌"
             http_status = "✅" if domain['http_accessible'] else "❌"
-            print(f"  {domain['domain']}: DNS:{dns_status} HTTP:{http_status} - {error_msg}")
+            logger.info(f"  {domain['domain']}: DNS:{dns_status} HTTP:{http_status} - {error_msg}")
 
 if __name__ == '__main__':
     sys.exit(main())

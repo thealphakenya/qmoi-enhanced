@@ -6,8 +6,8 @@
 //  this file has no remaining non-production markers
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -15,10 +15,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TrendingUp } from "lucide-react";
-import React, { useState } from "react";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "lucide-react";
+import { specificExports } from "react";
 
 interface Feedback {
   id: string;
@@ -99,9 +99,12 @@ export const SelfTrainingEcosystem: React.FC = () => {
   // new task list state and API
   const [tasks, setTasks] = useState<TrainingTask[]>([]);
 
-  async function fetchTasks() {
+  async /**
+ * fetchTasks function
+ */
+function fetchTasks(): any {
     try {
-      const res = await fetch("/api/self-training?action=list");
+      const res = await apiClient.get("/api/self-training?action=list");
       const data = await res.json();
       setTasks(data.tasks || []);
     } catch {
@@ -109,10 +112,13 @@ export const SelfTrainingEcosystem: React.FC = () => {
     }
   }
 
-  async function handleStart() {
+  async /**
+ * handleStart function
+ */
+function handleStart(): any {
     const model = prompt("Enter model name to train:");
     if (!model) return;
-    const res = await fetch("/api/self-training?action=start", {
+    const res = await apiClient.get("/api/self-training?action=start", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ model }),
@@ -123,7 +129,7 @@ export const SelfTrainingEcosystem: React.FC = () => {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchTasks();
   }, []);
 

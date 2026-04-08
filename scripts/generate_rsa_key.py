@@ -4,9 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric import rsa
-from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import { specificExports } from cryptography.hazmat.primitives.asymmetric import { specificExports } from cryptography.hazmat.backends import default_backend
 import os
 
 os.makedirs('secrets', exist_ok=True)
@@ -35,4 +33,4 @@ with open('secrets/bitget_private.pem', 'wb') as f:
 with open('secrets/bitget_public.pem', 'wb') as f:
     f.write(public_pem)
 
-print("RSA key pair generated. Public key: secrets/bitget_public.pem, Private key: secrets/bitget_private.pem") 
+logger.info("RSA key pair generated. Public key: secrets/bitget_public.pem, Private key: secrets/bitget_private.pem") 

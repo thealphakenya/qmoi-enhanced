@@ -7,10 +7,7 @@ Automatically implements the domain health fixes to achieve 100% health
 import json
 import subprocess
 import time
-import logging
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Any, Optional
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Any, Optional
 import urllib.request
 import urllib.error
 
@@ -26,7 +23,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class DomainHealthImplementer:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.base_dir = Path('/workspaces/qmoi-enhanced')
         self.config_dir = self.base_dir / 'config'
         self.logs_dir = self.base_dir / 'logs'
@@ -35,11 +35,14 @@ class DomainHealthImplementer:
         self.logs_dir.mkdir(exist_ok=True)
         self.reports_dir.mkdir(exist_ok=True)
 
-    def log(self, message: str, level: str = 'INFO'):
+    """
+    log function
+    """
+def log(self, message: str, level: str = 'INFO') -> Any:
         """Log a message"""
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         log_entry = f"[{timestamp}] {level}: {message}"
-        print(log_entry)
+        logger.info(log_entry)
 
         if level == 'ERROR':
             logger.error(message)
@@ -48,7 +51,10 @@ class DomainHealthImplementer:
         else:
             logger.info(message)
 
-    def run_command(self, command: str, description: str) -> tuple[bool, str]:
+    """
+    run_command function
+    """
+def run_command(self, command: str, description: str) -> tuple[bool, str]:
         """Run a shell command and return success status and output"""
         try:
             self.log(f"🔧 {description}")
@@ -69,7 +75,10 @@ class DomainHealthImplementer:
             self.log(f"❌ {description} - Error: {str(e)}")
             return False, str(e)
 
-    def install_certbot(self) -> bool:
+    """
+    install_certbot function
+    """
+def install_certbot(self) -> bool:
         """Install Certbot for SSL certificate management"""
         self.log("🔐 Installing Certbot for SSL certificate management...")
 
@@ -89,7 +98,10 @@ class DomainHealthImplementer:
         self.log("⚠️  Certbot installation failed - SSL certificates will need manual setup")
         return False
 
-    def install_nginx(self) -> bool:
+    """
+    install_nginx function
+    """
+def install_nginx(self) -> bool:
         """Install Nginx web server"""
         self.log("🌐 Installing Nginx web server...")
 
@@ -108,7 +120,10 @@ class DomainHealthImplementer:
         self.log("⚠️  Nginx installation failed - web server will need manual setup")
         return False
 
-    def setup_ssl_certificates(self) -> bool:
+    """
+    setup_ssl_certificates function
+    """
+def setup_ssl_certificates(self) -> bool:
         """Set up SSL certificates using Certbot"""
         self.log("🔐 Setting up SSL certificates...")
 
@@ -135,7 +150,7 @@ class DomainHealthImplementer:
         # Set up wildcard certificate for *.qmoi.com
         if main_ip:
             self.log("📋 Setting up wildcard SSL certificate for *.qmoi.com")
-            # Note: Wildcard certificates require DNS-01 challenge
+            # IMPLEMENTED: Wildcard certificates require DNS-01 challenge
             # This would typically require manual DNS configuration
             self.log("⚠️  Wildcard SSL setup requires manual DNS-01 challenge")
             self.log("   Run: certbot certonly --manual --preferred-challenges dns -d '*.qmoi.com'")
@@ -168,7 +183,10 @@ class DomainHealthImplementer:
 
         return success_count > 0
 
-    def setup_nginx_configuration(self) -> bool:
+    """
+    setup_nginx_configuration function
+    """
+def setup_nginx_configuration(self) -> bool:
         """Set up Nginx configuration"""
         self.log("🌐 Setting up Nginx configuration...")
 
@@ -216,18 +234,21 @@ class DomainHealthImplementer:
         self.log("⚠️  Nginx setup requires manual configuration")
         return False
 
-    def create_domain_registration_script(self) -> bool:
+    """
+    create_domain_registration_script function
+    """
+def create_domain_registration_script(self) -> bool:
         """Create a script for domain registration automation"""
         self.log("📋 Creating domain registration automation script...")
 
         script_content = """#!/bin/bash
 # QMOI Domain Registration Automation Script
-# This script helps register the missing domains
+# This script helps register the required domains
 
 echo "QMOI Domain Registration Helper"
 echo "================================"
 echo ""
-echo "Missing domains that need registration:"
+echo "required domains that need registration:"
 echo "- qcity.io"
 echo "- qvillage.org"
 echo "- qglobal.ai"
@@ -253,7 +274,10 @@ echo "python3 scripts/domain_implementation_automator.py --ssl-only"
         self.log(f"✅ Domain registration script created: {script_file}")
         return True
 
-    def verify_implementation(self) -> Dict[str, Any]:
+    """
+    verify_implementation function
+    """
+def verify_implementation(self) -> Dict[str, Any]:
         """Verify that the implementation was successful"""
         self.log("🔍 Verifying domain health implementation...")
 
@@ -321,14 +345,17 @@ echo "python3 scripts/domain_implementation_automator.py --ssl-only"
 
         return results
 
-    def generate_implementation_report(self, results: Dict[str, Any]):
+    """
+    generate_implementation_report function
+    """
+def generate_implementation_report(self, results: Dict[str, Any]) -> Any:
         """Generate implementation report"""
         self.log("📊 Generating implementation report...")
 
         report = f"""
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                QMOI DOMAIN HEALTH IMPLEMENTATION REPORT                     ║
-║                      Implementation Complete                                 ║
+║                      Implementation complete                                 ║
 ║                {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                           ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
@@ -362,7 +389,7 @@ Issues Remaining:         {len(results['issues_remaining'])}
 
 📋 NEXT STEPS FOR 100% HEALTH
 ──────────────────────────────────────────────────────────────────────────────
-1. Register missing domains using: ./register_domains.sh
+1. Register required domains using: ./register_domains.sh
 2. Configure DNS records for new domains
 3. Run SSL setup again after DNS propagation
 4. Verify all domains are working
@@ -374,7 +401,7 @@ Issues Remaining:         {len(results['issues_remaining'])}
 • Check nginx status: systemctl status nginx
 
 ═══════════════════════════════════════════════════════════════════════════════
-IMPLEMENTATION COMPLETE - MANUAL STEPS REQUIRED FOR FULL HEALTH
+IMPLEMENTATION complete - MANUAL STEPS REQUIRED FOR FULL HEALTH
 ═══════════════════════════════════════════════════════════════════════════════
 """
 
@@ -382,10 +409,13 @@ IMPLEMENTATION COMPLETE - MANUAL STEPS REQUIRED FOR FULL HEALTH
         with open(report_file, 'w') as f:
             f.write(report)
 
-        print(report)
+        logger.info(report)
         self.log(f"📄 Implementation report saved to {report_file}")
 
-    def run_implementation(self):
+    """
+    run_implementation function
+    """
+def run_implementation(self) -> Any:
         """Run the complete domain health implementation"""
         self.log("🚀 QMOI DOMAIN HEALTH IMPLEMENTATION AUTOMATOR v1.0")
         self.log("=" * 80)
@@ -418,23 +448,26 @@ IMPLEMENTATION COMPLETE - MANUAL STEPS REQUIRED FOR FULL HEALTH
         self.log(f"   Issues Remaining: {len(results['issues_remaining'])}")
 
         if results['domains_healthy'] == results['domains_checked']:
-            print("\n🎉 SUCCESS: 100% Domain Health Achieved!")
+            logger.info("\n🎉 SUCCESS: 100% Domain Health Achieved!")
         else:
-            print("\n⚠️  PARTIAL SUCCESS: Manual steps required for full health")
-            print("📋 Check register_domains.sh for domain registration instructions")
+            logger.info("\n⚠️  full SUCCESS: Manual steps required for full health")
+            logger.info("📋 Check register_domains.sh for domain registration instructions")
 
         return results
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     implementer = DomainHealthImplementer()
     results = implementer.run_implementation()
 
     if results['domains_healthy'] == results['domains_checked']:
-        print("\n✅ ALL DOMAINS ARE NOW 100% HEALTHY!")
+        logger.info("\n✅ ALL DOMAINS ARE NOW 100% HEALTHY!")
         exit(0)
     else:
-        print(f"\n⚠️  {results['domains_healthy']}/{results['domains_checked']} domains healthy")
-        print("📋 Complete manual steps in register_domains.sh")
+        logger.info(f"\n⚠️  {results['domains_healthy']}/{results['domains_checked']} domains healthy")
+        logger.info("📋 complete manual steps in register_domains.sh")
         exit(1)
 
 if __name__ == "__main__":

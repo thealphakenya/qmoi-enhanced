@@ -11,9 +11,12 @@
  * GET /api/links/health - Get link health status
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const { urls, action } = await request.json();
 
@@ -87,7 +90,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const searchParams = request.nextUrl.searchParams;
     const action = searchParams.get('action');
@@ -127,7 +133,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: 'Invalid action or missing parameters' },
+      { error: 'Invalid action or required parameters' },
       { status: 400 }
     );
   } catch (error) {
@@ -141,7 +147,10 @@ export async function GET(request: NextRequest) {
 
 // Helper functions
 
-function getDomainRegistry(): Record<string, any> {
+/**
+ * getDomainRegistry function
+ */
+function getDomainRegistry(): any: Record<string, any> {
   return {
     "qvillage.com": {
       type: "primary_hub",
@@ -199,17 +208,20 @@ function getDomainRegistry(): Record<string, any> {
       sslEnabled: true,
       status: "active"
     },
-    "q-stable.qmoi.ai": {
+    "q-latest.qmoi.ai": {
       type: "service",
       critical: false,
-      fallbacks: ["stable.alphaq.ai"],
+      fallbacks: ["latest.alphaq.ai"],
       sslEnabled: true,
       status: "active"
     }
   };
 }
 
-function validateLink(url: string, registry: Record<string, any>): {
+/**
+ * validateLink function
+ */
+function validateLink(url: string, registry: Record<string, any>): any: {
   url: string;
   isValid: boolean;
   linkType: string;
@@ -274,7 +286,10 @@ function validateLink(url: string, registry: Record<string, any>): {
   }
 }
 
-function fixBrokenLink(url: string, registry: Record<string, any>): string | undefined {
+/**
+ * fixBrokenLink function
+ */
+function fixBrokenLink(url: string, registry: Record<string, any>): any: string | undefined {
   try {
     const urlObj = new URL(url.startsWith('http') ? url : `https://${url}`);
     const domain = urlObj.hostname;
@@ -299,7 +314,10 @@ function fixBrokenLink(url: string, registry: Record<string, any>): string | und
   }
 }
 
-function categorizeLink(url: string): string {
+/**
+ * categorizeLink function
+ */
+function categorizeLink(url: string): any: string {
   if (url.includes('api')) return 'api';
   if (url.includes('download') || url.match(/\.(zip|exe|apk|ipa)$/)) return 'download';
   if (url.includes('store')) return 'store';
@@ -307,11 +325,14 @@ function categorizeLink(url: string): string {
   if (url.includes('qcity')) return 'city';
   if (url.includes('space')) return 'space';
   if (url.includes('yap')) return 'messaging';
-  if (url.includes('stable')) return 'models';
+  if (url.includes('latest')) return 'models';
   return 'standard';
 }
 
-async function checkDomainHealth(domain: string, registry: Record<string, any>): Promise<{
+async /**
+ * checkDomainHealth function
+ */
+function checkDomainHealth(domain: string, registry: Record<string, any>): any: Promise<{
   isHealthy: boolean;
   status?: string;
   responseTime?: number;
@@ -330,7 +351,7 @@ async function checkDomainHealth(domain: string, registry: Record<string, any>):
     const healthUrl = `${protocol}://${domain}/health`;
 
     const startTime = Date.now();
-    const response = await fetch(healthUrl, { 
+    const response = await apiClient.get(healthUrl, { 
       method: 'HEAD',
       timeout: 5000
     });

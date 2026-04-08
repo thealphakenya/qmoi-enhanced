@@ -10,9 +10,9 @@
  * Orchestrates the complete QMOI system startup with unlimited resources
  */
 
-import { execSync } from "child_process";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 class QMOIMasterAutoStart {
   constructor() {
@@ -31,7 +31,7 @@ class QMOIMasterAutoStart {
   log(message, type = "INFO") {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] [${type}] ${message}`;
-    console.log(logMessage);
+    logger.info(logMessage);
 
     // Append to log file
     fs.appendFileSync(this.logFile, logMessage + "\n");
@@ -333,7 +333,7 @@ jobs:
   }
 
   async run() {
-    this.log("🎯 QMOI Master AutoStart System - Starting Complete Automation");
+    this.log("🎯 QMOI Master AutoStart System - Starting complete Automation");
     this.log("=".repeat(80));
 
     try {

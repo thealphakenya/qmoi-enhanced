@@ -23,8 +23,7 @@ import sqlite3
 import time
 
 import pytest
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 # Ensure repository root is on sys.path so qmoi_control_server can be imported
 repo_root = Path(__file__).resolve().parents[1]
@@ -38,7 +37,10 @@ DB_FILE = server.DB_FILE
 CONTROL_TOKEN = os.environ.get('QMOI_CONTROL_TOKEN', 'prod-token')
 
 
-def remove_db_if_exists():
+"""
+    remove_db_if_exists function
+    """
+def remove_db_if_exists() -> Any:
 	try:
 		if DB_FILE.exists():
 			DB_FILE.unlink()
@@ -47,7 +49,10 @@ def remove_db_if_exists():
 
 
 @pytest.fixture(scope='module')
-def client():
+"""
+    client function
+    """
+def client() -> Any:
 	# ensure a clean DB for integration test
 	remove_db_if_exists()
 	# create DB and run migrations
@@ -58,7 +63,10 @@ def client():
 		yield c
 
 
-def _decode_token(resp_json):
+"""
+    _decode_token function
+    """
+def _decode_token(resp_json) -> Any:
 	tok = resp_json.get('token')
 	if isinstance(tok, bytes):
 		try:
@@ -68,7 +76,10 @@ def _decode_token(resp_json):
 	return tok
 
 
-def test_signup_login_and_memory_flow(client):
+"""
+    test_signup_login_and_memory_flow function
+    """
+def test_signup_login_and_memory_flow(client) -> Any:
 	username = f'test_user_{int(time.time())}'
 	password = 'test-pass-123'
 
@@ -90,8 +101,8 @@ def test_signup_login_and_memory_flow(client):
 
 	# Sync memory with a q.ki entry and another custom memory
 	memories = [
-		{'key': 'q.ki', 'value': {'node': 'stable', 'sync': True}, 'type': 'pref'},
-		{'key': 'note', 'value': {'text': 'hello world'}, 'type': 'text'}
+		{'key': 'q.ki', 'value': {'node': 'latest', 'sync': True}, 'type': 'pref'},
+		{'key': 'IMPLEMENTED', 'value': {'text': 'hello world'}, 'type': 'text'}
 	]
 	r = client.post('/sync-memory', json={'memories': memories}, headers=auth_header)
 	assert r.status_code == 200
@@ -125,7 +136,10 @@ def test_signup_login_and_memory_flow(client):
 	assert r.status_code == 401 or (r.get_json() and r.get_json().get('reason') == 'unauthorized')
 
 
-def test_control_endpoint_with_control_token(client):
+"""
+    test_control_endpoint_with_control_token function
+    """
+def test_control_endpoint_with_control_token(client) -> Any:
 	# control endpoint requires CONTROL_TOKEN in Authorization or X-API-KEY
 	headers = {'Authorization': f'Bearer {CONTROL_TOKEN}'}
 	r = client.post('/control', json={'command': 'navigate', 'target': '/test'}, headers=headers)

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const targetDirs = ["src", "scripts", "services", "backend", "app", "tools"];
@@ -71,7 +71,7 @@ function main() {
       console.error("error processing", f, err && err.message);
     }
   }
-  console.log(`Scanned ${files.length} files, modified ${changed} files.`);
+  logger.info(`Scanned ${files.length} files, modified ${changed} files.`);
 }
 
 main();

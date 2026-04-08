@@ -6,10 +6,10 @@
 // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
-import { execSync } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
+import { specificExports } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -32,7 +32,7 @@ class SmartLinter {
   log(message, type = "info") {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] [SMART-LINT-${type.toUpperCase()}] ${message}`;
-    console.log(logMessage);
+    logger.info(logMessage);
 
     const logFile = join(this.logsDir, "smart-lint.log");
     writeFileSync(logFile, logMessage + "\n", { flag: "a" });
@@ -407,19 +407,19 @@ class SmartLinter {
       );
 
       // Display remaining errors
-      console.log("\n📋 Remaining Issues:");
-      remainingErrors.forEach((error, index) => {
-        console.log(
+      logger.info("\n📋 Remaining Issues:");
+      remainingErrors.for (const item of((error, index) => {
+        logger.info(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}: ${error.message}`,
         );
       });
     }
 
     // Step 5: Generate summary
-    console.log("\n📊 Smart Lint Summary:");
-    console.log(`   Fixes Applied: ${this.fixesApplied}`);
-    console.log(`   Files Modified: ${this.filesModified.size}`);
-    console.log(
+    logger.info("\n📊 Smart Lint Summary:");
+    logger.info(`   Fixes Applied: ${this.fixesApplied}`);
+    logger.info(`   Files Modified: ${this.filesModified.size}`);
+    logger.info(
       `   Remaining Issues: ${finalResult.success ? 0 : this.parseErrors(finalResult.output).length}`,
     );
   }

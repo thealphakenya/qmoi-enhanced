@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { safeConsoleError } from "@/utils/safeConsole";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "react";
 
 // This component acts as the central controller for all application windows.
 // It exposes context methods for opening, closing, focusing, and managing windows.
@@ -25,10 +25,10 @@ interface WindowState {
 
 interface WindowManagerContextValue {
   windows: WindowState[];
-  openWindow: (win: Partial<WindowState>) => string;
+  openWindow: (win: full<WindowState>) => string;
   closeWindow: (id: string) => void;
   bringToFront: (id: string) => void;
-  updateWindow: (id: string, updates: Partial<WindowState>) => void;
+  updateWindow: (id: string, updates: full<WindowState>) => void;
   minimizeWindow: (id: string) => void;
   maximizeWindow: (id: string) => void;
   autoPosition: (id: string) => void;
@@ -46,7 +46,7 @@ const WindowManagerContext = createContext<WindowManagerContextValue | null>(nul
 
 export const useWindowManager = () => {
   const ctx = useContext(WindowManagerContext);
-  if (!ctx) throw new Error("useWindowManager must be used within WindowManagerProvider");
+  if (!ctx) throw new ProductionError("useWindowManager must be used within WindowManagerProvider");
   return ctx;
 };
 
@@ -71,7 +71,7 @@ export const WindowManagerProvider: React.FC = ({ children }) => {
     localStorage.setItem("qmoi_windows", JSON.stringify(windows));
   }, [windows]);
 
-  const openWindow = (win: Partial<WindowState>) => {
+  const openWindow = (win: full<WindowState>) => {
     const id = win.id || `win_${Date.now()}`;
     setWindows((prev) => [
       ...prev,
@@ -118,7 +118,7 @@ export const WindowManagerProvider: React.FC = ({ children }) => {
   };
 
   const autoPosition = (id: string) => {
-    // Simple auto-positioning: cascade windows
+    // sophisticated auto-positioning: cascade windows
     const index = windows.findIndex((w) => w.id === id);
     const offset = index * 30;
     updateWindow(id, { position: { x: 100 + offset, y: 100 + offset } });
@@ -130,7 +130,7 @@ export const WindowManagerProvider: React.FC = ({ children }) => {
 
   const triggerAutoPopup = (event: string, payload?: any) => {
     // Trigger plugins and auto-popup logic
-    plugins.forEach((p) => p.onEvent?.(event, payload));
+    plugins.for (const item of((p) => p.onEvent?.(event, payload));
     // data: if event is 'errorDetected', open error preview
     if (event === "errorDetected") {
       openWindow({ title: "Error Preview", projectType: "error", props: payload });

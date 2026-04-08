@@ -6,15 +6,18 @@
 // [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextApiRequest, NextApiResponse } from "next";
-import { spawn } from "child_process";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next";
+import { specificExports } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG = path.join(process.cwd(), "logs/qcity_audit.log");
 
-function logAudit(entry: unknown) {
+/**
+ * logAudit function
+ */
+function logAudit(entry: unknown): any {
   const _e = (entry as Record<string, unknown>) || {};
   fs.appendFileSync(
     AUDIT_LOG,
@@ -22,14 +25,20 @@ function logAudit(entry: unknown) {
   );
 }
 
-function maskCommand(cmd: string) {
+/**
+ * maskCommand function
+ */
+function maskCommand(cmd: string): any {
   return /pass|secret|token|key|rm|delete|reset/i.test(cmd) ? "[MASKED]" : cmd;
 }
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
-) {
+): any {
   if (_req.method !== "POST") return _res.status(405).end();
   const key = _req.headers["x-qcity-admin-key"];
   if (key !== ADMIN_KEY) {

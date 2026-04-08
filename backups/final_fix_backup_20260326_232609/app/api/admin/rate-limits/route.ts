@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import authService from "@/lib/auth/service";
-import { db } from "@/lib/db/prisma";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/db/prisma";
 import {
   enforceRateLimit,
   getRateLimitStats,
@@ -18,7 +18,10 @@ import {
  * View rate limit configuration and current usage
  * Admin only
  */
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
     if (!token) {
@@ -99,7 +102,10 @@ export async function GET(_request: NextRequest) {
  * Trigger cleanup of stale rate limit entries
  * Admin only
  */
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
     if (!token) {
@@ -160,7 +166,10 @@ export async function POST(_request: NextRequest) {
  * PUT /api/admin/rate-limits
  * Administrative override endpoint (update rate limit thresholds)
  */
-export async function PUT(_request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
     if (!token) {

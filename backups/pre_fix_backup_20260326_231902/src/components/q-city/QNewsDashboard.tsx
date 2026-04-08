@@ -5,10 +5,10 @@
 
  all markers normalized for completion
 /* eslint-env browser */
-import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/card";
 
 interface NewsItem {
   id: number;
@@ -51,7 +51,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const _res = await apiClient.get("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -59,7 +59,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const _res = await apiClient.get("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -72,7 +72,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   }, [isMaster]);
 
   const handleApprove = async (id: number) => {
-    await fetch("/api/qnews", {
+    await apiClient.get("/api/qnews", {
       method: "PUT",
       headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
       body: JSON.stringify({ id, status: "approved" }),
@@ -93,7 +93,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const handleSave = async () => {
     if (editingId) {
-      await fetch("/api/qnews", {
+      await apiClient.get("/api/qnews", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +103,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
       });
       setEditingId(null);
     } else {
-      await fetch("/api/qnews", {
+      await apiClient.get("/api/qnews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -124,7 +124,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
   };
 
   const handleSchedule = async (id: number, scheduledAt: string) => {
-    await fetch("/api/qnews/schedule", {
+    await apiClient.get("/api/qnews/schedule", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
       body: JSON.stringify({ id, scheduledAt }),
@@ -134,7 +134,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const handleAddMedia = async () => {
     if (!editingId) return;
-    await fetch("/api/qnews/media", {
+    await apiClient.get("/api/qnews/media", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
       body: JSON.stringify({

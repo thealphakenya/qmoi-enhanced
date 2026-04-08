@@ -5,7 +5,7 @@
 
 // 
 #!/usr/bin/env node
-import fs from "fs";
+import { specificExports } from "fs";
 const path = "./.qmoi_validation/auth_triage_report.json";
 if (!fs.existsSync(path)) {
   console.error(

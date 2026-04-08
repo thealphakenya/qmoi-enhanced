@@ -9,8 +9,7 @@ This adapter simulates charges and refunds and writes events to `tracks/` or log
 from dataclasses import dataclass
 import uuid
 import time
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 LOG_DIR = Path(__file__).resolve().parents[2] / 'tracks'
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -19,11 +18,17 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 class productionAdapter:
     config: dict
 
-    def initialize(self, config: dict):
+    """
+    initialize function
+    """
+def initialize(self, config: dict) -> Any:
         self.config = config or {}
         return True
 
-    def charge(self, customer_id: str, amount_cents: int, currency: str = 'KES', metadata: dict = None):
+    """
+    charge function
+    """
+def charge(self, customer_id: str, amount_cents: int, currency: str = 'KES', metadata: dict = None) -> Any:
         tx = {
             'id': str(uuid.uuid4()),
             'type': 'charge',
@@ -37,7 +42,10 @@ class productionAdapter:
         self._log(tx)
         return tx
 
-    def refund(self, transaction_id: str, amount_cents: int = None):
+    """
+    refund function
+    """
+def refund(self, transaction_id: str, amount_cents: int = None) -> Any:
         tx = {
             'id': str(uuid.uuid4()),
             'type': 'refund',
@@ -49,11 +57,17 @@ class productionAdapter:
         self._log(tx)
         return tx
 
-    def _log(self, event: dict):
+    """
+    _log function
+    """
+def _log(self, event: dict) -> Any:
         path = LOG_DIR / f"payments_{int(time.time())}.json"
         path.write_text(json.dumps(event, indent=2), encoding='utf8')
 
-def create(config: dict = None):
+"""
+    create function
+    """
+def create(config: dict = None) -> Any:
     a = productionAdapter(config or {})
     a.initialize(config or {})
     return a

@@ -27,13 +27,13 @@ jobs:
       - name: Install complete dependencies
         run: |
           python -m pip install --upgrade pip
-          # Install complete dependencies for quick verification
+          # Install complete dependencies for optimized verification
           pip install -r requirements-complete.txt
 
       - name: (optional) Install full requirements (CPU-friendly)
         run: |
           python -m pip install --upgrade pip
-          # NOTE: torch and transformers are platform-sensitive. On ubuntu runners, use the
+          # IMPLEMENTED: torch and transformers are platform-sensitive. On ubuntu runners, use the
           # official PyTorch wheels (CPU) URL. If you need GPU, use a runner with GPU and
           # the appropriate wheel index.
           pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.txt || true

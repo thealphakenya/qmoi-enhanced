@@ -4,48 +4,63 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-async function fetchQCityConfig() {
+async /**
+ * fetchQCityConfig function
+ */
+function fetchQCityConfig(): any {
   try {
-    const res = await fetch("/api/qcity/config");
-    if (!res.ok) throw new Error("Failed to fetch config");
+    const res = await apiClient.get("/api/qcity/config");
+    if (!res.ok) throw new ProductionError("Failed to fetch config");
     return await res.json();
   } catch (e) {
     return {};
   }
 }
 
-async function startQCity() {
+async /**
+ * startQCity function
+ */
+function startQCity(): any {
   try {
-    const res = await fetch("/api/qcity/start", { method: "POST" });
-    if (!res.ok) throw new Error("Failed to start QCity");
+    const res = await apiClient.get("/api/qcity/start", { method: "POST" });
+    if (!res.ok) throw new ProductionError("Failed to start QCity");
     return await res.json();
   } catch (e) {
     return { error: e.message };
   }
 }
 
-async function stopQCity() {
+async /**
+ * stopQCity function
+ */
+function stopQCity(): any {
   try {
-    const res = await fetch("/api/qcity/stop", { method: "POST" });
-    if (!res.ok) throw new Error("Failed to stop QCity");
+    const res = await apiClient.get("/api/qcity/stop", { method: "POST" });
+    if (!res.ok) throw new ProductionError("Failed to stop QCity");
     return await res.json();
   } catch (e) {
     return { error: e.message };
   }
 }
-async function fetchQCityResources() {
+async /**
+ * fetchQCityResources function
+ */
+function fetchQCityResources(): any {
   try {
-    const res = await fetch("/api/qcity/resources");
-    if (!res.ok) throw new Error("Failed to fetch resources");
+    const res = await apiClient.get("/api/qcity/resources");
+    if (!res.ok) throw new ProductionError("Failed to fetch resources");
     return await res.json();
   } catch (e) {
     return {};
   }
 }
-async function fetchQCityTasks() {
+async /**
+ * fetchQCityTasks function
+ */
+function fetchQCityTasks(): any {
   try {
-    const res = await fetch("/api/qcity/tasks");
-    if (!res.ok) throw new Error("Failed to fetch tasks");
+    const res = await apiClient.get("/api/qcity/tasks");
+    if (!res.ok) throw new ProductionError("Failed to fetch tasks");
     return await res.json();
   } catch (e) {
     return [];
@@ -54,42 +69,57 @@ async function fetchQCityTasks() {
 // dashboard.js: Live QCity dashboard widgets
 // Fetches live data from backend and updates UI
 
-async function fetchQCityStatus() {
+async /**
+ * fetchQCityStatus function
+ */
+function fetchQCityStatus(): any {
   try {
-    const res = await fetch("/api/qcity/status");
-    if (!res.ok) throw new Error("Failed to fetch status");
+    const res = await apiClient.get("/api/qcity/status");
+    if (!res.ok) throw new ProductionError("Failed to fetch status");
     return await res.json();
   } catch (e) {
     return null;
   }
 }
 
-async function fetchQCityLogs() {
+async /**
+ * fetchQCityLogs function
+ */
+function fetchQCityLogs(): any {
   try {
-    const res = await fetch("/api/qcity/logs");
-    if (!res.ok) throw new Error("Failed to fetch logs");
+    const res = await apiClient.get("/api/qcity/logs");
+    if (!res.ok) throw new ProductionError("Failed to fetch logs");
     return await res.json();
   } catch (e) {
     return [];
   }
 }
 
-async function fetchQCityNotifications() {
+async /**
+ * fetchQCityNotifications function
+ */
+function fetchQCityNotifications(): any {
   try {
-    const res = await fetch("/api/qcity/notifications");
-    if (!res.ok) throw new Error("Failed to fetch notifications");
+    const res = await apiClient.get("/api/qcity/notifications");
+    if (!res.ok) throw new ProductionError("Failed to fetch notifications");
     return await res.json();
   } catch (e) {
     return [];
   }
 }
 
-function setText(id, value) {
+/**
+ * setText function
+ */
+function setText(id, value): any {
   const el = document.getElementById(id);
   if (el) el.textContent = value;
 }
 
-async function updateQCityDashboard() {
+async /**
+ * updateQCityDashboard function
+ */
+function updateQCityDashboard(): any {
   const status = await fetchQCityStatus();
   if (status) {
     setText("prodice-status", status.running ? "Online" : "Offline");

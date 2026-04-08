@@ -4,6 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-export function Analytics() {
+export /**
+ * Analytics function
+ */
+function Analytics(): any {
   return null;
 }

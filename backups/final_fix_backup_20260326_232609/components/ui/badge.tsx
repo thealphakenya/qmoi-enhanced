@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { specificExports } from "react";
+import { specificExports } from "class-variance-authority";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const badgeVariants = cva(
   "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
@@ -33,7 +33,10 @@ export interface BadgeProps
     React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {}
 
-function Badge({ className, variant, ...props }: BadgeProps) {
+/**
+ * Badge function
+ */
+function Badge({ className, variant, ...props }: BadgeProps): any {
   return (
     <div className={cn(badgeVariants({ variant }), className)} {...props} />
   );

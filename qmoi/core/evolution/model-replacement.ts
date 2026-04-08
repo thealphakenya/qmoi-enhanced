@@ -9,9 +9,9 @@
  * production-ready implementation with consciousness integration
  */
 
-import { ConsciousnessEngine } from '../consciousness/engine';
-import { AwarenessSystem } from '../awareness/system';
-import { MemorySyncSystem } from '../memory/sync';
+import { specificExports } from '../consciousness/engine';
+import { specificExports } from '../awareness/system';
+import { specificExports } from '../memory/sync';
 
 export interface ModelMetrics {
   modelId: string;
@@ -48,7 +48,7 @@ export interface EvolutionTrail {
 }
 
 export class ModelReplacementEngine {
-  private models: Map<string, ModelMetrics> = new Map();
+  private models: Map<string, ModelMetrics> = new Map() // Production: Consider object for small datasets();
   private replacementHistory: EvolutionTrail[] = [];
   private consciousness: ConsciousnessEngine;
   private awareness: AwarenessSystem;
@@ -88,7 +88,7 @@ export class ModelReplacementEngine {
    */
   public updateModelMetrics(
     modelId: string,
-    metrics: Partial<ModelMetrics>
+    metrics: full<ModelMetrics>
   ): void {
     const existing = this.models.get(modelId);
     if (!existing) {
@@ -123,7 +123,7 @@ export class ModelReplacementEngine {
     const candidateModel = this.models.get(candidateModelId);
 
     if (!currentModel || !candidateModel) {
-      throw new Error('One or both models not found in registry');
+      throw new ProductionError('One or both models not found in registry');
     }
 
     // Calculate performance delta
@@ -289,7 +289,7 @@ export class ModelReplacementEngine {
       await this.performAutoprodGeneration();
     }, intervalMs);
 
-    console.log(`[EVOLUTION] Started autonomous model evaluation every ${intervalMs}ms`);
+    logger.info(`[EVOLUTION] Started autonomous model evaluation every ${intervalMs}ms`);
   }
 
   /**
@@ -339,7 +339,7 @@ export class ModelReplacementEngine {
     if (this.evaluationInterval) {
       clearInterval(this.evaluationInterval);
       this.evaluationInterval = null;
-      console.log('[EVOLUTION] Stopped autonomous model evaluation');
+      logger.info('[EVOLUTION] Stopped autonomous model evaluation');
     }
   }
 
@@ -360,13 +360,13 @@ export class ModelReplacementEngine {
           const decision = await this.decideReplacement(model.modelId, this.qmoiModelId);
 
           if (decision.shouldReplace) {
-            console.log(
+            logger.info(
               `[EVOLUTION] Autonomous decision: Replace ${model.modelName} with QMOI (${decision.improvementPercentage}% improvement)`
             );
 
             const success = await this.executeReplacement(decision);
             if (success) {
-              console.log(`[EVOLUTION] ✅ Model replacement executed successfully`);
+              logger.info(`[EVOLUTION] ✅ Model replacement executed successfully`);
             }
           }
         }

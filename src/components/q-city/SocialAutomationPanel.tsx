@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/TextField";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/CardContent";
 
 interface Contact {
   id: number;
@@ -26,13 +26,13 @@ const SocialAutomationPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchContacts = async () => {
-    const res = await fetch("/api/social-automation/contacts");
+    const res = await apiClient.get("/api/social-automation/contacts");
     const data = await res.json();
     setContacts(data.contacts || []);
   };
 
   const fetchFeatures = async () => {
-    const res = await fetch("/api/social-automation/features");
+    const res = await apiClient.get("/api/social-automation/features");
     const data = await res.json();
     setFeatures(data.features || []);
   };
@@ -43,7 +43,7 @@ const SocialAutomationPanel: React.FC = () => {
   }, []);
 
   const postStatus = async () => {
-    const res = await fetch("/api/social-automation/post", {
+    const res = await apiClient.get("/api/social-automation/post", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content, platform }),
@@ -53,7 +53,7 @@ const SocialAutomationPanel: React.FC = () => {
   };
 
   const tagContact = async (id: number) => {
-    const res = await fetch("/api/social-automation/tag", {
+    const res = await apiClient.get("/api/social-automation/tag", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, tag }),
@@ -142,7 +142,7 @@ const SocialAutomationPanel: React.FC = () => {
             size="small"
             variant="contained"
             color="primary"
-            onClick={() => alert("Open community tools ()")}
+            onClick={() => notification.show("Open community tools ()")}
             style={{ marginTop: 8 }}
           >
             Open Community Tools

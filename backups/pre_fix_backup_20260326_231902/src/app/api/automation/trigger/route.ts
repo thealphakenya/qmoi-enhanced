@@ -4,14 +4,17 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { safeConsoleError } from "@/utils/safeConsole";
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "next/server";
 
 // POST /api/automation/trigger
 // Triggers an automated UI or workflow event based on QMOI reasoning.
 // This endpoint allows QMOI to autonomously open windows, activate tools, or perform actions.
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { event, projectType, conditions, payload } = body;

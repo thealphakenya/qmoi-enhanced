@@ -3,14 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:59:05Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const root = process.cwd();
 const pattern =
   /
 
-function walk(dir) {
+/**
+ * walk function
+ */
+function walk(dir): any {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   let results = [];
   for (const entry of entries) {
@@ -61,4 +64,4 @@ fs.writeFileSync(
     2,
   ),
 );
-console.log("Wrote .qmoi_validation/
+logger.info("Wrote .qmoi_validation/

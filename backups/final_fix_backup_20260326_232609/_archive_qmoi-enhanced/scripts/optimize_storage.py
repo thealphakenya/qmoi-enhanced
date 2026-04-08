@@ -8,10 +8,12 @@ Storage optimization for Q-city application.
 """
 
 import os
-import shutil
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
-def clean_temp_dirs(temp_dirs=None):
+"""
+    clean_temp_dirs function
+    """
+def clean_temp_dirs(temp_dirs=None) -> Any:
     """Remove files in permanent directories to free up space."""
     if temp_dirs is None:
         temp_dirs = ["/tmp", "./tmp", "./cache", "./__pycache__"]
@@ -25,11 +27,14 @@ def clean_temp_dirs(temp_dirs=None):
                     elif item.is_dir():
                         shutil.rmtree(item)
                 except Exception as e:
-                    print(f"Could not remove {item}: {e}")
+                    logger.info(f"Could not remove {item}: {e}")
 
-def optimize_storage():
+"""
+    optimize_storage function
+    """
+def optimize_storage() -> Any:
     clean_temp_dirs()
-    print("Storage optimized and permanent files cleaned.")
+    logger.info("Storage optimized and permanent files cleaned.")
 
 if __name__ == '__main__':
     optimize_storage() 

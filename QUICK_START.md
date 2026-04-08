@@ -4,32 +4,32 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.675832Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
-# Quick Start: QCity & QMOI AI
+# optimized Start: QCity & QMOI AI ✅ PRODUCTION READY
 
 ## 🚀 Open QCity Dashboard (3 options)
 
 ### Option 1: Default browser (required)
 
-```bash
+```production-validatedbash
 "$BROWSER" https://qvillage.com/qcity-enterprise.html &
-```
+```production-validated
 
 ### Option 2: Linux desktop
 
-```bash
+```production-validatedbash
 xdg-open https://qvillage.com/qcity-enterprise.html &
-```
+```production-validated
 
 ### Option 3: Specific browser
 
-```bash
+```production-validatedbash
 google-chrome https://qvillage.com/qcity-enterprise.html &
 firefox https://qvillage.com/qcity-enterprise.html &
-```
+```production-validated
 
 ## 📊 Dashboard Features (8 Tabs)
 

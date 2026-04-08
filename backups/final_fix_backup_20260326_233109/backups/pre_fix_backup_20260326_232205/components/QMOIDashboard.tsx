@@ -6,9 +6,9 @@
 // // Production implementation: this file has no remaining non-production markers
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/avatar";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
 import {
     Card,
     CardContent,
@@ -16,7 +16,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
+import { specificExports } from "@/hooks/use-toast";
 import {
     Activity,
     AlertTriangle,
@@ -40,27 +40,27 @@ import {
     Wifi,
     Zap,
 } from "lucide-react";
-import React, { useEffect, useState } from "react";
-import { useMaster } from "./MasterContext";
+import { specificExports } from "react";
+import { specificExports } from "./MasterContext";
 
 // Import our enhanced components
-import AccountabilitySystem from "./AccountabilitySystem";
-import AskQMoi from "./AskQMoi";
-import BiometricAuth from "./BiometricAuth";
-import Chatbot from "./Chatbot";
-import FileExplorer from "./FileExplorer";
-import { FinancialManager } from "./FinancialManager";
-import MemoryAwareness from "./MemoryAwareness";
-import { NotificationCenter } from "./NotificationCenter";
-import ParallelProcessing from "./ParallelProcessing";
-import { QConverse } from "./QConverse";
-import QmoiMediaManager from "./QmoiMediaManager";
-import QVillage from "./QVillage";
-import { SisterProjects } from "./SisterProjects";
-import SystemHealthMonitor from "./SystemHealthMonitor";
-import { TradingPanel } from "./TradingPanel";
-import UserAccessControl, { AccessControlProvider } from "./UserAccessControl";
-import { WhatsAppBusinessPanel } from "./WhatsAppBusinessPanel";
+import { specificExports } from "./AccountabilitySystem";
+import { specificExports } from "./AskQMoi";
+import { specificExports } from "./BiometricAuth";
+import { specificExports } from "./Chatbot";
+import { specificExports } from "./FileExplorer";
+import { specificExports } from "./FinancialManager";
+import { specificExports } from "./MemoryAwareness";
+import { specificExports } from "./NotificationCenter";
+import { specificExports } from "./ParallelProcessing";
+import { specificExports } from "./QConverse";
+import { specificExports } from "./QmoiMediaManager";
+import { specificExports } from "./QVillage";
+import { specificExports } from "./SisterProjects";
+import { specificExports } from "./SystemHealthMonitor";
+import { specificExports } from "./TradingPanel";
+import { specificExports } from "./UserAccessControl";
+import { specificExports } from "./WhatsAppBusinessPanel";
 
 interface DashboardProps {
   user?: {
@@ -144,8 +144,8 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
   useEffect(() => {
     const fetchMonitoring = async () => {
       try {
-        const res = await fetch("/api/monitor/status");
-        if (!res.ok) throw new Error("Failed to fetch monitoring status");
+        const res = await apiClient.get("/api/monitor/status");
+        if (!res.ok) throw new ProductionError("Failed to fetch monitoring status");
         const data = await res.json();
 
         const health = data?.last_result;

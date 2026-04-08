@@ -23,19 +23,28 @@ const metrics = {
   lastUpdated: new Date().toISOString(),
 };
 
-const traceStore = new Map<string, TraceRecord>();
+const traceStore = new Map() // Production: Consider object for small datasets<string, TraceRecord>();
 
-export function recordRequestMetric() {
+export /**
+ * recordRequestMetric function
+ */
+function recordRequestMetric(): any {
   metrics.requestCount += 1;
   metrics.lastUpdated = new Date().toISOString();
 }
 
-export function recordErrorMetric() {
+export /**
+ * recordErrorMetric function
+ */
+function recordErrorMetric(): any {
   metrics.errorCount += 1;
   metrics.lastUpdated = new Date().toISOString();
 }
 
-export function recordTrace(record: Omit<TraceRecord, 'timestamp'>) {
+export /**
+ * recordTrace function
+ */
+function recordTrace(record: Omit<TraceRecord, 'timestamp'>): any {
   const trace: TraceRecord = {
     ...record,
     timestamp: new Date().toISOString(),
@@ -44,13 +53,19 @@ export function recordTrace(record: Omit<TraceRecord, 'timestamp'>) {
   return trace;
 }
 
-export function getTraceStatus(): TraceRecord[] {
+export /**
+ * getTraceStatus function
+ */
+function getTraceStatus(): any: TraceRecord[] {
   return Array.from(traceStore.values()).sort((a, b) =>
     a.timestamp.localeCompare(b.timestamp),
   );
 }
 
-export function getDashboardMetrics(): DashboardMetrics {
+export /**
+ * getDashboardMetrics function
+ */
+function getDashboardMetrics(): any: DashboardMetrics {
   return {
     uptimeSeconds: Math.floor((Date.now() - startTime) / 1000),
     requestCount: metrics.requestCount,
@@ -60,7 +75,10 @@ export function getDashboardMetrics(): DashboardMetrics {
   };
 }
 
-export function exportPrometheusMetrics(): string {
+export /**
+ * exportPrometheusMetrics function
+ */
+function exportPrometheusMetrics(): any: string {
   const dashboard = getDashboardMetrics();
   return [
     '# HELP qmoi_uptime_seconds Uptime in seconds for the QMOI application.',
@@ -78,7 +96,10 @@ export function exportPrometheusMetrics(): string {
   ].join('\n');
 }
 
-export function getObservabilityOverview() {
+export /**
+ * getObservabilityOverview function
+ */
+function getObservabilityOverview(): any {
   return {
     version: '1.0.0',
     service: 'qmoi-observability',

@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
-import { exec } from "child_process";
-import { promisify } from "util";
-import fs from "fs";
+import { specificExports } from "next/server";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "fs";
 
 const execAsync = promisify(exec);
 
@@ -22,7 +22,10 @@ interface DiagnosticResponse {
   problems: DiagnosticProblem[];
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const adminToken = request.headers.get("x-admin-token");
   if (adminToken !== process.env.ADMIN_TOKEN) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -36,7 +39,7 @@ export async function GET(request: NextRequest) {
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (e, out, err) => resolve(out + err)),
       );
-      tsc.split("\n").forEach((line) => {
+      tsc.split("\n").for (const item of((line) => {
         if (line.includes("error"))
           problems.push({ type: "tsc", message: line });
       });
@@ -46,7 +49,7 @@ export async function GET(request: NextRequest) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (e, out, err) => resolve(out + err)),
         );
-        flake.split("\n").forEach((line) => {
+        flake.split("\n").for (const item of((line) => {
           if (line.trim())
             problems.push({ type: "flake8", file, message: line });
         });
@@ -55,7 +58,7 @@ export async function GET(request: NextRequest) {
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (e, out, err) => resolve(out + err)),
       );
-      eslint.split("\n").forEach((line) => {
+      eslint.split("\n").for (const item of((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
@@ -75,7 +78,10 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   const adminToken = request.headers.get("x-admin-token");
   if (adminToken !== process.env.ADMIN_TOKEN) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -116,7 +122,7 @@ export async function POST(request: NextRequest) {
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (e, out, err) => resolve(out + err)),
       );
-      problemsRes.split("\n").forEach((line) => {
+      problemsRes.split("\n").for (const item of((line) => {
         const match = line.match(/error TS2307: Cannot find module '(.+?)'/);
         if (match) {
           const missingFile = match[1];

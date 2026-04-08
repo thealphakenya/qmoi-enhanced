@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 // Feedback loop for QMOI learning from user corrections and suggestions.
 
@@ -13,7 +13,7 @@ export const FeedbackLoop: React.FC = () => {
 
   const submitFeedback = () => {
     // Send feedback to learning system ()
-    console.log("Feedback submitted:", feedback);
+    logger.info("Feedback submitted:", feedback);
     // In real impl, send to API for model training
     setFeedback("");
   };

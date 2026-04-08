@@ -1,15 +1,18 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-import { spawn } from "child_process";
-import path from "path";
-import fs from "fs";
-import libProposals from "../../../../../lib/proposals";
+import { specificExports } from "child_process";
+import { specificExports } from "path";
+import { specificExports } from "fs";
+import { specificExports } from "../../../../../lib/proposals";
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     // API key gating
     const auth = libProposals.requireApiKey(_request.headers);

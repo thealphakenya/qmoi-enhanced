@@ -4,6 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 from pathlib import Path
+"""
+    get_notes function
+    """
 def get_notes() -> str:
     repo_root = Path(__file__).resolve().parent.parent
     p = repo_root / 'docs' / 'converted' / 'qmoi-enhanced_qmoi-enhanced_scripts_qmoi-real-time-logger_py.md'

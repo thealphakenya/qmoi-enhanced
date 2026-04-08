@@ -4,12 +4,15 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
-export async function DELETE(
+export async /**
+ * DELETE function
+ */
+function DELETE(
   request: Request,
   { params }: { params: { domain: string } }
-) {
+): any {
   try {
     const domain = decodeURIComponent(params.domain);
 

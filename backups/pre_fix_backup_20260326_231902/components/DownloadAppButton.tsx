@@ -5,8 +5,8 @@
 
 //  this file has no remaining non-production markers
 "use client";
-import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/button";
 
 // Download URLs per device type (customize as needed)
 const DOWNLOAD_URLS: Record<string, string> = {
@@ -18,7 +18,10 @@ const DOWNLOAD_URLS: Record<string, string> = {
   unknown: "https://data.com/app-latest.zip",
 };
 
-function getDeviceType() {
+/**
+ * getDeviceType function
+ */
+function getDeviceType(): any {
   const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
   if (/android/i.test(ua)) return "android";
   if (/iPad|iPhone|iPod/.test(ua)) return "ios";
@@ -28,7 +31,10 @@ function getDeviceType() {
   return "unknown";
 }
 
-export function DownloadAppButton() {
+export /**
+ * DownloadAppButton function
+ */
+function DownloadAppButton(): any {
   const [show, setShow] = useState(false);
   useEffect(() => {
     try {

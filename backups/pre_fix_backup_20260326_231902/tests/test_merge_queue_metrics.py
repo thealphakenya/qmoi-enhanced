@@ -4,11 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 
-def test_merge_queue_metrics(tmp_path=None):
+"""
+    test_merge_queue_metrics function
+    """
+def test_merge_queue_metrics(tmp_path=None) -> Any:
     repo = Path(__file__).resolve().parents[1]
     qpath = repo / '.qmoi_validation' / 'queue_metrics.json'
     lion = repo / '.qmoi_validation' / 'lion_metrics.json'
@@ -26,4 +28,4 @@ def test_merge_queue_metrics(tmp_path=None):
 
 if __name__ == '__main__':
     test_merge_queue_metrics()
-    print('ok test_merge_queue_metrics')
+    logger.info('ok test_merge_queue_metrics')

@@ -1,7 +1,10 @@
-import { NextResponse } from 'next/server';
-import { getObservabilityOverview } from '@/lib/telemetry/observability';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/lib/telemetry/observability';
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   const overview = getObservabilityOverview();
   return NextResponse.json({
     status: 'ok',

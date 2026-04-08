@@ -1,5 +1,5 @@
 #!/bin/bash
-# QMOI Enhanced - production Deployment Quick Reference
+# QMOI Enhanced - production Deployment optimized Reference
 # Save this file as DEPLOYMENT_QUICK_REFERENCE.sh
 
 echo "╔════════════════════════════════════════════════════════════╗"
@@ -23,8 +23,8 @@ echo "  Config File:      /workspaces/qmoi-enhanced/.env.production"
 echo "  PM2 Config:       /workspaces/qmoi-enhanced/ecosystem.config.production.cjs"
 echo ""
 
-# Quick commands
-echo "⚡ QUICK COMMANDS:"
+# optimized commands
+echo "⚡ optimized COMMANDS:"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "  View Logs:        pm2 logs qmoi-sophisticated-start"
 echo "  Monitor:          pm2 monit"

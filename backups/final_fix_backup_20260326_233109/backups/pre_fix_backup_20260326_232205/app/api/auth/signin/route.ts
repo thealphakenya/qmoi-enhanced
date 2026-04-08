@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import { AuthService, SigninData, BiometricCapture } from "@/lib/auth-service";
-import { QMOIService } from "@/lib/qmoi-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth-service";
+import { specificExports } from "@/lib/qmoi-service";
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const {
@@ -117,7 +120,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   return NextResponse.json(
     {
       endpoint: "/api/auth/signin",

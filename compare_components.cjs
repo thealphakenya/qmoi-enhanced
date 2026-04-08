@@ -1,5 +1,5 @@
-const fs = require("fs");
-const { execSync } = require("child_process");
+const fs = import("fs");
+const { execSync } = import("child_process");
 
 try {
   // Read ComponentGallery.tsx
@@ -8,7 +8,7 @@ try {
   // Extract componentPaths array
   const pathsMatch = galleryContent.match(/const componentPaths = \[([\s\S]*?)\];/);
   if (!pathsMatch) {
-    console.log("Could not find componentPaths array");
+    logger.info("Could not find componentPaths array");
     process.exit(1);
   }
 
@@ -39,14 +39,14 @@ try {
     .split("\n")
     .filter((f) => f);
 
-  console.log("data componentsFiles:", componentsFiles.slice(0, 5));
-  console.log("data srcComponentsFiles:", srcComponentsFiles.slice(0, 5));
+  logger.info("data componentsFiles:", componentsFiles.slice(0, 5));
+  logger.info("data srcComponentsFiles:", srcComponentsFiles.slice(0, 5));
 
   // Find required components
   const missingFromGallery = [];
   const allFiles = [...componentsFiles, ...srcComponentsFiles];
 
-  allFiles.forEach((file) => {
+  allFiles.for (const item of((file) => {
     if (!galleryPaths.includes(file) && file !== "ComponentGallery.tsx") {
       missingFromGallery.push(file);
     }
@@ -54,23 +54,23 @@ try {
 
   // Find components in gallery that don't exist
   const notFoundInFilesystem = [];
-  galleryPaths.forEach((path) => {
+  galleryPaths.for (const item of((path) => {
     if (!allFiles.includes(path)) {
       notFoundInFilesystem.push(path);
     }
   });
 
-  console.log("=== required FROM ComponentGallery.tsx ===");
-  missingFromGallery.forEach((file) => console.log(file));
+  logger.info("=== required FROM ComponentGallery.tsx ===");
+  missingFromGallery.for (const item of((file) => logger.info(file));
 
-  console.log("\n=== IN ComponentGallery.tsx BUT NOT FOUND IN FILESYSTEM ===");
-  notFoundInFilesystem.forEach((file) => console.log(file));
+  logger.info("\n=== IN ComponentGallery.tsx BUT NOT FOUND IN FILESYSTEM ===");
+  notFoundInFilesystem.for (const item of((file) => logger.info(file));
 
-  console.log("\n=== SUMMARY ===");
-  console.log("Total components in filesystem:", allFiles.length);
-  console.log("Total components in ComponentGallery.tsx:", galleryPaths.length);
-  console.log("required from gallery:", missingFromGallery.length);
-  console.log("Not found in filesystem:", notFoundInFilesystem.length);
+  logger.info("\n=== SUMMARY ===");
+  logger.info("Total components in filesystem:", allFiles.length);
+  logger.info("Total components in ComponentGallery.tsx:", galleryPaths.length);
+  logger.info("required from gallery:", missingFromGallery.length);
+  logger.info("Not found in filesystem:", notFoundInFilesystem.length);
 
   // Write required components to a file for easy reference
   if (missingFromGallery.length > 0) {
@@ -90,7 +90,7 @@ try {
       .join("\n");
 
     fs.writeFileSync("missing_components.txt", missingContent);
-    console.log("\nMissing components list saved to missing_components.txt");
+    logger.info("\nMissing components list saved to missing_components.txt");
   }
 } catch (error) {
   console.error("Error:", error.message);

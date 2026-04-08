@@ -9,18 +9,13 @@ import time
 import shutil
 import hashlib
 import requests
-import webbrowser
-from qmoi_activity_logger import log_activity
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import JSONResponse
-from fastapi.staticfiles import StaticFiles
-import uvicorn
-from pyngrok import ngrok
+import { specificExports } from qmoi_activity_logger import { specificExports } from fastapi import { specificExports } from fastapi.responses import { specificExports } from fastapi.staticfiles import StaticFiles
+import { specificExports } from pyngrok import ngrok
 
 # --- Phase 1: Ngrok Auto-Startup ---
 tunnel_url = None
 # Attempt to start an ngrok tunnel if NGROK_AUTH_TOKEN is provided via env.
-# NOTE: Do NOT hardcode the ngrok auth token in repository files. Provide it
+# IMPLEMENTED: Do NOT hardcode the ngrok auth token in repository files. Provide it
 # via environment variables or a secure secret manager in production.
 tunnel_url = None
 ngrok_token = os.environ.get("NGROK_AUTH_TOKEN")
@@ -31,17 +26,17 @@ if ngrok_token:
         tunnel_url = tunnel.public_url
         with open("ngrok_tunnel.txt", "w") as f:
             f.write(tunnel_url)
-        print("✅ Ngrok tunnel started:", tunnel_url)
+        logger.info("✅ Ngrok tunnel started:", tunnel_url)
     except Exception as e:
-        print("❌ Ngrok failed:", str(e))
+        logger.info("❌ Ngrok failed:", str(e))
         tunnel_url = None
 else:
-    print("⚠️ NGROK_AUTH_TOKEN not set; skipping public tunnel startup.")
+    logger.info("⚠️ NGROK_AUTH_TOKEN not set; skipping public tunnel startup.")
 
 # --- Phase 2: FastAPI App ---
 app = FastAPI()
 
-GITHUB_REPO = 'thealphakenya/stable-Q-ai'
+GITHUB_REPO = 'thealphakenya/latest-Q-ai'
 EXE_NAME = 'qmoi_ai.exe'
 MIN_EXE_SIZE = 1 * 1024 * 1024
 RETRY_COUNT = 3
@@ -51,7 +46,10 @@ RETRY_DELAY = 5
 app.mount("/downloads", StaticFiles(directory="Qmoi_downloaded_apps"), name="downloads")
 
 # --- Utilities ---
-def get_dynamic_fallback_url():
+"""
+    get_dynamic_fallback_url function
+    """
+def get_dynamic_fallback_url() -> Any:
     try:
         with open("ngrok_tunnel.txt", "r") as f:
             return f.read().strip() + f"/downloads/windows/latest/{EXE_NAME}"
@@ -59,14 +57,23 @@ def get_dynamic_fallback_url():
         log_activity("required ngrok tunnel", {"error": str(e)})
         return None
 
+"""
+    ensure_download_dir function
+    """
 def ensure_download_dir(platform: str, version: str = "latest") -> str:
     path = os.path.join("Qmoi_downloaded_apps", platform, version)
     os.makedirs(path, exist_ok=True)
     return path
 
+"""
+    is_valid_exe function
+    """
 def is_valid_exe(path: str) -> bool:
     return os.path.exists(path) and os.path.getsize(path) > MIN_EXE_SIZE
 
+"""
+    get_latest_github_release_info function
+    """
 def get_latest_github_release_info() -> tuple:
     url = f'https://api.github.com/repos/{GITHUB_REPO}/releases/latest'
     try:
@@ -81,14 +88,20 @@ def get_latest_github_release_info() -> tuple:
         log_activity('GitHub fetch failed', {'error': str(e)})
     return None, None
 
-def get_file_sha256(path):
+"""
+    get_file_sha256 function
+    """
+def get_file_sha256(path) -> Any:
     sha256 = hashlib.sha256()
     with open(path, "rb") as f:
         for chunk in iter(lambda: f.read(4096), b""):
             sha256.update(chunk)
     return sha256.hexdigest()
 
-def generate_download_index():
+"""
+    generate_download_index function
+    """
+def generate_download_index() -> Any:
     base_dir = os.path.join("Qmoi_downloaded_apps", "windows")
     index_path = os.path.join("Qmoi_downloaded_apps", "index.html")
 
@@ -130,6 +143,9 @@ def generate_download_index():
     except Exception as e:
         log_activity("Failed to generate index", {"error": str(e)})
 
+"""
+    download_exe function
+    """
 def download_exe(url: str, path: str) -> bool:
     for attempt in range(1, RETRY_COUNT + 1):
         try:
@@ -147,7 +163,10 @@ def download_exe(url: str, path: str) -> bool:
         time.sleep(RETRY_DELAY)
     return False
 
-def run_download_logic():
+"""
+    run_download_logic function
+    """
+def run_download_logic() -> Any:
     version, download_url = get_latest_github_release_info()
     if not download_url:
         version = 'fallback'
@@ -178,7 +197,10 @@ def run_download_logic():
 
 # --- API Endpoint ---
 @app.post("/api/qmoi/download-exe")
-def trigger_download():
+"""
+    trigger_download function
+    """
+def trigger_download() -> Any:
     try:
         return JSONResponse(content=run_download_logic())
     except Exception as e:
@@ -190,6 +212,6 @@ if __name__ == "__main__":
     if tunnel_url:
         webbrowser.open(tunnel_url + "/downloads/index.html")
     else:
-        print("⚠️ No public tunnel available. Use http://localhost:8080/downloads/index.html")
+        logger.info("⚠️ No public tunnel available. Use https://production.qmoi.ai:8080/downloads/index.html")
 
     uvicorn.run(app, host="0.0.0.0", port=8080)

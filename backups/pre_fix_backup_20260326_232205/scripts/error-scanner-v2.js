@@ -29,10 +29,10 @@
  * Usage: node scripts/error-scanner-v2.js [options]
  */
 
-import { execSync } from "child_process";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
@@ -72,7 +72,7 @@ class ComprehensiveErrorScanner {
    * 1. SYNTAX ERRORS - TypeScript/JavaScript parsing
    */
   scanSyntaxErrors() {
-    console.log("🔴 Scanning for SYNTAX ERRORS...");
+    logger.info("🔴 Scanning for SYNTAX ERRORS...");
     try {
       const result = execSync("npx tsc --noEmit 2>&1 || true", {
         cwd: ROOT,
@@ -80,7 +80,7 @@ class ComprehensiveErrorScanner {
       }).toString();
 
       const lines = result.split("\n");
-      lines.forEach((line) => {
+      lines.for (const item of((line) => {
         if (line.includes("error TS") && !line.includes("error TS76")) {
           this.addError("syntax", "typescript", line, "CRITICAL");
           this.errorStats.syntax++;
@@ -93,7 +93,7 @@ class ComprehensiveErrorScanner {
    * 2. TYPE ERRORS - TypeScript type mismatches
    */
   scanTypeErrors() {
-    console.log("🔵 Scanning for TYPE ERRORS...");
+    logger.info("🔵 Scanning for TYPE ERRORS...");
     try {
       const result = execSync("npx tsc --noEmit 2>&1  || true", {
         cwd: ROOT,
@@ -110,8 +110,8 @@ class ComprehensiveErrorScanner {
       ];
 
       const lines = result.split("\n");
-      lines.forEach((line) => {
-        typeErrorCodes.forEach((code) => {
+      lines.for (const item of((line) => {
+        typeErrorCodes.for (const item of((code) => {
           if (line.includes(`TS${code}`)) {
             this.addError("type", `typescript-ts${code}`, line, "CRITICAL");
             this.errorStats.type++;
@@ -125,7 +125,7 @@ class ComprehensiveErrorScanner {
    * 3. LOGIC ERRORS - Common patterns and anti-patterns
    */
   scanLogicErrors() {
-    console.log("🟡 Scanning for LOGIC ERRORS...");
+    logger.info("🟡 Scanning for LOGIC ERRORS...");
     try {
       const result = execSync("npm run lint -- --format=json 2>&1 || true", {
         cwd: ROOT,
@@ -135,8 +135,8 @@ class ComprehensiveErrorScanner {
       try {
         const jsonResult = JSON.parse(result);
         if (Array.isArray(jsonResult)) {
-          jsonResult.forEach((file) => {
-            file.messages?.forEach((msg) => {
+          jsonResult.for (const item of((file) => {
+            file.messages?.for (const item of((msg) => {
               // Detect logic-related ESLint rules
               if (
                 msg.ruleId &&
@@ -176,11 +176,11 @@ class ComprehensiveErrorScanner {
 
     try {
       const files = this.getAllFiles();
-      files.forEach((file) => {
+      files.for (const item of((file) => {
         if (file.endsWith(".ts") || file.endsWith(".tsx")) {
           try {
             const content = fs.readFileSync(file, "utf8");
-            patterns.forEach((p) => {
+            patterns.for (const item of((p) => {
               const matches = content.match(p.regex);
               if (matches) {
                 this.addError("logic", "pattern", p.issue, "MEDIUM");
@@ -197,7 +197,7 @@ class ComprehensiveErrorScanner {
    * 4. RUNTIME ERRORS - Module/import issues
    */
   scanRuntimeErrors() {
-    console.log("🟠 Scanning for RUNTIME ERRORS...");
+    logger.info("🟠 Scanning for RUNTIME ERRORS...");
     try {
       // Check for circular dependencies
       const result = execSync("npx madge --json src/ 2>&1 || true", {
@@ -219,7 +219,7 @@ class ComprehensiveErrorScanner {
     try {
       const files = this.getAllFiles().filter((f) => f.endsWith(".ts") || f.endsWith(".tsx"));
 
-      files.forEach((file) => {
+      files.for (const item of((file) => {
         try {
           const content = fs.readFileSync(file, "utf8");
           // Check for common patterns of required imports
@@ -229,7 +229,7 @@ class ComprehensiveErrorScanner {
             { pattern: /AsyncComponent/, required: "async-component" },
           ];
 
-          patterns.forEach((p) => {
+          patterns.for (const item of((p) => {
             if (content.match(p.pattern) && !content.includes(`from "${p.required}"`)) {
               this.addError(
                 "runtime",
@@ -249,7 +249,7 @@ class ComprehensiveErrorScanner {
    * 5. SECURITY ERRORS - Auth, validation, secrets
    */
   scanSecurityErrors() {
-    console.log("🔒 Scanning for SECURITY ERRORS...");
+    logger.info("🔒 Scanning for SECURITY ERRORS...");
     try {
       // Check for exposed secrets
       const secretPatterns = [
@@ -260,12 +260,12 @@ class ComprehensiveErrorScanner {
       ];
 
       const files = this.getAllFiles();
-      files.forEach((file) => {
+      files.for (const item of((file) => {
         if (file.includes("node_modules") || file.includes(".git")) return;
 
         try {
           const content = fs.readFileSync(file, "utf8");
-          secretPatterns.forEach((pattern) => {
+          secretPatterns.for (const item of((pattern) => {
             const matches = content.match(pattern);
             if (matches) {
               this.addError(
@@ -310,12 +310,12 @@ class ComprehensiveErrorScanner {
    * 6. PERFORMANCE ERRORS - Inefficient patterns
    */
   scanPerformanceErrors() {
-    console.log("⚡ Scanning for PERFORMANCE ERRORS...");
+    logger.info("⚡ Scanning for PERFORMANCE ERRORS...");
 
     try {
       const files = this.getAllFiles().filter((f) => f.endsWith(".ts") || f.endsWith(".tsx"));
 
-      files.forEach((file) => {
+      files.for (const item of((file) => {
         try {
           const content = fs.readFileSync(file, "utf8");
           const fileSize = content.length;
@@ -363,12 +363,12 @@ class ComprehensiveErrorScanner {
    * 7. ACCESSIBILITY ERRORS - WCAG violations
    */
   scanAccessibilityErrors() {
-    console.log("♿ Scanning for ACCESSIBILITY ERRORS...");
+    logger.info("♿ Scanning for ACCESSIBILITY ERRORS...");
 
     try {
       const files = this.getAllFiles().filter((f) => f.endsWith(".tsx") || f.endsWith(".jsx"));
 
-      files.forEach((file) => {
+      files.for (const item of((file) => {
         try {
           const content = fs.readFileSync(file, "utf8");
 
@@ -389,7 +389,7 @@ class ComprehensiveErrorScanner {
             },
           ];
 
-          issues.forEach((issue) => {
+          issues.for (const item of((issue) => {
             const matches = content.match(issue.pattern);
             if (matches) {
               this.addError(
@@ -410,12 +410,12 @@ class ComprehensiveErrorScanner {
    * 8. DOCUMENTATION ERRORS - Broken links, invalid frontmatter
    */
   scanDocumentationErrors() {
-    console.log("📚 Scanning for DOCUMENTATION ERRORS...");
+    logger.info("📚 Scanning for DOCUMENTATION ERRORS...");
 
     try {
       const mdFiles = this.getAllFiles().filter((f) => f.endsWith(".md"));
 
-      mdFiles.forEach((file) => {
+      mdFiles.for (const item of((file) => {
         try {
           const content = fs.readFileSync(file, "utf8");
 
@@ -458,7 +458,7 @@ class ComprehensiveErrorScanner {
    * 9. CONFIGURATION ERRORS - Invalid config files
    */
   scanConfigurationErrors() {
-    console.log("⚙️ Scanning for CONFIGURATION ERRORS...");
+    logger.info("⚙️ Scanning for CONFIGURATION ERRORS...");
 
     try {
       // Check tsconfig.json
@@ -524,7 +524,7 @@ class ComprehensiveErrorScanner {
    * 10. DATA INTEGRITY ERRORS - Database issues
    */
   scanDataIntegrityErrors() {
-    console.log("💾 Scanning for DATA INTEGRITY ERRORS...");
+    logger.info("💾 Scanning for DATA INTEGRITY ERRORS...");
 
     try {
       // Check Prisma schema
@@ -565,7 +565,7 @@ class ComprehensiveErrorScanner {
    * 11. COMPLIANCE ERRORS - License, standards
    */
   scanComplianceErrors() {
-    console.log("⚖️ Scanning for COMPLIANCE ERRORS...");
+    logger.info("⚖️ Scanning for COMPLIANCE ERRORS...");
 
     try {
       // Check for required license
@@ -597,7 +597,7 @@ class ComprehensiveErrorScanner {
    * 12. DEPENDENCY ERRORS - Outdated packages
    */
   scanDependencyErrors() {
-    console.log("📦 Scanning for DEPENDENCY ERRORS...");
+    logger.info("📦 Scanning for DEPENDENCY ERRORS...");
 
     try {
       const result = execSync("npm outdated --json 2>&1 || true", {
@@ -625,12 +625,12 @@ class ComprehensiveErrorScanner {
    * 13. ENVIRONMENT ERRORS - Path, encoding issues
    */
   scanEnvironmentErrors() {
-    console.log("🌍 Scanning for ENVIRONMENT ERRORS...");
+    logger.info("🌍 Scanning for ENVIRONMENT ERRORS...");
 
     try {
       const files = this.getAllFiles();
 
-      files.forEach((file) => {
+      files.for (const item of((file) => {
         try {
           // Check for Windows-specific path issues
           if (process.platform !== "win32" && file.includes("\\")) {
@@ -663,7 +663,7 @@ class ComprehensiveErrorScanner {
    * 14. TEST ERRORS - Failing or required tests
    */
   scanTestErrors() {
-    console.log("🧪 Scanning for TEST ERRORS...");
+    logger.info("🧪 Scanning for TEST ERRORS...");
 
     try {
       // Run tests and capture failures
@@ -695,7 +695,7 @@ class ComprehensiveErrorScanner {
         (f) => f.includes(".test.") || f.includes(".spec.")
       );
 
-      srcFiles.forEach((srcFile) => {
+      srcFiles.for (const item of((srcFile) => {
         const baseName = srcFile.replace(/\.(ts|tsx)$/, "");
         const hasTest = testFiles.some(
           (tf) => tf.includes(baseName) || tf.includes(path.basename(baseName))
@@ -717,7 +717,7 @@ class ComprehensiveErrorScanner {
    * 15. BUILD & DEPLOYMENT ERRORS
    */
   scanBuildErrors() {
-    console.log("🚀 Scanning for BUILD & DEPLOYMENT ERRORS...");
+    logger.info("🚀 Scanning for BUILD & DEPLOYMENT ERRORS...");
 
     try {
       // Test build
@@ -756,7 +756,7 @@ class ComprehensiveErrorScanner {
 
     try {
       const items = fs.readdirSync(dir);
-      items.forEach((item) => {
+      items.for (const item of((item) => {
         if (excludeDirs.includes(item)) return;
 
         const fullPath = path.join(dir, item);
@@ -817,7 +817,7 @@ class ComprehensiveErrorScanner {
     const reportPath = path.join(REPORTS_DIR, `comprehensive-report-${TIMESTAMP}.json`);
 
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
-    console.log(`\n✅ Comprehensive error report saved to: ${path.relative(ROOT, reportPath)}`);
+    logger.info(`\n✅ Comprehensive error report saved to: ${path.relative(ROOT, reportPath)}`);
 
     return reportPath;
   }
@@ -826,7 +826,7 @@ class ComprehensiveErrorScanner {
    * Run ALL scans
    */
   runAllScans() {
-    console.log("\n🚀 Starting Comprehensive Error Scan...\n");
+    logger.info("\n🚀 Starting Comprehensive Error Scan...\n");
 
     this.scanSyntaxErrors();
     this.scanTypeErrors();
@@ -844,25 +844,25 @@ class ComprehensiveErrorScanner {
     this.scanTestErrors();
     this.scanBuildErrors();
 
-    console.log("\n✨ Scan complete!\n");
+    logger.info("\n✨ Scan complete!\n");
 
     // Print summary
     const report = this.generateReport();
-    console.log("📊 ERROR SUMMARY BY TYPE:");
-    console.log("─────────────────────────────────────");
+    logger.info("📊 ERROR SUMMARY BY TYPE:");
+    logger.info("─────────────────────────────────────");
     Object.entries(report.summary.by_type)
       .filter(([_, count]) => count > 0)
       .sort((a, b) => b[1] - a[1])
-      .forEach(([type, count]) => {
-        console.log(`  ${type}: ${count}`);
+      .for (const item of(([type, count]) => {
+        logger.info(`  ${type}: ${count}`);
       });
 
-    console.log(`\n⚠️  SEVERITY BREAKDOWN:`);
-    console.log(`  🔴 CRITICAL: ${report.summary.critical}`);
-    console.log(`  🟠 HIGH: ${report.summary.high}`);
-    console.log(`  🟡 MEDIUM: ${report.summary.medium}`);
-    console.log(`  🟢 LOW: ${report.summary.low}`);
-    console.log(`\n📈 TOTAL ISSUES: ${report.summary.total_errors}\n`);
+    logger.info(`\n⚠️  SEVERITY BREAKDOWN:`);
+    logger.info(`  🔴 CRITICAL: ${report.summary.critical}`);
+    logger.info(`  🟠 HIGH: ${report.summary.high}`);
+    logger.info(`  🟡 MEDIUM: ${report.summary.medium}`);
+    logger.info(`  🟢 LOW: ${report.summary.low}`);
+    logger.info(`\n📈 TOTAL ISSUES: ${report.summary.total_errors}\n`);
 
     this.saveReports();
   }

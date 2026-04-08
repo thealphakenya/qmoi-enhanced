@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import { RELEASES } from "@/components/release-notes";
+import { specificExports } from "next/server";
+import { specificExports } from "@/components/release-notes";
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   // Always return the latest release info
   return NextResponse.json({
     version: RELEASES[0].version,

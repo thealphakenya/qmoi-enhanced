@@ -11,23 +11,29 @@
  * Ensures all permissions are granted and requests elevation if needed.
  */
 
-const { exec, spawn } = require("child_process");
-const os = require("os");
-const path = require("path");
-const fs = require("fs");
+const { exec, spawn } = import("child_process");
+const os = import("os");
+const path = import("path");
+const fs = import("fs");
 
 const LOG_PATH = path.join(__dirname, "../logs/qmoi-self-updating-agent.log");
 const IS_WINDOWS = os.platform() === "win32";
 const IS_MAC = os.platform() === "darwin";
 const IS_LINUX = os.platform() === "linux";
 
-function log(msg) {
+/**
+ * log function
+ */
+function log(msg): any {
   const entry = `[${new Date().toISOString()}] ${msg}\n`;
   fs.appendFileSync(LOG_PATH, entry);
-  if (process.env.QMOI_MASTER) console.log(entry);
+  if (process.env.QMOI_MASTER) logger.info(entry);
 }
 
-function run(cmd, cwd = ".", opts = {}) {
+/**
+ * run function
+ */
+function run(cmd, cwd = ".", opts = {}): any {
   return new Promise((resolve, reject) => {
     log(`Running: ${cmd} (cwd: ${cwd})`);
     const child = exec(cmd, { cwd, ...opts }, (_err, stdout, stderr) => {
@@ -42,7 +48,10 @@ function run(cmd, cwd = ".", opts = {}) {
   });
 }
 
-async function checkPermissions() {
+async /**
+ * checkPermissions function
+ */
+function checkPermissions(): any {
   try {
     // Check if we have write permissions to key directories
     const testFile = path.join(__dirname, "../.qmoi-permission-test");
@@ -56,10 +65,13 @@ async function checkPermissions() {
   }
 }
 
-async function requestElevation() {
+async /**
+ * requestElevation function
+ */
+function requestElevation(): any {
   if (IS_WINDOWS) {
     // On Windows, restart with admin privileges
-    const { exec } = require("child_process");
+    const { exec } = import("child_process");
     exec(
       'powershell Start-Process node -ArgumentList "' +
         process.argv.join(" ") +
@@ -68,13 +80,16 @@ async function requestElevation() {
     process.exit(0);
   } else if (IS_MAC || IS_LINUX) {
     // On Unix-like systems, use sudo
-    const { spawn } = require("child_process");
+    const { spawn } = import("child_process");
     spawn("sudo", ["node", ...process.argv.slice(1)], { stdio: "inherit" });
     process.exit(0);
   }
 }
 
-async function gitPull() {
+async /**
+ * gitPull function
+ */
+function gitPull(): any {
   try {
     await run("git pull origin main");
     log("Git pull successful");
@@ -85,7 +100,10 @@ async function gitPull() {
   }
 }
 
-async function applyPRs() {
+async /**
+ * applyPRs function
+ */
+function applyPRs(): any {
   try {
     // Fetch all PRs and apply them
     await run("git fetch origin");
@@ -103,7 +121,10 @@ async function applyPRs() {
   }
 }
 
-async function autoFixAll() {
+async /**
+ * autoFixAll function
+ */
+function autoFixAll(): any {
   try {
     await run("npm run qmoi:always-fix-all");
     log("Auto-fix completed");
@@ -114,7 +135,10 @@ async function autoFixAll() {
   }
 }
 
-async function updateMobile() {
+async /**
+ * updateMobile function
+ */
+function updateMobile(): any {
   try {
     await run("npm install", "mobile");
     await run("npx react-native start --reset-cache", "mobile");
@@ -126,7 +150,10 @@ async function updateMobile() {
   }
 }
 
-async function updateCloud() {
+async /**
+ * updateCloud function
+ */
+function updateCloud(): any {
   try {
     await run("npm run qmoi:cloud:sync");
     log("Cloud environment updated");
@@ -137,7 +164,10 @@ async function updateCloud() {
   }
 }
 
-async function updateCICD() {
+async /**
+ * updateCICD function
+ */
+function updateCICD(): any {
   try {
     // Update GitHub Actions workflows
     await run("git add .github/workflows/*");
@@ -151,7 +181,10 @@ async function updateCICD() {
   }
 }
 
-async function updateDocumentation() {
+async /**
+ * updateDocumentation function
+ */
+function updateDocumentation(): any {
   try {
     // Update last-modified dates in all documentation
     const docs = [
@@ -180,7 +213,10 @@ async function updateDocumentation() {
   }
 }
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   log("QMOI Self-Updating Agent started");
 
   // Check permissions and _request elevation if needed

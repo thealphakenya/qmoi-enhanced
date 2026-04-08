@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import fs from "fs";
-import { globby } from "globby";
+import { specificExports } from "fs";
+import { specificExports } from "globby";
 
 const run = async () => {
   const patterns = [
@@ -40,7 +40,7 @@ const run = async () => {
       count++;
     }
   }
-  console.log("Updated files:", count);
+  logger.info("Updated files:", count);
 };
 
 run().catch((_err) => {

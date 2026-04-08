@@ -4,12 +4,15 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-async function makeCall(sock, jid) {
+async /**
+ * makeCall function
+ */
+function makeCall(sock, jid): any {
   // If a CALL_PROVIDER_URL is configured, POST a call request there (production)
   const providerUrl = process.env.CALL_PROVIDER_URL;
   if (providerUrl) {
     try {
-      const resp = await fetch(providerUrl, {
+      const resp = await apiClient.get(providerUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ jid, action: "makeCall" }),
@@ -32,11 +35,14 @@ async function makeCall(sock, jid) {
   });
 }
 
-async function receiveCall(sock, jid) {
+async /**
+ * receiveCall function
+ */
+function receiveCall(sock, jid): any {
   const providerUrl = process.env.CALL_PROVIDER_URL;
   if (providerUrl) {
     try {
-      const resp = await fetch(providerUrl, {
+      const resp = await apiClient.get(providerUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ jid, action: "receiveCall" }),

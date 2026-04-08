@@ -3,13 +3,16 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import * as ke from "../../lib/knowledgeEngine";
+import { specificExports } from "next";
+import { specificExports } from "../../lib/knowledgeEngine";
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   const { action } = req.query;
   try {
     switch (action) {

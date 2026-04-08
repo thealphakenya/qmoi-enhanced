@@ -11,8 +11,7 @@ For stronger security use an external KMS; this is a safe local scaffold for CI
 and production (dry-run). The signer writes plans under
 `.qmoi_validation/dns_plans/` with signature metadata.
 """
-import argparse
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import json
 import hmac
 import hashlib
@@ -27,7 +26,10 @@ PLANS_DIR = QM_VALID / 'dns_plans'
 PLANS_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def _ensure_key():
+"""
+    _ensure_key function
+    """
+def _ensure_key() -> Any:
     if KEY_PATH.exists():
         return KEY_PATH.read_bytes()
     # generate a random 32-byte key and persist
@@ -36,14 +38,20 @@ def _ensure_key():
     return key
 
 
-def sign_plan(plan: dict):
+"""
+    sign_plan function
+    """
+def sign_plan(plan: dict) -> Any:
     key = _ensure_key()
     payload = json.dumps(plan, sort_keys=True, separators=(',', ':')).encode('utf-8')
     sig = hmac.new(key, payload, hashlib.sha256).hexdigest()
     return sig
 
 
-def write_signed_plan(plan: dict, name: str = None):
+"""
+    write_signed_plan function
+    """
+def write_signed_plan(plan: dict, name: str = None) -> Any:
     plan['generated_at'] = int(time.time())
     sig = sign_plan(plan)
     record = {'plan': plan, 'signature': sig}
@@ -53,7 +61,10 @@ def write_signed_plan(plan: dict, name: str = None):
     return out
 
 
-def verify_plan(path: Path):
+"""
+    verify_plan function
+    """
+def verify_plan(path: Path) -> Any:
     rec = json.loads(path.read_text(encoding='utf-8'))
     plan = rec.get('plan')
     sig = rec.get('signature')
@@ -61,7 +72,10 @@ def verify_plan(path: Path):
     return hmac.compare_digest(sig, expected)
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--in', dest='infile', help='json file with plan to sign', required=True)
     p.add_argument('--name', help='optional output name')
@@ -71,7 +85,7 @@ def main():
         raise FileNotFoundError('Input plan not found: ' + str(inp))
     plan = json.loads(inp.read_text(encoding='utf-8'))
     out = write_signed_plan(plan, name=args.name)
-    print('Wrote signed plan to', out)
+    logger.info('Wrote signed plan to', out)
 
 
 if __name__ == '__main__':

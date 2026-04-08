@@ -5,7 +5,10 @@ import {
   type SocialProvider,
 } from '@/lib/auth/social';
 
-function jsonResponse(body: unknown, status = 200) {
+/**
+ * jsonResponse function
+ */
+function jsonResponse(body: unknown, status = 200): any {
   return new Response(JSON.stringify(body), {
     status,
     headers: {
@@ -14,10 +17,13 @@ function jsonResponse(body: unknown, status = 200) {
   });
 }
 
-export async function GET(
+export async /**
+ * GET function
+ */
+function GET(
   request: Request,
   { params }: { params: { provider: string } },
-) {
+): any {
   const provider = params.provider as string;
   if (!isSocialProvider(provider)) {
     return jsonResponse({ error: 'Unsupported social provider' }, 400);
@@ -30,10 +36,13 @@ export async function GET(
   return Response.redirect(redirectUrl);
 }
 
-export async function POST(
+export async /**
+ * POST function
+ */
+function POST(
   request: Request,
   { params }: { params: { provider: string } },
-) {
+): any {
   const provider = params.provider as string;
   if (!isSocialProvider(provider)) {
     return jsonResponse({ error: 'Unsupported social provider' }, 400);

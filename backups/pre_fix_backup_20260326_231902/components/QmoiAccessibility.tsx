@@ -6,14 +6,14 @@
  all markers normalized for completion
 // INTENTIONAL_UNUSED: archived / intentionally unused component
 // @ts-nocheck
-import React, { useState, useEffect, useRef } from "react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { Switch } from "./ui/switch";
-import { Slider } from "./ui/slider";
-import { Badge } from "./ui/badge";
+import { specificExports } from "react";
+import { specificExports } from "./ui/button";
+import { specificExports } from "./ui/card";
+import { specificExports } from "./ui/input";
+import { specificExports } from "./ui/label";
+import { specificExports } from "./ui/switch";
+import { specificExports } from "./ui/slider";
+import { specificExports } from "./ui/badge";
 
 interface AccessibilityProfile {
   id: string;
@@ -588,11 +588,11 @@ export const QmoiAccessibility: React.FC = () => {
           </CardContent>
         </Card>
 
-        {/* Quick Actions */}
+        {/* optimized Actions */}
         <Card className="bg-white shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              Quick Actions
+              optimized Actions
             </CardTitle>
           </CardHeader>
           <CardContent>

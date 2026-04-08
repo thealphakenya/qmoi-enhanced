@@ -10,11 +10,13 @@ By default it uses https://api.exchangerate.host for live rates but will fall
 back to a realed static rate when offline or in dry-run. Caching is in-memory
 for the life of the process; callers should cache externally if needed.
 """
-import os
-from functools import lru_cache
+import { specificExports } from functools import lru_cache
 
 @lru_cache(maxsize=128)
-def _fetch_rates(base='USD'):
+"""
+    _fetch_rates function
+    """
+def _fetch_rates(base='USD') -> Any:
     if os.environ.get('DISABLE_EXTERNAL_RATES') == 'true':
         # realed rates
         return {'USD': 1.0, 'KES': 153.0, 'EUR': 0.92, 'GBP': 0.79}
@@ -34,7 +36,10 @@ def _fetch_rates(base='USD'):
         # fallback realed rates
         return {'USD': 1.0, 'KES': 153.0, 'EUR': 0.92, 'GBP': 0.79}
 
-def convert(amount, src='USD', dst='USD'):
+"""
+    convert function
+    """
+def convert(amount, src='USD', dst='USD') -> Any:
     if src == dst:
         return float(amount)
     rates = _fetch_rates(base=src)

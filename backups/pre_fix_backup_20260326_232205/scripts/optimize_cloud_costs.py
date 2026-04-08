@@ -11,7 +11,10 @@ QMOI Cloud Cost Optimizer
 import json
 import boto3
 
-def optimize_cloud_costs():
+"""
+    optimize_cloud_costs function
+    """
+def optimize_cloud_costs() -> Any:
     """Optimize cloud costs"""
     # Analyze usage patterns
     # Recommend cost optimizations

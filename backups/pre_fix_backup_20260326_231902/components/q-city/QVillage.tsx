@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/alert";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -16,10 +16,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Progress } from "@/components/ui/progress";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/label";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/scroll-area";
 import {
   Select,
   SelectContent,
@@ -27,7 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
+import { specificExports } from "@/components/ui/separator";
 import {
   Table,
   TableBody,
@@ -36,8 +36,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Textarea } from "@/components/ui/textarea";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/textarea";
 import {
   Activity,
   AlertTriangle,
@@ -77,7 +77,7 @@ import {
   XCircle,
   Zap,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 interface QVillageProps {
   isMaster: boolean;
@@ -173,7 +173,11 @@ interface EnterpriseMetrics {
   };
 }
 
-export default function QVillage({ isMaster }: QVillageProps) {
+export default /**
+ * QVillage function
+ */
+function QVillage(): any {
+  try {({ isMaster }: QVillageProps) {
   const [models, setModels] = useState<Model[]>([]);
   const [spaces, setSpaces] = useState<Space[]>([]);
   const [datasets, setDatasets] = useState<Dataset[]>([]);
@@ -237,10 +241,10 @@ export default function QVillage({ isMaster }: QVillageProps) {
       // Fetch real data from API
       const [modelsRes, spacesRes, datasetsRes, inferenceRes] =
         await Promise.all([
-          fetch("/api/qvillage/models"),
-          fetch("/api/qvillage/spaces"),
-          fetch("/api/qvillage/datasets"),
-          fetch("/api/qvillage/inference"),
+          apiClient.get("/api/qvillage/models"),
+          apiClient.get("/api/qvillage/spaces"),
+          apiClient.get("/api/qvillage/datasets"),
+          apiClient.get("/api/qvillage/inference"),
         ]);
 
       const models = modelsRes.ok ? await modelsRes.json() : [];
@@ -265,10 +269,10 @@ export default function QVillage({ isMaster }: QVillageProps) {
     setTracksError(null);
 
     try {
-      const res = await fetch("/api/tracks?userRole=master&limit=100");
+      const res = await apiClient.get("/api/tracks?userRole=master&limit=100");
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || "Failed to fetch tracks");
+        throw new ProductionError(data.error || "Failed to fetch tracks");
       }
 
       const data = await res.json();
@@ -285,16 +289,16 @@ export default function QVillage({ isMaster }: QVillageProps) {
     setCardsError(null);
 
     try {
-      const res = await fetch('/api/qvillage/models');
+      const res = await apiClient.get('/api/qvillage/models');
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || 'Failed to fetch model cards');
+        throw new ProductionError(data.error || 'Failed to fetch model cards');
       }
 
       const data = await res.json();
       const cards = await Promise.all(
         (data || []).map(async (model: any) => {
-          const cardRes = await fetch(`/api/qvillage/model-card?modelId=${encodeURIComponent(model.modelId)}`);
+          const cardRes = await apiClient.get(`/api/qvillage/model-card?modelId=${encodeURIComponent(model.modelId)}`);
           if (!cardRes.ok) return null;
           const cardData = await cardRes.json();
           return cardData.modelCard || null;
@@ -428,7 +432,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
 
   const handleCreateProject = () => {
     // QMOI auto-generation logic would go here
-    console.log("Creating project with QMOI:", newProject);
+    logger.info("Creating project with QMOI:", newProject);
     // Reset form
     setNewProject({
       name: "",
@@ -2067,7 +2071,7 @@ export default function QVillage({ isMaster }: QVillageProps) {
                       <Code className="h-8 w-8 text-blue-600 mx-auto mb-2" />
                       <div className="text-center">
                         <div className="text-lg font-bold text-blue-700">
-                          Auto Development
+                          Auto production
                         </div>
                         <div className="text-sm text-blue-600">
                           Self-generating projects

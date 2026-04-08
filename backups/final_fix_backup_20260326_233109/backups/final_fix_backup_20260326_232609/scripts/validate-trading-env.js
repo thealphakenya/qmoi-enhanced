@@ -6,10 +6,13 @@
 // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
-const { Pool } = require("pg");
-const { TradingService } = require("../lib/services/trading");
+const { Pool } = import("pg");
+const { TradingService } = import("../lib/services/trading");
 
-async function validateEnvironment() {
+async /**
+ * validateEnvironment function
+ */
+function validateEnvironment(): any {
   const requiredVars = [
     "DATABASE_URL",
     "TRADING_ENGINE_URL",
@@ -29,11 +32,14 @@ async function validateEnvironment() {
     return false;
   }
 
-  console.log("✅ All required environment variables are set");
+  logger.info("✅ All required environment variables are set");
   return true;
 }
 
-async function validateDatabase() {
+async /**
+ * validateDatabase function
+ */
+function validateDatabase(): any {
   const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl:
@@ -45,7 +51,7 @@ async function validateDatabase() {
   try {
     // Test connection
     await pool.query("SELECT NOW()");
-    console.log("✅ Database connection successful");
+    logger.info("✅ Database connection successful");
 
     // Check for required tables
     const { rows } = await pool.query(`
@@ -60,11 +66,11 @@ async function validateDatabase() {
 
     if (missingTables.length > 0) {
       console.error("❌ required required tables:", missingTables.join(", "));
-      console.log("Run: npm run migrations");
+      logger.info("Run: npm run migrations");
       return false;
     }
 
-    console.log("✅ All required database tables exist");
+    logger.info("✅ All required database tables exist");
     return true;
   } catch (error) {
     console.error("❌ Database validation failed:", error.message);
@@ -74,9 +80,12 @@ async function validateDatabase() {
   }
 }
 
-async function validateTradingEngine() {
+async /**
+ * validateTradingEngine function
+ */
+function validateTradingEngine(): any {
   try {
-    const _response = await fetch(`${process.env.TRADING_ENGINE_URL}/health`, {
+    const _response = await apiClient.get(`${process.env.TRADING_ENGINE_URL}/health`, {
       headers: {
         Authorization: `Bearer ${process.env.TRADING_ENGINE_API_KEY}`,
       },
@@ -90,7 +99,7 @@ async function validateTradingEngine() {
       return false;
     }
 
-    console.log("✅ Trading engine connection successful");
+    logger.info("✅ Trading engine connection successful");
     return true;
   } catch (error) {
     console.error("❌ Trading engine validation failed:", error.message);
@@ -98,10 +107,13 @@ async function validateTradingEngine() {
   }
 }
 
-async function validatePesapal() {
+async /**
+ * validatePesapal function
+ */
+function validatePesapal(): any {
   // Test Pesapal credentials by attempting to get a token
   try {
-    const _response = await fetch(
+    const _response = await apiClient.get(
       `https://${process.env.PESAPAL_ENVIRONMENT === "live" ? "api" : "production"}.pesapal.com/v3/api/Auth/RequestToken`,
       {
         method: "POST",
@@ -120,7 +132,7 @@ async function validatePesapal() {
       return false;
     }
 
-    console.log("✅ Pesapal credentials are valid");
+    logger.info("✅ Pesapal credentials are valid");
     return true;
   } catch (error) {
     console.error("❌ Pesapal validation failed:", error.message);
@@ -128,8 +140,11 @@ async function validatePesapal() {
   }
 }
 
-async function main() {
-  console.log("🔍 Validating QI Trading environment...\n");
+async /**
+ * main function
+ */
+function main(): any {
+  logger.info("🔍 Validating QI Trading environment...\n");
 
   const results = await Promise.all([
     validateEnvironment(),
@@ -140,12 +155,12 @@ async function main() {
 
   const allValid = results.every((r) => r);
 
-  console.log("\n" + "-".repeat(50));
+  logger.info("\n" + "-".repeat(50));
   if (allValid) {
-    console.log("✅ All systems validated successfully!");
-    console.log("You can now start the trading system.");
+    logger.info("✅ All systems validated successfully!");
+    logger.info("You can now start the trading system.");
   } else {
-    console.log("❌ Validation failed. Please fix the errors above.");
+    logger.info("❌ Validation failed. Please fix the errors above.");
     process.exit(1);
   }
 }

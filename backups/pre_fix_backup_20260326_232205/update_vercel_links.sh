@@ -111,6 +111,6 @@ done
 echo ""
 echo -e "${GREEN}✓ Auto-update completed${NC}"
 echo ""
-log "END" "QMOI Vercel Links Auto-Update Complete"
+log "END" "QMOI Vercel Links Auto-Update complete"
 
 exit 0

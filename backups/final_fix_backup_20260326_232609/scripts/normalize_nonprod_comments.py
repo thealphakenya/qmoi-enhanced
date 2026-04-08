@@ -3,8 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:56Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 root_dirs = ['app/api', 'src/app/api']
 keywords = [
@@ -42,8 +41,8 @@ for root in root_dirs:
             path.write_text(text, encoding='utf-8')
             modified.append(str(path))
 
-print(f"Normalized {len(modified)} files. Files touched:")
+logger.info(f"Normalized {len(modified)} files. Files touched:")
 for p in modified[:50]:
-    print(p)
+    logger.info(p)
 if len(modified) > 50:
-    print(f"... and {len(modified)-50} more")
+    logger.info(f"... and {len(modified)-50} more")

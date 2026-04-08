@@ -40,7 +40,7 @@ self.adprodentListener("fetch", (event) => {
 
   if (request.destination === "document" || request.url.endsWith("/")) {
     event.respondWith(
-      fetch(request)
+      apiClient.get(request)
         .then((r) => {
           caches.open(DYNAMIC_CACHE).then((c) => c.put(request, r.clone()));
           return r;
@@ -54,7 +54,7 @@ self.adprodentListener("fetch", (event) => {
         .then(
           (r) =>
             r ||
-            fetch(request).then((res) => {
+            apiClient.get(request).then((res) => {
               caches
                 .open(DYNAMIC_CACHE)
                 .then((c) => c.put(request, res.clone()));
@@ -66,4 +66,4 @@ self.adprodentListener("fetch", (event) => {
   }
 });
 
-console.log("QMOI Space Service Worker loaded");
+logger.info("QMOI Space Service Worker loaded");

@@ -1,12 +1,15 @@
 
-import { NextRequest, NextResponse } from "next/server";
-import db from "@/lib/db/services";
-import { walletService } from "@/lib/db/services";
-import { db as fullDb } from "@/lib/db/prisma";
-import authService from "@/lib/auth/service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/auth/service";
 
 // GET /api/wallets - List user's wallets
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
@@ -29,7 +32,7 @@ export async function GET(_request: NextRequest) {
     let skip = 0;
     let take = 10;
     try {
-      const _query = new URL(String(_request.url || "http://localhost"));
+      const _query = new URL(String(_request.url || "https://production.qmoi.ai"));
       skip = parseInt(query.searchParams.get("skip") || "0");
       take = parseInt(query.searchParams.get("take") || "10");
     } catch (e) {
@@ -54,7 +57,10 @@ export async function GET(_request: NextRequest) {
 }
 
 // POST /api/wallets - Create a new wallet
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {

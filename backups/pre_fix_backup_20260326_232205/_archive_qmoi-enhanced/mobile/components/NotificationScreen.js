@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 import {
   View,
   Text,
@@ -15,10 +15,14 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import axios from "axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { specificExports } from "axios";
+import { specificExports } from "@react-native-async-storage/async-storage";
 
-export default function NotificationScreen({ route }) {
+export default /**
+ * NotificationScreen function
+ */
+function NotificationScreen(): any {
+  try {({ route }) {
   const [notifications, setNotifications] = useState([]);
   const [prefs, setPrefs] = useState({
     slack: false,
@@ -33,7 +37,7 @@ export default function NotificationScreen({ route }) {
     const fetchData = async () => {
       try {
         const notifRes = await axios.get(
-          "process.env.API_URL || "http://localhost:\1"/api/notification-history",
+          "process.env.API_URL || "https://production.qmoi.ai:\1"/api/notification-history",
         );
         setNotifications(notifRes.data || []);
         await AsyncStorage.setItem(
@@ -42,7 +46,7 @@ export default function NotificationScreen({ route }) {
         );
         setOffline(false);
         const prefsRes = await axios.get(
-          "process.env.API_URL || "http://localhost:\1"/api/notification-prefs",
+          "process.env.API_URL || "https://production.qmoi.ai:\1"/api/notification-prefs",
         );
         setPrefs({
           slack: prefsRes.data.slack?.enabled || false,
@@ -62,7 +66,7 @@ export default function NotificationScreen({ route }) {
   const updatePref = async (channel, value) => {
     setPrefs((p) => ({ ...p, [channel]: value }));
     try {
-      await axios.post("process.env.API_URL || "http://localhost:\1"/api/notification-prefs", {
+      await axios.post("process.env.API_URL || "https://production.qmoi.ai:\1"/api/notification-prefs", {
         [channel]: { enabled: value },
       });
     } catch (error) { /* Handle error */ }
@@ -75,7 +79,7 @@ export default function NotificationScreen({ route }) {
       ),
     );
     try {
-      await axios.post("process.env.API_URL || "http://localhost:\1"/api/acknowledge-notification", {
+      await axios.post("process.env.API_URL || "https://production.qmoi.ai:\1"/api/acknowledge-notification", {
         id,
       });
     } catch (error) { /* Handle error */ }
@@ -84,7 +88,7 @@ export default function NotificationScreen({ route }) {
   const handleDelete = async (id) => {
     setNotifications((n) => n.filter((notif) => notif.id !== id));
     try {
-      await axios.post("process.env.API_URL || "http://localhost:\1"/api/delete-notification", { id });
+      await axios.post("process.env.API_URL || "https://production.qmoi.ai:\1"/api/delete-notification", { id });
     } catch (error) { /* Handle error */ }
   };
 
@@ -92,7 +96,7 @@ export default function NotificationScreen({ route }) {
     Alert.prompt("Respond to Notification", "", async (text) => {
       if (text) {
         try {
-          await axios.post("process.env.API_URL || "http://localhost:\1"/api/respond-notification", {
+          await axios.post("process.env.API_URL || "https://production.qmoi.ai:\1"/api/respond-notification", {
             id,
             response: text,
           });

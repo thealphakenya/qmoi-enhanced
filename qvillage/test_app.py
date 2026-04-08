@@ -10,21 +10,26 @@ Comprehensive tests for all features and paid capabilities
 """
 
 import sys
-import traceback
-from app import safe_arxiv_call, search_knowledge_base, fetch_daily_papers
+import { specificExports } from app import safe_arxiv_call, search_knowledge_base, fetch_daily_papers
 
-def run_test(test_func):
+"""
+    run_test function
+    """
+def run_test(test_func) -> Any:
     """Run a test function and report results"""
     try:
         test_func()
-        print(f"✓ {test_func.__name__} passed")
+        logger.info(f"✓ {test_func.__name__} passed")
         return True
     except Exception as e:
-        print(f"✗ {test_func.__name__} failed: {str(e)}")
+        logger.info(f"✗ {test_func.__name__} failed: {str(e)}")
         traceback.print_exc()
         return False
 
-def test_arxiv_call():
+"""
+    test_arxiv_call function
+    """
+def test_arxiv_call() -> Any:
     """Test arXiv API integration"""
     papers = safe_arxiv_call("machine learning", 5)
     assert isinstance(papers, list)
@@ -35,7 +40,10 @@ def test_arxiv_call():
         assert "summary" in paper
         assert isinstance(paper["authors"], list)
 
-def test_knowledge_base_search():
+"""
+    test_knowledge_base_search function
+    """
+def test_knowledge_base_search() -> Any:
     """Test knowledge base search"""
     results = search_knowledge_base("neural networks")
     assert isinstance(results, list)
@@ -46,12 +54,18 @@ def test_knowledge_base_search():
         assert "relevance" in result
         assert result["relevance"] >= 0.0
 
-def test_daily_papers():
+"""
+    test_daily_papers function
+    """
+def test_daily_papers() -> Any:
     """Test daily papers fetching"""
     papers = fetch_daily_papers()
     assert isinstance(papers, list)
 
-def test_paid_features_live():
+"""
+    test_paid_features_live function
+    """
+def test_paid_features_live() -> Any:
     """Test that all paid features are accessible"""
     # This is a live - in production, these would be real paid features
 
@@ -74,13 +88,19 @@ def test_paid_features_live():
         datasets_created += 1
     assert datasets_created == 10
 
-def test_enterprise_features():
+"""
+    test_enterprise_features function
+    """
+def test_enterprise_features() -> Any:
     """Test enterprise-level features"""
     # Test concurrent operations live
     import threading
     results = []
 
-    def make_request():
+    """
+    make_request function
+    """
+def make_request() -> Any:
         papers = fetch_daily_papers()
         results.append(len(papers) >= 0)  # Should return a list
 
@@ -95,7 +115,10 @@ def test_enterprise_features():
 
     assert all(results)
 
-def test_error_handling():
+"""
+    test_error_handling function
+    """
+def test_error_handling() -> Any:
     """Test error handling"""
     # Test with invalid query
     papers = safe_arxiv_call("", 5)
@@ -106,8 +129,8 @@ def test_error_handling():
     assert isinstance(results, list)
 
 if __name__ == "__main__":
-    print("Running QVillage Test Suite...")
-    print("=" * 50)
+    logger.info("Running QVillage Test Suite...")
+    logger.info("=" * 50)
 
     tests = [
         test_arxiv_call,
@@ -125,40 +148,52 @@ if __name__ == "__main__":
         if run_test(test):
             passed += 1
 
-    print("=" * 50)
-    print(f"Tests passed: {passed}/{total}")
+    logger.info("=" * 50)
+    logger.info(f"Tests passed: {passed}/{total}")
 
     if passed == total:
-        print("All tests passed! ✓")
+        logger.info("All tests passed! ✓")
         sys.exit(0)
     else:
-        print("Some tests failed! ✗")
+        logger.info("Some tests failed! ✗")
         sys.exit(1)
 
-def run_test(test_func):
+"""
+    run_test function
+    """
+def run_test(test_func) -> Any:
     """Run a test function and report results"""
     try:
         test_func()
-        print(f"✓ {test_func.__name__} passed")
+        logger.info(f"✓ {test_func.__name__} passed")
         return True
     except Exception as e:
-        print(f"✗ {test_func.__name__} failed: {str(e)}")
+        logger.info(f"✗ {test_func.__name__} failed: {str(e)}")
         traceback.print_exc()
         return False
 
-def test_root_endpoint():
+"""
+    test_root_endpoint function
+    """
+def test_root_endpoint() -> Any:
     """Test root endpoint"""
     response = client.get("/")
     assert response.status_code == 200
     assert "QVillage API" in response.json()["message"]
 
-def test_health_endpoint():
+"""
+    test_health_endpoint function
+    """
+def test_health_endpoint() -> Any:
     """Test health check"""
     response = client.get("/health")
     assert response.status_code == 200
     assert response.json()["status"] == "healthy"
 
-def test_arxiv_call():
+"""
+    test_arxiv_call function
+    """
+def test_arxiv_call() -> Any:
     """Test arXiv API integration"""
     papers = safe_arxiv_call("machine learning", 5)
     assert isinstance(papers, list)
@@ -169,7 +204,10 @@ def test_arxiv_call():
         assert "summary" in paper
         assert isinstance(paper["authors"], list)
 
-def test_knowledge_base_search():
+"""
+    test_knowledge_base_search function
+    """
+def test_knowledge_base_search() -> Any:
     """Test knowledge base search"""
     results = search_knowledge_base("neural networks")
     assert isinstance(results, list)
@@ -180,13 +218,19 @@ def test_knowledge_base_search():
         assert "relevance" in result
         assert result["relevance"] >= 0.0
 
-def test_daily_papers():
+"""
+    test_daily_papers function
+    """
+def test_daily_papers() -> Any:
     """Test daily papers fetching"""
     papers = fetch_daily_papers()
     assert isinstance(papers, list)
     # Should return cached results or fresh data
 
-def test_research_endpoints():
+"""
+    test_research_endpoints function
+    """
+def test_research_endpoints() -> Any:
     """Test research API endpoints"""
     # Daily papers
     response = client.get("/api/research/daily-papers")
@@ -204,7 +248,10 @@ def test_research_endpoints():
     assert "query" in data
     assert data["query"] == "deep learning"
 
-def test_model_endpoints():
+"""
+    test_model_endpoints function
+    """
+def test_model_endpoints() -> Any:
     """Test model CRUD operations"""
     # Create model
     model_data = {
@@ -225,7 +272,10 @@ def test_model_endpoints():
     models = response.json()
     assert isinstance(models, list)
 
-def test_space_endpoints():
+"""
+    test_space_endpoints function
+    """
+def test_space_endpoints() -> Any:
     """Test space CRUD operations"""
     # Create space
     space_data = {
@@ -244,7 +294,10 @@ def test_space_endpoints():
     spaces = response.json()
     assert isinstance(spaces, list)
 
-def test_dataset_endpoints():
+"""
+    test_dataset_endpoints function
+    """
+def test_dataset_endpoints() -> Any:
     """Test dataset CRUD operations"""
     # Create dataset
     dataset_data = {
@@ -264,7 +317,10 @@ def test_dataset_endpoints():
     datasets = response.json()
     assert isinstance(datasets, list)
 
-def test_inference_endpoint():
+"""
+    test_inference_endpoint function
+    """
+def test_inference_endpoint() -> Any:
     """Test model inference"""
     # This might fail if model loading fails, but tests the endpoint
     response = client.post(
@@ -274,7 +330,10 @@ def test_inference_endpoint():
     # Either success or model loading error
     assert response.status_code in [200, 404, 500]
 
-def test_automl_endpoint():
+"""
+    test_automl_endpoint function
+    """
+def test_automl_endpoint() -> Any:
     """Test AutoML training endpoint"""
     response = client.post("/api/automl/train?dataset_id=1&target_column=target")
     assert response.status_code == 200
@@ -282,7 +341,10 @@ def test_automl_endpoint():
     assert "message" in data
     assert "task_id" in data
 
-def test_finetune_endpoint():
+"""
+    test_finetune_endpoint function
+    """
+def test_finetune_endpoint() -> Any:
     """Test fine-tuning endpoint"""
     response = client.post("/api/finetune/gpt2?dataset_id=1")
     assert response.status_code == 200
@@ -290,7 +352,10 @@ def test_finetune_endpoint():
     assert "message" in data
     assert "task_id" in data
 
-def test_deploy_endpoint():
+"""
+    test_deploy_endpoint function
+    """
+def test_deploy_endpoint() -> Any:
     """Test model deployment"""
     response = client.post("/api/deploy/gpt2")
     assert response.status_code == 200
@@ -299,7 +364,10 @@ def test_deploy_endpoint():
     assert "deployment_id" in data
     assert "endpoint" in data
 
-def test_monitoring_endpoint():
+"""
+    test_monitoring_endpoint function
+    """
+def test_monitoring_endpoint() -> Any:
     """Test monitoring metrics"""
     response = client.get("/api/monitoring/metrics")
     assert response.status_code == 200
@@ -310,7 +378,10 @@ def test_monitoring_endpoint():
     assert "inference_requests" in data
     assert "timestamp" in data
 
-def test_paid_features_live():
+"""
+    test_paid_features_live function
+    """
+def test_paid_features_live() -> Any:
     """Test that all paid features are accessible"""
     # This is a live - in production, these would be real paid features
 
@@ -347,13 +418,19 @@ def test_paid_features_live():
         response = client.post("/datasets/", json=dataset_data)
         assert response.status_code == 200
 
-def test_enterprise_features():
+"""
+    test_enterprise_features function
+    """
+def test_enterprise_features() -> Any:
     """Test enterprise-level features"""
     # Test concurrent operations
     import threading
     results = []
 
-    def make_request():
+    """
+    make_request function
+    """
+def make_request() -> Any:
         response = client.get("/api/research/daily-papers")
         results.append(response.status_code)
 
@@ -368,7 +445,10 @@ def test_enterprise_features():
 
     assert all(code == 200 for code in results)
 
-def test_error_handling():
+"""
+    test_error_handling function
+    """
+def test_error_handling() -> Any:
     """Test error handling"""
     # Test invalid endpoints
     response = client.get("/invalid-endpoint")
@@ -379,8 +459,8 @@ def test_error_handling():
     assert response.status_code in [404, 500]
 
 if __name__ == "__main__":
-    print("Running QVillage Test Suite...")
-    print("=" * 50)
+    logger.info("Running QVillage Test Suite...")
+    logger.info("=" * 50)
 
     tests = [
         test_root_endpoint,
@@ -409,12 +489,12 @@ if __name__ == "__main__":
         if run_test(test):
             passed += 1
 
-    print("=" * 50)
-    print(f"Tests passed: {passed}/{total}")
+    logger.info("=" * 50)
+    logger.info(f"Tests passed: {passed}/{total}")
 
     if passed == total:
-        print("All tests passed! ✓")
+        logger.info("All tests passed! ✓")
         sys.exit(0)
     else:
-        print("Some tests failed! ✗")
+        logger.info("Some tests failed! ✗")
         sys.exit(1)

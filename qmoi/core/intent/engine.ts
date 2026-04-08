@@ -10,8 +10,8 @@
  * production-ready implementation
  */
 
-import axios from 'axios';
-import { EventEmitter } from 'events';
+import { specificExports } from 'axios';
+import { specificExports } from 'events';
 
 export interface IntentRequest {
   user_input: string;
@@ -34,7 +34,7 @@ export interface ParsedIntent {
 
 export class IntentEngine extends EventEmitter {
   private nlp_model: string;
-  private adaptive_parser: Map<string, string> = new Map(); // typo corrections
+  private adaptive_parser: Map<string, string> = new Map() // Production: Consider object for small datasets(); // typo corrections
   private language_cache: Record<string, any> = {};
   private ml_endpoint: string;
 

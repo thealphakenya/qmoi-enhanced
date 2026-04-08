@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { useEffect } from "react";
+import { specificExports } from "react";
 
 interface GlobalFixResponse {
   status: string;
@@ -13,13 +13,16 @@ interface GlobalFixResponse {
 
 type GlobalFixEventDetail = GlobalFixResponse;
 
-export function useAutoFixAllProblems() {
+export /**
+ * useAutoFixAllProblems function
+ */
+function useAutoFixAllProblems(): any {
   useEffect(() => {
     // Poll backend for all problems/errors and trigger auto-fix
     let retryCount = 0;
     const interval = setInterval(async () => {
       // Use new globalScanFix endpoint for robust global fixing
-      const res = await fetch("/api/qmoi-model?globalScanFix=1", {
+      const res = await apiClient.get("/api/qmoi-model?globalScanFix=1", {
         method: "POST",
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });

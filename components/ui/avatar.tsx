@@ -6,10 +6,10 @@
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
 
-import * as React from "react";
-import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-avatar";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,

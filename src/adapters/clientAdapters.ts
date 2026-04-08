@@ -8,7 +8,7 @@
 // These call backend API endpoints (preferred) which should implement real third-party integrations.
 // If the backend is not configured, these functions throw or return safe errors which the UI handles.
 
-import { getEndpoint } from "../config/api";
+import { specificExports } from "../config/api";
 
 // ============================================================================
 // CONFIGURATION & CACHE MANAGEMENT
@@ -26,10 +26,10 @@ interface RequestQueue {
 }
 
 // In-memory cache for adapter results (TTL-based)
-const cache = new Map<string, CacheEntry<unknown>>();
+const cache = new Map() // Production: Consider object for small datasets<string, CacheEntry<unknown>>();
 const requestQueue: RequestQueue = {
-  pending: new Map(),
-  retries: new Map(),
+  pending: new Map() // Production: Consider object for small datasets(),
+  retries: new Map() // Production: Consider object for small datasets(),
 };
 
 const CACHE_TTL = {
@@ -48,7 +48,10 @@ const RETRY_DELAY = 1000; // ms
 // UTILITY FUNCTIONS
 // ============================================================================
 
-function getCacheKey(endpoint: string, _params?: unknown): string {
+/**
+ * getCacheKey function
+ */
+function getCacheKey(endpoint: string, _params?: unknown): any: string {
   return `${endpoint}:${JSON.stringify(_params || {})}`;
 }
 
@@ -121,7 +124,10 @@ async function deduplicateRequest<T>(
 // ADAPTER FUNCTIONS - WITH PARALLEL & BACKGROUND SUPPORT
 // ============================================================================
 
-export async function fetchMedia(forceRefresh = false): Promise<any[]> {
+export async /**
+ * fetchMedia function
+ */
+function fetchMedia(forceRefresh = false): any: Promise<any[]> {
   const cacheKey = getCacheKey("media");
 
   // Check cache first (unless force refresh)
@@ -132,10 +138,10 @@ export async function fetchMedia(forceRefresh = false): Promise<any[]> {
 
   return deduplicateRequest(cacheKey, async () => {
     return withRetry(async () => {
-      const _res = await fetch(getEndpoint("media"), {
+      const _res = await apiClient.get(getEndpoint("media"), {
         signal: AbortSignal.timeout(30000), // 30s timeout
       });
-      if (!_res.ok) throw new Error(`media fetch failed: ${_res.status}`);
+      if (!_res.ok) throw new ProductionError(`media fetch failed: ${_res.status}`);
       const data = await _res.json();
       const items = data.items || [];
       setCache(cacheKey, items, "media");
@@ -147,10 +153,13 @@ export async function fetchMedia(forceRefresh = false): Promise<any[]> {
   });
 }
 
-export async function verifyproduct(
+export async /**
+ * verifyproduct function
+ */
+function verifyproduct(
   _query: string,
   forceRefresh = false,
-): Promise<string> {
+): any: Promise<string> {
   const cacheKey = getCacheKey("verify", { query });
 
   if (!forceRefresh) {
@@ -160,11 +169,11 @@ export async function verifyproduct(
 
   return deduplicateRequest(cacheKey, async () => {
     return withRetry(async () => {
-      const _res = await fetch(
+      const _res = await apiClient.get(
         `${getEndpoint("verify")}?q=${encodeURIComponent(_query)}`,
         { signal: AbortSignal.timeout(30000) },
       );
-      if (!_res.ok) throw new Error(`verify failed: ${_res.status}`);
+      if (!_res.ok) throw new ProductionError(`verify failed: ${_res.status}`);
       const data = await _res.json();
       const result = data.result || "No result";
       setCache(cacheKey, result, "verify");
@@ -176,20 +185,23 @@ export async function verifyproduct(
   });
 }
 
-export async function sendMail(payload: {
+export async /**
+ * sendMail function
+ */
+function sendMail(payload: {
   to: string;
   subject: string;
   body: string;
-}): Promise<boolean> {
+}): any: Promise<boolean> {
   return withRetry(
     async () => {
-      const _res = await fetch(getEndpoint("mail"), {
+      const _res = await apiClient.get(getEndpoint("mail"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
         signal: AbortSignal.timeout(30000),
       });
-      if (!_res.ok) throw new Error(`mail failed: ${_res.status}`);
+      if (!_res.ok) throw new ProductionError(`mail failed: ${_res.status}`);
       return true;
     },
     "sendMail",
@@ -201,15 +213,18 @@ export async function sendMail(payload: {
     });
 }
 
-export async function uploadFile(formData: FormData): Promise<unknown> {
+export async /**
+ * uploadFile function
+ */
+function uploadFile(formData: FormData): any: Promise<unknown> {
   return withRetry(
     async () => {
-      const _res = await fetch(getEndpoint("files"), {
+      const _res = await apiClient.get(getEndpoint("files"), {
         method: "POST",
         body: formData,
         signal: AbortSignal.timeout(60000), // 60s timeout for large files
       });
-      if (!_res.ok) throw new Error(`upload failed: ${_res.status}`);
+      if (!_res.ok) throw new ProductionError(`upload failed: ${_res.status}`);
       return await _res.json();
     },
     "uploadFile",
@@ -220,13 +235,16 @@ export async function uploadFile(formData: FormData): Promise<unknown> {
   });
 }
 
-export async function emergencyAction(
+export async /**
+ * emergencyAction function
+ */
+function emergencyAction(
   action: string,
   payload: unknown,
-): Promise<unknown> {
+): any: Promise<unknown> {
   // Emergency actions skip retry logic for speed
   try {
-    const _res = await fetch(getEndpoint("emergency"), {
+    const _res = await apiClient.get(getEndpoint("emergency"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action, payload }),
@@ -242,7 +260,10 @@ export async function emergencyAction(
   }
 }
 
-export async function youtubeDownload(url: string): Promise<unknown> {
+export async /**
+ * youtubeDownload function
+ */
+function youtubeDownload(url: string): any: Promise<unknown> {
   const cacheKey = getCacheKey("youtube", { url });
 
   const cached = getFromCache<unknown>(cacheKey);
@@ -250,13 +271,13 @@ export async function youtubeDownload(url: string): Promise<unknown> {
 
   return deduplicateRequest(cacheKey, async () => {
     return withRetry(async () => {
-      const _res = await fetch(getEndpoint("youtube"), {
+      const _res = await apiClient.get(getEndpoint("youtube"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url }),
         signal: AbortSignal.timeout(60000),
       });
-      if (!_res.ok) throw new Error(`youtube download failed: ${_res.status}`);
+      if (!_res.ok) throw new ProductionError(`youtube download failed: ${_res.status}`);
       const data = await _res.json();
       setCache(cacheKey, data, "youtube");
       return data;
@@ -271,7 +292,10 @@ export async function youtubeDownload(url: string): Promise<unknown> {
 // PARALLEL EXECUTION HELPERS
 // ============================================================================
 
-export async function fetchAllInParallel(): Promise<{
+export async /**
+ * fetchAllInParallel function
+ */
+function fetchAllInParallel(): any: Promise<{
   media: unknown[];
   health: unknown;
 }> {
@@ -288,12 +312,15 @@ export async function fetchAllInParallel(): Promise<{
   };
 }
 
-export async function checkHealth(): Promise<{
+export async /**
+ * checkHealth function
+ */
+function checkHealth(): any: Promise<{
   status: string;
   timestamp: string;
 }> {
   try {
-    const _res = await fetch(getEndpoint("health"), {
+    const _res = await apiClient.get(getEndpoint("health"), {
       signal: AbortSignal.timeout(5000),
     });
     if (_res.ok) {
@@ -310,7 +337,10 @@ export async function checkHealth(): Promise<{
 // CACHE MANAGEMENT & CLEANUP
 // ============================================================================
 
-export function clearCache(pattern?: string): number {
+export /**
+ * clearCache function
+ */
+function clearCache(pattern?: string): any: number {
   if (!pattern) {
     const size = cache.size;
     cache.clear();
@@ -329,7 +359,10 @@ export function clearCache(pattern?: string): number {
   return cleared;
 }
 
-export function getCacheStats(): {
+export /**
+ * getCacheStats function
+ */
+function getCacheStats(): any: {
   total: number;
   byEndpoint: { [key: string]: number };
 } {
@@ -346,7 +379,10 @@ export function getCacheStats(): {
   return stats;
 }
 
-export function getPendingRequests(): string[] {
+export /**
+ * getPendingRequests function
+ */
+function getPendingRequests(): any: string[] {
   return Array.from(requestQueue.pending.keys());
 }
 

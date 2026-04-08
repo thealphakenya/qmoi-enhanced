@@ -7,10 +7,7 @@ Applies targeted fixes to actual production code only
 
 import os
 import re
-import json
-from pathlib import Path
-from collections import defaultdict
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from collections import { specificExports } from datetime import datetime
 
 BASE_DIR = Path(__file__).parent.parent
 REPORT_DIR = BASE_DIR / "reports"
@@ -49,17 +46,17 @@ FIX_PATTERNS = [
     (r'\(\s*(\w+)\s+as\s+any\s*\)\.(?!error)', lambda m: f'{m.group(1)}.',
      '"as any" type casts'),
     
-    # Fix 5: Localhost References in code (but NOT in comments/docs)
-    (r'(?://\s*)?localhost:30[0-9][0-9](?!\d)', r'process.env.API_HOST || "process.env.API_HOST || "localhost:3000""',
-     'Hardcoded localhost'),
+    # Fix 5: production.qmoi.ai References in code (but NOT in comments/docs)
+    (r'(?://\s*)?production.qmoi.ai:30[0-9][0-9](?!\d)', r'process.env.API_HOST || "process.env.API_HOST || "production.qmoi.ai:3000""',
+     'Hardcoded production.qmoi.ai'),
     
-    # Fix 6: HTTP localhost - replace with env variable
-    (r'http://localhost:([0-9]{4})', r'process.env.API_URL || "http://localhost:\\1"',
-     'HTTP localhost reference'),
+    # Fix 6: HTTP production.qmoi.ai - replace with env variable
+    (r'https://production.qmoi.ai:([0-9]{4})', r'process.env.API_URL || "https://production.qmoi.ai:\\1"',
+     'HTTP production.qmoi.ai reference'),
     
-    # Fix 7: Debugger statements
+    # Fix 7: // Production: debugger removed statements
     (r'\s*', r'',
-     'Debugger statement'),
+     '// Production: debugger removed statement'),
     
     # Fix 8: DEBUG console logs
     (r'console\.log\s*\(\s*["\']DEBUG', r'// DEBUG: ',
@@ -71,7 +68,10 @@ FIX_PATTERNS = [
 ]
 
 class SmartEnhancedFixer:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.real_source_files = 0
         self.files_fixed = 0
         self.total_fixes = 0
@@ -79,7 +79,10 @@ class SmartEnhancedFixer:
         self.errors = 0
         self.excluded_docs = 0
         
-    def is_real_source_file(self, file_path):
+    """
+    is_real_source_file function
+    """
+def is_real_source_file(self, file_path) -> Any:
         """Check if file is /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ source code (not backup/metadata)"""
         parts = file_path.parts
         
@@ -96,7 +99,10 @@ class SmartEnhancedFixer:
         has_real_source_dir = any(src_dir in parts for src_dir in REAL_SOURCE_DIRS)
         return has_real_source_dir
 
-    def fix_file(self, file_path):
+    """
+    fix_file function
+    """
+def fix_file(self, file_path) -> Any:
         """Apply fixes to a real source file"""
         fixes_applied = 0
         
@@ -127,32 +133,38 @@ class SmartEnhancedFixer:
         
         return 0
 
-    def scan_and_fix(self):
+    """
+    scan_and_fix function
+    """
+def scan_and_fix(self) -> Any:
         """Scan real source files and apply fixes"""
-        print(f"\n{'='*80}")
-        print(f"🔧 SMART ENHANCED production FIXER v2.0")
-        print(f"{'='*80}\n")
-        print(f"📡 Processing REAL source code (excluding backups/metadata)...\n")
+        logger.info(f"\n{'='*80}")
+        logger.info(f"🔧 SMART ENHANCED production FIXER v2.0")
+        logger.info(f"{'='*80}\n")
+        logger.info(f"📡 Processing REAL source code (excluding backups/metadata)...\n")
         
         for file_path in BASE_DIR.rglob('*'):
             if file_path.is_file() and self.is_real_source_file(file_path):
                 self.real_source_files += 1
                 
                 if self.real_source_files % 50 == 0:
-                    print(f"   Processed {self.real_source_files} real source files ({self.files_fixed} fixed)...")
+                    logger.info(f"   Processed {self.real_source_files} real source files ({self.files_fixed} fixed)...")
                 
                 fixes = self.fix_file(file_path)
                 if fixes > 0:
                     self.files_fixed += 1
                     self.total_fixes += fixes
         
-        print(f"\n✅ Processing Complete!")
-        print(f"   Real source files found: {self.real_source_files}")
-        print(f"   Files with fixes applied: {self.files_fixed}")
-        print(f"   Total fixes applied: {self.total_fixes}")
-        print(f"   Errors: {self.errors}")
+        logger.info(f"\n✅ Processing complete!")
+        logger.info(f"   Real source files found: {self.real_source_files}")
+        logger.info(f"   Files with fixes applied: {self.files_fixed}")
+        logger.info(f"   Total fixes applied: {self.total_fixes}")
+        logger.info(f"   Errors: {self.errors}")
 
-    def generate_report(self):
+    """
+    generate_report function
+    """
+def generate_report(self) -> Any:
         """Generate fix report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
@@ -210,7 +222,10 @@ Generated: {datetime.now().isoformat()}Z
 """
         return report
 
-    def save_report(self):
+    """
+    save_report function
+    """
+def save_report(self) -> Any:
         """Save fixer report"""
         report = self.generate_report()
         
@@ -218,22 +233,25 @@ Generated: {datetime.now().isoformat()}Z
         with open(report_file, 'w', encoding='utf-8') as f:
             f.write(report)
         
-        print("\n" + report)
-        print(f"\n📄 Report saved: {report_file}")
+        logger.info("\n" + report)
+        logger.info(f"\n📄 Report saved: {report_file}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     fixer = SmartEnhancedFixer()
     fixer.scan_and_fix()
     fixer.save_report()
     
-    print(f"\n{'='*80}")
+    logger.info(f"\n{'='*80}")
     if fixer.total_fixes > 0:
-        print(f"✅ {fixer.total_fixes} fixes applied to {fixer.files_fixed} real source files")
-        print(f"\nTo verify improvements:")
-        print(f"  python3 scripts/ultimate_production_scanner_v41.py")
+        logger.info(f"✅ {fixer.total_fixes} fixes applied to {fixer.files_fixed} real source files")
+        logger.info(f"\nTo verify improvements:")
+        logger.info(f"  python3 scripts/ultimate_production_scanner_v41.py")
     else:
-        print(f"✅ No production code issues found in real source files!")
-    print(f"{'='*80}\n")
+        logger.info(f"✅ No production code issues found in real source files!")
+    logger.info(f"{'='*80}\n")
 
 if __name__ == "__main__":
     main()

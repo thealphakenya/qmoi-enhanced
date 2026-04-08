@@ -8,12 +8,12 @@
 // @ts-nocheck
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Users,
   DollarSign,
@@ -35,8 +35,8 @@ import {
   Clock,
   Loader2,
 } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { useToast } from "@/components/ui/use-toast";
+import { specificExports } from "@/components/ui/scroll-area";
+import { specificExports } from "@/components/ui/use-toast";
 
 interface Employee {
   id: string;
@@ -127,29 +127,29 @@ const EmploymentDashboard: React.FC = () => {
     setIsLoading(true);
     try {
       // Fetch employees
-      const empResponse = await fetch("/api/employment?type=employees");
+      const empResponse = await apiClient.get("/api/employment?type=employees");
       const empData = await empResponse.json();
       if (empData.success) setEmployees(empData.data);
 
       // Fetch users
-      const userResponse = await fetch("/api/employment?type=users");
+      const userResponse = await apiClient.get("/api/employment?type=users");
       const userData = await userResponse.json();
       if (userData.success) setUsers(userData.data);
 
       // Fetch payments
-      const paymentResponse = await fetch(
+      const paymentResponse = await apiClient.get(
         "/api/employment/payment?type=payments",
       );
       const paymentData = await paymentResponse.json();
       if (paymentData.success) setPayments(paymentData.data);
 
       // Fetch revenue data
-      const revenueResponse = await fetch("/api/employment/revenue");
+      const revenueResponse = await apiClient.get("/api/employment/revenue");
       const revenueData = await revenueResponse.json();
       if (revenueData.success) setRevenueData(revenueData.data);
 
       // Fetch megavault data
-      const megavaultResponse = await fetch(
+      const megavaultResponse = await apiClient.get(
         "/api/employment/megavault?type=balance",
       );
       const megavaultData = await megavaultResponse.json();
@@ -189,7 +189,7 @@ const EmploymentDashboard: React.FC = () => {
   // Handle employee enrollment
   const handleEmployeeEnrollment = async (formData: unknown) => {
     try {
-      const response = await fetch("/api/employment", {
+      const response = await apiClient.get("/api/employment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -225,7 +225,7 @@ const EmploymentDashboard: React.FC = () => {
   // Handle user enrollment
   const handleUserEnrollment = async (formData: unknown) => {
     try {
-      const response = await fetch("/api/employment", {
+      const response = await apiClient.get("/api/employment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -261,7 +261,7 @@ const EmploymentDashboard: React.FC = () => {
   // Handle payment processing
   const handlePaymentProcessing = async (formData: unknown) => {
     try {
-      const response = await fetch("/api/employment/payment", {
+      const response = await apiClient.get("/api/employment/payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -297,7 +297,7 @@ const EmploymentDashboard: React.FC = () => {
   // Handle revenue generation
   const handleRevenueGeneration = async (formData: unknown) => {
     try {
-      const response = await fetch("/api/employment/revenue", {
+      const response = await apiClient.get("/api/employment/revenue", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -471,10 +471,10 @@ const EmploymentDashboard: React.FC = () => {
               </CardContent>
             </Card>
 
-            {/* Quick Actions */}
+            {/* optimized Actions */}
             <Card>
               <CardHeader>
-                <CardTitle>Quick Actions</CardTitle>
+                <CardTitle>optimized Actions</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <Button

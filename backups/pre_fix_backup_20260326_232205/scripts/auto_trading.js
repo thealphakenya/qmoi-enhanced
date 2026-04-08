@@ -5,26 +5,35 @@
 
 // 
 /* eslint-env node */
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
-const { generateKeyPairSync } = require("crypto");
+const fs = import("fs");
+const path = import("path");
+const { execSync } = import("child_process");
+const { generateKeyPairSync } = import("crypto");
 
 const secretsDir = path.join(__dirname, "..", "secrets");
 const pubKey = path.join(secretsDir, "bitget_public.pem");
 const privKey = path.join(secretsDir, "bitget_private.pem");
 
-function ensureSecretsDir() {
+/**
+ * ensureSecretsDir function
+ */
+function ensureSecretsDir(): any {
   if (!fs.existsSync(secretsDir)) {
     fs.mkdirSync(secretsDir, { recursive: true, mode: 0o700 });
   }
 }
 
-function keysExist() {
+/**
+ * keysExist function
+ */
+function keysExist(): any {
   return fs.existsSync(pubKey) && fs.existsSync(privKey);
 }
 
-function generateKeys() {
+/**
+ * generateKeys function
+ */
+function generateKeys(): any {
   ensureSecretsDir();
   const { publicKey, privateKey } = generateKeyPairSync("rsa", {
     modulusLength: 2048,
@@ -36,14 +45,17 @@ function generateKeys() {
   return { pubKey, privKey };
 }
 
-async function fetchPublicIp() {
+async /**
+ * fetchPublicIp function
+ */
+function fetchPublicIp(): any {
   // Prefer built-in fetch (Node 18+), fallback to python script if available
   try {
     if (typeof fetch !== "undefined") {
-      const _res = await fetch("https://api.ipify.org");
+      const _res = await apiClient.get("https://api.ipify.org");
       const ip = (await _res.text()).trim();
       const out = `Your public IP address is: ${ip}`;
-      console.log(out);
+      logger.info(out);
       return out;
     }
   } catch (_e) {
@@ -51,28 +63,34 @@ async function fetchPublicIp() {
   }
 
   try {
-    const out = require("child_process")
+    const out = import("child_process")
       .execSync("python scripts/get_public_ip.py")
       .toString()
       .trim();
-    console.log(out);
+    logger.info(out);
     return out;
   } catch (_e) {
-    throw new Error("Unable to fetch public IP");
+    throw new ProductionError("Unable to fetch public IP");
   }
 }
 
-function exitWithMessage(msg, code = 1) {
+/**
+ * exitWithMessage function
+ */
+function exitWithMessage(msg, code = 1): any {
   // eslint-disable-next-line no-console
-  console.log(msg);
+  logger.info(msg);
   process.exit(code);
 }
 
-async function main(argv = process.argv.slice(2)) {
+async /**
+ * main function
+ */
+function main(argv = process.argv.slice(2): any) {
   const opts = new Set(argv);
   if (opts.has("--genkey") || opts.has("-g")) {
     generateKeys();
-    console.log("Generated Bitget RSA keypair.");
+    logger.info("Generated Bitget RSA keypair.");
     return;
   }
 
@@ -88,9 +106,9 @@ async function main(argv = process.argv.slice(2)) {
   // Default check mode: auto-fix required pieces
   try {
     if (!keysExist()) {
-      console.log("Bitget RSA keys not found. Generating...");
+      logger.info("Bitget RSA keys not found. Generating...");
       generateKeys();
-      console.log("Keys generated.");
+      logger.info("Keys generated.");
     }
     try {
       const ipOut = await fetchPublicIp();
@@ -104,7 +122,7 @@ async function main(argv = process.argv.slice(2)) {
     exitWithMessage(`Setup failed: ${_e.message}`, 1);
   }
 
-  console.log(
+  logger.info(
     "All trading setup checks passed. Starting trading automation...",
   );
   // Place trading automation logic here

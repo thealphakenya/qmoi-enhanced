@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] Autoprod state endpoint
-import { prisma } from "@/lib/prisma";
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "@/lib/prisma";
+import { specificExports } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const record = await prisma.setting.findUnique({
       where: { key: "autoprod.state" },

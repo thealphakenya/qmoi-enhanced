@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
-import { cashonWallet } from "@/lib/cashon-wallet";
-import { qmoiTrader } from "@/lib/qmoi-trader";
-import libProposals from "../../../../../lib/proposals";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/cashon-wallet";
+import { specificExports } from "@/lib/qmoi-trader";
+import { specificExports } from "../../../../../lib/proposals";
 
 // Verify master token
-function verifyMasterToken(request: NextRequest): string | null {
+/**
+ * verifyMasterToken function
+ */
+function verifyMasterToken(request: NextRequest): any: string | null {
   const authHeader = request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
@@ -23,7 +26,10 @@ function verifyMasterToken(request: NextRequest): string | null {
 }
 
 // GET /api/cashon/balance
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Gate with central API key helper (allows local prod when no key configured)
     const auth = libProposals.requireApiKey(request.headers);
@@ -81,7 +87,10 @@ export async function GET(request: NextRequest) {
 }
 
 // POST /api/cashon/actions
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const auth = libProposals.requireApiKey(request.headers);
     if (!auth.ok) {
@@ -342,7 +351,10 @@ export async function POST(request: NextRequest) {
 }
 
 // PUT /api/cashon/config
-export async function PUT(request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(request: NextRequest): any {
   try {
     const masterToken = verifyMasterToken(request);
     if (!masterToken) {

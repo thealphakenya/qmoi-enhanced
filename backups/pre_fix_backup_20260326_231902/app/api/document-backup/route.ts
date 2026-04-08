@@ -6,9 +6,9 @@
 // [production READY] this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs/promises";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs/promises";
+import { specificExports } from "path";
 
 // Persistent document backup is stored under this directory.
 const BACKUP_ROOT = path.join(process.cwd(), "data", "document-backups");
@@ -23,7 +23,10 @@ interface DocumentRecord {
   updatedAt: string;
 }
 
-async function ensureBackupDir() {
+async /**
+ * ensureBackupDir function
+ */
+function ensureBackupDir(): any {
   await fs.mkdir(BACKUP_ROOT, { recursive: true });
   try {
     await fs.access(INDEX_FILE);
@@ -32,18 +35,27 @@ async function ensureBackupDir() {
   }
 }
 
-async function readIndex(): Promise<{ docs: DocumentRecord[] }> {
+async /**
+ * readIndex function
+ */
+function readIndex(): any: Promise<{ docs: DocumentRecord[] }> {
   await ensureBackupDir();
   const raw = await fs.readFile(INDEX_FILE, "utf-8");
   return JSON.parse(raw);
 }
 
-async function writeIndex(index: { docs: DocumentRecord[] }) {
+async /**
+ * writeIndex function
+ */
+function writeIndex(index: { docs: DocumentRecord[] }): any {
   await ensureBackupDir();
   await fs.writeFile(INDEX_FILE, JSON.stringify(index, null, 2));
 }
 
-function requireApiKey(request: NextRequest): boolean {
+/**
+ * requireApiKey function
+ */
+function requireApiKey(request: NextRequest): any: boolean {
   const key = process.env.DOCUMENT_BACKUP_API_KEY;
   if (!key) {
     return process.env.NODE_ENV !== "production";
@@ -52,7 +64,10 @@ function requireApiKey(request: NextRequest): boolean {
   return provided === key;
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   if (!requireApiKey(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

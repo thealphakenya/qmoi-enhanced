@@ -1,7 +1,7 @@
 // Production implementation: all markers normalized for completion
 /* eslint-env browser */
 /* eslint-env browser */
-import React, { useRef } from "react";
+import { specificExports } from "react";
 
 type QSettings = {
   autonomy?: string;
@@ -12,7 +12,7 @@ type QSettings = {
 
 export const QMoiSettingsPanel: React.FC = () => {
   // Settings state (// Production implementation:bed for now)
-  const [settings, setSettings] = React.useState<QSettings>(() => {
+  const [settings, setSettings] = useState<QSettings>(() => {
     try {
       return JSON.parse(
         localStorage.getItem("qmoi-settings") || "{}",
@@ -23,11 +23,17 @@ export const QMoiSettingsPanel: React.FC = () => {
   });
   const fileInput = useRef<HTMLInputElement>(null);
 
-  function saveSettings(newSettings: Record<string, unknown>) {
+  /**
+ * saveSettings function
+ */
+function saveSettings(newSettings: Record<string, unknown>): any {
     setSettings(newSettings);
     localStorage.setItem("qmoi-settings", JSON.stringify(newSettings));
   }
-  function exportSettings() {
+  /**
+ * exportSettings function
+ */
+function exportSettings(): any {
     const data: Record<string, unknown> = {
       settings,
       cmdHistory: JSON.parse(
@@ -50,7 +56,10 @@ export const QMoiSettingsPanel: React.FC = () => {
     a.click();
     URL.revokeObjectURL(url);
   }
-  function importSettings(_e: React.ChangeEvent<HTMLInputElement>) {
+  /**
+ * importSettings function
+ */
+function importSettings(_e: React.ChangeEvent<HTMLInputElement>): any {
     const file = _e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
@@ -88,10 +97,10 @@ export const QMoiSettingsPanel: React.FC = () => {
             "qavatar-settings",
             JSON.stringify(importedData["qavatar"]),
           );
-        alert("Settings imported!");
+        notification.show("Settings imported!");
       } catch (_err: unknown) {
         console.warn("importSettings failed", String(_err));
-        alert("Invalid settings file.");
+        notification.show("Invalid settings file.");
       }
     };
     reader.readAsText(file);

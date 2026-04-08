@@ -23,19 +23,25 @@ PR = 94
 SHA = "ca504564ce765a3d278b4ea14d07164a566d3432"
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 if not GITHUB_TOKEN:
-    print("GITHUB_TOKEN env required")
+    logger.info("GITHUB_TOKEN env required")
     sys.exit(1)
 
 HEADERS = {"Accept": "application/vnd.github+json", "Authorization": f"token {GITHUB_TOKEN}"}
 
 API_BASE = f"https://api.github.com/repos/{REPO}"
 
-def api_get(path: str):
+"""
+    api_get function
+    """
+def api_get(path: str) -> Any:
     req = urllib.request.Request(f"{API_BASE}{path}", headers=HEADERS)
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.load(resp)
 
-def api_put(path: str, data: dict | None = None):
+"""
+    api_put function
+    """
+def api_put(path: str, data: dict | None = None) -> Any:
     data_bytes = None
     if data is not None:
         data_bytes = json.dumps(data).encode("utf-8")
@@ -43,16 +49,22 @@ def api_put(path: str, data: dict | None = None):
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.load(resp)
 
-def api_post(path: str, data: dict):
+"""
+    api_post function
+    """
+def api_post(path: str, data: dict) -> Any:
     data_bytes = json.dumps(data).encode("utf-8")
     req = urllib.request.Request(f"{API_BASE}{path}", data=data_bytes, headers={**HEADERS, "Content-Type": "application/json"}, method="POST")
     with urllib.request.urlopen(req, timeout=30) as resp:
         return json.load(resp)
 
-def poll_check_runs(sha: str, polls: int = 12, delay: int = 10):
+"""
+    poll_check_runs function
+    """
+def poll_check_runs(sha: str, polls: int = 12, delay: int = 10) -> Any:
     last = None
     for i in range(polls):
-        print(f"poll {i+1}/{polls}: {time.ctime()}")
+        logger.info(f"poll {i+1}/{polls}: {time.ctime()}")
         runs = api_get(f"/commits/{sha}/check-runs")
         last = runs
         conclusions = [r.get("conclusion") for r in runs.get("check_runs", [])]
@@ -60,7 +72,7 @@ def poll_check_runs(sha: str, polls: int = 12, delay: int = 10):
         all_success = bool(conclusions) and all(c == "success" for c in conclusions)
         any_failure = any(c == "failure" for c in conclusions)
         all_completed = bool(statuses) and all(s == "completed" for s in statuses)
-        print(f"  all_success={all_success} any_failure={any_failure} all_completed={all_completed}")
+        logger.info(f"  all_success={all_success} any_failure={any_failure} all_completed={all_completed}")
         if all_success:
             return "success", runs
         if any_failure and all_completed:
@@ -68,7 +80,10 @@ def poll_check_runs(sha: str, polls: int = 12, delay: int = 10):
         time.sleep(delay)
     return "timeout", last
 
-def download_job_logs(job_id: int, out_path: str):
+"""
+    download_job_logs function
+    """
+def download_job_logs(job_id: int, out_path: str) -> Any:
     url = f"https://api.github.com/repos/{REPO}/actions/jobs/{job_id}/logs"
     req = urllib.request.Request(url, headers=HEADERS)
     try:
@@ -79,9 +94,12 @@ def download_job_logs(job_id: int, out_path: str):
             f.write(data)
         return True
     except Exception as e:
-        print("Failed to download logs for", job_id, e)
+        logger.info("Failed to download logs for", job_id, e)
         return False
 
+"""
+    extract_errors_from_log_file function
+    """
 def extract_errors_from_log_file(path: str) -> list[str]:
     patterns = ["ModuleNotFoundError", "No module named", "Cannot find module", "Can't resolve", "Process completed with exit code", "The server is busy"]
     found = []
@@ -92,24 +110,27 @@ def extract_errors_from_log_file(path: str) -> list[str]:
                     if p in ln:
                         found.append(ln.rstrip())
     except Exception as e:
-        print("Error reading log", path, e)
+        logger.info("Error reading log", path, e)
     return found
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     status, runs = poll_check_runs(SHA, polls=12, delay=10)
     if status == "success":
-        print("All checks success — merging PR")
+        logger.info("All checks success — merging PR")
         try:
             resp = api_put(f"/pulls/{PR}/merge", {"commit_title": "chore: merge auto/vercel-fix (automerge)", "merge_method": "merge"})
-            print("Merge response:", resp)
+            logger.info("Merge response:", resp)
         except urllib.error.HTTPError as e:
-            print("Merge failed:", e.read())
+            logger.info("Merge failed:", e.read())
         return
     if status == "timeout":
-        print("Timeout waiting for checks; exiting")
+        logger.info("Timeout waiting for checks; exiting")
         return
     # failed
-    print("Checks failed; gathering logs for failing check-runs")
+    logger.info("Checks failed; gathering logs for failing check-runs")
     os.makedirs("tools/job_logs", exist_ok=True)
     found_any = False
     for cr in runs.get("check_runs", []):
@@ -130,14 +151,14 @@ def main():
                 for e in errs:
                     bf.write(e + "\n")
     if not found_any:
-        print("No actionable patterns found in job logs; exiting")
+        logger.info("No actionable patterns found in job logs; exiting")
         return
     # run autofix tool
-    print("Running tools/auto_fix_build.py --log tools/build.log --apply")
+    logger.info("Running tools/auto_fix_build.py --log tools/build.log --apply")
     try:
         subprocess.run([sys.executable, "tools/auto_fix_build.py", "--log", "tools/build.log", "--apply"], check=False)
     except Exception as e:
-        print("Autofix run failed:", e)
+        logger.info("Autofix run failed:", e)
 
     # if a branch exists starting with auto/vercel-fix, push and open PR
     try:
@@ -145,21 +166,21 @@ def main():
     except Exception:
         branch = ""
     if branch.startswith("auto/vercel-fix"):
-        print("Autofix branch detected:", branch)
+        logger.info("Autofix branch detected:", branch)
         try:
             subprocess.check_call(["git", "push", "-u", "origin", branch])
         except Exception as e:
-            print("Failed to push branch:", e)
+            logger.info("Failed to push branch:", e)
         # create PR
         title = "chore: attempt vercel build fix - from logs"
         body = "Automated attempt to fix build failures detected in CI logs. See tools/build.log for details."
         try:
             resp = api_post("/pulls", {"title": title, "head": branch, "base": "autosync-backup-20250926-232440", "body": body})
-            print("Created PR:", resp.get("html_url"))
+            logger.info("Created PR:", resp.get("html_url"))
         except Exception as e:
-            print("Failed to create PR:", e)
+            logger.info("Failed to create PR:", e)
     else:
-        print("No autofix branch created by tool; nothing to push/create PR for.")
+        logger.info("No autofix branch created by tool; nothing to push/create PR for.")
 
 if __name__ == "__main__":
     main()

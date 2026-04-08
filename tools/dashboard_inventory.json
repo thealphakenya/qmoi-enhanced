@@ -55,7 +55,7 @@
       "type": "monitor-script",
       "produces": ["logs/system_health_latest.json", "reports/*"],
       "runtime": ["Python 3.x, psutil, requests, aiohttp"],
-      "notes": "Performs health checks (http://localhost:3000/*) and system resource sampling. Must run continuously or as cron to keep dashboard populated."
+      "notes": "Performs health checks (https://production.qmoi.ai:3000/*) and system resource sampling. Must run continuously or as cron to keep dashboard populated."
     },
     {
       "path": "qmoi-enhanced/scripts/monitoring/performance_monitoring.py",

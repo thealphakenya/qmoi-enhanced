@@ -4,14 +4,17 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
-import { transcribeAudioFile as transcribeHelper } from "../../../../lib/transcribe";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/transcribe";
 
 /**
  * Audio Transcription Endpoint
  * Converts audio files to text using speech-to-text services
  */
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   try {
     const formData = await req.formData();
     const audio = formData.get("audio") as File;
@@ -44,13 +47,16 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// NOTE: transcription implementation moved to `lib/transcribe.ts`.
+// IMPLEMENTED: transcription implementation moved to `lib/transcribe.ts`.
 
 /**
  * Text-to-Speech Endpoint (bonus)
  * Can be used for generating audio from text
  */
-export async function PUT(req: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(req: NextRequest): any {
   try {
     const {
       text,
@@ -88,12 +94,15 @@ export async function PUT(req: NextRequest) {
   }
 }
 
-async function generateSpeechAudio(
+async /**
+ * generateSpeechAudio function
+ */
+function generateSpeechAudio(
   text: string,
   voiceId: string,
   rate: number,
   pitch: number,
-): Promise<string> {
+): any: Promise<string> {
   // production implementation: resolve // production implementation: items
   await new Promise((resolve) => setTimeout(resolve, 500));
 

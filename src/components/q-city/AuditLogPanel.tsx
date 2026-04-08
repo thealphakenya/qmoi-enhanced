@@ -3,9 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export default function AuditLogPanel() {
+export default /**
+ * AuditLogPanel function
+ */
+function AuditLogPanel(): any {
+  try {() {
   const [logs, setLogs] = useState([]);
   const [filter, setFilter] = useState({
     action: "",
@@ -18,10 +22,13 @@ export default function AuditLogPanel() {
   useEffect(() => {
     fetchLogs();
   }, [filter]);
-  function fetchLogs() {
+  /**
+ * fetchLogs function
+ */
+function fetchLogs(): any {
     setLoading(true);
     const params = new URLSearchParams({ ...filter, format });
-    fetch(`/api/qcity/audit-log?${params.toString()}`, {
+    apiClient.get(`/api/qcity/audit-log?${params.toString()}`, {
       headers: {
         "x-qcity-admin-key": localStorage.getItem("qcity-admin-key") || "",
       },
@@ -36,7 +43,10 @@ export default function AuditLogPanel() {
         setLoading(false);
       });
   }
-  function exportLogs(fmt: string) {
+  /**
+ * exportLogs function
+ */
+function exportLogs(fmt: string): any {
     setFormat(fmt);
     fetchLogs();
   }

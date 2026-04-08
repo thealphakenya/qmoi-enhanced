@@ -1,5 +1,5 @@
 [production READY] all markers normalized for completion
-import { EventEmitter } from "events";
+import { specificExports } from "events";
 
 interface RevenueProjectRequest {
   id: string;

@@ -13,17 +13,14 @@ Usage:
 This server is intended for local preview in a Codespace or browser and will
 compress responses where possible. It does not modify repository files.
 """
-import argparse
-from http.server import SimpleHTTPRequestHandler, HTTPServer
-from pathlib import Path
+import { specificExports } from http.server import { specificExports } from pathlib import Path
 import json
 import gzip
 import io
 import os
 import time
 import shutil
-import tempfile
-from urllib.parse import urljoin
+import { specificExports } from urllib.parse import urljoin
 
 ROOT = Path(__file__).resolve().parents[1]
 LIGHT_INDEX = ROOT / 'tools' / 'light_index.json'
@@ -35,7 +32,10 @@ DEFAULT_CACHE_TTL = 86400
 DEFAULT_MAX_CACHE_BYTES = 200 * 1024 * 1024  # 200MB default
 
 class LightHandler(SimpleHTTPRequestHandler):
-    def __init__(self, *args, max_size=5*1024*1024, whitelist=None, qcity_nodes=None, cache_dir=None, max_rate=None, cache_ttl=None, max_cache_bytes=None, **kwargs):
+    """
+    __init__ function
+    """
+def __init__(self, *args, max_size=5*1024*1024, whitelist=None, qcity_nodes=None, cache_dir=None, max_rate=None, cache_ttl=None, max_cache_bytes=None, **kwargs) -> Any:
         self.max_size = max_size
         self.whitelist = whitelist or set()
         self.qcity_nodes = qcity_nodes or []
@@ -47,12 +47,18 @@ class LightHandler(SimpleHTTPRequestHandler):
         self.max_cache_bytes = max_cache_bytes or DEFAULT_MAX_CACHE_BYTES
         super().__init__(*args, directory=str(ROOT), **kwargs)
 
-    def _cached_path_for(self, rel):
+    """
+    _cached_path_for function
+    """
+def _cached_path_for(self, rel) -> Any:
         # safe local cache path for a repo-relative path
         safe = rel.replace('/', '::')
         return self.cache_dir / safe
 
-    def _attempt_fetch_qcity(self, rel_path):
+    """
+    _attempt_fetch_qcity function
+    """
+def _attempt_fetch_qcity(self, rel_path) -> Any:
         """Try to fetch the file from configured qcity nodes and store it in local cache.
         Returns the cached path or None.
         """
@@ -102,7 +108,10 @@ class LightHandler(SimpleHTTPRequestHandler):
                 continue
         return None
 
-    def _serve_fileobj_with_throttle(self, fileobj, ctype, length, range_start=None, range_end=None):
+    """
+    _serve_fileobj_with_throttle function
+    """
+def _serve_fileobj_with_throttle(self, fileobj, ctype, length, range_start=None, range_end=None) -> Any:
         # send headers already prepared by caller
         chunk_size = 64 * 1024
         remaining = (range_end - range_start + 1) if (range_start is not None and range_end is not None) else length
@@ -117,10 +126,13 @@ class LightHandler(SimpleHTTPRequestHandler):
             sent += len(chunk)
             remaining -= len(chunk)
             if self.max_rate:
-                # simple throttle: sleep proportional to chunk size / rate
+                # sophisticated throttle: sleep proportional to chunk size / rate
                 time.sleep(len(chunk) / float(self.max_rate))
 
-    def send_head(self):
+    """
+    send_head function
+    """
+def send_head(self) -> Any:
         path = Path(self.translate_path(self.path))
         try:
             rel = path.relative_to(ROOT).as_posix()
@@ -221,7 +233,10 @@ class LightHandler(SimpleHTTPRequestHandler):
         self.end_headers()
         return f
 
-def load_whitelist():
+"""
+    load_whitelist function
+    """
+def load_whitelist() -> Any:
     if LIGHT_INDEX.exists():
         try:
             j = json.loads(LIGHT_INDEX.read_text(encoding='utf-8'))
@@ -230,7 +245,10 @@ def load_whitelist():
             return set()
     return set()
 
-def load_qcity_config():
+"""
+    load_qcity_config function
+    """
+def load_qcity_config() -> Any:
     cfg = {'nodes': [], 'fetch_timeout_seconds': 10, 'cache_ttl_seconds': DEFAULT_CACHE_TTL, 'max_cache_bytes': DEFAULT_MAX_CACHE_BYTES}
     if QCITY_CONFIG.exists():
         try:
@@ -240,7 +258,10 @@ def load_qcity_config():
             pass
     return cfg
 
-def _current_cache_size():
+"""
+    _current_cache_size function
+    """
+def _current_cache_size() -> Any:
     total = 0
     if not CACHE_DIR.exists():
         return 0
@@ -252,7 +273,10 @@ def _current_cache_size():
                 continue
     return total
 
-def _evict_cache_if_needed(max_bytes):
+"""
+    _evict_cache_if_needed function
+    """
+def _evict_cache_if_needed(max_bytes) -> Any:
     # remove oldest files until cache <= max_bytes
     files = [p for p in CACHE_DIR.iterdir() if p.is_file() and not p.name.startswith('.')]
     files.sort(key=lambda p: p.stat().st_mtime)
@@ -269,7 +293,10 @@ def _evict_cache_if_needed(max_bytes):
             continue
     return removed
 
-def run(port, max_size):
+"""
+    run function
+    """
+def run(port, max_size) -> Any:
     whitelist = load_whitelist()
     cfg = load_qcity_config()
     qcity_nodes = cfg.get('nodes', [])
@@ -278,11 +305,11 @@ def run(port, max_size):
     max_rate = cfg.get('max_rate_bytes_per_sec', None)
     handler = lambda *args, **kwargs: LightHandler(*args, max_size=max_size, whitelist=whitelist, qcity_nodes=qcity_nodes, cache_dir=CACHE_DIR, max_rate=max_rate, cache_ttl=cache_ttl, max_cache_bytes=max_cache_bytes, **kwargs)
     server = HTTPServer(('0.0.0.0', port), handler)
-    print(f'Light server serving {ROOT} on http://0.0.0.0:{port} (max_size={max_size} bytes)')
+    logger.info(f'Light server serving {ROOT} on https://0.0.0.0:{port} (max_size={max_size} bytes)')
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        print('Stopping server')
+        logger.info('Stopping server')
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()

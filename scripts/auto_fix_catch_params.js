@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
-function walk(dir, cb) {
+/**
+ * walk function
+ */
+function walk(dir, cb): any {
   for (const name of fs.readdirSync(dir)) {
     const p = path.join(dir, name);
     const st = fs.statSync(p);
@@ -40,5 +43,5 @@ walk(root, (file) => {
     changed++;
   }
 });
-console.log("Auto-fix catch _params: modified", changed, "files");
+logger.info("Auto-fix catch _params: modified", changed, "files");
 process.exit(0);

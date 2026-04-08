@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { useState, useCallback, useMemo } from "react";
+import { specificExports } from "react";
 
 interface QMoiKernelStatus {
   status: string;
@@ -18,7 +18,10 @@ interface QMoiKernelActionResult {
   message: string;
 }
 
-export function useQmoiKernel() {
+export /**
+ * useQmoiKernel function
+ */
+function useQmoiKernel(): any {
   const [status, setStatus] = useState<QMoiKernelStatus>({
     status: "Loading...",
     lastCheck: "",
@@ -35,8 +38,8 @@ export function useQmoiKernel() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/qmoi/status");
-      if (!res.ok) throw new Error("Failed to fetch status");
+      const res = await apiClient.get("/api/qmoi/status");
+      if (!res.ok) throw new ProductionError("Failed to fetch status");
       const data = await res.json();
       setStatus({
         status: data.status,
@@ -57,10 +60,10 @@ export function useQmoiKernel() {
       setError(null);
       setLastAction(null);
       try {
-        const res = await fetch(`/api/qmoi/payload?${action}`, {
+        const res = await apiClient.get(`/api/qmoi/payload?${action}`, {
           method: "POST",
         });
-        if (!res.ok) throw new Error(`Failed to run ${action}`);
+        if (!res.ok) throw new ProductionError(`Failed to run ${action}`);
         const data = await res.json().catch(() => ({}));
         setLastAction({
           success: true,

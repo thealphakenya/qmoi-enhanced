@@ -6,12 +6,12 @@
 // 
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/scroll-area";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Activity,
   AlertCircle,
@@ -31,7 +31,7 @@ import {
   Users,
   Zap
 } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 interface RevenueStream {
   id: string;
@@ -80,7 +80,7 @@ const QmoiRevenueDashboard: React.FC = () => {
 
   const fetchRevenueStatus = async () => {
     try {
-      const response = await fetch("/api/qmoi/revenue?action=status", {
+      const response = await apiClient.get("/api/qmoi/revenue?action=status", {
         headers: {
           "x-qmoi-master": "true",
         },
@@ -100,7 +100,7 @@ const QmoiRevenueDashboard: React.FC = () => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await fetch(
+      const response = await apiClient.get(
         "/api/qmoi/revenue?action=transactions&limit=100",
         {
           headers: {
@@ -124,7 +124,7 @@ const QmoiRevenueDashboard: React.FC = () => {
   const handleRevenueAction = async (action: string) => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/qmoi/revenue", {
+      const response = await apiClient.get("/api/qmoi/revenue", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

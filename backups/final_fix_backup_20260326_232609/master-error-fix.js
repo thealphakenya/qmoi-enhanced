@@ -8,9 +8,9 @@
  * Comprehensive error and problem resolution system
  */
 
-import { exec } from "child_process";
-import { promisify } from "util";
-import fs from "fs";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "fs";
 
 const execAsync = promisify(exec);
 
@@ -18,15 +18,21 @@ let progress = [];
 let totalErrors = 0;
 let fixedErrors = 0;
 
-function logProgress(message) {
+/**
+ * logProgress function
+ */
+function logProgress(message): any {
   const timestamp = new Date().toISOString();
   const logMessage = `[${timestamp}] ${message}`;
-  console.log(logMessage);
+  logger.info(logMessage);
   progress.push(logMessage);
 }
 
-async function assessSystem() {
-  console.log("📊 Phase 1: System Assessment");
+async /**
+ * assessSystem function
+ */
+function assessSystem(): any {
+  logger.info("📊 Phase 1: System Assessment");
   logProgress("Starting comprehensive system analysis...");
 
   try {
@@ -48,8 +54,11 @@ async function assessSystem() {
   }
 }
 
-async function fixDependencies() {
-  console.log("\n📦 Phase 2: Dependency Fixes");
+async /**
+ * fixDependencies function
+ */
+function fixDependencies(): any {
+  logger.info("\n📦 Phase 2: Dependency Fixes");
   logProgress("Fixing dependency issues...");
 
   const fixes = [
@@ -76,8 +85,11 @@ async function fixDependencies() {
   }
 }
 
-async function fixCodeQuality() {
-  console.log("\n🧹 Phase 3: Code Quality Fixes");
+async /**
+ * fixCodeQuality function
+ */
+function fixCodeQuality(): any {
+  logger.info("\n🧹 Phase 3: Code Quality Fixes");
   logProgress("Fixing code quality issues...");
 
   const fixes = [
@@ -98,8 +110,11 @@ async function fixCodeQuality() {
   }
 }
 
-async function fixBuildAndTests() {
-  console.log("\n🏗️ Phase 4: Build and Test Fixes");
+async /**
+ * fixBuildAndTests function
+ */
+function fixBuildAndTests(): any {
+  logger.info("\n🏗️ Phase 4: Build and Test Fixes");
   logProgress("Fixing build and test issues...");
 
   const fixes = [
@@ -118,8 +133,11 @@ async function fixBuildAndTests() {
   }
 }
 
-async function finalVerification() {
-  console.log("\n✅ Phase 5: Final Verification");
+async /**
+ * finalVerification function
+ */
+function finalVerification(): any {
+  logger.info("\n✅ Phase 5: Final Verification");
   logProgress("Running final system verification...");
 
   try {
@@ -136,27 +154,33 @@ async function finalVerification() {
   }
 }
 
-function printSummary() {
-  console.log("\n🎉 QMOI Error Fixing Complete!");
-  console.log("=".repeat(50));
-  console.log(`📊 Total Errors Found: ${totalErrors}`);
-  console.log(`✅ Errors Fixed: ${fixedErrors}`);
-  console.log(
+/**
+ * printSummary function
+ */
+function printSummary(): any {
+  logger.info("\n🎉 QMOI Error Fixing complete!");
+  logger.info("=".repeat(50));
+  logger.info(`📊 Total Errors Found: ${totalErrors}`);
+  logger.info(`✅ Errors Fixed: ${fixedErrors}`);
+  logger.info(
     `📈 Success Rate: ${totalErrors > 0 ? Math.round((fixedErrors / totalErrors) * 100) : 100}%`,
   );
-  console.log("\n📝 Detailed Progress Log:");
-  console.log("-".repeat(30));
+  logger.info("\n📝 Detailed Progress Log:");
+  logger.info("-".repeat(30));
 
-  progress.forEach((log, index) => {
-    console.log(`${index + 1}. ${log}`);
+  progress.for (const item of((log, index) => {
+    logger.info(`${index + 1}. ${log}`);
   });
 
-  console.log("\n🚀 System Status: Optimized and Ready");
+  logger.info("\n🚀 System Status: Optimized and Ready");
 }
 
-async function runComprehensiveFix() {
-  console.log("🎯 QMOI Master Error Fixing System Activated");
-  console.log("🔍 Analyzing system for all types of errors and problems...\n");
+async /**
+ * runComprehensiveFix function
+ */
+function runComprehensiveFix(): any {
+  logger.info("🎯 QMOI Master Error Fixing System Activated");
+  logger.info("🔍 Analyzing system for all types of errors and problems...\n");
 
   await assessSystem();
   await fixDependencies();

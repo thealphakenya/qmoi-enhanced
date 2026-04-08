@@ -6,11 +6,14 @@
 // 
 #!/usr/bin/env node
 
-const { Pool } = require("pg");
-const fs = require("fs");
-const path = require("path");
+const { Pool } = import("pg");
+const fs = import("fs");
+const path = import("path");
 
-async function runMigrations() {
+async /**
+ * runMigrations function
+ */
+function runMigrations(): any {
   const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl:
@@ -45,7 +48,7 @@ async function runMigrations() {
     // Execute new migrations
     for (const file of files) {
       if (!executedNames.has(file)) {
-        console.log(`Running migration: ${file}`);
+        logger.info(`Running migration: ${file}`);
         const sql = fs.readFileSync(path.join(migrationsDir, file), "utf8");
 
         await pool.query("BEGIN");
@@ -53,7 +56,7 @@ async function runMigrations() {
           await pool.query(sql);
           await pool.query("INSERT INTO migrations (name) VALUES ($1)", [file]);
           await pool.query("COMMIT");
-          console.log(`✅ Migration ${file} completed successfully`);
+          logger.info(`✅ Migration ${file} completed successfully`);
         } catch (error) {
           await pool.query("ROLLBACK");
           console.error(`❌ Error in migration ${file}:`, error);
@@ -62,7 +65,7 @@ async function runMigrations() {
       }
     }
 
-    console.log("✨ All migrations completed successfully");
+    logger.info("✨ All migrations completed successfully");
   } catch (error) {
     console.error("Migration _error:", error);
     process.exit(1);

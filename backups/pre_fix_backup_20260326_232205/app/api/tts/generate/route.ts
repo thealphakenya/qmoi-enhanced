@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   const url = new URL(req.url);
   const voice = url.searchParams.get("voice") || "professional-male";
   const text = url.searchParams.get("text") || "Hello from QMOI";
@@ -30,7 +33,10 @@ export async function GET(req: NextRequest) {
   });
 }
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   const body = await req.json();
   const voice = body.voice || "professional-male";
   const text = body.text || "Hello from QMOI";

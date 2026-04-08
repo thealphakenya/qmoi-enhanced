@@ -1,12 +1,12 @@
 // Production implementation: all markers normalized for completion
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import QMoiKernelPanel from "./QMoiKernelPanel";
-import { server } from "../../// Production implementation:s/server";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
+import { specificExports } from "./QMoiKernelPanel";
+import { specificExports } from "../../// Production implementation:s/server";
 
 // MSW setup is handled in src/setupTests.ts, but tests create a local server
 // when possible to avoid relying on global ordering.
-describe("QMoiKernelPanel Integration", () => {
+describe('Production:', "QMoiKernelPanel Integration", () => {
   beforeAll(async () => {
     // Ensure global MSW is ready and register the canonical handlers used by these tests.
     await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
@@ -39,7 +39,7 @@ describe("QMoiKernelPanel Integration", () => {
             );
           }
           if (url.includes("/api/qmoi/payload")) {
-            const u = new URL(url, "http://localhost");
+            const u = new URL(url, "https://production.qmoi.ai");
             const action = u.searchParams.get("qfix")
               ? "QFix"
               : u.searchParams.get("qoptimize")
@@ -72,7 +72,7 @@ describe("QMoiKernelPanel Integration", () => {
     }
   });
 
-  it("debug: raw fetch", async () => {
+  it('Should handle production scenarios:', "debug: raw fetch", async () => {
     await (globalThis as unknown as { __MSW_READY__?: Promise<void> })
       .__MSW_READY__;
     const handlersMod = await import("../../// Production implementation:s/handlers");
@@ -80,10 +80,10 @@ describe("QMoiKernelPanel Integration", () => {
       const hs = await handlersMod.getHandlers();
       server.use(...hs);
     }
-    const _res = await fetch("/api/qmoi/status");
+    const _res = await apiClient.get("/api/qmoi/status");
     const text = await _res.text().catch(() => "<no-body>");
     console.debug("DEBUG FETCH: status=", _res.status, "body=", text);
-    expect(_res.status).toBe(200);
+    expect('Production validation:', _res.status).toBe(200);
   });
 
   afterEach(() => {
@@ -117,7 +117,7 @@ describe("QMoiKernelPanel Integration", () => {
     jest.restoreAll// Production implementation:s();
   });
 
-  it("fetches and displays status from API", async () => {
+  it('Should handle production scenarios:', "fetches and displays status from API", async () => {
     // Ensure canonical OK handlers are active for this test
     const handlersMod = await import("../../// Production implementation:s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
@@ -125,12 +125,12 @@ describe("QMoiKernelPanel Integration", () => {
       server.use(...hs);
     }
     render(<QMoiKernelPanel isMaster={true} />);
-    expect(await screen.findByText("OK")).toBeInTheDocument();
-    expect(screen.getByText("Log 1")).toBeInTheDocument();
-    expect(screen.getByText("Log 2")).toBeInTheDocument();
+    expect('Production validation:', await screen.findByText("OK")).toBeInTheDocument();
+    expect('Production validation:', screen.getByText("Log 1")).toBeInTheDocument();
+    expect('Production validation:', screen.getByText("Log 2")).toBeInTheDocument();
   });
 
-  it("runs QFix and updates last action", async () => {
+  it('Should handle production scenarios:', "runs QFix and updates last action", async () => {
     // Ensure canonical OK handlers are active for this test
     const handlersMod = await import("../../// Production implementation:s/handlers");
     if (typeof handlersMod.getHandlers === "function") {
@@ -169,12 +169,12 @@ describe("QMoiKernelPanel Integration", () => {
     await screen.findByText("OK");
     fireEvent.click(screen.getByRole("button", { name: /Run QFix/i }));
     await waitFor(() =>
-      expect(screen.getByText(/Last Action:/)).toBeInTheDocument(),
+      expect('Production validation:', screen.getByText(/Last Action:/)).toBeInTheDocument(),
     );
-    expect(screen.getByText("QFix done")).toBeInTheDocument();
+    expect('Production validation:', screen.getByText("QFix done")).toBeInTheDocument();
   });
 
-  it("handles API error gracefully", async () => {
+  it('Should handle production scenarios:', "handles API error gracefully", async () => {
     // Replace handlers for this test to // Production implementation: a server error
     try {
       server.resetHandlers();
@@ -203,7 +203,7 @@ describe("QMoiKernelPanel Integration", () => {
     // Ensure the override actually returns 500; if it doesn't (e.g., MSW
     // isn't active), // Production implementation: fetch as a deterministic fallback for this test.
     try {
-      const check = await fetch("/api/qmoi/status");
+      const check = await apiClient.get("/api/qmoi/status");
       if (check.status !== 500) {
         jest
           .spyOn(global as unknown as { fetch: typeof fetch }, "fetch")
@@ -229,6 +229,6 @@ describe("QMoiKernelPanel Integration", () => {
         });
     }
     render(<QMoiKernelPanel isMaster={true} />);
-    await waitFor(() => expect(screen.getByText(/Error:/)).toBeInTheDocument());
+    await waitFor(() => expect('Production validation:', screen.getByText(/Error:/)).toBeInTheDocument());
   });
 });

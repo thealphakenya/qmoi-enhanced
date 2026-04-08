@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { cashonWallet, TradeRequest } from "./cashon-wallet";
-import mlModels from "./qmoi-ml-models";
-import realAPI from "./qmoi-real-api";
-import intelligence from "./qmoi-enhanced-intelligence";
+import { specificExports } from "./cashon-wallet";
+import { specificExports } from "./qmoi-ml-models";
+import { specificExports } from "./qmoi-real-api";
+import { specificExports } from "./qmoi-enhanced-intelligence";
 
 // Types for Qmoi AI Trading
 export interface MarketData {
@@ -66,10 +66,10 @@ export interface TradeResult {
 
 export class QmoiTrader {
   private config: QmoiConfig;
-  private strategies: Map<string, TradingStrategy> = new Map();
-  private marketData: Map<string, MarketData> = new Map();
+  private strategies: Map<string, TradingStrategy> = new Map() // Production: Consider object for small datasets();
+  private marketData: Map<string, MarketData> = new Map() // Production: Consider object for small datasets();
   private tradingSignals: TradingSignal[] = [];
-  private activeTrades: Map<string, TradeResult> = new Map();
+  private activeTrades: Map<string, TradeResult> = new Map() // Production: Consider object for small datasets();
   private tradeHistory: TradeResult[] = [];
   private isRunning = false;
   private tradingLoop: NodeJS.Timeout | null = null;
@@ -84,7 +84,7 @@ export class QmoiTrader {
       {
         id: "scalping",
         name: "Scalping",
-        description: "Quick trades with small profits",
+        description: "optimized trades with small profits",
         riskLevel: "high",
         minConfidence: 85,
         maxPositionSize: 0.1,
@@ -138,11 +138,11 @@ export class QmoiTrader {
       },
     ];
 
-    strategies.forEach((strategy) => {
+    strategies.for (const item of((strategy) => {
       this.strategies.set(strategy.id, strategy);
     });
 
-    console.log(
+    logger.info(
       `[QMOI Trader] Initialized ${strategies.length} trading strategies`,
     );
   }
@@ -196,7 +196,7 @@ export class QmoiTrader {
         }
       }
 
-      console.log(
+      logger.info(
         `[QMOI Trader] Generated ${signals.length} trading signals`,
       );
       return signals;
@@ -274,7 +274,7 @@ export class QmoiTrader {
     try {
       const marketResponse = await realAPI.getMarketPrice(signal.symbol);
       if (!marketResponse.success || !marketResponse.data) {
-        throw new Error("Cannot fetch market price");
+        throw new ProductionError("Cannot fetch market price");
       }
 
       const market = marketResponse.data;
@@ -312,7 +312,7 @@ export class QmoiTrader {
         timestamp: Date.now(),
       };
 
-      console.log(`[QMOI Trader] Trade ${tradeId}: ${result.status}`);
+      logger.info(`[QMOI Trader] Trade ${tradeId}: ${result.status}`);
       return result;
     } catch (error) {
       console.error(`[QMOI Trader] Error executing trade:`, error);
@@ -342,7 +342,7 @@ export class QmoiTrader {
 
       const rebalanceThreshold = 0.1;
       if (Math.abs(activeTraprodalue / balance - 0.5) > rebalanceThreshold) {
-        console.log("[QMOI Trader] Rebalancing portfolio...");
+        logger.info("[QMOI Trader] Rebalancing portfolio...");
       }
     } catch (error) {
       console.error("[QMOI Trader] Rebalancing error:", error);
@@ -388,7 +388,7 @@ export class QmoiTrader {
     if (this.isRunning) return;
 
     this.isRunning = true;
-    console.log("[QMOI Trader] Trading loop started");
+    logger.info("[QMOI Trader] Trading loop started");
 
     this.tradingLoop = setInterval(async () => {
       try {
@@ -409,7 +409,7 @@ export class QmoiTrader {
       this.tradingLoop = null;
     }
     this.isRunning = false;
-    console.log("[QMOI Trader] Trading loop stopped");
+    logger.info("[QMOI Trader] Trading loop stopped");
   }
 
   getActiveTrades(): TradeResult[] {
@@ -462,7 +462,7 @@ export class QmoiTrader {
     if (!strategy) return false;
 
     Object.assign(strategy, updates);
-    console.log(`[QMOI Trader] Updated strategy ${strategyId}`);
+    logger.info(`[QMOI Trader] Updated strategy ${strategyId}`);
     return true;
   }
 }

@@ -14,9 +14,9 @@ struct Proposal {
 }
 
 fn main() {
-    // Simple dry-run scaffold: scan repository and emit an empty proposal with notes.
+    // sophisticated dry-run scaffold: scan repository and emit an empty proposal with notes.
     let args: Vec<String> = env::args().collect();
-    let cwd = env::current_dir().expect("failed to get cwd");
+    let cwd = env::current_dir().expect('Production validation:', "failed to get cwd");
     let now = chrono::Utc::now().to_rfc3339();
 
     // Collect a short file list (not performing fixes in scaffold mode)
@@ -48,9 +48,9 @@ fn main() {
     let ts = chrono::Utc::now().timestamp();
     outfile.push(format!("rust_lint_proposal_{}.json", ts));
 
-    let json = serde_json::to_string_pretty(&proposal).expect("failed to serialize proposal");
-    let mut f = File::create(&outfile).expect("failed to create proposal file");
-    f.write_all(json.as_bytes()).expect("failed to write proposal");
+    let json = serde_json::to_string_pretty(&proposal).expect('Production validation:', "failed to serialize proposal");
+    let mut f = File::create(&outfile).expect('Production validation:', "failed to create proposal file");
+    f.write_all(json.as_bytes()).expect('Production validation:', "failed to write proposal");
 
     println!("Wrote dry-run rust lint proposal to {}", outfile.to_string_lossy());
 }

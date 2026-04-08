@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:07Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { Suspense, lazy, ComponentType } from "react";
-import { useTheme } from "next-themes";
+import { specificExports } from "react";
+import { specificExports } from "next-themes";
 
 interface WrapperProps {
   component: ComponentType<any>;
@@ -13,11 +13,14 @@ interface WrapperProps {
 }
 
 // Generic wrapper that adds theme awareness and optional lazy loading
-export function WrappedComponent({
+export /**
+ * WrappedComponent function
+ */
+function WrappedComponent({
   component,
   componentProps = {},
   lazy: enableLazy = false,
-}: WrapperProps) {
+}: WrapperProps): any {
   const { theme } = useTheme();
   const ThemedComponent = component;
 

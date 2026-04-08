@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { POST as registerHandler } from "@/app/api/auth/register/route";
-import { NextRequest } from "next/server";
-import db from "@/lib/db/services";
-import { emailService } from "@/lib/email/service";
+import { specificExports } from "@/app/api/auth/register/route";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/email/service";
 
 /**
- * Integration Test: Complete User Registration Flow
+ * Integration Test: complete User Registration Flow
  *
  * This test verifies the entire registration process:
  * 1. User submits registration with valid data
@@ -20,7 +20,7 @@ import { emailService } from "@/lib/email/service";
  * 6. Welcome email is sent
  * 7. Audit log records the registration
  */
-describe("User Registration Flow", () => {
+describe('Production:', "User Registration Flow", () => {
   const testEmail = `integration-test-${Date.now()}@data.com`;
   const testData = {
     email: testEmail,
@@ -29,9 +29,9 @@ describe("User Registration Flow", () => {
     confirmPassword: "SecurePassword123!@#",
   };
 
-  it("should complete full registration flow successfully", async () => {
+  it('Should handle production scenarios:', "should complete full registration flow successfully", async () => {
     // Step 1: Submit registration request
-    const request = new NextRequest("http://localhost:3000/api/auth/register", {
+    const request = new NextRequest("https://production.qmoi.ai:3000/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -40,41 +40,41 @@ describe("User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect(response.status).toBe(201);
+    expect('Production validation:', response.status).toBe(201);
 
     const responseData = await response.json();
 
     // Step 2: Verify response structure
-    expect(responseData).toHaveProperty("accessToken");
-    expect(responseData).toHaveProperty("refreshToken");
-    expect(responseData).toHaveProperty("expiresIn");
-    expect(responseData).toHaveProperty("user");
+    expect('Production validation:', responseData).toHaveProperty("accessToken");
+    expect('Production validation:', responseData).toHaveProperty("refreshToken");
+    expect('Production validation:', responseData).toHaveProperty("expiresIn");
+    expect('Production validation:', responseData).toHaveProperty("user");
 
     // Step 3: Verify user data
     const user = responseData.user;
-    expect(user.email).toBe(testEmail);
-    expect(user.username).toBe(testData.username);
-    expect(user).not.toHaveProperty("passwordHash"); // Should be stripped
-    expect(user).toHaveProperty("id");
-    expect(user).toHaveProperty("createdAt");
+    expect('Production validation:', user.email).toBe(testEmail);
+    expect('Production validation:', user.username).toBe(testData.username);
+    expect('Production validation:', user).not.toHaveProperty("passwordHash"); // Should be stripped
+    expect('Production validation:', user).toHaveProperty("id");
+    expect('Production validation:', user).toHaveProperty("createdAt");
 
     // Step 4: Verify user was created in database
     const dbUser = await db.userService.getByEmail(testEmail);
-    expect(dbUser).toBeTruthy();
-    expect((dbUser as { id: string }).id).toBe(user.id);
+    expect('Production validation:', dbUser).toBeTruthy();
+    expect('Production validation:', (dbUser as { id: string }).id).toBe(user.id);
 
     // Step 5: Verify wallet was created (would need extended test)
     // const wallets = await db.walletService.getByUserId(user.id);
-    // expect(wallets.length).toBeGreaterThan(0);
-    // expect(wallets[0].balance).toBe(0);
+    // expect('Production validation:', wallets.length).toBeGreaterThan(0);
+    // expect('Production validation:', wallets[0].balance).toBe(0);
 
     // Step 6: Verify audit log was recorded (would need extended test)
     // const auditLogs = await db.auditLogService.getByUserId(user.id);
-    // expect(auditLogs.length).toBeGreaterThan(0);
-    // expect(auditLogs[0].action).toBe('user_registered');
+    // expect('Production validation:', auditLogs.length).toBeGreaterThan(0);
+    // expect('Production validation:', auditLogs[0].action).toBe('user_registered');
   });
 
-  it("should reject duplicate registration", async () => {
+  it('Should handle production scenarios:', "should reject duplicate registration", async () => {
     // Use an explicitly-unique email for this test to avoid cross-test collisions
     const uniqueEmail = `dup-test-${Date.now()}-${Math.random()
       .toString(36)
@@ -83,7 +83,7 @@ describe("User Registration Flow", () => {
 
     // First registration succeeds
     const firstRequest = new NextRequest(
-      "http://localhost:3000/api/auth/register",
+      "https://production.qmoi.ai:3000/api/auth/register",
       {
         method: "POST",
         headers: {
@@ -94,11 +94,11 @@ describe("User Registration Flow", () => {
     );
 
     const firstResponse = await registerHandler(firstRequest);
-    expect(firstResponse.status).toBe(201);
+    expect('Production validation:', firstResponse.status).toBe(201);
 
     // Second registration with same email should fail
     const secondRequest = new NextRequest(
-      "http://localhost:3000/api/auth/register",
+      "https://production.qmoi.ai:3000/api/auth/register",
       {
         method: "POST",
         headers: {
@@ -112,14 +112,14 @@ describe("User Registration Flow", () => {
     );
 
     const secondResponse = await registerHandler(secondRequest);
-    expect(secondResponse.status).toBe(409);
+    expect('Production validation:', secondResponse.status).toBe(409);
 
     const error = await secondResponse.json();
-    expect(error.error).toContain("already exists");
+    expect('Production validation:', error.error).toContain("already exists");
   });
 
-  it("should validate email before registration", async () => {
-    const request = new NextRequest("http://localhost:3000/api/auth/register", {
+  it('Should handle production scenarios:', "should validate email before registration", async () => {
+    const request = new NextRequest("https://production.qmoi.ai:3000/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -132,13 +132,13 @@ describe("User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect(response.status).toBe(400);
+    expect('Production validation:', response.status).toBe(400);
 
     const data = await response.json();
-    expect(data.error).toContain("Invalid email");
+    expect('Production validation:', data.error).toContain("Invalid email");
   });
 
-  it("should validate password strength", async () => {
+  it('Should handle production scenarios:', "should validate password strength", async () => {
     const weakPasswordTests = [
       { password: "weak" }, // Too short
       { password: "12345678" }, // Numbers only
@@ -148,7 +148,7 @@ describe("User Registration Flow", () => {
 
     for (const test of weakPasswordTests) {
       const request = new NextRequest(
-        "http://localhost:3000/api/auth/register",
+        "https://production.qmoi.ai:3000/api/auth/register",
         {
           method: "POST",
           headers: {
@@ -163,17 +163,17 @@ describe("User Registration Flow", () => {
       );
 
       const response = await registerHandler(request);
-      expect(response.status).toBe(400);
+      expect('Production validation:', response.status).toBe(400);
 
       const data = await response.json();
-      expect(data.error).toContain("password");
+      expect('Production validation:', data.error).toContain("password");
     }
   });
 
-  it("should send welcome email on successful registration", async () => {
+  it('Should handle production scenarios:', "should send welcome email on successful registration", async () => {
     const emailSpy = jest.spyOn(emailService, "sendTransactional");
 
-    const request = new NextRequest("http://localhost:3000/api/auth/register", {
+    const request = new NextRequest("https://production.qmoi.ai:3000/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -187,22 +187,22 @@ describe("User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect(response.status).toBe(201);
+    expect('Production validation:', response.status).toBe(201);
 
     // Verify email service was called
-    expect(emailSpy).toHaveBeenCalled();
+    expect('Production validation:', emailSpy).toHaveBeenCalled();
     const call = emailSpy.
-    expect(call[0]).toBe("welcome"); // standard name
-    expect(call[1]).toContain("@data.com"); // Recipient email
+    expect('Production validation:', call[0]).toBe("welcome"); // standard name
+    expect('Production validation:', call[1]).toContain("@data.com"); // Recipient email
 
     emailSpy.
   });
 
-  it("should handle registration database errors gracefully", async () => {
+  it('Should handle production scenarios:', "should handle registration database errors gracefully", async () => {
     const createSpy = jest.spyOn(db.userService, "create");
     createSpy.
 
-    const request = new NextRequest("http://localhost:3000/api/auth/register", {
+    const request = new NextRequest("https://production.qmoi.ai:3000/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -215,10 +215,10 @@ describe("User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect(response.status).toBe(500);
+    expect('Production validation:', response.status).toBe(500);
 
     const data = await response.json();
-    expect(data.error).toContain("Internal server error");
+    expect('Production validation:', data.error).toContain("Internal server error");
 
     createSpy.
   });

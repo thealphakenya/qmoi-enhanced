@@ -195,7 +195,7 @@
             46,
             45
           ],
-          "trend": "stable",
+          "trend": "latest",
           "change_percent": 2.1
         },
         "throughput_trend": {
@@ -255,7 +255,7 @@
             0.03,
             0.02
           ],
-          "trend": "stable",
+          "trend": "latest",
           "change_percent": -1.5
         }
       },
@@ -355,5 +355,9 @@
     "system_status": "operational",
     "last_updated": "2026-03-29 19:44:02.597178+00:00"
   },
-  "generated_at": 1774813442.5973778
+  "generated_at": 1774813442.5973778,
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:46.670326"
 }

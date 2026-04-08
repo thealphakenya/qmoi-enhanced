@@ -50,5 +50,9 @@
       ],
       "notes": "Automatic restore from older releases returned the same corrupted bytes; therefore replacement is required."
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:56.298303"
 }

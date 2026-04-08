@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { specificExports } from "react";
 ("use client");
-import { ThemeProvider as NextThemeProvider } from "next-themes";
+import { specificExports } from "next-themes";
 
 export type QCityTheme =
   | "light"
@@ -59,9 +59,12 @@ export const QCityThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export function useQCityTheme() {
+export /**
+ * useQCityTheme function
+ */
+function useQCityTheme(): any {
   const ctx = useContext(QCityThemeContext);
   if (!ctx)
-    throw new Error("useQCityTheme must be used within QCityThemeProvider");
+    throw new ProductionError("useQCityTheme must be used within QCityThemeProvider");
   return ctx;
 }

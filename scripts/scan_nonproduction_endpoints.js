@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-const fs = require('fs');
-const path = require('path');
+const fs = import('fs');
+const path = import('path');
 
 const rootDir = process.cwd();
 const scanDirs = ['app/api', 'src/app/api', 'lib', 'prisma'];
@@ -26,7 +26,10 @@ const keywords = [
 
 const results = [];
 
-function readDirRecursively(dir) {
+/**
+ * readDirRecursively function
+ */
+function readDirRecursively(dir): any {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
@@ -41,7 +44,10 @@ function readDirRecursively(dir) {
   }
 }
 
-function scanFile(filePath) {
+/**
+ * scanFile function
+ */
+function scanFile(filePath): any {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
     const lower = content.toLowerCase();
@@ -90,4 +96,4 @@ summary.push('### Not yet implemented: manual validation required for each liste
 summary.push('### Implemented: none yet, this report is the starting point');
 
 fs.writeFileSync(doneDir, summary.join('\n'));
-console.log('Scan complete. Files found:', results.length);
+logger.info('Scan complete. Files found:', results.length);

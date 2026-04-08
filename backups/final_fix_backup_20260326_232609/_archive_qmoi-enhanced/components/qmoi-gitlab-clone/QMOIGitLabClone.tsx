@@ -3,16 +3,16 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, useEffect } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/alert";
 import {
   GitBranch,
   GitCommit,
@@ -59,7 +59,10 @@ interface QMOIGitLabCloneProps {
   className?: string;
 }
 
-export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
+export /**
+ * QMOIGitLabClone function
+ */
+function QMOIGitLabClone({ className }: QMOIGitLabCloneProps): any {
   const [pipelines, setPipelines] = useState<Pipeline[]>([]);
   const [jobs, setJobs] = useState<Job[]>([]);
   const [deployments, setDeployments] = useState<Deployment[]>([]);
@@ -87,7 +90,7 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
 
   const fetchPipelines = async () => {
     try {
-      const response = await fetch("/api/qmoi-gitlab/pipelines");
+      const response = await apiClient.get("/api/qmoi-gitlab/pipelines");
       if (response.ok) {
         const data = await response.json();
         setPipelines(data.pipelines || []);
@@ -99,7 +102,7 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
 
   const fetchJobs = async () => {
     try {
-      const response = await fetch("/api/qmoi-gitlab/jobs");
+      const response = await apiClient.get("/api/qmoi-gitlab/jobs");
       if (response.ok) {
         const data = await response.json();
         setJobs(data.jobs || []);
@@ -111,7 +114,7 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
 
   const fetchDeployments = async () => {
     try {
-      const response = await fetch("/api/qmoi-gitlab/deployments");
+      const response = await apiClient.get("/api/qmoi-gitlab/deployments");
       if (response.ok) {
         const data = await response.json();
         setDeployments(data.deployments || []);
@@ -126,7 +129,7 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
 
   const checkErrors = async () => {
     try {
-      const response = await fetch("/api/qmoi-gitlab/errors");
+      const response = await apiClient.get("/api/qmoi-gitlab/errors");
       if (response.ok) {
         const data = await response.json();
         setErrorCount(data.errorCount || 0);
@@ -140,7 +143,7 @@ export function QMOIGitLabClone({ className }: QMOIGitLabCloneProps) {
   const triggerPipeline = async () => {
     try {
       setSyncStatus("syncing");
-      const response = await fetch("/api/qmoi-gitlab/trigger", {
+      const response = await apiClient.get("/api/qmoi-gitlab/trigger", {
         method: "POST",
       });
 

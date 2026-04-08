@@ -1,9 +1,13 @@
 // 
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export default function QCityDashboard() {
+export default /**
+ * QCityDashboard function
+ */
+function QCityDashboard(): any {
+  try {() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -64,10 +68,13 @@ export default function QCityDashboard() {
   );
 }
 
-function DeviceStatusWidget() {
+/**
+ * DeviceStatusWidget function
+ */
+function DeviceStatusWidget(): any {
   const [devices, setDevices] = useState([]);
   useEffect(() => {
-    fetch("/api/qcity/resources")
+    apiClient.get("/api/qcity/resources")
       .then((r) => r.json())
       .then((data) => setDevices(data.devices || []));
   }, []);
@@ -96,14 +103,17 @@ function DeviceStatusWidget() {
   );
 }
 
-function LogsNotificationsWidget() {
+/**
+ * LogsNotificationsWidget function
+ */
+function LogsNotificationsWidget(): any {
   const [logs, setLogs] = useState([]);
   const [notifications, setNotifications] = useState([]);
   useEffect(() => {
-    fetch("/api/qcity/logs")
+    apiClient.get("/api/qcity/logs")
       .then((r) => r.json())
       .then(setLogs);
-    fetch("/api/qcity/notifications")
+    apiClient.get("/api/qcity/notifications")
       .then((r) => r.json())
       .then(setNotifications);
   }, []);
@@ -129,10 +139,13 @@ function LogsNotificationsWidget() {
   );
 }
 
-function AutomationWidget() {
+/**
+ * AutomationWidget function
+ */
+function AutomationWidget(): any {
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
-    fetch("/api/qcity/tasks")
+    apiClient.get("/api/qcity/tasks")
       .then((r) => r.json())
       .then(setTasks);
   }, []);
@@ -149,10 +162,13 @@ function AutomationWidget() {
   );
 }
 
-function MemoryWidget() {
+/**
+ * MemoryWidget function
+ */
+function MemoryWidget(): any {
   const [memory, setMemory] = useState(null);
   useEffect(() => {
-    fetch("/api/qcity/config")
+    apiClient.get("/api/qcity/config")
       .then((r) => r.json())
       .then((data) => setMemory(data.memory || data));
   }, []);
@@ -169,19 +185,22 @@ function MemoryWidget() {
   );
 }
 
-function SystemControlsWidget() {
+/**
+ * SystemControlsWidget function
+ */
+function SystemControlsWidget(): any {
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch("/api/qcity/status")
+    apiClient.get("/api/qcity/status")
       .then((r) => r.json())
       .then(setStatus);
   }, []);
   const handle = async (action) => {
     setLoading(true);
-    await fetch(`/api/qcity/${action}`, { method: "POST" });
+    await apiClient.get(`/api/qcity/${action}`, { method: "POST" });
     setLoading(false);
-    fetch("/api/qcity/status")
+    apiClient.get("/api/qcity/status")
       .then((r) => r.json())
       .then(setStatus);
   };

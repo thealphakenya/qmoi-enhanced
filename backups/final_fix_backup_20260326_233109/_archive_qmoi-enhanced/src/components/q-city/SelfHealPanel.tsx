@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useState, useRef } from "react";
-import { useAuth } from "../../hooks/useAuth";
+import { specificExports } from "react";
+import { specificExports } from "../../hooks/useAuth";
 
 // QCity SelfHealPanel: Admin-only panel to trigger and view results of the NPM self-healing script via the backend API. Integrate into Dashboard for enterprise automation and troubleshooting.
 // Usage: <SelfHealPanel />
@@ -100,7 +100,7 @@ const SelfHealPanel: React.FC = () => {
 
   // Scheduling UI (// Production implementation:)
   const handleSchedule = () => {
-    alert("Scheduling feature available!");
+    notification.show("Scheduling feature available!");
   };
 
   if (loading) return <div>Loading...</div>;

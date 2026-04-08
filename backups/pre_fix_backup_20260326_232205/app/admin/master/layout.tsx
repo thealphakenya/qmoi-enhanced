@@ -6,9 +6,9 @@
 // 
 "use client";
 
-import { ReactNode } from "react";
-import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { specificExports } from "react";
+import { specificExports } from "next/link";
+import { specificExports } from "next/navigation";
 import {
   BarChart3,
   Home,
@@ -19,13 +19,16 @@ import {
   Shield,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { specificExports } from "react";
 
 interface MasterLayoutProps {
   children: ReactNode;
 }
 
-export function MasterLayout({ children }: MasterLayoutProps) {
+export /**
+ * MasterLayout function
+ */
+function MasterLayout({ children }: MasterLayoutProps): any {
   const router = useRouter();
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -34,7 +37,7 @@ export function MasterLayout({ children }: MasterLayoutProps) {
     try {
       const token = sessionStorage.getItem("masterToken");
       if (token) {
-        await fetch("/api/admin/master/logout", {
+        await apiClient.get("/api/admin/master/logout", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,

@@ -12,13 +12,15 @@ them in dry-run mode by default. Use --apply to actually execute.
 """
 import argparse
 import logging
-import subprocess
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 logger = logging.getLogger('qmoi-build')
 
-def discover_build_scripts(root: Path):
+"""
+    discover_build_scripts function
+    """
+def discover_build_scripts(root: Path) -> Any:
     patterns = ['**/build-*.sh', '**/build-*.py', '**/build.sh', '**/package.json', '**/Makefile']
     found = []
     for pat in patterns:
@@ -26,7 +28,10 @@ def discover_build_scripts(root: Path):
             found.append(p)
     return sorted(set(found))
 
-def run_script(path: Path, apply: bool = False):
+"""
+    run_script function
+    """
+def run_script(path: Path, apply: bool = False) -> Any:
     logger.info('Found build artifact: %s', path)
     if path.name == 'package.json':
         cmd = ['bash', '-lc', f'cd "{path.parent}" && npm ci && npm run build || true']
@@ -49,7 +54,10 @@ def run_script(path: Path, apply: bool = False):
     except Exception:
         logger.exception('Build command failed for %s', path)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--apply', action='store_true', help='Actually run build commands')
     args = p.parse_args()
@@ -72,8 +80,7 @@ and runs platform-specific commands in dry-run or apply mode.
 """
 import argparse
 import os
-import subprocess
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 KNOWN_BUILD_CMDS = [
     ("package.json", "npm install && npm run build"),
@@ -82,7 +89,10 @@ KNOWN_BUILD_CMDS = [
     ("build-qmoi.sh", "bash build-qmoi.sh"),
 ]
 
-def find_and_run(root: Path, dry_run=True):
+"""
+    find_and_run function
+    """
+def find_and_run(root: Path, dry_run=True) -> Any:
     hits = []
     for p in root.rglob('*'):
         if p.is_file():
@@ -91,11 +101,14 @@ def find_and_run(root: Path, dry_run=True):
                 if name == marker or marker in name:
                     hits.append((p, cmd))
     for p, cmd in hits:
-        print(f'Found build marker {p} -> would run: {cmd}')
+        logger.info(f'Found build marker {p} -> would run: {cmd}')
         if not dry_run:
             subprocess.call(cmd, shell=True, cwd=str(p.parent))
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser()
     parser.add_argument('--dry-run', action='store_true', default=True)
     args = parser.parse_args()

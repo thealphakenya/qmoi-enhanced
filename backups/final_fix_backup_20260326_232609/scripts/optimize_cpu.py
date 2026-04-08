@@ -10,7 +10,10 @@ CPU scheduling optimization for Q-city application.
 import os
 import psutil
 
-def optimize_cpu():
+"""
+    optimize_cpu function
+    """
+def optimize_cpu() -> Any:
     """Optimize CPU usage by adjusting process priority and affinity."""
     p = psutil.Process(os.getpid())
     try:
@@ -20,16 +23,16 @@ def optimize_cpu():
         else:
             p.nice(-10)
     except Exception as e:
-        print(f"Could not set process priority: {e}")
+        logger.info(f"Could not set process priority: {e}")
 
     try:
         # Set CPU affinity to use all available CPUs
         cpu_count = psutil.cpu_count()
         p.cpu_affinity(list(range(cpu_count)))
     except Exception as e:
-        print(f"Could not set CPU affinity: {e}")
+        logger.info(f"Could not set CPU affinity: {e}")
 
-    print("CPU scheduling optimized.")
+    logger.info("CPU scheduling optimized.")
 
 if __name__ == '__main__':
     optimize_cpu() 

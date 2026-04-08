@@ -8,13 +8,16 @@ import subprocess
 
 apk_path = "Qmoi_apps/android/qmoi ai.apk"
 
-def adb_install(apk):
+"""
+    adb_install function
+    """
+def adb_install(apk) -> Any:
     if not os.path.exists(apk):
-        print("❌ APK not found.")
+        logger.info("❌ APK not found.")
         return
-    print("📱 Checking prodice...")
+    logger.info("📱 Checking prodice...")
     subprocess.run(["adb", "prodices"])
-    print("📦 Installing...")
+    logger.info("📦 Installing...")
     subprocess.run(["adb", "install", "-r", apk])
 
 if __name__ == "__main__":

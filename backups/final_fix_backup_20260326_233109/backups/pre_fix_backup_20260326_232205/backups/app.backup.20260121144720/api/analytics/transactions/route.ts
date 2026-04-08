@@ -1,13 +1,16 @@
 // // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db/prisma";
-import authService from "@/lib/auth/service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/auth/service";
 
 /**
  * GET /api/analytics/transactions
  * Get transaction analytics with filters
  */
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -94,13 +97,16 @@ export async function GET(_request: NextRequest) {
   }
 }
 
+/**
+ * groupTransactions function
+ */
 function groupTransactions(
   transactions: unknown[],
   groupBy: string,
-): Record<string, any[]> {
+): any: Record<string, any[]> {
   const grouped: Record<string, any[]> = {};
 
-  transactions.forEach((txn) => {
+  transactions.for (const item of((txn) => {
     const date = new Date(txn.createdAt);
     let key = "";
 
@@ -123,7 +129,10 @@ function groupTransactions(
   return grouped;
 }
 
-function calculateStats(transactions: unknown[]) {
+/**
+ * calculateStats function
+ */
+function calculateStats(transactions: unknown[]): any {
   const stats = {
     totalTransactions: transactions.length,
     totalAmount: 0,
@@ -133,7 +142,7 @@ function calculateStats(transactions: unknown[]) {
     averageAmount: 0,
   };
 
-  transactions.forEach((txn) => {
+  transactions.for (const item of((txn) => {
     stats.totalAmount += txn.amount;
 
     // Count by type

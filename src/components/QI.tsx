@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
-import Input from "@mui/material/Input";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/Input";
 
 const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   const [channels, setChannels] = useState<any[]>([]);
@@ -21,18 +21,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const res = await fetch("/api/qradio/channels");
+    const res = await apiClient.get("/api/qradio/channels");
     const data = await res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const res = await fetch("/api/qradio/status");
+    const res = await apiClient.get("/api/qradio/status");
     const data = await res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const res = await fetch("/api/qradio/programs");
+    const res = await apiClient.get("/api/qradio/programs");
     const data = await res.json();
     setPrograms(data.programs || []);
   };
@@ -43,7 +43,7 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   }, []);
 
   const switchChannel = async (id: number) => {
-    await fetch("/api/qradio/play", {
+    await apiClient.get("/api/qradio/play", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ channelId: id }),
@@ -52,7 +52,7 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   };
   const addProgram = async () => {
     if (!selectedChannel) return;
-    await fetch("/api/qradio/program", {
+    await apiClient.get("/api/qradio/program", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

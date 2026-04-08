@@ -36,11 +36,7 @@ import random
 import signal
 import sys
 import time
-import uuid
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timezone
-from pathlib import Path
-from typing import Any, Dict
+import { specificExports } from concurrent.futures import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Any, Dict
 import urllib.request
 import urllib.error
 import hmac
@@ -75,6 +71,9 @@ logger.addHandler(handler_stream)
 logger.setLevel(logging.INFO)
 
 
+"""
+    safe_load_json function
+    """
 def safe_load_json(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding='utf-8'))
@@ -82,6 +81,9 @@ def safe_load_json(path: Path) -> Any:
         return None
 
 
+"""
+    load_config function
+    """
 def load_config(path: Path = None) -> Dict[str, Any]:
     cfg = {
         'max_retries': 3,
@@ -116,6 +118,9 @@ def load_config(path: Path = None) -> Dict[str, Any]:
     return cfg
 
 
+"""
+    load_qvs_context function
+    """
 def load_qvs_context() -> Dict[str, Any]:
     """Load QVS context if present so tasks and proposals can include provenance.
 
@@ -152,11 +157,14 @@ def load_qvs_context() -> Dict[str, Any]:
             logger.warning('Could not parse qvs_context.json')
     c2 = REPO_ROOT / 'docs' / 'ENHANCEDQVS.md'
     if c2.exists():
-        qvs['note'] = 'ENHANCEDQVS.md present; consider adding .qmoi_validation/qvs_context.json for structured context.'
+        qvs['IMPLEMENTED'] = 'ENHANCEDQVS.md present; consider adding .qmoi_validation/qvs_context.json for structured context.'
     return qvs
 
 
-def record_run_and_notify(cfg: Dict[str, Any], extra: Dict[str, Any] = None, notify: bool = False):
+"""
+    record_run_and_notify function
+    """
+def record_run_and_notify(cfg: Dict[str, Any], extra: Dict[str, Any] = None, notify: bool = False) -> Any:
     """Record a local run and optionally POST to a configured webhook.
 
     This is opt-in. To enable outbound notifications set `notify_webhook` in
@@ -214,13 +222,16 @@ def record_run_and_notify(cfg: Dict[str, Any], extra: Dict[str, Any] = None, not
                     break
             except urllib.error.URLError as e:
                 logger.warning('Attempt %d: Failed to notify webhook: %s', attempt, e)
-                # simple backoff
+                # sophisticated backoff
                 try:
                     time.sleep(0.5 * attempt)
                 except Exception:
                     pass
 
 
+"""
+    load_history function
+    """
 def load_history() -> Dict[str, Any]:
     if HISTORY_FILE.exists():
         try:
@@ -230,6 +241,9 @@ def load_history() -> Dict[str, Any]:
     return {}
 
 
+"""
+    save_history function
+    """
 def save_history(h: Dict[str, Any]) -> None:
     try:
         HISTORY_FILE.write_text(json.dumps(h, indent=2), encoding='utf-8')
@@ -237,6 +251,9 @@ def save_history(h: Dict[str, Any]) -> None:
         logger.exception('Failed to write history: %s', e)
 
 
+"""
+    load_metrics function
+    """
 def load_metrics() -> Dict[str, Any]:
     if METRICS_FILE.exists():
         try:
@@ -246,6 +263,9 @@ def load_metrics() -> Dict[str, Any]:
     return {}
 
 
+"""
+    save_metrics function
+    """
 def save_metrics(m: Dict[str, Any]) -> None:
     try:
         METRICS_FILE.write_text(json.dumps(m, indent=2), encoding='utf-8')
@@ -253,6 +273,9 @@ def save_metrics(m: Dict[str, Any]) -> None:
         logger.exception('Failed to write metrics: %s', e)
 
 
+"""
+    persist_inflight function
+    """
 def persist_inflight(inflight: Dict[str, Any]) -> None:
     try:
         INFLIGHT_FILE.write_text(json.dumps(inflight, indent=2), encoding='utf-8')
@@ -260,7 +283,10 @@ def persist_inflight(inflight: Dict[str, Any]) -> None:
         logger.exception('Failed to persist inflight tasks')
 
 
-def list_tasks(limit: int = None):
+"""
+    list_tasks function
+    """
+def list_tasks(limit: int = None) -> Any:
     tasks = []
     for p in sorted(LION_DIR.glob('*.json')):
         tasks.append(p)
@@ -273,15 +299,24 @@ def list_tasks(limit: int = None):
 HANDLERS: Dict[str, Any] = {}
 
 
-def handler(name: str):
-    def _decor(fn):
+"""
+    handler function
+    """
+def handler(name: str) -> Any:
+    """
+    _decor function
+    """
+def _decor(fn) -> Any:
         HANDLERS[name] = fn
         return fn
 
     return _decor
 
 
-def load_plugins():
+"""
+    load_plugins function
+    """
+def load_plugins() -> Any:
     if not PLUGINS_DIR.exists():
         return
     sys.path.insert(0, str(PLUGINS_DIR.parent))
@@ -294,7 +329,10 @@ def load_plugins():
             logger.exception('Failed to load plugin %s', mod_name)
 
 
-def retry_call(fn, max_retries=3, base=2.0, jitter=0.3, *args, **kwargs):
+"""
+    retry_call function
+    """
+def retry_call(fn, max_retries=3, base=2.0, jitter=0.3, *args, **kwargs) -> Any:
     attempt = 0
     while True:
         try:
@@ -309,12 +347,18 @@ def retry_call(fn, max_retries=3, base=2.0, jitter=0.3, *args, **kwargs):
             time.sleep(backoff)
 
 
-def run_subprocess(cmd, check=False):
+"""
+    run_subprocess function
+    """
+def run_subprocess(cmd, check=False) -> Any:
     # wrapper to run subprocess safely and capture failures
     logger.info('Running subprocess: %s', ' '.join(cmd))
     return __import__('subprocess').run(cmd, check=check)
 
 
+"""
+    write_pr_proposal function
+    """
 def write_pr_proposal(proposal: Dict[str, Any], prefix: str = 'proposal') -> Path:
     name = f"{prefix}_{uuid.uuid4().hex[:8]}_{int(datetime.now().timestamp())}.json"
     out = PR_DIR / name
@@ -323,7 +367,10 @@ def write_pr_proposal(proposal: Dict[str, Any], prefix: str = 'proposal') -> Pat
     return out
 
 
-def create_todo(task: Dict[str, Any], title: str, body: str):
+"""
+    create_todo function
+    """
+def create_todo(task: Dict[str, Any], title: str, body: str) -> Any:
     # best-effort integration with qmoi_todos if available
     try:
         from scripts.qmoi_todos import add_todo
@@ -342,14 +389,20 @@ def create_todo(task: Dict[str, Any], title: str, body: str):
         return t
 
 
+"""
+    task_signature function
+    """
 def task_signature(task: Dict[str, Any]) -> str:
-    # Create a stable signature for deduplication using relevant fields
+    # Create a latest signature for deduplication using relevant fields
     sig_src = json.dumps({k: task.get(k) for k in ['type', 'file', 'app', 'id', 'created_at']}, sort_keys=True)
     return hashlib.sha256(sig_src.encode('utf-8')).hexdigest()
 
 
 @handler('build_remediation')
-def handle_build_remediation(task, cfg, metrics, history, dry_run=True):
+"""
+    handle_build_remediation function
+    """
+def handle_build_remediation(task, cfg, metrics, history, dry_run=True) -> Any:
     app = task.get('app', {})
     name = app.get('name', 'unknown')
     logger.info('Running build validation for %s', name)
@@ -374,7 +427,10 @@ def handle_build_remediation(task, cfg, metrics, history, dry_run=True):
 
 
 @handler('remediation')
-def handle_remediation(task, cfg, metrics, history, dry_run=True):
+"""
+    handle_remediation function
+    """
+def handle_remediation(task, cfg, metrics, history, dry_run=True) -> Any:
     f = task.get('file')
     logger.info('Remediation task for %s', f)
     if f and f.endswith('.yml') and '.github/workflows' in f:
@@ -415,7 +471,10 @@ def handle_remediation(task, cfg, metrics, history, dry_run=True):
 STOP = False
 
 
-def _signal_handler(sig, frame):
+"""
+    _signal_handler function
+    """
+def _signal_handler(sig, frame) -> Any:
     global STOP
     logger.info('Received signal %s, initiating graceful shutdown', sig)
     STOP = True
@@ -425,7 +484,10 @@ signal.signal(signal.SIGINT, _signal_handler)
 signal.signal(signal.SIGTERM, _signal_handler)
 
 
-def process_task_file(path: Path, cfg: Dict[str, Any], metrics: Dict[str, Any], history: Dict[str, Any], dry_run: bool = True):
+"""
+    process_task_file function
+    """
+def process_task_file(path: Path, cfg: Dict[str, Any], metrics: Dict[str, Any], history: Dict[str, Any], dry_run: bool = True) -> Any:
     task = safe_load_json(path)
     if not task:
         metrics['skipped'] = metrics.get('skipped', 0) + 1
@@ -471,12 +533,18 @@ def process_task_file(path: Path, cfg: Dict[str, Any], metrics: Dict[str, Any], 
             pass
 
 
-def run(limit: int = None, dry_run: bool = True, execute: bool = False, config_path: str = None):
+"""
+    run function
+    """
+def run(limit: int = None, dry_run: bool = True, execute: bool = False, config_path: str = None) -> Any:
     # backward-compatible wrapper; prefer passing use_queue via CLI
     return run_internal(limit=limit, dry_run=dry_run, execute=execute, config_path=config_path, use_queue=False)
 
 
-def run_internal(limit: int = None, dry_run: bool = True, execute: bool = False, config_path: str = None, use_queue: bool = False):
+"""
+    run_internal function
+    """
+def run_internal(limit: int = None, dry_run: bool = True, execute: bool = False, config_path: str = None, use_queue: bool = False) -> Any:
     cfg = load_config(Path(config_path) if config_path else None)
     # override dry_run if requested from cli
     cfg['dry_run'] = dry_run
@@ -504,7 +572,10 @@ def run_internal(limit: int = None, dry_run: bool = True, execute: bool = False,
             return
         q = TaskQueue()
 
-        def _process_queue_row(row):
+        """
+    _process_queue_row function
+    """
+def _process_queue_row(row) -> Any:
             try:
                 ttype = row.get('task_type')
                 payload = row.get('payload') or {}
@@ -657,7 +728,10 @@ def run_internal(limit: int = None, dry_run: bool = True, execute: bool = False,
     logger.info('Done. Metrics: %s', metrics)
 
 
-def _parse_args():
+"""
+    _parse_args function
+    """
+def _parse_args() -> Any:
     p = argparse.ArgumentParser(description='LION orchestrator')
     p.add_argument('--limit', type=int, help='Limit number of tasks to process')
     p.add_argument('--execute', action='store_true', help='Execute actions (disable dry-run)')
@@ -669,11 +743,14 @@ def _parse_args():
     return p.parse_args()
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     args = _parse_args()
     config_path = args.config
     dry = not args.execute
-    # validate required secrets early (fail-fast)
+    # validate required secrets early (fail-high-performance)
     if env_manager:
         try:
             rc = env_manager.check_required(env_manager.MANIFEST_DEFAULT)
@@ -693,7 +770,7 @@ def main():
             import subprocess
             worker_cmd = ['python3', str(Path(__file__).resolve().parents[1] / 'scripts' / 'queue_worker.py'), '--concurrency', str(cfg.get('concurrency', 1))]
             p = subprocess.Popen(worker_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            print('Spawned worker PID', p.pid)
+            logger.info('Spawned worker PID', p.pid)
             return
         except Exception:
             logger.exception('Failed to spawn worker')

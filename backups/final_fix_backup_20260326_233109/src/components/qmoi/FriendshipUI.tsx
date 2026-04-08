@@ -7,8 +7,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useEffect, useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/use-toast";
 
 interface Friend {
   id: string;
@@ -38,7 +38,10 @@ interface FriendshipUIProps {
   onFriendSelect?: (friend: Friend) => void;
 }
 
-export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
+export /**
+ * FriendshipUI function
+ */
+function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps): any {
   const { toast } = useToast();
   const [friends, setFriends] = useState<Friend[]>([]);
   const [pendingRequests, setPendingRequests] = useState<Friend[]>([]);
@@ -62,7 +65,7 @@ export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
   const fetchFriends = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(
+      const response = await apiClient.get(
         `/api/qmoi/friendship?action=list&userId=${userId}`,
       );
       const data = await response.json();
@@ -79,7 +82,7 @@ export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
 
   const fetchPendingRequests = async () => {
     try {
-      const response = await fetch(
+      const response = await apiClient.get(
         `/api/qmoi/friendship?action=pending&userId=${userId}`,
       );
       const data = await response.json();
@@ -94,7 +97,7 @@ export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch(
+      const response = await apiClient.get(
         `/api/qmoi/friendship?action=stats&userId=${userId}`,
       );
       const data = await response.json();
@@ -120,7 +123,7 @@ export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
     }
 
     try {
-      const response = await fetch("/api/qmoi/friendship", {
+      const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -150,7 +153,7 @@ export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
 
   const handleAcceptRequest = async (friendId: string) => {
     try {
-      const response = await fetch("/api/qmoi/friendship", {
+      const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -182,7 +185,7 @@ export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
     if (!confirm("Remove this friend?")) return;
 
     try {
-      const response = await fetch("/api/qmoi/friendship", {
+      const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -213,7 +216,7 @@ export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
     if (!confirm("Block this user?")) return;
 
     try {
-      const response = await fetch("/api/qmoi/friendship", {
+      const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -249,7 +252,7 @@ export function FriendshipUI({ userId, onFriendSelect }: FriendshipUIProps) {
         </h2>
       </div>
 
-      {/* Quick Stats */}
+      {/* optimized Stats */}
       {stats && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <div className="p-3 bg-blue-50 dark:bg-blue-900 rounded-lg">

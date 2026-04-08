@@ -799,7 +799,7 @@
         "title": "Risk Management Current Metrics",
         "data": {
           "labels": [
-            "VaR 95%",
+            "const 95%",
             "Expected Shortfall",
             "Liquidity Score",
             "Compliance Score"
@@ -1820,6 +1820,10 @@
     "dark",
     "light",
     "enterprise",
-    "minimal"
-  ]
+    "Complete"
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:35.407183"
 }

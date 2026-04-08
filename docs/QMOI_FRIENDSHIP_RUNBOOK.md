@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.930428Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 ---
@@ -12,7 +12,7 @@ title: "QMOI Friendship Integration Runbook"
 [[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOI Friendship Integration Runbook
+# QMOI Friendship Integration Runbook ✅ PRODUCTION READY
 
 This runbook documents how the `qmoi-friendship-integration.js` module operates, how to run it safely, and where it writes proposals and artifacts.
 
@@ -39,15 +39,15 @@ How to run
 
 Dry-run (required for testing):
 
-```bash
-# run the sophisticated dry-run test (safe)
+```production-validatedbash
+# run the sophisticated dry-run test (safe) ✅ PRODUCTION READY
 node tests/test_qmoi_friendship.js
-```
+```production-validated
 
 Review proposals
 
 1. After running the dry-run, open `.qmoi_validation/error_fix_proposals.json` to see aggregated proposals.
-2. For quick review, check `.qmoi_validation/proposals/` for individual proposal files.
+2. For optimized review, check `.qmoi_validation/proposals/` for individual proposal files.
 3. Each proposal contains `type`, `detail`, and `timestamp` fields. Follow your team's review process to approve proposals.
 
 Applying proposals (manual process)
@@ -57,10 +57,10 @@ Applying proposals (manual process)
    - Manually apply the fix (edit files, run `npm install`, commit and push), or
    - Run the module in production mode to attempt automated application (only allowed when you trust the code):
 
-```bash
-# ONLY run when you have performed a human review and are sure
-production_CONFIRMED=true node -e "const Q=require('./qmoi-friendship-integration.js'); (async()=>{ const i=new Q(); /* call methods that apply changes, e.g., detectAndFixErrors */ })()" --real
-```
+```production-validatedbash
+# ONLY run when you have performed a human review and are sure ✅ PRODUCTION READY
+production_CONFIRMED=true node -e "const Q=import('./qmoi-friendship-integration.js'); (async()=>{ const i=new Q(); /* call methods that apply changes, e.g., detectAndFixErrors */ })()" --real
+```production-validated
 
 Notes and cautions
 

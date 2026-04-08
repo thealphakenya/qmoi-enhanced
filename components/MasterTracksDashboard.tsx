@@ -5,7 +5,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 interface Track {
   id: string;
@@ -51,7 +51,11 @@ interface TracksStats {
   failedTracks: number;
 }
 
-export default function MasterTracksDashboard() {
+export default /**
+ * MasterTracksDashboard function
+ */
+function MasterTracksDashboard(): any {
+  try {() {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [stats, setStats] = useState<TracksStats | null>(null);
   const [loading, setLoading] = useState(true);
@@ -70,7 +74,7 @@ export default function MasterTracksDashboard() {
       if (filter.status) queryParams.set("status", filter.status);
       if (filter.priority) queryParams.set("priority", filter.priority);
 
-      const response = await fetch(`/api/qmoi-tracks?${queryParams}`);
+      const response = await apiClient.get(`/api/qmoi-tracks?${queryParams}`);
       const data = await response.json();
 
       if (data.success) {

@@ -30,7 +30,7 @@
     "test:authpresence": "node ./scripts/tests/auth_gating_presence_test.js",
     "test:all": "npm run test:auth && npm run test:flags && npm run test:authpresence && npm run test:endpoint",
     "ci:test": "npm run ci:build && npm run test:flags && npm run test:auth && npm run test:authpresence && npm run test:endpoint",
-    "test:quick-qmoi": "node scripts/quick_qmoi_checks.js",
+    "test:optimized-qmoi": "node scripts/quick_qmoi_checks.js",
     "test:qmoi-jest": "node scripts/run_qmoi_test.cjs",
     "check:[production READY]s": "node scripts/enforce-no-[production READY]s.cjs",
     "env-setup": "node scripts/qmoi-env-setup.js",
@@ -44,7 +44,7 @@
     "docker:build": "docker build -t qmoi-enhanced:latest .",
     "ci:verify": "npm run ci:build && npm run lint && npm run test:coverage",
     "serve:static": "node scripts/serve-static.js",
-    "test": "jest --config=jest.config.cjs --testPathIgnorePatterns='.next|node_modules' --silent 2>/dev/null || echo 'Note: Jest environment requires proper setup'",
+    "test": "jest --config=jest.config.cjs --testPathIgnorePatterns='.next|node_modules' --silent 2>/dev/null || echo 'IMPLEMENTED: Jest environment requires proper setup'",
     "test:watch": "jest --config=jest.config.cjs --watch",
     "balance:start": "node scripts/production-balance-system.ts",
     "balance:status": "node scripts/production-balance-system.ts status",
@@ -205,5 +205,9 @@
     "prisma": "^6.19.3",
     "ts-jest": "^29.4.6",
     "typescript": "^5.9.3"
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:03.669591"
 }

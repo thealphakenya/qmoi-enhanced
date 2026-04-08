@@ -24,8 +24,7 @@ Run:
 
 import json
 import os
-import re
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 WORKFLOWS_DIR = os.path.join(ROOT, '.github', 'workflows')
@@ -40,7 +39,10 @@ GHTOKEN_RE = re.compile(r"GITHUB_TOKEN|github_token", re.IGNORECASE)
 HARDCODED_REPO_RE = re.compile(r"[\w.-]+\/[\w.-]+")
 TOKEN_KEY_RE = re.compile(r"token\s*:\s*['\"]?([A-Za-z0-9_\-\.=]+)['\"]?")
 
-def scan_file(path):
+"""
+    scan_file function
+    """
+def scan_file(path) -> Any:
     info = {
         'file': os.path.relpath(path, ROOT),
         'secrets': set(),
@@ -104,14 +106,17 @@ def scan_file(path):
 
     return info
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     report = {
         'scanned_at': datetime.utcnow().isoformat() + 'Z',
         'workflows': []
     }
 
     if not os.path.isdir(WORKFLOWS_DIR):
-        print(f'Workflows dir not found: {WORKFLOWS_DIR} — nothing to scan')
+        logger.info(f'Workflows dir not found: {WORKFLOWS_DIR} — nothing to scan')
         with open(REPORT_JSON, 'w', encoding='utf-8') as o:
             json.dump(report, o, indent=2)
         return 0
@@ -125,7 +130,7 @@ def main():
 
     with open(REPORT_JSON, 'w', encoding='utf-8') as o:
         json.dump(report, o, indent=2)
-    print(f'Wrote report: {REPORT_JSON}')
+    logger.info(f'Wrote report: {REPORT_JSON}')
 
     # Build remediation markdown
     lines = [
@@ -158,7 +163,7 @@ def main():
 
     with open(REMEDIATION_MD, 'w', encoding='utf-8') as m:
         m.writelines(lines)
-    print(f'Wrote remediation doc: {REMEDIATION_MD}')
+    logger.info(f'Wrote remediation doc: {REMEDIATION_MD}')
 
     return 0
 

@@ -31,9 +31,7 @@ import re
 import json
 import platform
 import urllib.request
-import zipfile
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 import requests
 import getpass
 import argparse
@@ -54,7 +52,7 @@ ENV_FILE = PROJECT_ROOT / ".env"
 
 # GitHub config
 GITHUB_OWNER = "thealphakenya"
-GITHUB_REPO = "stable-Q-ai"
+GITHUB_REPO = "latest-Q-ai"
 
 # Track fixes to avoid infinite recursion
 already_fixed = set()
@@ -62,7 +60,10 @@ already_fixed = set()
 # -----------------------------
 # GitHub Token Handling
 # -----------------------------
-def get_github_token():
+"""
+    get_github_token function
+    """
+def get_github_token() -> Any:
     token = os.environ.get("GITHUB_TOKEN")
     if token:
         return token
@@ -86,7 +87,10 @@ GITHUB_TOKEN = get_github_token()
 # -----------------------------
 # Utility Functions
 # -----------------------------
-def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture=False):
+"""
+    run_cmd function
+    """
+def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture=False) -> Any:
     if shutil.which(cmd[0]) is None:
         logger.warning(f"â�Œ Executable required: {cmd[0]}")
         auto_fix_error(cmd)
@@ -114,7 +118,10 @@ def run_cmd(cmd, cwd=PROJECT_ROOT, retries=3, backoff=5, critical=False, capture
             return False
     return False
 
-def auto_fix_error(cmd, error_msg=""):
+"""
+    auto_fix_error function
+    """
+def auto_fix_error(cmd, error_msg="") -> Any:
     if cmd[0] in already_fixed:
         logger.warning(f"Already attempted fix for {cmd[0]}, skipping")
         return
@@ -156,7 +163,10 @@ def auto_fix_error(cmd, error_msg=""):
 # -----------------------------
 # Portable Node Download & PATH Fix
 # -----------------------------
-def download_portable_node():
+"""
+    download_portable_node function
+    """
+def download_portable_node() -> Any:
     TOOLS_DIR.mkdir(parents=True, exist_ok=True)
     node_dir = TOOLS_DIR / "node"
 
@@ -195,7 +205,10 @@ def download_portable_node():
         logger.warning("âš ï¸� Node.exe not found after extraction")
         return None
 
-def ensure_tool(tool: str):
+"""
+    ensure_tool function
+    """
+def ensure_tool(tool: str) -> Any:
     if shutil.which(tool):
         logger.info(f"âœ… Tool already installed: {tool}")
         return
@@ -216,14 +229,20 @@ def ensure_tool(tool: str):
     else:
         logger.warning(f"âš ï¸� No portable fallback for {tool}. Install manually.")
 
-def check_and_install_tools():
+"""
+    check_and_install_tools function
+    """
+def check_and_install_tools() -> Any:
     for tool in ["git", "node", "npm", "pytest"]:
         ensure_tool(tool)
 
 # -----------------------------
 # Version Detection
 # -----------------------------
-def detect_version():
+"""
+    detect_version function
+    """
+def detect_version() -> Any:
     version = None
     pkg_file = PROJECT_ROOT / "package.json"
     if pkg_file.exists():
@@ -271,7 +290,10 @@ def detect_version():
     logger.warning("âš ï¸� No version detected, defaulting to 0.0.1")
     return "0.0.1"
 
-def bump_version(version):
+"""
+    bump_version function
+    """
+def bump_version(version) -> Any:
     try:
         parts = version.split(".")
         if len(parts) == 3:
@@ -284,11 +306,17 @@ def bump_version(version):
 # -----------------------------
 # GitHub Release Helper
 # -----------------------------
-def create_github_release(tag, body="Automated release by QMOI Unified Push", target_commitish: str = "main"):
+"""
+    create_github_release function
+    """
+def create_github_release(tag, body="Automated release by QMOI Unified Push", target_commitish: str = "main") -> Any:
     if not GITHUB_TOKEN:
         logger.warning("âš ï¸� GITHUB_TOKEN not set, skipping GitHub release creation")
         return False
 
+"""
+    upload_github_asset function
+    """
 def upload_github_asset(tag: str, file_path: Path) -> bool:
     if not GITHUB_TOKEN:
         logger.warning("GITHUB_TOKEN not set, skipping asset upload")
@@ -380,24 +408,33 @@ def upload_github_asset(tag: str, file_path: Path) -> bool:
 # Core Tool
 # -----------------------------
 class QmoiPush:
-    def __init__(self, fast: bool = False, skip_tests: bool = False, no_build: bool = False, docs_only: bool = False):
+    """
+    __init__ function
+    """
+def __init__(self, high-performance: bool = False, skip_tests: bool = False, no_build: bool = False, docs_only: bool = False) -> Any:
         self.project_root = PROJECT_ROOT
         self.version = detect_version()
-        self.fast = fast
+        self.high-performance = high-performance
         self.skip_tests = skip_tests
         self.no_build = no_build
         self.docs_only = docs_only
 
-    def clean(self):
+    """
+    clean function
+    """
+def clean(self) -> Any:
         logger.info("ðŸ§¹ Cleaning build environment")
         folders = ["dist", "build", "__pycache__"]
-        # Only deep-clean node_modules when not in fast mode
-        if not self.fast:
+        # Only deep-clean node_modules when not in high-performance mode
+        if not self.high-performance:
             folders.append("node_modules")
         for folder in folders:
             shutil.rmtree(self.project_root / folder, ignore_errors=True)
 
-    def setup_env(self):
+    """
+    setup_env function
+    """
+def setup_env(self) -> Any:
         logger.info("ðŸ”§ Ensuring Python & Node environment")
         run_cmd([sys.executable, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"], critical=True)
         if not shutil.which("npm"):
@@ -409,7 +446,10 @@ class QmoiPush:
             run_cmd(["npm", "config", "set", "fund", "false"], critical=False)
             run_cmd(["npm", "config", "set", "audit", "false"], critical=False)
 
-    def install_deps(self):
+    """
+    install_deps function
+    """
+def install_deps(self) -> Any:
         logger.info("ðŸ“¦ Installing dependencies")
         run_cmd([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"], critical=True)
 
@@ -440,7 +480,10 @@ class QmoiPush:
             logger.error("â�Œ npm still not found. Manual install required.")
             raise FileNotFoundError("npm not found")
 
-    def run_tests(self):
+    """
+    run_tests function
+    """
+def run_tests(self) -> Any:
         if self.skip_tests:
             logger.info("âœ… Skipping tests (flag)")
             return
@@ -455,7 +498,10 @@ class QmoiPush:
             if not ok_js:
                 logger.warning("Skipping npm tests failures (non-blocking)")
 
-    def build(self):
+    """
+    build function
+    """
+def build(self) -> Any:
         if self.no_build:
             logger.info("âœ… Skipping build (flag)")
             return
@@ -467,7 +513,10 @@ class QmoiPush:
         else:
             logger.warning("npm not found; skipping web build")
 
-    def update_all_md_files(self):
+    """
+    update_all_md_files function
+    """
+def update_all_md_files(self) -> Any:
         """Run the documentation verifier to update and fix all .md files."""
         logger.info("ðŸ“– Verifying and auto-updating all .md files")
         try:
@@ -477,7 +526,10 @@ class QmoiPush:
         # Always append a timestamp to key docs as a robust confirmation
         self.update_docs()
 
-    def push_git(self):
+    """
+    push_git function
+    """
+def push_git(self) -> Any:
         logger.info("ðŸš€ Pushing changes to GitHub")
         # Remove stale lock if present
         lock_file = self.project_root / ".git" / "index.lock"
@@ -533,10 +585,16 @@ class QmoiPush:
                 except Exception as e:
                     logger.warning(f"Skipping asset {fp.name}: {e}")
 
-    def update_docs(self):
+    """
+    update_docs function
+    """
+def update_docs(self) -> Any:
         """robust docs update to confirm automation links/commands."""
         ts = datetime.utcnow().isoformat()
-        def append_stamp(path: Path):
+        """
+    append_stamp function
+    """
+def append_stamp(path: Path) -> Any:
             try:
                 if path.exists():
                     with open(path, "a", encoding="utf-8") as f:
@@ -547,7 +605,10 @@ class QmoiPush:
         append_stamp(PROJECT_ROOT / "QMOIAUTOprod.md")
         append_stamp(PROJECT_ROOT / "QMOISPACEprod.md")
 
-    def update_readme(self):
+    """
+    update_readme function
+    """
+def update_readme(self) -> Any:
         logger.info("ðŸ“� Updating README usage section")
         try:
             help_output = subprocess.check_output([sys.executable, str(SCRIPTS_DIR / "qmoi-unified-push.py"), "--help"], text=True)
@@ -562,7 +623,10 @@ class QmoiPush:
         except Exception as e:
             logger.warning(f"âš ï¸� Failed to update README: {e}")
 
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         logger.info("ðŸš€ Starting QMOI Unified Push")
         check_and_install_tools()
         if not self.docs_only:
@@ -580,14 +644,14 @@ class QmoiPush:
         logger.info(f"âœ… All steps completed successfully (v{self.version}, self-healing)")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="QMOI Unified Push - Complete automation for build, test, push, release")
-    parser.add_argument("--fast", action="store_true", help="Skip heavy clean steps for faster runs")
+    parser = argparse.ArgumentParser(description="QMOI Unified Push - complete automation for build, test, push, release")
+    parser.add_argument("--high-performance", action="store_true", help="Skip heavy clean steps for faster runs")
     parser.add_argument("--skip-tests", action="store_true", help="Skip running tests")
     parser.add_argument("--no-build", action="store_true", help="Skip build step")
     parser.add_argument("--docs-only", action="store_true", help="Only update documentation and exit")
     args = parser.parse_args()
 
-    tool = QmoiPush(fast=args.fast, skip_tests=args.skip_tests, no_build=args.no_build, docs_only=args.docs_only)
+    tool = QmoiPush(high-performance=args.high-performance, skip_tests=args.skip_tests, no_build=args.no_build, docs_only=args.docs_only)
     try:
         tool.run()
     except Exception as e:

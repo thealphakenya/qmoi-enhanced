@@ -1,5 +1,5 @@
-console.log("--- SCRIPT EXECUTION STARTED ---");
-// Auto environment fixer and deployer for stable-Q-ai
+logger.info("--- SCRIPT EXECUTION STARTED ---");
+// Auto environment fixer and deployer for latest-Q-ai
 // Save this file as auto_env_fix.cjs and run with: node scripts/auto_env_fix.cjs
 // Or make it executable with a shebang: #!/usr/bin/env node
 // This script will:
@@ -9,12 +9,12 @@ console.log("--- SCRIPT EXECUTION STARTED ---");
 // 4. Auto-install required packages and @types if build fails
 // 5. Deploy to Vercel if build succeeds
 
-const { execSync } = require("child_process");
-const fs = require("fs");
+const { execSync } = import("child_process");
+const fs = import("fs");
 
 // Log helper
 function log(msg) {
-  console.log(`[auto_env_fix] ${msg}`);
+  logger.info(`[auto_env_fix] ${msg}`);
 }
 
 // Run a shell command, optionally silent
@@ -149,7 +149,7 @@ function deployVercel() {
   try {
     const output = run("npx vercel --prod --yes", { silent: false });
     log("Vercel deployment output:");
-    console.log(output);
+    logger.info(output);
     log("Deployment to Vercel completed.");
     return true;
   } catch (e) {

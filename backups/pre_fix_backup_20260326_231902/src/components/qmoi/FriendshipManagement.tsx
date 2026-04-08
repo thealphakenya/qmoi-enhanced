@@ -7,8 +7,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useEffect, useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/use-toast";
 
 interface Friend {
   id: string;
@@ -40,10 +40,13 @@ interface FriendshipManagementProps {
   onFriendSelect?: (friend: Friend) => void;
 }
 
-export function FriendshipManagement({
+export /**
+ * FriendshipManagement function
+ */
+function FriendshipManagement({
   userId,
   onFriendSelect,
-}: FriendshipManagementProps) {
+}: FriendshipManagementProps): any {
   const { toast } = useToast();
   const [friends, setFriends] = useState<Friend[]>([]);
   const [pendingRequests, setPendingRequests] = useState<Friend[]>([]);
@@ -71,7 +74,7 @@ export function FriendshipManagement({
   const fetchFriends = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(
+      const response = await apiClient.get(
         `/api/qmoi/friendship?action=list&userId=${userId}`,
       );
       const data = await response.json();
@@ -93,7 +96,7 @@ export function FriendshipManagement({
 
   const fetchStats = async () => {
     try {
-      const response = await fetch(
+      const response = await apiClient.get(
         `/api/qmoi/friendship?action=stats&userId=${userId}`,
       );
       const data = await response.json();
@@ -110,7 +113,7 @@ export function FriendshipManagement({
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/qmoi/friendship", {
+      const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -143,7 +146,7 @@ export function FriendshipManagement({
 
   const handleAcceptRequest = async (friendId: string) => {
     try {
-      const response = await fetch("/api/qmoi/friendship", {
+      const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -175,7 +178,7 @@ export function FriendshipManagement({
     if (!confirm("Remove this friend?")) return;
 
     try {
-      const response = await fetch("/api/qmoi/friendship", {
+      const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -206,7 +209,7 @@ export function FriendshipManagement({
 
   const handleBlockUser = async (friendId: string) => {
     try {
-      const response = await fetch("/api/qmoi/friendship", {
+      const response = await apiClient.get("/api/qmoi/friendship", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

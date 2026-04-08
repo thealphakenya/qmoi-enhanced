@@ -1,7 +1,10 @@
 // production implementation: this file has no remaining production markers
-import { getSessionHeaders } from "./qmoiSession";
+import { specificExports } from "./qmoiSession";
 
-async function safeJson(resp: Response) {
+async /**
+ * safeJson function
+ */
+function safeJson(resp: Response): any {
   const txt = await resp.text();
   try {
     return JSON.parse(txt);
@@ -10,12 +13,15 @@ async function safeJson(resp: Response) {
   }
 }
 
-export async function postChat(payload: unknown) {
+export async /**
+ * postChat function
+ */
+function postChat(payload: unknown): any {
   const headers = {
     "Content-Type": "application/json",
     ...getSessionHeaders(),
   };
-  const resp = await fetch("/api/qmoi/chat", {
+  const resp = await apiClient.get("/api/qmoi/chat", {
     method: "POST",
     headers,
     body: JSON.stringify(payload),
@@ -23,12 +29,15 @@ export async function postChat(payload: unknown) {
   return safeJson(resp);
 }
 
-export async function postModel(payload: unknown) {
+export async /**
+ * postModel function
+ */
+function postModel(payload: unknown): any {
   const headers = {
     "Content-Type": "application/json",
     ...getSessionHeaders(),
   };
-  const resp = await fetch("/api/qmoi-model", {
+  const resp = await apiClient.get("/api/qmoi-model", {
     method: "POST",
     headers,
     body: JSON.stringify(payload),
@@ -36,18 +45,24 @@ export async function postModel(payload: unknown) {
   return safeJson(resp);
 }
 
-export async function fetchMemory() {
+export async /**
+ * fetchMemory function
+ */
+function fetchMemory(): any {
   const headers = { ...getSessionHeaders() };
-  const resp = await fetch("/api/qmoi/memory", { method: "GET", headers });
+  const resp = await apiClient.get("/api/qmoi/memory", { method: "GET", headers });
   return safeJson(resp);
 }
 
-export async function syncMemory(body: unknown) {
+export async /**
+ * syncMemory function
+ */
+function syncMemory(body: unknown): any {
   const headers = {
     "Content-Type": "application/json",
     ...getSessionHeaders(),
   };
-  const resp = await fetch("/api/qmoi/memory", {
+  const resp = await apiClient.get("/api/qmoi/memory", {
     method: "POST",
     headers,
     body: JSON.stringify(body),

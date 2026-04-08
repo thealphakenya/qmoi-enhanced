@@ -6,11 +6,11 @@
 // 
 #!/usr/bin/env node
 
-import { watch } from "fs";
-import { spawn } from "child_process";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
-import { writeFileSync, existsSync, mkdirSync } from "fs";
+import { specificExports } from "fs";
+import { specificExports } from "child_process";
+import { specificExports } from "path";
+import { specificExports } from "url";
+import { specificExports } from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -43,7 +43,7 @@ class LintWatcher {
   log(message, type = "info") {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] [WATCHER-${type.toUpperCase()}] ${message}`;
-    console.log(logMessage);
+    logger.info(logMessage);
 
     const logFile = join(this.logsDir, "lint-watcher.log");
     writeFileSync(logFile, logMessage + "\n", { flag: "a" });
@@ -135,12 +135,12 @@ class LintWatcher {
 
 // Handle graceful shutdown
 process.on("SIGINT", () => {
-  console.log("\n🛑 Received SIGINT, shutting down gracefully...");
+  logger.info("\n🛑 Received SIGINT, shutting down gracefully...");
   process.exit(0);
 });
 
 process.on("SIGTERM", () => {
-  console.log("\n🛑 Received SIGTERM, shutting down gracefully...");
+  logger.info("\n🛑 Received SIGTERM, shutting down gracefully...");
   process.exit(0);
 });
 

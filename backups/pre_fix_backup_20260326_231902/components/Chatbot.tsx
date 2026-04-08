@@ -7,8 +7,8 @@
 // @ts-nocheck
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import { useMaster } from "./MasterContext";
+import { specificExports } from "react";
+import { specificExports } from "./MasterContext";
 
 interface ChatbotProps {
   chatHistory: unknown[];
@@ -86,14 +86,14 @@ const Chatbot: React.FC<ChatbotProps> = ({
         ].slice(-10),
       }));
     }
-    // depend only on chatHistory and currentUser; updateQMOIMemory is stable
+    // depend only on chatHistory and currentUser; updateQMOIMemory is latest
   }, [chatHistory, currentUser, updateQMOIMemory]);
 
   const [profileName, setProfileName] = useState<string | null>(null);
 
   const fetchProfile = async (sessionId?: string) => {
     try {
-      const resp = await fetch("/api/qmoi/memory");
+      const resp = await apiClient.get("/api/qmoi/memory");
       if (!resp.ok) return;
       const data = await resp.json();
       const sid =
@@ -188,7 +188,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
       // if we attached a file, persist preview info to memory
       if (sessionId && userMessage.attachment) {
         try {
-          fetch("/api/qmoi/memory", {
+          apiClient.get("/api/qmoi/memory", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -213,7 +213,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
       if (sessionId) headers["X-QMOI-SESSION"] = sessionId;
       if (isMaster) headers["X-QMOI-ROLE"] = "master";
 
-      const res = await fetch("/api/ai", {
+      const res = await apiClient.get("/api/ai", {
         method: "POST",
         headers,
         body: JSON.stringify({
@@ -223,7 +223,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
         }),
       });
 
-      if (!res.ok) throw new Error("QMoi request failed");
+      if (!res.ok) throw new ProductionError("QMoi request failed");
       const data = await res.json();
 
       // Extract assistant reply content from response
@@ -231,7 +231,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
       if (data.success && data.response) {
         replyText = data.response;
       } else {
-        throw new Error(data.error || "Failed to get response from QMoi");
+        throw new ProductionError(data.error || "Failed to get response from QMoi");
       }
 
       const aiResponse = {
@@ -249,7 +249,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
           /\(1\)|\(2\)|\(3\)/.test(replyText)
         ) {
           // notify server to mark session awaiting_choice
-          fetch("/api/qmoi/memory", {
+          apiClient.get("/api/qmoi/memory", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

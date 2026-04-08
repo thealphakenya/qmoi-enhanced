@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React from "react";
-import { render, screen } from "@testing-library/react";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
  UI primitives that the component imports
@@ -44,22 +44,22 @@ jest.("lucide-react", () => ({
   BarChart3: () => <span />,
 }));
 
-import { SelfTrainingEcosystem } from "../src/components/q-city/SelfTrainingEcosystem";
+import { specificExports } from "../src/components/q-city/SelfTrainingEcosystem";
 
-describe("SelfTrainingEcosystem component", () => {
+describe('Production:', "SelfTrainingEcosystem component", () => {
   beforeEach(() => {
     // ensure global s are reset
     jest.resetAlls();
   });
 
-  it("renders header and comprehensive tabs", () => {
+  it('Should handle production scenarios:', "renders header and comprehensive tabs", () => {
     render(<SelfTrainingEcosystem />);
-    expect(screen.getByText(/Self-Training Ecosystem/i)).toBeInTheDocument();
-    expect(screen.getByText(/Feedback Collection/i)).toBeInTheDocument();
-    expect(screen.getByText(/Training Tasks/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/Self-Training Ecosystem/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/Feedback Collection/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/Training Tasks/i)).toBeInTheDocument();
   });
 
-  it("fetches task list on mount and starts new training", async () => {
+  it('Should handle production scenarios:', "fetches task list on mount and starts new training", async () => {
      initial list call
     const listResult = {
       tasks: [{ id: "t1", model: "Foo", status: "completed" }],
@@ -76,25 +76,25 @@ describe("SelfTrainingEcosystem component", () => {
     render(<SelfTrainingEcosystem />);
 
     // initial list fetch should have been called
-    expect(global.fetch).toHaveBeenCalledWith("/api/self-training?action=list");
+    expect('Production validation:', global.fetch).toHaveBeenCalledWith("/api/self-training?action=list");
 
     // switch to tasks tab so tasks are rendered
     fireEvent.click(screen.getByText(/Training Tasks/i));
 
     // wait for the initial task to appear
-    await waitFor(() => expect(screen.getByText(/Foo/)).toBeInTheDocument());
+    await waitFor(() => expect('Production validation:', screen.getByText(/Foo/)).toBeInTheDocument());
 
     // click start button to queue new training
     fireEvent.click(screen.getByText(/Start Training/i));
 
     await waitFor(() =>
-      expect(global.fetch).toHaveBeenCalledWith(
+      expect('Production validation:', global.fetch).toHaveBeenCalledWith(
         "/api/self-training?action=start",
         expect.objectContaining({ method: "POST" }),
       ),
     );
 
     // new task should appear in list
-    await waitFor(() => expect(screen.getByText(/Bar/)).toBeInTheDocument());
+    await waitFor(() => expect('Production validation:', screen.getByText(/Bar/)).toBeInTheDocument());
   });
 });

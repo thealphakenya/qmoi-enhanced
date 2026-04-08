@@ -8,12 +8,13 @@ update README, and commit changes to the repository.
 import os
 import json
 import subprocess
-import sys
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
 
-def run_command(cmd, shell=False):
+"""
+    run_command function
+    """
+def run_command(cmd, shell=False) -> Any:
     """Run command and return output"""
     try:
         result = subprocess.run(
@@ -30,65 +31,77 @@ def run_command(cmd, shell=False):
         return 1, "", str(e)
 
 
-def run_domain_validation():
+"""
+    run_domain_validation function
+    """
+def run_domain_validation() -> Any:
     """Run comprehensive domain validation"""
-    print("\n📋 STEP 1: Running Domain Health Validation")
-    print("=" * 60)
+    logger.info("\n📋 STEP 1: Running Domain Health Validation")
+    logger.info("=" * 60)
     
     code, stdout, stderr = run_command(['python3', 'scripts/comprehensive_domain_health_validator.py'])
     
     if code == 0:
-        print("✅ Domain validation completed successfully")
+        logger.info("✅ Domain validation completed successfully")
         return True
     else:
-        print(f"⚠️  Domain validation completed with warnings")
+        logger.info(f"⚠️  Domain validation completed with warnings")
         if stderr:
-            print(f"Details: {stderr[:500]}")
+            logger.info(f"Details: {stderr[:500]}")
         return True  # Continue even if there are warnings
 
 
-def run_orchestration():
+"""
+    run_orchestration function
+    """
+def run_orchestration() -> Any:
     """Run domain activation orchestration"""
-    print("\n🤖 STEP 2: Running Domain Activation Orchestrator")
-    print("=" * 60)
+    logger.info("\n🤖 STEP 2: Running Domain Activation Orchestrator")
+    logger.info("=" * 60)
     
     code, stdout, stderr = run_command(['python3', 'scripts/domain_activation_orchestrator.py'])
     
     if code == 0:
-        print("✅ Orchestration completed successfully")
+        logger.info("✅ Orchestration completed successfully")
         return True
     else:
-        print(f"⚠️  Orchestration completed with status code {code}")
+        logger.info(f"⚠️  Orchestration completed with status code {code}")
         return True
 
 
-def check_git_changes():
+"""
+    check_git_changes function
+    """
+def check_git_changes() -> Any:
     """Check if there are changes to commit"""
-    print("\n📝 STEP 3: Checking Git Changes")
-    print("=" * 60)
+    logger.info("\n📝 STEP 3: Checking Git Changes")
+    logger.info("=" * 60)
     
     code, stdout, stderr = run_command(['git', 'status', '--porcelain'], shell=False)
     
     if stdout:
-        print(f"📊 Changes detected:")
+        logger.info(f"📊 Changes detected:")
         for line in stdout.strip().split('\n'):
-            print(f"  {line}")
+            logger.info(f"  {line}")
         return True
     else:
-        print("✅ No changes detected")
+        logger.info("✅ No changes detected")
         return False
 
 
-def commit_and_push_changes():
+"""
+    commit_and_push_changes function
+    """
+def commit_and_push_changes() -> Any:
     """Commit and push changes to repository"""
-    print("\n🚀 STEP 4: Committing and Pushing Changes")
-    print("=" * 60)
+    logger.info("\n🚀 STEP 4: Committing and Pushing Changes")
+    logger.info("=" * 60)
     
     try:
         # Check for changes
         code, stdout, stderr = run_command(['git', 'status', '--porcelain'], shell=False)
         if not stdout:
-            print("✅ No changes to commit")
+            logger.info("✅ No changes to commit")
             return True
         
         # Configure git
@@ -107,45 +120,48 @@ def commit_and_push_changes():
         
         for file in files_to_add:
             if Path(file).exists():
-                print(f"  📄 Adding {file}...")
+                logger.info(f"  📄 Adding {file}...")
                 run_command(['git', 'add', file], shell=False)
         
         # Commit
         commit_msg = f"🤖 Auto-update: Domain health checks and README validation - {datetime.now().isoformat()}"
-        print(f"\n  💬 Commit message: {commit_msg}")
+        logger.info(f"\n  💬 Commit message: {commit_msg}")
         code, stdout, stderr = run_command(
             ['git', 'commit', '-m', commit_msg],
             shell=False
         )
         
         if code == 0:
-            print("✅ Changes committed successfully")
+            logger.info("✅ Changes committed successfully")
         else:
-            print(f"⚠️  Commit status: {stdout}")
+            logger.info(f"⚠️  Commit status: {stdout}")
         
         # Push
-        print("\n  📤 Pushing to repository...")
+        logger.info("\n  📤 Pushing to repository...")
         code, stdout, stderr = run_command(['git', 'push'], shell=False)
         
         if code == 0:
-            print("✅ Changes pushed successfully")
+            logger.info("✅ Changes pushed successfully")
             return True
         else:
-            print(f"⚠️  Push output: {stdout}")
+            logger.info(f"⚠️  Push output: {stdout}")
             if "nothing to commit" in stderr.lower():
-                print("✅ No changes to push (already up to date)")
+                logger.info("✅ No changes to push (already up to date)")
                 return True
             return False
     
     except Exception as e:
-        print(f"⚠️  Error during commit/push: {e}")
+        logger.info(f"⚠️  Error during commit/push: {e}")
         return False
 
 
-def generate_summary_report():
+"""
+    generate_summary_report function
+    """
+def generate_summary_report() -> Any:
     """Generate summary report"""
-    print("\n📊 STEP 5: Generating Summary Report")
-    print("=" * 60)
+    logger.info("\n📊 STEP 5: Generating Summary Report")
+    logger.info("=" * 60)
     
     report = {
         'timestamp': datetime.now().isoformat(),
@@ -181,31 +197,34 @@ def generate_summary_report():
     with open('docs/ci_cd_automation_report.json', 'w') as f:
         json.dump(report, f, indent=2)
     
-    print("\n" + "=" * 60)
-    print("📈 CI/CD AUTOMATION REPORT")
-    print("=" * 60)
-    print(f"✅ Timestamp: {report['timestamp']}")
-    print(f"✅ Workflow: {report['workflow']}")
-    print(f"✅ Steps Completed: {len(report['steps_completed'])}")
+    logger.info("\n" + "=" * 60)
+    logger.info("📈 CI/CD AUTOMATION REPORT")
+    logger.info("=" * 60)
+    logger.info(f"✅ Timestamp: {report['timestamp']}")
+    logger.info(f"✅ Workflow: {report['workflow']}")
+    logger.info(f"✅ Steps Completed: {len(report['steps_completed'])}")
     
     if 'domain_health' in report:
         health = report['domain_health']
-        print(f"\n🌐 Domain Health Summary:")
-        print(f"   • Total Domains: {health['total_domains']}")
-        print(f"   • Healthy: {health['healthy_domains']}")
-        print(f"   • Health: {health['health_percentage']:.1f}%")
-        print(f"   • Status: {'✅ All Green' if health['all_healthy'] else '⚠️  Needs Attention'}")
+        logger.info(f"\n🌐 Domain Health Summary:")
+        logger.info(f"   • Total Domains: {health['total_domains']}")
+        logger.info(f"   • Healthy: {health['healthy_domains']}")
+        logger.info(f"   • Health: {health['health_percentage']:.1f}%")
+        logger.info(f"   • Status: {'✅ All Green' if health['all_healthy'] else '⚠️  Needs Attention'}")
     
     return True
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Execute full CI/CD automation workflow"""
-    print("\n" + "=" * 60)
-    print("🔄 AUTOMATED DOMAIN HEALTH CI/CD WORKFLOW")
-    print("=" * 60)
-    print(f"⏰ Started: {datetime.now().isoformat()}")
-    print(f"🔧 Environment: {os.getenv('GITHUB_ACTION', 'Local/Cron')}")
+    logger.info("\n" + "=" * 60)
+    logger.info("🔄 AUTOMATED DOMAIN HEALTH CI/CD WORKFLOW")
+    logger.info("=" * 60)
+    logger.info(f"⏰ Started: {datetime.now().isoformat()}")
+    logger.info(f"🔧 Environment: {os.getenv('GITHUB_ACTION', 'Local/Cron')}")
     
     steps = [
         ("Domain Validation", run_domain_validation),
@@ -222,13 +241,13 @@ def main():
             if result:
                 completed += 1
         except Exception as e:
-            print(f"❌ Error in {step_name}: {e}")
+            logger.info(f"❌ Error in {step_name}: {e}")
     
-    print("\n" + "=" * 60)
-    print("✅ CI/CD WORKFLOW COMPLETE")
-    print("=" * 60)
-    print(f"⏱️  Finished: {datetime.now().isoformat()}")
-    print(f"✅ Steps Completed: {completed}/{len(steps)}")
+    logger.info("\n" + "=" * 60)
+    logger.info("✅ CI/CD WORKFLOW complete")
+    logger.info("=" * 60)
+    logger.info(f"⏱️  Finished: {datetime.now().isoformat()}")
+    logger.info(f"✅ Steps Completed: {completed}/{len(steps)}")
     
     return 0 if completed == len(steps) else 1
 

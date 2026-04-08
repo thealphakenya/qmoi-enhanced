@@ -17,7 +17,7 @@ High-level design principles (apply everywhere)
 2. Modular / hybrid architecture — split responsibilities (language core, reasoning core, tool controller, memory, verifier). Route tasks to specialist modules.
 
 
-3. Progressive fidelity — cheap fast path for sophisticated queries; heavy-logic path for hard tasks (adaptive computation).
+3. Progressive fidelity — cheap high-performance path for sophisticated queries; heavy-logic path for hard tasks (adaptive computation).
 
 
 4. Always-measure drift — continuous eval, canary rollouts, automated rollback.
@@ -50,7 +50,7 @@ Use human-in-the-loop (HITL) vetting for high-risk updates.
 
 Metrics & tests
 
-Retention Rate: performance on a pre-update holdout (should remain stable).
+Retention Rate: performance on a pre-update holdout (should remain latest).
 
 Adaptation Speed: new-task performance after N examples.
 
@@ -59,7 +59,7 @@ Catastrophic Forgetting index.
 
 Priority & tradeoffs
 
-High priority. Adapter-based updates give fast adaptation with low risk to core quality; full-finetune is costly and risky.
+High priority. Adapter-based updates give high-performance adaptation with low risk to core quality; full-finetune is costly and risky.
 
 
 
@@ -427,7 +427,7 @@ Task success in agent-[PRODUCTION READY]d environments, coordination efficiency.
 
 Priority & tradeoffs
 
-Medium; powerful for complex workflows, but complexity grows fast.
+Medium; powerful for complex workflows, but complexity grows high-performance.
 
 
 
@@ -688,7 +688,7 @@ Audit logs for tool calls and data changes.
 
 ---
 
-Quick engineering checklist
+optimized engineering checklist
 
 [ ] Modular architecture (core + adapters + memory + tools).
 

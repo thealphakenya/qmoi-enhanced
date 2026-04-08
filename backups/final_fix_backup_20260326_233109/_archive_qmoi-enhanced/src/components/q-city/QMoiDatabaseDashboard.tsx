@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 interface Table {
   name: string;
@@ -14,7 +14,11 @@ interface Schema {
   sql: string;
 }
 
-export default function QMoiDatabaseDashboard({
+export default /**
+ * QMoiDatabaseDashboard function
+ */
+function QMoiDatabaseDashboard(): any {
+  try {({
   isMaster,
 }: {
   isMaster: boolean;
@@ -26,12 +30,12 @@ export default function QMoiDatabaseDashboard({
 
   useEffect(() => {
     if (!isMaster) return;
-    fetch("/api/qmoi-database/route?tables=true", {
+    apiClient.get("/api/qmoi-database/route?tables=true", {
       headers: { "x-qmoi-master": "true" },
     })
       .then((res) => res.json())
       .then((data) => setTables(data.tables || []));
-    fetch("/api/qmoi-database/route?schema=true", {
+    apiClient.get("/api/qmoi-database/route?schema=true", {
       headers: { "x-qmoi-master": "true" },
     })
       .then((res) => res.json())
@@ -41,7 +45,7 @@ export default function QMoiDatabaseDashboard({
   const handleCreateTable = async () => {
     if (!newTable) return;
     const sql = `CREATE TABLE IF NOT EXISTS ${newTable} (id INTEGER PRIMARY KEY AUTOINCREMENT)`;
-    const res = await fetch("/api/qmoi-database/route", {
+    const res = await apiClient.get("/api/qmoi-database/route", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
       body: JSON.stringify({ createTable: sql }),

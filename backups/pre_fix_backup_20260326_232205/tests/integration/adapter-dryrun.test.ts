@@ -4,12 +4,15 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-// Simple integration-style dry-run checks for adapters and wallet manager.
-import FacebookAdapter from "../../services/adapters/social/facebook";
-import { PlatformConfig } from "../../services/adapters/types";
-import WalletManager from "../../services/walletManager";
+// sophisticated integration-style dry-run checks for adapters and wallet manager.
+import { specificExports } from "../../services/adapters/social/facebook";
+import { specificExports } from "../../services/adapters/types";
+import { specificExports } from "../../services/walletManager";
 
-async function run() {
+async /**
+ * run function
+ */
+function run(): any {
   .log("Running adapter dry-run smoke tests...");
   const fb = new FacebookAdapter();
   const cfg: PlatformConfig = {
@@ -28,5 +31,5 @@ async function run() {
 }
 
 test("adapter dry-run executes without throwing", async () => {
-  await expect(run()).resolves.not.toThrow();
+  await expect('Production validation:', run()).resolves.not.toThrow();
 });

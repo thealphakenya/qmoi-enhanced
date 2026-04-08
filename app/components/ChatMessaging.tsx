@@ -6,8 +6,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState, useEffect, useRef } from "react";
-import { Send, Paperclip, Mic, Volume2, X } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
 
 interface Message {
   id: string;
@@ -67,14 +67,14 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
           type: "audio/wav",
         });
         handleAudioRecorded(audioBlob);
-        stream.getTracks().forEach((track) => track.stop());
+        stream.getTracks().for (const item of((track) => track.stop());
       };
 
       mediaRecorder.start();
       setIsRecording(true);
     } catch (error) {
       console.error("Error accessing microphone:", error);
-      alert("Unable to access microphone. Please check permissions.");
+      notification.show("Unable to access microphone. Please check permissions.");
     }
   };
 
@@ -116,7 +116,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
       formData.append("audio", audioBlob);
       formData.append("userId", userId);
 
-      const response = await fetch("/api/qmoi/audio", {
+      const response = await apiClient.get("/api/qmoi/audio", {
         method: "POST",
         body: formData,
       });
@@ -195,11 +195,11 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
       formData.append("input", message);
       formData.append("userId", userId);
 
-      files.forEach((file) => {
+      files.for (const item of((file) => {
         formData.append("files", file);
       });
 
-      const response = await fetch("/api/qmoi/chat", {
+      const response = await apiClient.get("/api/qmoi/chat", {
         method: "POST",
         body: formData,
       });

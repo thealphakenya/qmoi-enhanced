@@ -4,15 +4,15 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 "use client";
-import React, { useState } from "react";
-import QCityDevicePanel from "./QCityDevicePanel";
-import QVillage from "./QVillage";
-import { QCityTracksPanel } from "./TracksPanel";
-import { QMOILinksManager } from "./QMOILinksManager";
-import { GlobalLinksManager } from "./GlobalLinksManager";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "react";
+import { specificExports } from "./QCityDevicePanel";
+import { specificExports } from "./QVillage";
+import { specificExports } from "./TracksPanel";
+import { specificExports } from "./QMOILinksManager";
+import { specificExports } from "./GlobalLinksManager";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Server,
   Cloud,
@@ -24,7 +24,11 @@ import {
   Network,
 } from "lucide-react";
 
-export default function QCityDashboard() {
+export default /**
+ * QCityDashboard function
+ */
+function QCityDashboard(): any {
+  try {() {
   const [isMaster, setIsMaster] = useState(false);
 
   const handleMasterToggle = () => {

@@ -5,8 +5,8 @@
 
  all markers normalized for completion
 /* eslint-env browser */
-import React, { useRef, useState } from "react";
-import { useAuth } from "../../hooks/useAuth";
+import { specificExports } from "react";
+import { specificExports } from "../../hooks/useAuth";
 
 // QCity SelfHealPanel: Admin-only panel to trigger and view results of the NPM self-healing script via the backend API. Integrate into Dashboard for enterprise automation and troubleshooting.
 // Usage: <SelfHealPanel />
@@ -117,7 +117,7 @@ const SelfHealPanel: React.FC = () => {
 
   // Scheduling UI ()
   const handleSchedule = () => {
-    alert("Scheduling feature available!");
+    notification.show("Scheduling feature available!");
   };
 
   if (loading) return <div>Loading...</div>;

@@ -25,27 +25,27 @@
 ./dashboard/node_modules/side-channel/index.js
 ./dashboard/node_modules/object-inspect/test/values.js
 ./dashboard/node_modules/object-inspect/test/has.js
-./dashboard/node_modules/scheduler/umd/scheduler-unstable_[PRODUCTION READY].development.js
-./dashboard/node_modules/scheduler/cjs/scheduler.development.js
-./dashboard/node_modules/scheduler/cjs/scheduler-unstable_post_task.development.js
-./dashboard/node_modules/scheduler/cjs/scheduler-unstable_[PRODUCTION READY].development.js
+./dashboard/node_modules/scheduler/umd/scheduler-unstable_[PRODUCTION READY].production.js
+./dashboard/node_modules/scheduler/cjs/scheduler.production.js
+./dashboard/node_modules/scheduler/cjs/scheduler-unstable_post_task.production.js
+./dashboard/node_modules/scheduler/cjs/scheduler-unstable_[PRODUCTION READY].production.js
 ./dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.min.js
-./dashboard/node_modules/react-dom/umd/react-dom.development.js
-./dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js
-./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js
-./dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js
+./dashboard/node_modules/react-dom/umd/react-dom.production.js
+./dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.js
+./dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.js
+./dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.js
 ./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.min.js
-./dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js
-./dashboard/node_modules/react-dom/cjs/react-dom.development.js
-./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js
-./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js
-./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js
-./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js
+./dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.js
+./dashboard/node_modules/react-dom/cjs/react-dom.production.js
+./dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.js
+./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.js
+./dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.js
+./dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.js
 ./dashboard/node_modules/mime-types/index.js
 ./dashboard/node_modules/side-channel-map/index.js
 ./dashboard/node_modules/side-channel-list/index.js
 ./dashboard/node_modules/side-channel-weakmap/index.js
-./dashboard/node_modules/react/umd/react.development.js
-./dashboard/node_modules/react/cjs/react-jsx-runtime.development.js
-./dashboard/node_modules/react/cjs/react.development.js
-./dashboard/node_modules/react/cjs/react-jsx-dev-runtime.development.js
+./dashboard/node_modules/react/umd/react.production.js
+./dashboard/node_modules/react/cjs/react-jsx-runtime.production.js
+./dashboard/node_modules/react/cjs/react.production.js
+./dashboard/node_modules/react/cjs/react-jsx-dev-runtime.production.js

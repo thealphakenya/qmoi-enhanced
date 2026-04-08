@@ -130,5 +130,9 @@
       "last_verified": "2026-04-03T03:07:31.085415",
       "auto_remediation": "enabled"
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:28.728029"
 }

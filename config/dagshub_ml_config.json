@@ -3,5 +3,9 @@
   "gpu_enabled": true,
   "memory_optimized": true,
   "auto_scaling": true,
-  "model_versioning": true
+  "model_versioning": true,
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.757272"
 }

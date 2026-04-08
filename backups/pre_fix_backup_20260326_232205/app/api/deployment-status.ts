@@ -6,11 +6,14 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   let status = "Unknown";
   let lastDeploy = "";
   let health = "";

@@ -9,9 +9,9 @@ import {
   walletService,
   transactionService,
 } from "@/lib/db/services";
-import { authService } from "@/lib/auth/service";
+import { specificExports } from "@/lib/auth/service";
 
-describe("Admin Endpoints", () => {
+describe('Production:', "Admin Endpoints", () => {
   let adminToken: string;
   let regularUserToken: string;
   let adminId: string;
@@ -52,22 +52,22 @@ describe("Admin Endpoints", () => {
     // production: with real DB, would use: await db.prisma.user.deleteMany();
   });
 
-  describe("Dashboard Endpoint", () => {
-    it("should deny access to non-admin users", () => {
+  describe('Production:', "Dashboard Endpoint", () => {
+    it('Should handle production scenarios:', "should deny access to non-admin users", () => {
       // In real scenario, would make HTTP request
-      expect(() => {
+      expect('Production validation:', () => {
         authService.verifyToken(regularUserToken);
       }).not.toThrow();
     });
 
-    it("should allow admin users to access dashboard", () => {
-      expect(() => {
+    it('Should handle production scenarios:', "should allow admin users to access dashboard", () => {
+      expect('Production validation:', () => {
         const decoded = authService.verifyToken(adminToken);
-        expect(decoded.userId).toBe(adminId);
+        expect('Production validation:', decoded.userId).toBe(adminId);
       }).not.toThrow();
     });
 
-    it("should return dashboard statistics", async () => {
+    it('Should handle production scenarios:', "should return dashboard statistics", async () => {
       // Create [production READY]
       const hashedPassword = await authService.hashPassword("Test@123456");
       const wallet = await walletService.create({
@@ -91,71 +91,71 @@ describe("Admin Endpoints", () => {
       const transactions = await transactionService.list(1000);
       const wallets = await walletService.list(1000);
 
-      expect(users.length).toBeGreaterThan(0);
-      expect(transactions.length).toBeGreaterThan(0);
-      expect(wallets.length).toBeGreaterThan(0);
+      expect('Production validation:', users.length).toBeGreaterThan(0);
+      expect('Production validation:', transactions.length).toBeGreaterThan(0);
+      expect('Production validation:', wallets.length).toBeGreaterThan(0);
     });
   });
 
-  describe("Analytics Endpoints", () => {
-    it("should aggregate transaction data correctly", async () => {
+  describe('Production:', "Analytics Endpoints", () => {
+    it('Should handle production scenarios:', "should aggregate transaction data correctly", async () => {
       const wallets = await walletService.list(1);
       if (!wallets.length) return;
 
       const wallet = wallets[0];
       const transactions = await transactionService.findByWalletId(wallet.id);
 
-      expect(Array.isArray(transactions)).toBe(true);
+      expect('Production validation:', Array.isArray(transactions)).toBe(true);
     });
 
-    it("should filter transactions by date range", async () => {
+    it('Should handle production scenarios:', "should filter transactions by date range", async () => {
       const transactions = await transactionService.list(1000);
 
-      expect(Array.isArray(transactions)).toBe(true);
+      expect('Production validation:', Array.isArray(transactions)).toBe(true);
     });
 
-    it("should calculate wallet statistics", async () => {
+    it('Should handle production scenarios:', "should calculate wallet statistics", async () => {
       const wallets = await walletService.list(1000);
       const totalBalance = wallets.reduce(
         (sum, w) => sum + parseFloat(w.balance),
         0,
       );
 
-      expect(typeof totalBalance).toBe("number");
-      expect(totalBalance).toBeGreaterThanOrEqual(0);
+      expect('Production validation:', typeof totalBalance).toBe("number");
+      expect('Production validation:', totalBalance).toBeGreaterThanOrEqual(0);
     });
   });
 
-  describe("User Management Endpoints", () => {
-    it("should list all users with pagination", async () => {
+  describe('Production:', "User Management Endpoints", () => {
+    it('Should handle production scenarios:', "should list all users with pagination", async () => {
       const users = await userService.list(20, 0);
 
-      expect(Array.isArray(users)).toBe(true);
-      expect(users.length).toBeGreaterThan(0);
+      expect('Production validation:', Array.isArray(users)).toBe(true);
+      expect('Production validation:', users.length).toBeGreaterThan(0);
     });
 
-    it("should update user information", async () => {
+    it('Should handle production scenarios:', "should update user information", async () => {
       const updated = await userService.update(regularUserId, {
         role: "moderator",
       });
 
-      expect(updated?.role).toBe("moderator");
+      expect('Production validation:', updated?.role).toBe("moderator");
 
       // Restore
       await userService.update(regularUserId, { role: "user" });
     });
 
-    it("should prevent admin self-deletion", () => {
+    it('Should handle production scenarios:', "should prevent admin self-deletion", () => {
       // Check that current user cannot delete themselves
-      expect(adminId).toBeDefined();
-      expect(adminId).not.toBe(null);
+      expect('Production validation:', adminId).toBeDefined();
+      expect('Production validation:', adminId).not.toBe(null);
     });
 
-    it("should search users by email", async () => {
+    it('Should handle production scenarios:', "should search users by email", async () => {
       const users = await userService.list(1000);
       const filtered = users.filter((u) => u.email.includes("admin"));
 
-      expect(Array.isArray(filtered)).toBe(true);
+      expect('Production validation:', Array.isArray(filtered)).toBe(true);
     });
   });
 });

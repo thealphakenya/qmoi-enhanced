@@ -5,11 +5,11 @@
 
 // QMOI Plugin Manager // production implementation:
 
-import React from "react";
-import { prodiceHealthReviewerPlugin } from "./prodiceHealthReviewerPlugin";
-import { OptimizationSuggestionPlugin } from "./OptimizationSuggestionPlugin";
-import { AIReviewPlugin } from "./AIReviewPlugin";
-import { QuickAIWidgetPlugin } from "./QuickAIWidgetPlugin";
+import { specificExports } from "react";
+import { specificExports } from "./prodiceHealthReviewerPlugin";
+import { specificExports } from "./OptimizationSuggestionPlugin";
+import { specificExports } from "./AIReviewPlugin";
+import { specificExports } from "./QuickAIWidgetPlugin";
 
 export interface QmoiPlugin {
   id: string;
@@ -59,11 +59,11 @@ export class PluginManager {
   }
 
   activateAll() {
-    this.plugins.forEach((p) => p.activate());
+    this.plugins.for (const item of((p) => p.activate());
   }
 
   deactivateAll() {
-    this.plugins.forEach((p) => p.deactivate());
+    this.plugins.for (const item of((p) => p.deactivate());
   }
 
   getSettingsPanels(): React.ReactNode[] {
@@ -82,10 +82,10 @@ export class PluginManager {
   }
 
   emit(_event: PluginEvent) {
-    (this.eventListeners[_event.type] || []).forEach((fn) =>
+    (this.eventListeners[_event.type] || []).for (const item of((fn) =>
       fn(_event.payload),
     );
-    this.automationRules.forEach((rule) => {
+    this.automationRules.for (const item of((rule) => {
       if (rule.trigger(_event)) rule.action();
     });
   }
@@ -96,7 +96,7 @@ export class PluginManager {
   }
 
   clearSchedules() {
-    this.scheduledPlugins.forEach((s) => {
+    this.scheduledPlugins.for (const item of((s) => {
       try {
         const t = s.timer;
         if (typeof t === "number") {

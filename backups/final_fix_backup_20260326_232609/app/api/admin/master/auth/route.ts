@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextResponse } from "next/server";
-import crypto from "crypto";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "crypto";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/admin/master/auth");
 
@@ -14,7 +14,10 @@ const logger = getLogger("api/admin/master/auth");
  * Verifies master password and issues access token
  */
 
-export async function POST(request: Request) {
+export async /**
+ * POST function
+ */
+function POST(request: Request): any {
   try {
     const { password } = await request.json();
 

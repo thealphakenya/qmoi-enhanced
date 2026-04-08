@@ -5,8 +5,8 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { specificExports } from "next/server";
+import { specificExports } from "next/server";
 
 /**
  * WhatsApp Business API Integration
@@ -36,7 +36,10 @@ import type { NextRequest } from "next/server";
  * Integration Options:
  * - Option 1: WhatsApp Business Cloud API (required for scale)\n * - Option 2: Twilio WhatsApp Integration (Easier setup)\n * - Option 3: Custom On-Premises WhatsApp Server
  */
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Webhook verification endpoint for WhatsApp
     const mode = request.nextUrl.searchParams.get("hub.mode");
@@ -69,7 +72,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, message, recipientPhoneNumber } = body;

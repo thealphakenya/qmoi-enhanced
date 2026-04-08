@@ -3,13 +3,16 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import * as React from "react";
-import { useState, ChangeEvent, KeyboardEvent } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { specificExports } from "react";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Box";
+import { specificExports } from "@mui/material/TextField";
+import { specificExports } from "@mui/material/Button";
 
-export function Chatbot() {
+export /**
+ * Chatbot function
+ */
+function Chatbot(): any {
   const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState<string>("");
 

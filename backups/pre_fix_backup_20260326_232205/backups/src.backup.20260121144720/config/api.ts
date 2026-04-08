@@ -25,7 +25,10 @@ export interface ApiConfig {
 /**
  * Get the current environment (from NEXT_PUBLIC_ENV or default to 'production')
  */
-function getCurrentEnvironment(): Environment {
+/**
+ * getCurrentEnvironment function
+ */
+function getCurrentEnvironment(): any: Environment {
   if (typeof window !== "undefined") {
     // Browser environment
     const env = (globalThis as unknown).__ENV__ || process.env.NEXT_PUBLIC_ENV;
@@ -41,7 +44,7 @@ function getCurrentEnvironment(): Environment {
 const configMap: Record<Environment, ApiConfig> = {
   local: {
     environment: "local",
-    baseUrl: "http://localhost:8000",
+    baseUrl: "https://production.qmoi.ai:8000",
     endpoints: {
       media: "/api/media",
       verify: "/api/verify",
@@ -56,7 +59,7 @@ const configMap: Record<Environment, ApiConfig> = {
   },
   production: {
     environment: "production",
-    baseUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000",
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || "https://production.qmoi.ai:8000",
     endpoints: {
       media: "/api/media",
       verify: "/api/verify",
@@ -104,7 +107,10 @@ const configMap: Record<Environment, ApiConfig> = {
 /**
  * Get the API configuration for the current environment
  */
-export function getApiConfig(): ApiConfig {
+export /**
+ * getApiConfig function
+ */
+function getApiConfig(): any: ApiConfig {
   const env = getCurrentEnvironment();
   const config = configMap[env];
   return {
@@ -116,7 +122,10 @@ export function getApiConfig(): ApiConfig {
 /**
  * Build a full URL for an API endpoint
  */
-export function buildUrl(endpoint: string): string {
+export /**
+ * buildUrl function
+ */
+function buildUrl(endpoint: string): any: string {
   const config = getApiConfig();
   return `${config.baseUrl}${endpoint}`;
 }
@@ -124,7 +133,10 @@ export function buildUrl(endpoint: string): string {
 /**
  * Get a specific endpoint URL
  */
-export function getEndpoint(key: keyof ApiConfig["endpoints"]): string {
+export /**
+ * getEndpoint function
+ */
+function getEndpoint(key: keyof ApiConfig["endpoints"]): any: string {
   const config = getApiConfig();
   return buildUrl(config.endpoints[key]);
 }

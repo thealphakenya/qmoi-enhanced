@@ -14,15 +14,11 @@ Tests all functionality including sync, validation, UI settings, and metrics.
 import unittest
 import json
 import time
-import threading
-from datetime import datetime, timedelta
-from unittest.real import real, patch, Magicreal
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from unittest.real import { specificExports } from pathlib import Path
 import tempfile
 import shutil
 
-# Import the system under test
-from realtime_email_system import (
+# import { specificExports } from realtime_email_system import (
     RealtimeEmailSystemManager,
     EmailUISettings,
     EmailInstanceMetrics
@@ -31,7 +27,10 @@ from realtime_email_system import (
 class TestEmailUISettings(unittest.TestCase):
     """Test EmailUISettings dataclass"""
 
-    def test_default_initialization(self):
+    """
+    test_default_initialization function
+    """
+def test_default_initialization(self) -> Any:
         """Test default initialization of EmailUISettings"""
         settings = EmailUISettings()
         self.assertEqual(settings.theme, "dark")
@@ -43,7 +42,10 @@ class TestEmailUISettings(unittest.TestCase):
         self.assertIsInstance(settings.forwarding_rules, list)
         self.assertIsInstance(settings.notification_webhooks, list)
 
-    def test_custom_initialization(self):
+    """
+    test_custom_initialization function
+    """
+def test_custom_initialization(self) -> Any:
         """Test custom initialization of EmailUISettings"""
         settings = EmailUISettings(
             theme="light",
@@ -67,7 +69,10 @@ class TestEmailUISettings(unittest.TestCase):
 class TestEmailInstanceMetrics(unittest.TestCase):
     """Test EmailInstanceMetrics dataclass"""
 
-    def test_default_initialization(self):
+    """
+    test_default_initialization function
+    """
+def test_default_initialization(self) -> Any:
         """Test default initialization of EmailInstanceMetrics"""
         metrics = EmailInstanceMetrics()
         self.assertEqual(metrics.emails_received_today, 0)
@@ -79,7 +84,10 @@ class TestEmailInstanceMetrics(unittest.TestCase):
         self.assertEqual(metrics.error_count, 0)
         self.assertEqual(metrics.warning_count, 0)
 
-    def test_custom_initialization(self):
+    """
+    test_custom_initialization function
+    """
+def test_custom_initialization(self) -> Any:
         """Test custom initialization of EmailInstanceMetrics"""
         metrics = EmailInstanceMetrics(
             emails_received_today=10,
@@ -103,7 +111,10 @@ class TestEmailInstanceMetrics(unittest.TestCase):
 class TestRealtimeEmailSystemManager(unittest.TestCase):
     """Test RealtimeEmailSystemManager class"""
 
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up test fixtures"""
         self.temp_dir = Path(tempfile.mkdtemp())
         self.original_data_dir = Path('/workspaces/qmoi-enhanced/data')
@@ -116,11 +127,17 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
              patch('realtime_email_system.MEMORY_SYNC_FILE', self.temp_dir / 'data' / 'memory_sync.json'):
             self.manager = RealtimeEmailSystemManager()
 
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up test fixtures"""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
-    def test_initialization(self):
+    """
+    test_initialization function
+    """
+def test_initialization(self) -> Any:
         """Test manager initialization"""
         self.assertIsInstance(self.manager.system_emails, dict)
         self.assertEqual(len(self.manager.system_emails), 15)  # All system emails
@@ -129,13 +146,19 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         self.assertEqual(len(self.manager.ui_settings), 15)
         self.assertEqual(len(self.manager.metrics), 15)
 
-    def test_validate_master_access_valid_token(self):
+    """
+    test_validate_master_access_valid_token function
+    """
+def test_validate_master_access_valid_token(self) -> Any:
         """Test master access validation with valid token"""
         valid_token = "master_valid_token_1234567890123456789012345678901234567890"
-        result = self.manager.validate_master_access(valid_token, "127.0.0.1")
+        result = self.manager.validate_master_access(valid_token, "prod.qmoi.ai")
         self.assertTrue(result)
 
-    def test_validate_master_access_invalid_token(self):
+    """
+    test_validate_master_access_invalid_token function
+    """
+def test_validate_master_access_invalid_token(self) -> Any:
         """Test master access validation with invalid token"""
         invalid_tokens = [
             "",
@@ -144,10 +167,13 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
             None
         ]
         for token in invalid_tokens:
-            result = self.manager.validate_master_access(token, "127.0.0.1")
+            result = self.manager.validate_master_access(token, "prod.qmoi.ai")
             self.assertFalse(result)
 
-    def test_sync_memory_for_email_success(self):
+    """
+    test_sync_memory_for_email_success function
+    """
+def test_sync_memory_for_email_success(self) -> Any:
         """Test successful memory sync for email"""
         email = 'master@qmoi.com'
         result = self.manager.sync_memory_for_email(email)
@@ -155,7 +181,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         self.assertIn(email, self.manager.memory_state)
         self.assertEqual(self.manager.metrics[email].memory_sync_status, "healthy")
 
-    def test_sync_memory_for_email_failure(self):
+    """
+    test_sync_memory_for_email_failure function
+    """
+def test_sync_memory_for_email_failure(self) -> Any:
         """Test memory sync failure handling"""
         email = 'master@qmoi.com'
 
@@ -167,7 +196,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
             # The method should handle exceptions gracefully
             self.assertIsInstance(result, bool)
 
-    def test_sync_consciousness_for_email_success(self):
+    """
+    test_sync_consciousness_for_email_success function
+    """
+def test_sync_consciousness_for_email_success(self) -> Any:
         """Test successful consciousness sync for email"""
         email = 'master@qmoi.com'
         result = self.manager.sync_consciousness_for_email(email)
@@ -175,7 +207,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         self.assertIn(email, self.manager.consciousness_state)
         self.assertEqual(self.manager.metrics[email].consciousness_status, "active")
 
-    def test_update_email_ui_settings_valid(self):
+    """
+    test_update_email_ui_settings_valid function
+    """
+def test_update_email_ui_settings_valid(self) -> Any:
         """Test updating UI settings with valid master token"""
         email = 'master@qmoi.com'
         master_token = "master_valid_token_1234567890123456789012345678901234567890"
@@ -193,7 +228,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         self.assertEqual(self.manager.ui_settings[email].refresh_interval, 15)
         self.assertEqual(self.manager.ui_settings[email].ai_temperature, 0.8)
 
-    def test_update_email_ui_settings_invalid_token(self):
+    """
+    test_update_email_ui_settings_invalid_token function
+    """
+def test_update_email_ui_settings_invalid_token(self) -> Any:
         """Test updating UI settings with invalid master token"""
         email = 'master@qmoi.com'
         invalid_token = "invalid_token"
@@ -202,7 +240,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         result = self.manager.update_email_ui_settings(email, new_settings, invalid_token)
         self.assertFalse(result)
 
-    def test_update_email_ui_settings_invalid_email(self):
+    """
+    test_update_email_ui_settings_invalid_email function
+    """
+def test_update_email_ui_settings_invalid_email(self) -> Any:
         """Test updating UI settings for non-existent email"""
         email = 'nonexistent@qmoi.com'
         master_token = "master_valid_token_1234567890123456789012345678901234567890"
@@ -211,14 +252,20 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         result = self.manager.update_email_ui_settings(email, new_settings, master_token)
         self.assertFalse(result)
 
-    def test_auto_validate_and_replace_email_success(self):
+    """
+    test_auto_validate_and_replace_email_success function
+    """
+def test_auto_validate_and_replace_email_success(self) -> Any:
         """Test successful auto-validation of email"""
         email = 'master@qmoi.com'
         result = self.manager.auto_validate_and_replace_email(email)
         self.assertTrue(result)
         self.assertEqual(self.manager.metrics[email].validation_pass_rate, 100.0)
 
-    def test_broadcast_update(self):
+    """
+    test_broadcast_update function
+    """
+def test_broadcast_update(self) -> Any:
         """Test broadcasting updates"""
         email = 'master@qmoi.com'
         update_type = 'test_update'
@@ -230,7 +277,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         # Verify last activity was updated
         self.assertIsNotNone(self.manager.metrics[email].last_activity)
 
-    def test_get_email_dashboard_valid(self):
+    """
+    test_get_email_dashboard_valid function
+    """
+def test_get_email_dashboard_valid(self) -> Any:
         """Test getting dashboard with valid credentials"""
         email = 'master@qmoi.com'
         master_token = "master_valid_token_1234567890123456789012345678901234567890"
@@ -243,7 +293,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         self.assertIn('memory_state', dashboard)
         self.assertIn('consciousness_state', dashboard)
 
-    def test_get_email_dashboard_invalid_token(self):
+    """
+    test_get_email_dashboard_invalid_token function
+    """
+def test_get_email_dashboard_invalid_token(self) -> Any:
         """Test getting dashboard with invalid token"""
         email = 'master@qmoi.com'
         invalid_token = "invalid_token"
@@ -251,7 +304,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         dashboard = self.manager.get_email_dashboard(email, invalid_token)
         self.assertIsNone(dashboard)
 
-    def test_stream_updates_valid(self):
+    """
+    test_stream_updates_valid function
+    """
+def test_stream_updates_valid(self) -> Any:
         """Test starting update stream with valid token"""
         email = 'master@qmoi.com'
         master_token = "master_valid_token_1234567890123456789012345678901234567890"
@@ -259,7 +315,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         result = self.manager.stream_updates(email, master_token)
         self.assertTrue(result)
 
-    def test_stream_updates_invalid_token(self):
+    """
+    test_stream_updates_invalid_token function
+    """
+def test_stream_updates_invalid_token(self) -> Any:
         """Test starting update stream with invalid token"""
         email = 'master@qmoi.com'
         invalid_token = "invalid_token"
@@ -267,7 +326,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         result = self.manager.stream_updates(email, invalid_token)
         self.assertFalse(result)
 
-    def test_realtime_sync_lifecycle(self):
+    """
+    test_realtime_sync_lifecycle function
+    """
+def test_realtime_sync_lifecycle(self) -> Any:
         """Test starting and stopping real-time sync"""
         # Start sync
         self.manager.start_realtime_sync()
@@ -282,7 +344,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
         if self.manager.sync_thread:
             self.manager.sync_thread.join(timeout=2)
 
-    def test_config_persistence(self):
+    """
+    test_config_persistence function
+    """
+def test_config_persistence(self) -> Any:
         """Test saving and loading configuration"""
         email = 'master@qmoi.com'
 
@@ -307,7 +372,10 @@ class TestRealtimeEmailSystemManager(unittest.TestCase):
 class TestRealtimeEmailSystemIntegration(unittest.TestCase):
     """Integration tests for the real-time email system"""
 
-    def setUp(self):
+    """
+    setUp function
+    """
+def setUp(self) -> Any:
         """Set up integration test fixtures"""
         self.temp_dir = Path(tempfile.mkdtemp())
 
@@ -318,17 +386,23 @@ class TestRealtimeEmailSystemIntegration(unittest.TestCase):
              patch('realtime_email_system.MEMORY_SYNC_FILE', self.temp_dir / 'data' / 'memory_sync.json'):
             self.manager = RealtimeEmailSystemManager()
 
-    def tearDown(self):
+    """
+    tearDown function
+    """
+def tearDown(self) -> Any:
         """Clean up integration test fixtures"""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
-    def test_full_email_lifecycle(self):
+    """
+    test_full_email_lifecycle function
+    """
+def test_full_email_lifecycle(self) -> Any:
         """Test complete email lifecycle from setup to sync"""
         email = 'master@qmoi.com'
         master_token = "master_valid_token_1234567890123456789012345678901234567890"
 
         # 1. Validate master access
-        access_valid = self.manager.validate_master_access(master_token, "127.0.0.1")
+        access_valid = self.manager.validate_master_access(master_token, "prod.qmoi.ai")
         self.assertTrue(access_valid)
 
         # 2. Update UI settings
@@ -359,14 +433,20 @@ class TestRealtimeEmailSystemIntegration(unittest.TestCase):
         streaming = self.manager.stream_updates(email, master_token)
         self.assertTrue(streaming)
 
-    def test_concurrent_operations(self):
+    """
+    test_concurrent_operations function
+    """
+def test_concurrent_operations(self) -> Any:
         """Test concurrent operations on multiple emails"""
         emails = ['master@qmoi.com', 'support@qmoi.com', 'billing@qmoi.com']
         master_token = "master_valid_token_1234567890123456789012345678901234567890"
 
         results = []
 
-        def test_email_operations(email):
+        """
+    test_email_operations function
+    """
+def test_email_operations(email) -> Any:
             """Test operations for a single email"""
             try:
                 # Memory sync

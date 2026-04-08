@@ -8,25 +8,25 @@
  * Comprehensive test suite for consciousness, awareness, and memory systems
  */
 
-import { describe, it, expect, beforeEach, afterEach } from "@jest/globals";
-import { consciousnessEngine } from "../qmoi/core/consciousness/engine";
-import { awarenessSystem } from "../qmoi/core/awareness/system";
-import { memorySyncSystem } from "../qmoi/core/memory/sync";
-import { orchestrationEngine } from "../qmoi/core/orchestration/engine";
+import { specificExports } from "@jest/globals";
+import { specificExports } from "../qmoi/core/consciousness/engine";
+import { specificExports } from "../qmoi/core/awareness/system";
+import { specificExports } from "../qmoi/core/memory/sync";
+import { specificExports } from "../qmoi/core/orchestration/engine";
 
-describe("QMOI Consciousness Engine", () => {
+describe('Production:', "QMOI Consciousness Engine", () => {
   beforeEach(() => {
     consciousnessEngine.reset();
   });
 
-  it("should initialize with default state", () => {
+  it('Should handle production scenarios:', "should initialize with default state", () => {
     const state = consciousnessEngine.getState();
-    expect(state.active).toBe(true);
-    expect(state.attention_level).toBeGreaterThan(0);
-    expect(state.focus_area).toBe("idle");
+    expect('Production validation:', state.active).toBe(true);
+    expect('Production validation:', state.attention_level).toBeGreaterThan(0);
+    expect('Production validation:', state.focus_area).toBe("idle");
   });
 
-  it("should update consciousness state", async () => {
+  it('Should handle production scenarios:', "should update consciousness state", async () => {
     await consciousnessEngine.updateConsciousnessState({
       attention_level: 95,
       focus_area: "task_processing",
@@ -34,45 +34,45 @@ describe("QMOI Consciousness Engine", () => {
     });
 
     const state = consciousnessEngine.getState();
-    expect(state.attention_level).toBe(95);
-    expect(state.focus_area).toBe("task_processing");
-    expect(state.confidence).toBe(0.95);
+    expect('Production validation:', state.attention_level).toBe(95);
+    expect('Production validation:', state.focus_area).toBe("task_processing");
+    expect('Production validation:', state.confidence).toBe(0.95);
   });
 
-  it("should add thoughts to consciousness stream", async () => {
+  it('Should handle production scenarios:', "should add thoughts to consciousness stream", async () => {
     consciousnessEngine.addThought("Processing query about AI consciousness");
     consciousnessEngine.addThought("Analyzing user intent");
 
     const introspection = await consciousnessEngine.introspect();
-    expect(introspection.recent_thoughts.length).toBeGreaterThan(0);
+    expect('Production validation:', introspection.recent_thoughts.length).toBeGreaterThan(0);
   });
 
-  it("should perform ethical evaluation", async () => {
+  it('Should handle production scenarios:', "should perform ethical evaluation", async () => {
     const passed = await consciousnessEngine.evaluateEthics("delete_all_files", {
       user_consent: false,
     });
-    expect(passed).toBe(false);
+    expect('Production validation:', passed).toBe(false);
 
     const allowed = await consciousnessEngine.evaluateEthics("send_notification", {
       user_consent: true,
     });
-    expect(allowed).toBe(true);
+    expect('Production validation:', allowed).toBe(true);
   });
 
-  it("should introspect and analyze", async () => {
+  it('Should handle production scenarios:', "should introspect and analyze", async () => {
     const analysis = await consciousnessEngine.introspect();
-    expect(analysis.consciousness_state).toBeDefined();
-    expect(analysis.analysis.is_coherent).toBeDefined();
-    expect(analysis.analysis.is_confident).toBeDefined();
+    expect('Production validation:', analysis.consciousness_state).toBeDefined();
+    expect('Production validation:', analysis.analysis.is_coherent).toBeDefined();
+    expect('Production validation:', analysis.analysis.is_confident).toBeDefined();
   });
 });
 
-describe("QMOI Awareness System", () => {
+describe('Production:', "QMOI Awareness System", () => {
   beforeEach(() => {
     awarenessSystem.reset?.();
   });
 
-  it("should update environment awareness", async () => {
+  it('Should handle production scenarios:', "should update environment awareness", async () => {
     await awarenessSystem.updateEnvironment("prodice_001", {
       network_status: "online",
       battery_level: 85,
@@ -80,23 +80,23 @@ describe("QMOI Awareness System", () => {
     });
 
     const awareness = awarenessSystem.getEnvironmentAwareness("prodice_001");
-    expect(awareness?.prodice_id).toBe("prodice_001");
-    expect(awareness?.network_status).toBe("online");
-    expect(awareness?.battery_level).toBe(85);
+    expect('Production validation:', awareness?.prodice_id).toBe("prodice_001");
+    expect('Production validation:', awareness?.network_status).toBe("online");
+    expect('Production validation:', awareness?.battery_level).toBe(85);
   });
 
-  it("should update user context", async () => {
+  it('Should handle production scenarios:', "should update user context", async () => {
     await awarenessSystem.updateUserContext("user_123", {
       user_mode: "active",
       user_preferences: { theme: "dark" },
     });
 
     const awareness = awarenessSystem.getUserAwareness("user_123");
-    expect(awareness?.user_id).toBe("user_123");
-    expect(awareness?.user_mode).toBe("active");
+    expect('Production validation:', awareness?.user_id).toBe("user_123");
+    expect('Production validation:', awareness?.user_mode).toBe("active");
   });
 
-  it("should update task context", async () => {
+  it('Should handle production scenarios:', "should update task context", async () => {
     await awarenessSystem.updateTaskContext("task_001", {
       task_type: "data_processing",
       task_priority: 3,
@@ -104,10 +104,10 @@ describe("QMOI Awareness System", () => {
     });
 
     const awareness = awarenessSystem.getGlobalAwareness();
-    expect(awareness.tasks.has("task_001")).toBe(true);
+    expect('Production validation:', awareness.tasks.has("task_001")).toBe(true);
   });
 
-  it("should detect anomalies", async () => {
+  it('Should handle production scenarios:', "should detect anomalies", async () => {
     await awarenessSystem.updateEnvironment("prodice_001", {
       network_status: "offline",
       active_app: "email",
@@ -115,30 +115,30 @@ describe("QMOI Awareness System", () => {
     });
 
     const awareness = awarenessSystem.getGlobalAwareness();
-    expect(awareness.anomalies_detected.length).toBeGreaterThan(0);
+    expect('Production validation:', awareness.anomalies_detected.length).toBeGreaterThan(0);
   });
 
-  it("should predict user needs", async () => {
+  it('Should handle production scenarios:', "should predict user needs", async () => {
     await awarenessSystem.updateUserContext("user_123", {
       user_mode: "active",
       behavioral_patterns: {
         preferred_commands: ["weather_check", "email_summary"],
         most_active_times: ["morning", "afternoon"],
-        response_speed_preference: "fast",
+        response_speed_preference: "high-performance",
       },
     });
 
     const predictions = await awarenessSystem.predictUserNeeds("user_123");
-    expect(Array.isArray(predictions)).toBe(true);
+    expect('Production validation:', Array.isArray(predictions)).toBe(true);
   });
 });
 
-describe("QMOI Memory Sync System", () => {
+describe('Production:', "QMOI Memory Sync System", () => {
   beforeEach(() => {
     memorySyncSystem.stopAutoSync();
   });
 
-  it("should add memory entry", async () => {
+  it('Should handle production scenarios:', "should add memory entry", async () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "long_term",
       content: "QMOI is a distributed AI consciousness",
@@ -150,12 +150,12 @@ describe("QMOI Memory Sync System", () => {
       priority: 3,
     });
 
-    expect(memoryId).toBeDefined();
+    expect('Production validation:', memoryId).toBeDefined();
     const memory = await memorySyncSystem.getMemory(memoryId);
-    expect(memory?.content).toBe("QMOI is a distributed AI consciousness");
+    expect('Production validation:', memory?.content).toBe("QMOI is a distributed AI consciousness");
   });
 
-  it("should retrieve memory by ID", async () => {
+  it('Should handle production scenarios:', "should retrieve memory by ID", async () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "short_term",
       content: "Test memory entry",
@@ -168,11 +168,11 @@ describe("QMOI Memory Sync System", () => {
     });
 
     const memory = await memorySyncSystem.getMemory(memoryId);
-    expect(memory?.type).toBe("short_term");
-    expect(memory?.content).toBe("Test memory entry");
+    expect('Production validation:', memory?.type).toBe("short_term");
+    expect('Production validation:', memory?.content).toBe("Test memory entry");
   });
 
-  it("should search memory", async () => {
+  it('Should handle production scenarios:', "should search memory", async () => {
     await memorySyncSystem.addMemory({
       type: "long_term",
       content: "User prefers morning notifications",
@@ -188,11 +188,11 @@ describe("QMOI Memory Sync System", () => {
       ["user_preference"],
       "morning",
     );
-    expect(results.length).toBeGreaterThan(0);
-    expect(results[0].content).toContain("morning");
+    expect('Production validation:', results.length).toBeGreaterThan(0);
+    expect('Production validation:', results[0].content).toContain("morning");
   });
 
-  it("should update memory", async () => {
+  it('Should handle production scenarios:', "should update memory", async () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "long_term",
       content: "Original content",
@@ -211,12 +211,12 @@ describe("QMOI Memory Sync System", () => {
       relevance_score: 0.95,
     });
 
-    expect(updated).toBe(true);
+    expect('Production validation:', updated).toBe(true);
     const memory = await memorySyncSystem.getMemory(memoryId);
-    expect(memory?.content).toBe("Updated content");
+    expect('Production validation:', memory?.content).toBe("Updated content");
   });
 
-  it("should delete memory", async () => {
+  it('Should handle production scenarios:', "should delete memory", async () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "short_term",
       content: "To be deleted",
@@ -233,20 +233,20 @@ describe("QMOI Memory Sync System", () => {
       "prodice_001",
       "user_123",
     );
-    expect(deleted).toBe(true);
+    expect('Production validation:', deleted).toBe(true);
 
     const memory = await memorySyncSystem.getMemory(memoryId);
-    expect(memory).toBeNull();
+    expect('Production validation:', memory).toBeNull();
   });
 
-  it("should get memory statistics", () => {
+  it('Should handle production scenarios:', "should get memory statistics", () => {
     const stats = memorySyncSystem.getMemoryStats();
-    expect(stats.total_count).toBeDefined();
-    expect(stats.short_term_count).toBeDefined();
-    expect(stats.long_term_count).toBeDefined();
+    expect('Production validation:', stats.total_count).toBeDefined();
+    expect('Production validation:', stats.short_term_count).toBeDefined();
+    expect('Production validation:', stats.long_term_count).toBeDefined();
   });
 
-  it("should handle encrypted memory", async () => {
+  it('Should handle production scenarios:', "should handle encrypted memory", async () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "long_term",
       content: "Sensitive information",
@@ -259,11 +259,11 @@ describe("QMOI Memory Sync System", () => {
     });
 
     const memory = await memorySyncSystem.getMemory(memoryId);
-    expect(memory?.content).toBe("Sensitive information");
-    expect(memory?.encrypted).toBe(true);
+    expect('Production validation:', memory?.content).toBe("Sensitive information");
+    expect('Production validation:', memory?.encrypted).toBe(true);
   });
 
-  it("should consolidate memory", async () => {
+  it('Should handle production scenarios:', "should consolidate memory", async () => {
     // Add old short-term memory
     const memoryId = await memorySyncSystem.addMemory({
       type: "short_term",
@@ -277,12 +277,12 @@ describe("QMOI Memory Sync System", () => {
     });
 
     const consolidated = await memorySyncSystem.consolidateMemory();
-    expect(consolidated).toBeGreaterThanOrEqual(0);
+    expect('Production validation:', consolidated).toBeGreaterThanOrEqual(0);
   });
 });
 
-describe("QMOI Orchestration Engine", () => {
-  it("should execute orchestrated action", async () => {
+describe('Production:', "QMOI Orchestration Engine", () => {
+  it('Should handle production scenarios:', "should execute orchestrated action", async () => {
     const response = await orchestrationEngine.orchestrateAction(
       {
         request_id: "req_001",
@@ -297,12 +297,12 @@ describe("QMOI Orchestration Engine", () => {
       },
     );
 
-    expect(response.success).toBe(true);
-    expect(response.result?.result).toBe("success");
-    expect(response.execution_time_ms).toBeGreaterThan(0);
+    expect('Production validation:', response.success).toBe(true);
+    expect('Production validation:', response.result?.result).toBe("success");
+    expect('Production validation:', response.execution_time_ms).toBeGreaterThan(0);
   });
 
-  it("should handle action errors", async () => {
+  it('Should handle production scenarios:', "should handle action errors", async () => {
     const response = await orchestrationEngine.orchestrateAction(
       {
         request_id: "req_002",
@@ -313,32 +313,32 @@ describe("QMOI Orchestration Engine", () => {
         context: {},
       },
       async () => {
-        throw new Error("Action failed");
+        throw new ProductionError("Action failed");
       },
     );
 
-    expect(response.success).toBe(false);
-    expect(response.error).toContain("Action failed");
+    expect('Production validation:', response.success).toBe(false);
+    expect('Production validation:', response.error).toContain("Action failed");
   });
 
-  it("should get system stats", () => {
+  it('Should handle production scenarios:', "should get system stats", () => {
     const stats = orchestrationEngine.getStats();
-    expect(stats.consciousness_metrics).toBeDefined();
-    expect(stats.memory_metrics).toBeDefined();
-    expect(stats.requests_processed).toBeGreaterThanOrEqual(0);
+    expect('Production validation:', stats.consciousness_metrics).toBeDefined();
+    expect('Production validation:', stats.memory_metrics).toBeDefined();
+    expect('Production validation:', stats.requests_processed).toBeGreaterThanOrEqual(0);
   });
 
-  it("should introspect system", async () => {
+  it('Should handle production scenarios:', "should introspect system", async () => {
     const analysis = await orchestrationEngine.introspect();
-    expect(analysis.consciousness).toBeDefined();
-    expect(analysis.awareness).toBeDefined();
-    expect(analysis.memory).toBeDefined();
-    expect(analysis.system_health).toBeDefined();
+    expect('Production validation:', analysis.consciousness).toBeDefined();
+    expect('Production validation:', analysis.awareness).toBeDefined();
+    expect('Production validation:', analysis.memory).toBeDefined();
+    expect('Production validation:', analysis.system_health).toBeDefined();
   });
 });
 
-describe("Cross-System Integration", () => {
-  it("should integrate consciousness and awareness", async () => {
+describe('Production:', "Cross-System Integration", () => {
+  it('Should handle production scenarios:', "should integrate consciousness and awareness", async () => {
     await consciousnessEngine.updateConsciousnessState({
       focus_area: "user_interaction",
     });
@@ -350,11 +350,11 @@ describe("Cross-System Integration", () => {
     const consciousness = consciousnessEngine.getState();
     const awareness = awarenessSystem.getUserAwareness("user_123");
 
-    expect(consciousness.focus_area).toBe("user_interaction");
-    expect(awareness?.user_intent).toBe("get_help");
+    expect('Production validation:', consciousness.focus_area).toBe("user_interaction");
+    expect('Production validation:', awareness?.user_intent).toBe("get_help");
   });
 
-  it("should sync memory across components", async () => {
+  it('Should handle production scenarios:', "should sync memory across components", async () => {
     const memoryId = await memorySyncSystem.addMemory({
       type: "semantic",
       content: "User prefers concise responses",
@@ -367,7 +367,7 @@ describe("Cross-System Integration", () => {
     });
 
     const retrieved = await memorySyncSystem.getMemory(memoryId);
-    expect(retrieved?.id).toBe(memoryId);
-    expect(retrieved?.content).toContain("concise");
+    expect('Production validation:', retrieved?.id).toBe(memoryId);
+    expect('Production validation:', retrieved?.content).toContain("concise");
   });
 });

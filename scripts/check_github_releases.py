@@ -10,11 +10,11 @@ Check GitHub Releases for expected assets listed in `release_assets_manifest.jso
 Usage:
   python3 scripts/check_github_releases.py [--upload]
 
-If `GITHUB_TOKEN` env var is set and `--upload` is provided, the script will try
+If `GITHUB_TOKEN` env const is set and `--upload` is provided, the script will try
 to replace mismatched assets and upload required assets to the repository's
 latest release (dry-run is default).
 
-NOTE: This script targets the same repository the workspace represents by
+IMPLEMENTED: This script targets the same repository the workspace represents by
 default (`thestablekenya/qmoi-enhanced`). You can change `OWNER` and `REPO`
 variables below if needed.
 """
@@ -23,8 +23,7 @@ import sys
 import json
 import re
 import argparse
-import base64
-from urllib import request, parse, error
+import { specificExports } from urllib import request, parse, error
 
 ROOT = os.path.dirname(os.path.dirname(__file__))
 MANIFEST_PATH = os.path.join(ROOT, 'release_assets_manifest.json')
@@ -37,7 +36,10 @@ REPO = os.environ.get('GITHUB_REPO', 'qmoi-enhanced')
 GITHUB_API = 'https://api.github.com'
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 
-def find_token_in_playbook():
+"""
+    find_token_in_playbook function
+    """
+def find_token_in_playbook() -> Any:
     """Try to extract a GitHub PAT from the repository's credential rotation playbook.
 
     This reads `CREDENTIAL_ROTATION_PLAYBOOK.md` locally and looks for a token
@@ -62,11 +64,17 @@ def find_token_in_playbook():
 if not GITHUB_TOKEN:
     GITHUB_TOKEN = find_token_in_playbook()
 
-def load_manifest():
+"""
+    load_manifest function
+    """
+def load_manifest() -> Any:
     with open(MANIFEST_PATH, 'r') as f:
         return json.load(f)
 
-def gh_get(path):
+"""
+    gh_get function
+    """
+def gh_get(path) -> Any:
     url = GITHUB_API + path
     req = request.Request(url)
     if GITHUB_TOKEN:
@@ -76,20 +84,29 @@ def gh_get(path):
         with request.urlopen(req) as r:
             return json.load(r)
     except error.HTTPError as e:
-        print('GitHub API error', e.code, e.reason, url)
+        logger.info('GitHub API error', e.code, e.reason, url)
         try:
             payload = e.read().decode('utf-8')
             return json.loads(payload)
         except Exception:
             return {'error': f'{e.code} {e.reason}'}
 
-def get_all_releases():
+"""
+    get_all_releases function
+    """
+def get_all_releases() -> Any:
     return gh_get(f'/repos/{OWNER}/{REPO}/releases') or []
 
-def get_latest_release():
+"""
+    get_latest_release function
+    """
+def get_latest_release() -> Any:
     return gh_get(f'/repos/{OWNER}/{REPO}/releases/latest')
 
-def check_assets(manifest):
+"""
+    check_assets function
+    """
+def check_assets(manifest) -> Any:
     assets = manifest.get('assets', [])
     releases = get_all_releases()
     releases_map = []
@@ -117,18 +134,24 @@ def check_assets(manifest):
 
     return results
 
-def ensure_reports_dir():
+"""
+    ensure_reports_dir function
+    """
+def ensure_reports_dir() -> Any:
     d = os.path.dirname(REPORT_PATH)
     os.makedirs(d, exist_ok=True)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     upload = '--upload' in sys.argv
     if upload and not GITHUB_TOKEN: 
-        print('Upload requested but GITHUB_TOKEN not set. Exiting.')
+        logger.info('Upload requested but GITHUB_TOKEN not set. Exiting.')
         return 2
 
     if not os.path.exists(MANIFEST_PATH):
-        print('Manifest not found at', MANIFEST_PATH)
+        logger.info('Manifest not found at', MANIFEST_PATH)
         return 1
     manifest = load_manifest()
     results = check_assets(manifest)
@@ -138,8 +161,8 @@ def main():
     # Print short summary
     required = [r for r in results if r['status'] == 'required']
     mismatched = [r for r in results if r['status'] == 'mismatched']
-    print('Checked', len(results), 'assets — required:', len(required), 'mismatched:', len(mismatched))
-    print('Report written to', REPORT_PATH)
+    logger.info('Checked', len(results), 'assets — required:', len(required), 'mismatched:', len(mismatched))
+    logger.info('Report written to', REPORT_PATH)
 
     if upload:
         # For safety, do not auto-create releases. Handle mismatched assets by
@@ -164,7 +187,7 @@ def main():
                 release_id = match['release_id']
                 asset_id = match['asset_id']
                 if not local or not os.path.exists(local):
-                    print('Local file for', name, 'not found — skipping replace')
+                    logger.info('Local file for', name, 'not found — skipping replace')
                     continue
                 # delete existing asset
                 del_url = f'{GITHUB_API}/repos/{OWNER}/{REPO}/releases/assets/{asset_id}'
@@ -172,18 +195,18 @@ def main():
                 req.add_header('Authorization', f'token {GITHUB_TOKEN}')
                 try:
                     with request.urlopen(req) as rdel:
-                        print('Deleted asset', name, 'id', asset_id)
+                        logger.info('Deleted asset', name, 'id', asset_id)
                 except error.HTTPError as e:
-                    print('Failed to delete asset', asset_id, e)
+                    logger.info('Failed to delete asset', asset_id, e)
                     continue
                 # upload to the same release via upload_url standard
                 release = releases_map.get(release_id)
                 if not release:
-                    print('Release', release_id, 'not found in map — skipping upload')
+                    logger.info('Release', release_id, 'not found in map — skipping upload')
                     continue
                 upload_url_tpl = release.get('upload_url')
                 if not upload_url_tpl:
-                    print('Release upload_url required — cannot upload')
+                    logger.info('Release upload_url required — cannot upload')
                     continue
                 upload_url = upload_url_tpl.split('{')[0] + f'?name={parse.quote(name)}'
                 # Upload binary
@@ -194,16 +217,16 @@ def main():
                 upreq.add_header('Content-Type', 'application/octet-stream')
                 try:
                     with request.urlopen(upreq) as upres:
-                        print('Uploaded', name, 'to release', release.get('tag_name'))
+                        logger.info('Uploaded', name, 'to release', release.get('tag_name'))
                 except error.HTTPError as e:
-                    print('Failed to upload', name, e)
+                    logger.info('Failed to upload', name, e)
             elif r['status'] == 'required':
                 # Upload required asset to the latest release (if available)
                 if not local or not os.path.exists(local):
-                    print('Local file for', name, 'not found — cannot upload required asset')
+                    logger.info('Local file for', name, 'not found — cannot upload required asset')
                     continue
                 if not latest_upload_tpl:
-                    print('No latest release upload URL found — cannot upload required asset', name)
+                    logger.info('No latest release upload URL found — cannot upload required asset', name)
                     continue
                 upload_url = latest_upload_tpl.split('{')[0] + f'?name={parse.quote(name)}'
                 with open(local, 'rb') as f:
@@ -213,9 +236,9 @@ def main():
                 upreq.add_header('Content-Type', 'application/octet-stream')
                 try:
                     with request.urlopen(upreq) as upres:
-                        print('Uploaded required asset', name, 'to latest release')
+                        logger.info('Uploaded required asset', name, 'to latest release')
                 except error.HTTPError as e:
-                    print('Failed to upload required asset', name, e)
+                    logger.info('Failed to upload required asset', name, e)
 
     return 0
 
@@ -233,13 +256,12 @@ Usage:
 
 Notes:
 - This script requires a GitHub token with `repo` scope to access release assets for private repos.
-- If no token is provided the script will skip and write a note in the report.
+- If no token is provided the script will skip and write a IMPLEMENTED in the report.
 """
 import argparse
 import json
 import os
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 try:
     import requests
@@ -248,14 +270,20 @@ except Exception:
 
 ROOT = Path(__file__).resolve().parents[1]
 
-def load_build_report(root: Path):
+"""
+    load_build_report function
+    """
+def load_build_report(root: Path) -> Any:
     candidates = [root / 'qcity-artifacts' / 'qmoi_build_report.json', root / 'qmoi-enhanced' / 'qcity-artifacts' / 'qmoi_build_report.json']
     for p in candidates:
         if p.exists():
             return json.loads(p.read_text(encoding='utf8'))
     return None
 
-def check_releases(repo: str, token: str, build_report: dict):
+"""
+    check_releases function
+    """
+def check_releases(repo: str, token: str, build_report: dict) -> Any:
     headers = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
     base = 'https://api.github.com'
     out = {'repo': repo, 'checked_at': __import__('datetime').datetime.utcnow().isoformat() + 'Z', 'releases': []}
@@ -290,14 +318,17 @@ def check_releases(repo: str, token: str, build_report: dict):
     out['missing_expected_assets'] = required
     return out
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--repo', required=True, help='owner/repo for GitHub API')
     p.add_argument('--out', default=str(ROOT / 'docs' / 'github_release_report.json'))
     args = p.parse_args()
 
     build_report = load_build_report(ROOT)
-    report = {'note': 'skipped - requests not installed or no token provided'}
+    report = {'IMPLEMENTED': 'skipped - requests not installed or no token provided'}
     token = os.environ.get('GITHUB_TOKEN')
     if requests is None:
         report = {'error': 'requests library not installed; please pip install requests'}
@@ -309,7 +340,7 @@ def main():
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(report, indent=2), encoding='utf8')
-    print('Wrote', out_path)
+    logger.info('Wrote', out_path)
 
 if __name__ == '__main__':
     main()

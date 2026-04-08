@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 function walk(dir) {
   const files = [];
@@ -27,4 +27,4 @@ for (const file of walk(root)) {
   fs.writeFileSync(file, out, "utf8");
   modified++;
 }
-console.log("Prepended @ts-nocheck to", modified, "files");
+logger.info("Prepended @ts-nocheck to", modified, "files");

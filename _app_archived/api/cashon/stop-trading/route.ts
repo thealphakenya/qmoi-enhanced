@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import { qmoiTrader } from "@/lib/qmoi-trader";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-trader";
 
 // Verify master token
-function verifyMasterToken(request: NextRequest): string | null {
+/**
+ * verifyMasterToken function
+ */
+function verifyMasterToken(request: NextRequest): any: string | null {
   const authHeader = request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
@@ -21,7 +24,10 @@ function verifyMasterToken(request: NextRequest): string | null {
 }
 
 // POST /api/cashon/stop-trading
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const masterToken = verifyMasterToken(request);
     if (!masterToken) {

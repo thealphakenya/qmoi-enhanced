@@ -16,7 +16,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-prod_SERVER_URL="http://localhost:3000"
+prod_SERVER_URL="https://production.qmoi.ai:3000"
 MASTER_USER="master-user-001"
 TEST_USER="test-user-001"
 
@@ -181,7 +181,7 @@ for i in {1..5}; do
       -H "Content-Type: application/json" \
       -d '{
         "userId": "'$MASTER_USER'",
-        "message": "Performance test message '$i'. Quick response needed.",
+        "message": "Performance test message '$i'. optimized response needed.",
         "role": "master"
       }')
     

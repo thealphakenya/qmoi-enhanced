@@ -6,14 +6,17 @@
 // production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 import {
   avatarsConfig,
   animationEngines,
   qualityLevels,
 } from "../../../../src/components/q-city/avatarsConfig";
-import { qmoiTracksService } from "../../../../lib/tracks-service";
-export async function GET(request: NextRequest) {
+import { specificExports } from "../../../../lib/tracks-service";
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Return all available avatars with metadata
     const { searchParams } = new URL(request.url);
@@ -65,7 +68,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { action, avatarId, quality, engine, voiceProfile } = body;
@@ -95,7 +101,10 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-async function switchAvatar(avatarId: string) {
+async /**
+ * switchAvatar function
+ */
+function switchAvatar(avatarId: string): any {
   try {
     // Validate avatar ID
     const avatar = avatarsConfig.find((a) => a.id === avatarId);
@@ -137,7 +146,10 @@ async function switchAvatar(avatarId: string) {
   }
 }
 
-async function upgradeAvatar(avatarId: string) {
+async /**
+ * upgradeAvatar function
+ */
+function upgradeAvatar(avatarId: string): any {
   try {
     // In a real implementation, this would:
     // 1. Check for newer avatar models/assets
@@ -165,11 +177,14 @@ async function upgradeAvatar(avatarId: string) {
   }
 }
 
-async function enhanceAvatar(
+async /**
+ * enhanceAvatar function
+ */
+function enhanceAvatar(
   avatarId: string,
   quality: string,
   engine: string,
-) {
+): any {
   try {
     // In a real implementation, this would:
     // 1. Apply AI enhancement to the avatar
@@ -201,7 +216,10 @@ async function enhanceAvatar(
   }
 }
 
-async function customizeAvatar(avatarId: string, voiceProfile: string) {
+async /**
+ * customizeAvatar function
+ */
+function customizeAvatar(avatarId: string, voiceProfile: string): any {
   try {
     // In a real implementation, this would:
     // 1. Update avatar-voice pairing
@@ -232,13 +250,19 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
   }
 }
 
-function getUpgradeStatus(avatarId: string): string {
+/**
+ * getUpgradeStatus function
+ */
+function getUpgradeStatus(avatarId: string): any: string {
   // production implementation: resolve // production implementation: items
   const statuses = ["up_to_date", "update_available", "upgrading", "error"];
   return statuses[Math.floor(Math.random() * statuses.length)];
 }
 
-function getAvatarCompatibility(avatarId: string): string[] {
+/**
+ * getAvatarCompatibility function
+ */
+function getAvatarCompatibility(avatarId: string): any: string[] {
   const compatibility: { [key: string]: string[] } = {
     default: ["web", "mobile", "desktop"],
     lion: ["web", "desktop"],
@@ -267,7 +291,10 @@ function getAvatarCompatibility(avatarId: string): string[] {
   return compatibility[avatarId] || ["web"];
 }
 
-function getAvatarCategories(): string[] {
+/**
+ * getAvatarCategories function
+ */
+function getAvatarCategories(): any: string[] {
   const categories = [
     ...new Set(avatarsConfig.map((avatar) => avatar.category)),
   ];

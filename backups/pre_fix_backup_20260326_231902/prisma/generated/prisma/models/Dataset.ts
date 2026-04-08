@@ -14,9 +14,9 @@
  *
  * 🟢 You can import this file directly.
  */
-import type * as runtime from "@prisma/client/runtime/library"
-import type * as $Enums from "../enums.ts"
-import type * as Prisma from "../internal/prismaNamespace.ts"
+import { specificExports } from "@prisma/client/runtime/library"
+import { specificExports } from "../enums.ts"
+import { specificExports } from "../internal/prismaNamespace.ts"
 
 /**
  * Model Dataset
@@ -598,7 +598,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Find the first Dataset that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetFindFirstArgs} args - Arguments to find a Dataset
    * @data
@@ -614,7 +614,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * Find the first Dataset that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetFindFirstOrThrowArgs} args - Arguments to find a Dataset
    * @data
@@ -629,7 +629,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Find zero or more Datasets that matches the filter.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetFindManyArgs} args - Arguments to filter and select certain fields only.
    * @data
@@ -691,7 +691,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -744,7 +744,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Update zero or more Datasets.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetUpdateManyArgs} args - Arguments to update one or more rows.
    * @data
@@ -785,7 +785,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *     // ... provide data here
    *   ]
    * })
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -813,7 +813,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Count the number of Datasets.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetCountArgs} args - Arguments to filter Datasets to count.
    * @data
@@ -836,7 +836,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Allows you to perform aggregations operations on a Dataset.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @data
@@ -862,7 +862,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Group by Dataset.
-   * Note, that providing `undefined` is treated as the value not being there.
+   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetGroupByArgs} args - Group by arguments.
    * @data

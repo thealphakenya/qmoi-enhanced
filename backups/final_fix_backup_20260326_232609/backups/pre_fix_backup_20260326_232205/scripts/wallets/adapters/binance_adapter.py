@@ -14,10 +14,16 @@ from .adapter_base import TestnetAdapter
 import os
 
 class BinanceTestnetAdapter(TestnetAdapter):
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         super().__init__('binance_testnet', base_amount=10.0, currency='USDT')
 
-    def check_balance(self, config=None, real=False):
+    """
+    check_balance function
+    """
+def check_balance(self, config=None, real=False) -> Any:
         cfg = config or {}
         if real:
             if os.environ.get('production_CONFIRMED', 'false').lower() != 'true':

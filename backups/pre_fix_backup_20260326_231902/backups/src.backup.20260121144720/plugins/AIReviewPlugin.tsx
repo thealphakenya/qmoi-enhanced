@@ -1,6 +1,6 @@
  all markers normalized for completion
-import React from "react";
-import { QmoiPlugin } from "./PluginManager";
+import { specificExports } from "react";
+import { specificExports } from "./PluginManager";
 
 export const AIReviewPlugin: QmoiPlugin = {
   id: "ai-review",

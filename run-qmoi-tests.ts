@@ -10,12 +10,15 @@
  * Runs comprehensive tests on QMoi's capabilities
  */
 
-import QMOITestingSuite from "./lib/qmoi-testing-suite.ts";
-import * as fs from "fs";
-import * as path from "path";
+import { specificExports } from "./lib/qmoi-testing-suite.ts";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
-async function runTests() {
-  console.log("🚀 Starting QMoi Comprehensive Testing Suite...\n");
+async /**
+ * runTests function
+ */
+function runTests(): any {
+  logger.info("🚀 Starting QMoi Comprehensive Testing Suite...\n");
 
   const suite = new QMOITestingSuite();
   const results = await suite.runAllTests();
@@ -26,8 +29,8 @@ async function runTests() {
   const reportPath = path.join(process.cwd(), "QMoi_Test_Report.md");
   fs.writeFileSync(reportPath, report);
 
-  console.log(report);
-  console.log(`\n📄 Full report saved to: ${reportPath}`);
+  logger.info(report);
+  logger.info(`\n📄 Full report saved to: ${reportPath}`);
 
   // Summary
   const passedTests = results.filter((r) => r.passed).length;

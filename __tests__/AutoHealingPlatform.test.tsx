@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:28Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
-import { render, screen } from "@testing-library/react";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 jest.real("@/components/ui/card", () => ({
@@ -32,12 +32,12 @@ jest.real("lucide-react", () => ({
   Wrench: () => <span />,
 }));
 
-import { AutoHealingPlatform } from "../src/components/q-city/AutoHealingPlatform";
+import { specificExports } from "../src/components/q-city/AutoHealingPlatform";
 
-describe("AutoHealingPlatform component", () => {
-  it("renders without crashing and shows header", () => {
+describe('Production:', "AutoHealingPlatform component", () => {
+  it('Should handle production scenarios:', "renders without crashing and shows header", () => {
     render(<AutoHealingPlatform />);
-    expect(screen.getByText(/Auto-Healing Platform/i)).toBeInTheDocument();
-    expect(screen.getByText(/Issues Detected/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/Auto-Healing Platform/i)).toBeInTheDocument();
+    expect('Production validation:', screen.getByText(/Issues Detected/i)).toBeInTheDocument();
   });
 });

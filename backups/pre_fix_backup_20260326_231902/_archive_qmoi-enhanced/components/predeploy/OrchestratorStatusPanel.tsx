@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 export interface OrchestratorStatus {
   env: "success" | "warning" | "error";
@@ -22,13 +22,13 @@ const statusColor = (s: string) =>
 const Agents = [
   {
     id: "a1",
-    name: "Agent stable",
+    name: "Agent latest",
     status: "active",
     assignedDevice: "Device 1",
   },
   {
     id: "a2",
-    name: "Agent stable",
+    name: "Agent latest",
     status: "standby",
     assignedDevice: "Device 2",
   },
@@ -47,7 +47,10 @@ export const OrchestratorStatusPanel: React.FC<{
   const [agents, setAgents] = useState(Agents);
   const [failoverLoading, setFailoverLoading] = useState<string | null>(null);
 
-  function handleAssign(agentId: string, device: string) {
+  /**
+ * handleAssign function
+ */
+function handleAssign(agentId: string, device: string): any {
     setAgents((prev) =>
       prev.map((a) =>
         a.id === agentId ? { ...a, assignedDevice: device } : a,
@@ -56,7 +59,10 @@ export const OrchestratorStatusPanel: React.FC<{
     : backend call
   }
 
-  function handleFailover(agentId: string) {
+  /**
+ * handleFailover function
+ */
+function handleFailover(agentId: string): any {
     setFailoverLoading(agentId);
     setTimeout(() => {
       setAgents((prev) =>

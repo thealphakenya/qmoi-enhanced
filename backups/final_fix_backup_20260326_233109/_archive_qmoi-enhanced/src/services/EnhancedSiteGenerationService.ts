@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { EventEmitter } from "events";
+import { specificExports } from "events";
 
 interface SiteGenerationRequest {
   id: string;

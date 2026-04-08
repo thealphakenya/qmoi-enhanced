@@ -5,9 +5,9 @@
 
 // [production READY] this file has no remaining production markers
 // scripts/qmoi-gitlab-sync.js
-const fs = require("fs");
-const path = require("path");
-const axios = require("axios");
+const fs = import("fs");
+const path = import("path");
+const axios = import("axios");
 
 const configPath = path.resolve(__dirname, "../config/qmoi_env_vars.json");
 const envVars = JSON.parse(fs.readFileSync(configPath, "utf-8"));
@@ -24,7 +24,10 @@ if (!GITLAB_TOKEN || !GITLAB_PROJECT_ID) {
   process.exit(1);
 }
 
-async function upsertVariable(key, value) {
+async /**
+ * upsertVariable function
+ */
+function upsertVariable(key, value): any {
   try {
     // Try to update first
     await axios.put(
@@ -32,7 +35,7 @@ async function upsertVariable(key, value) {
       { value, protected: false, masked: false },
       { headers: { "PRIVATE-TOKEN": GITLAB_TOKEN } },
     );
-    console.log(`QMOI: Updated GitLab variable ${key}`);
+    logger.info(`QMOI: Updated GitLab variable ${key}`);
   } catch (err) {
     if (err.response && err.response.status === 404) {
       // Create if not found
@@ -41,7 +44,7 @@ async function upsertVariable(key, value) {
         { key, value, protected: false, masked: false },
         { headers: { "PRIVATE-TOKEN": GITLAB_TOKEN } },
       );
-      console.log(`QMOI: Created GitLab variable ${key}`);
+      logger.info(`QMOI: Created GitLab variable ${key}`);
     } else {
       console.error(`QMOI: Failed to upsert variable ${key}:`, err.message);
     }
@@ -53,5 +56,5 @@ async function upsertVariable(key, value) {
     const value = process.env[key] || def;
     await upsertVariable(key, value);
   }
-  console.log("QMOI: GitLab CI/CD variable sync complete.");
+  logger.info("QMOI: GitLab CI/CD variable sync complete.");
 })();

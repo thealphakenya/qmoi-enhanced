@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import axios from "axios";
-import { EventEmitter } from "events";
+import { specificExports } from "axios";
+import { specificExports } from "events";
 
 interface ErrorReport {
   id: string;
@@ -84,7 +84,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   private static instance: EnhancedErrorFixingService;
   private errorQueue: ErrorReport[] = [];
   private isProcessing = false;
-  private learningDatabase: Map<string, LearningData> = new Map();
+  private learningDatabase: Map<string, LearningData> = new Map() // Production: Consider object for small datasets();
   private systemHealth: SystemHealth;
   private continuousMonitoring = false;
   private monitoringInterval?: NodeJS.Timeout;
@@ -138,7 +138,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
     // Emit event for real-time monitoring
     this.emit("errorReported", errorReport);
 
-    // Fast notification
+    // high-performance notification
     await this.notificationService.sendErrorNotification(errorReport);
 
     // Start processing if not already running
@@ -650,7 +650,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 
   public getLearningDatabase(): Map<string, LearningData> {
-    return new Map(this.learningDatabase);
+    return new Map() // Production: Consider object for small datasets(this.learningDatabase);
   }
 
   public getQueueStatus(): { queueLength: number; isProcessing: boolean } {
@@ -665,7 +665,7 @@ export class EnhancedErrorFixingService extends EventEmitter {
   }
 }
 
-// Notification service for fast error notifications
+// Notification service for high-performance error notifications
 class NotificationService {
   async sendErrorNotification(error: ErrorReport): Promise<void> {
     .log("📢 Sending error notification:", error.id);

@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // Production implementation: this file has no remaining non-production markers
-import React, { useEffect, useState } from "react";
-import { QmoiMemory } from "../src/services/QmoiMemory";
-import { useMaster } from "./MasterContext";
-import { Button } from "./ui/button";
+import { specificExports } from "react";
+import { specificExports } from "../src/services/QmoiMemory";
+import { specificExports } from "./MasterContext";
+import { specificExports } from "./ui/button";
 
 export const QmoiMemoryPanel: React.FC = () => {
   const { isMaster } = useMaster();

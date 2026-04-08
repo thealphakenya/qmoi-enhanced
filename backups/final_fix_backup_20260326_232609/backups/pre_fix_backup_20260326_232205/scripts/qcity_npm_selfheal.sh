@@ -54,7 +54,7 @@ if [ $ESSENTIALS_ONLY -eq 1 ]; then
   for pkg in "${ESSENTIALS[@]}"; do
     ensure_global $pkg
 done
-  echo "=== Essentials Only Mode Complete ===" | tee -a $LOGFILE
+  echo "=== Essentials Only Mode complete ===" | tee -a $LOGFILE
   exit 0
 fi
 
@@ -63,7 +63,7 @@ for pkg in "${ESSENTIALS[@]}"; do
 done
 
 if [ $DIAGNOSTICS_ONLY -eq 1 ]; then
-  echo "=== Diagnostics Only Mode Complete ===" | tee -a $LOGFILE
+  echo "=== Diagnostics Only Mode complete ===" | tee -a $LOGFILE
   exit 0
 fi
 
@@ -140,7 +140,7 @@ fi
 SEND_API_NOTIFICATION=0
 SEND_EMAIL_NOTIFICATION=0
 if [ $SEND_API_NOTIFICATION -eq 1 ]; then
-  curl -X POST -H "Content-Type: application/json" -d '{"type":"system","priority":"high","message":"NPM Self-Heal completed."}' http://localhost:3000/api/qcity/notifications
+  curl -X POST -H "Content-Type: application/json" -d '{"type":"system","priority":"high","message":"NPM Self-Heal completed."}' https://production.qmoi.ai:3000/api/qcity/notifications
 fi
 if [ $SEND_EMAIL_NOTIFICATION -eq 1 ]; then
   echo "NPM Self-Heal completed. See attached log." | mail -s "[QCity] NPM Self-Heal Run" -A $LOGFILE admin@yourdomain.com

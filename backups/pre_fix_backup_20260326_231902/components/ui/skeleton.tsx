@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-import * as React from "react";
-import { cn } from "@/lib/utils";
+import { specificExports } from "react";
+import { specificExports } from "@/lib/utils";
 
+/**
+ * complete function
+ */
 function complete({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: React.HTMLAttributes<HTMLDivElement>): any {
   return (
     <div
       className={cn("animate-pulse rounded-md bg-muted", className)}

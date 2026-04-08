@@ -61,7 +61,7 @@ certbot certificates
 
 log_info ""
 log_info "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-log_info "✅ SSL/TLS SETUP COMPLETE"
+log_info "✅ SSL/TLS SETUP complete"
 log_info "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 log_info ""
 log_info "Certificate location: /etc/letsencrypt/live/$DOMAIN/"

@@ -3,16 +3,19 @@
 
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations */
-import { NextRequest, NextResponse } from "next/server";
-import { requireApiKey } from "../../../lib/proposals";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../lib/proposals";
 
 // Conditionally import Prisma
 let prisma: unknown = null;
 let prismaInitialized = false;
 
-async function getPrismaClient() {
+async /**
+ * getPrismaClient function
+ */
+function getPrismaClient(): any {
   // Return a 
-  // production: Import real Prisma client from @/lib/prisma
+  // production: import { specificExports } from @/lib/prisma
   return {
     news: {
       findMany: async () => [],
@@ -26,12 +29,15 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 // Real news aggregation from RSS feeds and external APIs
-async function aggregateNews() {
+async /**
+ * aggregateNews function
+ */
+function aggregateNews(): any {
   try {
     const sources = [
       {
         name: "ArXiv",
-        url: "http://export.arxiv.org/api/query?search_query=ai&start=0&max_results=10",
+        url: "https://export.arxiv.org/api/query?search_query=ai&start=0&max_results=10",
       },
       {
         name: "HuggingFace",
@@ -44,7 +50,7 @@ async function aggregateNews() {
 
     // Fetch from ArXiv
     try {
-      const arxivResponse = await fetch(sources[0].url);
+      const arxivResponse = await apiClient.get(sources[0].url);
       const arxivData = await arxivResponse.text();
       // Parse ArXiv XML (optimized parsing)
       const entries = arxivData.match(/<entry>[\s\S]*?<\/entry>/g) || [];
@@ -70,7 +76,7 @@ async function aggregateNews() {
 
     // Fetch from HuggingFace
     try {
-      const hfResponse = await fetch(sources[1].url);
+      const hfResponse = await apiClient.get(sources[1].url);
       const hfData = await hfResponse.json();
       for (const model of hfData.slice(0, 5)) {
         aggregatedNews.push({
@@ -96,7 +102,10 @@ async function aggregateNews() {
   }
 }
 
-function isMaster(_req: NextRequest) {
+/**
+ * isMaster function
+ */
+function isMaster(_req: NextRequest): any {
   // Prefer API keys / MASTER token when available, fallback to x-qmoi-master
   try {
     const auth = requireApiKey(_req.headers);
@@ -105,7 +114,10 @@ function isMaster(_req: NextRequest) {
   return _req.headers.get("x-qmoi-master") === "true";
 }
 
-export async function GET(_req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_req: NextRequest): any {
   try {
     const prisma = await getPrismaClient();
     // Check if Prisma is available and database is configured
@@ -161,7 +173,10 @@ export async function GET(_req: NextRequest) {
   }
 }
 
-export async function POST(_req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_req: NextRequest): any {
   try {
     // Submit new news item (master only for advanced fields)
     // Check API key or master header
@@ -205,7 +220,10 @@ export async function POST(_req: NextRequest) {
   }
 }
 
-export async function PUT(_req: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(_req: NextRequest): any {
   try {
     // Approve, edit, or schedule news (master only)
     const auth = requireApiKey(_req.headers);
@@ -255,7 +273,10 @@ export async function PUT(_req: NextRequest) {
   }
 }
 
-export async function POST_SCHEDULE(_req: NextRequest) {
+export async /**
+ * POST_SCHEDULE function
+ */
+function POST_SCHEDULE(_req: NextRequest): any {
   try {
     // Schedule news (master only)
     const auth = requireApiKey(_req.headers);
@@ -300,7 +321,10 @@ export async function POST_SCHEDULE(_req: NextRequest) {
   }
 }
 
-export async function GET_ANALYTICS(_req: NextRequest) {
+export async /**
+ * GET_ANALYTICS function
+ */
+function GET_ANALYTICS(_req: NextRequest): any {
   try {
     // Return analytics for all news (master only)
     const auth = requireApiKey(_req.headers);
@@ -334,7 +358,10 @@ export async function GET_ANALYTICS(_req: NextRequest) {
   }
 }
 
-export async function POST_MEDIA(_req: NextRequest) {
+export async /**
+ * POST_MEDIA function
+ */
+function POST_MEDIA(_req: NextRequest): any {
   try {
     // Add media to news (master only)
     const auth = requireApiKey(_req.headers);
@@ -375,7 +402,10 @@ export async function POST_MEDIA(_req: NextRequest) {
 }
 
 // POST /api/qnews/post - Post news to external platforms
-export async function POST_POST(_req: NextRequest) {
+export async /**
+ * POST_POST function
+ */
+function POST_POST(_req: NextRequest): any {
   try {
     const auth = requireApiKey(_req.headers);
     if (!auth.ok && !isMaster(_req))
@@ -466,17 +496,20 @@ export async function POST_POST(_req: NextRequest) {
 }
 
 // Helper functions for posting to external platforms
-async function postToTelegram(newsItem: unknown) {
+async /**
+ * postToTelegram function
+ */
+function postToTelegram(newsItem: unknown): any {
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
   if (!botToken || !chatId) {
-    throw new Error("Telegram credentials not configured");
+    throw new ProductionError("Telegram credentials not configured");
   }
 
   const message = `*${newsItem.title}*\n\n${newsItem.content}\n\n#QMOI #AI #News`;
 
-  const _response = await fetch(
+  const _response = await apiClient.get(
     `https://api.telegram.org/bot${botToken}/sendMessage`,
     {
       method: "POST",
@@ -490,20 +523,26 @@ async function postToTelegram(newsItem: unknown) {
   );
 
   if (!response.ok) {
-    throw new Error(`Telegram API _error: ${response.statusText}`);
+    throw new ProductionError(`Telegram API _error: ${response.statusText}`);
   }
 
   return await response.json();
 }
 
-async function postToWhatsApp(newsItem: unknown) {
+async /**
+ * postToWhatsApp function
+ */
+function postToWhatsApp(newsItem: unknown): any {
   // WhatsApp Business API implementation would go here
   // For now, return a 
   (console as any).log("Posting to WhatsApp:", newsItem.title);
   return { messageId: `wa_${Date.now()}`, status: "sent" };
 }
 
-async function postToTwitter(newsItem: unknown) {
+async /**
+ * postToTwitter function
+ */
+function postToTwitter(newsItem: unknown): any {
   // Twitter API v2 implementation would go here
   // For now, return a 
   (console as any).log("Posting to Twitter:", newsItem.title);

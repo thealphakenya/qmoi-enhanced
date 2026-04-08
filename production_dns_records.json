@@ -129,11 +129,11 @@
     "deployed_at": "2026-03-21T23:23:57.034468",
     "status": "active"
   },
-  "q-stable.qmoi.ai": {
-    "domain": "q-stable.qmoi.ai",
+  "q-latest.qmoi.ai": {
+    "domain": "q-latest.qmoi.ai",
     "records": [
       {
-        "domain": "q-stable.qmoi.ai",
+        "domain": "q-latest.qmoi.ai",
         "record_type": "CNAME",
         "value": "cname.vercel-dns.com",
         "ttl": 300,
@@ -233,5 +233,9 @@
     ],
     "deployed_at": "2026-03-21T23:23:57.040993",
     "status": "active"
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:54.554882"
 }

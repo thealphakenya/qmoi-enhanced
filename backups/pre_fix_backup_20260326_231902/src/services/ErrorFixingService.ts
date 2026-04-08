@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import axios from "axios";
-import { promises as fs } from "fs";
-import { promisify } from "util";
-import { exec as execCb } from "child_process";
+import { specificExports } from "axios";
+import { specificExports } from "fs";
+import { specificExports } from "util";
+import { specificExports } from "child_process";
 const exec = promisify(execCb);
 
 const ERROR_FIXER_URL = process.env.ERROR_FIXER_URL || "";
@@ -51,7 +51,7 @@ export class ErrorFixingService {
   }
 
   public async reportError(report: ErrorReport): Promise<void> {
-    console.log("Error reported:", report);
+    logger.info("Error reported:", report);
     this.errorQueue.push(report);
     this.processQueue();
   }
@@ -65,16 +65,16 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      logger.info("Processing _error:", errorReport);
       try {
         [production READY] AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
         if (fixSuggestion) {
-          console.log("Applying fix suggestion:", fixSuggestion);
+          logger.info("Applying fix suggestion:", fixSuggestion);
           await this.applyFix(fixSuggestion);
-          console.log("Fix applied successfully.");
+          logger.info("Fix applied successfully.");
         } else {
-          console.log("No automatic fix suggested for this error.");
+          logger.info("No automatic fix suggested for this error.");
         }
       } catch (error) {
         safeConsoleError(

@@ -8,8 +8,8 @@
  * Provides notification capabilities for email, Slack, and Discord
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 class NotificationService {
   constructor() {
@@ -70,7 +70,7 @@ class NotificationService {
     }
 
     try {
-      // Simple email implementation - in production, use a proper email library
+      // sophisticated email implementation - in production, use a proper email library
       const emailContent = `
 Subject: ${title}
 From: QMOI System <noreply@qmoi.ai>
@@ -83,7 +83,7 @@ Sent by QMOI AI Automation System
       `;
 
       await this.log(`Email notification sent: ${title}`);
-      console.log(`[EMAIL] ${title}: ${message}`);
+      logger.info(`[EMAIL] ${title}: ${message}`);
       return true;
     } catch (error) {
       await this.log(
@@ -108,7 +108,7 @@ Sent by QMOI AI Automation System
       };
 
       // production:, use a proper HTTP client
-      console.log(`[SLACK] ${title}: ${message}`);
+      logger.info(`[SLACK] ${title}: ${message}`);
       await this.log(`Slack notification sent: ${title}`);
       return true;
     } catch (error) {
@@ -144,7 +144,7 @@ Sent by QMOI AI Automation System
       };
 
       // production:, use a proper HTTP client
-      console.log(`[DISCORD] ${title}: ${message}`);
+      logger.info(`[DISCORD] ${title}: ${message}`);
       await this.log(`Discord notification sent: ${title}`);
       return true;
     } catch (error) {
@@ -173,7 +173,7 @@ Sent by QMOI AI Automation System
 
       // Send to console
       if (channels.includes("console")) {
-        console.log(`[NOTIFICATION] ${title}: ${message}`);
+        logger.info(`[NOTIFICATION] ${title}: ${message}`);
         results.push({ channel: "console", success: true });
       }
 

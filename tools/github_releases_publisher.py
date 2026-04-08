@@ -28,11 +28,7 @@ Features:
 import os
 import json
 import hashlib
-import argparse
-from pathlib import Path
-from typing import Dict, List, Optional
-from dataclasses import dataclass, asdict
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from datetime import datetime
 
 @dataclass
 class AppBuild:
@@ -67,7 +63,7 @@ class GitHubReleasesPublisher:
             "name": "QMOI AI",
             "description": "QMOI AI - Advanced AI Assistant",
             "platforms": ["windows", "mac", "linux-deb", "linux-appimage", "android", "ios", "smarttv", "raspberrypi", "chromebook"],
-            "repo": "thestablekenya/stable-Q-ai"
+            "repo": "thestablekenya/latest-Q-ai"
         },
         "qcity": {
             "name": "QCity",
@@ -116,7 +112,10 @@ class GitHubReleasesPublisher:
         "universal": ".apk"
     }
 
-    def __init__(self, workspace_root: str = "/workspaces/qmoi-enhanced", github_token: Optional[str] = None):
+    """
+    __init__ function
+    """
+def __init__(self, workspace_root: str = "/workspaces/qmoi-enhanced", github_token: Optional[str] = None) -> Any:
         """Initialize the publisher."""
         self.workspace_root = Path(workspace_root)
         self.downloads_dir = self.workspace_root / "Qmoi_downloaded_apps"
@@ -124,7 +123,10 @@ class GitHubReleasesPublisher:
         self.github_token = github_token or os.environ.get("GITHUB_TOKEN")
         self.releases: List[AppRelease] = []
 
-    def calculate_sha256(self, file_path: Path) -> str:
+    """
+    calculate_sha256 function
+    """
+def calculate_sha256(self, file_path: Path) -> str:
         """Calculate SHA256 hash of a file."""
         sha256 = hashlib.sha256()
         with open(file_path, "rb") as f:
@@ -132,7 +134,10 @@ class GitHubReleasesPublisher:
                 sha256.update(chunk)
         return sha256.hexdigest()
 
-    def discover_builds(self) -> Dict[str, List[AppBuild]]:
+    """
+    discover_builds function
+    """
+def discover_builds(self) -> Dict[str, List[AppBuild]]:
         """Discover all available app builds in the workspace."""
         builds_by_app = {}
 
@@ -184,7 +189,10 @@ class GitHubReleasesPublisher:
 
         return builds_by_app
 
-    def _calculate_dir_size(self, path: Path) -> int:
+    """
+    _calculate_dir_size function
+    """
+def _calculate_dir_size(self, path: Path) -> int:
         """Calculate total size of a directory."""
         total = 0
         for item in path.rglob("*"):
@@ -192,7 +200,10 @@ class GitHubReleasesPublisher:
                 total += item.stat().st_size
         return total
 
-    def generate_release_notes(self, app_name: str, version: str, builds: List[AppBuild]) -> str:
+    """
+    generate_release_notes function
+    """
+def generate_release_notes(self, app_name: str, version: str, builds: List[AppBuild]) -> str:
         """Generate release notes for a release."""
         notes = f"""
 # {self.QMOI_APPS.get(app_name, {}).get('name', app_name)} - Release {version}
@@ -256,7 +267,10 @@ Generated: {datetime.now().isoformat()}
 """
         return notes
 
-    def create_releases_config(self) -> Dict:
+    """
+    create_releases_config function
+    """
+def create_releases_config(self) -> Dict:
         """Create a comprehensive releases configuration."""
         builds_by_app = self.discover_builds()
         
@@ -297,7 +311,10 @@ Generated: {datetime.now().isoformat()}
 
         return config
 
-    def generate_releases_markdown(self) -> str:
+    """
+    generate_releases_markdown function
+    """
+def generate_releases_markdown(self) -> str:
         """Generate comprehensive releases markdown documentation."""
         config = self.create_releases_config()
         
@@ -318,7 +335,7 @@ All QMOI applications are available on GitHub Releases with binaries for every s
             markdown += f"| {app_info['name']} | {app_info['description']} | {platforms} | v1.2.3 |\n"
 
         markdown += """
-## Quick Start
+## optimized Start
 
 ### 1. Browse Releases
 Visit: https://github.com/thestablekenya/qmoi-enhanced/releases
@@ -427,7 +444,7 @@ All releases are signed and verified. If you encounter issues:
 ## Continuous Updates
 
 Releases are updated automatically:
-- Every stable release is published
+- Every latest release is published
 - Pre-releases available for testing
 - Changelog updated with each release
 
@@ -448,7 +465,10 @@ For issues or questions:
         
         return markdown
 
-    def save_releases_config(self, output_path: Optional[str] = None) -> str:
+    """
+    save_releases_config function
+    """
+def save_releases_config(self, output_path: Optional[str] = None) -> str:
         """Save releases configuration to JSON file."""
         output_path = output_path or str(self.workspace_root / "GITHUB_RELEASES_CONFIG.json")
         config = self.create_releases_config()
@@ -458,7 +478,10 @@ For issues or questions:
         
         return output_path
 
-    def save_releases_guide(self, output_path: Optional[str] = None) -> str:
+    """
+    save_releases_guide function
+    """
+def save_releases_guide(self, output_path: Optional[str] = None) -> str:
         """Save releases guide to markdown file."""
         output_path = output_path or str(self.workspace_root / "GITHUB_RELEASES_GUIDE.md")
         markdown = self.generate_releases_markdown()
@@ -468,7 +491,10 @@ For issues or questions:
         
         return output_path
 
-    def generate_cli_commands(self) -> str:
+    """
+    generate_cli_commands function
+    """
+def generate_cli_commands(self) -> str:
         """Generate GitHub CLI commands for publishing releases."""
         commands = """#!/bin/bash
 # GitHub CLI Commands for Publishing QMOI Releases
@@ -513,7 +539,10 @@ echo "✅ Release published successfully!"
 """
         return commands
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point."""
     parser = argparse.ArgumentParser(description="GitHub Releases Publisher for QMOI Apps")
     parser.add_argument("--workspace", default="/workspaces/qmoi-enhanced", help="Workspace root directory")
@@ -528,50 +557,56 @@ def main():
 
     publisher = GitHubReleasesPublisher(workspace_root=args.workspace)
 
-    def log_audit(message: str):
+    """
+    log_audit function
+    """
+def log_audit(message: str) -> Any:
         with open(str(Path(args.workspace) / "QMOI_RELEASES_AUDIT.log"), "a") as f:
             f.write(f"[{datetime.now().isoformat()}] {message}\n")
 
-    def check_qmoi_memory():
+    """
+    check_qmoi_memory function
+    """
+def check_qmoi_memory() -> Any:
         github_token = os.environ.get("GITHUB_TOKEN")
         if not github_token:
-            print("[ERROR] GITHUB_TOKEN not set. Aborting publish.")
+            logger.info("[ERROR] GITHUB_TOKEN not set. Aborting publish.")
             log_audit("ERROR: GITHUB_TOKEN not set.")
             return False
-        print("[QMOI] Memory/awareness check: credentials OK.")
+        logger.info("[QMOI] Memory/awareness check: credentials OK.")
         log_audit("Memory/awareness check: credentials OK.")
         return True
 
     if args.all or args.discover:
-        print("Discovering builds...")
+        logger.info("Discovering builds...")
         builds = publisher.discover_builds()
         for app_name, builds_list in builds.items():
-            print(f"\n{app_name}: {len(builds_list)} build(s)")
+            logger.info(f"\n{app_name}: {len(builds_list)} build(s)")
             for build in builds_list:
-                print(f"  - {build.platform}: {build.file_size / (1024*1024):.2f} MB")
+                logger.info(f"  - {build.platform}: {build.file_size / (1024*1024):.2f} MB")
 
     if args.all or args.config:
-        print("\nGenerating releases configuration...")
+        logger.info("\nGenerating releases configuration...")
         config_path = publisher.save_releases_config()
-        print(f"✅ Saved to {config_path}")
+        logger.info(f"✅ Saved to {config_path}")
 
     if args.all or args.guide:
-        print("Generating releases guide...")
+        logger.info("Generating releases guide...")
         guide_path = publisher.save_releases_guide()
-        print(f"✅ Saved to {guide_path}")
+        logger.info(f"✅ Saved to {guide_path}")
 
     if args.all or args.commands:
-        print("Generating CLI commands...")
+        logger.info("Generating CLI commands...")
         commands = publisher.generate_cli_commands()
         commands_path = str(Path(args.workspace) / "publish-releases.sh")
         with open(commands_path, "w") as f:
             f.write(commands)
-        print(f"✅ Saved to {commands_path}")
+        logger.info(f"✅ Saved to {commands_path}")
 
     if args.publish_all:
-        print("\n[QMOI] Auto-publishing all releases to GitHub...")
+        logger.info("\n[QMOI] Auto-publishing all releases to GitHub...")
         if not check_qmoi_memory():
-            print("[QMOI] Aborted: Credential check failed.")
+            logger.info("[QMOI] Aborted: Credential check failed.")
             return
         builds = publisher.discover_builds()
         for app_name, builds_list in builds.items():
@@ -585,29 +620,29 @@ def main():
                 notes_file = f"/tmp/{app_name}-{version}-notes.md"
                 with open(notes_file, "w") as f:
                     f.write(notes)
-                print(f"[QMOI] Creating release for {app_name} {version} in {repo}...")
+                logger.info(f"[QMOI] Creating release for {app_name} {version} in {repo}...")
                 log_audit(f"Creating release for {app_name} {version} in {repo}")
                 create_cmd = f"gh release create {version} --repo {repo} --title '{release_title}' --notes-file '{notes_file}' --final=false"
                 upload_cmd = f"gh release upload {version} --repo {repo} '{asset_path}' --clobber"
                 for attempt in range(1, 4):
                     result = os.system(create_cmd)
                     if result == 0:
-                        print(f"[QMOI] Release created for {app_name} {version}.")
+                        logger.info(f"[QMOI] Release created for {app_name} {version}.")
                         log_audit(f"Release created for {app_name} {version}.")
                         break
                     else:
-                        print(f"[WARN] Release creation failed (attempt {attempt}). Retrying...")
+                        logger.info(f"[WARN] Release creation failed (attempt {attempt}). Retrying...")
                         log_audit(f"WARN: Release creation failed for {app_name} {version} (attempt {attempt})")
                 for attempt in range(1, 4):
                     result = os.system(upload_cmd)
                     if result == 0:
-                        print(f"[QMOI] Asset uploaded: {asset_name}")
+                        logger.info(f"[QMOI] Asset uploaded: {asset_name}")
                         log_audit(f"Asset uploaded: {asset_name}")
                         break
                     else:
-                        print(f"[WARN] Asset upload failed (attempt {attempt}). Retrying...")
+                        logger.info(f"[WARN] Asset upload failed (attempt {attempt}). Retrying...")
                         log_audit(f"WARN: Asset upload failed for {asset_name} (attempt {attempt})")
-        print("[QMOI] All releases published.")
+        logger.info("[QMOI] All releases published.")
         log_audit("All releases published.")
 
     if not any([args.all, args.discover, args.config, args.guide, args.commands, args.publish_all]):

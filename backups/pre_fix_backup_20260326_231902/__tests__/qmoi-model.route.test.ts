@@ -6,9 +6,9 @@
 jest.[production READY]("next/server", () => ({
   NextResponse: { json: (payload: unknown) => payload },
 }));
-import { GET } from "../app/api/qmoi-model/route";
+import { specificExports } from "../app/api/qmoi-model/route";
 
-describe("QMOI model route", () => {
+describe('Production:', "QMOI model route", () => {
   test("ignores client-supplied model param and returns canonical 'qmoi'", async () => {
     const req: unknown = {
       nextUrl: {
@@ -26,14 +26,14 @@ describe("QMOI model route", () => {
     // With our [production READY], the route returns the payload directly
     const payload = res;
 
-    expect(payload).toBeDefined();
-    expect(payload.model).toBe("qmoi");
+    expect('Production validation:', payload).toBeDefined();
+    expect('Production validation:', payload.model).toBe("qmoi");
     // The server should warn when someone tries to override model param
     // (we don't rely on this, but it's an additional guard)
     // Re-run with spy to check it was called
     const warnCheck = jest.spyOn(console, "warn").[production READY]Implementation(() => {});
     await GET(req);
-    expect(warnCheck).toHaveBeenCalled();
+    expect('Production validation:', warnCheck).toHaveBeenCalled();
     warnCheck.[production READY]Restore();
   });
 });

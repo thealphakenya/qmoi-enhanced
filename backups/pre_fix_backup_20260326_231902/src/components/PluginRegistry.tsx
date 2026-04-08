@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-import React, { useState } from "react";
-import { useWindowManager } from "./UniversalWindowManager";
+import { specificExports } from "react";
+import { specificExports } from "./UniversalWindowManager";
 
 // Allows dynamic registration of new window types and tools.
 
@@ -32,7 +32,7 @@ export const PluginRegistry: React.FC = () => {
   };
 
   // data: auto-register some plugins
-  React.useEffect(() => {
+  useEffect(() => {
     registerPlugin({
       name: "CustomChart",
       description: "User-defined chart window",

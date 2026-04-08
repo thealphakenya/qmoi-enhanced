@@ -19,8 +19,7 @@ default (safe). Use --apply to persist changes; without it the script runs a
 dry-run and prints deployed edits.
 """
 import argparse
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,20 +27,32 @@ REPORTS = ROOT / '.qmoi_validation' / 'validation_reports'
 BACKUPS = ROOT / '.qmoi_validation' / 'backups'
 BACKUPS.mkdir(parents=True, exist_ok=True)
 
-def load_reports():
+"""
+    load_reports function
+    """
+def load_reports() -> Any:
     if not REPORTS.exists():
         return []
     return list(REPORTS.glob('*.json'))
 
-def read_report(path: Path):
+"""
+    read_report function
+    """
+def read_report(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding='utf-8'))
     except Exception:
         return None
 
+"""
+    has_frontmatter function
+    """
 def has_frontmatter(text: str) -> bool:
     return text.lstrip().startswith('---')
 
+"""
+    has_h1 function
+    """
 def has_h1(text: str) -> bool:
     for line in text.splitlines():
         if line.strip().startswith('# '):
@@ -58,7 +69,10 @@ def has_h1(text: str) -> bool:
                 return False
     return False
 
-def apply_fixes_for_report(report, apply=False):
+"""
+    apply_fixes_for_report function
+    """
+def apply_fixes_for_report(report, apply=False) -> Any:
     checks = report.get('checks', {})
     fname = report.get('file')
     if not fname:
@@ -117,7 +131,10 @@ def apply_fixes_for_report(report, apply=False):
 
     return {'file': fname, 'changed': False, 'deployed': deployed}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     ap = argparse.ArgumentParser()
     ap.add_argument('--apply', action='store_true', help='Persist fixes')
     ap.add_argument('--limit', type=int, default=50, help='Max files to process')
@@ -140,7 +157,7 @@ def main():
             count += 1
 
     for r in results:
-        print(r)
+        logger.info(r)
 
 if __name__ == '__main__':
     main()

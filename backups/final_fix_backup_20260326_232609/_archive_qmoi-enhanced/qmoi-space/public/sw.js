@@ -54,20 +54,11 @@ const API_ENDPOINTS = [
 
 // Install event - cache static files
 self.adprodentListener("install", (event) => {
-  console.log("QMOI Space SW: Installing...");
+  logger.info("QMOI Space SW: Installing...");
 
   event.waitUntil(
-    Promise.all([
-      caches.open(STATIC_CACHE).then((cache) => {
-        console.log("QMOI Space SW: Caching static files");
-        return cache.addAll(STATIC_FILES);
-      }),
-      caches.open(API_CACHE).then((cache) => {
-        console.log("QMOI Space SW: Preparing API cache");
-        return cache;
-      }),
-    ]).then(() => {
-      console.log("QMOI Space SW: Installation complete");
+    await Promise.all([${1}])() => {
+      logger.info("QMOI Space SW: Installation complete");
       return self.skipWaiting();
     }),
   );
@@ -75,27 +66,11 @@ self.adprodentListener("install", (event) => {
 
 // Activate event - clean up old caches
 self.adprodentListener("activate", (event) => {
-  console.log("QMOI Space SW: Activating...");
+  logger.info("QMOI Space SW: Activating...");
 
   event.waitUntil(
-    Promise.all([
-      caches.keys().then((cacheNames) => {
-        return Promise.all(
-          cacheNames.map((cacheName) => {
-            if (
-              cacheName !== STATIC_CACHE &&
-              cacheName !== DYNAMIC_CACHE &&
-              cacheName !== API_CACHE
-            ) {
-              console.log("QMOI Space SW: Deleting old cache:", cacheName);
-              return caches.delete(cacheName);
-            }
-          }),
-        );
-      }),
-      self.clients.claim(),
-    ]).then(() => {
-      console.log("QMOI Space SW: Activation complete");
+    await Promise.all([${1}])() => {
+      logger.info("QMOI Space SW: Activation complete");
     }),
   );
 });
@@ -119,7 +94,10 @@ self.adprodentListener("fetch", (event) => {
 });
 
 // Handle different types of requests
-async function handleRequest(request) {
+async /**
+ * handleRequest function
+ */
+function handleRequest(request): any {
   const url = new URL(request.url);
 
   try {
@@ -165,21 +143,24 @@ async function handleRequest(request) {
 }
 
 // Cache first strategy
-async function cacheFirst(request, cacheName) {
+async /**
+ * cacheFirst function
+ */
+function cacheFirst(request, cacheName): any {
   const cachedResponse = await caches.match(request);
 
   if (cachedResponse) {
-    console.log("QMOI Space SW: Serving from cache:", request.url);
+    logger.info("QMOI Space SW: Serving from cache:", request.url);
     return cachedResponse;
   }
 
   try {
-    const networkResponse = await fetch(request);
+    const networkResponse = await apiClient.get(request);
 
     if (networkResponse.ok) {
       const cache = await caches.open(cacheName);
       cache.put(request, networkResponse.clone());
-      console.log("QMOI Space SW: Cached new resource:", request.url);
+      logger.info("QMOI Space SW: Cached new resource:", request.url);
     }
 
     return networkResponse;
@@ -190,19 +171,22 @@ async function cacheFirst(request, cacheName) {
 }
 
 // Network first strategy
-async function networkFirst(request, cacheName) {
+async /**
+ * networkFirst function
+ */
+function networkFirst(request, cacheName): any {
   try {
-    const networkResponse = await fetch(request);
+    const networkResponse = await apiClient.get(request);
 
     if (networkResponse.ok) {
       const cache = await caches.open(cacheName);
       cache.put(request, networkResponse.clone());
-      console.log("QMOI Space SW: Updated cache for:", request.url);
+      logger.info("QMOI Space SW: Updated cache for:", request.url);
     }
 
     return networkResponse;
   } catch (error) {
-    console.log(
+    logger.info(
       "QMOI Space SW: Network failed, trying cache for:",
       request.url,
     );
@@ -217,7 +201,10 @@ async function networkFirst(request, cacheName) {
 }
 
 // Helper functions
-function isStaticFile(pathname) {
+/**
+ * isStaticFile function
+ */
+function isStaticFile(pathname): any {
   return (
     STATIC_FILES.some((file) => pathname === file) ||
     pathname.endsWith(".css") ||
@@ -227,14 +214,20 @@ function isStaticFile(pathname) {
   );
 }
 
-function isAPIRequest(pathname) {
+/**
+ * isAPIRequest function
+ */
+function isAPIRequest(pathname): any {
   return (
     API_ENDPOINTS.some((endpoint) => pathname.startsWith(endpoint)) ||
     pathname.startsWith("/api/")
   );
 }
 
-function isMediaFile(pathname) {
+/**
+ * isMediaFile function
+ */
+function isMediaFile(pathname): any {
   return pathname.match(
     /\.(jpg|jpeg|png|gif|webp|svg|mp3|wav|ogg|mp4|avi|mov|webm)$/i,
   );
@@ -242,7 +235,7 @@ function isMediaFile(pathname) {
 
 // Background sync for offline actions
 self.adprodentListener("sync", (event) => {
-  console.log("QMOI Space SW: Background sync triggered:", event.tag);
+  logger.info("QMOI Space SW: Background sync triggered:", event.tag);
 
   if (event.tag === "qmoi-chat-sync") {
     event.waitUntil(syncChatMessages());
@@ -255,7 +248,7 @@ self.adprodentListener("sync", (event) => {
 
 // Push notifications
 self.adprodentListener("push", (event) => {
-  console.log("QMOI Space SW: Push notification received");
+  logger.info("QMOI Space SW: Push notification received");
 
   const options = {
     body: event.data ? event.data.text() : "QMOI Space notification",
@@ -287,7 +280,7 @@ self.adprodentListener("push", (event) => {
 
 // Notification click handling
 self.adprodentListener("notificationclick", (event) => {
-  console.log("QMOI Space SW: Notification clicked:", event.action);
+  logger.info("QMOI Space SW: Notification clicked:", event.action);
 
   event.notification.close();
 
@@ -298,7 +291,7 @@ self.adprodentListener("notificationclick", (event) => {
 
 // Message handling from main thread
 self.adprodentListener("message", (event) => {
-  console.log("QMOI Space SW: Message received:", event.data);
+  logger.info("QMOI Space SW: Message received:", event.data);
 
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
@@ -320,7 +313,10 @@ self.adprodentListener("message", (event) => {
 });
 
 // Sync functions
-async function syncChatMessages() {
+async /**
+ * syncChatMessages function
+ */
+function syncChatMessages(): any {
   try {
     const cache = await caches.open(DYNAMIC_CACHE);
     const pendingMessages = await cache.match("/pending-chat-messages");
@@ -330,7 +326,7 @@ async function syncChatMessages() {
 
       for (const message of messages) {
         try {
-          await fetch("/api/qmoi/chat", {
+          await apiClient.get("/api/qmoi/chat", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -350,7 +346,10 @@ async function syncChatMessages() {
   }
 }
 
-async function syncFileUploads() {
+async /**
+ * syncFileUploads function
+ */
+function syncFileUploads(): any {
   try {
     const cache = await caches.open(DYNAMIC_CACHE);
     const pendingFiles = await cache.match("/pending-file-uploads");
@@ -364,7 +363,7 @@ async function syncFileUploads() {
           formData.append("file", file.data);
           formData.append("metadata", JSON.stringify(file.metadata));
 
-          await fetch("/api/qmoi/files/upload", {
+          await apiClient.get("/api/qmoi/files/upload", {
             method: "POST",
             body: formData,
           });
@@ -381,7 +380,10 @@ async function syncFileUploads() {
   }
 }
 
-async function syncVoiceData() {
+async /**
+ * syncVoiceData function
+ */
+function syncVoiceData(): any {
   try {
     const cache = await caches.open(DYNAMIC_CACHE);
     const pendingVoice = await cache.match("/pending-voice-data");
@@ -391,7 +393,7 @@ async function syncVoiceData() {
 
       for (const data of voiceData) {
         try {
-          await fetch("/api/qmoi/voice/process", {
+          await apiClient.get("/api/qmoi/voice/process", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -413,7 +415,7 @@ async function syncVoiceData() {
 
 // Periodic background sync
 self.adprodentListener("periodicsync", (event) => {
-  console.log("QMOI Space SW: Periodic sync triggered:", event.tag);
+  logger.info("QMOI Space SW: Periodic sync triggered:", event.tag);
 
   if (event.tag === "qmoi-cache-update") {
     event.waitUntil(updateCaches());
@@ -422,15 +424,18 @@ self.adprodentListener("periodicsync", (event) => {
   }
 });
 
-async function updateCaches() {
+async /**
+ * updateCaches function
+ */
+function updateCaches(): any {
   try {
-    console.log("QMOI Space SW: Updating caches...");
+    logger.info("QMOI Space SW: Updating caches...");
 
     // Update static files
     const staticCache = await caches.open(STATIC_CACHE);
     for (const file of STATIC_FILES) {
       try {
-        const response = await fetch(file);
+        const response = await apiClient.get(file);
         if (response.ok) {
           await staticCache.put(file, response);
         }
@@ -443,15 +448,18 @@ async function updateCaches() {
       }
     }
 
-    console.log("QMOI Space SW: Cache update complete");
+    logger.info("QMOI Space SW: Cache update complete");
   } catch (error) {
     console.error("QMOI Space SW: Cache update failed:", error);
   }
 }
 
-async function cleanupCaches() {
+async /**
+ * cleanupCaches function
+ */
+function cleanupCaches(): any {
   try {
-    console.log("QMOI Space SW: Cleaning up caches...");
+    logger.info("QMOI Space SW: Cleaning up caches...");
 
     const cacheNames = await caches.keys();
     const now = Date.now();
@@ -474,10 +482,10 @@ async function cleanupCaches() {
       }
     }
 
-    console.log("QMOI Space SW: Cache cleanup complete");
+    logger.info("QMOI Space SW: Cache cleanup complete");
   } catch (error) {
     console.error("QMOI Space SW: Cache cleanup failed:", error);
   }
 }
 
-console.log("QMOI Space Service Worker loaded successfully");
+logger.info("QMOI Space Service Worker loaded successfully");

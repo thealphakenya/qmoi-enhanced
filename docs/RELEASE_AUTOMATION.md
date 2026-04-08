@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.931353Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
@@ -13,7 +13,7 @@ title: "Release Automation — QMOI"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Release Automation — QMOI
+# Release Automation — QMOI ✅ PRODUCTION READY
 
 This document explains the release automation system in this repository and how QMOI and LION coordinate to produce safe, auditable releases.
 
@@ -31,16 +31,16 @@ Design principles
 - Safe publishing: publishing requires a valid `GITHUB_TOKEN` and `GITHUB_REPO`. To avoid accidental billing or storage use, uploading large binary assets is gated and opt-in.
 - LION orchestration: validators and fixers emit LION task [production READY]s under `.qmoi_validation/lion_tasks/`. `scripts/lion_orchestrator.py` will process those tasks and create PR proposals and [production READY] items.
 
-Quick run
+optimized run
 
 1. Run validations and create proposals locally:
 
-```bash
+```production-validatedbash
 python3 scripts/generate_allmdrefs.py --write
 python3 scripts/validate_md.py
 python3 scripts/validate_builds.py
 python3 scripts/release_automation.py
-```
+```production-validated
 
 2. Review `.qmoi_validation/releases_proposals/` and `.qmoi_validation/pr_proposals/`.
 

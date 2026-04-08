@@ -3,16 +3,19 @@
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextApiRequest, NextApiResponse } from "next";
-import { WhatsAppService } from "../../../../scripts/services/whatsapp_service";
-import { logger } from "../../../../scripts/utils/logger";
+import { specificExports } from "next";
+import { specificExports } from "../../../../scripts/services/whatsapp_service";
+import { specificExports } from "../../../../scripts/utils/logger";
 
 const whatsappService = new WhatsAppService();
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   try {
     if (req.method === "GET") {
       const config = whatsappService.getConfig();

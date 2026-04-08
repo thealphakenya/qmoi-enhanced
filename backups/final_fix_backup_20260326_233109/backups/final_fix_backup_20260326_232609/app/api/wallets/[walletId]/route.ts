@@ -4,15 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import db from "@/lib/db/services";
-import authService from "@/lib/auth/service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/services";
+import { specificExports } from "@/lib/auth/service";
 
 // GET /api/wallets/:walletId - Get wallet details
-export async function GET(
+export async /**
+ * GET function
+ */
+function GET(
   _request: NextRequest,
   { _params }: { _params: Promise<{ walletId: string }> },
-) {
+): any {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
@@ -57,10 +60,13 @@ export async function GET(
 }
 
 // PUT /api/wallets/:walletId - Update wallet
-export async function PUT(
+export async /**
+ * PUT function
+ */
+function PUT(
   _request: NextRequest,
   { _params }: { _params: Promise<{ walletId: string }> },
-) {
+): any {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
@@ -123,10 +129,13 @@ export async function PUT(
 }
 
 // DELETE /api/wallets/:walletId - Delete wallet
-export async function DELETE(
+export async /**
+ * DELETE function
+ */
+function DELETE(
   _request: NextRequest,
   { _params }: { _params: Promise<{ walletId: string }> },
-) {
+): any {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {

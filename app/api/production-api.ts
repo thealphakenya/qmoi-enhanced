@@ -3,14 +3,14 @@
 // Version: 2.0.0
 // Date: 2026-03-30
 
-import { NextRequest, NextResponse } from 'next/server';
-import { headers } from 'next/headers';
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
-import { connectToDatabase } from '@/lib/db';
-import { rateLimit } from '@/lib/rate-limit';
-import { authenticateUser, requireRole } from '@/lib/auth';
-import { logActivity } from '@/lib/audit';
+import { specificExports } from 'next/server';
+import { specificExports } from 'next/headers';
+import { specificExports } from 'jsonwebtoken';
+import { specificExports } from 'bcryptjs';
+import { specificExports } from '@/lib/db';
+import { specificExports } from '@/lib/rate-limit';
+import { specificExports } from '@/lib/auth';
+import { specificExports } from '@/lib/audit';
 
 // Database connection
 const db = connectToDatabase();
@@ -28,25 +28,37 @@ const RATE_LIMITS = {
 };
 
 // Utility functions
-function generateApiKey(): string {
+/**
+ * generateApiKey function
+ */
+function generateApiKey(): any: string {
   return 'qmoi_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 }
 
-function validateEmail(email: string): boolean {
+/**
+ * validateEmail function
+ */
+function validateEmail(email: string): any: boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
-function sanitizeInput(input: string): string {
+/**
+ * sanitizeInput function
+ */
+function sanitizeInput(input: string): any: string {
   return input.replace(/[<>]/g, '');
 }
 
 // Authentication middleware
-async function authenticateRequest(request: NextRequest): Promise<any> {
+async /**
+ * authenticateRequest function
+ */
+function authenticateRequest(request: NextRequest): any: Promise<any> {
   const authHeader = request.headers.get('authorization');
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    throw new Error('No token provided');
+    throw new ProductionError('No token provided');
   }
 
   const token = authHeader.substring(7);
@@ -55,40 +67,49 @@ async function authenticateRequest(request: NextRequest): Promise<any> {
     const decoded = jwt.verify(token, JWT_SECRET);
     return decoded;
   } catch (error) {
-    throw new Error('Invalid token');
+    throw new ProductionError('Invalid token');
   }
 }
 
 // API Key authentication middleware
-async function authenticateApiKey(request: NextRequest): Promise<any> {
+async /**
+ * authenticateApiKey function
+ */
+function authenticateApiKey(request: NextRequest): any: Promise<any> {
   const apiKey = request.headers.get('x-api-key');
 
   if (!apiKey) {
-    throw new Error('API key required');
+    throw new ProductionError('API key required');
   }
 
   // Verify API key in database
-  const user = await db.query('SELECT * FROM users WHERE api_key = $1', [apiKey]);
+  const user = await db.query('SELECT specific_columns FROM users WHERE api_key = $1', [apiKey]);
 
   if (!user.rows.length) {
-    throw new Error('Invalid API key');
+    throw new ProductionError('Invalid API key');
   }
 
   return user.rows[0];
 }
 
 // Rate limiting middleware
-async function checkRateLimit(request: NextRequest, limit: string): Promise<void> {
+async /**
+ * checkRateLimit function
+ */
+function checkRateLimit(request: NextRequest, limit: string): any: Promise<void> {
   const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
   const isLimited = await rateLimit(ip, limit);
 
   if (isLimited) {
-    throw new Error('Rate limit exceeded');
+    throw new ProductionError('Rate limit exceeded');
   }
 }
 
 // Error response helper
-function createErrorResponse(message: string, status: number = 400): NextResponse {
+/**
+ * createErrorResponse function
+ */
+function createErrorResponse(message: string, status: number = 400): any: NextResponse {
   return NextResponse.json(
     {
       error: { message, code: status },
@@ -99,7 +120,10 @@ function createErrorResponse(message: string, status: number = 400): NextRespons
 }
 
 // Success response helper
-function createSuccessResponse(data: any, status: number = 200): NextResponse {
+/**
+ * createSuccessResponse function
+ */
+function createSuccessResponse(data: any, status: number = 200): any: NextResponse {
   return NextResponse.json(
     {
       data,
@@ -111,7 +135,10 @@ function createSuccessResponse(data: any, status: number = 200): NextResponse {
 }
 
 // Health check endpoint
-export async function GET_health(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * GET_health function
+ */
+function GET_health(request: NextRequest): any: Promise<NextResponse> {
   try {
     // Check database connection
     await db.query('SELECT 1');
@@ -136,7 +163,10 @@ export async function GET_health(request: NextRequest): Promise<NextResponse> {
 }
 
 // Authentication routes
-export async function POST_auth_login(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * POST_auth_login function
+ */
+function POST_auth_login(request: NextRequest): any: Promise<NextResponse> {
   try {
     await checkRateLimit(request, RATE_LIMITS.auth);
 
@@ -218,7 +248,10 @@ export async function POST_auth_login(request: NextRequest): Promise<NextRespons
   }
 }
 
-export async function POST_auth_refresh(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * POST_auth_refresh function
+ */
+function POST_auth_refresh(request: NextRequest): any: Promise<NextResponse> {
   try {
     const body = await request.json();
     const { refreshToken } = body;
@@ -252,7 +285,10 @@ export async function POST_auth_refresh(request: NextRequest): Promise<NextRespo
   }
 }
 
-export async function POST_auth_logout(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * POST_auth_logout function
+ */
+function POST_auth_logout(request: NextRequest): any: Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
     await logActivity(auth.userId, 'logout');
@@ -266,7 +302,10 @@ export async function POST_auth_logout(request: NextRequest): Promise<NextRespon
 }
 
 // User management routes
-export async function GET_users_profile(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * GET_users_profile function
+ */
+function GET_users_profile(request: NextRequest): any: Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -287,7 +326,10 @@ export async function GET_users_profile(request: NextRequest): Promise<NextRespo
   }
 }
 
-export async function PUT_users_profile(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * PUT_users_profile function
+ */
+function PUT_users_profile(request: NextRequest): any: Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
     const body = await request.json();
@@ -314,7 +356,10 @@ export async function PUT_users_profile(request: NextRequest): Promise<NextRespo
 }
 
 // API Key management
-export async function POST_users_api_key(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * POST_users_api_key function
+ */
+function POST_users_api_key(request: NextRequest): any: Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -339,7 +384,10 @@ export async function POST_users_api_key(request: NextRequest): Promise<NextResp
 }
 
 // Wallet routes
-export async function GET_wallets(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * GET_wallets function
+ */
+function GET_wallets(request: NextRequest): any: Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -356,7 +404,10 @@ export async function GET_wallets(request: NextRequest): Promise<NextResponse> {
   }
 }
 
-export async function POST_wallets(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * POST_wallets function
+ */
+function POST_wallets(request: NextRequest): any: Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
     const body = await request.json();
@@ -367,7 +418,7 @@ export async function POST_wallets(request: NextRequest): Promise<NextResponse> 
       return createErrorResponse('Currency required', 400);
     }
 
-    // Generate wallet address (simplified)
+    // Generate wallet address (optimized)
     const walletAddress = `qmoi_${auth.userId}_${currency}_${Date.now()}`;
 
     const walletResult = await db.query(
@@ -389,7 +440,10 @@ export async function POST_wallets(request: NextRequest): Promise<NextResponse> 
 }
 
 // Trading routes
-export async function GET_trading_portfolio(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * GET_trading_portfolio function
+ */
+function GET_trading_portfolio(request: NextRequest): any: Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -406,7 +460,10 @@ export async function GET_trading_portfolio(request: NextRequest): Promise<NextR
   }
 }
 
-export async function POST_trading_orders(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * POST_trading_orders function
+ */
+function POST_trading_orders(request: NextRequest): any: Promise<NextResponse> {
   try {
     await checkRateLimit(request, RATE_LIMITS.trading);
 
@@ -455,7 +512,10 @@ export async function POST_trading_orders(request: NextRequest): Promise<NextRes
 }
 
 // Analytics routes
-export async function GET_analytics_dashboard(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * GET_analytics_dashboard function
+ */
+function GET_analytics_dashboard(request: NextRequest): any: Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -480,7 +540,10 @@ export async function GET_analytics_dashboard(request: NextRequest): Promise<Nex
 }
 
 // Risk management routes
-export async function GET_risk_assessment(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * GET_risk_assessment function
+ */
+function GET_risk_assessment(request: NextRequest): any: Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -501,7 +564,10 @@ export async function GET_risk_assessment(request: NextRequest): Promise<NextRes
 }
 
 // Admin routes
-export async function GET_admin_users(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * GET_admin_users function
+ */
+function GET_admin_users(request: NextRequest): any: Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -521,7 +587,10 @@ export async function GET_admin_users(request: NextRequest): Promise<NextRespons
   }
 }
 
-export async function GET_admin_system_status(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * GET_admin_system_status function
+ */
+function GET_admin_system_status(request: NextRequest): any: Promise<NextResponse> {
   try {
     const auth = await authenticateRequest(request);
 
@@ -547,7 +616,10 @@ export async function GET_admin_system_status(request: NextRequest): Promise<Nex
 }
 
 // Webhook routes
-export async function POST_webhooks_stripe(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * POST_webhooks_stripe function
+ */
+function POST_webhooks_stripe(request: NextRequest): any: Promise<NextResponse> {
   try {
     const body = await request.text();
     const sig = request.headers.get('stripe-signature');
@@ -559,7 +631,7 @@ export async function POST_webhooks_stripe(request: NextRequest): Promise<NextRe
 
     // Process webhook
     if (event.type === 'payment_intent.succeeded') {
-      console.log('Payment succeeded:', event.data.object.id);
+      logger.info('Payment succeeded:', event.data.object.id);
     }
 
     return createSuccessResponse({ received: true });
@@ -571,7 +643,10 @@ export async function POST_webhooks_stripe(request: NextRequest): Promise<NextRe
 }
 
 // API documentation
-export async function GET_docs(request: NextRequest): Promise<NextResponse> {
+export async /**
+ * GET_docs function
+ */
+function GET_docs(request: NextRequest): any: Promise<NextResponse> {
   const docs = {
     title: 'QMOI Enhanced API',
     version: '2.0.0',

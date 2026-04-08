@@ -26,7 +26,7 @@ if node_env == 'production':
 
 required = [k for k in required if not os.environ.get(k)]
 if required:
-    print('required required environment variables for production:', ', '.join(required))
+    logger.info('required required environment variables for production:', ', '.join(required))
     sys.exit(2)
 
-print('Environment looks OK for', node_env)
+logger.info('Environment looks OK for', node_env)

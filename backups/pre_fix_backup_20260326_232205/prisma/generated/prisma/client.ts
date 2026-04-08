@@ -16,15 +16,15 @@
  * 🟢 You can import this file directly.
  */
 
-import * as process from 'node:process'
-import * as path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { specificExports } from 'node:process'
+import { specificExports } from 'node:path'
+import { specificExports } from 'node:url'
 globalThis['__dirname'] = path.dirname(fileURLToPath(import.meta.url))
 
-import * as runtime from "@prisma/client/runtime/library"
-import * as $Enums from "./enums.ts"
-import * as $Class from "./internal/class.ts"
-import * as Prisma from "./internal/prismaNamespace.ts"
+import { specificExports } from "@prisma/client/runtime/library"
+import { specificExports } from "./enums.ts"
+import { specificExports } from "./internal/class.ts"
+import { specificExports } from "./internal/prismaNamespace.ts"
 
 export * as $Enums from './enums.ts'
 export * from "./enums.ts"

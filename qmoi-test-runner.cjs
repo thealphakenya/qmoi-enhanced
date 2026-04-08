@@ -5,11 +5,11 @@
  * Tests all aspects of QMOI functionality as specified in newtests.txt
  */
 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 class QMOITestRunner {
-  constructor(baseUrl = "http://localhost:3000") {
+  constructor(baseUrl = "https://production.qmoi.ai:3000") {
     this.baseUrl = baseUrl;
     this.results = {
       passed: 0,
@@ -23,14 +23,14 @@ class QMOITestRunner {
   async runTest(testCase) {
     const startTime = Date.now();
     try {
-      const response = await fetch(`${this.baseUrl}/api/qmoi/chat`, {
+      const response = await apiClient.get(`${this.baseUrl}/api/qmoi/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: testCase.prompt }),
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        throw new ProductionError(`HTTP ${response.status}: ${response.statusText}`);
       }
 
       const data = await response.json();
@@ -98,28 +98,28 @@ class QMOITestRunner {
   }
 
   async runAllTests() {
-    console.log("🚀 Starting QMOI Comprehensive Test Suite\n");
+    logger.info("🚀 Starting QMOI Comprehensive Test Suite\n");
 
     const testSuites = this.getTestSuites();
 
     for (const [category, tests] of Object.entries(testSuites)) {
-      console.log(`\n📋 Running ${category} tests...`);
+      logger.info(`\n📋 Running ${category} tests...`);
       const categoryResults = [];
 
       for (const test of tests) {
-        console.log(`  Testing: ${test.name}`);
+        logger.info(`  Testing: ${test.name}`);
         const result = await this.runTest(test);
         categoryResults.push(result);
 
         this.results.total++;
         if (result.passed) {
           this.results.passed++;
-          console.log(`    ✅ PASSED (${result.responseTime}ms)`);
+          logger.info(`    ✅ PASSED (${result.responseTime}ms)`);
         } else {
           this.results.failed++;
-          console.log(`    ❌ FAILED (${result.responseTime}ms)`);
+          logger.info(`    ❌ FAILED (${result.responseTime}ms)`);
           if (result.error) {
-            console.log(`       Error: ${result.error}`);
+            logger.info(`       Error: ${result.error}`);
           }
         }
 
@@ -270,32 +270,32 @@ class QMOITestRunner {
   }
 
   printResults() {
-    console.log("\n" + "=".repeat(60));
-    console.log("📊 QMOI TEST RESULTS SUMMARY");
-    console.log("=".repeat(60));
+    logger.info("\n" + "=".repeat(60));
+    logger.info("📊 QMOI TEST RESULTS SUMMARY");
+    logger.info("=".repeat(60));
 
-    console.log(`\n✅ Passed: ${this.results.passed}`);
-    console.log(`❌ Failed: ${this.results.failed}`);
-    console.log(`📈 Total: ${this.results.total}`);
-    console.log(
+    logger.info(`\n✅ Passed: ${this.results.passed}`);
+    logger.info(`❌ Failed: ${this.results.failed}`);
+    logger.info(`📈 Total: ${this.results.total}`);
+    logger.info(
       `🎯 Success Rate: ${((this.results.passed / this.results.total) * 100).toFixed(1)}%`,
     );
 
-    console.log("\n🏆 CATEGORY SCORES (1-10 scale):");
+    logger.info("\n🏆 CATEGORY SCORES (1-10 scale):");
     for (const [category, score] of Object.entries(this.results.scores)) {
       const stars = "⭐".repeat(Math.round(score / 2));
-      console.log(`  ${category}: ${score}/10 ${stars}`);
+      logger.info(`  ${category}: ${score}/10 ${stars}`);
     }
 
-    console.log("\n📋 FAILED TESTS:");
+    logger.info("\n📋 FAILED TESTS:");
     const failedTests = this.results.details.filter((r) => !r.passed);
     if (failedTests.length === 0) {
-      console.log("  🎉 All tests passed!");
+      logger.info("  🎉 All tests passed!");
     } else {
-      failedTests.forEach((test) => {
-        console.log(`  ❌ ${test.name}`);
+      failedTests.for (const item of((test) => {
+        logger.info(`  ❌ ${test.name}`);
         if (test.error) {
-          console.log(`     Error: ${test.error}`);
+          logger.info(`     Error: ${test.error}`);
         }
       });
     }
@@ -318,7 +318,7 @@ class QMOITestRunner {
     };
 
     fs.writeFileSync(filename, JSON.stringify(resultsData, null, 2));
-    console.log(`\n💾 Detailed results saved to: ${filename}`);
+    logger.info(`\n💾 Detailed results saved to: ${filename}`);
   }
 }
 
@@ -327,15 +327,15 @@ if (require.main === module) {
   const runner = new QMOITestRunner();
 
   // Check if server is running
-  console.log("🔍 Checking if QMOI server is running...");
-  fetch("http://localhost:3000/api/health")
+  logger.info("🔍 Checking if QMOI server is running...");
+  apiClient.get("https://production.qmoi.ai:3000/api/health")
     .then(() => {
-      console.log("✅ Server is running, starting tests...");
+      logger.info("✅ Server is running, starting tests...");
       return runner.runAllTests();
     })
     .catch(() => {
-      console.log("❌ Server not running on localhost:3000");
-      console.log("💡 Make sure to run: npm run dev");
+      logger.info("❌ Server not running on production.qmoi.ai:3000");
+      logger.info("💡 Make sure to run: npm run dev");
       process.exit(1);
     });
 }

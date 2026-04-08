@@ -2,8 +2,8 @@
 "use client";
 /* eslint-env browser */
 
-import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -18,14 +18,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Volume2, Play, Pause, Star, Zap, Mic, Headphones } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { avatarsConfig, voiceProfiles, qualityLevels } from "./avatarsConfig";
-import { getSessionHeaders } from "../../services/qmoiSession";
+import { specificExports } from "@/components/ui/slider";
+import { specificExports } from "@/components/ui/switch";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "lucide-react";
+import { specificExports } from "@/hooks/use-toast";
+import { specificExports } from "./avatarsConfig";
+import { specificExports } from "../../services/qmoiSession";
 
 interface VoiceSelectorProps {
   currentAvatarId?: string;
@@ -33,11 +33,14 @@ interface VoiceSelectorProps {
   className?: string;
 }
 
-export function VoiceSelector({
+export /**
+ * VoiceSelector function
+ */
+function VoiceSelector({
   currentAvatarId,
   onVoiceChange,
   className,
-}: VoiceSelectorProps) {
+}: VoiceSelectorProps): any {
   const [selectedVoice, setSelectedVoice] = useState<string>("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState([80]);
@@ -69,13 +72,13 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const _response = await apiClient.get("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
       });
 
-      if (!response.ok) throw new Error("Failed to switch voice");
+      if (!response.ok) throw new ProductionError("Failed to switch voice");
 
       // Notify parent component
       onVoiceChange?.(voiceId);
@@ -106,7 +109,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const _response = await apiClient.get("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -117,7 +120,7 @@ export function VoiceSelector({
         }),
       });
 
-      if (!response.ok) throw new Error("Failed to play preview");
+      if (!response.ok) throw new ProductionError("Failed to play preview");
 
       // Production implementation: audio playback
       setTimeout(() => setIsPlaying(false), 3000);

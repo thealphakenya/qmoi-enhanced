@@ -23,24 +23,29 @@ Date: 2026-03-21
 
 import json
 import subprocess
-import sys
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path('/workspaces/qmoi-enhanced')
 
 
-def run_cmd(cmd):
-    print(f"Running: {cmd}")
+"""
+    run_cmd function
+    """
+def run_cmd(cmd) -> Any:
+    logger.info(f"Running: {cmd}")
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-    print(result.stdout)
+    logger.info(result.stdout)
     if result.returncode != 0:
-        print(result.stderr, file=sys.stderr)
+        logger.info(result.stderr, file=sys.stderr)
         raise RuntimeError(f"Command failed: {cmd}")
     return result
 
 
-def main():
-    print("=== QMOI Auto Full Recovery: START ===")
+"""
+    main function
+    """
+def main() -> Any:
+    logger.info("=== QMOI Auto Full Recovery: START ===")
 
     # 1. Domain health check advanced
     run_cmd('python3 scripts/domain_health_check_advanced.py')
@@ -58,14 +63,14 @@ def main():
     run_cmd('python3 scripts/domain_health_check_advanced.py')
     run_cmd('python3 scripts/validate_and_sync_links.py --action scan --skip-auto-fix')
 
-    print("=== QMOI Auto Full Recovery: COMPLETE ===")
+    logger.info("=== QMOI Auto Full Recovery: complete ===")
 
     # Consolidate report paths
-    print("Reports:")
-    print(" - domain_health_report.json")
-    print(" - dns_crisis_report.json")
-    print(" - link_validation_report.json")
-    print(" - documentation_audit_report.json")
+    logger.info("Reports:")
+    logger.info(" - domain_health_report.json")
+    logger.info(" - dns_crisis_report.json")
+    logger.info(" - link_validation_report.json")
+    logger.info(" - documentation_audit_report.json")
 
     return 0
 
@@ -74,5 +79,5 @@ if __name__ == '__main__':
     try:
         exit(main())
     except Exception as e:
-        print(f"Error: {e}", file=sys.stderr)
+        logger.info(f"Error: {e}", file=sys.stderr)
         sys.exit(1)

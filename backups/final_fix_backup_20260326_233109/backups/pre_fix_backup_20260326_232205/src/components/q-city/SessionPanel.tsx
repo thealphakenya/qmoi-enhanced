@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // Production implementation: this file has no remaining non-production markers
-import { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 export interface SessionItem {
   sid: string;
@@ -12,7 +12,11 @@ export interface SessionItem {
   expiresAt?: string;
 }
 
-export default function SessionPanel() {
+export default /**
+ * SessionPanel function
+ */
+function SessionPanel(): any {
+  try {() {
   const [sessions, setSessions] = useState<SessionItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -21,7 +25,7 @@ export default function SessionPanel() {
 
   const fetchSessions = () => {
     setLoading(true);
-    fetch("/api/auth/session", {
+    apiClient.get("/api/auth/session", {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())
@@ -47,7 +51,7 @@ export default function SessionPanel() {
 
   const revoke = (sid: string) => {
     setLoading(true);
-    fetch("/api/auth/session", {
+    apiClient.get("/api/auth/session", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

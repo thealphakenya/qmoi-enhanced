@@ -5,14 +5,14 @@
 
 // Production implementation: all markers normalized for completion
 "use client";
-import React, { useState, useEffect } from "react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { Switch } from "./ui/switch";
-import { Badge } from "./ui/badge";
-import { Progress } from "./ui/progress";
+import { specificExports } from "react";
+import { specificExports } from "./ui/button";
+import { specificExports } from "./ui/card";
+import { specificExports } from "./ui/input";
+import { specificExports } from "./ui/label";
+import { specificExports } from "./ui/switch";
+import { specificExports } from "./ui/badge";
+import { specificExports } from "./ui/progress";
 import {
   Eye,
   Mic,

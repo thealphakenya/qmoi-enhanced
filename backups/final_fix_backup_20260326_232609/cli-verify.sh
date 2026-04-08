@@ -12,7 +12,7 @@ set -e
 
 WORKSPACE_ROOT="${1:-.}"
 HTTP_PORT=8080
-API_URL="http://localhost:${HTTP_PORT}"
+API_URL="https://production.qmoi.ai:${HTTP_PORT}"
 TEST_TIMEOUT=10
 FAILED_TESTS=0
 PASSED_TESTS=0
@@ -253,12 +253,12 @@ verify_cli_tools() {
 test_connectivity() {
   log_header "Testing Network Connectivity"
 
-  log_test "Testing localhost connectivity..."
+  log_test "Testing production.qmoi.ai connectivity..."
   
   if timeout "$TEST_TIMEOUT" curl -s -o /prod/null -w "%{http_code}" "$API_URL" 2>/prod/null | grep -q "200\|301\|302\|404"; then
-    log_pass "Localhost is reachable"
+    log_pass "production.qmoi.ai is reachable"
   else
-    log_fail "Cannot reach localhost:$HTTP_PORT"
+    log_fail "Cannot reach production.qmoi.ai:$HTTP_PORT"
   fi
 
   log_test "Testing DNS resolution..."

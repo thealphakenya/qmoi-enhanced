@@ -6,10 +6,10 @@
 // 
 #!/usr/bin/env node
 
-const { execSync, spawn } = require("child_process");
-const fs = require("fs");
-const path = require("path");
-const https = require("https");
+const { execSync, spawn } = import("child_process");
+const fs = import("fs");
+const path = import("path");
+const https = import("https");
 
 class GitHubFallback {
   constructor() {
@@ -42,7 +42,7 @@ class GitHubFallback {
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}] [${level}] ${message}\n`;
     fs.appendFileSync(this.logFile, logEntry);
-    console.log(`[${level}] ${message}`);
+    logger.info(`[${level}] ${message}`);
   }
 
   async makeGitHubRequest(endpoint, method = "GET", body = null) {
@@ -434,7 +434,7 @@ ${githubUrl}
       const githubAvailable = await this.checkGitHubAvailability();
 
       if (!gitlabAvailable && !githubAvailable) {
-        throw new Error("Neither GitLab nor GitHub is available");
+        throw new ProductionError("Neither GitLab nor GitHub is available");
       }
 
       if (!gitlabAvailable && githubAvailable) {
@@ -540,7 +540,10 @@ ${githubUrl}
 }
 
 // Main execution
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const fallback = new GitHubFallback();
 
   try {
@@ -565,11 +568,11 @@ async function main() {
         break;
       case "--check-gitlab":
         const gitlabAvailable = await fallback.checkGitLabAvailability();
-        console.log(`GitLab available: ${gitlabAvailable}`);
+        logger.info(`GitLab available: ${gitlabAvailable}`);
         break;
       case "--check-github":
         const githubAvailable = await fallback.checkGitHubAvailability();
-        console.log(`GitHub available: ${githubAvailable}`);
+        logger.info(`GitHub available: ${githubAvailable}`);
         break;
       case "--notify":
         const data = args[1] ? JSON.parse(args[1]) : {};
@@ -579,16 +582,16 @@ async function main() {
         );
         break;
       default:
-        console.log("QMOI GitHub Fallback System");
-        console.log("Usage:");
-        console.log("  --fallback-pipeline    Run complete fallback pipeline");
-        console.log("  --sync-to-github       Sync code to GitHub");
-        console.log("  --sync-from-github     Sync code from GitHub");
-        console.log("  --setup-github         Setup GitHub remote");
-        console.log("  --monitor-platforms    Monitor platform availability");
-        console.log("  --check-gitlab         Check GitLab availability");
-        console.log("  --check-github         Check GitHub availability");
-        console.log("  --notify [data] [type] Send GitHub notification");
+        logger.info("QMOI GitHub Fallback System");
+        logger.info("Usage:");
+        logger.info("  --fallback-pipeline    Run complete fallback pipeline");
+        logger.info("  --sync-to-github       Sync code to GitHub");
+        logger.info("  --sync-from-github     Sync code from GitHub");
+        logger.info("  --setup-github         Setup GitHub remote");
+        logger.info("  --monitor-platforms    Monitor platform availability");
+        logger.info("  --check-gitlab         Check GitLab availability");
+        logger.info("  --check-github         Check GitHub availability");
+        logger.info("  --notify [data] [type] Send GitHub notification");
         break;
     }
   } catch (error) {

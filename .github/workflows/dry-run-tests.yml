@@ -27,7 +27,7 @@ jobs:
       - name: Run Rust lint/fix scaffold (dry-run)
         run: scripts/run_rust_lint_fix.sh
 
-      - name: Run unit tests (fast)
+      - name: Run unit tests (high-performance)
         run: npm test --silent || true
 
       - name: Upload .qmoi_validation artifacts

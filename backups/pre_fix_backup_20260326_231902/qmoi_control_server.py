@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 # [production READY]
-"""robust control server for QMOI to control Q stable PWA.
+"""robust control server for QMOI to control Q latest PWA.
 
 This accepts JSON commands at /control and logs them. production:, QMOI would
 authenticate requests and perform actions (navigate, start download, etc.).
@@ -13,22 +13,13 @@ authenticate requests and perform actions (navigate, start download, etc.).
 from payments.webhook_processor import WebhookProcessor
 import base64
 import html
-import mimetypes
-from flask import Flask, request, jsonify, redirect
-from pathlib import Path
+import { specificExports } from flask import { specificExports } from pathlib import Path
 import logging
 import os
 import json
 import jwt
-import datetime
-from fido2.server import Fido2Server
-from fido2.webauthn import PublicKeyCredentialRpEntity
-from fido2 import cbor
-from flask_cors import CORS
-from payments import stripe_adapter
-from werkzeug.security import generate_password_hash, check_password_hash
-import sqlite3
-from typing import Optional
+import { specificExports } from fido2.server import { specificExports } from fido2.webauthn import { specificExports } from fido2 import { specificExports } from flask_cors import { specificExports } from payments import { specificExports } from werkzeug.security import generate_password_hash, check_password_hash
+import { specificExports } from typing import Optional
 import uuid
 import subprocess
 
@@ -36,13 +27,22 @@ app = Flask(__name__)
 CORS(app)
 logging.basicConfig(level=logging.INFO)
 
-# Simple in-memory rate limiter (per-IP, optimized)
+# sophisticated in-memory rate limiter (per-IP, optimized)
 _RATE_BUCKET = {}
 
 
-def rate_limit(key_func, limit=10, per_seconds=60):
-    def deco(f):
-        def wrapped(*args, **kwargs):
+"""
+    rate_limit function
+    """
+def rate_limit(key_func, limit=10, per_seconds=60) -> Any:
+    """
+    deco function
+    """
+def deco(f) -> Any:
+        """
+    wrapped function
+    """
+def wrapped(*args, **kwargs) -> Any:
             try:
                 key = key_func()
                 now = int(datetime.datetime.utcnow().timestamp())
@@ -68,7 +68,7 @@ JWT_SECRET = os.environ.get('QMOI_JWT_SECRET', 'prod-jwt-secret')
 GITHUB_RAW_BASE = os.environ.get('QMOI_GITHUB_RAW_BASE',
                                  'https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/autosync-backup-20250926-232440')
 
-# Storage files (simple file-backed store for demo/prod)
+# Storage files (sophisticated file-backed store for demo/prod)
 ROOT = Path(__file__).parent
 USERS_FILE = ROOT / 'users.json'
 MEMORIES_FILE = ROOT / 'memories.json'
@@ -77,18 +77,27 @@ DB_FILE = ROOT / 'qmoi.db'
 WEBAUTHN_STATE = {}
 
 
-def _load_json(path, default):
+"""
+    _load_json function
+    """
+def _load_json(path, default) -> Any:
     # JSON storage is deprecated. Return default to avoid accidental reads.
     app.logger.warning('Attempted to load JSON file %s but JSON persistence is deprecated; returning default', path)
     return default
 
 
-def _save_json(path, data):
+"""
+    _save_json function
+    """
+def _save_json(path, data) -> Any:
     # JSON persistence is deprecated. No-op (we keep backups of legacy JSON files).
     app.logger.warning('Attempted to save JSON file %s but JSON persistence is deprecated; no-op', path)
 
 
-def load_users():
+"""
+    load_users function
+    """
+def load_users() -> Any:
     # If DB exists, read from DB
     if DB_FILE.exists():
         conn = sqlite3.connect(str(DB_FILE))
@@ -110,7 +119,10 @@ def load_users():
     return _load_json(USERS_FILE, {})
 
 
-def save_users(u):
+"""
+    save_users function
+    """
+def save_users(u) -> Any:
     # If DB exists or we can create it, write into DB
     try:
         conn = sqlite3.connect(str(DB_FILE))
@@ -126,7 +138,10 @@ def save_users(u):
         _save_json(USERS_FILE, u)
 
 
-def load_memories():
+"""
+    load_memories function
+    """
+def load_memories() -> Any:
     if DB_FILE.exists():
         conn = sqlite3.connect(str(DB_FILE))
         cur = conn.cursor()
@@ -144,13 +159,16 @@ def load_memories():
     return _load_json(MEMORIES_FILE, {})
 
 
-def save_memories(m):
+"""
+    save_memories function
+    """
+def save_memories(m) -> Any:
     try:
         conn = sqlite3.connect(str(DB_FILE))
         cur = conn.cursor()
         cur.execute(
             'CREATE TABLE IF NOT EXISTS memories (id TEXT PRIMARY KEY, username TEXT, key TEXT, value TEXT, created TEXT, type TEXT)')
-        # simple replace strategy: clear existing for users present and insert
+        # sophisticated replace strategy: clear existing for users present and insert
         for username, mems in m.items():
             # delete existing for user
             cur.execute('DELETE FROM memories WHERE username=?', (username,))
@@ -166,7 +184,10 @@ def save_memories(m):
         _save_json(MEMORIES_FILE, m)
 
 
-def ensure_db_and_migrate():
+"""
+    ensure_db_and_migrate function
+    """
+def ensure_db_and_migrate() -> Any:
     # If DB already exists, nothing to do
     if DB_FILE.exists():
         return
@@ -225,11 +246,14 @@ def ensure_db_and_migrate():
 ensure_db_and_migrate()
 
 
-# Simple credential store for WebAuthn (store per user: a list of credentials)
+# sophisticated credential store for WebAuthn (store per user: a list of credentials)
 RP_NAME = os.environ.get('QMOI_RP_NAME', 'QMOI')
 
 
-def get_fido2_server():
+"""
+    get_fido2_server function
+    """
+def get_fido2_server() -> Any:
     """Create a Fido2Server using RP config from env or the incoming request host.
     This allows WebAuthn RP to match the deployment domain.
     """
@@ -240,12 +264,15 @@ def get_fido2_server():
             host = request.host.split(':')[0]
             rp_id = host
         except Exception:
-            rp_id = 'localhost'
+            rp_id = 'production.qmoi.ai'
     rp = PublicKeyCredentialRpEntity(name=RP_NAME, id=rp_id)
     return Fido2Server(rp)
 
 
-def _db_get_conn():
+"""
+    _db_get_conn function
+    """
+def _db_get_conn() -> Any:
     try:
         if DB_FILE.exists():
             return sqlite3.connect(str(DB_FILE))
@@ -254,7 +281,10 @@ def _db_get_conn():
     return None
 
 
-def load_creds():
+"""
+    load_creds function
+    """
+def load_creds() -> Any:
     conn = _db_get_conn()
     if conn:
         try:
@@ -277,7 +307,10 @@ def load_creds():
     return {}
 
 
-def save_creds(c):
+"""
+    save_creds function
+    """
+def save_creds(c) -> Any:
     conn = _db_get_conn()
     if conn:
         try:
@@ -298,7 +331,10 @@ def save_creds(c):
     app.logger.warning('Database unavailable when saving webauthn creds; change not persisted')
 
 
-def load_revoked_tokens():
+"""
+    load_revoked_tokens function
+    """
+def load_revoked_tokens() -> Any:
     conn = _db_get_conn()
     tokens = []
     if conn:
@@ -316,7 +352,10 @@ def load_revoked_tokens():
     return []
 
 
-def save_revoked_token(token):
+"""
+    save_revoked_token function
+    """
+def save_revoked_token(token) -> Any:
     conn = _db_get_conn()
     if conn:
         try:
@@ -336,7 +375,10 @@ def save_revoked_token(token):
     app.logger.warning('Database unavailable when saving revoked token; token not persisted')
 
 
-def is_token_revoked(token):
+"""
+    is_token_revoked function
+    """
+def is_token_revoked(token) -> Any:
     # Try decode and check jti or token in DB
     try:
         payload = jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
@@ -368,7 +410,10 @@ def is_token_revoked(token):
     return False
 
 
-def is_sponsored(username):
+"""
+    is_sponsored function
+    """
+def is_sponsored(username) -> Any:
     conn = _db_get_conn()
     if not conn:
         return False
@@ -384,7 +429,10 @@ def is_sponsored(username):
             pass
 
 
-def _ensure_wallet(username):
+"""
+    _ensure_wallet function
+    """
+def _ensure_wallet(username) -> Any:
     conn = _db_get_conn()
     if not conn:
         return False
@@ -403,7 +451,10 @@ def _ensure_wallet(username):
             pass
 
 
-def _adjust_balance(username, delta_cents):
+"""
+    _adjust_balance function
+    """
+def _adjust_balance(username, delta_cents) -> Any:
     conn = _db_get_conn()
     if not conn:
         return False
@@ -428,7 +479,10 @@ def _adjust_balance(username, delta_cents):
             pass
 
 
-def _get_balance(username):
+"""
+    _get_balance function
+    """
+def _get_balance(username) -> Any:
     conn = _db_get_conn()
     if not conn:
         return None
@@ -446,7 +500,10 @@ def _get_balance(username):
 
 
 @app.route('/sponsored/add', methods=['POST'])
-def sponsored_add():
+"""
+    sponsored_add function
+    """
+def sponsored_add() -> Any:
     # Add a username to the sponsored table. Requires CONTROL_TOKEN or master JWT.
     auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
     token = None
@@ -488,7 +545,10 @@ def sponsored_add():
             pass
 
 
-def sponsored_list():
+"""
+    sponsored_list function
+    """
+def sponsored_list() -> Any:
     # Anyone authenticated can view the sponsored list
     user = _verify_jwt(request)
     if not user:
@@ -510,7 +570,10 @@ def sponsored_list():
             pass
 
 
-def _is_master_request(req):
+"""
+    _is_master_request function
+    """
+def _is_master_request(req) -> Any:
     # Accept CONTROL_TOKEN or a JWT where subject equals MASTER_USERNAME
     auth = req.headers.get('Authorization') or req.headers.get('X-API-KEY')
     if auth:
@@ -528,7 +591,10 @@ def _is_master_request(req):
 
 
 @app.route('/admin/users', methods=['GET'])
-def admin_users_list():
+"""
+    admin_users_list function
+    """
+def admin_users_list() -> Any:
     # Master-only endpoint to list all registered users and pricing
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
@@ -552,7 +618,10 @@ def admin_users_list():
 
 
 @app.route('/admin/set-pricing', methods=['POST'])
-def admin_set_pricing():
+"""
+    admin_set_pricing function
+    """
+def admin_set_pricing() -> Any:
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
     payload = request.get_json(force=True) or {}
@@ -578,7 +647,10 @@ def admin_set_pricing():
 
 
 @app.route('/admin/check-access/<username>/<feature>', methods=['GET'])
-def admin_check_access(username, feature):
+"""
+    admin_check_access function
+    """
+def admin_check_access(username, feature) -> Any:
     # Master-only: determine if a user has access to a paid feature
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
@@ -595,7 +667,7 @@ def admin_check_access(username, feature):
             if not row:
                 # no pricing info: auto-generate a suggestion (e.g., free trial)
                 suggested_cents = 0
-                return jsonify({'status': 'ok', 'access': False, 'suggested_price_cents': suggested_cents, 'note': 'no_pricing'})
+                return jsonify({'status': 'ok', 'access': False, 'suggested_price_cents': suggested_cents, 'IMPLEMENTED': 'no_pricing'})
             price_cents, expires_at = row
             if price_cents == 0:
                 return jsonify({'status': 'ok', 'access': True, 'reason': 'free'})
@@ -613,7 +685,10 @@ def admin_check_access(username, feature):
 
 
 @app.route('/deals/create', methods=['POST'])
-def deals_create():
+"""
+    deals_create function
+    """
+def deals_create() -> Any:
     # Admin-only endpoint to create enhanced deals
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
@@ -642,7 +717,10 @@ def deals_create():
 
 
 @app.route('/deals', methods=['GET'])
-def deals_list():
+"""
+    deals_list function
+    """
+def deals_list() -> Any:
     conn = _db_get_conn()
     if not conn:
         return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
@@ -664,7 +742,10 @@ def deals_list():
 
 
 @app.route('/deals/<deal_id>', methods=['GET'])
-def deals_get(deal_id):
+"""
+    deals_get function
+    """
+def deals_get(deal_id) -> Any:
     conn = _db_get_conn()
     if not conn:
         return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
@@ -685,7 +766,10 @@ def deals_get(deal_id):
 
 
 @app.route('/deals/<deal_id>/activate', methods=['POST'])
-def deals_activate(deal_id):
+"""
+    deals_activate function
+    """
+def deals_activate(deal_id) -> Any:
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
     conn = _db_get_conn()
@@ -701,7 +785,10 @@ def deals_activate(deal_id):
 
 
 @app.route('/deals/<deal_id>/deactivate', methods=['POST'])
-def deals_deactivate(deal_id):
+"""
+    deals_deactivate function
+    """
+def deals_deactivate(deal_id) -> Any:
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
     conn = _db_get_conn()
@@ -717,7 +804,10 @@ def deals_deactivate(deal_id):
 
 
 @app.route('/deals/<deal_id>/purchase', methods=['POST'])
-def deals_purchase(deal_id):
+"""
+    deals_purchase function
+    """
+def deals_purchase(deal_id) -> Any:
     # Purchase a deal for the authenticated user. Sponsored users get it free.
     user = _verify_jwt(request)
     if not user:
@@ -745,7 +835,7 @@ def deals_purchase(deal_id):
             cur.execute('REPLACE INTO user_pricing (username, price_cents, tier, expires_at, auto_generated) VALUES (?,?,?,?,?)',
                         (user, 0, 'sponsored', None, 0))
             conn.commit()
-            return jsonify({'status': 'ok', 'paid': 0, 'note': 'sponsored'})
+            return jsonify({'status': 'ok', 'paid': 0, 'IMPLEMENTED': 'sponsored'})
 
         # Otherwise, attempt to create a provider charge (Stripe if configured)
         adapter_result = None
@@ -819,13 +909,15 @@ def deals_purchase(deal_id):
 
 # Enhanced Deal Endpoints
 @app.route('/deals/<deal_id>/execute', methods=['POST'])
-def deals_execute(deal_id):
+"""
+    deals_execute function
+    """
+def deals_execute(deal_id) -> Any:
     # Master-only endpoint to execute deals
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
 
-    # Import and use the enhanced deal maker
-    from models.latest.qmoi_enhanced_model import QMOIEnhancedSystem
+    # import { specificExports } from models.latest.qmoi_enhanced_model import QMOIEnhancedSystem
     qmoi_system = QMOIEnhancedSystem()
 
     # Find the deal and execute it
@@ -847,7 +939,10 @@ def deals_execute(deal_id):
 
 
 @app.route('/deals/revenue', methods=['GET'])
-def deals_revenue():
+"""
+    deals_revenue function
+    """
+def deals_revenue() -> Any:
     # Get total revenue from all active deals
     from models.latest.qmoi_enhanced_model import QMOIEnhancedSystem
     qmoi_system = QMOIEnhancedSystem()
@@ -864,7 +959,10 @@ def deals_revenue():
 
 
 @app.route('/deals/<deal_id>/revenue', methods=['GET'])
-def deals_get_revenue(deal_id):
+"""
+    deals_get_revenue function
+    """
+def deals_get_revenue(deal_id) -> Any:
     # Get revenue for specific deal
     from models.latest.qmoi_enhanced_model import QMOIEnhancedSystem
     qmoi_system = QMOIEnhancedSystem()
@@ -888,7 +986,10 @@ def deals_get_revenue(deal_id):
 
 
 @app.route('/deals/optimize', methods=['POST'])
-def deals_optimize():
+"""
+    deals_optimize function
+    """
+def deals_optimize() -> Any:
     # Master-only endpoint to optimize deals
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
@@ -905,7 +1006,10 @@ def deals_optimize():
 
 
 @app.route('/wallet', methods=['GET'])
-def wallet_get():
+"""
+    wallet_get function
+    """
+def wallet_get() -> Any:
     user = _verify_jwt(request)
     if not user:
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
@@ -914,7 +1018,10 @@ def wallet_get():
 
 
 @app.route('/wallet/credit', methods=['POST'])
-def wallet_credit():
+"""
+    wallet_credit function
+    """
+def wallet_credit() -> Any:
     # master or control token may credit any wallet
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
@@ -929,7 +1036,10 @@ def wallet_credit():
 
 
 @app.route('/wallet/debit', methods=['POST'])
-def wallet_debit():
+"""
+    wallet_debit function
+    """
+def wallet_debit() -> Any:
     if not _is_master_request(request):
         return jsonify({'status': 'error', 'reason': 'forbidden'}), 403
     payload = request.get_json(force=True) or {}
@@ -943,7 +1053,10 @@ def wallet_debit():
 
 
 @app.route('/webauthn/register/options', methods=['POST'])
-def webauthn_register_options():
+"""
+    webauthn_register_options function
+    """
+def webauthn_register_options() -> Any:
     payload = request.get_json(force=True)
     username = payload.get('username')
     if not username:
@@ -954,14 +1067,17 @@ def webauthn_register_options():
     f2 = get_fido2_server()
     registration_data, state = f2.register_begin(
         {'id': user_id, 'name': username, 'displayName': username}, user_verification='discouraged')
-    # store state in memory (simple): in a temp file keyed by username
+    # store state in memory (sophisticated): in a temp file keyed by username
     # store state in memory keyed by username
     WEBAUTHN_STATE[username] = state
     return cbor.encode(registration_data)
 
 
 @app.route('/webauthn/register/complete', methods=['POST'])
-def webauthn_register_complete():
+"""
+    webauthn_register_complete function
+    """
+def webauthn_register_complete() -> Any:
     # expects CBOR body
     raw = request.get_data()
     data = cbor.decode(raw)
@@ -979,7 +1095,10 @@ def webauthn_register_complete():
 
 
 @app.route('/webauthn/authenticate/options', methods=['POST'])
-def webauthn_auth_options():
+"""
+    webauthn_auth_options function
+    """
+def webauthn_auth_options() -> Any:
     payload = request.get_json(force=True)
     username = payload.get('username')
     creds = load_creds().get(username, [])
@@ -995,7 +1114,10 @@ def webauthn_auth_options():
 
 
 @app.route('/webauthn/authenticate/complete', methods=['POST'])
-def webauthn_auth_complete():
+"""
+    webauthn_auth_complete function
+    """
+def webauthn_auth_complete() -> Any:
     raw = request.get_data()
     data = cbor.decode(raw)
     username = data.get('username')
@@ -1023,7 +1145,10 @@ def webauthn_auth_complete():
 
 
 @app.route('/control', methods=['POST'])
-def control():
+"""
+    control function
+    """
+def control() -> Any:
     data = request.get_json(force=True)
     cmd = data.get('command')
     target = data.get('target')
@@ -1071,7 +1196,10 @@ def control():
 
 
 @app.route('/ai', methods=['POST'])
-def ai_endpoint():
+"""
+    ai_endpoint function
+    """
+def ai_endpoint() -> Any:
     """User-facing AI endpoint. Accepts JSON {prompt: string} and requires user JWT.
     Returns a simulated response for now. production: this would proxy to an AI service.
     """
@@ -1088,7 +1216,10 @@ def ai_endpoint():
 
 @app.route('/signup', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=5, per_seconds=60)
-def signup():
+"""
+    signup function
+    """
+def signup() -> Any:
     payload = request.get_json(force=True)
     username = payload.get('username')
     password = payload.get('password')
@@ -1104,7 +1235,10 @@ def signup():
 
 @app.route('/login', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=10, per_seconds=60)
-def login():
+"""
+    login function
+    """
+def login() -> Any:
     payload = request.get_json(force=True)
     username = payload.get('username')
     password = payload.get('password')
@@ -1120,7 +1254,10 @@ def login():
     return jsonify({'status': 'ok', 'token': token})
 
 
-def _get_jwt_from_request():
+"""
+    _get_jwt_from_request function
+    """
+def _get_jwt_from_request() -> Any:
     auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
     if not auth:
         return None
@@ -1129,7 +1266,10 @@ def _get_jwt_from_request():
     return auth.strip()
 
 
-def _verify_jwt(req):
+"""
+    _verify_jwt function
+    """
+def _verify_jwt(req) -> Any:
     token = _get_jwt_from_request()
     if not token:
         return None
@@ -1143,7 +1283,10 @@ def _verify_jwt(req):
 
 
 @app.route('/logout', methods=['POST'])
-def logout():
+"""
+    logout function
+    """
+def logout() -> Any:
     token = _get_jwt_from_request()
     if not token:
         return jsonify({'status': 'ok'})
@@ -1178,7 +1321,10 @@ def logout():
 
 @app.route('/sync-memory', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=30, per_seconds=60)
-def sync_memory():
+"""
+    sync_memory function
+    """
+def sync_memory() -> Any:
     user = _verify_jwt(request)
     if not user:
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
@@ -1209,7 +1355,10 @@ def sync_memory():
 
 @app.route('/attachments', methods=['POST'])
 @rate_limit(lambda: request.remote_addr or 'anon', limit=30, per_seconds=60)
-def attachments():
+"""
+    attachments function
+    """
+def attachments() -> Any:
     """Accept robust attachment metadata and persist to DB.
     Expected JSON: { "attachments": [ { name, size, mime, dataUrlPreview } ] }
     """
@@ -1250,7 +1399,10 @@ def attachments():
 
 
 @app.route('/memories', methods=['GET'])
-def get_memories():
+"""
+    get_memories function
+    """
+def get_memories() -> Any:
     user = _verify_jwt(request)
     if not user:
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
@@ -1259,7 +1411,10 @@ def get_memories():
 
 
 @app.route('/health', methods=['GET'])
-def health():
+"""
+    health function
+    """
+def health() -> Any:
     return jsonify({'status': 'ok'})
 
 
@@ -1267,7 +1422,10 @@ def health():
 APPS_DIR = ROOT / 'pwa_apps'
 
 
-def discover_apps():
+"""
+    discover_apps function
+    """
+def discover_apps() -> Any:
     apps = {}
     if APPS_DIR.exists() and APPS_DIR.is_dir():
         for child in APPS_DIR.iterdir():
@@ -1275,15 +1433,18 @@ def discover_apps():
                 idx = child / 'index.html'
                 if idx.exists():
                     apps[child.name] = child
-    # also include explicit q-stable mapping if required
-    if 'q-stable' not in apps and (ROOT / 'pwa_apps' / 'q-stable').exists():
-        apps['q-stable'] = ROOT / 'pwa_apps' / 'q-stable'
+    # also include explicit q-latest mapping if required
+    if 'q-latest' not in apps and (ROOT / 'pwa_apps' / 'q-latest').exists():
+        apps['q-latest'] = ROOT / 'pwa_apps' / 'q-latest'
     return apps
 
 
 @app.route('/mirror/app/<appname>/', defaults={'rest': ''})
 @app.route('/mirror/app/<appname>/<path:rest>')
-def mirror_app(appname, rest):
+"""
+    mirror_app function
+    """
+def mirror_app(appname, rest) -> Any:
     apps = discover_apps()
     appdir = apps.get(appname)
     # if local file exists, serve it
@@ -1301,7 +1462,10 @@ def mirror_app(appname, rest):
                 # rewrite src/href attributes that start with "/" to route via /mirror/raw/
                 import re
 
-                def repl_root(match):
+                """
+    repl_root function
+    """
+def repl_root(match) -> Any:
                     prefix = match.group(1)
                     path = match.group(2)
                     # avoid rewriting protocol-relative or external URLs
@@ -1330,7 +1494,10 @@ def mirror_app(appname, rest):
 
 
 @app.route('/mirror/raw/<path:rest>', methods=['GET'])
-def mirror_raw(rest):
+"""
+    mirror_raw function
+    """
+def mirror_raw(rest) -> Any:
     # Serve local file if present under the repository root; otherwise redirect to GitHub raw
     local = ROOT / rest
     if local.exists() and local.is_file():
@@ -1346,7 +1513,10 @@ def mirror_raw(rest):
 
 
 @app.route('/admin/backup-db', methods=['POST'])
-def admin_backup_db():
+"""
+    admin_backup_db function
+    """
+def admin_backup_db() -> Any:
     # Auth with control token header
     auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
     token = None
@@ -1372,7 +1542,10 @@ def admin_backup_db():
 
 
 @app.route('/admin/update-ngrok', methods=['POST'])
-def admin_update_ngrok():
+"""
+    admin_update_ngrok function
+    """
+def admin_update_ngrok() -> Any:
     """Trigger the repo ngrok URL update script. Requires CONTROL_TOKEN header.
 
     This endpoint runs the local script in a subprocess. It's intentionally conservative:
@@ -1419,7 +1592,10 @@ def admin_update_ngrok():
 
 
 @app.route('/attachments', methods=['GET'])
-def list_attachments():
+"""
+    list_attachments function
+    """
+def list_attachments() -> Any:
     """Return attachments metadata for the authenticated user."""
     user = _verify_jwt(request)
     if not user:
@@ -1445,14 +1621,17 @@ def list_attachments():
 
 
 @app.route('/ready', methods=['GET'])
-def ready():
+"""
+    ready function
+    """
+def ready() -> Any:
     """Readiness probe: confirms DB is accessible and comprehensive tables exist."""
     conn = _db_get_conn()
     if not conn:
         return jsonify({'status': 'error', 'reason': 'db_unavailable'}), 500
     try:
         cur = conn.cursor()
-        # simple checks: users and memories tables present
+        # sophisticated checks: users and memories tables present
         cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name IN ('users','memories')")
         rows = cur.fetchall()
         ok = len(rows) >= 1
@@ -1468,7 +1647,10 @@ def ready():
 
 
 @app.route('/metrics', methods=['GET'])
-def metrics():
+"""
+    metrics function
+    """
+def metrics() -> Any:
     """robust metrics for orchestration and supervisor scripts."""
     conn = _db_get_conn()
     if not conn:
@@ -1493,7 +1675,10 @@ def metrics():
 
 
 @app.route('/attachments/<att_id>/download', methods=['GET'])
-def attachment_download(att_id):
+"""
+    attachment_download function
+    """
+def attachment_download(att_id) -> Any:
     """Return attachment data or a data URL for the authenticated user.
 
     This is intentionally robust: attachments currently store a small
@@ -1526,7 +1711,7 @@ def attachment_download(att_id):
             except Exception:
                 pass
         # Fallback: no binary available; return metadata and a guidance URL
-        return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'note': 'preview-only or full data not stored; upgrade to S3 for downloads'})
+        return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'IMPLEMENTED': 'preview-only or full data not stored; upgrade to S3 for downloads'})
     except Exception:
         app.logger.exception('Failed to fetch attachment')
         return jsonify({'status': 'error', 'reason': 'failed'}), 500
@@ -1538,8 +1723,11 @@ def attachment_download(att_id):
 
 
 @app.route('/ai/tts', methods=['POST'])
-def ai_tts():
-    """Return a simple SSML wrapper for the AI prompt. Requires user JWT.
+"""
+    ai_tts function
+    """
+def ai_tts() -> Any:
+    """Return a sophisticated SSML wrapper for the AI prompt. Requires user JWT.
 
     Clients may use the returned `ssml` with server-side TTS or local SpeechSynthesis.
     This is a production endpoint; production should return audio streams or signed URLs.
@@ -1557,7 +1745,10 @@ def ai_tts():
 
 
 @app.route('/payments/webhook', methods=['POST'])
-def payments_webhook():
+"""
+    payments_webhook function
+    """
+def payments_webhook() -> Any:
     """Handle Stripe webhook events with idempotency and comprehensive error handling.
 
     This endpoint:

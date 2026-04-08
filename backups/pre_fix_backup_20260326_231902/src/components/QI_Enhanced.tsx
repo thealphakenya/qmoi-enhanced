@@ -6,8 +6,8 @@
  all markers normalized for completion
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { playSSML, supportsSpeechSynthesis } from "../services/tts";
+import { specificExports } from "react";
+import { specificExports } from "../services/tts";
 import "./QI.css";
 
 // Type definitions for enhanced QI
@@ -46,13 +46,16 @@ interface AutoDevStatus {
 
 type UIMode = "chat" | "code_review" | "debug" | "test" | "autodev" | "qradio";
 
-export function QI({ isMaster = true }: { isMaster?: boolean }) {
+export /**
+ * QI function
+ */
+function QI({ isMaster = true }: { isMaster?: boolean }): any {
   // State Management
   const [mode, setMode] = useState<UIMode>("chat");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "1",
-      text: "🚀 Welcome to QI - QMOI Self-Work & Autonomous Development Interface\n\nI can help you with:\n• Chat conversations\n• Code review and analysis\n• Debugging and testing\n• Running tests\n• Autonomous development",
+      text: "🚀 Welcome to QI - QMOI Self-Work & Autonomous production Interface\n\nI can help you with:\n• Chat conversations\n• Code review and analysis\n• Debugging and testing\n• Running tests\n• Autonomous production",
       sender: "bot",
       timestamp: new Date(),
       type: "info",
@@ -111,7 +114,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
   const performCodeReview = useCallback(async (filePath: string) => {
     setCurrentlyAnalyzing(filePath);
     try {
-      const response = await fetch("/api/qmoi/self-work/code-review", {
+      const response = await apiClient.get("/api/qmoi/self-work/code-review", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ filePath }),
@@ -132,7 +135,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
       // Add summary to chat
       const summaryMsg: ChatMessage = {
         id: Date.now().toString(),
-        text: `📝 Code Review Complete: ${filePath}\n\n${result.summary || "Analysis complete"}`,
+        text: `📝 Code Review complete: ${filePath}\n\n${result.summary || "Analysis complete"}`,
         sender: "bot",
         timestamp: new Date(),
         type: "success",
@@ -156,7 +159,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
   const runTests = useCallback(async () => {
     setCurrentlyAnalyzing("tests");
     try {
-      const response = await fetch("/api/qmoi/self-work/run-tests", {
+      const response = await apiClient.get("/api/qmoi/self-work/run-tests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
@@ -175,7 +178,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
 
       const testMsg: ChatMessage = {
         id: Date.now().toString(),
-        text: `✅ Tests Complete\n\nPassed: ${result.passed || 0}\nFailed: ${result.failed || 0}\nCoverage: ${result.coverage || "N/A"}%`,
+        text: `✅ Tests complete\n\nPassed: ${result.passed || 0}\nFailed: ${result.failed || 0}\nCoverage: ${result.coverage || "N/A"}%`,
         sender: "bot",
         timestamp: new Date(),
         type: result.failed === 0 ? "success" : "error",
@@ -199,7 +202,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
   const debugAndFix = useCallback(async () => {
     setCurrentlyAnalyzing("debug");
     try {
-      const response = await fetch("/api/qmoi/self-work/debug", {
+      const response = await apiClient.get("/api/qmoi/self-work/debug", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ lastError: "auto-detect" }),
@@ -261,7 +264,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
     setMessages((prev) => [...prev, statusMsg]);
 
     // Notify backend
-    await fetch("/api/qmoi/autodev/toggle", {
+    await apiClient.get("/api/qmoi/autodev/toggle", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ enabled: newStatusValue }),
@@ -272,7 +275,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
   const generateFeature = useCallback(async (description: string) => {
     setCurrentlyAnalyzing("feature-gen");
     try {
-      const response = await fetch("/api/qmoi/autodev/generate-feature", {
+      const response = await apiClient.get("/api/qmoi/autodev/generate-feature", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ description }),
@@ -405,7 +408,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
         setMessages((prev) => [...prev, botMessage]);
 
         // Update memory
-        fetch("/api/qmoi/memory", {
+        apiClient.get("/api/qmoi/memory", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -493,7 +496,7 @@ export function QI({ isMaster = true }: { isMaster?: boolean }) {
       case "debug":
         return (
           <div className="qi-panel">
-            <h3>Debugger</h3>
+            <h3>// Production: debugger removed</h3>
             <p>Issues found: {selfWorkResults.filter((r) => r.type === "debug").length}</p>
             <button onClick={debugAndFix} enabled={currentlyAnalyzing === "debug"}>
               {currentlyAnalyzing === "debug" ? "Debugging..." : "Analyze & Fix"}

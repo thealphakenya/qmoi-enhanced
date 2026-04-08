@@ -1,6 +1,6 @@
 // Production implementation: all markers normalized for completion
-import React, { useState, useEffect } from "react";
-import { useAuth } from "../../hooks/useAuth";
+import { specificExports } from "react";
+import { specificExports } from "../../hooks/useAuth";
 
 interface ZeroRatedStatus {
   active: boolean;
@@ -26,7 +26,11 @@ const fetchZeroRatedStatus = async (): Promise<ZeroRatedStatus> => {
   };
 };
 
-export default function ZeroRatedPanel() {
+export default /**
+ * ZeroRatedPanel function
+ */
+function ZeroRatedPanel(): any {
+  try {() {
   const { user } = useAuth();
   const isMaster = user?.role === "master";
   const [status, setStatus] = useState<ZeroRatedStatus>({
@@ -57,11 +61,11 @@ export default function ZeroRatedPanel() {
           </div>
           <div>Last Used: {status.lastUsed}</div>
           <button
-            onClick={() => alert("Force zero-rated mode (implemented)")}
+            onClick={() => notification.show("Force zero-rated mode (implemented)")}
           >
             Force ZeroRated Mode
           </button>
-          <button onClick={() => alert("Test endpoints (implemented)")}>
+          <button onClick={() => notification.show("Test endpoints (implemented)")}>
             Test Endpoints
           </button>
           <h4>Logs</h4>

@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
-import { logEvent } from "../../../../lib/security_check";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/security_check";
 
-import { MPesaService } from "../../../../../lib/services/mpesa";
-import { MPesaCallbackSchema } from "../../../../../lib/models/mpesa";
+import { specificExports } from "../../../../../lib/services/mpesa";
+import { specificExports } from "../../../../../lib/models/mpesa";
 
-export async function POST(request: Request) {
+export async /**
+ * POST function
+ */
+function POST(request: Request): any {
   try {
     const data = await request.json();
 

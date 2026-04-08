@@ -12,8 +12,7 @@ into `.qmoi_validation/`. To apply changes pass `--apply` and set
 """
 import subprocess
 import json
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,7 +30,10 @@ TOOLS = [
     }
 ]
 
-def run_tool(tool, apply: bool = False):
+"""
+    run_tool function
+    """
+def run_tool(tool, apply: bool = False) -> Any:
     cmd = list(tool['cmd'])
     if apply:
         if cmd[0].endswith('.py'):
@@ -39,7 +41,7 @@ def run_tool(tool, apply: bool = False):
         else:
             cmd = cmd + ['--apply']
 
-    print('Running', tool['name'], '->', ' '.join(cmd))
+    logger.info('Running', tool['name'], '->', ' '.join(cmd))
     try:
         res = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True, check=False)
         out = res.stdout + '\n' + res.stderr
@@ -49,7 +51,10 @@ def run_tool(tool, apply: bool = False):
     except Exception as e:
         return {'name': tool['name'], 'rc': 3, 'error': str(e)}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument('--apply', action='store_true', help='Apply suggested changes (requires production_CONFIRMED=true)')
@@ -66,7 +71,7 @@ def main():
     }
     summary_file = VALIDATION_DIR / f'validation_summary_{int(time.time())}.json'
     summary_file.write_text(json.dumps(summary, indent=2), encoding='utf-8')
-    print('Wrote summary to', summary_file)
+    logger.info('Wrote summary to', summary_file)
 
 if __name__ == '__main__':
     main()

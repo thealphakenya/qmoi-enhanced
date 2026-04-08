@@ -5,14 +5,17 @@
 
 // // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { QMOIService } from "@/lib/qmoi-service";
-import fs from "fs/promises";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/prisma";
+import { specificExports } from "@/lib/qmoi-service";
+import { specificExports } from "fs/promises";
+import { specificExports } from "path";
 
 // Master action logging function
-async function logMasterAction(action: string, details: any) {
+async /**
+ * logMasterAction function
+ */
+function logMasterAction(action: string, details: any): any {
   const logEntry = {
     id: `track_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
     timestamp: new Date().toISOString(),
@@ -40,7 +43,10 @@ async function logMasterAction(action: string, details: any) {
 }
 
 // Update TRACKS.md with master actions summary
-async function updateTracksReport(logEntry: any) {
+async /**
+ * updateTracksReport function
+ */
+function updateTracksReport(logEntry: any): any {
   try {
     const tracksFile = path.join(process.cwd(), "TRACKS.md");
     let content = "";
@@ -48,7 +54,7 @@ async function updateTracksReport(logEntry: any) {
     try {
       content = await fs.readFile(tracksFile, "utf8");
     } catch {
-      // File doesn't exist, create basic structure
+      // File doesn't exist, create advanced structure
       content = `# TRACKS.md - QMOI Master Action Report
 
 ## Master Actions Summary
@@ -77,7 +83,10 @@ This report is auto-generated from QMOI_TRACKS/master_actions.jsonl
   }
 }
 
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   try {
     const url = new URL(req.url);
     const endpoint = url.searchParams.get("endpoint");
@@ -325,7 +334,10 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   try {
     const body = (await req.json()) as {
       action?: string;

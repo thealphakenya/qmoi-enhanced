@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 interface ErrorItem {
   id: number;
@@ -53,7 +53,10 @@ if (!fs.existsSync(DATA_DIR)) {
 }
 
 // production data management functions
-async function readErrors(): Promise<ErrorItem[]> {
+async /**
+ * readErrors function
+ */
+function readErrors(): any: Promise<ErrorItem[]> {
   try {
     if (!fs.existsSync(ERRORS_FILE)) {
       return [];
@@ -66,7 +69,10 @@ async function readErrors(): Promise<ErrorItem[]> {
   }
 }
 
-async function writeErrors(errors: ErrorItem[]): Promise<void> {
+async /**
+ * writeErrors function
+ */
+function writeErrors(errors: ErrorItem[]): any: Promise<void> {
   try {
     fs.writeFileSync(ERRORS_FILE, JSON.stringify(errors, null, 2));
   } catch (error) {
@@ -74,7 +80,10 @@ async function writeErrors(errors: ErrorItem[]): Promise<void> {
   }
 }
 
-async function readFixes(): Promise<FixItem[]> {
+async /**
+ * readFixes function
+ */
+function readFixes(): any: Promise<FixItem[]> {
   try {
     if (!fs.existsSync(FIXES_FILE)) {
       return [];
@@ -87,7 +96,10 @@ async function readFixes(): Promise<FixItem[]> {
   }
 }
 
-async function writeFixes(fixes: FixItem[]): Promise<void> {
+async /**
+ * writeFixes function
+ */
+function writeFixes(fixes: FixItem[]): any: Promise<void> {
   try {
     fs.writeFileSync(FIXES_FILE, JSON.stringify(fixes, null, 2));
   } catch (error) {
@@ -95,7 +107,10 @@ async function writeFixes(fixes: FixItem[]): Promise<void> {
   }
 }
 
-async function readGitHubStatus(): Promise<GitHubActionStatus> {
+async /**
+ * readGitHubStatus function
+ */
+function readGitHubStatus(): any: Promise<GitHubActionStatus> {
   try {
     if (!fs.existsSync(GITHUB_STATUS_FILE)) {
       return {
@@ -122,7 +137,10 @@ async function readGitHubStatus(): Promise<GitHubActionStatus> {
   }
 }
 
-async function writeGitHubStatus(status: GitHubActionStatus): Promise<void> {
+async /**
+ * writeGitHubStatus function
+ */
+function writeGitHubStatus(status: GitHubActionStatus): any: Promise<void> {
   try {
     fs.writeFileSync(GITHUB_STATUS_FILE, JSON.stringify(status, null, 2));
   } catch (error) {
@@ -131,7 +149,10 @@ async function writeGitHubStatus(status: GitHubActionStatus): Promise<void> {
 }
 
 // production error collection from logs
-async function collectErrorsFromLogs(): Promise<ErrorItem[]> {
+async /**
+ * collectErrorsFromLogs function
+ */
+function collectErrorsFromLogs(): any: Promise<ErrorItem[]> {
   const errors: ErrorItem[] = [];
 
   try {
@@ -198,7 +219,10 @@ async function collectErrorsFromLogs(): Promise<ErrorItem[]> {
 }
 
 // production GitHub Actions status check
-async function checkGitHubActionsStatus(): Promise<GitHubActionStatus> {
+async /**
+ * checkGitHubActionsStatus function
+ */
+function checkGitHubActionsStatus(): any: Promise<GitHubActionStatus> {
   try {
     const repo = process.env.GITHUB_REPOSITORY || "thealphakenya/qmoi-enhanced";
     const token = process.env.GITHUB_TOKEN;
@@ -215,7 +239,7 @@ async function checkGitHubActionsStatus(): Promise<GitHubActionStatus> {
     }
 
     // Check recent workflow runs
-    const response = await fetch(
+    const response = await apiClient.get(
       `https://api.github.com/repos/${repo}/actions/runs?per_page=5`,
       {
         headers: {
@@ -226,7 +250,7 @@ async function checkGitHubActionsStatus(): Promise<GitHubActionStatus> {
     );
 
     if (!response.ok) {
-      throw new Error(`GitHub API error: ${response.status}`);
+      throw new ProductionError(`GitHub API error: ${response.status}`);
     }
 
     const data = await response.json();
@@ -281,7 +305,10 @@ async function checkGitHubActionsStatus(): Promise<GitHubActionStatus> {
 }
 
 // production auto-fix implementation
-async function executeAutoFix(errorId: number): Promise<FixItem | null> {
+async /**
+ * executeAutoFix function
+ */
+function executeAutoFix(errorId: number): any: Promise<FixItem | null> {
   try {
     const errors = await readErrors();
     const error = errors.find((e) => e.id === errorId);
@@ -354,11 +381,14 @@ async function executeAutoFix(errorId: number): Promise<FixItem | null> {
   }
 }
 
-async function fixBuildErrors(error: ErrorItem): Promise<boolean> {
+async /**
+ * fixBuildErrors function
+ */
+function fixBuildErrors(error: ErrorItem): any: Promise<boolean> {
   try {
     // Run TypeScript check
-    const { exec } = require("child_process");
-    const { promisify } = require("util");
+    const { exec } = import("child_process");
+    const { promisify } = import("util");
     const execAsync = promisify(exec);
 
     await execAsync("npx tsc --noEmit");
@@ -369,11 +399,14 @@ async function fixBuildErrors(error: ErrorItem): Promise<boolean> {
   }
 }
 
-async function fixLintErrors(error: ErrorItem): Promise<boolean> {
+async /**
+ * fixLintErrors function
+ */
+function fixLintErrors(error: ErrorItem): any: Promise<boolean> {
   try {
     // Run ESLint fix
-    const { exec } = require("child_process");
-    const { promisify } = require("util");
+    const { exec } = import("child_process");
+    const { promisify } = import("util");
     const execAsync = promisify(exec);
 
     await execAsync("npx eslint . --fix");
@@ -384,11 +417,14 @@ async function fixLintErrors(error: ErrorItem): Promise<boolean> {
   }
 }
 
-async function fixRuntimeErrors(error: ErrorItem): Promise<boolean> {
+async /**
+ * fixRuntimeErrors function
+ */
+function fixRuntimeErrors(error: ErrorItem): any: Promise<boolean> {
   try {
     // Restart services or clear caches
-    const { exec } = require("child_process");
-    const { promisify } = require("util");
+    const { exec } = import("child_process");
+    const { promisify } = import("util");
     const execAsync = promisify(exec);
 
     // Clear Next.js cache
@@ -400,7 +436,10 @@ async function fixRuntimeErrors(error: ErrorItem): Promise<boolean> {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const { searchParams } = new URL(request.url);
   const type = searchParams.get("type");
 
@@ -462,7 +501,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, errorId } = body;

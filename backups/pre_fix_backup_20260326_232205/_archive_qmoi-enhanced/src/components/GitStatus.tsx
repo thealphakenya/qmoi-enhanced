@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Box";
+import { specificExports } from "@mui/material/Typography";
 
-export function GitStatus() {
+export /**
+ * GitStatus function
+ */
+function GitStatus(): any {
   // This would be dynamic in a real app
   const status = "Up to date";
   return (

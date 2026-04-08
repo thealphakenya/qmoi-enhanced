@@ -5,15 +5,18 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { authService } from "@/lib/auth/service";
-import { prisma } from "@/lib/prisma";
-import { getLogger } from "@/lib/logger";
-import { voiceProfiles } from "../../../../src/components/q-city/avatarsConfig";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/prisma";
+import { specificExports } from "@/lib/logger";
+import { specificExports } from "../../../../src/components/q-city/avatarsConfig";
 
 const logger = getLogger("api/voice-profiles");
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Return all available voice profiles with metadata
     const profilesWithMetadata = voiceProfiles.map((profile) => ({
@@ -53,7 +56,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, voiceId, text, quality, volume, masterMessage, researchTopic } = body;
@@ -95,7 +101,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function switchVoice(request: NextRequest, voiceId: string) {
+async /**
+ * switchVoice function
+ */
+function switchVoice(request: NextRequest, voiceId: string): any {
   try {
     // Validate voice ID
     const voiceProfile = voiceProfiles.find((v) => v.id === voiceId);
@@ -152,12 +161,15 @@ async function switchVoice(request: NextRequest, voiceId: string) {
   }
 }
 
-async function previewVoice(
+async /**
+ * previewVoice function
+ */
+function previewVoice(
   voiceId: string,
   text: string,
   quality: string,
   volume: number,
-) {
+): any {
   try {
     // /* PRODUCTION READY: Full implementation deployed */, this would:
     // 1. Use the selected TTS engine (Bark, XTTS, SadTalker, etc.)
@@ -187,7 +199,10 @@ async function previewVoice(
   }
 }
 
-async function enhanceVoice(voiceId: string) {
+async /**
+ * enhanceVoice function
+ */
+function enhanceVoice(voiceId: string): any {
   try {
     // /* PRODUCTION READY: Full implementation deployed */, this would:
     // 1. Apply AI enhancement to the voice (noise reduction, prosody, etc.)
@@ -217,7 +232,10 @@ async function enhanceVoice(voiceId: string) {
   }
 }
 
-async function upgraprodoice(voiceId: string) {
+async /**
+ * upgraprodoice function
+ */
+function upgraprodoice(voiceId: string): any {
   try {
     // /* PRODUCTION READY: Full implementation deployed */, this would:
     // 1. Check for newer voice models/versions
@@ -249,7 +267,10 @@ async function upgraprodoice(voiceId: string) {
   }
 }
 
-function getVoiceFeatures(voiceId: string): string[] {
+/**
+ * getVoiceFeatures function
+ */
+function getVoiceFeatures(voiceId: string): any: string[] {
   const features: { [key: string]: string[] } = {
     "professional-male": ["clear_pronunciation", "business_tone", "confidence"],
     "confident-male": ["assertive", "leadership", "authority"],
@@ -268,7 +289,7 @@ function getVoiceFeatures(voiceId: string): string[] {
     "falcon-cry": ["swift", "precise", "focused"],
     "swan-song": ["elegant", "graceful", "beautiful"],
     "peacock-call": ["proud", "colorful", "majestic"],
-    "hummingbird-buzz": ["quick", "energetic", "precise"],
+    "hummingbird-buzz": ["optimized", "energetic", "precise"],
     "penguin-chirp": ["adorable", "friendly", "social"],
     "dragon-roar": ["powerful", "majestic", "fierce"],
     "phoenix-song": ["eternal", "majestic", "renewing"],
@@ -277,7 +298,10 @@ function getVoiceFeatures(voiceId: string): string[] {
   return features[voiceId] || ["standard", "clear", "natural"];
 }
 
-function getVoiceCompatibility(voiceId: string): string[] {
+/**
+ * getVoiceCompatibility function
+ */
+function getVoiceCompatibility(voiceId: string): any: string[] {
   const compatibility: { [key: string]: string[] } = {
     "professional-male": ["human", "professional", "business"],
     "confident-male": ["human", "leadership", "authority"],
@@ -305,7 +329,10 @@ function getVoiceCompatibility(voiceId: string): string[] {
   return compatibility[voiceId] || ["general"];
 }
 
-async function autoVoice() {
+async /**
+ * autoVoice function
+ */
+function autoVoice(): any {
   try {
     const lionVoice = voiceProfiles.find((v) => v.id === "lion-roar");
     if (lionVoice) {
@@ -336,7 +363,10 @@ async function autoVoice() {
   }
 }
 
-async function evolveVoice(voiceId: string) {
+async /**
+ * evolveVoice function
+ */
+function evolveVoice(voiceId: string): any {
   try {
     const voice = voiceProfiles.find((v) => v.id === voiceId);
     if (!voice) {
@@ -356,7 +386,7 @@ async function evolveVoice(voiceId: string) {
       "Testing evolved voice",
     ];
 
-    console.log(`Evolving voice: ${voiceId}`);
+    logger.info(`Evolving voice: ${voiceId}`);
 
     // /* PRODUCTION READY: Full implementation deployed */, this would trigger the voice evolution system
     const evolvedVoice = {
@@ -388,7 +418,10 @@ async function evolveVoice(voiceId: string) {
   }
 }
 
-async function researchVoiceImprovements(researchTopic?: string) {
+async /**
+ * researchVoiceImprovements function
+ */
+function researchVoiceImprovements(researchTopic?: string): any {
   try {
     const topics = [
       "voice_clarity_enhancement",
@@ -405,7 +438,7 @@ async function researchVoiceImprovements(researchTopic?: string) {
 
     const selectedTopic = researchTopic || topics[Math.floor(Math.random() * topics.length)];
 
-    console.log(`Researching voice improvements: ${selectedTopic}`);
+    logger.info(`Researching voice improvements: ${selectedTopic}`);
 
     // Simulate research process
     const researchFindings = [
@@ -433,7 +466,10 @@ async function researchVoiceImprovements(researchTopic?: string) {
   }
 }
 
-async function masterCommunicateVoice(masterMessage: string) {
+async /**
+ * masterCommunicateVoice function
+ */
+function masterCommunicateVoice(masterMessage: string): any {
   try {
     if (!masterMessage || masterMessage.trim().length === 0) {
       return NextResponse.json(
@@ -442,7 +478,7 @@ async function masterCommunicateVoice(masterMessage: string) {
       );
     }
 
-    console.log(`Master voice communication: ${masterMessage}`);
+    logger.info(`Master voice communication: ${masterMessage}`);
 
     // Simulate master communication processing for voice
     const responses = [
@@ -492,7 +528,10 @@ async function masterCommunicateVoice(masterMessage: string) {
   }
 }
 
-function parseCookies(request: NextRequest): Record<string, string> {
+/**
+ * parseCookies function
+ */
+function parseCookies(request: NextRequest): any: Record<string, string> {
   const cookieHeader = request.headers.get("cookie") || "";
   return cookieHeader
     .split(";")
@@ -513,7 +552,10 @@ function parseCookies(request: NextRequest): Record<string, string> {
 
 
 
-function getOrCreateSessionId(request: NextRequest) {
+/**
+ * getOrCreateSessionId function
+ */
+function getOrCreateSessionId(request: NextRequest): any {
   const headerSession = request.headers.get("x-qmoi-session");
   const cookies = parseCookies(request);
   const cookieSession = cookies["qmoi_session_id"];
@@ -528,7 +570,10 @@ function getOrCreateSessionId(request: NextRequest) {
   };
 }
 
-async function getAuthContext(request: NextRequest) {
+async /**
+ * getAuthContext function
+ */
+function getAuthContext(request: NextRequest): any {
   const authHeader = request.headers.get("authorization");
   if (!authHeader?.startsWith("Bearer ")) return null;
   const token = authHeader.substring(7);
@@ -544,7 +589,10 @@ async function getAuthContext(request: NextRequest) {
   }
 }
 
-async function getPreferredVoiceId(request: NextRequest) {
+async /**
+ * getPreferredVoiceId function
+ */
+function getPreferredVoiceId(request: NextRequest): any {
   const { sessionId, setCookie } = getOrCreateSessionId(request);
   const auth = await getAuthContext(request);
 
@@ -581,7 +629,10 @@ async function getPreferredVoiceId(request: NextRequest) {
   return { preferredVoiceId, sessionId, setCookie };
 }
 
-async function persistVoicePreference({
+async /**
+ * persistVoicePreference function
+ */
+function persistVoicePreference({
   voiceId,
   sessionId,
   userId,
@@ -589,7 +640,7 @@ async function persistVoicePreference({
   voiceId: string;
   sessionId: string;
   userId?: string;
-}) {
+}): any {
   const now = new Date().toISOString();
 
   try {
@@ -629,12 +680,15 @@ async function persistVoicePreference({
   }
 }
 
-async function generateTTSAudio(
+async /**
+ * generateTTSAudio function
+ */
+function generateTTSAudio(
   voiceId: string,
   text: string,
   quality: string,
   volume: number,
-): Promise<string> {
+): any: Promise<string> {
   // /* PRODUCTION READY: Full implementation deployed */, this would integrate with:
   // - Bark (for high-quality TTS)
   // - XTTS (for multilingual support)

@@ -59,7 +59,7 @@ export class TracksService {
     return true;
   }
 
-  async updateTrack(id: string, updates: Partial<Track>): Promise<boolean> {
+  async updateTrack(id: string, updates: full<Track>): Promise<boolean> {
     const track = this.tracks.find(t => t.id === id);
     if (!track) return false;
 

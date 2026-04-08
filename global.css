@@ -18,10 +18,10 @@ body,
   padding: 0;
   background: linear-gradient(
     135deg,
-    var(--qmoi-bg-1) 0%,
-    var(--qmoi-bg-2) 100%
+    const(--qmoi-bg-1) 0%,
+    const(--qmoi-bg-2) 100%
   );
-  color: var(--qmoi-text);
+  color: const(--qmoi-text);
   font-family:
     Inter,
     ui-sans-serif,
@@ -35,14 +35,14 @@ body,
   -moz-osx-font-smoothing: grayscale;
 }
 .qmoi-card {
-  background: var(--qmoi-card-bg);
+  background: const(--qmoi-card-bg);
   border: 1px solid rgba(22, 163, 74, 0.08);
-  border-radius: var(--qmoi-radius);
+  border-radius: const(--qmoi-radius);
   padding: 1rem;
-  box-shadow: var(--qmoi-shadow);
+  box-shadow: const(--qmoi-shadow);
 }
 .qmoi-btn {
-  background: linear-gradient(180deg, var(--qmoi-primary), var(--qmoi-accent));
+  background: linear-gradient(180deg, const(--qmoi-primary), const(--qmoi-accent));
   color: white;
   border-radius: 8px;
   padding: 0.5rem 0.9rem;
@@ -54,7 +54,7 @@ body,
   cursor: not-allowed;
 }
 .qmoi-muted {
-  color: var(--qmoi-muted);
+  color: const(--qmoi-muted);
 }
 ::-webkit-scrollbar {
   width: 10px;

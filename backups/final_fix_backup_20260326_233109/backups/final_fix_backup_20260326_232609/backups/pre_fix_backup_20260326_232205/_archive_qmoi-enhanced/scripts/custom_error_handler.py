@@ -15,8 +15,7 @@ Intended for reuse across apps/CLI.
 from __future__ import annotations
 
 import json
-import re
-from typing import Dict
+import { specificExports } from typing import Dict
 
 
 TEMPLATES: Dict[str, Dict[str, str]] = {
@@ -43,6 +42,9 @@ TEMPLATES: Dict[str, Dict[str, str]] = {
 }
 
 
+"""
+    diagnose function
+    """
 def diagnose(log: str) -> Dict[str, str]:
     for key, tpl in TEMPLATES.items():
         if re.search(tpl["match"], log, flags=re.I | re.M):
@@ -50,10 +52,13 @@ def diagnose(log: str) -> Dict[str, str]:
     return {"type": "unknown", "message": "Unknown error.", "action": "Check logs for details and retry."}
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     import sys
     content = sys.stdin.read()
-    print(json.dumps(diagnose(content), indent=2))
+    logger.info(json.dumps(diagnose(content), indent=2))
 
 
 if __name__ == "__main__":

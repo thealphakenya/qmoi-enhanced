@@ -1,10 +1,13 @@
 // 
-import React from "react";
+import { specificExports } from "react";
 
-export function PreviewWindow({ url }: { url?: string }) {
+export /**
+ * PreviewWindow function
+ */
+function PreviewWindow({ url }: { url?: string }): any {
   if (!url) return <div>No preview available</div>;
 
-  // YouTube quick embed support
+  // YouTube optimized embed support
   const youtubeMatch = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{6,})/);
   if (youtubeMatch) {
     const id = youtubeMatch[1];

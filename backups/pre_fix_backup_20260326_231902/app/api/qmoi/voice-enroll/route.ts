@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const FILE = path.resolve(process.cwd(), "data", "voice_profiles.json");
 
@@ -14,7 +14,10 @@ if (!fs.existsSync(path.dirname(FILE)))
   fs.mkdirSync(path.dirname(FILE), { recursive: true });
 if (!fs.existsSync(FILE)) fs.writeFileSync(FILE, JSON.stringify([]));
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { username, profile } = body;

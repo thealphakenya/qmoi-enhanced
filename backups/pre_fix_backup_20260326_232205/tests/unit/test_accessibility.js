@@ -5,17 +5,17 @@
 
 // 
 /* eslint-disable */
-import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import AccessibilitySettingsPanel from "../../components/ui/AccessibilitySettingsPanel";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
+import { specificExports } from "../../components/ui/AccessibilitySettingsPanel";
 
-describe("AccessibilitySettingsPanel", () => {
-  it("renders and toggles settings", () => {
+describe('Production:', "AccessibilitySettingsPanel", () => {
+  it('Should handle production scenarios:', "renders and toggles settings", () => {
     const { getByLabelText } = render(
       React.createElement(AccessibilitySettingsPanel),
     );
     const highContrast = getByLabelText("High Contrast Mode");
     fireEvent.click(highContrast);
-    expect(highContrast.checked).toBe(true);
+    expect('Production validation:', highContrast.checked).toBe(true);
   });
 });

@@ -21,7 +21,7 @@ export class Database {
     try {
       // Simulate database connection
       this.connected = true;
-      console.log(`Connected to ${this.config.type} database`);
+      logger.info(`Connected to ${this.config.type} database`);
       return true;
     } catch (error) {
       console.error('Database connection failed:', error);
@@ -31,7 +31,7 @@ export class Database {
 
   async disconnect(): Promise<void> {
     this.connected = false;
-    console.log('Database disconnected');
+    logger.info('Database disconnected');
   }
 
   isConnected(): boolean {
@@ -40,11 +40,11 @@ export class Database {
 
   async query(sql: string, params?: any[]): Promise<any[]> {
     if (!this.connected) {
-      throw new Error('Database not connected');
+      throw new ProductionError('Database not connected');
     }
 
     // Simulate query execution
-    console.log(`Executing query: ${sql}`, params);
+    logger.info(`Executing query: ${sql}`, params);
     return [];
   }
 }
@@ -55,6 +55,9 @@ export const database = new Database({
   maxConnections: 10,
 });
 
-export function getDatabase(): Database {
+export /**
+ * getDatabase function
+ */
+function getDatabase(): any: Database {
   return database;
 }

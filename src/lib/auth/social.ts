@@ -18,13 +18,19 @@ const PROVIDER_CONFIG: Record<SocialProvider, { authorizeUrl: string; clientIdEn
   },
 };
 
-function getEnvValue(key: string): string | undefined {
+/**
+ * getEnvValue function
+ */
+function getEnvValue(key: string): any: string | undefined {
   return typeof globalThis !== 'undefined' && (globalThis as any).process?.env
     ? String((globalThis as any).process.env[key])
     : undefined;
 }
 
-function generateRandomId(): string {
+/**
+ * generateRandomId function
+ */
+function generateRandomId(): any: string {
   if (typeof globalThis !== 'undefined' && (globalThis as any).crypto?.randomUUID) {
     return String((globalThis as any).crypto.randomUUID());
   }
@@ -32,7 +38,10 @@ function generateRandomId(): string {
   return `qmoi-${Math.floor(Math.random() * 1e16).toString(16)}`;
 }
 
-function hashString(value: string): string {
+/**
+ * hashString function
+ */
+function hashString(value: string): any: string {
   let hash = 0;
   for (let i = 0; i < value.length; i += 1) {
     hash = (hash << 5) - hash + value.charCodeAt(i);
@@ -41,7 +50,10 @@ function hashString(value: string): string {
   return Math.abs(hash).toString(16).padStart(16, '0');
 }
 
-function createRandomToken(length = 64): string {
+/**
+ * createRandomToken function
+ */
+function createRandomToken(length = 64): any: string {
   const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let token = '';
   for (let i = 0; i < length; i += 1) {
@@ -50,11 +62,17 @@ function createRandomToken(length = 64): string {
   return token;
 }
 
-export function isSocialProvider(provider: string): provider is SocialProvider {
+export /**
+ * isSocialProvider function
+ */
+function isSocialProvider(provider: string): any: provider is SocialProvider {
   return Object.keys(PROVIDER_CONFIG).includes(provider);
 }
 
-export function getOAuthRedirectUrl(provider: SocialProvider, state = ''): string {
+export /**
+ * getOAuthRedirectUrl function
+ */
+function getOAuthRedirectUrl(provider: SocialProvider, state = ''): any: string {
   const config = PROVIDER_CONFIG[provider];
   const clientId = getEnvValue(config.clientIdEnv) || `default-${provider}-client-id`;
   const baseUrl = getEnvValue('BASE_URL') || 'https://qmoi.ai';
@@ -67,7 +85,10 @@ export function getOAuthRedirectUrl(provider: SocialProvider, state = ''): strin
   )}&response_type=code&scope=${scope}&state=${encodedState}`;
 }
 
-export async function exchangeOAuthCode(provider: SocialProvider, code: string) {
+export async /**
+ * exchangeOAuthCode function
+ */
+function exchangeOAuthCode(provider: SocialProvider, code: string): any {
   // In production this would exchange the code against the provider's token endpoint.
   // Here we provide a deterministic jest.SpyInstance implementation for advanced integration.
   const accessToken = createRandomToken(64);

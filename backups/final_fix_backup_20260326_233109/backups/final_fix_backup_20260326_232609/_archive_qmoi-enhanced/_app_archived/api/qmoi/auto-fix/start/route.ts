@@ -4,21 +4,27 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import { spawn } from "child_process";
-import path from "path";
-import fs from "fs";
-import { writeFileSync } from "fs";
-import os from "os";
+import { specificExports } from "next/server";
+import { specificExports } from "child_process";
+import { specificExports } from "path";
+import { specificExports } from "fs";
+import { specificExports } from "fs";
+import { specificExports } from "os";
 
-function requireApiKey(request: NextRequest) {
+/**
+ * requireApiKey function
+ */
+function requireApiKey(request: NextRequest): any {
   const key = request.headers.get("x-qmoi-api-key") || "";
   const expected = process.env.QMOI_API_KEY || "";
   if (!expected) return true;
   return key === expected;
 }
 
-async function writeProposal(proposal: unknown) {
+async /**
+ * writeProposal function
+ */
+function writeProposal(proposal: unknown): any {
   try {
     const dir = ".qmoi_validation";
     if (!fs.existsSync(dir)) fs.mkdirSync(dir);
@@ -41,7 +47,10 @@ async function writeProposal(proposal: unknown) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     if (!requireApiKey(request))
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

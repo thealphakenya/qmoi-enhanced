@@ -11,11 +11,11 @@
  * Includes unit, integration, E2E, performance, security, and accessibility tests
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import { exec } from "child_process";
-import { promisify } from "util";
-import QMOINotificationSystem from "./qmoi-notification-system.js";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "./qmoi-notification-system.js";
 
 const execAsync = promisify(exec);
 
@@ -35,14 +35,14 @@ class QMOIAutomationAutotests {
   }
 
   async initialize() {
-    console.log("🧪 Initializing QMOI Automation Autotests...");
+    logger.info("🧪 Initializing QMOI Automation Autotests...");
 
     try {
       await this.notificationSystem.initialize();
       await this.createTestDirectories();
       await this.loadTestConfiguration();
 
-      console.log("✅ QMOI Automation Autotests initialized");
+      logger.info("✅ QMOI Automation Autotests initialized");
     } catch (error) {
       console.error("❌ Test initialization failed:", error.message);
       throw error;
@@ -71,7 +71,7 @@ class QMOIAutomationAutotests {
   }
 
   async runAllTests() {
-    console.log("🚀 Starting comprehensive QMOI automation tests...");
+    logger.info("🚀 Starting comprehensive QMOI automation tests...");
 
     const startTime = Date.now();
     const testReport = {
@@ -164,7 +164,7 @@ class QMOIAutomationAutotests {
   }
 
   async runUnitTests() {
-    console.log("🧪 Running unit tests...");
+    logger.info("🧪 Running unit tests...");
 
     try {
       const { stdout } = await execAsync(
@@ -184,7 +184,7 @@ class QMOIAutomationAutotests {
   }
 
   async runIntegrationTests() {
-    console.log("🧪 Running integration tests...");
+    logger.info("🧪 Running integration tests...");
 
     try {
       const { stdout } = await execAsync(
@@ -204,7 +204,7 @@ class QMOIAutomationAutotests {
   }
 
   async runE2ETests() {
-    console.log("🧪 Running E2E tests...");
+    logger.info("🧪 Running E2E tests...");
 
     try {
       const { stdout } = await execAsync(
@@ -224,7 +224,7 @@ class QMOIAutomationAutotests {
   }
 
   async runPerformanceTests() {
-    console.log("🧪 Running performance tests...");
+    logger.info("🧪 Running performance tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:performance");
@@ -242,7 +242,7 @@ class QMOIAutomationAutotests {
   }
 
   async runSecurityTests() {
-    console.log("🧪 Running security tests...");
+    logger.info("🧪 Running security tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:security");
@@ -260,7 +260,7 @@ class QMOIAutomationAutotests {
   }
 
   async runAccessibilityTests() {
-    console.log("🧪 Running accessibility tests...");
+    logger.info("🧪 Running accessibility tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:accessibility");
@@ -278,7 +278,7 @@ class QMOIAutomationAutotests {
   }
 
   async runCompatibilityTests() {
-    console.log("🧪 Running compatibility tests...");
+    logger.info("🧪 Running compatibility tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:compatibility");
@@ -296,7 +296,7 @@ class QMOIAutomationAutotests {
   }
 
   async runLoadTests() {
-    console.log("🧪 Running load tests...");
+    logger.info("🧪 Running load tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:load");
@@ -314,7 +314,7 @@ class QMOIAutomationAutotests {
   }
 
   async runStressTests() {
-    console.log("🧪 Running stress tests...");
+    logger.info("🧪 Running stress tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:stress");
@@ -332,7 +332,7 @@ class QMOIAutomationAutotests {
   }
 
   async runRegressionTests() {
-    console.log("🧪 Running regression tests...");
+    logger.info("🧪 Running regression tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:regression");
@@ -350,7 +350,7 @@ class QMOIAutomationAutotests {
   }
 
   async runSmokeTests() {
-    console.log("🧪 Running smoke tests...");
+    logger.info("🧪 Running smoke tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:smoke");
@@ -368,7 +368,7 @@ class QMOIAutomationAutotests {
   }
 
   async runSanityTests() {
-    console.log("🧪 Running sanity tests...");
+    logger.info("🧪 Running sanity tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:sanity");
@@ -386,7 +386,7 @@ class QMOIAutomationAutotests {
   }
 
   async runVisualTests() {
-    console.log("🧪 Running visual tests...");
+    logger.info("🧪 Running visual tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:visual");
@@ -404,7 +404,7 @@ class QMOIAutomationAutotests {
   }
 
   async runAPITests() {
-    console.log("🧪 Running API tests...");
+    logger.info("🧪 Running API tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:api");
@@ -422,7 +422,7 @@ class QMOIAutomationAutotests {
   }
 
   async runDatabaseTests() {
-    console.log("🧪 Running database tests...");
+    logger.info("🧪 Running database tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:database");
@@ -440,7 +440,7 @@ class QMOIAutomationAutotests {
   }
 
   async runNetworkTests() {
-    console.log("🧪 Running network tests...");
+    logger.info("🧪 Running network tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:network");
@@ -458,7 +458,7 @@ class QMOIAutomationAutotests {
   }
 
   async runMobileTests() {
-    console.log("🧪 Running mobile tests...");
+    logger.info("🧪 Running mobile tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:mobile");
@@ -476,7 +476,7 @@ class QMOIAutomationAutotests {
   }
 
   async runCrossBrowserTests() {
-    console.log("🧪 Running cross-browser tests...");
+    logger.info("🧪 Running cross-browser tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:cross-browser");
@@ -494,7 +494,7 @@ class QMOIAutomationAutotests {
   }
 
   async runLocalizationTests() {
-    console.log("🧪 Running localization tests...");
+    logger.info("🧪 Running localization tests...");
 
     try {
       const { stdout } = await execAsync("npm run test:localization");
@@ -543,7 +543,7 @@ class QMOIAutomationAutotests {
   }
 
   async generateCoverageReport() {
-    console.log("📊 Generating coverage report...");
+    logger.info("📊 Generating coverage report...");
 
     try {
       const { stdout } = await execAsync("npm run test:coverage");
@@ -574,7 +574,7 @@ class QMOIAutomationAutotests {
   }
 
   async generateTestArtifacts() {
-    console.log("📁 Generating test artifacts...");
+    logger.info("📁 Generating test artifacts...");
 
     const artifacts = [];
 
@@ -612,7 +612,7 @@ class QMOIAutomationAutotests {
   async saveTestReport(report) {
     const reportPath = `reports/test-report-${Date.now()}.json`;
     await fs.writeFile(reportPath, JSON.stringify(report, null, 2));
-    console.log(`📄 Test report saved to: ${reportPath}`);
+    logger.info(`📄 Test report saved to: ${reportPath}`);
   }
 
   async sendTestNotification(report) {
@@ -633,28 +633,28 @@ class QMOIAutomationAutotests {
   }
 
   displayTestSummary(report) {
-    console.log("\n📋 Test Summary:");
-    console.log("=".repeat(50));
-    console.log(`Total Tests: ${report.summary.total}`);
-    console.log(`Passed: ${report.summary.passed} ✅`);
-    console.log(`Failed: ${report.summary.failed} ❌`);
-    console.log(`Skipped: ${report.summary.skipped} ⏭️`);
-    console.log(`Duration: ${this.formatDuration(report.summary.duration)}`);
-    console.log(
+    logger.info("\n📋 Test Summary:");
+    logger.info("=".repeat(50));
+    logger.info(`Total Tests: ${report.summary.total}`);
+    logger.info(`Passed: ${report.summary.passed} ✅`);
+    logger.info(`Failed: ${report.summary.failed} ❌`);
+    logger.info(`Skipped: ${report.summary.skipped} ⏭️`);
+    logger.info(`Duration: ${this.formatDuration(report.summary.duration)}`);
+    logger.info(
       `Success Rate: ${((report.summary.passed / report.summary.total) * 100).toFixed(1)}%`,
     );
 
     if (report.coverage) {
-      console.log("\n📊 Coverage:");
-      console.log(`Statements: ${report.coverage.statements}%`);
-      console.log(`Branches: ${report.coverage.branches}%`);
-      console.log(`Functions: ${report.coverage.functions}%`);
-      console.log(`Lines: ${report.coverage.lines}%`);
+      logger.info("\n📊 Coverage:");
+      logger.info(`Statements: ${report.coverage.statements}%`);
+      logger.info(`Branches: ${report.coverage.branches}%`);
+      logger.info(`Functions: ${report.coverage.functions}%`);
+      logger.info(`Lines: ${report.coverage.lines}%`);
     }
 
-    console.log("\n📁 Artifacts:");
-    report.artifacts.forEach((artifact) => {
-      console.log(`  - ${artifact}`);
+    logger.info("\n📁 Artifacts:");
+    report.artifacts.for (const item of((artifact) => {
+      logger.info(`  - ${artifact}`);
     });
   }
 
@@ -684,7 +684,10 @@ class QMOIAutomationAutotests {
   }
 }
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const autotests = new QMOIAutomationAutotests();
 
   try {
@@ -704,12 +707,12 @@ async function main() {
 
 // Handle process signals
 process.on("SIGINT", async () => {
-  console.log("\n🛑 Received SIGINT, stopping tests...");
+  logger.info("\n🛑 Received SIGINT, stopping tests...");
   process.exit(0);
 });
 
 process.on("SIGTERM", async () => {
-  console.log("\n🛑 Received SIGTERM, stopping tests...");
+  logger.info("\n🛑 Received SIGTERM, stopping tests...");
   process.exit(0);
 });
 

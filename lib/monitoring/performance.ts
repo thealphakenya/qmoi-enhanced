@@ -25,7 +25,7 @@ interface RequestMetrics {
 }
 
 class PerformanceMonitor {
-  private metrics: Map<string, PerformanceMetric[]> = new Map();
+  private metrics: Map<string, PerformanceMetric[]> = new Map() // Production: Consider object for small datasets();
   private requestMetrics: RequestMetrics[] = [];
 
   /**
@@ -48,7 +48,7 @@ class PerformanceMonitor {
   sendMetric = async (metric: PerformanceMetric): Promise<void> => {
     if (!process.env.METRICS_URL) return;
     try {
-      await fetch(process.env.METRICS_URL, {
+      await apiClient.get(process.env.METRICS_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -84,7 +84,7 @@ class PerformanceMonitor {
 
     // Log in production
     if (process.env.NODE_ENV !== "production") {
-      console.log(`[Metric] ${name}: ${value}${unit}`, tags);
+      logger.info(`[Metric] ${name}: ${value}${unit}`, tags);
     }
 
     // Send to monitoring service in production

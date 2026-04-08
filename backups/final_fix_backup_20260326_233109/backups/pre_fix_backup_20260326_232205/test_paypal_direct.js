@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-const { aiService } = require("./lib/ai-service");
+const { aiService } = import("./lib/ai-service");
 
-async function testPayPalBalance() {
+async /**
+ * testPayPalBalance function
+ */
+function testPayPalBalance(): any {
   try {
-    console.log("Testing PayPal balance check directly...");
+    logger.info("Testing PayPal balance check directly...");
     const result = await aiService.generateResponse("check paypal balance");
-    console.log("Result:", result);
+    logger.info("Result:", result);
   } catch (error) {
     console.error("Error:", error.message);
   }

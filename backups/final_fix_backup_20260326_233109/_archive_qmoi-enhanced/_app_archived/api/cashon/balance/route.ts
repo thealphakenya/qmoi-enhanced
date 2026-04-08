@@ -4,12 +4,15 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
-import { cashonWallet } from "../../../../lib/cashon-wallet";
-import { logEvent } from "../../../../lib/security_check";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/cashon-wallet";
+import { specificExports } from "../../../../lib/security_check";
 
 // Verify master token
-function verifyMasterToken(request: NextRequest): string | null {
+/**
+ * verifyMasterToken function
+ */
+function verifyMasterToken(request: NextRequest): any: string | null {
   const authHeader = request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
@@ -22,7 +25,10 @@ function verifyMasterToken(request: NextRequest): string | null {
 }
 
 // GET /api/cashon/balance
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const masterToken = verifyMasterToken(request);
     if (!masterToken) {
@@ -57,7 +63,10 @@ export async function GET(request: NextRequest) {
 }
 
 // POST /api/cashon/balance
-export async function POST(req: Request) {
+export async /**
+ * POST function
+ */
+function POST(req: Request): any {
   const { action } = (await req.json()) as any;
   if (action === "sync-mpesa") {
     const mpesaNumber = process.env.CASHON_MPESA_NUMBER;

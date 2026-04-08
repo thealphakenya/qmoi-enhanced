@@ -9,14 +9,17 @@
  * POST /api/chat/enhanced
  */
 
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "next/server";
 import {
   chatbotDatasetIntegration,
   type EnhancedChatbotRequest,
 } from "@/lib/chatbot-dataset-integration";
-import { QMOIService } from "@/lib/qmoi-service";
+import { specificExports } from "@/lib/qmoi-service";
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = (await request.json()) as EnhancedChatbotRequest;
     const { message, conversationId, userId, preferences } = body;
@@ -87,6 +90,9 @@ export async function POST(request: NextRequest) {
 /**
  * Generate unique conversation ID
  */
-function generateConversationId(): string {
+/**
+ * generateConversationId function
+ */
+function generateConversationId(): any: string {
   return `conv_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
 }

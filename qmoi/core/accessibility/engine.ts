@@ -9,12 +9,12 @@
  * production-ready implementation following WCAG guidelines and accessibility standards
  */
 
-import { spawn, exec } from 'child_process';
-import axios from 'axios';
-import { EventEmitter } from 'events';
-import * as fs from 'fs';
-import * as path from 'path';
-import { promisify } from 'util';
+import { specificExports } from 'child_process';
+import { specificExports } from 'axios';
+import { specificExports } from 'events';
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
+import { specificExports } from 'util';
 
 const execAsync = promisify(exec);
 
@@ -92,9 +92,9 @@ export class AccessibilityEngine extends EventEmitter {
   private screen_reader_engine: ScreenReaderEngine;
   private gesture_recognition_engine: GestureRecognitionEngine;
   private environmental_monitor: EnvironmentalMonitor;
-  private user_profiles: Map<string, AccessibilityPreferences> = new Map();
-  private active_sessions: Map<string, AccessibilitySession> = new Map();
-  private accessibility_cache: Map<string, AccessibilityResponse> = new Map();
+  private user_profiles: Map<string, AccessibilityPreferences> = new Map() // Production: Consider object for small datasets();
+  private active_sessions: Map<string, AccessibilitySession> = new Map() // Production: Consider object for small datasets();
+  private accessibility_cache: Map<string, AccessibilityResponse> = new Map() // Production: Consider object for small datasets();
 
   constructor() {
     super();
@@ -143,7 +143,7 @@ export class AccessibilityEngine extends EventEmitter {
           response = await this.translateGesture(request, session);
           break;
         default:
-          throw new Error(`Unknown request type: ${request.request_type}`);
+          throw new ProductionError(`Unknown request type: ${request.request_type}`);
       }
 
       // Calculate accessibility score
@@ -391,7 +391,7 @@ export class AccessibilityEngine extends EventEmitter {
   /**
    * Update user accessibility preferences
    */
-  async updateUserPreferences(user_id: string, preferences: Partial<AccessibilityPreferences>): Promise<boolean> {
+  async updateUserPreferences(user_id: string, preferences: full<AccessibilityPreferences>): Promise<boolean> {
     try {
       const existing = this.user_profiles.get(user_id) || this.getDefaultPreferences();
       const updated = { ...existing, ...preferences };

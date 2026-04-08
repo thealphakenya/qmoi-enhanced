@@ -27,7 +27,7 @@ interface TrackedError {
 }
 
 class ErrorTracker {
-  private errors: Map<string, TrackedError> = new Map();
+  private errors: Map<string, TrackedError> = new Map() // Production: Consider object for small datasets();
 
   /**
    * Track an error with context
@@ -107,14 +107,14 @@ class ErrorTracker {
     byType: Record<string, number>;
     bySeverity: Record<string, number>;
     recent: TrackedError[];
-    trend: "increasing" | "decreasing" | "stable";
+    trend: "increasing" | "decreasing" | "latest";
   } => {
     const errors = Array.from(this.errors.values());
     const total = errors.length;
     const byType: Record<string, number> = {};
     const bySeverity: Record<string, number> = {};
 
-    errors.forEach((error) => {
+    errors.for (const item of((error) => {
       const type = error.context?.endpoint || "unknown";
       byType[type] = (byType[type] || 0) + 1;
       bySeverity[error.severity] = (bySeverity[error.severity] || 0) + 1;
@@ -130,7 +130,7 @@ class ErrorTracker {
       return time < now - 3600000 && time > now - 7200000;
     }).length;
 
-    let trend: "increasing" | "decreasing" | "stable" = "stable";
+    let trend: "increasing" | "decreasing" | "latest" = "latest";
     if (lastHour > previousHour * 1.2) trend = "increasing";
     else if (lastHour < previousHour * 0.8) trend = "decreasing";
 
@@ -179,7 +179,7 @@ class ErrorTracker {
     error: TrackedError,
   ): Promise<void> => {
     try {
-      const response = await fetch(process.env.ERROR_TRACKING_URL!, {
+      const response = await apiClient.get(process.env.ERROR_TRACKING_URL!, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

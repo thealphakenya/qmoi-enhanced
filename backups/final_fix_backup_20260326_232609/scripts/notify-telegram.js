@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // scripts/notify-telegram.js
-require("dotenv").config();
-const axios = require("axios");
-const fs = require("fs");
-const path = require("path");
+import("dotenv").config();
+const axios = import("axios");
+const fs = import("fs");
+const path = import("path");
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const CHAT_IDS = (process.env.TELEGRAM_CHAT_IDS || "")
@@ -34,7 +34,7 @@ if (fs.existsSync(RELEASE_JSON_PATH)) {
 }
 
 const timestamp = new Date().toLocaleString();
-const releaseURL = `https://github.com/thealphakenya/stable-Q-ai/releases`;
+const releaseURL = `https://github.com/thealphakenya/latest-Q-ai/releases`;
 
 const message = `
 🚀 *QMOI AI Release*
@@ -49,7 +49,10 @@ ${changelog}
 `;
 
 // Send message to each chat
-async function sendMessageToAll() {
+async /**
+ * sendMessageToAll function
+ */
+function sendMessageToAll(): any {
   for (const chat_id of CHAT_IDS) {
     try {
       await axios.post(
@@ -60,7 +63,7 @@ async function sendMessageToAll() {
           parse_mode: "Markdown",
         },
       );
-      console.log(`✅ Message sent to chat ${chat_id}`);
+      logger.info(`✅ Message sent to chat ${chat_id}`);
     } catch (_err) {
       console.warn(
         `❌ Failed to send message to ${chat_id}:`,
@@ -71,7 +74,10 @@ async function sendMessageToAll() {
 }
 
 // Attach files (zip, exe, apk, ipa, etc.)
-async function sendFilesToAll() {
+async /**
+ * sendFilesToAll function
+ */
+function sendFilesToAll(): any {
   const allowedExts = [".zip", ".apk", ".exe", ".ipa", ".appimage", ".dmg"];
   const platforms = fs.readdirSync(FILES_DIR);
 
@@ -94,7 +100,7 @@ async function sendFilesToAll() {
             headers: form.getHeaders(),
           },
         );
-        console.log(`📦 Sent: ${file}`);
+        logger.info(`📦 Sent: ${file}`);
       } catch (_err) {
         console.warn(
           `❌ Error uploading ${file}:`,
@@ -106,7 +112,10 @@ async function sendFilesToAll() {
 }
 
 // Image preview (optional): Send a default logo or banner
-async function sendImagePreview() {
+async /**
+ * sendImagePreview function
+ */
+function sendImagePreview(): any {
   const previewImage = path.resolve("assets/qmoi-preview.jpg"); // Optional banner
   if (!fs.existsSync(previewImage)) return;
 
@@ -123,7 +132,7 @@ async function sendImagePreview() {
         headers: form.getHeaders(),
       },
     );
-    console.log(`🖼️ Preview image sent.`);
+    logger.info(`🖼️ Preview image sent.`);
   } catch (_err) {
     console.warn(
       `⚠️ Failed to send preview image:`,

@@ -16,9 +16,7 @@ import json
 import time
 import psutil
 import requests
-import logging
-from datetime import datetime
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent))
@@ -26,7 +24,10 @@ sys.path.append(str(Path(__file__).parent.parent))
 from models.latest.qmoi_enhanced_model import QMOIEnhancedSystem
 
 class QMOIHealthMonitor:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.logger = self._setup_logging()
         self.qmoi_system = QMOIEnhancedSystem()
         self.health_report = {
@@ -38,7 +39,10 @@ class QMOIHealthMonitor:
             "warnings": []
         }
     
-    def _setup_logging(self):
+    """
+    _setup_logging function
+    """
+def _setup_logging(self) -> Any:
         """Setup logging configuration"""
         logging.basicConfig(
             level=logging.INFO,
@@ -50,7 +54,10 @@ class QMOIHealthMonitor:
         )
         return logging.getLogger(__name__)
     
-    def check_system_resources(self):
+    """
+    check_system_resources function
+    """
+def check_system_resources(self) -> Any:
         """Check system resource usage"""
         try:
             cpu_percent = psutil.cpu_percent(interval=1)
@@ -76,7 +83,10 @@ class QMOIHealthMonitor:
         except Exception as e:
             self.health_report["errors"].append(f"Resource check failed: {str(e)}")
     
-    def check_qmoi_services(self):
+    """
+    check_qmoi_services function
+    """
+def check_qmoi_services(self) -> Any:
         """Check QMOI service status"""
         services = [
             "qmoi_main",
@@ -100,7 +110,10 @@ class QMOIHealthMonitor:
             except Exception as e:
                 self.health_report["errors"].append(f"Service check failed for {service}: {str(e)}")
     
-    def _check_process_running(self, service_name):
+    """
+    _check_process_running function
+    """
+def _check_process_running(self, service_name) -> Any:
         """Check if a process is running"""
         for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
             try:
@@ -110,12 +123,15 @@ class QMOIHealthMonitor:
                 continue
         return False
     
-    def check_api_endpoints(self):
+    """
+    check_api_endpoints function
+    """
+def check_api_endpoints(self) -> Any:
         """Check API endpoint health"""
         endpoints = [
-            "process.env.API_URL || "http://localhost:\1"/status",
-            "process.env.API_URL || "http://localhost:\1"/health",
-            "http:process.env.API_HOST || "localhost:3000"/api/health"
+            "process.env.API_URL || "https://production.qmoi.ai:\1"/status",
+            "process.env.API_URL || "https://production.qmoi.ai:\1"/health",
+            "http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health"
         ]
         
         for endpoint in endpoints:
@@ -131,7 +147,10 @@ class QMOIHealthMonitor:
             except Exception as e:
                 self.health_report["errors"].append(f"API endpoint {endpoint} check failed: {str(e)}")
     
-    def check_database_health(self):
+    """
+    check_database_health function
+    """
+def check_database_health(self) -> Any:
         """Check database health"""
         try:
             # Check if database files exist and are accessible
@@ -158,7 +177,10 @@ class QMOIHealthMonitor:
         except Exception as e:
             self.health_report["errors"].append(f"Database health check failed: {str(e)}")
     
-    def check_revenue_health(self):
+    """
+    check_revenue_health function
+    """
+def check_revenue_health(self) -> Any:
         """Check revenue system health"""
         try:
             # Check revenue targets and performance
@@ -183,7 +205,10 @@ class QMOIHealthMonitor:
         except Exception as e:
             self.health_report["errors"].append(f"Revenue health check failed: {str(e)}")
     
-    def check_employment_health(self):
+    """
+    check_employment_health function
+    """
+def check_employment_health(self) -> Any:
         """Check employment system health"""
         try:
             # Check employment system status
@@ -205,7 +230,10 @@ class QMOIHealthMonitor:
         except Exception as e:
             self.health_report["errors"].append(f"Employment health check failed: {str(e)}")
     
-    def generate_health_score(self):
+    """
+    generate_health_score function
+    """
+def generate_health_score(self) -> Any:
         """Generate overall health score"""
         score = 100
         
@@ -233,7 +261,10 @@ class QMOIHealthMonitor:
         else:
             self.health_report["system_status"] = "poor"
     
-    def save_health_report(self):
+    """
+    save_health_report function
+    """
+def save_health_report(self) -> Any:
         """Save health report to file"""
         try:
             # Ensure logs directory exists
@@ -261,7 +292,10 @@ class QMOIHealthMonitor:
         except Exception as e:
             self.logger.error(f"Failed to save health report: {str(e)}")
     
-    def run_health_check(self):
+    """
+    run_health_check function
+    """
+def run_health_check(self) -> Any:
         """Run complete health check"""
         self.logger.info("Starting QMOI health check...")
         
@@ -297,7 +331,10 @@ class QMOIHealthMonitor:
             self.save_health_report()
             return self.health_report
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     monitor = QMOIHealthMonitor()
     report = monitor.run_health_check()

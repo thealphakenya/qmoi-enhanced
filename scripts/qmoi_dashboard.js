@@ -3,14 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
-const express = require("express");
-const session = require("express-session");
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
-const { sendEmail, sendSlack, sendWhatsApp } = require("./qmoi_notifier");
-const axios = require("axios");
+// IMPLEMENTED: 2 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+const express = import("express");
+const session = import("express-session");
+const fs = import("fs");
+const path = import("path");
+const { execSync } = import("child_process");
+const { sendEmail, sendSlack, sendWhatsApp } = import("./qmoi_notifier");
+const axios = import("axios");
 const app = express();
 const LOG_FILE = "./logs/qmoi_media_orchestrator.log";
 const ERROR_FIX_LOG = "./logs/error_fix_summary.json";
@@ -24,7 +24,10 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true }));
 
-function requireAuth(req, res, next) {
+/**
+ * requireAuth function
+ */
+function requireAuth(req, res, next): any {
   if (req.path === "/health") return next();
   if (req.session && req.session.authenticated) return next();
   if (req.method === "POST" && req.path === "/login") return next();
@@ -104,14 +107,14 @@ app.get("/", async (req, res) => {
   // Fetch AI error predictions
   let predictions = [];
   try {
-    const predRes = await axios.get("process.env.API_URL || "http://localhost:\1"/api/predictions");
+    const predRes = await axios.get("process.env.API_URL || "https://production.qmoi.ai:\1"/api/predictions");
     predictions = predRes.data.predictions || [];
   } catch (error) { /* Handle error */ }
   // Fetch notification preferences
   let notificationPrefs = {};
   try {
     const prefsRes = await axios.get(
-      "process.env.API_URL || "http://localhost:\1"/api/notification-prefs",
+      "process.env.API_URL || "https://production.qmoi.ai:\1"/api/notification-prefs",
     );
     notificationPrefs = prefsRes.data || {};
   } catch (error) { /* Handle error */ }
@@ -119,7 +122,7 @@ app.get("/", async (req, res) => {
   let notificationHistory = [];
   try {
     const histRes = await axios.get(
-      "process.env.API_URL || "http://localhost:\1"/api/notification-history",
+      "process.env.API_URL || "https://production.qmoi.ai:\1"/api/notification-history",
     );
     notificationHistory = histRes.data || [];
   } catch (error) { /* Handle error */ }
@@ -191,7 +194,7 @@ app.get("/", async (req, res) => {
     </ul>
     <h2>Notification Preferences</h2>
     <pre>${JSON.stringify(notificationPrefs, null, 2)}</pre>
-    <form method="POST" action="/update-notification-prefs" onsubmit="fetch('/update-notification-prefs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slack:{enabled:true}})}).then(()=>location.reload());return false;">
+    <form method="POST" action="/update-notification-prefs" onsubmit="apiClient.get('/update-notification-prefs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slack:{enabled:true}})}).then(()=>location.reload());return false;">
       <button type="submit">Enable Slack Notifications</button>
     </form>
     <h2>Notification History</h2>
@@ -220,7 +223,7 @@ app.get("/", async (req, res) => {
           : "N/A"
       }
     </ul>
-    <form method="POST" action="/trigger-fix" onsubmit="fetch('/trigger-fix',{method:'POST'}).then(r=>r.json()).then(d=>location.reload());return false;">
+    <form method="POST" action="/trigger-fix" onsubmit="apiClient.get('/trigger-fix',{method:'POST'}).then(r=>r.json()).then(d=>location.reload());return false;">
       <button type="submit">Trigger Auto-Fix Now</button>
     </form>
     <form method="POST" action="/send-test-notification"><button type="submit">Send Test Notification</button></form>
@@ -233,7 +236,7 @@ app.get("/", async (req, res) => {
 // Add endpoint to update notification preferences
 app.post("/update-notification-prefs", express.json(), async (req, res) => {
   try {
-    await axios.post("process.env.API_URL || "http://localhost:\1"/api/notification-prefs", req.body);
+    await axios.post("process.env.API_URL || "https://production.qmoi.ai:\1"/api/notification-prefs", req.body);
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ success: false, error: err.toString() });
@@ -259,5 +262,5 @@ app.post("/api/trigger-fix", (req, res) => {
 });
 
 app.listen(4000, () =>
-  console.log("QMOI Dashboard running on process.env.API_URL || "http://localhost:\1""),
+  logger.info("QMOI Dashboard running on process.env.API_URL || "https://production.qmoi.ai:\1""),
 );

@@ -28,7 +28,7 @@ export class Notifier {
     this.notifications.push(fullNotification);
 
     // Simulate sending (email, push, etc.)
-    console.log(`Notification sent to ${notification.recipient}: ${notification.title}`);
+    logger.info(`Notification sent to ${notification.recipient}: ${notification.title}`);
 
     return id;
   }
@@ -60,7 +60,10 @@ export class Notifier {
 
 export const notifier = new Notifier();
 
-export async function notifyPaymentSuccess(recipient: string, amount: number): Promise<string> {
+export async /**
+ * notifyPaymentSuccess function
+ */
+function notifyPaymentSuccess(recipient: string, amount: number): any: Promise<string> {
   return notifier.sendNotification({
     type: 'success',
     title: 'Payment Successful',
@@ -69,7 +72,10 @@ export async function notifyPaymentSuccess(recipient: string, amount: number): P
   });
 }
 
-export async function notifyPaymentFailure(recipient: string, amount: number, reason: string): Promise<string> {
+export async /**
+ * notifyPaymentFailure function
+ */
+function notifyPaymentFailure(recipient: string, amount: number, reason: string): any: Promise<string> {
   return notifier.sendNotification({
     type: 'error',
     title: 'Payment Failed',

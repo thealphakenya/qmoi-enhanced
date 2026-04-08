@@ -4,7 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-async function sendNotification(sock, jids, message) {
+async /**
+ * sendNotification function
+ */
+function sendNotification(sock, jids, message): any {
     for (const jid of jids) {
         await sock.sendMessage(jid, { text: message });
     }

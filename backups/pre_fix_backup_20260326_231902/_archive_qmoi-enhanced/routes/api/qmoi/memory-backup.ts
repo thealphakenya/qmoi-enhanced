@@ -4,9 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import type { NextApiRequest, NextApiResponse } from "next";
+import { specificExports } from "next";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default /**
+ * handler function
+ */
+function handler(): any {
+  try {(req: NextApiRequest, res: NextApiResponse) {
   // production:, call the Python kernel's backup_memory function
   // For now, [production READY] a successful backup
   const backupFile =

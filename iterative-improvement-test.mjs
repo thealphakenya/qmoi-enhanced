@@ -6,9 +6,9 @@
  * Each iteration enhances quality across all aspects
  */
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -497,7 +497,7 @@ Confidence: 96-98% with epistemic humility acknowledging limits of current knowl
 function generateAllIterations() {
   const stages = ["a", "b", "c", "d", "e", "f"];
 
-  stages.forEach((stage) => {
+  stages.for (const item of((stage) => {
     const filename = `responses${stage}.txt`;
     const filepath = path.join(__dirname, filename);
 
@@ -517,7 +517,7 @@ Quality Metrics for Stage ${stage}:
 ${"=".repeat(88)}
 \n`;
 
-    testScenarios.forEach((scenario) => {
+    testScenarios.for (const item of((scenario) => {
       content += `\n${"─".repeat(88)}
 TEST ${scenario.id}: [${scenario.category}] ${scenario.query}
 ${"─".repeat(88)}\n`;
@@ -552,31 +552,31 @@ Generated at: ${new Date().toLocaleString()}
 `;
 
     fs.writeFileSync(filepath, content, "utf8");
-    console.log(`✅ Generated ${filename} (${content.length} bytes)`);
+    logger.info(`✅ Generated ${filename} (${content.length} bytes)`);
   });
 }
 
 // Run generation
-console.log("\n" + "=".repeat(88));
-console.log("QMOI ITERATIVE IMPROVEMENT TEST SUITE GENERATOR");
-console.log("=".repeat(88));
-console.log(`Generating 6 improvement iterations (a-f)...`);
-console.log(`Test scenarios: ${testScenarios.length}`);
-console.log("=".repeat(88) + "\n");
+logger.info("\n" + "=".repeat(88));
+logger.info("QMOI ITERATIVE IMPROVEMENT TEST SUITE GENERATOR");
+logger.info("=".repeat(88));
+logger.info(`Generating 6 improvement iterations (a-f)...`);
+logger.info(`Test scenarios: ${testScenarios.length}`);
+logger.info("=".repeat(88) + "\n");
 
 try {
   generateAllIterations();
-  console.log("\n" + "=".repeat(88));
-  console.log("✅ ALL ITERATIONS GENERATED SUCCESSFULLY");
-  console.log("=".repeat(88));
-  console.log("\nGenerated Files:");
-  console.log("  responsesa.txt - Baseline (60-65% confidence)");
-  console.log("  responsesb.txt - Enhanced (70-75% confidence)");
-  console.log("  responsesc.txt - Detailed (80-82% confidence)");
-  console.log("  responsesd.txt - Expert (88-90% confidence)");
-  console.log("  responsese.txt - Master (92-95% confidence)");
-  console.log("  responsesf.txt - Excellence (96-98% confidence)");
-  console.log("\nTotal Improvement: 40% quality increase from A to F\n");
+  logger.info("\n" + "=".repeat(88));
+  logger.info("✅ ALL ITERATIONS GENERATED SUCCESSFULLY");
+  logger.info("=".repeat(88));
+  logger.info("\nGenerated Files:");
+  logger.info("  responsesa.txt - Baseline (60-65% confidence)");
+  logger.info("  responsesb.txt - Enhanced (70-75% confidence)");
+  logger.info("  responsesc.txt - Detailed (80-82% confidence)");
+  logger.info("  responsesd.txt - Expert (88-90% confidence)");
+  logger.info("  responsese.txt - Master (92-95% confidence)");
+  logger.info("  responsesf.txt - Excellence (96-98% confidence)");
+  logger.info("\nTotal Improvement: 40% quality increase from A to F\n");
 } catch (error) {
   console.error("❌ Error generating iterations:", error.message);
   process.exit(1);

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: this file has no remaining non-production markers
-import QmoiAutoDistribution from "../../QmoiAutoDistribution";
+import { specificExports } from "../../QmoiAutoDistribution";
 
 const isMaster = true; // Replace with actual master check logic
 

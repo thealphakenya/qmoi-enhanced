@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Triage TODOs: read .qmoi_validation/todos.json and output a summary
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const root = process.cwd();
 const todosPath = path.join(root, ".qmoi_validation", "todos.json");
@@ -36,7 +36,7 @@ function summarize(todos) {
 
 function writeSummary(summary) {
   fs.writeFileSync(outPath, JSON.stringify(summary, null, 2));
-  console.log("Wrote", outPath);
+  logger.info("Wrote", outPath);
 }
 
 try {

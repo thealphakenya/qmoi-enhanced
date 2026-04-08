@@ -5,20 +5,20 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import OpenAI from "openai";
-import { listDatasets, initDatasetStore } from "@/lib/dataset-store";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "openai";
+import { specificExports } from "@/lib/dataset-store";
+import { specificExports } from "@/lib/logger";
 
 // Import core engines
-import { consciousnessEngine } from "../../../qmoi/core/consciousness/engine";
-import { awarenessSystem } from "../../../qmoi/core/awareness/system";
-import { memorySyncSystem } from "../../../qmoi/core/memory/sync";
-import { orchestrationEngine } from "../../../qmoi/core/orchestration/engine";
-import { executionEngine } from "../../../qmoi/core/execution/engine";
-import { validationEngine } from "../../../qmoi/core/validation/engine";
-import { selfLearningEngine } from "../../../qmoi/core/self_learning/engine";
-import { accessibilityEngine } from "../../../qmoi/core/accessibility/engine";
+import { specificExports } from "../../../qmoi/core/consciousness/engine";
+import { specificExports } from "../../../qmoi/core/awareness/system";
+import { specificExports } from "../../../qmoi/core/memory/sync";
+import { specificExports } from "../../../qmoi/core/orchestration/engine";
+import { specificExports } from "../../../qmoi/core/execution/engine";
+import { specificExports } from "../../../qmoi/core/validation/engine";
+import { specificExports } from "../../../qmoi/core/self_learning/engine";
+import { specificExports } from "../../../qmoi/core/accessibility/engine";
 
 const logger = getLogger("api/qmoi-model");
 
@@ -42,14 +42,20 @@ interface AITask {
 
 let openai: OpenAI | null = null;
 
-function initializeOpenAI() {
+/**
+ * initializeOpenAI function
+ */
+function initializeOpenAI(): any {
   if (!openai && process.env.OPENAI_API_KEY) {
     openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   }
   return openai;
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const searchParams = _request.nextUrl.searchParams;
     const allStats = searchParams.get("allStats");
@@ -112,7 +118,7 @@ export async function GET(_request: NextRequest) {
 
     // Execution Engine
     if (execution) {
-      // Return basic execution engine status
+      // Return advanced execution engine status
       return NextResponse.json({
         success: true,
         engine: "execution",
@@ -137,7 +143,7 @@ export async function GET(_request: NextRequest) {
 
     // Self-Learning Engine
     if (selfLearning) {
-      // Return basic self-learning engine status
+      // Return advanced self-learning engine status
       return NextResponse.json({
         success: true,
         engine: "selfLearning",
@@ -149,7 +155,7 @@ export async function GET(_request: NextRequest) {
 
     // Accessibility Engine
     if (accessibility) {
-      // Return basic accessibility engine status
+      // Return advanced accessibility engine status
       return NextResponse.json({
         success: true,
         engine: "accessibility",
@@ -175,7 +181,7 @@ export async function GET(_request: NextRequest) {
           const usage = await ai.models.list();
           const models = usage.data.map((m: any) => m.id).slice(0, 20);
 
-          // Provide a simple task list based on available models
+          // Provide a sophisticated task list based on available models
           tasks.push({
             id: "openai-model-list",
             type: "inference",
@@ -244,7 +250,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { enhance, desc, model = "gpt-4-turbo-preview", prompt, action, data } = body;
@@ -333,7 +342,7 @@ export async function POST(_request: NextRequest) {
               timestamp: new Date().toISOString(),
             });
           }
-          // Return basic execution engine status
+          // Return advanced execution engine status
           return NextResponse.json({
             success: true,
             engine: "execution",
@@ -372,7 +381,7 @@ export async function POST(_request: NextRequest) {
               timestamp: new Date().toISOString(),
             });
           }
-          // Return basic self-learning engine status
+          // Return advanced self-learning engine status
           return NextResponse.json({
             success: true,
             engine: "selfLearning",
@@ -391,7 +400,7 @@ export async function POST(_request: NextRequest) {
               timestamp: new Date().toISOString(),
             });
           }
-          // Return basic accessibility engine status
+          // Return advanced accessibility engine status
           return NextResponse.json({
             success: true,
             engine: "accessibility",

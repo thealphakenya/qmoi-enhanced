@@ -8,9 +8,9 @@
 /// <reference types="node" />
 /* eslint-disable no-unreachable */
 
-import { safeConsoleError } from "@/utils/safeConsole";
-import * as nodeCrypto from "crypto";
-import { EventEmitter } from "events";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "crypto";
+import { specificExports } from "events";
 const crypto = nodeCrypto;
 
 interface SecurityMetrics {
@@ -1033,7 +1033,7 @@ export class BitgetManager extends EventEmitter {
         timestamp: new Date(),
         error,
       });
-      throw new Error("Failed to backup encryption keys");
+      throw new ProductionError("Failed to backup encryption keys");
     }
   }
 
@@ -1047,7 +1047,7 @@ export class BitgetManager extends EventEmitter {
         this.securityStatus.isLocked = false;
         this.securityStatus.failedAttempts = 0;
       } else {
-        throw new Error(
+        throw new ProductionError(
           "Account is temporarily locked due to multiple failed attempts",
         );
       }
@@ -1058,7 +1058,7 @@ export class BitgetManager extends EventEmitter {
       this.securityStatus.currentRequestCount >=
       this.config.security.rateLimits.requestsPerSecond
     ) {
-      throw new Error("Rate limit exceeded");
+      throw new ProductionError("Rate limit exceeded");
     }
 
     // Increment _request counter
@@ -1068,7 +1068,7 @@ export class BitgetManager extends EventEmitter {
     const isValid = await this.validateRequestSignature(_request);
     if (!isValid) {
       this.securityStatus.failedAttempts++;
-      throw new Error("Invalid _request signature");
+      throw new ProductionError("Invalid _request signature");
     }
 
     // Add anomaly detection

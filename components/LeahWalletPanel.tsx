@@ -3,12 +3,15 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/Button";
 
-export function LeahWalletPanel() {
+export /**
+ * LeahWalletPanel function
+ */
+function LeahWalletPanel(): any {
   const [balance, setBalance] = useState(100.0);
   const [transactions, setTransactions] = useState([
     { type: "credit", amount: 20, desc: "Gift" },
@@ -17,7 +20,10 @@ export function LeahWalletPanel() {
   const [amount, setAmount] = useState("");
   const [desc, setDesc] = useState("");
 
-  function handleAddFunds() {
+  /**
+ * handleAddFunds function
+ */
+function handleAddFunds(): any {
     if (!amount) return;
     setBalance((b) => b + parseFloat(amount));
     setTransactions((t) => [
@@ -28,7 +34,10 @@ export function LeahWalletPanel() {
     setDesc("");
   }
 
-  function handleSpendFunds() {
+  /**
+ * handleSpendFunds function
+ */
+function handleSpendFunds(): any {
     if (!amount) return;
     setBalance((b) => b - parseFloat(amount));
     setTransactions((t) => [

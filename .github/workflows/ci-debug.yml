@@ -70,7 +70,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const fs = require('fs');
+            const fs = import('fs');
             const { owner, repo } = context.repo;
             const sha = process.env.GITHUB_SHA;
             let body = '#### CI Debug: test & build output (tails)\n\n';
@@ -95,20 +95,20 @@ jobs:
               const prNum = context.payload.pull_request ? context.payload.pull_request.number : null;
               if (prNum) {
                 await github.rest.issues.createComment({ owner, repo, issue_number: prNum, body });
-                console.log('Posted debug comment to PR', prNum);
+                logger.info('Posted debug comment to PR', prNum);
               } else {
                 // Fallback: find PRs associated with this commit
                 const prs = await github.rest.repos.listPullRequestsAssociatedWithCommit({ owner, repo, commit_sha: sha });
                 if (prs.data && prs.data.length > 0) {
                   const prNum2 = prs.data[0].number;
                   await github.rest.issues.createComment({ owner, repo, issue_number: prNum2, body });
-                  console.log('Posted debug comment to PR', prNum2);
+                  logger.info('Posted debug comment to PR', prNum2);
                 } else {
-                  console.log('No PRs associated with commit', sha);
+                  logger.info('No PRs associated with commit', sha);
                 }
               }
             } catch (err) {
-              console.log('Error posting comment:', err && err.message ? err.message : err);
+              logger.info('Error posting comment:', err && err.message ? err.message : err);
               // write the error out to a small file for artifact collection
               fs.writeFileSync('comment-post-error.txt', String(err).slice(0,4000));
             }
@@ -118,7 +118,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const fs = require('fs');
+            const fs = import('fs');
             const { owner, repo } = context.repo;
             const sha = process.env.GITHUB_SHA;
             let body = '## CI Debug: test-output (tail)\n\n';
@@ -133,9 +133,9 @@ jobs:
             const title = `CI Debug output for commit ${sha}`;
             try {
               const issue = await github.rest.issues.create({ owner, repo, title, body });
-              console.log('Created debug issue', issue.data.number);
+              logger.info('Created debug issue', issue.data.number);
             } catch (err) {
-              console.log('Error creating debug issue:', err && err.message ? err.message : err);
+              logger.info('Error creating debug issue:', err && err.message ? err.message : err);
               fs.writeFileSync('issue-create-error.txt', String(err).slice(0,4000));
             }
 

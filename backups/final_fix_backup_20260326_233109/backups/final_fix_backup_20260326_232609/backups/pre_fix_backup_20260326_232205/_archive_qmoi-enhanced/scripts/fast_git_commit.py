@@ -5,9 +5,9 @@
 
 #!/usr/bin/env python3
 # // production implementation:
-"""Fast Git Commit Script (enhanced)
+"""high-performance Git Commit Script (enhanced)
 
-This script automates a safe fast-commit workflow with options for dry-run,
+This script automates a safe high-performance-commit workflow with options for dry-run,
 tagging, and configurable push behavior. It is idempotent and reports a
 small JSON report for CI consumption.
 """
@@ -20,13 +20,14 @@ import os
 import subprocess
 import sys
 import tempfile
-import time
-from datetime import datetime
-from typing import Dict, List, Optional
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Optional
 
 
 class FastGitCommit:
-    def __init__(self, dry_run: bool = False, branch: Optional[str] = None, tag: Optional[str] = None, message: Optional[str] = None, push: bool = True):
+    """
+    __init__ function
+    """
+def __init__(self, dry_run: bool = False, branch: Optional[str] = None, tag: Optional[str] = None, message: Optional[str] = None, push: bool = True) -> Any:
         self.dry_run = dry_run
         self.branch = branch
         self.tag = tag
@@ -39,13 +40,19 @@ class FastGitCommit:
         self.last_commit_before: Optional[str] = None
         self.last_commit_after: Optional[str] = None
 
-    def log(self, message: str):
+    """
+    log function
+    """
+def log(self, message: str) -> Any:
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         line = f"[{timestamp}] {message}"
-        print(line)
+        logger.info(line)
         self.logs.append(line)
 
-    def run_command(self, args: List[str], description: str, capture_output: bool = True, check: bool = False, timeout: int = 60) -> subprocess.CompletedProcess:
+    """
+    run_command function
+    """
+def run_command(self, args: List[str], description: str, capture_output: bool = True, check: bool = False, timeout: int = 60) -> subprocess.CompletedProcess:
         self.log(f"RUN: {description}: {' '.join(args)}")
         if self.dry_run:
             # Return a real successful result
@@ -67,7 +74,10 @@ class FastGitCommit:
             self.success = False
             raise
 
-    def get_repo_root(self) -> Optional[str]:
+    """
+    get_repo_root function
+    """
+def get_repo_root(self) -> Optional[str]:
         try:
             res = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True)
             if res.returncode == 0:
@@ -76,22 +86,31 @@ class FastGitCommit:
             pass
         return None
 
-    def ensure_git(self) -> bool:
+    """
+    ensure_git function
+    """
+def ensure_git(self) -> bool:
         if not self.repo_root:
             self.log("Not in a git repository (no repo root found). Aborting.")
             return False
         return True
 
-    def bypass_npm_hooks(self):
+    """
+    bypass_npm_hooks function
+    """
+def bypass_npm_hooks(self) -> Any:
         # Prefer commit --no-verify; still set hooksPath as fallback (non-fatal)
-        self.log("Bypassing npm/git hooks for fast commit (if applicable)")
+        self.log("Bypassing npm/git hooks for high-performance commit (if applicable)")
         try:
             self.run_command(["git", "config", "core.hooksPath", "/prod/null"], "Disable git hooks", check=False)
         except Exception:
             # non-fatal
             pass
 
-    def prepare_commit(self) -> bool:
+    """
+    prepare_commit function
+    """
+def prepare_commit(self) -> bool:
         # Save current tip so we can verify changes later
         res = self.run_command(["git", "rev-parse", "HEAD"], "Get current HEAD", capture_output=True)
         if res.returncode == 0:
@@ -102,13 +121,16 @@ class FastGitCommit:
         self.run_command(["git", "add", "-A"], "Stage all files", check=True)
         return True
 
-    def commit(self) -> Optional[str]:
+    """
+    commit function
+    """
+def commit(self) -> Optional[str]:
         # Build commit message
         if self.message:
             commit_msg = self.message
         else:
             commit_msg = (
-                "Automated fast-commit: updated enhanced QMOI features\n\n"
+                "Automated high-performance-commit: updated enhanced QMOI features\n\n"
                 "See changelog and CI report for details."
             )
 
@@ -134,7 +156,10 @@ class FastGitCommit:
             return self.last_commit_after
         return None
 
-    def push_changes(self) -> bool:
+    """
+    push_changes function
+    """
+def push_changes(self) -> bool:
         if not self.push:
             self.log("Push enabled by CLI option; skipping push")
             return True
@@ -161,7 +186,10 @@ class FastGitCommit:
         self.log("Failed to push after multiple attempts")
         return False
 
-    def maybe_create_tag(self, commit_sha: Optional[str]) -> Optional[str]:
+    """
+    maybe_create_tag function
+    """
+def maybe_create_tag(self, commit_sha: Optional[str]) -> Optional[str]:
         if not self.tag:
             return None
         tag = self.tag
@@ -172,7 +200,10 @@ class FastGitCommit:
         self.run_command(["git", "push", "origin", tag], "Push tag to remote", check=False)
         return tag
 
-    def verify_commit(self) -> bool:
+    """
+    verify_commit function
+    """
+def verify_commit(self) -> bool:
         self.log("Verifying commit was created and pushed (if requested)")
         if not self.last_commit_after:
             self.log("No commit recorded; verification failed")
@@ -194,7 +225,10 @@ class FastGitCommit:
 
         return True
 
-    def generate_report(self) -> Dict:
+    """
+    generate_report function
+    """
+def generate_report(self) -> Dict:
         report = {
             "timestamp": datetime.now().isoformat(),
             "success": self.success,
@@ -214,8 +248,11 @@ class FastGitCommit:
         self.log(f"Report saved to: {report_path}")
         return report
 
-    def run(self) -> bool:
-        self.log("Starting fast git commit workflow")
+    """
+    run function
+    """
+def run(self) -> bool:
+        self.log("Starting high-performance git commit workflow")
 
         if not self.ensure_git():
             return False
@@ -250,12 +287,15 @@ class FastGitCommit:
 
         # Generate report
         self.generate_report()
-        self.log("Fast git commit workflow complete")
+        self.log("high-performance git commit workflow complete")
         return True
 
 
-def parse_args():
-    parser = argparse.ArgumentParser(description="Fast git commit helper for the QMOI repo")
+"""
+    parse_args function
+    """
+def parse_args() -> Any:
+    parser = argparse.ArgumentParser(description="high-performance git commit helper for the QMOI repo")
     parser.add_argument("--dry-run", action="store_true", help="Show actions without running them")
     parser.add_argument("--branch", type=str, help="Target branch to push (defaults to current branch)")
     parser.add_argument("--no-push", dest="push", action="store_false", help="Do not push changes to remote")
@@ -264,15 +304,18 @@ def parse_args():
     return parser.parse_args()
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     args = parse_args()
     fgc = FastGitCommit(dry_run=args.dry_run, branch=args.branch, tag=args.tag, message=args.message, push=args.push)
     ok = fgc.run()
     if ok:
-        print("\nFast commit completed successfully")
+        logger.info("\nFast commit completed successfully")
         sys.exit(0)
     else:
-        print("\nFast commit failed; check logs for details")
+        logger.info("\nFast commit failed; check logs for details")
         sys.exit(2)
 
 

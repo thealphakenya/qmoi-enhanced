@@ -9,12 +9,13 @@ import os
 import sys
 import time
 import argparse
-import subprocess
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
 class ContentDeploymentDeployer:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.dry_run = False
         self.verbose = False
         
@@ -34,12 +35,18 @@ class ContentDeploymentDeployer:
                 status.get("ssl_status") == "✅ Provisioned"):
                 self.domains_to_process.append(domain)
     
-    def log(self, message: str):
+    """
+    log function
+    """
+def log(self, message: str) -> Any:
         """Log message with timestamp"""
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        print(f"[{timestamp}] {message}")
+        logger.info(f"[{timestamp}] {message}")
     
-    def validate_environment(self) -> bool:
+    """
+    validate_environment function
+    """
+def validate_environment(self) -> bool:
         """Validate content deployment environment"""
         self.log("🔍 Validating content deployment environment...")
         
@@ -52,7 +59,10 @@ class ContentDeploymentDeployer:
         self.log("✅ Content deployment environment validation passed")
         return True
     
-    def get_content_for_domain(self, domain: str) -> dict:
+    """
+    get_content_for_domain function
+    """
+def get_content_for_domain(self, domain: str) -> dict:
         """Get content configuration for a domain"""
         base_domain = domain.split('/')[0]
         
@@ -104,7 +114,10 @@ class ContentDeploymentDeployer:
             
         return content_config
     
-    def deploy_content(self, domain: str) -> bool:
+    """
+    deploy_content function
+    """
+def deploy_content(self, domain: str) -> bool:
         """Deploy content for a domain"""
         if self.dry_run:
             self.log(f"🔍 DRY RUN: Would deploy content for {domain}")
@@ -126,7 +139,10 @@ class ContentDeploymentDeployer:
             self.log(f"❌ Content deployment failed for {domain}")
             return False
     
-    def verify_content_deployment(self, domain: str) -> bool:
+    """
+    verify_content_deployment function
+    """
+def verify_content_deployment(self, domain: str) -> bool:
         """Verify content is accessible and returns HTTP 200"""
         base_domain = domain.split('/')[0]
         content_config = self.get_content_for_domain(domain)
@@ -145,7 +161,10 @@ class ContentDeploymentDeployer:
             self.log(f"❌ Content verification failed for {base_domain}")
             return False
     
-    def update_deployment_status(self, domain: str, content_status: str):
+    """
+    update_deployment_status function
+    """
+def update_deployment_status(self, domain: str, content_status: str) -> Any:
         """Update content deployment status for a domain"""
         if domain in self.status["deployment_status_by_domain"]:
             self.status["deployment_status_by_domain"][domain]["content_status"] = content_status
@@ -161,7 +180,10 @@ class ContentDeploymentDeployer:
         with open(self.status_file, 'w') as f:
             json.dump(self.status, f, indent=2)
     
-    def run_deployment(self):
+    """
+    run_deployment function
+    """
+def run_deployment(self) -> Any:
         """Run content deployment for all domains with successful DNS and SSL"""
         self.log("📦 Starting Content Deployment")
         self.log(f"📊 Domains with active DNS+SSL: {len(self.domains_to_process)}")
@@ -217,7 +239,10 @@ class ContentDeploymentDeployer:
             return False
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='Deploy content for QMOI domains')
     parser.add_argument('--all-domains', action='store_true', help='Deploy content for all domains with DNS+SSL')
     parser.add_argument('--cdn', type=str, default='cloudflare', help='CDN provider (default: cloudflare)')
@@ -228,7 +253,7 @@ def main():
     args = parser.parse_args()
     
     if not args.dry_run and not args.execute:
-        print("❌ Must specify --dry-run or --execute")
+        logger.info("❌ Must specify --dry-run or --execute")
         sys.exit(1)
     
     deployer = ContentDeploymentDeployer()

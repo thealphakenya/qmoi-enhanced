@@ -4,8 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # 
-import os, sys, subprocess, time, shutil, json, platform
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_BASE = os.path.join(ROOT_DIR, "Qmoi_apps")
@@ -25,7 +24,10 @@ prodICES = {
     "qcity": "qmoi_ai.qcapp",
 }
 
-def ensure_directories():
+"""
+    ensure_directories function
+    """
+def ensure_directories() -> Any:
     for prodice in prodICES:
         os.makedirs(os.path.join(OUTPUT_BASE, prodice), exist_ok=True)
     if not os.path.exists(ICON_PATH):
@@ -34,25 +36,34 @@ def ensure_directories():
         draw = ImageDraw.Draw(icon)
         draw.text((100, 100), "Q", fill=(255, 255, 255, 255))
         icon.save(ICON_PATH, format="ICO")
-        print("✅ Default icon created")
+        logger.info("✅ Default icon created")
 
-def build_windows():
-    print("🪟 Building Windows .exe...")
+"""
+    build_windows function
+    """
+def build_windows() -> Any:
+    logger.info("🪟 Building Windows .exe...")
     subprocess.call("npm run electron:build:win", shell=True)
 
-def build_android():
-    print("🤖 Building Android .apk...")
+"""
+    build_android function
+    """
+def build_android() -> Any:
+    logger.info("🤖 Building Android .apk...")
     os.chdir(os.path.join(ROOT_DIR, "android"))
     subprocess.call("./gradlew assembleRelease", shell=True)
     apk_source = os.path.join(ROOT_DIR, "android", "app", "build", "outputs", "apk", "release", "app-release.apk")
     apk_target = os.path.join(OUTPUT_BASE, "android", prodICES["android"])
     if os.path.exists(apk_source):
         shutil.copy(apk_source, apk_target)
-        print("✅ Android APK copied.")
+        logger.info("✅ Android APK copied.")
     else:
-        print("❌ Android APK build failed")
+        logger.info("❌ Android APK build failed")
 
-def install_android():
+"""
+    install_android function
+    """
+def install_android() -> Any:
     apk_path = os.path.join(OUTPUT_BASE, "android", prodICES["android"])
     if os.path.exists(apk_path):
         subprocess.call("adb kill-server && adb start-server", shell=True)
@@ -60,20 +71,26 @@ def install_android():
         subprocess.call("adb wait-for-prodice", shell=True)
         subprocess.call(f"adb install -r \"{apk_path}\"", shell=True)
         subprocess.call("adb shell monkey -p com.qmoi.ai -v 1", shell=True)
-        print("✅ Android App installed and launched.")
+        logger.info("✅ Android App installed and launched.")
     else:
-        print("❌ APK not found for installation")
+        logger.info("❌ APK not found for installation")
 
-def build_fallbacks():
+"""
+    build_fallbacks function
+    """
+def build_fallbacks() -> Any:
     for prodice in prodICES:
         if prodice in ("windows", "android"):
             continue
         path = os.path.join(OUTPUT_BASE, prodice, prodICES[prodice])
         with open(path, 'w') as f:
             f.write(f"Generated implementation for {prodice} build of QMOI AI")
-        print(f"📦 {prodice.capitalize()} implementation build created.")
+        logger.info(f"📦 {prodice.capitalize()} implementation build created.")
 
-def update_readme():
+"""
+    update_readme function
+    """
+def update_readme() -> Any:
     status = f"## QMOI AI Build Status ({datetime.now().strftime('%Y-%m-%d %H:%M')})\n"
     for prodice, filename in prodICES.items():
         path = os.path.join("Qmoi_apps", prodice, filename)
@@ -85,15 +102,21 @@ def update_readme():
             lines = f.readlines()
             f.seek(0)
             f.write(status + "\n" + "".join(lines))
-    print("📝 README updated")
+    logger.info("📝 README updated")
 
-def notify_watchdebug():
+"""
+    notify_watchdebug function
+    """
+def notify_watchdebug() -> Any:
     if os.path.exists(WATCHDEBUG_PATH):
-        print("🔁 Triggering watchdebug monitoring...")
+        logger.info("🔁 Triggering watchdebug monitoring...")
         subprocess.call("npm run monitor --prefix .", shell=True)
 
-def main():
-    print("🚀 Starting QMOI Build Pipeline...")
+"""
+    main function
+    """
+def main() -> Any:
+    logger.info("🚀 Starting QMOI Build Pipeline...")
     ensure_directories()
     build_windows()
     build_android()
@@ -101,7 +124,7 @@ def main():
     build_fallbacks()
     update_readme()
     notify_watchdebug()
-    print("🎉 All apps built and deployed successfully.")
+    logger.info("🎉 All apps built and deployed successfully.")
 
 if __name__ == "__main__":
     main()

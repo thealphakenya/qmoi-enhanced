@@ -4,17 +4,20 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextApiRequest, NextApiResponse } from "next";
-import { QCityService } from "../../../scripts/services/qcity_service";
-import { logger } from "../../../scripts/utils/logger";
-import { QCityConfig } from "../../../types/qcity";
+import { specificExports } from "next";
+import { specificExports } from "../../../scripts/services/qcity_service";
+import { specificExports } from "../../../scripts/utils/logger";
+import { specificExports } from "../../../types/qcity";
 
 const qcityService = new QCityService();
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   try {
     if (req.method === "GET") {
       const config = qcityService.getConfig();

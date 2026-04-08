@@ -4,10 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 import sys
-import argparse
-from ai_self_update import AISelfUpdater
+import { specificExports } from ai_self_update import AISelfUpdater
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='AI Self Update Utility')
     parser.add_argument('--backup', type=str, help='Path to model to backup')
     parser.add_argument('--restore', type=str, help='Path to restore model to')
@@ -20,9 +22,9 @@ def main():
         updater.backup_model_to_huggingface(args.backup, args.repo, args.token)
     elif args.restore and args.repo and args.token:
         # Implement restore logic if needed
-        print('Restore implemented yet.')
+        logger.info('Restore implemented yet.')
     else:
-        print('No valid arguments provided.')
+        logger.info('No valid arguments provided.')
 
 if __name__ == '__main__':
     main()

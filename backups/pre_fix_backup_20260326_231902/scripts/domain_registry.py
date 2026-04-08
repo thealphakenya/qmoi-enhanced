@@ -14,10 +14,7 @@ import json
 import time
 import socket
 import subprocess
-import requests
-from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Tuple
-from dataclasses import dataclass, asdict
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from dataclasses import dataclass, asdict
 import logging
 import os
 import sys
@@ -45,7 +42,10 @@ class DomainHealth:
     regions_checked: List[str] = None
     error_message: Optional[str] = None
 
-    def __post_init__(self):
+    """
+    __post_init__ function
+    """
+def __post_init__(self) -> Any:
         if self.regions_checked is None:
             self.regions_checked = []
 
@@ -61,7 +61,10 @@ class LinkHealth:
     error_message: Optional[str] = None
 
 class QMOIDomainRegistry:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.domains_file = '/workspaces/qmoi-enhanced/data/domains.json'
         self.links_file = '/workspaces/qmoi-enhanced/data/links.json'
         self.health_file = '/workspaces/qmoi-enhanced/data/health_status.json'
@@ -188,7 +191,10 @@ class QMOIDomainRegistry:
         self.link_health: Dict[str, LinkHealth] = {}
         self.load_health_status()
 
-    def load_health_status(self):
+    """
+    load_health_status function
+    """
+def load_health_status(self) -> Any:
         """Load existing health status from file"""
         try:
             if os.path.exists(self.health_file):
@@ -210,7 +216,10 @@ class QMOIDomainRegistry:
         except Exception as e:
             logger.error(f"Failed to load health status: {e}")
 
-    def save_health_status(self):
+    """
+    save_health_status function
+    """
+def save_health_status(self) -> Any:
         """Save current health status to file"""
         try:
             data = {
@@ -241,7 +250,10 @@ class QMOIDomainRegistry:
         except Exception as e:
             logger.error(f"Failed to save health status: {e}")
 
-    def check_dns_resolution(self, domain: str) -> Tuple[bool, List[str]]:
+    """
+    check_dns_resolution function
+    """
+def check_dns_resolution(self, domain: str) -> Tuple[bool, List[str]]:
         """Check DNS resolution for domain"""
         try:
             # Get A records
@@ -252,7 +264,10 @@ class QMOIDomainRegistry:
             logger.warning(f"DNS resolution failed for {domain}: {e}")
             return False, []
 
-    def check_whois(self, domain: str) -> bool:
+    """
+    check_whois function
+    """
+def check_whois(self, domain: str) -> bool:
         """Check WHOIS information for domain"""
         try:
             result = subprocess.run(
@@ -270,7 +285,10 @@ class QMOIDomainRegistry:
             except:
                 return False
 
-    def check_ssl_certificate(self, domain: str) -> bool:
+    """
+    check_ssl_certificate function
+    """
+def check_ssl_certificate(self, domain: str) -> bool:
         """Check SSL certificate validity"""
         try:
             import ssl
@@ -287,7 +305,10 @@ class QMOIDomainRegistry:
             logger.warning(f"SSL check failed for {domain}: {e}")
             return False
 
-    def check_domain_health(self, domain: str, config: dict) -> DomainHealth:
+    """
+    check_domain_health function
+    """
+def check_domain_health(self, domain: str, config: dict) -> DomainHealth:
         """Check health of a single domain"""
         logger.info(f"Checking domain health: {domain}")
 
@@ -351,7 +372,10 @@ class QMOIDomainRegistry:
 
         return health
 
-    def check_link_health(self, link_id: str, config: dict) -> LinkHealth:
+    """
+    check_link_health function
+    """
+def check_link_health(self, link_id: str, config: dict) -> LinkHealth:
         """Check health of a single link"""
         logger.info(f"Checking link health: {link_id}")
 
@@ -387,7 +411,10 @@ class QMOIDomainRegistry:
 
         return health
 
-    def perform_health_checks(self):
+    """
+    perform_health_checks function
+    """
+def perform_health_checks(self) -> Any:
         """Perform health checks for all domains and links"""
         logger.info("Starting comprehensive health checks...")
 
@@ -413,7 +440,10 @@ class QMOIDomainRegistry:
 
         logger.info("Health checks completed")
 
-    def get_fallback_chain(self, domain: str) -> List[str]:
+    """
+    get_fallback_chain function
+    """
+def get_fallback_chain(self, domain: str) -> List[str]:
         """Get fallback chain for a domain"""
         chain = [domain]
         current = domain
@@ -427,7 +457,10 @@ class QMOIDomainRegistry:
 
         return chain
 
-    def get_active_domain(self) -> Optional[str]:
+    """
+    get_active_domain function
+    """
+def get_active_domain(self) -> Optional[str]:
         """Get the currently active primary domain"""
         # Check primary domain first
         primary_domains = [d for d, config in self.domains.items() if config['primary']]
@@ -442,7 +475,10 @@ class QMOIDomainRegistry:
 
         return None
 
-    def generate_report(self) -> str:
+    """
+    generate_report function
+    """
+def generate_report(self) -> str:
         """Generate a comprehensive health report"""
         report = []
         report.append("# QMOI Domain Registry Health Report")
@@ -499,7 +535,10 @@ class QMOIDomainRegistry:
 
         return "\n".join(report)
 
-    def run_continuous_monitoring(self, interval_minutes: int = 5):
+    """
+    run_continuous_monitoring function
+    """
+def run_continuous_monitoring(self, interval_minutes: int = 5) -> Any:
         """Run continuous health monitoring"""
         logger.info(f"Starting continuous monitoring (interval: {interval_minutes} minutes)")
 
@@ -524,7 +563,10 @@ class QMOIDomainRegistry:
         except Exception as e:
             logger.error(f"Monitoring failed: {e}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point"""
     import argparse
 
@@ -544,12 +586,12 @@ def main():
         registry.run_continuous_monitoring(args.interval)
     elif args.report:
         report = registry.generate_report()
-        print(report)
+        logger.info(report)
     else:
         # Default: perform check and show report
         registry.perform_health_checks()
         report = registry.generate_report()
-        print(report)
+        logger.info(report)
 
 if __name__ == '__main__':
     main()
@@ -622,11 +664,17 @@ if __name__ == '__main__':
 }
 
 
-def ensure_out_dir():
+"""
+    ensure_out_dir function
+    """
+def ensure_out_dir() -> Any:
     os.makedirs(OUT_DIR, exist_ok=True)
 
 
-def validate_revenue_settings(domain_config):
+"""
+    validate_revenue_settings function
+    """
+def validate_revenue_settings(domain_config) -> Any:
     """Validate revenue and billing settings for a domain."""
     required_fields = [
         "billing_enabled",
@@ -650,7 +698,10 @@ def validate_revenue_settings(domain_config):
     
     return warnings, errors
 
-def validate_wallet_integration(wallet_config):
+"""
+    validate_wallet_integration function
+    """
+def validate_wallet_integration(wallet_config) -> Any:
     """Validate wallet integration settings."""
     required_fields = {
         "megavault": ["auto_settlement", "min_settlement"],
@@ -669,7 +720,10 @@ def validate_wallet_integration(wallet_config):
     
     return warnings, errors
 
-def write_registry(registry, apply=False):
+"""
+    write_registry function
+    """
+def write_registry(registry, apply=False) -> Any:
     """Write registry with enhanced validation and monitoring."""
     ensure_out_dir()
     path = os.path.join(OUT_DIR, "domains_registry.json")
@@ -710,16 +764,19 @@ def write_registry(registry, apply=False):
     if not all_errors or not apply:
         with open(path, "w") as f:
             json.dump(registry, f, indent=2)
-        print(f"Wrote {path}")
+        logger.info(f"Wrote {path}")
         if all_warnings:
-            print("\nWarnings:")
+            logger.info("\nWarnings:")
             for w in all_warnings:
-                print(f"  - {w}")
+                logger.info(f"  - {w}")
     else:
         raise ValueError(f"Registry validation failed:\n" + "\n".join(all_errors))
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument("--apply", action="store_true", help="Apply mode (requires provider creds).")
     p.add_argument("--source-file", help="Optional JSON to seed registry from.")
@@ -734,12 +791,12 @@ def main():
                 data = json.load(f)
             registry["domains"].update(data.get("domains", {}))
         except Exception as e:
-            print("Warning: failed to load source file:", e)
+            logger.info("Warning: failed to load source file:", e)
 
     if args.apply:
         # Safe guard: unless environment provides provider creds we stay dry-run
         if not os.environ.get("QMOI_PROVISION_DNS") or not os.environ.get("QMOI_ENABLE_BILLING"):
-            print("--apply requested but gateway env vars not set. Performing dry-run write only.")
+            logger.info("--apply requested but gateway env vars not set. Performing dry-run write only.")
             write_registry(registry, apply=False)
             return
 
@@ -760,20 +817,22 @@ to validate domain ownership (NO network calls unless both apply and QMOI_ALLOW_
 import argparse
 import json
 import os
-import re
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT_DIR = os.path.join(ROOT, ".qmoi_validation")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 
-def discover_domain_docs(allmd_path):
+"""
+    discover_domain_docs function
+    """
+def discover_domain_docs(allmd_path) -> Any:
     docs = []
     if not os.path.exists(allmd_path):
         return docs
     txt = open(allmd_path, "r", encoding="utf-8", errors="ignore").read()
-    # simple heuristic: find filenames that contain 'DOM' or 'HOST' (case-insensitive)
+    # sophisticated heuristic: find filenames that contain 'DOM' or 'HOST' (case-insensitive)
     candidates = re.findall(r"- \[([^\]]+)\]", txt)
     for c in candidates:
         if re.search(r"DOM|HOST|LINK", c, re.IGNORECASE):
@@ -781,7 +840,10 @@ def discover_domain_docs(allmd_path):
     return sorted(set(docs))
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser()
     parser.add_argument("--apply", action="store_true", help="Apply network checks (gated by QMOI_ALLOW_NETWORK)")
     args = parser.parse_args()
@@ -800,7 +862,7 @@ def main():
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(registry, f, indent=2)
 
-    print(f"Wrote {out_path} (dry-run) with {len(sources)} source docs")
+    logger.info(f"Wrote {out_path} (dry-run) with {len(sources)} source docs")
 
 
 if __name__ == "__main__":
@@ -822,7 +884,10 @@ QM_VAL = ROOT / ".qmoi_validation"
 QM_VAL.mkdir(exist_ok=True)
 
 
-def load_domains(domains_path: Path):
+"""
+    load_domains function
+    """
+def load_domains(domains_path: Path) -> Any:
     if domains_path.exists():
         try:
             return json.loads(domains_path.read_text(encoding="utf-8"))
@@ -831,7 +896,10 @@ def load_domains(domains_path: Path):
     return {}
 
 
-def write_registry(registry: dict, dry_run: bool):
+"""
+    write_registry function
+    """
+def write_registry(registry: dict, dry_run: bool) -> Any:
     out = QM_VAL / "domains_registry.json"
     payload = {
         "generated_at": datetime.datetime.utcnow().isoformat() + "Z",
@@ -839,10 +907,13 @@ def write_registry(registry: dict, dry_run: bool):
         "registry": registry,
     }
     out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    print(f"Wrote {out} (dry_run={dry_run})")
+    logger.info(f"Wrote {out} (dry_run={dry_run})")
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument("--domains-file", default=str(ROOT / "domains.json"))
     p.add_argument("--apply", action="store_true", help="Persist default domains.json if required")
@@ -865,9 +936,9 @@ def main():
         # persist canonical domains.json if required or empty
         if not domains_path.exists() or domains_path.stat().st_size == 0:
             domains_path.write_text(json.dumps(registry, indent=2), encoding="utf-8")
-            print(f"Persisted {domains_path}")
+            logger.info(f"Persisted {domains_path}")
         else:
-            print(f"{domains_path} already exists; --apply will not overwrite existing file.")
+            logger.info(f"{domains_path} already exists; --apply will not overwrite existing file.")
 
 
 if __name__ == "__main__":

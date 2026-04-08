@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
 // QMOI Enhanced production Balance Auto-Update System
-// Complete production deployment with database, monitoring, and auto-updates
+// complete production deployment with database, monitoring, and auto-updates
 // INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS
 
-import { BalanceDatabaseManager } from '../lib/balance/balance-database-manager';
-import { BalanceMonitoringSystem } from '../lib/balance/balance-monitoring';
-import { BalanceAutoUpdateSystem } from './balance-auto-update';
-import { QMOIConsciousness } from '../lib/financial-consciousness';
-import { promises as fs } from 'fs';
-import path from 'path';
+import { specificExports } from '../lib/balance/balance-database-manager';
+import { specificExports } from '../lib/balance/balance-monitoring';
+import { specificExports } from './balance-auto-update';
+import { specificExports } from '../lib/financial-consciousness';
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
 
 interface productionConfig {
   database: {
@@ -53,24 +53,24 @@ class QMOIproductionBalanceSystem {
    * Initialize the production system
    */
   async initialize(): Promise<void> {
-    console.log('🚀 Initializing QMOI production Balance System...');
+    logger.info('🚀 Initializing QMOI production Balance System...');
 
     try {
       // Connect to database
       await this.dbManager.connect();
-      console.log('✅ Database connected');
+      logger.info('✅ Database connected');
 
       // Initialize QMOI consciousness
       if (this.config.qmoi.enabled) {
         await this.qmoiConsciousness.initialize();
-        console.log('✅ QMOI consciousness initialized');
+        logger.info('✅ QMOI consciousness initialized');
       }
 
       // Initialize database schema if needed
       await this.initializeDatabaseSchema();
-      console.log('✅ Database schema verified');
+      logger.info('✅ Database schema verified');
 
-      console.log('🎯 QMOI production Balance System initialized successfully');
+      logger.info('🎯 QMOI production Balance System initialized successfully');
 
     } catch (error) {
       console.error('❌ Initialization failed:', error);
@@ -83,39 +83,39 @@ class QMOIproductionBalanceSystem {
    */
   async start(): Promise<void> {
     if (this.isRunning) {
-      console.log('production system already running');
+      logger.info('production system already running');
       return;
     }
 
     this.isRunning = true;
-    console.log('🦁 Starting QMOI production Balance System...');
+    logger.info('🦁 Starting QMOI production Balance System...');
 
     try {
       // Start monitoring system
       if (this.config.monitoring.enabled) {
         await this.monitoringSystem.start();
-        console.log('✅ Monitoring system started');
+        logger.info('✅ Monitoring system started');
       }
 
       // Start auto-update system
       if (this.config.autoUpdate.enabled) {
         await this.autoUpdateSystem.start();
-        console.log('✅ Auto-update system started');
+        logger.info('✅ Auto-update system started');
       }
 
       // Start QMOI validation cycle
       if (this.config.qmoi.enabled) {
         this.startQMOIValidationCycle();
-        console.log('✅ QMOI validation cycle started');
+        logger.info('✅ QMOI validation cycle started');
       }
 
       // Start production health checks
       this.startproductionHealthChecks();
 
-      console.log('🎯 All QMOI production Systems Started Successfully');
-      console.log(`📊 Monitoring: ${this.config.monitoring.enabled ? 'ENABLED' : 'DISABLED'}`);
-      console.log(`🔄 Auto-Update: ${this.config.autoUpdate.enabled ? 'ENABLED' : 'DISABLED'}`);
-      console.log(`🧠 QMOI Validation: ${this.config.qmoi.enabled ? 'ENABLED' : 'DISABLED'}`);
+      logger.info('🎯 All QMOI production Systems Started Successfully');
+      logger.info(`📊 Monitoring: ${this.config.monitoring.enabled ? 'ENABLED' : 'DISABLED'}`);
+      logger.info(`🔄 Auto-Update: ${this.config.autoUpdate.enabled ? 'ENABLED' : 'DISABLED'}`);
+      logger.info(`🧠 QMOI Validation: ${this.config.qmoi.enabled ? 'ENABLED' : 'DISABLED'}`);
 
     } catch (error) {
       console.error('❌ Failed to start production systems:', error);
@@ -128,7 +128,7 @@ class QMOIproductionBalanceSystem {
    * Stop all production systems
    */
   async stop(): Promise<void> {
-    console.log('🛑 Stopping QMOI production Balance System...');
+    logger.info('🛑 Stopping QMOI production Balance System...');
 
     this.isRunning = false;
 
@@ -143,7 +143,7 @@ class QMOIproductionBalanceSystem {
 
       await this.dbManager.disconnect();
 
-      console.log('✅ All systems stopped gracefully');
+      logger.info('✅ All systems stopped gracefully');
 
     } catch (error) {
       console.error('❌ Error during shutdown:', error);
@@ -171,7 +171,7 @@ class QMOIproductionBalanceSystem {
         }
       }
 
-      console.log('📋 Database schema initialized');
+      logger.info('📋 Database schema initialized');
 
     } catch (error) {
       console.error('❌ Failed to initialize database schema:', error);
@@ -203,7 +203,7 @@ class QMOIproductionBalanceSystem {
    * Perform comprehensive QMOI validation
    */
   private async performQMOIValidation(): Promise<void> {
-    console.log('🧠 Performing QMOI balance validation...');
+    logger.info('🧠 Performing QMOI balance validation...');
 
     try {
       // Get all wallet balances
@@ -246,7 +246,7 @@ class QMOIproductionBalanceSystem {
       const validCount = validationResults.filter(r => r.validationResult.isValid).length;
       const totalCount = validationResults.length;
 
-      console.log(`✅ QMOI validation completed: ${validCount}/${totalCount} balances validated`);
+      logger.info(`✅ QMOI validation completed: ${validCount}/${totalCount} balances validated`);
 
     } catch (error) {
       console.error('❌ QMOI validation failed:', error);
@@ -273,18 +273,18 @@ class QMOIproductionBalanceSystem {
    */
   private async performHealthCheck(): Promise<void> {
     try {
-      console.log('🏥 Performing production health check...');
+      logger.info('🏥 Performing production health check...');
 
       const status = await this.monitoringSystem.getSystemStatus();
       const report = await this.monitoringSystem.generateReport();
 
       // Log health status
       if (status.status === 'healthy') {
-        console.log('✅ System health: HEALTHY');
+        logger.info('✅ System health: HEALTHY');
       } else if (status.status === 'warning') {
-        console.log('⚠️ System health: WARNING');
+        logger.info('⚠️ System health: WARNING');
       } else {
-        console.log('🔴 System health: CRITICAL');
+        logger.info('🔴 System health: CRITICAL');
       }
 
       // Save health report
@@ -333,14 +333,14 @@ class QMOIproductionBalanceSystem {
       reason: reason || 'Manual update'
     });
 
-    console.log(`✅ Manual balance update: ${walletId} ${balanceType} = ${amount}`);
+    logger.info(`✅ Manual balance update: ${walletId} ${balanceType} = ${amount}`);
   }
 
   /**
    * Force reconciliation for all wallets
    */
   async forceReconciliation(): Promise<void> {
-    console.log('🔄 Forcing reconciliation for all wallets...');
+    logger.info('🔄 Forcing reconciliation for all wallets...');
 
     const wallets = await this.dbManager.getBalanceSummary();
 
@@ -348,7 +348,7 @@ class QMOIproductionBalanceSystem {
       await this.dbManager.performReconciliation(wallet.wallet_id, 'daily');
     }
 
-    console.log(`✅ Reconciliation completed for ${wallets.length} wallets`);
+    logger.info(`✅ Reconciliation completed for ${wallets.length} wallets`);
   }
 
   /**
@@ -356,14 +356,14 @@ class QMOIproductionBalanceSystem {
    */
   async processPendingTriggers(): Promise<void> {
     await this.dbManager.processAutoUpdateTriggers();
-    console.log('✅ Pending triggers processed');
+    logger.info('✅ Pending triggers processed');
   }
 }
 
 // production configuration
 const productionConfig: productionConfig = {
   database: {
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || 'production.qmoi.ai',
     user: process.env.DB_USER || 'qmoi_user',
     password: process.env.DB_PASSWORD || 'secure_password',
     database: process.env.DB_NAME || 'qmoi_balances',
@@ -384,18 +384,21 @@ const productionConfig: productionConfig = {
 };
 
 // Main execution
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const system = new QMOIproductionBalanceSystem(productionConfig);
 
   // Handle graceful shutdown
   process.on('SIGINT', async () => {
-    console.log('\n🛑 Received shutdown signal...');
+    logger.info('\n🛑 Received shutdown signal...');
     await system.stop();
     process.exit(0);
   });
 
   process.on('SIGTERM', async () => {
-    console.log('\n🛑 Received termination signal...');
+    logger.info('\n🛑 Received termination signal...');
     await system.stop();
     process.exit(0);
   });
@@ -406,8 +409,8 @@ async function main() {
     await system.start();
 
     // Keep the process running
-    console.log('🎯 QMOI production Balance System is running...');
-    console.log('Press Ctrl+C to stop');
+    logger.info('🎯 QMOI production Balance System is running...');
+    logger.info('Press Ctrl+C to stop');
 
     // Optional: Add command-line interface for manual operations
     if (process.argv.length > 2) {
@@ -416,7 +419,7 @@ async function main() {
       switch (command) {
         case 'status':
           const status = await system.getSystemStatus();
-          console.log(JSON.stringify(status, null, 2));
+          logger.info(JSON.stringify(status, null, 2));
           break;
 
         case 'reconcile':
@@ -433,12 +436,12 @@ async function main() {
             const amount = parseFloat(amountStr);
             await system.manualBalanceUpdate(walletId, balanceType, amount);
           } else {
-            console.log('Usage: npm run balance update <walletId> <balanceType> <amount>');
+            logger.info('Usage: npm run balance update <walletId> <balanceType> <amount>');
           }
           break;
 
         default:
-          console.log('Available commands: status, reconcile, triggers, update');
+          logger.info('Available commands: status, reconcile, triggers, update');
       }
 
       await system.stop();

@@ -133,7 +133,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*QVillage Sync Complete* ✅\n• HF Space updated\n• Memory sync completed\n• Conflicts resolved\n• Consistency verified"
+                    "text": "*QVillage Sync complete* ✅\n• HF Space updated\n• Memory sync completed\n• Conflicts resolved\n• Consistency verified"
                   }
                 }
               ]

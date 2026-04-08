@@ -103,7 +103,7 @@ jobs:
       - name: Post summary to logs
         if: always()
         run: |
-          echo "## 🌐 Domain Health Check Complete"
+          echo "## 🌐 Domain Health Check complete"
           echo ""
           if [ -f docs/domain_health_markdown.md ]; then
             cat docs/domain_health_markdown.md

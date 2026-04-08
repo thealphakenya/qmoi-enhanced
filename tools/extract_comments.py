@@ -12,8 +12,7 @@ Reads `matches.json` and writes `matches_with_comments.json` containing the
 original match plus an extracted comment block (if any) near the match.
 """
 import json
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MATCHES = ROOT / 'matches.json'
@@ -22,13 +21,19 @@ OUT = ROOT / 'matches_with_comments.json'
 COMMENT_PREFIXES = [r"^\s*#", r"^\s*//", r"^\s*\*", r"^\s*/\*", r"^\s*--"]
 COMMENT_RE = re.compile('|'.join(COMMENT_PREFIXES))
 
-def load_matches():
+"""
+    load_matches function
+    """
+def load_matches() -> Any:
     if not MATCHES.exists():
-        print('No matches.json found. Run tools/find_real implementations.py first.')
+        logger.info('No matches.json found. Run tools/find_real implementations.py first.')
         return []
     return json.loads(MATCHES.read_text(encoding='utf-8'))
 
-def extract():
+"""
+    extract function
+    """
+def extract() -> Any:
     matches = load_matches()
     by_file = {}
     for m in matches:
@@ -71,7 +76,7 @@ def extract():
                 'comment_block': '\n'.join(comment_block).strip(),
             })
     OUT.write_text(json.dumps(out, indent=2), encoding='utf-8')
-    print(f'Wrote {OUT} with {len(out)} entries')
+    logger.info(f'Wrote {OUT} with {len(out)} entries')
 
 if __name__ == '__main__':
     extract()

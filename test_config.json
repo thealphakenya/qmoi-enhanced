@@ -4,7 +4,11 @@
   "coverage": {
     "enabled": true,
     "source": ".",
-    "omit": ["tests/*", "venv/*", "*/__pycache__/*"],
+    "omit": [
+      "tests/*",
+      "venv/*",
+      "*/__pycache__/*"
+    ],
     "branch": true
   },
   "parallel": {
@@ -22,7 +26,9 @@
       "smtp_port": 587,
       "sender_email": "<YOUR_EMAIL>",
       "sender_password": "<YOUR_PASSWORD>",
-      "recipient_emails": ["<RECIPIENT_EMAIL>"]
+      "recipient_emails": [
+        "<RECIPIENT_EMAIL>"
+      ]
     }
   },
   "test_categories": {
@@ -30,5 +36,9 @@
     "integration": "tests/integration",
     "e2e": "tests/e2e"
   },
-  "last_validated": ""
+  "last_validated": "",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:12:55.718521"
 }

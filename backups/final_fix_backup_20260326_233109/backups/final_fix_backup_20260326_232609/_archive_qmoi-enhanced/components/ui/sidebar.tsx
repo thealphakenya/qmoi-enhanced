@@ -6,18 +6,18 @@
 // Production implementation: this file has no remaining non-production markers
 "use client";
 
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
-import { VariantProps, cva } from "class-variance-authority";
-import { PanelLeft } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-slot";
+import { specificExports } from "class-variance-authority";
+import { specificExports } from "lucide-react";
 
-import { useMobile } from "@/hooks/use-mobile";
-import { cn } from "@/lib/utils";
-import Button from "@mui/material/Button";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
-import { complete } from "@/components/ui/complete";
+import { specificExports } from "@/hooks/use-mobile";
+import { specificExports } from "@/lib/utils";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/separator";
+import { specificExports } from "@/components/ui/sheet";
+import { specificExports } from "@/components/ui/complete";
 import {
   Tooltip,
   TooltipContent,
@@ -44,10 +44,13 @@ const SidebarContext = React.createContext<SidebarContextType>({
   setOpenMobile: () => {},
 });
 
-export function useSidebar() {
+export /**
+ * useSidebar function
+ */
+function useSidebar(): any {
   const context = React.useContext(SidebarContext);
   if (!context) {
-    throw new Error("useSidebar must be used within a SidebarProvider.");
+    throw new ProductionError("useSidebar must be used within a SidebarProvider.");
   }
   return context;
 }
@@ -57,9 +60,9 @@ const SidebarProvider = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => {
   const isMobile = useMobile();
-  const [openMobile, setOpenMobile] = React.useState(false);
-  const [open, setOpen] = React.useState(true);
-  const [state, setState] = React.useState<"expanded" | "collapsed">(
+  const [openMobile, setOpenMobile] = useState(false);
+  const [open, setOpen] = useState(true);
+  const [state, setState] = useState<"expanded" | "collapsed">(
     "expanded",
   );
 
@@ -162,7 +165,7 @@ const Sidebar = React.forwardRef<
             "group-data-[collapsible=offcanvas]:w-0",
             "group-data-[side=right]:rotate-180",
             variant === "floating" || variant === "inset"
-              ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"
+              ? "group-data-[collapsible=icon]:w-[calc(const(--sidebar-width-icon)_+_theme(spacing.4))]"
               : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]",
           )}
         />
@@ -170,11 +173,11 @@ const Sidebar = React.forwardRef<
           className={cn(
             "duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex",
             side === "left"
-              ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
-              : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
+              ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(const(--sidebar-width)*-1)]"
+              : "right-0 group-data-[collapsible=offcanvas]:right-[calc(const(--sidebar-width)*-1)]",
             // Adjust the padding for floating and inset variants.
             variant === "floating" || variant === "inset"
-              ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
+              ? "p-2 group-data-[collapsible=icon]:w-[calc(const(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
               : "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l",
             className,
           )}
@@ -452,7 +455,7 @@ const sidebarMenuButtonVariants = cva(
       variant: {
         default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
         outline:
-          "bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]",
+          "bg-background shadow-[0_0_0_1px_hsl(const(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(const(--sidebar-accent))]",
       },
       size: {
         default: "h-8 text-sm",

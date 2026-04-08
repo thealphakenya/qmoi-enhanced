@@ -3,14 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:59:10Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { getStorageAdapter } from "@/lib/storage-adapter";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/storage-adapter";
 
 /**
  * File Upload Handler
  * Handles file uploads with validation and storage
  */
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   try {
     const formData = await req.formData();
     const file = formData.get("file") as File;

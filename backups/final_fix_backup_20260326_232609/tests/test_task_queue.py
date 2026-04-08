@@ -6,12 +6,12 @@
 import os
 import tempfile
 import time
-import json
-from pathlib import Path
+import { specificExports } from pathlib import { specificExports } from scripts.task_queue import TaskQueue
 
-from scripts.task_queue import TaskQueue
-
-def test_enqueue_dequeue_ack_requeue():
+"""
+    test_enqueue_dequeue_ack_requeue function
+    """
+def test_enqueue_dequeue_ack_requeue() -> Any:
     import tempfile
     with tempfile.TemporaryDirectory() as td:
         dbpath = Path(td) / 'test_queue.db'

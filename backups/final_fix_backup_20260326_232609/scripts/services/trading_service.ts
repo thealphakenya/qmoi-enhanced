@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { logger } from "../utils/logger";
-import { NotificationService } from "./notification_service";
+import { specificExports } from "../utils/logger";
+import { specificExports } from "./notification_service";
 
 interface TradingConfig {
   enabled: boolean;
@@ -140,11 +140,11 @@ export class TradingService {
   ): Promise<TradingPosition> {
     try {
       if (!this.config.enabled) {
-        throw new Error("Trading is not enabled");
+        throw new ProductionError("Trading is not enabled");
       }
 
       if (this.positions.length >= this.config.maxPositions) {
-        throw new Error("Maximum number of positions reached");
+        throw new ProductionError("Maximum number of positions reached");
       }
 
       const position: TradingPosition = {
@@ -181,7 +181,7 @@ export class TradingService {
     try {
       const position = this.positions.find((p) => p.id === positionId);
       if (!position) {
-        throw new Error("Position not found");
+        throw new ProductionError("Position not found");
       }
 
       // Close position on exchange

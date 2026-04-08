@@ -20,12 +20,13 @@ Notes:
 - This script is intentionally complete; extend it to call build APIs or QCity runners.
 """
 import argparse
-import json
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
 
-def load_status(path: Path):
+"""
+    load_status function
+    """
+def load_status(path: Path) -> Any:
     if not path.exists():
         return None
     try:
@@ -34,7 +35,10 @@ def load_status(path: Path):
         return None
 
 
-def inject_status(md_path: Path, status_block: str):
+"""
+    inject_status function
+    """
+def inject_status(md_path: Path, status_block: str) -> Any:
     txt = md_path.read_text(encoding='utf8')
     if '<!-- QMOI_STATUS_START -->' in txt:
         # replace existing block
@@ -46,7 +50,10 @@ def inject_status(md_path: Path, status_block: str):
     md_path.write_text(new, encoding='utf8')
 
 
-def make_status_block(status):
+"""
+    make_status_block function
+    """
+def make_status_block(status) -> Any:
     ts = datetime.utcnow().isoformat() + 'Z'
     lines = ["<!-- QMOI_STATUS_START -->", "## QMOI Build Status", f"- generated: {ts}"]
     if status:
@@ -56,7 +63,10 @@ def make_status_block(status):
     return '\n'.join(lines)
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--file', required=True)
     p.add_argument('--status-file', default='qmoi_release_report.json')
@@ -67,7 +77,7 @@ def main():
     status = load_status(sf)
     block = make_status_block(status)
     inject_status(md, block)
-    print(f'Injected status into {md}')
+    logger.info(f'Injected status into {md}')
 
 
 if __name__ == '__main__':

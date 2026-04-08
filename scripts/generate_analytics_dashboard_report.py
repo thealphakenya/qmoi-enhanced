@@ -7,20 +7,22 @@ Description: Generate comprehensive reports for the Advanced Analytics Dashboard
 """
 
 import json
-import os
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
-def generate_dashboard_report():
+"""
+    generate_dashboard_report function
+    """
+def generate_dashboard_report() -> Any:
     """Generate a comprehensive analytics dashboard report"""
 
-    print("🚀 Generating QMOI Enhanced - Advanced Analytics Dashboard Report")
-    print("=" * 70)
+    logger.info("🚀 Generating QMOI Enhanced - Advanced Analytics Dashboard Report")
+    logger.info("=" * 70)
 
     # Import the dashboard system
     try:
         from advanced_analytics_dashboard_system import AdvancedAnalyticsDashboard
     except ImportError:
-        print("❌ Could not import AdvancedAnalyticsDashboard")
+        logger.info("❌ Could not import AdvancedAnalyticsDashboard")
         return None
 
     # Create dashboard instance
@@ -29,30 +31,33 @@ def generate_dashboard_report():
     # Generate report
     report = dashboard.generate_dashboard_report()
 
-    print("✅ Dashboard report generated successfully!")
-    print(f"📈 Overall Health Score: {report['summary']['overall_health_score']:.1f}%")
-    print(f"📊 Categories Monitored: {report['summary']['total_categories']}")
-    print(f"🚨 Active Alerts: {report['summary']['active_alerts']}")
-    print(f"💡 AI Insights: {report['summary']['total_insights']}")
+    logger.info("✅ Dashboard report generated successfully!")
+    logger.info(f"📈 Overall Health Score: {report['summary']['overall_health_score']:.1f}%")
+    logger.info(f"📊 Categories Monitored: {report['summary']['total_categories']}")
+    logger.info(f"🚨 Active Alerts: {report['summary']['active_alerts']}")
+    logger.info(f"💡 AI Insights: {report['summary']['total_insights']}")
 
     # Display key metrics
     realtime = report['realtime_data']
-    print("\n📋 Key System Metrics:")
-    print(f"  • System Performance: {realtime['system_performance']['response_time_ms']:.1f}ms response time")
-    print(f"  • AI Trading: ${realtime['ai_trading']['portfolio_value']:,.0f} portfolio value")
-    print(f"  • Risk Management: {realtime['risk_management']['var_95_percent']:.1f}% VaR")
-    print(f"  • Anomaly Detection: {realtime['anomaly_detection']['anomalies_detected']} anomalies")
-    print(f"  • Cross-Chain: ${realtime['cross_chain']['total_value_locked']:,.0f} TVL")
-    print(f"  • QMOI Consciousness: {realtime['qmoiconsciousness']['awareness_level_percent']:.1f}% awareness")
+    logger.info("\n📋 Key System Metrics:")
+    logger.info(f"  • System Performance: {realtime['system_performance']['response_time_ms']:.1f}ms response time")
+    logger.info(f"  • AI Trading: ${realtime['ai_trading']['portfolio_value']:,.0f} portfolio value")
+    logger.info(f"  • Risk Management: {realtime['risk_management']['var_95_percent']:.1f}% const")
+    logger.info(f"  • Anomaly Detection: {realtime['anomaly_detection']['anomalies_detected']} anomalies")
+    logger.info(f"  • Cross-Chain: ${realtime['cross_chain']['total_value_locked']:,.0f} TVL")
+    logger.info(f"  • QMOI Consciousness: {realtime['qmoiconsciousness']['awareness_level_percent']:.1f}% awareness")
 
     return report
 
-def save_dashboard_report():
+"""
+    save_dashboard_report function
+    """
+def save_dashboard_report() -> Any:
     """Generate and save the comprehensive dashboard report"""
 
     report = generate_dashboard_report()
     if not report:
-        print("❌ Failed to generate dashboard report")
+        logger.info("❌ Failed to generate dashboard report")
         return
 
     # Save comprehensive report
@@ -60,7 +65,7 @@ def save_dashboard_report():
     with open(filename, 'w') as f:
         json.dump(report, f, indent=2, default=str)
 
-    print(f"📄 Comprehensive report saved as: {filename}")
+    logger.info(f"📄 Comprehensive report saved as: {filename}")
 
     # Create summary
     summary = {
@@ -154,7 +159,7 @@ def save_dashboard_report():
     with open(summary_filename, 'w') as f:
         json.dump(summary, f, indent=2, default=str)
 
-    print(f"📋 Summary report saved as: {summary_filename}")
+    logger.info(f"📋 Summary report saved as: {summary_filename}")
 
     return report, summary
 

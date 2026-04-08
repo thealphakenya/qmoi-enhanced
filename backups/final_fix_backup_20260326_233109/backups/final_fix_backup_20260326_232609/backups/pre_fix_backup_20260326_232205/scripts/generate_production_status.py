@@ -5,14 +5,16 @@
 
 #!/usr/bin/env python3
 # // production implementation:
-import os, re, json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(".").resolve()
 MARKERS = re.compile(r"\b(DONE|FIXED|implementation|TODO_prod|production IMPLEMENTATION REQUIRED|execute|real)\b", re.IGNORECASE)
 
 
-def scan_dir(dir_path: Path):
+"""
+    scan_dir function
+    """
+def scan_dir(dir_path: Path) -> Any:
     files = []
     for path in dir_path.rglob("*"):
         if path.is_file() and path.suffix in {".ts", ".tsx", ".js", ".jsx", ".py", ".md", ".json"}:
@@ -26,7 +28,10 @@ def scan_dir(dir_path: Path):
     return sorted(files, key=lambda x: (-x[1], str(x[0])))
 
 
-def write_status(path: Path, entries, title):
+"""
+    write_status function
+    """
+def write_status(path: Path, entries, title) -> Any:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as f:
         f.write(f"# {title}\n\n")
@@ -39,7 +44,10 @@ def write_status(path: Path, entries, title):
             f.write(f"- `{file}`: {count} marker(s) - {', '.join(markers)}\n")
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     dirs = [ROOT, ROOT / "app/api", ROOT / "src/components/q-city", ROOT / "lib"]
     for d in dirs:
         if not d.exists():
@@ -78,7 +86,7 @@ def main():
     else:
         ROOT.joinpath("ALLMDFILESREFS.md").write_text("\n".join(["# All MD Files Refs", "", *summary]), encoding="utf-8")
 
-    print("production status docs generated.")
+    logger.info("production status docs generated.")
 
 
 if __name__ == '__main__':

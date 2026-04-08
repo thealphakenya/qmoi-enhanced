@@ -4,8 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [production READY] this file has no remaining production markers
-from pathlib import Path
-from datetime import datetime
+from pathlib import { specificExports } from datetime import datetime
 
 scan_files = 4430
 production_files = 358
@@ -54,4 +53,4 @@ for path in sorted(set(files)):
         else:
             new_content = status_block + '\n' + content
     path.write_text(new_content, encoding='utf-8')
-    print(f'Updated {path}')
+    logger.info(f'Updated {path}')

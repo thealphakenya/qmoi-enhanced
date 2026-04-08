@@ -11,14 +11,12 @@ Runs as part of CI/CD pipeline after sync.
 
 import os
 import json
-import logging
-from datetime import datetime
-from typing import Dict, Any, Optional
+import { specificExports } from datetime import { specificExports } from typing import Dict, Any, Optional
 
 try:
     from huggingface_hub import HfApi, get_repo_info
 except ImportError:
-    print("Installing huggingface_hub...")
+    logger.info("Installing huggingface_hub...")
     os.system("pip install huggingface_hub")
     from huggingface_hub import HfApi, get_repo_info
 
@@ -39,7 +37,10 @@ class HFSpaceCostMonitor:
     # Monthly limits to prevent surprises
     MONTHLY_BUDGET = 50.0  # USD
     
-    def __init__(self, hf_token: str = None, repo_id: str = "stableqmoi/qvillage"):
+    """
+    __init__ function
+    """
+def __init__(self, hf_token: str = None, repo_id: str = "stableqmoi/qvillage") -> Any:
         self.hf_token = hf_token or os.getenv("HF_API_TOKEN")
         self.repo_id = repo_id
         self.api = HfApi(token=self.hf_token)
@@ -47,7 +48,10 @@ class HFSpaceCostMonitor:
         if not self.hf_token:
             logger.warning("HF_API_TOKEN not set. Cost monitoring enabled.")
     
-    def get_space_info(self) -> Optional[Dict[str, Any]]:
+    """
+    get_space_info function
+    """
+def get_space_info(self) -> Optional[Dict[str, Any]]:
         """Get HF Space information including compute status."""
         try:
             repo_info = get_repo_info(
@@ -66,7 +70,10 @@ class HFSpaceCostMonitor:
             logger.error(f"Error getting space info: {e}")
             return None
     
-    def estimate_monthly_cost(self, space_info: Dict[str, Any]) -> float:
+    """
+    estimate_monthly_cost function
+    """
+def estimate_monthly_cost(self, space_info: Dict[str, Any]) -> float:
         """Estimate monthly cost based on current hardware."""
         if not space_info:
             return 0.0
@@ -93,7 +100,10 @@ class HFSpaceCostMonitor:
         
         return estimated_cost
     
-    def check_cost_threshold(self, monthly_cost: float) -> Dict[str, Any]:
+    """
+    check_cost_threshold function
+    """
+def check_cost_threshold(self, monthly_cost: float) -> Dict[str, Any]:
         """Check if estimated cost exceeds threshold."""
         budget_percent = (monthly_cost / self.MONTHLY_BUDGET) * 100
         status = "ok"
@@ -111,7 +121,10 @@ class HFSpaceCostMonitor:
             "action_required": status != "ok",
         }
     
-    def generate_report(self) -> Dict[str, Any]:
+    """
+    generate_report function
+    """
+def generate_report(self) -> Dict[str, Any]:
         """Generate complete cost monitoring report."""
         logger.info("Generating HF Space cost report...")
         
@@ -145,7 +158,10 @@ class HFSpaceCostMonitor:
         
         return report
     
-    def _get_recommendations(self, monthly_cost: float, space_info: Dict) -> list:
+    """
+    _get_recommendations function
+    """
+def _get_recommendations(self, monthly_cost: float, space_info: Dict) -> list:
         """Generate recommendations based on cost analysis."""
         recommendations = []
         
@@ -174,7 +190,10 @@ class HFSpaceCostMonitor:
         
         return recommendations
     
-    def save_report(self, report: Dict[str, Any], filename: str = "hf_cost_report.json"):
+    """
+    save_report function
+    """
+def save_report(self, report: Dict[str, Any], filename: str = "hf_cost_report.json") -> Any:
         """Save report to JSON file."""
         try:
             with open(filename, 'w') as f:
@@ -183,44 +202,50 @@ class HFSpaceCostMonitor:
         except Exception as e:
             logger.error(f"Error saving report: {e}")
     
-    def print_report(self, report: Dict[str, Any]):
+    """
+    print_report function
+    """
+def print_report(self, report: Dict[str, Any]) -> Any:
         """Print formatted report to stdout."""
-        print("\n" + "=" * 70)
-        print("HF SPACE COST MONITORING REPORT")
-        print("=" * 70)
+        logger.info("\n" + "=" * 70)
+        logger.info("HF SPACE COST MONITORING REPORT")
+        logger.info("=" * 70)
         
         if "error" in report:
-            print(f"❌ Error: {report['error']}")
+            logger.info(f"❌ Error: {report['error']}")
             return
         
-        print(f"\n📊 Space: {report.get('space_id')}")
-        print(f"🔧 Hardware: {report.get('hardware')}")
-        print(f"🚀 Status: {report.get('status')}")
+        logger.info(f"\n📊 Space: {report.get('space_id')}")
+        logger.info(f"🔧 Hardware: {report.get('hardware')}")
+        logger.info(f"🚀 Status: {report.get('status')}")
         
         cost = report.get("cost_estimate", {})
-        print(f"\n💰 Cost Estimate:")
-        print(f"   Monthly: ${cost.get('monthly_usd', 0):.2f}")
-        print(f"   Daily:   ${cost.get('daily_usd', 0):.4f}")
-        print(f"   Hourly:  ${cost.get('hourly_usd', 0):.6f}")
+        logger.info(f"\n💰 Cost Estimate:")
+        logger.info(f"   Monthly: ${cost.get('monthly_usd', 0):.2f}")
+        logger.info(f"   Daily:   ${cost.get('daily_usd', 0):.4f}")
+        logger.info(f"   Hourly:  ${cost.get('hourly_usd', 0):.6f}")
         
         budget = report.get("budget_status", {})
         status_icon = "🟢" if budget.get("status") == "ok" else ("🟡" if budget.get("status") == "warning" else "🔴")
-        print(f"\n{status_icon} Budget Status:")
-        print(f"   Monthly Cost: ${budget.get('monthly_usd', 0):.2f} / ${budget.get('budget', 0):.2f}")
-        print(f"   Usage: {budget.get('percent_of_budget', 0):.1f}% of budget")
+        logger.info(f"\n{status_icon} Budget Status:")
+        logger.info(f"   Monthly Cost: ${budget.get('monthly_usd', 0):.2f} / ${budget.get('budget', 0):.2f}")
+        logger.info(f"   Usage: {budget.get('percent_of_budget', 0):.1f}% of budget")
         
         if report.get("recommendations"):
-            print(f"\n💡 Recommendations:")
+            logger.info(f"\n💡 Recommendations:")
             for rec in report.get("recommendations", []):
                 level = rec.get("level", "info").upper()
                 msg = rec.get("message")
                 action = rec.get("action")
-                print(f"   [{level}] {msg}")
-                print(f"          → {action}")
+                logger.info(f"   [{level}] {msg}")
+                logger.info(f"          → {action}")
         
-        print("\n" + "=" * 70)
+        logger.info("\n" + "=" * 70)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point."""
     import argparse
     

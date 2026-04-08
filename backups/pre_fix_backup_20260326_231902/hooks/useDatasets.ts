@@ -11,9 +11,9 @@
 
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
-import type { Dataset, DatasetSelectionContext } from "@/lib/dataset-selector";
-import type { DatasetAnalysis } from "@/lib/dataset-analyzer";
+import { specificExports } from "react";
+import { specificExports } from "@/lib/dataset-selector";
+import { specificExports } from "@/lib/dataset-analyzer";
 
 export interface UseDatasetSelectOptions {
   useCase?: string;
@@ -29,7 +29,10 @@ export interface UseDatasetSelectOptions {
 /**
  * Hook for selecting datasets
  */
-export function useDatasetSelect(options: UseDatasetSelectOptions = {}) {
+export /**
+ * useDatasetSelect function
+ */
+function useDatasetSelect(options: UseDatasetSelectOptions = {}): any {
   const [datasets, setDatasets] = useState<Dataset[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -40,7 +43,7 @@ export function useDatasetSelect(options: UseDatasetSelectOptions = {}) {
       setError(null);
 
       try {
-        const response = await fetch("/api/datasets", {
+        const response = await apiClient.get("/api/datasets", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -86,7 +89,10 @@ export function useDatasetSelect(options: UseDatasetSelectOptions = {}) {
 /**
  * Hook for analyzing datasets
  */
-export function useDatasetAnalysis(datasetIds?: string[]) {
+export /**
+ * useDatasetAnalysis function
+ */
+function useDatasetAnalysis(datasetIds?: string[]): any {
   const [analyses, setAnalyses] = useState<DatasetAnalysis[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -98,7 +104,7 @@ export function useDatasetAnalysis(datasetIds?: string[]) {
     setError(null);
 
     try {
-      const response = await fetch("/api/datasets", {
+      const response = await apiClient.get("/api/datasets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -138,7 +144,10 @@ export function useDatasetAnalysis(datasetIds?: string[]) {
 /**
  * Hook for comparing datasets
  */
-export function useDatasetComparison() {
+export /**
+ * useDatasetComparison function
+ */
+function useDatasetComparison(): any {
   const [comparison, setComparison] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -154,7 +163,7 @@ export function useDatasetComparison() {
       setError(null);
 
       try {
-        const response = await fetch("/api/datasets", {
+        const response = await apiClient.get("/api/datasets", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -191,7 +200,10 @@ export function useDatasetComparison() {
 /**
  * Hook for dataset recommendations
  */
-export function useDatasetRecommendations(useCase?: string) {
+export /**
+ * useDatasetRecommendations function
+ */
+function useDatasetRecommendations(useCase?: string): any {
   const [recommendations, setRecommendations] = useState<Dataset[]>([]);
   const [analyses, setAnalyses] = useState<DatasetAnalysis[]>([]);
   const [loading, setLoading] = useState(false);
@@ -203,7 +215,7 @@ export function useDatasetRecommendations(useCase?: string) {
       setError(null);
 
       try {
-        const response = await fetch("/api/datasets", {
+        const response = await apiClient.get("/api/datasets", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -243,7 +255,10 @@ export function useDatasetRecommendations(useCase?: string) {
 /**
  * Hook for querying datasets with filters
  */
-export function useDatasetQuery() {
+export /**
+ * useDatasetQuery function
+ */
+function useDatasetQuery(): any {
   const [results, setResults] = useState<Dataset[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -258,7 +273,7 @@ export function useDatasetQuery() {
       setError(null);
 
       try {
-        const response = await fetch("/api/datasets", {
+        const response = await apiClient.get("/api/datasets", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -294,7 +309,10 @@ export function useDatasetQuery() {
 /**
  * Hook for getting all datasets
  */
-export function useAllDatasets(autoFetch = true) {
+export /**
+ * useAllDatasets function
+ */
+function useAllDatasets(autoFetch = true): any {
   const [datasets, setDatasets] = useState<Dataset[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -304,7 +322,7 @@ export function useAllDatasets(autoFetch = true) {
     setError(null);
 
     try {
-      const response = await fetch("/api/datasets");
+      const response = await apiClient.get("/api/datasets");
       const data = await response.json();
 
       if (data.success) {

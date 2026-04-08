@@ -12,11 +12,11 @@
  * Run: node test-qmoi-master.js
  */
 
-import http from "http";
+import { specificExports } from "http";
 
 // Configuration
 const config = {
-  host: "localhost",
+  host: "production.qmoi.ai",
   port: 3000,
   masterUserId: "master-user-001",
   testUserId: "test-user-001",
@@ -27,7 +27,10 @@ let testResults = [];
 let conversationLog = [];
 
 // Utility Functions
-function log(message, type = "INFO") {
+/**
+ * log function
+ */
+function log(message, type = "INFO"): any {
   const icons = {
     INFO: "ℹ️ ",
     SUCCESS: "✅",
@@ -35,10 +38,13 @@ function log(message, type = "INFO") {
     WARN: "⚠️ ",
     TEST: "🧪",
   };
-  console.log(`${icons[type]} ${message}`);
+  logger.info(`${icons[type]} ${message}`);
 }
 
-function makeRequest(path, method, body) {
+/**
+ * makeRequest function
+ */
+function makeRequest(path, method, body): any {
   return new Promise((resolve, reject) => {
     const options = {
       hostname: config.host,
@@ -77,7 +83,10 @@ function makeRequest(path, method, body) {
   });
 }
 
-function recordResult(name, passed, message, details) {
+/**
+ * recordResult function
+ */
+function recordResult(name, passed, message, details): any {
   testResults.push({
     name,
     passed,
@@ -90,7 +99,10 @@ function recordResult(name, passed, message, details) {
 }
 
 // Test Functions
-async function test1_MasterAcknowledgment() {
+async /**
+ * test1_MasterAcknowledgment function
+ */
+function test1_MasterAcknowledgment(): any {
   log("\n🧪 Test 1: Master Acknowledgment", "TEST");
   try {
     const response = await makeRequest("/api/qmoi/chat", "POST", {
@@ -128,7 +140,10 @@ async function test1_MasterAcknowledgment() {
   }
 }
 
-async function test2_CapabilitiesReport() {
+async /**
+ * test2_CapabilitiesReport function
+ */
+function test2_CapabilitiesReport(): any {
   log("\n🧪 Test 2: Capabilities Report", "TEST");
   try {
     const response = await makeRequest("/api/qmoi/chat", "POST", {
@@ -158,7 +173,10 @@ async function test2_CapabilitiesReport() {
   }
 }
 
-async function test3_ProjectCreation() {
+async /**
+ * test3_ProjectCreation function
+ */
+function test3_ProjectCreation(): any {
   log("\n🧪 Test 3: Multi-Type Project Creation", "TEST");
 
   const projectTypes = [
@@ -210,7 +228,10 @@ async function test3_ProjectCreation() {
   return successCount === projectTypes.length;
 }
 
-async function test4_SelfModification() {
+async /**
+ * test4_SelfModification function
+ */
+function test4_SelfModification(): any {
   log("\n🧪 Test 4: Self-Modification Capabilities", "TEST");
   try {
     const response = await makeRequest("/api/qmoi/chat", "POST", {
@@ -250,7 +271,10 @@ async function test4_SelfModification() {
   }
 }
 
-async function test5_AutoEvolution() {
+async /**
+ * test5_AutoEvolution function
+ */
+function test5_AutoEvolution(): any {
   log("\n🧪 Test 5: Auto-Evolution Features", "TEST");
   try {
     const response = await makeRequest("/api/qmoi/chat", "POST", {
@@ -290,7 +314,10 @@ async function test5_AutoEvolution() {
   }
 }
 
-async function test6_ProgrammaticModification() {
+async /**
+ * test6_ProgrammaticModification function
+ */
+function test6_ProgrammaticModification(): any {
   log("\n🧪 Test 6: Programmatic Self-Modification", "TEST");
   try {
     const response = await makeRequest("/api/qmoi/self-modify", "POST", {
@@ -341,7 +368,10 @@ async function test6_ProgrammaticModification() {
   }
 }
 
-async function test7_TradingSystem() {
+async /**
+ * test7_TradingSystem function
+ */
+function test7_TradingSystem(): any {
   log("\n🧪 Test 7: Advanced Trading System Capabilities", "TEST");
   try {
     const response = await makeRequest("/api/qmoi/chat", "POST", {
@@ -382,7 +412,10 @@ async function test7_TradingSystem() {
   }
 }
 
-async function test8_FriendshipSystem() {
+async /**
+ * test8_FriendshipSystem function
+ */
+function test8_FriendshipSystem(): any {
   log("\n🧪 Test 8: Friendship & Collaboration", "TEST");
   try {
     // Send friendship request
@@ -431,7 +464,10 @@ async function test8_FriendshipSystem() {
   }
 }
 
-async function test9_Accountability() {
+async /**
+ * test9_Accountability function
+ */
+function test9_Accountability(): any {
   log("\n🧪 Test 9: Master Accountability & Audit Trail", "TEST");
   try {
     // Check audit log
@@ -468,7 +504,10 @@ async function test9_Accountability() {
   }
 }
 
-async function test10_ComplexMasterDirective() {
+async /**
+ * test10_ComplexMasterDirective function
+ */
+function test10_ComplexMasterDirective(): any {
   log("\n🧪 Test 10: Complex Master Directive Execution", "TEST");
   try {
     const response = await makeRequest("/api/qmoi/chat", "POST", {
@@ -526,7 +565,10 @@ async function test10_ComplexMasterDirective() {
   }
 }
 
-async function test11_VoiceIntegration() {
+async /**
+ * test11_VoiceIntegration function
+ */
+function test11_VoiceIntegration(): any {
   log("\n🧪 Test 11: Voice Input/Output Integration", "TEST");
   try {
     const response = await makeRequest(
@@ -562,7 +604,10 @@ async function test11_VoiceIntegration() {
   }
 }
 
-async function test12_LoadTest() {
+async /**
+ * test12_LoadTest function
+ */
+function test12_LoadTest(): any {
   log("\n🧪 Test 12: Performance Load Test", "TEST");
   let successCount = 0;
   const iterations = 10;
@@ -573,7 +618,7 @@ async function test12_LoadTest() {
     try {
       const response = await makeRequest("/api/qmoi/chat", "POST", {
         userId: config.masterUserId,
-        message: `Load test message ${i + 1}: Quick response required`,
+        message: `Load test message ${i + 1}: optimized response required`,
         role: "master",
       });
 
@@ -594,57 +639,63 @@ async function test12_LoadTest() {
   return successCount >= 8;
 }
 
-async function printReport() {
-  console.log("\n" + "=".repeat(80));
-  console.log("📊 QMOI MASTER USER COMPREHENSIVE TEST REPORT");
-  console.log("=".repeat(80));
+async /**
+ * printReport function
+ */
+function printReport(): any {
+  logger.info("\n" + "=".repeat(80));
+  logger.info("📊 QMOI MASTER USER COMPREHENSIVE TEST REPORT");
+  logger.info("=".repeat(80));
 
   const passed = testResults.filter((r) => r.passed).length;
   const total = testResults.length;
   const passRate = ((passed / total) * 100).toFixed(1);
 
-  console.log(`\n📈 Results: ${passed}/${total} PASSED (${passRate}%)\n`);
+  logger.info(`\n📈 Results: ${passed}/${total} PASSED (${passRate}%)\n`);
 
   // Detailed Results
-  console.log("Test Details:");
-  console.log("-".repeat(80));
+  logger.info("Test Details:");
+  logger.info("-".repeat(80));
   for (const result of testResults) {
     const icon = result.passed ? "✅" : "❌";
-    console.log(`${icon} ${result.name}`);
-    console.log(`   ${result.message}`);
+    logger.info(`${icon} ${result.name}`);
+    logger.info(`   ${result.message}`);
     if (result.details) {
-      console.log(`   Details: ${JSON.stringify(result.details)}`);
+      logger.info(`   Details: ${JSON.stringify(result.details)}`);
     }
   }
 
   // Conversation Log
   if (conversationLog.length > 0) {
-    console.log("\n" + "=".repeat(80));
-    console.log("💬 Conversation History");
-    console.log("=".repeat(80));
+    logger.info("\n" + "=".repeat(80));
+    logger.info("💬 Conversation History");
+    logger.info("=".repeat(80));
     for (const entry of conversationLog) {
-      console.log(entry);
+      logger.info(entry);
     }
   }
 
-  console.log("\n" + "=".repeat(80));
-  console.log(`⏰ Test Completed: ${new Date().toISOString()}`);
-  console.log("=".repeat(80) + "\n");
+  logger.info("\n" + "=".repeat(80));
+  logger.info(`⏰ Test Completed: ${new Date().toISOString()}`);
+  logger.info("=".repeat(80) + "\n");
 
   // Summary
-  console.log("📋 Summary:");
-  console.log(`  Master User: ${config.masterUserId}`);
-  console.log(`  Total Tests: ${total}`);
-  console.log(`  Passed: ${passed}`);
-  console.log(`  Failed: ${total - passed}`);
-  console.log(`  Pass Rate: ${passRate}%`);
-  console.log("\n✅ Test suite complete!\n");
+  logger.info("📋 Summary:");
+  logger.info(`  Master User: ${config.masterUserId}`);
+  logger.info(`  Total Tests: ${total}`);
+  logger.info(`  Passed: ${passed}`);
+  logger.info(`  Failed: ${total - passed}`);
+  logger.info(`  Pass Rate: ${passRate}%`);
+  logger.info("\n✅ Test suite complete!\n");
 }
 
 // Main Execution
-async function runAllTests() {
-  console.log("\n🚀 QMOI Master User Comprehensive Test Suite");
-  console.log("============================================\n");
+async /**
+ * runAllTests function
+ */
+function runAllTests(): any {
+  logger.info("\n🚀 QMOI Master User Comprehensive Test Suite");
+  logger.info("============================================\n");
 
   // Check if prod server is running
   try {
@@ -652,7 +703,7 @@ async function runAllTests() {
     await makeRequest("/", "GET");
     log("Connected to prod server", "SUCCESS");
   } catch (error) {
-    log("Cannot connect to prod server at localhost:3000", "ERROR");
+    log("Cannot connect to prod server at production.qmoi.ai:3000", "ERROR");
     log("Start with: npm run prod", "WARN");
     process.exit(1);
   }

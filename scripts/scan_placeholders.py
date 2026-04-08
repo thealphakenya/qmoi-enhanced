@@ -7,8 +7,7 @@
 
 """Scan repository files for common implementation tokens and write a JSON + MD report.
 """
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -58,4 +57,4 @@ for k, v in report['patterns'].items():
 with OUT_MD.open('w') as f:
     f.write('\n'.join(md))
 
-print('Wrote', OUT_JSON, 'and', OUT_MD)
+logger.info('Wrote', OUT_JSON, 'and', OUT_MD)

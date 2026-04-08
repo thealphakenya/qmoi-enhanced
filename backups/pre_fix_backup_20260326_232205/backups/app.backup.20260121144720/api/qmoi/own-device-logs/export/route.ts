@@ -1,15 +1,15 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { requireApiKey } from "../../../../../lib/proposals";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-import { exec } from "child_process";
-import { promisify } from "util";
-import path from "path";
-import fs from "fs";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "path";
+import { specificExports } from "fs";
 
 const execAsync = promisify(exec);
 
@@ -20,7 +20,10 @@ interface ExportRequest {
   date_to?: string;
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body: ExportRequest = await _request.json();
     const { type, prodice_id, date_from, date_to } = body;
@@ -120,7 +123,10 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-async function checkMasterAccess(_request: NextRequest): Promise<boolean> {
+async /**
+ * checkMasterAccess function
+ */
+function checkMasterAccess(_request: NextRequest): any: Promise<boolean> {
   try {
     // Get authorization header
     const authHeader = _request.headers.get("authorization");

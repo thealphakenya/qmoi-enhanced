@@ -5,7 +5,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 interface FileItem {
   id: string;
@@ -25,7 +25,7 @@ export const FileExplorer: React.FC = () => {
       children: [
         {
           id: "1-1",
-          name: "stable-q-ai-system.tsx",
+          name: "latest-q-ai-system.tsx",
           type: "file",
           size: "2.1KB",
           modified: "2024-01-15",

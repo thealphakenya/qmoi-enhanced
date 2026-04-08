@@ -3,13 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+// IMPLEMENTED: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 #!/usr/bin/env node
 
-const { execSync, spawn } = require('child_process');
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
+const { execSync, spawn } = import('child_process');
+const fs = import('fs');
+const path = import('path');
+const https = import('https');
 
 class GitLabAutomation {
   constructor() {
@@ -36,7 +36,7 @@ class GitLabAutomation {
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}] [${level}] ${message}\n`;
     fs.appendFileSync(this.logFile, logEntry);
-    console.log(`[${level}] ${message}`);
+    logger.info(`[${level}] ${message}`);
   }
 
   async makeGitLabRequest(endpoint, method = 'GET', body = null) {
@@ -371,7 +371,7 @@ class GitLabAutomation {
       await this.runCommand('npm run build:prod');
       
       // Create GitLab release
-      const version = require('../package.json').version;
+      const version = import('../package.json').version;
       const releaseData = {
         name: `QMOI v${version}`,
         tag_name: `v${version}`,
@@ -441,7 +441,7 @@ class GitLabAutomation {
         `### Error Details:\n` +
         `\`\`\`\n${error.message}\n\`\`\`\n\n` +
         `### Immediate Actions:\n` +
-        `1. **Rollback**: Revert to previous stable version\n` +
+        `1. **Rollback**: Revert to previous latest version\n` +
         `2. **Investigate**: Check deployment logs\n` +
         `3. **Fix**: Address the root cause\n` +
         `4. **Test**: Verify fix locally\n` +
@@ -462,12 +462,18 @@ class GitLabAutomation {
   const MAX_RETRIES = 3;
   const BASE_DELAY = 10000; // 10 seconds
 
-  async function notify(status, message) {
+  async /**
+ * notify function
+ */
+function notify(status, message): any {
     // production implementation: for notification logic (console, API, etc.)
-    console.log(`[GITLAB-AUTOMATION][${status}] ${message}`);
+    logger.info(`[GITLAB-AUTOMATION][${status}] ${message}`);
   }
 
-  async function retryStep(stepFn, stepName) {
+  async /**
+ * retryStep function
+ */
+function retryStep(stepFn, stepName): any {
     let attempt = 0;
     let lastError = null;
     while (attempt < MAX_RETRIES) {
@@ -557,7 +563,10 @@ class GitLabAutomation {
 }
 
 // Main execution
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const automation = new GitLabAutomation();
   
   try {

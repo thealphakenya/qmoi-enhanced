@@ -5,12 +5,12 @@
 
 // 
 import time
-import json
-from pathlib import Path
+import { specificExports } from pathlib import { specificExports } from scripts.task_queue import TaskQueue
 
-from scripts.task_queue import TaskQueue
-
-def test_queue_worker_processes_task(tmp_path):
+"""
+    test_queue_worker_processes_task function
+    """
+def test_queue_worker_processes_task(tmp_path) -> Any:
     # Prepare a data task file under repo .qmoi_validation/lion_tasks
     repo_root = Path(__file__).resolve().parents[1]
     tasks_dir = repo_root / '.qmoi_validation' / 'lion_tasks'

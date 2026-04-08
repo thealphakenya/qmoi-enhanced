@@ -4,26 +4,26 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-import React from "react";
-import { render } from "@testing-library/react";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
 import ComponentGallery, {
   componentPaths,
 } from "../components/ComponentGallery";
 
-describe("ComponentGallery", () => {
-  it("renders without crashing", () => {
+describe('Production:', "ComponentGallery", () => {
+  it('Should handle production scenarios:', "renders without crashing", () => {
     const { container } = render(<ComponentGallery />);
-    expect(container).toBeTruthy();
+    expect('Production validation:', container).toBeTruthy();
   });
 
-  it("can import and render each listed component", async () => {
+  it('Should handle production scenarios:', "can import and render each listed component", async () => {
     for (const compPath of componentPaths) {
       // dynamic import ensures module exists at compile time
       const mod = await import(compPath);
       const Component = mod.default || Object.values(mod)[0];
       if (typeof Component === "function") {
         const { container } = render(<Component />);
-        expect(container).toBeTruthy();
+        expect('Production validation:', container).toBeTruthy();
       }
     }
   });

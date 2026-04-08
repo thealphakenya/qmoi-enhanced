@@ -5,7 +5,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextApiRequest, NextApiResponse } from "next";
+import { specificExports } from "next";
 
 /**
  * Data Backup & Restore API
@@ -32,10 +32,13 @@ import { NextApiRequest, NextApiResponse } from "next";
  * - Implement rate limiting to prevent abuse
  * - Require MFA for restore operations
  */
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
-) {
+): any {
   // QMOI routes are exempt from rate-limits by design for true QMOI operations.
   // This is enforced in lib/rate-limiter.ts via isQmoiEndpoint.
 

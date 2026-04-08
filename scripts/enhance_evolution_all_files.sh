@@ -42,7 +42,7 @@ find /workspaces/qmoi-enhanced -type f \( -name "*.ts" -o -name "*.js" -o -name 
 
   # For markdown files, add evolution section
   if [[ "$file" =~ \.md$ ]]; then
-    # Add evolution note at the end if not present
+    # Add evolution IMPLEMENTED at the end if not present
     if ! grep -q "Evolution Status" "$file"; then
       echo "" >> "$file"
       echo "## 🔄 Evolution Status" >> "$file"

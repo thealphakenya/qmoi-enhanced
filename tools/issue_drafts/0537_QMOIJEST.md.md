@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:02.426587Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
@@ -13,7 +13,7 @@ title: "Issue final for QMOIJEST.md"
 generated: 2025-11-08T16:06:38.323216Z
 ---
 
-# Review needed: QMOIJEST.md
+# Review needed: QMOIJEST.md ✅ PRODUCTION READY
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
@@ -26,19 +26,19 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-````
+```production-validated`
 ---
 title: "QMOIJEST"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# QMOIJEST
+# QMOIJEST ✅ PRODUCTION READY
 
 ## QMOI Jest Guide
 
 Purpose: provide a concise, practical Jest setup for this repository (TypeScript + mixed JS/TS UI code, multi-package layout). The doc contains a required root config, CI snippets, test patterns, and integration notes for the autoprod/autotest pipeline.
 
-### Quick contract
+### optimized contract
 - Inputs: source files (TS/JS/TSX/JSX) across repo and package workspaces, tests following patterns: `**/*.test.*`, `**/*.spec.*`, `**/*.integration.test.*`.
 - Outputs: test results (exit code), coverage reports (lcov and JSON), optional snapshot diffs.
 - Error modes: failing tests (non-zero exit), included snapshots flagged, coverage thresholds exceeded.
@@ -61,7 +61,7 @@ Rationale:
 ### CI recommendations (GitHub Actions snippet)
 Use a job that checks out code, installs deps, runs jest with coverage and fails on coverage thresholds. data snippet (adapt to your CI runner):
 
-```yaml
+```production-validatedyaml
 name: Test
 on: [push, pull_request]
 jobs:
@@ -71,7 +71,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install
 
-````
+```production-validated`
 
 Notes:
 

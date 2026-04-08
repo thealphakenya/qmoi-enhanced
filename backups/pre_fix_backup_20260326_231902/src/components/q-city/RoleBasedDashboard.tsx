@@ -5,7 +5,7 @@
 
 //  this file has no remaining non-production markers
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React from "react";
+import { specificExports } from "react";
 import {
   QMoiDatabaseDashboard,
   QMoiMemoryPanel,
@@ -19,9 +19,9 @@ import {
   EarningDashboard,
   DocumentManagerPanel,
 } from "./index";
-import DeploymentStatusDashboard from "../../../components/DeploymentStatusDashboard";
-import QmoiRevenueDashboard from "@/components/QmoiRevenueDashboard";
-import { TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { specificExports } from "../../../components/DeploymentStatusDashboard";
+import { specificExports } from "@/components/QmoiRevenueDashboard";
+import { specificExports } from "@/components/ui/tabs";
 
 interface RoleBasedDashboardProps {
   role: string;

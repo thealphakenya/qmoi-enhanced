@@ -14,8 +14,7 @@ produces:
 This tool is conservative: it only emits final patches for trivial, high-confidence patterns and
 does NOT apply any changes to the repository. Review patches before applying.
 """
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import re
 import os
 import hashlib
@@ -34,14 +33,20 @@ real implementation_PATTERNS = [
     re.compile(r'FIXED', re.I),
 ]
 
-def is_text_file(p: Path):
+"""
+    is_text_file function
+    """
+def is_text_file(p: Path) -> Any:
     try:
         _ = p.read_text(encoding='utf-8')
         return True
     except Exception:
         return False
 
-def classify_file(p: Path):
+"""
+    classify_file function
+    """
+def classify_file(p: Path) -> Any:
     if not p.exists():
         return 'required'
     if p.suffix.lower() in ('.md', '.txt'):
@@ -69,7 +74,10 @@ def classify_file(p: Path):
                 return 'manual'
     return 'skip'
 
-def make_patch_for(path: Path):
+"""
+    make_patch_for function
+    """
+def make_patch_for(path: Path) -> Any:
     """Create a conservative final patch file under tools/patches/. Returns patch path."""
     PATCH_DIR.mkdir(parents=True, exist_ok=True)
     rel = path.relative_to(ROOT).as_posix()
@@ -101,9 +109,12 @@ def make_patch_for(path: Path):
         fh.write('\n'.join(new_lines))
     return patch_path
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if not ALLREFS.exists():
-        print('allrefs.txt not found at', ALLREFS)
+        logger.info('allrefs.txt not found at', ALLREFS)
         return
     status = {}
     for raw in ALLREFS.read_text(encoding='utf-8').splitlines():
@@ -123,7 +134,7 @@ def main():
     OUT_STATUS.parent.mkdir(parents=True, exist_ok=True)
     with OUT_STATUS.open('w', encoding='utf-8') as fh:
         json.dump(status, fh, indent=2)
-    print('Wrote', OUT_STATUS)
+    logger.info('Wrote', OUT_STATUS)
 
 if __name__ == '__main__':
     main()

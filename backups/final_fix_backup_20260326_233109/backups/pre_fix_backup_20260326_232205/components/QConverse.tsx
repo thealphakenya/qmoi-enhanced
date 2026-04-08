@@ -5,13 +5,13 @@
 
 // // Production implementation: this file has no remaining non-production markers
 // @ts-nocheck
-import React, { useState, useEffect, useRef } from "react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Badge } from "./ui/badge";
-import { Switch } from "./ui/switch";
-import { Label } from "./ui/label";
-import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
+import { specificExports } from "react";
+import { specificExports } from "./ui/button";
+import { specificExports } from "./ui/card";
+import { specificExports } from "./ui/badge";
+import { specificExports } from "./ui/switch";
+import { specificExports } from "./ui/label";
+import { specificExports } from "./ui/avatar";
 import {
   Mic,
   MicOff,
@@ -22,7 +22,7 @@ import {
   Users,
   Smile,
 } from "lucide-react";
-import { useMaster } from "./MasterContext";
+import { specificExports } from "./MasterContext";
 
 interface QConverseProps {
   isEnabled: boolean;
@@ -56,7 +56,7 @@ export const QConverse: React.FC<QConverseProps> = ({
 
   const fetchProfileName = async (sid: string) => {
     try {
-      const res = await fetch(`/api/qmoi/memory`);
+      const res = await apiClient.get(`/api/qmoi/memory`);
       if (!res.ok) return;
       const data = await res.json();
       if (data && data.profiles && data.profiles[sid]) {

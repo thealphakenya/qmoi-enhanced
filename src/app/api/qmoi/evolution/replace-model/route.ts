@@ -9,14 +9,17 @@
  * production-ready API endpoint
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { ModelReplacementEngine, ReplacementDecision } from '@/qmoi/core/evolution/model-replacement';
-import { withAuthentication } from '@/lib/auth';
-import { getQMOIState } from '@/lib/qmoi-state';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/qmoi/core/evolution/model-replacement';
+import { specificExports } from '@/lib/auth';
+import { specificExports } from '@/lib/qmoi-state';
 
 export const runtime = 'nodejs';
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     // Verify master-only access for autonomous replacements
     const user = await withAuthentication(request);
@@ -82,7 +85,7 @@ export async function POST(request: NextRequest) {
         status: 'pending-decision',
         message: decision.shouldReplace
           ? `Ready to replace ${decision.currentModel.modelName} with ${decision.replacementModel.modelName}`
-          : 'Replacement not recommended at this time',
+          : 'Replacement not required at this time',
         timestamp: new Date().toISOString(),
       },
       { status: 200 }
@@ -100,7 +103,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const user = await withAuthentication(request);
     

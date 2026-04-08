@@ -23,7 +23,10 @@ export interface ClientAdaptersConfig {
 }
 
 // product verification service
-export async function verifyproduct(query: string): Promise<string> {
+export async /**
+ * verifyproduct function
+ */
+function verifyproduct(query: string): any: Promise<string> {
   try {
     // Real product verification logic would go here
     // For now, // production implementation: a comprehensive verification
@@ -48,42 +51,57 @@ export async function verifyproduct(query: string): Promise<string> {
 }
 
 // Payment processing adapters
-export async function processStripePayment(
+export async /**
+ * processStripePayment function
+ */
+function processStripePayment(
   amount: number,
   token: string,
-): Promise<{ success: boolean; transactionId?: string }> {
+): any: Promise<{ success: boolean; transactionId?: string }> {
   // Real Stripe integration
   return { success: true, transactionId: `stripe_${Date.now()}` };
 }
 
-export async function processPayPalPayment(
+export async /**
+ * processPayPalPayment function
+ */
+function processPayPalPayment(
   amount: number,
   orderId: string,
-): Promise<{ success: boolean; transactionId?: string }> {
+): any: Promise<{ success: boolean; transactionId?: string }> {
   // Real PayPal integration
   return { success: true, transactionId: `paypal_${Date.now()}` };
 }
 
 // External API integrations
-export async function callExternalAPI(
+export async /**
+ * callExternalAPI function
+ */
+function callExternalAPI(
   endpoint: string,
   data?: any,
-): Promise<any> {
+): any: Promise<any> {
   // Real external API call
   return { success: true, data: "API response" };
 }
 
 // File upload adapter
-export async function uploadFile(
+export async /**
+ * uploadFile function
+ */
+function uploadFile(
   file: File,
   destination: string,
-): Promise<{ success: boolean; url?: string }> {
+): any: Promise<{ success: boolean; url?: string }> {
   // Real file upload logic
   return { success: true, url: `https://cdn.qmoi.app/uploads/${file.name}` };
 }
 
 // Geolocation adapter
-export async function getCurrentLocation(): Promise<{
+export async /**
+ * getCurrentLocation function
+ */
+function getCurrentLocation(): any: Promise<{
   lat: number;
   lng: number;
 } | null> {
@@ -92,23 +110,29 @@ export async function getCurrentLocation(): Promise<{
 }
 
 // Email adapter
-export async function sendMail(payload: {
+export async /**
+ * sendMail function
+ */
+function sendMail(payload: {
   to: string;
   subject: string;
   body: string;
-}): Promise<boolean> {
+}): any: Promise<boolean> {
   try {
     // Real email sending logic would go here
     // This would integrate with email service providers like SendGrid, AWS SES, etc.
-    console.log(`Sending email to ${payload.to}: ${payload.subject}`);
+    logger.info(`Sending email to ${payload.to}: ${payload.subject}`);
 
     // production implementation: email sending
     return true;
 // YouTube download adapter
-export async function youtubeDownload(url: string, format: 'mp4' | 'mp3' = 'mp4'): Promise<{ success: boolean; downloadUrl?: string; error?: string }> {
+export async /**
+ * youtubeDownload function
+ */
+function youtubeDownload(url: string, format: 'mp4' | 'mp3' = 'mp4'): any: Promise<{ success: boolean; downloadUrl?: string; error?: string }> {
   try {
     // Real YouTube download logic is now backed by /api/youtube/download
-    const response = await fetch('/api/youtube/download', {
+    const response = await apiClient.get('/api/youtube/download', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

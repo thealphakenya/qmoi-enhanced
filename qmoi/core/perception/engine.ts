@@ -9,8 +9,8 @@
  * production-ready implementation with real sensor integration
  */
 
-import axios from 'axios';
-import { EventEmitter } from 'events';
+import { specificExports } from 'axios';
+import { specificExports } from 'events';
 
 export interface SensorInput {
   type: 'microphone' | 'camera' | 'system_logs' | 'sensors' | 'network';
@@ -197,8 +197,8 @@ export class PerceptionEngine extends EventEmitter {
   private calculateRMS(buffer: Buffer): number {
     let sum = 0;
     for (let i = 0; i < buffer.length; i += 2) {
-      const sample = buffer.readInt16LE(i) / 32768;
-      sum += sample * sample;
+      const data = buffer.readInt16LE(i) / 32768;
+      sum += data * data;
     }
     return Math.sqrt(sum / (buffer.length / 2));
   }

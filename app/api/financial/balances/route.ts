@@ -5,16 +5,19 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { requireApiKey } from "../../../../lib/proposals";
-import { getValidatedBalances, isSnapshotRealFunds } from "@/lib/balance-validator";
-import fs from "fs";
-import { resolve } from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/proposals";
+import { specificExports } from "@/lib/balance-validator";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-function verifyMasterToken(request: NextRequest): string | null {
+/**
+ * verifyMasterToken function
+ */
+function verifyMasterToken(request: NextRequest): any: string | null {
   const authHeader = request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
@@ -24,7 +27,10 @@ function verifyMasterToken(request: NextRequest): string | null {
   return token === masterToken ? token : null;
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const apiAuth = requireApiKey(request.headers);
   const masterToken = verifyMasterToken(request);
 

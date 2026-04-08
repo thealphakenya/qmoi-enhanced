@@ -31,7 +31,7 @@
       "status": "deployed"
     },
     {
-      "domain": "q-stable.qmoi.ai",
+      "domain": "q-latest.qmoi.ai",
       "records": 1,
       "status": "deployed"
     },
@@ -68,5 +68,9 @@
   ],
   "failed": [],
   "verified": [],
-  "timestamp": "2026-03-21T23:23:57.030791"
+  "timestamp": "2026-03-21T23:23:57.030791",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:18.650783"
 }

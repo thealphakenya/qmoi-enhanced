@@ -4,15 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextRequest } from "next/server";
+import { specificExports } from "next/server";
 
 // robust SSE endpoint streaming track create/update events from tracks-store
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   // Use require to avoid build-time import errors in some environments
   let store: any = null;
   try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    store = require("@/lib/tracks-store").default;
+    // eslint-disable-next-line @typescript-eslint/no-const-requires
+    store = import("@/lib/tracks-store").default;
   } catch (e) {
     store = null;
   }

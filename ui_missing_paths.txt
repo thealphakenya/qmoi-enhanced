@@ -7,7 +7,7 @@
 ./components/QmoiRevenueDashboard.tsx
 ./components/CashonTradingPanel.tsx
 ./components/DeploymentStatusDashboard.tsx
-./components/stable-q-ai-system.tsx
+./components/latest-q-ai-system.tsx
 ./components/GitStatus.tsx
 ./components/SisterProjects.tsx
 ./components/FloatingControlPanel.tsx

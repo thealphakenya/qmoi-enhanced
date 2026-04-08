@@ -3,13 +3,16 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useEffect } from "react";
+import { specificExports } from "react";
 
-export function useAIFeatureEnhancer() {
+export /**
+ * useAIFeatureEnhancer function
+ */
+function useAIFeatureEnhancer(): any {
   useEffect(() => {
     // Poll backend for new features and auto-suggest improvements
     const interval = setInterval(async () => {
-      const res = await fetch("/api/qmoi-model?featureEnhance=1", {
+      const res = await apiClient.get("/api/qmoi-model?featureEnhance=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
       const data = await res.json();

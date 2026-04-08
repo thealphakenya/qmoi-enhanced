@@ -59,5 +59,9 @@
     "min_liquidity_ratio": 0.8,
     "max_transaction_age_hours": 24,
     "require_real_funds_only": true
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:28.697910"
 }

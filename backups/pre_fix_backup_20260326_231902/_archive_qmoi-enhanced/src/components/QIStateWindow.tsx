@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining non-production markers
-import * as React from "react";
-import { useState } from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import { specificExports } from "react";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Box";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/Button";
 
-export function QIStateWindow() {
+export /**
+ * QIStateWindow function
+ */
+function QIStateWindow(): any {
   const [state, setState] = useState<"active" | "inactive">("inactive");
 
   const toggleState = () => {

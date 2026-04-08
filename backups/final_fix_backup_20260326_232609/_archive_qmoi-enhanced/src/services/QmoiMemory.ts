@@ -19,14 +19,14 @@ export class QmoiMemory {
       timestamp: new Date().toISOString(),
     };
     // Save locally
-    await fetch("/api/memory", {
+    await apiClient.get("/api/memory", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(entry),
     });
 
     // Auto-update TRACKS.md and ALLMDFILESREFS.md
-    await fetch("/api/md-update", {
+    await apiClient.get("/api/md-update", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action: "log-track", entry }),
@@ -36,12 +36,12 @@ export class QmoiMemory {
     const repos = [
       "thealphakenya/qmoi-enhanced",
       "thealphakenya/qmoi-enhanced-new-clean",
-      "thealphakenya/stable-Q-ai",
+      "thealphakenya/latest-Q-ai",
       "thealphakenya/qcity-main",
       "thealphakenya/qmoi-space",
     ];
     for (const repo of repos) {
-      await fetch("/api/repo-sync", {
+      await apiClient.get("/api/repo-sync", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ repo, entry }),
@@ -52,21 +52,21 @@ export class QmoiMemory {
   // List memory entries (local and optionally cross-repo)
   static async list(user?: string, crossRepo?: boolean) {
     let local = [];
-    const res = await fetch(`/api/memory?user=${user || ""}`);
+    const res = await apiClient.get(`/api/memory?user=${user || ""}`);
     if (res.ok) local = await res.json();
     if (!crossRepo) return local;
     // Fetch from synced repos
     const repos = [
       "thealphakenya/qmoi-enhanced",
       "thealphakenya/qmoi-enhanced-new-clean",
-      "thealphakenya/stable-Q-ai",
+      "thealphakenya/latest-Q-ai",
       "thealphakenya/qcity-main",
       "thealphakenya/qmoi-space",
     ];
     let all = [...local];
     for (const repo of repos) {
       try {
-        const r = await fetch(
+        const r = await apiClient.get(
           `/api/repo-memory?repo=${repo}&user=${user || ""}`,
         );
         if (r.ok) {
@@ -82,7 +82,7 @@ export class QmoiMemory {
 
   // Auto-add new .md files and update ALLMDFILESREFS.md everywhere
   static async addMdFile(filePath: string, description: string) {
-    await fetch("/api/md-update", {
+    await apiClient.get("/api/md-update", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action: "add-md-file", filePath, description }),
@@ -91,12 +91,12 @@ export class QmoiMemory {
     const repos = [
       "thealphakenya/qmoi-enhanced",
       "thealphakenya/qmoi-enhanced-new-clean",
-      "thealphakenya/stable-Q-ai",
+      "thealphakenya/latest-Q-ai",
       "thealphakenya/qcity-main",
       "thealphakenya/qmoi-space",
     ];
     for (const repo of repos) {
-      await fetch("/api/repo-sync", {
+      await apiClient.get("/api/repo-sync", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ repo, filePath, description }),

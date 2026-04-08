@@ -1,7 +1,7 @@
 // 
-import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/card";
 
 interface Strategy {
   id: number;
@@ -23,13 +23,13 @@ const EarningDashboard: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchStrategies = async () => {
-    const _res = await fetch("/api/earning/strategies");
+    const _res = await apiClient.get("/api/earning/strategies");
     const data = await _res.json();
     setStrategies(data.strategies || []);
   };
 
   const fetchAnalytics = async () => {
-    const _res = await fetch("/api/earning/analytics");
+    const _res = await apiClient.get("/api/earning/analytics");
     const data = await _res.json();
     setAnalytics(data.analytics || null);
   };
@@ -40,7 +40,7 @@ const EarningDashboard: React.FC = () => {
   }, []);
 
   const toggleMonitoring = async () => {
-    const _res = await fetch("/api/earning/monitor", {
+    const _res = await apiClient.get("/api/earning/monitor", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ monitor: !monitoring }),
@@ -51,7 +51,7 @@ const EarningDashboard: React.FC = () => {
   };
 
   const selfHeal = async () => {
-    const _res = await fetch("/api/earning/self-heal", {
+    const _res = await apiClient.get("/api/earning/self-heal", {
       method: "POST",
     });
     const data = await _res.json();

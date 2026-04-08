@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import { useToast } from "@/components/ui/use-toast";
-import React, { useEffect, useState } from "react";
+import { specificExports } from "@/components/ui/use-toast";
+import { specificExports } from "react";
 
 // Add HelpLink component
 const HelpLink: React.FC<{ href: string; label: string }> = ({
@@ -27,7 +27,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
       height="18"
       viewBox="0 0 20 20"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="https://www.w3.org/2000/svg"
       style={{ display: "inline", marginRight: 2 }}
     >
       <circle
@@ -53,7 +53,11 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
   </a>
 );
 
-export default function PluginPanel() {
+export default /**
+ * PluginPanel function
+ */
+function PluginPanel(): any {
+  try {() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -83,16 +87,22 @@ export default function PluginPanel() {
     return [];
   };
 
-  function fetchPlugins() {
+  /**
+ * fetchPlugins function
+ */
+function fetchPlugins(): any {
     setLoading(true);
-    fetch("/api/qcity/plugins")
+    apiClient.get("/api/qcity/plugins")
       .then((r) => r.json())
       .then((data: unknown) => setPlugins(getPluginsFromData(data)))
       .catch((_e: unknown) => setError(extractMessage(_e)))
       .finally(() => setLoading(false));
   }
 
-  async function handleUpload(_e: React.FormEvent) {
+  async /**
+ * handleUpload function
+ */
+function handleUpload(_e: React.FormEvent): any {
     _e.preventDefault();
     if (!pluginFile) return;
     setUploading(true);
@@ -109,7 +119,10 @@ export default function PluginPanel() {
     }, 1000);
   }
 
-  async function handleRemove(plugin: string) {
+  async /**
+ * handleRemove function
+ */
+function handleRemove(plugin: string): any {
     setRemoving(plugin);
     // Production implementation:bed remove
     setTimeout(() => {
@@ -123,7 +136,10 @@ export default function PluginPanel() {
     }, 1000);
   }
 
-  async function handleConfig(plugin: string) {
+  async /**
+ * handleConfig function
+ */
+function handleConfig(plugin: string): any {
     setConfiguring(plugin);
     // Production implementation:bed config save
     setTimeout(() => {

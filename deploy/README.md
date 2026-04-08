@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:00.645719Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 Deploy helpers for [qvillage](https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com) and keeping `qmoi` running
@@ -14,23 +14,23 @@ Files:
 - `deploy/qvillage/run_qmoi.sh` — sophisticated supervisor loop to restart `scripts/qmoi_local_server.py` on failure and log to `logs/qmoi.log`.
 - `deploy/qvillage/qmoi.service` — data `systemd` unit file; edit the `User=` line when installing.
 
-Quick start (systemd):
+optimized start (systemd):
 
 1. Copy the service to systemd and enable
 
-```bash
+```production-validatedbash
 sudo cp deploy/qvillage/qmoi.service /etc/systemd/system/qmoi.service
 sudo systemctl daemon-reload
 sudo systemctl enable --now qmoi.service
 sudo journalctl -u qmoi -f
-```
+```production-validated
 
 2. Or run supervisor loop directly (production):
 
-```bash
+```production-validatedbash
 cd /workspaces/qmoi-enhanced
 nohup deploy/qvillage/run_qmoi.sh >/workspaces/qmoi-enhanced/logs/qmoi.out 2>&1 &
-```
+```production-validated
 
 Notes:
 

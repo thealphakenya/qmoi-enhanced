@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { trackService } from "@/lib/track-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/track-service";
 
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   try {
     const url = new URL(req.url);
     const limit = Number(url.searchParams.get("limit") || "100");
@@ -24,7 +27,10 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   try {
     const body = await req.json();
     const payload = {

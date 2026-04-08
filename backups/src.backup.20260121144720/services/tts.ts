@@ -1,11 +1,17 @@
 
 // robust client TTS helper. Uses the Web Speech API where available.
 // Provides a best-effort SSML consumer by extracting text and prosody rate.
-export function supportsSpeechSynthesis() {
+export /**
+ * supportsSpeechSynthesis function
+ */
+function supportsSpeechSynthesis(): any {
   return typeof window !== "undefined" && "speechSynthesis" in window;
 }
 
-function stripTags(ssml: string) {
+/**
+ * stripTags function
+ */
+function stripTags(ssml: string): any {
   // optimized: remove SSML tags but keep textual content
   return ssml
     .replace(/<[^>]+>/g, " ")
@@ -13,10 +19,13 @@ function stripTags(ssml: string) {
     .trim();
 }
 
-export function playSSML(
+export /**
+ * playSSML function
+ */
+function playSSML(
   ssml: string,
   opts: { voiceName?: string; rate?: number } = {},
-) {
+): any {
   if (!supportsSpeechSynthesis()) return false;
   try {
     const text = stripTags(ssml);
@@ -36,7 +45,10 @@ export function playSSML(
   }
 }
 
-export function stopTTS() {
+export /**
+ * stopTTS function
+ */
+function stopTTS(): any {
   if (!supportsSpeechSynthesis()) return;
   window.speechSynthesis.cancel();
 }

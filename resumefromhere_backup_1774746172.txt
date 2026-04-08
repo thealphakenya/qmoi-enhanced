@@ -3,7 +3,7 @@
 
 ## 🎯 CURRENT PRIORITY
 - Fix all lint errors in codebase (parsing errors, syntax issues, unused variables)
-- Complete npm validation pipeline (lint → type-check → ci:build → test:all)
+- complete npm validation pipeline (lint → type-check → ci:build → test:all)
 - Run Python validation scripts for domain health and UI features
 - Ensure all domains have actual UI features and related functionality implemented
 - Replace all reals with real production implementations
@@ -32,7 +32,7 @@
    - Continue fixing parsing errors in test files (__tests__/api/payments.test.ts, etc.)
    - Fix remaining lib/ files with invalid identifiers and syntax
    - Address unused variables and any types
-2. Complete Node/npm validation:
+2. complete Node/npm validation:
    - `npm run lint` (currently failing, fixing errors)
    - `npm run type-check`
    - `npm run ci:build`
@@ -60,7 +60,7 @@
    - Create language-specific LION extensions and tools
 
 ## 📝 NEXT STEPS
-- Complete fixing all lint errors
+- complete fixing all lint errors
 - Run full npm validation pipeline
 - Execute Python domain and UI validations
 - Confirm all domains have actual UI features and functionality
@@ -99,7 +99,7 @@
    - Upgrade LION features (AI autodev, predictive healing, collaboration)
 
 ## 📝 NEXT STEPS
-- Complete fixing all lint errors
+- complete fixing all lint errors
 - Run full npm validation pipeline
 - Execute Python domain and UI validations
 - Confirm all domains have actual UI features and functionality
@@ -136,7 +136,7 @@
    - Integrate lion evolution across all QMOI components
 
 ## 📝 NEXT STEPS
-- Complete fixing all lint errors
+- complete fixing all lint errors
 - Run full npm validation pipeline
 - Execute Python domain and UI validations
 - Confirm all domains have actual UI features and functionality
@@ -167,7 +167,7 @@
 9. Repair any remaining automation or production issues
 
 ## 📝 NEXT STEPS
-- Complete fixing all lint errors
+- complete fixing all lint errors
 - Run full npm validation pipeline
 - Execute Python domain and UI validations
 - Confirm all domains have actual UI features and functionality

@@ -5,11 +5,15 @@
 
 "use client";
 
-import { useState, FormEvent } from "react";
-import { useRouter } from "next/navigation";
-import { Lock, AlertCircle } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "next/navigation";
+import { specificExports } from "lucide-react";
 
-export default function MasterLoginPage() {
+export default /**
+ * MasterLoginPage function
+ */
+function MasterLoginPage(): any {
+  try {() {
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -22,7 +26,7 @@ export default function MasterLoginPage() {
 
     try {
       // Verify master password
-      const response = await fetch("/api/admin/master/auth", {
+      const response = await apiClient.get("/api/admin/master/auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

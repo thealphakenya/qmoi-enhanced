@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-/* eslint-disable-next-line @typescript-eslint/no-var-requires */
-const askQmoi = require("../services/qmoi");
-const fs = require("fs");
+/* eslint-disable-next-line @typescript-eslint/no-const-requires */
+const askQmoi = import("../services/qmoi");
+const fs = import("fs");
 
-async function handleVision(sock, jid, imagePath) {
+async /**
+ * handleVision function
+ */
+function handleVision(sock, jid, imagePath): any {
   // Send image to Qmoi for vision/captioning
   const image = fs.readFileSync(imagePath, { encoding: "base64" });
   const caption = await askQmoi({ type: "vision", image });

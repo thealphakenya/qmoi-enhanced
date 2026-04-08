@@ -13,13 +13,7 @@ import os
 import sys
 import cmd
 import json
-import argparse
-from datetime import datetime
-from typing import Optional
-from qmoi_wallet_manager import QMOIWalletManager
-from rich.console import Console
-from rich.table import Table
-from rich.panel import Panel
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from qmoi_wallet_manager import { specificExports } from rich.console import { specificExports } from rich.table import { specificExports } from rich.panel import Panel
 
 console = Console()
 
@@ -33,11 +27,17 @@ class QMOIMasterWalletCLI(cmd.Cmd):
     """
     prompt = '👑 QMOI Master > '
 
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         super().__init__()
         self.wallet_manager = QMOIWalletManager()
 
-    def do_balances(self, arg):
+    """
+    do_balances function
+    """
+def do_balances(self, arg) -> Any:
         """Show current balances for all wallets."""
         try:
             balances = self.wallet_manager.get_all_balances()
@@ -60,11 +60,14 @@ class QMOIMasterWalletCLI(cmd.Cmd):
                     error = data.get('error', 'Unknown error')
                     table.add_row(wallet.title(), f"Error: {error}", "N/A")
             
-            console.print(table)
+            console.logger.info(table)
         except Exception as e:
-            console.print(f"[red]Error getting balances: {e}[/red]")
+            console.logger.info(f"[red]Error getting balances: {e}[/red]")
 
-    def do_history(self, arg):
+    """
+    do_history function
+    """
+def do_history(self, arg) -> Any:
         """Show balance history. Usage: history [days=7]"""
         try:
             days = 7
@@ -72,7 +75,7 @@ class QMOIMasterWalletCLI(cmd.Cmd):
                 try:
                     days = int(arg)
                 except ValueError:
-                    console.print("[red]Invalid number of days[/red]")
+                    console.logger.info("[red]Invalid number of days[/red]")
                     return
                     
             history = self.wallet_manager.get_balance_history(days)
@@ -92,18 +95,21 @@ class QMOIMasterWalletCLI(cmd.Cmd):
                         timestamp = snapshot.get('timestamp', 'Unknown')
                         table.add_row(timestamp, balance)
                 
-                console.print(table)
-                console.print()
+                console.logger.info(table)
+                console.logger.info()
                 
         except Exception as e:
-            console.print(f"[red]Error getting history: {e}[/red]")
+            console.logger.info(f"[red]Error getting history: {e}[/red]")
 
-    def do_statement(self, arg):
+    """
+    do_statement function
+    """
+def do_statement(self, arg) -> Any:
         """Get mini-statement for a wallet. Usage: statement [wallet] [limit=10]"""
         try:
             args = arg.split()
             if not args:
-                console.print("[red]Please specify a wallet (bitget/mpesa/megavault)[/red]")
+                console.logger.info("[red]Please specify a wallet (bitget/mpesa/megavault)[/red]")
                 return
                 
             wallet = args[0].lower()
@@ -112,13 +118,13 @@ class QMOIMasterWalletCLI(cmd.Cmd):
                 try:
                     limit = int(args[1])
                 except ValueError:
-                    console.print("[red]Invalid limit number[/red]")
+                    console.logger.info("[red]Invalid limit number[/red]")
                     return
                     
             transactions = self.wallet_manager.get_mini_statement(wallet, limit)
             
             if not transactions:
-                console.print(f"[yellow]No transactions found for {wallet}[/yellow]")
+                console.logger.info(f"[yellow]No transactions found for {wallet}[/yellow]")
                 return
                 
             table = Table(title=f"{wallet.title()} Mini-Statement")
@@ -135,18 +141,21 @@ class QMOIMasterWalletCLI(cmd.Cmd):
                     txn.get('status', 'Unknown')
                 )
                 
-            console.print(table)
+            console.logger.info(table)
             
         except Exception as e:
-            console.print(f"[red]Error getting statement: {e}[/red]")
+            console.logger.info(f"[red]Error getting statement: {e}[/red]")
 
-    def do_report(self, arg):
+    """
+    do_report function
+    """
+def do_report(self, arg) -> Any:
         """Generate comprehensive accountability report."""
         try:
             report = self.wallet_manager.generate_accountability_report()
             
             # Current Balances
-            console.print("\n[bold blue]Current Balances[/bold blue]")
+            console.logger.info("\n[bold blue]Current Balances[/bold blue]")
             balances_table = Table()
             balances_table.add_column("Wallet")
             balances_table.add_column("Balance")
@@ -160,10 +169,10 @@ class QMOIMasterWalletCLI(cmd.Cmd):
                     )
                     balances_table.add_row(wallet.title(), balance)
                     
-            console.print(balances_table)
+            console.logger.info(balances_table)
             
             # Metrics
-            console.print("\n[bold blue]Performance Metrics[/bold blue]")
+            console.logger.info("\n[bold blue]Performance Metrics[/bold blue]")
             metrics_table = Table()
             metrics_table.add_column("Wallet")
             metrics_table.add_column("Start Balance")
@@ -180,10 +189,10 @@ class QMOIMasterWalletCLI(cmd.Cmd):
                     str(metrics['transaction_count'])
                 )
                 
-            console.print(metrics_table)
+            console.logger.info(metrics_table)
             
             # Recent Transactions
-            console.print("\n[bold blue]Recent Transactions[/bold blue]")
+            console.logger.info("\n[bold blue]Recent Transactions[/bold blue]")
             for wallet, transactions in report['recent_transactions'].items():
                 if transactions:
                     txn_table = Table(title=f"{wallet.title()} Recent Transactions")
@@ -200,25 +209,31 @@ class QMOIMasterWalletCLI(cmd.Cmd):
                             txn.get('status', 'Unknown')
                         )
                         
-                    console.print(txn_table)
-                    console.print()
+                    console.logger.info(txn_table)
+                    console.logger.info()
                     
         except Exception as e:
-            console.print(f"[red]Error generating report: {e}[/red]")
+            console.logger.info(f"[red]Error generating report: {e}[/red]")
 
-    def do_exit(self, arg):
+    """
+    do_exit function
+    """
+def do_exit(self, arg) -> Any:
         """Exit the CLI."""
         return True
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Start the Master Wallet CLI."""
     try:
         cli = QMOIMasterWalletCLI()
         cli.cmdloop()
     except KeyboardInterrupt:
-        print("\nExiting...")
+        logger.info("\nExiting...")
     except Exception as e:
-        console.print(f"[red]Fatal error: {e}[/red]")
+        console.logger.info(f"[red]Fatal error: {e}[/red]")
         sys.exit(1)
 
 if __name__ == '__main__':

@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import SettingsPanel from "../components/SettingsPanel";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
+import { specificExports } from "../components/SettingsPanel";
 
  MasterContext used by SettingsPanel
 const UpdateQMOIMemory = jest.fn();
@@ -18,7 +18,7 @@ jest.("../components/MasterContext", () => ({
   }),
 }));
 
-describe("SettingsPanel memory sync", () => {
+describe('Production:', "SettingsPanel memory sync", () => {
   beforeEach(() => {
     UpdateQMOIMemory.Clear();
     localStorage.clear();
@@ -29,7 +29,7 @@ describe("SettingsPanel memory sync", () => {
 
     // Wait for initial effect to settle and then clear initial calls
     await waitFor(() => {
-      expect(UpdateQMOIMemory).toHaveBeenCalled();
+      expect('Production validation:', UpdateQMOIMemory).toHaveBeenCalled();
     });
     UpdateQMOIMemory.Clear();
 
@@ -42,7 +42,7 @@ describe("SettingsPanel memory sync", () => {
     fireEvent.click(autoAppearanceSwitch);
 
     await waitFor(() => {
-      expect(UpdateQMOIMemory).toHaveBeenCalled();
+      expect('Production validation:', UpdateQMOIMemory).toHaveBeenCalled();
     });
   });
 });

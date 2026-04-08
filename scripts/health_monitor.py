@@ -14,17 +14,16 @@ import os
 import time
 import threading
 import requests
-import subprocess
-from datetime import datetime, timedelta
-from typing import Dict, List, Optional
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Optional
+import { specificExports } from email.mime.text import { specificExports } from email.mime.multipart import MIMEMultipart
 
 class HealthMonitor:
     """production health monitoring system"""
 
-    def __init__(self, config_file: str = 'health_monitor_config.json'):
+    """
+    __init__ function
+    """
+def __init__(self, config_file: str = 'health_monitor_config.json') -> Any:
         self.config_file = config_file
         self.config = self.load_config()
         self.alerts_sent = set()
@@ -32,12 +31,15 @@ class HealthMonitor:
         self.is_monitoring = False
         self.monitor_thread = None
 
-    def load_config(self) -> Dict:
+    """
+    load_config function
+    """
+def load_config(self) -> Dict:
         """Load health monitor configuration"""
         default_config = {
             "domains": [
                 "qmoi.ai", "www.qmoi.ai", "api.qmoi.ai",
-                "qcity.qmoi.ai", "qmoi-space.qmoi.ai", "yap.qmoi.ai", "q-stable.qmoi.ai",
+                "qcity.qmoi.ai", "qmoi-space.qmoi.ai", "yap.qmoi.ai", "q-latest.qmoi.ai",
                 "qvillage.com", "qvillage.net", "qvillage.org", "qglobal.org",
                 "stableq.ai", "qparallel.prod"
             ],
@@ -83,7 +85,10 @@ class HealthMonitor:
 
         return default_config
 
-    def check_domain_health(self, domain: str) -> Dict:
+    """
+    check_domain_health function
+    """
+def check_domain_health(self, domain: str) -> Dict:
         """Check health of a single domain"""
         result = {
             "domain": domain,
@@ -126,7 +131,7 @@ class HealthMonitor:
                 # Try HTTP fallback
                 try:
                     response = requests.get(
-                        f"http://{domain}",
+                        f"https://{domain}",
                         timeout=self.config['monitoring']['timeout_seconds'],
                         verify=False
                     )
@@ -148,7 +153,10 @@ class HealthMonitor:
 
         return result
 
-    def check_endpoint_health(self, url: str) -> Dict:
+    """
+    check_endpoint_health function
+    """
+def check_endpoint_health(self, url: str) -> Dict:
         """Check health of an API endpoint"""
         result = {
             "endpoint": url,
@@ -186,9 +194,12 @@ class HealthMonitor:
 
         return result
 
-    def run_health_check(self) -> Dict:
+    """
+    run_health_check function
+    """
+def run_health_check(self) -> Dict:
         """Run complete health check"""
-        print(f"🔍 Running health check at {datetime.now()}")
+        logger.info(f"🔍 Running health check at {datetime.now()}")
 
         results = {
             "timestamp": datetime.now().isoformat(),
@@ -229,7 +240,10 @@ class HealthMonitor:
 
         return results
 
-    def send_alert(self, message: str, severity: str = "warning"):
+    """
+    send_alert function
+    """
+def send_alert(self, message: str, severity: str = "warning") -> Any:
         """Send health alert"""
         alert_key = f"{severity}:{message[:50]}"
 
@@ -246,9 +260,12 @@ class HealthMonitor:
         if self.config['alerts']['slack']['enabled']:
             self.send_slack_alert(message, severity)
 
-        print(f"🚨 Alert sent: {message}")
+        logger.info(f"🚨 Alert sent: {message}")
 
-    def send_email_alert(self, message: str, severity: str):
+    """
+    send_email_alert function
+    """
+def send_email_alert(self, message: str, severity: str) -> Any:
         """Send email alert"""
         try:
             msg = MIMEMultipart()
@@ -282,9 +299,12 @@ Please check the production systems immediately.
             server.quit()
 
         except Exception as e:
-            print(f"❌ Failed to send email alert: {e}")
+            logger.info(f"❌ Failed to send email alert: {e}")
 
-    def send_slack_alert(self, message: str, severity: str):
+    """
+    send_slack_alert function
+    """
+def send_slack_alert(self, message: str, severity: str) -> Any:
         """Send Slack alert"""
         try:
             payload = {
@@ -300,14 +320,17 @@ Please check the production systems immediately.
             )
 
         except Exception as e:
-            print(f"❌ Failed to send Slack alert: {e}")
+            logger.info(f"❌ Failed to send Slack alert: {e}")
 
-    def activate_fallback(self, domain: str):
+    """
+    activate_fallback function
+    """
+def activate_fallback(self, domain: str) -> Any:
         """Activate fallback system for unhealthy domain"""
         if not self.config['fallback_systems']['enabled']:
             return
 
-        print(f"🔄 Activating fallback for {domain}")
+        logger.info(f"🔄 Activating fallback for {domain}")
 
         # This would implement actual fallback logic
         # For now, just log the action
@@ -329,9 +352,12 @@ Please check the production systems immediately.
         with open(fallback_file, 'w') as f:
             json.dump(fallbacks, f, indent=2)
 
-    def monitor_loop(self):
+    """
+    monitor_loop function
+    """
+def monitor_loop(self) -> Any:
         """Main monitoring loop"""
-        print("🏥 Starting QMOI Health Monitor...")
+        logger.info("🏥 Starting QMOI Health Monitor...")
 
         while self.is_monitoring:
             try:
@@ -341,7 +367,7 @@ Please check the production systems immediately.
                 healthy_domains = results['summary']['healthy_domains']
                 total_domains = results['summary']['total_domains']
 
-                print(f"📊 Health Status: {healthy_domains}/{total_domains} domains healthy ({health_pct:.1f}%)")
+                logger.info(f"📊 Health Status: {healthy_domains}/{total_domains} domains healthy ({health_pct:.1f}%)")
 
                 # Save results
                 with open('production_health_monitor.json', 'w') as f:
@@ -365,28 +391,37 @@ Please check the production systems immediately.
                 time.sleep(self.config['monitoring']['interval_seconds'])
 
             except Exception as e:
-                print(f"❌ Monitor error: {e}")
+                logger.info(f"❌ Monitor error: {e}")
                 time.sleep(60)  # Wait 1 minute before retrying
 
-    def start_monitoring(self):
+    """
+    start_monitoring function
+    """
+def start_monitoring(self) -> Any:
         """Start the health monitoring system"""
         if self.is_monitoring:
-            print("🏥 Health monitor already running")
+            logger.info("🏥 Health monitor already running")
             return
 
         self.is_monitoring = True
         self.monitor_thread = threading.Thread(target=self.monitor_loop, daemon=True)
         self.monitor_thread.start()
-        print("✅ Health monitor started")
+        logger.info("✅ Health monitor started")
 
-    def stop_monitoring(self):
+    """
+    stop_monitoring function
+    """
+def stop_monitoring(self) -> Any:
         """Stop the health monitoring system"""
         self.is_monitoring = False
         if self.monitor_thread:
             self.monitor_thread.join(timeout=10)
-        print("🛑 Health monitor stopped")
+        logger.info("🛑 Health monitor stopped")
 
-    def get_health_report(self) -> Dict:
+    """
+    get_health_report function
+    """
+def get_health_report(self) -> Dict:
         """Get current health report"""
         if os.path.exists('production_health_monitor.json'):
             with open('production_health_monitor.json', 'r') as f:
@@ -394,7 +429,10 @@ Please check the production systems immediately.
         else:
             return self.run_health_check()
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main execution"""
     import sys
 
@@ -405,8 +443,8 @@ def main():
 
         if action == 'start':
             monitor.start_monitoring()
-            print("🏥 Health monitor started in background")
-            print("Press Ctrl+C to stop")
+            logger.info("🏥 Health monitor started in background")
+            logger.info("Press Ctrl+C to stop")
 
             try:
                 while True:
@@ -419,14 +457,14 @@ def main():
 
         elif action == 'check':
             results = monitor.run_health_check()
-            print(json.dumps(results, indent=2))
+            logger.info(json.dumps(results, indent=2))
 
         elif action == 'report':
             report = monitor.get_health_report()
-            print(json.dumps(report, indent=2))
+            logger.info(json.dumps(report, indent=2))
 
         else:
-            print("Usage: python3 health_monitor.py [start|stop|check|report]")
+            logger.info("Usage: python3 health_monitor.py [start|stop|check|report]")
     else:
         # Run single health check
         results = monitor.run_health_check()
@@ -434,25 +472,25 @@ def main():
         healthy_domains = results['summary']['healthy_domains']
         total_domains = results['summary']['total_domains']
 
-        print("🏥 QMOI production Health Report")
-        print("=" * 50)
-        print(f"📊 Overall Health: {health_pct:.1f}%")
-        print(f"🌐 Domains: {healthy_domains}/{total_domains} healthy")
-        print(f"🔗 Endpoints: {results['summary']['healthy_endpoints']}/{results['summary']['total_endpoints']} healthy")
+        logger.info("🏥 QMOI production Health Report")
+        logger.info("=" * 50)
+        logger.info(f"📊 Overall Health: {health_pct:.1f}%")
+        logger.info(f"🌐 Domains: {healthy_domains}/{total_domains} healthy")
+        logger.info(f"🔗 Endpoints: {results['summary']['healthy_endpoints']}/{results['summary']['total_endpoints']} healthy")
 
         if health_pct >= 95:
-            print("✅ All systems operational!")
+            logger.info("✅ All systems operational!")
         elif health_pct >= 80:
-            print("⚠️ Minor issues detected")
+            logger.info("⚠️ Minor issues detected")
         else:
-            print("🚨 Critical health issues detected!")
+            logger.info("🚨 Critical health issues detected!")
 
         # Show unhealthy domains
         unhealthy_domains = [d for d in results['domains'] if not d['healthy']]
         if unhealthy_domains:
-            print("\n❌ Unhealthy domains:")
+            logger.info("\n❌ Unhealthy domains:")
             for domain in unhealthy_domains:
-                print(f"  - {domain['domain']}: {domain.get('error', 'Unknown error')}")
+                logger.info(f"  - {domain['domain']}: {domain.get('error', 'Unknown error')}")
 
 if __name__ == '__main__':
     main()

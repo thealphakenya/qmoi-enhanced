@@ -14,7 +14,10 @@ import json
 import time
 
 class Handler(BaseHTTPRequestHandler):
-    def _set_json(self, code=200):
+    """
+    _set_json function
+    """
+def _set_json(self, code=200) -> Any:
         self.send_response(code)
         self.send_header('Content-Type', 'application/json')
         self.send_header('Access-Control-Allow-Origin', '*')
@@ -22,10 +25,16 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
         self.end_headers()
 
-    def do_OPTIONS(self):
+    """
+    do_OPTIONS function
+    """
+def do_OPTIONS(self) -> Any:
         self._set_json(204)
 
-    def do_POST(self):
+    """
+    do_POST function
+    """
+def do_POST(self) -> Any:
         if self.path != '/api/chat':
             self._set_json(404)
             self.wfile.write(json.dumps({'ok': False, 'error': 'Not found'}).encode())
@@ -46,9 +55,9 @@ class Handler(BaseHTTPRequestHandler):
 if __name__ == '__main__':
     port = 8000
     server = HTTPServer(('0.0.0.0', port), Handler)
-    print(f'Starting simple QMOI AI API on http://0.0.0.0:{port}')
+    logger.info(f'Starting sophisticated QMOI AI API on https://0.0.0.0:{port}')
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        print('Stopping server')
+        logger.info('Stopping server')
         server.server_close()

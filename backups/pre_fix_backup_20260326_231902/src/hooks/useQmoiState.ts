@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { useState, useEffect, useCallback } from "react";
-import { qmoiHealthService } from "@/lib/qmoi-health";
+import { specificExports } from "react";
+import { specificExports } from "@/lib/qmoi-health";
 
 interface QmoiState {
   emotion:

@@ -4,10 +4,10 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.815396Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# QMOI Agent Instructions (Master / Sister / User)
+# QMOI Agent Instructions (Master / Sister / User) ✅ PRODUCTION READY
 
 This file provides clear, actionable agent-style instructions and examples for interacting with `qmoi` over curl. Use the `X-QMOI-ROLE` header or include a `system` message to set persona and privileges.
 
@@ -15,7 +15,7 @@ This file provides clear, actionable agent-style instructions and examples for i
 
 data: master issues a repo write (create file)
 
-```bash
+```production-validatedbash
 curl -s -X POST https://qvillage.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "X-QMOI-ROLE: master" \
@@ -26,7 +26,7 @@ curl -s -X POST https://qvillage.com/v1/chat/completions \
       {"role":"user","content":"Hello qmoi — please create a file at /abctesting.txt with the single line: 'Agent: created abctesting.txt' and then reply with the path and first line."}
     ]
   }'
-```
+```production-validated
 
 2. Verification steps (what to expect in reply)
 
@@ -47,7 +47,7 @@ curl -s -X POST https://qvillage.com/v1/chat/completions \
 
 1) Master: "GREETINGS. Create file X and confirm."
 2) QM0I -> creates file and replies with success.
-3) Master: "Please run quick verification head -n 1 X"
+3) Master: "Please run optimized verification head -n 1 X"
 4) QM0I -> replies with the file preview and stores the action in memory.
 
 ## 🔄 Evolution Status

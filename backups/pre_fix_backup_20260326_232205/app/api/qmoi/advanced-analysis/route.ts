@@ -4,14 +4,17 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest, NextResponse } from "next/server";
-import QMOIEnhancedIntelligence from "@/lib/qmoi-enhanced-intelligence";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-enhanced-intelligence";
 
 /**
  * Advanced QMOI Analysis Endpoint
  * Provides specialized responses with background research, memory, and enhanced reasoning
  */
-export async function POST(req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(req: NextRequest): any {
   try {
     const {
       query,
@@ -223,7 +226,10 @@ export async function POST(req: NextRequest) {
 /**
  * GET endpoint for retrieving stored memories
  */
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   try {
     const userId = req.nextUrl.searchParams.get("userId") || "anonymous";
 

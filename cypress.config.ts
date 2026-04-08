@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:32Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { defineConfig } from "cypress";
+import { specificExports } from "cypress";
 
 export default defineConfig({
   e2e: {
-    baseUrl: "http://localhost:3000",
+    baseUrl: "https://production.qmoi.ai:3000",
     viewportWidth: 1280,
     viewportHeight: 720,
     defaultCommandTimeout: 10000,

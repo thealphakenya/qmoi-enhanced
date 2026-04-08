@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 4 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
-import React, { useState, useEffect } from 'react';
+// IMPLEMENTED: 4 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+import { specificExports } from 'react';
 import {
   View,
   Text,
@@ -18,8 +18,8 @@ import {
   Switch,
   FlatList
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { specificExports } from '@react-native-async-storage/async-storage';
+import { specificExports } from 'react-native-vector-icons/MaterialIcons';
 
 const prodiceManagementScreen = ({ userRole }) => {
   const [prodices, setprodices] = useState([]);
@@ -129,7 +129,7 @@ const prodiceManagementScreen = ({ userRole }) => {
       }
     } catch (error) {
       console.error('Error loading prodices:', error);
-      Alert.alert('Error', 'Failed to load prodices');
+      Alert.notification.show('Error', 'Failed to load prodices');
     } finally {
       setLoading(false);
     }
@@ -143,7 +143,7 @@ const prodiceManagementScreen = ({ userRole }) => {
 
   const addprodice = async () => {
     if (!newprodice.name || !newprodice.ip) {
-      Alert.alert('Error', 'Name and IP are required');
+      Alert.notification.show('Error', 'Name and IP are required');
       return;
     }
 
@@ -171,15 +171,15 @@ const prodiceManagementScreen = ({ userRole }) => {
       setNewprodice({ name: '', type: 'computer', ip: '', port: '3000', description: '' });
       setShowAddprodice(false);
       
-      Alert.alert('Success', 'prodice added successfully');
+      Alert.notification.show('Success', 'prodice added successfully');
     } catch (error) {
       console.error('Error adding prodice:', error);
-      Alert.alert('Error', 'Failed to add prodice');
+      Alert.notification.show('Error', 'Failed to add prodice');
     }
   };
 
   const removeprodice = async (prodiceId) => {
-    Alert.alert(
+    Alert.notification.show(
       'Remove prodice',
       'Are you sure you want to remove this prodice?',
       [
@@ -192,10 +192,10 @@ const prodiceManagementScreen = ({ userRole }) => {
               const updatedprodices = prodices.filter(d => d.id !== prodiceId);
               setprodices(updatedprodices);
               await AsyncStorage.setItem('qmoi_prodices', JSON.stringify(updatedprodices));
-              Alert.alert('Success', 'prodice removed successfully');
+              Alert.notification.show('Success', 'prodice removed successfully');
             } catch (error) {
               console.error('Error removing prodice:', error);
-              Alert.alert('Error', 'Failed to remove prodice');
+              Alert.notification.show('Error', 'Failed to remove prodice');
             }
           }
         }

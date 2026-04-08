@@ -3,7 +3,7 @@
 
 const apiRequest = async (method: string, path: string, body?: unknown) => {
   const headers: HeadersInit = { 'Content-Type': 'application/json' };
-  const res = await fetch(`http://localhost:3000${path}`, {
+  const res = await apiClient.get(`https://production.qmoi.ai:3000${path}`, {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,
@@ -12,28 +12,28 @@ const apiRequest = async (method: string, path: string, body?: unknown) => {
   return { status: res.status, body: data };
 };
 
-describe('Global Operations and QVS API', () => {
-  it('GET /api/global?action=stats should return success and stats data', async () => {
+describe('Production:', 'Global Operations and QVS API', () => {
+  it('Should handle production scenarios:', 'GET /api/global?action=stats should return success and stats data', async () => {
     const response = await apiRequest('GET', '/api/global?action=stats');
-    expect([200, 404]).toContain(response.status);
+    expect('Production validation:', [200, 404]).toContain(response.status);
     if (response.status === 200) {
-      expect(response.body).toHaveProperty('success', true);
-      expect(response.body.data).toHaveProperty('operations');
-      expect(response.body.data).toHaveProperty('revenue');
+      expect('Production validation:', response.body).toHaveProperty('success', true);
+      expect('Production validation:', response.body.data).toHaveProperty('operations');
+      expect('Production validation:', response.body.data).toHaveProperty('revenue');
     }
   });
 
-  it('GET /api/global?action=countries should return countries list', async () => {
+  it('Should handle production scenarios:', 'GET /api/global?action=countries should return countries list', async () => {
     const response = await apiRequest('GET', '/api/global?action=countries');
-    expect([200, 404]).toContain(response.status);
+    expect('Production validation:', [200, 404]).toContain(response.status);
     if (response.status === 200) {
-      expect(response.body).toHaveProperty('success', true);
-      expect(Array.isArray(response.body.data)).toBe(true);
-      expect(response.body.count).toBeGreaterThan(0);
+      expect('Production validation:', response.body).toHaveProperty('success', true);
+      expect('Production validation:', Array.isArray(response.body.data)).toBe(true);
+      expect('Production validation:', response.body.count).toBeGreaterThan(0);
     }
   });
 
-  it('POST /api/global action=start-operation should enqueue a global operation', async () => {
+  it('Should handle production scenarios:', 'POST /api/global action=start-operation should enqueue a global operation', async () => {
     const response = await apiRequest('POST', '/api/global', {
       action: 'start-operation',
       data: {
@@ -43,40 +43,40 @@ describe('Global Operations and QVS API', () => {
         priority: 'high',
       },
     });
-    expect([200, 400, 404]).toContain(response.status);
+    expect('Production validation:', [200, 400, 404]).toContain(response.status);
     if (response.status === 200) {
-      expect(response.body).toHaveProperty('success', true);
-      expect(response.body.data).toHaveProperty('operationId');
+      expect('Production validation:', response.body).toHaveProperty('success', true);
+      expect('Production validation:', response.body.data).toHaveProperty('operationId');
     }
   });
 
-  it('GET /api/qvs?action=stats should return QVS statistics', async () => {
+  it('Should handle production scenarios:', 'GET /api/qvs?action=stats should return QVS statistics', async () => {
     const response = await apiRequest('GET', '/api/qvs?action=stats');
-    expect([200, 404]).toContain(response.status);
+    expect('Production validation:', [200, 404]).toContain(response.status);
     if (response.status === 200) {
-      expect(response.body).toHaveProperty('success', true);
-      expect(response.body.data).toHaveProperty('systemHealth');
-      expect(response.body.data).toHaveProperty('operations');
+      expect('Production validation:', response.body).toHaveProperty('success', true);
+      expect('Production validation:', response.body.data).toHaveProperty('systemHealth');
+      expect('Production validation:', response.body.data).toHaveProperty('operations');
     }
   });
 
-  it('GET /api/qvs?action=health should return QVS health snapshot', async () => {
+  it('Should handle production scenarios:', 'GET /api/qvs?action=health should return QVS health snapshot', async () => {
     const response = await apiRequest('GET', '/api/qvs?action=health');
-    expect([200, 404]).toContain(response.status);
+    expect('Production validation:', [200, 404]).toContain(response.status);
     if (response.status === 200) {
-      expect(response.body).toHaveProperty('success', true);
-      expect(response.body.data).toHaveProperty('systemHealth');
+      expect('Production validation:', response.body).toHaveProperty('success', true);
+      expect('Production validation:', response.body.data).toHaveProperty('systemHealth');
     }
   });
 
-  it('POST /api/qvs action=configure should accept configuration', async () => {
+  it('Should handle production scenarios:', 'POST /api/qvs action=configure should accept configuration', async () => {
     const response = await apiRequest('POST', '/api/qvs', {
       action: 'configure',
       config: { maxConcurrentOperations: -1, resourceManagement: true },
     });
-    expect([200, 404]).toContain(response.status);
+    expect('Production validation:', [200, 404]).toContain(response.status);
     if (response.status === 200) {
-      expect(response.body).toHaveProperty('success', true);
+      expect('Production validation:', response.body).toHaveProperty('success', true);
     }
   });
 });

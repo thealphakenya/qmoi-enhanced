@@ -3,10 +3,12 @@
 # Last evolution cycle: 2026-03-26T03:58:55Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
-def find_apps_in_md(md_dir):
+"""
+    find_apps_in_md function
+    """
+def find_apps_in_md(md_dir) -> Any:
     apps = set()
     for mdfile in Path(md_dir).glob('*.md'):
         with open(mdfile, 'r', encoding='utf-8') as f:
@@ -20,9 +22,12 @@ def find_apps_in_md(md_dir):
                                     apps.add(part)
     return list(apps)
 
-def send_app_to_user(app_path, user_email):
+"""
+    send_app_to_user function
+    """
+def send_app_to_user(app_path, user_email) -> Any:
     # implementation: integrate with email, cloud, or messaging API
-    print(f"Sending {app_path} to {user_email}")
+    logger.info(f"Sending {app_path} to {user_email}")
     # DONE: Implement actual delivery logic
 
 if __name__ == "__main__":
@@ -34,4 +39,4 @@ if __name__ == "__main__":
         if app_path.exists():
             send_app_to_user(app_path, user_email)
         else:
-            print(f"App not found: {app}")
+            logger.info(f"App not found: {app}")

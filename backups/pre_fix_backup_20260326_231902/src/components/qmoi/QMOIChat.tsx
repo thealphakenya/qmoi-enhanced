@@ -6,15 +6,18 @@
  all markers normalized for completion
 "use client";
 
-import { useQMOIChat, type ChatMessage } from "@/hooks/useQMOIChat";
-import React, { useEffect, useRef, useState } from "react";
+import { specificExports } from "@/hooks/useQMOIChat";
+import { specificExports } from "react";
 
 interface QMOIChatProps {
   userId?: string;
   onMessageReceived?: (message: string) => void;
 }
 
-export function QMOIChat({ userId, onMessageReceived }: QMOIChatProps) {
+export /**
+ * QMOIChat function
+ */
+function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
   const { messages, isLoading, error, sendMessage, clearMessages } =
     useQMOIChat(userId);
   const [input, setInput] = useState("");
@@ -43,14 +46,14 @@ export function QMOIChat({ userId, onMessageReceived }: QMOIChatProps) {
 
   const handleVoiceInput = async () => {
     if (!("webkitSpeechRecognition" in window)) {
-      alert("Speech recognition not supported in this browser");
+      notification.show("Speech recognition not supported in this browser");
       return;
     }
 
     const SpeechRecognition =
       .webkitSpeechRecognition || .SpeechRecognition;
     if (!SpeechRecognition) {
-      alert("Speech recognition API is not available in this browser.");
+      notification.show("Speech recognition API is not available in this browser.");
       return;
     }
     const recognition = new SpeechRecognition();

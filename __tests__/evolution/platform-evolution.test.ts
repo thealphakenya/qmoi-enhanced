@@ -8,19 +8,19 @@
  * Comprehensive test suite for platform evolution system
  */
 
-import { describe, it, expect, beforeEach, afterEach } from '@jest/globals';
-import { PlatformEvolutionEngine, PlatformMetrics } from '@/qmoi/core/evolution/platform-evolution';
-import { AutocloneEvolutionSystem } from '@/qmoi/core/evolution/autoclone-evolution';
+import { specificExports } from '@jest/globals';
+import { specificExports } from '@/qmoi/core/evolution/platform-evolution';
+import { specificExports } from '@/qmoi/core/evolution/autoclone-evolution';
 
-describe('PlatformEvolutionEngine', () => {
+describe('Production:', 'PlatformEvolutionEngine', () => {
   let engine: PlatformEvolutionEngine;
 
   beforeEach(() => {
     engine = new PlatformEvolutionEngine();
   });
 
-  describe('Platform Registration', () => {
-    it('should register platform', () => {
+  describe('Production:', 'Platform Registration', () => {
+    it('Should handle production scenarios:', 'should register platform', () => {
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -41,14 +41,14 @@ describe('PlatformEvolutionEngine', () => {
       engine.registerPlatform(metrics);
       const status = engine.getEvolutionStatus();
 
-      expect(status.totalPlatforms).toBe(1);
-      expect(Object.keys(status.evolutionTrackers)).toContain('qcity');
+      expect('Production validation:', status.totalPlatforms).toBe(1);
+      expect('Production validation:', Object.keys(status.evolutionTrackers)).toContain('qcity');
     });
 
-    it('should register multiple platforms', () => {
+    it('Should handle production scenarios:', 'should register multiple platforms', () => {
       const platforms = ['qcity', 'qstore', 'qvillage'];
 
-      platforms.forEach((p) => {
+      platforms.for (const item of((p) => {
         const metrics: PlatformMetrics = {
           platformId: p,
           platformName: p,
@@ -69,33 +69,33 @@ describe('PlatformEvolutionEngine', () => {
       });
 
       const status = engine.getEvolutionStatus();
-      expect(status.totalPlatforms).toBe(3);
+      expect('Production validation:', status.totalPlatforms).toBe(3);
     });
   });
 
-  describe('Platform Discovery', () => {
-    it('should discover all platforms', () => {
+  describe('Production:', 'Platform Discovery', () => {
+    it('Should handle production scenarios:', 'should discover all platforms', () => {
       const platformList = ['qcity', 'qstore', 'qvillage', 'qshare'];
       engine.discoverAllPotentialPlatforms(platformList);
 
       const status = engine.getEvolutionStatus();
-      expect(status.allClonedPlatforms).toEqual(platformList);
+      expect('Production validation:', status.allClonedPlatforms).toEqual(platformList);
     });
 
-    it('should schedule evolution for all discovered platforms', (done) => {
+    it('Should handle production scenarios:', 'should schedule evolution for all discovered platforms', (done) => {
       const platformList = ['qcity', 'qstore'];
       engine.discoverAllPotentialPlatforms(platformList);
 
       setTimeout(() => {
         const status = engine.getEvolutionStatus();
-        expect(Object.keys(status.evolutionTrackers).length).toBeGreaterThanOrEqual(1);
+        expect('Production validation:', Object.keys(status.evolutionTrackers).length).toBeGreaterThanOrEqual(1);
         done();
       }, 500);
     });
   });
 
-  describe('Evolution Analysis', () => {
-    it('should analyze platform for evolution', async () => {
+  describe('Production:', 'Evolution Analysis', () => {
+    it('Should handle production scenarios:', 'should analyze platform for evolution', async () => {
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -118,11 +118,11 @@ describe('PlatformEvolutionEngine', () => {
 
       const status = engine.getEvolutionStatus();
       const tracker = status.evolutionTrackers['qcity'];
-      expect(tracker.stage).toBeDefined();
-      expect(tracker.progress).toBeGreaterThanOrEqual(0);
+      expect('Production validation:', tracker.stage).toBeDefined();
+      expect('Production validation:', tracker.progress).toBeGreaterThanOrEqual(0);
     });
 
-    it('should trigger QMOI platform creation for low-scoring platform', async () => {
+    it('Should handle production scenarios:', 'should trigger QMOI platform creation for low-scoring platform', async () => {
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -144,12 +144,12 @@ describe('PlatformEvolutionEngine', () => {
       await engine.analyzeForEvolution('qcity');
 
       const status = engine.getEvolutionStatus();
-      expect(status.totalQMOIPlatforms).toBeGreaterThan(0);
+      expect('Production validation:', status.totalQMOIPlatforms).toBeGreaterThan(0);
     });
   });
 
-  describe('Event Emitting', () => {
-    it('should emit platform-registered event', (done) => {
+  describe('Production:', 'Event Emitting', () => {
+    it('Should handle production scenarios:', 'should emit platform-registered event', (done) => {
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -168,26 +168,26 @@ describe('PlatformEvolutionEngine', () => {
       };
 
       engine.on('platform-registered', ({ platformId }) => {
-        expect(platformId).toBe('qcity');
+        expect('Production validation:', platformId).toBe('qcity');
         done();
       });
 
       engine.registerPlatform(metrics);
     });
 
-    it('should emit platforms-discovered event', (done) => {
+    it('Should handle production scenarios:', 'should emit platforms-discovered event', (done) => {
       const platformList = ['qcity', 'qstore'];
 
       engine.on('platforms-discovered', ({ totalPlatforms, platforms }) => {
-        expect(totalPlatforms).toBe(2);
-        expect(platforms).toEqual(platformList);
+        expect('Production validation:', totalPlatforms).toBe(2);
+        expect('Production validation:', platforms).toEqual(platformList);
         done();
       });
 
       engine.discoverAllPotentialPlatforms(platformList);
     });
 
-    it('should emit qmoi-platform-created event', (done) => {
+    it('Should handle production scenarios:', 'should emit qmoi-platform-created event', (done) => {
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -206,8 +206,8 @@ describe('PlatformEvolutionEngine', () => {
       };
 
       engine.on('qmoi-platform-created', ({ autoName, replacingPlatform }) => {
-        expect(autoName).toBeDefined();
-        expect(replacingPlatform).toBe('qcity');
+        expect('Production validation:', autoName).toBeDefined();
+        expect('Production validation:', replacingPlatform).toBe('qcity');
         done();
       });
 
@@ -215,8 +215,8 @@ describe('PlatformEvolutionEngine', () => {
     });
   });
 
-  describe('Status Tracking', () => {
-    it('should track evolution status correctly', () => {
+  describe('Production:', 'Status Tracking', () => {
+    it('Should handle production scenarios:', 'should track evolution status correctly', () => {
       const metrics: PlatformMetrics = {
         platformId: 'qcity',
         platformName: 'QCity',
@@ -237,16 +237,16 @@ describe('PlatformEvolutionEngine', () => {
       engine.registerPlatform(metrics);
       const status = engine.getEvolutionStatus();
 
-      expect(status.timestamp).toBeInstanceOf(Date);
-      expect(status.totalPlatforms).toBe(1);
-      expect(status.totalQMOIPlatforms).toBeGreaterThanOrEqual(0);
-      expect(status.evolutionTrackers).toBeDefined();
-      expect(Array.isArray(status.readyForDeployment)).toBe(true);
+      expect('Production validation:', status.timestamp).toBeInstanceOf(Date);
+      expect('Production validation:', status.totalPlatforms).toBe(1);
+      expect('Production validation:', status.totalQMOIPlatforms).toBeGreaterThanOrEqual(0);
+      expect('Production validation:', status.evolutionTrackers).toBeDefined();
+      expect('Production validation:', Array.isArray(status.readyForDeployment)).toBe(true);
     });
   });
 });
 
-describe('AutocloneEvolutionSystem', () => {
+describe('Production:', 'AutocloneEvolutionSystem', () => {
   let system: AutocloneEvolutionSystem;
 
   beforeEach(() => {
@@ -262,8 +262,8 @@ describe('AutocloneEvolutionSystem', () => {
     system.stopEvolutionLoop();
   });
 
-  describe('Autoclone Registration', () => {
-    it('should register autoclone', () => {
+  describe('Production:', 'Autoclone Registration', () => {
+    it('Should handle production scenarios:', 'should register autoclone', () => {
       system.registerAutoclone({
         cloneId: 'autoclone-1',
         sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
@@ -281,10 +281,10 @@ describe('AutocloneEvolutionSystem', () => {
       });
 
       const stats = system.getEvolutionStats();
-      expect(stats.totalAutoclones).toBe(1);
+      expect('Production validation:', stats.totalAutoclones).toBe(1);
     });
 
-    it('should register multiple autoclones', () => {
+    it('Should handle production scenarios:', 'should register multiple autoclones', () => {
       for (let i = 1; i <= 3; i++) {
         system.registerAutoclone({
           cloneId: `autoclone-${i}`,
@@ -304,12 +304,12 @@ describe('AutocloneEvolutionSystem', () => {
       }
 
       const stats = system.getEvolutionStats();
-      expect(stats.totalAutoclones).toBe(3);
+      expect('Production validation:', stats.totalAutoclones).toBe(3);
     });
   });
 
-  describe('Evolution Statistics', () => {
-    it('should return correct evolution stats', () => {
+  describe('Production:', 'Evolution Statistics', () => {
+    it('Should handle production scenarios:', 'should return correct evolution stats', () => {
       system.registerAutoclone({
         cloneId: 'autoclone-1',
         sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
@@ -328,14 +328,14 @@ describe('AutocloneEvolutionSystem', () => {
 
       const stats = system.getEvolutionStats();
 
-      expect(stats.timestamp).toBeInstanceOf(Date);
-      expect(stats.totalAutoclones).toBe(1);
-      expect(stats.activeAnalysis).toBeGreaterThanOrEqual(0);
-      expect(stats.replacementHistory).toBeDefined();
-      expect(Array.isArray(stats.autoclones)).toBe(true);
+      expect('Production validation:', stats.timestamp).toBeInstanceOf(Date);
+      expect('Production validation:', stats.totalAutoclones).toBe(1);
+      expect('Production validation:', stats.activeAnalysis).toBeGreaterThanOrEqual(0);
+      expect('Production validation:', stats.replacementHistory).toBeDefined();
+      expect('Production validation:', Array.isArray(stats.autoclones)).toBe(true);
     });
 
-    it('should track replacement history', async () => {
+    it('Should handle production scenarios:', 'should track replacement history', async () => {
       system.registerAutoclone({
         cloneId: 'autoclone-low-score',
         sourceRepository: 'https://github.com/thestablekenya/qmoi-enhanced',
@@ -356,18 +356,18 @@ describe('AutocloneEvolutionSystem', () => {
       // production:, this happens in the background loop
       
       const stats = system.getEvolutionStats();
-      expect(stats.replacementHistory).toBeDefined();
-      expect(typeof stats.replacementHistory.total).toBe('number');
-      expect(typeof stats.replacementHistory.successful).toBe('number');
-      expect(typeof stats.replacementHistory.failed).toBe('number');
+      expect('Production validation:', stats.replacementHistory).toBeDefined();
+      expect('Production validation:', typeof stats.replacementHistory.total).toBe('number');
+      expect('Production validation:', typeof stats.replacementHistory.successful).toBe('number');
+      expect('Production validation:', typeof stats.replacementHistory.failed).toBe('number');
     });
   });
 
-  describe('Event Emitting', () => {
-    it('should emit autoclone-registered event', (done) => {
+  describe('Production:', 'Event Emitting', () => {
+    it('Should handle production scenarios:', 'should emit autoclone-registered event', (done) => {
       system.on('autoclone-registered', (info) => {
-        expect(info.cloneId).toBe('autoclone-1');
-        expect(info.status).toBe('active');
+        expect('Production validation:', info.cloneId).toBe('autoclone-1');
+        expect('Production validation:', info.status).toBe('active');
         done();
       });
 
@@ -389,8 +389,8 @@ describe('AutocloneEvolutionSystem', () => {
     });
   });
 
-  describe('Configuration', () => {
-    it('should accept custom configuration', () => {
+  describe('Production:', 'Configuration', () => {
+    it('Should handle production scenarios:', 'should accept custom configuration', () => {
       const customSystem = new AutocloneEvolutionSystem({
         checkIntervalMs: 2000,
         parallelAnalysisCount: 3,
@@ -400,13 +400,13 @@ describe('AutocloneEvolutionSystem', () => {
       customSystem.stopEvolutionLoop();
 
       // Configuration accepted without error
-      expect(customSystem).toBeDefined();
+      expect('Production validation:', customSystem).toBeDefined();
     });
   });
 });
 
-describe('Integration Tests', () => {
-  it('should handle platform evolution and autoclone replacement workflow', async () => {
+describe('Production:', 'Integration Tests', () => {
+  it('Should handle production scenarios:', 'should handle platform evolution and autoclone replacement workflow', async () => {
     const platformEngine = new PlatformEvolutionEngine();
     const autocloneSystem = new AutocloneEvolutionSystem({
       enableContinuousEvolution: false,
@@ -453,8 +453,8 @@ describe('Integration Tests', () => {
     const platformStatus = platformEngine.getEvolutionStatus();
     const autocloneStats = autocloneSystem.getEvolutionStats();
 
-    expect(platformStatus.totalPlatforms).toBe(1);
-    expect(autocloneStats.totalAutoclones).toBe(1);
+    expect('Production validation:', platformStatus.totalPlatforms).toBe(1);
+    expect('Production validation:', autocloneStats.totalAutoclones).toBe(1);
 
     autocloneSystem.stopEvolutionLoop();
   });

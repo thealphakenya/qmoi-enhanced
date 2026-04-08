@@ -6,10 +6,13 @@
  * Location: src/app/api/auth/check-master/route.ts
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
 // Check if request is from master
-function isMasterAuthorized(request: NextRequest): boolean {
+/**
+ * isMasterAuthorized function
+ */
+function isMasterAuthorized(request: NextRequest): any: boolean {
   const authHeader = request.headers.get('authorization');
   const masterToken = process.env.MASTER_TOKEN || '';
 
@@ -21,7 +24,10 @@ function isMasterAuthorized(request: NextRequest): boolean {
   return token === masterToken;
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const isMaster = isMasterAuthorized(request);
 

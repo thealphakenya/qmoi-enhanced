@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import authService from "@/lib/auth/service";
-import { db } from "@/lib/db/prisma";
-import { errorTracker } from "@/lib/monitoring/error-tracker";
-import { monitor } from "@/lib/monitoring/performance";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/auth/service";
+import { specificExports } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/monitoring/error-tracker";
+import { specificExports } from "@/lib/monitoring/performance";
 
 interface Alert {
   id: string;
@@ -26,7 +26,10 @@ interface Alert {
  * Get active alerts and incidents
  * Admin only
  */
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -94,7 +97,10 @@ export async function GET(_request: NextRequest) {
  * Acknowledge or dismiss alerts
  * Admin only
  */
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const token = _request.headers.get("Authorization")?.replace("Bearer ", "");
 
@@ -179,7 +185,10 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-function generateAlerts(): Alert[] {
+/**
+ * generateAlerts function
+ */
+function generateAlerts(): any: Alert[] {
   const alerts: Alert[] = [];
   const now = new Date();
   const errorStats = errorTracker.getErrorStats();

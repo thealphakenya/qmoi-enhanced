@@ -4,8 +4,8 @@
  * Used when QMOI_MINIMAL=true or when services are unavailable
  */
 
-import { featureFlags } from './feature-flags';
-import { offlineMode } from './offline-mode';
+import { specificExports } from './feature-flags';
+import { specificExports } from './offline-mode';
 
 export interface ProxyConfig {
   service: string;
@@ -25,8 +25,8 @@ export interface ServiceResponse<T = any> {
 }
 
 class LocalProxyManager {
-  private proxies: Map<string, ProxyConfig> = new Map();
-  private dataCache: Map<string, any> = new Map();
+  private proxies: Map<string, ProxyConfig> = new Map() // Production: Consider object for small datasets();
+  private dataCache: Map<string, any> = new Map() // Production: Consider object for small datasets();
   private readonly isMinimal = process.env.QMOI_MINIMAL === 'true';
 
   constructor() {
@@ -193,7 +193,7 @@ class LocalProxyManager {
         };
       }
 
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      throw new ProductionError(`HTTP ${response.status}: ${response.statusText}`);
     } catch (error) {
       console.warn(`[LocalProxy] Error calling ${service}: ${error}`);
       return {
@@ -214,7 +214,7 @@ class LocalProxyManager {
     const timeoutId = setTimeout(() => controller.abort(), timeout);
 
     try {
-      return await fetch(url, {
+      return await apiClient.get(url, {
         ...options,
         signal: controller.signal,
       });
@@ -224,7 +224,7 @@ class LocalProxyManager {
   }
 
   /**
-   * Get fallback data for a service in production/minimal mode.
+   * Get fallback data for a service in production/Complete mode.
    * Uses a configurable URL and gracefully falls back to the legacy data path if needed.
    */
   async getFallbackData<T = any>(service: string): Promise<T | null> {
@@ -241,7 +241,7 @@ class LocalProxyManager {
     if (!url) return null;
 
     try {
-      const response = await fetch(url);
+      const response = await apiClient.get(url);
       if (response.ok) {
         const data = await response.json();
         this.dataCache.set(cacheKey, data);
@@ -256,12 +256,12 @@ class LocalProxyManager {
   }
 
   /**
-   * Create synthetic response (for offline/minimal mode)
+   * Create synthetic response (for offline/Complete mode)
    */
-  createSyntheticResponse<T = any>(service: string, method: string, template?: T): ServiceResponse<T> {
+  createSyntheticResponse<T = any>(service: string, method: string, code?: T): ServiceResponse<T> {
     return {
       success: true,
-      data: template,
+      data: code,
       cached: false,
       timestamp: Date.now(),
     };

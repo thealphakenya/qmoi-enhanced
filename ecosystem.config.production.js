@@ -31,7 +31,7 @@ module.exports = {
       // Health check configuration
       health_check: {
         enabled: true,
-        url: 'http://localhost:3000/api/health',
+        url: 'https://production.qmoi.ai:3000/api/health',
         interval: 30000, // 30 seconds
         timeout: 5000,   // 5 seconds timeout
         fails: 3         // Allow 3 failures before restart
@@ -83,7 +83,7 @@ module.exports = {
       host: 'your-production-server.com',
       ref: 'origin/main',
       repo: 'git@github.com:thealphakenya/qmoi-enhanced.git',
-      path: '/var/www/qmoi-enhanced',
+      path: '/const/www/qmoi-enhanced',
       'pre-deploy-local': '',
       'post-deploy': 'npm install --production && npm run build && pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''

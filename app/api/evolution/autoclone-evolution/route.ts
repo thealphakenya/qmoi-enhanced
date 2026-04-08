@@ -8,10 +8,10 @@
  * Manage autonomous evolution of all autoclones
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { autocloneEvolutionSystem } from '@/qmoi/core/evolution/autoclone-evolution';
-import { verifyMasterRole } from '@/utils/auth';
-import { consoleLog } from '@/utils/console-logger';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/qmoi/core/evolution/autoclone-evolution';
+import { specificExports } from '@/utils/auth';
+import { specificExports } from '@/utils/console-logger';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -19,7 +19,10 @@ export const revalidate = 0;
 /**
  * GET - Get autoclone evolution statistics
  */
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const stats = autocloneEvolutionSystem.getEvolutionStats();
 
@@ -40,7 +43,10 @@ export async function GET(request: NextRequest) {
 /**
  * POST - Manage autoclone evolution
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, autocloneInfo, config } = body;

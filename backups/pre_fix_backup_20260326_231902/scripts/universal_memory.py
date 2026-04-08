@@ -15,17 +15,14 @@ Data lives in config/universal_memory.json and is safe to sync across prodices.
 Capabilities:
 - Remember feature preferences (e.g., writing assistant enabled)
 - Track recent projects/sessions per user and prodice
-- Simple CLI to get/set preferences and record sessions
+- sophisticated CLI to get/set preferences and record sessions
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import os
-from datetime import datetime
-from pathlib import Path
-from typing import Any, Dict
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Any, Dict
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -33,6 +30,9 @@ CONFIG = ROOT / "config"
 MEM_FILE = CONFIG / "universal_memory.json"
 
 
+"""
+    load_mem function
+    """
 def load_mem() -> Dict[str, Any]:
     CONFIG.mkdir(parents=True, exist_ok=True)
     if MEM_FILE.exists():
@@ -44,26 +44,41 @@ def load_mem() -> Dict[str, Any]:
     return {"users": {}, "updated": None}
 
 
+"""
+    save_mem function
+    """
 def save_mem(data: Dict[str, Any]) -> None:
     data["updated"] = datetime.utcnow().isoformat()
     with open(MEM_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
 
+"""
+    get_current_user function
+    """
 def get_current_user() -> str:
     return os.environ.get("QMOI_USER") or os.environ.get("USERNAME") or os.environ.get("USER") or "default"
 
 
+"""
+    get_current_prodice function
+    """
 def get_current_prodice() -> str:
     return os.environ.get("COMPUTERNAME") or os.environ.get("HOSTNAME") or "prodice"
 
 
+"""
+    ensure_user function
+    """
 def ensure_user(mem: Dict[str, Any], user: str) -> Dict[str, Any]:
     users = mem.setdefault("users", {})
     profile = users.setdefault(user, {"preferences": {"writing_assistant_enabled": True}, "recent": []})
     return profile
 
 
+"""
+    set_pref function
+    """
 def set_pref(key: str, value: Any) -> Dict[str, Any]:
     mem = load_mem()
     profile = ensure_user(mem, get_current_user())
@@ -72,12 +87,18 @@ def set_pref(key: str, value: Any) -> Dict[str, Any]:
     return profile["preferences"]
 
 
+"""
+    get_prefs function
+    """
 def get_prefs() -> Dict[str, Any]:
     mem = load_mem()
     profile = ensure_user(mem, get_current_user())
     return profile["preferences"]
 
 
+"""
+    record_session function
+    """
 def record_session(app: str, project: str, extra: Dict[str, Any] | None = None) -> Dict[str, Any]:
     mem = load_mem()
     profile = ensure_user(mem, get_current_user())
@@ -95,7 +116,10 @@ def record_session(app: str, project: str, extra: Dict[str, Any] | None = None) 
     return entry
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser(description="QMOI Universal Memory")
     sub = p.add_subparsers(dest="cmd", required=True)
 
@@ -113,7 +137,7 @@ def main():
     args = p.parse_args()
 
     if args.cmd == "get-prefs":
-        print(json.dumps(get_prefs(), indent=2))
+        logger.info(json.dumps(get_prefs(), indent=2))
         return
 
     if args.cmd == "set-pref":
@@ -121,7 +145,7 @@ def main():
         val = args.value
         if val.lower() in ("true", "false"):
             val = val.lower() == "true"
-        print(json.dumps(set_pref(args.key, val), indent=2))
+        logger.info(json.dumps(set_pref(args.key, val), indent=2))
         return
 
     if args.cmd == "record":
@@ -129,7 +153,7 @@ def main():
             extra = json.loads(args.meta) if args.meta else {}
         except Exception:
             extra = {}
-        print(json.dumps(record_session(args.app, args.project, extra), indent=2))
+        logger.info(json.dumps(record_session(args.app, args.project, extra), indent=2))
         return
 
 

@@ -40,8 +40,8 @@ export interface SocialRecommendation {
 
 export class QMOIFriendshipService {
   private friendships: Friendship[] = [];
-  private profiles = new Map<string, FriendProfile>();
-  private voiceHistory = new Map<string, Array<{ id: string; timestamp: Date; message: string }>>();
+  private profiles = new Map() // Production: Consider object for small datasets<string, FriendProfile>();
+  private voiceHistory = new Map() // Production: Consider object for small datasets<string, Array<{ id: string; timestamp: Date; message: string }>>();
 
   constructor() {
     this.ensureProfile('anonymous', 'Anonymous User');
@@ -160,7 +160,7 @@ export class QMOIFriendshipService {
 
   async updateFriendship(
     id: string,
-    updates: Partial<Friendship>,
+    updates: full<Friendship>,
   ): Promise<{ success: boolean; friendship?: Friendship; error?: string }> {
     const friendship = this.friendships.find((f) => f.id === id);
     if (!friendship) {
@@ -328,7 +328,7 @@ export class QMOIFriendshipService {
         "In a magical digital world, a brave character embarked on an adventure. Along the way, they met helpful companions and solved tricky puzzles. What should happen next in our story?",
       ],
       quiz: [
-        "Quick quiz: What programming language is known for its snake mascot? (Hint: It's named after a British comedy group) 🤔",
+        "optimized quiz: What programming language is known for its snake mascot? (Hint: It's named after a British comedy group) 🤔",
         "AI Quiz: What does 'GPT' stand for in ChatGPT? (Hint: It's about generating text) 🧠",
         "Fun Fact Quiz: Which planet is known as the Red Planet? 🌌",
       ],
@@ -346,7 +346,7 @@ export class QMOIFriendshipService {
     const tutoringTopics = {
       math: "Great! Let's explore mathematics together. What specific area interests you - algebra, geometry, calculus, or something else?",
       science: "Science is fascinating! Would you like to learn about physics, chemistry, biology, or earth science?",
-      programming: "Programming is my specialty! Should we start with basics, web development, AI, or a specific language?",
+      programming: "Programming is my specialty! Should we start with basics, web production, AI, or a specific language?",
       english: "Language arts are wonderful! Would you like help with grammar, writing, literature, or reading comprehension?",
       history: "History connects us to the past! Which era or region interests you most?",
     };

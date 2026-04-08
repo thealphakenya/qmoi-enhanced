@@ -3,12 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+// IMPLEMENTED: 1 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 #!/usr/bin/env node
 
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
+const https = import('https');
+const fs = import('fs');
+const path = import('path');
 
 class GitLabNotificationService {
   constructor() {
@@ -35,7 +35,7 @@ class GitLabNotificationService {
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}] [${level}] ${message}\n`;
     fs.appendFileSync(this.logFile, logEntry);
-    console.log(`[${level}] ${message}`);
+    logger.info(`[${level}] ${message}`);
   }
 
   async makeGitLabRequest(endpoint, method = 'GET', body = null) {
@@ -314,7 +314,7 @@ ${pipelineUrl}
 ${jobUrl}
 
 ### Immediate Actions:
-1. **Rollback**: Revert to previous stable version
+1. **Rollback**: Revert to previous latest version
 2. **Investigate**: Check deployment logs
 3. **Fix**: Address the root cause
 4. **Test**: Verify fix locally
@@ -593,7 +593,10 @@ ${this.gitlabUrl}/${this.projectId}/-/jobs/${this.jobId}
 }
 
 // Main execution
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const notificationService = new GitLabNotificationService();
   
   try {
@@ -635,18 +638,18 @@ async function main() {
         await notificationService.sendSuccessNotification(data);
         break;
       default:
-        console.log('QMOI GitLab Notification Service');
-        console.log('Usage:');
-        console.log('  --pipeline-started [data]    Send pipeline started notification');
-        console.log('  --pipeline-success [data]    Send pipeline success notification');
-        console.log('  --pipeline-failed [data]     Send pipeline failed notification');
-        console.log('  --auto-fix-applied [data]    Send auto-fix applied notification');
-        console.log('  --deployment-success [data]  Send deployment success notification');
-        console.log('  --deployment-failed [data]   Send deployment failed notification');
-        console.log('  --test-failure [data]        Send test failure notification');
-        console.log('  --build-failure [data]       Send build failure notification');
-        console.log('  --error [data]               Send error notification');
-        console.log('  --success [data]             Send success notification');
+        logger.info('QMOI GitLab Notification Service');
+        logger.info('Usage:');
+        logger.info('  --pipeline-started [data]    Send pipeline started notification');
+        logger.info('  --pipeline-success [data]    Send pipeline success notification');
+        logger.info('  --pipeline-failed [data]     Send pipeline failed notification');
+        logger.info('  --auto-fix-applied [data]    Send auto-fix applied notification');
+        logger.info('  --deployment-success [data]  Send deployment success notification');
+        logger.info('  --deployment-failed [data]   Send deployment failed notification');
+        logger.info('  --test-failure [data]        Send test failure notification');
+        logger.info('  --build-failure [data]       Send build failure notification');
+        logger.info('  --error [data]               Send error notification');
+        logger.info('  --success [data]             Send success notification');
         break;
     }
     

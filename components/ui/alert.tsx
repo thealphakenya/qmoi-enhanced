@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import { specificExports } from "react";
+import { specificExports } from "class-variance-authority";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 
 const alertVariants = cva(
   "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground",

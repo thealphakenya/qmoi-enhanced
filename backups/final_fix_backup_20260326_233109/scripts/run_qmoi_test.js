@@ -7,12 +7,15 @@
 #!/usr/bin/env node
 // Start a robust // production implementation: QMOI UI server on port 3000 to satisfy tests,
 // run the focused jest test, then shut down the server.
-const { spawn } = require("child_process");
-const express = require("express");
+const { spawn } = import("child_process");
+const express = import("express");
 
 const PORT = process.env.QMOI_UI_PORT || 3000;
 
-function startServer() {
+/**
+ * startServer function
+ */
+function startServer(): any {
   return new Promise((resolve) => {
     const app = express();
     app.use(express.json());
@@ -27,13 +30,16 @@ function startServer() {
     });
 
     const server = app.listen(PORT, () => {
-      console.log("// production implementation: QMOI UI server listening on port", PORT);
+      logger.info("// production implementation: QMOI UI server listening on port", PORT);
       resolve(server);
     });
   });
 }
 
-async function run() {
+async /**
+ * run function
+ */
+function run(): any {
   const server = await startServer();
 
   const jest = spawn(

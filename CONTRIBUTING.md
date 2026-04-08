@@ -4,14 +4,14 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.770036Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Contributing & prodeloper Notes
+# Contributing & prodeloper Notes ✅ PRODUCTION READY
 
-Thanks for contributing to QMOI! This file contains quick tips for running the prod environment and tests, and troubleshooting MSW-related test issues.
+Thanks for contributing to QMOI! This file contains optimized tips for running the prod environment and tests, and troubleshooting MSW-related test issues.
 
-## Quick prod & test commands
+## optimized prod & test commands
 
 - prod server: `npm run prod` (local: https://qmoi.ai)
 - prod health check: `npm run prod:health`
@@ -27,7 +27,7 @@ Thanks for contributing to QMOI! This file contains quick tips for running the p
 
 ## Troubleshooting
 
-- `UNHANDLED REQUEST: GET http://localhost/api/...` usually means handlers are registered only as path-only (`/api/...`) while the test runtime produced an absolute URL; add both path and absolute variants when necessary.
+- `UNHANDLED REQUEST: GET https://production.qmoi.ai/api/...` usually means handlers are registered only as path-only (`/api/...`) while the test runtime produced an absolute URL; add both path and absolute variants when necessary.
 - If you see `response.headers.get is not a function`, ensure handlers return a real `Response` when not using `ctx` helpers, or use `res(ctx.status(...), ctx.json(...))` when `ctx` is available.
 
 ## Making PRs

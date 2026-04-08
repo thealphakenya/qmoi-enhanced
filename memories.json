@@ -28,8 +28,12 @@
       "id": "it-1",
       "key": "q.ki",
       "value": {
-        "note": "integration test"
+        "IMPLEMENTED": "integration test"
       }
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:12:50.793438"
 }

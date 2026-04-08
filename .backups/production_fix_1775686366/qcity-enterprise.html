@@ -1,0 +1,1175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QCity - Enterprise Management System</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #333;
+        overflow: hidden;
+      }
+
+      .container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        background: rgba(255, 255, 255, 0.98);
+        padding: 20px 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 3px solid #667eea;
+        z-index: 100;
+      }
+
+      header h1 {
+        color: #667eea;
+        font-size: 28px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .header-status {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .status-badge {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 15px;
+        background: #f0f0f0;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #4caf50;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+
+      .main-content {
+        flex: 1;
+        display: flex;
+        overflow: hidden;
+      }
+
+      .sidebar {
+        width: 250px;
+        background: white;
+        border-right: 1px solid #e0e0e0;
+        overflow-y: auto;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .sidebar-section {
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .sidebar-title {
+        padding: 15px 20px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: #fafafa;
+      }
+
+      .sidebar-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+        color: #666;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .sidebar-item:hover {
+        background: #f5f5f5;
+        color: #667eea;
+        border-left-color: #667eea;
+      }
+
+      .sidebar-item.active {
+        background: #f0f2ff;
+        color: #667eea;
+        border-left-color: #667eea;
+        font-weight: 600;
+      }
+
+      .content {
+        flex: 1;
+        background: #f8f9fa;
+        overflow-y: auto;
+        padding: 30px;
+      }
+
+      .tabs-header {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #e0e0e0;
+        overflow-x: auto;
+        padding-bottom: 15px;
+      }
+
+      .tab-btn {
+        padding: 10px 20px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        color: #999;
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -15px;
+        white-space: nowrap;
+      }
+
+      .tab-btn:hover {
+        color: #667eea;
+      }
+
+      .tab-btn.active {
+        color: #667eea;
+        border-bottom-color: #667eea;
+      }
+
+      .grid {
+        display: grid;
+        grid-standard-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: 1px solid #f0f0f0;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .card-icon {
+        font-size: 24px;
+      }
+
+      .card-title {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .metric {
+        margin-bottom: 15px;
+      }
+
+      .metric-label {
+        font-size: 12px;
+        color: #999;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        letter-spacing: 0.5px;
+      }
+
+      .metric-value {
+        font-size: 28px;
+        font-weight: 700;
+        color: #667eea;
+      }
+
+      .metric-subtext {
+        font-size: 12px;
+        color: #999;
+        margin-top: 3px;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: #e8e8e8;
+        border-radius: 3px;
+        overflow: hidden;
+        margin-top: 5px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        transition: width 0.3s ease;
+      }
+
+      .alert {
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        display: flex;
+        gap: 10px;
+        font-size: 13px;
+        border-left: 4px solid;
+      }
+
+      .alert-success {
+        background: #e8f5e9;
+        border-left-color: #4caf50;
+        color: #2e7d32;
+      }
+
+      .alert-warning {
+        background: #fff3e0;
+        border-left-color: #ff9800;
+        color: #e65100;
+      }
+
+      .alert-danger {
+        background: #ffebee;
+        border-left-color: #f44336;
+        color: #c62828;
+      }
+
+      .alert-info {
+        background: #e3f2fd;
+        border-left-color: #2196f3;
+        color: #1565c0;
+      }
+
+      .list-item {
+        padding: 10px 0;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+      }
+
+      .list-item:last-child {
+        border-bottom: none;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .badge-success {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+      .badge-warning {
+        background: #fff3e0;
+        color: #e65100;
+      }
+      .badge-danger {
+        background: #ffebee;
+        color: #c62828;
+      }
+
+      .full-width {
+        grid-column: 1 / -1;
+      }
+
+      .button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        font-size: 14px;
+      }
+
+      .btn-primary {
+        background: #667eea;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #5568d3;
+        transform: translateY(-2px);
+      }
+
+      .refresh-indicator {
+        font-size: 12px;
+        color: #999;
+        margin-left: auto;
+      }
+
+      .live-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        background: #e8f5e9;
+        color: #2e7d32;
+        border-radius: 3px;
+        font-size: 11px;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      thead {
+        background: #f5f5f5;
+      }
+
+      th {
+        padding: 10px;
+        text-align: left;
+        font-weight: 600;
+        color: #667eea;
+        border-bottom: 2px solid #e0e0e0;
+      }
+
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      tr:hover {
+        background: #f9f9ff;
+      }
+
+      .scroll-area {
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      @media (max-width: 1024px) {
+        .sidebar {
+          width: 200px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-content {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          width: 100%;
+          max-height: 100px;
+          display: flex;
+          overflow-x: auto;
+        }
+
+        .sidebar-section {
+          border-right: 1px solid #f0f0f0;
+          border-bottom: none;
+          min-width: 150px;
+        }
+
+        .content {
+          padding: 15px;
+        }
+
+        .grid {
+          grid-standard-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <h1>
+          <span>🏙️</span>
+          QCity Enterprise Platform
+        </h1>
+        <div class="header-status">
+          <div class="status-badge">
+            <div class="status-dot"></div>
+            <span id="system-status">System Online</span>
+          </div>
+          <div class="status-badge">
+            <span id="uptime-display">⏱️ 0h 0m</span>
+          </div>
+          <div class="status-badge">
+            <span id="alerts-count">🔔 0 Alerts</span>
+          </div>
+          <div class="live-badge">LIVE</div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+          <div class="sidebar-section">
+            <div class="sidebar-title">Dashboard</div>
+            <div
+              class="sidebar-item active"
+              onclick="switchContent('overview')"
+            >
+              <span>📊</span> Overview
+            </div>
+            <div class="sidebar-item" onclick="switchContent('devices')">
+              <span>🖥️</span> Devices
+            </div>
+            <div class="sidebar-item" onclick="switchContent('employment')">
+              <span>👥</span> Employment
+            </div>
+            <div class="sidebar-item" onclick="switchContent('revenue')">
+              <span>💰</span> Revenue
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <div class="sidebar-title">Management</div>
+            <div class="sidebar-item" onclick="switchContent('megavault')">
+              <span>🏛️</span> Megavault
+            </div>
+            <div class="sidebar-item" onclick="switchContent('biometrics')">
+              <span>🔐</span> Biometrics
+            </div>
+            <div class="sidebar-item" onclick="switchContent('logs')">
+              <span>📝</span> Logs
+            </div>
+            <div class="sidebar-item" onclick="switchContent('settings')">
+              <span>⚙️</span> Settings
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+          <!-- Overview Tab -->
+          <div id="overview" class="content-view">
+            <h2 style="margin-bottom: 20px; display: flex; align-items: center">
+              System Overview
+              <span class="refresh-indicator" id="last-update"
+                >Last update: now</span
+              >
+            </h2>
+
+            <div class="grid">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🏙️</span>
+                  <span class="card-title">System Status</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Status</div>
+                  <div class="metric-value" id="status-value">Online</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Uptime</div>
+                  <div class="metric-value" id="uptime-value">0h</div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">📈</span>
+                  <span class="card-title">CPU Usage</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Current</div>
+                  <div class="metric-value" id="cpu-value">45%</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-fill"
+                      id="cpu-bar"
+                      style="width: 45%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">💾</span>
+                  <span class="card-title">Memory Usage</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Current</div>
+                  <div class="metric-value" id="memory-value">62%</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-fill"
+                      id="memory-bar"
+                      style="width: 62%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">📊</span>
+                  <span class="card-title">Active Devices</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Online Now</div>
+                  <div class="metric-value" id="devices-value">1,247</div>
+                  <div class="metric-subtext">Out of 1,400 total</div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🔌</span>
+                  <span class="card-title">Connections</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Active</div>
+                  <div class="metric-value" id="connections-value">347</div>
+                  <div class="metric-subtext">Real-time connections</div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">⚠️</span>
+                  <span class="card-title">System Health</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Health Score</div>
+                  <div class="metric-value" id="health-value">98.7%</div>
+                  <div class="metric-subtext">All systems nominal</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card full-width">
+              <div class="card-header">
+                <span class="card-icon">⚠️</span>
+                <span class="card-title">Live Alerts</span>
+              </div>
+              <div id="alerts-container">
+                <div class="alert alert-success">
+                  ✓ System backup completed successfully
+                </div>
+                <div class="alert alert-info">
+                  ℹ️ Scheduled maintenance window: Tonight 02:00 AM
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Devices Tab -->
+          <div id="devices" class="content-view" style="display: none">
+            <h2 style="margin-bottom: 20px">Device Management</h2>
+            <div class="grid">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🖥️</span>
+                  <span class="card-title">QCity Master</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Status</div>
+                  <div class="metric-value">Online</div>
+                </div>
+                <div class="list-item">
+                  <span>Resources</span>
+                  <span class="badge badge-success">100%</span>
+                </div>
+                <div class="list-item">
+                  <span>Storage</span>
+                  <span>2.5TB / 5TB</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">📱</span>
+                  <span class="card-title">Mobile Devices</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Active</div>
+                  <div class="metric-value" id="mobile-devices">234</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Status</div>
+                  <span class="badge badge-success">Online</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🖨️</span>
+                  <span class="card-title">IoT Devices</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Active</div>
+                  <div class="metric-value" id="iot-devices">945</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Status</div>
+                  <span class="badge badge-success">Online</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Employment Tab -->
+          <div id="employment" class="content-view" style="display: none">
+            <h2 style="margin-bottom: 20px">Employment Management</h2>
+            <div class="grid">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">👥</span>
+                  <span class="card-title">Employees</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Total</div>
+                  <div class="metric-value">247</div>
+                </div>
+                <div class="list-item">
+                  <span>Active</span>
+                  <span>235</span>
+                </div>
+                <div class="list-item">
+                  <span>Inactive</span>
+                  <span>12</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🧑</span>
+                  <span class="card-title">Users</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Total</div>
+                  <div class="metric-value">1,456</div>
+                </div>
+                <div class="list-item">
+                  <span>Active</span>
+                  <span>1,234</span>
+                </div>
+                <div class="list-item">
+                  <span>Inactive</span>
+                  <span>222</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">💼</span>
+                  <span class="card-title">Payroll</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Monthly Budget</div>
+                  <div class="metric-value">$125K</div>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 57%"></div>
+                </div>
+                <div class="metric-subtext">57% allocated</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Revenue Tab -->
+          <div id="revenue" class="content-view" style="display: none">
+            <h2 style="margin-bottom: 20px">Revenue Management</h2>
+            <div class="grid">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">💰</span>
+                  <span class="card-title">Monthly Revenue</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Total</div>
+                  <div class="metric-value" id="revenue-total">$85,420</div>
+                  <div class="metric-subtext">↑ 23% from last month</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">📊</span>
+                  <span class="card-title">Microtasks</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Completed</div>
+                  <div class="metric-value" id="microtasks-count">3,847</div>
+                  <div class="metric-subtext" id="microtasks-revenue">
+                    Revenue: $12,540
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🎁</span>
+                  <span class="card-title">Affiliate</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Commissions</div>
+                  <div class="metric-value" id="affiliate-commission">
+                    $24,300
+                  </div>
+                  <div class="metric-subtext">52 active campaigns</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">📝</span>
+                  <span class="card-title">Content Projects</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Revenue</div>
+                  <div class="metric-value">$18,500</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🔗</span>
+                  <span class="card-title">Referral Programs</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Revenue</div>
+                  <div class="metric-value">$15,200</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🌐</span>
+                  <span class="card-title">Platform Accounts</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Revenue</div>
+                  <div class="metric-value">$8,900</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Megavault Tab -->
+          <div id="megavault" class="content-view" style="display: none">
+            <h2 style="margin-bottom: 20px">Megavault</h2>
+            <div class="grid">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">💰</span>
+                  <span class="card-title">Current Balance</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Available</div>
+                  <div class="metric-value" id="balance-value">$425,680</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">📥</span>
+                  <span class="card-title">Total Inflow</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">All Time</div>
+                  <div class="metric-value">$2.15M</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">📊</span>
+                  <span class="card-title">Total Profit</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Earnings</div>
+                  <div class="metric-value">$485,300</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🎁</span>
+                  <span class="card-title">Dividends</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Total</div>
+                  <div class="metric-value">$156,420</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Biometrics Tab -->
+          <div id="biometrics" class="content-view" style="display: none">
+            <h2 style="margin-bottom: 20px">Biometric Management</h2>
+            <div class="grid">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🔐</span>
+                  <span class="card-title">Enrollment Status</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Templates Enrolled</div>
+                  <div class="metric-value">8/8</div>
+                  <div class="metric-subtext">Complete</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">✓</span>
+                  <span class="card-title">Verification</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Status</div>
+                  <div class="metric-value">Verified</div>
+                  <div class="metric-subtext" id="last-biometric">Just now</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🛡️</span>
+                  <span class="card-title">Security</span>
+                </div>
+                <div class="metric">
+                  <div class="metric-label">Level</div>
+                  <div class="metric-value">Multi-Factor</div>
+                  <div class="metric-subtext">Highly Secure</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card full-width">
+              <div class="card-header">
+                <span class="card-icon">👤</span>
+                <span class="card-title">Biometric Types</span>
+              </div>
+              <div class="list-item">
+                <span>👁️ Iris Scan</span>
+                <span class="badge badge-success">Enrolled</span>
+              </div>
+              <div class="list-item">
+                <span>🖐️ Fingerprint</span>
+                <span class="badge badge-success">Enrolled</span>
+              </div>
+              <div class="list-item">
+                <span>😊 Facial Recognition</span>
+                <span class="badge badge-success">Enrolled</span>
+              </div>
+              <div class="list-item">
+                <span>🎤 Voice Recognition</span>
+                <span class="badge badge-success">Enrolled</span>
+              </div>
+              <div class="list-item">
+                <span>✍️ Signature</span>
+                <span class="badge badge-success">Enrolled</span>
+              </div>
+              <div class="list-item">
+                <span>🫀 Palm Vein</span>
+                <span class="badge badge-success">Enrolled</span>
+              </div>
+              <div class="list-item">
+                <span>💓 Heartbeat</span>
+                <span class="badge badge-success">Enrolled</span>
+              </div>
+              <div class="list-item">
+                <span>🚶 Gait Recognition</span>
+                <span class="badge badge-success">Enrolled</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Logs Tab -->
+          <div id="logs" class="content-view" style="display: none">
+            <h2 style="margin-bottom: 20px">System Logs</h2>
+            <div class="grid">
+              <div class="card full-width">
+                <div class="card-header">
+                  <span class="card-icon">📝</span>
+                  <span class="card-title">Activity Log</span>
+                </div>
+                <div class="scroll-area">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Timestamp</th>
+                        <th>Event</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="logs-table">
+                      <tr>
+                        <td>2025-12-02 14:40:00</td>
+                        <td>System initialized</td>
+                        <td>
+                          <span class="badge badge-success">Success</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2025-12-02 14:35:22</td>
+                        <td>Backup completed</td>
+                        <td>
+                          <span class="badge badge-success">Success</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2025-12-02 14:30:45</td>
+                        <td>Devices synchronized</td>
+                        <td>
+                          <span class="badge badge-success">Success</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Settings Tab -->
+          <div id="settings" class="content-view" style="display: none">
+            <h2 style="margin-bottom: 20px">System Settings</h2>
+            <div class="grid">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🔧</span>
+                  <span class="card-title">Device Configuration</span>
+                </div>
+                <div class="list-item">
+                  <span>Device Name</span>
+                  <span>QCity Master</span>
+                </div>
+                <div class="list-item">
+                  <span>Version</span>
+                  <span>2.0.0</span>
+                </div>
+                <div class="list-item">
+                  <span>Last Update</span>
+                  <span>2025-12-02</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">🔐</span>
+                  <span class="card-title">Security</span>
+                </div>
+                <div class="list-item">
+                  <span>2FA Status</span>
+                  <span class="badge badge-success">Enabled</span>
+                </div>
+                <div class="list-item">
+                  <span>Auto-Lock</span>
+                  <span>15 minutes</span>
+                </div>
+                <div class="list-item">
+                  <span>Encryption</span>
+                  <span class="badge badge-success">AES-256</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-icon">💾</span>
+                  <span class="card-title">Data Management</span>
+                </div>
+                <button
+                  class="button btn-primary"
+                  style="width: 100%; margin-bottom: 10px"
+                >
+                  💾 Backup Now
+                </button>
+                <button class="button btn-primary" style="width: 100%">
+                  🔄 Restore
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load service -->
+    <script src="qcity-service.js"></script>
+
+    <script>
+      // Initialize service connection
+      let service = null;
+
+      function initializeService() {
+        if (typeof window.qcityService !== "undefined") {
+          service = window.qcityService;
+
+          // Subscribe to metrics updates
+          service.on("metrics-updated", (metrics) => {
+            updateMetricsDisplay(metrics);
+          });
+
+          // Subscribe to device updates
+          service.on("devices-updated", (devices) => {
+            updateDeviceDisplay(devices);
+          });
+
+          // Subscribe to revenue updates
+          service.on("revenue-updated", (revenue) => {
+            updateRevenueDisplay(revenue);
+          });
+
+          // Subscribe to health checks
+          service.on("health-check", (health) => {
+            updateHealthDisplay(health);
+          });
+
+          // Subscribe to biometric updates
+          service.on("biometric-status", (biometric) => {
+            updateBiometricDisplay(biometric);
+          });
+
+          console.log("[Dashboard] Service connected and monitoring");
+          updateLastUpdate();
+          updateUptime();
+        }
+      }
+
+      function updateMetricsDisplay(metrics) {
+        document.getElementById("cpu-value").textContent =
+          Math.round(metrics.cpu) + "%";
+        document.getElementById("cpu-bar").style.width =
+          Math.round(metrics.cpu) + "%";
+
+        document.getElementById("memory-value").textContent =
+          Math.round(metrics.memory) + "%";
+        document.getElementById("memory-bar").style.width =
+          Math.round(metrics.memory) + "%";
+      }
+
+      function updateDeviceDisplay(devices) {
+        document.getElementById("devices-value").textContent =
+          devices.online.toLocaleString();
+        document.getElementById("connections-value").textContent =
+          devices.connections;
+        updateLastUpdate();
+      }
+
+      function updateRevenueDisplay(revenue) {
+        document.getElementById("microtasks-count").textContent =
+          revenue.microtasks.completed.toLocaleString();
+        document.getElementById("microtasks-revenue").textContent =
+          "Revenue: $" +
+          Math.round(revenue.microtasks.revenue).toLocaleString();
+        document.getElementById("affiliate-commission").textContent =
+          "$" + revenue.affiliate.commissions.toLocaleString();
+        document.getElementById("revenue-total").textContent =
+          "$" + Math.round(revenue.total).toLocaleString();
+      }
+
+      function updateHealthDisplay(health) {
+        document.getElementById("health-value").textContent =
+          health.systemHealth.toFixed(1) + "%";
+        document.getElementById("alerts-count").textContent =
+          "🔔 " +
+          health.activeAlerts +
+          " Alert" +
+          (health.activeAlerts !== 1 ? "s" : "");
+      }
+
+      function updateBiometricDisplay(biometric) {
+        document.getElementById("last-biometric").textContent = "Just now";
+      }
+
+      function updateLastUpdate() {
+        const now = new Date();
+        const time = now.toLocaleTimeString();
+        document.getElementById("last-update").textContent =
+          "Last update: " + time;
+      }
+
+      function updateUptime() {
+        if (service) {
+          const uptimeSeconds = service.state.system.uptime;
+          const hours = Math.floor(uptimeSeconds / 3600);
+          const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+          document.getElementById("uptime-value").textContent =
+            hours + "h " + minutes + "m";
+          document.getElementById("uptime-display").textContent =
+            "⏱️ " + hours + "h " + minutes + "m";
+        }
+        setTimeout(updateUptime, 1000);
+      }
+
+      function switchContent(viewName) {
+        // Hide all views
+        document.querySelectorAll(".content-view").forEach((view) => {
+          view.style.display = "none";
+        });
+
+        // Remove active from all sidebar items
+        document.querySelectorAll(".sidebar-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        // Show selected view
+        document.getElementById(viewName).style.display = "block";
+
+        // Add active to clicked item
+        event.target.closest(".sidebar-item").classList.add("active");
+      }
+
+      // Initialize on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("[Dashboard] Initializing...");
+        initializeService();
+        console.log("[Dashboard] Ready");
+      });
+
+      // Keep dashboard active even if minimized
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          console.log(
+            "[Dashboard] Hidden, service continues running in background",
+          );
+        } else {
+          console.log("[Dashboard] Visible, syncing data");
+          updateLastUpdate();
+        }
+      });
+    </script>
+  </body>
+</html>

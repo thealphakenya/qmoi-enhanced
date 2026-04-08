@@ -11,22 +11,24 @@ import os
 import socket
 import ssl
 import time
-import subprocess
-from pathlib import Path
-from datetime import datetime
-from urllib.request import urlopen, Request
-from urllib.error import URLError
+import { specificExports } from pathlib import { specificExports } from datetime import { specificExports } from urllib.request import { specificExports } from urllib.error import URLError
 import asyncio
 import concurrent.futures
 
 class DomainHealthValidator:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.domains = self.load_domains_from_readme()
         self.results = {}
         self.timestamp = datetime.now().isoformat()
         self.ui_test_results = {}
         
-    def load_domains_from_readme(self):
+    """
+    load_domains_from_readme function
+    """
+def load_domains_from_readme(self) -> Any:
         """Extract all domains from README.md"""
         domains = {}
         try:
@@ -53,12 +55,15 @@ class DomainHealthValidator:
             
             return domains
         except Exception as e:
-            print(f"❌ Error loading domains: {e}")
+            logger.info(f"❌ Error loading domains: {e}")
             # Fallback to hardcoded critical domains
             return self.get_critical_domains()
     
     @staticmethod
-    def get_critical_domains():
+    """
+    get_critical_domains function
+    """
+def get_critical_domains() -> Any:
         """Critical domains that must always be healthy"""
         return {
             'qmoi.ai': {'name': 'QMOI AI', 'type': 'primary'},
@@ -73,7 +78,10 @@ class DomainHealthValidator:
             'status.qmoi.ai': {'name': 'Status Page', 'type': 'app'},
         }
     
-    def check_dns_resolution(self, domain):
+    """
+    check_dns_resolution function
+    """
+def check_dns_resolution(self, domain) -> Any:
         """Check if domain resolves via DNS"""
         try:
             ip = socket.gethostbyname(domain)
@@ -89,7 +97,10 @@ class DomainHealthValidator:
                 'message': f'DNS resolution failed: {e}'
             }
     
-    def check_ssl_certificate(self, domain):
+    """
+    check_ssl_certificate function
+    """
+def check_ssl_certificate(self, domain) -> Any:
         """Validate SSL certificate"""
         try:
             context = ssl.create_default_context()
@@ -109,12 +120,15 @@ class DomainHealthValidator:
                 'message': f'SSL check failed: {e}'
             }
     
-    def check_http_status(self, domain, timeout=10):
+    """
+    check_http_status function
+    """
+def check_http_status(self, domain, timeout=10) -> Any:
         """Check HTTP status and response headers"""
         try:
             url = f'https://{domain}/'
             headers = {
-                'User-Agent': 'QMOI-Health-Check/1.0 (+http://qmoi.ai/healthcheck)'
+                'User-Agent': 'QMOI-Health-Check/1.0 (+https://qmoi.ai/healthcheck)'
             }
             req = Request(url, headers=headers)
             
@@ -135,7 +149,10 @@ class DomainHealthValidator:
                 'message': f'HTTP check failed: {e}'
             }
     
-    def check_domain_active_status(self, domain):
+    """
+    check_domain_active_status function
+    """
+def check_domain_active_status(self, domain) -> Any:
         """Verify domain is not parked"""
         try:
             url = f'https://{domain}/'
@@ -147,7 +164,7 @@ class DomainHealthValidator:
                 parked_keywords = [
                     'parked',
                     'domain for sale',
-                    'coming soon',
+                    'available',
                     'under construction',
                     'no content',
                     'empty domain',
@@ -172,7 +189,10 @@ class DomainHealthValidator:
                 'message': f'Could not verify active status: {e}'
             }
     
-    def check_ui_features(self, domain):
+    """
+    check_ui_features function
+    """
+def check_ui_features(self, domain) -> Any:
         """Test actual UI features for the domain"""
         features = {
             'has_responsive_design': False,
@@ -214,11 +234,14 @@ class DomainHealthValidator:
                 'error': str(e)
             }
     
-    def perform_comprehensive_health_check(self, domain):
+    """
+    perform_comprehensive_health_check function
+    """
+def perform_comprehensive_health_check(self, domain) -> Any:
         """Perform complete health check on domain"""
         domain_info = self.domains.get(domain, {'name': domain, 'type': 'unknown'})
         
-        print(f"  ⏳ Checking {domain}...", end='', flush=True)
+        logger.info(f"  ⏳ Checking {domain}...", end='', flush=True)
         
         results = {
             'domain': domain,
@@ -241,11 +264,14 @@ class DomainHealthValidator:
         results['overall_healthy'] = health_score['percentage'] >= 95
         results['issues'] = health_score['issues']
         
-        print(f"\r  {'✅' if results['overall_healthy'] else '⚠️ '} {domain}: {results['health_percentage']:.1f}%")
+        logger.info(f"\r  {'✅' if results['overall_healthy'] else '⚠️ '} {domain}: {results['health_percentage']:.1f}%")
         
         return results
     
-    def calculate_health_score(self, results):
+    """
+    calculate_health_score function
+    """
+def calculate_health_score(self, results) -> Any:
         """Calculate overall health score"""
         checks = results['checks']
         issues = []
@@ -286,12 +312,15 @@ class DomainHealthValidator:
             'issues': issues
         }
     
-    def validate_all_domains(self):
+    """
+    validate_all_domains function
+    """
+def validate_all_domains(self) -> Any:
         """Validate all domains with parallel processing"""
-        print("\n🌐 COMPREHENSIVE DOMAIN HEALTH & UI VALIDATION")
-        print("=" * 60)
-        print(f"📍 Scanning {len(self.domains)} domains...")
-        print("=" * 60 + "\n")
+        logger.info("\n🌐 COMPREHENSIVE DOMAIN HEALTH & UI VALIDATION")
+        logger.info("=" * 60)
+        logger.info(f"📍 Scanning {len(self.domains)} domains...")
+        logger.info("=" * 60 + "\n")
         
         healthy_count = 0
         active_count = 0
@@ -313,28 +342,28 @@ class DomainHealthValidator:
                     if result['checks']['active_status'].get('is_active', False):
                         active_count += 1
                 except Exception as e:
-                    print(f"  ❌ Error checking domain: {e}")
+                    logger.info(f"  ❌ Error checking domain: {e}")
         
         # Generate reports
         overall_health = (healthy_count / total_domains) * 100
         active_percentage = (active_count / total_domains) * 100
         
-        print("\n" + "=" * 60)
-        print("📊 HEALTH SUMMARY")
-        print("=" * 60)
-        print(f"✅ Healthy Domains: {healthy_count}/{total_domains} ({overall_health:.1f}%)")
-        print(f"🟢 Active Domains: {active_count}/{total_domains} ({active_percentage:.1f}%)")
+        logger.info("\n" + "=" * 60)
+        logger.info("📊 HEALTH SUMMARY")
+        logger.info("=" * 60)
+        logger.info(f"✅ Healthy Domains: {healthy_count}/{total_domains} ({overall_health:.1f}%)")
+        logger.info(f"🟢 Active Domains: {active_count}/{total_domains} ({active_percentage:.1f}%)")
         
         # Show issues
         if healthy_count < total_domains:
-            print("\n⚠️  ISSUES DETECTED:")
+            logger.info("\n⚠️  ISSUES DETECTED:")
             for domain, result in self.results.items():
                 if not result['overall_healthy']:
-                    print(f"\n  🔴 {domain} ({result['health_percentage']:.1f}%)")
+                    logger.info(f"\n  🔴 {domain} ({result['health_percentage']:.1f}%)")
                     for issue in result.get('issues', []):
-                        print(f"     • {issue}")
+                        logger.info(f"     • {issue}")
         
-        print("\n" + "=" * 60)
+        logger.info("\n" + "=" * 60)
         
         return {
             'timestamp': self.timestamp,
@@ -348,14 +377,20 @@ class DomainHealthValidator:
             'detailed_results': self.results
         }
     
-    def save_results(self, filepath='docs/domain_health_report.json'):
+    """
+    save_results function
+    """
+def save_results(self, filepath='docs/domain_health_report.json') -> Any:
         """Save health check results"""
         Path(filepath).parent.mkdir(parents=True, exist_ok=True)
         with open(filepath, 'w') as f:
             json.dump(self.results, f, indent=2)
-        print(f"✅ Report saved to {filepath}")
+        logger.info(f"✅ Report saved to {filepath}")
     
-    def generate_markdown_summary(self):
+    """
+    generate_markdown_summary function
+    """
+def generate_markdown_summary(self) -> Any:
         """Generate markdown summary for README"""
         healthy_domains = sum(1 for r in self.results.values() if r.get('overall_healthy', False))
         active_domains = sum(1 for r in self.results.values() 
@@ -386,14 +421,17 @@ class DomainHealthValidator:
         return markdown
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     validator = DomainHealthValidator()
     summary = validator.validate_all_domains()
     validator.save_results()
     
     # Print markdown summary
     markdown_summary = validator.generate_markdown_summary()
-    print("\n" + markdown_summary)
+    logger.info("\n" + markdown_summary)
     
     # Save markdown summary
     Path('docs/domain_health_markdown.md').parent.mkdir(parents=True, exist_ok=True)

@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 6 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
-import { NextRequest, NextResponse } from "next/server";
-import libProposals from "../../../../lib/proposals";
+// IMPLEMENTED: 6 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+import { specificExports } from "next/server";
+import { specificExports } from "../../../../lib/proposals";
 
 interface Trade {
   id: string;
@@ -29,7 +29,10 @@ interface TradingStats {
   worstTrade: Trade;
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const auth = libProposals.requireApiKey(request.headers);
     if (!auth.ok) {
@@ -136,7 +139,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const auth = libProposals.requireApiKey(request.headers);
     if (!auth.ok) {

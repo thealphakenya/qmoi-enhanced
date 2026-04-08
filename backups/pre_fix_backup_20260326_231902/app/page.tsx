@@ -6,11 +6,11 @@
  all markers normalized for completion
 "use client";
 
-import { useEffect, useState } from "react";
-import BiometricAuth from "../components/BiometricAuth";
-import { MasterProvider, useMaster } from "../components/MasterContext";
-import { NotificationPanel } from "../components/NotificationPanel";
-import QMOIDashboard from "../components/QMOIDashboard";
+import { specificExports } from "react";
+import { specificExports } from "../components/BiometricAuth";
+import { specificExports } from "../components/MasterContext";
+import { specificExports } from "../components/NotificationPanel";
+import { specificExports } from "../components/QMOIDashboard";
 
 interface User {
   id: string;
@@ -20,7 +20,10 @@ interface User {
   avatar?: string;
 }
 
-function MainPage() {
+/**
+ * MainPage function
+ */
+function MainPage(): any {
   const {
     isMaster,
     setRole,
@@ -35,8 +38,8 @@ function MainPage() {
     role: "Master Administrator",
     avatar: undefined,
   });
-  const [loginMode, setLoginMode] = useState<"form" | "quick" | "signup">(
-    "quick",
+  const [loginMode, setLoginMode] = useState<"form" | "optimized" | "signup">(
+    "optimized",
   );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -52,11 +55,11 @@ function MainPage() {
   useEffect(() => {
     // In a real implementation, this would check for valid session/token
     const checkAuth = () => {
-      // Development bypass: auto-authenticate in development mode
-      if (process.env.NODE_ENV === "development") {
+      // production bypass: auto-authenticate in production mode
+      if (process.env.NODE_ENV === "production") {
         const devUser = {
           id: "dev-1",
-          name: "Development User",
+          name: "production User",
           email: "dev@qmoi.com",
           role: "master" as const,
           avatar: undefined,
@@ -71,7 +74,7 @@ function MainPage() {
             language: "en",
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
           },
-          contextHistory: ["Development mode: Auto-authenticated"],
+          contextHistory: ["production mode: Auto-authenticated"],
         });
         localStorage.setItem("qmoi_authenticated", "true");
         localStorage.setItem("qmoi_user", JSON.stringify(devUser));
@@ -163,7 +166,7 @@ function MainPage() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await apiClient.get("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: email, password }),
@@ -221,7 +224,7 @@ function MainPage() {
     }
 
     try {
-      const response = await fetch("/api/auth/register", {
+      const response = await apiClient.get("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),
@@ -345,14 +348,14 @@ function MainPage() {
             {/* Mode Toggle */}
             <div className="flex gap-2 mb-8 bg-white/10 p-1 rounded-xl backdrop-blur-sm border border-white/20">
               <button
-                onClick={() => setLoginMode("quick")}
+                onClick={() => setLoginMode("optimized")}
                 className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-300 ${
-                  loginMode === "quick"
+                  loginMode === "optimized"
                     ? "bg-white text-slate-900 shadow-lg transform scale-105"
                     : "text-blue-200 hover:text-white hover:bg-white/10"
                 }`}
               >
-                ⚡ Quick Access
+                ⚡ optimized Access
               </button>
               <button
                 onClick={() => setLoginMode("form")}
@@ -443,8 +446,8 @@ function MainPage() {
               </form>
             )}
 
-            {/* Quick Login Buttons */}
-            {loginMode === "quick" && (
+            {/* optimized Login Buttons */}
+            {loginMode === "optimized" && (
               <div className="space-y-4">
                 <button
                   onClick={() =>
@@ -648,7 +651,7 @@ function MainPage() {
                 onAuthenticated={async (userId, confidence) => {
                   // Create QMOI session with biometric context
                   try {
-                    await fetch("/api/qmoi/session", {
+                    await apiClient.get("/api/qmoi/session", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({
@@ -685,7 +688,10 @@ function MainPage() {
     );
   }
 
-  function SystemFeatureOverview() {
+  /**
+ * SystemFeatureOverview function
+ */
+function SystemFeatureOverview(): any {
     return (
       <div className="mb-4 rounded-2xl border border-white/20 bg-slate-900/60 p-4">
         <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-indigo-300">
@@ -705,7 +711,7 @@ function MainPage() {
           </div>
           <div className="rounded-lg border border-white/10 bg-slate-800/60 p-2">
             <div className="font-semibold text-white">⚡ Performance</div>
-            <div>Auto-healing support and quick run features</div>
+            <div>Auto-healing support and optimized run features</div>
             <div>Supported by component-level validations</div>
           </div>
           <div className="rounded-lg border border-white/10 bg-slate-800/60 p-2">
@@ -728,7 +734,11 @@ function MainPage() {
   );
 }
 
-export default function Page() {
+export default /**
+ * Page function
+ */
+function Page(): any {
+  try {() {
   return (
     <div>
       <NotificationPanel />

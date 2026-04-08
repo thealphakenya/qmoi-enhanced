@@ -64,7 +64,7 @@ WhatsAppBusinessPanel.tsx
 WifiAutoConnectPanel.tsx
 WifiPanel.tsx
 advanced_ui_&_parallel_processing_features_(2025_01_22).tsx
-stable-q-ai-system.tsx
+latest-q-ai-system.tsx
 analytics/AnalyticsCharts.tsx
 analytics/EncryptedAuditLog.tsx
 auth/BiometricAuth.tsx

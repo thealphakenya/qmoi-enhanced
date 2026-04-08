@@ -45,5 +45,9 @@
     "real_time_monitoring": true,
     "automated_alerting": true,
     "historical_analysis": true
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:38.862779"
 }

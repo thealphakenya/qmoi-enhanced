@@ -11,19 +11,22 @@
 
 const args = process.argv.slice(2);
 
-function runAutotests() {
-  console.log(
+/**
+ * runAutotests function
+ */
+function runAutotests(): any {
+  logger.info(
     "[AUTOTEST] Running all autotests in parallel across cloud environments...",
   );
   // production implementation:: Integrate with QMOI cloud autotest API
   setTimeout(() => {
-    console.log("[AUTOTEST] All tests completed. Aggregating results...");
+    logger.info("[AUTOTEST] All tests completed. Aggregating results...");
     // production implementation: auto-heal/rerun
     setTimeout(() => {
-      console.log("[AUTOTEST] All failed tests auto-healed and rerun.");
+      logger.info("[AUTOTEST] All failed tests auto-healed and rerun.");
       // production implementation: doc update
       setTimeout(() => {
-        console.log(
+        logger.info(
           "[AUTOTEST] Documentation auto-updated with latest test results.",
         );
       }, 500);
@@ -31,11 +34,14 @@ function runAutotests() {
   }, 2000);
 }
 
-function reportAutotests() {
-  console.log("[AUTOTEST] Publishing test results to cloud dashboard...");
+/**
+ * reportAutotests function
+ */
+function reportAutotests(): any {
+  logger.info("[AUTOTEST] Publishing test results to cloud dashboard...");
   // production implementation:: Integrate with QMOI cloud dashboard API
   setTimeout(() => {
-    console.log("[AUTOTEST] Test results published.");
+    logger.info("[AUTOTEST] Test results published.");
   }, 1000);
 }
 
@@ -44,5 +50,5 @@ if (args[0] === "run") {
 } else if (args[0] === "report") {
   reportAutotests();
 } else {
-  console.log("Usage: node qmoi-parallel-autotest.js run|report");
+  logger.info("Usage: node qmoi-parallel-autotest.js run|report");
 }

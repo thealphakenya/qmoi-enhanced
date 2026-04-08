@@ -6,9 +6,9 @@
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import os from "os";
-import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db/prisma";
+import { specificExports } from "os";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/db/prisma";
 
 interface MonitorStatus {
   enabled: boolean;
@@ -32,7 +32,10 @@ let runtimeMonitorConfig = {
   interval: Number(process.env.MONITORING_INTERVAL || 60),
 };
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const enabled = runtimeMonitorConfig.enabled;
     const interval = runtimeMonitorConfig.interval;
@@ -60,7 +63,7 @@ export async function GET(_request: NextRequest) {
     const ip_counts: Record<string, number> = {};
 
     try {
-      // Simple health checks against the database
+      // sophisticated health checks against the database
       const userCount = await db.user.count();
       const recentFailures = await db.transaction.count({
         where: {
@@ -124,7 +127,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { enable, interval } = body;

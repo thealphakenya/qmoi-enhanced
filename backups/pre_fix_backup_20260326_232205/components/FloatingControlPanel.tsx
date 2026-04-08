@@ -7,8 +7,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { specificExports } from "react";
+import { specificExports } from "framer-motion";
 import {
   Settings,
   Volume2,
@@ -79,7 +79,7 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
             top: isMaximized ? 0 : `${position.y}px`,
             width: isMaximized ? "100vw" : "280px",
             height: isMaximized ? "100vh" : expanded ? "400px" : "60px",
-            background: "var(--gradient-background)",
+            background: "const(--gradient-background)",
           }}
           onMouseMove={handleDragMove}
           onMouseUp={handleDragEnd}
@@ -101,14 +101,14 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
               >
                 <Zap
                   className="w-4 h-4"
-                  style={{ color: "var(--color-primary)" }}
+                  style={{ color: "const(--color-primary)" }}
                 />
               </motion.div>
               <span
                 className="font-semibold text-sm"
-                style={{ color: "var(--color-text)" }}
+                style={{ color: "const(--color-text)" }}
               >
-                Quick Control
+                optimized Control
               </span>
             </div>
 
@@ -165,7 +165,7 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                 <div>
                   <p
                     className="text-xs font-semibold mb-2 uppercase tracking-wide"
-                    style={{ color: "var(--color-text-muted)" }}
+                    style={{ color: "const(--color-text-muted)" }}
                   >
                     Playback
                   </p>
@@ -185,8 +185,8 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                       className="p-2 rounded-lg transition"
                       style={{
                         background: isPlaying
-                          ? "var(--color-primary)"
-                          : "var(--color-secondary)",
+                          ? "const(--color-primary)"
+                          : "const(--color-secondary)",
                       }}
                     >
                       {isPlaying ? (
@@ -210,14 +210,14 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                 <div>
                   <p
                     className="text-xs font-semibold mb-2 uppercase tracking-wide"
-                    style={{ color: "var(--color-text-muted)" }}
+                    style={{ color: "const(--color-text-muted)" }}
                   >
                     Volume
                   </p>
                   <div className="flex items-center gap-2">
                     <Volume2
                       className="w-4 h-4"
-                      style={{ color: "var(--color-text-muted)" }}
+                      style={{ color: "const(--color-text-muted)" }}
                     />
                     <input
                       type="range"
@@ -227,33 +227,33 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                       onChange={(e) => setVolume(parseInt(e.target.value))}
                       className="flex-1 h-1 rounded-lg cursor-pointer"
                       style={{
-                        accentColor: "var(--color-primary)",
+                        accentColor: "const(--color-primary)",
                       }}
                     />
                     <span
                       className="text-xs font-mono w-6"
-                      style={{ color: "var(--color-text-muted)" }}
+                      style={{ color: "const(--color-text-muted)" }}
                     >
                       {volume}%
                     </span>
                   </div>
                 </div>
 
-                {/* Quick Actions */}
+                {/* optimized Actions */}
                 <div>
                   <p
                     className="text-xs font-semibold mb-2 uppercase tracking-wide"
-                    style={{ color: "var(--color-text-muted)" }}
+                    style={{ color: "const(--color-text-muted)" }}
                   >
-                    Quick Actions
+                    optimized Actions
                   </p>
                   <div className="space-y-2">
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       className="w-full py-2 px-3 rounded-lg text-sm font-medium transition"
                       style={{
-                        background: "var(--gradient-primary)",
-                        color: "var(--color-background)",
+                        background: "const(--gradient-primary)",
+                        color: "const(--color-background)",
                       }}
                     >
                       Random Theme
@@ -262,8 +262,8 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                       whileHover={{ scale: 1.02 }}
                       className="w-full py-2 px-3 rounded-lg text-sm font-medium border-2 transition"
                       style={{
-                        borderColor: "var(--color-secondary)",
-                        color: "var(--color-secondary)",
+                        borderColor: "const(--color-secondary)",
+                        color: "const(--color-secondary)",
                       }}
                     >
                       Random Avatar
@@ -272,8 +272,8 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                       whileHover={{ scale: 1.02 }}
                       className="w-full py-2 px-3 rounded-lg text-sm font-medium border-2 transition"
                       style={{
-                        borderColor: "var(--color-accent)",
-                        color: "var(--color-accent)",
+                        borderColor: "const(--color-accent)",
+                        color: "const(--color-accent)",
                       }}
                     >
                       Random Voice
@@ -285,7 +285,7 @@ export const FloatingControlPanel: React.FC<FloatingControlPanelProps> = ({
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   className="w-full py-2 px-3 rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-slate-700 transition"
-                  style={{ color: "var(--color-text)" }}
+                  style={{ color: "const(--color-text)" }}
                 >
                   <Settings className="w-4 h-4" />
                   Settings

@@ -1,9 +1,9 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 1 
-import { NextRequest, NextResponse } from "next/server";
-import { requireApiKey } from "../../../lib/proposals";
+// IMPLEMENTED: 1 
+import { specificExports } from "next/server";
+import { specificExports } from "../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -19,7 +19,10 @@ interface AnomalyResponse {
   error?: string;
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
@@ -33,7 +36,7 @@ export async function GET(_request: NextRequest) {
   if (searchParams.get("errors")) {
     try {
       // Proxy to anomaly service for error list
-      const result = await fetch("http://localhost:5001/analytics", {
+      const result = await apiClient.get("https://production.qmoi.ai:5001/analytics", {
         method: "GET",
       }).then((r) => r.json());
       
@@ -58,7 +61,10 @@ export async function GET(_request: NextRequest) {
   return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   const apiAuth = requireApiKey(_request.headers);
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {

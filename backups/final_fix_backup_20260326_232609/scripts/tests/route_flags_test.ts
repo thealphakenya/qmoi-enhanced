@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env node
-import fs from "fs";
-import path from "path";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
 const reportPath = path.resolve(".qmoi_validation/auth_triage_report.json");
 if (!fs.existsSync(reportPath)) {

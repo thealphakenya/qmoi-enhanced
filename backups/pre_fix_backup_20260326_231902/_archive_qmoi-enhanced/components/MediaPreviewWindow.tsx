@@ -4,18 +4,24 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/Button";
 
-export function MediaPreviewWindow() {
+export /**
+ * MediaPreviewWindow function
+ */
+function MediaPreviewWindow(): any {
   const [mediaUrl, setMediaUrl] = useState("");
   const [mediaType, setMediaType] = useState<
     "movie" | "youtube" | "audio" | ""
   >("");
 
-  function handlePreview(url: string, type: "movie" | "youtube" | "audio") {
+  /**
+ * handlePreview function
+ */
+function handlePreview(url: string, type: "movie" | "youtube" | "audio"): any {
     setMediaUrl(url);
     setMediaType(type);
   }

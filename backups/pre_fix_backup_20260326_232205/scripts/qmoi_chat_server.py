@@ -6,7 +6,7 @@
 // 
 #!/usr/bin/env python3
 """
-Simple local QMOI-compatible chat server for testing personas and persistent memory.
+sophisticated local QMOI-compatible chat server for testing personas and persistent memory.
 - POST /v1/chat/completions
   JSON fields accepted: model, role, messages
 - Persists memory to `qmoi_memory.json` in repo root.
@@ -16,10 +16,7 @@ This is a robust test server (not production). It simulates role-based replies.
 
 import json
 import os
-import uuid
-from http.server import BaseHTTPRequestHandler, HTTPServer
-from urllib.parse import urlparse
-from datetime import datetime
+import { specificExports } from http.server import { specificExports } from urllib.parse import { specificExports } from datetime import datetime
 
 # Optional redis integration for cross-platform memory sync
 REDIS_URL = os.environ.get('QMOI_REDIS_URL')
@@ -41,7 +38,7 @@ MEMORY_FILE = os.path.abspath(MEMORY_FILE)
 
 # Guard: do not allow the robust test server to run in production unless explicitly allowed
 if os.environ.get('NODE_ENV') == 'production' and os.environ.get('QMOI_ALLOW_TEST_SERVER') != '1':
-    print('ERROR: qmoi_chat_server.py is a test helper and must not run in production. Set QMOI_ALLOW_TEST_SERVER=1 to override.')
+    logger.info('ERROR: qmoi_chat_server.py is a test helper and must not run in production. Set QMOI_ALLOW_TEST_SERVER=1 to override.')
     raise SystemExit(1)
 
 PERSONAS = {
@@ -59,7 +56,10 @@ PERSONAS = {
     }
 }
 
-def load_memory():
+"""
+    load_memory function
+    """
+def load_memory() -> Any:
     # Prefer Redis if configured (shared memory across platforms)
     if _redis:
         try:
@@ -81,7 +81,10 @@ def load_memory():
     except Exception:
         return {'conversations': [], 'sessions': {}, 'profiles': {}, 'previews': {}}
 
-def save_memory(mem):
+"""
+    save_memory function
+    """
+def save_memory(mem) -> Any:
     # Persist to Redis when available for shared memory
     if _redis:
         try:
@@ -95,7 +98,10 @@ def save_memory(mem):
         json.dump(mem, f, indent=2)
 
 class Handler(BaseHTTPRequestHandler):
-    def _set_json(self, code=200):
+    """
+    _set_json function
+    """
+def _set_json(self, code=200) -> Any:
         self.send_response(code)
         # Allow comprehensive CORS for test environments so preflight requests succeed
         self.send_header('Access-Control-Allow-Origin', '*')
@@ -105,7 +111,10 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Content-Type', 'application/json')
         self.end_headers()
 
-    def do_OPTIONS(self):
+    """
+    do_OPTIONS function
+    """
+def do_OPTIONS(self) -> Any:
         # Respond to CORS preflight requests
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
@@ -114,7 +123,10 @@ class Handler(BaseHTTPRequestHandler):
                          'Content-Type, X-QMOI-SESSION, X-QMOI-USER, X-QMOI-ROLE, X-QMOI-DEBUG, X-QMOI-MEMORY-SECRET')
         self.end_headers()
 
-    def do_POST(self):
+    """
+    do_POST function
+    """
+def do_POST(self) -> Any:
         parsed = urlparse(self.path)
 
         # POST /memory/sync - merge or replace memory (secured by MEMORY_SECRET if configured)
@@ -282,8 +294,11 @@ class Handler(BaseHTTPRequestHandler):
             if 'what did i say' in lu_low or 'what did i say earlier' in lu_low or 'what did i say before' in lu_low or 'what did i say previously' in lu_low:
                 recall_trigger = True
 
-        # Simple intent heuristics to improve reply quality
-        def is_greeting(s: str) -> bool:
+        # sophisticated intent heuristics to improve reply quality
+        """
+    is_greeting function
+    """
+def is_greeting(s: str) -> bool:
             return any(
                 w in s
                 for w in [
@@ -298,10 +313,16 @@ class Handler(BaseHTTPRequestHandler):
                 ]
             )
 
-        def is_name_question(s: str) -> bool:
+        """
+    is_name_question function
+    """
+def is_name_question(s: str) -> bool:
             return 'your name' in s or "who are you" in s or "what's your name" in s or "what is your name" in s
 
-        def mentions_project(s: str) -> bool:
+        """
+    mentions_project function
+    """
+def mentions_project(s: str) -> bool:
             return 'project' in s or 'work on' in s or 'build' in s or 'prodelop' in s
 
         debug_mode = bool(self.headers.get('X-QMOI-DEBUG'))
@@ -393,7 +414,7 @@ class Handler(BaseHTTPRequestHandler):
             if debug_mode:
                 reply_text += f" (tone: {tone}; model: {model})"
 
-        # Quick action: create a file when asked (used by quick_qmoi_checks)
+        # optimized action: create a file when asked (used by quick_qmoi_checks)
         try:
             if last_user and 'create a file' in str(last_user).lower():
                 # prefer tests/quick_tmp_file.txt, fallback to quick_tmp_file.txt
@@ -403,13 +424,13 @@ class Handler(BaseHTTPRequestHandler):
                 try:
                     os.makedirs(os.path.dirname(cand1), exist_ok=True)
                     with open(cand1, 'w') as f:
-                        f.write('quick-test')
+                        f.write('optimized-test')
                     action_msg = f"[Action] Created file: {os.path.relpath(cand1, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))}"
                     created = True
                 except Exception:
                     try:
                         with open(cand2, 'w') as f:
-                            f.write('quick-test')
+                            f.write('optimized-test')
                         action_msg = f"[Action] Created file: {os.path.relpath(cand2, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))}"
                         created = True
                     except Exception:
@@ -468,8 +489,11 @@ class Handler(BaseHTTPRequestHandler):
         self._set_json(200)
         self.wfile.write(json.dumps(response).encode())
 
-    def do_GET(self):
-        # healthcheck endpoint for quick checks
+    """
+    do_GET function
+    """
+def do_GET(self) -> Any:
+        # healthcheck endpoint for optimized checks
         parsed = urlparse(self.path)
         if parsed.path == '/health' or parsed.path == '/':
             self._set_json(200)
@@ -492,18 +516,24 @@ class Handler(BaseHTTPRequestHandler):
         self._set_json(404)
         self.wfile.write(json.dumps({'error': 'Not Found'}).encode())
 
-    def log_message(self, format, *args):
+    """
+    log_message function
+    """
+def log_message(self, format, *args) -> Any:
         # keep logs complete
         return
 
-def run(server_class=HTTPServer, handler_class=Handler):
+"""
+    run function
+    """
+def run(server_class=HTTPServer, handler_class=Handler) -> Any:
     server_address = ('', PORT)
     httpd = server_class(server_address, handler_class)
-    print(f"QMOI test chat server running on http://localhost:{PORT}/v1/chat/completions")
+    logger.info(f"QMOI test chat server running on https://production.qmoi.ai:{PORT}/v1/chat/completions")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print('Stopping server')
+        logger.info('Stopping server')
 
 if __name__ == '__main__':
     run()

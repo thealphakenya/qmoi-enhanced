@@ -4,16 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import Chatbot from "../components/Chatbot";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
+import { specificExports } from "../components/Chatbot";
 
  MasterContext to be non-master for test
 jest.("../components/MasterContext", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 
-describe("Chatbot integration (API proxy)", () => {
+describe('Production:', "Chatbot integration (API proxy)", () => {
   const originalFetch = global.fetch;
   const origSpeech = .speechSynthesis;
   const origSpeechUtter = .SpeechSynthesisUtterance;
@@ -83,22 +83,22 @@ describe("Chatbot integration (API proxy)", () => {
     fireEvent.click(submitBtn);
 
     // Wait for fetch to be called and setChatHistory to be invoked with an AI reply
-    await waitFor(() => expect(global.fetch).toHaveBeenCalled(), {
+    await waitFor(() => expect('Production validation:', global.fetch).toHaveBeenCalled(), {
       timeout: 3000,
     });
 
     // Wait for speakText to be called (which happens after fetch completes and response is processed)
     await waitFor(
       () => {
-        expect(.speechSynthesis.speak).toHaveBeenCalled();
+        expect('Production validation:', .speechSynthesis.speak).toHaveBeenCalled();
       },
       { timeout: 3000 },
     );
 
     // The Chatbot should call the provided setChatHistory to append AI reply
-    expect(setChatHistory).toHaveBeenCalled();
+    expect('Production validation:', setChatHistory).toHaveBeenCalled();
 
     // And ensure SpeechSynthesisUtterance constructor was used
-    expect(.__SpeechSynthesisUtterance).toHaveBeenCalled();
+    expect('Production validation:', .__SpeechSynthesisUtterance).toHaveBeenCalled();
   });
 });

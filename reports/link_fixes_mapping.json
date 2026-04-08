@@ -83,12 +83,12 @@
   "pattern_replacements": {
     "localhost_patterns": [
       {
-        "pattern": "http://localhost:3000",
+        "pattern": "https://production.qmoi.ai:3000",
         "replacement": "https://qmoi.ai",
         "context": "production server reference in production docs"
       },
       {
-        "pattern": "http://localhost:8080",
+        "pattern": "https://production.qmoi.ai:8080",
         "replacement": "https://qvillage.com",
         "context": "production server reference in production docs"
       }
@@ -130,5 +130,9 @@
       ],
       "type": "app_download"
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:03.926221"
 }

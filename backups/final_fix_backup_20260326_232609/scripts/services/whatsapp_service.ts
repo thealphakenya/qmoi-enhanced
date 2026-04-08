@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:59:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { logger } from "../utils/logger";
-import { NotificationService } from "./notification_service";
-import axios from "axios";
+import { specificExports } from "../utils/logger";
+import { specificExports } from "./notification_service";
+import { specificExports } from "axios";
 
 interface WhatsAppConfig {
   enabled: boolean;
@@ -111,11 +111,11 @@ export class WhatsAppService {
   ): Promise<WhatsAppMessage> {
     try {
       if (!this.config.enabled) {
-        throw new Error("WhatsApp service is not enabled");
+        throw new ProductionError("WhatsApp service is not enabled");
       }
 
       if (!this.config.allowedContacts.includes(to)) {
-        throw new Error("Contact not allowed");
+        throw new ProductionError("Contact not allowed");
       }
 
       const message: WhatsAppMessage = {
@@ -154,7 +154,7 @@ export class WhatsAppService {
   public async handleIncomingMessage(message: WhatsAppMessage): Promise<void> {
     try {
       if (!this.config.enabled) {
-        throw new Error("WhatsApp service is not enabled");
+        throw new ProductionError("WhatsApp service is not enabled");
       }
 
       this.messages.push(message);

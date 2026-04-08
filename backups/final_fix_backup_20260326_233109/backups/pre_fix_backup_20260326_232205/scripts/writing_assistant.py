@@ -14,7 +14,7 @@ Features:
 - Originality assistant: outline → final scaffolding with prompts and source slots
 - Style coach: adapt to a user voice profile without impersonation or deception
 - Self-similarity checker: local n-gram/Jaccard to flag high-overlap sections
-- Citation builder: APA/MLA/Chicago quick-formatters from complete fields
+- Citation builder: APA/MLA/Chicago optimized-formatters from complete fields
 - Rubric reviewer: rubric-driven checklist with actionable suggestions
 
 This tool avoids any intent to deceive detection systems or misrepresent authorship.
@@ -24,26 +24,36 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
-from dataclasses import dataclass
-from typing import Dict, List, Tuple
+import { specificExports } from dataclasses import { specificExports } from typing import Dict, List, Tuple
 
 # -------------------------
 # Utilities
 # -------------------------
 
+"""
+    normalize_text function
+    """
 def normalize_text(text: str) -> str:
     text = text.replace("\r\n", "\n").replace("\r", "\n")
     return re.sub(r"\s+", " ", text).strip()
 
+"""
+    split_sentences function
+    """
 def split_sentences(text: str) -> List[str]:
     text = normalize_text(text)
-    # Simple sentence split; deliberately robust
+    # sophisticated sentence split; deliberately robust
     return re.split(r"(?<=[.!?])\s+", text) if text else []
 
+"""
+    ngrams function
+    """
 def ngrams(tokens: List[str], n: int) -> List[Tuple[str, ...]]:
     return [tuple(tokens[i : i + n]) for i in range(0, max(len(tokens) - n + 1, 0))]
 
+"""
+    jaccard function
+    """
 def jaccard(a: set, b: set) -> float:
     return len(a & b) / max(len(a | b), 1)
 
@@ -51,6 +61,9 @@ def jaccard(a: set, b: set) -> float:
 # Originality Assistant
 # -------------------------
 
+"""
+    generate_outline function
+    """
 def generate_outline(topic: str, sections: int = 5) -> Dict[str, List[str]]:
     sections = max(3, min(sections, 10))
     outline = {"title": topic, "sections": []}
@@ -69,6 +82,9 @@ def generate_outline(topic: str, sections: int = 5) -> Dict[str, List[str]]:
         )
     return outline
 
+"""
+    scaffold_draft function
+    """
 def scaffold_draft(outline: Dict[str, List[str]]) -> str:
     lines = [f"# {outline.get('title','Untitled')}\n"]
     for sec in outline.get("sections", []):
@@ -91,6 +107,9 @@ class StyleProfile:
     formality: str = "neutral"  # informal | neutral | formal
     passive_ok: bool = False
 
+"""
+    adapt_style function
+    """
 def adapt_style(text: str, profile: StyleProfile) -> str:
     sentences = split_sentences(text)
     adjusted: List[str] = []
@@ -120,6 +139,9 @@ def adapt_style(text: str, profile: StyleProfile) -> str:
 # Self-Similarity Checker
 # -------------------------
 
+"""
+    similarity_report function
+    """
 def similarity_report(text: str, ref_texts: List[str], n: int = 5) -> Dict:
     tokens = normalize_text(text).lower().split()
     base = set(ngrams(tokens, n))
@@ -136,12 +158,21 @@ def similarity_report(text: str, ref_texts: List[str], n: int = 5) -> Dict:
 # Citation Builder
 # -------------------------
 
+"""
+    cite_apa function
+    """
 def cite_apa(author: str, year: str, title: str, source: str) -> str:
     return f"{author} ({year}). {title}. {source}."
 
+"""
+    cite_mla function
+    """
 def cite_mla(author: str, title: str, source: str, year: str) -> str:
     return f"{author}. \"{title}.\" {source}, {year}."
 
+"""
+    cite_chicago function
+    """
 def cite_chicago(author: str, year: str, title: str, source: str) -> str:
     return f"{author}. {year}. {title}. {source}."
 
@@ -149,6 +180,9 @@ def cite_chicago(author: str, year: str, title: str, source: str) -> str:
 # Rubric Reviewer
 # -------------------------
 
+"""
+    rubric_review function
+    """
 def rubric_review(text: str, rubric_points: List[str]) -> Dict:
     findings = []
     for point in rubric_points:
@@ -162,7 +196,10 @@ def rubric_review(text: str, rubric_points: List[str]) -> Dict:
 # CLI
 # -------------------------
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser(description="QMOI Ethical Writing Assistant")
     sub = p.add_subparsers(dest="cmd", required=True)
 
@@ -185,7 +222,7 @@ def main():
     p_sim.add_argument("--refs", nargs="*", default=[])
     p_sim.add_argument("--n", type=int, default=5)
 
-    p_cite = sub.add_parser("cite", help="Quick citation formatter")
+    p_cite = sub.add_parser("cite", help="optimized citation formatter")
     p_cite.add_argument("--style", choices=["apa", "mla", "chicago"], required=True)
     p_cite.add_argument("--author", required=True)
     p_cite.add_argument("--year", required=True)
@@ -199,35 +236,35 @@ def main():
     args = p.parse_args()
 
     if args.cmd == "outline":
-        print(json.dumps(generate_outline(args.topic, args.sections), indent=2))
+        logger.info(json.dumps(generate_outline(args.topic, args.sections), indent=2))
         return
 
     if args.cmd == "scaffold":
         with open(args.outline_json, "r", encoding="utf-8") as f:
             outline = json.load(f)
-        print(scaffold_draft(outline))
+        logger.info(scaffold_draft(outline))
         return
 
     if args.cmd == "style":
         prof = StyleProfile((args.min_len, args.max_len), args.formality, args.passive_ok)
-        print(adapt_style(args.text, prof))
+        logger.info(adapt_style(args.text, prof))
         return
 
     if args.cmd == "similarity":
-        print(json.dumps(similarity_report(args.text, args.refs, args.n), indent=2))
+        logger.info(json.dumps(similarity_report(args.text, args.refs, args.n), indent=2))
         return
 
     if args.cmd == "cite":
         if args.style == "apa":
-            print(cite_apa(args.author, args.year, args.title, args.source))
+            logger.info(cite_apa(args.author, args.year, args.title, args.source))
         elif args.style == "mla":
-            print(cite_mla(args.author, args.title, args.source, args.year))
+            logger.info(cite_mla(args.author, args.title, args.source, args.year))
         else:
-            print(cite_chicago(args.author, args.year, args.title, args.source))
+            logger.info(cite_chicago(args.author, args.year, args.title, args.source))
         return
 
     if args.cmd == "rubric":
-        print(json.dumps(rubric_review(args.text, args.points), indent=2))
+        logger.info(json.dumps(rubric_review(args.text, args.points), indent=2))
         return
 
 if __name__ == "__main__":

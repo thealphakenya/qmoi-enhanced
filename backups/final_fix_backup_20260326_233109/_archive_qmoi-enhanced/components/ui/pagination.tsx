@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import * as React from "react";
-import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { specificExports } from "@/lib/utils";
 // Production implementation:: Refactor to use MUI Button if needed
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
@@ -40,7 +40,7 @@ const PaginationItem = React.forwardRef<
 ));
 PaginationItem.displayName = "PaginationItem";
 
-import Button from "@mui/material/Button";
+import { specificExports } from "@mui/material/Button";
 type PaginationLinkProps = {
   isActive?: boolean;
   className?: string;

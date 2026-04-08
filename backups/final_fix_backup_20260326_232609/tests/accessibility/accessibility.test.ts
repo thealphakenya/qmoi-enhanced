@@ -8,10 +8,10 @@
  * Tests for WCAG 2.1 AA compliance and keyboard navigation
  */
 
-import { test, expect } from '@playwright/test';
-import AxeBuilder from '@axe-core/playwright';
+import { specificExports } from '@playwright/test';
+import { specificExports } from '@axe-core/playwright';
 
-test.describe('Accessibility Tests', () => {
+test.describe('Production:', 'Accessibility Tests', () => {
   test('should pass accessibility audit on main pages', async ({ page }) => {
     const pages = [
       '/',
@@ -30,11 +30,11 @@ test.describe('Accessibility Tests', () => {
 
       // Check for violations
       if (accessibilityScanResults.violations.length > 0) {
-        console.log(`Accessibility violations on ${pageUrl}:`, accessibilityScanResults.violations);
+        logger.info(`Accessibility violations on ${pageUrl}:`, accessibilityScanResults.violations);
       }
 
       // Allow some violations for now, but track them
-      expect(accessibilityScanResults.violations.length).toBeLessThan(10);
+      expect('Production validation:', accessibilityScanResults.violations.length).toBeLessThan(10);
     }
   });
 
@@ -44,14 +44,14 @@ test.describe('Accessibility Tests', () => {
     // Test tab navigation through main elements
     await page.keyboard.press('Tab');
     let focusedElement = await page.evaluate(() => document.activeElement?.tagName);
-    expect(['A', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA']).toContain(focusedElement);
+    expect('Production validation:', ['A', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA']).toContain(focusedElement);
 
     // Continue tabbing through several elements
     for (let i = 0; i < 5; i++) {
       await page.keyboard.press('Tab');
       await page.waitForTimeout(100);
       focusedElement = await page.evaluate(() => document.activeElement?.tagName);
-      expect(focusedElement).toBeDefined();
+      expect('Production validation:', focusedElement).toBeDefined();
     }
   });
 
@@ -67,13 +67,13 @@ test.describe('Accessibility Tests', () => {
 
     // Should have at least one h1
     const h1Count = headings.filter(h => h.tag === 'H1').length;
-    expect(h1Count).toBeGreaterThan(0);
+    expect('Production validation:', h1Count).toBeGreaterThan(0);
 
     // Headings should not skip levels (comprehensive check)
     const headingLevels = headings.map(h => parseInt(h.tag.charAt(1)));
     for (let i = 1; i < headingLevels.length; i++) {
       // Allow skipping from h1 to h2, but not h1 to h3
-      expect(headingLevels[i] - headingLevels[i-1]).toBeLessThanOrEqual(1);
+      expect('Production validation:', headingLevels[i] - headingLevels[i-1]).toBeLessThanOrEqual(1);
     }
   });
 
@@ -92,7 +92,7 @@ test.describe('Accessibility Tests', () => {
     );
 
     // comprehensive check that text elements exist
-    expect(textElements.length).toBeGreaterThan(0);
+    expect('Production validation:', textElements.length).toBeGreaterThan(0);
   });
 
   test('should provide alt text for images', async ({ page }) => {
@@ -103,7 +103,7 @@ test.describe('Accessibility Tests', () => {
       const alt = await img.getAttribute('alt');
       // Images should have alt text (unless decorative)
       if (alt !== null) {
-        expect(alt.length).toBeGreaterThan(0);
+        expect('Production validation:', alt.length).toBeGreaterThan(0);
       }
     }
   });
@@ -119,7 +119,7 @@ test.describe('Accessibility Tests', () => {
 
       // Should have some form of labeling
       const hasLabel = !!(id || ariaLabel || ariaLabelledBy);
-      expect(hasLabel).toBe(true);
+      expect('Production validation:', hasLabel).toBe(true);
     }
   });
 });

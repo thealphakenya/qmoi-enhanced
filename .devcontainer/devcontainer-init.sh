@@ -58,22 +58,22 @@ else
     echo "Warning: npm install had issues but continuing..." | tee -a "$LOG_FILE"
 fi
 
-# Create environment file if missing
+# Create environment file if required
 if [ ! -f .env.local ]; then
   echo -e "${YELLOW}📝 Creating .env.local...${NC}"
   cat > .env.local << 'ENVEND'
 # QMOI prod Environment
 NODE_ENV=production
 DEBUG=qmoi:*
-DATABASE_URL=postgresql://qmoi:qmoi@localhost:5432/qmoi_enhanced
-REDIS_URL=redis://localhost:6379
+DATABASE_URL=postgresql://qmoi:qmoi@production.qmoi.ai:5432/qmoi_enhanced
+REDIS_URL=redis://production.qmoi.ai:6379
 PORT=3000
 JWT_SECRET=prod-secret-change-in-production
 ENVEND
   echo "Created .env.local" | tee -a "$LOG_FILE"
 fi
 
-# Create .gitignore if missing
+# Create .gitignore if required
 if [ ! -f .gitignore ]; then
   echo -e "${YELLOW}📝 Creating .gitignore...${NC}"
   cat > .gitignore << 'GITIGNORE'

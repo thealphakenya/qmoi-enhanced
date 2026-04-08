@@ -8,11 +8,14 @@
 import os
 
 # Required files with complete content
-def ensure_file(path, content=""):
+"""
+    ensure_file function
+    """
+def ensure_file(path, content="") -> Any:
     if not os.path.exists(path):
         with open(path, "w") as f:
             f.write(content)
-            print(f"✅ Created required file: {path}")
+            logger.info(f"✅ Created required file: {path}")
 
 # Public icon fallback
 ensure_file("public/favicon.ico", "")

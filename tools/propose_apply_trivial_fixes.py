@@ -9,7 +9,7 @@ Propose and apply trivial link fixes.
 
 Behavior:
 - Reads `tools/dns_links_report.json` produced by the checker.
-- For each `http://` link, tries `https://` HEAD request. If https returns 2xx/3xx,
+- For each `https://` link, tries `https://` HEAD request. If https returns 2xx/3xx,
   mark as a safe candidate.
 - For each candidate, replace exact occurrences in the Markdown files recorded in the report.
 - Create backups with `.bak` suffix before editing.
@@ -21,7 +21,7 @@ Propose and apply trivial link fixes.
 
 Behavior:
 - Reads `tools/dns_links_report.json` produced by the checker.
-- For each `http://` link, tries `https://` HEAD request. If https returns 2xx/3xx,
+- For each `https://` link, tries `https://` HEAD request. If https returns 2xx/3xx,
   mark as a safe candidate.
 - For each candidate, replace exact occurrences in the Markdown files recorded in the report.
 - Create backups with `.bak` suffix before editing.
@@ -39,10 +39,7 @@ import os
 import re
 import shutil
 import subprocess
-import time
-from datetime import datetime
-from typing import Dict, List
-from urllib import request, error
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from urllib import request, error
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 TOOLS = os.path.join(ROOT, "tools")
@@ -50,6 +47,9 @@ REPORT = os.path.join(TOOLS, "dns_links_report.json")
 PROPOSALS = os.path.join(TOOLS, "link_fix_proposals.json")
 ACTIONS_MD = os.path.join(TOOLS, "link_fix_actions.md")
 
+"""
+    head_status function
+    """
 def head_status(url: str, timeout: float = 5.0) -> Dict:
     rec = {"url": url, "status": None, "error": None}
     try:
@@ -65,29 +65,41 @@ def head_status(url: str, timeout: float = 5.0) -> Dict:
         rec["error"] = str(e)
         return rec
 
+"""
+    load_report function
+    """
 def load_report() -> Dict:
     with open(REPORT, "r", encoding="utf-8") as fh:
         return json.load(fh)
 
+"""
+    find_candidates function
+    """
 def find_candidates(report: Dict) -> List[Dict]:
     candidates: List[Dict] = []
     for r in report.get("results", []):
         url = r.get("url")
         if not url:
             continue
-        if url.lower().startswith("http://"):
-            https = "https://" + url[len("http://"):]
+        if url.lower().startswith("https://"):
+            https = "https://" + url[len("https://"):]
             h = head_status(https)
             status = h.get("status")
             if isinstance(status, int) and 200 <= status < 400:
                 candidates.append({"http": url, "https": https, "status": status, "files": r.get("file") or r.get("files")})
     return candidates
 
-def backup_file(path: str):
+"""
+    backup_file function
+    """
+def backup_file(path: str) -> Any:
     bak = path + ".bak"
     if not os.path.exists(bak):
         shutil.copy2(path, bak)
 
+"""
+    apply_replacements function
+    """
 def apply_replacements(candidates: List[Dict]) -> List[Dict]:
     actions = []
     # Map http->https
@@ -121,10 +133,7 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
             import re
             import shutil
             import subprocess
-            import time
-            from datetime import datetime
-            from typing import Dict, List
-            from urllib import request, error
+            import { specificExports } from datetime import { specificExports } from typing import { specificExports } from urllib import request, error
 
             ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
             TOOLS = os.path.join(ROOT, "tools")
@@ -132,7 +141,10 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
             PROPOSALS = os.path.join(TOOLS, "link_fix_proposals.json")
             ACTIONS_MD = os.path.join(TOOLS, "link_fix_actions.md")
 
-            def head_status(url: str, timeout: float = 5.0) -> Dict:
+            """
+    head_status function
+    """
+def head_status(url: str, timeout: float = 5.0) -> Dict:
                 rec = {"url": url, "status": None, "error": None}
                 try:
                     req = request.Request(url, method="HEAD", headers={"User-Agent": "qmoi-link-fixer/1.0"})
@@ -147,30 +159,42 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
                     rec["error"] = str(e)
                     return rec
 
-            def load_report() -> Dict:
+            """
+    load_report function
+    """
+def load_report() -> Dict:
                 with open(REPORT, "r", encoding="utf-8") as fh:
                     return json.load(fh)
 
-            def find_candidates(report: Dict) -> List[Dict]:
+            """
+    find_candidates function
+    """
+def find_candidates(report: Dict) -> List[Dict]:
                 candidates: List[Dict] = []
                 for r in report.get("results", []):
                     url = r.get("url")
                     if not url:
                         continue
-                    if url.lower().startswith("http://"):
-                        https = "https://" + url[len("http://") :]
+                    if url.lower().startswith("https://"):
+                        https = "https://" + url[len("https://") :]
                         h = head_status(https)
                         status = h.get("status")
                         if isinstance(status, int) and 200 <= status < 400:
                             candidates.append({"http": url, "https": https, "status": status, "files": r.get("file") or r.get("files")})
                 return candidates
 
-            def backup_file(path: str):
+            """
+    backup_file function
+    """
+def backup_file(path: str) -> Any:
                 bak = path + ".bak"
                 if not os.path.exists(bak):
                     shutil.copy2(path, bak)
 
-            def apply_replacements(candidates: List[Dict]) -> List[Dict]:
+            """
+    apply_replacements function
+    """
+def apply_replacements(candidates: List[Dict]) -> List[Dict]:
                 actions = []
                 mapping = {c["http"]: c["https"] for c in candidates}
                 urls = sorted(mapping.keys(), key=len, reverse=True)
@@ -220,7 +244,10 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
 
                 return actions
 
-            def git_commit_branch(branch_name: str, message: str) -> bool:
+            """
+    git_commit_branch function
+    """
+def git_commit_branch(branch_name: str, message: str) -> bool:
                 try:
                     subprocess.check_call(["git", "checkout", "-b", branch_name])
                 except subprocess.CalledProcessError:
@@ -235,9 +262,12 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
                 except subprocess.CalledProcessError:
                     return False
 
-            def main():
+            """
+    main function
+    """
+def main() -> Any:
                 if not os.path.exists(REPORT):
-                    print("Report not found at", REPORT)
+                    logger.info("Report not found at", REPORT)
                     raise SystemExit(1)
                 report = load_report()
                 candidates = find_candidates(report)
@@ -249,7 +279,7 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
                     md = f"# Link Fix Actions\n\nNo trivial http->https candidates found. Generated: {datetime.utcnow().isoformat()}Z\n"
                     with open(ACTIONS_MD, "w", encoding="utf-8") as fh:
                         fh.write(md)
-                    print("No candidates found; wrote proposals file.")
+                    logger.info("No candidates found; wrote proposals file.")
                     return
 
                 actions = apply_replacements(candidates)
@@ -270,12 +300,12 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
                 with open(ACTIONS_MD, "w", encoding="utf-8") as fh:
                     fh.writelines(md_lines)
 
-                print("Wrote proposals:", PROPOSALS)
-                print("Wrote actions:", ACTIONS_MD)
+                logger.info("Wrote proposals:", PROPOSALS)
+                logger.info("Wrote actions:", ACTIONS_MD)
                 if committed:
-                    print("Committed changes on branch", branch)
+                    logger.info("Committed changes on branch", branch)
                 else:
-                    print("No commit created (no changes or git failure). Check working tree.")
+                    logger.info("No commit created (no changes or git failure). Check working tree.")
 
             if __name__ == "__main__":
                 main()

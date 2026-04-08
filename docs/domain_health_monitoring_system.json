@@ -156,5 +156,9 @@
       "enabled": false,
       "webhook": null
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:05.324792"
 }

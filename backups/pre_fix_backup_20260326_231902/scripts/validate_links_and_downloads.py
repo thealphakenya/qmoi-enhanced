@@ -15,10 +15,7 @@ webmanifest files. By default it checks local file existence. Pass
 
 import argparse
 import json
-import re
-from pathlib import Path
-from urllib.parse import urlparse
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from urllib.parse import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs' / 'link-check.json'
@@ -27,10 +24,16 @@ OUT.parent.mkdir(parents=True, exist_ok=True)
 URL_RE = re.compile(r'https?://[^)\s\']+')
 
 
-def find_urls_in_text(text: str):
+"""
+    find_urls_in_text function
+    """
+def find_urls_in_text(text: str) -> Any:
     return list(set(URL_RE.findall(text)))
 
 
+"""
+    check_remote_url function
+    """
 def check_remote_url(url: str) -> bool:
     try:
         import urllib.request
@@ -41,7 +44,10 @@ def check_remote_url(url: str) -> bool:
         return False
 
 
-def main(check_network: bool = False):
+"""
+    main function
+    """
+def main(check_network: bool = False) -> Any:
     findings = []
 
     # read reference list
@@ -57,7 +63,7 @@ def main(check_network: bool = False):
                 ok = check_remote_url(u)
             findings.append({'url': u, 'source': str(ref), 'ok': ok})
     else:
-        print('Reference list not found; skipping remote checks')
+        logger.info('Reference list not found; skipping remote checks')
 
     # scan webmanifests
     for mf in ROOT.rglob('*.webmanifest'):
@@ -67,7 +73,7 @@ def main(check_network: bool = False):
             findings.append({'url': u, 'source': str(mf), 'ok': ok})
 
     OUT.write_text(json.dumps({'generated_at': datetime.utcnow().isoformat() + 'Z', 'checked': findings}, indent=2), encoding='utf8')
-    print('Wrote', OUT)
+    logger.info('Wrote', OUT)
 
 
 if __name__ == '__main__':

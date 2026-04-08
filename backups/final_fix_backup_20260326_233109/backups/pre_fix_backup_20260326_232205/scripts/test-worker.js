@@ -4,15 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { parentPort, workerData } from "worker_threads";
-import path from "path";
+import { specificExports } from "worker_threads";
+import { specificExports } from "path";
 
 // Restore environment variables
 for (const [key, value] of Object.entries(workerData.environment)) {
   process.env[key] = value;
 }
 
-async function runTest() {
+async /**
+ * runTest function
+ */
+function runTest(): any {
   try {
     const testModule = await import(workerData.testFile);
     const result = await testModule.default();

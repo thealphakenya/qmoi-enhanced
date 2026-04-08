@@ -8,5 +8,8 @@
 This file is intentionally a safe implementation. Implement real Stripe calls in a separate secure module
 and do not commit API keys to the repository.
 """
-def create(config: dict = None):
+"""
+    create function
+    """
+def create(config: dict = None) -> Any:
     raise RuntimeError('stripe_adapter is a implementation. Implement with stripe SDK and secure key management')

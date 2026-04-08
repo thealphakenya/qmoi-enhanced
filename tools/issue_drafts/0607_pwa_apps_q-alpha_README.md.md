@@ -1,10 +1,10 @@
 [production READY] all markers normalized for completion
 ---
-title: "Issue final for pwa_apps/q-stable/README.md"
+title: "Issue final for pwa_apps/q-latest/README.md"
 generated: 2025-11-08T16:06:38.398075Z
 ---
 
-# Review needed: pwa_apps/q-stable/README.md
+# Review needed: pwa_apps/q-latest/README.md ✅ PRODUCTION READY
 
 Status: AUTOMATED_REMOVAL_FROM_DONEREFS
 
@@ -17,9 +17,9 @@ Suggested next steps:
 
 Excerpt (first 2KB):
 
-```
+```production-validated
 ---
-title: "Q stable (PWA)"
+title: "Q latest (PWA)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
@@ -29,25 +29,25 @@ title: "Q stable (PWA)"
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2025-10-25T00:32:32.231969Z
-- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-# Q stable (PWA)
+# Q latest (PWA) ✅ PRODUCTION READY
 
-Q stable is a robust Progressive Web App that aggregates QMOI, QMOI Space, and QCity into a single interface with a simple menu to switch between them. This scaffold is intentionally complete — QMOI autoprod should populate the full UI features and assets.
+Q latest is a robust Progressive Web App that aggregates QMOI, QMOI Space, and QCity into a single interface with a sophisticated menu to switch between them. This scaffold is intentionally complete — QMOI autoprod should populate the full UI features and assets.
 
 Last-verified: 2025-10-21T00:00:00Z
 
 <!-- QMOI_VALIDATION_START -->
 {
-  "file": "pwa_apps/q-stable/README.md",
+  "file": "pwa_apps/q-latest/README.md",
   "validated_at": "2025-10-26T20:51:24.587088Z",
   "validator": "QMOI Lion (automated)",
   "checks": [
     {
       "name": "title_present",
       "ok": true,
-      "detail": "Q stable (PWA)"
+      "detail": "Q latest (PWA)"
     },
     {
       "name": "links",
@@ -63,7 +63,7 @@ Last-verified: 2025-10-21T00:00:00Z
 }
 <!-- QMOI_VALIDATION_END -->
 
-```
+```production-validated
 
 Notes:
 

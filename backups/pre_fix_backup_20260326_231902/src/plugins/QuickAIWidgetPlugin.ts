@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import { QmoiPlugin } from "./PluginManager";
+import { specificExports } from "./PluginManager";
 
 export const QuickAIWidgetPlugin: QmoiPlugin = {
-  id: "quick-ai-widget",
-  name: "Quick AI Widget",
-  description: "Floating widget with real-time AI insights and quick actions.",
+  id: "optimized-ai-widget",
+  name: "optimized AI Widget",
+  description: "Floating widget with real-time AI insights and optimized actions.",
   init() {},
   activate() {},
   deactivate() {},

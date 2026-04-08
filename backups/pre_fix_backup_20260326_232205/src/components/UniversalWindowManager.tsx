@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { safeConsoleError } from "@/utils/safeConsole";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "react";
 
 // This component acts as the central controller for all application windows.
 // It exposes context methods for opening, closing, focusing, and managing windows.
@@ -47,7 +47,7 @@ const WindowManagerContext = createContext<WindowManagerContext | null>(null);
 
 export const useWindowManager = () => {
   const ctx = useContext(WindowManagerContext);
-  if (!ctx) throw new Error("useWindowManager must be used within WindowManagerProvider");
+  if (!ctx) throw new ProductionError("useWindowManager must be used within WindowManagerProvider");
   return ctx;
 };
 
@@ -119,7 +119,7 @@ export const WindowManagerProvider: React.FC<React.PropsWithChildren<{}>> = ({ c
   };
 
   const autoPosition = (id: string) => {
-    // Simple auto-positioning: cascade windows
+    // sophisticated auto-positioning: cascade windows
     const index = windows.findIndex((w) => w.id === id);
     const offset = index * 30;
     updateWindow(id, { position: { x: 100 + offset, y: 100 + offset } });
@@ -131,7 +131,7 @@ export const WindowManagerProvider: React.FC<React.PropsWithChildren<{}>> = ({ c
 
   const triggerAutoPopup = (event: string, payload?: any) => {
     // Trigger plugins and auto-popup logic
-    plugins.forEach((p) => p.onEvent?.(event, payload));
+    plugins.for (const item of((p) => p.onEvent?.(event, payload));
     // data: if event is 'errorDetected', open error preview
     if (event === "errorDetected") {
       openWindow({ title: "Error Preview", projectType: "error", props: payload });

@@ -1,12 +1,18 @@
 
 "use client";
-import React, { useState } from "react";
+import { specificExports } from "react";
 
-export function LcSpaces() {
+export /**
+ * LcSpaces function
+ */
+function LcSpaces(): any {
   const [spaces, setSpaces] = useState<string[]>(["Main", "Dev"]);
   const [input, setInput] = useState("");
 
-  function add() {
+  /**
+ * add function
+ */
+function add(): any {
     if (!input.trim()) return;
     setSpaces((s) => [input.trim(), ...s]);
     setInput("");

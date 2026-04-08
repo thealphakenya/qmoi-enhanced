@@ -9,12 +9,13 @@ import os
 import sys
 import time
 import argparse
-import subprocess
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 
 class UIFeaturesDeploymentDeployer:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.dry_run = False
         self.verbose = False
         
@@ -34,12 +35,18 @@ class UIFeaturesDeploymentDeployer:
                 status.get("ssl_status") == "✅ Provisioned"):
                 self.domains_to_process.append(domain)
     
-    def log(self, message: str):
+    """
+    log function
+    """
+def log(self, message: str) -> Any:
         """Log message with timestamp"""
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        print(f"[{timestamp}] {message}")
+        logger.info(f"[{timestamp}] {message}")
     
-    def validate_environment(self) -> bool:
+    """
+    validate_environment function
+    """
+def validate_environment(self) -> bool:
         """Validate UI features deployment environment"""
         self.log("🔍 Validating UI features deployment environment...")
         
@@ -52,7 +59,10 @@ class UIFeaturesDeploymentDeployer:
         self.log("✅ UI features deployment environment validation passed")
         return True
     
-    def get_ui_features_for_domain(self, domain: str) -> dict:
+    """
+    get_ui_features_for_domain function
+    """
+def get_ui_features_for_domain(self, domain: str) -> dict:
         """Get UI features configuration for a domain"""
         base_domain = domain.split('/')[0]
         
@@ -104,7 +114,10 @@ class UIFeaturesDeploymentDeployer:
             
         return ui_config
     
-    def deploy_ui_features(self, domain: str) -> bool:
+    """
+    deploy_ui_features function
+    """
+def deploy_ui_features(self, domain: str) -> bool:
         """Deploy UI features for a domain"""
         if self.dry_run:
             self.log(f"🔍 DRY RUN: Would deploy UI features for {domain}")
@@ -127,7 +140,10 @@ class UIFeaturesDeploymentDeployer:
             self.log(f"❌ UI features deployment failed for {domain}")
             return False
     
-    def validate_ui_coverage(self, domain: str) -> bool:
+    """
+    validate_ui_coverage function
+    """
+def validate_ui_coverage(self, domain: str) -> bool:
         """Validate UI feature coverage meets minimum requirements"""
         base_domain = domain.split('/')[0]
         ui_config = self.get_ui_features_for_domain(domain)
@@ -146,7 +162,10 @@ class UIFeaturesDeploymentDeployer:
             self.log(f"❌ UI coverage insufficient for {base_domain} ({coverage}% < {ui_config['min_coverage']}%)")
             return False
     
-    def update_deployment_status(self, domain: str, ui_status: str, coverage: str = "0%"):
+    """
+    update_deployment_status function
+    """
+def update_deployment_status(self, domain: str, ui_status: str, coverage: str = "0%") -> Any:
         """Update UI features deployment status for a domain"""
         if domain in self.status["deployment_status_by_domain"]:
             self.status["deployment_status_by_domain"][domain]["ui_features_status"] = ui_status
@@ -163,7 +182,10 @@ class UIFeaturesDeploymentDeployer:
         with open(self.status_file, 'w') as f:
             json.dump(self.status, f, indent=2)
     
-    def run_deployment(self):
+    """
+    run_deployment function
+    """
+def run_deployment(self) -> Any:
         """Run UI features deployment for all domains with successful DNS and SSL"""
         self.log("🎨 Starting UI Features Deployment")
         self.log(f"📊 Domains ready for UI deployment: {len(self.domains_to_process)}")
@@ -242,7 +264,10 @@ class UIFeaturesDeploymentDeployer:
             return False
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='Deploy UI features for QMOI domains')
     parser.add_argument('--all-domains', action='store_true', help='Deploy UI features for all domains with DNS+SSL')
     parser.add_argument('--responsive', action='store_true', help='Ensure responsive design')
@@ -253,7 +278,7 @@ def main():
     args = parser.parse_args()
     
     if not args.dry_run and not args.execute:
-        print("❌ Must specify --dry-run or --execute")
+        logger.info("❌ Must specify --dry-run or --execute")
         sys.exit(1)
     
     deployer = UIFeaturesDeploymentDeployer()

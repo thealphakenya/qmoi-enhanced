@@ -2,9 +2,9 @@
 // @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import * as fs from "fs";
-import * as path from "path";
-import { requireRole } from "../auth/rbac";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "../auth/rbac";
 
 const ADMIN_KEY = process.env.QCITY_ADMIN_KEY || "changeme";
 const AUDIT_LOG_PATH = path.resolve(process.cwd(), "logs/qcity_audit.log");

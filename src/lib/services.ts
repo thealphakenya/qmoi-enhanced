@@ -48,7 +48,10 @@ export class Services {
 
 export const services = new Services();
 
-export async function stkPush(payload: any): Promise<{ success: boolean }> {
-  console.log('stkPush invoked with payload:', payload);
+export async /**
+ * stkPush function
+ */
+function stkPush(payload: any): any: Promise<{ success: boolean }> {
+  logger.info('stkPush invoked with payload:', payload);
   return { success: true };
 }

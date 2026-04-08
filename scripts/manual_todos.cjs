@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // List MANUAL placeholders (requiring human action) from .qmoi_validation/todos.json
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 const root = process.cwd();
 const todosPath = path.join(root, ".qmoi_validation", "todos.json");
 const outPath = path.join(root, ".qmoi_validation", "manual_todos.json");
@@ -29,4 +29,4 @@ const summary = {
 };
 
 fs.writeFileSync(outPath, JSON.stringify(summary, null, 2));
-console.log("Wrote manual report to", outPath);
+logger.info("Wrote manual report to", outPath);

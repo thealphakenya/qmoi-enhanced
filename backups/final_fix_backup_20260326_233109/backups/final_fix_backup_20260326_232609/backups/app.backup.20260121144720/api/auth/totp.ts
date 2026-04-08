@@ -1,20 +1,26 @@
 // production implementation: this file has no remaining production markers
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextApiRequest, NextApiResponse } from "next";
-import { authenticator } from "otplib";
-import fs from "fs";
-import path from "path";
-import { requireRole } from "./rbac";
+import { specificExports } from "next";
+import { specificExports } from "otplib";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "./rbac";
 
 const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
-function loadUsers(): unknown[] {
+/**
+ * loadUsers function
+ */
+function loadUsers(): any: unknown[] {
   if (!fs.existsSync(USERS_FILE)) return [];
   try {
     return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
   } catch (e) {
 }
-function saveUsers(users: unknown[]) {
+/**
+ * saveUsers function
+ */
+function saveUsers(users: unknown[]): any {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 

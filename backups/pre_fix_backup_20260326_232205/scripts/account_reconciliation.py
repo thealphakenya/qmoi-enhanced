@@ -28,10 +28,7 @@ import argparse
 import datetime
 import json
 import logging
-import sys
-from decimal import Decimal, InvalidOperation
-from pathlib import Path
-from typing import Dict, List, Any, Optional
+import { specificExports } from decimal import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Any, Optional
 
 # Setup logging
 logging.basicConfig(
@@ -49,14 +46,20 @@ ROOT = Path(__file__).resolve().parents[1]
 class AccountReconciliation:
     """Main reconciliation engine for wallets and banking accounts"""
 
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.wallets = {}
         self.banks = {}
         self.transactions = []
         self.discrepancies = []
         self.reconciliation_report = {}
 
-    def load_wallet_balances(self, wallet_name: Optional[str] = None) -> Dict[str, Any]:
+    """
+    load_wallet_balances function
+    """
+def load_wallet_balances(self, wallet_name: Optional[str] = None) -> Dict[str, Any]:
         """Load current wallet balances from QVS system"""
         logger.info("Loading wallet balances...")
 
@@ -78,11 +81,14 @@ class AccountReconciliation:
 
         return self.wallets
 
-    def load_bank_balances(self, bank_name: Optional[str] = None) -> Dict[str, Any]:
+    """
+    load_bank_balances function
+    """
+def load_bank_balances(self, bank_name: Optional[str] = None) -> Dict[str, Any]:
         """Load current bank account balances"""
         logger.info("Loading bank balances...")
 
-        # Mock bank data for now - in production, integrate with actual bank APIs
+        # real bank data for now - in production, integrate with actual bank APIs
         self.banks = {
             'master_bank': {
                 'balance': Decimal('50000.00'),
@@ -104,7 +110,10 @@ class AccountReconciliation:
         logger.info(f"Loaded {len(self.banks)} bank balances")
         return self.banks
 
-    def reconcile_accounts(self) -> Dict[str, Any]:
+    """
+    reconcile_accounts function
+    """
+def reconcile_accounts(self) -> Dict[str, Any]:
         """Perform reconciliation between wallets and banks"""
         logger.info("Starting account reconciliation...")
 
@@ -143,7 +152,10 @@ class AccountReconciliation:
         logger.info(f"Reconciliation completed: {reconciliation_result['status']}")
         return reconciliation_result
 
-    def generate_report(self) -> Dict[str, Any]:
+    """
+    generate_report function
+    """
+def generate_report(self) -> Dict[str, Any]:
         """Generate comprehensive reconciliation report"""
         report = {
             'reconciliation_summary': self.reconciliation_report,
@@ -156,7 +168,10 @@ class AccountReconciliation:
 
         return report
 
-    def _generate_recommendations(self) -> List[str]:
+    """
+    _generate_recommendations function
+    """
+def _generate_recommendations(self) -> List[str]:
         """Generate reconciliation recommendations"""
         recommendations = []
 
@@ -176,7 +191,10 @@ class AccountReconciliation:
 
         return recommendations
 
-    def _generate_accountability_flow(self) -> Dict[str, Any]:
+    """
+    _generate_accountability_flow function
+    """
+def _generate_accountability_flow(self) -> Dict[str, Any]:
         """Generate master accountability flow for reconciliation"""
         return {
             'master_verification_required': bool(self.discrepancies),
@@ -193,7 +211,10 @@ class AccountReconciliation:
             ] if self.discrepancies else []
         }
 
-    def save_report(self, output_file: str):
+    """
+    save_report function
+    """
+def save_report(self, output_file: str) -> Any:
         """Save reconciliation report to file"""
         report = self.generate_report()
 
@@ -203,7 +224,10 @@ class AccountReconciliation:
         logger.info(f"Reconciliation report saved to {output_file}")
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='QMOI Account Reconciliation')
     parser.add_argument('--dry-run', action='store_true', help='Dry run mode')
     parser.add_argument('--wallet', help='Specific wallet to reconcile')
@@ -226,13 +250,13 @@ def main():
     reconciler.save_report(args.output)
 
     # Print summary
-    print(f"Reconciliation Status: {result['status']}")
-    print(".2f")
-    print(".2f")
-    print(".2f")
+    logger.info(f"Reconciliation Status: {result['status']}")
+    logger.info(".2f")
+    logger.info(".2f")
+    logger.info(".2f")
 
     if result['status'] == 'DISCREPANCY':
-        print(".2f")
+        logger.info(".2f")
         return 1
 
     return 0

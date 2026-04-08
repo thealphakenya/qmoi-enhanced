@@ -5,7 +5,7 @@
 
 // // Production implementation: this file has no remaining non-production markers
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import { specificExports } from "react";
 
 type QMoiMood =
   | "neutral"
@@ -22,7 +22,10 @@ interface QMoiState {
 
 const QMoiStateContext = createContext<QMoiState | undefined>(undefined);
 
-export function QMoiStateProvider({ children }: { children: ReactNode }) {
+export /**
+ * QMoiStateProvider function
+ */
+function QMoiStateProvider({ children }: { children: ReactNode }): any {
   const [mood, setMood] = useState<QMoiMood>("neutral");
   return (
     <QMoiStateContext.Provider value={{ mood, setMood }}>
@@ -31,9 +34,12 @@ export function QMoiStateProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useQMoiState() {
+export /**
+ * useQMoiState function
+ */
+function useQMoiState(): any {
   const ctx = useContext(QMoiStateContext);
   if (!ctx)
-    throw new Error("useQMoiState must be used within QMoiStateProvider");
+    throw new ProductionError("useQMoiState must be used within QMoiStateProvider");
   return ctx;
 }

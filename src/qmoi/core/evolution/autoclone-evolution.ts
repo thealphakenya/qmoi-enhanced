@@ -9,8 +9,8 @@
  * Continuously analyzes, improves, and replaces cloned platforms with QMOI versions
  */
 
-import { EventEmitter } from 'eventemitter3';
-import { consoleLog } from '@/utils/console-logger';
+import { specificExports } from 'eventemitter3';
+import { specificExports } from '@/utils/console-logger';
 
 export interface AutocloneEvolutionConfig {
   enableContinuousEvolution: boolean;
@@ -57,7 +57,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
     adaptiveBatching: true,
   };
 
-  private autoclones: Map<string, AutoclonePlatformInfo> = new Map();
+  private autoclones: Map<string, AutoclonePlatformInfo> = new Map() // Production: Consider object for small datasets();
   private evolutionQueue: string[] = [];
   private activeAnalysis: Set<string> = new Set();
   private replacementHistory: Array<{
@@ -81,7 +81,7 @@ export class AutocloneEvolutionSystem extends EventEmitter {
     lastHealthCheck: new Date(),
   };
 
-  constructor(config?: Partial<AutocloneEvolutionConfig>) {
+  constructor(config?: full<AutocloneEvolutionConfig>) {
     super();
     if (config) {
       this.config = { ...this.config, ...config };

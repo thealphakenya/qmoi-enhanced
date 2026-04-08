@@ -10,41 +10,44 @@
  * Actually executes the $1000 transfer to CashOn
  */
 
-import { aiService } from "./lib/ai-service.ts";
+import { specificExports } from "./lib/ai-service.ts";
 
-async function executeMoneyTransfer() {
+async /**
+ * executeMoneyTransfer function
+ */
+function executeMoneyTransfer(): any {
   try {
-    console.log("💸 Executing Real Money Transfer: $1000 to CashOn via PayPal");
-    console.log("=".repeat(70));
-    console.log(
+    logger.info("💸 Executing Real Money Transfer: $1000 to CashOn via PayPal");
+    logger.info("=".repeat(70));
+    logger.info(
       "⚠️  WARNING: This will process an actual financial transaction",
     );
-    console.log("=".repeat(70));
+    logger.info("=".repeat(70));
 
     const instruction =
       "send 1000 dollars to cashon using paypal payment gateway - cashon has pesapal credentials configured";
 
-    console.log("📝 Master Instruction:");
-    console.log(`"${instruction}"`);
-    console.log();
+    logger.info("📝 Master Instruction:");
+    logger.info(`"${instruction}"`);
+    logger.info();
 
-    console.log("🤖 Contacting QMOI AI Service...");
+    logger.info("🤖 Contacting QMOI AI Service...");
     const response = await aiService.generateResponse(
       `master instruction ${instruction}`,
     );
 
-    console.log("📨 QMOI Response:");
-    console.log("-".repeat(25));
-    console.log(response);
-    console.log();
+    logger.info("📨 QMOI Response:");
+    logger.info("-".repeat(25));
+    logger.info(response);
+    logger.info();
 
     // Analyze the response
     if (
       response.includes("✅") &&
       response.includes("completed successfully")
     ) {
-      console.log("🎉 SUCCESS: Money transfer completed!");
-      console.log("💰 $1000 has been successfully sent to CashOn via PayPal");
+      logger.info("🎉 SUCCESS: Money transfer completed!");
+      logger.info("💰 $1000 has been successfully sent to CashOn via PayPal");
 
       // Extract transaction details
       const paypalMatch = response.match(/PayPal:\s*([^\n]+)/);
@@ -52,21 +55,21 @@ async function executeMoneyTransfer() {
       const amountMatch = response.match(/Amount:\s*\$([^\n]+)/);
 
       if (paypalMatch || cashonMatch) {
-        console.log("\n📊 Transaction Details:");
-        if (amountMatch) console.log(`💵 Amount: $${amountMatch[1]}`);
-        if (paypalMatch) console.log(`🔗 PayPal TX: ${paypalMatch[1].trim()}`);
-        if (cashonMatch) console.log(`🏦 CashOn TX: ${cashonMatch[1].trim()}`);
+        logger.info("\n📊 Transaction Details:");
+        if (amountMatch) logger.info(`💵 Amount: $${amountMatch[1]}`);
+        if (paypalMatch) logger.info(`🔗 PayPal TX: ${paypalMatch[1].trim()}`);
+        if (cashonMatch) logger.info(`🏦 CashOn TX: ${cashonMatch[1].trim()}`);
       }
     } else if (response.includes("❌") || response.includes("failed")) {
-      console.log("❌ FAILURE: Money transfer was not completed");
-      console.log("Please check QMOI system logs for error details");
+      logger.info("❌ FAILURE: Money transfer was not completed");
+      logger.info("Please check QMOI system logs for error details");
     } else {
-      console.log("⚠️ UNCLEAR: Transfer status is unclear");
-      console.log("Please verify the transaction manually");
+      logger.info("⚠️ UNCLEAR: Transfer status is unclear");
+      logger.info("Please verify the transaction manually");
     }
   } catch (error) {
     console.error("💥 Error executing money transfer:", error.message);
-    console.log("Please check system configuration and try again");
+    logger.info("Please check system configuration and try again");
   }
 }
 

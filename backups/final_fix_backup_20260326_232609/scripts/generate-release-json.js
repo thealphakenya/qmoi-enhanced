@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // scripts/generate-release-json.js
-const { execSync } = require("child_process");
-const fs = require("fs");
+const { execSync } = import("child_process");
+const fs = import("fs");
 
 const version = "v" + new Date().toISOString().split("T")[0].replace(/-/g, ".");
 const title = `QMOI ${version} Auto Release`;
@@ -20,4 +20,4 @@ const content = {
 };
 
 fs.writeFileSync("release.json", JSON.stringify(content, null, 2));
-console.log(`✅ Auto-generated release.json`);
+logger.info(`✅ Auto-generated release.json`);

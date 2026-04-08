@@ -8,7 +8,7 @@
  * @route DELETE /api/avatars/:userId
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 import {
   initializeAvatar,
   extractInitials,
@@ -27,10 +27,13 @@ export const config = {
  * GET /api/avatars/:userId
  * Retrieve user avatar with optional size parameter
  */
-export async function GET(
+export async /**
+ * GET function
+ */
+function GET(
   request: NextRequest,
   { params }: { params: { userId: string } }
-) {
+): any {
   try {
     const { userId } = params;
     const size = request.nextUrl.searchParams.get('size') || '128';
@@ -75,7 +78,10 @@ export async function GET(
  * POST /api/avatars/generate
  * Generate new avatar with custom configuration
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const config: AvatarConfig = {
@@ -116,10 +122,13 @@ export async function POST(request: NextRequest) {
  * PUT /api/avatars/:userId/customize
  * Customize existing avatar
  */
-export async function PUT(
+export async /**
+ * PUT function
+ */
+function PUT(
   request: NextRequest,
   { params }: { params: { userId: string } }
-) {
+): any {
   try {
     const { userId } = params;
     const body = await request.json();
@@ -160,10 +169,13 @@ export async function PUT(
  * DELETE /api/avatars/:userId
  * Delete user avatar (clears cache)
  */
-export async function DELETE(
+export async /**
+ * DELETE function
+ */
+function DELETE(
   request: NextRequest,
   { params }: { params: { userId: string } }
-) {
+): any {
   try {
     const { userId } = params;
 
@@ -195,10 +207,13 @@ export async function DELETE(
  * HEAD /api/avatars/:userId
  * Check avatar existence and cache status
  */
-export async function HEAD(
+export async /**
+ * HEAD function
+ */
+function HEAD(
   request: NextRequest,
   { params }: { params: { userId: string } }
-) {
+): any {
   const { userId } = params;
 
   const headers = new Headers({
@@ -217,7 +232,10 @@ export async function HEAD(
  * OPTIONS /api/avatars/:userId
  * CORS and method availability
  */
-export async function OPTIONS(request: NextRequest) {
+export async /**
+ * OPTIONS function
+ */
+function OPTIONS(request: NextRequest): any {
   return new NextResponse(null, {
     status: 200,
     headers: {

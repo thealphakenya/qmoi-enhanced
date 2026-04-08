@@ -6,7 +6,7 @@
 //  this file has no remaining non-production markers
 "use client";
 
-import React, { useState } from "react";
+import { specificExports } from "react";
 import {
   Card,
   CardContent,
@@ -14,9 +14,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { AlertTriangle, Zap, TrendingUp, Wrench } from "lucide-react";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "lucide-react";
 
 interface BrokenModel {
   id: string;

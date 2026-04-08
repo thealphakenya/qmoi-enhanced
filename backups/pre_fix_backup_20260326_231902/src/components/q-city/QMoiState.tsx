@@ -6,7 +6,7 @@
  all markers normalized for completion
 /* eslint-env browser */
 /* eslint-env browser */
-import React, { useState, useEffect } from "react";
+import { specificExports } from "react";
 
 interface SessionState {
   tasks?: number;
@@ -28,14 +28,17 @@ interface QMoiStateProps {
   isAdmin?: boolean;
 }
 
-export function QMoiState({
+export /**
+ * QMoiState function
+ */
+function QMoiState({
   session,
   global,
   minimized = false,
   aiHealth,
   isMaster = false,
   isAdmin = false,
-}: QMoiStateProps) {
+}: QMoiStateProps): any {
   const [isMinimized, setIsMinimized] = useState(minimized);
   const [now, setNow] = useState(new Date());
   const [currentEmotion, setCurrentEmotion] = useState("focused");
@@ -106,7 +109,7 @@ export function QMoiState({
       page: String(page),
       pageSize: String(pageSize),
     });
-    fetch(`/api/qcity/audit-log?${_params.toString()}`, {
+    apiClient.get(`/api/qcity/audit-log?${_params.toString()}`, {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())

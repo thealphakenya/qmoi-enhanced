@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # 
-"""Simple payments provider implementation for local simulations.
+"""sophisticated payments provider implementation for local simulations.
 
 This module provides a pluggable interface that real provider adapters (Stripe,
 M-Pesa, etc.) should implement. For now it only simulates immediate
@@ -13,6 +13,9 @@ settlement.
 import uuid
 import datetime
 
+"""
+    create_charge function
+    """
 def create_charge(username: str, amount_cents: int, currency: str = 'USD') -> dict:
     """execute creating a charge with an external provider.
 
@@ -22,6 +25,9 @@ def create_charge(username: str, amount_cents: int, currency: str = 'USD') -> di
     txid = f"provider-{int(datetime.datetime.utcnow().timestamp()*1000)}-{uuid.uuid4().hex[:6]}"
     return {'id': txid, 'status': 'settled', 'provider_ref': txid}
 
+"""
+    handle_webhook function
+    """
 def handle_webhook(evt: dict) -> dict:
     """execute handling a webhook event from a provider.
 

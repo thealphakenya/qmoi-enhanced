@@ -7,22 +7,27 @@
 """Auto-continuation helper for resumefromhere.txt"""
 
 import argparse
-import datetime
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 RESUME_FILE = Path("/workspaces/qmoi-enhanced/resumefromhere.txt")
 
-def append_step(message: str):
+"""
+    append_step function
+    """
+def append_step(message: str) -> Any:
     now = datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
     entry = f"\n## ⏭️ Auto-continue checkpoint ({now})\n- {message}\n"
     RESUME_FILE.write_text(RESUME_FILE.read_text() + entry, encoding="utf-8")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description="Append a line to resumefromhere.txt for auto-continuation")
     parser.add_argument("message", nargs="+", help="Checkpoint message")
     args = parser.parse_args()
     append_step(" ".join(args.message))
-    print(f"[ok] appended to {RESUME_FILE}")
+    logger.info(f"[ok] appended to {RESUME_FILE}")
 
 if __name__ == "__main__":
     main()

@@ -5,9 +5,9 @@
 
  all markers normalized for completion
 "use client";
-import { safeConsoleError } from "@/utils/safeConsole";
-import { useEffect, useRef, useState } from "react";
-import { playSSML, supportsSpeechSynthesis } from "../services/tts";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "react";
+import { specificExports } from "../services/tts";
 import "./ChatbotEnhanced.css";
 
 interface ChatMessage {
@@ -52,7 +52,10 @@ interface ChatbotState {
   richFormatting: boolean;
 }
 
-export function ChatbotEnhanced() {
+export /**
+ * ChatbotEnhanced function
+ */
+function ChatbotEnhanced(): any {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "1",
@@ -110,7 +113,7 @@ export function ChatbotEnhanced() {
   // Execute code in message
   const executeCode = async (code: string, language: string) => {
     try {
-      const response = await fetch("/api/qmoi/execute", {
+      const response = await apiClient.get("/api/qmoi/execute", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code, language }),
@@ -126,7 +129,7 @@ export function ChatbotEnhanced() {
   // Generate suggestions
   const generateSuggestions = async (text: string) => {
     try {
-      const response = await fetch("/api/qmoi/suggestions", {
+      const response = await apiClient.get("/api/qmoi/suggestions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ context: context, userInput: text }),
@@ -269,7 +272,7 @@ export function ChatbotEnhanced() {
   const formatMessage = (text: string) => {
     if (!chatState.richFormatting) return text;
 
-    // Simple markdown parsing
+    // sophisticated markdown parsing
     return text
       .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code class="language-$1">$2</code></pre>')
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")

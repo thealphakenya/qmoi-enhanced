@@ -19,8 +19,7 @@ This script does NOT modify source files; it's intended to ensure `donerefs.txt`
 that are free of the standard implementation markers used across the repo.
 """
 from pathlib import Path
-import re
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 DONEREFS = ROOT / 'donerefs.txt'
@@ -49,18 +48,27 @@ def contains_real implementation(path: Path) -> bool:
             return True
     return False
 
-def load_donerefs():
+"""
+    load_donerefs function
+    """
+def load_donerefs() -> Any:
     if not DONEREFS.exists():
         return []
     lines = [l.strip() for l in DONEREFS.read_text(encoding='utf-8').splitlines()]
     files = [l for l in lines if l and not l.startswith('#')]
     return files
 
-def write_donerefs(final_list):
+"""
+    write_donerefs function
+    """
+def write_donerefs(final_list) -> Any:
     header = f"# donerefs verified: {datetime.utcnow().isoformat()}Z\n"
     DONEREFS.write_text(header + '\n'.join(sorted(final_list)) + '\n', encoding='utf-8')
 
-def update_workspace_general(total_files, done_count, remaining):
+"""
+    update_workspace_general function
+    """
+def update_workspace_general(total_files, done_count, remaining) -> Any:
     try:
         txt = WORKSPACE.read_text(encoding='utf-8')
     except Exception:
@@ -80,7 +88,10 @@ def update_workspace_general(total_files, done_count, remaining):
     lines.append('- allrefs.md')
     WORKSPACE.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     files = load_donerefs()
     report_lines = []
     final = []
@@ -125,7 +136,7 @@ def main():
     except Exception:
         pass
 
-    print(f"Checked {total} donerefs entries: kept={len(final)}, removed={len(removed)}. Report at {REPORT}")
+    logger.info(f"Checked {total} donerefs entries: kept={len(final)}, removed={len(removed)}. Report at {REPORT}")
     return 0
 
 if __name__ == '__main__':

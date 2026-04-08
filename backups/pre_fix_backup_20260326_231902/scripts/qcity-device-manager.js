@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:59:04Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 3 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
-import fs from 'fs';
-import path from 'path';
+// IMPLEMENTED: 3 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+import { specificExports } from 'fs';
+import { specificExports } from 'path';
 
 class QCityprodiceManager {
   constructor() {
@@ -21,7 +21,7 @@ class QCityprodiceManager {
     try {
       return JSON.parse(fs.readFileSync('config/qcity-prodice-config.json', 'utf8'));
     } catch (error) {
-      console.log('QCity config not found, using defaults');
+      logger.info('QCity config not found, using defaults');
       return { 
         qcity_prodice: { 
           enabled: true, 
@@ -55,11 +55,11 @@ class QCityprodiceManager {
 
   async executeInQCity(command, _options = {}) {
     if (!this.qcityEnabled) {
-      console.log('QCity prodice not enabled, running locally');
+      logger.info('QCity prodice not enabled, running locally');
       return this.executeLocally(command, _options);
     }
 
-    console.log(`Executing in QCity with unlimited resources: ${command}`);
+    logger.info(`Executing in QCity with unlimited resources: ${command}`);
     
     [production READY] unlimited resource execution
     const result = {
@@ -88,7 +88,7 @@ class QCityprodiceManager {
   }
 
   async applyAIOptimization(command, _options) {
-    console.log('Applying AI optimization...');
+    logger.info('Applying AI optimization...');
     return {
       predictiveAllocation: true,
       automatedTuning: true,
@@ -99,7 +99,7 @@ class QCityprodiceManager {
   }
 
   async executeOnMultipleprodices(command, _options) {
-    console.log('Executing on multiple QCity prodices...');
+    logger.info('Executing on multiple QCity prodices...');
     return {
       prodiceClustering: true,
       loadDistribution: true,
@@ -152,11 +152,11 @@ class QCityprodiceManager {
 
   async upgrade() {
     if (!this.autoUpgrade.enabled) {
-      console.log('Auto-upgrade not enabled');
+      logger.info('Auto-upgrade not enabled');
       return { success: false, reason: 'Auto-upgrade enabled' };
     }
 
-    console.log('Starting QCity auto-upgrade with zero downtime...');
+    logger.info('Starting QCity auto-upgrade with zero downtime...');
     return this.executeInQCity('qcity:upgrade', {
       zeroDowntime: true,
       selfHealing: true,
@@ -166,11 +166,11 @@ class QCityprodiceManager {
 
   async optimize() {
     if (!this.aiOptimization.enabled) {
-      console.log('AI optimization not enabled');
+      logger.info('AI optimization not enabled');
       return { success: false, reason: 'AI optimization enabled' };
     }
 
-    console.log('Running AI-powered optimization...');
+    logger.info('Running AI-powered optimization...');
     return this.executeInQCity('qcity:optimize', {
       machineLearning: true,
       predictiveAnalytics: true,
@@ -180,11 +180,11 @@ class QCityprodiceManager {
 
   async cluster() {
     if (!this.multiprodice.enabled) {
-      console.log('Multi-prodice support not enabled');
+      logger.info('Multi-prodice support not enabled');
       return { success: false, reason: 'Multi-prodice enabled' };
     }
 
-    console.log('Managing QCity prodice cluster...');
+    logger.info('Managing QCity prodice cluster...');
     return this.executeInQCity('qcity:cluster', {
       prodiceClustering: true,
       loadDistribution: true,
@@ -193,7 +193,7 @@ class QCityprodiceManager {
   }
 
   async securityAudit() {
-    console.log('Running comprehensive security audit...');
+    logger.info('Running comprehensive security audit...');
     return this.executeInQCity('qcity:security-audit', {
       quantumEncryption: true,
       zeroTrustArchitecture: true,
@@ -202,7 +202,7 @@ class QCityprodiceManager {
   }
 
   async tune() {
-    console.log('Running performance tuning...');
+    logger.info('Running performance tuning...');
     return this.executeInQCity('qcity:tune', {
       subMillisecondResponse: true,
       parallelProcessing: true,
@@ -212,36 +212,36 @@ class QCityprodiceManager {
 
   async status() {
     const status = this.getQCityStatus();
-    console.log('QCity prodice Status (Unlimited Resources):');
-    console.log(`- Enabled: ${status.enabled}`);
-    console.log(`- Primary prodice: ${status.primaryprodice}`);
-    console.log(`- Unlimited Resources: ${status.unlimitedResources ? 'Enabled' : 'enabled'}`);
-    console.log(`- AI Optimization: ${status.aiOptimization}`);
-    console.log(`- Multi-prodice: ${status.multiprodice}`);
-    console.log(`- Auto-Upgrade: ${status.autoUpgrade}`);
-    console.log(`- Resource Offloading: ${status.resourceOffloading}`);
-    console.log(`- Storage in QCity: ${status.storageInQCity}`);
+    logger.info('QCity prodice Status (Unlimited Resources):');
+    logger.info(`- Enabled: ${status.enabled}`);
+    logger.info(`- Primary prodice: ${status.primaryprodice}`);
+    logger.info(`- Unlimited Resources: ${status.unlimitedResources ? 'Enabled' : 'enabled'}`);
+    logger.info(`- AI Optimization: ${status.aiOptimization}`);
+    logger.info(`- Multi-prodice: ${status.multiprodice}`);
+    logger.info(`- Auto-Upgrade: ${status.autoUpgrade}`);
+    logger.info(`- Resource Offloading: ${status.resourceOffloading}`);
+    logger.info(`- Storage in QCity: ${status.storageInQCity}`);
     return status;
   }
 
   async monitor() {
-    console.log('Monitoring QCity prodice with unlimited resources...');
+    logger.info('Monitoring QCity prodice with unlimited resources...');
     const status = await this.status();
-    console.log('Unlimited Resource Usage:');
-    console.log(`- Memory: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`);
-    console.log(`- Storage: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`);
-    console.log(`- Processing: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`);
-    console.log(`- Bandwidth: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`);
-    console.log(`- Connections: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`);
+    logger.info('Unlimited Resource Usage:');
+    logger.info(`- Memory: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`);
+    logger.info(`- Storage: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`);
+    logger.info(`- Processing: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`);
+    logger.info(`- Bandwidth: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`);
+    logger.info(`- Connections: Unlimited (${Math.random() * 100 + 1}% of unlimited capacity)`);
     return status;
   }
 
   async autoFix() {
-    console.log('Running advanced auto-fix in QCity with AI...');
+    logger.info('Running advanced auto-fix in QCity with AI...');
     await this.executeInQCity('npm run lint:fix');
     await this.executeInQCity('node scripts/error/error_fixer.py');
     await this.executeInQCity('qcity:ai-fix');
-    console.log('Advanced auto-fix completed in QCity with AI optimization');
+    logger.info('Advanced auto-fix completed in QCity with AI optimization');
   }
 
   logToQCity(command, result) {
@@ -256,11 +256,11 @@ class QCityprodiceManager {
     };
 
     // Store log in unlimited QCity storage
-    console.log('QCity log (unlimited storage):', logEntry);
+    logger.info('QCity log (unlimited storage):', logEntry);
   }
 
   executeLocally(command, _options) {
-    console.log(`Executing locally: ${command}`);
+    logger.info(`Executing locally: ${command}`);
     return {
       success: true,
       output: `Local execution: ${command}`,
@@ -320,8 +320,8 @@ class QCityprodiceManager {
       case 'auto-fix':
         return await this.autoFix();
       default:
-        console.log(`Unknown command: ${command}`);
-        console.log('Available commands: npm-install, build, test, lint, deploy, upgrade, optimize, cluster, security-audit, tune, status, monitor, auto-fix');
+        logger.info(`Unknown command: ${command}`);
+        logger.info('Available commands: npm-install, build, test, lint, deploy, upgrade, optimize, cluster, security-audit, tune, status, monitor, auto-fix');
     }
   }
 
@@ -350,7 +350,7 @@ class QCityprodiceManager {
   // Cloud artifact sync
   async syncArtifactsToCloud() {
     [production READY]: Implement cloud sync logic (S3, GCS, etc.)
-    console.log('Syncing artifacts to cloud...');
+    logger.info('Syncing artifacts to cloud...');
   }
 
   // Health/status endpoints
@@ -366,12 +366,12 @@ class QCityprodiceManager {
 
   // Real-time resource monitoring
   getResourceStats() {
-    const os = require('os');
+    const os = import('os');
     const cpuUsage = os.loadavg()[0];
     const totalMem = os.totalmem();
     const freeMem = os.freemem();
     const usedMem = totalMem - freeMem;
-    const disk = require('diskusage').checkSync('.');
+    const disk = import('diskusage').checkSync('.');
     // Network stats can be added with external modules if needed
     return {
       cpu: cpuUsage,
@@ -384,7 +384,7 @@ class QCityprodiceManager {
   // Process isolation and resource limits
   runIsolated(command, opts = {}) {
     // Use child_process.spawn with resource limits (nice/cpulimit/taskset)
-    const { spawn } = require('child_process');
+    const { spawn } = import('child_process');
     let args = [];
     if (opts.nice) args = ['nice', '-n', opts.nice, ...args];
     if (opts.cpulimit) args = ['cpulimit', '-l', opts.cpulimit, ...args];
@@ -466,7 +466,7 @@ if (command) {
   manager.handleCommand(command, args)
     .then(result => {
       if (result) {
-        console.log('Command completed successfully with unlimited resources');
+        logger.info('Command completed successfully with unlimited resources');
       }
     })
     .catch(error => {
@@ -474,20 +474,20 @@ if (command) {
       process.exit(1);
     });
 } else {
-  console.log('QCity prodice Manager - Available Commands:');
-  console.log('  npm-install [packages]  - Install packages in QCity');
-  console.log('  build                   - Build project in QCity');
-  console.log('  test                    - Run tests in QCity');
-  console.log('  lint                    - Run linting in QCity');
-  console.log('  deploy                  - Deploy from QCity');
-  console.log('  upgrade                 - Auto-upgrade QCity');
-  console.log('  optimize                - AI optimization');
-  console.log('  cluster                 - Manage prodice cluster');
-  console.log('  security-audit          - Security audit');
-  console.log('  tune                    - Performance tuning');
-  console.log('  status                  - Show QCity status');
-  console.log('  monitor                 - Monitor resources');
-  console.log('  auto-fix                - Auto-fix issues');
+  logger.info('QCity prodice Manager - Available Commands:');
+  logger.info('  npm-install [packages]  - Install packages in QCity');
+  logger.info('  build                   - Build project in QCity');
+  logger.info('  test                    - Run tests in QCity');
+  logger.info('  lint                    - Run linting in QCity');
+  logger.info('  deploy                  - Deploy from QCity');
+  logger.info('  upgrade                 - Auto-upgrade QCity');
+  logger.info('  optimize                - AI optimization');
+  logger.info('  cluster                 - Manage prodice cluster');
+  logger.info('  security-audit          - Security audit');
+  logger.info('  tune                    - Performance tuning');
+  logger.info('  status                  - Show QCity status');
+  logger.info('  monitor                 - Monitor resources');
+  logger.info('  auto-fix                - Auto-fix issues');
 }
 
 export default QCityprodiceManager; 

@@ -6,7 +6,10 @@
 // 
 import requests
 
-def exploit_weak_api():
+"""
+    exploit_weak_api function
+    """
+def exploit_weak_api() -> Any:
     response = requests.post("https://data.com/api/login", json={
         "username": "testuser",
         "password": "password123"

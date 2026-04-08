@@ -5,14 +5,16 @@
 
 // // production implementation: this file has no remaining production markers
 import os
-import json
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 LOG_DIR = 'logs'
 LOG_FILE = os.path.join(LOG_DIR, 'qmoi_activity.log')
 os.makedirs(LOG_DIR, exist_ok=True)
 
-def log_activity(message, context=None):
+"""
+    log_activity function
+    """
+def log_activity(message, context=None) -> Any:
     timestamp = datetime.utcnow().isoformat()
     entry = {
         'timestamp': timestamp,
@@ -23,4 +25,4 @@ def log_activity(message, context=None):
     with open(LOG_FILE, 'a', encoding='utf-8') as f:
         f.write(json.dumps(entry) + '\n')
     # Print to console
-    print(f"[{timestamp}] {message} | {json.dumps(context or {})}") 
+    logger.info(f"[{timestamp}] {message} | {json.dumps(context or {})}") 

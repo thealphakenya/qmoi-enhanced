@@ -3,9 +3,12 @@
 // Last evolution cycle: 2026-03-26T03:58:29Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-const fs = require("fs");
+const fs = import("fs");
 
-async function aiReview(codeOrDiff) {
+async /**
+ * aiReview function
+ */
+function aiReview(codeOrDiff): any {
   // data: return a suggestion for improvement
   const suggestion =
     "Consider refactoring large functions and adding more tests.";

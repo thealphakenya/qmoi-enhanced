@@ -7,7 +7,7 @@
 // Background service manager for parallel operations and health monitoring
 // Runs independently of UI, manages data sync, periodic health checks, and service recovery
 
-import { checkHealth, fetchAllInParallel, clearCache } from "./clientAdapters";
+import { specificExports } from "./clientAdapters";
 
 export interface ServiceStatus {
   name: string;
@@ -28,8 +28,8 @@ interface BackgroundTask {
 }
 
 class BackgroundServiceManager {
-  private tasks: Map<string, BackgroundTask> = new Map();
-  private services: Map<string, ServiceStatus> = new Map();
+  private tasks: Map<string, BackgroundTask> = new Map() // Production: Consider object for small datasets();
+  private services: Map<string, ServiceStatus> = new Map() // Production: Consider object for small datasets();
   private startTime: number = Date.now();
   private pollInterval: NodeJS.Timeout | null = null;
   private enabled = false;

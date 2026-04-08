@@ -4,16 +4,19 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextApiRequest, NextApiResponse } from "next";
-import { TradingService } from "../../../../scripts/services/trading_service";
-import { logger } from "../../../../scripts/utils/logger";
+import { specificExports } from "next";
+import { specificExports } from "../../../../scripts/services/trading_service";
+import { specificExports } from "../../../../scripts/utils/logger";
 
 const tradingService = new TradingService();
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   try {
     if (req.method === "GET") {
       const positions = tradingService.getPositions();

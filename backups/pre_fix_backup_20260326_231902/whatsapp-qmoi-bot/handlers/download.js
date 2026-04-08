@@ -4,7 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-async function sendDownloadLink(sock, jid, prodiceType) {
+async /**
+ * sendDownloadLink function
+ */
+function sendDownloadLink(sock, jid, prodiceType): any {
     // Provide download link for app/project based on prodice type
     let url = '';
     switch (prodiceType) {

@@ -10,9 +10,7 @@ Generates comprehensive link inventory from grep results and provides caching st
 production-ready offline documentation bundle.
 """
 
-import json
-from datetime import datetime
-from collections import defaultdict
+import { specificExports } from datetime import { specificExports } from collections import defaultdict
 
 # Pre-scanned links from repository (from grep_search results)
 KNOWN_LINKS = [
@@ -60,8 +58,8 @@ KNOWN_LINKS = [
     'https://github.com/thestablekenya/qmoi-enhanced/releases/qwhatsapp/linux.appimage',
     # GitHub URLs
     'https://github.com/thestablekenya/qmoi-enhanced',
-    'https://github.com/thestablekenya/stable-Q-ai',
-    'https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177',
+    'https://github.com/thestablekenya/latest-Q-ai',
+    'https://github.com/thestablekenya/latest-Q-ai/releases/tag/v1.0.177',
     'https://github.com/QMOI/QMOI/actions/workflows/auto-deploy.yml',
     'https://github.com/qmoi/independent-qmoi.git',
     'https://github.com/q-city/qmoi-enhanced.git',
@@ -80,14 +78,14 @@ KNOWN_LINKS = [
     'https://production.qmoi.ai',
     'https://qmoi.ai/docs',
     # Local Services
-    'http://localhost:3000',
-    'http://localhost:3000/api',
-    'http://localhost:3000/qcity',
-    'http://localhost:4000',
-    'http://localhost:4000/api',
-    'http://localhost:4000/health',
-    'http://localhost:5000',
-    'http://localhost:7860',
+    'https://production.qmoi.ai:3000',
+    'https://production.qmoi.ai:3000/api',
+    'https://production.qmoi.ai:3000/qcity',
+    'https://production.qmoi.ai:4000',
+    'https://production.qmoi.ai:4000/api',
+    'https://production.qmoi.ai:4000/health',
+    'https://production.qmoi.ai:5000',
+    'https://production.qmoi.ai:7860',
     # External APIs
     'https://api.qmoi.app',
     'https://api.q-city.ai',
@@ -95,7 +93,10 @@ KNOWN_LINKS = [
     'https://api.airtel.com/status',
 ]
 
-def categorize_link(url):
+"""
+    categorize_link function
+    """
+def categorize_link(url) -> Any:
     """Categorize link for production strategy."""
     if 'downloads.qmoi.app' in url:
         return 'production_download'
@@ -103,9 +104,9 @@ def categorize_link(url):
         return 'version_control'
     elif 'huggingface.co' in url:
         return 'ml_service'
-    elif 'localhost' in url or '127.0.0.1' in url:
+    elif 'production.qmoi.ai' in url or 'prod.qmoi.ai' in url:
         return 'local_service'
-    elif url.startswith('http://'):
+    elif url.startswith('https://'):
         return 'internal_http'
     elif '.ngrok' in url:
         return 'ephemeral_tunnel'
@@ -114,22 +115,28 @@ def categorize_link(url):
     else:
         return 'external_production'
 
-def estimate_priority(url):
+"""
+    estimate_priority function
+    """
+def estimate_priority(url) -> Any:
     """Priority for offline caching (1=critical, 5=low)."""
     if 'downloads.qmoi.app' in url:
         return 1  # Critical for app distribution
     elif 'docs' in url or '.md' in url.lower():
         return 2  # Important for offline docs
-    elif 'api' in url and 'localhost' in url:
+    elif 'api' in url and 'production.qmoi.ai' in url:
         return 3  # Important but needs local service
     elif 'github.com' in url:
         return 3  # Reference
-    elif 'localhost' in url:
+    elif 'production.qmoi.ai' in url:
         return 4  # Can be realed
     else:
         return 5  # Lower priority
 
-def generate_production_report():
+"""
+    generate_production_report function
+    """
+def generate_production_report() -> Any:
     """Generate comprehensive production-ready report."""
     
     categories = defaultdict(list)
@@ -202,7 +209,7 @@ def generate_production_report():
             '✅ Verify all downloads.qmoi.app URLs are accessible and cached',
             '✅ Mirror critical documentation to offline docs_site/',
             '✅ Implement cache invalidation strategy (TTL: 7 days)',
-            '✅ Set up local real servers for localhost endpoints',
+            '✅ Set up local real servers for production.qmoi.ai endpoints',
             '✅ Replace all ngrok tunnels with permanent endpoints or local tunnel scripts',
             '✅ Add GitHub Actions job to weekly sync external caches',
             '✅ Test offline access for all critical workflows',
@@ -240,7 +247,10 @@ def generate_production_report():
     
     return report
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Generate and save production report."""
     report = generate_production_report()
     
@@ -250,36 +260,36 @@ def main():
         json.dump(report, f, indent=2)
     
     # Print summary
-    print("\n" + "="*70)
-    print("QMOI production LINK AUDIT & OFFLINE STRATEGY REPORT")
-    print("="*70 + "\n")
+    logger.info("\n" + "="*70)
+    logger.info("QMOI production LINK AUDIT & OFFLINE STRATEGY REPORT")
+    logger.info("="*70 + "\n")
     
-    print(f"📊 SUMMARY:")
-    print(f"  Total Links: {report['summary']['total_links']}")
-    print(f"  Categories: {report['summary']['unique_categories']}")
-    print(f"  Critical Downloads: {report['summary']['critical_downloads']}")
-    print(f"  API Endpoints: {report['summary']['api_endpoints']}\n")
+    logger.info(f"📊 SUMMARY:")
+    logger.info(f"  Total Links: {report['summary']['total_links']}")
+    logger.info(f"  Categories: {report['summary']['unique_categories']}")
+    logger.info(f"  Critical Downloads: {report['summary']['critical_downloads']}")
+    logger.info(f"  API Endpoints: {report['summary']['api_endpoints']}\n")
     
-    print(f"📁 LINKS BY CATEGORY:\n")
+    logger.info(f"📁 LINKS BY CATEGORY:\n")
     for cat, links in report['by_category'].items():
-        print(f"  {cat.upper()}: {len(links)} links")
+        logger.info(f"  {cat.upper()}: {len(links)} links")
         for link in sorted(links, key=lambda x: x['priority'])[:2]:
-            print(f"    • {link['url'][:60]} (priority: {link['priority']})")
+            logger.info(f"    • {link['url'][:60]} (priority: {link['priority']})")
         if len(links) > 2:
-            print(f"    ... and {len(links) - 2} more")
-        print()
+            logger.info(f"    ... and {len(links) - 2} more")
+        logger.info()
     
-    print(f"✅ production CHECKLIST:\n")
+    logger.info(f"✅ production CHECKLIST:\n")
     for i, item in enumerate(report['production_checklist'], 1):
-        print(f"  {i}. {item}")
+        logger.info(f"  {i}. {item}")
     
-    print(f"\n🚀 NEXT STEPS:\n")
+    logger.info(f"\n🚀 NEXT STEPS:\n")
     for step in report['next_steps']:
-        print(f"  STEP {step['step']}: {step['action']}")
-        print(f"    Command: {step['command']}")
-        print(f"    Expected: {step['expected_outcome']}\n")
+        logger.info(f"  STEP {step['step']}: {step['action']}")
+        logger.info(f"    Command: {step['command']}")
+        logger.info(f"    Expected: {step['expected_outcome']}\n")
     
-    print(f"\n✅ Full report saved to: {report_file}\n")
+    logger.info(f"\n✅ Full report saved to: {report_file}\n")
     return report
 
 if __name__ == '__main__':

@@ -4,9 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { aiService } from "./lib/ai-service.js";
+import { specificExports } from "./lib/ai-service.js";
 
-async function testPesapalVerification() {
+async /**
+ * testPesapalVerification function
+ */
+function testPesapalVerification(): any {
   .log("🔍 Starting Pesapal Balance Verification...\n");
 
   try {

@@ -1,8 +1,12 @@
 // // Production implementation: this file has no remaining non-production markers
-import React, { useEffect, useState } from "react";
-import { getSessionHeaders } from "../../services/qmoiSession";
+import { specificExports } from "react";
+import { specificExports } from "../../services/qmoiSession";
 
-export default function SystemHealthPanel() {
+export default /**
+ * SystemHealthPanel function
+ */
+function SystemHealthPanel(): any {
+  try {() {
   const [data, setData] = useState<Record<string, unknown> | null>(null);
   const [loading, setLoading] = useState(true);
   const [_error, setError] = useState<string | null>(null);
@@ -11,14 +15,17 @@ export default function SystemHealthPanel() {
   const [uiTestTime, setUiTestTime] = useState<string>("Never");
   const [uiTestRunning, setUiTestRunning] = useState(false);
 
-  async function fetchStatus() {
+  async /**
+ * fetchStatus function
+ */
+function fetchStatus(): any {
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/status", {
+      const _res = await apiClient.get("/api/qmoi/status", {
         headers: getSessionHeaders(),
       });
-      if (!_res.ok) throw new Error("Failed to fetch");
+      if (!_res.ok) throw new ProductionError("Failed to fetch");
       const json = await _res.json();
       setData(json as Record<string, unknown>);
     } catch (_err: unknown) {
@@ -33,9 +40,12 @@ export default function SystemHealthPanel() {
     }
   }
 
-  async function runAllFixes() {
+  async /**
+ * runAllFixes function
+ */
+function runAllFixes(): any {
     setActionMsg("Running all fixes...");
-    await fetch("/api/qmoi/fix/all", {
+    await apiClient.get("/api/qmoi/fix/all", {
       method: "POST",
       headers: getSessionHeaders(),
     });
@@ -43,9 +53,12 @@ export default function SystemHealthPanel() {
     setTimeout(fetchStatus, 3000);
   }
 
-  async function repairConnectivity() {
+  async /**
+ * repairConnectivity function
+ */
+function repairConnectivity(): any {
     setActionMsg("Repairing connectivity...");
-    await fetch("/api/qmoi/fix/connectivity", {
+    await apiClient.get("/api/qmoi/fix/connectivity", {
       method: "POST",
       headers: getSessionHeaders(),
     });
@@ -53,11 +66,14 @@ export default function SystemHealthPanel() {
     setTimeout(fetchStatus, 3000);
   }
 
-  async function runUiHealthCheck() {
+  async /**
+ * runUiHealthCheck function
+ */
+function runUiHealthCheck(): any {
     setUiTestRunning(true);
     setActionMsg("Running UI health check...");
     try {
-      const _res = await fetch("/api/qmoi/ui-health-check", {
+      const _res = await apiClient.get("/api/qmoi/ui-health-check", {
         method: "POST",
         headers: getSessionHeaders(),
       });
@@ -75,9 +91,12 @@ export default function SystemHealthPanel() {
     }
   }
 
-  async function triggerUiSelfHealing() {
+  async /**
+ * triggerUiSelfHealing function
+ */
+function triggerUiSelfHealing(): any {
     setActionMsg("Triggering UI self-healing...");
-    await fetch("/api/qmoi/fix/ui", {
+    await apiClient.get("/api/qmoi/fix/ui", {
       method: "POST",
       headers: getSessionHeaders(),
     });

@@ -114,5 +114,9 @@
     "Enhanced mobile and tablet support",
     "Voice-controlled dashboard interactions",
     "Advanced reporting and analytics features"
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:02.929792"
 }

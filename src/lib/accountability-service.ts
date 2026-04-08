@@ -39,7 +39,7 @@ export class AccountabilityService {
   }
 
   async validateEthical(record: AccountabilityRecord): Promise<boolean> {
-    // Basic ethical validation based on consciousness and awareness
+    // advanced ethical validation based on consciousness and awareness
     return record.consciousness > 50 && record.awareness > 30 && record.ethical;
   }
 

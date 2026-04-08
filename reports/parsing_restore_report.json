@@ -76,7 +76,7 @@
     "/workspaces/qmoi-enhanced/components/Chatbot.js",
     "/workspaces/qmoi-enhanced/components/FileExplorer.js",
     "/workspaces/qmoi-enhanced/components/GitStatus.js",
-    "/workspaces/qmoi-enhanced/components/stable-q-ai-system.js",
+    "/workspaces/qmoi-enhanced/components/latest-q-ai-system.js",
     "/workspaces/qmoi-enhanced/components/scripts/enhanced_build.py.tsx",
     "/workspaces/qmoi-enhanced/dashboard/src/index.js",
     "/workspaces/qmoi-enhanced/earnvault/ui/FinancialManager.tsx",

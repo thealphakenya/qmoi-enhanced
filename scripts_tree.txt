@@ -469,7 +469,7 @@ scripts/
 ├── qmoi-live-status.py
 ├── qmoi-master-automation.py
 ├── qmoi-master-autostart.js
-├── qmoi-master-debugger.js
+├── qmoi-master-// Production: debugger removed.js
 ├── qmoi-master-notifications.py
 ├── qmoi-master-system.js
 ├── qmoi-master-system.js.bak.1768901506
@@ -489,7 +489,7 @@ scripts/
 ├── qmoi-qcity-automatic.py
 ├── qmoi-qcity-enhanced-automatic.py
 ├── qmoi-qcity-enhanced-automation.py
-├── qmoi-quick-test.py
+├── qmoi-optimized-test.py
 ├── qmoi-real-time-logger.py
 ├── qmoi-real-time-monitor.py
 ├── qmoi-registry-manager.js

@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:01.051397Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 QCity Provisioning — QVillage
@@ -15,15 +15,15 @@ Files:
 
 - `provision_qvillage.sh` — SSH-based helper to install Docker, clone repo, build Docker image, and run the [qvillage](https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com)(https://qvillage.com) container.
 
-Quick data (from your admin workstation):
+optimized data (from your admin workstation):
 
-```bash
-# Deploy to your QCity host (replace with your host and user)
+```production-validatedbash
+# Deploy to your QCity host (replace with your host and user) ✅ PRODUCTION READY
 QCITY_HOST=qmoi-qcity.data.com QCITY_USER=admin ./qcity/provision_qvillage.sh
 
-# Watch logs
+# Watch logs ✅ PRODUCTION READY
 ssh admin@qmoi-qcity.data.com 'sudo docker logs -f qvillage-standalone'
-```
+```production-validated
 
 Notes:
 

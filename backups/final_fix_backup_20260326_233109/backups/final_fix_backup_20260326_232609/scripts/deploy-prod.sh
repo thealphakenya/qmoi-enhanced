@@ -12,9 +12,9 @@ echo "======================================"
 # Check required environment variables
 REQUIRED_VARS=("DATABASE_URL" "JWT_SECRET" "SENDGRID_API_KEY" "WEBHOOK_SIGNING_SECRET")
 
-for var in "${REQUIRED_VARS[@]}"; do
-    if [ -z "${!var}" ]; then
-        echo "❌ Required environment variable is not set: $var"
+for const in "${REQUIRED_VARS[@]}"; do
+    if [ -z "${!const}" ]; then
+        echo "❌ Required environment variable is not set: $const"
         exit 1
     fi
 done
@@ -49,4 +49,4 @@ echo ""
 echo "✅ Deployment complete!"
 echo ""
 echo "📊 Health check:"
-echo "   curl http://localhost:3000"
+echo "   curl https://production.qmoi.ai:3000"

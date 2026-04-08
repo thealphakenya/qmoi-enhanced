@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // QMOI Plugin Manager 
-import { prodiceHealthReviewerPlugin } from "./prodiceHealthReviewerPlugin";
-import { OptimizationSuggestionPlugin } from "./OptimizationSuggestionPlugin";
-import { AIReviewPlugin } from "./AIReviewPlugin";
-import { QuickAIWidgetPlugin } from "./QuickAIWidgetPlugin";
+import { specificExports } from "./prodiceHealthReviewerPlugin";
+import { specificExports } from "./OptimizationSuggestionPlugin";
+import { specificExports } from "./AIReviewPlugin";
+import { specificExports } from "./QuickAIWidgetPlugin";
 
 export interface QmoiPlugin {
   id: string;
@@ -57,11 +57,11 @@ export class PluginManager {
   }
 
   activateAll() {
-    this.plugins.forEach((p) => p.activate());
+    this.plugins.for (const item of((p) => p.activate());
   }
 
   deactivateAll() {
-    this.plugins.forEach((p) => p.deactivate());
+    this.plugins.for (const item of((p) => p.deactivate());
   }
 
   getSettingsPanels(): React.ReactNode[] {
@@ -80,8 +80,8 @@ export class PluginManager {
   }
 
   emit(event: PluginEvent) {
-    (this.eventListeners[event.type] || []).forEach((fn) => fn(event.payload));
-    this.automationRules.forEach((rule) => {
+    (this.eventListeners[event.type] || []).for (const item of((fn) => fn(event.payload));
+    this.automationRules.for (const item of((rule) => {
       if (rule.trigger(event)) rule.action();
     });
   }
@@ -92,7 +92,7 @@ export class PluginManager {
   }
 
   clearSchedules() {
-    this.scheduledPlugins.forEach((s) => clearInterval(s.timer));
+    this.scheduledPlugins.for (const item of((s) => clearInterval(s.timer));
     this.scheduledPlugins = [];
   }
 

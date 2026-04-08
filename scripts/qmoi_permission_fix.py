@@ -11,8 +11,7 @@ Checks and fixes write permissions for all QMOI system files in the scripts dire
 """
 import os
 import sys
-import logging
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 logging.basicConfig(
     level=logging.INFO,
@@ -35,7 +34,10 @@ QMOI_FILES = [
     'qmoi_auto_evolution.py',
 ]
 
-def check_and_fix_permissions(file_path):
+"""
+    check_and_fix_permissions function
+    """
+def check_and_fix_permissions(file_path) -> Any:
     abs_path = SCRIPTS_DIR / file_path
     if not abs_path.exists():
         logger.warning(f"File not found: {abs_path}")
@@ -53,7 +55,10 @@ def check_and_fix_permissions(file_path):
     else:
         logger.info(f"{abs_path} is already writable.")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     for file in QMOI_FILES:
         check_and_fix_permissions(file)
 

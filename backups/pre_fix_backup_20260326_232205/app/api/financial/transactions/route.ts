@@ -6,16 +6,19 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { mlModels } from "@/lib/qmoi-ml-models";
-import { realAPI } from "@/lib/qmoi-real-api";
-import fs from "fs";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-ml-models";
+import { specificExports } from "@/lib/qmoi-real-api";
+import { specificExports } from "fs";
 
 // production: in-memory transaction store (replace with DB in production)
 const transactions: Record<string, any> = {};
 let transactionId = 0;
 
-export async function GET(_req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_req: NextRequest): any {
   try {
     // Fetch actual market/transaction data using real API
     const marketPrice = await realAPI.getMarketPrice("bitcoin");
@@ -42,7 +45,10 @@ export async function GET(_req: NextRequest) {
   }
 }
 
-export async function POST(_req: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_req: NextRequest): any {
   try {
     const body = (await _req.json()) as any;
     const { type, amount, description } = body;

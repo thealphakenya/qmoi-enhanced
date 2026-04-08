@@ -8,8 +8,8 @@
  * Push notifications, in-app notifications, and alerts
  */
 
-import { db } from "@/lib/db/prisma";
-import { errorTracker } from "@/lib/monitoring/error-tracker";
+import { specificExports } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/monitoring/error-tracker";
 
 interface NotificationOptions {
   userId: string;
@@ -43,7 +43,7 @@ class NotificationsService {
         await this.sendEmailNotification(options);
       }
 
-      console.log(
+      logger.info(
         `Notification sent to ${options.userId}:`,
         options.title,
       );
@@ -133,7 +133,7 @@ class NotificationsService {
       }
 
       // Send via Firebase Admin SDK
-      // const admin = require("firebase-admin");
+      // const admin = import("firebase-admin");
       // await admin.messaging().send({...})
 
       return true;
@@ -202,7 +202,7 @@ class NotificationsService {
     try {
       // Implementation for sending email
       // await emailService.send({...})
-      console.log(`Email sent to ${email}: ${notification.title}`);
+      logger.info(`Email sent to ${email}: ${notification.title}`);
       return { channel: "email", success: true };
     } catch (error) {
       console.error("Failed to send email:", error);
@@ -224,7 +224,7 @@ class NotificationsService {
     try {
       // Implementation for sending SMS
       // await smsService.send({...})
-      console.log(`SMS sent to ${phoneNumber}: ${notification.title}`);
+      logger.info(`SMS sent to ${phoneNumber}: ${notification.title}`);
       return { channel: "sms", success: true };
     } catch (error) {
       console.error("Failed to send SMS:", error);

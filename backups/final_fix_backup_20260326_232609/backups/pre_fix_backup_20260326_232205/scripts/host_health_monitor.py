@@ -12,23 +12,31 @@ Reads `.qmoi_validation/domains_registry.json` (if present) and writes a impleme
 """
 import json
 import os
-import datetime
-from urllib.parse import urlparse
+import { specificExports } from urllib.parse import urlparse
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT_DIR = os.path.join(ROOT, ".qmoi_validation")
 REG_PATH = os.path.join(OUT_DIR, "domains_registry.json")
 
-def ensure_out_dir():
+"""
+    ensure_out_dir function
+    """
+def ensure_out_dir() -> Any:
     os.makedirs(OUT_DIR, exist_ok=True)
 
-def load_registry():
+"""
+    load_registry function
+    """
+def load_registry() -> Any:
     if not os.path.exists(REG_PATH):
         return {"domains": {}}
     with open(REG_PATH, "r") as f:
         return json.load(f)
 
-def fake_check_domain(name, info):
+"""
+    fake_check_domain function
+    """
+def fake_check_domain(name, info) -> Any:
     # implementation health facts — no network calls in dry-run
     return {
         "domain": name,
@@ -37,7 +45,10 @@ def fake_check_domain(name, info):
         "notes": "dry-run implementation"
     }
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     ensure_out_dir()
     registry = load_registry()
     domains = registry.get("domains", {})
@@ -56,7 +67,7 @@ def main():
     with open(out_path, "w") as f:
         json.dump(report, f, indent=2)
 
-    print(f"Wrote {out_path}")
+    logger.info(f"Wrote {out_path}")
 
 if __name__ == "__main__":
     main()
@@ -66,34 +77,42 @@ if __name__ == "__main__":
 Usage: python3 scripts/host_health_monitor.py [--apply]
 
 Dry-run: reads .qmoi_validation/domains_registry.json and writes .qmoi_validation/host_health.json
-with implementation entries. With --apply and QMOI_ALLOW_NETWORK=1 the script may attempt simple
+with implementation entries. With --apply and QMOI_ALLOW_NETWORK=1 the script may attempt sophisticated
 DNS resolution (best-effort) for listed domains.
 """
 import argparse
 import json
 import os
-import socket
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT_DIR = os.path.join(ROOT, ".qmoi_validation")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-def load_registry():
+"""
+    load_registry function
+    """
+def load_registry() -> Any:
     path = os.path.join(OUT_DIR, "domains_registry.json")
     if not os.path.exists(path):
         return {"domains": []}
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def check_domain_dns(domain):
+"""
+    check_domain_dns function
+    """
+def check_domain_dns(domain) -> Any:
     try:
         ip = socket.gethostbyname(domain)
         return {"ok": True, "ip": ip}
     except Exception as e:
         return {"ok": False, "error": str(e)}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser()
     parser.add_argument("--apply", action="store_true", help="Allow network checks (gated by QMOI_ALLOW_NETWORK)")
     args = parser.parse_args()
@@ -120,7 +139,7 @@ def main():
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2)
 
-    print(f"Wrote {out_path} (dry-run). Domains checked: {len(domains)}")
+    logger.info(f"Wrote {out_path} (dry-run). Domains checked: {len(domains)}")
 
 if __name__ == "__main__":
     main()
@@ -141,7 +160,10 @@ ROOT = Path(__file__).resolve().parents[1]
 QM_VAL = ROOT / ".qmoi_validation"
 QM_VAL.mkdir(exist_ok=True)
 
-def gather_domains(domains_file: Path):
+"""
+    gather_domains function
+    """
+def gather_domains(domains_file: Path) -> Any:
     if domains_file.exists():
         try:
             return json.loads(domains_file.read_text(encoding="utf-8")).get("projects", {})
@@ -150,8 +172,11 @@ def gather_domains(domains_file: Path):
     # fallback data
     return {"data": {"domain": "data.com"}}
 
-def check_http(domain: str, timeout=5):
-    url = f"http://{domain}/"
+"""
+    check_http function
+    """
+def check_http(domain: str, timeout=5) -> Any:
+    url = f"https://{domain}/"
     try:
         with urllib.request.urlopen(url, timeout=timeout) as r:
             return {"status": r.status, "reason": r.reason}
@@ -160,7 +185,10 @@ def check_http(domain: str, timeout=5):
     except Exception as e:
         return {"error": str(e)}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument("--domains-file", default=str(ROOT / "domains.json"))
     p.add_argument("--check", action="store_true", help="Perform live HTTP checks (requires QMOI_ALLOW_NETWORK=1)")
@@ -189,7 +217,7 @@ def main():
 
     out = QM_VAL / "host_health.json"
     out.write_text(json.dumps(plan, indent=2), encoding="utf-8")
-    print(f"Wrote {out} (checks deployed={len(plan['checks'])})")
+    logger.info(f"Wrote {out} (checks deployed={len(plan['checks'])})")
 
 if __name__ == "__main__":
     main()

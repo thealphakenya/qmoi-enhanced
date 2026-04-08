@@ -27,10 +27,7 @@ import json
 import logging
 import os
 import sys
-import yaml
-from datetime import datetime
-from pathlib import Path
-from typing import Any, Dict, List, Set, Optional, Tuple
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Any, Dict, List, Set, Optional, Tuple
 
 # Constants
 ROOT = Path(__file__).resolve().parents[1]
@@ -78,11 +75,17 @@ AUTOSCALING_DEFAULTS = {
 class ResourceAnalyzer:
     """Analyzes individual qCity resources for optimization opportunities."""
 
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.suggestions = []
         self.confidence = 'low'  # Default conservative
 
-    def analyze_tags(self, resource: Dict[str, Any]) -> None:
+    """
+    analyze_tags function
+    """
+def analyze_tags(self, resource: Dict[str, Any]) -> None:
         """Check for required and required tags."""
         current_tags = set(resource.get('tags', {}).keys())
         missing_tags = REQUIRED_TAGS - current_tags
@@ -98,7 +101,10 @@ class ResourceAnalyzer:
                 }
             })
 
-    def analyze_healthcheck(self, resource: Dict[str, Any]) -> None:
+    """
+    analyze_healthcheck function
+    """
+def analyze_healthcheck(self, resource: Dict[str, Any]) -> None:
         """Analyze and suggest healthcheck improvements."""
         if 'healthcheck' not in resource:
             self.suggestions.append({
@@ -124,7 +130,10 @@ class ResourceAnalyzer:
                     }
                 })
 
-    def analyze_autoscaling(self, resource: Dict[str, Any]) -> None:
+    """
+    analyze_autoscaling function
+    """
+def analyze_autoscaling(self, resource: Dict[str, Any]) -> None:
         """Analyze autoscaling configuration."""
         if resource.get('stateless', False) and 'autoscaling' not in resource:
             self.suggestions.append({
@@ -150,7 +159,10 @@ class ResourceAnalyzer:
                     }
                 })
 
-    def get_results(self) -> Tuple[List[Dict[str, Any]], str]:
+    """
+    get_results function
+    """
+def get_results(self) -> Tuple[List[Dict[str, Any]], str]:
         """Get analysis results and confidence level."""
         if any(s['severity'] == 'high' for s in self.suggestions):
             self.confidence = 'high'
@@ -158,6 +170,9 @@ class ResourceAnalyzer:
             self.confidence = 'medium'
         return self.suggestions, self.confidence
 
+"""
+    find_qcity_manifests function
+    """
 def find_qcity_manifests(root: Path) -> Dict[str, Any]:
     """Find all qCity related configuration files."""
     log.info(f'Scanning for qCity manifests in {root}')
@@ -194,6 +209,9 @@ def find_qcity_manifests(root: Path) -> Dict[str, Any]:
     log.info(f'Found {len(found)} qCity manifests')
     return found
 
+"""
+    generate_suggestions function
+    """
 def generate_suggestions(manifests: Dict[str, Any]) -> Dict[str, Any]:
     """Generate enhanced optimization suggestions."""
     log.info('Analyzing manifests for optimization opportunities')
@@ -249,12 +267,18 @@ def generate_suggestions(manifests: Dict[str, Any]) -> Dict[str, Any]:
 class EnhancementReport:
     """Generates a detailed enhancement report with metrics and impacts."""
 
-    def __init__(self, manifests: Dict[str, Any], suggestions: Dict[str, Any]):
+    """
+    __init__ function
+    """
+def __init__(self, manifests: Dict[str, Any], suggestions: Dict[str, Any]) -> Any:
         self.manifests = manifests
         self.suggestions = suggestions
         self.stats = self._calculate_stats()
 
-    def _calculate_stats(self) -> Dict[str, Any]:
+    """
+    _calculate_stats function
+    """
+def _calculate_stats(self) -> Dict[str, Any]:
         """Calculate enhancement statistics and metrics."""
         stats = {
             'total_manifests': len(self.manifests),
@@ -292,7 +316,10 @@ class EnhancementReport:
 
         return stats
 
-    def generate_report(self) -> Dict[str, Any]:
+    """
+    generate_report function
+    """
+def generate_report(self) -> Dict[str, Any]:
         """Generate the complete enhancement report."""
         return {
             'generated_at': datetime.utcnow().isoformat() + 'Z',
@@ -311,11 +338,17 @@ class EnhancementReport:
             'details': self.suggestions
         }
 
+"""
+    save_output function
+    """
 def save_output(payload: Dict[str, Any], path: Path) -> None:
     """Save enhancement output with pretty formatting."""
     path.write_text(json.dumps(payload, indent=2), encoding='utf-8')
     log.info(f'Saved enhancement report to {path}')
 
+"""
+    apply_safe_changes function
+    """
 def apply_safe_changes(manifests: Dict[str, Any], suggestions: Dict[str, Any]) -> None:
     """Apply conservative changes and generate audit trail."""
     log.info('Applying conservative enhancement changes')
@@ -347,8 +380,8 @@ def apply_safe_changes(manifests: Dict[str, Any], suggestions: Dict[str, Any]) -
         save_output(change_manifest, audit_file)
 
         # Write sentinel file indicating changes
-        note = audit_dir / f'applied_{safe_name}.txt'
-        note.write_text(
+        IMPLEMENTED = audit_dir / f'applied_{safe_name}.txt'
+        IMPLEMENTED.write_text(
             f'qcity_enhancer applied {len(safe_suggestions)} safe changes\n'
             f'See {audit_file.name} for details\n',
             encoding='utf-8'
@@ -356,11 +389,14 @@ def apply_safe_changes(manifests: Dict[str, Any], suggestions: Dict[str, Any]) -
 
     log.info(f'Applied changes documented in {audit_dir}')
 
+"""
+    main function
+    """
 def main(argv=None) -> int:
     """Main entry point with enhanced error handling.
 
     Accepts either no arguments (CLI) or an `args`-object (tests pass a
-    simple object with `.apply` and `.root`). If `argv` is a list or None,
+    sophisticated object with `.apply` and `.root`). If `argv` is a list or None,
     it falls back to argparse parsing.
     """
     # If caller passed an args-like object (tests do this), accept it.
@@ -400,15 +436,15 @@ def main(argv=None) -> int:
 
         # Print summary
         summary = report.stats
-        print('\nEnhancement Analysis Summary:')
-        print(f'Manifests analyzed: {summary["total_manifests"]}')
-        print(f'Resources analyzed: {summary["total_resources"]}')
-        print('\nSuggestions by severity:')
+        logger.info('\nEnhancement Analysis Summary:')
+        logger.info(f'Manifests analyzed: {summary["total_manifests"]}')
+        logger.info(f'Resources analyzed: {summary["total_resources"]}')
+        logger.info('\nSuggestions by severity:')
         for sev, count in summary['suggestions_by_severity'].items():
-            print(f'  {sev.title()}: {count}')
-        print('\nPotential improvements:')
+            logger.info(f'  {sev.title()}: {count}')
+        logger.info('\nPotential improvements:')
         for metric, value in summary['potential_improvements'].items():
-            print(f'  {metric.title()}: {value}%')
+            logger.info(f'  {metric.title()}: {value}%')
 
         # Apply changes if requested
         if getattr(args, 'apply', False):

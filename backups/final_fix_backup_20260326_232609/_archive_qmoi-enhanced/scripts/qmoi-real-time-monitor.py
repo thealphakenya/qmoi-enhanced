@@ -17,10 +17,7 @@ import threading
 import asyncio
 import websockets
 import psutil
-import requests
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Any, Optional
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Any, Optional
 import logging
 import queue
 import signal
@@ -37,7 +34,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class QMOIRealTimeMonitor:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.config = self.load_config()
         self.stats = {}
         self.websocket_clients = set()
@@ -46,7 +46,10 @@ class QMOIRealTimeMonitor:
         self.websocket_server = None
         self.stats_queue = queue.Queue()
         
-    def load_config(self) -> Dict[str, Any]:
+    """
+    load_config function
+    """
+def load_config(self) -> Dict[str, Any]:
         """Load monitoring configuration"""
         config = {
             'websocket_port': 8080,
@@ -72,7 +75,10 @@ class QMOIRealTimeMonitor:
         
         return config
     
-    def start_monitoring(self):
+    """
+    start_monitoring function
+    """
+def start_monitoring(self) -> Any:
         """Start real-time monitoring"""
         logger.info("Starting QMOI Real-Time Monitor...")
         
@@ -90,7 +96,10 @@ class QMOIRealTimeMonitor:
         
         logger.info("Real-time monitoring started successfully")
     
-    def _monitoring_loop(self):
+    """
+    _monitoring_loop function
+    """
+def _monitoring_loop(self) -> Any:
         """Main monitoring loop"""
         while self.is_running:
             try:
@@ -137,7 +146,10 @@ class QMOIRealTimeMonitor:
                 logger.error(f"Monitoring error: {e}")
                 time.sleep(5)
     
-    def collect_system_stats(self) -> Dict[str, Any]:
+    """
+    collect_system_stats function
+    """
+def collect_system_stats(self) -> Dict[str, Any]:
         """Collect system statistics"""
         try:
             cpu_percent = psutil.cpu_percent(interval=1)
@@ -158,7 +170,10 @@ class QMOIRealTimeMonitor:
             logger.error(f"Could not collect system stats: {e}")
             return {}
     
-    def collect_qmoi_stats(self) -> Dict[str, Any]:
+    """
+    collect_qmoi_stats function
+    """
+def collect_qmoi_stats(self) -> Dict[str, Any]:
         """Collect QMOI-specific statistics"""
         try:
             qmoi_stats = {}
@@ -188,7 +203,10 @@ class QMOIRealTimeMonitor:
             logger.error(f"Could not collect QMOI stats: {e}")
             return {}
     
-    def collect_process_stats(self) -> Dict[str, Any]:
+    """
+    collect_process_stats function
+    """
+def collect_process_stats(self) -> Dict[str, Any]:
         """Collect process statistics"""
         try:
             processes = []
@@ -215,7 +233,10 @@ class QMOIRealTimeMonitor:
             logger.error(f"Could not collect process stats: {e}")
             return {}
     
-    def collect_network_stats(self) -> Dict[str, Any]:
+    """
+    collect_network_stats function
+    """
+def collect_network_stats(self) -> Dict[str, Any]:
         """Collect network statistics"""
         try:
             connections = psutil.net_connections()
@@ -231,7 +252,10 @@ class QMOIRealTimeMonitor:
             logger.error(f"Could not collect network stats: {e}")
             return {}
     
-    def collect_file_stats(self) -> Dict[str, Any]:
+    """
+    collect_file_stats function
+    """
+def collect_file_stats(self) -> Dict[str, Any]:
         """Collect file statistics"""
         try:
             file_counts = {}
@@ -262,7 +286,10 @@ class QMOIRealTimeMonitor:
             logger.error(f"Could not collect file stats: {e}")
             return {}
     
-    def save_stats(self, stats: Dict[str, Any]):
+    """
+    save_stats function
+    """
+def save_stats(self, stats: Dict[str, Any]) -> Any:
         """Save statistics to file"""
         try:
             stats_file = 'logs/real-time-monitor-stats.json'
@@ -271,50 +298,59 @@ class QMOIRealTimeMonitor:
         except Exception as e:
             logger.error(f"Could not save stats: {e}")
     
-    def print_summary(self, stats: Dict[str, Any]):
+    """
+    print_summary function
+    """
+def print_summary(self, stats: Dict[str, Any]) -> Any:
         """Print monitoring summary"""
         try:
             system = stats.get('system', {})
             qmoi = stats.get('qmoi', {})
             
-            print(f"\n{'='*60}")
-            print(f"QMOI Real-Time Monitor - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-            print(f"{'='*60}")
+            logger.info(f"\n{'='*60}")
+            logger.info(f"QMOI Real-Time Monitor - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            logger.info(f"{'='*60}")
             
             # System stats
-            print(f"CPU Usage: {system.get('cpu_percent', 0):.1f}%")
-            print(f"Memory Usage: {system.get('memory_percent', 0):.1f}%")
-            print(f"Disk Usage: {system.get('disk_percent', 0):.1f}%")
+            logger.info(f"CPU Usage: {system.get('cpu_percent', 0):.1f}%")
+            logger.info(f"Memory Usage: {system.get('memory_percent', 0):.1f}%")
+            logger.info(f"Disk Usage: {system.get('disk_percent', 0):.1f}%")
             
             # QMOI stats
             if 'qmoi' in qmoi:
                 qmoi_stats = qmoi['qmoi']
-                print(f"Fixes Applied: {qmoi_stats.get('fixes_applied', 0)}")
-                print(f"Platforms Synced: {qmoi_stats.get('platforms_synced', 0)}")
-                print(f"Deployments Successful: {qmoi_stats.get('deployments_successful', 0)}")
-                print(f"Notifications Sent: {qmoi_stats.get('notifications_sent', 0)}")
-                print(f"Health Checks Passed: {qmoi_stats.get('health_checks_passed', 0)}")
+                logger.info(f"Fixes Applied: {qmoi_stats.get('fixes_applied', 0)}")
+                logger.info(f"Platforms Synced: {qmoi_stats.get('platforms_synced', 0)}")
+                logger.info(f"Deployments Successful: {qmoi_stats.get('deployments_successful', 0)}")
+                logger.info(f"Notifications Sent: {qmoi_stats.get('notifications_sent', 0)}")
+                logger.info(f"Health Checks Passed: {qmoi_stats.get('health_checks_passed', 0)}")
             
             # Process stats
             processes = stats.get('processes', {})
-            print(f"Total Processes: {processes.get('total_processes', 0)}")
-            print(f"QMOI Processes: {len(processes.get('qmoi_processes', []))}")
+            logger.info(f"Total Processes: {processes.get('total_processes', 0)}")
+            logger.info(f"QMOI Processes: {len(processes.get('qmoi_processes', []))}")
             
             # Network stats
             network = stats.get('network', {})
-            print(f"Network Connections: {network.get('total_connections', 0)}")
+            logger.info(f"Network Connections: {network.get('total_connections', 0)}")
             
-            print(f"{'='*60}\n")
+            logger.info(f"{'='*60}\n")
             
         except Exception as e:
             logger.error(f"Could not print summary: {e}")
     
-    def start_websocket_server(self):
+    """
+    start_websocket_server function
+    """
+def start_websocket_server(self) -> Any:
         """Start WebSocket server for real-time updates"""
         try:
             port = self.config.get('websocket_port', 8080)
             
-            async def websocket_handler(websocket, path):
+            async """
+    websocket_handler function
+    """
+def websocket_handler(websocket, path) -> Any:
                 """Handle WebSocket connections"""
                 self.websocket_clients.add(websocket)
                 logger.info(f"WebSocket client connected. Total clients: {len(self.websocket_clients)}")
@@ -329,7 +365,10 @@ class QMOIRealTimeMonitor:
                     self.websocket_clients.discard(websocket)
                     logger.info(f"WebSocket client disconnected. Total clients: {len(self.websocket_clients)}")
             
-            async def broadcast_stats():
+            async """
+    broadcast_stats function
+    """
+def broadcast_stats() -> Any:
                 """Broadcast stats to all connected clients"""
                 while self.is_running:
                     try:
@@ -353,14 +392,20 @@ class QMOIRealTimeMonitor:
                     
                     await asyncio.sleep(1)
             
-            async def start_server():
+            async """
+    start_server function
+    """
+def start_server() -> Any:
                 """Start WebSocket server"""
-                async with websockets.serve(websocket_handler, "localhost", port):
+                async with websockets.serve(websocket_handler, "production.qmoi.ai", port):
                     logger.info(f"WebSocket server started on port {port}")
                     await broadcast_stats()
             
             # Start WebSocket server in a separate thread
-            def run_websocket_server():
+            """
+    run_websocket_server function
+    """
+def run_websocket_server() -> Any:
                 asyncio.run(start_server())
             
             websocket_thread = threading.Thread(target=run_websocket_server, daemon=True)
@@ -369,17 +414,23 @@ class QMOIRealTimeMonitor:
         except Exception as e:
             logger.error(f"Could not start WebSocket server: {e}")
     
-    def start_dashboard_server(self):
+    """
+    start_dashboard_server function
+    """
+def start_dashboard_server(self) -> Any:
         """Start dashboard server"""
         try:
             port = self.config.get('dashboard_port', 3001)
             
-            # Create simple HTTP server for dashboard
+            # Create sophisticated HTTP server for dashboard
             from http.server import HTTPServer, BaseHTTPRequestHandler
             import urllib.parse
             
             class DashboardHandler(BaseHTTPRequestHandler):
-                def do_GET(self):
+                """
+    do_GET function
+    """
+def do_GET(self) -> Any:
                     """Handle GET requests"""
                     parsed_path = urllib.parse.urlparse(self.path)
                     
@@ -403,7 +454,10 @@ class QMOIRealTimeMonitor:
                         self.send_response(404)
                         self.end_headers()
                 
-                def generate_dashboard_html(self):
+                """
+    generate_dashboard_html function
+    """
+def generate_dashboard_html(self) -> Any:
                     """Generate dashboard HTML"""
                     return f"""
 <!DOCTYPE html>
@@ -521,7 +575,7 @@ class QMOIRealTimeMonitor:
         const maxReconnectAttempts = 5;
         
         function connectWebSocket() {{
-            ws = new WebSocket('ws://localhost:8080');
+            ws = new WebSocket('wss://production.qmoi.ai:8080');
             
             ws.onopen = function() {{
                 document.getElementById('websocket-status').textContent = 'Connected to real-time updates';
@@ -578,7 +632,7 @@ class QMOIRealTimeMonitor:
         // Fallback to polling if WebSocket fails
         setInterval(function() {{
             if (!ws || ws.readyState !== WebSocket.OPEN) {{
-                fetch('/api/stats')
+                apiClient.get('/api/stats')
                     .then(response => response.json())
                     .then(data => updateDashboard(data))
                     .catch(error => console.error('API error:', error));
@@ -590,12 +644,15 @@ class QMOIRealTimeMonitor:
 """
             
             # Create server
-            server = HTTPServer(('localhost', port), DashboardHandler)
+            server = HTTPServer(('production.qmoi.ai', port), DashboardHandler)
             server.monitor = self
             
             # Start server in a separate thread
-            def run_dashboard_server():
-                logger.info(f"Dashboard server started on http://localhost:{port}")
+            """
+    run_dashboard_server function
+    """
+def run_dashboard_server() -> Any:
+                logger.info(f"Dashboard server started on https://production.qmoi.ai:{port}")
                 server.serve_forever()
             
             dashboard_thread = threading.Thread(target=run_dashboard_server, daemon=True)
@@ -604,7 +661,10 @@ class QMOIRealTimeMonitor:
         except Exception as e:
             logger.error(f"Could not start dashboard server: {e}")
     
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         """Run the real-time monitor"""
         try:
             # Set up signal handlers
@@ -625,12 +685,18 @@ class QMOIRealTimeMonitor:
         finally:
             self.cleanup()
     
-    def signal_handler(self, signum, frame):
+    """
+    signal_handler function
+    """
+def signal_handler(self, signum, frame) -> Any:
         """Handle shutdown signals"""
         logger.info(f"Received signal {signum}, shutting down...")
         self.is_running = False
     
-    def cleanup(self):
+    """
+    cleanup function
+    """
+def cleanup(self) -> Any:
         """Cleanup resources"""
         logger.info("Cleaning up monitor...")
         
@@ -644,7 +710,10 @@ class QMOIRealTimeMonitor:
         
         logger.info("Monitor cleanup completed")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     monitor = QMOIRealTimeMonitor()
     monitor.run()

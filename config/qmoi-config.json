@@ -13,7 +13,13 @@
     "musicproduction": {
       "enabled": true,
       "dailyTarget": 200000,
-      "artists": ["stable-king", "atomic-ice", "sky-q", "rainy-day", "my-name"],
+      "artists": [
+        "latest-king",
+        "atomic-ice",
+        "sky-q",
+        "rainy-day",
+        "my-name"
+      ],
       "autoproduction": true,
       "autoDistribution": true,
       "autoMarketing": true
@@ -28,9 +34,19 @@
     },
     "notificationSystem": {
       "enabled": true,
-      "channels": ["email", "slack", "discord", "telegram"],
+      "channels": [
+        "email",
+        "slack",
+        "discord",
+        "telegram"
+      ],
       "autoNotifications": true,
-      "priorityLevels": ["low", "medium", "high", "critical"]
+      "priorityLevels": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
     },
     "autoFix": {
       "enabled": true,
@@ -69,5 +85,9 @@
     "maxSize": "100MB",
     "maxFiles": 10,
     "rotation": true
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.773748"
 }

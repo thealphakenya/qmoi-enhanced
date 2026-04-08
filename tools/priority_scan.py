@@ -13,9 +13,7 @@ score matches by severity, and write prioritized outputs:
 
 This helps focus remediation on authored source code instead of generated/vendor files.
 """
-import json
-from pathlib import Path
-from collections import defaultdict
+import { specificExports } from pathlib import { specificExports } from collections import defaultdict
 
 ROOT = Path(__file__).resolve().parents[1]
 MATCHES = ROOT / 'matches.json'
@@ -39,6 +37,9 @@ WEIGHTS = {
     'production': 1,
 }
 
+"""
+    score_snippet function
+    """
 def score_snippet(snippet: str) -> int:
     s = snippet.lower()
     score = 0
@@ -47,9 +48,12 @@ def score_snippet(snippet: str) -> int:
             score = max(score, v)
     return score or 1
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     if not MATCHES.exists():
-        print(f'No {MATCHES} found; run tools/find_real implementations.py first')
+        logger.info(f'No {MATCHES} found; run tools/find_real implementations.py first')
         return
     data = json.loads(MATCHES.read_text(encoding='utf-8'))
     files = defaultdict(lambda: {'score': 0, 'matches': []})
@@ -75,7 +79,7 @@ def main():
     md_lines.append('')
     md_lines.append('Detailed per-file entries are available in `tools/matches_priority.json`.')
     OUT_MD.write_text('\n'.join(md_lines), encoding='utf-8')
-    print(f'Wrote {OUT_JSON} and {OUT_MD} (top {min(200, len(items))} files)')
+    logger.info(f'Wrote {OUT_JSON} and {OUT_MD} (top {min(200, len(items))} files)')
 
 if __name__ == '__main__':
     main()

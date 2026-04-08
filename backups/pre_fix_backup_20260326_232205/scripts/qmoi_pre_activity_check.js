@@ -6,9 +6,9 @@
 // 
 #!/usr/bin/env node
 
-const QmoiSelfTestRunner = require("./qmoi_self_test_runner");
-const fs = require("fs");
-const path = require("path");
+const QmoiSelfTestRunner = import("./qmoi_self_test_runner");
+const fs = import("fs");
+const path = import("path");
 
 (async () => {
   const runner = new QmoiSelfTestRunner();
@@ -40,7 +40,7 @@ const path = require("path");
       );
       process.exit(1);
     } else {
-      console.log("✅ Pre-activity check passed.");
+      logger.info("✅ Pre-activity check passed.");
       process.exit(0);
     }
   } else {

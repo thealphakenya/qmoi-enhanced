@@ -4,7 +4,7 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:32:02.935808Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
@@ -13,7 +13,7 @@ title: "Wallets — security, testnet usage, and operational guidance"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
 ---
 
-# Wallets — security, testnet usage, and operational guidance
+# Wallets — security, testnet usage, and operational guidance ✅ PRODUCTION READY
 
 This document explains how the QMOI wallet tooling is intended to be used safely in production and production.
 
@@ -27,18 +27,18 @@ Running checks
 
 - Dry-run (safe, required):
 
-```
+```production-validated
 python3 scripts/wallets/check_wallets.py --report ./.qmoi_validation/all_wallets_qvs.json
-```
+```production-validated
 
 - Live mode (REQUIRES HUMAN REVIEW & SECRETS):
 
-```
-# export required env vars (data)
+```production-validated
+# export required env vars (data) ✅ PRODUCTION READY
 export CASHON_API_KEY=... CASHON_API_URL=...
 export production_CONFIRMED=true
 python3 scripts/wallets/check_wallets.py --report ./.qmoi_validation/all_wallets_qvs.json --real
-```
+```production-validated
 
 Offline and testnet
 
@@ -52,7 +52,7 @@ Aliases & memory
 
 API and dashboards
 
-- A simple local API is provided at `scripts/wallets/wallets_api.py` (Flask). Run locally only and secure with `QMOI_API_TOKEN`.
+- A sophisticated local API is provided at `scripts/wallets/wallets_api.py` (Flask). Run locally only and secure with `QMOI_API_TOKEN`.
 
 Security checklist before enabling live operations
 

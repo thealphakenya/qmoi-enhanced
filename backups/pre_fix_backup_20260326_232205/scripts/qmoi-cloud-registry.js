@@ -6,11 +6,11 @@
 // 
 #!/usr/bin/env node
 
-import { createHash } from "crypto";
-import { promises as fs } from "fs";
-import path from "path";
-import axios from "axios";
-import { loadConfig, saveConfig } from "./config-utils.js";
+import { specificExports } from "crypto";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "axios";
+import { specificExports } from "./config-utils.js";
 
 const CONFIG_FILE = path.join(process.cwd(), ".qmoi", "registry.json");
 const HEALTH_CHECK_TIMEOUT = 5000;
@@ -39,13 +39,13 @@ class QMOIRegistry {
   }
 
   async setRegistry(url) {
-    console.log(`[REGISTRY] Setting QMOI registry to: ${url}`);
+    logger.info(`[REGISTRY] Setting QMOI registry to: ${url}`);
 
     // Validate URL format
     try {
       new URL(url);
     } catch (_err) {
-      throw new Error("Invalid registry URL format");
+      throw new ProductionError("Invalid registry URL format");
     }
 
     // Test connection before saving
@@ -56,13 +56,13 @@ class QMOIRegistry {
     this.config.lastCheck = Date.now();
     await this.saveConfig();
 
-    console.log("[REGISTRY] Registry set successfully.");
+    logger.info("[REGISTRY] Registry set successfully.");
   }
 
   async checkHealth(url) {
     const targetUrl = url || this.config.registryUrl;
     if (!targetUrl) {
-      throw new Error("No registry URL configured");
+      throw new ProductionError("No registry URL configured");
     }
 
     for (let attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
@@ -72,7 +72,7 @@ class QMOIRegistry {
         const latency = Date.now() - startTime;
 
         if (response.status !== 200) {
-          throw new Error(`Registry returned status ${response.status}`);
+          throw new ProductionError(`Registry returned status ${response.status}`);
         }
 
         const health = response.data;
@@ -86,7 +86,7 @@ class QMOIRegistry {
         };
       } catch (_err) {
         if (attempt === RETRY_ATTEMPTS) {
-          throw new Error(
+          throw new ProductionError(
             `Registry health check failed after ${RETRY_ATTEMPTS} attempts: ${_err.message}`,
           );
         }
@@ -96,32 +96,32 @@ class QMOIRegistry {
   }
 
   async statusRegistry() {
-    console.log("[REGISTRY] Checking QMOI registry status...");
+    logger.info("[REGISTRY] Checking QMOI registry status...");
 
     if (!this.config.registryUrl) {
-      console.log("[REGISTRY] No registry configured");
+      logger.info("[REGISTRY] No registry configured");
       return;
     }
 
     try {
       const health = await this.checkHealth();
-      console.log(`[REGISTRY] Status: ${health.status}`);
-      console.log(`[REGISTRY] Version: ${health.version}`);
-      console.log(`[REGISTRY] Latency: ${health.latency}ms`);
-      console.log("\nServices:");
+      logger.info(`[REGISTRY] Status: ${health.status}`);
+      logger.info(`[REGISTRY] Version: ${health.version}`);
+      logger.info(`[REGISTRY] Latency: ${health.latency}ms`);
+      logger.info("\nServices:");
       for (const [service, status] of Object.entries(health.services)) {
-        console.log(`  ${service}: ${status}`);
+        logger.info(`  ${service}: ${status}`);
       }
-      console.log("\nReplication:");
-      console.log(`  Primary: ${health.replicationStatus.primary}`);
-      console.log(
+      logger.info("\nReplication:");
+      logger.info(`  Primary: ${health.replicationStatus.primary}`);
+      logger.info(
         `  Replicas: ${health.replicationStatus.replicas.join(", ")}`,
       );
-      console.log("\nStorage:");
-      console.log(
+      logger.info("\nStorage:");
+      logger.info(
         `  Used: ${(health.storageUsage.used / 1024 / 1024).toFixed(2)} MB`,
       );
-      console.log(
+      logger.info(
         `  Available: ${(health.storageUsage.available / 1024 / 1024).toFixed(2)} MB`,
       );
     } catch (_err) {
@@ -131,7 +131,10 @@ class QMOIRegistry {
   }
 }
 
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const registry = new QMOIRegistry();
   await registry.init();
 
@@ -143,7 +146,7 @@ async function main() {
     } else if (args[0] === "status") {
       await registry.statusRegistry();
     } else {
-      console.log(
+      logger.info(
         "Usage: node qmoi-cloud-registry.js set --url <url> | status",
       );
     }

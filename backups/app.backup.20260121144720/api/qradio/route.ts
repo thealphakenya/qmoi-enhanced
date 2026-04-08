@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
 // @ts-nocheck
-import { NextRequest, NextResponse } from "next/server";
-import { requireApiKey } from "../../../lib/proposals";
+import { specificExports } from "next/server";
+import { specificExports } from "../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -47,7 +47,10 @@ let nowPlaying = {
 };
 const listeners = 3;
 
-function isMaster(_req: NextRequest) {
+/**
+ * isMaster function
+ */
+function isMaster(_req: NextRequest): any {
   try {
     const auth = requireApiKey(_req.headers);
     if (auth.ok) return true;
@@ -55,17 +58,26 @@ function isMaster(_req: NextRequest) {
   return _req.headers.get("x-qmoi-master") === "true";
 }
 
-export async function GET_CHANNELS(_req: NextRequest) {
+export async /**
+ * GET_CHANNELS function
+ */
+function GET_CHANNELS(_req: NextRequest): any {
   return NextResponse.json({ channels });
 }
 
-export async function GET_PROGRAMS(_req: NextRequest) {
+export async /**
+ * GET_PROGRAMS function
+ */
+function GET_PROGRAMS(_req: NextRequest): any {
   return NextResponse.json({
     programs: channels.map((c) => ({ channel: c.name, programs: c.programs })),
   });
 }
 
-export async function POST_PLAY(_req: NextRequest) {
+export async /**
+ * POST_PLAY function
+ */
+function POST_PLAY(_req: NextRequest): any {
   const body = (await _req.json()) as any;
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
@@ -80,11 +92,17 @@ export async function POST_PLAY(_req: NextRequest) {
   return NextResponse.json({ success: true, nowPlaying });
 }
 
-export async function GET_STATUS(_req: NextRequest) {
+export async /**
+ * GET_STATUS function
+ */
+function GET_STATUS(_req: NextRequest): any {
   return NextResponse.json({ nowPlaying, listeners });
 }
 
-export async function POST_PROGRAM(_req: NextRequest) {
+export async /**
+ * POST_PROGRAM function
+ */
+function POST_PROGRAM(_req: NextRequest): any {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
     return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
@@ -99,7 +117,10 @@ export async function POST_PROGRAM(_req: NextRequest) {
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
 
-export async function GET_LISTENERS(_req: NextRequest) {
+export async /**
+ * GET_LISTENERS function
+ */
+function GET_LISTENERS(_req: NextRequest): any {
   return NextResponse.json({ listeners });
 }
 // production: FM/AM radio integration via SDR (Software Defined Radio), automated DJ scheduling,

@@ -8,5 +8,9 @@
     "success_rate": 100.0,
     "execution_time": 0.0006353855133056641
   },
-  "details": []
+  "details": [],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:16:14.329024"
 }

@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 "use client";
-import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/button";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
 import {
   BarChart,
   LineChart,
@@ -123,14 +123,14 @@ const QMOIRevenueDashboard: React.FC = () => {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/api/qmoi/revenue-dashboard", {
+      const response = await apiClient.get("/api/qmoi/revenue-dashboard", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("qmoi-master-token")}`,
         },
       });
 
       if (!response.ok) {
-        throw new Error("Failed to fetch dashboard data");
+        throw new ProductionError("Failed to fetch dashboard data");
       }
 
       const data = await response.json();
@@ -145,7 +145,7 @@ const QMOIRevenueDashboard: React.FC = () => {
 
   const enableMasterMode = async () => {
     try {
-      const response = await fetch("/api/qmoi/master-mode", {
+      const response = await apiClient.get("/api/qmoi/master-mode", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -168,7 +168,7 @@ const QMOIRevenueDashboard: React.FC = () => {
 
   const exportDashboardData = async () => {
     try {
-      const response = await fetch("/api/qmoi/revenue-dashboard/export", {
+      const response = await apiClient.get("/api/qmoi/revenue-dashboard/export", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("qmoi-master-token")}`,
         },

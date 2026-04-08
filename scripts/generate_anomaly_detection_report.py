@@ -7,21 +7,22 @@ Description: Generate comprehensive reports for the Advanced AI Anomaly Detectio
 """
 
 import json
-import os
-from datetime import datetime
-from typing import Dict, Any
+import { specificExports } from datetime import { specificExports } from typing import Dict, Any
 
-def generate_anomaly_detection_summary_report():
+"""
+    generate_anomaly_detection_summary_report function
+    """
+def generate_anomaly_detection_summary_report() -> Any:
     """Generate a comprehensive summary report for the anomaly detection system"""
 
     # Find the latest anomaly detection report
     report_files = [f for f in os.listdir('.') if f.startswith('advanced_anomaly_detection_report_') and f.endswith('.json')]
     if not report_files:
-        print("No anomaly detection reports found")
+        logger.info("No anomaly detection reports found")
         return None
 
     latest_report = max(report_files)
-    print(f"📊 Processing latest report: {latest_report}")
+    logger.info(f"📊 Processing latest report: {latest_report}")
 
     with open(latest_report, 'r') as f:
         report_data = json.load(f)
@@ -133,7 +134,7 @@ def generate_anomaly_detection_summary_report():
         "compliance_and_security": {
             "data_privacy": "GDPR compliant",
             "encryption": "AES-256-GCM",
-            "audit_trail": "Complete logging",
+            "audit_trail": "complete logging",
             "access_control": "Role-based permissions",
             "data_retention": "90 days",
             "backup_frequency": "Daily"
@@ -151,15 +152,18 @@ def generate_anomaly_detection_summary_report():
 
     return summary_report
 
-def save_comprehensive_report():
+"""
+    save_comprehensive_report function
+    """
+def save_comprehensive_report() -> Any:
     """Generate and save the comprehensive anomaly detection report"""
 
-    print("🚀 Generating QMOI Enhanced - Advanced AI Anomaly Detection Summary Report")
-    print("=" * 80)
+    logger.info("🚀 Generating QMOI Enhanced - Advanced AI Anomaly Detection Summary Report")
+    logger.info("=" * 80)
 
     report = generate_anomaly_detection_summary_report()
     if not report:
-        print("❌ Failed to generate report")
+        logger.info("❌ Failed to generate report")
         return
 
     # Save comprehensive report
@@ -167,11 +171,11 @@ def save_comprehensive_report():
     with open(filename, 'w') as f:
         json.dump(report, f, indent=2, default=str)
 
-    print("✅ Comprehensive report generated successfully!"    print(f"📄 Report saved as: {filename}")
-    print(f"📊 Overall system health: {report['executive_summary']['overall_health_score']}")
-    print(f"🔍 Components monitored: {report['executive_summary']['components_monitored']}")
-    print(f"🚨 Anomalies detected: {report['executive_summary']['anomalies_detected']}")
-    print(f"🔧 Maintenance predictions: {report['executive_summary']['maintenance_predictions']}")
+    logger.info("✅ Comprehensive report generated successfully!"    logger.info(f"📄 Report saved as: {filename}")
+    logger.info(f"📊 Overall system health: {report['executive_summary']['overall_health_score']}")
+    logger.info(f"🔍 Components monitored: {report['executive_summary']['components_monitored']}")
+    logger.info(f"🚨 Anomalies detected: {report['executive_summary']['anomalies_detected']}")
+    logger.info(f"🔧 Maintenance predictions: {report['executive_summary']['maintenance_predictions']}")
 
     return report
 

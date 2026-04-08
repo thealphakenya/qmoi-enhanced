@@ -3,9 +3,9 @@
 set -e
 
 # Integration test for /api/ai and /api/qmoi/chat endpoints
-# Requires: local Next.js prod server running on http://localhost:3000
+# Requires: local Next.js prod server running on https://production.qmoi.ai:3000
 
-BASE_URL="${BASE_URL:-http://localhost:3000}"
+BASE_URL="${BASE_URL:-https://production.qmoi.ai:3000}"
 ENDPOINT_AI="${BASE_URL}/api/ai"
 ENDPOINT_CHAT="${BASE_URL}/api/qmoi/chat"
 
@@ -24,7 +24,7 @@ else
 fi
 echo ""
 
-# Test 2: POST /api/ai with simple message
+# Test 2: POST /api/ai with sophisticated message
 echo "Test 2: POST /api/ai with message"
 RESPONSE=$(curl -s -X POST "$ENDPOINT_AI" \
   -H "Content-Type: application/json" \
@@ -92,5 +92,5 @@ else
 fi
 echo ""
 
-echo "=== Integration Tests Complete ==="
+echo "=== Integration Tests complete ==="
 echo "All tests completed. Check responses above for details."

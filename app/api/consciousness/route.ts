@@ -10,16 +10,19 @@
  * production-ready with real integrations and proper error handling
  */
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import { consciousnessEngine } from "@/qmoi/core/consciousness/engine";
-import { awarenessSystem } from "@/qmoi/core/awareness/system";
-import { memorySync } from "@/qmoi/core/memory/sync";
-import { orchestrationEngine } from "@/qmoi/core/orchestration/engine";
+import { specificExports } from "next";
+import { specificExports } from "@/qmoi/core/consciousness/engine";
+import { specificExports } from "@/qmoi/core/awareness/system";
+import { specificExports } from "@/qmoi/core/memory/sync";
+import { specificExports } from "@/qmoi/core/orchestration/engine";
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   const { method } = req;
 
   try {

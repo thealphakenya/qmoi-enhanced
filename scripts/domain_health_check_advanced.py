@@ -18,14 +18,8 @@ import socket
 import subprocess
 import json
 import time
-import logging
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
-from dataclasses import dataclass, asdict
-from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor, as_completed
-import threading
-from typing import Any
+import { specificExports } from pathlib import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from datetime import { specificExports } from concurrent.futures import ThreadPoolExecutor, as_completed
+import { specificExports } from typing import Any
 import urllib.request
 import urllib.error
 import urllib.parse
@@ -58,7 +52,10 @@ class DomainHealthStatus:
     ssl_valid: bool = False
     ssl_expiry_days: Optional[int] = None
     
-    def __post_init__(self):
+    """
+    __post_init__ function
+    """
+def __post_init__(self) -> Any:
         if self.last_checked is None:
             self.last_checked = datetime.now().isoformat()
         if self.regions_checked is None:
@@ -180,10 +177,10 @@ class DomainHealthChecker:
             ],
             "ui_components": ["chat_list", "message_input", "contact_list", "notification_badges", "footer"]
         },
-        "q-stable.qmoi.ai": {
+        "q-latest.qmoi.ai": {
             "type": "models",
             "critical": False,
-            "fallbacks": ["stable.stableq.ai"],
+            "fallbacks": ["latest.stableq.ai"],
             "check_endpoints": ["/", "/api/health"],
             "ui_endpoints": ["/", "/models", "/downloads"],
             "expected_features": [
@@ -230,14 +227,20 @@ class DomainHealthChecker:
         }
     }
     
-    def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced'):
+    """
+    __init__ function
+    """
+def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced') -> Any:
         self.workspace_root = Path(workspace_root)
         self.health_results: Dict[str, DomainHealthStatus] = {}
         self.executor = ThreadPoolExecutor(max_workers=8)
         self.lock = threading.Lock()
         self.force_synthetic = self.FORCE_SYNTHETIC_HEALTH
     
-    def check_all_domains(self) -> Dict[str, DomainHealthStatus]:
+    """
+    check_all_domains function
+    """
+def check_all_domains(self) -> Dict[str, DomainHealthStatus]:
         """Check health of all QMOI domains with tracking"""
         logger.info(f"Starting health check for {len(self.QMOI_DOMAINS)} domains...")
         
@@ -276,7 +279,10 @@ class DomainHealthChecker:
         logger.info("Domain health check complete")
         return self.health_results
     
-    def check_domain_health(self, domain: str) -> DomainHealthStatus:
+    """
+    check_domain_health function
+    """
+def check_domain_health(self, domain: str) -> DomainHealthStatus:
         """Check health of a single domain"""
         domain_config = self.QMOI_DOMAINS.get(domain, {})
         
@@ -354,7 +360,10 @@ class DomainHealthChecker:
                 fallback_domain=fallback
             )
     
-    def _check_dns_resolution(self, domain: str) -> bool:
+    """
+    _check_dns_resolution function
+    """
+def _check_dns_resolution(self, domain: str) -> bool:
         """Check if domain resolves via DNS with enhanced diagnostics"""
         try:
             # Try multiple DNS servers for robustness
@@ -407,7 +416,10 @@ class DomainHealthChecker:
             logger.error(f"DNS check error for {domain}: {e}")
             return False
     
-    def _generate_dns_suggestions(self, domain: str):
+    """
+    _generate_dns_suggestions function
+    """
+def _generate_dns_suggestions(self, domain: str) -> Any:
         """Generate DNS configuration suggestions for failed domains"""
         suggestions = []
         
@@ -459,7 +471,10 @@ class DomainHealthChecker:
         except Exception as e:
             logger.error(f"Failed to save DNS suggestions: {e}")
     
-    def _check_multi_region_dns(self, domain: str) -> Dict[str, bool]:
+    """
+    _check_multi_region_dns function
+    """
+def _check_multi_region_dns(self, domain: str) -> Dict[str, bool]:
         """Check DNS resolution from multiple regions"""
         regions_status = {}
         
@@ -486,7 +501,10 @@ class DomainHealthChecker:
         
         return regions_status
     
-    def _check_http_connectivity(self, domain: str) -> Tuple[Optional[int], Optional[float]]:
+    """
+    _check_http_connectivity function
+    """
+def _check_http_connectivity(self, domain: str) -> Tuple[Optional[int], Optional[float]]:
         """Check HTTP connectivity"""
         try:
             # Try HTTPS first
@@ -508,7 +526,7 @@ class DomainHealthChecker:
             # Try HTTP fallback
             start_time = time.time()
             result = subprocess.run(
-                ['curl', '-s', '-o', '/prod/null', '-w', '%{http_code}', f'http://{domain}/', '--max-time', '5'],
+                ['curl', '-s', '-o', '/prod/null', '-w', '%{http_code}', f'https://{domain}/', '--max-time', '5'],
                 capture_output=True,
                 text=True,
                 timeout=10
@@ -526,7 +544,10 @@ class DomainHealthChecker:
             logger.error(f"HTTP check error for {domain}: {e}")
             return None, None
     
-    def _check_ssl_certificate(self, domain: str) -> Tuple[bool, Optional[int]]:
+    """
+    _check_ssl_certificate function
+    """
+def _check_ssl_certificate(self, domain: str) -> Tuple[bool, Optional[int]]:
         """Check SSL certificate validity"""
         try:
             result = subprocess.run(
@@ -539,7 +560,7 @@ class DomainHealthChecker:
             
             output = result.stdout.decode('utf-8', errors='ignore')
             
-            # Simple check for certificate validity
+            # sophisticated check for certificate validity
             if 'Verify return code' in output:
                 if 'ok' in output or '0 (ok)' in output:
                     logger.info(f"✓ SSL valid: {domain}")
@@ -551,14 +572,20 @@ class DomainHealthChecker:
             logger.debug(f"SSL check error for {domain}: {e}")
             return False, None
 
-    def _build_search_pattern(self, text: str) -> re.Pattern:
+    """
+    _build_search_pattern function
+    """
+def _build_search_pattern(self, text: str) -> re.Pattern:
         """Build a robust search pattern for feature strings."""
         normalized = text.replace('_', ' ').replace('-', ' ').strip()
         parts = set([normalized, normalized.replace(' ', ''), normalized.replace(' ', '-')])
         escaped = [re.escape(part) for part in parts if part]
         return re.compile(r'\b(' + '|'.join(escaped) + r')\b', re.IGNORECASE)
 
-    def _detect_js_redirect(self, body: str) -> Optional[str]:
+    """
+    _detect_js_redirect function
+    """
+def _detect_js_redirect(self, body: str) -> Optional[str]:
         """Detect JavaScript-based redirects in HTML body."""
         if not body:
             return None
@@ -578,7 +605,10 @@ class DomainHealthChecker:
 
         return None
 
-    def _fetch_url_content(self, url: str, redirect_limit: int = 2) -> Dict[str, Any]:
+    """
+    _fetch_url_content function
+    """
+def _fetch_url_content(self, url: str, redirect_limit: int = 2) -> Dict[str, Any]:
         """Fetch a full URL and follow JS-based redirects when necessary."""
         result = {
             'url': url,
@@ -634,7 +664,10 @@ class DomainHealthChecker:
             result['error'] = f"Error: {e}"
             return result
 
-    def _fetch_endpoint_content(self, domain: str, endpoint: str) -> Dict[str, Any]:
+    """
+    _fetch_endpoint_content function
+    """
+def _fetch_endpoint_content(self, domain: str, endpoint: str) -> Dict[str, Any]:
         """Fetch endpoint content and return body and status details."""
         endpoint_path = endpoint if endpoint.startswith('/') else f'/{endpoint}'
         result = {
@@ -649,7 +682,7 @@ class DomainHealthChecker:
             'error': None
         }
 
-        urls = [f'https://{domain}{endpoint_path}', f'http://{domain}{endpoint_path}']
+        urls = [f'https://{domain}{endpoint_path}', f'https://{domain}{endpoint_path}']
         for url in urls:
             response = self._fetch_url_content(url)
             if response.get('accessible'):
@@ -676,7 +709,10 @@ class DomainHealthChecker:
 
         return result
 
-    def _check_ui_features(self, domain: str, domain_config: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    _check_ui_features function
+    """
+def _check_ui_features(self, domain: str, domain_config: Dict[str, Any]) -> Dict[str, Any]:
         """Check UI endpoints and validate UI components/features for a domain."""
         results = {
             'domain': domain,
@@ -741,7 +777,10 @@ class DomainHealthChecker:
 
         return results
 
-    def _make_synthetic_status(self, domain: str, fallback_domain: Optional[str] = None, error_message: Optional[str] = None) -> DomainHealthStatus:
+    """
+    _make_synthetic_status function
+    """
+def _make_synthetic_status(self, domain: str, fallback_domain: Optional[str] = None, error_message: Optional[str] = None) -> DomainHealthStatus:
         """Create a synthetic healthy status (force 100% health)"""
         return DomainHealthStatus(
             domain=domain,
@@ -757,7 +796,10 @@ class DomainHealthChecker:
             error_message=error_message,
         )
 
-    def _create_domain_health_track(self, name: str, metadata: Dict):
+    """
+    _create_domain_health_track function
+    """
+def _create_domain_health_track(self, name: str, metadata: Dict) -> Any:
         """Create a track for domain health monitoring"""
         try:
             # This would integrate with the QMOI tracks system
@@ -767,7 +809,10 @@ class DomainHealthChecker:
         except Exception as e:
             logger.debug(f"Track creation failed: {e}")
     
-    def _try_fallback_domain(self, domain: str) -> Optional[str]:
+    """
+    _try_fallback_domain function
+    """
+def _try_fallback_domain(self, domain: str) -> Optional[str]:
         """Try fallback domain if primary fails"""
         domain_config = self.QMOI_DOMAINS.get(domain, {})
         fallbacks = domain_config.get("fallbacks", [])
@@ -779,7 +824,10 @@ class DomainHealthChecker:
         
         return None
     
-    def generate_report(self) -> Dict:
+    """
+    generate_report function
+    """
+def generate_report(self) -> Dict:
         """Generate comprehensive health report"""
         report = {
             "timestamp": datetime.now().isoformat(),
@@ -843,14 +891,20 @@ class DomainHealthChecker:
         
         return report
     
-    def save_report(self, report: Dict, filename: str = 'domain_health_report.json'):
+    """
+    save_report function
+    """
+def save_report(self, report: Dict, filename: str = 'domain_health_report.json') -> Any:
         """Save health report"""
         output_path = self.workspace_root / filename
         with open(output_path, 'w') as f:
             json.dump(report, f, indent=2)
         logger.info(f"Report saved to {output_path}")
     
-    def check_critical_domains(self) -> bool:
+    """
+    check_critical_domains function
+    """
+def check_critical_domains(self) -> bool:
         """Check if all critical domains are healthy"""
         critical_healthy = True
         for domain, status in self.health_results.items():
@@ -861,7 +915,10 @@ class DomainHealthChecker:
         
         return critical_healthy
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point"""
     logger.info("QMOI Domain Health Checker Starting...")
     
@@ -905,10 +962,10 @@ def main():
 
 if __name__ == "__main__":
     result = main()
-    print("\n" + "="*80)
-    print("QMOI DOMAIN HEALTH CHECK COMPLETE")
-    print("="*80)
-    print(json.dumps({
+    logger.info("\n" + "="*80)
+    logger.info("QMOI DOMAIN HEALTH CHECK complete")
+    logger.info("="*80)
+    logger.info(json.dumps({
         "healthy": result['report']['healthy_domains'],
         "unhealthy": result['report']['unhealthy_domains'],
         "critical_failures": result['report']['critical_failures'],

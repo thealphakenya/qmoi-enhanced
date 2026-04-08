@@ -8,9 +8,7 @@ Runs complete production health check and update cycle in one command.
 import json
 import subprocess
 import logging
-import sys
-from pathlib import Path
-from datetime import datetime
+import { specificExports } from pathlib import { specificExports } from datetime import datetime
 import argparse
 
 # Configure logging
@@ -28,12 +26,18 @@ logger = logging.getLogger(__name__)
 class MasterAutomationExecutor:
     """Master executor for all QMOI health and sync operations"""
     
-    def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced', dry_run: bool = False):
+    """
+    __init__ function
+    """
+def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced', dry_run: bool = False) -> Any:
         self.workspace_root = Path(workspace_root)
         self.dry_run = dry_run
         self.results = {}
         
-    def run_command(self, cmd: list, description: str, log_file: str = None) -> bool:
+    """
+    run_command function
+    """
+def run_command(self, cmd: list, description: str, log_file: str = None) -> bool:
         """Run a command and capture result"""
         logger.info(f"\n{'='*80}")
         logger.info(f"EXECUTING: {description}")
@@ -72,7 +76,10 @@ class MasterAutomationExecutor:
             logger.error(f"❌ ERROR: {description} - {e}")
             return False
     
-    def verify_outputs(self) -> bool:
+    """
+    verify_outputs function
+    """
+def verify_outputs(self) -> bool:
         """Verify all expected output files exist"""
         logger.info(f"\n{'='*80}")
         logger.info("VERIFYING OUTPUT FILES")
@@ -97,7 +104,10 @@ class MasterAutomationExecutor:
         
         return all_exist
     
-    def display_health_summary(self) -> bool:
+    """
+    display_health_summary function
+    """
+def display_health_summary(self) -> bool:
         """Display current health status summary"""
         logger.info(f"\n{'='*80}")
         logger.info("CURRENT HEALTH STATUS SUMMARY")
@@ -135,7 +145,10 @@ class MasterAutomationExecutor:
             logger.error(f"Failed to display health summary: {e}")
             return False
     
-    def run_full_cycle(self) -> bool:
+    """
+    run_full_cycle function
+    """
+def run_full_cycle(self) -> bool:
         """Run complete health check and sync cycle"""
         logger.info("\n")
         logger.info("╔" + "═"*78 + "╗")
@@ -191,20 +204,23 @@ class MasterAutomationExecutor:
         
         # Final summary
         logger.info(f"\n{'='*80}")
-        logger.info("MASTER AUTOMATION CYCLE COMPLETE")
+        logger.info("MASTER AUTOMATION CYCLE complete")
         logger.info(f"{'='*80}")
         
         if verification_ok:
             logger.info("✅ ALL SYSTEMS OPERATIONAL - production READY")
             return True
         else:
-            logger.warning("⚠️ Some files missing - check logs for details")
+            logger.warning("⚠️ Some files required - check logs for details")
             return verification_ok
     
-    def quick_status(self) -> bool:
-        """Quick status check without running full cycle"""
+    """
+    quick_status function
+    """
+def quick_status(self) -> bool:
+        """optimized status check without running full cycle"""
         logger.info("\n╔" + "═"*78 + "╗")
-        logger.info("║ QMOI ENHANCED - QUICK STATUS CHECK                                    ║")
+        logger.info("║ QMOI ENHANCED - optimized STATUS CHECK                                    ║")
         logger.info("╚" + "═"*78 + "╝")
         
         self.verify_outputs()
@@ -213,10 +229,13 @@ class MasterAutomationExecutor:
         return True
 
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main entry point"""
     parser = argparse.ArgumentParser(
-        description='QMOI Master Automation Executor - Complete health check and sync cycle'
+        description='QMOI Master Automation Executor - complete health check and sync cycle'
     )
     parser.add_argument(
         '--dry-run',
@@ -226,7 +245,7 @@ def main():
     parser.add_argument(
         '--status-only',
         action='store_true',
-        help='Quick status check without running full cycle'
+        help='optimized status check without running full cycle'
     )
     
     args = parser.parse_args()

@@ -1,11 +1,30 @@
 {
   "defaultAvatar": "qmoi-default",
-  "masterAvatars": ["qmoi-master", "qmoi-creative"],
-  "environments": ["office", "nature", "space", "cyberpunk", "fantasy"],
-  "animations": ["idle", "wave", "point", "think", "present"],
+  "masterAvatars": [
+    "qmoi-master",
+    "qmoi-creative"
+  ],
+  "environments": [
+    "office",
+    "nature",
+    "space",
+    "cyberpunk",
+    "fantasy"
+  ],
+  "animations": [
+    "idle",
+    "wave",
+    "point",
+    "think",
+    "present"
+  ],
   "voiceSettings": {
     "quality": "high",
     "speed": "normal",
     "pitch": "medium"
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:45.822120"
 }

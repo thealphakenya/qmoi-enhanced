@@ -151,11 +151,11 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3000/api",
+          "url": "https://production.qmoi.ai:3000/api",
           "https_available": false
         },
         {
-          "url": "http://localhost:3000/api/qcity/selfheal-npm",
+          "url": "https://production.qmoi.ai:3000/api/qcity/selfheal-npm",
           "https_available": false
         },
         {
@@ -198,7 +198,7 @@
       "path": "BUILDAPPSFORALLPLATFORMS.md",
       "urls": [
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/tag/v1.0.177",
           "https_available": null
         }
       ],
@@ -208,7 +208,7 @@
       "path": "BUILD_COMPLETION_SUMMARY.md",
       "urls": [
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/tag/v1.0.177",
           "https_available": null
         }
       ],
@@ -228,7 +228,7 @@
       "path": "CMDCOMMANDS.md",
       "urls": [
         {
-          "url": "http://localhost:5050/api/build-apps",
+          "url": "https://production.qmoi.ai:5050/api/build-apps",
           "https_available": false
         }
       ],
@@ -253,15 +253,15 @@
       "path": "CURLCOMMANDS.md",
       "urls": [
         {
-          "url": "http://localhost:4000/api/logs",
+          "url": "https://production.qmoi.ai:4000/api/logs",
           "https_available": false
         },
         {
-          "url": "http://localhost:4000/health",
+          "url": "https://production.qmoi.ai:4000/health",
           "https_available": false
         },
         {
-          "url": "http://localhost:4000/login",
+          "url": "https://production.qmoi.ai:4000/login",
           "https_available": false
         },
         {
@@ -273,15 +273,15 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:4000/api/realtime-events",
+          "url": "https://production.qmoi.ai:4000/api/realtime-events",
           "https_available": false
         },
         {
-          "url": "http://localhost:4000/api/error-fix-log",
+          "url": "https://production.qmoi.ai:4000/api/error-fix-log",
           "https_available": false
         },
         {
-          "url": "http://localhost:4000/api/trigger-fix",
+          "url": "https://production.qmoi.ai:4000/api/trigger-fix",
           "https_available": false
         }
       ],
@@ -301,11 +301,11 @@
       "path": "DEPLOYMENT-README.md",
       "urls": [
         {
-          "url": "http://localhost:3000",
+          "url": "https://production.qmoi.ai:3000",
           "https_available": false
         },
         {
-          "url": "http://localhost:5055",
+          "url": "https://production.qmoi.ai:5055",
           "https_available": false
         },
         {
@@ -335,15 +335,15 @@
       "path": "prodCOMMANDS.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qcity](http://localhost:3000/qcity",
+          "url": "https://production.qmoi.ai:3000/qcity](https://production.qmoi.ai:3000/qcity",
           "https_available": false
         },
         {
-          "url": "http://localhost:5000](http://localhost:5000",
+          "url": "https://production.qmoi.ai:5000](https://production.qmoi.ai:5000",
           "https_available": false
         },
         {
-          "url": "http://localhost:3000](http://localhost:3000",
+          "url": "https://production.qmoi.ai:3000](https://production.qmoi.ai:3000",
           "https_available": false
         }
       ],
@@ -599,7 +599,7 @@
       "fixes": []
     },
     {
-      "path": "FAST-BOOTSTRAP-README.md",
+      "path": "high-performance-BOOTSTRAP-README.md",
       "urls": [],
       "fixes": []
     },
@@ -609,7 +609,7 @@
       "fixes": []
     },
     {
-      "path": "GITHUB-ACTIONS-COMPLETE.md",
+      "path": "GITHUB-ACTIONS-complete.md",
       "urls": [],
       "fixes": []
     },
@@ -707,7 +707,7 @@
       "path": "MONITORING.md",
       "urls": [
         {
-          "url": "http://localhost:4000/",
+          "url": "https://production.qmoi.ai:4000/",
           "https_available": false
         }
       ],
@@ -833,10 +833,10 @@
       "fixes": []
     },
     {
-      "path": "QMOI-AUTOMATION-COMPLETE.md",
+      "path": "QMOI-AUTOMATION-complete.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qmoi-revenue-dashboard",
+          "url": "https://production.qmoi.ai:3000/qmoi-revenue-dashboard",
           "https_available": false
         }
       ],
@@ -892,7 +892,7 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3010",
+          "url": "https://production.qmoi.ai:3010",
           "https_available": false
         }
       ],
@@ -910,11 +910,11 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3000",
+          "url": "https://production.qmoi.ai:3000",
           "https_available": false
         },
         {
-          "url": "http://localhost:3001",
+          "url": "https://production.qmoi.ai:3001",
           "https_available": false
         },
         {
@@ -945,14 +945,14 @@
       "fixes": []
     },
     {
-      "path": "QMOI-ENHANCED-COMPLETE.md",
+      "path": "QMOI-ENHANCED-complete.md",
       "urls": [
         {
-          "url": "http://localhost:7860/status",
+          "url": "https://production.qmoi.ai:7860/status",
           "https_available": false
         },
         {
-          "url": "http://localhost:7861",
+          "url": "https://production.qmoi.ai:7861",
           "https_available": false
         }
       ],
@@ -972,7 +972,7 @@
       "path": "QMOI-ENHANCED-FINAL.md",
       "urls": [
         {
-          "url": "http://localhost:7860",
+          "url": "https://production.qmoi.ai:7860",
           "https_available": false
         },
         {
@@ -1041,7 +1041,7 @@
       "path": "QMOI-MASTER-CONTROLS.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qmoi-revenue-dashboard",
+          "url": "https://production.qmoi.ai:3000/qmoi-revenue-dashboard",
           "https_available": false
         }
       ],
@@ -1711,7 +1711,7 @@
           "https_available": null
         },
         {
-          "url": "http://`",
+          "url": "https://`",
           "https_available": false
         },
         {
@@ -1836,7 +1836,7 @@
       "path": "QMOIQCITYAUTOMATIC.md",
       "urls": [
         {
-          "url": "http://localhost:3010",
+          "url": "https://production.qmoi.ai:3010",
           "https_available": false
         }
       ],
@@ -2197,7 +2197,7 @@
       "path": "README (1).md",
       "urls": [
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.zip",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.zip",
           "https_available": null
         },
         {
@@ -2213,15 +2213,15 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases",
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.dmg",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.exe",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.exe",
           "https_available": null
         },
         {
@@ -2237,7 +2237,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.ipa",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.ipa",
           "https_available": null
         },
         {
@@ -2245,7 +2245,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.appimage",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.appimage",
           "https_available": null
         },
         {
@@ -2257,11 +2257,11 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:5055",
+          "url": "https://production.qmoi.ai:5055",
           "https_available": false
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.deb",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.deb",
           "https_available": null
         },
         {
@@ -2297,15 +2297,15 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.apk",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai\\_smarttv.apk",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai\\_smarttv.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.img",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.img",
           "https_available": null
         }
       ],
@@ -2315,7 +2315,7 @@
       "path": "README.md",
       "urls": [
         {
-          "url": "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-stable/",
+          "url": "https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-latest/",
           "https_available": null
         },
         {
@@ -2387,7 +2387,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg",
+          "url": "https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-latest.yml/badge.svg",
           "https_available": null
         },
         {
@@ -2551,7 +2551,7 @@
       "path": "SCRIPTSREADME.md",
       "urls": [
         {
-          "url": "http://localhost:3001",
+          "url": "https://production.qmoi.ai:3001",
           "https_available": false
         }
       ],
@@ -2721,15 +2721,15 @@
       "path": "docs/API.md",
       "urls": [
         {
-          "url": "http://localhost:8000",
+          "url": "https://production.qmoi.ai:8000",
           "https_available": false
         },
         {
-          "url": "http://localhost:8000/automation/status",
+          "url": "https://production.qmoi.ai:8000/automation/status",
           "https_available": false
         },
         {
-          "url": "http://localhost:8000/token",
+          "url": "https://production.qmoi.ai:8000/token",
           "https_available": false
         }
       ],
@@ -2759,7 +2759,7 @@
       "path": "docs/MONITORING_SYSTEM.md",
       "urls": [
         {
-          "url": "http://localhost:8080",
+          "url": "https://production.qmoi.ai:8080",
           "https_available": false
         },
         {
@@ -2864,7 +2864,7 @@
       "fixes": []
     },
     {
-      "path": "pwa_apps/q-stable/README.md",
+      "path": "pwa_apps/q-latest/README.md",
       "urls": [],
       "fixes": []
     },
@@ -2993,7 +2993,7 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3000/api",
+          "url": "https://production.qmoi.ai:3000/api",
           "https_available": false
         },
         {
@@ -3001,7 +3001,7 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3000/api/qcity/selfheal-npm",
+          "url": "https://production.qmoi.ai:3000/api/qcity/selfheal-npm",
           "https_available": false
         }
       ],
@@ -3112,7 +3112,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/tag/v1.0.177",
           "https_available": null
         },
         {
@@ -3186,7 +3186,7 @@
       "path": "qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md",
       "urls": [
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/tag/v1.0.177",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/tag/v1.0.177",
           "https_available": null
         }
       ],
@@ -3206,7 +3206,7 @@
       "path": "qmoi-enhanced/CMDCOMMANDS.md",
       "urls": [
         {
-          "url": "http://localhost:5050/api/build-apps",
+          "url": "https://production.qmoi.ai:5050/api/build-apps",
           "https_available": false
         }
       ],
@@ -3231,11 +3231,11 @@
       "path": "qmoi-enhanced/DEPLOYMENT-README.md",
       "urls": [
         {
-          "url": "http://localhost:3000",
+          "url": "https://production.qmoi.ai:3000",
           "https_available": false
         },
         {
-          "url": "http://localhost:5055",
+          "url": "https://production.qmoi.ai:5055",
           "https_available": false
         },
         {
@@ -3265,15 +3265,15 @@
       "path": "qmoi-enhanced/prodCOMMANDS.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qcity](http://localhost:3000/qcity",
+          "url": "https://production.qmoi.ai:3000/qcity](https://production.qmoi.ai:3000/qcity",
           "https_available": false
         },
         {
-          "url": "http://localhost:5000](http://localhost:5000",
+          "url": "https://production.qmoi.ai:5000](https://production.qmoi.ai:5000",
           "https_available": false
         },
         {
-          "url": "http://localhost:3000](http://localhost:3000",
+          "url": "https://production.qmoi.ai:3000](https://production.qmoi.ai:3000",
           "https_available": false
         }
       ],
@@ -3379,7 +3379,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/FAST-BOOTSTRAP-README.md",
+      "path": "qmoi-enhanced/high-performance-BOOTSTRAP-README.md",
       "urls": [],
       "fixes": []
     },
@@ -3389,7 +3389,7 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/GITHUB-ACTIONS-COMPLETE.md",
+      "path": "qmoi-enhanced/GITHUB-ACTIONS-complete.md",
       "urls": [],
       "fixes": []
     },
@@ -3462,7 +3462,7 @@
       "path": "qmoi-enhanced/MONITORING.md",
       "urls": [
         {
-          "url": "http://localhost:4000/",
+          "url": "https://production.qmoi.ai:4000/",
           "https_available": false
         }
       ],
@@ -3553,10 +3553,10 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOI-AUTOMATION-COMPLETE.md",
+      "path": "qmoi-enhanced/QMOI-AUTOMATION-complete.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qmoi-revenue-dashboard",
+          "url": "https://production.qmoi.ai:3000/qmoi-revenue-dashboard",
           "https_available": false
         }
       ],
@@ -3602,7 +3602,7 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3010",
+          "url": "https://production.qmoi.ai:3010",
           "https_available": false
         }
       ],
@@ -3620,11 +3620,11 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:3000",
+          "url": "https://production.qmoi.ai:3000",
           "https_available": false
         },
         {
-          "url": "http://localhost:3001",
+          "url": "https://production.qmoi.ai:3001",
           "https_available": false
         },
         {
@@ -3655,14 +3655,14 @@
       "fixes": []
     },
     {
-      "path": "qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md",
+      "path": "qmoi-enhanced/QMOI-ENHANCED-complete.md",
       "urls": [
         {
-          "url": "http://localhost:7860/status",
+          "url": "https://production.qmoi.ai:7860/status",
           "https_available": false
         },
         {
-          "url": "http://localhost:7861",
+          "url": "https://production.qmoi.ai:7861",
           "https_available": false
         }
       ],
@@ -3682,7 +3682,7 @@
       "path": "qmoi-enhanced/QMOI-ENHANCED-FINAL.md",
       "urls": [
         {
-          "url": "http://localhost:7860",
+          "url": "https://production.qmoi.ai:7860",
           "https_available": false
         },
         {
@@ -3751,7 +3751,7 @@
       "path": "qmoi-enhanced/QMOI-MASTER-CONTROLS.md",
       "urls": [
         {
-          "url": "http://localhost:3000/qmoi-revenue-dashboard",
+          "url": "https://production.qmoi.ai:3000/qmoi-revenue-dashboard",
           "https_available": false
         }
       ],
@@ -4576,7 +4576,7 @@
           "https_available": null
         },
         {
-          "url": "http://127.0.0.1:4040/api/tunnels",
+          "url": "https://prod.qmoi.ai:4040/api/tunnels",
           "https_available": false
         }
       ],
@@ -4596,7 +4596,7 @@
       "path": "qmoi-enhanced/QMOIQCITYAUTOMATIC.md",
       "urls": [
         {
-          "url": "http://localhost:3010",
+          "url": "https://production.qmoi.ai:3010",
           "https_available": false
         }
       ],
@@ -4967,7 +4967,7 @@
       "path": "qmoi-enhanced/README (1).md",
       "urls": [
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.zip",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.zip",
           "https_available": null
         },
         {
@@ -4983,15 +4983,15 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases",
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.dmg",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.dmg",
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.exe",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.exe",
           "https_available": null
         },
         {
@@ -5007,7 +5007,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.ipa",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.ipa",
           "https_available": null
         },
         {
@@ -5015,7 +5015,7 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.appimage",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.appimage",
           "https_available": null
         },
         {
@@ -5027,11 +5027,11 @@
           "https_available": null
         },
         {
-          "url": "http://localhost:5055",
+          "url": "https://production.qmoi.ai:5055",
           "https_available": false
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.deb",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.deb",
           "https_available": null
         },
         {
@@ -5067,15 +5067,15 @@
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.apk",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai\\_smarttv.apk",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai\\_smarttv.apk",
           "https_available": null
         },
         {
-          "url": "https://github.com/thestablekenya/stable-Q-ai/releases/latest/download/qmoi\\_ai.img",
+          "url": "https://github.com/thestablekenya/latest-Q-ai/releases/latest/download/qmoi\\_ai.img",
           "https_available": null
         }
       ],
@@ -5119,7 +5119,7 @@
       "path": "qmoi-enhanced/SCRIPTSREADME.md",
       "urls": [
         {
-          "url": "http://localhost:3001",
+          "url": "https://production.qmoi.ai:3001",
           "https_available": false
         }
       ],
@@ -5224,15 +5224,15 @@
       "path": "qmoi-enhanced/docs/API.md",
       "urls": [
         {
-          "url": "http://localhost:8000",
+          "url": "https://production.qmoi.ai:8000",
           "https_available": false
         },
         {
-          "url": "http://localhost:8000/automation/status",
+          "url": "https://production.qmoi.ai:8000/automation/status",
           "https_available": false
         },
         {
-          "url": "http://localhost:8000/token",
+          "url": "https://production.qmoi.ai:8000/token",
           "https_available": false
         }
       ],
@@ -5257,7 +5257,7 @@
       "path": "qmoi-enhanced/docs/MONITORING_SYSTEM.md",
       "urls": [
         {
-          "url": "http://localhost:8080",
+          "url": "https://production.qmoi.ai:8080",
           "https_available": false
         },
         {

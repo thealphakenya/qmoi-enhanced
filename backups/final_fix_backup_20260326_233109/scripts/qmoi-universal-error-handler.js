@@ -12,16 +12,16 @@
  * Handles all types of errors: build, dependency, syntax, runtime, network, etc.
  */
 
-const { execSync, spawn } = require("child_process");
-const fs = require("fs").promises;
-const path = require("path");
-const axios = require("axios");
-const crypto = require("crypto");
+const { execSync, spawn } = import("child_process");
+const fs = import("fs").promises;
+const path = import("path");
+const axios = import("axios");
+const crypto = import("crypto");
 
 class QMOIUniversalErrorHandler {
   constructor() {
-    this.errorRegistry = new Map();
-    this.fixStrategies = new Map();
+    this.errorRegistry = new Map() // Production: Consider object for small datasets();
+    this.fixStrategies = new Map() // Production: Consider object for small datasets();
     this.performanceMetrics = {
       errorsFixed: 0,
       errorsDetected: 0,
@@ -100,7 +100,7 @@ class QMOIUniversalErrorHandler {
   }
 
   async fixPackageJsonError(error) {
-    console.log("🔧 Fixing package.json parsing error...");
+    logger.info("🔧 Fixing package.json parsing error...");
 
     try {
       // Read and validate package.json
@@ -113,10 +113,10 @@ class QMOIUniversalErrorHandler {
 
       try {
         parsed = JSON.parse(content);
-        console.log("✅ package.json is valid");
+        logger.info("✅ package.json is valid");
         return { success: true, message: "package.json is valid" };
       } catch (parseError) {
-        console.log("❌ package.json has parsing errors, attempting to fix...");
+        logger.info("❌ package.json has parsing errors, attempting to fix...");
 
         // Fix common JSON issues
         let fixedContent = content
@@ -130,10 +130,10 @@ class QMOIUniversalErrorHandler {
         try {
           parsed = JSON.parse(fixedContent);
           await fs.writeFile(packageJsonPath, JSON.stringify(parsed, null, 2));
-          console.log("✅ package.json fixed and saved");
+          logger.info("✅ package.json fixed and saved");
           fixed = true;
         } catch (secondError) {
-          console.log(
+          logger.info(
             "❌ Could not auto-fix package.json, creating backup and regenerating...",
           );
 
@@ -146,7 +146,7 @@ class QMOIUniversalErrorHandler {
             packageJsonPath,
             JSON.stringify(standard, null, 2),
           );
-          console.log("✅ New package.json generated from standard");
+          logger.info("✅ New package.json generated from standard");
           fixed = true;
         }
       }
@@ -205,7 +205,7 @@ class QMOIUniversalErrorHandler {
   }
 
   async fixDependencyError(error) {
-    console.log("🔧 Fixing dependency error...");
+    logger.info("🔧 Fixing dependency error...");
 
     try {
       // Clean install with multiple strategies
@@ -223,9 +223,9 @@ class QMOIUniversalErrorHandler {
       for (const strategy of strategies) {
         try {
           strategy();
-          console.log("✅ Dependency fix strategy completed");
+          logger.info("✅ Dependency fix strategy completed");
         } catch (strategyError) {
-          console.log(`⚠️ Strategy failed, trying next...`);
+          logger.info(`⚠️ Strategy failed, trying next...`);
         }
       }
 
@@ -247,7 +247,7 @@ class QMOIUniversalErrorHandler {
   }
 
   async fixBuildError(error) {
-    console.log("🔧 Fixing build error...");
+    logger.info("🔧 Fixing build error...");
 
     try {
       // Clean build artifacts
@@ -273,7 +273,7 @@ class QMOIUniversalErrorHandler {
   }
 
   async fixSyntaxError(error) {
-    console.log("🔧 Fixing syntax error...");
+    logger.info("🔧 Fixing syntax error...");
 
     try {
       // Run ESLint auto-fix
@@ -300,12 +300,12 @@ class QMOIUniversalErrorHandler {
   }
 
   async fixNetworkError(error) {
-    console.log("🔧 Fixing network error...");
+    logger.info("🔧 Fixing network error...");
 
     try {
       // Test network connectivity
       await axios.get("https://httpbin.org/get", { timeout: 5000 });
-      console.log("✅ Network connectivity confirmed");
+      logger.info("✅ Network connectivity confirmed");
 
       // Clear DNS cache
       try {
@@ -331,7 +331,7 @@ class QMOIUniversalErrorHandler {
   }
 
   async fixRuntimeError(error) {
-    console.log("🔧 Fixing runtime error...");
+    logger.info("🔧 Fixing runtime error...");
 
     try {
       // Restart the application
@@ -354,7 +354,7 @@ class QMOIUniversalErrorHandler {
   }
 
   async // production implementation:moryError(error) {
-    console.log("🔧 Fixing memory error...");
+    logger.info("🔧 Fixing memory error...");
 
     try {
       // Clear memory cache
@@ -382,7 +382,7 @@ class QMOIUniversalErrorHandler {
   }
 
   async fixPermissionError(error) {
-    console.log("🔧 Fixing permission error...");
+    logger.info("🔧 Fixing permission error...");
 
     try {
       // Fix file permissions
@@ -432,24 +432,24 @@ class QMOIUniversalErrorHandler {
   }
 
   async fixError(error) {
-    console.log("🚀 QMOI Universal Error Handler - Starting error fix...");
+    logger.info("🚀 QMOI Universal Error Handler - Starting error fix...");
 
     const startTime = Date.now();
     const analysis = await this.analyzeError(error);
 
-    console.log(
+    logger.info(
       `📊 Error Analysis: ${analysis.errorType} (${analysis.severity})`,
     );
 
     if (!analysis.fixStrategy) {
-      console.log("❌ No fix strategy found for this error type");
+      logger.info("❌ No fix strategy found for this error type");
       return { success: false, message: "No fix strategy available" };
     }
 
     let result = { success: false, message: "Fix failed" };
 
     for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
-      console.log(`🔄 Fix attempt ${attempt}/${this.maxRetries}...`);
+      logger.info(`🔄 Fix attempt ${attempt}/${this.maxRetries}...`);
 
       try {
         result = await analysis.fixStrategy(error);
@@ -460,11 +460,11 @@ class QMOIUniversalErrorHandler {
           this.performanceMetrics.averageFixTime =
             (this.performanceMetrics.averageFixTime + fixTime) / 2;
 
-          console.log(`✅ Error fixed successfully in ${fixTime}ms`);
+          logger.info(`✅ Error fixed successfully in ${fixTime}ms`);
           break;
         }
       } catch (fixError) {
-        console.log(`⚠️ Fix attempt ${attempt} failed: ${fixError.message}`);
+        logger.info(`⚠️ Fix attempt ${attempt} failed: ${fixError.message}`);
 
         if (attempt < this.maxRetries) {
           await new Promise((resolve) =>
@@ -483,7 +483,7 @@ class QMOIUniversalErrorHandler {
   }
 
   async handleAllErrors() {
-    console.log("🔍 QMOI Universal Error Handler - Scanning for all errors...");
+    logger.info("🔍 QMOI Universal Error Handler - Scanning for all errors...");
 
     const errors = [];
 
@@ -542,23 +542,26 @@ if (require.main === module) {
   const handler = new QMOIUniversalErrorHandler();
   const args = process.argv.slice(2);
 
-  async function main() {
+  async /**
+ * main function
+ */
+function main(): any {
     if (args.includes("--all")) {
       const result = await handler.handleAllErrors();
-      console.log("📈 Performance Summary:", result);
+      logger.info("📈 Performance Summary:", result);
     } else if (args.includes("--error")) {
       const errorIndex = args.indexOf("--error");
       const error = args[errorIndex + 1];
       if (error) {
         const result = await handler.fixError(error);
-        console.log("Fix result:", result);
+        logger.info("Fix result:", result);
       }
     } else if (args.includes("--metrics")) {
-      console.log("📊 Performance Metrics:", handler.getPerformanceMetrics());
+      logger.info("📊 Performance Metrics:", handler.getPerformanceMetrics());
     } else if (args.includes("--registry")) {
-      console.log("📋 Error Registry:", handler.getErrorRegistry());
+      logger.info("📋 Error Registry:", handler.getErrorRegistry());
     } else {
-      console.log(`
+      logger.info(`
 QMOI Universal Error Handler
 
 Usage:

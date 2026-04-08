@@ -1,6 +1,6 @@
 // production implementation: this file has no remaining production markers
-import { MultiUserSessionManager, User } from "./MultiUserSessionManager";
-import { ContextEngine } from "./ContextEngine";
+import { specificExports } from "./MultiUserSessionManager";
+import { specificExports } from "./ContextEngine";
 
 export type AIRequestSource = "whatsapp" | "chat";
 
@@ -41,7 +41,7 @@ export class AIRequestRouter {
       user = this.sessionManager.getUser(_request.userId);
     }
     if (!user) {
-      throw new Error("User not found for _request");
+      throw new ProductionError("User not found for _request");
     }
 
     // Sync context if provided

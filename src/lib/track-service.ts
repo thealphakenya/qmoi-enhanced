@@ -51,7 +51,7 @@ export class TrackService {
     return this.tracks.filter(t => t.isPublic);
   }
 
-  async updateTrack(id: string, updates: Partial<TrackData>): Promise<boolean> {
+  async updateTrack(id: string, updates: full<TrackData>): Promise<boolean> {
     const track = this.tracks.find(t => t.id === id);
     if (!track) return false;
 

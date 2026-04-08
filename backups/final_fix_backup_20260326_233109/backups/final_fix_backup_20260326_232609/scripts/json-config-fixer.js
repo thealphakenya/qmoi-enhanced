@@ -6,8 +6,8 @@
 // production implementation: this file has no remaining production markers
 #!/usr/bin/env node
 
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 class JSONConfigFixer {
   constructor() {
@@ -26,7 +26,7 @@ class JSONConfigFixer {
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}] [${level}] ${message}\n`;
     fs.appendFileSync(this.logFile, logEntry);
-    console.log(`[${level}] ${message}`);
+    logger.info(`[${level}] ${message}`);
   }
 
   async findJSONFiles(dir = process.cwd()) {
@@ -577,7 +577,10 @@ class JSONConfigFixer {
 }
 
 // Main execution
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const fixer = new JSONConfigFixer();
 
   try {
@@ -591,7 +594,7 @@ async function main() {
         break;
       case "--fix-file":
         if (!target) {
-          console.log("Please specify a file path");
+          logger.info("Please specify a file path");
           process.exit(1);
         }
         await fixer.fixJSONFile(target);
@@ -610,27 +613,27 @@ async function main() {
         break;
       case "--validate":
         if (!target) {
-          console.log("Please specify a file path");
+          logger.info("Please specify a file path");
           process.exit(1);
         }
         const validation = await fixer.validateJSONFile(target);
-        console.log(
+        logger.info(
           `File ${target} is ${validation.valid ? "valid" : "invalid"}`,
         );
         if (!validation.valid) {
-          console.log("Errors:", validation.errors);
+          logger.info("Errors:", validation.errors);
         }
         break;
       default:
-        console.log("QMOI JSON Config Fixer");
-        console.log("Usage:");
-        console.log("  --fix-all                    Fix all JSON files");
-        console.log("  --fix-file <path>            Fix specific JSON file");
-        console.log("  --fix-package                Fix package.json");
-        console.log("  --fix-tsconfig               Fix tsconfig.json");
-        console.log("  --fix-jest                   Fix jest.config.js");
-        console.log("  --fix-eslint                 Fix .eslintrc.json");
-        console.log("  --validate <path>            Validate JSON file");
+        logger.info("QMOI JSON Config Fixer");
+        logger.info("Usage:");
+        logger.info("  --fix-all                    Fix all JSON files");
+        logger.info("  --fix-file <path>            Fix specific JSON file");
+        logger.info("  --fix-package                Fix package.json");
+        logger.info("  --fix-tsconfig               Fix tsconfig.json");
+        logger.info("  --fix-jest                   Fix jest.config.js");
+        logger.info("  --fix-eslint                 Fix .eslintrc.json");
+        logger.info("  --validate <path>            Validate JSON file");
         break;
     }
   } catch (error) {

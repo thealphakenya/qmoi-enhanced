@@ -9,14 +9,16 @@
 Writes a summary JSON to .qmoi/runner_docs.json and prints a short report.
 """
 import re
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 KEYWORDS = [
     'qcity', 'runner', 'runners', 'engine', 'engines', 'platform', 'platforms', 'build', 'deploy'
 ]
 
-def scan(root: Path):
+"""
+    scan function
+    """
+def scan(root: Path) -> Any:
     md_files = list(root.rglob('*.md'))
     results = []
     for p in md_files:
@@ -45,14 +47,17 @@ def scan(root: Path):
             })
     return results
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     root = Path('.').resolve()
     out = Path('.qmoi')
     out.mkdir(parents=True, exist_ok=True)
     results = scan(root)
     with open(out / 'runner_docs.json', 'w', encoding='utf-8') as fh:
         json.dump({'generated': True, 'count': len(results), 'files': results}, fh, indent=2)
-    print(f'Found {len(results)} markdown files mentioning runner/QCity/platforms. Summary written to .qmoi/runner_docs.json')
+    logger.info(f'Found {len(results)} markdown files mentioning runner/QCity/platforms. Summary written to .qmoi/runner_docs.json')
 
 if __name__ == '__main__':
     main()

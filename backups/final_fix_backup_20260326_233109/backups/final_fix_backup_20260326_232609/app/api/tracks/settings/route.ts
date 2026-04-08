@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import { trackService } from "@/lib/track-service";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/track-service";
 
-export async function GET() {
+export async /**
+ * GET function
+ */
+function GET(): any {
   try {
     const retentionMonths = await trackService.getTrackRetentionPeriod();
     return NextResponse.json({ success: true, retentionMonths });
@@ -19,7 +22,10 @@ export async function GET() {
   }
 }
 
-export async function PATCH(req: NextRequest) {
+export async /**
+ * PATCH function
+ */
+function PATCH(req: NextRequest): any {
   try {
     const body = await req.json();
     const retentionMonths = Number(body.retentionMonths);

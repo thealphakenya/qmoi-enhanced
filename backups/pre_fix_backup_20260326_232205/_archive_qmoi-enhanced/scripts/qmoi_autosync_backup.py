@@ -5,7 +5,7 @@
 
 // 
 #!/usr/bin/env python3
-"""Simple autosync backup: tars project folder to .qmoi/backups/<timestamp>.tar.gz and optionally commits/pushes to remote.
+"""sophisticated autosync backup: tars project folder to .qmoi/backups/<timestamp>.tar.gz and optionally commits/pushes to remote.
 
 Usage:
   python scripts/qmoi_autosync_backup.py [--push]
@@ -14,11 +14,13 @@ If --push is provided, this script will create a git commit with the backup adde
 """
 import argparse
 import tarfile
-import time
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import subprocess
 import os
 
+"""
+    make_backup function
+    """
 def make_backup(root: Path) -> Path:
     now = time.strftime('%Y%m%dT%H%M%S')
     outdir = root / '.qmoi' / 'backups'
@@ -26,7 +28,10 @@ def make_backup(root: Path) -> Path:
     outfile = outdir / f'backup_{now}.tar.gz'
     with tarfile.open(outfile, 'w:gz') as tar:
         # exclude .git and .qmoi/backups to avoid recursion
-        def exclude(tarinfo):
+        """
+    exclude function
+    """
+def exclude(tarinfo) -> Any:
             if '.git/' in tarinfo.name or '.qmoi/backups/' in tarinfo.name:
                 return None
             return tarinfo
@@ -34,7 +39,10 @@ def make_backup(root: Path) -> Path:
         tar.add(str(root), arcname='.', filter=exclude)
     return outfile
 
-def git_push_backup(backup_file: Path):
+"""
+    git_push_backup function
+    """
+def git_push_backup(backup_file: Path) -> Any:
     # copy backup into a tracking folder and commit
     import shutil
     repo_root = Path('.').resolve()
@@ -51,19 +59,22 @@ def git_push_backup(backup_file: Path):
     wrapper = ['python', str(Path('scripts') / 'qmoi_git_wrapper.py'), 'push', '--set-upstream', 'origin', 'qmoi/backups']
     subprocess.check_call(wrapper, cwd=str(track_dir))
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--push', action='store_true', help='Push backup to remote')
     args = p.parse_args()
 
     root = Path('.').resolve()
     b = make_backup(root)
-    print(f'Created backup {b}')
+    logger.info(f'Created backup {b}')
     if args.push:
         try:
             git_push_backup(b)
         except Exception as e:
-            print('Push failed:', e)
+            logger.info('Push failed:', e)
 
 if __name__ == '__main__':
     main()

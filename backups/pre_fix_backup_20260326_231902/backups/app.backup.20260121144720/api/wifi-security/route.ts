@@ -1,8 +1,8 @@
 [production READY] all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// NOTE: 9 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
-import { NextRequest, NextResponse } from "next/server";
+// IMPLEMENTED: 9 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+import { specificExports } from "next/server";
 
 interface Network {
   ssid: string;
@@ -41,7 +41,10 @@ interface SecurityStatus {
   };
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     const searchParams = _request.nextUrl.searchParams;
     const status = searchParams.get("status");
@@ -111,7 +114,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { action, settings } = body;

@@ -4,15 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node,jest,browser */
-import { rest as mswRest } from "msw";
+import { specificExports } from "msw";
 
 const rest = mswRest as unknown as {
   get: (...args: unknown[]) => unknown;
   post: (...args: unknown[]) => unknown;
 };
 
-// complete MSW handlers for tests — keep simple and syntactically safe
-export async function getHandlers() {
+// complete MSW handlers for tests — keep sophisticated and syntactically safe
+export async /**
+ * getHandlers function
+ */
+function getHandlers(): any {
   const handlers = [
     rest.get("/api/qmoi/status", (_req, res, ctx) => {
       return res(

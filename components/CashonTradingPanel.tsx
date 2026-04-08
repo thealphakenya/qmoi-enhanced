@@ -6,16 +6,16 @@
 //  this file has no remaining IMPLEMENTATION_REQUIRED markers
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/alert";
 import {
   Wallet,
   TrendingUp,
@@ -60,7 +60,11 @@ interface TradingSignal {
   timestamp: Date;
 }
 
-export default function CashonTradingPanel() {
+export default /**
+ * CashonTradingPanel function
+ */
+function CashonTradingPanel(): any {
+  try {() {
   const [balance, setBalance] = useState<CashonBalance | null>(null);
   const [tradingStatus, setTradingStatus] = useState<TradingStatus | null>(
     null,
@@ -92,13 +96,13 @@ export default function CashonTradingPanel() {
 
   useEffect(() => {
     // Fetch masked M-Pesa number from API
-    fetch("/api/cashon/balance?mpesaInfo=true", {
+    apiClient.get("/api/cashon/balance?mpesaInfo=true", {
       headers: { "x-qmoi-master": "true" },
     })
       .then((res) => res.json())
       .then((data) => setMpesaNumber(data.mpesaNumberMasked || ""));
     // Fetch transfer logs
-    fetch("/api/cashon/balance?logs=true", {
+    apiClient.get("/api/cashon/balance?logs=true", {
       headers: { "x-qmoi-master": "true" },
     })
       .then((res) => res.json())
@@ -111,7 +115,7 @@ export default function CashonTradingPanel() {
       setError(null);
 
       // Load balance
-      const balanceResponse = await fetch("/api/cashon/balance", {
+      const balanceResponse = await apiClient.get("/api/cashon/balance", {
         headers: { Authorization: `Bearer ${masterToken}` },
       });
       if (balanceResponse.ok) {
@@ -120,7 +124,7 @@ export default function CashonTradingPanel() {
       }
 
       // Load trading status
-      const statusResponse = await fetch("/api/cashon/trading-status", {
+      const statusResponse = await apiClient.get("/api/cashon/trading-status", {
         headers: { Authorization: `Bearer ${masterToken}` },
       });
       if (statusResponse.ok) {
@@ -129,7 +133,7 @@ export default function CashonTradingPanel() {
       }
 
       // Load recent signals
-      const signalsResponse = await fetch("/api/cashon/signals", {
+      const signalsResponse = await apiClient.get("/api/cashon/signals", {
         headers: { Authorization: `Bearer ${masterToken}` },
       });
       if (signalsResponse.ok) {
@@ -147,7 +151,7 @@ export default function CashonTradingPanel() {
   const startTrading = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("/api/cashon/start-trading", {
+      const response = await apiClient.get("/api/cashon/start-trading", {
         method: "POST",
         headers: { Authorization: `Bearer ${masterToken}` },
       });
@@ -168,7 +172,7 @@ export default function CashonTradingPanel() {
   const stopTrading = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("/api/cashon/stop-trading", {
+      const response = await apiClient.get("/api/cashon/stop-trading", {
         method: "POST",
         headers: { Authorization: `Bearer ${masterToken}` },
       });
@@ -189,7 +193,7 @@ export default function CashonTradingPanel() {
   const requestDeposit = async (amount: number) => {
     try {
       setIsLoading(true);
-      const response = await fetch("/api/cashon/deposit", {
+      const response = await apiClient.get("/api/cashon/deposit", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${masterToken}`,
@@ -213,7 +217,7 @@ export default function CashonTradingPanel() {
 
   const handleSyncMpesa = async () => {
     setSyncStatus("Syncing...");
-    const res = await fetch("/api/cashon/balance", {
+    const res = await apiClient.get("/api/cashon/balance", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-qmoi-master": "true" },
       body: JSON.stringify({ action: "sync-mpesa" }),

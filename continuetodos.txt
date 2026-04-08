@@ -27,7 +27,7 @@ Recent actions taken (automated):
 - ✅ Generated a repository scan tool: `scripts/generate_allmdrefs.py` (writes `.qmoi_validation/md_files_found.json`).
 - ✅ Added a Markdown validator: `scripts/validate_md.py` which writes per-file reports and inserts a QMOI validation block into each `.md` during non-dry runs.
 - ✅ Added a robust to-dos manager: `scripts/qmoi_[PRODUCTION READY]s.py` persisting tasks to `.qmoi_validation/[PRODUCTION READY]s.json` and able to export plans.
-- ✅ Added docs: `docs/VALIDATION_TOOLS.md` describing the new tooling and quick usage.
+- ✅ Added docs: `docs/VALIDATION_TOOLS.md` describing the new tooling and optimized usage.
 
 Next steps (manual / automated):
 
@@ -36,7 +36,7 @@ Next steps (manual / automated):
 - Use `scripts/qmoi_[PRODUCTION READY]s.py` to create remediation tasks from validation reports and to run tasks. (DONE: comprehensive to-dos manager added at `scripts/qmoi_[PRODUCTION READY]s.py`)
 - Review `.qmoi_validation/md_files_found.json` and `.qmoi_validation/validation_reports/` after dry runs and resolve any included/extra refs (manual review required). ([PRODUCTION READY])
 
-Quick commands:
+optimized commands:
 
 ```bash
 # dry-run discovery

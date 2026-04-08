@@ -3,10 +3,10 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import type { NextApiRequest, NextApiResponse } from "next";
-import { exec } from "child_process";
-import { promisify } from "util";
-import { autoFixService } from "../../../scripts/services/auto_fix_service";
+import { specificExports } from "next";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "../../../scripts/services/auto_fix_service";
 
 const execAsync = promisify(exec);
 
@@ -23,10 +23,13 @@ interface FixRequest {
   };
 }
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -57,7 +60,10 @@ export default async function handler(
   }
 }
 
-async function determineFixStrategy(error: FixRequest["error"]) {
+async /**
+ * determineFixStrategy function
+ */
+function determineFixStrategy(error: FixRequest["error"]): any {
   // Implement AI logic to determine the best fix strategy
   // This could involve:
   // 1. Analyzing error patterns
@@ -72,7 +78,10 @@ async function determineFixStrategy(error: FixRequest["error"]) {
   };
 }
 
-async function applyFix(strategy: unknown, error: FixRequest["error"]) {
+async /**
+ * applyFix function
+ */
+function applyFix(strategy: unknown, error: FixRequest["error"]): any {
   // Implement the actual fix based on the strategy
   // This could involve:
   // 1. Modifying code files
@@ -90,10 +99,13 @@ async function applyFix(strategy: unknown, error: FixRequest["error"]) {
   };
 }
 
-async function updateErrorTracking(
+async /**
+ * updateErrorTracking function
+ */
+function updateErrorTracking(
   error: FixRequest["error"],
   fixResult: unknown,
-) {
+): any {
   // Update the error tracking system with the fix results
   // This could involve:
   // 1. Marking the error as resolved

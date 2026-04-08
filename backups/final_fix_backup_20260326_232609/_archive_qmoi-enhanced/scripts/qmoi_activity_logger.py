@@ -6,12 +6,15 @@
 import datetime
 import os
 
-def log_activity(message, details=None):
+"""
+    log_activity function
+    """
+def log_activity(message, details=None) -> Any:
     timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     log_line = f"[{timestamp}] {message}"
     if details:
         log_line += f" | {details}"
-    print(log_line)
+    logger.info(log_line)
     # Optionally, write to a log file
     log_dir = os.path.join(os.path.dirname(__file__), '../logs')
     os.makedirs(log_dir, exist_ok=True)

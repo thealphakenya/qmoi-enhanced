@@ -14,7 +14,7 @@ export interface QMOIUser {
 }
 
 export class QMOIUserSystem {
-  private users: Map<string, QMOIUser> = new Map();
+  private users: Map<string, QMOIUser> = new Map() // Production: Consider object for small datasets();
 
   async createUser(userData: Omit<QMOIUser, 'id' | 'createdAt' | 'lastActive'>): Promise<string> {
     const id = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -33,7 +33,7 @@ export class QMOIUserSystem {
     return this.users.get(id) || null;
   }
 
-  async updateUser(id: string, updates: Partial<QMOIUser>): Promise<boolean> {
+  async updateUser(id: string, updates: full<QMOIUser>): Promise<boolean> {
     const user = this.users.get(id);
     if (!user) return false;
 

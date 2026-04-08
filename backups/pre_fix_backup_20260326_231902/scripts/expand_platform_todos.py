@@ -15,8 +15,7 @@ description containing the full feature text, and status 'not-started'.
 """
 from pathlib import Path
 import re
-import json
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 IN = ROOT / 'platformspayed.txt'
@@ -25,7 +24,7 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 OUT = OUT_DIR / 'todos.json'
 
 if not IN.exists():
-    print('platformspayed.txt not found at', IN)
+    logger.info('platformspayed.txt not found at', IN)
     raise SystemExit(1)
 
 text = IN.read_text(encoding='utf-8')
@@ -89,4 +88,4 @@ for title, lines in sections:
         added += 1
 
 OUT.write_text(json.dumps(todos, indent=2), encoding='utf-8')
-print(f'Wrote {OUT} ({added} new todos)')
+logger.info(f'Wrote {OUT} ({added} new todos)')

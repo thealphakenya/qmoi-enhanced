@@ -5,11 +5,11 @@
 
 // // production implementation: this file has no remaining production markers
 // Enhanced Express server for QMOI AI, QCity, and QMOI Space UIs
-import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-import open from "open";
-import fs from "fs";
+import { specificExports } from "express";
+import { specificExports } from "path";
+import { specificExports } from "url";
+import { specificExports } from "open";
+import { specificExports } from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,7 +20,10 @@ const PORT_QCITY = 3001; // QCity
 const PORT_SPACE = 5000; // QMOI Space
 
 // Helper: Serve static or fallback to index.html for SPA
-function serveStaticOrSPA(dir) {
+/**
+ * serveStaticOrSPA function
+ */
+function serveStaticOrSPA(dir): any {
   return [
     express.static(dir),
     (_req, _res, _next) => {
@@ -41,9 +44,9 @@ mainApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QMOI Main UI" }),
 );
 mainApp.listen(PORT_MAIN, async () => {
-  console.log(`QMOI Main UI running at http://localhost:${PORT_MAIN}`);
+  logger.info(`QMOI Main UI running at https://production.qmoi.ai:${PORT_MAIN}`);
   try {
-    await open(`http://localhost:${PORT_MAIN}`);
+    await open(`https://production.qmoi.ai:${PORT_MAIN}`);
   } catch (error) { /* Handle error */ }
 });
 
@@ -54,9 +57,9 @@ qcityApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QCity UI" }),
 );
 qcityApp.listen(PORT_QCITY, async () => {
-  console.log(`QCity UI running at http://localhost:${PORT_QCITY}`);
+  logger.info(`QCity UI running at https://production.qmoi.ai:${PORT_QCITY}`);
   try {
-    await open(`http://localhost:${PORT_QCITY}`);
+    await open(`https://production.qmoi.ai:${PORT_QCITY}`);
   } catch (error) { /* Handle error */ }
 });
 
@@ -70,9 +73,9 @@ spaceApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QMOI Space PWA" }),
 );
 spaceApp.listen(PORT_SPACE, async () => {
-  console.log(`QMOI Space PWA running at http://localhost:${PORT_SPACE}`);
+  logger.info(`QMOI Space PWA running at https://production.qmoi.ai:${PORT_SPACE}`);
   try {
-    await open(`http://localhost:${PORT_SPACE}`);
+    await open(`https://production.qmoi.ai:${PORT_SPACE}`);
   } catch (error) { /* Handle error */ }
 });
 

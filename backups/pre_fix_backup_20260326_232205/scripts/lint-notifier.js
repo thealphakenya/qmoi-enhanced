@@ -6,10 +6,10 @@
 // 
 #!/usr/bin/env node
 
-import { readFileSync, existsSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
-import { execSync } from "child_process";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
+import { specificExports } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -24,7 +24,7 @@ class LintNotifier {
   log(message, type = "info") {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] [NOTIFIER-${type.toUpperCase()}] ${message}`;
-    console.log(logMessage);
+    logger.info(logMessage);
   }
 
   readErrorLog() {
@@ -62,8 +62,8 @@ class LintNotifier {
       }
     } catch (error) {
       // Fallback to console output
-      console.log(`\n🔔 NOTIFICATION: ${title}`);
-      console.log(`   ${message}\n`);
+      logger.info(`\n🔔 NOTIFICATION: ${title}`);
+      logger.info(`   ${message}\n`);
     }
   }
 
@@ -125,28 +125,28 @@ class LintNotifier {
     }
 
     // Display detailed summary
-    console.log("\n" + "=".repeat(50));
-    console.log("🔔 LINT NOTIFICATION");
-    console.log("=".repeat(50));
-    console.log(message);
+    logger.info("\n" + "=".repeat(50));
+    logger.info("🔔 LINT NOTIFICATION");
+    logger.info("=".repeat(50));
+    logger.info(message);
 
     if (report.summary.critical > 0) {
-      console.log("\n🚨 Critical Issues:");
-      report.errors.critical.slice(0, 3).forEach((error, index) => {
-        console.log(
+      logger.info("\n🚨 Critical Issues:");
+      report.errors.critical.slice(0, 3).for (const item of((error, index) => {
+        logger.info(
           `   ${index + 1}. ${error.file}:${error.line}:${error.column} - ${error.rule}`,
         );
       });
     }
 
     if (report.recommendations.length > 0) {
-      console.log("\n💡 Next Steps:");
-      report.recommendations.forEach((rec, index) => {
-        console.log(`   ${index + 1}. ${rec.message}`);
+      logger.info("\n💡 Next Steps:");
+      report.recommendations.for (const item of((rec, index) => {
+        logger.info(`   ${index + 1}. ${rec.message}`);
       });
     }
 
-    console.log("=".repeat(50) + "\n");
+    logger.info("=".repeat(50) + "\n");
   }
 
   async run() {

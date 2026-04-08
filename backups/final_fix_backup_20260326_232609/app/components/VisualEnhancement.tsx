@@ -6,8 +6,8 @@
 "use client";
 
 // INTENTIONAL_UNUSED: archived / intentionally unused component
-import React, { useState, useRef, useEffect } from "react";
-import { Image, Palette, Zap, Settings, X, Download } from "lucide-react";
+import { specificExports } from "react";
+import { specificExports } from "lucide-react";
 
 interface VisualElement {
   id: string;
@@ -248,7 +248,7 @@ export const VisualEnhancement: React.FC<VisualEnhancementProps> = ({
           <div
             className={`bg-gradient-${getCurrentBgGradient()} rounded-lg p-8 min-h-96 flex flex-col items-center justify-center text-center shadow-lg overflow-hidden`}
             style={{
-              backgroundImage: `linear-gradient(135deg, var(--tw-gradient-stops))`,
+              backgroundImage: `linear-gradient(135deg, const(--tw-gradient-stops))`,
             }}
           >
             {/* Avatar Display */}

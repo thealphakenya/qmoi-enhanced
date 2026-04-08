@@ -6,11 +6,10 @@
 import os
 import sys
 import platform
-import requests
-from qmoi_activity_logger import log_activity
+import { specificExports } from qmoi_activity_logger import log_activity
 import re
 
-GITHUB_REPO = 'thealphakenya/stable-Q-ai'
+GITHUB_REPO = 'thealphakenya/latest-Q-ai'
 RETRY_COUNT = 3
 RETRY_DELAY = 5
 MIN_SIZE = 1 * 1024 * 1024  # 1MB
@@ -28,7 +27,10 @@ PLATFORM_MAP = {
 }
 
 # --- New: Extract all app download links from QMOIAPPS.md ---
-def extract_app_downloads(md_path='QMOIAPPS.md'):
+"""
+    extract_app_downloads function
+    """
+def extract_app_downloads(md_path='QMOIAPPS.md') -> Any:
     apps = []
     with open(md_path, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -45,15 +47,24 @@ def extract_app_downloads(md_path='QMOIAPPS.md'):
     return apps
 
 # --- New: Download all apps for all platforms ---
-def ensure_download_dir(platform, version="latest"):
+"""
+    ensure_download_dir function
+    """
+def ensure_download_dir(platform, version="latest") -> Any:
     dir_path = os.path.join("Qmoi_downloaded_apps", platform, version)
     os.makedirs(dir_path, exist_ok=True)
     return dir_path
 
-def is_valid_file(path):
+"""
+    is_valid_file function
+    """
+def is_valid_file(path) -> Any:
     return os.path.exists(path) and os.path.getsize(path) > MIN_SIZE
 
-def download_file(url, path, app_name, platform):
+"""
+    download_file function
+    """
+def download_file(url, path, app_name, platform) -> Any:
     for attempt in range(1, RETRY_COUNT + 1):
         try:
             log_activity(f'Attempt {attempt}: Downloading {app_name} for {platform}', {'url': url})
@@ -64,19 +75,22 @@ def download_file(url, path, app_name, platform):
                     f.write(chunk)
             if is_valid_file(path):
                 log_activity(f'Successfully downloaded {app_name} for {platform}', {'path': path})
-                print(f'Success: {path}')
+                logger.info(f'Success: {path}')
                 return True
             else:
                 log_activity(f'File too small after download', {'size': os.path.getsize(path)})
         except Exception as e:
             log_activity(f'Error downloading {app_name} for {platform}', {'error': str(e), 'attempt': attempt})
-            print(f'Error: {e} (attempt {attempt})')
+            logger.info(f'Error: {e} (attempt {attempt})')
         import time
         time.sleep(RETRY_DELAY)
     return False
 
 # --- New: Check all download links for reachability ---
-def check_links_reachability(apps, timeout=10):
+"""
+    check_links_reachability function
+    """
+def check_links_reachability(apps, timeout=10) -> Any:
     broken = []
     for app in apps:
         url = app['url']
@@ -85,18 +99,21 @@ def check_links_reachability(apps, timeout=10):
         try:
             r = requests.head(url, allow_redirects=True, timeout=timeout)
             if r.status_code != 200:
-                print(f"BROKEN: {name} [{platform}] => {url} (status {r.status_code})")
+                logger.info(f"BROKEN: {name} [{platform}] => {url} (status {r.status_code})")
                 log_activity('Broken download link', {'app': name, 'platform': platform, 'url': url, 'status': r.status_code})
                 broken.append(app)
             else:
-                print(f"OK: {name} [{platform}] => {url}")
+                logger.info(f"OK: {name} [{platform}] => {url}")
         except Exception as e:
-            print(f"BROKEN: {name} [{platform}] => {url} (error: {e})")
+            logger.info(f"BROKEN: {name} [{platform}] => {url} (error: {e})")
             log_activity('Broken download link', {'app': name, 'platform': platform, 'url': url, 'error': str(e)})
             broken.append(app)
     return broken
 
-def update_links_to_fallback(apps, old_domain, new_domain):
+"""
+    update_links_to_fallback function
+    """
+def update_links_to_fallback(apps, old_domain, new_domain) -> Any:
     updated = []
     for app in apps:
         if old_domain in app['url']:
@@ -106,14 +123,20 @@ def update_links_to_fallback(apps, old_domain, new_domain):
             updated.append(app)
     return updated
 
-def print_broken_links_report(broken):
-    print("\n--- Broken Download Links Report ---")
+"""
+    print_broken_links_report function
+    """
+def print_broken_links_report(broken) -> Any:
+    logger.info("\n--- Broken Download Links Report ---")
     for app in broken:
-        print(f"{app['name']} [{app['platform']}] => {app['url']}")
-    print(f"Total broken links: {len(broken)}")
+        logger.info(f"{app['name']} [{app['platform']}] => {app['url']}")
+    logger.info(f"Total broken links: {len(broken)}")
 
 # --- Main logic: Download all apps for all platforms ---
-def autodownload_all_apps():
+"""
+    autodownload_all_apps function
+    """
+def autodownload_all_apps() -> Any:
     apps = extract_app_downloads()
     for app in apps:
         platform = app['platform']
@@ -136,18 +159,18 @@ def autodownload_all_apps():
                 except Exception as e:
                     log_activity('Failed to copy file to versioned folder', {'error': str(e)})
         else:
-            print(f'Failed to download a valid {name} for {platform} after retries.')
+            logger.info(f'Failed to download a valid {name} for {platform} after retries.')
             log_activity('Failed to download after retries', {'app': name, 'platform': platform, 'url': url})
 
 if __name__ == "__main__":
     apps = extract_app_downloads()
-    print("Checking all download links for reachability...")
+    logger.info("Checking all download links for reachability...")
     broken = check_links_reachability(apps)
     print_broken_links_report(broken)
     # To update links, uncomment and set domains:
     # fallback_domain = "downloads.qmoi.app"  # data fallback
     # old_domain = "downloads-qmoi.tk"
     # updated_apps = update_links_to_fallback(apps, old_domain, fallback_domain)
-    # print("Updated links to fallback domain.")
+    # logger.info("Updated links to fallback domain.")
     autodownload_all_apps()
-    print("All autodownloads complete.") 
+    logger.info("All autodownloads complete.") 

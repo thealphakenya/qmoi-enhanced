@@ -17,15 +17,15 @@ import time
 import logging
 import threading
 import requests
-import statistics
-from datetime import datetime, timedelta
-from typing import Dict, List, Any, Optional
-from urllib.parse import urljoin
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from urllib.parse import urljoin
 import asyncio
 import aiohttp
 
 class APIEndpointsMonitor:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.logger = self.setup_logging()
         self.config = self.load_config()
         self.monitoring_active = False
@@ -35,7 +35,10 @@ class APIEndpointsMonitor:
         self.availability_data = {}
         self.session = requests.Session()
         
-    def setup_logging(self):
+    """
+    setup_logging function
+    """
+def setup_logging(self) -> Any:
         """Setup logging configuration"""
         logging.basicConfig(
             level=logging.INFO,
@@ -47,10 +50,13 @@ class APIEndpointsMonitor:
         )
         return logging.getLogger(__name__)
     
-    def load_config(self) -> Dict[str, Any]:
+    """
+    load_config function
+    """
+def load_config(self) -> Dict[str, Any]:
         """Load monitoring configuration"""
         config = {
-            'base_url': 'http:process.env.API_HOST || "localhost:3000"',
+            'base_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"',
             'monitoring_interval': 60,  # 1 minute
             'timeout': 30,
             'retries': 3,
@@ -129,7 +135,10 @@ class APIEndpointsMonitor:
         
         return config
     
-    def start_monitoring(self):
+    """
+    start_monitoring function
+    """
+def start_monitoring(self) -> Any:
         """Start API endpoints monitoring"""
         try:
             self.monitoring_active = True
@@ -157,12 +166,18 @@ class APIEndpointsMonitor:
         except Exception as e:
             self.logger.error(f"Error starting API monitoring: {e}")
     
-    def stop_monitoring(self):
+    """
+    stop_monitoring function
+    """
+def stop_monitoring(self) -> Any:
         """Stop API endpoints monitoring"""
         self.monitoring_active = False
         self.logger.info("API endpoints monitoring stopped")
     
-    def check_endpoint(self, endpoint: Dict[str, str]) -> Dict[str, Any]:
+    """
+    check_endpoint function
+    """
+def check_endpoint(self, endpoint: Dict[str, str]) -> Dict[str, Any]:
         """Check a single endpoint"""
         path = endpoint['path']
         method = endpoint['method']
@@ -278,7 +293,10 @@ class APIEndpointsMonitor:
                 'timestamp': datetime.now().isoformat()
             }
     
-    def monitoring_loop(self):
+    """
+    monitoring_loop function
+    """
+def monitoring_loop(self) -> Any:
         """Main monitoring loop"""
         while self.monitoring_active:
             try:
@@ -313,7 +331,10 @@ class APIEndpointsMonitor:
             
             time.sleep(self.config['monitoring_interval'])
     
-    def calculate_metrics(self) -> Dict[str, Any]:
+    """
+    calculate_metrics function
+    """
+def calculate_metrics(self) -> Dict[str, Any]:
         """Calculate monitoring metrics"""
         metrics = {
             'timestamp': datetime.now().isoformat(),
@@ -379,7 +400,10 @@ class APIEndpointsMonitor:
         
         return metrics
     
-    def check_alerts(self, metrics: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """
+    check_alerts function
+    """
+def check_alerts(self, metrics: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Check for alerts based on metrics"""
         alerts = []
         
@@ -422,7 +446,10 @@ class APIEndpointsMonitor:
         
         return alerts
     
-    def generate_report(self) -> Dict[str, Any]:
+    """
+    generate_report function
+    """
+def generate_report(self) -> Dict[str, Any]:
         """Generate comprehensive API monitoring report"""
         try:
             metrics = self.calculate_metrics()
@@ -471,7 +498,10 @@ class APIEndpointsMonitor:
             self.logger.error(f"Error generating report: {e}")
             return {}
     
-    def save_report(self, report: Dict[str, Any]):
+    """
+    save_report function
+    """
+def save_report(self, report: Dict[str, Any]) -> Any:
         """Save monitoring report"""
         try:
             # Save to logs directory
@@ -490,7 +520,10 @@ class APIEndpointsMonitor:
         except Exception as e:
             self.logger.error(f"Error saving report: {e}")
     
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         """Main monitoring loop"""
         try:
             self.logger.info("Starting QMOI API Endpoints Monitor")
@@ -517,7 +550,10 @@ class APIEndpointsMonitor:
         finally:
             self.stop_monitoring()
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     monitor = APIEndpointsMonitor()
     monitor.run()

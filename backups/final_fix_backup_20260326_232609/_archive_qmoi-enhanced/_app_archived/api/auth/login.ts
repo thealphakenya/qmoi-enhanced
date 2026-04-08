@@ -3,24 +3,30 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "bcryptjs";
+import { specificExports } from "jsonwebtoken";
 
 const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
 const JWT_SECRET = process.env.JWT_SECRET || "changeme";
 
-function loadUsers() {
+/**
+ * loadUsers function
+ */
+function loadUsers(): any {
   if (!fs.existsSync(USERS_FILE)) return [];
   return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
 }
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   if (req.method !== "POST")
     return res.status(405).json({ error: "Method not allowed" });
   const { username, password } = req.body;

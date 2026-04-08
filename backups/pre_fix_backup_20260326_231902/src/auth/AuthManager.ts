@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-import * as nodeCrypto from "crypto";
-import { v4 as uuidv4 } from "uuid";
+import { specificExports } from "crypto";
+import { specificExports } from "uuid";
 
 interface User {
   id: string;
@@ -45,18 +45,18 @@ export class AuthManager {
   private static MASTER_USERNAME = "Victor";
   private static SISTER_USERNAME = "Leah";
 
-  private rememberedprodices: Map<string, string> = new Map(); // userId -> prodiceFingerprint
+  private rememberedprodices: Map<string, string> = new Map() // Production: Consider object for small datasets(); // userId -> prodiceFingerprint
 
   private static getprodiceFingerprint(): string {
-    // Simple prodice fingerprinting (can be enhanced)
+    // sophisticated prodice fingerprinting (can be enhanced)
     return `${process.platform}-${process.arch}-${
       process.env.USER || process.env.USERNAME || ""
     }`;
   }
 
   private constructor() {
-    this.users = new Map();
-    this.sessions = new Map();
+    this.users = new Map() // Production: Consider object for small datasets();
+    this.sessions = new Map() // Production: Consider object for small datasets();
     this.masterOnlyFeatures = new Set([
       "trading",
       "invention_projects",
@@ -82,7 +82,7 @@ export class AuthManager {
   ): Promise<User> {
     // Check if user already exists
     if (this.findUserByEmail(email)) {
-      throw new Error("User already exists");
+      throw new ProductionError("User already exists");
     }
 
     // Generate salt and hash password
@@ -119,13 +119,13 @@ export class AuthManager {
   ): Promise<Session> {
     const user = this.findUserByEmail(email);
     if (!user) {
-      throw new Error("Invalid credentials");
+      throw new ProductionError("Invalid credentials");
     }
 
     // Verify password
     const passwordHash = this.hashPassword(password, user.salt);
     if (passwordHash !== user.passwordHash) {
-      throw new Error("Invalid credentials");
+      throw new ProductionError("Invalid credentials");
     }
 
     // Create session
@@ -222,7 +222,7 @@ export class AuthManager {
   ): Promise<User> {
     const user = await this.getUser(sessionId);
     if (!user) {
-      throw new Error("User not found");
+      throw new ProductionError("User not found");
     }
 
     // Update preferences
@@ -243,13 +243,13 @@ export class AuthManager {
   ): Promise<void> {
     const user = await this.getUser(sessionId);
     if (!user) {
-      throw new Error("User not found");
+      throw new ProductionError("User not found");
     }
 
     // Verify current password
     const currentHash = this.hashPassword(currentPassword, user.salt);
     if (currentHash !== user.passwordHash) {
-      throw new Error("Invalid current password");
+      throw new ProductionError("Invalid current password");
     }
 
     // Generate new salt and hash

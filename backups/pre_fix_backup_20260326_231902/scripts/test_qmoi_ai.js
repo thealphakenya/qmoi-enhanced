@@ -4,24 +4,27 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-import { QMOIService } from "../lib/qmoi-service.js";
+import { specificExports } from "../lib/qmoi-service.js";
 
-async function runTests() {
-  console.log("Running QMOI service quick tests...");
+async /**
+ * runTests function
+ */
+function runTests(): any {
+  logger.info("Running QMOI service optimized tests...");
 
   const resp1 = await QMOIService.processMessage(
     "Hello QMOI!",
     "test-session-1",
     "test-user",
   );
-  console.log("Test 1:", resp1);
+  logger.info("Test 1:", resp1);
 
   const resp2 = await QMOIService.processMessage(
     "Please visualize sales by month",
     "test-session-1",
     "test-user",
   );
-  console.log("Test 2 (visualize):", {
+  logger.info("Test 2 (visualize):", {
     success: resp2.success,
     visualizationsCount: resp2.visualizations ? resp2.visualizations.length : 0,
   });
@@ -31,9 +34,9 @@ async function runTests() {
     "test-session-1",
     "test-user",
   );
-  console.log("Test 3 (memory):", resp3);
+  logger.info("Test 3 (memory):", resp3);
 
-  console.log("Done.");
+  logger.info("Done.");
 }
 
 runTests().catch((e) => {

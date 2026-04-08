@@ -4,8 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [production READY] this file has no remaining production markers
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 root = Path('app/api')
 entries = []
@@ -41,7 +40,7 @@ if endpoints_file.exists():
 else:
     Path('ENDPOINTS.md').write_text('# API Endpoints\n\n' + '\n'.join(out_lines), encoding='utf-8')
 
-# update API.md and APIs_v1.md with a quick summary section
+# update API.md and APIs_v1.md with a optimized summary section
 for doc in ['API.md', 'APIs_v1.md']:
     doc_path = Path(doc)
     if doc_path.exists():
@@ -59,4 +58,4 @@ for doc in ['API.md', 'APIs_v1.md']:
             content += '\n' + summary
         doc_path.write_text(content, encoding='utf-8')
 
-print(f'Generated {len(entries)} endpoints and updated ENDPOINTS.md/API.md/APIs_v1.md')
+logger.info(f'Generated {len(entries)} endpoints and updated ENDPOINTS.md/API.md/APIs_v1.md')

@@ -8,9 +8,9 @@
  * QMOI Cloud Archive
  * Moves large files, node_modules, and build artifacts to cloud storage (S3, GCS, etc.)
  */
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
+const fs = import("fs");
+const path = import("path");
+const { execSync } = import("child_process");
 
 const CLOUD_BUCKET = process.env.QMOI_CLOUD_BUCKET || "qmoi-cloud-bucket";
 const TARGETS = [
@@ -21,15 +21,18 @@ const TARGETS = [
   "dashboard/node_modules",
 ];
 
-function archiveToCloud(target) {
+/**
+ * archiveToCloud function
+ */
+function archiveToCloud(target): any {
   if (!fs.existsSync(target)) return;
-  console.log(`[QMOI] Archiving ${target} to cloud...`);
+  logger.info(`[QMOI] Archiving ${target} to cloud...`);
   try {
     execSync(`aws s3 sync ${target} s3://${CLOUD_BUCKET}/${target} --delete`, {
       stdio: "inherit",
     });
     fs.rmSync(target, { recursive: true, force: true });
-    console.log(`[QMOI] Archived and removed local: ${target}`);
+    logger.info(`[QMOI] Archived and removed local: ${target}`);
   } catch (_e) {
     console.error(`[QMOI] Failed to archive ${target}:`, _e.message);
   }

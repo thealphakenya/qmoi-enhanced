@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-const { sendWhatsApp } = require("./qmoi_notifier");
+const { sendWhatsApp } = import("./qmoi_notifier");
 
 sendWhatsApp("QMOI WhatsApp test: System is operational!")
-  .then(() => console.log("WhatsApp test sent!"))
+  .then(() => logger.info("WhatsApp test sent!"))
   .catch(console.error);

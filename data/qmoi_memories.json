@@ -7,5 +7,9 @@
       "text": "I enjoy jazz music and coffee",
       "createdAt": "2026-01-22T08:44:50.710Z"
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:28.941452"
 }

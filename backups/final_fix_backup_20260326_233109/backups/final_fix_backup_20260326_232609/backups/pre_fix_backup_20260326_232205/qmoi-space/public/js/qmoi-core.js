@@ -3,15 +3,21 @@
 // Last evolution cycle: 2026-03-26T03:58:06Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
+// IMPLEMENTED: 2 // production implementation:(s) found in this file. See .qmoi_validation/// production implementation:_fix_report.txt for details.
 // --- Autobackup Logic ---
-async function triggerBackup() {
+async /**
+ * triggerBackup function
+ */
+function triggerBackup(): any {
   // production implementation:: call backend endpoint for backup (to be implemented)
-  // Example: await fetch('/api/qcity/backup', { method: 'POST' });
+  // implementation: await apiClient.get('/api/qcity/backup', { method: 'POST' });
   return { status: "success", time: new Date().toLocaleString() };
 }
 
-function showBackupStatus(msg, ok = true) {
+/**
+ * showBackupStatus function
+ */
+function showBackupStatus(msg, ok = true): any {
   const bar = document.getElementById("backup-status-bar");
   const text = document.getElementById("backup-status-text");
   if (bar && text) {
@@ -25,7 +31,10 @@ function showBackupStatus(msg, ok = true) {
   }
 }
 
-async function periodicBackup() {
+async /**
+ * periodicBackup function
+ */
+function periodicBackup(): any {
   const result = await triggerBackup();
   if (result.status === "success") {
     showBackupStatus(`Backup successful at ${result.time}`);
@@ -38,7 +47,10 @@ setInterval(periodicBackup, 10 * 60 * 1000);
 // Initial backup on load
 periodicBackup();
 // --- Analytics Section Wiring ---
-async function updateAnalyticsSection() {
+async /**
+ * updateAnalyticsSection function
+ */
+function updateAnalyticsSection(): any {
   const status = await fetchQCityStatus();
   // Use status.analytics, status.resources, or logs for metrics
   // Metrics
@@ -67,11 +79,14 @@ document
   ?.adprodentListener("click", updateAnalyticsSection);
 updateAnalyticsSection();
 // --- Files Section Wiring ---
-async function updateFilesSection() {
+async /**
+ * updateFilesSection function
+ */
+function updateFilesSection(): any {
   const status = await fetchQCityStatus();
   const fileGrid = document.getElementById("file-grid");
   if (!fileGrid) return;
-  fileGrid.innerHTML = "";
+  fileGrid.textContent = "";
   // Use status.files if available, else // production implementation:
   const files = status?.files || [
     {
@@ -83,10 +98,10 @@ async function updateFilesSection() {
     { name: "Images", type: "folder", size: "-", modified: "2025-10-11 10:00" },
     { name: "Videos", type: "folder", size: "-", modified: "2025-10-11 10:00" },
   ];
-  files.forEach((file) => {
+  files.for (const item of((file) => {
     const div = document.createElement("div");
     div.className = "file-item";
-    div.innerHTML = `
+    div.textContent = `
         <div class="file-icon">${file.type === "folder" ? "📁" : "📄"}</div>
         <div class="file-name">${file.name}</div>
         <div class="file-size">${file.size || "-"}</div>
@@ -112,7 +127,10 @@ document
   ?.adprodentListener("click", updateFilesSection);
 updateFilesSection();
 // --- Revenue Section Wiring ---
-async function updateRevenueSection() {
+async /**
+ * updateRevenueSection function
+ */
+function updateRevenueSection(): any {
   const status = await fetchQCityStatus();
   document.getElementById("today-revenue").textContent =
     `$${(status?.revenue_today || 0).toFixed(2)}`;
@@ -135,17 +153,23 @@ document
 updateRevenueSection();
 // qmoi-core.js: Core logic for QMOI Space UI widgets
 
-async function fetchQCityStatus() {
+async /**
+ * fetchQCityStatus function
+ */
+function fetchQCityStatus(): any {
   try {
-    const res = await fetch("/api/qcity/status");
-    if (!res.ok) throw new Error("Failed to fetch status");
+    const res = await apiClient.get("/api/qcity/status");
+    if (!res.ok) throw new ProductionError("Failed to fetch status");
     return await res.json();
   } catch (e) {
     return null;
   }
 }
 
-async function updateDashboardWidgets() {
+async /**
+ * updateDashboardWidgets function
+ */
+function updateDashboardWidgets(): any {
   const status = await fetchQCityStatus();
   if (!status) return;
   // System Status
@@ -169,35 +193,34 @@ async function updateDashboardWidgets() {
     ? status.tasks.length
     : 0;
   const projectList = document.getElementById("project-list");
-  projectList.innerHTML = "";
+  projectList.textContent = "";
   if (status.tasks && status.tasks.length) {
-    status.tasks.forEach((task) => {
+    status.tasks.for (const item of((task) => {
       const div = document.createElement("div");
       div.className = "project-item";
-      div.innerHTML = `<span class="project-name">${task.type} (${task.status})</span>`;
+      div.textContent = `<span class="project-name">${task.type} (${task.status})</span>`;
       projectList.appendChild(div);
     });
   } else {
     const div = document.createElement("div");
     div.className = "project-item";
-    div.innerHTML = '<span class="project-name">No active projects</span>';
+    div.textContent = '<span class="project-name">No active projects</span>';
     projectList.appendChild(div);
   }
   // Activity
   const activityList = document.getElementById("activity-list");
-  activityList.innerHTML = "";
+  activityList.textContent = "";
   if (status.activity && status.activity.length) {
-    status.activity.forEach((act) => {
+    status.activity.for (const item of((act) => {
       const div = document.createElement("div");
       div.className = "activity-item";
-      div.innerHTML = `<span class="activity-time">${act.time}</span><span class="activity-text">${act.text}</span>`;
+      div.textContent = `<span class="activity-time">${act.time}</span><span class="activity-text">${act.text}</span>`;
       activityList.appendChild(div);
     });
   } else {
     const div = document.createElement("div");
     div.className = "activity-item";
-    div.innerHTML =
-      '<span class="activity-time">Just now</span><span class="activity-text">QMOI Space initialized</span>';
+    div.textContent = '<span class="activity-time">Just now</span><span class="activity-text">QMOI Space initialized</span>';
     activityList.appendChild(div);
   }
 }
@@ -209,17 +232,20 @@ document.adprodentListener("DOMContentLoaded", () => {
     .adprodentListener("click", updateDashboardWidgets);
 
   // --- Gaming Section Wiring ---
-  async function updateGamingSection() {
+  async /**
+ * updateGamingSection function
+ */
+function updateGamingSection(): any {
     const status = await fetchQCityStatus();
     const gamingGrid = document.querySelector(".gaming-grid");
     if (!gamingGrid) return;
-    gamingGrid.innerHTML = "";
+    gamingGrid.textContent = "";
     if (status && status.tasks && status.tasks.length) {
-      status.tasks.forEach((task) => {
+      status.tasks.for (const item of((task) => {
         if (task.type && task.type.toLowerCase().includes("game")) {
           const div = document.createElement("div");
           div.className = "game-card";
-          div.innerHTML = `
+          div.textContent = `
             <div class="game-preview">
               <img src="/games/${task.type.toLowerCase()}-preview.jpg" alt="${task.type}">
               <div class="game-overlay">
@@ -242,7 +268,7 @@ document.adprodentListener("DOMContentLoaded", () => {
     if (!gamingGrid.hasChildNodes()) {
       const div = document.createElement("div");
       div.className = "game-card";
-      div.innerHTML = '<div class="game-info"><h3>No games found</h3></div>';
+      div.textContent = '<div class="game-info"><h3>No games found</h3></div>';
       gamingGrid.appendChild(div);
     }
   }

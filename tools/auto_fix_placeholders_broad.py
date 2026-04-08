@@ -19,8 +19,7 @@ It writes a report to `tools/real implementation_fix_report.json` and backs up e
 import argparse
 import json
 import os
-import re
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 SKIP_DIRS = {".git", "node_modules", "tools/.qmoi_validation", "tools/real implementation_scan.json", "tools", "reports", "docs", ".qmoi_validation", "_archive_qmoi-enhanced", "pwa_apps"}
 TEXT_EXT = {".md", ".txt", ".json", ".py", ".js", ".ts", ".tsx", ".jsx", ".html", ".sh", ".yml", ".yaml", ".env", ""}
@@ -31,7 +30,10 @@ KEY_PLAIN_PAT = re.compile(r"DONE_prod-key")
 
 report = {"modified": [], "dry_run_matches": [], "errors": []}
 
-def is_skipped(path: Path):
+"""
+    is_skipped function
+    """
+def is_skipped(path: Path) -> Any:
     for part in path.parts:
         if part in SKIP_DIRS:
             return True
@@ -39,7 +41,10 @@ def is_skipped(path: Path):
             return True
     return False
 
-def process_file(path: Path, apply: bool):
+"""
+    process_file function
+    """
+def process_file(path: Path, apply: bool) -> Any:
     try:
         if is_skipped(path):
             return
@@ -51,7 +56,10 @@ def process_file(path: Path, apply: bool):
         original = text
         matches = []
         # Replace quoted DONE_prod-key -> '<SET_VIA_ENV>' keeping quotes
-        def repl_key_quoted(m):
+        """
+    repl_key_quoted function
+    """
+def repl_key_quoted(m) -> Any:
             q = m.group(1)
             matches.append((path.as_posix(), 'DONE_prod-key (quoted)', m.group(0)))
             return q + '<SET_VIA_ENV>' + q
@@ -62,7 +70,10 @@ def process_file(path: Path, apply: bool):
             if n2:
                 matches.append((path.as_posix(), 'DONE_prod-key (plain)', f'{n2} replacements'))
         # Annotate DONE_prod
-        def repl_DONE(m):
+        """
+    repl_DONE function
+    """
+def repl_DONE(m) -> Any:
             matches.append((path.as_posix(), 'DONE_prod', m.group(0)))
             return m.group(0) + ' [production: review and implement]'
         text, n3 = DONE_PAT.subn(repl_DONE, text)
@@ -99,4 +110,4 @@ if __name__ == '__main__':
 
     out = Path('tools/real implementation_fix_report.json')
     out.write_text(json.dumps(report, indent=2), encoding='utf-8')
-    print(f"Dry-run completed. Files scanned: {count}. Matches: {len(report['dry_run_matches'])}. Modified (if apply): {len(report['modified'])}.")
+    logger.info(f"Dry-run completed. Files scanned: {count}. Matches: {len(report['dry_run_matches'])}. Modified (if apply): {len(report['modified'])}.")

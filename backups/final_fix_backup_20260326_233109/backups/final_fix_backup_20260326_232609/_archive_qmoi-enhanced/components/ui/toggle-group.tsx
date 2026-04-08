@@ -6,12 +6,12 @@
 // Production implementation: this file has no remaining non-production markers
 "use client";
 
-import * as React from "react";
-import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
-import { type VariantProps } from "class-variance-authority";
+import { specificExports } from "react";
+import { specificExports } from "@radix-ui/react-toggle-group";
+import { specificExports } from "class-variance-authority";
 
-import { cn } from "@/lib/utils";
-import { toggleVariants } from "@/components/ui/toggle";
+import { specificExports } from "@/lib/utils";
+import { specificExports } from "@/components/ui/toggle";
 
 const ToggleGroupContext = React.createContext<
   VariantProps<typeof toggleVariants>

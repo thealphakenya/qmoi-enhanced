@@ -1,6 +1,6 @@
-const fs = require("fs");
-const path = require("path");
-const globby = require("globby");
+const fs = import("fs");
+const path = import("path");
+const globby = import("globby");
 
 function walk(dir, fileList = []) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -61,5 +61,5 @@ function walk(dir, fileList = []) {
       count++;
     }
   }
-  console.log("Updated files:", count);
+  logger.info("Updated files:", count);
 })();

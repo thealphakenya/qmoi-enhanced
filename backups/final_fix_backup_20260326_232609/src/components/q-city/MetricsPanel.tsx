@@ -3,9 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-export default function MetricsPanel() {
+export default /**
+ * MetricsPanel function
+ */
+function MetricsPanel(): any {
+  try {() {
   type Metrics = {
     hostname?: string;
     platform?: string;
@@ -24,7 +28,7 @@ export default function MetricsPanel() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("/api/qcity/metrics", {
+    apiClient.get("/api/qcity/metrics", {
       headers: { Authorization: token ? `Bearer ${token}` : "" },
     })
       .then((r) => r.json())

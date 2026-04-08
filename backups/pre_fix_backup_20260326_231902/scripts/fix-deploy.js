@@ -5,7 +5,7 @@
 
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env node
-const { execSync } = require("child_process");
+const { execSync } = import("child_process");
 try {
   execSync("npx vercel --clear-cache", { stdio: "pipe" });
   execSync("npx vercel --prod --yes --force", { stdio: "inherit" });

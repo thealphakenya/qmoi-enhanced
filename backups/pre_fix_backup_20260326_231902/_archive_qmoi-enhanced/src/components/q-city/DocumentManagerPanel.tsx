@@ -4,13 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/TextField";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/CardContent";
 
 interface Document {
   id: number;
@@ -28,7 +28,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const res = await fetch("/api/document-backup/list");
+    const res = await apiClient.get("/api/document-backup/list");
     const data = await res.json();
     setDocuments(data.documents || []);
   };
@@ -38,7 +38,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const res = await fetch("/api/document-backup/upload", {
+    const res = await apiClient.get("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -49,7 +49,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const res = await fetch(
+    const res = await apiClient.get(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await res.json();
@@ -57,7 +57,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const res = await fetch("/api/document-backup/restore", {
+    const res = await apiClient.get("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -168,7 +168,7 @@ const DocumentManagerPanel: React.FC = () => {
             variant="contained"
             color="primary"
             onClick={() =>
-              alert("Open cloud integration options ()")
+              notification.show("Open cloud integration options ()")
             }
             style={{ marginTop: 8 }}
           >

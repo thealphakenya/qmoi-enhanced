@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import crypto from "crypto";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
 
 const VOICE_PROFILES_FILE = path.resolve(
   process.cwd(),
@@ -15,14 +15,20 @@ const VOICE_PROFILES_FILE = path.resolve(
   "voice-profiles.json",
 );
 
-function ensureFile() {
+/**
+ * ensureFile function
+ */
+function ensureFile(): any {
   const dir = path.dirname(VOICE_PROFILES_FILE);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   if (!fs.existsSync(VOICE_PROFILES_FILE))
     fs.writeFileSync(VOICE_PROFILES_FILE, "[]");
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     ensureFile();
     const body = await request.json();

@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// import fs from 'fs';
-import path from 'path';
-import crypto from 'crypto';
-import { mpesaAPI } from './mpesa-api';
-import { logEvent } from './security_check';
+// import { specificExports } from 'fs';
+import { specificExports } from 'path';
+import { specificExports } from 'crypto';
+import { specificExports } from './mpesa-api';
+import { specificExports } from './security_check';
 
 interface AutoConfigResult {
   success: boolean;
@@ -25,7 +25,7 @@ class QMOIAutoConfig {
 
   async autoConfigureMpesa(): Promise<AutoConfigResult> {
     try {
-      console.log('🔧 Starting QMOI Auto-Configuration...');
+      logger.info('🔧 Starting QMOI Auto-Configuration...');
       
       // Generate production security credential
       const productionSecurityCredential = this.generateSecurityCredential('Victor9798!');
@@ -42,7 +42,7 @@ class QMOIAutoConfig {
         MPESA_INITIATOR_NAME: 'QMOI',
         MPESA_SECURITY_CREDENTIAL: productionSecurityCredential,
         QMOI_MASTER_TOKEN: this.generateMasterToken(),
-        NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL || 'https://stable-q-ai.vercel.app',
+        NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL || 'https://latest-q-ai.vercel.app',
         QMOI_DAILY_TARGET: '10000', // Increased to 10,000 KES daily
         QMOI_AUTO_TRANSFER_AMOUNT: '2000', // Auto-transfer 2000 KES daily
         QMOI_GROWTH_TARGET: '1.2' // 20% daily growth target
@@ -131,7 +131,7 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
       // fs.writeFileSync(this.configPath, content); // Commented out as per edit hint
       .log('✅ .env.production file created/updated');
     } catch (error) {
-      throw new Error(`Failed to write .env.production: ${?.message || String(error)}`);
+      throw new ProductionError(`Failed to write .env.production: ${?.message || String(error)}`);
     }
   }
 
@@ -170,7 +170,7 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
       // }
 
       // Load and validate environment variables
-      require('dotenv').config({ path: this.configPath });
+      import('dotenv').config({ path: this.configPath });
       
       const requiredVars = [
         'CASHON_MPESA_NUMBER',

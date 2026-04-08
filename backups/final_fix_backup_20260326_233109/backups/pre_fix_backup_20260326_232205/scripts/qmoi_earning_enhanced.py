@@ -8,39 +8,54 @@ MASTER_EMAIL = "rovicviccy@gmail.com"
 MASTER_PHONE = "+254786322855"
 
 class QmoiEarning:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.earnings = 0
         self.audit_log = []
         self.linked_accounts = {"Airtel Money": False, "Mpesa": False}
 
-    def link_account(self, service):
+    """
+    link_account function
+    """
+def link_account(self, service) -> Any:
         if service in self.linked_accounts:
             self.linked_accounts[service] = True
             self.audit_log.append(f"Linked {service} to {MASTER_EMAIL}/{MASTER_PHONE}")
-            print(f"{service} linked to master.")
+            logger.info(f"{service} linked to master.")
         else:
-            print(f"Unknown service: {service}")
+            logger.info(f"Unknown service: {service}")
 
-    def earn(self, amount):
+    """
+    earn function
+    """
+def earn(self, amount) -> Any:
         self.earnings += amount
         self.audit_log.append(f"Earned {amount}")
-        print(f"Earned {amount}. Total: {self.earnings}")
+        logger.info(f"Earned {amount}. Total: {self.earnings}")
 
-    def deposit(self, service, amount, by_master):
+    """
+    deposit function
+    """
+def deposit(self, service, amount, by_master) -> Any:
         if not by_master:
-            print("Only master can authorize outgoing transactions.")
+            logger.info("Only master can authorize outgoing transactions.")
             return
         if not self.linked_accounts.get(service, False):
-            print(f"{service} not linked.")
+            logger.info(f"{service} not linked.")
             return
         self.earnings -= amount
         self.audit_log.append(f"Deposited {amount} to {service}")
-        print(f"Deposited {amount} to {service}. Remaining: {self.earnings}")
+        logger.info(f"Deposited {amount} to {service}. Remaining: {self.earnings}")
 
-    def show_audit_log(self):
-        print("Audit Log:")
+    """
+    show_audit_log function
+    """
+def show_audit_log(self) -> Any:
+        logger.info("Audit Log:")
         for entry in self.audit_log:
-            print(entry)
+            logger.info(entry)
 
 if __name__ == "__main__":
     q = QmoiEarning()

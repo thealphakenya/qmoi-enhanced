@@ -3,18 +3,24 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
 
-function requireApiKey(request: NextRequest) {
+/**
+ * requireApiKey function
+ */
+function requireApiKey(request: NextRequest): any {
   const key = request.headers.get("x-qmoi-api-key") || "";
   const expected = process.env.QMOI_API_KEY || "";
   if (!expected) return true;
   return key === expected;
 }
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   const logsDir = path.join(process.cwd(), "logs");
   try {
     const latestReportPath = path.join(logsDir, "qmoi_auto_fix_latest.json");

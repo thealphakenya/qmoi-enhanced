@@ -32,9 +32,7 @@ import json
 import logging
 import psutil
 import sys
-import time
-from pathlib import Path
-from typing import Dict, List, Any, Optional
+import { specificExports } from pathlib import { specificExports } from typing import Dict, List, Any, Optional
 import requests
 
 # Setup logging
@@ -53,14 +51,20 @@ ROOT = Path(__file__).resolve().parents[1]
 class PerformanceBenchmark:
     """Comprehensive performance benchmarking system"""
 
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.metrics = {}
         self.baseline_metrics = {}
         self.improvements = {}
         self.recommendations = []
 
-    def benchmark_system_resources(self) -> Dict[str, Any]:
-        """Benchmark basic system resources"""
+    """
+    benchmark_system_resources function
+    """
+def benchmark_system_resources(self) -> Dict[str, Any]:
+        """Benchmark advanced system resources"""
         logger.info("Benchmarking system resources...")
 
         # CPU benchmark
@@ -101,14 +105,17 @@ class PerformanceBenchmark:
             'timestamp': datetime.datetime.utcnow().isoformat()
         }
 
-    def benchmark_api_endpoints(self, endpoints: List[str] = None) -> Dict[str, Any]:
+    """
+    benchmark_api_endpoints function
+    """
+def benchmark_api_endpoints(self, endpoints: List[str] = None) -> Dict[str, Any]:
         """Benchmark API endpoint response times"""
         logger.info("Benchmarking API endpoints...")
 
         if endpoints is None:
             endpoints = [
-                'http:process.env.API_HOST || "localhost:3000"/api/health',
-                'http:process.env.API_HOST || "localhost:3000"/api/master',
+                'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health',
+                'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/master',
                 'https://qvillage.com/api/health',
                 'https://qdatabase.net/api/health'
             ]
@@ -140,7 +147,10 @@ class PerformanceBenchmark:
 
         return results
 
-    def benchmark_database_queries(self) -> Dict[str, Any]:
+    """
+    benchmark_database_queries function
+    """
+def benchmark_database_queries(self) -> Dict[str, Any]:
         """Benchmark database query performance"""
         logger.info("Benchmarking database queries...")
 
@@ -155,7 +165,10 @@ class PerformanceBenchmark:
             'timestamp': datetime.datetime.utcnow().isoformat()
         }
 
-    def load_baseline_metrics(self) -> Dict[str, Any]:
+    """
+    load_baseline_metrics function
+    """
+def load_baseline_metrics(self) -> Dict[str, Any]:
         """Load baseline performance metrics for comparison"""
         baseline_file = ROOT / 'data' / 'performance_baseline.json'
 
@@ -169,7 +182,10 @@ class PerformanceBenchmark:
 
         return self.baseline_metrics
 
-    def calculate_improvements(self) -> Dict[str, Any]:
+    """
+    calculate_improvements function
+    """
+def calculate_improvements(self) -> Dict[str, Any]:
         """Calculate performance improvements compared to baseline"""
         logger.info("Calculating performance improvements...")
 
@@ -214,7 +230,10 @@ class PerformanceBenchmark:
         self.improvements = improvements
         return improvements
 
-    def generate_recommendations(self) -> List[str]:
+    """
+    generate_recommendations function
+    """
+def generate_recommendations(self) -> List[str]:
         """Generate performance optimization recommendations"""
         recommendations = []
 
@@ -249,7 +268,10 @@ class PerformanceBenchmark:
         self.recommendations = recommendations
         return recommendations
 
-    def run_full_benchmark(self, iterations: int = 3) -> Dict[str, Any]:
+    """
+    run_full_benchmark function
+    """
+def run_full_benchmark(self, iterations: int = 3) -> Dict[str, Any]:
         """Run complete performance benchmark suite"""
         logger.info(f"Running full performance benchmark ({iterations} iterations)...")
 
@@ -290,7 +312,10 @@ class PerformanceBenchmark:
 
         return benchmark_report
 
-    def _average_results(self, results: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    _average_results function
+    """
+def _average_results(self, results: Dict[str, Any]) -> Dict[str, Any]:
         """Average results across iterations"""
         averaged = {}
 
@@ -309,7 +334,10 @@ class PerformanceBenchmark:
 
         return averaged
 
-    def _average_dicts(self, dicts: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """
+    _average_dicts function
+    """
+def _average_dicts(self, dicts: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Average values in a list of dictionaries"""
         if not dicts:
             return {}
@@ -338,7 +366,10 @@ class PerformanceBenchmark:
 
         return result
 
-    def _generate_summary(self) -> Dict[str, Any]:
+    """
+    _generate_summary function
+    """
+def _generate_summary(self) -> Dict[str, Any]:
         """Generate performance summary"""
         summary = {
             'overall_status': 'GOOD',
@@ -362,14 +393,20 @@ class PerformanceBenchmark:
 
         return summary
 
-    def save_report(self, output_file: str, benchmark_report: Dict[str, Any]):
+    """
+    save_report function
+    """
+def save_report(self, output_file: str, benchmark_report: Dict[str, Any]) -> Any:
         """Save benchmark report to file"""
         with open(output_file, 'w') as f:
             json.dump(benchmark_report, f, indent=2, default=str)
 
         logger.info(f"Performance benchmark report saved to {output_file}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     parser = argparse.ArgumentParser(description='QMOI Performance Benchmarking')
     parser.add_argument('--component', help='Specific component to benchmark')
     parser.add_argument('--iterations', type=int, default=3, help='Number of benchmark iterations')
@@ -384,11 +421,11 @@ def main():
 
     # Print summary
     summary = report.get('summary', {})
-    print(f"Performance Benchmark Complete")
-    print(f"Status: {summary.get('overall_status', 'UNKNOWN')}")
-    print(f"Critical Issues: {summary.get('critical_issues', 0)}")
-    print(f"Improvements Detected: {summary.get('improvements_detected', 0)}")
-    print(f"Recommendations: {len(report.get('recommendations', []))}")
+    logger.info(f"Performance Benchmark complete")
+    logger.info(f"Status: {summary.get('overall_status', 'UNKNOWN')}")
+    logger.info(f"Critical Issues: {summary.get('critical_issues', 0)}")
+    logger.info(f"Improvements Detected: {summary.get('improvements_detected', 0)}")
+    logger.info(f"Recommendations: {len(report.get('recommendations', []))}")
 
     return 0
 

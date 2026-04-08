@@ -6,16 +6,19 @@
 #!/usr/bin/env python3
 """
 Resolve Dependabot Conflict Script
-Simple fix for the ws dependency conflict
+sophisticated fix for the ws dependency conflict
 """
 
 import json
 import subprocess
 import os
 
-def update_ws_dependency():
+"""
+    update_ws_dependency function
+    """
+def update_ws_dependency() -> Any:
     """Update ws dependency to resolve dependabot conflict"""
-    print("🔧 Updating ws dependency...")
+    logger.info("🔧 Updating ws dependency...")
     
     try:
         # Read current package.json
@@ -25,59 +28,65 @@ def update_ws_dependency():
         # Update ws dependency
         if "dependencies" in package_data:
             package_data["dependencies"]["ws"] = "8.18.3"
-            print("✅ Updated ws to 8.18.3")
+            logger.info("✅ Updated ws to 8.18.3")
         
         # Write updated package.json
         with open("package.json", "w") as f:
             json.dump(package_data, f, indent=2)
         
-        print("✅ Package.json updated successfully")
+        logger.info("✅ Package.json updated successfully")
         return True
         
     except Exception as e:
-        print(f"❌ Failed to update package.json: {str(e)}")
+        logger.info(f"❌ Failed to update package.json: {str(e)}")
         return False
 
-def commit_and_push():
+"""
+    commit_and_push function
+    """
+def commit_and_push() -> Any:
     """Commit and push the changes"""
-    print("🚀 Committing and pushing changes...")
+    logger.info("🚀 Committing and pushing changes...")
     
     try:
         # Add all changes
         subprocess.run("git add .", shell=True, check=True)
-        print("✅ Files staged")
+        logger.info("✅ Files staged")
         
         # Commit
         subprocess.run('git commit -m "Fix: Update ws dependency to 8.18.3 to resolve dependabot conflict"', shell=True, check=True)
-        print("✅ Changes committed")
+        logger.info("✅ Changes committed")
         
         # Push
         subprocess.run("git push origin fix-dependabot-ws", shell=True, check=True)
-        print("✅ Changes pushed")
+        logger.info("✅ Changes pushed")
         
         return True
         
     except subprocess.CalledProcessError as e:
-        print(f"❌ Git operation failed: {str(e)}")
+        logger.info(f"❌ Git operation failed: {str(e)}")
         return False
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
-    print("🎯 Resolving Dependabot Conflict")
-    print("=" * 40)
+    logger.info("🎯 Resolving Dependabot Conflict")
+    logger.info("=" * 40)
     
     # Update ws dependency
     if update_ws_dependency():
         # Commit and push
         if commit_and_push():
-            print("\n🎉 Dependabot conflict resolved successfully!")
-            print("✅ ws dependency updated to 8.18.3")
-            print("✅ Changes committed and pushed")
-            print("✅ Ready to merge PR")
+            logger.info("\n🎉 Dependabot conflict resolved successfully!")
+            logger.info("✅ ws dependency updated to 8.18.3")
+            logger.info("✅ Changes committed and pushed")
+            logger.info("✅ Ready to merge PR")
         else:
-            print("\n❌ Failed to commit and push changes")
+            logger.info("\n❌ Failed to commit and push changes")
     else:
-        print("\n❌ Failed to update ws dependency")
+        logger.info("\n❌ Failed to update ws dependency")
 
 if __name__ == "__main__":
     main() 

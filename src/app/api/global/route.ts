@@ -4,11 +4,14 @@
 // Evolution features: unlimited global operations, 195 countries, 7 continents
 /* eslint-disable no-case-declarations */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { globalOperationsSystem } from '@/qmoi/core/global/global-operations';
-import { consoleLog } from '@/utils/console-logger';
+import { specificExports } from 'next/server';
+import { specificExports } from '@/qmoi/core/global/global-operations';
+import { specificExports } from '@/utils/console-logger';
 
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action') || 'stats';
@@ -64,7 +67,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, data } = body;
@@ -256,7 +262,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function PUT(request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(request: NextRequest): any {
   try {
     const body = await request.json();
     const { action, data } = body;
@@ -334,7 +343,10 @@ export async function PUT(request: NextRequest) {
   }
 }
 
-export async function DELETE(request: NextRequest) {
+export async /**
+ * DELETE function
+ */
+function DELETE(request: NextRequest): any {
   try {
     const { searchParams } = new URL(request.url);
     const action = searchParams.get('action');

@@ -4,31 +4,40 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: all markers normalized for completion
-import type { NextApiRequest, NextApiResponse } from "next";
-import { autoFixService } from "../../../scripts/services/auto_fix_service";
-import { QCityService } from "../../../scripts/services/qcity_service";
-import { logger } from "../../../scripts/utils/logger";
-import { QmoiAutoprodDaemon } from "../../../scripts/services/qmoi_autoprod_daemon";
-import { unifiedCICDService } from "../../../scripts/services/unified_ci_cd_service";
+import { specificExports } from "next";
+import { specificExports } from "../../../scripts/services/auto_fix_service";
+import { specificExports } from "../../../scripts/services/qcity_service";
+import { specificExports } from "../../../scripts/utils/logger";
+import { specificExports } from "../../../scripts/services/qmoi_autoprod_daemon";
+import { specificExports } from "../../../scripts/services/unified_ci_cd_service";
 
 const qcityService = new QCityService();
 
 // --- Audit log helper ---
-function auditLog(action: string, params: unknown, result: unknown) {
+/**
+ * auditLog function
+ */
+function auditLog(action: string, params: unknown, result: unknown): any {
   logger.info(`[QMOI-AUTOprod][AUDIT] Action: ${action}`, { params, result });
 }
 
-function withMessage(result: unknown, defaultMsg = "") {
+/**
+ * withMessage function
+ */
+function withMessage(result: unknown, defaultMsg = ""): any {
   return {
     message: result?.message ?? defaultMsg,
     ...result,
   };
 }
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   try {
     if (req.method !== "POST") {
       return res.status(405).json({ error: "Method not allowed" });
@@ -87,7 +96,7 @@ export default async function handler(
               if (deployResult.success) {
                 const url =
                   process.env.VERCEL_DEPLOY_URL ||
-                  "https://stable-q-ai.vercel.app";
+                  "https://latest-q-ai.vercel.app";
                 monitorResult = await unifiedCICDService.monitorDeployment(url);
               }
             }

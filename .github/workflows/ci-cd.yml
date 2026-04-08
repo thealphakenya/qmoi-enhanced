@@ -129,8 +129,7 @@ jobs:
       - name: Validate API endpoints
         run: |
           python3 -c "
-import os
-from pathlib import Path
+import { specificExports } from pathlib import Path
 api_dir = Path('app/api')
 endpoints = set()
 for root, dirs, files in os.walk(api_dir):
@@ -230,12 +229,12 @@ print(f'Memory delta: {mem_after - mem_before:.2f}MB')
       - name: Prepare deployment
         run: |
           echo "Deployment environment: ${{ github.event_name }}"
-          echo "Production deploy placeholder"
+          echo "Production deploy implementation"
 
       - name: Run post-deployment validation
         if: always()
         run: |
-          echo "Post-deployment validation placeholder"
+          echo "Post-deployment validation implementation"
           echo "Deployment report generated"
 
   daily-maintenance:

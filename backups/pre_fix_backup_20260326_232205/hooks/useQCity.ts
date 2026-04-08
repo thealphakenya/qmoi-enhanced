@@ -4,9 +4,9 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { useState, useEffect, useCallback } from "react";
-import { useQuery, useMutation } from "react-query";
-import axios from "axios";
+import { specificExports } from "react";
+import { specificExports } from "react-query";
+import { specificExports } from "axios";
 
 export interface QCityStatus {
   running: boolean;
@@ -95,7 +95,10 @@ export interface QCityError extends Error {
   status?: number;
 }
 
-export function useQCity() {
+export /**
+ * useQCity function
+ */
+function useQCity(): any {
   const [status, setStatus] = useState<QCityStatus | null>(null);
   const [config, setConfig] = useState<QCityConfig | null>(null);
   const [error, setError] = useState<QCityError | null>(null);
@@ -314,7 +317,10 @@ export function useQCity() {
 }
 
 // Hook for Q-city notifications
-export function useQCityNotifications() {
+export /**
+ * useQCityNotifications function
+ */
+function useQCityNotifications(): any {
   const [notifications, setNotifications] = useState<unknown[]>([]);
 
   // Fetch notifications
@@ -346,7 +352,10 @@ export function useQCityNotifications() {
 }
 
 // Hook for Q-city tasks
-export function useQCityTasks() {
+export /**
+ * useQCityTasks function
+ */
+function useQCityTasks(): any {
   const [tasks, setTasks] = useState<unknown[]>([]);
 
   // Fetch tasks
@@ -378,7 +387,10 @@ export function useQCityTasks() {
 }
 
 // Hook for Q-city resources
-export function useQCityResources() {
+export /**
+ * useQCityResources function
+ */
+function useQCityResources(): any {
   const [resources, setResources] = useState<unknown | null>(null);
 
   // Fetch resources
@@ -410,7 +422,10 @@ export function useQCityResources() {
 }
 
 // Hook for Q-city logs
-export function useQCityLogs() {
+export /**
+ * useQCityLogs function
+ */
+function useQCityLogs(): any {
   const [logs, setLogs] = useState<unknown[]>([]);
 
   // Fetch logs

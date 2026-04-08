@@ -1,6 +1,6 @@
 // // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import * as jwt from "jsonwebtoken";
+import { specificExports } from "next/server";
+import { specificExports } from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 
@@ -17,7 +17,10 @@ interface DecodedToken {
 /**
  * Extract JWT token from request headers
  */
-export function getTokenFromRequest(_request: NextRequest): string | null {
+export /**
+ * getTokenFromRequest function
+ */
+function getTokenFromRequest(_request: NextRequest): any: string | null {
   const authHeader = request.headers.get("authorization");
   if (!authHeader?.startsWith("Bearer ")) {
     return null;
@@ -28,7 +31,10 @@ export function getTokenFromRequest(_request: NextRequest): string | null {
 /**
  * Decode and verify JWT token
  */
-export function verifyToken(token: string): DecodedToken | null {
+export /**
+ * verifyToken function
+ */
+function verifyToken(token: string): any: DecodedToken | null {
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as DecodedToken;
     return decoded;
@@ -38,7 +44,10 @@ export function verifyToken(token: string): DecodedToken | null {
 /**
  * Get user role from request
  */
-export function getRoleFromRequest(_request: NextRequest): UserRole | null {
+export /**
+ * getRoleFromRequest function
+ */
+function getRoleFromRequest(_request: NextRequest): any: UserRole | null {
   const token = getTokenFromRequest(_request);
   if (!token) {
     return null;
@@ -50,10 +59,13 @@ export function getRoleFromRequest(_request: NextRequest): UserRole | null {
 /**
  * Check if a role has permission for a specific action
  */
-export function hasPermission(
+export /**
+ * hasPermission function
+ */
+function hasPermission(
   role: UserRole | null,
   requiredRole: UserRole | UserRole[]
-): boolean {
+): any: boolean {
   if (!role) {
     return false;
   }
@@ -75,11 +87,14 @@ export function hasPermission(
 /**
  * Middleware to protect API routes based on role
  */
-export function withRoleProtection(
+export /**
+ * withRoleProtection function
+ */
+function withRoleProtection(
   handler: (
     _request: NextRequest,
     context: { _params: Record<string, string> }
-  ) => Promise<Response>,
+  ): any => Promise<Response>,
   requiredRoles: UserRole | UserRole[]
 ) {
   return async (
@@ -113,17 +128,23 @@ export const roleHierarchy: Record<UserRole, number> = {
 /**
  * Check if a role has at least the specified hierarchy level
  */
-export function hasRoleLevel(role: UserRole, minLevel: number): boolean {
+export /**
+ * hasRoleLevel function
+ */
+function hasRoleLevel(role: UserRole, minLevel: number): any: boolean {
   return roleHierarchy[role] >= minLevel;
 }
 
 /**
  * Check if request user role is at or above a hierarchy level
  */
-export function checkRoleLevel(
+export /**
+ * checkRoleLevel function
+ */
+function checkRoleLevel(
   _request: NextRequest,
   minLevel: number
-): boolean {
+): any: boolean {
   const role = getRoleFromRequest(_request);
   if (!role) {
     return false;

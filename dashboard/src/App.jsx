@@ -4,14 +4,17 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
-function App() {
+/**
+ * App function
+ */
+function App(): any {
   const [status, setStatus] = useState(null);
 
   useEffect(() => {
     const fetchStatus = async () => {
-      const res = await fetch("process.env.API_URL || "http://localhost:\1"/api/status");
+      const res = await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/api/status");
       const data = await res.json();
       setStatus(data);
     };

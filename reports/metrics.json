@@ -1,5 +1,9 @@
 {
   "testCoverage": 92.5,
   "errorRate": 0.01,
-  "buildSuccess": true
+  "buildSuccess": true,
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:15:47.220162"
 }

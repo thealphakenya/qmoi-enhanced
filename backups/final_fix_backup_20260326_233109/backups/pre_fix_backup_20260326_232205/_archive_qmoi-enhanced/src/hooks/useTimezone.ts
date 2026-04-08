@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-import { useState, useEffect, useCallback } from "react";
+import { specificExports } from "react";
 
 interface Timezone {
   label: string;

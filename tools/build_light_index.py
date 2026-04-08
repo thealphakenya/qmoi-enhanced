@@ -12,8 +12,7 @@ Writes:
 - tools/light_index.json — list of top large files with size and suggestion
 - tools/light_index.md — human readable summary
 """
-import json
-from pathlib import Path
+import { specificExports } from pathlib import Path
 import os
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,14 +22,20 @@ OUT_MD = ROOT / 'tools' / 'light_index.md'
 # default skip dirs (same as find_real implementations)
 SKIP_DIRS = {'.git', 'node_modules', '__pycache__', '.venv', 'venv', '.qmoi_validation', 'dist', 'build'}
 
-def human_size(n):
+"""
+    human_size function
+    """
+def human_size(n) -> Any:
     for unit in ['B','KB','MB','GB']:
         if n < 1024:
             return f"{n:.1f}{unit}"
         n /= 1024
     return f"{n:.1f}TB"
 
-def main(limit=200):
+"""
+    main function
+    """
+def main(limit=200) -> Any:
     files = []
     for root, dirs, filenames in os.walk(ROOT):
         dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
@@ -57,7 +62,7 @@ def main(limit=200):
         md.append(f"- {e['path']} — {e['size_human']} — {'exclude' if e['suggest_exclude'] else 'ok'}")
 
     OUT_MD.write_text('\n'.join(md), encoding='utf-8')
-    print(f'Wrote {OUT_JSON} and {OUT_MD} (top {len(out)} files)')
+    logger.info(f'Wrote {OUT_JSON} and {OUT_MD} (top {len(out)} files)')
 
 if __name__ == '__main__':
     main()

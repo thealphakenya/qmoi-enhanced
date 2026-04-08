@@ -10,8 +10,14 @@ import threading
 app = Flask(__name__)
 
 @app.route('/api/build-apps', methods=['POST'])
-def build_apps():
-    def run_builder():
+"""
+    build_apps function
+    """
+def build_apps() -> Any:
+    """
+    run_builder function
+    """
+def run_builder() -> Any:
         subprocess.run(['python', 'scripts/qmoi-app-builder.py'])
     threading.Thread(target=run_builder).start()
     return jsonify({"status": "Build triggered"}), 202

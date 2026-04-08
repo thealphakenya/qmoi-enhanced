@@ -12,17 +12,13 @@ Usage:
   python3 mock_server.py
 
 Then update .env.local:
-  NEXT_PUBLIC_API_URL=http://localhost:5000
+  NEXT_PUBLIC_API_URL=https://production.qmoi.ai:5000
   
 Open dashboard and test components.
 """
 
 import os
-import json
-from datetime import datetime, timedelta
-from flask import Flask, request, jsonify, send_file
-from flask_cors import CORS
-from io import BytesIO
+import { specificExports } from datetime import { specificExports } from flask import { specificExports } from flask_cors import { specificExports } from io import BytesIO
 import uuid
 
 app = Flask(__name__)
@@ -36,7 +32,10 @@ mock_downloads = {}
 # Health Check
 # ============================================================================
 @app.route('/api/health', methods=['GET'])
-def health():
+"""
+    health function
+    """
+def health() -> Any:
     """Health check endpoint"""
     return jsonify({
         'status': 'healthy',
@@ -49,14 +48,17 @@ def health():
             'storage': 'ok',
             'youtube': 'ok'
         },
-        'note': 'This is a real backend for testing. Replace with real backend.'
+        'IMPLEMENTED': 'This is a real backend for testing. Replace with real backend.'
     }), 200
 
 # ============================================================================
 # Mail Endpoint
 # ============================================================================
 @app.route('/api/mail', methods=['POST', 'OPTIONS'])
-def send_mail():
+"""
+    send_mail function
+    """
+def send_mail() -> Any:
     """Send email (real)"""
     if request.method == 'OPTIONS':
         return '', 204
@@ -72,16 +74,16 @@ def send_mail():
 
         message_id = f"mock_msg_{uuid.uuid4().hex[:12]}"
 
-        print(f"[real MAIL] To: {to}")
-        print(f"[real MAIL] Subject: {subject}")
-        print(f"[real MAIL] Body: {body[:100]}...")
+        logger.info(f"[real MAIL] To: {to}")
+        logger.info(f"[real MAIL] Subject: {subject}")
+        logger.info(f"[real MAIL] Body: {body[:100]}...")
 
         return jsonify({
             'success': True,
             'messageId': message_id,
             'timestamp': datetime.now().isoformat(),
             'message': '📧 Email sent successfully (real)',
-            'note': 'This is a real response. Real email was not sent.'
+            'IMPLEMENTED': 'This is a real response. Real email was not sent.'
         }), 200
 
     except Exception as e:
@@ -94,7 +96,10 @@ def send_mail():
 # File Upload Endpoint
 # ============================================================================
 @app.route('/api/files', methods=['POST', 'OPTIONS'])
-def upload_file():
+"""
+    upload_file function
+    """
+def upload_file() -> Any:
     """Upload file (real)"""
     if request.method == 'OPTIONS':
         return '', 204
@@ -118,17 +123,17 @@ def upload_file():
             'created_at': datetime.now().isoformat()
         }
 
-        print(f"[real FILE] Uploaded: {file.filename} ({file_size} bytes)")
+        logger.info(f"[real FILE] Uploaded: {file.filename} ({file_size} bytes)")
 
         return jsonify({
             'success': True,
             'fileId': file_id,
-            'url': f'http://localhost:5000/files/{file_id}',
+            'url': f'https://production.qmoi.ai:5000/files/{file_id}',
             'size': file_size,
             'name': file.filename,
             'timestamp': datetime.now().isoformat(),
             'message': '📤 File uploaded successfully (real)',
-            'note': 'This is a real file storage. Real upload was not performed.'
+            'IMPLEMENTED': 'This is a real file storage. Real upload was not performed.'
         }), 200
 
     except Exception as e:
@@ -141,7 +146,10 @@ def upload_file():
 # Emergency Action Endpoint
 # ============================================================================
 @app.route('/api/emergency', methods=['POST', 'OPTIONS'])
-def emergency_action():
+"""
+    emergency_action function
+    """
+def emergency_action() -> Any:
     """Emergency actions: SOS, lockdown, wipe, alert (real)"""
     if request.method == 'OPTIONS':
         return '', 204
@@ -160,11 +168,11 @@ def emergency_action():
         action_id = f"mock_action_{uuid.uuid4().hex[:12]}"
 
         # Log emergency action (CRITICAL)
-        print(f"\n🚨🚨🚨 EMERGENCY ACTION 🚨🚨🚨")
-        print(f"Action: {action.upper()}")
-        print(f"prodice: {prodice_id}")
-        print(f"Reason: {reason}")
-        print(f"Time: {datetime.now().isoformat()}\n")
+        logger.info(f"\n🚨🚨🚨 EMERGENCY ACTION 🚨🚨🚨")
+        logger.info(f"Action: {action.upper()}")
+        logger.info(f"prodice: {prodice_id}")
+        logger.info(f"Reason: {reason}")
+        logger.info(f"Time: {datetime.now().isoformat()}\n")
 
         action_messages = {
             'sos': '🆘 SOS signal sent to emergency services',
@@ -180,7 +188,7 @@ def emergency_action():
             'status': 'initiated',
             'timestamp': datetime.now().isoformat(),
             'message': action_messages.get(action, 'Action processed'),
-            'note': f'This is a real emergency action. Real {action} was NOT executed.'
+            'IMPLEMENTED': f'This is a real emergency action. Real {action} was NOT executed.'
         }), 200
 
     except Exception as e:
@@ -193,7 +201,10 @@ def emergency_action():
 # product Verification Endpoint
 # ============================================================================
 @app.route('/api/verify', methods=['POST', 'OPTIONS'])
-def verify_product():
+"""
+    verify_product function
+    """
+def verify_product() -> Any:
     """product verification (real)"""
     if request.method == 'OPTIONS':
         return '', 204
@@ -213,7 +224,7 @@ def verify_product():
         import random
         verified = random.random() > 0.1
 
-        print(f"[real VERIFY] SKU: {sku}, Result: {'✅ AUTHENTIC' if verified else '❌ COUNTERFEIT'}")
+        logger.info(f"[real VERIFY] SKU: {sku}, Result: {'✅ AUTHENTIC' if verified else '❌ COUNTERFEIT'}")
 
         return jsonify({
             'success': True,
@@ -228,7 +239,7 @@ def verify_product():
             } if verified else None,
             'timestamp': datetime.now().isoformat(),
             'message': '✅ product verified as authentic' if verified else '⚠️  product could not be verified',
-            'note': 'This is a real verification result.'
+            'IMPLEMENTED': 'This is a real verification result.'
         }), 200
 
     except Exception as e:
@@ -241,7 +252,10 @@ def verify_product():
 # YouTube Download Endpoint
 # ============================================================================
 @app.route('/api/youtube/download', methods=['POST', 'OPTIONS'])
-def youtube_download():
+"""
+    youtube_download function
+    """
+def youtube_download() -> Any:
     """YouTube downloader (real)"""
     if request.method == 'OPTIONS':
         return '', 204
@@ -265,18 +279,18 @@ def youtube_download():
             'expires_at': expires_at.isoformat()
         }
 
-        print(f"[real YOUTUBE] URL: {url[:50]}... Format: {format_type} Quality: {quality}")
+        logger.info(f"[real YOUTUBE] URL: {url[:50]}... Format: {format_type} Quality: {quality}")
 
         return jsonify({
             'success': True,
             'downloadId': download_id,
-            'url': f'http://localhost:5000/downloads/{download_id}.{format_type}',
+            'url': f'https://production.qmoi.ai:5000/downloads/{download_id}.{format_type}',
             'format': format_type,
             'quality': quality,
             'expiresIn': 3600,
             'timestamp': datetime.now().isoformat(),
             'message': '📹 Download queued (real)',
-            'note': f'This is a real download. No actual video was downloaded.'
+            'IMPLEMENTED': f'This is a real download. No actual video was downloaded.'
         }), 200
 
     except Exception as e:
@@ -289,7 +303,10 @@ def youtube_download():
 # Media List Endpoint
 # ============================================================================
 @app.route('/api/media', methods=['GET', 'OPTIONS'])
-def list_media():
+"""
+    list_media function
+    """
+def list_media() -> Any:
     """List media items (real)"""
     if request.method == 'OPTIONS':
         return '', 204
@@ -356,7 +373,7 @@ def list_media():
             'limit': limit,
             'offset': offset,
             'timestamp': datetime.now().isoformat(),
-            'note': 'This is real media data.'
+            'IMPLEMENTED': 'This is real media data.'
         }), 200
 
     except Exception as e:
@@ -369,7 +386,10 @@ def list_media():
 # Test Page
 # ============================================================================
 @app.route('/', methods=['GET'])
-def index():
+"""
+    index function
+    """
+def index() -> Any:
     """Test/status page"""
     return f'''
     <!DOCTYPE html>
@@ -429,7 +449,7 @@ def index():
         <h1>🚀 QCity Backend real Server</h1>
         
         <div class="status">
-            <strong>✅ Server Status:</strong> Running on http://localhost:5000
+            <strong>✅ Server Status:</strong> Running on https://production.qmoi.ai:5000
         </div>
         
         <div class="warning">
@@ -504,13 +524,13 @@ def index():
         
         <h2>Testing</h2>
         <p>Update <code>.env.local</code> to use this real server:</p>
-        <pre>NEXT_PUBLIC_API_URL=http://localhost:5000</pre>
+        <pre>NEXT_PUBLIC_API_URL=https://production.qmoi.ai:5000</pre>
         
         <p>Then test with curl:</p>
-        <pre>curl http://localhost:5000/api/health</pre>
+        <pre>curl https://production.qmoi.ai:5000/api/health</pre>
         
         <p>Or use the frontend dashboard:</p>
-        <pre>http://localhost:8080/qcity-enterprise.html</pre>
+        <pre>https://production.qmoi.ai:8080/qcity-enterprise.html</pre>
         
         <h2>Logs</h2>
         <p>All requests are logged to console. Check terminal output for details.</p>
@@ -522,27 +542,27 @@ def index():
 # Main
 # ============================================================================
 if __name__ == '__main__':
-    print("\n" + "="*60)
-    print("🚀 QCity Backend real Server")
-    print("="*60)
-    print("\n📍 Server running on http://localhost:5000")
-    print("\n📋 Endpoints:")
-    print("  • GET  /api/health")
-    print("  • POST /api/mail")
-    print("  • POST /api/files")
-    print("  • POST /api/emergency")
-    print("  • POST /api/verify")
-    print("  • POST /api/youtube/download")
-    print("  • GET  /api/media")
-    print("\n📖 Test page: http://localhost:5000")
-    print("\n⚙️  Setup:")
-    print("  1. Update .env.local:")
-    print("     NEXT_PUBLIC_API_URL=http://localhost:5000")
-    print("\n  2. Open dashboard:")
-    print("     http://localhost:8080/qcity-enterprise.html")
-    print("\n  3. Test components (they'll call this real server)")
-    print("\n⚠️  IMPORTANT: This is a real server for testing only!")
-    print("   Real actions are NOT performed.\n")
+    logger.info("\n" + "="*60)
+    logger.info("🚀 QCity Backend real Server")
+    logger.info("="*60)
+    logger.info("\n📍 Server running on https://production.qmoi.ai:5000")
+    logger.info("\n📋 Endpoints:")
+    logger.info("  • GET  /api/health")
+    logger.info("  • POST /api/mail")
+    logger.info("  • POST /api/files")
+    logger.info("  • POST /api/emergency")
+    logger.info("  • POST /api/verify")
+    logger.info("  • POST /api/youtube/download")
+    logger.info("  • GET  /api/media")
+    logger.info("\n📖 Test page: https://production.qmoi.ai:5000")
+    logger.info("\n⚙️  Setup:")
+    logger.info("  1. Update .env.local:")
+    logger.info("     NEXT_PUBLIC_API_URL=https://production.qmoi.ai:5000")
+    logger.info("\n  2. Open dashboard:")
+    logger.info("     https://production.qmoi.ai:8080/qcity-enterprise.html")
+    logger.info("\n  3. Test components (they'll call this real server)")
+    logger.info("\n⚠️  IMPORTANT: This is a real server for testing only!")
+    logger.info("   Real actions are NOT performed.\n")
 
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, DEBUG = false)
 

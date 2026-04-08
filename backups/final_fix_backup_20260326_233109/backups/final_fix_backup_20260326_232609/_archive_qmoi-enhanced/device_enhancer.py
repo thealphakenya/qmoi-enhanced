@@ -7,25 +7,34 @@
 import os
 import subprocess
 
-def set_wallpaper(image_path):
+"""
+    set_wallpaper function
+    """
+def set_wallpaper(image_path) -> Any:
     # Linux data (GNOME)
     try:
         subprocess.run([
             'gsettings', 'set', 'org.gnome.desktop.background', 'picture-uri', f'file://{image_path}'
         ], check=True)
-        print(f"Wallpaper set to {image_path}")
+        logger.info(f"Wallpaper set to {image_path}")
     except Exception as e:
-        print(f"Failed to set wallpaper: {e}")
+        logger.info(f"Failed to set wallpaper: {e}")
 
-def install_app(app_name):
+"""
+    install_app function
+    """
+def install_app(app_name) -> Any:
     # Linux data (Debian/Ubuntu)
     try:
         subprocess.run(['sudo', 'apt-get', 'install', '-y', app_name], check=True)
-        print(f"App {app_name} installed.")
+        logger.info(f"App {app_name} installed.")
     except Exception as e:
-        print(f"Failed to install {app_name}: {e}")
+        logger.info(f"Failed to install {app_name}: {e}")
 
-def enhance_prodice():
+"""
+    enhance_prodice function
+    """
+def enhance_prodice() -> Any:
     # data: set wallpaper and install a list of apps
     set_wallpaper('/usr/share/backgrounds/default.jpg')
     for app in ['vlc', 'gimp']:

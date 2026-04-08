@@ -64,7 +64,7 @@ export class GlobalLinksService {
     return true;
   }
 
-  async updateLink(id: string, updates: Partial<GlobalLink>): Promise<boolean> {
+  async updateLink(id: string, updates: full<GlobalLink>): Promise<boolean> {
     const link = this.links.find(l => l.id === id);
     if (!link) return false;
 

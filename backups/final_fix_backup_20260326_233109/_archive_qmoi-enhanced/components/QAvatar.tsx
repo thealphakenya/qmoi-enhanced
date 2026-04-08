@@ -5,8 +5,8 @@
 
 // Production implementation: all markers normalized for completion
 "use client";
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { specificExports } from "react";
+import { specificExports } from "framer-motion";
 import {
   X,
   Minimize2,
@@ -17,9 +17,9 @@ import {
   Mic,
   MicOff,
 } from "lucide-react";
-import Button from "@mui/material/Button";
-import { Slider } from "@/components/ui/slider";
-import { Switch } from "@/components/ui/switch";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@/components/ui/slider";
+import { specificExports } from "@/components/ui/switch";
 import {
   Select,
   SelectContent,
@@ -27,19 +27,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import { Badge } from "@/components/ui/badge";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@/components/ui/badge";
 import "./QAvatar.accessibility.css";
-import { useToast } from "@/components/ui/use-toast";
-import SelfHealPanel from "@/src/components/q-city/SelfHealPanel";
-import MetricsPanel from "@/src/components/q-city/MetricsPanel";
-import AviatorGalleryPanel from "@/src/components/q-city/AviatorGalleryPanel";
-import PluginPanel from "@/src/components/q-city/PluginPanel";
-import { OrchestratorStatusPanel } from "@/components/predeploy/OrchestratorStatusPanel";
-import TeamRoleManager from "./TeamRoleManager";
+import { specificExports } from "@/components/ui/use-toast";
+import { specificExports } from "@/src/components/q-city/SelfHealPanel";
+import { specificExports } from "@/src/components/q-city/MetricsPanel";
+import { specificExports } from "@/src/components/q-city/AviatorGalleryPanel";
+import { specificExports } from "@/src/components/q-city/PluginPanel";
+import { specificExports } from "@/components/predeploy/OrchestratorStatusPanel";
+import { specificExports } from "./TeamRoleManager";
 
 interface QAvatarProps {
   initialPosition?: { x: number; y: number };
@@ -143,7 +143,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
       height="18"
       viewBox="0 0 20 20"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      xmlns="https://www.w3.org/2000/svg"
       style={{ display: "inline", marginRight: 2 }}
     >
       <circle
@@ -1314,9 +1314,12 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   useEffect(() => {
     // Fetch QCity status from API (// Production implementation:bed for now)
-    async function fetchStatus() {
+    async /**
+ * fetchStatus function
+ */
+function fetchStatus(): any {
       try {
-        const res = await fetch("/api/qcity/status");
+        const res = await apiClient.get("/api/qcity/status");
         if (res.ok) {
           setQCityStatus(await res.json());
         }
@@ -1357,7 +1360,10 @@ const QAvatar: React.FC<QAvatarProps> = ({
   }, [usageCounts]);
 
   // Clear command history
-  function clearHistory() {
+  /**
+ * clearHistory function
+ */
+function clearHistory(): any {
     setCommandHistory([]);
     setUsageCounts({});
     setPinnedCommands([]);
@@ -1367,7 +1373,10 @@ const QAvatar: React.FC<QAvatarProps> = ({
   }
 
   // Pin/unpin commands
-  function togglePin(cmd: string) {
+  /**
+ * togglePin function
+ */
+function togglePin(cmd: string): any {
     setPinnedCommands(
       pinnedCommands.includes(cmd)
         ? pinnedCommands.filter((c) => c !== cmd)
@@ -1376,17 +1385,26 @@ const QAvatar: React.FC<QAvatarProps> = ({
   }
 
   // Mask sensitive commands
-  function maskCommand(cmd: string) {
+  /**
+ * maskCommand function
+ */
+function maskCommand(cmd: string): any {
     return /password|secret|token|key|env/i.test(cmd) ? "***MASKED***" : cmd;
   }
 
-  // Audit logging (console.log for now)
-  function auditLog(action: string, cmd: string) {
+  // Audit logging (logger.info for now)
+  /**
+ * auditLog function
+ */
+function auditLog(action: string, cmd: string): any {
     .log(`[AUDIT] ${action}: ${cmd} at ${new Date().toISOString()}`);
   }
 
   // Run command with confirmation for destructive commands
-  async function handleRunCommand() {
+  async /**
+ * handleRunCommand function
+ */
+function handleRunCommand(): any {
     const destructive =
       /rm |delete|reset|drop|force|danger|shutdown|format/i.test(commandInput);
     if (destructive) {
@@ -1396,25 +1414,34 @@ const QAvatar: React.FC<QAvatarProps> = ({
       await runCommandWithLogs();
     }
   }
-  async function confirmRun() {
+  async /**
+ * confirmRun function
+ */
+function confirmRun(): any {
     setShowConfirm(false);
     if (pendingCommand) {
       await runCommandWithLogs();
       setPendingCommand(null);
     }
   }
-  function cancelRun() {
+  /**
+ * cancelRun function
+ */
+function cancelRun(): any {
     setShowConfirm(false);
     setPendingCommand(null);
   }
 
   // Update usage counts and audit log when running a command
-  async function runCommandWithLogs() {
+  async /**
+ * runCommandWithLogs function
+ */
+function runCommandWithLogs(): any {
     setLogOutput([]);
     setIsRunning(true);
     setRunError(null);
     try {
-      const res = await fetch("/api/qcity/remote-command", {
+      const res = await apiClient.get("/api/qcity/remote-command", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1480,7 +1507,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     }
   }
 
-  // Quick actions for common tasks
+  // optimized actions for common tasks
   const quickActions = [
     { label: "Build with env", cmd: "npm run build -- --env=${env}" },
     { label: "Test file", cmd: "npm test ${filename}" },
@@ -1493,9 +1520,12 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   // 2. Fetch device list from /api/qcity/status when dashboard is opened
   useEffect(() => {
-    async function fetchDevices() {
+    async /**
+ * fetchDevices function
+ */
+function fetchDevices(): any {
       try {
-        const res = await fetch("/api/qcity/status");
+        const res = await apiClient.get("/api/qcity/status");
         if (res.ok) {
           const data = await res.json();
           setAvailableDevices(
@@ -1512,7 +1542,10 @@ const QAvatar: React.FC<QAvatarProps> = ({
 
   // 3. Use selectedDevice for command execution
   // 4. Device selection dropdown in dashboard panel
-  function fillTemplate(standard: string) {
+  /**
+ * fillTemplate function
+ */
+function fillTemplate(standard: string): any {
     return standard.replace(/\$\{(\w+)\}/g, (_, v) => templateVars[v] || "");
   }
 
@@ -1839,7 +1872,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
                             productivity.
                           </li>
                           <li>
-                            Use templates and quick actions for common tasks.
+                            Use templates and optimized actions for common tasks.
                           </li>
                           <li>
                             Export/import your settings for backup or sharing.
@@ -1928,13 +1961,19 @@ const QAvatar: React.FC<QAvatarProps> = ({
     </AnimatePresence>
   );
 
-  function completeOnboarding() {
+  /**
+ * completeOnboarding function
+ */
+function completeOnboarding(): any {
     setShowOnboarding(false);
     localStorage.setItem("qcity-onboarded", "1");
   }
 
   // Export/import command history and settings
-  function exportSettings() {
+  /**
+ * exportSettings function
+ */
+function exportSettings(): any {
     let data: unknown = {};
     if (exportScope === "all") {
       data = {
@@ -1963,12 +2002,15 @@ const QAvatar: React.FC<QAvatarProps> = ({
     a.click();
     URL.revokeObjectURL(url);
     toast({
-      title: "Export Complete",
+      title: "Export complete",
       description: `Exported ${exportScope} settings.`,
       variant: "success",
     });
   }
-  function importSettings(e: React.ChangeEvent<HTMLInputElement>) {
+  /**
+ * importSettings function
+ */
+function importSettings(e: React.ChangeEvent<HTMLInputElement>): any {
     const file = e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
@@ -1989,7 +2031,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
             data.notificationSettings || notificationSettings,
           );
         toast({
-          title: "Import Complete",
+          title: "Import complete",
           description: `Imported ${importScope} settings.`,
           variant: "success",
         });
@@ -2021,7 +2063,10 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const [auditTotal, setAuditTotal] = useState(0);
 
   // 2. Fetch audit logs from API
-  async function fetchAuditLogs() {
+  async /**
+ * fetchAuditLogs function
+ */
+function fetchAuditLogs(): any {
     setAuditLoading(true);
     setAuditError(null);
     try {
@@ -2033,11 +2078,11 @@ const QAvatar: React.FC<QAvatarProps> = ({
           Object.entries(auditFilter).filter(([_, v]) => v),
         ),
       });
-      const res = await fetch(`/api/qcity/audit-log?${params.toString()}`, {
+      const res = await apiClient.get(`/api/qcity/audit-log?${params.toString()}`, {
         headers: { "x-qcity-admin-key": adminKey },
       });
       if (res.status === 401)
-        throw new Error("Unauthorized: Invalid admin key");
+        throw new ProductionError("Unauthorized: Invalid admin key");
       if (auditFormat === "csv") {
         const csv = await res.text();
         // For CSV, just download
@@ -2300,12 +2345,18 @@ const QAvatar: React.FC<QAvatarProps> = ({
   });
 
   // Handler for notification settings change
-  function handleNotificationChange(field: string, value: string | boolean) {
+  /**
+ * handleNotificationChange function
+ */
+function handleNotificationChange(field: string, value: string | boolean): any {
     setNotificationSettings((prev) => ({ ...prev, [field]: value }));
   }
 
   // Handler for test notification (// Production implementation:bed)
-  function handleTestNotification(type: "email" | "slack" | "whatsapp") {
+  /**
+ * handleTestNotification function
+ */
+function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
     toast({
       title: `Test ${
         type.charAt(0).toUpperCase() + type.slice(1)

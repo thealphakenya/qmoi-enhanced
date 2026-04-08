@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "ci": false
+  },
+  "python": {
+    "flake8": {
+      "rc": null,
+      "output": "flake8 not installed"
+    },
+    "autoflake": {
+      "rc": null,
+      "output": "skipped (local run)"
+    }
+  },
+  "javascript": {
+    "eslint": {
+      "rc": null,
+      "output": "eslint not available locally; CI should run it"
+    }
+  }
+}

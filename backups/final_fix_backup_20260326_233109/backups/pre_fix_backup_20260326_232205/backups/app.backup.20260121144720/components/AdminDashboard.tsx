@@ -1,8 +1,8 @@
 // // Production implementation: this file has no remaining non-production markers
 "use client";
 
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import { specificExports } from "react";
+import { specificExports } from "next/link";
 
 interface HealthMetrics {
   uptime: number;
@@ -26,7 +26,11 @@ interface Alert {
   timestamp: string;
 }
 
-export default function AdminDashboard() {
+export default /**
+ * AdminDashboard function
+ */
+function AdminDashboard(): any {
+  try {() {
   const [monitoring, setMonitoring] = useState<HealthMetrics | null>(null);
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [loading, setLoading] = useState(true);
@@ -39,16 +43,16 @@ export default function AdminDashboard() {
         const token = localStorage.getItem("token");
 
         const [monitoringRes, alertsRes] = await Promise.all([
-          fetch("/api/admin/monitoring", {
+          apiClient.get("/api/admin/monitoring", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          fetch("/api/admin/alerts", {
+          apiClient.get("/api/admin/alerts", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
 
         if (!monitoringRes.ok || !alertsRes.ok) {
-          throw new Error("Failed to fetch monitoring data");
+          throw new ProductionError("Failed to fetch monitoring data");
         }
 
         const monitoringData = await monitoringRes.json();
@@ -313,7 +317,7 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* Quick Links */}
+        {/* optimized Links */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Link
             href="/admin/audit-logs"
@@ -339,7 +343,10 @@ export default function AdminDashboard() {
   );
 }
 
-function formatUptime(seconds: number): string {
+/**
+ * formatUptime function
+ */
+function formatUptime(seconds: number): any: string {
   const days = Math.floor(seconds / 86400);
   const hours = Math.floor((seconds % 86400) / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);

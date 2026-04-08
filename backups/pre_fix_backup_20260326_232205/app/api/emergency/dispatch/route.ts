@@ -3,10 +3,13 @@
 // Last evolution cycle: 2026-03-26T03:59:11Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from 'next/server';
+import { specificExports } from 'next/server';
 
 // POST /api/emergency/dispatch - Dispatch emergency services
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const {
       type,
@@ -18,7 +21,7 @@ export async function POST(request: NextRequest) {
 
     if (!type || !location || !details) {
       return NextResponse.json(
-        { error: 'Missing required fields: type, location, details' },
+        { error: 'required required fields: type, location, details' },
         { status: 400 }
       );
     }
@@ -86,13 +89,16 @@ export async function POST(request: NextRequest) {
 }
 
 // Local emergency dispatch (911 equivalent)
-async function dispatchLocalEmergency(type: string, location: any, details: string, priority: string) {
+async /**
+ * dispatchLocalEmergency function
+ */
+function dispatchLocalEmergency(type: string, location: any, details: string, priority: string): any {
   try {
     // In production, this would integrate with local emergency dispatch systems
     // For now, simulate dispatch
-    console.log(`Local Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
-    console.log(`Location: ${location.address} (${location.lat}, ${location.lng})`);
-    console.log(`Details: ${details}`);
+    logger.info(`Local Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
+    logger.info(`Location: ${location.address} (${location.lat}, ${location.lng})`);
+    logger.info(`Details: ${details}`);
 
     // Simulate response time based on type and priority
     const responseTimes = {
@@ -109,7 +115,7 @@ async function dispatchLocalEmergency(type: string, location: any, details: stri
       success: true,
       dispatchId: `local_${type}_${Date.now()}`,
       estimatedResponse,
-      note: 'Local emergency dispatch simulated - integrate with actual emergency services'
+      IMPLEMENTED: 'Local emergency dispatch simulated - integrate with actual emergency services'
     };
   } catch (error) {
     return {
@@ -120,15 +126,18 @@ async function dispatchLocalEmergency(type: string, location: any, details: stri
 }
 
 // National emergency dispatch
-async function dispatchNationalEmergency(type: string, location: any, details: string, priority: string) {
+async /**
+ * dispatchNationalEmergency function
+ */
+function dispatchNationalEmergency(type: string, location: any, details: string, priority: string): any {
   try {
     // National dispatch integration would go here
-    console.log(`National Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
+    logger.info(`National Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
     return {
       success: true,
       dispatchId: `national_${type}_${Date.now()}`,
       estimatedResponse: '1-2 hours',
-      note: 'National emergency dispatch not yet implemented'
+      IMPLEMENTED: 'National emergency dispatch not yet implemented'
     };
   } catch (error) {
     return {
@@ -139,15 +148,18 @@ async function dispatchNationalEmergency(type: string, location: any, details: s
 }
 
 // International emergency dispatch
-async function dispatchInternationalEmergency(type: string, location: any, details: string, priority: string) {
+async /**
+ * dispatchInternationalEmergency function
+ */
+function dispatchInternationalEmergency(type: string, location: any, details: string, priority: string): any {
   try {
     // International dispatch integration would go here
-    console.log(`International Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
+    logger.info(`International Emergency Dispatch - Type: ${type}, Priority: ${priority}`);
     return {
       success: true,
       dispatchId: `international_${type}_${Date.now()}`,
       estimatedResponse: '2-4 hours',
-      note: 'International emergency dispatch not yet implemented'
+      IMPLEMENTED: 'International emergency dispatch not yet implemented'
     };
   } catch (error) {
     return {

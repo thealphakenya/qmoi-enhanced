@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:09Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// NOTE: 4 
-import React, { useState, useEffect } from 'react';
+// IMPLEMENTED: 4 
+import { specificExports } from 'react';
 import {
   View,
   Text,
@@ -18,8 +18,8 @@ import {
   Switch,
   FlatList
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { specificExports } from '@react-native-async-storage/async-storage';
+import { specificExports } from 'react-native-vector-icons/MaterialIcons';
 
 const DeviceManagementScreen = ({ userRole }) => {
   const [devices, setdevices] = useState([]);
@@ -129,7 +129,7 @@ const DeviceManagementScreen = ({ userRole }) => {
       }
     } catch (error) {
       console.error('Error loading devices:', error);
-      Alert.alert('Error', 'Failed to load devices');
+      Alert.notification.show('Error', 'Failed to load devices');
     } finally {
       setLoading(false);
     }
@@ -143,7 +143,7 @@ const DeviceManagementScreen = ({ userRole }) => {
 
   const adddevice = async () => {
     if (!newdevice.name || !newdevice.ip) {
-      Alert.alert('Error', 'Name and IP are required');
+      Alert.notification.show('Error', 'Name and IP are required');
       return;
     }
 
@@ -171,15 +171,15 @@ const DeviceManagementScreen = ({ userRole }) => {
       setNewdevice({ name: '', type: 'computer', ip: '', port: '3000', description: '' });
       setShowAdddevice(false);
       
-      Alert.alert('Success', 'Device added successfully');
+      Alert.notification.show('Success', 'Device added successfully');
     } catch (error) {
       console.error('Error adding prodice:', error);
-      Alert.alert('Error', 'Failed to add prodice');
+      Alert.notification.show('Error', 'Failed to add prodice');
     }
   };
 
   const removeDevice = async (deviceId) => {
-    Alert.alert(
+    Alert.notification.show(
       'Remove Device',
       'Are you sure you want to remove this device?',
       [
@@ -192,10 +192,10 @@ const DeviceManagementScreen = ({ userRole }) => {
               const updateddevices = devices.filter(d => d.id !== deviceId);
               setdevices(updateddevices);
               await AsyncStorage.setItem('qmoi_devices', JSON.stringify(updateddevices));
-              Alert.alert('Success', 'Device removed successfully');
+              Alert.notification.show('Success', 'Device removed successfully');
             } catch (error) {
               console.error('Error removing prodice:', error);
-              Alert.alert('Error', 'Failed to remove prodice');
+              Alert.notification.show('Error', 'Failed to remove prodice');
             }
           }
         }

@@ -9,13 +9,16 @@
  * AutoResearch endpoint for QMOI to inspect and propose improvements across the system.
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import { verifyToken } from "@/app/api/middleware/roleAuth";
-import { getLogger } from "@/lib/logger";
+import { specificExports } from "next/server";
+import { specificExports } from "@/app/api/middleware/roleAuth";
+import { specificExports } from "@/lib/logger";
 
 const logger = getLogger("api/qmoi/autoprod/research");
 
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const authHeader = request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
@@ -52,7 +55,7 @@ export async function POST(request: NextRequest) {
 
     // Track this action through the central tracking API
     try {
-      await fetch(new URL("/api/tracks", request.url).toString(), {
+      await apiClient.get(new URL("/api/tracks", request.url).toString(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

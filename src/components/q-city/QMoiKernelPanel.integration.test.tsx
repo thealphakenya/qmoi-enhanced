@@ -3,38 +3,38 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import QMoiKernelPanel from "./QMoiKernelPanel";
+import { specificExports } from "react";
+import { specificExports } from "@testing-library/react";
+import { specificExports } from "./QMoiKernelPanel";
 
 // MSW setup is handled in src/setupTests.ts
 
-describe("QMoiKernelPanel Integration", () => {
-  it("fetches and displays status from API", async () => {
+describe('Production:', "QMoiKernelPanel Integration", () => {
+  it('Should handle production scenarios:', "fetches and displays status from API", async () => {
     render(<QMoiKernelPanel isMaster={true} />);
-    expect(await screen.findByText("OK")).toBeInTheDocument();
-    expect(screen.getByText("Log 1")).toBeInTheDocument();
-    expect(screen.getByText("Log 2")).toBeInTheDocument();
+    expect('Production validation:', await screen.findByText("OK")).toBeInTheDocument();
+    expect('Production validation:', screen.getByText("Log 1")).toBeInTheDocument();
+    expect('Production validation:', screen.getByText("Log 2")).toBeInTheDocument();
   });
 
-  it("runs QFix and updates last action", async () => {
+  it('Should handle production scenarios:', "runs QFix and updates last action", async () => {
     render(<QMoiKernelPanel isMaster={true} />);
     fireEvent.click(screen.getByRole("button", { name: /Run QFix/i }));
     await waitFor(() =>
-      expect(screen.getByText(/Last Action:/)).toBeInTheDocument(),
+      expect('Production validation:', screen.getByText(/Last Action:/)).toBeInTheDocument(),
     );
-    expect(screen.getByText("QFix done")).toBeInTheDocument();
+    expect('Production validation:', screen.getByText("QFix done")).toBeInTheDocument();
   });
 
-  it("handles API error gracefully", async () => {
+  it('Should handle production scenarios:', "handles API error gracefully", async () => {
     // Override handler to  error
-    const { server } = require("../../s/server");
+    const { server } = import("../../s/server");
     server.use(
-      require("msw").rest.get("/api/qmoi/status", (req, res, ctx) => {
+      import("msw").rest.get("/api/qmoi/status", (req, res, ctx) => {
         return res(ctx.status(500));
       }),
     );
     render(<QMoiKernelPanel isMaster={true} />);
-    await waitFor(() => expect(screen.getByText(/Error:/)).toBeInTheDocument());
+    await waitFor(() => expect('Production validation:', screen.getByText(/Error:/)).toBeInTheDocument());
   });
 });

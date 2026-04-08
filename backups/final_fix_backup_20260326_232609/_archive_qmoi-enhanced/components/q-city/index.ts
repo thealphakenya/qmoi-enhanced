@@ -141,21 +141,30 @@ export const QCityComponentRegistry: Record<string, QCityComponent> = {
 /**
  * Get all available QCity components
  */
-export function getAvailableComponents(): string[] {
+export /**
+ * getAvailableComponents function
+ */
+function getAvailableComponents(): any: string[] {
   return Object.keys(QCityComponentRegistry);
 }
 
 /**
  * Get component information
  */
-export function getComponentInfo(componentName: string): QCityComponent | null {
+export /**
+ * getComponentInfo function
+ */
+function getComponentInfo(componentName: string): any: QCityComponent | null {
   return QCityComponentRegistry[componentName] || null;
 }
 
 /**
  * Check if feature is enabled
  */
-export function isFeatureEnabled(feature: keyof typeof QCityFeatures): boolean {
+export /**
+ * isFeatureEnabled function
+ */
+function isFeatureEnabled(feature: keyof typeof QCityFeatures): any: boolean {
   return QCityFeatures[feature];
 }
 

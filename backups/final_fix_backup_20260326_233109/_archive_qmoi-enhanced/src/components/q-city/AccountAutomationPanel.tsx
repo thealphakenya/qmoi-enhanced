@@ -4,13 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Production implementation: all markers normalized for completion
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@mui/material/TextField";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/CardContent";
 
 interface Account {
   id: number;
@@ -29,7 +29,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const res = await fetch("/api/account-automation/create", {
+    const res = await apiClient.get("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -40,7 +40,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const res = await fetch("/api/account-automation/login", {
+    const res = await apiClient.get("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -53,7 +53,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const res = await fetch("/api/account-automation/verify", {
+    const res = await apiClient.get("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -65,7 +65,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const res = await apiClient.get(`/api/account-automation/status?id=${idToCheck}`);
     const data = await res.json();
     setStatus(
       data.status
@@ -171,7 +171,7 @@ const AccountAutomationPanel: React.FC = () => {
             variant="contained"
             color="primary"
             onClick={() =>
-              alert("Open advanced account automation settings (// Production implementation:)")
+              notification.show("Open advanced account automation settings (// Production implementation:)")
             }
             style={{ marginTop: 8 }}
           >

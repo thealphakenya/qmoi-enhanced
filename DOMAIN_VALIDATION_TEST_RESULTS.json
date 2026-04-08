@@ -159,7 +159,7 @@
       "health": 0
     },
     {
-      "domain": "q-stable.qmoi.ai",
+      "domain": "q-latest.qmoi.ai",
       "dnsResolution": false,
       "sslCertificate": false,
       "accessibility": false,
@@ -266,5 +266,9 @@
       "lastValidated": "2026-04-08T03:11:27.343879",
       "health": 0
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:13:18.819086"
 }

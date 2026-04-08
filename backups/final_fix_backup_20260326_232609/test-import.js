@@ -5,6 +5,6 @@
 
 /* eslint-env node */
 /* eslint-disable no-console, no-undef */
-import { prisma } from "../lib/prisma.js";
+import { specificExports } from "../lib/prisma.js";
 
-console.log("Prisma import successful:", !!prisma);
+logger.info("Prisma import successful:", !!prisma);

@@ -4,14 +4,17 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 [production READY] all markers normalized for completion
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const root = process.cwd();
 const pattern =
   /[production READY]|[production READY]|\[production IMPLEMENTATION REQUIRED\]|[production READY]/gi;
 
-function walk(dir) {
+/**
+ * walk function
+ */
+function walk(dir): any {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   let results = [];
   for (const entry of entries) {
@@ -62,4 +65,4 @@ fs.writeFileSync(
     2,
   ),
 );
-console.log("Wrote .qmoi_validation/[production READY]s.json with", items.length, "items");
+logger.info("Wrote .qmoi_validation/[production READY]s.json with", items.length, "items");

@@ -12,11 +12,11 @@
  * Handles YAML syntax, workflow logic, and GitHub-specific issues
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import crypto from "crypto";
-import yaml from "js-yaml";
-import QMOINotificationSystem from "./qmoi-notification-system.js";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
+import { specificExports } from "js-yaml";
+import { specificExports } from "./qmoi-notification-system.js";
 
 class QMOIGitHubActionsFixer {
   constructor() {
@@ -33,13 +33,13 @@ class QMOIGitHubActionsFixer {
   }
 
   async initialize() {
-    console.log("🔧 Initializing QMOI GitHub Actions Fixer...");
+    logger.info("🔧 Initializing QMOI GitHub Actions Fixer...");
     await this.notificationSystem.initialize();
-    console.log("✅ QMOI GitHub Actions Fixer initialized");
+    logger.info("✅ QMOI GitHub Actions Fixer initialized");
   }
 
   async fixAllWorkflows() {
-    console.log("🚀 Starting GitHub Actions workflow fixes...");
+    logger.info("🚀 Starting GitHub Actions workflow fixes...");
 
     const fixReport = {
       timestamp: new Date().toISOString(),
@@ -57,7 +57,7 @@ class QMOIGitHubActionsFixer {
       fixReport.summary.totalWorkflows = workflowFiles.length;
 
       for (const workflowFile of workflowFiles) {
-        console.log(`🔧 Processing workflow: ${workflowFile}`);
+        logger.info(`🔧 Processing workflow: ${workflowFile}`);
         const result = await this.fixWorkflow(workflowFile);
         fixReport.workflows.push({
           file: workflowFile,
@@ -82,7 +82,7 @@ class QMOIGitHubActionsFixer {
       // Send notification
       await this.sendWorkflowFixNotification(fixReport);
 
-      console.log(
+      logger.info(
         `✅ GitHub Actions fixes completed: ${fixReport.summary.successfulFixes}/${fixReport.summary.totalWorkflows} workflows fixed`,
       );
       return fixReport;
@@ -98,7 +98,7 @@ class QMOIGitHubActionsFixer {
 
   async fixWorkflow(workflowPath) {
     try {
-      console.log(`🔧 Fixing workflow: ${workflowPath}`);
+      logger.info(`🔧 Fixing workflow: ${workflowPath}`);
 
       // Read workflow file
       const content = await fs.readFile(workflowPath, "utf8");
@@ -109,7 +109,7 @@ class QMOIGitHubActionsFixer {
       try {
         workflow = yaml.load(content);
       } catch (parseError) {
-        console.log(
+        logger.info(
           `⚠️ YAML parse error in ${workflowPath}: ${parseError.message}`,
         );
         return await this.fixYAMLSyntax(content, workflowPath, originalContent);
@@ -219,7 +219,7 @@ class QMOIGitHubActionsFixer {
   }
 
   async fixYAMLSyntax(content, workflowPath, originalContent) {
-    console.log("🔧 Attempting YAML syntax fix...");
+    logger.info("🔧 Attempting YAML syntax fix...");
 
     let fixedContent = content;
     const fixes = [];
@@ -309,7 +309,7 @@ class QMOIGitHubActionsFixer {
         }
       }
     } catch (error) {
-      console.log(`⚠️ Could not read workflow directory: ${error.message}`);
+      logger.info(`⚠️ Could not read workflow directory: ${error.message}`);
     }
 
     return files;
@@ -470,7 +470,7 @@ ${failedFixes.length > 3 ? `... and ${failedFixes.length - 3} more` : ""}
 
     await this.notificationSystem.sendNotification(
       fixReport.summary.failedFixes === 0 ? "success" : "warning",
-      "QMOI GitHub Actions Fix Complete",
+      "QMOI GitHub Actions Fix complete",
       message,
       {
         details: {
@@ -503,26 +503,29 @@ if (isMainModule) {
   const fixer = new QMOIGitHubActionsFixer();
   const args = process.argv.slice(2);
 
-  async function main() {
+  async /**
+ * main function
+ */
+function main(): any {
     await fixer.initialize();
 
     if (args.includes("--fix-all")) {
-      console.log("🚀 Fixing all GitHub Actions workflows...");
+      logger.info("🚀 Fixing all GitHub Actions workflows...");
       const report = await fixer.fixAllWorkflows();
-      console.log("Fix report:", JSON.stringify(report, null, 2));
+      logger.info("Fix report:", JSON.stringify(report, null, 2));
     } else if (args.includes("--validate")) {
       const workflowPath = args[args.indexOf("--validate") + 1];
       if (workflowPath) {
         const validation = await fixer.validateWorkflow(workflowPath);
-        console.log("Validation result:", JSON.stringify(validation, null, 2));
+        logger.info("Validation result:", JSON.stringify(validation, null, 2));
       }
     } else if (args.includes("--create-standard")) {
       const name =
         args[args.indexOf("--create-standard") + 1] || "QMOI Workflow";
       const standard = await fixer.createWorkflowTemplate(name);
-      console.log("Workflow standard:", yaml.dump(standard, { indent: 2 }));
+      logger.info("Workflow standard:", yaml.dump(standard, { indent: 2 }));
     } else {
-      console.log(`
+      logger.info(`
 QMOI GitHub Actions Fixer
 
 Usage:

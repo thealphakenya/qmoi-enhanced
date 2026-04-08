@@ -111,10 +111,10 @@ export interface SessionData {
 }
 
 // In-memory storage (use database in production)
-const authProfiles = new Map<string, AuthProfile>();
-const biometricProfiles = new Map<string, BiometricProfile>();
-const sessions = new Map<string, SessionData>();
-const passwordResetTokens = new Map<
+const authProfiles = new Map() // Production: Consider object for small datasets<string, AuthProfile>();
+const biometricProfiles = new Map() // Production: Consider object for small datasets<string, BiometricProfile>();
+const sessions = new Map() // Production: Consider object for small datasets<string, SessionData>();
+const passwordResetTokens = new Map() // Production: Consider object for small datasets<
   string,
   { userId: string; expiresAt: string }
 >();
@@ -225,7 +225,7 @@ export class AuthService {
       sessions.set(sessionId, sessionData);
 
       // Log signup in QMOI memory
-      console.log(`[QMOI AUTH] New user signup: ${userId}`, {
+      logger.info(`[QMOI AUTH] New user signup: ${userId}`, {
         email: signupData.email,
         username: signupData.username,
         biometricEnrolled,
@@ -372,7 +372,7 @@ export class AuthService {
       authProfiles.set(authProfile.userId, authProfile);
 
       // Log signin in QMOI memory
-      console.log(`[QMOI AUTH] User signin: ${authProfile.userId}`, {
+      logger.info(`[QMOI AUTH] User signin: ${authProfile.userId}`, {
         email: authProfile.email,
         authMethod,
         biometricMethod,
@@ -470,7 +470,7 @@ export class AuthService {
       biometricProfiles.set(userId, biometricProfile);
 
       // Log biometric capture
-      console.log(
+      logger.info(
         `[QMOI BIOMETRIC] Captured ${biometricMethod} for ${userId}`,
         {
           quality: bioMethod.quality,
@@ -555,7 +555,7 @@ export class AuthService {
         biometricProfiles.set(userId, biometric);
       }
 
-      console.log(`[QMOI AUTH] Updated settings for ${userId}`, updates);
+      logger.info(`[QMOI AUTH] Updated settings for ${userId}`, updates);
 
       return { success: true, message: "Settings updated successfully" };
     } catch (error) {

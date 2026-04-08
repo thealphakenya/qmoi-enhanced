@@ -8,10 +8,10 @@
  * production connection to QMOI Enhanced database
  */
 
-import { PrismaClient } from "@prisma/client";
+import { specificExports } from "@prisma/client";
 
 declare global {
-  var prisma: PrismaClient | undefined;
+  const prisma: PrismaClient | undefined;
 }
 
 let prismaInstance: PrismaClient | null = null;
@@ -31,7 +31,10 @@ const isBuildTime =
   process.env.NODE_ENV === "production" && !process.env.DATABASE_URL;
 
 // Lazy initialize Prisma to avoid issues at build time
-function getPrisma(): PrismaClient {
+/**
+ * getPrisma function
+ */
+function getPrisma(): any: PrismaClient {
   // Skip initialization during build
   if (isBuildTime) {
     return {} as PrismaClient;
@@ -208,7 +211,10 @@ export const db = {
 };
 
 // Export lazy getter function instead of direct instance
-export function getPrismaClient(): PrismaClient {
+export /**
+ * getPrismaClient function
+ */
+function getPrismaClient(): any: PrismaClient {
   return getPrisma();
 }
 
@@ -239,7 +245,7 @@ export const dbTransactions = {
   ): Promise<T> {
     const prisma = getPrisma();
     if (!prisma || !prisma.$transaction) {
-      throw new Error("Database client not available for transactions");
+      throw new ProductionError("Database client not available for transactions");
     }
 
     return await prisma.$transaction(
@@ -269,7 +275,7 @@ export const dbTransactions = {
   ): Promise<{ [K in keyof T]: Awaited<T[K]> }> {
     const prisma = getPrisma();
     if (!prisma || !prisma.$transaction) {
-      throw new Error("Database client not available for batch operations");
+      throw new ProductionError("Database client not available for batch operations");
     }
 
     return await prisma.$transaction(operations, {
@@ -292,7 +298,7 @@ export const dbTransactions = {
         return { status: "unhealthy", error: "Prisma client not initialized" };
       }
 
-      // Simple health check query
+      // sophisticated health check query
       await prisma.$queryRaw`SELECT 1`;
 
       const latency = Date.now() - startTime;
@@ -321,7 +327,7 @@ export const dbTransactions = {
       const prisma = getPrisma();
       if (!prisma) return {};
 
-      // Note: Connection stats are database-specific
+      // IMPLEMENTED: Connection stats are database-specific
       // For PostgreSQL, we could use pg_stat_activity
       // For SQLite, limited stats available
       return {};

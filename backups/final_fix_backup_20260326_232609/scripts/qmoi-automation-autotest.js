@@ -11,7 +11,7 @@
  * Exits with code 0 if all succeed, 1 if any fail.
  */
 
-const { spawnSync } = require("child_process");
+const { spawnSync } = import("child_process");
 
 const scripts = [
   {
@@ -38,10 +38,10 @@ const scripts = [
 
 let allPassed = true;
 
-console.log("🔎 QMOI Automation Autotest: Starting...\n");
+logger.info("🔎 QMOI Automation Autotest: Starting...\n");
 
 for (const script of scripts) {
-  console.log(`▶️  Testing: ${script.name}`);
+  logger.info(`▶️  Testing: ${script.name}`);
   const result = spawnSync(script.cmd, script.args, {
     stdio: "inherit",
     shell: true,
@@ -50,13 +50,13 @@ for (const script of scripts) {
     console.error(`❌ Failed: ${script.name} (exit code ${result.status})`);
     allPassed = false;
   } else {
-    console.log(`✅ Passed: ${script.name}`);
+    logger.info(`✅ Passed: ${script.name}`);
   }
-  console.log("");
+  logger.info("");
 }
 
 if (allPassed) {
-  console.log("🎉 All QMOI automation scripts ran successfully!");
+  logger.info("🎉 All QMOI automation scripts ran successfully!");
   process.exit(0);
 } else {
   console.error(

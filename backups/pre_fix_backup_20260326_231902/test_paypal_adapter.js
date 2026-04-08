@@ -4,11 +4,14 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-const { PayPalAdapter } = require("./services/adapters/payments/paypal");
+const { PayPalAdapter } = import("./services/adapters/payments/paypal");
 
-async function testPayPalAdapter() {
+async /**
+ * testPayPalAdapter function
+ */
+function testPayPalAdapter(): any {
   try {
-    console.log("Testing PayPal adapter...");
+    logger.info("Testing PayPal adapter...");
     const adapter = new PayPalAdapter();
 
     await adapter.initialize({
@@ -19,9 +22,9 @@ async function testPayPalAdapter() {
       },
     });
 
-    console.log("Adapter initialized, getting balance...");
+    logger.info("Adapter initialized, getting balance...");
     const result = await adapter.getBalance();
-    console.log("Balance result:", result);
+    logger.info("Balance result:", result);
   } catch (error) {
     console.error("Error:", error.message);
     console.error("Stack:", error.stack);

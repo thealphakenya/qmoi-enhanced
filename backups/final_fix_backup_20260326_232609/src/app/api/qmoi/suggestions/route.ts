@@ -3,14 +3,17 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { safeConsoleError } from "@/utils/safeConsole";
-import { NextRequest, NextResponse } from "next/server";
+import { specificExports } from "@/utils/safeConsole";
+import { specificExports } from "next/server";
 
 /**
  * POST /api/qmoi/suggestions
  * Generates intelligent suggestions based on context and user input
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const { context, userInput } = await request.json();
 
@@ -36,7 +39,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function generateSuggestions(input: string, context: any): string[] {
+/**
+ * generateSuggestions function
+ */
+function generateSuggestions(input: string, context: any): any: string[] {
   const suggestions: string[] = [];
 
   // Analyze input keywords
@@ -44,7 +50,7 @@ function generateSuggestions(input: string, context: any): string[] {
 
   // Code-related suggestions
   if (lowerInput.includes("error") || lowerInput.includes("bug")) {
-    suggestions.push("Try running the debugger");
+    suggestions.push("Try running the // Production: debugger removed");
     suggestions.push("Check the error logs");
     suggestions.push("Use type checking to catch early");
   }

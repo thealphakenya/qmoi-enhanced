@@ -26,7 +26,7 @@
       }
       document.getElementById("attach-btn").addEventListener("click", () => {
         const inp = document.getElementById("attach-file");
-        if (!inp.files || inp.files.length === 0) return alert("Select a file");
+        if (!inp.files || inp.files.length === 0) return notification.show("Select a file");
         const f = inp.files[0];
         const reader = new FileReader();
         reader.onload = () => {
@@ -47,7 +47,7 @@
       });
       function renderAttachments() {
         const ul = document.getElementById("attach-list");
-        ul.innerHTML = "";
+        ul.textContent = "";
         for (const a of _getLocalAttachments()) {
           const li = document.createElement("li");
           li.innerText = `${a.name} (${Math.round(a.size / 1024)}KB)`;

@@ -19,14 +19,16 @@ import subprocess
 import threading
 import time
 import os
-import sys
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 SCRIPT_PATH = os.path.join(os.path.dirname(__file__), 'qmoi-start.py')
 LOG_DIR = os.path.join(os.path.dirname(__file__), '../logs')
 os.makedirs(LOG_DIR, exist_ok=True)
 
-def stream_reader(pipe, out_file, tag):
+"""
+    stream_reader function
+    """
+def stream_reader(pipe, out_file, tag) -> Any:
     with pipe:
         for line in iter(pipe.readline, b''):
             text = line.decode(errors='replace')
@@ -34,9 +36,12 @@ def stream_reader(pipe, out_file, tag):
             out_file.write(f"[{timestamp}] [{tag}] {text}")
             out_file.flush()
 
-def supervise(timeout, logfile, dry_run):
+"""
+    supervise function
+    """
+def supervise(timeout, logfile, dry_run) -> Any:
     if dry_run:
-        print(f"[dry-run] Would run: {sys.executable} {SCRIPT_PATH}")
+        logger.info(f"[dry-run] Would run: {sys.executable} {SCRIPT_PATH}")
         return 0
 
     ts = datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')
@@ -45,7 +50,7 @@ def supervise(timeout, logfile, dry_run):
 
     cmd = [sys.executable, SCRIPT_PATH]
     start_msg = f"Starting supervised command: {' '.join(cmd)} (timeout={timeout}s)\n"
-    print(start_msg.strip())
+    logger.info(start_msg.strip())
 
     with open(logfile, 'a', encoding='utf-8') as out:
         out.write(f"{datetime.utcnow().isoformat()}Z - {start_msg}")
@@ -67,7 +72,7 @@ def supervise(timeout, logfile, dry_run):
                     rc = proc.returncode
                     out.write(f"{datetime.utcnow().isoformat()}Z - Process exited with returncode={rc}\n")
                     out.flush()
-                    print(f"Process exited with returncode={rc}")
+                    logger.info(f"Process exited with returncode={rc}")
                     return rc
 
                 elapsed = time.time() - start_time
@@ -84,7 +89,7 @@ def supervise(timeout, logfile, dry_run):
                         out.write(f"{datetime.utcnow().isoformat()}Z - Error terminating process: {e}\n")
                     out.write(f"{datetime.utcnow().isoformat()}Z - Supervisor exiting after timeout.\n")
                     out.flush()
-                    print("Timeout reached; process terminated. See log:", logfile)
+                    logger.info("Timeout reached; process terminated. See log:", logfile)
                     return 124
 
                 out.write(f"{datetime.utcnow().isoformat()}Z - heartbeat - elapsed={int(elapsed)}s\n")
@@ -99,14 +104,20 @@ def supervise(timeout, logfile, dry_run):
             except Exception:
                 pass
 
-def parse_args():
+"""
+    parse_args function
+    """
+def parse_args() -> Any:
     p = argparse.ArgumentParser(description='Supervise running of qmoi-start.py')
     p.add_argument('--timeout', type=int, default=30, help='Timeout in seconds for the start run')
     p.add_argument('--log', dest='logfile', default=None, help='Path to logfile to write')
     p.add_argument('--dry-run', action='store_true', help='Show what would be run without executing')
     return p.parse_args()
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     args = parse_args()
     rc = supervise(args.timeout, args.logfile, args.dry_run)
     sys.exit(rc if isinstance(rc, int) else 0)

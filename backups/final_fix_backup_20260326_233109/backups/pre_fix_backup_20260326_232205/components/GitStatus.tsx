@@ -4,24 +4,30 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // Production implementation: this file has no remaining non-production markers
-import React, { useEffect, useState } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
 
-function GitStatus() {
+/**
+ * GitStatus function
+ */
+function GitStatus(): any {
   const [branch, setBranch] = useState<string>("");
   const [status, setStatus] = useState<string>("");
   const [remote, setRemote] = useState<string>("");
 
   useEffect(() => {
-    async function fetchGitInfo() {
+    async /**
+ * fetchGitInfo function
+ */
+function fetchGitInfo(): any {
       try {
-        const branchRes = await fetch("/api/git/branch");
+        const branchRes = await apiClient.get("/api/git/branch");
         const branchText = await branchRes.text();
         setBranch(branchText.trim());
-        const statusRes = await fetch("/api/git/status");
+        const statusRes = await apiClient.get("/api/git/status");
         const statusText = await statusRes.text();
         setStatus(statusText.trim());
-        const remoteRes = await fetch("/api/git/remote");
+        const remoteRes = await apiClient.get("/api/git/remote");
         const remoteText = await remoteRes.text();
         setRemote(remoteText.trim());
       } catch (e) {

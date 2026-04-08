@@ -4,13 +4,16 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import type { NextApiRequest, NextApiResponse } from "next";
-import * as ke from "../../lib/knowledgeEngine";
+import { specificExports } from "next";
+import { specificExports } from "../../lib/knowledgeEngine";
 
-export default async function handler(
+export default async /**
+ * handler function
+ */
+function handler(
   req: NextApiRequest,
   res: NextApiResponse,
-) {
+): any {
   const { action } = req.query;
   try {
     switch (action) {

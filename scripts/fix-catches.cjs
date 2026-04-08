@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const DIR = path.join(ROOT, "src", "services");
@@ -25,9 +25,9 @@ function fixFile(file) {
   s = s.replace(/\b_error\b/g, "error");
   if (s !== orig) {
     fs.writeFileSync(file, s, "utf8");
-    console.log("Updated", file);
+    logger.info("Updated", file);
   }
 }
 
 walk(DIR);
-console.log("Done fixing catches.");
+logger.info("Done fixing catches.");

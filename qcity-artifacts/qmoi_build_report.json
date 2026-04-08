@@ -57,5 +57,9 @@
       "size_bytes": 126,
       "status": "available"
     }
-  }
+  },
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:40.813051"
 }

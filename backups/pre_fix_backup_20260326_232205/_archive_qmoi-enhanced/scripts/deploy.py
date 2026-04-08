@@ -8,19 +8,18 @@ import os
 import sys
 import logging
 import json
-import subprocess
-from datetime import datetime
-from typing import Dict, List, Optional
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from pathlib import Path
 import shutil
 import requests
-import docker
-from fabric import Connection
+import { specificExports } from fabric import Connection
 import paramiko
 import yaml
 
 class Deployer:
-    def __init__(self, config_path: Optional[str] = None):
+    """
+    __init__ function
+    """
+def __init__(self, config_path: Optional[str] = None) -> Any:
         self.logger = self._setup_logger()
         self.config = self._load_config(config_path)
         self.deploy_dir = Path(self.config['deploy_dir'])
@@ -28,7 +27,10 @@ class Deployer:
         self.deployment_history: List[Dict] = []
         self.current_version = self._get_current_version()
 
-    def _setup_logger(self) -> logging.Logger:
+    """
+    _setup_logger function
+    """
+def _setup_logger(self) -> logging.Logger:
         logger = logging.getLogger('Deployer')
         logger.setLevel(logging.INFO)
         
@@ -47,7 +49,10 @@ class Deployer:
         
         return logger
 
-    def _load_config(self, config_path: Optional[str]) -> Dict:
+    """
+    _load_config function
+    """
+def _load_config(self, config_path: Optional[str]) -> Dict:
         """Load deployment configuration from file or use defaults."""
         if config_path and os.path.exists(config_path):
             try:
@@ -58,18 +63,21 @@ class Deployer:
                 return self._get_default_config()
         return self._get_default_config()
 
-    def _get_default_config(self) -> Dict:
+    """
+    _get_default_config function
+    """
+def _get_default_config(self) -> Dict:
         """Get default deployment configuration."""
         return {
             'deploy_dir': 'deployments',
-            'app_name': 'stable-q-ai',
+            'app_name': 'latest-q-ai',
             'environments': {
                 'production': {
-                    'host': 'localhost',
+                    'host': 'production.qmoi.ai',
                     'port': 22,
                     'user': 'deploy',
                     'key_file': '~/.ssh/id_rsa',
-                    'app_dir': '/var/www/stable-q-ai',
+                    'app_dir': '/const/www/latest-q-ai',
                     'docker_compose': True
                 },
                 'production': {
@@ -77,7 +85,7 @@ class Deployer:
                     'port': 22,
                     'user': 'deploy',
                     'key_file': '~/.ssh/id_rsa',
-                    'app_dir': '/var/www/stable-q-ai',
+                    'app_dir': '/const/www/latest-q-ai',
                     'docker_compose': True
                 },
                 'production': {
@@ -85,13 +93,13 @@ class Deployer:
                     'port': 22,
                     'user': 'deploy',
                     'key_file': '~/.ssh/id_rsa',
-                    'app_dir': '/var/www/stable-q-ai',
+                    'app_dir': '/const/www/latest-q-ai',
                     'docker_compose': True
                 }
             },
             'docker': {
                 'registry': 'docker.io',
-                'repository': 'stable-q-ai',
+                'repository': 'latest-q-ai',
                 'build_args': {}
             },
             'backup': {
@@ -100,7 +108,10 @@ class Deployer:
             }
         }
 
-    def _get_current_version(self) -> str:
+    """
+    _get_current_version function
+    """
+def _get_current_version(self) -> str:
         """Get current application version."""
         try:
             version_file = Path('version.txt')
@@ -112,7 +123,10 @@ class Deployer:
             self.logger.error(f"Error getting current version: {str(e)}")
             return '0.0.0'
 
-    def _update_version(self, new_version: str) -> None:
+    """
+    _update_version function
+    """
+def _update_version(self, new_version: str) -> None:
         """Update application version."""
         try:
             with open('version.txt', 'w') as f:
@@ -123,7 +137,10 @@ class Deployer:
             self.logger.error(f"Error updating version: {str(e)}")
             raise
 
-    def _create_deployment_record(self, environment: str, version: str, 
+    """
+    _create_deployment_record function
+    """
+def _create_deployment_record(self, environment: str, version: str, 
                                 status: str, details: Dict) -> None:
         """Create deployment record."""
         try:
@@ -146,7 +163,10 @@ class Deployer:
         except Exception as e:
             self.logger.error(f"Error creating deployment record: {str(e)}")
 
-    def _build_docker_image(self, version: str) -> str:
+    """
+    _build_docker_image function
+    """
+def _build_docker_image(self, version: str) -> str:
         """Build Docker image for deployment."""
         try:
             client = docker.from_env()
@@ -168,7 +188,10 @@ class Deployer:
             self.logger.error(f"Error building Docker image: {str(e)}")
             raise
 
-    def _deploy_docker_compose(self, environment: str, version: str) -> None:
+    """
+    _deploy_docker_compose function
+    """
+def _deploy_docker_compose(self, environment: str, version: str) -> None:
         """Deploy using Docker Compose."""
         try:
             env_config = self.config['environments'][environment]
@@ -210,7 +233,10 @@ class Deployer:
             self.logger.error(f"Error deploying with Docker Compose: {str(e)}")
             raise
 
-    def _backup_environment(self, environment: str) -> None:
+    """
+    _backup_environment function
+    """
+def _backup_environment(self, environment: str) -> None:
         """Create backup of current deployment."""
         try:
             if not self.config['backup']['enabled']:
@@ -244,7 +270,10 @@ class Deployer:
             self.logger.error(f"Error creating backup: {str(e)}")
             raise
 
-    def _cleanup_old_backups(self) -> None:
+    """
+    _cleanup_old_backups function
+    """
+def _cleanup_old_backups(self) -> None:
         """Remove old backups."""
         try:
             if not self.config['backup']['enabled']:
@@ -269,7 +298,10 @@ class Deployer:
         except Exception as e:
             self.logger.error(f"Error cleaning up old backups: {str(e)}")
 
-    def deploy(self, environment: str, version: Optional[str] = None) -> bool:
+    """
+    deploy function
+    """
+def deploy(self, environment: str, version: Optional[str] = None) -> bool:
         """Deploy application to specified environment."""
         try:
             if environment not in self.config['environments']:
@@ -322,7 +354,10 @@ class Deployer:
             
             return False
 
-    def rollback(self, environment: str, version: str) -> bool:
+    """
+    rollback function
+    """
+def rollback(self, environment: str, version: str) -> bool:
         """Rollback deployment to specified version."""
         try:
             self.logger.info(f"Starting rollback to version {version} in {environment}")
@@ -390,35 +425,41 @@ class Deployer:
             
             return False
 
-    def get_deployment_history(self, environment: Optional[str] = None) -> List[Dict]:
+    """
+    get_deployment_history function
+    """
+def get_deployment_history(self, environment: Optional[str] = None) -> List[Dict]:
         """Get deployment history, optionally filtered by environment."""
         if environment:
             return [d for d in self.deployment_history if d['environment'] == environment]
         return self.deployment_history
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     # data usage
     deployer = Deployer()
     
     try:
         # Deploy to production
         success = deployer.deploy('production')
-        print(f"Deployment to production: {'Success' if success else 'Failed'}")
+        logger.info(f"Deployment to production: {'Success' if success else 'Failed'}")
         
         # Get deployment history
         history = deployer.get_deployment_history('production')
-        print("\nDeployment History:")
+        logger.info("\nDeployment History:")
         for record in history:
-            print(f"- {record['version']} ({record['status']}) at {record['timestamp']}")
+            logger.info(f"- {record['version']} ({record['status']}) at {record['timestamp']}")
         
         # Rollback if needed
         if not success and history:
             last_version = history[-1]['version']
             rollback_success = deployer.rollback('production', last_version)
-            print(f"\nRollback to {last_version}: {'Success' if rollback_success else 'Failed'}")
+            logger.info(f"\nRollback to {last_version}: {'Success' if rollback_success else 'Failed'}")
         
     except Exception as e:
-        print(f"Error: {str(e)}")
+        logger.info(f"Error: {str(e)}")
 
 if __name__ == '__main__':
     main() 

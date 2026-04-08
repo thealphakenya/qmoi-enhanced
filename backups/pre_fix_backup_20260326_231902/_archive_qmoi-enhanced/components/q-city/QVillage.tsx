@@ -4,18 +4,18 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState, useEffect } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/label";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/alert";
 import {
   Upload,
   Play,
@@ -120,7 +120,11 @@ interface EnterpriseMetrics {
   };
 }
 
-export default function QVillage({ isMaster }: QVillageProps) {
+export default /**
+ * QVillage function
+ */
+function QVillage(): any {
+  try {({ isMaster }: QVillageProps) {
   const [models, setModels] = useState<Model[]>([]);
   const [spaces, setSpaces] = useState<Space[]>([]);
   const [datasets, setDatasets] = useState<Dataset[]>([]);

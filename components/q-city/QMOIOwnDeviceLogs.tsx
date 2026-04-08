@@ -4,13 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 "use client";
-import React, { useState, useEffect } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { Input } from "@/components/ui/input";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -18,8 +18,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/tabs";
 import {
   Table,
   TableBody,
@@ -28,8 +28,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Progress } from "@/components/ui/progress";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/alert";
 import {
   Download,
   Filter,
@@ -124,10 +124,13 @@ interface QMOIOwnDeviceLogsProps {
   onExport?: (data: unknown, type: string) => void;
 }
 
-export function QMOIOwnDeviceLogs({
+export /**
+ * QMOIOwnDeviceLogs function
+ */
+function QMOIOwnDeviceLogs({
   isMaster,
   onExport,
-}: QMOIOwnDeviceLogsProps) {
+}: QMOIOwnDeviceLogsProps): any {
   const [activeTab, setActiveTab] = useState("overview");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -178,7 +181,7 @@ export function QMOIOwnDeviceLogs({
     setError(null);
 
     try {
-      const response = await fetch("/api/qmoi/own-device-logs", {
+      const response = await apiClient.get("/api/qmoi/own-device-logs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -193,7 +196,7 @@ export function QMOIOwnDeviceLogs({
       });
 
       if (!response.ok) {
-        throw new Error("Failed to load logs");
+        throw new ProductionError("Failed to load logs");
       }
 
       const data = await response.json();
@@ -214,7 +217,7 @@ export function QMOIOwnDeviceLogs({
     if (!isMaster) return;
 
     try {
-      const response = await fetch("/api/qmoi/own-device-logs/export", {
+      const response = await apiClient.get("/api/qmoi/own-device-logs/export", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -228,7 +231,7 @@ export function QMOIOwnDeviceLogs({
       });
 
       if (!response.ok) {
-        throw new Error("Failed to export logs");
+        throw new ProductionError("Failed to export logs");
       }
 
       const blob = await response.blob();

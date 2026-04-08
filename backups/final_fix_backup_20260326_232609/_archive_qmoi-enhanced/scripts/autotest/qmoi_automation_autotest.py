@@ -10,34 +10,42 @@ QMOI Automation Autotest: Tests all automation, dashboard, notification, and QCi
 import requests
 import subprocess
 import logging
-import time
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
-def test_endpoint(url):
+"""
+    test_endpoint function
+    """
+def test_endpoint(url) -> Any:
     try:
         r = requests.get(url)
         return r.status_code == 200, r.text
     except Exception as e:
         return False, str(e)
 
-def test_script(cmd):
+"""
+    test_script function
+    """
+def test_script(cmd) -> Any:
     try:
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=120)
         return result.returncode == 0, result.stdout + result.stderr
     except Exception as e:
         return False, str(e)
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     log_file = Path('logs/qmoi_automation_autotest.log')
     log_file.parent.mkdir(exist_ok=True)
     logging.basicConfig(filename=log_file, level=logging.INFO)
     results = []
     # Test dashboard endpoints
     endpoints = [
-        'http:process.env.API_HOST || "localhost:3000"/api/stats',
-        'http:process.env.API_HOST || "localhost:3000"/api/update-history',
-        'http:process.env.API_HOST || "localhost:3000"/api/app-version',
-        'http:process.env.API_HOST || "localhost:3000"/api/changelog',
+        'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/stats',
+        'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/update-history',
+        'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/app-version',
+        'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/changelog',
     ]
     for url in endpoints:
         ok, out = test_endpoint(url)

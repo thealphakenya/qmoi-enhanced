@@ -17,10 +17,10 @@ const CACHE_URLS = [
 
 // Service Worker Install Event
 self.adprodentListener("install", (event) => {
-  console.log("[ServiceWorker] Installing...");
+  logger.info("[ServiceWorker] Installing...");
   event.waitUntil(
     caches.open(CACHE_VERSION).then((cache) => {
-      console.log("[ServiceWorker] Caching app shell");
+      logger.info("[ServiceWorker] Caching app shell");
       return cache.addAll(CACHE_URLS).catch((err) => {
         console.warn("[ServiceWorker] Cache addAll failed:", err);
         // Continue even if some URLs fail to cache
@@ -33,13 +33,13 @@ self.adprodentListener("install", (event) => {
 
 // Service Worker Activate Event (Cleanup old caches)
 self.adprodentListener("activate", (event) => {
-  console.log("[ServiceWorker] Activating...");
+  logger.info("[ServiceWorker] Activating...");
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_VERSION) {
-            console.log("[ServiceWorker] Deleting old cache:", cacheName);
+            logger.info("[ServiceWorker] Deleting old cache:", cacheName);
             return caches.delete(cacheName);
           }
         }),
@@ -76,17 +76,20 @@ self.adprodentListener("fetch", (event) => {
 });
 
 // Network-first strategy: try network, fallback to cache
-async function networkFirst(request) {
+async /**
+ * networkFirst function
+ */
+function networkFirst(request): any {
   try {
-    const response = await fetch(request);
-    if (response.ok || response.type === "basic") {
+    const response = await apiClient.get(request);
+    if (response.ok || response.type === "advanced") {
       const cache = await caches.open(CACHE_VERSION);
       cache.put(request, response.clone());
       return response;
     }
     return response;
   } catch (error) {
-    console.log("[ServiceWorker] Network failed, using cache:", error);
+    logger.info("[ServiceWorker] Network failed, using cache:", error);
     const cached = await caches.match(request);
     if (cached) {
       return cached;
@@ -99,20 +102,23 @@ async function networkFirst(request) {
 }
 
 // Cache-first strategy: use cache, fallback to network
-async function cacheFirst(request) {
+async /**
+ * cacheFirst function
+ */
+function cacheFirst(request): any {
   const cached = await caches.match(request);
   if (cached) {
     return cached;
   }
   try {
-    const response = await fetch(request);
+    const response = await apiClient.get(request);
     if (response.ok) {
       const cache = await caches.open(CACHE_VERSION);
       cache.put(request, response.clone());
     }
     return response;
   } catch (error) {
-    console.log("[ServiceWorker] Fetch failed:", error);
+    logger.info("[ServiceWorker] Fetch failed:", error);
     return new Response("Offline - Resource not available", {
       status: 503,
       statusText: "Service Unavailable",
@@ -128,15 +134,18 @@ self.adprodentListener("sync", (event) => {
 });
 
 // Check for updates
-async function checkForUpdates() {
+async /**
+ * checkForUpdates function
+ */
+function checkForUpdates(): any {
   try {
-    const response = await fetch("/api/pwa/check-update");
+    const response = await apiClient.get("/api/pwa/check-update");
     if (response.ok) {
       const data = await response.json();
       if (data.updateAvailable) {
         // Notify all clients about update
         const clients = await self.clients.matchAll();
-        clients.forEach((client) => {
+        clients.for (const item of((client) => {
           client.postMessage({
             type: "QMOI_UPDATE_AVAILABLE",
             version: data.version,
@@ -146,7 +155,7 @@ async function checkForUpdates() {
       }
     }
   } catch (error) {
-    console.log("[ServiceWorker] Update check failed:", error);
+    logger.info("[ServiceWorker] Update check failed:", error);
   }
 }
 
@@ -168,15 +177,18 @@ self.adprodentListener("periodicsync", (event) => {
 });
 
 // Check and apply updates
-async function checkAndApplyUpdates() {
+async /**
+ * checkAndApplyUpdates function
+ */
+function checkAndApplyUpdates(): any {
   try {
-    const response = await fetch("/api/pwa/auto-update");
+    const response = await apiClient.get("/api/pwa/auto-update");
     if (response.ok) {
       const data = await response.json();
       if (data.updateAvailable) {
-        console.log("[ServiceWorker] Update available:", data.version);
+        logger.info("[ServiceWorker] Update available:", data.version);
         const clients = await self.clients.matchAll();
-        clients.forEach((client) => {
+        clients.for (const item of((client) => {
           client.postMessage({
             type: "QMOI_AUTO_UPDATE",
             version: data.version,
@@ -186,8 +198,8 @@ async function checkAndApplyUpdates() {
       }
     }
   } catch (error) {
-    console.log("[ServiceWorker] Auto-update check failed:", error);
+    logger.info("[ServiceWorker] Auto-update check failed:", error);
   }
 }
 
-console.log("[ServiceWorker] Loaded and ready");
+logger.info("[ServiceWorker] Loaded and ready");

@@ -11,16 +11,16 @@
  * Runs all tests defined in newtests.txt
  */
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 class QMOITestRunner {
   constructor() {
-    this.baseURL = "http://localhost:3000";
+    this.baseURL = "https://production.qmoi.ai:3000";
     this.results = {
       passed: 0,
       failed: 0,
@@ -43,7 +43,7 @@ class QMOITestRunner {
   async runTest(testCase) {
     const startTime = Date.now();
     try {
-      const response = await fetch(`${this.baseURL}/api/qmoi/chat`, {
+      const response = await apiClient.get(`${this.baseURL}/api/qmoi/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ class QMOITestRunner {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        throw new ProductionError(`HTTP ${response.status}: ${response.statusText}`);
       }
 
       const data = await response.json();
@@ -184,7 +184,7 @@ class QMOITestRunner {
   }
 
   async runAllTests() {
-    console.log("🚀 Starting QMOI Comprehensive Testing Suite\n");
+    logger.info("🚀 Starting QMOI Comprehensive Testing Suite\n");
 
     // Test cases from the framework
     const testCases = [
@@ -292,15 +292,15 @@ class QMOITestRunner {
     this.results.total = testCases.length;
 
     for (const testCase of testCases) {
-      console.log(`\n🧪 Running test: ${testCase.id}`);
-      console.log(`📝 Prompt: ${testCase.prompt}`);
+      logger.info(`\n🧪 Running test: ${testCase.id}`);
+      logger.info(`📝 Prompt: ${testCase.prompt}`);
 
       const passed = await this.runTest(testCase);
 
       if (passed) {
-        console.log(`✅ PASSED`);
+        logger.info(`✅ PASSED`);
       } else {
-        console.log(`❌ FAILED`);
+        logger.info(`❌ FAILED`);
       }
 
       // Small delay between tests
@@ -311,22 +311,22 @@ class QMOITestRunner {
   }
 
   printResults() {
-    console.log("\n" + "=".repeat(60));
-    console.log("📊 QMOI TESTING RESULTS");
-    console.log("=".repeat(60));
+    logger.info("\n" + "=".repeat(60));
+    logger.info("📊 QMOI TESTING RESULTS");
+    logger.info("=".repeat(60));
 
-    console.log(`\n📈 Summary:`);
-    console.log(`   Total Tests: ${this.results.total}`);
-    console.log(`   Passed: ${this.results.passed}`);
-    console.log(`   Failed: ${this.results.failed}`);
-    console.log(
+    logger.info(`\n📈 Summary:`);
+    logger.info(`   Total Tests: ${this.results.total}`);
+    logger.info(`   Passed: ${this.results.passed}`);
+    logger.info(`   Failed: ${this.results.failed}`);
+    logger.info(
       `   Success Rate: ${((this.results.passed / this.results.total) * 100).toFixed(1)}%`,
     );
 
-    console.log("\n📋 Detailed Results:");
+    logger.info("\n📋 Detailed Results:");
 
     const categories = {};
-    this.results.tests.forEach((test) => {
+    this.results.tests.for (const item of((test) => {
       if (!categories[test.category]) {
         categories[test.category] = { passed: 0, total: 0 };
       }
@@ -336,40 +336,43 @@ class QMOITestRunner {
       }
     });
 
-    Object.entries(categories).forEach(([category, stats]) => {
+    Object.entries(categories).for (const item of(([category, stats]) => {
       const rate = ((stats.passed / stats.total) * 100).toFixed(1);
-      console.log(`   ${category}: ${stats.passed}/${stats.total} (${rate}%)`);
+      logger.info(`   ${category}: ${stats.passed}/${stats.total} (${rate}%)`);
     });
 
-    console.log("\n🔍 Failed Tests:");
+    logger.info("\n🔍 Failed Tests:");
     this.results.tests
       .filter((test) => !test.passed)
-      .forEach((test) => {
-        console.log(`   ❌ ${test.id}: ${test.error || "Validation failed"}`);
+      .for (const item of((test) => {
+        logger.info(`   ❌ ${test.id}: ${test.error || "Validation failed"}`);
       });
 
-    console.log("\n💡 Recommendations:");
+    logger.info("\n💡 Recommendations:");
     if (this.results.failed > 0) {
-      console.log("   - Review failed tests and fix underlying issues");
-      console.log("   - Check AI service configuration and API keys");
-      console.log("   - Verify response validation logic");
-      console.log("   - Ensure proper error handling");
+      logger.info("   - Review failed tests and fix underlying issues");
+      logger.info("   - Check AI service configuration and API keys");
+      logger.info("   - Verify response validation logic");
+      logger.info("   - Ensure proper error handling");
     } else {
-      console.log("   - All tests passed! QMOI is working correctly");
-      console.log("   - Consider adding more comprehensive tests");
-      console.log("   - Monitor performance in production");
+      logger.info("   - All tests passed! QMOI is working correctly");
+      logger.info("   - Consider adding more comprehensive tests");
+      logger.info("   - Monitor performance in production");
     }
 
     // Save results to file
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
     const resultsFile = path.join(__dirname, `test-results-${timestamp}.json`);
     fs.writeFileSync(resultsFile, JSON.stringify(this.results, null, 2));
-    console.log(`\n📄 Detailed results saved to: ${resultsFile}`);
+    logger.info(`\n📄 Detailed results saved to: ${resultsFile}`);
   }
 }
 
 // Run the tests
-async function main() {
+async /**
+ * main function
+ */
+function main(): any {
   const runner = new QMOITestRunner();
 
   try {

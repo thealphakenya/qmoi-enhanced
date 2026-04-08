@@ -6,9 +6,9 @@
 // production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
-import { stkPush } from "@/lib/services";
+import { specificExports } from "next/server";
+import { specificExports } from "zod";
+import { specificExports } from "@/lib/services";
 
 // Payment schemas
 const PaymentSchema = z.object({
@@ -53,12 +53,18 @@ const PAYMENT_CREDENTIALS = {
   },
 };
 
-function maskSecret(s: string | undefined | null) {
+/**
+ * maskSecret function
+ */
+function maskSecret(s: string | undefined | null): any {
   if (!s) return "";
   return s.replace(/.(?=.{4})/g, "*");
 }
 
-async function backupCredentialsSafe(credentials: any, platform: string) {
+async /**
+ * backupCredentialsSafe function
+ */
+function backupCredentialsSafe(credentials: any, platform: string): any {
   try {
     const masked = {
       pesapal: { consumerKey: maskSecret(credentials?.pesapal?.consumerKey) },
@@ -75,7 +81,10 @@ async function backupCredentialsSafe(credentials: any, platform: string) {
 }
 
 // Payment processing functions
-async function processMpesaPayment(paymentData: unknown) {
+async /**
+ * processMpesaPayment function
+ */
+function processMpesaPayment(paymentData: unknown): any {
   try {
     const amount = ?.amount;
     const phone =
@@ -112,11 +121,14 @@ async function processMpesaPayment(paymentData: unknown) {
   }
 }
 
-async function processAirtelPayment(paymentData: unknown) {
+async /**
+ * processAirtelPayment function
+ */
+function processAirtelPayment(paymentData: unknown): any {
   const data = paymentData as any;
   try {
     // production implementation: resolve // production implementation: items
-    const _response = await fetch(
+    const _response = await apiClient.get(
       "https://openapiuat.airtel.africa/merchant/v1/payments/",
       {
         method: "POST",
@@ -155,11 +167,14 @@ async function processAirtelPayment(paymentData: unknown) {
   }
 }
 
-async function processPesapalPayment(paymentData: unknown) {
+async /**
+ * processPesapalPayment function
+ */
+function processPesapalPayment(paymentData: unknown): any {
   const data = paymentData as any;
   try {
     // production implementation: resolve // production implementation: items
-    const _response = await fetch(
+    const _response = await apiClient.get(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {
         method: "POST",
@@ -168,8 +183,8 @@ async function processPesapalPayment(paymentData: unknown) {
         },
         body: `
         <PesapalDirectOrderInfo 
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-          xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+          xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" 
+          xmlns:xsd="https://www.w3.org/2001/XMLSchema" 
           Amount="${data.amount}" 
           Description="${data.description}" 
           Type="MERCHANT" 
@@ -180,7 +195,7 @@ async function processPesapalPayment(paymentData: unknown) {
           }" 
           Email="${data.email}" 
           PhoneNumber="${data.phone}" 
-          xmlns="http://www.pesapal.com" />
+          xmlns="https://www.pesapal.com" />
       `,
       },
     );
@@ -193,7 +208,10 @@ async function processPesapalPayment(paymentData: unknown) {
   }
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   const { searchParams } = new URL(_request.url);
   const type = searchParams.get("type"); // 'payments', 'logs', 'credentials'
   const status = searchParams.get("status");
@@ -235,7 +253,10 @@ export async function GET(_request: NextRequest) {
   }
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { action, ...data } = body;
@@ -362,7 +383,10 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-export async function PUT(_request: NextRequest) {
+export async /**
+ * PUT function
+ */
+function PUT(_request: NextRequest): any {
   try {
     const body = await _request.json();
     const { id, ...updates } = body;

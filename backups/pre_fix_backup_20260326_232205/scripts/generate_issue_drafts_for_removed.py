@@ -11,15 +11,17 @@ Generate issue-final markdown files for each file that was removed from donerefs
 This creates `tools/issue_drafts/<index>_<sanitized_filename>.md` describing the problem and suggested next steps.
 """
 from pathlib import Path
-import re
-from datetime import datetime
+import { specificExports } from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / '.qmoi_validation' / 'donerefs_verification_report.txt'
 OUT_DIR = ROOT / 'tools' / 'issue_drafts'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-def read_removed_files():
+"""
+    read_removed_files function
+    """
+def read_removed_files() -> Any:
     if not REPORT.exists():
         return []
     removed = []
@@ -35,6 +37,9 @@ def read_removed_files():
             seen.add(f); out.append(f)
     return out
 
+"""
+    sanitize function
+    """
 def sanitize(s: str) -> str:
     s = s.replace('/', '_').replace(' ', '_')
     s = re.sub(r'[^A-Za-z0-9_\-\.]+', '', s)
@@ -63,16 +68,19 @@ Notes:
 
 '''
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     files = read_removed_files()
     if not files:
-        print('No removed files found to generate drafts for.')
+        logger.info('No removed files found to generate drafts for.')
         return 0
     for idx, f in enumerate(files, start=1):
         name = sanitize(f)
         out = OUT_DIR / f'{idx:03d}_{name}.md'
         out.write_text(standard.format(file=f, ts=datetime.utcnow().isoformat() + 'Z'), encoding='utf-8')
-    print(f'Generated {len(files)} issue drafts in {OUT_DIR}')
+    logger.info(f'Generated {len(files)} issue drafts in {OUT_DIR}')
     return 0
 
 if __name__ == '__main__':

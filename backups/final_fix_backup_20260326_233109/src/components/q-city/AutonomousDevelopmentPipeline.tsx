@@ -6,20 +6,20 @@
 // Production implementation: all markers normalized for completion
 'use client';
 
-import React, { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Code2, Zap, TrendingUp } from 'lucide-react';
+import { specificExports } from 'react';
+import { specificExports } from '@/components/ui/card';
+import { specificExports } from '@/components/ui/button';
+import { specificExports } from '@/components/ui/badge';
+import { specificExports } from '@/components/ui/progress';
+import { specificExports } from '@/components/ui/tabs';
+import { specificExports } from 'lucide-react';
 
 interface AutoProject {
   id: string;
   name: string;
   type: 'software' | 'research' | 'optimization';
   progress: number;
-  status: 'planning' | 'development' | 'testing' | 'completed';
+  status: 'planning' | 'production' | 'testing' | 'completed';
   contribution: number;
   estimatedCompletion: string;
 }
@@ -40,7 +40,7 @@ export const AutonomousDevelopmentPipeline: React.FC = () => {
       name: 'Novel ML Architecture Research',
       type: 'research',
       progress: 45,
-      status: 'development',
+      status: 'production',
       contribution: 89,
       estimatedCompletion: '1 week'
     },
@@ -49,7 +49,7 @@ export const AutonomousDevelopmentPipeline: React.FC = () => {
       name: 'Infrastructure Performance Optimization',
       type: 'optimization',
       progress: 30,
-      status: 'development',
+      status: 'production',
       contribution: 56,
       estimatedCompletion: '5 days'
     }
@@ -61,7 +61,7 @@ export const AutonomousDevelopmentPipeline: React.FC = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Code2 className="w-5 h-5 text-cyan-400" />
-            Autonomous Development Pipeline
+            Autonomous production Pipeline
           </CardTitle>
           <CardDescription>
             Automatic generation and improvement of code, models, and research
@@ -71,7 +71,7 @@ export const AutonomousDevelopmentPipeline: React.FC = () => {
           <Tabs defaultValue="projects" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="projects">Projects</TabsTrigger>
-              <TabsTrigger value="metrics">Development Metrics</TabsTrigger>
+              <TabsTrigger value="metrics">production Metrics</TabsTrigger>
               <TabsTrigger value="new">Start New Project</TabsTrigger>
             </TabsList>
 
@@ -130,7 +130,7 @@ export const AutonomousDevelopmentPipeline: React.FC = () => {
                 </Card>
                 <Card className="bg-slate-800/50 border-slate-700">
                   <CardContent className="pt-4">
-                    <p className="text-xs text-gray-400">Avg Time to Complete</p>
+                    <p className="text-xs text-gray-400">Avg Time to complete</p>
                     <p className="text-2xl font-bold text-cyan-400">4.2 days</p>
                   </CardContent>
                 </Card>

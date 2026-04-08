@@ -6,20 +6,20 @@
  all markers normalized for completion
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Separator } from "@/components/ui/separator";
+import { specificExports } from "react";
+import { specificExports } from "@mui/material/Card";
+import { specificExports } from "@mui/material/CardContent";
+import { specificExports } from "@mui/material/CardHeader";
+import { specificExports } from "@mui/material/Typography";
+import { specificExports } from "@mui/material/Button";
+import { specificExports } from "@/components/ui/input";
+import { specificExports } from "@/components/ui/label";
+import { specificExports } from "@/components/ui/switch";
+import { specificExports } from "@/components/ui/badge";
+import { specificExports } from "@/components/ui/progress";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/ui/alert";
+import { specificExports } from "@/components/ui/separator";
 import {
   DollarSign,
   TrendingUp,
@@ -69,7 +69,11 @@ interface Transaction {
   status: string;
 }
 
-export default function EnhancedRevenuePanel() {
+export default /**
+ * EnhancedRevenuePanel function
+ */
+function EnhancedRevenuePanel(): any {
+  try {() {
   const [isMaster, setIsMaster] = useState(false);
   const [masterKey, setMasterKey] = useState("");
   const [revenueData, setRevenueData] = useState<RevenueData | null>(null);
@@ -97,7 +101,7 @@ export default function EnhancedRevenuePanel() {
 
   const checkMasterStatus = async () => {
     try {
-      const response = await fetch("/api/qmoi/master/verify", {
+      const response = await apiClient.get("/api/qmoi/master/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ key: masterKey }),
@@ -117,14 +121,14 @@ export default function EnhancedRevenuePanel() {
 
   const loadRevenueData = async () => {
     try {
-      const response = await fetch("/api/qmoi/revenue/status");
+      const response = await apiClient.get("/api/qmoi/revenue/status");
       if (response.ok) {
         const data = await response.json();
         setRevenueData(data);
         setEngineStatus(data.status);
       }
 
-      const txResponse = await fetch("/api/qmoi/revenue/transactions");
+      const txResponse = await apiClient.get("/api/qmoi/revenue/transactions");
       if (txResponse.ok) {
         const txData = await txResponse.json();
         setTransactions(txData);
@@ -140,7 +144,7 @@ export default function EnhancedRevenuePanel() {
   const handleMasterLogin = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/qmoi/master/login", {
+      const response = await apiClient.get("/api/qmoi/master/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ key: masterKey }),
@@ -150,11 +154,11 @@ export default function EnhancedRevenuePanel() {
         setIsMaster(true);
         await loadRevenueData();
       } else {
-        alert("Invalid master key");
+        notification.show("Invalid master key");
       }
     } catch (error) {
       (globalThis.console as any)?.error?.("Master login failed:", error);
-      alert("Login failed");
+      notification.show("Login failed");
     } finally {
       setLoading(false);
     }
@@ -163,7 +167,7 @@ export default function EnhancedRevenuePanel() {
   const startEngine = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/qmoi/revenue/start", {
+      const response = await apiClient.get("/api/qmoi/revenue/start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
@@ -182,7 +186,7 @@ export default function EnhancedRevenuePanel() {
   const stopEngine = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/qmoi/revenue/stop", {
+      const response = await apiClient.get("/api/qmoi/revenue/stop", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
@@ -203,7 +207,7 @@ export default function EnhancedRevenuePanel() {
 
     setLoading(true);
     try {
-      const response = await fetch("/api/qmoi/revenue/target", {
+      const response = await apiClient.get("/api/qmoi/revenue/target", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -228,7 +232,7 @@ export default function EnhancedRevenuePanel() {
 
     setLoading(true);
     try {
-      const response = await fetch("/api/qmoi/revenue/transfer", {
+      const response = await apiClient.get("/api/qmoi/revenue/transfer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -253,7 +257,7 @@ export default function EnhancedRevenuePanel() {
 
     setLoading(true);
     try {
-      const response = await fetch("/api/qmoi/revenue/reset", {
+      const response = await apiClient.get("/api/qmoi/revenue/reset", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });

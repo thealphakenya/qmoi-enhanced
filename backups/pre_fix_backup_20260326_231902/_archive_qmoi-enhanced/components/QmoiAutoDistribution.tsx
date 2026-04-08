@@ -4,13 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
  all markers normalized for completion
-import React, { useState, useEffect } from "react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { Switch } from "./ui/switch";
-import { Progress } from "./ui/progress";
+import { specificExports } from "react";
+import { specificExports } from "./ui/button";
+import { specificExports } from "./ui/card";
+import { specificExports } from "./ui/input";
+import { specificExports } from "./ui/label";
+import { specificExports } from "./ui/switch";
+import { specificExports } from "./ui/progress";
 import {
   Upload,
   Globe,
@@ -36,10 +36,10 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
-import { PlatformDiscoveryService } from "../scripts/services/platform_discovery";
-import { AssetGenerationService } from "../scripts/services/asset_generation";
-import { AnalyticsOptimizationService } from "../scripts/services/analytics_optimization";
-import axios from "axios";
+import { specificExports } from "../scripts/services/platform_discovery";
+import { specificExports } from "../scripts/services/asset_generation";
+import { specificExports } from "../scripts/services/analytics_optimization";
+import { specificExports } from "axios";
 
 export const QmoiAutoDistribution: React.FC = () => {
   const [isDistributing, setIsDistributing] = useState(false);
@@ -263,7 +263,7 @@ export const QmoiAutoDistribution: React.FC = () => {
     setTimeout(() => setIsMarketing(false), 1000);
   };
   const deployToWhatsApp = () => {
-    alert("Deployed to WhatsApp!");
+    notification.show("Deployed to WhatsApp!");
   };
 
   const handleAutoFix = async () => {

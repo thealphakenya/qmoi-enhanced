@@ -12,10 +12,7 @@ QMOI production Link Audit & Offline Access Report
 import re
 import json
 import urllib.request
-import urllib.error
-from datetime import datetime
-from pathlib import Path
-from collections import defaultdict
+import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from collections import defaultdict
 
 # QMOI Domains (matching TypeScript constants)
 QMOI_DOMAINS = {
@@ -34,7 +31,10 @@ QMOI_DOMAINS = {
     'ai': 'stableq.ai'
 }
 
-def find_qmoi_links(text):
+"""
+    find_qmoi_links function
+    """
+def find_qmoi_links(text) -> Any:
     """Find all QMOI-related links in text."""
     qmoi_links = []
     url_pattern = re.compile(r'https?://[^\s<>"{}|\\^`[\]]+')
@@ -46,7 +46,10 @@ def find_qmoi_links(text):
 
     return qmoi_links
 
-def audit_link(url, timeout=10):
+"""
+    audit_link function
+    """
+def audit_link(url, timeout=10) -> Any:
     """Audit a single link for status and metadata."""
     result = {
         'url': url,
@@ -75,7 +78,10 @@ def audit_link(url, timeout=10):
 
     return result
 
-def scan_repository_for_links():
+"""
+    scan_repository_for_links function
+    """
+def scan_repository_for_links() -> Any:
     """Scan the entire repository for QMOI links."""
     root = Path('.')
     all_links = set()
@@ -95,20 +101,23 @@ def scan_repository_for_links():
                 links = find_qmoi_links(content)
                 all_links.update(links)
             except Exception as e:
-                print(f"Error reading {file_path}: {e}")
+                logger.info(f"Error reading {file_path}: {e}")
 
     return list(all_links)
 
-def generate_audit_report():
+"""
+    generate_audit_report function
+    """
+def generate_audit_report() -> Any:
     """Generate comprehensive link audit report."""
-    print("Scanning repository for QMOI links...")
+    logger.info("Scanning repository for QMOI links...")
     links = scan_repository_for_links()
 
-    print(f"Found {len(links)} unique QMOI links. Auditing...")
+    logger.info(f"Found {len(links)} unique QMOI links. Auditing...")
 
     audit_results = []
     for i, link in enumerate(links):
-        print(f"Auditing {i+1}/{len(links)}: {link}")
+        logger.info(f"Auditing {i+1}/{len(links)}: {link}")
         result = audit_link(link)
         audit_results.append(result)
 
@@ -134,16 +143,16 @@ def generate_audit_report():
     with open(report_path, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
 
-    print(f"\nAudit complete. Report saved to {report_path}")
-    print(f"Active links: {len(active_links)}/{len(links)} ({report['active_percentage']:.1f}%)")
+    logger.info(f"\nAudit complete. Report saved to {report_path}")
+    logger.info(f"Active links: {len(active_links)}/{len(links)} ({report['active_percentage']:.1f}%)")
 
     # Print summary
     if inactive_links:
-        print("\nInactive links:")
+        logger.info("\nInactive links:")
         for link in inactive_links[:10]:  # Show first 10
-            print(f"  {link['url']} - {link['error']}")
+            logger.info(f"  {link['url']} - {link['error']}")
         if len(inactive_links) > 10:
-            print(f"  ... and {len(inactive_links) - 10} more")
+            logger.info(f"  ... and {len(inactive_links) - 10} more")
 
     return report
 

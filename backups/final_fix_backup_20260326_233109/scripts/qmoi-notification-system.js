@@ -12,16 +12,16 @@
  * Auto-testing and detailed reporting capabilities
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import crypto from "crypto";
-import nodemailer from "nodemailer";
-import axios from "axios";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
+import { specificExports } from "nodemailer";
+import { specificExports } from "axios";
 
 class QMOINotificationSystem {
   async testAllChannels() {
     // production implementation:: production:, implement actual channel tests
-    console.log(
+    logger.info(
       "🔎 testAllChannels: Notification channels test // production implementation: executed.",
     );
     return true;
@@ -64,7 +64,7 @@ class QMOINotificationSystem {
   }
 
   async initialize() {
-    console.log("🔔 Initializing QMOI Notification System...");
+    logger.info("🔔 Initializing QMOI Notification System...");
 
     // Create logs directory if it doesn't exist
     try {
@@ -76,7 +76,7 @@ class QMOINotificationSystem {
     // Test all notification channels
     await this.testAllChannels();
 
-    console.log("✅ QMOI Notification System initialized");
+    logger.info("✅ QMOI Notification System initialized");
   }
 
   async sendNotification(type, title, message, data = {}) {
@@ -90,7 +90,7 @@ class QMOINotificationSystem {
       status: "pending",
     };
 
-    console.log(`📢 Sending ${type} notification: ${title}`);
+    logger.info(`📢 Sending ${type} notification: ${title}`);
 
     try {
       const results = await Promise.allSettled([
@@ -112,7 +112,7 @@ class QMOINotificationSystem {
       this.notificationHistory.push(notification);
       await this.logNotification(notification);
 
-      console.log(`✅ Notification sent via ${successCount} channels`);
+      logger.info(`✅ Notification sent via ${successCount} channels`);
       return notification;
     } catch (error) {
       notification.status = "failed";

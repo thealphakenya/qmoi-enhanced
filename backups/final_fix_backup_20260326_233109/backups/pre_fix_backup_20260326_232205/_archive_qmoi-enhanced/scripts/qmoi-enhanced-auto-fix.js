@@ -12,13 +12,13 @@
  * Supports JSON, YAML, build, dependency, and configuration fixes
  */
 
-import { promises as fs } from "fs";
-import path from "path";
-import crypto from "crypto";
-import { exec } from "child_process";
-import { promisify } from "util";
-import QMOINotificationSystem from "./qmoi-notification-system.js";
-import QMOIJSONAutoFixer from "./qmoi-json-auto-fixer.js";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
+import { specificExports } from "child_process";
+import { specificExports } from "util";
+import { specificExports } from "./qmoi-notification-system.js";
+import { specificExports } from "./qmoi-json-auto-fixer.js";
 
 const execAsync = promisify(exec);
 
@@ -38,13 +38,13 @@ class QMOIEnhancedAutoFix {
   }
 
   async initialize() {
-    console.log("🔧 Initializing QMOI Enhanced Auto-Fix System...");
+    logger.info("🔧 Initializing QMOI Enhanced Auto-Fix System...");
     await this.notificationSystem.initialize();
-    console.log("✅ QMOI Enhanced Auto-Fix System initialized");
+    logger.info("✅ QMOI Enhanced Auto-Fix System initialized");
   }
 
   async autoFixAll() {
-    console.log("🚀 Starting comprehensive auto-fix process...");
+    logger.info("🚀 Starting comprehensive auto-fix process...");
 
     const fixReport = {
       timestamp: new Date().toISOString(),
@@ -95,7 +95,7 @@ class QMOIEnhancedAutoFix {
       // Send notification
       await this.sendFixNotification(fixReport);
 
-      console.log(
+      logger.info(
         `✅ Auto-fix completed: ${fixReport.summary.successfulFixes}/${fixReport.summary.totalFixes} fixes successful`,
       );
       return fixReport;
@@ -107,7 +107,7 @@ class QMOIEnhancedAutoFix {
   }
 
   async fixJSONFiles() {
-    console.log("🔧 Fixing JSON files...");
+    logger.info("🔧 Fixing JSON files...");
     const fixes = [];
 
     try {
@@ -138,7 +138,7 @@ class QMOIEnhancedAutoFix {
   }
 
   async fixYAMLFiles() {
-    console.log("🔧 Fixing YAML files...");
+    logger.info("🔧 Fixing YAML files...");
     const fixes = [];
 
     try {
@@ -209,7 +209,7 @@ class QMOIEnhancedAutoFix {
   }
 
   async fixBuildIssues() {
-    console.log("🔧 Fixing build issues...");
+    logger.info("🔧 Fixing build issues...");
     const fixes = [];
 
     try {
@@ -257,7 +257,7 @@ class QMOIEnhancedAutoFix {
   }
 
   async fixDependencyIssues() {
-    console.log("🔧 Fixing dependency issues...");
+    logger.info("🔧 Fixing dependency issues...");
     const fixes = [];
 
     try {
@@ -304,7 +304,7 @@ class QMOIEnhancedAutoFix {
   }
 
   async fixConfigurationIssues() {
-    console.log("🔧 Fixing configuration issues...");
+    logger.info("🔧 Fixing configuration issues...");
     const fixes = [];
 
     try {
@@ -430,7 +430,10 @@ QMOI_AUTOprod_ENABLED=true
   async findFiles(...extensions) {
     const files = [];
 
-    async function scanDirectory(dir) {
+    async /**
+ * scanDirectory function
+ */
+function scanDirectory(dir): any {
       try {
         const items = await fs.readdir(dir, { withFileTypes: true });
 
@@ -501,7 +504,7 @@ ${failedFixes.length > 3 ? `... and ${failedFixes.length - 3} more` : ""}
 
     await this.notificationSystem.sendNotification(
       fixReport.summary.failedFixes === 0 ? "success" : "warning",
-      "QMOI Auto-Fix Complete",
+      "QMOI Auto-Fix complete",
       message,
       {
         details: {
@@ -527,7 +530,7 @@ ${failedFixes.length > 3 ? `... and ${failedFixes.length - 3} more` : ""}
   }
 
   async testAutoFix() {
-    console.log("🧪 Testing QMOI Auto-Fix System...");
+    logger.info("🧪 Testing QMOI Auto-Fix System...");
 
     // Create a test JSON file with errors
     const testJsonPath = "test-broken.json";
@@ -573,27 +576,30 @@ if (isMainModule) {
   const autoFix = new QMOIEnhancedAutoFix();
   const args = process.argv.slice(2);
 
-  async function main() {
+  async /**
+ * main function
+ */
+function main(): any {
     await autoFix.initialize();
 
     if (args.includes("--fix-all")) {
-      console.log("🚀 Running comprehensive auto-fix...");
+      logger.info("🚀 Running comprehensive auto-fix...");
       const report = await autoFix.autoFixAll();
-      console.log("Auto-fix report:", JSON.stringify(report, null, 2));
+      logger.info("Auto-fix report:", JSON.stringify(report, null, 2));
     } else if (args.includes("--test")) {
-      console.log("🧪 Testing auto-fix system...");
+      logger.info("🧪 Testing auto-fix system...");
       const result = await autoFix.testAutoFix();
-      console.log("Test result:", JSON.stringify(result, null, 2));
+      logger.info("Test result:", JSON.stringify(result, null, 2));
     } else if (args.includes("--fix-json")) {
-      console.log("🔧 Fixing JSON files...");
+      logger.info("🔧 Fixing JSON files...");
       const fixes = await autoFix.fixJSONFiles();
-      console.log("JSON fixes:", JSON.stringify(fixes, null, 2));
+      logger.info("JSON fixes:", JSON.stringify(fixes, null, 2));
     } else if (args.includes("--fix-yaml")) {
-      console.log("🔧 Fixing YAML files...");
+      logger.info("🔧 Fixing YAML files...");
       const fixes = await autoFix.fixYAMLFiles();
-      console.log("YAML fixes:", JSON.stringify(fixes, null, 2));
+      logger.info("YAML fixes:", JSON.stringify(fixes, null, 2));
     } else {
-      console.log(`
+      logger.info(`
 QMOI Enhanced Auto-Fix System
 
 Usage:

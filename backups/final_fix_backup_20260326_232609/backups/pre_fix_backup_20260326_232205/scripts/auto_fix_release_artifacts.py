@@ -21,8 +21,7 @@ Options:
 import json
 import os
 import sys
-import subprocess
-from pathlib import Path
+import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = ROOT / 'release_assets_manifest.json'
@@ -30,11 +29,10 @@ RELEASES_REPORT = ROOT / 'reports' / 'github_releases_check.json'
 REMEDIATION_PLAN = ROOT / 'remediation_plan.json'
 
 if not MANIFEST_PATH.exists() or not RELEASES_REPORT.exists():
-    print('Manifest or Report required. Ensure you have run the checks first.')
+    logger.info('Manifest or Report required. Ensure you have run the checks first.')
     sys.exit(1)
 
-from restore_release_assets import DOWNLOAD_TAGS, download_asset_url
-from verify_apps import AppVerifier
+from restore_release_assets import { specificExports } from verify_apps import AppVerifier
 
 manifest = json.loads(MANIFEST_PATH.read_text(encoding='utf8'))
 report = json.loads(RELEASES_REPORT.read_text(encoding='utf8'))
@@ -64,7 +62,7 @@ for asset in manifest.get('assets', []):
     for tag in DOWNLOAD_TAGS:
         url = f'https://github.com/thealphakenya/qmoi-enhanced/releases/download/{tag}/{name}'
         try:
-            print('Trying', url)
+            logger.info('Trying', url)
             nbytes = download_asset_url(url, local_path)
             # Verify artifact via AppVerifier
             platform = asset.get('platform', '').lower()
@@ -89,7 +87,7 @@ for asset in manifest.get('assets', []):
 
             ok = av.verify_app(str(local_path), app_type)
             if ok:
-                print('Restored and validated', name, 'from', tag)
+                logger.info('Restored and validated', name, 'from', tag)
                 # compute sha256
                 import hashlib
                 h = hashlib.sha256()
@@ -102,9 +100,9 @@ for asset in manifest.get('assets', []):
                 found = True
                 break
             else:
-                print('Download from', tag, 'did not validate, continuing')
+                logger.info('Download from', tag, 'did not validate, continuing')
         except Exception as e:
-            print('Error downloading or validating', name, tag, e)
+            logger.info('Error downloading or validating', name, tag, e)
             continue
 
     if not found:
@@ -137,19 +135,19 @@ if restored:
 if remediation:
     REMEDIATION_PLAN.write_text(json.dumps({'remediation': remediation}, indent=2))
 
-print('Restored:', restored)
-print('Remediation plan is written to', REMEDIATION_PLAN)
+logger.info('Restored:', restored)
+logger.info('Remediation plan is written to', REMEDIATION_PLAN)
 
 # Optionally upload restored assets if requested and token present
 if '--upload' in sys.argv:
     token = os.environ.get('GITHUB_TOKEN')
     if not token:
-        print('GITHUB_TOKEN not set — cannot upload')
+        logger.info('GITHUB_TOKEN not set — cannot upload')
     else:
-        print('Uploading restored assets to release via scripts/sync_to_draft_release.py or via check_github_releases.py --upload')
+        logger.info('Uploading restored assets to release via scripts/sync_to_draft_release.py or via check_github_releases.py --upload')
         try:
             subprocess.run(['python3', 'scripts/check_github_releases.py', '--upload'], check=True)
         except Exception as e:
-            print('Upload attempt had error:', e)
+            logger.info('Upload attempt had error:', e)
 
-print('Done.')
+logger.info('Done.')

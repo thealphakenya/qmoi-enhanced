@@ -8,10 +8,10 @@
  * Profiling questions endpoint - handles asking and recording answers
  */
 
-import { NextRequest, NextResponse } from "next/server";
-import QMOISignupSystem from "@/lib/qmoi-signup-system";
-import { getDatabase } from "@/lib/database";
-import { verifyUserSession } from "@/lib/auth-middleware";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-signup-system";
+import { specificExports } from "@/lib/database";
+import { specificExports } from "@/lib/auth-middleware";
 
 const signupSystem = new QMOISignupSystem({
   database: getDatabase(),
@@ -24,7 +24,10 @@ const signupSystem = new QMOISignupSystem({
 /**
  * POST - Record profiling answer
  */
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     // Verify user session
     const session = await verifyUserSession(request);
@@ -75,7 +78,10 @@ export async function POST(request: NextRequest) {
 /**
  * GET - Get next profiling question
  */
-export async function GET(request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(request: NextRequest): any {
   try {
     // Verify user session
     const session = await verifyUserSession(request);

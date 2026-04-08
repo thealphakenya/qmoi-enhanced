@@ -4,20 +4,26 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // production implementation: this file has no remaining production markers
-import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import crypto from "crypto";
+import { specificExports } from "next/server";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "crypto";
 
 const SESSIONS_FILE = path.resolve(process.cwd(), "data", "sessions.json");
 
-function ensureFile() {
+/**
+ * ensureFile function
+ */
+function ensureFile(): any {
   const dir = path.dirname(SESSIONS_FILE);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   if (!fs.existsSync(SESSIONS_FILE)) fs.writeFileSync(SESSIONS_FILE, "[]");
 }
 
-export async function POST(_request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(_request: NextRequest): any {
   try {
     ensureFile();
     const body = await _request.json();
@@ -35,7 +41,7 @@ export async function POST(_request: NextRequest) {
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8")) as any[];
 
     // End existing sessions for user
-    sessions.forEach((s) => {
+    sessions.for (const item of((s) => {
       if (s.userId === userId && s.active) s.active = false;
     });
 
@@ -68,7 +74,10 @@ export async function POST(_request: NextRequest) {
   }
 }
 
-export async function GET(_request: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(_request: NextRequest): any {
   try {
     ensureFile();
     const sessionId = _request.nextUrl.searchParams.get("sessionId");

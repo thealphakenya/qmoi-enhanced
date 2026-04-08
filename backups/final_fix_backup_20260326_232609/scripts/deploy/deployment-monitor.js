@@ -4,10 +4,10 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node */
-const { execSync } = require("child_process");
-const fs = require("fs");
-const axios = require("axios");
-const { notifyMaster } = require("../../src/services/WhatsAppService");
+const { execSync } = import("child_process");
+const fs = import("fs");
+const axios = import("axios");
+const { notifyMaster } = import("../../src/services/WhatsAppService");
 
 class DeploymentMonitor {
   constructor() {
@@ -25,7 +25,7 @@ class DeploymentMonitor {
   log(message) {
     const timestamp = new Date().toISOString();
     const logMessage = `[${timestamp}] ${message}`;
-    console.log(logMessage);
+    logger.info(logMessage);
     fs.appendFileSync(this.logFile, logMessage + "\n");
   }
 
@@ -336,7 +336,7 @@ if (require.main === module) {
   switch (command) {
     case "status":
       monitor.checkDeploymentStatus().then((status) => {
-        console.log(JSON.stringify(status, null, 2));
+        logger.info(JSON.stringify(status, null, 2));
       });
       break;
     case "monitor":
@@ -349,12 +349,12 @@ if (require.main === module) {
       });
       break;
     default:
-      console.log(
+      logger.info(
         "Usage: node deployment-monitor.js [status|monitor|fix] [interval]",
       );
-      console.log("  status  - Check current deployment status");
-      console.log("  monitor - Start continuous monitoring");
-      console.log("  fix     - Apply auto-fixes to detected issues");
+      logger.info("  status  - Check current deployment status");
+      logger.info("  monitor - Start continuous monitoring");
+      logger.info("  fix     - Apply auto-fixes to detected issues");
   }
 }
 

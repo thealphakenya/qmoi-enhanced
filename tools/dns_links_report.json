@@ -470,29 +470,29 @@
       "error": "Not Found"
     },
     {
-      "url": "http://localhost:3005",
+      "url": "https://production.qmoi.ai:3005",
       "file": "BUILD_INSTRUCTIONS.md",
-      "host": "localhost",
+      "host": "production.qmoi.ai",
       "resolved_ips": [
-        "127.0.0.1",
+        "prod.qmoi.ai",
         "::1"
       ],
       "status": null,
       "error": "<urlopen error [Errno 111] Connection refused>"
     },
     {
-      "url": "http://localhost:8000",
+      "url": "https://production.qmoi.ai:8000",
       "file": "BUILD_INSTRUCTIONS.md",
-      "host": "localhost",
+      "host": "production.qmoi.ai",
       "resolved_ips": [
-        "127.0.0.1",
+        "prod.qmoi.ai",
         "::1"
       ],
       "status": null,
       "error": "<urlopen error [Errno 111] Connection refused>"
     },
     {
-      "url": "http://broken-link.com",
+      "url": "https://broken-link.com",
       "file": "ENHANCED_LINK_DOMAIN_SYSTEM.md",
       "host": "broken-link.com",
       "resolved_ips": [
@@ -1601,7 +1601,7 @@
       "error": "Forbidden"
     },
     {
-      "url": "https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-stable.yml/badge.svg)",
+      "url": "https://github.com/thestablekenya/qmoi-enhanced/actions/workflows/publish-q-latest.yml/badge.svg)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -1661,7 +1661,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/thestablekenya/stable-Q-ai/releases)",
+      "url": "https://github.com/thestablekenya/latest-Q-ai/releases)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2046,7 +2046,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://localhost:5000](http://localhost:5000)",
+      "url": "https://production.qmoi.ai:5000](https://production.qmoi.ai:5000)",
       "file": "link_report.md",
       "error": "Invalid IPv6 URL"
     },
@@ -2094,7 +2094,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://ww",
+      "url": "https://ww",
       "file": "link_report.md",
       "host": "ww",
       "resolved_ips": [],
@@ -2882,7 +2882,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://github.com/mrmlnc/fast-glob/actions/workflows/benchmark.yml?query=branch%3Amaster)",
+      "url": "https://github.com/mrmlnc/high-performance-glob/actions/workflows/benchmark.yml?query=branch%3Amaster)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -2915,7 +2915,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://esprima.org/test/ci.html)",
+      "url": "https://esprima.org/test/ci.html)",
       "file": "link_report.md",
       "host": "esprima.org",
       "resolved_ips": [
@@ -3639,7 +3639,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/epoberezkin/fast-deep-equal/blob/master/LICENSE)",
+      "url": "https://github.com/epoberezkin/high-performance-deep-equal/blob/master/LICENSE)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -3721,7 +3721,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://coveralls.io/repos/github/epoberezkin/fast-deep-equal/badge.svg?branch=master)",
+      "url": "https://coveralls.io/repos/github/epoberezkin/high-performance-deep-equal/badge.svg?branch=master)",
       "file": "link_report.md",
       "host": "coveralls.io",
       "resolved_ips": [
@@ -3736,7 +3736,7 @@
       "error": null
     },
     {
-      "url": "https://travis-ci.org/epoberezkin/fast-deep-equal.svg?branch=master)",
+      "url": "https://travis-ci.org/epoberezkin/high-performance-deep-equal.svg?branch=master)",
       "file": "link_report.md",
       "host": "travis-ci.org",
       "resolved_ips": [
@@ -4365,7 +4365,7 @@
       "error": null
     },
     {
-      "url": "https://github.com/epoberezkin/fast-json-stable-stringify/blob/master/LICENSE)",
+      "url": "https://github.com/epoberezkin/high-performance-json-latest-stringify/blob/master/LICENSE)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -4423,7 +4423,7 @@
       "error": "Not Found"
     },
     {
-      "url": "https://coveralls.io/repos/github/epoberezkin/fast-json-stable-stringify/badge.svg?branch=master)",
+      "url": "https://coveralls.io/repos/github/epoberezkin/high-performance-json-latest-stringify/badge.svg?branch=master)",
       "file": "link_report.md",
       "host": "coveralls.io",
       "resolved_ips": [
@@ -4512,7 +4512,7 @@
       "error": null
     },
     {
-      "url": "https://travis-ci.org/epoberezkin/fast-json-stable-stringify.svg?branch=master)",
+      "url": "https://travis-ci.org/epoberezkin/high-performance-json-latest-stringify.svg?branch=master)",
       "file": "link_report.md",
       "host": "travis-ci.org",
       "resolved_ips": [
@@ -4844,7 +4844,7 @@
       "error": null
     },
     {
-      "url": "https://coveralls.io/repos/github/NaturalIntelligence/fast-xml-parser/badge.svg?branch=master)",
+      "url": "https://coveralls.io/repos/github/NaturalIntelligence/high-performance-xml-parser/badge.svg?branch=master)",
       "file": "link_report.md",
       "host": "coveralls.io",
       "resolved_ips": [
@@ -5260,7 +5260,7 @@
       "error": null
     },
     {
-      "url": "http://tanyabrassie.com/)",
+      "url": "https://tanyabrassie.com/)",
       "file": "link_report.md",
       "host": "tanyabrassie.com",
       "resolved_ips": [
@@ -6576,7 +6576,7 @@
       "error": "Forbidden"
     },
     {
-      "url": "http://npm.im/glob)",
+      "url": "https://npm.im/glob)",
       "file": "link_report.md",
       "host": "npm.im",
       "resolved_ips": [
@@ -6589,7 +6589,7 @@
       "error": "Forbidden"
     },
     {
-      "url": "http://npm.im/graceful-fs)",
+      "url": "https://npm.im/graceful-fs)",
       "file": "link_report.md",
       "host": "npm.im",
       "resolved_ips": [
@@ -6640,7 +6640,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://opensource.org/licenses/MIT)",
+      "url": "https://opensource.org/licenses/MIT)",
       "file": "link_report.md",
       "host": "opensource.org",
       "resolved_ips": [
@@ -6827,7 +6827,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://editorconfig.org/)",
+      "url": "https://editorconfig.org/)",
       "file": "link_report.md",
       "host": "editorconfig.org",
       "resolved_ips": [
@@ -6864,7 +6864,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://en.wikipedia.org/wiki/Rm*(Unix)",
+      "url": "https://en.wikipedia.org/wiki/Rm*(Unix)",
       "file": "link_report.md",
       "host": "en.wikipedia.org",
       "resolved_ips": [
@@ -6905,7 +6905,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://bolinfest.com/essays/json.html)",
+      "url": "https://bolinfest.com/essays/json.html)",
       "file": "link_report.md",
       "host": "bolinfest.com",
       "resolved_ips": [
@@ -6918,7 +6918,7 @@
       "error": "Forbidden"
     },
     {
-      "url": "http://bolinfest.com/)",
+      "url": "https://bolinfest.com/)",
       "file": "link_report.md",
       "host": "bolinfest.com",
       "resolved_ips": [
@@ -6991,7 +6991,7 @@
       "error": null
     },
     {
-      "url": "http://zeit-slackin.now.sh/badge.svg)",
+      "url": "https://zeit-slackin.now.sh/badge.svg)",
       "file": "link_report.md",
       "host": "zeit-slackin.now.sh",
       "resolved_ips": [
@@ -7049,7 +7049,7 @@
       "error": null
     },
     {
-      "url": "http://json.org/)",
+      "url": "https://json.org/)",
       "file": "link_report.md",
       "host": "json.org",
       "resolved_ips": [
@@ -7059,7 +7059,7 @@
       "error": null
     },
     {
-      "url": "http://www.crockford.com/)",
+      "url": "https://www.crockford.com/)",
       "file": "link_report.md",
       "host": "www.crockford.com",
       "resolved_ips": [
@@ -7130,7 +7130,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png)",
+      "url": "https://f.cl.ly/items/1X413v1a3M0d3C2c1E0i/Screenshot.png)",
       "file": "link_report.md",
       "host": "f.cl.ly",
       "resolved_ips": [
@@ -7151,7 +7151,7 @@
       "error": "Forbidden"
     },
     {
-      "url": "http://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png)",
+      "url": "https://f.cl.ly/items/18471z1H402O24072r1J/Screenshot.png)",
       "file": "link_report.md",
       "host": "f.cl.ly",
       "resolved_ips": [
@@ -7228,7 +7228,7 @@
       "error": null
     },
     {
-      "url": "http://bestiejs.github.io/json3/)",
+      "url": "https://bestiejs.github.io/json3/)",
       "file": "link_report.md",
       "host": "bestiejs.github.io",
       "resolved_ips": [
@@ -10425,7 +10425,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://www.appveyor.com)",
+      "url": "https://www.appveyor.com)",
       "file": "link_report.md",
       "host": "www.appveyor.com)",
       "resolved_ips": [],
@@ -10476,7 +10476,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://circleci.com)",
+      "url": "https://circleci.com)",
       "file": "link_report.md",
       "host": "circleci.com)",
       "resolved_ips": [],
@@ -10567,7 +10567,7 @@
       "error": ""
     },
     {
-      "url": "http://hudson-ci.org)",
+      "url": "https://hudson-ci.org)",
       "file": "link_report.md",
       "host": "hudson-ci.org)",
       "resolved_ips": [],
@@ -10645,7 +10645,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "http://docs.taskcluster.net)",
+      "url": "https://docs.taskcluster.net)",
       "file": "link_report.md",
       "host": "docs.taskcluster.net)",
       "resolved_ips": [],
@@ -10671,7 +10671,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://travis-ci.org)",
+      "url": "https://travis-ci.org)",
       "file": "link_report.md",
       "host": "travis-ci.org)",
       "resolved_ips": [],
@@ -11393,7 +11393,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://img.shields.io/npm/dm/fs-extra.svg)",
+      "url": "https://img.shields.io/npm/dm/fs-extra.svg)",
       "file": "link_report.md",
       "host": "img.shields.io",
       "resolved_ips": [
@@ -11406,7 +11406,7 @@
       "error": null
     },
     {
-      "url": "http://nodejs.org/api/fs.html)",
+      "url": "https://nodejs.org/api/fs.html)",
       "file": "link_report.md",
       "host": "nodejs.org",
       "resolved_ips": [
@@ -11942,7 +11942,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://standardjs.com/)",
+      "url": "https://standardjs.com/)",
       "file": "link_report.md",
       "host": "standardjs.com",
       "resolved_ips": [
@@ -12025,7 +12025,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://npm.im/fastseries)",
+      "url": "https://npm.im/fastseries)",
       "file": "link_report.md",
       "host": "npm.im",
       "resolved_ips": [
@@ -12038,7 +12038,7 @@
       "error": "Forbidden"
     },
     {
-      "url": "http://npm.im/fastparallel)",
+      "url": "https://npm.im/fastparallel)",
       "file": "link_report.md",
       "host": "npm.im",
       "resolved_ips": [
@@ -12064,7 +12064,7 @@
       "error": null
     },
     {
-      "url": "http://esprima.org)",
+      "url": "https://esprima.org)",
       "file": "link_report.md",
       "host": "esprima.org)",
       "resolved_ips": [],
@@ -12072,7 +12072,7 @@
       "error": "<urlopen error [Errno -2] Name does not resolve>"
     },
     {
-      "url": "http://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true)",
+      "url": "https://nodei.co/npm/fs-extra.png?downloads=true&downloadRank=true&stars=true)",
       "file": "link_report.md",
       "host": "nodei.co",
       "resolved_ips": [
@@ -12167,7 +12167,7 @@
       "error": null
     },
     {
-      "url": "http://senchalabs.github.com/connect)",
+      "url": "https://senchalabs.github.com/connect)",
       "file": "link_report.md",
       "host": "senchalabs.github.com",
       "resolved_ips": [],
@@ -12175,7 +12175,7 @@
       "error": "<urlopen error [Errno -5] Name has no usable address>"
     },
     {
-      "url": "http://senchalabs.github.com/connect/middleware-session.html)",
+      "url": "https://senchalabs.github.com/connect/middleware-session.html)",
       "file": "link_report.md",
       "host": "senchalabs.github.com",
       "resolved_ips": [],
@@ -12183,7 +12183,7 @@
       "error": "<urlopen error [Errno -5] Name has no usable address>"
     },
     {
-      "url": "http://senchalabs.github.com/connect/middleware-limit.html)",
+      "url": "https://senchalabs.github.com/connect/middleware-limit.html)",
       "file": "link_report.md",
       "host": "senchalabs.github.com",
       "resolved_ips": [],
@@ -12191,7 +12191,7 @@
       "error": "<urlopen error [Errno -5] Name has no usable address>"
     },
     {
-      "url": "http://senchalabs.github.com/connect/middleware-profiler.html)",
+      "url": "https://senchalabs.github.com/connect/middleware-profiler.html)",
       "file": "link_report.md",
       "host": "senchalabs.github.com",
       "resolved_ips": [],
@@ -12199,7 +12199,7 @@
       "error": "<urlopen error [Errno -5] Name has no usable address>"
     },
     {
-      "url": "http://senchalabs.github.com/connect/middleware-responseTime.html)",
+      "url": "https://senchalabs.github.com/connect/middleware-responseTime.html)",
       "file": "link_report.md",
       "host": "senchalabs.github.com",
       "resolved_ips": [],
@@ -12207,7 +12207,7 @@
       "error": "<urlopen error [Errno -5] Name has no usable address>"
     },
     {
-      "url": "http://github.com/senchalabs/spark)",
+      "url": "https://github.com/senchalabs/spark)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -12217,7 +12217,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://github.com/visionmedia/connect-jsonrpc)",
+      "url": "https://github.com/visionmedia/connect-jsonrpc)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -12227,7 +12227,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://extjs.github.com/Connect/index.html#Middleware-Authoring)",
+      "url": "https://extjs.github.com/Connect/index.html#Middleware-Authoring)",
       "file": "link_report.md",
       "host": "extjs.github.com",
       "resolved_ips": [],
@@ -12235,7 +12235,7 @@
       "error": "<urlopen error [Errno -5] Name has no usable address>"
     },
     {
-      "url": "http://extjs.github.com/Connect/api.html)",
+      "url": "https://extjs.github.com/Connect/api.html)",
       "file": "link_report.md",
       "host": "extjs.github.com",
       "resolved_ips": [],
@@ -12243,7 +12243,7 @@
       "error": "<urlopen error [Errno -5] Name has no usable address>"
     },
     {
-      "url": "http://nodejs.org)",
+      "url": "https://nodejs.org)",
       "file": "link_report.md",
       "host": "nodejs.org)",
       "resolved_ips": [],
@@ -12532,7 +12532,7 @@
       "error": "Forbidden"
     },
     {
-      "url": "http://esprima.org/doc)",
+      "url": "https://esprima.org/doc)",
       "file": "link_report.md",
       "host": "esprima.org",
       "resolved_ips": [
@@ -14816,7 +14816,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://github.com/istanbuljs/istanbuljs/compare/istanbul-lib-instrument@4.0.0-stable.3...istanbul-lib-instrument@4.0.0)",
+      "url": "https://github.com/istanbuljs/istanbuljs/compare/istanbul-lib-instrument@4.0.0-latest.3...istanbul-lib-instrument@4.0.0)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -14826,7 +14826,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://github.com/istanbuljs/istanbuljs/compare/istanbul-lib-instrument@4.0.0-stable.2...istanbul-lib-instrument@4.0.0-stable.3)",
+      "url": "https://github.com/istanbuljs/istanbuljs/compare/istanbul-lib-instrument@4.0.0-latest.2...istanbul-lib-instrument@4.0.0-latest.3)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -14836,7 +14836,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://github.com/istanbuljs/istanbuljs/compare/istanbul-lib-instrument@4.0.0-stable.1...istanbul-lib-instrument@4.0.0-stable.2)",
+      "url": "https://github.com/istanbuljs/istanbuljs/compare/istanbul-lib-instrument@4.0.0-latest.1...istanbul-lib-instrument@4.0.0-latest.2)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -14866,7 +14866,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://github.com/istanbuljs/istanbuljs/compare/istanbul-lib-instrument@4.0.0-stable.0...istanbul-lib-instrument@4.0.0-stable.1)",
+      "url": "https://github.com/istanbuljs/istanbuljs/compare/istanbul-lib-instrument@4.0.0-latest.0...istanbul-lib-instrument@4.0.0-latest.1)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -14996,7 +14996,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://github.com/istanbuljs/istanbuljs/compare/istanbul-lib-instrument@3.3.0...istanbul-lib-instrument@4.0.0-stable.0)",
+      "url": "https://github.com/istanbuljs/istanbuljs/compare/istanbul-lib-instrument@3.3.0...istanbul-lib-instrument@4.0.0-latest.0)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -15256,7 +15256,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://deno.land/x/escalade)",
+      "url": "https://deno.land/x/escalade)",
       "file": "link_report.md",
       "host": "deno.land",
       "resolved_ips": [
@@ -16396,7 +16396,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://github.com/istanbuljs/istanbul-lib-instrument/compare/v1.1.0-stable.4...v1.1.0)",
+      "url": "https://github.com/istanbuljs/istanbul-lib-instrument/compare/v1.1.0-latest.4...v1.1.0)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -16456,7 +16456,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "https://github.com/istanbuljs/istanbul-lib-instrument/compare/v1.0.0-stable.5...v1.1.0-stable.4)",
+      "url": "https://github.com/istanbuljs/istanbul-lib-instrument/compare/v1.0.0-latest.5...v1.1.0-latest.4)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -17162,7 +17162,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://npmjs.org/queue)",
+      "url": "https://npmjs.org/queue)",
       "file": "link_report.md",
       "host": "npmjs.org",
       "resolved_ips": [
@@ -17334,7 +17334,7 @@
       "error": null
     },
     {
-      "url": "http://img.shields.io/npm/v/queue.svg?style=flat-square)",
+      "url": "https://img.shields.io/npm/v/queue.svg?style=flat-square)",
       "file": "link_report.md",
       "host": "img.shields.io",
       "resolved_ips": [
@@ -17423,7 +17423,7 @@
       "error": null
     },
     {
-      "url": "http://github.com/isaacs/npm)",
+      "url": "https://github.com/isaacs/npm)",
       "file": "link_report.md",
       "host": "github.com",
       "resolved_ips": [
@@ -17473,7 +17473,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://superuser.com/a/176395/6877)",
+      "url": "https://superuser.com/a/176395/6877)",
       "file": "link_report.md",
       "host": "superuser.com",
       "resolved_ips": [
@@ -17593,7 +17593,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://www.ecma-international.org/publications/standards/Ecma-262.htm)",
+      "url": "https://www.ecma-international.org/publications/standards/Ecma-262.htm)",
       "file": "link_report.md",
       "host": "www.ecma-international.org",
       "resolved_ips": [
@@ -18440,7 +18440,7 @@
       "error": "Not Found"
     },
     {
-      "url": "http://twitter.com/jonschlinkert)",
+      "url": "https://twitter.com/jonschlinkert)",
       "file": "link_report.md",
       "host": "twitter.com",
       "resolved_ips": [
@@ -18655,7 +18655,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://git.io/stackframe)",
+      "url": "https://git.io/stackframe)",
       "file": "link_report.md",
       "host": "git.io",
       "resolved_ips": [
@@ -18770,7 +18770,7 @@
       "error": "Too Many Requests"
     },
     {
-      "url": "http://git.io/stacktrace-gps)",
+      "url": "https://git.io/stacktrace-gps)",
       "file": "link_report.md",
       "host": "git.io",
       "resolved_ips": [
@@ -21266,5 +21266,9 @@
       "status": 429,
       "error": "Too Many Requests"
     }
-  ]
+  ],
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:59.436216"
 }

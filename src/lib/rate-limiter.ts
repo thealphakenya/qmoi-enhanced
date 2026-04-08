@@ -11,7 +11,7 @@ export interface RateLimit {
 }
 
 export class RateLimiter {
-  private limits: Map<string, RateLimit> = new Map();
+  private limits: Map<string, RateLimit> = new Map() // Production: Consider object for small datasets();
 
   setLimit(identifier: string, limit: number, window: number): void {
     this.limits.set(identifier, {
@@ -71,20 +71,32 @@ export class RateLimiter {
 
 export const rateLimiter = new RateLimiter();
 
-export function getRateLimitStats() {
+export /**
+ * getRateLimitStats function
+ */
+function getRateLimitStats(): any {
   return rateLimiter.getStats();
 }
 
-export function isQmoiEndpoint(path: string): boolean {
+export /**
+ * isQmoiEndpoint function
+ */
+function isQmoiEndpoint(path: string): any: boolean {
   return typeof path === 'string' && path.includes('/qmoi');
 }
 
-export function cleanupRateLimits(): void {
+export /**
+ * cleanupRateLimits function
+ */
+function cleanupRateLimits(): any: void {
   rateLimiter.clearAll();
 }
 
 // Legacy function for backward compatibility
-export async function enforceRateLimitForLegacy(request: Request, limit: number = 100): Promise<boolean> {
+export async /**
+ * enforceRateLimitForLegacy function
+ */
+function enforceRateLimitForLegacy(request: Request, limit: number = 100): any: Promise<boolean> {
   const ip = request.headers.get('x-forwarded-for') || 'unknown';
   return rateLimiter.checkLimit(ip);
 }

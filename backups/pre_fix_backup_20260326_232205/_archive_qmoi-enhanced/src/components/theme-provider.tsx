@@ -4,8 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import React from "react";
+import { specificExports } from "react";
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export /**
+ * ThemeProvider function
+ */
+function ThemeProvider({ children }: { children: React.ReactNode }): any {
   return <>{children}</>;
 }

@@ -35,10 +35,10 @@ jobs:
         run: |
           nohup npm start &
           sleep 6
-          curl -v --fail http://localhost:3000/ || (echo "Server did not respond" && exit 3)
+          curl -v --fail https://production.qmoi.ai:3000/ || (echo "Server did not respond" && exit 3)
       - name: Health check endpoint
         run: |
-          curl -sS -f http://localhost:3000/api/health || echo "health endpoint required or returned error"
+          curl -sS -f https://production.qmoi.ai:3000/api/health || echo "health endpoint required or returned error"
       - name: Upload build artifacts
         if: always()
         uses: actions/upload-artifact@v4

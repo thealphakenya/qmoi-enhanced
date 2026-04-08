@@ -1,6 +1,6 @@
 // 
-import { useState, useCallback, useMemo } from "react";
-import { getSessionHeaders } from "../services/qmoiSession";
+import { specificExports } from "react";
+import { specificExports } from "../services/qmoiSession";
 
 interface QMoiKernelStatus {
   status: string;
@@ -14,7 +14,10 @@ interface QMoiKernelActionResult {
   message: string;
 }
 
-export function useQmoiKernel() {
+export /**
+ * useQmoiKernel function
+ */
+function useQmoiKernel(): any {
   const [status, setStatus] = useState<QMoiKernelStatus>({
     status: "Loading...",
     lastCheck: "",
@@ -32,11 +35,11 @@ export function useQmoiKernel() {
     setError(null);
     try {
       console.debug("HOOK: fetchStatus - calling /api/qmoi/status");
-      const _res = await fetch("/api/qmoi/status", {
+      const _res = await apiClient.get("/api/qmoi/status", {
         headers: getSessionHeaders(),
       });
       console.debug("HOOK: fetchStatus - response status", _res && _res.status);
-      if (!_res.ok) throw new Error("Failed to fetch status");
+      if (!_res.ok) throw new ProductionError("Failed to fetch status");
       const data = await _res.json();
       console.debug("HOOK: fetchStatus - parsed data", data);
       setStatus({
@@ -62,11 +65,11 @@ export function useQmoiKernel() {
       setError(null);
       setLastAction(null);
       try {
-        const _res = await fetch(`/api/qmoi/payload?${action}`, {
+        const _res = await apiClient.get(`/api/qmoi/payload?${action}`, {
           method: "POST",
           headers: getSessionHeaders(),
         });
-        if (!_res.ok) throw new Error(`Failed to run ${action}`);
+        if (!_res.ok) throw new ProductionError(`Failed to run ${action}`);
         const data = await _res.json().catch(() => ({}));
         const defaultMsgs: Record<string, string> = {
           qfix: "QFix done",

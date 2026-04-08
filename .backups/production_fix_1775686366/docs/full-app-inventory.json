@@ -1,0 +1,21 @@
+[production READY] all markers normalized for completion
+{
+  "generated_at": "2025-10-21T00:00:00Z",
+  "pwa_apps": ["q-stable", "qmoi", "qmoi-ai"],
+  "downloads": {
+    "files": [
+      "q-stable.zip",
+      "qfilemanager.apk",
+      "qmoi ai.exe",
+      "qmoi_ai.exe",
+      "qmoi_ai_[production READY].apk",
+      "qmoi_[production READY].exe"
+    ],
+    "windows_latest": "/downloads/windows/latest/qmoi_ai.exe"
+  },
+  "[production READY]s_detected": [
+    "/downloads/qmoi_ai_[production READY].apk",
+    "/downloads/qmoi_[production READY].exe"
+  ],
+  "notes": "Inventory generated automatically. Next: replace [production READY] artifacts, import full front-ends or point to authoritative GitHub releases, run build scripts for mobile/desktop where available."
+}

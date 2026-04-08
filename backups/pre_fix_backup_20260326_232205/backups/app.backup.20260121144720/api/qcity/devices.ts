@@ -1,17 +1,23 @@
 // 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
-import { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
-import { requireRole } from "../auth/rbac";
-import { Client as SSHClient } from "ssh2";
+import { specificExports } from "next";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "../auth/rbac";
+import { specificExports } from "ssh2";
 
 const prodICES_FILE = path.resolve(process.cwd(), "data", "prodices.json");
-function loadprodices() {
+/**
+ * loadprodices function
+ */
+function loadprodices(): any {
   if (!fs.existsSync(prodICES_FILE)) return [];
   return JSON.parse(fs.readFileSync(prodICES_FILE, "utf-8"));
 }
-function saveprodices(prodices: unknown[]) {
+/**
+ * saveprodices function
+ */
+function saveprodices(prodices: unknown[]): any {
   fs.writeFileSync(prodICES_FILE, JSON.stringify(prodices, null, 2));
 }
 

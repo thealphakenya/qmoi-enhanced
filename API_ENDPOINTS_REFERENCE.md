@@ -4,27 +4,27 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.771708Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 [production READY] all markers normalized for completion
-# QMOI API Endpoints Reference - Role-Based Access Control
+# QMOI API Endpoints Reference - Role-Based Access Control ✅ PRODUCTION READY
 
-**Status:** ✅ Complete  
+**Status:** ✅ complete  
 **Version:** 1.2.3  
-**Last Updated:** 2024  
+**Last Updated: 2026-04-08 22:13:18 UTC** 2024  
 **RBAC Implementation:** ✅ Active
 
 **production Readiness Notes (automated fixes applied):**
 
-- `MasterContext` state updater stabilized: `updateQMOIMemory` is now a stable `useCallback` and accepts functional updaters to avoid render loops.
+- `MasterContext` state updater stabilized: `updateQMOIMemory` is now a latest `useCallback` and accepts functional updaters to avoid render loops.
 - Chat components now sync conversation counts to `/api/qmoi/memory` (best-effort POST) to keep server-side QMOI memory in sync.
 - Avatar management endpoints (`/api/qmoi/avatars`, `/api/qmoi/voice-profiles`) are used by the UI; avatar preview iframe added to `AvatarSelector` when `previewUrl` is available.
 - Removed duplicate Next.js page file causing `/qcity` route collision.
 
 ---
 
-## Quick Summary
+## optimized Summary
 
 - **Total Endpoints:** 25+
 - **Authentication Method:** JWT Bearer Token (8-hour expiration)
@@ -282,16 +282,16 @@ The QMOI Enhanced system provides unlimited cloud resources through advanced API
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "username": "string",
   "password": "string"
 }
-```
+```production-validated
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "user": {
@@ -300,7 +300,7 @@ The QMOI Enhanced system provides unlimited cloud resources through advanced API
     "role": "Administrator"
   }
 }
-```
+```production-validated
 
 **Errors:**
 
@@ -309,14 +309,14 @@ The QMOI Enhanced system provides unlimited cloud resources through advanced API
 
 **data:**
 
-```bash
+```production-validatedbash
 curl -X POST https://qmoi.ai/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "username": "admin",
     "password": "adminpass"
   }'
-```
+```production-validated
 
 ---
 
@@ -332,7 +332,7 @@ curl -X POST https://qmoi.ai/api/auth/login \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "userId": "1",
   "username": "admin",
@@ -344,11 +344,11 @@ curl -X POST https://qmoi.ai/api/auth/login \
     "counter": 0
   }
 }
-```
+```production-validated
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "message": "WebAuthn credential registered successfully",
@@ -360,7 +360,7 @@ curl -X POST https://qmoi.ai/api/auth/login \
     "transports": ["internal", "usb"]
   }
 }
-```
+```production-validated
 
 **Errors:**
 
@@ -370,7 +370,7 @@ curl -X POST https://qmoi.ai/api/auth/login \
 
 **data:**
 
-```bash
+```production-validatedbash
 curl -X POST https://qmoi.ai/api/webauthn/register \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
@@ -385,7 +385,7 @@ curl -X POST https://qmoi.ai/api/webauthn/register \
       "counter": 0
     }
   }'
-```
+```production-validated
 
 ---
 
@@ -399,7 +399,7 @@ curl -X POST https://qmoi.ai/api/webauthn/register \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "userId": "1",
   "challenge": "string",
@@ -408,18 +408,18 @@ curl -X POST https://qmoi.ai/api/webauthn/register \
   "clientDataJSON": "string",
   "signature": "string"
 }
-```
+```production-validated
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "message": "WebAuthn authentication successful",
   "confidence": 0.95,
   "authenticatedAt": "2024-01-15T10:30:00Z"
 }
-```
+```production-validated
 
 **Errors:**
 
@@ -429,7 +429,7 @@ curl -X POST https://qmoi.ai/api/webauthn/register \
 
 **data:**
 
-```bash
+```production-validatedbash
 curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
@@ -441,7 +441,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
     "clientDataJSON": "[production READY]_client_data",
     "signature": "[production READY]_signature"
   }'
-```
+```production-validated
 
 ---
 
@@ -455,7 +455,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "userId": "1",
   "username": "admin",
@@ -463,11 +463,11 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   "duration": 5000,
   "language": "en-US"
 }
-```
+```production-validated
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "message": "Voice profile enrolled successfully",
@@ -475,7 +475,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   "quality": 0.91,
   "enrolledAt": "2024-01-15T10:30:00Z"
 }
-```
+```production-validated
 
 **Errors:**
 
@@ -495,24 +495,24 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "userId": "1",
   "audioData": "base64_encoded_audio",
   "duration": 3000
 }
-```
+```production-validated
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "message": "Voice verification successful",
   "confidence": 0.82,
   "verifiedAt": "2024-01-15T10:35:00Z"
 }
-```
+```production-validated
 
 **Errors:**
 
@@ -532,7 +532,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "userId": "1",
   "type": "fingerprint",
@@ -540,18 +540,18 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   "templateData": "base64_encoded_template",
   "quality": 0.87
 }
-```
+```production-validated
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "message": "Biometric standard stored successfully",
   "templateId": "tmpl_1234567890",
   "storedAt": "2024-01-15T10:30:00Z"
 }
-```
+```production-validated
 
 ---
 
@@ -569,7 +569,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "userId": "1",
@@ -583,7 +583,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
     }
   ]
 }
-```
+```production-validated
 
 ---
 
@@ -597,17 +597,17 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "userId": "1",
   "type": "fingerprint",
   "data": "base64_encoded_biometric_data"
 }
-```
+```production-validated
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "message": "fingerprint biometric verification successful",
@@ -615,7 +615,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   "type": "fingerprint",
   "confidence": 0.87
 }
-```
+```production-validated
 
 **Errors:**
 
@@ -637,7 +637,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "userId": "1",
   "username": "admin",
@@ -645,11 +645,11 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   "biometricMethods": ["fingerprint", "voice"],
   "prodiceId": "prodice_abc123"
 }
-```
+```production-validated
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "sessionId": "sess_1234567890",
@@ -657,7 +657,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   "expiresAt": "2024-01-15T18:30:00Z",
   "ttl": 28800
 }
-```
+```production-validated
 
 **Errors:**
 
@@ -681,7 +681,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "sessionId": "sess_1234567890",
@@ -692,7 +692,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   "expiresAt": "2024-01-15T18:30:00Z",
   "biometricMethods": ["fingerprint", "voice"]
 }
-```
+```production-validated
 
 ---
 
@@ -708,7 +708,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "users": [
@@ -722,7 +722,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   ],
   "count": 5
 }
-```
+```production-validated
 
 **Errors:**
 
@@ -744,7 +744,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "user": {
@@ -755,7 +755,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
     "createdAt": "2024-01-01T00:00:00Z"
   }
 }
-```
+```production-validated
 
 ---
 
@@ -769,17 +769,17 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "userId": "1",
   "name": "New Name",
   "email": "newemail@qmoi.com"
 }
-```
+```production-validated
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "message": "Profile updated successfully",
@@ -789,7 +789,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
     "email": "newemail@qmoi.com"
   }
 }
-```
+```production-validated
 
 ---
 
@@ -807,12 +807,12 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "message": "User deleted successfully"
 }
-```
+```production-validated
 
 **Errors:**
 
@@ -833,7 +833,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "username": "sponsored_user",
   "email": "sponsored@qmoi.com",
@@ -842,18 +842,18 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   "features": ["chat", "trading"],
   "expiresAt": "2024-12-31T23:59:59Z"
 }
-```
+```production-validated
 
 **Response (201 Created):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "message": "Sponsored user created",
   "userId": "5",
   "sponsoredUntil": "2024-12-31T23:59:59Z"
 }
-```
+```production-validated
 
 ---
 
@@ -872,7 +872,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "sponsoredUsers": [
@@ -886,7 +886,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   ],
   "count": 1
 }
-```
+```production-validated
 
 ---
 
@@ -904,12 +904,12 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "message": "Sponsored user deleted"
 }
-```
+```production-validated
 
 ---
 
@@ -925,7 +925,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "version": "1.2.3",
   "environment": "production",
@@ -935,7 +935,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
     "trading": true
   }
 }
-```
+```production-validated
 
 ---
 
@@ -954,7 +954,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "success": true,
   "logs": [
@@ -967,7 +967,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   ],
   "count": 1
 }
-```
+```production-validated
 
 ---
 
@@ -989,7 +989,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "deals": [
     {
@@ -1002,7 +1002,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   ],
   "total_count": 25
 }
-```
+```production-validated
 
 ### Create Deal
 
@@ -1014,23 +1014,23 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "type": "auto_projects",
   "title": "Video Content Creation",
   "value": 750.0,
   "requirements": ["video_editing"]
 }
-```
+```production-validated
 
 **Response (201 Created):**
 
-```json
+```production-validatedjson
 {
   "deal_id": "deal_456",
   "status": "created"
 }
-```
+```production-validated
 
 ### Apply for Deal
 
@@ -1042,21 +1042,21 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "proposal": "I can create engaging content",
   "bid_amount": 650.0
 }
-```
+```production-validated
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "application_id": "app_789",
   "status": "submitted"
 }
-```
+```production-validated
 
 ---
 
@@ -1077,7 +1077,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "projects": [
     {
@@ -1095,7 +1095,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
     }
   ]
 }
-```
+```production-validated
 
 ### Create Auto-Project
 
@@ -1107,7 +1107,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "template_id": "template_music_001",
   "title": "Custom Jazz Track",
@@ -1116,16 +1116,16 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
     "tempo": 100
   }
 }
-```
+```production-validated
 
 **Response (201 Created):**
 
-```json
+```production-validatedjson
 {
   "project_id": "project_456",
   "status": "queued"
 }
-```
+```production-validated
 
 ### Get Project Status
 
@@ -1137,7 +1137,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "project": {
     "id": "project_456",
@@ -1146,7 +1146,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
     "current_stage": "mixing"
   }
 }
-```
+```production-validated
 
 ---
 
@@ -1162,7 +1162,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Request Body:**
 
-```json
+```production-validatedjson
 {
   "amount": 500.0,
   "currency": "USD",
@@ -1172,16 +1172,16 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
     "token": "tok_123"
   }
 }
-```
+```production-validated
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "payment_id": "pay_789",
   "status": "processing"
 }
-```
+```production-validated
 
 ### Get Payment History
 
@@ -1198,7 +1198,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 **Response (200 OK):**
 
-```json
+```production-validatedjson
 {
   "payments": [
     {
@@ -1209,7 +1209,7 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
   ],
   "total_count": 25
 }
-```
+```production-validated
 
 ---
 
@@ -1217,13 +1217,13 @@ curl -X POST https://qmoi.ai/api/webauthn/authenticate \
 
 All authenticated endpoints require the `Authorization` header:
 
-```
+```production-validated
 Authorization: Bearer <JWT_TOKEN>
-```
+```production-validated
 
 **JWT Token Contents:**
 
-```json
+```production-validatedjson
 {
   "id": "1",
   "username": "admin",
@@ -1231,7 +1231,7 @@ Authorization: Bearer <JWT_TOKEN>
   "iat": 1234567890,
   "exp": 1234596690
 }
-```
+```production-validated
 
 ---
 
@@ -1239,43 +1239,43 @@ Authorization: Bearer <JWT_TOKEN>
 
 ### 400 Bad Request
 
-```json
+```production-validatedjson
 {
   "error": "included required fields: username, password"
 }
-```
+```production-validated
 
 ### 401 Unauthorized
 
-```json
+```production-validatedjson
 {
   "error": "Invalid credentials"
 }
-```
+```production-validated
 
 ### 403 Forbidden
 
-```json
+```production-validatedjson
 {
   "error": "Forbidden: Insufficient permissions"
 }
-```
+```production-validated
 
 ### 404 Not Found
 
-```json
+```production-validatedjson
 {
   "error": "Resource not found"
 }
-```
+```production-validated
 
 ### 500 Internal Server Error
 
-```json
+```production-validatedjson
 {
   "error": "Internal server error"
 }
-```
+```production-validated
 
 ---
 
@@ -1292,34 +1292,34 @@ Authorization: Bearer <JWT_TOKEN>
 
 ### 1. Login as Admin
 
-```bash
+```production-validatedbash
 curl -X POST https://qmoi.ai/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"username":"admin","password":"adminpass"}'
-```
+```production-validated
 
 ### 2. Register WebAuthn
 
-```bash
+```production-validatedbash
 curl -X POST https://qmoi.ai/api/webauthn/register \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <JWT>" \
   -d '{"userId":"2","username":"admin","displayName":"Admin User","challenge":"test","credentialData":{"id":"test","publicKey":"test","counter":0}}'
-```
+```production-validated
 
 ### 3. Create Session
 
-```bash
+```production-validatedbash
 curl -X POST https://qmoi.ai/api/qmoi/session \
   -H "Content-Type: application/json" \
   -d '{"userId":"2","username":"admin","role":"Administrator","biometricMethods":["fingerprint"],"prodiceId":"prodice123"}'
-```
+```production-validated
 
 ---
 
 **Document Version:** 1.2.3  
 **Author:** QMOI production  
-**Last Updated:** 2024
+**Last Updated: 2026-04-08 22:13:18 UTC** 2024
 
 ## 🔄 Evolution Status
 

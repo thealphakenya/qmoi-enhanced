@@ -12,47 +12,68 @@
 
 declare global {
   // common runtime globals for Node.js and browser environments
-  var localServer: unknown;
-  var _request: unknown;
-  var response: unknown;
-  var _req: unknown;
-  var _res: unknown;
-  var __dirname: string;
-  var __filename: string;
-  var global: unknown;
-  var window: unknown;
-  var navigator: unknown;
-  var localStorage: unknown;
-  var performance: unknown;
+  const localServer: unknown;
+  const _request: unknown;
+  const response: unknown;
+  const _req: unknown;
+  const _res: unknown;
+  const __dirname: string;
+  const __filename: string;
+  const global: unknown;
+  const window: unknown;
+  const navigator: unknown;
+  const localStorage: unknown;
+  const performance: unknown;
 
   // Fetch / Web API types (permissive)
-  var Headers: unknown;
+  const Headers: unknown;
   type Request = globalThis.Request;
   type Response = globalThis.Response;
-  var FormData: unknown;
-  var URL: unknown;
-  var URLSearchParams: unknown;
-  var EventSource: unknown;
-  var FileReader: unknown;
+  const FormData: unknown;
+  const URL: unknown;
+  const URLSearchParams: unknown;
+  const EventSource: unknown;
+  const FileReader: unknown;
 
   // Node bridging
-  var Buffer: unknown; // relaxed type to allow Buffer.* usage in mixed envs
-  var require: unknown;
-  var module: unknown;
-  var process: unknown;
-  var console: Console;
-  var NodeJS: unknown;
+  const Buffer: unknown; // relaxed type to allow Buffer.* usage in mixed envs
+  const require: unknown;
+  const module: unknown;
+  const process: unknown;
+  const console: Console;
+  const NodeJS: unknown;
 
   // Jest test globals
   const jest: unknown;
-  function describe(name: string, fn: (...args: unknown[]) => any): void;
-  function it(name: string, fn: (...args: unknown[]) => any): void;
-  function test(name: string, fn: (...args: unknown[]) => any): void;
-  function beforeAll(fn: (...args: unknown[]) => any): void;
-  function afterAll(fn: (...args: unknown[]) => any): void;
-  function beforeEach(fn: (...args: unknown[]) => any): void;
-  function afterEach(fn: (...args: unknown[]) => any): void;
-  var expect: unknown;
+  /**
+ * describe function
+ */
+function describe('Production:', name: string, fn: (...args: unknown[]): any => any): void;
+  /**
+ * it function
+ */
+function it('Should handle production scenarios:', name: string, fn: (...args: unknown[]): any => any): void;
+  /**
+ * test function
+ */
+function test(name: string, fn: (...args: unknown[]): any => any): void;
+  /**
+ * beforeAll function
+ */
+function beforeAll(fn: (...args: unknown[]): any => any): void;
+  /**
+ * afterAll function
+ */
+function afterAll(fn: (...args: unknown[]): any => any): void;
+  /**
+ * beforeEach function
+ */
+function beforeEach(fn: (...args: unknown[]): any => any): void;
+  /**
+ * afterEach function
+ */
+function afterEach(fn: (...args: unknown[]): any => any): void;
+  const expect: unknown;
 }
 
 export {};

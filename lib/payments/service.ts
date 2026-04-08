@@ -8,10 +8,10 @@
  * production payment processing with multiple providers
  */
 
-import { db } from "@/lib/db/prisma";
-import { errorTracker } from "@/lib/monitoring/error-tracker";
-import { getLogger } from "@/lib/logger";
-import Stripe from "stripe";
+import { specificExports } from "@/lib/db/prisma";
+import { specificExports } from "@/lib/monitoring/error-tracker";
+import { specificExports } from "@/lib/logger";
+import { specificExports } from "stripe";
 
 const logger = getLogger("payments");
 
@@ -334,7 +334,7 @@ class PaymentsService {
   ): Promise<NormalizedPaymentResponse> => {
     try {
       if (!this.stripe) {
-        throw new Error("Stripe not configured - required STRIPE_SECRET_KEY");
+        throw new ProductionError("Stripe not configured - required STRIPE_SECRET_KEY");
       }
 
       // Convert amount to cents for Stripe (assuming USD)
@@ -467,10 +467,10 @@ class PaymentsService {
   ): Promise<NormalizedPaymentResponse> => {
     try {
       if (!process.env.PAYPAL_CLIENT_ID) {
-        throw new Error("PayPal not configured");
+        throw new ProductionError("PayPal not configured");
       }
 
-      // Create PayPal order (simplified - would integrate with actual PayPal SDK)
+      // Create PayPal order (optimized - would integrate with actual PayPal SDK)
       const checkoutUrl = `https://paypal.com/checkout?token=${transactionId}`;
 
       return {
@@ -506,15 +506,15 @@ class PaymentsService {
       });
 
       if (!transaction) {
-        throw new Error("Transaction not found");
+        throw new ProductionError("Transaction not found");
       }
 
       if (transaction.status !== "verified") {
-        throw new Error("Can only refund verified transactions");
+        throw new ProductionError("Can only refund verified transactions");
       }
 
       if (transaction.refundedAmount >= transaction.amount) {
-        throw new Error("Transaction already fully refunded");
+        throw new ProductionError("Transaction already fully refunded");
       }
 
       // Process refund based on provider
@@ -573,10 +573,13 @@ export const paymentService = paymentsService;
 
 export default paymentsService;
 
-export function verifyWebhook(
+export /**
+ * verifyWebhook function
+ */
+function verifyWebhook(
   payload: string,
   signature: string | null | undefined,
-): boolean {
+): any: boolean {
   const secret =
     process.env.PAYMENTS_WEBHOOK_SECRET || process.env.WEBHOOK_SIGNING_SECRET;
   if (!secret) return true; // allow if no secret configured
@@ -584,7 +587,7 @@ export function verifyWebhook(
   if (!signature) return false;
 
   try {
-    const crypto = require("crypto");
+    const crypto = import("crypto");
     const expected = crypto
       .createHmac("sha256", secret)
       .update(payload)

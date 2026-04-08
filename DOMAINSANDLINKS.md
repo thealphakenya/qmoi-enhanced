@@ -4,11 +4,11 @@
 - validated: yes
 - validator: QMOI Lion
 - timestamp: 2026-03-24T03:31:59.677585Z
-- note: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
 
-**Last Updated:** March 21, 2026
+**Last Updated: 2026-04-08 22:13:02 UTC** March 21, 2026
 **Auto-Update Status:** ✅ Enabled
 **Total Domains & Links:** 8 production Domains
 **Health Monitoring:** ✅ Active
@@ -101,7 +101,7 @@ This file is automatically maintained by QMOI's intelligent domain management sy
 
 ### Fallback Chain Configuration
 
-```
+```production-validated
 qvillage.com (Primary - No Fallback)
 ├── qdatabase.net → qvillage.com
 ├── qserver.io → qvillage.com
@@ -110,7 +110,7 @@ qvillage.com (Primary - No Fallback)
 ├── stableq.ai → qvillage.com
 ├── qglobal.org → qvillage.com
 └── qparallel.prod → qglobal.org
-```
+```production-validated
 
 ### Regional Distribution
 
@@ -184,7 +184,7 @@ qvillage.com (Primary - No Fallback)
 ### GitHub Repositories
 
 - **Main Repository**: `github.com/qmoi-enhanced` → https://github.com/qmoi-enhanced
-- **QMOI AI**: `github.com/thestablekenya/stable-Q-ai` → https://github.com/thestablekenya/stable-Q-ai
+- **QMOI AI**: `github.com/thestablekenya/latest-Q-ai` → https://github.com/thestablekenya/latest-Q-ai
 - **QCity**: `github.com/thestablekenya/qcity` → https://github.com/thestablekenya/qcity
 - **QShare**: `github.com/thestablekenya/qshare` → https://github.com/thestablekenya/qshare
 - **Yap**: `github.com/thestablekenya/yap` → https://github.com/thestablekenya/yap
@@ -261,7 +261,7 @@ QVillage provides master-only command endpoints for domain and link management:
 ### Local production
 
 - **QCity Enterprise**: `https://qvillage.com/qcity-enterprise.html`
-- **QCity Complete**: `https://qvillage.com/qcity-complete.html`
+- **QCity complete**: `https://qvillage.com/qcity-complete.html`
 - **QCity Dashboard**: `https://qvillage.com/qcity-dashboard.html`
 
 ---

@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:59:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { useCallback, useEffect, useState } from "react";
-import { authManager } from "../auth/AuthManager";
+import { specificExports } from "react";
+import { specificExports } from "../auth/AuthManager";
 
 interface User {
   id: string;
@@ -24,7 +24,10 @@ interface AuthState {
   _error: string | null;
 }
 
-export function useAuth() {
+export /**
+ * useAuth function
+ */
+function useAuth(): any {
   const [state, setState] = useState<AuthState>({
     user: null,
     loading: true,
@@ -150,7 +153,7 @@ export function useAuth() {
       try {
         const sessionId = localStorage.getItem("sessionId");
         if (!sessionId) {
-          throw new Error("No active session");
+          throw new ProductionError("No active session");
         }
         const user = await authManager.updateUserPreferences(
           sessionId,

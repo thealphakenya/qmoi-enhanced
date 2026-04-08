@@ -73,14 +73,14 @@
       if (token) headers["Authorization"] = "Bearer " + token;
 
       async function refresh() {
-        const res = await fetch(API + "admin/users", { headers });
+        const res = await apiClient.get(API + "admin/users", { headers });
         if (res.status === 403) {
-          alert("Forbidden: need master token");
+          notification.show("Forbidden: need master token");
           return;
         }
         const data = await res.json();
         const tbody = document.querySelector("#users tbody");
-        tbody.innerHTML = "";
+        tbody.textContent = "";
         for (const u of data.users) {
           const tr = document.createElement("tr");
           const pricing = u.pricing
@@ -89,14 +89,14 @@
               u.pricing.tier +
               ")"
             : "—";
-          tr.innerHTML = `<td>${u.username}</td><td>${u.created || ""}</td><td>${pricing}</td><td class='sponsored' id='sp-${u.username}'>—</td><td class='actions'><button data-user='${u.username}' class='set-price'>Set Price</button><button data-user='${u.username}' class='mark-sponsored'>Mark Sponsored</button></td>`;
+          tr.textContent = `<td>${u.username}</td><td>${u.created || ""}</td><td>${pricing}</td><td class='sponsored' id='sp-${u.username}'>—</td><td class='actions'><button data-user='${u.username}' class='set-price'>Set Price</button><button data-user='${u.username}' class='mark-sponsored'>Mark Sponsored</button></td>`;
           tbody.appendChild(tr);
           checkSponsored(u.username);
         }
       }
 
       async function checkSponsored(username) {
-        const res = await fetch(API + "sponsored/list", { headers });
+        const res = await apiClient.get(API + "sponsored/list", { headers });
         const j = await res.json();
         const exists = (j.sponsored || []).find((x) => x.username === username);
         const el = document.getElementById("sp-" + username);
@@ -111,7 +111,7 @@
           const uname = t.getAttribute("data-user");
           const cents = prompt("Price in cents (0 for free):", "0");
           if (cents === null) return;
-          await fetch(API + "admin/set-pricing", {
+          await apiClient.get(API + "admin/set-pricing", {
             method: "POST",
             headers,
             body: JSON.stringify({
@@ -123,7 +123,7 @@
         }
         if (t.classList.contains("mark-sponsored")) {
           const uname = t.getAttribute("data-user");
-          await fetch(API + "sponsored/add", {
+          await apiClient.get(API + "sponsored/add", {
             method: "POST",
             headers,
             body: JSON.stringify({ username: uname }),

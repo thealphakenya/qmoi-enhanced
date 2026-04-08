@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q Global SIM - Enhanced Virtual SIM Card Service</title>
+    <meta name="description" content="Q Global SIM - Revolutionary virtual SIM card with global voice calls, video calls, file transfers, and messaging across 195+ countries">
+    <meta name="keywords" content="virtual SIM, global calls, international calling, VoIP, video calls, file transfer, global messaging">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 60px 0;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .countries {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .countries h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .country-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .country-code {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .country-name {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .pricing {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #ff6b6b;
+            transform: scale(1.05);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .plan-features {
+            list-style: none;
+            text-align: left;
+        }
+
+        .plan-features li {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .plan-features li:before {
+            content: "✓";
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .country-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">🌐 Q Global SIM</h1>
+            <p class="tagline">Revolutionary Virtual SIM Card Service - Global Connectivity Redefined</p>
+            <a href="#register" class="cta-button">Get Started Free</a>
+            <a href="#features" class="cta-button">Explore Features</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="features" class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📞</div>
+                <h3 class="feature-title">HD Global Calls</h3>
+                <p class="feature-description">Crystal clear voice calls with noise cancellation. Make and receive calls to any number worldwide with local area codes.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📹</div>
+                <h3 class="feature-title">Video Calling</h3>
+                <p class="feature-description">High-definition video calls with AR filters, screen sharing, and group calls up to 50 participants.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📤</div>
+                <div class="feature-title">Instant File Transfer</div>
+                <p class="feature-description">Send files up to 2GB instantly with end-to-end encryption and automatic cloud backup.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3 class="feature-title">Smart Messaging</h3>
+                <p class="feature-description">SMS/MMS with rich media, group chats, and real-time translation in 100+ languages.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3 class="feature-title">AI Assistant</h3>
+                <p class="feature-description">AI-powered call answering, smart scheduling, and intelligent spam protection.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Military-Grade Security</h3>
+                <p class="feature-description">End-to-end encryption, zero-knowledge architecture, and advanced security features.</p>
+            </div>
+        </section>
+
+        <section class="countries">
+            <h2>🌍 Global Coverage - 195+ Countries</h2>
+            <p>Real telephone numbers with local area codes in every country</p>
+
+            <div class="country-grid">
+                <div class="country-item">
+                    <div class="country-code">+254 (Kenya)</div>
+                    <div class="country-name">Safaricom, Airtel</div>
+                </div>
+                <div class="country-item">
+                    <div class="country-code">+1 (USA/Canada)</div>
+                    <div class="country-name">Verizon, AT&T, Rogers</div>
+                </div>
+                <div class="country-item">
+                    <div class="country-code">+44 (UK)</div>
+                    <div class="country-name">EE, O2, Vodafone</div>
+                </div>
+                <div class="country-item">
+                    <div class="country-code">+49 (Germany)</div>
+                    <div class="country-name">Telekom, Vodafone</div>
+                </div>
+                <div class="country-item">
+                    <div class="country-code">+91 (India)</div>
+                    <div class="country-name">Airtel, Vodafone</div>
+                </div>
+                <div class="country-item">
+                    <div class="country-code">+86 (China)</div>
+                    <div class="country-name">China Mobile, Unicom</div>
+                </div>
+                <div class="country-item">
+                    <div class="country-code">+81 (Japan)</div>
+                    <div class="country-name">NTT Docomo, SoftBank</div>
+                </div>
+                <div class="country-item">
+                    <div class="country-code">+61 (Australia)</div>
+                    <div class="country-name">Telstra, Optus</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <h2>💰 Simple, Transparent Pricing</h2>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-name">Basic</div>
+                    <div class="plan-price">$9.99/month</div>
+                    <ul class="plan-features">
+                        <li>100 minutes voice calls</li>
+                        <li>500 SMS messages</li>
+                        <li>5GB data transfer</li>
+                        <li>Basic AI features</li>
+                        <li>Email support</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="plan-name">Pro</div>
+                    <div class="plan-price">$19.99/month</div>
+                    <ul class="plan-features">
+                        <li>500 minutes voice calls</li>
+                        <li>2000 SMS messages</li>
+                        <li>20GB data transfer</li>
+                        <li>Advanced AI features</li>
+                        <li>Priority support</li>
+                        <li>Video calling included</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="plan-name">Enterprise</div>
+                    <div class="plan-price">$49.99/month</div>
+                    <ul class="plan-features">
+                        <li>Unlimited voice calls</li>
+                        <li>Unlimited SMS</li>
+                        <li>100GB data transfer</li>
+                        <li>Premium AI features</li>
+                        <li>24/7 dedicated support</li>
+                        <li>Custom integrations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="register" style="text-align: center; margin: 60px 0;">
+            <h2 style="color: white; margin-bottom: 30px;">🚀 Ready to Go Global?</h2>
+            <p style="color: white; margin-bottom: 30px; font-size: 1.1rem;">Join thousands of users who trust Q Global SIM for their international communication needs</p>
+            <a href="mailto:support@qglobalsim.qmoi.ai" class="cta-button">Register Now</a>
+            <a href="tel:+1234567890" class="cta-button">Call Support</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Q Global SIM - Powered by QMOI. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">📘 Facebook</a>
+                <a href="#">🐦 Twitter</a>
+                <a href="#">📷 Instagram</a>
+                <a href="#">💼 LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple PWA registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

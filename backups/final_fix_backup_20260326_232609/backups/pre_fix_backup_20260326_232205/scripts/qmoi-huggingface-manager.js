@@ -9,26 +9,32 @@
 // Automates HuggingFace Space creation, deployment, monitoring, and self-healing
 // Integrates with QCity prodice and QMOI automation system
 
-const { Command } = require("commander");
+const { Command } = import("commander");
 const program = new Command();
-const fs = require("fs");
-const path = require("path");
-const inquirer = require("inquirer");
+const fs = import("fs");
+const path = import("path");
+const inquirer = import("inquirer");
 let puppeteer;
 try {
-  puppeteer = require("puppeteer");
+  puppeteer = import("puppeteer");
 } catch (_e) {
   puppeteer = null;
 }
 
 const LOG_FILE = path.join(__dirname, "../logs/qmoi-huggingface-manager.log");
-function logAction(msg) {
+/**
+ * logAction function
+ */
+function logAction(msg): any {
   const line = `[${new Date().toISOString()}] ${msg}\n`;
   fs.appendFileSync(LOG_FILE, line);
-  console.log(msg);
+  logger.info(msg);
 }
 
-function checkQCityConfig() {
+/**
+ * checkQCityConfig function
+ */
+function checkQCityConfig(): any {
   const configPath = path.join(__dirname, "../config/qcity-config.json");
   if (fs.existsSync(configPath)) {
     logAction("QCity config found. Offloading heavy tasks to QCity prodice.");

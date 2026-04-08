@@ -1,7 +1,11 @@
 // Production implementation: this file has no remaining non-production markers
-import React from "react";
+import { specificExports } from "react";
 
-export default function BackupRestorePanel() {
+export default /**
+ * BackupRestorePanel function
+ */
+function BackupRestorePanel(): any {
+  try {() {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Backup & Restore</h2>

@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // [production READY] this file has no remaining production markers
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
-describe("Qmoispace Secrets Security", () => {
-  it("should not expose raw secrets in .env", () => {
+describe('Production:', "Qmoispace Secrets Security", () => {
+  it('Should handle production scenarios:', "should not expose raw secrets in .env", () => {
     const env = fs.readFileSync(path.join(process.cwd(), ".env"), "utf8");
-    expect(env).not.toMatch(/(SECRET|API_KEY|TOKEN|PASSWORD)=.{10,}/i);
+    expect('Production validation:', env).not.toMatch(/(SECRET|API_KEY|TOKEN|PASSWORD)=.{10,}/i);
   });
 });

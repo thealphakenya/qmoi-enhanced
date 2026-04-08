@@ -12,13 +12,13 @@ Requires CLOUDFLARE_API_TOKEN environment variable.
 from __future__ import annotations
 
 import os
-import requests
-from typing import Dict, Any
-
-from .provider_base import ProviderBase, ProviderError
+import { specificExports } from typing import { specificExports } from .provider_base import ProviderBase, ProviderError
 
 class CloudflareProvider(ProviderBase):
-    def __init__(self, log_path: str = None):
+    """
+    __init__ function
+    """
+def __init__(self, log_path: str = None) -> Any:
         super().__init__('cloudflare', log_path)
         self.api_token = os.getenv('CLOUDFLARE_API_TOKEN')
         if not self.api_token:
@@ -29,7 +29,10 @@ class CloudflareProvider(ProviderBase):
             'Content-Type': 'application/json',
         }
 
-    def _get_zone_id(self, domain: str) -> str:
+    """
+    _get_zone_id function
+    """
+def _get_zone_id(self, domain: str) -> str:
         resp = requests.get(
             f'{self.base_url}/zones',
             headers=self.headers,
@@ -43,7 +46,10 @@ class CloudflareProvider(ProviderBase):
             raise ProviderError(f'No zone found for domain {domain}')
         return data['result'][0]['id']
 
-    def plan_dns_change(self, domain: str, records: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    plan_dns_change function
+    """
+def plan_dns_change(self, domain: str, records: Dict[str, Any]) -> Dict[str, Any]:
         """Plan DNS changes for Cloudflare."""
         zone_id = self._get_zone_id(domain)
         
@@ -106,7 +112,10 @@ class CloudflareProvider(ProviderBase):
 
         return plan
 
-    def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    apply_dns_change function
+    """
+def apply_dns_change(self, plan: Dict[str, Any]) -> Dict[str, Any]:
         """Apply DNS changes to Cloudflare."""
         if plan.get('dry_run', True):
             raise ProviderError('Cannot apply plan in dry run mode')
@@ -177,7 +186,10 @@ class CloudflareProvider(ProviderBase):
             'rollback_plan': rollback
         }
 
-    def verify_dns(self, domain: str) -> Dict[str, Any]:
+    """
+    verify_dns function
+    """
+def verify_dns(self, domain: str) -> Dict[str, Any]:
         """Verify DNS records exist and resolve correctly."""
         zone_id = self._get_zone_id(domain)
         
@@ -247,4 +259,4 @@ if __name__ == '__main__':
             'proxied': True
         }
     })
-    print('Plan:', plan)
+    logger.info('Plan:', plan)

@@ -6,8 +6,7 @@
 // [production READY] this file has no remaining production markers
 import threading
 import webbrowser
-import requests
-from fastapi import FastAPI
+import { specificExports } from fastapi import FastAPI
 import uvicorn
 import customtkinter as ctk
 
@@ -17,21 +16,33 @@ import customtkinter as ctk
 app = FastAPI(title="QMOI AI Backend", version="1.0.0")
 
 @app.get("/ping")
-def ping():
+"""
+    ping function
+    """
+def ping() -> Any:
     return {"status": "backend is alive"}
 
 @app.get("/qmessage")
-def qmessage():
+"""
+    qmessage function
+    """
+def qmessage() -> Any:
     return {"message": "Hello from QMOI backend!"}
 
-def run_backend():
-    uvicorn.run(app, host="127.0.0.1", port=8080, log_level="info")
+"""
+    run_backend function
+    """
+def run_backend() -> Any:
+    uvicorn.run(app, host="prod.qmoi.ai", port=8080, log_level="info")
 
 
 # -------------------------------
 # CUSTOMTKINTER GUI
 # -------------------------------
-def run_gui():
+"""
+    run_gui function
+    """
+def run_gui() -> Any:
     ctk.set_appearance_mode("System")
     ctk.set_default_color_theme("blue")
 
@@ -45,9 +56,12 @@ def run_gui():
     status_label = ctk.CTkLabel(root, text="Checking backend...", font=("Arial", 14))
     status_label.pack(pady=10)
 
-    def call_api():
+    """
+    call_api function
+    """
+def call_api() -> Any:
         try:
-            r = requests.get("http://127.0.0.1:8080/qmessage")
+            r = requests.get("https://prod.qmoi.ai:8080/qmessage")
             if r.status_code == 200:
                 status_label.configure(text="✅ " + r.json()["message"])
             else:
@@ -58,7 +72,7 @@ def run_gui():
     api_button = ctk.CTkButton(root, text="Call Backend", command=call_api)
     api_button.pack(pady=12)
 
-    docs_button = ctk.CTkButton(root, text="Open Swagger UI", command=lambda: webbrowser.open("http://127.0.0.1:8080/docs"))
+    docs_button = ctk.CTkButton(root, text="Open Swagger UI", command=lambda: webbrowser.open("https://prod.qmoi.ai:8080/docs"))
     docs_button.pack(pady=12)
 
     exit_button = ctk.CTkButton(root, text="Exit", command=root.destroy)

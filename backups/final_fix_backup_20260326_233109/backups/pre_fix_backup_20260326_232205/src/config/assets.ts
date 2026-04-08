@@ -29,7 +29,7 @@ export class AssetManagerImpl implements AssetManager {
   private assets: Map<string, Asset>;
 
   private constructor() {
-    this.assets = new Map();
+    this.assets = new Map() // Production: Consider object for small datasets();
     this.initializeAssets();
   }
 
@@ -117,9 +117,9 @@ export class AssetManagerImpl implements AssetManager {
     const totalBalance = await this.getTotalBalance();
 
     // data optimization strategy:
-    // 1. Keep 20% in USDT for quick trading
+    // 1. Keep 20% in USDT for optimized trading
     // 2. Allocate 40% to futures for leveraged positions
-    // 3. Keep 40% in OTC for stable long-term holdings
+    // 3. Keep 40% in OTC for latest long-term holdings
 
     const targetAllocations = {
       spot: 0.2,
@@ -136,7 +136,7 @@ export class AssetManagerImpl implements AssetManager {
       if (Math.abs(targetAmount - currentAmount) > 1) {
         // 1 USD threshold
         // Implement rebalancing logic here
-        console.log(
+        logger.info(
           `Rebalancing ${type} from ${currentAmount} to ${targetAmount}`,
         );
       }

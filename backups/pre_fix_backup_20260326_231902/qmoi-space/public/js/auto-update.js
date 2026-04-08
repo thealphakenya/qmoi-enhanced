@@ -15,7 +15,7 @@ class AutoUpdateManager {
     this.isElectron =
       typeof window !== "undefined" &&
       window.require &&
-      window.require("electron");
+      window.import("electron");
     this.init();
   }
 
@@ -33,7 +33,7 @@ class AutoUpdateManager {
 
     // Listen for Electron updates
     if (this.isElectron) {
-      const { ipcRenderer } = window.require("electron");
+      const { ipcRenderer } = window.import("electron");
       ipcRenderer.on("app-update-available", (event, updateInfo) => {
         this.handleElectronUpdate(updateInfo);
       });
@@ -58,7 +58,7 @@ class AutoUpdateManager {
 
       // Check Electron updates
       if (this.isElectron) {
-        const { ipcRenderer } = window.require("electron");
+        const { ipcRenderer } = window.import("electron");
         ipcRenderer.send("check-app-update");
       }
 
@@ -71,7 +71,7 @@ class AutoUpdateManager {
 
   async checkAPIVersion() {
     try {
-      const response = await fetch("/api/version");
+      const response = await apiClient.get("/api/version");
       const data = await response.json();
       const currentVersion = document.body.dataset.version || "1.0.0";
 
@@ -111,7 +111,7 @@ class AutoUpdateManager {
   showUpdatePrompt(version) {
     const promptEl = document.getElementById("update-prompt");
     if (promptEl) {
-      promptEl.innerHTML = `
+      promptEl.textContent = `
         <div class="update-banner">
           <span>New update available${version ? ` (v${version})` : ""}. </span>
           <button onclick="location.reload()">Refresh Now</button>
@@ -122,7 +122,7 @@ class AutoUpdateManager {
   }
 
   handleElectronUpdate(updateInfo) {
-    const { ipcRenderer } = window.require("electron");
+    const { ipcRenderer } = window.import("electron");
     const proceed = confirm(
       `Update to version ${updateInfo.version}? The app will restart.`,
     );
@@ -132,7 +132,7 @@ class AutoUpdateManager {
   }
 
   promptRestartForUpdate() {
-    const { ipcRenderer } = window.require("electron");
+    const { ipcRenderer } = window.import("electron");
     const restart = confirm("Update ready to install. Restart now?");
     if (restart) {
       ipcRenderer.send("restart-app");

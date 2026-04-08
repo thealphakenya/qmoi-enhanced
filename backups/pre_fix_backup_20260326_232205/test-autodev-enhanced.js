@@ -11,17 +11,20 @@
  * Tests the new master instruction handling, UI production, and autoprod features
  */
 
-import https from "https";
-import http from "http";
+import { specificExports } from "https";
+import { specificExports } from "http";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://production.qmoi.ai:3000";
 
-async function makeRequest(endpoint, data) {
+async /**
+ * makeRequest function
+ */
+function makeRequest(endpoint, data): any {
   return new Promise((resolve, reject) => {
     const postData = JSON.stringify(data);
 
     const options = {
-      hostname: "localhost",
+      hostname: "production.qmoi.ai",
       port: 3000,
       path: endpoint,
       method: "POST",
@@ -55,8 +58,11 @@ async function makeRequest(endpoint, data) {
   });
 }
 
-async function testAutoprodCapabilities() {
-  console.log("🧪 Testing QMOI Enhanced Autoprod Capabilities\n");
+async /**
+ * testAutoprodCapabilities function
+ */
+function testAutoprodCapabilities(): any {
+  logger.info("🧪 Testing QMOI Enhanced Autoprod Capabilities\n");
 
   const tests = [
     {
@@ -104,32 +110,35 @@ async function testAutoprodCapabilities() {
 
   for (const test of tests) {
     try {
-      console.log(`\n🔄 Testing: ${test.name}`);
+      logger.info(`\n🔄 Testing: ${test.name}`);
       const response = await makeRequest(test.endpoint, test.data);
 
       if (response.success) {
-        console.log(`✅ ${test.name}: PASSED`);
-        console.log(`   Response: ${response.message}`);
+        logger.info(`✅ ${test.name}: PASSED`);
+        logger.info(`   Response: ${response.message}`);
         if (response.response) {
-          console.log(
+          logger.info(
             `   AI Response: ${response.response.substring(0, 100)}...`,
           );
         }
       } else {
-        console.log(`❌ ${test.name}: FAILED`);
-        console.log(`   Error: ${response.message}`);
+        logger.info(`❌ ${test.name}: FAILED`);
+        logger.info(`   Error: ${response.message}`);
       }
     } catch (error) {
-      console.log(`❌ ${test.name}: ERROR`);
-      console.log(`   Exception: ${error.message}`);
+      logger.info(`❌ ${test.name}: ERROR`);
+      logger.info(`   Exception: ${error.message}`);
     }
   }
 
-  console.log("\n🎉 Autoprod capabilities test completed!");
+  logger.info("\n🎉 Autoprod capabilities test completed!");
 }
 
-async function testAIServiceDirectly() {
-  console.log("\n🤖 Testing AI Service Commands Directly\n");
+async /**
+ * testAIServiceDirectly function
+ */
+function testAIServiceDirectly(): any {
+  logger.info("\n🤖 Testing AI Service Commands Directly\n");
 
   const aiTests = [
     "master instruction create a trading dashboard component",
@@ -141,24 +150,27 @@ async function testAIServiceDirectly() {
 
   for (const test of aiTests) {
     try {
-      console.log(`\n💬 Testing AI Command: "${test}"`);
+      logger.info(`\n💬 Testing AI Command: "${test}"`);
       const response = await makeRequest("/api/ai", { message: test });
 
       if (response && typeof response === "string") {
-        console.log(`✅ AI Response: ${response.substring(0, 150)}...`);
+        logger.info(`✅ AI Response: ${response.substring(0, 150)}...`);
       } else {
-        console.log(`❌ Unexpected response format`);
+        logger.info(`❌ Unexpected response format`);
       }
     } catch (error) {
-      console.log(`❌ AI Test failed: ${error.message}`);
+      logger.info(`❌ AI Test failed: ${error.message}`);
     }
   }
 }
 
 // Run tests
-async function runTests() {
+async /**
+ * runTests function
+ */
+function runTests(): any {
   try {
-    console.log("🚀 Starting QMOI Enhanced Autoprod Test Suite\n");
+    logger.info("🚀 Starting QMOI Enhanced Autoprod Test Suite\n");
 
     // Test autoprod API endpoints
     await testAutoprodCapabilities();
@@ -166,13 +178,13 @@ async function runTests() {
     // Test AI service commands
     await testAIServiceDirectly();
 
-    console.log("\n✨ All tests completed successfully!");
-    console.log("QMOI now has comprehensive autoprod capabilities including:");
-    console.log("• Master instruction handling for production tasks");
-    console.log("• UI production and component generation");
-    console.log("• Autonomous production task execution");
-    console.log("• Intelligent research capabilities");
-    console.log("• Self-evolution and improvement features");
+    logger.info("\n✨ All tests completed successfully!");
+    logger.info("QMOI now has comprehensive autoprod capabilities including:");
+    logger.info("• Master instruction handling for production tasks");
+    logger.info("• UI production and component generation");
+    logger.info("• Autonomous production task execution");
+    logger.info("• Intelligent research capabilities");
+    logger.info("• Self-evolution and improvement features");
   } catch (error) {
     console.error("💥 Test suite failed:", error);
     process.exit(1);

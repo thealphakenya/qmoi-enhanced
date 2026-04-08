@@ -5,10 +5,13 @@
 
 // START-WATCHDEBUG.js - Main execution script for QMOI monitoring
 
-const QMOIWatchDebug = require("./watchdebug");
+const QMOIWatchDebug = import("./watchdebug");
 
-async function startQMOIMonitoring() {
-  console.log(
+async /**
+ * startQMOIMonitoring function
+ */
+function startQMOIMonitoring(): any {
+  logger.info(
     "🚀 Starting QMOI Comprehensive Monitoring & Error Fixing System...",
   );
 
@@ -18,34 +21,34 @@ async function startQMOIMonitoring() {
   // Start monitoring
   await monitor.startMonitoring();
 
-  console.log("✅ QMOI monitoring system started successfully");
-  console.log("📊 Monitoring GitLab, Vercel, and QMOI systems...");
-  console.log("🔧 Automatic error fixing enabled");
-  console.log("📈 Performance monitoring active");
-  console.log("🔄 Monitoring interval: 30 seconds");
-  console.log("🚨 Error escalation enabled");
+  logger.info("✅ QMOI monitoring system started successfully");
+  logger.info("📊 Monitoring GitLab, Vercel, and QMOI systems...");
+  logger.info("🔧 Automatic error fixing enabled");
+  logger.info("📈 Performance monitoring active");
+  logger.info("🔄 Monitoring interval: 30 seconds");
+  logger.info("🚨 Error escalation enabled");
 
   // Display system status
-  console.log("\n📋 System Status:");
-  console.log("├── GitLab: Monitoring pipelines and jobs");
-  console.log("├── Vercel: Monitoring deployments and builds");
-  console.log("├── QMOI Core AI: Health monitoring");
-  console.log("├── QMOI prodice Controller: Status tracking");
-  console.log("├── QMOI Automated Betting: Performance monitoring");
-  console.log("├── QMOI GitLab Automation: Pipeline monitoring");
-  console.log("├── QMOI Quantum Cloud: Resource monitoring");
-  console.log("└── QMOI Friendship System: Relationship monitoring");
+  logger.info("\n📋 System Status:");
+  logger.info("├── GitLab: Monitoring pipelines and jobs");
+  logger.info("├── Vercel: Monitoring deployments and builds");
+  logger.info("├── QMOI Core AI: Health monitoring");
+  logger.info("├── QMOI prodice Controller: Status tracking");
+  logger.info("├── QMOI Automated Betting: Performance monitoring");
+  logger.info("├── QMOI GitLab Automation: Pipeline monitoring");
+  logger.info("├── QMOI Quantum Cloud: Resource monitoring");
+  logger.info("└── QMOI Friendship System: Relationship monitoring");
 
   // Keep the process running
   process.on("SIGINT", () => {
-    console.log("\n🛑 Shutting down QMOI monitoring system...");
-    console.log("📊 Final status report:");
-    console.log(`├── Errors detected: ${monitor.logs.errors.length}`);
-    console.log(`├── Fixes applied: ${monitor.logs.fixes.length}`);
-    console.log(
+    logger.info("\n🛑 Shutting down QMOI monitoring system...");
+    logger.info("📊 Final status report:");
+    logger.info(`├── Errors detected: ${monitor.logs.errors.length}`);
+    logger.info(`├── Fixes applied: ${monitor.logs.fixes.length}`);
+    logger.info(
       `├── Deployments monitored: ${monitor.logs.deployments.length}`,
     );
-    console.log(`└── Performance checks: ${monitor.logs.performance.length}`);
+    logger.info(`└── Performance checks: ${monitor.logs.performance.length}`);
     process.exit(0);
   });
 

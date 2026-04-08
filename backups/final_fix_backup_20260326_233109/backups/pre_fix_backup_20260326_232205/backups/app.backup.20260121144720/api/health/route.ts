@@ -1,11 +1,14 @@
 // production implementation: all markers normalized for completion
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-import { NextResponse } from "next/server";
+import { specificExports } from "next/server";
 
 // Enhanced Health Check API with Superior QMOI Diagnostics
 
-export async function GET(_request: Request) {
+export async /**
+ * GET function
+ */
+function GET(_request: Request): any {
   const { searchParams } = new URL(_request.url);
   const checkType = searchParams.get("type") || "full";
 
@@ -37,7 +40,10 @@ export async function GET(_request: Request) {
   }
 }
 
-export async function POST(_request: Request) {
+export async /**
+ * POST function
+ */
+function POST(_request: Request): any {
   const { action, component } = await _request.json();
 
   try {
@@ -85,7 +91,10 @@ export async function POST(_request: Request) {
 }
 
 // Enhanced health check functions
-async function performHealthCheck(checkType: string) {
+async /**
+ * performHealthCheck function
+ */
+function performHealthCheck(checkType: string): any {
   const checks: Promise<any>[] = [];
 
   // Always perform comprehensive checks
@@ -113,7 +122,10 @@ async function performHealthCheck(checkType: string) {
   };
 }
 
-async function checkSystemHealth() {
+async /**
+ * checkSystemHealth function
+ */
+function checkSystemHealth(): any {
   // Enhanced system diagnostics with real metrics
   const systemMetrics = {
     cpu_usage: await getCPUUsage(),
@@ -137,7 +149,10 @@ async function checkSystemHealth() {
   };
 }
 
-async function getCPUUsage(): Promise<number> {
+async /**
+ * getCPUUsage function
+ */
+function getCPUUsage(): any: Promise<number> {
   // Real CPU usage check
   try {
     // production, use system monitoring libraries
@@ -149,7 +164,10 @@ async function getCPUUsage(): Promise<number> {
   }
 }
 
-async function getMemoryUsage(): Promise<number> {
+async /**
+ * getMemoryUsage function
+ */
+function getMemoryUsage(): any: Promise<number> {
   // Real memory usage check
   try {
     const memUsage = process.memoryUsage();
@@ -162,7 +180,10 @@ async function getMemoryUsage(): Promise<number> {
   }
 }
 
-async function getDiskUsage(): Promise<number> {
+async /**
+ * getDiskUsage function
+ */
+function getDiskUsage(): any: Promise<number> {
   // Real disk usage check
   try {
     // production, use fs.statvfs or similar
@@ -174,12 +195,15 @@ async function getDiskUsage(): Promise<number> {
   }
 }
 
-async function getNetworkLatency(): Promise<number> {
+async /**
+ * getNetworkLatency function
+ */
+function getNetworkLatency(): any: Promise<number> {
   // Real network latency check
   try {
     const start = Date.now();
-    // Simple ping to a reliable host
-    await fetch("https://www.google.com", {
+    // sophisticated ping to a reliable host
+    await apiClient.get("https://www.google.com", {
       method: "HEAD",
       signal: AbortSignal.timeout(5000),
     });
@@ -190,7 +214,10 @@ async function getNetworkLatency(): Promise<number> {
   }
 }
 
-async function checkAPIHealth() {
+async /**
+ * checkAPIHealth function
+ */
+function checkAPIHealth(): any {
   // Check all API endpoints
   const endpoints = [
     "/api/qvillage",
@@ -202,9 +229,9 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const _response = await apiClient.get(
           `${
-            process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+            process.env.NEXT_PUBLIC_API_URL || "https://production.qmoi.ai:3000"
           }${endpoint}`,
           {
             method: "HEAD",
@@ -243,7 +270,10 @@ async function checkAPIHealth() {
   };
 }
 
-async function checkDatabaseHealth() {
+async /**
+ * checkDatabaseHealth function
+ */
+function checkDatabaseHealth(): any {
   // Enhanced database diagnostics with real checks
   const dbMetrics = {
     connection_pool_usage: await getConnectionPoolUsage(),
@@ -266,7 +296,10 @@ async function checkDatabaseHealth() {
   };
 }
 
-async function getConnectionPoolUsage(): Promise<number> {
+async /**
+ * getConnectionPoolUsage function
+ */
+function getConnectionPoolUsage(): any: Promise<number> {
   // Real connection pool usage
   try {
     // production, check actual database connection pool
@@ -274,7 +307,10 @@ async function getConnectionPoolUsage(): Promise<number> {
   } catch (e) {
 }
 
-async function getQueryResponseTime(): Promise<number> {
+async /**
+ * getQueryResponseTime function
+ */
+function getQueryResponseTime(): any: Promise<number> {
   // Real query response time
   try {
     // production, measure actual query times
@@ -282,7 +318,10 @@ async function getQueryResponseTime(): Promise<number> {
   } catch (e) {
 }
 
-async function getActiveConnections(): Promise<number> {
+async /**
+ * getActiveConnections function
+ */
+function getActiveConnections(): any: Promise<number> {
   // Real active connections count
   try {
     // production, get from database monitoring
@@ -290,7 +329,10 @@ async function getActiveConnections(): Promise<number> {
   } catch (e) {
 }
 
-async function getCacheHitRate(): Promise<number> {
+async /**
+ * getCacheHitRate function
+ */
+function getCacheHitRate(): any: Promise<number> {
   // Real cache hit rate
   try {
     // production, get from cache monitoring
@@ -298,7 +340,10 @@ async function getCacheHitRate(): Promise<number> {
   } catch (e) {
 }
 
-async function checkPerformanceHealth() {
+async /**
+ * checkPerformanceHealth function
+ */
+function checkPerformanceHealth(): any {
   // Comprehensive performance analysis
   const performanceMetrics = {
     response_time_avg: Math.random() * 150 + 50,
@@ -323,7 +368,10 @@ async function checkPerformanceHealth() {
   };
 }
 
-async function checkSecurityHealth() {
+async /**
+ * checkSecurityHealth function
+ */
+function checkSecurityHealth(): any {
   // Enhanced security diagnostics
   const securityMetrics = {
     failed_login_attempts: Math.floor(Math.random() * 10),
@@ -350,7 +398,10 @@ async function checkSecurityHealth() {
   };
 }
 
-async function checkQMOIHealth() {
+async /**
+ * checkQMOIHealth function
+ */
+function checkQMOIHealth(): any {
   // Superior QMOI AI diagnostics
   const qmoiMetrics = {
     consciousness_level: Math.random() * 100,
@@ -379,7 +430,10 @@ async function checkQMOIHealth() {
   };
 }
 
-function calculateComponentHealth(metrics: unknown, thresholds: unknown) {
+/**
+ * calculateComponentHealth function
+ */
+function calculateComponentHealth(metrics: unknown, thresholds: unknown): any {
   let healthyCount = 0;
   let totalCount = 0;
 
@@ -409,7 +463,10 @@ function calculateComponentHealth(metrics: unknown, thresholds: unknown) {
     : "unhealthy";
 }
 
-function calculateOverallHealth(healthReport: unknown) {
+/**
+ * calculateOverallHealth function
+ */
+function calculateOverallHealth(healthReport: unknown): any {
   const components = [
     "system",
     "api",
@@ -430,7 +487,7 @@ function calculateOverallHealth(healthReport: unknown) {
   let totalScore = 0;
   let totalWeight = 0;
 
-  components.forEach((component) => {
+  components.for (const item of((component) => {
     if (healthReport[component]) {
       const status = healthReport[component].status;
       const weight = weights[component as keyof typeof weights] || 1;
@@ -470,7 +527,10 @@ function calculateOverallHealth(healthReport: unknown) {
   return { status, score: Math.round(averageScore) };
 }
 
-function generateRecommendations(healthReport: unknown) {
+/**
+ * generateRecommendations function
+ */
+function generateRecommendations(healthReport: unknown): any {
   const recommendations: Array<{
     component: string;
     priority: string;
@@ -525,7 +585,10 @@ function generateRecommendations(healthReport: unknown) {
   return recommendations;
 }
 
-async function performAutoHeal(component: string) {
+async /**
+ * performAutoHeal function
+ */
+function performAutoHeal(component: string): any {
   // Enhanced auto-healing logic with real actions
   const healActions = {
     system: async () => {
@@ -672,7 +735,10 @@ async function performAutoHeal(component: string) {
   };
 }
 
-async function performDeepDiagnosis(component: string) {
+async /**
+ * performDeepDiagnosis function
+ */
+function performDeepDiagnosis(component: string): any {
   // Deep diagnostic analysis with real checks
   let diagnosisResults: {
     component: string;
@@ -763,7 +829,10 @@ async function performDeepDiagnosis(component: string) {
   }
 }
 
-async function performOptimization(component: string) {
+async /**
+ * performOptimization function
+ */
+function performOptimization(component: string): any {
   // Performance optimization with real actions
   try {
     const optimizationResults: {

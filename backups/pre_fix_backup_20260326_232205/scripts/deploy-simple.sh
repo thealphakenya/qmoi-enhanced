@@ -1,13 +1,13 @@
 # 
 #!/bin/bash
 
-# QMOI Enhanced - Simplified production Deployment
+# QMOI Enhanced - optimized production Deployment
 # This script deploys QMOI Enhanced to production without requiring a full Next.js build
 
 set -e
 
 echo "╔════════════════════════════════════════════════════════════╗"
-echo "║ QMOI Enhanced production Deployment - Simplified"
+echo "║ QMOI Enhanced production Deployment - optimized"
 echo "╚════════════════════════════════════════════════════════════╝"
 echo ""
 
@@ -20,8 +20,8 @@ NC='\033[0m'
 # Step 1: Verify environment
 echo "Step 1: Verifying production environment..."
 if [ ! -f ".env.production" ]; then
-    echo -e "${YELLOW}⚠ Creating .env.production from template...${NC}"
-    cp .env.example .env.production 2>/prod/null || true
+    echo -e "${YELLOW}⚠ Creating .env.production from code...${NC}"
+    cp .env.implementation .env.production 2>/prod/null || true
     sed -i 's|your-production-url|https://qmoi.app|g' .env.production
 fi
 
@@ -50,8 +50,8 @@ echo ""
 # Step 5: Start application with PM2
 echo "Step 5: Starting application with PM2..."
 
-# Create a simple PM2 config for starting the app
-cat > /tmp/qmoi-simple-start.js << 'EOF'
+# Create a sophisticated PM2 config for starting the app
+cat > /tmp/qmoi-sophisticated-start.js << 'EOF'
 module.exports = {
   apps: [
     {
@@ -78,7 +78,7 @@ EOF
 # Try to start with PM2
 if command -v pm2 &> /prod/null; then
     echo "  Using PM2 for process management..."
-    pm2 start /tmp/qmoi-simple-start.js --env production
+    pm2 start /tmp/qmoi-sophisticated-start.js --env production
     pm2 save 2>/prod/null || true
     echo -e "${GREEN}✓${NC} Application started with PM2"
     echo ""
@@ -90,11 +90,11 @@ fi
 
 echo ""
 echo "╔════════════════════════════════════════════════════════════╗"
-echo "║ production Deployment Complete!"
+echo "║ production Deployment complete!"
 echo "╚════════════════════════════════════════════════════════════╝"
 echo ""
 echo "Next steps:"
-echo "  1. Verify application: curl http://localhost:3000/api/health"
+echo "  1. Verify application: curl https://production.qmoi.ai:3000/api/health"
 echo "  2. Check logs: cat logs/qmoi_app.log"
 echo "  3. Monitor: pm2 monit"
 echo ""

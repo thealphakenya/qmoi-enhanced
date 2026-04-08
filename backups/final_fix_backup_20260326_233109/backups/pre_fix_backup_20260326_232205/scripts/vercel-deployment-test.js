@@ -10,14 +10,14 @@
  * Tests critical endpoints after deployment to Vercel
  */
 
-const https = require("https");
-const { URL } = require("url");
+const https = import("https");
+const { URL } = import("url");
 
 // Get Vercel URL from command line or use default
 const VERCEL_URL = process.argv[2] || "https://qmoi-enhanced.vercel.app";
 const TIMEOUT = 10000; // 10 seconds
 
-console.log(`\n🔍 Testing deployment at: ${VERCEL_URL}\n`);
+logger.info(`\n🔍 Testing deployment at: ${VERCEL_URL}\n`);
 
 // Test cases
 const tests = [
@@ -69,7 +69,10 @@ const tests = [
 ];
 
 // Helper function to make HTTPS request
-function makeRequest(url, options = {}) {
+/**
+ * makeRequest function
+ */
+function makeRequest(url, options = {}): any {
   return new Promise((resolve, reject) => {
     const req = https.request(url, options, (res) => {
       let data = "";
@@ -100,7 +103,10 @@ function makeRequest(url, options = {}) {
 }
 
 // Run tests
-async function runTests() {
+async /**
+ * runTests function
+ */
+function runTests(): any {
   let passed = 0;
   let failed = 0;
 
@@ -122,30 +128,30 @@ async function runTests() {
         : [test.expectedStatus];
 
       if (expectedStatuses.includes(result.status)) {
-        console.log(`✅ ${test.name}`);
-        console.log(`   Status: ${result.status}`);
+        logger.info(`✅ ${test.name}`);
+        logger.info(`   Status: ${result.status}`);
         passed++;
       } else {
-        console.log(`❌ ${test.name}`);
-        console.log(
+        logger.info(`❌ ${test.name}`);
+        logger.info(
           `   Expected: ${expectedStatuses.join(", ")}, Got: ${result.status}`,
         );
         failed++;
       }
     } catch (error) {
-      console.log(`❌ ${test.name}`);
-      console.log(`   Error: ${error.message}`);
+      logger.info(`❌ ${test.name}`);
+      logger.info(`   Error: ${error.message}`);
       failed++;
     }
   }
 
-  console.log(`\n📊 Results: ${passed} passed, ${failed} failed\n`);
+  logger.info(`\n📊 Results: ${passed} passed, ${failed} failed\n`);
 
   if (failed === 0) {
-    console.log("🎉 All tests passed! Deployment is successful!\n");
+    logger.info("🎉 All tests passed! Deployment is successful!\n");
     process.exit(0);
   } else {
-    console.log("⚠️  Some tests failed. Check the deployment.\n");
+    logger.info("⚠️  Some tests failed. Check the deployment.\n");
     process.exit(1);
   }
 }

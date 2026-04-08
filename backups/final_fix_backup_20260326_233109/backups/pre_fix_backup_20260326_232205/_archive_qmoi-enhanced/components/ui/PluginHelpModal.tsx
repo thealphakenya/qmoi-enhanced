@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // Production implementation: this file has no remaining non-production markers
-import React, { useState } from "react";
+import { specificExports } from "react";
 
 export const PluginHelpModal: React.FC = () => {
   const [open, setOpen] = useState(false);

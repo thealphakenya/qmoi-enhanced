@@ -16,7 +16,7 @@ Examples:
   # Dry-run: print the curl command
   $0 --workflow .github/workflows/build-and-release.yml --ref v1.2.4
 
-  # Execute using GITHUB_PAT env var
+  # Execute using GITHUB_PAT env const
   GITHUB_PAT=ghp_xxx $0 --workflow .github/workflows/build-and-release.yml --ref v1.2.4 --run
 
 Notes:

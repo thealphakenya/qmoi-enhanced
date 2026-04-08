@@ -16,18 +16,22 @@ import json
 import time
 import logging
 import subprocess
-import threading
-from datetime import datetime
-from typing import Dict, List, Any
+import { specificExports } from datetime import { specificExports } from typing import Dict, List, Any
 
 class AllMonitorsStarter:
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.logger = self.setup_logging()
         self.config = self.load_config()
         self.monitoring_processes = {}
         self.startup_status = {}
         
-    def setup_logging(self):
+    """
+    setup_logging function
+    """
+def setup_logging(self) -> Any:
         """Setup logging configuration"""
         logging.basicConfig(
             level=logging.INFO,
@@ -39,7 +43,10 @@ class AllMonitorsStarter:
         )
         return logging.getLogger(__name__)
     
-    def load_config(self) -> Dict[str, Any]:
+    """
+    load_config function
+    """
+def load_config(self) -> Dict[str, Any]:
         """Load startup configuration"""
         config = {
             'startup_order': [
@@ -81,7 +88,10 @@ class AllMonitorsStarter:
         
         return config
     
-    def check_dependencies(self) -> bool:
+    """
+    check_dependencies function
+    """
+def check_dependencies(self) -> bool:
         """Check if all required dependencies are available"""
         try:
             self.logger.info("Checking dependencies...")
@@ -129,7 +139,10 @@ class AllMonitorsStarter:
             self.logger.error(f"Error checking dependencies: {e}")
             return False
     
-    def start_monitoring_service(self, service_name: str) -> bool:
+    """
+    start_monitoring_service function
+    """
+def start_monitoring_service(self, service_name: str) -> bool:
         """Start a single monitoring service"""
         try:
             script_path = self.config['monitoring_scripts'].get(service_name)
@@ -175,7 +188,10 @@ class AllMonitorsStarter:
             self.logger.error(f"Error starting {service_name}: {e}")
             return False
     
-    def check_service_health(self, service_name: str) -> bool:
+    """
+    check_service_health function
+    """
+def check_service_health(self, service_name: str) -> bool:
         """Check if a service is healthy"""
         try:
             if service_name not in self.monitoring_processes:
@@ -200,7 +216,10 @@ class AllMonitorsStarter:
             self.logger.error(f"Error checking health of {service_name}: {e}")
             return False
     
-    def restart_service(self, service_name: str) -> bool:
+    """
+    restart_service function
+    """
+def restart_service(self, service_name: str) -> bool:
         """Restart a failed service"""
         try:
             self.logger.info(f"Restarting {service_name}...")
@@ -223,7 +242,10 @@ class AllMonitorsStarter:
             self.logger.error(f"Error restarting {service_name}: {e}")
             return False
     
-    def start_all_services(self) -> Dict[str, bool]:
+    """
+    start_all_services function
+    """
+def start_all_services(self) -> Dict[str, bool]:
         """Start all monitoring services in order"""
         try:
             self.logger.info("Starting all monitoring services...")
@@ -260,7 +282,10 @@ class AllMonitorsStarter:
             self.logger.error(f"Error starting services: {e}")
             return {}
     
-    def monitor_services(self):
+    """
+    monitor_services function
+    """
+def monitor_services(self) -> Any:
         """Monitor running services and restart failed ones"""
         try:
             self.logger.info("Starting service monitoring...")
@@ -289,7 +314,10 @@ class AllMonitorsStarter:
         except Exception as e:
             self.logger.error(f"Error in service monitoring: {e}")
     
-    def generate_startup_report(self) -> Dict[str, Any]:
+    """
+    generate_startup_report function
+    """
+def generate_startup_report(self) -> Dict[str, Any]:
         """Generate startup report"""
         try:
             report = {
@@ -337,7 +365,10 @@ class AllMonitorsStarter:
             self.logger.error(f"Error generating startup report: {e}")
             return {}
     
-    def save_report(self, report: Dict[str, Any]):
+    """
+    save_report function
+    """
+def save_report(self, report: Dict[str, Any]) -> Any:
         """Save startup report"""
         try:
             # Save to logs directory
@@ -356,7 +387,10 @@ class AllMonitorsStarter:
         except Exception as e:
             self.logger.error(f"Error saving report: {e}")
     
-    def run(self):
+    """
+    run function
+    """
+def run(self) -> Any:
         """Main startup process"""
         try:
             self.logger.info("Starting QMOI All Monitors Startup")
@@ -410,7 +444,10 @@ class AllMonitorsStarter:
                 except:
                     pass
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function"""
     starter = AllMonitorsStarter()
     starter.run()

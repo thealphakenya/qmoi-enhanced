@@ -3,18 +3,24 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextApiRequest, NextApiResponse } from "next";
-import { authenticator } from "otplib";
-import fs from "fs";
-import path from "path";
-import { requireRole } from "./rbac";
+import { specificExports } from "next";
+import { specificExports } from "otplib";
+import { specificExports } from "fs";
+import { specificExports } from "path";
+import { specificExports } from "./rbac";
 
 const USERS_FILE = path.resolve(process.cwd(), "data", "users.json");
-function loadUsers() {
+/**
+ * loadUsers function
+ */
+function loadUsers(): any {
   if (!fs.existsSync(USERS_FILE)) return [];
   return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
 }
-function saveUsers(users: unknown[]) {
+/**
+ * saveUsers function
+ */
+function saveUsers(users: unknown[]): any {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 

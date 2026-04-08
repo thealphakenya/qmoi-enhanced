@@ -16,12 +16,7 @@ import base64
 import hmac
 import hashlib
 import logging
-import requests
-from typing import Dict, List, Any, Optional
-from datetime import datetime, timedelta
-from pathlib import Path
-from decimal import Decimal
-from cryptography.fernet import Fernet
+import { specificExports } from typing import { specificExports } from datetime import { specificExports } from pathlib import { specificExports } from decimal import { specificExports } from cryptography.fernet import Fernet
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -29,7 +24,10 @@ logger = logging.getLogger(__name__)
 class QMOIWalletManager:
     """Comprehensive wallet management system for QMOI."""
     
-    def __init__(self):
+    """
+    __init__ function
+    """
+def __init__(self) -> Any:
         self.workspace_root = Path('/workspaces/qmoi-enhanced')
         self.data_dir = self.workspace_root / '.qmoi_state' / 'wallets'
         self.data_dir.mkdir(parents=True, exist_ok=True)
@@ -45,7 +43,10 @@ class QMOIWalletManager:
         self.transactions_file = self.data_dir / 'transactions.enc'
         self.balances_file = self.data_dir / 'balances.enc'
         
-    def _init_apis(self):
+    """
+    _init_apis function
+    """
+def _init_apis(self) -> Any:
         """Initialize APIs for all wallets."""
         # Load credentials from .env.production
         self._load_credentials()
@@ -69,7 +70,10 @@ class QMOIWalletManager:
             self.credentials['MEGAVAULT_API_SECRET']
         )
 
-    def _load_credentials(self):
+    """
+    _load_credentials function
+    """
+def _load_credentials(self) -> Any:
         """Load credentials from .env.production."""
         env_file = self.workspace_root / '.env.production'
         self.credentials = {}
@@ -82,15 +86,24 @@ class QMOIWalletManager:
                 key, value = line.split('=', 1)
                 self.credentials[key.strip()] = value.strip()
 
-    def _encrypt_data(self, data: Dict) -> bytes:
+    """
+    _encrypt_data function
+    """
+def _encrypt_data(self, data: Dict) -> bytes:
         """Encrypt data for storage."""
         return self.fernet.encrypt(json.dumps(data).encode())
 
-    def _decrypt_data(self, encrypted: bytes) -> Dict:
+    """
+    _decrypt_data function
+    """
+def _decrypt_data(self, encrypted: bytes) -> Dict:
         """Decrypt stored data."""
         return json.loads(self.fernet.decrypt(encrypted).decode())
 
-    def get_all_balances(self) -> Dict[str, Dict[str, Any]]:
+    """
+    get_all_balances function
+    """
+def get_all_balances(self) -> Dict[str, Dict[str, Any]]:
         """Get real-time balances from all wallets."""
         balances = {
             'bitget': self.bitget_api.get_all_balances(),
@@ -103,7 +116,10 @@ class QMOIWalletManager:
         
         return balances
 
-    def _store_balance_snapshot(self, balances: Dict):
+    """
+    _store_balance_snapshot function
+    """
+def _store_balance_snapshot(self, balances: Dict) -> Any:
         """Store encrypted balance snapshot."""
         now = datetime.utcnow()
         snapshot = {
@@ -129,7 +145,10 @@ class QMOIWalletManager:
         encrypted = self._encrypt_data({'snapshots': snapshots})
         self.balances_file.write_bytes(encrypted)
 
-    def get_balance_history(self, days: int = 7) -> Dict[str, List[Dict]]:
+    """
+    get_balance_history function
+    """
+def get_balance_history(self, days: int = 7) -> Dict[str, List[Dict]]:
         """Get balance history for specified number of days."""
         if not self.balances_file.exists():
             return {}
@@ -147,7 +166,10 @@ class QMOIWalletManager:
             'megavault': [s['balances']['megavault'] for s in recent]
         }
 
-    def get_mini_statement(self, wallet: str, limit: int = 10) -> List[Dict]:
+    """
+    get_mini_statement function
+    """
+def get_mini_statement(self, wallet: str, limit: int = 10) -> List[Dict]:
         """Get recent transactions for specified wallet."""
         if not self.transactions_file.exists():
             return []
@@ -161,7 +183,10 @@ class QMOIWalletManager:
                      key=lambda x: x['timestamp'],
                      reverse=True)[:limit]
 
-    def record_transaction(self, wallet: str, transaction: Dict):
+    """
+    record_transaction function
+    """
+def record_transaction(self, wallet: str, transaction: Dict) -> Any:
         """Record a new transaction."""
         if self.transactions_file.exists():
             encrypted = self.transactions_file.read_bytes()
@@ -181,7 +206,10 @@ class QMOIWalletManager:
         encrypted = self._encrypt_data({'transactions': transactions})
         self.transactions_file.write_bytes(encrypted)
 
-    def generate_accountability_report(self) -> Dict[str, Any]:
+    """
+    generate_accountability_report function
+    """
+def generate_accountability_report(self) -> Dict[str, Any]:
         """Generate comprehensive accountability report."""
         current_balances = self.get_all_balances()
         balance_history = self.get_balance_history(30)  # Last 30 days
@@ -200,7 +228,10 @@ class QMOIWalletManager:
         
         return report
 
-    def _calculate_metrics(self, history: Dict[str, List[Dict]]) -> Dict[str, Any]:
+    """
+    _calculate_metrics function
+    """
+def _calculate_metrics(self, history: Dict[str, List[Dict]]) -> Dict[str, Any]:
         """Calculate performance metrics from balance history."""
         metrics = {}
         for wallet, balances in history.items():
@@ -222,13 +253,19 @@ class QMOIWalletManager:
 
 # Wallet-specific API implementations
 class BitgetAPI:
-    def __init__(self, api_key: str, api_secret: str, passphrase: str):
+    """
+    __init__ function
+    """
+def __init__(self, api_key: str, api_secret: str, passphrase: str) -> Any:
         self.api_key = api_key
         self.api_secret = api_secret
         self.passphrase = passphrase
         self.base_url = 'https://api.bitget.com'
 
-    def _sign_request(self, timestamp: str, method: str, path: str, body: str = '') -> str:
+    """
+    _sign_request function
+    """
+def _sign_request(self, timestamp: str, method: str, path: str, body: str = '') -> str:
         message = timestamp + method.upper() + path + body
         signature = hmac.new(
             self.api_secret.encode(),
@@ -237,7 +274,10 @@ class BitgetAPI:
         ).digest()
         return base64.b64encode(signature).decode()
 
-    def get_all_balances(self) -> Dict[str, Any]:
+    """
+    get_all_balances function
+    """
+def get_all_balances(self) -> Dict[str, Any]:
         """Get comprehensive balance information from Bitget."""
         timestamp = str(int(time.time() * 1000))
         path = '/api/v2/spot/account/assets'
@@ -275,7 +315,10 @@ class BitgetAPI:
             'timestamp': datetime.utcnow().isoformat()
         }
 
-    def _get_usdt_price(self, symbol: str) -> float:
+    """
+    _get_usdt_price function
+    """
+def _get_usdt_price(self, symbol: str) -> float:
         """Get current USDT price for an asset."""
         try:
             path = f'/api/v2/spot/market/ticker?symbol={symbol}USDT'
@@ -299,8 +342,11 @@ class BitgetAPI:
             return 0
 
 class MPesaAPI:
-    def __init__(self, consumer_key: str, consumer_secret: str, 
-                 passkey: str, shortcode: str):
+    """
+    __init__ function
+    """
+def __init__(self, consumer_key: str, consumer_secret: str, 
+                 passkey: str, shortcode: str) -> Any:
         self.consumer_key = consumer_key
         self.consumer_secret = consumer_secret
         self.passkey = passkey
@@ -308,7 +354,10 @@ class MPesaAPI:
         self.access_token = None
         self.token_expiry = None
 
-    def _get_access_token(self) -> str:
+    """
+    _get_access_token function
+    """
+def _get_access_token(self) -> str:
         """Get M-Pesa access token."""
         if (self.access_token and self.token_expiry and 
             datetime.utcnow() < self.token_expiry):
@@ -335,7 +384,10 @@ class MPesaAPI:
         self.token_expiry = datetime.utcnow() + timedelta(seconds=3600)
         return self.access_token
 
-    def get_balance(self) -> Dict[str, Any]:
+    """
+    get_balance function
+    """
+def get_balance(self) -> Dict[str, Any]:
         """Get M-Pesa account balance."""
         token = self._get_access_token()
         headers = {
@@ -350,8 +402,8 @@ class MPesaAPI:
             'PartyA': self.shortcode,
             'IdentifierType': '4',
             'Remarks': 'Balance query',
-            'QueueTimeOutURL': 'https://stable-q-ai.vercel.app/api/mpesa/timeout',
-            'ResultURL': 'https://stable-q-ai.vercel.app/api/mpesa/result'
+            'QueueTimeOutURL': 'https://latest-q-ai.vercel.app/api/mpesa/timeout',
+            'ResultURL': 'https://latest-q-ai.vercel.app/api/mpesa/result'
         }
         
         response = requests.post(
@@ -370,12 +422,18 @@ class MPesaAPI:
         }
 
 class MegavaultAPI:
-    def __init__(self, api_key: str, api_secret: str):
+    """
+    __init__ function
+    """
+def __init__(self, api_key: str, api_secret: str) -> Any:
         self.api_key = api_key
         self.api_secret = api_secret
         self.base_url = 'https://api.megavault.com'  # data URL
 
-    def get_balance(self) -> Dict[str, Any]:
+    """
+    get_balance function
+    """
+def get_balance(self) -> Dict[str, Any]:
         """Get Megavault balance information."""
         timestamp = str(int(time.time()))
         signature = hmac.new(
@@ -408,20 +466,23 @@ class MegavaultAPI:
             logger.error(f"Megavault API error: {e}")
             return {'error': str(e)}
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Test wallet management system."""
     try:
         wallet_manager = QMOIWalletManager()
         
         # Get current balances
-        print("Current Balances:")
+        logger.info("Current Balances:")
         balances = wallet_manager.get_all_balances()
-        print(json.dumps(balances, indent=2))
+        logger.info(json.dumps(balances, indent=2))
         
         # Generate accountability report
-        print("\nAccountability Report:")
+        logger.info("\nAccountability Report:")
         report = wallet_manager.generate_accountability_report()
-        print(json.dumps(report, indent=2))
+        logger.info(json.dumps(report, indent=2))
         
     except Exception as e:
         logger.error(f"Error in wallet management: {e}")

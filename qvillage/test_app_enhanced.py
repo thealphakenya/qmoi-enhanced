@@ -13,39 +13,50 @@ import sys
 import traceback
 
 try:
-    from fastapi.testclient import TestClient
-    from app import app
+    from fastapi.testclient import { specificExports } from app import app
 except Exception as e:
-    print(f"Skipping enhanced tests because dependencies are required: {e}")
+    logger.info(f"Skipping enhanced tests because dependencies are required: {e}")
     sys.exit(0)
 
 client = TestClient(app)
 
-def run_test(test_func):
+"""
+    run_test function
+    """
+def run_test(test_func) -> Any:
     try:
         test_func()
-        print(f"✓ {test_func.__name__} passed")
+        logger.info(f"✓ {test_func.__name__} passed")
         return True
     except AssertionError as e:
-        print(f"✗ {test_func.__name__} failed: {e}")
+        logger.info(f"✗ {test_func.__name__} failed: {e}")
         traceback.print_exc()
         return False
     except Exception as e:
-        print(f"✗ {test_func.__name__} error: {e}")
+        logger.info(f"✗ {test_func.__name__} error: {e}")
         traceback.print_exc()
         return False
 
-def test_health():
+"""
+    test_health function
+    """
+def test_health() -> Any:
     r = client.get("/health")
     assert r.status_code == 200
     assert r.json().get("status") == "healthy"
 
-def test_auth_token():
+"""
+    test_auth_token function
+    """
+def test_auth_token() -> Any:
     r = client.post("/auth/token", json={"username": "admin", "password": "admin"})
     assert r.status_code == 200
     assert "access_token" in r.json()
 
-def test_model_lifecycle():
+"""
+    test_model_lifecycle function
+    """
+def test_model_lifecycle() -> Any:
     r = client.post("/models/", json={
         "name": "test-model-1",
         "description": "Test model",
@@ -73,7 +84,10 @@ def test_model_lifecycle():
     r = client.delete(f"/models/{model_id}")
     assert r.status_code == 200
 
-def test_space_lifecycle():
+"""
+    test_space_lifecycle function
+    """
+def test_space_lifecycle() -> Any:
     r = client.post("/spaces/", json={
         "name": "test-space-1",
         "description": "Test space",
@@ -96,7 +110,10 @@ def test_space_lifecycle():
     r = client.delete(f"/spaces/{space_id}")
     assert r.status_code == 200
 
-def test_dataset_lifecycle():
+"""
+    test_dataset_lifecycle function
+    """
+def test_dataset_lifecycle() -> Any:
     r = client.post("/datasets/", json={
         "name": "test-dataset-1",
         "description": "Test dataset",
@@ -121,7 +138,10 @@ def test_dataset_lifecycle():
     r = client.delete(f"/datasets/{dataset_id}")
     assert r.status_code == 200
 
-def test_research_and_inference():
+"""
+    test_research_and_inference function
+    """
+def test_research_and_inference() -> Any:
     r = client.get("/api/research/daily-papers")
     assert r.status_code == 200
     assert "papers" in r.json()
@@ -133,7 +153,10 @@ def test_research_and_inference():
     r = client.post("/api/inference/gpt2", json={"text": "Hello world"})
     assert r.status_code in (200, 404, 500)
 
-def test_automl_finetune_deploy():
+"""
+    test_automl_finetune_deploy function
+    """
+def test_automl_finetune_deploy() -> Any:
     r = client.post("/api/automl/train", params={"dataset_id": 1, "target_column": "target"})
     assert r.status_code == 200
 
@@ -143,14 +166,20 @@ def test_automl_finetune_deploy():
     r = client.post("/api/deploy/gpt2")
     assert r.status_code == 200
 
-def test_metrics():
+"""
+    test_metrics function
+    """
+def test_metrics() -> Any:
     r = client.get("/api/monitoring/metrics")
     assert r.status_code == 200
     data = r.json()
     assert "models_loaded" in data
     assert "registered_models" in data
 
-def test_qvillage_features_autosync():
+"""
+    test_qvillage_features_autosync function
+    """
+def test_qvillage_features_autosync() -> Any:
     r = client.get("/api/qvillage/features")
     assert r.status_code == 200
     data = r.json()
@@ -164,7 +193,10 @@ def test_qvillage_features_autosync():
     assert r.status_code == 200
     assert r.json().get("status") == "executed"
 
-def test_notifications():
+"""
+    test_notifications function
+    """
+def test_notifications() -> Any:
     r = client.post("/api/notifications/", json={
         "user_id": 1,
         "message": "Test notification",
@@ -176,7 +208,10 @@ def test_notifications():
     assert r.status_code == 200
     assert isinstance(r.json(), list)
 
-def test_discussions():
+"""
+    test_discussions function
+    """
+def test_discussions() -> Any:
     r = client.post("/api/discussions/", json={
         "entity_type": "model",
         "entity_id": 1,
@@ -189,7 +224,10 @@ def test_discussions():
     assert r.status_code == 200
     assert isinstance(r.json(), list)
 
-def test_plans():
+"""
+    test_plans function
+    """
+def test_plans() -> Any:
     r = client.post("/api/plans/", json={
         "name": "Test Plan",
         "description": "Test description",
@@ -206,13 +244,19 @@ def test_plans():
     r = client.put(f"/api/plans/{plan_id}", params={"status": "completed"})
     assert r.status_code == 200
 
-def test_auto_enhance():
+"""
+    test_auto_enhance function
+    """
+def test_auto_enhance() -> Any:
     r = client.post("/api/auto-enhance")
     assert r.status_code == 200
     assert r.json().get("status") == "enhancement scheduled"
 
-def main():
-    print("Running QVillage Enhanced Test Suite...")
+"""
+    main function
+    """
+def main() -> Any:
+    logger.info("Running QVillage Enhanced Test Suite...")
     tests = [
         test_health,
         test_auth_token,
@@ -232,7 +276,7 @@ def main():
     for test in tests:
         if run_test(test):
             passed += 1
-    print(f"Tests passed: {passed}/{len(tests)}")
+    logger.info(f"Tests passed: {passed}/{len(tests)}")
     if passed != len(tests):
         sys.exit(1)
 

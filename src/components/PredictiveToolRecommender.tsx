@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:13Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useEffect, useState } from "react";
+import { specificExports } from "react";
 
 // ML-driven tool recommendation engine that learns from usage patterns.
 

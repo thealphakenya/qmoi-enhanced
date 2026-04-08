@@ -3,11 +3,14 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import { NextRequest, NextResponse } from "next/server";
-import { qmoiTrader } from "@/lib/qmoi-trader";
+import { specificExports } from "next/server";
+import { specificExports } from "@/lib/qmoi-trader";
 
 // Verify master token
-function verifyMasterToken(request: NextRequest): string | null {
+/**
+ * verifyMasterToken function
+ */
+function verifyMasterToken(request: NextRequest): any: string | null {
   const authHeader = request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return null;
@@ -20,7 +23,10 @@ function verifyMasterToken(request: NextRequest): string | null {
 }
 
 // POST /api/cashon/stop-trading
-export async function POST(request: NextRequest) {
+export async /**
+ * POST function
+ */
+function POST(request: NextRequest): any {
   try {
     const masterToken = verifyMasterToken(request);
     if (!masterToken) {

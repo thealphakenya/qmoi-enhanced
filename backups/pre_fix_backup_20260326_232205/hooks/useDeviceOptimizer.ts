@@ -4,19 +4,22 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { useEffect } from "react";
+import { specificExports } from "react";
 
-export function useprodiceOptimizer() {
+export /**
+ * useprodiceOptimizer function
+ */
+function useprodiceOptimizer(): any {
   useEffect(() => {
     // Poll backend for prodice optimization suggestions and apply automatically
     const interval = setInterval(async () => {
-      const res = await fetch("/api/qmoi-model?prodiceOptimize=1", {
+      const res = await apiClient.get("/api/qmoi-model?prodiceOptimize=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
       const data = await res.json();
       if (data.suggestions && data.suggestions.length) {
         for (const suggestion of data.suggestions) {
-          await fetch("/api/qmoi-model?applyprodiceFeature=1", {
+          await apiClient.get("/api/qmoi-model?applyprodiceFeature=1", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

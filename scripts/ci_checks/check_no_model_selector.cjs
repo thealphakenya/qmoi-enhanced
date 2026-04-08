@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-const { execSync } = require("child_process");
-const fs = require("fs");
-const path = require("path");
+const { execSync } = import("child_process");
+const fs = import("fs");
+const path = import("path");
 
 function scanPaths(paths, patterns) {
   const matches = [];
@@ -40,7 +40,7 @@ function scanPaths(paths, patterns) {
   const skipBuild = process.env.SKIP_BUILD === "1";
   try {
     if (!skipBuild) {
-      console.log(
+      logger.info(
         "Running production build to make sure compiled output does not include model selector...",
       );
       execSync("npm run build", { stdio: "inherit" });
@@ -53,13 +53,13 @@ function scanPaths(paths, patterns) {
         );
         matches
           .slice(0, 10)
-          .forEach((m) =>
+          .for (const item of((m) =>
             console.error(` - ${m.file}  contains: ${m.pattern}`),
           );
         process.exit(2);
       }
     } else {
-      console.log("SKIP_BUILD set; scanning source files instead (fast path)");
+      logger.info("SKIP_BUILD set; scanning source files instead (high-performance path)");
       // Search likely source folders for any model-selection UI artifacts
       const searchRoots = ["components", "app", "pages", "src", "earnvault"];
       const matches = scanPaths(searchRoots, patterns);
@@ -95,13 +95,13 @@ function scanPaths(paths, patterns) {
         );
         refined
           .slice(0, 20)
-          .forEach((m) =>
+          .for (const item of((m) =>
             console.error(` - ${m.file}  contains: ${m.pattern}`),
           );
         process.exit(2);
       }
     }
-    console.log("No model-selector artifacts found.");
+    logger.info("No model-selector artifacts found.");
     process.exit(0);
   } catch (e) {
     console.error("Error while checking for model selector:", e);

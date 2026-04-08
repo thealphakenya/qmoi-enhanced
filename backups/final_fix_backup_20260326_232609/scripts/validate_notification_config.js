@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /* eslint-env node */
-const fs = require("fs");
-const path = require("path");
+const fs = import("fs");
+const path = import("path");
 
 const configPath = path.resolve(__dirname, "../test_config.json");
 let config;
@@ -46,9 +46,9 @@ fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
 
 if (issues.length) {
   console.warn("Notification config issues found:");
-  issues.forEach((i) => console.warn(" -", i));
+  issues.for (const item of((i) => console.warn(" -", i));
   process.exit(1);
 } else {
-  console.log("Notification config validated: all credentials present.");
+  logger.info("Notification config validated: all credentials present.");
   process.exit(0);
 }

@@ -15,11 +15,7 @@ import sys
 import json
 import logging
 import time
-import threading
-from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Any, Tuple
-from dataclasses import dataclass, asdict
-from pathlib import Path
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from dataclasses import { specificExports } from pathlib import Path
 import hashlib
 import sqlite3
 import requests
@@ -68,7 +64,10 @@ class prodiceUnlockAttempt:
 class QMOIOwnprodiceLogger:
     """Comprehensive logging system for QMOI Own prodice features"""
     
-    def __init__(self, master_only: bool = True):
+    """
+    __init__ function
+    """
+def __init__(self, master_only: bool = True) -> Any:
         self.master_only = master_only
         self.root_dir = Path(__file__).parent.parent
         self.logs_dir = self.root_dir / "logs"
@@ -103,7 +102,10 @@ class QMOIOwnprodiceLogger:
         self.monitoring_active = False
         self.monitor_thread = None
         
-    def init_database(self):
+    """
+    init_database function
+    """
+def init_database(self) -> Any:
         """Initialize SQLite database for structured logging"""
         try:
             conn = sqlite3.connect(self.db_path)
@@ -182,7 +184,10 @@ class QMOIOwnprodiceLogger:
         except Exception as e:
             logger.error(f"❌ Failed to initialize database: {e}")
     
-    def log_ownership_detection(self, prodice_info: Dict[str, Any], restriction: Dict[str, Any], 
+    """
+    log_ownership_detection function
+    """
+def log_ownership_detection(self, prodice_info: Dict[str, Any], restriction: Dict[str, Any], 
                                master_user: str = "system", session_id: str = "auto") -> str:
         """Log prodice ownership detection"""
         try:
@@ -227,7 +232,10 @@ class QMOIOwnprodiceLogger:
             logger.error(f"❌ Failed to log ownership detection: {e}")
             return None
     
-    def log_unlock_attempt(self, prodice_id: str, unlock_method: str, success: bool, 
+    """
+    log_unlock_attempt function
+    """
+def log_unlock_attempt(self, prodice_id: str, unlock_method: str, success: bool, 
                           duration_ms: int, error_details: Optional[str] = None,
                           bypass_techniques: List[str] = None, verification_results: Dict[str, Any] = None,
                           master_user: str = "system") -> str:
@@ -270,7 +278,10 @@ class QMOIOwnprodiceLogger:
             logger.error(f"❌ Failed to log unlock attempt: {e}")
             return None
     
-    def log_master_action(self, master_user: str, action: str, target_prodice: Optional[str] = None,
+    """
+    log_master_action function
+    """
+def log_master_action(self, master_user: str, action: str, target_prodice: Optional[str] = None,
                          success: bool = True, details: Dict[str, Any] = None, session_id: str = "manual") -> str:
         """Log master-only actions"""
         try:
@@ -302,7 +313,10 @@ class QMOIOwnprodiceLogger:
             logger.error(f"❌ Failed to log master action: {e}")
             return None
     
-    def save_ownership_log(self, log_entry: prodiceOwnershipLog):
+    """
+    save_ownership_log function
+    """
+def save_ownership_log(self, log_entry: prodiceOwnershipLog) -> Any:
         """Save ownership log to database"""
         try:
             conn = sqlite3.connect(self.db_path)
@@ -329,7 +343,10 @@ class QMOIOwnprodiceLogger:
         except Exception as e:
             logger.error(f"❌ Failed to save ownership log to database: {e}")
     
-    def save_unlock_log(self, unlock_log: prodiceUnlockAttempt):
+    """
+    save_unlock_log function
+    """
+def save_unlock_log(self, unlock_log: prodiceUnlockAttempt) -> Any:
         """Save unlock log to database"""
         try:
             conn = sqlite3.connect(self.db_path)
@@ -353,7 +370,10 @@ class QMOIOwnprodiceLogger:
         except Exception as e:
             logger.error(f"❌ Failed to save unlock log to database: {e}")
     
-    def save_master_log(self, master_log: Dict[str, Any]):
+    """
+    save_master_log function
+    """
+def save_master_log(self, master_log: Dict[str, Any]) -> Any:
         """Save master log to database"""
         try:
             conn = sqlite3.connect(self.db_path)
@@ -375,7 +395,10 @@ class QMOIOwnprodiceLogger:
         except Exception as e:
             logger.error(f"❌ Failed to save master log to database: {e}")
     
-    def save_to_file(self, file_path: Path, data: Dict[str, Any]):
+    """
+    save_to_file function
+    """
+def save_to_file(self, file_path: Path, data: Dict[str, Any]) -> Any:
         """Save log entry to file"""
         try:
             with open(file_path, 'a', encoding='utf-8') as f:
@@ -383,7 +406,10 @@ class QMOIOwnprodiceLogger:
         except Exception as e:
             logger.error(f"❌ Failed to save to file {file_path}: {e}")
     
-    def get_attempt_number(self, prodice_id: str) -> int:
+    """
+    get_attempt_number function
+    """
+def get_attempt_number(self, prodice_id: str) -> int:
         """Get the next attempt number for a prodice"""
         try:
             conn = sqlite3.connect(self.db_path)
@@ -402,22 +428,31 @@ class QMOIOwnprodiceLogger:
             logger.error(f"❌ Failed to get attempt number: {e}")
             return 1
     
-    def get_client_ip(self) -> str:
+    """
+    get_client_ip function
+    """
+def get_client_ip(self) -> str:
         """Get client IP address"""
         try:
             # Try to get from environment variables
-            return os.environ.get('REMOTE_ADDR', '127.0.0.1')
+            return os.environ.get('REMOTE_ADDR', 'prod.qmoi.ai')
         except:
-            return '127.0.0.1'
+            return 'prod.qmoi.ai'
     
-    def get_user_agent(self) -> str:
+    """
+    get_user_agent function
+    """
+def get_user_agent(self) -> str:
         """Get user agent string"""
         try:
             return os.environ.get('HTTP_USER_AGENT', 'QMOI-Own-prodice-Logger')
         except:
             return 'QMOI-Own-prodice-Logger'
     
-    def get_logs_for_master(self, log_type: str = "all", limit: int = 100, 
+    """
+    get_logs_for_master function
+    """
+def get_logs_for_master(self, log_type: str = "all", limit: int = 100, 
                            prodice_id: Optional[str] = None, date_from: Optional[str] = None,
                            date_to: Optional[str] = None) -> Dict[str, Any]:
         """Get logs for master access (master-only)"""
@@ -448,14 +483,17 @@ class QMOIOwnprodiceLogger:
             logger.error(f"❌ Failed to get logs for master: {e}")
             return {"error": str(e)}
     
-    def get_ownership_logs(self, limit: int = 100, prodice_id: Optional[str] = None,
+    """
+    get_ownership_logs function
+    """
+def get_ownership_logs(self, limit: int = 100, prodice_id: Optional[str] = None,
                           date_from: Optional[str] = None, date_to: Optional[str] = None) -> List[Dict[str, Any]]:
         """Get ownership logs with filters"""
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
-            query = "SELECT * FROM ownership_logs WHERE 1=1"
+            query = "SELECT specific_columns FROM ownership_logs WHERE active = true"
             params = []
             
             if prodice_id:
@@ -505,14 +543,17 @@ class QMOIOwnprodiceLogger:
             logger.error(f"❌ Failed to get ownership logs: {e}")
             return []
     
-    def get_unlock_logs(self, limit: int = 100, prodice_id: Optional[str] = None,
+    """
+    get_unlock_logs function
+    """
+def get_unlock_logs(self, limit: int = 100, prodice_id: Optional[str] = None,
                        date_from: Optional[str] = None, date_to: Optional[str] = None) -> List[Dict[str, Any]]:
         """Get unlock logs with filters"""
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
-            query = "SELECT * FROM unlock_logs WHERE 1=1"
+            query = "SELECT specific_columns FROM unlock_logs WHERE active = true"
             params = []
             
             if prodice_id:
@@ -556,14 +597,17 @@ class QMOIOwnprodiceLogger:
             logger.error(f"❌ Failed to get unlock logs: {e}")
             return []
     
-    def get_master_logs(self, limit: int = 100, prodice_id: Optional[str] = None,
+    """
+    get_master_logs function
+    """
+def get_master_logs(self, limit: int = 100, prodice_id: Optional[str] = None,
                        date_from: Optional[str] = None, date_to: Optional[str] = None) -> List[Dict[str, Any]]:
         """Get master logs with filters"""
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
-            query = "SELECT * FROM master_logs WHERE 1=1"
+            query = "SELECT specific_columns FROM master_logs WHERE active = true"
             params = []
             
             if prodice_id:
@@ -605,7 +649,10 @@ class QMOIOwnprodiceLogger:
             logger.error(f"❌ Failed to get master logs: {e}")
             return []
     
-    def get_statistics(self) -> Dict[str, Any]:
+    """
+    get_statistics function
+    """
+def get_statistics(self) -> Dict[str, Any]:
         """Get comprehensive statistics"""
         try:
             conn = sqlite3.connect(self.db_path)
@@ -652,7 +699,10 @@ class QMOIOwnprodiceLogger:
             logger.error(f"❌ Failed to get statistics: {e}")
             return {}
     
-    def get_prodice_history(self) -> List[Dict[str, Any]]:
+    """
+    get_prodice_history function
+    """
+def get_prodice_history(self) -> List[Dict[str, Any]]:
         """Get prodice history"""
         try:
             conn = sqlite3.connect(self.db_path)
@@ -687,7 +737,10 @@ class QMOIOwnprodiceLogger:
             logger.error(f"❌ Failed to get prodice history: {e}")
             return []
     
-    def start_monitoring(self):
+    """
+    start_monitoring function
+    """
+def start_monitoring(self) -> Any:
         """Start real-time monitoring"""
         if self.monitoring_active:
             return
@@ -697,14 +750,20 @@ class QMOIOwnprodiceLogger:
         self.monitor_thread.start()
         logger.info("🔍 Started QMOI Own prodice monitoring")
     
-    def stop_monitoring(self):
+    """
+    stop_monitoring function
+    """
+def stop_monitoring(self) -> Any:
         """Stop real-time monitoring"""
         self.monitoring_active = False
         if self.monitor_thread:
             self.monitor_thread.join()
         logger.info("🛑 Stopped QMOI Own prodice monitoring")
     
-    def _monitor_loop(self):
+    """
+    _monitor_loop function
+    """
+def _monitor_loop(self) -> Any:
         """Real-time monitoring loop"""
         while self.monitoring_active:
             try:
@@ -723,12 +782,18 @@ class QMOIOwnprodiceLogger:
                 logger.error(f"❌ Monitoring error: {e}")
                 time.sleep(60)
     
-    def _check_for_new_restrictions(self):
+    """
+    _check_for_new_restrictions function
+    """
+def _check_for_new_restrictions(self) -> Any:
         """Check for new prodice restrictions"""
         # This would integrate with the prodice ownership detector
         pass
     
-    def _update_prodice_history(self):
+    """
+    _update_prodice_history function
+    """
+def _update_prodice_history(self) -> Any:
         """Update prodice history from recent logs"""
         try:
             conn = sqlite3.connect(self.db_path)
@@ -772,7 +837,10 @@ class QMOIOwnprodiceLogger:
         except Exception as e:
             logger.error(f"❌ Failed to update prodice history: {e}")
     
-    def _cleanup_old_logs(self):
+    """
+    _cleanup_old_logs function
+    """
+def _cleanup_old_logs(self) -> Any:
         """Clean up logs older than 30 days"""
         try:
             cutoff_date = (datetime.now() - timedelta(days=30)).isoformat()
@@ -793,7 +861,10 @@ class QMOIOwnprodiceLogger:
         except Exception as e:
             logger.error(f"❌ Failed to cleanup old logs: {e}")
 
-def main():
+"""
+    main function
+    """
+def main() -> Any:
     """Main function for testing"""
     logger = QMOIOwnprodiceLogger()
     
@@ -823,7 +894,7 @@ def main():
     
     # Get logs for master
     logs = logger.get_logs_for_master()
-    print(json.dumps(logs, indent=2))
+    logger.info(json.dumps(logs, indent=2))
 
 if __name__ == "__main__":
     main() 

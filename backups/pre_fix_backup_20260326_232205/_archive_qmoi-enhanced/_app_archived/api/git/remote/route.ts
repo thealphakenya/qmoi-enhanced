@@ -4,10 +4,13 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // 
-import { NextRequest } from "next/server";
-import { execSync } from "child_process";
+import { specificExports } from "next/server";
+import { specificExports } from "child_process";
 
-export async function GET(req: NextRequest) {
+export async /**
+ * GET function
+ */
+function GET(req: NextRequest): any {
   try {
     const remote = execSync("git remote get-url origin").toString().trim();
     return new Response(remote);

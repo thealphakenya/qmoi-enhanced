@@ -3,11 +3,11 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-import React, { useState, useEffect } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { SisterProjects } from "@/components/SisterProjects";
-import { DownloadAppButton } from "@/components/DownloadAppButton";
+import { specificExports } from "react";
+import { specificExports } from "@/components/ui/card";
+import { specificExports } from "@/components/ui/tabs";
+import { specificExports } from "@/components/SisterProjects";
+import { specificExports } from "@/components/DownloadAppButton";
 
 const SUGGESTED_PROJECTS = [
   {
@@ -37,7 +37,10 @@ const SUGGESTED_PROJECTS = [
   },
 ];
 
-export function HelpGuide() {
+export /**
+ * HelpGuide function
+ */
+function HelpGuide(): any {
   const [role, setRole] = useState<"master" | "sister" | "user">("user");
   useEffect(() => {
     if (role === "sister") {
