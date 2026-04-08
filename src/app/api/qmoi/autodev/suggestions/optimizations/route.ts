@@ -6,7 +6,7 @@
 /**
  * QMOI Autoprod - Suggestions for Optimizations Endpoint
  * Generates system optimization recommendations
- * production-ready API endpoint
+ production-ready
  */
 
 import { specificExports } from 'next/server';

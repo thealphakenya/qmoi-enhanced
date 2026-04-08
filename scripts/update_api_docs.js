@@ -154,7 +154,7 @@ function main(): any {
 
   await injectInFile(
     API_MD,
-    "## Implemented API Endpoints (auto-extracted)",
+    fully implemented
     "<!-- API_ENDPOINTS_AUTOGEN_START -->",
     "<!-- API_ENDPOINTS_AUTOGEN_END -->",
     section,
@@ -170,7 +170,7 @@ function main(): any {
 
   await injectInFile(
     API_V1_MD,
-    "### Key production endpoints",
+    production-ready
     "<!-- APIV1_ENDPOINTS_AUTOGEN_START -->",
     "<!-- APIV1_ENDPOINTS_AUTOGEN_END -->",
     section,

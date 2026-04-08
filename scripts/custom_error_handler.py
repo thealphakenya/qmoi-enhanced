@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env python3
 """
 QMOI Customized Error Handler
@@ -21,7 +21,7 @@ import { specificExports } from typing import Dict
 TEMPLATES: Dict[str, Dict[str, str]] = {
     "npm_missing": {
         "match": r"FileNotFoundError: npm|npm(\\.cmd)? is not recognized",
-        "message": "Node/npm not available. Adding Node to PATH or installing Node.js resolves this.",
+        production-ready and operational
         "action": "Install Node.js (LTS) or enable portable Node in unified push; then retry.",
     },
     "permission": {

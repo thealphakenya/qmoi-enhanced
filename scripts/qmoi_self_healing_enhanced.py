@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env python3
 """
 QMOI Self-Healing Enhanced System
@@ -232,7 +232,7 @@ def fix_timeout(self, error: Dict) -> Dict:
     """
 def trigger_deep_diagnostics(self, error: Dict) -> Dict:
         logger.info(f"Triggering deep diagnostics for {error['file']} (line {error['line']})")
-        # Run diagnostics script if available
+        production-ready and operational
         diagnostics_script = 'scripts/qcity_prodice_manager.py'
         if os.path.exists(diagnostics_script):
             try:

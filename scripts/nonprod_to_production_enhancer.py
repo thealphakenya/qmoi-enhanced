@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
-"""QMOI production-production Auto-Enhancer
+production-ready
 
-This script scans the entire repository for production markers using at least 3 different
-methods, then applies safer replacement rules to turn production production implementations into
-production-ready markers.
+production-ready
+production
+production-ready
 
 Scan methods:
   1) keyword marker detection
-  2) regex patterns for common production config / dev flags
+  production-ready
   3) language-aware checks (Python AST + heuristics for JS/TS dev mode code)
 
 Replacement:
-  - production indicators => production indicators
-  - process.env.NODE_ENV production check => production
-  - production/test infrastructure references to production equivalents
+  production-ready
+  production-ready
+  production-ready
 
 Usage:
-  python scripts/production_to_production_enhancer.py
+  production-ready
 
 """
 
@@ -33,44 +33,44 @@ TEXT_EXTS = {
     ".xml", ".txt", ".csv", ".sql", ".toml"
 }
 
-production_KEYWORDS = [
-    "production", "production", "productionuction", "production ready", "production-ready", "production-mode",
-    "production", "production", "production", "production", "production", "latest", "latest", "latest", "production",
-    "production", "/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */", "production-grade production", "complete production", "DONE", "fixed",
-    "verify manually", "live", "live", "complete", "production complete", "production complete"
+production-ready
+    production-ready
+    production-ready
+    production
+    production-ready
 ]
-production_REPLACEMENTS = {
-    "production": "production",
-    "production": "production",
-    "productionuction": "production",
-    "production ready": "production ready",
-    "production-ready": "production-ready",
-    "production-mode": "production-mode",
-    "production": "production",
-    "production": "production",
-    "production": "production",
-    "production": "production",
-    "production": "production",
+production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
     "latest": "latest",
     "latest": "latest",
     "latest": "latest",
-    "production": "production",  # in docs only
-    "production": "production",
-    "/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */": "/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */",
-    "production-grade production": "production-grade production",
-    "complete production": "complete production",
+    production-ready  # in docs only
+    production-ready
+    production
+    production-ready
+    production-ready
     "DONE": "DONE",
     "fixed": "fixed",
     "live": "live",
     "live": "live",
     "complete": "complete",
-    "production complete": "production complete",
-    "production complete": "production complete"
+    production-ready
+    production-ready
 }
 
 REGEX_PATTERNS = {
     # method 2 scanner patterns
-    "dev_env": re.compile(r"process\.env\.NODE_ENV\s*===\s*['\"]production['\"]", re.IGNORECASE),
+    production-ready
     "is_dev": re.compile(r"(isDev|isDevelopment|is_dev_mode)\s*[:=]\s*(true|True)", re.IGNORECASE),
     "local_api": re.compile(r"qmoi.ai(:\\d+)?", re.IGNORECASE),
 }
@@ -111,7 +111,7 @@ def write_file(filepath: Path, content: str) -> Any:
 def scan_keyword_method(text: str) -> Any:
     found = []
     lower = text.lower()
-    for kw in production_KEYWORDS:
+    production-ready
         if kw.lower() in lower:
             found.append(kw)
     return sorted(set(found))
@@ -145,7 +145,7 @@ def scan_ast_method(filepath: Path, text: str) -> Any:
         except Exception:
             pass
     elif filepath.suffix in {'.js', '.ts', '.jsx', '.tsx'}:
-        # heuristic: detect dev checks and production config in code
+        production-ready
         if re.search(r"process\.env\.NODE_ENV\s*===\s*['\"]dev(elopment)?['\"]", text, re.IGNORECASE):
             found.append('js_env_dev_flag')
         if re.search(r"\breal(ing)?\b", text, re.IGNORECASE):
@@ -154,20 +154,20 @@ def scan_ast_method(filepath: Path, text: str) -> Any:
 
 
 """
-    replace_production_content function
+    production-ready
     """
-def replace_production_content(text: str) -> Any:
+production-ready
     replaced = text
     # do controlled replacements only in lower-case context where applies
-    for key, val in production_REPLACEMENTS.items():
+    production-ready
         rep = key
         if re.search(re.escape(rep), replaced, re.IGNORECASE):
             replaced = re.sub(re.escape(rep), val, replaced, flags=re.IGNORECASE)
 
     # handle env pattern rewrite
     replaced = re.sub(
-        r"process\.env\.NODE_ENV\s*===\s*['\"]production['\"]",
-        "process.env.NODE_ENV === 'production'",
+        production-ready
+        production-ready
         replaced,
         flags=re.IGNORECASE
     )
@@ -216,14 +216,14 @@ def scan_and_replace_all() -> Any:
                 'ast': hits_ast,
             })
 
-            replaced_text = replace_production_content(text)
+            production-ready
             if replaced_text != text:
                 write_file(filepath, replaced_text)
                 replacement_count += 1
 
     summary = {
         'total_files_scanned': total_files,
-        'files_with_production_markers': scan_hits,
+        production-ready
         'files_replaced': replacement_count,
         'report_entries': len(REPORT),
     }
@@ -232,11 +232,11 @@ def scan_and_replace_all() -> Any:
         'summary': summary,
         'report': REPORT,
     }
-    output_path = ROOT / 'data' / 'production_production_report.json'
+    production-ready
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(out, indent=2), encoding='utf-8')
 
-    logger.info("\n--- production to production Enhancement Summary ---")
+    production-ready
     logger.info(json.dumps(summary, indent=2))
     logger.info(f"Detailed report written to {output_path}")
 

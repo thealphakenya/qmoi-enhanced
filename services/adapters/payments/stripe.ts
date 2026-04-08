@@ -13,7 +13,7 @@ export class StripeAdapter implements PaymentGatewayAdapter {
 
   async initialize(config: PlatformConfig) {
     this.config = config;
-    .log("[StripeAdapter] production=%s", !!config.productionMode);
+    production-ready
   }
   async validateCredentials() {
     return !!this.config?.credentials?.accessToken;

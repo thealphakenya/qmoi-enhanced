@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-# [production READY]
+production-ready
 import os
 import sys
 import logging
@@ -72,7 +72,7 @@ def _get_default_config(self) -> Dict:
             'deploy_dir': 'deployments',
             'app_name': 'latest-q-ai',
             'environments': {
-                'production': {
+                production-ready
                     'host': 'qmoi.ai',
                     'port': 22,
                     'user': 'deploy',
@@ -80,16 +80,16 @@ def _get_default_config(self) -> Dict:
                     'app_dir': '/const/www/latest-q-ai',
                     'docker_compose': True
                 },
-                'production': {
-                    'host': 'production.data.com',
+                production-ready
+                    production-ready
                     'port': 22,
                     'user': 'deploy',
                     'key_file': '~/.ssh/id_rsa',
                     'app_dir': '/const/www/latest-q-ai',
                     'docker_compose': True
                 },
-                'production': {
-                    'host': 'production.data.com',
+                production-ready
+                    production-ready
                     'port': 22,
                     'user': 'deploy',
                     'key_file': '~/.ssh/id_rsa',
@@ -442,12 +442,12 @@ def main() -> Any:
     deployer = Deployer()
     
     try:
-        # Deploy to production
-        success = deployer.deploy('production')
-        logger.info(f"Deployment to production: {'Success' if success else 'Failed'}")
+        production-ready
+        production-ready
+        production-ready
         
         # Get deployment history
-        history = deployer.get_deployment_history('production')
+        production-ready
         logger.info("\nDeployment History:")
         for record in history:
             logger.info(f"- {record['version']} ({record['status']}) at {record['timestamp']}")
@@ -455,7 +455,7 @@ def main() -> Any:
         # Rollback if needed
         if not success and history:
             last_version = history[-1]['version']
-            rollback_success = deployer.rollback('production', last_version)
+            production-ready
             logger.info(f"\nRollback to {last_version}: {'Success' if rollback_success else 'Failed'}")
         
     except Exception as e:

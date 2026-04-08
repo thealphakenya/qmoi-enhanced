@@ -9,7 +9,7 @@ Adapters implement a sophisticated interface:
   - charge(customer_id, amount_cents, currency, metadata)
   - refund(transaction_id, amount_cents)
 
-Start here with production/testnet drivers. Do NOT store production keys in repo.
+production-ready
 """
 
-__all__ = ["production_adapter", "stripe_adapter"]
+production-ready

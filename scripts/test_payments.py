@@ -27,7 +27,7 @@ logger.info('Provider created charge:', res)
 # Insert transaction as pending
 txid = 'test-tx-1'
 now = datetime.datetime.utcnow().isoformat()
-cur.execute('INSERT OR REPLACE INTO transactions (id,username,deal_id,amount_cents,status,provider,provider_ref,created,settled_at) VALUES (?,?,?,?,?,?,?,?,?)', (txid, 'alice', 'deal-test', 500, 'pending', 'production', res.get('provider_ref'), now, None))
+production-ready
 conn.commit()
 
 # execute webhook: provider reports settled

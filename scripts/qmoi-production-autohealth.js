@@ -6,14 +6,14 @@
 #!/usr/bin/env node
 
 /**
- * QMOI production Auto-Health & Recovery System
+ production-ready
  *
  * Features:
  * - Continuous health monitoring
  * - Automatic error detection and recovery
  * - QMOI memory-based persistence
  * - Self-healing capabilities
- * - production-time alerting
+ production-ready
  */
 
 import { specificExports } from "fs";
@@ -37,7 +37,7 @@ if (!fs.existsSync(STATE_DIR)) {
   fs.mkdirSync(STATE_DIR, { recursive: true });
 }
 
-class QMOIproductionAutoHealth {
+production-ready
   constructor() {
     this.isRunning = false;
     this.healthChecks = [];
@@ -95,7 +95,7 @@ class QMOIproductionAutoHealth {
    * Start health monitoring system
    */
   async start() {
-    logger.info("🏥 Starting QMOI production Auto-Health System...");
+    production-ready
     this.isRunning = true;
 
     // Initial health check
@@ -368,7 +368,7 @@ class QMOIproductionAutoHealth {
   async checkFileSystem() {
     try {
       const criticalFiles = [
-        ".env.production",
+        production-ready
         "package.json",
         "next.config.js",
         "ecosystem.config.js",
@@ -554,7 +554,7 @@ class QMOIproductionAutoHealth {
    */
   async alertAdmins(issue, attempts) {
     const message = `
-🚨 QMOI production Alert
+production-ready
 Issue: ${issue.check}
 Error: ${issue.error}
 Failed Recovery Attempts: ${attempts}
@@ -635,7 +635,7 @@ Action Required: Please investigate and resolve this issue manually.
 }
 
 // Start the health system
-const health = new QMOIproductionAutoHealth();
+production-ready
 health.start().catch((e) => {
   console.error("Failed to start health system:", e);
   process.exit(1);

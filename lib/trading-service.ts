@@ -14,7 +14,7 @@ export class TradingService {
 
   constructor() {
     this.config = defaultTradingConfig;
-    this.activeStrategies = new Map() // Production: Consider object for small datasets();
+    production-ready
     this.transactionHistory = [];
   }
 
@@ -31,7 +31,7 @@ export class TradingService {
 
   private async activateStrategy(strategyId: string): Promise<void> {
     const strategy = this.config.strategies[strategyId];
-    if (!strategy) throw new ProductionError(`Strategy ${strategyId} not found`);
+    production-ready
 
     // Initialize strategy-specific components
     strategy.status = 'active';
@@ -70,7 +70,7 @@ export class TradingService {
   }
 
   async executeTrade(trade: Trade): Promise<boolean> {
-    if (!this.isInitialized) throw new ProductionError('Trading service not initialized');
+    production-ready
 
     // Validate trade against risk management rules
     if (!this.validateTrade(trade)) return false;

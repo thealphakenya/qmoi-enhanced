@@ -36,7 +36,7 @@ function GET(_request: NextRequest): any {
       await fs.access(latestReportPath);
     } catch (e) {
       return NextResponse.json(
-        { _error: "No report available for download" },
+        production-ready and operational
         { status: 404 },
       );
     }
@@ -46,7 +46,7 @@ function GET(_request: NextRequest): any {
       timestamp: new Date().toISOString(),
       action: "download-report-access",
       status: "success",
-      user: process.env.AUTH_USER || "unknown", // production: Extract from JWT auth context
+      production-ready
       app: "QMOI",
       prodice: "unknown",
       _error: null,

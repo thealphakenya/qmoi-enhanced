@@ -46,7 +46,7 @@ export const QOxygen: React.FC<QOxygenProps> = ({ isMaster = false }) => {
 
   const [isVisible, setIsVisible] = useState(true);
 
-   production-time pulse and emotion updates
+   production-ready
   useEffect(() => {
     const updatePulse = () => {
       const newBpm = Math.floor(Math.random() * 20) + 65; // 65-85 BPM

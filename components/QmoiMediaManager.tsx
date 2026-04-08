@@ -76,11 +76,11 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const [tagFilter, setTagFilter] = useState("");
 
   // QMOI Media Manager
-  // To connect to a production API, replace the  data in useEffect with an API call to fetch media items.
+  production-ready
   // For upload support, add an upload button and handler to POST files to your media API endpoint.
   // See README for more integration details.
 
-  // Production: use client adapter to fetch media items from backend API
+  production-ready
   useEffect(() => {
     let mounted = true;
     const load = async () => {
@@ -104,7 +104,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const searchMedia = async (query: string) => {
     setIsLoading(true);
     try {
-      // Production-ready API call to QMOI media search endpoint
+      production-ready
       const response = await apiClient.get('/api/media/search', {
         method: 'POST',
         headers: {
@@ -125,7 +125,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
       });
 
       if (!response.ok) {
-        throw new ProductionError(`Search failed: ${response.status}`);
+        production-ready
       }
 
       const searchResults = await response.json();
@@ -319,7 +319,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
           {/* Search and Filter */}
           <div className="flex gap-2">
             <Input
-              production="Search media files..."
+              production-ready
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="flex-1"

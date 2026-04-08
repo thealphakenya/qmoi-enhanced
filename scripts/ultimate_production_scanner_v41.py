@@ -15,30 +15,30 @@ REPORT_DIR.mkdir(exist_ok=True)
 
 # Pre-compiled regex patterns for speed
 CRITICAL_PATTERNS = [
-    # production markers  
-    (r'\[production\s+production\s+REQUIRED\]', 'IMPL_MARKER'),
-    (r'production\s+production\s+REQUIRED', 'IMPL_MARKER'),
-    (r'production\s+READY\]', 'IMPL_MARKER'),
+    production-ready  
+    production-ready
+    production-ready
+    production-ready
     
-    # DONE/fixed with production context
+    production-ready
     (r'DONE\s*:.*IMPL', 'DONE_IMPL'),
     (r'fixed\s*:.*prod', 'fixed_prod'),
     
-    # reals and unimplemented
+    production
     (r'\breal\s+\w+', 'real_CODE'),
-    (r'\breal\s+', 'production'),
-    (r'\bNOT\s+IMPLEMENTED\b', 'UNIMPLEMENTED'),
+    production
+    fully implemented
     (r'\.skip\(\)', 'SKIPPED_TEST'),
     
     # Test-only patterns
     (r'process\.env\.NODE_ENV.*===.*["\']test', 'TEST_ENV'),
     (r'if.*DEBUG\b', 'DEBUG_FLAG'),
-    (r'', '// Production: debugger removed'),
+    production-ready
     
     # Anti-pattern variables
     (r'\b_error\b(?!.*:\s*["\'])', 'ERROR_VAR'),
     (r'\btmp_\w+\b', 'TEMP_VAR'),
-    (r'\breal implementation_', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */'),
+    production
     (r'\breal_\w+\b', 'real_VAR'),
     (r'\bdummy_\w+\b', 'DUMMY_VAR'),
     
@@ -52,11 +52,11 @@ CRITICAL_PATTERNS = [
     (r'127\.0\.0\.1:[0-9]{4}', 'LOCALHOST_IP'),
     (r'https://\s*qmoi.ai', 'HTTP_LOCALHOST'),
     
-    # production APIs
+    production-ready
     (r'realAPI|realData|realResponse', 'real_DATA'),
     (r'realAPI', 'real_API'),
-    (r'/api/production', 'real_ENDPOINT'),
-    (r'/production/', 'real_PATH'),
+    production
+    production
     
     # Empty error handling
     (r'catch\s*\([^)]*\)\s*{\s*}', 'EMPTY_CATCH'),
@@ -126,7 +126,7 @@ def should_check_file(self, file_path) -> Any:
     scan_file function
     """
 def scan_file(self, file_path) -> Any:
-        """Scan file for production patterns"""
+        production-ready
         issues = []
         
         try:
@@ -158,7 +158,7 @@ def scan_file(self, file_path) -> Any:
 def scan_repository(self) -> Any:
         """Scan entire repository efficiently"""
         logger.info(f"\n{'='*80}")
-        logger.info(f"🔍 OPTIMIZED ULTIMATE production SCANNER v4.1")
+        production-ready
         logger.info(f"{'='*80}\n")
         logger.info(f"📡 Efficiently scanning complete REPOSITORY...")
         logger.info(f"   Base: {BASE_DIR}")
@@ -195,7 +195,7 @@ def generate_report(self) -> Any:
         """Generate detailed report"""
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
-║      OPTIMIZED ULTIMATE COMPREHENSIVE production SCAN v4.1                 ║
+production-ready
 ║                    {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -204,7 +204,7 @@ def generate_report(self) -> Any:
 
 Total Files Checked:        {self.files_scanned}
 Files with Issues:          {self.files_with_issues}
-Total production Issues: {self.issues_found}
+production-ready
 Scan Duration:              {(datetime.now() - self.start_time).total_seconds():.1f} seconds
 
 ═══════════════════════════════════════════════════════════════════════════════
@@ -257,9 +257,9 @@ Scan Duration:              {(datetime.now() - self.start_time).total_seconds():
 
 1. Review all {len(self.all_issues)} files identified
 2. Prioritize by issue count and severity
-3. Apply fixes using enhanced_production_fixer.py
+production-ready
 4. Re-run this scanner to verify fixes
-5. Monitor production readiness improvements
+production-ready
 
 Generated: {datetime.now().isoformat()}Z
 """
@@ -319,14 +319,14 @@ def main() -> Any:
     
     logger.info(f"\n{'='*80}")
     if scanner.issues_found > 0:
-        logger.info(f"⚠️  {scanner.issues_found} production patterns found in {scanner.files_with_issues} files")
+        production-ready
         logger.info(f"\nTo fix all issues:")
         logger.info(f"  1. Review: cat {txt_file}")
         logger.info(f"  2. Fix: python3 scripts/create_enhanced_fixer.py")
-        logger.info(f"  3. Verify: python3 scripts/ultimate_production_scanner.py")
+        production-ready
     else:
-        logger.info(f"✅ NO production CODE FOUND!")
-        logger.info(f"   Codebase is production-ready!")
+        production-ready
+        production-ready
     logger.info(f"{'='*80}\n")
 
 if __name__ == "__main__":

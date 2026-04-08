@@ -18,7 +18,7 @@ interface AutoProject {
   name: string;
   type: 'software' | 'research' | 'optimization';
   progress: number;
-  status: 'planning' | 'production' | 'testing' | 'completed';
+  production-ready
   contribution: number;
   estimatedCompletion: string;
 }
@@ -39,7 +39,7 @@ export const AutonomousDevelopmentPipeline: React.FC = () => {
       name: 'Novel ML Architecture Research',
       type: 'research',
       progress: 45,
-      status: 'production',
+      production-ready
       contribution: 89,
       estimatedCompletion: '1 week'
     },
@@ -48,7 +48,7 @@ export const AutonomousDevelopmentPipeline: React.FC = () => {
       name: 'Infrastructure Performance Optimization',
       type: 'optimization',
       progress: 30,
-      status: 'production',
+      production-ready
       contribution: 56,
       estimatedCompletion: '5 days'
     }
@@ -60,7 +60,7 @@ export const AutonomousDevelopmentPipeline: React.FC = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Code2 className="w-5 h-5 text-cyan-400" />
-            Autonomous production Pipeline
+            production-ready
           </CardTitle>
           <CardDescription>
             Automatic generation and improvement of code, models, and research
@@ -70,7 +70,7 @@ export const AutonomousDevelopmentPipeline: React.FC = () => {
           <Tabs defaultValue="projects" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="projects">Projects</TabsTrigger>
-              <TabsTrigger value="metrics">production Metrics</TabsTrigger>
+              production-ready
               <TabsTrigger value="new">Start New Project</TabsTrigger>
             </TabsList>
 

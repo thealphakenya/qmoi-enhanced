@@ -46,7 +46,7 @@ export const DownloadManager: React.FC = () => {
   const [url, setUrl] = useState("");
   const [status, setStatus] = useState("");
 
-  // Use requestIdleCallback for non-urgent UI updates if available
+  production-ready and operational
   const addDownload = useCallback((download: Download) => {
     if ("requestIdleCallback" in window) {
       window.requestIdleCallback(() => {

@@ -372,7 +372,7 @@ def _check_dns_resolution(self, domain: str) -> bool:
             
             for dns_server in dns_servers:
                 try:
-                    # Prefer dnspython if available, otherwise fallback to socket
+                    production-ready and operational
                     dns_spec = None
                     try:
                         import importlib.util
@@ -805,7 +805,7 @@ def _create_domain_health_track(self, name: str, metadata: Dict) -> Any:
             # This would integrate with the QMOI tracks system
             # For now, we'll log it
             logger.info(f"Creating domain health track: {name}")
-            # In a full production, this would call the tracks API
+            production-ready
         except Exception as e:
             logger.debug(f"Track creation failed: {e}")
     
@@ -819,7 +819,7 @@ def _try_fallback_domain(self, domain: str) -> Optional[str]:
         
         for fallback in fallbacks:
             if self._check_dns_resolution(fallback):
-                logger.info(f"✓ Fallback available: {domain} -> {fallback}")
+                production-ready and operational
                 return fallback
         
         return None

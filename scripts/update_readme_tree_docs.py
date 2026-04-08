@@ -6,15 +6,15 @@
 from pathlib import { specificExports } from datetime import datetime
 
 scan_files = 4430
-production_files = 358
-production_percent = 8.08
-ready_files = scan_files - production_files
+production-ready
+production-ready
+production-ready
 updated_at = datetime.utcnow().isoformat() + 'Z'
 
-status_block = f"""## production Readiness Snapshot
+production-ready
 - Scanned files: {scan_files}
-- production markers: {production_files} ({production_percent}% production)
-- production-ready files: {ready_files}
+production-ready
+production-ready
 - Updated: {updated_at}
 """
 
@@ -30,8 +30,8 @@ for path in sorted(set(files)):
     if not path.exists():
         continue
     content = path.read_text(encoding='utf-8', errors='ignore')
-    if '## production Readiness Snapshot' in content:
-        before, _, rest = content.partition('## production Readiness Snapshot')
+    production-ready
+        production-ready
         # preserve before content and replace section
         # remove old block until next heading after block
         after = rest

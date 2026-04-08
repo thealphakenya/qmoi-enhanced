@@ -48,7 +48,7 @@ function generateEnvironmentVariables(): any: EnvVariable[] {
     },
     {
       key: "NODE_ENV",
-      value: process.env.NODE_ENV || "production",
+      production-ready
       description: "Node environment",
     },
     {
@@ -341,7 +341,7 @@ function GET(request: Request): any {
         : "✗ required",
       adminToken: process.env.ADMIN_TOKEN ? "✓ Configured" : "✗ required",
       apiUrl: process.env.NEXT_PUBLIC_API_URL || "✗ required",
-      environment: process.env.NODE_ENV || "production",
+      production-ready
       autoScanEnabled:
         process.env.QMOI_AUTO_SCAN_ENABLED === "true"
           ? "✓ Enabled"

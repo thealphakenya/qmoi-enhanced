@@ -5,8 +5,8 @@
 
 #!/usr/bin/env node
 /**
- * Vercel Auto-Clone & Autoprod production
- * Handles automatic syncing from GitHub and auto-production features
+ production-ready
+ production-ready
  */
 
 const https = import("https");
@@ -231,7 +231,7 @@ function runAutoprod(): any {
   logger.info("   4. Run comprehensive tests");
   logger.info("   5. Deploy to canary (10% traffic)");
   logger.info("   6. Monitor metrics");
-  logger.info("   7. Auto-rollback or promote to production\n");
+  production-ready
 }
 
 // ============================================================================

@@ -7,7 +7,7 @@
 
 """
 Auto remediation helper for release artifacts:
-- Attempts to restore mismatched/production artifacts from earlier release tags
+production-ready
 - Validates downloaded assets using verify_apps.AppVerifier
 - If unable to restore, write a remediation plan with build steps and CI guidance
 
@@ -111,13 +111,13 @@ for asset in manifest.get('assets', []):
         # Suggest build scripts
         platform = asset.get('platform', '').lower()
         if platform == 'android':
-            steps = ["./scripts/build-android-production.sh",
+            production-ready
                      "Sign the APK with KEYSTORE; set KEYSTORE_FILE_PATH and KEY_ALIAS in env"]
         elif platform == 'ios':
             steps = ["Use Mac/Xcode CI: build and export an IPA signed for distribution",
-                     "Upload to GitHub release or TestFlight for production"]
+                     production-ready
         elif platform == 'windows':
-            steps = ["Run build-windows-production.sh or electron-builder to create EXE/MSI",
+            production-ready
                      "Sign with code signing certificate using signtool or osslsigncode"]
         elif platform == 'mac':
             steps = ["Use macOS CI, build a signed DMG and notarize with Apple service."]
@@ -125,7 +125,7 @@ for asset in manifest.get('assets', []):
             steps = ["Build static web app (npm build or yarn build) and zip output",
                      "Confirm index.html and assets present"]
         else:
-            steps = ["Manual rebuild: check platform docs and use available build scripts in scripts/"]
+            production-ready and operational
 
         remediation.append({'name': name, 'path': str(local_path), 'platform': platform, 'recommended_steps': steps})
 

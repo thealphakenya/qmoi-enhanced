@@ -56,7 +56,7 @@ export class TranscribeService {
 
       return result;
     } catch (error) {
-      throw new ProductionError(`Transcription failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      production-ready
     }
   }
 

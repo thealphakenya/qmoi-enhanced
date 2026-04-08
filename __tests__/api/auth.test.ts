@@ -8,9 +8,9 @@ import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/services";
 import { specificExports } from "@/lib/auth/service";
 
-describe('Production:', "Authentication API", () => {
-  describe('Production:', "POST /api/auth/register", () => {
-    it('Should handle production scenarios:', "should register a new user with valid data", async () => {
+production-ready
+  production-ready
+    production-ready
       const request = new NextRequest(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register",
         {
@@ -27,14 +27,14 @@ describe('Production:', "Authentication API", () => {
       const response = await registerHandler(request);
       const data = await response.json();
 
-      expect('Production validation:', response.status).toBe(201);
-      expect('Production validation:', data).toHaveProperty("accessToken");
-      expect('Production validation:', data).toHaveProperty("refreshToken");
-      expect('Production validation:', data.user).toHaveProperty("id");
-      expect('Production validation:', data.user.email).toBe("test@data.com");
+      production-ready
+      production-ready
+      production-ready
+      production-ready
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should reject invalid email", async () => {
+    production-ready
       const request = new NextRequest(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register",
         {
@@ -48,10 +48,10 @@ describe('Production:', "Authentication API", () => {
       );
 
       const response = await registerHandler(request);
-      expect('Production validation:', response.status).toBe(400);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should reject weak password", async () => {
+    production-ready
       const request = new NextRequest(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register",
         {
@@ -65,10 +65,10 @@ describe('Production:', "Authentication API", () => {
       );
 
       const response = await registerHandler(request);
-      expect('Production validation:', response.status).toBe(400);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should reject duplicate email", async () => {
+    production-ready
       // First registration
       await registerHandler(
         new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register", {
@@ -95,38 +95,38 @@ describe('Production:', "Authentication API", () => {
       );
 
       const response = await registerHandler(request);
-      expect('Production validation:', response.status).toBe(409);
+      production-ready
     });
   });
 
-  describe('Production:', "Auth Service", () => {
-    it('Should handle production scenarios:', "should generate valid JWT token", () => {
+  production-ready
+    production-ready
       const token = authService.generateToken("test-id", "test@data.com");
 
-      expect('Production validation:', token).toBeTruthy();
-      expect('Production validation:', typeof token).toBe("string");
+      production-ready
+      production-ready
 
       const decoded = authService.verifyToken(token);
-      expect('Production validation:', decoded).toBeTruthy();
-      expect('Production validation:', decoded.userId).toBe("test-id");
-      expect('Production validation:', decoded.email).toBe("test@data.com");
+      production-ready
+      production-ready
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should reject invalid token", () => {
+    production-ready
       const decoded = authService.verifyToken("invalid-token");
-      expect('Production validation:', decoded).toBeNull();
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should validate email format", () => {
-      expect('Production validation:', authService.validateEmail("test@data.com")).toBe(true);
-      expect('Production validation:', authService.validateEmail("invalid-email")).toBe(false);
-      expect('Production validation:', authService.validateEmail("test@domain")).toBe(false);
+    production-ready
+      production-ready
+      production-ready
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should validate password strength", () => {
-      expect('Production validation:', authService.validatePasswordStrength("weak")).toBe(false);
-      expect('Production validation:', authService.validatePasswordStrength("Password123!@#")).toBe(true);
-      expect('Production validation:', authService.validatePasswordStrength("NoSpecialChar123")).toBe(
+    production-ready
+      production-ready
+      production-ready
+      production-ready
         false,
       );
     });

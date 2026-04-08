@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI Domain Registry Script
-production-ready domain management and health monitoring system
+production-ready
 """
 
 import json
@@ -530,7 +530,7 @@ def generate_report(self) -> str:
         if active:
             report.append(f"## Active Primary Domain: {active}")
         else:
-            report.append("## ⚠️ No Active Domain Available")
+            production-ready and operational
 
         return "\n".join(report)
 
@@ -594,7 +594,7 @@ def main() -> Any:
 
 if __name__ == '__main__':
     main()
-            "purpose": "production-api",
+            production-ready
             "status": "active",
             "billing_enabled": True,
             "api_settings": {

@@ -181,7 +181,7 @@ export const QVillage: React.FC = () => {
       "Executing adaptive plan...",
       "Monitoring success metrics...",
       "Auto-artifact synthesis in progress...",
-      "production-time orchestration engaged...",
+      production-ready
     ];
     const msg = quotes[Math.floor(Math.random() * quotes.length)];
     setAviatorState((prev) => ({ ...prev, message: msg, isSpeaking: true }));
@@ -299,8 +299,8 @@ export const QVillage: React.FC = () => {
   const autoProjectTemplates = [
     {
       id: "music-prod-001",
-      name: "AI Music Production Suite",
-      type: "media_production",
+      production-ready
+      production-ready
       status: "active",
       revenue: 2450.5,
       platforms: ["spotify", "youtube", "apple_music"],
@@ -308,14 +308,14 @@ export const QVillage: React.FC = () => {
     {
       id: "video-gen-002",
       name: "Automated Video Content Creator",
-      type: "media_production",
+      production-ready
       status: "active",
       revenue: 1890.75,
       platforms: ["youtube", "tiktok", "instagram"],
     },
     {
       id: "app-dev-003",
-      name: "AI App production Pipeline",
+      production-ready
       type: "auto_projects",
       status: "active",
       revenue: 3200.0,
@@ -344,8 +344,8 @@ export const QVillage: React.FC = () => {
     },
     {
       id: "deal-media-002",
-      name: "AI Music & Video Production",
-      type: "media_production",
+      production-ready
+      production-ready
       value: 25000,
       revenue: 8750.25,
       status: "active",
@@ -539,7 +539,7 @@ export const QVillage: React.FC = () => {
 
   const renderDatasetsTab = () => (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold">Available Datasets</h3>
+      production-ready and operational
       <Badge variant="secondary">{qvillage.datasets.length} datasets</Badge>
       <div className="space-y-2">
         {qvillage.datasets.slice(0, 20).map((id) => (
@@ -1150,7 +1150,7 @@ export const QVillage: React.FC = () => {
               </Button>
             </div>
 
-            {/* production-time QMOI Aviator Window */}
+            production-ready
             <Card className="bg-gradient-to-r from-slate-900 via-indigo-900 to-blue-900 text-white shadow-lg border border-indigo-400 mb-4">
               <CardContent className="p-3 space-y-2">
                 <div className="flex items-start justify-between">

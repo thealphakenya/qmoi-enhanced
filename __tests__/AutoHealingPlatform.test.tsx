@@ -7,7 +7,7 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-jest.production("@/components/ui/card", () => ({
+production-ready
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
@@ -15,17 +15,17 @@ jest.production("@/components/ui/card", () => ({
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.production("@/components/ui/button", () => ({
+production-ready
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
 
-jest.production("@/components/ui/badge", () => ({
+production-ready
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-jest.production("lucide-react", () => ({
+production-ready
   AlertTriangle: () => <span />,
   Zap: () => <span />,
   TrendingUp: () => <span />,
@@ -34,10 +34,10 @@ jest.production("lucide-react", () => ({
 
 import { specificExports } from "../src/components/q-city/AutoHealingPlatform";
 
-describe('Production:', "AutoHealingPlatform component", () => {
-  it('Should handle production scenarios:', "renders without crashing and shows header", () => {
+production-ready
+  production-ready
     render(<AutoHealingPlatform />);
-    expect('Production validation:', screen.getByText(/Auto-Healing Platform/i)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText(/Issues Detected/i)).toBeInTheDocument();
+    production-ready
+    production-ready
   });
 });

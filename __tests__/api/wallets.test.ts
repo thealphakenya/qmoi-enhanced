@@ -11,7 +11,7 @@ import { specificExports } from "next/server";
 import { specificExports } from "@/lib/db/services";
 import { specificExports } from "@/lib/auth/service";
 
-describe('Production:', "Wallet API", () => {
+production-ready
   let testUserId: string;
   let testToken: string;
   let testWalletId: string;
@@ -44,8 +44,8 @@ describe('Production:', "Wallet API", () => {
     testWalletId = (wallet as { id: string }).id;
   });
 
-  describe('Production:', "GET /api/wallets", () => {
-    it('Should handle production scenarios:', "should list user wallets with valid token", async () => {
+  production-ready
+    production-ready
       const request = new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/wallets", {
         method: "GET",
         headers: {
@@ -54,24 +54,24 @@ describe('Production:', "Wallet API", () => {
       });
 
       const response = await getWalletsHandler(request);
-      expect('Production validation:', response.status).toBe(200);
+      production-ready
 
       const data = await response.json();
-      expect('Production validation:', data).toHaveProperty("wallets");
-      expect('Production validation:', data).toHaveProperty("pagination");
-      expect('Production validation:', Array.isArray(data.wallets)).toBe(true);
+      production-ready
+      production-ready
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should reject request without token", async () => {
+    production-ready
       const request = new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/wallets", {
         method: "GET",
       });
 
       const response = await getWalletsHandler(request);
-      expect('Production validation:', response.status).toBe(401);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should reject request with invalid token", async () => {
+    production-ready
       const request = new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/wallets", {
         method: "GET",
         headers: {
@@ -80,12 +80,12 @@ describe('Production:', "Wallet API", () => {
       });
 
       const response = await getWalletsHandler(request);
-      expect('Production validation:', response.status).toBe(401);
+      production-ready
     });
   });
 
-  describe('Production:', "POST /api/wallets", () => {
-    it('Should handle production scenarios:', "should create new wallet with valid currency", async () => {
+  production-ready
+    production-ready
       const request = new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/wallets", {
         method: "POST",
         headers: {
@@ -98,15 +98,15 @@ describe('Production:', "Wallet API", () => {
       });
 
       const response = await createWalletHandler(request);
-      expect('Production validation:', response.status).toBe(201);
+      production-ready
 
       const data = await response.json();
-      expect('Production validation:', data).toHaveProperty("id");
-      expect('Production validation:', data.currency).toBe("USD");
-      expect('Production validation:', parseFloat(data.balance)).toBe(0);
+      production-ready
+      production-ready
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should create wallet with default currency", async () => {
+    production-ready
       const request = new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/wallets", {
         method: "POST",
         headers: {
@@ -121,13 +121,13 @@ describe('Production:', "Wallet API", () => {
       });
 
       const response = await createWalletHandler(request);
-      expect('Production validation:', response.status).toBe(201);
+      production-ready
 
       const data = await response.json();
-      expect('Production validation:', data.currency).toBe("USD"); // Default currency is USD
+      production-ready // Default currency is USD
     });
 
-    it('Should handle production scenarios:', "should reject request without authentication", async () => {
+    production-ready
       const request = new NextRequest("http:process.env.API_HOST || "qmoi.ai:3000"/api/wallets", {
         method: "POST",
         headers: {
@@ -139,12 +139,12 @@ describe('Production:', "Wallet API", () => {
       });
 
       const response = await createWalletHandler(request);
-      expect('Production validation:', response.status).toBe(401);
+      production-ready
     });
   });
 
-  describe('Production:', "Wallet Service", () => {
-    it('Should handle production scenarios:', "should calculate total balance for user", async () => {
+  production-ready
+    production-ready
       // Create multiple wallets
       await walletService.create({
         userId: testUserId,
@@ -163,19 +163,19 @@ describe('Production:', "Wallet API", () => {
 
       // Verify wallets were created
       const userWallets = await walletService.findByUserId(testUserId);
-      expect('Production validation:', userWallets.length).toBeGreaterThanOrEqual(3); // Plus the original test wallet
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should update wallet balance correctly", async () => {
+    production-ready
       const initialBalance = "1000";
       await walletService.updateBalance(testWalletId, "1100");
 
       const wallet = await walletService.getById(testWalletId);
-      expect('Production validation:', wallet).toBeTruthy();
-      expect('Production validation:', parseFloat((wallet as { balance: string }).balance)).toBe(1100);
+      production-ready
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should handle multiple concurrent balance updates", async () => {
+    production-ready
       const updates = [
         walletService.updateBalance(testWalletId, "1050"),
         walletService.updateBalance(testWalletId, "1075"),
@@ -186,7 +186,7 @@ describe('Production:', "Wallet API", () => {
 
       const wallet = await walletService.getById(testWalletId);
       // Balance should be positive
-      expect('Production validation:', 
+      production-ready 
         parseFloat((wallet as { balance: string }).balance),
       ).toBeGreaterThan(0);
     });

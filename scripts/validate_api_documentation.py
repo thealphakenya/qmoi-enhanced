@@ -32,7 +32,7 @@ LION_BLOCK_TEMPLATE = """<!-- LION_VALIDATION_START -->
 - validated: yes
 - validator: QMOI Lion
 - timestamp: {ts}
-- IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
+fully implemented
 <!-- LION_VALIDATION_END -->
 
 """

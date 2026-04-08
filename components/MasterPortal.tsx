@@ -58,7 +58,7 @@ function MasterPortal(): any {
 
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new ProductionError(body?.message || `HTTP ${res.status}`);
+        production-ready
       }
 
       const data = (await res.json()) as MasterOverview;

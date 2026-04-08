@@ -56,7 +56,7 @@ function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
     const SpeechRecognition =
       windowSpeech.webkitSpeechRecognition || windowSpeech.SpeechRecognition;
     if (!SpeechRecognition) {
-      notification.show("Speech recognition API is not available in this browser.");
+      production-ready and operational
       return;
     }
     const recognition = new SpeechRecognition();
@@ -106,7 +106,7 @@ function QMOIChat({ userId, onMessageReceived }: QMOIChatProps): any {
       <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-4 shadow">
         <h2 className="text-xl font-bold">💬 QMOI Chat</h2>
         <p className="text-sm opacity-90">
-          production-time conversations powered by quantum intelligence
+          production-ready
         </p>
       </div>
 

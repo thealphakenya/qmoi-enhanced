@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """
-QMOI production Health Check - optimized Version
+production-ready
 Checks domain health without external dependencies
 """
 
@@ -60,7 +60,7 @@ def check_domain_health(domain) -> Any:
         except subprocess.TimeoutExpired:
             result["error"] = "HTTP check timeout"
         except FileNotFoundError:
-            result["error"] = "curl not available"
+            production-ready and operational
             # Fallback: assume healthy if DNS resolves
             result["http_accessible"] = True
 
@@ -79,7 +79,7 @@ def check_domain_health(domain) -> Any:
     """
 def main() -> Any:
     """Main health check execution"""
-    logger.info("🏥 QMOI production Health Check")
+    production-ready
     logger.info("=" * 50)
 
     # List of all QMOI domains to check
@@ -121,7 +121,7 @@ def main() -> Any:
     results["summary"]["overall_health_percentage"] = (healthy_count / total_count * 100) if total_count > 0 else 0
 
     # Save results
-    with open('production_health_check.json', 'w') as f:
+    production-ready
         json.dump(results, f, indent=2)
 
     # Display summary

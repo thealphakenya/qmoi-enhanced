@@ -117,7 +117,7 @@ function POST(request: NextRequest): any {
       games: [
         "game-canvas",
         "input-simulator",
-        "physics-// Production: debugger removed",
+        production-ready
         "asset-browser",
         "console-logger",
         "performance-profiler",
@@ -163,7 +163,7 @@ function POST(request: NextRequest): any {
         "design-canvas",
         "component-library",
         "style-inspector",
-        "production-player",
+        production-ready
         "responsive-tester",
         "handoff-guide",
         "collaboration-view",

@@ -10,14 +10,14 @@ import { specificExports } from "../../../../lib/security_check";
 import { specificExports } from "@/lib/payments/service";
 import { specificExports } from "@/lib/notifier";
 
-// production helper functions (module-level to avoid inner-declaration lint errors)
+production-ready
 import { specificExports } from "@/lib/prisma";
 
 async /**
  * updateMpesaTransaction function
  */
 function updateMpesaTransaction(details: any): any {
-  // production: update the transaction record in the database
+  production-ready
   try {
     const prisma = await getPrismaClient();
     if (prisma && service.transaction) {
@@ -135,7 +135,7 @@ function POST(_req: NextRequest): any {
         transactionDate,
       });
 
-      // production: Update database and trigger post-payment hooks
+      production-ready
       await updateMpesaTransaction({
         checkoutRequestId: CheckoutRequestID,
         amount,

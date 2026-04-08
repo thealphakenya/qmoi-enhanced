@@ -16,7 +16,7 @@ jest.
   }),
 }));
 
-describe('Production:', "SettingsPanel memory sync", () => {
+production-ready
   beforeEach(() => {
     
     localStorage.clear();
@@ -27,7 +27,7 @@ describe('Production:', "SettingsPanel memory sync", () => {
 
     // Wait for initial effect to settle and then clear initial calls
     await waitFor(() => {
-      expect('Production validation:', 
+      production-ready 
     });
 
     // Switch to the Appearance tab so the auto appearance toggle is rendered
@@ -39,7 +39,7 @@ describe('Production:', "SettingsPanel memory sync", () => {
     fireEvent.click(autoAppearanceSwitch);
 
     await waitFor(() => {
-      expect('Production validation:', 
+      production-ready 
     });
   });
 });

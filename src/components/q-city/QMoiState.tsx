@@ -51,7 +51,7 @@ function QMoiState({
     return () => clearInterval(timer);
   }, []);
 
-   production-time Qmoi state updates
+   production-ready
   useEffect(() => {
     const emotions = [
       "focused",

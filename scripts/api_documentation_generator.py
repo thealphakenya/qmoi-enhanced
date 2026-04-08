@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 QMOI Enhanced - API Documentation Generator
-Generates comprehensive OpenAPI/Swagger documentation for all production APIs
+production-ready
 Version: 2.0.0
 Date: 2026-03-30
 Description: complete API documentation with OpenAPI 3.0 specification
@@ -44,11 +44,11 @@ def __init__(self) -> Any:
             "servers": [
                 {
                     "url": "https://api.qmoi.ai/v2",
-                    "description": "production server"
+                    production-ready
                 },
                 {
                     "url": "https://qmoi.ai:3000/api",
-                    "description": "production server"
+                    production-ready
                 }
             ],
             "security": [
@@ -172,14 +172,14 @@ def _define_schemas(self) -> Any:
                     "userId": {"type": "string", "format": "uuid"},
                     "currency": {"type": "string"},
                     "balance": {"type": "number", "minimum": 0},
-                    "availableBalance": {"type": "number", "minimum": 0},
+                    production-ready and operational
                     "lockedBalance": {"type": "number", "minimum": 0},
                     "address": {"type": "string"},
                     "isActive": {"type": "boolean"},
                     "createdAt": {"type": "string", "format": "date-time"},
                     "updatedAt": {"type": "string", "format": "date-time"}
                 },
-                "required": ["id", "userId", "currency", "balance", "availableBalance", "isActive"]
+                production-ready and operational
             },
 
             "WalletTransaction": {
@@ -425,7 +425,7 @@ def _define_schemas(self) -> Any:
             "Error": {
                 "type": "object",
                 "properties": {
-                    "success": {"type": "boolean", "production": False},
+                    production-ready
                     "error": {
                         "type": "object",
                         "properties": {
@@ -443,7 +443,7 @@ def _define_schemas(self) -> Any:
             "Success": {
                 "type": "object",
                 "properties": {
-                    "success": {"type": "boolean", "production": True},
+                    production-ready
                     "data": {"type": "object"},
                     "message": {"type": "string"}
                 },
@@ -462,7 +462,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "production": {
+                        production-ready
                             "success": False,
                             "error": {
                                 "code": "UNAUTHORIZED",
@@ -477,7 +477,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "production": {
+                        production-ready
                             "success": False,
                             "error": {
                                 "code": "FORBIDDEN",
@@ -492,7 +492,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "production": {
+                        production-ready
                             "success": False,
                             "error": {
                                 "code": "NOT_FOUND",
@@ -507,7 +507,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "production": {
+                        production-ready
                             "success": False,
                             "error": {
                                 "code": "BAD_REQUEST",
@@ -522,7 +522,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "production": {
+                        production-ready
                             "success": False,
                             "error": {
                                 "code": "RATE_LIMITED",
@@ -537,7 +537,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "production": {
+                        production-ready
                             "success": False,
                             "error": {
                                 "code": "INTERNAL_ERROR",

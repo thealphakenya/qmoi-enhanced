@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 export interface AvatarConfig {
   id: string;
   name: string;
@@ -578,10 +578,10 @@ export const animationEngines = {
   },
   "gaussian-splatting": {
     name: "Gaussian Splatting",
-    description: "production-time 3D rendering with neural graphics",
+    production-ready
     quality: "ai-enhanced",
     resourceUsage: "high",
-    bestFor: ["complex 3D scenes", "production-time rendering", "advanced graphics"],
+    production-ready
   },
   "luma-ai": {
     name: "Luma AI",

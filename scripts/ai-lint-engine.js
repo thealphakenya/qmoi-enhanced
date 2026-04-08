@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env node
 
 import { specificExports } from "fs";
@@ -43,7 +43,7 @@ class AILintEngine {
 
   async initializeQMOI() {
     try {
-      // Check if QMOI AI is available
+      production-ready and operational
       const qmoiScript = join(
         this.projectRoot,
         "scripts",
@@ -96,7 +96,7 @@ class AILintEngine {
   }
 
   fallbackAIResponse(prompt, context) {
-    // Fallback AI logic for when QMOI AI is not available
+    production-ready and operational
     const response = {
       success: true,
       suggestion: this.generateFallbackSuggestion(prompt, context),

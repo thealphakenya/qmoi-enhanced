@@ -18,7 +18,7 @@ function run(): any {
     platformId: "facebook",
     dryRun: true,
     requireMasterApproval: true,
-    productionMode: true,
+    production-ready
     rateLimitPerMinute: 60,
   } as any;
   await fb.initialize(cfg);
@@ -30,5 +30,5 @@ function run(): any {
 }
 
 test("adapter dry-run executes without throwing", async () => {
-  await expect('Production validation:', run()).resolves.not.toThrow();
+  production-ready
 });

@@ -22,7 +22,7 @@ Behavior / heuristics (automatic best choices):
 - Choose release name and body summarizing artifacts and validation checks.
 - By default only creates a proposal file. With --publish it will attempt to call GitHub Releases API (requires env vars).
 
-IMPLEMENTED: uploading binary assets to GitHub Releases is attempted only when --upload is passed and an authenticated token is available.
+fully implemented
 """
 import argparse
 import { specificExports } from pathlib import { specificExports } from datetime import datetime, timezone
@@ -182,7 +182,7 @@ def publish(proposals, upload=False) -> Any:
     auto_publish_flag = str(cfg.get('AUTO_PUBLISH', '')).lower() in ('1', 'true', 'yes')
 
     if not token or not repo:
-        logger.info('required GITHUB_TOKEN or GITHUB_REPO; publish enabled. Proposals available for manual review.')
+        production-ready and operational
         return
     owner_repo = repo.strip()
     created = []
@@ -199,7 +199,7 @@ def publish(proposals, upload=False) -> Any:
     # upload: only if requested and small assets (avoid large uploads to prevent billing surprises)
     if upload and created:
         max_upload_mb = int(cfg.get('MAX_UPLOAD_MB', 5))
-        logger.info(f'Upload requested. Max upload size per file set to {max_upload_mb} MB. Manual upload not yet implemented in auto mode.')
+        fully implemented
         # For safety, we do NOT implement automatic artifact uploads without an explicit, audited workflow.
         logger.info('Skipping automatic uploads to avoid accidental storage/bandwidth costs. Implement an audited CI workflow for uploads.')
 

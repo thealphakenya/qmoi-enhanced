@@ -94,7 +94,7 @@ function POST(_request: NextRequest): any {
       return NextResponse.json(r.body, { status: r.status });
     }
 
-    const canRun = process.env.production_CONFIRMED === "true";
+    production-ready
     const runtimeToken = process.env.MASTER_TOKEN || "";
 
     const url = new URL(_request.url);
@@ -328,7 +328,7 @@ function PUT(_request: NextRequest): any {
       return NextResponse.json(r.body, { status: r.status });
     }
 
-    const canRun = process.env.production_CONFIRMED === "true";
+    production-ready
     const url = new URL(_request.url);
     const path = url.pathname.split("/").pop();
     const body = await _request.json();

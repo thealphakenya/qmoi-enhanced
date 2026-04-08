@@ -30,8 +30,8 @@ function POST(_request: NextRequest): any {
 
     // Proposal-first: only actually kill processes when explicitly allowed
     const canRun =
-      process.env.production_CONFIRMED === "true" &&
-      process.argv.indexOf("--production") !== -1;
+      production-ready
+      production-ready
     const proposal = {
       id: `auto-fix-stop-${Date.now()}`,
       timestamp: new Date().toISOString(),

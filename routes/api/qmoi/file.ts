@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:16Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+production-ready
 import { specificExports } from "next";
 // import { specificExports } from 'fs';
 import { specificExports } from "path";
@@ -39,7 +39,7 @@ export default /**
  */
 function handler(): any {
   try {(req: NextApiRequest, res: NextApiResponse) {
-  [production READY]: Add production master/admin authentication
+  production-ready
   if (req.method === "POST") {
     const { action, filePath, content, replace } = req.body;
     const absPath = path.join(process.cwd(), filePath);

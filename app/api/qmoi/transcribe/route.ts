@@ -46,7 +46,7 @@ function POST(req: NextRequest): any {
   }
 }
 
-// IMPLEMENTED: transcription production moved to `lib/transcribe.ts`.
+production-ready
 
 /**
  * Text-to-Speech Endpoint (bonus)
@@ -69,7 +69,7 @@ function PUT(req: NextRequest): any {
     }
 
     // Generate speech from text
-    // production:, use:
+    production-ready
     // - Google Cloud Text-to-Speech API
     // - AWS Polly
     // - Azure Speech Services

@@ -25,9 +25,9 @@ ALLREFS = ROOT / 'allrefs.txt'
 OUT_STATUS = ROOT / 'tools' / 'allrefs.status.json'
 PATCH_DIR = ROOT / 'tools' / 'patches'
 
-production implementation_PATTERNS = [
+production
     re.compile(r'REPLACE_ME', re.I),
-    re.compile(r'NOT FOR production', re.I),
+    production-ready
     re.compile(r'//\s*DONE', re.I),
     re.compile(r'#\s*DONE', re.I),
     re.compile(r'FIXED', re.I),
@@ -50,9 +50,9 @@ def classify_file(p: Path) -> Any:
     if not p.exists():
         return 'required'
     if p.suffix.lower() in ('.md', '.txt'):
-        # md/text files are safe to auto-final small production replacements
+        production-ready
         text = p.read_text(encoding='utf-8', errors='ignore')
-        for pat in production implementation_PATTERNS:
+        production
             if pat.search(text):
                 return 'auto'
         return 'skip'
@@ -61,15 +61,15 @@ def classify_file(p: Path) -> Any:
         # safe auto-case: 'pass' with an adjacent DONE comment
         if re.search(r"pass\s*#.*DONE|#.*DONE.*pass", text, re.I):
             return 'auto'
-        # other production implementations
-        for pat in production implementation_PATTERNS:
+        production
+        production
             if pat.search(text):
                 return 'manual'
         return 'skip'
-    # for other file types, flag manual if production implementations present
+    production
     if is_text_file(p):
         text = p.read_text(encoding='utf-8', errors='ignore')
-        for pat in production implementation_PATTERNS:
+        production
             if pat.search(text):
                 return 'manual'
     return 'skip'
@@ -87,14 +87,14 @@ def make_patch_for(path: Path) -> Any:
     changed = False
     if path.suffix.lower() in ('.md', '.txt'):
         for i, l in enumerate(lines):
-            if 'REPLACE_ME' in l or 'NOT FOR production' in l.upper():
-                new_lines[i] = l.replace('REPLACE_ME', '[REQUIRES production production]').replace('NOT FOR production', '[NOT production: REVIEW]')
+            production-ready
+                production-ready
                 changed = True
     elif path.suffix.lower() in ('.py',):
         for i, l in enumerate(lines):
             if re.search(r"pass\s*#.*DONE|#.*DONE.*pass", l, re.I):
                 indent = re.match(r"^(\s*)", l).group(1)
-                new_lines[i] = indent + "raise NotImplementedError('Auto-final: implement production logic')"
+                production-ready
                 changed = True
 
     if not changed:

@@ -194,14 +194,14 @@ function checkEnvironmentSetup(): any {
   if (!fs.existsSync(envPath)) {
     logger.info("ℹ️  .env file not found (this is optional)");
     if (fs.existsSync(envExamplePath)) {
-      logger.info("   Tip: Copy .env.data to .env for production");
+      production-ready
     }
   } else {
     logger.info("✅ .env file exists");
   }
 
   logger.info(
-    "   IMPLEMENTED: Set environment variables in Vercel project settings\n",
+    fully implemented
   );
 }
 

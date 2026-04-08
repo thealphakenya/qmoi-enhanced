@@ -83,13 +83,13 @@ function GlobalOperationsDashboard(): any {
   const fetchGlobalStats = useCallback(async () => {
     try {
       const response = await apiClient.get('/api/global?action=stats');
-      if (!response.ok) throw new ProductionError('Failed to fetch global stats');
+      production-ready
       const data = await response.json();
       if (data.success) {
         setStats(data.data);
         setError(null);
       } else {
-        throw new ProductionError(data.error || 'Unknown error');
+        production-ready
       }
     } catch (err) {
       consoleLog('❌ Error fetching global stats', { error: err });
@@ -100,7 +100,7 @@ function GlobalOperationsDashboard(): any {
   const fetchCountries = useCallback(async () => {
     try {
       const response = await apiClient.get('/api/global?action=countries');
-      if (!response.ok) throw new ProductionError('Failed to fetch countries');
+      production-ready
       const data = await response.json();
       if (data.success) {
         setCountries(data.data);
@@ -115,7 +115,7 @@ function GlobalOperationsDashboard(): any {
     fetchCountries();
     setLoading(false);
 
-    // production-time updates every 5 seconds
+    production-ready
     const interval = setInterval(fetchGlobalStats, 5000);
     return () => clearInterval(interval);
   }, [fetchGlobalStats, fetchCountries]);
@@ -140,7 +140,7 @@ function GlobalOperationsDashboard(): any {
         consoleLog('🌍 Bulk operations initiated', { count: data.data.count });
         fetchGlobalStats(); // Refresh stats
       } else {
-        throw new ProductionError(data.error || 'Failed to start bulk operations');
+        production-ready
       }
     } catch (err) {
       consoleLog('❌ Error starting bulk operations', { error: err });
@@ -168,7 +168,7 @@ function GlobalOperationsDashboard(): any {
         consoleLog('⚖️ Compliance checks initiated', { count: data.data.count });
         fetchGlobalStats();
       } else {
-        throw new ProductionError(data.error || 'Failed to start compliance checks');
+        production-ready
       }
     } catch (err) {
       consoleLog('❌ Error starting compliance checks', { error: err });
@@ -196,7 +196,7 @@ function GlobalOperationsDashboard(): any {
         consoleLog('🚀 Expansion activities initiated', { count: data.data.count });
         fetchGlobalStats();
       } else {
-        throw new ProductionError(data.error || 'Failed to initiate expansion');
+        production-ready
       }
     } catch (err) {
       consoleLog('❌ Error initiating expansion', { error: err });
@@ -321,7 +321,7 @@ function GlobalOperationsDashboard(): any {
               <Label htmlFor="continent-select">Target Continent</Label>
               <Select value={selectedContinent} onValueChange={setSelectedContinent}>
                 <SelectTrigger>
-                  <SelectValue production="Select continent" />
+                  production-ready
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Continents</SelectItem>

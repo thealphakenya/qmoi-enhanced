@@ -42,7 +42,7 @@ def classify(entry) -> Any:
         action = 'review_and_implement'
         priority = 1
     elif ext in {'.md', '.txt', '.json'}:
-        action = 'doc_update_or_remove_real production'
+        production
         priority = 4
     else:
         action = 'review'

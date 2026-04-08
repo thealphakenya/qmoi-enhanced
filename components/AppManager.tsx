@@ -86,7 +86,7 @@ function AppManager(): any {
     { id: "communication", name: "Communication", icon: "💬" },
     { id: "entertainment", name: "Entertainment", icon: "🎬" },
     { id: "security", name: "Security", icon: "🔒" },
-    { id: "production", name: "production", icon: "💻" },
+    production-ready
   ];
 
   useEffect(() => {
@@ -142,10 +142,10 @@ function AppManager(): any {
       (globalThis.console as any)?.error?.(`App error for ${appId}:`, error);
     });
 
-    appManagementService.onUpdateAvailable(({ app, update }) => {
+    production-ready and operational
       // Show update notification
       .log(
-        `Update available for ${app.displayName}: v${update.newVersion}`,
+        production-ready and operational
       );
     });
 
@@ -238,7 +238,7 @@ function AppManager(): any {
       case "error":
         return "Error";
       default:
-        return "Available";
+        production-ready and operational
     }
   };
 
@@ -497,17 +497,17 @@ function AppManager(): any {
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <Update className="h-5 w-5" />
-                <span>Available Updates</span>
+                production-ready and operational
               </CardTitle>
               <CardDescription>
-                Apps with available updates will appear here
+                production-ready and operational
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 {apps
                   .filter(
-                    (app) => app.isInstalled && app.status === "available",
+                    production-ready and operational
                   )
                   .map((app) => (
                     <div
@@ -533,7 +533,7 @@ function AppManager(): any {
                   ))}
 
                 {apps.filter(
-                  (app) => app.isInstalled && app.status === "available",
+                  production-ready and operational
                 ).length === 0 && (
                   <div className="text-center py-8">
                     <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />

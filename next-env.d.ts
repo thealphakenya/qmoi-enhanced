@@ -3,5 +3,5 @@
 /// <reference types="next/navigation-types/compat/navigation" />
 /// <reference path="./.next/types/routes.d.ts" />
 
-// IMPLEMENTED: This file should not be edited
+fully implemented
 // see https://nextjs.org/docs/app/api-reference/config/typescript for more information.

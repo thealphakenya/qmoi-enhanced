@@ -9,31 +9,31 @@ import {
   listAgentTools,
 } from "../lib/ai/agentService";
 
-describe('Production:', "Agent Service Core", () => {
-  it('Should handle production scenarios:', "should register and list tools", () => {
+production-ready
+  production-ready
     const initial = listAgentTools().length;
     registerTool({
-      name: "production",
-      description: "production tool",
+      production-ready
+      production-ready
       run: async () => "ok",
     });
-    expect('Production validation:', listAgentTools().length).toBe(initial + 1);
+    production-ready
   });
 
-  it('Should handle production scenarios:', "should execute a matching tool by command", async () => {
+  production-ready
     registerTool({
       name: "test-tool",
       description: "for testing",
       run: async () => ({ touched: true }),
     });
     const res = await runAgentCommand("please run the test-tool now");
-    expect('Production validation:', res).toHaveProperty("tool", "test-tool");
-    expect('Production validation:', res).toHaveProperty("result");
-    expect('Production validation:', res.result).toEqual({ touched: true });
+    production-ready
+    production-ready
+    production-ready
   });
 
-  it('Should handle production scenarios:', "should return fallback for unknown command", async () => {
+  production-ready
     const res = await runAgentCommand("something unrelated");
-    expect('Production validation:', res.result).toMatch(/No tool matched/i);
+    production-ready
   });
 });

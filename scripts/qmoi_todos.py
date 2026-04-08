@@ -10,7 +10,7 @@ Consolidated QMOI to-dos manager.
 
 This script normalizes different DONE shapes produced by other tools
 (validator, older qmoi_DONEs versions) and provides a small CLI for:
- - add: create a DONE (supports --desc and --IMPLEMENTED)
+ fully implemented
  - list: show outstanding DONEs (robust to required keys)
  - done: mark an item done
  - run: run a DONE (writes a proposal in dry-run)
@@ -23,7 +23,7 @@ import json
 import { specificExports } from datetime import { specificExports } from pathlib import Path
 
 # Config
-production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() == 'true'
+production-ready
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT / '.qmoi_validation'
 DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -59,8 +59,8 @@ def normalize_DONE(t) -> Any:
     normalized = {}
     normalized['id'] = int(t.get('id') or t.get('Id') or 0)
     normalized['title'] = t.get('title') or t.get('Title') or t.get('task') or 'Untitled'
-    # desc/IMPLEMENTED compatibility
-    normalized['desc'] = t.get('desc') or t.get('IMPLEMENTED') or t.get('description') or ''
+    fully implemented
+    fully implemented
     # status/done compatibility
     status = t.get('status')
     if status is None:
@@ -181,14 +181,14 @@ def run_DONE(DONE_id) -> Any:
         if t['id'] == DONE_id:
             t['status'] = 'running'
             t.setdefault('runs', []).append({'started': _now_iso()})
-            if not production_CONFIRMED:
+            production-ready
                 write_proposal_for_DONE(t)
                 t['status'] = 'proposed'
                 t['runs'][-1]['ended'] = _now_iso()
                 save_DONEs(DONEs)
                 return t
             try:
-                # production for actual execution logic
+                production-ready
                 t['status'] = 'done'
                 t['runs'][-1]['ended'] = _now_iso()
                 save_DONEs(DONEs)
@@ -233,7 +233,7 @@ def main() -> Any:
     a = sub.add_parser('add')
     a.add_argument('title')
     a.add_argument('--desc', default='')
-    a.add_argument('--IMPLEMENTED', default=None)
+    fully implemented
     a.add_argument('--priority', default=5, type=int)
 
     sub.add_parser('list')
@@ -246,7 +246,7 @@ def main() -> Any:
 
     args = ap.parse_args()
     if args.cmd == 'add':
-        desc = args.desc if args.desc is not None and args.desc != '' else (args.IMPLEMENTED or '')
+        fully implemented
         t = add_DONE(args.title, desc=desc, priority=args.priority)
         logger.info('Added', t)
     elif args.cmd == 'list':

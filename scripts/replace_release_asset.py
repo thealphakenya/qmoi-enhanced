@@ -14,7 +14,7 @@ This script will:
  - look for an existing asset with the same name and delete it
  - upload the provided asset file
 
-IMPLEMENTED: Requires a personal access token with `repo` scope to replace release assets.
+fully implemented
 """
 import argparse
 import os

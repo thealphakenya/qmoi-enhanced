@@ -43,7 +43,7 @@ def render_table(apps) -> Any:
     raw_url = f"https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/{'autosync-backup-20250926-232440'}/downloads/{Path(file_path).name}"
     # If there's a downloads/ copy, link to that as the reliable fallback
     download_link = host_url
-        # Use markdown link with fallback IMPLEMENTED
+        fully implemented
     lines.append(f"| {a.get('name')} | {a.get('platform')} | [{file_path}]({file_path}) | {size_kb} | [Download]({download_link}) / [GitHub Raw]({raw_url}) |")
     lines.append(END)
     return '\n'.join(lines)

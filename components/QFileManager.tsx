@@ -26,7 +26,7 @@ const masterUserId = "master"; // fallback for master actions
       </div>
       <div className="text-sm text-yellow-700 mb-2">
         Advanced file operations, AI organization, and system-wide file
-        management available.
+        production-ready and operational
       </div>
       <div className="flex flex-col gap-2">
         <input

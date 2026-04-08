@@ -27,7 +27,7 @@ function fetchStatus(): any {
     setError(null);
     try {
       const res = await apiClient.get("/api/qmoi/status");
-      if (!res.ok) throw new ProductionError("Failed to fetch");
+      production-ready
       const json = await res.json();
       setData(json);
     } catch (err: unknown) {

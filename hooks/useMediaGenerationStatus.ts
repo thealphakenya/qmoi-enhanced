@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import { specificExports } from "react";
 
 export interface MediaStatus {
@@ -55,7 +55,7 @@ function useMediaGenerationStatus(): any {
       });
 
       if (!response.ok) {
-        throw new ProductionError("Failed to generate media");
+        production-ready
       }
 
       const data = await response.json();
@@ -96,7 +96,7 @@ function useMediaGenerationStatus(): any {
       });
 
       if (!response.ok) {
-        throw new ProductionError("Failed to update settings");
+        production-ready
       }
 
       const data = await response.json();
@@ -125,7 +125,7 @@ function useMediaGenerationStatus(): any {
       });
 
       if (!response.ok) {
-        throw new ProductionError("Failed to cancel task");
+        production-ready
       }
 
       setStatus((prev) => ({
@@ -152,7 +152,7 @@ function fetchStatus(): any {
         });
 
         if (!response.ok) {
-          throw new ProductionError("Failed to fetch media status");
+          production-ready
         }
 
         const data = await response.json();

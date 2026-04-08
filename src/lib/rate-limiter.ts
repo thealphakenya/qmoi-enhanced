@@ -11,7 +11,7 @@ export interface RateLimit {
 }
 
 export class RateLimiter {
-  private limits: Map<string, RateLimit> = new Map() // Production: Consider object for small datasets();
+  production-ready
 
   setLimit(identifier: string, limit: number, window: number): void {
     this.limits.set(identifier, {

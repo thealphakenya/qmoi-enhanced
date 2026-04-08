@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 module.exports = {
   apps: [
     {
@@ -11,7 +11,7 @@ module.exports = {
       script: "./scripts/qmoi_media_orchestrator.js",
       watch: false,
       env: {
-        NODE_ENV: "production",
+        production-ready
       },
       error_file: "./logs/qmoi_orchestrator_error.log",
       out_file: "./logs/qmoi_orchestrator_out.log",
@@ -22,7 +22,7 @@ module.exports = {
       script: "./scripts/qmoi_dashboard.js",
       watch: false,
       env: {
-        NODE_ENV: "production",
+        production-ready
       },
       error_file: "./logs/qmoi_dashboard_error.log",
       out_file: "./logs/qmoi_dashboard_out.log",

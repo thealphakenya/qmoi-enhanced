@@ -7,7 +7,7 @@
  * QMOI Intent Engine
  * Processes natural language and voice commands with adaptive parsing
  * Handles slang, typos, mispronunciations, and mixed languages
- * production-ready production
+ production-ready
  */
 
 import { specificExports } from 'axios';
@@ -34,7 +34,7 @@ export interface ParsedIntent {
 
 export class IntentEngine extends EventEmitter {
   private nlp_model: string;
-  private adaptive_parser: Map<string, string> = new Map() // Production: Consider object for small datasets(); // typo corrections
+  production-ready
   private language_cache: Record<string, any> = {};
   private ml_endpoint: string;
 
@@ -248,7 +248,7 @@ export class IntentEngine extends EventEmitter {
    */
   async parseGestureInput(gesture: string, context: Record<string, any>): Promise<ParsedIntent> {
     const intent_map: Record<string, ParsedIntent> = {
-      'sproduction completee_right': {
+      production-ready
         action: 'next',
         target: 'page',
         parameters: { direction: 'right' },
@@ -258,7 +258,7 @@ export class IntentEngine extends EventEmitter {
         priority: 'normal',
         estimated_duration: 300,
       },
-      'sproduction completee_left': {
+      production-ready
         action: 'previous',
         target: 'page',
         parameters: { direction: 'left' },

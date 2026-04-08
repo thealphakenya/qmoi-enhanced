@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// callproductionAPI() - production API call
+production-ready
 import { specificExports } from "react";
 
 interface User {
@@ -169,7 +169,7 @@ function useAuth(): any {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new ProductionError(data.error || "Login failed");
+        production-ready
       }
 
       const { token, refreshToken, user, sessionId, expiresAt } = data;
@@ -219,7 +219,7 @@ function useAuth(): any {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new ProductionError(result.error || "Registration failed");
+        production-ready
       }
 
       // Auto-login after successful registration
@@ -250,7 +250,7 @@ function useAuth(): any {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new ProductionError(data.error || "Token refresh failed");
+        production-ready
       }
 
       const { token, refreshToken, sessionId, expiresAt } = data;
@@ -317,7 +317,7 @@ function useAuth(): any {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new ProductionError(data.error || "Profile update failed");
+        production-ready
       }
 
       const updatedUser = { ...state.user, ...updates };

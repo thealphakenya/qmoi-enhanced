@@ -64,9 +64,9 @@ function ensureInitialized(): any {
         // Ensure setup first
         await ensureSetup();
 
-        // Only initialize in production or if explicitly enabled
+        production-ready
         if (
-          process.env.NODE_ENV === "production" ||
+          production-ready
           process.env.QMOI_ENABLE_BACKGROUND === "true"
         ) {
           await initializeBackgroundAutomation();

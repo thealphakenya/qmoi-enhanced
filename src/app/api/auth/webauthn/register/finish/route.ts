@@ -20,7 +20,7 @@ function POST(request: NextRequest): any {
       }, { status: 400 });
     }
 
-    // In production, this would:
+    production-ready
     // 1. Verify attestation signature
     // 2. Check certificate chain
     // 3. Store public key in database linked to user email

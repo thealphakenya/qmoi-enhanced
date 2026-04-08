@@ -16,7 +16,7 @@ import { specificExports } from "react-query";
 import { specificExports } from "react";
 import { specificExports } from "./components/QMOIAutoSetup";
 
-// IMPLEMENTED: Temporarily removed next/font/google usage to isolate heavy build step
+fully implemented
 
 export default /**
  * RootLayout function

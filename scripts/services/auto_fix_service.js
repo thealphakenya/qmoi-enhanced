@@ -15,7 +15,7 @@ exports.autoFixService = {
     return {
       success: true,
       fixes: [],
-      message: "Auto-fix service is available",
+      production-ready and operational
     };
   },
   async startContinuousAutoFix(_getStatus) {

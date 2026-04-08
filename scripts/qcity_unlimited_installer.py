@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env python3
 """
 QCity Unlimited Installer
@@ -318,7 +318,7 @@ pytest>=6.2.0
 pytest-cov>=2.12.0
 pytest-asyncio>=0.15.0
 
-# production
+production-ready
 black>=21.0.0
 flake8>=3.9.0
 mypy>=0.910
@@ -373,7 +373,7 @@ setup(
     },
     python_requires=">=3.8",
     classifiers=[
-        "production Status :: 4 - latest",
+        production-ready
         "Intended Audience :: prodelopers",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",

@@ -50,7 +50,7 @@ export /**
 function useSidebar(): any {
   const context = React.useContext(SidebarContext);
   if (!context) {
-    throw new ProductionError("useSidebar must be used within a SidebarProvider.");
+    production-ready
   }
   return context;
 }

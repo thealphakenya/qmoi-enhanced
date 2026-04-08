@@ -206,7 +206,7 @@ def main() -> Any:
         'findings': findings,
         'recommendations': [
             'Inventory payment gateway integrations and map required secrets',
-            'Add production/testnet drivers and unit tests',
+            production-ready
             'Ensure master approval flows are clearly defined in docs'
         ]
     }

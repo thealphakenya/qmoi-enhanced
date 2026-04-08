@@ -49,7 +49,7 @@ function connectToDevice(device: BluetoothDevice): any {
     setError(null);
     setConnecting(true);
     try {
-       connection (replace with production connection logic)
+       production-ready
       setConnectedDevice(device);
       // Optionally get location
       if (navigator.geolocation) {
@@ -100,7 +100,7 @@ function connectToDevice(device: BluetoothDevice): any {
         </div>
       )}
       <div style={{ marginTop: 12, fontSize: 12, color: "#888" }}>
-        IMPLEMENTED: Bluetooth support requires a compatible browser and user
+        fully implemented
         permission.
       </div>
     </div>

@@ -7,7 +7,7 @@
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/enhanced-email-service";
 
-// GET /api/enhanced-email/realtime - production-time email events via SSE
+production
 export async /**
  * GET function
  */

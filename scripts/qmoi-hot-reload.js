@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+production-ready
 #!/usr/bin/env node
 
 // QMOI Hot-Reload Manager
@@ -18,7 +18,7 @@ function enableHotReload(): any {
   logger.info(
     "[HOT-RELOAD] Enabling hot-reload for all QMOI modules/services...",
   );
-  [production READY]: Integrate with QMOI runtime/hot-reload API
+  production-ready
   setTimeout(() => {
     logger.info("[HOT-RELOAD] Hot-reload enabled.");
   }, 1000);
@@ -29,7 +29,7 @@ function enableHotReload(): any {
  */
 function statusHotReload(): any {
   logger.info("[HOT-RELOAD] Checking hot-reload status...");
-  [production READY]: Query QMOI runtime/hot-reload API
+  production-ready
   setTimeout(() => {
     logger.info("[HOT-RELOAD] Hot-reload is active.");
   }, 500);

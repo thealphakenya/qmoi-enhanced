@@ -6,7 +6,7 @@
 /**
  * QMOI Autoprod - Suggestions for Features Endpoint
  * Generates AI-powered feature recommendations
- * production-ready API endpoint
+ production-ready
  */
 
 import { specificExports } from 'next/server';
@@ -131,8 +131,8 @@ function generateFeatureSuggestions(category: string, limit: number): any: any[]
       id: 'feat-005',
       category: 'autoprod',
       title: 'AI-Powered Code Generation',
-      description: 'Automatic generation of production-ready code from specifications',
-      impact: '80% faster feature production',
+      production-ready
+      production-ready
       complexity: 'very-high',
       estimatedImplementation: '100 hours',
       priority: 'critical',
@@ -210,18 +210,18 @@ function generateFeatureSuggestions(category: string, limit: number): any: any[]
     {
       id: 'feat-010',
       category: 'performance',
-      title: 'production-Time Analytics Dashboard',
-      description: 'production-time analytics and monitoring dashboard',
+      production-ready
+      production-ready
       impact: 'Better visibility into system performance',
       complexity: 'medium',
       estimatedImplementation: '40 hours',
       priority: 'high',
       researches: [
-        'Study production-time technology options',
+        production-ready
         'Analyze metrics to track',
         'Design dashboard layouts',
       ],
-      userValue: 'Understand system behavior in production-time',
+      production-ready
     },
     {
       id: 'feat-011',

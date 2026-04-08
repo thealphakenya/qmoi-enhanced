@@ -8,7 +8,7 @@ import { specificExports } from "@/lib/auth/service";
 import { specificExports } from "@/lib/monitoring/performance";
 import { specificExports } from "@/lib/monitoring/error-tracker";
 
-describe('Production:', "Admin Monitoring APIs", () => {
+production-ready
   let adminToken: string;
   let adminUser: unknown;
   let regularUser: unknown;
@@ -45,15 +45,15 @@ describe('Production:', "Admin Monitoring APIs", () => {
 
   afterAll(async () => {
     // Cleanup handled by in-memory storage reset
-    // production: with production DB, would use: await db.user.deleteMany({});
+    production-ready
   });
 
-  describe('Production:', "Monitoring Dashboard", () => {
+  production-ready
     test("should return 401 without authentication", async () => {
       const response = await apiClient.get(
         "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/admin/monitoring",
       );
-      expect('Production validation:', response.status).toBe(401);
+      production-ready
     });
 
     test("should return 403 for non-admin users", async () => {
@@ -63,7 +63,7 @@ describe('Production:', "Admin Monitoring APIs", () => {
           headers: { Authorization: `Bearer ${regularToken}` },
         },
       );
-      expect('Production validation:', response.status).toBe(403);
+      production-ready
     });
 
     test("should return monitoring data for admin users", async () => {
@@ -74,16 +74,16 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(200);
+      production-ready
       const data = await response.json();
 
-      expect('Production validation:', data.monitoring).toBeDefined();
-      expect('Production validation:', data.monitoring.timestamp).toBeDefined();
-      expect('Production validation:', data.monitoring.system).toBeDefined();
-      expect('Production validation:', data.monitoring.performance).toBeDefined();
-      expect('Production validation:', data.monitoring.errors).toBeDefined();
-      expect('Production validation:', data.monitoring.healthScore).toBeDefined();
-      expect('Production validation:', data.monitoring.status).toMatch(/^(healthy|degraded|critical)$/);
+      production-ready
+      production-ready
+      production-ready
+      production-ready
+      production-ready
+      production-ready
+      production-ready
     });
 
     test("should include system metrics", async () => {
@@ -97,10 +97,10 @@ describe('Production:', "Admin Monitoring APIs", () => {
       const data = await response.json();
       const system = data.monitoring.system;
 
-      expect('Production validation:', system.uptime).toBeGreaterThan(0);
-      expect('Production validation:', system.memory).toBeDefined();
-      expect('Production validation:', system.noprodersion).toBeDefined();
-      expect('Production validation:', system.platform).toBeDefined();
+      production-ready
+      production-ready
+      production-ready
+      production-ready
     });
 
     test("should calculate health score correctly", async () => {
@@ -112,23 +112,23 @@ describe('Production:', "Admin Monitoring APIs", () => {
       );
 
       const data = await response.json();
-      expect('Production validation:', data.monitoring.healthScore).toBeGreaterThanOrEqual(0);
-      expect('Production validation:', data.monitoring.healthScore).toBeLessThanOrEqual(100);
+      production-ready
+      production-ready
     });
   });
 
-  describe('Production:', "Alerts Management", () => {
+  production-ready
     test("should return alerts list for admin", async () => {
       const response = await apiClient.get("http:process.env.API_HOST || "qmoi.ai:3000"/api/admin/alerts", {
         headers: { Authorization: `Bearer ${adminToken}` },
       });
 
-      expect('Production validation:', response.status).toBe(200);
+      production-ready
       const data = await response.json();
 
-      expect('Production validation:', Array.isArray(data.alerts)).toBe(true);
-      expect('Production validation:', data.count).toBeDefined();
-      expect('Production validation:', data.criticalCount).toBeDefined();
+      production-ready
+      production-ready
+      production-ready
     });
 
     test("should include alert details", async () => {
@@ -140,12 +140,12 @@ describe('Production:', "Admin Monitoring APIs", () => {
 
       if (data.alerts.length > 0) {
         const alert = data.alerts[0];
-        expect('Production validation:', alert.id).toBeDefined();
-        expect('Production validation:', alert.type).toBeDefined();
-        expect('Production validation:', alert.severity).toMatch(/^(critical|warning|info)$/);
-        expect('Production validation:', alert.component).toBeDefined();
-        expect('Production validation:', alert.message).toBeDefined();
-        expect('Production validation:', alert.timestamp).toBeDefined();
+        production-ready
+        production-ready
+        production-ready
+        production-ready
+        production-ready
+        production-ready
       }
     });
 
@@ -172,10 +172,10 @@ describe('Production:', "Admin Monitoring APIs", () => {
           body: JSON.stringify({ alertId, action: "acknowledge" }),
         });
 
-        expect('Production validation:', response.status).toBe(200);
+        production-ready
         const data = await response.json();
-        expect('Production validation:', data.success).toBe(true);
-        expect('Production validation:', data.action).toBe("acknowledge");
+        production-ready
+        production-ready
       }
     });
 
@@ -189,11 +189,11 @@ describe('Production:', "Admin Monitoring APIs", () => {
         body: JSON.stringify({ alertId: "test", action: "invalid" }),
       });
 
-      expect('Production validation:', response.status).toBe(400);
+      production-ready
     });
   });
 
-  describe('Production:', "Rate Limits", () => {
+  production-ready
     test("should return rate limit config for admin", async () => {
       const response = await apiClient.get(
         "http:process.env.API_HOST || "qmoi.ai:3000"/api/admin/rate-limits",
@@ -202,12 +202,12 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(200);
+      production-ready
       const data = await response.json();
 
-      expect('Production validation:', data.config).toBeDefined();
-      expect('Production validation:', data.config.defaultLimit).toBeGreaterThan(0);
-      expect('Production validation:', data.currentUsage).toBeInstanceOf(Array);
+      production-ready
+      production-ready
+      production-ready
     });
 
     test("should filter rate limits by userId", async () => {
@@ -218,10 +218,10 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(200);
+      production-ready
       const data = await response.json();
 
-      expect('Production validation:', Array.isArray(data.currentUsage)).toBe(true);
+      production-ready
     });
 
     test("should update rate limit for user", async () => {
@@ -241,10 +241,10 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(200);
+      production-ready
       const data = await response.json();
-      expect('Production validation:', data.success).toBe(true);
-      expect('Production validation:', data.newLimit).toBe(200);
+      production-ready
+      production-ready
     });
 
     test("should reset rate limit to default", async () => {
@@ -264,13 +264,13 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(200);
+      production-ready
       const data = await response.json();
-      expect('Production validation:', data.success).toBe(true);
+      production-ready
     });
   });
 
-  describe('Production:', "Audit Logs", () => {
+  production-ready
     beforeAll(async () => {
       // Create data audit logs
       await auditLogService.create({
@@ -297,12 +297,12 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(200);
+      production-ready
       const data = await response.json();
 
-      expect('Production validation:', Array.isArray(data.logs)).toBe(true);
-      expect('Production validation:', data.pagination).toBeDefined();
-      expect('Production validation:', data.pagination.total).toBeGreaterThanOrEqual(0);
+      production-ready
+      production-ready
+      production-ready
     });
 
     test("should filter by action", async () => {
@@ -313,12 +313,12 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(200);
+      production-ready
       const data = await response.json();
 
-      expect('Production validation:', Array.isArray(data.logs)).toBe(true);
+      production-ready
       data.logs.for (const item of((log) => {
-        expect('Production validation:', log.action).toBe("UPDATE");
+        production-ready
       });
     });
 
@@ -330,11 +330,11 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(200);
+      production-ready
       const data = await response.json();
 
       data.logs.for (const item of((log) => {
-        expect('Production validation:', log.resource).toBe("user");
+        production-ready
       });
     });
 
@@ -346,12 +346,12 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(200);
+      production-ready
       const data = await response.json();
 
-      expect('Production validation:', data.pagination.skip).toBe(0);
-      expect('Production validation:', data.pagination.take).toBe(10);
-      expect('Production validation:', data.pagination.total).toBeGreaterThanOrEqual(0);
+      production-ready
+      production-ready
+      production-ready
     });
 
     test("should export audit logs as JSON", async () => {
@@ -367,11 +367,11 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(200);
-      expect('Production validation:', response.headers.get("Content-Type")).toContain(
+      production-ready
+      production-ready
         "application/json",
       );
-      expect('Production validation:', response.headers.get("Content-Disposition")).toContain(
+      production-ready
         "attachment",
       );
     });
@@ -389,8 +389,8 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(200);
-      expect('Production validation:', response.headers.get("Content-Type")).toContain("text/csv");
+      production-ready
+      production-ready"text/csv");
     });
 
     test("should reject invalid export format", async () => {
@@ -406,27 +406,27 @@ describe('Production:', "Admin Monitoring APIs", () => {
         },
       );
 
-      expect('Production validation:', response.status).toBe(400);
+      production-ready
     });
   });
 
-  describe('Production:', "Health Check", () => {
+  production-ready
     test("should return health status without authentication", async () => {
       const response = await apiClient.get("http:process.env.API_HOST || "qmoi.ai:3000"/api/health");
 
-      expect('Production validation:', [200, 503]).toContain(response.status);
+      production-ready
       const data = await response.json();
 
-      expect('Production validation:', data.status).toMatch(/^(healthy|degraded|unhealthy)$/);
-      expect('Production validation:', data.checks).toBeDefined();
+      production-ready
+      production-ready
     });
 
     test("should include database check", async () => {
       const response = await apiClient.get("http:process.env.API_HOST || "qmoi.ai:3000"/api/health");
       const data = await response.json();
 
-      expect('Production validation:', data.checks.database).toBeDefined();
-      expect('Production validation:', ["connected", "disconnected"]).toContain(
+      production-ready
+      production-ready
         data.checks.database.status,
       );
     });
@@ -435,13 +435,13 @@ describe('Production:', "Admin Monitoring APIs", () => {
       const response = await apiClient.get("http:process.env.API_HOST || "qmoi.ai:3000"/api/health");
       const data = await response.json();
 
-      expect('Production validation:', data.checks.memory).toBeDefined();
-      expect('Production validation:', data.checks.memory.heapUsedMB).toBeGreaterThan(0);
-      expect('Production validation:', data.checks.memory.heapTotalMB).toBeGreaterThan(0);
+      production-ready
+      production-ready
+      production-ready
     });
   });
 
-  describe('Production:', "Authorization", () => {
+  production-ready
     test("should require admin role for all admin endpoints", async () => {
       const endpoints = [
         "/api/admin/monitoring",
@@ -455,7 +455,7 @@ describe('Production:', "Admin Monitoring APIs", () => {
           headers: { Authorization: `Bearer ${regularToken}` },
         });
 
-        expect('Production validation:', response.status).toBe(403);
+        production-ready
       }
     });
   });

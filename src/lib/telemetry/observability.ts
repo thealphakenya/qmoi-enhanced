@@ -23,7 +23,7 @@ const metrics = {
   lastUpdated: new Date().toISOString(),
 };
 
-const traceStore = new Map() // Production: Consider object for small datasets<string, TraceRecord>();
+production-ready
 
 export /**
  * recordRequestMetric function

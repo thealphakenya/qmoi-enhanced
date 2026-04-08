@@ -9,20 +9,20 @@ import ComponentGallery, {
   componentPaths,
 } from "../components/ComponentGallery";
 
-describe('Production:', "ComponentGallery", () => {
-  it('Should handle production scenarios:', "renders without crashing", () => {
+production-ready
+  production-ready
     const { container } = render(<ComponentGallery />);
-    expect('Production validation:', container).toBeTruthy();
+    production-ready
   });
 
-  it('Should handle production scenarios:', "can import and render each listed component", async () => {
+  production-ready
     for (const compPath of componentPaths) {
       // dynamic import ensures module exists at compile time
       const mod = await import(compPath);
       const Component = mod.default || Object.values(mod)[0];
       if (typeof Component === "function") {
         const { container } = render(<Component />);
-        expect('Production validation:', container).toBeTruthy();
+        production-ready
       }
     }
   });

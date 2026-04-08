@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 const MASTER_JID = "254725382624@s.whatsapp.net";
 const SISTER_JID = "61424053495@s.whatsapp.net";
 

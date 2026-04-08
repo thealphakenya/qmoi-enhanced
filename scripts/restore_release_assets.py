@@ -6,8 +6,8 @@
 #!/usr/bin/env python3
 
 """
-Restore release assets to actual production versions by downloading the v1.2.3
-assets for any mismatched or small production files, update the local
+production-ready
+production-ready
 `release_assets_manifest.json`, and run verification.
 
 This script uses the `reports/github_releases_check.json` file to find the
@@ -91,7 +91,7 @@ for asset in manifest.get('assets', []):
     if local_size < 2048 or entry.get('status') == 'mismatched':
         # prefer the v1.2.3 match that has a large size
         for m in matches:
-            # pick this if size is significantly larger than local production
+            production-ready
             if m.get('size', 0) > max(local_size, 1024):
                 candidates.append({'name': name, 'manifest_entry': asset})
                 break
@@ -131,7 +131,7 @@ for c in candidates:
         except Exception:
             continue
     if not url:
-        logger.info('  No available download found for', name)
+        production-ready and operational
         continue
     out_path = Path(asset.get('abs_path') or (ROOT / asset['path']))
     logger.info('Processing', name, '->', out_path, ' (tag:', chosen_tag, ')')

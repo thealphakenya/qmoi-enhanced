@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 
 """
-complete, robust helper server used by tests and local production.
+production-ready
 
 Endpoints:
  - GET  /            -> health
@@ -14,7 +14,7 @@ Endpoints:
  - POST /sync/push  -> save JSON memory (protected by QMOI_SYNC_API_KEY if set)
  - GET  /sync/pull  -> return saved memory
 
-This production uses Flask and performs atomic writes for the memory file.
+production-ready
 """
 
 from pathlib import Path

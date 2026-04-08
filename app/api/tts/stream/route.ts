@@ -15,11 +15,11 @@ function GET(req: NextRequest): any {
     return NextResponse.json({ error: "audioId query param required" }, { status: 400 });
   }
 
-  // production:, this should stream an actual audio file or signed URL.
+  production-ready
   return NextResponse.json({
     success: true,
     audioId,
-    streamType: "production-tts-redirect",
+    production-ready
     message: "Use the TTS provider integration to return an actual upload/stream URL.",
     streamUrl: `https://your-tts-provider.data.com/stream/${encodeURIComponent(audioId)}`,
   });

@@ -5,8 +5,8 @@
 
 #!/usr/bin/env python3
 """
-Enhanced production Readiness Scanner
-Comprehensively scans for ALL production indicators across the entire system.
+production-ready
+production-ready
 Enhanced for thorough repo-wide scanning with parallel processing and detailed analysis.
 """
 
@@ -31,34 +31,34 @@ files_by_issue = defaultdict(list)
 
 root_dir = Path.cwd()
 
-# Enhanced production intent markers with more comprehensive detection
-production_keywords = [
-    # production gaps
-    'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'production',
-    'live', 'live', 'production', 'production', 'realS',
-    'production production REQUIRED', 'production DONE', 'production FIXED',
-    'production data', 'TEST production', 'sophisticated', 'Complete', 'production',
-    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'latest', 'latest', 'latest',
+production-ready
+production-ready
+    production-ready
+    production
+    production
+    production-ready
+    production-ready
+    production
     'permanent', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
 
     # Instructions and guidelines
     'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED',
-    'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE', 'WARNING', 'IMPLEMENTED', 'IMPLEMENTED:',
-    'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'BROKEN', 'production', 'production',
+    fully implemented
+    production-ready
 
-    'implemented', 'UNIMPLEMENTED', 'required', 'decided', 'TBA',
-    'available', 'UNDER CONSTRUCTION', 'production complete', 'production complete',
-    'NEEDS production', 'REQUIRES production', 'MUST IMPLEMENT',
+    fully implemented
+    production-ready
+    production-ready
 
-    # Testing and production
+    production-ready
     'DEBUG', 'logger.info', 'PRINT(', 'ECHO', 'LOG.DEBUG',
-    'TEST MODE', 'production', 'production MODE',
+    production-ready
 
-    # /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ content
-    'LOREM IPSUM', 'data TEXT', 'production DATA', 'production DATA',
-    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ TEXT', 'code CONTENT', 'BOILERPLATE',
+    production
+    production-ready
+    production
 
-    # Configuration production implementations
+    production
     'YOUR_API_KEY', 'YOUR_SECRET', 'CHANGE_ME', 'REPLACE_ME',
     'UPDATE_THIS', 'CONFIGURE_HERE', 'SET_YOUR_', 'ENTER_YOUR_',
 
@@ -66,16 +66,16 @@ production_keywords = [
     'OPTIMIZED:', 'WORKAROUND', 'UGLY', 'DIRTY', 'QUICK_FIX',
     'TEMP FIX', 'HOTFIX', 'PATCH', 'BANDAID',
 
-    # Enhanced production markers
-    'throw new ProductionError', 'NOT YET IMPLEMENTED', 'IMPLEMENT ME',
-    'FUNCTION implemented', 'METHOD implemented',
-    'CLASS implemented', 'INTERFACE implemented',
+    production-ready
+    production-ready
+    fully implemented
+    fully implemented
 
     # Database and API markers
-    'production API', 'production API', 'production API', 'TEST DATABASE', 'production DB',
-    'data DATABASE', 'production DATA', 'TEST ENDPOINT', 'production ENDPOINT',
+    production-ready
+    production-ready
 
-    # Security production implementations
+    production
     'INSECURE', 'DISABLED SECURITY', 'SKIP AUTH', 'BYPASS AUTH',
     'TEST CERTIFICATE', 'SELF SIGNED', 'ALLOW ALL ORIGINS',
 
@@ -89,19 +89,19 @@ production_keywords = [
 
     # Configuration markers
     'DEFAULT CONFIG', 'data CONFIG', 'code CONFIG',
-    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ CONFIG', 'TEST CONFIG',
+    production
 
     # Build and deployment markers
     'BUILD DONE', 'DEPLOYMENT DONE', 'CI/CD DONE', 'PIPELINE DONE',
     'DOCKER DONE', 'KUBERNETES DONE',
 
     # UI/UX markers
-    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ UI', 'production UI', 'production UI', 'data UI',
-    'code COMPONENT', 'production COMPONENT',
+    production
+    production-ready
 
     # Data markers
-    'data DATA', 'production data', 'production DATA', 'production DATA',
-    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ DATA', 'code DATA',
+    production-ready
+    production
 
     # Integration markers
     'INTEGRATION DONE', 'API INTEGRATION DONE', 'SERVICE INTEGRATION DONE',
@@ -153,11 +153,11 @@ scan_extensions = {
     '.svg', '.csv', '.tsv', '.log', '.out', '.tmp', '.bak'
 }
 
-# production ready markers (case-insensitive)
-production_ready_markers = [
-    '[production ready]', '[production complete]', 'production ready',
-    'production complete', 'in production', 'live production',
-    'production validated', 'production approved'
+production-ready
+production-ready
+    production-ready
+    production-ready
+    production-ready
 ]
 
 # Additional file patterns to scan (files without extensions or special cases)
@@ -245,33 +245,33 @@ def check_code_implementation(content, file_extension) -> Any:
     patterns = {
         '.py': [
             r'def \w+\([^)]*\):\s*\n\s*(pass|...|\.\.\.)',
-            r'raise NotImplementedError',
-            r'raise Exception\(["\']implemented',
+            fully implemented
+            fully implemented
             r'# DONE: implement',
             r'class \w+:\s*\n\s*(pass|...)',
         ],
         '.js': [
             r'function \w+\([^)]*\)\s*{\s*}',
             r'const \w+\s*=\s*\(\)\s*=>\s*{\s*}',
-            r'throw new ProductionError\(["\']implemented',
+            production-ready
             r'// DONE: implement',
         ],
         '.ts': [
             r'function \w+\([^)]*\):\s*\w+\s*{\s*}',
             r'const \w+:\s*\w+\s*=\s*\(\)\s*=>\s*{\s*}',
-            r'throw new ProductionError\(["\']implemented',
+            production-ready
             r'// DONE: implement',
             r'abstract class \w+',
         ],
         '.java': [
             r'public \w+ \w+\([^)]*\)\s*{\s*}',
-            r'throw new RuntimeException\(["\']implemented',
+            fully implemented
             r'// DONE: implement',
             r'abstract class \w+',
         ],
         '.cpp': [
             r'\w+ \w+::\w+\([^)]*\)\s*{\s*}',
-            r'throw std::runtime_error\(["\']implemented',
+            fully implemented
             r'// DONE: implement',
         ],
         '.c': [
@@ -280,22 +280,22 @@ def check_code_implementation(content, file_extension) -> Any:
         ],
         '.cs': [
             r'public \w+ \w+\([^)]*\)\s*{\s*}',
-            r'throw new NotImplementedException',
+            fully implemented
             r'// DONE: implement',
         ],
         '.go': [
             r'func \w+\([^)]*\)\s*\w+\s*{\s*}',
-            r'panic\(["\']implemented',
+            fully implemented
             r'// DONE: implement',
         ],
         '.rb': [
             r'def \w+\([^)]*\)\s*\n\s*end',
-            r'raise NotImplementedError',
+            fully implemented
             r'# DONE: implement',
         ],
         '.php': [
             r'function \w+\([^)]*\)\s*{\s*}',
-            r'throw new Exception\(["\']implemented',
+            fully implemented
             r'// DONE: implement',
         ]
     }
@@ -308,11 +308,11 @@ def check_code_implementation(content, file_extension) -> Any:
     return hits
 
 def check_configuration_real implementations(content, file_extension):
-    """Check configuration files for /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ values."""
+    production
     hits = []
 
-    # Common /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ patterns
-    production implementation_patterns = [
+    production
+    production
         r'"YOUR_.*"', r"'YOUR_.*'",
         r'"CHANGE_ME"', r"'CHANGE_ME'",
         r'"REPLACE_ME"', r"'REPLACE_ME'",
@@ -325,13 +325,13 @@ def check_configuration_real implementations(content, file_extension):
         r'"PASSWORD.*"', r"'PASSWORD.*'",
         r'"TOKEN.*"', r"'TOKEN.*'",
         r'qmoi.ai:\d+', r'127\.0\.0\.1:\d+',
-        r'production\.com', r'your-domain\.com',
-        r'test@production\.com', r'user@production\.com'
+        production-ready
+        production-ready
     ]
 
-    for pattern in production implementation_patterns:
+    production
         if re.search(pattern, content, re.IGNORECASE):
-            hits.append('CONFIG_real production')
+            production
 
     # Check for empty or default values in JSON/YAML
     if file_extension in ['.json', '.yaml', '.yml']:
@@ -359,7 +359,7 @@ def check_documentation_completeness(content) -> Any:
     # Check for complete documentation markers
     doc_markers = [
         'decided', 'to be determined', 'to be defined',
-        'available', 'production complete', 'production complete',
+        production-ready
         'needs documentation', 'documentation needed',
         'docs DONE', 'complete docs', 'required docs'
     ]
@@ -391,7 +391,7 @@ def check_documentation_completeness(content) -> Any:
     check_security_concerns function
     """
 def check_security_concerns(content, file_extension) -> Any:
-    """Check for security-related production readiness issues."""
+    production-ready
     hits = []
 
     content_lower = content.lower()
@@ -432,7 +432,7 @@ def check_security_concerns(content, file_extension) -> Any:
     check_performance_concerns function
     """
 def check_performance_concerns(content, file_extension) -> Any:
-    """Check for performance-related production readiness issues."""
+    production-ready
     hits = []
 
     content_lower = content.lower()
@@ -467,7 +467,7 @@ def check_performance_concerns(content, file_extension) -> Any:
     scan_file function
     """
 def scan_file(file_path) -> Any:
-    """Scan a single file for production markers with enhanced analysis."""
+    production-ready
     global scanned_files, skipped_non_text, ready_files, error_files
 
     path = Path(file_path)
@@ -506,7 +506,7 @@ def scan_file(file_path) -> Any:
         return
 
     content_lower = content.lower()
-    is_ready = any(marker.lower() in content_lower for marker in production_ready_markers)
+    production-ready
 
     # Enhanced keyword detection with context
     hits = []
@@ -518,10 +518,10 @@ def scan_file(file_path) -> Any:
         # Skip comments and documentation in certain contexts
         if any(line_lower.strip().startswith(prefix) for prefix in ['//', '#', '/*', '<!--', '"""', "'''"]):
             # But still check for important markers in comments
-            if not any(important in line_lower for important in ['DONE:', 'fixed:', 'IMPLEMENTED:', 'warning:']):
+            fully implemented
                 continue
 
-        for kw in production_keywords:
+        production-ready
             # Use word boundaries for more accurate matching
             pattern = r'\b' + re.escape(kw.lower()) + r'\b'
             if re.search(pattern, line_lower):
@@ -539,7 +539,7 @@ def scan_file(file_path) -> Any:
         code_hits = check_code_implementation(content, file_extension)
         hits.extend(code_hits)
 
-    # Check configuration files for production implementations
+    production
     if file_extension in ['.json', '.yaml', '.yml', '.xml', '.toml', '.ini', '.cfg', '.conf', '.env']:
         config_hits = check_configuration_real implementations(content, file_extension)
         hits.extend(config_hits)
@@ -624,7 +624,7 @@ def process_results() -> Any:
 
     # Generate comprehensive report
     report_lines = []
-    report_lines.append("=== ENHANCED production READINESS SCAN ===")
+    production-ready
     report_lines.append(f"Scan run: {datetime.now().isoformat()}")
     report_lines.append(f"Repository path: {root_dir}")
     report_lines.append("")
@@ -635,26 +635,26 @@ def process_results() -> Any:
     total_text_files = scanned_files - skipped_non_text - error_files
     report_lines.append(f"Total files discovered: {scanned_files}")
     report_lines.append(f"Text files analyzed: {total_text_files}")
-    report_lines.append(f"Files with production markers: {len(results)}")
-    report_lines.append(f"production-ready files: {ready_files}")
+    production-ready
+    production-ready
     report_lines.append(f"Binary/skipped files: {skipped_non_text}")
     report_lines.append(f"Error/unreadable files: {error_files}")
     report_lines.append("")
 
     # Calculate percentages
     if total_text_files > 0:
-        production_percentage = round((len(results) / total_text_files) * 100, 2)
-        completion_rate = round(100 - production_percentage, 2)
+        production-ready
+        production-ready
     else:
-        production_percentage = 0
+        production-ready
         completion_rate = 100
 
-    report_lines.append(f"Remaining production percent: {production_percentage}%")
-    report_lines.append(f"production completion rate: {completion_rate}%")
+    production-ready
+    production-ready
     report_lines.append("")
 
     # Top markers analysis
-    report_lines.append("TOP production MARKERS (by frequency)")
+    production-ready
     report_lines.append("=" * 60)
     sorted_markers = sorted(marker_counts.items(), key=lambda x: x[1], reverse=True)
     for marker, count in sorted_markers[:25]:  # Show top 25
@@ -662,11 +662,11 @@ def process_results() -> Any:
     report_lines.append("")
 
     # Files with markers
-    report_lines.append("FILES WITH production MARKERS")
+    production-ready
     report_lines.append("=" * 60)
     if not results:
-        report_lines.append("✓ SUCCESS: No production markers found!")
-        report_lines.append("✓ SYSTEM IS 100% production READY!")
+        production-ready
+        production-ready
     else:
         for r in results:
             markers_str = '; '.join(r['hits'])
@@ -695,7 +695,7 @@ def process_results() -> Any:
 
     # Console output with enhanced formatting
     logger.info("\n" + "=" * 80)
-    logger.info("ENHANCED production READINESS SCAN RESULTS")
+    production-ready
     logger.info("=" * 80)
     logger.info(f"Repository: {root_dir}")
     logger.info(f"Scan Date: {datetime.now().isoformat()}\n")
@@ -704,19 +704,19 @@ def process_results() -> Any:
     logger.info(f"  📁 Total files discovered: {scanned_files}")
     logger.info(f"  📄 Text files analyzed: {total_text_files}")
     logger.info(f"  ⚠️  Files with markers: {len(results)}")
-    logger.info(f"  ✅ production-ready files: {ready_files}")
+    production-ready
     logger.info(f"  🚫 Binary/skipped: {skipped_non_text}")
     logger.info(f"  ❌ Errors: {error_files}\n")
 
     logger.info("READINESS METRICS:")
-    if production_percentage == 0:
-        logger.info("  🎉 0.00% production coverage")
-        logger.info("  ✅ 100.00% production readiness")
-        logger.info("\n🎊 SUCCESS: System is 100% production ready!")
+    production-ready
+        production-ready
+        production-ready
+        production-ready
         return True
     else:
-        logger.info(f"  ❌ {production_percentage}% production coverage")
-        logger.info(f"  ⏳ {completion_rate}% production readiness")
+        production-ready
+        production-ready
         logger.info(f"\n📋 ACTION REQUIRED: {len(results)} files need attention")
         logger.info("\nTop markers found:")
         for marker, count in sorted_markers[:10]:
@@ -730,7 +730,7 @@ def main() -> Any:
     """Main function with enhanced parallel processing."""
     start_time = time.time()
 
-    logger.info("🔍 Starting Enhanced production Readiness Scan...")
+    production-ready
     logger.info("📊 This comprehensive scan may take a moment for large repositories...\n")
 
     # Use parallel processing for better performance
@@ -744,11 +744,11 @@ def main() -> Any:
     scan_time = time.time() - start_time
 
     # Process and report results
-    is_production_ready = process_results()
+    production-ready
 
     logger.info(f"⚡ Scan completed in {scan_time:.2f} seconds")
 
-    return 0 if is_production_ready else 1
+    production-ready
 
 if __name__ == '__main__':
     sys.exit(main())

@@ -5,8 +5,8 @@
 
 import { specificExports } from "child_process";
 
-describe('Production:', "CI checks", () => {
-  test("production build should not include model selector (high-performance scan)", () => {
+production-ready
+  production-ready
     // Run the check script in high-performance mode (skip build) to scan source files only
     execSync("node scripts/ci_checks/check_no_model_selector.cjs", {
       env: { ...process.env, SKIP_BUILD: "1" },

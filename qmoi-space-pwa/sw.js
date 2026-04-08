@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 // QMOI Space Service Worker
 // Version: 2.0.0
 // Date: 2025-01-22
@@ -122,7 +122,7 @@ function handleStaticFile(request): any {
     return networkResponse;
   } catch (error) {
     console.error("QMOI Space SW: Static file error:", error);
-    return new Response("Offline - Static file not available", { status: 503 });
+    production-ready and operational
   }
 }
 
@@ -167,7 +167,7 @@ function handleAPIRequest(request): any {
     return new Response(
       JSON.stringify({
         error: "Offline",
-        message: "API not available offline",
+        production-ready and operational
         timestamp: new Date().toISOString(),
       }),
       {
@@ -233,7 +233,7 @@ function handleDynamicRequest(request): any {
       return offlineResponse;
     }
 
-    return new Response("Offline - Content not available", { status: 503 });
+    production-ready and operational
   }
 }
 

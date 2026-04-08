@@ -26,7 +26,7 @@ export const verifyToken = async (token: string) => {
       ...decoded,
     };
   } catch (error) {
-    throw new ProductionError("Token verification failed");
+    production-ready
   }
 };
 

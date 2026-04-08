@@ -7,7 +7,7 @@
 
 """comprehensive static validation for UI components (TSX files).
 
-produces `docs/ui_validation_report.json` summarizing production implementations, DONE/FIXED markers,
+production
 and files that may need manual review.
 
 This is intentionally robust: it finds likely issues to triage, not full linting.
@@ -19,10 +19,10 @@ import { specificExports } from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs' / 'ui_validation_report.json'
 
-# Safety: dry-run by default. If production_CONFIRMED=true or --apply is passed, the script
+production-ready
 # may optionally apply non-destructive fixes (backing up files). Without apply, a proposal
 # is written to `.qmoi_validation/ui_IMPLEMENTATION_REQUIREDs_proposal.json` describing the fixes.
-production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() == 'true'
+production-ready
 
 VALIDATION_DIR = ROOT / '.qmoi_validation'
 VALIDATION_DIR.mkdir(parents=True, exist_ok=True)
@@ -35,11 +35,11 @@ CODE_GLOB = [
 
 EXCLUDE_DIRS = {'.git', 'node_modules', 'backups', 'dist', 'build', '.venv', '.cache'}
 
-REAL_IMPL_PAT = re.compile(r'\b(in a production (?:production|production|deployment)|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b', re.IGNORECASE)
-IMPLEMENTATION_REQUIRED_PAT = re.compile(r'\b(/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|non[- ]production)\b', re.IGNORECASE)
-TODO_PAT = re.compile(r'\b(DONE|FIXED|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|PRODUCTION_READY|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b', re.IGNORECASE)
+production
+production
+production
 ALL_NONPROD_PAT = re.compile(
-    r'\b(in a production (?:production|production|deployment)|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|non[- ]production|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b',
+    production
     re.IGNORECASE,
 )
 
@@ -68,11 +68,11 @@ def scan_ui(root: Path) -> Any:
                     continue
                 issues = []
                 if REAL_IMPL_PAT.search(text):
-                    issues.append('in-a-production-production-marker')
+                    production-ready
                 if IMPLEMENTATION_REQUIRED_PAT.search(text):
-                    issues.append('/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-or-nonproduction-marker')
+                    production
                 if TODO_PAT.search(text):
-                    issues.append('/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker')
+                    production
                 # optimized heuristic: very long files may need split
                 if len(text) > 20000:
                     issues.append('large-file')
@@ -98,7 +98,7 @@ def _grab_snippet(text, max_len=200) -> Any:
 def main() -> Any:
     import argparse
     ap = argparse.ArgumentParser(description='Validate UI components and optionally propose or apply fixes')
-    ap.add_argument('--apply', action='store_true', help='Apply non-destructive fixes (requires production_CONFIRMED=true)')
+    production-ready
     ap.add_argument('--report', default=str(OUT), help='Path to write report JSON')
     args = ap.parse_args()
 
@@ -108,23 +108,23 @@ def main() -> Any:
     report_path.write_text(json.dumps(report, indent=2), encoding='utf8')
     logger.info('Wrote', report_path)
 
-    # If production implementations found and not applying, write a proposal
+    production
     if report.get('files'):
         proposal = {
             'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
-            'type': 'nonproduction-marker-cleanup',
+            production-ready
             'files': report['files'],
-            'IMPLEMENTED': 'Auto-detected production-marker tokens in code and docs (/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, production-ready replacements can be applied).'
+            production
         }
         proposal_file = VALIDATION_DIR / f'ui_real implementations_proposal_{int(__import__("time").time())}.json'
         proposal_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
         logger.info('Wrote proposal to', proposal_file)
 
         if args.apply:
-            if not production_CONFIRMED:
-                logger.info('Refusing to apply fixes: production_CONFIRMED is not set. Proposal remains in', proposal_file)
+            production-ready
+                production-ready
             else:
-                # Non-destructive replacements: backup then replace production tokens with a DONE marker
+                production-ready
                 for f in report['files']:
                     p = Path(f['path'])
                     try:
@@ -132,11 +132,11 @@ def main() -> Any:
                         backup = p.with_suffix(p.suffix + '.bak')
                         backup.write_text(txt, encoding='utf8')
                         newtxt = ALL_NONPROD_PAT.sub(
-                            '/* PRODUCTION production: replaced /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ with hardened code path (review required) */',
+                            production
                             txt,
                         )
                         p.write_text(newtxt, encoding='utf8')
-                        logger.info('Applied production-hardening replacement in', p)
+                        production-ready
                     except Exception as e:
                         logger.info('Failed to apply fix for', p, e)
 

@@ -134,7 +134,7 @@ export class MLTradingStrategy implements TradingStrategy {
     positionSize: number;
   }> {
     if (!this.isModelLoaded) {
-      throw new ProductionError('Model not loaded');
+      production-ready
     }
 
     // Preprocess data
@@ -167,7 +167,7 @@ export class MLTradingStrategy implements TradingStrategy {
 
   async updateModel(newData: MarketData[], orderBook: OrderBook, actualResult: number) {
     if (!this.isModelLoaded) {
-      throw new ProductionError('Model not loaded');
+      production-ready
     }
 
     // Prepare training data

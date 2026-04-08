@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """sophisticated local secret encrypt/decrypt using openssl AES-256-CBC.
-This is an data. For production use a production KMS.
+production-ready
 """
 import { specificExports } from pathlib import Path
 import sys

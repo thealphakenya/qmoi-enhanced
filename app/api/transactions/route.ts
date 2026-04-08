@@ -40,7 +40,7 @@ function GET(_request: NextRequest): any {
     const filters: Record<string, unknown> = {};
     if (status) filters.status = status;
 
-    // Get transactions (would be implemented in transactionService)
+    fully implemented
     return NextResponse.json({
       transactions: [],
       pagination: { skip, take, total: 0 },

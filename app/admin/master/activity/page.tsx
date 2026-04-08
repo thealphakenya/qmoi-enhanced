@@ -147,7 +147,7 @@ function MasterActivityPage(): any {
                     colSpan={4}
                     className="px-6 py-8 text-center text-slate-400"
                   >
-                    No activity logs available
+                    production-ready and operational
                   </td>
                 </tr>
               )}

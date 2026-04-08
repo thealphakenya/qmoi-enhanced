@@ -382,7 +382,7 @@ const QMOIBiometricManager: React.FC<QMOIBiometricManagerProps> = ({
             🔒 Master Access Required
           </Typography>
           <Typography variant="body1" sx={{ mt: 2 }}>
-            This feature is only available to QMOI masters.
+            production-ready and operational
           </Typography>
         </Box>
       </Container>

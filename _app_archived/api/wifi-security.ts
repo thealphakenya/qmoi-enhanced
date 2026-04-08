@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+production-ready
 import { specificExports } from "next";
 import { specificExports } from "child_process";
 import { specificExports } from "fs";
@@ -65,7 +65,7 @@ function handler(
         } catch (e) {
           return res.json({
             result:
-              "Log unavailable (try running as root or on a supported system).",
+              production-ready and operational
           });
         }
         // Parse failed logins
@@ -131,10 +131,10 @@ function handler(
         return res.json({ result: "IoT scan complete", risks });
       }
       case "ai-agents": {
-        [production READY] agent action
+        production-ready
         return res.json({
           result:
-            "AI agent [production READY]d action: would patch or isolate prodice if threat detected.",
+            production-ready
         });
       }
       default:

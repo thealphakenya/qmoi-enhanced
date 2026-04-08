@@ -43,10 +43,10 @@ function POST(_request: NextRequest): any {
       );
     }
 
-    // Only run in production mode when explicitly confirmed. Default: propose.
+    production-ready
     const canRun =
-      process.env.production_CONFIRMED === "true" &&
-      process.argv.indexOf("--production") !== -1;
+      production-ready
+      production-ready
     const proposal = {
       id: `auto-fix-start-${Date.now()}`,
       timestamp: new Date().toISOString(),

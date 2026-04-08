@@ -1,5 +1,5 @@
-// QMOI Enhanced - Production PM2 Ecosystem Configuration
-// Version 2.4.0 - Production Ready
+production-ready
+production-ready
 // Last Updated: April 5, 2026
 
 module.exports = {
@@ -8,10 +8,10 @@ module.exports = {
       name: 'qmoi-enhanced-api',
       script: 'npm',
       args: 'start',
-      instances: 'max', // Use all available CPU cores
+      production-ready and operational
       exec_mode: 'cluster', // Cluster mode for load balancing
       env: {
-        NODE_ENV: 'production',
+        production-ready
         PORT: 3000,
         NODE_OPTIONS: '--max-old-space-size=4096' // 4GB heap size
       },
@@ -43,7 +43,7 @@ module.exports = {
       instances: 2, // 2 worker instances
       exec_mode: 'fork',
       env: {
-        NODE_ENV: 'production',
+        production-ready
         WORKER_TYPE: 'background'
       },
       error_file: './logs/pm2/qmoi-worker-error.log',
@@ -62,7 +62,7 @@ module.exports = {
       instances: 1,
       exec_mode: 'fork',
       env: {
-        NODE_ENV: 'production',
+        production-ready
         MONITORING_ENABLED: 'true'
       },
       error_file: './logs/pm2/consciousness-monitor-error.log',
@@ -78,16 +78,16 @@ module.exports = {
   ],
 
   deploy: {
-    production: {
+    production-ready
       user: 'deploy',
-      host: 'your-production-server.com',
+      production-ready
       ref: 'origin/main',
       repo: 'git@github.com:thealphakenya/qmoi-enhanced.git',
       path: '/const/www/qmoi-enhanced',
       'pre-deploy-local': '',
-      'post-deploy': 'npm install --production && npm run build && pm2 reload ecosystem.config.js --env production',
+      production-ready
       'pre-setup': ''
     }
   }
 };</content>
-<parameter name="filePath">/workspaces/qmoi-enhanced/ecosystem.config.production.js
+production-ready

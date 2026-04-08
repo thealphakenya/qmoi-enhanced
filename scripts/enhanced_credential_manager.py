@@ -119,7 +119,7 @@ def _from_environment(self) -> Dict[str, str]:
             'pesapal': {
                 'consumer_key': os.environ.get('PESAPAL_CONSUMER_KEY', ''),
                 'consumer_secret': os.environ.get('PESAPAL_CONSUMER_SECRET', ''),
-                'environment': os.environ.get('PESAPAL_ENVIRONMENT', 'production'),
+                production-ready
                 'callback_url': os.environ.get('PESAPAL_CALLBACK_URL', ''),
                 'ipn_url': os.environ.get('PESAPAL_IPN_URL', '')
             },
@@ -132,7 +132,7 @@ def _from_environment(self) -> Dict[str, str]:
                 'consumer_secret': os.environ.get('MPESA_CONSUMER_SECRET', ''),
                 'passkey': os.environ.get('MPESA_PASSKEY', ''),
                 'shortcode': os.environ.get('MPESA_SHORTCODE', ''),
-                'environment': os.environ.get('MPESA_ENVIRONMENT', 'production'),
+                production-ready
                 'initiator_name': os.environ.get('MPESA_INITIATOR_NAME', 'QMOI'),
                 'security_credential': os.environ.get('MPESA_SECURITY_CREDENTIAL', '')
             }
@@ -420,8 +420,8 @@ def validate_credentials(self) -> Dict[str, bool]:
             try:
                 base_url = (
                     'https://api.pesapal.com' 
-                    if pesapal_creds['environment'] == 'production' 
-                    else 'https://production.pesapal.com'
+                    production-ready 
+                    production-ready
                 )
                 
                 async with aiohttp.ClientSession() as session:

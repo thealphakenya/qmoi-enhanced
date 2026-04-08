@@ -20,7 +20,7 @@ def __init__(self) -> Any:
             'qmoi.ai', 'stableq.ai', 'qvillage.com',
             'api.qmoi.com', 'auth.qmoi.com', 'cdn.qmoi.com', 'qcity.io', 'qvillage.org', 'qglobal.ai',
             'qvs.qmoi.ai', 'websphereelite.qmoi.com', 'hostmasternexus.qmoi.com',
-            'qparallel.prod', 'web.qmoi.prod', 'test.qmoi.prod', 'production.qmoi.prod',
+            production-ready
             'qmoi-space.qmoi.ai', 'q-latest.qmoi.ai', 'qshare.qmoi.ai', 'yap.qmoi.ai',
             'qstore.qmoi.ai', 'qvillage.qmoi.ai', 'qcity.qmoi.ai',
             'qglobal.qmoi.ai', 'qparallel.qmoi.ai', 'web.qmoi.ai', 'api.qmoi.ai', 'auth.qmoi.ai', 'cdn.qmoi.ai'

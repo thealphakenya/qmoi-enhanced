@@ -124,7 +124,7 @@ function main(): any {
 
     // Safe to replace all 
     const replacementNote =
-      "REVIEWED: production 
+      production-ready 
     const newContent = content.replace(/\b
     if (newContent !== content) {
       await fs.promises.writeFile(f, newContent, "utf8");

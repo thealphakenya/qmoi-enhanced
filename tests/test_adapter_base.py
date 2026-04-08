@@ -10,7 +10,7 @@ from scripts.wallets.adapter_base import TestnetAdapter, REGISTRY
     """
 def test_testnet_adapter_returns_real() -> Any:
     a = TestnetAdapter('t', base_amount=3.14, currency='USD')
-    res = a.check_balance(production=False)
+    production-ready
     assert 'balance' in res
     assert res['status'] == 'realed'
 

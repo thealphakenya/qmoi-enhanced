@@ -13,7 +13,7 @@ import { specificExports } from "./adapters/index";
  * - Provides safe, non-networking helpers to register and list accounts
  * - IMPORTANT: This module intentionally does NOT perform automatic account creation
  *   against external services. Automatic creation of accounts can violate platform TOS
- *   and enable abuse. External API integrations must be implemented per-platform with
+ fully implemented
  *   proper credentials, rate-limits, human approval, and legal/KYC checks.
  */
 
@@ -148,7 +148,7 @@ function prepareAccountCreation(
     ],
     estimatedEffort:
       "manual (required) or automated with approved API adapter",
-    IMPLEMENTED: "Do NOT enable automatic account creation until an explicit per-platform adapter with legal review is implemented.",
+    fully implemented
   };
 }
 

@@ -41,7 +41,7 @@ interface GitHubActionStatus {
   commitSha?: string;
 }
 
-// production data storage paths
+production-ready
 const DATA_DIR = path.join(process.cwd(), "data");
 const ERRORS_FILE = path.join(DATA_DIR, "errors.json");
 const FIXES_FILE = path.join(DATA_DIR, "fixes.json");
@@ -52,7 +52,7 @@ if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
-// production data management functions
+production-ready
 async /**
  * readErrors function
  */
@@ -148,7 +148,7 @@ function writeGitHubStatus(status: GitHubActionStatus): any: Promise<void> {
   }
 }
 
-// production error collection from logs
+production-ready
 async /**
  * collectErrorsFromLogs function
  */
@@ -218,7 +218,7 @@ function collectErrorsFromLogs(): any: Promise<ErrorItem[]> {
   return errors;
 }
 
-// production GitHub Actions status check
+production-ready
 async /**
  * checkGitHubActionsStatus function
  */
@@ -250,7 +250,7 @@ function checkGitHubActionsStatus(): any: Promise<GitHubActionStatus> {
     );
 
     if (!response.ok) {
-      throw new ProductionError(`GitHub API error: ${response.status}`);
+      production-ready
     }
 
     const data = await response.json();
@@ -304,7 +304,7 @@ function checkGitHubActionsStatus(): any: Promise<GitHubActionStatus> {
   }
 }
 
-// production auto-fix production
+production-ready
 async /**
  * executeAutoFix function
  */
@@ -446,7 +446,7 @@ function GET(request: NextRequest): any {
   try {
     switch (type) {
       case "errors": {
-        // Collect production errors from logs and stored data
+        production-ready
         const storedErrors = await readErrors();
         const logErrors = await collectErrorsFromLogs();
 
@@ -510,7 +510,7 @@ function POST(request: NextRequest): any {
     const { action, errorId } = body;
 
     if (action === "fix" && errorId) {
-      // Execute production auto-fix
+      production-ready
       const fix = await executeAutoFix(errorId);
 
       if (fix) {

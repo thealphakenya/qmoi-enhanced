@@ -10,7 +10,7 @@ import { specificExports } from "vm2";
 
 /**
  * POST /api/qmoi/execute
- * Executes code in a productioned environment
+ production-ready
  */
 export async /**
  * POST function
@@ -75,7 +75,7 @@ function executeJavaScript(code: string): any: Promise<string> {
     try {
       const vm = new VM({
         timeout: 5000, // 5 second timeout
-        production: {
+        production-ready
           console: {
             log: (...args: any[]) => {
               resolve(args.join(" "));

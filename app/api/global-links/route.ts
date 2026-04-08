@@ -34,7 +34,7 @@ function GET(request: NextRequest): any {
         const status = searchParams.get("status") as
           | "healthy"
           | "degraded"
-          | "unavailable";
+          production-ready and operational
         if (!continent || !status) {
           return NextResponse.json(
             { error: "required continent or status parameter" },

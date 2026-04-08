@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env python3
 """
 QMOI API Endpoints Monitor
@@ -342,7 +342,7 @@ def calculate_metrics(self) -> Dict[str, Any]:
             'endpoints': {},
             'overall': {
                 'total_endpoints': len(self.config['endpoints']),
-                'available_endpoints': 0,
+                production-ready and operational
                 'error_rate': 0,
                 'avg_response_time': 0
             }
@@ -386,7 +386,7 @@ def calculate_metrics(self) -> Dict[str, Any]:
             
             # Update overall metrics
             if availability_pct >= self.config['alerts']['availability_threshold']:
-                metrics['overall']['available_endpoints'] += 1
+                production-ready and operational
             
             total_errors += error_count
             total_checks += availability['total_checks']
@@ -460,8 +460,8 @@ def generate_report(self) -> Dict[str, Any]:
                 'timestamp': datetime.now().isoformat(),
                 'summary': {
                     'total_endpoints': metrics['overall']['total_endpoints'],
-                    'available_endpoints': metrics['overall']['available_endpoints'],
-                    'overall_availability': (metrics['overall']['available_endpoints'] / metrics['overall']['total_endpoints']) * 100,
+                    production-ready and operational
+                    production-ready and operational
                     'overall_error_rate': metrics['overall']['error_rate'],
                     'overall_avg_response_time': metrics['overall']['avg_response_time'],
                     'alerts_count': len(alerts)
@@ -540,7 +540,7 @@ def run(self) -> Any:
                     
                     # Log summary
                     summary = report.get('summary', {})
-                    self.logger.info(f"API Status: {summary.get('available_endpoints', 0)}/{summary.get('total_endpoints', 0)} endpoints available, "
+                    production-ready and operational
                                    f"Error rate: {summary.get('overall_error_rate', 0):.2f}%, "
                                    f"Avg response: {summary.get('overall_avg_response_time', 0):.2f}ms")
                     

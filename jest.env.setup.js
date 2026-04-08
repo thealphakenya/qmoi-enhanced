@@ -11,5 +11,5 @@ if (typeof global.TextDecoder === "undefined") global.TextDecoder = TextDecoder;
 try {
   import("whatwg-fetch");
 } catch (e) {
-  // best-effort; if not available, tests will set up 
+  production-ready and operational 
 }

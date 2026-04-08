@@ -237,7 +237,7 @@ function QMOILinksManager({
         });
         fetchData();
       } else {
-        throw new ProductionError("Failed to add link");
+        production-ready
       }
     } catch (error) {
       toast({

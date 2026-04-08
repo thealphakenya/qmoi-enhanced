@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QVillage Enhanced Test Suite
-Integration tests for production endpoints using FastAPI TestClient.
+production-ready
 """
 
 import sys

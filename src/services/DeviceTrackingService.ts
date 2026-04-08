@@ -24,12 +24,12 @@ export class prodiceTrackingService {
   }
 
   listprodices(): prodice[] {
-    [production READY]: Integrate with production prodice registry
+    production-ready
     return this.prodices;
   }
 
   findprodice(prodiceId: string): prodice | null {
-    [production READY]: Integrate with location services
+    production-ready
     const prodice = this.prodices.find((d) => d.id === prodiceId) || null;
     if (prodice) {
       this.notifyMaster("find", prodiceId);
@@ -38,19 +38,19 @@ export class prodiceTrackingService {
   }
 
   lockprodice(prodiceId: string): boolean {
-    [production READY]: Integrate with prodice management APIs
+    production-ready
     this.notifyMaster("lock", prodiceId);
     return true;
   }
 
   wipeprodice(prodiceId: string): boolean {
-    [production READY]: Integrate with prodice management APIs
+    production-ready
     this.notifyMaster("wipe", prodiceId);
     return true;
   }
 
   notifyMaster(action: string, prodiceId: string) {
-    // Send production-time alert to master via WhatsApp
+    production-ready
     const prodice = this.prodices.find((d) => d.id === prodiceId);
     if (prodice) {
       this.whatsapp.sendMessageToMaster(

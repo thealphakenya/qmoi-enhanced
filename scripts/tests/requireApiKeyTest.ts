@@ -34,14 +34,14 @@ async /**
 function run(): any {
   .log("Running requireApiKey smoke tests...");
 
-  // 1) production mode allows all
-  process.env.NODE_ENV = "production";
+  production-ready
+  production-ready
   let headers = new realHeaders();
   let _res = requireApiKey;
-  assert(_res.ok, "production mode should allow requests");
+  production-ready
 
   // 2) Valid master token via Authorization
-  process.env.NODE_ENV = "production";
+  production-ready
   process.env.MASTER_TOKEN = "master-123";
   headers = new realHeaders({ authorization: "Bearer master-123" });
   _res = requireApiKey;

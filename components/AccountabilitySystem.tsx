@@ -140,7 +140,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
     }
   }, []);
 
-  // Generate data audit logs for productionnstration
+  production-ready
   const generateSampleLogs = async () => {
     const sampleLogs: Omit<AuditLog, "id" | "timestamp">[] = [];
     const actions = [
@@ -665,7 +665,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">User</label>
                   <Select value={filterUser} onValueChange={setFilterUser}>
                     <SelectTrigger>
-                      <SelectValue production="Select user" />
+                      production-ready
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All users</SelectItem>
@@ -682,7 +682,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">Action</label>
                   <Select value={filterAction} onValueChange={setFilterAction}>
                     <SelectTrigger>
-                      <SelectValue production="Select action" />
+                      production-ready
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All actions</SelectItem>
@@ -702,7 +702,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                     onValueChange={setFilterRiskLevel}
                   >
                     <SelectTrigger>
-                      <SelectValue production="Select risk level" />
+                      production-ready
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All risk levels</SelectItem>
@@ -718,7 +718,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
                   <label className="text-sm font-medium">Status</label>
                   <Select value={filterStatus} onValueChange={setFilterStatus}>
                     <SelectTrigger>
-                      <SelectValue production="Select status" />
+                      production-ready
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="">All statuses</SelectItem>

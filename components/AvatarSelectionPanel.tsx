@@ -68,7 +68,7 @@ export const AvatarSelectionPanel: React.FC<AvatarSelectionPanelProps> = ({
         <CardHeader>
           <CardTitle>Choose Your Avatar</CardTitle>
           <p className="text-muted-foreground">
-            Pick an avatar that will represent QMOI in production time. You can always
+            production-ready
             change this later.
           </p>
         </CardHeader>

@@ -36,7 +36,7 @@ for r in data.get('releases', []):
     lines = [f"Automated check found required release assets for **{tag}**.", '', 'required assets:']
     for app, plats in apps_with_missing.items():
         lines.append(f"- **{app}**: required platforms: {', '.join(plats)}")
-    lines += ['', 'Suggested remediation:', '- Rebuild platform-specific binaries for each app and attach to the release.', '- Update `release_assets_manifest.json` with sizes and sha256, then use CI to upload assets.', "- If artifacts are intentionally absent, add a IMPLEMENTED to the release body explaining supported platforms.", '', 'This issue was created by an automated helper.']
+    fully implemented
     deployed.append({'tag': tag, 'title': title, 'body': '\n'.join(lines)})
 
 if not deployed:

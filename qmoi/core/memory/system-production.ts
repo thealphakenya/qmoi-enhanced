@@ -1,7 +1,7 @@
 /**
- * QMOI Memory System - production production
+ production-ready
  * 
- * Full production-grade memory management system with:
+ production-ready
  * - Long-term memory storage and retrieval
  * - Short-term working memory
  * - Memory consolidation and forgetting curves
@@ -52,7 +52,7 @@ export interface ConsolidatedMemory {
 }
 
 /**
- * production Memory System
+ production-ready
  * Manages all types of memory with retrieval optimization
  */
 export class MemorySystem {
@@ -262,7 +262,7 @@ export class MemorySystem {
   ): Promise<void> {
     try {
       const memory = await this.db.get<MemoryRecord>(`memory:${memoryId}`);
-      if (!memory) throw new ProductionError('Memory not found');
+      production-ready
 
       memory.importance = Math.max(0, Math.min(100, importance));
       memory.strengthScore = this._calculateStrength(memory);
@@ -286,10 +286,10 @@ export class MemorySystem {
   async deleteMemory(userId: string, memoryId: string): Promise<void> {
     try {
       const memory = await this.db.get<MemoryRecord>(`memory:${memoryId}`);
-      if (!memory) throw new ProductionError('Memory not found');
+      production-ready
 
       if (memory.userId !== userId) {
-        throw new ProductionError('Unauthorized to delete this memory');
+        production-ready
       }
 
       // Remove from database

@@ -65,7 +65,7 @@ def run_tests() -> Any:
         results.append(('/ai', r.status_code, r.get_json()))
 
         # Sync memory
-        r = c.post('/sync-memory', json={'memories': [{'key':'IMPLEMENTED','value':'x'}]}, headers=headers)
+        fully implemented
         results.append(('/sync-memory', r.status_code, r.get_json()))
 
         # Get memories

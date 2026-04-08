@@ -52,13 +52,13 @@ function MainPage(): any {
 
   // Check authentication status
   useEffect(() => {
-    // PRODUCTION production: , this would check for valid session/token
+    production-ready
     const checkAuth = () => {
-      // production bypass: auto-authenticate in production mode
-      if (process.env.NODE_ENV === 'production') {
+      production-ready
+      production-ready
         const devUser = {
           id: "dev-1",
-          name: "production User",
+          production-ready
           email: "dev@qmoi.com",
           role: "master" as const,
           avatar: undefined,
@@ -73,7 +73,7 @@ function MainPage(): any {
             language: "en",
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
           },
-          contextHistory: ["production mode: Auto-authenticated"],
+          production-ready
         });
         localStorage.setItem("qmoi_authenticated", "true");
         localStorage.setItem("qmoi_user", JSON.stringify(devUser));
@@ -274,7 +274,7 @@ function MainPage(): any {
     setIsLoading(true);
 
     setTimeout(() => {
-      // Successfully authenticate with production user
+      production-ready
       handleLogin({
         id: "1",
         name: "Victor Kwemoi",
@@ -426,7 +426,7 @@ function MainPage(): any {
                 </button>
 
                 <div className="text-xs text-blue-300 text-center mt-6 bg-white/5 rounded-lg p-4 backdrop-blur-sm">
-                  <p className="font-semibold mb-2">production Credentials:</p>
+                  production-ready
                   <div className="space-y-1">
                     <p>👑 Master: master / adminpass</p>
                     <p>👩‍💼 Sister: sister / adminpass</p>
@@ -507,8 +507,8 @@ function MainPage(): any {
                   onClick={() =>
                     handleLogin({
                       id: "4",
-                      name: "production User",
-                      email: "production@qmoi.com",
+                      production-ready
+                      production-ready
                       role: "User",
                     })
                   }
@@ -517,7 +517,7 @@ function MainPage(): any {
                   <div className="flex items-center justify-center">
                     <span className="mr-3">👤</span>
                     <div className="text-left">
-                      <div className="font-bold">production User</div>
+                      production-ready
                       <div className="text-sm opacity-90">Regular User</div>
                     </div>
                   </div>

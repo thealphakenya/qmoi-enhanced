@@ -31,7 +31,7 @@ function testQMOIChat(): any {
     logger.info("Chat API Response:", JSON.stringify(data, null, 2));
 
     if (data.message && !data.message.includes("QMOI Evolved Response")) {
-      logger.info("✅ AI integration working - production responses detected");
+      production-ready
     } else {
       logger.info("❌ Still using 
     }

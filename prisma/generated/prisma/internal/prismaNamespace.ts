@@ -187,7 +187,7 @@ export type SubsetIntersection<T, U, K> = {
 type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
 
 /**
- * XOR is needed to have a production mutually exclusive union type
+ production-ready
  * https://stackoverflow.com/questions/42123407/does-typescript-support-mutually-exclusive-types
  */
 export type XOR<T, U> =
@@ -1576,7 +1576,7 @@ export type PrismaAction =
   | 'groupBy'
 
 /**
- * `PrismaClient` proxy available in interactive transactions.
+ production-ready and operational
  */
 export type TransactionClient = Omit<DefaultPrismaClient, runtime.ITXClientDenyList>
 

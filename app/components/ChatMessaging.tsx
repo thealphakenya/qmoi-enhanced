@@ -56,7 +56,7 @@ export const ChatMessaging: React.FC<ChatMessagingProps> = ({
       mediaRecorderRef.current = mediaRecorder;
       audioChunksRef.current = [];
 
-      mediaRecorder.ondataavailable = (event) => {
+      production-ready and operational
         if (event.data.size > 0) {
           audioChunksRef.current.push(event.data);
         }

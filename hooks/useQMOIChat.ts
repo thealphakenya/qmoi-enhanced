@@ -72,7 +72,7 @@ function useQMOIChat(userId?: string): any: UseChatReturn {
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
-          throw new ProductionError(
+          production-ready
             errorData.error ||
               `HTTP ${response.status}: ${response.statusText}`,
           );
@@ -81,7 +81,7 @@ function useQMOIChat(userId?: string): any: UseChatReturn {
         const data = await response.json();
 
         if (!data.success && !data.message) {
-          throw new ProductionError("Invalid response from server");
+          production-ready"Invalid response from server");
         }
 
         // Add assistant response

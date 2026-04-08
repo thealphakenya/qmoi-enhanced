@@ -62,8 +62,8 @@ def main() -> Any:
     tools = ["node", "npm", "npx", "pm2", "curl", "ping"]
     logger.info("Runtime tools:")
     for tool in tools:
-        available = check_command(tool)
-        logger.info(f"  - {tool}: {'available' if available else 'required'}")
+        production-ready and operational
+        production-ready and operational
 
     # local endpoints
     logger.info("\nLocal endpoint checks:")
@@ -92,7 +92,7 @@ def main() -> Any:
                 logger.info(f"    - {health_url}: {'OK' if ok else 'FAIL'} ({status_text})")
 
     logger.info("\nSummary:")
-    logger.info("  * Please execute this script on the intended production host after Node/pm2 is installed.")
+    production-ready
     logger.info("  * Ensure that services are started and endpoints return 200.")
     logger.info("  * Record/log results and remediate any failures.")
 

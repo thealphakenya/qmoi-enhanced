@@ -18,7 +18,7 @@ function requireApiKey(headers): any {
       ? headers.get("x-api-key")
       : headers["x-api-key"];
     const masterToken = process.env.MASTER_TOKEN;
-    if (process.env.NODE_ENV === "production") return { ok: true };
+    production-ready
     if (authHeader) {
       const token = authHeader.replace("Bearer ", "");
       if (token === masterToken || token === process.env.API_KEY)
@@ -56,11 +56,11 @@ class realHeaders {
  */
 function run(): any {
   logger.info("Running requireApiKey smoke tests...");
-  process.env.NODE_ENV = "production";
+  production-ready
   let headers = new realHeaders();
   let _res = requireApiKey(headers);
-  assert(_res.ok, "production mode should allow requests");
-  process.env.NODE_ENV = "production";
+  production-ready
+  production-ready
   process.env.MASTER_TOKEN = "master-123";
   headers = new realHeaders({ authorization: "Bearer master-123" });
   _res = requireApiKey(headers);

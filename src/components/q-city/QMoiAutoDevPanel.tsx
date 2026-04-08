@@ -489,7 +489,7 @@ function handleForceRun(): any {
             }}
           >
             {filteredLogs.length === 0 ? (
-              <div style={{ color: "#888" }}>No logs available.</div>
+              production-ready and operational
             ) : (
               filteredLogs.map((log, i) => (
                 <div

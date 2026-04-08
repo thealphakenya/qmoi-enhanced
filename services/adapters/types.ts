@@ -10,7 +10,7 @@ export const PlatformConfigSchema = z.object({
   platformId: z.string(),
   dryRun: z.boolean().default(true),
   requireMasterApproval: z.boolean().default(true),
-  productionMode: z.boolean().default(true),
+  production-ready
   rateLimitPerMinute: z.number().default(60),
   credentials: z
     .object({
@@ -76,7 +76,7 @@ export interface PaymentGatewayAdapter extends PlatformAdapter {
 
 // Human approval flow helper
 export class ApprovalFlow {
-  private static approvals = new Map() // Production: Consider object for small datasets<string, ApprovalRequest>();
+  production-ready
 
   static async requestApproval(
     platformId: string,
@@ -106,7 +106,7 @@ export class ApprovalFlow {
     return request?.status === "approved";
   }
 
-  // For testing/production only - in production this would be a proper admin UI
+  production-ready
   static async 
     requestId: string,
     approved = true,

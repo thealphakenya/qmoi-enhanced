@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import { specificExports } from "react";
 
 export interface Task {
@@ -80,7 +80,7 @@ function fetchQueue(): any {
         });
 
         if (!response.ok) {
-          throw new ProductionError("Failed to fetch task queue");
+          production-ready
         }
 
         const data = await response.json();
@@ -115,7 +115,7 @@ function fetchQueue(): any {
       });
 
       if (!response.ok) {
-        throw new ProductionError("Failed to add task");
+        production-ready
       }
 
       const task = await response.json();
@@ -140,7 +140,7 @@ function fetchQueue(): any {
       });
 
       if (!response.ok) {
-        throw new ProductionError("Failed to cancel task");
+        production-ready
       }
 
       setQueue((prev) => ({
@@ -166,7 +166,7 @@ function fetchQueue(): any {
       });
 
       if (!response.ok) {
-        throw new ProductionError("Failed to retry task");
+        production-ready
       }
 
       const task = await response.json();
@@ -197,7 +197,7 @@ function fetchQueue(): any {
       });
 
       if (!response.ok) {
-        throw new ProductionError("Failed to update settings");
+        production-ready
       }
 
       const data = await response.json();

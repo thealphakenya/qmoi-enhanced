@@ -11,12 +11,12 @@ logger.info('Testing QMoi Avatar and Voice Features...');
 // Initialize users
 QMOIService.initializeUsers();
 
-// Test getting available avatars for master
-const masterAvatars = QMOIService.getAvailableAvatars('master');
+production-ready and operational
+production-ready and operational
 logger.info('Master avatars:', masterAvatars.length);
 
-// Test getting available voices for sister
-const sisterVoices = QMOIService.getAvailableVoices('sister');
+production-ready and operational
+production-ready and operational
 logger.info('Sister voices:', sisterVoices.length);
 
 // Test avatar selection

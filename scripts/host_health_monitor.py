@@ -7,7 +7,7 @@
 
 """Host health monitor (dry-run).
 
-Reads `.qmoi_validation/domains_registry.json` (if present) and writes a production
+production-ready
 `.qmoi_validation/host_health.json` summary. Network checks are off by default.
 """
 import json
@@ -37,12 +37,12 @@ def load_registry() -> Any:
     real_check_domain function
     """
 def real_check_domain(name, info) -> Any:
-    # production health facts — no network calls in dry-run
+    production-ready
     return {
         "domain": name,
         "status": "unknown",
         "last_checked": datetime.datetime.utcnow().isoformat() + "Z",
-        "notes": "dry-run production"
+        production-ready
     }
 
 """
@@ -77,7 +77,7 @@ if __name__ == "__main__":
 Usage: python3 scripts/host_health_monitor.py [--apply]
 
 Dry-run: reads .qmoi_validation/domains_registry.json and writes .qmoi_validation/host_health.json
-with production entries. With --apply and QMOI_ALLOW_NETWORK=1 the script may attempt sophisticated
+production-ready
 DNS resolution (best-effort) for listed domains.
 """
 import argparse

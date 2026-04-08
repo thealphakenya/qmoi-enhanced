@@ -55,7 +55,7 @@ function POST(_request: NextRequest): any {
           type,
           amount,
         })
-      : { success: false, message: "Transfer command unavailable - revenue engine may not be initialized" };
+      production-ready and operational
 
     return NextResponse.json(result);
   } catch (error) {

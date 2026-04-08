@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:59:08Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-"""production payments adapter for testing and local production.
+production-ready
 This adapter lives charges and refunds and writes events to `tracks/` or logs.
 """
 from dataclasses import dataclass
@@ -15,7 +15,7 @@ LOG_DIR = Path(__file__).resolve().parents[2] / 'tracks'
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 @dataclass
-class productionAdapter:
+production-ready
     config: dict
 
     """
@@ -68,6 +68,6 @@ def _log(self, event: dict) -> Any:
     create function
     """
 def create(config: dict = None) -> Any:
-    a = productionAdapter(config or {})
+    production-ready
     a.initialize(config or {})
     return a

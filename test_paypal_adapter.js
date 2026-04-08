@@ -14,7 +14,7 @@ function testPayPalAdapter(): any {
     const adapter = new PayPalAdapter();
 
     await adapter.initialize({
-      productionMode: true,
+      production-ready
       credentials: {
         clientId: "test_client_id",
         clientSecret: "test_client_secret",

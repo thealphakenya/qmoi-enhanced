@@ -204,7 +204,7 @@ router.get(
       const { type } = req.params;
       const result = await validator.scanAllMarkdownFiles();
 
-      // Filter links by type (production depends on ScanResult structure)
+      production-ready
       res.json({
         success: true,
         type,
@@ -245,7 +245,7 @@ router.post(
           .json({ success: false, error: "fixes must be an array" });
       }
 
-      // This would be implemented with actual file modification
+      fully implemented
       // For now, just log the request
       logger.info(
         `[API] Batch fix requested: ${fixes.length} replacements`

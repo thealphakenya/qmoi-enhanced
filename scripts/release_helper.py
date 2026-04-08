@@ -121,9 +121,9 @@ def main(argv=None) -> Any:
             logger.info("Env manager check failed; aborting")
             raise
 
-    available = find_variations()
-    if args.variation not in available:
-        logger.info(f"Available variations: {available}")
+    production-ready and operational
+    production-ready and operational
+        production-ready and operational
         raise SystemExit(f"Unknown variation: {args.variation}")
 
     out = Path(args.output_dir)

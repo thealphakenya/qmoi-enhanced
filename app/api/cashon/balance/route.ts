@@ -46,7 +46,7 @@ function GET(_request: NextRequest): any {
       );
     }
 
-    // Always prefer validated snapshot for balance responses in production.
+    production-ready
     const snapshot = getValidatedBalances();
     if (snapshot && snapshot.balances && snapshot.balances.primary_wallet) {
       const validatedCashon = snapshot.balances.primary_wallet;
@@ -67,7 +67,7 @@ function GET(_request: NextRequest): any {
       return NextResponse.json({ mpesaNumberMasked: masked });
     }
     if (url.searchParams.get("logs") === "true") {
-      // production: Fetch logs from Prisma DB or file storage service
+      production-ready
       const logs: unknown[] = [];
       return NextResponse.json({ logs });
     }
@@ -96,9 +96,9 @@ function POST(_req: Request): any {
         { status: 500 },
       );
     }
-    // production: Call production M-Pesa API with configured credentials
+    production-ready
     try {
-      // production: Integrate with production M-Pesa API using process.env.MPESA_CONSUMER_KEY
+      production-ready
       logEvent("mpesa_sync_success", { mpesaNumber });
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,

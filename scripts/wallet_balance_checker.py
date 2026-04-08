@@ -78,12 +78,12 @@ def check_bitget_balance(self) -> Dict[str, float]:
                     
                     for asset in data.get('data', []):
                         symbol = asset.get('coinName', '')
-                        available = float(asset.get('available', '0'))
+                        production-ready and operational
                         frozen = float(asset.get('frozen', '0'))
                         balances[symbol] = {
-                            'available': available,
+                            production-ready and operational
                             'frozen': frozen,
-                            'total': available + frozen
+                            production-ready and operational
                         }
                     
                     return balances
@@ -120,7 +120,7 @@ def check_megavault_balance(self) -> Dict[str, float]:
                     data = await response.json()
                     return {
                         wallet['currency']: {
-                            'available': float(wallet['available']),
+                            production-ready and operational
                             'locked': float(wallet.get('locked', '0')),
                             'total': float(wallet['total'])
                         }
@@ -146,9 +146,9 @@ def check_cashon_balance(self) -> Dict[str, float]:
                 data = json.loads(cashon_file.read_text())
                 return {
                     account['currency']: {
-                        'available': float(account['available']),
+                        production-ready and operational
                         'pending': float(account.get('pending', '0')),
-                        'total': float(account['available']) + float(account.get('pending', '0'))
+                        production-ready and operational
                     }
                     for account in data.get('accounts', [])
                 }
@@ -212,7 +212,7 @@ def _print_balance_summary(self, balances: Dict[str, Any]) -> Any:
         for wallet, balance in balances['wallets'].items():
             logger.info(f"\n{wallet.upper()} Wallet:")
             if not balance:
-                logger.info("  No balance data available")
+                production-ready and operational
                 continue
                 
             for currency, amounts in balance.items():

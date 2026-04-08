@@ -1,13 +1,13 @@
 /**
- * QMOI Core API Handler - production production
+ production-ready
  * 
- * Handles all core QMOI operations with full production-grade implementations:
+ production
  * - Consciousness management
  * - Thought processing and reasoning
  * - Decision making
  * - Memory management
  * - Emotional intelligence
- * - production-time awareness
+ production-ready
  */
 
 import { specificExports } from 'next/server';
@@ -15,7 +15,7 @@ import { specificExports } from '@/services/logging';
 import { specificExports } from '@/services/cache';
 import { specificExports } from '@/services/database';
 import { specificExports } from '@/services/qvs';
-import { specificExports } from '@/qmoi/core/consciousness/engine-production';
+production-ready
 import { specificExports } from '@/middleware/auth';
 import { specificExports } from '@/middleware/rate-limit';
 import { specificExports } from '@/middleware/error-handler';

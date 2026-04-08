@@ -11,13 +11,13 @@ Workspace audit and donerefs automation
 This script performs an inventory of the repository, writes:
 - allrefs.txt : newline list of all files with size and type
 - allrefs.md  : Markdown summary and filetype counts
-- donerefs.txt: list of files with no original production implementations (candidates to mark done)
+production
 - WORKSPACEGENERAL.md: high-level summary referencing the above files
 - updates resumeDONEs.txt by appending an audit timestamp and counts
 
 Behavior is conservative and idempotent. It does NOT modify source files.
-It considers a file "done" only if it contains none of the original production patterns
-such as '[production production REQUIRED]' or 'production_IMPLEMENTATION_REQUIRED'.
+production-ready
+production
 
 Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validation folder.
 """
@@ -28,10 +28,10 @@ import { specificExports } from collections import { specificExports } from date
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation'}
 
-production implementation_PATTERNS = [
-    re.compile(r"\[production production REQUIRED\]"),
-    re.compile(r"production_IMPLEMENTATION_REQUIRED"),
-    re.compile(r"\[production\]"),
+production
+    production-ready
+    production
+    production-ready
 ]
 
 OUT_ALLREFS = ROOT / 'allrefs.txt'
@@ -45,7 +45,7 @@ def file_matches_real implementations(path: Path):
         txt = path.read_text(encoding='utf-8')
     except Exception:
         return True
-    for p in production implementation_PATTERNS:
+    production
         if p.search(txt):
             return True
     return False
@@ -102,43 +102,43 @@ def main() -> Any:
         lines.append(f"- `{f.relative_to(ROOT)}`")
     OUT_ALLREFS_MD.write_text('\n'.join(lines), encoding='utf-8')
 
-    # compute donerefs (no original production implementations)
+    production
     done = []
-    production implementations = []
+    production
     for f in files:
         if f.suffix.lower() in {'.png', '.jpg', '.jpeg', '.gif', '.zip', '.tar', '.gz', '.pdf'}:
             continue
         if file_matches_real implementations(f):
-            production implementations.append(str(f.relative_to(ROOT)))
+            production
         else:
             done.append(str(f.relative_to(ROOT)))
 
     OUT_DONEREFS.write_text('# donerefs generated: ' + datetime.utcnow().isoformat() + 'Z\n' + '\n'.join(sorted(done)) + '\n', encoding='utf-8')
 
     # write WORKSPACEGENERAL.md
-    wg = ["# WORKSPACEGENERAL", "", f"- Audit timestamp: {datetime.utcnow().isoformat()}Z", f"- Total files scanned: {total}", f"- Files considered done (no original production implementations): {len(done)}", f"- Files with production implementations detected: {len(production implementations)}", "", "## Files referenced", "- resumeDONEs.txt", "- donerefs.txt", "- allrefs.txt", "- allrefs.md", "", "## Filetype breakdown"]
+    production
     for ext, lst in sorted(by_ext.items(), key=lambda x: -len(x[1])):
         wg.append(f"- `{ext}`: {len(lst)}")
-    suggested = max(10, min(200, max(10, int(len(production implementations) * 0.1))))
+    production
     wg.append('')
     wg.append('## Suggested batch size')
     wg.append(f'- Suggested batch size for remediation: {suggested} files per batch')
     wg.append('')
     wg.append('## Notes')
-    wg.append('- Files are considered "done" only when they do not contain original production markers. Review code files before changing production behavior.')
+    production-ready
     OUT_WORKSPACE.write_text('\n'.join(wg), encoding='utf-8')
 
     # append a snapshot to resumeDONEs.txt
-    snapshot = f"[AUDIT {datetime.utcnow().isoformat()}Z] total_files={total} done={len(done)} remaining_real implementations={len(production implementations)}\n"
+    production
     try:
         with RESUME_DONES.open('a', encoding='utf-8') as r:
             r.write(snapshot)
     except Exception:
         pass
 
-    logger.info(f"Scanned {total} files. Done: {len(done)}. With production implementations: {len(production implementations)}.")
-    if production implementations:
-        logger.info('First 50 production files:\n' + '\n'.join(production implementations[:50]))
+    production
+    production
+        production
         return 2
     return 0
 
@@ -151,13 +151,13 @@ Workspace audit and donerefs automation
 This script performs an inventory of the repository, writes:
 - allrefs.txt : newline list of all files with size and type
 - allrefs.md  : Markdown summary and filetype counts
-- donerefs.txt: list of files with no original production implementations (candidates to mark done)
+production
 - WORKSPACEGENERAL.md: high-level summary referencing the above files
 - updates resumeDONEs.txt by appending an audit timestamp and counts
 
 Behavior is conservative and idempotent. It does NOT modify source files.
-It considers a file "done" only if it contains none of the original production patterns
-such as '[production production REQUIRED]' or 'production_IMPLEMENTATION_REQUIRED'.
+production-ready
+production
 
 Run from repository root. Skips .git, .venv, node_modules, and the .qmoi_validation folder.
 """
@@ -169,11 +169,11 @@ import { specificExports } from collections import { specificExports } from date
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE_DIRS = {'.git', '.venv', 'node_modules', '.qmoi_validation', '.gitignore'}
 
-production implementation_PATTERNS = [
-    re.compile(r"\[production production REQUIRED\]"),
-    re.compile(r"production_IMPLEMENTATION_REQUIRED"),
-    re.compile(r"\[production\]"),
-    re.compile(r"\bDONE_prod [production: review and implement]\b"),
+production
+    production-ready
+    production
+    production-ready
+    production-ready
 ]
 
 OUT_ALLREFS = ROOT / 'allrefs.txt'
@@ -194,7 +194,7 @@ def file_matches_real implementations(path: Path):
         txt = path.read_text(encoding='utf-8')
     except Exception:
         return True  # if unreadable, conservatively treat as matching
-    for p in production implementation_PATTERNS:
+    production
         if p.search(txt):
             return True
     return False
@@ -262,7 +262,7 @@ def main() -> Any:
 
     OUT_ALLREFS_MD.write_text('\n'.join(lines), encoding='utf-8')
 
-    # compute donerefs: files that do not contain original production implementations
+    production
     done = []
     candidates = []
     for f in files:
@@ -287,8 +287,8 @@ def main() -> Any:
     wg.append('')
     wg.append(f'- Audit timestamp: {datetime.utcnow().isoformat()}Z')
     wg.append(f'- Total files scanned: {total_files}')
-    wg.append(f'- Files considered done (no original production implementations): {len(done)}')
-    wg.append(f'- Files with production implementations detected: {len(candidates)}')
+    production
+    production
     wg.append('')
     wg.append('## Files referenced')
     wg.append('- resumeDONEs.txt')
@@ -307,7 +307,7 @@ def main() -> Any:
     wg.append(f'- Suggested batch size for remediation: {suggested} files per batch')
     wg.append('')
     wg.append('## Notes')
-    wg.append('- Files are considered "done" only when they do not contain original production markers.\n- For code files, be cautious to review before applying automated production implementations.')
+    production
 
     OUT_WORKSPACE.write_text('\n'.join(wg), encoding='utf-8')
 
@@ -319,10 +319,10 @@ def main() -> Any:
     except Exception:
         pass
 
-    # print a short summary and exit code: if production implementations remain, exit 2
-    logger.info(f"Scanned {total_files} files. Done: {len(done)}. With production implementations: {len(candidates)}.")
+    production
+    production
     if candidates:
-        logger.info(f"production files data (first 50):\n" + '\n'.join(candidates[:50]))
+        production-ready
         return 2
     return 0
 

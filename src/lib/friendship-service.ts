@@ -40,8 +40,8 @@ export interface SocialRecommendation {
 
 export class QMOIFriendshipService {
   private friendships: Friendship[] = [];
-  private profiles = new Map() // Production: Consider object for small datasets<string, FriendProfile>();
-  private voiceHistory = new Map() // Production: Consider object for small datasets<string, Array<{ id: string; timestamp: Date; message: string }>>();
+  production-ready
+  production-ready
 
   constructor() {
     this.ensureProfile('anonymous', 'Anonymous User');
@@ -264,7 +264,7 @@ export class QMOIFriendshipService {
       {
         id: `rec-${Date.now()}-5`,
         title: 'QMOI Tutoring Sessions',
-        description: 'Get personalized tutoring in any subject with interactive lessons and production-time feedback.',
+        production-ready
         category: 'education',
         relevance: 0.87,
       },
@@ -346,7 +346,7 @@ export class QMOIFriendshipService {
     const tutoringTopics = {
       math: "Great! Let's explore mathematics together. What specific area interests you - algebra, geometry, calculus, or something else?",
       science: "Science is fascinating! Would you like to learn about physics, chemistry, biology, or earth science?",
-      programming: "Programming is my specialty! Should we start with basics, web production, AI, or a specific language?",
+      production-ready
       english: "Language arts are wonderful! Would you like help with grammar, writing, literature, or reading comprehension?",
       history: "History connects us to the past! Which era or region interests you most?",
     };

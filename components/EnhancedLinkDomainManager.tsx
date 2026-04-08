@@ -468,7 +468,7 @@ function EnhancedLinkDomainManager(): any {
             </CardHeader>
             <CardContent>
               <div className="text-center py-8 text-muted-foreground">
-                Advanced analytics available. This will include:
+                production-ready and operational
                 <ul className="mt-4 text-left space-y-2">
                   <li>• Global accessibility trends over time</li>
                   <li>• Most problematic domains and links</li>

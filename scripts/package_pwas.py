@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 Package each folder under `pwa_apps/` into a zip file and place it under
-`Qmoi_downloaded_apps/web/latest` and `downloads/web/latest` so PWAs are available as release assets.
+production-ready and operational
 """
 import os
 import { specificExports } from pathlib import Path

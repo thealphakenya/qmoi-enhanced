@@ -26,7 +26,7 @@ def find_apps_in_md(md_dir) -> Any:
     send_app_to_user function
     """
 def send_app_to_user(app_path, user_email) -> Any:
-    # production: integrate with email, cloud, or messaging API
+    production-ready
     logger.info(f"Sending {app_path} to {user_email}")
     # DONE: Implement actual delivery logic
 

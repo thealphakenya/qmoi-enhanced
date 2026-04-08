@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Wrapper for the existing production marker scanner.
+production-ready
 
 This script exists to preserve older entry points that refer to
-scripts/scan_production_endpoints.py.
+production-ready
 """
 
 import sys
 import { specificExports } from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-TARGET_SCRIPT = SCRIPT_DIR / 'scan_nonproduction_endpoints.py'
+production-ready
 
 if not TARGET_SCRIPT.exists():
     logger.info(f"Error: required required helper script: {TARGET_SCRIPT}", file=sys.stderr)

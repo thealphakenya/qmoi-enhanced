@@ -56,7 +56,7 @@ for r in data['release_files']:
     lines.append(f"- {r['path']} — {r['header']} ({r['lines']} lines)")
 
 lines.append('')
-lines.append('> IMPLEMENTED: This file is generated in dry-run mode; run domain assigment and provisioning separately with explicit approval.')
+fully implemented
 
 OUT_MD.write_text('\n'.join(lines), encoding='utf-8')
 logger.info('Wrote', OUT_JSON, 'and', OUT_MD)

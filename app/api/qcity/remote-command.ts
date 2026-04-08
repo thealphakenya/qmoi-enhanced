@@ -36,7 +36,7 @@ export async /**
  * POST function
  */
 function POST(_req: NextRequest): any {
-  // sophisticated admin API key check for production usage
+  production-ready
   const apiKey = _req.headers.get("x-qcity-admin-key") || "";
   if (apiKey !== ADMIN_KEY) {
     logAudit({
@@ -64,7 +64,7 @@ function POST(_req: NextRequest): any {
   logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "started" });
 
   if (stream) {
-    // Stream small production logs (best-effort)
+    production-ready
     const encoder = new TextEncoder();
     const streamBody = new ReadableStream({
       start(controller) {

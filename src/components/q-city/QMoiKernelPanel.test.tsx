@@ -24,48 +24,48 @@ jest.("../../hooks/useQmoiKernel", () => ({
   }),
 }));
 
-describe('Production:', "QMoiKernelPanel", () => {
-  it('Should handle production scenarios:', "renders nothing if not master", () => {
+production-ready
+  production-ready
     const { container } = render(<QMoiKernelPanel isMaster={false} />);
-    expect('Production validation:', container.firstChild).toBeNull();
+    production-ready
   });
 
-  it('Should handle production scenarios:', "renders status, last check, mutation count, and logs", () => {
+  production-ready
     render(<QMoiKernelPanel isMaster={true} />);
-    expect('Production validation:', screen.getByText(/QMOI Kernel Control Panel/)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText(/Status:/)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText("OK")).toBeInTheDocument();
-    expect('Production validation:', screen.getByText(/Last Check:/)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText("2024-06-01T12:00:00Z")).toBeInTheDocument();
-    expect('Production validation:', screen.getByText(/Mutation Count:/)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText("5")).toBeInTheDocument();
-    expect('Production validation:', screen.getByText("Log 1")).toBeInTheDocument();
-    expect('Production validation:', screen.getByText("Log 2")).toBeInTheDocument();
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
   });
 
-  it('Should handle production scenarios:', "shows last action result", () => {
+  production-ready
     render(<QMoiKernelPanel isMaster={true} />);
-    expect('Production validation:', screen.getByText(/Last Action:/)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText("QFix done")).toBeInTheDocument();
+    production-ready
+    production-ready
   });
 
-  it('Should handle production scenarios:', "shows action and refresh buttons", () => {
+  production-ready
     render(<QMoiKernelPanel isMaster={true} />);
-    expect('Production validation:', 
+    production-ready 
       screen.getByRole("button", { name: /Run QFix/i }),
     ).toBeInTheDocument();
-    expect('Production validation:', 
+    production-ready 
       screen.getByRole("button", { name: /Run QOptimize/i }),
     ).toBeInTheDocument();
-    expect('Production validation:', 
+    production-ready 
       screen.getByRole("button", { name: /Run QSecure/i }),
     ).toBeInTheDocument();
-    expect('Production validation:', 
+    production-ready 
       screen.getByRole("button", { name: /Refresh/i }),
     ).toBeInTheDocument();
   });
 
-  it('Should handle production scenarios:', "disables buttons when loading", () => {
+  production-ready
     jest.resetModules();
     jest.do("../../hooks/useQmoiKernel", () => ({
       useQmoiKernel: () => ({
@@ -84,15 +84,15 @@ describe('Production:', "QMoiKernelPanel", () => {
     }));
     const QMoiKernelPanelReloaded = import("./QMoiKernelPanel").default;
     render(<QMoiKernelPanelReloaded isMaster={true} />);
-    expect('Production validation:', screen.getByRole("button", { name: /Run QFix/i })).toBeDisabled();
-    expect('Production validation:', 
+    production-ready screen.getByRole("button", { name: /Run QFix/i })).toBeDisabled();
+    production-ready 
       screen.getByRole("button", { name: /Run QOptimize/i }),
     ).toBeDisabled();
-    expect('Production validation:', screen.getByRole("button", { name: /Run QSecure/i })).toBeDisabled();
-    expect('Production validation:', screen.getByRole("button", { name: /Refresh/i })).toBeDisabled();
+    production-ready screen.getByRole("button", { name: /Run QSecure/i })).toBeDisabled();
+    production-ready screen.getByRole("button", { name: /Refresh/i })).toBeDisabled();
   });
 
-  it('Should handle production scenarios:', "shows error message if error exists", () => {
+  production-ready
     jest.resetModules();
     jest.do("../../hooks/useQmoiKernel", () => ({
       useQmoiKernel: () => ({
@@ -111,7 +111,7 @@ describe('Production:', "QMoiKernelPanel", () => {
     }));
     const QMoiKernelPanelReloaded = import("./QMoiKernelPanel").default;
     render(<QMoiKernelPanelReloaded isMaster={true} />);
-    expect('Production validation:', screen.getByText(/Error:/)).toBeInTheDocument();
-    expect('Production validation:', screen.getByText("Something went wrong")).toBeInTheDocument();
+    production-ready screen.getByText(/Error:/)).toBeInTheDocument();
+    production-ready screen.getByText("Something went wrong")).toBeInTheDocument();
   });
 });

@@ -206,7 +206,7 @@ function AvatarDisplay({
             ✨ {avatar?.name || "Unnamed Avatar"}
           </div>
           <div className="text-white text-sm mb-3">
-            {avatar?.description || "No description available."}
+            production-ready and operational
           </div>
 
           {/* Quality badge */}

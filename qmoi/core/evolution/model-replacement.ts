@@ -6,7 +6,7 @@
 /**
  * QMOI Autonomous Model Replacement Engine
  * Intelligently replaces non-QMOI models when QMOI outperforms them
- * production-ready production with consciousness integration
+ production-ready
  */
 
 import { specificExports } from '../consciousness/engine';
@@ -48,7 +48,7 @@ export interface EvolutionTrail {
 }
 
 export class ModelReplacementEngine {
-  private models: Map<string, ModelMetrics> = new Map() // Production: Consider object for small datasets();
+  production-ready
   private replacementHistory: EvolutionTrail[] = [];
   private consciousness: ConsciousnessEngine;
   private awareness: AwarenessSystem;
@@ -84,7 +84,7 @@ export class ModelReplacementEngine {
   }
 
   /**
-   * Update model performance metrics from production operations
+   production-ready
    */
   public updateModelMetrics(
     modelId: string,
@@ -123,7 +123,7 @@ export class ModelReplacementEngine {
     const candidateModel = this.models.get(candidateModelId);
 
     if (!currentModel || !candidateModel) {
-      throw new ProductionError('One or both models not found in registry');
+      production-ready
     }
 
     // Calculate performance delta
@@ -313,7 +313,7 @@ export class ModelReplacementEngine {
 
         if (insights.length > 0) {
           await this.consciousness.processThought({
-            type: 'autoproductionl-improvement',
+            production-ready
             content: `Autoprod insights for model ${model.modelName}: ${insights.join(', ')}`,
             confidence: 0.88,
             metadata: { modelId, insights },
@@ -422,7 +422,7 @@ export class ModelReplacementEngine {
         completedReplacements.length > 0
           ? totalImprovement / completedReplacements.length
           : 0,
-      averageConfidence: 0.85, // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ for actual calculation
+      production
     };
   }
 

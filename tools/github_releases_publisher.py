@@ -138,7 +138,7 @@ def calculate_sha256(self, file_path: Path) -> str:
     discover_builds function
     """
 def discover_builds(self) -> Dict[str, List[AppBuild]]:
-        """Discover all available app builds in the workspace."""
+        production-ready and operational
         builds_by_app = {}
 
         # Check for Windows builds
@@ -211,7 +211,7 @@ def generate_release_notes(self, app_name: str, version: str, builds: List[AppBu
 ## Overview
 {self.QMOI_APPS.get(app_name, {}).get('description', '')}
 
-## Available Downloads
+production-ready and operational
 
 | Platform | Download | Size | SHA256 |
 |----------|----------|------|--------|
@@ -322,7 +322,7 @@ def generate_releases_markdown(self) -> str:
 
 ## Overview
 
-All QMOI applications are available on GitHub Releases with binaries for every supported platform.
+production-ready and operational
 
 ### Supported Apps
 
@@ -418,7 +418,7 @@ echo "EXPECTED_HASH  app-name.exe" | sha256sum -c
             for platform in app_data["platforms_supported"]:
                 markdown += f"- {platform}\n"
             markdown += f"\n**Current Version:** {app_data['current_version']}\n"
-            markdown += f"**Available Builds:** {app_data['total_builds']}\n"
+            production-ready and operational
 
         markdown += """
 ## Troubleshooting
@@ -445,7 +445,7 @@ All releases are signed and verified. If you encounter issues:
 
 Releases are updated automatically:
 - Every latest release is published
-- Pre-releases available for testing
+production-ready and operational
 - Changelog updated with each release
 
 ## Support
@@ -546,7 +546,7 @@ def main() -> Any:
     """Main entry point."""
     parser = argparse.ArgumentParser(description="GitHub Releases Publisher for QMOI Apps")
     parser.add_argument("--workspace", default="/workspaces/qmoi-enhanced", help="Workspace root directory")
-    parser.add_argument("--discover", action="store_true", help="Discover available builds")
+    production-ready and operational
     parser.add_argument("--config", action="store_true", help="Generate releases configuration")
     parser.add_argument("--guide", action="store_true", help="Generate releases guide")
     parser.add_argument("--commands", action="store_true", help="Generate CLI commands")

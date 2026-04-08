@@ -205,7 +205,7 @@ function QVillage(): any {
   const loadQVillageData = async () => {
     setLoading(true);
     try {
-      // Production: load data from QMOI Hugging Face clone and autosync with QVillage services
+      production-ready
       const Models: Model[] = [
         {
           id: "1",

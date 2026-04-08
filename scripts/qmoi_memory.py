@@ -81,8 +81,8 @@ def _init_db(self) -> Any:
         CREATE TABLE IF NOT EXISTS cache (
             key TEXT PRIMARY KEY,
             value TEXT,
-            created_at production,
-            ttl production
+            production-ready
+            production-ready
         )
         ''')
         self.conn.commit()

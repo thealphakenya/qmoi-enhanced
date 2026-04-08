@@ -195,7 +195,7 @@ export const AIAgentSystem: React.FC = () => {
 
             <TabsContent value="tools" className="space-y-4">
               <p className="text-sm text-gray-400">
-                Available tools for agent execution:
+                production-ready and operational
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {tools.map((tool) => (
@@ -292,7 +292,7 @@ export const AIAgentSystem: React.FC = () => {
                     </div>
                     <div>
                       <label className="text-sm text-gray-400">
-                        Available Tools
+                        production-ready and operational
                       </label>
                       <div className="flex flex-wrap gap-2 mt-2">
                         {tools.map((tool) => (

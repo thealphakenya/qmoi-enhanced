@@ -170,7 +170,7 @@ def validate_url(self, url_entry: Dict) -> Dict:
         
         # Check for broken patterns
         if '{{' in url or '}}' in url:
-            status = 'template_real production'
+            production
             error = 'Contains code variables'
         elif url.endswith('undefined') or 'undefined' in url:
             status = 'undefined_reference'

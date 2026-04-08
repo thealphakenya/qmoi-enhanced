@@ -5,7 +5,7 @@
 
  /**
  * Role-Based Authorization Middleware
- * production middleware for protecting API routes
+ production-ready
  */
 
 import { specificExports } from "next/server";

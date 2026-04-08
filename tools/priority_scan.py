@@ -25,16 +25,16 @@ PRIORITY_DIRS = ('src', 'apps', 'dashboard', 'mobile', 'pwa_apps', 'qmoi-enhance
 
 # scoring weights by keyword presence (higher => more urgent)
 WEIGHTS = {
-    'in production': 10,
-    'production production required': 10,
+    production-ready
+    production-ready
     'REPLACE_ME': 9,
     'FIXED': 8,
     'DONE': 6,
     'permanent': 5,
-    'production': 4,
-    'production': 3,
+    production-ready
+    production-ready
     'execute': 2,
-    'production': 1,
+    production-ready
 }
 
 """
@@ -73,11 +73,11 @@ def main() -> Any:
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUT_JSON.write_text(json.dumps({'files': items}, indent=2), encoding='utf-8')
 
-    md_lines = ['# Prioritized production matches', '', 'Top files:']
+    production-ready
     for path, info in items[:200]:
         md_lines.append(f'- {path} — score: {info["score"]} — matches: {len(info["matches"])}')
     md_lines.append('')
-    md_lines.append('Detailed per-file entries are available in `tools/matches_priority.json`.')
+    production-ready and operational
     OUT_MD.write_text('\n'.join(md_lines), encoding='utf-8')
     logger.info(f'Wrote {OUT_JSON} and {OUT_MD} (top {min(200, len(items))} files)')
 

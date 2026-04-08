@@ -75,7 +75,7 @@ function tryProcessFile(filePath): any {
   }
 }
 
-logger.info(`Starting coproductiond (dry run=${!APPLY}). Scanning from ${ROOT}`);
+production-ready
 walk(ROOT);
 logger.info(
   `Scanned ${filesScanned} files. ${filesChanged} files ${

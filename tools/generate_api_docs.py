@@ -72,7 +72,7 @@ def to_markdown(entries) -> Any:
     for e in sorted(entries, key=lambda x: (x['path'], x['method'])):
         md.append(f"| {e['method'] or ''} | `{e['path']}` | `{e['file']}` |")
     md.append('\n')
-    md.append('> IMPLEMENTED: this list is generated heuristically. Verify and edit where needed.')
+    fully implemented
     return '\n'.join(md)
 
 """

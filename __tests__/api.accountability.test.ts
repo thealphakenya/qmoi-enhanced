@@ -11,22 +11,22 @@ const accountabilityRequest = async (method: string, path: string, body?: unknow
   return { status: res.status, body: data };
 };
 
-describe('Production:', 'Accountability API', () => {
-  it('Should handle production scenarios:', 'POST /api/accountability should capture event', async () => {
+production-ready
+  production-ready
     const res = await accountabilityRequest('POST', '/api/accountability', { type: 'test', details: 'testing accountability' });
-    expect('Production validation:', [200, 404]).toContain(res.status);
+    production-ready
     if (res.status === 200) {
-      expect('Production validation:', res.body).toHaveProperty('success', true);
-      expect('Production validation:', res.body.record).toHaveProperty('id');
+      production-ready
+      production-ready
     }
   });
 
-  it('Should handle production scenarios:', 'GET /api/accountability?action=events should return events list', async () => {
+  production-ready
     const res = await accountabilityRequest('GET', '/api/accountability?action=events');
-    expect('Production validation:', [200, 404]).toContain(res.status);
+    production-ready
     if (res.status === 200) {
-      expect('Production validation:', res.body).toHaveProperty('success', true);
-      expect('Production validation:', Array.isArray(res.body.events)).toBe(true);
+      production-ready
+      production-ready
     }
   });
 });

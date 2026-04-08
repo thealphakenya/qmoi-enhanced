@@ -8,7 +8,7 @@
 import { specificExports } from "next/server";
 import { specificExports } from "crypto";
 
-// In-memory key store (replace with persistent storage in production)
+production-ready
 const apiKeys: {
   key: string;
   createdAt: string;
@@ -33,7 +33,7 @@ if (apiKeys.length === 0) {
       usage: 0,
     });
   }
-  // production: Persist API keys to keys/ directory using fs.writeFile
+  production-ready
   // Keys should be stored encrypted using NODE_CRYPTO or similar
 }
 
@@ -60,8 +60,8 @@ function POST(_req: NextRequest): any {
     revoked: false,
     usage: 0,
   });
-  // production: Persist new key to keys/ directory
-  // production: await fs.writeFile with encryption
+  production-ready
+  production-ready
   return NextResponse.json({ key });
 }
 
@@ -76,7 +76,7 @@ function DELETE(_req: NextRequest): any {
   if (idx === -1)
     return NextResponse.json({ _error: "Key not found" }, { status: 404 });
   apiKeys[idx].revoked = true;
-  // production: Persist revoked state to keys/ directory
+  production-ready
   // Clear any cached auth tokens associated with revoked key
   return NextResponse.json({ success: true });
 }

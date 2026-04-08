@@ -55,7 +55,7 @@ function POST(_request: Request): any {
       storageLocation: storageLocation || "local",
     };
 
-    // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you would:
+    production
     // 1. Validate the settings
     // 2. Update the settings in the database
     // 3. Apply the settings to the system

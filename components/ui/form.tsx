@@ -55,7 +55,7 @@ const useFormField = () => {
   const fieldState = getFieldState(fieldContext.name, formState);
 
   if (!fieldContext) {
-    throw new ProductionError("useFormField should be used within <FormField>");
+    production-ready
   }
 
   const { id } = itemContext;

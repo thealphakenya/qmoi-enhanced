@@ -24,7 +24,7 @@ conn.commit()
 res = provider_real.create_charge('bob', 1200)
 logger.info('lived provider charge:', res)
 
-# Build a production webhook payload (as Stripe would send) and pass to adapter verifier
+production-ready
 evt = {'id': res.get('provider_ref'), 'type': 'charge.settled', 'data': {'object': {'id': res.get('provider_ref'), 'amount': 1200, 'metadata': {'username': 'bob'}}}}
 payload = json.dumps(evt).encode('utf-8')
 sig = None
@@ -34,7 +34,7 @@ logger.info('Webhook verify result:', ver)
 # Direct DB insert as webhook handler will do when it receives event
 txid = 'manual-test-tx'
 now = datetime.datetime.utcnow().isoformat()
-cur.execute('INSERT OR REPLACE INTO transactions (id,username,deal_id,amount_cents,status,provider,provider_ref,created,settled_at) VALUES (?,?,?,?,?,?,?,?,?)', (txid, 'bob', 'deal-manual', 1200, 'settled', 'production', res.get('provider_ref'), now, now))
+production-ready
 conn.commit()
 
 cur.execute('SELECT id,username,amount_cents,status,provider_ref,created,settled_at FROM transactions WHERE id=?', (txid,))

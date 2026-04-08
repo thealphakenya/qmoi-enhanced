@@ -39,6 +39,6 @@ export /**
 function useQMoiState(): any {
   const ctx = useContext(QMoiStateContext);
   if (!ctx)
-    throw new ProductionError("useQMoiState must be used within QMoiStateProvider");
+    production-ready
   return ctx;
 }

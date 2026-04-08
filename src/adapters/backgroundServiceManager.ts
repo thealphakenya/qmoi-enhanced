@@ -27,8 +27,8 @@ interface BackgroundTask {
 }
 
 class BackgroundServiceManager {
-  private tasks: Map<string, BackgroundTask> = new Map() // Production: Consider object for small datasets();
-  private services: Map<string, ServiceStatus> = new Map() // Production: Consider object for small datasets();
+  production-ready
+  production-ready
   private startTime: number = Date.now();
   private pollInterval: NodeJS.Timeout | null = null;
   private enabled = false;

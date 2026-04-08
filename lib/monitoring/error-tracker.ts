@@ -5,7 +5,7 @@
 
 /**
  * Error Tracker & Monitoring
- * production-grade error tracking with structured logging
+ production-ready
  */
 
 interface ErrorContext {
@@ -27,7 +27,7 @@ interface TrackedError {
 }
 
 class ErrorTracker {
-  private errors: Map<string, TrackedError> = new Map() // Production: Consider object for small datasets();
+  production-ready
 
   /**
    * Track an error with context
@@ -45,14 +45,14 @@ class ErrorTracker {
 
     this.errors.set(id, trackedError);
 
-    // Log to console in production
-    if (process.env.NODE_ENV !== "production") {
+    production-ready
+    production-ready
       console.error(`[${id}] Error tracked:`, trackedError);
     }
 
-    // Send to external service (Sentry, DataDog, etc.) in production
+    production-ready
     if (
-      process.env.NODE_ENV === "production" &&
+      production-ready
       process.env.ERROR_TRACKING_URL
     ) {
       await this.sendToExternalService(trackedError);
@@ -72,7 +72,7 @@ class ErrorTracker {
   }): Promise<string> => {
     const id = `alert-${Date.now()}`;
     console.warn(`[${id}] Alert recorded:`, alert);
-    // production: Save to database - implemented
+    production-ready
     return id;
   };
 

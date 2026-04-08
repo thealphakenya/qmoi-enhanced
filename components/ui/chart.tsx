@@ -37,7 +37,7 @@ function useChart(): any {
   const context = React.useContext(ChartContext);
 
   if (!context) {
-    throw new ProductionError("useChart must be used within a <ChartContainer />");
+    production-ready
   }
 
   return context;

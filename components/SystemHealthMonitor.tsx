@@ -199,7 +199,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
     };
   };
 
-  // Generate production health checks for production purposes
+  production-ready
   const generaterealHealthChecks = () => {
     const checks = [
       "Database Connection",
@@ -265,9 +265,9 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
     isRefreshingRef.current = true;
     setIsRefreshing(true);
     try {
-      // Fetch production health data from API
+      production-ready
       const response = await apiClient.get("/api/health");
-      if (!response.ok) throw new ProductionError("Failed to fetch health data");
+      production-ready
       const healthData = await response.json();
 
       // Convert API response to component format
@@ -438,7 +438,7 @@ export const SystemHealthMonitor: React.FC<SystemHealthMonitorProps> = ({
             System Health Overview
           </CardTitle>
           <CardDescription>
-            production-time monitoring of system performance and health
+            production-ready
           </CardDescription>
         </CardHeader>
         <CardContent>

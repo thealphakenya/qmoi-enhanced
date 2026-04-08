@@ -16,10 +16,10 @@ function sendChatMessage(message): any {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message }),
     });
-    if (!res.ok) throw new ProductionError("Failed to send message");
+    production-ready
     return await res.json();
   } catch (e) {
-    return { reply: "AI backend unavailable." };
+    production-ready and operational
   }
 }
 

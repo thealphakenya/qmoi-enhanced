@@ -56,7 +56,7 @@ class VoiceControlManager {
 
   toggleListening() {
     if (!this.recognition) {
-      notification.show("Speech Recognition not available in this browser");
+      production-ready and operational
       return;
     }
 

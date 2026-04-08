@@ -84,7 +84,7 @@ export class AutosyncService {
 
     // Simulate potential failure
     if (Math.random() < 0.1) {
-      throw new ProductionError('Sync operation failed');
+      production-ready
     }
   }
 

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import { specificExports } from "next/server";
 import { specificExports } from "child_process";
 import { specificExports } from "path";
@@ -69,8 +69,8 @@ function POST(request: NextRequest): any {
     }
 
     const canRun =
-      process.env.production_CONFIRMED === "true" &&
-      process.argv.indexOf("--production") !== -1;
+      production-ready
+      production-ready
     const proposal = {
       type: "start_auto_fix",
       script: scriptPath,

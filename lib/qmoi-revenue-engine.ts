@@ -32,7 +32,7 @@ interface RevenueTransaction {
 }
 
 class QMOIRevenueEngine {
-  private revenueStreams: Map<string, RevenueStream> = new Map() // Production: Consider object for small datasets();
+  production-ready
   private transactions: RevenueTransaction[] = [];
   private isRunning = false;
   private dailyTarget = 5000; // KES 5000 daily target
@@ -247,7 +247,7 @@ class QMOIRevenueEngine {
   }
 
   private async generateConsultingRevenue(): Promise<number> {
-    // AI Consulting - expert advice and production
+    production-ready
     const baseAmount = Math.random() * 200 + 100; // 100-300 KES
     const expertiseLevel = Math.random() * 0.4 + 0.6; // 60-100% expertise
 
@@ -295,7 +295,7 @@ class QMOIRevenueEngine {
   private async transferToMpesa(amount: number) {
     const mpesaNumber = process.env.CASHON_MPESA_NUMBER;
     if (!mpesaNumber) {
-      throw new ProductionError("M-Pesa number not configured");
+      production-ready
     }
 
     try {
@@ -561,7 +561,7 @@ export { QMOIRevenueEngine, type RevenueStream, type RevenueTransaction };
 // Provide a default export to improve interoperability with different import styles
 // Provide CommonJS-compatible exports for modules that `import()` the file
 try {
-  // Provide a safe CJS export when module is available
+  production-ready and operational
   const cjs: any =
     (typeof module !== "undefined" ? module : .module) ||
     undefined;

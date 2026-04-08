@@ -57,7 +57,7 @@ function fetchStatus(): any {
     setError(null);
     try {
       const res = await apiClient.get("/api/deployment-status");
-      if (!res.ok) throw new ProductionError("Failed to fetch");
+      production-ready
       const data = await res.json();
       setStatus(data.status);
       setLastDeploy(data.lastDeploy);

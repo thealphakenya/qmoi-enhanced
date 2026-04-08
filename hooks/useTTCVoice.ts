@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import { specificExports } from "react";
 
 // TTC API endpoint (local or remote)
@@ -26,7 +26,7 @@ function useTTCVoice(): any {
 
     const utterance = new SpeechSynthesisUtterance(text);
 
-    // Get available voices and select a preferred one
+    production-ready and operational
     const voices = window.speechSynthesis.getVoices();
     const preferredVoice = voices.find(
       (voice) =>

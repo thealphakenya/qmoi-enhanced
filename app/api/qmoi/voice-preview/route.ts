@@ -30,7 +30,7 @@ function POST(req: NextRequest): any {
 
     const audioEndpoint = `/api/tts/generate?${params.toString()}`;
 
-    // production:, this would invoke the TTS generator and return a playback URL.
+    production-ready
     return NextResponse.json({
       success: true,
       audioUrl: audioEndpoint,

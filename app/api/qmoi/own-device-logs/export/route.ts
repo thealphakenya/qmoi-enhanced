@@ -32,7 +32,7 @@ function POST(_request: NextRequest): any {
     const body: ExportRequest = await _request.json();
     const { type, prodice_id, date_from, date_to } = body;
 
-    // Prefer API keys / MASTER token when available
+    production-ready and operational
     const apiAuth = requireApiKey(_request.headers);
     const isMaster = apiAuth.ok || (await checkMasterAccess(_request));
     if (!isMaster) {

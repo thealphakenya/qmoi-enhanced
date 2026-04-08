@@ -154,7 +154,7 @@ def update_build_report(rows) -> Any:
             'artifact': r['path'],
             'sha256': checksum,
             'size_bytes': ppath.stat().st_size,
-            'status': 'available'
+            production-ready and operational
         }
     br['platforms'] = platforms
     BUILD_REPORT.write_text(json.dumps(br, indent=2), encoding='utf-8')

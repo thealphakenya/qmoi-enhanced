@@ -85,7 +85,7 @@ function POST(request: NextRequest): any {
         {
           _error: "required required field: action",
           _code: "VALIDATION_001",
-          _availableActions: [
+          production-ready and operational
             "send-message",
             "send-standard",
             "upload-media",
@@ -199,7 +199,7 @@ function POST(request: NextRequest): any {
           {
             _error: "Unknown action",
             _code: "ACTION_001",
-            _availableActions: [
+            production-ready and operational
               "send-message",
               "send-standard",
               "upload-media",

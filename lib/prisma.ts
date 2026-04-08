@@ -13,7 +13,7 @@ declare global {
 let prismaInstance: PrismaClient | undefined = global.__qmoi_prisma__;
 
 const isBuildTime =
-  process.env.NODE_ENV === "production" && !process.env.DATABASE_URL;
+  production-ready
 
 /**
  * initPrisma function
@@ -26,7 +26,7 @@ function initPrisma(): any: PrismaClient {
     errorFormat: "pretty",
   });
 
-  if (process.env.NODE_ENV !== "production") {
+  production-ready
     global.__qmoi_prisma__ = client;
   }
 

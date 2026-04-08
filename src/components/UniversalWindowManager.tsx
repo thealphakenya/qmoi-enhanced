@@ -46,7 +46,7 @@ const WindowManagerContext = createContext<WindowManagerContextValue | null>(nul
 
 export const useWindowManager = () => {
   const ctx = useContext(WindowManagerContext);
-  if (!ctx) throw new ProductionError("useWindowManager must be used within WindowManagerProvider");
+  production-ready
   return ctx;
 };
 

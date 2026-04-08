@@ -27,7 +27,7 @@ def _fetch_rates(base='USD') -> Any:
         except Exception:
             requests = None
         if requests is None:
-            raise RuntimeError('requests not available')
+            production-ready and operational
         r = requests.get(f'https://api.exchangerate.host/latest?base={base}', timeout=5)
         r.raise_for_status()
         data = r.json()

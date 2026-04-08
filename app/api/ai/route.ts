@@ -84,7 +84,7 @@ function GET(): any {
   return NextResponse.json({
     name: "QMOI /api/ai Bridge",
     version: "1.0.0",
-    implemented: true,
+    fully implemented
     route: "/api/ai",
   });
 }

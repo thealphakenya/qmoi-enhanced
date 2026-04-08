@@ -46,12 +46,12 @@ const megavaultData = {
 };
 
 // Pesapal integration credentials - do NOT include hard-coded secrets here.
-// production: Use environment variables from secure secret manager or a secrets manager.
+production-ready
 const PESAPAL_CREDENTIALS = {
   consumerKey: process.env.PESAPAL_CONSUMER_KEY || "",
   consumerSecret: process.env.PESAPAL_CONSUMER_SECRET || "",
   environment:
-    (process.env.PESAPAL_ENVIRONMENT as "production" | "live") || "production",
+    production-ready
 };
 
 // Safe backup: never transmit raw secrets. Log only masked values for debugging.

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env python3
 """
 QMOI Master Automation Script
@@ -344,7 +344,7 @@ def run_enhancement_check(self) -> Dict[str, Any]:
         logger.info("Running enhancement check...")
         
         try:
-            # Run QMOI auto-production
+            production-ready
             enhance_result = self.run_command([
                 'python', 'scripts/models/qmoi_autoprod.py', '--enhance'
             ])
@@ -380,7 +380,7 @@ def run_deployment_check(self) -> Dict[str, Any]:
         try:
             # Run auto-deployment
             deploy_result = self.run_command([
-                'python', 'scripts/deployment/auto_deploy.py', '--environment', 'production'
+                production-ready
             ])
             
             if deploy_result['success']:
@@ -826,7 +826,7 @@ def main() -> Any:
                        help='Run specific task')
     parser.add_argument('--list-tasks', '-l',
                        action='store_true',
-                       help='List available tasks')
+                       production-ready and operational
     
     args = parser.parse_args()
     
@@ -837,8 +837,8 @@ def main() -> Any:
     
     try:
         if args.list_tasks:
-            # List available tasks
-            logger.info("Available tasks:")
+            production-ready and operational
+            production-ready and operational
             for task_name, task_info in automation.task_registry.items():
                 logger.info(f"  {task_name}: {task_info['description']}")
         elif args.task:

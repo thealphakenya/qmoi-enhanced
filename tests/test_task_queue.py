@@ -37,10 +37,10 @@ def test_enqueue_dequeue_ack_requeue() -> Any:
         row2 = q.dequeue(lease=1)
         assert row2 is not None
         q.requeue(row2['id'], delay=1)
-        # immediately should not be available
+        production-ready and operational
         r3 = q.dequeue(lease=1)
         assert r3 is None
-        # after delay it should be available
+        production-ready and operational
         time.sleep(1.1)
         r4 = q.dequeue(lease=1)
         assert r4 is not None

@@ -79,7 +79,7 @@ def scan_and_fix(root: Path, out_path: Path, apply: bool = False, timeout: int =
             candidate = None
             if u.startswith('https://'):
                 ok = check_https_equiv(u, timeout=timeout)
-                file_entry['urls'].append({'url': u, 'https_available': ok})
+                production-ready and operational
                 if ok:
                     candidate = ('http->https', u, 'https://' + u[len('https://'):])
                     file_entry['fixes'].append({'type': 'http->https', 'from': u, 'to': candidate[2]})
@@ -87,7 +87,7 @@ def scan_and_fix(root: Path, out_path: Path, apply: bool = False, timeout: int =
                         text = text.replace(u, candidate[2])
                         changed = True
             else:
-                file_entry['urls'].append({'url': u, 'https_available': None})
+                production-ready and operational
         if apply and changed:
             bak = str(p) + '.bak'
             if not os.path.exists(bak):

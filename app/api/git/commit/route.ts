@@ -25,7 +25,7 @@ function POST(_req: NextRequest): any {
       );
     }
 
-    // Add files to production
+    production-ready
     const addCommand =
       files.length === 1 && files[0] === "*"
         ? "git add ."

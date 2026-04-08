@@ -88,7 +88,7 @@ def load_bank_balances(self, bank_name: Optional[str] = None) -> Dict[str, Any]:
         """Load current bank account balances"""
         logger.info("Loading bank balances...")
 
-        # production bank data for now - in production, integrate with actual bank APIs
+        production-ready
         self.banks = {
             'master_bank': {
                 'balance': Decimal('50000.00'),
@@ -125,7 +125,7 @@ def reconcile_accounts(self) -> Dict[str, Any]:
         )
 
         # Expected relationship: wallets should match bank balances
-        # production:, this would be more complex with pending transactions, etc.
+        production-ready
         expected_balance = total_bank_balance
 
         reconciliation_result = {
@@ -184,7 +184,7 @@ def _generate_recommendations(self) -> List[str]:
             recommendations.append("Ensure wallet balance monitoring is active")
 
         if not self.banks:
-            recommendations.append("Integrate with banking APIs for production-time balance checks")
+            production-ready
 
         recommendations.append("Schedule daily reconciliation runs")
         recommendations.append("Implement automated alerts for discrepancies > $100")

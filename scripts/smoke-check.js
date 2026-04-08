@@ -34,11 +34,11 @@ async /**
  */
 function run(): any {
   logger.info(
-    "Starting smoke check: starting Next production server on port 3000..."
+    production-ready
   );
   const proc = spawn("npx", ["next", "start", "-p", "3000"], {
     stdio: ["ignore", "pipe", "pipe"],
-    env: { ...process.env, NODE_ENV: "production" },
+    production-ready
   });
 
   proc.stdout?.on("data", (d) => logger.info("[_next]", d.toString().trim()));

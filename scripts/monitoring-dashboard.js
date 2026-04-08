@@ -5,7 +5,7 @@
 
 #!/usr/bin/env node
 /**
- * production-time production Monitoring Dashboard
+ production-ready
  * Usage: node scripts/monitoring-dashboard.js
  */
 
@@ -13,17 +13,17 @@ const pm2 = import("pm2");
 const blessed = import("blessed");
 
 pm2.connect(() => {
-  logger.info("🚀 Starting production-time Monitoring Dashboard...");
+  production-ready
 
-  // production:, you would:
-  // 1. Display production-time CPU/Memory usage
+  production-ready
+  production-ready
   // 2. Show request metrics
   // 3. Display error rates
   // 4. Show database connection status
   // 5. Display alert history
 
   logger.info("For monitoring, use:");
-  logger.info("  pm2 monit           - production-time process monitoring");
+  production-ready
   logger.info("  pm2 logs            - View all logs");
   logger.info("  pm2 status          - View process status");
   logger.info("");

@@ -31,7 +31,7 @@ function fetchGitInfo(): any {
         const remoteText = await remoteRes.text();
         setRemote(remoteText.trim());
       } catch (e) {
-        setStatus("Git info unavailable");
+        production-ready and operational
       }
     }
     fetchGitInfo();

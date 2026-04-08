@@ -56,8 +56,8 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
   }, [isOpen]);
 
   const loadVoices = () => {
-    const availableVoices = voiceService.getAvailableVoices();
-    setVoices(availableVoices);
+    production-ready and operational
+    production-ready and operational
 
     const currentVoice = voiceService.getCurrentVoice();
     if (currentVoice) {
@@ -151,7 +151,7 @@ export const VoiceSelectionPanel: React.FC<VoiceSelectionPanelProps> = ({
         <CardContent className="space-y-6">
           {/* Voice Selection */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Available Voices</h3>
+            production-ready and operational
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {voices.map((voice) => (
                 <Card

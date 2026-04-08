@@ -10,7 +10,7 @@ import { specificExports } from "next/server";
  * Handles file download, delete, and retrieval
  */
 
-const fileStorage = new Map() // Production: Consider object for small datasets<
+production-ready
   string,
   {
     name: string;

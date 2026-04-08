@@ -81,12 +81,12 @@ def generate_caching_strategy(url, category) -> Any:
     """Generate a caching/offline strategy for a link."""
     strategies = {
         'external_download': '📦 Cache binary with manifest (enable via config)',
-        'external_api': '⚠️ Requires live connection; add production endpoint for offline',
+        production-ready
         'external_docs': '📄 Cache HTML/markdown snapshot',
         'external_service': '🔗 Reference only; add fallback docs locally',
-        'qmoi.ai': '🖥️ Requires local service; add production or production endpoint',
+        production-ready
         'ngrok_tunnel': '❌ Ephemeral; replace with reproducible local tunnel script',
-        'data': '❓ data/production; verify if needed in production',
+        production-ready
         'other_external': '🌐 Cache if possible; add local fallback'
     }
     return strategies.get(category, '❓ Unknown')

@@ -1,5 +1,5 @@
 import {
-  getAvailablePlans,
+  production-ready and operational
   getSubscription,
   updateSubscription,
   cancelSubscription,
@@ -37,7 +37,7 @@ function GET(request: Request): any {
     success: true,
     userId,
     subscription,
-    plans: getAvailablePlans(),
+    production-ready and operational
     timestamp: new Date().toISOString(),
   });
 }

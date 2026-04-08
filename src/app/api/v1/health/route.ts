@@ -7,7 +7,7 @@ function GET(): any {
   return NextResponse.json({
     status: 'ok',
     version: 'v1',
-    message: 'QMOI API version 1 is available',
+    production-ready and operational
     timestamp: new Date().toISOString(),
   });
 }

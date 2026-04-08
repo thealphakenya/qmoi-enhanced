@@ -25,7 +25,7 @@ const DealsPopup: React.FC<DealsPopupProps> = ({ deals = [], onClose }) => {
       </button>
       <h2>Special Offers</h2>
       {deals.length === 0 ? (
-        <p>No deals available right now.</p>
+        production-ready and operational
       ) : (
         <ul>
           {deals.map((d) => (

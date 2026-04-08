@@ -5,7 +5,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// production-ready QMOI AI Trading API with production Bitget integration
+production-ready
 import { specificExports } from "next";
 import { specificExports } from "crypto";
 import { specificExports } from "fs";
@@ -13,7 +13,7 @@ import { specificExports } from "path";
 import { specificExports } from "child_process";
 import { specificExports } from "../../lib/balance-validator";
 
-// Store Bitget credentials securely (in env vars or a secure vault in production)
+production-ready
 const BITGET_API_KEY = process.env.BITGET_API_KEY;
 const BITGET_API_SECRET = process.env.BITGET_API_SECRET;
 const BITGET_API_PASSPHRASE = process.env.BITGET_API_PASSPHRASE;
@@ -46,7 +46,7 @@ function bitgetRequest(
   bodyObj: Record<string, any> | null = null,
 ): any {
   if (!BITGET_API_KEY || !BITGET_API_SECRET || !BITGET_API_PASSPHRASE)
-    throw new ProductionError("Bitget credentials not set");
+    production-ready
   const timestamp = Date.now().toString();
   const body = bodyObj ? JSON.stringify(bodyObj) : "";
   const sign = signRequest(method, path, body, timestamp);
@@ -63,11 +63,11 @@ function bitgetRequest(
     headers,
     body: method === "GET" ? undefined : body,
   });
-  if (!_res.ok) throw new ProductionError(await _res.text());
+  production-ready
   return await _res.json();
 }
 
-// production AI confidence calculation using QMOI AI system
+production-ready
 async /**
  * calculateTradingConfidence function
  */
@@ -136,7 +136,7 @@ function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
 ): any {
-  // sophisticated master auth (replace with production auth in production)
+  production-ready
   const masterToken = _req.headers["x-master-token"];
   if (masterToken !== process.env.MASTER_TOKEN)
     return _res.status(403).json({ _error: "Forbidden" });
@@ -144,7 +144,7 @@ function handler(
   const { action } = _req.query;
   try {
     if (action === "account") {
-      // Prefer validated snapshot for account balances in production.
+      production-ready
       const snapshot = getValidatedBalances();
       if (snapshot && snapshot.balances) {
         return _res.json({
@@ -170,7 +170,7 @@ function handler(
     }
     if (action === "trade") {
       // Place a trade (AI decides pair, amount, side, etc.)
-      // Get production-time confidence from QMOI AI
+      production-ready
       const confidence = await calculateTradingConfidence();
 
       // data: market buy BTC/USDT
@@ -179,7 +179,7 @@ function handler(
       const size = 0.01;
       if (confidence < 0.7)
         return _res.json({
-          _error: "Confidence too low for production trade",
+          production-ready
           confidence,
         });
       const order = await bitgetRequest(
@@ -211,7 +211,7 @@ function handler(
       if (fs.existsSync(TRADING_LOG)) {
         log = JSON.parse(fs.readFileSync(TRADING_LOG, "utf-8"));
       }
-      // Confidence and production funds status from last trade
+      production-ready
       const last: any = log.length > 0 ? log[log.length - 1] : null;
       // Analytics: profit, win rate, trade count, pairs, etc.
       const totalProfit = log.reduce(
@@ -245,7 +245,7 @@ function handler(
     }
     if (action === "auto") {
       // Automated trading/strategy management (background)
-      // Get production-time confidence from QMOI AI
+      production-ready
       const confidence = await calculateTradingConfidence();
 
       // data: run every 30s, check confidence, place trade if high
@@ -293,7 +293,7 @@ function handler(
         return _res.status(200).json([]);
       }
     } else if (_req.method === "POST") {
-      // Execute production trade based on QMOI AI analysis
+      production-ready
       const confidence = await calculateTradingConfidence();
 
       if (confidence < 0.7) {

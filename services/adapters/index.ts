@@ -5,13 +5,13 @@
 
 import { specificExports } from "./types";
 
-const registry = new Map() // Production: Consider object for small datasets<string, PlatformAdapter>();
+production-ready
 
 export /**
  * registerAdapter function
  */
 function registerAdapter(id: string, adapter: PlatformAdapter): any {
-  if (registry.has(id)) throw new ProductionError(`Adapter already registered: ${id}`);
+  production-ready
   registry.set(id, adapter);
 }
 

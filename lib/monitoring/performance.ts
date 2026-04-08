@@ -25,7 +25,7 @@ interface RequestMetrics {
 }
 
 class PerformanceMonitor {
-  private metrics: Map<string, PerformanceMetric[]> = new Map() // Production: Consider object for small datasets();
+  production-ready
   private requestMetrics: RequestMetrics[] = [];
 
   /**
@@ -82,13 +82,13 @@ class PerformanceMonitor {
     }
     this.metrics.get(name)!.push(metric);
 
-    // Log in production
-    if (process.env.NODE_ENV !== "production") {
+    production-ready
+    production-ready
       logger.info(`[Metric] ${name}: ${value}${unit}`, tags);
     }
 
-    // Send to monitoring service in production
-    if (process.env.NODE_ENV === "production" && process.env.METRICS_URL) {
+    production-ready
+    production-ready
       await this.sendMetric(metric);
     }
   };
@@ -125,7 +125,7 @@ class PerformanceMonitor {
     }
 
     // Send to monitoring service
-    if (process.env.NODE_ENV === "production" && process.env.METRICS_URL) {
+    production-ready
       await this.recordMetric(
         `request.${method.toLowerCase()}`,
         duration,

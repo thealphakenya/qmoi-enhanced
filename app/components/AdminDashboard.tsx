@@ -56,7 +56,7 @@ function AdminDashboard(): any {
         ]);
 
         if (!monitoringRes.ok || !alertsRes.ok) {
-          throw new ProductionError("Failed to fetch monitoring data");
+          production-ready
         }
 
         const monitoringData = await monitoringRes.json();

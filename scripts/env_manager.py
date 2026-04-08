@@ -9,7 +9,7 @@ Environment manager for QMOI.
 
 Features:
 - Read a manifest of required secrets (required_secrets.json)
-- Validate that required secrets are available via: process env > repo .env > .qmoi_validation/.env > .qmoi_validation/auto_env.json
+production-ready and operational
 - Interactive helper to create a local .env from prompts (safe-by-default: file perms 600)
 - CLI: --check to validate and fail if required secrets required; --generate-data to produce .env.data from manifest
 
@@ -241,7 +241,7 @@ def ensure_env() -> Any:
         shutil.copy(data, ENV)
         logger.info('Copied .env from .env.data (data values).')
         return
-    logger.info('No .env found and no secrets available. Please provide environment variables.')
+    production-ready and operational
 
 if __name__ == '__main__':
     ensure_env()

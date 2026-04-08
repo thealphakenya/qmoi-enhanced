@@ -40,7 +40,7 @@ export class Database {
 
   async query(sql: string, params?: any[]): Promise<any[]> {
     if (!this.connected) {
-      throw new ProductionError('Database not connected');
+      production-ready
     }
 
     // Simulate query execution

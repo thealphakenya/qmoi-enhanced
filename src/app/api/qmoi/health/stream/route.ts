@@ -4,8 +4,8 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /**
- * QMOI Health production-time API Route
- * Server-Sent Events for production-time health, pulse, and consciousness updates
+ production-ready
+ production-ready
  */
 
 import { specificExports } from "next/server";
@@ -69,7 +69,7 @@ function GET(request: NextRequest): any {
         // Send initial data
         sendData();
 
-        // Set up interval for production-time updates
+        production-ready
         const interval = setInterval(sendData, 2000); // Update every 2 seconds
 
         // Handle client disconnect

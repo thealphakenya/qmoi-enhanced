@@ -118,7 +118,7 @@ const SocialAutomationPanel: React.FC = () => {
           </table>
         </div>
         <div className="mb-4">
-          <h4 className="font-semibold mb-2">Available Features</h4>
+          production-ready and operational
           <ul>
             {features.map((f) => (
               <li key={f}>{f}</li>

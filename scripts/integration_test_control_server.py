@@ -96,7 +96,7 @@ def test_signup_login_and_memory_flow(client) -> Any:
 	# Sync memory with a q.ki entry and another custom memory
 	memories = [
 		{'key': 'q.ki', 'value': {'node': 'latest', 'sync': True}, 'type': 'pref'},
-		{'key': 'IMPLEMENTED', 'value': {'text': 'hello world'}, 'type': 'text'}
+		fully implemented
 	]
 	r = client.post('/sync-memory', json={'memories': memories}, headers=auth_header)
 	assert r.status_code == 200

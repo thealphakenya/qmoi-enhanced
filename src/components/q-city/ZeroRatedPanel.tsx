@@ -55,11 +55,11 @@ function ZeroRatedPanel(): any {
           </div>
           <div>Last Used: {status.lastUsed}</div>
           <button
-            onClick={() => notification.show("Force zero-rated mode (implemented)")}
+            fully implemented
           >
             Force ZeroRated Mode
           </button>
-          <button onClick={() => notification.show("Test endpoints (implemented)")}>
+          fully implemented
             Test Endpoints
           </button>
           <h4>Logs</h4>

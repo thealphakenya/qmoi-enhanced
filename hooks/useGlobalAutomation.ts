@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import { specificExports } from "react";
 
 interface AutomationTask {
@@ -53,7 +53,7 @@ function useGlobalAutomation(): any {
     const fetchStatus = async () => {
       try {
         const res = await apiClient.get("/api/automation/status");
-        if (!res.ok) throw new ProductionError("Failed to fetch automation status");
+        production-ready
         const data = await res.json();
         setStatus(data);
       } catch (error) {
@@ -78,7 +78,7 @@ function useGlobalAutomation(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newSettings),
       });
-      if (!res.ok) throw new ProductionError("Failed to update automation settings");
+      production-ready
       const data = await res.json();
       setStatus((prev) => ({
         ...prev,
@@ -99,7 +99,7 @@ function useGlobalAutomation(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enable }),
       });
-      if (!res.ok) throw new ProductionError("Failed to toggle task");
+      production-ready
       const data = await res.json();
       setStatus((prev) => ({
         ...prev,
@@ -119,7 +119,7 @@ function useGlobalAutomation(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(task),
       });
-      if (!res.ok) throw new ProductionError("Failed to create task");
+      production-ready
       const data = await res.json();
       setStatus((prev) => ({
         ...prev,

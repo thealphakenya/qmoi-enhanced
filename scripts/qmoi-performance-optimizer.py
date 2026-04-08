@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env python3
 """
 QMOI Performance Optimizer
@@ -146,7 +146,7 @@ def get_performance_metrics(self) -> PerformanceMetrics:
             network = psutil.net_io_counters()
             network_usage = (network.bytes_sent + network.bytes_recv) / 1024 / 1024  # MB
             
-            # GPU metrics (if available)
+            production-ready and operational
             gpu_usage = await self.get_gpu_usage()
             
             # Process count
@@ -183,7 +183,7 @@ def get_performance_metrics(self) -> PerformanceMetrics:
     get_gpu_usage function
     """
 def get_gpu_usage(self) -> Optional[float]:
-        """Get GPU usage if available"""
+        production-ready and operational
         try:
             # Try to get GPU usage using different methods
             import subprocess
@@ -199,10 +199,10 @@ def get_gpu_usage(self) -> Optional[float]:
             except (subprocess.CalledProcessError, FileNotFoundError):
                 pass
             
-            # Try PyTorch if available
+            production-ready and operational
             try:
                 import torch
-                if torch.cuda.is_available():
+                production-ready and operational
                     return torch.cuda.memory_allocated() / torch.cuda.max_memory_allocated() * 100
             except ImportError:
                 pass

@@ -234,7 +234,7 @@ const QmoiRevenueDashboard: React.FC = () => {
         <div>
           <h1 className="text-3xl font-bold">QMOI Revenue Dashboard</h1>
           <p className="text-gray-600">
-            production-time revenue generation and M-Pesa integration
+            production-ready
           </p>
         </div>
         <div className="flex items-center gap-2">

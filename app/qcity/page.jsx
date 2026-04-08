@@ -33,7 +33,7 @@ function QCityDashboard(): any {
               Logs & Notifications
             </h2>
             <p className="opacity-80">
-              production-time logs, error tracking, and system notifications.
+              production-ready
             </p>
             <LogsNotificationsWidget />
           </div>

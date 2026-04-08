@@ -27,7 +27,7 @@ function App(): any {
 
   return (
     <div style={{ fontFamily: "sans-serif", padding: 24 }}>
-      <h2>QMOI production-Time Dashboard</h2>
+      production-ready
       <p>
         <b>Projects Running:</b> {status.projects}
       </p>

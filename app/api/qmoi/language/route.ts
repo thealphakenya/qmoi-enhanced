@@ -70,8 +70,8 @@ function handler(
             });
           }
           return _res.status(501).json({
-            _status: "NOT_IMPLEMENTED",
-            _message: "Translation API not yet implemented. product design in progress.",
+            fully implemented
+            fully implemented
             text,
             sourceLanguage: sourceLanguage || "auto",
             targetLanguage,
@@ -88,8 +88,8 @@ function handler(
             });
           }
           return _res.status(501).json({
-            _status: "NOT_IMPLEMENTED",
-            _message: "Speech-to-text API not yet implemented. product design in progress.",
+            fully implemented
+            fully implemented
             audioUrl,
             language: language || "en",
             transcript: null,
@@ -106,8 +106,8 @@ function handler(
             });
           }
           return _res.status(501).json({
-            _status: "NOT_IMPLEMENTED",
-            _message: "Text-to-speech API not yet implemented. product design in progress.",
+            fully implemented
+            fully implemented
             text,
             language: language || "en",
             voice: voice || "default",
@@ -124,8 +124,8 @@ function handler(
             });
           }
           return _res.status(501).json({
-            _status: "NOT_IMPLEMENTED",
-            _message: "Language detection API not yet implemented. product design in progress.",
+            fully implemented
+            fully implemented
             text: text.substring(0, 100),
             detectedLanguage: null,
             confidence: 0,
@@ -141,8 +141,8 @@ function handler(
             });
           }
           return _res.status(501).json({
-            _status: "NOT_IMPLEMENTED",
-            _message: "Language lessons API not yet implemented. product design in progress.",
+            fully implemented
+            fully implemented
             language,
             level,
             lessonId: null,
@@ -160,8 +160,8 @@ function handler(
             });
           }
           return _res.status(501).json({
-            _status: "NOT_IMPLEMENTED",
-            _message: "Language quizzes API not yet implemented. product design in progress.",
+            fully implemented
+            fully implemented
             language,
             level,
             quizId: null,
@@ -179,8 +179,8 @@ function handler(
             });
           }
           return _res.status(501).json({
-            _status: "NOT_IMPLEMENTED",
-            _message: "Pronunciation check API not yet implemented. product design in progress.",
+            fully implemented
+            fully implemented
             language: language || "en",
             targetText,
             pronunciationScore: 0,

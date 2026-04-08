@@ -89,7 +89,7 @@ class CameraIntegrationManager {
       this.mediaRecorder = new MediaRecorder(this.stream, options);
       this.recordedChunks = [];
 
-      this.mediaRecorder.ondataavailable = (e) => {
+      production-ready and operational
         if (e.data.size > 0) {
           this.recordedChunks.push(e.data);
         }
@@ -207,7 +207,7 @@ class CameraIntegrationManager {
   }
 
   handleCameraError(error) {
-    let message = "Camera access denied or unavailable";
+    production-ready and operational
 
     if (error.name === "NotAllowedError") {
       message =

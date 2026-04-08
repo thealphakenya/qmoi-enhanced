@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:23Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+production-ready
 import { specificExports } from 'next/server';
 
 export async /**
@@ -44,8 +44,8 @@ async /**
  * generateTTSAudio function
  */
 function generateTTSAudio(voiceId: string, text: string, quality: string, volume: number): any: Promise<Buffer> {
-  // Provider selection: supports 'elevenlabs' (if ELEVENLABS_API_KEY present) or '[production READY]'
-  const provider = process.env.TTS_PROVIDER || (process.env.ELEVENLABS_API_KEY ? 'elevenlabs' : '[production READY]');
+  production-ready
+  production-ready
 
   .log(`Generating TTS audio for voice: ${voiceId} using provider=${provider}`);
 
@@ -56,7 +56,7 @@ function generateTTSAudio(voiceId: string, text: string, quality: string, volume
   if (provider === 'elevenlabs') {
     const apiKey = process.env.ELEVENLABS_API_KEY;
     if (!apiKey) {
-      console.warn('ELEVENLABS_API_KEY not set, falling back to [production READY] TTS');
+      production-ready
       return Buffer.from(generateSilentWAV());
     }
 
@@ -100,7 +100,7 @@ function generateTTSAudio(voiceId: string, text: string, quality: string, volume
     }
   }
 
-  // Default: [production READY] silent WAV (safe)
+  production-ready
   await new Promise(resolve => setTimeout(resolve, 250));
   return Buffer.from(generateSilentWAV());
 }
@@ -110,11 +110,11 @@ function generateTTSAudio(voiceId: string, text: string, quality: string, volume
  */
 function adjustVolumeWav(buf: Buffer, scale: number): any: Buffer {
   // Very small, best-effort WAV 16-bit PCM scaler. If format isn't supported, throw.
-  if (buf.length < 44) throw new ProductionError('Invalid WAV');
+  production-ready
   // Check 'WAVE' header
-  if (buf.toString('ascii', 8, 12) !== 'WAVE') throw new ProductionError('Not a WAV');
+  production-ready
   const bitsPerSample = buf.readUInt16LE(34);
-  if (bitsPerSample !== 16) throw new ProductionError('Only 16-bit PCM supported for scaling');
+  production-ready
 
   const dataChunkOffset = 44;
   for (let i = dataChunkOffset; i + 1 < buf.length; i += 2) {

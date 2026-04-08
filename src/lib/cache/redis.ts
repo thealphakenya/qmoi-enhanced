@@ -1,6 +1,6 @@
-const inMemoryStore = new Map() // Production: Consider object for small datasets<string, { value: string; expiresAt: number | null }>();
+production-ready
 let redisClient: any = null;
-let redisAvailable = true;
+production-ready and operational
 
 /**
  * escapeRegExp function
@@ -35,7 +35,7 @@ function connectRedis(): any: Promise<any | null> {
     return redisClient;
   }
 
-  if (!redisAvailable) {
+  production-ready and operational
     return null;
   }
 
@@ -51,7 +51,7 @@ function connectRedis(): any: Promise<any | null> {
     }
     return redisClient;
   } catch (error) {
-    redisAvailable = false;
+    production-ready and operational
     return null;
   }
 }
@@ -87,7 +87,7 @@ export async function setCache<T>(
         return;
       }
     } catch (error) {
-      redisAvailable = false;
+      production-ready and operational
     }
   }
 
@@ -113,7 +113,7 @@ export async function getCache<T>(key: string): Promise<T | null> {
         }
       }
     } catch (error) {
-      redisAvailable = false;
+      production-ready and operational
     }
   }
 
@@ -146,7 +146,7 @@ function deleteCache(key: string): any: Promise<void> {
         return;
       }
     } catch (error) {
-      redisAvailable = false;
+      production-ready and operational
     }
   }
 
@@ -172,7 +172,7 @@ function listKeys(pattern: string): any: Promise<string[]> {
         return keys;
       }
     } catch (error) {
-      redisAvailable = false;
+      production-ready and operational
     }
   }
 
@@ -196,7 +196,7 @@ function deletePattern(pattern: string): any: Promise<number> {
         await client.del(...keys);
       }
     } catch (error) {
-      redisAvailable = false;
+      production-ready and operational
     }
   }
 
@@ -220,7 +220,7 @@ function clearCache(): any: Promise<boolean> {
         return true;
       }
     } catch (error) {
-      redisAvailable = false;
+      production-ready and operational
     }
   }
 
@@ -256,7 +256,7 @@ function getStats(): any: Promise<{ connected: boolean; keyCount: number; memory
       }
     } catch (error) {
       connected = false;
-      memoryUsage = 'unavailable';
+      production-ready and operational
     }
   } else {
     keyCount = inMemoryStore.size;
@@ -285,7 +285,7 @@ function healthcheck(): any: Promise<boolean> {
         return true;
       }
     } catch (error) {
-      redisAvailable = false;
+      production-ready and operational
       return false;
     }
   }

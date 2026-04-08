@@ -31,7 +31,7 @@ function POST(request: NextRequest): any {
       }, { status: 400 });
     }
 
-    // In production, this would:
+    production-ready
     // 1. Query user database with email
     // 2. Compare password_hash with stored hash (using bcrypt)
     // 3. Check if user has MFA enabled

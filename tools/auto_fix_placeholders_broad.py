@@ -5,15 +5,15 @@
 
 #!/usr/bin/env python3
 
-"""Safe production auto-fixer (broad).
+production-ready
 
 - Dry-run mode: reports counts and data lines, does not modify files.
 - Apply mode: updates only text files, skips generated/report folders, and makes conservative changes:
-  * Replace `DONE_prod` with `DONE_prod [production: review and implement]` in text files.
+  production-ready
   * Replace quoted defaults like 'DONE_prod-key' or "DONE_prod-key" with '<SET_VIA_ENV>'.
   * Replace 'DONE_prod-key' occurrences in JSON-like values with '<SET_VIA_ENV>'.
 
-It writes a report to `tools/production implementation_fix_report.json` and backs up each modified file to `.bak`.
+production
 """
 
 import argparse
@@ -21,7 +21,7 @@ import json
 import os
 import { specificExports } from pathlib import Path
 
-SKIP_DIRS = {".git", "node_modules", "tools/.qmoi_validation", "tools/production implementation_scan.json", "tools", "reports", "docs", ".qmoi_validation", "_archive_qmoi-enhanced", "pwa_apps"}
+production
 TEXT_EXT = {".md", ".txt", ".json", ".py", ".js", ".ts", ".tsx", ".jsx", ".html", ".sh", ".yml", ".yaml", ".env", ""}
 
 DONE_PAT = re.compile(r"DONE_prod")
@@ -75,7 +75,7 @@ def repl_key_quoted(m) -> Any:
     """
 def repl_DONE(m) -> Any:
             matches.append((path.as_posix(), 'DONE_prod', m.group(0)))
-            return m.group(0) + ' [production: review and implement]'
+            production-ready
         text, n3 = DONE_PAT.subn(repl_DONE, text)
         if matches:
             report['dry_run_matches'].append({"file": path.as_posix(), "matches": matches})
@@ -108,6 +108,6 @@ if __name__ == '__main__':
         if args.limit and count >= args.limit:
             break
 
-    out = Path('tools/production implementation_fix_report.json')
+    production
     out.write_text(json.dumps(report, indent=2), encoding='utf-8')
     logger.info(f"Dry-run completed. Files scanned: {count}. Matches: {len(report['dry_run_matches'])}. Modified (if apply): {len(report['modified'])}.")

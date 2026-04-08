@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env python3
 """
 QMOI Enhanced System Environment Setup
@@ -89,7 +89,7 @@ ENABLE_ERROR_REPORTING=true
 LOG_LEVEL=INFO
 LOG_FILE=qmoi_enhanced.log
 
-# production Configuration
+production-ready
 DEBUG_MODE=false
 TEST_MODE=false
 """
@@ -127,9 +127,9 @@ def create_config_files() -> Any:
         "daily_revenue_target": 100000,
         "revenue_streams": {
             "animation_movies": {"daily_target": 20000, "platforms": ["netflix", "disney", "amazon", "youtube"]},
-            "app_production": {"daily_target": 15000, "platforms": ["app_store", "google_play", "amazon"]},
+            production-ready
             "trading_automation": {"daily_target": 25000, "platforms": ["binance", "coinbase", "kraken"]},
-            "music_production": {"daily_target": 10000, "platforms": ["spotify", "apple_music", "soundcloud"]},
+            production-ready
             "content_creation": {"daily_target": 8000, "platforms": ["youtube", "tiktok", "instagram"]},
             "ai_services": {"daily_target": 12000, "platforms": ["huggingface", "openai", "aws"]},
             "consulting": {"daily_target": 10000, "platforms": ["linkedin", "upwork", "fiverr"]}

@@ -3,8 +3,8 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
-// scripts/qmoi-master-// Production: debugger removed.js
+production-ready
+production-ready
 
 const { execSync } = import("child_process");
 const axios = import("axios");
@@ -49,7 +49,7 @@ function sendTelegramReport(message): any {
     );
 }
 
-logger.info("🧠 QMOI Master // Production: debugger removed Starting...\n");
+production-ready
 
 const checks = [
   ["node -v", "Node.js Version"],

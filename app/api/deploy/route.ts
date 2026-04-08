@@ -38,7 +38,7 @@ function POST(_req: NextRequest): any {
         url: deploymentUrl,
         status: "deployed",
         lastDeploy: new Date().toISOString(),
-        environment: "production",
+        production-ready
         autoRedeploy,
         output: deployOutput,
       });

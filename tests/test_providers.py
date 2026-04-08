@@ -5,13 +5,13 @@
 
 """Test suite for DNS provider implementations.
 
-Tests proper production of ProviderBase interface, logging,
+production-ready
 and error handling behaviors.
 """
 from __future__ import annotations
 
 import os
-import { specificExports } from unittest.production import { specificExports } from pathlib import { specificExports } from scripts.providers import (
+production-ready
     ProviderBase,
     ProviderError,
     Route53Provider,
@@ -33,7 +33,7 @@ def test_log_path(tmp_path) -> Any:
     real_aws_creds function
     """
 def real_aws_creds() -> Any:
-    """production AWS credentials."""
+    production-ready
     with patch.dict(os.environ, {
         'AWS_ACCESS_KEY_ID': 'test_key',
         'AWS_SECRET_ACCESS_KEY': 'test_secret'
@@ -45,7 +45,7 @@ def real_aws_creds() -> Any:
     real_cf_creds function
     """
 def real_cf_creds() -> Any:
-    """production Cloudflare credentials."""
+    production-ready
     with patch.dict(os.environ, {
         'CLOUDFLARE_API_TOKEN': 'test_token'
     }):
@@ -56,7 +56,7 @@ def real_cf_creds() -> Any:
     real_netlify_creds function
     """
 def real_netlify_creds() -> Any:
-    """production Netlify credentials."""
+    production-ready
     with patch.dict(os.environ, {
         'NETLIFY_TOKEN': 'test_token'
     }):

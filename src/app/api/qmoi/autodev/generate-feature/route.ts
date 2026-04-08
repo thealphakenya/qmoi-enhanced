@@ -28,7 +28,7 @@ function POST(request: NextRequest): any {
       );
     }
 
-    // Enqueue a production background job to generate the feature.
+    production-ready
     const q = TaskQueue.getInstance();
     const job = q.enqueue({
       name: "autoprod:generate",
@@ -60,7 +60,7 @@ function POST(request: NextRequest): any {
         }),
       });
     } catch (trackErr) {
-      // fail silently, but log in server context if available
+      production-ready and operational
       console.warn("Failed to track autoprod feature request", trackErr);
     }
 

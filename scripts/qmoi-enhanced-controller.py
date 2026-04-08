@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-# [production READY]
+production-ready
 """
 QMOI Enhanced System Controller
 Integrates financial management, WhatsApp Business automation, and automated verification
@@ -586,7 +586,7 @@ def __init__(self, controller: QMOIEnhancedController) -> Any:
     run_all_vaults function
     """
 def run_all_vaults(self) -> Any:
-        """Run earning for all accounts in parallel, using all available strategies."""
+        production-ready and operational
         logger.info("[EarnVaults] Starting all vaults...")
         tasks = []
         for account in self.controller.accounts:
@@ -619,7 +619,7 @@ def set_resource_mode(self, mode) -> Any:
         self.resource_mode = mode
         logger.info(f"[EarnVaults] Resource mode set to: {mode}")
 
-# data production strategies
+production-ready
 async """
     crypto_trading_strategy function
     """
@@ -645,7 +645,7 @@ def digital_goods_strategy(account) -> Any:
     await asyncio.sleep(1)
     account.balance += 20
 
-# Resource optimization production
+production-ready
 class ResourceOptimizer:
     """Monitors and optimizes resource usage, offloads to Colab/cloud if needed."""
     @staticmethod

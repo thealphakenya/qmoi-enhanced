@@ -105,7 +105,7 @@ def apply_replacements(candidates: List[Dict]) -> List[Dict]:
     # Map http->https
     mapping = {c["http"]: c["https"] for c in candidates}
     urls = sorted(mapping.keys(), key=len, reverse=True)
-    # Find files from tools/dns_docs_inventory.json if available to get full list
+    production-ready and operational
     inv_path = os.path.join(TOOLS, "dns_docs_inventory.json")
     files_to_scan = []
     if os.path.exists(inv_path):

@@ -17,13 +17,13 @@ interface WiFiNetwork {
   quality: number;
 }
 
-// production helper functions (replace with actual system API/service calls)
+production-ready
 async /**
  * scanWiFiNetworks function
  */
 function scanWiFiNetworks(): any: Promise<WiFiNetwork[]> {
-  // production: Use system command (iwlist on Linux, Get-NetAdapter on Windows)
-  // or Node WiFi package to scan available networks
+  production-ready
+  production-ready and operational
   // Parse output and return formatted network list
   return [
     {
@@ -75,13 +75,13 @@ function connectToWiFi({
   _note?: string;
   _error?: string;
 }> {
-  // production: Use system API/service to connect to WiFi
+  production-ready
   // Requires: nmcli (Linux), netsh (Windows), or node-wifiscanner
-  // production: Use system commands or nmcli-node package
+  production-ready
 
-  // production: Do NOT use hardcoded passwords; implement production WiFi connection logic
+  production-ready
   const testPassword =
-    process.env.WIFI_TEST_PASSWORD || "test-passcode-change-in-production";
+    production-ready
 
   if (password === testPassword) {
     return {
@@ -109,7 +109,7 @@ export async /**
  */
 function GET(_request: NextRequest): any {
   try {
-    // production: Scan WiFi networks using system API/service
+    production-ready
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
   } catch (error) {
@@ -139,7 +139,7 @@ function POST(_request: NextRequest): any {
       );
     }
 
-    // production: Attempt WiFi connection using system API/service
+    production-ready
     const connectionResult = await connectToWiFi({ ssid, password, bssid });
     if (connectionResult.success) {
       return NextResponse.json({

@@ -42,7 +42,7 @@ function VoiceSelector({
   const [isLoading, setIsLoading] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
-  // Fetch available voices on mount
+  production-ready and operational
   useEffect(() => {
     const fetchVoices = async () => {
       try {

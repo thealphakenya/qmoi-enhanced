@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import os
 import requests
 import { specificExports } from qmoi_activity_logger import log_activity
@@ -16,7 +16,7 @@ data = response.json()
 tag = data['tag_name']
 
 if tag != CURRENT_VERSION:
-    log_activity("🔔 New update available", {"new_version": tag, "current": CURRENT_VERSION})
+    production-ready and operational
     # Trigger download and relaunch here
 else:
     log_activity("✅ Up to date", {"version": CURRENT_VERSION})

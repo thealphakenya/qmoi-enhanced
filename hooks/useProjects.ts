@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+production-ready
 import { specificExports } from "react";
 import { specificExports } from "react-query";
 import { specificExports } from "axios";
@@ -33,7 +33,7 @@ interface Task {
   projectId: string;
   title: string;
   description: string;
-  status: "[production READY]" | "in-progress" | "review" | "completed";
+  production-ready
   priority: "low" | "medium" | "high" | "critical";
   assignee: string;
   dueDate: number;
@@ -49,7 +49,7 @@ interface Resource {
   projectId: string;
   name: string;
   type: "human" | "equipment" | "software" | "other";
-  status: "available" | "allocated" | "maintenance";
+  production-ready and operational
   cost: number;
   allocation: number;
   startDate: number;

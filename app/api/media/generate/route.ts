@@ -70,7 +70,7 @@ function removeControlChars(s: string): any {
   const sanitizedLog = removeControlChars(JSON.stringify(logEntry));
   logger.info(sanitizedLog);
 
-  // production: Send generated media metadata to WebSocket dashboard
+  production-ready
   // Requires: Socket.io or Next.js WebSocket integration
   return logEntry;
 }
@@ -269,7 +269,7 @@ function GET(_request: NextRequest): any {
       return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
     }
 
-    // production: Query task status from Prisma DB or cloud job service
+    production-ready
     // For cloud jobs: use Celery, Bull, or AWS SQS for async task tracking
     const cloudTask: CloudTask = {
       id: taskId,

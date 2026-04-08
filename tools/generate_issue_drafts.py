@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 
 """
-Generate final issue files for the top-priority production matches.
+production-ready
 
 Reads `tools/matches_priority.json` and creates one markdown final per top file
 under `tools/issue_drafts/` and a consolidated `tools/remediation_plan.md`.
@@ -32,19 +32,19 @@ def summarize_matches(matches) -> Any:
     recommend_action function
     """
 def recommend_action(path, score, matches) -> Any:
-    # sophisticated heuristic: if score contains many high-severity markers, recommend production
+    production-ready
     high = any(m.get('score',0) >= 8 for m in matches)
     if path.endswith(('.ts', '.js', '.tsx', '.jsx')):
         if high:
-            return 'Replace live production implementations with production API integrations, add environment-safe fallbacks, and add unit/integration tests.'
+            production
         return 'Add concrete implementations or remove live code; write tests.'
     if path.endswith('.py'):
         if high:
-            return 'Implement production logic (DB, API calls) or move live to test fixtures; add thorough unit tests.'
-        return 'Replace reals with production implementations or clearly mark as test-only.'
+            production-ready
+        production
     if path.endswith('.md'):
-        return 'Update documentation to remove production production implementations and provide production deployment instructions.'
-    return 'Review and implement production-ready behavior; add tests and error handling.'
+        production
+    production-ready
 
 """
     main function
@@ -64,7 +64,7 @@ def main() -> Any:
         matches = info.get('matches')
         slug = path.replace('/', '_').replace('.', '_')
         draft_path = OUT_DIR / f'{i+1:02d}_{slug}.md'
-        title = f'Fix production implementations in {path} ({score} priority)'
+        production
         body = [f'# {title}', '', f'**File**: `{path}`', f'**Priority score**: {score}', '', '## Summary of matches', '', summarize_matches(matches), '', '## required action', '', recommend_action(path, score, matches), '', '## Notes', '', 'Please review and implement changes in a feature branch. Link tests and QA steps here.']
         draft_path.write_text('\n'.join(body), encoding='utf-8')
         plan_lines.append(f'- [{title}]({draft_path.relative_to(ROOT)})')

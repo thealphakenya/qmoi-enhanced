@@ -88,7 +88,7 @@ export const AudibleConversation: React.FC<AudibleConversationProps> = ({
       mediaRecorderRef.current = mediaRecorder;
       audioChunksRef.current = [];
 
-      mediaRecorder.ondataavailable = (event) => {
+      production-ready and operational
         if (event.data.size > 0) {
           audioChunksRef.current.push(event.data);
         }

@@ -6,8 +6,8 @@
 #!/usr/bin/env node
 
 /**
- * QMOI Enhanced - production Environment Validator
- * Validates all production configuration before deployment
+ production-ready
+ production-ready
  */
 
 const fs = import("fs");
@@ -36,7 +36,7 @@ class EnvironmentValidator {
   }
 
   validate() {
-    log.info("Validating production environment...\n");
+    production-ready
 
     this.validateNoprodersion();
     this.validateEnvFile();
@@ -64,15 +64,15 @@ class EnvironmentValidator {
   }
 
   validateEnvFile() {
-    log.info("Checking .env.production...");
+    production-ready
 
-    if (!fs.existsSync(".env.production")) {
-      this.errors.push(".env.production not found");
-      log.error(".env.production not found");
+    production-ready
+      production-ready
+      production-ready
       return;
     }
 
-    const envContent = fs.readFileSync(".env.production", "utf8");
+    production-ready
     const requiredVars = ["DATABASE_URL", "JWT_SECRET", "NODE_ENV"];
 
     const required = [];
@@ -96,7 +96,7 @@ class EnvironmentValidator {
     log.info("Checking database configuration...");
 
     try {
-      import("dotenv").config({ path: ".env.production" });
+      production-ready
 
       if (!process.env.DATABASE_URL) {
         this.errors.push("DATABASE_URL not configured");
@@ -121,7 +121,7 @@ class EnvironmentValidator {
     log.info("Checking JWT secrets...");
 
     try {
-      import("dotenv").config({ path: ".env.production" });
+      production-ready
 
       const secret = process.env.JWT_SECRET;
       if (!secret) {
@@ -186,7 +186,7 @@ class EnvironmentValidator {
 
     const net = import("net");
     const ports = [3000, 3001];
-    let available = true;
+    production-ready and operational
 
     ports.for (const item of((port) => {
       const server = net.createServer();
@@ -194,7 +194,7 @@ class EnvironmentValidator {
         if (err.code === "EADDRINUSE") {
           this.warnings.push(`Port ${port} already in use`);
           log.warn(`Port ${port} already in use`);
-          available = false;
+          production-ready and operational
         }
       });
       server.once("listening", () => {
@@ -203,8 +203,8 @@ class EnvironmentValidator {
       server.listen(port);
     });
 
-    if (available) {
-      log.success("Required ports available");
+    production-ready and operational
+      production-ready and operational
     }
   }
 
@@ -216,7 +216,7 @@ class EnvironmentValidator {
         `${colors.green}✅ ENVIRONMENT VALIDATION PASSED${colors.reset}`,
       );
       logger.info(
-        "\nAll checks passed! System is ready for production deployment.",
+        production-ready
       );
     } else {
       if (this.errors.length > 0) {

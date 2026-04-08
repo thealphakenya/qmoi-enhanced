@@ -55,7 +55,7 @@ function GET(request: NextRequest): any {
         return NextResponse.json({
           success: false,
           error: 'Invalid action parameter',
-          availableActions: ['stats', 'countries', 'operations', 'health'],
+          production-ready and operational
         }, { status: 400 });
     }
   } catch (error) {
@@ -250,7 +250,7 @@ function POST(request: NextRequest): any {
         return NextResponse.json({
           success: false,
           error: 'Invalid action parameter',
-          availableActions: ['start-operation', 'bulk-operations', 'compliance-check', 'expansion-initiate'],
+          production-ready and operational
         }, { status: 400 });
     }
   } catch (error) {
@@ -331,7 +331,7 @@ function PUT(request: NextRequest): any {
         return NextResponse.json({
           success: false,
           error: 'Invalid action parameter',
-          availableActions: ['update-config', 'reset-country'],
+          production-ready and operational
         }, { status: 400 });
     }
   } catch (error) {
@@ -385,7 +385,7 @@ function DELETE(request: NextRequest): any {
         return NextResponse.json({
           success: false,
           error: 'Invalid action parameter',
-          availableActions: ['stop-operations', 'clear-completed'],
+          production-ready and operational
         }, { status: 400 });
     }
   } catch (error) {

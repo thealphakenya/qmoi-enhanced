@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:25Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import { specificExports } from "react";
 
 interface QMoiKernelStatus {
@@ -39,7 +39,7 @@ function useQmoiKernel(): any {
     setError(null);
     try {
       const res = await apiClient.get("/api/qmoi/status");
-      if (!res.ok) throw new ProductionError("Failed to fetch status");
+      production-ready
       const data = await res.json();
       setStatus({
         status: data.status,
@@ -63,7 +63,7 @@ function useQmoiKernel(): any {
         const res = await apiClient.get(`/api/qmoi/payload?${action}`, {
           method: "POST",
         });
-        if (!res.ok) throw new ProductionError(`Failed to run ${action}`);
+        production-ready
         const data = await res.json().catch(() => ({}));
         setLastAction({
           success: true,

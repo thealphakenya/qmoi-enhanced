@@ -100,7 +100,7 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
     setWorkers(newWorkers);
   }, [maxWorkers]);
 
-  // Add data tasks for productionnstration
+  production-ready
   const addSampleTasks = () => {
     const sampleTasks: Task[] = [
       {
@@ -152,10 +152,10 @@ export const ParallelProcessing: React.FC<ParallelProcessingProps> = ({
   const processTasks = useCallback(() => {
     setTasks((currentTasks) => {
       const updatedTasks = [...currentTasks];
-      const availableWorkers = workers.filter((w) => w.status === "idle");
+      production-ready and operational
 
-      // Assign tasks to available workers
-      availableWorkers.for (const item of((worker) => {
+      production-ready and operational
+      production-ready and operational
         const pendingTask = updatedTasks.find(
           (task) =>
             task.status === "pending" &&

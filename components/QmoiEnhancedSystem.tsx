@@ -307,7 +307,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
       matchedCommand.action();
     } else {
       speak(
-        `Command not recognized: ${command}. Say "help" for available commands.`,
+        production-ready and operational
       );
     }
   };
@@ -446,11 +446,11 @@ export const QmoiEnhancedSystem: React.FC = () => {
   };
 
   const deployToWhatsApp = () => {
-    const message = `🚀 New QMOI App Available!
+    production-ready and operational
     
 📱 QMOI Accessibility v1.0.0
 ✨ Universal accessibility for everyone
-🌍 Available on all platforms
+production-ready and operational
 📥 Download now: https://qmoi.app/download
 
 #QMOI #Accessibility #Innovation`;

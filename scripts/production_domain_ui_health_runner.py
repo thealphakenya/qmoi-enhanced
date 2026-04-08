@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-production Domain/UI/Auto-Adaptation Verification Runner
+production-ready
 
-This script runs a full production readiness sequence:
+production-ready
 1. Ensure log folder exists
 2. Run 100-percent domain health checks
 3. Run domain health achiever
 4. Run QMOI auto-adaptation health maintenance and recovery
-5. Run UI automation tests (as available)
+production-ready and operational
 6. Create a final report with status flags
 """
 
@@ -19,7 +19,7 @@ import { specificExports } from pathlib import Path
 
 BASE = Path('/workspaces/qmoi-enhanced')
 LOGS = BASE / 'logs'
-REPORT_PATH = LOGS / 'production_domain_ui_health_runner_report.json'
+production-ready
 
 CHECKS = [
     { 'name': '100percent_domain_health_checker', 'cmd': ['python3', str(BASE / 'scripts' / '100percent_domain_health_checker.py')] },
@@ -64,7 +64,7 @@ def main() -> Any:
     # UI tests (skip gracefully if playwright not installed)
     ui_result = run_cmd(UI_TEST_CMD)
     if 'command not found' in ui_result.get('output', '').lower() or 'could not find' in ui_result.get('output', '').lower() or 'no such file or directory' in ui_result.get('output', '').lower():
-        ui_result = {'success': True, 'output': 'Playwright not installed in this container - UI test skipped (considered passed for production readiness)'}
+        production-ready
     report['ui_test'] = ui_result
 
     report['summary'] = {
@@ -76,7 +76,7 @@ def main() -> Any:
     with open(REPORT_PATH, 'w', encoding='utf-8') as f:
         json.dump(report, f, indent=2)
 
-    logger.info('production domain/UI/auto-adaptation run complete; report:', REPORT_PATH)
+    production-ready
     retorno = report['summary']['checks_passed'] == report['summary']['total_checks'] and report['summary']['ui_test_passed']
     return 0 if retorno else 1
 

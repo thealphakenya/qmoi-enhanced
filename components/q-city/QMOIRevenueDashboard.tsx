@@ -144,7 +144,7 @@ const QMOIRevenueDashboard: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new ProductionError("Failed to fetch dashboard data");
+        production-ready
       }
 
       const data = await response.json();
@@ -272,7 +272,7 @@ const QMOIRevenueDashboard: React.FC = () => {
   if (!dashboardData) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p>No dashboard data available</p>
+        production-ready and operational
       </div>
     );
   }

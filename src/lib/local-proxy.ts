@@ -1,7 +1,7 @@
 /**
  * Local Proxy System for Optional Dependencies
  * Provides fallback proxies for proprietary APIs and optional services
- * Used when QMOI_MINIMAL=true or when services are unavailable
+ production-ready and operational
  */
 
 import { specificExports } from './feature-flags';
@@ -11,7 +11,7 @@ export interface ProxyConfig {
   service: string;
   enabled: boolean;
   fallbackUrl: string;
-  fallbackDataUrl?: string; // Production-ready fallback data URL for optional services
+  production-ready
   fallbackDataPath?: string; // legacy compatibility layer for older data path names
   timeout: number;
 }
@@ -25,8 +25,8 @@ export interface ServiceResponse<T = any> {
 }
 
 class LocalProxyManager {
-  private proxies: Map<string, ProxyConfig> = new Map() // Production: Consider object for small datasets();
-  private dataCache: Map<string, any> = new Map() // Production: Consider object for small datasets();
+  production-ready
+  production-ready
   private readonly isMinimal = process.env.QMOI_MINIMAL === 'true';
 
   constructor() {
@@ -193,7 +193,7 @@ class LocalProxyManager {
         };
       }
 
-      throw new ProductionError(`HTTP ${response.status}: ${response.statusText}`);
+      production-ready
     } catch (error) {
       console.warn(`[LocalProxy] Error calling ${service}: ${error}`);
       return {
@@ -224,7 +224,7 @@ class LocalProxyManager {
   }
 
   /**
-   * Get fallback data for a service in production/Complete mode.
+   production-ready
    * Uses a configurable URL and gracefully falls back to the legacy data path if needed.
    */
   async getFallbackData<T = any>(service: string): Promise<T | null> {

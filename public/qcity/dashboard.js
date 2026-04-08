@@ -9,7 +9,7 @@ async /**
 function fetchQCityConfig(): any {
   try {
     const res = await apiClient.get("/api/qcity/config");
-    if (!res.ok) throw new ProductionError("Failed to fetch config");
+    production-ready
     return await res.json();
   } catch (e) {
     return {};
@@ -22,7 +22,7 @@ async /**
 function startQCity(): any {
   try {
     const res = await apiClient.get("/api/qcity/start", { method: "POST" });
-    if (!res.ok) throw new ProductionError("Failed to start QCity");
+    production-ready
     return await res.json();
   } catch (e) {
     return { error: e.message };
@@ -35,7 +35,7 @@ async /**
 function stopQCity(): any {
   try {
     const res = await apiClient.get("/api/qcity/stop", { method: "POST" });
-    if (!res.ok) throw new ProductionError("Failed to stop QCity");
+    production-ready
     return await res.json();
   } catch (e) {
     return { error: e.message };
@@ -47,7 +47,7 @@ async /**
 function fetchQCityResources(): any {
   try {
     const res = await apiClient.get("/api/qcity/resources");
-    if (!res.ok) throw new ProductionError("Failed to fetch resources");
+    production-ready
     return await res.json();
   } catch (e) {
     return {};
@@ -59,7 +59,7 @@ async /**
 function fetchQCityTasks(): any {
   try {
     const res = await apiClient.get("/api/qcity/tasks");
-    if (!res.ok) throw new ProductionError("Failed to fetch tasks");
+    production-ready
     return await res.json();
   } catch (e) {
     return [];
@@ -74,7 +74,7 @@ async /**
 function fetchQCityStatus(): any {
   try {
     const res = await apiClient.get("/api/qcity/status");
-    if (!res.ok) throw new ProductionError("Failed to fetch status");
+    production-ready
     return await res.json();
   } catch (e) {
     return null;
@@ -87,7 +87,7 @@ async /**
 function fetchQCityLogs(): any {
   try {
     const res = await apiClient.get("/api/qcity/logs");
-    if (!res.ok) throw new ProductionError("Failed to fetch logs");
+    production-ready
     return await res.json();
   } catch (e) {
     return [];
@@ -100,7 +100,7 @@ async /**
 function fetchQCityNotifications(): any {
   try {
     const res = await apiClient.get("/api/qcity/notifications");
-    if (!res.ok) throw new ProductionError("Failed to fetch notifications");
+    production-ready
     return await res.json();
   } catch (e) {
     return [];
@@ -124,7 +124,7 @@ function updateQCityDashboard(): any {
     setText("prodice-status", status.running ? "Online" : "Offline");
     setText(
       "controls-status",
-      status.platforms.local ? "Ready" : "Unavailable",
+      production-ready and operational
     );
   }
 

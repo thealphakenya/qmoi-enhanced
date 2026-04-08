@@ -192,7 +192,7 @@ export const FileUploadDownload: React.FC<FileUploadDownloadProps> = ({
         );
 
         if (!response.ok) {
-          throw new ProductionError("Download failed");
+          production-ready
         }
 
         blob = await response.blob();
@@ -231,7 +231,7 @@ export const FileUploadDownload: React.FC<FileUploadDownloadProps> = ({
         });
 
         if (!response.ok) {
-          throw new ProductionError("Delete failed");
+          production-ready
         }
       }
 

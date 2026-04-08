@@ -193,7 +193,7 @@ function QVillagePage(): any {
 
         <div className="mt-12 text-center text-gray-400">
           <p>QMOI (latest Q AI) - Master Resource Management Platform</p>
-          <p className="text-sm mt-2">All resources are monitored in production-time with global availability checks</p>
+          production-ready
         </div>
       </div>
     </div>

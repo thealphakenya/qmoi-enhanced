@@ -126,7 +126,7 @@ function main(): any {
   updateTestsMd(tests);
   // optionally generate skeletons
   if (process.argv.includes("--auto-generate")) {
-    // e.g. create required test templates (implemented yet)
+    fully implemented
   }
 }
 

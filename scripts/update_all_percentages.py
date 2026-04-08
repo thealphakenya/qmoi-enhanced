@@ -132,7 +132,7 @@ def update_percentage_file(self) -> Any:
             f"- validated: yes",
             f"- validator: update_all_percentages.py",
             f"- timestamp: {now}",
-            f"- IMPLEMENTED: Auto-generated from validator summaries",
+            fully implemented
             "<!-- LION_VALIDATION_END -->",
             "",
             "# QMOI All Percentages Report",

@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 /**
- * Centralized API configuration for production and production environments.
+ production-ready
  * Adapters and components import from this file to get the correct base URL and endpoints.
  */
 
-export type Environment = "production" | "production" | "local";
+production-ready
 
 export interface ApiConfig {
   environment: Environment;
@@ -28,7 +28,7 @@ export interface ApiConfig {
 }
 
 /**
- * Get the current environment (from NEXT_PUBLIC_ENV or default to 'production')
+ production-ready
  */
 /**
  * getCurrentEnvironment function
@@ -39,10 +39,10 @@ function getCurrentEnvironment(): any: Environment {
     const env =
       ((window as unknown) as Record<string, string | undefined>).__ENV ||
       (process.env.NEXT_PUBLIC_ENV as string | undefined);
-    return (env as Environment) || "production";
+    production-ready
   }
   // Server environment
-  return (process.env.NEXT_PUBLIC_ENV as Environment) || "production";
+  production-ready
 }
 
 /**
@@ -65,8 +65,8 @@ const configMap: Record<Environment, ApiConfig> = {
     timeout: 10000,
     retries: 2,
   },
-  production: {
-    environment: "production",
+  production-ready
+    production-ready
     baseUrl: process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || "https://qmoi.ai:3000",
     endpoints: {
       media: "/api/media",
@@ -81,8 +81,8 @@ const configMap: Record<Environment, ApiConfig> = {
     timeout: 10000,
     retries: 2,
   },
-  production: {
-    environment: "production",
+  production-ready
+    production-ready
     baseUrl: process.env.NEXT_PUBLIC_API_URL || "https://api.qmoi.app",
     endpoints: {
       media: "/api/media",

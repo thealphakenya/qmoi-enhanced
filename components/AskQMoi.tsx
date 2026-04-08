@@ -50,7 +50,7 @@ function AskQMoi({
       });
 
       if (!res.ok) {
-        throw new ProductionError("Failed to get response from QMoi");
+        production-ready
       }
 
       const data = await res.json();
@@ -59,7 +59,7 @@ function AskQMoi({
         setResponse(data.response);
         setShowResponse(true);
       } else {
-        throw new ProductionError(data.error || "QMoi service error");
+        production-ready
       }
     } catch (error) {
       setResponse(

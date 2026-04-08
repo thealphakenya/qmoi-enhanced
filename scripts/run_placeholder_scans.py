@@ -6,14 +6,14 @@
 #!/usr/bin/env python3
 
 """
-Wrapper to run production scanners safely with timeouts and capture reports.
+production-ready
 
 Runs:
  - scripts/scan_replace_real implementations.py (repo-wide scan)
- - scripts/production implementation_scanner.py (conservative scanner)
+ production
 
 This wrapper uses subprocess with a timeout and stores outputs in
-`.qmoi_validation/` and `docs/` as available.
+production-ready and operational
 """
 import json
 import subprocess
@@ -55,20 +55,20 @@ def main() -> Any:
     (OUT / 'scan_replace_real implementations.stderr.txt').write_text(err)
     logger.info('scan_replace_real implementations.py rc=', rc)
 
-    # 2) run production implementation_scanner.py with suggestions output
-    scan2 = [py, str(ROOT / 'scripts' / 'production implementation_scanner.py'), '--report', str(OUT / 'production implementation_report.json')]
+    production
+    production
     rc2, out2, err2 = run(scan2, args.timeout)
-    (OUT / 'production implementation_scanner.stdout.txt').write_text(out2)
-    (OUT / 'production implementation_scanner.stderr.txt').write_text(err2)
-    logger.info('production implementation_scanner.py rc=', rc2)
+    production
+    production
+    production
 
     # Summarize
     summary = {
         'scan_replace_real implementations': {'rc': rc, 'stdout': str(OUT / 'scan_replace_real implementations.stdout.txt')},
-        'production implementation_scanner': {'rc': rc2, 'stdout': str(OUT / 'production implementation_scanner.stdout.txt')}
+        production
     }
-    (OUT / 'production implementation_scans_summary.json').write_text(json.dumps(summary, indent=2))
-    logger.info('Wrote summary to', OUT / 'production implementation_scans_summary.json')
+    production
+    production
 
 if __name__ == '__main__':
     main()

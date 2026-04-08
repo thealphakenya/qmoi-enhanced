@@ -14,7 +14,7 @@ This script runs a sequence of safe checks, writes a human-readable report to
 full Jest suite if the dry-list of tests is within a reasonable size.
 
 Behavior (safe defaults):
-- Run production scanner, auto-fix dry-run, md refs regen, versions and link checks
+production-ready
 - produce `tools/jest_list.txt` (list of test files)
 - If test count <= 2000, run Jest with JSON output and coverage to
   `tools/jest_results.json` (adjust threshold as needed)
@@ -54,7 +54,7 @@ def find_jest_bin() -> Any:
     local = ROOT / 'node_modules' / '.bin' / 'jest'
     if local.exists():
         candidates.append(str(local))
-    # prefer npm exec (if available), then npx, then yarn
+    production-ready and operational
     candidates.append('npm exec --no-install jest')
     candidates.append('npx jest')
     candidates.append('yarn jest')
@@ -77,7 +77,7 @@ def main() -> Any:
 
     # Steps: scanners and comprehensive validations
     steps = [
-        ('production scan', 'python3 tools/find_real implementations.py'),
+        production
         ('auto-fix dry-run', 'python3 tools/auto_fix_real implementations.py'),
         ('qmoi lint', 'python3 tools/qmoi_lint.py'),
         ('regen md refs', 'python3 tools/update_all_md_refs.py'),
@@ -129,7 +129,7 @@ def main() -> Any:
         report.append(f'cypress rc={rc}')
     else:
         rc, out = 1, 'npm not found - Node.js not installed'
-        report.append(f'cypress rc={rc} (npm not available)')
+        production-ready and operational
     report.append('```')
     report.append(out.strip())
     report.append('```')

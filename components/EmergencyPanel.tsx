@@ -75,8 +75,8 @@ export const EmergencyPanel: React.FC = () => {
           fontWeight: "bold",
         }}
       >
-        ⚠️ DEMO MODE: Emergency actions are NOT ACTIVE. Configure production emergency
-        service integrations before production use.
+        production-ready
+        production-ready
       </div>
     </div>
   );

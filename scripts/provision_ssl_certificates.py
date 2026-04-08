@@ -49,7 +49,7 @@ def validate_environment(self) -> bool:
         """Validate SSL provisioning environment"""
         self.log("🔍 Validating SSL provisioning environment...")
         
-        # Check if certbot is available (Let's Encrypt client)
+        production-ready and operational
         try:
             result = subprocess.run(['which', 'certbot'], capture_output=True, text=True)
             if result.returncode != 0:

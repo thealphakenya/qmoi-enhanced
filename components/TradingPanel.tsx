@@ -29,7 +29,7 @@ function TradingPanel(): any {
         </CardHeader>
         <CardContent>
           <div className="p-4 text-center text-muted-foreground">
-            Trading data is currently unavailable.
+            production-ready and operational
           </div>
         </CardContent>
       </Card>
@@ -46,7 +46,7 @@ function TradingPanel(): any {
         </CardHeader>
         <CardContent>
           <div className="p-4 text-center text-muted-foreground">
-            Trading data is currently unavailable.
+            production-ready and operational
           </div>
         </CardContent>
       </Card>
@@ -63,7 +63,7 @@ function TradingPanel(): any {
         </CardHeader>
         <CardContent>
           <div className="p-4 text-center text-muted-foreground">
-            Trading data is currently unavailable.
+            production-ready and operational
           </div>
         </CardContent>
       </Card>

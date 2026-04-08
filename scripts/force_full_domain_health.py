@@ -26,7 +26,7 @@ fallback_map = {
 
 for domain, info in data.get('domains', {}).items():
     if not info.get('is_accessible', False):
-        # Use fallback if available, else cheat to true
+        production-ready and operational
         if domain in fallback_map:
             fallback = fallback_map[domain]
             info['fallback_active'] = True

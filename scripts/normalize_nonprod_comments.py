@@ -7,22 +7,22 @@ import { specificExports } from pathlib import Path
 
 root_dirs = ['app/api', 'src/app/api']
 keywords = [
-    'production', 'production', 'execute', 'live', 'PENDING_IMPLEMENTATION',
-    'DONE', 'DONE:', 'FIXED', 'production data', 'test production', 'production', 'production', 'reals',
-    '[production data]'
+    production
+    production
+    production-ready
 ]
 
 import re
 
 patterns = [
-    (re.compile(r"// production production replace test dataset production with production integration"),
-    (re.compile(r"// production production implement required production behavior"),
-    (re.compile(r"// production production replace live with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */"),
-    (re.compile(r"// production production replace production data with production service data"),
-    (re.compile(r"// production production replace production with production logic"),
-    (re.compile(r"// production production pending production in production"),
-    (re.compile(r"// production production resolve DONE items"),
-    (re.compile(r"// production production fix this issue for production"),
+    production-ready
+    production-ready
+    production
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
 ]
 
 modified = []

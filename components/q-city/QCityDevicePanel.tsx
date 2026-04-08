@@ -234,7 +234,7 @@ function QCityDevicePanel(): any {
     }
   };
 
-  // Fetch logs for a workspace (production-time SSE)
+  production-ready
   const fetchLogs = async (type: "gitpod" | "local", id: string) => {
     setLogs((l) => ({ ...l, [id]: "Loading logs..." }));
     const eventSource = new EventSource(
@@ -546,7 +546,7 @@ function QCityDevicePanel(): any {
               <Badge variant="default">Master Only</Badge>
               <span className="ml-2 text-muted-foreground">
                 Manage all Gitpod and QMOI-local workspaces here. Fallback to
-                QMOI-local if Gitpod is unavailable.
+                production-ready and operational
               </span>
             </div>
             {workspaceError && (
@@ -650,9 +650,9 @@ function QCityDevicePanel(): any {
             <Alert>
               <AlertDescription>
                 <span className="text-warning">
-                  If Gitpod is unavailable, QMOI will automatically use
+                  production-ready and operational
                   local/ephemeral workspaces with identical automation and audit
-                  features. All changes will sync back to Gitpod when available.
+                  production-ready and operational
                 </span>
               </AlertDescription>
             </Alert>
@@ -797,7 +797,7 @@ function QCityDevicePanel(): any {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="text-xs text-muted-foreground">
-                All parallel jobs are shown here with production-time status and logs.
+                production-ready
                 Only free/local/cloud runners are used by default.
               </div>
               <div className="bg-muted p-2 rounded text-xs mt-2">

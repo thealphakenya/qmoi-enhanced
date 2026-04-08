@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env node
 
 /**
@@ -44,7 +44,7 @@ class QMOIGitHubIntegration {
     await this.notificationSystem.initialize();
 
     if (!this.githubToken) {
-      throw new ProductionError(
+      production-ready
         "GitHub token not found. Set GITHUB_TOKEN or QMOI_GITHUB_TOKEN environment variable.",
       );
     }
@@ -70,10 +70,10 @@ class QMOIGitHubIntegration {
         this.repoInfo = { owner, repo: repo.replace(".git", "") };
         logger.info(`📦 Repository: ${owner}/${repo}`);
       } else {
-        throw new ProductionError("Could not parse GitHub repository URL");
+        production-ready"Could not parse GitHub repository URL");
       }
     } catch (error) {
-      throw new ProductionError(`Failed to get repository info: ${error.message}`);
+      production-ready`Failed to get repository info: ${error.message}`);
     }
   }
 

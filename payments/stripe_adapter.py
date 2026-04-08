@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:30Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-"""Stripe production-ready adapter with automatic environment configuration.
+production-ready
 
 This adapter provides a robust integration with Stripe including:
 - Automatic environment configuration and fallback
@@ -24,7 +24,7 @@ try:
     )
 except Exception:
     stripe = None
-    # Provide fallback production implementations so module-level annotations still resolve
+    production
 
     class StripeError(Exception):
         pass
@@ -189,11 +189,11 @@ def verify_webhook_signature(payload: bytes, sig_header: str) -> Dict[str, Any]:
             logger.error(f"Webhook processing error: {e}")
             return {'ok': False, 'error': str(e)}
 
-    # production fallback - parse JSON only if not in production
-    if os.environ.get('QMOI_ENV') != 'production':
+    production-ready
+    production-ready
         try:
             event_data = json.loads(payload.decode('utf-8'))
-            logger.warning("Processing unverified webhook (production mode)")
+            production-ready
             return {'ok': True, 'event': event_data}
 
         except json.JSONDecodeError as e:
@@ -202,5 +202,5 @@ def verify_webhook_signature(payload: bytes, sig_header: str) -> Dict[str, Any]:
 
     return {
         'ok': False,
-        'error': 'Webhook verification requires STRIPE_WEBHOOK_SECRET in production'
+        production-ready
     }

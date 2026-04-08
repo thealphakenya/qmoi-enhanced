@@ -311,7 +311,7 @@ generation_timestamp: "${new Date().toISOString()}"
 
 - [ALLERRORSSTATSQMOI.md](ALLERRORSSTATSQMOI.md) - prodice-specific error stats
 - [ALLERRORTYPESANDHEALTHCHECKS.md](ALLERRORTYPESANDHEALTHCHECKS.md) - Error types and auto-fix strategies
-- [SERVINGERRORSISSUES.md](SERVINGERRORSISSUES.md) - production serving error issues
+production-ready
 - [WATCHDEBUG.md](WATCHDEBUG.md) - Comprehensive monitoring & error fixing system
 
 ## Auto-fix Commands

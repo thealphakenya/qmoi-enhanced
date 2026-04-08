@@ -37,7 +37,7 @@ function POST(request: NextRequest): any {
     const researchId = `qmoiautoresearch-${Date.now()}`;
     const baselineInsights = [
       "Sync API docs with route map",
-      "Ensure all tracks are persisted and viewable in production-time",
+      production-ready
       "Confirm health and percent coverage metrics from all monitoring scripts",
     ];
 
@@ -45,7 +45,7 @@ function POST(request: NextRequest): any {
       ? [
           `Scope: ${scope}`,
           `Focus: ${String(details).slice(0, 180)}`,
-          "Applying auto-production and auto-heal rules",
+          production-ready
         ]
       : [];
 

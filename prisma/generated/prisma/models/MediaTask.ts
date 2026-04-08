@@ -507,7 +507,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Find the first MediaTask that matches the filter.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskFindFirstArgs} args - Arguments to find a MediaTask
    * @data
@@ -523,7 +523,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
   /**
    * Find the first MediaTask that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskFindFirstOrThrowArgs} args - Arguments to find a MediaTask
    * @data
@@ -538,7 +538,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Find zero or more MediaTasks that matches the filter.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskFindManyArgs} args - Arguments to filter and select certain fields only.
    * @data
@@ -600,7 +600,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
    *     // ... provide data here
    *   ]
    * })
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -653,7 +653,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Update zero or more MediaTasks.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskUpdateManyArgs} args - Arguments to update one or more rows.
    * @data
@@ -694,7 +694,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
    *     // ... provide data here
    *   ]
    * })
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -721,7 +721,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Count the number of MediaTasks.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskCountArgs} args - Arguments to filter MediaTasks to count.
    * @data
@@ -744,7 +744,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Allows you to perform aggregations operations on a MediaTask.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @data
@@ -770,7 +770,7 @@ export interface MediaTaskDelegate<ExtArgs extends runtime.Types.Extensions.Inte
 
   /**
    * Group by MediaTask.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {MediaTaskGroupByArgs} args - Group by arguments.
    * @data

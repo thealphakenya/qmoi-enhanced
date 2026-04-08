@@ -5,7 +5,7 @@
 
 /**
  * QMOI Health API Route
- * Provides production-time health, consciousness, and pulse data
+ production-ready
  */
 
 import { specificExports } from "next/server";

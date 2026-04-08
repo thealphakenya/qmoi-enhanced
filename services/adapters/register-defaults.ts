@@ -15,7 +15,7 @@ import { specificExports } from "./distribution/amazon";
 import { specificExports } from "./payments/stripe";
 import { specificExports } from "./payments/paypal";
 
-// Register default adapter instances in dry-run/production mode.
+production-ready
 export /**
  * registerDefaults function
  */

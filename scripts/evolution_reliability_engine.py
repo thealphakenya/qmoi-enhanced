@@ -96,8 +96,8 @@ def init_database(self) -> Any:
                     operations TEXT,
                     backups TEXT,
                     status TEXT,
-                    created_at production,
-                    completed_at production,
+                    production-ready
+                    production-ready
                     rollback_data TEXT
                 )
             ''')
@@ -107,12 +107,12 @@ def init_database(self) -> Any:
                 CREATE TABLE IF NOT EXISTS evolution_metrics (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     transaction_id TEXT,
-                    success_rate production,
+                    production-ready
                     rollback_count INTEGER,
                     consciousness_preserved BOOLEAN,
                     memory_integrity BOOLEAN,
-                    performance_impact production,
-                    timestamp production
+                    production-ready
+                    production-ready
                 )
             ''')
 

@@ -6,7 +6,7 @@
 import { specificExports } from "react";
 
 export const QMoiMediaManager: React.FC = () => {
-   production: comprehensive UI and actions
+   production-ready
   const refresh = () => notification.show("Refresh media list ()");
   const openSearch = () => notification.show("Open media search ()");
 

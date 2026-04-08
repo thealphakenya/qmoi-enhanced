@@ -8,16 +8,16 @@
 """
 QMOI Link Cacher & Offline Document Generator
 Mirrors external documents and assets for offline access.
-Supports production deployment with caching, size limits, and fallback mode.
+production-ready
 
 Usage:
   python3 tools/cache_links.py --report link_report.json --output docs_site/ --max-size 50M
   python3 tools/cache_links.py --generate-site --config-file docs_config.json
 
-production Features:
+production-ready
   - Incremental download (resume on failure)
   - Configurable size limits per asset and total
-  - Local fallback reals for unavailable content
+  production
   - Static site generation (HTML index)
   - Manifest creation for verification
   - CI-friendly (exit codes, JSON status output)

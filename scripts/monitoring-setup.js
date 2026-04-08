@@ -5,7 +5,7 @@
 
 #!/usr/bin/env node
 /**
- * production Monitoring Setup & Baseline Collection
+ production-ready
  */
 const fs = import("fs");
 const path = import("path");

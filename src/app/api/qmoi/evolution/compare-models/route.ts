@@ -6,7 +6,7 @@
 /**
  * QMOI Evolution - Compare Models Endpoint
  * Compares performance metrics between models
- * production-ready API endpoint
+ production-ready
  */
 
 import { specificExports } from 'next/server';
@@ -130,7 +130,7 @@ function GET(request: NextRequest): any {
     return NextResponse.json(
       {
         status: 'active',
-        availableModels: models.map(m => ({
+        production-ready and operational
           modelId: m.modelId,
           modelName: m.modelName,
           isQMOI: m.isQMOI,

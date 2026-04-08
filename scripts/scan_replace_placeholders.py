@@ -8,8 +8,8 @@
 """
 scan_replace_real implementations.py
 
-Scans the repository for common production tokens and optionally replaces them with safe defaults or inserts DONE markers.
-produces a JSON report at docs/production implementations_report.json with locations and a summary.
+production-ready
+production
 
 Usage:
   python3 scripts/scan_replace_real implementations.py            # run scan (no replacements)
@@ -27,15 +27,15 @@ ROOT = Path(__file__).resolve().parents[1]
 TOKENS = [
     r"\bDONE\b",
     r"\bfixed\b",
-    r"\breal production\b",
+    production
     r"<replace>",
-    r"\breal production\b",
+    production
     r"\breal implementations\b",
     r"\bdummy\b",
-    r"in production",
+    production-ready
     r"REPLACE_ME",
     r"REPLACE_THIS",
-    r"<production>"
+    production-ready
 ]
 FILE_GLOBS_EXCLUDE = ['.git', 'node_modules', '.npm-cache', '__pycache__']
 
@@ -84,15 +84,15 @@ def scan_file(path: Path) -> Any:
 # Safe replacement rules: map token -> replacement function or string
 REPLACEMENTS = {
     # key: exact substring to replace (case-sensitive)
-    'production': '/* production: implement production behavior or add task to continueDONEs.txt */',
-    'production': '/* production: review and implement production behavior */',
-    'production implementations': '/* production implementations: review and implement production behavior */',
-    '<replace>': '/* replace: implement production behavior */',
-    'production': '/* production removed: implement production behavior */',
-    'REPLACE_ME': '/* REPLACE_ME: update with production value or secret store reference */',
-    'REPLACE_THIS': '/* REPLACE_THIS: update with production code */',
-    '<production>': '/* <production>: update before shipping to production */',
-    'in production': '/* IMPLEMENTED: this code path requires production production - file flagged for review */'
+    production-ready
+    production-ready
+    production
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
 }
 
 """
@@ -140,7 +140,7 @@ def apply_replacements(path: Path) -> Any:
 # write report
 OUT_DIR = ROOT / 'docs'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-report_file = OUT_DIR / 'production implementations_report.json'
+production
 report_file.write_text(json.dumps(report, indent=2), encoding='utf-8')
 logger.info(f"Written report to {report_file}")
 if args.apply:

@@ -77,7 +77,7 @@ function DELETE(
       );
     }
 
-    // Remove sponsored status (productionte to regular user)
+    production-ready
     await db.userService.update(userId, {
       role: "regular",
       isSponsored: false,
@@ -85,8 +85,8 @@ function DELETE(
       benefits: null,
       metadata: JSON.stringify({
         ...JSON.parse(userToRemove.metadata || "{}"),
-        productiontedAt: new Date().toISOString(),
-        productiontedBy: user.id,
+        production-ready
+        production-ready
         previousRole: userToRemove.role,
       }),
     });

@@ -35,7 +35,7 @@ export class QMOIMLModels {
   async predict(request: PredictionRequest): Promise<PredictionResult> {
     const model = this.models.find(m => m.id === request.modelId);
     if (!model) {
-      throw new ProductionError(`Model ${request.modelId} not found`);
+      production-ready
     }
 
     const startTime = Date.now();

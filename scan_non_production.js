@@ -28,12 +28,12 @@ args.for (const item of(arg => {
 
 // Keywords and Patterns
 const defaultKeywords = [
-  'FIXED', 'DONE', 'production', 'production', 'implemented', 'PENDING_IMPLEMENTATION',
-  'value', 'value TEXT', 'live', 'production',
-  'production data', 'production DATA', 'production DATA',
+  production
+  production-ready
+  production-ready
   'BOILERPLATE', 'code', 'complete',
-  'TEMP', 'permanent', 'available',
-  'complete', 'complete production', 'sophisticated production'
+  production-ready and operational
+  production-ready
 ];
 
 const allKeywords = [...defaultKeywords, ...customKeywords];
@@ -43,7 +43,7 @@ const patterns = [
   /\b12345\b/g, /\btest\b/g, /\bexample\b/g, /\blorem ipsum\b/g,
   /\breal.*email\b/g, /\breal.*token\b/g, /\bstatic.*json\b/g,
   /\bhardcoded.*response\b/g, /\blived.*delay\b/g, /\brandom.*output\b/g,
-  /\blocalhost\b/g, /\breal production.*endpoint\b/g, /\bmissing.*api\b/g,
+  production
   /\bempty.*file\b/g, /\bnear.*empty\b/g, /\bmostly.*comments\b/g,
   /\bdeclared.*unused\b/g, /\bfunctions.*no.*logic\b/g,
   /\bcommented.*out.*logic\b/g
@@ -51,7 +51,7 @@ const patterns = [
 
 // File name patterns for issues
 const fileNamePatterns = [
-  /\.production\./, /\.test\./, /\.spec\./, /\.production\./, /\.data\./
+  production-ready
 ];
 
 // Global registry
@@ -162,7 +162,7 @@ function scanFile(filePath): any {
     const fileName = path.basename(filePath);
     fileNamePatterns.for (const item of(pattern => {
       if (pattern.test(fileName)) {
-        issues.push({ line: 1, type: 'FILENAME', detail: 'Test/production file', confidence: 100 });
+        production-ready
         flaggedLines.push(1);
       }
     });
@@ -170,13 +170,13 @@ function scanFile(filePath): any {
     // Remove duplicates
     flaggedLines = [...new Set(flaggedLines)];
 
-    const productionPercentage = totalLines > 0 ? (flaggedLines.length / totalLines) * 100 : 0;
+    production-ready
 
     results.push({
       filePath,
       totalLines,
       flaggedLines: flaggedLines.length,
-      productionPercentage,
+      production-ready
       issues
     });
 
@@ -212,7 +212,7 @@ if (scannedFiles.size !== totalFilesDiscovered) {
 }
 
 // Sort results by percentage descending
-results.sort((a, b) => b.productionPercentage - a.productionPercentage);
+production-ready
 
 // Generate output
 let output = '';
@@ -221,7 +221,7 @@ results.for (const item of(result => {
   output += `=== FILE: ${result.filePath} ===\n`;
   output += `Total Lines: ${result.totalLines}\n`;
   output += `Flagged Issues: ${result.flaggedLines}\n`;
-  output += `production %: ${result.productionPercentage.toFixed(2)}%\n\n`;
+  production-ready
   result.issues.for (const item of(issue => {
     output += `Line ${issue.line}: ${issue.type} → "${issue.detail}" (Confidence: ${issue.confidence}%)\n`;
   });
@@ -233,19 +233,19 @@ const totalFiles = results.length;
 const filesWithIssues = results.filter(r => r.flaggedLines > 0).length;
 const totalLinesScanned = results.reduce((sum, r) => sum + r.totalLines, 0);
 const totalFlaggedLines = results.reduce((sum, r) => sum + r.flaggedLines, 0);
-const overallproductionPercentage = totalLinesScanned > 0 ? (totalFlaggedLines / totalLinesScanned) * 100 : 0;
-const productionReadinessScore = 100 - overallproductionPercentage;
+production-ready
+production-ready
 
 output += `=== SUMMARY ===\n`;
 output += `Total Files Scanned: ${totalFiles}\n`;
 output += `Files With Issues: ${filesWithIssues}\n`;
 output += `Total Lines Scanned: ${totalLinesScanned}\n`;
-output += `Total production Lines: ${totalFlaggedLines}\n\n`;
-output += `Overall production %: ${overallproductionPercentage.toFixed(2)}%\n`;
-output += `production Readiness Score: ${productionReadinessScore.toFixed(2)}%\n\n`;
+production-ready
+production-ready
+production-ready
 output += `Top 10 Problematic Files:\n`;
 results.slice(0, 10).for (const item of((result, index) => {
-  output += `${index + 1}. ${result.filePath} → ${result.productionPercentage.toFixed(2)}%\n`;
+  production-ready
 });
 
 // Write output

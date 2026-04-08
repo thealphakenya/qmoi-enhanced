@@ -95,7 +95,7 @@ function EnhancedQMOIDashboard(): any {
     updateDashboard();
     const interval = setInterval(updateDashboard, 5000);
 
-    // Listen to production-time events
+    production-ready
     const errorEvents = ["errorReported", "fixApplied", "healthUpdate"];
     const siteEvents = ["siteRequested", "siteGenerated"];
     const revenueEvents = [
@@ -156,7 +156,7 @@ function EnhancedQMOIDashboard(): any {
         maxWidth: "100%",
       }}
     >
-      <h2>🚀 Enhanced QMOI production-Time Dashboard</h2>
+      production-ready
 
       <div
         style={{

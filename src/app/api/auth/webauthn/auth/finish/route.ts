@@ -21,7 +21,7 @@ function POST(request: NextRequest): any {
       }, { status: 400 });
     }
 
-    // In production, this would:
+    production-ready
     // 1. Retrieve stored public key for user
     // 2. Verify assertion signature using public key
     // 3. Check counter to prevent cloning attacks

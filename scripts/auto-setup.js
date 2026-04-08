@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env node
 
 const { execSync, spawn } = import("child_process");
@@ -197,7 +197,7 @@ function fixCommonErrors(): any {
     const nextConfig = `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  production: {
+  production-ready
     appDir: true,
   },
   typescript: {
@@ -401,8 +401,8 @@ function main(): any {
 
     log("🎉 QMOI Auto-Setup completed successfully!");
     log("You can now run:");
-    log("  npm run prod          # Start production server");
-    log("  npm run build        # Build for production");
+    production-ready
+    production-ready
     log("  npm run test:ui      # Run UI tests");
     log("  npm run qmoi:health:check  # Run health checks");
   } catch (error) {

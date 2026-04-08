@@ -59,7 +59,7 @@ def print_wallet(name, data, dst_currency) -> Any:
     native = data.get('balance_native')
     native_cur = data.get('currency_native') or data.get('currency') or 'USD'
     if native is None:
-        logger.info(f"{name}: no numeric balance available (status={data.get('status')})")
+        production-ready and operational
         return
     try:
         converted = convert(float(native), src=native_cur, dst=dst_currency)

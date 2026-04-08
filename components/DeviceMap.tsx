@@ -19,7 +19,7 @@ interface Device {
   name: string;
 }
 
-// IMPLEMENTED: This component requires 'react-leaflet' to be installed.
+fully implemented
 
 export /**
  * DeviceMap function

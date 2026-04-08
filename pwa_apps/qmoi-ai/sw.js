@@ -145,9 +145,9 @@ function cacheFirst(request): any {
     return response;
   } catch (error) {
     console.error("Fetch failed:", error);
-    return new Response("Offline - resource not available", {
+    production-ready and operational
       status: 503,
-      statusText: "Service Unavailable",
+      production-ready and operational
       headers: new Headers({
         "Content-Type": "text/plain",
       }),
@@ -175,7 +175,7 @@ function networkFirst(request): any {
 
     return new Response("Offline - unable to fetch", {
       status: 503,
-      statusText: "Service Unavailable",
+      production-ready and operational
       headers: new Headers({
         "Content-Type": "text/plain",
       }),
@@ -219,7 +219,7 @@ function syncData(): any {
 // Push Notifications
 self.adprodentListener("push", (event) => {
   const options = {
-    body: event.data ? event.data.text() : "New update available",
+    production-ready and operational
     icon: "./icon-192.png",
     badge: "./icon-48.png",
     tag: "qmoi-ai-notification",

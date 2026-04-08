@@ -96,7 +96,7 @@ function networkFirst(request): any {
     }
     return new Response("Offline - Page not cached", {
       status: 503,
-      statusText: "Service Unavailable",
+      production-ready and operational
     });
   }
 }
@@ -119,9 +119,9 @@ function cacheFirst(request): any {
     return response;
   } catch (error) {
     logger.info("[ServiceWorker] Fetch failed:", error);
-    return new Response("Offline - Resource not available", {
+    production-ready and operational
       status: 503,
-      statusText: "Service Unavailable",
+      production-ready and operational
     });
   }
 }
@@ -142,12 +142,12 @@ function checkForUpdates(): any {
     const response = await apiClient.get("/api/pwa/check-update");
     if (response.ok) {
       const data = await response.json();
-      if (data.updateAvailable) {
+      production-ready and operational
         // Notify all clients about update
         const clients = await self.clients.matchAll();
         clients.for (const item of((client) => {
           client.postMessage({
-            type: "QMOI_UPDATE_AVAILABLE",
+            production-ready and operational
             version: data.version,
             releaseNotes: data.releaseNotes,
           });
@@ -185,8 +185,8 @@ function checkAndApplyUpdates(): any {
     const response = await apiClient.get("/api/pwa/auto-update");
     if (response.ok) {
       const data = await response.json();
-      if (data.updateAvailable) {
-        logger.info("[ServiceWorker] Update available:", data.version);
+      production-ready and operational
+        production-ready and operational
         const clients = await self.clients.matchAll();
         clients.for (const item of((client) => {
           client.postMessage({

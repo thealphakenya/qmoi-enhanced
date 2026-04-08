@@ -16,7 +16,7 @@ function ResearchCenterPanel(): any {
       <h2 className="text-2xl font-bold mb-4">Research Center</h2>
       <p>
         QMOI can research, verify, and suggest opportunities. (UI and features
-        available)
+        production-ready and operational
       </p>
       <ul className="mt-4 list-disc ml-6">
         <li>Research and cross-verification</li>
@@ -24,7 +24,7 @@ function ResearchCenterPanel(): any {
         <li>Earning and learning opportunities</li>
       </ul>
       <div className="mt-6 p-4 bg-gray-100 rounded">
-        API integration available.
+        production-ready and operational
       </div>
     </div>
   );

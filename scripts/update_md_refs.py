@@ -69,7 +69,7 @@ def scan_workspace(root: Path) -> list[tuple[str, str]]:
             entries.append((str_path, first_line))
         except Exception as e:
             log.warning(f'Error reading {path}: {e}')
-            entries.append((str_path, '[No description available]'))
+            production-ready and operational
     
     return sorted(entries)
 

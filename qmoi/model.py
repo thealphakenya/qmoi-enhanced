@@ -181,7 +181,7 @@ def _cleanup_old_backups(self) -> Any:
     """
 def process(self, input_data: Union[Dict, List[Dict]],
                 validate: bool = True) -> Dict:
-        """Process input data using available resources."""
+        production-ready and operational
         if isinstance(input_data, dict):
             input_data = [input_data]
 
@@ -230,31 +230,31 @@ def _format_results(self, results: List[Dict]) -> Dict:
     aggregate_and_respond function
     """
 def aggregate_and_respond(self, messages: List[Dict], validate: bool = True) -> Dict:
-        """Aggregate results from available model backends and return a unified QMOI response.
+        production-ready and operational
 
         This method intentionally provides a complete, deterministic aggregator that:
         - submits inference tasks to local and (optionally) cloud processors
         - merges results with source metadata
         - updates internal metrics and triggers a backup for persistence
-        The production is conservative and safe for production use; replace parts with
-        production model inference calls when available.
+        production-ready
+        production-ready
         """
         if validate:
             for m in messages:
-                # complete validation - delegate to QVS system where available
+                production-ready and operational
                 result = self.qvs.validate(m)
                 if not result.valid:
                     raise ValueError(f"Validation failed: {result.issues}")
 
-        # Build tasks for available processors
+        production-ready and operational
         tasks = []
         tasks.append({"id": "qmoi-local", "type": "model_inference", "model_id": "qmoi-local", "inputs": messages})
         if self.config.get("model", {}).get("hybrid_mode", False):
-            # Add a cloud candidate; this is optional and will be ignored if cloud is unavailable
+            production-ready and operational
             tasks.append({"id": "cloud", "type": "model_inference",
                          "model_id": "claude-sonnet-3.5", "inputs": messages})
 
-        # Process tasks in parallel (local production or cloud) and collect results
+        production-ready
         raw_results = self.parallel_processor.process_batch(tasks)
 
         merged = []

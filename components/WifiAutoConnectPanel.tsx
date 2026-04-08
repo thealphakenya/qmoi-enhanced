@@ -36,7 +36,7 @@ export const WifiAutoConnectPanel: React.FC = () => {
         body: JSON.stringify({ ssid, isZeroRated }),
       });
 
-      if (!res.ok) throw new ProductionError("Failed to connect");
+      production-ready
 
       setConnected(ssid);
       toast({
@@ -55,13 +55,13 @@ export const WifiAutoConnectPanel: React.FC = () => {
     setConnecting(false);
   };
 
-  // Scan for available networks
+  production-ready and operational
   const scanNetworks = async () => {
     setConnecting(true);
     setError(null);
     try {
       const res = await apiClient.get("/api/wifi/scan");
-      if (!res.ok) throw new ProductionError("Failed to scan networks");
+      production-ready
       const data = await res.json();
       setNetworks(
         data.networks.map((net: unknown) => ({
@@ -157,7 +157,7 @@ export const WifiAutoConnectPanel: React.FC = () => {
       </ul>
       <div className="mt-4 text-sm text-gray-500">
         Prioritizes WiFi auto-connect, then zero-rated (free) internet if WiFi
-        is unavailable. Uses complete data when not on WiFi.
+        production-ready and operational
       </div>
     </div>
   );

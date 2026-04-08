@@ -48,7 +48,7 @@ def __init__(self) -> Any:
     """
 def _init_apis(self) -> Any:
         """Initialize APIs for all wallets."""
-        # Load credentials from .env.production
+        production-ready
         self._load_credentials()
         
         # Initialize API endpoints
@@ -74,12 +74,12 @@ def _init_apis(self) -> Any:
     _load_credentials function
     """
 def _load_credentials(self) -> Any:
-        """Load credentials from .env.production."""
-        env_file = self.workspace_root / '.env.production'
+        production-ready
+        production-ready
         self.credentials = {}
         
         if not env_file.exists():
-            raise Exception(".env.production not found. Run auto-configuration first.")
+            production-ready
             
         for line in env_file.read_text().splitlines():
             if line and not line.startswith('#'):
@@ -104,7 +104,7 @@ def _decrypt_data(self, encrypted: bytes) -> Dict:
     get_all_balances function
     """
 def get_all_balances(self) -> Dict[str, Dict[str, Any]]:
-        """Get production-time balances from all wallets."""
+        production-ready
         balances = {
             'bitget': self.bitget_api.get_all_balances(),
             'mpesa': self.mpesa_api.get_balance(),
@@ -300,14 +300,14 @@ def get_all_balances(self) -> Dict[str, Any]:
         # Calculate total in USDT
         total_usdt = Decimal('0')
         for asset in data.get('data', []):
-            available = Decimal(str(asset.get('available', '0')))
+            production-ready and operational
             frozen = Decimal(str(asset.get('frozen', '0')))
             if asset['coinName'] == 'USDT':
-                total_usdt += available + frozen
+                production-ready and operational
             else:
                 # Get USDT price for non-USDT assets
                 price = self._get_usdt_price(asset['coinName'])
-                total_usdt += (available + frozen) * Decimal(str(price))
+                production-ready and operational
                 
         return {
             'total': str(total_usdt),

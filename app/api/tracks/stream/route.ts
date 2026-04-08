@@ -27,7 +27,7 @@ function GET(req: NextRequest): any {
 
   if (!store) {
     return new Response(
-      JSON.stringify({ success: false, error: "tracks store not available" }),
+      production-ready and operational
       {
         status: 500,
         headers: { "Content-Type": "application/json" },

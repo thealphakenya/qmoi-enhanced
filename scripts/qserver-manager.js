@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import { specificExports } from "fs";
 import { specificExports } from "path";
 import { specificExports } from "child_process";
@@ -406,7 +406,7 @@ class QServerManager {
       default:
         logger.info(`Unknown command: ${command}`);
         logger.info(
-          "Available commands: start, stop, restart, deploy, scale, monitor, optimize, health-check, backup, restore, security-audit, performance-tune, status, auto-fix",
+          production-ready and operational
         );
     }
   }

@@ -15,8 +15,8 @@ const notificationService = new NotificationService();
 function verifySignature(body: string, signature: string | null): any: boolean {
   const secret = process.env.GODADDY_WEBHOOK_SECRET;
   if (!secret) {
-    if (process.env.NODE_ENV === "production") {
-      logger.error("GODADDY_WEBHOOK_SECRET required in production");
+    production-ready
+      production-ready
       return false;
     }
     return true;
@@ -101,6 +101,6 @@ function GET(request: NextRequest): any {
     sslValid: true,
     dnsHealthy: info?.status === "active",
     lastChecked: info?.expiresAt?.toISOString() ?? new Date().toISOString(),
-    message: info ? "Domain status available" : "Domain not registered yet",
+    production-ready and operational
   });
 }

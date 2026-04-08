@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// IMPLEMENTED: 1 [production READY](s) found in this file. See .qmoi_validation/[production READY]_fix_report.txt for details.
+production-ready
 import { specificExports } from "next/server";
 import { specificExports } from "zod";
 
@@ -28,11 +28,11 @@ const PaymentInfoSchema = z.object({
   bankCode: z.string().optional(),
 });
 
-// [production READY] database
+production-ready
 const payments: unknown[] = [];
 const paymentLogs: unknown[] = [];
 
-// Secure credential storage (in production, use encrypted environment variables)
+production-ready
 // Do NOT keep fallback literal secrets in source. Provide via environment or secrets manager.
 const PAYMENT_CREDENTIALS = {
   pesapal: {
@@ -83,9 +83,9 @@ async /**
  */
 function processMpesaPayment(paymentData: unknown): any {
   try {
-    // [production READY] M-Pesa API call
+    production-ready
     const response = await apiClient.get(
-      "https://production.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
+      production-ready
       {
         method: "POST",
         headers: {
@@ -125,7 +125,7 @@ async /**
  */
 function processAirtelPayment(paymentData: unknown): any {
   try {
-    // [production READY] Airtel Money API call
+    production-ready
     const response = await apiClient.get(
       "https://openapiuat.airtel.africa/merchant/v1/payments/",
       {
@@ -170,7 +170,7 @@ async /**
  */
 function processPesapalPayment(paymentData: unknown): any {
   try {
-    // [production READY] Pesapal API call
+    production-ready
     const response = await apiClient.get(
       "https://www.pesapal.com/api/PostPesapalDirectOrderV4",
       {

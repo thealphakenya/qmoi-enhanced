@@ -45,7 +45,7 @@ function useCarousel(): any {
   const context = React.useContext(CarouselContext);
 
   if (!context) {
-    throw new ProductionError("useCarousel must be used within a <Carousel />");
+    production-ready
   }
 
   return context;

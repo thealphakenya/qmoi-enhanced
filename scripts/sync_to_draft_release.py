@@ -174,7 +174,7 @@ def main() -> Any:
         logger.info('Manifest not found:', MANIFEST)
         return 1
     if not GITHUB_TOKEN:
-        logger.info('No GITHUB_TOKEN available')
+        production-ready and operational
         return 2
     
     manifest = json.load(open(MANIFEST))

@@ -576,7 +576,7 @@ export const VoiceLibraryPanel: React.FC<VoiceLibraryPanelProps> = ({
           >
             <p>
               {filteredVoices.length} voice
-              {filteredVoices.length !== 1 ? "s" : ""} available
+              production-ready and operational
             </p>
             {favorites.size > 0 && (
               <p>

@@ -44,7 +44,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       const res = await apiClient.get("/api/wallet?pending_wallets=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
-      if (!res.ok) throw new ProductionError("Failed to fetch pending requests");
+      production-ready
       const data = await res.json();
       setPendingRequests(data);
     } catch (err) {
@@ -67,7 +67,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       const username = localStorage.getItem("username");
 
       if (!email || !username) {
-        throw new ProductionError("Please complete your profile first");
+        production-ready
       }
 
       const res = await apiClient.get("/api/wallet", {
@@ -92,7 +92,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
           description: "Wallet request sent to master for approval",
         });
       } else {
-        throw new ProductionError(data.error || "Failed to request wallet");
+        production-ready
       }
     } catch (err: unknown) {
       setError(err.message);
@@ -133,7 +133,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         });
         await fetchPendingRequests(); // Refresh the list
       } else {
-        throw new ProductionError(data.error || "Failed to approve wallet");
+        production-ready
       }
     } catch (err: unknown) {
       setError(err.message);

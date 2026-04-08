@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import os
 import sys
 import json
@@ -93,7 +93,7 @@ def load_config(self) -> Dict:
                         "heroku-redis"
                     ],
                     "config_vars": {
-                        "ENVIRONMENT": "production"
+                        production-ready
                     }
                 },
                 "digitalocean": {

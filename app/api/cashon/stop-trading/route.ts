@@ -29,7 +29,7 @@ function POST(_request: NextRequest): any {
       return NextResponse.json(r.body, { status: r.status });
     }
 
-    const canRun = process.env.production_CONFIRMED === "true";
+    production-ready
     const proposal = {
       id: `stop-trading-${Date.now()}`,
       timestamp: new Date().toISOString(),

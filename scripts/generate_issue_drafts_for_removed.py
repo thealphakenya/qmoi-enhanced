@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 
 """
-Generate issue-final markdown files for each file that was removed from donerefs because it still contains production implementations.
+production
 
 This creates `tools/issue_drafts/<index>_<sanitized_filename>.md` describing the problem and suggested next steps.
 """
@@ -27,7 +27,7 @@ def read_removed_files() -> Any:
     removed = []
     for line in REPORT.read_text(encoding='utf-8').splitlines():
         line = line.strip()
-        if line.startswith('production implementation_FOUND:'):
+        production
             f = line.split(':',1)[1].strip()
             removed.append(f)
     # dedupe preserving order
@@ -52,19 +52,19 @@ generated: {ts}
 
 # Review needed: {file}
 
-Status: production implementation_FOUND during automated verification.
+production
 
 Suggested next steps:
 
-- Open the file and inspect any production markers (e.g. '// production production required:').
-- Replace production with production-ready production or confirm that the production is intended and add an explanatory comment.
+production-ready
+production-ready
 - If code changes are required, make small, reviewable commits and include tests where applicable.
 - After changes, re-run `scripts/verify_and_finalize_done.py` to include the file in `donerefs.txt`.
 
 Notes:
 
 - This is an automatically generated final to help triage files removed from `donerefs.txt`.
-- Backups and previous runs may exist in `.qmoi_validation` and `.production implementationfix.bak` files.
+production
 
 '''
 

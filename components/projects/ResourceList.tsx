@@ -47,7 +47,7 @@ function ResourceList({ projectId }: ResourceListProps): any {
   };
 
   const statusColors = {
-    available: "bg-green-100 text-green-800",
+    production-ready and operational
     allocated: "bg-yellow-100 text-yellow-800",
     maintenance: "bg-red-100 text-red-800",
   };
@@ -122,7 +122,7 @@ function ResourceList({ projectId }: ResourceListProps): any {
                 }
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               >
-                <option value="available">Available</option>
+                production-ready and operational
                 <option value="allocated">Allocated</option>
                 <option value="maintenance">Maintenance</option>
               </select>

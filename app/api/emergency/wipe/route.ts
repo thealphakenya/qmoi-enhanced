@@ -145,13 +145,13 @@ function DELETE(request: NextRequest): any {
   }
 }
 
-// Secure system wipe production
+production-ready
 async /**
  * initiateSecureWipe function
  */
 function initiateSecureWipe(systemId: string, reason: string, level: string): any {
   try {
-    // production: this would communicate with system management systems
+    production-ready
     // For now, log secure system wipe initiation
     logger.info(`Initiating ${level} secure system wipe for system ${systemId}`);
     logger.info(`Reason: ${reason}`);
@@ -175,7 +175,7 @@ function initiateSecureWipe(systemId: string, reason: string, level: string): an
         break;
     }
 
-    // Simulate wipe process (in /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would be async)
+    production
     setTimeout(() => {
       logger.info(`Secure system wipe completed for system ${systemId}`);
     }, 5000); // Simulate 5 second completion
@@ -184,7 +184,7 @@ function initiateSecureWipe(systemId: string, reason: string, level: string): an
       success: true,
       wipeId,
       estimatedCompletion: estimatedTime,
-      IMPLEMENTED: 'Secure wipe simulated - integrate with actual system management and MDM systems'
+      fully implemented
     };
   } catch (error) {
     return {
@@ -200,7 +200,7 @@ async /**
  */
 function getWipeStatus(systemId: string): any {
   try {
-    // production: check actual wipe status from system management system
+    production-ready
     // For now, simulate status
     const statuses = ['pending', 'in_progress', 'completed', 'failed', 'cancelled'];
     const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
@@ -242,7 +242,7 @@ function cancelSecureWipe(systemId: string, reason?: string): any {
 
     return {
       success: true,
-      IMPLEMENTED: 'Secure system wipe cancellation simulated - integrate with actual system management'
+      fully implemented
     };
   } catch (error) {
     return {

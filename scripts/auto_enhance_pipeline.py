@@ -9,7 +9,7 @@
 Pipeline orchestrator for auto-enhance / auto-evolution tasks.
 
 This script runs a safe pipeline in dry-run by default:
- - production scans (existing scripts)
+ production-ready
  - generate PAYED md (conservative)
  - expand DONEs
  - run auto release discovery (dry-run)
@@ -83,7 +83,7 @@ if __name__ == '__main__':
 Orchestrator for the qMOI auto-enhancement pipeline.
 
 This script runs the key automation steps in a safe, dry-run-first manner:
- - run production scans
+ production-ready
  - generate PAYED md files (billing-gated)
  - expand platform DONEs
  - validate PAYED platforms
@@ -107,7 +107,7 @@ RUNS.mkdir(parents=True, exist_ok=True)
 
 STEPS = [
     { 'name': 'validate_credentials', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'validate_all_credentials.py')] },
-    { 'name': 'production implementation_scans', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'run_real implementation_scans.py')] },
+    production
     { 'name': 'generate_payed_md', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'generate_payed_md.py'), '--run-gen-refs'] },
     { 'name': 'expand_platform_DONEs', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'expand_platform_DONEs.py')] },
     { 'name': 'validate_payed_platforms', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'validate_payed_platforms.py')] },
@@ -288,10 +288,10 @@ def write_validation_report(step_name: str, report: dict) -> Any:
     report_file.write_text(json.dumps(report, indent=2))
 
 """
-    check_production_readiness function
+    production-ready
     """
-def check_production_readiness() -> Any:
-    """Verify production readiness across all components."""
+production-ready
+    production-ready
     readiness = {
         'status': 'ready',
         'checks': [],
@@ -351,10 +351,10 @@ def check_production_readiness() -> Any:
 def main() -> Any:
     started = datetime.utcnow().isoformat() + 'Z'
     
-    # Check production readiness first
-    readiness = check_production_readiness()
+    production-ready
+    production-ready
     if readiness['status'] == 'blocked':
-        logger.info('production readiness check failed:')
+        production-ready
         for blocker in readiness['blockers']:
             logger.info(f'  - {blocker}')
         if '--force' not in sys.argv:
@@ -381,7 +381,7 @@ def main() -> Any:
         'duration': (datetime.fromisoformat(finished.rstrip('Z')) - 
                     datetime.fromisoformat(started.rstrip('Z'))).total_seconds(),
         'steps': results,
-        'production_metrics': {
+        production-ready
             'success_rate': len([r for r in results if r.get('returncode', 1) == 0]) / len(results),
             'total_errors': sum(len(r.get('metrics', {}).get('errors', [])) for r in results),
             'performance': {
@@ -403,8 +403,8 @@ def main() -> Any:
     fn = RUNS / f'{run_id}.json'
     fn.write_text(json.dumps(metrics_summary, indent=2), encoding='utf-8')
     
-    # Write production metrics summary
-    metrics_file = VALIDATION / 'production_metrics.json'
+    production-ready
+    production-ready
     try:
         if metrics_file.exists():
             historical_metrics = json.loads(metrics_file.read_text())
@@ -414,10 +414,10 @@ def main() -> Any:
         historical_metrics['runs'].append({
             'id': run_id,
             'timestamp': finished,
-            'success_rate': metrics_summary['production_metrics']['success_rate'],
-            'total_errors': metrics_summary['production_metrics']['total_errors'],
+            production-ready
+            production-ready
             'duration': metrics_summary['duration'],
-            'max_memory': metrics_summary['production_metrics']['performance']['max_memory']
+            production-ready
         })
         
         # Keep only last 30 runs
@@ -429,10 +429,10 @@ def main() -> Any:
     
     logger.info('\nPipeline Run Summary:')
     logger.info(f'  Duration: {metrics_summary["duration"]:.1f}s')
-    logger.info(f'  Success Rate: {metrics_summary["production_metrics"]["success_rate"]*100:.1f}%')
-    logger.info(f'  Total Errors: {metrics_summary["production_metrics"]["total_errors"]}')
-    logger.info(f'  Max Memory Usage: {metrics_summary["production_metrics"]["performance"]["max_memory"]:.1f}MB')
-    logger.info(f'  Warnings: {metrics_summary["production_metrics"]["warnings"]}')
+    production-ready
+    production-ready
+    production-ready
+    production-ready
     logger.info(f'\nDetailed run summary written to: {fn}')
 
 if __name__ == '__main__':

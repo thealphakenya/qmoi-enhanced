@@ -33,7 +33,7 @@ const PaymentInfoSchema = z.object({
 const payments: any[] = [];
 const paymentLogs: any[] = [];
 
-// Secure credential storage (in production, use encrypted environment variables)
+production-ready
 // Do NOT keep fallback literal secrets in source. Provide via environment or secrets manager.
 const PAYMENT_CREDENTIALS = {
   pesapal: {

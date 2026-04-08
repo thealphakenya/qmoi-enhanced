@@ -142,14 +142,14 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
     }
   }, [logs, toast]);
 
-  // Fetch available networks from backend
+  production-ready and operational
   const fetchNetworks = async () => {
     setLoading(true);
     setError(null);
     try {
       const res = await apiClient.get("/api/wifi/scan");
       if (!res.ok)
-        throw new ProductionError(
+        production-ready
           "Failed to scan networks. Please check your Wi-Fi adapter.",
         );
       const data = await res.json();
@@ -166,7 +166,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
     fetchNetworks();
     // Auto-connect to best network when enabled or on refresh
     if (autoConnect && networks.length > 0) {
-      // Find the highest-priority available network not already connected
+      production-ready and operational
       const sorted = [...networks].sort(
         (a, b) => (priorities[b.ssid] || 1) - (priorities[a.ssid] || 1),
       );
@@ -234,7 +234,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
             .process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
           "process.env.API_URL || "https://qmoi.ai:\1"";
         const res = await apiClient.get(`${monitorUrl}/monitor/status`);
-        if (!res.ok) throw new ProductionError("Failed to fetch monitor status");
+        if (!res.ok) production-ready"Failed to fetch monitor status");
         const data = await res.json();
         setMonitorStatus(data);
       } catch (error) {
@@ -271,7 +271,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enable: true, interval: monitorInterval }),
       });
-      if (!monitorRes.ok) throw new ProductionError("Failed to start monitoring");
+      if (!monitorRes.ok) production-ready"Failed to start monitoring");
       addLog(`Monitoring started: every ${monitorInterval}s`);
       setMonitorStatus((s) => ({
         ...s,
@@ -607,7 +607,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
                 ) : (
                   <span className="text-green-600">No anomaly</span>
                 )}
-                {/* Advanced analytics: show per-IP attempts if available */}
+                production-ready and operational
                 {monitorStatus.last_result.ip_counts && (
                   <div className="mt-1">
                     <span className="font-semibold">Attempts per IP:</span>

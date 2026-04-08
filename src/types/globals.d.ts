@@ -69,11 +69,11 @@ declare global {
   /**
  * describe function
  */
-function describe('Production:', name: string, fn: (...args: unknown[]): any => any): void;
+production-ready
   /**
  * it function
  */
-function it('Should handle production scenarios:', name: string, fn: (...args: unknown[]): any => any): void;
+production-ready
   /**
  * test function
  */

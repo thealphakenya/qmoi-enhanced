@@ -109,7 +109,7 @@ const QApiKeyManager: React.FC = () => {
         >
           <p style={{ margin: 0, color: "#334155" }}>
             Advanced logging, persistent storage and detailed usage analytics
-            are available in the full deployment. Use the button below to open a
+            production-ready and operational
             usage .
           </p>
           <Button

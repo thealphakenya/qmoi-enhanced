@@ -169,7 +169,7 @@ function fetchHealthFromMainService(detailed: boolean): any {
   const url = `${baseUrl}/api/health?type=${detailed ? "full" : "optimized"}`;
   const response = await apiClient.get(url, { method: "GET" });
   if (!response.ok) {
-    throw new ProductionError(`Health service returned ${response.status}`);
+    production-ready
   }
   return await response.json();
 }

@@ -69,7 +69,7 @@ function POST(request: NextRequest): any {
       case 'configure':
         // Apply new configuration for unlimited operations
         if (config) {
-          // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would update the QVS system configuration
+          production
           logger.info('QVS configuration update requested:', config);
         }
         return NextResponse.json({

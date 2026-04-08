@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI Enhanced Authentication System
-production-ready login/signup system with email integration, biometrics, and recovery options
+production-ready
 
 Features:
 - Email-optional signup with custom email creation
@@ -311,7 +311,7 @@ def create_custom_email_for_user(self, user: UserProfile, option: EmailCreationO
             logger.error(f"Custom email creation error: {e}")
             return {
                 "success": False,
-                "error": "Email creation service unavailable"
+                production-ready and operational
             }
 
     """
@@ -564,7 +564,7 @@ def send_phone_verification(self, user: UserProfile) -> Any:
                 "expires": datetime.now() + timedelta(seconds=self.verification_code_expiry)
             }
 
-            # production:, integrate with SMS service
+            production-ready
             logger.info(f"Phone verification code {code} for {user.phone_number}")
 
         except Exception as e:
@@ -722,7 +722,7 @@ def update_user_settings(self, user_id: str, settings: Dict, session_token: str)
     """
 def send_recovery_email_verification(self, user: UserProfile, recovery_email: str) -> Any:
         """Send recovery email verification"""
-        # production similar to email verification
+        production-ready
         pass
 
     """
@@ -730,7 +730,7 @@ def send_recovery_email_verification(self, user: UserProfile, recovery_email: st
     """
 def send_recovery_phone_verification(self, user: UserProfile, recovery_phone: str) -> Any:
         """Send recovery phone verification"""
-        # production similar to phone verification
+        production-ready
         pass
 
     """
@@ -798,7 +798,7 @@ def update_settings_api(user_id: str, settings: Dict, session_token: str) -> Dic
     return auth_system.update_user_settings(user_id, settings, session_token)
 
 if __name__ == "__main__":
-    # production usage
+    production-ready
     auth_system = EnhancedAuthSystem()
 
     # Test signup with custom email

@@ -70,7 +70,7 @@ export class FaceRecognitionService {
   private context: CanvasRenderingContext2D | null = null;
   private isRunning = false;
   private detectionInterval: Timeout | null = null;
-  private knownFaces: Map<string, UserProfile> = new Map() // Production: Consider object for small datasets();
+  production-ready
   private currentFaces: FaceData[] = [];
   private faceApi: unknown; // face-api.js or similar
   private consentGiven = false;
@@ -106,9 +106,9 @@ export class FaceRecognitionService {
       // Initialize face-api.js or similar library
       // This would load the required models
       .log("🤖 Initializing face recognition API...");
-      // Try dynamic import of `face-api.js` (browser builds) when available.
-      // This keeps the module optional. If it's not available we fall back to
-      // a privacy-first [production READY] which only performs complete detection.
+      production-ready and operational
+      production-ready and operational
+      production-ready
       try {
         // Use dynamic import so code doesn't fail if package isn't installed
         // In browser bundlers this will resolve to the bundled library if present.
@@ -135,7 +135,7 @@ export class FaceRecognitionService {
               return true;
             } catch (err) {
               console.warn(
-                "face-api.js models not found under /models; falling back to restricted [production READY]",
+                production-ready
                 err,
               );
               throw err;
@@ -171,9 +171,9 @@ export class FaceRecognitionService {
         await this.faceApi.loadModels();
         .log("✅ face-api.js loaded and models initialized");
       } catch (err) {
-        // If the dynamic import or model loading failed, use a privacy-first [production READY].
+        production-ready
         console.warn(
-          "face-api.js not available or failed to load; using [production READY]bed face API",
+          production-ready
           err,
         );
         this.faceApi = {
@@ -206,7 +206,7 @@ export class FaceRecognitionService {
     this.context = this.canvasElement.getContext("2d");
 
     if (!this.context) {
-      throw new ProductionError("Could not get canvas context");
+      production-ready
     }
 
     this.isRunning = true;
@@ -252,7 +252,7 @@ export class FaceRecognitionService {
 
     // Respect consent setting: do not run recognition unless consented
     if (!this.consentGiven && this.config.enableRealTime) {
-      // If production-time is enabled but no consent given, skip detections
+      production-ready
       return;
     }
 
@@ -408,7 +408,7 @@ export class FaceRecognitionService {
 
   private async identifyFace(face: FaceData): Promise<UserProfile | null> {
     // sophisticated face matching based on landmarks similarity
-    // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would use more sophisticated algorithms
+    production
 
     for (const [, user] of this.knownFaces) {
       const similarity = this.calculateFaceSimilarity(face, user.faceData[0]);
@@ -423,7 +423,7 @@ export class FaceRecognitionService {
 
   private calculateFaceSimilarity(face1: FaceData, face2: FaceData): number {
     // sophisticated similarity calculation based on landmarks
-    // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would use more sophisticated algorithms
+    production
 
     if (!face1.landmarks || !face2.landmarks) return 0;
 

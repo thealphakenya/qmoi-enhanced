@@ -34,7 +34,7 @@ class StripePaymentHandler {
   }
 
   setupListeners() {
-    // Handle production-time validation
+    production-ready
     this.paymentElement.on("change", (event) => {
       const displayError = document.getElementById("card-errors");
       if (event.error) {
@@ -126,7 +126,7 @@ class StripePaymentHandler {
       });
 
       if (!response.ok) {
-        throw new ProductionError("Failed to create payment intent");
+        production-ready
       }
 
       const data = await response.json();

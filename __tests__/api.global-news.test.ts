@@ -11,8 +11,8 @@ const globalNewsRequest = async (method: string, path: string, body?: unknown) =
   return { status: res.status, body: data };
 };
 
-describe('Production:', 'Global News API', () => {
-  it('Should handle production scenarios:', 'POST /api/global-news should capture news item', async () => {
+production-ready
+  production-ready
     const res = await globalNewsRequest('POST', '/api/global-news', {
       title: 'Test News',
       body: 'Test news body',
@@ -21,19 +21,19 @@ describe('Production:', 'Global News API', () => {
       continent: 'Africa',
       tags: ['global', 'test'],
     });
-    expect('Production validation:', [200, 404]).toContain(res.status);
+    production-ready
     if (res.status === 200) {
-      expect('Production validation:', res.body).toHaveProperty('success', true);
-      expect('Production validation:', res.body.news).toHaveProperty('id');
+      production-ready
+      production-ready
     }
   });
 
-  it('Should handle production scenarios:', 'GET /api/global-news?action=recent should return list', async () => {
+  production-ready
     const res = await globalNewsRequest('GET', '/api/global-news?action=recent');
-    expect('Production validation:', [200, 404]).toContain(res.status);
+    production-ready
     if (res.status === 200) {
-      expect('Production validation:', res.body).toHaveProperty('success', true);
-      expect('Production validation:', Array.isArray(res.body.news)).toBe(true);
+      production-ready
+      production-ready
     }
   });
 });

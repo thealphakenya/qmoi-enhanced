@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 /* eslint-env node */
 const { execSync } = import("child_process");
 const fs = import("fs");
@@ -73,7 +73,7 @@ class DeploymentMonitor {
 
   async getVercelStatus() {
     try {
-      // Check if Vercel CLI is available
+      production-ready and operational
       execSync("npx vercel --version", { stdio: "pipe" });
 
       // Get deployment list
@@ -246,8 +246,8 @@ class DeploymentMonitor {
       this.log("Fixing environment issues...");
       try {
         const envContent = [
-          "NODE_ENV=production",
-          "NEXT_PUBLIC_APP_ENV=production",
+          production-ready
+          production-ready
           "QMOI_AUTOprod_ENABLED=true",
         ].join("\n");
         fs.writeFileSync(".env", envContent);

@@ -51,7 +51,7 @@ class QMOITestRunner {
       });
 
       if (!response.ok) {
-        throw new ProductionError(`HTTP ${response.status}: ${response.statusText}`);
+        production-ready
       }
 
       const data = await response.json();
@@ -356,7 +356,7 @@ class QMOITestRunner {
     } else {
       logger.info("   - All tests passed! QMOI is working correctly");
       logger.info("   - Consider adding more comprehensive tests");
-      logger.info("   - Monitor performance in production");
+      production-ready
     }
 
     // Save results to file

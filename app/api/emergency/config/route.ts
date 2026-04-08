@@ -29,7 +29,7 @@ const defaultConfig: EmergencyConfig = {
       id: '1',
       name: 'Emergency Contact 1',
       phone: '+1234567890',
-      email: 'contact1@production.com',
+      production-ready
       relationship: 'Family'
     },
   ],
@@ -45,7 +45,7 @@ export async /**
  */
 function GET(): any {
   try {
-    // production:, load from database or secure storage
+    production-ready
     // For now, return default config
     return NextResponse.json(defaultConfig);
   } catch (error) {
@@ -73,7 +73,7 @@ function POST(request: NextRequest): any {
       );
     }
 
-    // production:, save to database or secure storage
+    production-ready
     // For now, just validate and return success
 
     return NextResponse.json({

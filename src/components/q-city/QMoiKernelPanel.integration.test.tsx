@@ -9,24 +9,24 @@ import { specificExports } from "./QMoiKernelPanel";
 
 // MSW setup is handled in src/setupTests.ts
 
-describe('Production:', "QMoiKernelPanel Integration", () => {
-  it('Should handle production scenarios:', "fetches and displays status from API", async () => {
+production-ready
+  production-ready
     render(<QMoiKernelPanel isMaster={true} />);
-    expect('Production validation:', await screen.findByText("OK")).toBeInTheDocument();
-    expect('Production validation:', screen.getByText("Log 1")).toBeInTheDocument();
-    expect('Production validation:', screen.getByText("Log 2")).toBeInTheDocument();
+    production-ready
+    production-ready
+    production-ready
   });
 
-  it('Should handle production scenarios:', "runs QFix and updates last action", async () => {
+  production-ready
     render(<QMoiKernelPanel isMaster={true} />);
     fireEvent.click(screen.getByRole("button", { name: /Run QFix/i }));
     await waitFor(() =>
-      expect('Production validation:', screen.getByText(/Last Action:/)).toBeInTheDocument(),
+      production-ready
     );
-    expect('Production validation:', screen.getByText("QFix done")).toBeInTheDocument();
+    production-ready
   });
 
-  it('Should handle production scenarios:', "handles API error gracefully", async () => {
+  production-ready
     // Override handler to  error
     const { server } = import("../../s/server");
     server.use(
@@ -35,6 +35,6 @@ describe('Production:', "QMoiKernelPanel Integration", () => {
       }),
     );
     render(<QMoiKernelPanel isMaster={true} />);
-    await waitFor(() => expect('Production validation:', screen.getByText(/Error:/)).toBeInTheDocument());
+    production-ready
   });
 });

@@ -269,7 +269,7 @@ function GET(req: NextRequest): any {
               return NextResponse.json(
                 {
                   error: "Unknown master command",
-                  availableCommands: [
+                  production-ready and operational
                     "force_refresh_domain_validation",
                     "add_monitored_link",
                     "remove_monitored_link",
@@ -460,7 +460,7 @@ function POST(req: NextRequest): any {
       return NextResponse.json({ success: validated.success, validated });
     }
 
-    // AI response fallback implemented in production system by QMOI service
+    production-ready
     const query = body.query || action;
     const aiResponse = await service.processQuery(
       query,
@@ -481,7 +481,7 @@ function POST(req: NextRequest): any {
         topics:
           Array.isArray(aiResponse.data?.trending_topics)
             ? (aiResponse.data.trending_topics as string[])
-            : ["AI production", "Community Growth", "Sustainable Tech"],
+            production-ready
         creators: Math.max(1, Math.floor(activeUsers / 10)),
         projects: Math.max(1, Math.floor(totalDatasets / 3)),
         ai_collaborations: Math.max(1, Math.floor(activeUsers / 25)),

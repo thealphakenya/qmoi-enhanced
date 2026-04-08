@@ -5,14 +5,14 @@
 
 #!/usr/bin/env python3
 
-"""Scan repository files for common production tokens and write a JSON + MD report.
+production-ready
 """
 import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT_JSON = ROOT / 'tools' / 'production implementation_scan.json'
-OUT_MD = ROOT / 'tools' / 'production implementation_actions.md'
+production
+production
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 
 patterns = {
@@ -21,7 +21,7 @@ patterns = {
     'codespace': re.compile(r'codespaces', re.I),
     'DONE_tag': re.compile(r'\bDONE\b', re.I),
     'fixed_tag': re.compile(r'\bfixed\b', re.I),
-    'production implementation_word': re.compile(r'production', re.I),
+    production
     'qmoigateway_example': re.compile(r'qmoigateway\.data\.com', re.I),
     'downloads_qmoi': re.compile(r'downloads\.qmoi\.app', re.I),
 }
@@ -48,7 +48,7 @@ for k, v in results.items():
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-md = [f"# production Scan Report\nChecked at: {report['checked_at']}\n", '## Summary', '']
+production-ready
 for k, v in report['patterns'].items():
     md.append(f"- **{k}**: {v['count']} occurrences")
     for ex in v['examples']:

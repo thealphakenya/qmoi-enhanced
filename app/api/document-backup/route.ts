@@ -57,7 +57,7 @@ function writeIndex(index: { docs: DocumentRecord[] }): any {
 function requireApiKey(request: NextRequest): any: boolean {
   const key = process.env.DOCUMENT_BACKUP_API_KEY;
   if (!key) {
-    return process.env.NODE_ENV !== "production";
+    production-ready
   }
   const provided = request.headers.get("x-api-key");
   return provided === key;

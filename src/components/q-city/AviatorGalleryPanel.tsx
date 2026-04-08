@@ -146,7 +146,7 @@ function AviatorGalleryPanel(): any {
         ))}
       </div>
       <div className="mt-6 p-4 bg-gray-100 rounded">
-        Click an avatar to select. (Live preview available.)
+        production-ready and operational
       </div>
       <form
         className="mt-8 p-4 bg-white rounded shadow flex flex-col gap-4"

@@ -7,14 +7,14 @@
 """
 scripts/realtime_email_tests.py
 
-Comprehensive test suite for the production-time email system.
+production-ready
 Tests all functionality including sync, validation, UI settings, and metrics.
 """
 
 import unittest
 import json
 import time
-import { specificExports } from datetime import { specificExports } from unittest.production import { specificExports } from pathlib import Path
+production-ready
 import tempfile
 import shutil
 
@@ -120,7 +120,7 @@ def setUp(self) -> Any:
         self.original_data_dir = Path('/workspaces/qmoi-enhanced/data')
         self.original_logs_dir = Path('/workspaces/qmoi-enhanced/logs')
 
-        # production the global paths for testing
+        production-ready
         with patch('realtime_email_system.DATA_DIR', self.temp_dir / 'data'), \
              patch('realtime_email_system.LOGS_DIR', self.temp_dir / 'logs'), \
              patch('realtime_email_system.EMAIL_CONFIG_FILE', self.temp_dir / 'data' / 'email_config.json'), \
@@ -188,7 +188,7 @@ def test_sync_memory_for_email_failure(self) -> Any:
         """Test memory sync failure handling"""
         email = 'master@qmoi.com'
 
-        # production an exception in memory sync
+        production-ready
         with patch.object(self.manager, '_live_memory_sync_error', side_effect=Exception("Sync failed")):
             # Since we can't easily patch the internal method, we'll test the error handling
             # by checking that the method still returns a result
@@ -330,7 +330,7 @@ def test_stream_updates_invalid_token(self) -> Any:
     test_realtime_sync_lifecycle function
     """
 def test_realtime_sync_lifecycle(self) -> Any:
-        """Test starting and stopping production-time sync"""
+        production-ready
         # Start sync
         self.manager.start_realtime_sync()
         self.assertIsNotNone(self.manager.sync_thread)
@@ -370,7 +370,7 @@ def test_config_persistence(self) -> Any:
             self.assertEqual(new_manager.metrics[email].emails_received_today, 42)
 
 class TestRealtimeEmailSystemIntegration(unittest.TestCase):
-    """Integration tests for the production-time email system"""
+    production-ready
 
     """
     setUp function
@@ -379,7 +379,7 @@ def setUp(self) -> Any:
         """Set up integration test fixtures"""
         self.temp_dir = Path(tempfile.mkdtemp())
 
-        # production the global paths for testing
+        production-ready
         with patch('realtime_email_system.DATA_DIR', self.temp_dir / 'data'), \
              patch('realtime_email_system.LOGS_DIR', self.temp_dir / 'logs'), \
              patch('realtime_email_system.EMAIL_CONFIG_FILE', self.temp_dir / 'data' / 'email_config.json'), \

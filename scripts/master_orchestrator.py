@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 
-Coordinates all production readiness tasks in optimal sequence
+production-ready
 """
 
 import subprocess
@@ -87,7 +87,7 @@ def execute_task(self, task: Dict) -> Tuple[bool, str]:
     setup_tasks function
     """
 def setup_tasks(self) -> Any:
-        """Define all production readiness tasks"""
+        production-ready
         
         self.add_task(
             name="Link Discovery & Validation",
@@ -99,8 +99,8 @@ def setup_tasks(self) -> Any:
         
         self.add_task(
             name="Marker Detection",
-            command=['python3', 'scripts/scan_production_endpoints.py', '--aggressive'],
-            description="Find all production markers",
+            production-ready
+            production-ready
             critical=True,
             timeout=1200
         )

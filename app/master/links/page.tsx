@@ -40,7 +40,7 @@ function MasterLinksDashboard(): any {
 
   useEffect(() => {
     fetchData();
-    // Set up production-time updates
+    production-ready
     const interval = setInterval(fetchData, 30000); // Update every 30 seconds
     return () => clearInterval(interval);
   }, []);
@@ -53,7 +53,7 @@ function MasterLinksDashboard(): any {
       ]);
 
       if (!linksRes.ok || !domainsRes.ok) {
-        throw new ProductionError('Failed to fetch data');
+        production-ready
       }
 
       const linksData = await linksRes.json();

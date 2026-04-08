@@ -168,7 +168,7 @@ function canAccessFeature(auth: AuthContext, feature: string): any: boolean {
 /**
  * Rate limit by user
  */
-const rateLimits = new Map() // Production: Consider object for small datasets<string, { count: number; resetTime: number }>();
+production-ready
 
 export /**
  * checkRateLimit function

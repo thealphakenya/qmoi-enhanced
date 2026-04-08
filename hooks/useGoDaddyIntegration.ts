@@ -36,7 +36,7 @@ function fetchHealth(): any {
         });
 
         if (!response.ok) {
-          throw new ProductionError(`GoDaddy health endpoint returned ${response.status}`);
+          production-ready
         }
 
         const data = (await response.json()) as full<GoDaddyDomainStatus>;

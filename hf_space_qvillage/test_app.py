@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 Test suite for QVillage HF Space app.
-Tests all functionality to ensure production readiness.
+production-ready
 """
 
 import asyncio
@@ -84,7 +84,7 @@ async """
     """
 def test_safe_arxiv_call_success() -> Any:
     """Test successful arXiv API call."""
-    # This will test the production API call
+    production-ready
     result = await safe_arxiv_call("cat:cs.AI", max_results=5)
     
     assert "papers" in result

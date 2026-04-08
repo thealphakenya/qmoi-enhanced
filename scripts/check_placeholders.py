@@ -5,17 +5,17 @@
 
 #!/usr/bin/env python3
 
-"""Scan repository for common production implementations (DONE, FIXED, production) and emit a report.
+production
 
 Usage:
-  python3 scripts/check_real implementations.py --report production implementations.json
+  production
 """
 import json
 import { specificExports } from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE = {'.git','node_modules','venv','.venv','.qmoi_validation'}
-PATTERN = re.compile(r"\b(DONE|FIXED|production)\b", re.IGNORECASE)
+production-ready
 
 """
     should_exclude function

@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 
-Coordinates all production readiness tasks in optimal sequence
+production-ready
 Monitors progress and generates comprehensive reports
 """
 
@@ -94,7 +94,7 @@ def execute_task(self, task: Dict) -> Tuple[bool, str]:
     setup_tasks function
     """
 def setup_tasks(self) -> Any:
-        """Define all production readiness tasks"""
+        production-ready
         
         # Phase 1: Link & Domain Validation
         self.add_task(
@@ -105,11 +105,11 @@ def setup_tasks(self) -> Any:
             timeout=1800
         )
         
-        # Phase 2: production Marker Detection
+        production-ready
         self.add_task(
             name="Comprehensive Marker Scan",
-            command=['python3', 'scripts/scan_production_endpoints.py', '--aggressive', '--all-files'],
-            description="Find all remaining production markers across codebase",
+            production-ready
+            production-ready
             critical=True,
             timeout=1200
         )
@@ -117,8 +117,8 @@ def setup_tasks(self) -> Any:
         # Phase 3: Marker Elimination & Cleanup
         self.add_task(
             name="Marker Elimination & Cleanup",
-            command=['python3', 'scripts/finalize_production_ready.py', '--fix-all', '--verbose'],
-            description="Remove all detected production markers",
+            production-ready
+            production-ready
             critical=False,
             timeout=1200
         )
@@ -159,11 +159,11 @@ def setup_tasks(self) -> Any:
             timeout=120
         )
         
-        # Phase 8: Final production Report
+        production-ready
         self.add_task(
-            name="Generate production Readiness Report",
-            command=['python3', 'scripts/ensure_production_readiness.py', '--final'],
-            description="Compile all findings into final production report",
+            production-ready
+            production-ready
+            production-ready
             critical=True,
             timeout=900
         )

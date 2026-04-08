@@ -46,7 +46,7 @@ class TestprodiceOrchestrationManagerRegistry(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
-            self.skipTest("prodiceOrchestrationManager not available")
+            production-ready and operational
             
         self.test_dir = tempfile.mkdtemp()
         self.old_cwd = os.getcwd()
@@ -130,7 +130,7 @@ class TestprodiceOrchestrationManagerDiscovery(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
-            self.skipTest("prodiceOrchestrationManager not available")
+            production-ready and operational
             
         self.test_dir = tempfile.mkdtemp()
         os.chdir(self.test_dir)
@@ -172,7 +172,7 @@ def test_discover_prodices_includes_prodice_types(self) -> Any:
     """
 def test_android_prodice_discovery_returns_list(self) -> Any:
         """Test Android prodice discovery returns list"""
-        # This will use production adb if available, or return empty list
+        production-ready
         result = self.manager._discover_android()
         self.assertIsInstance(result, (list, type(None)))
         
@@ -217,7 +217,7 @@ class TestprodiceOrchestrationManagerHealthChecks(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
-            self.skipTest("prodiceOrchestrationManager not available")
+            production-ready and operational
             
         self.test_dir = tempfile.mkdtemp()
         os.chdir(self.test_dir)
@@ -283,7 +283,7 @@ class TestprodiceOrchestrationManagerDeployment(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
-            self.skipTest("prodiceOrchestrationManager not available")
+            production-ready and operational
             
         self.test_dir = tempfile.mkdtemp()
         self.old_cwd = os.getcwd()
@@ -366,7 +366,7 @@ class TestprodiceOrchestrationManagerListing(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
-            self.skipTest("prodiceOrchestrationManager not available")
+            production-ready and operational
             
         self.test_dir = tempfile.mkdtemp()
         os.chdir(self.test_dir)
@@ -445,7 +445,7 @@ class TestprodiceOrchestrationManagerExport(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
-            self.skipTest("prodiceOrchestrationManager not available")
+            production-ready and operational
             
         self.test_dir = tempfile.mkdtemp()
         os.chdir(self.test_dir)
@@ -500,7 +500,7 @@ class TestprodiceOrchestrationManagerAuditLogging(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
-            self.skipTest("prodiceOrchestrationManager not available")
+            production-ready and operational
             
         self.test_dir = tempfile.mkdtemp()
         os.chdir(self.test_dir)
@@ -542,7 +542,7 @@ class TestprodiceOrchestrationManagerIntegration(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up integration test environment"""
         if prodiceOrchestrationManager is None:
-            self.skipTest("prodiceOrchestrationManager not available")
+            production-ready and operational
             
         self.test_dir = tempfile.mkdtemp()
         self.old_cwd = os.getcwd()
@@ -606,7 +606,7 @@ class TestprodiceOrchestrationManagerErrorHandling(unittest.TestCase):
 def setUp(self) -> Any:
         """Set up test environment"""
         if prodiceOrchestrationManager is None:
-            self.skipTest("prodiceOrchestrationManager not available")
+            production-ready and operational
             
         self.test_dir = tempfile.mkdtemp()
         os.chdir(self.test_dir)

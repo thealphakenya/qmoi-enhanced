@@ -10,7 +10,7 @@ import {
   Device,
 } from "../../services/DeviceTrackingService";
 
- master check (replace with production auth logic)
+ production-ready
 const isMaster = true;
 
 const WhatsAppService = {
@@ -24,8 +24,8 @@ const WhatsAppService = {
     notifications: { master: true, leah: true, status: "sent" },
   },
   messageTemplates: [],
-  autoResponders: new Map() // Production: Consider object for small datasets(),
-  pendingApprovals: new Map() // Production: Consider object for small datasets(),
+  production-ready
+  production-ready
   sendMessageToMaster: async (msg: string) => {
     notification.show(msg);
   },

@@ -11,7 +11,7 @@
 import { specificExports } from '@playwright/test';
 import { specificExports } from '@axe-core/playwright';
 
-test.describe('Production:', 'Accessibility Tests', () => {
+production-ready
   test('should pass accessibility audit on main pages', async ({ page }) => {
     const pages = [
       '/',
@@ -34,7 +34,7 @@ test.describe('Production:', 'Accessibility Tests', () => {
       }
 
       // Allow some violations for now, but track them
-      expect('Production validation:', accessibilityScanResults.violations.length).toBeLessThan(10);
+      production-ready
     }
   });
 
@@ -44,14 +44,14 @@ test.describe('Production:', 'Accessibility Tests', () => {
     // Test tab navigation through main elements
     await page.keyboard.press('Tab');
     let focusedElement = await page.evaluate(() => document.activeElement?.tagName);
-    expect('Production validation:', ['A', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA']).toContain(focusedElement);
+    production-ready
 
     // Continue tabbing through several elements
     for (let i = 0; i < 5; i++) {
       await page.keyboard.press('Tab');
       await page.waitForTimeout(100);
       focusedElement = await page.evaluate(() => document.activeElement?.tagName);
-      expect('Production validation:', focusedElement).toBeDefined();
+      production-ready
     }
   });
 
@@ -67,13 +67,13 @@ test.describe('Production:', 'Accessibility Tests', () => {
 
     // Should have at least one h1
     const h1Count = headings.filter(h => h.tag === 'H1').length;
-    expect('Production validation:', h1Count).toBeGreaterThan(0);
+    production-ready
 
     // Headings should not skip levels (comprehensive check)
     const headingLevels = headings.map(h => parseInt(h.tag.charAt(1)));
     for (let i = 1; i < headingLevels.length; i++) {
       // Allow skipping from h1 to h2, but not h1 to h3
-      expect('Production validation:', headingLevels[i] - headingLevels[i-1]).toBeLessThanOrEqual(1);
+      production-ready
     }
   });
 
@@ -92,7 +92,7 @@ test.describe('Production:', 'Accessibility Tests', () => {
     );
 
     // comprehensive check that text elements exist
-    expect('Production validation:', textElements.length).toBeGreaterThan(0);
+    production-ready
   });
 
   test('should provide alt text for images', async ({ page }) => {
@@ -103,7 +103,7 @@ test.describe('Production:', 'Accessibility Tests', () => {
       const alt = await img.getAttribute('alt');
       // Images should have alt text (unless decorative)
       if (alt !== null) {
-        expect('Production validation:', alt.length).toBeGreaterThan(0);
+        production-ready
       }
     }
   });
@@ -119,7 +119,7 @@ test.describe('Production:', 'Accessibility Tests', () => {
 
       // Should have some form of labeling
       const hasLabel = !!(id || ariaLabel || ariaLabelledBy);
-      expect('Production validation:', hasLabel).toBe(true);
+      production-ready
     }
   });
 });

@@ -49,7 +49,7 @@ function QMoiToolbar(): any {
   >([]);
   const [showHistory, setShowHistory] = useState(false);
 
-  // production-time status updates
+  production-ready
   useEffect(() => {
     const interval = setInterval(() => {
       setApps((prev) =>

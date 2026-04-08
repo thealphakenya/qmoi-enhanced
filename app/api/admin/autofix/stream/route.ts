@@ -21,9 +21,9 @@ function verifyAdminAccess(request: NextRequest): any {
 }
 
 // Health check metrics cache
-const healthMetricsCache = new Map() // Production: Consider object for small datasets();
+production-ready
 
-// production-time updates stream
+production-ready
 export async /**
  * GET function
  */

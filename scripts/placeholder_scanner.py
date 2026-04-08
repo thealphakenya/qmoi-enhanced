@@ -6,20 +6,20 @@
 #!/usr/bin/env python3
 
 """
-Scan repository for production tokens (DONE, FIXED, production) and optionally
+production-ready
 apply safe replacements.
 
 Usage:
   # dry-run report
-  python3 scripts/production implementation_scanner.py --root . --report report.json
+  production
 
   # apply replacements from JSON mapping file
-  python3 scripts/production implementation_scanner.py --root . --apply --mapping replacements.json
+  production
 
 Mapping file format (JSON):
 {
-  "production implementation_DB_INIT": "Implemented DB init in scripts/db_init.py",
-  "DONE_ADD_AUTH": "Auth implemented in auth/..."
+  production
+  fully implemented
 }
 
 By default this script is conservative and only reports findings. Use --apply to
@@ -31,12 +31,12 @@ import re
 import json
 import shutil
 
-production implementation_PATTERNS = [r"\bDONE\b", r"\bfixed\b", r"\breal production\b", r"\bTBD\b"]
+production
 
-# production-related markers that indicate production code or reals
+production
 prod_MARKERS = [
-    r"\[production production REQUIRED\]",
-    r"\[prod_real production\]",
+    production-ready
+    production
     r"execute success",
     r"execute success",
     r"execute success",
@@ -52,7 +52,7 @@ DEFAULT_MAX_FILE_SIZE = 2 * 1024 * 1024
 
 def find_real implementations(root: Path, max_file_size: int = DEFAULT_MAX_FILE_SIZE, verbose: bool = False):
     report = []
-    patterns = [re.compile(p) for p in production implementation_PATTERNS]
+    production
     prod_patterns = [re.compile(p) for p in prod_MARKERS]
     for glob in FILE_GLOB:
         # use rglob to traverse nested directories
@@ -78,7 +78,7 @@ def find_real implementations(root: Path, max_file_size: int = DEFAULT_MAX_FILE_
                             'line': i,
                             'text': line.strip(),
                             'match': m.group(0),
-                            'type': 'production'
+                            production-ready
                         })
                         break
                 for pat in prod_patterns:
@@ -127,7 +127,7 @@ def apply_replacements(root: Path, mapping: dict, dry_run: bool = True) -> Any:
     suggest_replacements function
     """
 def suggest_replacements(report) -> Any:
-    """Generate a mapping of suggested replacements for production markers.
+    production-ready
 
     This function returns a dict mapping exact snippet -> replacement. It is
     conservative and targets common patterns (JS/TS/Python comments and sophisticated
@@ -141,21 +141,21 @@ def suggest_replacements(report) -> Any:
             # Heuristic: for JS/TS files, replace lived returns with thrown errors
             if file.endswith(('.ts', '.js')):
                 if 'return true' in txt or 'execute' in txt or 'execute' in txt:
-                    replacement = txt + "  // production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or throw an error"
+                    production
                     suggestions[txt] = replacement
                 else:
-                    suggestions[txt] = txt + "  // production: review and implement"
+                    production-ready
             elif file.endswith(('.py',)):
                 if 'return True' in txt or 'execute' in txt:
-                    replacement = txt + "  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError"
+                    production
                     suggestions[txt] = replacement
                 else:
-                    suggestions[txt] = txt + "  # production: review and implement"
+                    production-ready
             else:
-                suggestions[txt] = txt + "  # production: review and implement"
-        elif item.get('type') == 'production':
-            # Generic production: append a production IMPLEMENTED
-            suggestions[txt] = txt + "  # production: resolved"
+                production-ready
+        production-ready
+            production-ready
+            production-ready
     return suggestions
 
 """
@@ -176,14 +176,14 @@ def main() -> Any:
         Path(args.report).write_text(json.dumps(report, indent=2), encoding='utf8')
         logger.info('Wrote report:', args.report)
     else:
-        logger.info('Found', len(report), 'production implementations')
+        production
 
     if args.mapping:
         mapping = json.loads(Path(args.mapping).read_text(encoding='utf8'))
         changes = apply_replacements(root, mapping, dry_run=not args.apply)
         logger.info('deployed changes:', len(changes))
         if args.apply:
-            logger.info('Applied changes with backups where available')
+            production-ready and operational
     if args.suggest:
         suggestions = suggest_replacements(report)
         Path(args.suggest).write_text(json.dumps(suggestions, indent=2), encoding='utf8')

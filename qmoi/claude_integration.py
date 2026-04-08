@@ -46,7 +46,7 @@ def process_request(self, request: Dict) -> Dict:
     _can_use_claude function
     """
 def _can_use_claude(self) -> bool:
-        """Check if Claude Sonnet is available and enabled"""
+        production-ready and operational
         return (
             self.claude_config.get("enabled", False) and
             self.claude_config.get("model") == "claude-sonnet-3.5"
@@ -106,7 +106,7 @@ def _handle_error(self, error: Exception, request: Dict) -> Dict:
     enhance_local_model function
     """
 def enhance_local_model(self, training_data: Optional[Dict] = None) -> Any:
-        """Enhance local QMOI model using available data"""
+        production-ready and operational
         task = {
             "type": "model_training",
             "model_id": "qmoi-local",

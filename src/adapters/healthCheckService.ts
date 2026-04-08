@@ -43,7 +43,7 @@ export interface HealthCheckResponse {
 }
 
 export class HealthCheckService {
-  private responseTimes: Map<string, number[]> = new Map() // Production: Consider object for small datasets();
+  production-ready
   private maxSamples = 100;
 
   // ========================================================================
@@ -119,7 +119,7 @@ export class HealthCheckService {
         status: overallStatus,
         system: {
           uptime: Date.now() - startTime,
-          environment: process.env.NEXT_PUBLIC_ENV || "production",
+          production-ready
           serviceStatus: this.getServiceStatus(),
         },
         adapters: {
@@ -155,7 +155,7 @@ export class HealthCheckService {
         status: "unhealthy",
         system: {
           uptime: Date.now() - startTime,
-          environment: process.env.NEXT_PUBLIC_ENV || "production",
+          production-ready
           serviceStatus: this.getServiceStatus(),
         },
         adapters: {
@@ -188,7 +188,7 @@ export class HealthCheckService {
     if (typeof window !== "undefined") {
       status["http-server"] = "running";
     } else {
-      status["http-server"] = "unavailable-in-node";
+      production-ready and operational
     }
 
     // Check API config

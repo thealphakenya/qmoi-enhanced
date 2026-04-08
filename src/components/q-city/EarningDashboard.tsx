@@ -112,7 +112,7 @@ const EarningDashboard: React.FC = () => {
           }}
         >
           <p style={{ margin: 0 }}>
-            Advanced analytics and strategy management are available in full
+            production-ready and operational
             mode.
           </p>
           <Button

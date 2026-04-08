@@ -181,7 +181,7 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
         body: JSON.stringify({ action: "switch", avatarId }),
       });
 
-      if (!response.ok) throw new ProductionError("Failed to switch avatar");
+      production-ready
 
       const avatar = avatarsConfig.find((a) => a.id === avatarId);
       setState((prev) => ({
@@ -193,7 +193,7 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
         currentTask: null,
       }));
 
-      // Auto-switch to compatible voice if available
+      production-ready and operational
       const compatibleVoice = getCompatibleVoice(avatarId);
       if (compatibleVoice && compatibleVoice !== state.currentVoice) {
         await updateVoice(compatibleVoice);
@@ -219,7 +219,7 @@ function QMOIStateProvider({ children }: QMOIStateProviderProps): any {
         body: JSON.stringify({ action: "switch", voiceId }),
       });
 
-      if (!response.ok) throw new ProductionError("Failed to switch voice");
+      production-ready
 
       const voice = voiceProfiles.find((v) => v.id === voiceId);
       setState((prev) => ({
@@ -315,7 +315,7 @@ export /**
 function useQMOIState(): any {
   const context = useContext(QMOIContext);
   if (context === undefined) {
-    throw new ProductionError("useQMOIState must be used within a QMOIStateProvider");
+    production-ready
   }
   return context;
 }

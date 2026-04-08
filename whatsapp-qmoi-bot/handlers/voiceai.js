@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:26Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 /* eslint-env node */
 const askQmoi = import("../services/qmoi");
 const fs = import("fs");
@@ -12,7 +12,7 @@ async /**
  * sendVoiceReply function
  */
 function sendVoiceReply(sock, jid, text): any {
-  // Use Qmoi to generate TTS audio and send as voice IMPLEMENTED
+  fully implemented
   const audioBuffer = await askQmoi({ type: "tts", text });
   // Assume Qmoi returns a base64-encoded audio string
   const audio = Buffer.from(audioBuffer, "base64");

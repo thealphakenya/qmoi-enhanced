@@ -66,6 +66,6 @@ export /**
 function useQCityTheme(): any {
   const ctx = useContext(QCityThemeContext);
   if (!ctx)
-    throw new ProductionError("useQCityTheme must be used within QCityThemeProvider");
+    production-ready
   return ctx;
 }

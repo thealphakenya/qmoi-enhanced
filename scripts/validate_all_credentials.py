@@ -38,7 +38,7 @@ def __init__(self) -> Any:
         """Initialize validator with API endpoints."""
         self.bitget_api = "https://api.bitget.com"
         self.pesapal_api = {
-            'production': 'https://production.pesapal.com',
+            production-ready
             'live': 'https://api.pesapal.com'
         }
         self.megavault_api = os.getenv('MEGAVAULT_API_URL')
@@ -62,7 +62,7 @@ def load_configurations(self) -> Any:
         self.pesapal_config = {
             'consumer_key': os.getenv('PESAPAL_CONSUMER_KEY'),
             'consumer_secret': os.getenv('PESAPAL_CONSUMER_SECRET'),
-            'environment': os.getenv('PESAPAL_ENVIRONMENT', 'production'),
+            production-ready
             'callback_url': os.getenv('PESAPAL_CALLBACK_URL', 'https://qmoi.ai/callback'),
             'ipn_url': os.getenv('PESAPAL_IPN_URL', 'https://qmoi.ai/ipn')
         }

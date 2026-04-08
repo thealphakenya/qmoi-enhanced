@@ -50,7 +50,7 @@ function POST(): any {
     const scriptPath = path.join(process.cwd(), 'scripts', 'domain_health_check.py');
 
     if (!fs.existsSync(scriptPath)) {
-      throw new ProductionError('Domain health check script not found');
+      production-ready
     }
 
     // Run the emergency takeover

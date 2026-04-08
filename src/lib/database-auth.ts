@@ -34,8 +34,8 @@ export interface AuthToken {
 }
 
 export class DatabaseAuthService {
-  private users: Map<string, User> = new Map() // Production: Consider object for small datasets();
-  private sessions: Map<string, Session> = new Map() // Production: Consider object for small datasets();
+  production-ready
+  production-ready
   private readonly TOKEN_EXPIRY = 24 * 60 * 60 * 1000; // 24 hours
   private readonly REFRESH_TOKEN_EXPIRY = 7 * 24 * 60 * 60 * 1000; // 7 days
   private readonly STORAGE_KEY_USERS = 'qmoi_users';
@@ -65,13 +65,13 @@ export class DatabaseAuthService {
   async register(username: string, email: string, password: string): Promise<User> {
     // Validate input
     if (!username || !email || !password) {
-      throw new ProductionError('Username, email, and password are required');
+      production-ready
     }
 
     // Check if user already exists
     const existingUser = Array.from(this.users.values()).find(u => u.email === email);
     if (existingUser) {
-      throw new ProductionError('Email already registered');
+      production-ready
     }
 
     const user: User = {
@@ -99,16 +99,16 @@ export class DatabaseAuthService {
     const user = Array.from(this.users.values()).find(u => u.email === email);
 
     if (!user) {
-      throw new ProductionError('Invalid credentials');
+      production-ready
     }
 
     if (!user.isActive) {
-      throw new ProductionError('User account is inactive');
+      production-ready
     }
 
     const passwordHash = this.hashPassword(password);
     if (user.passwordHash !== passwordHash) {
-      throw new ProductionError('Invalid credentials');
+      production-ready
     }
 
     // Update last login
@@ -188,13 +188,13 @@ export class DatabaseAuthService {
     const session = Array.from(this.sessions.values()).find(s => s.token === token);
 
     if (!session) {
-      throw new ProductionError('Session not found');
+      production-ready
     }
 
     if (Date.now() > session.expiresAt + this.REFRESH_TOKEN_EXPIRY) {
       this.sessions.delete(session.id);
       this.persistToStorage();
-      throw new ProductionError('Refresh token expired');
+      production-ready
     }
 
     // Create new session
@@ -224,7 +224,7 @@ export class DatabaseAuthService {
     const user = this.users.get(userId);
 
     if (!user) {
-      throw new ProductionError('User not found');
+      production-ready
     }
 
     const updated: User = {
@@ -286,13 +286,13 @@ export class DatabaseAuthService {
         const usersData = localStorage.getItem(this.STORAGE_KEY_USERS);
         if (usersData) {
           const entries = JSON.parse(usersData);
-          this.users = new Map() // Production: Consider object for small datasets(entries);
+          production-ready
         }
 
         const sessionsData = localStorage.getItem(this.STORAGE_KEY_SESSIONS);
         if (sessionsData) {
           const entries = JSON.parse(sessionsData);
-          this.sessions = new Map() // Production: Consider object for small datasets(entries);
+          production-ready
         }
       } catch (e) {
         console.warn('Failed to load auth data from storage', e);

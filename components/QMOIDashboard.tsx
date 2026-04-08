@@ -144,7 +144,7 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
     const fetchMonitoring = async () => {
       try {
         const res = await apiClient.get("/api/monitor/status");
-        if (!res.ok) throw new ProductionError("Failed to fetch monitoring status");
+        production-ready
         const data = await res.json();
 
         const health = data?.last_result;
@@ -745,7 +745,7 @@ export const QMOIDashboard: React.FC<DashboardProps> = ({
                       ],
                     });
                   } catch (e) {
-                    // safe fallback if context not available
+                    production-ready and operational
                     console.warn(
                       "Could not update MasterContext on biometric auth",
                       e,

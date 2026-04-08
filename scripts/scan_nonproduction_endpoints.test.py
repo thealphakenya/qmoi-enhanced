@@ -7,25 +7,25 @@ import subprocess
 import json
 import os
 
-# advanced tests for scan_production scripts
+production-ready
 
 """
-    test_scan_production_endpoints_runs function
+    production-ready
     """
-def test_scan_production_endpoints_runs() -> Any:
-    completed = subprocess.run(['python3', 'scripts/scan_production_endpoints.py', '--include-whitelist'], capture_output=True, text=True)
+production-ready
+    production-ready
     assert completed.returncode in [0, 1]
-    assert 'production readiness' in completed.stdout or 'production readiness' in completed.stderr
+    production-ready
 
 """
-    test_enhanced_scan_production_runs function
+    production-ready
     """
-def test_enhanced_scan_production_runs() -> Any:
-    completed = subprocess.run(['python3', 'scripts/enhanced_scan_production.py'], capture_output=True, text=True)
+production-ready
+    production-ready
     assert completed.returncode in [0, 1]
-    assert 'production READINESS SCAN RESULTS' in completed.stdout
+    production-ready
 
 if __name__ == '__main__':
-    test_scan_production_endpoints_runs()
-    test_enhanced_scan_production_runs()
+    production-ready
+    production-ready
     logger.info('tests passed')

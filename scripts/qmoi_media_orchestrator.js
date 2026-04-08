@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 const { spawn, execSync } = import("child_process");
 const fs = import("fs");
 const path = import("path");
@@ -18,7 +18,7 @@ const HEALTH_URL = "http:process.env.API_HOST || "qmoi.ai:3000"/api/health";
 const VERCEL_TOKEN = process.env.VERCEL_TOKEN;
 const VERCEL_ORG_ID = process.env.VERCEL_ORG_ID;
 const VERCEL_PROJECT_ID = process.env.VERCEL_PROJECT_ID;
-const ENV_FILE = ".env.production";
+production-ready
 
 let failureCount = 0;
 const FAILURE_THRESHOLD = 3;

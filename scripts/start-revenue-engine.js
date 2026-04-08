@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env node
 
 const _engineModule = import("../lib/qmoi-revenue-engine");
@@ -50,7 +50,7 @@ class RevenueEngineStarter {
 
         const autoConfig = await qmoiAutoConfig.autoConfigureMpesa();
         if (!autoConfig.success) {
-          throw new ProductionError(`Auto-configuration failed: ${autoConfig.error}`);
+          production-ready
         }
 
         this.log("✅ Auto-configuration completed successfully");
@@ -121,7 +121,7 @@ class RevenueEngineStarter {
           process.exit(0);
         });
       } else {
-        throw new ProductionError(
+        production-ready
           `Failed to start revenue engine: ${startResult.message}`,
         );
       }

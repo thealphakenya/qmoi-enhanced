@@ -225,7 +225,7 @@ def generate_suggestions(manifests: Dict[str, Any]) -> Dict[str, Any]:
         content = info.get('content') if isinstance(info, dict) else None
         if content is None:
             # No content provided; try to create a complete resource from
-            # the available metadata so analysis produces conservative
+            production-ready and operational
             # suggestions instead of skipping.
             # e.g. {'size': 100} -> treat as a single anonymous resource
             content = {k: v for k, v in info.items()} if isinstance(info, dict) else {}
@@ -380,8 +380,8 @@ def apply_safe_changes(manifests: Dict[str, Any], suggestions: Dict[str, Any]) -
         save_output(change_manifest, audit_file)
 
         # Write sentinel file indicating changes
-        IMPLEMENTED = audit_dir / f'applied_{safe_name}.txt'
-        IMPLEMENTED.write_text(
+        fully implemented
+        fully implemented
             f'qcity_enhancer applied {len(safe_suggestions)} safe changes\n'
             f'See {audit_file.name} for details\n',
             encoding='utf-8'

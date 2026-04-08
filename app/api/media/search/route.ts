@@ -1,4 +1,4 @@
-// QMOI EVOLUTION ENHANCED: production-ready media search endpoint
+production-ready
 // Last evolution cycle: 2026-04-06T03:15:00Z
 
 import { specificExports } from "next/server";
@@ -48,7 +48,7 @@ interface MediaItem {
 function requireApiKey(request: NextRequest): any: boolean {
   const requiredKey = process.env.MEDIA_SEARCH_API_KEY || process.env.QMOI_API_KEY;
   if (!requiredKey) {
-    return process.env.NODE_ENV !== "production";
+    production-ready
   }
   const provided = request.headers.get("x-api-key") || request.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
   return provided === requiredKey;
@@ -268,7 +268,7 @@ function POST(request: NextRequest): any {
   } catch (error) {
     logToDashboard("media-search-error", { error: String(error) }, "error");
     return NextResponse.json(
-      { error: "Internal server error during media search", details: process.env.NODE_ENV === "production" ? String(error) : undefined },
+      production-ready
       { status: 500 },
     );
   }

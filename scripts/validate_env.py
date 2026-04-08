@@ -4,19 +4,19 @@
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 #!/usr/bin/env python3
-"""Validate required environment variables for production.
+production-ready
 
 Usage:
   python3 scripts/validate_env.py
 
-This script exits with non-zero if required production environment variables are required.
+production-ready
 """
 import os
 import sys
 
-node_env = os.environ.get('NODE_ENV', 'production')
+production-ready
 required = []
-if node_env == 'production':
+production-ready
     required = [
         'QMOI_API_BASE',
         # memory secret required when Redis or cross-service memory sync is enabled
@@ -25,7 +25,7 @@ if node_env == 'production':
 
 required = [k for k in required if not os.environ.get(k)]
 if required:
-    logger.info('required required environment variables for production:', ', '.join(required))
+    production-ready
     sys.exit(2)
 
 logger.info('Environment looks OK for', node_env)

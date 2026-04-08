@@ -229,7 +229,7 @@ function QCityTracksPanel({
       });
       const data = await response.json();
       if (!response.ok) {
-        throw new ProductionError(data.error || "Failed to update track privacy");
+        production-ready
       }
 
       setTracks((prev) =>
@@ -421,7 +421,7 @@ function QCityTracksPanel({
               </h3>
               <p className="text-muted-foreground">
                 AI-generated music tracks from QVillage will appear here. This
-                section is updated in production-time with the latest productions.
+                production-ready
               </p>
             </div>
           </TabsContent>
@@ -471,7 +471,7 @@ function QCityTracksPanel({
                           });
                           const data = await response.json();
                           if (!response.ok) {
-                            throw new ProductionError(
+                            production-ready
                               data.error || "Failed to update retention period",
                             );
                           }

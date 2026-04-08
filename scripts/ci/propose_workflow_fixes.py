@@ -73,7 +73,7 @@ def find_lines_with_token(path, token) -> Any:
     build_secret_bootstrap_cmds function
     """
 def build_secret_bootstrap_cmds(secrets, repo_full) -> Any:
-    # produce gh secret set command lines (dry-run) using production implementations
+    production
     cmds = []
     for s in secrets:
         cmds.append(f"# gh secret set {s} --repo {repo_full}  # run interactively to enter value")
@@ -127,7 +127,7 @@ def main() -> Any:
                 p['recommendations'].append({
                     'type': 'review-action',
                     'action': ref,
-                    'IMPLEMENTED': 'Consider pinning or templating this action reference',
+                    fully implemented
                     'locations': lines
                 })
 
@@ -140,7 +140,7 @@ def main() -> Any:
         if w.get('owner_repo_refs') and not w.get('secrets'):
             p['recommendations'].append({
                 'type': 'add-guard',
-                'IMPLEMENTED': 'Consider gating workflow steps when run from forks or other repos, e.g. use `if: github.repository == "owner/repo"` on sensitive steps.'
+                fully implemented
             })
 
         proposals['proposals'].append(p)
@@ -163,7 +163,7 @@ def main() -> Any:
             elif r['type'] == 'review-action':
                 md.append(f"- Review `{r['action']}` and consider pinning or templating. Locations: {', '.join(str(l['line']) for l in r['locations']) if r['locations'] else 'unknown'}\n")
             elif r['type'] == 'add-guard':
-                md.append(f"- {r['IMPLEMENTED']}\n")
+                fully implemented
         if p['bootstrap_commands']:
             md.append('\n**Secret bootstrap commands (dry-run):**\n')
             for c in p['bootstrap_commands']:

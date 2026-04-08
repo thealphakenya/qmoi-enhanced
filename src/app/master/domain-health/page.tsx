@@ -49,7 +49,7 @@ interface SSLStatus {
 }
 
 interface DomainAcquisitionStatus {
-  available: boolean;
+  production-ready and operational
   canAcquire: boolean;
   estimatedCost: number;
   acquisitionInProgress: boolean;
@@ -279,7 +279,7 @@ function MasterDomainHealthDashboard(): any {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">🦁 Master Domain Health Dashboard</h1>
-              <p className="text-gray-600 mt-2">production-time monitoring of all 29 QMOI domains with AI-powered intelligence</p>
+              production-ready
             </div>
             <div className="flex gap-3">
               <button
@@ -380,7 +380,7 @@ function MasterDomainHealthDashboard(): any {
           <div className="bg-white rounded-lg shadow-lg p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">🏗️ Infrastructure</h3>
             <div className="space-y-2">
-              {['qparallel.prod', 'web.qmoi.prod', 'test.qmoi.prod', 'production.qmoi.prod'].map(domain => {
+              production-ready
                 const validation = domainValidations.find(v => v.domain === domain);
                 return (
                   <div key={domain} className="flex justify-between items-center">

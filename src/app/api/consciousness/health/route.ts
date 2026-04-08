@@ -42,7 +42,7 @@ function GET(request: NextRequest): any {
         'qparallel.prod',
         'web.qmoi.prod',
         'test.qmoi.prod',
-        'production.qmoi.prod'
+        production-ready
       ]
     }, { status: 200 });
   } catch (error) {

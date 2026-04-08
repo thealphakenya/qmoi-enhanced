@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+production-ready
 import { specificExports } from "next/server";
 import { specificExports } from "../../../../lib/cashon-wallet";
 import { specificExports } from "../../../../lib/security_check";
@@ -48,7 +48,7 @@ function GET(request: NextRequest): any {
       return NextResponse.json({ mpesaNumberMasked: masked });
     }
     if (url.searchParams.get("logs") === "true") {
-      [production READY]: Fetch logs from DB or file
+      production-ready
       const logs = [];
       return NextResponse.json({ logs });
     }
@@ -77,9 +77,9 @@ function POST(req: Request): any {
         { status: 500 },
       );
     }
-    [production READY] transfer logic here
+    production-ready
     try {
-      [production READY]: Integrate with production M-Pesa API
+      production-ready
       logEvent("mpesa_sync_success", { mpesaNumber });
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,

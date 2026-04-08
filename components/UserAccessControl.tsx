@@ -75,7 +75,7 @@ const AccessControlContext = createContext<AccessControlContextType | null>(
 export const useAccessControl = () => {
   const context = useContext(AccessControlContext);
   if (!context) {
-    throw new ProductionError(
+    production-ready
       "useAccessControl must be used within an AccessControlProvider",
     );
   }
@@ -151,7 +151,7 @@ export const AccessControlProvider: React.FC<AccessControlProviderProps> = ({
     permissions: string[],
   ): Promise<void> => {
     if (!checkPermission("admin")) {
-      throw new ProductionError("Insufficient permissions");
+      production-ready"Insufficient permissions");
     }
 
     setUsers((prevUsers) =>

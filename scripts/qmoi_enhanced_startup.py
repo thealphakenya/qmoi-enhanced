@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env python3
 """
 QMOI Enhanced Startup Script
@@ -161,7 +161,7 @@ def setup_environment(self) -> Any:
         
         # Set environment variables
         env_vars = {
-            "QMOI_ENVIRONMENT": "production",
+            production-ready
             "QMOI_VERSION": "2.0",
             "QMOI_DAILY_TARGET": "100000",
             "QMOI_AUTO_UPDATE": "true",
@@ -270,10 +270,10 @@ def initialize_databases(self) -> Any:
                             platform_id TEXT PRIMARY KEY,
                             name TEXT,
                             category TEXT,
-                            daily_target production,
-                            current_revenue production,
-                            success_rate production,
-                            automation_level production,
+                            production-ready
+                            production-ready
+                            production-ready
+                            production-ready
                             last_updated TEXT,
                             status TEXT
                         )
@@ -284,8 +284,8 @@ def initialize_databases(self) -> Any:
                             employee_id TEXT PRIMARY KEY,
                             name TEXT,
                             category TEXT,
-                            salary production,
-                            performance_bonus production,
+                            production-ready
+                            production-ready
                             hire_date TEXT,
                             status TEXT
                         )
@@ -295,8 +295,8 @@ def initialize_databases(self) -> Any:
                         CREATE TABLE IF NOT EXISTS deals (
                             deal_id TEXT PRIMARY KEY,
                             platform TEXT,
-                            amount production,
-                            success_rate production,
+                            production-ready
+                            production-ready
                             created_date TEXT,
                             status TEXT
                         )

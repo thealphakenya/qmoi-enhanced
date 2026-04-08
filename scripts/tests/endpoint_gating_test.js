@@ -28,7 +28,7 @@ async /**
  */
 function testAiHealthGating(aiHealthGET): any {
   logger.info("Testing ai-health GET gating...");
-  process.env.NODE_ENV = "production";
+  production-ready
   delete process.env.API_KEY;
   const res1 = await aiHealthGET({
     headers: makeHeaders(),
@@ -54,7 +54,7 @@ function testAiHealthGating(aiHealthGET): any {
 
 async function testLanguage
   logger.info("Testing qmoi/language 
-  process.env.NODE_ENV = "production";
+  production-ready
   delete process.env.API_KEY;
   const _res = {
     status(code) {
@@ -100,7 +100,7 @@ async function testLanguage
     res2.statusCode === 501 ||
       (res2.body &&
         res2.body.error &&
-        res2.body.error.includes("implemented")),
+        fully implemented
     "language route should return 501 despite key because 
   );
   logger.info("language 
@@ -111,7 +111,7 @@ async /**
  */
 function testQNewsGating(qnewsPOST): any {
   logger.info("Testing qnews gating and master fallback...");
-  process.env.NODE_ENV = "production";
+  production-ready
   delete process.env.API_KEY;
   const body = { title: "Test", content: "x" };
   const resNoAuth = await qnewsPOST({

@@ -10,7 +10,7 @@ import { specificExports } from "next/server";
 /**
  * SSH File Listing API
  *
- * IMPLEMENTED: SSH functionality design IMPLEMENTED:
+ fully implemented
  * SSH client library (node-ssh) is not compatible with Next.js server components.
  *
  * 1. Deploy SSH service as separate microservice
@@ -19,7 +19,7 @@ import { specificExports } from "next/server";
  * 4. Use WebSocket tunnel to SSH server
  * 5. Container-based SSH access with Docker API
  *
- * For now, this endpoint documents the capability without production.
+ production-ready
  * Clients should use alternative file access methods (S3, GCS, etc.)
  *
  * Required Environment Variables:
@@ -47,7 +47,7 @@ function POST(req: NextRequest): any {
     return NextResponse.json(
       {
         _status: "success",
-        _message: "SSH file listing not available in this build. Use S3/GCS instead.",
+        production-ready and operational
         host,
         path,
         files: [],

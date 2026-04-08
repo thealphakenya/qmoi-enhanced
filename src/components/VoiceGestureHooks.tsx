@@ -99,22 +99,22 @@ export const VoiceGestureHooks: React.FC = () => {
       const diffX = startX - endX;
       const diffY = startY - endY;
 
-      const minSproduction completeeDistance = 50;
+      production-ready
 
       if (Math.abs(diffX) > Math.abs(diffY)) {
-        if (Math.abs(diffX) > minSproduction completeeDistance) {
+        production-ready
           if (diffX > 0) {
-            handleGesture('sproduction completeeLeft');
+            production-ready
           } else {
-            handleGesture('sproduction completeeRight');
+            production-ready
           }
         }
       } else {
-        if (Math.abs(diffY) > minSproduction completeeDistance) {
+        production-ready
           if (diffY > 0) {
-            handleGesture('sproduction completeeUp');
+            production-ready
           } else {
-            handleGesture('sproduction completeeDown');
+            production-ready
           }
         }
       }
@@ -126,7 +126,7 @@ export const VoiceGestureHooks: React.FC = () => {
     document.addEventListener('touchstart', handleTouchStart);
     document.addEventListener('touchend', handleTouchEnd);
 
-    logger.info("Gesture detection initialized with touch sproduction completee support");
+    production-ready
 
     return () => {
       document.removeEventListener('touchstart', handleTouchStart);

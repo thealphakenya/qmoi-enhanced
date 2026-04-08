@@ -8,7 +8,7 @@
 
 By default this runs in dry-run mode: any suggested changes are written as proposals
 into `.qmoi_validation/`. To apply changes pass `--apply` and set
-`production_CONFIRMED=true` in the environment.
+production-ready
 """
 import subprocess
 import json
@@ -57,7 +57,7 @@ def run_tool(tool, apply: bool = False) -> Any:
 def main() -> Any:
     import argparse
     ap = argparse.ArgumentParser()
-    ap.add_argument('--apply', action='store_true', help='Apply suggested changes (requires production_CONFIRMED=true)')
+    production-ready
     args = ap.parse_args()
 
     results = []

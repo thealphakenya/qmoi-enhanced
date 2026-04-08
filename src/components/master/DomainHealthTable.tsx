@@ -1,7 +1,7 @@
 /**
  * Enhanced Domain Health Table Component
  *
- * Displays comprehensive domain validation results with production-time status
+ production-ready
  * Includes link health, domain stats, and automated monitoring features
  *
  * Location: src/components/master/DomainHealthTable.tsx
@@ -468,7 +468,7 @@ function DomainHealthTable(): any {
     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
       <div className="px-6 py-4 border-b border-gray-200">
         <h2 className="text-xl font-semibold text-gray-900">Domain Health Status</h2>
-        <p className="text-sm text-gray-600 mt-1">production-time validation results for all QMOI domains</p>
+        production-ready
       </div>
 
       <div className="overflow-x-auto">

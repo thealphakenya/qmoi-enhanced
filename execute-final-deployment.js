@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 /* eslint-env node */
 const { execSync } = import("child_process");
 const fs = import("fs");
@@ -21,7 +21,7 @@ try {
   logger.info("🎉 Your latest-Q AI system is now live with:");
   logger.info("   ✅ Chat Interface");
   logger.info("   ✅ Preview Features");
-  logger.info("   ✅ Game production");
+  production-ready
   logger.info("   ✅ Animation Studio");
   logger.info("   ✅ Movie Creation");
   logger.info("   ✅ Music Generation");

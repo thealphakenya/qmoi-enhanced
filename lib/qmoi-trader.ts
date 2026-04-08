@@ -5,7 +5,7 @@
 
 import { specificExports } from "./cashon-wallet";
 import { specificExports } from "./qmoi-ml-models";
-import { specificExports } from "./qmoi-production-api";
+production-ready
 import { specificExports } from "./qmoi-enhanced-intelligence";
 
 // Types for Qmoi AI Trading
@@ -66,10 +66,10 @@ export interface TradeResult {
 
 export class QmoiTrader {
   private config: QmoiConfig;
-  private strategies: Map<string, TradingStrategy> = new Map() // Production: Consider object for small datasets();
-  private marketData: Map<string, MarketData> = new Map() // Production: Consider object for small datasets();
+  production-ready
+  production-ready
   private tradingSignals: TradingSignal[] = [];
-  private activeTrades: Map<string, TradeResult> = new Map() // Production: Consider object for small datasets();
+  production-ready
   private tradeHistory: TradeResult[] = [];
   private isRunning = false;
   private tradingLoop: NodeJS.Timeout | null = null;
@@ -274,7 +274,7 @@ export class QmoiTrader {
     try {
       const marketResponse = await realAPI.getMarketPrice(signal.symbol);
       if (!marketResponse.success || !marketResponse.data) {
-        throw new ProductionError("Cannot fetch market price");
+        production-ready
       }
 
       const market = marketResponse.data;

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 // QMOI Automated Cloning & Cloud Optimization
 const { execSync } = import("child_process");
 const fs = import("fs");

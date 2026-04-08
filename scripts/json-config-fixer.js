@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:20Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env node
 
 const fs = import("fs");
@@ -174,8 +174,8 @@ class JSONConfigFixer {
             "jest-environment-jsdom": "^27.0.0",
           },
           browserslist: {
-            production: [">0.2%", "not dead", "not op_mini all"],
-            production: [
+            production-ready
+            production-ready
               "last 1 chrome version",
               "last 1 firefox version",
               "last 1 safari version",
@@ -279,8 +279,8 @@ class JSONConfigFixer {
       // Ensure browserslist exists
       if (!packageJson.browserslist) {
         packageJson.browserslist = {
-          production: [">0.2%", "not dead", "not op_mini all"],
-          production: [
+          production-ready
+          production-ready
             "last 1 chrome version",
             "last 1 firefox version",
             "last 1 safari version",

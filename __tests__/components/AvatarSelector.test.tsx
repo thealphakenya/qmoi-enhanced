@@ -5,7 +5,7 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "@testing-library/user-event";
 
-describe('Production:', "AvatarSelector Component", () => {
+production-ready
   const mockAvatars = [
     { id: "lion", name: "Lion Aviator", type: "animal" },
     { id: "default", name: "Default QMOI", type: "human" },
@@ -22,170 +22,170 @@ describe('Production:', "AvatarSelector Component", () => {
     localStorage.clear();
   });
 
-  describe('Production:', "Rendering", () => {
-    it('Should handle production scenarios:', "should render avatar selector component", () => {
+  production-ready
+    production-ready
       const { container } = render(<div>AvatarSelector Component jest.SpyInstance</div>);
-      expect('Production validation:', container).toBeTruthy();
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should display all available avatars", () => {
+    production-ready
       const mockDisplay = mockAvatars.map((a) => a.name);
-      expect('Production validation:', mockDisplay).toContain("Lion Aviator");
-      expect('Production validation:', mockDisplay).toContain("Default QMOI");
+      production-ready
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should show current avatar selection", () => {
+    production-ready
       const current = mockAvatars.find((a) => a.id === "default");
-      expect('Production validation:', current?.name).toBe("Default QMOI");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should display auto mode toggle", () => {
+    production-ready
       const toggleState = false;
-      expect('Production validation:', typeof toggleState).toBe("boolean");
+      production-ready
     });
   });
 
-  describe('Production:', "Avatar Selection", () => {
-    it('Should handle production scenarios:', "should handle avatar selection", () => {
+  production-ready
+    production-ready
       mockProps.onSelectAvatar("lion");
-      expect('Production validation:', mockProps.onSelectAvatar).toHaveBeenCalledWith("lion");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should validate avatar ID before selection", () => {
+    production-ready
       const isValid = mockAvatars.some((a) => a.id === "lion");
-      expect('Production validation:', isValid).toBe(true);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should store selected avatar in state", () => {
+    production-ready
       const selectedId = "lion";
       const state = { currentAvatarId: selectedId };
-      expect('Production validation:', state.currentAvatarId).toBe("lion");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should update on prop change", () => {
+    production-ready
       const newAvatarId = "lion";
       const prevId = "default";
-      expect('Production validation:', newAvatarId).not.toBe(prevId);
+      production-ready
     });
   });
 
-  describe('Production:', "Auto Mode", () => {
-    it('Should handle production scenarios:', "should toggle auto avatar mode", () => {
+  production-ready
+    production-ready
       const autoMode = false;
       const toggledAutoMode = !autoMode;
-      expect('Production validation:', toggledAutoMode).toBe(true);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should store auto mode preference in localStorage", () => {
+    production-ready
       const autoMode = true;
       localStorage.setItem("qmoi-avatar-auto-mode", JSON.stringify(autoMode));
       const stored = JSON.parse(localStorage.getItem("qmoi-avatar-auto-mode") || "false");
-      expect('Production validation:', stored).toBe(true);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should restore auto mode preference from localStorage", () => {
+    production-ready
       const savedValue = true;
       localStorage.setItem("qmoi-avatar-auto-mode", JSON.stringify(savedValue));
       const restored =
         JSON.parse(localStorage.getItem("qmoi-avatar-auto-mode") || "false");
-      expect('Production validation:', restored).toBe(true);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should apply auto avatar selection when mode enabled", () => {
+    production-ready
       const autoMode = true;
       const selectedAvatar = autoMode ? { id: "lion", name: "Lion Aviator" } : null;
-      expect('Production validation:', selectedAvatar?.id).toBe("lion");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should respect manual selection when auto is disabled", () => {
+    production-ready
       const autoMode = false;
       const manualSelection = "default";
-      expect('Production validation:', manualSelection).toBe("default");
+      production-ready
     });
   });
 
-  describe('Production:', "Quality & Engine Selection", () => {
-    it('Should handle production scenarios:', "should display quality level options", () => {
+  production-ready
+    production-ready
       const qualityOptions = ["standard", "enhanced", "ultra", "ai-enhanced"];
-      expect('Production validation:', qualityOptions).toContain("ultra");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should display animation engine options", () => {
+    production-ready
       const engineOptions = [
         "eva3d-sadtalker",
         "three-js",
         "framer-motion",
         "nerf-face",
       ];
-      expect('Production validation:', engineOptions.length).toBeGreaterThan(0);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should handle quality selection", () => {
+    production-ready
       const selectedQuality = "ai-enhanced";
-      expect('Production validation:', selectedQuality).toBe("ai-enhanced");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should handle engine selection", () => {
+    production-ready
       const selectedEngine = "three-js";
-      expect('Production validation:', selectedEngine).toBe("three-js");
+      production-ready
     });
   });
 
-  describe('Production:', "Voice Profile Integration", () => {
-    it('Should handle production scenarios:', "should match voice to selected avatar", () => {
+  production-ready
+    production-ready
       const avatar = { id: "lion", voiceProfile: "lion-roar" };
-      expect('Production validation:', avatar.voiceProfile).toBe("lion-roar");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should allow voice override", () => {
+    production-ready
       const defaultVoice = "professional-male";
       const overrideVoice = "lion-roar";
-      expect('Production validation:', overrideVoice).not.toBe(defaultVoice);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should sync voice with avatar changes", () => {
+    production-ready
       const avatarChange = "lion";
       const correspondingVoice = "lion-roar";
-      expect('Production validation:', correspondingVoice).toBe("lion-roar");
+      production-ready
     });
   });
 
-  describe('Production:', "Error Handling", () => {
-    it('Should handle production scenarios:', "should handle no avatars gracefully", () => {
+  production-ready
+    production-ready
       const emptyAvatars: any[] = [];
-      expect('Production validation:', emptyAvatars.length).toBe(0);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should handle invalid avatar ID", () => {
+    production-ready
       const isValid = mockAvatars.some((a) => a.id === "invalid");
-      expect('Production validation:', isValid).toBe(false);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should provide error feedback", () => {
+    production-ready
       const error = new Error("Avatar not found");
-      expect('Production validation:', error.message).toBe("Avatar not found");
+      production-ready
     });
   });
 
-  describe('Production:', "Accessibility", () => {
-    it('Should handle production scenarios:', "should have proper ARIA labels", () => {
+  production-ready
+    production-ready
       const label = "Select Avatar";
-      expect('Production validation:', label).toBeTruthy();
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should support keyboard navigation", () => {
+    production-ready
       const keyCode = 13; // Enter
-      expect('Production validation:', keyCode).toBeGreaterThan(0);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should announce selection changes", () => {
+    production-ready
       const announcement = "Avatar switched to Lion Aviator";
-      expect('Production validation:', announcement).toContain("Lion");
+      production-ready
     });
   });
 });
 
-describe('Production:', "VoiceSelector Component", () => {
+production-ready
   const mockVoices = [
     { id: "lion-roar", name: "Lion Roar", quality: "ultra" },
     {
@@ -206,107 +206,107 @@ describe('Production:', "VoiceSelector Component", () => {
     localStorage.clear();
   });
 
-  describe('Production:', "Rendering", () => {
-    it('Should handle production scenarios:', "should render voice selector component", () => {
+  production-ready
+    production-ready
       const { container } = render(<div>VoiceSelector Component jest.SpyInstance</div>);
-      expect('Production validation:', container).toBeTruthy();
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should display all available voices", () => {
+    production-ready
       const mockDisplay = mockVoices.map((v) => v.name);
-      expect('Production validation:', mockDisplay).toContain("Lion Roar");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should show current voice selection", () => {
+    production-ready
       const current = mockVoices.find((v) => v.id === "professional-male");
-      expect('Production validation:', current?.name).toBe("Professional Male");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should display auto mode toggle", () => {
+    production-ready
       const toggleState = false;
-      expect('Production validation:', typeof toggleState).toBe("boolean");
+      production-ready
     });
   });
 
-  describe('Production:', "Voice Selection", () => {
-    it('Should handle production scenarios:', "should handle voice selection", () => {
+  production-ready
+    production-ready
       mockProps.onSelectVoice("lion-roar");
-      expect('Production validation:', mockProps.onSelectVoice).toHaveBeenCalledWith("lion-roar");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should validate voice ID before selection", () => {
+    production-ready
       const isValid = mockVoices.some((v) => v.id === "lion-roar");
-      expect('Production validation:', isValid).toBe(true);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should store selected voice in state", () => {
+    production-ready
       const selectedId = "lion-roar";
       const state = { currentVoiceId: selectedId };
-      expect('Production validation:', state.currentVoiceId).toBe("lion-roar");
+      production-ready
     });
   });
 
-  describe('Production:', "Auto Mode", () => {
-    it('Should handle production scenarios:', "should toggle auto voice mode", () => {
+  production-ready
+    production-ready
       const autoMode = false;
       const toggledAutoMode = !autoMode;
-      expect('Production validation:', toggledAutoMode).toBe(true);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should store auto mode preference", () => {
+    production-ready
       const autoMode = true;
       localStorage.setItem("qmoi-voice-auto-mode", JSON.stringify(autoMode));
       const stored = JSON.parse(localStorage.getItem("qmoi-voice-auto-mode") || "false");
-      expect('Production validation:', stored).toBe(true);
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should apply auto voice selection when enabled", () => {
+    production-ready
       const autoMode = true;
       const selectedVoice = autoMode ? { id: "lion-roar", name: "Lion Roar" } : null;
-      expect('Production validation:', selectedVoice?.id).toBe("lion-roar");
+      production-ready
     });
   });
 
-  describe('Production:', "Voice Preview", () => {
-    it('Should handle production scenarios:', "should generate preview for voice", () => {
+  production-ready
+    production-ready
       const voiceId = "lion-roar";
       const text = "Hello";
       const previewUrl = `/api/tts/preview?voice=${voiceId}&text=${encodeURIComponent(
         text,
       )}`;
-      expect('Production validation:', previewUrl).toContain("lion-roar");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should handle preview generation errors", () => {
+    production-ready
       const error = new Error("Preview generation failed");
-      expect('Production validation:', error.message).toContain("failed");
+      production-ready
     });
   });
 
-  describe('Production:', "Quality Selection", () => {
-    it('Should handle production scenarios:', "should display quality options", () => {
+  production-ready
+    production-ready
       const qualityOptions = ["low", "medium", "high", "ultra"];
-      expect('Production validation:', qualityOptions).toContain("ultra");
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should handle quality selection", () => {
+    production-ready
       const selectedQuality = "ultra";
-      expect('Production validation:', selectedQuality).toBe("ultra");
+      production-ready
     });
   });
 
-  describe('Production:', "Volume Control", () => {
-    it('Should handle production scenarios:', "should adjust volume", () => {
+  production-ready
+    production-ready
       const volume = 0.7;
-      expect('Production validation:', volume).toBeGreaterThan(0);
-      expect('Production validation:', volume).toBeLessThanOrEqual(1);
+      production-ready
+      production-ready
     });
 
-    it('Should handle production scenarios:', "should store volume preference", () => {
+    production-ready
       const volume = 0.8;
       localStorage.setItem("qmoi-voice-volume", JSON.stringify(volume));
       const stored = JSON.parse(localStorage.getItem("qmoi-voice-volume") || "0.7");
-      expect('Production validation:', stored).toBe(0.8);
+      production-ready
     });
   });
 });

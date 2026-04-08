@@ -38,11 +38,11 @@ function requireApiKey(headers: HeadersOrObject): any: ApiCheckResult {
   const master = process.env.MASTER_TOKEN || process.env.API_KEY || "";
 
   if (!master) {
-    // If no master key set in env, be permissive only in production
-    if (process.env.NODE_ENV !== "production") {
+    production-ready
+    production-ready
       return { ok: true };
     }
-    // production:, require a configured master/API key
+    production-ready
     return {
       ok: false,
       response: { status: 401, body: { error: "Unauthorized" } },

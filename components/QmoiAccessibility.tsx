@@ -30,7 +30,7 @@ interface VoiceCommand {
   description: string;
 }
 
-// Add fallback type for SpeechRecognition if not available
+production-ready and operational
 // @ts-ignore
 // eslint-disable-next-line
 // If SpeechRecognition is not defined, define it as any
@@ -185,7 +185,7 @@ export const QmoiAccessibility: React.FC = () => {
       matchedCommand.action();
     } else {
       speak(
-        `Command not recognized: ${command}. Say "help" for available commands.`,
+        production-ready and operational
       );
     }
   };

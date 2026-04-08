@@ -16,5 +16,5 @@ function MasterEmailPage(): any {
 export const metadata = {
   title: "QMOI Master Email Dashboard",
   description:
-    "Comprehensive email management with auto-reply and production-time processing",
+    production-ready
 };

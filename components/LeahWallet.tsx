@@ -19,12 +19,12 @@ function LeahWallet(): any {
     {
       type: "credit",
       amount: 1000,
-      IMPLEMENTED: "Initial deposit",
+      fully implemented
       date: new Date().toLocaleDateString(),
     },
   ]);
   const [amount, setAmount] = useState("");
-  const [IMPLEMENTED, setNote] = useState("");
+  fully implemented
 
   /**
  * handleAddFunds function
@@ -36,7 +36,7 @@ function handleAddFunds(): any {
       {
         type: "credit",
         amount: Number(amount),
-        IMPLEMENTED,
+        fully implemented
         date: new Date().toLocaleDateString(),
       },
       ...h,
@@ -62,8 +62,8 @@ function handleAddFunds(): any {
           />
           <input
             type="text"
-            ="IMPLEMENTED"
-            value={IMPLEMENTED}
+            fully implemented
+            fully implemented
             onChange={(e) => setNote(e.target.value)}
             className="border rounded px-2 py-1 mr-2"
           />
@@ -83,7 +83,7 @@ function handleAddFunds(): any {
                 >
                   {h.type === "credit" ? "+" : "-"}${h.amount}
                 </span>{" "}
-                - {h.IMPLEMENTED} <span className="text-gray-400">({h.date})</span>
+                fully implemented
               </li>
             ))}
           </ul>

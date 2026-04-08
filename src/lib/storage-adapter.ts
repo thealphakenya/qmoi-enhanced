@@ -14,7 +14,7 @@ export interface StorageFile {
 }
 
 export class StorageAdapter {
-  private files: Map<string, StorageFile> = new Map() // Production: Consider object for small datasets();
+  production-ready
 
   async uploadFile(file: File, metadata?: Record<string, any>): Promise<string> {
     const id = `file_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;

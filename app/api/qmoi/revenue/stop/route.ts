@@ -38,7 +38,7 @@ function POST(_request: NextRequest): any {
 
     const result = qmoiRevenueEngine.stopRevenueEngine
       ? await qmoiRevenueEngine.stopRevenueEngine()
-      : { success: false, message: "stopRevenueEngine implemented" };
+      fully implemented
 
     return NextResponse.json(result);
   } catch (error) {

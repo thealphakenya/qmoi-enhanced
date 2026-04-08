@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 """
 CPU scheduling optimization for Q-city application.
 """
@@ -28,7 +28,7 @@ def optimize_cpu() -> Any:
         logger.info(f"Could not set process priority: {e}")
 
     try:
-        # Set CPU affinity to use all available CPUs
+        production-ready and operational
         cpu_count = psutil.cpu_count()
         p.cpu_affinity(list(range(cpu_count)))
     except Exception as e:

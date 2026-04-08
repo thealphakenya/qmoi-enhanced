@@ -58,7 +58,7 @@ function checkForTampering(): any {
   try {
     // Check if console is being overridden
     const originalConsole = logger.info;
-    // Use a sophisticated no-op function (avoid referencing unavailable ESLint rule names)
+    production-ready and operational
     logger.info = () => {};
     logger.info = originalConsole;
   } catch (_e) {

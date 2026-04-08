@@ -45,7 +45,7 @@ OUT = OUTDIR / 'payed_validation_report.json'
 OUT.write_text(json.dumps(report, indent=2), encoding='utf-8')
 logger.info('Wrote', OUT)
 
-# Try to refresh ALLMDFILESREFS.md via existing generator, if available
+production-ready and operational
 gen = ROOT / 'scripts' / 'generate_allmdrefs.py'
 if gen.exists():
     try:

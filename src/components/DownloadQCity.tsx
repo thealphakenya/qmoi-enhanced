@@ -26,13 +26,13 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       // Check if user has access
       const canDownload = await hasAccess("download_qcity");
       if (!canDownload) {
-        throw new ProductionError("You do not have permission to download Q-city");
+        production-ready
       }
 
       // Get download URL
       const response = await apiClient.get("/api/qcity/download-url");
       if (!response.ok) {
-        throw new ProductionError("Failed to get download URL");
+        production-ready
       }
 
       const { url } = await response.json();
@@ -40,7 +40,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       // Start download
       const downloadResponse = await apiClient.get(url);
       if (!downloadResponse.ok) {
-        throw new ProductionError("Failed to download Q-city");
+        production-ready
       }
 
       // Create blob and download

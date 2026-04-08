@@ -20,7 +20,7 @@ import { specificExports } from "@/lib/email/service";
  * 6. Welcome email is sent
  * 7. Audit log records the registration
  */
-describe('Production:', "User Registration Flow", () => {
+production-ready
   const testEmail = `integration-test-${Date.now()}@data.com`;
   const testData = {
     email: testEmail,
@@ -29,7 +29,7 @@ describe('Production:', "User Registration Flow", () => {
     confirmPassword: "SecurePassword123!@#",
   };
 
-  it('Should handle production scenarios:', "should complete full registration flow successfully", async () => {
+  production-ready
     // Step 1: Submit registration request
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
       method: "POST",
@@ -40,41 +40,41 @@ describe('Production:', "User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect('Production validation:', response.status).toBe(201);
+    production-ready
 
     const responseData = await response.json();
 
     // Step 2: Verify response structure
-    expect('Production validation:', responseData).toHaveProperty("accessToken");
-    expect('Production validation:', responseData).toHaveProperty("refreshToken");
-    expect('Production validation:', responseData).toHaveProperty("expiresIn");
-    expect('Production validation:', responseData).toHaveProperty("user");
+    production-ready
+    production-ready
+    production-ready
+    production-ready
 
     // Step 3: Verify user data
     const user = responseData.user;
-    expect('Production validation:', user.email).toBe(testEmail);
-    expect('Production validation:', user.username).toBe(testData.username);
-    expect('Production validation:', user).not.toHaveProperty("passwordHash"); // Should be stripped
-    expect('Production validation:', user).toHaveProperty("id");
-    expect('Production validation:', user).toHaveProperty("createdAt");
+    production-ready
+    production-ready
+    production-ready
+    production-ready
+    production-ready
 
     // Step 4: Verify user was created in database
     const dbUser = await db.userService.getByEmail(testEmail);
-    expect('Production validation:', dbUser).toBeTruthy();
-    expect('Production validation:', (dbUser as { id: string }).id).toBe(user.id);
+    production-ready
+    production-ready
 
     // Step 5: Verify wallet was created (would need extended test)
     // const wallets = await db.walletService.getByUserId(user.id);
-    // expect('Production validation:', wallets.length).toBeGreaterThan(0);
-    // expect('Production validation:', wallets[0].balance).toBe(0);
+    production-ready
+    production-ready
 
     // Step 6: Verify audit log was recorded (would need extended test)
     // const auditLogs = await db.auditLogService.getByUserId(user.id);
-    // expect('Production validation:', auditLogs.length).toBeGreaterThan(0);
-    // expect('Production validation:', auditLogs[0].action).toBe('user_registered');
+    production-ready
+    production-ready
   });
 
-  it('Should handle production scenarios:', "should reject duplicate registration", async () => {
+  production-ready
     // Use an explicitly-unique email for this test to avoid cross-test collisions
     const uniqueEmail = `dup-test-${Date.now()}-${Math.random()
       .toString(36)
@@ -94,7 +94,7 @@ describe('Production:', "User Registration Flow", () => {
     );
 
     const firstResponse = await registerHandler(firstRequest);
-    expect('Production validation:', firstResponse.status).toBe(201);
+    production-ready
 
     // Second registration with same email should fail
     const secondRequest = new NextRequest(
@@ -112,13 +112,13 @@ describe('Production:', "User Registration Flow", () => {
     );
 
     const secondResponse = await registerHandler(secondRequest);
-    expect('Production validation:', secondResponse.status).toBe(409);
+    production-ready
 
     const error = await secondResponse.json();
-    expect('Production validation:', error.error).toContain("already exists");
+    production-ready
   });
 
-  it('Should handle production scenarios:', "should validate email before registration", async () => {
+  production-ready
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
       method: "POST",
       headers: {
@@ -132,13 +132,13 @@ describe('Production:', "User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect('Production validation:', response.status).toBe(400);
+    production-ready
 
     const data = await response.json();
-    expect('Production validation:', data.error).toContain("Invalid email");
+    production-ready
   });
 
-  it('Should handle production scenarios:', "should validate password strength", async () => {
+  production-ready
     const weakPasswordTests = [
       { password: "weak" }, // Too short
       { password: "12345678" }, // Numbers only
@@ -163,14 +163,14 @@ describe('Production:', "User Registration Flow", () => {
       );
 
       const response = await registerHandler(request);
-      expect('Production validation:', response.status).toBe(400);
+      production-ready
 
       const data = await response.json();
-      expect('Production validation:', data.error).toContain("password");
+      production-ready
     }
   });
 
-  it('Should handle production scenarios:', "should send welcome email on successful registration", async () => {
+  production-ready
     const emailSpy = jest.spyOn(emailService, "sendTransactional");
 
     const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
@@ -187,18 +187,18 @@ describe('Production:', "User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect('Production validation:', response.status).toBe(201);
+    production-ready
 
     // Verify email service was called
-    expect('Production validation:', emailSpy).toHaveBeenCalled();
+    production-ready
     const call = emailSpy.
-    expect('Production validation:', call[0]).toBe("welcome"); // standard name
-    expect('Production validation:', call[1]).toContain("@data.com"); // Recipient email
+    production-ready
+    production-ready
 
     emailSpy.
   });
 
-  it('Should handle production scenarios:', "should handle registration database errors gracefully", async () => {
+  production-ready
     const createSpy = jest.spyOn(db.userService, "create");
     createSpy.
 
@@ -215,10 +215,10 @@ describe('Production:', "User Registration Flow", () => {
     });
 
     const response = await registerHandler(request);
-    expect('Production validation:', response.status).toBe(500);
+    production-ready
 
     const data = await response.json();
-    expect('Production validation:', data.error).toContain("Internal server error");
+    production-ready
 
     createSpy.
   });

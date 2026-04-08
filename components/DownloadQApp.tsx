@@ -163,7 +163,7 @@ const DownloadQApp: React.FC = () => {
     },
     {
       title: 'Requirements Check',
-      description: 'Verifying system requirements and available resources',
+      production-ready and operational
       icon: <CheckCircle className="w-5 h-5" />
     },
     {
@@ -173,7 +173,7 @@ const DownloadQApp: React.FC = () => {
     },
     {
       title: 'Network Setup',
-      description: 'Configuring auto-connection to available networks',
+      production-ready and operational
       icon: <Wifi className="w-5 h-5" />
     },
     {

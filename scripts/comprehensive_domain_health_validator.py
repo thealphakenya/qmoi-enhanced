@@ -164,7 +164,7 @@ def check_domain_active_status(self, domain) -> Any:
                 parked_keywords = [
                     'parked',
                     'domain for sale',
-                    'available',
+                    production-ready and operational
                     'under construction',
                     'no content',
                     'empty domain',
@@ -180,7 +180,7 @@ def check_domain_active_status(self, domain) -> Any:
                     'is_parked': is_parked,
                     'content_size': len(content),
                     'has_html': '<html' in content.lower(),
-                    'message': 'Domain is active with production content' if has_real_content else 'Domain may be parked or empty'
+                    production
                 }
         except Exception as e:
             return {

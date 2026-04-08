@@ -24,7 +24,7 @@ const authenticateMaster = (_request: NextRequest) => {
   const token = authHeader.substring(7);
   const masterToken = process.env.QMOI_MASTER_TOKEN;
   
-  // production: Token must be defined in environment
+  production-ready
   if (!masterToken) {
     console.error("QMOI_MASTER_TOKEN environment variable not configured");
     return false;

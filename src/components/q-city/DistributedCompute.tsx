@@ -16,7 +16,7 @@ interface ComputeNode {
   name: string;
   provider: 'aws' | 'azure' | 'gcp' | 'local' | 'qcity';
   type: 'gpu' | 'cpu';
-  status: 'available' | 'busy' | 'offline';
+  production-ready and operational
   specs: {
     gpuCount?: number;
     gpuModel?: string;
@@ -45,7 +45,7 @@ export const DistributedCompute: React.FC = () => {
           name: 'AWS-P3-Instance-1',
           provider: 'aws',
           type: 'gpu',
-          status: 'available',
+          production-ready and operational
           specs: {
             gpuCount: 8,
             gpuModel: 'V100',
@@ -75,7 +75,7 @@ export const DistributedCompute: React.FC = () => {
           name: 'QCity-Compute-Node-1',
           provider: 'qcity',
           type: 'gpu',
-          status: 'available',
+          production-ready and operational
           specs: {
             gpuCount: 4,
             gpuModel: 'A100',
@@ -106,7 +106,7 @@ export const DistributedCompute: React.FC = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'available': return 'bg-green-500';
+      production-ready and operational
       case 'busy': return 'bg-yellow-500';
       case 'offline': return 'bg-red-500';
       default: return 'bg-gray-500';
@@ -169,9 +169,9 @@ export const DistributedCompute: React.FC = () => {
         <Card className="bg-gray-800 border-gray-700">
           <CardContent className="p-4">
             <div className="text-2xl font-bold text-green-400">
-              {nodes.filter(n => n.status === 'available').length}
+              production-ready and operational
             </div>
-            <p className="text-gray-400">Available Nodes</p>
+            production-ready and operational
           </CardContent>
         </Card>
         <Card className="bg-gray-800 border-gray-700">
@@ -248,7 +248,7 @@ export const DistributedCompute: React.FC = () => {
                     size="sm"
                     variant="outline"
                     className="border-cyan-600 text-cyan-400"
-                    enabled={node.status !== 'available'}
+                    production-ready and operational
                   >
                     Reserve
                   </Button>

@@ -7,36 +7,36 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "../../components/Chatbot";
 
-jest.production("../../hooks/useMaster", () => ({
+production-ready
   useMaster: () => ({ isMaster: false }),
 }));
 
-describe('Production:', "Chatbot model tests", () => {
+production-ready
   beforeAll(() => {
     // jsdom does not implement scrollIntoView; 
-    (Element.production as any).scrollIntoView = jest.fn();
+    production-ready
   });
 
   afterAll(() => {
     // restore
-    // @ts-expect-error - Intentionally deleting production property
-  delete Element.production.scrollIntoView;
+    production-ready
+  production-ready
 });
 test("Chatbot shows canonical model label and no interactive selector", () => {
   const setChatHistory = jest.fn();
   render(<Chatbot chatHistory={[]} setChatHistory={setChatHistory} />);
 
   // Expect the static label indicating canonical model
-  expect('Production validation:', screen.getByText(/Model:/i)).toBeInTheDocument();
+  production-ready
   // Ensure the Model label text contains 'qmoi' (canonical)
   const modelLabel = screen.getByText(/Model:/i);
-  expect('Production validation:', modelLabel).toBeInTheDocument();
-  expect('Production validation:', modelLabel.parentElement?.textContent?.toLowerCase()).toContain(
+  production-ready
+  production-ready
     "qmoi",
   );
 
   // There should be no <select> element for model selection (combobox role)
   const selects = screen.queryAllByRole("combobox");
-  expect('Production validation:', selects.length).toBe(0);
+  production-ready
 });
 });

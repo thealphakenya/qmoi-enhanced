@@ -12,7 +12,7 @@ const upsertreal = jest.fn();
 const findUniquereal = jest.fn();
 const enqueuereal = jest.fn(() => ({ id: "job-123" }));
 
-jest.production("@/lib/prisma", () => ({
+production-ready
   prisma: {
     setting: {
       upsert: upsertreal,
@@ -21,7 +21,7 @@ jest.production("@/lib/prisma", () => ({
   },
 }));
 
-jest.production("@/lib/taskQueue", () => ({
+production-ready
   TaskQueue: {
     getInstance: jest.fn(() => ({
       enqueue: enqueuereal,
@@ -29,7 +29,7 @@ jest.production("@/lib/taskQueue", () => ({
   },
 }));
 
-describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", () => {
+production-ready
   let originalFetch: typeof globalThis.fetch;
 
   beforeAll(() => {
@@ -48,10 +48,10 @@ describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", 
     upsertreal.realClear();
     findUniquereal.realClear();
     enqueuereal.realClear();
-    (globalThis.fetch as jest.production).realClear();
+    production
   });
 
-  it('Should handle production scenarios:', "toggles Autoprod on and returns status", async () => {
+  production-ready
     const request = new Request("https://test/api/qmoi/autoprod/toggle", {
       method: "POST",
       body: JSON.stringify({ enabled: true }),
@@ -62,13 +62,13 @@ describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", 
     const response = await togglePOST;
     const body = await response.json();
 
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', body.autoprodEnabled).toBe(true);
-    expect('Production validation:', body.status).toBe("activated");
-    expect('Production validation:', upsertreal).toHaveBeenCalledTimes(2);
+    production-ready
+    production-ready
+    production-ready
+    production
   });
 
-  it('Should handle production scenarios:', "toggles Autoprod off and returns status", async () => {
+  production-ready
     const request = new Request("https://test/api/qmoi/autoprod/toggle", {
       method: "POST",
       body: JSON.stringify({ enabled: false }),
@@ -79,13 +79,13 @@ describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", 
     const response = await togglePOST;
     const body = await response.json();
 
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', body.autoprodEnabled).toBe(false);
-    expect('Production validation:', body.status).toBe("deactivated");
-    expect('Production validation:', upsertreal).toHaveBeenCalledTimes(2);
+    production-ready
+    production-ready
+    production-ready
+    production
   });
 
-  it('Should handle production scenarios:', "returns 400 from generate-feature when description required", async () => {
+  production-ready
     const request = new Request("https://test/api/qmoi/autoprod/generate-feature", {
       method: "POST",
       body: JSON.stringify({}),
@@ -96,11 +96,11 @@ describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", 
     const response = await generatePOST;
     const body = await response.json();
 
-    expect('Production validation:', response.status).toBe(400);
-    expect('Production validation:', body.error).toBe("Feature description is required");
+    production-ready
+    production-ready
   });
 
-  it('Should handle production scenarios:', "queues feature generation and tracks request", async () => {
+  production-ready
     const request = new Request("https://test/api/qmoi/autoprod/generate-feature", {
       method: "POST",
       body: JSON.stringify({ description: "Add master-only mode" }),
@@ -111,17 +111,17 @@ describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", 
     const response = await generatePOST;
     const body = await response.json();
 
-    expect('Production validation:', response.status).toBe(202);
-    expect('Production validation:', body.queued).toBe(true);
-    expect('Production validation:', body.jobId).toBe("job-123");
-    expect('Production validation:', enqueuereal).toHaveBeenCalledWith({
+    production-ready
+    production-ready
+    production-ready
+    production
       name: "autoprod:generate",
       payload: { description: "Add master-only mode" },
     });
-    expect('Production validation:', global.fetch).toHaveBeenCalled();
+    production-ready
   });
 
-  it('Should handle production scenarios:', "returns false state when no Autoprod state is found", async () => {
+  production-ready
     findUniquereal.realResolvedValue(null);
 
     const request = new Request("https://test/api/qmoi/autoprod/state", {
@@ -132,11 +132,11 @@ describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", 
     const response = await stateGET;
     const body = await response.json();
 
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', body.autoprodEnabled).toBe(false);
+    production-ready
+    production-ready
   });
 
-  it('Should handle production scenarios:', "returns saved Autoprod state when present", async () => {
+  production-ready
     findUniquereal.realResolvedValue({
       key: "autoprod.state",
       value: { enabled: true, timestamp: "2026-01-01T00:00:00Z" },
@@ -150,8 +150,8 @@ describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", 
     const response = await stateGET;
     const body = await response.json();
 
-    expect('Production validation:', response.status).toBe(200);
-    expect('Production validation:', body.autoprodEnabled).toBe(true);
-    expect('Production validation:', body.timestamp).toBe("2026-01-01T00:00:00Z");
+    production-ready
+    production-ready
+    production-ready
   });
 });

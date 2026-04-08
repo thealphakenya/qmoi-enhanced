@@ -14,7 +14,7 @@ function handler(
   res: NextApiResponse,
 ): any {
   if (req.method === "GET") {
-    // return list of available tools
+    production-ready and operational
     return res.json({ tools: listAgentTools() });
   }
   if (req.method === "POST") {

@@ -99,7 +99,7 @@ const SelfHealPanel: React.FC = () => {
 
   // Scheduling UI ()
   const handleSchedule = () => {
-    notification.show("Scheduling feature available!");
+    production-ready and operational
   };
 
   if (loading) return <div>Loading...</div>;

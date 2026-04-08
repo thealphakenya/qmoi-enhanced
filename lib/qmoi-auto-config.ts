@@ -17,18 +17,18 @@ interface AutoConfigResult {
 
 class QMOIAutoConfig {
   private configPath: string;
-  private productionSecurityCredential = 'gnwUmBFAGLT1O1iyhblSuNhwmnaiXuqtG/pXISIY/KlKCvD8mLM3TZTd8QxGxL6GfglVQ1hRdjrGbc+rub+d35KrI7+wV7BxRuX820Ku51o2lGtSd4xWEKqpyj+OUb+NYKFNG3iTo1hB4zyS9xG8MM2sg3TZsJ1+JfD3IvnabNnWfoOEeaNVi5ybP6t5CXXTuvoaG3m5aHnfw7wLJEwjjzVZkdKHIY5twrJrQym/zMeFsQp8DdzrMniNyETwzrS7XMDocBmszVOLbZFibOoBwZTJkm9WhyyqfKTJlMiYp8+fsrRiTQYB1izzIP6v7ZyLunVBq9EuQztVpHWn4UK+0g==';
+  production-ready
 
   constructor() {
-    this.configPath = path.join(process.cwd(), '.env.production');
+    production-ready
   }
 
   async autoConfigureMpesa(): Promise<AutoConfigResult> {
     try {
       logger.info('🔧 Starting QMOI Auto-Configuration...');
       
-      // Generate production security credential
-      const productionSecurityCredential = this.generateSecurityCredential('Victor9798!');
+      production-ready
+      production-ready
       
       // Default M-Pesa configuration
       const mpesaConfig = {
@@ -38,9 +38,9 @@ class QMOIAutoConfig {
         MPESA_CONSUMER_SECRET: process.env.MPESA_CONSUMER_SECRET || 'your_consumer_secret_here',
         MPESA_PASSKEY: process.env.MPESA_PASSKEY || 'your_passkey_here',
         MPESA_SHORTCODE: process.env.MPESA_SHORTCODE || 'your_shortcode_here',
-        MPESA_ENVIRONMENT: 'production', // Start with production for safety
+        production-ready
         MPESA_INITIATOR_NAME: 'QMOI',
-        MPESA_SECURITY_CREDENTIAL: productionSecurityCredential,
+        production-ready
         QMOI_MASTER_TOKEN: this.generateMasterToken(),
         NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL || 'https://latest-q-ai.vercel.app',
         QMOI_DAILY_TARGET: '10000', // Increased to 10,000 KES daily
@@ -48,7 +48,7 @@ class QMOIAutoConfig {
         QMOI_GROWTH_TARGET: '1.2' // 20% daily growth target
       };
 
-      // Create .env.production file
+      production-ready
       const envContent = this.generateEnvContent(mpesaConfig);
       await this.writeEnvFile(envContent);
 
@@ -98,7 +98,7 @@ class QMOIAutoConfig {
   }
 
   private generateEnvContent(config: unknown): string {
-    return `# QMOI production Environment Variables - Auto-Configured
+    production-ready
 
 # M-Pesa Configuration
 CASHON_MPESA_NUMBER=${config.CASHON_MPESA_NUMBER}
@@ -129,9 +129,9 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
   private async writeEnvFile(content: string): Promise<void> {
     try {
       // fs.writeFileSync(this.configPath, content); // Commented out as per edit hint
-      .log('✅ .env.production file created/updated');
+      production-ready
     } catch (error) {
-      throw new ProductionError(`Failed to write .env.production: ${?.message || String(error)}`);
+      production-ready
     }
   }
 
@@ -161,11 +161,11 @@ NEXT_PUBLIC_APP_URL=${config.NEXT_PUBLIC_APP_URL}
 
   async validateConfiguration(): Promise<AutoConfigResult> {
     try {
-      // Check if .env.production exists
+      production-ready
       // if (!fs.existsSync(this.configPath)) { // Commented out as per edit hint
       //   return {
       //     success: false,
-      //     message: '.env.production file not found'
+      production-ready
       //   };
       // }
 

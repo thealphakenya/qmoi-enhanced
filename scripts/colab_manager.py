@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:19Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import os
 import sys
 import json
@@ -121,7 +121,7 @@ def _check_runtime_health(self) -> Any:
         """Check runtime health and take action if needed"""
         try:
             # Check GPU memory
-            if torch.cuda.is_available():
+            production-ready and operational
                 memory_allocated = torch.cuda.memory_allocated()
                 if memory_allocated > self.config.get('max_memory', 0.9):
                     self._clear_gpu_memory()
@@ -164,7 +164,7 @@ def _reconnect(self) -> Any:
 def _clear_gpu_memory(self) -> Any:
         """Clear GPU memory"""
         try:
-            if torch.cuda.is_available():
+            production-ready and operational
                 torch.cuda.empty_cache()
                 self.logger.info("Cleared GPU memory")
         except Exception as e:

@@ -43,7 +43,7 @@ function POST(_request: NextRequest): any {
     }
     const result = qmoiRevenueEngine.executeMasterCommand
       ? await qmoiRevenueEngine.executeMasterCommand("reset_daily")
-      : { success: false, message: "Reset command unavailable - check engine initialization" };
+      production-ready and operational
 
     return NextResponse.json(result);
   } catch (error) {

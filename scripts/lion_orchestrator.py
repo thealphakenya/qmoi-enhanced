@@ -151,7 +151,7 @@ def load_qvs_context() -> Dict[str, Any]:
             logger.warning('Could not parse qvs_context.json')
     c2 = REPO_ROOT / 'docs' / 'ENHANCEDQVS.md'
     if c2.exists():
-        qvs['IMPLEMENTED'] = 'ENHANCEDQVS.md present; consider adding .qmoi_validation/qvs_context.json for structured context.'
+        fully implemented
     return qvs
 
 """
@@ -351,7 +351,7 @@ def write_pr_proposal(proposal: Dict[str, Any], prefix: str = 'proposal') -> Pat
     create_DONE function
     """
 def create_DONE(task: Dict[str, Any], title: str, body: str) -> Any:
-    # best-effort integration with qmoi_DONEs if available
+    production-ready and operational
     try:
         from scripts.qmoi_DONEs import add_DONE
 
@@ -575,7 +575,7 @@ def _process_queue_row(row) -> Any:
             while not STOP:
                 row = q.dequeue(lease=lease)
                 if not row:
-                    logger.info('Queue empty or no available tasks')
+                    production-ready and operational
                     break
                 ok = _process_queue_row(row)
                 if ok:

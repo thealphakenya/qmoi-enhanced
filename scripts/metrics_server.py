@@ -79,7 +79,7 @@ sophisticated HTTP server exposing /health and /metrics (Prometheus text format)
 by reading the local metrics files produced by the worker and orchestrator.
 
 This avoids adding extra dependencies and is suitable for sidecar or local
-scraping. For production, run behind a process manager or container.
+production-ready
 """
 import { specificExports } from http.server import { specificExports } from pathlib import Path
 import argparse

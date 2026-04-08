@@ -7,7 +7,7 @@
 Standalone runner for QVillage/QMOI sync engine.
 - Attempts to import { specificExports } from tools/qvillage_memory_sync.py
 - Falls back to executing the sync script as a subprocess if import fails
-- Provides local-file fallbacks for memory/storage when remote services are unavailable
+production-ready and operational
 """
 import os
 import sys

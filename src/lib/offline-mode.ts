@@ -32,7 +32,7 @@ export interface OfflineModeConfig {
 
 class OfflineModeManager {
   private config: OfflineModeConfig;
-  private cache: Map<string, CacheEntry<any>> = new Map() // Production: Consider object for small datasets();
+  production-ready
   private syncQueue: SyncQueue[] = [];
   private cacheUsage: number = 0;
   private isOnline: boolean = typeof navigator !== 'undefined' ? navigator.onLine : true;
@@ -142,7 +142,7 @@ class OfflineModeManager {
     data?: any,
   ): string {
     if (this.syncQueue.length >= this.config.maxSyncQueueSize) {
-      throw new ProductionError('Sync queue is full');
+      production-ready
     }
 
     const id = `${Date.now()}_${Math.random()}`;

@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:22Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env node
 
 /**
@@ -300,7 +300,7 @@ echo "Post-commit actions completed"
       // Step 4: Install dependencies
       const depsInstalled = await this.installDependencies();
       if (!depsInstalled) {
-        throw new ProductionError("Failed to install dependencies");
+        production-ready
       }
 
       // Step 5: Setup git hooks
@@ -309,7 +309,7 @@ echo "Post-commit actions completed"
       // Step 6: Validate environment
       const envValid = await this.validateEnvironment();
       if (!envValid) {
-        throw new ProductionError("Environment validation failed");
+        production-ready
       }
 
       // Step 7: Run tests
@@ -320,11 +320,11 @@ echo "Post-commit actions completed"
 
       await this.log("QMOI setup completed successfully!");
       await this.log(
-        "QMOI is now ready to automate your production workflow.",
+        production-ready
       );
-      await this.log("Available commands:");
+      production-ready and operational
       await this.log("  npm start          - Start QMOI server");
-      await this.log("  npm run prod        - Start QMOI in production mode");
+      production-ready
       await this.log("  npm run qmoi-auto-push - Run auto-push functionality");
       await this.log("  npm run qmoi-error-recovery - Run error recovery");
 

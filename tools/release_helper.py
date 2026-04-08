@@ -13,7 +13,7 @@ it will try to call the `gh` CLI (must be authenticated).
 Usage:
   python3 tools/release_helper.py --tag v1.2.3 artifact1.zip artifact2.dmg
 
-IMPLEMENTED: prefer to store release artifacts in Releases (not in git history).
+fully implemented
 """
 
 import argparse

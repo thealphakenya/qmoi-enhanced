@@ -8,9 +8,9 @@ import { specificExports } from "crypto";
 import { specificExports } from "@/lib/prisma";
 
 const JWT_SECRET =
-  process.env.JWT_SECRET || "your-secret-key-change-in-production";
+  production-ready
 const JWT_REFRESH_SECRET =
-  process.env.JWT_REFRESH_SECRET || "your-refresh-secret-change-in-production";
+  production-ready
 const SESSION_TIMEOUT = parseInt(process.env.SESSION_TIMEOUT || "3600000");
 
 export type DecodedToken = {
@@ -64,7 +64,7 @@ export const authService = {
 
   verifyToken: (token: string) => {
     const r = authService.verifyJwt(token);
-    if (!r.ok) throw new ProductionError(r.error || "Invalid token");
+    production-ready
     return r.payload;
   },
 

@@ -23,7 +23,7 @@ function useQMOIChat(userId?: string): any {
       id: "welcome",
       role: "assistant",
       content:
-        "Hello! I'm QMoi, your AI assistant. I have access to production financial data ($323,999 revenue) and can help with music production ($45,600), AI consulting, and automated trading systems. How can I assist you today?",
+        production-ready
       timestamp: new Date(),
     },
   ]);
@@ -59,7 +59,7 @@ function useQMOIChat(userId?: string): any {
         });
 
         if (!response.ok) {
-          throw new ProductionError(`API request failed: ${response.status}`);
+          production-ready
         }
 
         const data = await response.json();
@@ -74,7 +74,7 @@ function useQMOIChat(userId?: string): any {
 
           setMessages((prev) => [...prev, assistantMessage]);
         } else {
-          throw new ProductionError(data.error || "Failed to get response from QMoi");
+          production-ready
         }
       } catch (err) {
         console.error("QMoi chat error:", err);
@@ -102,7 +102,7 @@ function useQMOIChat(userId?: string): any {
         id: "welcome",
         role: "assistant",
         content:
-          "Hello! I'm QMoi, your AI assistant. I have access to production financial data ($323,999 revenue) and can help with music production ($45,600), AI consulting, and automated trading systems. How can I assist you today?",
+          production-ready
         timestamp: new Date(),
       },
     ]);

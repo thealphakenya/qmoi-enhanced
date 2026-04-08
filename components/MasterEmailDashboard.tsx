@@ -380,7 +380,7 @@ function MasterEmailDashboard(): any {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">QMOI Master Email Dashboard</h1>
-              <p className="text-gray-600 mt-2">Comprehensive email management with auto-reply and production-time processing</p>
+              production-ready
             </div>
             <div className="flex items-center space-x-4">
               <select
@@ -674,9 +674,9 @@ function MasterEmailDashboard(): any {
           )}
         </div>
 
-        {/* production-time Events Sidebar */}
+        production-ready
         <div className="mt-6 bg-white rounded-lg shadow-sm p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">production-time Activity</h3>
+          production-ready
           <div className="space-y-2 max-h-64 overflow-y-auto">
             {realtimeEvents.map((event, index) => (
               <div key={index} className="flex items-center space-x-3 p-2 bg-gray-50 rounded">

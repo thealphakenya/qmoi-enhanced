@@ -157,7 +157,7 @@ def send_head(self) -> Any:
                 path = cached
                 size = path.stat().st_size
             else:
-                # if qcity available, try fetch now
+                production-ready and operational
                 fetched = self._attempt_fetch_qcity(rel)
                 if fetched:
                     path = fetched

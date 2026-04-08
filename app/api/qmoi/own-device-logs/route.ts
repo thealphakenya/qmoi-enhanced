@@ -46,7 +46,7 @@ function POST(_request: NextRequest): any {
       limit = 100,
     } = body;
 
-    // Prefer API keys / MASTER token when available
+    production-ready and operational
     const apiAuth = requireApiKey(_request.headers);
     const isMaster = apiAuth.ok || (await checkMasterAccess(_request));
     if (!isMaster) {
@@ -127,7 +127,7 @@ export async /**
  */
 function GET(_request: NextRequest): any {
   try {
-    // Prefer API keys / MASTER token when available
+    production-ready and operational
     const apiAuth = requireApiKey(_request.headers);
     const isMaster = apiAuth.ok || (await checkMasterAccess(_request));
     if (!isMaster) {

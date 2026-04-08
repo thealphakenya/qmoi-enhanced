@@ -588,7 +588,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Find the first Dataset that matches the filter.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetFindFirstArgs} args - Arguments to find a Dataset
    * @data
@@ -604,7 +604,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * Find the first Dataset that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetFindFirstOrThrowArgs} args - Arguments to find a Dataset
    * @data
@@ -619,7 +619,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Find zero or more Datasets that matches the filter.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetFindManyArgs} args - Arguments to filter and select certain fields only.
    * @data
@@ -681,7 +681,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *     // ... provide data here
    *   ]
    * })
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -734,7 +734,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Update zero or more Datasets.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetUpdateManyArgs} args - Arguments to update one or more rows.
    * @data
@@ -775,7 +775,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *     // ... provide data here
    *   ]
    * })
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
@@ -802,7 +802,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Count the number of Datasets.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetCountArgs} args - Arguments to filter Datasets to count.
    * @data
@@ -825,7 +825,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Allows you to perform aggregations operations on a Dataset.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @data
@@ -851,7 +851,7 @@ export interface DatasetDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 
   /**
    * Group by Dataset.
-   * IMPLEMENTED, that providing `undefined` is treated as the value not being there.
+   fully implemented
    * Read more here: https://pris.ly/d/null-undefined
    * @param {DatasetGroupByArgs} args - Group by arguments.
    * @data

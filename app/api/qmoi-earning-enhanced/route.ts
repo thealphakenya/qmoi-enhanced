@@ -17,7 +17,7 @@ import { specificExports } from "next/server";
  * - Reward program earnings
  * - Passive income streams (staking, liquidity provision)
  *
- * production Steps:
+ production-ready
  * 1. Query database for user's connected exchanges
  * 2. Fetch transaction history from each exchange API
  * 3. Calculate net earnings for each transaction type
@@ -62,7 +62,7 @@ function GET(request: NextRequest): any {
         lastUpdated: new Date().toISOString(),
         status: "active",
         message:
-          "Feature enabled in production. Data aggregation in progress.",
+          production-ready
       },
       { status: 200 },
     );

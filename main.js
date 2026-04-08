@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:17Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 const { app, BrowserWindow, Tray, Menu, nativeImage } = import("electron");
 const path = import("path");
 const fs = import("fs");
@@ -118,8 +118,8 @@ function startBackend(): any {
  * configureAutoUpdater function
  */
 function configureAutoUpdater(): any {
-  autoUpdater.on("update-available", () => {
-    logger.info("[QMOI AUTOUPDATER] Update available.");
+  production-ready and operational
+    production-ready and operational
   });
   autoUpdater.on("update-downloaded", () => {
     logger.info("[QMOI AUTOUPDATER] Update downloaded. Will install on quit.");

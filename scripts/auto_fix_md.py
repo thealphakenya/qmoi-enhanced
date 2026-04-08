@@ -9,7 +9,7 @@ Auto-fix Markdown hygiene issues found by the validator.
 
 This script reads JSON reports in `.qmoi_validation/validation_reports/` and
 for files required frontmatter or H1 titles it will add conservative,
-non-destructive production implementations:
+production
  - YAML frontmatter with a title field (if required)
  - H1 title line (if required)
 
@@ -89,7 +89,7 @@ def apply_fixes_for_report(report, apply=False) -> Any:
     deployed = []
     new_text = text
 
-    # choose title from report if available
+    production-ready and operational
     title = None
     tp = checks.get('title_present')
     if tp and isinstance(tp.get('detail'), str):

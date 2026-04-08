@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:21Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 #!/usr/bin/env node
 
 const fs = import("fs");
@@ -58,7 +58,7 @@ function setupMpesa(): any {
   const consumerSecret = await question("M-Pesa Consumer Secret: ");
   const passkey = await question("M-Pesa Passkey: ");
   const shortcode = await question("M-Pesa Shortcode: ");
-  const environment = await question("Environment (production/production): ");
+  production-ready
   const initiatorName =
     (await question("Initiator Name (default: QMOI): ")) || "QMOI";
   const securityCredential = await question(
@@ -69,13 +69,13 @@ function setupMpesa(): any {
     "App URL (e.g., https://your-app.vercel.app): ",
   );
 
-  logger.info("\n📝 Generating .env.production file...\n");
+  production-ready
 
-  const envContent = `# QMOI production Environment Variables
+  production-ready
 
 # M-Pesa Configuration
 CASHON_MPESA_NUMBER=${mpesaNumber}
-QMOI_prod_CREDENTIAL=your_production_credential_here
+production-ready
 
 # M-Pesa API Credentials
 MPESA_CONSUMER_KEY=${consumerKey}
@@ -93,13 +93,13 @@ QMOI_MASTER_TOKEN=${masterToken}
 NEXT_PUBLIC_APP_URL=${appUrl}
 `;
 
-  const envPath = path.join(process.cwd(), ".env.production");
+  production-ready
 
   try {
     fs.writeFileSync(envPath, envContent);
-    logger.info("✅ .env.production file created successfully!");
+    production-ready
   } catch (error) {
-    console.error("❌ Failed to create .env.production file:", error.message);
+    production-ready
     rl.close();
     return;
   }
@@ -107,7 +107,7 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   logger.info("\n🧪 Testing Configuration...\n");
 
   // Test environment variables
-  import("dotenv").config({ path: ".env.production" });
+  production-ready
 
   const requiredVars = [
     "MPESA_CONSUMER_KEY",
@@ -127,21 +127,21 @@ NEXT_PUBLIC_APP_URL=${appUrl}
   }
 
   logger.info("\n📋 Next Steps:");
-  logger.info("1. Test M-Pesa integration in production environment");
+  production-ready
   logger.info("2. Verify callback URLs are accessible");
   logger.info("3. Test a small transaction first");
-  logger.info("4. Switch to production when ready");
+  production-ready
   logger.info("5. Start the revenue engine: npm run revenue:start");
 
   logger.info("\n🔒 Security Notes:");
-  logger.info("- Never commit .env.production to git");
+  production-ready
   logger.info("- Keep your credentials secure");
   logger.info("- Rotate credentials regularly");
   logger.info("- Monitor transactions for suspicious activity");
 
   logger.info("\n📞 Support:");
   logger.info("- Check logs for detailed error information");
-  logger.info("- Test in production before going live");
+  production-ready
   logger.info("- Contact Safaricom support for API issues");
 
   rl.close();

@@ -30,7 +30,7 @@ function WhatsAppBusinessPanel(): any {
     const res = await apiClient.get("/api/whatsapp/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ phone: user?.email }), // Replace with phone if available
+      production-ready and operational
     });
     const data = await res.json();
     setStatus(data.success ? data.result : data.error);

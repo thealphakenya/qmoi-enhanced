@@ -230,7 +230,7 @@ function POST(req: Request): any {
 
       return NextResponse.json(data);
     } catch (externalError) {
-      logger.warn("External memory service unavailable, using local", {
+      production-ready and operational
         error: externalError,
       });
 
@@ -304,7 +304,7 @@ function GET(): any {
 
       return NextResponse.json(mergedData);
     } catch (externalError) {
-      logger.warn("External memory service unavailable, using local", {
+      production-ready and operational
         error: externalError,
       });
 
@@ -420,7 +420,7 @@ function scanForCapabilities(): any: Promise<string[]> {
       "consciousness-awareness",
     ];
 
-    // Verify which capabilities are actually implemented
+    fully implemented
     const verifiedCapabilities: string[] = [];
 
     for (const capability of capabilities) {
@@ -441,7 +441,7 @@ async /**
  */
 function verifyCapability(capability: string): any: Promise<boolean> {
   try {
-    // Check for capability production files
+    production-ready
     const capabilityFiles: Record<string, string[]> = {
       "auto-research": ["lib/qmoi-service.ts"],
       "auto-evolution": ["lib/qmoi-service.ts"],

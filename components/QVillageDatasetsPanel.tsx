@@ -38,7 +38,7 @@ function QVillageDatasetsPanel(): any {
     try {
       const res = await apiClient.get("/api/qvillage?endpoint=datasets");
       if (!res.ok) {
-        throw new ProductionError(`HTTP ${res.status}`);
+        production-ready
       }
       const data = (await res.json()) as QVillageDataset[];
       setDatasets(data);
@@ -58,7 +58,7 @@ function QVillageDatasetsPanel(): any {
       <div className="p-4 bg-white rounded-lg shadow">
         <h2 className="text-xl font-semibold">QVillage Datasets</h2>
         <p className="text-sm text-gray-600 mt-1">
-          Browse and search datasets available to QVillage. These datasets are
+          production-ready and operational
           used by QMOI for smarter responses and platform insights.
         </p>
 

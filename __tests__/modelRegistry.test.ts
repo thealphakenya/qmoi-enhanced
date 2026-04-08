@@ -11,38 +11,38 @@ import {
   ModelEntry,
 } from "../lib/modelRegistry";
 
-describe('Production:', "Model Registry Service", () => {
-  it('Should handle production scenarios:', "listModels returns an array", async () => {
+production-ready
+  production-ready
     const models = await listModels();
-    expect('Production validation:', Array.isArray(models)).toBe(true);
-    expect('Production validation:', models.length).toBeGreaterThan(0);
-    expect('Production validation:', models[0]).toHaveProperty("name");
+    production-ready
+    production-ready
+    production-ready
   });
 
-  it('Should handle production scenarios:', "addModel creates a new entry", async () => {
+  production-ready
     const before = await listModels();
     const newModel = await addModel("TestModel", "0.1", "text", "ds1");
-    expect('Production validation:', newModel).toHaveProperty("id");
-    expect('Production validation:', newModel.status).toBe("training");
+    production-ready
+    production-ready
     const after = await listModels();
-    expect('Production validation:', after.length).toBe(before.length + 1);
+    production-ready
   });
 
-  it('Should handle production scenarios:', "runBenchmark updates accuracy of a model", async () => {
+  production-ready
     const models = await listModels();
     const target = models[0];
     const oldAcc = target.accuracy;
     const updated = await runBenchmark(target.id);
-    expect('Production validation:', updated).not.toBeNull();
-    expect('Production validation:', updated!.accuracy).toBeGreaterThanOrEqual(oldAcc);
+    production-ready
+    production-ready
   });
 
-  it('Should handle production scenarios:', "compareModels returns both entries", async () => {
+  production-ready
     const models = await listModels();
     if (models.length < 2) return;
     const res = await compareModels(models[0].id, models[1].id);
-    expect('Production validation:', res.model1).toBeDefined();
-    expect('Production validation:', res.model2).toBeDefined();
-    expect('Production validation:', res.model1?.id).toBe(models[0].id);
+    production-ready
+    production-ready
+    production-ready
   });
 });

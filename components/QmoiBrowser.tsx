@@ -241,12 +241,12 @@ export const QmoiBrowser: React.FC<QmoiBrowserProps> = ({
 
      download
     const interval = setInterval(() => {
-      // production of downloadFile function
+      production-ready
     }, 200);
 
     setTimeout(() => {
       clearInterval(interval);
-      // production of downloadFile function
+      production-ready
     }, 2000);
   };
 

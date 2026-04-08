@@ -49,7 +49,7 @@ function scanPaths(paths, patterns): any {
   try {
     if (!skipBuild) {
       logger.info(
-        "Running production build to make sure compiled output does not include model selector..."
+        production-ready
       );
       execSync("npm run build", { stdio: "inherit" });
       // Search compiled .next output

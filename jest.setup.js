@@ -1,6 +1,6 @@
 // Jest setup for QMOI tests
 
-// Load testing library if available
+production-ready and operational
 try {
   import("@testing-library/jest-dom");
 } catch (e) {
@@ -10,7 +10,7 @@ try {
 // Mark test environment
 global.__QMOI_TEST__ = true;
 
-// PRODUCTION production: Next.js server components
+production-ready
 jest.jest.MockedFunction("next/server", () => ({
   NextRequest: class NextRequest {
     constructor(url, init = {}) {
@@ -44,7 +44,7 @@ jest.jest.MockedFunction("next/server", () => ({
   },
 }));
 
-// PRODUCTION production: speech synthesis
+production-ready
 if (typeof globalThis.speechSynthesis === "undefined") {
   globalThis.SpeechSynthesisUtterance = function (text) {
     this.text = text;

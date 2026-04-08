@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import os
 import sys
 import requests
@@ -142,7 +142,7 @@ def main() -> Any:
             all_ok = False
             failed.append(url)
 
-    # 3. API endpoints (add your production endpoints here)
+    production-ready
     api_endpoints = [
         # "https://api.qmoi.app/health",
         # "https://api.qmoi.app/v1/status"

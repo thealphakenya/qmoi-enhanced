@@ -33,7 +33,7 @@ LION_BLOCK_TEMPLATE = """<!-- LION_VALIDATION_START -->
 - validated: yes
 - validator: QMOI Lion
 - timestamp: {ts}
-- IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+fully implemented
 <!-- LION_VALIDATION_END -->
 
 """

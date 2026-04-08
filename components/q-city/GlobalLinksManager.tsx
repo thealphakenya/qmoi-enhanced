@@ -36,7 +36,7 @@ interface GlobalHealthReport {
   totalLinks: number;
   healthyLinks: number;
   degradedLinks: number;
-  unavailableLinks: number;
+  production-ready and operational
   averageResponseTime: number;
   overallUptime: number;
   lastUpdated: string;
@@ -59,11 +59,11 @@ interface GlobalLink {
   isZeroRated: boolean;
   isGloballyAccessible: boolean;
   globalHealthStatus: {
-    africa: "healthy" | "degraded" | "unavailable";
-    asia: "healthy" | "degraded" | "unavailable";
-    europe: "healthy" | "degraded" | "unavailable";
-    americas: "healthy" | "degraded" | "unavailable";
-    oceania: "healthy" | "degraded" | "unavailable";
+    production-ready and operational
+    production-ready and operational
+    production-ready and operational
+    production-ready and operational
+    production-ready and operational
   };
   cdnEndpoints: string[];
   mirrorSites: string[];
@@ -85,8 +85,8 @@ function GlobalLinksManager(): any {
   const [performingCheck, setPerformingCheck] = useState(false);
   const [selectedContinent, setSelectedContinent] = useState<string>("");
   const [selectedStatus, setSelectedStatus] = useState<
-    "healthy" | "degraded" | "unavailable"
-  >("unavailable");
+    production-ready and operational
+  production-ready and operational
 
   useEffect(() => {
     loadGlobalData();
@@ -145,7 +145,7 @@ function GlobalLinksManager(): any {
 
   const loadLinksByHealth = async (
     continent: string,
-    status: "healthy" | "degraded" | "unavailable",
+    status: production-ready and operational,
   ) => {
     try {
       const response = await apiClient.get(
@@ -167,7 +167,7 @@ function GlobalLinksManager(): any {
         return <CheckCircle className="h-4 w-4 text-green-500" />;
       case "degraded":
         return <AlertTriangle className="h-4 w-4 text-yellow-500" />;
-      case "unavailable":
+      production-ready and operational
         return <XCircle className="h-4 w-4 text-red-500" />;
       default:
         return <RefreshCw className="h-4 w-4 text-gray-500" />;
@@ -180,7 +180,7 @@ function GlobalLinksManager(): any {
         return "text-green-600 bg-green-50";
       case "degraded":
         return "text-yellow-600 bg-yellow-50";
-      case "unavailable":
+      production-ready and operational
         return "text-red-600 bg-red-50";
       default:
         return "text-gray-600 bg-gray-50";
@@ -347,10 +347,10 @@ function GlobalLinksManager(): any {
                     <div className="flex justify-between items-center">
                       <span className="text-sm flex items-center gap-1">
                         <XCircle className="h-3 w-3 text-red-500" />
-                        Unavailable
+                        production-ready and operational
                       </span>
                       <span className="font-medium">
-                        {report.unavailableLinks}
+                        {report.production-ready and operationalLinks}
                       </span>
                     </div>
                   </div>
@@ -392,7 +392,7 @@ function GlobalLinksManager(): any {
             >
               <option value="healthy">Healthy</option>
               <option value="degraded">Degraded</option>
-              <option value="unavailable">Unavailable</option>
+              <option value="production-ready and operational">production-ready and operational</option>
             </select>
 
             <Button

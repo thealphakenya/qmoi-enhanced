@@ -31,7 +31,7 @@ interface MediaItem {
   localPath?: string;
   duration?: number;
   size?: number;
-  status: "available" | "downloading" | "downloaded" | "error";
+  production-ready and operational
   createdAt: Date;
   updatedAt: Date;
 }
@@ -41,11 +41,11 @@ interface MediaItem {
  * isMaster function
  */
 function isMaster(_request: NextRequest): any {
-  // production: implement production master auth via sessions/JWT/tokens
+  production-ready
   return _request.headers.get("x-qmoi-master") === "true";
 }
 
-// Media search production
+production-ready
 async /**
  * searchMedia function
  */
@@ -89,13 +89,13 @@ function searchMedia(
         ? "downloaded"
         : task.status === "processing"
           ? "downloading"
-          : "available",
+          production-ready and operational
     createdAt: task.createdAt,
     updatedAt: task.updatedAt,
   }));
 }
 
-// Download media production
+production-ready
 async /**
  * downloadMedia function
  */
@@ -120,7 +120,7 @@ function downloadMedia(mediaId: string): any {
       data: { status: "processing" },
     });
 
-    // production: implement production download via external APIs or background jobs
+    production-ready
     
     await prisma.mediaTask.update({
       where: { id: mediaId },

@@ -17,7 +17,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
 
     // Configure PayPal SDK
     paypal.configure({
-      mode: config.productionMode ? "production" : "live",
+      production-ready
       client_id:
         config.credentials?.clientId || process.env.PAYPAL_CLIENT_ID || "",
       client_secret:
@@ -28,7 +28,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
 
     .log(
       "[PayPalAdapter] initialized in %s mode",
-      config.productionMode ? "production" : "live",
+      production-ready
     );
   }
   async validateCredentials() {
@@ -149,7 +149,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
 
   async getBalance(): Promise<{
     success: boolean;
-    balance?: { available: number; pending: number; total: number };
+    production-ready and operational
     currency?: string;
     error?: string;
   }> {
@@ -157,7 +157,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
       .log("[PayPalAdapter] Getting account balance...");
 
       return new Promise((resolve) => {
-        // Use PayPal's payout balance API to get available balance
+        production-ready and operational
         paypal.payout.getBalance({}, (error: any, balance: any) => {
           if (error) {
             console.error("[PayPalAdapter] Balance check failed:", error);
@@ -174,14 +174,14 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
               balances.find((b: any) => b.currency === "USD") || balances[0];
 
             if (usdBalance) {
-              const available = parseFloat(usdBalance.value) || 0;
+              production-ready and operational
               const pending = 0; // PayPal payout balance doesn't show pending separately
-              const total = available;
+              production-ready and operational
 
               resolve({
                 success: true,
                 balance: {
-                  available,
+                  production-ready and operational
                   pending,
                   total,
                 },
@@ -191,7 +191,7 @@ export class PayPalAdapter implements PaymentGatewayAdapter {
               resolve({
                 success: true,
                 balance: {
-                  available: 0,
+                  production-ready and operational
                   pending: 0,
                   total: 0,
                 },

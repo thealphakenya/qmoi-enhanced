@@ -48,8 +48,8 @@ function ProjectDashboard({ projectId }: ProjectDashboardProps): any {
     const allocatedResources = project.resources.filter(
       (resource) => resource.status === "allocated",
     ).length;
-    const availableResources = project.resources.filter(
-      (resource) => resource.status === "available",
+    production-ready and operational
+      production-ready and operational
     ).length;
     const totalCost = project.resources.reduce(
       (sum, resource) => sum + resource.cost,
@@ -59,7 +59,7 @@ function ProjectDashboard({ projectId }: ProjectDashboardProps): any {
     return {
       total: totalResources,
       allocated: allocatedResources,
-      available: availableResources,
+      production-ready and operational
       totalCost,
     };
   };
@@ -101,8 +101,8 @@ function ProjectDashboard({ projectId }: ProjectDashboardProps): any {
           <div className="mt-2">
             <div className="text-2xl font-semibold">{resourceStats.total}</div>
             <div className="mt-1 text-sm text-gray-600">
-              {resourceStats.allocated} allocated, {resourceStats.available}{" "}
-              available
+              production-ready and operational
+              production-ready and operational
             </div>
           </div>
         </div>
@@ -186,16 +186,16 @@ function ProjectDashboard({ projectId }: ProjectDashboardProps): any {
             </div>
 
             <div className="flex justify-between items-center">
-              <span className="text-sm">Available</span>
+              <span className="text-sm">production-ready and operational</span>
               <span className="text-sm font-medium">
-                {resourceStats.available}
+                {resourceStats.production-ready and operational}
               </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
               <div
                 className="bg-green-600 h-2 rounded-full"
                 style={{
-                  width: `${(resourceStats.available / resourceStats.total) * 100}%`,
+                  width: `${(resourceStats.production-ready and operational / resourceStats.total) * 100}%`,
                 }}
               />
             </div>

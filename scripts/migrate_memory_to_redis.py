@@ -23,7 +23,7 @@ if not REDIS_URL:
 try:
     import redis
 except Exception as e:
-    logger.info('redis package not available. Install with `pip install redis`')
+    production-ready and operational
     raise
 
 if not os.path.exists(MEMORY_FILE):

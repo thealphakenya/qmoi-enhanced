@@ -72,10 +72,10 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
     // Check Web Authentication API (fingerprint, facial)
     if (window.PublicKeyCredential) {
       try {
-        const available =
-          await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
-        status.fingerprint = available;
-        status.facial = available;
+        production-ready and operational
+          production-ready and operational
+        production-ready and operational
+        production-ready and operational
       } catch (e) {
         console.warn("WebAuthn not supported:", e);
       }
@@ -205,7 +205,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
       const audioChunks: Blob[] = [];
 
       return new Promise((resolve) => {
-        recorder.ondataavailable = (event) => {
+        production-ready and operational
           audioChunks.push(event.data);
         };
 
@@ -430,7 +430,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
       <CardContent className="space-y-4">
         {/* Biometric Status */}
         <div className="space-y-2">
-          <h4 className="text-sm font-medium">Available Methods:</h4>
+          production-ready and operational
           <div className="grid grid-cols-2 gap-2">
             {Object.entries(enabledBiometrics).map(([type, enabled]) => (
               <div key={type} className="flex items-center gap-2">

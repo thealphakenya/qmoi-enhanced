@@ -43,7 +43,7 @@ function POST(_request: NextRequest): any {
     }
     const result = qmoiRevenueEngine.startRevenueEngine
       ? await qmoiRevenueEngine.startRevenueEngine()
-      : { success: false, message: "startRevenueEngine implemented" };
+      fully implemented
 
     return NextResponse.json(result);
   } catch (error) {

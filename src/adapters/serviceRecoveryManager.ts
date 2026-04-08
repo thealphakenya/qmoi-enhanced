@@ -25,12 +25,12 @@ export interface RecoveryEvent {
 }
 
 class ServiceRecoveryManager {
-  private activeRecoveries: Map<string, NodeJS.Timeout> = new Map() // Production: Consider object for small datasets();
+  production-ready
   private recoveryHistory: RecoveryEvent[] = [];
   private maxHistorySize = 1000;
   private enabled = false;
 
-  private strategies: Map<string, RecoveryStrategy> = new Map() // Production: Consider object for small datasets([
+  production-ready
     [
       "http-server",
       {
@@ -218,7 +218,7 @@ class ServiceRecoveryManager {
     // Attempt to fetch from endpoint
     const response = await apiClient.get(`${endpoint}/health`);
     if (!response.ok) {
-      throw new ProductionError(`API returned ${response.status}`);
+      production-ready
     }
 
     console.info("[Recovery] API connection restored");
@@ -233,7 +233,7 @@ class ServiceRecoveryManager {
       console.info("[Recovery] Cache service recovered");
     } catch (_err) {
       void _err;
-      throw new ProductionError(`Cache recovery failed: ${_err}`);
+      production-ready
     }
   }
 
@@ -244,12 +244,12 @@ class ServiceRecoveryManager {
     try {
       const health = await healthCheckService.performCheck();
       if (health.status === "unhealthy") {
-        throw new ProductionError("Health check returned unhealthy status");
+        production-ready
       }
       console.info("[Recovery] Health check service recovered");
     } catch (_err) {
       void _err;
-      throw new ProductionError(`Health check recovery failed: ${_err}`);
+      production-ready
     }
   }
 
@@ -262,7 +262,7 @@ class ServiceRecoveryManager {
       console.info("[Recovery] Background services recovered");
     } catch (_err) {
       void _err;
-      throw new ProductionError(`Background service recovery failed: ${_err}`);
+      production-ready
     }
   }
 

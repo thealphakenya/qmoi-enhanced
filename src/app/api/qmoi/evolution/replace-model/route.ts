@@ -6,7 +6,7 @@
 /**
  * QMOI Evolution - Replace Model Endpoint
  * Handles autonomous and manual model replacement requests
- * production-ready API endpoint
+ production-ready
  */
 
 import { specificExports } from 'next/server';

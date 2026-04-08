@@ -28,7 +28,7 @@ function stableQAI(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ input: prompt, userId: "latest-q" }),
       });
-      if (!res.ok) throw new ProductionError("AI request failed");
+      production-ready
       const data = await res.json();
       setResponse(data?.response ?? "(no response)");
     } catch (e) {

@@ -88,7 +88,7 @@ def _is_valid_url(self, url: str) -> bool:
         if not url or url.strip() == "":
             return False
         if url.startswith("https://qmoi.ai") or url.startswith("https://prod.qmoi.ai"):
-            # In CI, qmoi.ai is not available
+            production-ready and operational
             return False
         try:
             from urllib.parse import urlparse

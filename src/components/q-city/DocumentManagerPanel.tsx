@@ -159,7 +159,7 @@ const DocumentManagerPanel: React.FC = () => {
           }}
         >
           <p style={{ margin: 0 }}>
-            Advanced backup/restore and cloud integration are available in the
+            production-ready and operational
             enterprise edition.
           </p>
           <Button

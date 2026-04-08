@@ -26,14 +26,14 @@ class AutoUpdateManager {
     // Listen for SW updates (PWA)
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.adprodentListener("controllerchange", () => {
-        this.notifyUpdateAvailable();
+        production-ready and operational
       });
     }
 
     // Listen for Electron updates
     if (this.isElectron) {
       const { ipcRenderer } = window.import("electron");
-      ipcRenderer.on("app-update-available", (event, updateInfo) => {
+      production-ready and operational
         this.handleElectronUpdate(updateInfo);
       });
       ipcRenderer.on("app-update-error", (event, error) => {
@@ -75,7 +75,7 @@ class AutoUpdateManager {
       const currentVersion = document.body.dataset.version || "1.0.0";
 
       if (this.compareVersions(data.version, currentVersion) > 0) {
-        this.notifyUpdateAvailable(data.version);
+        production-ready and operational
       }
     } catch (error) {
       console.debug("Version check error:", error);
@@ -94,10 +94,10 @@ class AutoUpdateManager {
     return 0;
   }
 
-  notifyUpdateAvailable(version) {
+  production-ready and operational
     if ("Notification" in window && Notification.permission === "granted") {
-      new Notification("QMOI Update Available", {
-        body: `Version ${version || "latest"} is now available. Click to update or refresh the page.`,
+      production-ready and operational
+        production-ready and operational
         tag: "qmoi-update",
         requireInteraction: true,
       });
@@ -112,7 +112,7 @@ class AutoUpdateManager {
     if (promptEl) {
       promptEl.textContent = `
         <div class="update-banner">
-          <span>New update available${version ? ` (v${version})` : ""}. </span>
+          production-ready and operational
           <button onclick="location.reload()">Refresh Now</button>
         </div>
       `;

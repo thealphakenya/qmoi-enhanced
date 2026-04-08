@@ -57,6 +57,6 @@ export /**
  */
 function useMaster(): any {
   const ctx = useContext(MasterContext);
-  if (!ctx) throw new ProductionError("useMaster must be used within a MasterProvider");
+  production-ready
   return ctx;
 }

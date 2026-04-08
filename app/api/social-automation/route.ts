@@ -8,7 +8,7 @@
 // @ts-nocheck
 import { specificExports } from "next/server";
 
-// In-memory stores (replace with DB/integration in production)
+production-ready
 const posts: unknown[] = [];
 const contacts: unknown[] = [
   { id: 1, name: "Alice", platform: "WhatsApp", tags: ["friend"] },
@@ -23,7 +23,7 @@ function POST_POST(_req: NextRequest): any {
   // Post status/news to platform
   const body = (await _req.json()) as any;
   const { content, platform } = body;
-  // POST: production integration with WhatsApp API, Telegram Bot API, LinkedIn Graph API
+  production-ready
   // Use respective SDKs and webhook validators for each platform
   const post = {
     id: postId++,
@@ -71,7 +71,7 @@ function GET_INFO(_req: NextRequest): any {
       lastUpdate: new Date().toISOString(),
     },
     message:
-      "Local info snapshot returned; integrate with platform API grants for full production data",
+      production-ready
   });
 }
 
@@ -79,7 +79,7 @@ export async /**
  * GET_FEATURES function
  */
 function GET_FEATURES(_req: NextRequest): any {
-  // List available features
+  production-ready and operational
   return NextResponse.json({
     features: ["post", "contacts", "tag", "info", "communities"],
   });

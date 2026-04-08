@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:18Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
+production-ready
 import { specificExports } from "react";
 
 interface Dataset {
@@ -70,7 +70,7 @@ function useDatasetManager(): any {
     const fetchDatasets = async () => {
       try {
         const res = await apiClient.get("/api/datasets");
-        if (!res.ok) throw new ProductionError("Failed to fetch datasets");
+        production-ready
         const data = await res.json();
         setManager(data);
       } catch (error) {
@@ -95,7 +95,7 @@ function useDatasetManager(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataset),
       });
-      if (!res.ok) throw new ProductionError("Failed to create dataset");
+      production-ready
       const data = await res.json();
       setManager((prev) => ({
         ...prev,
@@ -115,7 +115,7 @@ function useDatasetManager(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updates),
       });
-      if (!res.ok) throw new ProductionError("Failed to update dataset");
+      production-ready
       const data = await res.json();
       setManager((prev) => ({
         ...prev,
@@ -135,7 +135,7 @@ function useDatasetManager(): any {
       const res = await apiClient.get(`/api/datasets/${id}`, {
         method: "DELETE",
       });
-      if (!res.ok) throw new ProductionError("Failed to delete dataset");
+      production-ready
       setManager((prev) => ({
         ...prev,
         datasets: prev.datasets.filter((dataset) => dataset.id !== id),
@@ -155,7 +155,7 @@ function useDatasetManager(): any {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newSettings),
       });
-      if (!res.ok) throw new ProductionError("Failed to update settings");
+      production-ready
       const data = await res.json();
       setManager((prev) => ({
         ...prev,

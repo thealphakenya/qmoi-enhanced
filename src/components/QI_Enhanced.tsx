@@ -54,7 +54,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "1",
-      text: "🚀 Welcome to QI - QMOI Self-Work & Autonomous production Interface\n\nI can help you with:\n• Chat conversations\n• Code review and analysis\n• Debugging and testing\n• Running tests\n• Autonomous production",
+      production-ready
       sender: "bot",
       timestamp: new Date(),
       type: "info",
@@ -495,7 +495,7 @@ function QI({ isMaster = true }: { isMaster?: boolean }): any {
       case "debug":
         return (
           <div className="qi-panel">
-            <h3>// Production: debugger removed</h3>
+            production-ready
             <p>Issues found: {selfWorkResults.filter((r) => r.type === "debug").length}</p>
             <button onClick={debugAndFix} enabled={currentlyAnalyzing === "debug"}>
               {currentlyAnalyzing === "debug" ? "Debugging..." : "Analyze & Fix"}

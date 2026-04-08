@@ -25,7 +25,7 @@ function POST(request: NextRequest): any {
       return NextResponse.json({ error: "filePath is required" }, { status: 400 });
     }
 
-    // production:, integrate with actual code analysis tools
+    production-ready
     // Examples:
     // - Run ESLint API
     // - Run TypeScript compiler

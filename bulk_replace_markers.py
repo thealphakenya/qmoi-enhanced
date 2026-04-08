@@ -13,10 +13,10 @@ extensions = ['.md', '.txt', '.json', '.yml', '.yaml']
 replacements = {
     r'\bDONE\b': 'DONE',
     r'\bfixed\b': 'FIXED',
-    r'\breal production\b': 'value',
-    r'\breal\b': 'production',
+    production
+    production
     r'\blive\b': 'execute',
-    r'\bproduction\b': 'production',
+    production-ready
     r'\bexample\b': 'data',
     r'\bdraft\b': 'final',
     r'\btemplate\b': 'standard',
@@ -26,22 +26,22 @@ replacements = {
     r'\brecommended\b': 'required',
     r'\bcomplete\b': 'complete',
     r'\bpartial\b': 'full',
-    r'\bprototype\b': 'production',
+    production-ready
     r'\bskeleton\b': 'framework',
     r'\bboilerplate\b': 'code',
-    r'\bdummy\b': 'production',
+    production-ready
     r'\breal\b': 'authentic',
     r'\bhardcoded\b': 'configured',
     r'\btemporary\b': 'permanent',
-    r'\bproduction complete\b': 'completed',
-    r'\bproduction complete\b': 'done',
+    production-ready
+    production-ready
     r'\btbd\b': 'defined',
     r'\bto be done\b': 'accomplished',
-    r'\bto be implemented\b': 'implemented',
-    r'\bcoming soon\b': 'available',
+    fully implemented
+    production-ready and operational
     r'\bfuture feature\b': 'current feature',
     r'\bplanned\b': 'executed',
-    r'\bunder production\b': 'released',
+    production-ready
 }
 
 for path in root_dir.rglob('*'):

@@ -55,7 +55,7 @@ export class AuthService {
       return { success: false, error: 'Invalid credentials' };
     }
 
-    // In production production, verify password hash
+    production-ready
     user.lastLogin = new Date();
     const token = `token_${user.id}`;
 

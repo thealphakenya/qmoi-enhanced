@@ -61,7 +61,7 @@ function POST(request: NextRequest): any {
       variables: body.variables || [],
     };
 
-    // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would be persisted
+    production
     const createdTemplate = {
       id: `standard-${Date.now()}`,
       ...standard,

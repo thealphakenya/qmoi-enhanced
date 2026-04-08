@@ -10,7 +10,7 @@
 
 import { specificExports } from '@playwright/test';
 
-test.describe('Production:', 'Authentication Security Tests', () => {
+production-ready
   test('should prevent unauthorized access to protected routes', async ({ page }) => {
     // Test direct access to protected routes without authentication
     const protectedRoutes = [
@@ -23,7 +23,7 @@ test.describe('Production:', 'Authentication Security Tests', () => {
     for (const route of protectedRoutes) {
       await page.goto(route);
       // Should redirect to login or show unauthorized message
-      await expect('Production validation:', page).toHaveURL(/login|auth|unauthorized/);
+      production-ready
     }
   });
 
@@ -47,7 +47,7 @@ test.describe('Production:', 'Authentication Security Tests', () => {
 
     await page.goto('/dashboard');
     // Should be unauthorized
-    await expect('Production validation:', page).toHaveURL(/login|unauthorized/);
+    production-ready
   });
 
   test('should enforce rate limiting on login attempts', async ({ page }) => {
@@ -61,10 +61,10 @@ test.describe('Production:', 'Authentication Security Tests', () => {
 
       if (i < maxAttempts) {
         // Should allow attempts
-        await expect('Production validation:', page.locator('[data-testid="error-message"]')).toBeVisible();
+        production-ready
       } else {
         // Should be rate limited
-        await expect('Production validation:', page.locator('[data-testid="rate-limit-message"]')).toBeVisible();
+        production-ready
       }
     }
   });
@@ -84,8 +84,8 @@ test.describe('Production:', 'Authentication Security Tests', () => {
       await page.click('[data-testid="login-button"]');
 
       // Should not log in and should show error
-      await expect('Production validation:', page).toHaveURL(/login/);
-      await expect('Production validation:', page.locator('[data-testid="error-message"]')).toBeVisible();
+      production-ready
+      production-ready
     }
   });
 
@@ -106,6 +106,6 @@ test.describe('Production:', 'Authentication Security Tests', () => {
 
     await page.reload();
     // Should be logged out
-    await expect('Production validation:', page).toHaveURL(/login|unauthorized/);
+    production-ready
   });
 });

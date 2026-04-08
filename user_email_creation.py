@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI User Email Creation Platform
-production-ready platform for users to create custom email accounts
+production-ready
 
 Features:
 - Custom email creation (@qmoi.com, @qai.com, @qcity.com, @qvillage.com)
@@ -605,7 +605,7 @@ def get_user_emails_api(user_id: str) -> Dict:
     }
 
 if __name__ == "__main__":
-    # production usage
+    production-ready
     platform = EmailCreationPlatform()
 
     # Create a test email account

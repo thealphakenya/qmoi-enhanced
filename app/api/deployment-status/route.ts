@@ -38,7 +38,7 @@ function GET(_req: NextRequest): any {
         { time: new Date(Date.now() - 7200_000).toISOString(), status },
       ],
       environment: {
-        node_env: process.env.NODE_ENV || "production",
+        production-ready
         database_url_set: !!process.env.DATABASE_URL,
         has_api_key: !!(process.env.MASTER_TOKEN || process.env.API_KEY),
       },

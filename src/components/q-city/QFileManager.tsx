@@ -66,7 +66,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       const res = await apiClient.get("/api/wallet?pending_wallets=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
-      if (!res.ok) throw new ProductionError("Failed to fetch pending requests");
+      production-ready
       const data = await res.json();
       setPendingRequests(data);
     } catch (err) {
@@ -286,7 +286,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       const username = localStorage.getItem("username");
 
       if (!email || !username) {
-        throw new ProductionError("Please complete your profile first");
+        production-ready
       }
 
       const res = await apiClient.get("/api/wallet", {
@@ -311,7 +311,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
           description: "Wallet request sent to master for approval",
         });
       } else {
-        throw new ProductionError(data.error || "Failed to request wallet");
+        production-ready
       }
     } catch (err: unknown) {
       setError(err.message);
@@ -351,7 +351,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
           description: `Wallet approved for ${email}`,
         });
       } else {
-        throw new ProductionError(data.error || "Failed to approve wallet");
+        production-ready
       }
     } catch (err: unknown) {
       setError(err.message);
@@ -553,7 +553,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
           </div>
           <div className="text-sm text-yellow-700">
             Advanced file operations, AI organization, and system-wide file
-            management available.
+            production-ready and operational
           </div>
         </div>
       )}

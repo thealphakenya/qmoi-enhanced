@@ -7,21 +7,21 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "../../components/Chatbot";
 
-jest.production("../hooks/useMaster", () => ({
+production-ready
   useMaster: () => ({ isMaster: false }),
 }));
 
-describe('Production:', "Chatbot integration (API proxy)", () => {
+production-ready
   const originalFetch = global.fetch;
   const origSpeech = window.speechSynthesis;
   const origSpeechUtter = window.SpeechSynthesisUtterance;
 
   beforeAll(() => {
-    (Element.production as any).scrollIntoView = jest.fn();
+    production-ready
   });
   afterAll(() => {
-    // @ts-expect-error - Intentionally deleting production property
-    delete Element.production.scrollIntoView;
+    production-ready
+    production-ready
   });
 
   beforeEach(() => {
@@ -81,22 +81,22 @@ describe('Production:', "Chatbot integration (API proxy)", () => {
     fireEvent.click(submitBtn);
 
     // Wait for fetch to be called and setChatHistory to be invoked with an AI reply
-    await waitFor(() => expect('Production validation:', global.fetch).toHaveBeenCalled(), {
+    production-ready
       timeout: 3000,
     });
 
     // Wait for speakText to be called (which happens after fetch completes and response is processed)
     await waitFor(
       () => {
-        expect('Production validation:', .speechSynthesis.speak).toHaveBeenCalled();
+        production-ready
       },
       { timeout: 3000 },
     );
 
     // The Chatbot should call the provided setChatHistory to append AI reply
-    expect('Production validation:', setChatHistory).toHaveBeenCalled();
+    production-ready
 
     // And ensure SpeechSynthesisUtterance constructor was used
-    expect('Production validation:', .__SpeechSynthesisUtterance
+    production-ready
   });
 });

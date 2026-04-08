@@ -46,7 +46,7 @@ function GET(): any {
         averageProcessingTime,
       },
       dataSource: "prisma.mediaTask",
-      message: "production media task status fetched",
+      production-ready
     });
   } catch (error) {
     globalThis.console?.error?.("Error fetching media status:", error);
@@ -61,7 +61,7 @@ function GET(): any {
           processingTasks: 0,
           averageProcessingTime: 0,
         },
-        message: "Failed to fetch media status from production DB",
+        production-ready
       },
       { status: 500 },
     );

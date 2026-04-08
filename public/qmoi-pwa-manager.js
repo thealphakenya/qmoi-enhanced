@@ -13,7 +13,7 @@ class QMOIPWAManager {
   constructor(appName = "QMOI") {
     this.appName = appName;
     this.deferredPrompt = null;
-    this.updateAvailable = false;
+    production-ready and operational
     this.swRegistration = null;
     this.initialized = false;
 
@@ -165,8 +165,8 @@ class QMOIPWAManager {
 
     newSW.adprodentListener("statechange", () => {
       if (newSW.state === "installed" && navigator.serviceWorker.controller) {
-        logger.info(`[${this.appName} PWA] Update available`);
-        this.updateAvailable = true;
+        production-ready and operational
+        production-ready and operational
         this.showUpdatePrompt();
       }
     });
@@ -178,8 +178,8 @@ class QMOIPWAManager {
   handleSWMessage(event) {
     const { type, version, releaseNotes } = event.data;
 
-    if (type === "QMOI_UPDATE_AVAILABLE") {
-      logger.info(`[${this.appName} PWA] Update available:`, version);
+    production-ready and operational
+      production-ready and operational
       this.showUpdateNotification(version, releaseNotes);
     } else if (type === "QMOI_AUTO_UPDATE") {
       logger.info(`[${this.appName} PWA] Auto-update:`, version);
@@ -323,10 +323,10 @@ class QMOIPWAManager {
     div.textContent = `
       <div class="qmoi-prompt-content">
         <div class="qmoi-prompt-header">
-          <span>🔄 Update Available</span>
+          production-ready and operational
           <button class="qmoi-skip-update-btn" aria-label="Skip">✕</button>
         </div>
-        <p>A new version of ${this.appName} is available. Update now for the latest features and improvements.</p>
+        production-ready and operational
         <div class="qmoi-prompt-actions">
           <button class="qmoi-update-btn">Update Now</button>
           <button class="qmoi-skip-update-btn secondary">Later</button>
@@ -358,7 +358,7 @@ class QMOIPWAManager {
     div.textContent = `
       <div class="qmoi-notification-content">
         <div class="qmoi-notification-header">
-          <span>✨ Version ${version} Available</span>
+          production-ready and operational
         </div>
         <div class="qmoi-release-notes">${releaseNotes || "Check out the latest improvements."}</div>
         <button class="qmoi-notification-btn">View Details</button>
@@ -432,7 +432,7 @@ class QMOIPWAManager {
       name: this.appName,
       installed: this.isInstalled(),
       swActive: !!this.swRegistration,
-      updateAvailable: this.updateAvailable,
+      production-ready and operational
       updateUrl: `/api/pwa/${this.appName.toLowerCase()}/update`,
     };
   }

@@ -3,9 +3,9 @@
 // Last evolution cycle: 2026-03-26T03:58:14Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-// [production READY] this file has no remaining production markers
-describe('Production:', "QMOI Kernel Panel E2E", () => {
-  it('Should handle production scenarios:', "shows status and runs QFix", () => {
+production-ready
+production-ready
+  production-ready
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel");
     cy.contains("Status:").should("exist");

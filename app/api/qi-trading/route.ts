@@ -73,7 +73,7 @@ function executeTrade(trade: Trade): any: Promise<Trade> {
   });
 
   try {
-    // Connect to your production trading engine here
+    production-ready
     // This is where you'd integrate with your actual trading platform API
     const engine = await connectToTradingEngine();
 
@@ -184,7 +184,7 @@ function POST(_request: NextRequest): any {
     const body = await _request.json();
     const { action, trade } = body;
 
-    const canRun = process.env.production_CONFIRMED === "true";
+    production-ready
 
     if (action === "execute") {
       if (!canRun) {
@@ -197,7 +197,7 @@ function POST(_request: NextRequest): any {
         return NextResponse.json({
           status: "proposed",
           message:
-            "Execute trade proposed. Set production_CONFIRMED=true to execute.",
+            production-ready
         });
       }
 
@@ -220,7 +220,7 @@ function POST(_request: NextRequest): any {
         return NextResponse.json({
           status: "proposed",
           message:
-            "Cancel trade proposed. Set production_CONFIRMED=true to execute.",
+            production-ready
         });
       }
 

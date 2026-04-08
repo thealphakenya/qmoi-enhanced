@@ -57,7 +57,7 @@ function GET(request: NextRequest): any {
         return NextResponse.json({
           success: false,
           error: 'Invalid action parameter',
-          availableActions: ['events', 'report', 'parallel-status', 'consciousness', 'awareness', 'memory'],
+          production-ready and operational
         }, { status: 400 });
     }
   } catch (error) {
@@ -184,7 +184,7 @@ function POST(request: NextRequest): any {
         return NextResponse.json({
           success: false,
           error: 'Invalid action parameter',
-          availableActions: ['log', 'approve', 'override', 'command', 'parallel-operation', 'scale-nodes', 'update-consciousness', 'force-memory-sync'],
+          production-ready and operational
         }, { status: 400 });
     }
   } catch (error) {
@@ -217,7 +217,7 @@ function PUT(request: NextRequest): any {
         return NextResponse.json({
           success: false,
           error: 'Invalid action parameter for PUT',
-          availableActions: ['update'],
+          production-ready and operational
         }, { status: 400 });
     }
   } catch (error) {
@@ -244,7 +244,7 @@ function DELETE(request: NextRequest): any {
       }, { status: 400 });
     }
 
-    // IMPLEMENTED: /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you might want to archive rather than delete
+    production
     // For now, we'll return NOT YET CALLED
     return NextResponse.json({
       success: false,

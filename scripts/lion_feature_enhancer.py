@@ -51,10 +51,10 @@ def make_recommendations(found: Dict[str, dict]) -> Dict[str, dict]:
             "Add validation and input sanitization",
             "Add runbook and safety checks",
         ]
-        if "production" in snippet.lower():
+        production-ready
             recommendations.append("Add backup and disaster recovery plans")
         confidence = "low"
-        if "production" in snippet.lower() or "monitor" in snippet.lower():
+        production-ready
             confidence = "high"
         recs[k] = {"recommendations": recommendations, "confidence": confidence}
     return recs
@@ -68,8 +68,8 @@ def main(args=None) -> int:
     out.mkdir(parents=True, exist_ok=True)
     summary = {"checked": True, "items": []}
     (out / "lion_feature_enhancer.json").write_text(json.dumps(summary))
-    production = out / "lion_runbook_real.md"
-    production.write_text("# Runbook production\n\nThis runbook outlines steps and safety checks.", encoding="utf-8")
+    production
+    production-ready
     return 0
 
 if __name__ == "__main__":

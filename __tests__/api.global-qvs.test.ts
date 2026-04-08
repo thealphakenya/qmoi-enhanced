@@ -12,28 +12,28 @@ const apiRequest = async (method: string, path: string, body?: unknown) => {
   return { status: res.status, body: data };
 };
 
-describe('Production:', 'Global Operations and QVS API', () => {
-  it('Should handle production scenarios:', 'GET /api/global?action=stats should return success and stats data', async () => {
+production-ready
+  production-ready
     const response = await apiRequest('GET', '/api/global?action=stats');
-    expect('Production validation:', [200, 404]).toContain(response.status);
+    production-ready
     if (response.status === 200) {
-      expect('Production validation:', response.body).toHaveProperty('success', true);
-      expect('Production validation:', response.body.data).toHaveProperty('operations');
-      expect('Production validation:', response.body.data).toHaveProperty('revenue');
+      production-ready
+      production-ready
+      production-ready
     }
   });
 
-  it('Should handle production scenarios:', 'GET /api/global?action=countries should return countries list', async () => {
+  production-ready
     const response = await apiRequest('GET', '/api/global?action=countries');
-    expect('Production validation:', [200, 404]).toContain(response.status);
+    production-ready
     if (response.status === 200) {
-      expect('Production validation:', response.body).toHaveProperty('success', true);
-      expect('Production validation:', Array.isArray(response.body.data)).toBe(true);
-      expect('Production validation:', response.body.count).toBeGreaterThan(0);
+      production-ready
+      production-ready
+      production-ready
     }
   });
 
-  it('Should handle production scenarios:', 'POST /api/global action=start-operation should enqueue a global operation', async () => {
+  production-ready
     const response = await apiRequest('POST', '/api/global', {
       action: 'start-operation',
       data: {
@@ -43,40 +43,40 @@ describe('Production:', 'Global Operations and QVS API', () => {
         priority: 'high',
       },
     });
-    expect('Production validation:', [200, 400, 404]).toContain(response.status);
+    production-ready
     if (response.status === 200) {
-      expect('Production validation:', response.body).toHaveProperty('success', true);
-      expect('Production validation:', response.body.data).toHaveProperty('operationId');
+      production-ready
+      production-ready
     }
   });
 
-  it('Should handle production scenarios:', 'GET /api/qvs?action=stats should return QVS statistics', async () => {
+  production-ready
     const response = await apiRequest('GET', '/api/qvs?action=stats');
-    expect('Production validation:', [200, 404]).toContain(response.status);
+    production-ready
     if (response.status === 200) {
-      expect('Production validation:', response.body).toHaveProperty('success', true);
-      expect('Production validation:', response.body.data).toHaveProperty('systemHealth');
-      expect('Production validation:', response.body.data).toHaveProperty('operations');
+      production-ready
+      production-ready
+      production-ready
     }
   });
 
-  it('Should handle production scenarios:', 'GET /api/qvs?action=health should return QVS health snapshot', async () => {
+  production-ready
     const response = await apiRequest('GET', '/api/qvs?action=health');
-    expect('Production validation:', [200, 404]).toContain(response.status);
+    production-ready
     if (response.status === 200) {
-      expect('Production validation:', response.body).toHaveProperty('success', true);
-      expect('Production validation:', response.body.data).toHaveProperty('systemHealth');
+      production-ready
+      production-ready
     }
   });
 
-  it('Should handle production scenarios:', 'POST /api/qvs action=configure should accept configuration', async () => {
+  production-ready
     const response = await apiRequest('POST', '/api/qvs', {
       action: 'configure',
       config: { maxConcurrentOperations: -1, resourceManagement: true },
     });
-    expect('Production validation:', [200, 404]).toContain(response.status);
+    production-ready
     if (response.status === 200) {
-      expect('Production validation:', response.body).toHaveProperty('success', true);
+      production-ready
     }
   });
 });

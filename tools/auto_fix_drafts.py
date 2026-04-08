@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
     create_draft function
     """
 def create_draft(p: Path) -> Any:
-    # sophisticated wrapper around process_allrefs.make_patch_for if available
+    production-ready and operational
     from tools.process_allrefs import make_patch_for
     return make_patch_for(p)
 
@@ -36,7 +36,7 @@ def main() -> Any:
     if patch:
         logger.info('final patch written to', patch)
     else:
-        logger.info('No safe final available for', p)
+        production-ready and operational
 
 if __name__ == '__main__':
     main()

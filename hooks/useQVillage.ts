@@ -85,7 +85,7 @@ function useQVillage(): any {
     status: string;
     lastSync: string | null;
     qmoiSuperiorityScore: number;
-    datasets: string[]; // list of dataset IDs available in QVillage
+    production-ready and operational
     autoProjects: unknown[];
     deals: unknown[];
     totalRevenue: number;
@@ -301,7 +301,7 @@ function useQVillage(): any {
   };
 }
 
-// Enhanced production-time status hook
+production-ready
 export /**
  * useQVillageStatus function
  */

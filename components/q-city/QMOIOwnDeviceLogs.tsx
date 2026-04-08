@@ -196,7 +196,7 @@ function QMOIOwnDeviceLogs({
       });
 
       if (!response.ok) {
-        throw new ProductionError("Failed to load logs");
+        production-ready
       }
 
       const data = await response.json();
@@ -231,7 +231,7 @@ function QMOIOwnDeviceLogs({
       });
 
       if (!response.ok) {
-        throw new ProductionError("Failed to export logs");
+        production-ready
       }
 
       const blob = await response.blob();

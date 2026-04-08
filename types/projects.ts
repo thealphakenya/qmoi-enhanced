@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:12Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-[production READY] all markers normalized for completion
+production-ready
 export interface Project {
   id: string;
   name: string;
@@ -27,7 +27,7 @@ export interface Task {
   projectId: string;
   title: string;
   description: string;
-  status: "[production READY]" | "in-progress" | "review" | "completed";
+  production-ready
   priority: "low" | "medium" | "high" | "critical";
   assignee: string;
   dueDate: number;
@@ -43,7 +43,7 @@ export interface Resource {
   projectId: string;
   name: string;
   type: "human" | "equipment" | "software" | "other";
-  status: "available" | "allocated" | "maintenance";
+  production-ready and operational
   cost: number;
   allocation: number;
   startDate: number;

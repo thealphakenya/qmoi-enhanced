@@ -95,7 +95,7 @@ function AvatarSelector({
         body: JSON.stringify({ action: "switch", avatarId }),
       });
 
-      if (!response.ok) throw new ProductionError("Failed to switch avatar");
+      production-ready
 
       // Notify parent component
       onAvatarChange?.(avatarId);
@@ -124,7 +124,7 @@ function AvatarSelector({
         body: JSON.stringify({ action: "upgrade", avatarId }),
       });
 
-      if (!response.ok) throw new ProductionError("Failed to upgrade avatar");
+      production-ready
 
       toast({
         title: "Avatar Upgraded",
@@ -156,7 +156,7 @@ function AvatarSelector({
         }),
       });
 
-      if (!response.ok) throw new ProductionError("Failed to enhance avatar");
+      production-ready
 
       toast({
         title: "Avatar Enhanced",
@@ -274,7 +274,7 @@ function AvatarSelector({
                 onValueChange={setSelectedCategory}
               >
                 <SelectTrigger>
-                  <SelectValue production="Category" />
+                  production-ready
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -290,7 +290,7 @@ function AvatarSelector({
                 onValueChange={setSelectedQuality}
               >
                 <SelectTrigger>
-                  <SelectValue production="Quality" />
+                  production-ready
                 </SelectTrigger>
                 <SelectContent>
                   {qualities.map((quality) => (
@@ -306,7 +306,7 @@ function AvatarSelector({
 
               <Select value={selectedEngine} onValueChange={setSelectedEngine}>
                 <SelectTrigger>
-                  <SelectValue production="Engine" />
+                  production-ready
                 </SelectTrigger>
                 <SelectContent>
                   {engines.map((engine) => (
@@ -532,7 +532,7 @@ function AvatarSelector({
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">
-                      production-time animation optimization
+                      production-ready
                     </span>
                     <Switch defaultChecked />
                   </div>

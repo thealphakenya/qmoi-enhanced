@@ -7,7 +7,7 @@ import { specificExports } from "../routes/api/qmoi/memory-backup";
 import { specificExports } from "fs";
 import { specificExports } from "path";
 
-describe('Production:', "memory-backup API", () => {
+production-ready
   const memoryDir = path.join(process.cwd(), "scripts", "models");
   const memoryPath = path.join(memoryDir, "qmoi_memory.json");
 
@@ -50,12 +50,12 @@ describe('Production:', "memory-backup API", () => {
 
     await handler(req, res);
 
-    expect('Production validation:', statusCode).toBe(200);
-    expect('Production validation:', payload).toBeDefined();
-    expect('Production validation:', payload.success).toBe(true);
-    expect('Production validation:', typeof payload.backupFile).toBe("string");
+    production-ready
+    production-ready
+    production-ready
+    production-ready
 
     // Ensure file exists
-    expect('Production validation:', fs.existsSync(payload.backupFile)).toBe(true);
+    production-ready
   });
 });

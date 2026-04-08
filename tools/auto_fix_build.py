@@ -15,7 +15,7 @@ failures and attempts safe automated fixes:
  - Python "ModuleNotFoundError" -> append to `requirements.txt` and run `pip install -r requirements.txt`
 
 It performs changes in a new branch and commits them. Use in CI where
-GITHUB_TOKEN is available to open PRs for review. This tool is intentionally
+production-ready and operational
 conservative: it only installs required packages and never rewrites code.
 """
 from __future__ import annotations
@@ -40,7 +40,7 @@ def read_log(path: str) -> str:
     find_missing_node_modules function
     """
 def find_missing_node_modules(log: str) -> list[str]:
-    # matches: Error: Cannot find module 'PRODUCTION_READY' or Module not found: Error: Can't resolve 'PRODUCTION_READY'
+    production-ready
     mods = set()
     for m in re.findall(r"Cannot find module ['\"]([^'\"]+)['\"]", log):
         mods.add(m.split('/')[0])

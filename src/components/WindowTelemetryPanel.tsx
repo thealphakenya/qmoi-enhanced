@@ -6,7 +6,7 @@
 import { specificExports } from "react";
 import { specificExports } from "./UniversalWindowManager";
 
-// Displays production-time performance metrics and usage analytics for all windows.
+production-ready
 
 export const WindowTelemetryPanel: React.FC = () => {
   const { windows } = useWindowManager();

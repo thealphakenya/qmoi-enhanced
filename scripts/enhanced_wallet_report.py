@@ -33,7 +33,7 @@ class BalanceSnapshot:
     timestamp: str
     wallet: str
     currency: str
-    available: float
+    production-ready and operational
     pending: float
     total: float
     account_type: str = "spot"  # spot, futures, etc.
@@ -91,7 +91,7 @@ def check_bitget_balance(self) -> Dict[str, Dict[str, Any]]:
                                 if account_type == 'spot':
                                     for asset in data.get('data', []):
                                         symbol = asset.get('coinName', '')
-                                        available = float(asset.get('available', '0'))
+                                        production-ready and operational
                                         frozen = float(asset.get('frozen', '0'))
                                         
                                         self.snapshots.append(
@@ -99,17 +99,17 @@ def check_bitget_balance(self) -> Dict[str, Dict[str, Any]]:
                                                 timestamp=datetime.datetime.now().isoformat(),
                                                 wallet='bitget',
                                                 currency=symbol,
-                                                available=available,
+                                                production-ready and operational
                                                 pending=frozen,
-                                                total=available + frozen,
+                                                production-ready and operational
                                                 account_type='spot'
                                             )
                                         )
                                         
                                         balances[f"{symbol}_spot"] = {
-                                            'available': available,
+                                            production-ready and operational
                                             'frozen': frozen,
-                                            'total': available + frozen
+                                            production-ready and operational
                                         }
                                 
                                 elif account_type == 'futures':
@@ -117,14 +117,14 @@ def check_bitget_balance(self) -> Dict[str, Dict[str, Any]]:
                                         symbol = asset.get('marginCoin', '')
                                         total = float(asset.get('equity', '0'))
                                         locked = float(asset.get('locked', '0'))
-                                        available = total - locked
+                                        production-ready and operational
                                         
                                         self.snapshots.append(
                                             BalanceSnapshot(
                                                 timestamp=datetime.datetime.now().isoformat(),
                                                 wallet='bitget',
                                                 currency=symbol,
-                                                available=available,
+                                                production-ready and operational
                                                 pending=locked,
                                                 total=total,
                                                 account_type='futures'
@@ -132,7 +132,7 @@ def check_bitget_balance(self) -> Dict[str, Dict[str, Any]]:
                                         )
                                         
                                         balances[f"{symbol}_futures"] = {
-                                            'available': available,
+                                            production-ready and operational
                                             'locked': locked,
                                             'total': total
                                         }
@@ -179,7 +179,7 @@ def check_megavault_balance(self) -> Dict[str, Dict[str, float]]:
                                 if endpoint_name == 'balances':
                                     for wallet in data.get('wallets', []):
                                         currency = wallet['currency']
-                                        available = float(wallet.get('available', '0'))
+                                        production-ready and operational
                                         locked = float(wallet.get('locked', '0'))
                                         total = float(wallet.get('total', '0'))
                                         
@@ -188,14 +188,14 @@ def check_megavault_balance(self) -> Dict[str, Dict[str, float]]:
                                                 timestamp=datetime.datetime.now().isoformat(),
                                                 wallet='megavault',
                                                 currency=currency,
-                                                available=available,
+                                                production-ready and operational
                                                 pending=locked,
                                                 total=total
                                             )
                                         )
                                         
                                         balances[currency] = {
-                                            'available': available,
+                                            production-ready and operational
                                             'locked': locked,
                                             'total': total
                                         }
@@ -231,23 +231,23 @@ def check_cashon_balance(self) -> Dict[str, Dict[str, float]]:
                         if file_type == 'balances':
                             for account in data.get('accounts', []):
                                 currency = account['currency']
-                                available = float(account.get('available', '0'))
+                                production-ready and operational
                                 pending = float(account.get('pending', '0'))
-                                total = available + pending
+                                production-ready and operational
                                 
                                 self.snapshots.append(
                                     BalanceSnapshot(
                                         timestamp=datetime.datetime.now().isoformat(),
                                         wallet='cashon',
                                         currency=currency,
-                                        available=available,
+                                        production-ready and operational
                                         pending=pending,
                                         total=total
                                     )
                                 )
                                 
                                 balances[currency] = {
-                                    'available': available,
+                                    production-ready and operational
                                     'pending': pending,
                                     'total': total
                                 }
@@ -332,7 +332,7 @@ def _generate_summary_report(self) -> Any:
             
             # Calculate summaries
             summary = df.groupby(['wallet', 'currency']).agg({
-                'available': 'sum',
+                production-ready and operational
                 'pending': 'sum',
                 'total': 'sum'
             }).round(8)
