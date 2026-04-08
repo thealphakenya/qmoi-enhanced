@@ -198,10 +198,13 @@ Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a 
 | **API Gateway** | RESTful API server | [api.qmoi.com](https://api.qmoi.com) | rate-limit, webhooks, caching |
 | **Auth Service** | Authentication & OAuth2 | [auth.qmoi.com](https://auth.qmoi.com) | biometric, 2FA, SSO |
 | **CDN** | Content delivery network | [cdn.qmoi.com](https://cdn.qmoi.com) | images, videos, static assets |
+| **GoDaddy Clone** | Domain & hosting management | [qvs.qmoi.ai](https://qvs.qmoi.ai) | domain registration, DNS, hosting |
+| **GoDaddy Hosting** | Premium web hosting | [websphereelite.qmoi.com](https://websphereelite.qmoi.com) | VPS, dedicated servers, SSL |
+| **GoDaddy DNS** | DNS management service | [hostmasternexus.qmoi.com](https://hostmasternexus.qmoi.com) | DNS records, health monitoring |
 | **QCity** | Enterprise platform | [qcity.io](https://qcity.io) | teams, projects, workflows |
 | **Q Village Org** | Organization & governance | [qvillage.org](https://qvillage.org) | governance, voting, treasury |
 | **Q Global** | Global coordination hub | [qglobal.ai](https://qglobal.ai) | geolocation, time zones, regions |
-| **DomainForge Pro** | Domain registration & hosting | [domainforgepro.qmoi.com](https://domainforgepro.qmoi.com) | GoDaddy clone, SSL, DNS, active health monitoring |
+| **DomainForge Pro** | Domain registration & hosting | [qvs.qmoi.ai](https://qvs.qmoi.ai) | GoDaddy clone, SSL, DNS, active health monitoring |
 
 ### 🏗️ Infrastructure Domains (4+ Domains)
 

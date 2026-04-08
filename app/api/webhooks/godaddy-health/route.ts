@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false, error: "Invalid JSON payload" }, { status: 400 });
   }
 
-  const domain = payload.domain || payload.name || "domainforgepro.qmoi.com";
+  const domain = payload.domain || payload.name || "qvs.qmoi.ai";
   const nameservers = Array.isArray(payload.nameservers)
     ? payload.nameservers.map(String)
     : [];
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  const domain = request.nextUrl.searchParams.get("domain") || "domainforgepro.qmoi.com";
+  const domain = request.nextUrl.searchParams.get("domain") || "qvs.qmoi.ai";
   const info = await domainService.checkDomain(domain);
 
   return NextResponse.json({

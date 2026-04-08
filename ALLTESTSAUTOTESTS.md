@@ -67,6 +67,12 @@ This document catalogs all test files, test cases, and automation tests in the Q
 - [__tests__/api.qi-spaces.test.ts](__tests__/api.qi-spaces.test.ts)
 - [__tests__/api.qmoi.chat.test.ts](__tests__/api.qmoi.chat.test.ts)
 - [__tests__/api.selfTraining.test.ts](__tests__/api.selfTraining.test.ts)
+- [__tests__/godaddy-integration.test.ts](__tests__/godaddy-integration.test.ts)
+- [__tests__/godaddy-domain-health.test.ts](__tests__/godaddy-domain-health.test.ts)
+- [__tests__/godaddy-dns-management.test.ts](__tests__/godaddy-dns-management.test.ts)
+- [__tests__/godaddy-hosting-setup.test.ts](__tests__/godaddy-hosting-setup.test.ts)
+- [__tests__/godaddy-security-features.test.ts](__tests__/godaddy-security-features.test.ts)
+- [__tests__/godaddy-paid-features.test.ts](__tests__/godaddy-paid-features.test.ts)
 
 ### Unit Tests
 - [__tests__/AlphaQAISystem.test.tsx](__tests__/AlphaQAISystem.test.tsx)

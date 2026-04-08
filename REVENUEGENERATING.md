@@ -44,6 +44,27 @@ The QMOI Enhanced Revenue Generation System is a master-controlled, dual-platfor
 
 ## Revenue Streams
 
+### GoDaddy Affiliate & Reseller Program
+
+1. **Domain Registration Commissions**: 15-25% commission on domain registrations
+2. **Hosting Sales Commissions**: 20-30% commission on hosting packages
+3. **SSL Certificate Sales**: 25-35% commission on SSL purchases
+4. **Website Builder Sales**: 20-40% commission on website builder subscriptions
+5. **E-commerce Solutions**: 15-25% commission on online store setups
+6. **Reseller Hosting Profits**: 100% markup on reseller hosting packages
+7. **Domain Flipping Profits**: Automated domain acquisition and resale
+8. **SEO Tools Commissions**: 20-30% commission on SEO tool subscriptions
+
+### GoDaddy Revenue Automation
+
+- **Automated Affiliate Tracking**: Real-time commission monitoring and payouts
+- **Bulk Domain Registration**: Volume discounts and automated registration workflows
+- **Hosting Package Upselling**: Automatic upgrade recommendations and commissions
+- **SSL Auto-Renewal**: Recurring revenue from certificate renewals
+- **White-label Services**: Branded hosting solutions for client projects
+- **Domain Parking Revenue**: Monetization of parked domains
+- **Premium DNS Services**: Revenue from advanced DNS management
+
 ### M-Pesa Revenue Sources
 
 1. **Trading Profits**: 500-2,500 KES per cycle

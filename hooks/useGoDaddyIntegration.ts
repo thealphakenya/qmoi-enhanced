@@ -13,7 +13,7 @@ export interface GoDaddyDomainStatus {
   message: string;
 }
 
-export function useGoDaddyIntegration(domain = "domainforgepro.qmoi.com") {
+export function useGoDaddyIntegration(domain = "qvs.qmoi.ai") {
   const [status, setStatus] = useState<GoDaddyDomainStatus | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

@@ -48,6 +48,11 @@ This file documents all custom React hooks in the `hooks/` directory, their usag
 - [useQmoiKernel](src/hooks/useQmoiKernel.ts) - useQmoiKernel hook
 - [useQmoiState](src/hooks/useQmoiState.ts) - useQmoiState hook
 - [useSystemMetrics](hooks/useSystemMetrics.ts) - useSystemMetrics hook
+- [useGoDaddyIntegration](hooks/useGoDaddyIntegration.ts) - useGoDaddyIntegration hook
+- [useDomainHealth](hooks/useDomainHealth.ts) - useDomainHealth hook
+- [useGoDaddyDomainManager](hooks/useGoDaddyDomainManager.ts) - useGoDaddyDomainManager hook
+- [useGoDaddyHosting](hooks/useGoDaddyHosting.ts) - useGoDaddyHosting hook
+- [useGoDaddySecurity](hooks/useGoDaddySecurity.ts) - useGoDaddySecurity hook
 - [useSuccessAssurance](hooks/useSuccessAssurance.ts) - useSuccessAssurance hook
 - [useQVSParallel](hooks/useQVSParallel.ts) - useQVSParallel hook
 - [useAutoDeployment](hooks/useAutoDeployment.ts) - useAutoDeployment hook

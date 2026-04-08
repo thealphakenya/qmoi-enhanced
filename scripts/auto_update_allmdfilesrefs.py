@@ -7,7 +7,7 @@ import os
 import time
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-REF_FILE = os.path.join(ROOT_DIR, "qmoi-enhanced", "ALLMDFILESREFS.md")
+REF_FILE = os.path.join(ROOT_DIR, "ALLMDFILESREFS.md")
 
 def find_md_files():
     md_files = []
@@ -26,6 +26,5 @@ def update_refs():
             f.write(f"./{path}\n")
 
 if __name__ == "__main__":
-    while True:
-        update_refs()
-        time.sleep(300)  # Update every 5 minutes
+    update_refs()
+    print("ALLMDFILESREFS.md updated successfully")

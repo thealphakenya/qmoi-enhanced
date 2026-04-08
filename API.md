@@ -98,6 +98,21 @@ Content-Type: application/json
 ### Domain Management
 - `GET /api/domains/health` - Domain health
 - `POST /api/domains/check` - Check domain
+
+### GoDaddy Integration
+- `POST /api/godaddy/register-domain` - Register new domain
+- `GET /api/godaddy/domain-health` - Check domain health status
+- `POST /api/godaddy/configure-dns` - Auto-configure DNS records
+- `POST /api/godaddy/setup-hosting` - Create hosting environment
+- `GET /api/godaddy/ssl-status` - Monitor SSL certificate status
+- `POST /api/godaddy/enable-security` - Activate security features
+- `POST /api/godaddy/activate-paid-features` - Activate all paid features for domain
+- `GET /api/godaddy/paid-features-status` - Check activation status
+- `POST /api/godaddy/upgrade-plan` - Upgrade hosting plan
+- `GET /api/godaddy/billing-info` - Retrieve billing information
+- `POST /api/godaddy/renew-services` - Auto-renew paid services
+- `GET /api/godaddy/domains/list` - List all managed domains
+- `POST /api/godaddy/domains/transfer` - Transfer domain to GoDaddy
 - `GET /api/domains/report` - Domain report
 
 ### QVillage

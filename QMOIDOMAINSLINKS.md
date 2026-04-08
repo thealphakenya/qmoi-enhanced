@@ -34,12 +34,35 @@ This file contains all domains and links used in the QMOI system, including thei
 
 | Domain             | Link                                                    | Status | Usage           | Last Checked | Platform | Notes                     |
 | ------------------ | ------------------------------------------------------- | ------ | --------------- | ------------ | -------- | ------------------------- |
-| qmoisystem.com     | https://qmoisystem.com                                  | ✅     | Main QMOI site  | 2025-10-11   | All      | production, auto-hosted   |
-| domainforgepro.qmoi.com | https://domainforgepro.qmoi.com                      | ✅     | GoDaddy clone   | 2026-04-08   | Web      | GoDaddy/domain health monitored |
-| downloads.qmoi.app | https://github.com/thestablekenya/qmoi-enhanced/releases | ✅     | App downloads   | 2025-10-11   | All      | CDN, auto-updated         |
-| qcity.qmoi.app     | https://qcity.qmoi.app                                  | ✅     | QCity dashboard | 2025-10-11   | Web      | Auto-hosted, always-on    |
-| api.qmoi.app       | https://api.qmoi.app                                    | ✅     | QMOI API        | 2025-10-11   | All      | API, auto-tested          |
-| ngrok.io           | https://ngrok.io                                        | ✅     | Tunnel fallback | 2025-10-11   | All      | Used if main domains fail |
+| qmoi.ai            | https://qmoi.ai                                         | ✅     | Main AI engine  | 2026-04-08   | All      | Primary platform, GoDaddy managed, unparked |
+| stableq.ai         | https://stableq.ai                                      | ✅     | Advanced AI     | 2026-04-08   | All      | Primary platform, GoDaddy managed, unparked |
+| qvillage.com       | https://qvillage.com                                    | ✅     | Community hub   | 2026-04-08   | All      | Primary platform, GoDaddy managed, unparked |
+| api.qmoi.com       | https://api.qmoi.com                                    | ✅     | API Gateway     | 2026-04-08   | All      | Service domain, GoDaddy managed, unparked |
+| auth.qmoi.com      | https://auth.qmoi.com                                   | ✅     | Auth Service    | 2026-04-08   | All      | Service domain, GoDaddy managed, unparked |
+| cdn.qmoi.com       | https://cdn.qmoi.com                                    | ✅     | CDN             | 2026-04-08   | All      | Service domain, GoDaddy managed, unparked |
+| qcity.io           | https://qcity.io                                        | ✅     | Enterprise      | 2026-04-08   | All      | Service domain, GoDaddy managed, unparked |
+| qvillage.org       | https://qvillage.org                                    | ✅     | Organization    | 2026-04-08   | All      | Service domain, GoDaddy managed, unparked |
+| qglobal.ai         | https://qglobal.ai                                      | ✅     | Global hub      | 2026-04-08   | All      | Service domain, GoDaddy managed, unparked |
+| qparallel.prod     | https://qparallel.prod                                  | ✅     | Production      | 2026-04-08   | Infra    | Infrastructure, GoDaddy managed, unparked |
+| web.qmoi.prod      | https://web.qmoi.prod                                   | ✅     | Web production  | 2026-04-08   | Infra    | Infrastructure, GoDaddy managed, unparked |
+| test.qmoi.prod     | https://test.qmoi.prod                                  | ✅     | Testing         | 2026-04-08   | Infra    | Infrastructure, GoDaddy managed, unparked |
+| production.qmoi.prod | https://production.qmoi.prod                           | ✅     | Pre-production  | 2026-04-08   | Infra    | Infrastructure, GoDaddy managed, unparked |
+| qmoi-space.qmoi.ai | https://qmoi-space.qmoi.ai                              | ✅     | PWA Workspace   | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
+| q-stable.qmoi.ai   | https://q-stable.qmoi.ai                                | ✅     | PWA AI          | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
+| qshare.qmoi.ai     | https://qshare.qmoi.ai                                  | ✅     | PWA Sharing     | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
+| yap.qmoi.ai        | https://yap.qmoi.ai                                     | ✅     | PWA Chat        | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
+| qstore.qmoi.ai     | https://qstore.qmoi.ai                                  | ✅     | PWA Store       | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
+| qvillage.qmoi.ai   | https://qvillage.qmoi.ai                                | ✅     | PWA Community   | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
+| status.qmoi.ai     | https://status.qmoi.ai                                  | ✅     | Status Page     | 2026-04-08   | App      | Sub-domain, GoDaddy managed, unparked |
+| huggingface.co     | https://huggingface.co/spaces/qvillage/qvillage         | ✅     | HF Space        | 2026-04-08   | External | External platform, monitored |
+| qmoisystem.com     | https://qmoisystem.com                                  | ✅     | Main QMOI site  | 2026-04-08   | All      | Legacy, GoDaddy managed, unparked |
+| qvs.qmoi.ai | https://qvs.qmoi.ai                      | ✅     | GoDaddy clone   | 2026-04-08   | Web      | GoDaddy/domain health monitored, unparked |
+| websphereelite.qmoi.com | https://websphereelite.qmoi.com                     | ✅     | GoDaddy hosting | 2026-04-08   | Web      | GoDaddy paid features activated, unparked |
+| hostmasternexus.qmoi.com | https://hostmasternexus.qmoi.com                   | ✅     | GoDaddy DNS     | 2026-04-08   | Web      | GoDaddy DNS management, unparked |
+| downloads.qmoi.app | https://github.com/thestablekenya/qmoi-enhanced/releases | ✅     | App downloads   | 2026-04-08   | All      | GitHub releases, monitored |
+| qcity.qmoi.app     | https://qcity.qmoi.app                                  | ✅     | QCity dashboard | 2026-04-08   | Web      | Legacy, GoDaddy managed, unparked |
+| api.qmoi.app       | https://api.qmoi.app                                    | ✅     | QMOI API        | 2026-04-08   | All      | Legacy, GoDaddy managed, unparked |
+| ngrok.io           | https://ngrok.io                                        | ✅     | Tunnel fallback | 2026-04-08   | All      | Fallback service, monitored |
 
 ## Features
 

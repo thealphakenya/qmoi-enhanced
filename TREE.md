@@ -55,6 +55,33 @@
 - `HOOKS.md`, `WEBHOOKS.md`, `ALLHOOKSWEBHOOKS.md` - Hook and webhook references
 - `TREE.md` - Developer tree structure
 
+### GoDaddy Domain Health Developer Structure
+- `src/services/godaddy/` - GoDaddy integration services
+  - `domain-registration.ts` - Automated domain registration
+  - `dns-management.ts` - DNS record automation
+  - `ssl-provisioning.ts` - SSL certificate management
+  - `hosting-setup.ts` - Automated hosting configuration
+  - `paid-features.ts` - Paid feature activation
+- `hooks/useGoDaddyIntegration.ts` - React hook for GoDaddy UI integration
+- `hooks/useDomainHealth.ts` - Domain health monitoring hook
+- `src/lib/godaddy-api.ts` - GoDaddy API client library
+- `src/components/godaddy/` - GoDaddy UI components
+  - `DomainHealthMonitor.tsx` - Real-time health dashboard
+  - `GoDaddyFeatureManager.tsx` - Feature activation UI
+  - `DNSEditor.tsx` - DNS record management
+- `app/api/godaddy/` - GoDaddy API endpoints
+  - `register-domain/route.ts` - Domain registration endpoint
+  - `domain-health/route.ts` - Health check endpoint
+  - `configure-dns/route.ts` - DNS configuration
+  - `setup-hosting/route.ts` - Hosting setup
+  - `activate-features/route.ts` - Paid features activation
+- `__tests__/godaddy/` - GoDaddy test suites
+  - `domain-registration.test.ts` - Registration tests
+  - `dns-management.test.ts` - DNS tests
+  - `health-monitoring.test.ts` - Health check tests
+- `docs/GODADDY.md` - GoDaddy integration documentation
+- `docs/GODADDYPAYED.md` - Paid features documentation
+
 ## Notes
 
 This file is generated from the current repository state and tracks all major developer-facing structures, ensuring the documentation and code structure remain aligned.

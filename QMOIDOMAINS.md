@@ -27,15 +27,19 @@ Type Domains
 ⚡ Ngrok Tunnels Auto-generated, live, and updated in QMOINGROK.md
 🔧 Self-Registered Domains Dynamically created and managed by QMOI
 📱 App/Platform-specific Links Auto-generated for: WhatsApp, Telegram, QCity bots, Android installs, Colab notebooks
+🕸️ GoDaddy Domains qvs.qmoi.ai, websphereelite.qmoi.com, hostmasternexus.qmoi.com (cloned and enhanced)
+🔒 GoDaddy Paid Features All paid features activated and automated for QMOI domains
 
 🤖 Automation & Management
 Capability Description
-🛠 Domain Creation Uses browser automation (Selenium) and/or APIs (Freenom, Namecheap, etc.)
+🛠 Domain Creation Uses browser automation (Selenium) and/or APIs (Freenom, Namecheap, GoDaddy)
 🔁 Auto-Rotation If any domain or tunnel fails, QMOI rotates to the next available
 🧠 Smart Prioritization Always uses the most stable, fastest, and lowest-latency link
 🖥️ UI Management QCity dashboard allows authorized users to manage domains/tunnels
 📋 Activity Logging All domain changes are timestamped and logged
-🧩 Integration Fully integrates with QMOINGROK.md, QMOIDNS.md, and QMOIAUTOprod.md
+🧩 Integration Fully integrates with QMOINGROK.md, QMOIDNS.md, QMOIAUTOprod.md, GODADDY.md, GODADDYPAYED.md
+🦁 Health Monitoring Lion Agent ensures 100% domain health across all providers
+🔧 GoDaddy Enhancement Automated activation of all GoDaddy paid features and cloning
 
 🧪 Health Monitoring
 QMOI runs periodic checks on all domain/tunnel endpoints:

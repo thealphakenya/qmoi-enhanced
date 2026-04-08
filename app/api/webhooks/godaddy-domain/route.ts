@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  const domain = request.nextUrl.searchParams.get("domain") || "domainforgepro.qmoi.com";
+  const domain = request.nextUrl.searchParams.get("domain") || "qvs.qmoi.ai";
   const info = await domainService.checkDomain(domain);
   return NextResponse.json({
     success: true,

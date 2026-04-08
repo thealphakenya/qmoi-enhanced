@@ -45,6 +45,11 @@
 - src/hooks/useQmoiKernel.ts
 - src/hooks/useQmoiState.ts
 - hooks/useSystemMetrics.ts
+- hooks/useGoDaddyIntegration.ts
+- hooks/useDomainHealth.ts
+- hooks/useGoDaddyDomainManager.ts
+- hooks/useGoDaddyHosting.ts
+- hooks/useGoDaddySecurity.ts
 - hooks/useTTCVoice.ts
 - hooks/useTaskQueue.ts
 - src/hooks/useTimezone.ts

@@ -148,6 +148,21 @@ This document catalogs all available endpoints in the QMOI system.
 #### Integration APIs (23)
 - `POST` `/api/cashon/start-trading`
 - `POST` `/api/cashon/stop-trading`
+
+#### GoDaddy Integration (13)
+- `POST` `/api/godaddy/register-domain`
+- `GET` `/api/godaddy/domain-health`
+- `POST` `/api/godaddy/configure-dns`
+- `POST` `/api/godaddy/setup-hosting`
+- `GET` `/api/godaddy/ssl-status`
+- `POST` `/api/godaddy/enable-security`
+- `POST` `/api/godaddy/activate-paid-features`
+- `GET` `/api/godaddy/paid-features-status`
+- `POST` `/api/godaddy/upgrade-plan`
+- `GET` `/api/godaddy/billing-info`
+- `POST` `/api/godaddy/renew-services`
+- `GET` `/api/godaddy/domains/list`
+- `POST` `/api/godaddy/domains/transfer`
 - `GET` `/api/cashon/trading-status`
 - `GET` `/api/datasets`
 - `POST` `/api/datasets`
