@@ -10,7 +10,7 @@
 # QMOI System Endpoints
 
 **Last Updated**: 2026-04-06 (AUTO-GENERATED)
-**Total Endpoints**: 264
+**Total Endpoints**: 272
 **Last Scan**: 2026-04-06T05:06:41.883462Z
 
 ## Overview

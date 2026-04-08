@@ -70,6 +70,7 @@ Log the new domain and notify QCity dashboard
 
 🔐 Domain Security Notes
 Domain ownership credentials are stored securely (via .env, GCP Vault, AWS Secrets Manager, etc.)
+All QMOI-owned domains are monitored to ensure they remain active and unparked, with explicit GoDaddy/DomainForge Pro health checks for registered provider domains.
 
 Subdomain generation is automated, and cleanup occurs on every rotation
 
@@ -98,7 +99,8 @@ Source Managed By
 🧪 Ngrok QMOI
 🌍 Freenom QMOI
 🏢 Namecheap Manual + QMOI
-🧠 Self-hosted DNS QMOI
+� GoDaddy / DomainForge Pro QMOI (auto-managed, health-checked, active)
+�🧠 Self-hosted DNS QMOI
 📦 Cloudflare API QMOI (if token provided)
 
 ✅ Summary

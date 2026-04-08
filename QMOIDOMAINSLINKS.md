@@ -35,6 +35,7 @@ This file contains all domains and links used in the QMOI system, including thei
 | Domain             | Link                                                    | Status | Usage           | Last Checked | Platform | Notes                     |
 | ------------------ | ------------------------------------------------------- | ------ | --------------- | ------------ | -------- | ------------------------- |
 | qmoisystem.com     | https://qmoisystem.com                                  | ✅     | Main QMOI site  | 2025-10-11   | All      | production, auto-hosted   |
+| domainforgepro.qmoi.com | https://domainforgepro.qmoi.com                      | ✅     | GoDaddy clone   | 2026-04-08   | Web      | GoDaddy/domain health monitored |
 | downloads.qmoi.app | https://github.com/thestablekenya/qmoi-enhanced/releases | ✅     | App downloads   | 2025-10-11   | All      | CDN, auto-updated         |
 | qcity.qmoi.app     | https://qcity.qmoi.app                                  | ✅     | QCity dashboard | 2025-10-11   | Web      | Auto-hosted, always-on    |
 | api.qmoi.app       | https://api.qmoi.app                                    | ✅     | QMOI API        | 2025-10-11   | All      | API, auto-tested          |

@@ -201,6 +201,7 @@ Welcome to the **Quantum Master Orchestrator Intelligence (QMOI)** system — a 
 | **QCity** | Enterprise platform | [qcity.io](https://qcity.io) | teams, projects, workflows |
 | **Q Village Org** | Organization & governance | [qvillage.org](https://qvillage.org) | governance, voting, treasury |
 | **Q Global** | Global coordination hub | [qglobal.ai](https://qglobal.ai) | geolocation, time zones, regions |
+| **DomainForge Pro** | Domain registration & hosting | [domainforgepro.qmoi.com](https://domainforgepro.qmoi.com) | GoDaddy clone, SSL, DNS, active health monitoring |
 
 ### 🏗️ Infrastructure Domains (4+ Domains)
 

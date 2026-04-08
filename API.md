@@ -11,7 +11,7 @@
 
 **Generated**: 2026-04-06 SESSION CONTINUOUS
 **Last Updated**: 2026-04-06T05:06:41.882507Z
-**Total Endpoints**: 264
+**Total Endpoints**: 272
 
 ## Overview
 
@@ -19,7 +19,7 @@ This document provides comprehensive documentation for all QMOI system APIs. All
 
 ## Quick Access
 
-- **Total Endpoints**: 264
+- **Total Endpoints**: 272
 - **API Base URL**: `/api`
 - **Authentication**: JWT tokens required for most endpoints
 - **Rate Limiting**: Applied to all endpoints
@@ -137,6 +137,16 @@ Content-Type: application/json
 - `POST /api/deploy/auto-redeploy` - Auto-redeploy
 - `GET /api/qstore` - Q Store
 - `GET /api/qnews` - Q News
+
+### Global Notifications
+- `GET /api/notifications/enhanced/{masterId}` - Get enhanced notifications
+- `GET /api/notifications/stream/enhanced/{masterId}` - Stream enhanced notifications
+- `POST /api/notifications/enhanced/send` - Send enhanced notification
+- `PUT /api/notifications/enhanced/{notificationId}/read` - Mark notification as read
+- `PUT /api/notifications/enhanced/mark-all-read/{masterId}` - Mark all notifications as read
+- `DELETE /api/notifications/enhanced/{notificationId}` - Delete notification
+- `GET /api/notifications/enhanced/analytics/{masterId}` - Get notification analytics
+- `GET /api/notifications/enhanced/health` - Enhanced notifications health check
 
 ## Complete Endpoint List
 
@@ -280,6 +290,14 @@ Content-Type: application/json
 - `GET` `/api/monitor/status`
 - `POST` `/api/mpesa/callback`
 - `POST` `/api/notifications/test`
+- `DELETE` `/api/notifications/enhanced/{notificationId}`
+- `GET` `/api/notifications/enhanced/{masterId}`
+- `GET` `/api/notifications/enhanced/analytics/{masterId}`
+- `GET` `/api/notifications/enhanced/health`
+- `GET` `/api/notifications/stream/enhanced/{masterId}`
+- `POST` `/api/notifications/enhanced/send`
+- `PUT` `/api/notifications/enhanced/{notificationId}/read`
+- `PUT` `/api/notifications/enhanced/mark-all-read/{masterId}`
 - `POST` `/api/payments/initiate`
 - `GET` `/api/platforms`
 - `POST` `/api/preview/analyze`

@@ -40,7 +40,7 @@
 - Total scanned API directories: 1 + 1
 
 ### Hooks Structure
-- `hooks/` - 33 hook files
+- `hooks/` - 34 hook files
 - `src/hooks/` - 7 hook files
 
 ### Test Structure

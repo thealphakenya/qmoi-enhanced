@@ -10,7 +10,7 @@
 # QMOI Complete APIs List v1.1
 
 **Generated**: 2026-03-29T03:52:00Z
-**Total Endpoints**: 66 (28 QMOI Core + 6 Avatar System + 32 Financial)
+**Total Endpoints**: 83 (28 QMOI Core + 6 Avatar System + 8 Global Notifications + 32 Financial + 9 System)
 **Format**: Comprehensive Single-File Reference
 **Status**: ✅ production Ready
 
@@ -22,10 +22,11 @@
 | QMOI Core | 13 | ✅ Active | Bearer Token |
 | Self-Work | 3 | ✅ Active | Bearer Token |
 | System | 9 | ✅ Active | Optional |
+| Global Notifications | 8 | ✅ Active | Bearer Token |
 | Preview/Tools | 2 | ✅ Active | Optional |
 | Avatar System | 6 | ✅ Active | Optional/Token |
 | Financial System | 35 | ✅ Active | Bearer Token |
-| **TOTAL** | **75** | **✅ Ready** | **Varies** |
+| **TOTAL** | **83** | **✅ Ready** | **Varies** |
 
 ---
 
@@ -85,6 +86,21 @@
 | 29 | `/api/qvs` | GET | Optional | Get QVS information |
 | 30 | `/api/preview/analyze` | POST | Optional | Analyze code/content |
 | 31 | `/api/preview/execute-tool` | POST | Optional | Execute prod tools |
+
+---
+
+## 🔔 Global Notification Endpoints (8)
+
+| # | Endpoint | Method | Auth | Description |
+|---|----------|--------|------|-------------|
+| 32 | `/api/notifications/enhanced/{masterId}` | GET | Token | Get enhanced notifications with AI analysis |
+| 33 | `/api/notifications/stream/enhanced/{masterId}` | GET | Token | Stream real-time enhanced notifications |
+| 34 | `/api/notifications/enhanced/send` | POST | Token | Send multi-channel notification |
+| 35 | `/api/notifications/enhanced/{notificationId}/read` | PUT | Token | Mark notification as read |
+| 36 | `/api/notifications/enhanced/mark-all-read/{masterId}` | PUT | Token | Mark all notifications as read |
+| 37 | `/api/notifications/enhanced/{notificationId}` | DELETE | Token | Delete notification |
+| 38 | `/api/notifications/enhanced/analytics/{masterId}` | GET | Token | Get notification analytics and insights |
+| 39 | `/api/notifications/enhanced/health` | GET | Token | Enhanced notifications system health check |
 
 ---
 
@@ -152,6 +168,16 @@
 - `/api/preview/execute-tool`
 - `/api/alerts/webhook`
 
+### Global Notifications (8)
+- `/api/notifications/enhanced/{masterId}`
+- `/api/notifications/stream/enhanced/{masterId}`
+- `/api/notifications/enhanced/send`
+- `/api/notifications/enhanced/{notificationId}/read`
+- `/api/notifications/enhanced/mark-all-read/{masterId}`
+- `/api/notifications/enhanced/{notificationId}`
+- `/api/notifications/enhanced/analytics/{masterId}`
+- `/api/notifications/enhanced/health`
+
 ### Avatar System (6) - NEW
 - `/api/avatars/:userId` (GET, POST, PUT, DELETE, HEAD, OPTIONS)
 - `/api/avatars/generate`
@@ -205,35 +231,38 @@
 ## 📊 Endpoint Statistics
 
 ### By Authentication Level
-- **Public (No Auth)**: 7 endpoints (10.6%) - Includes exchange rates
-- **Optional Auth**: 8 endpoints (12.1%)
-- **Bearer Token Required**: 50 endpoints (75.8%) - Includes all financial APIs
-- **Admin Only**: 1 endpoint (1.5%)
+- **Public (No Auth)**: 7 endpoints (8.4%) - Includes exchange rates
+- **Optional Auth**: 8 endpoints (9.6%)
+- **Bearer Token Required**: 58 endpoints (69.9%) - Includes all financial APIs and notifications
+- **Admin Only**: 1 endpoint (1.2%)
 
 ### By HTTP Method
-- **GET**: 32 endpoints (48.5%)
-- **POST**: 28 endpoints (42.4%)
-- **PUT**: 3 endpoints (4.5%)
-- **DELETE**: 2 endpoints (3.0%)
-- **HEAD**: 1 endpoint (1.5%)
-- **OPTIONS**: 1 endpoint (1.5%)
+- **GET**: 37 endpoints (44.6%)
+- **POST**: 29 endpoints (34.9%)
+- **PUT**: 7 endpoints (8.4%)
+- **DELETE**: 9 endpoints (10.8%)
+- **HEAD**: 1 endpoint (1.2%)
+- **OPTIONS**: 1 endpoint (1.2%)
 
 ### By Domain
-- **Authentication**: 5 endpoints (7.6%)
-- **QMOI Core**: 13 endpoints (19.7%)
-- **Self-Work**: 3 endpoints (4.5%)
-- **System**: 6 endpoints (9.1%)
-- **Preview/Tools**: 2 endpoints (3.0%)
-- **Avatar System**: 6 endpoints (9.1%)
-- **Financial System**: 32 endpoints (48.5%)
+- **Authentication**: 5 endpoints (6.0%)
+- **QMOI Core**: 13 endpoints (15.7%)
+- **Self-Work**: 3 endpoints (3.6%)
+- **System**: 6 endpoints (7.2%)
+- **Global Notifications**: 8 endpoints (9.6%)
+- **Preview/Tools**: 2 endpoints (2.4%)
+- **Avatar System**: 6 endpoints (7.2%)
+- **Financial System**: 32 endpoints (38.6%)
 
 ### By Category
-- **Security/Auth**: 5 endpoints (14.7%)
-- **Core Features**: 13 endpoints (38.2%)
-- **production**: 3 endpoints (8.8%)
-- **System**: 6 endpoints (17.6%)
-- **Tools**: 2 endpoints (5.9%)
-- **Assets**: 6 endpoints (17.6%)
+- **Security/Auth**: 5 endpoints (6.0%)
+- **Core Features**: 13 endpoints (15.7%)
+- **production**: 3 endpoints (3.6%)
+- **System**: 6 endpoints (7.2%)
+- **Notifications**: 8 endpoints (9.6%)
+- **Tools**: 2 endpoints (2.4%)
+- **Assets**: 6 endpoints (7.2%)
+- **Financial**: 32 endpoints (38.6%)
 
 ---
 

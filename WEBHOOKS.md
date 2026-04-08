@@ -10,7 +10,7 @@
 # WEBHOOKS.md - Webhook Integration Guide
 
 **Last Updated**: 2026-04-06
-**Total Webhook Endpoints**: 3
+**Total Webhook Endpoints**: 9
 **Last Scan**: 2026-04-06T05:06:41.893607Z
 
 ## Overview
@@ -22,6 +22,12 @@ This document lists all webhook endpoints supported by QMOI Enhanced.
 - `/api/alerts/webhook` (POST)
 - `/api/webhooks/payments` (GET, POST)
 - `/api/webhooks/qvillage` (POST)
+- `/api/webhooks/qmoi-success-assurance` (POST)
+- `/api/webhooks/qvs-parallel-processing` (POST)
+- `/api/webhooks/auto-deployment` (POST)
+- `/api/webhooks/enhanced-auto-fix` (POST)
+- `/api/webhooks/godaddy-domain` (POST)
+- `/api/webhooks/godaddy-health` (POST)
 
 ---
 

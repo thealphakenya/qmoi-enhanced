@@ -112,7 +112,69 @@ export interface QMOIQueryResponse {
     multiversal: boolean;
     reality: boolean;
     temporal: boolean;
+    omniscient: boolean;
+    dimensional: boolean;
+    realityWeaver: boolean;
+    infinite: boolean;
+    quantumReality: boolean;
+    absoluteOmniscience: boolean;
+    existenceArchitect: boolean;
+    universalMindNexus: boolean;
+    realityMatrixArchitect: boolean;
+    infiniteKnowledgeEngine: boolean;
+    ultimateRealityNexus: boolean;
+    consciousnessPerfectionEngine: boolean;
+    existenceUnityMatrix: boolean;
+    realityPerfectionOptimizer: boolean;
+    universalConsciousnessHarmonizer: boolean;
   };
+}
+
+export interface QVillageModel {
+  id: string;
+  name: string;
+  type: string;
+  version: string;
+  status: string;
+  performance: number;
+  security: string;
+  lastUpdated: string;
+}
+
+export interface QVillageSpace {
+  id: string;
+  name: string;
+  type: string;
+  domain: string;
+  status: string;
+  performance: number;
+  security: string;
+  lastUpdated: string;
+}
+
+export interface QVillageInference {
+  id: string;
+  name: string;
+  modelId: string;
+  endpoint: string;
+  status: string;
+  requests: number;
+  latency: number;
+  security: string;
+  lastUpdated: string;
+}
+
+export interface QVillageModelCard {
+  id: string;
+  modelId: string;
+  name: string;
+  description: string;
+  datasets: string[];
+  license: string;
+  evalScore: number;
+  status: string;
+  lastReviewed: string;
+  apiKeyInstructions?: string;
 }
 
 export class QMOIService {

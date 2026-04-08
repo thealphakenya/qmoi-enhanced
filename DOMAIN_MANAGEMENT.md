@@ -21,6 +21,7 @@ The QMOI Domain Management Service provides comprehensive domain lifecycle manag
 - **DNS Management**: Automated DNS record management and updates
 - **Renewal Automation**: Proactive domain renewal before expiration
 - **Transfer Management**: Secure domain transfers between registrars
+- **GoDaddy Integration**: DomainForge Pro cloning with GoDaddy health webhooks and active monitoring
 
 ### Domain Types
 - **Primary Domains**: qmoi.com, qmoi.ai

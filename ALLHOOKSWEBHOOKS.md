@@ -48,16 +48,30 @@
 - hooks/useTTCVoice.ts
 - hooks/useTaskQueue.ts
 - src/hooks/useTimezone.ts
+- hooks/useSuccessAssurance.ts
+- hooks/useQVSParallel.ts
+- hooks/useAutoDeployment.ts
+- hooks/useGoDaddyIntegration.ts
 - hooks/useTrading.ts
 - hooks/useTradingAutomation.ts
 - hooks/useVSCodeProblems.ts
-- hooks/useWhatsApp.ts
+- hooks/useQMOISuccessAssurance.ts
+- hooks/useQVSParallelProcessing.ts
+- hooks/useQVSFailoverSystem.ts
+- hooks/useAutoDeployment.ts
+- hooks/useEnhancedAutoFix.ts
 
 ## Webhooks
 
 - /api/alerts/webhook
 - /api/webhooks/payments
 - /api/webhooks/qvillage
+- /api/webhooks/qmoi-success-assurance
+- /api/webhooks/qvs-parallel-processing
+- /api/webhooks/auto-deployment
+- /api/webhooks/enhanced-auto-fix
+- /api/webhooks/godaddy-domain
+- /api/webhooks/godaddy-health
 
 ---
 

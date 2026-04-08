@@ -10,7 +10,8 @@
 # ALLTESTSAUTOTESTS.md - Comprehensive Test Documentation
 
 **Last Updated**: 2026-04-06
-**Total Test Files**: 67
+**Total Test Files**: 87
+**Total Test Documentation Files**: 20
 **Last Scan**: 2026-04-06T05:06:41.892246Z
 
 ## Overview
@@ -20,9 +21,10 @@ This document catalogs all test files, test cases, and automation tests in the Q
 ## Test Statistics
 
 - **Total Test Files**: 67
-- **Jest Tests**: 66
+- **Jest Tests**: 71
 - **Cypress Tests**: 1
 - **Integration Tests**: 5
+- **Test Documentation Files**: 20
 
 ## Test Files by Category
 
@@ -45,8 +47,11 @@ This document catalogs all test files, test cases, and automation tests in the Q
 - [__tests__/api.qi-spaces.test.ts](__tests__/api.qi-spaces.test.ts)
 - [__tests__/api.qmoi.chat.test.ts](__tests__/api.qmoi.chat.test.ts)
 - [__tests__/api.selfTraining.test.ts](__tests__/api.selfTraining.test.ts)
-- [__tests__/api.test.ts](__tests__/api.test.ts)
-- [__tests__/api/admin.test.ts](__tests__/api/admin.test.ts)
+- [__tests__/api.qmoi-success-assurance.test.ts](__tests__/api.qmoi-success-assurance.test.ts)
+- [__tests__/api.qvs-parallel-processing.test.ts](__tests__/api.qvs-parallel-processing.test.ts)
+- [__tests__/api.qvs-failover-system.test.ts](__tests__/api.qvs-failover-system.test.ts)
+- [__tests__/api.auto-deployment.test.ts](__tests__/api.auto-deployment.test.ts)
+- [__tests__/api.enhanced-auto-fix.test.ts](__tests__/api.enhanced-auto-fix.test.ts)
 
 ### Cypress Tests (1)
 - [cypress/e2e/user-flows.cy.ts](cypress/e2e/user-flows.cy.ts)
@@ -81,6 +86,28 @@ This document catalogs all test files, test cases, and automation tests in the Q
 - [src/components/q-city/QMoiKernelPanel.integration.test.tsx](src/components/q-city/QMoiKernelPanel.integration.test.tsx)
 - [tests/handlers.integration.test.ts](tests/handlers.integration.test.ts)
 - [tests/integration/adapter-dryrun.test.ts](tests/integration/adapter-dryrun.test.ts)
+
+### Test Documentation Files
+- [ALLCOMPONENTSTESTS.md](ALLCOMPONENTSTESTS.md)
+- [ALLTESTSAUTOTESTS.md](ALLTESTSAUTOTESTS.md)
+- [ALLUITESTS.md](ALLUITESTS.md)
+- [autotest_report.md](autotest_report.md)
+- [BIOMETRIC_LOGIN_TEST_RESULTS.md](BIOMETRIC_LOGIN_TEST_RESULTS.md)
+- [COMPREHENSIVE_TESTING_QA_STRATEGY.md](COMPREHENSIVE_TESTING_QA_STRATEGY.md)
+- [PHASE_3_TEST_COMPLETION_REPORT.md](PHASE_3_TEST_COMPLETION_REPORT.md)
+- [QMOI_AUTO_TESTING_UI_DEVELOPMENT.md](QMOI_AUTO_TESTING_UI_DEVELOPMENT.md)
+- [QMOI_MASTER_TESTING_GUIDE.md](QMOI_MASTER_TESTING_GUIDE.md)
+- [QMOI_TESTING_INDEX.md](QMOI_TESTING_INDEX.md)
+- [QMOI_TEST_DASHBOARD.md](QMOI_TEST_DASHBOARD.md)
+- [QMOI-ENHANCED-AUTOTESTS.md](QMOI-ENHANCED-AUTOTESTS.md)
+- [QMOIMODELTESTS.md](QMOIMODELTESTS.md)
+- [QMOITESTENVIRONMENT.md](QMOITESTENVIRONMENT.md)
+- [QMoi_Test_Report.md](QMoi_Test_Report.md)
+- [TESTREADME.md](TESTREADME.md)
+- [TESTS.md](TESTS.md)
+- [USER_RESPONSE_TESTING_INDEX.md](USER_RESPONSE_TESTING_INDEX.md)
+- [docs/ALLTESTSAUTOTESTS.md](docs/ALLTESTSAUTOTESTS.md)
+- [docs/QMOI-ENHANCED-AUTOTESTS.md](docs/QMOI-ENHANCED-AUTOTESTS.md)
 
 ## Test Coverage
 
