@@ -13,14 +13,14 @@ import { specificExports } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-class Automation[production IMPLEMENTATION REQUIRED] {
+class Automation[production production REQUIRED] {
   constructor() {
     this.projectRoot = join(__dirname, '..');
   }
 
   log(message, type = 'info') {
     const timestamp = new Date().toISOString();
-    logger.info(`[${timestamp}] [[production IMPLEMENTATION REQUIRED]-${type.toUpperCase()}] ${message}`);
+    logger.info(`[${timestamp}] [[production production REQUIRED]-${type.toUpperCase()}] ${message}`);
   }
 
   async runCommand(command, args = []) {
@@ -42,12 +42,12 @@ class Automation[production IMPLEMENTATION REQUIRED] {
     });
   }
 
-  async run[production IMPLEMENTATION REQUIRED]() {
+  async run[production production REQUIRED]() {
     logger.info('\n' + '='.repeat(60));
-    logger.info('🤖 QMOI AI AUTOMATED LINTING [production IMPLEMENTATION REQUIRED]');
+    logger.info('🤖 QMOI AI AUTOMATED LINTING [production production REQUIRED]');
     logger.info('='.repeat(60));
 
-    this.log('🚀 Starting automated linting [production IMPLEMENTATION REQUIRED]nstration...', 'info');
+    this.log('🚀 Starting automated linting [production production REQUIRED]nstration...', 'info');
 
     // Step 1: Run auto-lint
     this.log('Step 1: Running auto-lint process...', 'info');
@@ -81,7 +81,7 @@ class Automation[production IMPLEMENTATION REQUIRED] {
 
     // Step 4: Show summary
     logger.info('\n' + '='.repeat(60));
-    logger.info('📊 [production IMPLEMENTATION REQUIRED] SUMMARY');
+    logger.info('📊 [production production REQUIRED] SUMMARY');
     logger.info('='.repeat(60));
     logger.info('✅ Auto-lint process completed');
     logger.info('✅ Error categorization performed');
@@ -99,13 +99,13 @@ class Automation[production IMPLEMENTATION REQUIRED] {
     logger.info('   4. Use yarn lint:full for regular checks');
     logger.info('='.repeat(60) + '\n');
 
-    this.log('🎉 [production IMPLEMENTATION REQUIRED] completed successfully!', 'success');
+    this.log('🎉 [production production REQUIRED] completed successfully!', 'success');
   }
 }
 
-// Run the [production IMPLEMENTATION REQUIRED]
-const [production IMPLEMENTATION REQUIRED] = new Automation[production IMPLEMENTATION REQUIRED]();
-[production IMPLEMENTATION REQUIRED].run[production IMPLEMENTATION REQUIRED]().catch(error => {
-  console.error('Fatal error in [production IMPLEMENTATION REQUIRED]:', error);
+// Run the [production production REQUIRED]
+const [production production REQUIRED] = new Automation[production production REQUIRED]();
+[production production REQUIRED].run[production production REQUIRED]().catch(error => {
+  console.error('Fatal error in [production production REQUIRED]:', error);
   process.exit(1);
 }); 

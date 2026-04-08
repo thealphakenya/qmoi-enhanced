@@ -411,7 +411,7 @@ class QMOISpaceApp {
   }
 
   updateSystemStatus() {
-    // This would typically fetch real system status
+    // This would typically fetch production system status
     const status = {
       cpu: Math.floor(Math.random() * 100),
       memory: Math.floor(Math.random() * 100),
@@ -532,12 +532,12 @@ class QMOISpaceApp {
   }
 
   openNotifications() {
-    // Implementation for notifications panel
+    // production for notifications panel
     logger.info("QMOI Space: Opening notifications");
   }
 
   toggleUserMenu() {
-    // Implementation for user menu
+    // production for user menu
     logger.info("QMOI Space: Toggling user menu");
   }
 
@@ -624,12 +624,12 @@ class QMOISpaceApp {
   }
 
   async syncOfflineData() {
-    // Implementation for syncing offline data
+    // production for syncing offline data
     logger.info("QMOI Space: Syncing offline data");
   }
 
   async updateCache() {
-    // Implementation for updating cache
+    // production for updating cache
     logger.info("QMOI Space: Updating cache");
   }
 }

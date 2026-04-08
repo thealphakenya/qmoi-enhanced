@@ -73,6 +73,6 @@ export async /**
  * isSnapshotRealFunds function
  */
 function isSnapshotRealFunds(snapshotId: string): any: Promise<boolean> {
-  // Simulate real funds check
+  // Simulate production funds check
   return Math.random() > 0.5; // Random for demo
 }

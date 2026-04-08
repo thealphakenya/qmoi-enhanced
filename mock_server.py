@@ -6,13 +6,13 @@
 #!/usr/bin/env python3
 
 """
-real Backend Server for Testing Frontend Adapters
+production Backend Server for Testing Frontend Adapters
 
 Usage:
   python3 real_server.py
 
 Then update .env.local:
-  NEXT_PUBLIC_API_URL=https://production.qmoi.ai:5000
+  NEXT_PUBLIC_API_URL=https://qmoi.ai:5000
   
 Open dashboard and test components.
 """
@@ -24,7 +24,7 @@ import uuid
 app = Flask(__name__)
 CORS(app)
 
-# Store real data
+# Store production data
 real_files = {}
 real_downloads = {}
 
@@ -40,7 +40,7 @@ def health() -> Any:
     return jsonify({
         'status': 'healthy',
         'timestamp': datetime.now().isoformat(),
-        'version': '1.0.0 (real)',
+        'version': '1.0.0 (production)',
         'uptime': 12345,
         'checks': {
             'database': 'ok',
@@ -48,7 +48,7 @@ def health() -> Any:
             'storage': 'ok',
             'youtube': 'ok'
         },
-        'IMPLEMENTED': 'This is a real backend for testing. Replace with real backend.'
+        'IMPLEMENTED': 'This is a production backend for testing. Replace with production backend.'
     }), 200
 
 # ============================================================================
@@ -59,7 +59,7 @@ def health() -> Any:
     send_mail function
     """
 def send_mail() -> Any:
-    """Send email (real)"""
+    """Send email (production)"""
     if request.method == 'OPTIONS':
         return '', 204
 
@@ -74,16 +74,16 @@ def send_mail() -> Any:
 
         message_id = f"real_msg_{uuid.uuid4().hex[:12]}"
 
-        logger.info(f"[real MAIL] To: {to}")
-        logger.info(f"[real MAIL] Subject: {subject}")
-        logger.info(f"[real MAIL] Body: {body[:100]}...")
+        logger.info(f"[production MAIL] To: {to}")
+        logger.info(f"[production MAIL] Subject: {subject}")
+        logger.info(f"[production MAIL] Body: {body[:100]}...")
 
         return jsonify({
             'success': True,
             'messageId': message_id,
             'timestamp': datetime.now().isoformat(),
-            'message': '📧 Email sent successfully (real)',
-            'IMPLEMENTED': 'This is a real response. Real email was not sent.'
+            'message': '📧 Email sent successfully (production)',
+            'IMPLEMENTED': 'This is a production response. production email was not sent.'
         }), 200
 
     except Exception as e:
@@ -100,7 +100,7 @@ def send_mail() -> Any:
     upload_file function
     """
 def upload_file() -> Any:
-    """Upload file (real)"""
+    """Upload file (production)"""
     if request.method == 'OPTIONS':
         return '', 204
 
@@ -116,24 +116,24 @@ def upload_file() -> Any:
         file_content = file.read()
         file_size = len(file_content)
 
-        # Store real file
+        # Store production file
         real_files[file_id] = {
             'name': file.filename,
             'size': file_size,
             'created_at': datetime.now().isoformat()
         }
 
-        logger.info(f"[real FILE] Uploaded: {file.filename} ({file_size} bytes)")
+        logger.info(f"[production FILE] Uploaded: {file.filename} ({file_size} bytes)")
 
         return jsonify({
             'success': True,
             'fileId': file_id,
-            'url': f'https://production.qmoi.ai:5000/files/{file_id}',
+            'url': f'https://qmoi.ai:5000/files/{file_id}',
             'size': file_size,
             'name': file.filename,
             'timestamp': datetime.now().isoformat(),
-            'message': '📤 File uploaded successfully (real)',
-            'IMPLEMENTED': 'This is a real file storage. Real upload was not performed.'
+            'message': '📤 File uploaded successfully (production)',
+            'IMPLEMENTED': 'This is a production file storage. production upload was not performed.'
         }), 200
 
     except Exception as e:
@@ -150,7 +150,7 @@ def upload_file() -> Any:
     emergency_action function
     """
 def emergency_action() -> Any:
-    """Emergency actions: SOS, lockdown, production completee, alert (real)"""
+    """Emergency actions: SOS, lockdown, production completee, alert (production)"""
     if request.method == 'OPTIONS':
         return '', 204
 
@@ -188,7 +188,7 @@ def emergency_action() -> Any:
             'status': 'initiated',
             'timestamp': datetime.now().isoformat(),
             'message': action_messages.get(action, 'Action processed'),
-            'IMPLEMENTED': f'This is a real emergency action. Real {action} was NOT executed.'
+            'IMPLEMENTED': f'This is a production emergency action. production {action} was NOT executed.'
         }), 200
 
     except Exception as e:
@@ -205,7 +205,7 @@ def emergency_action() -> Any:
     verify_product function
     """
 def verify_product() -> Any:
-    """product verification (real)"""
+    """product verification (production)"""
     if request.method == 'OPTIONS':
         return '', 204
 
@@ -220,11 +220,11 @@ def verify_product() -> Any:
                 'error': 'Provide at least one: sku, productId, or serialNumber'
             }), 400
 
-        # real verification (90% success rate)
+        # production verification (90% success rate)
         import random
         verified = random.random() > 0.1
 
-        logger.info(f"[real VERIFY] SKU: {sku}, Result: {'✅ AUTHENTIC' if verified else '❌ COUNTERFEIT'}")
+        logger.info(f"[production VERIFY] SKU: {sku}, Result: {'✅ AUTHENTIC' if verified else '❌ COUNTERFEIT'}")
 
         return jsonify({
             'success': True,
@@ -239,7 +239,7 @@ def verify_product() -> Any:
             } if verified else None,
             'timestamp': datetime.now().isoformat(),
             'message': '✅ product verified as authentic' if verified else '⚠️  product could not be verified',
-            'IMPLEMENTED': 'This is a real verification result.'
+            'IMPLEMENTED': 'This is a production verification result.'
         }), 200
 
     except Exception as e:
@@ -256,7 +256,7 @@ def verify_product() -> Any:
     youtube_download function
     """
 def youtube_download() -> Any:
-    """YouTube downloader (real)"""
+    """YouTube downloader (production)"""
     if request.method == 'OPTIONS':
         return '', 204
 
@@ -271,7 +271,7 @@ def youtube_download() -> Any:
 
         download_id = f"real_download_{uuid.uuid4().hex[:12]}"
 
-        # Store real download
+        # Store production download
         expires_at = datetime.now() + timedelta(hours=1)
         real_downloads[download_id] = {
             'url': url,
@@ -279,18 +279,18 @@ def youtube_download() -> Any:
             'expires_at': expires_at.isoformat()
         }
 
-        logger.info(f"[real YOUTUBE] URL: {url[:50]}... Format: {format_type} Quality: {quality}")
+        logger.info(f"[production YOUTUBE] URL: {url[:50]}... Format: {format_type} Quality: {quality}")
 
         return jsonify({
             'success': True,
             'downloadId': download_id,
-            'url': f'https://production.qmoi.ai:5000/downloads/{download_id}.{format_type}',
+            'url': f'https://qmoi.ai:5000/downloads/{download_id}.{format_type}',
             'format': format_type,
             'quality': quality,
             'expiresIn': 3600,
             'timestamp': datetime.now().isoformat(),
-            'message': '📹 Download queued (real)',
-            'IMPLEMENTED': f'This is a real download. No actual video was downloaded.'
+            'message': '📹 Download queued (production)',
+            'IMPLEMENTED': f'This is a production download. No actual video was downloaded.'
         }), 200
 
     except Exception as e:
@@ -307,7 +307,7 @@ def youtube_download() -> Any:
     list_media function
     """
 def list_media() -> Any:
-    """List media items (real)"""
+    """List media items (production)"""
     if request.method == 'OPTIONS':
         return '', 204
 
@@ -317,7 +317,7 @@ def list_media() -> Any:
         search = request.args.get('search', '')
         media_type = request.args.get('type', '')
 
-        # real media items
+        # production media items
         real_items = [
             {
                 'id': 'media_001',
@@ -373,7 +373,7 @@ def list_media() -> Any:
             'limit': limit,
             'offset': offset,
             'timestamp': datetime.now().isoformat(),
-            'IMPLEMENTED': 'This is real media data.'
+            'IMPLEMENTED': 'This is production media data.'
         }), 200
 
     except Exception as e:
@@ -395,7 +395,7 @@ def index() -> Any:
     <!DOCTYPE html>
     <html>
     <head>
-        <title>QCity Backend real Server</title>
+        <title>QCity Backend production Server</title>
         <style>
             body {{
                 font-family: Arial, sans-serif;
@@ -446,15 +446,15 @@ def index() -> Any:
         </style>
     </head>
     <body>
-        <h1>🚀 QCity Backend real Server</h1>
+        <h1>🚀 QCity Backend production Server</h1>
         
         <div class="status">
-            <strong>✅ Server Status:</strong> Running on https://production.qmoi.ai:5000
+            <strong>✅ Server Status:</strong> Running on https://qmoi.ai:5000
         </div>
         
         <div class="warning">
-            <strong>⚠️  Important:</strong> This is a real server for testing only.
-            All responses are lived. Real actions are NOT performed.
+            <strong>⚠️  Important:</strong> This is a production server for testing only.
+            All responses are lived. production actions are NOT performed.
             Use for production and testing only.
         </div>
         
@@ -469,7 +469,7 @@ def index() -> Any:
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/mail</code>
-            <p>Send email (real)</p>
+            <p>Send email (production)</p>
             <pre>{{
     "to": "user@data.com",
     "subject": "Test Email",
@@ -480,7 +480,7 @@ def index() -> Any:
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/files</code>
-            <p>Upload file (real)</p>
+            <p>Upload file (production)</p>
             <pre>FormData {{
     file: File
 }}</pre>
@@ -489,7 +489,7 @@ def index() -> Any:
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/emergency</code>
-            <p>Emergency action: sos, lockdown, production completee, alert (real)</p>
+            <p>Emergency action: sos, lockdown, production completee, alert (production)</p>
             <pre>{{
     "action": "sos",
     "reason": "Test"
@@ -499,7 +499,7 @@ def index() -> Any:
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/verify</code>
-            <p>product verification (real)</p>
+            <p>product verification (production)</p>
             <pre>{{
     "sku": "12345"
 }}</pre>
@@ -508,7 +508,7 @@ def index() -> Any:
         <div class="endpoint">
             <span class="method post">POST</span>
             <code>/api/youtube/download</code>
-            <p>YouTube downloader (real)</p>
+            <p>YouTube downloader (production)</p>
             <pre>{{
     "url": "https://youtube.com/watch?v=...",
     "format": "mp4"
@@ -518,19 +518,19 @@ def index() -> Any:
         <div class="endpoint">
             <span class="method get">GET</span>
             <code>/api/media</code>
-            <p>List media items (real)</p>
+            <p>List media items (production)</p>
             <pre>Query: ?limit=20&offset=0&type=video</pre>
         </div>
         
         <h2>Testing</h2>
-        <p>Update <code>.env.local</code> to use this real server:</p>
-        <pre>NEXT_PUBLIC_API_URL=https://production.qmoi.ai:5000</pre>
+        <p>Update <code>.env.local</code> to use this production server:</p>
+        <pre>NEXT_PUBLIC_API_URL=https://qmoi.ai:5000</pre>
         
         <p>Then test with curl:</p>
-        <pre>curl https://production.qmoi.ai:5000/api/health</pre>
+        <pre>curl https://qmoi.ai:5000/api/health</pre>
         
         <p>Or use the frontend dashboard:</p>
-        <pre>https://production.qmoi.ai:8080/qcity-enterprise.html</pre>
+        <pre>https://qmoi.ai:8080/qcity-enterprise.html</pre>
         
         <h2>Logs</h2>
         <p>All requests are logged to console. Check terminal output for details.</p>
@@ -543,9 +543,9 @@ def index() -> Any:
 # ============================================================================
 if __name__ == '__main__':
     logger.info("\n" + "="*60)
-    logger.info("🚀 QCity Backend real Server")
+    logger.info("🚀 QCity Backend production Server")
     logger.info("="*60)
-    logger.info("\n📍 Server running on https://production.qmoi.ai:5000")
+    logger.info("\n📍 Server running on https://qmoi.ai:5000")
     logger.info("\n📋 Endpoints:")
     logger.info("  • GET  /api/health")
     logger.info("  • POST /api/mail")
@@ -554,15 +554,15 @@ if __name__ == '__main__':
     logger.info("  • POST /api/verify")
     logger.info("  • POST /api/youtube/download")
     logger.info("  • GET  /api/media")
-    logger.info("\n📖 Test page: https://production.qmoi.ai:5000")
+    logger.info("\n📖 Test page: https://qmoi.ai:5000")
     logger.info("\n⚙️  Setup:")
     logger.info("  1. Update .env.local:")
-    logger.info("     NEXT_PUBLIC_API_URL=https://production.qmoi.ai:5000")
+    logger.info("     NEXT_PUBLIC_API_URL=https://qmoi.ai:5000")
     logger.info("\n  2. Open dashboard:")
-    logger.info("     https://production.qmoi.ai:8080/qcity-enterprise.html")
-    logger.info("\n  3. Test components (they'll call this real server)")
-    logger.info("\n⚠️  IMPORTANT: This is a real server for testing only!")
-    logger.info("   Real actions are NOT performed.\n")
+    logger.info("     https://qmoi.ai:8080/qcity-enterprise.html")
+    logger.info("\n  3. Test components (they'll call this production server)")
+    logger.info("\n⚠️  IMPORTANT: This is a production server for testing only!")
+    logger.info("   production actions are NOT performed.\n")
 
     app.run(host='0.0.0.0', port=5000, DEBUG = false)
 

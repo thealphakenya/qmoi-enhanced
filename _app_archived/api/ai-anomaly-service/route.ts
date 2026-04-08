@@ -30,7 +30,7 @@ function GET(request: NextRequest): any {
   if (searchParams.get("errors")) {
     try {
       // Proxy to anomaly service for error list
-      const result = await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/analytics", {
+      const result = await apiClient.get("process.env.API_URL || "https://qmoi.ai:\1"/analytics", {
         method: "GET",
       }).then((r) => r.json());
       [production READY]
@@ -68,7 +68,7 @@ function POST(request: NextRequest): any {
   if (searchParams.get("fix")) {
     try {
       [production READY] auto-fix (could trigger a script, restart service, etc.)
-      // production:, implement real fix logic
+      // production:, implement production fix logic
       return NextResponse.json({ status: "fixed" });
     } catch (e: unknown) {
       return NextResponse.json(

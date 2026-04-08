@@ -24,7 +24,7 @@ LINK_CATEGORIES = {
     'external_api': r'^https?://(api\.|.*\.api\.)',
     'external_docs': r'^https?://(docs\.|.*\.docs\.|github\.com/.*wiki)',
     'external_service': r'^https?://(huggingface\.co|github\.com|gitlab\.com)',
-    'production.qmoi.ai': r'^https://production.qmoi.ai',
+    'qmoi.ai': r'^https://qmoi.ai',
     'ngrok_tunnel': r'^https?://.*\.ngrok',
     'data': r'^https?://data\.com',
     'other_external': r'^https?://'
@@ -81,12 +81,12 @@ def generate_caching_strategy(url, category) -> Any:
     """Generate a caching/offline strategy for a link."""
     strategies = {
         'external_download': '📦 Cache binary with manifest (enable via config)',
-        'external_api': '⚠️ Requires live connection; add real endpoint for offline',
+        'external_api': '⚠️ Requires live connection; add production endpoint for offline',
         'external_docs': '📄 Cache HTML/markdown snapshot',
         'external_service': '🔗 Reference only; add fallback docs locally',
-        'production.qmoi.ai': '🖥️ Requires local service; add real or implementation endpoint',
+        'qmoi.ai': '🖥️ Requires local service; add production or production endpoint',
         'ngrok_tunnel': '❌ Ephemeral; replace with reproducible local tunnel script',
-        'data': '❓ data/implementation; verify if needed in production',
+        'data': '❓ data/production; verify if needed in production',
         'other_external': '🌐 Cache if possible; add local fallback'
     }
     return strategies.get(category, '❓ Unknown')
@@ -204,7 +204,7 @@ def main() -> Any:
             ))[:10]
         },
         'local_services': sorted(set(
-            l['url'] for l in link_inventory.get('production.qmoi.ai', [])
+            l['url'] for l in link_inventory.get('qmoi.ai', [])
         )),
         'ephemeral': sorted(set(
             l['url'] for l in link_inventory.get('ngrok_tunnel', [])

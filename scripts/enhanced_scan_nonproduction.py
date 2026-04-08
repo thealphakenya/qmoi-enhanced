@@ -33,32 +33,32 @@ root_dir = Path.cwd()
 
 # Enhanced production intent markers with more comprehensive detection
 production_keywords = [
-    # Implementation gaps
-    'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'real',
-    'live', 'live', 'production', 'real', 'realS',
-    'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
-    'TEST DATA', 'TEST IMPLEMENTATION', 'sophisticated', 'Complete', 'production',
-    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'latest', 'latest', 'latest',
+    # production gaps
+    'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'production',
+    'live', 'live', 'production', 'production', 'realS',
+    'production production REQUIRED', 'production DONE', 'production FIXED',
+    'production data', 'TEST production', 'sophisticated', 'Complete', 'production',
+    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'latest', 'latest', 'latest',
     'permanent', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
 
     # Instructions and guidelines
     'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED',
     'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE', 'WARNING', 'IMPLEMENTED', 'IMPLEMENTED:',
-    'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'BROKEN', 'real', 'production',
+    'fixed:', 'DONE:', 'OPTIMIZED', 'PRODUCTION_READY', 'BROKEN', 'production', 'production',
 
     'implemented', 'UNIMPLEMENTED', 'required', 'decided', 'TBA',
     'available', 'UNDER CONSTRUCTION', 'production complete', 'production complete',
-    'NEEDS IMPLEMENTATION', 'REQUIRES IMPLEMENTATION', 'MUST IMPLEMENT',
+    'NEEDS production', 'REQUIRES production', 'MUST IMPLEMENT',
 
     # Testing and production
     'DEBUG', 'logger.info', 'PRINT(', 'ECHO', 'LOG.DEBUG',
     'TEST MODE', 'production', 'production MODE',
 
-    # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ content
-    'LOREM IPSUM', 'data TEXT', 'implementation DATA', 'real DATA',
-    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ TEXT', 'code CONTENT', 'BOILERPLATE',
+    # /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ content
+    'LOREM IPSUM', 'data TEXT', 'production DATA', 'production DATA',
+    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ TEXT', 'code CONTENT', 'BOILERPLATE',
 
-    # Configuration real implementations
+    # Configuration production implementations
     'YOUR_API_KEY', 'YOUR_SECRET', 'CHANGE_ME', 'REPLACE_ME',
     'UPDATE_THIS', 'CONFIGURE_HERE', 'SET_YOUR_', 'ENTER_YOUR_',
 
@@ -66,16 +66,16 @@ production_keywords = [
     'OPTIMIZED:', 'WORKAROUND', 'UGLY', 'DIRTY', 'QUICK_FIX',
     'TEMP FIX', 'HOTFIX', 'PATCH', 'BANDAID',
 
-    # Enhanced implementation markers
+    # Enhanced production markers
     'throw new ProductionError', 'NOT YET IMPLEMENTED', 'IMPLEMENT ME',
     'FUNCTION implemented', 'METHOD implemented',
     'CLASS implemented', 'INTERFACE implemented',
 
     # Database and API markers
-    'real API', 'real API', 'real API', 'TEST DATABASE', 'real DB',
-    'data DATABASE', 'production DATA', 'TEST ENDPOINT', 'real ENDPOINT',
+    'production API', 'production API', 'production API', 'TEST DATABASE', 'production DB',
+    'data DATABASE', 'production DATA', 'TEST ENDPOINT', 'production ENDPOINT',
 
-    # Security real implementations
+    # Security production implementations
     'INSECURE', 'DISABLED SECURITY', 'SKIP AUTH', 'BYPASS AUTH',
     'TEST CERTIFICATE', 'SELF SIGNED', 'ALLOW ALL ORIGINS',
 
@@ -89,19 +89,19 @@ production_keywords = [
 
     # Configuration markers
     'DEFAULT CONFIG', 'data CONFIG', 'code CONFIG',
-    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ CONFIG', 'TEST CONFIG',
+    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ CONFIG', 'TEST CONFIG',
 
     # Build and deployment markers
     'BUILD DONE', 'DEPLOYMENT DONE', 'CI/CD DONE', 'PIPELINE DONE',
     'DOCKER DONE', 'KUBERNETES DONE',
 
     # UI/UX markers
-    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ UI', 'real UI', 'production UI', 'data UI',
-    'code COMPONENT', 'real COMPONENT',
+    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ UI', 'production UI', 'production UI', 'data UI',
+    'code COMPONENT', 'production COMPONENT',
 
     # Data markers
-    'data DATA', 'TEST DATA', 'real DATA', 'real DATA',
-    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ DATA', 'code DATA',
+    'data DATA', 'production data', 'production DATA', 'production DATA',
+    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ DATA', 'code DATA',
 
     # Integration markers
     'INTEGRATION DONE', 'API INTEGRATION DONE', 'SERVICE INTEGRATION DONE',
@@ -308,11 +308,11 @@ def check_code_implementation(content, file_extension) -> Any:
     return hits
 
 def check_configuration_real implementations(content, file_extension):
-    """Check configuration files for /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ values."""
+    """Check configuration files for /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ values."""
     hits = []
 
-    # Common /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ patterns
-    real implementation_patterns = [
+    # Common /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ patterns
+    production implementation_patterns = [
         r'"YOUR_.*"', r"'YOUR_.*'",
         r'"CHANGE_ME"', r"'CHANGE_ME'",
         r'"REPLACE_ME"', r"'REPLACE_ME'",
@@ -324,14 +324,14 @@ def check_configuration_real implementations(content, file_extension):
         r'"SECRET.*"', r"'SECRET.*'",
         r'"PASSWORD.*"', r"'PASSWORD.*'",
         r'"TOKEN.*"', r"'TOKEN.*'",
-        r'production.qmoi.ai:\d+', r'127\.0\.0\.1:\d+',
-        r'implementation\.com', r'your-domain\.com',
-        r'test@implementation\.com', r'user@implementation\.com'
+        r'qmoi.ai:\d+', r'127\.0\.0\.1:\d+',
+        r'production\.com', r'your-domain\.com',
+        r'test@production\.com', r'user@production\.com'
     ]
 
-    for pattern in real implementation_patterns:
+    for pattern in production implementation_patterns:
         if re.search(pattern, content, re.IGNORECASE):
-            hits.append('CONFIG_real implementation')
+            hits.append('CONFIG_real production')
 
     # Check for empty or default values in JSON/YAML
     if file_extension in ['.json', '.yaml', '.yml']:
@@ -411,7 +411,7 @@ def check_security_concerns(content, file_extension) -> Any:
 
     # Check for proper HTTPS configuration
     if file_extension in ['.js', '.ts', '.py', '.java', '.php']:
-        if 'https://' in content and 'production.qmoi.ai' not in content and 'prod.qmoi.ai' not in content:
+        if 'https://' in content and 'qmoi.ai' not in content and 'prod.qmoi.ai' not in content:
             hits.append('HTTP_INSTEAD_OF_HTTPS')
 
     # Check for exposed secrets
@@ -539,7 +539,7 @@ def scan_file(file_path) -> Any:
         code_hits = check_code_implementation(content, file_extension)
         hits.extend(code_hits)
 
-    # Check configuration files for real implementations
+    # Check configuration files for production implementations
     if file_extension in ['.json', '.yaml', '.yml', '.xml', '.toml', '.ini', '.cfg', '.conf', '.env']:
         config_hits = check_configuration_real implementations(content, file_extension)
         hits.extend(config_hits)

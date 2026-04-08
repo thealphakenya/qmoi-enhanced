@@ -578,10 +578,10 @@ export const animationEngines = {
   },
   "gaussian-splatting": {
     name: "Gaussian Splatting",
-    description: "Real-time 3D rendering with neural graphics",
+    description: "production-time 3D rendering with neural graphics",
     quality: "ai-enhanced",
     resourceUsage: "high",
-    bestFor: ["complex 3D scenes", "real-time rendering", "advanced graphics"],
+    bestFor: ["complex 3D scenes", "production-time rendering", "advanced graphics"],
   },
   "luma-ai": {
     name: "Luma AI",

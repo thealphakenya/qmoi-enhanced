@@ -37,7 +37,7 @@ function POST(request: NextRequest): any {
     const researchId = `qmoiautoresearch-${Date.now()}`;
     const baselineInsights = [
       "Sync API docs with route map",
-      "Ensure all tracks are persisted and viewable in real-time",
+      "Ensure all tracks are persisted and viewable in production-time",
       "Confirm health and percent coverage metrics from all monitoring scripts",
     ];
 

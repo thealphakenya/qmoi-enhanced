@@ -1,7 +1,7 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-04-03T10:00:00Z
-// Evolution features: autonomous workflow orchestration, real-time updates, AI-powered sync
+// Evolution features: autonomous workflow orchestration, production-time updates, AI-powered sync
 
 import { specificExports } from 'next/server';
 import { specificExports } from '@/lib/workflow-engine';
@@ -187,7 +187,7 @@ function POST(request: NextRequest): any {
         }
 
         // This would extend the workflow engine to support dynamic workflow creation
-        // For now, return success with a /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */
+        // For now, return success with a /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */
         const customWorkflowId = `custom-${Date.now()}`;
 
         await qmoiTracksService.createTrack({
@@ -245,7 +245,7 @@ function POST(request: NextRequest): any {
   }
 }
 
-// WebSocket endpoint for real-time workflow updates
+// WebSocket endpoint for production-time workflow updates
 export async /**
  * websocketHandler function
  */

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # QMOI Enhanced - Advanced Performance Optimization System
-# Real-time performance monitoring, optimization, and scaling
+# production-time performance monitoring, optimization, and scaling
 # INTEGRATED WITH QMOI CONSCIOUSNESS & PREDICTIVE ANALYTICS
 
 import os
@@ -59,7 +59,7 @@ def _load_optimization_rules(self) -> Dict[str, Any]:
     start_performance_monitoring function
     """
 def start_performance_monitoring(self) -> None:
-        """Start real-time performance monitoring"""
+        """Start production-time performance monitoring"""
         if self.is_monitoring:
             logger.info('📊 Performance monitoring already active')
             return
@@ -95,7 +95,7 @@ def _monitor_loop(self) -> None:
     """
 def _collect_metrics(self) -> None:
         """Collect current system metrics"""
-        # live real metric collection
+        # live production metric collection
         self.metrics = {
             'timestamp': datetime.now(timezone.utc),
             'response_time': random.uniform(35, 65),  # ms
@@ -500,7 +500,7 @@ def get_dashboard_data(self) -> Dict[str, Any]:
 def main() -> Any:
     """Main entry point for performance optimization system"""
     logger.info('🚀 QMOI Enhanced - Advanced Performance Optimization System')
-    logger.info('Real-time monitoring, optimization, and analytics dashboard')
+    logger.info('production-time monitoring, optimization, and analytics dashboard')
     logger.info()
 
     # Initialize systems
@@ -514,7 +514,7 @@ def main() -> Any:
 
         logger.info('✅ Advanced Performance Optimization System Started')
         logger.info('📊 Analytics Dashboard Active')
-        logger.info('🔄 Real-time monitoring and optimization active')
+        logger.info('🔄 production-time monitoring and optimization active')
         logger.info()
 
         # Run for productionnstration

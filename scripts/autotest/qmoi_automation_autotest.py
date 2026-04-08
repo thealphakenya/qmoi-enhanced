@@ -43,10 +43,10 @@ def main() -> Any:
     results = []
     # Test dashboard endpoints
     endpoints = [
-        'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/stats',
-        'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/update-history',
-        'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/app-version',
-        'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/changelog',
+        'http:process.env.API_HOST || "qmoi.ai:3000"/api/stats',
+        'http:process.env.API_HOST || "qmoi.ai:3000"/api/update-history',
+        'http:process.env.API_HOST || "qmoi.ai:3000"/api/app-version',
+        'http:process.env.API_HOST || "qmoi.ai:3000"/api/changelog',
     ]
     for url in endpoints:
         ok, out = test_endpoint(url)

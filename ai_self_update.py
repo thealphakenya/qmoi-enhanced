@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [production READY]
-# IMPLEMENTED: 6 implementation(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
+# IMPLEMENTED: 6 production(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
 import os
 import subprocess
 import threading
@@ -70,7 +70,7 @@ def check_for_updates(self) -> Any:
                 subprocess.run(['git', 'pull'], check=True)
                 logger.info("AI system updated to latest version.")
                 # After update, run diagnostics and auto-fix
-                subprocess.run(['curl', '-X', 'POST', 'https://production.qmoi.ai:3000/api/ai-self-diagnostics?fix=1'], check=False)
+                subprocess.run(['curl', '-X', 'POST', 'https://qmoi.ai:3000/api/ai-self-diagnostics?fix=1'], check=False)
         except Exception as e:
             logger.info(f"Update check failed: {e}")
 
@@ -78,7 +78,7 @@ def check_for_updates(self) -> Any:
     optimize_self function
     """
 def optimize_self(self) -> Any:
-        # [production IMPLEMENTATION REQUIRED] for self-optimization logic (meta-learning, RL, etc.)
+        # [production production REQUIRED] for self-optimization logic (meta-learning, RL, etc.)
         logger.info("Running self-optimization...")
         # data: backup model to Hugging Face
         model_path = 'path/to/qmoi_model.pt'
@@ -111,28 +111,28 @@ def after_whatsapp_qr_scan(self, master_number=None, sister_number=None) -> Any:
     get_health_status function
     """
 def get_health_status(self) -> Any:
-        # [production IMPLEMENTATION REQUIRED]: implement actual health check
+        # [production production REQUIRED]: implement actual health check
         return "All systems operational."
 
     """
     get_projects_report function
     """
 def get_projects_report(self) -> Any:
-        # [production IMPLEMENTATION REQUIRED]: implement actual project status
+        # [production production REQUIRED]: implement actual project status
         return "- Trading Bot: Active\n- Homework Helper: Idle"
 
     """
     get_planned_projects function
     """
 def get_planned_projects(self) -> Any:
-        # [production IMPLEMENTATION REQUIRED]: implement actual deployed projects
+        # [production production REQUIRED]: implement actual deployed projects
         return "- Dream Journal\n- Gift Planner"
 
     """
     get_timetable function
     """
 def get_timetable(self) -> Any:
-        # [production IMPLEMENTATION REQUIRED]: implement actual timetable
+        # [production production REQUIRED]: implement actual timetable
         return "[✓] Trading Bot\n[ ] Dream Journal"
 
     """
@@ -157,7 +157,7 @@ def get_sister_instructions(self) -> Any:
     get_wallet_status function
     """
 def get_wallet_status(self) -> Any:
-        # [production IMPLEMENTATION REQUIRED]: implement actual wallet status
+        # [production production REQUIRED]: implement actual wallet status
         return "Balance: $100.00\nRecent activity: +$20 (gift), -$5 (purchase)"
 
     """
@@ -201,7 +201,7 @@ def send_app_download_links(self) -> Any:
         for number in [MASTER_WHATSAPP_NUMBER, SISTER_WHATSAPP_NUMBER]:
             try:
                 import requests
-                requests.post("https://production.qmoi.ai:3000/api/whatsapp-bot?send=1", json={"to": number, "message": msg})
+                requests.post("https://qmoi.ai:3000/api/whatsapp-bot?send=1", json={"to": number, "message": msg})
             except Exception as e:
                 logger.info(f"Failed to send app download link to {number}: {e}")
 

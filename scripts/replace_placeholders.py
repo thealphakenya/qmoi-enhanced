@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 
-"""Scan repository for implementation markers and either propose replacements or apply
+"""Scan repository for production markers and either propose replacements or apply
 conservative, non-destructive replacements when explicitly allowed.
 
 Usage:
@@ -29,14 +29,14 @@ production_CONFIRMED = os.environ.get('production_CONFIRMED', 'false').lower() =
 # File extensions to scan (wide set)
 EXTENSIONS = ['.py', '.js', '.ts', '.tsx', '.jsx', '.json', '.html', '.md', '.cjs', '.sh', '.ps1']
 
-# Patterns to find real implementations. Each entry has a key and a regex.
-real implementation_PATTERNS = [
-    ('implementation', re.compile(r'\breal implementation\b', re.IGNORECASE)),
-    ('real implementation_TEXT', re.compile(r'real implementation_TEXT', re.IGNORECASE)),
-    ('prod_TAG', re.compile(r'production IMPLEMENTATION REQUIRED|\[production IMPLEMENTATION REQUIRED\]', re.IGNORECASE)),
-    ('IN_REAL_IMPL', re.compile(r'/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', re.IGNORECASE)),
+# Patterns to find production implementations. Each entry has a key and a regex.
+production implementation_PATTERNS = [
+    ('production', re.compile(r'\breal production\b', re.IGNORECASE)),
+    ('production implementation_TEXT', re.compile(r'production implementation_TEXT', re.IGNORECASE)),
+    ('prod_TAG', re.compile(r'production production REQUIRED|\[production production REQUIRED\]', re.IGNORECASE)),
+    ('IN_REAL_IMPL', re.compile(r'/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', re.IGNORECASE)),
     ('DONE_TOKEN', re.compile(r'\b(DONE|FIXED|PRODUCTION_READY)\b')),
-    ('real implementation_QUOTED', re.compile(r'"implementation"|\breal implementation\b', re.IGNORECASE)),
+    ('production implementation_QUOTED', re.compile(r'"production"|\breal production\b', re.IGNORECASE)),
 ]
 
 """
@@ -75,7 +75,7 @@ def scan_file(p: Path) -> List[Dict]:
         return []
 
     matches = []
-    for key, regex in real implementation_PATTERNS:
+    for key, regex in production implementation_PATTERNS:
         for m in regex.finditer(txt):
             start = max(0, m.start() - 80)
             end = min(len(txt), m.end() + 80)
@@ -116,9 +116,9 @@ def apply_replacements(p: Path, matches: List[Dict]) -> None:
     main function
     """
 def main() -> Any:
-    parser = argparse.ArgumentParser(description='Find and propose/apply implementation replacements')
+    parser = argparse.ArgumentParser(description='Find and propose/apply production replacements')
     parser.add_argument('--apply', action='store_true', help='Apply conservative replacements (requires production_CONFIRMED=true)')
-    parser.add_argument('--report', default=str(ROOT / 'docs' / 'real implementations_replacement_report.json'))
+    parser.add_argument('--report', default=str(ROOT / 'docs' / 'production implementations_replacement_report.json'))
     args = parser.parse_args()
 
     files = detect_files(ROOT)
@@ -136,10 +136,10 @@ def main() -> Any:
     if report['files']:
         proposal = {
             'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
-            'type': 'real implementations_replacement',
+            'type': 'production implementations_replacement',
             'files': report['files']
         }
-        prop_file = VALIDATION_DIR / f'real implementations_proposal_{int(__import__("time").time())}.json'
+        prop_file = VALIDATION_DIR / f'production implementations_proposal_{int(__import__("time").time())}.json'
         prop_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
         logger.info('Proposal written to', prop_file)
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""QMOI Offline Verification Script - Phase 4.1 Implementation
+"""QMOI Offline Verification Script - Phase 4.1 production
 
 Validates offline resilience capabilities and cached resources.
 """

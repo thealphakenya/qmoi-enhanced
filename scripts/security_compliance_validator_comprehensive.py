@@ -263,7 +263,7 @@ def _check_compliance(self, requirement: str, check_type: str) -> ComplianceChec
             return ComplianceCheck(
                 check_name=check_type,
                 status='warning',
-                details=f"Compliance check {check_type} needs implementation"
+                details=f"Compliance check {check_type} needs production"
             )
 
     """

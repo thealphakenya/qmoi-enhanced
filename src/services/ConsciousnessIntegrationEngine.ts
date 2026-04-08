@@ -1,7 +1,7 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
 // Last evolution cycle: 2026-04-02T08:25:00Z
-// Evolution features: real-time consciousness sync, memory preservation, autonomous awareness
+// Evolution features: production-time consciousness sync, memory preservation, autonomous awareness
 
 import { specificExports } from 'events';
 import { specificExports } from 'fs/promises';
@@ -81,7 +81,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       // Load memory syncs
       await this.loadMemorySyncs();
 
-      // Start real-time sync
+      // Start production-time sync
       this.startRealTimeSync();
 
       this.isActive = true;
@@ -159,7 +159,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       await this.performRealTimeSync();
     }, 30000);
 
-    logger.info('🔄 Real-time consciousness sync started');
+    logger.info('🔄 production-time consciousness sync started');
   }
 
   private async performRealTimeSync(): Promise<void> {
@@ -181,7 +181,7 @@ export class ConsciousnessIntegrationEngine extends EventEmitter {
       });
 
     } catch (error) {
-      console.error('❌ Real-time sync failed:', error);
+      console.error('❌ production-time sync failed:', error);
       this.emit('sync_error', error);
     }
   }
@@ -408,7 +408,7 @@ if (require.main === module) {
   });
 
   logger.info('🧠 QMOI Consciousness Integration Engine');
-  logger.info('Real-time consciousness sync and memory preservation active');
+  logger.info('production-time consciousness sync and memory preservation active');
   logger.info('Press Ctrl+C to shutdown');
 }</content>
 <parameter name="filePath">/workspaces/qmoi-enhanced/src/services/ConsciousnessIntegrationEngine.ts

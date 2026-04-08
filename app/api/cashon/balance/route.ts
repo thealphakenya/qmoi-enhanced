@@ -96,9 +96,9 @@ function POST(_req: Request): any {
         { status: 500 },
       );
     }
-    // production: Call real M-Pesa API with configured credentials
+    // production: Call production M-Pesa API with configured credentials
     try {
-      // production: Integrate with real M-Pesa API using process.env.MPESA_CONSUMER_KEY
+      // production: Integrate with production M-Pesa API using process.env.MPESA_CONSUMER_KEY
       logEvent("mpesa_sync_success", { mpesaNumber });
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,

@@ -9,7 +9,7 @@
 Pipeline orchestrator for auto-enhance / auto-evolution tasks.
 
 This script runs a safe pipeline in dry-run by default:
- - implementation scans (existing scripts)
+ - production scans (existing scripts)
  - generate PAYED md (conservative)
  - expand DONEs
  - run auto release discovery (dry-run)
@@ -83,7 +83,7 @@ if __name__ == '__main__':
 Orchestrator for the qMOI auto-enhancement pipeline.
 
 This script runs the key automation steps in a safe, dry-run-first manner:
- - run implementation scans
+ - run production scans
  - generate PAYED md files (billing-gated)
  - expand platform DONEs
  - validate PAYED platforms
@@ -107,7 +107,7 @@ RUNS.mkdir(parents=True, exist_ok=True)
 
 STEPS = [
     { 'name': 'validate_credentials', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'validate_all_credentials.py')] },
-    { 'name': 'real implementation_scans', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'run_real implementation_scans.py')] },
+    { 'name': 'production implementation_scans', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'run_real implementation_scans.py')] },
     { 'name': 'generate_payed_md', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'generate_payed_md.py'), '--run-gen-refs'] },
     { 'name': 'expand_platform_DONEs', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'expand_platform_DONEs.py')] },
     { 'name': 'validate_payed_platforms', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'validate_payed_platforms.py')] },

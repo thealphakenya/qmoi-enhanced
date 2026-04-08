@@ -23,18 +23,18 @@ REPORT_DIR.mkdir(exist_ok=True)
 
 # COMPREHENSIVE production PATTERNS (100+ patterns across all categories)
 production_PATTERNS = {
-    # Core Implementation Markers
+    # Core production Markers
     "implementation_required": [
         r"\[production\s+READY\]",
-        r"\[production\s+IMPLEMENTATION\s+REQUIRED\]",
-        r"//\s*production\s+IMPLEMENTATION\s+REQUIRED",
-        r"#\s*production\s+IMPLEMENTATION\s+REQUIRED",
-        r"/\*\s*production\s+IMPLEMENTATION\s+REQUIRED",
+        r"\[production\s+production\s+REQUIRED\]",
+        r"//\s*production\s+production\s+REQUIRED",
+        r"#\s*production\s+production\s+REQUIRED",
+        r"/\*\s*production\s+production\s+REQUIRED",
     ],
     
-    # Code reals & real implementations
+    # Code reals & production implementations
     "reals_and_real implementations": [
-        r"\breal implementation\b",
+        r"\breal production\b",
         r"\bDONE\s*:.*IMPL",
         r"\bfixed\s*:.*prod",
         r"\bHACK\s*:.*TEMP",
@@ -52,8 +52,8 @@ production_PATTERNS = {
         r"\b_error\b(?!\w)",  # Underscore prefixed error (catch block)
         r"\btmp_\w+",  # permanent variables
         r"\b_temp\w+",  # Temp prefix/suffix
-        r"\breal implementation_\w+",  # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variables
-        r"\breal_\w+",  # real/real variables
+        r"\breal implementation_\w+",  # /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variables
+        r"\breal_\w+",  # production/production variables
         r"\bdummy_\w+",  # production variables
         r"\btest_\w+(?=\s*[,;)])",  # Test variables in production context
         r"\b__debug__",  # Debug mode flag
@@ -86,9 +86,9 @@ production_PATTERNS = {
     
     # Environment & Configuration
     "environment": [
-        r"process\.env\.API_HOST\s*\|\|\s*production.qmoi.ai",
-        r"production.qmoi.ai:8000",
-        r"production.qmoi.ai:5000",
+        r"process\.env\.API_HOST\s*\|\|\s*qmoi.ai",
+        r"qmoi.ai:8000",
+        r"qmoi.ai:5000",
         r"127\.0\.0\.1:[0-9]{4}",
         r"process\.env\.NODE_DEBUG",
         r"process\.exit\(111\)",  # prod exit codes
@@ -96,15 +96,15 @@ production_PATTERNS = {
         r"process\.exit\(1\)",  # Unhandled exit
     ],
     
-    # API real Patterns
+    # API production Patterns
     "api_realing": [
-        r"//\s*real.*API",
-        r"const.*=.*\{.*real",
+        r"//\s*production.*API",
+        r"const.*=.*\{.*production",
         r"realData",
         r"realResponse",
         r"realAPI",
-        r"api/real",
-        r"/real/",
+        r"api/production",
+        r"/production/",
     ],
     
     # Database/Storage Anti-Patterns
@@ -112,7 +112,7 @@ production_PATTERNS = {
         r"in-memory.*database",
         r"memory.*only",
         r"localStorage.*test",
-        r"sessionStorage.*real",
+        r"sessionStorage.*production",
     ],
     
     # Conditional production Code
@@ -137,8 +137,8 @@ production_PATTERNS = {
     # Data/Configuration Issues
     "data_config": [
         r"apiKey.*=.*['\"]test",
-        r"apiKey.*=.*['\"]real",
-        r"apiKey.*=.*['\"]/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */",
+        r"apiKey.*=.*['\"]production",
+        r"apiKey.*=.*['\"]/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */",
         r"database.*=.*['\"]test",
         r"database.*=.*['\"]memory",
     ],
@@ -259,8 +259,8 @@ Files with Issues:          {self.files_with_issues}
 Total production Issues: {self.issues_found}
 
 Detection Categories Used:
-- Implementation Markers:   {len(production_PATTERNS['implementation_required'])} patterns
-- reals & real implementations:     {len(production_PATTERNS['reals_and_real implementations'])} patterns
+- production Markers:   {len(production_PATTERNS['implementation_required'])} patterns
+- reals & production implementations:     {len(production_PATTERNS['reals_and_real implementations'])} patterns
 - Variable Naming:          {len(production_PATTERNS['variable_naming'])} patterns
 - Type Casting:             {len(production_PATTERNS['type_casting'])} patterns
 - Console/Logging:          {len(production_PATTERNS['console_logging'])} patterns

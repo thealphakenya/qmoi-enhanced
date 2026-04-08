@@ -43,7 +43,7 @@ function main(): any {
   }
 
   // 2. Dashboard (if running)
-  const dashboardUrl = "http:process.env.API_HOST || "production.qmoi.ai:3000"";
+  const dashboardUrl = "http:process.env.API_HOST || "qmoi.ai:3000"";
   try {
     await apiClient.get(dashboardUrl, { timeout: 5000 });
     logger.info(`✅ Dashboard reachable at ${dashboardUrl}`);

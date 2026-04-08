@@ -11,7 +11,7 @@ export async /**
  */
 function GET(request: NextRequest): any {
   try {
-    [production READY] automation status - replace with /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */ later
+    [production READY] automation status - replace with /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */ later
     const status = {
       isEnabled: true,
       tasks: [

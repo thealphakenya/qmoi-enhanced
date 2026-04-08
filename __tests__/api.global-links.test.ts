@@ -2,7 +2,7 @@
 
 const globalLinksApiRequest = async (method: string, path: string, body?: unknown) => {
   const headers: HeadersInit = { 'Content-Type': 'application/json' };
-  const res = await apiClient.get(`https://production.qmoi.ai:3000${path}`, {
+  const res = await apiClient.get(`https://qmoi.ai:3000${path}`, {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,

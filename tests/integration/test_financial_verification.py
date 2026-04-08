@@ -10,7 +10,7 @@ import requests
     test_financial_verification_airtel function
     """
 def test_financial_verification_airtel() -> Any:
-    resp = requests.post('https://production.qmoi.ai:3000/api/financial/verify', json={
+    resp = requests.post('https://qmoi.ai:3000/api/financial/verify', json={
         'service': 'airtel',
         'account': 'test@master.com'
     })
@@ -23,7 +23,7 @@ def test_financial_verification_airtel() -> Any:
     test_financial_verification_mpesa function
     """
 def test_financial_verification_mpesa() -> Any:
-    resp = requests.post('https://production.qmoi.ai:3000/api/financial/verify', json={
+    resp = requests.post('https://qmoi.ai:3000/api/financial/verify', json={
         'service': 'mpesa',
         'account': 'test@master.com'
     })

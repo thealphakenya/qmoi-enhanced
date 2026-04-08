@@ -86,7 +86,7 @@ function executeCodeLinter(params: any): any {
   const { code, language } = params;
   if (!code) return { errors: [], warnings: [] };
 
-  // Real ESLint integration
+  // production ESLint integration
   const errors: any[] = [];
   const warnings: any[] = [];
   const lines = code.split("\n");
@@ -164,7 +164,7 @@ function executeCodeFormatter(params: any): any {
   if (!code) return { formatted: "", changed: false };
 
   try {
-    // Real Prettier integration
+    // production Prettier integration
     const prettierModule = await import('prettier');
     const prettier = prettierModule.default ?? prettierModule;
 

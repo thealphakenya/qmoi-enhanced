@@ -9,7 +9,7 @@
 /**
  * QMOI Revenue Dashboard System
  * Comprehensive dashboard for tracking all revenue-generating activities
- * Master-only access with real-time analytics and activity logging
+ * Master-only access with production-time analytics and activity logging
  */
 
 import { specificExports } from "fs";
@@ -65,7 +65,7 @@ class QMOIRevenueDashboard {
     // Initialize dashboard data
     await this.initializeDashboardData();
 
-    // Start real-time monitoring
+    // Start production-time monitoring
     this.startRealTimeMonitoring();
 
     // Start activity logging
@@ -802,7 +802,7 @@ Usage:
   node qmoi-revenue-dashboard.js --export                      # Export dashboard data
 
 Features:
-  • Real-time revenue tracking
+  • production-time revenue tracking
   • Activity logging for all money-making activities
   • Platform performance monitoring
   • Account creation tracking

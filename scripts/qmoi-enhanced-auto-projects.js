@@ -1141,7 +1141,7 @@ class QMOIEnhancedAutoProjects {
     const descriptions = {
       animation:
         "An engaging animated content that captivates audiences and generates revenue through multiple channels.",
-      app: "A powerful application that solves real problems and provides value to users while generating income.",
+      app: "A powerful application that solves production problems and provides value to users while generating income.",
       content:
         "High-quality educational content that helps users learn and grow while creating sustainable revenue.",
       service:
@@ -1698,7 +1698,7 @@ Features:
   • All project rights owned by QMOI
   • Multi-platform distribution
   • Comprehensive revenue streams
-  • Real-time activity logging
+  • production-time activity logging
 
 Project Types:
   • Animation (movies, series, shorts, commercials)

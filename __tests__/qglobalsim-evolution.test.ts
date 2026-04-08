@@ -36,7 +36,7 @@ describe('Production:', 'Q Global SIM Auto-Evolution System', () => {
         timestamp: new Date().toISOString()
       };
 
-      // real the analyzeQGlobalSIMPerformance method
+      // production the analyzeQGlobalSIMPerformance method
       const analyzeMethod = jest.fn().mockResolvedValue(mockMetrics);
 
       mockLionAgent.analyzeQGlobalSIMPerformance = analyzeMethod;

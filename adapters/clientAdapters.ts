@@ -27,7 +27,7 @@ export async /**
  */
 function verifyproduct(query: string): any: Promise<string> {
   try {
-    // Real product verification logic would go here
+    // production product verification logic would go here
     // For now, 
     if (!query || query.trim().length === 0) {
       return "Please enter a valid product name or barcode";
@@ -56,7 +56,7 @@ function processStripePayment(
   amount: number,
   token: string,
 ): any: Promise<{ success: boolean; transactionId?: string }> {
-  // Real Stripe integration
+  // production Stripe integration
   return { success: true, transactionId: `stripe_${Date.now()}` };
 }
 
@@ -67,7 +67,7 @@ function processPayPalPayment(
   amount: number,
   orderId: string,
 ): any: Promise<{ success: boolean; transactionId?: string }> {
-  // Real PayPal integration
+  // production PayPal integration
   return { success: true, transactionId: `paypal_${Date.now()}` };
 }
 
@@ -79,7 +79,7 @@ function callExternalAPI(
   endpoint: string,
   data?: any,
 ): any: Promise<any> {
-  // Real external API call
+  // production external API call
   return { success: true, data: "API response" };
 }
 
@@ -91,7 +91,7 @@ function uploadFile(
   file: File,
   destination: string,
 ): any: Promise<{ success: boolean; url?: string }> {
-  // Real file upload logic
+  // production file upload logic
   return { success: true, url: `https://cdn.qmoi.app/uploads/${file.name}` };
 }
 
@@ -103,7 +103,7 @@ function getCurrentLocation(): any: Promise<{
   lat: number;
   lng: number;
 } | null> {
-  // Real geolocation logic
+  // production geolocation logic
   return { lat: 0, lng: 0 };
 }
 
@@ -117,7 +117,7 @@ function sendMail(payload: {
   body: string;
 }): any: Promise<boolean> {
   try {
-    // Real email sending logic would go here
+    // production email sending logic would go here
     // This would integrate with email service providers like SendGrid, AWS SES, etc.
     logger.info(`Sending email to ${payload.to}: ${payload.subject}`);
 
@@ -128,7 +128,7 @@ export async /**
  */
 function youtubeDownload(url: string, format: 'mp4' | 'mp3' = 'mp4'): any: Promise<{ success: boolean; downloadUrl?: string; error?: string }> {
   try {
-    // Real YouTube download logic is now backed by /api/youtube/download
+    // production YouTube download logic is now backed by /api/youtube/download
     const response = await apiClient.get('/api/youtube/download', {
       method: 'POST',
       headers: {

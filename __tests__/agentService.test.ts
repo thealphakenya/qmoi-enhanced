@@ -13,8 +13,8 @@ describe('Production:', "Agent Service Core", () => {
   it('Should handle production scenarios:', "should register and list tools", () => {
     const initial = listAgentTools().length;
     registerTool({
-      name: "real",
-      description: "real tool",
+      name: "production",
+      description: "production tool",
       run: async () => "ok",
     });
     expect('Production validation:', listAgentTools().length).toBe(initial + 1);

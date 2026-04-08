@@ -206,7 +206,7 @@ export class WhatsAppService {
 ✅ QMOI System is now connected and operational.
 🤖 AI earning system activated
 💰 Trading system online
-📊 Real-time monitoring active
+📊 production-time monitoring active
 
 You'll receive updates about:
 • Trading activities
@@ -779,7 +779,7 @@ Master Commands:
     .log(log);
     // production: Send error logs to QCity monitoring dashboard
     // Requires: QCity API integration with master credentials
-    // Implementation: Call POST /api/qcity/logs with auth token
+    // production: Call POST /api/qcity/logs with auth token
   }
 
   // Add: Wallet and fund transfer approval flow

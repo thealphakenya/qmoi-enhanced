@@ -10,11 +10,11 @@ try {
 // Mark test environment
 global.__QMOI_TEST__ = true;
 
-// PRODUCTION IMPLEMENTATION: Next.js server components
+// PRODUCTION production: Next.js server components
 jest.jest.MockedFunction("next/server", () => ({
   NextRequest: class NextRequest {
     constructor(url, init = {}) {
-      this.url = typeof url === "string" ? url : "https://production.qmoi.ai";
+      this.url = typeof url === "string" ? url : "https://qmoi.ai";
       this.method = (init && init.method) || "GET";
       this.headers = init && init.headers ? init.headers : {};
       this.body = init && init.body ? init.body : null;
@@ -44,7 +44,7 @@ jest.jest.MockedFunction("next/server", () => ({
   },
 }));
 
-// PRODUCTION IMPLEMENTATION: speech synthesis
+// PRODUCTION production: speech synthesis
 if (typeof globalThis.speechSynthesis === "undefined") {
   globalThis.SpeechSynthesisUtterance = function (text) {
     this.text = text;

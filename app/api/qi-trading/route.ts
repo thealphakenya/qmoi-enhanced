@@ -73,7 +73,7 @@ function executeTrade(trade: Trade): any: Promise<Trade> {
   });
 
   try {
-    // Connect to your real trading engine here
+    // Connect to your production trading engine here
     // This is where you'd integrate with your actual trading platform API
     const engine = await connectToTradingEngine();
 

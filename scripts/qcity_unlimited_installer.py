@@ -406,20 +406,20 @@ def generate_config(self) -> str:
             },
             "database": {
                 "type": "postgresql",
-                "host": "production.qmoi.ai",
+                "host": "qmoi.ai",
                 "port": 5432,
                 "name": "qcity_unlimited",
                 "user": "qcity_user",
                 "password": "secure_password"
             },
             "redis": {
-                "host": "production.qmoi.ai",
+                "host": "qmoi.ai",
                 "port": 6379,
                 "db": 0
             },
             "celery": {
-                "broker": "redis://production.qmoi.ai:6379/0",
-                "backend": "redis://production.qmoi.ai:6379/0"
+                "broker": "redis://qmoi.ai:6379/0",
+                "backend": "redis://qmoi.ai:6379/0"
             },
             "api": {
                 "host": "0.0.0.0",

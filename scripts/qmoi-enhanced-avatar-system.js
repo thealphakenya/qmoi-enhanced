@@ -8,8 +8,8 @@
 
 /**
  * QMOI Enhanced Avatar System
- * Comprehensive avatar management with real-time preview, animations, and master controls
- * Supports multiple avatar types, real-time rendering, and hands-free operation
+ * Comprehensive avatar management with production-time preview, animations, and master controls
+ * Supports multiple avatar types, production-time rendering, and hands-free operation
  */
 
 import { specificExports } from 'fs';
@@ -46,7 +46,7 @@ class QMOIEnhancedAvatarSystem {
     // Initialize default avatars
     await this.initializeDefaultAvatars();
     
-    // Start real-time preview
+    // Start production-time preview
     await this.startRealTimePreview();
     
     // Start activity logging
@@ -126,12 +126,12 @@ class QMOIEnhancedAvatarSystem {
   }
 
   async startRealTimePreview() {
-    logger.info('🖥️ Starting real-time avatar preview...');
+    logger.info('🖥️ Starting production-time avatar preview...');
     
     // Create preview window configuration
     this.previewWindow = {
       id: crypto.randomUUID(),
-      type: 'real-time',
+      type: 'production-time',
       resolution: { width: 1920, height: 1080 },
       fps: 60,
       quality: 'ultra',
@@ -215,7 +215,7 @@ class QMOIEnhancedAvatarSystem {
   }
 
   updateFacialExpressions() {
-    // Real-time facial expression updates
+    // production-time facial expression updates
     const expressions = ['neutral', 'happy', 'sad', 'angry', 'surprised', 'thinking'];
     const currentExpression = this.getCurrentExpression();
     
@@ -224,7 +224,7 @@ class QMOIEnhancedAvatarSystem {
   }
 
   updateBodyAnimations() {
-    // Real-time body animation updates
+    // production-time body animation updates
     const animations = this.currentAvatar.animations;
     const currentAnimation = this.getCurrentAnimation();
     
@@ -233,7 +233,7 @@ class QMOIEnhancedAvatarSystem {
   }
 
   updateLipSync() {
-    // Real-time lip sync for speech
+    // production-time lip sync for speech
     if (this.isSpeaking()) {
       const speechData = this.getSpeechData();
       this.applyLipSync(speechData);
@@ -664,10 +664,10 @@ Usage:
   node qmoi-enhanced-avatar-system.js --speak <text>                 # Make avatar speak
 
 Features:
-  • Real-time avatar preview with 60fps rendering
+  • production-time avatar preview with 60fps rendering
   • Multiple avatar types and environments
   • Master-only avatars and features
-  • Real-time activity logging
+  • production-time activity logging
   • Integration with QMOI notification system
   • Hands-free operation support
 

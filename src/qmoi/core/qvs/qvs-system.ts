@@ -570,7 +570,7 @@ export class QVSSystem extends EventEmitter {
     // Discover new revenue opportunities
     const opportunities = [];
 
-    // implementation: New platform opportunities
+    // production: New platform opportunities
     if (Math.random() < 0.1) { // 10% chance to discover new opportunity
       opportunities.push({
         type: 'new_platform',

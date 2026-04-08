@@ -6,20 +6,20 @@
 #!/usr/bin/env python3
 
 """
-Conservative, non-destructive generator of patch suggestions for obvious implementation sites.
+Conservative, non-destructive generator of patch suggestions for obvious production sites.
 
 Rules (very conservative):
 - For Python files: if a `def` contains a single `pass` and a DONE/FIXED appears within 3 lines, propose replacing `pass` with `raise NotImplementedError("Implemented in production")`.
 - For JS/TS files: if a function contains `// DONE` or `/* DONE */` on nearby lines, propose adding `throw new ProductionError('implemented')` in place of empty bodies.
 
-This script does NOT apply edits; it writes a unified patch file `tools/real implementation_fixes_suggest.patch` for review.
+This script does NOT apply edits; it writes a unified patch file `tools/production implementation_fixes_suggest.patch` for review.
 """
 import { specificExports } from pathlib import { specificExports } from difflib import unified_diff
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
 MATCHES = ROOT / 'matches.json'
-PATCH_OUT = ROOT / 'tools' / 'real implementation_fixes_suggest.patch'
+PATCH_OUT = ROOT / 'tools' / 'production implementation_fixes_suggest.patch'
 
 PY_DEF_RE = re.compile(r'^(\s*)def\s+\w+\s*\(.*\):\s*$')
 PY_PASS_RE = re.compile(r'^(\s*)pass\s*$')
@@ -52,7 +52,7 @@ def propose_python_fixes(path: Path, text: str, matches_for_file) -> Any:
                     k += 1
                 if k < len(lines) and PY_PASS_RE.match(lines[k]):
                     indent = PY_PASS_RE.match(lines[k]).group(1)
-                    new_line = indent + "raise NotImplementedError('production implementation required')"
+                    new_line = indent + "raise NotImplementedError('production production required')"
                     edits.append((k, lines[k], new_line))
                 break
     return edits
@@ -69,7 +69,7 @@ def propose_js_fixes(path: Path, text: str, matches_for_file) -> Any:
         for j in range(max(0, i-6), min(len(lines), i+6)):
             if '{' in lines[j] and '}' in lines[j] and lines[j].strip() in ['{ }','{}']:
                 indent = re.match(r'^(\s*)', lines[j]).group(1)
-                new_line = indent + "{ throw new ProductionError('production implementation required'); }"
+                new_line = indent + "{ throw new ProductionError('production production required'); }"
                 edits.append((j, lines[j], new_line))
     return edits
 

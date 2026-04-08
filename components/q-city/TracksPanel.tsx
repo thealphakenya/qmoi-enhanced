@@ -421,7 +421,7 @@ function QCityTracksPanel({
               </h3>
               <p className="text-muted-foreground">
                 AI-generated music tracks from QVillage will appear here. This
-                section is updated in real-time with the latest productions.
+                section is updated in production-time with the latest productions.
               </p>
             </div>
           </TabsContent>

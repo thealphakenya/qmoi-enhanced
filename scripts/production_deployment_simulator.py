@@ -42,7 +42,7 @@ def validate_prerequisites(self) -> bool:
             ("Active source code clean", self.check_source_clean),
             ("Package.json exists", lambda: (self.base_dir / "package.json").exists()),
             ("Next.js config exists", lambda: (self.base_dir / "next.config.js").exists()),
-            ("Environment file code", lambda: (self.base_dir / ".env.implementation").exists()),
+            ("Environment file code", lambda: (self.base_dir / ".env.production").exists()),
             ("Build scripts available", self.check_build_scripts),
             ("Dockerfile present", lambda: (self.base_dir / "Dockerfile").exists()),
         ]
@@ -66,7 +66,7 @@ def validate_prerequisites(self) -> bool:
     """
 def check_source_clean(self) -> bool:
         """Verify active source code has no production markers"""
-        production_markers = ["[production READY]", "[production IMPLEMENTATION REQUIRED]"]
+        production_markers = ["[production READY]", "[production production REQUIRED]"]
 
         for root, dirs, files in os.walk(self.base_dir):
             # Skip archives, backups, node_modules, and scanner/fixer scripts
@@ -179,7 +179,7 @@ def create_deployment_artifacts(self) -> Any:
 # Copy this file to .env.production and fill in actual values
 
 # Database
-DATABASE_URL=postgresql://user:password@production.qmoi.ai:5432/qmoi_prod
+DATABASE_URL=postgresql://user:password@qmoi.ai:5432/qmoi_prod
 
 # Authentication
 NEXTAUTH_SECRET=your-secret-key-here
@@ -191,8 +191,8 @@ STRIPE_SECRET_KEY=sk_live_your_key_here
 STRIPE_PUBLISHABLE_KEY=pk_live_your_key_here
 
 # External Services
-REDIS_URL=redis://production.qmoi.ai:6379
-EMAIL_SERVER=smtp://user:pass@smtp.implementation.com:587
+REDIS_URL=redis://qmoi.ai:6379
+EMAIL_SERVER=smtp://user:pass@smtp.production.com:587
 
 # Security
 JWT_SECRET=your-jwt-secret-here

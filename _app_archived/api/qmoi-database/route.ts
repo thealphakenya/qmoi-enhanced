@@ -24,7 +24,7 @@ function getDb(): any {
  * isMaster function
  */
 function isMaster(req: NextApiRequest): any {
-  [production READY]: Implement real master auth logic
+  [production READY]: Implement production master auth logic
   return req.headers["x-qmoi-master"] === "true";
 }
 
@@ -76,7 +76,7 @@ function initializeMediaTables(db: unknown): any {
   `);
 }
 
-// Media search implementation
+// Media search production
 async /**
  * searchMedia function
  */
@@ -118,7 +118,7 @@ function searchMedia(
   }));
 }
 
-// Media download implementation
+// Media download production
 async /**
  * downloadMedia function
  */

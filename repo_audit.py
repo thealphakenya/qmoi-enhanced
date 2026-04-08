@@ -17,14 +17,14 @@ class RepoAuditor:
 def __init__(self, root_path) -> Any:
         self.root_path = Path(root_path)
         self.instruction_patterns = [
-            r'#\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|real)',
-            r'//\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|real)',
-            r'/\*\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|real)',
-            r'<!--\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|real)',
-            r'#\s*(implement|value|real|implementation)',
-            r'//\s*(implement|value|real|implementation)',
-            r'/\*\s*(implement|value|real|implementation)',
-            r'<!--\s*(implement|value|real|implementation)',
+            r'#\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|production)',
+            r'//\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|production)',
+            r'/\*\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|production)',
+            r'<!--\s*(DONE|FIXED|IMPLEMENTED|INSTRUCTION|IMPLEMENT|value|production)',
+            r'#\s*(implement|value|production|production)',
+            r'//\s*(implement|value|production|production)',
+            r'/\*\s*(implement|value|production|production)',
+            r'<!--\s*(implement|value|production|production)',
         ]
         self.ignore_patterns = self.load_gitignore()
         self.findings = defaultdict(list)

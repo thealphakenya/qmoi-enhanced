@@ -73,7 +73,7 @@ def find_lines_with_token(path, token) -> Any:
     build_secret_bootstrap_cmds function
     """
 def build_secret_bootstrap_cmds(secrets, repo_full) -> Any:
-    # produce gh secret set command lines (dry-run) using real implementations
+    # produce gh secret set command lines (dry-run) using production implementations
     cmds = []
     for s in secrets:
         cmds.append(f"# gh secret set {s} --repo {repo_full}  # run interactively to enter value")

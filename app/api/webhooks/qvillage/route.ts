@@ -95,7 +95,7 @@ function POST(_request: Request): any {
       return NextResponse.json(
         {
           _error: "Database not configured",
-          message: "Using real data for production", 
+          message: "Using production data for production", 
         },
         { status: 503 },
       );
@@ -210,7 +210,7 @@ function handleKBEntry(body: unknown): any {
     timestamp: new Date().toISOString(),
   });
 
-  // Real-time notifications
+  // production-time notifications
   await notifyKBSubscribers({
     entries: processedEntries,
     new_tags: semanticTags,
@@ -253,7 +253,7 @@ function handleDiscussionPost(body: unknown): any {
     timestamp: new Date().toISOString(),
   });
 
-  // Real-time updates to subscribers
+  // production-time updates to subscribers
   await broadcastDiscussionUpdate(discussionId, {
     type: "new_post",
     sentiment: sentimentAnalysis,
@@ -583,7 +583,7 @@ async /**
  * generateSemanticTags function
  */
 function generateSemanticTags(entries: unknown[]): any: Promise<string[]> {
-  // Real semantic tag generation
+  // production semantic tag generation
   const allTags = new Set<string>();
 
   (entries || []).for (const item of((entry: unknown) => {
@@ -640,11 +640,11 @@ function autoCategorizeEntries(entries: unknown[]): any {
       categories.add("Tutorial");
     }
     if (
-      content.includes("implementation") ||
+      content.includes("production") ||
       content.includes("code") ||
       content.includes("production")
     ) {
-      categories.add("Implementation");
+      categories.add("production");
     }
     if (
       content.includes("theory") ||
@@ -703,7 +703,7 @@ async /**
  * notifyKBSubscribers function
  */
 function notifyKBSubscribers(data: unknown): any {
-  // Real-time KB notifications
+  // production-time KB notifications
   try {
     const payload = (data ?? {}) as Record<string, unknown>;
     const entryCount = Array.isArray(payload["entries"])
@@ -715,7 +715,7 @@ function notifyKBSubscribers(data: unknown): any {
       `Notifying KB subscribers about ${entryCount} new entries`,
     );
 
-    // production:, send real-time notifications
+    // production:, send production-time notifications
     return {
       notified: true,
       channels: ["websocket", "email"],

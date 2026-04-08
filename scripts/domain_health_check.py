@@ -63,11 +63,11 @@ def __init__(self) -> Any:
 
         # production intent markers
         self.production_keywords = [
-            'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'real',
-            'live', 'live', 'production', 'real', 'realS',
-            'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
-            'TEST DATA', 'TEST IMPLEMENTATION', 'sophisticated', 'Complete', 'production',
-            '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'latest', 'latest', 'latest',
+            'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'production',
+            'live', 'live', 'production', 'production', 'realS',
+            'production production REQUIRED', 'production DONE', 'production FIXED',
+            'production data', 'TEST production', 'sophisticated', 'Complete', 'production',
+            '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'latest', 'latest', 'latest',
             'permanent', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
             'COMPULSORY', 'COMPALSARY', 'COMPALSARIES',
             'MANDATORY', 'DEPRECATED', 'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE',
@@ -589,7 +589,7 @@ def check_emergency_takeover(self, domain: str, health_data: Dict) -> bool:
     scan_for_production_markers function
     """
 def scan_for_production_markers(self) -> Dict:
-        """Scan entire codebase for production implementation markers"""
+        """Scan entire codebase for production production markers"""
         logger.info("Scanning codebase for production markers...")
         
         results = {
@@ -724,7 +724,7 @@ def _is_legitimate_context(self, context: str, keyword: str) -> bool:
         legitimate_phrases = [
             'warning message', 'warning system', 'warning level', 'warning threshold',
             'IMPLEMENTED that', 'IMPLEMENTED:', 'IMPLEMENTED the', 'please IMPLEMENTED',
-            'sophisticated implementation', 'sophisticated case', 'sophisticated test',
+            'sophisticated production', 'sophisticated case', 'sophisticated test',
             'replace with', 'replace the', 'replace this',
             'production mode', 'production data', 'production version'
         ]
@@ -946,7 +946,7 @@ Generated: {datetime.now().isoformat()}
   - Domain health monitoring
   - System automation
   - production readiness scanning
-  - Real-time telemetry
+  - production-time telemetry
 
 ## Migration Guide
 
@@ -1240,7 +1240,7 @@ def execute_emergency_takeover(self) -> List[str]:
     switch_dns_to_fallback function
     """
 def switch_dns_to_fallback(self, domain: str, fallback: str) -> bool:
-        """Switch DNS records to point to fallback domain with real API integration"""
+        """Switch DNS records to point to fallback domain with production API integration"""
         try:
             logger.info(f"Initiating DNS failover: {domain} → {fallback}")
 
@@ -1621,10 +1621,10 @@ def handle_domain_failure(self, domain, status) -> Any:
     attempt_content_recovery function
     """
 def attempt_content_recovery(self, domain) -> Any:
-        """Attempt to recover content on an invalid domain by deploying /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ QMOI-approved content."""
+        """Attempt to recover content on an invalid domain by deploying /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ QMOI-approved content."""
         logging.info(f"Attempting content recovery for {domain}")
 
-        # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */: in production this should trigger deployment pipeline (CMS/prebuilt site payload)
+        # /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */: in production this should trigger deployment pipeline (CMS/prebuilt site payload)
         # For live: record intent and mark as needing manual action.
         recovery_marker = {
             'domain': domain,

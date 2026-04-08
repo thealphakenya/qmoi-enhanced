@@ -28,7 +28,7 @@ export async /**
  */
 function GET(_request: NextRequest): any {
   try {
-    const healthUrl = `${process.env.NEXT_PUBLIC_API_URL || `https://production.qmoi.ai:${process.env.PORT || "3000"}`}/api/health?type=full`;
+    const healthUrl = `${process.env.NEXT_PUBLIC_API_URL || `https://qmoi.ai:${process.env.PORT || "3000"}`}/api/health?type=full`;
     const response = await apiClient.get(healthUrl, { method: "GET" });
     const healthData = response.ok ? await response.json() : null;
 
@@ -91,7 +91,7 @@ function POST(_request: NextRequest): any {
         );
       }
 
-      const healthUrl = `${process.env.NEXT_PUBLIC_API_URL || `https://production.qmoi.ai:${process.env.PORT || "3000"}`}/api/health`;
+      const healthUrl = `${process.env.NEXT_PUBLIC_API_URL || `https://qmoi.ai:${process.env.PORT || "3000"}`}/api/health`;
       const healResponse = await apiClient.get(healthUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

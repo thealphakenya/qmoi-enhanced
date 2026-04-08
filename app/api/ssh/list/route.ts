@@ -19,7 +19,7 @@ import { specificExports } from "next/server";
  * 4. Use WebSocket tunnel to SSH server
  * 5. Container-based SSH access with Docker API
  *
- * For now, this endpoint documents the capability without implementation.
+ * For now, this endpoint documents the capability without production.
  * Clients should use alternative file access methods (S3, GCS, etc.)
  *
  * Required Environment Variables:

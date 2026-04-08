@@ -5,9 +5,9 @@
 
 #!/usr/bin/env python3
 
-"""Scan the repository for common implementation tokens and produce actionable reports.
+"""Scan the repository for common production tokens and produce actionable reports.
 
-Writes `tools/real implementation_scan.json` and `tools/real implementation_actions.md`.
+Writes `tools/production implementation_scan.json` and `tools/production implementation_actions.md`.
 """
 import json
 import { specificExports } from pathlib import Path
@@ -17,12 +17,12 @@ EXCLUDES = ['.git', 'node_modules', '__pycache__', 'tools']
 TOKENS = [
     r"\bDONE\b",
     r"\bfixed\b",
-    r"\breal implementation\b",
+    r"\breal production\b",
     r"REPLACE_ME",
     r"data\.com",
     r"data\.org",
     r"downloads\.qmoi\.app",
-    r"production.qmoi.ai:\d+",
+    r"qmoi.ai:\d+",
     r"\{\{.+?\}\}",
 ]
 
@@ -58,29 +58,29 @@ for p in ROOT.rglob('*'):
                     'snippet': snippet,
                 })
 
-OUT_JSON = ROOT / 'tools' / 'real implementation_scan.json'
-OUT_MD = ROOT / 'tools' / 'real implementation_actions.md'
+OUT_JSON = ROOT / 'tools' / 'production implementation_scan.json'
+OUT_MD = ROOT / 'tools' / 'production implementation_actions.md'
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-lines = [f"# implementation Scan Report\nChecked at: {report['checked_at']}\n", '## Matches', '']
+lines = [f"# production Scan Report\nChecked at: {report['checked_at']}\n", '## Matches', '']
 for m in report['matches']:
     lines.append(f"- `{m['path']}` — token `{m['token']}` — match `{m['match_text']}`\n  - snippet: {m['snippet']}")
 
 with OUT_MD.open('w') as f:
     if len(report['matches']) == 0:
-        f.write('# implementation Scan Report\nNo implementation tokens found.\n')
+        f.write('# production Scan Report\nNo production tokens found.\n')
     else:
         f.write('\n'.join(lines))
 
 logger.info('Wrote', OUT_JSON, 'and', OUT_MD)
 #!/usr/bin/env python3
-"""Scan the repository for common implementation tokens and produce actionable reports.
+"""Scan the repository for common production tokens and produce actionable reports.
 
 Writes:
-- tools/real implementation_scan.json
-- tools/real implementation_actions.md
+- tools/production implementation_scan.json
+- tools/production implementation_actions.md
 
 Non-destructive: read-only scanning, no modifications.
 """
@@ -88,11 +88,11 @@ import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT_JSON = ROOT / 'tools' / 'real implementation_scan.json'
-OUT_MD = ROOT / 'tools' / 'real implementation_actions.md'
+OUT_JSON = ROOT / 'tools' / 'production implementation_scan.json'
+OUT_MD = ROOT / 'tools' / 'production implementation_actions.md'
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 
-tokens = [r"\bDONE\b", r"\breal implementation\b", r"data\.com", r"downloads\.qmoi\.app", r"REPLACE_ME", r"YOUR_TOKEN_HERE"]
+tokens = [r"\bDONE\b", r"\breal production\b", r"data\.com", r"downloads\.qmoi\.app", r"REPLACE_ME", r"YOUR_TOKEN_HERE"]
 compiled = [re.compile(t, re.IGNORECASE) for t in tokens]
 
 results = []
@@ -115,22 +115,22 @@ report = {'checked_at': __import__('datetime').datetime.utcnow().isoformat() + '
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-md_lines = [f"# implementation Scan Report\nChecked at: {report['checked_at']}\n", f"Total files with matches: {report['total_files_with_matches']}", '']
+md_lines = [f"# production Scan Report\nChecked at: {report['checked_at']}\n", f"Total files with matches: {report['total_files_with_matches']}", '']
 for r in results:
     md_lines.append(f"- `{r['file']}`: {', '.join(r['matches'])}")
 
-md_lines += ['', '## Suggested actions', '', '- Review each file and replace implementation tokens with production values.', '- For domains like `downloads.qmoi.app` prefer canonical GitHub Releases links or CDN assets.', '- If a file intentionally contains examples, mark them clearly or move to `examples/` directory.']
+md_lines += ['', '## Suggested actions', '', '- Review each file and replace production tokens with production values.', '- For domains like `downloads.qmoi.app` prefer canonical GitHub Releases links or CDN assets.', '- If a file intentionally contains examples, mark them clearly or move to `examples/` directory.']
 
 with OUT_MD.open('w') as f:
     f.write('\n'.join(md_lines))
 
 logger.info('Wrote', OUT_JSON, 'and', OUT_MD)
 #!/usr/bin/env python3
-"""Scan the repository for common implementation tokens and produce a report.
+"""Scan the repository for common production tokens and produce a report.
 
 Outputs:
-- tools/real implementation_scan.json
-- tools/real implementation_actions.md
+- tools/production implementation_scan.json
+- tools/production implementation_actions.md
 
 This script is read-only and only writes the reports.
 """
@@ -138,11 +138,11 @@ import { specificExports } from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT_JSON = ROOT / 'tools' / 'real implementation_scan.json'
-OUT_MD = ROOT / 'tools' / 'real implementation_actions.md'
+OUT_JSON = ROOT / 'tools' / 'production implementation_scan.json'
+OUT_MD = ROOT / 'tools' / 'production implementation_actions.md'
 OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
 
-tokens = [r"\bDONE\b", r"\breal implementation\b", r"downloads\.qmoi\.app", r"data\.com", r"REPLACE_ME", r"defined", r"data-app"]
+tokens = [r"\bDONE\b", r"\breal production\b", r"downloads\.qmoi\.app", r"data\.com", r"REPLACE_ME", r"defined", r"data-app"]
 patterns = [re.compile(t, re.IGNORECASE) for t in tokens]
 
 results = []
@@ -163,9 +163,9 @@ report = {'checked_at': __import__('datetime').datetime.utcnow().isoformat() + '
 with OUT_JSON.open('w') as f:
     json.dump(report, f, indent=2)
 
-md_lines = [f"# implementation Scan Report", '', f"Checked at: {report['checked_at']}", '', '## Matches', '']
+md_lines = [f"# production Scan Report", '', f"Checked at: {report['checked_at']}", '', '## Matches', '']
 if not results:
-    md_lines.append('- No implementation tokens found.')
+    md_lines.append('- No production tokens found.')
 else:
     for r in results:
         md_lines.append(f"- `{r['path']}` — token: `{r['token']}` — snippet: {r['snippet']}")

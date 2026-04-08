@@ -7,22 +7,22 @@ import { specificExports } from pathlib import Path
 
 root_dirs = ['app/api', 'src/app/api']
 keywords = [
-    'implementation', 'real', 'execute', 'live', 'PENDING_IMPLEMENTATION',
-    'DONE', 'DONE:', 'FIXED', 'production data', 'test implementation', 'production', 'implementation', 'reals',
+    'production', 'production', 'execute', 'live', 'PENDING_IMPLEMENTATION',
+    'DONE', 'DONE:', 'FIXED', 'production data', 'test production', 'production', 'production', 'reals',
     '[production data]'
 ]
 
 import re
 
 patterns = [
-    (re.compile(r"// production implementation replace test dataset implementation with real integration"),
-    (re.compile(r"// production implementation implement required production behavior"),
-    (re.compile(r"// production implementation replace live with /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */"),
-    (re.compile(r"// production implementation replace real data with real service data"),
-    (re.compile(r"// production implementation replace implementation with production logic"),
-    (re.compile(r"// production implementation pending implementation in production"),
-    (re.compile(r"// production implementation resolve DONE items"),
-    (re.compile(r"// production implementation fix this issue for production"),
+    (re.compile(r"// production production replace test dataset production with production integration"),
+    (re.compile(r"// production production implement required production behavior"),
+    (re.compile(r"// production production replace live with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */"),
+    (re.compile(r"// production production replace production data with production service data"),
+    (re.compile(r"// production production replace production with production logic"),
+    (re.compile(r"// production production pending production in production"),
+    (re.compile(r"// production production resolve DONE items"),
+    (re.compile(r"// production production fix this issue for production"),
 ]
 
 modified = []

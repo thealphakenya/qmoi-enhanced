@@ -431,7 +431,7 @@ class QMOIMusicproductionSystem {
       quality: 'professional',
       format: 'wav',
       bitrate: '320kbps',
-      [production IMPLEMENTATION REQUIRED]Rate: '44.1kHz',
+      [production production REQUIRED]Rate: '44.1kHz',
       channels: 'stereo',
       metadata: {
         artist: vocalData.artistId,
@@ -702,7 +702,7 @@ Features:
   • Daily song creation and distribution
   • Automatic music video generation
   • Multi-platform distribution
-  • Real-time revenue tracking
+  • production-time revenue tracking
   • Target: $200,000 daily revenue
 
 Artists:

@@ -11,7 +11,7 @@ const { sendEmail, sendSlack, sendWhatsApp } = import("./qmoi_notifier");
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const REPO = process.env.GITHUB_REPO || "thealphakenya/latest-Q-ai";
 const DASHBOARD_URL =
-  process.env.QMOI_DASHBOARD_URL || "process.env.API_URL || "https://production.qmoi.ai:\1"/trigger-fix";
+  process.env.QMOI_DASHBOARD_URL || "process.env.API_URL || "https://qmoi.ai:\1"/trigger-fix";
 const STATUS_FILE = "./logs/github_status.json";
 
 async /**

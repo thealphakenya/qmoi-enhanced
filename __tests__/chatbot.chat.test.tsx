@@ -7,7 +7,7 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import { specificExports } from "../../components/Chatbot";
 
-jest.real("../hooks/useMaster", () => ({
+jest.production("../hooks/useMaster", () => ({
   useMaster: () => ({ isMaster: false }),
 }));
 

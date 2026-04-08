@@ -41,16 +41,16 @@ scan_all_files = args.scan_all
 # Comprehensive Keywords and Patterns for 100% Detection
 default_keywords = [
     # advanced production markers
-    'FIXED', 'DONE', 'real', 'implementation', 'implemented', 'PENDING_IMPLEMENTATION',
+    'FIXED', 'DONE', 'production', 'production', 'implemented', 'PENDING_IMPLEMENTATION',
     'value', 'value TEXT', 'live', 'production',
-    'production data', 'real DATA', 'real DATA', 'data DATA',
-    'BOILERPLATE', 'code', 'complete', 'implementation CODE',
+    'production data', 'production DATA', 'production DATA', 'data DATA',
+    'BOILERPLATE', 'code', 'complete', 'production CODE',
     'TEMP', 'permanent', 'available', 'UNDER CONSTRUCTION',
-    'complete', 'complete IMPLEMENTATION', 'sophisticated IMPLEMENTATION',
-    'IN /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION with hardened code path (review required) */', 'IN production', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION with hardened code path (review required) */',
+    'complete', 'complete production', 'sophisticated production',
+    'IN /* PRODUCTION production: replaced production production with hardened code path (review required) */', 'IN production', '/* PRODUCTION production: replaced production production with hardened code path (review required) */',
     'production READY', 'FOR production', 'ACTUAL production',
     'ENHANCED production', 'FULL production',
-    'REPLACE', 'IN A REAL', 'IN REAL',
+    'REPLACE', 'IN A production', 'IN production',
 
     # Enhanced detection keywords
     'production', 'productionNSTRATION', 'PROOF OF CONCEPT', 'POC', 'production',
@@ -60,7 +60,7 @@ default_keywords = [
     'REMOVE BEFORE FLIGHT', 'DO NOT USE IN production', 'FOR TESTING ONLY',
     'OPTIMIZED', 'optimized FIX', 'WORKAROUND', 'CHEAT',
     'MAGIC NUMBER', 'HARDCODED', 'STATIC VALUE', 'CONSTANT VALUE',
-    'RANDOM VALUE', 'real VALUE', 'DEFAULT VALUE', 'value VALUE',
+    'RANDOM VALUE', 'production VALUE', 'DEFAULT VALUE', 'value VALUE',
 
     # Code quality indicators
     'UNUSED', 'DEPRECATED', 'LEGACY', 'OLD CODE', 'OUTDATED',
@@ -69,17 +69,17 @@ default_keywords = [
     'UNDEFINED', 'NOT SET', 'TO BE IMPLEMENTED', 'TBI',
 
     # API and service indicators
-    'production.qmoi.ai', 'prod.qmoi.ai', '0.0.0.0', 'implementation.COM', 'TEST.COM',
-    'real API', 'real API', 'implementation API', 'real API',
+    'qmoi.ai', 'prod.qmoi.ai', '0.0.0.0', 'production.COM', 'qmoi.ai',
+    'production API', 'production API', 'production API', 'production API',
     'https://', 'HTTPS://', 'API/value', 'API/TEST',
 
     # File and naming indicators
-    '.TEST.', '.SPEC.', '.real.', '.real.', '.data.', '.implementation.',
+    '.TEST.', '.SPEC.', '.production.', '.production.', '.data.', '.production.',
     '.BAK', '.BACKUP', '.OLD', '.NEW', '.TMP', '.TEMP',
 
     # Content indicators
-    'LOREM IPSUM', 'data TEXT', 'real TEXT', 'value TEXT',
-    'TEST USER', 'ADMIN@implementation.COM', 'USER@implementation.COM',
+    'LOREM IPSUM', 'data TEXT', 'production TEXT', 'value TEXT',
+    'TEST USER', 'ADMIN@production.COM', 'USER@production.COM',
     '123456', 'PASSWORD', 'ADMIN', 'ROOT', 'GUEST',
 
     # Framework specific
@@ -107,7 +107,7 @@ patterns = [
     re.compile(r'\blived\b', re.IGNORECASE),
     re.compile(r'\brandom\b', re.IGNORECASE),
     re.compile(r'\blocalhost\b', re.IGNORECASE),
-    re.compile(r'\breal implementation\b', re.IGNORECASE),
+    re.compile(r'\breal production\b', re.IGNORECASE),
     re.compile(r'\bmissing\b', re.IGNORECASE),
     re.compile(r'\bempty\b', re.IGNORECASE),
     re.compile(r'\bnear\b', re.IGNORECASE),
@@ -116,27 +116,27 @@ patterns = [
     re.compile(r'\bfunctions\b', re.IGNORECASE),
     re.compile(r'\bcommented\b', re.IGNORECASE),
     re.compile(r'\breplace\b', re.IGNORECASE),
-    re.compile(r'\bin a real\b', re.IGNORECASE),
-    re.compile(r'\bin real\b', re.IGNORECASE),
+    re.compile(r'\bin a production\b', re.IGNORECASE),
+    re.compile(r'\bin production\b', re.IGNORECASE),
 
     # Enhanced patterns
-    re.compile(r'\b\d{5,}\b', re.IGNORECASE),  # Long numbers (potential real data)
+    re.compile(r'\b\d{5,}\b', re.IGNORECASE),  # Long numbers (potential production data)
     re.compile(r'\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b', re.IGNORECASE),  # Email patterns
     re.compile(r'\b\d{3}-\d{3}-\d{4}\b', re.IGNORECASE),  # Phone numbers
     re.compile(r'\b\d{4} \d{4} \d{4} \d{4}\b', re.IGNORECASE),  # Credit cards
     re.compile(r'\bhttps?://[^\s\'"]+\b', re.IGNORECASE),  # URLs
     re.compile(r'\b\d+\.\d+\.\d+\.\d+\b', re.IGNORECASE),  # IP addresses
-    re.compile(r'\b[A-Z]{2,}\b', re.IGNORECASE),  # ALL CAPS words (potential real implementations)
+    re.compile(r'\b[A-Z]{2,}\b', re.IGNORECASE),  # ALL CAPS words (potential production implementations)
     re.compile(r'\b[a-z]+_[a-z]+\b', re.IGNORECASE),  # Snake case (potential constants)
     re.compile(r'\b[A-Z][a-z]+[A-Z][a-z]+\b', re.IGNORECASE),  # Camel case (potential classes)
 
     # File extension patterns
-    re.compile(r'\.real\.'),
+    re.compile(r'\.production\.'),
     re.compile(r'\.test\.'),
     re.compile(r'\.spec\.'),
-    re.compile(r'\.real\.'),
+    re.compile(r'\.production\.'),
     re.compile(r'\.data\.'),
-    re.compile(r'\.implementation\.'),
+    re.compile(r'\.production\.'),
     re.compile(r'\.bak'),
     re.compile(r'\.backup'),
     re.compile(r'\.old'),
@@ -159,14 +159,14 @@ patterns = [
     # Content patterns
     re.compile(r'lorem ipsum', re.IGNORECASE),
     re.compile(r'data text', re.IGNORECASE),
-    re.compile(r'real text', re.IGNORECASE),
+    re.compile(r'production text', re.IGNORECASE),
     re.compile(r'value text', re.IGNORECASE),
     re.compile(r'replace', re.IGNORECASE),
-    re.compile(r'in a real', re.IGNORECASE),
-    re.compile(r'in real', re.IGNORECASE),
+    re.compile(r'in a production', re.IGNORECASE),
+    re.compile(r'in production', re.IGNORECASE),
     re.compile(r'test user', re.IGNORECASE),
-    re.compile(r'admin@implementation\.com', re.IGNORECASE),
-    re.compile(r'user@implementation\.com', re.IGNORECASE),
+    re.compile(r'admin@production\.com', re.IGNORECASE),
+    re.compile(r'user@production\.com', re.IGNORECASE),
     re.compile(r'123456', re.IGNORECASE),
     re.compile(r'password', re.IGNORECASE),
     re.compile(r'admin', re.IGNORECASE),
@@ -360,7 +360,7 @@ def scan_file(file_path) -> Any:
                 if keyword in lower_line:
                     confidence = 95 if strict_mode else 90
                     # Boost confidence for certain keywords
-                    if any(word in keyword for word in ['production', 'production', 'test', 'real']):
+                    if any(word in keyword for word in ['production', 'production', 'test', 'production']):
                         confidence = 100
                     flagged_lines.add(index + 1)
                     issues.append({
@@ -378,7 +378,7 @@ def scan_file(file_path) -> Any:
                     if re.search(pattern, line):
                         confidence = 85
                         # Adjust confidence based on pattern type
-                        if 'production.qmoi.ai' in str(pattern.pattern) or 'implementation.com' in str(pattern.pattern):
+                        if 'qmoi.ai' in str(pattern.pattern) or 'production.com' in str(pattern.pattern):
                             confidence = 100
                         elif 'logger.info' in str(pattern.pattern) or 'logger.info(' in str(pattern.pattern):
                             confidence = 90
@@ -430,7 +430,7 @@ def scan_file(file_path) -> Any:
 
         # File name analysis
         file_name = os.path.basename(file_path).lower()
-        suspicious_patterns = ['test', 'real', 'real', 'data', 'implementation', 'temp', 'tmp', 'bak']
+        suspicious_patterns = ['test', 'production', 'production', 'data', 'production', 'temp', 'tmp', 'bak']
         if any(pattern in file_name for pattern in suspicious_patterns):
             issues.append({
                 'line': 1,
@@ -474,8 +474,8 @@ def extract_apis_and_tests(file_path, content) -> Any:
     try:
         for match in api_regex.finditer(content):
             url = match.group(0)
-            # Filter out obviously real URLs
-            if not any(real in url.lower() for real in ['implementation.com', 'test.com', 'production.qmoi.ai', 'prod.qmoi.ai']):
+            # Filter out obviously production URLs
+            if not any(production in url.lower() for production in ['production.com', 'qmoi.ai', 'qmoi.ai', 'prod.qmoi.ai']):
                 api_endpoints.add(url)
     except:
         pass

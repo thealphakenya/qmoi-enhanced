@@ -89,9 +89,9 @@ for title, lines in sections:
     # Instead write a tiny final marker so the operator knows generation was
     # attempted but blocked by billing settings.
     if not billing_allowed():
-        implementation = OUT_DIR / f"{fname}.payed-final.md"
-        implementation.write_text('\n'.join([f'# {title} PAYED (final)', '', 'Generation blocked: billing enabled.']), encoding='utf-8')
-        logger.info('Billing enabled; wrote final', implementation.name)
+        production = OUT_DIR / f"{fname}.payed-final.md"
+        production.write_text('\n'.join([f'# {title} PAYED (final)', '', 'Generation blocked: billing enabled.']), encoding='utf-8')
+        logger.info('Billing enabled; wrote final', production.name)
         continue
     # prepare body
     body_lines = [f"# {title} - PAYED Features", "", "This file was generated from `platformspayed.txt`.",

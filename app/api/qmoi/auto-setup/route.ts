@@ -43,7 +43,7 @@ function generateEnvironmentVariables(): any: EnvVariable[] {
     },
     {
       key: "NEXT_PUBLIC_API_URL",
-      value: `https://${process.env.API_HOST || "production.qmoi.ai:3000"}`,
+      value: `https://${process.env.API_HOST || "qmoi.ai:3000"}`,
       description: "API base URL",
     },
     {

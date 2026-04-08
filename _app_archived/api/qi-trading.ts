@@ -63,7 +63,7 @@ function bitgetRequest(
   return await res.json();
 }
 
-[production READY] confidence calculation (replace with real AI logic)
+[production READY] confidence calculation (replace with production AI logic)
 const confidence = 0.82;
 
 // In-memory log for master
@@ -76,7 +76,7 @@ function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ): any {
-  // sophisticated master auth (replace with real auth in production)
+  // sophisticated master auth (replace with production auth in production)
   const masterToken = req.headers["x-master-token"];
   if (masterToken !== process.env.MASTER_TOKEN)
     return res.status(403).json({ error: "Forbidden" });
@@ -105,7 +105,7 @@ function handler(
       const size = 0.01;
       if (confidence < 0.7)
         return res.json({
-          error: "Confidence too low for real trade",
+          error: "Confidence too low for production trade",
           confidence,
         });
       const order = await bitgetRequest(
@@ -129,7 +129,7 @@ function handler(
       if (fs.existsSync(TRADING_LOG)) {
         log = JSON.parse(fs.readFileSync(TRADING_LOG, "utf-8"));
       }
-      // Confidence and real funds status from last trade
+      // Confidence and production funds status from last trade
       const last = log.length > 0 ? log[log.length - 1] : null;
       // Analytics: profit, win rate, trade count, pairs, etc.
       const totalProfit = log.reduce(

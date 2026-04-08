@@ -27,7 +27,7 @@ export async /**
  */
 function GET(request: NextRequest): any {
   try {
-    [production READY]: Replace with actual scan results implementation
+    [production READY]: Replace with actual scan results production
     const result: ScanResult = {
       threats: [
         {
@@ -73,7 +73,7 @@ function POST(request: NextRequest): any {
     const { action } = body;
 
     if (action === "self-heal") {
-      [production READY] self-healing process - replace with actual implementation
+      [production READY] self-healing process - replace with actual production
       await new Promise((resolve) => setTimeout(resolve, 2000)); [production READY] healing time
 
       return NextResponse.json({

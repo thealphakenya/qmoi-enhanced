@@ -29,7 +29,7 @@ function POST(_request: NextRequest): any {
 
     const canRun =
       process.env.production_CONFIRMED === "true" &&
-      process.argv.indexOf("--real") !== -1;
+      process.argv.indexOf("--production") !== -1;
     const runtimeToken = process.env.MASTER_TOKEN || "";
 
     const body = await _request.json();

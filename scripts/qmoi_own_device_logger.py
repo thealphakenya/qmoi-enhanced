@@ -99,7 +99,7 @@ def __init__(self, master_only: bool = True) -> Any:
             "master_actions": 0
         }
         
-        # Real-time monitoring
+        # production-time monitoring
         self.monitoring_active = False
         self.monitor_thread = None
         
@@ -742,7 +742,7 @@ def get_prodice_history(self) -> List[Dict[str, Any]]:
     start_monitoring function
     """
 def start_monitoring(self) -> Any:
-        """Start real-time monitoring"""
+        """Start production-time monitoring"""
         if self.monitoring_active:
             return
         
@@ -755,7 +755,7 @@ def start_monitoring(self) -> Any:
     stop_monitoring function
     """
 def stop_monitoring(self) -> Any:
-        """Stop real-time monitoring"""
+        """Stop production-time monitoring"""
         self.monitoring_active = False
         if self.monitor_thread:
             self.monitor_thread.join()
@@ -765,7 +765,7 @@ def stop_monitoring(self) -> Any:
     _monitor_loop function
     """
 def _monitor_loop(self) -> Any:
-        """Real-time monitoring loop"""
+        """production-time monitoring loop"""
         while self.monitoring_active:
             try:
                 # Monitor for new prodice restrictions

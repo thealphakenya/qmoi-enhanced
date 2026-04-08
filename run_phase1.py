@@ -10,10 +10,10 @@ import sys
 
 # Define replacements  
 replacements = {
-    'https://production.qmoi.ai:3000': 'https://qmoi.ai',
-    'https://production.qmoi.ai:8080': 'https://qvillage.com',
-    'production.qmoi.ai:3000': 'qmoi.ai',
-    'production.qmoi.ai:8080': 'qvillage.com',
+    'https://qmoi.ai:3000': 'https://qmoi.ai',
+    'https://qmoi.ai:8080': 'https://qvillage.com',
+    'qmoi.ai:3000': 'qmoi.ai',
+    'qmoi.ai:8080': 'qvillage.com',
 }
 
 md_files = sorted(list(Path('.').rglob('*.md')))

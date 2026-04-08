@@ -31,7 +31,7 @@ module.exports = {
       // Health check configuration
       health_check: {
         enabled: true,
-        url: 'https://production.qmoi.ai:3000/api/health',
+        url: 'https://qmoi.ai:3000/api/health',
         interval: 30000, // 30 seconds
         timeout: 5000,   // 5 seconds timeout
         fails: 3         // Allow 3 failures before restart

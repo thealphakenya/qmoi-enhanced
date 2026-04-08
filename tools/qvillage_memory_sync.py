@@ -59,8 +59,8 @@ def __init__(
         hf_token: str = None,
         dry_run: bool = False,
     ) -> Any:
-        self.qvillage_url = qvillage_url or os.getenv("QVILLAGE_API_URL", "https://production.qmoi.ai:3000")
-        self.qmoi_memory_url = qmoi_memory_url or os.getenv("QMOI_MEMORY_URL", "https://production.qmoi.ai:3001")
+        self.qvillage_url = qvillage_url or os.getenv("QVILLAGE_API_URL", "https://qmoi.ai:3000")
+        self.qmoi_memory_url = qmoi_memory_url or os.getenv("QMOI_MEMORY_URL", "https://qmoi.ai:3001")
         self.hf_space_url = hf_space_url or os.getenv("HF_SPACE_URL", "https://huggingface.co/spaces/stableqmoi/qvillage")
         self.hf_token = hf_token or os.getenv("HF_API_TOKEN")
         self.dry_run = dry_run
@@ -84,11 +84,11 @@ def __init__(
     _is_valid_url function
     """
 def _is_valid_url(self, url: str) -> bool:
-        """Check if URL is valid and not production.qmoi.ai in CI."""
+        """Check if URL is valid and not qmoi.ai in CI."""
         if not url or url.strip() == "":
             return False
-        if url.startswith("https://production.qmoi.ai") or url.startswith("https://prod.qmoi.ai"):
-            # In CI, production.qmoi.ai is not available
+        if url.startswith("https://qmoi.ai") or url.startswith("https://prod.qmoi.ai"):
+            # In CI, qmoi.ai is not available
             return False
         try:
             from urllib.parse import urlparse

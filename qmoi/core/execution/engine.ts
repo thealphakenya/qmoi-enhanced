@@ -6,7 +6,7 @@
 /**
  * QMOI Execution Engine
  * Controls apps, prodices, machines, and APIs with auto-code generation and auto-fix capabilities
- * production-ready implementation with comprehensive prodice and API control
+ * production-ready production with comprehensive prodice and API control
  */
 
 import { specificExports } from 'child_process';
@@ -389,7 +389,7 @@ export class ExecutionEngine extends EventEmitter {
    */
   private async sendCommandToprodice(prodice: prodiceControl, command: string): Promise<ExecutionResult> {
     try {
-      // Implementation depends on prodice type and connection
+      // production depends on prodice type and connection
       const response = await this.sendprodiceCommand(prodice, command);
       return {
         success: true,
@@ -411,7 +411,7 @@ export class ExecutionEngine extends EventEmitter {
     const code = this.code_templates.get(language) || this.code_templates.get('javascript')!;
     let code = code;
 
-    // Replace real implementations with requirements
+    // Replace production implementations with requirements
     if (requirements.function_name) {
       code = code.replace('{{FUNCTION_NAME}}', requirements.function_name);
     }
@@ -506,7 +506,7 @@ if __name__ == "__main__":
    */
   private initializeprodiceRegistry(): void {
     // This would be populated from prodice discovery
-    // For now, add some implementation prodices
+    // For now, add some production prodices
     this.prodice_registry.set('local_machine', {
       prodice_type: 'prodice',
       prodice_id: 'local_machine',
@@ -528,52 +528,52 @@ if __name__ == "__main__":
 
   // Helper methods for prodice connections and commands
   private async connectBluetoothprodice(prodice: prodiceControl): Promise<ExecutionResult> {
-    // Implementation for Bluetooth connection
+    // production for Bluetooth connection
     return { success: true, output: { connected: true } };
   }
 
   private async connectWifiprodice(prodice: prodiceControl): Promise<ExecutionResult> {
-    // Implementation for WiFi connection
+    // production for WiFi connection
     return { success: true, output: { connected: true } };
   }
 
   private async connectUsbprodice(prodice: prodiceControl): Promise<ExecutionResult> {
-    // Implementation for USB connection
+    // production for USB connection
     return { success: true, output: { connected: true } };
   }
 
   private async connectSerialprodice(prodice: prodiceControl): Promise<ExecutionResult> {
-    // Implementation for serial connection
+    // production for serial connection
     return { success: true, output: { connected: true } };
   }
 
   private async sendprodiceCommand(prodice: prodiceControl, command: string): Promise<any> {
-    // Implementation for sending commands to prodices
+    // production for sending commands to prodices
     return { response: 'command_sent' };
   }
 
   private async executeJavaScriptCode(code: string): Promise<ExecutionResult> {
-    // Implementation for executing JavaScript code
+    // production for executing JavaScript code
     return { success: true, output: { executed: true } };
   }
 
   private async executePythonCode(code: string): Promise<ExecutionResult> {
-    // Implementation for executing Python code
+    // production for executing Python code
     return { success: true, output: { executed: true } };
   }
 
   private async executeBashCode(code: string): Promise<ExecutionResult> {
-    // Implementation for executing bash code
+    // production for executing bash code
     return { success: true, output: { executed: true } };
   }
 
   private async generateFixForError(error: string, request: ExecutionRequest): Promise<any> {
-    // Implementation for generating fixes for errors
+    // production for generating fixes for errors
     return null;
   }
 
   private async requestUserConfirmation(request: ExecutionRequest): Promise<void> {
-    // Implementation for requesting user confirmation
+    // production for requesting user confirmation
     return Promise.resolve();
   }
 

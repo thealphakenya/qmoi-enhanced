@@ -29,7 +29,7 @@ const defaultConfig: EmergencyConfig = {
       id: '1',
       name: 'Emergency Contact 1',
       phone: '+1234567890',
-      email: 'contact1@implementation.com',
+      email: 'contact1@production.com',
       relationship: 'Family'
     },
   ],

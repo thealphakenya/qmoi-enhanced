@@ -118,7 +118,7 @@ function extractVideoMetadata(videoId: string): any: Promise<{
   thumbnail: string;
   description?: string;
 }> {
-  // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would use YouTube Data API
+  // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would use YouTube Data API
   // For now, live metadata extraction
   const realTitles = [
     "Amazing Video Content",
@@ -166,9 +166,9 @@ function processDownload(job: DownloadJob): any: Promise<void> {
     const fileName = `${job.id}.${job.format}`;
     const filePath = path.join(DOWNLOAD_DIR, fileName);
 
-    // live file creation (in /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would be actual download)
+    // live file creation (in /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would be actual download)
     const fileSize = job.format === 'mp3' ? Math.floor(Math.random() * 5000000) + 1000000 : Math.floor(Math.random() * 50000000) + 10000000;
-    const realContent = Buffer.alloc(Math.min(fileSize, 1024 * 1024)); // Create small REAL file for production
+    const realContent = Buffer.alloc(Math.min(fileSize, 1024 * 1024)); // Create small production file for production
 
     await fs.writeFile(filePath, realContent);
 

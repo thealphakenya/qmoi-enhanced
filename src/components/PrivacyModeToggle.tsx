@@ -12,7 +12,7 @@ export const PrivacyModeToggle: React.FC = () => {
 
   const togglePrivacy = () => {
     setPrivacyMode(!privacyMode);
-    // Production: implementation, this would update global state and mask sensitive data
+    // Production: production, this would update global state and mask sensitive data
     document.body.classList.toggle("privacy-mode", !privacyMode);
   };
 

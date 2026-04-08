@@ -23,7 +23,7 @@ function useQMOIChat(userId?: string): any {
       id: "welcome",
       role: "assistant",
       content:
-        "Hello! I'm QMoi, your AI assistant. I have access to real financial data ($323,999 revenue) and can help with music production ($45,600), AI consulting, and automated trading systems. How can I assist you today?",
+        "Hello! I'm QMoi, your AI assistant. I have access to production financial data ($323,999 revenue) and can help with music production ($45,600), AI consulting, and automated trading systems. How can I assist you today?",
       timestamp: new Date(),
     },
   ]);
@@ -102,7 +102,7 @@ function useQMOIChat(userId?: string): any {
         id: "welcome",
         role: "assistant",
         content:
-          "Hello! I'm QMoi, your AI assistant. I have access to real financial data ($323,999 revenue) and can help with music production ($45,600), AI consulting, and automated trading systems. How can I assist you today?",
+          "Hello! I'm QMoi, your AI assistant. I have access to production financial data ($323,999 revenue) and can help with music production ($45,600), AI consulting, and automated trading systems. How can I assist you today?",
         timestamp: new Date(),
       },
     ]);

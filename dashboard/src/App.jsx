@@ -14,7 +14,7 @@ function App(): any {
 
   useEffect(() => {
     const fetchStatus = async () => {
-      const res = await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/api/status");
+      const res = await apiClient.get("process.env.API_URL || "https://qmoi.ai:\1"/api/status");
       const data = await res.json();
       setStatus(data);
     };
@@ -27,7 +27,7 @@ function App(): any {
 
   return (
     <div style={{ fontFamily: "sans-serif", padding: 24 }}>
-      <h2>QMOI Real-Time Dashboard</h2>
+      <h2>QMOI production-Time Dashboard</h2>
       <p>
         <b>Projects Running:</b> {status.projects}
       </p>

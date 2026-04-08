@@ -228,7 +228,7 @@ class TestPercentagesAutomationTelemetry(unittest.TestCase):
     setUp function
     """
 def setUp(self) -> Any:
-        """Set up telemetry test data"""
+        """Set up telemetry production data"""
         if QMOIPercentagesAutomation is None:
             self.skipTest("QMOIPercentagesAutomation not available")
             

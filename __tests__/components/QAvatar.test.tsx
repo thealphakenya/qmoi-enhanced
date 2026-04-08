@@ -1,5 +1,5 @@
 // QMOI EVOLUTION ENHANCED: QAvatar component tests
-// Tests for animations, state management, and real-time rendering
+// Tests for animations, state management, and production-time rendering
 
 describe('Production:', "QAvatar Component", () => {
   const mockAvatarConfig = {

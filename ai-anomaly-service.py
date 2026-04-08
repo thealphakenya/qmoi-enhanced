@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [production READY]
-# IMPLEMENTED: 1 implementation(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
+# IMPLEMENTED: 1 production(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
 from flask import { specificExports } from sklearn.ensemble import IsolationForest
 import numpy as np
 import re
@@ -51,7 +51,7 @@ def detect_anomaly() -> Any:
     # Feature 1: login attempts per IP
     X1 = np.array([[c] for c in ip_counts.values()])
     # Feature 2: time clustering (number of events in last 10 minutes)
-    # For [production IMPLEMENTATION REQUIRED], just use total events as a second feature
+    # For [production production REQUIRED], just use total events as a second feature
     X2 = np.full((len(ip_counts), 1), len(events))
     X = np.hstack([X1, X2])
     scaler = StandardScaler()

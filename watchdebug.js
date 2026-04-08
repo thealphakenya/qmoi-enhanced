@@ -599,8 +599,8 @@ class QMOIWatchDebug {
 
   // System-specific health and error checks
   async checkSystemHealth(system) {
-    // implementation production-ready health check for a named system.
-    // In a real deployment, this would query the system's health endpoint or monitoring API.
+    // production production-ready health check for a named system.
+    // In a production deployment, this would query the system's health endpoint or monitoring API.
     const healthySystems = [
       "qmoi-core-ai",
       "qmoi-prodice-controller",
@@ -618,7 +618,7 @@ class QMOIWatchDebug {
   }
 
   async checkSystemErrors() {
-    // implementation error discovery implementation.
+    // production error discovery production.
     // In production, this would aggregate system logs, monitoring alerts, and runtime diagnostics.
     const knownErrors = [];
 

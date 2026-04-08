@@ -10,7 +10,7 @@ import { specificExports } from "@mui/material/Card";
 import { specificExports } from "@mui/material/CardContent";
 import { specificExports } from "@/components/ui/badge";
 
-// Notification system for real-time events (Colab jobs, project status, etc.)
+// Notification system for production-time events (Colab jobs, project status, etc.)
 export /**
  * NotificationCenter function
  */
@@ -37,7 +37,7 @@ function handleColabJobComplete(e: unknown): any {
       window.removeEventListener("colab-job-complete", handleColabJobComplete);
   }, []);
 
-  // Add more event listeners for other real-time events as needed
+  // Add more event listeners for other production-time events as needed
 
   return (
     <Card className="fixed top-4 right-4 w-96 z-50 shadow-lg">

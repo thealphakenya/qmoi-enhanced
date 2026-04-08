@@ -16,7 +16,7 @@ function useExtensionManager(): any {
   >("idle");
   const [error, setError] = useState<string | null>(null);
 
-  [production READY] install (replace with Colab/real API)
+  [production READY] install (replace with Colab/production API)
   const installExtension = async (ext: string) => {
     setStatus("installing");
     setError(null);

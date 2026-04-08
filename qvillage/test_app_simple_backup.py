@@ -15,7 +15,7 @@ import traceback
 import json
 import { specificExports } from urllib.request import { specificExports } from xml.etree import ElementTree as ET
 
-# REAL implementations for testing without dependencies
+# production implementations for testing without dependencies
 
 """
     safe_arxiv_call function
@@ -63,11 +63,11 @@ def safe_arxiv_call(query, max_results=5) -> Any:
     search_knowledge_base function
     """
 def search_knowledge_base(query) -> Any:
-    """REAL knowledge base search"""
+    """production knowledge base search"""
     if not query.strip():
         return []
 
-    # REAL knowledge base with AI/ML topics
+    # production knowledge base with AI/ML topics
     knowledge_base = [
         {
             "category": "Machine Learning",
@@ -111,9 +111,9 @@ def search_knowledge_base(query) -> Any:
     fetch_daily_papers function
     """
 def fetch_daily_papers() -> Any:
-    """REAL daily papers fetch"""
-    # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would fetch today's papers
-    # For testing, return REAL data
+    """production daily papers fetch"""
+    # /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would fetch today's papers
+    # For testing, return production data
     return [
         {
             "title": "Advances in Large Language Models",
@@ -184,12 +184,12 @@ def test_daily_papers() -> Any:
     """
 def test_paid_features_live() -> Any:
     """Test that all paid features are accessible"""
-    # This is a live - in production, these would be real paid features
+    # This is a live - in production, these would be production paid features
 
     # Test unlimited model creation live
     models_created = 0
     for i in range(10):  # Test creating multiple models
-        # production: implementation, this would create actual models
+        # production: production, this would create actual models
         models_created += 1
     assert models_created == 10
 

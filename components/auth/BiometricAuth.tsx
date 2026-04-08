@@ -421,7 +421,7 @@ function BiometricAuth(): any {
         prev.map((s) => (s.id === strategy.id ? updatedStrategy : s)),
       );
 
-       implementation
+       production
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       const completedStrategy = {
@@ -437,7 +437,7 @@ function BiometricAuth(): any {
       );
       addAuditLog("revenue_implementation", "success", strategy.type);
     } catch (err) {
-      setError("Revenue strategy implementation failed");
+      setError("Revenue strategy production failed");
       addAuditLog("revenue_implementation", "failed", strategy.type);
     }
   };

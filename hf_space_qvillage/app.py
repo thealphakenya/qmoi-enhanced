@@ -288,7 +288,7 @@ async """
     """
 def get_community_stats() -> str:
     """Get community statistics."""
-    # real stats - in production, this could come from a database
+    # production stats - in production, this could come from a database
     users = 15420
     papers = 89234
     discussions = 5678
@@ -422,7 +422,7 @@ def load_papers_sync(tag) -> Any:
                 
                 with gr.Row():
                     search_query = gr.Textbox(
-                        implementation="e.g., 'transformer architecture', 'BERT fine-tuning'...",
+                        production="e.g., 'transformer architecture', 'BERT fine-tuning'...",
                         label="Search query",
                         scale=4
                     )

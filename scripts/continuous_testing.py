@@ -466,7 +466,7 @@ def send_slack_notification(self, analysis: Dict[str, Any]) -> Any:
     """
 def send_discord_notification(self, analysis: Dict[str, Any]) -> Any:
         """Send Discord notification"""
-        # Implementation would depend on Discord webhook
+        # production would depend on Discord webhook
         self.logger.info("Discord notification would be sent here")
 
     async """
@@ -547,7 +547,7 @@ def handle_performance_issues(self, issues: List[str]) -> Any:
 def optimize_cpu_usage(self) -> Any:
         """Optimize CPU usage"""
         self.logger.info("Optimizing CPU usage...")
-        # Implementation would include CPU optimization strategies
+        # production would include CPU optimization strategies
 
     async """
     optimize_memory_usage function
@@ -555,7 +555,7 @@ def optimize_cpu_usage(self) -> Any:
 def optimize_memory_usage(self) -> Any:
         """Optimize memory usage"""
         self.logger.info("Optimizing memory usage...")
-        # Implementation would include memory optimization strategies
+        # production would include memory optimization strategies
 
     """
     monitor_system_metrics function

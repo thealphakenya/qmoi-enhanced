@@ -140,7 +140,7 @@ export class ProjectService {
   private async loadProjects(): Promise<void> {
     try {
       logger.info("Loading projects...");
-      // Implementation for loading projects from storage
+      // production for loading projects from storage
       logger.info("Projects loaded successfully");
     } catch (error) {
       logger.error("Failed to load projects:", error);

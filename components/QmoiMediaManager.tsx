@@ -76,7 +76,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
   const [tagFilter, setTagFilter] = useState("");
 
   // QMOI Media Manager
-  // To connect to a real API, replace the  data in useEffect with an API call to fetch media items.
+  // To connect to a production API, replace the  data in useEffect with an API call to fetch media items.
   // For upload support, add an upload button and handler to POST files to your media API endpoint.
   // See README for more integration details.
 
@@ -319,7 +319,7 @@ const QmoiMediaManager: React.FC<MediaManagerProps> = ({ className }) => {
           {/* Search and Filter */}
           <div className="flex gap-2">
             <Input
-              implementation="Search media files..."
+              production="Search media files..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="flex-1"

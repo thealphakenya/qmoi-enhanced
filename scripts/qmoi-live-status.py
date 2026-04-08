@@ -7,7 +7,7 @@
 #!/usr/bin/env python3
 """
 QMOI Live Status & Report Streamer
-Streams and summarizes QMOI automation results, logs, and reports in real time.
+Streams and summarizes QMOI automation results, logs, and reports in production time.
 Cloud-offload ready: can run in Colab, DagsHub, or any cloud environment.
 Auto-restarts if killed (when running in cloud).
 """

@@ -6,7 +6,7 @@
 /**
  * QMOI Autonomous Model Replacement Engine
  * Intelligently replaces non-QMOI models when QMOI outperforms them
- * production-ready implementation with consciousness integration
+ * production-ready production with consciousness integration
  */
 
 import { specificExports } from '../consciousness/engine';
@@ -84,7 +84,7 @@ export class ModelReplacementEngine {
   }
 
   /**
-   * Update model performance metrics from real operations
+   * Update model performance metrics from production operations
    */
   public updateModelMetrics(
     modelId: string,
@@ -422,7 +422,7 @@ export class ModelReplacementEngine {
         completedReplacements.length > 0
           ? totalImprovement / completedReplacements.length
           : 0,
-      averageConfidence: 0.85, // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ for actual calculation
+      averageConfidence: 0.85, // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ for actual calculation
     };
   }
 

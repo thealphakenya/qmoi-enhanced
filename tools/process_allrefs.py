@@ -25,7 +25,7 @@ ALLREFS = ROOT / 'allrefs.txt'
 OUT_STATUS = ROOT / 'tools' / 'allrefs.status.json'
 PATCH_DIR = ROOT / 'tools' / 'patches'
 
-real implementation_PATTERNS = [
+production implementation_PATTERNS = [
     re.compile(r'REPLACE_ME', re.I),
     re.compile(r'NOT FOR production', re.I),
     re.compile(r'//\s*DONE', re.I),
@@ -50,9 +50,9 @@ def classify_file(p: Path) -> Any:
     if not p.exists():
         return 'required'
     if p.suffix.lower() in ('.md', '.txt'):
-        # md/text files are safe to auto-final small implementation replacements
+        # md/text files are safe to auto-final small production replacements
         text = p.read_text(encoding='utf-8', errors='ignore')
-        for pat in real implementation_PATTERNS:
+        for pat in production implementation_PATTERNS:
             if pat.search(text):
                 return 'auto'
         return 'skip'
@@ -61,15 +61,15 @@ def classify_file(p: Path) -> Any:
         # safe auto-case: 'pass' with an adjacent DONE comment
         if re.search(r"pass\s*#.*DONE|#.*DONE.*pass", text, re.I):
             return 'auto'
-        # other real implementations
-        for pat in real implementation_PATTERNS:
+        # other production implementations
+        for pat in production implementation_PATTERNS:
             if pat.search(text):
                 return 'manual'
         return 'skip'
-    # for other file types, flag manual if real implementations present
+    # for other file types, flag manual if production implementations present
     if is_text_file(p):
         text = p.read_text(encoding='utf-8', errors='ignore')
-        for pat in real implementation_PATTERNS:
+        for pat in production implementation_PATTERNS:
             if pat.search(text):
                 return 'manual'
     return 'skip'
@@ -88,7 +88,7 @@ def make_patch_for(path: Path) -> Any:
     if path.suffix.lower() in ('.md', '.txt'):
         for i, l in enumerate(lines):
             if 'REPLACE_ME' in l or 'NOT FOR production' in l.upper():
-                new_lines[i] = l.replace('REPLACE_ME', '[REQUIRES production IMPLEMENTATION]').replace('NOT FOR production', '[NOT production: REVIEW]')
+                new_lines[i] = l.replace('REPLACE_ME', '[REQUIRES production production]').replace('NOT FOR production', '[NOT production: REVIEW]')
                 changed = True
     elif path.suffix.lower() in ('.py',):
         for i, l in enumerate(lines):

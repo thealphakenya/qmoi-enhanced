@@ -150,7 +150,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced AI system designed fo
 - **4 Categories**: Monthly, Semi-monthly, Weekly, Daily employees
 - **Automated Payments**: Salary + 20% performance bonuses
 - **Employment Letters**: Comprehensive contracts
-- **Performance Tracking**: Real-time monitoring
+- **Performance Tracking**: production-time monitoring
 
 ## Platform Integration
 
@@ -386,7 +386,7 @@ def create_space_config(self) -> Any:
 2. **Revenue Dashboard**: Monitor revenue streams and performance
 3. **Employment Management**: Hire and manage employees
 4. **Deal Creation**: Create and manage deals automatically
-5. **System Monitoring**: Real-time system health monitoring
+5. **System Monitoring**: production-time system health monitoring
 
 ## API Access
 

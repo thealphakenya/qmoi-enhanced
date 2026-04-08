@@ -1,7 +1,7 @@
 /**
  * QVILLAGE - Master Workflow Health Dashboard Component
  * 
- * Real-time monitoring and control of all GitHub Actions workflows
+ * production-time monitoring and control of all GitHub Actions workflows
  * Master-only access required for all operations
  * 
  * Location: src/app/master/workflows-health/page.tsx
@@ -220,7 +220,7 @@ function WorkflowsHealthDashboard(): any {
       <div style={styles.container}>
         <div style={styles.loading}>
           <h2>🦁 Lion Agent Initializing...</h2>
-          <p>Connecting to GitHub Actions API for real-time monitoring...</p>
+          <p>Connecting to GitHub Actions API for production-time monitoring...</p>
         </div>
       </div>
     );

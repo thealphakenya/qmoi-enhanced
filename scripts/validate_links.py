@@ -51,7 +51,7 @@ KNOWN_DOMAINS = {
     'qvillage.com', 'qdatabase.net', 'qserver.io', 'qcloud.ai',
     'qquantum.tech', 'stableq.ai', 'qglobal.org', 'qparallel.prod',
     'qvillage.net',  # fallback
-    'production.qmoi.ai', 'prod.qmoi.ai', '0.0.0.0'
+    'qmoi.ai', 'prod.qmoi.ai', '0.0.0.0'
 }
 
 class LinkValidator:
@@ -170,7 +170,7 @@ def validate_url(self, url_entry: Dict) -> Dict:
         
         # Check for broken patterns
         if '{{' in url or '}}' in url:
-            status = 'template_real implementation'
+            status = 'template_real production'
             error = 'Contains code variables'
         elif url.endswith('undefined') or 'undefined' in url:
             status = 'undefined_reference'

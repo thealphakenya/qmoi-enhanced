@@ -66,7 +66,7 @@ QMOI (Quantum Multi-Objective Intelligence) is a powerful, ever-evolving, self-h
 - **Self-Healing & Automation:** Automatically detects and fixes errors, retrains, and redeploys as needed.
 - **Continuous Evolution:** Model is enhanced and optimized on every run, with automated versioning and health checks.
 - **Cross-Platform Integration:** Seamless integration with QMOI Spaces, WhatsApp, Discord, Telegram, and more.
-- **Real-Time Monitoring:** Health, status, and analytics are always visible in the QMOI dashboard and Hugging Face Space.
+- **production-Time Monitoring:** Health, status, and analytics are always visible in the QMOI dashboard and Hugging Face Space.
 - **Secure & Compliant:** All data and interactions are encrypted and privacy-compliant.
 
 ## Version & Health

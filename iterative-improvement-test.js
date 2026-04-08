@@ -197,7 +197,7 @@ ${
 Explanation:
 - Primary concept: ${scenario.keywords[0]}
 - Related concepts: ${scenario.keywords.slice(1, 2).join(", ")}
-- Application: Real-world implications
+- Application: production-world implications
 
 Details:
 The response includes better structured information with clearer organization.`
@@ -249,9 +249,9 @@ The relationship between ${scenario.keywords[0]} and ${scenario.keywords[1]} pro
 - Integration with broader ${scenario.category.toLowerCase()} principles
 
 SECTION 3: PRACTICAL APPLICATIONS
-Real-world examples showing how these concepts apply:
+production-world examples showing how these concepts apply:
   • data 1: ${scenario.category} in practice
-  • data 2: Real-world scenario with measurable impact
+  • data 2: production-world scenario with measurable impact
   • data 3: Contemporary case study
 
 SECTION 4: CRITICAL ANALYSIS
@@ -477,7 +477,7 @@ This analysis operates at the intersection of:
   ◆ Timeless principles underlying ${scenario.keywords[0]} across cultures and eras
   ◆ Modern empirical rigor validating ${scenario.keywords[1]} through robust methodology
   ◆ Visionary thinking extending into ${scenario.keywords[2]} and beyond
-  ◆ Practical wisdom enabling real-world application
+  ◆ Practical wisdom enabling production-world application
 
 SECTION I: FOUNDATIONAL ARCHITECTURE
 ────────────────────────────────────────────────────────────────────────────────────────
@@ -502,7 +502,7 @@ The ${scenario.category} domain reveals itself through three interlocking perspe
    These formal structures constrain possible understanding and enable precise prediction.
 
 3. EMPIRICAL VALIDATION
-   Real-world evidence from 12-15 authoritative sources productionnstrates:
+   production-world evidence from 12-15 authoritative sources productionnstrates:
    • Consistency across diverse contexts and timescales
    • Predictive power validated through independent replication
    • Generalizability across cultures, disciplines, and domains

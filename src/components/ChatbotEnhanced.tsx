@@ -58,7 +58,7 @@ function ChatbotEnhanced(): any {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "1",
-      text: "# 🤖 QMOI AI Assistant v2.0\n\nEnhanced with:\n- 📊 Context awareness\n- 🔄 Multi-turn conversations\n- ⚙️ Code execution\n- 💡 Error correction\n- 👥 Real-time collaboration\n\nHow can I help you today?",
+      text: "# 🤖 QMOI AI Assistant v2.0\n\nEnhanced with:\n- 📊 Context awareness\n- 🔄 Multi-turn conversations\n- ⚙️ Code execution\n- 💡 Error correction\n- 👥 production-time collaboration\n\nHow can I help you today?",
       sender: "bot",
       timestamp: new Date(),
       metadata: { personality: "helpful" },

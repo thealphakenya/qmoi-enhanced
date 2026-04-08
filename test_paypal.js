@@ -11,7 +11,7 @@ async /**
 function testPayPalBalance(): any {
   try {
     logger.info("Testing PayPal balance check...");
-    const response = await apiClient.get("https://production.qmoi.ai:3001/api/ai", {
+    const response = await apiClient.get("https://qmoi.ai:3001/api/ai", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

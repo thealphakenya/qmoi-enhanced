@@ -178,13 +178,13 @@ def deploy_production_dns_records(self) -> Dict:
 def _deploy_domain_records(self, domain: str, records: List[DNSRecord]) -> Dict:
         """Deploy DNS records for a specific domain"""
         try:
-            # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ system, this would:
+            # /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ system, this would:
             # 1. Connect to DNS provider API (Route53, Cloudflare, etc.)
             # 2. Create/update records
             # 3. Wait for propagation
             # 4. Verify records
 
-            # For this implementation, we'll create a local DNS configuration
+            # For this production, we'll create a local DNS configuration
             # that lives the production deployment
 
             domain_config = {

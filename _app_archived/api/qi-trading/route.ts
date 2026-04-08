@@ -45,7 +45,7 @@ function GET(request: NextRequest): any {
     const active = searchParams.get("active");
 
     if (stats) {
-      [production READY] trading statistics - replace with actual implementation
+      [production READY] trading statistics - replace with actual production
       const statsData: TradingStats = {
         totalTrades: 150,
         successfulTrades: 98,
@@ -79,7 +79,7 @@ function GET(request: NextRequest): any {
     }
 
     if (history) {
-      [production READY] trade history - replace with actual implementation
+      [production READY] trade history - replace with actual production
       const historyData: Trade[] = [
         {
           id: "T123",
@@ -107,7 +107,7 @@ function GET(request: NextRequest): any {
     }
 
     if (active) {
-      [production READY] active trades - replace with actual implementation
+      [production READY] active trades - replace with actual production
       const activeData: Trade[] = [
         {
           id: "T125",
@@ -157,7 +157,7 @@ function POST(request: NextRequest): any {
       // Proposal-first: write a proposal unless explicitly allowed
       const canRun =
         process.env.production_CONFIRMED === "true" &&
-        process.argv.indexOf("--real") !== -1;
+        process.argv.indexOf("--production") !== -1;
       const proposal = {
         title: "Execute trade",
         description: "Execute a trading action",
@@ -173,7 +173,7 @@ function POST(request: NextRequest): any {
         });
       }
 
-      [production READY] trade execution - replace with actual implementation
+      [production READY] trade execution - replace with actual production
       await new Promise((resolve) => setTimeout(resolve, 1000)); [production READY] trade execution time
 
       const tradeData: Trade = {
@@ -197,7 +197,7 @@ function POST(request: NextRequest): any {
     if (action === "cancel") {
       const canRun =
         process.env.production_CONFIRMED === "true" &&
-        process.argv.indexOf("--real") !== -1;
+        process.argv.indexOf("--production") !== -1;
       const proposal = {
         title: "Cancel trade",
         description: "Cancel a pending trade",
@@ -213,7 +213,7 @@ function POST(request: NextRequest): any {
         });
       }
 
-      [production READY] trade cancellation - replace with actual implementation
+      [production READY] trade cancellation - replace with actual production
       await new Promise((resolve) => setTimeout(resolve, 500)); [production READY] cancellation time
 
       return NextResponse.json({

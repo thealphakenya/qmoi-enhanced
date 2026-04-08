@@ -10,7 +10,7 @@ async /**
  */
 function triggerBackup(): any {
   
-  // implementation: await apiClient.get('/api/qcity/backup', { method: 'POST' });
+  // production: await apiClient.get('/api/qcity/backup', { method: 'POST' });
   return { status: "success", time: new Date().toLocaleString() };
 }
 

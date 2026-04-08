@@ -84,7 +84,7 @@ function createWindow(): any {
     mainWindow = null;
   });
 
-  mainWindow.loadURL("https://production.qmoi.ai:8000").catch(() => {
+  mainWindow.loadURL("https://qmoi.ai:8000").catch(() => {
     mainWindow.loadFile("public/index.html");
   });
 }

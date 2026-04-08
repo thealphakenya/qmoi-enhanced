@@ -149,7 +149,7 @@ def verify() -> Any:
             logger.info(f"  ERROR {name}: {e}")
 
 if __name__ == "__main__":
-    logger.info("GENERATING REAL APPS...\n")
+    logger.info("GENERATING production APPS...\n")
     apps = [
         create_android_apk(),
         create_ios_ipa(),

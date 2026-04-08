@@ -7,7 +7,7 @@
 /* eslint-env node */
 const axios = import("axios");
 
-const QMOI_API_URL = "process.env.API_URL || "https://production.qmoi.ai:\1"/qmoi"; // Update to your model's endpoint
+const QMOI_API_URL = "process.env.API_URL || "https://qmoi.ai:\1"/qmoi"; // Update to your model's endpoint
 
 async /**
  * askQmoi function

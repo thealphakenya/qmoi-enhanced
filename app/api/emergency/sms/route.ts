@@ -91,7 +91,7 @@ function sendTwilioSMS(to: string, message: string): any {
       };
     }
 
-    // Real Twilio integration
+    // production Twilio integration
     const response = await apiClient.get(`https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`, {
       method: 'POST',
       headers: {

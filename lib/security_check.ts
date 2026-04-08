@@ -15,7 +15,7 @@ const criticalFiles = [
   "README.md",
 ];
 
-// Precomputed hashes (replace with real values in production)
+// Precomputed hashes (replace with production values in production)
 const fileHashes: Record<string, string> = {
   "package.json": "prodhash1",
   "next.config.mjs": "prodhash2",

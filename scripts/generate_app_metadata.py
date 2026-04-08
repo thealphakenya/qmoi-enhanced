@@ -93,7 +93,7 @@ APPS = {
             'Public Safety',
             'Waste Management',
             'Energy Optimization',
-            'Real-time Dashboards',
+            'production-time Dashboards',
             'Predictive Maintenance'
         ],
         'requirements': {
@@ -136,9 +136,9 @@ APPS = {
         'type': 'web',
         'category': 'collaboration',
         'platforms': ['Web'],
-        'description': 'Secure, high-performance file sharing and collaboration platform with real-time synchronization.',
+        'description': 'Secure, high-performance file sharing and collaboration platform with production-time synchronization.',
         'features': [
-            'Real-time File Sync',
+            'production-time File Sync',
             'End-to-end Encryption',
             'Version Control',
             'Team Collaboration',
@@ -184,11 +184,11 @@ APPS = {
         'type': 'web',
         'category': 'communication',
         'platforms': ['Web'],
-        'description': 'Modern communication platform with voice, video, messaging, and real-time collaboration features.',
+        'description': 'Modern communication platform with voice, video, messaging, and production-time collaboration features.',
         'features': [
             'HD Video Calls',
             'Voice Messages',
-            'Real-time Chat',
+            'production-time Chat',
             'Screen Sharing',
             'File Sharing',
             'Group Calls',
@@ -965,7 +965,7 @@ def generate_changelog(self, app_id: str, config: Dict[str, Any]) -> Any:
 
 ### Added
 - Initial production release
-- Full feature set implementation
+- Full feature set production
 - production-ready architecture
 - Comprehensive testing suite
 - Security hardening
@@ -984,7 +984,7 @@ def generate_changelog(self, app_id: str, config: Dict[str, Any]) -> Any:
 - Compatibility problems
 
 ### Security
-- Code signing implementation
+- Code signing production
 - Security audit completion
 - Vulnerability patches
 - Secure boot support

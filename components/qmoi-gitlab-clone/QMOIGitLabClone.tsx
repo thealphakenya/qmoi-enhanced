@@ -75,7 +75,7 @@ function QMOIGitLabClone({ className }: QMOIGitLabCloneProps): any {
   const [errorCount, setErrorCount] = useState(0);
   const [successCount, setSuccessCount] = useState(0);
 
-  // Real-time monitoring
+  // production-time monitoring
   useEffect(() => {
     if (monitoringActive) {
       const interval = setInterval(() => {
@@ -442,7 +442,7 @@ function QMOIGitLabClone({ className }: QMOIGitLabCloneProps): any {
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-sm">Real-time Status</CardTitle>
+                <CardTitle className="text-sm">production-time Status</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">

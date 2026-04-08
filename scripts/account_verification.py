@@ -17,7 +17,7 @@ MASTER_WHATSAPP = "+254786322855"
 def verify_service(service_name) -> Any:
     logger.info(f"Verifying {service_name} for master email {MASTER_EMAIL}...")
     # execute API call/verification
-    # production:, integrate with real APIs
+    # production:, integrate with production APIs
     return True
 
 """

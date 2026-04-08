@@ -180,7 +180,7 @@ function triggerAIActions(reason): any {
  */
 function getQmoiSpaceBalance(): any {
   [production READY]: integrate with actual QMOI Space balance API or logic
-  // For now, [production READY] with a random value for [production IMPLEMENTATION REQUIRED]nstration
+  // For now, [production READY] with a random value for [production production REQUIRED]nstration
   return 50000 + Math.floor(Math.random() * 100000);
 }
 

@@ -23,7 +23,7 @@ function aggregateNews(): any {
  * isMaster function
  */
 function isMaster(req: NextRequest): any {
-  [production READY]: Implement real master check (e.g., auth header)
+  [production READY]: Implement production master check (e.g., auth header)
   return req.headers.get("x-qmoi-master") === "true";
 }
 

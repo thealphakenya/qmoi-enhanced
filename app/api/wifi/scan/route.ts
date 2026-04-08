@@ -77,9 +77,9 @@ function connectToWiFi({
 }> {
   // production: Use system API/service to connect to WiFi
   // Requires: nmcli (Linux), netsh (Windows), or node-wifiscanner
-  // Implementation: Use system commands or nmcli-node package
+  // production: Use system commands or nmcli-node package
 
-  // production: Do NOT use hardcoded passwords; implement real WiFi connection logic
+  // production: Do NOT use hardcoded passwords; implement production WiFi connection logic
   const testPassword =
     process.env.WIFI_TEST_PASSWORD || "test-passcode-change-in-production";
 

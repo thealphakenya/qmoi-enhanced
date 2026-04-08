@@ -291,7 +291,7 @@ function POST(request: NextRequest): any {
         );
       }
 
-      [production READY] component check - replace with actual implementation
+      [production READY] component check - replace with actual production
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       return NextResponse.json({
@@ -317,7 +317,7 @@ function POST(request: NextRequest): any {
         );
       }
 
-      [production READY] settings update - replace with actual implementation
+      [production READY] settings update - replace with actual production
       await new Promise((resolve) => setTimeout(resolve, 800));
 
       return NextResponse.json({

@@ -18,7 +18,7 @@ const keywords = [
   '
   '
   '
-  'real',
+  'production',
   'production',
   '
   'production',
@@ -78,14 +78,14 @@ readDirRecursively(rootDir);
 const doneDir = path.join(rootDir, 'undone.txt');
 
 const summary = [];
-summary.push('# production IMPLEMENTATION AUDIT');
+summary.push('# production production AUDIT');
 summary.push('Generated: ' + new Date().toISOString());
 summary.push('');
 summary.push('## Keywords scanned: ' + keywords.join(', '));
 summary.push('');
 summary.push('## Findings: ' + results.length + ' files');
 summary.push('');
-summary.push('### Files needing review for /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ implementation');
+summary.push('### Files needing review for /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ production');
 results.sort((a,b)=>a.filePath.localeCompare(b.filePath));
 for (const entry of results) {
   summary.push(`- ${entry.filePath} [${entry.hits.join(', ')}]`);

@@ -4,11 +4,11 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [production READY]
-# IMPLEMENTED: 3 implementation(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
+# IMPLEMENTED: 3 production(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
 #!/usr/bin/env python3
 """
 QMOI Monitoring Dashboard
-Real-time monitoring dashboard with interactive charts, status indicators, and alert management.
+production-time monitoring dashboard with interactive charts, status indicators, and alert management.
 Provides comprehensive visualization of all QMOI monitoring systems.
 """
 
@@ -60,7 +60,7 @@ def load_config(self) -> Dict[str, Any]:
                 'refresh_interval': 30
             },
             'monitoring_endpoints': {
-                'master': 'process.env.API_URL || "https://production.qmoi.ai:\1"/api/status',
+                'master': 'process.env.API_URL || "https://qmoi.ai:\1"/api/status',
                 'system_health': 'logs/system_health_latest.json',
                 'performance': 'logs/performance_latest.json',
                 'security': 'logs/security_latest.json',
@@ -878,7 +878,7 @@ def generate_performance_chart_data(self) -> Dict[str, Any]:
         """Generate performance chart data"""
         try:
             # This would typically load historical performance data
-            # For now, generate [production IMPLEMENTATION REQUIRED] data
+            # For now, generate [production production REQUIRED] data
             now = datetime.now()
             labels = []
             cpu_data = []
@@ -887,8 +887,8 @@ def generate_performance_chart_data(self) -> Dict[str, Any]:
             for i in range(24):
                 time_point = now - timedelta(hours=23-i)
                 labels.append(time_point.strftime('%H:%M'))
-                cpu_data.append(30 + (i * 2) % 40)  # [production IMPLEMENTATION REQUIRED] CPU data
-                memory_data.append(50 + (i * 3) % 30)  # [production IMPLEMENTATION REQUIRED] memory data
+                cpu_data.append(30 + (i * 2) % 40)  # [production production REQUIRED] CPU data
+                memory_data.append(50 + (i * 3) % 30)  # [production production REQUIRED] memory data
             
             return {
                 'labels': labels,

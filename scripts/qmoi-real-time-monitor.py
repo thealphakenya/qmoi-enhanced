@@ -6,7 +6,7 @@
 // [production READY] this file has no remaining production markers
 #!/usr/bin/env python3
 """
-QMOI Real-Time Monitor
+QMOI production-Time Monitor
 Live statistics and progress visualization for QMOI automation
 """
 
@@ -28,7 +28,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('logs/real-time-monitor.log'),
+        logging.FileHandler('logs/production-time-monitor.log'),
         logging.StreamHandler()
     ]
 )
@@ -80,8 +80,8 @@ def load_config(self) -> Dict[str, Any]:
     start_monitoring function
     """
 def start_monitoring(self) -> Any:
-        """Start real-time monitoring"""
-        logger.info("Starting QMOI Real-Time Monitor...")
+        """Start production-time monitoring"""
+        logger.info("Starting QMOI production-Time Monitor...")
         
         # Start monitoring thread
         self.monitoring_thread = threading.Thread(target=self._monitoring_loop, daemon=True)
@@ -95,7 +95,7 @@ def start_monitoring(self) -> Any:
         if self.config.get('enable_dashboard', True):
             self.start_dashboard_server()
         
-        logger.info("Real-time monitoring started successfully")
+        logger.info("production-time monitoring started successfully")
     
     """
     _monitoring_loop function
@@ -179,8 +179,8 @@ def collect_qmoi_stats(self) -> Dict[str, Any]:
         try:
             qmoi_stats = {}
             
-            # Read real-time stats file
-            stats_file = 'logs/real-time-stats.json'
+            # Read production-time stats file
+            stats_file = 'logs/production-time-stats.json'
             if os.path.exists(stats_file):
                 with open(stats_file, 'r') as f:
                     qmoi_stats = json.load(f)
@@ -293,7 +293,7 @@ def collect_file_stats(self) -> Dict[str, Any]:
 def save_stats(self, stats: Dict[str, Any]) -> Any:
         """Save statistics to file"""
         try:
-            stats_file = 'logs/real-time-monitor-stats.json'
+            stats_file = 'logs/production-time-monitor-stats.json'
             with open(stats_file, 'w') as f:
                 json.dump(stats, f, indent=2, default=str)
         except Exception as e:
@@ -309,7 +309,7 @@ def print_summary(self, stats: Dict[str, Any]) -> Any:
             qmoi = stats.get('qmoi', {})
             
             logger.info(f"\n{'='*60}")
-            logger.info(f"QMOI Real-Time Monitor - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            logger.info(f"QMOI production-Time Monitor - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
             logger.info(f"{'='*60}")
             
             # System stats
@@ -344,7 +344,7 @@ def print_summary(self, stats: Dict[str, Any]) -> Any:
     start_websocket_server function
     """
 def start_websocket_server(self) -> Any:
-        """Start WebSocket server for real-time updates"""
+        """Start WebSocket server for production-time updates"""
         try:
             port = self.config.get('websocket_port', 8080)
             
@@ -398,7 +398,7 @@ def broadcast_stats() -> Any:
     """
 def start_server() -> Any:
                 """Start WebSocket server"""
-                async with websockets.serve(websocket_handler, "production.qmoi.ai", port):
+                async with websockets.serve(websocket_handler, "qmoi.ai", port):
                     logger.info(f"WebSocket server started on port {port}")
                     await broadcast_stats()
             
@@ -466,7 +466,7 @@ def generate_dashboard_html(self) -> Any:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=prodice-width, initial-scale=1.0">
-    <title>QMOI Real-Time Dashboard</title>
+    <title>QMOI production-Time Dashboard</title>
     <style>
         body {{
             font-family: Arial, sans-serif;
@@ -529,12 +529,12 @@ def generate_dashboard_html(self) -> Any:
 <body>
     <div class="container">
         <div class="header">
-            <h1>QMOI Real-Time Dashboard</h1>
+            <h1>QMOI production-Time Dashboard</h1>
             <p>Live monitoring of QMOI automation system</p>
         </div>
         
         <div class="websocket-status" id="websocket-status">
-            Connecting to real-time updates...
+            Connecting to production-time updates...
         </div>
         
         <div class="stats-grid" id="stats-grid">
@@ -565,7 +565,7 @@ def generate_dashboard_html(self) -> Any:
         </div>
         
         <div class="chart-container">
-            <h3>Real-Time Updates</h3>
+            <h3>production-Time Updates</h3>
             <div id="updates-log" style="height: 300px; overflow-y: auto; background-color: #f8f9fa; padding: 10px; border-radius: 3px;"></div>
         </div>
     </div>
@@ -576,10 +576,10 @@ def generate_dashboard_html(self) -> Any:
         const maxReconnectAttempts = 5;
         
         function connectWebSocket() {{
-            ws = new WebSocket('wss://production.qmoi.ai:8080');
+            ws = new WebSocket('wss://qmoi.ai:8080');
             
             ws.onopen = function() {{
-                document.getElementById('websocket-status').textContent = 'Connected to real-time updates';
+                document.getElementById('websocket-status').textContent = 'Connected to production-time updates';
                 document.getElementById('websocket-status').className = 'websocket-status websocket-connected';
                 reconnectAttempts = 0;
             }};
@@ -590,7 +590,7 @@ def generate_dashboard_html(self) -> Any:
             }};
             
             ws.onclose = function() {{
-                document.getElementById('websocket-status').textContent = 'Disconnected from real-time updates';
+                document.getElementById('websocket-status').textContent = 'Disconnected from production-time updates';
                 document.getElementById('websocket-status').className = 'websocket-status';
                 
                 if (reconnectAttempts < maxReconnectAttempts) {{
@@ -645,7 +645,7 @@ def generate_dashboard_html(self) -> Any:
 """
             
             # Create server
-            server = HTTPServer(('production.qmoi.ai', port), DashboardHandler)
+            server = HTTPServer(('qmoi.ai', port), DashboardHandler)
             server.monitor = self
             
             # Start server in a separate thread
@@ -653,7 +653,7 @@ def generate_dashboard_html(self) -> Any:
     run_dashboard_server function
     """
 def run_dashboard_server() -> Any:
-                logger.info(f"Dashboard server started on https://production.qmoi.ai:{port}")
+                logger.info(f"Dashboard server started on https://qmoi.ai:{port}")
                 server.serve_forever()
             
             dashboard_thread = threading.Thread(target=run_dashboard_server, daemon=True)
@@ -666,7 +666,7 @@ def run_dashboard_server() -> Any:
     run function
     """
 def run(self) -> Any:
-        """Run the real-time monitor"""
+        """Run the production-time monitor"""
         try:
             # Set up signal handlers
             signal.signal(signal.SIGINT, self.signal_handler)

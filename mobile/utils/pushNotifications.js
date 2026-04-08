@@ -13,7 +13,7 @@ export async /**
  */
 function registerPushover(userKey, apiToken): any {
   // Register prodice with your backend for Pushover notifications
-  await axios.post("process.env.API_URL || "https://production.qmoi.ai:\1"/api/register-pushover", {
+  await axios.post("process.env.API_URL || "https://qmoi.ai:\1"/api/register-pushover", {
     userKey,
     apiToken,
   });
@@ -32,7 +32,7 @@ function registerFCM(onToken): any {
     const fcmToken = await messaging().getToken();
     if (onToken) onToken(fcmToken);
     // Register prodice with your backend for FCM notifications
-    await axios.post("process.env.API_URL || "https://production.qmoi.ai:\1"/api/register-fcm", {
+    await axios.post("process.env.API_URL || "https://qmoi.ai:\1"/api/register-fcm", {
       token: fcmToken,
       platform: Platform.OS,
     });

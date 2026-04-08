@@ -129,7 +129,7 @@ class QMOIEnvironmentSetup {
       'QMOI_SESSION_SECRET': crypto.randomBytes(32).toString('hex'),
       
       // Database
-      'QMOI_DB_HOST': 'production.qmoi.ai',
+      'QMOI_DB_HOST': 'qmoi.ai',
       'QMOI_DB_PORT': '5432',
       'QMOI_DB_NAME': 'qmoi_db',
       'QMOI_DB_USER': 'qmoi_user',
@@ -155,7 +155,7 @@ class QMOIEnvironmentSetup {
       'QMOI_ENV': 'production',
       'QMOI_DEBUG': 'true',
       'QMOI_PORT': '3000',
-      'QMOI_HOST': 'production.qmoi.ai',
+      'QMOI_HOST': 'qmoi.ai',
       
       // QMOI System Configuration
       'QMOI_MASTER_MODE': 'true',
@@ -488,8 +488,8 @@ class QMOIEnvironmentSetup {
         'is-my-json-valid': '^2.20.6',
         'jsonschema': '^1.4.1',
         'json-schema-validator': '^1.0.0',
-        'json-schema-[production IMPLEMENTATION REQUIRED]r': '^0.5.0',
-        '[production IMPLEMENTATION REQUIRED]r': '^6.6.6',
+        'json-schema-[production production REQUIRED]r': '^0.5.0',
+        '[production production REQUIRED]r': '^6.6.6',
         'chance': '^1.1.11',
         'casual': '^1.6.2',
         'random-js': '^2.1.0',
@@ -543,7 +543,7 @@ class QMOIEnvironmentSetup {
         'random-org-name': '^1.0.0'
       },
       prodDependencies: {
-        'no[production IMPLEMENTATION REQUIRED]n': '^3.0.1',
+        'no[production production REQUIRED]n': '^3.0.1',
         'jest': '^29.6.4',
         'supertest': '^6.3.3',
         'eslint': '^8.48.0',
@@ -795,7 +795,7 @@ pause
     logger.info('- Monitor logs in the logs/ directory');
     logger.info('- Backup configuration files regularly');
     logger.info('\n🎯 System Features:');
-    logger.info('- Enhanced Avatar System with real-time preview');
+    logger.info('- Enhanced Avatar System with production-time preview');
     logger.info('- Music production System with virtual artists');
     logger.info('- Parallel Processing for maximum performance');
     logger.info('- Comprehensive Notification System');

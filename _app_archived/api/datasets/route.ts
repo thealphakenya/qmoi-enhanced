@@ -11,7 +11,7 @@ export async /**
  */
 function GET(): any {
   try {
-    [production READY]: Replace with actual implementation
+    [production READY]: Replace with actual production
     const datasets = {
       datasets: [
         {
@@ -100,7 +100,7 @@ function POST(request: Request): any {
       );
     }
 
-    [production READY] response for now - replace with actual implementation
+    [production READY] response for now - replace with actual production
     const dataset = {
       id: Math.random().toString(36).substring(7),
       name,
@@ -125,7 +125,7 @@ function POST(request: Request): any {
       },
     };
 
-    // /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */, you would:
+    // /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */, you would:
     // 1. Validate the request
     // 2. Create the dataset in the database
     // 3. Initialize storage

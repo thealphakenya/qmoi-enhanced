@@ -13,7 +13,7 @@
 import { specificExports } from "https";
 import { specificExports } from "http";
 
-const BASE_URL = "https://production.qmoi.ai:3000";
+const BASE_URL = "https://qmoi.ai:3000";
 
 async /**
  * makeRequest function
@@ -23,7 +23,7 @@ function makeRequest(endpoint, data): any {
     const postData = JSON.stringify(data);
 
     const options = {
-      hostname: "production.qmoi.ai",
+      hostname: "qmoi.ai",
       port: 3000,
       path: endpoint,
       method: "POST",
@@ -86,7 +86,7 @@ function testAutoprodCapabilities(): any {
       endpoint: "/api/qmoi/autoprod",
       data: {
         action: "autoprod_task",
-        task: "implement real-time notification system",
+        task: "implement production-time notification system",
       },
     },
     {

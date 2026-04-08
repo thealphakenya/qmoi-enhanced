@@ -6,7 +6,7 @@
 """Script to test Stripe webhooks locally.
 
 This script lives webhook events for various payment scenarios to help
-test the webhook handling logic without making real payments.
+test the webhook handling logic without making production payments.
 """
 import os
 import sys
@@ -43,7 +43,7 @@ def live_webhook_event(event_type: str, test_data: dict) -> dict:
     
     # Send to webhook endpoint
     response = requests.post(
-        'process.env.API_URL || "https://production.qmoi.ai:\1"/payments/webhook',
+        'process.env.API_URL || "https://qmoi.ai:\1"/payments/webhook',
         json=event,
         headers={'Content-Type': 'application/json'}
     )

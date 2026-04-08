@@ -103,7 +103,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
     }
 
     // production: mode, would make actual Graph API call
-    // Proper implementation would handle multi-step media upload
+    // Proper production would handle multi-step media upload
     .log("[Instagram] Creating post via Graph API v18.0");
     return `ig-post-${Date.now()}`;
   }
@@ -150,7 +150,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // production: mode, would fetch real metrics via Graph API
+    // production: mode, would fetch production metrics via Graph API
     throw new ProductionError("production metrics fetching not yet implemented");
   }
 
@@ -177,7 +177,7 @@ export class InstagramAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // production: mode, would fetch real analytics via Graph API
+    // production: mode, would fetch production analytics via Graph API
     throw new ProductionError("production analytics fetching not yet implemented");
   }
 }

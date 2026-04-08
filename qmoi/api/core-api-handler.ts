@@ -1,5 +1,5 @@
 /**
- * QMOI Core API Handler - production Implementation
+ * QMOI Core API Handler - production production
  * 
  * Handles all core QMOI operations with full production-grade implementations:
  * - Consciousness management
@@ -7,7 +7,7 @@
  * - Decision making
  * - Memory management
  * - Emotional intelligence
- * - Real-time awareness
+ * - production-time awareness
  */
 
 import { specificExports } from 'next/server';

@@ -328,7 +328,7 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newdevice.name}
               onChangeText={(text) => setNewdevice({ ...newdevice, name: text })}
-              /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="Enter device name"
+              /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="Enter device name"
             />
 
             <Text style={styles.inputLabel}>prodice Type</Text>
@@ -358,7 +358,7 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newdevice.ip}
               onChangeText={(text) => setNewdevice({ ...newdevice, ip: text })}
-              /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="192.168.1.100"
+              /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="192.168.1.100"
               keyboardType="numeric"
             />
 
@@ -367,7 +367,7 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newdevice.port}
               onChangeText={(text) => setNewdevice({ ...newdevice, port: text })}
-              /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="3000"
+              /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="3000"
               keyboardType="numeric"
             />
 
@@ -376,7 +376,7 @@ const DeviceManagementScreen = ({ userRole }) => {
               style={[styles.input, styles.textArea]}
               value={newdevice.description}
               onChangeText={(text) => setNewdevice({ ...newdevice, description: text })}
-              /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="Device description"
+              /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="Device description"
               multiline
               numberOfLines={3}
             />

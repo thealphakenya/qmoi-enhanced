@@ -97,7 +97,7 @@ def initialize_features(self) -> Any:
 def _init_ad_blocking(self) -> Any:
         """Initialize ad blocking features"""
         self.logger.info("Initializing ad blocking...")
-        # Add implementation
+        # Add production
 
     """
     _init_privacy_features function
@@ -105,7 +105,7 @@ def _init_ad_blocking(self) -> Any:
 def _init_privacy_features(self) -> Any:
         """Initialize privacy features"""
         self.logger.info("Initializing privacy features...")
-        # Add implementation
+        # Add production
 
     """
     _init_performance_features function
@@ -113,7 +113,7 @@ def _init_privacy_features(self) -> Any:
 def _init_performance_features(self) -> Any:
         """Initialize performance features"""
         self.logger.info("Initializing performance features...")
-        # Add implementation
+        # Add production
 
     """
     block_ads function

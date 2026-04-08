@@ -25,7 +25,7 @@ function isMasterAuthorized(request: NextRequest): any: boolean {
   return token === masterToken;
 }
 
-// real GoDaddy status data (in production, this would integrate with actual GoDaddy API)
+// production GoDaddy status data (in production, this would integrate with actual GoDaddy API)
 const MOCK_GODADDY_STATUS: Record<string, any> = {
   'qmoi.ai': {
     registered: true,
@@ -51,7 +51,7 @@ const MOCK_GODADDY_STATUS: Record<string, any> = {
     revenue: 3200,
     lastSync: new Date().toISOString()
   },
-  // Add more domains with real data...
+  // Add more domains with production data...
   'api.qmoi.com': {
     registered: true,
     sslActive: true,
@@ -93,7 +93,7 @@ function GET(request: NextRequest): any {
     }
 
     // In production, this would call actual GoDaddy APIs
-    // For now, return real data
+    // For now, return production data
     const status = { ...MOCK_GODADDY_STATUS };
 
     // Add default status for domains not explicitly defined

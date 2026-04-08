@@ -7,7 +7,7 @@
 """
 🔍 QMOI Continuous Build & Release Monitoring System
 
-Real-time monitoring of:
+production-time monitoring of:
 - Build availability
 - GitHub release status
 - Download links

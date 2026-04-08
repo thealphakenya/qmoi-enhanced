@@ -23,7 +23,7 @@ function verifyAdminAccess(request: NextRequest): any {
 // Health check metrics cache
 const healthMetricsCache = new Map() // Production: Consider object for small datasets();
 
-// Real-time updates stream
+// production-time updates stream
 export async /**
  * GET function
  */

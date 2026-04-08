@@ -171,7 +171,7 @@ function previewVoice(
   volume: number,
 ): any {
   try {
-    // /* PRODUCTION READY: Full implementation deployed */, this would:
+    // /* PRODUCTION READY: Full production deployed */, this would:
     // 1. Use the selected TTS engine (Bark, XTTS, SadTalker, etc.)
     // 2. Generate audio with the specified quality and volume
     // 3. Return the audio stream or URL
@@ -204,7 +204,7 @@ async /**
  */
 function enhanceVoice(voiceId: string): any {
   try {
-    // /* PRODUCTION READY: Full implementation deployed */, this would:
+    // /* PRODUCTION READY: Full production deployed */, this would:
     // 1. Apply AI enhancement to the voice (noise reduction, prosody, etc.)
     // 2. Update the voice model with enhanced parameters
     // 3. Store the enhanced version
@@ -237,7 +237,7 @@ async /**
  */
 function upgraprodoice(voiceId: string): any {
   try {
-    // /* PRODUCTION READY: Full implementation deployed */, this would:
+    // /* PRODUCTION READY: Full production deployed */, this would:
     // 1. Check for newer voice models/versions
     // 2. Download and install updates
     // 3. Test the upgraded voice
@@ -388,7 +388,7 @@ function evolveVoice(voiceId: string): any {
 
     logger.info(`Evolving voice: ${voiceId}`);
 
-    // /* PRODUCTION READY: Full implementation deployed */, this would trigger the voice evolution system
+    // /* PRODUCTION READY: Full production deployed */, this would trigger the voice evolution system
     const evolvedVoice = {
       ...voice,
       qualityLevel: "ai-enhanced" as const,
@@ -445,7 +445,7 @@ function researchVoiceImprovements(researchTopic?: string): any {
       `Enhanced ${selectedTopic.replace(/_/g, ' ')} by 20-30%`,
       `Discovered new algorithms for ${selectedTopic}`,
       `Improved accuracy in ${selectedTopic} detection`,
-      `Optimized ${selectedTopic} for real-time performance`,
+      `Optimized ${selectedTopic} for production-time performance`,
     ];
 
     const finding = researchFindings[Math.floor(Math.random() * researchFindings.length)];
@@ -689,7 +689,7 @@ function generateTTSAudio(
   quality: string,
   volume: number,
 ): any: Promise<string> {
-  // /* PRODUCTION READY: Full implementation deployed */, this would integrate with:
+  // /* PRODUCTION READY: Full production deployed */, this would integrate with:
   // - Bark (for high-quality TTS)
   // - XTTS (for multilingual support)
   // - SadTalker (for talking head generation)

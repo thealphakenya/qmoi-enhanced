@@ -249,7 +249,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     }
   });
 
-  // Enhanced state for auto-evolution and real-time features
+  // Enhanced state for auto-evolution and production-time features
   const [evolutionState, setEvolutionState] = useState({
     creativityLevel: 0.8,
     intelligenceLevel: 0.9,
@@ -593,7 +593,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
       "Improved gesture prediction for natural interactions",
       "Advanced voice emotion analysis for better responses",
       "Context-aware behavior adaptation implemented",
-      "Real-time animation optimization completed",
+      "production-time animation optimization completed",
       "Voice clarity enhanced by 20%",
       "Expanded voice emotional range",
       "Implemented adaptive voice modulation",
@@ -631,7 +631,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     setTimeout(() => {
       const modifications = [
         "Enhanced avatar expression library",
-        "Improved real-time animation smoothness",
+        "Improved production-time animation smoothness",
         "Added new gesture recognition",
         "Optimized performance for QVillage",
         "Enhanced creativity algorithms",
@@ -656,7 +656,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     }, 1000 + Math.random() * 2000);
   }, []);
 
-  // Real-time animation enhancement
+  // production-time animation enhancement
   const enhanceRealTimeAnimation = useCallback(() => {
     if (!config.performanceOptimization) return;
 
@@ -680,7 +680,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     }
   }, [config.creativityMode, performAutoResearch]);
 
-  // Real-time animation enhancement cycle
+  // production-time animation enhancement cycle
   useEffect(() => {
     if (config.performanceOptimization) {
       const animationInterval = setInterval(enhanceRealTimeAnimation, 5000); // Every 5 seconds
@@ -2659,7 +2659,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
           </Button>
           <Button
             aria-label="Open Analytics Panel"
-            title="View real-time analytics and system metrics"
+            title="View production-time analytics and system metrics"
             className="qavatar-metrics-btn"
             onClick={() => setShowMetrics(true)}
           >

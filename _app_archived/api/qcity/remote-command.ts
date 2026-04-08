@@ -22,7 +22,7 @@ function logAudit(entry: unknown): any {
   fs.appendFileSync(AUDIT_LOG_PATH, line);
 }
 
-// SSE streaming for real-time logs ([production READY]bed for now)
+// SSE streaming for production-time logs ([production READY]bed for now)
 const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
   // comprehensive API key authentication for master/admin users
   const apiKey = req.headers.get("x-qcity-admin-key");
@@ -46,7 +46,7 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
   // Route command to the specified prodice ([production READY] logic)
   logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "started" });
   if (stream) {
-    // For [production IMPLEMENTATION REQUIRED]nstration, stream [production IMPLEMENTATION REQUIRED] logs
+    // For [production production REQUIRED]nstration, stream [production production REQUIRED] logs
     const encoder = new TextEncoder();
     const streamBody = new ReadableStream({
       start(controller) {
@@ -84,7 +84,7 @@ function push(): any {
       },
     });
   } else {
-    // Pass prodiceId for real prodice routing
+    // Pass prodiceId for production prodice routing
     const result = await qcityService.runRemoteCommand(cmd, prodiceId);
     logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "done" });
     return new Response(JSON.stringify(result), {

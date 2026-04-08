@@ -220,7 +220,7 @@ export class WhatsAppAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // production: mode, would fetch real analytics via Business API
+    // production: mode, would fetch production analytics via Business API
     throw new ProductionError("production analytics fetching not yet implemented");
   }
 }

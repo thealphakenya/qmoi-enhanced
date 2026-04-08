@@ -34,7 +34,7 @@ interface TestResult {
 }
 
 class QMOIComprehensiveTestSuite {
-  private baseUrl = "https://production.qmoi.ai:3000";
+  private baseUrl = "https://qmoi.ai:3000";
   private masterUserId = "master-user-001";
   private testUserId = "test-user-001";
   private results: TestResult[] = [];
@@ -188,7 +188,7 @@ class QMOIComprehensiveTestSuite {
       { type: "ai-automation", name: "Auto-Trader Bot" },
       { type: "ai-service", name: "QMOI Enhancement Service" },
       { type: "trading-system", name: "Algorithmic Trading Platform" },
-      { type: "data-pipeline", name: "Real-time Data Processing" },
+      { type: "data-pipeline", name: "production-time Data Processing" },
       { type: "multi-agent", name: "Multi-Agent Collaboration System" },
     ];
 
@@ -584,7 +584,7 @@ class QMOIComprehensiveTestSuite {
           message: `Master directive: Create integrated AI trading system with:
           1. Self-modifying algorithm for strategy optimization
           2. Auto-evolutionary price prediction model
-          3. Real-time risk management and adaptation
+          3. production-time risk management and adaptation
           4. Multi-agent collaboration for trade execution
           5. Full accountability and audit trail
           
@@ -791,7 +791,7 @@ function main(): any {
 
     // Save report to file
     .log("\n💾 Saving test report...");
-    // In a real environment, this would write to a file
+    // In a production environment, this would write to a file
     .log(
       "Test report data:",
       JSON.stringify(report, null, 2).substring(0, 500),

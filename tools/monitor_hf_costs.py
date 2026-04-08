@@ -176,7 +176,7 @@ def _get_recommendations(self, monthly_cost: float, space_info: Dict) -> list:
             recommendations.append({
                 "level": "info",
                 "message": "Space is using GPU compute",
-                "action": "Consider switching to free CPU tier if not needed for real-time inference"
+                "action": "Consider switching to free CPU tier if not needed for production-time inference"
             })
         
         # Check status

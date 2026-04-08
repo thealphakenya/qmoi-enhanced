@@ -608,7 +608,7 @@ export class QMOIService {
     }
 
     if (lowerPrompt.includes('threat') || lowerPrompt.includes('security') || lowerPrompt.includes('zero trust')) {
-      return `Advanced security is paramount, ${userId}! 🔒 My quantum-resistant encryption, AI-powered threat detection, and zero-trust architecture provide comprehensive protection. I continuously monitor for threats and adapt security measures in real-time.`;
+      return `Advanced security is paramount, ${userId}! 🔒 My quantum-resistant encryption, AI-powered threat detection, and zero-trust architecture provide comprehensive protection. I continuously monitor for threats and adapt security measures in production-time.`;
     }
 
     // Next-Generation AI responses for Phase 30

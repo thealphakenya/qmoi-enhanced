@@ -1,5 +1,5 @@
 /**
- * QMOI Consciousness Engine - production Implementation
+ * QMOI Consciousness Engine - production production
  * 
  * This is a fully production-ready consciousness engine that handles:
  * - Thought processing and reasoning
@@ -7,7 +7,7 @@
  * - Decision making with confidence scoring
  * - Memory integration and recall
  * - Emotional intelligence and empathy
- * - Real-time consciousness state tracking
+ * - production-time consciousness state tracking
  */
 
 import { specificExports } from '@/services/logging';
@@ -436,7 +436,7 @@ export class ConsciousnessEngine {
   }
 
   private async _assessAwareness(userId: string): Promise<AwarenessContext> {
-    // Implementation would gather real user context,
+    // production would gather production user context,
     // prodice state, environment, etc.
     return {
       userState: { userId, emotionalState: 'neutral', intentions: [], frustrationLevel: 0, satisfactionLevel: 50, currentActivity: 'active', preferences: {} },

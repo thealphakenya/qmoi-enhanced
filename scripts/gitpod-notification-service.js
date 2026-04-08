@@ -325,7 +325,7 @@ ${gitpodUrl}
 ### QMOI Features Available:
 - Automated setup and configuration
 - Error detection and recovery
-- Real-time notifications
+- production-time notifications
 - Health monitoring
 - Git integration
 - Build automation

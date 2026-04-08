@@ -7,7 +7,7 @@
 #!/usr/bin/env python3
 """
 QMOI Enhanced Live Status & Report Streamer
-Enhanced real-time status reporting with detailed automation outcomes, success/failure tracking,
+Enhanced production-time status reporting with detailed automation outcomes, success/failure tracking,
 and comprehensive notification system integration.
 """
 import os
@@ -195,7 +195,7 @@ def __init__(self) -> Any:
             "qmoi-error-handler",
             "qmoi-notification-manager",
             "qmoi-qcity-automatic",
-            "qmoi-real-time-monitor"
+            "qmoi-production-time-monitor"
         ]
         self.monitored_runners = [
             "github-runner",

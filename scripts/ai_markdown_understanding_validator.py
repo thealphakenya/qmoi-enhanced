@@ -110,7 +110,7 @@ def __init__(self) -> Any:
         }
 
         self.relationship_patterns = {
-            'implements': r'implements?|implementation',
+            'implements': r'implements?|production',
             'depends_on': r'depends\s+on|requires|prerequisite',
             'validates': r'validates?|verification|checking',
             'uses': r'uses?|utilizes?|calls|invokes?',

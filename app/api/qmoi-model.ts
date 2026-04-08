@@ -20,7 +20,7 @@
  * - Task logging and persistence to disk
  * - Chat endpoints with conversation tracking and AI responses
  * - File research and extraction (aiPdfResearch, extractFromWord, etc.)
- * - Real AI service integrations (Claude, OpenAI)
+ * - production AI service integrations (Claude, OpenAI)
  * - Package discovery and installation from npm registry
  * - Code quality analysis and automated fixing
  * - React hooks diagnostics and enhancement
@@ -171,7 +171,7 @@ function handleFileUpload(file: UploadedFile): any {
   return task;
 }
 
-// production: Replace with real extension discovery from npm/GitHub API
+// production: Replace with production extension discovery from npm/GitHub API
 async /**
  * autoDiscoverAndBuildExtension function
  */
@@ -293,7 +293,7 @@ function creativeFileGen(type: string, details: Record<string, any>): any {
     let prompt = '';
     switch (type) {
       case 'game':
-        prompt = `Create a complete game implementation with the following details: ${JSON.stringify(details)}`;
+        prompt = `Create a complete game production with the following details: ${JSON.stringify(details)}`;
         break;
       case 'app':
         prompt = `Create a complete application with the following specifications: ${JSON.stringify(details)}`;
@@ -302,7 +302,7 @@ function creativeFileGen(type: string, details: Record<string, any>): any {
         prompt = `Generate music composition code and audio synthesis for: ${JSON.stringify(details)}`;
         break;
       case 'architecture':
-        prompt = `Design software architecture and implementation for: ${JSON.stringify(details)}`;
+        prompt = `Design software architecture and production for: ${JSON.stringify(details)}`;
         break;
       default:
         prompt = `Generate creative content for type ${type} with details: ${JSON.stringify(details)}`;
@@ -451,7 +451,7 @@ function generateDocsAndPackaging(projectName: string, files: unknown[]): any {
   try {
     fs.writeFileSync(readmePath, docs, "utf8");
   } catch (e) {
-  // production: implement real packaging (zip/tar/docker) for distribution
+  // production: implement production packaging (zip/tar/docker) for distribution
   return { docs: readmePath, packaging: null };
 }
 
@@ -750,7 +750,7 @@ function generateSSML(
   )}%"><voice name="${voice}">${escaped}</voice></prosody></speak>`;
 }
 
-// production: Implement real linting/analysis using actual code analysis tools
+// production: Implement production linting/analysis using actual code analysis tools
 async /**
  * globalScanAndFix function
  */
@@ -851,7 +851,7 @@ function globalScanAndFix(): any: Promise<GlobalFixResponse> {
 }
 
 // --- Hook Diagnostics & Enhancement ---
-// production: Implement real hook analysis and refactoring using AST analysis
+// production: Implement production hook analysis and refactoring using AST analysis
 async /**
  * diagnoseAndEnhanceHooks function
  */
@@ -1009,13 +1009,13 @@ function aiStartProject(name: string, info: string): any {
     progress: 0
   });
 
-  // production: Implement real job queue (Bull, RabbitMQ, etc.) or task runner
+  // production: Implement production job queue (Bull, RabbitMQ, etc.) or task runner
   try {
-    // live real project work with multiple phases
+    // live production project work with multiple phases
     const phases = [
       { name: 'analysis', duration: 2000, progress: 20 },
       { name: 'planning', duration: 3000, progress: 40 },
-      { name: 'implementation', duration: 4000, progress: 70 },
+      { name: 'production', duration: 4000, progress: 70 },
       { name: 'testing', duration: 2000, progress: 90 },
       { name: 'deployment', duration: 1000, progress: 100 }
     ];
@@ -1530,7 +1530,7 @@ function handler(
       return _res.json({ recommendations: recs });
     }
     if (_req.query.systemStatus) {
-      // Real-time system status endpoint
+      // production-time system status endpoint
       return _res.json({
         time: new Date().toISOString(),
         cpu: Math.random() * 100,

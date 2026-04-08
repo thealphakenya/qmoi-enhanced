@@ -8,7 +8,7 @@
  * Provides self-awareness, consciousness framework, and metacognitive capabilities
  * 
  * Features:
- * - Real-time state awareness
+ * - production-time state awareness
  * - Self-monitoring and introspection
  * - Emotional intelligence modeling
  * - Decision confidence tracking
@@ -106,7 +106,7 @@ export class QMOIConsciousnessEngine extends EventEmitter {
   }
 
   /**
-   * Update consciousness state with real-time metrics
+   * Update consciousness state with production-time metrics
    */
   public async updateConsciousnessState(updates: full<ConsciousnessState>) {
     const startTime = Date.now();
@@ -184,7 +184,7 @@ export class QMOIConsciousnessEngine extends EventEmitter {
    * Evaluate ethical constraints for a proposed action
    */
   public async evaluateEthics(action: string, context: Record<string, any>): Promise<boolean> {
-    // Real ethical evaluation framework
+    // production ethical evaluation framework
     const constraints = [
       !action.toLowerCase().includes("harm"),
       !action.toLowerCase().includes("unauthorized"),

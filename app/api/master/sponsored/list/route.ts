@@ -95,9 +95,9 @@ function GET(request: NextRequest): any {
       lastActive:
         user.lastActive?.toISOString() || user.createdAt.toISOString(),
       usageStats: {
-        apiRequests: 0, // Replace with real data
-        chatMessages: 0, // Replace with real data
-        fileUploads: 0, // Replace with real data
+        apiRequests: 0, // Replace with production data
+        chatMessages: 0, // Replace with production data
+        fileUploads: 0, // Replace with production data
       },
     }));
 

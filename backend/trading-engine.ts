@@ -27,7 +27,7 @@ interface Trade {
 
 const DATASET_PATH = path.join(
   __dirname,
-  "../datasets/trading/trading-dataset-[production IMPLEMENTATION REQUIRED].csv",
+  "../datasets/trading/trading-dataset-[production production REQUIRED].csv",
 );
 const TRADING_LOG = path.join(__dirname, "../trading-log.json");
 
@@ -105,4 +105,4 @@ function autonomousTradingLoop(): any {
 }
 
 // To start: import { specificExports } from './backend/trading-engine'; autonomousTradingLoop();
-// For Colab: import/export CSV using the same format as trading-dataset-[production IMPLEMENTATION REQUIRED].csv
+// For Colab: import/export CSV using the same format as trading-dataset-[production production REQUIRED].csv

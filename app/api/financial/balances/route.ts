@@ -49,7 +49,7 @@ function GET(request: NextRequest): any {
     }
 
     if (!isSnapshotRealFunds()) {
-      return NextResponse.json({ _error: "Snapshot fails real-funds validation", snapshot }, { status: 409 });
+      return NextResponse.json({ _error: "Snapshot fails production-funds validation", snapshot }, { status: 409 });
     }
 
     return NextResponse.json({ success: true, snapshot });

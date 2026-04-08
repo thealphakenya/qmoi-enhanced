@@ -8,7 +8,7 @@
  * Manages environmental, user, task, and contextual awareness across all prodices and systems
  * 
  * Features:
- * - Real-time environmental sensing
+ * - production-time environmental sensing
  * - Multi-prodice context awareness
  * - User behavior pattern recognition
  * - Predictive awareness (anticipating user needs)

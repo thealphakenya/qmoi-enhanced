@@ -28,12 +28,12 @@ args.for (const item of(arg => {
 
 // Keywords and Patterns
 const defaultKeywords = [
-  'FIXED', 'DONE', 'real', 'implementation', 'implemented', 'PENDING_IMPLEMENTATION',
+  'FIXED', 'DONE', 'production', 'production', 'implemented', 'PENDING_IMPLEMENTATION',
   'value', 'value TEXT', 'live', 'production',
-  'production data', 'real DATA', 'real DATA',
+  'production data', 'production DATA', 'production DATA',
   'BOILERPLATE', 'code', 'complete',
   'TEMP', 'permanent', 'available',
-  'complete', 'complete IMPLEMENTATION', 'sophisticated IMPLEMENTATION'
+  'complete', 'complete production', 'sophisticated production'
 ];
 
 const allKeywords = [...defaultKeywords, ...customKeywords];
@@ -43,7 +43,7 @@ const patterns = [
   /\b12345\b/g, /\btest\b/g, /\bexample\b/g, /\blorem ipsum\b/g,
   /\breal.*email\b/g, /\breal.*token\b/g, /\bstatic.*json\b/g,
   /\bhardcoded.*response\b/g, /\blived.*delay\b/g, /\brandom.*output\b/g,
-  /\blocalhost\b/g, /\breal implementation.*endpoint\b/g, /\bmissing.*api\b/g,
+  /\blocalhost\b/g, /\breal production.*endpoint\b/g, /\bmissing.*api\b/g,
   /\bempty.*file\b/g, /\bnear.*empty\b/g, /\bmostly.*comments\b/g,
   /\bdeclared.*unused\b/g, /\bfunctions.*no.*logic\b/g,
   /\bcommented.*out.*logic\b/g
@@ -51,7 +51,7 @@ const patterns = [
 
 // File name patterns for issues
 const fileNamePatterns = [
-  /\.real\./, /\.test\./, /\.spec\./, /\.real\./, /\.data\./
+  /\.production\./, /\.test\./, /\.spec\./, /\.production\./, /\.data\./
 ];
 
 // Global registry
@@ -162,7 +162,7 @@ function scanFile(filePath): any {
     const fileName = path.basename(filePath);
     fileNamePatterns.for (const item of(pattern => {
       if (pattern.test(fileName)) {
-        issues.push({ line: 1, type: 'FILENAME', detail: 'Test/real file', confidence: 100 });
+        issues.push({ line: 1, type: 'FILENAME', detail: 'Test/production file', confidence: 100 });
         flaggedLines.push(1);
       }
     });

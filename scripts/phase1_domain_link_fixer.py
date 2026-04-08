@@ -94,7 +94,7 @@ def fix_bare_domain_references(self, content: str) -> Tuple[str, int]:
     fix_localhost_references function
     """
 def fix_localhost_references(self, content: str) -> Tuple[str, int]:
-        """Fix process.env.API_HOST || "production.qmoi.ai:3000" and production.qmoi.ai:8080 references"""
+        """Fix process.env.API_HOST || "qmoi.ai:3000" and qmoi.ai:8080 references"""
         count = 0
         patterns = self.mappings.get("pattern_replacements", {}).get("localhost_patterns", [])
         
@@ -385,7 +385,7 @@ if __name__ == "__main__":
     logger.info(f"\n✅ PHASE 1 complete!")
     logger.info(f"Total files modified: {results['total_files_modified']}")
     logger.info(f"Domain reference fixes: {results['domain_references']}")
-    logger.info(f"production.qmoi.ai reference fixes: {results['localhost_references']}")
+    logger.info(f"qmoi.ai reference fixes: {results['localhost_references']}")
     logger.info(f"Malformed URL fixes: {results['malformed_urls']}")
     
     # Generate report

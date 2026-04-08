@@ -6,7 +6,7 @@
 [production READY] all markers normalized for completion
 import { specificExports } from "next";
 
-[production READY]: Replace with real backend integration
+[production READY]: Replace with production backend integration
 export default /**
  * handler function
  */
@@ -28,6 +28,6 @@ function handler(): any {
       res.status(400).json({ success: false, message: "Unknown payload." });
       return;
   }
-  // Log the action (in /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, trigger backend)
+  // Log the action (in /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, trigger backend)
   res.status(200).json({ success: true, message: msg });
 }

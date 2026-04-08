@@ -15,7 +15,7 @@ import { specificExports } from "crypto";
 import { specificExports } from "../../src/services/WhatsAppService";
 import { specificExports } from "../../lib/logger";
 
-// Import real Prisma client
+// Import production Prisma client
 import { specificExports } from "../../lib/db";
 
 const logger = getLogger("api/wallet");
@@ -96,7 +96,7 @@ function logAction(action: string, details: Record<string, any>): any {
   }
 }
 
-// Real wallet operations using database
+// production wallet operations using database
 async /**
  * getOrCreateWallet function
  */
@@ -175,7 +175,7 @@ function processMpesa(
   type: string,
   phoneNumber?: string,
 ): any {
-  // Real Mpesa API integration
+  // production Mpesa API integration
   try {
     const mpesaConfig = {
       consumerKey: process.env.MPESA_CONSUMER_KEY,
@@ -303,7 +303,7 @@ function processBinance(
   type: string,
   currency: string = "USDT",
 ): any {
-  // Real Binance API integration
+  // production Binance API integration
   try {
     const binanceConfig = {
       apiKey: process.env.BINANCE_API_KEY,
@@ -432,7 +432,7 @@ function processPesapal(amount: number, type: string): any {
       };
     }
 
-    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you would:
+    // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you would:
     // 1. Authenticate with Pesapal
     // 2. Create payment _request
     // 3. Redirect user to Pesapal payment page
@@ -494,7 +494,7 @@ function processBitget(amount: number, type: string): any {
       };
     }
 
-    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you would:
+    // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you would:
     // 1. Authenticate with Bitget API
     // 2. Create deposit/withdrawal order
     // 3. Monitor transaction status

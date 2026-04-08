@@ -22,7 +22,7 @@ describe('Production:', "Admin Endpoints", () => {
 
     // Create admin user
     const adminUser = await userService.create({
-      email: "admin@test.com",
+      email: "admin@qmoi.ai",
       username: "admin_test",
       passwordHash: hashedPassword,
       role: "admin",
@@ -31,7 +31,7 @@ describe('Production:', "Admin Endpoints", () => {
 
     // Create regular user
     const regularUser = await userService.create({
-      email: "user@test.com",
+      email: "user@qmoi.ai",
       username: "regular_user",
       passwordHash: hashedPassword,
       role: "user",
@@ -39,16 +39,16 @@ describe('Production:', "Admin Endpoints", () => {
     regularUserId = (regularUser as { id: string }).id;
 
     // Generate tokens
-    adminToken = authService.generateToken(adminId, "admin@test.com");
+    adminToken = authService.generateToken(adminId, "admin@qmoi.ai");
     regularUserToken = authService.generateToken(
       regularUserId,
-      "user@test.com",
+      "user@qmoi.ai",
     );
   });
 
   afterAll(async () => {
     // Cleanup is handled by in-memory storage reset between tests
-    // production: with real DB, would use: await db.prisma.user.deleteMany();
+    // production: with production DB, would use: await db.prisma.user.deleteMany();
   });
 
   describe('Production:', "Dashboard Endpoint", () => {

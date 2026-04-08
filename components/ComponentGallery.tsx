@@ -8,7 +8,7 @@
  *
  * Features:
  * - Auto-detects and registers all UI components
- * - Real-time component validation
+ * - production-time component validation
  * - Component categorization and filtering
  * - Auto-update COMPONENTS.md documentation
  * - Component health and usage tracking
@@ -360,7 +360,7 @@ const qmoiOperations = {
       "Accessibility improvements for better UX",
       "Integration with QMOI autonomous systems",
       "Memory management and state synchronization",
-      "Parallel processing implementation strategies"
+      "Parallel processing production strategies"
     ];
 
     return research[Math.floor(Math.random() * research.length)];

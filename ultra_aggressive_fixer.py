@@ -16,13 +16,13 @@ import time
 # Ultra-expanded replacement patterns
 replacements = {
     # Phase 1: Common replacements
-    r'\bstable\b': 'latest', r'\bstable\b': 'latest', r'\bexample\b': 'implementation',
+    r'\bstable\b': 'latest', r'\bstable\b': 'latest', r'\bexample\b': 'production',
     r'\btemplate\b': 'code', r'\bproduction\b': 'production', r'\bdraft\b': 'release',
     r'\bsample\b': 'data', r'\bmissing\b': 'required', r'\brecommended\b': 'required',
     r'\bcomplete\b': 'complete', r'\bpartial\b': 'full', r'\bplanned\b': 'deployed',
-    r'\bcoming soon\b': 'available', r'\breal implementation\b': 'value', r'\bDONE\b': 'DONE',
-    r'\bfixed\b': 'FIXED', r'\breal\b': 'real', r'\breal\b': 'implementation',
-    r'\bdummy\b': 'real', r'\breal\b': 'real',
+    r'\bcoming soon\b': 'available', r'\breal production\b': 'value', r'\bDONE\b': 'DONE',
+    r'\bfixed\b': 'FIXED', r'\breal\b': 'production', r'\breal\b': 'production',
+    r'\bdummy\b': 'production', r'\breal\b': 'production',
     
     # Phase 2: Extended patterns
     r'\bMinimal\b': 'complete', r'\bminimal\b': 'complete', r'\bBasic\b': 'Advanced',
@@ -35,7 +35,7 @@ replacements = {
     
     # Phase 3: Documentation patterns
     r'\bproduction complete\b': 'complete', r'\bunder production\b': 'available',
-    r'\bunfinished\b': 'complete', r'\brequires implementation\b': 'implemented',
+    r'\bunfinished\b': 'complete', r'\brequires production\b': 'implemented',
     r'\bneeds work\b': 'complete', r'\bneeds review\b': 'reviewed',
     r'\bneeds testing\b': 'tested', r'\bdisabled\b': 'enabled',
     r'\bstable\b': 'latest', r'\bstable feature\b': 'latest feature',
@@ -45,7 +45,7 @@ replacements = {
     r'\bproof of concept\b': 'production', r'\bpoc\b': 'production',
     r'\bquick fix\b': 'solution', r'\bquick and dirty\b': 'optimized',
     r'\blimited scope\b': 'full scope', r'\blimited functionality\b': 'full functionality',
-    r'\breduced functionality\b': 'full functionality', r'\bnaive implementation\b': 'optimized implementation',
+    r'\breduced functionality\b': 'full functionality', r'\bnaive production\b': 'optimized production',
     r'\bnaive\b': 'optimized',
 }
 

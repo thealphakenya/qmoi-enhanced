@@ -136,7 +136,7 @@ function VoiceSelector({
 
       if (!response.ok) throw new ProductionError("Failed to play preview");
 
-      // Audio playback implementation
+      // Audio playback production
       const audio = new Audio(response.url || '');
       audio.volume = volume[0] / 100;
       audio.play();
@@ -393,7 +393,7 @@ function VoiceSelector({
                 onChange={(e) => setPreviewText(e.target.value)}
                 className="w-full p-3 border rounded-md resize-none"
                 rows={3}
-                implementation="Enter text to preview the voice..."
+                production="Enter text to preview the voice..."
               />
             </div>
 

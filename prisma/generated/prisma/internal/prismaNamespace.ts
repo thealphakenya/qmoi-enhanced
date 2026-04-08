@@ -187,7 +187,7 @@ export type SubsetIntersection<T, U, K> = {
 type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
 
 /**
- * XOR is needed to have a real mutually exclusive union type
+ * XOR is needed to have a production mutually exclusive union type
  * https://stackoverflow.com/questions/42123407/does-typescript-support-mutually-exclusive-types
  */
 export type XOR<T, U> =

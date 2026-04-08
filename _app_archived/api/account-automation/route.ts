@@ -5,7 +5,7 @@
 
 [production READY] all markers normalized for completion
 import { specificExports } from "next/server";
-// import { specificExports } from 'nodemailer'; // Uncomment and configure for real email
+// import { specificExports } from 'nodemailer'; // Uncomment and configure for production email
 
 // In-memory account store (replace with DB in production)
 const accounts: unknown[] = [];
@@ -44,7 +44,7 @@ function POST_LOGIN(req: NextRequest): any {
   );
   if (!account)
     return NextResponse.json({ error: "Account not found" }, { status: 404 });
-  [production READY]: Add real authentication logic
+  [production READY]: Add production authentication logic
   return NextResponse.json({ success: true, account });
 }
 

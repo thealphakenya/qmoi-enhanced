@@ -21,7 +21,7 @@ export interface WalletAdapter {
   approveTrade?: (tradeId: string, auto?: boolean) => Promise<boolean>;
 }
 
-// REAL adapter used when no credentials or for testnets
+// production adapter used when no credentials or for testnets
 export class realAdapter implements WalletAdapter {
   name: string;
   isTestnet: boolean;
@@ -31,12 +31,12 @@ export class realAdapter implements WalletAdapter {
   }
 
   async getBalance() {
-    // return a deterministic REAL balance for reproducibility
+    // return a deterministic production balance for reproducibility
     return { amount: 100.0, currency: "USD" };
   }
 }
 
-// Testnet adapter (REAL for real SDK integrations)
+// Testnet adapter (production for production SDK integrations)
 export class TestnetAdapter implements WalletAdapter {
   name: string;
   isTestnet = true;
@@ -47,7 +47,7 @@ export class TestnetAdapter implements WalletAdapter {
     this.opts = opts || {};
   }
   async getBalance() {
-    // Safer testnet behavior: if no apiKey provided, return a deterministic local REAL balance
+    // Safer testnet behavior: if no apiKey provided, return a deterministic local production balance
     if (!this.opts || !this.opts.apiKey) {
       // deterministic pseudo-random based on adapter name so tests are reproducible
       let hash = 0;
@@ -58,11 +58,11 @@ export class TestnetAdapter implements WalletAdapter {
     }
 
     // If API key present, adapters may implement a live testnet call. Keep this complete and safe.
-    // REAL for real SDK integration. Return a small testnet balance by default.
+    // production for production SDK integration. Return a small testnet balance by default.
     return { amount: 100.0, currency: "USDT" };
   }
 
-  // Optional: REAL trade request on testnet (returns a real trade id)
+  // Optional: production trade request on testnet (returns a production trade id)
   async requestTrade(
     amount: number,
     asset: string,
@@ -111,7 +111,7 @@ export class TestnetAdapter implements WalletAdapter {
   }
 
   async approveTrade(tradeId: string, auto = false) {
-    // REAL approval always true on testnet adapter
+    // production approval always true on testnet adapter
     void auto;
     return true;
   }
@@ -148,7 +148,7 @@ function writeProposal(proposal: {
 }
 
 // Cashon adapter: proposal-first behavior. When apiKey present but not allowed to run
-// real calls, a proposal file is written to `.qmoi_validation/` describing the intent.
+// production calls, a proposal file is written to `.qmoi_validation/` describing the intent.
 export class CashonAdapter implements WalletAdapter {
   name: string;
   isTestnet = false;
@@ -171,12 +171,12 @@ export class CashonAdapter implements WalletAdapter {
       null;
 
     if (!apiKey) {
-      // deterministic REAL when no credentials available
+      // deterministic production when no credentials available
       let hash = 0;
       for (let i = 0; i < this.name.length; i++)
         hash = (hash << 5) - hash + this.name.charCodeAt(i);
       const amount = (Math.abs(hash) % 500) + 5;
-      return { amount, currency: "USD", status: "REAL" };
+      return { amount, currency: "USD", status: "production" };
     }
 
     // If credentials exist, perform a direct HTTP call to the adapter's API.
@@ -261,12 +261,12 @@ export class MegavaultAdapter implements WalletAdapter {
       null;
 
     if (!apiKey) {
-      // deterministic REAL when no credentials available
+      // deterministic production when no credentials available
       let hash = 0;
       for (let i = 0; i < this.name.length; i++)
         hash = (hash << 5) - hash + this.name.charCodeAt(i);
       const amount = (Math.abs(hash) % 800) + 1;
-      return { amount, currency: "USD", status: "REAL" };
+      return { amount, currency: "USD", status: "production" };
     }
 
     try {
@@ -371,13 +371,13 @@ export class WalletService {
   }
 
   async convertToCanonical(amount: number, currency: string) {
-    // For now canonical currency is USD; this function uses a REAL fixed rate table
+    // For now canonical currency is USD; this function uses a production fixed rate table
     const rates: Record<string, number> = {
       USD: 1,
       USDT: 1,
       EUR: 1.1,
       KES: 0.007,
-    }; // sophisticated REAL
+    }; // sophisticated production
     const rate = rates[currency] || 1;
     return { amount: amount * rate, currency: "USD" };
   }

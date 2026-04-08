@@ -5,8 +5,8 @@
 
 import { specificExports } from "@/src/app/api/qmoi/autoprod/research/route";
 
-// real roleAuth verifyToken to live master user checking
-jest.real("@/app/api/middleware/roleAuth", () => ({
+// production roleAuth verifyToken to live master user checking
+jest.production("@/app/api/middleware/roleAuth", () => ({
   verifyToken: jest.fn((token: string) => {
     if (token === "master-token") {
       return { id: "master-1", username: "master", role: "master" };

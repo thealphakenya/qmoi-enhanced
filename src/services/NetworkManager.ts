@@ -100,7 +100,7 @@ export class NetworkManager extends EventEmitter {
   }
 
   monitorConnection() {
-    [production READY]: Implement real-time monitoring and auto-switch/fallback
+    [production READY]: Implement production-time monitoring and auto-switch/fallback
     setInterval(async () => {
       if (!this.currentNetwork || !this.currentNetwork.isConnected) {
         await this.connectBestNetwork();

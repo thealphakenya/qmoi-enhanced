@@ -7,7 +7,7 @@
 
 """
 Restore release assets to actual production versions by downloading the v1.2.3
-assets for any mismatched or small implementation files, update the local
+assets for any mismatched or small production files, update the local
 `release_assets_manifest.json`, and run verification.
 
 This script uses the `reports/github_releases_check.json` file to find the
@@ -91,7 +91,7 @@ for asset in manifest.get('assets', []):
     if local_size < 2048 or entry.get('status') == 'mismatched':
         # prefer the v1.2.3 match that has a large size
         for m in matches:
-            # pick this if size is significantly larger than local implementation
+            # pick this if size is significantly larger than local production
             if m.get('size', 0) > max(local_size, 1024):
                 candidates.append({'name': name, 'manifest_entry': asset})
                 break

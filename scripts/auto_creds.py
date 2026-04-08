@@ -8,7 +8,7 @@
 Provides safe, local, automatically-created credentials when environment
 variables are not set. Credentials are stored under `.secrets/credentials.json`
 and are created on demand. This avoids tests attempting live network calls
-when no real credentials are configured.
+when no production credentials are configured.
 """
 from __future__ import annotations
 
@@ -58,7 +58,7 @@ def ensure_default_aws() -> Any:
         aws["AWS_ACCESS_KEY_ID"] = "AKIArealEXAMPLE"
         changed = True
     if not aws.get("AWS_SECRET_ACCESS_KEY"):
-        aws["AWS_SECRET_ACCESS_KEY"] = "real-secret-key-for-tests"
+        aws["AWS_SECRET_ACCESS_KEY"] = "production-secret-key-for-tests"
         changed = True
     d["aws"] = aws
     if changed:

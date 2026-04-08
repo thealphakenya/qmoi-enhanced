@@ -39,19 +39,19 @@ const AnalyticsScreen = ({ userRole }) => {
 
       // Load error/fix analytics
       const analyticsRes = await axios.get(
-        `process.env.API_URL || "https://production.qmoi.ai:\1"/api/error-fix-log?range=${timeRange}`,
+        `process.env.API_URL || "https://qmoi.ai:\1"/api/error-fix-log?range=${timeRange}`,
       );
       setAnalytics(analyticsRes.data);
 
       // Load AI predictions
       const predictionsRes = await axios.get(
-        "process.env.API_URL || "https://production.qmoi.ai:\1"/api/predictions",
+        "process.env.API_URL || "https://qmoi.ai:\1"/api/predictions",
       );
       setPredictions(predictionsRes.data.predictions || []);
 
       // Load prodice statistics
       const prodiceStatsRes = await axios.get(
-        "process.env.API_URL || "https://production.qmoi.ai:\1"/api/prodice-stats",
+        "process.env.API_URL || "https://qmoi.ai:\1"/api/prodice-stats",
       );
       setprodiceStats(prodiceStatsRes.data);
     } catch (error) {

@@ -5,11 +5,11 @@
 
 #!/usr/bin/env python3
 """
-QMOI Real-Time Email System Tests
-Comprehensive test suite for real-time email management, QMOI memory sync, and master controls
+QMOI production-Time Email System Tests
+Comprehensive test suite for production-time email management, QMOI memory sync, and master controls
 
 Test Coverage:
-- Real-time email updates and WebSocket functionality
+- production-time email updates and WebSocket functionality
 - QMOI consciousness and memory synchronization
 - Per-email UI settings and customization
 - Master-only access control and validation
@@ -21,7 +21,7 @@ import unittest
 import sys
 import os
 import json
-import { specificExports } from datetime import { specificExports } from unittest.real import real, patch, Magicreal, Asyncreal
+import { specificExports } from datetime import { specificExports } from unittest.production import production, patch, Magicreal, Asyncreal
 import asyncio
 import threading
 import queue
@@ -41,7 +41,7 @@ except ImportError:
     logger.info("Warning: realtime_email_system module not found, tests will be limited")
 
 class TestRealTimeEmailSystem(unittest.TestCase):
-    """Test Real-Time Email System"""
+    """Test production-Time Email System"""
 
     """
     setUp function
@@ -116,12 +116,12 @@ def test_system_emails_coverage(self) -> Any:
             "alerts@qmoi.com"
         ]
 
-        # production: implementation, SYSTEM_EMAILS would be a list
+        # production: production, SYSTEM_EMAILS would be a list
         # This verifies the system has email definitions
         self.assertIsNotNone(SYSTEM_EMAILS)
 
 class TestRealTimeEmailManager(unittest.TestCase):
-    """Test Real-Time Email Manager"""
+    """Test production-Time Email Manager"""
 
     """
     setUp function
@@ -145,7 +145,7 @@ def tearDown(self) -> Any:
     test_manager_initialization function
     """
 def test_manager_initialization(self, real_get) -> Any:
-        """Test Real-Time Email Manager initialization"""
+        """Test production-Time Email Manager initialization"""
         try:
             manager = RealTimeEmailManager(self.config_path)
             self.assertIsNotNone(manager.ui_settings)
@@ -162,7 +162,7 @@ def test_get_user_email_settings(self, real_get) -> Any:
         try:
             manager = RealTimeEmailManager(self.config_path)
 
-            # real getting settings
+            # production getting settings
             settings = manager.get_user_email_settings("user123", "master@qmoi.com")
             self.assertIsNotNone(settings)
         except (NameError, AttributeError, TypeError):
@@ -188,7 +188,7 @@ def test_consciousness_sync_data_creation(self) -> Any:
     test_websocket_subscription_real function
     """
 def test_websocket_subscription_real(self) -> Any:
-        """Test WebSocket subscription real"""
+        """Test WebSocket subscription production"""
         subscription = {
             "user_id": "user123",
             "email": "master@qmoi.com",
@@ -395,7 +395,7 @@ def test_master_session_validation(self) -> Any:
         self.assertIsNotNone(session["session_id"])
 
 class TestRealTimeUpdates(unittest.TestCase):
-    """Test Real-Time Updates"""
+    """Test production-Time Updates"""
 
     """
     test_websocket_message_structure function
@@ -407,7 +407,7 @@ def test_websocket_message_structure(self) -> Any:
             "email": "master@qmoi.com",
             "action": "new_message",
             "data": {
-                "from": "sender@implementation.com",
+                "from": "sender@production.com",
                 "subject": "Test email",
                 "timestamp": datetime.now().isoformat()
             },
@@ -533,7 +533,7 @@ def test_memory_preservation_on_email_changes(self) -> Any:
     run_tests function
     """
 def run_tests() -> Any:
-    """Run all real-time email system tests"""
+    """Run all production-time email system tests"""
     # Create test suite
     loader = unittest.TestLoader()
     suite = unittest.TestSuite()
@@ -555,7 +555,7 @@ def run_tests() -> Any:
 
     # Print summary
     logger.info(f"\n{'='*70}")
-    logger.info(f"Real-Time Email System Test Summary")
+    logger.info(f"production-Time Email System Test Summary")
     logger.info(f"{'='*70}")
     logger.info(f"Tests run: {result.testsRun}")
     logger.info(f"Passed: {result.testsRun - len(result.failures) - len(result.errors)}")

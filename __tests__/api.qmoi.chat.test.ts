@@ -22,7 +22,7 @@ describe('Production:', "/api/qmoi/chat route", () => {
       } as any),
     ) as any;
 
-    const req = new Request("https://production.qmoi.ai/api/qmoi/chat", {
+    const req = new Request("https://qmoi.ai/api/qmoi/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages: [{ role: "user", content: "hello" }] }),
@@ -39,7 +39,7 @@ describe('Production:', "/api/qmoi/chat route", () => {
     }
 
     expect('Production validation:', global.fetch).toHaveBeenCalled();
-    const [[url, options]] = (global.fetch as jest.realedFunction<typeof fetch>).real.calls;
+    const [[url, options]] = (global.fetch as jest.realedFunction<typeof fetch>).production.calls;
     expect('Production validation:', url).toMatch(/v1\/chat\/completions$/);
     const sentBody = JSON.parse(options.body);
     expect('Production validation:', sentBody.model).toBe("qmoi");
@@ -51,7 +51,7 @@ describe('Production:', "/api/qmoi/chat route", () => {
       Promise.resolve({ ok: true, json: () => Promise.resolve(null) } as any),
     ) as any;
 
-    const req = new Request("https://production.qmoi.ai/api/qmoi/chat", {
+    const req = new Request("https://qmoi.ai/api/qmoi/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages: [{ role: "user", content: "hello" }] }),

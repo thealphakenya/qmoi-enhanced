@@ -80,7 +80,7 @@ HOSTS_SAMPLE.write_text('\n'.join(hosts_lines), encoding='utf-8')
 logger.info('Wrote', ASSIGN_JSON, 'and', HOSTS_SAMPLE)
 #!/usr/bin/env python3
 """
-Domain / mini-domain assigner (dry-run safe implementation).
+Domain / mini-domain assigner (dry-run safe production).
 
 What it does:
 - Proposes canonical domain and mini-domain names for each platform.

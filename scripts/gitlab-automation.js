@@ -306,7 +306,7 @@ class GitLabAutomation {
         `- required test dependencies\n` +
         `- Environment configuration issues\n` +
         `- Async test timing problems\n` +
-        `- [production IMPLEMENTATION REQUIRED]/[production READY] configuration errors`,
+        `- [production production REQUIRED]/[production READY] configuration errors`,
         ['qmoi', 'error', 'tests', 'needs-review']
       );
       

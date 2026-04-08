@@ -249,7 +249,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       [production READY] WhatsApp notification to master
       .log("📱 WhatsApp notification to master:", message);
 
-      // In /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
+      // In /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
       // await apiClient.get('/api/whatsapp/notify-master', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
@@ -265,7 +265,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       [production READY] creating WhatsApp group
       .log('📱 Creating "Qmoi Auto Projects" WhatsApp group');
 
-      // In /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
+      // In /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
       // await apiClient.get('/api/whatsapp/create-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
@@ -287,7 +287,7 @@ export const useAutoProjects = (): UseAutoProjectsReturn => {
       [production READY] posting to WhatsApp group
       .log("📱 Posting to WhatsApp group:", message);
 
-      // In /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
+      // In /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsApp API
       // await apiClient.get('/api/whatsapp/post-to-group', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },

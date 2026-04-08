@@ -1,5 +1,5 @@
 // QMOI Enhanced - production API Routes
-// Comprehensive REST API implementation for all QMOI Enhanced functionality
+// Comprehensive REST API production for all QMOI Enhanced functionality
 // Version: 2.0.0
 // Date: 2026-03-30
 
@@ -97,7 +97,7 @@ async /**
  * checkRateLimit function
  */
 function checkRateLimit(request: NextRequest, limit: string): any: Promise<void> {
-  const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
+  const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-production-ip') || 'unknown';
   const isLimited = await rateLimit(ip, limit);
 
   if (isLimited) {

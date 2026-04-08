@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [production READY]
-# IMPLEMENTED: 2 implementation(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
+# IMPLEMENTED: 2 production(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
 import os
 import json
 import { specificExports } from datetime import datetime, timezone
@@ -72,8 +72,8 @@ def generate_build_matrix(report) -> Any:
             lines.append(f"| {label:<16} | ✅ SUCCESS   | ✅ PASS      |")
         elif status == "failed":
             lines.append(f"| {label:<16} | ❌ FAILED    | ❌ FAIL      |")
-        elif status == "[production IMPLEMENTATION REQUIRED]_used":
-            lines.append(f"| {label:<16} | ⚠️ [production IMPLEMENTATION REQUIRED] | ❌ FAIL      |")
+        elif status == "[production production REQUIRED]_used":
+            lines.append(f"| {label:<16} | ⚠️ [production production REQUIRED] | ❌ FAIL      |")
         elif status == "error":
             lines.append(f"| {label:<16} | ❌ ERROR     | ❌ FAIL      |")
         else:

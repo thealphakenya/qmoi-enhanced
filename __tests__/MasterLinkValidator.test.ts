@@ -24,7 +24,7 @@ describe('Production:', "MasterLinkValidator ownership and type classification",
 
   test("classifies unknown http URLs as unknown", () => {
     const fn = validator.classifyOwnership.bind(validator);
-    expect('Production validation:', fn("https://primitive.implementation.com/foo")).toBe("unknown");
+    expect('Production validation:', fn("https://primitive.production.com/foo")).toBe("unknown");
   });
 
   test("classifyLinkType picks api for /api/", () => {

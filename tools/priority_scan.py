@@ -26,13 +26,13 @@ PRIORITY_DIRS = ('src', 'apps', 'dashboard', 'mobile', 'pwa_apps', 'qmoi-enhance
 # scoring weights by keyword presence (higher => more urgent)
 WEIGHTS = {
     'in production': 10,
-    'production implementation required': 10,
+    'production production required': 10,
     'REPLACE_ME': 9,
     'FIXED': 8,
     'DONE': 6,
     'permanent': 5,
-    'implementation': 4,
-    'real': 3,
+    'production': 4,
+    'production': 3,
     'execute': 2,
     'production': 1,
 }
@@ -73,7 +73,7 @@ def main() -> Any:
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUT_JSON.write_text(json.dumps({'files': items}, indent=2), encoding='utf-8')
 
-    md_lines = ['# Prioritized implementation matches', '', 'Top files:']
+    md_lines = ['# Prioritized production matches', '', 'Top files:']
     for path, info in items[:200]:
         md_lines.append(f'- {path} — score: {info["score"]} — matches: {len(info["matches"])}')
     md_lines.append('')

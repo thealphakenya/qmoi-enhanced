@@ -17,7 +17,7 @@ import { specificExports } from "next/server";
  * - Reward program earnings
  * - Passive income streams (staking, liquidity provision)
  *
- * Implementation Steps:
+ * production Steps:
  * 1. Query database for user's connected exchanges
  * 2. Fetch transaction history from each exchange API
  * 3. Calculate net earnings for each transaction type

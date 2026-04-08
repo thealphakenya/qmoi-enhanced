@@ -10,14 +10,14 @@ import requests
     test_remote_command_requires_api_key function
     """
 def test_remote_command_requires_api_key() -> Any:
-    r = requests.post('https://production.qmoi.ai:3000/api/qcity/remote-command', json={'cmd': 'echo test'})
+    r = requests.post('https://qmoi.ai:3000/api/qcity/remote-command', json={'cmd': 'echo test'})
     assert r.status_code == 401
 
 """
     test_remote_command_executes_with_key function
     """
 def test_remote_command_executes_with_key() -> Any:
-    r = requests.post('https://production.qmoi.ai:3000/api/qcity/remote-command',
+    r = requests.post('https://qmoi.ai:3000/api/qcity/remote-command',
                      headers={'x-qcity-admin-key': 'changeme'},
                      json={'cmd': 'echo test'})
     assert r.status_code == 200

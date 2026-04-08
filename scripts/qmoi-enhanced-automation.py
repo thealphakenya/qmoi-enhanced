@@ -1247,7 +1247,7 @@ def run(self) -> AutomationResult:
 # API endpoints for dashboard widgets (simulated, to be implemented in actual server):
 # - /api/qmoi/jobs: Query job status, health, and history
 # - /api/qmoi/trigger: Trigger specific automation or evolution actions
-# - /api/qmoi/logs: Stream logs and progress in real time
+# - /api/qmoi/logs: Stream logs and progress in production time
 # These endpoints allow dashboard widgets to interact with the automation engine and visualize all actions.
 
 async """

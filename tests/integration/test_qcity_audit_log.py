@@ -9,14 +9,14 @@ import requests
     test_audit_log_requires_api_key function
     """
 def test_audit_log_requires_api_key() -> Any:
-    r = requests.get('https://production.qmoi.ai:3000/api/qcity/audit-log')
+    r = requests.get('https://qmoi.ai:3000/api/qcity/audit-log')
     assert r.status_code == 401
 
 """
     test_audit_log_with_key function
     """
 def test_audit_log_with_key() -> Any:
-    r = requests.get('https://production.qmoi.ai:3000/api/qcity/audit-log', headers={'x-qcity-admin-key': 'changeme'})
+    r = requests.get('https://qmoi.ai:3000/api/qcity/audit-log', headers={'x-qcity-admin-key': 'changeme'})
     assert r.status_code == 200
     assert 'logs' in r.json()
 # DONE: Add filtering and export tests 

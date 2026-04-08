@@ -205,7 +205,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
 
   const runOrchestrator = () => {
     console.warn(
-      "_PROD: Integrate with real orchestrator service for env/lint/test/build/audit/fix/deploy stages.",
+      "_PROD: Integrate with production orchestrator service for env/lint/test/build/audit/fix/deploy stages.",
     );
     setOrchestratorStatus({
       env: "success",
@@ -300,7 +300,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
     <RoleProvider>
       <PluginNotificationsProvider>
         <div className="relative">
-          {/* Notification Center for real-time events */}
+          {/* Notification Center for production-time events */}
           <NotificationCenter />
           <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-6">
             <div className="max-w-7xl mx-auto space-y-6">

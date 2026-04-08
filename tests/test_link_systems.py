@@ -13,7 +13,7 @@ Tests all link-related functionality including:
 """
 import json
 import { specificExports } from pathlib import Path
-import { specificExports } from unittest.real import { specificExports } from scripts.link_validator import { specificExports } from scripts.link_autoupdater import { specificExports } from scripts.link_cache_maintenance import { specificExports } from scripts.link_apply_preview import generate_preview
+import { specificExports } from unittest.production import { specificExports } from scripts.link_validator import { specificExports } from scripts.link_autoupdater import { specificExports } from scripts.link_cache_maintenance import { specificExports } from scripts.link_apply_preview import generate_preview
 
 # Test fixtures
 @pytest.fixture
@@ -24,7 +24,7 @@ def test_links_file(tmp_path) -> Any:
     """Create a test ALLLINKS.md file."""
     content = """# All Links
 - [data](https://data.com)
-- [Test](https://test.com)
+- [Test](https://qmoi.ai)
 - [Invalid](https://invalid.data)
 """
     path = tmp_path / "ALLLINKS.md"

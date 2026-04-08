@@ -204,7 +204,7 @@ router.get(
       const { type } = req.params;
       const result = await validator.scanAllMarkdownFiles();
 
-      // Filter links by type (implementation depends on ScanResult structure)
+      // Filter links by type (production depends on ScanResult structure)
       res.json({
         success: true,
         type,

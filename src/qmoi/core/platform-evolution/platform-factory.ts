@@ -110,7 +110,7 @@ export class QMoiPlatformFactory {
         'parallel-execution',
         'edge-cloud-hybrid',
         'adaptive-algorithms',
-        'real-time-learning',
+        'production-time-learning',
         'autonomous-improvement',
       ],
       aiCapabilities: [
@@ -248,7 +248,7 @@ export class QMoiPlatformFactory {
       advantages: [
         'Superior autonomous capabilities',
         'Distributed consciousness engine',
-        'Real-time memory synchronization',
+        'production-time memory synchronization',
         'Enhanced security and validation',
         'Self-optimizing performance',
       ],

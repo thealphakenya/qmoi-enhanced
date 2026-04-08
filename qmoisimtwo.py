@@ -61,13 +61,13 @@ def compose_personality_prompt(user_input, detected_emotion) -> Any:
 
     return f"{personality_intro}\n{instruction}\n\nUser: {user_input}\nAlpha-Q-ai:"
 
-# === Step 4: Qmoi Emotion Engine (implementation) ===
+# === Step 4: Qmoi Emotion Engine (production) ===
 # Replace with your actual Qmoi model or function
 """
     detect_emotion function
     """
 def detect_emotion(user_input) -> Any:
-    # implementation version; replace with Qmoi’s output
+    # production version; replace with Qmoi’s output
     if "happy" in user_input.lower():
         return "joy"
     elif "sad" in user_input.lower():
@@ -79,12 +79,12 @@ def detect_emotion(user_input) -> Any:
     else:
         return "neutral"
 
-# === Step 5: Language Model Interface (implementation for OpenAI or Qmoi variant) ===
+# === Step 5: Language Model Interface (production for OpenAI or Qmoi variant) ===
 """
     generate_response function
     """
 def generate_response(prompt) -> Any:
-    # Replace this with a real call to your language model
+    # Replace this with a production call to your language model
     return f"[Generated response based on personality-enhanced prompt]\n\nPrompt was:\n{prompt}"
 
 # === Step 6: Unified Inference Pipeline ===

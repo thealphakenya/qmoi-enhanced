@@ -144,7 +144,7 @@ APP_URL=https://your-domain.com
 NEXT_PUBLIC_APP_URL=https://your-domain.com
 
 # Database
-DATABASE_URL=postgresql://user:password@production.qmoi.ai:5432/qmoi_db
+DATABASE_URL=postgresql://user:password@qmoi.ai:5432/qmoi_db
 DATABASE_POOL_SIZE=20
 
 # Security
@@ -443,7 +443,7 @@ QMOI_HEALTH_CHECK_INTERVAL=30000
     logger.info("   ✅ Automatic error detection and recovery");
     logger.info("   ✅ Memory-based state persistence");
     logger.info("   ✅ Self-healing capabilities");
-    logger.info("   ✅ Real-time alerting");
+    logger.info("   ✅ production-time alerting");
     logger.info("\n");
 
     logger.info("📝 View Detailed Logs:");
@@ -452,7 +452,7 @@ QMOI_HEALTH_CHECK_INTERVAL=30000
     logger.info("\n");
 
     logger.info("🎯 production Checklist:");
-    logger.info("   [ ] .env.production configured with real values");
+    logger.info("   [ ] .env.production configured with production values");
     logger.info("   [ ] Database connection verified");
     logger.info("   [ ] PM2 processes running (pm2 list)");
     logger.info("   [ ] Health monitor active (pm2 logs qmoi-health-monitor)");

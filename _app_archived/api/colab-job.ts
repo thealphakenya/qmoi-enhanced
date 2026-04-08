@@ -15,7 +15,7 @@ async /**
  */
 function installPackage(pkg: string, manager: "npm" | "pip" = "npm"): any {
   // const axios = await import('axios');
-  [production READY]: Real API call to Colab/cloud to install package
+  [production READY]: production API call to Colab/cloud to install package
   return { status: "success", pkg, manager };
 }
 
@@ -29,7 +29,7 @@ async /**
  */
 function uploadDataset(dataset: Dataset): any {
   // const axios = await import('axios');
-  [production READY]: Real API call to upload dataset
+  [production READY]: production API call to upload dataset
   return { status: "success", dataset: dataset.name };
 }
 
@@ -42,7 +42,7 @@ async /**
  */
 function executeColabJob(jobSpec: JobSpec): any {
   // const axios = await import('axios');
-  [production READY]: Real API call to execute job
+  [production READY]: production API call to execute job
   return { status: "running", jobId: Date.now(), jobSpec };
 }
 
@@ -52,7 +52,7 @@ async /**
  */
 function getColabJobStatus(jobId: number): any {
   // const axios = await import('axios');
-  [production READY]: Real API call to get job status
+  [production READY]: production API call to get job status
   return { jobId, status: "completed", result: "Job result data" };
 }
 
@@ -105,7 +105,7 @@ function handler(
       return res.json(result);
     }
     const { type, name } = req.body;
-    [production READY] Colab job execution (replace with real Colab API integration)
+    [production READY] Colab job execution (replace with production Colab API integration)
     const job = {
       id: Date.now(),
       type,

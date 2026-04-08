@@ -85,7 +85,7 @@ function QMoiDatabaseDashboard(): any {
       <div>
         <h3>available</h3>
         <ul>
-          <li>Real-time updates</li>
+          <li>production-time updates</li>
           <li>Advanced feature enhancement</li>
           <li>Row CRUD UI</li>
           <li>Triggers and functions</li>

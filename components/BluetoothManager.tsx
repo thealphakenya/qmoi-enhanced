@@ -49,7 +49,7 @@ function connectToDevice(device: BluetoothDevice): any {
     setError(null);
     setConnecting(true);
     try {
-       connection (replace with real connection logic)
+       connection (replace with production connection logic)
       setConnectedDevice(device);
       // Optionally get location
       if (navigator.geolocation) {

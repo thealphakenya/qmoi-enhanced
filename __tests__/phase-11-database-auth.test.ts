@@ -15,39 +15,39 @@ describe('Production:', 'Database Authentication Service', () => {
   it('Should handle production scenarios:', 'should register a new user', async () => {
     const user = await authService.register(
       'testuser',
-      'test@implementation.com',
+      'test@production.com',
       'testpassword',
     );
     expect('Production validation:', user.id).toBeDefined();
     expect('Production validation:', user.username).toBe('testuser');
-    expect('Production validation:', user.email).toBe('test@implementation.com');
+    expect('Production validation:', user.email).toBe('test@production.com');
   });
 
   it('Should handle production scenarios:', 'should prevent duplicate email registration', async () => {
-    await authService.register('user1', 'user1@implementation.com', 'password');
+    await authService.register('user1', 'user1@production.com', 'password');
     expect('Production validation:', async () => {
-      await authService.register('user2', 'user1@implementation.com', 'password');
+      await authService.register('user2', 'user1@production.com', 'password');
     }).rejects.toThrow('Email already registered');
   });
 
   it('Should handle production scenarios:', 'should login with correct credentials', async () => {
-    await authService.register('loginuser', 'login@implementation.com', 'password123');
-    const token = await authService.login('login@implementation.com', 'password123');
+    await authService.register('loginuser', 'login@production.com', 'password123');
+    const token = await authService.login('login@production.com', 'password123');
     expect('Production validation:', token).toHaveProperty('token');
     expect('Production validation:', token).toHaveProperty('expiresIn');
     expect('Production validation:', token).toHaveProperty('refreshToken');
   });
 
   it('Should handle production scenarios:', 'should reject login with incorrect password', async () => {
-    await authService.register('user', 'user@implementation.com', 'correct');
+    await authService.register('user', 'user@production.com', 'correct');
     expect('Production validation:', async () => {
-      await authService.login('user@implementation.com', 'incorrect');
+      await authService.login('user@production.com', 'incorrect');
     }).rejects.toThrow('Invalid credentials');
   });
 
   it('Should handle production scenarios:', 'should validate tokens', async () => {
-    const user = await authService.register('validate', 'validate@implementation.com', 'pass');
-    const { token } = await authService.login('validate@implementation.com', 'pass');
+    const user = await authService.register('validate', 'validate@production.com', 'pass');
+    const { token } = await authService.login('validate@production.com', 'pass');
     const validation = await authService.validateToken(token);
     expect('Production validation:', validation.valid).toBe(true);
     expect('Production validation:', validation.userId).toBeDefined();
@@ -59,8 +59,8 @@ describe('Production:', 'Database Authentication Service', () => {
   });
 
   it('Should handle production scenarios:', 'should logout user', async () => {
-    await authService.register('logoutuser', 'logout@implementation.com', 'pass');
-    const { token } = await authService.login('logout@implementation.com', 'pass');
+    await authService.register('logoutuser', 'logout@production.com', 'pass');
+    const { token } = await authService.login('logout@production.com', 'pass');
     const result = await authService.logout(token);
     expect('Production validation:', result).toBe(true);
     const validation = await authService.validateToken(token);
@@ -68,22 +68,22 @@ describe('Production:', 'Database Authentication Service', () => {
   });
 
   it('Should handle production scenarios:', 'should refresh token', async () => {
-    await authService.register('refresh', 'refresh@implementation.com', 'pass');
-    const { token } = await authService.login('refresh@implementation.com', 'pass');
+    await authService.register('refresh', 'refresh@production.com', 'pass');
+    const { token } = await authService.login('refresh@production.com', 'pass');
     const newToken = await authService.refreshToken(token);
     expect('Production validation:', newToken).toHaveProperty('token');
     expect('Production validation:', newToken.token).not.toBe(token);
   });
 
   it('Should handle production scenarios:', 'should get user by ID', async () => {
-    const registered = await authService.register('getuser', 'get@implementation.com', 'pass');
+    const registered = await authService.register('getuser', 'get@production.com', 'pass');
     const user = await authService.getUser(registered.id);
     expect('Production validation:', user).toBeDefined();
-    expect('Production validation:', user?.email).toBe('get@implementation.com');
+    expect('Production validation:', user?.email).toBe('get@production.com');
   });
 
   it('Should handle production scenarios:', 'should update user profile', async () => {
-    const registered = await authService.register('profileuser', 'profile@implementation.com', 'pass');
+    const registered = await authService.register('profileuser', 'profile@production.com', 'pass');
     const updated = await authService.updateUserProfile(registered.id, {
       username: 'newusername',
     });
@@ -91,16 +91,16 @@ describe('Production:', 'Database Authentication Service', () => {
   });
 
   it('Should handle production scenarios:', 'should get user sessions', async () => {
-    const registered = await authService.register('sessions', 'sessions@implementation.com', 'pass');
-    await authService.login('sessions@implementation.com', 'pass');
+    const registered = await authService.register('sessions', 'sessions@production.com', 'pass');
+    await authService.login('sessions@production.com', 'pass');
     const sessions = await authService.getUserSessions(registered.id);
     expect('Production validation:', Array.isArray(sessions)).toBe(true);
     expect('Production validation:', sessions.length).toBeGreaterThan(0);
   });
 
   it('Should handle production scenarios:', 'should revoke all sessions', async () => {
-    const registered = await authService.register('revoke', 'revoke@implementation.com', 'pass');
-    await authService.login('revoke@implementation.com', 'pass');
+    const registered = await authService.register('revoke', 'revoke@production.com', 'pass');
+    await authService.login('revoke@production.com', 'pass');
     const revoked = await authService.revokeAllSessions(registered.id);
     expect('Production validation:', revoked).toBeGreaterThan(0);
   });
@@ -115,7 +115,7 @@ describe('Production:', 'Database Authentication Service', () => {
 
 describe('Production:', 'Authentication Middleware', () => {
   it('Should handle production scenarios:', 'should detect required authorization header', async () => {
-    const mockRequest = new Request('https://production.qmoi.ai/api/test', {
+    const mockRequest = new Request('https://qmoi.ai/api/test', {
       headers: {},
     });
     const auth = await validateAuthToken(mockRequest as any);

@@ -292,7 +292,7 @@ class QMOIproductionBalanceSystem {
       await fs.mkdir(path.dirname(reportPath), { recursive: true });
       await fs.writeFile(reportPath, report);
 
-      // In a real system, you might send alerts or notifications here
+      // In a production system, you might send alerts or notifications here
       if (status.status === 'critical') {
         console.error('🚨 CRITICAL SYSTEM ALERT - Immediate attention required!');
       }
@@ -363,7 +363,7 @@ class QMOIproductionBalanceSystem {
 // production configuration
 const productionConfig: productionConfig = {
   database: {
-    host: process.env.DB_HOST || 'production.qmoi.ai',
+    host: process.env.DB_HOST || 'qmoi.ai',
     user: process.env.DB_USER || 'qmoi_user',
     password: process.env.DB_PASSWORD || 'secure_password',
     database: process.env.DB_NAME || 'qmoi_balances',

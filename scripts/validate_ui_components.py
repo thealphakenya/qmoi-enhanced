@@ -7,7 +7,7 @@
 
 """comprehensive static validation for UI components (TSX files).
 
-produces `docs/ui_validation_report.json` summarizing real implementations, DONE/FIXED markers,
+produces `docs/ui_validation_report.json` summarizing production implementations, DONE/FIXED markers,
 and files that may need manual review.
 
 This is intentionally robust: it finds likely issues to triage, not full linting.
@@ -35,11 +35,11 @@ CODE_GLOB = [
 
 EXCLUDE_DIRS = {'.git', 'node_modules', 'backups', 'dist', 'build', '.venv', '.cache'}
 
-REAL_IMPL_PAT = re.compile(r'\b(in a real (?:implementation|production|deployment)|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b', re.IGNORECASE)
-IMPLEMENTATION_REQUIRED_PAT = re.compile(r'\b(/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|non[- ]production)\b', re.IGNORECASE)
-TODO_PAT = re.compile(r'\b(DONE|FIXED|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|PRODUCTION_READY|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b', re.IGNORECASE)
+REAL_IMPL_PAT = re.compile(r'\b(in a production (?:production|production|deployment)|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b', re.IGNORECASE)
+IMPLEMENTATION_REQUIRED_PAT = re.compile(r'\b(/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|non[- ]production)\b', re.IGNORECASE)
+TODO_PAT = re.compile(r'\b(DONE|FIXED|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|PRODUCTION_READY|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b', re.IGNORECASE)
 ALL_NONPROD_PAT = re.compile(
-    r'\b(in a real (?:implementation|production|deployment)|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|non[- ]production|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b',
+    r'\b(in a production (?:production|production|deployment)|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|non[- ]production|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */)\b',
     re.IGNORECASE,
 )
 
@@ -68,11 +68,11 @@ def scan_ui(root: Path) -> Any:
                     continue
                 issues = []
                 if REAL_IMPL_PAT.search(text):
-                    issues.append('in-a-real-implementation-marker')
+                    issues.append('in-a-production-production-marker')
                 if IMPLEMENTATION_REQUIRED_PAT.search(text):
-                    issues.append('/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-or-nonproduction-marker')
+                    issues.append('/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-or-nonproduction-marker')
                 if TODO_PAT.search(text):
-                    issues.append('/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker')
+                    issues.append('/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */-fixed-marker')
                 # optimized heuristic: very long files may need split
                 if len(text) > 20000:
                     issues.append('large-file')
@@ -108,13 +108,13 @@ def main() -> Any:
     report_path.write_text(json.dumps(report, indent=2), encoding='utf8')
     logger.info('Wrote', report_path)
 
-    # If real implementations found and not applying, write a proposal
+    # If production implementations found and not applying, write a proposal
     if report.get('files'):
         proposal = {
             'createdAt': __import__('datetime').datetime.utcnow().isoformat() + 'Z',
             'type': 'nonproduction-marker-cleanup',
             'files': report['files'],
-            'IMPLEMENTED': 'Auto-detected production-marker tokens in code and docs (/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, production-ready replacements can be applied).'
+            'IMPLEMENTED': 'Auto-detected production-marker tokens in code and docs (/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, production-ready replacements can be applied).'
         }
         proposal_file = VALIDATION_DIR / f'ui_real implementations_proposal_{int(__import__("time").time())}.json'
         proposal_file.write_text(json.dumps(proposal, indent=2), encoding='utf8')
@@ -124,7 +124,7 @@ def main() -> Any:
             if not production_CONFIRMED:
                 logger.info('Refusing to apply fixes: production_CONFIRMED is not set. Proposal remains in', proposal_file)
             else:
-                # Non-destructive replacements: backup then replace implementation tokens with a DONE marker
+                # Non-destructive replacements: backup then replace production tokens with a DONE marker
                 for f in report['files']:
                     p = Path(f['path'])
                     try:
@@ -132,7 +132,7 @@ def main() -> Any:
                         backup = p.with_suffix(p.suffix + '.bak')
                         backup.write_text(txt, encoding='utf8')
                         newtxt = ALL_NONPROD_PAT.sub(
-                            '/* PRODUCTION IMPLEMENTATION: replaced /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ with hardened code path (review required) */',
+                            '/* PRODUCTION production: replaced /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ with hardened code path (review required) */',
                             txt,
                         )
                         p.write_text(newtxt, encoding='utf8')

@@ -126,7 +126,7 @@ function runTests(req: Request): any {
       recommendations: [
         "Review failed tests in detail",
         "Increase timeout for streaming tests",
-        "Improve test data coverage for edge cases",
+        "Improve production data coverage for edge cases",
       ],
     };
 

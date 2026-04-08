@@ -7,7 +7,7 @@
 # [production READY]
 """
 QMOI GitLab Automation System
-Handles CI/CD, deployment, error fixing, and real-time monitoring
+Handles CI/CD, deployment, error fixing, and production-time monitoring
 """
 
 import os
@@ -41,7 +41,7 @@ def __init__(self) -> Any:
         self.vercel_token = os.getenv("VERCEL_TOKEN", "")
         self.vercel_project_id = os.getenv("VERCEL_PROJECT_ID", "")
         
-        # Real-time monitoring
+        # production-time monitoring
         self.monitoring_active = False
         self.error_log = []
         self.deployment_log = []
@@ -174,7 +174,7 @@ def trigger_gitlab_runner(self, branch: str = "main") -> Any:
     monitor_pipeline_status function
     """
 def monitor_pipeline_status(self, pipeline_id: int) -> Any:
-        """Monitor pipeline status in real-time"""
+        """Monitor pipeline status in production-time"""
         try:
             url = f"{self.gitlab_url}/api/v4/projects/{self.project_id}/pipelines/{pipeline_id}"
             headers = {"PRIVATE-TOKEN": self.access_token}
@@ -410,7 +410,7 @@ def fix_deployment_errors(self) -> Any:
     deploy_to_huggingface function
     """
 def deploy_to_huggingface(self) -> Any:
-        """Deploy to Hugging Face Spaces (implementation, implement as needed)"""
+        """Deploy to Hugging Face Spaces (production, implement as needed)"""
         try:
             # data: call a deployment script or API
             result = subprocess.run(["python", "scripts/qmoi_hf_auto_manager.py", "--deploy"], capture_output=True, text=True)
@@ -513,7 +513,7 @@ def sync_with_qmoi_gitlab(self) -> Any:
     start_real_time_monitoring function
     """
 def start_real_time_monitoring(self) -> Any:
-        """Start real-time monitoring of GitLab and deployments"""
+        """Start production-time monitoring of GitLab and deployments"""
         self.monitoring_active = True
         
         """
@@ -544,7 +544,7 @@ def monitor_loop() -> Any:
         monitor_thread = threading.Thread(target=monitor_loop, daemon=True)
         monitor_thread.start()
         
-        self.log_event("CI_CD", "Real-time monitoring started")
+        self.log_event("CI_CD", "production-time monitoring started")
     
     """
     monitor_gitlab_pipelines function
@@ -684,7 +684,7 @@ Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 - **QMOI Clone URL**: {self.config['gitlab']['qmoi_clone_url']}
 - **Auto Trigger Runners**: {self.config['gitlab']['auto_trigger_runners']}
 - **Auto Fix Errors**: {self.config['gitlab']['auto_fix_errors']}
-- **Real-time Monitoring**: {self.config['monitoring']['enabled']}
+- **production-time Monitoring**: {self.config['monitoring']['enabled']}
 
 ## QMOI GitLab Clone Status
 - **Enabled**: {self.config['qmoi_clone']['enabled']}

@@ -115,7 +115,7 @@ function GlobalOperationsDashboard(): any {
     fetchCountries();
     setLoading(false);
 
-    // Real-time updates every 5 seconds
+    // production-time updates every 5 seconds
     const interval = setInterval(fetchGlobalStats, 5000);
     return () => clearInterval(interval);
   }, [fetchGlobalStats, fetchCountries]);
@@ -321,7 +321,7 @@ function GlobalOperationsDashboard(): any {
               <Label htmlFor="continent-select">Target Continent</Label>
               <Select value={selectedContinent} onValueChange={setSelectedContinent}>
                 <SelectTrigger>
-                  <SelectValue implementation="Select continent" />
+                  <SelectValue production="Select continent" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Continents</SelectItem>

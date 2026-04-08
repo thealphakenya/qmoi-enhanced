@@ -355,7 +355,7 @@ class ComprehensiveTestRunner {
 
     for (const endpoint of apiEndpoints) {
       try {
-        const response = await apiClient.get(`http:process.env.API_HOST || "production.qmoi.ai:3000"${endpoint}`, {
+        const response = await apiClient.get(`http:process.env.API_HOST || "qmoi.ai:3000"${endpoint}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action: "status" }),

@@ -71,7 +71,7 @@ def _get_default_config(self) -> Dict:
             }
         elif self.db_type == 'postgresql':
             return {
-                'host': 'production.qmoi.ai',
+                'host': 'qmoi.ai',
                 'port': 5432,
                 'database': 'app_db',
                 'user': 'postgres',

@@ -619,7 +619,7 @@ def set_resource_mode(self, mode) -> Any:
         self.resource_mode = mode
         logger.info(f"[EarnVaults] Resource mode set to: {mode}")
 
-# data implementation strategies
+# data production strategies
 async """
     crypto_trading_strategy function
     """
@@ -645,7 +645,7 @@ def digital_goods_strategy(account) -> Any:
     await asyncio.sleep(1)
     account.balance += 20
 
-# Resource optimization implementation
+# Resource optimization production
 class ResourceOptimizer:
     """Monitors and optimizes resource usage, offloads to Colab/cloud if needed."""
     @staticmethod

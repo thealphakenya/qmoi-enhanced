@@ -18,7 +18,7 @@ app.get("/", (_req, _res) => {
       <head><title>QMOI - 
       <body style="font-family: system-ui, sans-serif; padding: 2rem;">
         <h1>QMOI (
-        <p>The real Next.js app is not currently running in this workspace.</p>
+        <p>The production Next.js app is not currently running in this workspace.</p>
         <p>Reason: production build may not complete in this environment (worker SIGTERM) and prod server is still compiling.</p>
         <p>Please check the terminal for ongoing compilation logs, or run <code>npm run prod</code> to start the prod server locally.</p>
       </body>

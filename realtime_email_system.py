@@ -5,16 +5,16 @@
 
 #!/usr/bin/env python3
 """
-QMOI Real-Time Email System Manager
-production-ready system for real-time email management with QMOI memory and consciousness sync
+QMOI production-Time Email System Manager
+production-ready system for production-time email management with QMOI memory and consciousness sync
 
 Features:
-- Real-time UI updates for all system emails
+- production-time UI updates for all system emails
 - QMOI memory and consciousness synchronization
 - Per-email UI settings and customization
 - Master-only access with validation
 - Automatic email replacement and validation
-- WebSocket support for real-time notifications
+- WebSocket support for production-time notifications
 """
 
 import os
@@ -74,7 +74,7 @@ class EmailUISettings:
 
 @dataclass
 class EmailInstanceMetrics:
-    """Real-time metrics for email instance"""
+    """production-time metrics for email instance"""
     email: str
     emails_received_today: int = 0
     emails_sent_today: int = 0
@@ -88,7 +88,7 @@ class EmailInstanceMetrics:
     warning_count: int = 0
 
 class RealtimeEmailSystemManager:
-    """Real-time email system manager with memory and consciousness sync"""
+    """production-time email system manager with memory and consciousness sync"""
 
     """
     __init__ function
@@ -101,7 +101,7 @@ def __init__(self, config_path: str = "/etc/qmoi/realtime_email_config.json") ->
         self.email_metrics: Dict[str, EmailInstanceMetrics] = {}
         self.master_sessions: Set[str] = set()
         
-        # Real-time management
+        # production-time management
         self.active_connections: Dict[str, List] = {}
         self.update_queue = queue.Queue()
         self.event_bus = {}
@@ -322,7 +322,7 @@ def update_email_ui_settings(self, email: str, settings: Dict, session_token: st
             # Sync consciousness
             self.sync_consciousness_for_email(email)
 
-            # Broadcast real-time update
+            # Broadcast production-time update
             self.broadcast_update(email, "settings_updated", self.email_settings[email])
 
             self.save_configuration()
@@ -433,7 +433,7 @@ def test_deliverability(self, email: str) -> bool:
     broadcast_update function
     """
 def broadcast_update(self, email: str, event_type: str, data: Dict) -> Any:
-        """Broadcast real-time update to all connected clients"""
+        """Broadcast production-time update to all connected clients"""
         update = {
             "timestamp": datetime.now().isoformat(),
             "email": email,
@@ -456,7 +456,7 @@ def broadcast_update(self, email: str, event_type: str, data: Dict) -> Any:
     get_email_dashboard function
     """
 def get_email_dashboard(self, email: str, session_token: str) -> Dict:
-        """Get real-time dashboard for email - MASTER ONLY"""
+        """Get production-time dashboard for email - MASTER ONLY"""
         try:
             # Validate master access
             is_valid, msg = self.validate_master_access(session_token, "")
@@ -511,7 +511,7 @@ def get_all_emails_dashboard(self, session_token: str) -> Dict:
     stream_updates function
     """
 def stream_updates(self, email: str, session_token: str) -> Any:
-        """Stream real-time updates for email"""
+        """Stream production-time updates for email"""
         try:
             # Validate master access
             is_valid, msg = self.validate_master_access(session_token, "")
@@ -567,8 +567,8 @@ def save_configuration(self) -> Any:
     run_realtime_sync function
     """
 def run_realtime_sync(self) -> Any:
-        """Run continuous real-time synchronization"""
-        logger.info("Starting real-time email system synchronization")
+        """Run continuous production-time synchronization"""
+        logger.info("Starting production-time email system synchronization")
 
         while True:
             try:
@@ -592,7 +592,7 @@ def run_realtime_sync(self) -> Any:
                 time.sleep(30)  # Sync every 30 seconds
 
             except Exception as e:
-                logger.error(f"Real-time sync error: {e}")
+                logger.error(f"production-time sync error: {e}")
                 time.sleep(60)
 
 # API Endpoints
@@ -633,10 +633,10 @@ def auto_validate_email_api(email: str, new_config: Dict, session_token: str) ->
     )
 
 if __name__ == "__main__":
-    # implementation usage
+    # production usage
     manager = RealtimeEmailSystemManager()
 
-    # Start real-time sync in background
+    # Start production-time sync in background
     sync_thread = threading.Thread(target=manager.run_realtime_sync, daemon=True)
     sync_thread.start()
 
@@ -645,4 +645,4 @@ if __name__ == "__main__":
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
-        logger.info("Real-time email system manager shutting down")
+        logger.info("production-time email system manager shutting down")

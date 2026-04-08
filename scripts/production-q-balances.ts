@@ -222,7 +222,7 @@ Options:
 
 Description:
   Runs the production auto-update system for q/BALANCES.md
-  with QMOI consciousness validation and real-time balance tracking.
+  with QMOI consciousness validation and production-time balance tracking.
 
 Examples:
   npm run production:q-balances

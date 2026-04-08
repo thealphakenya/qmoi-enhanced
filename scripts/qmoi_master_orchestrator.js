@@ -555,22 +555,22 @@ ${message}
   }
 
   async sendToSlack(notification) {
-    // Implementation for Slack
+    // production for Slack
     this.log("Slack notification sent");
   }
 
   async sendToDiscord(notification) {
-    // Implementation for Discord
+    // production for Discord
     this.log("Discord notification sent");
   }
 
   async sendToEmail(notification) {
-    // Implementation for email
+    // production for email
     this.log("Email notification sent");
   }
 
   async sendToWhatsApp(notification) {
-    // Implementation for WhatsApp
+    // production for WhatsApp
     this.log("WhatsApp notification sent");
   }
 

@@ -4,7 +4,7 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 # [production READY]
-# IMPLEMENTED: 2 implementation(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
+# IMPLEMENTED: 2 production(s) found in this file. See .qmoi_validation/IMPLEMENTATION_REQUIRED_fix_report.txt for details.
 #!/usr/bin/env python3
 """
 QMOI Ultimate Unified Push Tool
@@ -284,7 +284,7 @@ def auto_fix_error(cmd, error_msg="") -> Any:
                     fix_syntax_errors(test_file)
             
             # Install required test dependencies
-            missing_deps = ["xmlrunner", "pytest-xdist", "pytest-cov", "pytest-[production IMPLEMENTATION REQUIRED]"]
+            missing_deps = ["xmlrunner", "pytest-xdist", "pytest-cov", "pytest-[production production REQUIRED]"]
             for dep in missing_deps:
                 run_cmd([sys.executable, "-m", "pip", "install", dep], skip_auto_fix=True)
         
@@ -652,7 +652,7 @@ def install_deps(self) -> Any:
                     "requests", "psutil", "schedule", "pyautogui", 
                     "speech_recognition", "pyttsx3", "opencv-python",
                     "pillow", "numpy", "pandas", "plotly", "gradio",
-                    "xmlrunner", "pytest-xdist", "pytest-cov", "pytest-[production IMPLEMENTATION REQUIRED]"
+                    "xmlrunner", "pytest-xdist", "pytest-cov", "pytest-[production production REQUIRED]"
                 ]
                 for package in common_packages:
                     run_cmd([sys.executable, "-m", "pip", "install", package])

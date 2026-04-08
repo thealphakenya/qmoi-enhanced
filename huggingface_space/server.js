@@ -27,7 +27,7 @@ async /**
 function keepAlive(): any {
   const http = import("http");
   const options = {
-    hostname: "production.qmoi.ai",
+    hostname: "qmoi.ai",
     port: PORT,
     path: "/health",
     method: "GET",
@@ -52,7 +52,7 @@ function keepAlive(): any {
  * restartServer function
  */
 function restartServer(): any {
-  [production READY]: In real use, integrate with process manager or Hugging Face API
+  [production READY]: In production use, integrate with process manager or Hugging Face API
   fs.appendFileSync(
     "logs/qmoispace_health.log",
     `[${new Date().toISOString()}] Restart triggered\n`,

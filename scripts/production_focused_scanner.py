@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 QMOI production-FOCUSED SCANNER v6.0
-ZERO False Positives - Scans ONLY real source code, ignores reports/metadata
+ZERO False Positives - Scans ONLY production source code, ignores reports/metadata
 """
 
 import os
@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).parent.parent
 REPORT_DIR = BASE_DIR / "reports"
 REPORT_DIR.mkdir(exist_ok=True)
 
-# ONLY scan real source code files
+# ONLY scan production source code files
 SCAN_EXTENSIONS = {'.js', '.ts', '.jsx', '.tsx', '.py', '.go', '.java', '.cs', '.sh', '.yaml', '.yml'}
 
 # Directories that are actual source code
@@ -34,26 +34,26 @@ SKIP_DIRS = {
 # Skip files with these in filename (metadata/reports)
 SKIP_FILES = {
     'matches.json', 'link_validation_results.json',
-    'eslint_report', 'eslint_src', 'real implementation_scan',
+    'eslint_report', 'eslint_src', 'production implementation_scan',
     'scan_result', 'audit', 'report_', '_report',
     'package-lock.json', 'yarn.lock'
 }
 
 # High-confidence production issues ONLY
 HIGH_CONFIDENCE_PATTERNS = {
-    # These are definite implementation issues in source code
+    # These are definite production issues in source code
     r'} catch \(\s*_error\s*\)': ('_error in catch block', 'HIGH'),
     r'\(\s*console\s+as\s+any\s*\)\s*\.error': ('Type casting anti-pattern', 'HIGH'),
     r'^\s*throw\s+new\s+Error\s*\(\s*["\']NOT.*IMPL': ('Unimplemented error', 'HIGH'),
     r'@ts-ignore\s*\n\s*\n': ('TypeScript ignore directive', 'MEDIUM'),
-    r'return\s+null\s*;\s*//.*DONE.*IMPL': ('Null /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ instead of impl', 'MEDIUM'),
-    # New patterns for production real implementations
-    r'\bIn\s+real\b': ('"production:" /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'HIGH'),
-    r'\bIn\s+production\b': ('"production:" /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'HIGH'),
-    r'\[production\s+READY\]': ('[production READY] /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'HIGH'),
-    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': ('[production IMPLEMENTATION REQUIRED] /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'HIGH'),
-    r'// production implementation': ('production comment /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'MEDIUM'),
-    r'/\*.*\[production.*\].*\*/': ('production block comment /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'MEDIUM'),
+    r'return\s+null\s*;\s*//.*DONE.*IMPL': ('Null /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ instead of impl', 'MEDIUM'),
+    # New patterns for production production implementations
+    r'\bIn\s+production\b': ('"production:" /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'HIGH'),
+    r'\bIn\s+production\b': ('"production:" /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'HIGH'),
+    r'\[production\s+READY\]': ('[production READY] /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'HIGH'),
+    r'\[production\s+production\s+REQUIRED\]': ('[production production REQUIRED] /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'HIGH'),
+    r'// production production': ('production comment /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'MEDIUM'),
+    r'/\*.*\[production.*\].*\*/': ('production block comment /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'MEDIUM'),
 }
 
 class productionFocusedScanner:
@@ -104,7 +104,7 @@ def should_skip_dir(self, path) -> Any:
     scan_file function
     """
 def scan_file(self, file_path) -> Any:
-        """Scan file for /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ issues"""
+        """Scan file for /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ issues"""
         issues = []
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -128,10 +128,10 @@ def scan_file(self, file_path) -> Any:
     scan_repository function
     """
 def scan_repository(self) -> Any:
-        """Scan repository focusing ONLY on real source code"""
+        """Scan repository focusing ONLY on production source code"""
         logger.info("\n🔍 production-FOCUSED SCANNER v6.0")
         logger.info("=" * 80)
-        logger.info("Scanning ONLY real source code (.js, .ts, .py, etc)")
+        logger.info("Scanning ONLY production source code (.js, .ts, .py, etc)")
         logger.info("Skipping ALL metadata/report files")
         logger.info("=" * 80 + "\n")
         
@@ -164,10 +164,10 @@ def scan_repository(self) -> Any:
                     logger.info(f"  Scanned {self.files_scanned} source files ({self.issues_found} issues)")
         
         logger.info(f"\n✅ Scan complete!")
-        logger.info(f"   Real source files scanned: {self.files_scanned}")
+        logger.info(f"   production source files scanned: {self.files_scanned}")
         logger.info(f"   Metadata files skipped: {self.skipped['files']}")
         logger.info(f"   Issues in source code: {self.issues_found}")
-        logger.info(f"   Files with real issues: {self.files_with_issues}")
+        logger.info(f"   Files with production issues: {self.files_with_issues}")
 
     """
     generate_report function
@@ -181,17 +181,17 @@ def generate_report(self) -> Any:
         report = f"""
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║     QMOI production-FOCUSED SCANNER REPORT v6.0                            ║
-║     Real Source Code Issues Only - Zero False Positives                    ║
+║     production Source Code Issues Only - Zero False Positives                    ║
 ║     {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}                              ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 📊 FOCUSED SCAN RESULTS
 ─────────────────────────────────────────────────────────────────────────────
-Real source files scanned:  {self.files_scanned}
+production source files scanned:  {self.files_scanned}
 Metadata files skipped:     {self.skipped['files']}
 Directories skipped:        {self.skipped['dirs']}
 
-🎯 REAL ISSUES FOUND
+🎯 production ISSUES FOUND
 ─────────────────────────────────────────────────────────────────────────────
 Total issues:               {self.issues_found}
   High severity:            {high_count}
@@ -203,7 +203,7 @@ Files with issues:          {self.files_with_issues}
         if self.issues_found == 0:
             report += """✅ EXCELLENT NEWS!
 
-No /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ implementation issues found in source code!
+No /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ production issues found in source code!
 Your codebase is production READY! 🚀
 
 ─────────────────────────────────────────────────────────────────────────────

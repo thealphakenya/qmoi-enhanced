@@ -58,7 +58,7 @@ function POST(request: NextRequest): any {
 
     const canRun =
       process.env.production_CONFIRMED === "true" &&
-      process.argv.indexOf("--real") !== -1;
+      process.argv.indexOf("--production") !== -1;
     const body = await request.json();
     const { action, avatarId, quality, engine, voiceProfile } = body;
 
@@ -158,7 +158,7 @@ function switchAvatar(avatarId: string): any {
       return NextResponse.json({ error: "Invalid avatar ID" }, { status: 400 });
     }
 
-    // Update QMOI's current avatar (/* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */, this would update the AI model)
+    // Update QMOI's current avatar (/* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */, this would update the AI model)
     // For now, we'll [production READY] this by storing in a global state or database
 
     // Log the avatar switch
@@ -194,7 +194,7 @@ async /**
  */
 function upgradeAvatar(avatarId: string): any {
   try {
-    // /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */, this would:
+    // /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */, this would:
     // 1. Check for newer avatar models/assets
     // 2. Download and install updates
     // 3. Test the upgraded avatar
@@ -229,7 +229,7 @@ function enhanceAvatar(
   engine: string,
 ): any {
   try {
-    // /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */, this would:
+    // /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */, this would:
     // 1. Apply AI enhancement to the avatar
     // 2. Update the avatar model with enhanced parameters
     // 3. Store the enhanced version
@@ -264,7 +264,7 @@ async /**
  */
 function customizeAvatar(avatarId: string, voiceProfile: string): any {
   try {
-    // /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */, this would:
+    // /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */, this would:
     // 1. Update avatar-voice pairing
     // 2. Optimize voice for the avatar
     // 3. Store the customization preferences

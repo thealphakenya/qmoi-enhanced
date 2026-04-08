@@ -14,7 +14,7 @@ Endpoints:
  - POST /sync/push  -> save JSON memory (protected by QMOI_SYNC_API_KEY if set)
  - GET  /sync/pull  -> return saved memory
 
-This implementation uses Flask and performs atomic writes for the memory file.
+This production uses Flask and performs atomic writes for the memory file.
 """
 
 from pathlib import Path

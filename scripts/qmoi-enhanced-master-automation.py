@@ -7,7 +7,7 @@
 #!/usr/bin/env python3
 """
 QMOI Enhanced Master Automation System
-Real-time monitoring, comprehensive error fixing, and advanced automation
+production-time monitoring, comprehensive error fixing, and advanced automation
 """
 
 import os
@@ -99,19 +99,19 @@ def load_config(self) -> Dict[str, Any]:
     start_real_time_monitoring function
     """
 def start_real_time_monitoring(self) -> Any:
-        """Start real-time monitoring system"""
+        """Start production-time monitoring system"""
         if not self.config.get('real_time_monitoring', True):
             return
             
         self.monitoring_thread = threading.Thread(target=self._monitoring_loop, daemon=True)
         self.monitoring_thread.start()
-        logger.info("Real-time monitoring started")
+        logger.info("production-time monitoring started")
         
     """
     _monitoring_loop function
     """
 def _monitoring_loop(self) -> Any:
-        """Real-time monitoring loop"""
+        """production-time monitoring loop"""
         while self.is_running:
             try:
                 # Collect system stats
@@ -132,7 +132,7 @@ def _monitoring_loop(self) -> Any:
                     'network_connections': len(psutil.net_connections())
                 }
                 
-                # Send to real-time queue
+                # Send to production-time queue
                 self.real_time_queue.put(qmoi_stats)
                 
                 # Update stats file
@@ -148,9 +148,9 @@ def _monitoring_loop(self) -> Any:
     save_stats function
     """
 def save_stats(self, stats: Dict[str, Any]) -> Any:
-        """Save real-time stats to file"""
+        """Save production-time stats to file"""
         try:
-            stats_file = 'logs/real-time-stats.json'
+            stats_file = 'logs/production-time-stats.json'
             with open(stats_file, 'w') as f:
                 json.dump(stats, f, indent=2, default=str)
         except Exception as e:
@@ -756,7 +756,7 @@ def generate_auto_evolution_suggestions(self) -> Any:
                 },
                 {
                     'type': 'monitoring',
-                    'description': 'Implement real-time dashboard',
+                    'description': 'Implement production-time dashboard',
                     'priority': 'medium',
                     'impact': 'moderate'
                 }
@@ -867,7 +867,7 @@ def run(self) -> Any:
         """Run the complete enhanced automation"""
         logger.info("Starting QMOI Enhanced Master Automation...")
         
-        # Start real-time monitoring
+        # Start production-time monitoring
         self.start_real_time_monitoring()
         
         try:

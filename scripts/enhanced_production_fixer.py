@@ -57,33 +57,33 @@ def fix_file(self, file_path, issues) -> Any:
 
                 # Apply specific fixes based on issue type
                 if '' in description:
-                    # Replace  with actual implementation
+                    # Replace  with actual production
                     if 'fetch from DB' in code or 'database' in code.lower():
-                        content = self.fix_database_real implementation(content, code)
-                        fixes.append(f"Replaced  database /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
+                        content = self.fix_database_real production(content, code)
+                        fixes.append(f"Replaced  database /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
                     elif 'API' in code or 'endpoint' in code.lower():
-                        content = self.fix_api_real implementation(content, code)
-                        fixes.append(f"Replaced  API /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
+                        content = self.fix_api_real production(content, code)
+                        fixes.append(f"Replaced  API /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
                     elif 'service' in code.lower():
-                        content = self.fix_service_real implementation(content, code)
-                        fixes.append(f"Replaced  service /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
+                        content = self.fix_service_real production(content, code)
+                        fixes.append(f"Replaced  service /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
                     else:
-                        content = self.fix_generic_real implementation(content, code)
-                        fixes.append(f"Replaced  generic /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
+                        content = self.fix_generic_real production(content, code)
+                        fixes.append(f"Replaced  generic /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
 
                 elif '' in description:
                     content = self.fix_implementation_required(content, code)
                     fixes.append(f"Replaced ")
 
                 elif '"production"' in description:
-                    content = self.fix_in_real_real implementation(content, code)
-                    fixes.append(f"Replaced 'production' /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
+                    content = self.fix_in_real_real production(content, code)
+                    fixes.append(f"Replaced 'production' /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
 
                 elif '"production:"' in description:
-                    content = self.fix_in_production_real implementation(content, code)
-                    fixes.append(f"Replaced 'production:' /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
+                    content = self.fix_in_production_real production(content, code)
+                    fixes.append(f"Replaced 'production:' /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */")
 
-                elif 'production comment /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */' in description:
+                elif 'production comment /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */' in description:
                     content = self.fix_production_comment(content, code)
                     fixes.append(f"Fixed production comment")
 
@@ -99,8 +99,8 @@ def fix_file(self, file_path, issues) -> Any:
         except Exception as e:
             logger.info(f"❌ Error fixing {file_path}: {e}")
 
-    def fix_database_real implementation(self, content, code):
-        """Replace database real implementations with actual implementations"""
+    def fix_database_real production(self, content, code):
+        """Replace database production implementations with actual implementations"""
         # Common database patterns
         patterns = [
             (r'\[production READY\].*fetch from DB', 'fetchFromDatabase'),
@@ -111,14 +111,14 @@ def fix_file(self, file_path, issues) -> Any:
 
         for pattern, replacement in patterns:
             if re.search(pattern, code, re.IGNORECASE):
-                # Replace the entire line or block with actual implementation
-                content = re.sub(re.escape(code.strip()), f"// {replacement}() - production implementation", content)
+                # Replace the entire line or block with actual production
+                content = re.sub(re.escape(code.strip()), f"// {replacement}() - production production", content)
                 break
 
         return content
 
-    def fix_api_real implementation(self, content, code):
-        """Replace API real implementations"""
+    def fix_api_real production(self, content, code):
+        """Replace API production implementations"""
         patterns = [
             (r'\[production READY\].*API', 'callproductionAPI'),
             (r'production.*API', 'callproductionAPI'),
@@ -132,8 +132,8 @@ def fix_file(self, file_path, issues) -> Any:
 
         return content
 
-    def fix_service_real implementation(self, content, code):
-        """Replace service real implementations"""
+    def fix_service_real production(self, content, code):
+        """Replace service production implementations"""
         patterns = [
             (r'\[production READY\].*service', 'initializeproductionService'),
             (r'production.*service', 'initializeproductionService'),
@@ -147,8 +147,8 @@ def fix_file(self, file_path, issues) -> Any:
 
         return content
 
-    def fix_generic_real implementation(self, content, code):
-        """Replace generic  real implementations"""
+    def fix_generic_real production(self, content, code):
+        """Replace generic  production implementations"""
         return re.sub(r'\[production READY\]', '
 
     """
@@ -156,14 +156,14 @@ def fix_file(self, file_path, issues) -> Any:
     """
 def fix_implementation_required(self, content, code) -> Any:
         """Replace """
-        return re.sub(r'\[production IMPLEMENTATION REQUIRED\]', '// production implementation required:', content)
+        return re.sub(r'\[production production REQUIRED\]', '// production production required:', content)
 
-    def fix_in_real_real implementation(self, content, code):
-        """Replace 'production' real implementations"""
+    def fix_in_real_real production(self, content, code):
+        """Replace 'production' production implementations"""
         return re.sub(r'production', 'production:', content)
 
-    def fix_in_production_real implementation(self, content, code):
-        """Replace 'production:' real implementations - these might already be correct"""
+    def fix_in_production_real production(self, content, code):
+        """Replace 'production:' production implementations - these might already be correct"""
         return content
 
     """
@@ -175,14 +175,14 @@ def fix_production_comment(self, content, code) -> Any:
         content = re.sub(r'
         content = re.sub(r'
 
-        # Remove production comment real implementations entirely if they're just markers
+        # Remove production comment production implementations entirely if they're just markers
         content = re.sub(r'
         content = re.sub(r'
 
         return content
 
-    def fix_in_production_real implementation(self, content, code):
-        """Replace 'production:' real implementations with proper production code"""
+    def fix_in_production_real production(self, content, code):
+        """Replace 'production:' production implementations with proper production code"""
         # Replace "in production" with actual production implementations
         if 'environment variables' in code.lower():
             content = re.sub(r'production:.*environment variables', 'production: Use environment variables from secure secret manager', content)
@@ -243,7 +243,7 @@ def run_fixes(self) -> Any:
     """
 def cleanup_duplicate_comments(self, content) -> Any:
         """Clean up duplicate and malformed production comments"""
-        # Remove lines that are just production comment real implementations
+        # Remove lines that are just production comment production implementations
         content = re.sub(r'^\s*
         content = re.sub(r'^\s*
         content = re.sub(r'^\s*

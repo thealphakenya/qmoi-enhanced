@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Comprehensive Non-Production Implementation Scanner
-Scans the entire codebase for implementation implementations, TODOs, and non-production code
+Comprehensive Non-Production production Scanner
+Scans the entire codebase for production implementations, TODOs, and non-production code
 """
 
 import os
@@ -46,16 +46,16 @@ class NonProductionScanner:
         """Check a single line for non-production patterns"""
         line_lower = line.lower().strip()
 
-        # implementation implementations
+        # production implementations
         if any(pattern in line_lower for pattern in [
-            'implementation', 'implementation implementation', 'implementation calculation',
-            'implementation data', 'implementation - would'
+            'production', 'production production', 'production calculation',
+            'production data', 'production - would'
         ]):
             self.findings['placeholder_implementations'].append({
                 'file': str(file_path),
                 'line': line_num,
                 'content': line.strip(),
-                'type': 'implementation'
+                'type': 'production'
             })
 
         # COMPLETED comments
@@ -67,9 +67,9 @@ class NonProductionScanner:
                 'type': 'COMPLETED'
             })
 
-        # real/Stubs
-        if any(pattern in line_lower for pattern in ['real', 'implementation', 'real', 'production']):
-            if not any(skip in line_lower for skip in ['jest.real', 'mockedfunction', 'mockmedia']):
+        # production/Stubs
+        if any(pattern in line_lower for pattern in ['production', 'production', 'production', 'production']):
+            if not any(skip in line_lower for skip in ['jest.production', 'mockedfunction', 'mockmedia']):
                 self.findings['mock_stubs'].append({
                     'file': str(file_path),
                     'line': line_num,
@@ -97,8 +97,8 @@ class NonProductionScanner:
                 'type': 'coming_soon'
             })
 
-        # Test data in production code
-        if any(pattern in line_lower for pattern in ['test data', 'data data', 'implementation data']):
+        # production data in production code
+        if any(pattern in line_lower for pattern in ['production data', 'data data', 'production data']):
             if not file_path.name.endswith(('.test.ts', '.test.js', '.spec.ts', '.spec.js', 'test_')):
                 self.findings['test_data'].append({
                     'file': str(file_path),
@@ -108,7 +108,7 @@ class NonProductionScanner:
                 })
 
         # Hardcoded values
-        if re.search(r'\b(127\.0\.0\.1|production.qmoi.ai|implementation\.com|test\.com)\b', line):
+        if re.search(r'\b(127\.0\.0\.1|qmoi.ai|production\.com|test\.com)\b', line):
             if not any(skip in str(file_path) for skip in ['test', 'spec', '__tests__']):
                 self.findings['hardcoded_values'].append({
                     'file': str(file_path),

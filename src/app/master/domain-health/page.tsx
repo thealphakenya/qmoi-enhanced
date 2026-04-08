@@ -279,7 +279,7 @@ function MasterDomainHealthDashboard(): any {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">🦁 Master Domain Health Dashboard</h1>
-              <p className="text-gray-600 mt-2">Real-time monitoring of all 29 QMOI domains with AI-powered intelligence</p>
+              <p className="text-gray-600 mt-2">production-time monitoring of all 29 QMOI domains with AI-powered intelligence</p>
             </div>
             <div className="flex gap-3">
               <button

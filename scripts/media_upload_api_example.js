@@ -74,7 +74,7 @@ app.delete("/api/media/:id", requireAdmin, (req, res) => {
 });
 
 app.patch("/api/media/:id", requireAdmin, express.json(), (req, res) => {
-  // For [production IMPLEMENTATION REQUIRED]: just log the tag update
+  // For [production production REQUIRED]: just log the tag update
   logAudit(`TAG ${req.params.id} -> ${JSON.stringify(req.body.tags)}`);
   res.json({ success: true });
 });
@@ -110,5 +110,5 @@ app.get("/api/media", (req, res) => {
 app.use("/media", express.static(MEDIA_DIR));
 
 app.listen(PORT, () =>
-  logger.info(`Media API running on https://production.qmoi.ai:${PORT}`),
+  logger.info(`Media API running on https://qmoi.ai:${PORT}`),
 );

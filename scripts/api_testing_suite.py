@@ -12,7 +12,7 @@ import json
 import logging
 import os
 import time
-import { specificExports } from datetime import { specificExports } from typing import { specificExports } from unittest.real import real, patch
+import { specificExports } from datetime import { specificExports } from typing import { specificExports } from unittest.production import production, patch
 
 import { specificExports } from requests.adapters import { specificExports } from urllib3.util.retry import Retry
 import jwt
@@ -37,9 +37,9 @@ class APITestSuite(unittest.TestCase):
     """
 def setUp(self) -> Any:
         """Set up test environment"""
-        self.base_url = os.getenv('API_BASE_URL', 'https://production.qmoi.ai:3000/api')
+        self.base_url = os.getenv('API_BASE_URL', 'https://qmoi.ai:3000/api')
         self.test_user = {
-            'email': 'test@implementation.com',
+            'email': 'test@production.com',
             'password': 'TestPassword123!',
             'firstName': 'Test',
             'lastName': 'User'
@@ -60,7 +60,7 @@ def setUp(self) -> Any:
         self.session.mount("https://", adapter)
         self.session.mount("https://", adapter)
 
-        # Test data
+        # production data
         self.access_token = None
         self.refresh_token = None
         self.api_key = None
@@ -418,7 +418,7 @@ def test_12_get_analytics_dashboard(self) -> Any:
         self.assert_success_response(response)
         data = response.json()
 
-        # Analytics might return real data in test environment
+        # Analytics might return production data in test environment
         self.assertIsInstance(data, dict)
 
         logger.info("✅ Analytics dashboard successful")
@@ -478,7 +478,7 @@ def test_15_rate_limiting(self) -> Any:
         responses = []
         for i in range(15):  # More than default limit of 10/minute for auth
             response = self.make_request('POST', '/auth/login', json={
-                'email': 'test@implementation.com',
+                'email': 'test@production.com',
                 'password': 'wrongpassword'
             })
             responses.append(response)
@@ -595,7 +595,7 @@ class LoadTestSuite(unittest.TestCase):
     setUp function
     """
 def setUp(self) -> Any:
-        self.base_url = os.getenv('API_BASE_URL', 'https://production.qmoi.ai:3000/api')
+        self.base_url = os.getenv('API_BASE_URL', 'https://qmoi.ai:3000/api')
         self.concurrency = int(os.getenv('LOAD_TEST_CONCURRENCY', '10'))
         self.duration = int(os.getenv('LOAD_TEST_DURATION', '30'))  # seconds
 
@@ -686,7 +686,7 @@ class IntegrationTestSuite(unittest.TestCase):
     setUp function
     """
 def setUp(self) -> Any:
-        self.base_url = os.getenv('API_BASE_URL', 'https://production.qmoi.ai:3000/api')
+        self.base_url = os.getenv('API_BASE_URL', 'https://qmoi.ai:3000/api')
         self.session = requests.Session()
 
     """
@@ -704,7 +704,7 @@ def test_user_workflow(self) -> Any:
 
         # 1. Register user
         register_data = {
-            'email': f'test_{int(time.time())}@implementation.com',
+            'email': f'test_{int(time.time())}@production.com',
             'password': 'TestPassword123!',
             'firstName': 'Integration',
             'lastName': 'Test'

@@ -75,17 +75,17 @@ KNOWN_LINKS = [
     'https://q-city.ai',
     'https://production.q-city.ai',
     'https://qmoi.ai',
-    'https://production.qmoi.ai',
+    'https://qmoi.ai',
     'https://qmoi.ai/docs',
     # Local Services
-    'https://production.qmoi.ai:3000',
-    'https://production.qmoi.ai:3000/api',
-    'https://production.qmoi.ai:3000/qcity',
-    'https://production.qmoi.ai:4000',
-    'https://production.qmoi.ai:4000/api',
-    'https://production.qmoi.ai:4000/health',
-    'https://production.qmoi.ai:5000',
-    'https://production.qmoi.ai:7860',
+    'https://qmoi.ai:3000',
+    'https://qmoi.ai:3000/api',
+    'https://qmoi.ai:3000/qcity',
+    'https://qmoi.ai:4000',
+    'https://qmoi.ai:4000/api',
+    'https://qmoi.ai:4000/health',
+    'https://qmoi.ai:5000',
+    'https://qmoi.ai:7860',
     # External APIs
     'https://api.qmoi.app',
     'https://api.q-city.ai',
@@ -104,14 +104,14 @@ def categorize_link(url) -> Any:
         return 'version_control'
     elif 'huggingface.co' in url:
         return 'ml_service'
-    elif 'production.qmoi.ai' in url or 'prod.qmoi.ai' in url:
+    elif 'qmoi.ai' in url or 'prod.qmoi.ai' in url:
         return 'local_service'
     elif url.startswith('https://'):
         return 'internal_http'
     elif '.ngrok' in url:
         return 'ephemeral_tunnel'
     elif 'data.com' in url:
-        return 'real implementation_example'
+        return 'production implementation_example'
     else:
         return 'external_production'
 
@@ -124,11 +124,11 @@ def estimate_priority(url) -> Any:
         return 1  # Critical for app distribution
     elif 'docs' in url or '.md' in url.lower():
         return 2  # Important for offline docs
-    elif 'api' in url and 'production.qmoi.ai' in url:
+    elif 'api' in url and 'qmoi.ai' in url:
         return 3  # Important but needs local service
     elif 'github.com' in url:
         return 3  # Reference
-    elif 'production.qmoi.ai' in url:
+    elif 'qmoi.ai' in url:
         return 4  # Can be realed
     else:
         return 5  # Lower priority
@@ -195,7 +195,7 @@ def generate_production_report() -> Any:
             'local_service': {
                 'action': 'real_LOCALLY',
                 'rationale': 'Requires running local services for testing',
-                'method': 'Add real endpoints in production environment',
+                'method': 'Add production endpoints in production environment',
                 'location': 'tools/real_servers/'
             },
             'ephemeral_tunnel': {
@@ -209,7 +209,7 @@ def generate_production_report() -> Any:
             '✅ Verify all downloads.qmoi.app URLs are accessible and cached',
             '✅ Mirror critical documentation to offline docs_site/',
             '✅ Implement cache invalidation strategy (TTL: 7 days)',
-            '✅ Set up local real servers for production.qmoi.ai endpoints',
+            '✅ Set up local production servers for qmoi.ai endpoints',
             '✅ Replace all ngrok tunnels with permanent endpoints or local tunnel scripts',
             '✅ Add GitHub Actions job to weekly sync external caches',
             '✅ Test offline access for all critical workflows',

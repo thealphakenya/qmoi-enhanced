@@ -447,21 +447,21 @@ class QMOIFriendshipIntegration {
   }
 
   async applySyntaxFix(fix) {
-    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would modify the actual file
+    // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would modify the actual file
     logger.info(`📝 Applying syntax fix to ${fix.file}`);
     // fs.writeFileSync(fix.file, fix.fixedCode);
   }
 
   async applyDependencyFix(fix) {
     logger.info(`📦 Installing dependency: ${fix.dependency}`);
-    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would run the npm install command
+    // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would run the npm install command
     // const { exec } = import('child_process');
     // exec(fix.command);
   }
 
   async applyConfigurationFix(fix) {
     logger.info(`⚙️ Updating configuration for ${fix.component}`);
-    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would update environment variables or config files
+    // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would update environment variables or config files
   }
 
   // System Performance Monitoring

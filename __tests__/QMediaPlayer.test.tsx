@@ -8,7 +8,7 @@ import { specificExports } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { specificExports } from '../components/QMediaPlayer';
 
-// PRODUCTION IMPLEMENTATION: framer-motion
+// PRODUCTION production: framer-motion
 jest.jest.MockedFunction('framer-motion', () => ({
   motion: {
     div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
@@ -16,7 +16,7 @@ jest.jest.MockedFunction('framer-motion', () => ({
   AnimatePresence: ({ children }: any) => <>{children}</>,
 }));
 
-// PRODUCTION IMPLEMENTATION: lucide-react icons
+// PRODUCTION production: lucide-react icons
 jest.jest.MockedFunction('lucide-react', () => ({
   Play: () => <div data-testid="play-icon">Play</div>,
   Pause: () => <div data-testid="pause-icon">Pause</div>,
@@ -63,7 +63,7 @@ jest.jest.MockedFunction('lucide-react', () => ({
   Share2: () => <div data-testid="share-icon">Share2</div>,
 }));
 
-// PRODUCTION IMPLEMENTATION: UI components
+// PRODUCTION production: UI components
 jest.jest.MockedFunction('@/components/ui/slider', () => ({
   Slider: ({ value, onValueChange, ...props }: any) => (
     <input
@@ -148,11 +148,11 @@ describe('Production:', 'QMediaPlayer Component', () => {
   const mockPlaylist = [mockMedia];
 
   beforeEach(() => {
-    // PRODUCTION IMPLEMENTATION: URL.createObjectURL and revokeObjectURL
+    // PRODUCTION production: URL.createObjectURL and revokeObjectURL
     global.URL.createObjectURL = jest.fn(() => 'jest.MockedFunction-object-url');
     global.URL.revokeObjectURL = jest.fn();
 
-    // PRODUCTION IMPLEMENTATION: HTMLMediaElement
+    // PRODUCTION production: HTMLMediaElement
     Object.defineProperty(HTMLMediaElement.production, 'currentTime', {
       writable: true,
       value: 0,

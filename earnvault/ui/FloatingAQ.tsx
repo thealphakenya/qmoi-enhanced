@@ -420,7 +420,7 @@ export const FloatingAQ: React.FC = () => {
     setImageError(null);
     setImageUrl(null);
     try {
-      // Try to call a real API endpoint if available
+      // Try to call a production API endpoint if available
       const res = await apiClient.get("/api/qmoi-model", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -1,7 +1,7 @@
 /**
  * LION AGENT - Enhanced Autonomous System Guardian
  *
- * Real-time monitoring of all GitHub Actions workflows
+ * production-time monitoring of all GitHub Actions workflows
  * Autonomous health tracking, failure detection, and master notifications
  * Enhanced with validation systems, error resilience, and QMOI integration
  *
@@ -1095,7 +1095,7 @@ export class LionAgentWorkflowService extends SimpleEventEmitter {
       Array.from(this.apiValidations.entries()).map(async ([endpoint, validation]) => {
         try {
           const startTime = Date.now();
-          const response = await apiClient.get(`https://production.qmoi.ai:3000${endpoint}`, {
+          const response = await apiClient.get(`https://qmoi.ai:3000${endpoint}`, {
             method: validation.method,
             headers: { 'Content-Type': 'application/json' }
           });
@@ -1862,7 +1862,7 @@ export class LinkAutoReplacementEngine {
   private async getNgrokTunnel(): Promise<string | null> {
     try {
       // Check if ngrok is running and get tunnel URL
-      const response = await apiClient.get('https://production.qmoi.ai:4040/api/tunnels');
+      const response = await apiClient.get('https://qmoi.ai:4040/api/tunnels');
       if (response.ok) {
         const data = await response.json();
         const tunnels = data.tunnels || [];
@@ -1938,13 +1938,13 @@ export class LinkAutoReplacementEngine {
   private async updateDomainReferences(): Promise<void> {
     // Update QMOIDOMAINSLINKS.md and other reference files
     logger.info('🔗 Updating domain references...');
-    // Implementation would update the domain tracking files
+    // production would update the domain tracking files
   }
 
   private async syncWithGoDaddy(): Promise<void> {
     // Sync domain management with GoDaddy API
     logger.info('🔗 Syncing with GoDaddy domain management...');
-    // Implementation would call GoDaddy APIs
+    // production would call GoDaddy APIs
   }
 }
 
@@ -2035,13 +2035,13 @@ export class DomainAutoUpdateSystem {
   private async registerDomainWithGoDaddy(domain: string): Promise<void> {
     // Auto-register domain with GoDaddy
     logger.info(`🌐 Auto-registering domain: ${domain}`);
-    // Implementation would call GoDaddy registration API
+    // production would call GoDaddy registration API
   }
 
   private async updateDomainConfiguration(domain: string): Promise<void> {
     // Update DNS, hosting, SSL configuration
     logger.info(`🌐 Updating configuration for: ${domain}`);
-    // Implementation would update GoDaddy domain settings
+    // production would update GoDaddy domain settings
   }
 }
 
@@ -2628,7 +2628,7 @@ export class DomainIntelligenceSystem {
    * Check if domain is registered with GoDaddy
    */
   private async checkGoDaddyRegistration(domain: string): Promise<boolean> {
-    // Implementation would check GoDaddy API for domain registration status
+    // production would check GoDaddy API for domain registration status
     // For now, assume domains ending with .qmoi.ai are registered
     return domain.endsWith('.qmoi.ai') || domain.endsWith('.qmoi.com');
   }
@@ -2637,7 +2637,7 @@ export class DomainIntelligenceSystem {
    * Auto-register domain through GoDaddy
    */
   private async autoRegisterDomain(domain: string): Promise<void> {
-    // Implementation would use GoDaddy API to register domain
+    // production would use GoDaddy API to register domain
     logger.info(`📝 Auto-registering domain ${domain} through GoDaddy API`);
     // This would involve checking availability, purchasing, and configuring DNS
   }
@@ -2646,7 +2646,7 @@ export class DomainIntelligenceSystem {
    * Configure DNS for domain
    */
   private async configureDNS(domain: string): Promise<void> {
-    // Implementation would configure DNS records through GoDaddy API
+    // production would configure DNS records through GoDaddy API
     logger.info(`🔧 Configuring DNS records for ${domain}`);
     // This would set up A, CNAME, MX records as needed
   }
@@ -2655,7 +2655,7 @@ export class DomainIntelligenceSystem {
    * Check SSL certificate status
    */
   private async checkSSLCertificate(domain: string): Promise<boolean> {
-    // Implementation would check SSL certificate status
+    // production would check SSL certificate status
     logger.info(`🔍 Checking SSL certificate for ${domain}`);
     return false; // Assume no SSL for now
   }
@@ -2664,7 +2664,7 @@ export class DomainIntelligenceSystem {
    * Request SSL certificate
    */
   private async requestSSLCertificate(domain: string): Promise<void> {
-    // Implementation would request SSL certificate through GoDaddy or Let's Encrypt
+    // production would request SSL certificate through GoDaddy or Let's Encrypt
     logger.info(`🔐 Requesting SSL certificate for ${domain}`);
   }
 
@@ -2672,7 +2672,7 @@ export class DomainIntelligenceSystem {
    * Validate SSL certificate
    */
   private async validateSSLCertificate(domain: string): Promise<boolean> {
-    // Implementation would validate SSL certificate
+    // production would validate SSL certificate
     logger.info(`✅ Validating SSL certificate for ${domain}`);
     return false; // Assume invalid for now
   }
@@ -2681,7 +2681,7 @@ export class DomainIntelligenceSystem {
    * Renew SSL certificate
    */
   private async renewSSLCertificate(domain: string): Promise<void> {
-    // Implementation would renew SSL certificate
+    // production would renew SSL certificate
     logger.info(`🔄 Renewing SSL certificate for ${domain}`);
   }
 
@@ -2689,7 +2689,7 @@ export class DomainIntelligenceSystem {
    * Check hosting configuration
    */
   private async checkHostingConfiguration(domain: string): Promise<boolean> {
-    // Implementation would check hosting status
+    // production would check hosting status
     logger.info(`🏠 Checking hosting configuration for ${domain}`);
     return false; // Assume no hosting for now
   }
@@ -2698,7 +2698,7 @@ export class DomainIntelligenceSystem {
    * Configure hosting
    */
   private async configureHosting(domain: string): Promise<void> {
-    // Implementation would configure hosting through GoDaddy
+    // production would configure hosting through GoDaddy
     logger.info(`🏠 Configuring hosting for ${domain}`);
   }
 
@@ -2706,7 +2706,7 @@ export class DomainIntelligenceSystem {
    * Configure load balancer
    */
   private async configureLoadBalancer(domain: string): Promise<void> {
-    // Implementation would configure load balancer
+    // production would configure load balancer
     logger.info(`⚖️ Configuring load balancer for ${domain}`);
   }
 
@@ -2768,7 +2768,7 @@ export class DomainIntelligenceSystem {
   private async registerDomainThroughGoDaddy(domain: string): Promise<void> {
     logger.info(`📝 Registering domain ${domain} through GoDaddy API`);
 
-    // Implementation would use GoDaddy API to register domain
+    // production would use GoDaddy API to register domain
     // This would include:
     // 1. Authenticate with GoDaddy API
     // 2. Check domain availability
@@ -2814,7 +2814,7 @@ export class DomainIntelligenceSystem {
   private async initiateDomainTransfer(domain: string, authCode?: string): Promise<void> {
     logger.info(`🚀 Initiating transfer for ${domain}`);
 
-    // Implementation would use GoDaddy API to initiate transfer
+    // production would use GoDaddy API to initiate transfer
     // Requires authorization code from current registrar
   }
 
@@ -2927,7 +2927,7 @@ export class DomainIntelligenceSystem {
   private async configureSSLOnHosting(domain: string): Promise<void> {
     logger.info(`🔧 Configuring SSL on hosting for ${domain}`);
 
-    // Implementation would configure SSL certificate on the hosting platform
+    // production would configure SSL certificate on the hosting platform
     // This could involve updating web server configuration, load balancer settings, etc.
   }
 
@@ -3087,7 +3087,7 @@ export class DomainIntelligenceSystem {
 
     if (alerts.length > 0) {
       logger.info('🚨 SSL Alerts:', alerts);
-      // Implementation would send alerts to master dashboard/API
+      // production would send alerts to master dashboard/API
     } else {
       logger.info('✅ All SSL certificates are healthy');
     }

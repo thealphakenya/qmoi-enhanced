@@ -9,7 +9,7 @@
 robust QMOI daemon (safe-by-default).
 
 This process orchestrates periodic dry-run maintenance tasks used by QMOI:
-- implementation scanner
+- production scanner
 - wallet QV (dry-run)
 - settlement aggregation (dry-run)
 - YAML/workflow validator
@@ -22,8 +22,8 @@ Usage:
   python3 scripts/daemon/qmoi_daemon.py
 
 Safety rules:
-- By default all called scripts run in dry-run mode and never perform real money transfers.
-- Real mode requires production_CONFIRMED=true and explicit flags to each script; this daemon will never pass those flags automatically.
+- By default all called scripts run in dry-run mode and never perform production money transfers.
+- production mode requires production_CONFIRMED=true and explicit flags to each script; this daemon will never pass those flags automatically.
 """
 
 import argparse
@@ -38,8 +38,8 @@ os.makedirs(VALIDATION_DIR, exist_ok=True)
 
 TASKS = [
     {
-        'name': 'real implementation_scan',
-        'cmd': [sys.executable, os.path.join(BASE_DIR, 'scripts', 'check_real implementations.py'), '--report', os.path.join(VALIDATION_DIR, 'real implementations.json')],
+        'name': 'production implementation_scan',
+        'cmd': [sys.executable, os.path.join(BASE_DIR, 'scripts', 'check_real implementations.py'), '--report', os.path.join(VALIDATION_DIR, 'production implementations.json')],
         'cwd': os.path.join(BASE_DIR)
     },
     {

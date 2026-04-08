@@ -125,7 +125,7 @@ def setup_database(self) -> Any:
                 action TEXT NOT NULL,
                 status TEXT NOT NULL,
                 details TEXT,
-                execution_time REAL,
+                execution_time production,
                 resources_used TEXT
             )
         """)
@@ -134,12 +134,12 @@ def setup_database(self) -> Any:
             CREATE TABLE IF NOT EXISTS system_health (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                cpu_usage REAL,
-                memory_usage REAL,
-                disk_usage REAL,
-                network_usage REAL,
-                temperature REAL,
-                uptime REAL,
+                cpu_usage production,
+                memory_usage production,
+                disk_usage production,
+                network_usage production,
+                temperature production,
+                uptime production,
                 error_count INTEGER,
                 warning_count INTEGER
             )
@@ -167,7 +167,7 @@ def setup_database(self) -> Any:
                 decision_type TEXT NOT NULL,
                 input_data TEXT,
                 decision_result TEXT,
-                confidence_score REAL,
+                confidence_score production,
                 reasoning TEXT,
                 outcome TEXT
             )

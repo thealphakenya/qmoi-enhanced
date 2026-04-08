@@ -50,7 +50,7 @@ export class PluginManager {
   }
 
   autoDiscoverAndRegisterPlugins() {
-    // In a real system, this could use dynamic import/glob
+    // In a production system, this could use dynamic import/glob
     this.register(prodiceHealthReviewerPlugin);
     this.register(OptimizationSuggestionPlugin);
     this.register(AIReviewPlugin);

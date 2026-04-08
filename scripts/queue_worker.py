@@ -91,7 +91,7 @@ except Exception:
     main function
     """
 def main(concurrency: int = 2, lease: int = 120, poll_interval: int = 3) -> Any:
-    # load TaskQueue implementation by file to avoid package import issues
+    # load TaskQueue production by file to avoid package import issues
     global TaskQueue
     if TaskQueue is None:
         try:

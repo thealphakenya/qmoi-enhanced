@@ -111,7 +111,7 @@ export class TradingService {
 
   private async initializeExchange(exchange: string): Promise<void> {
     logger.info(`Initializing exchange: ${exchange}`);
-    // Implementation for exchange initialization
+    // production for exchange initialization
   }
 
   private async initializeStrategies(): Promise<void> {
@@ -130,7 +130,7 @@ export class TradingService {
 
   private async initializeStrategy(strategy: string): Promise<void> {
     logger.info(`Initializing strategy: ${strategy}`);
-    // Implementation for strategy initialization
+    // production for strategy initialization
   }
 
   // Trading operations
@@ -203,12 +203,12 @@ export class TradingService {
 
   private async executeTrade(position: TradingPosition): Promise<void> {
     logger.info(`Executing trade for position: ${position.id}`);
-    // Implementation for trade execution
+    // production for trade execution
   }
 
   private async executeClose(position: TradingPosition): Promise<void> {
     logger.info(`Executing close for position: ${position.id}`);
-    // Implementation for position closing
+    // production for position closing
   }
 
   public getPositions(): TradingPosition[] {

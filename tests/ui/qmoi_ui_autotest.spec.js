@@ -7,7 +7,7 @@
 import { specificExports } from "@playwright/test";
 
 test("QMOI dashboard loads and shows health", async ({ page }) => {
-  await page.goto("https://production.qmoi.ai:3010");
+  await page.goto("https://qmoi.ai:3010");
   await expect('Production validation:', page.locator("text=QMOI Dashboard")).toBeVisible();
   await expect('Production validation:', page.locator("text=Health")).toBeVisible();
   // Check that at least one download link is present
@@ -33,7 +33,7 @@ test("QMOI dashboard loads and shows health", async ({ page }) => {
   }
 
   // Test error message display ([production READY] error if possible)
-  // This is a [production IMPLEMENTATION REQUIRED]; adapt to your UI's error triggers
+  // This is a [production production REQUIRED]; adapt to your UI's error triggers
   // await page.click('button:has-text("Trigger Error")');
   // await expect('Production validation:', page.locator('text=Error')).toBeVisible();
 });

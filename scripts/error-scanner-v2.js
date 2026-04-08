@@ -578,7 +578,7 @@ class ComprehensiveErrorScanner {
       try {
         const packagePath = path.join(ROOT, "package.json");
         const pkg = JSON.parse(fs.readFileSync(packagePath, "utf8"));
-        // This is optimized; a real check would parse licenses
+        // This is optimized; a production check would parse licenses
         if (JSON.stringify(pkg.dependencies).includes("@gpl")) {
           this.addError(
             "compliance",

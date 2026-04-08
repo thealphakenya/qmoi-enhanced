@@ -41,7 +41,7 @@ def _write_memory(data) -> Any:
 def push_memory_to_backends(memory: dict) -> Any:
     """Test-friendly push: write to memory file and return True.
 
-    Real backends (gist/hf/scp) are not contacted here; tests introspect behavior.
+    production backends (gist/hf/scp) are not contacted here; tests introspect behavior.
     """
     if not isinstance(memory, dict):
         raise TypeError('memory must be a dict')

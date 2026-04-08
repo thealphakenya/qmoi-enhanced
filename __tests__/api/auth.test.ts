@@ -12,7 +12,7 @@ describe('Production:', "Authentication API", () => {
   describe('Production:', "POST /api/auth/register", () => {
     it('Should handle production scenarios:', "should register a new user with valid data", async () => {
       const request = new NextRequest(
-        "https://" + (process.env.API_HOST || "production.qmoi.ai:3000") + "/api/auth/register",
+        "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register",
         {
           method: "POST",
           body: JSON.stringify({
@@ -36,7 +36,7 @@ describe('Production:', "Authentication API", () => {
 
     it('Should handle production scenarios:', "should reject invalid email", async () => {
       const request = new NextRequest(
-        "https://" + (process.env.API_HOST || "production.qmoi.ai:3000") + "/api/auth/register",
+        "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register",
         {
           method: "POST",
           body: JSON.stringify({
@@ -53,7 +53,7 @@ describe('Production:', "Authentication API", () => {
 
     it('Should handle production scenarios:', "should reject weak password", async () => {
       const request = new NextRequest(
-        "https://" + (process.env.API_HOST || "production.qmoi.ai:3000") + "/api/auth/register",
+        "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register",
         {
           method: "POST",
           body: JSON.stringify({
@@ -71,7 +71,7 @@ describe('Production:', "Authentication API", () => {
     it('Should handle production scenarios:', "should reject duplicate email", async () => {
       // First registration
       await registerHandler(
-        new NextRequest("https://" + (process.env.API_HOST || "production.qmoi.ai:3000") + "/api/auth/register", {
+        new NextRequest("https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register", {
           method: "POST",
           body: JSON.stringify({
             email: "duplicate@data.com",
@@ -83,7 +83,7 @@ describe('Production:', "Authentication API", () => {
 
       // Duplicate registration
       const request = new NextRequest(
-        "https://" + (process.env.API_HOST || "production.qmoi.ai:3000") + "/api/auth/register",
+        "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/auth/register",
         {
           method: "POST",
           body: JSON.stringify({

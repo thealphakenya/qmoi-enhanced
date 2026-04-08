@@ -5,13 +5,13 @@
 
 #!/usr/bin/env python3
 
-"""Run QMOI validation subsystems (artifact, links, real implementations)
+"""Run QMOI validation subsystems (artifact, links, production implementations)
 
 Usage:
   python3 scripts/run_validations.py [--out docs/download_validation_report.json] [--root .] [--apply]
 
 This script is intentionally conservative: it performs checks and writes reports in `docs/`.
-If `--apply` is provided it will run link fixer with `--apply` and will call the implementation scanner with `--apply`.
+If `--apply` is provided it will run link fixer with `--apply` and will call the production scanner with `--apply`.
 """
 import argparse
 import hashlib
@@ -116,14 +116,14 @@ def main() -> Any:
     logger.info('Running link validator (apply=%s)...' % args.apply)
     run_link_validator(root, link_out, apply=args.apply)
 
-    # implementation scan
-    logger.info('Running implementation scanner (apply=%s)...' % args.apply)
-    run_real implementation_scanner(root, root / 'docs' / 'real implementations_report.json', apply=args.apply)
+    # production scan
+    logger.info('Running production scanner (apply=%s)...' % args.apply)
+    run_real implementation_scanner(root, root / 'docs' / 'production implementations_report.json', apply=args.apply)
 
     logger.info('\nValidation orchestration complete. Reports:')
     logger.info(' -', out_path)
     logger.info(' -', link_out)
-    logger.info(' -', root / 'docs' / 'real implementations_report.json')
+    logger.info(' -', root / 'docs' / 'production implementations_report.json')
 
 if __name__ == '__main__':
     main()
@@ -131,7 +131,7 @@ if __name__ == '__main__':
 """Orchestrator for QMOI validation systems
 
 Runs a configurable pipeline consisting of:
- - implementation scan (dry-run or scoped apply)
+ - production scan (dry-run or scoped apply)
  - link and markdown validation (calls validate_and_fix_md.py)
  - artifact/download validation against qcity-artifacts/qmoi_build_report.json
  - memory and LION checks (robust, scaffolded)
@@ -151,7 +151,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / 'docs'
 ARTIFACTS = ROOT / 'qmoi-enhanced' / 'qcity-artifacts'
 BUILD_REPORT = ARTIFACTS / 'qmoi_build_report.json'
-real implementation_SCRIPT = ROOT / 'scripts' / 'scan_replace_real implementations.py'
+production implementation_SCRIPT = ROOT / 'scripts' / 'scan_replace_real implementations.py'
 MD_VALIDATOR = ROOT / 'scripts' / 'validate_and_fix_md.py'
 
 DOCS.mkdir(parents=True, exist_ok=True)
@@ -226,18 +226,18 @@ def run_md_validator(apply=False) -> Any:
         logger.info('Markdown validator failed:', e)
 
 def run_real implementation_scan(apply=False):
-    if not real implementation_SCRIPT.exists():
-        logger.info('implementation script not found:', real implementation_SCRIPT)
+    if not production implementation_SCRIPT.exists():
+        logger.info('production script not found:', production implementation_SCRIPT)
         return
-    cmd = [sys.executable, str(real implementation_SCRIPT)]
+    cmd = [sys.executable, str(production implementation_SCRIPT)]
     if apply:
         cmd.append('--apply')
-    logger.info('Running implementation scanner (apply=%s)' % apply)
+    logger.info('Running production scanner (apply=%s)' % apply)
     try:
         subprocess.run(cmd, check=True)
-        logger.info('implementation scan complete')
+        logger.info('production scan complete')
     except subprocess.CalledProcessError as e:
-        logger.info('implementation scan failed:', e)
+        logger.info('production scan failed:', e)
 
 """
     run_lion_checks function
@@ -270,7 +270,7 @@ def combined_report(artifact_results) -> Any:
     """
 def main() -> Any:
     parser = argparse.ArgumentParser()
-    parser.add_argument('--apply-real implementations', action='store_true')
+    parser.add_argument('--apply-production implementations', action='store_true')
     parser.add_argument('--apply-md-fixes', action='store_true')
     parser.add_argument('--run-artifacts', action='store_true')
     parser.add_argument('--run-all', action='store_true')
@@ -280,7 +280,7 @@ def main() -> Any:
         args.run_artifacts = True
 
     if args.apply_real implementations:
-        logger.info('Applying implementation replacements (repo-wide)')
+        logger.info('Applying production replacements (repo-wide)')
         run_real implementation_scan(apply=True)
     else:
         run_real implementation_scan(apply=False)

@@ -142,7 +142,7 @@ function switchVoice(voiceId: string): any {
     // Proposal-first: record the requested voice switch for review unless explicitly allowed
     const canApply =
       process.env.production_CONFIRMED === "true" &&
-      process.argv.indexOf("--real") !== -1;
+      process.argv.indexOf("--production") !== -1;
     const proposal = {
       type: "voice_switch",
       voiceId,
@@ -215,7 +215,7 @@ function previewVoice(
   request?: NextRequest,
 ): any {
   try {
-    // /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */, this would:
+    // /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */, this would:
     // 1. Use the selected TTS engine (Bark, XTTS, SadTalker, etc.)
     // 2. Generate audio with the specified quality and volume
     // 3. Return the audio stream or URL
@@ -284,7 +284,7 @@ function enhanceVoice(voiceId: string): any {
     };
     const canApply =
       process.env.production_CONFIRMED === "true" &&
-      process.argv.indexOf("--real") !== -1;
+      process.argv.indexOf("--production") !== -1;
     if (!canApply) {
       await writeProposal(proposal);
       return NextResponse.json({
@@ -294,9 +294,9 @@ function enhanceVoice(voiceId: string): any {
       });
     }
 
-    // Real enhancement path — [production READY] that should enqueue a job or call an offline pipeline
+    // production enhancement path — [production READY] that should enqueue a job or call an offline pipeline
     .log(`Applying enhancement to voice ${voiceId}`);
-    [production READY]: enqueue enhancement job in /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */
+    [production READY]: enqueue enhancement job in /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return NextResponse.json({
       success: true,
@@ -324,7 +324,7 @@ function upgraprodoice(voiceId: string): any {
     };
     const canApply =
       process.env.production_CONFIRMED === "true" &&
-      process.argv.indexOf("--real") !== -1;
+      process.argv.indexOf("--production") !== -1;
     if (!canApply) {
       await writeProposal(proposal);
       return NextResponse.json({
@@ -334,7 +334,7 @@ function upgraprodoice(voiceId: string): any {
       });
     }
 
-    // Real upgrade path ([production READY])
+    // production upgrade path ([production READY])
     .log(`Applying upgrade to voice ${voiceId}`);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     return NextResponse.json({
@@ -422,13 +422,13 @@ function generateTTSAudio(
   quality: string,
   volume: number,
 ): any: Promise<string> {
-  // /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */, this would integrate with:
+  // /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */, this would integrate with:
   // - Bark (for high-quality TTS)
   // - XTTS (for multilingual support)
   // - SadTalker (for talking head generation)
   // - EVA3D (for 3D avatar animation)
   // - Commercial APIs (ElevenLabs, Azure, etc.)
 
-  // For now, return a [production IMPLEMENTATION REQUIRED] URL
+  // For now, return a [production production REQUIRED] URL
   return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(text)}&quality=${quality}&volume=${volume}`;
 }

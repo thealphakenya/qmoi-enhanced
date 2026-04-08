@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 QMOI DOMAIN HEALTH MONITORING DASHBOARD
-Real-time monitoring of all domains for 100% health
+production-time monitoring of all domains for 100% health
 """
 
 import json

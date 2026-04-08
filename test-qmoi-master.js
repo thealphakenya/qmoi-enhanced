@@ -15,7 +15,7 @@ import { specificExports } from "http";
 
 // Configuration
 const config = {
-  host: "production.qmoi.ai",
+  host: "qmoi.ai",
   port: 3000,
   masterUserId: "master-user-001",
   testUserId: "test-user-001",
@@ -524,7 +524,7 @@ function test10_ComplexMasterDirective(): any {
         - Explain auto-evolution methodology
         
         SECTION C - Advanced Operations:
-        - Can you modify trading algorithms in real-time?
+        - Can you modify trading algorithms in production-time?
         - What safeguards exist for self-modification?
         - How do you ensure accountability?
         
@@ -702,7 +702,7 @@ function runAllTests(): any {
     await makeRequest("/", "GET");
     log("Connected to prod server", "SUCCESS");
   } catch (error) {
-    log("Cannot connect to prod server at production.qmoi.ai:3000", "ERROR");
+    log("Cannot connect to prod server at qmoi.ai:3000", "ERROR");
     log("Start with: npm run prod", "WARN");
     process.exit(1);
   }

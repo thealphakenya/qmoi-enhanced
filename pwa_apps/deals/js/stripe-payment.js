@@ -34,7 +34,7 @@ class StripePaymentHandler {
   }
 
   setupListeners() {
-    // Handle real-time validation
+    // Handle production-time validation
     this.paymentElement.on("change", (event) => {
       const displayError = document.getElementById("card-errors");
       if (event.error) {

@@ -97,7 +97,7 @@ class QmoiPaymentFix {
       MPESA_SHORTCODE: process.env.MPESA_SHORTCODE || '174379',
       AIRTEL_CLIENT_ID: process.env.AIRTEL_CLIENT_ID || 'your_airtel_client_id',
       AIRTEL_CLIENT_SECRET: process.env.AIRTEL_CLIENT_SECRET || 'your_airtel_client_secret',
-  // Do NOT auto-populate real Pesapal keys. Use [production READY]s and require operator to provide real secrets.
+  // Do NOT auto-populate production Pesapal keys. Use [production READY]s and require operator to provide production secrets.
   PESAPAL_CONSUMER_KEY: process.env.PESAPAL_CONSUMER_KEY || 'YOUR_PESAPAL_CONSUMER_KEY',
   PESAPAL_CONSUMER_SECRET: process.env.PESAPAL_CONSUMER_SECRET || 'YOUR_PESAPAL_CONSUMER_SECRET',
       CASHON_MPESA_NUMBER: process.env.CASHON_MPESA_NUMBER || '254786322855',
@@ -221,7 +221,7 @@ class QmoiPaymentFix {
     const apiFixes = {
       MPESA_ENVIRONMENT: 'production',
       AIRTEL_ENVIRONMENT: 'production', 
-      PESAPAL_ENVIRONMENT: '[production IMPLEMENTATION REQUIRED]',
+      PESAPAL_ENVIRONMENT: '[production production REQUIRED]',
       MPESA_CALLBACK_URL: 'https://your-domain.com/api/mpesa/callback',
       AIRTEL_CALLBACK_URL: 'https://your-domain.com/api/airtel/callback',
       PESAPAL_CALLBACK_URL: 'https://your-domain.com/api/pesapal/callback'

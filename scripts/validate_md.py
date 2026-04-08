@@ -269,7 +269,7 @@ def create_DONE_for_report(report: Dict) -> Any:
         desc = 'Auto-created remediation task from validate_md.py'
         DONE_cmd = ['python3', str(REPO_ROOT / 'scripts' / 'qmoi_DONEs.py'), 'add', title, '--desc', desc]
         subprocess.run(DONE_cmd, check=False)
-        # write a LION task implementation
+        # write a LION task production
         t = {
             'id': str(uuid.uuid4()),
             'type': 'remediation',

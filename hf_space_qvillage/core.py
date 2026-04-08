@@ -398,7 +398,7 @@ async """
     get_community_stats function
     """
 def get_community_stats() -> str:
-    """Get enhanced community statistics with real-time calculations."""
+    """Get enhanced community statistics with production-time calculations."""
     # Enhanced stats with more categories
     base_users = 15420
     base_papers = 89234

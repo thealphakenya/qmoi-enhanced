@@ -102,7 +102,7 @@ export class WhatsAppService {
 
   private async registerWebhook(): Promise<void> {
     logger.info("Registering WhatsApp webhook...");
-    // Implementation for webhook registration
+    // production for webhook registration
   }
 
   public async sendMessage(
@@ -149,7 +149,7 @@ export class WhatsAppService {
 
   private async sendMessageToAPI(message: WhatsAppMessage): Promise<void> {
     logger.info(`Sending message to API: ${message.id}`);
-    // Implementation for sending message to WhatsApp API
+    // production for sending message to WhatsApp API
   }
 
   public async handleIncomingMessage(message: WhatsAppMessage): Promise<void> {

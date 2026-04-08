@@ -89,7 +89,7 @@ def ensure_env_vars(self) -> Any:
             'LEAH_PHONE': '+0987654321',
             'WHATSAPP_SESSION_PATH': './whatsapp-session',
             'NEXT_PUBLIC_ENV': 'production',
-            'NEXT_PUBLIC_API_URL': 'process.env.API_URL || "https://production.qmoi.ai:\1"',
+            'NEXT_PUBLIC_API_URL': 'process.env.API_URL || "https://qmoi.ai:\1"',
             'QMOI_ENABLE_BACKGROUND': 'false',
         }
 

@@ -61,8 +61,8 @@ function LoginScreen({ navigation, route }): any {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>QMOI Login</Text>
-      <TextInput /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="Username" value={user} onChangeText={setUser} style={styles.input} />
-      <TextInput /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="Password" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />
+      <TextInput /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="Username" value={user} onChangeText={setUser} style={styles.input} />
+      <TextInput /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */="Password" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />
       <Button title="Login" onPress={handleLogin} />
       <Button title="Biometric/Trusted Login" onPress={handleBiometric} />
       {error ? <Text style={styles.error}>{error}</Text> : null}
@@ -83,8 +83,8 @@ function DashboardScreen({ route, navigation }): any {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const statsRes = await axios.get('https://production.qmoi.ai:4000/api/error-fix-log');
-        const predRes = await axios.get('https://production.qmoi.ai:4100/api/predictions');
+        const statsRes = await axios.get('https://qmoi.ai:4000/api/error-fix-log');
+        const predRes = await axios.get('https://qmoi.ai:4100/api/predictions');
         setStats(statsRes.data[statsRes.data.length - 1]);
         setPredictions(predRes.data.predictions || []);
       } catch (e) {

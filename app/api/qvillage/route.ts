@@ -460,7 +460,7 @@ function POST(req: NextRequest): any {
       return NextResponse.json({ success: validated.success, validated });
     }
 
-    // AI response fallback implemented in real system by QMOI service
+    // AI response fallback implemented in production system by QMOI service
     const query = body.query || action;
     const aiResponse = await service.processQuery(
       query,

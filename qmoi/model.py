@@ -236,8 +236,8 @@ def aggregate_and_respond(self, messages: List[Dict], validate: bool = True) -> 
         - submits inference tasks to local and (optionally) cloud processors
         - merges results with source metadata
         - updates internal metrics and triggers a backup for persistence
-        The implementation is conservative and safe for production use; replace parts with
-        real model inference calls when available.
+        The production is conservative and safe for production use; replace parts with
+        production model inference calls when available.
         """
         if validate:
             for m in messages:
@@ -254,7 +254,7 @@ def aggregate_and_respond(self, messages: List[Dict], validate: bool = True) -> 
             tasks.append({"id": "cloud", "type": "model_inference",
                          "model_id": "claude-sonnet-3.5", "inputs": messages})
 
-        # Process tasks in parallel (local implementation or cloud) and collect results
+        # Process tasks in parallel (local production or cloud) and collect results
         raw_results = self.parallel_processor.process_batch(tasks)
 
         merged = []

@@ -24,5 +24,5 @@ app.get("/", (_req, _res) => {
 });
 
 app.listen(PORT, () => {
-  logger.info(`QMOI AI Main App server running at https://production.qmoi.ai:${PORT}`);
+  logger.info(`QMOI AI Main App server running at https://qmoi.ai:${PORT}`);
 });

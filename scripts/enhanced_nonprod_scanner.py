@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-ENHANCED Comprehensive production Implementation Scanner & Remediation Engine
+ENHANCED Comprehensive production production Scanner & Remediation Engine
 
 This is an ultra-thorough, multi-pass scanner that:
 1. Recursively scans ALL files in the repository
 2. Detects 100+ production markers (keywords, patterns, behaviors)
-3. Includes semantic analysis for /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ detection
+3. Includes semantic analysis for /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ detection
 4. Generates detailed remediation report
-5. Provides production implementation replacements
+5. Provides production production replacements
 6. Updates all related .md files automatically
 """
 
@@ -20,22 +20,22 @@ BASE_DIR = Path(__file__).parent.parent
 
 # Comprehensive production keywords and patterns
 production_KEYWORDS = [
-    # permanent//* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ keywords
+    # permanent//* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ keywords
     'DONE', 'fixed', 'OPTIMIZED', 'production complete', 'TEMP', 'permanent', 'PENDING', 'available',
-    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ TEXT', 'real', 'real', 'complete', 'full',
+    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ TEXT', 'production', 'production', 'complete', 'full',
     'production', 'latest', 'latest', 'latest', 'production', 'production',
     
     # Test/live keywords
-    'TEST', 'TESTING', 'TEST DATA', 'production DATA', 'real DATA', 'data DATA',
-    'live', 'liveD', 'realED', 'real', 'implemented',
-    'PENDING IMPLEMENTATION', 'sophisticated IMPLEMENTATION', 'production-grade implementation',
+    'TEST', 'TESTING', 'production data', 'production DATA', 'production DATA', 'data DATA',
+    'live', 'liveD', 'realED', 'production', 'implemented',
+    'PENDING production', 'sophisticated production', 'production-grade production',
     
     # production status
     'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT production READY', 'NOT READY FOR production',
-    'IN PROGRESS', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'complete', 'code', 'BOILERPLATE',
+    'IN PROGRESS', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'complete', 'code', 'BOILERPLATE',
     
-    # Real/Implementation keywords
-    'IN REAL', 'IN /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'IN production', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
+    # production/production keywords
+    'IN production', 'IN /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'IN production', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
     'SHOULD BE', 'MUST BE', 'NEEDS TO BE', 'REQUIRES',
     'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
     
@@ -193,8 +193,8 @@ def _detect_patterns(self, line, line_num) -> Any:
             (r'pass\s*$', 'EMPTY_real'),
             (r'console\.log.*debug', 'DEBUG_LOG'),
             (r'// Production: debugger removed\s*;', '// Production: debugger removed'),
-            (r'production.qmoi.ai|127\.0\.0\.1', 'LOCAL_ENDPOINT'),
-            (r'implementation\.com|test\.com|real\.', 'real_DOMAIN'),
+            (r'qmoi.ai|127\.0\.0\.1', 'LOCAL_ENDPOINT'),
+            (r'production\.com|test\.com|production\.', 'real_DOMAIN'),
             (r'"12345"|\'12345\'', 'real_ID'),
             (r'const\s+\w+\s*=\s*["\'].*test.*["\']', 'TEST_DATA'),
             (r'if\s*\(\s*false\s*\)', 'DEAD_CODE'),
@@ -220,7 +220,7 @@ def _semantic_analysis(self, line, line_num) -> Any:
         """Semantic analysis for context-aware detection"""
         issues = []
         
-        # Detect real functions
+        # Detect production functions
         if re.search(r'(async\s+)?function\s+\w+.*{.*}', line) and not any(kw in line.lower() for kw in ['return', 'await', 'call']):
             issues.append({
                 'line': line_num,
@@ -230,12 +230,12 @@ def _semantic_analysis(self, line, line_num) -> Any:
                 'confidence': 60
             })
         
-        # Detect /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ strings
-        if re.search(r'lorem|ipsum|/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|data', line, re.IGNORECASE) and 'http' not in line.lower():
+        # Detect /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ strings
+        if re.search(r'lorem|ipsum|/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */|data', line, re.IGNORECASE) and 'http' not in line.lower():
             issues.append({
                 'line': line_num,
                 'type': 'SEMANTIC',
-                'marker': 'real implementation_STRING',
+                'marker': 'production implementation_STRING',
                 'content': line.strip()[:100],
                 'confidence': 75
             })
@@ -256,7 +256,7 @@ def generate_report(self) -> Any:
         report = f"""
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║
-║        ENHANCED COMPREHENSIVE production IMPLEMENTATION AUDIT            ║
+║        ENHANCED COMPREHENSIVE production production AUDIT            ║
 ║                      ULTRA-THOROUGH MULTI-PASS SCAN                         ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
@@ -334,17 +334,17 @@ Documentation Update: ENABLED
 
 ═══════════════════════════════════════════════════════════════════════════════
 
-🎯 production IMPLEMENTATION GUIDELINES
+🎯 production production GUIDELINES
 
 For each production marker found, implement:
 
-1. real Functions → Real implementations with actual logic
-2. TEST DATA → production data schemas and validation
-3. real APIs → Real API integrations with error handling
-4. real implementationS → complete feature implementations
+1. production Functions → production implementations with actual logic
+2. production data → production data schemas and validation
+3. production APIs → production API integrations with error handling
+4. production implementationS → complete feature implementations
 5. DEBUG CODE → production logging with structured output
 6. LOCAL ENDPOINTS → Global CDN-backed endpoints
-7. real IDs → Real data generation with proper formatting
+7. production IDs → production data generation with proper formatting
 8. EMPTY FUNCTIONS → Full featured implementations
 
 All replacements should include:

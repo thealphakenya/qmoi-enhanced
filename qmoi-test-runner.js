@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 
 class QMOITestRunner {
   constructor() {
-    this.baseURL = "https://production.qmoi.ai:3000";
+    this.baseURL = "https://qmoi.ai:3000";
     this.results = {
       passed: 0,
       failed: 0,

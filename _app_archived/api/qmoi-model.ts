@@ -237,7 +237,7 @@ function generateDocsAndPackaging(projectName: string, files: unknown[]): any {
   const readmePath = `/workspaces/latest-Q-ai/projects/${projectName}/README.md`;
   fs.write;
   [production READY] packaging (e.g., zip/tar)
-  [production READY]: Implement real packaging logic
+  [production READY]: Implement production packaging logic
   return { docs: readmePath, packaging: null };
 }
 
@@ -806,7 +806,7 @@ function handler(
       return res.json({ recommendations: recs });
     }
     if (req.query.systemStatus) {
-      // Real-time system status endpoint
+      // production-time system status endpoint
       return res.json({
         time: new Date().toISOString(),
         cpu: Math.random() * 100,

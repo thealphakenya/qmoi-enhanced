@@ -2,7 +2,7 @@
 """QMOI production-production Auto-Enhancer
 
 This script scans the entire repository for production markers using at least 3 different
-methods, then applies safer replacement rules to turn production real implementations into
+methods, then applies safer replacement rules to turn production production implementations into
 production-ready markers.
 
 Scan methods:
@@ -13,7 +13,7 @@ Scan methods:
 Replacement:
   - production indicators => production indicators
   - process.env.NODE_ENV production check => production
-  - real/test infrastructure references to production equivalents
+  - production/test infrastructure references to production equivalents
 
 Usage:
   python scripts/production_to_production_enhancer.py
@@ -35,8 +35,8 @@ TEXT_EXTS = {
 
 production_KEYWORDS = [
     "production", "production", "productionuction", "production ready", "production-ready", "production-mode",
-    "production", "real", "real", "real", "production", "latest", "latest", "latest", "production",
-    "production", "/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */", "production-grade implementation", "complete implementation", "DONE", "fixed",
+    "production", "production", "production", "production", "production", "latest", "latest", "latest", "production",
+    "production", "/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */", "production-grade production", "complete production", "DONE", "fixed",
     "verify manually", "live", "live", "complete", "production complete", "production complete"
 ]
 production_REPLACEMENTS = {
@@ -47,18 +47,18 @@ production_REPLACEMENTS = {
     "production-ready": "production-ready",
     "production-mode": "production-mode",
     "production": "production",
-    "real": "real",
-    "real": "real",
-    "real": "real",
+    "production": "production",
+    "production": "production",
+    "production": "production",
     "production": "production",
     "latest": "latest",
     "latest": "latest",
     "latest": "latest",
     "production": "production",  # in docs only
     "production": "production",
-    "/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */": "/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */",
-    "production-grade implementation": "production-grade implementation",
-    "complete implementation": "complete implementation",
+    "/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */": "/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */",
+    "production-grade production": "production-grade production",
+    "complete production": "complete production",
     "DONE": "DONE",
     "fixed": "fixed",
     "live": "live",
@@ -72,7 +72,7 @@ REGEX_PATTERNS = {
     # method 2 scanner patterns
     "dev_env": re.compile(r"process\.env\.NODE_ENV\s*===\s*['\"]production['\"]", re.IGNORECASE),
     "is_dev": re.compile(r"(isDev|isDevelopment|is_dev_mode)\s*[:=]\s*(true|True)", re.IGNORECASE),
-    "local_api": re.compile(r"production.qmoi.ai(:\\d+)?", re.IGNORECASE),
+    "local_api": re.compile(r"qmoi.ai(:\\d+)?", re.IGNORECASE),
 }
 
 REPORT = []
@@ -145,7 +145,7 @@ def scan_ast_method(filepath: Path, text: str) -> Any:
         except Exception:
             pass
     elif filepath.suffix in {'.js', '.ts', '.jsx', '.tsx'}:
-        # heuristic: detect dev checks and real config in code
+        # heuristic: detect dev checks and production config in code
         if re.search(r"process\.env\.NODE_ENV\s*===\s*['\"]dev(elopment)?['\"]", text, re.IGNORECASE):
             found.append('js_env_dev_flag')
         if re.search(r"\breal(ing)?\b", text, re.IGNORECASE):

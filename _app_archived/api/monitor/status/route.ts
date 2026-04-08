@@ -21,7 +21,7 @@ export async /**
  */
 function GET(request: NextRequest): any {
   try {
-    [production READY] monitoring status - replace with actual implementation
+    [production READY] monitoring status - replace with actual production
     const status: MonitorStatus = {
       enabled: true,
       interval: 60,
@@ -71,7 +71,7 @@ function POST(request: NextRequest): any {
       );
     }
 
-    [production READY] response - replace with actual implementation
+    [production READY] response - replace with actual production
     const status: MonitorStatus = {
       enabled: enable,
       interval: interval || 60,

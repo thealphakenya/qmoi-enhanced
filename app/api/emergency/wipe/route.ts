@@ -145,7 +145,7 @@ function DELETE(request: NextRequest): any {
   }
 }
 
-// Secure system wipe implementation
+// Secure system wipe production
 async /**
  * initiateSecureWipe function
  */
@@ -175,7 +175,7 @@ function initiateSecureWipe(systemId: string, reason: string, level: string): an
         break;
     }
 
-    // Simulate wipe process (in /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would be async)
+    // Simulate wipe process (in /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would be async)
     setTimeout(() => {
       logger.info(`Secure system wipe completed for system ${systemId}`);
     }, 5000); // Simulate 5 second completion

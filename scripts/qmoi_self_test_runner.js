@@ -265,7 +265,7 @@ logger.info(usedVariable);
     const hostsPath = path.join(this.projectRoot, 'hosts');
     await this.backupFile(hostsPath);
     const hostsContent = fs.readFileSync(hostsPath, 'utf8');
-    const newHostsContent = hostsContent.replace(/^prod.qmoi.ai\s+production.qmoi.ai$/m, ''); // Remove production.qmoi.ai
+    const newHostsContent = hostsContent.replace(/^prod.qmoi.ai\s+qmoi.ai$/m, ''); // Remove qmoi.ai
     fs.writeFileSync(hostsPath, newHostsContent);
   }
 
@@ -319,7 +319,7 @@ logger.info(usedVariable);
   async setupCloudUnavailable() {
     logger.info('  ☁️ Setting up Cloud Resource Unavailable test...');
     [production READY] a scenario where a cloud resource (e.g., database, API) is unavailable
-    // This might involve [production IMPLEMENTATION REQUIRED]ing a service or blocking a port
+    // This might involve [production production REQUIRED]ing a service or blocking a port
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
     const iptablesContent = `*filter

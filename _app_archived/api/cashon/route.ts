@@ -122,7 +122,7 @@ function POST(request: NextRequest): any {
 
         const canRun =
           process.env.production_CONFIRMED === "true" &&
-          process.argv.indexOf("--real") !== -1;
+          process.argv.indexOf("--production") !== -1;
         const proposal = {
           title: "Cashon deposit",
           description: "Initiate deposit",
@@ -156,7 +156,7 @@ function POST(request: NextRequest): any {
 
         const canRun =
           process.env.production_CONFIRMED === "true" &&
-          process.argv.indexOf("--real") !== -1;
+          process.argv.indexOf("--production") !== -1;
         const proposal = {
           title: "Approve deposit",
           description: "Approve a deposit transaction",
@@ -190,7 +190,7 @@ function POST(request: NextRequest): any {
 
         const canRun =
           process.env.production_CONFIRMED === "true" &&
-          process.argv.indexOf("--real") !== -1;
+          process.argv.indexOf("--production") !== -1;
         const proposal = {
           title: "Withdraw funds",
           description: "Withdraw funds from wallet",
@@ -216,7 +216,7 @@ function POST(request: NextRequest): any {
       case "start-trading": {
         const canRun =
           process.env.production_CONFIRMED === "true" &&
-          process.argv.indexOf("--real") !== -1;
+          process.argv.indexOf("--production") !== -1;
         const proposal = {
           title: "Start trading",
           description: "Start AI trading loop",
@@ -242,7 +242,7 @@ function POST(request: NextRequest): any {
       case "stop-trading": {
         const canRun =
           process.env.production_CONFIRMED === "true" &&
-          process.argv.indexOf("--real") !== -1;
+          process.argv.indexOf("--production") !== -1;
         const proposal = {
           title: "Stop trading",
           description: "Stop AI trading loop",
@@ -276,7 +276,7 @@ function POST(request: NextRequest): any {
 
         const canRun =
           process.env.production_CONFIRMED === "true" &&
-          process.argv.indexOf("--real") !== -1;
+          process.argv.indexOf("--production") !== -1;
         const proposal = {
           title: "Execute trade",
           description: "Request trade via Cashon",
@@ -312,7 +312,7 @@ function POST(request: NextRequest): any {
 
         const canRun =
           process.env.production_CONFIRMED === "true" &&
-          process.argv.indexOf("--real") !== -1;
+          process.argv.indexOf("--production") !== -1;
         const proposal = {
           title: "Approve trade",
           description: "Approve a pending trade",

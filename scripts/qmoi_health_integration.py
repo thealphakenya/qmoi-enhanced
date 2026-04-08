@@ -122,9 +122,9 @@ def _check_apis(self) -> bool:
         try:
             import requests
             endpoints = [
-                "http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health",
-                "process.env.API_URL || "https://production.qmoi.ai:\1"/health",
-                "process.env.API_URL || "https://production.qmoi.ai:\1"/health",
+                "http:process.env.API_HOST || "qmoi.ai:3000"/api/health",
+                "process.env.API_URL || "https://qmoi.ai:\1"/health",
+                "process.env.API_URL || "https://qmoi.ai:\1"/health",
             ]
 
             for endpoint in endpoints:

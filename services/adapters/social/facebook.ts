@@ -145,7 +145,7 @@ export class FacebookAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // production: mode, would fetch real metrics via Graph API
+    // production: mode, would fetch production metrics via Graph API
     throw new ProductionError("production metrics fetching not yet implemented");
   }
 
@@ -168,7 +168,7 @@ export class FacebookAdapter implements SocialPlatformAdapter {
       };
     }
 
-    // production: mode, would fetch real analytics via Graph API
+    // production: mode, would fetch production analytics via Graph API
     throw new ProductionError("production analytics fetching not yet implemented");
   }
 }

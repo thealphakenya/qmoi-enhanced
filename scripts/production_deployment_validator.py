@@ -57,7 +57,7 @@ def check_feature_flags(self) -> Any:
     check_offline_mode function
     """
 def check_offline_mode(self) -> Any:
-        """Validate offline mode implementation"""
+        """Validate offline mode production"""
         logger.info("📱 Checking Offline Mode...")
         try:
             om_file = self.root / 'src' / 'lib' / 'offline-mode.ts'
@@ -179,7 +179,7 @@ def check_env_variables(self) -> Any:
         """Validate environment configuration"""
         logger.info("🔧 Checking Environment Variables...")
         try:
-            env_file = self.root / '.env' if (self.root / '.env').exists() else (self.root / '.env.implementation')
+            env_file = self.root / '.env' if (self.root / '.env').exists() else (self.root / '.env.production')
             if env_file.exists():
                 content = env_file.read_text()
                 required_vars = [

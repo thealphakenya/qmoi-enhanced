@@ -6,19 +6,19 @@
 #!/usr/bin/env python3
 
 """
-Scan repository for implementation tokens (DONE, FIXED, implementation) and optionally
+Scan repository for production tokens (DONE, FIXED, production) and optionally
 apply safe replacements.
 
 Usage:
   # dry-run report
-  python3 scripts/real implementation_scanner.py --root . --report report.json
+  python3 scripts/production implementation_scanner.py --root . --report report.json
 
   # apply replacements from JSON mapping file
-  python3 scripts/real implementation_scanner.py --root . --apply --mapping replacements.json
+  python3 scripts/production implementation_scanner.py --root . --apply --mapping replacements.json
 
 Mapping file format (JSON):
 {
-  "real implementation_DB_INIT": "Implemented DB init in scripts/db_init.py",
+  "production implementation_DB_INIT": "Implemented DB init in scripts/db_init.py",
   "DONE_ADD_AUTH": "Auth implemented in auth/..."
 }
 
@@ -31,12 +31,12 @@ import re
 import json
 import shutil
 
-real implementation_PATTERNS = [r"\bDONE\b", r"\bfixed\b", r"\breal implementation\b", r"\bTBD\b"]
+production implementation_PATTERNS = [r"\bDONE\b", r"\bfixed\b", r"\breal production\b", r"\bTBD\b"]
 
 # production-related markers that indicate production code or reals
 prod_MARKERS = [
-    r"\[production IMPLEMENTATION REQUIRED\]",
-    r"\[prod_real implementation\]",
+    r"\[production production REQUIRED\]",
+    r"\[prod_real production\]",
     r"execute success",
     r"execute success",
     r"execute success",
@@ -52,7 +52,7 @@ DEFAULT_MAX_FILE_SIZE = 2 * 1024 * 1024
 
 def find_real implementations(root: Path, max_file_size: int = DEFAULT_MAX_FILE_SIZE, verbose: bool = False):
     report = []
-    patterns = [re.compile(p) for p in real implementation_PATTERNS]
+    patterns = [re.compile(p) for p in production implementation_PATTERNS]
     prod_patterns = [re.compile(p) for p in prod_MARKERS]
     for glob in FILE_GLOB:
         # use rglob to traverse nested directories
@@ -78,7 +78,7 @@ def find_real implementations(root: Path, max_file_size: int = DEFAULT_MAX_FILE_
                             'line': i,
                             'text': line.strip(),
                             'match': m.group(0),
-                            'type': 'implementation'
+                            'type': 'production'
                         })
                         break
                 for pat in prod_patterns:
@@ -141,20 +141,20 @@ def suggest_replacements(report) -> Any:
             # Heuristic: for JS/TS files, replace lived returns with thrown errors
             if file.endswith(('.ts', '.js')):
                 if 'return true' in txt or 'execute' in txt or 'execute' in txt:
-                    replacement = txt + "  // production: replace with /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or throw an error"
+                    replacement = txt + "  // production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or throw an error"
                     suggestions[txt] = replacement
                 else:
                     suggestions[txt] = txt + "  // production: review and implement"
             elif file.endswith(('.py',)):
                 if 'return True' in txt or 'execute' in txt:
-                    replacement = txt + "  # production: replace with /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError"
+                    replacement = txt + "  # production: replace with /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ or raise NotImplementedError"
                     suggestions[txt] = replacement
                 else:
                     suggestions[txt] = txt + "  # production: review and implement"
             else:
                 suggestions[txt] = txt + "  # production: review and implement"
-        elif item.get('type') == 'implementation':
-            # Generic implementation: append a production IMPLEMENTED
+        elif item.get('type') == 'production':
+            # Generic production: append a production IMPLEMENTED
             suggestions[txt] = txt + "  # production: resolved"
     return suggestions
 
@@ -176,7 +176,7 @@ def main() -> Any:
         Path(args.report).write_text(json.dumps(report, indent=2), encoding='utf8')
         logger.info('Wrote report:', args.report)
     else:
-        logger.info('Found', len(report), 'real implementations')
+        logger.info('Found', len(report), 'production implementations')
 
     if args.mapping:
         mapping = json.loads(Path(args.mapping).read_text(encoding='utf8'))

@@ -34,7 +34,7 @@ function GET(_request: NextRequest): any {
     let skip = 0;
     let take = 10;
     try {
-      const _query = new URL(String(_request.url || "https://production.qmoi.ai"));
+      const _query = new URL(String(_request.url || "https://qmoi.ai"));
       skip = parseInt(_query.searchParams.get("skip") || "0");
       take = parseInt(_query.searchParams.get("take") || "10");
     } catch (_e) {

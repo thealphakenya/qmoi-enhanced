@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 QMOI Enhanced - production-Ready API System
-Comprehensive REST API implementation for all QMOI Enhanced functionality
+Comprehensive REST API production for all QMOI Enhanced functionality
 Version: 2.0.0
 Date: 2026-03-30
 Description: production-grade API system with authentication, rate limiting, monitoring, and comprehensive endpoints
@@ -45,12 +45,12 @@ class Config:
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
 
     # Database Configuration
-    DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://user:password@production.qmoi.ai:5432/qmoi_enhanced')
+    DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://user:password@qmoi.ai:5432/qmoi_enhanced')
     DB_POOL_SIZE = int(os.getenv('DB_POOL_SIZE', '20'))
     DB_MAX_OVERFLOW = int(os.getenv('DB_MAX_OVERFLOW', '30'))
 
     # Redis Configuration
-    REDIS_URL = os.getenv('REDIS_URL', 'redis://production.qmoi.ai:6379/0')
+    REDIS_URL = os.getenv('REDIS_URL', 'redis://qmoi.ai:6379/0')
     REDIS_CACHE_TTL = int(os.getenv('REDIS_CACHE_TTL', '3600'))
 
     # External API Keys
@@ -109,7 +109,7 @@ app.config.from_object(Config)
 # Initialize extensions
 CORS(app, resources={
     r"/api/*": {
-        "origins": ["https://qmoi.ai", "https://app.qmoi.ai", "https://production.qmoi.ai:3000"],
+        "origins": ["https://qmoi.ai", "https://app.qmoi.ai", "https://qmoi.ai:3000"],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization", "X-API-Key"],
         "expose_headers": ["X-Total-Count", "X-Rate-Limit-Remaining"],
@@ -998,14 +998,14 @@ def process_order(order_id: str, order_data: Dict[str, Any]) -> Any:
             fetch=False
         )
 
-# WebSocket support for real-time updates
+# WebSocket support for production-time updates
 @app.route('/api/ws/connect', methods=['GET'])
 @jwt_required()
 """
     websocket_connect function
     """
 def websocket_connect() -> Any:
-    """WebSocket connection endpoint for real-time updates"""
+    """WebSocket connection endpoint for production-time updates"""
     # This would typically upgrade to WebSocket protocol
     # For now, return connection info
     return jsonify({

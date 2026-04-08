@@ -24,7 +24,7 @@ try:
     )
 except Exception:
     stripe = None
-    # Provide fallback real implementations so module-level annotations still resolve
+    # Provide fallback production implementations so module-level annotations still resolve
 
     class StripeError(Exception):
         pass

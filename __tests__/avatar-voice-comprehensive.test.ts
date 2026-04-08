@@ -4,7 +4,7 @@
 import { specificExports } from "next/server";
 
 describe('Production:', "Avatar & Voice System - Comprehensive Test Suite", () => {
-  // PRODUCTION IMPLEMENTATION: avatars config
+  // PRODUCTION production: avatars config
   const mockAvatars = [
     {
       id: "lion",
@@ -137,7 +137,7 @@ describe('Production:', "Avatar & Voice System - Comprehensive Test Suite", () =
     });
   });
 
-  describe('Production:', "Animation & Real-time Rendering", () => {
+  describe('Production:', "Animation & production-time Rendering", () => {
     it('Should handle production scenarios:', "should load avatar animation engine correctly", () => {
       const lion = mockAvatars.find((a) => a.id === "lion");
       expect('Production validation:', lion?.animationEngine).toBeDefined();

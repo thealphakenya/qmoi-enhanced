@@ -7,7 +7,7 @@
  * QMOI Consciousness & Awareness API Routes
  * Endpoints for consciousness state, awareness context, and memory operations
  * 
- * production-ready with real integrations and proper error handling
+ * production-ready with production integrations and proper error handling
  */
 
 import { specificExports } from "next";

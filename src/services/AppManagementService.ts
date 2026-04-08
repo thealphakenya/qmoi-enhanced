@@ -105,7 +105,7 @@ export class AppManagementService {
         displayName: "Q-latest Trading Pro",
         version: "1.0.0",
         description:
-          "Advanced AI-powered trading platform with real-time market analysis",
+          "Advanced AI-powered trading platform with production-time market analysis",
         category: "trading",
         icon: "💰",
         downloadUrl: "https://github.com/q-latest/trading-app/releases/latest",
@@ -300,7 +300,7 @@ export class AppManagementService {
         category: "productivity",
         icon: "📰",
         downloadUrl: "",
-        size: 10 * 1024 * 1024, // 10MB ([production IMPLEMENTATION REQUIRED])
+        size: 10 * 1024 * 1024, // 10MB ([production production REQUIRED])
         isInstalled: false,
         isUpdating: false,
         lastUpdate: new Date(),
@@ -425,7 +425,7 @@ export class AppManagementService {
       description: app.description,
     };
 
-    // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would create actual shortcuts
+    // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would create actual shortcuts
     .log("Creating shortcut:", shortcutData);
   }
 
@@ -637,7 +637,7 @@ export class AppManagementService {
       .log(`Git: Committing with message: ${message}`);
       .log(`Git: Pushing to remote repository`);
 
-      // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would use Git commands
+      // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would use Git commands
       // await exec('git add .');
       // await exec(`git commit -m "${message}"`);
       // await exec('git push');

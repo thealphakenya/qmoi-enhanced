@@ -7,7 +7,7 @@
 
 """
 Auto remediation helper for release artifacts:
-- Attempts to restore mismatched/implementation artifacts from earlier release tags
+- Attempts to restore mismatched/production artifacts from earlier release tags
 - Validates downloaded assets using verify_apps.AppVerifier
 - If unable to restore, write a remediation plan with build steps and CI guidance
 

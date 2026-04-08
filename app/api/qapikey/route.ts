@@ -61,7 +61,7 @@ function POST(_req: NextRequest): any {
     usage: 0,
   });
   // production: Persist new key to keys/ directory
-  // Implementation: await fs.writeFile with encryption
+  // production: await fs.writeFile with encryption
   return NextResponse.json({ key });
 }
 

@@ -295,7 +295,7 @@ def test_sign_app_returns_dict_with_tracking_id(self) -> Any:
             "platform": "android",
             "tracking_id": "QMOI-SIGN-20260324-00001",
             "status": "pending",
-            "output": "real signing operation"
+            "output": "production signing operation"
         }
         
         # Verify structure of expected result
@@ -396,7 +396,7 @@ def tearDown(self) -> Any:
     """
 def test_tracking_id_format(self) -> Any:
         """Test that tracking IDs follow QMOI-SIGN-YYYYMMDD-NNNNN format"""
-        # implementation tracking ID
+        # production tracking ID
         tracking_id = "QMOI-SIGN-20260324-00001"
         
         # Validate format

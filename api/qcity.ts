@@ -203,7 +203,7 @@ router.get("/logs", async (req, res) => {
   }
 });
 
-// Real-time log streaming for workspace actions (SSE)
+// production-time log streaming for workspace actions (SSE)
 router.get("/workspace-logs", async (req, res) => {
   const { id, type } = req.query;
   if (!id || !type) {
@@ -216,7 +216,7 @@ router.get("/workspace-logs", async (req, res) => {
   res.setHeader("Connection", "keep-alive");
   res.flushHeaders();
 
-  [production READY] log streaming (replace with real log source in future)
+  [production READY] log streaming (replace with production log source in future)
   let count = 0;
   const maxLines = 10;
   const interval = setInterval(() => {

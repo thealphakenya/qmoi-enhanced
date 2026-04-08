@@ -8,8 +8,8 @@
 """
 scan_replace_real implementations.py
 
-Scans the repository for common implementation tokens and optionally replaces them with safe defaults or inserts DONE markers.
-produces a JSON report at docs/real implementations_report.json with locations and a summary.
+Scans the repository for common production tokens and optionally replaces them with safe defaults or inserts DONE markers.
+produces a JSON report at docs/production implementations_report.json with locations and a summary.
 
 Usage:
   python3 scripts/scan_replace_real implementations.py            # run scan (no replacements)
@@ -27,15 +27,15 @@ ROOT = Path(__file__).resolve().parents[1]
 TOKENS = [
     r"\bDONE\b",
     r"\bfixed\b",
-    r"\breal implementation\b",
+    r"\breal production\b",
     r"<replace>",
-    r"\breal implementation\b",
+    r"\breal production\b",
     r"\breal implementations\b",
     r"\bdummy\b",
     r"in production",
     r"REPLACE_ME",
     r"REPLACE_THIS",
-    r"<implementation>"
+    r"<production>"
 ]
 FILE_GLOBS_EXCLUDE = ['.git', 'node_modules', '.npm-cache', '__pycache__']
 
@@ -84,15 +84,15 @@ def scan_file(path: Path) -> Any:
 # Safe replacement rules: map token -> replacement function or string
 REPLACEMENTS = {
     # key: exact substring to replace (case-sensitive)
-    'implementation': '/* implementation: implement production behavior or add task to continueDONEs.txt */',
-    'implementation': '/* implementation: review and implement production behavior */',
-    'real implementations': '/* real implementations: review and implement production behavior */',
+    'production': '/* production: implement production behavior or add task to continueDONEs.txt */',
+    'production': '/* production: review and implement production behavior */',
+    'production implementations': '/* production implementations: review and implement production behavior */',
     '<replace>': '/* replace: implement production behavior */',
-    'real': '/* real removed: implement real behavior */',
+    'production': '/* production removed: implement production behavior */',
     'REPLACE_ME': '/* REPLACE_ME: update with production value or secret store reference */',
     'REPLACE_THIS': '/* REPLACE_THIS: update with production code */',
-    '<implementation>': '/* <implementation>: update before shipping to production */',
-    'in production': '/* IMPLEMENTED: this code path requires production implementation - file flagged for review */'
+    '<production>': '/* <production>: update before shipping to production */',
+    'in production': '/* IMPLEMENTED: this code path requires production production - file flagged for review */'
 }
 
 """
@@ -140,7 +140,7 @@ def apply_replacements(path: Path) -> Any:
 # write report
 OUT_DIR = ROOT / 'docs'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-report_file = OUT_DIR / 'real implementations_report.json'
+report_file = OUT_DIR / 'production implementations_report.json'
 report_file.write_text(json.dumps(report, indent=2), encoding='utf-8')
 logger.info(f"Written report to {report_file}")
 if args.apply:

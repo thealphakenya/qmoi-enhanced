@@ -274,7 +274,7 @@ function AvatarSelector({
                 onValueChange={setSelectedCategory}
               >
                 <SelectTrigger>
-                  <SelectValue implementation="Category" />
+                  <SelectValue production="Category" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((category) => (
@@ -290,7 +290,7 @@ function AvatarSelector({
                 onValueChange={setSelectedQuality}
               >
                 <SelectTrigger>
-                  <SelectValue implementation="Quality" />
+                  <SelectValue production="Quality" />
                 </SelectTrigger>
                 <SelectContent>
                   {qualities.map((quality) => (
@@ -306,7 +306,7 @@ function AvatarSelector({
 
               <Select value={selectedEngine} onValueChange={setSelectedEngine}>
                 <SelectTrigger>
-                  <SelectValue implementation="Engine" />
+                  <SelectValue production="Engine" />
                 </SelectTrigger>
                 <SelectContent>
                   {engines.map((engine) => (
@@ -532,7 +532,7 @@ function AvatarSelector({
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm">
-                      Real-time animation optimization
+                      production-time animation optimization
                     </span>
                     <Switch defaultChecked />
                   </div>

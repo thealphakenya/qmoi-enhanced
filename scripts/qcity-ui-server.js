@@ -43,9 +43,9 @@ mainApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QMOI Main UI" }),
 );
 mainApp.listen(PORT_MAIN, async () => {
-  logger.info(`QMOI Main UI running at https://production.qmoi.ai:${PORT_MAIN}`);
+  logger.info(`QMOI Main UI running at https://qmoi.ai:${PORT_MAIN}`);
   try {
-    await open(`https://production.qmoi.ai:${PORT_MAIN}`);
+    await open(`https://qmoi.ai:${PORT_MAIN}`);
   } catch (error) { /* Handle error */ }
 });
 
@@ -56,9 +56,9 @@ qcityApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QCity UI" }),
 );
 qcityApp.listen(PORT_QCITY, async () => {
-  logger.info(`QCity UI running at https://production.qmoi.ai:${PORT_QCITY}`);
+  logger.info(`QCity UI running at https://qmoi.ai:${PORT_QCITY}`);
   try {
-    await open(`https://production.qmoi.ai:${PORT_QCITY}`);
+    await open(`https://qmoi.ai:${PORT_QCITY}`);
   } catch (error) { /* Handle error */ }
 });
 
@@ -72,9 +72,9 @@ spaceApp.get("/health", (_req, _res) =>
   _res.json({ status: "ok", service: "QMOI Space PWA" }),
 );
 spaceApp.listen(PORT_SPACE, async () => {
-  logger.info(`QMOI Space PWA running at https://production.qmoi.ai:${PORT_SPACE}`);
+  logger.info(`QMOI Space PWA running at https://qmoi.ai:${PORT_SPACE}`);
   try {
-    await open(`https://production.qmoi.ai:${PORT_SPACE}`);
+    await open(`https://qmoi.ai:${PORT_SPACE}`);
   } catch (error) { /* Handle error */ }
 });
 

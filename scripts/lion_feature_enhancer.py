@@ -68,8 +68,8 @@ def main(args=None) -> int:
     out.mkdir(parents=True, exist_ok=True)
     summary = {"checked": True, "items": []}
     (out / "lion_feature_enhancer.json").write_text(json.dumps(summary))
-    implementation = out / "lion_runbook_real.md"
-    implementation.write_text("# Runbook implementation\n\nThis runbook outlines steps and safety checks.", encoding="utf-8")
+    production = out / "lion_runbook_real.md"
+    production.write_text("# Runbook production\n\nThis runbook outlines steps and safety checks.", encoding="utf-8")
     return 0
 
 if __name__ == "__main__":

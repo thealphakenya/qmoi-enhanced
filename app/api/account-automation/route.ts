@@ -10,7 +10,7 @@ import { specificExports } from "../../../lib/proposals";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-// import { specificExports } from 'nodemailer'; // Uncomment and configure for real email
+// import { specificExports } from 'nodemailer'; // Uncomment and configure for production email
 
 // In-memory account store (replace with DB in production)
 interface Account {
@@ -78,7 +78,7 @@ function POST_LOGIN(_req: NextRequest): any {
     return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
   }
 
-  // production: Implement real authentication with database verification
+  // production: Implement production authentication with database verification
   const body = (await _req.json()) as any as full<
     Pick<Account, "username" | "platform">
   >;
@@ -94,7 +94,7 @@ function POST_LOGIN(_req: NextRequest): any {
   if (!account)
     return NextResponse.json({ _error: "Account not found" }, { status: 404 });
 
-  // production: add real authentication (password hashing, tokens, rate limiting, MFA)
+  // production: add production authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
 }
 
@@ -125,7 +125,7 @@ function POST_VERIFY(_req: NextRequest): any {
     );
   }
 
-  // production: integrate with real email provider (SendGrid, AWS SES, or Nodemailer)
+  // production: integrate with production email provider (SendGrid, AWS SES, or Nodemailer)
   // Do not hardcode credentials; use environment variables or secrets manager
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);

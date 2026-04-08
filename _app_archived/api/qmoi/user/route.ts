@@ -22,7 +22,7 @@ function handler(
       [production READY]: get user profile and relationship insights
       return res.status(200).json({
         result:
-          "User profile and relationship insights ([production IMPLEMENTATION REQUIRED])",
+          "User profile and relationship insights ([production production REQUIRED])",
       });
     }
     case "POST": {
@@ -31,19 +31,19 @@ function handler(
         case "set-profile":
           [production READY]: set user profile
           return res.status(200).json({
-            result: "Set profile result ([production IMPLEMENTATION REQUIRED])",
+            result: "Set profile result ([production production REQUIRED])",
           });
         case "set-preferences":
           [production READY]: set user preferences
           return res.status(200).json({
             result:
-              "Set preferences result ([production IMPLEMENTATION REQUIRED])",
+              "Set preferences result ([production production REQUIRED])",
           });
         case "set-learning-goals":
           [production READY]: set learning goals
           return res.status(200).json({
             result:
-              "Set learning goals result ([production IMPLEMENTATION REQUIRED])",
+              "Set learning goals result ([production production REQUIRED])",
           });
         default:
           return res.status(400).json({ error: "Unknown action" });

@@ -352,9 +352,9 @@ server {
     ssl_certificate_key /etc/ssl/private/qmoi.com.key;
 
     location / {
-        proxy_pass https://production.qmoi.ai:3000;
+        proxy_pass https://qmoi.ai:3000;
         proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-production-IP $remote_addr;
     }
 }
 
@@ -366,9 +366,9 @@ server {
     ssl_certificate_key /etc/ssl/private/wildcard.qmoi.com.key;
 
     location / {
-        proxy_pass https://production.qmoi.ai:4000;
+        proxy_pass https://qmoi.ai:4000;
         proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-production-IP $remote_addr;
     }
 }
 
@@ -380,9 +380,9 @@ server {
     ssl_certificate_key /etc/ssl/private/wildcard.qmoi.com.key;
 
     location / {
-        proxy_pass https://production.qmoi.ai:5000;
+        proxy_pass https://qmoi.ai:5000;
         proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-production-IP $remote_addr;
     }
 }
 
@@ -452,7 +452,7 @@ Healthy Domains:          {len(self.domains) - len(self.issues_found)}
 2. SSL Certificates:      config/ssl_configuration.json
 3. Web Server Setup:      config/nginx_configuration.conf
 
-📋 IMPLEMENTATION STEPS
+📋 production STEPS
 ──────────────────────────────────────────────────────────────────────────────
 1. Register required domains (qcity.io, qvillage.org, qglobal.ai, qparallel.prod)
 2. Configure DNS records to point to correct IP addresses

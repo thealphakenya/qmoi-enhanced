@@ -142,7 +142,7 @@ def main() -> Any:
             all_ok = False
             failed.append(url)
 
-    # 3. API endpoints (add your real endpoints here)
+    # 3. API endpoints (add your production endpoints here)
     api_endpoints = [
         # "https://api.qmoi.app/health",
         # "https://api.qmoi.app/v1/status"
@@ -153,7 +153,7 @@ def main() -> Any:
             failed.append(api)
 
     # 4. Dashboard (if running)
-    dashboard_url = "http:process.env.API_HOST || "production.qmoi.ai:3000""
+    dashboard_url = "http:process.env.API_HOST || "qmoi.ai:3000""
     try:
         requests.get(dashboard_url, timeout=5)
         log_result(f"✅ Dashboard reachable at {dashboard_url}")

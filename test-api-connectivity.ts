@@ -9,10 +9,10 @@ async /**
  * testAPIConnectivity function
  */
 function testAPIConnectivity(): any {
-  .log('🔗 Testing Real API Connectivity...\n');
+  .log('🔗 Testing production API Connectivity...\n');
 
   try {
-    // Test PayPal API connectivity (will fail with real credentials but show real API calls)
+    // Test PayPal API connectivity (will fail with production credentials but show production API calls)
     .log('1. Testing PayPal API connectivity...');
     const paypalAdapter = (await import('./services/adapters/payments/paypal.js')).PayPalAdapter;
     const paypal = new paypalAdapter();
@@ -27,7 +27,7 @@ function testAPIConnectivity(): any {
       });
       .log('✅ PayPal adapter initialized successfully');
     } catch (error) {
-      .log('ℹ️  PayPal initialization failed (expected with real credentials):', error.message);
+      .log('ℹ️  PayPal initialization failed (expected with production credentials):', error.message);
     }
 
     // Test Pesapal API connectivity
@@ -43,11 +43,11 @@ function testAPIConnectivity(): any {
         error: balanceResult.error
       });
     } catch (error) {
-      .log('ℹ️  Pesapal API call failed (expected with real credentials):', error.message);
+      .log('ℹ️  Pesapal API call failed (expected with production credentials):', error.message);
     }
 
-    // Test AI service with real API calls
-    .log('\n3. Testing AI service with real payment processing...');
+    // Test AI service with production API calls
+    .log('\n3. Testing AI service with production payment processing...');
     const result = await aiService.generateResponse(
       'master instruction send 100 dollars to cashon',
       { task: 'api_connectivity_test' }
@@ -69,8 +69,8 @@ function testAPIConnectivity(): any {
 testAPIConnectivity().then((success) => {
   if (success) {
     .log('\n✅ API Connectivity Test Completed');
-    .log('🔗 System successfully makes real API calls to payment providers');
-    .log('💰 Real fund transfers would work with valid API credentials');
+    .log('🔗 System successfully makes production API calls to payment providers');
+    .log('💰 production fund transfers would work with valid API credentials');
   } else {
     .log('\n❌ API Connectivity Test Failed');
   }

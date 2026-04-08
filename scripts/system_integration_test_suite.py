@@ -291,7 +291,7 @@ def test_security_compliance(self) -> None:
                 'compliance': ['SOC2', 'PCI-DSS', 'GDPR']
             }
 
-            # Validate security implementation
+            # Validate security production
             if security_checks['encryption'] == 'AES-256-GCM':
                 if 'multi-factor' in security_checks['authentication']:
                     if security_checks['audit_trails'] == 'enabled':

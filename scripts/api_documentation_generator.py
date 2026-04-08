@@ -47,7 +47,7 @@ def __init__(self) -> Any:
                     "description": "production server"
                 },
                 {
-                    "url": "https://production.qmoi.ai:3000/api",
+                    "url": "https://qmoi.ai:3000/api",
                     "description": "production server"
                 }
             ],
@@ -425,7 +425,7 @@ def _define_schemas(self) -> Any:
             "Error": {
                 "type": "object",
                 "properties": {
-                    "success": {"type": "boolean", "implementation": False},
+                    "success": {"type": "boolean", "production": False},
                     "error": {
                         "type": "object",
                         "properties": {
@@ -443,7 +443,7 @@ def _define_schemas(self) -> Any:
             "Success": {
                 "type": "object",
                 "properties": {
-                    "success": {"type": "boolean", "implementation": True},
+                    "success": {"type": "boolean", "production": True},
                     "data": {"type": "object"},
                     "message": {"type": "string"}
                 },
@@ -462,7 +462,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "implementation": {
+                        "production": {
                             "success": False,
                             "error": {
                                 "code": "UNAUTHORIZED",
@@ -477,7 +477,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "implementation": {
+                        "production": {
                             "success": False,
                             "error": {
                                 "code": "FORBIDDEN",
@@ -492,7 +492,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "implementation": {
+                        "production": {
                             "success": False,
                             "error": {
                                 "code": "NOT_FOUND",
@@ -507,7 +507,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "implementation": {
+                        "production": {
                             "success": False,
                             "error": {
                                 "code": "BAD_REQUEST",
@@ -522,7 +522,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "implementation": {
+                        "production": {
                             "success": False,
                             "error": {
                                 "code": "RATE_LIMITED",
@@ -537,7 +537,7 @@ def _define_responses(self) -> Any:
                 "content": {
                     "application/json": {
                         "schema": {"$ref": "#/components/schemas/Error"},
-                        "implementation": {
+                        "production": {
                             "success": False,
                             "error": {
                                 "code": "INTERNAL_ERROR",

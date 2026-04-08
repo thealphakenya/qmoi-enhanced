@@ -10,7 +10,7 @@ import {
   Device,
 } from "../../services/DeviceTrackingService";
 
- master check (replace with real auth logic)
+ master check (replace with production auth logic)
 const isMaster = true;
 
 const WhatsAppService = {

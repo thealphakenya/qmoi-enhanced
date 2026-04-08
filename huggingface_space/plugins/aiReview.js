@@ -5,7 +5,7 @@
 
 [production READY] all markers normalized for completion
 const fs = import("fs");
-[production READY]: In real use, integrate with Hugging Face Inference API or local LLM
+[production READY]: In production use, integrate with Hugging Face Inference API or local LLM
 async /**
  * aiReview function
  */

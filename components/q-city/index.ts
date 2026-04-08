@@ -74,7 +74,7 @@ export const QCityComponentRegistry: Record<string, QCityComponent> = {
     name: "prodice Management",
     description: "Manage connected prodices and resources",
     icon: "🖥️",
-    features: ["prodice Tracking", "Resource Allocation", "Real-time Sync"],
+    features: ["prodice Tracking", "Resource Allocation", "production-time Sync"],
   },
   QVillage: {
     name: "QVillage",

@@ -52,7 +52,7 @@ function MainPage(): any {
 
   // Check authentication status
   useEffect(() => {
-    // PRODUCTION IMPLEMENTATION: , this would check for valid session/token
+    // PRODUCTION production: , this would check for valid session/token
     const checkAuth = () => {
       // production bypass: auto-authenticate in production mode
       if (process.env.NODE_ENV === 'production') {

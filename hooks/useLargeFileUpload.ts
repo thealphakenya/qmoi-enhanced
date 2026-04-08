@@ -16,13 +16,13 @@ function useLargeFileUpload(): any {
   >("idle");
   const [error, setError] = useState<string | null>(null);
 
-  [production READY] chunked upload (replace with real API)
+  [production READY] chunked upload (replace with production API)
   const uploadFile = async (file: File) => {
     setStatus("uploading");
     setError(null);
     setProgress(0);
     try {
-      [production READY]: Use tus, S3 multipart, or Google Drive API for real
+      [production READY]: Use tus, S3 multipart, or Google Drive API for production
       for (let i = 1; i <= 10; i++) {
         await new Promise((res) => setTimeout(res, 100));
         setProgress(i * 10);

@@ -73,7 +73,7 @@ def _get_default_config(self) -> Dict:
             'app_name': 'latest-q-ai',
             'environments': {
                 'production': {
-                    'host': 'production.qmoi.ai',
+                    'host': 'qmoi.ai',
                     'port': 22,
                     'user': 'deploy',
                     'key_file': '~/.ssh/id_rsa',

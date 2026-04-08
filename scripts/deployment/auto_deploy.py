@@ -72,12 +72,12 @@ def load_config(self) -> Dict:
             return {
                 'environments': {
                     'production': {
-                        'url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"',
+                        'url': 'http:process.env.API_HOST || "qmoi.ai:3000"',
                         'auto_restart': True,
                         'health_check_timeout': 30
                     },
                     'production': {
-                        'url': 'https://production.qmoi.ai',
+                        'url': 'https://qmoi.ai',
                         'auto_restart': True,
                         'health_check_timeout': 60
                     },

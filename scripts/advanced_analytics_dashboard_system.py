@@ -3,7 +3,7 @@
 QMOI Enhanced - Advanced AI Analytics Dashboard & Visualization System
 Version: 1.0.0
 Date: 2026-03-29
-Description: Comprehensive real-time analytics dashboard with interactive visualizations,
+Description: Comprehensive production-time analytics dashboard with interactive visualizations,
 advanced charting, system monitoring, and AI-powered insights for the complete QMOI Enhanced platform.
 """
 
@@ -29,7 +29,7 @@ logger = logging.getLogger('QMOI_Analytics_Dashboard')
 class AdvancedAnalyticsDashboard:
     """
     Advanced AI Analytics Dashboard & Visualization System for QMOI Enhanced
-    Provides real-time monitoring, interactive charts, and comprehensive analytics
+    Provides production-time monitoring, interactive charts, and comprehensive analytics
     """
 
     """
@@ -100,7 +100,7 @@ def _initialize_dashboard(self) -> Any:
     collect_realtime_data function
     """
 def collect_realtime_data(self) -> Dict[str, Any]:
-        """Collect real-time data from all QMOI Enhanced systems"""
+        """Collect production-time data from all QMOI Enhanced systems"""
         timestamp = datetime.now().isoformat()
 
         # System Performance Metrics
@@ -671,7 +671,7 @@ def generate_dashboard_report(self) -> Dict[str, Any]:
                 'active_alerts': insights_alerts['summary']['total_alerts'],
                 'critical_alerts': insights_alerts['summary']['critical_alerts'],
                 'total_insights': insights_alerts['summary']['total_insights'],
-                'data_freshness': 'real-time'
+                'data_freshness': 'production-time'
             },
 
             'realtime_data': realtime_data,
@@ -717,8 +717,8 @@ def export_dashboard_data(self, format_type: str = 'json') -> str:
     run_realtime_dashboard function
     """
 def run_realtime_dashboard(self, interval_seconds: int = 30) -> Any:
-        """Run real-time dashboard monitoring"""
-        logger.info(f"Starting real-time dashboard monitoring (interval: {interval_seconds}s)")
+        """Run production-time dashboard monitoring"""
+        logger.info(f"Starting production-time dashboard monitoring (interval: {interval_seconds}s)")
 
         """
     dashboard_loop function
@@ -750,7 +750,7 @@ def dashboard_loop() -> Any:
         dashboard_thread = threading.Thread(target=dashboard_loop, daemon=True)
         dashboard_thread.start()
 
-        logger.info("Real-time dashboard monitoring started")
+        logger.info("production-time dashboard monitoring started")
 
     """
     _save_dashboard_report function
@@ -798,8 +798,8 @@ def main() -> Any:
     logger.info(f"  • Cross-Chain: TVL ${realtime['cross_chain']['total_value_locked']:,.0f}")
     logger.info(f"  • QMOI Consciousness: {realtime['qmoiconsciousness']['awareness_level_percent']:.1f}% awareness")
 
-    # Start real-time monitoring
-    logger.info("\n🔄 Starting real-time dashboard monitoring...")
+    # Start production-time monitoring
+    logger.info("\n🔄 Starting production-time dashboard monitoring...")
     dashboard.run_realtime_dashboard(interval_seconds=30)
 
     # Keep running for productionnstration

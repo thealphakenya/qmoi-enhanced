@@ -15,7 +15,7 @@ function testQMOIChat(): any {
   try {
     logger.info("Testing QMOI Chat API...");
 
-    const response = await apiClient.get("https://production.qmoi.ai:3000/api/qmoi/chat", {
+    const response = await apiClient.get("https://qmoi.ai:3000/api/qmoi/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +31,7 @@ function testQMOIChat(): any {
     logger.info("Chat API Response:", JSON.stringify(data, null, 2));
 
     if (data.message && !data.message.includes("QMOI Evolved Response")) {
-      logger.info("✅ AI integration working - real responses detected");
+      logger.info("✅ AI integration working - production responses detected");
     } else {
       logger.info("❌ Still using 
     }
@@ -47,7 +47,7 @@ function testQVillage(): any {
   try {
     logger.info("Testing QVillage API...");
 
-    const response = await apiClient.get("https://production.qmoi.ai:3000/api/qvillage", {
+    const response = await apiClient.get("https://qmoi.ai:3000/api/qvillage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ function testQMOIModel(): any {
     logger.info("Testing QMOI Model API...");
 
     const response = await apiClient.get(
-      "https://production.qmoi.ai:3000/api/qmoi-model?allStats=true",
+      "https://qmoi.ai:3000/api/qmoi-model?allStats=true",
     );
     const data = await response.json();
     logger.info("Model API Response:", JSON.stringify(data, null, 2));

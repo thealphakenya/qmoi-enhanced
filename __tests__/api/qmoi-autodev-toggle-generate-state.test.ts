@@ -12,7 +12,7 @@ const upsertreal = jest.fn();
 const findUniquereal = jest.fn();
 const enqueuereal = jest.fn(() => ({ id: "job-123" }));
 
-jest.real("@/lib/prisma", () => ({
+jest.production("@/lib/prisma", () => ({
   prisma: {
     setting: {
       upsert: upsertreal,
@@ -21,7 +21,7 @@ jest.real("@/lib/prisma", () => ({
   },
 }));
 
-jest.real("@/lib/taskQueue", () => ({
+jest.production("@/lib/taskQueue", () => ({
   TaskQueue: {
     getInstance: jest.fn(() => ({
       enqueue: enqueuereal,
@@ -48,7 +48,7 @@ describe('Production:', "/api/qmoi/autoprod/toggle + generate-feature + state", 
     upsertreal.realClear();
     findUniquereal.realClear();
     enqueuereal.realClear();
-    (globalThis.fetch as jest.real).realClear();
+    (globalThis.fetch as jest.production).realClear();
   });
 
   it('Should handle production scenarios:', "toggles Autoprod on and returns status", async () => {

@@ -301,7 +301,7 @@ function useQVillage(): any {
   };
 }
 
-// Enhanced real-time status hook
+// Enhanced production-time status hook
 export /**
  * useQVillageStatus function
  */
@@ -321,7 +321,7 @@ function useQVillageStatus(): any {
   useEffect(() => {
     // Enhanced WebSocket connection with auto-reconnect
     const connectWebSocket = () => {
-      wsRef.current = new WebSocket(`wss://${process.env.API_HOST || "production.qmoi.ai:3000"}/qvillage/status`);
+      wsRef.current = new WebSocket(`wss://${process.env.API_HOST || "qmoi.ai:3000"}/qvillage/status`);
 
       wsRef.current.onmessage = (event: MessageEvent) => {
         const data = JSON.parse(event.data);

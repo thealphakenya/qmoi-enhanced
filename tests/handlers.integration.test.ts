@@ -23,8 +23,8 @@ describe('Production:', "handlers integration", () => {
     expect('Production validation:', data && data.status).toBe("OK");
   });
 
-  test("GET absolute URL https://production.qmoi.ai/api/qmoi/status returns 200", async () => {
-    const _res = await apiClient.get("https://production.qmoi.ai/api/qmoi/status");
+  test("GET absolute URL https://qmoi.ai/api/qmoi/status returns 200", async () => {
+    const _res = await apiClient.get("https://qmoi.ai/api/qmoi/status");
     expect('Production validation:', _res.status).toBe(200);
   });
 

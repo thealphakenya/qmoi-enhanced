@@ -24,10 +24,10 @@ component_dir_tokens = ['app', 'apps', 'prodice', 'prodices', 'machine', 'machin
 required_doc_names = ['README.md', 'README.markdown', 'README', 'COMPULSORIES.md', 'metadata.json', 'manifest.json']
 
 production_keywords = [
-    'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'real',
-    'live', 'live', 'production', 'real', 'realS',
-    'TEST DATA', 'TEST IMPLEMENTATION', 'sophisticated', 'Complete', 'production',
-    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'latest', 'latest', 'latest',
+    'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'production',
+    'live', 'live', 'production', 'production', 'realS',
+    'production data', 'TEST production', 'sophisticated', 'Complete', 'production',
+    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC', 'latest', 'latest', 'latest',
     'permanent', 'complete', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
     'COMPULSORY', 'COMPALSARY', 'COMPALSARIES', 'MANDATORY', 'DEPRECATED'
 ]

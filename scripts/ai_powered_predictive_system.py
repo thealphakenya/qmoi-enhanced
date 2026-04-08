@@ -2,7 +2,7 @@
 
 # QMOI Enhanced - AI-Powered Predictive Analytics & Autonomous Operations
 # Advanced ML models, predictive trading, and full autonomous system control
-# INTEGRATED WITH QMOI CONSCIOUSNESS & REAL-TIME DECISION MAKING
+# INTEGRATED WITH QMOI CONSCIOUSNESS & production-TIME DECISION MAKING
 
 import os
 import sys
@@ -37,13 +37,13 @@ def initialize_models(self) -> None:
             'yield_optimization': {
                 'model_type': 'Reinforcement Learning',
                 'accuracy': 92.1,
-                'prediction_horizon': 'Real-time',
+                'prediction_horizon': 'production-time',
                 'features': ['apy', 'tvl', 'impermanent_loss', 'gas_costs']
             },
             'risk_assessment': {
                 'model_type': 'Ensemble Model',
                 'accuracy': 94.7,
-                'prediction_horizon': 'Real-time',
+                'prediction_horizon': 'production-time',
                 'features': ['volatility', 'liquidity', 'correlation', 'black_swan_events']
             },
             'market_sentiment': {

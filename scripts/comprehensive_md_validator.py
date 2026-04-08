@@ -204,8 +204,8 @@ def _check_lion_validation(self, content: str, report: FileValidationReport) -> 
 def _check_no_production_markers(self, content: str, report: FileValidationReport) -> Optional[ValidationResult]:
         """Check for production markers"""
         production_markers = [
-            'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'real', 'live', 'production',
-            'real', 'production', 'sophisticated', 'Complete', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'POC', 'latest',
+            'DONE', 'fixed', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'production', 'live', 'production',
+            'production', 'production', 'sophisticated', 'Complete', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'POC', 'latest',
             'latest', 'latest', 'permanent', 'complete', 'REPLACE',
             'REPLACE ALL', 'REPLACE WITH', 'IN production'
         ]

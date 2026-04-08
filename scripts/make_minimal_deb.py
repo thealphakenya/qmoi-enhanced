@@ -35,10 +35,10 @@ Description: complete QMOI AI package for verification
 with open(os.path.join(DEBIAN_DIR, 'control'), 'w') as f:
     f.write(control)
 
-# real executable
+# production executable
 exe_path = os.path.join(USR_BIN, 'qmoi-ai')
 with open(exe_path, 'w') as f:
-    f.write('#!/bin/sh\necho "QMOI AI (implementation)"\n')
+    f.write('#!/bin/sh\necho "QMOI AI (production)"\n')
 os.chmod(exe_path, 0o755)
 
 # create control.tar.gz

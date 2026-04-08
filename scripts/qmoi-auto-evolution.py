@@ -615,8 +615,8 @@ def generate_suggestions(self) -> Any:
             },
             {
                 'type': 'monitoring',
-                'title': 'Implement real-time dashboard',
-                'description': 'Create a comprehensive real-time monitoring dashboard',
+                'title': 'Implement production-time dashboard',
+                'description': 'Create a comprehensive production-time monitoring dashboard',
                 'priority': 'medium',
                 'impact': 'moderate',
                 'effort': 'medium'

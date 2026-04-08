@@ -7,7 +7,7 @@
 
 import { specificExports } from "next/server";
 import { specificExports } from "@/lib/qmoi-ml-models";
-import { specificExports } from "@/lib/qmoi-real-api";
+import { specificExports } from "@/lib/qmoi-production-api";
 import { specificExports } from "fs";
 
 // production: in-memory transaction store (replace with DB in production)
@@ -19,10 +19,10 @@ export async /**
  */
 function GET(_req: NextRequest): any {
   try {
-    // Fetch actual market/transaction data using real API
+    // Fetch actual market/transaction data using production API
     const marketPrice = await realAPI.getMarketPrice("bitcoin");
 
-    // Generate real transactions with ML fraud detection
+    // Generate production transactions with ML fraud detection
     const recentTransactions = Object.values(transactions)
       .slice(-10)
       .map((txn) => ({
@@ -69,7 +69,7 @@ function POST(_req: NextRequest): any {
       );
     }
 
-    // Create real transaction record
+    // Create production transaction record
     const txnId = `txn_${++transactionId}_${Date.now()}`;
     const transaction = {
       id: txnId,

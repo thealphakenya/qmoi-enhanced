@@ -2,7 +2,7 @@
 """
 QMOI INTELLIGENT production SCANNER v3.0
 Smart scanning focused on actual source code implementations
-Excludes backups/metadata, focuses on real issues
+Excludes backups/metadata, focuses on production issues
 """
 
 import os
@@ -27,21 +27,21 @@ SOURCE_EXTENSIONS = {'.js', '.ts', '.jsx', '.tsx', '.py', '.java', '.go', '.rs',
 # CRITICAL: Actual production code patterns (high confidence)
 CRITICAL_PATTERNS = {
     # Comment-based markers
-    r'//\s*production\s+IMPLEMENTATION\s+REQUIRED': 'production implementation /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
-    r'#\s*production\s+IMPLEMENTATION\s+REQUIRED': 'production implementation /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
+    r'//\s*production\s+production\s+REQUIRED': 'production production /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
+    r'#\s*production\s+production\s+REQUIRED': 'production production /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
     r'console\.log\s*\(\s*[\'"]DEBUG': 'Debug logging should be removed in production',
     r'throw\s+new\s+Error\s*\(\s*[\'"]NOT.*IMPL': 'Unimplemented error thrown',
     
     # Variable patterns
     r'\b_error\b(?!\w)': 'Underscore prefixed error variable (anti-pattern)',
     r'\btemp_\w+\b': 'permanent variable in production code',
-    r'\breal implementation_\w+\b': '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variable in production',
+    r'\breal implementation_\w+\b': '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variable in production',
     r'\bdummy_\w+\b': 'production variable in production code',
-    r'\breal_\w+\b': 'real/real variable in production',
+    r'\breal_\w+\b': 'production/production variable in production',
     
     # Type casting issues
     r'\(\s*\w+\s+as\s+any\s*\)\s*\.\s*error': 'Type casting error handling (anti-pattern)',
-    r'\b=\s*null\s*;\s*//.*impl': 'Null /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ instead of implementation',
+    r'\b=\s*null\s*;\s*//.*impl': 'Null /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ instead of production',
 }
 
 class SmartproductionScanner:
@@ -75,7 +75,7 @@ def is_source_file(self, file_path) -> Any:
     scan_file function
     """
 def scan_file(self, file_path) -> Any:
-        """Scan file for actual implementation issues"""
+        """Scan file for actual production issues"""
         issues = []
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -98,10 +98,10 @@ def scan_file(self, file_path) -> Any:
     scan_repository function
     """
 def scan_repository(self) -> Any:
-        """Scan repository for implementation issues"""
+        """Scan repository for production issues"""
         logger.info("\n🔍 SMART production CODE SCAN")
         logger.info("=" * 80)
-        logger.info(f"Scanning source code files for implementation issues...")
+        logger.info(f"Scanning source code files for production issues...")
         logger.info()
         
         source_files = 0
@@ -139,7 +139,7 @@ def generate_report(self) -> Any:
 📊 SUMMARY
 ──────────────────────────────────────────────────────────────────────────────
 Source files scanned:        {self.files_scanned}
-Implementation issues found: {self.issues_found}
+production issues found: {self.issues_found}
 Files requiring updates:     {len(self.issues)}
 
 """
@@ -154,7 +154,7 @@ Your codebase appears to be production-ready!
 """
         else:
             report += f"""
-⚠️  IMPLEMENTATION ITEMS
+⚠️  production ITEMS
 ──────────────────────────────────────────────────────────────────────────────
 
 """

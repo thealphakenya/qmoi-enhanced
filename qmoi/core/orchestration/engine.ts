@@ -10,7 +10,7 @@
  * Features:
  * - Unified request/response orchestration
  * - Cross-system communication
- * - Real-time state synchronization
+ * - production-time state synchronization
  * - Priority-based task routing
  * - Fallback and recovery mechanisms
  */

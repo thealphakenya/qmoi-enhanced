@@ -7,7 +7,7 @@
 #!/usr/bin/env python3
 """
 QMOI GitLab CI/CD Automation System
-Continuous automation with real-time monitoring and automatic triggering
+Continuous automation with production-time monitoring and automatic triggering
 """
 
 import asyncio

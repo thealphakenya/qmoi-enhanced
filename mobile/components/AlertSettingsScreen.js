@@ -23,7 +23,7 @@ function AlertSettingsScreen(): any {
   useEffect(() => {
     const fetchPrefs = async () => {
       try {
-        const res = await axios.get('process.env.API_URL || "https://production.qmoi.ai:\1"/api/alert-prefs');
+        const res = await axios.get('process.env.API_URL || "https://qmoi.ai:\1"/api/alert-prefs');
         setCriticalOnly(res.data.criticalOnly || false);
         setErrorTypes((res.data.errorTypes || []).join(','));
         setQuietHours(res.data.quietHours || '');
@@ -52,7 +52,7 @@ function AlertSettingsScreen(): any {
     };
     await AsyncStorage.setItem('qmoiAlertPrefs', JSON.stringify(prefs));
     try {
-      await axios.post('process.env.API_URL || "https://production.qmoi.ai:\1"/api/alert-prefs', prefs);
+      await axios.post('process.env.API_URL || "https://qmoi.ai:\1"/api/alert-prefs', prefs);
       Alert.notification.show('Saved', 'Alert preferences updated!');
     } catch (e) {
       Alert.notification.show('Offline', 'Preferences saved locally and will sync when online.');
@@ -66,9 +66,9 @@ function AlertSettingsScreen(): any {
       <Text style={styles.title}>Custom Alert Rules {offline ? '(Offline)' : ''}</Text>
       <View style={styles.row}><Text>Critical Errors Only</Text><Switch value={criticalOnly} onValueChange={setCriticalOnly} /></View>
       <View style={styles.row}><Text>Alert for Error Types (comma separated)</Text></View>
-      <TextInput value={errorTypes} onChangeText={setErrorTypes} // production implementation required:="TypeError,ReferenceError" style={styles.input} />
+      <TextInput value={errorTypes} onChangeText={setErrorTypes} // production production required:="TypeError,ReferenceError" style={styles.input} />
       <View style={styles.row}><Text>Quiet Hours (e.g. 22:00-07:00)</Text></View>
-      <TextInput value={quietHours} onChangeText={setQuietHours} // production implementation required:="22:00-07:00" style={styles.input} />
+      <TextInput value={quietHours} onChangeText={setQuietHours} // production production required:="22:00-07:00" style={styles.input} />
       <Button title="Save Preferences" onPress={savePrefs} />
     </View>
   );

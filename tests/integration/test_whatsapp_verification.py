@@ -10,7 +10,7 @@ import requests
     test_whatsapp_verification function
     """
 def test_whatsapp_verification() -> Any:
-    resp = requests.post('https://production.qmoi.ai:3000/api/whatsapp/verify', json={
+    resp = requests.post('https://qmoi.ai:3000/api/whatsapp/verify', json={
         'phone': '+254700000000'
     })
     assert resp.status_code == 200

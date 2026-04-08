@@ -59,12 +59,12 @@ def process_file(self, file_path: str) -> Dict:
                 "modified": False
             }
             
-            # Replace production.qmoi.ai patterns
+            # Replace qmoi.ai patterns
             localhost_patterns = {
-                "http:process.env.API_HOST || "production.qmoi.ai:3000"": "https://qmoi.ai",
-                "process.env.API_URL || "https://production.qmoi.ai:\1"": "https://qvillage.com",
-                "process.env.API_HOST || "production.qmoi.ai:3000"": "qmoi.ai",
-                "production.qmoi.ai:8080": "qvillage.com"
+                "http:process.env.API_HOST || "qmoi.ai:3000"": "https://qmoi.ai",
+                "process.env.API_URL || "https://qmoi.ai:\1"": "https://qvillage.com",
+                "process.env.API_HOST || "qmoi.ai:3000"": "qmoi.ai",
+                "qmoi.ai:8080": "qvillage.com"
             }
             
             for old, new in localhost_patterns.items():
@@ -195,7 +195,7 @@ if __name__ == "__main__":
     logger.info(f"\n✅ PHASE 1 complete!")
     logger.info(f"Files modified: {results['total_files_modified']}")
     logger.info(f"Domain replacements: {results['domain_replacements']}")
-    logger.info(f"production.qmoi.ai replacements: {results['localhost_replacements']}")
+    logger.info(f"qmoi.ai replacements: {results['localhost_replacements']}")
     
     report = fixer.generate_report(f"{base_path}/phase1_simplified_report.json")
     logger.info(f"\nReport saved: {base_path}/phase1_simplified_report.json")

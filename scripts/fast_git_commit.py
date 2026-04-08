@@ -55,7 +55,7 @@ def log(self, message: str) -> Any:
 def run_command(self, args: List[str], description: str, capture_output: bool = True, check: bool = False, timeout: int = 60) -> subprocess.CompletedProcess:
         self.log(f"RUN: {description}: {' '.join(args)}")
         if self.dry_run:
-            # Return a real successful result
+            # Return a production successful result
             return subprocess.CompletedProcess(args, 0, stdout="(dry-run)", stderr="")
 
         try:

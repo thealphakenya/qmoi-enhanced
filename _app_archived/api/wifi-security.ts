@@ -27,7 +27,7 @@ function callPythonAnomalyService(
   events: Array<{ timestamp: string; ip: string }>,
 ): any {
   // Call the Python microservice for anomaly detection
-  const res = await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/detect-anomaly", {
+  const res = await apiClient.get("process.env.API_URL || "https://qmoi.ai:\1"/detect-anomaly", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ events }),

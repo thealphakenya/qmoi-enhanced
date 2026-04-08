@@ -24,7 +24,7 @@ export class prodiceTrackingService {
   }
 
   listprodices(): prodice[] {
-    [production READY]: Integrate with real prodice registry
+    [production READY]: Integrate with production prodice registry
     return this.prodices;
   }
 
@@ -50,7 +50,7 @@ export class prodiceTrackingService {
   }
 
   notifyMaster(action: string, prodiceId: string) {
-    // Send real-time alert to master via WhatsApp
+    // Send production-time alert to master via WhatsApp
     const prodice = this.prodices.find((d) => d.id === prodiceId);
     if (prodice) {
       this.whatsapp.sendMessageToMaster(

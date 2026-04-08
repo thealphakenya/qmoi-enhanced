@@ -270,10 +270,10 @@ def initialize_databases(self) -> Any:
                             platform_id TEXT PRIMARY KEY,
                             name TEXT,
                             category TEXT,
-                            daily_target REAL,
-                            current_revenue REAL,
-                            success_rate REAL,
-                            automation_level REAL,
+                            daily_target production,
+                            current_revenue production,
+                            success_rate production,
+                            automation_level production,
                             last_updated TEXT,
                             status TEXT
                         )
@@ -284,8 +284,8 @@ def initialize_databases(self) -> Any:
                             employee_id TEXT PRIMARY KEY,
                             name TEXT,
                             category TEXT,
-                            salary REAL,
-                            performance_bonus REAL,
+                            salary production,
+                            performance_bonus production,
                             hire_date TEXT,
                             status TEXT
                         )
@@ -295,8 +295,8 @@ def initialize_databases(self) -> Any:
                         CREATE TABLE IF NOT EXISTS deals (
                             deal_id TEXT PRIMARY KEY,
                             platform TEXT,
-                            amount REAL,
-                            success_rate REAL,
+                            amount production,
+                            success_rate production,
                             created_date TEXT,
                             status TEXT
                         )
@@ -534,8 +534,8 @@ def check_api_health(self) -> bool:
             import requests
             
             endpoints = [
-                "process.env.API_URL || "https://production.qmoi.ai:\1"/status",
-                "process.env.API_URL || "https://production.qmoi.ai:\1""
+                "process.env.API_URL || "https://qmoi.ai:\1"/status",
+                "process.env.API_URL || "https://qmoi.ai:\1""
             ]
             
             for endpoint in endpoints:

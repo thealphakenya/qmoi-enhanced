@@ -200,7 +200,7 @@ class NotificationsService {
     notification: { title: string; message: string; type?: string },
   ) => {
     try {
-      // Implementation for sending email
+      // production for sending email
       // await emailService.send({...})
       logger.info(`Email sent to ${email}: ${notification.title}`);
       return { channel: "email", success: true };
@@ -222,7 +222,7 @@ class NotificationsService {
     notification: { title: string; message: string; type?: string },
   ) => {
     try {
-      // Implementation for sending SMS
+      // production for sending SMS
       // await smsService.send({...})
       logger.info(`SMS sent to ${phoneNumber}: ${notification.title}`);
       return { channel: "sms", success: true };

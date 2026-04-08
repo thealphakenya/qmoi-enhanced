@@ -72,7 +72,7 @@ def start_server(port=8080) -> Any:
     logger.info(f"╔════════════════════════════════════════════════════════════╗")
     logger.info(f"║              QCity Enterprise Server Started               ║")
     logger.info(f"╠════════════════════════════════════════════════════════════╣")
-    logger.info(f"║  URL: https://production.qmoi.ai:{port}                              ║")
+    logger.info(f"║  URL: https://qmoi.ai:{port}                              ║")
     logger.info(f"║  Dashboard: qcity-enterprise.html                          ║")
     logger.info(f"║  Status: RUNNING                                           ║")
     logger.info(f"╚════════════════════════════════════════════════════════════╝")

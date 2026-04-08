@@ -247,7 +247,7 @@ class QMOIRevenueEngine {
   }
 
   private async generateConsultingRevenue(): Promise<number> {
-    // AI Consulting - expert advice and implementation
+    // AI Consulting - expert advice and production
     const baseAmount = Math.random() * 200 + 100; // 100-300 KES
     const expertiseLevel = Math.random() * 0.4 + 0.6; // 60-100% expertise
 

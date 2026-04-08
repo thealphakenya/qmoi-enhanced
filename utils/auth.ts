@@ -13,7 +13,7 @@ export async /**
  * verifyAuth function
  */
 function verifyAuth(token: string): any: Promise<AuthUser | null> {
-  // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */
+  // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */
   return null;
 }
 
@@ -21,7 +21,7 @@ export async /**
  * requireAuth function
  */
 function requireAuth(request: Request): any: Promise<AuthUser> {
-  // /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */
+  // /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */
   throw new ProductionError("Not authenticated");
 }
 

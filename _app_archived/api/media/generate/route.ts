@@ -57,7 +57,7 @@ function logToDashboard(
   );
   .log(sanitizedLog);
 
-  [production READY]: Send to dashboard API for real-time visualization
+  [production READY]: Send to dashboard API for production-time visualization
   return logEntry;
 }
 

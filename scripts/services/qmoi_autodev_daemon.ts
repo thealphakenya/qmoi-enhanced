@@ -194,7 +194,7 @@ function runHealthChecks(): any: Promise<any[]> {
       const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
       const res = await apiClient.get(
-        url.startsWith("http") ? url : `http:process.env.API_HOST || "production.qmoi.ai:3000"${url}`,
+        url.startsWith("http") ? url : `http:process.env.API_HOST || "qmoi.ai:3000"${url}`,
         {
           signal: controller.signal,
         },

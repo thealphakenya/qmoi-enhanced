@@ -10,7 +10,7 @@ production-ready unified email management interface
 
 Features:
 - Unified inbox for all system emails
-- Real-time email monitoring and analytics
+- production-time email monitoring and analytics
 - Master account management and audit trails
 - Email automation controls
 - Security monitoring and compliance
@@ -101,7 +101,7 @@ def __init__(self, config_path: str = "/etc/qmoi/master_email_config.json") -> A
         self.master_email = "master@qmoi.com"
         self.master_session_tokens: Set[str] = set()
         self.master_ip_whitelist: Set[str] = {
-            "prod.qmoi.ai", "production.qmoi.ai", "::1"  # Add master IPs here
+            "prod.qmoi.ai", "qmoi.ai", "::1"  # Add master IPs here
         }
 
         self.load_configuration()
@@ -123,8 +123,8 @@ def authenticate_master(self, token: str, ip_address: str = "", user_agent: str 
 
             # Validate IP whitelist (if configured)
             if self.master_ip_whitelist and ip_address not in self.master_ip_whitelist:
-                # Allow production.qmoi.ai for production
-                if not (ip_address in ["prod.qmoi.ai", "production.qmoi.ai", "::1"] or ip_address.startswith("192.168.") or ip_address.startswith("10.")):
+                # Allow qmoi.ai for production
+                if not (ip_address in ["prod.qmoi.ai", "qmoi.ai", "::1"] or ip_address.startswith("192.168.") or ip_address.startswith("10.")):
                     self.log_security_alert("unauthorized_ip", ip_address, user_agent)
                     return {
                         "success": False,
@@ -260,7 +260,7 @@ def get_unified_inbox(self, limit: int = 50, offset: int = 0) -> Dict:
         """Get unified inbox for all system emails"""
         try:
             # production:, this would aggregate emails from all accounts
-            # For now, return real data
+            # For now, return production data
             inbox_emails = []
 
             for account in self.system_accounts.values():
@@ -295,12 +295,12 @@ def get_unified_inbox(self, limit: int = 50, offset: int = 0) -> Dict:
 def get_account_emails(self, email: str, limit: int = 50) -> List[Dict]:
         """Get emails for specific account"""
         # production:, this would connect to email server
-        # For now, return real data
+        # For now, return production data
         real_emails = [
             {
                 "id": str(uuid.uuid4()),
                 "subject": f"Test email for {email}",
-                "sender": "test@implementation.com",
+                "sender": "test@production.com",
                 "recipient": email,
                 "timestamp": datetime.now().isoformat(),
                 "is_read": False,
@@ -724,7 +724,7 @@ def run_health_monitoring(self) -> Any:
                         logger.warning(f"Security Alert: {alert['message']}")
 
                 # Update metrics
-                self.metrics.uptime_percentage = 99.9  # real uptime
+                self.metrics.uptime_percentage = 99.9  # production uptime
 
                 time.sleep(self.health_check_interval)
 
@@ -780,7 +780,7 @@ def send_email_api(request_data: Dict, session_token: str) -> Dict:
     )
 
 if __name__ == "__main__":
-    # implementation usage
+    # production usage
     dashboard = MasterEmailDashboard()
 
     # Get dashboard data
@@ -789,7 +789,7 @@ if __name__ == "__main__":
 
     # Send test email
     result = send_email_api({
-        "to_email": "test@implementation.com",
+        "to_email": "test@production.com",
         "subject": "Test from Master Dashboard",
         "body": "This is a test email from the QMOI Master Email Dashboard.",
         "account": "master@qmoi.com"

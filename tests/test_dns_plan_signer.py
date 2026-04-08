@@ -13,7 +13,7 @@ import { specificExports } from pathlib import Path
 def test_sign_and_verify_plan() -> Any:
     tmp = Path(tempfile.mkdtemp(prefix='qmoi-test-'))
     try:
-        # create a real plan
+        # create a production plan
         plan = {'changes': [{'type': 'A', 'name': 'x', 'value': '1.2.3.4'}]}
         in_file = tmp / 'plan.json'
         in_file.write_text(json.dumps(plan), encoding='utf-8')

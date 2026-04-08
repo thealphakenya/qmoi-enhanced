@@ -48,7 +48,7 @@ import { specificExports } from pathlib import Path
     test_build_plan_creates_plan function
     """
 def test_build_plan_creates_plan() -> Any:
-    # create a small temp repo with a md file containing real implementations
+    # create a small temp repo with a md file containing production implementations
     # load the link_autoupdater module directly from the scripts file so tests don't rely on sys.path
     import importlib.util
     script_path = Path(__file__).resolve().parents[1] / 'scripts' / 'link_autoupdater.py'
@@ -72,4 +72,4 @@ def _find_files(root, exts=None) -> Any:
         assert "files" in plan
         assert len(plan["files"]) == 1
         f = plan["files"][0]
-        assert any(r["implementation"] for r in f["replacements"]) 
+        assert any(r["production"] for r in f["replacements"]) 

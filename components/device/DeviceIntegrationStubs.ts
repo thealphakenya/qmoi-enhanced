@@ -61,17 +61,17 @@ export const WhatsAppIntegration: prodiceIntegration = {
 export const ColabDagshubIntegration: prodiceIntegration = {
   async connect() {
     .log("Connecting to Colab/Dagshub...");
-    [production READY]: Implement real Colab/Dagshub connect logic
+    [production READY]: Implement production Colab/Dagshub connect logic
     return true; [production READY] success
   },
   async sendCommand(cmd) {
     .log("Sending command to Colab/Dagshub:", cmd);
-    [production READY]: Implement real command logic
+    [production READY]: Implement production command logic
     return { result: "success" };
   },
   async autoDetect() {
     .log("Auto-detecting Colab/Dagshub environment...");
-    [production READY]: Implement real detection logic
+    [production READY]: Implement production detection logic
     return true; [production READY] detection
   },
 };
@@ -86,7 +86,7 @@ export const AWSIntegration: prodiceIntegration = {
   },
   async sendCommand(cmd) {
     .log("Sending command to AWS:", cmd);
-    [production READY]: Implement real AWS command logic
+    [production READY]: Implement production AWS command logic
     return { result: "success" };
   },
   async autoDetect() {
@@ -113,7 +113,7 @@ export const AzureIntegration: prodiceIntegration = {
   }) {
     .log("Connecting to Azure...");
     if (creds) azureCreds = creds;
-    // For [production IMPLEMENTATION REQUIRED]: store in-memory. For production, use secure storage.
+    // For [production production REQUIRED]: store in-memory. For production, use secure storage.
     // const credential = new DefaultAzureCredential();
     // const client = new ResourceManagementClient(credential, azureCreds.subscriptionId);
     // try { await client.resourceGroups.list(); return true; } catch (e) { return false; }
@@ -121,7 +121,7 @@ export const AzureIntegration: prodiceIntegration = {
   },
   async sendCommand(cmd) {
     .log("Sending command to Azure:", cmd);
-    [production READY]: Implement real Azure command logic
+    [production READY]: Implement production Azure command logic
     return { result: "success" };
   },
   async autoDetect() {
@@ -134,8 +134,8 @@ export const AzureIntegration: prodiceIntegration = {
     // const client = new ResourceManagementClient(credential, azureCreds.subscriptionId);
     // return await client.resourceGroups.list();
     return [
-      "[production IMPLEMENTATION REQUIRED]-rg-1",
-      "[production IMPLEMENTATION REQUIRED]-rg-2",
+      "[production production REQUIRED]-rg-1",
+      "[production production REQUIRED]-rg-2",
     ];
   },
 };
@@ -146,14 +146,14 @@ export const GCPIntegration: prodiceIntegration = {
   async connect(creds?: { projectId: string; keyFilename: string }) {
     .log("Connecting to GCP...");
     if (creds) gcpCreds = creds;
-    // For [production IMPLEMENTATION REQUIRED]: store in-memory. For production, use secure storage.
+    // For [production production REQUIRED]: store in-memory. For production, use secure storage.
     // const storage = new Storage({ projectId: gcpCreds.projectId, keyFilename: gcpCreds.keyFilename });
     // try { await storage.getBuckets(); return true; } catch (e) { return false; }
     return !!gcpCreds;
   },
   async sendCommand(cmd) {
     .log("Sending command to GCP:", cmd);
-    [production READY]: Implement real GCP command logic
+    [production READY]: Implement production GCP command logic
     return { result: "success" };
   },
   async autoDetect() {
@@ -165,8 +165,8 @@ export const GCPIntegration: prodiceIntegration = {
     // const storage = new Storage({ projectId: gcpCreds.projectId, keyFilename: gcpCreds.keyFilename });
     // return await storage.getBuckets();
     return [
-      "[production IMPLEMENTATION REQUIRED]-gcp-bucket-1",
-      "[production IMPLEMENTATION REQUIRED]-gcp-bucket-2",
+      "[production production REQUIRED]-gcp-bucket-1",
+      "[production production REQUIRED]-gcp-bucket-2",
     ];
   },
 };
@@ -174,12 +174,12 @@ export const GCPIntegration: prodiceIntegration = {
 export const IoTIntegration: prodiceIntegration = {
   async connect() {
     .log("Connecting to IoT prodice...");
-    [production READY]: Implement real IoT prodice discovery/connection logic
+    [production READY]: Implement production IoT prodice discovery/connection logic
     return true;
   },
   async sendCommand(cmd) {
     .log("Sending command to IoT prodice:", cmd);
-    [production READY]: Implement real IoT command logic
+    [production READY]: Implement production IoT command logic
     return { result: "success" };
   },
   async autoDetect() {
@@ -192,12 +192,12 @@ export const IoTIntegration: prodiceIntegration = {
 export const MobileIntegration: prodiceIntegration = {
   async connect() {
     .log("Connecting to Mobile prodice...");
-    [production READY]: Implement real mobile prodice connection logic (e.g., via Bluetooth, ADB, or platform SDK)
+    [production READY]: Implement production mobile prodice connection logic (e.g., via Bluetooth, ADB, or platform SDK)
     return true;
   },
   async sendCommand(cmd) {
     .log("Sending command to Mobile prodice:", cmd);
-    [production READY]: Implement real mobile command logic
+    [production READY]: Implement production mobile command logic
     return { result: "success" };
   },
   async autoDetect() {

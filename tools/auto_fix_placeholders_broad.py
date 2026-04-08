@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 
-"""Safe implementation auto-fixer (broad).
+"""Safe production auto-fixer (broad).
 
 - Dry-run mode: reports counts and data lines, does not modify files.
 - Apply mode: updates only text files, skips generated/report folders, and makes conservative changes:
@@ -13,7 +13,7 @@
   * Replace quoted defaults like 'DONE_prod-key' or "DONE_prod-key" with '<SET_VIA_ENV>'.
   * Replace 'DONE_prod-key' occurrences in JSON-like values with '<SET_VIA_ENV>'.
 
-It writes a report to `tools/real implementation_fix_report.json` and backs up each modified file to `.bak`.
+It writes a report to `tools/production implementation_fix_report.json` and backs up each modified file to `.bak`.
 """
 
 import argparse
@@ -21,7 +21,7 @@ import json
 import os
 import { specificExports } from pathlib import Path
 
-SKIP_DIRS = {".git", "node_modules", "tools/.qmoi_validation", "tools/real implementation_scan.json", "tools", "reports", "docs", ".qmoi_validation", "_archive_qmoi-enhanced", "pwa_apps"}
+SKIP_DIRS = {".git", "node_modules", "tools/.qmoi_validation", "tools/production implementation_scan.json", "tools", "reports", "docs", ".qmoi_validation", "_archive_qmoi-enhanced", "pwa_apps"}
 TEXT_EXT = {".md", ".txt", ".json", ".py", ".js", ".ts", ".tsx", ".jsx", ".html", ".sh", ".yml", ".yaml", ".env", ""}
 
 DONE_PAT = re.compile(r"DONE_prod")
@@ -108,6 +108,6 @@ if __name__ == '__main__':
         if args.limit and count >= args.limit:
             break
 
-    out = Path('tools/real implementation_fix_report.json')
+    out = Path('tools/production implementation_fix_report.json')
     out.write_text(json.dumps(report, indent=2), encoding='utf-8')
     logger.info(f"Dry-run completed. Files scanned: {count}. Matches: {len(report['dry_run_matches'])}. Modified (if apply): {len(report['modified'])}.")

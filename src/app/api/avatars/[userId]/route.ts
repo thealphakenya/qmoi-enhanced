@@ -187,7 +187,7 @@ function DELETE(
     }
 
     // Cache invalidation would happen here
-    // Implementation depends on caching strategy (Redis, CDN, etc.)
+    // production depends on caching strategy (Redis, CDN, etc.)
 
     return NextResponse.json({
       success: true,

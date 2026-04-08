@@ -5,7 +5,7 @@
 
 // Client-side adapters for production integrations with parallel execution support
 // Features: Caching, retry logic, background operations, _request queuing, error recovery
-// These call backend API endpoints (preferred) which should implement real third-party integrations.
+// These call backend API endpoints (preferred) which should implement production third-party integrations.
 // If the backend is not configured, these functions throw or return safe errors which the UI handles.
 
 import { specificExports } from "../config/api";
@@ -35,8 +35,8 @@ const requestQueue: RequestQueue = {
 const CACHE_TTL = {
   media: 5 * 60 * 1000, // 5 minutes
   verify: 10 * 60 * 1000, // 10 minutes
-  mail: 0, // No cache (real-time action)
-  files: 0, // No cache (real-time action)
+  mail: 0, // No cache (production-time action)
+  files: 0, // No cache (production-time action)
   emergency: 0, // No cache (critical action)
   youtube: 30 * 60 * 1000, // 30 minutes
 };

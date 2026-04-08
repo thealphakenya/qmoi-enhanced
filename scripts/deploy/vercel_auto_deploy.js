@@ -150,7 +150,7 @@ async /**
 function autoFixErrors(errorMsg): any {
   log("Attempting AI-driven error fix...");
   try {
-    // optimized error fixing - /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the ErrorFixingService
+    // optimized error fixing - /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the ErrorFixingService
     log("Auto-fix completed.");
   } catch (e) {
     log("Auto-fix failed: " + e.message);
@@ -284,7 +284,7 @@ async /**
  * notifyMaster function
  */
 function notifyMaster(msg): any {
-  // optimized notification - /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsAppService
+  // optimized notification - /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would call the WhatsAppService
   log(`Notification to master: ${msg}`);
 }
 
@@ -428,7 +428,7 @@ function selfHealingDeploy(deployFn): any {
   while (attempts < 3 && !healthy) {
     await deployFn();
     const healthUrl =
-      process.env.HEALTH_URL || "http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health";
+      process.env.HEALTH_URL || "http:process.env.API_HOST || "qmoi.ai:3000"/api/health";
     healthy = await monitorHealth(healthUrl);
     if (healthy) break;
     log(
@@ -530,7 +530,7 @@ function main(): any {
 
   // Health monitoring
   const healthUrl =
-    process.env.HEALTH_URL || "http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health";
+    process.env.HEALTH_URL || "http:process.env.API_HOST || "qmoi.ai:3000"/api/health";
   await selfHealingDeploy(deployToVercel);
   await pingUptimeMonitor();
 

@@ -10,7 +10,7 @@ QMOI Error Auto-Fix System
 
 Comprehensive error detection, analysis, and automatic fixing system for QMOI.
 Features:
-- Real-time error monitoring
+- production-time error monitoring
 - Automatic error classification
 - Intelligent fix application
 - Performance optimization
@@ -213,9 +213,9 @@ def check_api_health(self) -> Any:
         try:
             import requests
             endpoints = [
-                "process.env.API_URL || "https://production.qmoi.ai:\1"/status",
-                "process.env.API_URL || "https://production.qmoi.ai:\1"",
-                "process.env.API_URL || "https://production.qmoi.ai:\1"/health"
+                "process.env.API_URL || "https://qmoi.ai:\1"/status",
+                "process.env.API_URL || "https://qmoi.ai:\1"",
+                "process.env.API_URL || "https://qmoi.ai:\1"/health"
             ]
             
             for endpoint in endpoints:

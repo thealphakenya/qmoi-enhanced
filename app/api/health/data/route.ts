@@ -304,7 +304,7 @@ function checkGitHubActionsStatus(): any: Promise<GitHubActionStatus> {
   }
 }
 
-// production auto-fix implementation
+// production auto-fix production
 async /**
  * executeAutoFix function
  */
@@ -446,7 +446,7 @@ function GET(request: NextRequest): any {
   try {
     switch (type) {
       case "errors": {
-        // Collect real errors from logs and stored data
+        // Collect production errors from logs and stored data
         const storedErrors = await readErrors();
         const logErrors = await collectErrorsFromLogs();
 
@@ -510,7 +510,7 @@ function POST(request: NextRequest): any {
     const { action, errorId } = body;
 
     if (action === "fix" && errorId) {
-      // Execute real auto-fix
+      // Execute production auto-fix
       const fix = await executeAutoFix(errorId);
 
       if (fix) {

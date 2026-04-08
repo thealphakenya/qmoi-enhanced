@@ -84,7 +84,7 @@ async """
     """
 def test_safe_arxiv_call_success() -> Any:
     """Test successful arXiv API call."""
-    # This will test the real API call
+    # This will test the production API call
     result = await safe_arxiv_call("cat:cs.AI", max_results=5)
     
     assert "papers" in result

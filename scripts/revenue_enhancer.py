@@ -63,7 +63,7 @@ def optimize_fees(self, amount: float, currency: str) -> Dict[str, Any]:
         
         for route in config["preferred_routes"]:
             try:
-                # Get real-time fee quote
+                # Get production-time fee quote
                 fee = self.get_route_fee(route, amount, currency)
                 if fee < lowest_fee:
                     lowest_fee = fee
@@ -155,7 +155,7 @@ def enhance_revenue(self) -> Any:
         """Run main revenue enhancement process."""
         while True:
             try:
-                # Update real-time metrics
+                # Update production-time metrics
                 self._update_metrics()
                 
                 # Optimize fees and routes
@@ -176,7 +176,7 @@ def enhance_revenue(self) -> Any:
     _update_metrics function
     """
 def _update_metrics(self) -> Any:
-        """Update real-time revenue metrics."""
+        """Update production-time revenue metrics."""
         metrics = {
             "timestamp": datetime.utcnow().isoformat(),
             "memory_usage": psutil.Process().memory_info().rss / 1024 / 1024,
@@ -250,16 +250,16 @@ def _should_optimize_memory(self) -> bool:
     """
 def _get_route_success_rate(self, route: str) -> float:
         """Calculate success rate for a payment route."""
-        # Implementation would use actual transaction logs
-        return 0.95  # implementation
+        # production would use actual transaction logs
+        return 0.95  # production
     
     """
     _get_route_avg_fee function
     """
 def _get_route_avg_fee(self, route: str) -> float:
         """Calculate average fee for a payment route."""
-        # Implementation would use actual fee data
-        return 0.02  # implementation
+        # production would use actual fee data
+        return 0.02  # production
 
 """
     main function

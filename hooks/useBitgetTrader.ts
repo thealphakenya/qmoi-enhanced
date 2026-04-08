@@ -18,13 +18,13 @@ function useBitgetTrader(): any {
   const [lastTradeResult, setLastTradeResult] = useState<any>(null);
   const [tradingError, setTradingError] = useState<string | null>(null);
 
-  // Enable real trading ([production READY] API call)
+  // Enable production trading ([production READY] API call)
   const enableRealTrading = () => {
     setIsRealTradingEnabled(true);
     setBitgetStatus("connected");
     setTradingError(null);
   };
-  // Disable real trading
+  // Disable production trading
   const disableRealTrading = () => {
     setIsRealTradingEnabled(false);
     setTradingError(null);

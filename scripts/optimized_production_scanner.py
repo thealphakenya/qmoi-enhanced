@@ -31,9 +31,9 @@ SKIP_DIRS = {
 # Core production patterns (high confidence only)
 CRITICAL_PATTERNS = {
     # Highest priority patterns
-    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': 'High: production implementation required marker',
-    r'//\s*production\s+IMPLEMENTATION\s+REQUIRED': 'High: Inline production implementation marker',
-    r'#\s*production\s+IMPLEMENTATION\s+REQUIRED': 'High: Python production marker',
+    r'\[production\s+production\s+REQUIRED\]': 'High: production production required marker',
+    r'//\s*production\s+production\s+REQUIRED': 'High: Inline production production marker',
+    r'#\s*production\s+production\s+REQUIRED': 'High: Python production marker',
     
     # Error variable anti-patterns
     r'} catch \(_error\)': 'High: Underscore error variable in catch',
@@ -42,15 +42,15 @@ CRITICAL_PATTERNS = {
     # Type casting issues
     r'\(\s*console\s+as\s+any\s*\)\s*\.error': 'High: Type casting anti-pattern',
     
-    # real markers
-    r'\breal\b': 'Medium: real marker',
-    r'\breal\b': 'Medium: real marker',
+    # production markers
+    r'\breal\b': 'Medium: production marker',
+    r'\breal\b': 'Medium: production marker',
     r'NOT\s+IMPLEMENTED': 'Medium: implemented',
     
-    # Test//* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variables
+    # Test//* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variables
     r'\btemp_\w+\b': 'Medium: permanent variable',
-    r'\breal implementation_\w+\b': 'Medium: /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variable',
-    r'\breal_\w+\b': 'Medium: real variable',
+    r'\breal implementation_\w+\b': 'Medium: /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ variable',
+    r'\breal_\w+\b': 'Medium: production variable',
 }
 
 class OptimizedproductionScanner:

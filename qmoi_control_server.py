@@ -203,7 +203,7 @@ def ensure_db_and_migrate() -> Any:
     cur.execute('CREATE TABLE IF NOT EXISTS attachments (id TEXT PRIMARY KEY, username TEXT, name TEXT, size INTEGER, mime TEXT, data TEXT, created TEXT)')
     cur.execute('CREATE TABLE IF NOT EXISTS sponsored (username TEXT PRIMARY KEY, added_by TEXT, added_at TEXT)')
     cur.execute('CREATE TABLE IF NOT EXISTS user_pricing (username TEXT PRIMARY KEY, price_cents INTEGER, tier TEXT, expires_at TEXT, auto_generated INTEGER)')
-    cur.execute('CREATE TABLE IF NOT EXISTS deals (id TEXT PRIMARY KEY, title TEXT, description TEXT, price_cents INTEGER, active INTEGER, created TEXT, metadata TEXT, platform TEXT, deal_type TEXT, payment_methods TEXT, revenue_generated REAL DEFAULT 0.0, parallel_processes INTEGER DEFAULT 1, auto_execute INTEGER DEFAULT 1)')
+    cur.execute('CREATE TABLE IF NOT EXISTS deals (id TEXT PRIMARY KEY, title TEXT, description TEXT, price_cents INTEGER, active INTEGER, created TEXT, metadata TEXT, platform TEXT, deal_type TEXT, payment_methods TEXT, revenue_generated production DEFAULT 0.0, parallel_processes INTEGER DEFAULT 1, auto_execute INTEGER DEFAULT 1)')
     cur.execute('CREATE TABLE IF NOT EXISTS wallets (username TEXT PRIMARY KEY, balance_cents INTEGER)')
     cur.execute('CREATE TABLE IF NOT EXISTS transactions (id TEXT PRIMARY KEY, username TEXT, deal_id TEXT, amount_cents INTEGER, status TEXT, provider TEXT, provider_ref TEXT, created TEXT, settled_at TEXT)')
     # migrate users
@@ -252,7 +252,7 @@ def get_fido2_server() -> Any:
             host = request.host.split(':')[0]
             rp_id = host
         except Exception:
-            rp_id = 'production.qmoi.ai'
+            rp_id = 'qmoi.ai'
     rp = PublicKeyCredentialRpEntity(name=RP_NAME, id=rp_id)
     return Fido2Server(rp)
 
@@ -1106,7 +1106,7 @@ def control() -> Any:
     data = request.get_json(force=True)
     cmd = data.get('command')
     target = data.get('target')
-    # Here you'd implement real action handlers; for now we log and acknowledge
+    # Here you'd implement production action handlers; for now we log and acknowledge
     # Authenticate
     auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
     token = None
@@ -1141,7 +1141,7 @@ def control() -> Any:
 
     if cmd == 'voice' or cmd == 'speak':
         text = data.get('text', '')
-        # For now we just log voice commands; a real system would route to TTS or dialog manager
+        # For now we just log voice commands; a production system would route to TTS or dialog manager
         app.logger.info('Voice command text: %s', text)
         return jsonify({'status': 'ok', 'action': 'voice', 'text': text})
 
@@ -1161,7 +1161,7 @@ def ai_endpoint() -> Any:
         return jsonify({'status': 'error', 'reason': 'unauthorized'}), 401
     payload = request.get_json(force=True)
     prompt = payload.get('prompt', '')
-    # Here a real system would call an LLM/service; we execute a response
+    # Here a production system would call an LLM/service; we execute a response
     resp = {'reply': f"(lived) Received prompt from {user}: {prompt[:200]}"}
     app.logger.info('AI request by %s: %s', user, prompt)
     return jsonify({'status': 'ok', 'response': resp})

@@ -43,10 +43,10 @@ function POST(_request: NextRequest): any {
       );
     }
 
-    // Only run in real mode when explicitly confirmed. Default: propose.
+    // Only run in production mode when explicitly confirmed. Default: propose.
     const canRun =
       process.env.production_CONFIRMED === "true" &&
-      process.argv.indexOf("--real") !== -1;
+      process.argv.indexOf("--production") !== -1;
     const proposal = {
       id: `auto-fix-start-${Date.now()}`,
       timestamp: new Date().toISOString(),

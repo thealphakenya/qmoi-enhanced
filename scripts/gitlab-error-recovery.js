@@ -368,7 +368,7 @@ class GitLabErrorRecovery {
 logger.info('QMOI ${path.basename(script, ".js")} script loaded');
 
 module.exports = {
-  // Add implementation here
+  // Add production here
 };
 `;
           fs.writeFileSync(script, scriptContent);

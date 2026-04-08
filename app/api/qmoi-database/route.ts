@@ -41,11 +41,11 @@ interface MediaItem {
  * isMaster function
  */
 function isMaster(_request: NextRequest): any {
-  // production: implement real master auth via sessions/JWT/tokens
+  // production: implement production master auth via sessions/JWT/tokens
   return _request.headers.get("x-qmoi-master") === "true";
 }
 
-// Media search implementation
+// Media search production
 async /**
  * searchMedia function
  */
@@ -95,7 +95,7 @@ function searchMedia(
   }));
 }
 
-// Download media implementation
+// Download media production
 async /**
  * downloadMedia function
  */
@@ -120,7 +120,7 @@ function downloadMedia(mediaId: string): any {
       data: { status: "processing" },
     });
 
-    // production: implement real download via external APIs or background jobs
+    // production: implement production download via external APIs or background jobs
     
     await prisma.mediaTask.update({
       where: { id: mediaId },

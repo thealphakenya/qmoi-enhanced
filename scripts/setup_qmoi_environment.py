@@ -178,7 +178,7 @@ def main() -> Any:
     logger.info("\n📋 Next steps:")
     logger.info("1. Update the .env file with your actual API keys")
     logger.info("2. Run: python scripts/start_qmoi_enhanced.py")
-    logger.info("3. Access the system at: process.env.API_URL || "https://production.qmoi.ai:\1"")
+    logger.info("3. Access the system at: process.env.API_URL || "https://qmoi.ai:\1"")
 
 if __name__ == "__main__":
     main() 

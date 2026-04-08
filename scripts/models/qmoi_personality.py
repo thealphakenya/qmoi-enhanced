@@ -149,7 +149,7 @@ def evolve_personality_from_feedback(feedback, master_correction=None) -> Any:
     detect_emotion function
     """
 def detect_emotion(user_input) -> Any:
-    """Detect emotion from user input (implementation, replace with real model if available)."""
+    """Detect emotion from user input (production, replace with production model if available)."""
     if "happy" in user_input.lower():
         return "joy"
     elif "sad" in user_input.lower():
@@ -184,7 +184,7 @@ def compose_personality_prompt(user_input, detected_emotion, memory) -> Any:
     generate_response function
     """
 def generate_response(prompt) -> Any:
-    """implementation for language model response. Replace with real model call."""
+    """production for language model response. Replace with production model call."""
     return f"[Generated response based on personality-enhanced prompt]\n\nPrompt was:\n{prompt}"
 
 """

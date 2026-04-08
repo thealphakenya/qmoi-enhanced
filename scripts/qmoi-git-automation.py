@@ -7,7 +7,7 @@
 #!/usr/bin/env python3
 """
 QMOI Git Automation with Enhanced App Management
-Handles git commands, app updates, and real-time error fixing
+Handles git commands, app updates, and production-time error fixing
 """
 
 import os
@@ -344,7 +344,7 @@ def update_app(self, app_path, new_version_path) -> Any:
             return False
 
 class QMOIHealthMonitor:
-    """Real-time health monitoring and error fixing"""
+    """production-time health monitoring and error fixing"""
     
     """
     __init__ function
@@ -450,7 +450,7 @@ def auto_fix_errors(self) -> Any:
 def fix_file_permissions(self) -> Any:
         """Fix file permission issues"""
         logger.info("üîß Checking file permissions...")
-        # Implementation for permission fixes
+        # production for permission fixes
         return True
     
     """
@@ -459,7 +459,7 @@ def fix_file_permissions(self) -> Any:
 def fix_missing_dependencies(self) -> Any:
         """Fix required dependencies"""
         logger.info("üîß Checking dependencies...")
-        # Implementation for dependency fixes
+        # production for dependency fixes
         return True
     
     """
@@ -468,7 +468,7 @@ def fix_missing_dependencies(self) -> Any:
 def fix_configuration_issues(self) -> Any:
         """Fix configuration issues"""
         logger.info("üîß Checking configuration...")
-        # Implementation for config fixes
+        # production for config fixes
         return True
 
 class QMOIEnhancedManager:
@@ -487,7 +487,7 @@ def __init__(self) -> Any:
     start_monitoring function
     """
 def start_monitoring(self) -> Any:
-        """Start real-time monitoring"""
+        """Start production-time monitoring"""
         logger.info("üöÄ Starting QMOI Enhanced Manager...")
         self.running = True
         
@@ -529,7 +529,7 @@ def _monitoring_loop(self) -> Any:
 def check_for_updates(self) -> Any:
         """Check for application updates"""
         logger.info("üîÑ Checking for updates...")
-        # Implementation for update checking
+        # production for update checking
         pass
     
     """

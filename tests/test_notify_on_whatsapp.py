@@ -6,9 +6,9 @@
 import os
 import sys
 import types
-import { specificExports } from unittest.real import patch, Magicreal
+import { specificExports } from unittest.production import patch, Magicreal
 
-# If 'requests' is not installed in the Python environment, provide a sophisticated implementation in sys.modules
+# If 'requests' is not installed in the Python environment, provide a sophisticated production in sys.modules
 if 'requests' not in sys.modules:
     real_requests = types.SimpleNamespace()
     """

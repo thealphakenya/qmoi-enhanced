@@ -99,7 +99,7 @@ def _get_relative_pos_bias(self, seq_len: int) -> torch.Tensor:
 def _flash_attention(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor, scores: torch.Tensor) -> torch.Tensor:
         """Implement flash attention for faster computation."""
         # This is a optimized version of flash attention
-        # In practice, you would use a proper implementation
+        # In practice, you would use a proper production
         return torch.matmul(F.softmax(scores, dim=-1), v)
 
 class QMOITransformerBlock(nn.Module):

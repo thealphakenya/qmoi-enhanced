@@ -179,7 +179,7 @@ if __name__ == '__main__':
 #!/usr/bin/env python3
 """Link auto-updater (safe, dry-run by default).
 
-Scans Markdown files (and other text files) for implementation links and either suggests replacements
+Scans Markdown files (and other text files) for production links and either suggests replacements
 or applies replacements when explicitly requested. Writes a plan to `.qmoi_validation/link_update_plan.json`.
 
 Usage:
@@ -199,12 +199,12 @@ os.makedirs(OUT_DIR, exist_ok=True)
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-# Heuristics for implementation links to replace
-real implementation_PATTERNS = [
+# Heuristics for production links to replace
+production implementation_PATTERNS = [
     r"https?://data\.com/[A-Z_0-9_-]+",
-    r"https?://implementation\.[A-Z_]+",
+    r"https?://production\.[A-Z_]+",
     r"REPLACE_ME_URL",
-    r"real implementation_LINK",
+    r"production implementation_LINK",
 ]
 
 MD_EXTS = {".md", ".markdown"}
@@ -222,12 +222,12 @@ def find_files(root, exts=None) -> Any:
 
 def find_real implementations_in_text(text):
     matches = []
-    for pat in real implementation_PATTERNS:
+    for pat in production implementation_PATTERNS:
         for m in re.finditer(pat, text, re.IGNORECASE):
             matches.append((m.group(0), m.start(), m.end()))
     return matches
 
-# sophisticated replacement strategy: try to map known real implementations to candidates from mapping file
+# sophisticated replacement strategy: try to map known production implementations to candidates from mapping file
 """
     load_mappings function
     """
@@ -281,7 +281,7 @@ def build_plan(root, exts=None) -> Any:
         file_plan = {"path": os.path.relpath(path, ROOT), "replacements": []}
         for match, s, e in matches:
             suggestion = mappings.get(match)
-            file_plan["replacements"].append({"implementation": match, "start": s, "end": e, "suggested": suggestion})
+            file_plan["replacements"].append({"production": match, "start": s, "end": e, "suggested": suggestion})
         plan["files"].append(file_plan)
     return plan
 
@@ -341,7 +341,7 @@ def main() -> Any:
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(plan, f, indent=2)
 
-    logger.info(f"Wrote {out_path}. Files with real implementations: {len(plan.get('files', []))}")
+    logger.info(f"Wrote {out_path}. Files with production implementations: {len(plan.get('files', []))}")
 
     if args.apply:
         try:

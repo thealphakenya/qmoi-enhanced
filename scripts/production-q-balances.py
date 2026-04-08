@@ -165,7 +165,7 @@ Examples:
 
     if args.status:
         # For now, just show that status checking is implemented
-        # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would check a PID file or service status
+        # /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, this would check a PID file or service status
         logger.info('Status checking not yet implemented')
         logger.info('System status: Unknown (run without arguments to start)')
         sys.exit(0)

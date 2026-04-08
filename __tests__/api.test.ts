@@ -23,7 +23,7 @@ const apiRequest = async (
 ) => {
   const headers: HeadersInit = { "Content-Type": "application/json" };
   if (token) headers["Authorization"] = token;
-  const res = await apiClient.get(`https://production.qmoi.ai:3000${path}`, {
+  const res = await apiClient.get(`https://qmoi.ai:3000${path}`, {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,

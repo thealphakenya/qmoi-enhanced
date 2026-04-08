@@ -180,7 +180,7 @@ def check_domain_active_status(self, domain) -> Any:
                     'is_parked': is_parked,
                     'content_size': len(content),
                     'has_html': '<html' in content.lower(),
-                    'message': 'Domain is active with real content' if has_real_content else 'Domain may be parked or empty'
+                    'message': 'Domain is active with production content' if has_real_content else 'Domain may be parked or empty'
                 }
         except Exception as e:
             return {

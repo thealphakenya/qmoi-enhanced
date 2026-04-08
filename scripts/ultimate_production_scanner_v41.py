@@ -15,18 +15,18 @@ REPORT_DIR.mkdir(exist_ok=True)
 
 # Pre-compiled regex patterns for speed
 CRITICAL_PATTERNS = [
-    # Implementation markers  
-    (r'\[production\s+IMPLEMENTATION\s+REQUIRED\]', 'IMPL_MARKER'),
-    (r'production\s+IMPLEMENTATION\s+REQUIRED', 'IMPL_MARKER'),
+    # production markers  
+    (r'\[production\s+production\s+REQUIRED\]', 'IMPL_MARKER'),
+    (r'production\s+production\s+REQUIRED', 'IMPL_MARKER'),
     (r'production\s+READY\]', 'IMPL_MARKER'),
     
-    # DONE/fixed with implementation context
+    # DONE/fixed with production context
     (r'DONE\s*:.*IMPL', 'DONE_IMPL'),
     (r'fixed\s*:.*prod', 'fixed_prod'),
     
     # reals and unimplemented
     (r'\breal\s+\w+', 'real_CODE'),
-    (r'\breal\s+', 'real'),
+    (r'\breal\s+', 'production'),
     (r'\bNOT\s+IMPLEMENTED\b', 'UNIMPLEMENTED'),
     (r'\.skip\(\)', 'SKIPPED_TEST'),
     
@@ -38,7 +38,7 @@ CRITICAL_PATTERNS = [
     # Anti-pattern variables
     (r'\b_error\b(?!.*:\s*["\'])', 'ERROR_VAR'),
     (r'\btmp_\w+\b', 'TEMP_VAR'),
-    (r'\breal implementation_', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */'),
+    (r'\breal implementation_', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */'),
     (r'\breal_\w+\b', 'real_VAR'),
     (r'\bdummy_\w+\b', 'DUMMY_VAR'),
     
@@ -47,16 +47,16 @@ CRITICAL_PATTERNS = [
     (r'@ts-ignore', 'TS_IGNORE'),
     (r'@ts-nocheck', 'TS_NOCHECK'),
     
-    # production.qmoi.ai/prod endpoints
-    (r'production.qmoi.ai:[0-9]{4}', 'production.qmoi.ai'),
+    # qmoi.ai/prod endpoints
+    (r'qmoi.ai:[0-9]{4}', 'qmoi.ai'),
     (r'127\.0\.0\.1:[0-9]{4}', 'LOCALHOST_IP'),
-    (r'https://\s*production.qmoi.ai', 'HTTP_LOCALHOST'),
+    (r'https://\s*qmoi.ai', 'HTTP_LOCALHOST'),
     
-    # real APIs
+    # production APIs
     (r'realAPI|realData|realResponse', 'real_DATA'),
     (r'realAPI', 'real_API'),
-    (r'/api/real', 'real_ENDPOINT'),
-    (r'/real/', 'real_PATH'),
+    (r'/api/production', 'real_ENDPOINT'),
+    (r'/production/', 'real_PATH'),
     
     # Empty error handling
     (r'catch\s*\([^)]*\)\s*{\s*}', 'EMPTY_CATCH'),

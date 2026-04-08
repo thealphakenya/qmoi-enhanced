@@ -78,7 +78,7 @@ class EmailService {
     } else {
       // Default SMTP
       this.transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || "production.qmoi.ai",
+        host: process.env.SMTP_HOST || "qmoi.ai",
         port: parseInt(process.env.SMTP_PORT || "587"),
         secure: process.env.SMTP_SECURE === "true",
         auth: process.env.SMTP_USER

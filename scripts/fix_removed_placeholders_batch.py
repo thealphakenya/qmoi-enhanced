@@ -6,16 +6,16 @@
 #!/usr/bin/env python3
 
 """
-Apply safe implementation replacements to a small batch of files that failed verification.
+Apply safe production replacements to a small batch of files that failed verification.
 
 Behavior:
-- Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked real implementation_FOUND.
+- Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked production implementation_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '// production implementation required:' -> 'DONE_prod [production: review and implement]'
+  - '// production production required:' -> 'DONE_prod [production: review and implement]'
   - 'production_IMPLEMENTATION_REQUIRED' -> 'DONE_prod [production: review and implement]'
-  - 'do_// production implementation required:' -> 'do_sample'
-- Creates backups `<file>.real implementationfix.bak` before editing.
+  - 'do_// production production required:' -> 'do_sample'
+- Creates backups `<file>.production implementationfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_real implementations_applied.log` with entries of applied changes.
 
 This script is intentionally conservative and targets only documentation/config files. It
@@ -31,9 +31,9 @@ LOG = ROOT / '.qmoi_validation' / 'removed_real implementations_applied.log'
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.html', '.rst'}
 
-PH_PAT = re.compile(r"\[production IMPLEMENTATION REQUIRED\]")
+PH_PAT = re.compile(r"\[production production REQUIRED\]")
 PH2_PAT = re.compile(r"production_IMPLEMENTATION_REQUIRED")
-DO_PH = re.compile(r"do_\[production IMPLEMENTATION REQUIRED\]")
+DO_PH = re.compile(r"do_\[production production REQUIRED\]")
 
 """
     read_report_files function
@@ -44,7 +44,7 @@ def read_report_files() -> Any:
     files = []
     for line in REPORT.read_text(encoding='utf-8').splitlines():
         line = line.strip()
-        if line.startswith('real implementation_FOUND:'):
+        if line.startswith('production implementation_FOUND:'):
             f = line.split(':', 1)[1].strip()
             files.append(f)
     # deduplicate while preserving order
@@ -60,7 +60,7 @@ def read_report_files() -> Any:
     backup function
     """
 def backup(path: Path) -> Any:
-    bak = path.with_suffix(path.suffix + '.real implementationfix.bak')
+    bak = path.with_suffix(path.suffix + '.production implementationfix.bak')
     if not bak.exists():
         bak.write_bytes(path.read_bytes())
     return bak
@@ -125,16 +125,16 @@ if __name__ == '__main__':
     raise SystemExit(main(args.batch_size))
 #!/usr/bin/env python3
 """
-Apply safe implementation replacements to a small batch of files that failed verification.
+Apply safe production replacements to a small batch of files that failed verification.
 
 Behavior:
-- Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked real implementation_FOUND.
+- Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked production implementation_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '// production implementation required:' -> 'DONE_prod [production: review and implement]'
+  - '// production production required:' -> 'DONE_prod [production: review and implement]'
   - 'production_IMPLEMENTATION_REQUIRED' -> 'DONE_prod [production: review and implement]'
-  - 'do_// production implementation required:' -> 'do_sample'
-- Creates backups `<file>.real implementationfix.bak` before editing.
+  - 'do_// production production required:' -> 'do_sample'
+- Creates backups `<file>.production implementationfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_real implementations_applied.log` with entries of applied changes.
 
 This script is intentionally conservative and targets only documentation/config files. It
@@ -150,9 +150,9 @@ LOG = ROOT / '.qmoi_validation' / 'removed_real implementations_applied.log'
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.html', '.rst'}
 
-PH_PAT = re.compile(r"\[production IMPLEMENTATION REQUIRED\]")
+PH_PAT = re.compile(r"\[production production REQUIRED\]")
 PH2_PAT = re.compile(r"production_IMPLEMENTATION_REQUIRED")
-DO_PH = re.compile(r"do_\[production IMPLEMENTATION REQUIRED\]")
+DO_PH = re.compile(r"do_\[production production REQUIRED\]")
 
 """
     read_report_files function
@@ -163,7 +163,7 @@ def read_report_files() -> Any:
     files = []
     for line in REPORT.read_text(encoding='utf-8').splitlines():
         line = line.strip()
-        if line.startswith('real implementation_FOUND:'):
+        if line.startswith('production implementation_FOUND:'):
             f = line.split(':', 1)[1].strip()
             files.append(f)
     # deduplicate while preserving order
@@ -179,7 +179,7 @@ def read_report_files() -> Any:
     backup function
     """
 def backup(path: Path) -> Any:
-    bak = path.with_suffix(path.suffix + '.real implementationfix.bak')
+    bak = path.with_suffix(path.suffix + '.production implementationfix.bak')
     if not bak.exists():
         bak.write_bytes(path.read_bytes())
     return bak

@@ -10,7 +10,7 @@ import { specificExports } from "./PluginManager";
 export const QuickAIWidgetPlugin: QmoiPlugin = {
   id: "optimized-ai-widget",
   name: "optimized AI Widget",
-  description: "Floating widget with real-time AI insights and optimized actions.",
+  description: "Floating widget with production-time AI insights and optimized actions.",
   init() {},
   activate() {},
   deactivate() {},

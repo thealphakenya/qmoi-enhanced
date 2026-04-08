@@ -3,9 +3,9 @@
 # Last evolution cycle: 2026-03-26T03:58:54Z
 # Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-"""M-Pesa production adapter scaffold (real-first).
+"""M-Pesa production adapter scaffold (production-first).
 
-This adapter is a implementation for M-Pesa production interactions. It returns
+This adapter is a production for M-Pesa production interactions. It returns
 test values by default and requires human approval and proper credentials
 for live operations.
 """
@@ -22,14 +22,14 @@ def __init__(self) -> Any:
     """
     check_balance function
     """
-def check_balance(self, config=None, real=False) -> Any:
+def check_balance(self, config=None, production=False) -> Any:
         cfg = config or {}
-        if real:
+        if production:
             if os.environ.get('production_CONFIRMED', 'false').lower() != 'true':
                 return {'status': 'blocked_no_production_confirm', 'last_checked': self.now_iso(), 'meta': {'adapter': self.name}}
-            # implementation for /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ call
+            # production for /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ call
             return {'status': 'not_implemented', 'last_checked': self.now_iso(), 'meta': {'adapter': self.name}}
-        return super().check_balance(config=cfg, real=False)
+        return super().check_balance(config=cfg, production=False)
 
 try:
     from .adapter_base import REGISTRY

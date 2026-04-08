@@ -110,7 +110,7 @@ def download_file(self, url: str, local_path: Path, timeout: int = 10) -> Tuple[
 def cache_links_from_report(self, report_file: str, skip_types: List[str] = None) -> None:
         """Cache links from a link_report.json file."""
         if skip_types is None:
-            skip_types = ["production.qmoi.ai", "relative", "unknown"]
+            skip_types = ["qmoi.ai", "relative", "unknown"]
 
         try:
             with open(report_file) as f:
@@ -261,7 +261,7 @@ def main() -> Any:
     parser.add_argument("--output", default="docs_site", help="Output directory for cached docs")
     parser.add_argument("--max-size", default="500M", help="Max cache size (e.g., 500M, 2G)")
     parser.add_argument("--generate-site", action="store_true", help="Generate static HTML site")
-    parser.add_argument("--skip-types", nargs="+", default=["production.qmoi.ai", "relative", "unknown"],
+    parser.add_argument("--skip-types", nargs="+", default=["qmoi.ai", "relative", "unknown"],
                         help="Link statuses to skip caching")
 
     args = parser.parse_args()

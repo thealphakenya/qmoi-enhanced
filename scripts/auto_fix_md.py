@@ -9,7 +9,7 @@ Auto-fix Markdown hygiene issues found by the validator.
 
 This script reads JSON reports in `.qmoi_validation/validation_reports/` and
 for files required frontmatter or H1 titles it will add conservative,
-non-destructive real implementations:
+non-destructive production implementations:
  - YAML frontmatter with a title field (if required)
  - H1 title line (if required)
 

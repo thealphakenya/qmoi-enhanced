@@ -7,7 +7,7 @@
 #!/usr/bin/env python3
 """
 QMOI QCity Automatic System
-Comprehensive automation with GitLab CI/CD, real-time monitoring, and self-healing
+Comprehensive automation with GitLab CI/CD, production-time monitoring, and self-healing
 """
 
 import asyncio

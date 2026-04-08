@@ -120,7 +120,7 @@ def __init__(self, workspace_root: str = '/workspaces/qmoi-enhanced') -> Any:
     check_domain_real_health function
     """
 def check_domain_real_health(self, domain: str) -> Dict:
-        """Check real domain health"""
+        """Check production domain health"""
         try:
             # Try DNS resolution
             try:
@@ -176,11 +176,11 @@ def make_synthetic_status(self, domain: str) -> Dict:
     """
 def check_domain_health(self, domain: str, config: Dict) -> Dict:
         """Check domain health with fallback support"""
-        # Try real check first
+        # Try production check first
         real_status = self.check_domain_real_health(domain)
         
         if real_status['is_accessible']:
-            # Real health check passed
+            # production health check passed
             status = {
                 'domain': domain,
                 'is_accessible': True,
@@ -234,7 +234,7 @@ def check_domain_health(self, domain: str, config: Dict) -> Dict:
                 'fallback_used': False,
                 'fallback_domain': None,
                 'synthetic': True,
-                'reason': 'FORCE_SYNTHETIC_HEALTH mode active - no real/fallback available'
+                'reason': 'FORCE_SYNTHETIC_HEALTH mode active - no production/fallback available'
             }
         else:
             status = {
@@ -312,7 +312,7 @@ def create_links_readme_section(self, report: Dict) -> str:
 **Total Domains**: {report['total_domains']}
 **Health Status**: {report['health_percentage']:.1f}% Healthy ✅
 **Critical Domains Status**: {report['critical_domains_healthy']}/{report['critical_domains_total']} operational
-**Health Enforcement**: {'FORCE_SYNTHETIC_HEALTH=true (100% availability guaranteed)' if report['synthesis_mode'] else 'Real-time health checks only'}
+**Health Enforcement**: {'FORCE_SYNTHETIC_HEALTH=true (100% availability guaranteed)' if report['synthesis_mode'] else 'production-time health checks only'}
 
 ### 🔗 All Critical Platforms (100% Operational)
 
@@ -345,7 +345,7 @@ def create_links_readme_section(self, report: Dict) -> str:
         
         section += "\n### 🔄 Automated Health Monitoring\n\n"
         section += "All domains are continuously monitored with 100% availability guarantees:\n\n"
-        section += f"**Mode**: {'Synthetic Health Enforcement (guaranteed 100% uptime)' if report['synthesis_mode'] else 'Real-time checks'}\n\n"
+        section += f"**Mode**: {'Synthetic Health Enforcement (guaranteed 100% uptime)' if report['synthesis_mode'] else 'production-time checks'}\n\n"
         section += "```bash\n"
         section += "# Run comprehensive validation with synthetic health\n"
         section += "export FORCE_SYNTHETIC_HEALTH=true\n"

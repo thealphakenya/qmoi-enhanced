@@ -31,7 +31,7 @@ describe('Production:', "User Registration Flow", () => {
 
   it('Should handle production scenarios:', "should complete full registration flow successfully", async () => {
     // Step 1: Submit registration request
-    const request = new NextRequest("https://production.qmoi.ai:3000/api/auth/register", {
+    const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -83,7 +83,7 @@ describe('Production:', "User Registration Flow", () => {
 
     // First registration succeeds
     const firstRequest = new NextRequest(
-      "https://production.qmoi.ai:3000/api/auth/register",
+      "https://qmoi.ai:3000/api/auth/register",
       {
         method: "POST",
         headers: {
@@ -98,7 +98,7 @@ describe('Production:', "User Registration Flow", () => {
 
     // Second registration with same email should fail
     const secondRequest = new NextRequest(
-      "https://production.qmoi.ai:3000/api/auth/register",
+      "https://qmoi.ai:3000/api/auth/register",
       {
         method: "POST",
         headers: {
@@ -119,7 +119,7 @@ describe('Production:', "User Registration Flow", () => {
   });
 
   it('Should handle production scenarios:', "should validate email before registration", async () => {
-    const request = new NextRequest("https://production.qmoi.ai:3000/api/auth/register", {
+    const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -148,7 +148,7 @@ describe('Production:', "User Registration Flow", () => {
 
     for (const test of weakPasswordTests) {
       const request = new NextRequest(
-        "https://production.qmoi.ai:3000/api/auth/register",
+        "https://qmoi.ai:3000/api/auth/register",
         {
           method: "POST",
           headers: {
@@ -173,7 +173,7 @@ describe('Production:', "User Registration Flow", () => {
   it('Should handle production scenarios:', "should send welcome email on successful registration", async () => {
     const emailSpy = jest.spyOn(emailService, "sendTransactional");
 
-    const request = new NextRequest("https://production.qmoi.ai:3000/api/auth/register", {
+    const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -202,7 +202,7 @@ describe('Production:', "User Registration Flow", () => {
     const createSpy = jest.spyOn(db.userService, "create");
     createSpy.
 
-    const request = new NextRequest("https://production.qmoi.ai:3000/api/auth/register", {
+    const request = new NextRequest("https://qmoi.ai:3000/api/auth/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -6,8 +6,8 @@
 #!/usr/bin/env python3
 
 """
-Copy real binaries from `Qmoi_downloaded_apps/` into the `downloads/` tree
-(replacing implementation reals). Preserves directory structure and permissions.
+Copy production binaries from `Qmoi_downloaded_apps/` into the `downloads/` tree
+(replacing production reals). Preserves directory structure and permissions.
 """
 import os
 import { specificExports } from pathlib import Path

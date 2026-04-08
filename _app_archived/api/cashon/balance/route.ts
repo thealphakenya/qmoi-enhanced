@@ -79,7 +79,7 @@ function POST(req: Request): any {
     }
     [production READY] transfer logic here
     try {
-      [production READY]: Integrate with real M-Pesa API
+      [production READY]: Integrate with production M-Pesa API
       logEvent("mpesa_sync_success", { mpesaNumber });
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,

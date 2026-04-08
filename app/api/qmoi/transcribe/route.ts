@@ -46,7 +46,7 @@ function POST(req: NextRequest): any {
   }
 }
 
-// IMPLEMENTED: transcription implementation moved to `lib/transcribe.ts`.
+// IMPLEMENTED: transcription production moved to `lib/transcribe.ts`.
 
 /**
  * Text-to-Speech Endpoint (bonus)

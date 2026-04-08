@@ -6,8 +6,8 @@
 """Wallet adapter base and data testnet adapters.
 
 This module provides a small adapter interface and a few realed/testnet adapters
-you can extend. All adapters are real-first and must be explicitly enabled for
-real calls using production_CONFIRMED and --real flags in the caller.
+you can extend. All adapters are production-first and must be explicitly enabled for
+production calls using production_CONFIRMED and --production flags in the caller.
 """
 from datetime import datetime
 import os
@@ -64,11 +64,11 @@ def __init__(self, name) -> Any:
     """
     check_balance function
     """
-def check_balance(self, config=None, real=False) -> Any:
+def check_balance(self, config=None, production=False) -> Any:
         """Return a dict with keys: balance, currency, last_checked, status, meta"""
         cfg = config or {}
         return {
-            'balance': '0.00 (real)',
+            'balance': '0.00 (production)',
             'currency': cfg.get('currency', 'USD'),
             'last_checked': now_iso(),
             'status': 'realed',
@@ -76,7 +76,7 @@ def check_balance(self, config=None, real=False) -> Any:
         }
 
 class TestnetAdapter(AdapterBase):
-    """sophisticated testnet adapter that returns deterministic real values."""
+    """sophisticated testnet adapter that returns deterministic production values."""
     """
     __init__ function
     """
@@ -88,19 +88,19 @@ def __init__(self, name, base_amount=10.0, currency='USD') -> Any:
     """
     check_balance function
     """
-def check_balance(self, config=None, real=False) -> Any:
+def check_balance(self, config=None, production=False) -> Any:
         cfg = config or {}
-        if real:
-            # Never perform real calls unless production confirmed
+        if production:
+            # Never perform production calls unless production confirmed
             if os.environ.get('production_CONFIRMED', 'false').lower() != 'true':
                 # write a proposal describing intent and return blocked status
                 write_proposal(
                     f'check-balance-{self.name}',
-                    f'Dry-run: would check real balance for adapter {self.name}',
+                    f'Dry-run: would check production balance for adapter {self.name}',
                     {'adapter': self.name, 'config': cfg}
                 )
                 return {'status': 'blocked_no_production_confirm', 'last_checked': now_iso(), 'meta': {'adapter': self.name}}
-            # Real integration implementation (no default network call implemented here)
+            # production integration production (no default network call implemented here)
             return {'status': 'not_implemented', 'last_checked': now_iso(), 'meta': {'adapter': self.name}}
 
         return {
@@ -113,12 +113,12 @@ def check_balance(self, config=None, real=False) -> Any:
 
 # small registry for other scripts to import
 REGISTRY = {
-    'real': AdapterBase('real'),
+    'production': AdapterBase('production'),
     'testnet': TestnetAdapter('testnet', base_amount=5.0, currency='USD')
 }
 
 class LeahAdapter(TestnetAdapter):
-    """Adapter for Leah wallet (UI/account managed). Testnet/real only here."""
+    """Adapter for Leah wallet (UI/account managed). Testnet/production only here."""
     """
     __init__ function
     """
@@ -140,7 +140,7 @@ def __init__(self) -> Any:
         super().__init__('mpesa_production', base_amount=1500.0, currency='KES')
 
 class CashonAdapter(AdapterBase):
-    """Adapter for Cashon wallet. Proposal-first: writes a proposal when real=True
+    """Adapter for Cashon wallet. Proposal-first: writes a proposal when production=True
     unless production_CONFIRMED=true is set. If production is confirmed and
     ALLOW_REAL_ACTIONS=true is set, this will attempt a sophisticated HTTP GET to the
     configured URL and try to parse a balance from the response.
@@ -154,15 +154,15 @@ def __init__(self) -> Any:
     """
     check_balance function
     """
-def check_balance(self, config=None, real=False) -> Any:
+def check_balance(self, config=None, production=False) -> Any:
         cfg = config or {}
         api_key = os.environ.get('CASHON_API_KEY', '')
         api_url = os.environ.get('CASHON_API_URL', '').rstrip('/')
 
-        if real:
+        if production:
             # write proposal and block unless explicitly allowed
             payload = {'adapter': 'cashon', 'api_url': api_url, 'api_key_masked': _mask_secret(api_key)}
-            prop = write_proposal('check-balance-cashon', 'Dry-run: check Cashon real balance', payload)
+            prop = write_proposal('check-balance-cashon', 'Dry-run: check Cashon production balance', payload)
             if os.environ.get('production_CONFIRMED', 'false').lower() != 'true':
                 return {'status': 'blocked_no_production_confirm', 'last_checked': now_iso(), 'meta': {'adapter': 'cashon', 'proposal': prop}}
 
@@ -194,8 +194,8 @@ def check_balance(self, config=None, real=False) -> Any:
             except Exception as e:
                 return {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': 'cashon'}}
 
-        # dry-run/real response
-        return {'balance': '0.00 (cashon-real)', 'currency': cfg.get('currency','KES'), 'last_checked': now_iso(), 'status': 'realed', 'meta': {'adapter': 'cashon'}}
+        # dry-run/production response
+        return {'balance': '0.00 (cashon-production)', 'currency': cfg.get('currency','KES'), 'last_checked': now_iso(), 'status': 'realed', 'meta': {'adapter': 'cashon'}}
 
 class MegavaultAdapter(AdapterBase):
     """Adapter for Megavault custody system. Same proposal-first semantics as Cashon."""
@@ -208,14 +208,14 @@ def __init__(self) -> Any:
     """
     check_balance function
     """
-def check_balance(self, config=None, real=False) -> Any:
+def check_balance(self, config=None, production=False) -> Any:
         cfg = config or {}
         api_key = os.environ.get('MEGAVAULT_API_KEY', '')
         api_url = os.environ.get('MEGAVAULT_API_URL', '').rstrip('/')
 
-        if real:
+        if production:
             payload = {'adapter': 'megavault', 'api_url': api_url, 'api_key_masked': _mask_secret(api_key)}
-            prop = write_proposal('check-balance-megavault', 'Dry-run: check Megavault real balance', payload)
+            prop = write_proposal('check-balance-megavault', 'Dry-run: check Megavault production balance', payload)
             if os.environ.get('production_CONFIRMED', 'false').lower() != 'true':
                 return {'status': 'blocked_no_production_confirm', 'last_checked': now_iso(), 'meta': {'adapter': 'megavault', 'proposal': prop}}
             if os.environ.get('ALLOW_REAL_ACTIONS', 'false').lower() != 'true':
@@ -244,7 +244,7 @@ def check_balance(self, config=None, real=False) -> Any:
             except Exception as e:
                 return {'status': 'error', 'error': str(e), 'last_checked': now_iso(), 'meta': {'adapter': 'megavault'}}
 
-        return {'balance': '0.00 (megavault-real)', 'currency': cfg.get('currency','USD'), 'last_checked': now_iso(), 'status': 'realed', 'meta': {'adapter': 'megavault'}}
+        return {'balance': '0.00 (megavault-production)', 'currency': cfg.get('currency','USD'), 'last_checked': now_iso(), 'status': 'realed', 'meta': {'adapter': 'megavault'}}
 
 # Register new adapters
 REGISTRY.setdefault('leahwallet', LeahAdapter())

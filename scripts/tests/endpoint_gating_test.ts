@@ -23,7 +23,7 @@ function makeHeaders(map: Record<string, string> = {}): any {
 /**
  * makeNextUrl function
  */
-function makeNextUrl(url = "https://production.qmoi.ai"): any {
+function makeNextUrl(url = "https://qmoi.ai"): any {
   return {
     searchParams: new URL(url).searchParams,
     href: url,

@@ -6,7 +6,7 @@
 /**
  * QMOI Perception Engine
  * Handles multi-modal sensory input processing and environmental awareness
- * production-ready implementation with real sensor integration
+ * production-ready production with production sensor integration
  */
 
 import { specificExports } from 'axios';

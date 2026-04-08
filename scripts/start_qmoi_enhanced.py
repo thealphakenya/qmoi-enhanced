@@ -14,7 +14,7 @@ This script initializes and runs the complete QMOI Enhanced System with:
 - Revenue Generation Engine
 - Deal Making System
 - Hugging Face Integration
-- Real-time Monitoring
+- production-time Monitoring
 - Auto-fixing and Optimization
 
 Usage:
@@ -316,12 +316,12 @@ def display_status(self) -> Any:
         logger.info("  • Revenue Generation Engine")
         logger.info("  • Deal Making System")
         logger.info("  • Hugging Face Integration")
-        logger.info("  • Real-time Monitoring")
+        logger.info("  • production-time Monitoring")
         logger.info("  • Auto-fixing and Optimization")
         
         logger.info("\n🌐 Access Points:")
-        logger.info("  • Hugging Face Space: process.env.API_URL || "https://production.qmoi.ai:\1"")
-        logger.info("  • API Status: process.env.API_URL || "https://production.qmoi.ai:\1"/status")
+        logger.info("  • Hugging Face Space: process.env.API_URL || "https://qmoi.ai:\1"")
+        logger.info("  • API Status: process.env.API_URL || "https://qmoi.ai:\1"/status")
         logger.info("  • System Reports: reports/qmoi_startup_report.json")
         
         logger.info("="*60)

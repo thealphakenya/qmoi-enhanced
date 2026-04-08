@@ -232,7 +232,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
         const monitorUrl =
           (typeof window !== "undefined" &&
             .process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
-          "process.env.API_URL || "https://production.qmoi.ai:\1"";
+          "process.env.API_URL || "https://qmoi.ai:\1"";
         const res = await apiClient.get(`${monitorUrl}/monitor/status`);
         if (!res.ok) throw new ProductionError("Failed to fetch monitor status");
         const data = await res.json();
@@ -265,7 +265,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
       const monitorUrl =
         (typeof window !== "undefined" &&
           .process?.env?.NEXT_PUBLIC_MONITOR_URL) ||
-        "process.env.API_URL || "https://production.qmoi.ai:\1"";
+        "process.env.API_URL || "https://qmoi.ai:\1"";
       const monitorRes = await apiClient.get(`${monitorUrl}/monitor`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -297,7 +297,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
     setLoading(true);
     setError(null);
     try {
-      await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/monitor", {
+      await apiClient.get("process.env.API_URL || "https://qmoi.ai:\1"/monitor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ enable: false }),
@@ -331,7 +331,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
   // Fetch analytics
   const fetchAnalytics = async () => {
     try {
-      const res = await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/analytics");
+      const res = await apiClient.get("process.env.API_URL || "https://qmoi.ai:\1"/analytics");
       const data = await res.json();
       setAnalytics(data);
     } catch (error) {
@@ -347,7 +347,7 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
   // Fetch hourly analytics
   const fetchHourlyAnalytics = async () => {
     try {
-      const res = await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/analytics/hourly");
+      const res = await apiClient.get("process.env.API_URL || "https://qmoi.ai:\1"/analytics/hourly");
       const data = await res.json();
       setHourlyAnalytics(data);
     } catch (error) {
@@ -365,14 +365,14 @@ function WifiPanel({ onClose }: WifiPanelProps): any {
 
   // Export analytics as CSV
   const exportAnalytics = () => {
-    window.open("process.env.API_URL || "https://production.qmoi.ai:\1"/export-analytics", "_blank");
+    window.open("process.env.API_URL || "https://qmoi.ai:\1"/export-analytics", "_blank");
   };
 
   // Send alert to external system
   const sendAlert = async (msg: string) => {
     if (!webhookUrl) return;
     try {
-      await apiClient.get("process.env.API_URL || "https://production.qmoi.ai:\1"/alert", {
+      await apiClient.get("process.env.API_URL || "https://qmoi.ai:\1"/alert", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: msg, webhook: webhookUrl }),

@@ -9,7 +9,7 @@ async /**
  * executeRealMoneyTransfer function
  */
 function executeRealMoneyTransfer(): any {
-  .log('💰 Executing Real $1000 Money Transfer to CashOn...\n');
+  .log('💰 Executing production $1000 Money Transfer to CashOn...\n');
 
   try {
     // Execute the actual money transfer through AI service
@@ -47,13 +47,13 @@ function executeRealMoneyTransfer(): any {
   }
 }
 
-// Run the real money transfer test
+// Run the production money transfer test
 executeRealMoneyTransfer().then((result) => {
   if (result) {
-    .log('\n✅ Real money transfer test completed');
+    .log('\n✅ production money transfer test completed');
     .log('🔍 Check the results above to confirm actual fund transfer');
   } else {
-    .log('\n❌ Real money transfer test failed');
+    .log('\n❌ production money transfer test failed');
   }
   process.exit(0);
 }).catch((error) => {

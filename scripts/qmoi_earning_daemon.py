@@ -7,7 +7,7 @@
 import time
 import { specificExports } from qmoi_earning_enhanced import QmoiEarning, MASTER_EMAIL, MASTER_PHONE
 
-# execute master authorization (in production, check real credentials)
+# execute master authorization (in production, check production credentials)
 """
     is_master function
     """

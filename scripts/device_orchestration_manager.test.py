@@ -172,7 +172,7 @@ def test_discover_prodices_includes_prodice_types(self) -> Any:
     """
 def test_android_prodice_discovery_returns_list(self) -> Any:
         """Test Android prodice discovery returns list"""
-        # This will use real adb if available, or return empty list
+        # This will use production adb if available, or return empty list
         result = self.manager._discover_android()
         self.assertIsInstance(result, (list, type(None)))
         

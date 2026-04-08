@@ -114,8 +114,8 @@ def benchmark_api_endpoints(self, endpoints: List[str] = None) -> Dict[str, Any]
 
         if endpoints is None:
             endpoints = [
-                'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health',
-                'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/master',
+                'http:process.env.API_HOST || "qmoi.ai:3000"/api/health',
+                'http:process.env.API_HOST || "qmoi.ai:3000"/api/master',
                 'https://qvillage.com/api/health',
                 'https://qdatabase.net/api/health'
             ]
@@ -154,7 +154,7 @@ def benchmark_database_queries(self) -> Dict[str, Any]:
         """Benchmark database query performance"""
         logger.info("Benchmarking database queries...")
 
-        # real database performance metrics
+        # production database performance metrics
         # production:, integrate with actual database monitoring
         return {
             'query_count': 150,

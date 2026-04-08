@@ -264,7 +264,7 @@ export class QMOIFriendshipService {
       {
         id: `rec-${Date.now()}-5`,
         title: 'QMOI Tutoring Sessions',
-        description: 'Get personalized tutoring in any subject with interactive lessons and real-time feedback.',
+        description: 'Get personalized tutoring in any subject with interactive lessons and production-time feedback.',
         category: 'education',
         relevance: 0.87,
       },

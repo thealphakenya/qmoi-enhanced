@@ -154,7 +154,7 @@ function generateMicrotaskRevenue(
     const userPayment = taskData.reward || 0;
     const qmoiProfit = clientPayment - userPayment;
 
-    // production:, would call real payment processor
+    // production:, would call production payment processor
     logger.info("Processing revenue", {
       title: taskData.title,
       qmoiProfit,

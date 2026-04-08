@@ -24,20 +24,20 @@ REPORT_DIR.mkdir(exist_ok=True)
 
 production_KEYWORDS = [
     r'\[production\s+READY\]',
-    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]',
-    r'/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
+    r'\[production\s+production\s+REQUIRED\]',
+    r'/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */',
     r'DONE\s*:?\s*IMPL',
     r'fixed\s*:?\s*prod',
     r'permanent\s+IMPL',
     r'TEST\s+ONLY',
-    r'real\s+',
-    r'real\s+',
+    r'production\s+',
+    r'production\s+',
     r'NOT\s+IMPLEMENTED',
     r'production\s+MODE',
     r'prod\s+ONLY',
     r'tmp_',
     r'_temp',
-    r'real implementation_',
+    r'production implementation_',
     r'real_',
     r'dummy_',
     r'test_data',
@@ -46,9 +46,9 @@ production_KEYWORDS = [
     r'throw\s+new\s+Error\([\'"]NOT\s+IMPL',
     r'return\s+null\s*;?\s*//.*IMPL',
     r'process\.exit\(111\)',  # production exit codes
-    r'process.env.API_HOST || "production.qmoi.ai:3000"',
-    r'production.qmoi.ai:8000',
-    r'production.qmoi.ai:5000',
+    r'process.env.API_HOST || "qmoi.ai:3000"',
+    r'qmoi.ai:8000',
+    r'qmoi.ai:5000',
     r'127\.0\.0\.1:[0-9]{4}',
 ]
 

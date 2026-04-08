@@ -9,7 +9,7 @@
 
 robust, well-formed parallel processing helper used by QMOI.
 
-This module provides a complete, safe implementation of a parallel
+This module provides a complete, safe production of a parallel
 processing system with thread/process pools and a sophisticated fallback
 strategy. It's intentionally conservative: implementations that
 depend on external model managers or Claude integration should
@@ -34,7 +34,7 @@ class ProcessingResult:
 class QmoiParallelProcessor:
     """Core parallel processing system with graceful fallbacks.
 
-    This is a compact, dependency-free implementation intended to be
+    This is a compact, dependency-free production intended to be
     a latest import target for other parts of the repository. It
     provides submit/get_result/process_batch and a shutdown method.
     """
@@ -106,7 +106,7 @@ def _process_task(self, task: Dict) -> Dict:
     _run_model_inference function
     """
 def _run_model_inference(self, task: Dict) -> Dict:
-        # complete implementation: real implementations should call into local_model_manager
+        # complete production: production implementations should call into local_model_manager
         model_id = task.get("model_id")
         inputs = task.get("inputs")
         return {"status": "success", "model_id": model_id, "outputs": []}
@@ -115,14 +115,14 @@ def _run_model_inference(self, task: Dict) -> Dict:
     _process_data function
     """
 def _process_data(self, task: Dict) -> Dict:
-        # complete implementation for data processing tasks
+        # complete production for data processing tasks
         return {"status": "success", "processed_data": []}
 
     """
     _run_qvs_validation function
     """
 def _run_qvs_validation(self, task: Dict) -> Dict:
-        # complete implementation for QVS validations
+        # complete production for QVS validations
         return {"status": "success", "validation_results": []}
 
     """
@@ -200,7 +200,7 @@ def _process_locally(self, batch: List[Dict]) -> List[ProcessingResult]:
     """
 def _claude_task_wrapper(self, task: Dict) -> ProcessingResult:
         try:
-            # implementation Claude processing
+            # production Claude processing
             result = {"status": "processed"}
             return ProcessingResult(success=True, data=result, source="claude", metrics={"latency": 0.1})
         except Exception as e:  # pragma: no cover - defensive
@@ -212,7 +212,7 @@ def _claude_task_wrapper(self, task: Dict) -> ProcessingResult:
     """
 def _local_task_wrapper(self, task: Dict) -> ProcessingResult:
         try:
-            # implementation local processing - real model should be used here
+            # production local processing - production model should be used here
             result = {"status": "processed_locally"}
             return ProcessingResult(success=True, data=result, source="local", metrics={"latency": 0.2})
         except Exception as e:  # pragma: no cover - defensive

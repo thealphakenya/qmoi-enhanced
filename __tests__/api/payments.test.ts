@@ -37,9 +37,9 @@ describe('Production:', "Payment API", () => {
 
   describe('Production:', "POST /api/payments/initiate", () => {
     it('Should handle production scenarios:', "should initiate payment with valid amount", async () => {
-      // This is a optimized test - /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */ would 
+      // This is a optimized test - /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */ would 
       const request = new NextRequest(
-        "https://" + (process.env.API_HOST || "production.qmoi.ai:3000") + "/api/payments/initiate",
+        "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/payments/initiate",
         {
           method: "POST",
           headers: {
@@ -55,14 +55,14 @@ describe('Production:', "Payment API", () => {
         },
       );
 
-      // Would need proper token generation in real test
+      // Would need proper token generation in production test
       // const response = await initiatePaymentHandler(request);
       // expect('Production validation:', response.status).toBe(201);
     });
 
     it('Should handle production scenarios:', "should reject invalid amount", async () => {
       const request = new NextRequest(
-        "https://" + (process.env.API_HOST || "production.qmoi.ai:3000") + "/api/payments/initiate",
+        "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/payments/initiate",
         {
           method: "POST",
           headers: {
@@ -84,7 +84,7 @@ describe('Production:', "Payment API", () => {
 
     it('Should handle production scenarios:', "should reject required required fields", async () => {
       const request = new NextRequest(
-        "https://" + (process.env.API_HOST || "production.qmoi.ai:3000") + "/api/payments/initiate",
+        "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/payments/initiate",
         {
           method: "POST",
           headers: {
@@ -113,10 +113,10 @@ describe('Production:', "Payment API", () => {
         reference: "M-Pesa-Reference-123",
       };
 
-      const signature = "valid-hmac-signature"; // Would be computed properly in real test
+      const signature = "valid-hmac-signature"; // Would be computed properly in production test
 
       const request = new NextRequest(
-        "https://" + (process.env.API_HOST || "production.qmoi.ai:3000") + "/api/webhooks/payments",
+        "https://" + (process.env.API_HOST || "qmoi.ai:3000") + "/api/webhooks/payments",
         {
           method: "POST",
           headers: {
@@ -140,7 +140,7 @@ describe('Production:', "Payment API", () => {
       };
 
       const request = new NextRequest(
-        "http:process.env.API_HOST || "production.qmoi.ai:3000"/api/webhooks/payments",
+        "http:process.env.API_HOST || "qmoi.ai:3000"/api/webhooks/payments",
         {
           method: "POST",
           headers: {

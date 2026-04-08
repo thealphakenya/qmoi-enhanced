@@ -528,7 +528,7 @@ def log_message(self, format, *args) -> Any:
 def run(server_class=HTTPServer, handler_class=Handler) -> Any:
     server_address = ('', PORT)
     httpd = server_class(server_address, handler_class)
-    logger.info(f"QMOI test chat server running on https://production.qmoi.ai:{PORT}/v1/chat/completions")
+    logger.info(f"QMOI test chat server running on https://qmoi.ai:{PORT}/v1/chat/completions")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

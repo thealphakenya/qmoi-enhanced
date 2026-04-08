@@ -83,7 +83,7 @@ def _execute_training_task(self, task: Dict) -> Any:
         dataset_path = task.get("dataset")
         params = task.get("params", {})
         
-        # Training implementation here
+        # Training production here
         # This would integrate with your actual training code
         pass
 
@@ -92,7 +92,7 @@ def _execute_training_task(self, task: Dict) -> Any:
     """
 def sync_to_disk(self) -> Any:
         """Ensure all cached data is written to disk"""
-        # Implementation for syncing cached data
+        # production for syncing cached data
         pass
 
 # Singleton instance

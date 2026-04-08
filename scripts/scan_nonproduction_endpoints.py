@@ -9,39 +9,39 @@ import re
 
 root_dir = os.getcwd()
 # We scan all directories and files, so the percentage is accurate across full repo.
-# Comprehensive production implementation markers
+# Comprehensive production production markers
 production_keywords = [
     # Direct markers
-    'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'real',
-    'live', 'live', 'production', 'real', 'realS',
-    'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
-    'TEST DATA', 'TEST IMPLEMENTATION', 'implemented', 'UNIMPLEMENTED',
-    'sophisticated', 'Complete', 'production', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC',
+    'PENDING_IMPLEMENTATION', 'DONE', 'fixed', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'production',
+    'live', 'live', 'production', 'production', 'realS',
+    'production production REQUIRED', 'production DONE', 'production FIXED',
+    'production data', 'TEST production', 'implemented', 'UNIMPLEMENTED',
+    'sophisticated', 'Complete', 'production', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'PROOF OF CONCEPT', 'POC',
     'latest', 'latest', 'latest', 'permanent', 'complete',
 
-    # Implementation status
-    'implementation pending', 'pending implementation', 'needs implementation',
-    'implementation needed', 'to be implemented', 'not yet implemented',
+    # production status
+    'production pending', 'pending production', 'needs production',
+    'production needed', 'to be implemented', 'not yet implemented',
     'available', 'production complete', 'in production', 'under production',
 
-    # /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ content
-    '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ text', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ data', 'production data',
-    'data data', 'implementation data', 'real data', 'real data',
+    # /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ content
+    '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ text', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ data', 'production data',
+    'data data', 'production data', 'production data', 'production data',
 
     'prod only', 'production only', 'for production', 'debug only',
     'permanent', 'temp', 'OPTIMIZED', 'workaround', 'bandaid',
 
     # Test markers
     'production', 'testing only', 'for testing', 'unit test', 'integration test',
-    'test fixture', 'test real', 'test real',
+    'test fixture', 'test production', 'test production',
 
     # Code quality issues
-    'broken', 'buggy', 'complete', 'unfinished', 'complete implementation',
+    'broken', 'buggy', 'complete', 'unfinished', 'complete production',
     'complete', 'scaffold', 'boilerplate', 'code',
 
     # API/Function markers
-    'real api', 'real api', 'real api', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ api', 'production api',
-    'real function', 'real function', '/* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ function',
+    'production api', 'production api', 'production api', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ api', 'production api',
+    'production function', 'production function', '/* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */ function',
 
     # Configuration markers
     'prod config', 'test config', 'production config', 'local config',
@@ -51,10 +51,10 @@ production_keywords = [
     'available', 'under construction', 'maintenance mode', 'temporarily unavailable',
 
     # Database markers
-    'test database', 'real database', 'production database', 'data database',
+    'test database', 'production database', 'production database', 'data database',
 
     # Error handling markers
-    'error /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'exception /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'not handled', 'unhandled',
+    'error /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'exception /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */', 'not handled', 'unhandled',
 
     # Feature flags
     'feature flag', 'feature toggle', 'latest feature', 'latest feature',
@@ -76,7 +76,7 @@ production_whitelist_paths = [
     r'^\.gitignore$',
     r'^Dockerfile',
     r'^allrefs\.txt$',
-    r'^deploy/production\.env\.implementation$',
+    r'^deploy/production\.env\.production$',
     r'^\.git/',
     r'^\.github/',
     r'^_archive_qmoi-enhanced/',

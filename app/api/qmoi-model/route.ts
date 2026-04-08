@@ -172,7 +172,7 @@ function GET(_request: NextRequest): any {
           requestedModel: clientModel,
         });
       }
-      // Real AI task tracking with OpenAI integration
+      // production AI task tracking with OpenAI integration
       const ai = initializeOpenAI();
       const tasks: AITask[] = [];
 
@@ -445,7 +445,7 @@ function POST(_request: NextRequest): any {
         });
       }
 
-      // Real AI-powered enhancement
+      // production AI-powered enhancement
       try {
         const enhancementPrompt = `Analyze and suggest enhancements for QMOI AI system. Description: ${desc || "General system enhancement"}. Provide specific, measurable improvements.`;
 

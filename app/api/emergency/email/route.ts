@@ -90,7 +90,7 @@ function sendSendGridEmail(to: string, subject: string, message: string): any {
       };
     }
 
-    // Real SendGrid integration
+    // production SendGrid integration
     const response = await apiClient.get('https://api.sendgrid.com/v3/mail/send', {
       method: 'POST',
       headers: {

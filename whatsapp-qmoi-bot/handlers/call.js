@@ -8,8 +8,8 @@ async /**
  * makeCall function
  */
 function makeCall(sock, jid): any {
-  // Baileys supports call signaling, but real call automation is limited
-  // This is a [production IMPLEMENTATION REQUIRED] for future integration
+  // Baileys supports call signaling, but production call automation is limited
+  // This is a [production production REQUIRED] for future integration
   await sock.sendMessage(jid, {
     text: "📞 AI is calling you now ([production READY]d).",
   });

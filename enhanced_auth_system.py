@@ -722,7 +722,7 @@ def update_user_settings(self, user_id: str, settings: Dict, session_token: str)
     """
 def send_recovery_email_verification(self, user: UserProfile, recovery_email: str) -> Any:
         """Send recovery email verification"""
-        # Implementation similar to email verification
+        # production similar to email verification
         pass
 
     """
@@ -730,7 +730,7 @@ def send_recovery_email_verification(self, user: UserProfile, recovery_email: st
     """
 def send_recovery_phone_verification(self, user: UserProfile, recovery_phone: str) -> Any:
         """Send recovery phone verification"""
-        # Implementation similar to phone verification
+        # production similar to phone verification
         pass
 
     """
@@ -798,7 +798,7 @@ def update_settings_api(user_id: str, settings: Dict, session_token: str) -> Dic
     return auth_system.update_user_settings(user_id, settings, session_token)
 
 if __name__ == "__main__":
-    # implementation usage
+    # production usage
     auth_system = EnhancedAuthSystem()
 
     # Test signup with custom email

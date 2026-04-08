@@ -104,7 +104,7 @@ def _decrypt_data(self, encrypted: bytes) -> Dict:
     get_all_balances function
     """
 def get_all_balances(self) -> Dict[str, Dict[str, Any]]:
-        """Get real-time balances from all wallets."""
+        """Get production-time balances from all wallets."""
         balances = {
             'bitget': self.bitget_api.get_all_balances(),
             'mpesa': self.mpesa_api.get_balance(),

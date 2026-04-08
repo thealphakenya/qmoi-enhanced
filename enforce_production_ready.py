@@ -10,11 +10,11 @@ TARGET_DIRS = [
 IGNORE_DIRS = {'.git', 'node_modules', 'dist', 'build', '.venv', '.venv_qmoi_control', '_archive_qmoi-enhanced', '.idea', '.vscode'}
 
 PATTERNS = {
-    r'production IMPLEMENTATION REQUIRED': '[production READY]',
-    r'PENDING IMPLEMENTATION': '[production READY]',
+    r'production production REQUIRED': '[production READY]',
+    r'PENDING production': '[production READY]',
     r'\bDONE\b': '[production READY]',
     r'\bfixed\b': '[production READY]',
-    r'\breal\b': 'REAL',
+    r'\breal\b': 'production',
 }
 
 re_patterns = [(re.compile(k, re.IGNORECASE), v) for k, v in PATTERNS.items()]

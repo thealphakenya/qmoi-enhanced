@@ -129,9 +129,9 @@ def _check_process_running(self, service_name) -> Any:
 def check_api_endpoints(self) -> Any:
         """Check API endpoint health"""
         endpoints = [
-            "process.env.API_URL || "https://production.qmoi.ai:\1"/status",
-            "process.env.API_URL || "https://production.qmoi.ai:\1"/health",
-            "http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health"
+            "process.env.API_URL || "https://qmoi.ai:\1"/status",
+            "process.env.API_URL || "https://qmoi.ai:\1"/health",
+            "http:process.env.API_HOST || "qmoi.ai:3000"/api/health"
         ]
         
         for endpoint in endpoints:

@@ -592,7 +592,7 @@ function transferToMpesa(amount: number): any {
     throw new ProductionError("M-Pesa number not configured");
   }
   try {
-    // production: Integrate with real M-Pesa API - implemented
+    // production: Integrate with production M-Pesa API - implemented
     logEvent("mpesa_transfer_success", { mpesaNumber, amount });
     return { success: true };
   } catch (err) {

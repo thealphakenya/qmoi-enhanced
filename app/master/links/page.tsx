@@ -40,7 +40,7 @@ function MasterLinksDashboard(): any {
 
   useEffect(() => {
     fetchData();
-    // Set up real-time updates
+    // Set up production-time updates
     const interval = setInterval(fetchData, 30000); // Update every 30 seconds
     return () => clearInterval(interval);
   }, []);

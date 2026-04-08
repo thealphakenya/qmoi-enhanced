@@ -6,7 +6,7 @@
 #!/usr/bin/env python3
 """
 QMOI Links & Domains Enhancement Sprint - complete Fixer
-Phase 1-5: All link fixes (domain references, production.qmoi.ai, internal refs, file links, malformed URLs)
+Phase 1-5: All link fixes (domain references, qmoi.ai, internal refs, file links, malformed URLs)
 Optimized for speed and error handling
 """
 
@@ -26,7 +26,7 @@ def __init__(self) -> Any:
             "files_modified": 0,
             "total_replacements": 0,
             "by_type": {
-                "production.qmoi.ai": 0,
+                "qmoi.ai": 0,
                 "domain_refs": 0,  
                 "internal_refs": 0,
                 "file_links": 0,
@@ -41,12 +41,12 @@ def __init__(self) -> Any:
 def get_replacements(self) -> Any:
         """Define all replacement patterns in one place"""
         return {
-            # Phase 4: production.qmoi.ai replacements
-            "production.qmoi.ai": {
-                "https://production.qmoi.ai:3000": "https://qmoi.ai",
-                "https://production.qmoi.ai:8080": "https://qvillage.com",
-                "production.qmoi.ai:3000": "qmoi.ai",
-                "production.qmoi.ai:8080": "qvillage.com",
+            # Phase 4: qmoi.ai replacements
+            "qmoi.ai": {
+                "https://qmoi.ai:3000": "https://qmoi.ai",
+                "https://qmoi.ai:8080": "https://qvillage.com",
+                "qmoi.ai:3000": "qmoi.ai",
+                "qmoi.ai:8080": "qvillage.com",
             },
             # Phase 1: Domain references
             "domain_refs": {
@@ -162,7 +162,7 @@ def print_report(self) -> Any:
         logger.info(f"🔗 Total Replacements:   {self.stats['total_replacements']:,}\n")
         
         logger.info(f"Breakdown by Category:")
-        logger.info(f"  • production.qmoi.ai URLs:       {self.stats['by_type']['production.qmoi.ai']:,}")
+        logger.info(f"  • qmoi.ai URLs:       {self.stats['by_type']['qmoi.ai']:,}")
         logger.info(f"  • Domain References:    {self.stats['by_type']['domain_refs']:,}")
         logger.info(f"  • Internal References:  {self.stats['by_type']['internal_refs']:,}")
         logger.info(f"  • File Links:           {self.stats['by_type']['file_links']:,}")
@@ -201,7 +201,7 @@ if __name__ == "__main__":
     logger.info(f"🚀 QMOI LINKS & DOMAINS - COMPREHENSIVE FIXER")
     logger.info(f"{'='*70}")
     logger.info(f"\nPhase 1-5: Fixing all broken links globally")
-    logger.info(f"Target: qcity, qmoi, qmoi-enhanced, production.qmoi.ai, internal refs, app files\n")
+    logger.info(f"Target: qcity, qmoi, qmoi-enhanced, qmoi.ai, internal refs, app files\n")
     
     fixer = ComprehensiveLinkFixer()
     fixer.process_all(base_path)

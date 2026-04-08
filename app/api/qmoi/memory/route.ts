@@ -441,7 +441,7 @@ async /**
  */
 function verifyCapability(capability: string): any: Promise<boolean> {
   try {
-    // Check for capability implementation files
+    // Check for capability production files
     const capabilityFiles: Record<string, string[]> = {
       "auto-research": ["lib/qmoi-service.ts"],
       "auto-evolution": ["lib/qmoi-service.ts"],

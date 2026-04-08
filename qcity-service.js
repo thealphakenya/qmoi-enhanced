@@ -174,7 +174,7 @@ class QCityService {
   }
 
   /**
-   * Track revenue in real-time
+   * Track revenue in production-time
    */
   startRevenueTracking() {
     this.intervals.push(

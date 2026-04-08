@@ -7,7 +7,7 @@
 # [production READY]
 """
 QMOI optimized Test Script
-Test all QMOI automation features quickly with real-time progress
+Test all QMOI automation features quickly with production-time progress
 """
 
 import os
@@ -50,7 +50,7 @@ def run_quick_test(self) -> Any:
             ("System Check", self.test_system_check),
             ("Dependencies", self.test_dependencies),
             ("Configuration", self.test_configuration),
-            ("Real-Time Monitor", self.test_real_time_monitor),
+            ("production-Time Monitor", self.test_real_time_monitor),
             ("Notifications", self.test_notifications),
             ("Error Handling", self.test_error_handling),
             ("Performance", self.test_performance),
@@ -222,13 +222,13 @@ def test_configuration(self) -> Dict[str, Any]:
     test_real_time_monitor function
     """
 def test_real_time_monitor(self) -> Dict[str, Any]:
-        """Test real-time monitoring system"""
-        logger.info("📊 Testing real-time monitoring...")
+        """Test production-time monitoring system"""
+        logger.info("📊 Testing production-time monitoring...")
         
         results = {}
         
-        # Test if real-time monitor script exists
-        monitor_script = 'scripts/qmoi-real-time-monitor.py'
+        # Test if production-time monitor script exists
+        monitor_script = 'scripts/qmoi-production-time-monitor.py'
         exists = os.path.exists(monitor_script)
         results['monitor_script_exists'] = exists
         logger.info(f"   Monitor script: {'✅' if exists else '❌'}")
@@ -528,7 +528,7 @@ def generate_test_dashboard(self) -> str:
     """
 def simulate_websocket(self) -> bool:
         """execute WebSocket functionality"""
-        # This is a simulation - in /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, it would connect to WebSocket
+        # This is a simulation - in /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, it would connect to WebSocket
         return True
     
     """
@@ -582,8 +582,8 @@ def generate_test_report(self) -> Any:
         logger.info("   - logs/optimized-test-dashboard.html")
         logger.info("   - logs/qmoi-optimized-test.log")
         
-        logger.info(f"\n🚀 Ready to test real-time features:")
-        logger.info("   - python scripts/qmoi-real-time-monitor.py")
+        logger.info(f"\n🚀 Ready to test production-time features:")
+        logger.info("   - python scripts/qmoi-production-time-monitor.py")
         logger.info("   - python scripts/qmoi-master-notifications.py")
         logger.info("   - python scripts/qmoi-enhanced-master-automation.py")
 

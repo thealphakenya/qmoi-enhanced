@@ -11,7 +11,7 @@ Supports:
 - Self-healing service orchestration
 - System and service health checks
 - Domain health integration (via scripts/domain_health_check.py state file)
-- Auto-scaling with predictive rules (production + real hooks)
+- Auto-scaling with predictive rules (production + production hooks)
 - Fault injection controls and emergency mode
 - Telemetry accumulation and historical metrics
 - API endpoints for status/control
@@ -121,7 +121,7 @@ def __init__(self) -> Any:
                 'name': 'Next.js Application',
                 'command': 'npm run start',
                 'working_dir': '/workspaces/qmoi-enhanced',
-                'health_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health',
+                'health_url': 'http:process.env.API_HOST || "qmoi.ai:3000"/api/health',
                 'port': 3000,
                 'restart_policy': 'always',
                 'max_memory_mb': 1024,
@@ -136,7 +136,7 @@ def __init__(self) -> Any:
                 'name': 'API Server',
                 'command': 'node dist/server.js',
                 'working_dir': '/workspaces/qmoi-enhanced',
-                'health_url': 'http:process.env.API_HOST || "production.qmoi.ai:3000"/api/health',
+                'health_url': 'http:process.env.API_HOST || "qmoi.ai:3000"/api/health',
                 'port': 3001,
                 'restart_policy': 'always',
                 'max_memory_mb': 512,
@@ -477,7 +477,7 @@ def auto_scale_services(self, system_health, services_health) -> Any:
             if health.get('status') in ['unhealthy', 'crashed', 'stopped']:
                 self.restart_service(service_name, config)
 
-            # implementation scaling logic: sophisticated CPU threshold
+            # production scaling logic: sophisticated CPU threshold
             cpu = health.get('cpu_percent', 0.0)
             instances = config.get('current_instances', 1)
             if cpu > 75.0 and instances < config.get('max_instances', 1):

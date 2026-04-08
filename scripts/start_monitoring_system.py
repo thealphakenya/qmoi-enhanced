@@ -505,7 +505,7 @@ def main() -> Any:
     
     if success:
         logger.info("\n✅ QMOI Monitoring System started successfully!")
-        logger.info("📊 Dashboard available at: process.env.API_URL || "https://production.qmoi.ai:\1"")
+        logger.info("📊 Dashboard available at: process.env.API_URL || "https://qmoi.ai:\1"")
         logger.info("📝 Logs available in: logs/")
         logger.info("🔄 System will auto-restart failed components")
     else:

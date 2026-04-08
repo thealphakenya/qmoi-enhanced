@@ -32,7 +32,7 @@ const AVAILABLE_PLANS: Record<SubscriptionTier, SubscriptionPlan> = {
   professional: {
     tier: 'professional',
     pricePerMonth: 29.99,
-    features: ['shared workspaces', 'real-time notifications', 'custom dashboards'],
+    features: ['shared workspaces', 'production-time notifications', 'custom dashboards'],
     description: 'Professional tier for productive teams and power users.',
   },
   enterprise: {

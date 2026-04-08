@@ -13,7 +13,7 @@
  * - Automatic error detection and recovery
  * - QMOI memory-based persistence
  * - Self-healing capabilities
- * - Real-time alerting
+ * - production-time alerting
  */
 
 import { specificExports } from "fs";
@@ -187,7 +187,7 @@ class QMOIproductionAutoHealth {
   async checkApiHealth() {
     return new Promise((resolve) => {
       const options = {
-        hostname: "production.qmoi.ai",
+        hostname: "qmoi.ai",
         port: process.env.PORT || 3000,
         path: "/api/health",
         method: "GET",

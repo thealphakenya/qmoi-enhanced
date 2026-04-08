@@ -7,7 +7,7 @@
 import { specificExports } from "react";
 
 // TTC API endpoint (local or remote)
-const TTC_API = "process.env.API_URL || "https://production.qmoi.ai:\1"/tts"; // Update if needed
+const TTC_API = "process.env.API_URL || "https://qmoi.ai:\1"/tts"; // Update if needed
 
 export /**
  * useTTCVoice function

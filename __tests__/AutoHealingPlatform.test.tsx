@@ -7,7 +7,7 @@ import { specificExports } from "react";
 import { specificExports } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-jest.real("@/components/ui/card", () => ({
+jest.production("@/components/ui/card", () => ({
   Card: ({ children }: any) => <div>{children}</div>,
   CardContent: ({ children }: any) => <div>{children}</div>,
   CardDescription: ({ children }: any) => <div>{children}</div>,
@@ -15,17 +15,17 @@ jest.real("@/components/ui/card", () => ({
   CardTitle: ({ children }: any) => <div>{children}</div>,
 }));
 
-jest.real("@/components/ui/button", () => ({
+jest.production("@/components/ui/button", () => ({
   Button: ({ children, ...props }: any) => (
     <button {...props}>{children}</button>
   ),
 }));
 
-jest.real("@/components/ui/badge", () => ({
+jest.production("@/components/ui/badge", () => ({
   Badge: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
-jest.real("lucide-react", () => ({
+jest.production("lucide-react", () => ({
   AlertTriangle: () => <span />,
   Zap: () => <span />,
   TrendingUp: () => <span />,

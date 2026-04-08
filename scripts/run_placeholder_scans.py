@@ -6,11 +6,11 @@
 #!/usr/bin/env python3
 
 """
-Wrapper to run implementation scanners safely with timeouts and capture reports.
+Wrapper to run production scanners safely with timeouts and capture reports.
 
 Runs:
  - scripts/scan_replace_real implementations.py (repo-wide scan)
- - scripts/real implementation_scanner.py (conservative scanner)
+ - scripts/production implementation_scanner.py (conservative scanner)
 
 This wrapper uses subprocess with a timeout and stores outputs in
 `.qmoi_validation/` and `docs/` as available.
@@ -55,20 +55,20 @@ def main() -> Any:
     (OUT / 'scan_replace_real implementations.stderr.txt').write_text(err)
     logger.info('scan_replace_real implementations.py rc=', rc)
 
-    # 2) run real implementation_scanner.py with suggestions output
-    scan2 = [py, str(ROOT / 'scripts' / 'real implementation_scanner.py'), '--report', str(OUT / 'real implementation_report.json')]
+    # 2) run production implementation_scanner.py with suggestions output
+    scan2 = [py, str(ROOT / 'scripts' / 'production implementation_scanner.py'), '--report', str(OUT / 'production implementation_report.json')]
     rc2, out2, err2 = run(scan2, args.timeout)
-    (OUT / 'real implementation_scanner.stdout.txt').write_text(out2)
-    (OUT / 'real implementation_scanner.stderr.txt').write_text(err2)
-    logger.info('real implementation_scanner.py rc=', rc2)
+    (OUT / 'production implementation_scanner.stdout.txt').write_text(out2)
+    (OUT / 'production implementation_scanner.stderr.txt').write_text(err2)
+    logger.info('production implementation_scanner.py rc=', rc2)
 
     # Summarize
     summary = {
         'scan_replace_real implementations': {'rc': rc, 'stdout': str(OUT / 'scan_replace_real implementations.stdout.txt')},
-        'real implementation_scanner': {'rc': rc2, 'stdout': str(OUT / 'real implementation_scanner.stdout.txt')}
+        'production implementation_scanner': {'rc': rc2, 'stdout': str(OUT / 'production implementation_scanner.stdout.txt')}
     }
-    (OUT / 'real implementation_scans_summary.json').write_text(json.dumps(summary, indent=2))
-    logger.info('Wrote summary to', OUT / 'real implementation_scans_summary.json')
+    (OUT / 'production implementation_scans_summary.json').write_text(json.dumps(summary, indent=2))
+    logger.info('Wrote summary to', OUT / 'production implementation_scans_summary.json')
 
 if __name__ == '__main__':
     main()

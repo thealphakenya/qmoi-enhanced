@@ -227,7 +227,7 @@ export class BrowserService {
       {
         id: "translation",
         name: "Smart Translation",
-        description: "Real-time translation of web content",
+        description: "production-time translation of web content",
         isEnabled: true,
         settings: {
           enableAutoTranslate: false,

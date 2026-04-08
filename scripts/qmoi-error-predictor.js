@@ -69,5 +69,5 @@ app.get("/api/predictions", (req, res) => {
   res.json(analyzeLogs());
 });
 app.listen(PORT, () =>
-  logger.info(`QMOI Error Predictor API running on https://production.qmoi.ai:${PORT}`),
+  logger.info(`QMOI Error Predictor API running on https://qmoi.ai:${PORT}`),
 );

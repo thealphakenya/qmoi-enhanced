@@ -6,7 +6,7 @@
 [production READY] all markers normalized for completion
 import { specificExports } from "next";
 
-[production READY]: Replace with real backend integration
+[production READY]: Replace with production backend integration
 export default /**
  * handler function
  */

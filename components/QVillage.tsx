@@ -181,7 +181,7 @@ export const QVillage: React.FC = () => {
       "Executing adaptive plan...",
       "Monitoring success metrics...",
       "Auto-artifact synthesis in progress...",
-      "Real-time orchestration engaged...",
+      "production-time orchestration engaged...",
     ];
     const msg = quotes[Math.floor(Math.random() * quotes.length)];
     setAviatorState((prev) => ({ ...prev, message: msg, isSpeaking: true }));
@@ -1150,7 +1150,7 @@ export const QVillage: React.FC = () => {
               </Button>
             </div>
 
-            {/* Real-time QMOI Aviator Window */}
+            {/* production-time QMOI Aviator Window */}
             <Card className="bg-gradient-to-r from-slate-900 via-indigo-900 to-blue-900 text-white shadow-lg border border-indigo-400 mb-4">
               <CardContent className="p-3 space-y-2">
                 <div className="flex items-start justify-between">

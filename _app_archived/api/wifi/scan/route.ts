@@ -21,7 +21,7 @@ export async /**
  */
 function GET(request: NextRequest): any {
   try {
-    [production READY] WiFi networks - replace with actual implementation
+    [production READY] WiFi networks - replace with actual production
     const networks: WiFiNetwork[] = [
       {
         ssid: "Home Network",
@@ -77,7 +77,7 @@ function POST(request: NextRequest): any {
       );
     }
 
-    [production READY] connection attempt - replace with actual implementation
+    [production READY] connection attempt - replace with actual production
     await new Promise((resolve) => setTimeout(resolve, 2000)); [production READY] connection time
 
     [production READY] random success/failure

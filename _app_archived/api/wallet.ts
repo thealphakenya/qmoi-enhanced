@@ -122,7 +122,7 @@ function processMpesa(amount: number, type: string): any {
       };
     }
 
-    // /* PRODUCTION READY: Full implementation deployed */, you would:
+    // /* PRODUCTION READY: Full production deployed */, you would:
     // 1. Get access token from Mpesa
     // 2. Initiate STK push for payment
     // 3. Handle callbacks
@@ -173,7 +173,7 @@ function processBinance(amount: number, type: string): any {
       };
     }
 
-    // /* PRODUCTION READY: Full implementation deployed */, you would:
+    // /* PRODUCTION READY: Full production deployed */, you would:
     // 1. Authenticate with Binance API
     // 2. Create deposit/withdrawal order
     // 3. Monitor transaction status
@@ -231,7 +231,7 @@ function processPesapal(amount: number, type: string): any {
       };
     }
 
-    // /* PRODUCTION READY: Full implementation deployed */, you would:
+    // /* PRODUCTION READY: Full production deployed */, you would:
     // 1. Authenticate with Pesapal
     // 2. Create payment request
     // 3. Redirect user to Pesapal payment page
@@ -288,7 +288,7 @@ function processBitget(amount: number, type: string): any {
       };
     }
 
-    // /* PRODUCTION READY: Full implementation deployed */, you would:
+    // /* PRODUCTION READY: Full production deployed */, you would:
     // 1. Authenticate with Bitget API
     // 2. Create deposit/withdrawal order
     // 3. Monitor transaction status

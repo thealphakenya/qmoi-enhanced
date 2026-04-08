@@ -5,7 +5,7 @@
 
 #!/usr/bin/env node
 /**
- * Vercel Auto-Clone & Autoprod Implementation
+ * Vercel Auto-Clone & Autoprod production
  * Handles automatic syncing from GitHub and auto-production features
  */
 

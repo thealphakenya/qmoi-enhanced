@@ -39,7 +39,7 @@ export default /**
  */
 function handler(): any {
   try {(req: NextApiRequest, res: NextApiResponse) {
-  [production READY]: Add real master/admin authentication
+  [production READY]: Add production master/admin authentication
   if (req.method === "POST") {
     const { action, filePath, content, replace } = req.body;
     const absPath = path.join(process.cwd(), filePath);

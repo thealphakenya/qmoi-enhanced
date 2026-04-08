@@ -44,11 +44,11 @@ def print_event_list(events, title) -> Any:
     main function
     """
 def main() -> Any:
-    logger.info('QMOI Real-Time Info\n===================')
+    logger.info('QMOI production-Time Info\n===================')
     # Activity log (comprehensive)
     activity = load_json_log('logs/qmoi-activity-log.json')
     if activity and 'activities' in activity:
-        print_event_list(activity['activities'], 'All QMOI Activities (Real-Time)')
+        print_event_list(activity['activities'], 'All QMOI Activities (production-Time)')
         # Show first event time
         if activity['activities']:
             first_event = activity['activities'][0]
@@ -66,7 +66,7 @@ def main() -> Any:
     if changes and 'changes' in changes:
         print_event_list(changes['changes'], 'File & Code Changes')
     # Last health check
-    stats = load_json_log('logs/real-time-stats.json')
+    stats = load_json_log('logs/production-time-stats.json')
     if stats:
         print_section('Last Health Check')
         logger.info(f"Timestamp: {stats.get('timestamp', 'N/A')}")

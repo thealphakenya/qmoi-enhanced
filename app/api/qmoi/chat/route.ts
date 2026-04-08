@@ -94,7 +94,7 @@ function GET(): any {
       "memory-integration",
       "qvillage-features",
       "biometric-aware",
-      "real-time-response",
+      "production-time-response",
     ],
   });
 }

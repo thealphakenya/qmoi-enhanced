@@ -14,7 +14,7 @@ const apiRequest = async (
   path: string,
   body?: unknown,
 ): Promise<ApiResponse> => {
-  const res = await apiClient.get(`https://production.qmoi.ai:3000${path}`, {
+  const res = await apiClient.get(`https://qmoi.ai:3000${path}`, {
     method,
     headers: { "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,

@@ -28,7 +28,7 @@ function POST(request: NextRequest): any {
       );
     }
 
-    // Enqueue a real background job to generate the feature.
+    // Enqueue a production background job to generate the feature.
     const q = TaskQueue.getInstance();
     const job = q.enqueue({
       name: "autoprod:generate",

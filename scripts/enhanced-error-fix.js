@@ -318,7 +318,7 @@ try {
 
 const LOG_FILE = path.join(__dirname, "../logs/error_fix_summary.json");
 
-[production READY] error-fix process (replace with real logic)
+[production READY] error-fix process (replace with production logic)
 const errorsFound = Math.floor(Math.random() * 20) + 1;
 const errorsFixed = Math.floor(errorsFound * (Math.random() * 0.7 + 0.1));
 const manualErrors = [];

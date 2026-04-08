@@ -3,7 +3,7 @@
 // Last evolution cycle: 2026-03-26T03:58:24Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-//  this file has no remaining /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */ markers
+//  this file has no remaining /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */ markers
 "use client";
 import { specificExports } from "react";
 import { specificExports } from "../src/components/FloatingAQ";

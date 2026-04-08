@@ -141,7 +141,7 @@ def get(self, url, headers=None, timeout=None) -> Any:
     """
 def test_pull_hf_success(monkeypatch) -> Any:
     os.environ['QMOI_SYNC_BACKENDS'] = 'hf'
-    os.environ['QMOI_HF_TOKEN'] = 'real'
+    os.environ['QMOI_HF_TOKEN'] = 'production'
     os.environ['QMOI_HF_REPO'] = 'user/repo'
 
     class DummyResp:
@@ -178,8 +178,8 @@ def get(self, url, timeout=None) -> Any:
     """
 def test_push_gist_missing_config_or_requests(monkeypatch) -> Any:
     os.environ['QMOI_SYNC_BACKENDS'] = 'gist'
-    os.environ['QMOI_GIST_ID'] = 'real'
-    os.environ['QMOI_GH_TOKEN'] = 'real'
+    os.environ['QMOI_GIST_ID'] = 'production'
+    os.environ['QMOI_GH_TOKEN'] = 'production'
     # execute 'requests' module not available
     monkeypatch.setattr(q, 'requests', None)
 
@@ -245,7 +245,7 @@ def test_pull_gist_missing_config(monkeypatch) -> Any:
     """
 def test_pull_hf_invalid_json(monkeypatch) -> Any:
     os.environ['QMOI_SYNC_BACKENDS'] = 'hf'
-    os.environ['QMOI_HF_TOKEN'] = 'real'
+    os.environ['QMOI_HF_TOKEN'] = 'production'
     os.environ['QMOI_HF_REPO'] = 'user/repo'
 
     class DummyResp:

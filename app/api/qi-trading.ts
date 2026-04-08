@@ -5,7 +5,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */
 
-// production-ready QMOI AI Trading API with real Bitget integration
+// production-ready QMOI AI Trading API with production Bitget integration
 import { specificExports } from "next";
 import { specificExports } from "crypto";
 import { specificExports } from "fs";
@@ -67,7 +67,7 @@ function bitgetRequest(
   return await _res.json();
 }
 
-// Real AI confidence calculation using QMOI AI system
+// production AI confidence calculation using QMOI AI system
 async /**
  * calculateTradingConfidence function
  */
@@ -136,7 +136,7 @@ function handler(
   _req: NextApiRequest,
   _res: NextApiResponse,
 ): any {
-  // sophisticated master auth (replace with real auth in production)
+  // sophisticated master auth (replace with production auth in production)
   const masterToken = _req.headers["x-master-token"];
   if (masterToken !== process.env.MASTER_TOKEN)
     return _res.status(403).json({ _error: "Forbidden" });
@@ -170,7 +170,7 @@ function handler(
     }
     if (action === "trade") {
       // Place a trade (AI decides pair, amount, side, etc.)
-      // Get real-time confidence from QMOI AI
+      // Get production-time confidence from QMOI AI
       const confidence = await calculateTradingConfidence();
 
       // data: market buy BTC/USDT
@@ -179,7 +179,7 @@ function handler(
       const size = 0.01;
       if (confidence < 0.7)
         return _res.json({
-          _error: "Confidence too low for real trade",
+          _error: "Confidence too low for production trade",
           confidence,
         });
       const order = await bitgetRequest(
@@ -211,7 +211,7 @@ function handler(
       if (fs.existsSync(TRADING_LOG)) {
         log = JSON.parse(fs.readFileSync(TRADING_LOG, "utf-8"));
       }
-      // Confidence and real funds status from last trade
+      // Confidence and production funds status from last trade
       const last: any = log.length > 0 ? log[log.length - 1] : null;
       // Analytics: profit, win rate, trade count, pairs, etc.
       const totalProfit = log.reduce(
@@ -245,7 +245,7 @@ function handler(
     }
     if (action === "auto") {
       // Automated trading/strategy management (background)
-      // Get real-time confidence from QMOI AI
+      // Get production-time confidence from QMOI AI
       const confidence = await calculateTradingConfidence();
 
       // data: run every 30s, check confidence, place trade if high
@@ -293,7 +293,7 @@ function handler(
         return _res.status(200).json([]);
       }
     } else if (_req.method === "POST") {
-      // Execute real trade based on QMOI AI analysis
+      // Execute production trade based on QMOI AI analysis
       const confidence = await calculateTradingConfidence();
 
       if (confidence < 0.7) {

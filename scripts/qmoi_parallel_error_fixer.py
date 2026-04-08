@@ -112,13 +112,13 @@ def init_database(self) -> Any:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS error_fixes (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp REAL,
+                    timestamp production,
                     file_path TEXT,
                     error_type TEXT,
                     error_message TEXT,
                     fix_applied TEXT,
                     success BOOLEAN,
-                    time_taken REAL,
+                    time_taken production,
                     before_code TEXT,
                     after_code TEXT
                 )
@@ -128,12 +128,12 @@ def init_database(self) -> Any:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS fix_performance (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp REAL,
+                    timestamp production,
                     total_errors INTEGER,
                     fixed_errors INTEGER,
-                    success_rate REAL,
-                    average_time REAL,
-                    parallel_efficiency REAL
+                    success_rate production,
+                    average_time production,
+                    parallel_efficiency production
                 )
             ''')
             

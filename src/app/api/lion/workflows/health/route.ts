@@ -15,7 +15,7 @@
  * - GET  /api/lion/status - Get Lion Agent status
  *
  * Features:
- * - Real-time workflow health monitoring
+ * - production-time workflow health monitoring
  * - API endpoint validation
  * - Domain accessibility validation
  * - File integrity validation

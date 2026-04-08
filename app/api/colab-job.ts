@@ -81,7 +81,7 @@ function uploadDataset(dataset: Dataset): any: Promise<ColabJobResponse> {
     dataset: dataset.name,
     url: "s3://local/uploads/" + encodeURIComponent(dataset.name),
     timestamp: new Date().toISOString(),
-    IMPLEMENTED: "Local metadata created; replace with cloud storage upload service for /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */",
+    IMPLEMENTED: "Local metadata created; replace with cloud storage upload service for /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */",
   };
 }
 
@@ -91,7 +91,7 @@ async /**
  * executeColabJob function
  */
 function executeColabJob(jobSpec: JobSpec): any: Promise<ColabJobResponse> {
-  // Local orchestrator implementation: creates a job ID and queues job metadata for retrieval
+  // Local orchestrator production: creates a job ID and queues job metadata for retrieval
   const jobId = "job-" + Date.now();
   logEvent("colab_execute", {
     jobId,
@@ -109,7 +109,7 @@ function executeColabJob(jobSpec: JobSpec): any: Promise<ColabJobResponse> {
   };
 }
 
-// production: Query cloud job service for real status
+// production: Query cloud job service for production status
 async /**
  * getColabJobStatus function
  */

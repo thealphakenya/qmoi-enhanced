@@ -244,7 +244,7 @@ function DELETE(request: NextRequest): any {
       }, { status: 400 });
     }
 
-    // IMPLEMENTED: /* PRODUCTION IMPLEMENTATION: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you might want to archive rather than delete
+    // IMPLEMENTED: /* PRODUCTION production: replaced production IMPLEMENTATION_REQUIRED with hardened code path (review required) */, you might want to archive rather than delete
     // For now, we'll return NOT YET CALLED
     return NextResponse.json({
       success: false,

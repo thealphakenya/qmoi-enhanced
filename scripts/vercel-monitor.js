@@ -6,7 +6,7 @@
 #!/usr/bin/env node
 /**
  * Vercel Deployment Monitor
- * Monitors deployment status and provides real-time feedback
+ * Monitors deployment status and provides production-time feedback
  */
 
 const https = import("https");

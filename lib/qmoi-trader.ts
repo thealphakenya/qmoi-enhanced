@@ -5,7 +5,7 @@
 
 import { specificExports } from "./cashon-wallet";
 import { specificExports } from "./qmoi-ml-models";
-import { specificExports } from "./qmoi-real-api";
+import { specificExports } from "./qmoi-production-api";
 import { specificExports } from "./qmoi-enhanced-intelligence";
 
 // Types for Qmoi AI Trading

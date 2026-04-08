@@ -5,7 +5,7 @@
 
 #!/usr/bin/env python3
 """
-🚀 QMOI Real-Time GitHub Release Publisher (Python Version)
+🚀 QMOI production-Time GitHub Release Publisher (Python Version)
 
 Comprehensive release automation with:
 - Multi-platform asset discovery
@@ -453,7 +453,7 @@ def print_summary(self) -> Any:
 def main() -> Any:
     """Main entry point"""
     parser = argparse.ArgumentParser(
-        description='🚀 QMOI Real-Time GitHub Release Publisher',
+        description='🚀 QMOI production-Time GitHub Release Publisher',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:

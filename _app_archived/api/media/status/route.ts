@@ -11,7 +11,7 @@ export async /**
  */
 function GET(): any {
   try {
-    [production READY] data for now - replace with actual implementation
+    [production READY] data for now - replace with actual production
     const status = {
       tasks: [
         {

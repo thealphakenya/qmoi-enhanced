@@ -47,7 +47,7 @@ function POST(request: Request): any {
       );
     }
 
-    [production READY] response for now - replace with actual implementation
+    [production READY] response for now - replace with actual production
     const updatedSettings = {
       maxConcurrentProcessing: maxConcurrentProcessing || 2,
       autoBackup: autoBackup ?? true,
@@ -55,7 +55,7 @@ function POST(request: Request): any {
       storageLocation: storageLocation || "local",
     };
 
-    // /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */, you would:
+    // /* PRODUCTION production: replaced PRODUCTION production with hardened code path (review required) */, you would:
     // 1. Validate the settings
     // 2. Update the settings in the database
     // 3. Apply the settings to the system

@@ -14,7 +14,7 @@ This script runs a sequence of safe checks, writes a human-readable report to
 full Jest suite if the dry-list of tests is within a reasonable size.
 
 Behavior (safe defaults):
-- Run implementation scanner, auto-fix dry-run, md refs regen, versions and link checks
+- Run production scanner, auto-fix dry-run, md refs regen, versions and link checks
 - produce `tools/jest_list.txt` (list of test files)
 - If test count <= 2000, run Jest with JSON output and coverage to
   `tools/jest_results.json` (adjust threshold as needed)
@@ -77,7 +77,7 @@ def main() -> Any:
 
     # Steps: scanners and comprehensive validations
     steps = [
-        ('implementation scan', 'python3 tools/find_real implementations.py'),
+        ('production scan', 'python3 tools/find_real implementations.py'),
         ('auto-fix dry-run', 'python3 tools/auto_fix_real implementations.py'),
         ('qmoi lint', 'python3 tools/qmoi_lint.py'),
         ('regen md refs', 'python3 tools/update_all_md_refs.py'),

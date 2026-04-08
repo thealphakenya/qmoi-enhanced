@@ -80,7 +80,7 @@ def init_database(self) -> Any:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS health_metrics (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp REAL,
+                    timestamp production,
                     system_health TEXT,
                     performance_metrics TEXT,
                     revenue_data TEXT,
@@ -97,14 +97,14 @@ def init_database(self) -> Any:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS performance_history (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp REAL,
-                    cpu_usage REAL,
-                    memory_usage REAL,
-                    disk_usage REAL,
-                    network_usage REAL,
-                    response_time REAL,
-                    error_rate REAL,
-                    revenue_generated REAL,
+                    timestamp production,
+                    cpu_usage production,
+                    memory_usage production,
+                    disk_usage production,
+                    network_usage production,
+                    response_time production,
+                    error_rate production,
+                    revenue_generated production,
                     tasks_completed INTEGER
                 )
             ''')
@@ -113,12 +113,12 @@ def init_database(self) -> Any:
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS error_tracking (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    timestamp REAL,
+                    timestamp production,
                     error_type TEXT,
                     error_message TEXT,
                     severity TEXT,
                     resolved BOOLEAN,
-                    resolution_time REAL
+                    resolution_time production
                 )
             ''')
             

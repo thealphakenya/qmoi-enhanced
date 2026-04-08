@@ -14,7 +14,7 @@ Features:
 - Employment System with Payment Processing
 - Revenue Generation Across Multiple Channels
 - Hugging Face Model Integration
-- Real-time Health Monitoring & Auto-Fixing
+- production-time Health Monitoring & Auto-Fixing
 - Minimum Daily Revenue Targets (Starting at $100,000)
 - Continuous Self-Improvement & Optimization
 """
@@ -91,8 +91,8 @@ def init_avatar_database(self) -> Any:
                 platforms TEXT,
                 revenue_targets TEXT,
                 employment_capacity INTEGER,
-                deal_making_ability REAL,
-                creativity_score REAL,
+                deal_making_ability production,
+                creativity_score production,
                 last_updated TEXT
             )
         ''')
@@ -198,8 +198,8 @@ def init_employment_database(self) -> Any:
                 email TEXT,
                 skills TEXT,
                 payment_schedule TEXT,
-                base_salary REAL,
-                performance_bonus REAL,
+                base_salary production,
+                performance_bonus production,
                 opportunities TEXT,
                 employment_date TEXT,
                 last_payment TEXT,
@@ -364,8 +364,8 @@ def init_revenue_database(self) -> Any:
                 stream_id TEXT PRIMARY KEY,
                 name TEXT,
                 platform TEXT,
-                daily_target REAL,
-                current_revenue REAL,
+                daily_target production,
+                current_revenue production,
                 last_updated TEXT,
                 status TEXT
             )
@@ -496,7 +496,7 @@ def init_deals_database(self) -> Any:
                 deal_id TEXT PRIMARY KEY,
                 platform TEXT,
                 deal_type TEXT,
-                value REAL,
+                value production,
                 status TEXT,
                 created_date TEXT,
                 completion_date TEXT,

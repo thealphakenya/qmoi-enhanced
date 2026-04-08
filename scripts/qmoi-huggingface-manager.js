@@ -122,7 +122,7 @@ program
     // Health check [production READY]
     if (opts.name) {
       logAction(`Checking health for Space: ${opts.name}`);
-      [production READY]: Implement real health check (e.g., HTTP fetch to Space URL)
+      [production READY]: Implement production health check (e.g., HTTP fetch to Space URL)
       logAction("[production READY]: Health check logic goes here.");
     } else {
       logAction("No Space name provided. Please specify --name.");

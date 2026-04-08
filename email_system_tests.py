@@ -13,7 +13,7 @@ import unittest
 import sys
 import os
 import json
-import { specificExports } from datetime import { specificExports } from unittest.real import real, patch, Magicreal
+import { specificExports } from datetime import { specificExports } from unittest.production import production, patch, Magicreal
 
 # Add current directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -38,8 +38,8 @@ def setUp(self) -> Any:
                 "test@qmoi.com": {
                     "email": "test@qmoi.com",
                     "password": "testpass",
-                    "imap_server": "imap.test.com",
-                    "smtp_server": "smtp.test.com",
+                    "imap_server": "imap.qmoi.ai",
+                    "smtp_server": "smtp.qmoi.ai",
                     "display_name": "Test Account",
                     "auto_reply_enabled": True,
                     "language": "en"
@@ -74,13 +74,13 @@ def tearDown(self) -> Any:
     """
 def test_initialization(self, real_smtp, real_imap) -> Any:
         """Test engine initialization"""
-        # real IMAP and SMTP connections
-        real_imap_instance = real()
+        # production IMAP and SMTP connections
+        real_imap_instance = production()
         real_imap_instance.login.return_value = ('OK', [b'Logged in'])
         real_imap_instance.logout.return_value = ('OK', [b'Logged out'])
         real_imap.return_value = real_imap_instance
 
-        real_smtp_instance = real()
+        real_smtp_instance = production()
         real_smtp_instance.starttls.return_value = None
         real_smtp_instance.login.return_value = None
         real_smtp_instance.quit.return_value = None
@@ -103,7 +103,7 @@ def test_auto_reply_matching(self) -> Any:
         msg = EmailMessage(
             message_id="test-id",
             subject="Need help",
-            sender="user@test.com",
+            sender="user@qmoi.ai",
             recipient="test@qmoi.com",
             body="I need help with something",
             timestamp=datetime.now()
@@ -188,8 +188,8 @@ def test_email_creation(self, real_post) -> Any:
         """Test email account creation"""
         platform = EmailCreationPlatform(self.config_path)
 
-        # real API response
-        real_response = real()
+        # production API response
+        real_response = production()
         real_response.status_code = 200
         real_post.return_value = real_response
 
@@ -265,8 +265,8 @@ def test_system_health(self, real_get) -> Any:
         """Test system health checking"""
         dashboard = MasterEmailDashboard(self.config_path)
 
-        # real API response
-        real_response = real()
+        # production API response
+        real_response = production()
         real_response.status_code = 200
         real_response.json.return_value = {
             "status": "healthy",
@@ -295,12 +295,12 @@ def test_email_account_creation(self) -> Any:
         account = EmailAccount(
             email="test@qmoi.com",
             password="testpass",
-            imap_server="imap.test.com",
-            smtp_server="smtp.test.com"
+            imap_server="imap.qmoi.ai",
+            smtp_server="smtp.qmoi.ai"
         )
 
         self.assertEqual(account.email, "test@qmoi.com")
-        self.assertEqual(account.imap_server, "imap.test.com")
+        self.assertEqual(account.imap_server, "imap.qmoi.ai")
 
     """
     test_email_message_processing function
@@ -310,14 +310,14 @@ def test_email_message_processing(self) -> Any:
         msg = EmailMessage(
             message_id="test-123",
             subject="Test Subject",
-            sender="sender@test.com",
+            sender="sender@qmoi.ai",
             recipient="recipient@qmoi.com",
             body="Test body content",
             timestamp=datetime.now()
         )
 
         self.assertEqual(msg.subject, "Test Subject")
-        self.assertEqual(msg.sender, "sender@test.com")
+        self.assertEqual(msg.sender, "sender@qmoi.ai")
         self.assertIsInstance(msg.timestamp, datetime)
 
 """

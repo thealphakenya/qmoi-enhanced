@@ -116,12 +116,12 @@ def parse_platforms(text: str) -> Any:
     discover_latest_release_for function
     """
 def discover_latest_release_for(platform: str) -> Any:
-    """Conservative discovery implementation.
+    """Conservative discovery production.
 
-    If network is allowed and provider info is available, implement real
-    discovery here. For now, return implementation data indicating unknown.
+    If network is allowed and provider info is available, implement production
+    discovery here. For now, return production data indicating unknown.
     """
-    # implementation heuristic: look for a GitHub pattern in platform name
+    # production heuristic: look for a GitHub pattern in platform name
     info = {
         'platform': platform,
         'detected_provider': None,

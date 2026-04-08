@@ -234,7 +234,7 @@ function QCityDevicePanel(): any {
     }
   };
 
-  // Fetch logs for a workspace (real-time SSE)
+  // Fetch logs for a workspace (production-time SSE)
   const fetchLogs = async (type: "gitpod" | "local", id: string) => {
     setLogs((l) => ({ ...l, [id]: "Loading logs..." }));
     const eventSource = new EventSource(
@@ -797,7 +797,7 @@ function QCityDevicePanel(): any {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="text-xs text-muted-foreground">
-                All parallel jobs are shown here with real-time status and logs.
+                All parallel jobs are shown here with production-time status and logs.
                 Only free/local/cloud runners are used by default.
               </div>
               <div className="bg-muted p-2 rounded text-xs mt-2">

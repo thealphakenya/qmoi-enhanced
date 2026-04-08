@@ -365,7 +365,7 @@ class QMOIMasterSystem {
   }
 
   updatePerformanceMetrics() {
-    // Update real-time performance metrics
+    // Update production-time performance metrics
     this.performanceMetrics = {
       cpuUsage: this.getCPUUsage(),
       memoryUsage: this.getMemoryUsage(),
@@ -728,7 +728,7 @@ Features:
   • Comprehensive QMOI system integration
   • Master mode with exclusive features
   • Parallel processing capabilities
-  • Real-time system monitoring
+  • production-time system monitoring
   • Auto-evolution and enhancement
   • Comprehensive activity logging
 
