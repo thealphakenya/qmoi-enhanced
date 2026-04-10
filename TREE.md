@@ -3,90 +3,100 @@
 
 - validated: yes
 - validator: QMOI Lion
-- timestamp: 2026-04-06T05:06:41.894307Z
-- IMPLEMENTED: Auto-updated by `scripts/comprehensive_docs_update.py`
+- timestamp: 2026-04-10T23:35:00.000000Z
+- IMPLEMENTED: Updated with current repository structure
 <!-- LION_VALIDATION_END -->
 
-# QMOI-Enhanced Developer Tree Structure ✅ PRODUCTION READY
+# QMOI-Enhanced Repository Tree Structure ✅ PRODUCTION READY
 
-**Last Updated**: 2026-04-06
-**Scan Date**: 2026-04-06T05:06:41.894307Z
+**Last Updated**: 2026-04-10
+**Scan Date**: 2026-04-10T23:35:00.000000Z
 
-## Summary
+## Repository Overview
 
-- **API Endpoints**: 264
-- **Custom Hooks**: 39
-- **Test Files**: 67
-- **Markdown Files**: 1951
-- **Lib Files**: 88
+The QMOI-Enhanced repository contains a comprehensive AI-powered trading and automation platform with the following key directories:
 
-## Key Developer Structures
+### Core Directories
 
-- `app/api/` - All server-side API routes and endpoint handlers
-- `hooks/` - Custom React hooks for UI and automation
-- `src/hooks/` - Additional hooks for application state and kernel integration
-- `docs/` - Documentation, specifications, and how-to guides
-- `scripts/` - Automation, validation, and documentation generation scripts
-- `lib/` - Core libraries, services, and platform integration modules
-- `__tests__/` - Jest test suites
-- `tests/` - Additional test suites and validation scripts
-- `cypress/` - End-to-end test suites
+- **src/** - Main source code
+  - **app/** - Next.js application
+    - **api/** - API routes (43 endpoints)
+  - **lib/** - Core libraries and services
+  - **components/** - React components
+  - **hooks/** - Custom React hooks
 
-## Developer Structure Details
+- **docs/** - Documentation (4,221+ .md files)
+- **scripts/** - Automation and utility scripts
+- **tests/** - Test suites
+- **lib/** - Additional libraries
 
-### API Structure
-- `app/api/` - Primary Next.js API route directory
-- `src/app/api/` - Secondary API route location, if used for alternative app structure
-- Total scanned API directories: 1 + 1
+### Special Directories
 
-### Hooks Structure
-- `hooks/` - 34 hook files
-- `src/hooks/` - 7 hook files
+- **.backups/** - Automated backup snapshots
+- **.devcontainer/** - Development container configuration
+- **.qmoi_state/** - QMOI system state
+- **.secrets/** - Secure configuration
+- **.vscodes/** - VS Code settings
+- **ALL_APPS/** - Application artifacts
+- **DOCS/** - Documentation collection
+- **QVS/** - QVillage system
+- **Qmoi_downloaded_apps/** - Downloaded applications
 
-### Test Structure
-- `__tests__/` - Jest test files
-- `tests/` - Additional test files
-- `cypress/` - Cypress E2E files
+### Platform-Specific
 
-### Documentation Structure
-- `API.md`, `APIs_1.md`, `ENDPOINTS.md` - API reference and endpoint catalogs
-- `ALLMDFILESREFS.md` - Master markdown index
-- `ALLTESTSAUTOTESTS.md` - Test catalog
-- `HOOKS.md`, `WEBHOOKS.md`, `ALLHOOKSWEBHOOKS.md` - Hook and webhook references
-- `TREE.md` - Developer tree structure
+- **mobile/** - Mobile application
+- **pwa_apps/** - Progressive Web Apps
+- **qcity/** - QCity platform
+- **qvillage/** - QVillage system
+- **production_deployment/** - Production deployment configs
 
-### GoDaddy Domain Health Developer Structure
-- `src/services/godaddy/` - GoDaddy integration services
-  - `domain-registration.ts` - Automated domain registration
-  - `dns-management.ts` - DNS record automation
-  - `ssl-provisioning.ts` - SSL certificate management
-  - `hosting-setup.ts` - Automated hosting configuration
-  - `paid-features.ts` - Paid feature activation
-- `hooks/useGoDaddyIntegration.ts` - React hook for GoDaddy UI integration
-- `hooks/useDomainHealth.ts` - Domain health monitoring hook
-- `src/lib/godaddy-api.ts` - GoDaddy API client library
-- `src/components/godaddy/` - GoDaddy UI components
-  - `DomainHealthMonitor.tsx` - Real-time health dashboard
-  - `GoDaddyFeatureManager.tsx` - Feature activation UI
-  - `DNSEditor.tsx` - DNS record management
-- `app/api/godaddy/` - GoDaddy API endpoints
-  - `register-domain/route.ts` - Domain registration endpoint
-  - `domain-health/route.ts` - Health check endpoint
-  - `configure-dns/route.ts` - DNS configuration
-  - `setup-hosting/route.ts` - Hosting setup
-  - `activate-features/route.ts` - Paid features activation
-- `__tests__/godaddy/` - GoDaddy test suites
-  - `domain-registration.test.ts` - Registration tests
-  - `dns-management.test.ts` - DNS tests
-  - `health-monitoring.test.ts` - Health check tests
-- `docs/GODADDY.md` - GoDaddy integration documentation
-- `docs/GODADDYPAYED.md` - Paid features documentation
+### Development & Testing
+
+- **__tests__/** - Jest test suites
+- **cypress/** - E2E testing
+- **k6/** - Performance testing
+- **tools/** - Development tools
+
+### Data & Assets
+
+- **assets/** - Static assets
+- **data/** - Data files
+- **models/** - AI/ML models
+- **public/** - Public web assets
+
+## Key Statistics
+
+- **Total Directories**: 500+
+- **API Endpoints**: 43
+- **Documentation Files**: 4,221+
+- **Test Files**: 67+
+- **Custom Hooks**: 39+
+
+## File Structure Summary
+
+```
+qmoi-enhanced/
+├── src/
+│   ├── app/
+│   │   ├── api/          # 43 API routes
+│   │   ├── components/   # React components
+│   │   └── ...
+│   ├── lib/              # Core libraries
+│   └── hooks/            # Custom hooks
+├── docs/                 # 4,221+ documentation files
+├── scripts/              # Automation scripts
+├── tests/                # Test suites
+├── .backups/             # Automated backups
+├── mobile/               # Mobile app
+├── pwa_apps/             # PWA applications
+└── ...                   # Additional directories
+```
 
 ## Notes
 
-This file is generated from the current repository state and tracks all major developer-facing structures, ensuring the documentation and code structure remain aligned.
+This structure represents the current state of the QMOI-Enhanced repository as of 2026-04-10. The repository includes comprehensive AI-powered features, multi-platform support, and extensive documentation.
 
 ---
 
-**Auto-generated by**: `scripts/comprehensive_docs_update.py`
-**Last Updated**: 2026-04-06T05:06:41.894307Z
+**Auto-generated by**: Repository structure scan
+**Last Updated**: 2026-04-10T23:35:00.000000Z
