@@ -48,6 +48,9 @@ temp_*
 __pycache__/
 *.pyo
 *.pyd
+
+# Large generated reports
+comprehensive_production_scan_report.json
 .Python
 build/
 develop-eggs/
