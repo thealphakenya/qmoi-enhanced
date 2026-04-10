@@ -17,15 +17,58 @@ title: "QMOI Start Guide"
 
 ## 🚀 How to Start or Resume QMOI (QCity & Cloud)
 
-To ensure QMOI is always running (even in the cloud or when your prodice is offline), use the following command:
+To ensure QMOI is always running (even in the cloud or when your device is offline), use the following command:
 
 ```production-validatedbash
 python scripts/qmoi-start.py
 ```production-validated
 
 - This script will:
-  - Check if QMOI is already running (production configuration had a path bug that has been fixed to respect `ai.model.backup_interval` with a safe default.
+  - Check if QMOI is already running (production configuration had a path bug that has been fixed to respect `ai.model.backup_interval` with a safe default).
 - QMOI now exposes an aggregator that combines local and (optionally) cloud model outputs into a single response; a backup is performed after aggregation events to persist metrics and state.
+
+---
+
+**QMOI: Always-on, self-healing, and fully automated.**
+
+## 📋 Prerequisites
+
+Before starting QMOI, ensure you have:
+- Python 3.8+ installed
+- Required dependencies (run `pip install -r requirements.txt`)
+- Access to terminal/shell environment
+- Git repository cloned and up-to-date
+
+## 🛠️ Enhanced Features
+
+QMOI now includes advanced integrations for:
+- **Terminal Enhancements**: [TERMINAL.md](TERMINAL.md) - Production-ready terminal operations
+- **Shell Environment**: [SHELL.md](SHELL.md) - Optimized shell configurations
+- **Git Integration**: [GIT_INTEGRATION.md](GIT_INTEGRATION.md) - Automated version control workflows
+- **Environment Management**: [ENVIRONMENTS.md](ENVIRONMENTS.md) - Multi-environment support
+
+## 📚 Documentation Navigation
+
+- **Routes Overview**: [ROUTES.md](ROUTES.md) - All available API routes
+- **Table of Contents**: [TABLE_OF_CONTENTS.md](TABLE_OF_CONTENTS.md) - Comprehensive project index
+- **Repository Tree**: [TREE.md](TREE.md) - Current file structure
+- **API Reference**: [API_REFERENCE.md](API_REFERENCE.md) - Complete API documentation
+- **Stats & Metrics**: [PHASE_6_EXTENDED_SUMMARY.md](PHASE_6_EXTENDED_SUMMARY.md) - Performance and analytics
+
+## 🔧 Troubleshooting
+
+If QMOI fails to start:
+1. Check logs in `logs/` directory
+2. Verify environment variables in [ENVIRONMENTS.md](ENVIRONMENTS.md)
+3. Ensure all dependencies are installed
+4. Run `python scripts/qmoi-diagnostics.py` for automated checks
+
+## 📊 Monitoring
+
+Once started, monitor QMOI via:
+- Real-time metrics dashboard
+- System health checks
+- Automated alerts and recovery
 
 ---
 
