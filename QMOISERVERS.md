@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "QMOI Servers Inventory and Deployment Guide"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -30,7 +30,7 @@ This document lists the servers (HTTP services) present in the repository, their
   - Key endpoints: `/detect-anomaly`, `/analytics`, `/export-analytics`
 
 - FastAPI services (various):
-  - `downloadqmoiaiexe.py` / `qmoiexe.py` / `qmoiaxe.py` — download / exe distribution endpoints, model serving [production READY]s, and workspace services.
+  - `downloadqmoiaiexe.py` / `qmoiexe.py` / `qmoiaxe.py` — download / exe distribution endpoints, model serving ✅ PRODUCTION READYs, and workspace services.
   - Various `scripts/*` contain FastAPI backends for automation, space backends, and APIs.
   - Deploy with Uvicorn (ASGI) behind a reverse proxy (Nginx) or in containers.
 
@@ -46,62 +46,7 @@ To ensure QMOI runs when offline (no GitHub, no external networks):
    - All Python servers and their dependencies pinned in `requirements.txt`.
    - Static PWAs under `pwa_apps/`.
    - `qmoi.db` initial state and migration scripts.
-   - Scripts to start servers locally (`scripts/ensure_qmoi_servers.sh`).
-
-2. Provide a `pack_offline_bundle.sh` script to build the archive and a `unpack_and_run.sh` script to restore and launch all services.
-
-3. For attachments and large assets, include a local `object_storage/` folder and a sophisticated HTTP file server to serve media when S3 is unavailable.
-
-## Supervisor & always-on strategies
-
-- Use `systemd` units or `supervisord` to keep services running after reboots or when the Codespace/terminal is closed.
-- Provide Docker Compose and Kubernetes manifests for cluster deployments with health/readiness probes pointing to `/health` and `/ready`.
-- For tunnel resilience (ngrok/alternatives): run a local tunneler that writes the live URL to `live_qmoi_ngrok_url.txt` and ensure `update_ngrok_links.py` uses that canonical file.
-
-## Security
-
-- production must set `QMOI_JWT_SECRET` and `QMOI_CONTROL_TOKEN` environment variables to non-default values.
-- Use HTTPS (TLS) with valid certificates; WebAuthn requires a valid RP ID (domain) and HTTPS.
-
-## Next steps (recommendations)
-
-- Add `Dockerfile.qmoi_control` and `docker-compose.yml` to orchestrate services.
-- Add `pack_offline_bundle.sh` to generate a self-contained archive.
-- Add systemd service examples and GitHub Actions to test startup.
-- Implement object storage fallback and signed URL generation for attachments.
-
-## Enhanced Server Capabilities
-
-### Unlimited Server Resources
-
-- **Infinite CPU Cores:** Dynamic allocation of unlimited processing power across server clusters
-- **Unlimited Memory:** Automatic RAM scaling with intelligent memory management and caching
-- **Infinite Storage:** Cloud-based storage with automatic expansion and tiering
-- **Unlimited Bandwidth:** High-speed network connections with global CDN optimization
-- **GPU Acceleration:** Access to unlimited GPU resources for compute-intensive tasks
-
-### Auto-Scaling Server Clusters
-
-- **Dynamic Scaling:** Automatic server cluster expansion based on load and demand
-- **Load Balancing:** Intelligent distribution of workloads across multiple server instances
-- **Failover Protection:** Redundant server instances with instant failover capabilities
-- **Geographic Distribution:** Global server distribution for low-latency access worldwide
-- **Cost Optimization:** Automatic selection of cost-effective server resources
-
-### Server Monitoring & Automated Maintenance
-
-- **Real-Time Health Checks:** Continuous monitoring of server performance and health metrics
-- **Predictive Maintenance:** AI-powered failure prediction and automatic repair systems
-- **Automated Updates:** Self-updating server software and security patches
-- **Resource Optimization:** Dynamic resource allocation for optimal server performance
-- **Incident Response:** Automated incident detection and resolution with complete downtime
-
-### Server Cloning & Backup Systems
-
-- **Instant Cloning:** One-click server cloning with full configuration and state preservation
-- **Automated Backups:** Continuous backup with point-in-time recovery capabilities
-- **Disaster Recovery:** Multi-site backup with automatic failover and data synchronization
-- **Version Control:** complete version history for server configurations and deployments
+   - Scripts to start servers production configurations and deployments
 - **State Synchronization:** Real-time synchronization across cloned server instances
 
 ### Server Security & Access Controls

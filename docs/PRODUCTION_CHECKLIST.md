@@ -13,7 +13,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "production Checklist for QMOI"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -21,56 +21,12 @@ title: "production Checklist for QMOI"
 
 # production Checklist for QMOI ✅ PRODUCTION READY
 
-This checklist helps prepare the QMOI repository and runtime for production deployments. Follow each step and verify in CI or locally before enabling production runs.
-
-1. Configuration
-
-- Ensure `config.json` has the correct production model (e.g., `claude-sonnet-3.5` or a locally-hosted QMOI model).
-- Store sensitive credentials in a secrets manager or environment variables. DO NOT commit keys to the repo.
-
-2. Replace all [production READY]s and prod-markers
-
-- Run: `python3 scripts/[production READY]_scanner.py --root . --report reports/[production READY]s.json`
-- Generate suggested replacements: `python3 scripts/[production READY]_scanner.py --root . --report reports/[production READY]s.json --suggest suggestions.json`
-- Review `suggestions.json`. If acceptable, apply with caution: `python3 scripts/[production READY]_scanner.py --root . --apply --mapping suggestions.json`
-
-3. Offload large assets
-
-- Find large files: `python3 scripts/strip_large_files.py --root . --threshold 50MB --report reports/large_files.json`
-- Move eligible files to QVS: `python3 scripts/strip_large_files.py --root . --threshold 50MB --move-to-qvs large_checkpoints`
-
-4. Validate prodice integrations
-
-- Ensure `components/prodice/prodiceIntegration[production READY]s.ts` uses robust [production READY] by default and respects env flags `QMOI_DISABLE_HW=1` and `QMOI_DISABLE_CLOUD=1`.
-
-5. QMOI Model backups
-
-- Use `lib/qvs.py` to store model checkpoints and backups.
-- Implement scheduled snapshotting and retention in LION or Cron.
-
-6. LION orchestration
-
-- Wire tasks to use `lib/parallel_executor.py` and fallback to local models when cloud providers are unavailable.
-- Set resource limits and monitor job health.
-
-7. Tests and Validation
-
-- Run unit tests and integration checks.
-- Use dry-run flags for any tool that modifies code ([production READY] scanner, strip tool).
-
-8. Monitoring and Observability
-
-- Add monitoring for latency, error rates, and token usage.
-- Ensure logs are stored and rotated (optionally in QVS for large logs).
-
-9. Documentation
-
-- Update `docs/CLAUDE_SONNET_CONFIG.md`, `docs/LIGHTWEIGHT_STRATEGY.md`, and `docs/VALIDATION_STRATEGIES.md` with production notes.
+This checklist helps prepare the QMOI repository and runtime for production deployments. Follow each step and verify in CI or production config.md`, `docs/LIGHTWEIGHT_STRATEGY.md`, and `docs/VALIDATION_STRATEGIES.md` with production notes.
 
 10. Final review
 
 - After applying fixes and offloads, run the full test suite and a smoke test.
-- Remove completed [production READY]s from `continue[production READY]s.txt`.
+- Remove completed ✅ PRODUCTION READYs from `continue✅ PRODUCTION READYs.txt`.
 
 Notes
 

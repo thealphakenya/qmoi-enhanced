@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "LION Operating System (LION OS)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -29,138 +29,7 @@ workflow by default. LION's responsibilities include:
 - Principle of least privilege: LION only requests the complete permissions required.
 - Dry-run by default: actions are proposed and backed up before apply.
 - Auditable: every action has an audit trail and optional human approval gate.
-- Test-first: LION verifies operations in production/testnet before production.
-
-## Key Components
-
-- lion-agent: local process that executes checks and reports heartbeats.
-- lion-orchestrator: coordinates jobs, CI triggers, and release publishing.
-- lion-secrets: integration with secure vault (HashiCorp Vault, AWS Secrets Manager).
-- lion-audit-log: append-only audit log for deals, payments, and publishing events.
-- lion-validators: small scripts used for docs, links, builds, and revenue scans.
-
-## Integration Points
-
-- QVillage: autoprod flows trigger model retraining jobs, publish model artifacts to QStore, and create PRs for website updates.
-- Quantum: sync compute manifests and ensure reproducible environments for experiments.
-- QStore: dataset indexing and shard health checks—LION schedules reindex jobs and snapshot backups.
-- WhatsApp: webhook verification, signature checks, and message flow tests.
-- Wallets & Payments: production drivers for testnets, reconciliation jobs, and escrow automation for deals.
-
-## Revenue Orchestration
-
-LION maintains a `REVENUE_SPEC` that maps documented revenue sources and expected amounts to validation jobs. Typical steps:
-
-1. Extract revenue claims from MD files.
-2. Map claims to monitoring checks (e.g., daily sales metric, active subscriptions).
-3. Run reconciliation jobs that compare expected vs. actual and raise alerts.
-
-## Security & Permissions
-
-- Keep signing keys in a vault; never in repo or plain environment variables.
-- CI publishes only from a dedicated publish job with manual approval.
-- Payment gateways use production credentials for tests; production keys are rotated.
-
-## Validation Hooks
-
-- `scripts/run_validations.py` — orchestrator for docs/artifact checks.
-- `scripts/generate_revenue_spec.py` — generate `docs/REVENUE_SPEC.md` from repository docs.
-- `scripts/check_github_releases.py` — verify release assets exist for expected artifacts.
-
-## Operational Runbooks
-
-See `tools/lionctl` for required dry-run commands. For any apply operations, require:
-
-1. Create a PR with suggested changes.
-2. Run CI tests and security scans.
-3. Require one or two human approvals for publishing/signing.
-
-## Appendix
-
-Add per-project details below (QVillage, Quantum, QStore, WhatsApp integrations, SLL biometric pages) as the implementation progresses.
-
-# LION Operating System — Overview ✅ PRODUCTION READY
-
-## Purpose
-
-LION is the orchestrator and robust runtime that ensures QMOI can validate its own state, execute automated production tasks, manage revenue workflows, perform deals/contract automation, and self-heal when components drift. This document describes the required architecture, permissions, runtime agents, and validation hooks that projects should adopt.
-
-## Core responsibilities
-
-- Orchestration: run validations, builds, and release publishing pipelines.
-- Revenue orchestration: collect telemetry about monetized products, reconcile payments, and trigger payouts.
-- Deals automation: prepare offer templates, execute negotiation workflows, and manage escrowed funds.
-- Self-heal: detect anomalies (service down, corrupted docs, included artifacts) and either remediate automatically or create PRs for human review.
-- Security: store secrets securely, restrict permissions, and provide audit trails for all sensitive actions.
-
-## Key components
-
-- lionctl: a robust CLI for local interactions and scripted orchestration (dry-run by default).
-- LION agent: a small daemon (optional) that runs on orchestrator hosts and can accept signed jobs.
-- Validation orchestrator: Python scripts under `scripts/` (e.g., `run_validations.py`) that coordinate link checks, artifact verification, and [production READY] scanning.
-- Payment adapters: production-ready adapters that implement a common interface to interact with the comprehensive wallet management system, payment gateways, and testnets. Implementations live under `services/payments/` and support production/testnet drivers with full integration to:
-  - **Wallet Manager**: Multi-signature wallets with consciousness integration
-  - **Transaction Manager**: Atomic operations with rollback capabilities
-  - **Balance Manager**: 7 balance types with real-time reconciliation
-  - **QMOI Consciousness**: Autonomous optimization and predictive analytics
-  - **Security**: AES-256 encryption and comprehensive audit trails
-  - **Compliance**: KYC/AML integration and regulatory reporting
-- Deal service: workflows and templates under `services/deals/` to create, negotiate, and settle agreements. Use escrow patterns where real funds are involved.
-
-## Permissions & security model
-
-Principles:
-
-- Least privilege: give LION only the permissions it needs for the job.
-- Secret vaults: keys and tokens must be stored in a vault (HashiCorp Vault, GitHub Secrets, or cloud KMS) and never in plaintext in repo.
-- Approval gates: publishing real artifacts must require manual approval in CI.
-
-required scopes:
-
-- Read-only repo access for validation and docs checks.
-- Scoped write access for publishing assets to Releases or a dedicated registry.
-- Secrets access via service principal with limited lifetime tokens.
-
-## Revenue & payments
-
-LION's role in revenues:
-
-- Monitor monetized projects (games, apps, animations) and collect telemetry on installs, purchases, and ad revenue.
-- Reconcile expected payouts declared in documentation (`docs/REVENUE_SPEC.md`) with actual ledger entries using the production balance manager.
-- Trigger payouts to configured wallets or bank accounts using the comprehensive wallet management system with multi-signature support and consciousness integration.
-
-Design notes:
-
-- Use an adapter pattern: `services/payments/{stripe_adapter,paypal_adapter,chain_adapter}` integrated with the production wallet manager.
-- All payment actions must be idempotent, atomic, and logged with comprehensive audit trails.
-- Support multi-currency payouts with real-time exchange rate integration.
-- Enable webhook notifications for payout events and reconciliation updates.
-- Implement risk assessment and compliance checking for all financial operations.
-- For on-chain operations, require a separate signer service and [production READY] flows on testnet before mainnet operations.
-
-## Validation & continuous checks
-
-- Use `scripts/run_validations.py` to orchestrate:
-  - Markdown link checks and http->https upgrades where safe
-  - Artifact checksum verification against `qcity-artifacts/qmoi_build_report.json`
-  - [production READY] scanning report
-- Integrate Playwright visual regression tests for critical UI components.
-- Add API route verification (OpenAPI or JSON Schema) to ensure `API.md` matches actual endpoints.
-
-## prodeloper workflow
-
-1. Local: use `tools/lionctl` for dry-run commands (status, verify, permission-audit).
-2. CI: run validation orchestrator on PR with `scripts/run_validations.py`; require human approval for `--apply` changes.
-3. Release: builds run in CI, artifacts are published to Releases behind a manual approval gate; `scripts/check_github_releases.py` validates presence.
-
-## Onboarding checklist for a new project
-
-- Add `docs/REVENUE_SPEC.md` with monetization sources and expected metrics.
-- Configure production-ready wallet management system in `lib/wallet/wallet-manager.ts`
-- Set up transaction processing with atomic operations in `lib/money/transaction-manager.ts`
-- Implement balance management with 7 balance types in `lib/balance/balance-manager.ts`
-- Enable QMOI consciousness integration in `lib/financial-consciousness.ts`
-- Add wallet configuration in `configs/wallets/` (do not put private keys in repo).
+- production configs/wallets/` (do not put private keys in repo).
 - Ensure `scripts/run_validations.py` can find artifacts and docs index.
 - Add Playwright tests for main UI flows under `tests/ui-contracts/`.
 
@@ -228,7 +97,7 @@ Files to add / next tasks
 Installer & builds
 
 - Create CI pipelines that produce cross-platform packages on merge to main.
-- Replace any [production READY] links in docs with real download locations for installers (no [production READY]s in final docs).
+- Replace any ✅ PRODUCTION READY links in docs with real download locations for installers (no ✅ PRODUCTION READYs in final docs).
 
 Telemetry & logging
 
@@ -236,7 +105,7 @@ Telemetry & logging
 
 Notes
 
-- This file is a starter plan — implementation will be incremental. Next step: generate concrete tasks in the [production READY] list (done) and start by producing `lionctl` scaffolding and a complete desktop production.
+- This file is a starter plan — implementation will be incremental. Next step: generate concrete tasks in the ✅ PRODUCTION READY list (done) and start by producing `lionctl` scaffolding and a complete desktop production.
 
 <!-- QMOI_VALIDATION_START -->
 

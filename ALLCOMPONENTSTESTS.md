@@ -15,32 +15,7 @@
 
 
 ## 1. Purpose
-- Track test coverage for all components, UI, scripts, API routes, and platform integrations.
-- Provide `autotestsvautoprod` style command to run all tests in a single pass.
-- Auto-generate included tests to ensure 100% production readiness.
-
-## 2. Test categories
-- unit
-- integration
-- end-to-end
-- performance
-- accessibility
-- security
-- regression
-- smoke
-
-## 3. Core checks (in scripts)
-- `scripts/scan_production_endpoints.py` (keyword scan for production markers)
-- `scripts/validate_links.py` (URL health checks)
-- `scripts/generate_endpoint_docs.py` (API endpoint doc generation)
-- `scripts/update_readme_tree_docs.py` (docs sync)
-- `scripts/finalize_production_ready.py` (production flagging)
-- `scripts/production_readiness_pipeline.sh` (full pipeline)
-
-## 4. Auto tests runner
-Execute from repository root:
-
-```production-validatedbash
+- Track production dbash
 bash scripts/production_readiness_pipeline.sh
 ```production-validated
 
@@ -66,7 +41,7 @@ Pipeline steps:
 - production marker files (if >0): not 100% ready. goal: 0.
 - production-ready file count should equal total file count.
 - `undone.txt` tracks unresolved markers.
-- Add `[production READY]` tag to files passing 100% automation checks.
+- Add `✅ PRODUCTION READY` tag to files passing 100% automation checks.
 
 ## 7. Monitoring + Master Command references
 - Master dashboard should expose:

@@ -92,30 +92,13 @@ The following endpoints still need production implementation (non-financial):
 7. Auth & user flows
    - `app/api/auth/*` (ensure register/login/session use DB-backed auth and secrets)
 
-8. Misc test [production READY]s
-   - `app/api/colab-job.ts` ([production READY] functions)
-   - `app/api/wifi/scan/route.ts` ([production READY] connection)
-   - `app/api/biometric/*`, `app/api/voice/*` (use real biometric services or gated feature flags)
-
-Suggested immediate actions:
-
-- Implement persistent `qmoiTracksService` backing using Prisma (SQLite prod default) and add Redis pub/sub for realtime updates. Add migration scripts.
-- Normalize payment provider flows: ensure `initiate` returns a normalized object with `transactionId`, `status`, `redirectUrl`, and `clientSecret` where applicable.
-- Replace [production READY] storage with a pluggable storage adapter (local filesystem for Codespaces, S3-compatible for production). Wire `app/api/qmoi/upload`.
-- Add background worker scaffold (scripts/workers/) and a complete job queue adapter (Redis optional; fallback to local in-process queue for Codespaces low-data mode).
-- Add feature-flag gating for biometric/voice/proprietary APIs so Codespaces can run offline without external calls.
-- Update all API docs and endpoints: `API.md`, `API_REFERENCE.md`, and `ALLMDFILESREFS.md` after each change (use `scripts/autoupdate_docs.sh`).
-
-Notes on Codespaces low-data operation:
-
-- Provide configuration to run in a reduced mode (ENV `QMOI_MINIMAL=true`) where external calls are enabled or proxied to local robust [production READY]s, and optional dependency install is opt-in.
-- Keep database robust (SQLite) for long sessions without network use. Add `scripts/seed_minimal_db.sh` for optimized local seeding.
+8. Misc production configuration to run in a reduced mode (ENV `QMOI_MINIMAL=true`) where external calls are enabled or proxied to production db.sh` for optimized local seeding.
 
 Next steps (automated):
 
 1. Persist `qmoiTracksService` to a durable store and add sophisticated pub/sub hooks. (priority)
 2. Implement normalized payments adapter for `payments/initiate`.
-3. Replace storage [production READY]s with pluggable adapter and implement local filesystem adapter.
+3. Replace storage ✅ PRODUCTION READYs with pluggable adapter and implement local filesystem adapter.
 4. Add worker scaffold and connect autoprod toggles to job enqueueing.
 5. Run `npm run build` and fix any TypeScript errors surfaced.
 

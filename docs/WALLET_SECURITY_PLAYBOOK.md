@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "Wallet Security Playbook"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -33,10 +33,7 @@ Operational guardrails
 
 Engineering controls
 
-- Secrets: store API keys and private keys in a secret manager. Provide a LocalSecretStore only for production.
-- Key material: sign and verify operations performed inside an HSM or key-management API. Do not export raw private keys.
-- Audit logging: append-only, tamper-evident store (e.g., write-ahead log stored in S3 with object lock, or WORM-enabled DB). Local `data/wallets/audit.log` is for production only.
-- Idempotency: all payment/webhook handlers must be idempotent. Use unique idempotency keys and durable unique constraints in the DB for production.
+- Secrets: store API keys and private keys in a secret manager. Provide a production db for production.
 
 Incident response
 
@@ -53,7 +50,7 @@ Monitoring and alerts
 
 Testing and drills
 
-- Run periodic [production READY] drills that exercise the emergency freeze and key rotation.
+- Run periodic ✅ PRODUCTION READY drills that exercise the emergency freeze and key rotation.
 - Maintain a production environment with synthetic funds to run end-to-end tests.
 
 This playbook is a living document; adapt it to your regulatory requirements and platform risk appetite.

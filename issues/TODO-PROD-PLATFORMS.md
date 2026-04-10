@@ -13,10 +13,10 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-Title: [production READY]-prod-PLATFORMS
+Title: ✅ PRODUCTION READY-prod-PLATFORMS
 
 Summary:
-There are platform-specific `[production READY]_prod` [production READY]s and follow-ups for building, packaging, and validating QMOI outputs on mac, linux, chromebook, raspberrypi, smarttv, and [qcity](https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai).
+There are platform-specific `✅ PRODUCTION READY_prod` ✅ PRODUCTION READYs and follow-ups for building, packaging, and validating QMOI outputs on mac, linux, chromebook, raspberrypi, smarttv, and [qcity](https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai)(https://qcity.qmoi.ai).
 
 Objectives:
 

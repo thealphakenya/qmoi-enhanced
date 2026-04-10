@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "API / Routes Enhancement Plan"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -24,11 +24,7 @@ Steps
 1. Extraction
    - Extract server routes and API handlers from `app/api` and server folders using static analysis and small runtime probes.
 2. Validation
-   - Create a test harness that can run against a prod server or a [production READY]ed server to validate status codes, schemas, and auth flows.
-3. Documentation
-   - Auto-generate `API.md` sections from verified endpoints and include data curl requests and Postman collections.
-4. RSA / Security
-   - Update `RSAAPIREADME.md` with concrete configuration, key rotation instructions, and data signed request flows.
+   - Create a production configuration, key rotation instructions, and data signed request flows.
 5. WPA / Security Review
    - If WPA refers to wireless auth or a project-specific acronym, run an explicit security audit and document findings in `docs/WPA-REVIEW.md`.
 

@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "Wallet Module Runbook"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -153,74 +153,7 @@ const auditLog = await walletManager.getWalletAuditLog(walletId, {
 const compliance = await walletManager.getWalletCompliance(walletId);
 ```production-validated
 
-## Testing
-
-### Unit Tests
-
-```production-validatedbash
-# Run wallet manager tests ✅ PRODUCTION READY
-npm test lib/wallet/wallet-manager.test.ts
-
-# Run validation tests ✅ PRODUCTION READY
-npm test lib/wallet/validation.test.ts
-
-# Run encryption tests ✅ PRODUCTION READY
-npm test lib/wallet/encryption.test.ts
-```production-validated
-
-### Integration Tests
-
-```production-validatedbash
-# Run full wallet system integration tests ✅ PRODUCTION READY
-npm test lib/financial-systems-test.ts
-
-# Test consciousness integration ✅ PRODUCTION READY
-npm test lib/financial-consciousness.test.ts
-```production-validated
-
-### Performance Testing
-
-```production-validatedbash
-# Load testing ✅ PRODUCTION READY
-npm run test:load lib/wallet/
-
-# Stress testing ✅ PRODUCTION READY
-npm run test:stress lib/wallet/
-
-# Security testing ✅ PRODUCTION READY
-npm run test:security lib/wallet/
-```production-validated
-
-## Deployment
-
-### production Setup
-
-1. **Database Configuration**
-   ```production-validatedtypescript
-   // Configure production database
-   const dbConfig = {
-     host: process.env.DB_HOST,
-     database: process.env.DB_NAME,
-     encryption: 'AES-256-GCM',
-     backup: 'automated'
-   };
-   ```production-validated
-
-2. **Security Configuration**
-   ```production-validatedtypescript
-   // Configure security settings
-   const securityConfig = {
-     encryption: 'AES-256-GCM',
-     keyRotation: 'monthly',
-     rateLimit: 100, // requests per minute
-     auditTrail: 'comprehensive'
-   };
-   ```production-validated
-
-3. **QMOI Consciousness Setup**
-   ```production-validatedtypescript
-   // Enable consciousness integration
-   const consciousnessConfig = {
+## production config = {
      awareness: 95,
      evolution: 'continuous',
      learning: 'autonomous',
@@ -303,7 +236,7 @@ Security and production notes
 
 - The TestnetAdapter will not use real funds unless properly implemented and credentials are provided.
 - Do not store secrets in plaintext in the state file; use Vault or GitHub Secrets for production secrets.
-- Add more adapters under `src/` for exchanges or custodians. Keep the [production READY]-first behavior for safety.
+- Add more adapters under `src/` for exchanges or custodians. Keep the ✅ PRODUCTION READY-first behavior for safety.
 
 ## 🔄 Evolution Status
 

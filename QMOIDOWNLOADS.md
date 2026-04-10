@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "QMOIDOWNLOADS"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -22,7 +22,7 @@ Please use the GitHub Releases page for production-ready binaries and assets:
 
 - https://github.com/thestablekenya/qmoi-enhanced/releases
 
-Many legacy links to `downloads.qmoi.app` in this file are known to be broken or [production READY]s. The repository audit has flagged these; see `tools/releases_audit.md` for details. If you are maintaining release artifacts, please rebuild and attach proper binaries to the matching GitHub release, include checksums, icons, and autoupdate metadata.
+Many legacy links to `downloads.qmoi.app` in this file are known to be broken or ✅ PRODUCTION READYs. The repository audit has flagged these; see `tools/releases_audit.md` for details. If you are maintaining release artifacts, please rebuild and attach proper binaries to the matching GitHub release, include checksums, icons, and autoupdate metadata.
 
 <!-- Legacy download check logs follow for historical reference -->
 

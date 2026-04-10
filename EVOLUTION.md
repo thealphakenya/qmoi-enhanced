@@ -446,3 +446,13 @@ npm run evolve:multi-language
 
 ---
 *This document is maintained by QMOI's autonomous evolution system*
+
+---
+
+## 🔗 Terminal, Shell, and Git Integration
+
+- Evolution now includes explicit terminal workflow support, linking command intelligence to production-safe operations.
+- Shell environment evolution focuses on prompt context, session recovery, and environment sync across dev/staging/production.
+- Git evolution includes commit quality, branch lifecycle automation, and governance workflows.
+- New documentation references: `TERMINAL.md`, `SHELL.md`, `GIT_INTEGRATION.md`, and `ENVIRONMENTS.md`.
+- Lion-managed evolution ensures these terminal and environment improvements are validated, auditable, and production-ready.

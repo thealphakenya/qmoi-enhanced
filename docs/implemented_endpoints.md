@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "implemented endpoints"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -82,13 +82,7 @@ This file lists HTTP endpoints found by scanning the codebase. For each endpoint
 
 Notes:
 
-- Some endpoints are implemented as examples or [production READY]s; test or confirm each in a production environment before assuming production readiness.
-- The control server contains admin endpoints which may require `QMOI_CONTROL_TOKEN` or other env vars.
-
-Next steps:
-
-1. Update `API.md` to include the above endpoints and mark verified ones (from prior integration run) with a ✅.
-2. Add an attachments endpoint to `qmoi_control_server.py` to accept attachment metadata (id, name, size, mime, dataUrlPreview) and persist to `qmoi.db`.
+- Some endpoints are implemented as examples or ✅ PRODUCTION READYs; production db`.
 3. Add a supervisor script to start and health-check core servers locally.
 4. Run integration tests for `qmoi_control_server.py` and other server test suites.
 

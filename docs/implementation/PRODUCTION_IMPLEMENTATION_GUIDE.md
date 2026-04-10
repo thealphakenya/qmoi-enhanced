@@ -78,7 +78,7 @@
   - Implement session management
 
 #### 2.2 Data Models & Schemas
-- [ ] Create real database schemas for:
+- [ ] Create production database schemas for:
   - Users and authentication
   - Transactions and payments
   - Trading data and positions

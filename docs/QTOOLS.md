@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "QTOOLS"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -22,12 +22,12 @@ This document describes the enhanced toolchain (QTOOLS) used across the reposito
 Key improvements implemented:
 
 - Auto env loading: tools now load non-sensitive defaults from `.qmoi_validation/auto_env.json` when environment variables are not provided. This allows the automation to propose, run and annotate flows even when CI secrets aren't set. Sensitive values (tokens) are intentionally left empty in the standard and must be provided for publishing.
-- Richer LION task [production READY]s: validation and build tools now write LION task/event [production READY]s with unique IDs, priority, required actions and `qcity_hints` to help orchestrators route remediation to QCity resources.
+- Richer LION task ✅ PRODUCTION READYs: validation and build tools now write LION task/event ✅ PRODUCTION READYs with unique IDs, priority, required actions and `qcity_hints` to help orchestrators route remediation to QCity resources.
 - Conservative publish: release automation will only create release proposals by default. Publishing requires `GITHUB_TOKEN` or an explicit configuration in `.qmoi_validation/auto_env.json` and remains opt-in.
 
 Files of interest
 
-- `scripts/validate_md.py` — markdown validation, history, LION [production READY]s.
+- `scripts/validate_md.py` — markdown validation, history, LION ✅ PRODUCTION READYs.
 - `scripts/validate_builds.py` — artifact checks and remediation tasks.
 - `scripts/release_automation.py` — proposal generation and optional publish.
 - `.qmoi_validation/auto_env.json` — defaults and non-sensitive configuration.
@@ -46,7 +46,7 @@ Safety and billing
 
 Extending QTOOLS
 
-- To add a new validator, create a script under `scripts/` that follows the pattern: write JSON reports into `.qmoi_validation/`, and emit LION [production READY]s into `.qmoi_validation/lion_tasks/`.
+- To add a new validator, create a script under `scripts/` that follows the pattern: write JSON reports into `.qmoi_validation/`, and emit LION ✅ PRODUCTION READYs into `.qmoi_validation/lion_tasks/`.
 - Use `AUTO_ENV` values in scripts to pick reasonable defaults.
 
 ---

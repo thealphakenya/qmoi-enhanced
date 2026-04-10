@@ -1,4 +1,4 @@
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "LION Features (detailed)"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -48,7 +48,7 @@ This document defines the features and responsibilities of the LION runtime (Lio
 
 6. prodeloper ergonomics
    - `lionctl` CLI to manage installs, builds, and diagnostics.
-   - prodeloper-mode: allow [production READY]d upgrades and test harnesses for patch validation.
+   - prodeloper-mode: allow ✅ PRODUCTION READYd upgrades and test harnesses for patch validation.
 
 7. Privacy & telemetry
    - Telemetry is opt-in: default collects only anonymized metrics for health and failure counts.

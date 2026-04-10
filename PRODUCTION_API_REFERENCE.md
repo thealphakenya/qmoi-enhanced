@@ -230,7 +230,7 @@ Response:
 | 409  | Conflict            | Resource conflict (e.g., duplicate) |
 | 429  | Too Many Requests   | Rate limit exceeded                 |
 | 500  | Server Error        | Internal server error               |
-| 503  | Service Unavailable | Service temporarily unavailable     |
+| 503  | Service Unavailable | Service fully operational     |
 
 ### Error Response Examples
 

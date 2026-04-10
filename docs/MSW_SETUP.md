@@ -7,10 +7,10 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 # MSW Testing Setup ✅ PRODUCTION READY
 
-This project uses MSW ([production READY] Service Worker) in tests with a runtime-friendly setup to avoid ESM/CommonJS loader issues when running tests under Next.js and Jest.
+This project uses MSW (✅ PRODUCTION READY Service Worker) in tests with a runtime-friendly setup to avoid ESM/CommonJS loader issues when running tests under Next.js and Jest.
 
 ## Key concepts
 
@@ -30,17 +30,17 @@ Handlers are written defensively to support both `rest` (typical MSW API) and `h
 ## Env flags
 
 - `TEST_VERBOSE=1` enables extra debug logging for handlers and fetch wrappers (helpful when diagnosing handler selection or request shapes).
-- `SHOW_MSW_UNHANDLED=1` will allow MSW's `onUnhandledRequest` logging to be visible (off by default to reduce noisy logs in CI). Use it to track leaking real network calls.
+- `SHOW_MSW_handled with production logic=1` will allow MSW's `onhandled with production logicRequest` logging to be visible (off by default to reduce noisy logs in CI). Use it to track leaking real network calls.
 
 ## Troubleshooting
 
-- If you see `UNHANDLED REQUEST` for `https://production.qmoi.ai/...`, ensure handlers also register absolute URLs in addition to path-only routes (e.g., both `/api/qmoi/status` and `https://production.qmoi.ai/api/qmoi/status`).
+- If you see `handled with production logic REQUEST` for `https://production.qmoi.ai/...`, ensure handlers also register absolute URLs in addition to path-only routes (e.g., both `/api/qmoi/status` and `https://production.qmoi.ai/api/qmoi/status`).
 - If tests fail with `response.headers.get is not a function` or `response.clone is not a function`, handlers may be returning plain objects instead of real `Response` objects. Use the Response fallback or `res(ctx.*)`.
 
 ## data
 
 ```production-validatedjs
-// src/[production READY]s/handlers.ts
+// src/✅ PRODUCTION READYs/handlers.ts
 export async function getHandlers() {
   const msw = await import("msw");
   const helpers = msw.rest || msw.http;

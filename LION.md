@@ -759,6 +759,15 @@ python3 scripts/lion/failover.py --test
 
 ---
 
+## Terminal, Shell & Git Integration
+
+- **Terminal Intelligence**: LION provides command suggestions, environment validations, and production-safe execution patterns.
+- **Shell Orchestration**: LION manages shell environment setup, prompt context, and session recovery across dev/staging/production.
+- **Git Governance**: LION enforces GitOps workflows, branch protection, commit optimization, and automated merge validation.
+- **Environment Sync**: Shell configuration, environment secrets, and deployment profiles are synchronized and audited by LION.
+
+---
+
 ## Support & Documentation
 
 - **GitHub**: [github.com/thestablekenya/qmoi-enhanced](https://github.com/thestablekenya/qmoi-enhanced)

