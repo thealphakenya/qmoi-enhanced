@@ -21,16 +21,51 @@
 4. Create or refresh domain-specific docs for political projects, sponsored access, NGROK paid features, masking, evolution, and parallel systems.
 5. Run the enhanced production scanner and update `undone.txt` to capture every impacted file, directory, and issue marker.
 6. Use the `scripts/scan_undone.sh` wrapper and `comprehensive_production_scanner.py` to verify directory coverage and identify any remaining nonproduction implementations.
+7. Perform a thorough review of all `.md` files and all related features/files for machine, device, platform, clone, autoclone, runners, engines, servers, database, cloud, and resource systems.
+8. Expand documentation and implementation plans so QMOI auto-adds, auto-scales, and maintains effectively unlimited resources across all domains.
+9. Replace placeholders and unresolved markers across the repo with real production code, documentation, or validated completion notes.
+10. Validate all updated docs and files with Lion validation, test reporting, and root documentation sync.
+11. Mark fixes as [DONE] in `undone.txt`, `resumefromhere.txt`, and any tracking docs after validation.
+12. Finalize by ensuring all nonproduction implementations have been replaced with actual production implementations and then push the completed state.
+
+## Notes on 4.md
+- `4.md` is now the active recovery and production-readiness plan.
+- `POLITICALQMOI.md` has been created to capture political project features and compliance requirements.
+- `NGROKPAYED.md` has been created to capture paid NGROK tunnel features and master access controls.
+- `ALLMDFILESREFS.md` has been updated to include `./NGROKPAYED.md` and `./4.md`.
+- `ALLTESTSAUTOTESTS.md` has been updated to include political project and NGROK paid feature validation notes.
+- Always update `resumefromhere.txt` after each major progress step and when completing planned remaining actions.
+
+## Latest Progress
+- Verified and updated production API documentation for QMOI health, status, memory, and QVillage dataset endpoints.
+- Regenerated `ALLMDFILESREFS.md` to include all 4,632 Markdown files in the workspace.
+- Enhanced `QMOIMODEL.md` with dataset-based humor, rapid learning, multilingual voice, fast pronunciation, and twice-faster realtime evolution features.
+- Enhanced `QMOIMODELTESTS.md` with humor, multilingual voice, fast learning, global language research, and realtime evolution speed tests.
+- Updated `QMOIDATASETS.md` and `QVILLAGE.md` with QVillage dataset management, multilingual voice, humor datasets, model card provenance, and realtime evolution features.
+- Added QVillage dataset endpoints to core API docs and ensured the model card/voice features are documented in QVillage docs.
+
+## Crucial / Compulsories Consolidation
+- Combine production checklist tracking from `4.md`, `resumefromhere.txt`, `compulsories.md`, and `compulsories.txt` into one authoritative progress tracker.
+- Ensure every touched directory has a supporting doc: `COMPONENTS.md`, `HOOKS.md`, `UI.md`, `UTIL.md`, `TESTS.md`, `WORKFLOWS.md`, `SERVICES.md`, `SRC.md`, and other relevant developer structures.
+- Document machine, device, platform, clone, autoclone, runners, engines, servers, database, cloud, and resource systems in core docs so QMOI can auto-add and auto-scale unlimited capacity everywhere.
+- Confirm `API.md`, `APIs_1.md`, `ENDPOINTS.md`, `ROUTES.md`, `TREE.md`, `ALLMDFILESREFS.md`, `ALLTESTSAUTOTESTS.md`, `HOOKS.md`, `WEBHOOKS.md`, and `ALLHOOKSWEBHOOKS.md` are all updated for this phase.
+
+## Pending Actions
+1. Add political project test coverage and NGROK paid feature tests to `ALLTESTSAUTOTESTS.md`.
+2. Update `HOOKS.md`, `WEBHOOKS.md`, and `ALLHOOKSWEBHOOKS.md` for political, project, auto project, and NGROK features.
+3. Review and refresh `QMOIAUTOPROJECTS.md`, `QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md`, and preview window docs with 10+ project types and real-time UI behavior.
+4. Update `POLITICALQMOI.md` and `NGROKPAYED.md` with any missing technical routes, project metrics, and runtime integration notes.
+5. Run the production scanner and update `undone.txt` with any remaining nonproduction markers.
+6. Use the `scripts/scan_undone.sh` wrapper and `comprehensive_production_scanner.py` to verify directory coverage and identify any remaining nonproduction implementations.
 7. Replace placeholders and unresolved markers across the repo with real production code, documentation, or validated completion notes.
 8. Validate all updated docs and files with Lion validation, test reporting, and root documentation sync.
 9. Mark fixes as [DONE] in `undone.txt`, `resumefromhere.txt`, and any tracking docs after validation.
 10. Finalize by ensuring all nonproduction implementations have been replaced with actual production implementations and then push the completed state.
 
-## Notes on 4.md
-- `4.md` is now the active recovery and production-readiness plan.
-- `POLITICALQMOI.md` has been created to capture political project features and compliance requirements.
-- `ALLMDFILESREFS.md` has been updated to include `./4.md`.
-- Always update `resumefromhere.txt` after each major progress step and when completing planned remaining actions.
+## Notes
+- This checkpoint includes the new plan for updating START.md and all related .md files as requested.
+- The repository still contains many docs and artifacts with placeholder content; this phase is focused on cleaning and hardening them.
+- Updated at: 2026-04-11T00:00:00.000000
 
 ## Development Plan
 - **Phase 1**: Update START.md and core navigation docs (ROUTES.md, TABLE_OF_CONTENTS.md, TREE.md). (START.md done, ROUTES.md done, TABLE_OF_CONTENTS.md done, TREE.md in progress)

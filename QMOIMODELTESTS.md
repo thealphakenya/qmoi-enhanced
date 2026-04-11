@@ -97,8 +97,11 @@ python test_app.py
 - **API Docs Sync Test**: verify `API.md`, `APIs_1.md`, `ENDPOINTS.md`, and `ROUTES.md` match deployed endpoint behavior.
 - **Route Index Test**: confirm `TREE.md` and `ALLMDFILESREFS.md` include all new `qmoi`, `qvillage`, and mask-related routes.
 - **Endpoint Coverage Test**: ensure every `/api/qmoi/*`, `/api/qvillage/*`, and masking-related endpoint is documented in an endpoint reference file.
-- **Realtime Docs Health Test**: validate that QVillage model card and dashboard docs update immediately when mask or consciousness endpoints change.
-
+- **Realtime Docs Health Test**: validate that QVillage model card and dashboard docs update immediately when mask or consciousness endpoints change.- **Humor & Personality Test**: verify QMOI uses humor datasets appropriately and generates jokes or friendly banter when requested, without losing professionalism.
+- **Multilingual Voice Test**: verify QMOI can speak, pronounce, and generate responses in multiple languages with correct accent and grammar across global dialects.
+- **Fast Learning Dataset Test**: ensure QMOI adapts to new dataset-driven patterns within minutes, updating its response strategy and model card metadata in realtime.
+- **Global Language Research Test**: validate that QMOI performs automatic research and dataset selection for queries across languages, countries, continents, and cultural contexts.
+- **Realtime Evolution Speed Test**: verify QMOI evolves twice as fast by confirming performance, reasoning accuracy, and model card readiness improve with parallel dataset updates.
 ## data Test List
 
 - System Initialization Test
@@ -144,6 +147,8 @@ python test_app.py
 
 - Model Sharing Test: Test HuggingFace model upload and sharing
 - Dataset Access Test: Verify shared dataset retrieval and usage
+- Political Dataset Selection Test: Verify campaign, governance, and policy datasets are selected for political project queries and comply with master access controls.
+- Friendship Dataset Context Test: Verify friend and companion datasets are used when the conversation is in assistant/friendship mode.
 - Collaborative Training Test: Check multi-user training session coordination
 - Performance Benchmark Test: Validate benchmarking against shared models
 - Model Discovery Test: Test model search and recommendation

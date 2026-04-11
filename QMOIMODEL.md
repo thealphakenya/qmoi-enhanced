@@ -150,9 +150,15 @@ QMOI now exposes a canonical _aggregator_ model named `qmoi` which is the single
 
 ### 9. Dataset Empowerment
 
-- **Dataset-First Reasoning**: QMOI selects and combines specialized datasets (e.g., autonomous production, networking, payments, domain/website monitoring, friendship, and error correction) to ground responses in structured knowledge.
-- **Auto-Discovery & Sync**: Datasets are auto-discovered from the QVillage cloud store and synchronized into memory, enabling seamless operation even in disconnected or zero-rated environments.
-- **Specialized Dataset Modules**: QMOI supports domain-specific datasets for parallel execution, persistence, accountability, payments, conversational tone, network health, and project execution, ensuring the right knowledge is used for each task.
+- **Dataset-First Reasoning**: QMOI selects and combines specialized datasets (e.g., autonomous production, networking, payments, domain/website monitoring, political operations, friendship, humor, and error correction) to ground responses in structured knowledge.
+- **Fast Learning Datasets**: QMOI uses specialized rapid-learning datasets to improve adaptation on every interaction, automatically identifying new patterns and updating reasoning flows.
+- **Humor & Personality Datasets**: QMOI includes datasets for jokes, cultural humor, local slang, and companion-style banter so it can respond with natural personality and appropriate levity.
+- **Multilingual Voice & Pronunciation Datasets**: QMOI uses pronunciation, phoneme, and accent datasets for all major languages and dialects, enabling spoken responses that sound natural in each region.
+- **QVillage Dataset Store**: Datasets are auto-discovered from the QVillage cloud store and synchronized into memory, enabling seamless operation even in disconnected or zero-rated environments.
+- **Parallel Dataset Execution**: Dataset selection and processing are parallelized across QVillage-hosted stores, making dataset-driven reasoning fast and resilient.
+- **Global Language Research**: QMOI continuously researches languages, dialects, pronunciations, and cultural context across countries, continents, and global communities.
+- **Realtime Evolution**: Dataset updates are reflected immediately in QMOI reasoning, allowing the system to evolve responses twice as fast while staying current with global events.
+- **Specialized Dataset Modules**: QMOI supports domain-specific datasets for parallel execution, persistence, accountability, payments, conversational tone, network health, project execution, and political compliance.
 - **robust In-Memory Store**: Datasets are kept in RAM and only synced to disk/cloud when necessary, minimizing latency and maximizing response speed.
 
 ### 9. Human-AI Collaboration

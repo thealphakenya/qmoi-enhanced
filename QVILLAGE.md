@@ -76,6 +76,54 @@ Advanced knowledge retrieval and management:
 - `GET /api/qvillage/knowledge/search`
 - `POST /api/qvillage/knowledge/index`
 
+### **4.5. Dataset Management** ✅
+QVillage is the canonical dataset store for QMOI and QVS. Dataset management is fully integrated into the platform, powering political campaign datasets, friendship/personality datasets, project execution datasets, privacy/VPN datasets, and parallel dataset selection.
+
+**Core Dataset Endpoints:**
+- `GET  /api/qvillage/datasets/list`
+- `POST /api/qvillage/datasets/query`
+- `POST /api/qvillage/datasets/sync`
+- `POST /api/qvillage/datasets/force_sync`
+- `POST /api/qvillage/datasets/add`
+
+**Key Capabilities:**
+- Shared dataset discovery and QVillage community sync
+- Political and governance dataset selection for master-level campaigns
+- Relationship and companion dataset usage for friendship and assistant modes
+- Parallel dataset execution for high-throughput reasoning
+- Offline dataset caching for low-bandwidth and zero-rated operation
+
+### **4.6. Multilingual Voice & Humor** ✅
+QVillage powers the voice, pronunciation, and personality features of QMOI across global languages. The platform stores multilingual TTS/ASR datasets, accent models, pronunciation rules, and humor/cultural context datasets, enabling QMOI to speak well in every supported language.
+
+**Voice & Language Features:**
+- Automatic detection and response in local languages and dialects
+- Pronunciation tuning for region-specific accents and phonetics
+- Multilingual voice selection with natural intonation and emphasis
+- Live language learning and adaptation through dataset updates
+- Cultural humor modulation and tone-aware joke generation
+
+**Humor & Personality Features:**
+- Jokes, puns, and friendly banter datasets for natural conversation
+- Adaptive humor style based on user preference and cultural norms
+- Safe humor filters to avoid offensive content while still being entertaining
+- Companion-mode personality adjustments for assistant, friend, or production roles
+
+### **4.7. QMOI Model Card & Realtime Evolution** ✅
+QVillage exposes the live QMOI model card with dataset provenance, voice/performance metrics, humor capability scoring, and evolution readiness. The model card is updated in realtime whenever QMOI learns new language patterns, dataset improvements, or performance enhancements.
+
+**Model Card Features:**
+- Live dataset provenance and quality scoring
+- Multilingual readiness and voice pronunciation metrics
+- Humor/style adaptation ratings and personality state
+- Realtime evolution speed and responsiveness indicators
+- Performance health metrics for twice-as-fast reasoning and inference
+
+**Realtime Evolution:**
+- QMOI evolves continuously in QVillage as datasets update
+- Model card annotations reflect automatic improvements immediately
+- Realtime evaluation ensures feature updates are validated and published quickly
+
 ### **5. Model Registry** ✅
 Comprehensive model management with versioning:
 - Model registration and version control

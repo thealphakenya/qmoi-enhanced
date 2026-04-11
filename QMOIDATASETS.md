@@ -101,6 +101,7 @@ The DatasetSelector has been enhanced to handle 70+ datasets with intelligent ca
 - **Parallel & Performance**: 1 dataset (Concurrency, distributed, optimization, scheduling)
 - **prodices & Machines**: 1 dataset (Embedded systems, IoT, hardware, industrial machines)
 - **QVS / QVillage**: 1 dataset (Community, sharing, platform governance, dataset sync)
+- **Political & Governance**: 1 dataset (Campaign strategy, public policy, officeholder operations, compliance, political project execution)
 - **Zero-Rated & Offline**: 1 dataset (Low bandwidth, free access, offline operation)
 - **VPN & Privacy**: 1 dataset (Secure networking, tunneling, privacy)
 - **Autoproduction & Autoclone**: 2 datasets (Auto-build automation, platform cloning, self-hosted ecosystems)
@@ -123,7 +124,19 @@ The DatasetSelector has been enhanced to handle 70+ datasets with intelligent ca
 - **Master Portal**: 1 dataset (Master-only dashboard data, control, and visibility)
 - **Master & System**: 3 datasets (Control, Presentation, Core system governance)
 
-**Total: 82+ Professional Datasets** - complete domain coverage with creative production, reliability, and independent operations!
+**Total: 84+ Professional Datasets** - complete domain coverage with creative production, reliability, and independent operations!
+
+### QVillage, Political, Friendship, and Parallel Datasets
+
+- **QVillage Dataset Source**: QMOI uses QVillage as the canonical dataset repository for all shared, community, and offline datasets. QVillage hosts datasets for political projects, friendship/companion behavior, project automation, and parallel execution.
+- **Political & Governance Datasets**: These datasets support campaign strategy, election planning, policy development, governance compliance, reputation management, media strategy, sponsor access, and master stakeholder workflows.
+- **Friendship & Companion Datasets**: These datasets model trust, personality, relationship continuity, social signals, empathy, and user preferences for friend/assistant modes.
+- **Parallel Dataset Execution**: QMOI can query multiple datasets in parallel through the QVillage dataset selector, which improves response speed and supports multi-domain fusion for complex tasks.
+- **Dataset Sync Guarantees**: All datasets are synced from QVillage on startup, on-demand via `force_sync`, and continuously via `auto_discover` when network access is available.
+- **Offline Availability**: QVillage dataset caching allows QMOI to continue dataset-driven reasoning in zero-rated, low-bandwidth, or disconnected environments.
+- **Humor & Cultural Language Datasets**: datasets for jokes, memes, humor style, slang, and cultural narrative tone enable QMOI to respond with personality and local flavor.
+- **Voice Pronunciation Datasets**: phonetics, accent, and TTS datasets across global languages ensure QMOI can speak clearly and naturally in every supported region.
+- **Fast Learning Dataset Modules**: rapid-update datasets and online learning modules allow QMOI to learn new concepts, slang, news, and language patterns automatically.
 
 ### 1. Auto-production & Masterclass production Datasets
 

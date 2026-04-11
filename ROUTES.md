@@ -94,6 +94,43 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
 - **Authentication**: Bearer token required
 - **Status**: ✅ Active
 
+## 📦 QVillage Dataset Routes (5 routes)
+
+### 9. GET /api/qvillage/datasets
+- **File**: [qvillage/app.py](qvillage/app.py)
+- **Method**: `GET`
+- **Description**: List available datasets and support QVillage dataset discovery
+- **Authentication**: Bearer token required
+- **Status**: ✅ Active
+
+### 10. POST /api/qvillage/datasets
+- **File**: [qvillage/app.py](qvillage/app.py)
+- **Method**: `POST`
+- **Description**: Create or update dataset metadata and sync dataset state
+- **Authentication**: Bearer token required
+- **Status**: ✅ Active
+
+### 11. GET /api/qvillage/datasets/{dataset_id}
+- **File**: [qvillage/app.py](qvillage/app.py)
+- **Method**: `GET`
+- **Description**: Get dataset details and metadata
+- **Authentication**: Bearer token required
+- **Status**: ✅ Active
+
+### 12. PUT /api/qvillage/datasets/{dataset_id}
+- **File**: [qvillage/app.py](qvillage/app.py)
+- **Method**: `PUT`
+- **Description**: Update dataset metadata or sync flags
+- **Authentication**: Bearer token required
+- **Status**: ✅ Active
+
+### 13. DELETE /api/qvillage/datasets/{dataset_id}
+- **File**: [qvillage/app.py](qvillage/app.py)
+- **Method**: `DELETE`
+- **Description**: Remove a dataset from the QVillage dataset catalog
+- **Authentication**: Bearer token required
+- **Status**: ✅ Active
+
 ### Masking & Privacy Integration
 - **Documentation**: `QMOIMASKS.md` documents QMOI masking and secure obfuscation behavior.
 - **Internal Service**: `src/services/VPNService.ts` drives mask-aware network decisions, region-safe VPN selection, and secure traffic masking.

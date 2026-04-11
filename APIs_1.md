@@ -64,6 +64,18 @@
 
 ---
 
+## 📦 QVillage Dataset Endpoints (5)
+
+| # | Endpoint | Method | Auth | Description |
+|---|----------|--------|------|-------------|
+| 20 | `/api/qvillage/datasets` | GET | Token | List available QVillage datasets and catalog entries |
+| 21 | `/api/qvillage/datasets` | POST | Token | Create or update dataset metadata and sync dataset state |
+| 22 | `/api/qvillage/datasets/{dataset_id}` | GET | Token | Get dataset details and metadata |
+| 23 | `/api/qvillage/datasets/{dataset_id}` | PUT | Token | Update dataset metadata or sync flags |
+| 24 | `/api/qvillage/datasets/{dataset_id}` | DELETE | Token | Delete dataset records from QVillage catalog |
+
+---
+
 ## �️ Masking & Privacy Service
 
 - Internal QMOI masking and obfuscation is documented in `QMOIMASKS.md`.

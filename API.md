@@ -60,6 +60,14 @@ Content-Type: application/json
 - The QMOI system uses internal mask-aware services such as `src/services/VPNService.ts` to support anonymized operations, region-safe VPN decisions, and masked networking.
 - Masking is continuously synchronized with QMOI memory and QVillage realtime documentation, even when no external `/api/qmoi/mask/*` route is exposed.
 
+### QVillage Dataset Management
+- `GET /api/qvillage/datasets` - list datasets and support dataset catalog discovery.
+- `POST /api/qvillage/datasets` - create or update dataset metadata and support QVillage dataset sync operations.
+- `GET /api/qvillage/datasets/{dataset_id}` - retrieve a specific dataset record and its metadata.
+- `PUT /api/qvillage/datasets/{dataset_id}` - update dataset metadata or sync state.
+- `DELETE /api/qvillage/datasets/{dataset_id}` - remove a dataset from the QVillage dataset catalog.
+- QVillage is the canonical dataset store for QMOI, hosting campaign, friendship, privacy, parallel-execution, and project datasets.
+
 ### Health & Monitoring
 - `GET /api/consciousness/health`
 - `GET /api/lion/workflows/health`

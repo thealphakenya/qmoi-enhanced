@@ -10,6 +10,19 @@ Document the political project capabilities of QMOI, including campaign manageme
 - Integration with all major platforms and media channels.
 
 ## Key Features
+
+### Political Project Types
+- National election campaigns (president, parliament, senate).
+- Regional leadership campaigns (governor, governor-elect, state-level management).
+- Local authority campaigns (mayor, city council, county administrator).
+- Policy initiative campaigns and advocacy drives.
+- Appointment and nomination campaigns for cabinet, board, or agency seats.
+- Crisis leadership and reputation recovery campaigns.
+- Corporate political engagement and government relations projects.
+- Community mobilization and grassroots organizing projects.
+- Post-election governance, compliance, and officeholder support.
+- Political intelligence, opposition research, and strategy advisory programs.
+
 ### Campaign Management
 - Centralized campaign dashboard with goals, timelines, agendas, and performance metrics.
 - Automatic agenda generation and follow-through tracking.

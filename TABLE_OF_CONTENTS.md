@@ -38,6 +38,8 @@ This is the comprehensive table of contents for the QMOI Enhanced system, provid
 - [API_ENDPOINTS_REFERENCE.md](API_ENDPOINTS_REFERENCE.md) - Endpoint reference
 - [API_IMPLEMENTATION_EXAMPLES.md](API_IMPLEMENTATION_EXAMPLES.md) - Implementation examples
 - [API_INTEGRATION_GUIDE.md](API_INTEGRATION_GUIDE.md) - Integration guide
+- [QMOIDATASETS.md](QMOIDATASETS.md) - Dataset management and QVillage sync
+- [QMOI_PROFESSIONAL_DATASETS_PLAN.md](QMOI_PROFESSIONAL_DATASETS_PLAN.md) - Dataset planning and professional dataset catalog
 - [API_AUTO_UPDATE_GUIDELINES.md](API_AUTO_UPDATE_GUIDELINES.md) - Auto-update guidelines
 - [API_ENDPOINTS_COMPLETE_AUDIT.md](API_ENDPOINTS_COMPLETE_AUDIT.md) - Complete audit
 
