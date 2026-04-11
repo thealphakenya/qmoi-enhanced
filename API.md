@@ -55,6 +55,11 @@ Content-Type: application/json
 - `GET/POST /api/qmoi/autodev/suggestions/optimizations`
 - `GET/POST /api/qmoi/autodev/toggle`
 
+### Masking & Privacy Integration
+- `QMOIMASKS.md` documents the QMOI masking, obfuscation, and VPN-aware privacy system.
+- The QMOI system uses internal mask-aware services such as `src/services/VPNService.ts` to support anonymized operations, region-safe VPN decisions, and masked networking.
+- Masking is continuously synchronized with QMOI memory and QVillage realtime documentation, even when no external `/api/qmoi/mask/*` route is exposed.
+
 ### Health & Monitoring
 - `GET /api/consciousness/health`
 - `GET /api/lion/workflows/health`
@@ -62,6 +67,8 @@ Content-Type: application/json
 - `GET /api/master/domain-health`
 - `GET /api/qmoi/health`
 - `GET /api/qmoi/health/stream`
+- `GET /api/qmoi/status` - implemented in `qvillage/app.py` and mirrored in legacy `routes/api/qmoi/status.ts`
+- `POST /api/qmoi/memory` - implemented in `qvillage/app.py` and mirrored in legacy `routes/api/qmoi/memory.ts`
 - `GET /api/v1/health`
 - `GET /api/v2/health`
 

@@ -19,6 +19,10 @@ title: "QMOI Masks & Obfuscation System"
 
 QMOI Masks is an advanced privacy and security system that provides comprehensive data obfuscation, identity protection, and digital footprint masking. The system ensures complete anonymity and privacy for QMOI users while maintaining full functionality.
 
+- **Consciousness-Aware Masking**: All masking decisions are driven by QMOI consciousness state and live policy context. QMOI evaluates risk, region, and platform compliance before applying identity or network obfuscation.
+- **Memory-Synced Mask State**: Masking actions, VPN usage, and obfuscation settings are logged to QMOI memory and surfaced in QVillage realtime documentation so the entire system remains consistent and aware.
+- **Realtime Endpoint Visibility**: QMOI mask endpoints and privacy controls are published to API docs and QVillage model card dashboards with live status updates.
+
 ## Core Masking Features
 
 ### 1. Digital Identity Masking
@@ -714,6 +718,14 @@ class QMOIMaskResourceManager {
 - **Cross-prodice Masking**: Consistent masking across prodices
 - **Synchronized Privacy**: Synchronize privacy settings across prodices
 - **Unified Control**: Unified privacy control across prodices
+
+## Documentation & API Route Integration
+
+- **API Docs Sync**: Changes to masking, conscious behavior, or QMOI privacy systems must be reflected in `API.md`, `APIs_1.md`, `ENDPOINTS.md`, `ROUTES.md`, and `TREE.md`.
+- **Model Card Updates**: QVillage model card metadata, endpoint listings, and live documentation state must include all `qmoi` and mask-related APIs.
+- **Endpoint Coverage**: Any new masking or obfuscation endpoint should also be added to `ALLMDFILESREFS.md` and route documentation files.
+- **Realtime Documentation**: The QMOI model card and QVillage dashboard documentation should display current endpoint, route, and mask state in realtime.
+- **Service Reference**: The primary implementation is `src/services/VPNService.ts`, which must be referenced as the production VPN and mask decision engine in future API/route docs.
 
 ## Configuration & Management
 

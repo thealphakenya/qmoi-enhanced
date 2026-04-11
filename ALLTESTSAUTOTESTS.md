@@ -12,6 +12,7 @@
 **Last Updated**: 2026-04-08
 **Total Test Files**: 374
 **Total Test Documentation Files**: 20
+- **New Planned Doc**: `POLITICALQMOI.md` test and validation plan should be added to the catalog.
 **Last Scan**: 2026-04-08T22:06:16.355719
 
 ## Overview

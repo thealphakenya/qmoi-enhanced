@@ -67,6 +67,37 @@ python test_app.py
 - Workflow Automation
 - Financial Transaction & Revenue Generation
 - Tracks & Track Automation
+- Consciousness & Memory Sync Tests
+- Friendship & Assistant Tests
+- Realtime Model Card Tests
+
+## Consciousness & Memory Sync Tests
+
+- **Real-Time Consciousness Health Test**: verify `/api/consciousness/status` returns active awareness and QVillage sync state.
+- **Memory Sync Consistency Test**: ensure `/api/qmoi/memory/sync` updates are reflected across QVillage, QMOI session stores, and persistent backends.
+- **Auto Masking Safety Test**: verify QMOI auto-mask decisions are policy-aware, maintain secure channel state, and preserve memory continuity.
+- **Consciousness Event Audit Test**: validate that every significant action creates a consciousness event and audit record.
+
+## Friendship & Assistant Tests
+
+- **Friendship State Test**: verify social graph state influences personalization and companion behavior.
+- **Assistant Task Test**: confirm task reminders, follow-ups, and proactive suggestions are generated correctly.
+- **Companion Continuity Test**: ensure long-running conversations retain friendship and session memory context.
+- **Tone Adaptation Test**: validate QMOI changes tone appropriately for assistant, friend, or production roles.
+
+## Realtime Model Card Tests
+
+- **Model Card Refresh Test**: confirm QVillage live model card updates immediately after new validation or telemetry events.
+- **Provenance Test**: verify dataset sources and evaluation metadata are included in the live `qmoi` model card.
+- **Parallel Validation Test**: validate that QLion annotations appear on the model card and reflect current production readiness.
+- **UI Integration Test**: ensure the model card is surfaced on QVillage dashboards, health panels, and API status views.
+
+## API & Route Documentation Tests
+
+- **API Docs Sync Test**: verify `API.md`, `APIs_1.md`, `ENDPOINTS.md`, and `ROUTES.md` match deployed endpoint behavior.
+- **Route Index Test**: confirm `TREE.md` and `ALLMDFILESREFS.md` include all new `qmoi`, `qvillage`, and mask-related routes.
+- **Endpoint Coverage Test**: ensure every `/api/qmoi/*`, `/api/qvillage/*`, and masking-related endpoint is documented in an endpoint reference file.
+- **Realtime Docs Health Test**: validate that QVillage model card and dashboard docs update immediately when mask or consciousness endpoints change.
 
 ## data Test List
 

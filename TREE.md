@@ -25,7 +25,12 @@ The QMOI-Enhanced repository contains a comprehensive AI-powered trading and aut
   - **components/** - React components
   - **hooks/** - Custom React hooks
 
+- **routes/** - Legacy and alternate API route layer
+  - **api/** - Legacy QMOI route implementations such as `/api/qmoi/status` and `/api/qmoi/memory`
+- **qvillage/** - QVillage application and runtime API implementations
+
 - **docs/** - Documentation (4,221+ .md files)
+  - `QMOIMASKS.md` - QMOI masking and obfuscation system
 - **scripts/** - Automation and utility scripts
 - **tests/** - Test suites
 - **lib/** - Additional libraries

@@ -64,7 +64,15 @@
 
 ---
 
-## 🛠️ QMOI Self-Work Endpoints (3)
+## �️ Masking & Privacy Service
+
+- Internal QMOI masking and obfuscation is documented in `QMOIMASKS.md`.
+- The system uses `src/services/VPNService.ts` for VPN-aware network masking, secure traffic routing, and mask state management.
+- All mask-related documentation is kept in sync with API and route reference files.
+
+---
+
+## �🛠️ QMOI Self-Work Endpoints (3)
 
 | # | Endpoint | Method | Auth | Description |
 |---|----------|--------|------|-------------|
@@ -341,8 +349,16 @@ All endpoints return JSON with standard structure:
 - **Domain**: `qmoi`
 
 ### /api/qmoi/status
-- **File**: `qmoi/status.ts`
+- **File**: `qvillage/app.py` (primary implementation)
+- **Legacy File**: `routes/api/qmoi/status.ts`
 - **Domain**: `qmoi`
+- **Notes**: QMOI status is served through QVillage's runtime app layer and mirrored by the legacy route implementation.
+
+### /api/qmoi/memory
+- **File**: `qvillage/app.py` (primary implementation)
+- **Legacy File**: `routes/api/qmoi/memory.ts`
+- **Domain**: `qmoi`
+- **Notes**: QMOI memory sync and retrieval are handled through QVillage's app and exposed as a production memory endpoint.
 
 ## Webhook APIs
 

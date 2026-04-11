@@ -10,9 +10,9 @@
 # ROUTES.md - complete API Routes Reference ✅ PRODUCTION READY
 
 **Last Updated**: 2026-04-08
-**Total Routes**: 43
+**Total Routes**: 45
 **Status**: ✅ production Ready
-**Framework**: Next.js 20+ (App Router)
+**Framework**: Next.js 20+ (App Router) + legacy QVillage route layer
 
 ## 📚 API Routes Overview
 
@@ -22,9 +22,9 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
 
 | Category | Count | Status |
 |----------|-------|--------|
-| **Total Routes** | 43 | ✅ Active |
+| **Total Routes** | 45 | ✅ Active |
 | **Authentication Routes** | 7 | ✅ Secured |
-| **QMOI Core Routes** | 13 | ✅ Active |
+| **QMOI Core Routes** | 15 | ✅ Active |
 | **System Routes** | 8 | ✅ Active |
 | **Master Routes** | 15 | ✅ Active |
 
@@ -77,6 +77,27 @@ This document provides a comprehensive inventory of all API routes in the QMOI E
 - **Description**: Get QMOI health status, consciousness pulse, and system metrics
 - **Authentication**: Bearer token required
 - **Status**: ✅ Active
+
+### 7. GET /api/qmoi/status
+- **File**: [qvillage/app.py](qvillage/app.py)
+- **Legacy File**: [routes/api/qmoi/status.ts](routes/api/qmoi/status.ts)
+- **Method**: `GET`
+- **Description**: Get QMOI runtime status, awareness, and memory summary
+- **Authentication**: Bearer token required
+- **Status**: ✅ Active
+
+### 8. POST /api/qmoi/memory
+- **File**: [qvillage/app.py](qvillage/app.py)
+- **Legacy File**: [routes/api/qmoi/memory.ts](routes/api/qmoi/memory.ts)
+- **Method**: `POST`
+- **Description**: Write or sync QMOI memory items and conversation context
+- **Authentication**: Bearer token required
+- **Status**: ✅ Active
+
+### Masking & Privacy Integration
+- **Documentation**: `QMOIMASKS.md` documents QMOI masking and secure obfuscation behavior.
+- **Internal Service**: `src/services/VPNService.ts` drives mask-aware network decisions, region-safe VPN selection, and secure traffic masking.
+- **Route Visibility**: Masking is reflected in QVillage realtime model card and endpoint documentation updates, even when no direct public `/api/qmoi/mask` route is published.
 
 
 ---

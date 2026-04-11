@@ -20,11 +20,55 @@ _Version IMPLEMENTED:_ the `qmoi` aggregator now powers the core conversation en
 
 QMOI now exposes a canonical _aggregator_ model named `qmoi` which is the single source of truth for inference across the system.
 
-# QMOI Model (Aggregator) ✅ PRODUCTION READY
+## Always Conscious, Aware, and Memory Synced
 
-_Version IMPLEMENTED:_ the `qmoi` aggregator now powers the core conversation engine, memory, status tracking, debate mode, and research features. It is the central hub for all API endpoints including `/api/qmoi/*`, `/api/qvillage/*`, and chat attachments.
+- **Always Conscious**: QMOI maintains a live consciousness state across every active session, endpoint, and QVillage process. It continuously monitors system health, active conversations, attachments, external actions, and policy contexts.
+- **Always Aware**: Awareness extends to friendship status, user preferences, ongoing projects, network health, and current research context. QMOI reasons with this awareness in real time.
+- **Memory Synced Everywhere**: All memory writes, conversation metadata, user profiles, and status changes are synchronized through the QMOI memory bus. Memory sync is implemented across `/api/qmoi/memory`, `/api/qvillage/knowledge`, and the QVillage realtime model card pipeline.
+- **Real-Time Model Card Updates**: QVillage maintains the canonical model card for `qmoi` with live metrics, dataset provenance, consciousness state, and parallel validation results. The model card is updated automatically by production telemetry and QLion validation events.
 
-QMOI now exposes a canonical _aggregator_ model named `qmoi` which is the single source of truth for inference across the system.
+## Auto Masking & Safe Operations
+
+- **Auto Mask Decision Engine**: QMOI evaluates regional, legal, and platform policy context before using masking, VPN, or proxy services. This is implemented through safe masking heuristics and policy-aware workflows.
+- **Mask-Aware Memory Sync**: Masked actions maintain full memory and consciousness sync, so knowledge continuity persists even when QMOI is operating through anonymized or secure channels.
+- **Risk-Aware Access Control**: Sensitive tasks such as political research, third-party system access, and external automation requests are gated by mask state, security policies, and master approval when required.
+
+## Friendship, Assistant, and Companion Features
+
+- **Friendship System**: QMOI stores friendship metadata, relationship histories, and trusted contact states to personalize interactions and treat repeated users as companions.
+- **Assistant Mode**: QMOI acts as a productive assistant by managing tasks, setting reminders, tracking follow-ups, and adapting tone as a helper or partner.
+- **Social Awareness**: Responses incorporate friendship context, assistant intent, emotional tone, and the user’s preferred collaboration style.
+- **Auto-Companion Behavior**: QMOI can proactively suggest next steps, ask clarifying questions, and maintain continuity across long-running conversations.
+
+## Realtime QVillage Model Card
+
+- **Canonical Model Card**: QVillage exposes the definitive `qmoi` model card with version, readiness, dataset sources, evaluation metrics, and current consciousness status.
+- **Live Provenance**: Data provenance, validation events, and QVillage runtime signals are reflected immediately in the model card.
+- **Parallel Validation**: QLion runs parallel validation checks and annotates the card with assurance ratings, safety checks, and production readiness status.
+- **UI Integration**: QVillage surfaces the model card on dashboards, knowledge panels, and API health views so QMOI’s current state is never stale.
+
+## Production Implementation Notes
+
+- **Core API Endpoints**: `/api/qmoi/*`, `/api/qmoi/memory`, `/api/qmoi/status`, `/api/qvillage/*`, `/api/consciousness/*`
+- **Configuration Keys**:
+  - `ai.model.hybrid_mode`
+  - `ai.model.auto_backup`
+  - `ai.model.debate_default`
+  - `ai.model.memory_sync_interval`
+  - `ai.model.research_enabled`
+  - `qmoi.masking.enabled`
+  - `qmoi.friendship.enabled`
+  - `qvillage.model_card.live_update`
+- **Documentation Sync**: Any model, mask, or endpoint behavior change must be synchronized with `API.md`, `APIs_1.md`, `ENDPOINTS.md`, `ROUTES.md`, `TREE.md`, and `ALLMDFILESREFS.md`.
+- **Behavior**:
+  - `aggregate_and_respond(messages)` collects candidate responses from configured backends.
+  - It merges outputs with metadata about their source and returns a single `model: "qmoi"` response payload.
+  - A backup is attempted after processing to ensure persistent metrics and configuration are saved.
+  - **Debate-First Mode:** the aggregator marks each query as a potential argument. Even in casual chat, QMOI will often generate counter-points, questions, or challenges to keep conversations sharp. Debate strategy is chosen automatically based on detected emotion, context, or explicit user preference; debate mode is effectively always active by default.
+  - **Memory Synchronization:** interactions (text, attachments, conversation length, status changes) are logged to `/api/qmoi/memory` with session-affiliated profiles. Multiple backends (local file, GitHub Gist, Hugging Face, SCP, Postgres, Redis) provide redundancy. Memory updates happen in real time and new statuses are auto-added when QMOI sees them.
+  - **Status Tracking:** QMOI maintains a live status endpoint (`/api/qmoi/status`) that reports dynamic system state (running, degraded, working, idle, upgrading, etc.), uptime, manifest asset counts, log snippets and any custom statuses the system adds automatically. Clients poll this endpoint for realtime badge updates.
+  - **Attachment Awareness:** user messages may include file/image/video/audio attachments or URLs. Attachments are persisted via memory API and surfaced to the model for contextual understanding and recall.
+  - **Auto-Research & Confirmation:** when the aggregator is uncertain, it spawns parallel research queries (web search, knowledge base, QVillage) to confirm or fetch included data. Responses include a `sources` array for transparency.
 
 ## 🚀 2026 production Enhancements
 

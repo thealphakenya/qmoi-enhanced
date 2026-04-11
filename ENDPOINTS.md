@@ -24,6 +24,12 @@ This document catalogs all available endpoints in the QMOI system.
 | 1 | GET/POST | `/api/accountability` | ['api', 'accountability', '', 'route.ts'] | ✅ |
 | 2 | GET/POST | `/api/admin/metrics` | ['api', 'admin', 'metrics', 'route.ts'] | ✅ |
 | 3 | GET/POST | `/api/admin/tracing` | ['api', 'admin', 'tracing', 'route.ts'] | ✅ |
+
+## Masking & Privacy Endpoints
+
+- QMOI masking is implemented as an internal service (`src/services/VPNService.ts`) with secure VPN decision-making and mask-aware system operations.
+- The `QMOIMASKS.md` document provides the canonical specification for masking, obfuscation, and anonymized networking.
+- Masking behavior is surfaced through QVillage realtime status and live model card documentation rather than a public `/api/qmoi/mask` endpoint.
 | 4 | GET/POST | `/api/alerts/webhook` | ['api', 'alerts', 'webhook', 'route.ts'] | ✅ |
 | 5 | GET/POST | `/api/auth/check-master` | ['api', 'auth', 'check-master', 'route.ts'] | ✅ |
 | 6 | GET/POST | `/api/auth/login` | ['api', 'auth', 'login', 'route.ts'] | ✅ |
@@ -64,6 +70,8 @@ This document catalogs all available endpoints in the QMOI system.
 | 41 | GET/POST | `/api/subscriptions` | ['api', 'subscriptions', '', 'route.ts'] | ✅ |
 | 42 | GET/POST | `/api/v1/health` | ['api', 'v1', 'health', 'route.ts'] | ✅ |
 | 43 | GET/POST | `/api/v2/health` | ['api', 'v2', 'health', 'route.ts'] | ✅ |
+| 44 | GET/POST | `/api/qmoi/status` | ['qvillage', 'app.py'] | ✅ |
+| 45 | GET/POST | `/api/qmoi/memory` | ['qvillage', 'app.py'] | ✅ |
 
 
 ---
