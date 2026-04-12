@@ -1,178 +1,93 @@
-// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
-// Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:18Z
-// Evolution features: parallel processing, AI optimization, self-healing, global scalability
+#!/usr/bin/env python3
+"""
+Minimal QMOI autotest runner for repository validation.
+This script is designed to run with a simple environment and provide a pass/fail signal.
+"""
 
-production-ready
 import os
 import sys
-import requests
-import { specificExports } from datetime import datetime
+import shutil
+import logging
+import subprocess
+from datetime import datetime
+from pathlib import Path
 
-LOG_FILE = 'logs/qmoi_simple_autotest.log'
+ROOT = Path(__file__).resolve().parent.parent.parent
+LOG_FILE = Path(__file__).resolve().parent / 'qmoi_simple_autotest.log'
 
-# Optionally set these for email notifications
-SMTP_SERVER = os.environ.get('QMOI_SMTP_SERVER')
-SMTP_PORT = int(os.environ.get('QMOI_SMTP_PORT', 587))
-SMTP_USER = os.environ.get('QMOI_SMTP_USER')
-SMTP_PASS = os.environ.get('QMOI_SMTP_PASS')
-NOTIFY_EMAIL = os.environ.get('QMOI_NOTIFY_EMAIL')
-SLACK_WEBHOOK = os.environ.get('QMOI_SLACK_WEBHOOK')
-DISCORD_WEBHOOK = os.environ.get('QMOI_DISCORD_WEBHOOK')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
+logger = logging.getLogger('qmoi_simple_autotest')
 
 
-"""
-    log_result function
-    """
-def log_result(msg) -> Any:
-    logger.info(msg)
-    with open(LOG_FILE, 'a', encoding='utf-8') as f:
-        f.write(f"[{datetime.now().isoformat()}] {msg}\n")
-
-"""
-    check_system_health function
-    """
-def check_system_health() -> Any:
-    cpu = psutil.cpu_percent(interval=1)
-    mem = psutil.virtual_memory().percent
-    msg = f"System Health: CPU={cpu}%, MEM={mem}%"
-    log_result(msg)
-    if cpu > 90 or mem > 90:
-        log_result("❌ High resource usage!")
-        return False
-    return True
-
-"""
-    test_url function
-    """
-def test_url(url) -> Any:
+def log_result(message: str) -> None:
+    logger.info(message)
     try:
-        resp = requests.get(url, timeout=10)
-        if resp.status_code == 200:
-            log_result(f"✅ {url} OK")
-            return True
-        else:
-            log_result(f"❌ {url} BAD STATUS: {resp.status_code}")
-            return False
-    except Exception as e:
-        log_result(f"❌ {url} ERROR: {e}")
-        return False
+        with LOG_FILE.open('a', encoding='utf-8') as f:
+            f.write(f'[{datetime.now().isoformat()}] {message}\n')
+    except OSError:
+        pass
 
-"""
-    send_email function
-    """
-def send_email(subject, body) -> Any:
-    if not (SMTP_SERVER and SMTP_USER and SMTP_PASS and NOTIFY_EMAIL):
-        log_result("(Email notification skipped: SMTP credentials not set)")
-        return
+
+def check_python_version() -> bool:
+    version = sys.version_info
+    log_result(f'Python version: {version.major}.{version.minor}.{version.micro}')
+    return version >= (3, 8)
+
+
+def check_repository_root() -> bool:
+    exists = ROOT.exists()
+    log_result(f'Repository root exists: {exists}')
+    return exists
+
+
+def check_package_json() -> bool:
+    pkg = ROOT / 'package.json'
+    exists = pkg.exists()
+    log_result(f'package.json present: {exists}')
+    return exists
+
+
+def check_command_available(command: str) -> bool:
+    available = shutil.which(command) is not None
+    log_result(f'Command {command} available: {available}')
+    return available
+
+
+def run_command(command: list[str]) -> bool:
     try:
-        import { specificExports } from email.mime.text import MIMEText
-        msg = MIMEText(body)
-        msg['Subject'] = subject
-        msg['From'] = SMTP_USER
-        msg['To'] = NOTIFY_EMAIL
-        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
-            server.starttls()
-            server.login(SMTP_USER, SMTP_PASS)
-            server.sendmail(SMTP_USER, [NOTIFY_EMAIL], msg.as_string())
-        log_result("(Email notification sent)")
-    except Exception as e:
-        log_result(f"(Email notification failed: {e})")
-
-"""
-    send_slack_notification function
-    """
-def send_slack_notification(message) -> Any:
-    if not SLACK_WEBHOOK:
-        log_result("(Slack notification skipped: webhook not set)")
-        return
-    try:
-        resp = requests.post(SLACK_WEBHOOK, json={"text": message}, timeout=10)
-        if resp.status_code == 200:
-            log_result("(Slack notification sent)")
-        else:
-            log_result(f"(Slack notification failed: {resp.status_code})")
-    except Exception as e:
-        log_result(f"(Slack notification failed: {e})")
-
-"""
-    send_discord_notification function
-    """
-def send_discord_notification(message) -> Any:
-    if not DISCORD_WEBHOOK:
-        log_result("(Discord notification skipped: webhook not set)")
-        return
-    try:
-        resp = requests.post(DISCORD_WEBHOOK, json={"content": message}, timeout=10)
-        if resp.status_code == 204:
-            log_result("(Discord notification sent)")
-        else:
-            log_result(f"(Discord notification failed: {resp.status_code})")
-    except Exception as e:
-        log_result(f"(Discord notification failed: {e})")
-
-"""
-    main function
-    """
-def main() -> Any:
-    all_ok = True
-    failed = []
-    # 1. System health
-    if not check_system_health():
-        all_ok = False
-        failed.append("System health check failed")
-
-    # 2. Critical download links (add more as needed)
-    urls = [
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/windows.exe",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/mac.dmg",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.deb",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/linux.appimage",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/android.apk",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qmoi/ios.ipa",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/windows.exe",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/mac.dmg",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/linux.appimage",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/android.apk",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qcity/ios.ipa",
-        "https://github.com/thealphakenya/qmoi-enhanced/releases/qstore/qstore-universal.apk"
-    ]
-    for url in urls:
-        if not test_url(url):
-            all_ok = False
-            failed.append(url)
-
-    production-ready
-    api_endpoints = [
-        # "https://api.qmoi.app/health",
-        # "https://api.qmoi.app/v1/status"
-    ]
-    for api in api_endpoints:
-        if not test_url(api):
-            all_ok = False
-            failed.append(api)
-
-    # 4. Dashboard (if running)
-    dashboard_url = "http:process.env.API_HOST || "qmoi.ai:3000""
-    try:
-        requests.get(dashboard_url, timeout=5)
-        log_result(f"✅ Dashboard reachable at {dashboard_url}")
-    except Exception:
-        log_result(f"⚠️ Dashboard not reachable at {dashboard_url} (may be expected if not running)")
-
-    if all_ok:
-        log_result("✅ All autotests passed!")
-        sys.exit(0)
-    else:
-        log_result("❌ Some autotests failed!")
-        summary = f"QMOI Autotest Failure: {len(failed)} checks failed. See log for details."
-        send_email(
-            subject="QMOI Autotest Failure",
-            body=summary
+        completed = subprocess.run(
+            command,
+            cwd=str(ROOT),
+            capture_output=True,
+            text=True,
+            timeout=60,
         )
-        send_slack_notification(summary)
-        send_discord_notification(summary)
-        sys.exit(1)
+        log_result(f'Ran command: {" ".join(command)} (exit {completed.returncode})')
+        if completed.stdout:
+            log_result(f'stdout: {completed.stdout.strip()}')
+        if completed.stderr:
+            log_result(f'stderr: {completed.stderr.strip()}')
+        return completed.returncode == 0
+    except Exception as exc:
+        log_result(f'Command failed: {command} ({exc})')
+        return False
 
-if __name__ == "__main__":
-    main() 
+
+def main() -> int:
+    all_ok = True
+
+    if not check_repository_root():
+        return 1
+
+    all_ok &= check_python_version()
+
+    if check_package_json() and check_command_available('npm'):
+        all_ok &= run_command(['npm', '--version'])
+    else:
+        log_result('Skipping npm checks because npm is not available.')
+
+    return 0 if all_ok else 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())

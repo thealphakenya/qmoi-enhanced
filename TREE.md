@@ -3,28 +3,152 @@
 
 - validated: yes
 - validator: QMOI Lion
-- timestamp: 2026-04-12T01:06:18.755624+00:00Z
+- timestamp: 2026-04-12T03:20:55.169066+00:00Z
 - IMPLEMENTED: QMOI permanent, independent, fully autonomous developer structure
 <!-- LION_VALIDATION_END -->
 
 # QMOI-Enhanced Repository Tree Structure ✅ FULLY AUTONOMOUS & INDEPENDENT
 
 **Last Updated**: 2026-04-12
-**Scan Date**: 2026-04-12T01:06:18.755624+00:00Z
+**Scan Date**: 2026-04-12T03:20:55.169066+00:00Z
 **Autonomy Level**: 100% - Zero Human Intervention Required
 **Repository Status**: Permanent, independent, and self-maintaining
 
 ## 📌 Summary of Developer Structures
-- **Markdown Documentation**: 4831 files
+- **Markdown Documentation**: 4930 files
 - **API Endpoints**: 270 route definitions
 - **Custom Hooks**: 34 hooks supporting automation and UI state
-- **Test Files**: 54 validation suites
-- **Automation Scripts**: 810 scripts and helpers
-- **Autonomous Project Types**: 10 permanent categories
+- **Test Files**: 83 validation suites
+- **Automation Scripts**: 811 scripts and helpers
+- **Autonomous Project Types**: 89 permanent categories
 
-## 🧠 Autonomous System Vision
-QMOI is designed to be a permanent, independent intelligence that maintains itself without human intervention.
-This repository structure is built for ongoing self-evolution, continuous deployment, domain resilience, and fully autonomous operation.
+## 📄 Auto-Updating Markdown Files
+The following markdown files are maintained and refreshed automatically by the QMOI auto-update pipeline.
+
+- `README.md`
+- `TREE.md`
+- `ALLMDFILESREFS.md`
+- `API.md`
+- `ENDPOINTS.md`
+- `ROUTES.md`
+- `ALLTESTSAUTOTESTS.md`
+- `docs/ALLTESTSAUTOTESTS.md`
+- `docs/QMOI_LION_QVILLAGE_AUTOMATION_PLAN.md`
+- `APP.md`
+- `COMPONENTS.md`
+- `HOOKS.md`
+- `SCRIPTS.md`
+- `UTILS.md`
+- `SERVICES.md`
+- `TESTS.md`
+- `DOCS.md`
+- `SRC.md`
+- `LIB.md`
+- `PUBLIC.md`
+- `PAGES.md`
+- `DEPLOY.md`
+- `DATABASE.md`
+- `CONFIGURATION.md`
+- `QVILLAGE.md`
+- `QCITY.md`
+- `QMOI.md`
+- `BACKEND.md`
+- `FRONTEND.md`
+
+## 📦 Detailed Directory Structure
+This repository scan includes all top-level directories and their production-relevant source counts.
+
+- **Directories scanned**: 89
+
+- **ALL_APPS/** - markdown: 1, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **DOCS/** - markdown: 3, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **QVS/** - markdown: 2, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **Qmoi_downloaded_apps/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **_BACKUPS_corrupted_20251115_222941/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **_RELEASE_BACKUPS_v1.2.5_1763248024/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **__mocks__/** - markdown: 0, ts/tsx: 0, js/jsx: 1, py: 0, tests: 0
+- **__tests__/** - markdown: 0, ts/tsx: 82, js/jsx: 1, py: 0, tests: 164
+- **_app_archived/** - markdown: 0, ts/tsx: 117, js/jsx: 1, py: 0, tests: 0
+- **_pages_archived/** - markdown: 0, ts/tsx: 1, js/jsx: 0, py: 0, tests: 0
+- **adapters/** - markdown: 0, ts/tsx: 1, js/jsx: 0, py: 0, tests: 0
+- **api/** - markdown: 0, ts/tsx: 1, js/jsx: 0, py: 0, tests: 0
+- **app/** - markdown: 2, ts/tsx: 288, js/jsx: 1, py: 0, tests: 0
+- **assets/** - markdown: 6, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **backend/** - markdown: 0, ts/tsx: 1, js/jsx: 0, py: 0, tests: 0
+- **backups/** - markdown: 0, ts/tsx: 6085, js/jsx: 2138, py: 3768, tests: 1139
+- **ci-debug-outputs/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 1
+- **cloud_config/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **components/** - markdown: 1, ts/tsx: 192, js/jsx: 4, py: 0, tests: 0
+- **config/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 2
+- **cypress/** - markdown: 0, ts/tsx: 3, js/jsx: 12, py: 0, tests: 0
+- **dashboard/** - markdown: 135, ts/tsx: 54, js/jsx: 248, py: 0, tests: 8
+- **data/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 1
+- **database/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **datasets/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **db/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **deploy/** - markdown: 1, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **docker/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **docs/** - markdown: 107, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **docs_site/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **domain-management/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 3, tests: 0
+- **downloads/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **earnvault/** - markdown: 0, ts/tsx: 3, js/jsx: 0, py: 0, tests: 0
+- **error-reports/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **examples/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 1, tests: 0
+- **gh_2.89.0_linux_amd64/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 4
+- **git-lfs-3.5.1/** - markdown: 6, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **github/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **hf_space_qvillage/** - markdown: 1, ts/tsx: 0, js/jsx: 0, py: 3, tests: 1
+- **hooks/** - markdown: 0, ts/tsx: 34, js/jsx: 0, py: 0, tests: 0
+- **huggingface_space/** - markdown: 0, ts/tsx: 0, js/jsx: 6, py: 1, tests: 0
+- **installer/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **issues/** - markdown: 4, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **k6/** - markdown: 0, ts/tsx: 0, js/jsx: 1, py: 0, tests: 1
+- **k8s/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **lib/** - markdown: 0, ts/tsx: 76, js/jsx: 2, py: 0, tests: 1
+- **logrotate/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **ml/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 1, tests: 0
+- **mobile/** - markdown: 466, ts/tsx: 929, js/jsx: 2602, py: 1, tests: 24
+- **models/** - markdown: 1, ts/tsx: 0, js/jsx: 0, py: 3, tests: 0
+- **notebooks/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **pages/** - markdown: 0, ts/tsx: 3, js/jsx: 0, py: 0, tests: 0
+- **payments/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 4, tests: 0
+- **prisma/** - markdown: 0, ts/tsx: 18, js/jsx: 0, py: 0, tests: 0
+- **production/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **production_deployment/** - markdown: 1, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **public/** - markdown: 0, ts/tsx: 0, js/jsx: 3, py: 0, tests: 0
+- **pwa_apps/** - markdown: 2, ts/tsx: 0, js/jsx: 7, py: 0, tests: 0
+- **q/** - markdown: 2, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **qcity/** - markdown: 1, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **qcity-artifacts/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **qglobalsim/** - markdown: 0, ts/tsx: 0, js/jsx: 1, py: 0, tests: 0
+- **qmoi/** - markdown: 0, ts/tsx: 16, js/jsx: 0, py: 7, tests: 0
+- **qmoi-backups/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **qmoi-space/** - markdown: 0, ts/tsx: 0, js/jsx: 9, py: 0, tests: 0
+- **qmoi-space-pwa/** - markdown: 0, ts/tsx: 0, js/jsx: 2, py: 0, tests: 0
+- **qvillage/** - markdown: 1, ts/tsx: 0, js/jsx: 0, py: 6, tests: 4
+- **reports/** - markdown: 8, ts/tsx: 0, js/jsx: 0, py: 0, tests: 1
+- **requirements/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **results/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **routes/** - markdown: 0, ts/tsx: 23, js/jsx: 0, py: 0, tests: 0
+- **scan_results/** - markdown: 1, ts/tsx: 0, js/jsx: 0, py: 0, tests: 1
+- **scripts/** - markdown: 10, ts/tsx: 32, js/jsx: 180, py: 552, tests: 77
+- **server/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 1, tests: 0
+- **services/** - markdown: 0, ts/tsx: 18, js/jsx: 0, py: 3, tests: 0
+- **src/** - markdown: 2, ts/tsx: 293, js/jsx: 4, py: 0, tests: 10
+- **ssh-backend/** - markdown: 0, ts/tsx: 0, js/jsx: 1, py: 0, tests: 0
+- **styles/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **templates/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **temps/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **test-results/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **tests/** - markdown: 0, ts/tsx: 8, js/jsx: 9, py: 36, tests: 69
+- **tools/** - markdown: 1083, ts/tsx: 0, js/jsx: 4, py: 48, tests: 22
+- **tracks/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **types/** - markdown: 0, ts/tsx: 14, js/jsx: 0, py: 0, tests: 0
+- **ui_samples/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **utils/** - markdown: 0, ts/tsx: 2, js/jsx: 0, py: 2, tests: 0
+- **v1.2.5_release/** - markdown: 0, ts/tsx: 0, js/jsx: 0, py: 0, tests: 0
+- **whatsapp-qmoi-bot/** - markdown: 1, ts/tsx: 0, js/jsx: 22, py: 0, tests: 0
 
 ## 🔧 Core Developer Structures
 
@@ -57,7 +181,7 @@ This repository structure is built for ongoing self-evolution, continuous deploy
 - Hooks such as `useAIHealthCheck`, `useAutoFixAllProblems`, and `useGlobalAutomation` connect runtime monitoring to self-correcting systems.
 - `useQMOIAutoInteraction` and `useQMOIChat` enable autonomous conversation, command handling, and adaptive response.
 
-#### `__tests__/`
+#### `__tests__`
 - Comprehensive automated validation ensures the permanent system stays correct.
 - Test suites cover core APIs, evolution strategies, integration behaviors, and production readiness.
 - Autonomy is enforced by continuous test execution and automated fix feedback loops.
@@ -108,92 +232,3 @@ This repository structure is built for ongoing self-evolution, continuous deploy
 - `types/` declares structured interfaces and contracts for permanent system operation.
 - `utils/` provides reusable helpers, validators, and operational tools.
 - `public/` delivers static assets for deployment and live UI.
-
-### Autonomous Generation Paths
-- `app/api/qmoi/autoprod/` - research, generate-feature, state, toggle, suggestions
-- `app/api/qmoi/self-work/` - code-review, debug, run-tests
-- `app/api/prodects/` - autoprod pipeline connectors
-- `app/api/master/` - emergency domain takeover, sponsored access, master controls
-- `app/api/deploy/auto-redeploy/` - live deployment automation
-
-## � Canonical Developer Directory Tree
-This section represents the actual developer-facing repository structure used by QMOI for autonomous code generation, deployment, and evolution.
-
-```
-qmoi-enhanced/
-├── app/
-│   ├── api/
-│   │   ├── auth/
-│   │   ├── global-links/
-│   │   ├── health/
-│   │   ├── master/
-│   │   ├── media/
-│   │   ├── qstore/
-│   │   ├── qnews/
-│   │   ├── deploy/
-│   │   ├── links/
-│   │   ├── webauthn/
-│   │   ├── biometric/
-│   │   └── metrics/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── globals.css
-├── src/
-│   ├── app/api/
-│   │   ├── global/
-│   │   ├── qvs/
-│   │   ├── qmoi/
-│   │   ├── automation/
-│   │   └── PRODUCTION/
-│   ├── lib/
-│   ├── types/
-│   └── utils/
-├── components/
-├── hooks/
-├── __tests__/
-├── scripts/
-├── qmoi/
-│   ├── core/
-│   ├── api/
-│   ├── prodices/
-│   ├── deployment/
-│   ├── automation/
-│   ├── security/
-│   └── connectivity/
-├── docs/
-├── config/
-├── public/
-└── ALL PERCENTAGES.md
-```
-
-## �📈 Production-Ready Autonomous Features
-- Permanent scalability across regions and markets
-- Continuous health monitoring and uptime validation
-- Automatic domain and link remediation
-- Autonomous revenue and employment automation
-- API-first architecture with self-documenting metadata
-- Live developer structure mapping in `TREE.md`
-- Real-time documentation sync across all markdown files
-- Zero manual intervention required for updates, fixes, and deployments
-
-## 🔁 Continuous Autonomous Lifecycle
-1. Detect change
-2. Validate with tests and API checks
-3. Regenerate docs and metadata
-4. Self-heal if issues are detected
-5. Deploy and monitor autonomously
-6. Evolve models and features permanently
-
-## 📚 Generated Statistics
-- Total Markdown Docs: 4831
-- Total API Endpoint Files: 270
-- Total Hook Files: 34
-- Total Test Files: 54
-- Total Automation Scripts: 810
-- Autonomous Project Types: 10
-
-## 🔄 Permanent and Independent
-QMOI is built as a permanent, self-managing system with a developer structure that supports continuous autonomy.
-It does not require human intervention for updates, scaling, documentation, or deployment once it is running.
-
-This `TREE.md` file is generated by the `scripts/update_tree_and_percentages.py` script and is the authoritative reference for the repository's developer structures and autonomous operations.

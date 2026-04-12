@@ -7,62 +7,135 @@ autonomous operations, evolution features, and permanent independence for QMOI.
 from pathlib import Path
 from datetime import datetime, timezone
 import logging
-import json
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-TREE_FILE = BASE_DIR / "TREE.md"
-PERCENTAGES_FILE = BASE_DIR / "ALL PERCENTAGES.md"
-LOG_FILE = BASE_DIR / "scripts" / "update_tree_and_percentages.log"
+TREE_FILE = BASE_DIR / 'TREE.md'
+PERCENTAGES_FILE = BASE_DIR / 'ALL PERCENTAGES.md'
+LOG_FILE = BASE_DIR / 'scripts' / 'update_tree_and_percentages.log'
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(message)s",
+    format='%(asctime)s %(levelname)s %(message)s',
     handlers=[logging.FileHandler(LOG_FILE), logging.StreamHandler()],
 )
-logger = logging.getLogger("update_tree_and_percentages")
+logger = logging.getLogger('update_tree_and_percentages')
+
+EXCLUDED_DIRS = {'.git', '.github', 'node_modules', 'venv', '.venv', '.qmoi_validation', '.backups', '.next', 'dist', 'build', 'coverage'}
+
+AUTO_UPDATE_MARKDOWN_DOCS = [
+    'README.md',
+    'TREE.md',
+    'ALLMDFILESREFS.md',
+    'API.md',
+    'ENDPOINTS.md',
+    'ROUTES.md',
+    'ALLTESTSAUTOTESTS.md',
+    'docs/ALLTESTSAUTOTESTS.md',
+    'docs/QMOI_LION_QVILLAGE_AUTOMATION_PLAN.md',
+    'APP.md',
+    'COMPONENTS.md',
+    'HOOKS.md',
+    'SCRIPTS.md',
+    'UTILS.md',
+    'SERVICES.md',
+    'TESTS.md',
+    'DOCS.md',
+    'SRC.md',
+    'LIB.md',
+    'PUBLIC.md',
+    'PAGES.md',
+    'DEPLOY.md',
+    'DATABASE.md',
+    'CONFIGURATION.md',
+    'QVILLAGE.md',
+    'QCITY.md',
+    'QMOI.md',
+    'BACKEND.md',
+    'FRONTEND.md',
+]
 
 
 def collect_markdown_files() -> int:
-    return sum(1 for _ in BASE_DIR.rglob("*.md"))
+    return sum(1 for _ in BASE_DIR.rglob('*.md'))
 
 
 def collect_endpoint_files() -> int:
     count = 0
-    for api_root in [BASE_DIR / "app" / "api", BASE_DIR / "src" / "app" / "api"]:
-        if api_root.exists():
-            count += sum(1 for _ in api_root.rglob("route.ts"))
-            count += sum(1 for _ in api_root.rglob("route.js"))
+    for api_root in [BASE_DIR / 'app' / 'api', BASE_DIR / 'src' / 'app' / 'api']:
+        if not api_root.exists():
+            continue
+        count += sum(1 for _ in api_root.rglob('route.ts'))
+        count += sum(1 for _ in api_root.rglob('route.js'))
     return count
 
 
 def collect_hook_files() -> int:
-    hooks_dir = BASE_DIR / "hooks"
+    hooks_dir = BASE_DIR / 'hooks'
     if not hooks_dir.exists():
         return 0
-    return sum(1 for _ in hooks_dir.rglob("*.ts")) + sum(1 for _ in hooks_dir.rglob("*.tsx"))
+    return sum(1 for _ in hooks_dir.rglob('*.ts')) + sum(1 for _ in hooks_dir.rglob('*.tsx'))
 
 
 def collect_test_files() -> int:
-    tests_dir = BASE_DIR / "__tests__"
+    tests_dir = BASE_DIR / '__tests__'
     if not tests_dir.exists():
         return 0
-    return sum(1 for _ in tests_dir.rglob("*.ts")) + sum(1 for _ in tests_dir.rglob("*.tsx")) + sum(1 for _ in tests_dir.rglob("*.js"))
+    return (
+        sum(1 for _ in tests_dir.rglob('*.ts'))
+        + sum(1 for _ in tests_dir.rglob('*.tsx'))
+        + sum(1 for _ in tests_dir.rglob('*.js'))
+    )
 
 
 def collect_script_files() -> int:
-    scripts_dir = BASE_DIR / "scripts"
+    scripts_dir = BASE_DIR / 'scripts'
     if not scripts_dir.exists():
         return 0
-    return sum(1 for _ in scripts_dir.rglob("*.py")) + sum(1 for _ in scripts_dir.rglob("*.sh")) + sum(1 for _ in scripts_dir.rglob("*.js"))
+    return (
+        sum(1 for _ in scripts_dir.rglob('*.py'))
+        + sum(1 for _ in scripts_dir.rglob('*.sh'))
+        + sum(1 for _ in scripts_dir.rglob('*.js'))
+    )
+
+
+def collect_directory_structure() -> dict:
+    structure = {}
+    for directory in sorted(
+        [p for p in BASE_DIR.iterdir() if p.is_dir() and p.name not in EXCLUDED_DIRS and not p.name.startswith('.')],
+        key=lambda p: p.name,
+    ):
+        structure[directory.name] = {
+            'markdown': sum(1 for _ in directory.rglob('*.md')),
+            'typescript': sum(1 for _ in directory.rglob('*.ts')) + sum(1 for _ in directory.rglob('*.tsx')),
+            'javascript': sum(1 for _ in directory.rglob('*.js')) + sum(1 for _ in directory.rglob('*.jsx')),
+            'python': sum(1 for _ in directory.rglob('*.py')),
+            'test_files': sum(1 for _ in directory.rglob('*.test.*')) + sum(1 for _ in directory.rglob('*test*.*')),
+        }
+    return structure
 
 
 def count_project_types() -> int:
-    return 10
+    return len(collect_directory_structure())
 
 
-def generate_tree_md(tree_counts: dict) -> str:
+def get_autoupdate_markdown_docs() -> list[str]:
+    return AUTO_UPDATE_MARKDOWN_DOCS
+
+
+def generate_tree_md(tree_counts: dict, directory_structure: dict) -> str:
     timestamp = datetime.now(timezone.utc).isoformat()
-    date_formatted = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    date_formatted = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    directory_details_lines = []
+
+    for name, stats in directory_structure.items():
+        directory_details_lines.append(
+            f"- **{name}/** - markdown: {stats['markdown']}, ts/tsx: {stats['typescript']}, "
+            f"js/jsx: {stats['javascript']}, py: {stats['python']}, tests: {stats['test_files']}"
+        )
+
+    directory_details_text = '\n'.join(directory_details_lines) if directory_details_lines else '- No directories found.'
+    autoupdate_docs = get_autoupdate_markdown_docs()
+    auto_docs_text = '\n'.join([f'- `{doc}`' for doc in autoupdate_docs])
 
     content = f"""<!-- LION_VALIDATION_START -->
 ## 🦁 L — Validated by QMOI Lion
@@ -88,9 +161,17 @@ def generate_tree_md(tree_counts: dict) -> str:
 - **Automation Scripts**: {tree_counts['script_files']} scripts and helpers
 - **Autonomous Project Types**: {tree_counts['project_types']} permanent categories
 
-## 🧠 Autonomous System Vision
-QMOI is designed to be a permanent, independent intelligence that maintains itself without human intervention.
-This repository structure is built for ongoing self-evolution, continuous deployment, domain resilience, and fully autonomous operation.
+## 📄 Auto-Updating Markdown Files
+The following markdown files are maintained and refreshed automatically by the QMOI auto-update pipeline.
+
+{auto_docs_text}
+
+## 📦 Detailed Directory Structure
+This repository scan includes all top-level directories and their production-relevant source counts.
+
+- **Directories scanned**: {len(directory_structure)}
+
+{directory_details_text}
 
 ## 🔧 Core Developer Structures
 
@@ -123,7 +204,7 @@ This repository structure is built for ongoing self-evolution, continuous deploy
 - Hooks such as `useAIHealthCheck`, `useAutoFixAllProblems`, and `useGlobalAutomation` connect runtime monitoring to self-correcting systems.
 - `useQMOIAutoInteraction` and `useQMOIChat` enable autonomous conversation, command handling, and adaptive response.
 
-#### `__tests__/`
+#### `__tests__`
 - Comprehensive automated validation ensures the permanent system stays correct.
 - Test suites cover core APIs, evolution strategies, integration behaviors, and production readiness.
 - Autonomy is enforced by continuous test execution and automated fix feedback loops.
@@ -174,166 +255,65 @@ This repository structure is built for ongoing self-evolution, continuous deploy
 - `types/` declares structured interfaces and contracts for permanent system operation.
 - `utils/` provides reusable helpers, validators, and operational tools.
 - `public/` delivers static assets for deployment and live UI.
-
-### Autonomous Generation Paths
-- `app/api/qmoi/autoprod/` - research, generate-feature, state, toggle, suggestions
-- `app/api/qmoi/self-work/` - code-review, debug, run-tests
-- `app/api/prodects/` - autoprod pipeline connectors
-- `app/api/master/` - emergency domain takeover, sponsored access, master controls
-- `app/api/deploy/auto-redeploy/` - live deployment automation
-
-## � Canonical Developer Directory Tree
-This section represents the actual developer-facing repository structure used by QMOI for autonomous code generation, deployment, and evolution.
-
-```
-qmoi-enhanced/
-├── app/
-│   ├── api/
-│   │   ├── auth/
-│   │   ├── global-links/
-│   │   ├── health/
-│   │   ├── master/
-│   │   ├── media/
-│   │   ├── qstore/
-│   │   ├── qnews/
-│   │   ├── deploy/
-│   │   ├── links/
-│   │   ├── webauthn/
-│   │   ├── biometric/
-│   │   └── metrics/
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── globals.css
-├── src/
-│   ├── app/api/
-│   │   ├── global/
-│   │   ├── qvs/
-│   │   ├── qmoi/
-│   │   ├── automation/
-│   │   └── PRODUCTION/
-│   ├── lib/
-│   ├── types/
-│   └── utils/
-├── components/
-├── hooks/
-├── __tests__/
-├── scripts/
-├── qmoi/
-│   ├── core/
-│   ├── api/
-│   ├── prodices/
-│   ├── deployment/
-│   ├── automation/
-│   ├── security/
-│   └── connectivity/
-├── docs/
-├── config/
-├── public/
-└── ALL PERCENTAGES.md
-```
-
-## �📈 Production-Ready Autonomous Features
-- Permanent scalability across regions and markets
-- Continuous health monitoring and uptime validation
-- Automatic domain and link remediation
-- Autonomous revenue and employment automation
-- API-first architecture with self-documenting metadata
-- Live developer structure mapping in `TREE.md`
-- Real-time documentation sync across all markdown files
-- Zero manual intervention required for updates, fixes, and deployments
-
-## 🔁 Continuous Autonomous Lifecycle
-1. Detect change
-2. Validate with tests and API checks
-3. Regenerate docs and metadata
-4. Self-heal if issues are detected
-5. Deploy and monitor autonomously
-6. Evolve models and features permanently
-
-## 📚 Generated Statistics
-- Total Markdown Docs: {tree_counts['markdown_files']}
-- Total API Endpoint Files: {tree_counts['endpoint_files']}
-- Total Hook Files: {tree_counts['hook_files']}
-- Total Test Files: {tree_counts['test_files']}
-- Total Automation Scripts: {tree_counts['script_files']}
-- Autonomous Project Types: {tree_counts['project_types']}
-
-## 🔄 Permanent and Independent
-QMOI is built as a permanent, self-managing system with a developer structure that supports continuous autonomy.
-It does not require human intervention for updates, scaling, documentation, or deployment once it is running.
-
-This `TREE.md` file is generated by the `scripts/update_tree_and_percentages.py` script and is the authoritative reference for the repository's developer structures and autonomous operations.
 """
     return content
 
 
 def generate_percentages_md(tree_counts: dict) -> str:
     timestamp = datetime.now(timezone.utc).isoformat()
-    date_formatted = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    content = f"""<!-- LION_VALIDATION_START -->
-## 🦁 L — Validated by QMOI Lion
-
-- validated: yes
-- validator: QMOI Lion
-- timestamp: {timestamp}Z
-- IMPLEMENTED: Autonomous metrics generated from repository state
-<!-- LION_VALIDATION_END -->
-
-# ALL PERCENTAGES.md - Autonomous System Metrics
-
-**Last Updated**: {date_formatted}
-**Scan Date**: {timestamp}Z
-**Autonomy Level**: 100% - Self-maintaining system
-
-## Summary
-- **Documentation Files**: {tree_counts['markdown_files']}
-- **Endpoints Detected**: {tree_counts['endpoint_files']}
-- **Hooks**: {tree_counts['hook_files']}
-- **Tests**: {tree_counts['test_files']}
-- **Automation Scripts**: {tree_counts['script_files']}
-- **Project Categories**: {tree_counts['project_types']}
-
-## Autonomous Metrics
-- **Documentation Sync**: 100%
-- **API Coverage**: 100%
-- **Developer Structure Integrity**: 100%
-- **Automation Coverage**: 100%
-- **Self-Healing Readiness**: 100%
-- **Deployment Autonomy**: 100%
-- **Evolution Readiness**: 100%
-- **Permanent Independence**: 100%
-
-## Notes
-This file is generated by `scripts/update_tree_and_percentages.py`and supports the permanent autonomous evolution of QMOI.
-"""
-    return content
+    percentages = {
+        'markdown_docs': tree_counts['markdown_files'],
+        'endpoint_definitions': tree_counts['endpoint_files'],
+        'hook_modules': tree_counts['hook_files'],
+        'test_suites': tree_counts['test_files'],
+        'automation_scripts': tree_counts['script_files'],
+    }
+    total = sum(percentages.values())
+    content_lines = [
+        '# ALL PERCENTAGES.md',
+        '',
+        f'**Last Updated:** {timestamp}Z',
+        f'**Total Tracked Items:** {total}',
+        '',
+        '## Percentage Breakdown',
+        '',
+    ]
+    for label, count in percentages.items():
+        percentage = (count / total * 100) if total else 0
+        content_lines.append(f'- **{label.replace("_", " ").title()}**: {count} ({percentage:.2f}%)')
+    content_lines += [
+        '',
+        '## Notes',
+        '',
+        '- This file is generated by `scripts/update_tree_and_percentages.py`.',
+        '- Values are intended to provide a high-level view of repository structure and documentation spread.',
+        '- Update `TREE.md` and the auto-update pipeline by running `python3 scripts/update_tree_and_percentages.py`.',
+    ]
+    return '\n'.join(content_lines) + '\n'
 
 
 def write_file(path: Path, content: str) -> None:
-    path.write_text(content, encoding="utf-8")
-    logger.info(f"Wrote {path}")
+    path.write_text(content, encoding='utf-8')
+    logger.info(f'Updated {path.relative_to(BASE_DIR)}')
 
 
 def main() -> None:
-    logger.info("Starting repository scan for TREE.md generation...")
-
     tree_counts = {
-        "markdown_files": collect_markdown_files(),
-        "endpoint_files": collect_endpoint_files(),
-        "hook_files": collect_hook_files(),
-        "test_files": collect_test_files(),
-        "script_files": collect_script_files(),
-        "project_types": count_project_types(),
+        'markdown_files': collect_markdown_files(),
+        'endpoint_files': collect_endpoint_files(),
+        'hook_files': collect_hook_files(),
+        'test_files': collect_test_files(),
+        'script_files': collect_script_files(),
+        'project_types': count_project_types(),
     }
 
-    tree_content = generate_tree_md(tree_counts)
-    percentages_content = generate_percentages_md(tree_counts)
+    directory_structure = collect_directory_structure()
 
-    write_file(TREE_FILE, tree_content)
-    write_file(PERCENTAGES_FILE, percentages_content)
+    write_file(TREE_FILE, generate_tree_md(tree_counts, directory_structure))
+    write_file(PERCENTAGES_FILE, generate_percentages_md(tree_counts))
 
-    logger.info("TREE.md and ALL PERCENTAGES.md generation complete.")
+    logger.info('Regenerated TREE.md and ALL PERCENTAGES.md successfully.')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

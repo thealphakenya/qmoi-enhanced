@@ -1285,21 +1285,32 @@ All download and service links are autotested and auto-updated to use ngrok URLs
 - ✅ Web-safe and version-controllable
 
 <!-- QMOI_APPS_TABLE_START -->
-<!-- QMOI_APPS_TABLE_START -->
 | App | Platform | File | Size (KB) | Download |
-|---|---:|---|---:|---|
-| QMOI AI | Windows | qmoi-ai-v1.2.3-windows.exe | 5120 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-windows.exe) |
-| QMOI AI | macOS | qmoi-ai-v1.2.3-macos.dmg | 8192 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-macos.dmg) |
-| QMOI AI | Linux (AppImage) | qmoi-ai-v1.2.3-linux-appimage | 6144 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux-appimage) |
-| QMOI AI | Linux (DEB) | qmoi-ai-v1.2.3-linux.deb | 4096 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-linux.deb) |
-| QMOI AI | Android | qmoi-ai-v1.2.3-android.apk | 10240 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-android.apk) |
-| QMOI AI | iOS | qmoi-ai-v1.2.3-ios.ipa | 12288 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-ios.ipa) |
-| QMOI AI | Smart TV | qmoi-ai-v1.2.3-smarttv.apk | 8192 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-smarttv.apk) |
-| QMOI AI | Chromebook | qmoi-ai-v1.2.3-chromebook.zip | 3072 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi-ai-v1.2.3-chromebook.zip) |
-| QMOI AI | Raspberry Pi | qmoi_ai.img | 2048000 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qmoi_ai.img) |
-| QMOI Space | Web (PWA) | pwa_apps/qmoi-space/manifest.webmanifest | — | [Open PWA](https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/qmoi-space/) |
-| Q latest | Web (PWA) | pwa_apps/q-latest/manifest.webmanifest | — | [Open PWA](https://thestablekenya.github.io/qmoi-enhanced/pwa_apps/q-latest/) |
-| QCity | Orchestration | qcity-v2.0.1.zip | 2048 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/download/v1.2.3/qcity-v2.0.1.zip) |
+|---|---|---|---:|---|
+| README | q-latest | [pwa_apps/q-latest/README.md](pwa_apps/q-latest/README.md) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/q-latest/README.md) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/README.md) |
+| index | q-latest | [pwa_apps/q-latest/index.html](pwa_apps/q-latest/index.html) | 11 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/q-latest/index.html) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/index.html) |
+| manifest | q-latest | [pwa_apps/q-latest/manifest.webmanifest](pwa_apps/q-latest/manifest.webmanifest) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/q-latest/manifest.webmanifest) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/manifest.webmanifest) |
+| package | q-latest | [pwa_apps/q-latest/package.json](pwa_apps/q-latest/package.json) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/q-latest/package.json) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/package.json) |
+| sw | q-latest | [pwa_apps/q-latest/sw.js](pwa_apps/q-latest/sw.js) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/q-latest/sw.js) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/sw.js) |
+| icon-192 | qmoi | [pwa_apps/qmoi/icon-192.png](pwa_apps/qmoi/icon-192.png) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/qmoi/icon-192.png) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/icon-192.png) |
+| index | qmoi | [pwa_apps/qmoi/index.html](pwa_apps/qmoi/index.html) | 1 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/qmoi/index.html) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/index.html) |
+| manifest | qmoi | [pwa_apps/qmoi/manifest.webmanifest](pwa_apps/qmoi/manifest.webmanifest) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/qmoi/manifest.webmanifest) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/manifest.webmanifest) |
+| sw | qmoi | [pwa_apps/qmoi/sw.js](pwa_apps/qmoi/sw.js) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/qmoi/sw.js) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/sw.js) |
+| icon-192 | qmoi-ai | [pwa_apps/qmoi-ai/icon-192.png](pwa_apps/qmoi-ai/icon-192.png) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/qmoi-ai/icon-192.png) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/icon-192.png) |
+| index | qmoi-ai | [pwa_apps/qmoi-ai/index.html](pwa_apps/qmoi-ai/index.html) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/qmoi-ai/index.html) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/index.html) |
+| manifest | qmoi-ai | [pwa_apps/qmoi-ai/manifest.webmanifest](pwa_apps/qmoi-ai/manifest.webmanifest) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/qmoi-ai/manifest.webmanifest) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/manifest.webmanifest) |
+| sw | qmoi-ai | [pwa_apps/qmoi-ai/sw.js](pwa_apps/qmoi-ai/sw.js) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/pwa_apps/qmoi-ai/sw.js) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/sw.js) |
+| build | android | [mobile/android/build.gradle](mobile/android/build.gradle) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/mobile/android/build.gradle) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/build.gradle) |
+| gradle | android | [mobile/android/gradle.properties](mobile/android/gradle.properties) | 1 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/mobile/android/gradle.properties) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/gradle.properties) |
+| gradlew | android | [mobile/android/gradlew](mobile/android/gradlew) | 8 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/mobile/android/gradlew) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/gradlew) |
+| gradlew | android | [mobile/android/gradlew.bat](mobile/android/gradlew.bat) | 3 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/mobile/android/gradlew.bat) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/gradlew.bat) |
+| settings | android | [mobile/android/settings.gradle](mobile/android/settings.gradle) | 0 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/mobile/android/settings.gradle) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/settings.gradle) |
+| AlertSettingsScreen | components | [mobile/components/AlertSettingsScreen.js](mobile/components/AlertSettingsScreen.js) | 3 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/mobile/components/AlertSettingsScreen.js) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/AlertSettingsScreen.js) |
+| AnalyticsScreen | components | [mobile/components/AnalyticsScreen.js](mobile/components/AnalyticsScreen.js) | 20 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/mobile/components/AnalyticsScreen.js) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/AnalyticsScreen.js) |
+| prodiceManagementScreen | components | [mobile/components/prodiceManagementScreen.js](mobile/components/prodiceManagementScreen.js) | 27 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/mobile/components/prodiceManagementScreen.js) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/prodiceManagementScreen.js) |
+| NotificationScreen | components | [mobile/components/NotificationScreen.js](mobile/components/NotificationScreen.js) | 4 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/mobile/components/NotificationScreen.js) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/NotificationScreen.js) |
+| .package-lock | node_modules | [mobile/node_modules/.package-lock.json](mobile/node_modules/.package-lock.json) | 207 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/mobile/node_modules/.package-lock.json) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/.package-lock.json) |
+| pushNotifications | utils | [mobile/utils/pushNotifications.js](mobile/utils/pushNotifications.js) | 1 | [Download](https://github.com/thestablekenya/qmoi-enhanced/releases/mobile/utils/pushNotifications.js) / [GitHub Raw](https://raw.githubusercontent.com/thestablekenya/qmoi-enhanced/autosync-backup-20250926-232440/downloads/pushNotifications.js) |
 <!-- QMOI_APPS_TABLE_END -->
 <!-- QMOI_APPS_TABLE_END -->
 
@@ -1610,19 +1621,22 @@ cat docs/domain_deployment_status.json | jq '.global_status, .deployment_phases_
 
 ### 📋 Current Status Summary
 
-| Metric | Status | Target |
-|--------|--------|--------|
-| **Total Domains** | 22 QMOI-owned | ✅ All identified |
-| **Current Health** | ~75% (8 domains fully operational) | 100% |
-| **Current UI Features** | 0% (pending deployment) | ≥80% |
-| **Current Status** | Parked | ACTIVE (in use) |
-| **DNS Resolution** | 🔄 86.4% activated (19/22) | 100% (Phase 1) |
-| **SSL Certificates** | ✅ 94.7% provisioned (18/19) | Valid + Auto-renew (Phase 2) |
-| **Content** | ✅ 100% deployed (18/18) | Deployed (Phase 3) |
-| **UI Features** | ✅ 88.9% deployed (16/18) | ≥80% coverage (Phase 4) |
-| **Active Marking** | ✅ 8/8 activated (36.4% active) | Remove parked status (Phase 5) |
-| **Uptime Monitoring** | ✅ 8/8 monitored (36.4% coverage) | ≥99.5% (Phase 6) |
+| Metric | Current |
+|--------|---------|
+| **Latest Auto-Update** | 2026-04-12T03:21:05.752635 |
+| **Docs Updated** | README.md, API.md, ENDPOINTS.md, ROUTES.md, TREE.md, ALLMDFILESREFS.md, ALLTESTSAUTOTESTS.md |
+| **Total Markdown Files** | 2051 |
+| **Total Q Lion Docs** | 33 |
+| **Total QVillage Docs** | 20 |
+| **Total Parallel Docs** | 4 |
+| **Total Endpoints** | 17 |
+| **Total Test Files** | 139 |
+| **Test Runner Status** | PASS |
+| **Autotest Commands** | 1 configured |
+| **README Update** | synchronized via `scripts/qmoi_md_autoupdater.py` |
 
+**Configured Test Commands:**
+- `python3 /workspaces/qmoi-enhanced/scripts/autotest/qmoi_simple_autotest.py`
 ### 🔄 6-Phase Activation Workflow
 
 **Phase 1: DNS Activation** (86.4% complete)

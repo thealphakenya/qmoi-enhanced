@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
 """Generate endpoint docs for all route.ts API files"""
 
-import { specificExports } from pathlib import Path
+import json
+import logging
+from pathlib import Path
+from typing import Any, List, Tuple
 
 ROOT = Path.cwd()
 API_DIRS = [ROOT / 'app' / 'api', ROOT / 'src' / 'app' / 'api']
 
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
-"""
-    collect_endpoints function
-    """
-def collect_endpoints() -> Any:
+
+def collect_endpoints() -> List[Tuple[str, str]]:
     entries = []
     for root in API_DIRS:
         if not root.exists():
@@ -26,10 +29,7 @@ def collect_endpoints() -> Any:
     return sorted(set(entries), key=lambda x: x[0])
 
 
-"""
-    write_endpoints function
-    """
-def write_endpoints(entries) -> Any:
+def write_endpoints(entries: List[Tuple[str, str]]) -> None:
     end_file = ROOT / 'ENDPOINTS.md'
     header = '# API Endpoints\n\n'
     body = '\n'.join(f'- {endpoint} -> {path}' for endpoint, path in entries)
@@ -43,16 +43,13 @@ def write_endpoints(entries) -> Any:
             after = text[end:]
             text = before + '\n\n' + body + '\n\n' + after
         else:
-            text = header + '\n'.join([f'- {endpoint} -> {path}' for endpoint, path in entries])
+            text = header + body
         end_file.write_text(text, encoding='utf-8')
     else:
         end_file.write_text(header + body, encoding='utf-8')
 
 
-"""
-    update_api_docs function
-    """
-def update_api_docs(entries) -> Any:
+def update_api_docs(entries: List[Tuple[str, str]]) -> None:
     for doc in ['API.md', 'APIs_v1.md', 'APIs_1.md']:
         doc_path = ROOT / doc
         if not doc_path.exists():

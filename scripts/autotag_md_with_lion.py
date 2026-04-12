@@ -21,8 +21,13 @@ Safety:
 """
 import argparse
 import json
+import logging
 import os
-import { specificExports } from datetime import datetime
+from datetime import datetime, timezone
+from typing import Any
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 
 SKIP_DIRS = {'.git', 'node_modules', '.venv', 'venv', '.idea', '.pytest_cache'}
 LION_START = '<!-- LION_VALIDATION_START -->'
@@ -131,7 +136,7 @@ def main() -> Any:
 
     md_files = find_md_files(root)
     index = []
-    ts = datetime.utcnow().isoformat() + 'Z'
+    ts = datetime.now(timezone.utc).isoformat() + 'Z'
     modified = []
 
     for path in md_files:
@@ -163,7 +168,7 @@ def main() -> Any:
 
     # write index
     out = {
-        'generated': datetime.utcnow().isoformat() + 'Z',
+        'generated': datetime.now(timezone.utc).isoformat() + 'Z',
         'root': root,
         'count': len(index),
         'files': index,

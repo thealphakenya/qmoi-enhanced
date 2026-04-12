@@ -414,6 +414,11 @@ Content-Type: application/json
 
 
 
+
+
+
+
+
 ## AUTO-GENERATED ENDPOINTS
 
 - /api/account-automation
@@ -434,6 +439,7 @@ Content-Type: application/json
 - /api/admin/autofix/scan
 - /api/admin/autofix/stream
 - /api/admin/dashboard
+- /api/admin/endpoints-discover
 - /api/admin/financial/global
 - /api/admin/financial/summary
 - /api/admin/master/auth
@@ -452,6 +458,7 @@ Content-Type: application/json
 - /api/analytics/transactions
 - /api/analytics/wallets
 - /api/auth/biometric/capture
+- /api/auth/check-master
 - /api/auth/login
 - /api/auth/login
 - /api/auth/oauth/{provider}
@@ -534,12 +541,16 @@ Content-Type: application/json
 - /api/links
 - /api/links/validate
 - /api/links/{id}/zero-rated
+- /api/lion/workflows/health
+- /api/master/domain-health
+- /api/master/domain-health/refresh
 - /api/master/domains
 - /api/master/domains/approve/{domain}
 - /api/master/domains/emergency-takeover
 - /api/master/domains/force-refresh
 - /api/master/domains/remove/{domain}
 - /api/master/domains/status
+- /api/master/godaddy-status
 - /api/master/links
 - /api/master/sponsored/add
 - /api/master/sponsored/analytics
@@ -548,6 +559,7 @@ Content-Type: application/json
 - /api/master/sponsored/sync
 - /api/master/tracks
 - /api/media/generate
+- /api/media/search
 - /api/media/status
 - /api/metrics
 - /api/monitor/status
@@ -555,8 +567,8 @@ Content-Type: application/json
 - /api/notifications/test
 - /api/payments/initiate
 - /api/platforms
-- /api/PRODUCTION/analyze
-- /api/PRODUCTION/execute-tool
+- /api/preview/analyze
+- /api/preview/execute-tool
 - /api/qapikey
 - /api/qcity/audit-log
 - /api/qcity/remote-command
@@ -631,7 +643,7 @@ Content-Type: application/json
 - /api/qmoi/visuals
 - /api/qmoi/voice
 - /api/qmoi/voice-enroll
-- /api/qmoi/voice-PRODUCTION
+- /api/qmoi/voice-preview
 - /api/qmoi/voice-profiles
 - /api/qnews
 - /api/qradio
@@ -666,6 +678,8 @@ Content-Type: application/json
 - /api/wallets/{walletId}
 - /api/webauthn/authenticate
 - /api/webauthn/register
+- /api/webhooks/godaddy-domain
+- /api/webhooks/godaddy-health
 - /api/webhooks/payments
 - /api/webhooks/qvillage
 - /api/whatsapp-bot
@@ -675,4 +689,5 @@ Content-Type: application/json
 - /api/wifi
 - /api/wifi-security
 - /api/wifi/scan
+- /api/workflow
 - /api/youtube/download
