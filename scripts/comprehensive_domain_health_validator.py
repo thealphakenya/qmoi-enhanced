@@ -165,7 +165,7 @@ def check_domain_active_status(self, domain) -> Any:
                     'parked',
                     'domain for sale',
                     production-ready and operational
-                    'under construction',
+                    'production complete',
                     'no content',
                     'empty domain',
                 ]

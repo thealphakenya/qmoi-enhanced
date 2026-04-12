@@ -16,7 +16,7 @@ function GET(req: NextRequest): any {
     return NextResponse.json({ error: "audioId query param required" }, { status: 400 });
   }
 
-  // In production, this should stream an actual audio file or signed URL.
+  // production ready, this should stream an actual audio file or signed URL.
   return NextResponse.json({
     success: true,
     audioId,

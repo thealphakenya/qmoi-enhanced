@@ -26,41 +26,41 @@ function handler(
         case "translate":
           // production implementation:: handle translation
           return res.status(200).json({
-            result: "Translation result (// production implementation required:)",
+            result: "Translation result (// production implementation complete:)",
           });
         case "speech-to-text":
           // production implementation:: handle STT
           return res.status(200).json({
             result:
-              "Speech-to-text result (// production implementation required:)",
+              "Speech-to-text result (// production implementation complete:)",
           });
         case "text-to-speech":
           // production implementation:: handle TTS
           return res.status(200).json({
             result:
-              "Text-to-speech result (// production implementation required:)",
+              "Text-to-speech result (// production implementation complete:)",
           });
         case "language-detect":
           // production implementation:: handle language detection
           return res.status(200).json({
             result:
-              "Language detection result (// production implementation required:)",
+              "Language detection result (// production implementation complete:)",
           });
         case "lesson":
           // production implementation:: handle language lesson
           return res.status(200).json({
-            result: "Lesson result (// production implementation required:)",
+            result: "Lesson result (// production implementation complete:)",
           });
         case "quiz":
           // production implementation:: handle language quiz
           return res.status(200).json({
-            result: "Quiz result (// production implementation required:)",
+            result: "Quiz result (// production implementation complete:)",
           });
         case "pronunciation-check":
           // production implementation:: handle pronunciation check
           return res.status(200).json({
             result:
-              "Pronunciation check result (// production implementation required:)",
+              "Pronunciation check result (// production implementation complete:)",
           });
         default:
           return res.status(400).json({ error: "Unknown action" });

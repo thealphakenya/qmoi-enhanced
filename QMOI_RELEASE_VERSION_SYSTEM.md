@@ -129,7 +129,7 @@ STAGE 9: DEPLOYMENT ORCHESTRATION
 ├─ Stage deployment (if enabled)
 │ └─ Deploy to production environment
 │ └─ Run production tests
-│ └─ Verify in production
+│ └─ Verify production ready
 │
 ├─ Canary deployment (if enabled)
 │ └─ Deploy to 5-10% of production
@@ -367,7 +367,7 @@ Steps:
 10. Monitor closely
 
 WORKFLOW 5: Hotfix Release
-Trigger: Critical bug in production
+Trigger: Critical bug production ready
 Steps:
 
 1. Create hotfix branch from tag

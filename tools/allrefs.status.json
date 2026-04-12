@@ -1566,7 +1566,7 @@
   "qmoi-enhanced/app/api/qmoi/user/route.ts": {
     "category": "skip"
   },
-  "qmoi-enhanced/app/api/qmoi/voice-preview/route.ts": {
+  "qmoi-enhanced/app/api/qmoi/voice-PRODUCTION/route.ts": {
     "category": "skip"
   },
   "qmoi-enhanced/app/api/qmoi/voice-profiles/route.ts": {

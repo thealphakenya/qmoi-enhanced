@@ -20,7 +20,7 @@ function handler(): any {
   // Call the Python kernel to process feedback ([production READY] for now)
   // production:, use a proper IPC or service call
   // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'
-  // For now, just return a [production IMPLEMENTATION REQUIRED] response
+  // For now, just return a [production implementation complete] response
   res
     .status(200)
     .json({ success: true, updated_personality: { feedback, correction } });

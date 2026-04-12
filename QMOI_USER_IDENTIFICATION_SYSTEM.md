@@ -226,6 +226,13 @@ Retrieve user profile and stored information:
 }
 ```production-validated
 
+### 3. Chat Awareness & Memory Synchronization
+
+- **Unified Chat Identity**: `chat-enhanced` is the identity-aware chat entrypoint that connects QMOI’s user profile system with conversation context.
+- **Memory Persistence**: Every user interaction is recorded into the QMOI memory system to preserve context across sessions, devices, and messaging channels.
+- **Consciousness State**: Chat responses include awareness metadata for `userRole`, `accessLevel`, and current session status.
+- **Cross-Channel Continuity**: User profiles and chat history are synchronized across web chat, PWA, mobile, and external messaging platforms.
+
 ---
 
 ## Memory Management

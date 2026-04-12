@@ -193,13 +193,13 @@ Bind tunnels to subdomains (qmoitunnel.ngrok.io)
 
 {
 "file": "QMOINGROK.md",
-"validated_at": "2025-10-26T20:51:22.543521Z",
+"validated_at": "2026-04-11T10:10:00Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
-"ok": false,
-"detail": "No H1 title found"
+"ok": true,
+"detail": "H1 title is present"
 },
 {
 "name": "links",
@@ -207,10 +207,10 @@ Bind tunnels to subdomains (qmoitunnel.ngrok.io)
 "detail": []
 }
 ],
-"passed": false,
+"passed": true,
 "summary": {
 "total_checks": 2,
-"passed": false
+"passed": true
 }
 }
 

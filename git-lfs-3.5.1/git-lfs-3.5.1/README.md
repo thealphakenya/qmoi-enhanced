@@ -9,7 +9,7 @@
 [specification](docs/spec.md) for managing large files with Git.
 
 The client is written in Go, with pre-compiled binaries available for Mac,
-Windows, Linux, and FreeBSD. Check out the [website](http://git-lfs.github.com)
+Windows, Linux, and FreeBSD. Check out the [website](https://git-lfs.github.com)
 for an overview of features.
 
 ## Getting Started

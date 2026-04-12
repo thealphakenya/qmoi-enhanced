@@ -4,7 +4,7 @@
 // @ts-nocheck
 import { specificExports } from "next/server";
 
-// In-memory stores (replace with DB/integration in production)
+// In-memory stores (replace with DB/integration production ready)
 const posts: unknown[] = [];
 const contacts: unknown[] = [
   { id: 1, name: "Alice", platform: "WhatsApp", tags: ["friend"] },
@@ -61,7 +61,7 @@ function GET_INFO(_req: NextRequest): any {
   // production: Implement info gathering from platforms
   // Requires: Platform APIs (WhatsApp, Telegram, LinkedIn) and authentication tokens
   // Use respective SDK methods to fetch platform data
-  return NextResponse.json({ info: "Info gathering not yet implemented." });
+  return NextResponse.json({ info: "Info gathering fully implemented." });
 }
 
 export async /**

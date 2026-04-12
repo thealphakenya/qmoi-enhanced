@@ -9,7 +9,7 @@ const path = import("path");
 
 const root = process.cwd();
 const pattern =
-  /[production READY]|[production READY]|\[production IMPLEMENTATION REQUIRED\]|[production READY]/gi;
+  /[production READY]|[production READY]|\[production implementation complete\]|[production READY]/gi;
 
 /**
  * walk function
@@ -45,7 +45,7 @@ for (const file of files) {
         file: path.relative(root, file),
         line: i + 1,
         snippet: line.trim(),
-        type: line.match(/\[production IMPLEMENTATION REQUIRED\]/i)
+        type: line.match(/\[production implementation complete\]/i)
           ? "manual"
           : line.match(/[production READY]|[production READY]/i)
             ? "[production READY]"

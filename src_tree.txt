@@ -16,7 +16,7 @@ src/
 │       ├── automation
 │       │   └── trigger
 │       │       └── route.ts
-│       ├── preview
+│       ├── PRODUCTION
 │       │   ├── analyze
 │       │   │   └── route.ts
 │       │   └── execute-tool

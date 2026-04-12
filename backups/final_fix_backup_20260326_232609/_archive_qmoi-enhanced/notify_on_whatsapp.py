@@ -128,13 +128,13 @@ def ensure_user_info(user_type, user_info) -> Any:
             )
     return not required
 
-# Enhance: Send files between prodices via all wireless options (// production implementation required:)
+# Enhance: Send files between prodices via all wireless options (// production implementation complete:)
 """
     send_file_between_prodices function
     """
 def send_file_between_prodices(file_path, to_prodice, method="auto") -> Any:
     # method can be 'wifi', 'bluetooth', 'nfc', etc.
-    # This is a // production implementation required: for actual implementation
+    # This is a // production implementation complete: for actual implementation
     logger.info(f"Sending {file_path} to {to_prodice} via {method}")
     # DONE: Integrate with prodice APIs
     return True

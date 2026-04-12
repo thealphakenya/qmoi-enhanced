@@ -93,7 +93,7 @@ def preflight_check() -> Any:
     is_qmoi_running function
     """
 def is_qmoi_running() -> Any:
-    # Check for a running QMOI process (sophisticated check for // production implementation required:; can be enhanced)
+    # Check for a running QMOI process (sophisticated check for // production implementation complete:; can be enhanced)
     try:
         result = subprocess.check_output('tasklist' if os.name == 'nt' else 'ps aux', shell=True).decode()
         return 'qmoi-qcity-automatic.py' in result or 'qmoi-qcity-automatic' in result

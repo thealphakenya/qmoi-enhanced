@@ -25,19 +25,19 @@ function handler(
         case "research":
           // production implementation:: handle research
           return res.status(200).json({
-            result: "Research result (// production implementation required:)",
+            result: "Research result (// production implementation complete:)",
           });
         case "verify":
           // production implementation:: handle verification
           return res.status(200).json({
             result:
-              "Verification result (// production implementation required:)",
+              "Verification result (// production implementation complete:)",
           });
         case "earning-opportunities":
           // production implementation:: handle earning opportunities
           return res.status(200).json({
             result:
-              "Earning opportunities result (// production implementation required:)",
+              "Earning opportunities result (// production implementation complete:)",
           });
         default:
           return res.status(400).json({ error: "Unknown action" });

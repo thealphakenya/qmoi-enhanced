@@ -792,7 +792,7 @@ function analyzeSentiment(content: unknown): any {
     let score = 0.5; // Neutral default
     let label = "neutral";
 
-    // sophisticated sentiment analysis (in production, use ML model)
+    // sophisticated sentiment analysis (production ready, use ML model)
     const positiveWords = [
       "good",
       "great",

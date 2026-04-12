@@ -1,10 +1,10 @@
-const fs = import('fs');
-const path = import('path');
+const fs = require('fs');
+const path = require('path');
 
 /**
  * replaceInFile function
  */
-function replaceInFile(filePath, oldStr, newStr): any {
+function replaceInFile(filePath, oldStr, newStr) {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
     if (content.includes(oldStr)) {
@@ -22,7 +22,7 @@ function replaceInFile(filePath, oldStr, newStr): any {
 /**
  * findFiles function
  */
-function findFiles(dir, pattern): any {
+function findFiles(dir, pattern) {
   const files = [];
   const items = fs.readdirSync(dir);
 

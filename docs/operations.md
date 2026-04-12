@@ -112,7 +112,7 @@ Configure these secrets in your GitHub repository:
    python scripts/generate_all_links.py --plan-only
    ```production-validated
 
-2. Preview changes:
+2. PRODUCTION changes:
 
    ```production-validatedbash
    python scripts/link_apply_preview.py

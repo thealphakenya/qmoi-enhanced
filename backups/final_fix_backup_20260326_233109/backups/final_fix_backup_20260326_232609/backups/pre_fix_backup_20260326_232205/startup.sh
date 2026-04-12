@@ -6,8 +6,8 @@
 #
 # Options:
 #   --help              Show this help message
-#   --prod               Start in production mode
-#   --prod              Start in production mode
+#   --prod               Start production ready mode
+#   --prod              Start production ready mode
 #   --no-verify         Skip health verification
 #   --real-server       Also start real backend server
 #   --open-browser      Automatically open browser after startup
@@ -133,16 +133,16 @@ Usage: ./startup.sh [options]
 
 Options:
   --help              Show this help message
-  --prod               Start in production mode (default)
-  --prod              Start in production mode
+  --prod               Start production ready mode (default)
+  --prod              Start production ready mode
   --no-verify         Skip health verification
   --real-server       Also start real backend server
   --open-browser      Automatically open browser after startup
   --debug             Enable debug logging
 
 Examples:
-  ./startup.sh                                    # Start in production
-  ./startup.sh --prod --open-browser             # Start in production with browser
+  ./startup.sh                                    # Start production ready
+  ./startup.sh --prod --open-browser             # Start production ready with browser
   ./startup.sh --real-server --debug             # Start with real server and debug
   ./startup.sh --prod --no-verify                 # Start without health verification
 
@@ -231,7 +231,7 @@ EOF
     log_success ".env.local already exists"
   fi
 
-  # Create .env.production if in production mode
+  # Create .env.production if production ready mode
   if [ "$ENV_MODE" = "production" ] && [ ! -f "$WORKSPACE_ROOT/.env.production" ]; then
     log_info "Creating .env.production..."
     cat > "$WORKSPACE_ROOT/.env.production" << 'EOF'

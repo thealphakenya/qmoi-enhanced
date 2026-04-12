@@ -18,7 +18,7 @@
       "auto_update": true
     }
   },
-  "preview": {
+  "PRODUCTION": {
     "file_preview": {
       "enabled": true,
       "universal_support": true,

@@ -263,7 +263,7 @@ function ChatbotEnhanced(): any {
     setCurrentBranch(newBranch.id);
   };
 
-  // Open preview for a result
+  // Open PRODUCTION for a result
   const openPreview = (url: string) => {
     window.open(url, "_blank");
   };

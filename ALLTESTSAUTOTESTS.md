@@ -84,5 +84,31 @@ This document catalogs all test files, test cases, and automation tests in the Q
 - [./backups/final_fix_backup_20260326_232609/__tests__/agentService.test.ts](./backups/final_fix_backup_20260326_232609/__tests__/agentService.test.ts)
 
 
+### Political Project Tests
+
+- **Access Control Tests**: Verify master/sister/sponsored user access restrictions
+  - [./__tests__/political/access-control.test.ts](./__tests__/political/access-control.test.ts) - Test sponsored user list management and access gating
+- **Campaign Management Tests**: Test agenda generation and social media automation
+  - [./__tests__/political/campaign-management.test.ts](./__tests__/political/campaign-management.test.ts) - Validate agenda creation and auto-post features
+- **Regional Intelligence Tests**: Test auto-research for political positions
+  - [./__tests__/political/regional-intelligence.test.ts](./__tests__/political/regional-intelligence.test.ts) - Verify region-aware strategy planning
+- **UI Customization Tests**: Test position-based UI adaptations
+  - [./__tests__/political/ui-customization.test.ts](./__tests__/political/ui-customization.test.ts) - Validate president/governor UI features
+- **Social Media Integration Tests**: Test multi-platform posting
+  - [./__tests__/political/social-media.test.ts](./__tests__/political/social-media.test.ts) - Verify Instagram, Facebook, LinkedIn, TikTok integrations
+
+### NGROK Paid Feature Tests
+
+- **Tunnel Provisioning Tests**: Test secure tunnel creation
+  - [./__tests__/ngrok/tunnel-provisioning.test.ts](./__tests__/ngrok/tunnel-provisioning.test.ts) - Validate paid tunnel setup and management
+- **Master UI Control Tests**: Test master-only NGROK dashboard
+  - [./__tests__/ngrok/master-ui.test.ts](./__tests__/ngrok/master-ui.test.ts) - Verify QI spaces NGROK controls
+- **Auto-Cloning Tests**: Test NGROK environment duplication
+  - [./__tests__/ngrok/auto-cloning.test.ts](./__tests__/ngrok/auto-cloning.test.ts) - Validate backup tunnel creation
+- **Security and Encryption Tests**: Test end-to-end encryption
+  - [./__tests__/ngrok/security.test.ts](./__tests__/ngrok/security.test.ts) - Verify encrypted traffic and masking
+- **Revenue Tracking Tests**: Test paid usage analytics
+  - [./__tests__/ngrok/revenue-tracking.test.ts](./__tests__/ngrok/revenue-tracking.test.ts) - Validate billing and cost allocation
+
 ---
 *Last Enhanced: 2026-04-08T22:21:21.646848*

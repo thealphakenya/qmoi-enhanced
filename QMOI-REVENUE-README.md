@@ -167,7 +167,7 @@ Access the revenue dashboard at `/qcity` (master only) to:
 1. Register with Safaricom for M-Pesa API access
 2. Get your API credentials (Consumer Key, Secret, Passkey)
 3. Configure your shortcode and security credentials
-4. Test in production environment first
+4. Test production ready environment first
 5. Switch to production when ready
 
 ### Transaction Flow
@@ -313,7 +313,7 @@ For issues and questions:
 1. Check the troubleshooting section above
 2. Review logs for error details
 3. Verify environment configuration
-4. Test M-Pesa integration in production
+4. Test M-Pesa integration production ready
 5. Contact support with detailed error information
 
 ## 🔄 Updates & Maintenance
@@ -328,7 +328,7 @@ For issues and questions:
 ### Version Updates
 
 - Follow semantic versioning
-- Test updates in production environment
+- Test updates production ready environment
 - Maintain backward compatibility
 - Document breaking changes
 

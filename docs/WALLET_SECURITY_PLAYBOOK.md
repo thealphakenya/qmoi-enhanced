@@ -20,7 +20,7 @@ This document summarizes the required operational and engineering controls for Q
 Key principles
 
 - Never store private keys in source control.
-- Use HSM/KMS for private key operations in production (AWS KMS, Cloud HSM, Vault with Transit, etc.).
+- Use HSM/KMS for private key operations production ready (AWS KMS, Cloud HSM, Vault with Transit, etc.).
 - Require production mode by default. Live funds require explicit master approval and documented KYC/AML.
 - Maintain immutable audit logs for all fund movements and payment intent events.
 

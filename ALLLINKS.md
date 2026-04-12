@@ -18,6 +18,10 @@ title: "ALLLINKS.md"
 Generated: 2025-10-31T00:23:25.385420Z
 
 > IMPLEMENTED: For production, all links/domains/platforms must be validated by `QMOIService.validateLink` and `validateDomain`; update this file after each link audit.
+> 
+> **Production Hosting Note**: All host URLs listed here must resolve to active production endpoints on the intended platform and be validated from multiple global regions.
+> 
+> **Master Control**: Only master may approve production link updates that affect downloads, revenue, and hosted services.
 
 ## ALLQMOIAIAPPSREALEASESVERSIONS.md
 

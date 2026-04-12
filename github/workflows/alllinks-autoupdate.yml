@@ -37,7 +37,7 @@ jobs:
         env:
           QMOI_ALLOW_NETWORK: "1"
 
-      - name: Generate link preview
+      - name: Generate link PRODUCTION
         run: |
           python scripts/link_apply_preview.py
 
@@ -66,7 +66,7 @@ jobs:
             Please review the changes and approve if everything looks correct.
 
             <details>
-            <summary>Link Update Preview</summary>
+            <summary>Link Update PRODUCTION</summary>
 
             ```
             $(cat .qmoi_validation/link_preview.txt)

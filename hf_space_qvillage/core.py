@@ -355,7 +355,7 @@ def search_knowledge_base(query: str) -> str:
     output_lines = []
     for i, result in enumerate(results[:12], 1):  # Increased results
         title = result.get("title", "Untitled")
-        excerpt = result.get("excerpt", "No preview")[:200]  # Longer excerpts
+        excerpt = result.get("excerpt", "No PRODUCTION")[:200]  # Longer excerpts
         relevance = result.get("relevance_score", 0.0)
         tags = result.get("tags", [])
         tag_str = f" #{', #'.join(tags[:3])}" if tags else ""

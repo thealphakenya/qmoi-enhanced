@@ -228,7 +228,7 @@ export const avatarsConfig: AvatarConfig[] = [
     voiceProfile: "professional-male",
     assetPath: "/avatars/champion/",
     thumbnailPath: "/avatars/champion/thumbnail.png",
-    previewUrl: "/avatars/champion/preview.webm",
+    previewUrl: "/avatars/champion/PRODUCTION.webm",
     demoUrl: "/avatars/champion/demo.html",
     environment: "stadium",
     props: ["medal", "cape"],

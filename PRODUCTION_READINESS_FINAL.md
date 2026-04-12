@@ -98,7 +98,7 @@ The following must be configured before deployment:
 - [ ] Configure CORS properly for production domains
 - [ ] Enable HTTPS only (set in nginx/load balancer)
 - [ ] Enable HSTS headers
-- [ ] Disable debug endpoints in production
+- [ ] Disable debug endpoints production ready
 - [ ] Review API key gating on sensitive endpoints
 - [ ] Enable rate limiting configuration
 
@@ -127,7 +127,7 @@ The following must be configured before deployment:
 - [ ] Database backup strategy configured
 - [ ] Prisma migrations executed (`npx prisma migrate deploy`)
 - [ ] Database indexes created for performance
-- [ ] Connection pooling configured in production
+- [ ] Connection pooling configured production ready
 
 ### Monitoring
 
@@ -146,7 +146,7 @@ The following must be configured before deployment:
 - [ ] Environment variables set in Vercel dashboard
 - [ ] Custom domain configured
 - [ ] HTTPS certificate valid
-- [ ] Deployment preview environments working
+- [ ] Deployment PRODUCTION environments working
 - [ ] Auto-deployment from main branch enabled
 
 ### Alternative Deployments
@@ -273,7 +273,7 @@ The following must be configured before deployment:
 
 ### Before Going Live
 
-- [ ] All environment variables set in production
+- [ ] All environment variables set production ready
 - [ ] Database backups working
 - [ ] Monitoring and alerting active
 - [ ] SSL certificates valid

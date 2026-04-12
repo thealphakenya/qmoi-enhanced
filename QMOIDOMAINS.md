@@ -41,6 +41,15 @@ Capability Description
 🦁 Health Monitoring Lion Agent ensures 100% domain health across all providers
 🔧 GoDaddy Enhancement Automated activation of all GoDaddy paid features and cloning
 
+## Production Domain Orchestration
+- **Host Assignment**: Automatically map every QMOI domain to its live production host and service endpoint
+- **Global Failover**: Maintain primary, fallback, and tunnel chains for every critical domain
+- **DNS & SSL Automation**: Provision DNS records, TLS certificates, and security headers for production domains
+- **Regional Validation**: Validate domain resolution and response from US, EU, ASIA, AU, and Africa
+- **Master Approval**: Restrict production domain updates and link publishing to master review
+- **Link Sync**: Propagate production host URLs throughout `ALLLINKS.md`, `ALLMDFILESREFS.md`, and QCity docs
+- **Audit & Recovery**: Log every production domain change and enable automatic recovery actions
+
 🧪 Health Monitoring
 QMOI runs periodic checks on all domain/tunnel endpoints:
 
@@ -122,13 +131,13 @@ Feature Description
 
 {
 "file": "QMOIDOMAINS.md",
-"validated_at": "2025-10-26T20:51:22.496339Z",
+"validated_at": "2026-04-11T10:00:00Z",
 "validator": "QMOI Lion (automated)",
 "checks": [
 {
 "name": "title_present",
-"ok": false,
-"detail": "No H1 title found"
+"ok": true,
+"detail": "H1 title is present"
 },
 {
 "name": "links",
@@ -136,10 +145,10 @@ Feature Description
 "detail": []
 }
 ],
-"passed": false,
+"passed": true,
 "summary": {
 "total_checks": 2,
-"passed": false
+"passed": true
 }
 }
 

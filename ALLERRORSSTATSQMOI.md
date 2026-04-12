@@ -38,7 +38,7 @@
 | Critical Issues | 1,033 | 🔴 Critical |
 | High Priority | 8 | 🟠 Action |
 | Medium Priority | 15,600 | 🟡 Schedule |
-| Low Priority | 1,207 | 🟢 Backlog |
+| Low Priority | 1,207 | 🟢 roadmap item |
 | Estimated Fix Time | 30-50h | ⏱️ 1 Month |
 | Build Status | ❌ Failing | 🔴 Blocked |
 

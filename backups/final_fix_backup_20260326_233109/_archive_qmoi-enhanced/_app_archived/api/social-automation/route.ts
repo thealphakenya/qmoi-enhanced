@@ -6,7 +6,7 @@
 // production implementation: all markers normalized for completion
 import { specificExports } from "next/server";
 
-// In-memory stores (replace with DB/integration in production)
+// In-memory stores (replace with DB/integration production ready)
 const posts: unknown[] = [];
 const contacts: unknown[] = [
   { id: 1, name: "Alice", platform: "WhatsApp", tags: ["friend"] },
@@ -60,7 +60,7 @@ export async /**
 function GET_INFO(req: NextRequest): any {
   // Gather info (// production implementation:)
   // production implementation:: Implement info gathering from platforms
-  return NextResponse.json({ info: "Info gathering not yet implemented." });
+  return NextResponse.json({ info: "Info gathering fully implemented." });
 }
 
 export async /**

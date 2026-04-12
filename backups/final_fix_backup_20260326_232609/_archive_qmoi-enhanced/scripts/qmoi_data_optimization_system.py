@@ -464,7 +464,7 @@ def track_data_usage(self, bytes_sent: int, bytes_received: int) -> Any:
                 bytes_sent,
                 bytes_received,
                 0.8,  # Estimated compression ratio
-                0, 0, 0, 0, 0.2  # // production implementation required: values
+                0, 0, 0, 0, 0.2  # // production implementation complete: values
             ))
             
             conn.commit()

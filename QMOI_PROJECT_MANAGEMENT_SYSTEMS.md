@@ -218,7 +218,7 @@ Automated Tasks:
 
 AUTOMATED SUGGESTION & EVOLUTION ENGINE:
 
-- Auto-make feature generation from project backlog and system intent.
+- Auto-make feature generation from project roadmap item and system intent.
 - AI-based enhancement suggestions for UI, backend API, and project workflows.
 - Parallel QVS scoring and execution context tracking for multi-prodice optimization.
 - Continuous improvement loops: auto-research -> propose -> build -> verify -> deploy.
@@ -233,7 +233,7 @@ QMOI AUTO-prod ACTIONS:
    - Revert to latest Git commit on failure.
    - Log rollback reason and metrics.
 3. Batch Edit
-   - Bulk modifications with safe preview, apply, and rollback.
+   - Bulk modifications with safe PRODUCTION, apply, and rollback.
 4. Auto Make
    - Generate feature implementation suggestions from prompts.
    - Convert spec to real code framework and wire into project.
@@ -271,7 +271,7 @@ Task Types:
 Task Properties:
 ├─ Title & description
 ├─ Priority (Low/Medium/High/Critical)
-├─ Status (Backlog/In Progress/In Review/Done)
+├─ Status (roadmap item/COMPLETE/In Review/Done)
 ├─ Assignee
 ├─ Due date
 ├─ Estimated effort (hours)

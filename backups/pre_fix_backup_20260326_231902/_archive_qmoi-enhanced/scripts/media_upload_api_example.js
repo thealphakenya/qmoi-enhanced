@@ -74,7 +74,7 @@ app.delete("/api/media/:id", requireAdmin, (req, res) => {
 });
 
 app.patch("/api/media/:id", requireAdmin, express.json(), (req, res) => {
-  // For [production IMPLEMENTATION REQUIRED]: just log the tag update
+  // For [production implementation complete]: just log the tag update
   logAudit(`TAG ${req.params.id} -> ${JSON.stringify(req.body.tags)}`);
   res.json({ success: true });
 });

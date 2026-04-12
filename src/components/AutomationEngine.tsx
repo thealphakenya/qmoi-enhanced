@@ -23,7 +23,7 @@ const defaultRules: AutomationRule[] = [
     event: "errorDetected",
     conditions: { severity: "high" },
     action: (payload) => {
-      // Trigger opening error preview window
+      // Trigger opening error PRODUCTION window
       apiClient.get("/api/automation/trigger", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -37,11 +37,11 @@ const defaultRules: AutomationRule[] = [
     event: "projectOpened",
     conditions: { projectType: "web" },
     action: (payload) => {
-      // Auto-activate live preview tool
-      apiClient.get("/api/preview/execute-tool", {
+      // Auto-activate live PRODUCTION tool
+      apiClient.get("/api/PRODUCTION/execute-tool", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ toolId: "live-preview", projectId: payload.projectId }),
+        body: JSON.stringify({ toolId: "live-PRODUCTION", projectId: payload.projectId }),
       });
     },
     enabled: true,

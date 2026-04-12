@@ -6,7 +6,7 @@
 [production READY] all markers normalized for completion
 import { specificExports } from "next/server";
 
-// In-memory stores (replace with DB/real logic in production)
+// In-memory stores (replace with DB/real logic production ready)
 const strategies = [
   { id: 1, name: "Trading Bot", status: "active" },
   { id: 2, name: "Yield Farming", status: "inactive" },

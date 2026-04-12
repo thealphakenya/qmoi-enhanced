@@ -16,7 +16,7 @@ const authenticateMaster = (request: NextRequest) => {
   }
 
   const token = authHeader.substring(7);
-  // In production, validate against secure token storage
+  // production ready, validate against secure token storage
   return (
     token === process.env.QMOI_MASTER_TOKEN || token === "master-access-token"
   );
@@ -50,7 +50,7 @@ function GET(request: NextRequest): any {
 
       return NextResponse.json(dashboardData);
     } catch (error) {
-      // If dashboard file doesn't exist, return [production IMPLEMENTATION REQUIRED] data for production
+      // If dashboard file doesn't exist, return [production implementation complete] data for production
       const dashboardData = {
         revenue: {
           current: 125000,

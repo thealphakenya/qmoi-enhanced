@@ -107,7 +107,7 @@ while true; do npm run verify-vercel && sleep 30; done
 
 | Code | Meaning                               | Action            |
 | ---- | ------------------------------------- | ----------------- |
-| 404  | Deployment in progress or not started | Wait 5-6 minutes  |
+| 404  | Deployment COMPLETE or not started | Wait 5-6 minutes  |
 | 200  | Application is LIVE ✓                 | Start testing     |
 | 000  | Connection error                      | Check network     |
 | 50x  | Server error                          | Check Vercel logs |

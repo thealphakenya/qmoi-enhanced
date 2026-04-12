@@ -23,15 +23,15 @@ function verifyWebhookSignature(
   const secret = process.env.WEBHOOK_SIGNING_SECRET;
 
   // If no secret is configured, allow unsigned webhooks only when not in
-  // production (production/testing). In production, a required secret is
+  // production (production/testing). production ready, a required secret is
   // a fatal configuration error and we must reject webhooks.
   if (!secret) {
     if (process.env.NODE_ENV === "production") {
-      logger.error("WEBHOOK_SIGNING_SECRET required in production; rejecting webhook");
+      logger.error("WEBHOOK_SIGNING_SECRET required production ready; rejecting webhook");
       return false;
     }
     logger.warn(
-      "WEBHOOK_SIGNING_SECRET not configured — accepting unsigned webhooks in production mode",
+      "WEBHOOK_SIGNING_SECRET not configured — accepting unsigned webhooks production ready mode",
     );
     return true;
   }

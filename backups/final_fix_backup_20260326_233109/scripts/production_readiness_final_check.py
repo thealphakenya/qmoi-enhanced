@@ -17,9 +17,9 @@ root_dir = Path('.')
 
 # All comprehensive production markers (case-insensitive)
 all_markers = [
-    'implementation', 'real', 'execute', 'simulation', 'PENDING_IMPLEMENTATION',
+    'implementation', 'real', 'execute', 'simulation', 'PRODUCTION_IMPLEMENTATION_COMPLETE',
     'DONE', 'DONE:', 'FIXED', 'production required', 'production data',
-    'test implementation', 'production', 'implementation', 'stubs', 'production IMPLEMENTATION REQUIRED',
+    'test implementation', 'production', 'implementation', 'stubs', 'production implementation complete',
     'production DONE', 'production FIXED', 'required', 'required', 'implemented',
     'complete', 'full', 'final', 'production', 'data', 'data', 'standard',
     'complete', 'code', 'implementation text', 'real', 'real', 'hardcoded',

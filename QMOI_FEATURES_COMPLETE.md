@@ -24,7 +24,7 @@
 - **UI Component**: `src/components/qmoi/VoiceSelector.tsx`
   - Voice selection dropdown (2 column grid)
   - Real-time pitch/rate/volume sliders
-  - Voice preview/test button
+  - Voice PRODUCTION/test button
   - Voice details display
 
 ### 2. **Avatar System with Real-Time Display** 🎭

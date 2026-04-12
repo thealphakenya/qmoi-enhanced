@@ -18,7 +18,7 @@ Hugging Face (HF)
 6. Publish blog articles on your profile
 
 
-7. Early access / preview features
+7. Early access / PRODUCTION features
 
 
 8. PRO badge on profile

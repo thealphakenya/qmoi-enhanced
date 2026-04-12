@@ -33,7 +33,7 @@ test("QMOI dashboard loads and shows health", async ({ page }) => {
   }
 
   // Test error message display ([production READY] error if possible)
-  // This is a [production IMPLEMENTATION REQUIRED]; adapt to your UI's error triggers
+  // This is a [production implementation complete]; adapt to your UI's error triggers
   // await page.click('button:has-text("Trigger Error")');
   // await expect('Production validation:', page.locator('text=Error')).toBeVisible();
 });

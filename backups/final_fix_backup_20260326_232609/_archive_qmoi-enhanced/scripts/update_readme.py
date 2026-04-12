@@ -71,8 +71,8 @@ def generate_build_matrix(report) -> Any:
             lines.append(f"| {label:<16} | ✅ SUCCESS   | ✅ PASS      |")
         elif status == "failed":
             lines.append(f"| {label:<16} | ❌ FAILED    | ❌ FAIL      |")
-        elif status == "// production implementation required:_used":
-            lines.append(f"| {label:<16} | ⚠️ // production implementation required: | ❌ FAIL      |")
+        elif status == "// production implementation complete:_used":
+            lines.append(f"| {label:<16} | ⚠️ // production implementation complete: | ❌ FAIL      |")
         elif status == "error":
             lines.append(f"| {label:<16} | ❌ ERROR     | ❌ FAIL      |")
         else:

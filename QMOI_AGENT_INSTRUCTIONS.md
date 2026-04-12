@@ -48,7 +48,7 @@ curl -s -X POST https://qvillage.com/v1/chat/completions \
 1) Master: "GREETINGS. Create file X and confirm."
 2) QM0I -> creates file and replies with success.
 3) Master: "Please run optimized verification head -n 1 X"
-4) QM0I -> replies with the file preview and stores the action in memory.
+4) QM0I -> replies with the file PRODUCTION and stores the action in memory.
 
 ## 🔄 Evolution Status
 

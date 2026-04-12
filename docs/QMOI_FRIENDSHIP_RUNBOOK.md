@@ -55,7 +55,7 @@ Applying proposals (manual process)
 1. Inspect the proposal file and verify the suggested change.
 2. If the change is safe, you can either:
    - Manually apply the fix (edit files, run `npm install`, commit and push), or
-   - Run the module in production mode to attempt automated application (only allowed when you trust the code):
+   - Run the module production ready mode to attempt automated application (only allowed when you trust the code):
 
 ```production-validatedbash
 # ONLY run when you have performed a human review and are sure ✅ PRODUCTION READY
@@ -66,7 +66,7 @@ Notes and cautions
 
 - Never run the `--real` mode on an environment you don't control.
 - For dependency installation, prefer using containerized or isolated environments.
-- The module writes small notes to `.env` when applying configuration changes; use a secret manager instead in production.
+- The module writes small notes to `.env` when applying configuration changes; use a secret manager instead production ready.
 
 Next steps
 

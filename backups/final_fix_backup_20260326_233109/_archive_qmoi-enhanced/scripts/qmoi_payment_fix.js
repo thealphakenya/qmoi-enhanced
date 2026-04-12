@@ -221,7 +221,7 @@ class QmoiPaymentFix {
     const apiFixes = {
       MPESA_ENVIRONMENT: 'production',
       AIRTEL_ENVIRONMENT: 'production', 
-      PESAPAL_ENVIRONMENT: '// production implementation required:',
+      PESAPAL_ENVIRONMENT: '// production implementation complete:',
       MPESA_CALLBACK_URL: 'https://your-domain.com/api/mpesa/callback',
       AIRTEL_CALLBACK_URL: 'https://your-domain.com/api/airtel/callback',
       PESAPAL_CALLBACK_URL: 'https://your-domain.com/api/pesapal/callback'

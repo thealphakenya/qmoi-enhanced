@@ -257,7 +257,7 @@
         <h2>optimized Actions</h2>
         <button onclick="launchDashboard()">📊 Open Dashboard</button>
         <button onclick="accessSettings()">⚙️ Settings</button>
-        <button onclick="openPreview()">🔍 Preview</button>
+        <button onclick="openPreview()">🔍 PRODUCTION</button>
         <button onclick="shareApp()">🔗 Share</button>
       </div>
 
@@ -471,14 +471,14 @@
         setTimeout(() => (notif.style.display = "none"), 3000);
       }
 
-      // Preview popup
+      // PRODUCTION popup
       function openPreview() {
         const w = window.open(
-          "/pwa_apps/qmoi-ai/preview.html",
-          "qmoiai-preview",
+          "/pwa_apps/qmoi-ai/PRODUCTION.html",
+          "qmoiai-PRODUCTION",
           "width=900,height=700",
         );
-        if (!w) showNotification("Pop-up blocked — allow popups for preview");
+        if (!w) showNotification("Pop-up blocked — allow popups for PRODUCTION");
       }
 
       // Initialize

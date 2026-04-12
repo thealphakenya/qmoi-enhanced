@@ -553,7 +553,7 @@ def fix_vercel(self) -> Tuple[bool, str, List[str], List[str]]:
             
             if result.returncode == 0:
                 msg = "Vercel fixes applied successfully"
-                suggestions.append("Consider adding Vercel preview deployments")
+                suggestions.append("Consider adding Vercel PRODUCTION deployments")
                 evolution_ideas.append("Implement Vercel auto-scaling")
             else:
                 msg = f"Vercel fixes failed: {result.stderr}"
@@ -687,7 +687,7 @@ def deploy_to_vercel(self) -> FixResult:
                     platform=Platform.VERCEL,
                     success=True,
                     message="Vercel deployment completed successfully",
-                    suggestions=["Add Vercel preview deployments", "Implement auto-scaling"],
+                    suggestions=["Add Vercel PRODUCTION deployments", "Implement auto-scaling"],
                     evolution_ideas=["Add Vercel analytics", "Implement CDN optimization"]
                 )
             else:

@@ -365,7 +365,7 @@ Auto-production Workflow:
    │ • Add to next release
    │ • Update changelog
    │ • Update version
-   │ • Validate in production
+   │ • Validate production ready
    │ • Queue for next release
    ├─ Release Frequency:
    │ • Patches: Daily

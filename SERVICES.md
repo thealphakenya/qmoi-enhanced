@@ -103,7 +103,7 @@ This document catalogs all service implementations, adapters, and business logic
 - **Purpose**: Voice profile management and TTS generation
 - **Features**:
   - Auto-voice selection (lion-roar preference)
-  - Voice preview generation
+  - Voice PRODUCTION generation
   - Lip-sync configuration
   - Quality level adjustments
   - Multi-engine support (Bark, XTTS, ElevenLabs)

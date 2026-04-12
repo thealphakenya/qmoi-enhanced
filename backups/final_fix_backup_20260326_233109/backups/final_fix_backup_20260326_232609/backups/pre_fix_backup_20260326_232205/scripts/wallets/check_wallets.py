@@ -61,8 +61,8 @@ def __init__(self, name) -> Any:
     """
 def check_balance(self, config, real=False) -> Any:
         """Return dict: {balance, currency, last_checked, status, meta}
-        In production mode return safe mocked values.
-        In production mode perform network calls (only if production_CONFIRMED=true).
+        production ready mode return safe mocked values.
+        production ready mode perform network calls (only if production_CONFIRMED=true).
         """
         # Default real implementation
         return {

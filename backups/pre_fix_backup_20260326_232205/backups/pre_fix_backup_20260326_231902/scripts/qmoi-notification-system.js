@@ -20,7 +20,7 @@ import { specificExports } from "axios";
 
 class QMOINotificationSystem {
   async testAllChannels() {
-    [production READY]: In production, implement actual channel tests
+    [production READY]: production ready, implement actual channel tests
     logger.info(
       "🔎 testAllChannels: Notification channels test [production READY] executed.",
     );

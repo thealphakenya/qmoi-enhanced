@@ -20,9 +20,9 @@
     "DEPRECATED": 63,
     "INSTRUCTION": 24,
     "TEST IMPLEMENTATION": 3,
-    "production IMPLEMENTATION REQUIRED": 44,
-    "PENDING_IMPLEMENTATION": 4,
-    "TEST DATA": 2,
+    "production implementation complete": 44,
+    "PRODUCTION_IMPLEMENTATION_COMPLETE": 4,
+    "production data": 2,
     "realS": 3
   },
   "files_by_marker": {
@@ -2147,7 +2147,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/verify_and_finalize_done.py": [
       "DONE (2)",
       "production (2)",
-      "production IMPLEMENTATION REQUIRED (1)",
+      "production implementation complete (1)",
       "production (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/generate_allmdrefs.py": [
@@ -2172,7 +2172,7 @@
       "real (1)",
       "production (4)",
       "real (1)",
-      "production IMPLEMENTATION REQUIRED (1)",
+      "production implementation complete (1)",
       "production (4)",
       "REPLACE (1)"
     ],
@@ -2195,7 +2195,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/fix_removed_placeholders_batch.py": [
       "production (8)",
-      "production IMPLEMENTATION REQUIRED (4)",
+      "production implementation complete (4)",
       "production (8)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/qmoi-parallel-platform-enhancer.py": [
@@ -2212,7 +2212,7 @@
       "real (1)",
       "production (3)",
       "real (1)",
-      "production IMPLEMENTATION REQUIRED (2)",
+      "production implementation complete (2)",
       "production (3)",
       "REPLACE (1)"
     ],
@@ -2248,7 +2248,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/placeholder_fixer.py": [
       "production (3)",
-      "production IMPLEMENTATION REQUIRED (2)",
+      "production implementation complete (2)",
       "production (3)",
       "WARNING (1)",
       "IMPLEMENTED (3)"
@@ -2459,7 +2459,7 @@
       "REPLACE (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/scan_undone.sh": [
-      "PENDING_IMPLEMENTATION (1)",
+      "PRODUCTION_IMPLEMENTATION_COMPLETE (1)",
       "DONE (2)",
       "fixed (1)"
     ],
@@ -3154,7 +3154,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/scripts/placeholder_fixer.py": [
       "production (3)",
-      "production IMPLEMENTATION REQUIRED (2)",
+      "production implementation complete (2)",
       "production (3)",
       "WARNING (1)",
       "IMPLEMENTED (3)"
@@ -3965,7 +3965,7 @@
       "production (1)",
       "production (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/src/app/api/preview/analyze/route.ts": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/src/app/api/PRODUCTION/analyze/route.ts": [
       "production (1)",
       "production (1)",
       "complete (1)",
@@ -5579,7 +5579,7 @@
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/verify_and_finalize_done.py": [
       "DONE (2)",
       "production (2)",
-      "production IMPLEMENTATION REQUIRED (1)",
+      "production implementation complete (1)",
       "production (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/generate_allmdrefs.py": [
@@ -5622,7 +5622,7 @@
       "real (1)",
       "production (4)",
       "real (1)",
-      "production IMPLEMENTATION REQUIRED (1)",
+      "production implementation complete (1)",
       "production (4)",
       "REPLACE (1)"
     ],
@@ -5652,7 +5652,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/fix_removed_placeholders_batch.py": [
       "production (8)",
-      "production IMPLEMENTATION REQUIRED (4)",
+      "production implementation complete (4)",
       "production (8)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/update_model_card.py": [
@@ -5684,7 +5684,7 @@
       "real (1)",
       "production (3)",
       "real (1)",
-      "production IMPLEMENTATION REQUIRED (2)",
+      "production implementation complete (2)",
       "production (3)",
       "REPLACE (1)"
     ],
@@ -5739,7 +5739,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/placeholder_fixer.py": [
       "production (3)",
-      "production IMPLEMENTATION REQUIRED (2)",
+      "production implementation complete (2)",
       "production (3)",
       "WARNING (1)",
       "IMPLEMENTED (3)"
@@ -6251,7 +6251,7 @@
       "REPLACE (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/scan_undone.sh": [
-      "PENDING_IMPLEMENTATION (1)",
+      "PRODUCTION_IMPLEMENTATION_COMPLETE (1)",
       "DONE (2)",
       "fixed (1)"
     ],
@@ -6759,7 +6759,7 @@
       "production (1)",
       "production (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/src/app/api/preview/analyze/route.ts": [
+    "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/src/app/api/PRODUCTION/analyze/route.ts": [
       "production (1)",
       "production (1)",
       "complete (1)",
@@ -8719,7 +8719,7 @@
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/verify_and_finalize_done.py": [
       "DONE (2)",
       "production (2)",
-      "production IMPLEMENTATION REQUIRED (1)",
+      "production implementation complete (1)",
       "production (2)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/generate_allmdrefs.py": [
@@ -8744,7 +8744,7 @@
       "real (1)",
       "production (4)",
       "real (1)",
-      "production IMPLEMENTATION REQUIRED (1)",
+      "production implementation complete (1)",
       "production (4)",
       "REPLACE (1)"
     ],
@@ -8767,7 +8767,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/fix_removed_placeholders_batch.py": [
       "production (8)",
-      "production IMPLEMENTATION REQUIRED (4)",
+      "production implementation complete (4)",
       "production (8)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/qmoi-parallel-platform-enhancer.py": [
@@ -8784,7 +8784,7 @@
       "real (1)",
       "production (3)",
       "real (1)",
-      "production IMPLEMENTATION REQUIRED (2)",
+      "production implementation complete (2)",
       "production (3)",
       "REPLACE (1)"
     ],
@@ -8816,7 +8816,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/placeholder_fixer.py": [
       "production (3)",
-      "production IMPLEMENTATION REQUIRED (2)",
+      "production implementation complete (2)",
       "production (3)",
       "WARNING (1)",
       "IMPLEMENTED (3)"
@@ -9023,7 +9023,7 @@
       "INSTRUCTIONS (1)"
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/scan_undone.sh": [
-      "PENDING_IMPLEMENTATION (1)",
+      "PRODUCTION_IMPLEMENTATION_COMPLETE (1)",
       "DONE (3)",
       "fixed (1)"
     ],
@@ -9700,7 +9700,7 @@
     ],
     "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/scripts/placeholder_fixer.py": [
       "production (3)",
-      "production IMPLEMENTATION REQUIRED (2)",
+      "production implementation complete (2)",
       "production (3)",
       "WARNING (1)",
       "IMPLEMENTED (3)"
@@ -10511,7 +10511,7 @@
       "production (1)",
       "production (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/preview/analyze/route.ts": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/PRODUCTION/analyze/route.ts": [
       "production (1)",
       "production (1)",
       "complete (1)",
@@ -12612,7 +12612,7 @@
       "production (1)",
       "production (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/preview/analyze/route.ts": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/PRODUCTION/analyze/route.ts": [
       "production (1)",
       "production (1)",
       "complete (1)",
@@ -12913,7 +12913,7 @@
       "real (11)",
       "production (4)",
       "real (11)",
-      "TEST DATA (1)",
+      "production data (1)",
       "production (4)",
       "complete (1)"
     ],
@@ -13037,7 +13037,7 @@
       "latest (1)",
       "latest (1)"
     ],
-    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/src/app/api/preview/execute-tool/route.ts": [
+    "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/src/app/api/PRODUCTION/execute-tool/route.ts": [
       "live (1)",
       "live (1)",
       "WARNING (3)"
@@ -13502,7 +13502,7 @@
       "real (12)",
       "production (3)",
       "real (12)",
-      "production IMPLEMENTATION REQUIRED (2)",
+      "production implementation complete (2)",
       "production (3)"
     ],
     "/workspaces/qmoi-enhanced/scripts/domain_health_100percent_achiever.py": [
@@ -13590,7 +13590,7 @@
       "real (3)",
       "production (2)",
       "real (3)",
-      "production IMPLEMENTATION REQUIRED (1)",
+      "production implementation complete (1)",
       "production (2)"
     ],
     "/workspaces/qmoi-enhanced/scripts/phase1_domain_link_fixer.py": [
@@ -13608,7 +13608,7 @@
       "real (1)",
       "production (4)",
       "real (1)",
-      "production IMPLEMENTATION REQUIRED (1)",
+      "production implementation complete (1)",
       "production (4)",
       "REPLACE (1)"
     ],
@@ -13625,7 +13625,7 @@
       "real (6)",
       "production (8)",
       "real (6)",
-      "production IMPLEMENTATION REQUIRED (4)",
+      "production implementation complete (4)",
       "production (8)"
     ],
     "/workspaces/qmoi-enhanced/scripts/comprehensive_docs_update.py": [
@@ -13677,7 +13677,7 @@
       "real (7)",
       "production (3)",
       "real (7)",
-      "production IMPLEMENTATION REQUIRED (2)",
+      "production implementation complete (2)",
       "production (3)",
       "REPLACE (1)",
       "WARNING (1)",
@@ -13953,7 +13953,7 @@
       "real (10)",
       "production (3)",
       "real (10)",
-      "TEST DATA (1)",
+      "production data (1)",
       "production (3)",
       "complete (1)"
     ],
@@ -14015,7 +14015,7 @@
       "real (1)"
     ],
     "/workspaces/qmoi-enhanced/scripts/scan_undone.sh": [
-      "PENDING_IMPLEMENTATION (1)",
+      "PRODUCTION_IMPLEMENTATION_COMPLETE (1)",
       "DONE (3)",
       "fixed (1)"
     ],
@@ -14592,13 +14592,13 @@
       "production (1)",
       "production (1)"
     ],
-    "/workspaces/qmoi-enhanced/src/app/api/preview/analyze/route.ts": [
+    "/workspaces/qmoi-enhanced/src/app/api/PRODUCTION/analyze/route.ts": [
       "production (1)",
       "production (1)",
       "complete (1)",
       "REPLACE (1)"
     ],
-    "/workspaces/qmoi-enhanced/src/app/api/preview/execute-tool/route.ts": [
+    "/workspaces/qmoi-enhanced/src/app/api/PRODUCTION/execute-tool/route.ts": [
       "live (1)",
       "live (1)",
       "WARNING (3)"

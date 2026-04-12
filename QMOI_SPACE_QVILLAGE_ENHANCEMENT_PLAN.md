@@ -264,7 +264,7 @@ This document outlines a comprehensive enhancement plan for QMOI Space (Hugging 
 
 - Drag-and-drop interface
 - standard library
-- Live preview
+- Live PRODUCTION
 - Code generation
 
 #### 6. Advanced Configuration

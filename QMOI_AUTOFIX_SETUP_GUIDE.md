@@ -425,7 +425,7 @@ Monthly: Comprehensive audit
 - Run full scan
 - Document baseline
 - Keep backups
-- Test in production first
+- Test production ready first
 
 ### 3. After Deployment
 

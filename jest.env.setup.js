@@ -1,15 +1,15 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:09Z
+// Last evolution cycle: 2026-04-12T00:17:00Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // Environment polyfills that must run before any modules are loaded
-const { TextEncoder, TextDecoder } = import("util");
+const { TextEncoder, TextDecoder } = require("util");
 if (typeof global.TextEncoder === "undefined") global.TextEncoder = TextEncoder;
 if (typeof global.TextDecoder === "undefined") global.TextDecoder = TextDecoder;
 // Polyfill fetch for environments that lack it (msw and fetch-based code expect it)
 try {
-  import("whatwg-fetch");
+  require("whatwg-fetch");
 } catch (e) {
-  production-ready and operational 
+  // Fetch polyfill not available, continue without it
 }

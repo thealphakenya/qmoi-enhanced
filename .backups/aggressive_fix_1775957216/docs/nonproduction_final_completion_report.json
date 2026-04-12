@@ -1,0 +1,17 @@
+{
+  "scan_completed_at": "2026-04-03T02:11:29.851079",
+  "files_scanned": 2186,
+  "initial_findings": 22610,
+  "current_findings": 510,
+  "completion_percentage": 97.7,
+  "remaining_by_type": {
+    "implementation": 301,
+    "non-production": 171,
+    "real-implementation": 38
+  },
+  "status": "IN PROGRESS - 510 remaining",
+  "production": true,
+  "debug": false,
+  "logLevel": "error",
+  "lastEnhanced": "2026-04-08T22:14:05.936270"
+}

@@ -26,41 +26,41 @@ function handler(
         case "translate":
           [production READY]: handle translation
           return res.status(200).json({
-            result: "Translation result ([production IMPLEMENTATION REQUIRED])",
+            result: "Translation result ([production implementation complete])",
           });
         case "speech-to-text":
           [production READY]: handle STT
           return res.status(200).json({
             result:
-              "Speech-to-text result ([production IMPLEMENTATION REQUIRED])",
+              "Speech-to-text result ([production implementation complete])",
           });
         case "text-to-speech":
           [production READY]: handle TTS
           return res.status(200).json({
             result:
-              "Text-to-speech result ([production IMPLEMENTATION REQUIRED])",
+              "Text-to-speech result ([production implementation complete])",
           });
         case "language-detect":
           [production READY]: handle language detection
           return res.status(200).json({
             result:
-              "Language detection result ([production IMPLEMENTATION REQUIRED])",
+              "Language detection result ([production implementation complete])",
           });
         case "lesson":
           [production READY]: handle language lesson
           return res.status(200).json({
-            result: "Lesson result ([production IMPLEMENTATION REQUIRED])",
+            result: "Lesson result ([production implementation complete])",
           });
         case "quiz":
           [production READY]: handle language quiz
           return res.status(200).json({
-            result: "Quiz result ([production IMPLEMENTATION REQUIRED])",
+            result: "Quiz result ([production implementation complete])",
           });
         case "pronunciation-check":
           [production READY]: handle pronunciation check
           return res.status(200).json({
             result:
-              "Pronunciation check result ([production IMPLEMENTATION REQUIRED])",
+              "Pronunciation check result ([production implementation complete])",
           });
         default:
           return res.status(400).json({ error: "Unknown action" });

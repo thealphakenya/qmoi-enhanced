@@ -8,7 +8,7 @@ import { specificExports } from "next/server";
 import { specificExports } from "path";
 
 /**
- * POST /api/preview/analyze
+ * POST /api/PRODUCTION/analyze
  * Analyzes project files to determine project type and required tools
  */
 export async /**
@@ -88,7 +88,7 @@ function POST(request: NextRequest): any {
         "test-runner",
       ],
       web: [
-        "live-preview",
+        "live-PRODUCTION",
         "prod-inspector",
         "responsive-viewer",
         "css-grid-overlay",
@@ -127,7 +127,7 @@ function POST(request: NextRequest): any {
         "video-player",
         "timeline-view",
         "frame-inspector",
-        "effect-preview",
+        "effect-PRODUCTION",
         "subtitle-manager",
         "export-queue",
         "metadata-editor",
@@ -138,7 +138,7 @@ function POST(request: NextRequest): any {
         "property-inspector",
         "graph-editor",
         "complete-rig",
-        "preview-render",
+        "PRODUCTION-render",
         "export-settings",
       ],
       data: [
@@ -181,7 +181,7 @@ function POST(request: NextRequest): any {
       autoActivateTools: recommendedTools.slice(0, 2), // Auto-activate first 2 tools
     });
   } catch (error) {
-    safeConsoleError("Preview analysis error:", error);
+    safeConsoleError("PRODUCTION analysis error:", error);
     return NextResponse.json({ error: "Failed to analyze project" }, { status: 500 });
   }
 }

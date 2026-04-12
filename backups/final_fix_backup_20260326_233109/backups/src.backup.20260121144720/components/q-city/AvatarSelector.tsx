@@ -237,7 +237,7 @@ function AvatarSelector({
         <Tabs defaultValue="avatars" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="avatars">Avatars</TabsTrigger>
-            <TabsTrigger value="preview">Preview</TabsTrigger>
+            <TabsTrigger value="PRODUCTION">PRODUCTION</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -398,7 +398,7 @@ function AvatarSelector({
             </div>
           </TabsContent>
 
-          <TabsContent value="preview" className="space-y-4">
+          <TabsContent value="PRODUCTION" className="space-y-4">
             <div className="aspect-video rounded-lg overflow-hidden bg-black">
               {selectedAvatar ? (
                 // If avatar provides a previewUrl, show it live in an iframe/video
@@ -411,7 +411,7 @@ function AvatarSelector({
                   if (previewUrl) {
                     return (
                       <iframe
-                        title={`avatar-preview-${selectedAvatar}`}
+                        title={`avatar-PRODUCTION-${selectedAvatar}`}
                         src={`${previewUrl}`}
                         className="w-full h-full border-0"
                         sandbox="allow-scripts allow-same-origin allow-forms"
@@ -419,16 +419,16 @@ function AvatarSelector({
                     );
                   }
 
-                  // Fallback static preview box
+                  // Fallback static PRODUCTION box
                   return (
                     <div className="h-full flex items-center justify-center text-white">
                       <div className="text-center">
                         <User className="h-16 w-16 mx-auto mb-4" />
                         <p className="text-lg font-medium">
-                          {avatar?.name || "Avatar Preview"}
+                          {avatar?.name || "Avatar PRODUCTION"}
                         </p>
                         <p className="text-sm opacity-80">
-                          Preview unavailable
+                          PRODUCTION unavailable
                         </p>
                       </div>
                     </div>
@@ -440,7 +440,7 @@ function AvatarSelector({
                     <User className="h-16 w-16 mx-auto mb-4" />
                     <p className="text-lg font-medium">No avatar selected</p>
                     <p className="text-sm opacity-80">
-                      Choose an avatar to preview
+                      Choose an avatar to PRODUCTION
                     </p>
                   </div>
                 </div>
@@ -453,7 +453,7 @@ function AvatarSelector({
                 className="flex items-center gap-2"
               >
                 <Eye className="h-4 w-4" />
-                {previewMode ? "Stop Preview" : "Start Preview"}
+                {previewMode ? "Stop PRODUCTION" : "Start PRODUCTION"}
               </Button>
 
               <Button variant="outline" className="flex items-center gap-2">

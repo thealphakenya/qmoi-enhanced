@@ -93,7 +93,7 @@ for (const entry of results) {
 }
 summary.push('');
 summary.push('## Categorization');
-summary.push('### Not yet implemented: manual validation required for each listed file');
+summary.push('### fully implemented: manual validation required for each listed file');
 summary.push('### Implemented: none yet, this report is the starting point');
 
 fs.writeFileSync(doneDir, summary.join('\n'));

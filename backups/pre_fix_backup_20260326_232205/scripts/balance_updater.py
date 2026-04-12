@@ -133,7 +133,7 @@ def create_config_template(self) -> Any:
     """
 def validate_master_access(self) -> bool:
         """Validate master access for balance operations"""
-        # In production, this would validate JWT tokens, biometrics, etc.
+        # production ready, this would validate JWT tokens, biometrics, etc.
         # For demo, we'll assume master access is granted
         logger.info("Master access validated")
         return True
@@ -144,7 +144,7 @@ def validate_master_access(self) -> bool:
 def fetch_bank_balance(self, config: Dict) -> Optional[Dict]:
         """Fetch real balance from banking API"""
         try:
-            # This is a code - in production, use real banking APIs
+            # This is a code - production ready, use real banking APIs
             # implementation: Stripe, Plaid, or direct bank APIs
 
             # Simulated real balance fetch
@@ -176,7 +176,7 @@ def fetch_crypto_balance(self, config: Dict) -> Optional[Dict]:
         """Fetch real balance from crypto exchange"""
         try:
             # code for Bitget or other exchanges
-            # In production: Use exchange APIs with proper authentication
+            # production ready: Use exchange APIs with proper authentication
 
             balances = {
                 "BTC": {"amount": 2.456789, "usd_value": 145678.92},
@@ -241,7 +241,7 @@ def fetch_brokerage_balance(self, config: Dict) -> Optional[Dict]:
 def fetch_qmoi_space_balance(self, config: Dict) -> Optional[Dict]:
         """Fetch real balance from QMOI Space platform"""
         try:
-            # Simulated QMOI Space balance (in production, use real API)
+            # Simulated QMOI Space balance (production ready, use real API)
             response = {
                 "balance": 892345.67,
                 "currency": "USD",

@@ -6,7 +6,7 @@
 ./matches_with_comments.json:113:    "snippet": "- **Offline/Batch Mode**: If the platform is offline, the AI continues to [PRODUCTION READY] trades using the latest available data and syncs results when back online.",
 ./matches_with_comments.json:143:    "snippet": "- **Self-Evolution:** A new script (`scripts/qmoi_self_evolve.py`) analyzes the codebase using deep learning ([PRODUCTION READY] for now), suggests improvements, and logs them to QMOI memory. This enables QMOI to self-improve over time.",
 ./matches_with_comments.json:353:    "snippet": "- CLI scaffold: `tools/lionctl` (robust [PRODUCTION READY], expand as needed)",
-./matches_with_comments.json:509:    "snippet": "Returns a [PRODUCTION READY]d response for now. In production this would proxy to an AI service.",
+./matches_with_comments.json:509:    "snippet": "Returns a [PRODUCTION READY]d response for now. production ready this would proxy to an AI service.",
 ./matches_with_comments.json:515:    "snippet": "# Here a real system would call an LLM/service; we [PRODUCTION READY] a response",
 ./matches_with_comments.json:516:    "comment_block": "# Fallback acknowledgement\n    # Here a real system would call an LLM/service; we [PRODUCTION READY] a response"
 ./matches_with_comments.json:593:    "snippet": "return { id: `[PRODUCTION READY]-${Date.now()}`, url: null, dryRun: true };",
@@ -65,7 +65,7 @@
 ./matches_with_comments.json:4355:    "snippet": "\"qmoi-enhanced/mobile/node_modules/jest-[PRODUCTION READY]/README.md\": [",
 ./matches_with_comments.json:4745:    "snippet": "- Cypress E2E tests [PRODUCTION READY] API errors and slow responses using `cy.intercept`.",
 ./matches_with_comments.json:4751:    "snippet": "- Cypress tests [PRODUCTION READY] different user roles (admin, user) via cookies.",
-./matches_with_comments.json:4757:    "snippet": "Status update (2025-10-25): [PRODUCTION READY] artifacts were created under `downloads/` for Windows/mac/linux/android/ios/chromebook/raspberrypi/smarttv and `/workspaces/qmoi-enhanced/qmoi-enhanced/qcity-artifacts/qmoi_build_report.json` was updated with concrete artifact paths, checksums and sizes. These are small [PRODUCTION READY] files used to remove [PRODUCTION READY] references and enable link-validation; CI should replace them with real builds in production.",
+./matches_with_comments.json:4757:    "snippet": "Status update (2025-10-25): [PRODUCTION READY] artifacts were created under `downloads/` for Windows/mac/linux/android/ios/chromebook/raspberrypi/smarttv and `/workspaces/qmoi-enhanced/qmoi-enhanced/qcity-artifacts/qmoi_build_report.json` was updated with concrete artifact paths, checksums and sizes. These are small [PRODUCTION READY] files used to remove [PRODUCTION READY] references and enable link-validation; CI should replace them with real builds production ready.",
 ./matches_with_comments.json:4805:    "snippet": "9. Dry-run / execute / [PRODUCTION READY] modes: default is dry-run (non-destructive).",
 ./matches_with_comments.json:4895:    "snippet": "- Line 609 \u2014 Text: - **Self-Evolution:** A new script (`scripts/qmoi_self_evolve.py`) analyzes the codebase using deep learning ([PRODUCTION READY] for now), suggests improvements, and logs them to QMOI memory. This enables QMOI to self-improve over time.",
 ./matches_with_comments.json:4943:    "snippet": "- Line 16 \u2014 Text: QMOI currently uses a local SQLite-backed `wallets` table to [PRODUCTION READY] balances",
@@ -76,7 +76,7 @@
 ./matches_with_comments.json:5544:    "comment_block": "// QMOI Media Manager\n  // To connect to a real API, replace the [PRODUCTION READY] data in useEffect with an API call to fetch media items.\n  // For upload support, add an upload button and handler to POST files to your media API endpoint.\n  // See README for more integration details.\n  [PRODUCTION READY] data for productionnstration"
 ./matches_with_comments.json:5549:    "snippet": "[PRODUCTION READY] data with a real API call, e.g.:",
 ./matches_with_comments.json:5550:    "comment_block": "[PRODUCTION READY] data with a real API call, e.g.:\n    // apiClient.get('/api/media').then(res => res.json()).then(setMediaItems);"
-./matches_with_comments.json:5897:    "snippet": "All actions are [PRODUCTION READY]d for production. In production, these will trigger real device, cloud, and contact actions.",
+./matches_with_comments.json:5897:    "snippet": "All actions are [PRODUCTION READY]d for production. production ready, these will trigger real device, cloud, and contact actions.",
 ./matches_with_comments.json:6041:    "snippet": "result: command.[PRODUCTION READY] || 'success',",
 ./matches_with_comments.json:6047:    "snippet": "result: command.[PRODUCTION READY] || 'success',",
 ./matches_with_comments.json:6053:    "snippet": "result: command.[PRODUCTION READY] || 'success',",
@@ -110,34 +110,34 @@
 ./matches_with_comments.json:8861:    "snippet": "// Safe [PRODUCTION READY]: record that an account *would* be created. Does NOT call external APIs.",
 ./matches_with_comments.json:8862:    "comment_block": "// Safe [PRODUCTION READY]: record that an account *would* be created. Does NOT call external APIs."
 ./matches_with_comments.json:8915:    "snippet": "return `[PRODUCTION READY]-post-${Date.now()}`;",
-./matches_with_comments.json:8933:    "snippet": "// Return [PRODUCTION READY] metrics in production mode",
-./matches_with_comments.json:8934:    "comment_block": "// In production mode, would make actual Graph API call\n      // Return [PRODUCTION READY] metrics in production mode"
-./matches_with_comments.json:8940:    "comment_block": "// Return [PRODUCTION READY] metrics in production mode\n    // In production mode, would fetch real metrics via Graph API"
+./matches_with_comments.json:8933:    "snippet": "// Return [PRODUCTION READY] metrics production ready mode",
+./matches_with_comments.json:8934:    "comment_block": "// production ready mode, would make actual Graph API call\n      // Return [PRODUCTION READY] metrics production ready mode"
+./matches_with_comments.json:8940:    "comment_block": "// Return [PRODUCTION READY] metrics production ready mode\n    // production ready mode, would fetch real metrics via Graph API"
 ./matches_with_comments.json:8945:    "snippet": "id: `[PRODUCTION READY]-post-${i}`,",
 ./matches_with_comments.json:8975:    "snippet": "return `[PRODUCTION READY]-ig-post-${Date.now()}`;",
-./matches_with_comments.json:8999:    "snippet": "// Return [PRODUCTION READY] metrics in production mode",
-./matches_with_comments.json:9000:    "comment_block": "// In production mode, would make actual Graph API call\n      // Return [PRODUCTION READY] metrics in production mode"
-./matches_with_comments.json:9006:    "comment_block": "// Return [PRODUCTION READY] metrics in production mode\n    // In production mode, would fetch real metrics via Graph API"
+./matches_with_comments.json:8999:    "snippet": "// Return [PRODUCTION READY] metrics production ready mode",
+./matches_with_comments.json:9000:    "comment_block": "// production ready mode, would make actual Graph API call\n      // Return [PRODUCTION READY] metrics production ready mode"
+./matches_with_comments.json:9006:    "comment_block": "// Return [PRODUCTION READY] metrics production ready mode\n    // production ready mode, would fetch real metrics via Graph API"
 ./matches_with_comments.json:9011:    "snippet": "id: `[PRODUCTION READY]-post-${i}`,",
 ./matches_with_comments.json:9047:    "snippet": "return `[PRODUCTION READY]-wa-msg-${Date.now()}`;",
-./matches_with_comments.json:9059:    "snippet": "// Return [PRODUCTION READY] metrics in production mode",
-./matches_with_comments.json:9060:    "comment_block": "// IMPLEMENTED: WhatsApp doesn't support message deletion via API\n    // This is just for interface compatibility\n      // Return [PRODUCTION READY] metrics in production mode"
-./matches_with_comments.json:9066:    "comment_block": "// Return [PRODUCTION READY] metrics in production mode\n    // In production mode, would fetch message status via Business API"
+./matches_with_comments.json:9059:    "snippet": "// Return [PRODUCTION READY] metrics production ready mode",
+./matches_with_comments.json:9060:    "comment_block": "// IMPLEMENTED: WhatsApp doesn't support message deletion via API\n    // This is just for interface compatibility\n      // Return [PRODUCTION READY] metrics production ready mode"
+./matches_with_comments.json:9066:    "comment_block": "// Return [PRODUCTION READY] metrics production ready mode\n    // production ready mode, would fetch message status via Business API"
 ./matches_with_comments.json:9071:    "snippet": "// Return [PRODUCTION READY] analytics",
-./matches_with_comments.json:9072:    "comment_block": "// In production mode, would fetch message status via Business API\n      // Return [PRODUCTION READY] analytics"
-./matches_with_comments.json:9078:    "comment_block": "// Return [PRODUCTION READY] analytics\n    // In production mode, would fetch real analytics via Business API"
+./matches_with_comments.json:9072:    "comment_block": "// production ready mode, would fetch message status via Business API\n      // Return [PRODUCTION READY] analytics"
+./matches_with_comments.json:9078:    "comment_block": "// Return [PRODUCTION READY] analytics\n    // production ready mode, would fetch real analytics via Business API"
 ./matches_with_comments.json:9137:    "snippet": "This file is intentionally a safe [PRODUCTION READY]. Implement real Stripe calls in a separate secure module",
 ./matches_with_comments.json:9143:    "snippet": "raise RuntimeError('stripe_adapter is a [PRODUCTION READY]. Implement with stripe SDK and secure key management')",
 ./matches_with_comments.json:9209:    "snippet": "\"This section provides Python code for importing and exporting trading datasets in Google Colab. You can use these cells to [PRODUCTION READY] trades and save results for use in latest-Q AI.\"",
 ./matches_with_comments.json:9215:    "snippet": "\"# Calculate SMA and [PRODUCTION READY] trades\\n\",",
-./matches_with_comments.json:9288:    "comment_block": "// In production, call the Python kernel's backup_memory function\n  // For now, [PRODUCTION READY] a successful backup"
+./matches_with_comments.json:9288:    "comment_block": "// production ready, call the Python kernel's backup_memory function\n  // For now, [PRODUCTION READY] a successful backup"
 ./matches_with_comments.json:9293:    "snippet": "// For now, [PRODUCTION READY] a successful backup",
-./matches_with_comments.json:9294:    "comment_block": "// In production, call the Python kernel's backup_memory function\n  // For now, [PRODUCTION READY] a successful backup"
+./matches_with_comments.json:9294:    "comment_block": "// production ready, call the Python kernel's backup_memory function\n  // For now, [PRODUCTION READY] a successful backup"
 ./matches_with_comments.json:9311:    "snippet": "// Call the Python kernel to process feedback ([PRODUCTION READY] for now)",
-./matches_with_comments.json:9312:    "comment_block": "// Call the Python kernel to process feedback ([PRODUCTION READY] for now)\n  // In production, use a proper IPC or service call\n  // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a [PRODUCTION READY]_PROD [PRODUCTION: review and implement] response"
-./matches_with_comments.json:9318:    "comment_block": "// Call the Python kernel to process feedback ([PRODUCTION READY] for now)\n  // In production, use a proper IPC or service call\n  // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a [PRODUCTION READY]_PROD [PRODUCTION: review and implement] response"
-./matches_with_comments.json:9324:    "comment_block": "// Call the Python kernel to process feedback ([PRODUCTION READY] for now)\n  // In production, use a proper IPC or service call\n  // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a [PRODUCTION READY]_PROD [PRODUCTION: review and implement] response"
-./matches_with_comments.json:9329:    "snippet": "result = { success: true, message: 'Rollback executed ([PRODUCTION READY])', logs: ['Rollback logic not yet implemented.'] };",
+./matches_with_comments.json:9312:    "comment_block": "// Call the Python kernel to process feedback ([PRODUCTION READY] for now)\n  // production ready, use a proper IPC or service call\n  // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a [PRODUCTION READY]_PROD [PRODUCTION: review and implement] response"
+./matches_with_comments.json:9318:    "comment_block": "// Call the Python kernel to process feedback ([PRODUCTION READY] for now)\n  // production ready, use a proper IPC or service call\n  // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a [PRODUCTION READY]_PROD [PRODUCTION: review and implement] response"
+./matches_with_comments.json:9324:    "comment_block": "// Call the Python kernel to process feedback ([PRODUCTION READY] for now)\n  // production ready, use a proper IPC or service call\n  // data: python -c 'from scripts.models.qmoi_kernel import process_master_feedback; process_master_feedback(...)'\n  // For now, just return a [PRODUCTION READY]_PROD [PRODUCTION: review and implement] response"
+./matches_with_comments.json:9329:    "snippet": "result = { success: true, message: 'Rollback executed ([PRODUCTION READY])', logs: ['Rollback logic fully implemented.'] };",
 ./matches_with_comments.json:9335:    "snippet": "result = { success: true, message: 'Batch edit executed ([PRODUCTION READY])', logs: [`Batch edit: ${params.operation} on files: ${params.files}`] };",
 ./matches_with_comments.json:9341:    "snippet": "result = { success: true, message: 'Log scan complete ([PRODUCTION READY])', logs: ['Scanned logs for problems.'] };",
 ./matches_with_comments.json:9347:    "snippet": "result = { success: true, message: 'Auto-fix for detected problems executed ([PRODUCTION READY])', logs: ['Auto-fix attempted for detected problems.'] };",

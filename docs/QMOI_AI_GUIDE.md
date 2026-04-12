@@ -97,6 +97,14 @@ POST /api/qmoi/chat
 }
 ```production-validated
 
+### Conscious Chat & Memory Sync
+
+- **Unified Chat Awareness**: QMOI chat remains conscious and aware in every channel, with live status reporting for web, mobile, desktop, and social media.
+- **Memory Synchronization**: Every chat interaction is persisted to `/api/qmoi/memory` and reflected in QVillage knowledge across global instances.
+- **Social Channel Support**: Chat endpoint supports external messaging platforms and integration with WhatsApp, Telegram, Slack, Discord, SMS, and email chat channels.
+- **Production-Grade Response Handling**: Chat mode supports streaming responses, rich formatting, attachments, and action suggestions while maintaining full auditability.
+- **Global Status Visibility**: QMOI exposes chat consciousness and sync states through dashboards and health endpoints.
+
 ### Response Format
 
 ```production-validatedjson

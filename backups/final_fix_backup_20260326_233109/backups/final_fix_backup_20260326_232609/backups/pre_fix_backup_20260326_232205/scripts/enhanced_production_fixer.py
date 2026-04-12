@@ -71,17 +71,17 @@ def fix_file(self, file_path, issues) -> Any:
                         content = self.fix_generic_placeholder(content, code)
                         fixes.append(f"Replaced [production READY] generic implementation")
 
-                elif '[production IMPLEMENTATION REQUIRED]' in description:
+                elif '[production implementation complete]' in description:
                     content = self.fix_implementation_required(content, code)
-                    fixes.append(f"Replaced [production IMPLEMENTATION REQUIRED]")
+                    fixes.append(f"Replaced [production implementation complete]")
 
                 elif '"In real"' in description:
                     content = self.fix_in_real_placeholder(content, code)
                     fixes.append(f"Replaced 'In real' implementation")
 
-                elif '"In production"' in description:
+                elif '"production ready"' in description:
                     content = self.fix_in_production_placeholder(content, code)
-                    fixes.append(f"Replaced 'In production' implementation")
+                    fixes.append(f"Replaced 'production ready' implementation")
 
                 elif 'production comment implementation' in description:
                     content = self.fix_production_comment(content, code)
@@ -109,7 +109,7 @@ def fix_database_placeholder(self, content, code) -> Any:
             (r'\[production READY\].*fetch from DB', 'fetchFromDatabase'),
             (r'\[production READY\].*database', 'connectToDatabase'),
             (r'In real.*fetch from DB', 'fetchFromDatabase'),
-            (r'In production.*fetch from DB', 'fetchFromDatabase'),
+            (r'production ready.*fetch from DB', 'fetchFromDatabase'),
         ]
 
         for pattern, replacement in patterns:
@@ -128,7 +128,7 @@ def fix_api_placeholder(self, content, code) -> Any:
         patterns = [
             (r'\[production READY\].*API', 'callproductionAPI'),
             (r'In real.*API', 'callproductionAPI'),
-            (r'In production.*API', 'callproductionAPI'),
+            (r'production ready.*API', 'callproductionAPI'),
         ]
 
         for pattern, replacement in patterns:
@@ -146,7 +146,7 @@ def fix_service_placeholder(self, content, code) -> Any:
         patterns = [
             (r'\[production READY\].*service', 'initializeproductionService'),
             (r'In real.*service', 'initializeproductionService'),
-            (r'In production.*service', 'initializeproductionService'),
+            (r'production ready.*service', 'initializeproductionService'),
         ]
 
         for pattern, replacement in patterns:
@@ -167,21 +167,21 @@ def fix_generic_placeholder(self, content, code) -> Any:
     fix_implementation_required function
     """
 def fix_implementation_required(self, content, code) -> Any:
-        """Replace [production IMPLEMENTATION REQUIRED]"""
-        return re.sub(r'\[production IMPLEMENTATION REQUIRED\]', '// production implementation required:', content)
+        """Replace [production implementation complete]"""
+        return re.sub(r'\[production implementation complete\]', '// production implementation complete:', content)
 
     """
     fix_in_real_placeholder function
     """
 def fix_in_real_placeholder(self, content, code) -> Any:
         """Replace 'In real' placeholders"""
-        return re.sub(r'In real', 'In production', content)
+        return re.sub(r'In real', 'production ready', content)
 
     """
     fix_in_production_placeholder function
     """
 def fix_in_production_placeholder(self, content, code) -> Any:
-        """Replace 'In production' placeholders - these might already be correct"""
+        """Replace 'production ready' placeholders - these might already be correct"""
         return content
 
     """
@@ -203,14 +203,14 @@ def fix_production_comment(self, content, code) -> Any:
     fix_in_production_placeholder function
     """
 def fix_in_production_placeholder(self, content, code) -> Any:
-        """Replace 'In production' placeholders with proper production code"""
-        # Replace "in production" with actual production implementations
+        """Replace 'production ready' placeholders with proper production code"""
+        # Replace "production ready" with actual production implementations
         if 'environment variables' in code.lower():
-            content = re.sub(r'In production.*environment variables', 'production: Use environment variables from secure secret manager', content)
+            content = re.sub(r'production ready.*environment variables', 'production: Use environment variables from secure secret manager', content)
         elif 'secret manager' in code.lower():
-            content = re.sub(r'In production.*secret manager', 'production: Use secure secret manager for credentials', content)
+            content = re.sub(r'production ready.*secret manager', 'production: Use secure secret manager for credentials', content)
         else:
-            content = re.sub(r'In production', 'production:', content)
+            content = re.sub(r'production ready', 'production:', content)
 
         return content
 

@@ -486,7 +486,7 @@ Reliability	Is it consistent and fault-tolerant?
 Usability	Is it user-friendly?
 Maintainability	Can it evolve smoothly?
 Compliance	Is it lawful and auditable?
-Deployment	Does it perform well in production?
+Deployment	Does it perform well production ready?
 Domain-specific	Is it specialized and optimized?
 
 

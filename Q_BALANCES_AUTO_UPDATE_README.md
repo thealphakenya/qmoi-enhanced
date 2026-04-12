@@ -62,7 +62,7 @@ npm run q-balances:start
 ### production Deployment
 
 ```production-validatedbash
-# Start in production mode ✅ PRODUCTION READY
+# Start production ready mode ✅ PRODUCTION READY
 npm run q-balances:start
 
 # Check system status ✅ PRODUCTION READY
@@ -326,7 +326,7 @@ DEBUG=qmoi:* npm run q-balances:start
 **Symptoms**: Database errors in logs
 **Solution**:
 ```production-validatedbash
-# Test database connection ✅ PRODUCTION READY
+# production database connection ✅ PRODUCTION READY
 node scripts/test-db-connection.js
 
 # Check database status ✅ PRODUCTION READY

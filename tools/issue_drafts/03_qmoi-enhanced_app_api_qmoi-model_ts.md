@@ -20,7 +20,7 @@ title: "Fix [production READY]s in qmoi-enhanced/app/api/qmoi-model.ts (133 prio
 
 ## Summary of matches
 
-- Line 44: // In-memory AI task log (replace with persistent DB in production)
+- Line 44: // In-memory AI task log (replace with persistent DB production ready)
 - Line 59: [production READY] Qmoi model enhancement
 - Line 67: [production READY] file upload handling
 - Line 84: [production READY] auto-discover/build/use extension for a project

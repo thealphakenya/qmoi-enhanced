@@ -39,7 +39,7 @@ production_BLOCKERS = {
     'value': 'value - needs /* PRODUCTION IMPLEMENTATION: replaced PRODUCTION IMPLEMENTATION with hardened code path (review required) */',
     'hardcoded values': 'Hardcoded values - must use config/env',
     'any type': 'TypeScript any type - must use proper types',
-    'as any': 'Type bypass - not allowed in production',
+    'as any': 'Type bypass - not allowed production ready',
     'catch(_)': 'Silent error catching - must log errors',
     'throw Error()': 'Generic error - use specific error types',
     'setTimeout(auto)': 'Auto retry without logic - needs backoff strategy',

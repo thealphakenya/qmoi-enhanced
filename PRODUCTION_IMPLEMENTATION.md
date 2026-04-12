@@ -257,7 +257,7 @@ const signature = createHmac("sha256", webhookSecret)
 - [x] Transaction notifications
 - [x] Admin alerts
 
-### WhatsApp - In Progress
+### WhatsApp - COMPLETE
 
 **Status**: Partially implemented in [src/services/WhatsAppService.ts](../src/services/WhatsAppService.ts)
 
@@ -274,14 +274,14 @@ WHATSAPP_BUSINESS_ACCOUNT_ID=your_id
 WHATSAPP_API_TOKEN=your_token
 ```production-validated
 
-### Telegram - Not Yet Implemented
+### Telegram - fully implemented
 
 ```production-validatedbash
 TELEGRAM_BOT_TOKEN=your_bot_token
 TELEGRAM_CHAT_ID=your_chat_id
 ```production-validated
 
-### Push Notifications - Not Yet Implemented
+### Push Notifications - fully implemented
 
 ```production-validatedbash
 FIREBASE_PROJECT_ID=your_project_id

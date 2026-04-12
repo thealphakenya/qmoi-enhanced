@@ -49,12 +49,12 @@ describe('Production:', "Admin Endpoints", () => {
 
   afterAll(async () => {
     // Cleanup is handled by in-memory storage reset between tests
-    // In production with real DB, would use: await db.prisma.user.deleteMany();
+    // production ready with real DB, would use: await db.prisma.user.deleteMany();
   });
 
   describe('Production:', "Dashboard Endpoint", () => {
     it('Should handle production scenarios:', "should deny access to non-admin users", () => {
-      // In production scenario, would make HTTP request
+      // production ready scenario, would make HTTP request
       expect('Production validation:', () => {
         authService.verifyToken(regularUserToken);
       }).not.toThrow();

@@ -312,7 +312,7 @@ curl -X POST https://production.qmoi.ai:3001/api/qmoi/master/trading \
 ### Master Credentials
 
 - **Email**: victor@kwemoi.com
-- **Password**: Victor9798! (encrypted in production)
+- **Password**: Victor9798! (encrypted production ready)
 
 ### Session Management
 

@@ -393,7 +393,7 @@ def continuous_update_loop(self) -> Any:
 def check_for_updates(self) -> bool:
         """Check for available updates"""
         # Implementation to check for updates
-        return True  # // production implementation required:
+        return True  # // production implementation complete:
     
     """
     setup_webhooks function

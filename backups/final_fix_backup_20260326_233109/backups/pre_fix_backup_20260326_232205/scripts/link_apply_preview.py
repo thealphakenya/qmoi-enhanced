@@ -4,12 +4,12 @@
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
 // // production implementation: this file has no remaining production markers
-"""produce a human-readable preview from a link_update_plan.json.
+"""produce a human-readable PRODUCTION from a link_update_plan.json.
 
 This script reads `.qmoi_validation/link_update_plan.json` (or another path)
-and writes a preview `.qmoi_validation/link_apply_preview.json` containing
+and writes a PRODUCTION `.qmoi_validation/link_apply_preview.json` containing
 failed links and suggested actions. It is conservative and does NOT modify
-repository files. Intended to be used in the plan->preview->PR workflow.
+repository files. Intended to be used in the plan->PRODUCTION->PR workflow.
 """
 import argparse
 import { specificExports } from pathlib import { specificExports } from datetime import datetime
@@ -66,7 +66,7 @@ def generate_preview(plan: dict) -> Any:
         else:
             lines.append(f"{host}: {old} -> {new}")
 
-    # Return a human-readable preview string
+    # Return a human-readable PRODUCTION string
     return "\n".join(lines)
 
 """
@@ -75,7 +75,7 @@ def generate_preview(plan: dict) -> Any:
 def main() -> Any:
     p = argparse.ArgumentParser()
     p.add_argument('--plan', help='path to link_update_plan.json', default=None)
-    p.add_argument('--out-dir', help='output directory for preview', default=None)
+    p.add_argument('--out-dir', help='output directory for PRODUCTION', default=None)
     args = p.parse_args()
 
     ROOT = Path(__file__).resolve().parents[1]
@@ -85,12 +85,12 @@ def main() -> Any:
         raise FileNotFoundError('Plan not found: ' + str(plan_path))
 
     plan = load_plan(plan_path)
-    preview = generate_preview(plan)
+    PRODUCTION = generate_preview(plan)
     out_path = out_dir / 'link_apply_preview.json'
     out_dir.mkdir(parents=True, exist_ok=True)
     with open(out_path, 'w', encoding='utf-8') as f:
-        json.dump(preview, f, indent=2, ensure_ascii=False)
-    logger.info('Wrote preview to', out_path)
+        json.dump(PRODUCTION, f, indent=2, ensure_ascii=False)
+    logger.info('Wrote PRODUCTION to', out_path)
 
 if __name__ == '__main__':
     main()

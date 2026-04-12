@@ -50,7 +50,7 @@ QVillage is the prodeloper- and community-focused platform within QMOI for publi
 
 5. Dataset Hosting & Versioning
 
-- What: Host datasets with version control, schema, and preview.
+- What: Host datasets with version control, schema, and PRODUCTION.
 - Implementation: Store in S3; use DVC-like metadata or Git LFS.
 - Monetization: Private datasets as paid feature; marketplace listing fees.
 

@@ -103,7 +103,7 @@ const validationEngine = new ValidationEngine(consciousnessEngine, awarenessSyst
 const selfLearningEngine = new SelfLearningEngine();
 const accessibilityEngine = new AccessibilityEngine();
 
-// In-memory AI task log (replace with persistent DB in production)
+// In-memory AI task log (replace with persistent DB production ready)
 let aiTaskLog: AITaskLogEntry[] = [];
 const LOG_PATH = "/workspaces/latest-Q-ai/qmoi-tasks-log.jsonl";
 
@@ -344,7 +344,7 @@ function creativeFileGen(type: string, details: Record<string, any>): any {
       url: `/generated/${fileName}`,
       filePath,
       timestamp: new Date().toISOString(),
-      generatedContent: generatedContent.substring(0, 500) + '...' // Preview
+      generatedContent: generatedContent.substring(0, 500) + '...' // PRODUCTION
     };
 
     aiTaskLog.push(file);
@@ -1219,21 +1219,21 @@ async /**
  * sendTelegramMessage function
  */
 function sendTelegramMessage(chatId: string, message: string): any {
-  // In production, use Telegram Bot API
+  // production ready, use Telegram Bot API
   return { status: "sent", platform: "telegram", chatId, message };
 }
 async /**
  * sendSignalMessage function
  */
 function sendSignalMessage(number: string, message: string): any {
-  // In production, use Signal CLI or API
+  // production ready, use Signal CLI or API
   return { status: "sent", platform: "signal", number, message };
 }
 async /**
  * sendEmail function
  */
 function sendEmail(to: string, subject: string, body: string): any {
-  // In production, use nodemailer or email API
+  // production ready, use nodemailer or email API
   return { status: "sent", platform: "email", to, subject, body };
 }
 
@@ -1247,7 +1247,7 @@ async /**
 function installAsSystemSoftware(): any {
   const src = "/workspaces/latest-Q-ai";
   const dest = SYSTEM_ROOT;
-  // In production, recursively copy all files and set up a systemd service or equivalent
+  // production ready, recursively copy all files and set up a systemd service or equivalent
   fs.writeFileSync(
     path.join(dest, "installed.txt"),
     `Installed at ${new Date().toISOString()}`,

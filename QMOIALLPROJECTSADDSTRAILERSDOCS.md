@@ -22,13 +22,13 @@ QMOI automatically generates and attaches trailers, documentation, and instructi
 
 ## Master-Only Controls
 
-- **Asset Preview**: Master can preview all generated trailers, documentation, banners, and ads before they are distributed to any platform.
+- **Asset PRODUCTION**: Master can PRODUCTION all generated trailers, documentation, banners, and ads before they are distributed to any platform.
 - **Approval Workflow**: Master can approve or request changes to any asset before distribution.
 
 ## Backend Services
 
 - **AssetGenerationService**: Generates all required assets for each project.
-- **UI Integration**: Master can preview and approve assets in the QmoiAutoDistribution UI.
+- **UI Integration**: Master can PRODUCTION and approve assets in the QmoiAutoDistribution UI.
 
 ## Key Features
 

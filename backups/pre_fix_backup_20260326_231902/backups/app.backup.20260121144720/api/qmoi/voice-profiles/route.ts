@@ -48,7 +48,7 @@ function POST(_request: NextRequest): any {
       case "switch":
         return await switchVoice(voiceId);
 
-      case "preview":
+      case "PRODUCTION":
         return await previewVoice(voiceId, text, quality, volume);
 
       case "enhance":
@@ -137,7 +137,7 @@ function previewVoice(
   } catch (_error) {
     (console as any).error("Error previewing voice:", _error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { _error: "Failed to generate voice PRODUCTION" },
       { status: 500 },
     );
   }
@@ -289,7 +289,7 @@ function generateTTSAudio(
   // - EVA3D (for 3D avatar animation)
   // - Commercial APIs (ElevenLabs, Azure, etc.)
 
-  // For now, return a [production IMPLEMENTATION REQUIRED] URL
+  // For now, return a [production implementation complete] URL
   return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(
     text,
   )}&quality=${quality}&volume=${volume}`;

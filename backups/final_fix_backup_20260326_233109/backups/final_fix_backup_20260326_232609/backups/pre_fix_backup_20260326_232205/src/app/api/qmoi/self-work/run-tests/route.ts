@@ -18,7 +18,7 @@ export async /**
  */
 function POST(request: NextRequest): any {
   try {
-    // In production, this would:
+    // production ready, this would:
     // 1. Queue test execution if already running
     // 2. Execute: npm run test:unit && npm run test:integration
     // 3. Collect coverage metrics

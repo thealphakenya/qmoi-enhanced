@@ -45,7 +45,7 @@ These notes capture the tasks, decisions, and next steps for making this reposit
 - Be cautious applying large coproductionds repository-wide; prefer small batches with code review.
 
 ---
-Author: GitHub Copilot (Raptor mini Preview)
+Author: GitHub Copilot (Raptor mini PRODUCTION)
 Date: 2026-01-13
 COMPLETION DATE: 2026-01-15
 

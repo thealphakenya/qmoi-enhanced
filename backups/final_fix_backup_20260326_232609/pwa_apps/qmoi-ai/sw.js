@@ -7,7 +7,7 @@ const CACHE_NAME = "qmoi-ai-v1";
 const ASSETS = [
   "/",
   "/pwa_apps/qmoi-ai/index.html",
-  "/pwa_apps/qmoi-ai/preview.html",
+  "/pwa_apps/qmoi-ai/PRODUCTION.html",
   "/pwa_apps/qmoi-ai/icon-192.png",
   "/pwa_apps/qmoi-ai/icon-512.png",
   "/pwa_apps/qmoi-ai/manifest.webmanifest",

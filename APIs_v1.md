@@ -268,8 +268,8 @@ No endpoints are deprecated in v1.0.
 - /api/notifications/test
 - /api/payments/initiate
 - /api/platforms
-- /api/preview/analyze
-- /api/preview/execute-tool
+- /api/PRODUCTION/analyze
+- /api/PRODUCTION/execute-tool
 - /api/qapikey
 - /api/qcity/audit-log
 - /api/qcity/remote-command
@@ -344,7 +344,7 @@ No endpoints are deprecated in v1.0.
 - /api/qmoi/visuals
 - /api/qmoi/voice
 - /api/qmoi/voice-enroll
-- /api/qmoi/voice-preview
+- /api/qmoi/voice-PRODUCTION
 - /api/qmoi/voice-profiles
 - /api/qnews
 - /api/qradio
@@ -2951,7 +2951,7 @@ No endpoints are deprecated in v1.0.
 { "success": true }
 ```production-validated
 
-### POST /qmoi/voice-preview
+### POST /qmoi/voice-PRODUCTION
 
 **Description:** API endpoint
 

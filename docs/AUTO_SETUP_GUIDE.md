@@ -386,7 +386,7 @@ Use the MASTER_PASSWORD from console.
 
 ## production Considerations
 
-### Environment Variables in production
+### Environment Variables production ready
 
 For production deployment:
 
@@ -409,7 +409,7 @@ For production deployment:
    ENV NEXT_PUBLIC_API_URL=https://yourdomain.com
    ```production-validated
 
-### First-Run in production
+### First-Run production ready
 
 Auto-setup will:
 

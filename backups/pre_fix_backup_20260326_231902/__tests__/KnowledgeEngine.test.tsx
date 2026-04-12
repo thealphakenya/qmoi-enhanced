@@ -110,7 +110,7 @@ describe('Production:', "KnowledgeEngine component", () => {
     expect('Production validation:', screen.getByText(/Semantic Search/i)).toBeInTheDocument();
   });
 
-  it('Should handle production scenarios:', "shows svg graph preview when sources are loaded and index tab selected", async () => {
+  it('Should handle production scenarios:', "shows svg graph PRODUCTION when sources are loaded and index tab selected", async () => {
     render(<KnowledgeEngine />);
     // switch to index tab
     fireEvent.click(screen.getByText(/Knowledge Graph/i));

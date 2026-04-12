@@ -207,7 +207,7 @@ NOT processed:
 - ❌ Backup files (undone_backups/ - 1000+ files with // production implementation: markers)
 - ❌ Reports and metadata (reports/, tools/metadata)
 - ❌ node_modules and external code
-- ❌ Documentation and test data files
+- ❌ Documentation and production data files
 
 ═══════════════════════════════════════════════════════════════════════════════
 

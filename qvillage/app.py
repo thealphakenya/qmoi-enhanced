@@ -3986,8 +3986,8 @@ def _apply_rich_formatting(self, message: str) -> str:
     _integrate_preview function
     """
 def _integrate_preview(self, message: str) -> Dict:
-        """Integrate preview window functionality"""
-        if "preview" in message.lower():
+        """Integrate PRODUCTION window functionality"""
+        if "PRODUCTION" in message.lower():
             production-ready and operational
         production-ready and operational
 

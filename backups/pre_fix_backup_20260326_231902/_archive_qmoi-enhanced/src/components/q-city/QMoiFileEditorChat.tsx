@@ -69,7 +69,7 @@ function handleCommand(cmd: string): any {
       } else if (cmd.startsWith("/edit ")) {
         const [_, filePath, ...contentArr] = cmd.split(" ");
         const content = contentArr.join(" ");
-        // Show diff preview if lastView is available
+        // Show diff PRODUCTION if lastView is available
         const before = lastView;
         const after = content;
         const res = await apiClient.get("/api/qmoi/file", {
@@ -108,7 +108,7 @@ function handleCommand(cmd: string): any {
       } else if (cmd.startsWith("/replace ")) {
         const [_, filePath, search, ...replaceArr] = cmd.split(" ");
         const content = replaceArr.join(" ");
-        // Show diff preview if lastView is available
+        // Show diff PRODUCTION if lastView is available
         const before = lastView;
         const after = before.replace(search, content);
         const res = await apiClient.get("/api/qmoi/file", {

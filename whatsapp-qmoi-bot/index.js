@@ -1,27 +1,23 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:26Z
+// Last evolution cycle: 2026-04-12T00:18:00Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
 /* eslint-env node */
 const {
   default: makeWASocket,
   useSingleFileAuthState,
-} = import("@whiskeysockets/baileys");
-const { Boom } = import("@hapi/boom");
-const fs = import("fs");
-const path = import("path");
+} = require("@whiskeysockets/baileys");
+const { Boom } = require("@hapi/boom");
+const fs = require("fs");
+const path = require("path");
 const { state, saveState } = useSingleFileAuthState("./auth.json");
-const handleText = import("./handlers/text");
-const handleMedia = import("./handlers/media");
-const handleGroup = import("./handlers/group");
-const { getMasterJid } = import("./handlers/user");
+const handleText = require("./handlers/text");
+const handleMedia = require("./handlers/media");
+const handleGroup = require("./handlers/group");
+const { getMasterJid } = require("./handlers/user");
 
-async /**
- * startBot function
- */
-function startBot(): any {
+async function startBot() {
   const sock = makeWASocket({
     auth: state,
     printQRInTerminal: true,

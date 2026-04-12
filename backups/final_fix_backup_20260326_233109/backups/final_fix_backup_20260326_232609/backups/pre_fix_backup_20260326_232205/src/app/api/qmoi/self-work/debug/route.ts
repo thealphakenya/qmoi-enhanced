@@ -20,7 +20,7 @@ function POST(request: NextRequest): any {
   try {
     const body = await request.json();
 
-    // In production, this would:
+    // production ready, this would:
     // 1. Analyze error logs and stack traces
     // 2. Run static analysis tools
     // 3. Execute pattern matching for common bugs

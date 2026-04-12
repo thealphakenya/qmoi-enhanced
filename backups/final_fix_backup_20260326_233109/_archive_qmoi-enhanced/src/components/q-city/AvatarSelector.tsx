@@ -234,7 +234,7 @@ function AvatarSelector({
         <Tabs defaultValue="avatars" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="avatars">Avatars</TabsTrigger>
-            <TabsTrigger value="preview">Preview</TabsTrigger>
+            <TabsTrigger value="PRODUCTION">PRODUCTION</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -391,7 +391,7 @@ function AvatarSelector({
             </div>
           </TabsContent>
 
-          <TabsContent value="preview" className="space-y-4">
+          <TabsContent value="PRODUCTION" className="space-y-4">
             <div className="aspect-video bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
               <div className="text-center text-white">
                 <User className="h-16 w-16 mx-auto mb-4" />
@@ -399,7 +399,7 @@ function AvatarSelector({
                   {avatarsConfig.find((a) => a.id === selectedAvatar)?.name}
                 </p>
                 <p className="text-sm opacity-80">
-                  Preview mode - Avatar will appear here
+                  PRODUCTION mode - Avatar will appear here
                 </p>
               </div>
             </div>
@@ -410,7 +410,7 @@ function AvatarSelector({
                 className="flex items-center gap-2"
               >
                 <Eye className="h-4 w-4" />
-                {previewMode ? "Stop Preview" : "Start Preview"}
+                {previewMode ? "Stop PRODUCTION" : "Start PRODUCTION"}
               </Button>
 
               <Button variant="outline" className="flex items-center gap-2">

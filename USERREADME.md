@@ -51,7 +51,7 @@ Welcome! This guide will help you use all the features of latest-Q AI and its us
 - Your data is private and secure.
 
 ## 2025-06-13: New Features
-- prodice settings and media preview now available in the UI
+- prodice settings and media PRODUCTION now available in the UI
 - Download links for all apps/projects sent to your WhatsApp automatically
 - Enhanced backup and restore for all projects
 - **Wallet request and approval flow added**

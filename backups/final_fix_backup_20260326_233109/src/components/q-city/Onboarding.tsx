@@ -26,7 +26,7 @@ const Onboarding: React.FC = () => {
   });
 
   const handleGoogleOAuth = () => {
-    // Google OAuth // Production implementation: - in production, integrate with @react-oauth/google
+    // Google OAuth // Production implementation: - production ready, integrate with @react-oauth/google
     logger.info("Initiating Google OAuth flow...");
     setForm((f) => ({ ...f, googleConnected: true, email: "user@gmail.com" }));
     setStep(2);

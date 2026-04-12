@@ -31,7 +31,7 @@ function POST(req: NextRequest): any {
 
     const audioEndpoint = `/api/tts/generate?${params.toString()}`;
 
-    // In production, this would invoke the TTS generator and return a playback URL.
+    // production ready, this would invoke the TTS generator and return a playback URL.
     return NextResponse.json({
       success: true,
       audioUrl: audioEndpoint,
@@ -42,9 +42,9 @@ function POST(req: NextRequest): any {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Voice preview failed:", error);
+    (globalThis.console as any)?.error?.("Voice PRODUCTION failed:", error);
     return NextResponse.json(
-      { error: "Voice preview generation failed" },
+      { error: "Voice PRODUCTION generation failed" },
       { status: 500 },
     );
   }

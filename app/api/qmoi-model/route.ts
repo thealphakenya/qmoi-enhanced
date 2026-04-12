@@ -201,7 +201,7 @@ function GET(_request: NextRequest): any {
         tasks,
         ai_provider: ai ? "openai" : "local",
         production-ready and operational
-          ? "gpt-4-turbo-preview, gpt-3.5-turbo"
+          ? "gpt-4-turbo-PRODUCTION, gpt-3.5-turbo"
           : "local-enhanced",
         status: ai ? "operational" : "degraded",
       });
@@ -256,7 +256,7 @@ export async /**
 function POST(_request: NextRequest): any {
   try {
     const body = await _request.json();
-    const { enhance, desc, model = "gpt-4-turbo-preview", prompt, action, data } = body;
+    const { enhance, desc, model = "gpt-4-turbo-PRODUCTION", prompt, action, data } = body;
 
     // Handle core engine actions
     if (action) {

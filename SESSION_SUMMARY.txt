@@ -13,7 +13,7 @@
      • Real-time voice selection with Web Speech API
      • 4+ default voice profiles (professional, friendly, confident, neutral)
      • Pitch (0.5-2.0), Rate (0.5-2.0), Volume (0-1) controls
-     • Test/preview synthesis functionality
+     • Test/PRODUCTION synthesis functionality
      • Service: lib/voice-service.ts (180 lines)
      • API: app/api/qmoi/voice/route.ts
      • UI: src/components/qmoi/VoiceSelector.tsx
@@ -177,7 +177,7 @@
 
   1. Integration with main dashboard
   2. Connect to user authentication system
-  3. Test in production environment
+  3. Test production ready environment
   4. Database migration (from localStorage)
   5. Real-time WebSocket implementation
   6. Production deployment

@@ -386,7 +386,7 @@ Once complete, ALL of these should pass:
 **External** (if needed):
 
 - [ ] Update GitHub release notes: "Apps being updated for full functionality"
-- [ ] IMPLEMENTED in README: "Some platforms currently in production"
+- [ ] IMPLEMENTED in README: "Some platforms currently production ready"
 - [ ] Timeline: "Full platform support by Nov 18"
 
 ---

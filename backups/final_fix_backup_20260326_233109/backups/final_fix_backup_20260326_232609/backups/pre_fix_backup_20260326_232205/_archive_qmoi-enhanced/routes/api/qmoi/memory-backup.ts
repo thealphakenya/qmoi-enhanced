@@ -11,7 +11,7 @@ export default /**
  */
 function handler(): any {
   try {(req: NextApiRequest, res: NextApiResponse) {
-  // In production, call the Python kernel's backup_memory function
+  // production ready, call the Python kernel's backup_memory function
   // For now, // production implementation: a successful backup
   const backupFile =
     "/scripts/models/memory_backups/qmoi_memory_YYYYMMDD_HHMMSS.json";

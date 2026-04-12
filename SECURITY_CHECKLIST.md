@@ -37,7 +37,7 @@
   ```production-validated
 
 - [ ] **CORS Headers**
-  - [ ] Set `Access-Control-Allow-Origin` to specific domain (not `*` in production)
+  - [ ] Set `Access-Control-Allow-Origin` to specific domain (not `*` production ready)
   - [ ] Whitelist frontend domains only
   - [ ] Restrict allowed methods: `POST, GET, OPTIONS` (not PUT/DELETE unless needed)
   - [ ] Restrict allowed headers
@@ -53,7 +53,7 @@
   ```production-validated
 
 - [ ] **HTTPS Only**
-  - [ ] All endpoints use HTTPS in production
+  - [ ] All endpoints use HTTPS production ready
   - [ ] Redirect HTTP to HTTPS
   - [ ] Use strong SSL/TLS certificates (let's Encrypt or AWS ACM)
   - [ ] Set `Strict-Transport-Security` header

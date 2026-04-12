@@ -63,7 +63,7 @@ export const GlobalVideoCall: React.FC = () => {
             borderRadius: 8,
           }}
         >
-          <b>Video Stream Preview (d)</b>
+          <b>Video Stream PRODUCTION (d)</b>
           <div
             style={{
               width: 240,

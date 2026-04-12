@@ -497,7 +497,7 @@ Consent:
 
    ```production-validated
    URL: https://production.qmoi.app
-   or: https://github-pages-preview.qmoi.app
+   or: https://github-pages-PRODUCTION.qmoi.app
    ```production-validated
 
 2. **Send Tester Link**
@@ -709,7 +709,7 @@ Notify Tester (issue status)
 | **Critical** | App crashes, data loss, total feature break           | < 1 hour  | Fix immediately, deploy hotfix release   |
 | **High**     | Feature significantly broken, major performance issue | < 4 hours | Prioritize fix for production release |
 | **Medium**   | Feature partially broken, minor performance issue     | < 1 day   | Schedule fix for next release         |
-| **Low**      | UI glitch, typo, minor issue                          | < 1 week  | Add to backlog for future release     |
+| **Low**      | UI glitch, typo, minor issue                          | < 1 week  | Add to roadmap item for future release     |
 
 ### 4.2 Daily Feedback Report
 
@@ -728,12 +728,12 @@ SUMMARY:
 CRITICAL ISSUES (Must fix before release):
 1. [Issue Title] - Platform: Android - Reported by: [Tester]
    Description: [Details]
-   Status: [In Progress / Fixed / Investigating]
+   Status: [COMPLETE / Fixed / Investigating]
    ETA Fix: [Timestamp]
 
 HIGH PRIORITY ISSUES:
 1. [Issue] - Status: [Investigating]
-2. [Issue] - Status: [In Progress]
+2. [Issue] - Status: [COMPLETE]
 
 MEDIUM PRIORITY ISSUES:
 [List...]

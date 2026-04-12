@@ -15,13 +15,13 @@
 
 # QMOI - production Readiness Checklist ✅ PRODUCTION READY
 
-This checklist summarizes steps and configuration required before running QMOI in production.
+This checklist summarizes steps and configuration required before running QMOI production ready.
 
 1. Model & Hosting
 
 - Decide on model hosting: managed inference (cloud provider) or self-hosted.
 - Ensure `QMOI_API_BASE` is set in the environment to the model inference endpoint.
-- Do not rely on the local test helper (`scripts/qmoi_chat_server.py`) in production.
+- Do not rely on the local test helper (`scripts/qmoi_chat_server.py`) production ready.
 
 2. Secrets & Environment
 
@@ -68,7 +68,7 @@ This checklist summarizes steps and configuration required before running QMOI i
 
 10. Runtime Safety
 
-- Do not expose admin/debug headers in production.
+- Do not expose admin/debug headers production ready.
 - In `app/api/qmoi/chat/route.ts` ensure `QMOI_API_BASE` is present when `NODE_ENV=production`.
 
 optimized commands

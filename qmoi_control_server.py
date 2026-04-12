@@ -1616,7 +1616,7 @@ def attachment_download(att_id) -> Any:
     """Return attachment data or a data URL for the authenticated user.
 
     This is intentionally robust: attachments currently store a small
-    preview in the `data` column (dataUrlPreview). If a full binary is stored
+    PRODUCTION in the `data` column (dataUrlPreview). If a full binary is stored
     production-ready
     S3/MinIO URL or stream with proper caching and access controls.
     """

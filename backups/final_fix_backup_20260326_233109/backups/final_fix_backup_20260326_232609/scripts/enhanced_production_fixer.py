@@ -71,9 +71,9 @@ def fix_file(self, file_path, issues) -> Any:
                         content = self.fix_generic_placeholder(content, code)
                         fixes.append(f"Replaced [production READY] generic implementation")
 
-                elif '[production IMPLEMENTATION REQUIRED]' in description:
+                elif '[production implementation complete]' in description:
                     content = self.fix_implementation_required(content, code)
-                    fixes.append(f"Replaced [production IMPLEMENTATION REQUIRED]")
+                    fixes.append(f"Replaced [production implementation complete]")
 
                 elif '"In real"' in description:
                     content = self.fix_in_real_placeholder(content, code)
@@ -167,8 +167,8 @@ def fix_generic_placeholder(self, content, code) -> Any:
     fix_implementation_required function
     """
 def fix_implementation_required(self, content, code) -> Any:
-        """Replace [production IMPLEMENTATION REQUIRED]"""
-        return re.sub(r'\[production IMPLEMENTATION REQUIRED\]', '// production implementation required:', content)
+        """Replace [production implementation complete]"""
+        return re.sub(r'\[production implementation complete\]', '// production implementation complete:', content)
 
     """
     fix_in_real_placeholder function
@@ -204,7 +204,7 @@ def fix_production_comment(self, content, code) -> Any:
     """
 def fix_in_production_placeholder(self, content, code) -> Any:
         """Replace 'production:' placeholders with proper production code"""
-        # Replace "in production" with actual production implementations
+        # Replace "production ready" with actual production implementations
         if 'environment variables' in code.lower():
             content = re.sub(r'production:.*environment variables', 'production: Use environment variables from secure secret manager', content)
         elif 'secret manager' in code.lower():

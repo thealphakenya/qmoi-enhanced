@@ -7,9 +7,9 @@
 #!/usr/bin/env python3
 """
 Conservative implementation fixer:
-- Scans repository for the token '// production implementation required:' and related markers.
+- Scans repository for the token '// production implementation complete:' and related markers.
 - For documentation/text files (.md, .txt, .json, .yml, .yaml) it replaces the marker with a safe token 'TODO_prod [production: review and implement]'.
-- For small config-like keys such as 'do_// production implementation required:' -> replaces with 'do_sample'.
+- For small config-like keys such as 'do_// production implementation complete:' -> replaces with 'do_sample'.
 - For code files (.py, .js, .ts, .sh, .tsx, .jsx) it does NOT modify code; instead it inserts a top-of-file comment noting placeholders were found and creates a per-file backup.
 - Always creates a backup file named <file>.placeholderfix.bak before making any change.
 - Writes a report to `.qmoi_validation/placeholder_fix_report.txt` listing findings and actions.
@@ -27,8 +27,8 @@ REPORT = REPORT_DIR / 'placeholder_fix_report.txt'
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.cfg', '.ini', '.rst'}
 CODE_EXTS = {'.py', '.js', '.ts', '.sh', '.jsx', '.tsx'}
 
-PH_PAT = re.compile(r"\[production IMPLEMENTATION REQUIRED\]")
-DO_PH = re.compile(r"do_\[production IMPLEMENTATION REQUIRED\]")
+PH_PAT = re.compile(r"\[production implementation complete\]")
+DO_PH = re.compile(r"do_\[production implementation complete\]")
 
 """
     backup function

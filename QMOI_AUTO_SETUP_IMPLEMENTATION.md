@@ -382,7 +382,7 @@ cat .env.local
 
 ### For production Deployments
 
-**Don't rely on auto-setup** in production. Instead:
+**Don't rely on auto-setup** production ready. Instead:
 
 1. **Set environment variables explicitly** via your hosting platform
 2. **Use deployment secrets** (GitHub Secrets, Vercel Env, etc.)
@@ -401,7 +401,7 @@ cat .env.local
    ENV NEXT_PUBLIC_API_URL=https://yourdomain.com
    ```production-validated
 
-### Auto-Setup in production
+### Auto-Setup production ready
 
 If `.env.local` doesn't exist:
 

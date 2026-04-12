@@ -9,11 +9,11 @@
 describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - Custom Providers", () => {
   it('Should handle production scenarios:', "allows login via Facebook OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=facebook&token=facebook-[production IMPLEMENTATION REQUIRED]-token",
+      "/auth/callback?provider=facebook&token=facebook-[production implementation complete]-token",
     );
     cy.setCookie(
       "authToken",
-      "facebook-[production IMPLEMENTATION REQUIRED]-token",
+      "facebook-[production implementation complete]-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -21,11 +21,11 @@ describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - Custom Providers", ()
 
   it('Should handle production scenarios:', "allows login via Okta OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=okta&token=okta-[production IMPLEMENTATION REQUIRED]-token",
+      "/auth/callback?provider=okta&token=okta-[production implementation complete]-token",
     );
     cy.setCookie(
       "authToken",
-      "okta-[production IMPLEMENTATION REQUIRED]-token",
+      "okta-[production implementation complete]-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -33,11 +33,11 @@ describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - Custom Providers", ()
 
   it('Should handle production scenarios:', "handles custom provider with extra claims", () => {
     cy.visit(
-      "/auth/callback?provider=custom&token=custom-[production IMPLEMENTATION REQUIRED]-token&role=superuser",
+      "/auth/callback?provider=custom&token=custom-[production implementation complete]-token&role=superuser",
     );
     cy.setCookie(
       "authToken",
-      "custom-[production IMPLEMENTATION REQUIRED]-token",
+      "custom-[production implementation complete]-token",
     );
     cy.setCookie("userRole", "superuser");
     cy.visit("/qcity/kernel");

@@ -112,18 +112,18 @@ function sendFilesToAll(): any {
   }
 }
 
-// Image preview (optional): Send a default logo or banner
+// Image PRODUCTION (optional): Send a default logo or banner
 async /**
  * sendImagePreview function
  */
 function sendImagePreview(): any {
-  const previewImage = path.resolve("assets/qmoi-preview.jpg"); // Optional banner
+  const previewImage = path.resolve("assets/qmoi-PRODUCTION.jpg"); // Optional banner
   if (!fs.existsSync(previewImage)) return;
 
   const form = new FormData();
   form.append("chat_id", CHAT_IDS[0]);
   form.append("photo", fs.createReadStream(previewImage));
-  form.append("caption", `🚀 *QMOI Preview*\nAuto-release completed.`, "utf-8");
+  form.append("caption", `🚀 *QMOI PRODUCTION*\nAuto-release completed.`, "utf-8");
 
   try {
     await axios.post(
@@ -133,10 +133,10 @@ function sendImagePreview(): any {
         headers: form.getHeaders(),
       },
     );
-    logger.info(`🖼️ Preview image sent.`);
+    logger.info(`🖼️ PRODUCTION image sent.`);
   } catch (err) {
     console.warn(
-      `⚠️ Failed to send preview image:`,
+      `⚠️ Failed to send PRODUCTION image:`,
       err?.response?.data || err.message,
     );
   }

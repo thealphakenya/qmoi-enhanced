@@ -138,6 +138,29 @@ grep -n "production.qmoi.ai\|qcity\|qvillage\|qmoi" "${CRITICAL_FILES[0]}" | gre
 
 ### 🔧 Alternative Execution Methods
 
+## 🛠 Production Host & DNS Validation
+
+After running the link fixer, also validate hosting and DNS status for the production domains:
+
+1. **Host Validation**
+   - Confirm production host endpoints on Vercel, Netlify, Hugging Face, and self-hosted platforms
+   - Verify that canonical production URLs return HTTP 200 and SSL is valid
+
+2. **DNS Validation**
+   - Run a multi-region DNS check for all production domains
+   - Confirm A/CNAME/TXT records match the host provider configuration
+   - Validate DNSSEC and certificate expiry statuses
+
+3. **Link Deployment Verification**
+   - Verify that updated host links are propagated in `ALLLINKS.md`, `ALLMDFILESREFS.md`, and the master UI docs
+   - Ensure all revenue and download links point to live production hosts
+
+4. **Master Review**
+   - Master-only UI in QCity should display host and domain status
+   - Log approval or required remediation actions in the dashboard
+
+### 🔧 Alternative Execution Methods
+
 #### Method 1: Individual Phases (If needed)
 ```production-validatedbash
 # Phase 1 only (if comprehensive fixer fails) ✅ PRODUCTION READY

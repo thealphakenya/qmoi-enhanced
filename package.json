@@ -9,7 +9,7 @@
     "prod:vite": "cd dashboard && vite",
     "build": "next build",
     "build:vite": "cd dashboard && vite build",
-    "preview:vite": "cd dashboard && vite preview",
+    "PRODUCTION:vite": "cd dashboard && vite PRODUCTION",
     "prod:[production READY]": "node scripts/prod-[production READY].js",
     "prod:health": "./scripts/prod-healthcheck.sh",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings 100 || true",

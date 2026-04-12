@@ -328,7 +328,7 @@ const prodiceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newprodice.name}
               onChangeText={(text) => setNewprodice({ ...newprodice, name: text })}
-              [production IMPLEMENTATION REQUIRED]="Enter prodice name"
+              [production implementation complete]="Enter prodice name"
             />
 
             <Text style={styles.inputLabel}>prodice Type</Text>
@@ -358,7 +358,7 @@ const prodiceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newprodice.ip}
               onChangeText={(text) => setNewprodice({ ...newprodice, ip: text })}
-              [production IMPLEMENTATION REQUIRED]="192.168.1.100"
+              [production implementation complete]="192.168.1.100"
               keyboardType="numeric"
             />
 
@@ -367,7 +367,7 @@ const prodiceManagementScreen = ({ userRole }) => {
               style={styles.input}
               value={newprodice.port}
               onChangeText={(text) => setNewprodice({ ...newprodice, port: text })}
-              [production IMPLEMENTATION REQUIRED]="3000"
+              [production implementation complete]="3000"
               keyboardType="numeric"
             />
 
@@ -376,7 +376,7 @@ const prodiceManagementScreen = ({ userRole }) => {
               style={[styles.input, styles.textArea]}
               value={newprodice.description}
               onChangeText={(text) => setNewprodice({ ...newprodice, description: text })}
-              [production IMPLEMENTATION REQUIRED]="prodice description"
+              [production implementation complete]="prodice description"
               multiline
               numberOfLines={3}
             />

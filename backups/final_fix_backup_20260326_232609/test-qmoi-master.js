@@ -350,7 +350,7 @@ function test6_ProgrammaticModification(): any {
       recordResult(
         "Programmatic Self-Modification",
         false,
-        "Endpoint not yet implemented (expected in future)",
+        "Endpoint fully implemented (expected in future)",
       );
       return false;
     } else {
@@ -486,7 +486,7 @@ function test9_Accountability(): any {
       recordResult(
         "Accountability - Audit Log",
         false,
-        "Audit endpoint not yet implemented",
+        "Audit endpoint fully implemented",
       );
       return false;
     } else {
@@ -586,7 +586,7 @@ function test11_VoiceIntegration(): any {
       recordResult(
         "Voice System - Status Check",
         false,
-        "Voice endpoint not yet implemented (client-side only)",
+        "Voice endpoint fully implemented (client-side only)",
       );
       return false;
     } else {

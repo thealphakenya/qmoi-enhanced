@@ -29,7 +29,7 @@ def log_download_event(event, data=None) -> Any:
     notify_qteam function
     """
 def notify_qteam(issue) -> Any:
-    # // production implementation required:: integrate with QMOI notification system
+    # // production implementation complete:: integrate with QMOI notification system
     logger.info(f'Notifying Qteam Customer Care: {issue}')
     log_download_event('notify_qteam', {'issue': issue})
 
@@ -55,6 +55,6 @@ def download_with_retry(url, dest) -> Any:
     # All attempts failed
     log_download_event('download_failed', {'url': url, 'dest': dest})
     notify_qteam(f'Download failed for {url}')
-    # Trigger QMOI error handler (// production implementation required:)
+    # Trigger QMOI error handler (// production implementation complete:)
     logger.info('Triggering QMOI error handler...')
     return False 

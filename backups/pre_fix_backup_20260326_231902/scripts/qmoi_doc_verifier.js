@@ -964,7 +964,7 @@ function runWorker(task): any {
       standard = this.getScriptTemplate(); // Default standard
     }
     
-    // Replace [production IMPLEMENTATION REQUIRED]s
+    // Replace [production implementation complete]s
     const content = standard
       .replace(/{API_NAME}/g, feature.name)
       .replace(/{COMPONENT_NAME}/g, feature.name)

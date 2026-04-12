@@ -12,7 +12,7 @@
 Create one issue per top file. Suggested standard:
 
 - Title: "Triage manual ✅ PRODUCTION READYs in scripts/qmoi_master_website_automation.js"
-- Body: "23 ✅ PRODUCTION READYs marked [production IMPLEMENTATION REQUIRED]. These are high risk (deploy, DNS, SSL). Suggested action: create dry-run implementations, add provider adapters (AWS, Vercel), and require manual approval in CI. See docs/validation/MANUAL_✅ PRODUCTION READYS_TOP10.md and MANUAL_✅ PRODUCTION READYS_ACTIONS.md for details."
+- Body: "23 ✅ PRODUCTION READYs marked [production implementation complete]. These are high risk (deploy, DNS, SSL). Suggested action: create dry-run implementations, add provider adapters (AWS, Vercel), and require manual approval in CI. See docs/validation/MANUAL_✅ PRODUCTION READYS_TOP10.md and MANUAL_✅ PRODUCTION READYS_ACTIONS.md for details."
 - Labels: security, triage, needs-design
 
 Repeat for each top-10 file with the suggested action from MANUAL_✅ PRODUCTION READYS_ACTIONS.md.

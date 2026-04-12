@@ -379,7 +379,7 @@ function autoSetRequiredEnvVars(): any {
     changed = true;
   }
   if (changed) log("Auto-set required required env vars.");
-  // For CI/CD, could use GitLab API to set project variables if token is available (future enhancement)
+  // For CI/CD, could use GitLab API to set project variables if token is available (current capability)
 }
 
 // Enhanced error patterns

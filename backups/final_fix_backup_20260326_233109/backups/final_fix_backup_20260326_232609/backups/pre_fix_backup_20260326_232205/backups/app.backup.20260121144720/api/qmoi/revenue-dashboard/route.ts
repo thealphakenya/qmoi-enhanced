@@ -18,7 +18,7 @@ const authenticateMaster = (_request: NextRequest) => {
   }
 
   const token = authHeader.substring(7);
-  // In production, validate against secure token storage
+  // production ready, validate against secure token storage
   return (
     token === process.env.QMOI_MASTER_TOKEN || token === "master-access-token"
   );

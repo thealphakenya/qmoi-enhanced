@@ -109,7 +109,7 @@ function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await apiClient.get("/api/qmoi/voice-preview", {
+      const _response = await apiClient.get("/api/qmoi/voice-PRODUCTION", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -120,15 +120,15 @@ function VoiceSelector({
         }),
       });
 
-      if (!response.ok) throw new ProductionError("Failed to play preview");
+      if (!response.ok) throw new ProductionError("Failed to play PRODUCTION");
 
       // Production implementation: audio playback
       setTimeout(() => setIsPlaying(false), 3000);
     } catch (_e: unknown) {
       console.warn(String(_e));
       toast({
-        title: "Preview Error",
-        description: "Could not play voice preview.",
+        title: "PRODUCTION Error",
+        description: "Could not play voice PRODUCTION.",
         variant: "destructive",
       });
       setIsPlaying(false);
@@ -176,7 +176,7 @@ function VoiceSelector({
         <Tabs defaultValue="voices" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="voices">Voices</TabsTrigger>
-            <TabsTrigger value="preview">Preview</TabsTrigger>
+            <TabsTrigger value="PRODUCTION">PRODUCTION</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -237,15 +237,15 @@ function VoiceSelector({
             </div>
           </TabsContent>
 
-          <TabsContent value="preview" className="space-y-4">
+          <TabsContent value="PRODUCTION" className="space-y-4">
             <div className="space-y-3">
-              <label className="text-sm font-medium">Preview Text</label>
+              <label className="text-sm font-medium">PRODUCTION Text</label>
               <textarea
                 value={previewText}
                 onChange={(_e) => setPreviewText(_e.target.value)}
                 className="w-full p-3 border rounded-md resize-none"
                 rows={3}
-                // Production implementation:="Enter text to preview the voice..."
+                // Production implementation:="Enter text to PRODUCTION the voice..."
               />
             </div>
 
@@ -260,7 +260,7 @@ function VoiceSelector({
                 ) : (
                   <Play className="h-4 w-4" />
                 )}
-                {isPlaying ? "Stop" : "Preview"}
+                {isPlaying ? "Stop" : "PRODUCTION"}
               </Button>
 
               <div className="flex items-center gap-2 flex-1">

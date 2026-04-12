@@ -181,7 +181,7 @@ QVillage Spaces is QMOI's advanced AI platform that provides a complete ecosyste
 
 - **Visual Space Builder**: Drag-and-drop interface for space creation
 - **standard Library**: Pre-built templates for common use cases
-- **Live Preview**: Real-time preview of spaces during production
+- **Live PRODUCTION**: Real-time PRODUCTION of spaces during production
 - **Code Generation**: AI-assisted code generation and optimization
 - **Debugging Tools**: Advanced debugging and profiling tools
 - **Version Control**: Git integration with automatic deployments

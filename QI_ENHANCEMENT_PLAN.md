@@ -415,7 +415,7 @@ QI.tsx (Main Container)
 **Features**:
 - Message history display
 - Code syntax highlighting
-- File upload/preview
+- File upload/PRODUCTION
 - Inline code execution
 - Conversation threading
 
@@ -449,7 +449,7 @@ QI.tsx (Main Container)
 - Optimization opportunities
 - Code analysis
 - Auto-implementation
-- Results preview
+- Results PRODUCTION
 
 ---
 

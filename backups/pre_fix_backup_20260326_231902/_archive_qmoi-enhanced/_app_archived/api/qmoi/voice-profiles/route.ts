@@ -108,7 +108,7 @@ function POST(request: NextRequest): any {
       case "switch":
         return await switchVoice(voiceId);
 
-      case "preview":
+      case "PRODUCTION":
         return await previewVoice(voiceId, text, quality, volume, request);
 
       case "enhance":
@@ -225,10 +225,10 @@ function previewVoice(
       return NextResponse.json({ error: "Invalid voice ID" }, { status: 400 });
     }
 
-    // Proxy to the dedicated TTS preview API so we reuse provider handling
+    // Proxy to the dedicated TTS PRODUCTION API so we reuse provider handling
     try {
       const apiUrl =
-        process.env.INTERNAL_TTS_ENDPOINT || "/api/qmoi/voice-preview";
+        process.env.INTERNAL_TTS_ENDPOINT || "/api/qmoi/voice-PRODUCTION";
       // Use fetch to call internal route (server-side)
       const resp = await apiClient.get(apiUrl, {
         method: "POST",
@@ -237,7 +237,7 @@ function previewVoice(
       });
 
       if (!resp.ok) {
-        console.warn("TTS preview proxy returned non-ok", resp.status);
+        console.warn("TTS PRODUCTION proxy returned non-ok", resp.status);
         return NextResponse.json(
           { success: false, error: "TTS provider failed" },
           { status: 502 },
@@ -265,7 +265,7 @@ function previewVoice(
   } catch (error) {
     (globalThis.console as any)?.error?.("Error previewing voice:", error);
     return NextResponse.json(
-      { error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice PRODUCTION" },
       { status: 500 },
     );
   }
@@ -429,6 +429,6 @@ function generateTTSAudio(
   // - EVA3D (for 3D avatar animation)
   // - Commercial APIs (ElevenLabs, Azure, etc.)
 
-  // For now, return a [production IMPLEMENTATION REQUIRED] URL
+  // For now, return a [production implementation complete] URL
   return `/api/tts/generate?voice=${voiceId}&text=${encodeURIComponent(text)}&quality=${quality}&volume=${volume}`;
 }

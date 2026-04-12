@@ -82,7 +82,7 @@ function POST(_request: NextRequest): any {
   if (searchParams.get("fix")) {
     try {
       [production READY] resolve [production READY] items
-      // In production, implement real fix logic
+      // production ready, implement real fix logic
       return NextResponse.json({ status: "fixed" });
     } catch (_e: unknown) {
       return NextResponse.json(

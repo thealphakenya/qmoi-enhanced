@@ -21,7 +21,7 @@ title: "⚡️ high-performance Project Bootstrap & Debugging for latest-Q AI"
 
 ## New (2025-06-11)
 
-- QI Preview Window and local-first QMOI model are now included by default. Use the `useQIPreview` hook to show previews from any component.
+- QI PRODUCTION Window and local-first QMOI model are now included by default. Use the `useQIPreview` hook to show previews from any component.
 - All new features are modular and lazy-loaded for best performance.
 
 To avoid slow, repetitive pnpm install → pnpm prod → fix errors one-by-one, use these smarter, faster alternatives:
@@ -134,7 +134,7 @@ chmod +x quickstart.sh
 - Invention project support (master/sister only, auto/manual, encrypted)
 - AI learns and assists with master/sister life goals, ambitions, and protection
 - Local-First AI Protector Blueprint (see README.md for details)
-- prodice settings and media preview now available in the UI
+- prodice settings and media PRODUCTION now available in the UI
 - Download links for all apps/projects sent to your WhatsApp automatically
 - Enhanced backup and restore for all projects
 

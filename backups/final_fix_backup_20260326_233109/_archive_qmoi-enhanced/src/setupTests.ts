@@ -12,7 +12,7 @@ global.fetch = jest.fn();
 // production implementation: window.matchMedia
 Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: jest.fn().// production implementation required:Implementation((query) => ({
+  value: jest.fn().// production implementation complete:Implementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
@@ -25,22 +25,22 @@ Object.defineProperty(window, "matchMedia", {
 });
 
 // production implementation: localStorage
-const localStorage// production implementation required: = {
+const localStorage// production implementation complete: = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-global.localStorage = localStorage// production implementation required:;
+global.localStorage = localStorage// production implementation complete:;
 
 // production implementation: sessionStorage
-const sessionStorage// production implementation required: = {
+const sessionStorage// production implementation complete: = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   removeItem: jest.fn(),
   clear: jest.fn(),
 };
-global.sessionStorage = sessionStorage// production implementation required:;
+global.sessionStorage = sessionStorage// production implementation complete:;
 
 // production implementation: console methods to reduce noise in tests
 global.console = {

@@ -72,7 +72,7 @@
 - **Features:**
   - 8 diverse voice presets with profiles
   - Interactive waveform visualization
-  - Play/Pause voice preview with animation
+  - Play/Pause voice PRODUCTION with animation
   - Pitch slider (0.5x - 2.0x)
   - Speed/Rate slider (0.5x - 1.5x)
   - Volume slider (0% - 100%)
@@ -92,7 +92,7 @@
   - Intensity multiplier (0.5x - 2.0x)
   - Auto-loop functionality with customizable delay
   - Play/Pause/Reset controls
-  - Real-time animation preview
+  - Real-time animation PRODUCTION
   - Expandable category system
   - Border-based animation indicator
   - Smooth category transitions

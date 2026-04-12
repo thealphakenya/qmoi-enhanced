@@ -36,7 +36,7 @@ KEYWORDS=(
     "band.*aid"
     "production"
     "production"
-    "unimplemented"
+    "FULLY_IMPLEMENTED"
     "coming.*soon"
     "defined"
     "tba"

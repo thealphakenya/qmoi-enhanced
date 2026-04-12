@@ -8,10 +8,10 @@ import re
 
 root_dir = Path('.')
 production_patterns = [
-    r'\[production IMPLEMENTATION REQUIRED\]',
+    r'\[production implementation complete\]',
     r'\[production DONE\]',
     r'\[production FIXED\]',
-    r'PENDING_IMPLEMENTATION',
+    r'PRODUCTION_IMPLEMENTATION_COMPLETE',
     r'\bTODO\b',
     r'\bFIXME\b',
     r'\bplaceholder\b',

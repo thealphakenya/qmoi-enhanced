@@ -306,7 +306,7 @@ curl "https://qmoi.ai/api/domains/health?action=status"
    - Keep docs up to date
 
 4. **Deploy to production** - Availability
-   - Test in production
+   - Test production ready
    - Monitor performance
    - Enable auto-recovery
    - Set up alerts

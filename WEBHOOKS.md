@@ -17,6 +17,30 @@
 
 This document lists all webhook endpoints supported by QMOI Enhanced.
 
+## Political Project Webhooks
+
+- `/api/webhooks/political/campaign-updates` (POST) - Receives campaign progress and social media engagement updates
+- `/api/webhooks/political/access-control` (POST) - Handles sponsored user access requests and validations
+- `/api/webhooks/political/regional-intelligence` (POST) - Processes regional research data and position analysis
+- `/api/webhooks/political/ui-customization` (POST) - Updates position-based UI configurations
+- `/api/webhooks/political/social-media` (POST) - Manages multi-platform posting notifications
+
+## Auto Project Webhooks
+
+- `/api/webhooks/auto-projects/generation` (POST) - Triggers project generation across 10+ types
+- `/api/webhooks/auto-projects/revenue` (POST) - Receives revenue tracking and optimization data
+- `/api/webhooks/auto-projects/distribution` (POST) - Handles multi-platform distribution status
+- `/api/webhooks/auto-projects/evolution` (POST) - Processes project performance and evolution metrics
+- `/api/webhooks/auto-projects/PRODUCTION` (POST) - Updates real-time PRODUCTION window stats
+
+## NGROK Paid Feature Webhooks
+
+- `/api/webhooks/ngrok/tunnel-status` (POST) - Monitors paid tunnel provisioning and health
+- `/api/webhooks/ngrok/master-ui` (POST) - Updates master dashboard with NGROK metrics
+- `/api/webhooks/ngrok/auto-clone` (POST) - Handles environment duplication notifications
+- `/api/webhooks/ngrok/security` (POST) - Processes encryption and masking alerts
+- `/api/webhooks/ngrok/revenue` (POST) - Tracks paid usage billing events
+
 ## Webhook Endpoints
 
 - `/api/alerts/webhook` (POST)

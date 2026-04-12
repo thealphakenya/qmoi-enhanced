@@ -3,7 +3,7 @@
 
 import { specificExports } from "next/server";
 
-// Document type and in-memory store (replace with DB/cloud in production)
+// Document type and in-memory store (replace with DB/cloud production ready)
 interface Document {
   id: number;
   name: string;

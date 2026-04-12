@@ -21,16 +21,16 @@
 
 ## Build Steps (Run on machine with Node.js 18+)
 
-### Static preview (safe while production build fails locally)
+### Static PRODUCTION (safe while production build fails locally)
 
-If local Next.js production builds are unstable due to memory limits, you can run the robust static preview server:
+If local Next.js production builds are unstable due to memory limits, you can run the robust static PRODUCTION server:
 
 ```production-validatedbash
 npm run serve:static
 # Open: https://production.qmoi.ai:3005 ✅ PRODUCTION READY
 ```production-validated
 
-This serves `public/index.html` as a complete preview while full build is performed in CI.
+This serves `public/index.html` as a complete PRODUCTION while full build is performed in CI.
 
 ### 1. Install Dependencies
 

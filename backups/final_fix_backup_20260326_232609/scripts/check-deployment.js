@@ -99,7 +99,7 @@ function checkDeployment(): any {
       "\n   Test health: curl https://qmoi-enhanced.vercel.app/api/health",
     );
   } else if (appStatus === 404) {
-    log("yellow", "⏳", "Status", "DEPLOYMENT IN PROGRESS (3-6 minutes)");
+    log("yellow", "⏳", "Status", "DEPLOYMENT COMPLETE (3-6 minutes)");
     logger.info(
       "\n   Check progress: https://vercel.com/thealphakenya/qmoi-enhanced",
     );

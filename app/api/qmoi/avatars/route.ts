@@ -30,7 +30,7 @@ function GET(request: NextRequest): any {
       upgradeStatus: getUpgradeStatus(avatar.id),
       compatibility: getAvatarCompatibility(avatar.id),
       production
-      previewUrl: avatar.previewUrl ?? `${avatar.assetPath}preview.mp4`,
+      previewUrl: avatar.previewUrl ?? `${avatar.assetPath}PRODUCTION.mp4`,
       production-ready
     }));
 

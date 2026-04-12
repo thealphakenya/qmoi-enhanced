@@ -17,7 +17,7 @@ title: "PLATFORM AUTOMATION"
 
 Platform Automation & Safety Guidelines
 
-This document explains how QMOI should interact with external platforms in production.
+This document explains how QMOI should interact with external platforms production ready.
 
 Summary
 

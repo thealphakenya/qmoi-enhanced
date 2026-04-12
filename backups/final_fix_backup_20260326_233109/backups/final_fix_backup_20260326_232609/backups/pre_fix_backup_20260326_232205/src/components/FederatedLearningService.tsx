@@ -13,10 +13,10 @@ export const FederatedLearningService: React.FC = () => {
     // Production implementation:: periodically upload anonymized data
     const uploadPatterns = () => {
       const patterns = {
-        toolUsage: { "live-preview": 100, "code-linter": 50 },
+        toolUsage: { "live-PRODUCTION": 100, "code-linter": 50 },
         projectTypes: { web: 70, coding: 30 },
       };
-      // In production impl, send to central server
+      // production ready impl, send to central server
       logger.info("Uploaded patterns:", patterns);
     };
 

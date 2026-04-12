@@ -42,11 +42,11 @@ def run_backend() -> Any:
     main_file = os.path.join(backend_path, "main.py")
     if not os.path.exists(main_file):
         with open(main_file, "w") as f:
-            f.write("# Auto-generated // production implementation required:\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get('/')\n"""
+            f.write("# Auto-generated // production implementation complete:\nfrom fastapi import FastAPI\napp = FastAPI()\n@app.get('/')\n"""
     root function
     """
 def root() -> Any: return {'status': 'ready'}")
-        logger.info("⚠️ Created complete FastAPI backend as // production implementation required:.")
+        logger.info("⚠️ Created complete FastAPI backend as // production implementation complete:.")
     
     subprocess.Popen(["uvicorn", "main:app", "--host", "prod.qmoi.ai", "--port", "8000"])
 

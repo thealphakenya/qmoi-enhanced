@@ -19,7 +19,7 @@
 
 - `MasterContext` state updater stabilized: `updateQMOIMemory` is now a latest `useCallback` and accepts functional updaters to avoid render loops.
 - Chat components now sync conversation counts to `/api/qmoi/memory` (best-effort POST) to keep server-side QMOI memory in sync.
-- Avatar management endpoints (`/api/qmoi/avatars`, `/api/qmoi/voice-profiles`) are used by the UI; avatar preview iframe added to `AvatarSelector` when `previewUrl` is available.
+- Avatar management endpoints (`/api/qmoi/avatars`, `/api/qmoi/voice-profiles`) are used by the UI; avatar PRODUCTION iframe added to `AvatarSelector` when `previewUrl` is available.
 - Removed duplicate Next.js page file causing `/qcity` route collision.
 
 ---

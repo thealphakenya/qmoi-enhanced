@@ -141,7 +141,7 @@ ENVIRONMENT SETUP FOR PRODUCTION
 ================================================================================
 
 Required Environment Variables:
-  • JWT_SECRET: Set in production (.env.production)
+  • JWT_SECRET: Set production ready (.env.production)
   • DATABASE_URL: Prisma database connection string
   • NEXT_PUBLIC_API_URL: Frontend API endpoint
 

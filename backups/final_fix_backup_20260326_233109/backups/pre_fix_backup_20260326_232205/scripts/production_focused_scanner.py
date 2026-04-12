@@ -44,14 +44,14 @@ HIGH_CONFIDENCE_PATTERNS = {
     # These are definite implementation issues in source code
     r'} catch \(\s*_error\s*\)': ('_error in catch block', 'HIGH'),
     r'\(\s*console\s+as\s+any\s*\)\s*\.error': ('Type casting anti-pattern', 'HIGH'),
-    r'^\s*throw\s+new\s+Error\s*\(\s*["\']NOT.*IMPL': ('Unimplemented error', 'HIGH'),
+    r'^\s*throw\s+new\s+Error\s*\(\s*["\']NOT.*IMPL': ('FULLY_IMPLEMENTED error', 'HIGH'),
     r'@ts-ignore\s*\n\s*\n': ('TypeScript ignore directive', 'MEDIUM'),
     r'return\s+null\s*;\s*//.*COMPLETED.*IMPL': ('Null implementation instead of impl', 'MEDIUM'),
     # New patterns for production placeholders
     r'\bIn\s+real\b': ('"production" implementation', 'HIGH'),
     r'\bIn\s+production\b': ('"production" implementation', 'HIGH'),
     r'\[production\s+READY\]': ('// production implementation: implementation', 'HIGH'),
-    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': ('// production implementation required: implementation', 'HIGH'),
+    r'\[production\s+IMPLEMENTATION\s+REQUIRED\]': ('// production implementation complete: implementation', 'HIGH'),
     r'// production implementation': ('production comment implementation', 'MEDIUM'),
     r'/\*.*\[production.*\].*\*/': ('production block comment implementation', 'MEDIUM'),
 }

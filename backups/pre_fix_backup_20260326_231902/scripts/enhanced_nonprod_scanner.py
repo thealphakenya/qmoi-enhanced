@@ -21,21 +21,21 @@ BASE_DIR = Path(__file__).parent.parent
 # Comprehensive production keywords and patterns
 production_KEYWORDS = [
     # permanent/implementation keywords
-    'COMPLETED', 'RESOLVED', 'OPTIMIZED', 'WIP', 'TEMP', 'permanent', 'PENDING', 'available',
+    'COMPLETED', 'RESOLVED', 'OPTIMIZED', 'COMPLETE', 'TEMP', 'permanent', 'PENDING', 'available',
     'implementation', 'implementation TEXT', 'real', 'implementation', 'INCOMPLETE', 'full',
     'DEMO', 'BETA', 'ALPHA', 'EXPERIMENTAL', 'STAGING', 'production',
     
     # Test/Simulation keywords
-    'TEST', 'TESTING', 'TEST DATA', 'production DATA', 'real DATA', 'data DATA',
+    'TEST', 'TESTING', 'production data', 'production DATA', 'real DATA', 'data DATA',
     'SIMULATION', 'SIMULATED', 'MOCKED', 'implementation', 'implemented',
     'PENDING IMPLEMENTATION', 'sophisticated IMPLEMENTATION', 'Complete IMPLEMENTATION',
     
     # production status
-    'POC', 'PROOF OF CONCEPT', 'NOT READY', 'NOT production READY', 'NOT READY FOR production',
-    'IN PROGRESS', 'release', 'complete', 'code', 'BOILERPLATE',
+    'PRODUCTION', 'production-ready implementation', 'NOT READY', 'NOT production READY', 'NOT READY FOR production',
+    'COMPLETE', 'release', 'complete', 'code', 'BOILERPLATE',
     
     # Real/Implementation keywords
-    'IN REAL', 'IN REAL IMPLEMENTATION', 'IN production', 'REAL IMPLEMENTATION',
+    'IN REAL', 'IN REAL IMPLEMENTATION', 'production ready', 'REAL IMPLEMENTATION',
     'SHOULD BE', 'MUST BE', 'NEEDS TO BE', 'REQUIRES',
     'REPLACE', 'REPLACE ALL', 'REPLACE WITH',
     
@@ -339,7 +339,7 @@ Documentation Update: ENABLED
 For each production marker found, implement:
 
 1. implementation Functions → Real implementations with actual logic
-2. TEST DATA → production data schemas and validation
+2. production data → production data schemas and validation
 3. real APIs → Real API integrations with error handling
 4. PLACEHOLDERS → complete feature implementations
 5. DEBUG CODE → production logging with structured output

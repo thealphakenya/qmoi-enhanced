@@ -31,9 +31,9 @@ logger.info('Voice selection result:', voiceResult.success ? 'Success' : 'Failed
 const windowResult = QMOIService.openAvatarWindow('master');
 logger.info('Avatar window opened:', windowResult.success ? 'Success' : 'Failed');
 
-// Test opening preview window
+// Test opening PRODUCTION window
 const previewResult = QMOIService.openPreviewWindow('sister');
-logger.info('Preview window opened:', previewResult.success ? 'Success' : 'Failed');
+logger.info('PRODUCTION window opened:', previewResult.success ? 'Success' : 'Failed');
 
 // Test query processing for avatar commands
 const avatarQueryResult = await QMOIService.processQuery('show avatar', 'master');

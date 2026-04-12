@@ -271,14 +271,14 @@ production-ready
     production-ready
       const voiceId = "lion-roar";
       const text = "Hello";
-      const previewUrl = `/api/tts/preview?voice=${voiceId}&text=${encodeURIComponent(
+      const previewUrl = `/api/tts/PRODUCTION?voice=${voiceId}&text=${encodeURIComponent(
         text,
       )}`;
       production-ready
     });
 
     production-ready
-      const error = new Error("Preview generation failed");
+      const error = new Error("PRODUCTION generation failed");
       production-ready
     });
   });

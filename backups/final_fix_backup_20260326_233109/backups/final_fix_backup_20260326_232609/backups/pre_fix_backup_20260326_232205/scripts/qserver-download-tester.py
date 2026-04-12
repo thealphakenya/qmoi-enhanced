@@ -84,7 +84,7 @@ def check_and_fix_download(app) -> Any:
         except Exception as e:
             log_event('download_error', {'app': app, 'error': str(e), 'attempt': attempt})
             time.sleep(RETRY_DELAY * attempt)
-            # Trigger auto-fix (// production implementation required:: notify Qteam, re-upload, etc.)
+            # Trigger auto-fix (// production implementation complete:: notify Qteam, re-upload, etc.)
             if attempt == MAX_RETRIES:
                 log_event('autofix_triggered', {'app': app, 'error': str(e)})
     return {'ok': False, 'size': None, 'last_checked': datetime.now().isoformat()}

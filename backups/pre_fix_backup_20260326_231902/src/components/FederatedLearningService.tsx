@@ -13,7 +13,7 @@ export const FederatedLearningService: React.FC = () => {
     : periodically upload anonymized data
     const uploadPatterns = () => {
       const patterns = {
-        toolUsage: { "live-preview": 100, "code-linter": 50 },
+        toolUsage: { "live-PRODUCTION": 100, "code-linter": 50 },
         projectTypes: { web: 70, coding: 30 },
       };
       // In real impl, send to central server

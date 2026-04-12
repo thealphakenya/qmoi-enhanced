@@ -79,7 +79,7 @@ function getMpesaCredentials(): any {
   const shortcode = process.env.MPESA_SHORTCODE;
   const environment = process.env.MPESA_ENVIRONMENT || "production";
 
-  // In production, all credentials must be provided
+  // production ready, all credentials must be provided
   if (
     environment === "production" &&
     (!consumerKey || !consumerSecret || !shortcode)
@@ -156,7 +156,7 @@ function generateMicrotaskRevenue(
     const userPayment = taskData.reward || 0;
     const qmoiProfit = clientPayment - userPayment;
 
-    // In production, would call real payment processor
+    // production ready, would call real payment processor
     logger.info("// production implementation:d microtask revenue", {
       title: taskData.title,
       qmoiProfit,

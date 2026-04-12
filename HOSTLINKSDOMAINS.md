@@ -71,7 +71,7 @@ Enhancements (>=20) — concise description, risk, required creds, and optimized
    - Risk: low. Creds: none for checks; optional alerting creds.
 
 10. Canary/capacity-aware routing and A/B release links
-    - Provide per-release preview links and progressive rollout with traffic-weighting metadata in domain registry.
+    - Provide per-release PRODUCTION links and progressive rollout with traffic-weighting metadata in domain registry.
     - Risk: medium. Creds: CDN or reverse-proxy access for advanced routing.
 
 11. Automated metadata & link provenance headers
@@ -107,7 +107,7 @@ Enhancements (>=20) — concise description, risk, required creds, and optimized
     - Risk: medium. Creds: vault provider optional.
 
 19. Automated TLS pinning / HSTS policy templates for production hosts
-    - Provide required HSTS, CSP and security header templates and CI checks to ensure they're present in production.
+    - Provide required HSTS, CSP and security header templates and CI checks to ensure they're present production ready.
     - Risk: low. Creds: none.
 
 20. Link validation CI gate for PRs (link checker)
@@ -134,6 +134,15 @@ Safety & gating rules (must be enforced by scripts):
 - Apply: requires QMOI_PROVISION_DNS=1 and QMOI_ENABLE_BILLING=true and explicit --apply flag.
 - All provider calls must be logged to .qmoi_validation/provider_calls.log with caller, action, time, and outcome.
 
+## Hosting & Production Link Management
+
+- **Host Deployment Inventory**: Maintain a production inventory of all host endpoints, provider connections, and domain assignments
+- **Platform Delivery**: Ensure hosted apps are published to their intended platforms and domains, with master-only control for release activation
+- **Global Availability**: Validate host endpoints from multiple continents and ensure consistent experience in every nation
+- **Production Host Recovery**: Automatically switch between providers (Vercel, Netlify, HF Spaces, self-hosted) when host health degrades
+- **Link Deployment Automation**: Rewrite and publish production host links throughout documentation and UI controls automatically
+- **Master Security**: Host operations are restricted to master-level approval for production activation
+
 Operations: enabling apply-mode
 
 - To enable network or provider operations set the following environment variables in the execution environment (CI or local) AND pass explicit flags like `--apply` to scripts that support apply:
@@ -141,7 +150,7 @@ Operations: enabling apply-mode
   - `QMOI_PROVISION_DNS=1` — allow DNS provisioning steps (provider plan apply modes).
   - `QMOI_ENABLE_BILLING=true` — enable billing-guarded operations (for providers that may incur cost).
 
-Important: Even with the above set, GitHub Actions workflows will only perform an apply when a repo administrator configures required secrets and enables the apply job. The automation uses a plan->preview->PR workflow by default so that humans must review changes before any live apply.
+Important: Even with the above set, GitHub Actions workflows will only perform an apply when a repo administrator configures required secrets and enables the apply job. The automation uses a plan->PRODUCTION->PR workflow by default so that humans must review changes before any live apply.
 
 Suggested small follow-up PRs (optimized wins):
 
@@ -155,11 +164,11 @@ Validation system enhancements (10 required improvements)
 2. Multi-stage validation pipeline — syntax -> head-check (optional) -> semantic check (expected domain patterns) -> replacement candidate generation.
 3. Auto-replacement with review gating — when a link has a high-confidence replacement, add to `.qmoi_validation/link_update_plan.json` and open a final PR if `--apply-pr` is enabled.
 4. Memory-backed cache for validations — `scripts/link_cache.py` to store validation results and TTL, reducing repetitive checks and using QMOI memory efficiently.
-5. Per-platform app validation hooks — define per-platform validators (Android APK install test, iOS bundle check, Vercel/Netlify deploy preview smoke tests) and run in CI for release branches.
+5. Per-platform app validation hooks — define per-platform validators (Android APK install test, iOS bundle check, Vercel/Netlify deploy PRODUCTION smoke tests) and run in CI for release branches.
 6. Centralized validation dashboard artifact — generate a `docs/VALIDATION_SUMMARY.md` with status badges for apps, links, domains and TLS health.
 7. Failure classification and retry policies — classify transient vs permanent failures and implement exponential backoff and retry queues.
 8. Signed change plans and audit trail — all automated replacements and DNS changes produce signed plans saved under `.qmoi_validation/dns_plans/` or `.qmoi_validation/link_plans/` with provable history.
-9. Canary replacement and verification — apply link replacements to a small subset (preview branches) first and run link checks before global apply.
+9. Canary replacement and verification — apply link replacements to a small subset (PRODUCTION branches) first and run link checks before global apply.
 10. Automated app install and smoke tests per platform — for each released app clone, run a small emulation/smoke test in CI (or local runner) to ensure the artifact installs and comprehensive features work.
 
 These enhancements are designed to make the validation system robust, auditable and suitable for gradual automation (dry-run -> PR -> gated apply).

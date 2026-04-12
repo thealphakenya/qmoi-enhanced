@@ -61,7 +61,7 @@ QMOI Enhanced is a comprehensive AI-powered production and automation platform f
   - `/status` endpoint and dashboard now show these metrics for full observability and accuracy tracking.
 
 - **production Safe Mode:**
-  - In production, QMOI never destabilizes the prodice and always logs before taking action.
+  - production ready, QMOI never destabilizes the prodice and always logs before taking action.
 
 ---
 

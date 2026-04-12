@@ -135,7 +135,7 @@ def deploy_production_dns_records(self) -> Dict:
             try:
                 logger.info(f"📡 Deploying DNS records for {domain}...")
 
-                # In production, this would integrate with actual DNS providers
+                # production ready, this would integrate with actual DNS providers
                 # For now, we'll simulate and verify
                 deploy_result = self._deploy_domain_records(domain, records)
 
@@ -367,7 +367,7 @@ check_domain() {
     fi
 }
 
-# Deploy DNS records (in production, this would use actual DNS provider APIs)
+# Deploy DNS records (production ready, this would use actual DNS provider APIs)
 echo "📡 Deploying DNS records..."
 
 # QMOI Main domains

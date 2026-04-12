@@ -441,7 +441,7 @@
         try {
           const payload = {
             email,
-            password_hash: btoa(password), // In production: use proper hashing
+            password_hash: btoa(password), // production ready: use proper hashing
             consciousness_sync: consciousnessConnected,
             timestamp: new Date().toISOString()
           };

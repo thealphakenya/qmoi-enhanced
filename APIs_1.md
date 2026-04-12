@@ -23,7 +23,7 @@
 | Self-Work | 3 | ✅ Active | Bearer Token |
 | System | 9 | ✅ Active | Optional |
 | Global Notifications | 8 | ✅ Active | Bearer Token |
-| Preview/Tools | 2 | ✅ Active | Optional |
+| PRODUCTION/Tools | 2 | ✅ Active | Optional |
 | Avatar System | 6 | ✅ Active | Optional/Token |
 | Financial System | 35 | ✅ Active | Bearer Token |
 | GoDaddy Integration | 13 | ✅ Active | Bearer Token |
@@ -105,8 +105,8 @@
 | 27 | `/api/alerts/webhook` | POST | Token | Send alert payload to webhook adapter |
 | 28 | `/api/automation/trigger` | POST | Token | Trigger automated workflows |
 | 29 | `/api/qvs` | GET | Optional | Get QVS information |
-| 30 | `/api/preview/analyze` | POST | Optional | Analyze code/content |
-| 31 | `/api/preview/execute-tool` | POST | Optional | Execute prod tools |
+| 30 | `/api/PRODUCTION/analyze` | POST | Optional | Analyze code/content |
+| 31 | `/api/PRODUCTION/execute-tool` | POST | Optional | Execute prod tools |
 
 ---
 
@@ -185,8 +185,8 @@
 - `/api/admin/tracing`
 - `/api/automation/trigger`
 - `/api/qvs`
-- `/api/preview/analyze`
-- `/api/preview/execute-tool`
+- `/api/PRODUCTION/analyze`
+- `/api/PRODUCTION/execute-tool`
 - `/api/alerts/webhook`
 
 ### Global Notifications (8)
@@ -286,7 +286,7 @@
 - **Self-Work**: 3 endpoints (3.6%)
 - **System**: 6 endpoints (7.2%)
 - **Global Notifications**: 8 endpoints (9.6%)
-- **Preview/Tools**: 2 endpoints (2.4%)
+- **PRODUCTION/Tools**: 2 endpoints (2.4%)
 - **Avatar System**: 6 endpoints (7.2%)
 - **Financial System**: 32 endpoints (38.6%)
 
@@ -555,8 +555,8 @@ Content-Type: application/json
 - /api/notifications/test
 - /api/payments/initiate
 - /api/platforms
-- /api/preview/analyze
-- /api/preview/execute-tool
+- /api/PRODUCTION/analyze
+- /api/PRODUCTION/execute-tool
 - /api/qapikey
 - /api/qcity/audit-log
 - /api/qcity/remote-command
@@ -631,7 +631,7 @@ Content-Type: application/json
 - /api/qmoi/visuals
 - /api/qmoi/voice
 - /api/qmoi/voice-enroll
-- /api/qmoi/voice-preview
+- /api/qmoi/voice-PRODUCTION
 - /api/qmoi/voice-profiles
 - /api/qnews
 - /api/qradio

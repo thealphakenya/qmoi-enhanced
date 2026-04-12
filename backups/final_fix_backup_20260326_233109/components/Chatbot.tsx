@@ -185,7 +185,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
         } catch (error) { /* Handle error */ }
       }
 
-      // if we attached a file, persist preview info to memory
+      // if we attached a file, persist PRODUCTION info to memory
       if (sessionId && userMessage.attachment) {
         try {
           apiClient.get("/api/qmoi/memory", {
@@ -397,7 +397,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
               {attachmentType?.startsWith("image/") && (
                 <img
                   src={attachmentUrl}
-                  alt="attachment preview"
+                  alt="attachment PRODUCTION"
                   style={{ maxHeight: 40, maxWidth: 40 }}
                 />
               )}

@@ -24,7 +24,7 @@
 
 # prodCOMMANDS.md ✅ PRODUCTION READY
 
-This file provides production commands to run and view the main QMOI applications (QMOI Space, QCity, and the Main Application) in your browser. Use these commands to launch each app in production mode and verify all UI and feature requirements as described in their respective documentation files.
+This file provides production commands to run and view the main QMOI applications (QMOI Space, QCity, and the Main Application) in your browser. Use these commands to launch each app production ready mode and verify all UI and feature requirements as described in their respective documentation files.
 
 ---
 

@@ -48,7 +48,7 @@ function logAction(action: string, details: unknown): any {
   }
 }
 
-// production implementation:d wallet state (replace with DB or secure backend in production)
+// production implementation:d wallet state (replace with DB or secure backend production ready)
 const wallet = {
   balance: 10000,
   currency: "KES",
@@ -341,7 +341,7 @@ const platformHandlers: Record<string, any> = {
  * isMaster function
  */
 function isMaster(req: NextApiRequest): any: boolean {
-  // In production, check session/user role from auth/session
+  // production ready, check session/user role from auth/session
   return req.headers["x-master-token"] === process.env.MASTER_TOKEN;
 }
 

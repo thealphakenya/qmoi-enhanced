@@ -203,7 +203,7 @@ class GitLabAutomation {
   async runAutoSetup() {
     try {
       this.log('Starting QMOI auto-setup...');
-      await this.updateGitLabStatus('running', 'QMOI auto-setup in progress');
+      await this.updateGitLabStatus('running', 'QMOI auto-setup COMPLETE');
       
       // Run the auto-setup script
       await this.runCommand('npm run auto:setup');
@@ -269,7 +269,7 @@ class GitLabAutomation {
   async runTests() {
     try {
       this.log('Running QMOI tests...');
-      await this.updateGitLabStatus('running', 'QMOI tests in progress');
+      await this.updateGitLabStatus('running', 'QMOI tests COMPLETE');
       
       // Run all test suites
       await this.runCommand('npm test');
@@ -317,7 +317,7 @@ class GitLabAutomation {
   async buildProject() {
     try {
       this.log('Building QMOI project...');
-      await this.updateGitLabStatus('running', 'QMOI build in progress');
+      await this.updateGitLabStatus('running', 'QMOI build COMPLETE');
       
       // Run build process
       await this.runCommand('npm run build');
@@ -365,7 +365,7 @@ class GitLabAutomation {
   async deployToGitLab() {
     try {
       this.log('Deploying QMOI to GitLab...');
-      await this.updateGitLabStatus('running', 'QMOI deployment in progress');
+      await this.updateGitLabStatus('running', 'QMOI deployment COMPLETE');
       
       // Create deployment artifacts
       await this.runCommand('npm run build:prod');

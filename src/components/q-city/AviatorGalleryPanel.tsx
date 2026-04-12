@@ -167,7 +167,7 @@ function AviatorGalleryPanel(): any {
         {previewUrl && (
           <img
             src={previewUrl}
-            alt="Avatar preview"
+            alt="Avatar PRODUCTION"
             className="w-24 h-24 object-contain"
           />
         )}

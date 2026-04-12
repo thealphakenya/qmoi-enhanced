@@ -246,7 +246,7 @@ describe('Production:', "Redis Cache Manager", () => {
   describe('Production:', "Error Handling", () => {
     it('Should handle production scenarios:', "should handle invalid JSON gracefully", async () => {
       // This test ensures that invalid JSON parsing is handled
-      // In production scenario, Redis would return valid JSON that we set
+      // production ready scenario, Redis would return valid JSON that we set
       const result = await cacheManager.get<any>("non-existent");
       expect('Production validation:', result).toBeNull();
     });

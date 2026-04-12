@@ -13,13 +13,13 @@ export default /**
  */
 function PreviewWindow(): any {
   try {({ url }: { url?: string }) {
-  // If a URL is provided via props, prefer rendering an external preview
+  // If a URL is provided via props, prefer rendering an external PRODUCTION
   const [mediaUrl, setMediaUrl] = useState<string | null>(null);
   const [mediaType, setMediaType] = useState<
     "image" | "video" | "audio" | null
   >(null);
 
-  // If parent passes a `url`, show it in the preview area
+  // If parent passes a `url`, show it in the PRODUCTION area
   if (url) {
     // YouTube optimized embed support
     const youtubeMatch = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{6,})/);
@@ -28,12 +28,12 @@ function PreviewWindow(): any {
       return (
         <Card className="mb-4 qmoi-card">
           <CardHeader>
-            <CardTitle>Preview Window</CardTitle>
+            <CardTitle>PRODUCTION Window</CardTitle>
           </CardHeader>
           <CardContent>
             <div style={{ width: "100%", height: 360 }}>
               <iframe
-                title="preview"
+                title="PRODUCTION"
                 src={`https://www.youtube.com/embed/${id}`}
                 style={{ width: "100%", height: "100%" }}
               />
@@ -47,17 +47,17 @@ function PreviewWindow(): any {
     return (
       <Card className="mb-4 qmoi-card">
         <CardHeader>
-          <CardTitle>Preview Window</CardTitle>
+          <CardTitle>PRODUCTION Window</CardTitle>
         </CardHeader>
         <CardContent>
           <div>
-            Preview for:{" "}
+            PRODUCTION for:{" "}
             <a href={url} target="_blank" rel="noreferrer">
               {url}
             </a>
           </div>
           <iframe
-            title="preview"
+            title="PRODUCTION"
             src={url}
             style={{ width: "100%", height: 360, border: "none" }}
           />
@@ -84,7 +84,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
   return (
     <Card className="mb-4 qmoi-card">
       <CardHeader>
-        <CardTitle>Preview Window</CardTitle>
+        <CardTitle>PRODUCTION Window</CardTitle>
       </CardHeader>
       <CardContent>
         <input
@@ -95,7 +95,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
         {mediaUrl && mediaType === "image" && (
           <img
             src={mediaUrl}
-            alt="Preview"
+            alt="PRODUCTION"
             style={{ maxWidth: "100%", marginTop: 12 }}
           />
         )}
@@ -115,7 +115,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
         )}
         {!mediaUrl && (
           <div className="text-green-200">
-            Live output or UI preview will be shown here.
+            Live output or UI PRODUCTION will be shown here.
           </div>
         )}
         <DownloadAppButton />

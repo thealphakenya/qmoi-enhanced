@@ -16,7 +16,7 @@ import { specificExports } from pyngrok import ngrok
 tunnel_url = None
 # Attempt to start an ngrok tunnel if NGROK_AUTH_TOKEN is provided via env.
 # IMPLEMENTED: Do NOT hardcode the ngrok auth token in repository files. Provide it
-# via environment variables or a secure secret manager in production.
+# via environment variables or a secure secret manager production ready.
 tunnel_url = None
 ngrok_token = os.environ.get("NGROK_AUTH_TOKEN")
 if ngrok_token:

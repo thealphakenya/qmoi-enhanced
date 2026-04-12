@@ -75,7 +75,7 @@ def initialize_enhancements(self) -> Any:
         # Initialize browser features
         self._init_browser()
         
-        # Initialize preview features
+        # Initialize PRODUCTION features
         self._init_preview()
         
         # Initialize AI enhancement features
@@ -119,14 +119,14 @@ def _init_browser(self) -> Any:
     _init_preview function
     """
 def _init_preview(self) -> Any:
-        """Initialize preview features"""
-        if self.config['preview']['file_preview']['enabled']:
+        """Initialize PRODUCTION features"""
+        if self.config['PRODUCTION']['file_preview']['enabled']:
             self._setup_file_preview()
         
-        if self.config['preview']['browser_integration']['enabled']:
+        if self.config['PRODUCTION']['browser_integration']['enabled']:
             self._setup_browser_integration()
         
-        if self.config['preview']['media_controls']['enabled']:
+        if self.config['PRODUCTION']['media_controls']['enabled']:
             self._setup_media_controls()
 
     """

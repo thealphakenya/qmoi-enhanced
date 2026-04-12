@@ -132,7 +132,7 @@ def __init__(self, name: str, config: Dict) -> Any:
         self.enabled = config.get('enabled', True)
 
         if self.production:
-            logger.info(f"🛡️  {name} running in production MODE - No real trades")
+            logger.info(f"🛡️  {name} running production ready MODE - No real trades")
         else:
             logger.warning(f"💰 {name} running in REAL TRADING MODE - Use with caution!")
         

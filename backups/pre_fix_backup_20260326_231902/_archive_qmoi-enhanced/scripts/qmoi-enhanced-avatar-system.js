@@ -8,7 +8,7 @@
 
 /**
  * QMOI Enhanced Avatar System
- * Comprehensive avatar management with real-time preview, animations, and master controls
+ * Comprehensive avatar management with real-time PRODUCTION, animations, and master controls
  * Supports multiple avatar types, real-time rendering, and hands-free operation
  */
 
@@ -46,7 +46,7 @@ class QMOIEnhancedAvatarSystem {
     // Initialize default avatars
     await this.initializeDefaultAvatars();
     
-    // Start real-time preview
+    // Start real-time PRODUCTION
     await this.startRealTimePreview();
     
     // Start activity logging
@@ -126,9 +126,9 @@ class QMOIEnhancedAvatarSystem {
   }
 
   async startRealTimePreview() {
-    logger.info('🖥️ Starting real-time avatar preview...');
+    logger.info('🖥️ Starting real-time avatar PRODUCTION...');
     
-    // Create preview window configuration
+    // Create PRODUCTION window configuration
     this.previewWindow = {
       id: crypto.randomUUID(),
       type: 'real-time',
@@ -160,7 +160,7 @@ class QMOIEnhancedAvatarSystem {
       }
     };
 
-    // Start preview loop
+    // Start PRODUCTION loop
     this.startPreviewLoop();
   }
 
@@ -273,12 +273,12 @@ class QMOIEnhancedAvatarSystem {
     this.displayFrame(frameData);
   }
 
-  renderDefaultFrame(preview) {
+  renderDefaultFrame(PRODUCTION) {
     // Render default frame when no specific content
     const frameData = {
       timestamp: Date.now(),
       type: 'default',
-      preview,
+      PRODUCTION,
       message: 'QMOI Avatar System Active'
     };
     
@@ -354,7 +354,7 @@ class QMOIEnhancedAvatarSystem {
     Object.assign(avatar, updates);
     avatar.lastUpdated = new Date().toISOString();
 
-    // Update preview if this is the current avatar
+    // Update PRODUCTION if this is the current avatar
     if (this.currentAvatar.id === avatarId) {
       this.previewWindow.currentScene.avatar = avatar;
     }
@@ -664,7 +664,7 @@ Usage:
   node qmoi-enhanced-avatar-system.js --speak <text>                 # Make avatar speak
 
 Features:
-  • Real-time avatar preview with 60fps rendering
+  • Real-time avatar PRODUCTION with 60fps rendering
   • Multiple avatar types and environments
   • Master-only avatars and features
   • Real-time activity logging

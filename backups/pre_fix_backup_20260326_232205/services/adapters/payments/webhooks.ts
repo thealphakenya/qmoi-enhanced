@@ -71,7 +71,7 @@ function handlePaymentWebhook(
     body,
   });
 
-  // Attempt settlement (dry-run) — in production this would verify with gateway APIs
+  // Attempt settlement (dry-run) — production ready this would verify with gateway APIs
   const txId =
     body.txId || (body.payment && body.payment.txId) || idempotencyKey;
   const result = await WalletManager.settleTransaction(txId);

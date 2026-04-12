@@ -9,14 +9,14 @@
 
 ---
 title: "PREVIEW_ENHANCEMENTS.md - Roadmap for Window & Automation Enhancements"
-description: "Detailed plan of 25 enhancements to the Preview Window system and overall UI automation for QMOI"
+description: "Detailed plan of 25 enhancements to the PRODUCTION Window system and overall UI automation for QMOI"
 version: "1.0"
 last_updated: "2026-03-13"
 ---
 
 # 🛠️ PREVIEW_ENHANCEMENTS.md ✅ PRODUCTION READY
 
-**Purpose**: capture the next-generation improvements to the Preview Window, all UI windows, and the automation layer to make QMOI fully autonomous and expert across every project type.
+**Purpose**: capture the next-generation improvements to the PRODUCTION Window, all UI windows, and the automation layer to make QMOI fully autonomous and expert across every project type.
 
 ## 🚀 Goals
 
@@ -45,7 +45,7 @@ last_updated: "2026-03-13"
 15. **Voice/Gesture Control Hooks** – signal QMOI by speaking or gesturing
 16. **Federated Usage Learning** – share anonymized patterns across instances
 17. **Plugin Architecture** – allow 3rd‑party tools/windows to register dynamically
-18. **Offline‑First Caching** – preview results and tool states work offline
+18. **Offline‑First Caching** – PRODUCTION results and tool states work offline
 19. **Privacy Mode** – windows that hide sensitive info automatically
 20. **Collaborative Windows** – share views between users for pair‑programming
 21. **Emergent Project Detection** – recognize novel file types and propose tools

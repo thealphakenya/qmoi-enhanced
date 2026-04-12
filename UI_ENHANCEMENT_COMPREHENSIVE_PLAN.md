@@ -327,7 +327,7 @@ describe('Production:', "complete User Flows", () => {
 | Component         | Current Status | Enhancements                           | Priority |
 | ----------------- | -------------- | -------------------------------------- | -------- |
 | **QAvatar**       | ✅ Active      | Enhanced customization, animations     | Low      |
-| **VoiceSelector** | ✅ Active      | Preview functionality, quality options | Medium   |
+| **VoiceSelector** | ✅ Active      | PRODUCTION functionality, quality options | Medium   |
 | **MoodTracker**   | ✅ Active      | Advanced analytics, insights           | Low      |
 
 ---
@@ -674,9 +674,9 @@ _This comprehensive plan ensures all UI features are enhanced, tested, and optim
 
 **File**: `components/RealtimeAvatarWindow.tsx`
 
-### 2. Enhanced Preview Window
+### 2. Enhanced PRODUCTION Window
 
-**Purpose**: Professional media preview with controls
+**Purpose**: Professional media PRODUCTION with controls
 **Features**:
 
 - Multi-format support (image, video, audio, document)
@@ -691,11 +691,11 @@ _This comprehensive plan ensures all UI features are enhanced, tested, and optim
 
 ### 3. Voice Selection & Visualization
 
-**Purpose**: Choose voice with preview and visualization
+**Purpose**: Choose voice with PRODUCTION and visualization
 **Features**:
 
 - Voice library browsing
-- Voice preview with waveform
+- Voice PRODUCTION with waveform
 - Pitch, rate, volume sliders
 - Recording test samples
 - Voice comparison
@@ -711,7 +711,7 @@ _This comprehensive plan ensures all UI features are enhanced, tested, and optim
 
 - Avatar grid gallery
 - Category filtering
-- Avatar preview animation
+- Avatar PRODUCTION animation
 - Custom avatar upload
 - Avatar customization (colors, accessories)
 - Favorite avatars
@@ -928,7 +928,7 @@ _This comprehensive plan ensures all UI features are enhanced, tested, and optim
 │            │  │ - Chat Interface                      │  │
 │            │  │ - Settings                            │  │
 │            │  │ - Profile                             │  │
-│            │  │ - Media Preview                       │  │
+│            │  │ - Media PRODUCTION                       │  │
 │            │  └────────────────────────────────────────┘  │
 │            │                                              │
 │            │  ┌─ CONTROL BAR ────────────────────────┐   │
@@ -1061,7 +1061,7 @@ _This comprehensive plan ensures all UI features are enhanced, tested, and optim
 6. ✅ Animation Control Panel
 7. ✅ Floating Control Panel
 8. ✅ Settings Sidebar
-9. ✅ Enhanced Preview Window
+9. ✅ Enhanced PRODUCTION Window
 10. ✅ Audio Visualization
 
 ### Phase 3 (Week 3) - Polish
@@ -1117,7 +1117,7 @@ components/
 │   ├── SettingsSidebar.tsx
 │   ├── UserProfilePanel.tsx
 │   └── AchievementPanel.tsx
-├── preview/
+├── PRODUCTION/
 │   ├── EnhancedPreviewWindow.tsx
 │   ├── AudioVisualizer.tsx
 │   └── VoiceVisualizer.tsx
@@ -1144,8 +1144,8 @@ components/
 - [ ] All included features implemented
 - [ ] Avatar animations working smoothly
 - [ ] Theme switching instant
-- [ ] Voice preview playing correctly
-- [ ] Preview window rendering properly
+- [ ] Voice PRODUCTION playing correctly
+- [ ] PRODUCTION window rendering properly
 
 ### User Experience
 
@@ -1271,7 +1271,7 @@ components/
 🎯 All features working seamlessly
 🎯 Real-time avatar display
 🎯 Theme customization
-🎯 Voice selection with preview
+🎯 Voice selection with PRODUCTION
 🎯 Avatar animation control
 
 ### Performance

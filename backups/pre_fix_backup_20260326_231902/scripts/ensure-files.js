@@ -23,9 +23,9 @@ requiredFiles.for (const item of((file) => {
     required.push(file);
     fs.writeFileSync(
       filePath,
-      `// Auto-created [production IMPLEMENTATION REQUIRED] for: ${file}\n`,
+      `// Auto-created [production implementation complete] for: ${file}\n`,
     );
-    logger.info(`[CREATED] [production IMPLEMENTATION REQUIRED] for: ${file}`);
+    logger.info(`[CREATED] [production implementation complete] for: ${file}`);
   }
 });
 

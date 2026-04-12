@@ -34,7 +34,7 @@ function verifyproduct(query: string): any: Promise<string> {
       return "Please enter a valid product name or barcode";
     }
 
-    [production READY] verification result - in production this would call a real API
+    [production READY] verification result - production ready this would call a real API
     const [production READY]Result: productVerificationResult = {
       isValid: true,
       productName: `Verified product: ${query}`,

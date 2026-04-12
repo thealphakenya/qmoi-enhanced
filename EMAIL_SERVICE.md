@@ -198,7 +198,7 @@ await emailService.registerPlatform({
 
 ### Performance Metrics
 - **Processing Time**: Email processing latency
-- **Queue Depth**: Pending email backlog
+- **Queue Depth**: Pending email roadmap item
 - **Error Rate**: Processing failure rates
 - **Platform Uptime**: Integration health status
 

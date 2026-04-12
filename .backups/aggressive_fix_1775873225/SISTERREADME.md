@@ -1,0 +1,118 @@
+---
+title: "SISTERREADME.md"
+[[[[qmoi_validation_frontmatter](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)](docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md)(docs/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md): true
+---
+
+<!-- LION_VALIDATION_START -->
+
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- IMPLEMENTED: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
+# SISTERREADME.md ✅ PRODUCTION READY
+
+## latest-Q AI: Sister Guide
+
+Welcome, Sister! This guide explains all the features you can use in the latest-Q AI/Qmoi system, with sophisticated instructions for every step.
+
+### 1. Getting Started
+
+- Log in with your email to unlock sister features.
+- You will see special tabs for Goals, Inventions, Kids Zone, Wallet, and Help.
+
+### 2. Life Goals & Inventions
+
+- Add, edit, or view your life goals and invention ideas in the Goals tab.
+- All your data is private and encrypted.
+
+### 3. Wallet & Money
+
+- Send or receive money using the Wallet tab.
+- **Wallet Requests:** If you need a new wallet, the AI will notify the master. Your wallet will be created only after master approval (via WhatsApp or dashboard).
+- **Fund Transfers:** Only the master can transfer funds out of Cashon (Pesapal). You can view your balance and receive funds, but cannot withdraw without master approval.
+- **Audit & Notifications:** All wallet and fund actions are logged, and you will be notified of approvals or denials.
+
+### 4. Kids Zone
+
+- Play music, listen to stories, or chat with the AI in a safe, friendly space.
+- Set reminders for yourself or your family.
+
+### 5. Help & Support
+
+- Click the Help tab for easy instructions and tips.
+- Hover over any button for a short explanation.
+
+### 6. Security
+
+- Your information is always safe and private.
+
+### 7. New Features
+
+- prodice settings and media preview now available in the UI
+- Download links for all apps/projects sent to your WhatsApp automatically
+- Movie & Media Preview: Play movies, YouTube, and more in the Preview tab.
+- Leah Wallet panel for easy money management
+- Enhanced backup and restore for all projects
+- Download App: Get a direct download link for your prodice in the app and via WhatsApp.
+- Project Backup: All your projects are auto-backed up and can be restored anytime.
+- **Wallet request and approval flow added**
+- **Master-only fund transfer and enhanced audit logging**
+
+### Collaborative & Multi-User Features
+
+- **prodices Hub:**
+  - Manage and collaborate across multiple prodices
+- **Earning & Cashon:**
+  - Shared earning strategies and fund management (withdrawals require master approval)
+- **Emotional Intelligence:**
+  - Mood tracking and well-being support for all users
+- **Role-Based Dashboards:**
+  - Tailored features for each user type
+- **Security & Privacy:**
+  - Transparent, encrypted, and user-controlled
+
+If you need help, just ask the AI or check the Help tab!
+
+<!-- QMOI_VALIDATION_START -->
+
+{
+"file": "SISTERREADME.md",
+"validated_at": "2025-10-26T20:51:22.636209Z",
+"validator": "QMOI Lion (automated)",
+"checks": [
+{
+"name": "title_present",
+"ok": true,
+"detail": "SISTERREADME.md"
+},
+{
+"name": "links",
+"ok": true,
+"detail": []
+}
+],
+"passed": true,
+"summary": {
+"total_checks": 2,
+"passed": true
+}
+}
+
+<!-- QMOI_VALIDATION_END -->
+
+## 🔄 Evolution Status
+
+**QMOI Evolution Enhanced**: This document is continuously updated through QMOI's autonomous evolution system.
+
+- **Continuous Improvement**: AI-driven optimizations and feature enhancements
+- **Global Scalability**: Automatic adaptation for worldwide operations
+- **Parallel Processing**: Multi-threaded execution and optimization
+- **Self-Healing**: Automatic error detection and correction
+- **Last Evolution**: 2026-03-26T03:58:31Z
+
+---
+*This document is maintained by QMOI's autonomous evolution system*

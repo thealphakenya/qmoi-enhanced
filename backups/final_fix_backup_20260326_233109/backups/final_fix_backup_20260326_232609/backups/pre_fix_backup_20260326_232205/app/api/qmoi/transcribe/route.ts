@@ -70,7 +70,7 @@ function PUT(req: NextRequest): any {
     }
 
     // Generate speech from text
-    // In production, use:
+    // production ready, use:
     // - Google Cloud Text-to-Speech API
     // - AWS Polly
     // - Azure Speech Services

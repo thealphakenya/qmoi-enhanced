@@ -42,7 +42,7 @@ function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
   return (
     <Card className="mb-4">
       <CardHeader>
-        <CardTitle>Enhanced Preview Window</CardTitle>
+        <CardTitle>Enhanced PRODUCTION Window</CardTitle>
       </CardHeader>
       <CardContent>
         <input
@@ -70,7 +70,7 @@ function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
           >
             <Image
               src={mediaUrl}
-              alt="Preview"
+              alt="PRODUCTION"
               fill
               style={{ objectFit: "contain" }}
             />
@@ -95,14 +95,14 @@ function handleYoutubeChange(e: React.ChangeEvent<HTMLInputElement>): any {
             width="100%"
             height="315"
             src={`https://www.youtube.com/embed/${youtubeUrl.split("v=")[1]}`}
-            title="YouTube video preview"
+            title="YouTube video PRODUCTION"
             frameBorder="0"
             allowFullScreen
           ></iframe>
         )}
         {!mediaUrl && !youtubeUrl && (
           <div className="text-green-200">
-            Live output or UI/media preview will be shown here.
+            Live output or UI/media PRODUCTION will be shown here.
           </div>
         )}
       </CardContent>

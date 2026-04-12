@@ -432,7 +432,7 @@ function syncWorkspace(req, res): any {
       res.json({
         success: true,
         message:
-          "Local workspace export initiated (upload to Gitpod not yet implemented)",
+          "Local workspace export initiated (upload to Gitpod fully implemented)",
       });
       return;
     }

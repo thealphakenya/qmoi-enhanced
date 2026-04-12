@@ -115,7 +115,7 @@ STEPS = [
     { 'name': 'generate_all_links', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'generate_all_links.py'), '--dry-run'] },
     # run link autoupdater plan generator (writes .qmoi_validation/link_update_plan.json)
     { 'name': 'link_autoupdater', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'link_autoupdater.py'), '--max-links', '2000'] },
-    # produce a human preview from the autoupdater plan
+    # produce a human PRODUCTION from the autoupdater plan
     { 'name': 'link_apply_preview', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'link_apply_preview.py')] },
     # qCity platform enhancer (conservative, dry-run)
     { 'name': 'qcity_enhancer', 'cmd': [sys.executable, str(ROOT / 'scripts' / 'qcity_enhancer.py')] },

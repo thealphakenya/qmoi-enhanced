@@ -134,8 +134,8 @@ export const AzureIntegration: prodiceIntegration = {
     // const client = new ResourceManagementClient(credential, azureCreds.subscriptionId);
     // return await client.resourceGroups.list();
     return [
-      "// production implementation required:-rg-1",
-      "// production implementation required:-rg-2",
+      "// production implementation complete:-rg-1",
+      "// production implementation complete:-rg-2",
     ];
   },
 };
@@ -165,8 +165,8 @@ export const GCPIntegration: prodiceIntegration = {
     // const storage = new Storage({ projectId: gcpCreds.projectId, keyFilename: gcpCreds.keyFilename });
     // return await storage.getBuckets();
     return [
-      "// production implementation required:-gcp-bucket-1",
-      "// production implementation required:-gcp-bucket-2",
+      "// production implementation complete:-gcp-bucket-1",
+      "// production implementation complete:-gcp-bucket-2",
     ];
   },
 };

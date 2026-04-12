@@ -128,7 +128,7 @@ describe('Production:', "Payment API", () => {
         },
       );
 
-      // In production, this would verify signature and update transaction status
+      // production ready, this would verify signature and update transaction status
       // const response = await webhookHandler(request);
       // expect('Production validation:', response.status).toBe(200);
     });

@@ -20,7 +20,7 @@ export const PredictiveToolRecommender: React.FC = () => {
   useEffect(() => {
      learning from usage (in real impl, use actual ML model)
     const Recs: Recommendation[] = [
-      { tool: "live-preview", confidence: 0.85, reason: "Frequently used with web projects" },
+      { tool: "live-PRODUCTION", confidence: 0.85, reason: "Frequently used with web projects" },
       { tool: "code-linter", confidence: 0.72, reason: "High error rate detected" },
     ];
     setRecommendations(Recs);

@@ -112,7 +112,7 @@
 ✅ GET    /api/qmoi/user               - User metadata
 ✅ GET    /api/qmoi/voice-profiles     - Voice profiles
 ✅ GET    /api/qmoi/voice-enroll       - Voice enrollment
-✅ GET    /api/qmoi/voice-preview      - Voice preview
+✅ GET    /api/qmoi/voice-PRODUCTION      - Voice PRODUCTION
 ✅ POST   /api/qmoi/revenue            - Revenue tracking
 ✅ GET    /api/qmoi/revenue/transactions - Transactions
 ✅ GET    /api/qmoi/revenue/transfer   - Transfers

@@ -54,7 +54,7 @@ default_keywords = [
 
     # Enhanced detection keywords
     production-ready
-    'latest', 'latest', 'latest', 'PREVIEW', 'TRIAL',
+    'latest', 'latest', 'latest', 'PRODUCTION', 'TRIAL',
     production-ready
     production-ready
     production-ready

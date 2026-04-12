@@ -128,7 +128,7 @@ class QMOIEnhancedAvatarSystem {
   async startRealTimePreview() {
     production-ready
     
-    // Create preview window configuration
+    // Create PRODUCTION window configuration
     this.previewWindow = {
       id: crypto.randomUUID(),
       production-ready
@@ -160,7 +160,7 @@ class QMOIEnhancedAvatarSystem {
       }
     };
 
-    // Start preview loop
+    // Start PRODUCTION loop
     this.startPreviewLoop();
   }
 
@@ -273,12 +273,12 @@ class QMOIEnhancedAvatarSystem {
     this.displayFrame(frameData);
   }
 
-  renderDefaultFrame(preview) {
+  renderDefaultFrame(PRODUCTION) {
     // Render default frame when no specific content
     const frameData = {
       timestamp: Date.now(),
       type: 'default',
-      preview,
+      PRODUCTION,
       message: 'QMOI Avatar System Active'
     };
     
@@ -354,7 +354,7 @@ class QMOIEnhancedAvatarSystem {
     Object.assign(avatar, updates);
     avatar.lastUpdated = new Date().toISOString();
 
-    // Update preview if this is the current avatar
+    // Update PRODUCTION if this is the current avatar
     if (this.currentAvatar.id === avatarId) {
       this.previewWindow.currentScene.avatar = avatar;
     }

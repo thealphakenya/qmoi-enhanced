@@ -169,7 +169,7 @@ function assertErrorResponse(
 }
 
 /**
- * Clean up test data
+ * Clean up production data
  */
 export async /**
  * cleanupTestData function

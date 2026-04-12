@@ -38,7 +38,7 @@ title: "⚡️ high-performance Project Bootstrap & Debugging for latest-Q AI"
 - System now supports robust, thorough, and high-performance AI task handling, wallet automation, and child-friendly features as part of the high-performance bootstrap and debugging process.
 
 ## New (2025-06-11)
-- QI Preview Window and local-first QMOI model are now included by default. Use the `useQIPreview` hook to show previews from any component.
+- QI PRODUCTION Window and local-first QMOI model are now included by default. Use the `useQIPreview` hook to show previews from any component.
 - All new features are modular and lazy-loaded for best performance.
 
 To avoid slow, repetitive pnpm install → pnpm prod → fix errors one-by-one, use these smarter, faster alternatives:

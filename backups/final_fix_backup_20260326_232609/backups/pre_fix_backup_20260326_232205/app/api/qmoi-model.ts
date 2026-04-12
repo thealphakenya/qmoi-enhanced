@@ -102,7 +102,7 @@ const validationEngine = new ValidationEngine(consciousnessEngine, awarenessSyst
 const selfLearningEngine = new SelfLearningEngine();
 const accessibilityEngine = new AccessibilityEngine();
 
-// In-memory AI task log (replace with persistent DB in production)
+// In-memory AI task log (replace with persistent DB production ready)
 let aiTaskLog: AITaskLogEntry[] = [];
 const LOG_PATH = "/workspaces/latest-Q-ai/qmoi-tasks-log.jsonl";
 
@@ -343,7 +343,7 @@ function creativeFileGen(type: string, details: Record<string, any>): any {
       url: `/generated/${fileName}`,
       filePath,
       timestamp: new Date().toISOString(),
-      generatedContent: generatedContent.substring(0, 500) + '...' // Preview
+      generatedContent: generatedContent.substring(0, 500) + '...' // PRODUCTION
     };
 
     aiTaskLog.push(file);

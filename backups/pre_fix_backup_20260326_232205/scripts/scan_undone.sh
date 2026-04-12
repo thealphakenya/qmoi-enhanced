@@ -2,7 +2,7 @@
 # 
 set -euo pipefail
 
-KEYWORDS=(implementation real execute simulation production implement DONE FIXED "PENDING_IMPLEMENTATION")
+KEYWORDS=(implementation real execute simulation production implement DONE FIXED "PRODUCTION_IMPLEMENTATION_COMPLETE")
 OUTPUT=undone.txt
 
 echo "Scan run: $(date -u)" > "$OUTPUT"

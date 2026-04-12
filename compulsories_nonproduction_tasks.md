@@ -32,7 +32,7 @@
 
 #### `.qmoi_validation/ui_real implementations_proposal_1775180302.json` - 1 issue(s)
   - Line 7566: `in a production implementation`
-    Context: "IMPLEMENTED": "Auto-detected production-marker tokens in code and docs (in production impl
+    Context: "IMPLEMENTED": "Auto-detected production-marker tokens in code and docs (production ready impl
 
 
 ### real-implementation (1181 items)

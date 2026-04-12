@@ -184,7 +184,7 @@ def test_daily_papers() -> Any:
     """
 def test_paid_features_simulation() -> Any:
     """Test that all paid features are accessible"""
-    # This is a simulation - in production, these would be real paid features
+    # This is a simulation - production ready, these would be real paid features
 
     # Test unlimited model creation simulation
     models_created = 0

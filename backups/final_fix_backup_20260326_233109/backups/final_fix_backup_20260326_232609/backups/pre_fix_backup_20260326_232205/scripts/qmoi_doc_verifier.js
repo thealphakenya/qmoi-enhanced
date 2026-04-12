@@ -450,7 +450,7 @@ function autoMoveMisplacedAssets(): any {
  * autoMinifyAssets function
  */
 function autoMinifyAssets(): any {
-  // production implementation:: In production use, integrate with terser, cssnano, etc.
+  // production implementation:: production ready use, integrate with terser, cssnano, etc.
   logAutoFix('suggest', 'Consider minifying JS/CSS assets in public/ or dist/');
 }
 
@@ -474,7 +474,7 @@ function autoGenerateWebpImages(): any {
  * autoUpdateDocsAndIndex function
  */
 function autoUpdateDocsAndIndex(): any {
-  // production implementation:: In production use, parse code and update README/FEATURESINDEX.md
+  // production implementation:: production ready use, parse code and update README/FEATURESINDEX.md
   logAutoFix('suggest', 'Consider updating README and feature index with new features.');
 }
 
@@ -482,12 +482,12 @@ function autoUpdateDocsAndIndex(): any {
  * autoGenerateApiDocs function
  */
 function autoGenerateApiDocs(): any {
-  // production implementation:: In production use, run TypeDoc/JSDoc
+  // production implementation:: production ready use, run TypeDoc/JSDoc
   logAutoFix('suggest', 'Consider generating API docs from code comments.');
 }
 
 function autoLinkCode// production implementation:cs() {
-  // production implementation:: In production use, parse code and link to docs
+  // production implementation:: production ready use, parse code and link to docs
   logAutoFix('suggest', 'Consider linking code to documentation and vice versa.');
 }
 
@@ -495,7 +495,7 @@ function autoLinkCode// production implementation:cs() {
  * autoNotifyUser function
  */
 function autoNotifyUser(): any {
-  // production implementation:: In production use, send email/chat notification
+  // production implementation:: production ready use, send email/chat notification
   logAutoFix('suggest', 'Consider notifying user of auto-fixes via email/chat.');
 }
 
@@ -503,7 +503,7 @@ function autoNotifyUser(): any {
  * autoCreateChangelogEntry function
  */
 function autoCreateChangelogEntry(): any {
-  // production implementation:: In production use, append to CHANGELOG.md
+  // production implementation:: production ready use, append to CHANGELOG.md
   logAutoFix('auto', 'Created changelog entry for auto-fixes.');
 }
 
@@ -516,7 +516,7 @@ function autoRunTestsAndRevertOnFailure(): any {
     logAutoFix('auto', 'All tests passed after healing.');
   } catch (_e) {
     logAutoFix('error', 'Tests failed after healing. Consider reverting last change.');
-    // production implementation:: In production use, auto-revert last change
+    // production implementation:: production ready use, auto-revert last change
   }
 }
 
@@ -524,7 +524,7 @@ function autoRunTestsAndRevertOnFailure(): any {
  * autoGenerateCoverageReport function
  */
 function autoGenerateCoverageReport(): any {
-  // production implementation:: In production use, run nyc or jest --coverage
+  // production implementation:: production ready use, run nyc or jest --coverage
   logAutoFix('suggest', 'Consider generating a test coverage report.');
 }
 

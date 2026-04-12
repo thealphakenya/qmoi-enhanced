@@ -57,7 +57,7 @@ QMOI Auto Distribution & Marketing is an AI-powered system that automatically di
 ## New Master-Only Controls & UI
 
 - **Platform Approval**: Master can approve or reject new platforms discovered by QMOI before distribution.
-- **Asset Preview**: Master can preview generated trailers, documentation, banners, and ads before they are distributed.
+- **Asset PRODUCTION**: Master can PRODUCTION generated trailers, documentation, banners, and ads before they are distributed.
 - **Deal Management**: Master can review and approve deals, pricing, and revenue strategies for each project and platform.
 - **Analytics Dashboard**: Master can view real-time analytics for downloads, views, revenue, and engagement across all platforms.
 - **Custom Distribution**: Master can trigger distribution to any custom platform or context.

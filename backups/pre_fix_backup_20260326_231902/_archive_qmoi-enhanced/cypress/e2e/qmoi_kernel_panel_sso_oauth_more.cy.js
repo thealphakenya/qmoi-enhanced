@@ -9,11 +9,11 @@
 describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - More Providers & Custom Logic", () => {
   it('Should handle production scenarios:', "allows login via Twitter OAuth", () => {
     cy.visit(
-      "/auth/callback?provider=twitter&token=twitter-[production IMPLEMENTATION REQUIRED]-token",
+      "/auth/callback?provider=twitter&token=twitter-[production implementation complete]-token",
     );
     cy.setCookie(
       "authToken",
-      "twitter-[production IMPLEMENTATION REQUIRED]-token",
+      "twitter-[production implementation complete]-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");
@@ -21,11 +21,11 @@ describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - More Providers & Cust
 
   it('Should handle production scenarios:', "allows login via SAML SSO", () => {
     cy.visit(
-      "/auth/callback?provider=saml&token=saml-[production IMPLEMENTATION REQUIRED]-token",
+      "/auth/callback?provider=saml&token=saml-[production implementation complete]-token",
     );
     cy.setCookie(
       "authToken",
-      "saml-[production IMPLEMENTATION REQUIRED]-token",
+      "saml-[production implementation complete]-token",
     );
     cy.visit("/qcity/kernel");
     cy.contains("QMOI Kernel Control Panel").should("exist");

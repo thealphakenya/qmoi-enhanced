@@ -11,6 +11,54 @@
 
 **Last Updated**: 2026-04-06
 
+## Political Project Hooks
+
+- hooks/usePoliticalAccessControl.ts
+- hooks/useCampaignManager.ts
+- hooks/useRegionalIntelligence.ts
+- hooks/usePoliticalUI.ts
+- hooks/useSocialMediaIntegration.ts
+
+## Auto Project Hooks
+
+- hooks/useAutoProjectGenerator.ts
+- hooks/useProjectRevenueTracker.ts
+- hooks/useProjectDistribution.ts
+- hooks/useProjectEvolution.ts
+- hooks/usePreviewWindow.ts
+
+## NGROK Paid Feature Hooks
+
+- hooks/useNGROKTunnel.ts
+- hooks/useNGROKMasterUI.ts
+- hooks/useNGROKAutoClone.ts
+- hooks/useNGROKSecurity.ts
+- hooks/useNGROKRevenue.ts
+
+## Political Project Webhooks
+
+- /api/webhooks/political/campaign-updates
+- /api/webhooks/political/access-control
+- /api/webhooks/political/regional-intelligence
+- /api/webhooks/political/ui-customization
+- /api/webhooks/political/social-media
+
+## Auto Project Webhooks
+
+- /api/webhooks/auto-projects/generation
+- /api/webhooks/auto-projects/revenue
+- /api/webhooks/auto-projects/distribution
+- /api/webhooks/auto-projects/evolution
+- /api/webhooks/auto-projects/PRODUCTION
+
+## NGROK Paid Feature Webhooks
+
+- /api/webhooks/ngrok/tunnel-status
+- /api/webhooks/ngrok/master-ui
+- /api/webhooks/ngrok/auto-clone
+- /api/webhooks/ngrok/security
+- /api/webhooks/ngrok/revenue
+
 ## Hooks
 
 - hooks/use-mobile.ts

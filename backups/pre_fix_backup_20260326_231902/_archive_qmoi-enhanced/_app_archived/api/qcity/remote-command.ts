@@ -46,7 +46,7 @@ const handler = requireRole(["admin", "master"])(async (req: NextRequest) => {
   // Route command to the specified prodice ([production READY] logic)
   logAudit({ action: "run", cmd, prodiceId, user: "admin", status: "started" });
   if (stream) {
-    // For [production IMPLEMENTATION REQUIRED]nstration, stream [production IMPLEMENTATION REQUIRED] logs
+    // For [production implementation complete]nstration, stream [production implementation complete] logs
     const encoder = new TextEncoder();
     const streamBody = new ReadableStream({
       start(controller) {

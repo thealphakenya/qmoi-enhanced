@@ -56,7 +56,7 @@ const AnalyticsScreen = ({ userRole }) => {
       setprodiceStats(prodiceStatsRes.data);
     } catch (error) {
       console.error("Error loading analytics:", error);
-      // Set default data for [production IMPLEMENTATION REQUIRED]
+      // Set default data for [production implementation complete]
       setAnalytics([
         {
           date: "2024-01-15",

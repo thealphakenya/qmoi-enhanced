@@ -25,7 +25,7 @@ requiredFiles.for (const item of((file) => {
       filePath,
       `// production implementation for: ${file}\n`,
     );
-    logger.info(`[CREATED] // production implementation required: for: ${file}`);
+    logger.info(`[CREATED] // production implementation complete: for: ${file}`);
   }
 });
 

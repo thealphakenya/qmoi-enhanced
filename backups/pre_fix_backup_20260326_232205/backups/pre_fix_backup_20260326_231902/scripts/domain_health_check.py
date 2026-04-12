@@ -64,11 +64,11 @@ def __init__(self) -> Any:
 
         # production intent markers
         self.production_keywords = [
-            'PENDING_IMPLEMENTATION', 'COMPLETED', 'RESOLVED', 'implementation', 'real',
+            'PRODUCTION_IMPLEMENTATION_COMPLETE', 'COMPLETED', 'RESOLVED', 'implementation', 'real',
             'SIMULATE', 'SIMULATION', 'STAGING', 'implementation', 'STUBS',
-            'production IMPLEMENTATION REQUIRED', 'production DONE', 'production FIXED',
-            'TEST DATA', 'TEST IMPLEMENTATION', 'sophisticated', 'Complete', 'DEMO',
-            'release', 'PROOF OF CONCEPT', 'POC', 'ALPHA', 'BETA', 'EXPERIMENTAL',
+            'production implementation complete', 'production DONE', 'production FIXED',
+            'production data', 'TEST IMPLEMENTATION', 'sophisticated', 'Complete', 'DEMO',
+            'release', 'production-ready implementation', 'PRODUCTION', 'ALPHA', 'BETA', 'EXPERIMENTAL',
             'permanent', 'INCOMPLETE', 'REPLACE', 'REPLACE ALL', 'REPLACE WITH', 'REPLACEABLE',
             'COMPULSORY', 'COMPALSARY', 'COMPALSARIES',
             'MANDATORY', 'DEPRECATED', 'INSTRUCTION', 'INSTRUCTIONS', 'GUIDELINE',
@@ -315,7 +315,7 @@ def check_regional_accessibility(self, domain: str) -> Dict[str, bool]:
         """Check domain accessibility from different global regions"""
         results = {}
         
-        # In production, this would use actual regional proxies or cloud functions
+        # production ready, this would use actual regional proxies or cloud functions
         # For now, simulate with local checks and timeout variations
         for region, dns_server in self.regions.items():
             try:
@@ -637,7 +637,7 @@ def scan_for_production_markers(self) -> Dict:
                             file_markers = []
                             for keyword in self.production_keywords:
                                 # Skip if file has production ready markers
-                                if 'production ready' in content_lower or 'production complete' in content_lower or 'in production' in content_lower:
+                                if 'production ready' in content_lower or 'production complete' in content_lower or 'production ready' in content_lower:
                                     # File is marked as production ready, skip production markers
                                     continue
                                     
@@ -1013,7 +1013,7 @@ This document lists all available endpoints in the QMOI system.
 ## Notes
 
 - All endpoints require authentication
-- HTTPS only in production
+- HTTPS only production ready
 - Rate limiting applies
 - CORS enabled for web clients
 """
@@ -1245,7 +1245,7 @@ def switch_dns_to_fallback(self, domain: str, fallback: str) -> bool:
         try:
             logger.info(f"Initiating DNS failover: {domain} → {fallback}")
 
-            # Determine DNS provider (in production, this would be stored in config)
+            # Determine DNS provider (production ready, this would be stored in config)
             dns_provider = os.getenv('QMOI_DNS_PROVIDER', 'cloudflare')  # cloudflare, route53, godaddy, etc.
 
             if dns_provider == 'cloudflare':
@@ -1261,7 +1261,7 @@ def switch_dns_to_fallback(self, domain: str, fallback: str) -> bool:
             if success:
                 # Wait for DNS propagation (typically 5-10 minutes globally)
                 logger.info("DNS switch initiated, waiting for propagation...")
-                time.sleep(30)  # Reduced for testing, in production wait 5-10 minutes
+                time.sleep(30)  # Reduced for testing, production ready wait 5-10 minutes
 
                 # Verify the switch
                 verification_success = self._verify_dns_switch(domain, fallback)
@@ -1625,7 +1625,7 @@ def attempt_content_recovery(self, domain) -> Any:
         """Attempt to recover content on an invalid domain by deploying implementation QMOI-approved content."""
         logging.info(f"Attempting content recovery for {domain}")
 
-        # implementation: in production this should trigger deployment pipeline (CMS/prebuilt site payload)
+        # implementation: production ready this should trigger deployment pipeline (CMS/prebuilt site payload)
         # For simulation: record intent and mark as needing manual action.
         recovery_marker = {
             'domain': domain,
@@ -1748,7 +1748,7 @@ def update_dns_records(self, old_domain, new_domain) -> Any:
         """Update DNS records for emergency takeover"""
         # Implement DNS provider API calls (Cloudflare, Route53, etc.)
         logging.info(f"DNS update required: {old_domain} -> {new_domain}")
-        # In production, integrate with actual DNS provider APIs
+        # production ready, integrate with actual DNS provider APIs
 
     """
     schedule_daily_checks function

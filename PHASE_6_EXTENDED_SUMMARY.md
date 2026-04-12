@@ -264,7 +264,7 @@ Tests:
 
 ## Known Limitations
 
-1. **Storage**: In-memory for rate limits (use Redis in production)
+1. **Storage**: In-memory for rate limits (use Redis production ready)
 2. **Alerts**: No webhook integration yet (executed v2.2)
 3. **Metrics**: No long-term storage (add Prometheus in v2.2)
 4. **Tracing**: No distributed tracing yet (executed v2.3)

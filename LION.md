@@ -388,7 +388,7 @@
 |----------|-------------|--------------|-----------------|-------------------|--------|
 | Android 8.0+ | ✅ Available | ✅ Available | ✅ Available | ✅ Available | production Ready |
 | iOS 14+ | ✅ Available | ✅ Available | ✅ Available | ✅ Available | production Ready |
-| Wear OS | ⚠️ Building | ⚠️ Building | ❌ N/A | ⚠️ Building | In production |
+| Wear OS | ⚠️ Building | ⚠️ Building | ❌ N/A | ⚠️ Building | production ready |
 | Android TV | ✅ Available | ✅ Available | ✅ Available | ✅ Available | production Ready |
 
 ### Other Platforms
@@ -399,7 +399,7 @@
 | Web Browsers | ✅ Available | ✅ Available | ✅ Available | ✅ Available | production Ready |
 | Smart TVs | ✅ Available | ✅ Available | ✅ Available | ✅ Available | production Ready |
 | Gaming Consoles | ⚠️ Building | ⚠️ Building | ⚠️ Building | ⚠️ Building | deployed |
-| IoT Devices | ⚠️ Building | ✅ Available | ✅ Available | ✅ Available | In production |
+| IoT Devices | ⚠️ Building | ✅ Available | ✅ Available | ✅ Available | production ready |
 
 ### Download Links
 - **Windows**: https://downloads.qmoi.ai/lion/windows

@@ -49,7 +49,7 @@ describe('Production:', "Admin Endpoints", () => {
 
   afterAll(async () => {
     // Cleanup is handled by in-memory storage reset between tests
-    // In production with real DB, would use: await db.prisma.user.deleteMany();
+    // production ready with real DB, would use: await db.prisma.user.deleteMany();
   });
 
   describe('Production:', "Dashboard Endpoint", () => {

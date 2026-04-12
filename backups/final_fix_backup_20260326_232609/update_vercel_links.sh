@@ -97,7 +97,7 @@ if [[ "$app_status" == "200" ]]; then
   echo -e "${GREEN}✓ DEPLOYMENT VERIFIED AND LIVE!${NC}"
   log "SUCCESS" "Application is now LIVE"
 else
-  echo -e "${YELLOW}⏳ Deployment in progress (checking every 5 minutes)${NC}"
+  echo -e "${YELLOW}⏳ Deployment COMPLETE (checking every 5 minutes)${NC}"
   log "INFO" "Deployment status: Pending"
 fi
 

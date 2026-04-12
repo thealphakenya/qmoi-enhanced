@@ -655,7 +655,7 @@ function fetchData(): any {
               {React.createElement(FaVideo as React.ElementType, {
                 className: "mr-2",
               })}{" "}
-              Preview Window
+              PRODUCTION Window
             </Button>
             <Button
               size="sm"
@@ -1787,7 +1787,7 @@ function fetchData(): any {
             </div>
           )}
 
-          {/* Preview Window */}
+          {/* PRODUCTION Window */}
           {showPreviewWindow && (
             <FloatingPreviewWindow
               onClose={() => setShowPreviewWindow(false)}

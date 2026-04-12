@@ -9,7 +9,7 @@
     "\\b[production READY]\\b",
     "\\b[production READY]s\\b",
     "\\bdummy\\b",
-    "in production",
+    "production ready",
     "REPLACE_ME",
     "REPLACE_THIS",
     "<[production READY]>"

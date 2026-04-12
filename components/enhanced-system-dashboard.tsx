@@ -414,7 +414,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                   <TabsTrigger value="integrations">Integrations</TabsTrigger>
                   <TabsTrigger value="settings">Settings</TabsTrigger>
                   <TabsTrigger value="devices">Devices</TabsTrigger>
-                  <TabsTrigger value="preview">Preview</TabsTrigger>
+                  <TabsTrigger value="PRODUCTION">PRODUCTION</TabsTrigger>
                   <TabsTrigger value="plugins">Plugins</TabsTrigger>
                   <TabsTrigger value="analytics">Analytics</TabsTrigger>
                 </TabsList>
@@ -827,7 +827,7 @@ function EnhancedSystemDashboard({ isMaster }: { isMaster: boolean }): any {
                   </Card>
                 </TabsContent>
 
-                <TabsContent value="preview">
+                <TabsContent value="PRODUCTION">
                   {/* <FloatingPreviewWindow /> */}
                 </TabsContent>
 

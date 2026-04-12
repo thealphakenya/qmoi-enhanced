@@ -839,7 +839,7 @@ class QMOIManager {
                 this.logger.warn(`Restarting QMOI (attempt ${this.restartAttempts}/${this.maxRestarts})...`);
                 await this.startQMOI();
             } else {
-                this.logger.error('Max restart attempts reached or in production. Not restarting.');
+                this.logger.error('Max restart attempts reached or production ready. Not restarting.');
             }
             return false;
         }

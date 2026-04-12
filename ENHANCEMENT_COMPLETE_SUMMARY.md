@@ -93,6 +93,7 @@ QMOI adapts responses based on:
    - Dynamic introduction generation
    - Memory operations (store/retrieve)
    - Access control enforcement
+   - Real-time chat awareness, memory sync, and cross-channel conversation continuity
    - GET endpoint for profile retrieval
 
 ### Documentation (5 comprehensive guides)

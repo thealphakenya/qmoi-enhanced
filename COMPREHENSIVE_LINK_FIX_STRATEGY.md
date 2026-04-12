@@ -250,7 +250,7 @@ Features:
 4. Prepare deployment
 
 ### Validation (Before deployment):
-1. Test all docs in production
+1. Test all docs production ready
 2. Verify links work in deployed version
 3. Check search indexing
 4. Verify no broken navigation
@@ -294,7 +294,7 @@ After implementing fixes:
 - [ ] No "qmoi-enhanced" references remain as broken links
 - [ ] All service domains updated to valid URLs
 - [ ] All app download links point to QStore
-- [ ] No production.qmoi.ai references in production docs
+- [ ] No production.qmoi.ai references production ready docs
 - [ ] All internal file references have proper paths
 - [ ] Domain health check shows >95% success
 - [ ] Link validation shows <0.5% broken links
@@ -338,7 +338,7 @@ Medium Priority Files Fixed: 1,572/1,619 (97.1%)
 4. ✅ All internal file references properly formatted
 5. ✅ Domain health check >99.9% for critical domains
 6. ✅ Link validation API shows all links working
-7. ✅ No production.qmoi.ai references in production docs
+7. ✅ No production.qmoi.ai references production ready docs
 8. ✅ App download links point to real resources
 
 ---
@@ -352,14 +352,14 @@ Medium Priority Files Fixed: 1,572/1,619 (97.1%)
 4. Have rollback script ready
 
 ### During Fixes:
-1. Run scripts in production first
+1. Run scripts production ready first
 2. Validate each script output
 3. Monitor for false positives
 4. Stop if error rate >1%
 
 ### After Fixes:
 1. Audit all changed files
-2. Test links in production environment
+2. Test links production ready environment
 3. Get stakeholder approval
 4. Deploy with rollback capability
 

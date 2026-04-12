@@ -29,7 +29,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 
 ## New Features (2025-06-11)
 
-- **QI State Preview Window**: Floating, draggable, animated window showing live AI state, session/global memory, and recent activity. Can be triggered from anywhere in the app using the `useQIPreview` hook.
+- **QI State PRODUCTION Window**: Floating, draggable, animated window showing live AI state, session/global memory, and recent activity. Can be triggered from anywhere in the app using the `useQIPreview` hook.
 - **prodice Map & Tracking**: Map of all prodices (react-leaflet), with user, status, last-seen, and location. Masters can report prodices as lost, which updates their status and highlights them.
 - **prodice Table & Actions**: Table of all prodices with actions (e.g., Report Lost). Tracks prodice status, user, and location.
 - **Awareness Enhancements**: QI can access time, prodice info, and (with permission) geolocation. Satellite imagery and advanced prodice controls are executed for native apps.
@@ -50,7 +50,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - Wallet & real funds integration (Mpesa, Binance, Pesapal, Bitget, Cashon)
 - Background trading and strategy management (autonomous, multi-strategy)
 - Bluetooth car integration with AI navigation and global support
-- Media preview and AI movie/animation generation (latest Diffusion, StyleGAN, AnimateDiff, etc.)
+- Media PRODUCTION and AI movie/animation generation (latest Diffusion, StyleGAN, AnimateDiff, etc.)
 - QMOI model pipeline supports photorealistic image, animation, and voice synthesis (DECA, SadTalker, Wav2Lip)
 - All enhancements logged, exportable, and master-only where required
 - Modular, secure, and efficient design for global, multi-user, multi-prodice operation
@@ -204,7 +204,7 @@ QMOI (Quantum Multi-Objective Intelligence) is an advanced, local-first AI model
 - Use the Qi master panel to view, filter, export, and control all QMOI/AI activity.
 - Use the prodices tab to track, filter, and manage all user prodices.
 - Integrate with `/api/qmoi-model` for programmatic access.
-- Use the `useQIPreview` hook to show the QI preview window from any component.
+- Use the `useQIPreview` hook to show the QI PRODUCTION window from any component.
 
 ## Qmoi Features
 

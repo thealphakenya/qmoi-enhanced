@@ -30,7 +30,7 @@ This runbook documents the safe, auditable steps to enable live wallet checks an
 2. Secrets & credential management
 
 - Use a secrets manager (GitHub Actions Secrets, Vault, AWS Secrets Manager). Do not store keys in repo.
-- Use `scripts/wallets/setup_secrets.sh --env .env` to preview `gh secret set` commands. Run with `--apply` only after manual verification.
+- Use `scripts/wallets/setup_secrets.sh --env .env` to PRODUCTION `gh secret set` commands. Run with `--apply` only after manual verification.
 
 3. production & testnet
 

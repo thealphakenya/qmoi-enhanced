@@ -36,9 +36,9 @@ PORT = int(os.environ.get('QMOI_CHAT_PORT', 8080))
 MEMORY_FILE = os.path.join(os.path.dirname(__file__), '..', 'qmoi_memory.json')
 MEMORY_FILE = os.path.abspath(MEMORY_FILE)
 
-# Guard: do not allow the robust test server to run in production unless explicitly allowed
+# Guard: do not allow the robust test server to run production ready unless explicitly allowed
 if os.environ.get('NODE_ENV') == 'production' and os.environ.get('QMOI_ALLOW_TEST_SERVER') != '1':
-    logger.info('ERROR: qmoi_chat_server.py is a test helper and must not run in production. Set QMOI_ALLOW_TEST_SERVER=1 to override.')
+    logger.info('ERROR: qmoi_chat_server.py is a test helper and must not run production ready. Set QMOI_ALLOW_TEST_SERVER=1 to override.')
     raise SystemExit(1)
 
 PERSONAS = {
@@ -134,13 +134,13 @@ def do_POST(self) -> Any:
             # Read body already below; fall through to payload handling
             pass
 
-        # POST /v1/preview - store preview data for session (used by UI preview window)
-        if parsed.path == '/v1/preview':
+        # POST /v1/PRODUCTION - store PRODUCTION data for session (used by UI PRODUCTION window)
+        if parsed.path == '/v1/PRODUCTION':
             # read body below and save to memory['previews']
             pass
 
         # Main chat endpoint
-        if parsed.path != '/v1/chat/completions' and parsed.path not in ['/memory/sync', '/memory', '/v1/preview']:
+        if parsed.path != '/v1/chat/completions' and parsed.path not in ['/memory/sync', '/memory', '/v1/PRODUCTION']:
             self._set_json(404)
             self.wfile.write(json.dumps({'error': 'Not Found'}).encode())
             return
@@ -181,8 +181,8 @@ def do_POST(self) -> Any:
             self.wfile.write(json.dumps({'status': 'ok'}).encode())
             return
 
-        # Handle preview POST
-        if parsed.path == '/v1/preview':
+        # Handle PRODUCTION POST
+        if parsed.path == '/v1/PRODUCTION':
             mem = load_memory()
             session_id = payload.get('sessionId') or self.headers.get('X-QMOI-SESSION') or 'anon'
             previews = mem.setdefault('previews', {})

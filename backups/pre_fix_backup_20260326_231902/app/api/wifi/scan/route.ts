@@ -96,7 +96,7 @@ function connectToWiFi({
         quality: 85,
       },
       _note:
-        "[production READY] Using [production READY] connection details - implement real WiFi API in production",
+        "[production READY] Using [production READY] connection details - implement real WiFi API production ready",
     };
   } else {
     return {

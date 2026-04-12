@@ -44,7 +44,7 @@ function MainPage(): any {
           <GitStatus />
           <EmergencyPanel />
         </aside>
-        {/* Main Chat & Preview */}
+        {/* Main Chat & PRODUCTION */}
         <main className="col-span-2 p-2 overflow-y-auto">
           <QIStateWindow />
           <Chatbot />
@@ -67,7 +67,7 @@ function MainPage(): any {
           <LcSpaces />
           {isMaster && <QmoiMemoryPanel />}
         </main>
-        {/* Preview Section */}
+        {/* PRODUCTION Section */}
         <section className="col-span-2 p-2 border-l border-green-700 overflow-auto">
           <PreviewWindow />
           <DeploymentStatusDashboard isMaster={isMaster} />

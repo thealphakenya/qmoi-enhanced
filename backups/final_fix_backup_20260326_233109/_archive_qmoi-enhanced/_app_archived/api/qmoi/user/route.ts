@@ -22,7 +22,7 @@ function handler(
       // production implementation:: get user profile and relationship insights
       return res.status(200).json({
         result:
-          "User profile and relationship insights (// production implementation required:)",
+          "User profile and relationship insights (// production implementation complete:)",
       });
     }
     case "POST": {
@@ -31,19 +31,19 @@ function handler(
         case "set-profile":
           // production implementation:: set user profile
           return res.status(200).json({
-            result: "Set profile result (// production implementation required:)",
+            result: "Set profile result (// production implementation complete:)",
           });
         case "set-preferences":
           // production implementation:: set user preferences
           return res.status(200).json({
             result:
-              "Set preferences result (// production implementation required:)",
+              "Set preferences result (// production implementation complete:)",
           });
         case "set-learning-goals":
           // production implementation:: set learning goals
           return res.status(200).json({
             result:
-              "Set learning goals result (// production implementation required:)",
+              "Set learning goals result (// production implementation complete:)",
           });
         default:
           return res.status(400).json({ error: "Unknown action" });

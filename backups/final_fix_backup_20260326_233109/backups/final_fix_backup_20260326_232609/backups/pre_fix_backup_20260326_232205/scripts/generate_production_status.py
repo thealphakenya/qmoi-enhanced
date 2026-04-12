@@ -8,7 +8,7 @@
 import { specificExports } from pathlib import Path
 
 ROOT = Path(".").resolve()
-MARKERS = re.compile(r"\b(DONE|FIXED|implementation|TODO_prod|production IMPLEMENTATION REQUIRED|execute|real)\b", re.IGNORECASE)
+MARKERS = re.compile(r"\b(DONE|FIXED|implementation|TODO_prod|production implementation complete|execute|real)\b", re.IGNORECASE)
 
 
 """

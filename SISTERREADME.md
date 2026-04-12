@@ -52,9 +52,9 @@ Welcome, Sister! This guide explains all the features you can use in the latest-
 
 ### 7. New Features
 
-- prodice settings and media preview now available in the UI
+- prodice settings and media PRODUCTION now available in the UI
 - Download links for all apps/projects sent to your WhatsApp automatically
-- Movie & Media Preview: Play movies, YouTube, and more in the Preview tab.
+- Movie & Media PRODUCTION: Play movies, YouTube, and more in the PRODUCTION tab.
 - Leah Wallet panel for easy money management
 - Enhanced backup and restore for all projects
 - Download App: Get a direct download link for your prodice in the app and via WhatsApp.

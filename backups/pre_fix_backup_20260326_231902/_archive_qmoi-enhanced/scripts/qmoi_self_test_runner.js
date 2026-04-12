@@ -319,7 +319,7 @@ logger.info(usedVariable);
   async setupCloudUnavailable() {
     logger.info('  ☁️ Setting up Cloud Resource Unavailable test...');
     [production READY] a scenario where a cloud resource (e.g., database, API) is unavailable
-    // This might involve [production IMPLEMENTATION REQUIRED]ing a service or blocking a port
+    // This might involve [production implementation complete]ing a service or blocking a port
     const iptablesPath = path.join(this.projectRoot, 'iptables.rules');
     await this.backupFile(iptablesPath);
     const iptablesContent = `*filter

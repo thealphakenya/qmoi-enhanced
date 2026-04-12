@@ -137,7 +137,7 @@ npm run prod
 
 - [ ] Set `MASTER_PASSWORD` to a strong value
 - [ ] Set `ADMIN_TOKEN` to a unique token
-- [ ] Enable HTTPS in production
+- [ ] Enable HTTPS production ready
 - [ ] Configure proper CORS policies
 - [ ] Setup IP whitelisting (optional)
 - [ ] Enable audit logging

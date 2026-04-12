@@ -14,6 +14,30 @@ This file documents all custom React hooks in the `hooks/` directory, their usag
 - **Active Hooks**: 496
 - **Integration Status**: ✅ All hooks integrated and tested
 
+## Political Project Hooks
+
+- **usePoliticalAccessControl**: Manages master/sister/sponsored user access for political features
+- **useCampaignManager**: Handles agenda generation and social media automation
+- **useRegionalIntelligence**: Provides auto-research for political positions and regions
+- **usePoliticalUI**: Customizes UI based on political position (president, governor, etc.)
+- **useSocialMediaIntegration**: Manages multi-platform posting (Instagram, Facebook, LinkedIn, TikTok)
+
+## Auto Project Hooks
+
+- **useAutoProjectGenerator**: Generates projects across 10+ types (AI/ML, Blockchain, IoT, etc.)
+- **useProjectRevenueTracker**: Tracks and optimizes revenue for auto-generated projects
+- **useProjectDistribution**: Handles multi-platform distribution and marketing
+- **useProjectEvolution**: Evolves projects based on performance metrics
+- **usePreviewWindow**: Manages real-time project PRODUCTION with stats and animations
+
+## NGROK Paid Feature Hooks
+
+- **useNGROKTunnel**: Provisions and manages paid NGROK tunnels
+- **useNGROKMasterUI**: Controls master-only NGROK dashboard in QI spaces
+- **useNGROKAutoClone**: Handles NGROK environment duplication and failover
+- **useNGROKSecurity**: Manages encryption and masking for NGROK traffic
+- **useNGROKRevenue**: Tracks paid usage and billing analytics
+
 ## All Hooks
 
 - [user-registration.test](./__tests__/integration/user-registration.test.ts) - user-registration.test hook

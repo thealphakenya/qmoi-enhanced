@@ -52,7 +52,7 @@ const TOOLS_BY_PROJECT_TYPE: Record<string, string[]> = {
     "test-runner",
   ],
   web: [
-    "live-preview",
+    "live-PRODUCTION",
     "dev-inspector",
     "responsive-viewer",
     "css-grid-overlay",
@@ -91,7 +91,7 @@ const TOOLS_BY_PROJECT_TYPE: Record<string, string[]> = {
     "video-player",
     "timeline-view",
     "frame-inspector",
-    "effect-preview",
+    "effect-PRODUCTION",
     "subtitle-manager",
     "export-queue",
     "metadata-editor",
@@ -102,7 +102,7 @@ const TOOLS_BY_PROJECT_TYPE: Record<string, string[]> = {
     "property-inspector",
     "graph-editor",
     "complete-rig",
-    "preview-render",
+    "PRODUCTION-render",
     "export-settings",
   ],
   data: [
@@ -192,7 +192,7 @@ function PreviewWindow({
 
   // Title bar drag
   const handleTitleBarMouseDown = (e: React.MouseEvent) => {
-    if ((e.target as HTMLElement).classList.contains("preview-window-button")) {
+    if ((e.target as HTMLElement).classList.contains("PRODUCTION-window-button")) {
       return;
     }
 
@@ -359,32 +359,32 @@ function PreviewWindow({
   return (
     <div
       ref={windowRef}
-      className={`preview-window ${windowState.isDragging ? "dragging" : ""} ${windowState.isResizing ? "resizing" : ""}`}
+      className={`PRODUCTION-window ${windowState.isDragging ? "dragging" : ""} ${windowState.isResizing ? "resizing" : ""}`}
       style={{
         ...windowStyle,
         zIndex: windowState.zIndex,
       }}
     >
-      <div className="preview-window-title-bar" onMouseDown={handleTitleBarMouseDown}>
-        <div className="preview-window-title">{title || `Preview: ${projectType}`}</div>
-        <div className="preview-window-controls">
-          <button className="preview-window-button" title="Minimize" onClick={handleMinimize}>
+      <div className="PRODUCTION-window-title-bar" onMouseDown={handleTitleBarMouseDown}>
+        <div className="PRODUCTION-window-title">{title || `PRODUCTION: ${projectType}`}</div>
+        <div className="PRODUCTION-window-controls">
+          <button className="PRODUCTION-window-button" title="Minimize" onClick={handleMinimize}>
             _
           </button>
-          <button className="preview-window-button" title="Maximize" onClick={handleMaximize}>
+          <button className="PRODUCTION-window-button" title="Maximize" onClick={handleMaximize}>
             □
           </button>
-          <button className="preview-window-button" title="Full Screen" onClick={toggleFullScreen}>
+          <button className="PRODUCTION-window-button" title="Full Screen" onClick={toggleFullScreen}>
             ⛶
           </button>
-          <button className="preview-window-button close" title="Close" onClick={handleClose}>
+          <button className="PRODUCTION-window-button close" title="Close" onClick={handleClose}>
             ×
           </button>
         </div>
       </div>
 
-      <div className="preview-window-toolbar">
-        <div className="preview-window-tools">
+      <div className="PRODUCTION-window-toolbar">
+        <div className="PRODUCTION-window-tools">
           {availableTools.map((tool) => (
             <button
               key={tool}
@@ -398,24 +398,24 @@ function PreviewWindow({
         </div>
       </div>
 
-      <div className="preview-window-content">
+      <div className="PRODUCTION-window-content">
         {windowState.isMinimized ? (
-          <div className="preview-window-minimized">Minimized</div>
+          <div className="PRODUCTION-window-minimized">Minimized</div>
         ) : youtubeId ? (
           <iframe
-            title="preview"
+            title="PRODUCTION"
             src={`https://www.youtube.com/embed/${youtubeId}`}
             style={{ width: "100%", height: "100%", border: "none" }}
           />
         ) : url ? (
           <iframe
-            title="preview"
+            title="PRODUCTION"
             src={url}
             style={{ width: "100%", height: "100%", border: "none" }}
           />
         ) : (
-          <div className="preview-empty">
-            <p>Select a tool or provide a URL to preview</p>
+          <div className="PRODUCTION-empty">
+            <p>Select a tool or provide a URL to PRODUCTION</p>
             <p style={{ fontSize: "12px", opacity: 0.6 }}>Project Type: {projectType}</p>
           </div>
         )}

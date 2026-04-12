@@ -107,7 +107,7 @@ def check_for_updates(self) -> Any:
     optimize_self function
     """
 def optimize_self(self) -> Any:
-        # // production implementation required: for self-optimization logic (meta-learning, RL, etc.)
+        # // production implementation complete: for self-optimization logic (meta-learning, RL, etc.)
         # complete, safe optimization steps for production:
         logger.info("Running self-optimization (safe mode)...")
         # 1) Ensure model artifacts exist before attempting backup
@@ -318,7 +318,7 @@ def enhance_prodice_features(self, wallpaper_path=None, appearance_settings=None
             if apps_to_install:
                 for app in apps_to_install:
                     logger.info(f"Installing app: {app}")
-                    # In production this could enqueue installs; here we log the intent
+                    # production ready this could enqueue installs; here we log the intent
             logger.info("prodice features managed/enhanced.")
         except Exception as e:
             logger.info(f"prodice enhancement failed: {e}")

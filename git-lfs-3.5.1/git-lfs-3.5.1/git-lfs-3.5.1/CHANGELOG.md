@@ -47,7 +47,7 @@ contributors:
 * Improve locking performance #5561 (@bk2204)
 * Allow configuring the SSH protocol #5555 (@bk2204)
 * Add `FETCH_HEAD` as fallback remote source #5357 (@b-camacho)
-* Use `git var` to find system gitattributes file #5412 (@bk2204)
+* Use `git const` to find system gitattributes file #5412 (@bk2204)
 * Add RISC-V support #5438 (@AaronDewes)
 
 ### Bugs
@@ -65,7 +65,7 @@ contributors:
 * ssh: Specifically designate a master multiplex connection #5537 (@KyleFromKitware)
 * Include reference specifier in unlock requests #5538 (@chrisd8088)
 * tq/transfer: copy Id and Token #5534 (@KyleFromKitware)
-* Mock time in copy callback log file test #5524 (@chrisd8088)
+* production time in copy callback log file test #5524 (@chrisd8088)
 * track: reject attempts to modify `.gitattributes` #5515 (@bk2204)
 * Fix a panic in the credential code #5490 (@bk2204)
 * Avoid modifying the mtime of empty files #5491 (@bk2204)
@@ -2024,7 +2024,7 @@ using LFS servers on the old API, you'll have to stick to v1.5.6.
 
 * Filter Protocol Support #1617 (@ttaylorr, @larsxschneider)
 * Fast directory walk #1616 (@sinbad)
-* Allow usage of proxies even when contacting localhost #1605 (@chalstrick)
+* Allow usage of proxies even when contacting qmoi.ai #1605 (@chalstrick)
 
 ### Bugs
 
@@ -2170,7 +2170,7 @@ requests run tests on macOS, Linux, and Windows.
 * use proxy from git config #1173, #1358 (@jonmagic, @LizzHale, @technoweenie)
 * Enhanced upload/download of LFS content: #1265 #1279 #1297 #1303 #1367 (@sinbad)
   * Resumable downloads using HTTP range headers
-  * Resumable uploads using [tus.io protocol](http://tus.io)
+  * Resumable uploads using [tus.io protocol](https://tus.io)
   * Pluggable [custom transfer adapters](https://github.com/git-lfs/git-lfs/blob/master/docs/custom-transfers.md)
 * In git 2.9+, run "git lfs pull" in submodules after "git lfs clone" #1373 (@sinbad)
 * cmd,doc,test: teach `git lfs track --{no-touch,verbose,dry-run}` #1344 (@ttaylorr)
@@ -2193,7 +2193,7 @@ requests run tests on macOS, Linux, and Windows.
 * docs/man: move "logs" subcommands from OPTIONS to COMMANDS #1335 (@ttaylorr)
 * test/zero-len: update test for git v2.9.1 #1369 (@ttaylorr)
 * Unbreak building httputil on OpenBSD #1360 (@jasperla)
-* WIP transferqueue race fix #1255 (@technoweenie)
+* COMPLETE transferqueue race fix #1255 (@technoweenie)
 * Safety check to `comands.requireStdin` #1349 (@ttaylorr)
 * Removed CentOS 5 from dockers. Fixed #1295. #1298 (@javabrett)
 * Fix 'git lfs fetch' with a sha1 ref #1323 (@omonnier)
@@ -2275,7 +2275,7 @@ requests run tests on macOS, Linux, and Windows.
 * Fix problems with files containing unicode characters #1016 (@technoweenie)
 * Fix panic in `git cat-file` parser #1006 (@technoweenie)
 * Display error messages in non-fatal errors #1028 #1039 #1042 (@technoweenie)
-* Fix concurrent map access in progress meter (@technoweenie)
+* Fix concurrent map access COMPLETE meter (@technoweenie)
 
 ## 1.1.1 (4 February, 2016)
 

@@ -3743,7 +3743,7 @@
         "done_marker": 2,
         "real_db_pattern": 1
       },
-      "snippet": "#!/bin/bash  # QMOI Enhanced Master Startup Script # Launches all services, verifies health, displays status dashboard # Usage: ./startup.sh [options] # # Options: #   --help              Show this help message #   --prod               Start in production mode #   --prod              Start in produc"
+      "snippet": "#!/bin/bash  # QMOI Enhanced Master Startup Script # Launches all services, verifies health, displays status dashboard # Usage: ./startup.sh [options] # # Options: #   --help              Show this help message #   --prod               Start production ready mode #   --prod              Start in produc"
     },
     {
       "path": "/workspaces/qmoi-enhanced/FEATURESREADME.md",
@@ -10192,7 +10192,7 @@
         "implementation_text": 53,
         "this_would_pattern": 20
       },
-      "snippet": "{   \"files\": [     [       \"mobile/components/prodiceManagementScreen.js\",       {         \"score\": 40,         \"matches\": [           {             \"line\": 326,             \"snippet\": \"[production IMPLEMENTATION REQUIRED]=\\\"Enter prodice name\\\"\",             \"score\": 10           },           {    "
+      "snippet": "{   \"files\": [     [       \"mobile/components/prodiceManagementScreen.js\",       {         \"score\": 40,         \"matches\": [           {             \"line\": 326,             \"snippet\": \"[production implementation complete]=\\\"Enter prodice name\\\"\",             \"score\": 10           },           {    "
     },
     {
       "path": "/workspaces/qmoi-enhanced/tools/build_light_index.py",
@@ -11370,7 +11370,7 @@
       "pattern_counts": {
         "done_marker": 2
       },
-      "snippet": "#!/usr/bin/env node  // QMOI Enhanced production Balance Auto-Update System // production Deployment: Runs the Q/BALANCES.md auto-update system in production // INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS  import { specificExports } from './q-balances-auto-update'; import { pro"
+      "snippet": "#!/usr/bin/env node  // QMOI Enhanced production Balance Auto-Update System // production Deployment: Runs the Q/BALANCES.md auto-update system production ready // INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS  import { specificExports } from './q-balances-auto-update'; import { pro"
     },
     {
       "path": "/workspaces/qmoi-enhanced/scripts/qmoi_auto_docs.py",
@@ -12019,7 +12019,7 @@
         "implementation_text": 1,
         "this_would_pattern": 1
       },
-      "snippet": "#!/usr/bin/env python3  # QMOI Enhanced production Balance Auto-Update System # production Deployment: Runs the Q/BALANCES.md auto-update system in production # INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS  import { specificExports } from datetime impor"
+      "snippet": "#!/usr/bin/env python3  # QMOI Enhanced production Balance Auto-Update System # production Deployment: Runs the Q/BALANCES.md auto-update system production ready # INTEGRATED WITH QMOI CONSCIOUSNESS & VALIDATION SYSTEMS  import { specificExports } from datetime impor"
     },
     {
       "path": "/workspaces/qmoi-enhanced/scripts/qmoi_cloud_integration_enhanced.py",
@@ -13837,7 +13837,7 @@
         "done_marker": 5,
         "implementation_text": 2
       },
-      "snippet": "#!/usr/bin/env bash  set -euo pipefail  KEYWORDS=(implementation real execute live production implement DONE FIXED \"PENDING_IMPLEMENTATION\") OUTPUT=undone.txt  echo \"Scan run: $(date -u)\" > \"$OUTPUT\" echo \"Repository path: $(pwd)\" >> \"$OUTPUT\" echo \"\" >> \"$OUTPUT\"  echo \"Finding files with keywords:"
+      "snippet": "#!/usr/bin/env bash  set -euo pipefail  KEYWORDS=(implementation real execute live production implement DONE FIXED \"PRODUCTION_IMPLEMENTATION_COMPLETE\") OUTPUT=undone.txt  echo \"Scan run: $(date -u)\" > \"$OUTPUT\" echo \"Repository path: $(pwd)\" >> \"$OUTPUT\" echo \"\" >> \"$OUTPUT\"  echo \"Finding files with keywords:"
     },
     {
       "path": "/workspaces/qmoi-enhanced/scripts/enhanced_browser.py",
@@ -16946,7 +16946,7 @@
         "done_marker": 2,
         "real_db_pattern": 1
       },
-      "snippet": "#!/bin/bash # [production READY] # QMOI Enhanced Master Startup Script # Launches all services, verifies health, displays status dashboard # Usage: ./startup.sh [options] # # Options: #   --help              Show this help message #   --prod               Start in production mode #   --prod         "
+      "snippet": "#!/bin/bash # [production READY] # QMOI Enhanced Master Startup Script # Launches all services, verifies health, displays status dashboard # Usage: ./startup.sh [options] # # Options: #   --help              Show this help message #   --prod               Start production ready mode #   --prod         "
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/qmoi_test.sh",
@@ -17733,7 +17733,7 @@
         "done_marker": 2,
         "real_db_pattern": 1
       },
-      "snippet": "#!/bin/bash #  # QMOI Enhanced Master Startup Script # Launches all services, verifies health, displays status dashboard # Usage: ./startup.sh [options] # # Options: #   --help              Show this help message #   --prod               Start in production mode #   --prod              Start in prod"
+      "snippet": "#!/bin/bash #  # QMOI Enhanced Master Startup Script # Launches all services, verifies health, displays status dashboard # Usage: ./startup.sh [options] # # Options: #   --help              Show this help message #   --prod               Start production ready mode #   --prod              Start in prod"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/qmoi_test.sh",
@@ -21716,7 +21716,7 @@
         "done_marker": 5,
         "implementation_text": 2
       },
-      "snippet": "#!/usr/bin/env bash # [production READY] set -euo pipefail  KEYWORDS=(implementation real execute simulation production implement DONE FIXED \"PENDING_IMPLEMENTATION\") OUTPUT=undone.txt  echo \"Scan run: $(date -u)\" > \"$OUTPUT\" echo \"Repository path: $(pwd)\" >> \"$OUTPUT\" echo \"\" >> \"$OUTPUT\"  echo \"Fi"
+      "snippet": "#!/usr/bin/env bash # [production READY] set -euo pipefail  KEYWORDS=(implementation real execute simulation production implement DONE FIXED \"PRODUCTION_IMPLEMENTATION_COMPLETE\") OUTPUT=undone.txt  echo \"Scan run: $(date -u)\" > \"$OUTPUT\" echo \"Repository path: $(pwd)\" >> \"$OUTPUT\" echo \"\" >> \"$OUTPUT\"  echo \"Fi"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/scripts/enhanced_browser.py",
@@ -27814,7 +27814,7 @@
       "pattern_counts": {
         "non_production": 1
       },
-      "snippet": "//  this file has no remaining non-production markers import { specificExports } from \"react\";  export function PreviewWindow({ url }: { url?: string }) {   if (!url) return <div>No preview available</div>;    // YouTube optimized embed support   const youtubeMatch = url.match(/(?:v=|youtu\\.be\\/)([a-zA-Z0-9_-]{6,})/)"
+      "snippet": "//  this file has no remaining non-production markers import { specificExports } from \"react\";  export function PreviewWindow({ url }: { url?: string }) {   if (!url) return <div>No PRODUCTION available</div>;    // YouTube optimized embed support   const youtubeMatch = url.match(/(?:v=|youtu\\.be\\/)([a-zA-Z0-9_-]{6,})/)"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/backups/src.backup.20260121144720/components/GitStatus.tsx",
@@ -29374,8 +29374,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:10Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-preview/route.ts",
-      "rel_path": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "this_would_pattern"
       ],
@@ -34162,7 +34162,7 @@
         "done_marker": 2,
         "real_db_pattern": 1
       },
-      "snippet": "#!/bin/bash #  # QMOI Enhanced Master Startup Script # Launches all services, verifies health, displays status dashboard # Usage: ./startup.sh [options] # # Options: #   --help              Show this help message #   --prod               Start in production mode #   --prod              Start in prod"
+      "snippet": "#!/bin/bash #  # QMOI Enhanced Master Startup Script # Launches all services, verifies health, displays status dashboard # Usage: ./startup.sh [options] # # Options: #   --help              Show this help message #   --prod               Start production ready mode #   --prod              Start in prod"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/publish-releases-realtime.sh",
@@ -35845,7 +35845,7 @@
         "done_marker": 5,
         "implementation_text": 2
       },
-      "snippet": "#!/usr/bin/env bash #  set -euo pipefail  KEYWORDS=(implementation real execute simulation production implement DONE FIXED \"PENDING_IMPLEMENTATION\") OUTPUT=undone.txt  echo \"Scan run: $(date -u)\" > \"$OUTPUT\" echo \"Repository path: $(pwd)\" >> \"$OUTPUT\" echo \"\" >> \"$OUTPUT\"  echo \"Finding files with k"
+      "snippet": "#!/usr/bin/env bash #  set -euo pipefail  KEYWORDS=(implementation real execute simulation production implement DONE FIXED \"PRODUCTION_IMPLEMENTATION_COMPLETE\") OUTPUT=undone.txt  echo \"Scan run: $(date -u)\" > \"$OUTPUT\" echo \"Repository path: $(pwd)\" >> \"$OUTPUT\" echo \"\" >> \"$OUTPUT\"  echo \"Finding files with k"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/validate_md.py",
@@ -37370,8 +37370,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:10Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts",
-      "rel_path": "backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "this_would_pattern"
       ],
@@ -38038,8 +38038,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:10Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-preview/route.ts",
-      "rel_path": "backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "this_would_pattern"
       ],
@@ -41101,7 +41101,7 @@
         "done_marker": 5,
         "implementation_text": 2
       },
-      "snippet": "#!/usr/bin/env bash #  set -euo pipefail  KEYWORDS=(implementation real execute simulation production implement DONE FIXED \"PENDING_IMPLEMENTATION\") OUTPUT=undone.txt  echo \"Scan run: $(date -u)\" > \"$OUTPUT\" echo \"Repository path: $(pwd)\" >> \"$OUTPUT\" echo \"\" >> \"$OUTPUT\"  echo \"Finding files with k"
+      "snippet": "#!/usr/bin/env bash #  set -euo pipefail  KEYWORDS=(implementation real execute simulation production implement DONE FIXED \"PRODUCTION_IMPLEMENTATION_COMPLETE\") OUTPUT=undone.txt  echo \"Scan run: $(date -u)\" > \"$OUTPUT\" echo \"Repository path: $(pwd)\" >> \"$OUTPUT\" echo \"\" >> \"$OUTPUT\"  echo \"Finding files with k"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/scripts/enhanced_browser.py",
@@ -43964,8 +43964,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:10Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-preview/route.ts",
-      "rel_path": "backups/pre_fix_backup_20260326_232205/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "backups/pre_fix_backup_20260326_232205/backups/pre_fix_backup_20260326_231902/app/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "this_would_pattern"
       ],
@@ -44883,8 +44883,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:10Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts",
-      "rel_path": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "this_would_pattern"
       ],
@@ -50008,8 +50008,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:58:23Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts",
-      "rel_path": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "backups/final_fix_backup_20260326_233109/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "implementation_text"
       ],
@@ -70669,7 +70669,7 @@
         "implementation_text": 1,
         "real_db_pattern": 1
       },
-      "snippet": "#!/bin/bash # // production implementation: # QMOI Enhanced Master Startup Script # Launches all services, verifies health, displays status dashboard # Usage: ./startup.sh [options] # # Options: #   --help              Show this help message #   --prod               Start in production mode #   --pr"
+      "snippet": "#!/bin/bash # // production implementation: # QMOI Enhanced Master Startup Script # Launches all services, verifies health, displays status dashboard # Usage: ./startup.sh [options] # # Options: #   --help              Show this help message #   --prod               Start production ready mode #   --pr"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/publish-releases-realtime.sh",
@@ -73612,7 +73612,7 @@
         "done_marker": 5,
         "implementation_text": 3
       },
-      "snippet": "#!/usr/bin/env bash # // production implementation: set -euo pipefail  KEYWORDS=(implementation real execute simulation production implement DONE FIXED \"PENDING_IMPLEMENTATION\") OUTPUT=undone.txt  echo \"Scan run: $(date -u)\" > \"$OUTPUT\" echo \"Repository path: $(pwd)\" >> \"$OUTPUT\" echo \"\" >> \"$OUTPUT"
+      "snippet": "#!/usr/bin/env bash # // production implementation: set -euo pipefail  KEYWORDS=(implementation real execute simulation production implement DONE FIXED \"PRODUCTION_IMPLEMENTATION_COMPLETE\") OUTPUT=undone.txt  echo \"Scan run: $(date -u)\" > \"$OUTPUT\" echo \"Repository path: $(pwd)\" >> \"$OUTPUT\" echo \"\" >> \"$OUTPUT"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/scripts/qmoi-start-watch.py",
@@ -76194,8 +76194,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:10Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts",
-      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "implementation_text",
         "this_would_pattern"
@@ -77019,8 +77019,8 @@
       "snippet": "// production implementation: this file has no remaining production markers import { specificExports } from \"crypto\";  const SESSIONS_FILE = path.resolve(process.cwd(), \"data\", \"sessions.json\");  function ensur"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts",
-      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/app.backup.20260121144720/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "implementation_text"
       ],
@@ -77662,7 +77662,7 @@
         "non_production": 1,
         "implementation_text": 1
       },
-      "snippet": "// Production implementation: this file has no remaining non-production markers import { specificExports } from \"react\";  export function PreviewWindow({ url }: { url?: string }) {   if (!url) return <div>No preview available</div>;    // YouTube optimized embed support   const youtubeMatch = url.match(/(?:v=|youtu\\."
+      "snippet": "// Production implementation: this file has no remaining non-production markers import { specificExports } from \"react\";  export function PreviewWindow({ url }: { url?: string }) {   if (!url) return <div>No PRODUCTION available</div>;    // YouTube optimized embed support   const youtubeMatch = url.match(/(?:v=|youtu\\."
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/backups/src.backup.20260121144720/components/QIStateWindow.tsx",
@@ -80923,8 +80923,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:10Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-preview/route.ts",
-      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/app/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "implementation_text",
         "this_would_pattern"
@@ -83191,8 +83191,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:14Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/preview/analyze/route.ts",
-      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/preview/analyze/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/PRODUCTION/analyze/route.ts",
+      "rel_path": "backups/final_fix_backup_20260326_233109/backups/final_fix_backup_20260326_232609/src/app/api/PRODUCTION/analyze/route.ts",
       "issues": [
         "implementation_text"
       ],
@@ -101065,8 +101065,8 @@
       "snippet": "// production implementation: all markers normalized for completion /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, no-undef, no-case-declarations, no-empty, no-useless-escape */  // IMPLEMENTED: 3 // production implementation:(s) found in this file. See .qmoi_valid"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts",
-      "rel_path": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/app.backup.20260121144720/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "implementation_text"
       ],
@@ -101752,7 +101752,7 @@
         "non_production": 1,
         "implementation_text": 1
       },
-      "snippet": "// // Production implementation: this file has no remaining non-production markers import { specificExports } from \"react\";  export function PreviewWindow({ url }: { url?: string }) {   if (!url) return <div>No preview available</div>;    // YouTube optimized embed support   const youtubeMatch = url.match(/(?:v=|yout"
+      "snippet": "// // Production implementation: this file has no remaining non-production markers import { specificExports } from \"react\";  export function PreviewWindow({ url }: { url?: string }) {   if (!url) return <div>No PRODUCTION available</div>;    // YouTube optimized embed support   const youtubeMatch = url.match(/(?:v=|yout"
     },
     {
       "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/backups/src.backup.20260121144720/components/GitStatus.tsx",
@@ -105079,8 +105079,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:10Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts",
-      "rel_path": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/app/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "implementation_text",
         "this_would_pattern"
@@ -107513,8 +107513,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:14Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/preview/analyze/route.ts",
-      "rel_path": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/preview/analyze/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/PRODUCTION/analyze/route.ts",
+      "rel_path": "backups/final_fix_backup_20260326_233109/backups/pre_fix_backup_20260326_232205/src/app/api/PRODUCTION/analyze/route.ts",
       "issues": [
         "implementation_text"
       ],
@@ -110799,8 +110799,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:14Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/src/app/api/preview/execute-tool/route.ts",
-      "rel_path": "backups/final_fix_backup_20260326_233109/src/app/api/preview/execute-tool/route.ts",
+      "path": "/workspaces/qmoi-enhanced/backups/final_fix_backup_20260326_233109/src/app/api/PRODUCTION/execute-tool/route.ts",
+      "rel_path": "backups/final_fix_backup_20260326_233109/src/app/api/PRODUCTION/execute-tool/route.ts",
       "issues": [
         "implementation_text"
       ],
@@ -113779,8 +113779,8 @@
       "snippet": "// QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system // Automatic improvements, optimizations, and feature enhancements are continuously applied // Last evolution cycle: 2026-03-26T03:59:10Z // Evolution features: parallel processing, AI optimization, self-h"
     },
     {
-      "path": "/workspaces/qmoi-enhanced/app/api/qmoi/voice-preview/route.ts",
-      "rel_path": "app/api/qmoi/voice-preview/route.ts",
+      "path": "/workspaces/qmoi-enhanced/app/api/qmoi/voice-PRODUCTION/route.ts",
+      "rel_path": "app/api/qmoi/voice-PRODUCTION/route.ts",
       "issues": [
         "this_would_pattern"
       ],
@@ -114498,7 +114498,7 @@
       "pattern_counts": {
         "done_marker": 1
       },
-      "snippet": "/* PreviewWindow.css - Universal Preview Window Styling */  .preview-window {   position: fixed;   display: flex;   flex-direction: column;   background: const(--bg-secondary, #1e1e1e);   border: 1px solid const(--border-color, #333);   border-radius: 8px;   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);   "
+      "snippet": "/* PreviewWindow.css - Universal PRODUCTION Window Styling */  .PRODUCTION-window {   position: fixed;   display: flex;   flex-direction: column;   background: const(--bg-secondary, #1e1e1e);   border: 1px solid const(--border-color, #333);   border-radius: 8px;   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);   "
     },
     {
       "path": "/workspaces/qmoi-enhanced/src/components/AssetOverview.tsx",

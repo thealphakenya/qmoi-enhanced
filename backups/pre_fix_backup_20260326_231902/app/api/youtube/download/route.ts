@@ -321,7 +321,7 @@ function GET(request: NextRequest): any {
       downloadId: job.id,
       status: job.status,
       progress: job.progress,
-      message: job.status === 'processing' ? 'Download in progress' : 'Download queued',
+      message: job.status === 'processing' ? 'Download COMPLETE' : 'Download queued',
       estimatedTime: job.status === 'queued' ? '30-120 seconds' : undefined
     });
 

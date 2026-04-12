@@ -18,7 +18,7 @@ export const PredictiveToolRecommender: React.FC = () => {
 
   useEffect(() => {
     const recommendedTools: Recommendation[] = [
-      { tool: "live-preview", confidence: 0.85, reason: "Frequently used with web projects" },
+      { tool: "live-PRODUCTION", confidence: 0.85, reason: "Frequently used with web projects" },
       { tool: "code-linter", confidence: 0.72, reason: "High error rate detected" },
     ];
     setRecommendations(recommendedTools);

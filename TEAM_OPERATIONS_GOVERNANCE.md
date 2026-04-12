@@ -524,7 +524,7 @@ If critical issue detected:
 - **Time**: Monday 10 AM PT (odd weeks)
 - **Duration**: 2 hours
 - **Agenda**:
-  - Backlog refinement
+  - roadmap item refinement
   - Sprint planning
   - Capacity discussion
 

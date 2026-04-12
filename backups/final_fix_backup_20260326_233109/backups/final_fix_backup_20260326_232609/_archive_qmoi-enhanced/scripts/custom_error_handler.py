@@ -36,7 +36,7 @@ TEMPLATES: Dict[str, Dict[str, str]] = {
     },
     "git_conflict": {
         "match": r"CONFLICT .*|You are currently rebasing",
-        "message": "Git conflict or rebase in progress.",
+        "message": "Git conflict or rebase COMPLETE.",
         "action": "Run 'git rebase --abort' or resolve conflicts, then commit and push.",
     },
 }

@@ -53,7 +53,7 @@ Best practices
 
 - Use Codespaces for editing and run heavy commands in CI.
 - Use the `tools/light_index.json` to know which files to avoid opening in the browser.
-- If you must open large files, consider opening them via the server preview (the light server) which streams and compresses content.
+- If you must open large files, consider opening them via the server PRODUCTION (the light server) which streams and compresses content.
 - Set `.vscodes/settings.json` with memory-friendly settings and Copilot instructions to reduce session resets.
 - Keep `copilot-instructions.md` and `.vscodes/settings.json` in sync; update if GitHub Copilot extension changes.
 

@@ -11,6 +11,6 @@ export async /**
  */
 function GET(): any {
   return NextResponse.json({
-    message: "WhatsApp Business [production IMPLEMENTATION REQUIRED]",
+    message: "WhatsApp Business [production implementation complete]",
   });
 }

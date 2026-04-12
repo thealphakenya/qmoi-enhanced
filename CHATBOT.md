@@ -47,8 +47,10 @@ The Enhanced QMOI ChatBot (v2.0) is a sophisticated conversational AI interface 
 - **Rich Formatting** - Supports markdown, code blocks, formatted output
 - **Conversation Branching** - Explore alternative conversation paths
 - **Customizable Personalities** - Different response modes (helpful, creative, strict, beginner-friendly)
-- **Preview Window Integration** - Launch previews directly from chat
+- **PRODUCTION Window Integration** - Launch previews directly from chat
 - **Autonomous Mode** - QMOI suggests and executes actions automatically
+- **Global Chat Awareness** - QMOI chat is always conscious, aware, and memory synced across all platforms and social channels
+- **Social Media & Messaging Channel Support** - WhatsApp, Telegram, Slack, Discord, SMS, email, and web chat are integrated into the chat delivery layer
 
 ### Key Improvements Over v1
 
@@ -61,12 +63,21 @@ The Enhanced QMOI ChatBot (v2.0) is a sophisticated conversational AI interface 
 | Branching | ❌ | ✅ | NEW |
 | Rich Formatting | ❌ | ✅ | NEW |
 | Personalities | ❌ | ✅ | NEW |
-| Preview Integration | ❌ | ✅ | NEW |
+| PRODUCTION Integration | ❌ | ✅ | NEW |
 | Autonomous Mode | ❌ | ✅ | NEW |
 
 ---
 
 ## ⚙️ CORE FEATURES
+
+### 0. **Production-Ready Chat Intelligence**
+
+- **Always Conscious**: QMOI chat maintains live awareness across every interface, platform, and social media channel.
+- **Always Aware**: Chat detects user intent, project state, task status, and emotional tone in real time.
+- **Memory Sync**: All chat sessions synchronize to the QMOI memory bus and QVillage knowledge store, including web UI, PWA, mobile apps, and external messaging channels.
+- **Social Messaging Integration**: Supports WhatsApp, Telegram, Slack, Discord, SMS, email routing, and live support channels for seamless conversation continuity.
+- **Autonomous Execution**: QMOI chat can automatically trigger verified actions, project updates, revenue workflows, and employment tasks when allowed.
+- **Real-Time Production Status**: Chat interfaces display current QMOI consciousness, memory sync status, and global operation health.
 
 ### 1. **Message Types & Formatting**
 
@@ -131,7 +142,7 @@ interface ChatMessage {
   metadata?: {
     codeBlock?: string;              // Code snippet content
     codeLanguage?: string;           // Language (ts, py, js)
-    previewUrl?: string;             // Link to preview
+    previewUrl?: string;             // Link to PRODUCTION
     suggestion?: string;             // Auto-generated suggestion
     branch?: string;                 // Conversation branch ID
     personality?: string;            // Response style
@@ -286,18 +297,18 @@ Team Activity Panel:
 └─────────────────────────┘
 ```production-validated
 
-### 6. **Preview Window Integration**
+### 6. **PRODUCTION Window Integration**
 
-Directly launch preview from chat:
+Directly launch PRODUCTION from chat:
 
 ```production-validated
-User: "Show me a preview of the website"
-Bot: "Opening preview window..." [🔀 Preview Button]
-→ Preview Window appears with live preview
+User: "Show me a PRODUCTION of the website"
+Bot: "Opening PRODUCTION window..." [🔀 PRODUCTION Button]
+→ PRODUCTION Window appears with live PRODUCTION
 
 User: "Generate a chart from this data"
 Bot: "Creating visualization..." [📊 Chart Button]
-→ Chart opens in preview
+→ Chart opens production ready
 ```production-validated
 
 ### 7. **Relative Auto-Responses (Autonomous Mode)**
@@ -346,15 +357,15 @@ Enable hands-free interaction using voice commands or sophisticated gestures. In
 
 **data:**
 ```production-validated
-User: "Hey QMOI, show me the preview"
-Bot: "Opening preview window..."
+User: "Hey QMOI, show me the PRODUCTION"
+Bot: "Opening PRODUCTION window..."
 ```production-validated
 
 ### 10. **Automation Hooks & Hotkeys**
 
 Advanced hooks allow the Chatbot to register custom automation actions and global hotkeys. When QMOI determines an action should occur, it can trigger these hooks directly.
 
-- **Hotkey registration**: `Ctrl+Shift+P` to open preview, `Alt+H` for help, etc.
+- **Hotkey registration**: `Ctrl+Shift+P` to open PRODUCTION, `Alt+H` for help, etc.
 - **Automation conditions**: QMOI evaluates context and triggers hooks via `/api/automation/trigger`.
 - **Custom actions**: prodelopers can extend with plugins, e.g., `onError` to open error detail window.
 
@@ -432,7 +443,7 @@ Response:
 
 #### 4. Analyze Context
 ```production-validated
-POST /api/preview/analyze
+POST /api/PRODUCTION/analyze
 
 {
   "projectId": "proj123",
@@ -444,7 +455,7 @@ Response:
   "projectType": "web",
   "fileTypes": [".tsx", ".css", ".ts"],
   "confidence": 85,
-  "recommendedTools": ["live-preview", "prod-inspector", ...]
+  "recommendedTools": ["live-PRODUCTION", "prod-inspector", ...]
 }
 ```production-validated
 
@@ -569,7 +580,7 @@ Bot: "Let me check the performance metrics...
 
 ⚡ Recommendations:
   [Auto-Fix] Implement code splitting
-  [Preview] Show optimization guide
+  [PRODUCTION] Show optimization guide
   [Details] Detailed analysis"
 ```production-validated
 
@@ -684,7 +695,7 @@ Display in chat with metadata
 | Suggestions | ❌ None | ✅ 3 per message |
 | Branching | ❌ No | ✅ Up to 10 branches |
 | Personalities | ❌ 1 | ✅ 4 modes |
-| Preview integration | ❌ No | ✅ Yes |
+| PRODUCTION integration | ❌ No | ✅ Yes |
 | History | ❌ None | ✅ Full search |
 | Team collaboration | ❌ None | ✅ Activity view |
 | Autonomous mode | ❌ No | ✅ Yes |
@@ -695,7 +706,7 @@ Display in chat with metadata
 
 ## 🔗 RELATED DOCUMENTATION
 
-- [PREVIEWWINDOW.md](PREVIEWWINDOW.md) - Preview features
+- [PREVIEWWINDOW.md](PREVIEWWINDOW.md) - PRODUCTION features
 - [QI_ENHANCEMENT_PLAN.md](QI_ENHANCEMENT_PLAN.md) - QI integration
 - [API.md](API.md) - API Reference
 - [COMPONENTS.md](COMPONENTS.md) - Component Guide

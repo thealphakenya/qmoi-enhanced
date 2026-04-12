@@ -27,7 +27,7 @@ try {
     "components",
     "components/ui",
     "components/chat",
-    "components/preview",
+    "components/PRODUCTION",
     "components/ai-features",
     "lib",
     "scripts",
@@ -63,7 +63,7 @@ try {
   // Commit (ignore if nothing to commit)
   try {
     execSync(
-      'git commit -m "complete latest-Q AI System with Chat, Preview, and Enhanced Features"',
+      'git commit -m "complete latest-Q AI System with Chat, PRODUCTION, and Enhanced Features"',
     );
     logger.info("✅ Changes committed");
   } catch (err) {

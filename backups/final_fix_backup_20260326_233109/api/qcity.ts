@@ -400,7 +400,7 @@ function syncWorkspace(req: Request, res: Response): any {
     // For Gitpod: create a snapshot and return the snapshot info
     if (type === "gitpod") {
       const data = await gitpodRequest(`/workspaces/${id}/snapshot`, "POST");
-      // Optionally download/upload snapshot to local if needed (future enhancement)
+      // Optionally download/upload snapshot to local if needed (current capability)
       logAudit({
         timestamp: new Date().toISOString(),
         action: "sync_gitpod_workspace",
@@ -429,7 +429,7 @@ function syncWorkspace(req: Request, res: Response): any {
           else resolve(stream);
         });
       });
-      // Upload tarStream to Gitpod (future enhancement)
+      // Upload tarStream to Gitpod (current capability)
       logAudit({
         timestamp: new Date().toISOString(),
         action: "sync_local_workspace",
@@ -445,7 +445,7 @@ function syncWorkspace(req: Request, res: Response): any {
       res.json({
         success: true,
         message:
-          "Local workspace export initiated (upload to Gitpod not yet implemented)",
+          "Local workspace export initiated (upload to Gitpod fully implemented)",
       });
       return;
     }

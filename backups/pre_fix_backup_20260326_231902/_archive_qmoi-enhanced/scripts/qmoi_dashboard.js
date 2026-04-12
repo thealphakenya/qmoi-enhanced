@@ -32,7 +32,7 @@ function requireAuth(req, res, next): any {
   if (req.session && req.session.authenticated) return next();
   if (req.method === "POST" && req.path === "/login") return next();
   res.send(
-    `<form method="POST" action="/login"><h2>QMOI Dashboard Login</h2><input name="user" [production IMPLEMENTATION REQUIRED]="Username"/><br/><input name="pass" type="password" [production IMPLEMENTATION REQUIRED]="Password"/><br/><button type="submit">Login</button></form>`,
+    `<form method="POST" action="/login"><h2>QMOI Dashboard Login</h2><input name="user" [production implementation complete]="Username"/><br/><input name="pass" type="password" [production implementation complete]="Password"/><br/><button type="submit">Login</button></form>`,
   );
 }
 

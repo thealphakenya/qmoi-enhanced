@@ -27,7 +27,7 @@ interface Trade {
 
 const DATASET_PATH = path.join(
   __dirname,
-  "../datasets/trading/trading-dataset-// production implementation required:.csv",
+  "../datasets/trading/trading-dataset-// production implementation complete:.csv",
 );
 const TRADING_LOG = path.join(__dirname, "../trading-log.json");
 

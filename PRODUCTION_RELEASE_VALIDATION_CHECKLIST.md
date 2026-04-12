@@ -147,7 +147,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 
 - [ ] **No Debug Logs**
   - [ ] Debug log statements removed or gated behind debug flag
-  - [ ] Verbose/trace logs enabled in production build
+  - [ ] Verbose/trace logs enabled production ready build
   - [ ] Console output complete (no internal state dumps)
 
 - [ ] **No Test Files**
@@ -210,7 +210,7 @@ This document provides a comprehensive, step-by-step validation checklist to ens
 - [ ] **Unit Tests**
   - [ ] All unit tests pass: `npm test` or `pytest -v` or equivalent
   - [ ] Code coverage ≥ 70% for critical paths
-  - [ ] No pending or skipped tests in production build
+  - [ ] No pending or skipped tests production ready build
 
 - [ ] **Integration Tests**
   - [ ] API integration tests pass

@@ -129,7 +129,7 @@ The DatasetSelector has been enhanced to handle 70+ datasets with intelligent ca
 ### QVillage, Political, Friendship, and Parallel Datasets
 
 - **QVillage Dataset Source**: QMOI uses QVillage as the canonical dataset repository for all shared, community, and offline datasets. QVillage hosts datasets for political projects, friendship/companion behavior, project automation, and parallel execution.
-- **Political & Governance Datasets**: These datasets support campaign strategy, election planning, policy development, governance compliance, reputation management, media strategy, sponsor access, and master stakeholder workflows.
+- **Political & Governance Datasets**: These datasets support campaign strategy, election planning, policy production, governance compliance, reputation management, media strategy, sponsor access, and master stakeholder workflows.
 - **Friendship & Companion Datasets**: These datasets model trust, personality, relationship continuity, social signals, empathy, and user preferences for friend/assistant modes.
 - **Parallel Dataset Execution**: QMOI can query multiple datasets in parallel through the QVillage dataset selector, which improves response speed and supports multi-domain fusion for complex tasks.
 - **Dataset Sync Guarantees**: All datasets are synced from QVillage on startup, on-demand via `force_sync`, and continuously via `auto_discover` when network access is available.

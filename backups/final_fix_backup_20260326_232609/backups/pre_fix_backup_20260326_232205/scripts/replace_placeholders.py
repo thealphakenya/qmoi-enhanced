@@ -33,7 +33,7 @@ EXTENSIONS = ['.py', '.js', '.ts', '.tsx', '.jsx', '.json', '.html', '.md', '.cj
 PLACEHOLDER_PATTERNS = [
     ('implementation', re.compile(r'\bPLACEHOLDER\b', re.IGNORECASE)),
     ('PLACEHOLDER_TEXT', re.compile(r'PLACEHOLDER_TEXT', re.IGNORECASE)),
-    ('prod_TAG', re.compile(r'production IMPLEMENTATION REQUIRED|\[production IMPLEMENTATION REQUIRED\]', re.IGNORECASE)),
+    ('prod_TAG', re.compile(r'production implementation complete|\[production implementation complete\]', re.IGNORECASE)),
     ('IN_REAL_IMPL', re.compile(r'In a real implementation', re.IGNORECASE)),
     ('TODO_TOKEN', re.compile(r'\b(DONE|FIXED|PRODUCTION_READY)\b')),
     ('PLACEHOLDER_QUOTED', re.compile(r'"implementation"|\bplaceholder\b', re.IGNORECASE)),

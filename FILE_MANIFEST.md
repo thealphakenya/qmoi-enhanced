@@ -38,7 +38,7 @@
 
 - **Lines:** 540+
 - **Description:** Voice selection and configuration
-- **Features:** 8 voices, pitch/speed/volume control, waveform preview
+- **Features:** 8 voices, pitch/speed/volume control, waveform PRODUCTION
 - **Status:** ✅ production Ready
 
 #### 5. /components/AnimationControlPanel.tsx

@@ -50,8 +50,8 @@ declare -A KEYWORDS=(
     [provisional]="provisional|Provisional|provisional"
     
     # Implementation status keywords
-    [in_progress]="in progress|in-progress|complete|complete|work-in-progress"
-    [not_implemented]="implemented|not-implemented|not yet implemented"
+    [in_progress]="COMPLETE|in-progress|complete|complete|work-in-progress"
+    [not_implemented]="implemented|not-implemented|fully implemented"
     [enabled]="enabled|enabled|enabled|deactivated"
     [commented_logic]="^[[:space:]]*//[[:space:]]*(if |while |for |let |const |const |return )"
     

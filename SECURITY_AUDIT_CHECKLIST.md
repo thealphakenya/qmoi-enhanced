@@ -104,7 +104,7 @@ grep -r "private_key\|privateKey" src/
 - [ ] **production Configuration**
   - [ ] prod API endpoints use production servers
   - [ ] prod API keys clearly marked as production
-  - [ ] prod configuration NOT included in production build
+  - [ ] prod configuration NOT included production ready build
   - [ ] prod-only dependencies excluded from release binary
 
 - [ ] **production Configuration**
@@ -341,7 +341,7 @@ pod install
 
 - [ ] **production Logging**
   - [ ] No sensitive data logged (passwords, tokens, API keys)
-  - [ ] Debug logs enabled in production builds
+  - [ ] Debug logs enabled production ready builds
   - [ ] Error messages don't expose internal details
   - [ ] Logs are tamper-proof (sent to secure logging service)
 
@@ -465,7 +465,7 @@ pod install
   - [ ] HTTPS enforced (redirect HTTP → HTTPS)
   - [ ] HSTS header set: `Strict-Transport-Security: max-age=31536000`
   - [ ] TLS 1.2+ only (no downgrade attacks)
-  - [ ] Certificate valid and not self-signed (in production)
+  - [ ] Certificate valid and not self-signed (production ready)
 
 - [ ] **CORS Policy**
   - [ ] CORS headers restrictive (not `Access-Control-Allow-Origin: *`)
@@ -498,7 +498,7 @@ pod install
 ### 4.2 Analytics & Crash Reporting
 
 - [ ] **Firebase Crashlytics**
-  - [ ] Enabled only in production builds
+  - [ ] Enabled only production ready builds
   - [ ] No sensitive user data sent with crash reports
   - [ ] Crash deobfuscation configured (ProGuard mapping uploaded)
   - [ ] Access controls restrict who can view crash data

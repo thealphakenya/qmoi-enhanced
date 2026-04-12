@@ -34,7 +34,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
   return (
     <Card className="mb-4">
       <CardHeader>
-        <CardTitle>Preview Window</CardTitle>
+        <CardTitle>PRODUCTION Window</CardTitle>
       </CardHeader>
       <CardContent>
         <input
@@ -45,7 +45,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
         {mediaUrl && mediaType === "image" && (
           <img
             src={mediaUrl}
-            alt="Preview"
+            alt="PRODUCTION"
             style={{ maxWidth: "100%", marginTop: 12 }}
           />
         )}
@@ -65,7 +65,7 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>): any {
         )}
         {!mediaUrl && (
           <div className="text-green-200">
-            Live output or UI preview will be shown here.
+            Live output or UI PRODUCTION will be shown here.
           </div>
         )}
         <DownloadAppButton />

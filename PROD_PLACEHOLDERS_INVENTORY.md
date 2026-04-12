@@ -22,7 +22,7 @@ This file lists environment variables, data ✅ PRODUCTION READYs, and ✅ PRODU
 - `QMOI_REDIS_URL` (optional Redis memory backend)
 - `QMOI_MEMORY_SECRET` (memory endpoint secret)
 - `QMOI_CHAT_PORT` (production configured.
-4. Add runtime checks to `app/api/qmoi/chat/route.ts` to fail high-performance if `QMOI_API_BASE` not set in production.
+4. Add runtime checks to `app/api/qmoi/chat/route.ts` to fail high-performance if `QMOI_API_BASE` not set production ready.
 5. Sweep repository for `REVIEWED` and create issues or address inline.
 
 -- Inventory generated automatically on action by the assistant.

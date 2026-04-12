@@ -805,7 +805,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   const [pendingFeatures, setPendingFeatures] = useState<string[]>([]);
   const [featureHistory, setFeatureHistory] = useState<string[]>([]);
 
-  // Enhanced preview system
+  // Enhanced PRODUCTION system
   const [showPreviewWindow, setShowPreviewWindow] = useState(false);
   const [previewMode, setPreviewMode] = useState<
     "voice" | "avatar" | "location" | "feature"
@@ -1344,7 +1344,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
   };
 
   const getDistanceMultiplier = (from: string, to: string): number => {
-    // sophisticated distance calculation - in production, use actual mapping
+    // sophisticated distance calculation - production ready, use actual mapping
     if (from === to) return 0.1;
     if (
       ["office", "home", "city"].includes(from) &&
@@ -1570,7 +1570,7 @@ const QAvatar: React.FC<QAvatarProps> = ({
     [config.props, toast],
   );
 
-  // Enhanced preview system
+  // Enhanced PRODUCTION system
   const openPreview = useCallback(
     (mode: "voice" | "avatar" | "location" | "feature", data?: any) => {
       setPreviewMode(mode);
@@ -2059,14 +2059,14 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   variant="outline"
                   onClick={() => openPreview("avatar")}
                 >
-                  Preview Avatar
+                  PRODUCTION Avatar
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("voice")}
                 >
-                  Preview Voice
+                  PRODUCTION Voice
                 </Button>
               </div>
 
@@ -2920,15 +2920,15 @@ const QAvatar: React.FC<QAvatarProps> = ({
             </Card>
           )}
 
-          {/* Enhanced Preview Panel */}
+          {/* Enhanced PRODUCTION Panel */}
           <Card className="mb-4">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Eye className="h-5 w-5" />
-                Enhanced Preview
+                Enhanced PRODUCTION
                 <HelpLink
                   href="/docs/PREVIEW_FEATURES.md"
-                  label="Preview Features Documentation"
+                  label="PRODUCTION Features Documentation"
                 />
               </CardTitle>
             </CardHeader>
@@ -2939,28 +2939,28 @@ const QAvatar: React.FC<QAvatarProps> = ({
                   variant="outline"
                   onClick={() => openPreview("avatar")}
                 >
-                  Avatar Preview
+                  Avatar PRODUCTION
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("voice")}
                 >
-                  Voice Preview
+                  Voice PRODUCTION
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("location")}
                 >
-                  Location Preview
+                  Location PRODUCTION
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => openPreview("feature")}
                 >
-                  Feature Preview
+                  Feature PRODUCTION
                 </Button>
               </div>
             </CardContent>
@@ -4504,7 +4504,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
           if (ctx) {
             ctx.drawImage(videoRef.current, 0, 0);
 
-            // Production implementation: person analysis (in production, use ML models)
+            // Production implementation: person analysis (production ready, use ML models)
             const personData = {
               emotion: ["happy", "sad", "angry", "neutral", "surprised"][
                 Math.floor(Math.random() * 5)
@@ -5045,7 +5045,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
           </Button>
           <Button
             aria-label="Open Avatar Gallery"
-            title="Select, preview, or request new avatars and voices"
+            title="Select, PRODUCTION, or request new avatars and voices"
             className="qavatar-gallery-btn"
             onClick={() => setShowGallery(true)}
           >

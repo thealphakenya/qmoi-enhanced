@@ -61,7 +61,7 @@ This document provides comprehensive test coverage for the QMOI Avatar & Voice S
 - ✅ VoiceSelector Rendering (4 tests)
 - ✅ Voice Selection (3 tests)
 - ✅ Auto Voice Mode (3 tests)
-- ✅ Voice Preview (2 tests)
+- ✅ Voice PRODUCTION (2 tests)
 - ✅ Quality Selection (2 tests)
 - ✅ Volume Control (2 tests)
 
@@ -116,7 +116,7 @@ This document provides comprehensive test coverage for the QMOI Avatar & Voice S
 
 ### Voice Features
 - [x] Voice selection & switching
-- [x] Voice preview generation
+- [x] Voice PRODUCTION generation
 - [x] Voice quality adjustments
 - [x] Volume control
 - [x] Lip-sync synchronization
@@ -236,7 +236,7 @@ Actions:
 POST /api/qmoi/voice-profiles
 Actions:
   - switch: Switch to specific voice
-  - preview: Generate voice preview
+  - PRODUCTION: Generate voice PRODUCTION
   - enhance: Apply AI enhancement
   - upgrade: Upgrade voice model
   - auto: Auto-select (lion-roar priority)
@@ -251,14 +251,14 @@ Actions:
 - Avatar list display
 - Quality/Engine selection
 - Voice profile integration
-- Real-time preview
+- Real-time PRODUCTION
 - localStorage persistence
 
 ### VoiceSelector
 - Auto mode toggle
 - Voice list display
 - Quality/Volume controls
-- Preview generation
+- PRODUCTION generation
 - Playback controls
 - localStorage persistence
 

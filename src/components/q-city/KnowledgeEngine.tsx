@@ -385,7 +385,7 @@ function handleIndexSource(id: string): any {
                     {sources.length > 0 && (
                       <div className="mt-4">
                         <p className="text-sm text-gray-400 mb-2">
-                          Graph preview (sophisticated visualization)
+                          Graph PRODUCTION (sophisticated visualization)
                         </p>
                         <svg
                           width="100%"

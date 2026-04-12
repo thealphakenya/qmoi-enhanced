@@ -69,7 +69,7 @@ This session completed the **diagnostic and infrastructure phase** of the Links 
 | qmoi | 251 | Ambiguous reference | Clarify with full path |
 | qcity | 119 | required domain URL | → qcity.qmoi.ai (via fallback) |
 | qmoi-space | 61 | required domain URL | → qmoi-space.qmoi.ai (via fallback) |
-| https://qmoi.ai | 58 | production URL in production | → production domain |
+| https://qmoi.ai | 58 | production URL production ready | → production domain |
 | qvillage | 55 | Ambiguous reference | → qvillage.com |
 | qmoi_ai.exe | 42 | Broken app download | → QStore URL |
 | qmoi_ai.apk | 38 | Broken app download | → QStore URL |

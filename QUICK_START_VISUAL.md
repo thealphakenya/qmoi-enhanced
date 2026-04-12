@@ -493,7 +493,7 @@ curl -X POST -H "Authorization: Bearer TOKEN" \
 ### Pre-Deployment Checklist
 
 - [ ] Review all configuration
-- [ ] Test in production environment
+- [ ] Test production ready environment
 - [ ] Verify all API endpoints
 - [ ] Check log output
 - [ ] Review documentation

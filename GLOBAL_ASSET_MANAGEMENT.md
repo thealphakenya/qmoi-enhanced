@@ -13,10 +13,17 @@ The QMOI Global Asset Management System provides comprehensive ownership, manage
 ### Asset Types Supported
 - **Land & Real Estate**: Properties, agricultural land, commercial real estate across all nations
 - **Buildings & Infrastructure**: Offices, factories, warehouses, residential properties
-- **Hardware Assets**: Computers, servers, vehicles, machinery, IoT devices
+- **Hardware Assets**: Computers, servers, vehicles, machinery, IoT devices, robotics, and automotive systems
 - **Software Assets**: Applications, platforms, digital services, intellectual property
 - **Financial Assets**: Investments, cryptocurrencies, traditional securities
 - **Intellectual Property**: Patents, trademarks, copyrights, trade secrets
+
+### Vehicle & Automotive Asset Management
+- **Electric Vehicles**: Managed EV fleets with charging, route planning, and service scheduling
+- **Autonomous Driving**: AI-managed driving assist and self-driving features for production vehicles
+- **Media Assist**: In-car entertainment, navigation, and accessibility features managed by QMOI
+- **Disability Assistance**: Hands-free vehicle controls, voice interfaces, and assistive support systems
+- **Industrial Vehicles**: Fleet management for logistics, heavy machinery, drones, and robotic carriers
 
 ### Global Ownership Capabilities
 - **Multi-National Presence**: Assets in 195+ countries and territories

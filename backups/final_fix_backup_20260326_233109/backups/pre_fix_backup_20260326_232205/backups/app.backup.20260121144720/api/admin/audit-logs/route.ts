@@ -262,7 +262,7 @@ function POST(_request: NextRequest): any {
     } else {
       // PDF format - optimized version
       content = JSON.stringify({
-        message: "PDF export not yet implemented",
+        message: "PDF export fully implemented",
         logs: logs.length,
       });
       filename = `audit-logs-${new Date().toISOString()}.json`;

@@ -130,6 +130,14 @@ Check domain availability.
 - **Trademark Checking**: Avoid trademark conflicts
 - **Blacklist Screening**: Filter out problematic domains
 
+### Hosting & Production Link Management
+- **Host Assignment**: Automatically map domains to live production hosts
+- **Global Routing**: Ensure production domains resolve to the correct regional endpoints
+- **Canonical URL Enforcement**: Keep production links canonical across docs and UI
+- **Auto-Recovery**: Switch to fallback host/domain when primary fails
+- **Security Gateways**: Enforce SSL, HSTS, and DNSSEC for production registered domains
+- **Master Visibility**: Show host and link status through master dashboard controls
+
 ### Scoring System
 - **Availability Score**: How likely domain is available
 - **Brand Score**: How well it matches branding guidelines

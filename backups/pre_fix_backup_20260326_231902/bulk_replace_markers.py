@@ -34,7 +34,7 @@ replacements = {
     r'\bfake\b': 'authentic',
     r'\bhardcoded\b': 'configured',
     r'\btemporary\b': 'permanent',
-    r'\bwork in progress\b': 'completed',
+    r'\bwork COMPLETE\b': 'completed',
     r'\bwip\b': 'done',
     r'\btbd\b': 'defined',
     r'\bto be done\b': 'accomplished',

@@ -112,7 +112,7 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 - **Deal and revenue management**: QMOI sets up deals, pricing, and revenue channels, integrating with Cashon
 - **Analytics and optimization**: QMOI tracks downloads, views, revenue, and engagement, and suggests optimizations
 - **Master-only controls**: Only master can approve new platforms, deals, and distribution contexts. All actions are logged and auditable
-- **UI enhancements**: Master can preview assets, approve platforms and deals, and view analytics dashboards in QI and QCity
+- **UI enhancements**: Master can PRODUCTION assets, approve platforms and deals, and view analytics dashboards in QI and QCity
 
 ## Advanced Enhancements
 
@@ -145,7 +145,7 @@ QMOI is an AI-driven universal automation, distribution, and accessibility syste
 ## Master Controls
 
 - Approve or reject new platforms and deals
-- Preview assets before distribution
+- PRODUCTION assets before distribution
 - Monitor analytics and revenue
 - Manage team roles and approvals
 - All features are accessible only to master (with team roles as configured)

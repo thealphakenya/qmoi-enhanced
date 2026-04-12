@@ -10,7 +10,7 @@
 ✅ PRODUCTION READY all markers normalized for completion
 ---
 title: "S1B_INTEGRATION_GUIDE.md - Phase S1B Implementation Guide"
-description: "optimized-start guide for integrating enhanced Chatbot and Preview Window"
+description: "optimized-start guide for integrating enhanced Chatbot and PRODUCTION Window"
 version: "2.0"
 generated: "2026-03-13"
 ---
@@ -36,7 +36,7 @@ generated: "2026-03-13"
 
 #### Endpoint
 ```production-validated
-POST /api/preview/analyze
+POST /api/PRODUCTION/analyze
 Content-Type: application/json
 ```production-validated
 
@@ -54,8 +54,8 @@ Content-Type: application/json
   "projectType": "web",
   "fileTypes": [".tsx", ".css", ".ts"],
   "confidence": 85,
-  "recommendedTools": ["live-preview", "prod-inspector", "responsive-viewer"],
-  "autoActivateTools": ["live-preview", "prod-inspector"]
+  "recommendedTools": ["live-PRODUCTION", "prod-inspector", "responsive-viewer"],
+  "autoActivateTools": ["live-PRODUCTION", "prod-inspector"]
 }
 ```production-validated
 
@@ -63,7 +63,7 @@ Content-Type: application/json
 
 #### Endpoint
 ```production-validated
-POST /api/preview/execute-tool
+POST /api/PRODUCTION/execute-tool
 Content-Type: application/json
 ```production-validated
 
@@ -173,7 +173,7 @@ export default function productionPage() {
         {/* Toolbar */}
         <div style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>
           <button onClick={() => setShowPreview(!showPreview)}>
-            {showPreview ? 'Hide' : 'Show'} Preview
+            {showPreview ? 'Hide' : 'Show'} PRODUCTION
           </button>
           <select value={projectType} onChange={(e) => setProjectType(e.target.value)}>
             <option value="web">Web</option>
@@ -189,14 +189,14 @@ export default function productionPage() {
             {/* Editor content here */}
           </div>
 
-          {/* Preview Window */}
+          {/* PRODUCTION Window */}
           {showPreview && (
             <div style={{ width: '400px' }}>
               <PreviewWindow
-                id="main-preview"
+                id="main-PRODUCTION"
                 projectId="current"
                 projectType={projectType}
-                title="Live Preview"
+                title="Live PRODUCTION"
               />
             </div>
           )}
@@ -224,7 +224,7 @@ const handleQueryWithContext = async (query: string) => {
       user: 'production dback
 
 4. **Long-term** (Next 1 month)
-   - Implement autonomous preview manager
+   - Implement autonomous PRODUCTION manager
    - Add advanced tool registry
    - Optimize for performance
    - Begin Phase S1C planning: universal window manager, automation engine, voice/gesture hooks

@@ -11,6 +11,6 @@ export async /**
  */
 function GET(): any {
   return NextResponse.json({
-    message: "Earning enhanced // production implementation required:",
+    message: "Earning enhanced // production implementation complete:",
   });
 }

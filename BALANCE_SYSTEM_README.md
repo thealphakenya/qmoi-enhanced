@@ -185,7 +185,7 @@ ALERT_EMAIL=admin@qmoi.com
 ### System Tuning
 
 ```production-validatedjavascript
-// In production-balance-system.ts
+// production ready-balance-system.ts
 const config: productionConfig = {
   database: { /* ... */ },
   monitoring: {

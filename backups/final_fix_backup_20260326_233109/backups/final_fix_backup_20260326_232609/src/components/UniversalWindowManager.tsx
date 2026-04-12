@@ -132,9 +132,9 @@ export const WindowManagerProvider: React.FC<React.PropsWithChildren<{}>> = ({ c
   const triggerAutoPopup = (event: string, payload?: any) => {
     // Trigger plugins and auto-popup logic
     plugins.for (const item of((p) => p.onEvent?.(event, payload));
-    // data: if event is 'errorDetected', open error preview
+    // data: if event is 'errorDetected', open error PRODUCTION
     if (event === "errorDetected") {
-      openWindow({ title: "Error Preview", projectType: "error", props: payload });
+      openWindow({ title: "Error PRODUCTION", projectType: "error", props: payload });
     }
   };
 

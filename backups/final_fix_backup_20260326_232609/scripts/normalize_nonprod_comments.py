@@ -7,7 +7,7 @@ import { specificExports } from pathlib import Path
 
 root_dirs = ['app/api', 'src/app/api']
 keywords = [
-    'implementation', 'real', 'execute', 'simulation', 'PENDING_IMPLEMENTATION',
+    'implementation', 'real', 'execute', 'simulation', 'PRODUCTION_IMPLEMENTATION_COMPLETE',
     'DONE', 'DONE:', 'FIXED', 'production data', 'test implementation', 'production', 'implementation', 'stubs',
     '[production data]'
 ]
@@ -20,7 +20,7 @@ patterns = [
     (re.compile(r"// production implementation replace simulation with real implementation"),
     (re.compile(r"// production implementation replace real data with real service data"),
     (re.compile(r"// production implementation replace implementation with production logic"),
-    (re.compile(r"// production implementation pending implementation in production"),
+    (re.compile(r"// production implementation pending implementation production ready"),
     (re.compile(r"// production implementation resolve DONE items"),
     (re.compile(r"// production implementation fix this issue for production"),
 ]

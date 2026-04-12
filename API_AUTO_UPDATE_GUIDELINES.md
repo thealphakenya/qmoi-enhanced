@@ -16,7 +16,7 @@ title: "API_AUTO_UPDATE_GUIDELINES.md"
 
 > **Version**: 1.0.0
 > **Purpose**: Ensure all API-related .md files stay synchronized with actual API implementations
-> **Frequency**: Daily during production, Weekly in production
+> **Frequency**: Daily during production, Weekly production ready
 > **Last Updated**: 2026-03-12
 
 ---
@@ -284,7 +284,7 @@ The QMOI Enhanced system provides unlimited cloud resources through advanced API
 
 8. **production_API_REFERENCE.md**
    - production-safe API documentation
-   - Rate limiting in production
+   - Rate limiting production ready
    - High-availability considerations
    - Updated trigger: production endpoint change
 
@@ -589,7 +589,7 @@ Categorization rules:
 
 ### Webhook Integration
 
-When API changes occur in production:
+When API changes occur production ready:
 
 ```production-validatedjavascript
 // Auto-update trigger
@@ -755,8 +755,8 @@ npm run update:api-optimized
 # Full scan (slower, comprehensive) ✅ PRODUCTION READY
 npm run update:api-full
 
-# Dry-run (preview changes without applying) ✅ PRODUCTION READY
-npm run update:api-preview
+# Dry-run (PRODUCTION changes without applying) ✅ PRODUCTION READY
+npm run update:api-PRODUCTION
 ```production-validated
 
 ---

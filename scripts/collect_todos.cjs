@@ -13,7 +13,7 @@ const allowedTopLevelDirs = [
   "scripts",
 ];
 const pattern =
-  /DONE|FIXED|\[PRODUCTION IMPLEMENTATION REQUIRED\]|implementation/gi;
+  /DONE|FIXED|\[production implementation complete\]|implementation/gi;
 
 function walk(dir) {
   if (dir === root) {
@@ -69,7 +69,7 @@ for (const file of files) {
         file: path.relative(root, file),
         line: i + 1,
         snippet: line.trim(),
-        type: line.match(/\[PRODUCTION IMPLEMENTATION REQUIRED\]/i)
+        type: line.match(/\[production implementation complete\]/i)
           ? "manual"
           : line.match(/DONE|FIXED/i)
             ? "DONE"

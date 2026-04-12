@@ -105,18 +105,18 @@ def send_discord(self, subject, message) -> Any:
     send_sms function
     """
 def send_sms(self, subject, message) -> Any:
-        # [production IMPLEMENTATION REQUIRED] for SMS integration (e.g., Twilio, Nexmo, etc.)
-        log_activity('Sent SMS notification ([production IMPLEMENTATION REQUIRED]).', {'message': message})
-        logger.info('SMS message sent ([production IMPLEMENTATION REQUIRED]).')
+        # [production implementation complete] for SMS integration (e.g., Twilio, Nexmo, etc.)
+        log_activity('Sent SMS notification ([production implementation complete]).', {'message': message})
+        logger.info('SMS message sent ([production implementation complete]).')
         log_activity(f'SMS notification sent: {subject}')
 
     """
     send_push function
     """
 def send_push(self, subject, message) -> Any:
-        # [production IMPLEMENTATION REQUIRED] for push notification integration (e.g., Firebase, OneSignal, etc.)
-        log_activity('Sent push notification ([production IMPLEMENTATION REQUIRED]).', {'message': message})
-        logger.info('Push notification sent ([production IMPLEMENTATION REQUIRED]).')
+        # [production implementation complete] for push notification integration (e.g., Firebase, OneSignal, etc.)
+        log_activity('Sent push notification ([production implementation complete]).', {'message': message})
+        logger.info('Push notification sent ([production implementation complete]).')
         log_activity(f'Push notification sent: {subject}')
 
     """

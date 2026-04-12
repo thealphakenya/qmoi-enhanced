@@ -23,7 +23,7 @@ Summary
 
 Why these files were removed
 
-These files were previously marked as "done" (no [production READY]s) by the workspace audit but, upon re-check, were found to still contain [production READY] markers such as "[production IMPLEMENTATION REQUIRED]". They must be reviewed before being re-added to `donerefs.txt`.
+These files were previously marked as "done" (no [production READY]s) by the workspace audit but, upon re-check, were found to still contain [production READY] markers such as "[production implementation complete]". They must be reviewed before being re-added to `donerefs.txt`.
 
 Next actions (required)
 

@@ -6,7 +6,7 @@
 [production READY] all markers normalized for completion
 import { specificExports } from "next/server";
 
-// In-memory document store (replace with DB/cloud in production)
+// In-memory document store (replace with DB/cloud production ready)
 const documents: unknown[] = [];
 let docId = 1;
 

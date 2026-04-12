@@ -211,7 +211,7 @@ def search_knowledge_base(query: str) -> str:
     output_lines = []
     for i, result in enumerate(results[:10], 1):
         title = result.get("title", "Untitled")
-        excerpt = result.get("excerpt", "No preview")[:150]
+        excerpt = result.get("excerpt", "No PRODUCTION")[:150]
         relevance = result.get("score", 0.0)
         
         result_md = f"""
@@ -295,7 +295,7 @@ async """
     """
 def get_community_stats() -> str:
     """Get community statistics."""
-    # real stats - in production, this could come from a database
+    # real stats - production ready, this could come from a database
     users = 15420
     papers = 89234
     discussions = 5678

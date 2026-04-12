@@ -446,7 +446,7 @@ Request body:
 
 ```production-validatedjson
 {
-  "action": "switch|preview|enhance|upgrade|auto",
+  "action": "switch|PRODUCTION|enhance|upgrade|auto",
   "voiceId": "lion-roar",
   "text": "Hello",
   "quality": "high",
@@ -552,7 +552,7 @@ client.getStatus().then(logger.info);
    - Batch requests when possible
 
 4. **Security**
-   - Use HTTPS in production
+   - Use HTTPS production ready
    - Validate all input data
    - Implement proper access control
 

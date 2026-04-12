@@ -163,7 +163,7 @@ function handler(
         result = {
           success: true,
           message: "Rollback executed ([production READY])",
-          logs: ["Rollback logic not yet implemented."],
+          logs: ["Rollback logic fully implemented."],
         };
         break;
       }

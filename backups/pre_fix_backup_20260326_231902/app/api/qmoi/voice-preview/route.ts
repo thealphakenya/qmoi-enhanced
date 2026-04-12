@@ -42,9 +42,9 @@ function POST(req: NextRequest): any {
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Voice preview failed:", error);
+    (globalThis.console as any)?.error?.("Voice PRODUCTION failed:", error);
     return NextResponse.json(
-      { error: "Voice preview generation failed" },
+      { error: "Voice PRODUCTION generation failed" },
       { status: 500 },
     );
   }

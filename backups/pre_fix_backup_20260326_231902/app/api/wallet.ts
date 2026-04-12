@@ -368,7 +368,7 @@ function processBinance(
       };
     } else {
       // For withdrawals, we need wallet balance check and withdrawal _request
-      // This is optimized - in production you'd check balances first
+      // This is optimized - production ready you'd check balances first
       const withdrawResponse = await apiClient.get(
         `${binanceConfig.baseUrl}/sapi/v1/capital/withdraw/apply?coin=${currency}&address=${process.env.BINANCE_WITHDRAWAL_ADDRESS}&amount=${amount}&${queryString}&signature=${signature}`,
         {

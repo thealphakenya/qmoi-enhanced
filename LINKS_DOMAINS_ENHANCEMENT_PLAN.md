@@ -154,6 +154,14 @@ Document fallback chains:
 - qstore.qvillage.com → qstore-backup.qvillage.com → qstore-cdn.global
 - etc.
 
+### 2.5 Hosting & Production Link Delivery
+- **Production Host Mapping**: Assign canonical production host domains to service endpoints
+- **Release Validation**: Verify host endpoints and SSL before production rollout
+- **CDN Integration**: Use global CDN endpoints for content and asset delivery
+- **Fallback Publishing**: Publish fallback domain links in the registry and docs
+- **Documentation Sync**: Propagate production host links into ALLLINKS.md and ALLMDFILESREFS.md
+- **Master Release Control**: Restrict production host and domain updates to master approval
+
 ---
 
 ## Phase 3: Enhanced Master Dashboard Features

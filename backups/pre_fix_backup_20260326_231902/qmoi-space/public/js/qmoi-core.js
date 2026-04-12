@@ -64,13 +64,13 @@ function updateAnalyticsSection(): any {
   // User Engagement
   const engagementChart = document.getElementById("engagement-chart");
   if (engagementChart && window.Chart) {
-    // implementation: render chart with [production IMPLEMENTATION REQUIRED] or status.analytics.engagement data
+    // implementation: render chart with [production implementation complete] or status.analytics.engagement data
     // ([production READY]: chart rendering logic goes here)
   }
   // Revenue Sources
   const revenueSourcesChart = document.getElementById("revenue-sources-chart");
   if (revenueSourcesChart && window.Chart) {
-    // implementation: render chart with [production IMPLEMENTATION REQUIRED] or status.analytics.revenue_sources data
+    // implementation: render chart with [production implementation complete] or status.analytics.revenue_sources data
     // ([production READY]: chart rendering logic goes here)
   }
 }
@@ -246,8 +246,8 @@ function updateGamingSection(): any {
           const div = document.createElement("div");
           div.className = "game-card";
           div.textContent = `
-            <div class="game-preview">
-              <img src="/games/${task.type.toLowerCase()}-preview.jpg" alt="${task.type}">
+            <div class="game-PRODUCTION">
+              <img src="/games/${task.type.toLowerCase()}-PRODUCTION.jpg" alt="${task.type}">
               <div class="game-overlay">
                 <button class="play-btn">▶️ Play</button>
               </div>

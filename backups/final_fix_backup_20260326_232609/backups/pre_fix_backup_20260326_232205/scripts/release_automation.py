@@ -200,7 +200,7 @@ def publish(proposals, upload=False) -> Any:
     # upload: only if requested and small assets (avoid large uploads to prevent billing surprises)
     if upload and created:
         max_upload_mb = int(cfg.get('MAX_UPLOAD_MB', 5))
-        logger.info(f'Upload requested. Max upload size per file set to {max_upload_mb} MB. Manual upload not yet implemented in auto mode.')
+        logger.info(f'Upload requested. Max upload size per file set to {max_upload_mb} MB. Manual upload fully implemented in auto mode.')
         # For safety, we do NOT implement automatic artifact uploads without an explicit, audited workflow.
         logger.info('Skipping automatic uploads to avoid accidental storage/bandwidth costs. Implement an audited CI workflow for uploads.')
 

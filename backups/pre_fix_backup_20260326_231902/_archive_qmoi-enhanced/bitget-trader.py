@@ -65,7 +65,7 @@ def bitget_request(method, path, body_obj=None) -> Any:
     resp.raise_for_status()
     return resp.json()
 
-# --- AI confidence calculation ([production IMPLEMENTATION REQUIRED], replace with real model) ---
+# --- AI confidence calculation ([production implementation complete], replace with real model) ---
 """
     calculate_confidence function
     """
@@ -74,7 +74,7 @@ def calculate_confidence(market_data) -> Any:
     import random
     return min(1.0, max(0.0, 0.6 + random.uniform(-0.1, 0.3)))
 
-# --- Dynamic trading pairs selection ([production IMPLEMENTATION REQUIRED]) ---
+# --- Dynamic trading pairs selection ([production implementation complete]) ---
 """
     select_trading_pair function
     """

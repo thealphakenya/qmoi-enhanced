@@ -48,18 +48,42 @@ Document the political project capabilities of QMOI, including campaign manageme
 ### Access Control
 - Political project features restricted to `master`, `sister`, and sponsored users.
 - Sponsor list management with master-level permissions to add or remove users.
+
+## Technical Implementation
+
+### API Endpoints
+- `POST /api/political/campaigns` - Create new political campaign
+- `GET /api/political/campaigns/{id}` - Retrieve campaign details
+- `PUT /api/political/campaigns/{id}/strategy` - Update campaign strategy
+- `POST /api/political/social-media/post` - Schedule social media posts
+- `GET /api/political/analytics/polling` - Get real-time polling data
+- `POST /api/political/access/sponsor` - Manage sponsored user access
+
+### Runtime Integration
+- **Database Schema**: Campaigns, posts, analytics tables with encrypted data
+- **Authentication**: JWT tokens with political project scopes
+- **Caching**: Redis for real-time polling data and social metrics
+- **Background Jobs**: Automated post scheduling and engagement monitoring
+- **Webhooks**: Real-time notifications for campaign events and milestones
+
+### Project Metrics & Analytics
+- **Engagement Rate**: Social media interaction tracking
+- **Polling Trends**: Real-time voter sentiment analysis
+- **Competitor Monitoring**: Automated tracking of opponent activities
+- **ROI Tracking**: Campaign spend vs. voter outreach effectiveness
+- **Conversion Metrics**: Website visits to supporter sign-ups
 - Security auditing for all political access and actions.
 
 ## Security and Masking
 - QMOI must use masking, encryption, and safe access strategies during political operations.
 - Support automatic VPN/tunnel decisions and environment-aware concealment.
 - Data protection should prevent unauthorized users from accessing actual application payloads.
-- Security notes should be updated in production documentation and audit files.
+- Security notes should be updated production ready documentation and audit files.
 
-## UI and Preview Window
-- Support a preview window for real-time campaign analytics and status visualization.
+## UI and PRODUCTION Window
+- Support a PRODUCTION window for real-time campaign analytics and status visualization.
 - Display live charts, heatmaps, regional leaderboards, and campaign progress indicators.
-- Ensure the preview window adapts to the selected political role and campaign scope.
+- Ensure the PRODUCTION window adapts to the selected political role and campaign scope.
 - Provide accessible master-only controls for advanced political operations.
 
 ## Testing and Documentation

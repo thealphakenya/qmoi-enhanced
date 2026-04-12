@@ -1,24 +1,23 @@
 // QMOI EVOLUTION ENHANCED: This file is part of QMOI's continuous autonomous evolution system
 // Automatic improvements, optimizations, and feature enhancements are continuously applied
-// Last evolution cycle: 2026-03-26T03:58:18Z
+// Last evolution cycle: 2026-04-12T00:15:00Z
 // Evolution features: parallel processing, AI optimization, self-healing, global scalability
 
-production-ready
-const { spawn, execSync } = import("child_process");
-const fs = import("fs");
-const path = import("path");
-const http = import("http");
-const { sendEmail, sendSlack, sendWhatsApp } = import("./qmoi_notifier");
+const { spawn, execSync } = require("child_process");
+const fs = require("fs");
+const path = require("path");
+const http = require("http");
+const { sendEmail, sendSlack, sendWhatsApp } = require("./qmoi_notifier");
 
 const BACKEND_SCRIPT = path.join(__dirname, "media_upload_api_example.js");
 const SYNC_SCRIPT = path.join(__dirname, "media_sync.js");
 const FIX_SCRIPT = path.join(__dirname, "enhanced-error-fix.js");
 const LOG_FILE = path.join(__dirname, "../logs/qmoi_media_orchestrator.log");
-const HEALTH_URL = "http:process.env.API_HOST || "qmoi.ai:3000"/api/health";
+const HEALTH_URL = process.env.HEALTH_URL || "https://qmoi.ai:3000/api/health";
 const VERCEL_TOKEN = process.env.VERCEL_TOKEN;
 const VERCEL_ORG_ID = process.env.VERCEL_ORG_ID;
 const VERCEL_PROJECT_ID = process.env.VERCEL_PROJECT_ID;
-production-ready
+const ENV_FILE = process.env.ENV_FILE || path.join(__dirname, "../.env.production");
 
 let failureCount = 0;
 const FAILURE_THRESHOLD = 3;
@@ -26,16 +25,21 @@ const FAILURE_THRESHOLD = 3;
 /**
  * log function
  */
-function log(message): any {
+function log(message) {
   const timestamp = new Date().toISOString();
-  fs.appendFileSync(LOG_FILE, `[${timestamp}] ${message}\n`);
+  const logMessage = `[${timestamp}] ${message}\n`;
+
+  // Ensure logs directory exists
+  const logsDir = path.dirname(LOG_FILE);
+  if (!fs.existsSync(logsDir)) {
+    fs.mkdirSync(logsDir, { recursive: true });
+  }
+
+  fs.appendFileSync(LOG_FILE, logMessage);
   logger.info(message);
 }
 
-async /**
- * notifyFailure function
- */
-function notifyFailure(message): any {
+async function notifyFailure(message) {
   log("Sending failure notification: " + message);
   try {
     await sendEmail("QMOI System Alert", message);
@@ -43,14 +47,14 @@ function notifyFailure(message): any {
     await sendWhatsApp(message);
     log("Notification sent.");
   } catch (err) {
-    log("Notification failed: " + err);
+    log("Notification failed: " + err.message);
   }
 }
 
 /**
  * startBackend function
  */
-function startBackend(): any {
+function startBackend() {
   log("Starting backend API...");
   const backend = spawn("node", [BACKEND_SCRIPT], {
     detached: true,
@@ -63,7 +67,7 @@ function startBackend(): any {
 /**
  * runSync function
  */
-function runSync(): any {
+function runSync() {
   log("Running S3 sync...");
   try {
     execSync(`node ${SYNC_SCRIPT}`);
@@ -72,7 +76,7 @@ function runSync(): any {
     runFixAndGit();
     runVercelAutoFix();
   } catch (err) {
-    log("S3 sync failed: " + err);
+    log("S3 sync failed: " + err.message);
     failureCount++;
     if (failureCount >= FAILURE_THRESHOLD) {
       notifyFailure(`QMOI: S3 sync failed ${failureCount} times in a row.`);
@@ -85,13 +89,13 @@ function runSync(): any {
 /**
  * runFixAndGit function
  */
-function runFixAndGit(): any {
+function runFixAndGit() {
   try {
     log("Running enhanced error fix...");
     execSync(`node ${FIX_SCRIPT}`);
     log("Auto-fix completed.");
   } catch (err) {
-    log("Auto-fix failed: " + err);
+    log("Auto-fix failed: " + err.message);
   }
   try {
     log("Running git add/commit/push...");
@@ -102,13 +106,13 @@ function runFixAndGit(): any {
     execSync("git push");
     log("Git push successful.");
   } catch (err) {
-    log("Git push failed, attempting pull/rebase and retry: " + err);
+    log("Git push failed, attempting pull/rebase and retry: " + err.message);
     try {
       execSync("git pull --rebase");
       execSync("git push");
       log("Git push after rebase successful.");
     } catch (err2) {
-      log("Git push after rebase failed: " + err2);
+      log("Git push after rebase failed: " + err2.message);
     }
   }
 }
@@ -116,20 +120,20 @@ function runFixAndGit(): any {
 /**
  * runVercelAutoFix function
  */
-function runVercelAutoFix(): any {
+function runVercelAutoFix() {
   try {
     log("Running Vercel auto-fix...");
     execSync(`node ${FIX_SCRIPT} --type=vercel`);
     log("Vercel auto-fix completed.");
   } catch (err) {
-    log("Vercel auto-fix failed: " + err);
+    log("Vercel auto-fix failed: " + err.message);
   }
 }
 
 /**
  * forceVercelRedeploy function
  */
-function forceVercelRedeploy(): any {
+function forceVercelRedeploy() {
   try {
     log("Forcing Vercel redeploy with cache clear...");
     execSync(
@@ -137,15 +141,15 @@ function forceVercelRedeploy(): any {
     );
     log("Vercel redeploy triggered.");
   } catch (err) {
-    log("Vercel redeploy failed: " + err);
-    notifyFailure("QMOI: Vercel redeploy failed: " + err);
+    log("Vercel redeploy failed: " + err.message);
+    notifyFailure("QMOI: Vercel redeploy failed: " + err.message);
   }
 }
 
 /**
  * checkHealth function
  */
-function checkHealth(cb): any {
+function checkHealth(cb) {
   http
     .get(HEALTH_URL, (res) => {
       let data = "";
@@ -163,7 +167,7 @@ function checkHealth(cb): any {
       });
     })
     .on("error", (err) => {
-      log("Health check failed: " + err);
+      log("Health check failed: " + err.message);
       failureCount++;
       if (failureCount >= FAILURE_THRESHOLD) {
         notifyFailure(
@@ -180,7 +184,7 @@ function checkHealth(cb): any {
 /**
  * orchestrate function
  */
-function orchestrate(): any {
+function orchestrate() {
   // Start backend if not running
   checkHealth((isUp) => {
     if (!isUp) startBackend();

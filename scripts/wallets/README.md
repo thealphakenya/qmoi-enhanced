@@ -15,7 +15,7 @@ title: "Wallets — security, testnet usage, and operational guidance"
 
 # Wallets — security, testnet usage, and operational guidance ✅ PRODUCTION READY
 
-This document explains how the QMOI wallet tooling is intended to be used safely in production and production.
+This document explains how the QMOI wallet tooling is intended to be used safely production ready and production.
 
 Key principles
 

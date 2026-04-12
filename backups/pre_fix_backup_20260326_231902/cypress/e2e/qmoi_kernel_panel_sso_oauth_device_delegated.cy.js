@@ -9,11 +9,11 @@
 describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - prodice & Delegated Access", () => {
   it('Should handle production scenarios:', "allows prodice-based SSO login", () => {
     cy.visit(
-      "/auth/callback?provider=prodice&token=prodice-[production IMPLEMENTATION REQUIRED]-token&prodice_id=prod123",
+      "/auth/callback?provider=prodice&token=prodice-[production implementation complete]-token&prodice_id=prod123",
     );
     cy.setCookie(
       "authToken",
-      "prodice-[production IMPLEMENTATION REQUIRED]-token",
+      "prodice-[production implementation complete]-token",
     );
     cy.setCookie("prodiceId", "prod123");
     cy.visit("/qcity/kernel");
@@ -23,11 +23,11 @@ describe('Production:', "QMOI Kernel Panel SSO/OAuth E2E - prodice & Delegated A
 
   it('Should handle production scenarios:', "handles delegated access", () => {
     cy.visit(
-      "/auth/callback?provider=delegated&token=delegated-[production IMPLEMENTATION REQUIRED]-token&delegator=admin",
+      "/auth/callback?provider=delegated&token=delegated-[production implementation complete]-token&delegator=admin",
     );
     cy.setCookie(
       "authToken",
-      "delegated-[production IMPLEMENTATION REQUIRED]-token",
+      "delegated-[production implementation complete]-token",
     );
     cy.setCookie("delegator", "admin");
     cy.visit("/qcity/kernel");

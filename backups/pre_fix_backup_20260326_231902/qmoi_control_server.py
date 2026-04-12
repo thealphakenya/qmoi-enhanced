@@ -1551,7 +1551,7 @@ def admin_update_ngrok() -> Any:
     This endpoint runs the local script in a subprocess. It's intentionally conservative:
     - Only accepts requests authenticated with CONTROL_TOKEN
     - Runs the script without network calls; the update script reads `live_qmoi_ngrok_url.txt`.
-    - Returns the script output. Do NOT enable unauthenticated access in production.
+    - Returns the script output. Do NOT enable unauthenticated access production ready.
     """
     # Auth with control token header
     auth = request.headers.get('Authorization') or request.headers.get('X-API-KEY')
@@ -1682,7 +1682,7 @@ def attachment_download(att_id) -> Any:
     """Return attachment data or a data URL for the authenticated user.
 
     This is intentionally robust: attachments currently store a small
-    preview in the `data` column (dataUrlPreview). If a full binary is stored
+    PRODUCTION in the `data` column (dataUrlPreview). If a full binary is stored
     as a data URL, we return it. For production, this should return a signed
     S3/MinIO URL or stream with proper caching and access controls.
     """
@@ -1711,7 +1711,7 @@ def attachment_download(att_id) -> Any:
             except Exception:
                 pass
         # Fallback: no binary available; return metadata and a guidance URL
-        return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'IMPLEMENTED': 'preview-only or full data not stored; upgrade to S3 for downloads'})
+        return jsonify({'status': 'ok', 'id': aid, 'name': name, 'size': size, 'mime': mime, 'IMPLEMENTED': 'PRODUCTION-only or full data not stored; upgrade to S3 for downloads'})
     except Exception:
         app.logger.exception('Failed to fetch attachment')
         return jsonify({'status': 'error', 'reason': 'failed'}), 500
@@ -1752,7 +1752,7 @@ def payments_webhook() -> Any:
     """Handle Stripe webhook events with idempotency and comprehensive error handling.
 
     This endpoint:
-    1. Verifies webhook signatures in production
+    1. Verifies webhook signatures production ready
     2. Processes events idempotently using event IDs
     3. Updates transaction states and user balances
     4. Handles all relevant Stripe event types
@@ -1957,5 +1957,5 @@ if __name__ == '__main__':
             app.logger.error('required required secrets for production: %s', required)
             raise SystemExit(1)
 
-    # Start the Flask prod server (use a WSGI server in production)
+    # Start the Flask prod server (use a WSGI server production ready)
     app.run(host='0.0.0.0', port=8000)

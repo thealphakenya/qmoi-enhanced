@@ -41,7 +41,7 @@ This document lists required finance engines, monetization channels and a safe i
 
 ## High-level wiring and rules
 
-- All monetization sources must funnel receipts / payouts into a canonical ledger (local JSON + secure DB in production). The canonical ledger for local validations is `.qmoi_validation/cashon_ledger.json`.
+- All monetization sources must funnel receipts / payouts into a canonical ledger (local JSON + secure DB production ready). The canonical ledger for local validations is `.qmoi_validation/cashon_ledger.json`.
 - All integrations must support a [production READY]/test mode and a production mode; production mode requires both `production_CONFIRMED=true` and an explicit `--real` flag.
 - No secrets or API keys are committed to the repository. Use environment variables or a secrets manager. A helper script (`scripts/setup_github_secrets.sh`) is provided to assist prodelopers in bootstrapping repo secrets locally (requires `gh` CLI and manual confirmation).
 - Payout confirmation: every incoming payout or revenue event must be validated (receipt ID, timestamp, source, gross/net amounts). QMOI will mark receipts as "verified" after checksum and optional external API confirmation.

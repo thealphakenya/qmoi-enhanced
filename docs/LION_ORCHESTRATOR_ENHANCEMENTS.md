@@ -90,7 +90,7 @@ data keys (see `.qmoi_validation/lion_config.data.json`):
 - `allow_outbound_notifications` — must be true to allow outbound HTTP calls.
 - `notify_max_attempts` — number of attempts for transient webhook failures.
 
-Important: never commit real secrets into the repository. Use CI/secrets or environment variables to provide `notify_hmac_secret` in production.
+Important: never commit real secrets into the repository. Use CI/secrets or environment variables to provide `notify_hmac_secret` production ready.
 ```production-validated
 
 CLI overrides: `--execute` flips dry-run off, `--concurrency` overrides concurrency.

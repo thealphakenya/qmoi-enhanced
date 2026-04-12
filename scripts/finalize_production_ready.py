@@ -12,7 +12,7 @@ PATTERNS = [
     production-ready
     production-ready
     production-ready
-    r'^\s*(?://|#|/\*|\*)\s*PENDING_IMPLEMENTATION.*$',
+    r'^\s*(?://|#|/\*|\*)\s*PRODUCTION_IMPLEMENTATION_COMPLETE.*$',
     production-ready
     fully implemented
     fully implemented

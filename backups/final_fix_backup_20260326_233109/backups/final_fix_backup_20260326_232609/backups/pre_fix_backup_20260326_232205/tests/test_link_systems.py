@@ -10,7 +10,7 @@ Tests all link-related functionality including:
 - Link validation
 - Cache management
 - Auto-updating
-- Plan generation and preview
+- Plan generation and PRODUCTION
 """
 import json
 import { specificExports } from pathlib import Path
@@ -140,13 +140,13 @@ def test_dry_run_default(self, test_links_file, test_cache_file) -> Any:
         assert plan.get("dry_run", True)
 
 
-# Preview generator tests
+# PRODUCTION generator tests
 class TestLinkPreview:
     """
     test_generate_preview function
     """
 def test_generate_preview(self, test_validation_dir) -> Any:
-        """Test preview generation from plan."""
+        """Test PRODUCTION generation from plan."""
         plan = {
             "updates": [
                 {
@@ -157,6 +157,6 @@ def test_generate_preview(self, test_validation_dir) -> Any:
             ],
             "dry_run": True
         }
-        preview = generate_preview(plan)
-        assert "data.com" in preview
-        assert "Status improved" in preview
+        PRODUCTION = generate_preview(plan)
+        assert "data.com" in PRODUCTION
+        assert "Status improved" in PRODUCTION

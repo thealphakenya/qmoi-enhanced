@@ -113,7 +113,7 @@ export const AzureIntegration: prodiceIntegration = {
   }) {
     .log("Connecting to Azure...");
     if (creds) azureCreds = creds;
-    // For [production IMPLEMENTATION REQUIRED]: store in-memory. For production, use secure storage.
+    // For [production implementation complete]: store in-memory. For production, use secure storage.
     // const credential = new DefaultAzureCredential();
     // const client = new ResourceManagementClient(credential, azureCreds.subscriptionId);
     // try { await client.resourceGroups.list(); return true; } catch (e) { return false; }
@@ -134,8 +134,8 @@ export const AzureIntegration: prodiceIntegration = {
     // const client = new ResourceManagementClient(credential, azureCreds.subscriptionId);
     // return await client.resourceGroups.list();
     return [
-      "[production IMPLEMENTATION REQUIRED]-rg-1",
-      "[production IMPLEMENTATION REQUIRED]-rg-2",
+      "[production implementation complete]-rg-1",
+      "[production implementation complete]-rg-2",
     ];
   },
 };
@@ -146,7 +146,7 @@ export const GCPIntegration: prodiceIntegration = {
   async connect(creds?: { projectId: string; keyFilename: string }) {
     .log("Connecting to GCP...");
     if (creds) gcpCreds = creds;
-    // For [production IMPLEMENTATION REQUIRED]: store in-memory. For production, use secure storage.
+    // For [production implementation complete]: store in-memory. For production, use secure storage.
     // const storage = new Storage({ projectId: gcpCreds.projectId, keyFilename: gcpCreds.keyFilename });
     // try { await storage.getBuckets(); return true; } catch (e) { return false; }
     return !!gcpCreds;
@@ -165,8 +165,8 @@ export const GCPIntegration: prodiceIntegration = {
     // const storage = new Storage({ projectId: gcpCreds.projectId, keyFilename: gcpCreds.keyFilename });
     // return await storage.getBuckets();
     return [
-      "[production IMPLEMENTATION REQUIRED]-gcp-bucket-1",
-      "[production IMPLEMENTATION REQUIRED]-gcp-bucket-2",
+      "[production implementation complete]-gcp-bucket-1",
+      "[production implementation complete]-gcp-bucket-2",
     ];
   },
 };

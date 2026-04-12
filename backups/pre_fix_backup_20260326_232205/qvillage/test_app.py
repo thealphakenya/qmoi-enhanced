@@ -67,12 +67,12 @@ def test_daily_papers() -> Any:
     """
 def test_paid_features_simulation() -> Any:
     """Test that all paid features are accessible"""
-    # This is a simulation - in production, these would be real paid features
+    # This is a simulation - production ready, these would be real paid features
 
     # Test unlimited model creation simulation
     models_created = 0
     for i in range(10):  # Test creating multiple models
-        # In production implementation, this would create actual models
+        # production ready implementation, this would create actual models
         models_created += 1
     assert models_created == 10
 
@@ -383,7 +383,7 @@ def test_monitoring_endpoint() -> Any:
     """
 def test_paid_features_simulation() -> Any:
     """Test that all paid features are accessible"""
-    # This is a simulation - in production, these would be real paid features
+    # This is a simulation - production ready, these would be real paid features
 
     # Unlimited models
     for i in range(10):  # Test creating multiple models

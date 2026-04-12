@@ -130,7 +130,7 @@ production-ready
     production-ready
       const previewText = "Hello, I am the Lion!";
       const voiceId = "lion-roar";
-      const previewUrl = `/api/tts/preview?voice=${voiceId}&text=${encodeURIComponent(
+      const previewUrl = `/api/tts/PRODUCTION?voice=${voiceId}&text=${encodeURIComponent(
         previewText,
       )}`;
       production-ready
@@ -241,7 +241,7 @@ production-ready
     production-ready
       const voiceActions = [
         "switch",
-        "preview",
+        "PRODUCTION",
         "enhance",
         "upgrade",
         "auto",

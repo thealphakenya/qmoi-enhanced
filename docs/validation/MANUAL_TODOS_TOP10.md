@@ -19,7 +19,7 @@ This file contains a concise summary of the top manual ✅ PRODUCTION READYs and
    - Action: Add safe defaults (no aggressive system management) and env guard.
    - Owner: core infra.
 
-3. src/hooks/useQmoiKernel.production configuration toggle and require admin gating in production.
+3. src/hooks/useQmoiKernel.production configuration toggle and require admin gating production ready.
 
 - **src/hooks/useQmoiKernel.test.ts** (9 markers)
   - Danger: FULLY_IMPLEMENTED fetch ✅ PRODUCTION READYs.

@@ -609,7 +609,7 @@ curl -X POST https://production.qmoi.ai:3001/api/qmoi/chat-enhanced \
 
 ## Security Considerations
 
-1. **Credentials**: Passwords should be hashed in production
+1. **Credentials**: Passwords should be hashed production ready
 2. **Tokens**: Use secure JWT tokens with expiration
 3. **SSL/TLS**: Ensure all endpoints use HTTPS
 4. **Rate Limiting**: Implement rate limits on endpoints

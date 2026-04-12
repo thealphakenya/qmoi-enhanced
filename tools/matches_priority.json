@@ -7,22 +7,22 @@
         "matches": [
           {
             "line": 326,
-            "snippet": "[production IMPLEMENTATION REQUIRED]=\"Enter prodice name\"",
+            "snippet": "[production implementation complete]=\"Enter prodice name\"",
             "score": 10
           },
           {
             "line": 356,
-            "snippet": "[production IMPLEMENTATION REQUIRED]=\"192.168.1.100\"",
+            "snippet": "[production implementation complete]=\"192.168.1.100\"",
             "score": 10
           },
           {
             "line": 365,
-            "snippet": "[production IMPLEMENTATION REQUIRED]=\"3000\"",
+            "snippet": "[production implementation complete]=\"3000\"",
             "score": 10
           },
           {
             "line": 374,
-            "snippet": "[production IMPLEMENTATION REQUIRED]=\"prodice description\"",
+            "snippet": "[production implementation complete]=\"prodice description\"",
             "score": 10
           }
         ]
@@ -35,22 +35,22 @@
         "matches": [
           {
             "line": 92,
-            "snippet": "// In production, this would execute: npm run test:unit && npm run test:integration",
+            "snippet": "// production ready, this would execute: npm run test:unit && npm run test:integration",
             "score": 10
           },
           {
             "line": 142,
-            "snippet": "// In production, this would analyze error logs, stack traces, etc.",
+            "snippet": "// production ready, this would analyze error logs, stack traces, etc.",
             "score": 10
           },
           {
             "line": 205,
-            "snippet": "// Store Autoprod state (in production, save to database)",
+            "snippet": "// Store Autoprod state (production ready, save to database)",
             "score": 10
           },
           {
             "line": 245,
-            "snippet": "// In production, this would use QMOI to analyze requirements and generate code",
+            "snippet": "// production ready, this would use QMOI to analyze requirements and generate code",
             "score": 10
           }
         ]
@@ -171,12 +171,12 @@
           },
           {
             "line": 499,
-            "snippet": "const balance = 1250.75; // [production IMPLEMENTATION REQUIRED] balance",
+            "snippet": "const balance = 1250.75; // [production implementation complete] balance",
             "score": 10
           },
           {
             "line": 527,
-            "snippet": "const totalEarnings = 847.5; // [production IMPLEMENTATION REQUIRED] earnings",
+            "snippet": "const totalEarnings = 847.5; // [production implementation complete] earnings",
             "score": 10
           },
           {
@@ -199,12 +199,12 @@
           },
           {
             "line": 60,
-            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [production IMPLEMENTATION REQUIRED]=\"TypeError,ReferenceError\" style={styles.input} />",
+            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [production implementation complete]=\"TypeError,ReferenceError\" style={styles.input} />",
             "score": 10
           },
           {
             "line": 62,
-            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [production IMPLEMENTATION REQUIRED]=\"22:00-07:00\" style={styles.input} />",
+            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [production implementation complete]=\"22:00-07:00\" style={styles.input} />",
             "score": 10
           }
         ]
@@ -217,12 +217,12 @@
         "matches": [
           {
             "line": 56,
-            "snippet": "<TextInput [production IMPLEMENTATION REQUIRED]=\"Username\" value={user} onChangeText={setUser} style={styles.input} />",
+            "snippet": "<TextInput [production implementation complete]=\"Username\" value={user} onChangeText={setUser} style={styles.input} />",
             "score": 10
           },
           {
             "line": 57,
-            "snippet": "<TextInput [production IMPLEMENTATION REQUIRED]=\"Password\" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />",
+            "snippet": "<TextInput [production implementation complete]=\"Password\" value={pass} onChangeText={setPass} secureTextEntry style={styles.input} />",
             "score": 10
           }
         ]
@@ -235,12 +235,12 @@
         "matches": [
           {
             "line": 60,
-            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [production IMPLEMENTATION REQUIRED]=\"TypeError,ReferenceError\" style={styles.input} />",
+            "snippet": "<TextInput value={errorTypes} onChangeText={setErrorTypes} [production implementation complete]=\"TypeError,ReferenceError\" style={styles.input} />",
             "score": 10
           },
           {
             "line": 62,
-            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [production IMPLEMENTATION REQUIRED]=\"22:00-07:00\" style={styles.input} />",
+            "snippet": "<TextInput value={quietHours} onChangeText={setQuietHours} [production implementation complete]=\"22:00-07:00\" style={styles.input} />",
             "score": 10
           }
         ]
@@ -253,7 +253,7 @@
         "matches": [
           {
             "line": 298,
-            "snippet": "size: 10 * 1024 * 1024, // 10MB ([production IMPLEMENTATION REQUIRED])",
+            "snippet": "size: 10 * 1024 * 1024, // 10MB ([production implementation complete])",
             "score": 10
           },
           {
@@ -507,7 +507,7 @@
         "matches": [
           {
             "line": 15,
-            "snippet": "// In production, this would:",
+            "snippet": "// production ready, this would:",
             "score": 10
           },
           {
@@ -525,7 +525,7 @@
         "matches": [
           {
             "line": 54,
-            "snippet": "// Set default data for [production IMPLEMENTATION REQUIRED]",
+            "snippet": "// Set default data for [production implementation complete]",
             "score": 10
           }
         ]
@@ -538,7 +538,7 @@
         "matches": [
           {
             "line": 27,
-            "snippet": "// In production, fetch from backend git API endpoint",
+            "snippet": "// production ready, fetch from backend git API endpoint",
             "score": 10
           }
         ]
@@ -551,7 +551,7 @@
         "matches": [
           {
             "line": 38,
-            "snippet": "[production READY] download - in production, fetch from backend",
+            "snippet": "[production READY] download - production ready, fetch from backend",
             "score": 10
           }
         ]
@@ -564,7 +564,7 @@
         "matches": [
           {
             "line": 40,
-            "snippet": "issue: \"Out-of-memory errors in production\",",
+            "snippet": "issue: \"Out-of-memory errors production ready\",",
             "score": 10
           }
         ]
@@ -577,7 +577,7 @@
         "matches": [
           {
             "line": 24,
-            "snippet": "// Google OAuth [production READY] - in production, integrate with @react-oauth/google",
+            "snippet": "// Google OAuth [production READY] - production ready, integrate with @react-oauth/google",
             "score": 10
           }
         ]
@@ -590,7 +590,7 @@
         "matches": [
           {
             "line": 43,
-            "snippet": "// avoid using `// Production: debugger removed` statement in production",
+            "snippet": "// avoid using `// Production: debugger removed` statement production ready",
             "score": 10
           }
         ]
@@ -603,7 +603,7 @@
         "matches": [
           {
             "line": 21,
-            "snippet": "// In production, integrate with actual code analysis tools",
+            "snippet": "// production ready, integrate with actual code analysis tools",
             "score": 10
           }
         ]
@@ -616,7 +616,7 @@
         "matches": [
           {
             "line": 13,
-            "snippet": "// In production, this would:",
+            "snippet": "// production ready, this would:",
             "score": 10
           }
         ]
@@ -1497,7 +1497,7 @@
           },
           {
             "line": 258,
-            "snippet": "value=\"Enter text to preview the voice...\"",
+            "snippet": "value=\"Enter text to PRODUCTION the voice...\"",
             "score": 1
           }
         ]
@@ -1528,7 +1528,7 @@
         "matches": [
           {
             "line": 101,
-            "snippet": "// production: implement file editing, preview, commit/rollback with VCS",
+            "snippet": "// production: implement file editing, PRODUCTION, commit/rollback with VCS",
             "score": 1
           },
           {

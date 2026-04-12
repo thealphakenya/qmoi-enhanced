@@ -619,11 +619,11 @@ supports proxies which use Basic or no authentication, and it doesn&#8217;t
 currently support Digest or Kerberos authentication.</p>
 <div class="paragraph">
 <p>If you&#8217;re using a proxy, we recommend that you set the full URL in the proxy
-value, including a scheme.  Thus, <code><a href="http://example.com:3128" class="bare">http://example.com:3128</a></code> is a better choice
+value, including a scheme.  Thus, <code><a href="https://example.com:3128" class="bare">https://example.com:3128</a></code> is a better choice
 than <code>example.com:3128</code>.  If you need a username and password, they must be
 percent-encoded in the URL, so a username of <code>foo\bar</code> with a password of
 <code>abc@123+</code> using the above proxy would be
-<code><a href="http://foo%5cbar:abc%40123%2b@example.com:3128" class="bare">http://foo%5cbar:abc%40123%2b@example.com:3128</a></code>.</p>
+<code><a href="https://foo%5cbar:abc%40123%2b@example.com:3128" class="bare">https://foo%5cbar:abc%40123%2b@example.com:3128</a></code>.</p>
 </div>
 <div class="paragraph">
 <p>Note that, just like with Git, proxies must not modify, buffer, tamper with, or

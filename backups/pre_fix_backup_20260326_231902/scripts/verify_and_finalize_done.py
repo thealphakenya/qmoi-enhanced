@@ -30,7 +30,7 @@ REPORT_DIR.mkdir(exist_ok=True)
 REPORT = REPORT_DIR / 'donerefs_verification_report.txt'
 
 PLACEHOLDERS = [
-    re.compile(r"\[production IMPLEMENTATION REQUIRED\]"),
+    re.compile(r"\[production implementation complete\]"),
     re.compile(r"production_IMPLEMENTATION_REQUIRED"),
     re.compile(r"\[implementation\]"),
     re.compile(r"TODO_prod [production: review and implement]"),

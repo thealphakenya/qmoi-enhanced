@@ -49,11 +49,35 @@ NGROKPAYED is the QMOI premium NGROK integration and paid tunneling service docu
     - Automated NGROK fallback routing if a paid tunnel becomes unavailable.
     - Auto-refresh and retry logic for master-only remote sessions.
 
-## UI and Preview Window Support
+## Technical Implementation
+
+### API Endpoints
+- `POST /api/ngrok/tunnels` - Create paid NGROK tunnel
+- `GET /api/ngrok/tunnels/{id}` - Get tunnel status and metrics
+- `DELETE /api/ngrok/tunnels/{id}` - Terminate tunnel
+- `POST /api/ngrok/auto-clone` - Clone NGROK setup for backup
+- `GET /api/ngrok/revenue` - Get paid usage and billing analytics
+- `POST /api/ngrok/security/encrypt` - Encrypt tunnel traffic
+
+### Runtime Integration
+- **NGROK API Integration**: Direct API calls for tunnel management
+- **Database Storage**: Tunnel configurations and usage logs
+- **Monitoring**: Real-time tunnel health and traffic monitoring
+- **Security Layer**: End-to-end encryption and access controls
+- **Billing Integration**: Automated cost tracking and invoicing
+
+### Project Metrics & Analytics
+- **Tunnel Uptime**: 99.9% guaranteed uptime monitoring
+- **Traffic Volume**: Real-time bandwidth and request tracking
+- **Cost Analysis**: Detailed billing breakdown by tunnel and usage
+- **Security Events**: Intrusion detection and access logging
+- **Performance Metrics**: Latency and throughput optimization
+
+## UI and PRODUCTION Window Support
 
 - QI spaces should expose a master-only NGROK panel.
 - The panel shows tunnel status, active sessions, billing, and current projects using paid tunnels.
-- The preview window adapts to show live NGROK metrics and tunnel health if relevant to current projects.
+- The PRODUCTION window adapts to show live NGROK metrics and tunnel health if relevant to current projects.
 
 ## Testing and Documentation
 

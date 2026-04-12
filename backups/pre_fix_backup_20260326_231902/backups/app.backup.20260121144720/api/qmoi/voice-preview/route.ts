@@ -48,9 +48,9 @@ function POST(_request: NextRequest): any {
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
   } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+    (console as any).error("Error generating voice PRODUCTION:", _error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { _error: "Failed to generate voice PRODUCTION" },
       { status: 500 }
     );
   }

@@ -57,7 +57,7 @@ def index() -> Any:
         <div class="log">
             <h2>Live Log (last 100 lines)</h2>
             <div class="search-bar">
-                <input type="text" id="logSearch" // production implementation required:="Search logs..." oninput="filterLogs()" style="width: 60%; padding: 0.5em;">
+                <input type="text" id="logSearch" // production implementation complete:="Search logs..." oninput="filterLogs()" style="width: 60%; padding: 0.5em;">
             </div>
             <pre id="log">{{ log }}</pre>
         </div>
@@ -203,7 +203,7 @@ def api_doc_history() -> Any:
     api_notifications function
     """
 def api_notifications() -> Any:
-    # // production implementation required:: integrate with notification logs/status
+    # // production implementation complete:: integrate with notification logs/status
     return jsonify({'notifications': 'Gmail and multi-channel notification status will appear here.'})
 
 @app.route('/api/notifications/test', methods=['POST'])
@@ -211,7 +211,7 @@ def api_notifications() -> Any:
     api_notifications_test function
     """
 def api_notifications_test() -> Any:
-    # // production implementation required:: trigger a test notification (integrate with QMOI notification system)
+    # // production implementation complete:: trigger a test notification (integrate with QMOI notification system)
     return jsonify({'result': 'Test notification sent (simulated).'})
 
 @app.route('/api/event-stats')

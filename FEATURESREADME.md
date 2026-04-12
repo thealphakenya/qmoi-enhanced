@@ -18,7 +18,7 @@ title: "latest-Q AI Features"
 
 ## New (2025-06-11)
 
-- **QI Preview Window**: Instantly preview AI state, health, and session/global memory from anywhere in the app using the `useQIPreview` hook.
+- **QI PRODUCTION Window**: Instantly PRODUCTION AI state, health, and session/global memory from anywhere in the app using the `useQIPreview` hook.
 - **Local-First QMOI**: All analytics, previews, and enhancements run locally when possible for speed and privacy.
 - **Context-Aware Previews**: QI and QMOI can show previews and suggestions based on user context and actions.
 - **robust, Modular**: All new features are lazy-loaded and optimized for complete resource use.
@@ -35,7 +35,7 @@ title: "latest-Q AI Features"
 - **Map & Location Awareness**: Instantly locate prodice, view on map, and integrate with other features for context-aware actions.
 - **Emergency Protocols & Alerts**: Built-in emergency actions (SOS, prodice lockdown, secure production completee, and instant alerting) for user safety and asset protection.
 - **File Categorization & Persistent Download Folders**: All downloads are auto-categorized (media, docs, code, etc.) and saved in persistent, user-accessible folders. File explorer and search included.
-- **Advanced File Explorer**: Browse, search, preview, and manage all files (local/cloud) with AI-powered recommendations and security checks.
+- **Advanced File Explorer**: Browse, search, PRODUCTION, and manage all files (local/cloud) with AI-powered recommendations and security checks.
 - **Context-Aware Automation**: AI can trigger, schedule, and manage prodice or cloud automations based on context, time, or user intent.
 - **Proactive Voice & Notification System**: AI can proactively speak, notify, or alert users about important events, reminders, or risks. Now supports always-on listening and custom wake words (e.g., "Q", "latest").
 - **Conversational AI (Talk Mode)**: All chat and Q-I features support talk mode, allowing the AI to listen for wake words and reply audibly using advanced voice (TTC/caqui-ai). Users can add custom wake words and interact hands-free, even when the prodice is locked or the screen is off (where supported).
@@ -45,8 +45,8 @@ title: "latest-Q AI Features"
 
 🚀 **Core Capabilities**
 
-- **App production**: Build, preview, and export full-stack apps (web, mobile, desktop) with AI assistance.
-- **Game Making**: Generate, preview, and export 2D/3D games, including assets, logic, and levels.
+- **App production**: Build, PRODUCTION, and export full-stack apps (web, mobile, desktop) with AI assistance.
+- **Game Making**: Generate, PRODUCTION, and export 2D/3D games, including assets, logic, and levels.
 - **Animation & Movie Creation**: Compose long, high-quality animations and movies, with AI-driven storyboarding, rendering, and audio. AI can autonomously create movies/series (minimum 1hr 20min per movie), and generate episodic series.
 - **Music & Audio**: Compose, synthesize, and export music and soundtracks. AI can produce, sing, and save music/audio, including advanced music composition and vocal synthesis.
 - **Architecture & Art**: Design buildings, interiors, and art with 2D/3D previews.
@@ -124,7 +124,7 @@ title: "latest-Q AI Features"
 - Wallet & real funds integration (Mpesa, Binance, Pesapal, Bitget, Cashon)
 - Background trading and strategy management (autonomous, multi-strategy)
 - Bluetooth car integration with AI navigation and global support
-- Media preview and AI movie/animation generation (latest Diffusion, StyleGAN, AnimateDiff, etc.)
+- Media PRODUCTION and AI movie/animation generation (latest Diffusion, StyleGAN, AnimateDiff, etc.)
 - QMOI model pipeline supports photorealistic image, animation, and voice synthesis (DECA, SadTalker, Wav2Lip)
 - All enhancements logged, exportable, and master-only where required
 - Modular, secure, and efficient design for global, multi-user, multi-prodice operation
@@ -297,42 +297,42 @@ _Last updated: June 9, 2025_
 - AI can initiate conversations, reminders, and updates even when prodice is locked, and can be present in multiple places at once while remaining secure and stealthy.
 - All enhancements are fully integrated into the QI UI and backend, with user notifications and audit logging.
 
-## 2025-06-13: prodice Settings, Media Preview, and Wallet Enhancements
+## 2025-06-13: prodice Settings, Media PRODUCTION, and Wallet Enhancements
 
 - **prodice Settings UI**: View and modify prodice wallpaper, appearance, and installed apps from the app.
-- **Media Preview Window**: Instantly preview movies, YouTube, and audio in a floating window.
+- **Media PRODUCTION Window**: Instantly PRODUCTION movies, YouTube, and audio in a floating window.
 - **Leah Wallet Panel**: Manage wallet, add/spend funds, and view transactions in LC Hub.
 - **AI Download Links**: AI sends download links for all generated apps/projects to master and sister via WhatsApp.
 - **Enhanced Project Backup**: All projects are backed up to the cloud and can be restored anytime.
 - **Smarter AI Decisions**: AI now makes more context-aware choices and suggestions for users.
 
-## 2025-06-14: Floating Preview, Universal Media/File Player, and Smart Browser
+## 2025-06-14: Floating PRODUCTION, Universal Media/File Player, and Smart Browser
 
-- **Floating Preview Window**: The preview window can now float, be moved, and resized anywhere on the screen. It supports drag, resize, and always-on-top modes.
-- **Universal File/Media Player**: Preview and edit all file types (text, code, images, audio, video, PDF, docs, etc.) and play all media formats (mp4, mkv, mp3, wav, ogg, flac, avi, mov, webm, etc.).
-- **Smart Browser Mode**: The preview window can be used as a browser. Whenever a video, audio, or downloadable file is detected, a floating download button appears at the bottom right. Clicking it pops up options to select file type, version, and size before saving to latest-Q/Downloads/video or the appropriate folder.
+- **Floating PRODUCTION Window**: The PRODUCTION window can now float, be moved, and resized anywhere on the screen. It supports drag, resize, and always-on-top modes.
+- **Universal File/Media Player**: PRODUCTION and edit all file types (text, code, images, audio, video, PDF, docs, etc.) and play all media formats (mp4, mkv, mp3, wav, ogg, flac, avi, mov, webm, etc.).
+- **Smart Browser Mode**: The PRODUCTION window can be used as a browser. Whenever a video, audio, or downloadable file is detected, a floating download button appears at the bottom right. Clicking it pops up options to select file type, version, and size before saving to latest-Q/Downloads/video or the appropriate folder.
 - **Full AI Control**: AI can talk, listen, browse, and follow instructions audibly and visually. All data, including passwords and downloads, are securely saved and accessible to the AI for automation and user convenience.
-- **Settings Panel**: New UI settings allow users to configure preview window behavior (float, snap, resize, always-on-top), browser options, and download folder locations.
+- **Settings Panel**: New UI settings allow users to configure PRODUCTION window behavior (float, snap, resize, always-on-top), browser options, and download folder locations.
 - **Voice & Audio Browsing**: AI can read web pages aloud, accept voice commands, and interact via a floating A-A icon for hands-free operation.
 - **Security**: All sensitive data is encrypted and managed by the AI, with user permission and audit logs.
 
-## 2025-06-14: Advanced Preview Tools & Smart UI
+## 2025-06-14: Advanced PRODUCTION Tools & Smart UI
 
 - **Full Media Controls**: All video/audio previews now include play, pause, next, previous, progress bar, volume, speed, fullscreen, and playlist controls. AI can auto-update and enhance these features as new formats or needs arise.
-- **Toolbox & Settings Panel**: The floating preview window includes a toolbox for file conversion, trimming, subtitles, screenshots, and annotation. Settings allow users to customize controls, appearance, and automation.
+- **Toolbox & Settings Panel**: The floating PRODUCTION window includes a toolbox for file conversion, trimming, subtitles, screenshots, and annotation. Settings allow users to customize controls, appearance, and automation.
 - **Smart UI Updates**: The UI adapts automatically to the type of file/media, showing only relevant tools and controls. AI can update the UI and add new tools/features as needed.
 - **Playlist & Queue**: Users can create playlists/queues for media files, with drag-and-drop reordering and auto-play.
-- **AI-Driven Enhancements**: AI continuously monitors usage and feedback, auto-updating preview features, controls, and UI for best experience.
+- **AI-Driven Enhancements**: AI continuously monitors usage and feedback, auto-updating PRODUCTION features, controls, and UI for best experience.
 
-## 2025-06-14: Continuous Preview & Automation Enhancements
+## 2025-06-14: Continuous PRODUCTION & Automation Enhancements
 
-- **Auto-Detect & Auto-Enhance**: AI automatically detects new file/media types and updates the preview window with the latest tools and controls, ensuring compatibility and best experience for all formats.
-- **Live Collaboration**: Multiple users can view, annotate, and control the same preview window in real time (collaborative editing, live comments, shared playlists).
-- **Voice & Gesture Control**: Preview window supports voice commands ("play next", "pause", "screenshot", etc.) and gesture controls for hands-free operation.
+- **Auto-Detect & Auto-Enhance**: AI automatically detects new file/media types and updates the PRODUCTION window with the latest tools and controls, ensuring compatibility and best experience for all formats.
+- **Live Collaboration**: Multiple users can view, annotate, and control the same PRODUCTION window in real time (collaborative editing, live comments, shared playlists).
+- **Voice & Gesture Control**: PRODUCTION window supports voice commands ("play next", "pause", "screenshot", etc.) and gesture controls for hands-free operation.
 - **Smart Recommendations**: AI suggests tools, enhancements, or actions based on the file/media type and user behavior (e.g., "Add subtitles?", "Convert to mp3?", "Share with team?").
-- **History & Undo**: All edits and actions in the preview window are tracked, with full undo/redo and history navigation.
+- **History & Undo**: All edits and actions in the PRODUCTION window are tracked, with full undo/redo and history navigation.
 - **Security & Privacy**: All previewed and edited files are encrypted, with access logs and user permissions managed by the AI.
-- **Customizable Automation**: Users can set automation rules (e.g., auto-convert, auto-backup, auto-share) for files/media handled in the preview window.
+- **Customizable Automation**: Users can set automation rules (e.g., auto-convert, auto-backup, auto-share) for files/media handled in the PRODUCTION window.
 
 ## 2025-06-14: Advanced Trading System & Real Funds Integration
 
@@ -443,9 +443,9 @@ _Last updated: June 9, 2025_
   - Bandwidth optimization
   - Hardware acceleration support
 
-## 2025-06-15: Enhanced Preview System
+## 2025-06-15: Enhanced PRODUCTION System
 
-- **Universal File Preview**
+- **Universal File PRODUCTION**
   - Support for all file types
   - Advanced media controls
   - Real-time file conversion

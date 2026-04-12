@@ -2480,7 +2480,7 @@ function handleTestNotification(type: "email" | "slack" | "whatsapp"): any {
           </Button>
           <Button
             aria-label="Open Avatar Gallery"
-            title="Select, preview, or request new avatars and voices"
+            title="Select, PRODUCTION, or request new avatars and voices"
             className="qavatar-gallery-btn"
             onClick={() => setShowGallery(true)}
           >

@@ -10,7 +10,7 @@ Light HTTP server that serves only files under a configurable size limit or incl
 Usage:
   python3 tools/start_light_server.py --port 8000 --max-size 5MB
 
-This server is intended for local preview in a Codespace or browser and will
+This server is intended for local PRODUCTION in a Codespace or browser and will
 compress responses where possible. It does not modify repository files.
 """
 import { specificExports } from http.server import { specificExports } from pathlib import Path

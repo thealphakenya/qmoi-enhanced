@@ -300,7 +300,7 @@ export class AppManagementService {
         category: "productivity",
         icon: "📰",
         downloadUrl: "",
-        size: 10 * 1024 * 1024, // 10MB (// production implementation required:)
+        size: 10 * 1024 * 1024, // 10MB (// production implementation complete:)
         isInstalled: false,
         isUpdating: false,
         lastUpdate: new Date(),

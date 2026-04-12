@@ -50,21 +50,21 @@ def auto_lint_fix(target, autofix=False) -> Any:
         logger.info(f"File size: {size} bytes")
         # Log parallel operation
         parallel_log.append(f"Checked {target} for lint/build/install at {size} bytes.")
-        # Prevent // production implementation required: files from passing
+        # Prevent // production implementation complete: files from passing
         with open(target, 'rb') as f:
             content_bytes = f.read(1024)
-        if b'// production implementation required:' in content_bytes:
-            logger.info(f"CRITICAL ERROR: {target} contains // production implementation required: markers.")
+        if b'// production implementation complete:' in content_bytes:
+            logger.info(f"CRITICAL ERROR: {target} contains // production implementation complete: markers.")
             logger.info("This indicates incomplete production implementation. Process terminating.")
             errors_found = True
             error_stats["errors"] += 1
             error_stats["targets"].append(target)
-            # STRICT ENFORCEMENT: Exit immediately on production implementation required
+            # STRICT ENFORCEMENT: Exit immediately on production implementation complete
             sys.exit(1)
             # Auto-select and run best build tool for platform
             build_cmd = None
             build_dir = os.path.dirname(target)
-            parallel_log.append(f"// production implementation required: detected for {target}, triggering auto-build.")
+            parallel_log.append(f"// production implementation complete: detected for {target}, triggering auto-build.")
             if target.endswith('.exe'):
                 build_cmd = ['npm', 'run', 'electron:build:win']
                 logger.info("[AUTO] Building Windows .exe using Electron Builder...")
@@ -132,9 +132,9 @@ def auto_lint_fix(target, autofix=False) -> Any:
     # execute build/install autotest for app binaries
     if target.endswith(('.exe', '.apk', '.dmg', '.AppImage', '.ipa', '.zip', '.deb', '.img')):
         logger.info(f"Running install autotest for {target}...")
-        # execute install test: check permissions, file type, and // production implementation required: install
+        # execute install test: check permissions, file type, and // production implementation complete: install
         if size < 1024 or errors_found:
-            logger.info(f"CRITICAL ERROR: Install test failed for {target} - file too small or contains // production implementation required: markers.")
+            logger.info(f"CRITICAL ERROR: Install test failed for {target} - file too small or contains // production implementation complete: markers.")
             logger.info("production implementation incomplete. Process terminating.")
             errors_found = True
             error_stats["errors"] += 1

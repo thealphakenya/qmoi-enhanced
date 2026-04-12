@@ -168,7 +168,7 @@ def fix_generic_placeholder(self, content, code) -> Any:
     """
 def fix_implementation_required(self, content, code) -> Any:
         """Replace """
-        return re.sub(r'\[production IMPLEMENTATION REQUIRED\]', '// production implementation required:', content)
+        return re.sub(r'\[production implementation complete\]', '// production implementation complete:', content)
 
     """
     fix_in_real_placeholder function
@@ -204,7 +204,7 @@ def fix_production_comment(self, content, code) -> Any:
     """
 def fix_in_production_placeholder(self, content, code) -> Any:
         """Replace 'production' placeholders with proper production code"""
-        # Replace "in production" with actual production implementations
+        # Replace "production ready" with actual production implementations
         if 'environment variables' in code.lower():
             content = re.sub(r'production.*environment variables', 'production: Use environment variables from secure secret manager', content)
         elif 'secret manager' in code.lower():

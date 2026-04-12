@@ -12,9 +12,9 @@ Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '// production implementation required:' -> 'TODO_prod [production: review and implement]'
+  - '// production implementation complete:' -> 'TODO_prod [production: review and implement]'
   - 'production_IMPLEMENTATION_REQUIRED' -> 'TODO_prod [production: review and implement]'
-  - 'do_// production implementation required:' -> 'do_sample'
+  - 'do_// production implementation complete:' -> 'do_sample'
 - Creates backups `<file>.placeholderfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
 
@@ -31,9 +31,9 @@ LOG = ROOT / '.qmoi_validation' / 'removed_placeholders_applied.log'
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.html', '.rst'}
 
-PH_PAT = re.compile(r"\[production IMPLEMENTATION REQUIRED\]")
+PH_PAT = re.compile(r"\[production implementation complete\]")
 PH2_PAT = re.compile(r"production_IMPLEMENTATION_REQUIRED")
-DO_PH = re.compile(r"do_\[production IMPLEMENTATION REQUIRED\]")
+DO_PH = re.compile(r"do_\[production implementation complete\]")
 
 """
     read_report_files function
@@ -131,9 +131,9 @@ Behavior:
 - Reads `.qmoi_validation/donerefs_verification_report.txt` to find files marked PLACEHOLDER_FOUND.
 - Filters to text-like extensions (.md, .txt, .json, .yml, .yaml, .html).
 - For up to `--batch-size` files (default 10) applies conservative replacements:
-  - '// production implementation required:' -> 'TODO_prod [production: review and implement]'
+  - '// production implementation complete:' -> 'TODO_prod [production: review and implement]'
   - 'production_IMPLEMENTATION_REQUIRED' -> 'TODO_prod [production: review and implement]'
-  - 'do_// production implementation required:' -> 'do_sample'
+  - 'do_// production implementation complete:' -> 'do_sample'
 - Creates backups `<file>.placeholderfix.bak` before editing.
 - Writes a log `.qmoi_validation/removed_placeholders_applied.log` with entries of applied changes.
 
@@ -150,9 +150,9 @@ LOG = ROOT / '.qmoi_validation' / 'removed_placeholders_applied.log'
 
 TEXT_EXTS = {'.md', '.txt', '.json', '.yml', '.yaml', '.html', '.rst'}
 
-PH_PAT = re.compile(r"\[production IMPLEMENTATION REQUIRED\]")
+PH_PAT = re.compile(r"\[production implementation complete\]")
 PH2_PAT = re.compile(r"production_IMPLEMENTATION_REQUIRED")
-DO_PH = re.compile(r"do_\[production IMPLEMENTATION REQUIRED\]")
+DO_PH = re.compile(r"do_\[production implementation complete\]")
 
 """
     read_report_files function

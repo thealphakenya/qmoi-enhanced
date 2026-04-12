@@ -27,7 +27,7 @@ last_updated: "2026-03-13"
 
 1. [Platform Overview](#platform-overview)
 2. [Chatbot Use Cases](#chatbot-use-cases)
-3. [Preview Window Use Cases](#preview-window-use-cases)
+3. [PRODUCTION Window Use Cases](#PRODUCTION-window-use-cases)
 4. [Project-Type Specific Workflows](#project-type-specific-workflows)
 5. [Autonomous QMOI Workflows](#autonomous-qmoi-workflows)
 6. [Integration Patterns](#integration-patterns)
@@ -47,10 +47,10 @@ QMOI v2.0 is a **universal platform** capable of handling ANY type of production
 | **Code Execution** | Run & production dback
 3. Branch for design alternatives
 4. Inspect tools for specifications
-5. Export from preview directly
+5. Export from PRODUCTION directly
 
 ### For Content Creators
-1. Preview for media viewing
+1. PRODUCTION for media viewing
 2. Chat for creative discussion
 3. Timeline tools for editing
 4. Effect previews for decisions
